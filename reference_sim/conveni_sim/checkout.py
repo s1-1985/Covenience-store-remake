@@ -115,6 +115,10 @@ class CheckoutStationRuntime:
             raise ValueError("active checkout customer is no longer waiting")
 
         self.customers.complete_checkout(customer_id)
+        # Completing one checkout is a confirmed register-work event. It is
+        # counted for future skill-growth reconstruction, but no stamina cost or
+        # skill delta is invented here.
+        self.staff.record_completed_work(staff_id, StaffTask.CHECKOUT)
         self.staff.release_to_idle(staff_id)
         record = CheckoutServiceRecord(customer_id, staff_id, self.fixture_id)
         self._service_history.append(record)
