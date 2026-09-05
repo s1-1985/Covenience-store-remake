@@ -69,6 +69,9 @@ class DynamicTrafficHarness:
     def agents(self) -> tuple[TrafficAgent, ...]:
         return tuple(self._agents.values())
 
+    def agent(self, agent_id: str) -> TrafficAgent:
+        return self._agents[agent_id]
+
     def add_agent(self, agent_id: str, position: GridPoint) -> TrafficAgent:
         if agent_id in self._agents:
             raise ValueError(f"duplicate agent id: {agent_id}")
