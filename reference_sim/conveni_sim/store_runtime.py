@@ -157,6 +157,8 @@ class StoreRuntimeHarness:
             raise ValueError(
                 "customer current merchandise fixture does not match inventory slot fixture"
             )
+        if flow is PurchaseFlow.CHECKOUT_REQUIRED and session.checkout_fixture_id is None:
+            raise ValueError("checkout-required interaction needs a checkout fixture")
 
         pick = self.purchases.pick_from_inventory(
             customer_id,
