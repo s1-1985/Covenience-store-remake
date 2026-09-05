@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Mapping, Optional, Protocol, Sequence
+from typing import Iterable, Mapping, Optional, Protocol, Sequence
 
 from .staff import StaffCondition, StaffTask, StoreStaffRoster, WORK_TASKS
 
@@ -85,6 +85,11 @@ class StaffTaskPolicyCoordinator:
     competes with checkout work. Multiple staff may choose the same target; the
     first-title evidence does not justify a global optimizer that guarantees
     perfect coverage or deduplicates independent decisions.
+
+    Callers may also lock staff who are inside an externally managed work
+    lifecycle (for example an active checkout service). A lock is not an
+    original-AI priority claim; it only prevents the generic task selector from
+    silently overwriting an in-progress state machine.
     """
 
     def __init__(self, roster: StoreStaffRoster) -> None:
@@ -104,14 +109,17 @@ class StaffTaskPolicyCoordinator:
         self,
         policy: StaffTaskPolicy,
         candidates_by_staff: Mapping[str, Sequence[StaffTaskCandidate]],
+        *,
+        locked_staff_ids: Iterable[str] = (),
     ) -> StaffTaskPolicyApplication:
         applied: list[AppliedStaffTaskDecision] = []
         unavailable: list[str] = []
         no_decision: list[str] = []
+        locked = set(locked_staff_ids)
 
         for state in self.roster.staff:
             candidates = tuple(candidates_by_staff.get(state.id, ()))
-            if state.condition is not StaffCondition.AVAILABLE:
+            if state.id in locked or state.condition is not StaffCondition.AVAILABLE:
                 unavailable.append(state.id)
                 continue
 
