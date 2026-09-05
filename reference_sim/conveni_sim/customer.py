@@ -105,8 +105,6 @@ class CustomerLifecycleHarness:
             session.current_merchandise_fixture_id = fixture_id
             session.state = CustomerState.APPROACHING_MERCHANDISE
             self.traffic.set_fixture_goal(session.id, fixture_id)
-            if self.traffic.agent_at(self.traffic._agents[session.id].position) is None:
-                raise RuntimeError("customer traffic agent disappeared")
             self._sync_unreachable(session)
             return
 
@@ -126,8 +124,7 @@ class CustomerLifecycleHarness:
         self._sync_unreachable(session)
 
     def _sync_unreachable(self, session: CustomerSession) -> None:
-        agent = self.traffic._agents[session.id]
-        if agent.status is AgentStatus.UNREACHABLE:
+        if self.traffic.agent(session.id).status is AgentStatus.UNREACHABLE:
             session.state = CustomerState.UNREACHABLE
 
     def record_merchandise_interaction(
@@ -179,7 +176,7 @@ class CustomerLifecycleHarness:
         state_changes: list[tuple[str, CustomerState]] = []
 
         for session in self._customers.values():
-            agent = self.traffic._agents[session.id]
+            agent = self.traffic.agent(session.id)
             previous_state = session.state
 
             if agent.status is AgentStatus.UNREACHABLE and session.state not in (
