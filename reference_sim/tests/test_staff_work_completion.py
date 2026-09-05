@@ -1,6 +1,6 @@
 import unittest
 
-from conveni_sim.staff import StaffTask
+from conveni_sim.staff import StaffCondition, StaffTask
 from conveni_sim.staff_work_candidates import StaffWorkCandidateDiscovery
 from conveni_sim.staff_work_completion import (
     CleaningCompletionCommand,
@@ -12,9 +12,9 @@ from conveni_sim.store_runtime import StoreRuntimeHarness
 
 
 class StaffWorkCompletionTests(unittest.TestCase):
-    def make_runtime(self):
+    def make_runtime(self, *, stamina_max=None):
         runtime = StoreRuntimeHarness(StoreGrid(3, 3), initial_cash_yen=1_000)
-        runtime.staff.add_staff("s1")
+        runtime.staff.add_staff("s1", stamina_max=stamina_max)
         runtime.inventory.add_slot(
             "bread-slot",
             fixture_id="shelf",
@@ -85,6 +85,24 @@ class StaffWorkCompletionTests(unittest.TestCase):
             StaffWorkCompletionCoordinator(runtime).complete_replenishment(
                 "s1", ReplenishmentCompletionCommand(quantity=1)
             )
+
+    def test_zero_stamina_transition_keeps_break_room_target(self):
+        runtime = self.make_runtime(stamina_max=1)
+        runtime.staff.assign_task("s1", StaffTask.REPLENISH, target_id="bread-slot")
+
+        StaffWorkCompletionCoordinator(runtime).complete_replenishment(
+            "s1",
+            ReplenishmentCompletionCommand(
+                quantity=1,
+                stamina_cost=1,
+                break_room_target_id="break-room",
+            ),
+        )
+
+        staff = runtime.staff.staff_member("s1")
+        self.assertEqual(staff.condition, StaffCondition.RETURNING_TO_BREAK_ROOM)
+        self.assertEqual(staff.task, StaffTask.RETURN_TO_BREAK_ROOM)
+        self.assertEqual(staff.target_id, "break-room")
 
 
 if __name__ == "__main__":
