@@ -35,6 +35,7 @@ Rules:
 - `checkout.py` — logical register waiting/service runtime with configurable simultaneous cashier capacity, non-FIFO-capable service selection and explicit service completion.
 - `inventory.py` — explicit fixture/product stock slots, customer depletion, staff replenishment and procurement-cost events without invented capacities or reorder rules.
 - `cleaning.py` — explicit floor-dirt events and cleaning work actions, with optional platform-specific suppression policy and no invented dirt-spawn rate.
+- `economy.py` — explicit cash credits/debits, procurement-cost bridging, closed-hours labor suppression, day summaries and platform-gated day-end bankruptcy evaluation without inventing month aggregation.
 - `master_audit.py` — field-level completeness audit for guide-derived fixture/product/customer/staff masters; only evidence-tagged values count as known.
 
 `store_grid.py` defaults to **2 internal subcells per researched tile** so a half-tile contact/gap can be represented. This is a compatibility representation, not a claim that the original executable literally used a 0.5-tile navigation grid. The scale remains configurable until stronger evidence is recovered.
@@ -50,6 +51,8 @@ Pathfinding in `store_grid.py` is intentionally simple 4-neighbor BFS. `traffic.
 `inventory.py` requires capacity, replenishment quantity and procurement cost to be explicit. Unknown procurement spending stays detectable as unknown rather than silently contributing zero to economy tests.
 
 `cleaning.py` has no automatic dirt generation. Saturn's reported cleaning=100 dirt suppression can be enabled explicitly for SS-compatible experiments, while the shared default remains unset until PS parity is confirmed.
+
+`economy.py` preserves unknown monetary effects as unknown, so a missing procurement/operating value can never silently become a zero-cost event. The reported Saturn negative-cash-at-day-end game-over rule is opt-in until PS parity is confirmed, and the unresolved four-day-to-month-end aggregation remains outside this layer.
 
 The product/customer/fixture/staff schema is intentionally sparse until strategy-guide data is supplied. `master_audit.py` makes missing fields measurable without converting unknowns into zeros or guesses.
 
