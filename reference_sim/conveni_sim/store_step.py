@@ -3,6 +3,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from .checkout_selection_policy import (
+    CheckoutCustomerSelectionPolicy,
+    CheckoutSelectionCoordinator,
+    CheckoutSelectionEvaluation,
+)
 from .customer import CustomerState, CustomerTickResult
 from .customer_demand import CustomerDemandCoordinator, CustomerDemandEvaluation
 from .customer_purchase_policy import (
@@ -11,6 +16,7 @@ from .customer_purchase_policy import (
     CustomerPurchasePolicy,
 )
 from .operating_time import ClockAdvanceResult
+from .staff import StaffTask
 from .staff_task_policy import (
     StaffTaskPolicy,
     StaffTaskPolicyApplication,
@@ -29,16 +35,15 @@ class StoreStepResult:
     traffic: CustomerTickResult
     purchases: tuple[CustomerPurchaseEvaluation, ...]
     staff_tasks: Optional[StaffTaskPolicyApplication]
+    checkout_selections: tuple[CheckoutSelectionEvaluation, ...]
 
 
 class StoreStepOrchestrator:
-    """Compose already-recovered store systems into one caller-driven step.
+    """Compose recovered store systems into one caller-driven step.
 
-    The caller supplies the in-game minute delta. Demand, purchase choice and
-    staff task selection are delegated to replaceable policies. This layer does
-    not decide checkout service duration, staff work duration, spawn rates,
-    purchase weights, queue patience, or how many real seconds correspond to
-    game time.
+    The caller supplies the in-game minute delta. Demand, purchase choice, staff
+    task selection and checkout-customer selection are delegated to replaceable
+    policies. Service duration and completion remain explicit.
     """
 
     def __init__(
@@ -49,6 +54,7 @@ class StoreStepOrchestrator:
         purchases: Optional[CustomerPurchaseCoordinator] = None,
         purchase_policy: Optional[CustomerPurchasePolicy] = None,
         staff_policy: Optional[StaffTaskPolicy] = None,
+        checkout_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
     ) -> None:
         if (purchases is None) != (purchase_policy is None):
             raise ValueError("purchases and purchase_policy must be supplied together")
@@ -61,25 +67,24 @@ class StoreStepOrchestrator:
         self.purchases = purchases
         self.purchase_policy = purchase_policy
         self.staff_policy = staff_policy
+        self.checkout_policy = checkout_policy
         self._staff_candidates = (
             StaffWorkCandidateDiscovery(runtime) if staff_policy is not None else None
         )
         self._staff_tasks = (
             StaffTaskPolicyCoordinator(runtime.staff) if staff_policy is not None else None
         )
+        self._checkout_selection = (
+            CheckoutSelectionCoordinator(runtime) if checkout_policy is not None else None
+        )
 
     def step(self, game_minutes: int) -> StoreStepResult:
-        """Advance time, arrivals, traffic, purchases, then optional staff choices.
+        """Advance time, demand, traffic, purchases, staff choices, then checkout starts.
 
-        The ordering is intentionally narrow and observable: time gates first,
-        then gameplay demand, one traffic tick, purchase decisions for customers
-        physically at merchandise, and finally one caller-authorized staff task
-        reconsideration.  The caller controls how often `step()` is invoked, so
-        this does not define the original task-reconsideration cadence.
-
-        Task selection only assigns factual checkout/replenish/clean candidates.
-        It does not move staff, complete work, refill stock, clean cells, serve a
-        checkout customer, or consume stamina automatically.
+        The caller controls step cadence. Checkout selection may start service for
+        staff currently assigned to a checkout, but this method never finishes
+        service or settles the sale; measured/recovered duration can be inserted
+        between start and explicit completion later.
         """
         clock = self.runtime.advance_game_minutes(game_minutes)
         demand_result = self.demand.evaluate() if self.demand is not None else None
@@ -108,10 +113,23 @@ class StoreStepOrchestrator:
                 self._staff_candidates.candidates_by_staff(),
             )
 
+        checkout_results: list[CheckoutSelectionEvaluation] = []
+        if self.checkout_policy is not None and self._checkout_selection is not None:
+            for staff in self.runtime.staff.staff:
+                if staff.task is not StaffTask.CHECKOUT or staff.target_id is None:
+                    continue
+                checkout = self.runtime.checkout(staff.target_id)
+                if checkout.customer_being_served_by(staff.id) is not None:
+                    continue
+                checkout_results.append(
+                    self._checkout_selection.evaluate(staff.id, self.checkout_policy)
+                )
+
         return StoreStepResult(
             clock=clock,
             demand=demand_result,
             traffic=traffic,
             purchases=tuple(purchase_results),
             staff_tasks=staff_result,
+            checkout_selections=tuple(checkout_results),
         )
