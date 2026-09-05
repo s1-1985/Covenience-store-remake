@@ -126,18 +126,21 @@ FIXTURES = (
         EvidenceValue((1, 2), EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         EvidenceValue(0, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         parking_capacity=EvidenceValue(2, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
+        blocks_pedestrian=EvidenceValue(True, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85", "Parking cells are reported as non-walkable."),
     ),
     FixtureDefinition(
         "parking_two_story",
         EvidenceValue((1, 2), EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         EvidenceValue(240, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         parking_capacity=EvidenceValue(4, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
+        blocks_pedestrian=EvidenceValue(True, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85", "Parking cells are reported as non-walkable."),
     ),
     FixtureDefinition(
         "parking_tower",
         EvidenceValue((2, 3), EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         EvidenceValue(4_800, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         parking_capacity=EvidenceValue(20, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
+        blocks_pedestrian=EvidenceValue(True, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85", "Parking cells are reported as non-walkable."),
     ),
     FixtureDefinition(
         "vending_machine",
@@ -170,8 +173,8 @@ PERMITS = tuple(
 
 SCENARIOS = (
     ScenarioDefinition("beginner", EvidenceValue(200_000_000, EvidenceLevel.CONFIRMED_VISUAL, "Official/current PS screenshot"), EvidenceValue("metropolitan_government_after_population_threshold", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
-    ScenarioDefinition("intermediate", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("10_player_stores", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
-    ScenarioDefinition("advanced", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("owner_rating_5_stars", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
+    ScenarioDefinition("intermediate", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("10_player_stores", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
+    ScenarioDefinition("advanced", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("owner_rating_5_stars", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
 )
 
 TOWN_FACILITIES = (
