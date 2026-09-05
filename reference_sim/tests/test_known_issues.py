@@ -1,6 +1,6 @@
 """既知バグの再現テスト(Claude Code が発見、ChatGPT が修正する対象)。
 
-対象コミット: 0d30789 (2026-09-06)
+対象コミット: 554d78d (2026-09-06)
 
 ここにあるテストは「こうあるべき」という期待を書いたもので、現在は失敗する。
 修正されると XPASS になるので、`pytest -q` の出力で直ったことが機械的に分かる。
@@ -160,6 +160,119 @@ class PromotionKnownIssueTests(unittest.TestCase):
                 record, scheduler, target_store_ids=["store-1", "ghost-store"]
             )
         self.assertEqual(popularity.popularity("store-1"), 10)
+
+
+class RemovedFixtureKnownIssueTests(unittest.TestCase):
+    @unittest.expectedFailure
+    def test_a_fixture_removed_from_the_grid_cannot_still_sell_goods(self):
+        """メモ項目10: グリッドから撤去された什器から商品を購入でき、売上まで計上される。
+
+        `StoreGrid.remove_fixture` は在庫スロットや進行中の顧客セッションと
+        連動していないため、撤去済みの什器に顧客が「到着」し、そこから購入できる。
+        """
+        grid = StoreGrid(5, 5)
+        grid.place_fixture(
+            instance_id="shelf",
+            fixture_id="f1",
+            origin_subcell=GridPoint(4, 4),
+            footprint_tiles=(1, 1),
+            interaction_side=Direction.NORTH,
+        )
+        runtime = StoreRuntimeHarness(grid, initial_cash_yen=1_000_000)
+        runtime.inventory.add_slot(
+            "slot-a",
+            fixture_id="shelf",
+            product_id="bread",
+            capacity_units=10,
+            initial_units=5,
+        )
+        runtime.add_customer(
+            "c1",
+            entry_point=GridPoint(0, 0),
+            exit_point=GridPoint(0, 8),
+            merchandise_fixture_ids=("shelf",),
+        )
+        runtime.customers.tick()
+        runtime.grid.remove_fixture("shelf")
+        for _ in range(60):
+            if runtime.customers.customer("c1").state is CustomerState.AT_MERCHANDISE:
+                break
+            runtime.customers.tick()
+
+        self.assertEqual(runtime.grid.placements, ())
+        with self.assertRaises(ValueError):
+            runtime.customer_pick_and_continue(
+                "c1",
+                "slot-a",
+                quantity=1,
+                unit_sale_price_yen=120,
+                flow=PurchaseFlow.SELF_SERVICE_CANDIDATE,
+            )
+
+
+class StoreStepKnownIssueTests(unittest.TestCase):
+    @unittest.expectedFailure
+    def test_a_failing_purchase_phase_does_not_leave_the_clock_advanced(self):
+        """メモ項目11: step() が購入評価の例外で中断し、時計だけ進んだ状態になる。
+
+        `advance_game_minutes` が最初に走るため、後段で例外が出ても時間は戻らない。
+        呼び出し側が同じstepをリトライすると時間が二重に進む。
+        """
+        from conveni_sim.customer_purchase_policy import (
+            CustomerPurchaseCoordinator,
+            CustomerPurchaseDecision,
+            MerchandiseOffer,
+        )
+        from conveni_sim.operating_time import OperatingHours
+        from conveni_sim.store_step import StoreStepOrchestrator
+
+        grid = StoreGrid(6, 6)
+        grid.place_fixture(
+            instance_id="shelf",
+            fixture_id="f1",
+            origin_subcell=GridPoint(4, 4),
+            footprint_tiles=(1, 1),
+            interaction_side=Direction.NORTH,
+        )
+        runtime = StoreRuntimeHarness(
+            grid,
+            initial_cash_yen=1_000_000,
+            operating_hours=OperatingHours.twenty_four_hours(),
+        )
+        runtime.inventory.add_slot(
+            "slot-a",
+            fixture_id="shelf",
+            product_id="bread",
+            capacity_units=10,
+            initial_units=5,
+        )
+
+        class AlwaysBuy:
+            def choose_purchase(self, context):
+                return CustomerPurchaseDecision.buy("slot-a", 1)
+
+        # CHECKOUT_REQUIRED offer, but the customer was routed with no checkout.
+        coordinator = CustomerPurchaseCoordinator(
+            runtime, [MerchandiseOffer("slot-a", 100, PurchaseFlow.CHECKOUT_REQUIRED)]
+        )
+        orchestrator = StoreStepOrchestrator(
+            runtime, purchases=coordinator, purchase_policy=AlwaysBuy()
+        )
+        runtime.add_customer(
+            "c1",
+            entry_point=GridPoint(0, 0),
+            exit_point=GridPoint(0, 10),
+            merchandise_fixture_ids=("shelf",),
+        )
+        for _ in range(40):
+            if runtime.customers.customer("c1").state is CustomerState.AT_MERCHANDISE:
+                break
+            runtime.customers.tick()
+
+        before = runtime.subday_clock.absolute_minutes
+        with self.assertRaises(ValueError):
+            orchestrator.step(1)
+        self.assertEqual(runtime.subday_clock.absolute_minutes, before)
 
 
 class BaselineDataKnownIssueTests(unittest.TestCase):
