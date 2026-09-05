@@ -18,6 +18,12 @@ from .traffic import DynamicTrafficHarness
 
 
 @dataclass(frozen=True)
+class CheckoutSaleCompletion:
+    settlement: SaleSettlement
+    service_finished: CheckoutServiceRecord
+
+
+@dataclass(frozen=True)
 class CheckoutSaleResult:
     service_started: CheckoutServiceRecord
     settlement: SaleSettlement
@@ -253,6 +259,42 @@ class StoreRuntimeHarness:
         """Advance a visited merchandise stop without creating a purchase."""
         return self.customers.leave_merchandise_without_purchase(customer_id)
 
+    def begin_checkout_service(
+        self,
+        checkout_fixture_id: str,
+        *,
+        staff_id: str,
+        customer_id: str,
+    ) -> CheckoutServiceRecord:
+        """Start checkout service without assuming how long it takes."""
+        basket = self.purchases.basket(customer_id)
+        if basket.settled:
+            raise ValueError("customer basket is already settled")
+        if not basket.lines:
+            raise ValueError("customer basket is empty")
+        return self._checkouts[checkout_fixture_id].begin_service(staff_id, customer_id)
+
+    def finish_checkout_sale(
+        self,
+        checkout_fixture_id: str,
+        *,
+        staff_id: str,
+    ) -> CheckoutSaleCompletion:
+        """Settle and finish an already-active checkout service explicitly."""
+        checkout = self._checkouts[checkout_fixture_id]
+        customer_id = checkout.customer_being_served_by(staff_id)
+        if customer_id is None:
+            raise KeyError(f"staff member {staff_id!r} has no active checkout service")
+        basket = self.purchases.basket(customer_id)
+        if basket.settled:
+            raise ValueError("customer basket is already settled")
+        if not basket.lines:
+            raise ValueError("customer basket is empty")
+
+        settlement = self.purchases.settle(customer_id, source_id=checkout_fixture_id)
+        finished = checkout.finish_service(staff_id)
+        return CheckoutSaleCompletion(settlement, finished)
+
     def complete_checkout_sale(
         self,
         checkout_fixture_id: str,
@@ -260,17 +302,21 @@ class StoreRuntimeHarness:
         staff_id: str,
         customer_id: str,
     ) -> CheckoutSaleResult:
-        basket = self.purchases.basket(customer_id)
-        if basket.settled:
-            raise ValueError("customer basket is already settled")
-        if not basket.lines:
-            raise ValueError("customer basket is empty")
-
-        checkout = self._checkouts[checkout_fixture_id]
-        started = checkout.begin_service(staff_id, customer_id)
-        settlement = self.purchases.settle(customer_id, source_id=checkout_fixture_id)
-        finished = checkout.finish_service(staff_id)
-        return CheckoutSaleResult(started, settlement, finished)
+        """Backward-compatible immediate start+finish helper for explicit replays."""
+        started = self.begin_checkout_service(
+            checkout_fixture_id,
+            staff_id=staff_id,
+            customer_id=customer_id,
+        )
+        completion = self.finish_checkout_sale(
+            checkout_fixture_id,
+            staff_id=staff_id,
+        )
+        return CheckoutSaleResult(
+            started,
+            completion.settlement,
+            completion.service_finished,
+        )
 
     def settle_self_service(
         self,
