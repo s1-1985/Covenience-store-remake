@@ -29,6 +29,9 @@ Rules:
 - `baseline_data.py` — evidence-tagged store/fixture/promotion/permit/scenario/town anchors.
 - `clock.py` — the representative day 1–4 month clock.
 - `operating_time.py` — explicit 24-hour sub-day clock and ordinary/overnight/24h opening intervals, with no assumed video/wall-clock speed ratio.
+- `observations.py` — ordered gameplay/video observation log plus exact reducers for arrival intervals, checkout durations and stamina deltas from entered observations only.
+- `arrival_schedule.py` — explicit customer-arrival schedule with no demand/spawn formula.
+- `arrival_replay.py` — replays observed/manual arrivals into the store runtime at explicit game times.
 - `store_grid.py` — rectangular store space, fixture footprint/rotation, interaction side, obstacles and deterministic shortest-path queries.
 - `traffic.py` — dynamic occupancy, blocking/wait counters, interaction-edge goals and configurable rerouting experiments.
 - `customer.py` — explicit customer lifecycle from supplied merchandise goals through checkout/self-service-candidate and exit/ejection, without inventing purchase probabilities or service timing.
@@ -62,6 +65,8 @@ Pathfinding in `store_grid.py` is intentionally simple 4-neighbor BFS. `traffic.
 `store_runtime.py` is the first composed headless vertical slice: a caller can drive a customer from entry to merchandise, inventory depletion, staffed checkout or self-service settlement, cash revenue, exit, replenishment procurement and day-end evaluation. It does not add autonomous policy; unresolved customer/staff AI remains outside the composition layer.
 
 `operating_time.py` uses in-game minutes as its only time unit. The uploaded video provides useful local timing observations, but no real/video-second-to-game-minute ratio is hard-coded because simulation speed, menus and capture context have not yet been isolated.
+
+`observations.py` and the arrival replay layer form the bridge from uploaded footage to executable tests. A researcher can enter actual game-clock sightings, checkout start/end events or stamina snapshots and replay observed customer arrivals without first inventing a traffic-generation formula. Only after enough repeated observations exist should fitted/tuned rules replace those explicit schedules.
 
 The product/customer/fixture/staff schema is intentionally sparse until strategy-guide data is supplied. `master_audit.py` makes missing fields measurable without converting unknowns into zeros or guesses.
 
