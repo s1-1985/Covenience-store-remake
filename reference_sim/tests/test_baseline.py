@@ -1,7 +1,14 @@
 import unittest
 
-from conveni_sim.baseline_data import FIXTURES, PERMITS, PROMOTIONS, STORE_VARIANTS
+from conveni_sim.baseline_data import (
+    FIXTURES,
+    PERMITS,
+    PROMOTIONS,
+    STORE_VARIANTS,
+    TOWN_FACILITIES,
+)
 from conveni_sim.clock import RepresentativeDayType, SimulationClock
+from conveni_sim.models import EvidenceLevel
 
 
 class BaselineDataTests(unittest.TestCase):
@@ -19,6 +26,38 @@ class BaselineDataTests(unittest.TestCase):
         self.assertEqual(by_id["parking_ground"].parking_capacity.value, 2)
         self.assertEqual(by_id["parking_two_story"].parking_capacity.value, 4)
         self.assertEqual(by_id["parking_tower"].parking_capacity.value, 20)
+
+    def test_video_confirmed_copier_values(self):
+        by_id = {fixture.id: fixture for fixture in FIXTURES}
+        copier_a = by_id["copier_a"]
+        copier_b = by_id["copier_b"]
+
+        self.assertEqual(copier_a.capacity.value, 20)
+        self.assertEqual(copier_a.attention.value, 10)
+        self.assertEqual(copier_a.purchase_price_yen.value, 1_500)
+        self.assertEqual(copier_a.maintenance_yen_per_day.value, 1_200)
+        self.assertEqual(copier_a.capacity.evidence, EvidenceLevel.CONFIRMED_VISUAL)
+
+        self.assertEqual(copier_b.capacity.value, 40)
+        self.assertEqual(copier_b.attention.value, 15)
+        self.assertEqual(copier_b.purchase_price_yen.value, 2_000)
+        self.assertEqual(copier_b.maintenance_yen_per_day.value, 1_440)
+        self.assertEqual(copier_b.capacity.evidence, EvidenceLevel.CONFIRMED_VISUAL)
+
+        self.assertIsNone(copier_a.footprint)
+        self.assertIsNone(copier_b.compatible_product_categories)
+
+    def test_video_confirmed_town_facility_aid_values(self):
+        by_id = {facility.id: facility for facility in TOWN_FACILITIES}
+        self.assertEqual(by_id["police_box"].inducement_aid_yen.value, 400_000)
+        self.assertEqual(by_id["company"].inducement_aid_yen.value, 5_400_000)
+        self.assertEqual(by_id["vocational_school"].inducement_aid_yen.value, 4_800_000)
+        self.assertEqual(by_id["university"].inducement_aid_yen.value, 9_800_000)
+        for facility_id in ("police_box", "company", "vocational_school", "university"):
+            self.assertEqual(
+                by_id[facility_id].inducement_aid_yen.evidence,
+                EvidenceLevel.CONFIRMED_VISUAL,
+            )
 
     def test_unknown_store_values_stay_unknown(self):
         by_id = {variant.id: variant for variant in STORE_VARIANTS}

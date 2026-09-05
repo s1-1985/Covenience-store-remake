@@ -12,6 +12,8 @@ from .models import (
 )
 
 WIKI = "https://wikiwiki.jp/theconveni1/"
+VIDEO_PS5 = "user-provided Console Archives PS5 first-title video, fixture UI around 14-17m"
+VIDEO_LONGRUN = "user-provided first-title long-run video, facility-inducement UI around 70m48s"
 
 STORE_VARIANTS = (
     StoreVariant(
@@ -143,6 +145,22 @@ FIXTURES = (
         blocks_pedestrian=EvidenceValue(True, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85", "Parking cells are reported as non-walkable."),
     ),
     FixtureDefinition(
+        "copier_a",
+        footprint=None,
+        maintenance_yen_per_day=EvidenceValue(1_200, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_PS5),
+        purchase_price_yen=EvidenceValue(1_500, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_PS5),
+        capacity=EvidenceValue(20, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_PS5),
+        attention=EvidenceValue(10, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_PS5),
+    ),
+    FixtureDefinition(
+        "copier_b",
+        footprint=None,
+        maintenance_yen_per_day=EvidenceValue(1_440, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_PS5),
+        purchase_price_yen=EvidenceValue(2_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_PS5),
+        capacity=EvidenceValue(40, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_PS5),
+        attention=EvidenceValue(15, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_PS5),
+    ),
+    FixtureDefinition(
         "vending_machine",
         footprint=None,
         sale_mode="self_service_candidate",
@@ -173,8 +191,8 @@ PERMITS = tuple(
 
 SCENARIOS = (
     ScenarioDefinition("beginner", EvidenceValue(200_000_000, EvidenceLevel.CONFIRMED_VISUAL, "Official/current PS screenshot"), EvidenceValue("metropolitan_government_after_population_threshold", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
-    ScenarioDefinition("intermediate", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("10_player_stores", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
-    ScenarioDefinition("advanced", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("owner_rating_5_stars", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
+    ScenarioDefinition("intermediate", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("10_player_stores", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
+    ScenarioDefinition("advanced", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("owner_rating_5_stars", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
 )
 
 TOWN_FACILITIES = (
@@ -183,8 +201,21 @@ TOWN_FACILITIES = (
         shopping_population=EvidenceValue(2_240, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"),
     ),
     TownFacilityAnchor(
+        "police_box",
+        inducement_aid_yen=EvidenceValue(400_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_LONGRUN),
+    ),
+    TownFacilityAnchor(
+        "company",
+        inducement_aid_yen=EvidenceValue(5_400_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_LONGRUN),
+    ),
+    TownFacilityAnchor(
+        "vocational_school",
+        inducement_aid_yen=EvidenceValue(4_800_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_LONGRUN),
+    ),
+    TownFacilityAnchor(
         "university",
         observed_population_range=EvidenceValue((700, 800), EvidenceLevel.PROVISIONAL, "PS direct-play strategy observation"),
+        inducement_aid_yen=EvidenceValue(9_800_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_LONGRUN),
     ),
     TownFacilityAnchor(
         "fire_station",

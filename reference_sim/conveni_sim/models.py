@@ -132,3 +132,4 @@ class TownFacilityAnchor:
     shopping_population: Optional[EvidenceValue] = None
     observed_population_range: Optional[EvidenceValue] = None
     construction_delay_is_nonzero: Optional[EvidenceValue] = None
+    inducement_aid_yen: Optional[EvidenceValue] = None
