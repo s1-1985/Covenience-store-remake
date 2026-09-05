@@ -1,0 +1,24 @@
+name: Reference simulation tests
+
+on:
+  pull_request:
+    paths:
+      - 'reference_sim/**'
+      - '.github/workflows/reference-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'reference_sim/**'
+      - '.github/workflows/reference-tests.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run reference tests
+        working-directory: reference_sim
+        run: PYTHONPATH=. python -m unittest discover -s tests -v
