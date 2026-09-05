@@ -8,6 +8,7 @@ from .cleaning import StoreCleaningRuntime
 from .customer import CustomerLifecycleHarness, CustomerSession, CustomerState, PurchaseFlow
 from .economy import BankruptcyPolicy, DayEndResult, FinancialEvent, StoreCashLedger
 from .inventory import InventoryMutation, StoreInventoryRuntime
+from .operating_time import ClockAdvanceResult, OperatingHours, SubdayClock
 from .purchases import BasketPickResult, SaleSettlement, StorePurchaseRuntime
 from .staff import StoreStaffRoster
 from .store_grid import GridPoint, StoreGrid
@@ -42,6 +43,8 @@ class StoreRuntimeHarness:
         *,
         initial_cash_yen: int,
         bankruptcy_policy: BankruptcyPolicy = BankruptcyPolicy(),
+        operating_hours: Optional[OperatingHours] = None,
+        subday_clock: Optional[SubdayClock] = None,
     ) -> None:
         self.grid = grid
         self.traffic = DynamicTrafficHarness(grid)
@@ -54,11 +57,47 @@ class StoreRuntimeHarness:
         )
         self.purchases = StorePurchaseRuntime(self.inventory, self.cash)
         self.cleaning = StoreCleaningRuntime(grid)
+        self.operating_hours = operating_hours
+        self.subday_clock = subday_clock if subday_clock is not None else SubdayClock()
         self._checkouts: dict[str, CheckoutStationRuntime] = {}
 
     @property
     def checkout_fixture_ids(self) -> tuple[str, ...]:
         return tuple(self._checkouts)
+
+    @property
+    def store_open(self) -> Optional[bool]:
+        """Current open/closed state, or None while the schedule is unknown."""
+        if self.operating_hours is None:
+            return None
+        return self.operating_hours.is_open_clock(self.subday_clock)
+
+    def set_operating_hours(self, operating_hours: Optional[OperatingHours]) -> None:
+        self.operating_hours = operating_hours
+
+    def advance_game_minutes(self, minutes: int) -> ClockAdvanceResult:
+        """Advance only explicit in-game minutes; no wall/video-time ratio is assumed."""
+        return self.subday_clock.advance_minutes(minutes)
+
+    def record_labor_cost_current_time(
+        self,
+        amount_yen: Optional[int],
+        *,
+        staff_id: Optional[str] = None,
+    ) -> Optional[FinancialEvent]:
+        """Bridge known opening hours to the existing closed-hours labor rule.
+
+        Unknown opening hours are not treated as either open or closed, because
+        silently choosing one would create a false economy result.
+        """
+        store_open = self.store_open
+        if store_open is None:
+            raise ValueError("operating hours are unknown")
+        return self.cash.record_labor_cost_if_open(
+            amount_yen,
+            store_open=store_open,
+            staff_id=staff_id,
+        )
 
     def checkout(self, fixture_id: str) -> CheckoutStationRuntime:
         return self._checkouts[fixture_id]
