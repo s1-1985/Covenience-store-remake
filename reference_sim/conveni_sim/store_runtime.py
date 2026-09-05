@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from enum import Enum
 from typing import Optional, Sequence
 
 from .checkout import CheckoutServiceRecord, CheckoutStationRuntime
@@ -27,6 +28,23 @@ class CheckoutSaleResult:
 class ReplenishAndChargeResult:
     inventory_mutation: InventoryMutation
     procurement_event: FinancialEvent
+
+
+class CustomerAdmissionStatus(str, Enum):
+    ADMITTED = "admitted"
+    STORE_CLOSED = "store_closed"
+    OPEN_STATE_UNKNOWN = "open_state_unknown"
+
+
+@dataclass(frozen=True)
+class CustomerAdmissionResult:
+    customer_id: str
+    status: CustomerAdmissionStatus
+    session: Optional[CustomerSession] = None
+
+    @property
+    def admitted(self) -> bool:
+        return self.status is CustomerAdmissionStatus.ADMITTED
 
 
 class StoreRuntimeHarness:
@@ -142,6 +160,46 @@ class StoreRuntimeHarness:
         self._checkouts[fixture_id] = checkout
         return checkout
 
+    def admit_customer(
+        self,
+        customer_id: str,
+        *,
+        entry_point: GridPoint,
+        exit_point: GridPoint,
+        merchandise_fixture_ids: Sequence[str] = (),
+        checkout_fixture_id: Optional[str] = None,
+    ) -> CustomerAdmissionResult:
+        """Apply the effective opening-state gate before creating a customer.
+
+        Gameplay demand generators should use this entry point.  Unknown opening
+        state is preserved as unknown and does not silently admit a customer.
+        `add_customer` remains available as a lower-level observation/replay hook
+        when the source itself proves that a customer was present.
+        """
+        store_open = self.store_open
+        if store_open is None:
+            return CustomerAdmissionResult(
+                customer_id,
+                CustomerAdmissionStatus.OPEN_STATE_UNKNOWN,
+            )
+        if not store_open:
+            return CustomerAdmissionResult(
+                customer_id,
+                CustomerAdmissionStatus.STORE_CLOSED,
+            )
+        session = self.add_customer(
+            customer_id,
+            entry_point=entry_point,
+            exit_point=exit_point,
+            merchandise_fixture_ids=merchandise_fixture_ids,
+            checkout_fixture_id=checkout_fixture_id,
+        )
+        return CustomerAdmissionResult(
+            customer_id,
+            CustomerAdmissionStatus.ADMITTED,
+            session,
+        )
+
     def add_customer(
         self,
         customer_id: str,
@@ -151,6 +209,7 @@ class StoreRuntimeHarness:
         merchandise_fixture_ids: Sequence[str] = (),
         checkout_fixture_id: Optional[str] = None,
     ) -> CustomerSession:
+        """Low-level customer injection that intentionally bypasses the entry gate."""
         session = self.customers.add_customer(
             customer_id,
             entry_point=entry_point,
