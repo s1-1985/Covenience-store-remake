@@ -249,6 +249,10 @@ class StoreRuntimeHarness:
         self.customers.record_merchandise_interaction(customer_id, flow=flow)
         return pick
 
+    def customer_skip_and_continue(self, customer_id: str) -> CustomerSession:
+        """Advance a visited merchandise stop without creating a purchase."""
+        return self.customers.leave_merchandise_without_purchase(customer_id)
+
     def complete_checkout_sale(
         self,
         checkout_fixture_id: str,
