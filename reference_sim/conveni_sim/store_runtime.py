@@ -60,6 +60,7 @@ class StoreRuntimeHarness:
         self.cleaning = StoreCleaningRuntime(grid)
         self.customer_share = CustomerShareRuntime()
         self.operating_hours = operating_hours
+        self.temporary_closed = False
         self.subday_clock = subday_clock if subday_clock is not None else SubdayClock()
         self._checkouts: dict[str, CheckoutStationRuntime] = {}
 
@@ -69,7 +70,9 @@ class StoreRuntimeHarness:
 
     @property
     def store_open(self) -> Optional[bool]:
-        """Current open/closed state, or None while the schedule is unknown."""
+        """Current effective open/closed state, or None when only the schedule is unknown."""
+        if self.temporary_closed:
+            return False
         if self.operating_hours is None:
             return None
         return self.operating_hours.is_open_clock(self.subday_clock)
@@ -77,11 +80,20 @@ class StoreRuntimeHarness:
     def set_operating_hours(self, operating_hours: Optional[OperatingHours]) -> None:
         self.operating_hours = operating_hours
 
+    def set_temporary_closure(self, closed: bool) -> None:
+        """Toggle explicit 臨時休業 without changing the ordinary opening schedule."""
+        self.temporary_closed = closed
+
     def advance_game_minutes(self, minutes: int) -> ClockAdvanceResult:
-        """Advance explicit game time and mark observed date-change share refreshes."""
+        """Advance explicit game time and apply evidence-backed date-change gates."""
         result = self.subday_clock.advance_minutes(minutes)
         if result.days_crossed:
             self.customer_share.on_date_change(days_crossed=result.days_crossed)
+            if self.temporary_closed:
+                self.customer_share.apply_share(
+                    0,
+                    source="first-title FAQ: temporary closure at date change",
+                )
         return result
 
     def observe_weather(self, weather: str) -> None:
@@ -94,10 +106,10 @@ class StoreRuntimeHarness:
         *,
         staff_id: Optional[str] = None,
     ) -> Optional[FinancialEvent]:
-        """Bridge known opening hours to the existing closed-hours labor rule.
+        """Bridge effective open state to the existing closed-hours labor rule.
 
-        Unknown opening hours are not treated as either open or closed, because
-        silently choosing one would create a false economy result.
+        Unknown ordinary opening hours are not treated as either open or closed,
+        unless the store is explicitly under temporary closure.
         """
         store_open = self.store_open
         if store_open is None:
