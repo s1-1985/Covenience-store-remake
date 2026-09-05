@@ -139,6 +139,8 @@ class CustomerLifecycleHarness:
         fixture_id = session.current_merchandise_fixture_id
         if fixture_id is None:
             raise RuntimeError("AT_MERCHANDISE without current fixture")
+        if flow is PurchaseFlow.CHECKOUT_REQUIRED and session.checkout_fixture_id is None:
+            raise ValueError("checkout-required interaction needs a checkout fixture")
 
         session.interacted_fixture_ids = session.interacted_fixture_ids + (fixture_id,)
         if flow is PurchaseFlow.CHECKOUT_REQUIRED:
