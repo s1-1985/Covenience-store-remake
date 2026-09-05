@@ -27,7 +27,7 @@ class StoreRuntimeIntegrationTests(unittest.TestCase):
         grid.place_fixture(
             instance_id="vending",
             fixture_id="synthetic_vending",
-            origin_subcell=GridPoint(4, 2),
+            origin_subcell=GridPoint(8, 2),
             footprint_tiles=(1, 1),
             interaction_side=Direction.NORTH,
         )
