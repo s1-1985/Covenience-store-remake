@@ -105,6 +105,57 @@ Claude Codeによるコードレビューで気づいた事項を、ChatGPTに�
 - これは今回のセッションで新たに気づいた点ではなく、以前(PR #27のレビュー時)にも確認済みの実態だが、今回コード側(`models.py`)にも独自定義があることを追加で確認した。
 - 推測: `models.py`の`EvidenceLevel`(コードで実際にデータへ付与される正式な値)を正とし、`PROJECT_MEMORY.md`側を追従させて更新するのが筋が良さそうだが、これは設計判断であり私が決めることではない。
 
+### 10. グリッドから撤去された什器から商品が売れる
+
+- 対象コミット: `554d78d` / `reference_sim/conveni_sim/store_grid.py` の `remove_fixture`(213-217行)
+- 再現テスト: `tests/test_known_issues.py::test_a_fixture_removed_from_the_grid_cannot_still_sell_goods`
+- 事実(実機で確認): 顧客が棚へ向かっている途中で `grid.remove_fixture("shelf")` を呼ぶと、`grid.placements` は空になるにもかかわらず、顧客はその棚の元interaction cellに到着して `at_merchandise` になる。そこから `customer_pick_and_continue` が成功し、在庫が 5 → 4 に減り、`settle_self_service` で売上120円が計上され、現金が 1,000,000 → 1,000,120 になった。
+- 原因(コードから読み取れる範囲): `remove_fixture` は `_placements` から消すだけで、(a) その什器を目標にしている `TrafficAgent`、(b) その什器に紐づく在庫スロット、(c) 進行中の顧客セッションの `current_merchandise_fixture_id` のいずれとも連動していない。`traffic.tick()` は既存の `path` を消費し続けるため、経路の再計算が起きず「存在しない什器に到着」する。
+- 補足: `remove_fixture` は現状どこからも呼ばれておらず(カバレッジ0%)、今すぐの実害はない。ただし模様替え/什器撤去を実装した時点で表面化する。
+- 要判断: 撤去時に在庫スロットも消すのか、顧客を強制退店させるのか、そもそも顧客がいる間は撤去を拒否するのかは設計判断。テストは「撤去後の購入は拒否されるべき」という最小限の期待だけを書いてある。
+
+### 11. `StoreStepOrchestrator.step()` が途中で例外を投げると、時計だけ進んだ状態が残る
+
+- 対象コミット: `554d78d` / `reference_sim/conveni_sim/store_step.py` の `step`(88-149行)
+- 再現テスト: `tests/test_known_issues.py::test_a_failing_purchase_phase_does_not_leave_the_clock_advanced`
+- 事実(実機で確認): `step()` は最初に `advance_game_minutes` を実行し、その後に需要評価・traffic・購入評価・staffタスク・チェックアウト選択を順に行う。購入評価で例外が出ると(例: `CHECKOUT_REQUIRED` のofferなのに顧客に `checkout_fixture_id` が無い)、時計は既に進んでいるのに後段のstaffタスク/チェックアウト選択フェーズは実行されない。実測で `0 → 1` 分進んだ状態で `ValueError` が送出された。
+- 影響: 呼び出し側が同じ `step(1)` をリトライすると、ゲーム内時間が二重に進む。複数顧客がいる場合、先に評価された顧客だけ購入が確定した中途半端な状態も残る。
+- 要判断: 時計の前進を最後に回すのか、フェーズ単位で例外を捕捉して結果に含めるのか、`step()` 全体をアトミックにするのかは設計判断。テストは「例外時に時計が進んでいない」という一案だけを期待として書いてある。
+
+### 12. `cancel_customer` は顧客の状態を変えないため、次の `refresh_waiting()` で取り消される(補足)
+
+- 対象コミット: `554d78d` / `reference_sim/conveni_sim/checkout.py` の `cancel_customer`(127-142行)
+- 事実(実機で確認): `WAITING_CHECKOUT` のままの顧客に対して `cancel_customer` を呼んで待ち行列から外しても、次に `refresh_waiting()` が走ると同じ顧客が再び待ち行列に入る。`cancel_customer` はセッション状態を変更しないため。
+- これはバグとは限らない: docstringは "Detach an ejected/abandoned customer" と書いており、`force_eject`(状態が `EJECTING` になる)と併用する前提なら正しく動く。単独で呼ぶと無効、という API 上の注意点として記録する。
+- 参考: `cancel_customer` はカバレッジ0%(テストが1件も無い)。項目3の `force_eject` との連携を整理する際に、併せてテストを追加すると良い。
+
+---
+
+## 検証して問題が無かった領域(`554d78d` 時点)
+
+同じ場所を何度も調べ直さないための記録。以下は実際にコードを走らせて確認し、**問題が見つからなかった**。
+
+- **什器の回転とinteraction side**: `interaction_side` 4方向 × `rotation_quarter_turns` 0..3 の全16通りで、interaction cellが回転後の正しい面に生成されることを確認。
+- **すれ違い衝突**: 2エージェントが互いの位置へ同時に移動しようとするケースで、すり抜けずに両方ブロックされることを確認。
+- **占有されたゴール**: 目標セルが他エージェントに占有されている場合、`ARRIVED` にならず `blocked` になることを確認。
+- **金額計算**: 価格不明(`None`)の明細が0円として集計されないこと、`exact_total_yen`/`cash_is_exact` が正しく `None`/`False` に伝播すること、10^15規模の整数でも誤差が出ないこと(Pythonの任意精度整数)を確認。
+- **決済ガード**: 空バスケットの決済、二重決済、決済済みバスケットへの追加が、いずれも `ValueError` で拒否されることを確認。
+- **深夜跨ぎの営業時間**: `OperatingHours.from_hm(20,0,4,0)` が 19:59=閉、20:00=開、0:00=開、3:59=開、4:00=閉 と正しく判定することを確認。
+- **`SubdayClock` の日跨ぎ**: 23:59+1分で `days_crossed=1`、`minute_of_day` が0に戻ること、3日分進めて `days_crossed=3` になることを確認。
+
+### テストカバレッジ(`554d78d` 時点)
+
+`coverage` で計測した結果、`conveni_sim/` 全体で **92%**(2740文中216未到達)。カバレッジが低い順:
+
+| モジュール | カバレッジ | 未到達の主な内容 |
+|---|---|---|
+| `checkout.py` | 79% | `cancel_customer` 全体(項目12)、各種ガードのエラーパス |
+| `store_grid.py` | 86% | `remove_fixture`(項目10)、配置バリデーションのエラーパス |
+| `customer_share.py` | 88% | 入力バリデーションのエラーパス |
+| `promotion.py` | 89% | 項目5/6の周辺 |
+
+未到達行の多くは「不正な入力を弾くraise文」で、これ自体は異常系テストが無いだけ。ただし `cancel_customer` と `remove_fixture` は**機能まるごと未テスト**であり、実際にその2つから項目10・12が見つかった。
+
 ---
 
 ## 対応済み
