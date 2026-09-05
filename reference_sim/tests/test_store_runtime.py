@@ -168,6 +168,36 @@ class StoreRuntimeIntegrationTests(unittest.TestCase):
                 flow=PurchaseFlow.SELF_SERVICE_CANDIDATE,
             )
 
+    def test_checkout_required_pick_without_checkout_fixture_does_not_mutate_state(self):
+        runtime = StoreRuntimeHarness(self.make_grid(), initial_cash_yen=1_000)
+        runtime.inventory.add_slot(
+            "bread-slot",
+            fixture_id="shelf",
+            product_id="bread",
+            capacity_units=10,
+            initial_units=5,
+            unit_procurement_cost_yen=80,
+        )
+        runtime.add_customer(
+            "c1",
+            entry_point=GridPoint(0, 0),
+            exit_point=GridPoint(0, 8),
+            merchandise_fixture_ids=("shelf",),
+        )
+        self.advance_until(runtime, "c1", CustomerState.AT_MERCHANDISE)
+
+        with self.assertRaises(ValueError):
+            runtime.customer_pick_and_continue(
+                "c1",
+                "bread-slot",
+                quantity=1,
+                unit_sale_price_yen=120,
+                flow=PurchaseFlow.CHECKOUT_REQUIRED,
+            )
+
+        self.assertEqual(runtime.inventory.slot("bread-slot").units, 5)
+        self.assertEqual(runtime.purchases.basket("c1").lines, [])
+
     def test_customer_pick_before_arrival_is_rejected_without_mutating_state(self):
         runtime = StoreRuntimeHarness(self.make_grid(), initial_cash_yen=1_000)
         runtime.inventory.add_slot(
