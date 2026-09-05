@@ -35,6 +35,7 @@ class ScheduledPromotion:
     scheduled_at: PromotionMoment
     trigger_at: PromotionMoment
     fired: bool = False
+    applied: bool = False
 
 
 @dataclass(frozen=True)
@@ -297,14 +298,27 @@ class StorePopularityRuntime:
     ) -> PromotionApplication:
         if not scheduled.fired:
             raise ValueError("promotion event has not fired")
+        if scheduled.applied:
+            raise ValueError("promotion event has already been applied")
+
         definition = scheduler.definition(scheduled.promotion_id)
         gain = definition.popularity_gain.value
-        changes: list[PopularityChange] = []
+
+        # Validate the complete target set before mutating anything.  This keeps
+        # an invalid caller-provided store id from applying the event to only a
+        # prefix of stores and leaving an unrecoverable partial state.
+        targets: list[str] = []
         seen: set[str] = set()
         for store_id in target_store_ids:
             if store_id in seen:
                 continue
             seen.add(store_id)
+            if store_id not in self._popularity:
+                raise KeyError(f"unknown store id: {store_id}")
+            targets.append(store_id)
+
+        changes: list[PopularityChange] = []
+        for store_id in targets:
             before = self._popularity[store_id]
             after = min(100, before + gain)
             self._popularity[store_id] = after
@@ -316,6 +330,8 @@ class StorePopularityRuntime:
                     applied_gain=after - before,
                 )
             )
+
+        scheduled.applied = True
         return PromotionApplication(
             promotion_id=scheduled.promotion_id,
             popularity_gain=gain,
