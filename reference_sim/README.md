@@ -41,7 +41,9 @@ Rules:
 - `cleaning.py` — explicit floor-dirt events and cleaning work actions, with optional platform-specific suppression policy and no invented dirt-spawn rate.
 - `economy.py` — explicit cash credits/debits, procurement-cost bridging, closed-hours labor suppression, day summaries and platform-gated day-end bankruptcy evaluation without inventing month aggregation.
 - `purchases.py` — explicit customer baskets connecting inventory depletion to known/unknown sale revenue without inventing product-choice, quantity or checkout/self-service policy.
-- `store_runtime.py` — headless composition of movement, customers, staff, checkout, inventory, purchases, cleaning and economy into one explicit vertical slice.
+- `customer_share.py` — explicit customer-share inputs and recalculation requests without inventing the share formula or coefficients.
+- `promotion.py` — evidence-backed promotion scheduling and popularity events without assuming unresolved payment or month-skip behavior.
+- `store_runtime.py` — headless composition of movement, customers, staff, checkout, inventory, purchases, cleaning, economy, effective opening state, temporary closure and gated customer admission into one explicit vertical slice.
 - `master_audit.py` — field-level completeness audit for guide-derived fixture/product/customer/staff masters; only evidence-tagged values count as known.
 
 `store_grid.py` defaults to **2 internal subcells per researched tile** so a half-tile contact/gap can be represented. This is a compatibility representation, not a claim that the original executable literally used a 0.5-tile navigation grid. The scale remains configurable until stronger evidence is recovered.
@@ -62,7 +64,7 @@ Pathfinding in `store_grid.py` is intentionally simple 4-neighbor BFS. `traffic.
 
 `purchases.py` requires the caller to supply the chosen slot, quantity and sale price. Taking an item immediately depletes fixture inventory, but cash changes only on explicit settlement. This keeps normal checkout and self-service candidate flows representable without asserting unverified routing or purchase-choice AI.
 
-`store_runtime.py` is the first composed headless vertical slice: a caller can drive a customer from entry to merchandise, inventory depletion, staffed checkout or self-service settlement, cash revenue, exit, replenishment procurement and day-end evaluation. It does not add autonomous policy; unresolved customer/staff AI remains outside the composition layer.
+`store_runtime.py` is the first composed headless vertical slice: a caller can drive a customer from entry to merchandise, inventory depletion, staffed checkout or self-service settlement, cash revenue, exit, replenishment procurement and day-end evaluation. Future demand generators use `admit_customer`, which refuses closed stores and preserves an unknown opening state instead of silently admitting customers. The lower-level `add_customer` remains available for observation replay where the footage itself proves the customer was present. The runtime does not add autonomous policy; unresolved customer/staff AI remains outside the composition layer.
 
 `operating_time.py` uses in-game minutes as its only time unit. The uploaded video provides useful local timing observations, but no real/video-second-to-game-minute ratio is hard-coded because simulation speed, menus and capture context have not yet been isolated.
 

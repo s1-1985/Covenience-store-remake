@@ -1,6 +1,6 @@
 # Convenience Store Remake — Project Memory
 
-Last updated: 2026-09-05 (JST)
+Last updated: 2026-09-06 (JST)
 
 This file is the canonical memory checkpoint for the project. If chat context is lost, start by reading this file and the files under `docs/research/`.
 
@@ -270,7 +270,13 @@ Retrospective / visual evidence:
 Secondary historical tips:
 - https://wazap.com/game/12333/cheats/
 
-## 17. Next research tasks — DO NOT START CODING BEFORE THESE ARE SUFFICIENTLY MAPPED
+## 17. Research gaps to close alongside implementation
+
+The executable reference core is already under active development. Continue filling the
+following evidence gaps in parallel with deterministic, unknown-safe implementation. Do not
+block reference-layer work merely because the complete original data tables or formulas are
+still missing; keep unknown values explicit and do not invent coefficients. Full Android client
+production remains later than the compatibility core.
 
 Priority A — original manual/UI reconstruction
 - Extract manual page by page.
@@ -325,6 +331,36 @@ Before original features are added, build a testable "baseline compatibility lay
 
 Any deliberate modernization (speed controls, touch controls, autosave, accessibility) should be recorded as a decision rather than silently changing baseline behavior.
 
-## 19. Immediate next step
+## 19. Current implementation checkpoint and next milestone
 
-Continue research. Do not begin full production implementation yet. The first implementation milestone should only start after the original command hierarchy, fixture/product data model, store tile rules, customer loop, staff loop, and scenario objectives are sufficiently documented to avoid another architecture-first false start.
+The executable compatibility model under `reference_sim/conveni_sim/` is now established. It
+contains evidence-aware baseline data, store grid/pathing and dynamic occupancy, explicit
+customer/staff/checkout lifecycles, stamina/rest, inventory/replenishment, cleaning, purchases,
+cash/day-end bookkeeping, representative-day and sub-day clocks, opening hours, observation
+replay/statistics, customer-share recalculation gates, fixed-time promotion events, temporary
+closure behavior, and an effective-opening-state customer admission gate.
+
+This is still a headless reference simulator. Most actions are explicitly supplied by the caller;
+the original customer demand, staff task-selection, timing, economy, town, rival and progression
+policies are not yet autonomous, and there is no production Android client in this repository.
+
+The next large milestone is **one small store running one representative day autonomously**:
+
+- use a minimum evidence-backed store/fixture/product/staff dataset with no silent zero defaults;
+- generate customer arrivals and purchase intentions through replaceable policies;
+- select staff checkout/replenishment/cleaning/rest work through an explicit policy;
+- run from opening to day-end without manually injecting every event;
+- compare arrivals, queues, stamina, stock and cash output against V01/V02/V03 observations;
+- retain `None` or an explicit provisional parameter wherever the original value is unresolved.
+
+## 20. Execution cadence and user-directed work
+
+Scheduled runs are a background cadence, not an exclusive gate for progress.
+
+1. Recurring tasks continue the configured research, video analysis and implementation work.
+2. When the user directly asks to continue or implement in an active conversation, begin that
+   work immediately; do not wait for the next scheduled run.
+3. Start from the latest `main`, avoid overlapping an in-progress branch, run the relevant full
+   regression suite, then use a focused branch, PR review and squash merge.
+4. Record new evidence under `docs/research/`, deliberate compatibility choices under
+   `docs/decisions/`, and durable cross-session status in this file or `docs/handoff/`.
