@@ -78,7 +78,6 @@ class StaffAssignmentKnownIssueTests(unittest.TestCase):
         )
         self.advance_until(runtime, customer_id, CustomerState.WAITING_CHECKOUT)
 
-    @unittest.expectedFailure
     def test_begin_service_must_not_silently_steal_a_replenishing_staff(self):
         """メモ項目2: begin_service が REPLENISH 中のstaffを黙ってCHECKOUTに上書きする。
 
@@ -132,7 +131,6 @@ class PromotionKnownIssueTests(unittest.TestCase):
         due = scheduler.pop_due(PromotionMoment(1, 1, 2, 10))
         return scheduler, due[0]
 
-    @unittest.expectedFailure
     def test_promotion_cannot_be_applied_twice(self):
         """メモ項目5: 同じ発火済みプロモーションを何度でも適用でき、人気度が多重加算される。
 
@@ -148,7 +146,6 @@ class PromotionKnownIssueTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             popularity.apply_promotion(record, scheduler, target_store_ids=["store-1"])
 
-    @unittest.expectedFailure
     def test_promotion_with_unknown_store_does_not_partially_apply(self):
         """メモ項目6: 未登録店舗IDでKeyErrorになると、それ以前の店舗だけ人気度が上がって戻らない。"""
         scheduler, record = self.make_fired_promotion()
