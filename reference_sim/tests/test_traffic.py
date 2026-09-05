@@ -24,7 +24,7 @@ class DynamicTrafficTests(unittest.TestCase):
         self.assertEqual(agent_a.position, GridPoint(0, 0))
         self.assertEqual(agent_b.position, GridPoint(2, 0))
 
-    def test_blocker_can_make_a_one_subcell_corridor_unreachable(self):
+    def test_dynamic_blocker_in_one_subcell_corridor_causes_waiting_not_unreachable(self):
         grid = StoreGrid(3, 1)
         grid.set_static_blocked(GridPoint(x, 1) for x in range(grid.width_subcells))
         harness = DynamicTrafficHarness(grid)
@@ -32,13 +32,28 @@ class DynamicTrafficTests(unittest.TestCase):
         harness.add_agent("blocker", GridPoint(1, 0))
 
         harness.set_point_goal("a", GridPoint(3, 0))
-        self.assertEqual(agent.status, AgentStatus.UNREACHABLE)
+        self.assertEqual(agent.status, AgentStatus.MOVING)
+
+        result = harness.tick()
+        self.assertIn("a", result.blocked)
+        self.assertEqual(agent.status, AgentStatus.BLOCKED)
 
         harness.remove_agent("blocker")
-        harness.set_point_goal("a", GridPoint(3, 0))
-        self.assertEqual(agent.status, AgentStatus.MOVING)
         harness.tick()
         self.assertEqual(agent.position, GridPoint(1, 0))
+
+    def test_occupied_goal_causes_waiting_not_unreachable(self):
+        harness = DynamicTrafficHarness(StoreGrid(3, 2))
+        agent = harness.add_agent("a", GridPoint(0, 0))
+        harness.add_agent("blocker", GridPoint(1, 0))
+
+        harness.set_point_goal("a", GridPoint(1, 0))
+        self.assertEqual(agent.status, AgentStatus.MOVING)
+
+        result = harness.tick()
+        self.assertIn("a", result.blocked)
+        self.assertNotIn("a", result.unreachable)
+        self.assertEqual(agent.status, AgentStatus.BLOCKED)
 
     def test_fixture_goal_ends_on_interaction_edge(self):
         grid = StoreGrid(4, 4)
