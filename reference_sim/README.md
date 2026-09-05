@@ -28,6 +28,7 @@ Rules:
 
 - `baseline_data.py` — evidence-tagged store/fixture/promotion/permit/scenario/town anchors.
 - `clock.py` — the representative day 1–4 month clock.
+- `operating_time.py` — explicit 24-hour sub-day clock and ordinary/overnight/24h opening intervals, with no assumed video/wall-clock speed ratio.
 - `store_grid.py` — rectangular store space, fixture footprint/rotation, interaction side, obstacles and deterministic shortest-path queries.
 - `traffic.py` — dynamic occupancy, blocking/wait counters, interaction-edge goals and configurable rerouting experiments.
 - `customer.py` — explicit customer lifecycle from supplied merchandise goals through checkout/self-service-candidate and exit/ejection, without inventing purchase probabilities or service timing.
@@ -59,6 +60,8 @@ Pathfinding in `store_grid.py` is intentionally simple 4-neighbor BFS. `traffic.
 `purchases.py` requires the caller to supply the chosen slot, quantity and sale price. Taking an item immediately depletes fixture inventory, but cash changes only on explicit settlement. This keeps normal checkout and self-service candidate flows representable without asserting unverified routing or purchase-choice AI.
 
 `store_runtime.py` is the first composed headless vertical slice: a caller can drive a customer from entry to merchandise, inventory depletion, staffed checkout or self-service settlement, cash revenue, exit, replenishment procurement and day-end evaluation. It does not add autonomous policy; unresolved customer/staff AI remains outside the composition layer.
+
+`operating_time.py` uses in-game minutes as its only time unit. The uploaded video provides useful local timing observations, but no real/video-second-to-game-minute ratio is hard-coded because simulation speed, menus and capture context have not yet been isolated.
 
 The product/customer/fixture/staff schema is intentionally sparse until strategy-guide data is supplied. `master_audit.py` makes missing fields measurable without converting unknowns into zeros or guesses.
 
