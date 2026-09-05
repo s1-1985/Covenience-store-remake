@@ -191,8 +191,8 @@ PERMITS = tuple(
 
 SCENARIOS = (
     ScenarioDefinition("beginner", EvidenceValue(200_000_000, EvidenceLevel.CONFIRMED_VISUAL, "Official/current PS screenshot"), EvidenceValue("metropolitan_government_after_population_threshold", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
-    ScenarioDefinition("intermediate", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("10_player_stores", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
-    ScenarioDefinition("advanced", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("owner_rating_5_stars", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
+    ScenarioDefinition("intermediate", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("10_player_stores", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
+    ScenarioDefinition("advanced", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("owner_rating_5_stars", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
 )
 
 TOWN_FACILITIES = (
@@ -214,7 +214,12 @@ TOWN_FACILITIES = (
     ),
     TownFacilityAnchor(
         "university",
-        observed_population_range=EvidenceValue((700, 800), EvidenceLevel.PROVISIONAL, "PS direct-play strategy observation"),
+        observed_population_range=EvidenceValue(
+            (500, 800),
+            EvidenceLevel.PROVISIONAL,
+            "PS direct-play strategy observation",
+            "Observed long-play range only; not an exact fixed population value.",
+        ),
         inducement_aid_yen=EvidenceValue(9_800_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_LONGRUN),
     ),
     TownFacilityAnchor(
