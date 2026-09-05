@@ -24,4 +24,14 @@ Rules:
 4. `remake_balanced_default` may be introduced only after reasonable research fails.
 5. The month-end accounting formula, customer-share formula and AI priorities are deliberately not invented yet.
 
+## Current executable layers
+
+- `baseline_data.py` — evidence-tagged store/fixture/promotion/permit/scenario/town anchors.
+- `clock.py` — the representative day 1–4 month clock.
+- `store_grid.py` — rectangular store space, fixture footprint/rotation, interaction side, obstacles and deterministic shortest-path queries.
+
+`store_grid.py` defaults to **2 internal subcells per researched tile** so a half-tile contact/gap can be represented. This is a compatibility representation, not a claim that the original executable literally used a 0.5-tile navigation grid. The scale remains configurable until stronger evidence is recovered.
+
+Pathfinding in this layer is intentionally simple 4-neighbor BFS. It exists to validate layout reachability and future customer/staff tests; it is **not yet the final customer movement/congestion model**.
+
 This Python package is not a commitment to ship the Android game in Python. It is a small, testable compatibility oracle that can later be ported to the chosen production engine.
