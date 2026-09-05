@@ -33,6 +33,7 @@ Rules:
 - `customer.py` — explicit customer lifecycle from supplied merchandise goals through checkout/self-service-candidate and exit/ejection, without inventing purchase probabilities or service timing.
 - `staff.py` — per-store roster cap, optional manager identity, explicit work/rest task state, work-event counters, and the confirmed stamina->break-room->full-recovery lifecycle without guessed rates.
 - `checkout.py` — logical register waiting/service runtime with configurable simultaneous cashier capacity, non-FIFO-capable service selection and explicit service completion.
+- `inventory.py` — explicit fixture/product stock slots, customer depletion, staff replenishment and procurement-cost events without invented capacities or reorder rules.
 - `master_audit.py` — field-level completeness audit for guide-derived fixture/product/customer/staff masters; only evidence-tagged values count as known.
 
 `store_grid.py` defaults to **2 internal subcells per researched tile** so a half-tile contact/gap can be represented. This is a compatibility representation, not a claim that the original executable literally used a 0.5-tile navigation grid. The scale remains configurable until stronger evidence is recovered.
@@ -44,6 +45,8 @@ Pathfinding in `store_grid.py` is intentionally simple 4-neighbor BFS. `traffic.
 `checkout.py` records waiting arrival order but does not force FIFO, because first-title FAQ evidence reports later-arriving customers sometimes being served first. Checkout service has no built-in duration; callers must explicitly finish it until the register-skill timing formula is recovered.
 
 `staff.py` similarly has no default stamina cost or recovery-per-tick constant. A known stamina value may be supplied, explicit work/recovery events can mutate it, and reaching zero enters a separate return-to-break-room state before resting until full recovery.
+
+`inventory.py` requires capacity, replenishment quantity and procurement cost to be explicit. Unknown procurement spending stays detectable as unknown rather than silently contributing zero to economy tests.
 
 The product/customer/fixture/staff schema is intentionally sparse until strategy-guide data is supplied. `master_audit.py` makes missing fields measurable without converting unknowns into zeros or guesses.
 
