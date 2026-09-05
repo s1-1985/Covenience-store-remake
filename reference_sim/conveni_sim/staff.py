@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import Optional
+from typing import Mapping, Optional
 
 
 FIRST_TITLE_MAX_STAFF_PER_STORE = 3
@@ -23,7 +23,47 @@ class StaffCondition(str, Enum):
     RESTING = "resting"
 
 
+class StaffSkill(str, Enum):
+    EDUCATION = "education"
+    REGISTER = "register"
+    REPLENISHMENT = "replenishment"
+    SECURITY = "security"
+    CLEANING = "cleaning"
+    SERVICE = "service"
+
+
 WORK_TASKS = frozenset({StaffTask.CHECKOUT, StaffTask.REPLENISH, StaffTask.CLEAN})
+WORK_GROWTH_SKILL = {
+    StaffTask.CHECKOUT: StaffSkill.REGISTER,
+    StaffTask.REPLENISH: StaffSkill.REPLENISHMENT,
+    StaffTask.CLEAN: StaffSkill.CLEANING,
+}
+
+
+@dataclass
+class StaffGrowthOpportunity:
+    """One confirmed work-growth trigger with unresolved gain semantics.
+
+    First-title research confirms that checkout, replenishment and floor cleaning
+    can grow their corresponding runtime skills. The exact increment, manager
+    education multiplier and rounding are still unknown, so work completion
+    records an opportunity rather than mutating a skill automatically.
+    """
+
+    sequence: int
+    staff_id: str
+    task: StaffTask
+    skill: StaffSkill
+    work_event_count: int
+    before_value: Optional[int]
+    base_cap: Optional[int]
+    manager_staff_id: Optional[str]
+    manager_education: Optional[int]
+    resolved_after: Optional[int] = None
+
+    @property
+    def resolved(self) -> bool:
+        return self.resolved_after is not None
 
 
 @dataclass
@@ -36,6 +76,8 @@ class StaffRuntimeState:
     stamina_max: Optional[int] = None
     stamina_current: Optional[int] = None
     completed_work_events: dict[StaffTask, int] = field(default_factory=dict)
+    runtime_skills: dict[StaffSkill, int] = field(default_factory=dict)
+    base_skill_caps: dict[StaffSkill, int] = field(default_factory=dict)
 
     @property
     def stamina_tracking_enabled(self) -> bool:
@@ -44,14 +86,20 @@ class StaffRuntimeState:
     def completed_count(self, task: StaffTask) -> int:
         return self.completed_work_events.get(task, 0)
 
+    def skill_value(self, skill: StaffSkill) -> Optional[int]:
+        return self.runtime_skills.get(skill)
+
+    def skill_cap(self, skill: StaffSkill) -> Optional[int]:
+        return self.base_skill_caps.get(skill)
+
 
 class StoreStaffRoster:
     """Minimal staff runtime/assignment surface for one store.
 
     The first-title evidence supports at most three assigned staff and explicit
     runtime work such as checkout, replenishment, cleaning and resting. Exact
-    autonomous task priority, travel behavior, stamina consumption/recovery and
-    task durations remain caller-supplied/unknown.
+    autonomous task priority, travel behavior, stamina consumption/recovery,
+    task durations and skill-growth increments remain caller-supplied/unknown.
     """
 
     def __init__(self, *, max_staff: int = FIRST_TITLE_MAX_STAFF_PER_STORE) -> None:
@@ -60,6 +108,8 @@ class StoreStaffRoster:
         self.max_staff = max_staff
         self._staff: dict[str, StaffRuntimeState] = {}
         self._manager_staff_id: Optional[str] = None
+        self._growth_opportunities: list[StaffGrowthOpportunity] = []
+        self._next_growth_sequence = 1
 
     @property
     def staff(self) -> tuple[StaffRuntimeState, ...]:
@@ -69,8 +119,37 @@ class StoreStaffRoster:
     def manager_staff_id(self) -> Optional[str]:
         return self._manager_staff_id
 
+    @property
+    def growth_opportunities(self) -> tuple[StaffGrowthOpportunity, ...]:
+        return tuple(self._growth_opportunities)
+
+    @property
+    def unresolved_growth_opportunities(self) -> tuple[StaffGrowthOpportunity, ...]:
+        return tuple(opportunity for opportunity in self._growth_opportunities if not opportunity.resolved)
+
     def staff_member(self, staff_id: str) -> StaffRuntimeState:
         return self._staff[staff_id]
+
+    def growth_opportunity(self, sequence: int) -> StaffGrowthOpportunity:
+        for opportunity in self._growth_opportunities:
+            if opportunity.sequence == sequence:
+                return opportunity
+        raise KeyError(f"unknown growth opportunity sequence: {sequence}")
+
+    @staticmethod
+    def _validated_skill_mapping(
+        values: Optional[Mapping[StaffSkill, int]],
+        *,
+        label: str,
+    ) -> dict[StaffSkill, int]:
+        result: dict[StaffSkill, int] = {}
+        for skill, value in (values or {}).items():
+            if not isinstance(skill, StaffSkill):
+                raise TypeError(f"{label} keys must be StaffSkill")
+            if value < 0:
+                raise ValueError(f"{label} values must be >= 0")
+            result[skill] = value
+        return result
 
     def add_staff(
         self,
@@ -78,6 +157,8 @@ class StoreStaffRoster:
         *,
         manager: bool = False,
         stamina_max: Optional[int] = None,
+        runtime_skills: Optional[Mapping[StaffSkill, int]] = None,
+        base_skill_caps: Optional[Mapping[StaffSkill, int]] = None,
     ) -> StaffRuntimeState:
         if staff_id in self._staff:
             raise ValueError(f"duplicate staff id: {staff_id}")
@@ -89,6 +170,8 @@ class StoreStaffRoster:
             staff_id,
             stamina_max=stamina_max,
             stamina_current=stamina_max,
+            runtime_skills=self._validated_skill_mapping(runtime_skills, label="runtime_skills"),
+            base_skill_caps=self._validated_skill_mapping(base_skill_caps, label="base_skill_caps"),
         )
         self._staff[staff_id] = state
         if manager:
@@ -130,6 +213,36 @@ class StoreStaffRoster:
         state.target_id = None
         return state
 
+    def _record_growth_opportunity(
+        self,
+        staff_id: str,
+        task: StaffTask,
+        *,
+        work_event_count: int,
+    ) -> StaffGrowthOpportunity:
+        skill = WORK_GROWTH_SKILL[task]
+        state = self._staff[staff_id]
+        manager_staff_id = self._manager_staff_id
+        if manager_staff_id == staff_id:
+            manager_staff_id = None
+        manager_education: Optional[int] = None
+        if manager_staff_id is not None:
+            manager_education = self._staff[manager_staff_id].skill_value(StaffSkill.EDUCATION)
+        opportunity = StaffGrowthOpportunity(
+            sequence=self._next_growth_sequence,
+            staff_id=staff_id,
+            task=task,
+            skill=skill,
+            work_event_count=work_event_count,
+            before_value=state.skill_value(skill),
+            base_cap=state.skill_cap(skill),
+            manager_staff_id=manager_staff_id,
+            manager_education=manager_education,
+        )
+        self._next_growth_sequence += 1
+        self._growth_opportunities.append(opportunity)
+        return opportunity
+
     def record_completed_work(
         self,
         staff_id: str,
@@ -138,16 +251,23 @@ class StoreStaffRoster:
         stamina_cost: Optional[int] = None,
         break_room_target_id: Optional[str] = None,
     ) -> StaffRuntimeState:
-        """Record a work event without inventing a default stamina cost.
+        """Record a work event without inventing stamina or growth constants.
 
-        Work-event counts can later drive evidence-backed skill growth. If a
-        caller supplies a stamina cost, the known `stamina -> 0 -> break room`
-        transition is applied; otherwise stamina is left untouched.
+        Checkout, replenishment and floor-cleaning work create a growth
+        opportunity for the corresponding runtime skill. No skill delta is
+        applied until a future evidence-backed policy, direct observation or
+        caller explicitly resolves that opportunity.
         """
         if task not in WORK_TASKS:
             raise ValueError("only checkout/replenish/clean are work events")
         state = self._staff[staff_id]
-        state.completed_work_events[task] = state.completed_count(task) + 1
+        work_event_count = state.completed_count(task) + 1
+        state.completed_work_events[task] = work_event_count
+        self._record_growth_opportunity(
+            staff_id,
+            task,
+            work_event_count=work_event_count,
+        )
         if stamina_cost is not None:
             self.consume_stamina(
                 staff_id,
@@ -155,6 +275,27 @@ class StoreStaffRoster:
                 break_room_target_id=break_room_target_id,
             )
         return state
+
+    def resolve_growth_opportunity(
+        self,
+        sequence: int,
+        *,
+        after_value: int,
+    ) -> StaffGrowthOpportunity:
+        """Apply an externally resolved work-growth result without guessing a formula."""
+        if after_value < 0:
+            raise ValueError("after_value must be >= 0")
+        opportunity = self.growth_opportunity(sequence)
+        if opportunity.resolved:
+            raise ValueError("growth opportunity is already resolved")
+        if opportunity.before_value is not None and after_value < opportunity.before_value:
+            raise ValueError("work growth cannot reduce the corresponding skill")
+        if opportunity.base_cap is not None and after_value > opportunity.base_cap:
+            raise ValueError("normal work growth cannot exceed the known base skill cap")
+        state = self._staff[opportunity.staff_id]
+        state.runtime_skills[opportunity.skill] = after_value
+        opportunity.resolved_after = after_value
+        return opportunity
 
     def consume_stamina(
         self,
