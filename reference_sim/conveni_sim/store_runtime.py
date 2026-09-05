@@ -6,6 +6,7 @@ from typing import Optional, Sequence
 from .checkout import CheckoutServiceRecord, CheckoutStationRuntime
 from .cleaning import StoreCleaningRuntime
 from .customer import CustomerLifecycleHarness, CustomerSession, CustomerState, PurchaseFlow
+from .customer_share import CustomerShareRuntime
 from .economy import BankruptcyPolicy, DayEndResult, FinancialEvent, StoreCashLedger
 from .inventory import InventoryMutation, StoreInventoryRuntime
 from .operating_time import ClockAdvanceResult, OperatingHours, SubdayClock
@@ -57,6 +58,7 @@ class StoreRuntimeHarness:
         )
         self.purchases = StorePurchaseRuntime(self.inventory, self.cash)
         self.cleaning = StoreCleaningRuntime(grid)
+        self.customer_share = CustomerShareRuntime()
         self.operating_hours = operating_hours
         self.subday_clock = subday_clock if subday_clock is not None else SubdayClock()
         self._checkouts: dict[str, CheckoutStationRuntime] = {}
@@ -76,8 +78,15 @@ class StoreRuntimeHarness:
         self.operating_hours = operating_hours
 
     def advance_game_minutes(self, minutes: int) -> ClockAdvanceResult:
-        """Advance only explicit in-game minutes; no wall/video-time ratio is assumed."""
-        return self.subday_clock.advance_minutes(minutes)
+        """Advance explicit game time and mark observed date-change share refreshes."""
+        result = self.subday_clock.advance_minutes(minutes)
+        if result.days_crossed:
+            self.customer_share.on_date_change(days_crossed=result.days_crossed)
+        return result
+
+    def observe_weather(self, weather: str) -> None:
+        """Record current weather; known weather changes request a share refresh."""
+        self.customer_share.observe_weather(weather)
 
     def record_labor_cost_current_time(
         self,
