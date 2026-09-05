@@ -78,6 +78,11 @@ class StaffWorkCompletionCoordinator:
             raise ValueError("assigned work has no target")
         return state
 
+    def _release_if_available(self, staff_id: str) -> None:
+        state = self.runtime.staff.staff_member(staff_id)
+        if state.condition is StaffCondition.AVAILABLE:
+            self.runtime.staff.release_to_idle(staff_id)
+
     def complete_replenishment(
         self,
         staff_id: str,
@@ -96,7 +101,7 @@ class StaffWorkCompletionCoordinator:
             stamina_cost=command.stamina_cost,
             break_room_target_id=command.break_room_target_id,
         )
-        self.runtime.staff.release_to_idle(staff_id)
+        self._release_if_available(staff_id)
         return StaffWorkCompletionResult(
             staff_id=staff_id,
             task=StaffTask.REPLENISH,
@@ -122,7 +127,7 @@ class StaffWorkCompletionCoordinator:
             stamina_cost=command.stamina_cost,
             break_room_target_id=command.break_room_target_id,
         )
-        self.runtime.staff.release_to_idle(staff_id)
+        self._release_if_available(staff_id)
         return StaffWorkCompletionResult(
             staff_id=staff_id,
             task=StaffTask.CLEAN,
