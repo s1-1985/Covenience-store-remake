@@ -71,7 +71,7 @@ class StoreRuntimeHarness:
     ) -> CheckoutStationRuntime:
         if fixture_id in self._checkouts:
             raise ValueError(f"checkout already registered: {fixture_id}")
-        if fixture_id not in {fixture.instance_id for fixture in self.grid.fixtures}:
+        if fixture_id not in {placement.instance_id for placement in self.grid.placements}:
             raise KeyError(f"checkout fixture is not placed on the grid: {fixture_id}")
         checkout = CheckoutStationRuntime(
             fixture_id,
