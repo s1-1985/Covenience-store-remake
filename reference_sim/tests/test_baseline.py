@@ -59,6 +59,12 @@ class BaselineDataTests(unittest.TestCase):
                 EvidenceLevel.CONFIRMED_VISUAL,
             )
 
+    def test_university_population_observation_range_matches_research(self):
+        by_id = {facility.id: facility for facility in TOWN_FACILITIES}
+        university = by_id["university"]
+        self.assertEqual(university.observed_population_range.value, (500, 800))
+        self.assertEqual(university.observed_population_range.evidence, EvidenceLevel.PROVISIONAL)
+
     def test_unknown_store_values_stay_unknown(self):
         by_id = {variant.id: variant for variant in STORE_VARIANTS}
         self.assertIsNone(by_id["medium_top"].construction_price_yen)
