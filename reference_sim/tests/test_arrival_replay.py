@@ -56,7 +56,7 @@ class ExplicitArrivalReplayTests(unittest.TestCase):
         result = replay.emit_due()
 
         self.assertEqual(result.spawned_customer_ids, ("observed-c1",))
-        self.assertEqual(runtime.customers.customer("observed-c1").customer_id, "observed-c1")
+        self.assertEqual(runtime.customers.customer("observed-c1").id, "observed-c1")
         self.assertTrue(schedule.complete)
 
     def test_late_polling_emits_all_overdue_arrivals_in_order(self):
