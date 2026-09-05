@@ -135,23 +135,14 @@ class DynamicTrafficHarness:
         else:
             agent.status = AgentStatus.MOVING
 
-    def _shortest_path_avoiding_agents(
+    def _dynamic_clear_path(
         self,
         start: GridPoint,
-        goals: Iterable[GridPoint],
-        *,
-        except_agent_id: Optional[str] = None,
+        goals: frozenset[GridPoint],
+        occupied: frozenset[GridPoint],
     ) -> Optional[tuple[GridPoint, ...]]:
-        occupied = self.occupied_cells(except_agent_id=except_agent_id)
-        goals = frozenset(
-            goal
-            for goal in goals
-            if self.grid.is_walkable(goal) and goal not in occupied
-        )
-        if not goals or not self.grid.is_walkable(start):
+        if not goals:
             return None
-        if start in goals:
-            return (start,)
 
         queue = deque([start])
         previous: dict[GridPoint, Optional[GridPoint]] = {start: None}
@@ -160,9 +151,7 @@ class DynamicTrafficHarness:
         while queue:
             current = queue.popleft()
             for nxt in self.grid.neighbors(current):
-                if nxt in previous:
-                    continue
-                if nxt in occupied:
+                if nxt in previous or nxt in occupied:
                     continue
                 previous[nxt] = current
                 if nxt in goals:
@@ -181,6 +170,35 @@ class DynamicTrafficHarness:
             current = previous[current]
         reverse_path.reverse()
         return tuple(reverse_path)
+
+    def _shortest_path_avoiding_agents(
+        self,
+        start: GridPoint,
+        goals: Iterable[GridPoint],
+        *,
+        except_agent_id: Optional[str] = None,
+    ) -> Optional[tuple[GridPoint, ...]]:
+        walkable_goals = frozenset(goal for goal in goals if self.grid.is_walkable(goal))
+        if not walkable_goals or not self.grid.is_walkable(start):
+            return None
+        if start in walkable_goals:
+            return (start,)
+
+        occupied = self.occupied_cells(except_agent_id=except_agent_id)
+        free_goals = walkable_goals - occupied
+
+        # Prefer a route that is clear of current dynamic occupancy. This lets
+        # an agent naturally choose another interaction point or detour when one
+        # exists without inventing a timing rule.
+        dynamic_path = self._dynamic_clear_path(start, free_goals, occupied)
+        if dynamic_path is not None:
+            return dynamic_path
+
+        # If the static layout itself is reachable but all routes are currently
+        # obstructed by agents, preserve that static path. The next tick then
+        # produces BLOCKED/waiting rather than incorrectly classifying a
+        # temporary crowd as an impossible layout.
+        return self.grid.shortest_path_to_any(start, walkable_goals)
 
     def tick(self) -> TrafficTickResult:
         moved: list[str] = []
