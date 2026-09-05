@@ -6,12 +6,14 @@ from conveni_sim.master_audit import (
     audit_customer_archetype,
     audit_fixture,
     audit_product,
+    audit_staff,
 )
 from conveni_sim.models import (
     CustomerArchetypeDefinition,
     EvidenceLevel,
     EvidenceValue,
     ProductDefinition,
+    StaffDefinition,
 )
 
 
@@ -66,6 +68,29 @@ class MasterSchemaTests(unittest.TestCase):
         result = audit_customer_archetype(archetype)
         self.assertEqual(result.known_fields, ("origin_building_affinities",))
         self.assertAlmostEqual(result.completion_ratio, 0.2)
+
+    def test_unknown_staff_row_keeps_all_runtime_and_hiring_values_unknown(self):
+        result = audit_staff(StaffDefinition("unknown-staff"))
+        self.assertEqual(result.completion_ratio, 0.0)
+        self.assertEqual(len(result.unknown_fields), 11)
+
+    def test_staff_hiring_and_runtime_fields_are_audited_separately(self):
+        staff = StaffDefinition(
+            "sample-staff",
+            stamina=self.ev(80),
+            academic_background=self.ev(90),
+            agility=self.ev(70),
+            sociability=self.ev(60),
+            education=self.ev(85),
+            register_skill=self.ev(40),
+        )
+        result = audit_staff(staff)
+        self.assertEqual(
+            set(result.known_fields),
+            {"stamina", "academic_background", "agility", "sociability", "education", "register_skill"},
+        )
+        self.assertIn("replenishment_skill", result.unknown_fields)
+        self.assertIn("security_skill", result.unknown_fields)
 
     def test_aggregate_completion_counts_fields_not_rows(self):
         empty = audit_product(ProductDefinition("empty"))
