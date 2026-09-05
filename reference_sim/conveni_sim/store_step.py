@@ -78,6 +78,13 @@ class StoreStepOrchestrator:
             CheckoutSelectionCoordinator(runtime) if checkout_policy is not None else None
         )
 
+    def _active_checkout_staff_ids(self) -> tuple[str, ...]:
+        active: list[str] = []
+        for fixture_id in self.runtime.checkout_fixture_ids:
+            checkout = self.runtime.checkout(fixture_id)
+            active.extend(record.staff_id for record in checkout.active_services)
+        return tuple(active)
+
     def step(self, game_minutes: int) -> StoreStepResult:
         """Advance time, demand, traffic, purchases, staff choices, then checkout starts.
 
@@ -85,6 +92,12 @@ class StoreStepOrchestrator:
         staff currently assigned to a checkout, but this method never finishes
         service or settles the sale; measured/recovered duration can be inserted
         between start and explicit completion later.
+
+        A staff member with an active checkout service is locked out of the
+        generic task selector until that service is explicitly completed or
+        cancelled. This prevents a generic policy from silently overwriting an
+        in-progress checkout state machine; it does not define the original
+        stamina-interruption or abandonment rule.
         """
         clock = self.runtime.advance_game_minutes(game_minutes)
         demand_result = self.demand.evaluate() if self.demand is not None else None
@@ -111,6 +124,7 @@ class StoreStepOrchestrator:
             staff_result = self._staff_tasks.apply_policy(
                 self.staff_policy,
                 self._staff_candidates.candidates_by_staff(),
+                locked_staff_ids=self._active_checkout_staff_ids(),
             )
 
         checkout_results: list[CheckoutSelectionEvaluation] = []
