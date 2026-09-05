@@ -1,0 +1,84 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Optional
+
+from .customer import CustomerState, CustomerTickResult
+from .customer_demand import CustomerDemandCoordinator, CustomerDemandEvaluation
+from .customer_purchase_policy import (
+    CustomerPurchaseCoordinator,
+    CustomerPurchaseEvaluation,
+    CustomerPurchasePolicy,
+)
+from .operating_time import ClockAdvanceResult
+from .store_runtime import StoreRuntimeHarness
+
+
+@dataclass(frozen=True)
+class StoreStepResult:
+    """One explicit simulation step without inventing a real-time/game-time ratio."""
+
+    clock: ClockAdvanceResult
+    demand: Optional[CustomerDemandEvaluation]
+    traffic: CustomerTickResult
+    purchases: tuple[CustomerPurchaseEvaluation, ...]
+
+
+class StoreStepOrchestrator:
+    """Compose already-recovered store systems into one caller-driven step.
+
+    The caller supplies the in-game minute delta.  Demand evaluation is optional
+    and purchase choices are delegated to a replaceable policy.  This layer does
+    not decide checkout service, staff task priorities, spawn rates, purchase
+    weights, queue patience, or how many real seconds correspond to game time.
+    """
+
+    def __init__(
+        self,
+        runtime: StoreRuntimeHarness,
+        *,
+        demand: Optional[CustomerDemandCoordinator] = None,
+        purchases: Optional[CustomerPurchaseCoordinator] = None,
+        purchase_policy: Optional[CustomerPurchasePolicy] = None,
+    ) -> None:
+        if (purchases is None) != (purchase_policy is None):
+            raise ValueError("purchases and purchase_policy must be supplied together")
+        if demand is not None and demand.runtime is not runtime:
+            raise ValueError("demand coordinator must use the same store runtime")
+        if purchases is not None and purchases.runtime is not runtime:
+            raise ValueError("purchase coordinator must use the same store runtime")
+        self.runtime = runtime
+        self.demand = demand
+        self.purchases = purchases
+        self.purchase_policy = purchase_policy
+
+    def step(self, game_minutes: int) -> StoreStepResult:
+        """Advance explicit game time, evaluate arrivals, move agents, then buy/skip.
+
+        The ordering is intentionally narrow and observable: time gates first,
+        then gameplay demand, then one traffic tick, then decisions for customers
+        that are now physically at merchandise.  Checkout and staff work remain
+        separate until their original timing/priority rules are recovered.
+        """
+        clock = self.runtime.advance_game_minutes(game_minutes)
+        demand_result = self.demand.evaluate() if self.demand is not None else None
+        traffic = self.runtime.customers.tick()
+
+        purchase_results: list[CustomerPurchaseEvaluation] = []
+        if self.purchases is not None and self.purchase_policy is not None:
+            ready_ids = tuple(
+                customer.id
+                for customer in self.runtime.customers.customers
+                if customer.state is CustomerState.AT_MERCHANDISE
+            )
+            for customer_id in ready_ids:
+                purchase_results.append(
+                    self.purchases.evaluate(customer_id, self.purchase_policy)
+                )
+
+        return StoreStepResult(
+            clock=clock,
+            demand=demand_result,
+            traffic=traffic,
+            purchases=tuple(purchase_results),
+        )
