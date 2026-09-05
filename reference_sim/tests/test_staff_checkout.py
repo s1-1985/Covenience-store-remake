@@ -155,6 +155,7 @@ class StaffAndCheckoutTests(unittest.TestCase):
         self.assertEqual(customers.customer("c1").state, CustomerState.LEAVING)
         self.assertTrue(customers.customer("c1").completed_checkout)
         self.assertEqual(roster.staff_member("s1").task, StaffTask.IDLE)
+        self.assertEqual(roster.staff_member("s1").completed_count(StaffTask.CHECKOUT), 1)
         self.assertEqual(checkout.service_history[-1].customer_id, "c1")
 
     def test_ejected_waiter_is_removed_without_guessing_penalty(self):

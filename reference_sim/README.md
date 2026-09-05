@@ -31,7 +31,7 @@ Rules:
 - `store_grid.py` — rectangular store space, fixture footprint/rotation, interaction side, obstacles and deterministic shortest-path queries.
 - `traffic.py` — dynamic occupancy, blocking/wait counters, interaction-edge goals and configurable rerouting experiments.
 - `customer.py` — explicit customer lifecycle from supplied merchandise goals through checkout/self-service-candidate and exit/ejection, without inventing purchase probabilities or service timing.
-- `staff.py` — per-store roster cap, optional manager identity and explicit checkout/replenish/clean/rest task state without an invented autonomous priority function.
+- `staff.py` — per-store roster cap, optional manager identity, explicit work/rest task state, work-event counters, and the confirmed stamina->break-room->full-recovery lifecycle without guessed rates.
 - `checkout.py` — logical register waiting/service runtime with configurable simultaneous cashier capacity, non-FIFO-capable service selection and explicit service completion.
 - `master_audit.py` — field-level completeness audit for guide-derived fixture/product/customer/staff masters; only evidence-tagged values count as known.
 
@@ -42,6 +42,8 @@ Pathfinding in `store_grid.py` is intentionally simple 4-neighbor BFS. `traffic.
 `customer.py` also avoids hidden assumptions: merchandise visit order and checkout-vs-self-service flow are provided explicitly by the caller, checkout completion is explicit, and no patience/purchase-choice formula exists yet.
 
 `checkout.py` records waiting arrival order but does not force FIFO, because first-title FAQ evidence reports later-arriving customers sometimes being served first. Checkout service has no built-in duration; callers must explicitly finish it until the register-skill timing formula is recovered.
+
+`staff.py` similarly has no default stamina cost or recovery-per-tick constant. A known stamina value may be supplied, explicit work/recovery events can mutate it, and reaching zero enters a separate return-to-break-room state before resting until full recovery.
 
 The product/customer/fixture/staff schema is intentionally sparse until strategy-guide data is supplied. `master_audit.py` makes missing fields measurable without converting unknowns into zeros or guesses.
 
