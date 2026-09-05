@@ -42,6 +42,44 @@ class FixtureDefinition:
     parking_capacity: Optional[EvidenceValue] = None
     sale_mode: str = "not_applicable"
     blocks_pedestrian: Optional[EvidenceValue] = None
+    purchase_price_yen: Optional[EvidenceValue] = None
+    capacity: Optional[EvidenceValue] = None
+    compatible_product_categories: Optional[EvidenceValue] = None
+    interaction_sides: Optional[EvidenceValue] = None
+    attention: Optional[EvidenceValue] = None
+    security_bonus: Optional[EvidenceValue] = None
+
+
+@dataclass(frozen=True)
+class ProductDefinition:
+    """Guide-ready product master row; unknown means None, never inferred zero."""
+
+    id: str
+    display_name: Optional[EvidenceValue] = None
+    category: Optional[EvidenceValue] = None
+    temperature_zone: Optional[EvidenceValue] = None
+    procurement_cost_yen: Optional[EvidenceValue] = None
+    standard_retail_price_yen: Optional[EvidenceValue] = None
+    compatible_fixture_ids: Optional[EvidenceValue] = None
+    required_permit_id: Optional[EvidenceValue] = None
+    primary_purchase_eligibility: Optional[EvidenceValue] = None
+    add_on_purchase_eligibility: Optional[EvidenceValue] = None
+    audience_affinities: Optional[EvidenceValue] = None
+
+
+@dataclass(frozen=True)
+class CustomerArchetypeDefinition:
+    """Customer-group data slots without inventing missing numeric behavior."""
+
+    id: str
+    display_name: Optional[EvidenceValue] = None
+    visual_archetype: Optional[EvidenceValue] = None
+    origin_building_affinities: Optional[EvidenceValue] = None
+    spending_power_profile: Optional[EvidenceValue] = None
+    preferred_primary_products: Optional[EvidenceValue] = None
+    preferred_add_on_products: Optional[EvidenceValue] = None
+    patience_profile: Optional[EvidenceValue] = None
+    anger_profile: Optional[EvidenceValue] = None
 
 
 @dataclass(frozen=True)
