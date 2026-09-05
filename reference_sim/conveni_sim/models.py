@@ -41,6 +41,7 @@ class FixtureDefinition:
     service_bonus: Optional[EvidenceValue] = None
     parking_capacity: Optional[EvidenceValue] = None
     sale_mode: str = "not_applicable"
+    blocks_pedestrian: Optional[EvidenceValue] = None
 
 
 @dataclass(frozen=True)
