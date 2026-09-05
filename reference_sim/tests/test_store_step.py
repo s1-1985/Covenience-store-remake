@@ -8,6 +8,8 @@ from conveni_sim.customer_purchase_policy import (
     MerchandiseOffer,
 )
 from conveni_sim.operating_time import OperatingHours, SubdayClock
+from conveni_sim.staff import StaffTask
+from conveni_sim.staff_task_policy import StaffTaskDecision
 from conveni_sim.store_grid import Direction, GridPoint, StoreGrid
 from conveni_sim.store_runtime import StoreRuntimeHarness
 from conveni_sim.store_step import StoreStepOrchestrator
@@ -35,6 +37,14 @@ class OneArrivalPolicy:
 class BuyBreadPolicy:
     def choose_purchase(self, context):
         return CustomerPurchaseDecision.buy("bread-slot") if context.offers else CustomerPurchaseDecision.skip()
+
+
+class ChooseReplenishmentPolicy:
+    def choose_task(self, context):
+        for candidate in context.candidates:
+            if candidate.task is StaffTask.REPLENISH:
+                return StaffTaskDecision(candidate.task, target_id=candidate.target_id)
+        return None
 
 
 class StoreStepTests(unittest.TestCase):
@@ -94,6 +104,40 @@ class StoreStepTests(unittest.TestCase):
         self.assertEqual(len(runtime.purchases.basket("c1").lines), 1)
         self.assertEqual(runtime.customers.customer("c1").state, CustomerState.APPROACHING_CHECKOUT)
         self.assertFalse(runtime.purchases.basket("c1").settled)
+        self.assertTrue(all(result.staff_tasks is None for result in results))
+
+    def test_staff_policy_can_reconsider_objective_work_after_purchase_in_same_step(self):
+        runtime = self.make_runtime()
+        runtime.inventory.replenish("bread-slot", 3)
+        runtime.staff.add_staff("s1")
+        demand = CustomerDemandCoordinator(runtime, OneArrivalPolicy())
+        purchases = CustomerPurchaseCoordinator(
+            runtime,
+            (MerchandiseOffer("bread-slot", 120, PurchaseFlow.CHECKOUT_REQUIRED),),
+        )
+        orchestrator = StoreStepOrchestrator(
+            runtime,
+            demand=demand,
+            purchases=purchases,
+            purchase_policy=BuyBreadPolicy(),
+            staff_policy=ChooseReplenishmentPolicy(),
+        )
+
+        result = None
+        for _ in range(10):
+            result = orchestrator.step(1)
+            if runtime.customers.customer("c1").state is CustomerState.APPROACHING_CHECKOUT:
+                break
+
+        self.assertIsNotNone(result)
+        self.assertIsNotNone(result.staff_tasks)
+        self.assertEqual(runtime.inventory.slot("bread-slot").units, 4)
+        staff = runtime.staff.staff_member("s1")
+        self.assertEqual(staff.task, StaffTask.REPLENISH)
+        self.assertEqual(staff.target_id, "bread-slot")
+        self.assertEqual(len(result.staff_tasks.applied), 1)
+        # Selection is not execution: the store step does not refill inventory.
+        self.assertEqual(runtime.inventory.slot("bread-slot").units, 4)
 
     def test_closed_store_still_routes_demand_through_admission_gate(self):
         runtime = self.make_runtime()
