@@ -154,6 +154,23 @@ class CustomerLifecycleHarness:
         self._route_to_next_step(session)
         return session
 
+    def leave_merchandise_without_purchase(self, customer_id: str) -> CustomerSession:
+        """Advance from the current merchandise stop without inventing a purchase.
+
+        A future purchase policy may explicitly decide that a customer buys
+        nothing at a visited fixture.  This transition records no purchase and
+        no interacted fixture; it only advances the already caller-supplied
+        route.  The original probability of such a decision remains external.
+        """
+        session = self._customers[customer_id]
+        if session.state is not CustomerState.AT_MERCHANDISE:
+            raise ValueError("customer is not at merchandise")
+        if session.current_merchandise_fixture_id is None:
+            raise RuntimeError("AT_MERCHANDISE without current fixture")
+        session.next_merchandise_index += 1
+        self._route_to_next_step(session)
+        return session
+
     def complete_checkout(self, customer_id: str) -> CustomerSession:
         session = self._customers[customer_id]
         if session.state is not CustomerState.WAITING_CHECKOUT:
