@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable
+from enum import Enum
+from typing import Iterable, Optional
 
 from .models import PromotionDefinition
 
@@ -49,6 +50,34 @@ class PromotionApplication:
     promotion_id: str
     popularity_gain: int
     changes: tuple[PopularityChange, ...]
+
+
+class PopularityDecayContext(str, Enum):
+    ORDINARY_DAY = "ordinary_day"
+    MONTH_SKIP = "month_skip"
+
+
+@dataclass
+class PopularityDecayOpportunity:
+    """One evidence-backed decay application whose numeric amount is unresolved."""
+
+    sequence: int
+    store_id: str
+    context: PopularityDecayContext
+    before: int
+    rating_snapshot: Optional[int]
+    source: str
+    resolved_after: Optional[int] = None
+
+    @property
+    def resolved(self) -> bool:
+        return self.resolved_after is not None
+
+    @property
+    def applied_loss(self) -> Optional[int]:
+        if self.resolved_after is None:
+            return None
+        return self.before - self.resolved_after
 
 
 class PromotionScheduler:
@@ -128,26 +157,136 @@ class PromotionScheduler:
 
 
 class StorePopularityRuntime:
-    """Per-store popularity values with only the confirmed 0..100 cap rule."""
+    """Per-store popularity with explicit gains and unresolved decay opportunities.
+
+    Confirmed promotion gains can be applied immediately. Daily popularity loss
+    is structurally supported, and the month-skip period applies only one
+    day-equivalent loss, but the exact rating-dependent decay formula is not yet
+    recovered. Decay is therefore recorded first and resolved only by an
+    evidence-backed policy, direct observation or explicit caller result.
+    """
 
     def __init__(self) -> None:
         self._popularity: dict[str, int] = {}
+        self._ratings: dict[str, Optional[int]] = {}
+        self._decay_opportunities: list[PopularityDecayOpportunity] = []
+        self._next_decay_sequence = 1
 
     @property
     def store_ids(self) -> tuple[str, ...]:
         return tuple(self._popularity)
 
-    def add_store(self, store_id: str, *, popularity: int) -> None:
+    @property
+    def decay_opportunities(self) -> tuple[PopularityDecayOpportunity, ...]:
+        return tuple(self._decay_opportunities)
+
+    @property
+    def unresolved_decay_opportunities(self) -> tuple[PopularityDecayOpportunity, ...]:
+        return tuple(item for item in self._decay_opportunities if not item.resolved)
+
+    def add_store(
+        self,
+        store_id: str,
+        *,
+        popularity: int,
+        rating: Optional[int] = None,
+    ) -> None:
         if not store_id:
             raise ValueError("store_id must be non-empty")
         if store_id in self._popularity:
             raise ValueError(f"duplicate store id: {store_id}")
         if not 0 <= popularity <= 100:
             raise ValueError("popularity must be 0..100")
+        if rating is not None and rating < 0:
+            raise ValueError("rating must be >= 0 or None")
         self._popularity[store_id] = popularity
+        self._ratings[store_id] = rating
 
     def popularity(self, store_id: str) -> int:
         return self._popularity[store_id]
+
+    def rating(self, store_id: str) -> Optional[int]:
+        return self._ratings[store_id]
+
+    def set_rating(self, store_id: str, rating: Optional[int]) -> None:
+        if rating is not None and rating < 0:
+            raise ValueError("rating must be >= 0 or None")
+        if store_id not in self._popularity:
+            raise KeyError(f"unknown store id: {store_id}")
+        self._ratings[store_id] = rating
+
+    def decay_opportunity(self, sequence: int) -> PopularityDecayOpportunity:
+        for opportunity in self._decay_opportunities:
+            if opportunity.sequence == sequence:
+                return opportunity
+        raise KeyError(f"unknown popularity decay opportunity: {sequence}")
+
+    def record_decay_opportunity(
+        self,
+        store_id: str,
+        *,
+        context: PopularityDecayContext,
+        source: str,
+    ) -> PopularityDecayOpportunity:
+        if store_id not in self._popularity:
+            raise KeyError(f"unknown store id: {store_id}")
+        if not source:
+            raise ValueError("source must be non-empty")
+        opportunity = PopularityDecayOpportunity(
+            sequence=self._next_decay_sequence,
+            store_id=store_id,
+            context=context,
+            before=self._popularity[store_id],
+            rating_snapshot=self._ratings[store_id],
+            source=source,
+        )
+        self._next_decay_sequence += 1
+        self._decay_opportunities.append(opportunity)
+        return opportunity
+
+    def record_ordinary_daily_decay(
+        self,
+        store_id: str,
+        *,
+        source: str = "DIRECT-PLAY-SS: popularity decays daily according to store rating",
+    ) -> PopularityDecayOpportunity:
+        return self.record_decay_opportunity(
+            store_id,
+            context=PopularityDecayContext.ORDINARY_DAY,
+            source=source,
+        )
+
+    def record_month_skip_decay(
+        self,
+        store_id: str,
+        *,
+        source: str = "first-title PS/SS FAQ: skipped period applies one day-equivalent popularity loss",
+    ) -> PopularityDecayOpportunity:
+        """Record exactly one decay application for day5-to-month-end skipping."""
+        return self.record_decay_opportunity(
+            store_id,
+            context=PopularityDecayContext.MONTH_SKIP,
+            source=source,
+        )
+
+    def resolve_decay_opportunity(
+        self,
+        sequence: int,
+        *,
+        after: int,
+    ) -> PopularityDecayOpportunity:
+        if not 0 <= after <= 100:
+            raise ValueError("after must be 0..100")
+        opportunity = self.decay_opportunity(sequence)
+        if opportunity.resolved:
+            raise ValueError("popularity decay opportunity is already resolved")
+        if after > opportunity.before:
+            raise ValueError("popularity decay cannot increase popularity")
+        if self._popularity[opportunity.store_id] != opportunity.before:
+            raise ValueError("popularity changed after decay opportunity was recorded")
+        self._popularity[opportunity.store_id] = after
+        opportunity.resolved_after = after
+        return opportunity
 
     def apply_promotion(
         self,
