@@ -1,7 +1,7 @@
 import unittest
 
 from conveni_sim.customer import CustomerState, PurchaseFlow
-from conveni_sim.economy import BankruptcyPolicy, DayEndOutcome
+from conveni_sim.economy import BankruptcyPolicy, DayEndOutcome, FinancialEventKind
 from conveni_sim.staff import StaffTask
 from conveni_sim.store_grid import Direction, GridPoint, StoreGrid
 from conveni_sim.store_runtime import StoreRuntimeHarness
@@ -174,7 +174,7 @@ class StoreRuntimeIntegrationTests(unittest.TestCase):
             initial_cash_yen=100,
             bankruptcy_policy=BankruptcyPolicy(check_negative_cash_at_end_of_day=True),
         )
-        runtime.cash.record_cost(kind=runtime.cash.events.__class__ and __import__("conveni_sim.economy", fromlist=["FinancialEventKind"]).FinancialEventKind.OTHER, amount_yen=200)
+        runtime.cash.record_cost(FinancialEventKind.OTHER, 200)
         result = runtime.close_day()
         self.assertEqual(result.outcome, DayEndOutcome.BANKRUPT)
 
