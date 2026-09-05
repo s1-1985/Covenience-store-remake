@@ -31,14 +31,18 @@ Rules:
 - `store_grid.py` — rectangular store space, fixture footprint/rotation, interaction side, obstacles and deterministic shortest-path queries.
 - `traffic.py` — dynamic occupancy, blocking/wait counters, interaction-edge goals and configurable rerouting experiments.
 - `customer.py` — explicit customer lifecycle from supplied merchandise goals through checkout/self-service-candidate and exit/ejection, without inventing purchase probabilities or service timing.
-- `master_audit.py` — field-level completeness audit for guide-derived fixture/product/customer masters; only evidence-tagged values count as known.
+- `staff.py` — per-store roster cap, optional manager identity and explicit checkout/replenish/clean/rest task state without an invented autonomous priority function.
+- `checkout.py` — logical register waiting/service runtime with configurable simultaneous cashier capacity, non-FIFO-capable service selection and explicit service completion.
+- `master_audit.py` — field-level completeness audit for guide-derived fixture/product/customer/staff masters; only evidence-tagged values count as known.
 
 `store_grid.py` defaults to **2 internal subcells per researched tile** so a half-tile contact/gap can be represented. This is a compatibility representation, not a claim that the original executable literally used a 0.5-tile navigation grid. The scale remains configurable until stronger evidence is recovered.
 
 Pathfinding in `store_grid.py` is intentionally simple 4-neighbor BFS. `traffic.py` adds moving entities, but one harness tick/step is **not** mapped to an original frame, second or movement speed. The default reroute threshold remains `None` because the original collision retry/reroute timing is still unknown.
 
-`customer.py` also avoids hidden assumptions: merchandise visit order and checkout-vs-self-service flow are provided explicitly by the caller, checkout completion is explicit, and no patience/queue/purchase-choice formula exists yet.
+`customer.py` also avoids hidden assumptions: merchandise visit order and checkout-vs-self-service flow are provided explicitly by the caller, checkout completion is explicit, and no patience/purchase-choice formula exists yet.
 
-The product/customer/fixture schema is intentionally sparse until strategy-guide data is supplied. `master_audit.py` makes missing fields measurable without converting unknowns into zeros or guesses.
+`checkout.py` records waiting arrival order but does not force FIFO, because first-title FAQ evidence reports later-arriving customers sometimes being served first. Checkout service has no built-in duration; callers must explicitly finish it until the register-skill timing formula is recovered.
+
+The product/customer/fixture/staff schema is intentionally sparse until strategy-guide data is supplied. `master_audit.py` makes missing fields measurable without converting unknowns into zeros or guesses.
 
 This Python package is not a commitment to ship the Android game in Python. It is a small, testable compatibility oracle that can later be ported to the chosen production engine.

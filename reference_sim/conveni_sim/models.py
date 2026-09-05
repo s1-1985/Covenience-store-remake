@@ -83,6 +83,26 @@ class CustomerArchetypeDefinition:
 
 
 @dataclass(frozen=True)
+class StaffDefinition:
+    """Guide-ready staff master row with hiring and runtime stats kept separate."""
+
+    id: str
+    display_name: Optional[EvidenceValue] = None
+    starting_age_years: Optional[EvidenceValue] = None
+    salary_yen_per_day_24h: Optional[EvidenceValue] = None
+    stamina: Optional[EvidenceValue] = None
+    academic_background: Optional[EvidenceValue] = None
+    agility: Optional[EvidenceValue] = None
+    sociability: Optional[EvidenceValue] = None
+    education: Optional[EvidenceValue] = None
+    register_skill: Optional[EvidenceValue] = None
+    replenishment_skill: Optional[EvidenceValue] = None
+    security_skill: Optional[EvidenceValue] = None
+    cleaning_skill: Optional[EvidenceValue] = None
+    service_skill: Optional[EvidenceValue] = None
+
+
+@dataclass(frozen=True)
 class PromotionDefinition:
     id: str
     cost_yen: EvidenceValue

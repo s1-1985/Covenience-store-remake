@@ -3,7 +3,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Iterable, Sequence
 
-from .models import CustomerArchetypeDefinition, EvidenceValue, FixtureDefinition, ProductDefinition
+from .models import (
+    CustomerArchetypeDefinition,
+    EvidenceValue,
+    FixtureDefinition,
+    ProductDefinition,
+    StaffDefinition,
+)
 
 
 FIXTURE_IMPLEMENTATION_FIELDS = (
@@ -28,6 +34,20 @@ CUSTOMER_ARCHETYPE_RESEARCH_FIELDS = (
     "preferred_primary_products",
     "preferred_add_on_products",
     "patience_profile",
+)
+
+STAFF_IMPLEMENTATION_FIELDS = (
+    "salary_yen_per_day_24h",
+    "stamina",
+    "academic_background",
+    "agility",
+    "sociability",
+    "education",
+    "register_skill",
+    "replenishment_skill",
+    "security_skill",
+    "cleaning_skill",
+    "service_skill",
 )
 
 
@@ -85,6 +105,10 @@ def audit_product(record: ProductDefinition) -> MasterAuditResult:
 
 def audit_customer_archetype(record: CustomerArchetypeDefinition) -> MasterAuditResult:
     return audit_record(record, CUSTOMER_ARCHETYPE_RESEARCH_FIELDS)
+
+
+def audit_staff(record: StaffDefinition) -> MasterAuditResult:
+    return audit_record(record, STAFF_IMPLEMENTATION_FIELDS)
 
 
 def aggregate_completion(results: Iterable[MasterAuditResult]) -> float:
