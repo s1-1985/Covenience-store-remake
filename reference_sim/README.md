@@ -29,9 +29,10 @@ Rules:
 - `baseline_data.py` — evidence-tagged store/fixture/promotion/permit/scenario/town anchors.
 - `clock.py` — the representative day 1–4 month clock.
 - `store_grid.py` — rectangular store space, fixture footprint/rotation, interaction side, obstacles and deterministic shortest-path queries.
+- `traffic.py` — dynamic occupancy, blocking/wait counters, interaction-edge goals and configurable rerouting experiments.
 
 `store_grid.py` defaults to **2 internal subcells per researched tile** so a half-tile contact/gap can be represented. This is a compatibility representation, not a claim that the original executable literally used a 0.5-tile navigation grid. The scale remains configurable until stronger evidence is recovered.
 
-Pathfinding in this layer is intentionally simple 4-neighbor BFS. It exists to validate layout reachability and future customer/staff tests; it is **not yet the final customer movement/congestion model**.
+Pathfinding in `store_grid.py` is intentionally simple 4-neighbor BFS. `traffic.py` adds moving entities, but one harness tick/step is **not** mapped to an original frame, second or movement speed. The default reroute threshold remains `None` because the original collision retry/reroute timing is still unknown.
 
 This Python package is not a commitment to ship the Android game in Python. It is a small, testable compatibility oracle that can later be ported to the chosen production engine.
