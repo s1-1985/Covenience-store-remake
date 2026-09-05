@@ -1,0 +1,8 @@
+[project]
+name = "conveni-reference-sim"
+version = "0.1.0"
+description = "Executable research/reference model for the 1997 PS/SS baseline"
+requires-python = ">=3.11"
+
+[tool.setuptools]
+packages = ["conveni_sim"]
