@@ -1,106 +1,121 @@
-# 初代PS 大学人口アンカーと施設誘致タイミング 2026-09-05
+# 初代PS 大学人口アンカーと施設誘致タイミング 2026-09-05（再検証）
 
 対象: 1997 PlayStation版『ザ・コンビニ ～あの町を独占せよ～』。
 
-目的: 町建物マスターの未確定項目のうち、大学の人口規模と「誘致した施設が即時完成するか」を初代PSプレイ記録だけで詰める。
+目的: 町建物マスターの未確定項目のうち、大学の人口規模、誘致後の建設待ち時間、町施設の出現経路を初代PS資料だけで再整理する。
 
-## 1. 大学1件の人口増加は約700～800人というPS攻略投稿
+## 1. 大学の人口増加レンジを 500～800人へ修正
 
-PS版初代Wazapの攻略投稿「初級は働かずクリア」では、人口が伸びにくくなる初級終盤の対策として大学誘致を勧め、大学1件で「だいたい700人～800人」増えるという実プレイベースの目安が記載されている。
+PS版初代Wazapの攻略投稿「初級は働かずクリア」では、大学1件で人口が概ね700～800人増えるという実プレイベースの目安が示されている。
 
 Source:
 - https://wazap.com/cheat/%E5%88%9D%E7%B4%9A%E3%81%AF%E5%83%8D%E3%81%8B%E3%81%9A%E3%82%AF%E3%83%AA%E3%82%A2/105193/
 
 Evidence: `PROVISIONAL-COMMUNITY-PS / DIRECT-PLAY-ESTIMATE`
 
-これは攻略本の固定マスター値ではないため、`University.shoppingPopulation = 750` のように単一値へ確定してはいけない。現時点では次のレンジとして保持する。
+一方、PS版上級の長期プレイ記録では、大学誘致による人口増加について約500～800人という、より広いレンジが明記されている。
+
+Source:
+- https://pinkblue.sakura.ne.jp/contents/kansou/game/psgame/ps-simulation/ps-ai/ai-the-conbini-jokyu2.html
+
+Evidence: `DIRECT-PLAY-PS / OBSERVED-APPROXIMATE`
+
+両者は「大学は数百人規模の大型人口施設」という点では一致するが、500～699人の可能性を排除できない。したがって、従来の `700..800` を確定レンジとして扱うのは狭すぎる。
+
+現時点の安全な観測レンジ:
 
 ```text
 TownBuildingPopulationAnchor
-university_observed_population_delta = 700..800
-source = PS community direct-play strategy
-confidence = provisional
+building = university
+observed_population_delta_min = 500
+observed_population_delta_max = 800
+exact_value = UNKNOWN
+source = PS direct-play estimates
+confidence = provisional-to-strong behavioral anchor
 ```
 
-## 2. 別のPS長期プレイ記録が大学700～800人級と整合
+重要: `University.shoppingPopulation = 750` のような固定値にはしない。攻略本の町施設データ表または原作画面で固定値を確認するまで、500～800人は観測包絡線として扱う。
 
-PS版を11年以上進めた詳細プレイ記録では:
-
-- 町人口約18,000人まで到達
-- 大学を2件誘致しても20,000人には届かなかった
-- その後、さらに大学1件を誘致すると20,000人へ到達
-
-という経過が記録されている。
-
-Source:
-- https://pinkblue.sakura.ne.jp/contents/kansou/game/psgame/ps-simulation/ps-ai/ai-the-conbini.html
-
-Evidence: `DIRECT-PLAY-PS`
-
-この記録だけでは各大学の正確な人口増加量は逆算できないが、大学が「数百人規模」の大型人口施設であること、Wazapの約700～800人という観測レンジと矛盾しないことを確認できる。
-
-また初代専用Wikiでは駅人口が2,240人で「大学以上」と説明されているため、大学が2,240人未満であることとも整合する。
+初代専用Wikiでは駅の人口表示が2,240で「大学以上」と説明されており、大学が駅より小さい人口規模であるという関係とも矛盾しない。
 
 Wiki source:
 - https://wikiwiki.jp/theconveni1/%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5
 
-## 3. 施設誘致は即時完成ではない
+## 2. 大学は誘致後、建つまで約1～2か月待つPS観測
 
-同じPS長期プレイ記録では、火災対策として消防署を誘致した直後について、施設が「建つまでに少しかかる」ため、完成前に再度火災が発生したと記録されている。
+同じPS上級長期プレイ記録では、大学を誘致した後に完成まで「ひと月ふた月」待つ進行が記録されている。
+
+Evidence: `DIRECT-PLAY-PS / OBSERVED-APPROXIMATE`
+
+したがって大学については、単なる「非ゼロの建設待ち時間」より一段具体的に、次の観測レンジを保持できる。
+
+```text
+university_construction_delay_observed_months = 1..2
+exact_rule = UNKNOWN
+```
+
+ただし、これは攻略者による長期プレイ記録上の概算表現であり、常に固定1か月または2か月なのか、月途中の誘致タイミングで見かけ上変わるのか、乱数や施設種別差があるのかは未確定である。
+
+この1～2か月レンジを消防署・警察・遊園地など全施設へ無条件に一般化しない。
+
+## 3. 施設誘致は即時ACTIVEではない
+
+別のPS長期プレイ記録でも、火災対策として消防署を誘致した直後、完成前に再度火災が起きている。よって町施設には少なくとも建設待ち状態が必要である。
+
+Source:
+- https://pinkblue.sakura.ne.jp/contents/kansou/game/psgame/ps-simulation/ps-ai/ai-the-conbini.html
 
 Evidence: `DIRECT-PLAY-PS / BEHAVIOR`
 
-したがってRemakeの施設誘致を:
-
-```text
-pay induction cost -> facility instantly active
-```
-
-と実装するのは避ける。
-
-最低でも:
+最低限の状態遷移候補:
 
 ```text
 INDUCED / PLANNED
--> UNDER_CONSTRUCTION or WAITING
+-> UNDER_CONSTRUCTION / WAITING
 -> ACTIVE
 ```
 
-のような遅延状態を表現できる設計にする。
+## 4. 町施設には「プレイヤー誘致」と「自動発展」の両方がある
 
-正確な建設期間（日/月単位）は未回収なので、ここでは固定しない。
+PS中級・上級の長期プレイ記録では、プレイヤーが自店経営やライバル対策を続ける間に、駅・大学・遊園地・中学校・高校などが新たに出現し、既存店舗の客入りが変化する事例がある。上級記録では大学誘致後の進行中に近隣へ動物園ができる例もある。
 
-## 4. 初級の都庁出現は人口到達直後ではなく次月発火のPS観測
+Sources:
+- https://pinkblue.sakura.ne.jp/contents/kansou/game/psgame/ps-simulation/ps-ai/ai-the-conbini-tyukyu.html
+- https://pinkblue.sakura.ne.jp/contents/kansou/game/psgame/ps-simulation/ps-ai/ai-the-conbini-jokyu2.html
 
-同PSプレイ記録では、最後の大学誘致で町人口が20,000人に到達した後、**次の月**に「都庁がやってきました」に相当する通知が出て、その直後にエンディングへ入ったと記録されている。
+Evidence: `DIRECT-PLAY-PS / TOWN-GROWTH-BEHAVIOR`
+
+したがって、町施設をすべて `player induced` として生成する設計は不適切である。少なくとも出現起源を分離できるようにする。
+
+```text
+TownFacilityOrigin
+- PLAYER_INDUCED
+- AUTONOMOUS_GROWTH
+- SCENARIO_TRIGGERED
+```
+
+駅や都庁のように人口閾値と結びつく施設は `SCENARIO_TRIGGERED` または専用の自動出現ルールとして扱い、通常のプレイヤー誘致と同一処理にしない。
+
+## 5. 初級の都庁出現は人口到達後の月境界発火が有力
+
+PS長期プレイ記録では、大学誘致等で町人口が20,000人へ到達した後、次の月に都庁到来通知が出てエンディングへ移行する流れが観測されている。
 
 Evidence: `DIRECT-PLAY-PS / SINGLE-RUN`
 
-初代専用Wikiの「人口20,000超で都庁が自動的に来る」という記述と合わせると、初級クリア判定は人口条件を常時監視して即終了するのではなく、月境界イベントとして処理される可能性が高い。
+初代専用Wikiの「人口20,000超で都庁が自動的に来る」という記述と合わせると、常時監視で即終了するより、人口条件成立後に月境界イベントを予約する設計が有力である。
 
-現時点の実装候補:
+実装候補:
 
 ```text
-if town_population >= metropolitan_threshold:
+if town_population reaches metropolitan_threshold:
     queue metropolitan_arrival
 
-on next monthly boundary:
+on monthly boundary:
     metropolitan_arrival
     beginner_clear_sequence
 ```
 
-ただし閾値の比較演算子（`>= 20000` か `> 20000`）は資料表現が揺れるため、攻略本/実機で最終確認する。
-
-## 5. 店員給与スケールの追加アンカー
-
-初代専用Wikiは、雇用画面の日給が24時間営業基準であり、短時間営業では異動画面の給料表示が下がると説明している。さらに体感的な換算として「時給250～300円くらいの店員がザラ」と記載されている。
-
-Source:
-- https://wikiwiki.jp/theconveni1/%E5%BA%97%E5%93%A1
-
-Evidence: `PROVISIONAL-COMMUNITY-FIRST-TITLE / SCALE-ANCHOR`
-
-これは正確な給与計算式ではないが、攻略本値が回収できない場合の給与式検証レンジとして使える。例えば日給6,000～7,200円級が一般的候補になることを示すが、個別店員の給与をこの換算から逆算して確定しない。
+ただし閾値が `>= 20,000` か `> 20,000` かは未確定である。
 
 ## 6. TownBuildingDefinitionへの反映
 
@@ -108,25 +123,42 @@ Evidence: `PROVISIONAL-COMMUNITY-FIRST-TITLE / SCALE-ANCHOR`
 TownBuildingDefinition
 id
 name
-shoppingPopulationExact?      # 攻略本値
-observedPopulationMin?        # 今回: university 700
-observedPopulationMax?        # 今回: university 800
+shoppingPopulationExact?          # 攻略本/原画面で確認できた場合のみ
+observedPopulationMin?            # university: 500
+observedPopulationMax?            # university: 800
 inductionCost?
-constructionDelay?            # unknown exact, but non-zero behavior supported
+constructionDelayExactMonths?
+constructionDelayObservedMin?     # university: 1
+constructionDelayObservedMax?     # university: 2
+allowedOrigins[]                  # PLAYER_INDUCED / AUTONOMOUS_GROWTH / SCENARIO_TRIGGERED
 activationTiming
 source
 confidence
 ```
 
-初級都庁は通常のプレイヤー誘致施設と同じ処理へ単純化せず、人口閾値による自動予約イベントを持てる構造にする。
+観測レンジと原作固定マスター値を同じフィールドへ混ぜないこと。
 
-## 7. 未確定
+## 7. 店員給与スケールの既存アンカー
 
-- 大学の固定買い物人口値か、誘致ごとに人口が変動するのか
+初代専用Wikiは、雇用画面の日給が24時間営業基準であり、短時間営業では異動画面の給料表示が下がると説明している。また、体感的な換算として時給250～300円程度の店員が多いという記述がある。
+
+Source:
+- https://wikiwiki.jp/theconveni1/%E5%BA%97%E5%93%A1
+
+Evidence: `PROVISIONAL-COMMUNITY-FIRST-TITLE / SCALE-ANCHOR`
+
+これは正確な給与式ではないため、個別店員の日給をこの換算から逆算しない。
+
+## 8. 未確定
+
+- 大学の正確な固定人口/買い物人口値
+- 「人口増加」と建物画面の「買い物人口」が同一値か別値か
 - 大学の正確な誘致費
 - 大学のfootprint
-- 消防署等の正確な建設待ち期間
+- 大学の建設期間が固定値か、誘致日/月境界等で変動するか
+- 消防署・警察・遊園地等の施設別建設期間
+- 各施設が自動発展・誘致の両方に対応するか
+- 自動発展施設の出現条件・候補地決定式
 - 都庁発火条件が `20,000以上` / `20,000超` のどちらか
-- 都庁出現からエンディングまでの正確なフレーム/イベント順
 
-これらは攻略本の町施設データ表とPS実機動画を優先して詰める。
+これらはPS/SS対応攻略本の町施設データ表、説明書、PS原作画面・実機動画を優先して詰める。
