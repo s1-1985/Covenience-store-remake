@@ -168,6 +168,72 @@ class StoreRuntimeIntegrationTests(unittest.TestCase):
                 flow=PurchaseFlow.SELF_SERVICE_CANDIDATE,
             )
 
+    def test_customer_pick_before_arrival_is_rejected_without_mutating_state(self):
+        runtime = StoreRuntimeHarness(self.make_grid(), initial_cash_yen=1_000)
+        runtime.inventory.add_slot(
+            "bread-slot",
+            fixture_id="shelf",
+            product_id="bread",
+            capacity_units=10,
+            initial_units=5,
+            unit_procurement_cost_yen=80,
+        )
+        runtime.add_customer(
+            "c1",
+            entry_point=GridPoint(0, 0),
+            exit_point=GridPoint(0, 8),
+            merchandise_fixture_ids=("shelf",),
+        )
+        self.assertEqual(
+            runtime.customers.customer("c1").state,
+            CustomerState.APPROACHING_MERCHANDISE,
+        )
+
+        with self.assertRaises(ValueError):
+            runtime.customer_pick_and_continue(
+                "c1",
+                "bread-slot",
+                quantity=1,
+                unit_sale_price_yen=120,
+                flow=PurchaseFlow.SELF_SERVICE_CANDIDATE,
+            )
+
+        self.assertEqual(runtime.inventory.slot("bread-slot").units, 5)
+        self.assertEqual(runtime.purchases.basket("c1").lines, [])
+
+    def test_settle_self_service_rejects_basket_that_requires_checkout(self):
+        runtime = StoreRuntimeHarness(self.make_grid(), initial_cash_yen=1_000)
+        runtime.add_checkout("checkout", simultaneous_staff_capacity=1)
+        runtime.inventory.add_slot(
+            "bread-slot",
+            fixture_id="shelf",
+            product_id="bread",
+            capacity_units=10,
+            initial_units=5,
+            unit_procurement_cost_yen=80,
+        )
+        runtime.add_customer(
+            "c1",
+            entry_point=GridPoint(0, 0),
+            exit_point=GridPoint(0, 8),
+            merchandise_fixture_ids=("shelf",),
+            checkout_fixture_id="checkout",
+        )
+
+        self.advance_until(runtime, "c1", CustomerState.AT_MERCHANDISE)
+        runtime.customer_pick_and_continue(
+            "c1",
+            "bread-slot",
+            quantity=1,
+            unit_sale_price_yen=120,
+            flow=PurchaseFlow.CHECKOUT_REQUIRED,
+        )
+
+        with self.assertRaises(ValueError):
+            runtime.settle_self_service("c1")
+
+        self.assertFalse(runtime.purchases.basket("c1").settled)
+
     def test_day_end_policy_is_composed_without_month_formula(self):
         runtime = StoreRuntimeHarness(
             self.make_grid(),

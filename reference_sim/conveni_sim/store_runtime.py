@@ -5,7 +5,7 @@ from typing import Optional, Sequence
 
 from .checkout import CheckoutServiceRecord, CheckoutStationRuntime
 from .cleaning import StoreCleaningRuntime
-from .customer import CustomerLifecycleHarness, CustomerSession, PurchaseFlow
+from .customer import CustomerLifecycleHarness, CustomerSession, CustomerState, PurchaseFlow
 from .economy import BankruptcyPolicy, DayEndResult, FinancialEvent, StoreCashLedger
 from .inventory import InventoryMutation, StoreInventoryRuntime
 from .purchases import BasketPickResult, SaleSettlement, StorePurchaseRuntime
@@ -112,6 +112,8 @@ class StoreRuntimeHarness:
     ) -> BasketPickResult:
         session = self.customers.customer(customer_id)
         slot = self.inventory.slot(slot_id)
+        if session.state is not CustomerState.AT_MERCHANDISE:
+            raise ValueError("customer is not at merchandise")
         if session.current_merchandise_fixture_id != slot.fixture_id:
             raise ValueError(
                 "customer current merchandise fixture does not match inventory slot fixture"
@@ -151,6 +153,9 @@ class StoreRuntimeHarness:
         *,
         source_id: Optional[str] = None,
     ) -> SaleSettlement:
+        session = self.customers.customer(customer_id)
+        if session.requires_checkout and not session.completed_checkout:
+            raise ValueError("customer basket requires staffed checkout before self-service settlement")
         return self.purchases.settle(customer_id, source_id=source_id)
 
     def replenish_and_charge(
