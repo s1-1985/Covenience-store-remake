@@ -18,6 +18,7 @@ class FinancialEventKind(str, Enum):
     LABOR = "labor"
     FIXTURE_MAINTENANCE = "fixture_maintenance"
     PROMOTION = "promotion"
+    PERMIT = "permit"
     CONSTRUCTION = "construction"
     LAND = "land"
     OTHER = "other"
