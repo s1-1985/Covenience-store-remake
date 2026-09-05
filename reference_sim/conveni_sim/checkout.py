@@ -95,8 +95,15 @@ class CheckoutStationRuntime:
             raise CheckoutCapacityError("checkout has no free staff service slot")
 
         staff_state = self.staff.staff_member(staff_id)
-        if staff_state.task is StaffTask.CHECKOUT and staff_state.target_id not in (None, self.fixture_id):
-            raise ValueError("staff member is already assigned to another checkout")
+        if staff_state.task is StaffTask.CHECKOUT:
+            if staff_state.target_id not in (None, self.fixture_id):
+                raise ValueError("staff member is already assigned to another checkout")
+        elif staff_state.task is not StaffTask.IDLE:
+            # Starting checkout is not itself a task-reassignment policy.  If a
+            # staff member is replenishing, cleaning, resting, or otherwise
+            # assigned, the caller/policy must explicitly release/reassign that
+            # work before checkout service may begin.
+            raise ValueError("staff member is already assigned to another task")
 
         self._waiting.remove(customer_id)
         self._active_by_staff[staff_id] = customer_id
