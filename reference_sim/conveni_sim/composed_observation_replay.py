@@ -15,6 +15,11 @@ from .observation_checkout_replay import (
     ObservationCheckoutDurationReplayMapping,
     ObservationCheckoutDurationReplayPlan,
 )
+from .observation_checkout_selection_replay import (
+    ObservationCheckoutSelectionReplayAdapter,
+    ObservationCheckoutSelectionReplayMapping,
+    ObservationCheckoutSelectionReplayPlan,
+)
 from .observation_comparison import ObservationIdentityMapping
 from .observation_day_adapter import ObservationDayCoverage, ObservationDayMetricMapping
 from .observation_replay import (
@@ -36,6 +41,7 @@ class ComposedObservationReplaySelection:
 
     arrivals: Optional[ObservationArrivalReplayMapping] = None
     checkout_durations: Optional[ObservationCheckoutDurationReplayMapping] = None
+    checkout_selection: Optional[ObservationCheckoutSelectionReplayMapping] = None
     anger: Optional[ObservationAngerReplayMapping] = None
     anger_basis: Optional[ObservedAngerBasis] = None
 
@@ -45,6 +51,7 @@ class ComposedObservationReplaySelection:
         if (
             self.arrivals is None
             and self.checkout_durations is None
+            and self.checkout_selection is None
             and self.anger is None
         ):
             raise ValueError("at least one observation replay seam must be selected")
@@ -56,6 +63,7 @@ class ComposedObservationReplayValidationResult:
     replay_config: MinimalRepresentativeDayScenarioConfig
     arrival_plan: Optional[ObservationArrivalReplayPlan]
     checkout_duration_plan: Optional[ObservationCheckoutDurationReplayPlan]
+    checkout_selection_plan: Optional[ObservationCheckoutSelectionReplayPlan]
     anger_plan: Optional[ObservationAngerReplayPlan]
     validation: EventComparedObservationBackedMinimalDayValidationResult
 
@@ -70,17 +78,7 @@ def validate_minimal_day_with_composed_observation_replay(
     identity_mapping: ObservationIdentityMapping = ObservationIdentityMapping(),
     export_options: SimulationObservationExportOptions = SimulationObservationExportOptions(),
 ) -> ComposedObservationReplayValidationResult:
-    """Hold selected observed timings fixed and compare the same autonomous run.
-
-    Arrival, checkout-duration and anger replay remain independently opt-in. The
-    adapters preserve their own strict evidence boundaries; this function only
-    composes them so one run can isolate downstream behavior from several known
-    upstream timings at once.
-
-    Arrival replay deliberately makes the observed customer id the runtime id.
-    Therefore a separate customer-id normalization is rejected when arrivals are
-    replayed. Staff and fixture mappings remain valid for checkout/anger evidence.
-    """
+    """Hold selected observed timings/selection fixed and compare one autonomous run."""
 
     if selection.arrivals is not None and identity_mapping.customer_ids:
         raise ValueError(
@@ -111,6 +109,18 @@ def validate_minimal_day_with_composed_observation_replay(
         )
         checkout_duration_policy = checkout_adapter.build_policy(checkout_duration_plan)
 
+    checkout_selection_plan: Optional[ObservationCheckoutSelectionReplayPlan] = None
+    checkout_selection_policy = None
+    if selection.checkout_selection is not None:
+        selection_adapter = ObservationCheckoutSelectionReplayAdapter()
+        checkout_selection_plan = selection_adapter.build_plan(
+            timeline,
+            coverage,
+            mapping=selection.checkout_selection,
+            identity_mapping=identity_mapping,
+        )
+        checkout_selection_policy = selection_adapter.build_policy(checkout_selection_plan)
+
     anger_plan: Optional[ObservationAngerReplayPlan] = None
     checkout_anger_policy = None
     if selection.anger is not None:
@@ -133,6 +143,7 @@ def validate_minimal_day_with_composed_observation_replay(
         identity_mapping=identity_mapping,
         checkout_anger_policy=checkout_anger_policy,
         checkout_duration_policy=checkout_duration_policy,
+        checkout_selection_policy=checkout_selection_policy,
         export_options=export_options,
     )
     return ComposedObservationReplayValidationResult(
@@ -140,6 +151,7 @@ def validate_minimal_day_with_composed_observation_replay(
         replay_config=replay_config,
         arrival_plan=arrival_plan,
         checkout_duration_plan=checkout_duration_plan,
+        checkout_selection_plan=checkout_selection_plan,
         anger_plan=anger_plan,
         validation=validation,
     )

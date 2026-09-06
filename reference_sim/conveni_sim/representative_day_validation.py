@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from .checkout_anger_timing import CheckoutAngerTriggerPolicy
+from .checkout_selection_policy import CheckoutCustomerSelectionPolicy
 from .checkout_service_timing import CheckoutServiceDurationPolicy
 from .minimal_day_scenario import (
     MinimalRepresentativeDayScenario,
@@ -70,6 +71,7 @@ def validate_minimal_representative_day(
     *,
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
     checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
+    checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
 ) -> MinimalRepresentativeDayValidationResult:
     """Build, optionally override policies, run, measure and compare one day."""
 
@@ -81,6 +83,10 @@ def validate_minimal_representative_day(
         if scenario.orchestrator.checkout_timing is None:
             raise ValueError("checkout duration override requires checkout timing")
         scenario.orchestrator.checkout_duration_policy = checkout_duration_policy
+    if checkout_selection_policy is not None:
+        if scenario.orchestrator.checkout_policy is None:
+            raise ValueError("checkout selection override requires checkout selection")
+        scenario.orchestrator.checkout_policy = checkout_selection_policy
     run = scenario.run()
     metrics = derive_representative_day_metrics(run)
     comparison = compare_representative_day_metrics(metrics, observed)
@@ -100,14 +106,9 @@ def validate_minimal_day_from_observation_timeline(
     mapping: ObservationDayMetricMapping = ObservationDayMetricMapping(),
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
     checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
+    checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
 ) -> ObservationBackedMinimalDayValidationResult:
-    """Bridge annotated observations directly into the autonomous-day loop.
-
-    Coverage and semantic mapping remain explicit. Partial observations therefore
-    produce only window summaries and an empty/sparse full-day target set rather
-    than being extrapolated to a complete day. Optional duration/anger policies
-    are caller supplied and do not become recovered defaults.
-    """
+    """Bridge annotated observations directly into the autonomous-day loop."""
 
     observation = ObservationDayMetricAdapter().reduce(
         timeline,
@@ -119,6 +120,7 @@ def validate_minimal_day_from_observation_timeline(
         observation.comparison_targets,
         checkout_anger_policy=checkout_anger_policy,
         checkout_duration_policy=checkout_duration_policy,
+        checkout_selection_policy=checkout_selection_policy,
     )
     return ObservationBackedMinimalDayValidationResult(
         observation=observation,
@@ -135,16 +137,10 @@ def validate_minimal_day_with_event_comparison(
     identity_mapping: ObservationIdentityMapping = ObservationIdentityMapping(),
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
     checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
+    checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
     export_options: SimulationObservationExportOptions = SimulationObservationExportOptions(),
 ) -> EventComparedObservationBackedMinimalDayValidationResult:
-    """Run metric and event-level validation without inventing correspondence.
-
-    The observed timeline is first reduced through the existing coverage-aware
-    metric adapter. The same scenario run is then exported back into the shared
-    observation vocabulary and compared only inside the supplied coverage.
-    Different observed/simulated entity ids require `identity_mapping`; no
-    nearest-time or nearest-entity matching is attempted.
-    """
+    """Run metric and event-level validation without inventing correspondence."""
 
     observation = ObservationDayMetricAdapter().reduce(
         timeline,
@@ -156,6 +152,7 @@ def validate_minimal_day_with_event_comparison(
         observation.comparison_targets,
         checkout_anger_policy=checkout_anger_policy,
         checkout_duration_policy=checkout_duration_policy,
+        checkout_selection_policy=checkout_selection_policy,
     )
     simulated_timeline = RepresentativeDayObservationExporter().export(
         validation.run,
