@@ -22,11 +22,30 @@ class DirtGenerationPolicy:
 
 
 @dataclass(frozen=True)
+class InteriorEditDirtResetPolicy:
+    """Explicit compatibility opt-in for the observed closed-store reset quirk."""
+
+    clear_floor_dirt_when_closed: bool = False
+
+
+@dataclass(frozen=True)
 class CleaningActionResult:
     staff_id: Optional[str]
     requested_cells: tuple[GridPoint, ...]
     cleaned_cells: tuple[GridPoint, ...]
     dirty_cells_remaining: int
+
+
+@dataclass(frozen=True)
+class InteriorEditDirtResetResult:
+    is_closed_for_business: bool
+    policy_enabled: bool
+    cleared_cells: tuple[GridPoint, ...]
+    dirty_cells_remaining: int
+
+    @property
+    def reset_applied(self) -> bool:
+        return self.policy_enabled and self.is_closed_for_business
 
 
 class StoreCleaningRuntime:
@@ -37,11 +56,14 @@ class StoreCleaningRuntime:
         grid: StoreGrid,
         *,
         dirt_policy: DirtGenerationPolicy = DirtGenerationPolicy(),
+        interior_edit_policy: InteriorEditDirtResetPolicy = InteriorEditDirtResetPolicy(),
     ) -> None:
         self.grid = grid
         self.dirt_policy = dirt_policy
+        self.interior_edit_policy = interior_edit_policy
         self._dirty: set[GridPoint] = set()
         self._history: list[CleaningActionResult] = []
+        self._interior_edit_history: list[InteriorEditDirtResetResult] = []
 
     @property
     def dirty_cells(self) -> frozenset[GridPoint]:
@@ -50,6 +72,10 @@ class StoreCleaningRuntime:
     @property
     def history(self) -> tuple[CleaningActionResult, ...]:
         return tuple(self._history)
+
+    @property
+    def interior_edit_history(self) -> tuple[InteriorEditDirtResetResult, ...]:
+        return tuple(self._interior_edit_history)
 
     def mark_dirty(
         self,
@@ -76,6 +102,34 @@ class StoreCleaningRuntime:
                 self._dirty.add(cell)
                 added.append(cell)
         return tuple(added)
+
+    def enter_interior_edit(
+        self,
+        *,
+        is_closed_for_business: bool,
+    ) -> InteriorEditDirtResetResult:
+        """Record interior-edit entry without inferring cleanliness-value side effects.
+
+        The first-title observation is kept behind an explicit compatibility policy
+        because exact platform coverage and the internal trigger timing remain
+        unresolved. Applying the reset clears only floor-dirt cells; it does not
+        record staff cleaning work or mutate any external cleanliness parameter.
+        """
+
+        enabled = self.interior_edit_policy.clear_floor_dirt_when_closed
+        cleared: tuple[GridPoint, ...] = ()
+        if enabled and is_closed_for_business:
+            cleared = tuple(sorted(self._dirty))
+            self._dirty.clear()
+
+        result = InteriorEditDirtResetResult(
+            is_closed_for_business=is_closed_for_business,
+            policy_enabled=enabled,
+            cleared_cells=cleared,
+            dirty_cells_remaining=len(self._dirty),
+        )
+        self._interior_edit_history.append(result)
+        return result
 
     def clean(
         self,
