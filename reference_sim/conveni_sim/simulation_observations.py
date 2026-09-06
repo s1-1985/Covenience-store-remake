@@ -2,6 +2,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from .checkout_ownership_conflict import (
+    CheckoutConflictLoserDisposition,
+    CheckoutOwnershipConflictStatus,
+)
+from .checkout_pre_service_departure import CheckoutPreServiceDepartureStatus
 from .customer import CustomerState
 from .observations import GameTimestamp, GameplayObservationTimeline, ObservationKind
 from .representative_day_runner import RepresentativeDayRunResult
@@ -24,6 +29,12 @@ class RepresentativeDayObservationExporter:
     timestamps therefore have the same game-minute granularity as the caller's
     store-step cadence; no sub-step ordering time or video-time mapping is
     invented.
+
+    Checkout-associated staff returning toward the break room is intentionally
+    exported as one cause-neutral observation kind. The runtime may know whether
+    the transition came from an ownership-conflict loser disposition or from a
+    pre-service departure policy, but a source-video annotation need not infer
+    that internal cause merely to record the visible transition.
     """
 
     def export(
@@ -160,6 +171,41 @@ class RepresentativeDayObservationExporter:
                             staff_id=applied.staff_id,
                             note=decision.target_id,
                         )
+
+            # Ownership resolution runs after generic task assignment and before
+            # pre-service departure/customer selection in StoreStepOrchestrator.
+            for conflict in step.checkout_ownership_conflicts:
+                if conflict.status is not CheckoutOwnershipConflictStatus.RESOLVED:
+                    continue
+                assert conflict.decision is not None
+                for loser in conflict.decision.loser_decisions:
+                    if (
+                        loser.disposition
+                        is not CheckoutConflictLoserDisposition.RETURN_TO_BREAK_ROOM
+                    ):
+                        continue
+                    timeline.add(
+                        ObservationKind.CHECKOUT_STAFF_RETURN_TO_BREAK_ROOM,
+                        timestamp,
+                        staff_id=loser.staff_id,
+                        fixture_id=conflict.context.checkout_fixture_id,
+                        note="reference runtime checkout ownership loser returned to break room",
+                    )
+
+            # Pre-service departure happens after ownership resolution and before
+            # checkout customer selection. Export the same visible transition
+            # without asserting that a video observer knows its internal cause.
+            for departure in step.checkout_pre_service_departures:
+                if departure.status is not CheckoutPreServiceDepartureStatus.DEPARTED:
+                    continue
+                context = departure.context
+                timeline.add(
+                    ObservationKind.CHECKOUT_STAFF_RETURN_TO_BREAK_ROOM,
+                    timestamp,
+                    staff_id=context.staff_id,
+                    fixture_id=context.checkout_fixture_id,
+                    note="reference runtime checkout pre-service return to break room",
+                )
 
             for selection in step.checkout_selections:
                 record = selection.service_started
