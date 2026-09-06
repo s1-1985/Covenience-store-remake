@@ -56,7 +56,7 @@ class ObservationIdentityMapping:
         return self._translate(value, self.fixture_ids)
 
 
-@dataclass(frozen=True, order=True)
+@dataclass(frozen=True)
 class ObservationEventSignature:
     kind: ObservationKind
     customer_id: Optional[str]
@@ -108,13 +108,7 @@ class ObservationTimelineComparison:
             return False
         return all(
             item.game_minute_delta == 0
-            and (
-                item.numeric_delta in (None, 0)
-                or (
-                    item.observed.numeric_value is None
-                    or item.simulated.numeric_value is None
-                )
-            )
+            and (item.numeric_delta is None or item.numeric_delta == 0)
             for item in self.matched
         )
 
@@ -159,6 +153,17 @@ class ObservationTimelineComparator:
             customer_id=event.customer_id,
             staff_id=event.staff_id,
             fixture_id=event.fixture_id,
+        )
+
+    @staticmethod
+    def _signature_sort_key(
+        signature: ObservationEventSignature,
+    ) -> tuple[str, str, str, str]:
+        return (
+            signature.kind.value,
+            signature.customer_id or "",
+            signature.staff_id or "",
+            signature.fixture_id or "",
         )
 
     @staticmethod
@@ -211,7 +216,10 @@ class ObservationTimelineComparator:
         unmatched_observed: list[GameplayObservation] = []
         unmatched_simulated: list[GameplayObservation] = []
 
-        signatures = sorted(set(observed_buckets) | set(simulated_buckets))
+        signatures = sorted(
+            set(observed_buckets) | set(simulated_buckets),
+            key=self._signature_sort_key,
+        )
         for signature in signatures:
             observed_bucket = observed_buckets.get(signature, [])
             simulated_bucket = simulated_buckets.get(signature, [])
