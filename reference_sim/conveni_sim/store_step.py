@@ -28,6 +28,12 @@ from .staff_task_policy import (
     StaffTaskPolicyCoordinator,
 )
 from .staff_work_candidates import StaffWorkCandidateDiscovery
+from .staff_work_timing import (
+    TIMED_STAFF_WORK_TASKS,
+    StaffWorkCompletionPolicy,
+    StaffWorkTimingCoordinator,
+    StaffWorkTimingEvaluation,
+)
 from .store_runtime import StoreRuntimeHarness
 
 
@@ -37,6 +43,7 @@ class StoreStepResult:
 
     clock: ClockAdvanceResult
     checkout_timing: tuple[CheckoutServiceTimingEvaluation, ...]
+    staff_work_timing: tuple[StaffWorkTimingEvaluation, ...]
     demand: Optional[CustomerDemandEvaluation]
     traffic: CustomerTickResult
     purchases: tuple[CustomerPurchaseEvaluation, ...]
@@ -48,9 +55,9 @@ class StoreStepOrchestrator:
     """Compose recovered store systems into one caller-driven step.
 
     The caller supplies the in-game minute delta. Demand, purchase choice, staff
-    task selection, checkout-customer selection and optional checkout duration
-    are delegated to replaceable policies. No original timing coefficient is
-    invented by this layer.
+    task selection, checkout-customer selection, optional checkout duration and
+    optional replenish/clean completion are delegated to replaceable policies.
+    No original timing coefficient is invented by this layer.
     """
 
     def __init__(
@@ -64,6 +71,8 @@ class StoreStepOrchestrator:
         checkout_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
         checkout_timing: Optional[CheckoutServiceTimingCoordinator] = None,
         checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
+        staff_work_timing: Optional[StaffWorkTimingCoordinator] = None,
+        staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
     ) -> None:
         if (purchases is None) != (purchase_policy is None):
             raise ValueError("purchases and purchase_policy must be supplied together")
@@ -71,12 +80,18 @@ class StoreStepOrchestrator:
             raise ValueError(
                 "checkout_timing and checkout_duration_policy must be supplied together"
             )
+        if (staff_work_timing is None) != (staff_work_completion_policy is None):
+            raise ValueError(
+                "staff_work_timing and staff_work_completion_policy must be supplied together"
+            )
         if demand is not None and demand.runtime is not runtime:
             raise ValueError("demand coordinator must use the same store runtime")
         if purchases is not None and purchases.runtime is not runtime:
             raise ValueError("purchase coordinator must use the same store runtime")
         if checkout_timing is not None and checkout_timing.runtime is not runtime:
             raise ValueError("checkout timing coordinator must use the same store runtime")
+        if staff_work_timing is not None and staff_work_timing.runtime is not runtime:
+            raise ValueError("staff work timing coordinator must use the same store runtime")
         self.runtime = runtime
         self.demand = demand
         self.purchases = purchases
@@ -85,6 +100,8 @@ class StoreStepOrchestrator:
         self.checkout_policy = checkout_policy
         self.checkout_timing = checkout_timing
         self.checkout_duration_policy = checkout_duration_policy
+        self.staff_work_timing = staff_work_timing
+        self.staff_work_completion_policy = staff_work_completion_policy
         self._staff_candidates = (
             StaffWorkCandidateDiscovery(runtime) if staff_policy is not None else None
         )
@@ -102,23 +119,28 @@ class StoreStepOrchestrator:
             active.extend(record.staff_id for record in checkout.active_services)
         return tuple(active)
 
+    def _locked_staff_ids(self) -> tuple[str, ...]:
+        locked = list(self._active_checkout_staff_ids())
+        if self.staff_work_timing is not None:
+            locked.extend(self.staff_work_timing.active_staff_ids)
+        return tuple(locked)
+
     def step(self, game_minutes: int) -> StoreStepResult:
         """Advance one policy-driven store step.
 
-        The caller controls step cadence. Timed checkout completion is optional:
-        when both a timing coordinator and duration policy are supplied, services
-        that were registered on an earlier step are evaluated immediately after
-        the game clock advances. Completed services settle through the existing
-        checkout path before traffic moves.
+        The caller controls step cadence. Timed checkout and non-checkout work
+        completion are optional. Existing registered work is evaluated after the
+        game clock advances; completed work uses the existing settlement,
+        replenishment or cleaning paths before demand/traffic and new task
+        selection run.
 
-        A staff member with an active checkout service is locked out of the
-        generic task selector until that service is completed or cancelled.
-        Checkout services started by this orchestrator are registered with the
-        timing coordinator at the current absolute game minute, so later steps
-        can complete them without an external finish call.
+        Staff inside an active timed work lifecycle are locked out of the generic
+        task selector until completion, stale-target release or explicit
+        unregistration. Newly selected checkout/replenish/clean work is
+        registered at the current absolute game minute for later steps.
 
-        Without checkout timing inputs, the previous explicit-completion
-        behavior is preserved.
+        Omitting either timing-policy pair preserves the prior explicit behavior
+        for that work type.
         """
         clock = self.runtime.advance_game_minutes(game_minutes)
 
@@ -129,6 +151,15 @@ class StoreStepOrchestrator:
         ):
             checkout_timing_results = self.checkout_timing.evaluate_all(
                 self.checkout_duration_policy
+            )
+
+        staff_work_timing_results: tuple[StaffWorkTimingEvaluation, ...] = ()
+        if (
+            self.staff_work_timing is not None
+            and self.staff_work_completion_policy is not None
+        ):
+            staff_work_timing_results = self.staff_work_timing.evaluate_all(
+                self.staff_work_completion_policy
             )
 
         demand_result = self.demand.evaluate() if self.demand is not None else None
@@ -155,8 +186,12 @@ class StoreStepOrchestrator:
             staff_result = self._staff_tasks.apply_policy(
                 self.staff_policy,
                 self._staff_candidates.candidates_by_staff(),
-                locked_staff_ids=self._active_checkout_staff_ids(),
+                locked_staff_ids=self._locked_staff_ids(),
             )
+            if self.staff_work_timing is not None:
+                for applied in staff_result.applied:
+                    if applied.decision.task in TIMED_STAFF_WORK_TASKS:
+                        self.staff_work_timing.register_assigned(applied.staff_id)
 
         checkout_results: list[CheckoutSelectionEvaluation] = []
         if self.checkout_policy is not None and self._checkout_selection is not None:
@@ -180,6 +215,7 @@ class StoreStepOrchestrator:
         return StoreStepResult(
             clock=clock,
             checkout_timing=checkout_timing_results,
+            staff_work_timing=staff_work_timing_results,
             demand=demand_result,
             traffic=traffic,
             purchases=tuple(purchase_results),
