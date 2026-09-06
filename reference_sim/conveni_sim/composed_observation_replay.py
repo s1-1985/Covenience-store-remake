@@ -27,6 +27,11 @@ from .observation_replay import (
     ObservationArrivalReplayMapping,
     ObservationArrivalReplayPlan,
 )
+from .observation_staff_work_interruption_replay import (
+    ObservationStaffWorkInterruptionReplayAdapter,
+    ObservationStaffWorkInterruptionReplayMapping,
+    ObservationStaffWorkInterruptionReplayPlan,
+)
 from .observation_staff_work_replay import (
     ObservationStaffWorkDurationReplayAdapter,
     ObservationStaffWorkDurationReplayMapping,
@@ -54,6 +59,7 @@ class ComposedObservationReplaySelection:
     checkout_selection: Optional[ObservationCheckoutSelectionReplayMapping] = None
     staff_work_starts: Optional[ObservationStaffWorkStartReplayMapping] = None
     staff_work_durations: Optional[ObservationStaffWorkDurationReplayMapping] = None
+    staff_work_interruptions: Optional[ObservationStaffWorkInterruptionReplayMapping] = None
     anger: Optional[ObservationAngerReplayMapping] = None
     anger_basis: Optional[ObservedAngerBasis] = None
 
@@ -66,6 +72,7 @@ class ComposedObservationReplaySelection:
             and self.checkout_selection is None
             and self.staff_work_starts is None
             and self.staff_work_durations is None
+            and self.staff_work_interruptions is None
             and self.anger is None
         ):
             raise ValueError("at least one observation replay seam must be selected")
@@ -80,6 +87,7 @@ class ComposedObservationReplayValidationResult:
     checkout_selection_plan: Optional[ObservationCheckoutSelectionReplayPlan]
     staff_work_start_plan: Optional[ObservationStaffWorkStartReplayPlan]
     staff_work_duration_plan: Optional[ObservationStaffWorkDurationReplayPlan]
+    staff_work_interruption_plan: Optional[ObservationStaffWorkInterruptionReplayPlan]
     anger_plan: Optional[ObservationAngerReplayPlan]
     validation: EventComparedObservationBackedMinimalDayValidationResult
 
@@ -167,6 +175,20 @@ def validate_minimal_day_with_composed_observation_replay(
             break_room_target_id=replay_config.timing.break_room_target_id,
         )
 
+    staff_work_interruption_plan: Optional[ObservationStaffWorkInterruptionReplayPlan] = None
+    staff_work_interruption_policy = None
+    if selection.staff_work_interruptions is not None:
+        interruption_adapter = ObservationStaffWorkInterruptionReplayAdapter()
+        staff_work_interruption_plan = interruption_adapter.build_plan(
+            timeline,
+            coverage,
+            mapping=selection.staff_work_interruptions,
+            identity_mapping=identity_mapping,
+        )
+        staff_work_interruption_policy = interruption_adapter.build_policy(
+            staff_work_interruption_plan
+        )
+
     anger_plan: Optional[ObservationAngerReplayPlan] = None
     checkout_anger_policy = None
     if selection.anger is not None:
@@ -192,6 +214,7 @@ def validate_minimal_day_with_composed_observation_replay(
         checkout_selection_policy=checkout_selection_policy,
         staff_task_policy=staff_task_policy,
         staff_work_completion_policy=staff_work_completion_policy,
+        staff_work_interruption_policy=staff_work_interruption_policy,
         export_options=export_options,
     )
     return ComposedObservationReplayValidationResult(
@@ -202,6 +225,7 @@ def validate_minimal_day_with_composed_observation_replay(
         checkout_selection_plan=checkout_selection_plan,
         staff_work_start_plan=staff_work_start_plan,
         staff_work_duration_plan=staff_work_duration_plan,
+        staff_work_interruption_plan=staff_work_interruption_plan,
         anger_plan=anger_plan,
         validation=validation,
     )
