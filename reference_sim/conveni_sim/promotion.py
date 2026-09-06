@@ -4,7 +4,8 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Iterable, Optional
 
-from .models import PromotionDefinition
+from .economy import FinancialEvent, FinancialEventKind, StoreCashLedger
+from .models import PromotionDefinition, PromotionPaymentTiming
 
 
 @dataclass(frozen=True, order=True)
@@ -51,6 +52,12 @@ class PromotionApplication:
     promotion_id: str
     popularity_gain: int
     changes: tuple[PopularityChange, ...]
+
+
+@dataclass(frozen=True)
+class TriggeredPromotionResult:
+    application: PromotionApplication
+    payment_event: FinancialEvent
 
 
 class PopularityDecayContext(str, Enum):
@@ -337,3 +344,49 @@ class StorePopularityRuntime:
             popularity_gain=gain,
             changes=tuple(changes),
         )
+
+
+def apply_confirmed_triggered_promotion(
+    scheduled: ScheduledPromotion,
+    scheduler: PromotionScheduler,
+    popularity: StorePopularityRuntime,
+    ledger: StoreCashLedger,
+    *,
+    target_store_ids: Iterable[str],
+) -> TriggeredPromotionResult:
+    """Apply an event whose payment-at-trigger timing is directly evidenced.
+
+    The low-level popularity runtime remains usable on its own for observations
+    where payment timing is unknown.  This composed path refuses to infer a
+    payment moment for promotion methods without an evidence-tagged timing.
+    """
+    definition = scheduler.definition(scheduled.promotion_id)
+    payment_timing = definition.payment_timing
+    if (
+        payment_timing is None
+        or payment_timing.value != PromotionPaymentTiming.TRIGGER_EVENT
+    ):
+        raise ValueError("promotion payment timing is unresolved")
+
+    cost_yen = definition.cost_yen.value
+    if not isinstance(cost_yen, int) or cost_yen < 0:
+        raise ValueError("promotion cost must be a known non-negative integer")
+
+    application = popularity.apply_promotion(
+        scheduled,
+        scheduler,
+        target_store_ids=target_store_ids,
+    )
+    payment_event = ledger.record_cost(
+        FinancialEventKind.PROMOTION,
+        cost_yen,
+        source_id=(
+            f"{scheduled.target_year:04d}-{scheduled.target_month:02d}:"
+            f"{scheduled.promotion_id}"
+        ),
+        note="promotion cost charged when the scheduled event fired",
+    )
+    return TriggeredPromotionResult(
+        application=application,
+        payment_event=payment_event,
+    )

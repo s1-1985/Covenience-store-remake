@@ -15,6 +15,10 @@ class EvidenceLevel(str, Enum):
     REMAKE_BALANCED_DEFAULT = "remake_balanced_default"
 
 
+class PromotionPaymentTiming(str, Enum):
+    TRIGGER_EVENT = "trigger_event"
+
+
 @dataclass(frozen=True)
 class EvidenceValue:
     value: Any
@@ -109,6 +113,7 @@ class PromotionDefinition:
     popularity_gain: EvidenceValue
     trigger_day: EvidenceValue
     trigger_hour: EvidenceValue
+    payment_timing: Optional[EvidenceValue] = None
 
 
 @dataclass(frozen=True)

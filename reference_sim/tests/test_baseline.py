@@ -15,6 +15,17 @@ class BaselineDataTests(unittest.TestCase):
     def test_all_five_promotions_total_9_6m(self):
         self.assertEqual(sum(p.cost_yen.value for p in PROMOTIONS), 9_600_000)
 
+    def test_direct_mail_values_and_payment_timing_are_video_confirmed(self):
+        direct_mail = next(item for item in PROMOTIONS if item.id == "direct_mail")
+        for value in (
+            direct_mail.cost_yen,
+            direct_mail.popularity_gain,
+            direct_mail.trigger_day,
+            direct_mail.trigger_hour,
+            direct_mail.payment_timing,
+        ):
+            self.assertEqual(value.evidence, EvidenceLevel.CONFIRMED_VISUAL)
+
     def test_service_fixture_values(self):
         by_id = {fixture.id: fixture for fixture in FIXTURES}
         self.assertEqual(by_id["potted_plant"].service_bonus.value, 2)
@@ -51,6 +62,7 @@ class BaselineDataTests(unittest.TestCase):
         by_id = {facility.id: facility for facility in TOWN_FACILITIES}
         self.assertEqual(by_id["police_box"].inducement_aid_yen.value, 400_000)
         self.assertEqual(by_id["company"].inducement_aid_yen.value, 5_400_000)
+        self.assertEqual(by_id["pool"].inducement_aid_yen.value, 1_800_000)
         self.assertEqual(by_id["vocational_school"].inducement_aid_yen.value, 4_800_000)
         self.assertEqual(by_id["university"].inducement_aid_yen.value, 9_800_000)
         for facility_id in ("police_box", "company", "vocational_school", "university"):

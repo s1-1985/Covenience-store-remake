@@ -21,6 +21,7 @@ class FinancialEventKind(str, Enum):
     PERMIT = "permit"
     CONSTRUCTION = "construction"
     LAND = "land"
+    INDUCEMENT = "inducement"
     OTHER = "other"
 
 
@@ -164,6 +165,25 @@ class StoreCashLedger:
         return self._record(
             kind,
             CashDirection.DEBIT,
+            amount_yen,
+            source_id=source_id,
+            note=note,
+        )
+
+    def record_refund(
+        self,
+        kind: FinancialEventKind,
+        amount_yen: Optional[int],
+        *,
+        source_id: Optional[str] = None,
+        note: str = "",
+    ) -> FinancialEvent:
+        """Record a non-sale credit that reverses or refunds a known cost."""
+        if kind is FinancialEventKind.SALE:
+            raise ValueError("sale revenue is not a refund")
+        return self._record(
+            kind,
+            CashDirection.CREDIT,
             amount_yen,
             source_id=source_id,
             note=note,
