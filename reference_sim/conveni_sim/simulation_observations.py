@@ -119,6 +119,29 @@ class RepresentativeDayObservationExporter:
                     note="reference runtime customer reached checkout",
                 )
 
+            if options.include_staff_work:
+                for evaluation in step.staff_work_interruptions:
+                    if not evaluation.interrupted:
+                        continue
+                    work = evaluation.context.work
+                    if work.task is StaffTask.REPLENISH:
+                        fixture_id = runtime.inventory.slot(work.target_id).fixture_id
+                        kind = ObservationKind.REPLENISH_INTERRUPT
+                        note = f"slot:{work.target_id}"
+                    elif work.task is StaffTask.CLEAN:
+                        fixture_id = None
+                        kind = ObservationKind.CLEAN_INTERRUPT
+                        note = work.target_id
+                    else:
+                        continue
+                    timeline.add(
+                        kind,
+                        timestamp,
+                        staff_id=work.staff_id,
+                        fixture_id=fixture_id,
+                        note=note,
+                    )
+
             if options.include_staff_work and step.staff_tasks is not None:
                 for applied in step.staff_tasks.applied:
                     decision = applied.decision
