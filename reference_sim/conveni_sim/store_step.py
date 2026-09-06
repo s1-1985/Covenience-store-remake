@@ -8,6 +8,11 @@ from .checkout_selection_policy import (
     CheckoutSelectionCoordinator,
     CheckoutSelectionEvaluation,
 )
+from .checkout_service_timing import (
+    CheckoutServiceDurationPolicy,
+    CheckoutServiceTimingCoordinator,
+    CheckoutServiceTimingEvaluation,
+)
 from .customer import CustomerState, CustomerTickResult
 from .customer_demand import CustomerDemandCoordinator, CustomerDemandEvaluation
 from .customer_purchase_policy import (
@@ -31,6 +36,7 @@ class StoreStepResult:
     """One explicit simulation step without inventing a real-time/game-time ratio."""
 
     clock: ClockAdvanceResult
+    checkout_timing: tuple[CheckoutServiceTimingEvaluation, ...]
     demand: Optional[CustomerDemandEvaluation]
     traffic: CustomerTickResult
     purchases: tuple[CustomerPurchaseEvaluation, ...]
@@ -42,8 +48,9 @@ class StoreStepOrchestrator:
     """Compose recovered store systems into one caller-driven step.
 
     The caller supplies the in-game minute delta. Demand, purchase choice, staff
-    task selection and checkout-customer selection are delegated to replaceable
-    policies. Service duration and completion remain explicit.
+    task selection, checkout-customer selection and optional checkout duration
+    are delegated to replaceable policies. No original timing coefficient is
+    invented by this layer.
     """
 
     def __init__(
@@ -55,19 +62,29 @@ class StoreStepOrchestrator:
         purchase_policy: Optional[CustomerPurchasePolicy] = None,
         staff_policy: Optional[StaffTaskPolicy] = None,
         checkout_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
+        checkout_timing: Optional[CheckoutServiceTimingCoordinator] = None,
+        checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
     ) -> None:
         if (purchases is None) != (purchase_policy is None):
             raise ValueError("purchases and purchase_policy must be supplied together")
+        if (checkout_timing is None) != (checkout_duration_policy is None):
+            raise ValueError(
+                "checkout_timing and checkout_duration_policy must be supplied together"
+            )
         if demand is not None and demand.runtime is not runtime:
             raise ValueError("demand coordinator must use the same store runtime")
         if purchases is not None and purchases.runtime is not runtime:
             raise ValueError("purchase coordinator must use the same store runtime")
+        if checkout_timing is not None and checkout_timing.runtime is not runtime:
+            raise ValueError("checkout timing coordinator must use the same store runtime")
         self.runtime = runtime
         self.demand = demand
         self.purchases = purchases
         self.purchase_policy = purchase_policy
         self.staff_policy = staff_policy
         self.checkout_policy = checkout_policy
+        self.checkout_timing = checkout_timing
+        self.checkout_duration_policy = checkout_duration_policy
         self._staff_candidates = (
             StaffWorkCandidateDiscovery(runtime) if staff_policy is not None else None
         )
@@ -86,20 +103,34 @@ class StoreStepOrchestrator:
         return tuple(active)
 
     def step(self, game_minutes: int) -> StoreStepResult:
-        """Advance time, demand, traffic, purchases, staff choices, then checkout starts.
+        """Advance one policy-driven store step.
 
-        The caller controls step cadence. Checkout selection may start service for
-        staff currently assigned to a checkout, but this method never finishes
-        service or settles the sale; measured/recovered duration can be inserted
-        between start and explicit completion later.
+        The caller controls step cadence. Timed checkout completion is optional:
+        when both a timing coordinator and duration policy are supplied, services
+        that were registered on an earlier step are evaluated immediately after
+        the game clock advances. Completed services settle through the existing
+        checkout path before traffic moves.
 
         A staff member with an active checkout service is locked out of the
-        generic task selector until that service is explicitly completed or
-        cancelled. This prevents a generic policy from silently overwriting an
-        in-progress checkout state machine; it does not define the original
-        stamina-interruption or abandonment rule.
+        generic task selector until that service is completed or cancelled.
+        Checkout services started by this orchestrator are registered with the
+        timing coordinator at the current absolute game minute, so later steps
+        can complete them without an external finish call.
+
+        Without checkout timing inputs, the previous explicit-completion
+        behavior is preserved.
         """
         clock = self.runtime.advance_game_minutes(game_minutes)
+
+        checkout_timing_results: tuple[CheckoutServiceTimingEvaluation, ...] = ()
+        if (
+            self.checkout_timing is not None
+            and self.checkout_duration_policy is not None
+        ):
+            checkout_timing_results = self.checkout_timing.evaluate_all(
+                self.checkout_duration_policy
+            )
+
         demand_result = self.demand.evaluate() if self.demand is not None else None
         traffic = self.runtime.customers.tick()
 
@@ -135,12 +166,20 @@ class StoreStepOrchestrator:
                 checkout = self.runtime.checkout(staff.target_id)
                 if checkout.customer_being_served_by(staff.id) is not None:
                     continue
-                checkout_results.append(
-                    self._checkout_selection.evaluate(staff.id, self.checkout_policy)
+                evaluation = self._checkout_selection.evaluate(
+                    staff.id,
+                    self.checkout_policy,
                 )
+                checkout_results.append(evaluation)
+                if (
+                    evaluation.service_started is not None
+                    and self.checkout_timing is not None
+                ):
+                    self.checkout_timing.register_started(evaluation.service_started)
 
         return StoreStepResult(
             clock=clock,
+            checkout_timing=checkout_timing_results,
             demand=demand_result,
             traffic=traffic,
             purchases=tuple(purchase_results),
