@@ -42,7 +42,7 @@ class ObservationDayCoverage:
 
 @dataclass(frozen=True)
 class ObservationDayMetricMapping:
-    """Explicit semantic assertions required before event counts become targets."""
+    """Explicit semantic assertions required before ambiguous counts become targets."""
 
     customer_arrival_means_admitted: bool = False
     checkout_service_end_means_completed_sale: bool = False
@@ -61,6 +61,7 @@ class ObservationDayMetricReduction:
     mapping: ObservationDayMetricMapping
     window_arrival_count: int
     window_checkout_service_end_count: int
+    window_checkout_anger_count: int
     window_max_pre_service_wait_game_minutes: Optional[int]
     window_max_checkout_service_game_minutes: Optional[int]
     window_max_total_checkout_game_minutes: Optional[int]
@@ -71,10 +72,10 @@ class ObservationDayMetricReduction:
 class ObservationDayMetricAdapter:
     """Bridge annotated gameplay observations to sparse full-day comparison targets.
 
-    Duration facts are reduced only from complete explicit event pairs contained
-    inside the selected coverage window. A queue enter outside a clip is never
-    paired with a service start inside it. Partial-window maxima remain window
-    facts and never become full-day comparison targets.
+    `CHECKOUT_ANGER` is already an explicit observation semantic, so its count
+    needs no extra mapping switch. It still requires full-day coverage before it
+    becomes a representative-day target. Partial clips retain only the window
+    count and duration facts.
     """
 
     @staticmethod
@@ -161,6 +162,9 @@ class ObservationDayMetricAdapter:
         checkout_end_count = sum(
             1 for event in events if event.kind is ObservationKind.CHECKOUT_SERVICE_END
         )
+        anger_count = sum(
+            1 for event in events if event.kind is ObservationKind.CHECKOUT_ANGER
+        )
         max_wait, max_service, max_total = self._checkout_duration_maxima(events)
 
         stamina_by_staff: dict[str, list[int]] = {}
@@ -193,6 +197,7 @@ class ObservationDayMetricAdapter:
                     if mapping.checkout_service_end_means_completed_sale
                     else None
                 ),
+                checkout_anger_events=anger_count,
                 max_pre_service_wait_game_minutes=max_wait,
                 max_checkout_service_game_minutes=max_service,
                 max_total_checkout_game_minutes=max_total,
@@ -207,6 +212,7 @@ class ObservationDayMetricAdapter:
             mapping=mapping,
             window_arrival_count=arrival_count,
             window_checkout_service_end_count=checkout_end_count,
+            window_checkout_anger_count=anger_count,
             window_max_pre_service_wait_game_minutes=max_wait,
             window_max_checkout_service_game_minutes=max_service,
             window_max_total_checkout_game_minutes=max_total,
