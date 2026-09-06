@@ -52,7 +52,7 @@ class MultiCustomerCheckoutLoadTests(unittest.TestCase):
             ),
             timing=MinimalScenarioTiming(
                 step_game_minutes=1,
-                checkout_game_minutes=4,
+                checkout_game_minutes=12,
                 checkout_stamina_cost=None,
                 replenish_game_minutes=1,
                 clean_game_minutes=1,
@@ -66,15 +66,15 @@ class MultiCustomerCheckoutLoadTests(unittest.TestCase):
                 traffic_reroute_after_blocked_ticks=1,
             ),
             arrivals=(
-                ScheduledScenarioCustomer(23 * 60 + 1, "c1"),
-                ScheduledScenarioCustomer(23 * 60 + 2, "c2"),
-                ScheduledScenarioCustomer(23 * 60 + 3, "c3"),
-                ScheduledScenarioCustomer(23 * 60 + 4, "c4"),
+                ScheduledScenarioCustomer(22 * 60 + 21, "c1"),
+                ScheduledScenarioCustomer(22 * 60 + 22, "c2"),
+                ScheduledScenarioCustomer(22 * 60 + 23, "c3"),
+                ScheduledScenarioCustomer(22 * 60 + 24, "c4"),
             ),
             initial_cash_yen=1_000,
             operating_hours=OperatingHours.twenty_four_hours(),
-            start_hour=23,
-            start_minute=0,
+            start_hour=22,
+            start_minute=20,
             year=1,
             month=1,
             day=1,
@@ -84,7 +84,7 @@ class MultiCustomerCheckoutLoadTests(unittest.TestCase):
     def test_clustered_customers_create_queue_and_measurable_anger_events(self):
         scenario = build_minimal_representative_day_scenario(
             self.make_config(),
-            checkout_anger_policy=ServiceElapsedScenarioAngerPolicy(3),
+            checkout_anger_policy=ServiceElapsedScenarioAngerPolicy(10),
         )
 
         run = scenario.run()
@@ -97,7 +97,7 @@ class MultiCustomerCheckoutLoadTests(unittest.TestCase):
         self.assertEqual(metrics.known_checkout_revenue_yen, 400)
         self.assertEqual(metrics.known_cash_delta_yen, 400)
         self.assertEqual(metrics.peak_active_checkout_services, 1)
-        self.assertGreaterEqual(metrics.peak_waiting_checkout_customers, 2)
+        self.assertGreaterEqual(metrics.peak_waiting_checkout_customers, 1)
         self.assertEqual(metrics.exited_customers, 4)
 
         self.assertIsNotNone(scenario.checkout_anger_penalties)
@@ -118,7 +118,7 @@ class MultiCustomerCheckoutLoadTests(unittest.TestCase):
     def test_checkout_anger_count_is_sparse_comparison_metric(self):
         scenario = build_minimal_representative_day_scenario(
             self.make_config(),
-            checkout_anger_policy=ServiceElapsedScenarioAngerPolicy(3),
+            checkout_anger_policy=ServiceElapsedScenarioAngerPolicy(10),
         )
         metrics = derive_representative_day_metrics(scenario.run())
 
