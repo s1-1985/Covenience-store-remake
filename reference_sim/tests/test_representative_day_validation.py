@@ -24,9 +24,11 @@ from conveni_sim.representative_day_metrics import (
 )
 from conveni_sim.representative_day_validation import (
     validate_minimal_day_from_observation_timeline,
+    validate_minimal_day_with_event_comparison,
     validate_minimal_representative_day,
 )
 from conveni_sim.scenario_policies import ScheduledScenarioCustomer
+from conveni_sim.simulation_observations import RepresentativeDayObservationExporter
 from conveni_sim.staff import StaffTask
 from conveni_sim.store_grid import Direction, GridPoint
 
@@ -178,6 +180,40 @@ class RepresentativeDayValidationTests(unittest.TestCase):
         self.assertEqual(result.observation.window_checkout_service_end_count, 1)
         self.assertIsNone(result.observation.comparison_targets.admitted_arrivals)
         self.assertEqual(result.validation.comparison.deltas, ())
+
+    def test_event_comparison_reuses_exported_simulation_vocabulary_in_one_call(self):
+        config = self.make_config()
+        baseline = validate_minimal_representative_day(
+            config,
+            ObservedRepresentativeDayMetrics(),
+        )
+        observed_timeline = RepresentativeDayObservationExporter().export(
+            baseline.run,
+            baseline.scenario.runtime,
+            source_id="synthetic-observation-copy",
+        )
+        coverage = ObservationDayCoverage(
+            1,
+            1,
+            1,
+            start_minute_inclusive=23 * 60 + 30,
+            end_minute_exclusive=24 * 60,
+        )
+
+        result = validate_minimal_day_with_event_comparison(
+            config,
+            observed_timeline,
+            coverage,
+        )
+
+        self.assertTrue(result.event_comparison.matched)
+        self.assertTrue(result.event_comparison.exact_event_match)
+        self.assertEqual(result.event_comparison.unmatched_observed, ())
+        self.assertEqual(result.event_comparison.unmatched_simulated, ())
+        self.assertEqual(
+            result.simulated_timeline.source_id,
+            "reference-simulation-validation",
+        )
 
 
 if __name__ == "__main__":
