@@ -23,6 +23,10 @@ from .customer_purchase_policy import (
 )
 from .operating_time import ClockAdvanceResult
 from .staff import StaffTask
+from .staff_growth_resolution import (
+    EvidenceBackedStaffGrowthResolver,
+    StaffGrowthResolution,
+)
 from .staff_rest_timing import (
     StaffRestTimingCoordinator,
     StaffRestTimingEvaluation,
@@ -51,6 +55,7 @@ class StoreStepResult:
     staff_rest_timing: tuple[StaffRestTimingEvaluation, ...]
     checkout_timing: tuple[CheckoutServiceTimingEvaluation, ...]
     staff_work_timing: tuple[StaffWorkTimingEvaluation, ...]
+    staff_growth: tuple[StaffGrowthResolution, ...]
     demand: Optional[CustomerDemandEvaluation]
     traffic: CustomerTickResult
     purchases: tuple[CustomerPurchaseEvaluation, ...]
@@ -63,9 +68,9 @@ class StoreStepOrchestrator:
 
     The caller supplies the in-game minute delta. Demand, purchase choice, staff
     task selection, checkout-customer selection, optional checkout duration and
-    completion effects, optional replenish/clean completion and optional rest
-    transitions are delegated to replaceable policies. No original timing or
-    stamina coefficient is invented by this layer.
+    completion effects, optional replenish/clean completion, optional recovered
+    work growth and optional rest transitions are delegated to replaceable
+    layers. No unresolved original timing or stamina coefficient is invented.
     """
 
     def __init__(
@@ -82,6 +87,7 @@ class StoreStepOrchestrator:
         checkout_completion_effects_policy: Optional[CheckoutServiceCompletionEffectsPolicy] = None,
         staff_work_timing: Optional[StaffWorkTimingCoordinator] = None,
         staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
+        staff_growth_resolver: Optional[EvidenceBackedStaffGrowthResolver] = None,
         staff_rest_timing: Optional[StaffRestTimingCoordinator] = None,
         staff_rest_transition_policy: Optional[StaffRestTransitionPolicy] = None,
     ) -> None:
@@ -111,6 +117,8 @@ class StoreStepOrchestrator:
             raise ValueError("checkout timing coordinator must use the same store runtime")
         if staff_work_timing is not None and staff_work_timing.runtime is not runtime:
             raise ValueError("staff work timing coordinator must use the same store runtime")
+        if staff_growth_resolver is not None and staff_growth_resolver.roster is not runtime.staff:
+            raise ValueError("staff growth resolver must use the same store roster")
         if staff_rest_timing is not None and staff_rest_timing.runtime is not runtime:
             raise ValueError("staff rest timing coordinator must use the same store runtime")
         self.runtime = runtime
@@ -124,6 +132,7 @@ class StoreStepOrchestrator:
         self.checkout_completion_effects_policy = checkout_completion_effects_policy
         self.staff_work_timing = staff_work_timing
         self.staff_work_completion_policy = staff_work_completion_policy
+        self.staff_growth_resolver = staff_growth_resolver
         self.staff_rest_timing = staff_rest_timing
         self.staff_rest_transition_policy = staff_rest_transition_policy
         self._staff_candidates = (
@@ -155,13 +164,11 @@ class StoreStepOrchestrator:
         Existing rest states are evaluated immediately after the game clock
         advances. A completed recovery therefore makes staff eligible for new
         work later in the same step. Timed checkout and non-checkout work are
-        then evaluated. If either completion consumes the last stamina point,
-        the newly created RETURNING_TO_BREAK_ROOM state is registered for a
-        future step but is not advanced again immediately.
-
-        Timed checkout, replenish/clean work and rest progression are optional
-        policy seams. Omitting one preserves the prior explicit behavior for
-        that lifecycle.
+        then evaluated. Recovered +1 growth for replenish/clean may be resolved
+        after those work events. Checkout growth remains pending because its
+        exact increment is still unknown. If work consumes the last stamina
+        point, the new RETURNING_TO_BREAK_ROOM state is registered for a future
+        step but is not advanced again immediately.
         """
         clock = self.runtime.advance_game_minutes(game_minutes)
 
@@ -193,6 +200,10 @@ class StoreStepOrchestrator:
             staff_work_timing_results = self.staff_work_timing.evaluate_all(
                 self.staff_work_completion_policy
             )
+
+        staff_growth_results: tuple[StaffGrowthResolution, ...] = ()
+        if self.staff_growth_resolver is not None:
+            staff_growth_results = self.staff_growth_resolver.resolve_supported_pending()
 
         if self.staff_rest_timing is not None:
             # Checkout or other work completion may have consumed the final
@@ -255,6 +266,7 @@ class StoreStepOrchestrator:
             staff_rest_timing=staff_rest_timing_results,
             checkout_timing=checkout_timing_results,
             staff_work_timing=staff_work_timing_results,
+            staff_growth=staff_growth_results,
             demand=demand_result,
             traffic=traffic,
             purchases=tuple(purchase_results),
