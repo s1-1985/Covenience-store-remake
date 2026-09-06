@@ -3,6 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+from .checkout_anger_penalty import CheckoutAngerPenaltyRuntime
+from .checkout_anger_timing import CheckoutAngerTimingCoordinator, CheckoutAngerTriggerPolicy
 from .checkout_service_timing import CheckoutServiceTimingCoordinator
 from .clock import SimulationClock
 from .customer import PurchaseFlow
@@ -131,6 +133,8 @@ class MinimalRepresentativeDayScenario:
     calendar: SimulationClock
     orchestrator: StoreStepOrchestrator
     runner: RepresentativeDayRunner
+    checkout_anger_penalties: Optional[CheckoutAngerPenaltyRuntime] = None
+    checkout_anger_timing: Optional[CheckoutAngerTimingCoordinator] = None
 
     def run(self) -> RepresentativeDayRunResult:
         return self.runner.run(step_game_minutes=self.config.timing.step_game_minutes)
@@ -138,6 +142,8 @@ class MinimalRepresentativeDayScenario:
 
 def build_minimal_representative_day_scenario(
     config: MinimalRepresentativeDayScenarioConfig,
+    *,
+    checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
 ) -> MinimalRepresentativeDayScenario:
     """Compose one parameter-driven shelf/checkout/staff representative day.
 
@@ -145,8 +151,12 @@ def build_minimal_representative_day_scenario(
     original game used these concrete fixture sizes, priorities or timing values.
     Every unresolved gameplay-sensitive numeric value is supplied by the caller.
     Replenishment/cleaning +1 growth is applied only when current values and
-    normal caps are explicitly supplied because that increment is now supported
-    by first-title dedicated research.
+    normal caps are explicitly supplied because that increment is supported by
+    first-title dedicated research.
+
+    An optional checkout-anger policy wires the pressure timing/penalty runtime
+    into the same day run. The policy remains caller supplied because the
+    original patience/anger trigger has not been recovered.
     """
 
     grid = StoreGrid(config.layout.width_tiles, config.layout.height_tiles)
@@ -233,6 +243,15 @@ def build_minimal_representative_day_scenario(
     staff_rest_timing = StaffRestTimingCoordinator(runtime)
     staff_growth = EvidenceBackedStaffGrowthResolver(runtime.staff)
 
+    checkout_anger_penalties: Optional[CheckoutAngerPenaltyRuntime] = None
+    checkout_anger_timing: Optional[CheckoutAngerTimingCoordinator] = None
+    if checkout_anger_policy is not None:
+        checkout_anger_penalties = CheckoutAngerPenaltyRuntime(runtime.staff)
+        checkout_anger_timing = CheckoutAngerTimingCoordinator(
+            runtime,
+            checkout_anger_penalties,
+        )
+
     orchestrator = StoreStepOrchestrator(
         runtime,
         demand=demand,
@@ -248,6 +267,8 @@ def build_minimal_representative_day_scenario(
             stamina_cost=config.timing.checkout_stamina_cost,
             break_room_target_id=config.timing.break_room_target_id,
         ),
+        checkout_anger_timing=checkout_anger_timing,
+        checkout_anger_policy=checkout_anger_policy,
         staff_work_timing=staff_work_timing,
         staff_work_completion_policy=FixedScenarioStaffWorkPolicy(
             replenish_game_minutes=config.timing.replenish_game_minutes,
@@ -274,4 +295,6 @@ def build_minimal_representative_day_scenario(
         calendar=calendar,
         orchestrator=orchestrator,
         runner=runner,
+        checkout_anger_penalties=checkout_anger_penalties,
+        checkout_anger_timing=checkout_anger_timing,
     )
