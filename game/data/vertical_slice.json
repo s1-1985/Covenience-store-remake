@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "scenario_id": "prototype-small-store-v1",
+  "provisional": true,
+  "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
+  "store": {
+    "width_tiles": 7,
+    "height_tiles": 6,
+    "subcells_per_tile": 2,
+    "entry_subcell": [0, 0],
+    "exit_subcell": [0, 10]
+  },
+  "fixtures": [
+    {
+      "id": "shelf-1",
+      "kind": "shelf",
+      "origin_subcell": [4, 4],
+      "footprint_tiles": [2, 1],
+      "interaction_subcell": [5, 3]
+    },
+    {
+      "id": "checkout-1",
+      "kind": "checkout",
+      "origin_subcell": [8, 6],
+      "footprint_tiles": [2, 1],
+      "interaction_subcell": [9, 5]
+    }
+  ],
+  "product": {
+    "id": "prototype-bread",
+    "initial_stock_units": 3,
+    "sale_price_yen": 120
+  },
+  "economy": {
+    "initial_cash_yen": 1000
+  },
+  "staff": {
+    "id": "staff-1",
+    "start_subcell": [9, 5]
+  },
+  "customer": {
+    "id": "customer-1"
+  },
+  "simulation": {
+    "start_minute_of_day": 540,
+    "tick_seconds": 0.25,
+    "step_game_minutes": 1,
+    "shopping_ticks": 2,
+    "checkout_ticks": 3
+  }
+}

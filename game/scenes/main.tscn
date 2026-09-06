@@ -1,0 +1,119 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/store_view.gd" id="2_store"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.105882, 0.117647, 0.129412, 1)
+
+[node name="Title" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 650.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 24
+text = "Convenience Store Remake — Playable Vertical Slice"
+
+[node name="StoreView" type="Node2D" parent="."]
+position = Vector2(40, 100)
+script = ExtResource("2_store")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="PanelContainer" parent="UI"]
+offset_left = 690.0
+offset_top = 40.0
+offset_right = 1240.0
+offset_bottom = 680.0
+
+[node name="Margin" type="MarginContainer" parent="UI/Panel"]
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="VBox" type="VBoxContainer" parent="UI/Panel/Margin"]
+theme_override_constants/separation = 10
+
+[node name="Heading" type="Label" parent="UI/Panel/Margin/VBox"]
+theme_override_font_sizes/font_size = 22
+text = "STORE STATUS"
+
+[node name="PrototypeNotice" type="Label" parent="UI/Panel/Margin/VBox"]
+theme_override_colors/font_color = Color(0.95, 0.72, 0.28, 1)
+text = "PROVISIONAL PLAYABLE CLIENT\nTiming/layout values are not recovered original rules."
+autowrap_mode = 2
+
+[node name="Separator1" type="HSeparator" parent="UI/Panel/Margin/VBox"]
+
+[node name="ClockTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Game clock"
+
+[node name="ClockValue" type="Label" parent="UI/Panel/Margin/VBox"]
+theme_override_font_sizes/font_size = 28
+text = "09:00"
+
+[node name="CashTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Cash"
+
+[node name="CashValue" type="Label" parent="UI/Panel/Margin/VBox"]
+theme_override_font_sizes/font_size = 22
+text = "¥1,000"
+
+[node name="StockTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Shelf stock"
+
+[node name="StockValue" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "3 units"
+
+[node name="CustomerTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Customer"
+
+[node name="CustomerValue" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "to_shelf"
+
+[node name="StaffTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Staff"
+
+[node name="StaffValue" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "waiting_checkout"
+
+[node name="SalesTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Completed sales"
+
+[node name="SalesValue" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "0"
+
+[node name="Separator2" type="HSeparator" parent="UI/Panel/Margin/VBox"]
+
+[node name="EventTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Last event"
+
+[node name="EventValue" type="Label" parent="UI/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 58)
+text = "customer entered"
+autowrap_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="UI/Panel/Margin/VBox"]
+theme_override_constants/separation = 10
+
+[node name="PauseButton" type="Button" parent="UI/Panel/Margin/VBox/Buttons"]
+custom_minimum_size = Vector2(145, 52)
+text = "Pause"
+
+[node name="StepButton" type="Button" parent="UI/Panel/Margin/VBox/Buttons"]
+custom_minimum_size = Vector2(145, 52)
+text = "Step"
+
+[node name="ResetButton" type="Button" parent="UI/Panel/Margin/VBox/Buttons"]
+custom_minimum_size = Vector2(145, 52)
+text = "Reset"
+
+[node name="Hint" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Space: Pause / Resume"
