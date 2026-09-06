@@ -10,6 +10,7 @@ from .customer import CustomerLifecycleHarness, CustomerSession, CustomerState, 
 from .customer_share import CustomerShareRuntime
 from .economy import BankruptcyPolicy, DayEndResult, FinancialEvent, StoreCashLedger
 from .inventory import InventoryMutation, StoreInventoryRuntime
+from .manager_magazine_event import ManagerMagazineEventRuntime
 from .operating_time import ClockAdvanceResult, OperatingHours, SubdayClock
 from .purchases import BasketPickResult, SaleSettlement, StorePurchaseRuntime
 from .staff import StoreStaffRoster
@@ -75,6 +76,7 @@ class StoreRuntimeHarness:
         self.traffic = DynamicTrafficHarness(grid)
         self.customers = CustomerLifecycleHarness(self.traffic)
         self.staff = StoreStaffRoster()
+        self.manager_magazine_events = ManagerMagazineEventRuntime(self.staff)
         self.inventory = StoreInventoryRuntime()
         self.cash = StoreCashLedger(
             initial_cash_yen,
