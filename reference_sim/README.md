@@ -43,6 +43,7 @@ Rules:
 - `purchases.py` — explicit customer baskets connecting inventory depletion to known/unknown sale revenue without inventing product-choice, quantity or checkout/self-service policy.
 - `customer_share.py` — explicit customer-share inputs and recalculation requests without inventing the share formula or coefficients.
 - `promotion.py` — evidence-backed promotion scheduling and popularity events without assuming unresolved payment or month-skip behavior.
+- `inducement.py` — facility-aid reservation, observed location quotes and cancellation refund without guessing land-cost calculation or successful-placement semantics.
 - `store_runtime.py` — headless composition of movement, customers, staff, checkout, inventory, purchases, cleaning, economy, effective opening state, temporary closure and gated customer admission into one explicit vertical slice.
 - `master_audit.py` — field-level completeness audit for guide-derived fixture/product/customer/staff masters; only evidence-tagged values count as known.
 
@@ -61,6 +62,10 @@ Pathfinding in `store_grid.py` is intentionally simple 4-neighbor BFS. `traffic.
 `cleaning.py` has no automatic dirt generation. Saturn's reported cleaning=100 dirt suppression can be enabled explicitly for SS-compatible experiments, while the shared default remains unset until PS parity is confirmed.
 
 `economy.py` preserves unknown monetary effects as unknown, so a missing procurement/operating value can never silently become a zero-cost event. The reported Saturn negative-cash-at-day-end game-over rule is opt-in until PS parity is confirmed, and the unresolved four-day-to-month-end aggregation remains outside this layer.
+
+V03 directly confirms that direct-mail cost is charged when its day-2 10:00 event fires, at the same event that adds 12 popularity to both visible owned stores. `apply_confirmed_triggered_promotion` composes that one visually confirmed payment timing with the cash ledger; other promotion methods remain payment-timing-gated.
+
+`inducement.py` implements only the visually repeated placement-entry/cancellation loop: the selected aid amount is debited when location selection begins and refunded in full on cancellation. Location-dependent displayed totals are stored as observations, not calculated, and successful placement remains deliberately unimplemented until its final debit and construction timing are observed.
 
 `purchases.py` requires the caller to supply the chosen slot, quantity and sale price. Taking an item immediately depletes fixture inventory, but cash changes only on explicit settlement. This keeps normal checkout and self-service candidate flows representable without asserting unverified routing or purchase-choice AI.
 

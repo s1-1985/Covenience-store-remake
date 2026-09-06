@@ -139,7 +139,16 @@ Evidence: `CONFIRMED_VISUAL` from V03.
 
 - `00:01:00–00:03:00`: scanned at 10-second resolution; `00:02:30–00:03:00` additionally sampled at 2-second resolution around town inducement UI.
 - `00:03:50–00:05:10`: scanned at 5-second resolution; `00:04:23–00:04:30` additionally sampled at 0.5-second resolution around month rollover.
-- `00:00:00–00:01:00`, `00:03:00–00:03:50`, and `00:05:10+` remain priority unscanned/under-scanned ranges.
+- `00:05:10–00:33:20`: scanned in follow-up passes; event/day/month boundaries were additionally fine-scanned and recorded in the dedicated V03 notes.
+- `00:33:20–00:43:20`: scanned at 10-second resolution; `00:33:08–00:35:02` was fine-scanned for direct mail and inducement, and the two date boundaries near `00:36:50` and `00:39:40` were sampled at up to 0.1-second resolution.
+- `00:00:00–00:01:00`, `00:03:00–00:03:50`, and `00:43:20+` remain priority unscanned/under-scanned ranges.
+
+Detailed continuation notes:
+
+- `video-v03-daily-rollover-rival-promo-2026-09-06.md`
+- `video-v03-day4-monthend-2026-09-06.md`
+- `video-v03-aug-sep-runtime-2026-09-06.md`
+- `video-v03-sep2-promotion-inducement-2026-09-06.md`
 
 ## High-priority measurements still to extract
 

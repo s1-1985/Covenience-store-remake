@@ -1,7 +1,13 @@
 import unittest
 
 from conveni_sim.baseline_data import PROMOTIONS
-from conveni_sim.promotion import PromotionMoment, PromotionScheduler, StorePopularityRuntime
+from conveni_sim.economy import FinancialEventKind, StoreCashLedger
+from conveni_sim.promotion import (
+    PromotionMoment,
+    PromotionScheduler,
+    StorePopularityRuntime,
+    apply_confirmed_triggered_promotion,
+)
 
 
 class PromotionSchedulerTests(unittest.TestCase):
@@ -84,6 +90,86 @@ class PromotionSchedulerTests(unittest.TestCase):
 
 
 class StorePopularityRuntimeTests(unittest.TestCase):
+    def test_video_confirmed_direct_mail_event_charges_and_affects_all_stores(self):
+        scheduler = PromotionScheduler(PROMOTIONS)
+        popularity = StorePopularityRuntime()
+        popularity.add_store("main", popularity=42)
+        popularity.add_store("branch", popularity=37)
+        ledger = StoreCashLedger(7_430_572)
+        scheduler.schedule(
+            "direct_mail",
+            target_year=1,
+            target_month=9,
+            scheduled_at=PromotionMoment(1, 9, 2, 9),
+        )
+        due = scheduler.pop_due(PromotionMoment(1, 9, 2, 10))[0]
+
+        result = apply_confirmed_triggered_promotion(
+            due,
+            scheduler,
+            popularity,
+            ledger,
+            target_store_ids=("main", "branch"),
+        )
+
+        self.assertEqual(popularity.popularity("main"), 54)
+        self.assertEqual(popularity.popularity("branch"), 49)
+        self.assertEqual(ledger.known_cash_yen, 7_330_572)
+        self.assertEqual(result.payment_event.kind, FinancialEventKind.PROMOTION)
+        self.assertEqual(result.payment_event.amount_yen, 100_000)
+
+    def test_composed_payment_refuses_methods_with_unknown_timing(self):
+        scheduler = PromotionScheduler(PROMOTIONS)
+        popularity = StorePopularityRuntime()
+        popularity.add_store("main", popularity=20)
+        ledger = StoreCashLedger(10_000_000)
+        scheduler.schedule(
+            "newspaper",
+            target_year=1,
+            target_month=1,
+            scheduled_at=PromotionMoment(1, 1, 1, 0),
+        )
+        due = scheduler.pop_due(PromotionMoment(1, 1, 2, 7))[0]
+
+        with self.assertRaises(ValueError):
+            apply_confirmed_triggered_promotion(
+                due,
+                scheduler,
+                popularity,
+                ledger,
+                target_store_ids=("main",),
+            )
+
+        self.assertEqual(popularity.popularity("main"), 20)
+        self.assertEqual(ledger.events, ())
+
+    def test_composed_direct_mail_validates_all_stores_before_charging(self):
+        scheduler = PromotionScheduler(PROMOTIONS)
+        popularity = StorePopularityRuntime()
+        popularity.add_store("main", popularity=42)
+        ledger = StoreCashLedger(7_430_572)
+        scheduler.schedule(
+            "direct_mail",
+            target_year=1,
+            target_month=9,
+            scheduled_at=PromotionMoment(1, 9, 2, 9),
+        )
+        due = scheduler.pop_due(PromotionMoment(1, 9, 2, 10))[0]
+
+        with self.assertRaises(KeyError):
+            apply_confirmed_triggered_promotion(
+                due,
+                scheduler,
+                popularity,
+                ledger,
+                target_store_ids=("main", "unknown-branch"),
+            )
+
+        self.assertEqual(popularity.popularity("main"), 42)
+        self.assertEqual(ledger.known_cash_yen, 7_430_572)
+        self.assertEqual(ledger.events, ())
+        self.assertFalse(due.applied)
+
     def test_promotion_applies_to_supplied_current_store_set(self):
         scheduler = PromotionScheduler(PROMOTIONS)
         popularity = StorePopularityRuntime()

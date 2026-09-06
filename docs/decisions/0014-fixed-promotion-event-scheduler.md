@@ -20,6 +20,8 @@ Source of record:
 
 The payment timing, late same-month scheduling behavior, cancellation behavior and some target-store edge cases remain unresolved.
 
+Update: Decision 0032 later resolves payment-at-trigger for direct mail only. The remaining methods and edge cases stay unresolved.
+
 ## Decision
 
 1. Model regular promotions as scheduled events with fixed day/hour timestamps.

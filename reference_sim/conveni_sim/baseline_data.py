@@ -6,6 +6,7 @@ from .models import (
     FixtureDefinition,
     PermitDefinition,
     PromotionDefinition,
+    PromotionPaymentTiming,
     ScenarioDefinition,
     StoreVariant,
     TownFacilityAnchor,
@@ -14,6 +15,7 @@ from .models import (
 WIKI = "https://wikiwiki.jp/theconveni1/"
 VIDEO_PS5 = "user-provided Console Archives PS5 first-title video, fixture UI around 14-17m"
 VIDEO_LONGRUN = "user-provided first-title long-run video, facility-inducement UI around 70m48s"
+VIDEO_V03_SEP2 = "user-provided V03 first-title video around 33m08s-35m02s, 1Y Sep day 2"
 
 STORE_VARIANTS = (
     StoreVariant(
@@ -168,7 +170,19 @@ FIXTURES = (
 )
 
 PROMOTIONS = (
-    PromotionDefinition("direct_mail", EvidenceValue(100_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(12, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(2, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(10, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
+    PromotionDefinition(
+        "direct_mail",
+        EvidenceValue(100_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_V03_SEP2),
+        EvidenceValue(12, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_V03_SEP2),
+        EvidenceValue(2, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_V03_SEP2),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_V03_SEP2),
+        EvidenceValue(
+            PromotionPaymentTiming.TRIGGER_EVENT,
+            EvidenceLevel.CONFIRMED_VISUAL,
+            VIDEO_V03_SEP2,
+            "Cash falls by exactly 100,000 yen as the day-2 10:00 event fires.",
+        ),
+    ),
     PromotionDefinition("newspaper", EvidenceValue(500_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(20, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(2, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(7, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
     PromotionDefinition("airship", EvidenceValue(1_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(30, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(3, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(15, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
     PromotionDefinition("radio", EvidenceValue(3_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(50, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(1, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(17, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
@@ -207,6 +221,10 @@ TOWN_FACILITIES = (
     TownFacilityAnchor(
         "company",
         inducement_aid_yen=EvidenceValue(5_400_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_LONGRUN),
+    ),
+    TownFacilityAnchor(
+        "pool",
+        inducement_aid_yen=EvidenceValue(1_800_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_V03_SEP2),
     ),
     TownFacilityAnchor(
         "vocational_school",
