@@ -15,6 +15,7 @@ class CheckoutSelectionContext:
     waiting_customer_ids: tuple[str, ...]
     active_service_count: int
     simultaneous_staff_capacity: int
+    current_minute_of_day: int
 
     @property
     def free_service_slots(self) -> int:
@@ -39,7 +40,9 @@ class CheckoutSelectionCoordinator:
 
     The first-title FAQ reports non-strict checkout order, so any currently
     waiting customer at the assigned checkout may be chosen. Service completion
-    and duration remain explicit and are not handled here.
+    and duration remain explicit and are not handled here. The current game
+    minute is exposed factually so evidence-backed policies may delay a service
+    until an explicitly observed start time without introducing a wall clock.
     """
 
     def __init__(self, runtime: StoreRuntimeHarness) -> None:
@@ -57,6 +60,7 @@ class CheckoutSelectionCoordinator:
             waiting_customer_ids=waiting,
             active_service_count=len(checkout.active_services),
             simultaneous_staff_capacity=checkout.simultaneous_staff_capacity,
+            current_minute_of_day=self.runtime.subday_clock.minute_of_day,
         )
 
     def evaluate(
