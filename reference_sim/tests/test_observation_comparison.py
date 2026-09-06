@@ -205,6 +205,35 @@ class ObservationTimelineComparatorTests(unittest.TestCase):
         self.assertEqual(result.unmatched_simulated, ())
         self.assertTrue(result.exact_event_match)
 
+    def test_mixed_none_and_string_identity_signatures_are_safe_to_compare(self):
+        observed = GameplayObservationTimeline("video")
+        simulated = GameplayObservationTimeline("sim")
+        observed.add(
+            ObservationKind.CLEAN_START,
+            GameTimestamp.from_hm(1, 1, 1, 11, 0),
+            staff_id="s1",
+        )
+        observed.add(
+            ObservationKind.CLEAN_START,
+            GameTimestamp.from_hm(1, 1, 1, 11, 1),
+            customer_id="unexpected-but-explicit-id",
+            staff_id="s1",
+        )
+        simulated.add(
+            ObservationKind.CLEAN_START,
+            GameTimestamp.from_hm(1, 1, 1, 11, 0),
+            staff_id="s1",
+        )
+
+        result = ObservationTimelineComparator().compare(
+            observed,
+            simulated,
+            ObservationDayCoverage(1, 1, 1),
+        )
+
+        self.assertEqual(len(result.matched), 1)
+        self.assertEqual(len(result.unmatched_observed), 1)
+
     def test_identity_mapping_must_be_one_to_one(self):
         with self.assertRaises(ValueError):
             ObservationIdentityMapping(
