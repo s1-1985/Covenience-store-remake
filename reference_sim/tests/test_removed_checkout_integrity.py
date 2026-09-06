@@ -74,12 +74,12 @@ class RemovedCheckoutIntegrityTests(unittest.TestCase):
                 break
             runtime.customers.tick()
 
-        cash_before = runtime.cash.balance_yen
+        cash_before = runtime.cash.known_cash_yen
         runtime.grid.remove_fixture("checkout")
         with self.assertRaises(ValueError):
             runtime.begin_checkout_service("checkout", staff_id="s1", customer_id="c1")
 
-        self.assertEqual(runtime.cash.balance_yen, cash_before)
+        self.assertEqual(runtime.cash.known_cash_yen, cash_before)
         self.assertFalse(runtime.purchases.basket("c1").settled)
 
     def test_removed_checkout_rejects_finish_before_settlement(self):
@@ -108,12 +108,12 @@ class RemovedCheckoutIntegrityTests(unittest.TestCase):
             runtime.customers.tick()
         runtime.begin_checkout_service("checkout", staff_id="s1", customer_id="c1")
 
-        cash_before = runtime.cash.balance_yen
+        cash_before = runtime.cash.known_cash_yen
         runtime.grid.remove_fixture("checkout")
         with self.assertRaises(ValueError):
             runtime.finish_checkout_sale("checkout", staff_id="s1")
 
-        self.assertEqual(runtime.cash.balance_yen, cash_before)
+        self.assertEqual(runtime.cash.known_cash_yen, cash_before)
         self.assertFalse(runtime.purchases.basket("c1").settled)
 
 
