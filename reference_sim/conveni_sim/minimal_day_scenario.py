@@ -26,6 +26,7 @@ from .scenario_policies import (
 from .staff import StaffSkill, StaffTask
 from .staff_growth_resolution import EvidenceBackedStaffGrowthResolver
 from .staff_rest_timing import StaffRestTimingCoordinator
+from .staff_work_interruption import StaffWorkInterruptionPolicy
 from .staff_work_timing import StaffWorkTimingCoordinator
 from .store_grid import Direction, GridPoint, StoreGrid
 from .store_runtime import StoreRuntimeHarness
@@ -151,6 +152,7 @@ def build_minimal_representative_day_scenario(
     config: MinimalRepresentativeDayScenarioConfig,
     *,
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
+    staff_work_interruption_policy: Optional[StaffWorkInterruptionPolicy] = None,
 ) -> MinimalRepresentativeDayScenario:
     """Compose one parameter-driven shelf/checkout/staff representative day.
 
@@ -161,11 +163,10 @@ def build_minimal_representative_day_scenario(
     normal caps are explicitly supplied because that increment is supported by
     first-title dedicated research.
 
-    An optional checkout-anger policy wires the pressure timing/penalty runtime
-    into the same day run. The policy remains caller supplied because the
-    original patience/anger trigger has not been recovered. The optional traffic
-    reroute threshold is likewise a scenario/harness input, not an original-game
-    congestion constant.
+    Optional checkout-anger and staff-work-interruption policies remain caller
+    supplied because their original thresholds/formulas have not been recovered.
+    The optional traffic reroute threshold is likewise a scenario/harness input,
+    not an original-game congestion constant.
     """
 
     grid = StoreGrid(config.layout.width_tiles, config.layout.height_tiles)
@@ -290,6 +291,7 @@ def build_minimal_representative_day_scenario(
             clean_stamina_cost=config.timing.clean_stamina_cost,
             break_room_target_id=config.timing.break_room_target_id,
         ),
+        staff_work_interruption_policy=staff_work_interruption_policy,
         staff_growth_resolver=staff_growth,
         staff_rest_timing=staff_rest_timing,
         staff_rest_transition_policy=IntervalScenarioRestPolicy(

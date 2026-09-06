@@ -43,6 +43,11 @@ from .staff_task_policy import (
     StaffTaskPolicyCoordinator,
 )
 from .staff_work_candidates import StaffWorkCandidateDiscovery
+from .staff_work_interruption import (
+    StaffWorkInterruptionCoordinator,
+    StaffWorkInterruptionEvaluation,
+    StaffWorkInterruptionPolicy,
+)
 from .staff_work_timing import (
     TIMED_STAFF_WORK_TASKS,
     StaffWorkCompletionPolicy,
@@ -61,6 +66,7 @@ class StoreStepResult:
     checkout_anger_timing: tuple[CheckoutAngerTimingEvaluation, ...]
     checkout_timing: tuple[CheckoutServiceTimingEvaluation, ...]
     staff_work_timing: tuple[StaffWorkTimingEvaluation, ...]
+    staff_work_interruptions: tuple[StaffWorkInterruptionEvaluation, ...]
     staff_growth: tuple[StaffGrowthResolution, ...]
     demand: Optional[CustomerDemandEvaluation]
     traffic: CustomerTickResult
@@ -75,9 +81,10 @@ class StoreStepOrchestrator:
     The caller supplies the in-game minute delta. Demand, purchase choice, staff
     task selection, checkout-customer selection, optional checkout duration and
     completion effects, optional checkout-pressure anger triggering, optional
-    replenish/clean completion, optional recovered work growth and optional rest
-    transitions are delegated to replaceable layers. No unresolved original
-    timing, patience or stamina coefficient is invented.
+    replenish/clean completion/interruption, optional recovered work growth and
+    optional rest transitions are delegated to replaceable layers. No unresolved
+    original timing, patience, interruption threshold or stamina coefficient is
+    invented.
     """
 
     def __init__(
@@ -96,6 +103,7 @@ class StoreStepOrchestrator:
         checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
         staff_work_timing: Optional[StaffWorkTimingCoordinator] = None,
         staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
+        staff_work_interruption_policy: Optional[StaffWorkInterruptionPolicy] = None,
         staff_growth_resolver: Optional[EvidenceBackedStaffGrowthResolver] = None,
         staff_rest_timing: Optional[StaffRestTimingCoordinator] = None,
         staff_rest_transition_policy: Optional[StaffRestTransitionPolicy] = None,
@@ -118,6 +126,8 @@ class StoreStepOrchestrator:
             raise ValueError(
                 "staff_work_timing and staff_work_completion_policy must be supplied together"
             )
+        if staff_work_interruption_policy is not None and staff_work_timing is None:
+            raise ValueError("staff work interruption requires staff work timing")
         if (staff_rest_timing is None) != (staff_rest_transition_policy is None):
             raise ValueError(
                 "staff_rest_timing and staff_rest_transition_policy must be supplied together"
@@ -149,6 +159,7 @@ class StoreStepOrchestrator:
         self.checkout_anger_policy = checkout_anger_policy
         self.staff_work_timing = staff_work_timing
         self.staff_work_completion_policy = staff_work_completion_policy
+        self.staff_work_interruption_policy = staff_work_interruption_policy
         self.staff_growth_resolver = staff_growth_resolver
         self.staff_rest_timing = staff_rest_timing
         self.staff_rest_transition_policy = staff_rest_transition_policy
@@ -157,6 +168,11 @@ class StoreStepOrchestrator:
         )
         self._staff_tasks = (
             StaffTaskPolicyCoordinator(runtime.staff) if staff_policy is not None else None
+        )
+        self._staff_work_interruption = (
+            StaffWorkInterruptionCoordinator(runtime, staff_work_timing)
+            if staff_work_timing is not None and staff_work_interruption_policy is not None
+            else None
         )
         self._checkout_selection = (
             CheckoutSelectionCoordinator(runtime) if checkout_policy is not None else None
@@ -180,15 +196,14 @@ class StoreStepOrchestrator:
 
         Existing rest states are evaluated immediately after the game clock
         advances. Existing checkout-pressure states are then evaluated before a
-        checkout may complete in the same step, so an evidence-supplied anger
-        threshold is not skipped by settlement. Timed checkout and non-checkout
-        work follow. Recovered +1 growth for replenish/clean may be resolved
-        after those work events. Checkout growth remains pending because its
-        exact increment is still unknown.
+        checkout may complete in the same step. Timed checkout and non-checkout
+        work follow. After demand/traffic/purchase updates, an optional explicit
+        work-interruption policy may release active replenish/clean work in
+        response to factual checkout demand. Ordinary staff task selection then
+        runs, so a released staff member may choose checkout in that same step.
 
-        Newly waiting customers and newly started checkout services are synced
-        after traffic/selection at the current game minute, but are not evaluated
-        again until a later step. This avoids creating zero-time anger events.
+        With no interruption policy, active replenish/clean work remains locked
+        exactly as before; checkout demand alone never cancels it.
         """
         clock = self.runtime.advance_game_minutes(game_minutes)
 
@@ -252,6 +267,15 @@ class StoreStepOrchestrator:
         if self.checkout_anger_timing is not None:
             self.checkout_anger_timing.sync_from_runtime()
 
+        staff_work_interruption_results: tuple[StaffWorkInterruptionEvaluation, ...] = ()
+        if (
+            self._staff_work_interruption is not None
+            and self.staff_work_interruption_policy is not None
+        ):
+            staff_work_interruption_results = self._staff_work_interruption.evaluate_all(
+                self.staff_work_interruption_policy
+            )
+
         staff_result: Optional[StaffTaskPolicyApplication] = None
         if (
             self.staff_policy is not None
@@ -294,6 +318,7 @@ class StoreStepOrchestrator:
             checkout_anger_timing=checkout_anger_timing_results,
             checkout_timing=checkout_timing_results,
             staff_work_timing=staff_work_timing_results,
+            staff_work_interruptions=staff_work_interruption_results,
             staff_growth=staff_growth_results,
             demand=demand_result,
             traffic=traffic,
