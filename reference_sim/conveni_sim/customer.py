@@ -158,9 +158,9 @@ class CustomerLifecycleHarness:
         """Advance from the current merchandise stop without inventing a purchase.
 
         A future purchase policy may explicitly decide that a customer buys
-        nothing at a visited fixture.  This transition records no purchase and
+        nothing at a visited fixture. This transition records no purchase and
         no interacted fixture; it only advances the already caller-supplied
-        route.  The original probability of such a decision remains external.
+        route. The original probability of such a decision remains external.
         """
         session = self._customers[customer_id]
         if session.state is not CustomerState.AT_MERCHANDISE:
@@ -195,13 +195,16 @@ class CustomerLifecycleHarness:
         state_changes: list[tuple[str, CustomerState]] = []
 
         for session in self._customers.values():
+            # Terminal customer sessions remain available for telemetry/history,
+            # but their physical traffic agents have left the store and must not
+            # keep occupying the shared exit cell on later ticks.
+            if session.state in (CustomerState.EXITED, CustomerState.EJECTED):
+                continue
+
             agent = self.traffic.agent(session.id)
             previous_state = session.state
 
-            if agent.status is AgentStatus.UNREACHABLE and session.state not in (
-                CustomerState.EXITED,
-                CustomerState.EJECTED,
-            ):
+            if agent.status is AgentStatus.UNREACHABLE:
                 session.state = CustomerState.UNREACHABLE
             elif agent.status is AgentStatus.ARRIVED:
                 if session.state is CustomerState.APPROACHING_MERCHANDISE:
@@ -215,5 +218,7 @@ class CustomerLifecycleHarness:
 
             if session.state is not previous_state:
                 state_changes.append((session.id, session.state))
+                if session.state in (CustomerState.EXITED, CustomerState.EJECTED):
+                    self.traffic.remove_agent(session.id)
 
         return CustomerTickResult(traffic_result, tuple(state_changes))
