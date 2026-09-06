@@ -98,6 +98,9 @@ class MultiCustomerCheckoutLoadTests(unittest.TestCase):
         self.assertEqual(metrics.known_cash_delta_yen, 400)
         self.assertEqual(metrics.peak_active_checkout_services, 1)
         self.assertGreaterEqual(metrics.peak_waiting_checkout_customers, 1)
+        self.assertGreater(metrics.max_pre_service_wait_game_minutes, 0)
+        self.assertEqual(metrics.max_checkout_service_game_minutes, 12)
+        self.assertGreater(metrics.max_total_checkout_game_minutes, 12)
         self.assertEqual(metrics.exited_customers, 4)
 
         self.assertIsNotNone(scenario.checkout_anger_penalties)
@@ -124,14 +127,18 @@ class MultiCustomerCheckoutLoadTests(unittest.TestCase):
 
         comparison = compare_representative_day_metrics(
             metrics,
-            ObservedRepresentativeDayMetrics(checkout_anger_events=3),
+            ObservedRepresentativeDayMetrics(
+                checkout_anger_events=3,
+                max_checkout_service_game_minutes=11,
+            ),
         )
 
-        self.assertEqual(len(comparison.deltas), 1)
-        self.assertEqual(comparison.deltas[0].metric, "checkout_anger_events")
-        self.assertEqual(comparison.deltas[0].simulated_value, 4)
-        self.assertEqual(comparison.deltas[0].observed_value, 3)
-        self.assertEqual(comparison.deltas[0].delta, 1)
+        self.assertEqual(len(comparison.deltas), 2)
+        by_metric = {item.metric: item for item in comparison.deltas}
+        self.assertEqual(by_metric["checkout_anger_events"].delta, 1)
+        self.assertEqual(by_metric["max_checkout_service_game_minutes"].simulated_value, 12)
+        self.assertEqual(by_metric["max_checkout_service_game_minutes"].observed_value, 11)
+        self.assertEqual(by_metric["max_checkout_service_game_minutes"].delta, 1)
 
 
 if __name__ == "__main__":
