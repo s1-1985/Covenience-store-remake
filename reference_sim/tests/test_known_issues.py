@@ -79,11 +79,6 @@ class StaffAssignmentKnownIssueTests(unittest.TestCase):
         self.advance_until(runtime, customer_id, CustomerState.WAITING_CHECKOUT)
 
     def test_begin_service_must_not_silently_steal_a_replenishing_staff(self):
-        """メモ項目2: begin_service が REPLENISH 中のstaffを黙ってCHECKOUTに上書きする。
-
-        begin_service は「別のcheckoutに割当て済みか」だけを見ており、
-        REPLENISH/CLEAN 中かどうかを見ていない。
-        """
         runtime = self.make_runtime()
         runtime.staff.add_staff("s1")
         runtime.staff.assign_task("s1", StaffTask.REPLENISH, target_id="bread-slot")
@@ -94,12 +89,6 @@ class StaffAssignmentKnownIssueTests(unittest.TestCase):
 
     @unittest.expectedFailure
     def test_checkout_timing_completion_returns_the_declared_sale_type(self):
-        """メモ項目4: CheckoutServiceTimingEvaluation.sale の型注釈と実際の値が違う。
-
-        注釈は Optional[CheckoutSaleResult] だが、実際に入るのは
-        CheckoutSaleCompletion。注釈を信じて .service_started を読むと
-        AttributeError になる。
-        """
         runtime = self.make_runtime()
         runtime.staff.add_staff("s1")
         self.send_customer_to_checkout(runtime, "c1")
@@ -132,12 +121,6 @@ class PromotionKnownIssueTests(unittest.TestCase):
         return scheduler, due[0]
 
     def test_promotion_cannot_be_applied_twice(self):
-        """メモ項目5: 同じ発火済みプロモーションを何度でも適用でき、人気度が多重加算される。
-
-        StaffRoster.resolve_growth_opportunity や
-        StorePopularityRuntime.resolve_decay_opportunity には
-        「already resolved」ガードがあるのに、apply_promotion には無い。
-        """
         scheduler, record = self.make_fired_promotion()
         popularity = StorePopularityRuntime()
         popularity.add_store("store-1", popularity=10)
@@ -147,7 +130,6 @@ class PromotionKnownIssueTests(unittest.TestCase):
             popularity.apply_promotion(record, scheduler, target_store_ids=["store-1"])
 
     def test_promotion_with_unknown_store_does_not_partially_apply(self):
-        """メモ項目6: 未登録店舗IDでKeyErrorになると、それ以前の店舗だけ人気度が上がって戻らない。"""
         scheduler, record = self.make_fired_promotion()
         popularity = StorePopularityRuntime()
         popularity.add_store("store-1", popularity=10)
@@ -160,13 +142,7 @@ class PromotionKnownIssueTests(unittest.TestCase):
 
 
 class RemovedFixtureKnownIssueTests(unittest.TestCase):
-    @unittest.expectedFailure
     def test_a_fixture_removed_from_the_grid_cannot_still_sell_goods(self):
-        """メモ項目10: グリッドから撤去された什器から商品を購入でき、売上まで計上される。
-
-        `StoreGrid.remove_fixture` は在庫スロットや進行中の顧客セッションと
-        連動していないため、撤去済みの什器に顧客が「到着」し、そこから購入できる。
-        """
         grid = StoreGrid(5, 5)
         grid.place_fixture(
             instance_id="shelf",
@@ -210,11 +186,6 @@ class RemovedFixtureKnownIssueTests(unittest.TestCase):
 class StoreStepKnownIssueTests(unittest.TestCase):
     @unittest.expectedFailure
     def test_a_failing_purchase_phase_does_not_leave_the_clock_advanced(self):
-        """メモ項目11: step() が購入評価の例外で中断し、時計だけ進んだ状態になる。
-
-        `advance_game_minutes` が最初に走るため、後段で例外が出ても時間は戻らない。
-        呼び出し側が同じstepをリトライすると時間が二重に進む。
-        """
         from conveni_sim.customer_purchase_policy import (
             CustomerPurchaseCoordinator,
             CustomerPurchaseDecision,
@@ -248,7 +219,6 @@ class StoreStepKnownIssueTests(unittest.TestCase):
             def choose_purchase(self, context):
                 return CustomerPurchaseDecision.buy("slot-a", 1)
 
-        # CHECKOUT_REQUIRED offer, but the customer was routed with no checkout.
         coordinator = CustomerPurchaseCoordinator(
             runtime, [MerchandiseOffer("slot-a", 100, PurchaseFlow.CHECKOUT_REQUIRED)]
         )
@@ -275,10 +245,6 @@ class StoreStepKnownIssueTests(unittest.TestCase):
 class BaselineDataKnownIssueTests(unittest.TestCase):
     @unittest.expectedFailure
     def test_scenario_source_urls_are_not_typo_corrupted(self):
-        """メモ項目8: シナリオのソースURLに壊れたWikiページ名が混ざっている。
-
-        `ゲームモード攻略` を指すべき箇所が3つ、`ゲームード攻略`(「モ」欠落)になっている。
-        """
         broken = []
         for scenario in SCENARIOS:
             for label, value in (
