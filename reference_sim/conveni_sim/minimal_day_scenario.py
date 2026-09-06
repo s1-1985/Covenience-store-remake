@@ -5,6 +5,7 @@ from typing import Optional
 
 from .checkout_anger_penalty import CheckoutAngerPenaltyRuntime
 from .checkout_anger_timing import CheckoutAngerTimingCoordinator, CheckoutAngerTriggerPolicy
+from .checkout_pre_service_departure import CheckoutPreServiceDeparturePolicy
 from .checkout_service_timing import CheckoutServiceTimingCoordinator
 from .clock import SimulationClock
 from .customer import PurchaseFlow
@@ -152,6 +153,7 @@ def build_minimal_representative_day_scenario(
     config: MinimalRepresentativeDayScenarioConfig,
     *,
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
+    checkout_pre_service_departure_policy: Optional[CheckoutPreServiceDeparturePolicy] = None,
     staff_work_interruption_policy: Optional[StaffWorkInterruptionPolicy] = None,
 ) -> MinimalRepresentativeDayScenario:
     """Compose one parameter-driven shelf/checkout/staff representative day.
@@ -163,10 +165,11 @@ def build_minimal_representative_day_scenario(
     normal caps are explicitly supplied because that increment is supported by
     first-title dedicated research.
 
-    Optional checkout-anger and staff-work-interruption policies remain caller
-    supplied because their original thresholds/formulas have not been recovered.
-    The optional traffic reroute threshold is likewise a scenario/harness input,
-    not an original-game congestion constant.
+    Optional checkout-anger, checkout pre-service departure and staff-work-
+    interruption policies remain caller supplied because their original
+    thresholds/formulas have not been recovered. The optional traffic reroute
+    threshold is likewise a scenario/harness input, not an original-game
+    congestion constant.
     """
 
     grid = StoreGrid(config.layout.width_tiles, config.layout.height_tiles)
@@ -272,6 +275,7 @@ def build_minimal_representative_day_scenario(
         purchase_policy=purchase_policy,
         staff_policy=OrderedScenarioStaffTaskPolicy(config.staff.task_order),
         checkout_policy=FirstWaitingScenarioCheckoutPolicy(),
+        checkout_pre_service_departure_policy=checkout_pre_service_departure_policy,
         checkout_timing=checkout_timing,
         checkout_duration_policy=FixedScenarioCheckoutDurationPolicy(
             config.timing.checkout_game_minutes
