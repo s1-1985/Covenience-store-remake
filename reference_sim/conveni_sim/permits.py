@@ -43,28 +43,46 @@ class PermitApplicationResult:
 class StorePermitRuntime:
     """Per-store sales-permit state without guessed fees or distance rules.
 
-    First-title evidence supports three independent permit categories and ties
-    changing permits on an existing Saturn store to the remodel flow.  Exact
-    fees, exclusion distances and the new-store application path are still
-    unresolved, so callers must supply eligibility explicitly and new-store
-    acquisition remains unconfirmed rather than silently enabled.
+    First-title evidence supports three independent permit categories. Saturn
+    evidence confirms permit changes during remodel, while later PS evidence
+    confirms applications during new-store setup. Because confirmation still
+    differs by platform/path, callers explicitly provide which application
+    triggers are evidenced for the runtime profile. Eligibility remains an
+    explicit per-permit input; exact fees and exclusion-distance rules are not
+    inferred here.
     """
 
     def __init__(
         self,
         definitions: Iterable[PermitDefinition],
         cash: StoreCashLedger,
+        *,
+        confirmed_application_triggers: Optional[Iterable[PermitApplicationTrigger]] = None,
     ) -> None:
         self._definitions = {definition.id: definition for definition in definitions}
         if not self._definitions:
             raise ValueError("at least one permit definition is required")
         self.cash = cash
+        self._confirmed_application_triggers = frozenset(
+            confirmed_application_triggers
+            if confirmed_application_triggers is not None
+            else (PermitApplicationTrigger.REMODEL,)
+        )
+        if not all(
+            isinstance(trigger, PermitApplicationTrigger)
+            for trigger in self._confirmed_application_triggers
+        ):
+            raise TypeError("confirmed_application_triggers must contain PermitApplicationTrigger values")
         self._owned: set[str] = set()
         self._history: list[PermitApplicationResult] = []
 
     @property
     def owned_permits(self) -> frozenset[str]:
         return frozenset(self._owned)
+
+    @property
+    def confirmed_application_triggers(self) -> frozenset[PermitApplicationTrigger]:
+        return self._confirmed_application_triggers
 
     @property
     def history(self) -> tuple[PermitApplicationResult, ...]:
@@ -97,6 +115,8 @@ class StorePermitRuntime:
         self.definition(permit_id)
         if fee_yen_override is not None and fee_yen_override < 0:
             raise ValueError("fee_yen_override must be >= 0 or None")
+        if not isinstance(trigger, PermitApplicationTrigger):
+            raise ValueError(f"unsupported permit application trigger: {trigger}")
 
         if permit_id in self._owned:
             result = PermitApplicationResult(
@@ -107,7 +127,7 @@ class StorePermitRuntime:
             self._history.append(result)
             return result
 
-        if trigger is PermitApplicationTrigger.NEW_STORE:
+        if trigger not in self._confirmed_application_triggers:
             result = PermitApplicationResult(
                 permit_id,
                 trigger,
@@ -115,9 +135,6 @@ class StorePermitRuntime:
             )
             self._history.append(result)
             return result
-
-        if trigger is not PermitApplicationTrigger.REMODEL:
-            raise ValueError(f"unsupported permit application trigger: {trigger}")
 
         if eligibility is PermitEligibility.UNKNOWN:
             result = PermitApplicationResult(
@@ -149,7 +166,7 @@ class StorePermitRuntime:
             FinancialEventKind.PERMIT,
             fee_yen,
             source_id=permit_id,
-            note="first-title sales permit acquired during remodel flow",
+            note=f"first-title sales permit acquired via {trigger.value} flow",
         )
         self._owned.add(permit_id)
         result = PermitApplicationResult(
