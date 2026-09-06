@@ -1,6 +1,6 @@
 """既知バグの再現テスト(Claude Code が発見、ChatGPT が修正する対象)。
 
-対象コミット: 554d78d (2026-09-06)
+対象コミット: 016cc29 (2026-09-06)
 
 ここにあるテストは「こうあるべき」という期待を書いたもので、現在は失敗する。
 修正されると XPASS になるので、`pytest -q` の出力で直ったことが機械的に分かる。
@@ -203,6 +203,100 @@ class RemovedFixtureKnownIssueTests(unittest.TestCase):
                 quantity=1,
                 unit_sale_price_yen=120,
                 flow=PurchaseFlow.SELF_SERVICE_CANDIDATE,
+            )
+
+
+    @unittest.expectedFailure
+    def test_a_removed_checkout_fixture_cannot_still_complete_a_sale(self):
+        """メモ項目13: 撤去されたチェックアウト什器でも会計が完了し、売上が計上される。
+
+        `100282f` は商品什器からの購入を塞いだが、チェックアウト側は塞がれていない。
+        """
+        grid = StoreGrid(6, 6)
+        grid.place_fixture(
+            instance_id="shelf",
+            fixture_id="f1",
+            origin_subcell=GridPoint(4, 4),
+            footprint_tiles=(1, 1),
+            interaction_side=Direction.NORTH,
+        )
+        grid.place_fixture(
+            instance_id="checkout",
+            fixture_id="f2",
+            origin_subcell=GridPoint(8, 4),
+            footprint_tiles=(1, 1),
+            interaction_side=Direction.NORTH,
+        )
+        runtime = StoreRuntimeHarness(grid, initial_cash_yen=5_000_000)
+        runtime.add_checkout("checkout", simultaneous_staff_capacity=1)
+        runtime.staff.add_staff("s1")
+        runtime.inventory.add_slot(
+            "slot-a",
+            fixture_id="shelf",
+            product_id="bread",
+            capacity_units=10,
+            initial_units=5,
+        )
+        runtime.add_customer(
+            "c1",
+            entry_point=GridPoint(0, 0),
+            exit_point=GridPoint(0, 10),
+            merchandise_fixture_ids=("shelf",),
+            checkout_fixture_id="checkout",
+        )
+        for _ in range(80):
+            if runtime.customers.customer("c1").state is CustomerState.AT_MERCHANDISE:
+                break
+            runtime.customers.tick()
+        runtime.customer_pick_and_continue(
+            "c1",
+            "slot-a",
+            quantity=1,
+            unit_sale_price_yen=120,
+            flow=PurchaseFlow.CHECKOUT_REQUIRED,
+        )
+        for _ in range(80):
+            if runtime.customers.customer("c1").state is CustomerState.WAITING_CHECKOUT:
+                break
+            runtime.customers.tick()
+
+        runtime.grid.remove_fixture("checkout")
+        with self.assertRaises(ValueError):
+            runtime.begin_checkout_service("checkout", staff_id="s1", customer_id="c1")
+
+    @unittest.expectedFailure
+    def test_a_customer_cannot_be_routed_to_an_unplaced_checkout(self):
+        """メモ項目14: 未配置のチェックアウト什器を指定して顧客を追加できてしまう。
+
+        商品什器側(`merchandise_fixture_ids`)は未配置だと KeyError で弾かれるのに、
+        `checkout_fixture_id` 側にはその検査が無く、存在しないレジへ向かう顧客が作れる。
+        """
+        grid = StoreGrid(6, 6)
+        grid.place_fixture(
+            instance_id="shelf",
+            fixture_id="f1",
+            origin_subcell=GridPoint(4, 4),
+            footprint_tiles=(1, 1),
+            interaction_side=Direction.NORTH,
+        )
+        grid.place_fixture(
+            instance_id="checkout",
+            fixture_id="f2",
+            origin_subcell=GridPoint(8, 4),
+            footprint_tiles=(1, 1),
+            interaction_side=Direction.NORTH,
+        )
+        runtime = StoreRuntimeHarness(grid, initial_cash_yen=5_000_000)
+        runtime.add_checkout("checkout", simultaneous_staff_capacity=1)
+        runtime.grid.remove_fixture("checkout")
+
+        with self.assertRaises((ValueError, KeyError)):
+            runtime.add_customer(
+                "c1",
+                entry_point=GridPoint(0, 0),
+                exit_point=GridPoint(0, 10),
+                merchandise_fixture_ids=("shelf",),
+                checkout_fixture_id="checkout",
             )
 
 
