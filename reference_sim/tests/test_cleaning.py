@@ -1,6 +1,10 @@
 import unittest
 
-from conveni_sim.cleaning import DirtGenerationPolicy, StoreCleaningRuntime
+from conveni_sim.cleaning import (
+    DirtGenerationPolicy,
+    InteriorEditDirtResetPolicy,
+    StoreCleaningRuntime,
+)
 from conveni_sim.staff import StaffCondition, StaffTask, StoreStaffRoster
 from conveni_sim.store_grid import GridPoint, StoreGrid
 
@@ -98,6 +102,70 @@ class CleaningRuntimeTests(unittest.TestCase):
         )
         with self.assertRaises(ValueError):
             cleaning.mark_dirty((GridPoint(1, 1),))
+
+    def test_interior_edit_does_not_clear_dirt_without_explicit_compatibility_policy(self):
+        cleaning = StoreCleaningRuntime(StoreGrid(3, 3))
+        cleaning.mark_dirty((GridPoint(2, 1), GridPoint(1, 1)))
+
+        result = cleaning.enter_interior_edit(is_closed_for_business=True)
+
+        self.assertFalse(result.reset_applied)
+        self.assertEqual(result.cleared_cells, ())
+        self.assertEqual(
+            cleaning.dirty_cells,
+            frozenset({GridPoint(1, 1), GridPoint(2, 1)}),
+        )
+
+    def test_observed_closed_store_interior_edit_reset_can_be_enabled_explicitly(self):
+        cleaning = StoreCleaningRuntime(
+            StoreGrid(3, 3),
+            interior_edit_policy=InteriorEditDirtResetPolicy(
+                clear_floor_dirt_when_closed=True,
+            ),
+        )
+        cleaning.mark_dirty((GridPoint(2, 1), GridPoint(1, 1)))
+
+        result = cleaning.enter_interior_edit(is_closed_for_business=True)
+
+        self.assertTrue(result.reset_applied)
+        self.assertEqual(
+            result.cleared_cells,
+            (GridPoint(1, 1), GridPoint(2, 1)),
+        )
+        self.assertEqual(result.dirty_cells_remaining, 0)
+        self.assertEqual(cleaning.dirty_cells, frozenset())
+        self.assertEqual(cleaning.history, ())
+        self.assertEqual(cleaning.interior_edit_history, (result,))
+
+    def test_interior_edit_reset_policy_does_not_clear_while_store_is_open(self):
+        cleaning = StoreCleaningRuntime(
+            StoreGrid(3, 3),
+            interior_edit_policy=InteriorEditDirtResetPolicy(
+                clear_floor_dirt_when_closed=True,
+            ),
+        )
+        cleaning.mark_dirty((GridPoint(1, 1),))
+
+        result = cleaning.enter_interior_edit(is_closed_for_business=False)
+
+        self.assertFalse(result.reset_applied)
+        self.assertEqual(result.cleared_cells, ())
+        self.assertEqual(cleaning.dirty_cells, frozenset({GridPoint(1, 1)}))
+
+    def test_interior_edit_reset_does_not_record_staff_cleaning_work(self):
+        cleaning = StoreCleaningRuntime(
+            StoreGrid(3, 3),
+            interior_edit_policy=InteriorEditDirtResetPolicy(
+                clear_floor_dirt_when_closed=True,
+            ),
+        )
+        cleaning.mark_dirty((GridPoint(1, 1),))
+        roster = StoreStaffRoster()
+        staff = roster.add_staff("s1")
+
+        cleaning.enter_interior_edit(is_closed_for_business=True)
+
+        self.assertEqual(staff.completed_count(StaffTask.CLEAN), 0)
 
 
 if __name__ == "__main__":
