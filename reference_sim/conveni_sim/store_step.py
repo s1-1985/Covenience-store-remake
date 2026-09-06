@@ -262,6 +262,7 @@ class StoreStepOrchestrator:
                 self.staff_policy,
                 self._staff_candidates.candidates_by_staff(),
                 locked_staff_ids=self._locked_staff_ids(),
+                current_minute_of_day=self.runtime.subday_clock.minute_of_day,
             )
             if self.staff_work_timing is not None:
                 for applied in staff_result.applied:

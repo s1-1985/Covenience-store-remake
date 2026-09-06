@@ -32,6 +32,11 @@ from .observation_staff_work_replay import (
     ObservationStaffWorkDurationReplayMapping,
     ObservationStaffWorkDurationReplayPlan,
 )
+from .observation_staff_work_start_replay import (
+    ObservationStaffWorkStartReplayAdapter,
+    ObservationStaffWorkStartReplayMapping,
+    ObservationStaffWorkStartReplayPlan,
+)
 from .observations import GameplayObservationTimeline
 from .representative_day_validation import (
     EventComparedObservationBackedMinimalDayValidationResult,
@@ -47,6 +52,7 @@ class ComposedObservationReplaySelection:
     arrivals: Optional[ObservationArrivalReplayMapping] = None
     checkout_durations: Optional[ObservationCheckoutDurationReplayMapping] = None
     checkout_selection: Optional[ObservationCheckoutSelectionReplayMapping] = None
+    staff_work_starts: Optional[ObservationStaffWorkStartReplayMapping] = None
     staff_work_durations: Optional[ObservationStaffWorkDurationReplayMapping] = None
     anger: Optional[ObservationAngerReplayMapping] = None
     anger_basis: Optional[ObservedAngerBasis] = None
@@ -58,6 +64,7 @@ class ComposedObservationReplaySelection:
             self.arrivals is None
             and self.checkout_durations is None
             and self.checkout_selection is None
+            and self.staff_work_starts is None
             and self.staff_work_durations is None
             and self.anger is None
         ):
@@ -71,6 +78,7 @@ class ComposedObservationReplayValidationResult:
     arrival_plan: Optional[ObservationArrivalReplayPlan]
     checkout_duration_plan: Optional[ObservationCheckoutDurationReplayPlan]
     checkout_selection_plan: Optional[ObservationCheckoutSelectionReplayPlan]
+    staff_work_start_plan: Optional[ObservationStaffWorkStartReplayPlan]
     staff_work_duration_plan: Optional[ObservationStaffWorkDurationReplayPlan]
     anger_plan: Optional[ObservationAngerReplayPlan]
     validation: EventComparedObservationBackedMinimalDayValidationResult
@@ -129,6 +137,18 @@ def validate_minimal_day_with_composed_observation_replay(
         )
         checkout_selection_policy = selection_adapter.build_policy(checkout_selection_plan)
 
+    staff_work_start_plan: Optional[ObservationStaffWorkStartReplayPlan] = None
+    staff_task_policy = None
+    if selection.staff_work_starts is not None:
+        start_adapter = ObservationStaffWorkStartReplayAdapter()
+        staff_work_start_plan = start_adapter.build_plan(
+            timeline,
+            coverage,
+            mapping=selection.staff_work_starts,
+            identity_mapping=identity_mapping,
+        )
+        staff_task_policy = start_adapter.build_policy(staff_work_start_plan)
+
     staff_work_duration_plan: Optional[ObservationStaffWorkDurationReplayPlan] = None
     staff_work_completion_policy = None
     if selection.staff_work_durations is not None:
@@ -170,6 +190,7 @@ def validate_minimal_day_with_composed_observation_replay(
         checkout_anger_policy=checkout_anger_policy,
         checkout_duration_policy=checkout_duration_policy,
         checkout_selection_policy=checkout_selection_policy,
+        staff_task_policy=staff_task_policy,
         staff_work_completion_policy=staff_work_completion_policy,
         export_options=export_options,
     )
@@ -179,6 +200,7 @@ def validate_minimal_day_with_composed_observation_replay(
         arrival_plan=arrival_plan,
         checkout_duration_plan=checkout_duration_plan,
         checkout_selection_plan=checkout_selection_plan,
+        staff_work_start_plan=staff_work_start_plan,
         staff_work_duration_plan=staff_work_duration_plan,
         anger_plan=anger_plan,
         validation=validation,
