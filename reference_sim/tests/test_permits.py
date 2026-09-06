@@ -33,8 +33,11 @@ def permit_definition(permit_id, fee_yen=None):
 
 
 class StorePermitRuntimeTests(unittest.TestCase):
-    def make_runtime(self):
+    def make_runtime(self, *, confirmed_application_triggers=None):
         cash = StoreCashLedger(10000)
+        kwargs = {}
+        if confirmed_application_triggers is not None:
+            kwargs["confirmed_application_triggers"] = confirmed_application_triggers
         permits = StorePermitRuntime(
             (
                 permit_definition("tobacco", 1000),
@@ -42,6 +45,7 @@ class StorePermitRuntimeTests(unittest.TestCase):
                 permit_definition("medicine", 2500),
             ),
             cash,
+            **kwargs,
         )
         return permits, cash
 
@@ -120,7 +124,7 @@ class StorePermitRuntimeTests(unittest.TestCase):
         self.assertFalse(permits.owns("medicine"))
         self.assertEqual(cash.events, ())
 
-    def test_new_store_trigger_is_not_silently_enabled(self):
+    def test_unconfirmed_trigger_remains_blocked_by_runtime_profile(self):
         permits, cash = self.make_runtime()
 
         result = permits.apply(
@@ -135,6 +139,47 @@ class StorePermitRuntimeTests(unittest.TestCase):
         )
         self.assertFalse(permits.owns("tobacco"))
         self.assertEqual(cash.events, ())
+
+    def test_ps_evidence_profile_can_enable_new_store_application(self):
+        permits, cash = self.make_runtime(
+            confirmed_application_triggers=(PermitApplicationTrigger.NEW_STORE,)
+        )
+
+        result = permits.apply(
+            "tobacco",
+            trigger=PermitApplicationTrigger.NEW_STORE,
+            eligibility=PermitEligibility.ELIGIBLE,
+        )
+
+        self.assertTrue(result.acquired)
+        self.assertEqual(result.trigger, PermitApplicationTrigger.NEW_STORE)
+        self.assertEqual(result.fee_yen, 1000)
+        self.assertEqual(cash.known_cash_yen, 9000)
+        self.assertEqual(
+            permits.confirmed_application_triggers,
+            frozenset({PermitApplicationTrigger.NEW_STORE}),
+        )
+
+    def test_new_store_keeps_permit_type_eligibility_independent(self):
+        permits, cash = self.make_runtime(
+            confirmed_application_triggers=(PermitApplicationTrigger.NEW_STORE,)
+        )
+
+        tobacco = permits.apply(
+            "tobacco",
+            trigger=PermitApplicationTrigger.NEW_STORE,
+            eligibility=PermitEligibility.ELIGIBLE,
+        )
+        medicine = permits.apply(
+            "medicine",
+            trigger=PermitApplicationTrigger.NEW_STORE,
+            eligibility=PermitEligibility.INELIGIBLE,
+        )
+
+        self.assertTrue(tobacco.acquired)
+        self.assertEqual(medicine.outcome, PermitApplicationOutcome.INELIGIBLE)
+        self.assertEqual(permits.owned_permits, frozenset({"tobacco"}))
+        self.assertEqual(cash.known_cash_yen, 9000)
 
     def test_reapplying_owned_permit_does_not_charge_twice(self):
         permits, cash = self.make_runtime()
