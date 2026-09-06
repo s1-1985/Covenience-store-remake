@@ -131,6 +131,42 @@ Claude Codeによるコードレビューで気づいた事項を、ChatGPTに�
 
 ---
 
+### 13. 撤去されたチェックアウト什器でも会計が完了する(項目10の修正漏れ)
+
+- 対象コミット: `016cc29` / `reference_sim/conveni_sim/store_runtime.py`
+- 再現テスト: `tests/test_known_issues.py::test_a_removed_checkout_fixture_cannot_still_complete_a_sale`
+- 事実(実機で確認): `100282f "fix: reject purchases from removed fixtures"` は**商品什器からの購入**を塞いだが、**チェックアウト什器の撤去**は塞いでいない。レジ待ちの顧客がいる状態で `grid.remove_fixture("checkout")` した後も、`begin_checkout_service` と `finish_checkout_sale` が両方成功し、売上120円が計上され現金が 5,000,000 → 5,000,120 になった。`grid.placements` には `shelf` しか残っていない。
+- `_require_placed_fixture` というヘルパーが新設されたが、チェックアウト系のメソッドからは呼ばれていない。項目10と同じクラスの問題なので、同じ方針で塞ぐのが自然。
+
+### 14. 未配置のチェックアウト什器を指定して顧客を追加できる
+
+- 対象コミット: `016cc29` / `reference_sim/conveni_sim/store_runtime.py` の `add_customer`
+- 再現テスト: `tests/test_known_issues.py::test_a_customer_cannot_be_routed_to_an_unplaced_checkout`
+- 事実(実機で確認): `merchandise_fixture_ids=("ghost-shelf",)` は `KeyError('ghost-shelf')` で正しく弾かれるのに、`checkout_fixture_id="checkout"`(既に撤去済み)は素通りして顧客が作成される。その顧客は存在しないレジへ向かうことになる。
+- 商品什器側と検査が非対称なので、同じ検査を `checkout_fixture_id` にも適用するのが自然。
+
+### 15. マガジンイベントのスキル解決が base cap を無視する(要判断)
+
+- 対象コミット: `016cc29` / `reference_sim/conveni_sim/manager_magazine_event.py` の `resolve_opportunity`(113-115行)
+- 事実(実機で確認): `base_skill_caps={StaffSkill.SERVICE: 10}` の店長に対し、`after_skills={StaffSkill.SERVICE: 99}` で解決でき、値が99になる。`manager.runtime_skills[skill] = value` と直接書き込んでおり cap 検査が無い。
+- 対比: `StoreStaffRoster.resolve_growth_opportunity` は「normal work growth cannot exceed the known base skill cap」として cap 超えを拒否する。
+- **要判断**: 「通常の労働成長(normal work growth)」という限定表現があるので、イベント成長は意図的に cap を超えられる設計かもしれない。その場合はdocstringに明示した方がよい。意図していないならガードが必要。私にはどちらか判断できないため、xfailテストは書いていない。
+
+### 16. マガジンイベントの細かい注意点2件(補足)
+
+- 対象コミット: `016cc29` / `manager_magazine_event.py`
+- **店長解雇後の解決**: イベント記録後に `remove_staff("mgr")` してから `resolve_opportunity` を呼ぶと、生の `KeyError('mgr')` が出る。同クラスの `opportunity()` は `KeyError(f"unknown magazine opportunity sequence: ...")` と説明的なメッセージを付けているので、ここだけ不親切。
+- **店長交代後の解決**: イベント記録後に `set_manager` で別の店長に変えてから解決すると、**記録時点の店長**のスキルが更新される(現店長ではない)。イベント発生時の人物に適用するのは妥当に見えるが、意図の確認価値はある。
+
+### 17. 誘致(inducement)配置セッションの重複(補足)
+
+- 対象コミット: `016cc29` / `reference_sim/conveni_sim/inducement.py`
+- 事実(実機で確認): 同じ施設に対して `InducementPlacementSession` を複数同時に生成でき、その都度 aid が現金から引かれる(400,000円の施設で2セッション作ると800,000円減る)。両方 `cancel()` すれば残高は元に戻ることは確認済み。
+- 現状 `confirm()` に相当する機能が無く `cancel()` のみなので、セッションを放置すると現金が引かれたままになる。これはdocstringに明示されている想定内の状態。
+- 「1施設1セッション」の制約を課すかどうかは設計判断。配置確定を実装する際に併せて整理するのが自然。
+
+---
+
 ## 検証して問題が無かった領域(`554d78d` 時点)
 
 同じ場所を何度も調べ直さないための記録。以下は実際にコードを走らせて確認し、**問題が見つからなかった**。
@@ -192,4 +228,13 @@ Claude Codeによるコードレビューで気づいた事項を、ChatGPTに�
 
 ## 対応済み
 
-(まだ無し)
+| 項目 | 内容 | 対応コミット |
+|---|---|---|
+| 2 | `begin_service` が他作業中のstaffを黙って奪う | `65ca28c` |
+| 5 | `apply_promotion` に多重適用ガードが無い | `65ca28c` |
+| 6 | `apply_promotion` が未登録店舗IDで部分適用 | `65ca28c` |
+| 10 | 撤去された什器から商品が売れる(**商品什器のみ**。チェックアウト側は項目13として未対応) | `100282f` |
+
+対応済み項目の再現テストは `@unittest.expectedFailure` が外され、通常テストとして常時実行されている。
+`016cc29` 時点で新しく追加された `apply_confirmed_triggered_promotion` についても、
+未登録店舗IDでの部分適用が無いこと・同一プロモーションの二重課金が無いことを実機で確認済み(いずれも正しくガードされている)。
