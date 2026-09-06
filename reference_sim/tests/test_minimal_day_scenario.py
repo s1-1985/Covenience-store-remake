@@ -13,7 +13,8 @@ from conveni_sim.minimal_day_scenario import (
 )
 from conveni_sim.operating_time import OperatingHours
 from conveni_sim.scenario_policies import ScheduledScenarioCustomer
-from conveni_sim.staff import StaffCondition, StaffTask
+from conveni_sim.staff import StaffCondition, StaffSkill, StaffTask
+from conveni_sim.staff_growth_resolution import StaffGrowthResolutionStatus
 from conveni_sim.store_grid import Direction, GridPoint
 
 
@@ -44,6 +45,10 @@ class MinimalDayScenarioTests(unittest.TestCase):
                 stamina_max=4,
                 register_skill=40,
                 task_order=(StaffTask.CHECKOUT, StaffTask.REPLENISH, StaffTask.CLEAN),
+                replenishment_skill=5,
+                replenishment_cap=7,
+                cleaning_skill=3,
+                cleaning_cap=5,
             ),
             timing=MinimalScenarioTiming(
                 step_game_minutes=1,
@@ -72,7 +77,7 @@ class MinimalDayScenarioTests(unittest.TestCase):
             checkout_staff_capacity=1,
         )
 
-    def test_one_customer_day_runs_from_arrival_through_sale_rest_and_exit(self):
+    def test_one_customer_day_runs_from_arrival_through_sale_rest_growth_and_exit(self):
         scenario = build_minimal_representative_day_scenario(self.make_config())
 
         result = scenario.run()
@@ -86,7 +91,25 @@ class MinimalDayScenarioTests(unittest.TestCase):
         self.assertEqual(staff.stamina_current, 4)
         self.assertEqual(staff.completed_count(StaffTask.CHECKOUT), 1)
         self.assertEqual(staff.completed_count(StaffTask.REPLENISH), 2)
+        self.assertEqual(staff.skill_value(StaffSkill.REPLENISHMENT), 7)
+        self.assertEqual(staff.skill_value(StaffSkill.CLEANING), 3)
         self.assertEqual(scenario.runtime.inventory.slot(SCENARIO_SLOT_ID).units, 3)
+
+        resolved_growth = [
+            growth
+            for step in result.steps
+            for growth in step.staff_growth
+            if growth.status is StaffGrowthResolutionStatus.RESOLVED
+        ]
+        self.assertEqual(len(resolved_growth), 2)
+        self.assertTrue(all(growth.task is StaffTask.REPLENISH for growth in resolved_growth))
+
+        checkout_growth = [
+            opportunity
+            for opportunity in scenario.runtime.staff.unresolved_growth_opportunities
+            if opportunity.task is StaffTask.CHECKOUT
+        ]
+        self.assertEqual(len(checkout_growth), 1)
 
         self.assertEqual(result.day_end.summary.known_credits_yen, 120)
         self.assertEqual(result.day_end.summary.known_debits_yen, 100)
