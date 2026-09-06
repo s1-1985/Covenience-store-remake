@@ -29,6 +29,7 @@ class RepresentativeDayMetrics:
     store_closed_rejections: int
     open_state_unknown_rejections: int
     completed_checkout_sales: int
+    checkout_anger_events: int
     known_checkout_revenue_yen: int
     checkout_revenue_is_exact: bool
     peak_waiting_checkout_customers: int
@@ -64,6 +65,7 @@ class ObservedRepresentativeDayMetrics:
     attempted_arrivals: Optional[int] = None
     admitted_arrivals: Optional[int] = None
     completed_checkout_sales: Optional[int] = None
+    checkout_anger_events: Optional[int] = None
     known_checkout_revenue_yen: Optional[int] = None
     peak_waiting_checkout_customers: Optional[int] = None
     peak_active_checkout_services: Optional[int] = None
@@ -99,6 +101,7 @@ def derive_representative_day_metrics(
     store_closed_rejections = 0
     open_state_unknown_rejections = 0
     completed_checkout_sales = 0
+    checkout_anger_events = 0
     known_checkout_revenue_yen = 0
     checkout_revenue_is_exact = True
 
@@ -112,6 +115,10 @@ def derive_representative_day_metrics(
                     store_closed_rejections += 1
                 elif admission.status is CustomerAdmissionStatus.OPEN_STATE_UNKNOWN:
                     open_state_unknown_rejections += 1
+
+        checkout_anger_events += sum(
+            1 for evaluation in step.checkout_anger_timing if evaluation.triggered
+        )
 
         for checkout in step.checkout_timing:
             if not checkout.completed or checkout.sale is None:
@@ -171,6 +178,7 @@ def derive_representative_day_metrics(
         store_closed_rejections=store_closed_rejections,
         open_state_unknown_rejections=open_state_unknown_rejections,
         completed_checkout_sales=completed_checkout_sales,
+        checkout_anger_events=checkout_anger_events,
         known_checkout_revenue_yen=known_checkout_revenue_yen,
         checkout_revenue_is_exact=checkout_revenue_is_exact,
         peak_waiting_checkout_customers=peak_waiting,
@@ -200,6 +208,7 @@ def compare_representative_day_metrics(
         "attempted_arrivals",
         "admitted_arrivals",
         "completed_checkout_sales",
+        "checkout_anger_events",
         "known_checkout_revenue_yen",
         "peak_waiting_checkout_customers",
         "peak_active_checkout_services",
