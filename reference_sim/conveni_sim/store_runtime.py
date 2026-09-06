@@ -228,6 +228,8 @@ class StoreRuntimeHarness:
         checkout_fixture_id: Optional[str] = None,
     ) -> CustomerSession:
         """Low-level customer injection that intentionally bypasses the entry gate."""
+        if checkout_fixture_id is not None:
+            self._require_placed_fixture(checkout_fixture_id, role="checkout")
         session = self.customers.add_customer(
             customer_id,
             entry_point=entry_point,
@@ -280,6 +282,7 @@ class StoreRuntimeHarness:
         customer_id: str,
     ) -> CheckoutServiceRecord:
         """Start checkout service without assuming how long it takes."""
+        self._require_placed_fixture(checkout_fixture_id, role="checkout")
         basket = self.purchases.basket(customer_id)
         if basket.settled:
             raise ValueError("customer basket is already settled")
@@ -294,6 +297,7 @@ class StoreRuntimeHarness:
         staff_id: str,
     ) -> CheckoutSaleCompletion:
         """Settle and finish an already-active checkout service explicitly."""
+        self._require_placed_fixture(checkout_fixture_id, role="checkout")
         checkout = self._checkouts[checkout_fixture_id]
         customer_id = checkout.customer_being_served_by(staff_id)
         if customer_id is None:
