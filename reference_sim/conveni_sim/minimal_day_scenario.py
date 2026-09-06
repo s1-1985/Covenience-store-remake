@@ -22,6 +22,7 @@ from .scenario_policies import (
     ScheduledScenarioDemandPolicy,
 )
 from .staff import StaffSkill, StaffTask
+from .staff_growth_resolution import EvidenceBackedStaffGrowthResolver
 from .staff_rest_timing import StaffRestTimingCoordinator
 from .staff_work_timing import StaffWorkTimingCoordinator
 from .store_grid import Direction, GridPoint, StoreGrid
@@ -70,6 +71,10 @@ class MinimalScenarioStaff:
     stamina_max: Optional[int]
     register_skill: Optional[int]
     task_order: tuple[StaffTask, ...]
+    replenishment_skill: Optional[int] = None
+    replenishment_cap: Optional[int] = None
+    cleaning_skill: Optional[int] = None
+    cleaning_cap: Optional[int] = None
 
     def __post_init__(self) -> None:
         if not self.task_order:
@@ -138,7 +143,10 @@ def build_minimal_representative_day_scenario(
 
     This is a compatibility/integration harness, not an assertion that the
     original game used these concrete fixture sizes, priorities or timing values.
-    Every gameplay-sensitive numeric value is supplied by the caller/config.
+    Every unresolved gameplay-sensitive numeric value is supplied by the caller.
+    Replenishment/cleaning +1 growth is applied only when current values and
+    normal caps are explicitly supplied because that increment is now supported
+    by first-title dedicated research.
     """
 
     grid = StoreGrid(config.layout.width_tiles, config.layout.height_tiles)
@@ -168,15 +176,24 @@ def build_minimal_representative_day_scenario(
         simultaneous_staff_capacity=config.checkout_staff_capacity,
     )
 
-    runtime_skills = (
-        {StaffSkill.REGISTER: config.staff.register_skill}
-        if config.staff.register_skill is not None
-        else None
-    )
+    runtime_skills: dict[StaffSkill, int] = {}
+    base_skill_caps: dict[StaffSkill, int] = {}
+    if config.staff.register_skill is not None:
+        runtime_skills[StaffSkill.REGISTER] = config.staff.register_skill
+    if config.staff.replenishment_skill is not None:
+        runtime_skills[StaffSkill.REPLENISHMENT] = config.staff.replenishment_skill
+    if config.staff.cleaning_skill is not None:
+        runtime_skills[StaffSkill.CLEANING] = config.staff.cleaning_skill
+    if config.staff.replenishment_cap is not None:
+        base_skill_caps[StaffSkill.REPLENISHMENT] = config.staff.replenishment_cap
+    if config.staff.cleaning_cap is not None:
+        base_skill_caps[StaffSkill.CLEANING] = config.staff.cleaning_cap
+
     runtime.staff.add_staff(
         SCENARIO_STAFF_ID,
         stamina_max=config.staff.stamina_max,
-        runtime_skills=runtime_skills,
+        runtime_skills=runtime_skills or None,
+        base_skill_caps=base_skill_caps or None,
     )
     runtime.inventory.add_slot(
         SCENARIO_SLOT_ID,
@@ -214,6 +231,7 @@ def build_minimal_representative_day_scenario(
     checkout_timing = CheckoutServiceTimingCoordinator(runtime)
     staff_work_timing = StaffWorkTimingCoordinator(runtime)
     staff_rest_timing = StaffRestTimingCoordinator(runtime)
+    staff_growth = EvidenceBackedStaffGrowthResolver(runtime.staff)
 
     orchestrator = StoreStepOrchestrator(
         runtime,
@@ -239,6 +257,7 @@ def build_minimal_representative_day_scenario(
             clean_stamina_cost=config.timing.clean_stamina_cost,
             break_room_target_id=config.timing.break_room_target_id,
         ),
+        staff_growth_resolver=staff_growth,
         staff_rest_timing=staff_rest_timing,
         staff_rest_transition_policy=IntervalScenarioRestPolicy(
             return_game_minutes=config.timing.return_to_break_room_game_minutes,
