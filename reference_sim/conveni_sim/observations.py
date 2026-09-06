@@ -14,6 +14,7 @@ class ObservationKind(str, Enum):
     CUSTOMER_ARRIVAL = "customer_arrival"
     CHECKOUT_QUEUE_ENTER = "checkout_queue_enter"
     CHECKOUT_SERVICE_START = "checkout_service_start"
+    CHECKOUT_ANGER = "checkout_anger"
     CHECKOUT_SERVICE_END = "checkout_service_end"
     STAMINA_SNAPSHOT = "stamina_snapshot"
     REPLENISH_START = "replenish_start"
@@ -97,9 +98,9 @@ class StaminaDeltaMeasurement:
 class GameplayObservationTimeline:
     """Ordered observation log and reducers for video-derived measurements.
 
-    Reducers only subtract explicitly annotated timestamps. Queue wait and total
-    checkout duration require a customer id plus matching fixture id; no missing
-    queue/service event is inferred.
+    Reducers only subtract explicitly annotated timestamps. Queue wait, service,
+    total checkout and anger timing require matching identifiers; missing events
+    never become inferred measurements.
     """
 
     def __init__(self, source_id: str) -> None:
@@ -191,6 +192,42 @@ class GameplayObservationTimeline:
                     raise ValueError(f"duplicate checkout queue enter without service end for {key}")
                 pending[key] = event
             elif event.kind is ObservationKind.CHECKOUT_SERVICE_END:
+                start = pending.pop(key, None)
+                if start is not None:
+                    results.append(self._duration_between(start, event))
+        return tuple(results)
+
+    def checkout_queue_to_first_anger_durations(self) -> tuple[DurationMeasurement, ...]:
+        """Measure queue-entry to the first explicitly annotated anger event."""
+        pending: dict[tuple[str, Optional[str]], GameplayObservation] = {}
+        results: list[DurationMeasurement] = []
+        for event in self._events:
+            if event.customer_id is None:
+                continue
+            key = (event.customer_id, event.fixture_id)
+            if event.kind is ObservationKind.CHECKOUT_QUEUE_ENTER:
+                if key in pending:
+                    raise ValueError(f"duplicate checkout queue enter before anger for {key}")
+                pending[key] = event
+            elif event.kind is ObservationKind.CHECKOUT_ANGER:
+                start = pending.pop(key, None)
+                if start is not None:
+                    results.append(self._duration_between(start, event))
+        return tuple(results)
+
+    def checkout_service_to_first_anger_durations(self) -> tuple[DurationMeasurement, ...]:
+        """Measure service-start to first anger when the serving staff is identified."""
+        pending: dict[tuple[str, str, Optional[str]], GameplayObservation] = {}
+        results: list[DurationMeasurement] = []
+        for event in self._events:
+            if event.customer_id is None or event.staff_id is None:
+                continue
+            key = (event.customer_id, event.staff_id, event.fixture_id)
+            if event.kind is ObservationKind.CHECKOUT_SERVICE_START:
+                if key in pending:
+                    raise ValueError(f"duplicate checkout service start before anger for {key}")
+                pending[key] = event
+            elif event.kind is ObservationKind.CHECKOUT_ANGER:
                 start = pending.pop(key, None)
                 if start is not None:
                     results.append(self._duration_between(start, event))
