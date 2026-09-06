@@ -5,7 +5,7 @@ from typing import Optional, Protocol
 
 from .checkout import CheckoutServiceRecord
 from .staff import StaffSkill
-from .store_runtime import CheckoutSaleResult, StoreRuntimeHarness
+from .store_runtime import CheckoutSaleCompletion, StoreRuntimeHarness
 
 
 @dataclass(frozen=True)
@@ -39,7 +39,7 @@ class CheckoutServiceTimingEvaluation:
     context: CheckoutServiceTimingContext
     required_game_minutes: Optional[int]
     completed: bool
-    sale: Optional[CheckoutSaleResult] = None
+    sale: Optional[CheckoutSaleCompletion] = None
 
 
 class CheckoutServiceTimingCoordinator:
