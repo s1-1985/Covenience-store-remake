@@ -15,7 +15,6 @@ from conveni_sim.observation_staff_work_interruption_replay import (
 )
 from conveni_sim.observations import GameTimestamp, GameplayObservationTimeline, ObservationKind
 from conveni_sim.operating_time import OperatingHours
-from conveni_sim.representative_day_metrics import ObservedRepresentativeDayMetrics
 from conveni_sim.representative_day_validation import validate_minimal_day_with_event_comparison
 from conveni_sim.scenario_policies import ScheduledScenarioCustomer
 from conveni_sim.simulation_observations import RepresentativeDayObservationExporter
@@ -32,7 +31,7 @@ class InterruptAfterFiveMinutes:
 
 
 class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
-    def make_config(self):
+    def make_config(self, *, replenish_minutes=20, arrival_minute=22 * 60 + 21):
         return MinimalRepresentativeDayScenarioConfig(
             layout=MinimalScenarioLayout(
                 width_tiles=7,
@@ -63,7 +62,7 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
                 step_game_minutes=1,
                 checkout_game_minutes=1,
                 checkout_stamina_cost=None,
-                replenish_game_minutes=20,
+                replenish_game_minutes=replenish_minutes,
                 clean_game_minutes=1,
                 replenish_up_to_quantity=1,
                 replenish_stamina_cost=None,
@@ -74,7 +73,7 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
                 recovery_amount=1,
                 traffic_reroute_after_blocked_ticks=1,
             ),
-            arrivals=(ScheduledScenarioCustomer(22 * 60 + 21, "c1"),),
+            arrivals=(ScheduledScenarioCustomer(arrival_minute, "c1"),),
             initial_cash_yen=1_000,
             operating_hours=OperatingHours.twenty_four_hours(),
             start_hour=22,
@@ -140,18 +139,23 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
             config,
             staff_work_interruption_policy=InterruptAfterFiveMinutes(),
         )
-        source_run = source.run()
         observed = RepresentativeDayObservationExporter().export(
-            source_run,
+            source.run(),
             source.runtime,
             source_id="synthetic-interruption-source",
         )
-        interruption_events = [
+        starts = [
+            event for event in observed.events if event.kind is ObservationKind.REPLENISH_START
+        ]
+        interruptions = [
             event
             for event in observed.events
             if event.kind is ObservationKind.REPLENISH_INTERRUPT
         ]
-        self.assertEqual(len(interruption_events), 1)
+        self.assertEqual(len(starts), 1)
+        self.assertEqual(len(interruptions), 1)
+        observed_elapsed = starts[0].game_time.minutes_until(interruptions[0].game_time)
+        self.assertGreaterEqual(observed_elapsed, 5)
 
         adapter = ObservationStaffWorkInterruptionReplayAdapter()
         plan = adapter.build_plan(
@@ -161,7 +165,7 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
         )
         self.assertEqual(len(plan.rules), 1)
         self.assertEqual(plan.rules[0].task, StaffTask.REPLENISH)
-        self.assertEqual(plan.rules[0].interrupt_after_game_minutes, 5)
+        self.assertEqual(plan.rules[0].interrupt_after_game_minutes, observed_elapsed)
 
         result = validate_minimal_day_with_event_comparison(
             config,
@@ -177,7 +181,7 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
         self.assertEqual(len(replay_interruptions), 1)
         self.assertEqual(
             replay_interruptions[0].game_time.minute_of_day,
-            interruption_events[0].game_time.minute_of_day,
+            interruptions[0].game_time.minute_of_day,
         )
         self.assertTrue(result.event_comparison.exact_event_match)
 
@@ -201,31 +205,18 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
             self.coverage(),
             mapping=ObservationStaffWorkInterruptionReplayMapping(True),
         )
-        policy = adapter.build_policy(plan)
 
-        # No customer exists yet at the observed elapsed threshold. The runtime
-        # coordinator must not invent checkout demand just to satisfy the replay.
-        config = self.make_config()
-        shifted = MinimalRepresentativeDayScenarioConfig(
-            layout=config.layout,
-            product=config.product,
-            staff=config.staff,
-            timing=config.timing,
-            arrivals=(ScheduledScenarioCustomer(22 * 60 + 40, "c1"),),
-            initial_cash_yen=config.initial_cash_yen,
-            operating_hours=config.operating_hours,
-            start_hour=config.start_hour,
-            start_minute=config.start_minute,
-            year=config.year,
-            month=config.month,
-            day=config.day,
-            checkout_staff_capacity=config.checkout_staff_capacity,
+        # The observed threshold is 1 minute, but checkout demand is delayed.
+        # Long work duration keeps the assignment active until real demand exists.
+        shifted = self.make_config(
+            replenish_minutes=120,
+            arrival_minute=22 * 60 + 40,
         )
         result = validate_minimal_day_with_event_comparison(
             shifted,
             timeline,
             self.coverage(),
-            staff_work_interruption_policy=policy,
+            staff_work_interruption_policy=adapter.build_policy(plan),
         )
         simulated_interrupts = [
             event
