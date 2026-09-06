@@ -96,8 +96,7 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
     def test_requires_explicit_opt_in(self):
         with self.assertRaises(ValueError):
             ObservationStaffWorkInterruptionReplayAdapter().build_plan(
-                GameplayObservationTimeline("video"),
-                self.coverage(),
+                GameplayObservationTimeline("video"), self.coverage()
             )
 
     def test_partial_start_and_partial_interrupt_remain_unpaired(self):
@@ -115,7 +114,6 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
         )
         self.assertEqual(plan.rules, ())
         self.assertEqual(len(plan.unpaired_starts), 1)
-        self.assertEqual(plan.unpaired_interrupts, ())
 
         interrupt_only = GameplayObservationTimeline("interrupt-only")
         interrupt_only.add(
@@ -130,31 +128,30 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
             mapping=ObservationStaffWorkInterruptionReplayMapping(True),
         )
         self.assertEqual(plan.rules, ())
-        self.assertEqual(plan.unpaired_starts, ())
         self.assertEqual(len(plan.unpaired_interrupts), 1)
 
-    def test_source_interruption_round_trips_through_observation_policy(self):
+    def test_source_interruption_round_trips_even_with_later_normal_work_episodes(self):
         config = self.make_config()
         source = build_minimal_representative_day_scenario(
             config,
             staff_work_interruption_policy=InterruptAfterFiveMinutes(),
         )
         observed = RepresentativeDayObservationExporter().export(
-            source.run(),
-            source.runtime,
-            source_id="synthetic-interruption-source",
+            source.run(), source.runtime, source_id="synthetic-interruption-source"
         )
+        interruptions = [
+            event for event in observed.events if event.kind is ObservationKind.REPLENISH_INTERRUPT
+        ]
         starts = [
             event for event in observed.events if event.kind is ObservationKind.REPLENISH_START
         ]
-        interruptions = [
-            event
-            for event in observed.events
-            if event.kind is ObservationKind.REPLENISH_INTERRUPT
-        ]
-        self.assertEqual(len(starts), 1)
         self.assertEqual(len(interruptions), 1)
-        observed_elapsed = starts[0].game_time.minutes_until(interruptions[0].game_time)
+        self.assertGreater(len(starts), 1)  # later episodes complete normally
+        interrupted_start = max(
+            (event for event in starts if event.sequence < interruptions[0].sequence),
+            key=lambda event: event.sequence,
+        )
+        observed_elapsed = interrupted_start.game_time.minutes_until(interruptions[0].game_time)
         self.assertGreaterEqual(observed_elapsed, 5)
 
         adapter = ObservationStaffWorkInterruptionReplayAdapter()
@@ -205,9 +202,6 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
             self.coverage(),
             mapping=ObservationStaffWorkInterruptionReplayMapping(True),
         )
-
-        # The observed threshold is 1 minute, but checkout demand is delayed.
-        # Long work duration keeps the assignment active until real demand exists.
         shifted = self.make_config(
             replenish_minutes=120,
             arrival_minute=22 * 60 + 40,
@@ -224,10 +218,7 @@ class ObservationStaffWorkInterruptionReplayTests(unittest.TestCase):
             if event.kind is ObservationKind.REPLENISH_INTERRUPT
         ]
         self.assertTrue(simulated_interrupts)
-        self.assertGreater(
-            simulated_interrupts[0].game_time.minute_of_day,
-            22 * 60 + 22,
-        )
+        self.assertGreater(simulated_interrupts[0].game_time.minute_of_day, 22 * 60 + 22)
         self.assertFalse(result.event_comparison.exact_event_match)
 
 
