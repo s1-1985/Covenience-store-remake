@@ -10,6 +10,11 @@ from .observation_anger_replay import (
     ObservationAngerReplayPlan,
     ObservedAngerBasis,
 )
+from .observation_checkout_pre_service_departure_replay import (
+    ObservationCheckoutPreServiceDepartureReplayAdapter,
+    ObservationCheckoutPreServiceDepartureReplayMapping,
+    ObservationCheckoutPreServiceDepartureReplayPlan,
+)
 from .observation_checkout_replay import (
     ObservationCheckoutDurationReplayAdapter,
     ObservationCheckoutDurationReplayMapping,
@@ -57,6 +62,9 @@ class ComposedObservationReplaySelection:
     arrivals: Optional[ObservationArrivalReplayMapping] = None
     checkout_durations: Optional[ObservationCheckoutDurationReplayMapping] = None
     checkout_selection: Optional[ObservationCheckoutSelectionReplayMapping] = None
+    checkout_pre_service_departures: Optional[
+        ObservationCheckoutPreServiceDepartureReplayMapping
+    ] = None
     staff_work_starts: Optional[ObservationStaffWorkStartReplayMapping] = None
     staff_work_durations: Optional[ObservationStaffWorkDurationReplayMapping] = None
     staff_work_interruptions: Optional[ObservationStaffWorkInterruptionReplayMapping] = None
@@ -70,6 +78,7 @@ class ComposedObservationReplaySelection:
             self.arrivals is None
             and self.checkout_durations is None
             and self.checkout_selection is None
+            and self.checkout_pre_service_departures is None
             and self.staff_work_starts is None
             and self.staff_work_durations is None
             and self.staff_work_interruptions is None
@@ -85,6 +94,9 @@ class ComposedObservationReplayValidationResult:
     arrival_plan: Optional[ObservationArrivalReplayPlan]
     checkout_duration_plan: Optional[ObservationCheckoutDurationReplayPlan]
     checkout_selection_plan: Optional[ObservationCheckoutSelectionReplayPlan]
+    checkout_pre_service_departure_plan: Optional[
+        ObservationCheckoutPreServiceDepartureReplayPlan
+    ]
     staff_work_start_plan: Optional[ObservationStaffWorkStartReplayPlan]
     staff_work_duration_plan: Optional[ObservationStaffWorkDurationReplayPlan]
     staff_work_interruption_plan: Optional[ObservationStaffWorkInterruptionReplayPlan]
@@ -144,6 +156,23 @@ def validate_minimal_day_with_composed_observation_replay(
             identity_mapping=identity_mapping,
         )
         checkout_selection_policy = selection_adapter.build_policy(checkout_selection_plan)
+
+    checkout_pre_service_departure_plan: Optional[
+        ObservationCheckoutPreServiceDepartureReplayPlan
+    ] = None
+    checkout_pre_service_departure_policy = None
+    if selection.checkout_pre_service_departures is not None:
+        departure_adapter = ObservationCheckoutPreServiceDepartureReplayAdapter()
+        checkout_pre_service_departure_plan = departure_adapter.build_plan(
+            timeline,
+            coverage,
+            mapping=selection.checkout_pre_service_departures,
+            identity_mapping=identity_mapping,
+        )
+        checkout_pre_service_departure_policy = departure_adapter.build_policy(
+            checkout_pre_service_departure_plan,
+            break_room_target_id=replay_config.timing.break_room_target_id,
+        )
 
     staff_work_start_plan: Optional[ObservationStaffWorkStartReplayPlan] = None
     staff_task_policy = None
@@ -212,6 +241,7 @@ def validate_minimal_day_with_composed_observation_replay(
         checkout_anger_policy=checkout_anger_policy,
         checkout_duration_policy=checkout_duration_policy,
         checkout_selection_policy=checkout_selection_policy,
+        checkout_pre_service_departure_policy=checkout_pre_service_departure_policy,
         staff_task_policy=staff_task_policy,
         staff_work_completion_policy=staff_work_completion_policy,
         staff_work_interruption_policy=staff_work_interruption_policy,
@@ -223,6 +253,7 @@ def validate_minimal_day_with_composed_observation_replay(
         arrival_plan=arrival_plan,
         checkout_duration_plan=checkout_duration_plan,
         checkout_selection_plan=checkout_selection_plan,
+        checkout_pre_service_departure_plan=checkout_pre_service_departure_plan,
         staff_work_start_plan=staff_work_start_plan,
         staff_work_duration_plan=staff_work_duration_plan,
         staff_work_interruption_plan=staff_work_interruption_plan,
