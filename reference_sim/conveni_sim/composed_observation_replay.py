@@ -27,6 +27,11 @@ from .observation_replay import (
     ObservationArrivalReplayMapping,
     ObservationArrivalReplayPlan,
 )
+from .observation_staff_work_replay import (
+    ObservationStaffWorkDurationReplayAdapter,
+    ObservationStaffWorkDurationReplayMapping,
+    ObservationStaffWorkDurationReplayPlan,
+)
 from .observations import GameplayObservationTimeline
 from .representative_day_validation import (
     EventComparedObservationBackedMinimalDayValidationResult,
@@ -42,6 +47,7 @@ class ComposedObservationReplaySelection:
     arrivals: Optional[ObservationArrivalReplayMapping] = None
     checkout_durations: Optional[ObservationCheckoutDurationReplayMapping] = None
     checkout_selection: Optional[ObservationCheckoutSelectionReplayMapping] = None
+    staff_work_durations: Optional[ObservationStaffWorkDurationReplayMapping] = None
     anger: Optional[ObservationAngerReplayMapping] = None
     anger_basis: Optional[ObservedAngerBasis] = None
 
@@ -52,6 +58,7 @@ class ComposedObservationReplaySelection:
             self.arrivals is None
             and self.checkout_durations is None
             and self.checkout_selection is None
+            and self.staff_work_durations is None
             and self.anger is None
         ):
             raise ValueError("at least one observation replay seam must be selected")
@@ -64,6 +71,7 @@ class ComposedObservationReplayValidationResult:
     arrival_plan: Optional[ObservationArrivalReplayPlan]
     checkout_duration_plan: Optional[ObservationCheckoutDurationReplayPlan]
     checkout_selection_plan: Optional[ObservationCheckoutSelectionReplayPlan]
+    staff_work_duration_plan: Optional[ObservationStaffWorkDurationReplayPlan]
     anger_plan: Optional[ObservationAngerReplayPlan]
     validation: EventComparedObservationBackedMinimalDayValidationResult
 
@@ -121,6 +129,24 @@ def validate_minimal_day_with_composed_observation_replay(
         )
         checkout_selection_policy = selection_adapter.build_policy(checkout_selection_plan)
 
+    staff_work_duration_plan: Optional[ObservationStaffWorkDurationReplayPlan] = None
+    staff_work_completion_policy = None
+    if selection.staff_work_durations is not None:
+        work_adapter = ObservationStaffWorkDurationReplayAdapter()
+        staff_work_duration_plan = work_adapter.build_plan(
+            timeline,
+            coverage,
+            mapping=selection.staff_work_durations,
+            identity_mapping=identity_mapping,
+        )
+        staff_work_completion_policy = work_adapter.build_policy(
+            staff_work_duration_plan,
+            replenish_up_to_quantity=replay_config.timing.replenish_up_to_quantity,
+            replenish_stamina_cost=replay_config.timing.replenish_stamina_cost,
+            clean_stamina_cost=replay_config.timing.clean_stamina_cost,
+            break_room_target_id=replay_config.timing.break_room_target_id,
+        )
+
     anger_plan: Optional[ObservationAngerReplayPlan] = None
     checkout_anger_policy = None
     if selection.anger is not None:
@@ -144,6 +170,7 @@ def validate_minimal_day_with_composed_observation_replay(
         checkout_anger_policy=checkout_anger_policy,
         checkout_duration_policy=checkout_duration_policy,
         checkout_selection_policy=checkout_selection_policy,
+        staff_work_completion_policy=staff_work_completion_policy,
         export_options=export_options,
     )
     return ComposedObservationReplayValidationResult(
@@ -152,6 +179,7 @@ def validate_minimal_day_with_composed_observation_replay(
         arrival_plan=arrival_plan,
         checkout_duration_plan=checkout_duration_plan,
         checkout_selection_plan=checkout_selection_plan,
+        staff_work_duration_plan=staff_work_duration_plan,
         anger_plan=anger_plan,
         validation=validation,
     )
