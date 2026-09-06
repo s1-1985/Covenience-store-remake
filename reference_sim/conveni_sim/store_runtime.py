@@ -101,6 +101,16 @@ class StoreRuntimeHarness:
             return None
         return self.operating_hours.is_open_clock(self.subday_clock)
 
+    def _fixture_is_placed(self, fixture_id: str) -> bool:
+        return any(
+            placement.instance_id == fixture_id
+            for placement in self.grid.placements
+        )
+
+    def _require_placed_fixture(self, fixture_id: str, *, role: str) -> None:
+        if not self._fixture_is_placed(fixture_id):
+            raise ValueError(f"{role} fixture is not currently placed on the grid: {fixture_id}")
+
     def set_operating_hours(self, operating_hours: Optional[OperatingHours]) -> None:
         self.operating_hours = operating_hours
 
@@ -155,7 +165,7 @@ class StoreRuntimeHarness:
     ) -> CheckoutStationRuntime:
         if fixture_id in self._checkouts:
             raise ValueError(f"checkout already registered: {fixture_id}")
-        if fixture_id not in {placement.instance_id for placement in self.grid.placements}:
+        if not self._fixture_is_placed(fixture_id):
             raise KeyError(f"checkout fixture is not placed on the grid: {fixture_id}")
         checkout = CheckoutStationRuntime(
             fixture_id,
@@ -177,7 +187,7 @@ class StoreRuntimeHarness:
     ) -> CustomerAdmissionResult:
         """Apply the effective opening-state gate before creating a customer.
 
-        Gameplay demand generators should use this entry point.  Unknown opening
+        Gameplay demand generators should use this entry point. Unknown opening
         state is preserved as unknown and does not silently admit a customer.
         `add_customer` remains available as a lower-level observation/replay hook
         when the source itself proves that a customer was present.
@@ -243,6 +253,7 @@ class StoreRuntimeHarness:
             raise ValueError(
                 "customer current merchandise fixture does not match inventory slot fixture"
             )
+        self._require_placed_fixture(slot.fixture_id, role="merchandise")
         if flow is PurchaseFlow.CHECKOUT_REQUIRED and session.checkout_fixture_id is None:
             raise ValueError("checkout-required interaction needs a checkout fixture")
 
