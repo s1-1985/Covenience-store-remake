@@ -199,6 +199,36 @@ class StoreCashLedger:
             note=f"{mutation.product_id} +{mutation.quantity_delta}",
         )
 
+    def record_operating_cost_if_open(
+        self,
+        kind: FinancialEventKind,
+        amount_yen: Optional[int],
+        *,
+        store_open: bool,
+        source_id: Optional[str] = None,
+        note: str = "",
+    ) -> Optional[FinancialEvent]:
+        """Record a caller-classified operating cost only while customers are served.
+
+        First-title evidence distinguishes operating/maintenance accrual from
+        procurement: closed hours suppress the former while staff may continue
+        restocking and therefore still create procurement spending. This gate
+        deliberately does not decide which exact game costs belong to the
+        operating bucket; the caller must classify the event explicitly.
+        """
+        if kind is FinancialEventKind.SALE:
+            raise ValueError("sale revenue is not an operating cost")
+        if kind is FinancialEventKind.PROCUREMENT:
+            raise ValueError("procurement is not gated by store_open")
+        if not store_open:
+            return None
+        return self.record_cost(
+            kind,
+            amount_yen,
+            source_id=source_id,
+            note=note,
+        )
+
     def record_labor_cost_if_open(
         self,
         amount_yen: Optional[int],
@@ -206,17 +236,11 @@ class StoreCashLedger:
         store_open: bool,
         staff_id: Optional[str] = None,
     ) -> Optional[FinancialEvent]:
-        """Record labor only while open; closed-hours labor is reported as uncharged.
-
-        This method deliberately does not suppress every other maintenance cost,
-        because current evidence says 'many' operating costs stop while closed
-        but does not yet enumerate every category.
-        """
-        if not store_open:
-            return None
-        return self.record_cost(
+        """Backward-compatible labor wrapper around the generic operating gate."""
+        return self.record_operating_cost_if_open(
             FinancialEventKind.LABOR,
             amount_yen,
+            store_open=store_open,
             source_id=staff_id,
         )
 
