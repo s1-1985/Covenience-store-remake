@@ -42,6 +42,7 @@
     "id": "customer-1"
   },
   "simulation": {
+    "start_minute_of_day": 540,
     "tick_seconds": 0.25,
     "step_game_minutes": 1,
     "shopping_ticks": 2,
