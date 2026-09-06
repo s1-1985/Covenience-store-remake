@@ -49,29 +49,28 @@ class ObservationStaffWorkInterruptionReplayPlan:
 class ObservedStaffWorkInterruptionPolicy(StaffWorkInterruptionPolicy):
     """Replay only explicitly observed per-occurrence interruption timing.
 
-    A rule is bound when an active staff/task assignment is first evaluated. The
-    policy does not create checkout demand: the runtime interruption coordinator
-    still requires a real waiting checkout customer before honoring True.
-    Unobserved active work returns None and remains unresolved.
+    Occurrence indices count every observed/runtime assignment of the same
+    staff/task family, including normally completed work. This allows, for
+    example, occurrence 0 to finish normally and occurrence 1 to be interrupted
+    without incorrectly applying the interruption rule to occurrence 0.
+
+    The policy does not create checkout demand: the runtime interruption
+    coordinator still requires a real waiting checkout customer before honoring
+    True. Unobserved occurrences return None and remain unresolved.
     """
 
     def __init__(self, rules: tuple[ObservedStaffWorkInterruptionRule, ...]) -> None:
-        grouped: dict[tuple[str, StaffTask], list[ObservedStaffWorkInterruptionRule]] = defaultdict(list)
+        self.rules = rules
+        self._rule_by_occurrence: dict[
+            tuple[str, StaffTask, int], ObservedStaffWorkInterruptionRule
+        ] = {}
         for rule in rules:
-            grouped[(rule.staff_id, rule.task)].append(rule)
-        self._rules_by_staff_task: dict[
-            tuple[str, StaffTask], tuple[ObservedStaffWorkInterruptionRule, ...]
-        ] = {}
-        for key, items in grouped.items():
-            ordered = tuple(sorted(items, key=lambda item: item.occurrence_index))
-            actual = tuple(item.occurrence_index for item in ordered)
-            if actual != tuple(range(len(ordered))):
-                raise ValueError(f"observed interruption occurrence indices must be contiguous for {key}")
-            self._rules_by_staff_task[key] = ordered
+            key = (rule.staff_id, rule.task, rule.occurrence_index)
+            if key in self._rule_by_occurrence:
+                raise ValueError(f"duplicate observed interruption occurrence: {key}")
+            self._rule_by_occurrence[key] = rule
         self._next_occurrence: dict[tuple[str, StaffTask], int] = defaultdict(int)
-        self._assignment_rule: dict[
-            tuple[str, StaffTask, str, int], ObservedStaffWorkInterruptionRule
-        ] = {}
+        self._assignment_occurrence: dict[tuple[str, StaffTask, str, int], int] = {}
 
     def _rule_for(
         self,
@@ -84,18 +83,13 @@ class ObservedStaffWorkInterruptionPolicy(StaffWorkInterruptionPolicy):
             work.target_id,
             work.started_at_absolute_minute,
         )
-        existing = self._assignment_rule.get(assignment_key)
-        if existing is not None:
-            return existing
-        group_key = (work.staff_id, work.task)
-        rules = self._rules_by_staff_task.get(group_key, ())
-        index = self._next_occurrence[group_key]
-        if index >= len(rules):
-            return None
-        rule = rules[index]
-        self._next_occurrence[group_key] = index + 1
-        self._assignment_rule[assignment_key] = rule
-        return rule
+        occurrence = self._assignment_occurrence.get(assignment_key)
+        if occurrence is None:
+            group_key = (work.staff_id, work.task)
+            occurrence = self._next_occurrence[group_key]
+            self._next_occurrence[group_key] = occurrence + 1
+            self._assignment_occurrence[assignment_key] = occurrence
+        return self._rule_by_occurrence.get((work.staff_id, work.task, occurrence))
 
     def should_interrupt(self, context: StaffWorkInterruptionContext) -> Optional[bool]:
         rule = self._rule_for(context)
@@ -105,12 +99,8 @@ class ObservedStaffWorkInterruptionPolicy(StaffWorkInterruptionPolicy):
 
 
 class ObservationStaffWorkInterruptionReplayAdapter:
-    """Build evidence-only interruption rules from explicit start/interrupt pairs."""
+    """Build evidence-only interruption rules from explicit work episodes."""
 
-    _START_TO_INTERRUPT = {
-        ObservationKind.REPLENISH_START: ObservationKind.REPLENISH_INTERRUPT,
-        ObservationKind.CLEAN_START: ObservationKind.CLEAN_INTERRUPT,
-    }
     _KIND_TO_TASK = {
         ObservationKind.REPLENISH_START: StaffTask.REPLENISH,
         ObservationKind.CLEAN_START: StaffTask.CLEAN,
@@ -129,9 +119,17 @@ class ObservationStaffWorkInterruptionReplayAdapter:
 
     @staticmethod
     def _family(event: GameplayObservation) -> ObservationKind:
-        if event.kind in (ObservationKind.REPLENISH_START, ObservationKind.REPLENISH_INTERRUPT):
+        if event.kind in (
+            ObservationKind.REPLENISH_START,
+            ObservationKind.REPLENISH_INTERRUPT,
+            ObservationKind.REPLENISH_END,
+        ):
             return ObservationKind.REPLENISH_START
-        if event.kind in (ObservationKind.CLEAN_START, ObservationKind.CLEAN_INTERRUPT):
+        if event.kind in (
+            ObservationKind.CLEAN_START,
+            ObservationKind.CLEAN_INTERRUPT,
+            ObservationKind.CLEAN_END,
+        ):
             return ObservationKind.CLEAN_START
         raise ValueError("event is not a supported staff-work interruption observation")
 
@@ -161,8 +159,10 @@ class ObservationStaffWorkInterruptionReplayAdapter:
             (
                 ObservationKind.REPLENISH_START,
                 ObservationKind.REPLENISH_INTERRUPT,
+                ObservationKind.REPLENISH_END,
                 ObservationKind.CLEAN_START,
                 ObservationKind.CLEAN_INTERRUPT,
+                ObservationKind.CLEAN_END,
             )
         )
         events = tuple(
@@ -170,7 +170,9 @@ class ObservationStaffWorkInterruptionReplayAdapter:
             for event in timeline.events
             if self._in_coverage(event, coverage) and event.kind in supported
         )
-        pending: dict[tuple[str, ObservationKind, Optional[str]], GameplayObservation] = {}
+        pending: dict[
+            tuple[str, ObservationKind, Optional[str]], tuple[GameplayObservation, int]
+        ] = {}
         unpaired_interrupts: list[GameplayObservation] = []
         rules: list[ObservedStaffWorkInterruptionRule] = []
         occurrence_counts: dict[tuple[str, StaffTask], int] = defaultdict(int)
@@ -178,24 +180,39 @@ class ObservationStaffWorkInterruptionReplayAdapter:
         for event in events:
             raw_key = self._raw_key(event)
             family = raw_key[1]
+            task = self._KIND_TO_TASK[family]
+            normalized_staff = identity_mapping.staff(raw_key[0])
+            assert normalized_staff is not None
+
             if event.kind is family:
                 if raw_key in pending:
                     raise ValueError(
-                        f"duplicate staff work start without interrupt inside coverage: {raw_key}"
+                        f"duplicate staff work start before terminal event inside coverage: {raw_key}"
                     )
-                pending[raw_key] = event
+                occurrence_key = (normalized_staff, task)
+                occurrence_index = occurrence_counts[occurrence_key]
+                occurrence_counts[occurrence_key] = occurrence_index + 1
+                pending[raw_key] = (event, occurrence_index)
                 continue
-            start = pending.pop(raw_key, None)
-            if start is None:
-                unpaired_interrupts.append(event)
+
+            start_pair = pending.pop(raw_key, None)
+            is_interrupt = event.kind in (
+                ObservationKind.REPLENISH_INTERRUPT,
+                ObservationKind.CLEAN_INTERRUPT,
+            )
+            if start_pair is None:
+                if is_interrupt:
+                    unpaired_interrupts.append(event)
+                # A normal END with its START outside coverage is not interruption
+                # evidence and therefore needs no synthetic pairing.
                 continue
-            normalized_staff = identity_mapping.staff(raw_key[0])
+            start, occurrence_index = start_pair
+            if not is_interrupt:
+                # Normal completion closes this observed occurrence so a later
+                # start of the same staff/task/fixture is a new occurrence.
+                continue
+
             normalized_fixture = identity_mapping.fixture(raw_key[2])
-            assert normalized_staff is not None
-            task = self._KIND_TO_TASK[family]
-            occurrence_key = (normalized_staff, task)
-            occurrence_index = occurrence_counts[occurrence_key]
-            occurrence_counts[occurrence_key] += 1
             rules.append(
                 ObservedStaffWorkInterruptionRule(
                     staff_id=normalized_staff,
@@ -212,7 +229,7 @@ class ObservationStaffWorkInterruptionReplayAdapter:
             rules=tuple(rules),
             unpaired_starts=tuple(
                 sorted(
-                    pending.values(),
+                    (item[0] for item in pending.values()),
                     key=lambda item: (
                         item.game_time.representative_ordinal_minute,
                         item.sequence,
