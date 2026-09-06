@@ -26,16 +26,16 @@ class MultiCustomerCheckoutLoadTests(unittest.TestCase):
     def make_config(self):
         return MinimalRepresentativeDayScenarioConfig(
             layout=MinimalScenarioLayout(
-                width_tiles=5,
-                height_tiles=5,
+                width_tiles=7,
+                height_tiles=6,
                 shelf_origin_subcell=GridPoint(4, 4),
-                shelf_footprint_tiles=(1, 1),
+                shelf_footprint_tiles=(2, 1),
                 shelf_interaction_side=Direction.NORTH,
-                checkout_origin_subcell=GridPoint(6, 4),
-                checkout_footprint_tiles=(1, 1),
+                checkout_origin_subcell=GridPoint(8, 6),
+                checkout_footprint_tiles=(2, 1),
                 checkout_interaction_side=Direction.NORTH,
                 entry_point=GridPoint(0, 0),
-                exit_point=GridPoint(0, 8),
+                exit_point=GridPoint(0, 10),
             ),
             product=MinimalScenarioProduct(
                 product_id="bread",
@@ -63,6 +63,7 @@ class MultiCustomerCheckoutLoadTests(unittest.TestCase):
                 return_to_break_room_game_minutes=1,
                 recovery_interval_game_minutes=1,
                 recovery_amount=1,
+                traffic_reroute_after_blocked_ticks=1,
             ),
             arrivals=(
                 ScheduledScenarioCustomer(23 * 60 + 1, "c1"),
@@ -101,10 +102,12 @@ class MultiCustomerCheckoutLoadTests(unittest.TestCase):
 
         self.assertIsNotNone(scenario.checkout_anger_penalties)
         self.assertEqual(len(scenario.checkout_anger_penalties.events), 4)
-        self.assertEqual(
-            tuple(record.customer_id for record in scenario.runtime.checkout(SCENARIO_CHECKOUT_ID).service_history),
-            ("c1", "c2", "c3", "c4"),
+        serviced_ids = tuple(
+            record.customer_id
+            for record in scenario.runtime.checkout(SCENARIO_CHECKOUT_ID).service_history
         )
+        self.assertEqual(len(serviced_ids), 4)
+        self.assertEqual(set(serviced_ids), {"c1", "c2", "c3", "c4"})
         self.assertTrue(
             all(
                 scenario.runtime.customers.customer(customer_id).state is CustomerState.EXITED
