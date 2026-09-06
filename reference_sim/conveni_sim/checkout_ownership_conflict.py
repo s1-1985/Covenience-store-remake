@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Optional, Protocol
 
-from .staff import StaffCondition, StaffTask, StoreStaffRoster
+from .staff import StaffCondition, StaffTask
 from .store_runtime import StoreRuntimeHarness
 
 
@@ -92,10 +92,11 @@ class CheckoutOwnershipConflictEvaluation:
 class CheckoutOwnershipConflictCoordinator:
     """Detect and optionally resolve competing checkout assignments.
 
-    A conflict exists only when more AVAILABLE staff are assigned to one
-    checkout without active service than there are currently free service slots.
-    The coordinator does not choose a winner itself. A supplied policy may name
-    owners and must account for every contender as either an owner or loser.
+    A conflict exists only when factual checkout demand exists and more AVAILABLE
+    staff are assigned to one checkout without active service than there are
+    currently free service slots. The coordinator does not choose a winner
+    itself. A supplied policy may name owners and must account for every
+    contender as either an owner or loser.
 
     Losers can remain assigned, return to idle, or explicitly begin a break-room
     return. None of those outcomes is treated as the original default.
@@ -136,7 +137,10 @@ class CheckoutOwnershipConflictCoordinator:
         policy: CheckoutOwnershipConflictPolicy,
     ) -> CheckoutOwnershipConflictEvaluation:
         context = self._context(checkout_fixture_id)
-        if len(context.contender_staff_ids) <= context.free_service_slots:
+        if (
+            not context.waiting_customer_ids
+            or len(context.contender_staff_ids) <= context.free_service_slots
+        ):
             return CheckoutOwnershipConflictEvaluation(
                 context=context,
                 status=CheckoutOwnershipConflictStatus.NO_CONFLICT,
