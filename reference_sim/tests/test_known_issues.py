@@ -160,7 +160,6 @@ class PromotionKnownIssueTests(unittest.TestCase):
 
 
 class RemovedFixtureKnownIssueTests(unittest.TestCase):
-    @unittest.expectedFailure
     def test_a_fixture_removed_from_the_grid_cannot_still_sell_goods(self):
         """メモ項目10: グリッドから撤去された什器から商品を購入でき、売上まで計上される。
 
