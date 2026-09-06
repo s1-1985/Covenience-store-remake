@@ -22,6 +22,11 @@ from .customer_purchase_policy import (
 )
 from .operating_time import ClockAdvanceResult
 from .staff import StaffTask
+from .staff_rest_timing import (
+    StaffRestTimingCoordinator,
+    StaffRestTimingEvaluation,
+    StaffRestTransitionPolicy,
+)
 from .staff_task_policy import (
     StaffTaskPolicy,
     StaffTaskPolicyApplication,
@@ -42,6 +47,7 @@ class StoreStepResult:
     """One explicit simulation step without inventing a real-time/game-time ratio."""
 
     clock: ClockAdvanceResult
+    staff_rest_timing: tuple[StaffRestTimingEvaluation, ...]
     checkout_timing: tuple[CheckoutServiceTimingEvaluation, ...]
     staff_work_timing: tuple[StaffWorkTimingEvaluation, ...]
     demand: Optional[CustomerDemandEvaluation]
@@ -55,9 +61,10 @@ class StoreStepOrchestrator:
     """Compose recovered store systems into one caller-driven step.
 
     The caller supplies the in-game minute delta. Demand, purchase choice, staff
-    task selection, checkout-customer selection, optional checkout duration and
-    optional replenish/clean completion are delegated to replaceable policies.
-    No original timing coefficient is invented by this layer.
+    task selection, checkout-customer selection, optional checkout duration,
+    optional replenish/clean completion and optional rest transitions are
+    delegated to replaceable policies. No original timing coefficient is
+    invented by this layer.
     """
 
     def __init__(
@@ -73,6 +80,8 @@ class StoreStepOrchestrator:
         checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
         staff_work_timing: Optional[StaffWorkTimingCoordinator] = None,
         staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
+        staff_rest_timing: Optional[StaffRestTimingCoordinator] = None,
+        staff_rest_transition_policy: Optional[StaffRestTransitionPolicy] = None,
     ) -> None:
         if (purchases is None) != (purchase_policy is None):
             raise ValueError("purchases and purchase_policy must be supplied together")
@@ -84,6 +93,10 @@ class StoreStepOrchestrator:
             raise ValueError(
                 "staff_work_timing and staff_work_completion_policy must be supplied together"
             )
+        if (staff_rest_timing is None) != (staff_rest_transition_policy is None):
+            raise ValueError(
+                "staff_rest_timing and staff_rest_transition_policy must be supplied together"
+            )
         if demand is not None and demand.runtime is not runtime:
             raise ValueError("demand coordinator must use the same store runtime")
         if purchases is not None and purchases.runtime is not runtime:
@@ -92,6 +105,8 @@ class StoreStepOrchestrator:
             raise ValueError("checkout timing coordinator must use the same store runtime")
         if staff_work_timing is not None and staff_work_timing.runtime is not runtime:
             raise ValueError("staff work timing coordinator must use the same store runtime")
+        if staff_rest_timing is not None and staff_rest_timing.runtime is not runtime:
+            raise ValueError("staff rest timing coordinator must use the same store runtime")
         self.runtime = runtime
         self.demand = demand
         self.purchases = purchases
@@ -102,6 +117,8 @@ class StoreStepOrchestrator:
         self.checkout_duration_policy = checkout_duration_policy
         self.staff_work_timing = staff_work_timing
         self.staff_work_completion_policy = staff_work_completion_policy
+        self.staff_rest_timing = staff_rest_timing
+        self.staff_rest_transition_policy = staff_rest_transition_policy
         self._staff_candidates = (
             StaffWorkCandidateDiscovery(runtime) if staff_policy is not None else None
         )
@@ -128,21 +145,28 @@ class StoreStepOrchestrator:
     def step(self, game_minutes: int) -> StoreStepResult:
         """Advance one policy-driven store step.
 
-        The caller controls step cadence. Timed checkout and non-checkout work
-        completion are optional. Existing registered work is evaluated after the
-        game clock advances; completed work uses the existing settlement,
-        replenishment or cleaning paths before demand/traffic and new task
-        selection run.
+        Existing rest states are evaluated immediately after the game clock
+        advances. A completed recovery therefore makes staff eligible for new
+        work later in the same step. Timed checkout and non-checkout work are
+        then evaluated. If a work completion consumes the last stamina point,
+        the newly created RETURNING_TO_BREAK_ROOM state is registered for a
+        future step but is not advanced again immediately.
 
-        Staff inside an active timed work lifecycle are locked out of the generic
-        task selector until completion, stale-target release or explicit
-        unregistration. Newly selected checkout/replenish/clean work is
-        registered at the current absolute game minute for later steps.
-
-        Omitting either timing-policy pair preserves the prior explicit behavior
-        for that work type.
+        Timed checkout, replenish/clean work and rest progression are all
+        optional policy pairs. Omitting a pair preserves the prior explicit
+        behavior for that lifecycle.
         """
         clock = self.runtime.advance_game_minutes(game_minutes)
+
+        staff_rest_timing_results: tuple[StaffRestTimingEvaluation, ...] = ()
+        if (
+            self.staff_rest_timing is not None
+            and self.staff_rest_transition_policy is not None
+        ):
+            self.staff_rest_timing.sync_from_roster()
+            staff_rest_timing_results = self.staff_rest_timing.evaluate_all(
+                self.staff_rest_transition_policy
+            )
 
         checkout_timing_results: tuple[CheckoutServiceTimingEvaluation, ...] = ()
         if (
@@ -161,6 +185,12 @@ class StoreStepOrchestrator:
             staff_work_timing_results = self.staff_work_timing.evaluate_all(
                 self.staff_work_completion_policy
             )
+
+        if self.staff_rest_timing is not None:
+            # Work completion may have consumed the final stamina point. Track
+            # that state now, but do not evaluate a second lifecycle transition
+            # in the same store step.
+            self.staff_rest_timing.sync_from_roster()
 
         demand_result = self.demand.evaluate() if self.demand is not None else None
         traffic = self.runtime.customers.tick()
@@ -214,6 +244,7 @@ class StoreStepOrchestrator:
 
         return StoreStepResult(
             clock=clock,
+            staff_rest_timing=staff_rest_timing_results,
             checkout_timing=checkout_timing_results,
             staff_work_timing=staff_work_timing_results,
             demand=demand_result,
