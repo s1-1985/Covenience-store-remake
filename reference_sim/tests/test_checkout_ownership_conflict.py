@@ -167,7 +167,7 @@ class CheckoutOwnershipConflictTests(unittest.TestCase):
         self.assertEqual(conflict.status, CheckoutOwnershipConflictStatus.RESOLVED)
         self.assertEqual(conflict.decision.owner_staff_ids, ("s2",))
         self.assertEqual(len(result.checkout_selections), 1)
-        self.assertEqual(result.checkout_selections[0].staff_id, "s2")
+        self.assertEqual(result.checkout_selections[0].context.staff_id, "s2")
         self.assertEqual(runtime.checkout("checkout").customer_being_served_by("s2"), "c1")
 
         loser = runtime.staff.staff_member("s1")
