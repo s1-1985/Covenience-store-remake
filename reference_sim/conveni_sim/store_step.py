@@ -8,6 +8,12 @@ from .checkout_anger_timing import (
     CheckoutAngerTimingEvaluation,
     CheckoutAngerTriggerPolicy,
 )
+from .checkout_ownership_conflict import (
+    CheckoutOwnershipConflictCoordinator,
+    CheckoutOwnershipConflictEvaluation,
+    CheckoutOwnershipConflictPolicy,
+    CheckoutOwnershipConflictStatus,
+)
 from .checkout_selection_policy import (
     CheckoutCustomerSelectionPolicy,
     CheckoutSelectionCoordinator,
@@ -67,6 +73,7 @@ class StoreStepResult:
     checkout_timing: tuple[CheckoutServiceTimingEvaluation, ...]
     staff_work_timing: tuple[StaffWorkTimingEvaluation, ...]
     staff_work_interruptions: tuple[StaffWorkInterruptionEvaluation, ...]
+    checkout_ownership_conflicts: tuple[CheckoutOwnershipConflictEvaluation, ...]
     staff_growth: tuple[StaffGrowthResolution, ...]
     demand: Optional[CustomerDemandEvaluation]
     traffic: CustomerTickResult
@@ -81,10 +88,10 @@ class StoreStepOrchestrator:
     The caller supplies the in-game minute delta. Demand, purchase choice, staff
     task selection, checkout-customer selection, optional checkout duration and
     completion effects, optional checkout-pressure anger triggering, optional
-    replenish/clean completion/interruption, optional recovered work growth and
-    optional rest transitions are delegated to replaceable layers. No unresolved
-    original timing, patience, interruption threshold or stamina coefficient is
-    invented.
+    replenish/clean completion/interruption, optional checkout ownership conflict
+    resolution, optional recovered work growth and optional rest transitions are
+    delegated to replaceable layers. No unresolved original timing, patience,
+    conflict winner, interruption threshold or stamina coefficient is invented.
     """
 
     def __init__(
@@ -96,6 +103,7 @@ class StoreStepOrchestrator:
         purchase_policy: Optional[CustomerPurchasePolicy] = None,
         staff_policy: Optional[StaffTaskPolicy] = None,
         checkout_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
+        checkout_ownership_policy: Optional[CheckoutOwnershipConflictPolicy] = None,
         checkout_timing: Optional[CheckoutServiceTimingCoordinator] = None,
         checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
         checkout_completion_effects_policy: Optional[CheckoutServiceCompletionEffectsPolicy] = None,
@@ -152,6 +160,7 @@ class StoreStepOrchestrator:
         self.purchase_policy = purchase_policy
         self.staff_policy = staff_policy
         self.checkout_policy = checkout_policy
+        self.checkout_ownership_policy = checkout_ownership_policy
         self.checkout_timing = checkout_timing
         self.checkout_duration_policy = checkout_duration_policy
         self.checkout_completion_effects_policy = checkout_completion_effects_policy
@@ -172,6 +181,11 @@ class StoreStepOrchestrator:
         self._staff_work_interruption = (
             StaffWorkInterruptionCoordinator(runtime, staff_work_timing)
             if staff_work_timing is not None and staff_work_interruption_policy is not None
+            else None
+        )
+        self._checkout_ownership = (
+            CheckoutOwnershipConflictCoordinator(runtime)
+            if checkout_ownership_policy is not None
             else None
         )
         self._checkout_selection = (
@@ -200,10 +214,14 @@ class StoreStepOrchestrator:
         work follow. After demand/traffic/purchase updates, an optional explicit
         work-interruption policy may release active replenish/clean work in
         response to factual checkout demand. Ordinary staff task selection then
-        runs, so a released staff member may choose checkout in that same step.
+        runs.
 
-        With no interruption policy, active replenish/clean work remains locked
-        exactly as before; checkout demand alone never cancels it.
+        If multiple not-yet-serving staff are assigned to the same checkout and
+        exceed its free service slots, an optional ownership policy is evaluated
+        before customer selection. An unresolved conflict blocks those contenders
+        from beginning service in that step rather than choosing a winner from
+        roster iteration order. A resolved conflict allows only explicit owners
+        to begin service; loser transitions remain policy supplied.
         """
         clock = self.runtime.advance_game_minutes(game_minutes)
 
@@ -293,9 +311,36 @@ class StoreStepOrchestrator:
                     if applied.decision.task in TIMED_STAFF_WORK_TASKS:
                         self.staff_work_timing.register_assigned(applied.staff_id)
 
+        checkout_ownership_results: tuple[CheckoutOwnershipConflictEvaluation, ...] = ()
+        blocked_checkout_starters: set[str] = set()
+        if (
+            self._checkout_ownership is not None
+            and self.checkout_ownership_policy is not None
+        ):
+            checkout_ownership_results = self._checkout_ownership.evaluate_all(
+                self.checkout_ownership_policy
+            )
+            for conflict in checkout_ownership_results:
+                if conflict.status is CheckoutOwnershipConflictStatus.NO_CONFLICT:
+                    continue
+                if conflict.status is CheckoutOwnershipConflictStatus.UNRESOLVED:
+                    blocked_checkout_starters.update(conflict.context.contender_staff_ids)
+                    continue
+                assert conflict.decision is not None
+                owners = set(conflict.decision.owner_staff_ids)
+                blocked_checkout_starters.update(
+                    staff_id
+                    for staff_id in conflict.context.contender_staff_ids
+                    if staff_id not in owners
+                )
+            if self.staff_rest_timing is not None:
+                self.staff_rest_timing.sync_from_roster()
+
         checkout_results: list[CheckoutSelectionEvaluation] = []
         if self.checkout_policy is not None and self._checkout_selection is not None:
             for staff in self.runtime.staff.staff:
+                if staff.id in blocked_checkout_starters:
+                    continue
                 if staff.task is not StaffTask.CHECKOUT or staff.target_id is None:
                     continue
                 checkout = self.runtime.checkout(staff.target_id)
@@ -319,6 +364,7 @@ class StoreStepOrchestrator:
             checkout_timing=checkout_timing_results,
             staff_work_timing=staff_work_timing_results,
             staff_work_interruptions=staff_work_interruption_results,
+            checkout_ownership_conflicts=checkout_ownership_results,
             staff_growth=staff_growth_results,
             demand=demand_result,
             traffic=traffic,

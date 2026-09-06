@@ -42,13 +42,7 @@ WORK_GROWTH_SKILL = {
 
 @dataclass
 class StaffGrowthOpportunity:
-    """One confirmed work-growth trigger with unresolved gain semantics.
-
-    First-title research confirms that checkout, replenishment and floor cleaning
-    can grow their corresponding runtime skills. The exact increment, manager
-    education multiplier and rounding are still unknown, so work completion
-    records an opportunity rather than mutating a skill automatically.
-    """
+    """One confirmed work-growth trigger with unresolved gain semantics."""
 
     sequence: int
     staff_id: str
@@ -94,13 +88,7 @@ class StaffRuntimeState:
 
 
 class StoreStaffRoster:
-    """Minimal staff runtime/assignment surface for one store.
-
-    The first-title evidence supports at most three assigned staff and explicit
-    runtime work such as checkout, replenishment, cleaning and resting. Exact
-    autonomous task priority, travel behavior, stamina consumption/recovery,
-    task durations and skill-growth increments remain caller-supplied/unknown.
-    """
+    """Minimal staff runtime/assignment surface for one store."""
 
     def __init__(self, *, max_staff: int = FIRST_TITLE_MAX_STAFF_PER_STORE) -> None:
         if max_staff < 1:
@@ -213,6 +201,34 @@ class StoreStaffRoster:
         state.target_id = None
         return state
 
+    def begin_break_room_return(
+        self,
+        staff_id: str,
+        *,
+        break_room_target_id: Optional[str] = None,
+    ) -> StaffRuntimeState:
+        """Begin an explicitly requested break-room return without changing stamina.
+
+        Stamina exhaustion is one confirmed reason for this transition, but
+        first-title observations also report checkout-assignment conflict losers
+        returning to the break room. This method expresses the transition only;
+        it does not claim a stamina cause, recovery duration, or recovery amount.
+        """
+        state = self._staff[staff_id]
+        if state.condition is not StaffCondition.AVAILABLE:
+            raise ValueError("staff member is not available to begin break-room return")
+        changed = (
+            state.condition is not StaffCondition.RETURNING_TO_BREAK_ROOM
+            or state.task is not StaffTask.RETURN_TO_BREAK_ROOM
+            or state.target_id != break_room_target_id
+        )
+        state.condition = StaffCondition.RETURNING_TO_BREAK_ROOM
+        state.task = StaffTask.RETURN_TO_BREAK_ROOM
+        state.target_id = break_room_target_id
+        if changed:
+            state.task_switch_count += 1
+        return state
+
     def _record_growth_opportunity(
         self,
         staff_id: str,
@@ -251,13 +267,6 @@ class StoreStaffRoster:
         stamina_cost: Optional[int] = None,
         break_room_target_id: Optional[str] = None,
     ) -> StaffRuntimeState:
-        """Record a work event without inventing stamina or growth constants.
-
-        Checkout, replenishment and floor-cleaning work create a growth
-        opportunity for the corresponding runtime skill. No skill delta is
-        applied until a future evidence-backed policy, direct observation or
-        caller explicitly resolves that opportunity.
-        """
         if task not in WORK_TASKS:
             raise ValueError("only checkout/replenish/clean are work events")
         state = self._staff[staff_id]
@@ -282,7 +291,6 @@ class StoreStaffRoster:
         *,
         after_value: int,
     ) -> StaffGrowthOpportunity:
-        """Apply an externally resolved work-growth result without guessing a formula."""
         if after_value < 0:
             raise ValueError("after_value must be >= 0")
         opportunity = self.growth_opportunity(sequence)
