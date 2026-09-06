@@ -182,27 +182,33 @@ class StoreRuntimeHarness:
         self,
         customer_id: str,
         *,
-        entry: GridPoint,
-        exit: GridPoint,
-        merchandise_fixture_ids: Sequence[str],
+        entry_point: GridPoint,
+        exit_point: GridPoint,
+        merchandise_fixture_ids: Sequence[str] = (),
         checkout_fixture_id: Optional[str] = None,
     ) -> CustomerAdmissionResult:
-        """Create a customer only when effective opening state is confirmed open."""
-        open_state = self.store_open
-        if open_state is None:
+        """Apply the effective opening-state gate before creating a customer.
+
+        Gameplay demand generators should use this entry point. Unknown opening
+        state is preserved as unknown and does not silently admit a customer.
+        `add_customer` remains available as a lower-level observation/replay hook
+        when the source itself proves that a customer was present.
+        """
+        store_open = self.store_open
+        if store_open is None:
             return CustomerAdmissionResult(
                 customer_id,
                 CustomerAdmissionStatus.OPEN_STATE_UNKNOWN,
             )
-        if not open_state:
+        if not store_open:
             return CustomerAdmissionResult(
                 customer_id,
                 CustomerAdmissionStatus.STORE_CLOSED,
             )
-        session = self.customers.enter_customer(
+        session = self.add_customer(
             customer_id,
-            entry=entry,
-            exit=exit,
+            entry_point=entry_point,
+            exit_point=exit_point,
             merchandise_fixture_ids=merchandise_fixture_ids,
             checkout_fixture_id=checkout_fixture_id,
         )
@@ -212,24 +218,35 @@ class StoreRuntimeHarness:
             session,
         )
 
-    def advance_customer_traffic(self) -> dict[str, GridPoint]:
-        """Advance one headless traffic tick and project arrivals into customer states."""
-        moved = self.traffic.tick()
-        self.customers.sync_arrivals()
-        for checkout in self._checkouts.values():
-            checkout.refresh_waiting()
-        return moved
+    def add_customer(
+        self,
+        customer_id: str,
+        *,
+        entry_point: GridPoint,
+        exit_point: GridPoint,
+        merchandise_fixture_ids: Sequence[str] = (),
+        checkout_fixture_id: Optional[str] = None,
+    ) -> CustomerSession:
+        """Low-level customer injection that intentionally bypasses the entry gate."""
+        session = self.customers.add_customer(
+            customer_id,
+            entry_point=entry_point,
+            exit_point=exit_point,
+            merchandise_fixture_ids=merchandise_fixture_ids,
+            checkout_fixture_id=checkout_fixture_id,
+        )
+        self.purchases.open_basket(customer_id)
+        return session
 
     def customer_pick_and_continue(
         self,
         customer_id: str,
-        *,
         slot_id: str,
-        quantity: int = 1,
+        *,
+        quantity: int,
         unit_sale_price_yen: Optional[int],
         flow: PurchaseFlow,
     ) -> BasketPickResult:
-        """Pick stock at the customer's current merchandise stop, then continue route."""
         session = self.customers.customer(customer_id)
         slot = self.inventory.slot(slot_id)
         if session.state is not CustomerState.AT_MERCHANDISE:
@@ -333,13 +350,7 @@ class StoreRuntimeHarness:
         staff_id: Optional[str] = None,
         stamina_cost: Optional[int] = None,
         break_room_target_id: Optional[str] = None,
-        source_id: Optional[str] = None,
     ) -> ReplenishAndChargeResult:
-        """Replenish stock and record the procurement outflow in one explicit operation."""
-        if staff_id is None and (stamina_cost is not None or break_room_target_id is not None):
-            raise ValueError("staff_id is required for staff work metadata")
-        slot = self.inventory.slot(slot_id)
-        self._require_placed_fixture(slot.fixture_id, role="inventory")
         mutation = self.inventory.replenish(
             slot_id,
             quantity,
@@ -348,20 +359,8 @@ class StoreRuntimeHarness:
             stamina_cost=stamina_cost,
             break_room_target_id=break_room_target_id,
         )
-        event = self.cash.record_procurement(
-            mutation.procurement_cost_yen,
-            source_id=source_id or slot_id,
-        )
+        event = self.cash.record_procurement_mutation(mutation)
         return ReplenishAndChargeResult(mutation, event)
 
-    def end_day(
-        self,
-        *,
-        labor_cost_yen: Optional[int],
-        other_costs_yen: Sequence[Optional[int]] = (),
-    ) -> DayEndResult:
-        """Close the day through the explicit financial boundary."""
-        return self.cash.close_day(
-            labor_cost_yen=labor_cost_yen,
-            other_costs_yen=other_costs_yen,
-        )
+    def close_day(self) -> DayEndResult:
+        return self.cash.close_day()
