@@ -12,6 +12,7 @@ from conveni_sim.observation_checkout_pre_service_departure_replay import (
 from conveni_sim.observation_comparison import ObservationIdentityMapping
 from conveni_sim.observation_day_adapter import ObservationDayCoverage
 from conveni_sim.observations import GameTimestamp, GameplayObservationTimeline, ObservationKind
+from conveni_sim.operating_time import SubdayClock
 from conveni_sim.staff import StaffCondition, StaffTask
 from conveni_sim.store_grid import Direction, GridPoint, StoreGrid
 from conveni_sim.store_runtime import StoreRuntimeHarness
@@ -44,8 +45,11 @@ class ObservationCheckoutPreServiceDepartureReplayTests(unittest.TestCase):
             footprint_tiles=(1, 1),
             interaction_side=Direction.NORTH,
         )
-        runtime = StoreRuntimeHarness(grid, initial_cash_yen=1_000)
-        runtime.subday_clock.set_minute_of_day(minute_of_day)
+        runtime = StoreRuntimeHarness(
+            grid,
+            initial_cash_yen=1_000,
+            subday_clock=SubdayClock(minute_of_day // 60, minute_of_day % 60),
+        )
         runtime.add_checkout("checkout", simultaneous_staff_capacity=1)
         runtime.staff.add_staff("s1", stamina_max=5)
         runtime.inventory.add_slot(
@@ -134,7 +138,7 @@ class ObservationCheckoutPreServiceDepartureReplayTests(unittest.TestCase):
         self.assertEqual(before.status, CheckoutPreServiceDepartureStatus.UNRESOLVED)
         self.assertEqual(runtime.staff.staff_member("s1").task, StaffTask.CHECKOUT)
 
-        runtime.subday_clock.set_minute_of_day(10 * 60 + 5)
+        runtime.advance_game_minutes(5)
         at_observation = coordinator.evaluate_staff("s1", policy)
         self.assertEqual(at_observation.status, CheckoutPreServiceDepartureStatus.DEPARTED)
         staff = runtime.staff.staff_member("s1")
