@@ -36,6 +36,7 @@ from .simulation_observations import (
     SimulationObservationExportOptions,
 )
 from .staff_task_policy import StaffTaskPolicy
+from .staff_work_interruption import StaffWorkInterruptionPolicy
 from .staff_work_timing import StaffWorkCompletionPolicy
 
 
@@ -76,12 +77,14 @@ def validate_minimal_representative_day(
     checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
     staff_task_policy: Optional[StaffTaskPolicy] = None,
     staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
+    staff_work_interruption_policy: Optional[StaffWorkInterruptionPolicy] = None,
 ) -> MinimalRepresentativeDayValidationResult:
     """Build, optionally override policies, run, measure and compare one day."""
 
     scenario = build_minimal_representative_day_scenario(
         config,
         checkout_anger_policy=checkout_anger_policy,
+        staff_work_interruption_policy=staff_work_interruption_policy,
     )
     if checkout_duration_policy is not None:
         if scenario.orchestrator.checkout_timing is None:
@@ -121,6 +124,7 @@ def validate_minimal_day_from_observation_timeline(
     checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
     staff_task_policy: Optional[StaffTaskPolicy] = None,
     staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
+    staff_work_interruption_policy: Optional[StaffWorkInterruptionPolicy] = None,
 ) -> ObservationBackedMinimalDayValidationResult:
     """Bridge annotated observations directly into the autonomous-day loop."""
 
@@ -137,6 +141,7 @@ def validate_minimal_day_from_observation_timeline(
         checkout_selection_policy=checkout_selection_policy,
         staff_task_policy=staff_task_policy,
         staff_work_completion_policy=staff_work_completion_policy,
+        staff_work_interruption_policy=staff_work_interruption_policy,
     )
     return ObservationBackedMinimalDayValidationResult(
         observation=observation,
@@ -156,6 +161,7 @@ def validate_minimal_day_with_event_comparison(
     checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
     staff_task_policy: Optional[StaffTaskPolicy] = None,
     staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
+    staff_work_interruption_policy: Optional[StaffWorkInterruptionPolicy] = None,
     export_options: SimulationObservationExportOptions = SimulationObservationExportOptions(),
 ) -> EventComparedObservationBackedMinimalDayValidationResult:
     """Run metric and event-level validation without inventing correspondence."""
@@ -173,6 +179,7 @@ def validate_minimal_day_with_event_comparison(
         checkout_selection_policy=checkout_selection_policy,
         staff_task_policy=staff_task_policy,
         staff_work_completion_policy=staff_work_completion_policy,
+        staff_work_interruption_policy=staff_work_interruption_policy,
     )
     simulated_timeline = RepresentativeDayObservationExporter().export(
         validation.run,
