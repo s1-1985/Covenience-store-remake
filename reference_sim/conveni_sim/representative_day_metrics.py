@@ -30,6 +30,9 @@ class RepresentativeDayMetrics:
     open_state_unknown_rejections: int
     completed_checkout_sales: int
     checkout_anger_events: int
+    max_pre_service_wait_game_minutes: Optional[int]
+    max_checkout_service_game_minutes: Optional[int]
+    max_total_checkout_game_minutes: Optional[int]
     known_checkout_revenue_yen: int
     checkout_revenue_is_exact: bool
     peak_waiting_checkout_customers: int
@@ -66,6 +69,9 @@ class ObservedRepresentativeDayMetrics:
     admitted_arrivals: Optional[int] = None
     completed_checkout_sales: Optional[int] = None
     checkout_anger_events: Optional[int] = None
+    max_pre_service_wait_game_minutes: Optional[int] = None
+    max_checkout_service_game_minutes: Optional[int] = None
+    max_total_checkout_game_minutes: Optional[int] = None
     known_checkout_revenue_yen: Optional[int] = None
     peak_waiting_checkout_customers: Optional[int] = None
     peak_active_checkout_services: Optional[int] = None
@@ -91,19 +97,16 @@ class RepresentativeDayComparison:
     deltas: tuple[RepresentativeDayMetricDelta, ...]
 
 
-def derive_representative_day_metrics(
-    run: RepresentativeDayRunResult,
-) -> RepresentativeDayMetrics:
+def derive_representative_day_metrics(run: RepresentativeDayRunResult) -> RepresentativeDayMetrics:
     """Reduce one run into factual counters/extrema without fitting game rules."""
-
-    attempted_arrivals = 0
-    admitted_arrivals = 0
-    store_closed_rejections = 0
-    open_state_unknown_rejections = 0
-    completed_checkout_sales = 0
-    checkout_anger_events = 0
+    attempted_arrivals = admitted_arrivals = 0
+    store_closed_rejections = open_state_unknown_rejections = 0
+    completed_checkout_sales = checkout_anger_events = 0
     known_checkout_revenue_yen = 0
     checkout_revenue_is_exact = True
+    pre_service_values: list[int] = []
+    service_values: list[int] = []
+    total_values: list[int] = []
 
     for step in run.steps:
         if step.demand is not None:
@@ -116,9 +119,14 @@ def derive_representative_day_metrics(
                 elif admission.status is CustomerAdmissionStatus.OPEN_STATE_UNKNOWN:
                     open_state_unknown_rejections += 1
 
-        checkout_anger_events += sum(
-            1 for evaluation in step.checkout_anger_timing if evaluation.triggered
-        )
+        for evaluation in step.checkout_anger_timing:
+            context = evaluation.context
+            pre_service_values.append(context.pre_service_wait_game_minutes)
+            total_values.append(context.total_checkout_elapsed_game_minutes)
+            if context.service_elapsed_game_minutes is not None:
+                service_values.append(context.service_elapsed_game_minutes)
+            if evaluation.triggered:
+                checkout_anger_events += 1
 
         for checkout in step.checkout_timing:
             if not checkout.completed or checkout.sale is None:
@@ -129,24 +137,14 @@ def derive_representative_day_metrics(
             if settlement.exact_total_yen is None:
                 checkout_revenue_is_exact = False
 
-    snapshots = (
-        run.start_snapshot,
-        *run.step_snapshots,
-        run.end_of_day_snapshot,
-        run.boundary_snapshot,
-    )
+    snapshots = (run.start_snapshot, *run.step_snapshots, run.end_of_day_snapshot, run.boundary_snapshot)
     peak_waiting = max(snapshot.waiting_checkout_customers for snapshot in snapshots)
     peak_active = max(snapshot.active_checkout_services for snapshot in snapshots)
     total_sessions = max(snapshot.total_customer_sessions for snapshot in snapshots)
-
     end = run.end_of_day_snapshot
-    exited = end.customer_count(CustomerState.EXITED)
-    ejected = end.customer_count(CustomerState.EJECTED)
-    unreachable = end.customer_count(CustomerState.UNREACHABLE)
 
-    staff_ids = tuple(staff.staff_id for staff in run.boundary_snapshot.staff)
     staff_metrics: list[StaffDayMetrics] = []
-    for staff_id in staff_ids:
+    for staff_id in tuple(staff.staff_id for staff in run.boundary_snapshot.staff):
         values: list[int] = []
         ending: Optional[int] = None
         for snapshot in snapshots:
@@ -155,20 +153,10 @@ def derive_representative_day_metrics(
                 values.append(staff.stamina_current)
             if snapshot is run.boundary_snapshot:
                 ending = staff.stamina_current
-        staff_metrics.append(
-            StaffDayMetrics(
-                staff_id=staff_id,
-                minimum_stamina=min(values) if values else None,
-                ending_stamina=ending,
-            )
-        )
+        staff_metrics.append(StaffDayMetrics(staff_id, min(values) if values else None, ending))
 
     inventory_metrics = tuple(
-        InventoryDayMetrics(
-            slot_id=item.slot_id,
-            ending_units=item.units,
-            capacity_units=item.capacity_units,
-        )
+        InventoryDayMetrics(item.slot_id, item.units, item.capacity_units)
         for item in run.end_of_day_snapshot.inventory
     )
 
@@ -179,14 +167,17 @@ def derive_representative_day_metrics(
         open_state_unknown_rejections=open_state_unknown_rejections,
         completed_checkout_sales=completed_checkout_sales,
         checkout_anger_events=checkout_anger_events,
+        max_pre_service_wait_game_minutes=max(pre_service_values) if pre_service_values else None,
+        max_checkout_service_game_minutes=max(service_values) if service_values else None,
+        max_total_checkout_game_minutes=max(total_values) if total_values else None,
         known_checkout_revenue_yen=known_checkout_revenue_yen,
         checkout_revenue_is_exact=checkout_revenue_is_exact,
         peak_waiting_checkout_customers=peak_waiting,
         peak_active_checkout_services=peak_active,
         total_customer_sessions=total_sessions,
-        exited_customers=exited,
-        ejected_customers=ejected,
-        unreachable_customers=unreachable,
+        exited_customers=end.customer_count(CustomerState.EXITED),
+        ejected_customers=end.customer_count(CustomerState.EJECTED),
+        unreachable_customers=end.customer_count(CustomerState.UNREACHABLE),
         known_cash_delta_yen=run.cash_after_yen - run.cash_before_yen,
         cash_is_exact_after=run.cash_is_exact_after,
         day_known_credits_yen=run.day_end.summary.known_credits_yen,
@@ -196,72 +187,48 @@ def derive_representative_day_metrics(
     )
 
 
-def compare_representative_day_metrics(
-    metrics: RepresentativeDayMetrics,
-    observed: ObservedRepresentativeDayMetrics,
-) -> RepresentativeDayComparison:
+def compare_representative_day_metrics(metrics: RepresentativeDayMetrics, observed: ObservedRepresentativeDayMetrics) -> RepresentativeDayComparison:
     """Subtract only explicitly supplied observation targets from simulation."""
-
     deltas: list[RepresentativeDayMetricDelta] = []
-
     scalar_fields = (
-        "attempted_arrivals",
-        "admitted_arrivals",
-        "completed_checkout_sales",
-        "checkout_anger_events",
-        "known_checkout_revenue_yen",
-        "peak_waiting_checkout_customers",
-        "peak_active_checkout_services",
-        "total_customer_sessions",
-        "exited_customers",
-        "known_cash_delta_yen",
+        "attempted_arrivals", "admitted_arrivals", "completed_checkout_sales",
+        "checkout_anger_events", "max_pre_service_wait_game_minutes",
+        "max_checkout_service_game_minutes", "max_total_checkout_game_minutes",
+        "known_checkout_revenue_yen", "peak_waiting_checkout_customers",
+        "peak_active_checkout_services", "total_customer_sessions",
+        "exited_customers", "known_cash_delta_yen",
     )
     for field in scalar_fields:
         observed_value = getattr(observed, field)
         if observed_value is None:
             continue
         simulated_value = getattr(metrics, field)
-        deltas.append(
-            RepresentativeDayMetricDelta(
-                metric=field,
-                simulated_value=simulated_value,
-                observed_value=observed_value,
-                delta=simulated_value - observed_value,
-            )
-        )
+        deltas.append(RepresentativeDayMetricDelta(
+            metric=field,
+            simulated_value=simulated_value,
+            observed_value=observed_value,
+            delta=(simulated_value - observed_value if simulated_value is not None else None),
+        ))
 
     staff_by_id = {item.staff_id: item for item in metrics.staff}
     for target in observed.staff_minimums:
         simulated = staff_by_id.get(target.staff_id)
         simulated_value = simulated.minimum_stamina if simulated is not None else None
-        deltas.append(
-            RepresentativeDayMetricDelta(
-                metric=f"staff:{target.staff_id}:minimum_stamina",
-                simulated_value=simulated_value,
-                observed_value=target.minimum_stamina,
-                delta=(
-                    simulated_value - target.minimum_stamina
-                    if simulated_value is not None
-                    else None
-                ),
-            )
-        )
+        deltas.append(RepresentativeDayMetricDelta(
+            metric=f"staff:{target.staff_id}:minimum_stamina",
+            simulated_value=simulated_value,
+            observed_value=target.minimum_stamina,
+            delta=(simulated_value - target.minimum_stamina if simulated_value is not None else None),
+        ))
 
     inventory_by_id = {item.slot_id: item for item in metrics.inventory}
     for target in observed.inventory_endings:
         simulated = inventory_by_id.get(target.slot_id)
         simulated_value = simulated.ending_units if simulated is not None else None
-        deltas.append(
-            RepresentativeDayMetricDelta(
-                metric=f"inventory:{target.slot_id}:ending_units",
-                simulated_value=simulated_value,
-                observed_value=target.ending_units,
-                delta=(
-                    simulated_value - target.ending_units
-                    if simulated_value is not None
-                    else None
-                ),
-            )
-        )
-
+        deltas.append(RepresentativeDayMetricDelta(
+            metric=f"inventory:{target.slot_id}:ending_units",
+            simulated_value=simulated_value,
+            observed_value=target.ending_units,
+            delta=(simulated_value - target.ending_units if simulated_value is not None else None),
+        ))
     return RepresentativeDayComparison(metrics, observed, tuple(deltas))

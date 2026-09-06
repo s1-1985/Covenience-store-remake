@@ -27,12 +27,7 @@ class ObservationKind(str, Enum):
 
 @dataclass(frozen=True, order=True)
 class GameTimestamp:
-    """Timestamp on the recovered 4-representative-day calendar.
-
-    This is an analysis coordinate, not a claim that skipped calendar days are
-    simulated. It lets video observations be compared without using video time
-    as an engine clock.
-    """
+    """Timestamp on the recovered 4-representative-day calendar."""
 
     year: int
     month: int
@@ -45,7 +40,7 @@ class GameTimestamp:
         if not 1 <= self.month <= MONTHS_PER_YEAR:
             raise ValueError("month must be 1..12")
         if not 1 <= self.day <= REPRESENTATIVE_DAYS_PER_MONTH:
-            raise ValueError("day must be 1..4")
+            raise ValueError("representative day must be 1..4")
         if not 0 <= self.minute_of_day < MINUTES_PER_REPRESENTATIVE_DAY:
             raise ValueError("minute_of_day must be 0..1439")
 
@@ -102,8 +97,9 @@ class StaminaDeltaMeasurement:
 class GameplayObservationTimeline:
     """Ordered observation log and reducers for video-derived measurements.
 
-    No durations, spawn rates, or stamina costs are guessed here. Reducers only
-    calculate differences between observations that were explicitly entered.
+    Reducers only subtract explicitly annotated timestamps. Queue wait and total
+    checkout duration require a customer id plus matching fixture id; no missing
+    queue/service event is inferred.
     """
 
     def __init__(self, source_id: str) -> None:
@@ -150,6 +146,23 @@ class GameplayObservationTimeline:
         arrivals = [e for e in self._events if e.kind is ObservationKind.CUSTOMER_ARRIVAL]
         return tuple(self._duration_between(a, b) for a, b in zip(arrivals, arrivals[1:]))
 
+    def checkout_queue_wait_durations(self) -> tuple[DurationMeasurement, ...]:
+        pending: dict[tuple[str, Optional[str]], GameplayObservation] = {}
+        results: list[DurationMeasurement] = []
+        for event in self._events:
+            if event.customer_id is None:
+                continue
+            key = (event.customer_id, event.fixture_id)
+            if event.kind is ObservationKind.CHECKOUT_QUEUE_ENTER:
+                if key in pending:
+                    raise ValueError(f"duplicate checkout queue enter without service start for {key}")
+                pending[key] = event
+            elif event.kind is ObservationKind.CHECKOUT_SERVICE_START:
+                start = pending.pop(key, None)
+                if start is not None:
+                    results.append(self._duration_between(start, event))
+        return tuple(results)
+
     def checkout_service_durations(self) -> tuple[DurationMeasurement, ...]:
         pending: dict[tuple[Optional[str], Optional[str], Optional[str]], GameplayObservation] = {}
         results: list[DurationMeasurement] = []
@@ -164,6 +177,23 @@ class GameplayObservationTimeline:
                 if start is None:
                     raise ValueError(f"checkout end without matching start for {key}")
                 results.append(self._duration_between(start, event))
+        return tuple(results)
+
+    def checkout_total_durations(self) -> tuple[DurationMeasurement, ...]:
+        pending: dict[tuple[str, Optional[str]], GameplayObservation] = {}
+        results: list[DurationMeasurement] = []
+        for event in self._events:
+            if event.customer_id is None:
+                continue
+            key = (event.customer_id, event.fixture_id)
+            if event.kind is ObservationKind.CHECKOUT_QUEUE_ENTER:
+                if key in pending:
+                    raise ValueError(f"duplicate checkout queue enter without service end for {key}")
+                pending[key] = event
+            elif event.kind is ObservationKind.CHECKOUT_SERVICE_END:
+                start = pending.pop(key, None)
+                if start is not None:
+                    results.append(self._duration_between(start, event))
         return tuple(results)
 
     def stamina_deltas(self, staff_id: Optional[str] = None) -> tuple[StaminaDeltaMeasurement, ...]:
