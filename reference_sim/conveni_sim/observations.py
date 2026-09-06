@@ -16,6 +16,7 @@ class ObservationKind(str, Enum):
     CHECKOUT_SERVICE_START = "checkout_service_start"
     CHECKOUT_ANGER = "checkout_anger"
     CHECKOUT_SERVICE_END = "checkout_service_end"
+    CHECKOUT_STAFF_RETURN_TO_BREAK_ROOM = "checkout_staff_return_to_break_room"
     STAMINA_SNAPSHOT = "stamina_snapshot"
     REPLENISH_START = "replenish_start"
     REPLENISH_INTERRUPT = "replenish_interrupt"
