@@ -14,6 +14,12 @@ from .checkout_ownership_conflict import (
     CheckoutOwnershipConflictPolicy,
     CheckoutOwnershipConflictStatus,
 )
+from .checkout_pre_service_departure import (
+    CheckoutPreServiceDepartureCoordinator,
+    CheckoutPreServiceDepartureEvaluation,
+    CheckoutPreServiceDeparturePolicy,
+    CheckoutPreServiceDepartureStatus,
+)
 from .checkout_selection_policy import (
     CheckoutCustomerSelectionPolicy,
     CheckoutSelectionCoordinator,
@@ -74,6 +80,7 @@ class StoreStepResult:
     staff_work_timing: tuple[StaffWorkTimingEvaluation, ...]
     staff_work_interruptions: tuple[StaffWorkInterruptionEvaluation, ...]
     checkout_ownership_conflicts: tuple[CheckoutOwnershipConflictEvaluation, ...]
+    checkout_pre_service_departures: tuple[CheckoutPreServiceDepartureEvaluation, ...]
     staff_growth: tuple[StaffGrowthResolution, ...]
     demand: Optional[CustomerDemandEvaluation]
     traffic: CustomerTickResult
@@ -89,9 +96,10 @@ class StoreStepOrchestrator:
     task selection, checkout-customer selection, optional checkout duration and
     completion effects, optional checkout-pressure anger triggering, optional
     replenish/clean completion/interruption, optional checkout ownership conflict
-    resolution, optional recovered work growth and optional rest transitions are
-    delegated to replaceable layers. No unresolved original timing, patience,
-    conflict winner, interruption threshold or stamina coefficient is invented.
+    resolution, optional pre-service cashier departure, optional recovered work
+    growth and optional rest transitions are delegated to replaceable layers. No
+    unresolved original timing, patience, conflict winner, departure threshold,
+    interruption threshold or stamina coefficient is invented.
     """
 
     def __init__(
@@ -104,6 +112,7 @@ class StoreStepOrchestrator:
         staff_policy: Optional[StaffTaskPolicy] = None,
         checkout_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
         checkout_ownership_policy: Optional[CheckoutOwnershipConflictPolicy] = None,
+        checkout_pre_service_departure_policy: Optional[CheckoutPreServiceDeparturePolicy] = None,
         checkout_timing: Optional[CheckoutServiceTimingCoordinator] = None,
         checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
         checkout_completion_effects_policy: Optional[CheckoutServiceCompletionEffectsPolicy] = None,
@@ -161,6 +170,7 @@ class StoreStepOrchestrator:
         self.staff_policy = staff_policy
         self.checkout_policy = checkout_policy
         self.checkout_ownership_policy = checkout_ownership_policy
+        self.checkout_pre_service_departure_policy = checkout_pre_service_departure_policy
         self.checkout_timing = checkout_timing
         self.checkout_duration_policy = checkout_duration_policy
         self.checkout_completion_effects_policy = checkout_completion_effects_policy
@@ -186,6 +196,11 @@ class StoreStepOrchestrator:
         self._checkout_ownership = (
             CheckoutOwnershipConflictCoordinator(runtime)
             if checkout_ownership_policy is not None
+            else None
+        )
+        self._checkout_pre_service_departure = (
+            CheckoutPreServiceDepartureCoordinator(runtime)
+            if checkout_pre_service_departure_policy is not None
             else None
         )
         self._checkout_selection = (
@@ -216,12 +231,11 @@ class StoreStepOrchestrator:
         response to factual checkout demand. Ordinary staff task selection then
         runs.
 
-        If multiple not-yet-serving staff are assigned to the same checkout and
-        exceed its free service slots, an optional ownership policy is evaluated
-        before customer selection. An unresolved conflict blocks those contenders
-        from beginning service in that step rather than choosing a winner from
-        roster iteration order. A resolved conflict allows only explicit owners
-        to begin service; loser transitions remain policy supplied.
+        Checkout ownership conflict resolution happens after assignment and
+        before customer selection. For each contender allowed past that boundary,
+        an optional pre-service departure policy may explicitly allow service,
+        send the staff member toward the break room, or leave the decision
+        unresolved. Unresolved/departed staff do not start service in that step.
         """
         clock = self.runtime.advance_game_minutes(game_minutes)
 
@@ -336,6 +350,7 @@ class StoreStepOrchestrator:
             if self.staff_rest_timing is not None:
                 self.staff_rest_timing.sync_from_roster()
 
+        checkout_pre_service_departure_results: list[CheckoutPreServiceDepartureEvaluation] = []
         checkout_results: list[CheckoutSelectionEvaluation] = []
         if self.checkout_policy is not None and self._checkout_selection is not None:
             for staff in self.runtime.staff.staff:
@@ -346,6 +361,22 @@ class StoreStepOrchestrator:
                 checkout = self.runtime.checkout(staff.target_id)
                 if checkout.customer_being_served_by(staff.id) is not None:
                     continue
+
+                if (
+                    self._checkout_pre_service_departure is not None
+                    and self.checkout_pre_service_departure_policy is not None
+                ):
+                    departure = self._checkout_pre_service_departure.evaluate_staff(
+                        staff.id,
+                        self.checkout_pre_service_departure_policy,
+                    )
+                    checkout_pre_service_departure_results.append(departure)
+                    if departure.status in (
+                        CheckoutPreServiceDepartureStatus.UNRESOLVED,
+                        CheckoutPreServiceDepartureStatus.DEPARTED,
+                    ):
+                        continue
+
                 evaluation = self._checkout_selection.evaluate(
                     staff.id,
                     self.checkout_policy,
@@ -353,6 +384,9 @@ class StoreStepOrchestrator:
                 checkout_results.append(evaluation)
                 if evaluation.service_started is not None and self.checkout_timing is not None:
                     self.checkout_timing.register_started(evaluation.service_started)
+
+        if self.staff_rest_timing is not None and checkout_pre_service_departure_results:
+            self.staff_rest_timing.sync_from_roster()
 
         if self.checkout_anger_timing is not None:
             self.checkout_anger_timing.sync_from_runtime()
@@ -365,6 +399,7 @@ class StoreStepOrchestrator:
             staff_work_timing=staff_work_timing_results,
             staff_work_interruptions=staff_work_interruption_results,
             checkout_ownership_conflicts=checkout_ownership_results,
+            checkout_pre_service_departures=tuple(checkout_pre_service_departure_results),
             staff_growth=staff_growth_results,
             demand=demand_result,
             traffic=traffic,
