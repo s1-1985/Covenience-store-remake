@@ -35,6 +35,7 @@ class StaffTaskDecisionContext:
     current_task: StaffTask
     current_target_id: Optional[str]
     candidates: tuple[StaffTaskCandidate, ...]
+    current_minute_of_day: Optional[int] = None
 
 
 class StaffTaskPolicy(Protocol):
@@ -111,6 +112,7 @@ class StaffTaskPolicyCoordinator:
         candidates_by_staff: Mapping[str, Sequence[StaffTaskCandidate]],
         *,
         locked_staff_ids: Iterable[str] = (),
+        current_minute_of_day: Optional[int] = None,
     ) -> StaffTaskPolicyApplication:
         applied: list[AppliedStaffTaskDecision] = []
         unavailable: list[str] = []
@@ -128,6 +130,7 @@ class StaffTaskPolicyCoordinator:
                 current_task=state.task,
                 current_target_id=state.target_id,
                 candidates=candidates,
+                current_minute_of_day=current_minute_of_day,
             )
             decision = policy.choose_task(context)
             if decision is None:
