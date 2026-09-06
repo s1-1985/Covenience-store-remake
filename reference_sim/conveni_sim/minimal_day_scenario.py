@@ -30,6 +30,7 @@ from .staff_work_timing import StaffWorkTimingCoordinator
 from .store_grid import Direction, GridPoint, StoreGrid
 from .store_runtime import StoreRuntimeHarness
 from .store_step import StoreStepOrchestrator
+from .traffic import CongestionPolicy
 
 
 SCENARIO_SHELF_ID = "scenario-shelf"
@@ -97,10 +98,16 @@ class MinimalScenarioTiming:
     return_to_break_room_game_minutes: int
     recovery_interval_game_minutes: int
     recovery_amount: int
+    traffic_reroute_after_blocked_ticks: Optional[int] = None
 
     def __post_init__(self) -> None:
         if self.step_game_minutes <= 0:
             raise ValueError("step_game_minutes must be > 0")
+        if (
+            self.traffic_reroute_after_blocked_ticks is not None
+            and self.traffic_reroute_after_blocked_ticks < 1
+        ):
+            raise ValueError("traffic_reroute_after_blocked_ticks must be >= 1 or None")
 
 
 @dataclass(frozen=True)
@@ -156,7 +163,9 @@ def build_minimal_representative_day_scenario(
 
     An optional checkout-anger policy wires the pressure timing/penalty runtime
     into the same day run. The policy remains caller supplied because the
-    original patience/anger trigger has not been recovered.
+    original patience/anger trigger has not been recovered. The optional traffic
+    reroute threshold is likewise a scenario/harness input, not an original-game
+    congestion constant.
     """
 
     grid = StoreGrid(config.layout.width_tiles, config.layout.height_tiles)
@@ -180,6 +189,9 @@ def build_minimal_representative_day_scenario(
         initial_cash_yen=config.initial_cash_yen,
         operating_hours=config.operating_hours,
         subday_clock=SubdayClock(config.start_hour, config.start_minute),
+    )
+    runtime.traffic.policy = CongestionPolicy(
+        reroute_after_blocked_ticks=config.timing.traffic_reroute_after_blocked_ticks
     )
     runtime.add_checkout(
         SCENARIO_CHECKOUT_ID,
