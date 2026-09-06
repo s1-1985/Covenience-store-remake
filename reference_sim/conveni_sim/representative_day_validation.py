@@ -35,6 +35,7 @@ from .simulation_observations import (
     RepresentativeDayObservationExporter,
     SimulationObservationExportOptions,
 )
+from .staff_work_timing import StaffWorkCompletionPolicy
 
 
 @dataclass
@@ -72,6 +73,7 @@ def validate_minimal_representative_day(
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
     checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
     checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
+    staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
 ) -> MinimalRepresentativeDayValidationResult:
     """Build, optionally override policies, run, measure and compare one day."""
 
@@ -87,6 +89,10 @@ def validate_minimal_representative_day(
         if scenario.orchestrator.checkout_policy is None:
             raise ValueError("checkout selection override requires checkout selection")
         scenario.orchestrator.checkout_policy = checkout_selection_policy
+    if staff_work_completion_policy is not None:
+        if scenario.orchestrator.staff_work_timing is None:
+            raise ValueError("staff work completion override requires staff work timing")
+        scenario.orchestrator.staff_work_completion_policy = staff_work_completion_policy
     run = scenario.run()
     metrics = derive_representative_day_metrics(run)
     comparison = compare_representative_day_metrics(metrics, observed)
@@ -107,6 +113,7 @@ def validate_minimal_day_from_observation_timeline(
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
     checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
     checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
+    staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
 ) -> ObservationBackedMinimalDayValidationResult:
     """Bridge annotated observations directly into the autonomous-day loop."""
 
@@ -121,6 +128,7 @@ def validate_minimal_day_from_observation_timeline(
         checkout_anger_policy=checkout_anger_policy,
         checkout_duration_policy=checkout_duration_policy,
         checkout_selection_policy=checkout_selection_policy,
+        staff_work_completion_policy=staff_work_completion_policy,
     )
     return ObservationBackedMinimalDayValidationResult(
         observation=observation,
@@ -138,6 +146,7 @@ def validate_minimal_day_with_event_comparison(
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
     checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
     checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
+    staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
     export_options: SimulationObservationExportOptions = SimulationObservationExportOptions(),
 ) -> EventComparedObservationBackedMinimalDayValidationResult:
     """Run metric and event-level validation without inventing correspondence."""
@@ -153,6 +162,7 @@ def validate_minimal_day_with_event_comparison(
         checkout_anger_policy=checkout_anger_policy,
         checkout_duration_policy=checkout_duration_policy,
         checkout_selection_policy=checkout_selection_policy,
+        staff_work_completion_policy=staff_work_completion_policy,
     )
     simulated_timeline = RepresentativeDayObservationExporter().export(
         validation.run,
