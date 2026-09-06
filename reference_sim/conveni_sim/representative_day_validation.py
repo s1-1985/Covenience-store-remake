@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from .checkout_anger_timing import CheckoutAngerTriggerPolicy
+from .checkout_pre_service_departure import CheckoutPreServiceDeparturePolicy
 from .checkout_selection_policy import CheckoutCustomerSelectionPolicy
 from .checkout_service_timing import CheckoutServiceDurationPolicy
 from .minimal_day_scenario import (
@@ -75,6 +76,7 @@ def validate_minimal_representative_day(
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
     checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
     checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
+    checkout_pre_service_departure_policy: Optional[CheckoutPreServiceDeparturePolicy] = None,
     staff_task_policy: Optional[StaffTaskPolicy] = None,
     staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
     staff_work_interruption_policy: Optional[StaffWorkInterruptionPolicy] = None,
@@ -84,6 +86,7 @@ def validate_minimal_representative_day(
     scenario = build_minimal_representative_day_scenario(
         config,
         checkout_anger_policy=checkout_anger_policy,
+        checkout_pre_service_departure_policy=checkout_pre_service_departure_policy,
         staff_work_interruption_policy=staff_work_interruption_policy,
     )
     if checkout_duration_policy is not None:
@@ -122,6 +125,7 @@ def validate_minimal_day_from_observation_timeline(
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
     checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
     checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
+    checkout_pre_service_departure_policy: Optional[CheckoutPreServiceDeparturePolicy] = None,
     staff_task_policy: Optional[StaffTaskPolicy] = None,
     staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
     staff_work_interruption_policy: Optional[StaffWorkInterruptionPolicy] = None,
@@ -139,6 +143,7 @@ def validate_minimal_day_from_observation_timeline(
         checkout_anger_policy=checkout_anger_policy,
         checkout_duration_policy=checkout_duration_policy,
         checkout_selection_policy=checkout_selection_policy,
+        checkout_pre_service_departure_policy=checkout_pre_service_departure_policy,
         staff_task_policy=staff_task_policy,
         staff_work_completion_policy=staff_work_completion_policy,
         staff_work_interruption_policy=staff_work_interruption_policy,
@@ -159,6 +164,7 @@ def validate_minimal_day_with_event_comparison(
     checkout_anger_policy: Optional[CheckoutAngerTriggerPolicy] = None,
     checkout_duration_policy: Optional[CheckoutServiceDurationPolicy] = None,
     checkout_selection_policy: Optional[CheckoutCustomerSelectionPolicy] = None,
+    checkout_pre_service_departure_policy: Optional[CheckoutPreServiceDeparturePolicy] = None,
     staff_task_policy: Optional[StaffTaskPolicy] = None,
     staff_work_completion_policy: Optional[StaffWorkCompletionPolicy] = None,
     staff_work_interruption_policy: Optional[StaffWorkInterruptionPolicy] = None,
@@ -177,6 +183,7 @@ def validate_minimal_day_with_event_comparison(
         checkout_anger_policy=checkout_anger_policy,
         checkout_duration_policy=checkout_duration_policy,
         checkout_selection_policy=checkout_selection_policy,
+        checkout_pre_service_departure_policy=checkout_pre_service_departure_policy,
         staff_task_policy=staff_task_policy,
         staff_work_completion_policy=staff_work_completion_policy,
         staff_work_interruption_policy=staff_work_interruption_policy,
