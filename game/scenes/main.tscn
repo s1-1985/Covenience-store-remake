@@ -39,7 +39,7 @@ theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 22
 
 [node name="VBox" type="VBoxContainer" parent="UI/Panel/Margin"]
-theme_override_constants/separation = 10
+theme_override_constants/separation = 4
 
 [node name="Heading" type="Label" parent="UI/Panel/Margin/VBox"]
 theme_override_font_sizes/font_size = 22
@@ -90,6 +90,9 @@ text = "Completed sales"
 [node name="SalesValue" type="Label" parent="UI/Panel/Margin/VBox"]
 text = "0"
 
+[node name="VisitsValue" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Visits: 0 / 1"
+
 [node name="Separator2" type="HSeparator" parent="UI/Panel/Margin/VBox"]
 
 [node name="EventTitle" type="Label" parent="UI/Panel/Margin/VBox"]
@@ -104,16 +107,21 @@ autowrap_mode = 2
 theme_override_constants/separation = 10
 
 [node name="PauseButton" type="Button" parent="UI/Panel/Margin/VBox/Buttons"]
-custom_minimum_size = Vector2(145, 52)
+custom_minimum_size = Vector2(145, 44)
 text = "Pause"
 
 [node name="StepButton" type="Button" parent="UI/Panel/Margin/VBox/Buttons"]
-custom_minimum_size = Vector2(145, 52)
+custom_minimum_size = Vector2(145, 44)
 text = "Step"
 
 [node name="ResetButton" type="Button" parent="UI/Panel/Margin/VBox/Buttons"]
-custom_minimum_size = Vector2(145, 52)
+custom_minimum_size = Vector2(145, 44)
 text = "Reset"
+
+[node name="NextCustomerButton" type="Button" parent="UI/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 44)
+disabled = true
+text = "Admit next customer"
 
 [node name="Hint" type="Label" parent="UI/Panel/Margin/VBox"]
 text = "Space: Pause / Resume"

@@ -9,10 +9,12 @@ const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_sim
 @onready var customer_label: Label = $UI/Panel/Margin/VBox/CustomerValue
 @onready var staff_label: Label = $UI/Panel/Margin/VBox/StaffValue
 @onready var sales_label: Label = $UI/Panel/Margin/VBox/SalesValue
+@onready var visits_label: Label = $UI/Panel/Margin/VBox/VisitsValue
 @onready var event_label: Label = $UI/Panel/Margin/VBox/EventValue
 @onready var pause_button: Button = $UI/Panel/Margin/VBox/Buttons/PauseButton
 @onready var step_button: Button = $UI/Panel/Margin/VBox/Buttons/StepButton
 @onready var reset_button: Button = $UI/Panel/Margin/VBox/Buttons/ResetButton
+@onready var next_customer_button: Button = $UI/Panel/Margin/VBox/NextCustomerButton
 
 var config: Dictionary
 var simulation: VerticalSliceSimulation
@@ -31,6 +33,7 @@ func _ready() -> void:
     pause_button.pressed.connect(_on_pause_pressed)
     step_button.pressed.connect(_on_step_pressed)
     reset_button.pressed.connect(_on_reset_pressed)
+    next_customer_button.pressed.connect(_on_next_customer_pressed)
     _refresh_ui()
 
 
@@ -80,6 +83,15 @@ func _on_reset_pressed() -> void:
     _refresh_ui()
 
 
+func _on_next_customer_pressed() -> void:
+    if simulation == null or not simulation.start_next_customer():
+        return
+    paused = false
+    pause_button.text = "Pause"
+    accumulator = 0.0
+    _refresh_ui()
+
+
 func _refresh_ui() -> void:
     if simulation == null:
         return
@@ -90,9 +102,14 @@ func _refresh_ui() -> void:
     customer_label.text = str(snapshot["customer_phase"])
     staff_label.text = str(snapshot["staff_state"])
     sales_label.text = str(snapshot["completed_sales"])
+    visits_label.text = "Visits: %d / %d" % [
+        int(snapshot["completed_visits"]),
+        int(snapshot["started_visits"]),
+    ]
     event_label.text = str(snapshot["last_event"])
     if paused:
         event_label.text += "  [PAUSED]"
+    next_customer_button.disabled = simulation.customer_phase != "done"
     store_view.queue_redraw()
 
 

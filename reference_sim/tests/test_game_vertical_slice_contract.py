@@ -115,6 +115,20 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn('res://scripts/main.gd', scene)
         self.assertIn('res://scripts/store_view.gd', scene)
 
+    def test_vertical_slice_supports_repeat_customer_visits(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("func start_next_customer() -> bool:", simulation)
+        self.assertIn('simulation.start_next_customer()', main)
+        self.assertIn('name="NextCustomerButton"', scene)
+        self.assertIn("while simulation.stock_units > 0:", smoke)
+        self.assertIn("sales_after_sellout", smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])

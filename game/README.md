@@ -17,7 +17,8 @@ The current playable loop is:
 5. the staff member performs a timed prototype checkout;
 6. sale cash is added;
 7. the customer pathfinds to the exit;
-8. the HUD shows game time, cash, stock, customer state, staff state, completed sales, and the last event.
+8. the HUD shows game time, cash, stock, customer state, staff state, completed sales/visits, and the last event;
+9. after a customer exits, the player can admit another customer while preserving stock and cash.
 
 The store renderer also shows the tile/subcell grid, fixture footprints, interaction points, entry/exit points, customer, and staff.
 
@@ -40,6 +41,7 @@ Controls:
 - **Pause / Resume** — pause automatic prototype ticks.
 - **Step** — execute exactly one prototype simulation step while paused.
 - **Reset** — restore the initial vertical-slice state.
+- **Admit next customer** — start another visit after the current customer exits.
 - **Space** — Pause / Resume shortcut.
 
 ## Headless validation
@@ -51,9 +53,9 @@ godot --headless --path game --editor --quit-after 1
 godot --headless --path game --script res://scripts/headless_smoke.gd
 ```
 
-The smoke script verifies that the configured customer completes one sale, consumes one stock
-unit, credits the configured price, and exits within a bounded number of steps. CI runs both the
-Godot import and this executable smoke check in addition to the Python contracts.
+The smoke script verifies repeat visits through sellout: each stocked visit completes a sale,
+stock and cash stay consistent, and a later empty-shelf visit exits without creating revenue. CI
+runs both the Godot import and this executable smoke check in addition to the Python contracts.
 
 ## Architecture direction
 

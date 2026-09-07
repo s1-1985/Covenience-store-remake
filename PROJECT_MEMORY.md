@@ -346,8 +346,10 @@ replay can compare representative runs against recorded evidence.
 
 The production client now exists under `game/` as a Godot 4 vertical slice. Its first executable
 loop covers entry, pathfinding, product pickup, stock depletion, staffed checkout, cash settlement,
-and exit, using newly drawn primitives and explicitly provisional JSON inputs. Godot-native
-headless validation protects that loop in CI.
+and exit, using newly drawn primitives and explicitly provisional JSON inputs. Completed visits can
+be repeated explicitly while preserving stock and cash, including a no-sale sellout path. This is a
+manual prototype admission boundary rather than an invented demand formula. Godot-native headless
+validation protects the loop in CI.
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
