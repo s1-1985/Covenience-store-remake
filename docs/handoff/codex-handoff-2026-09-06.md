@@ -221,3 +221,9 @@ Keep these behind explicit policy/data boundaries until evidence is stronger.
 ## Handoff completion state
 
 At the time of this handoff, the Godot vertical slice branch is intentionally NOT merged yet. The unfinished work is the Godot-native headless CI/validation, any fixes that exposes, decision documentation, PR, CI and merge.
+
+## Post-handoff update
+
+The vertical slice was subsequently merged in PR #182. The repository now includes Godot-native
+headless import and executable smoke validation, Decision 0074, and an updated project-memory
+milestone. Treat the earlier branch and "not merged" statements as historical handoff context.

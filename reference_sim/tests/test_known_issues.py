@@ -22,7 +22,7 @@ from conveni_sim.promotion import (
 )
 from conveni_sim.staff import StaffTask
 from conveni_sim.store_grid import Direction, GridPoint, StoreGrid
-from conveni_sim.store_runtime import CheckoutSaleResult, StoreRuntimeHarness
+from conveni_sim.store_runtime import CheckoutSaleCompletion, StoreRuntimeHarness
 
 
 class StaffAssignmentKnownIssueTests(unittest.TestCase):
@@ -92,14 +92,8 @@ class StaffAssignmentKnownIssueTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             runtime.begin_checkout_service("checkout", staff_id="s1", customer_id="c1")
 
-    @unittest.expectedFailure
     def test_checkout_timing_completion_returns_the_declared_sale_type(self):
-        """メモ項目4: CheckoutServiceTimingEvaluation.sale の型注釈と実際の値が違う。
-
-        注釈は Optional[CheckoutSaleResult] だが、実際に入るのは
-        CheckoutSaleCompletion。注釈を信じて .service_started を読むと
-        AttributeError になる。
-        """
+        """会計タイミングの完了結果は宣言どおり CheckoutSaleCompletion を返す。"""
         runtime = self.make_runtime()
         runtime.staff.add_staff("s1")
         self.send_customer_to_checkout(runtime, "c1")
@@ -116,7 +110,7 @@ class StaffAssignmentKnownIssueTests(unittest.TestCase):
 
         evaluation = timing.evaluate_staff("s1", FixedDuration())
         self.assertTrue(evaluation.completed)
-        self.assertIsInstance(evaluation.sale, CheckoutSaleResult)
+        self.assertIsInstance(evaluation.sale, CheckoutSaleCompletion)
 
 
 class PromotionKnownIssueTests(unittest.TestCase):
@@ -206,7 +200,6 @@ class RemovedFixtureKnownIssueTests(unittest.TestCase):
             )
 
 
-    @unittest.expectedFailure
     def test_a_removed_checkout_fixture_cannot_still_complete_a_sale(self):
         """メモ項目13: 撤去されたチェックアウト什器でも会計が完了し、売上が計上される。
 
@@ -264,7 +257,6 @@ class RemovedFixtureKnownIssueTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             runtime.begin_checkout_service("checkout", staff_id="s1", customer_id="c1")
 
-    @unittest.expectedFailure
     def test_a_customer_cannot_be_routed_to_an_unplaced_checkout(self):
         """メモ項目14: 未配置のチェックアウト什器を指定して顧客を追加できてしまう。
 
@@ -366,7 +358,6 @@ class StoreStepKnownIssueTests(unittest.TestCase):
 
 
 class BaselineDataKnownIssueTests(unittest.TestCase):
-    @unittest.expectedFailure
     def test_scenario_source_urls_are_not_typo_corrupted(self):
         """メモ項目8: シナリオのソースURLに壊れたWikiページ名が混ざっている。
 

@@ -4,6 +4,7 @@ from conveni_sim.baseline_data import (
     FIXTURES,
     PERMITS,
     PROMOTIONS,
+    SCENARIOS,
     STORE_VARIANTS,
     TOWN_FACILITIES,
 )
@@ -12,6 +13,19 @@ from conveni_sim.models import EvidenceLevel
 
 
 class BaselineDataTests(unittest.TestCase):
+    def test_scenario_cash_uses_the_documented_community_evidence_level(self):
+        by_id = {scenario.id: scenario for scenario in SCENARIOS}
+        for scenario_id, expected_cash in (
+            ("beginner", 200_000_000),
+            ("intermediate", 150_000_000),
+            ("advanced", 150_000_000),
+        ):
+            self.assertEqual(by_id[scenario_id].initial_cash_yen.value, expected_cash)
+            self.assertEqual(
+                by_id[scenario_id].initial_cash_yen.evidence,
+                EvidenceLevel.CONFIRMED_COMMUNITY,
+            )
+
     def test_all_five_promotions_total_9_6m(self):
         self.assertEqual(sum(p.cost_yen.value for p in PROMOTIONS), 9_600_000)
 
