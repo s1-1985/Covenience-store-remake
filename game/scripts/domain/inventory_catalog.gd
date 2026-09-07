@@ -18,19 +18,19 @@ func reset() -> void:
     products.clear()
     product_order.clear()
     for product_config in _product_configs:
-        var product: InventoryState = InventoryStateScript.new(product_config)
+        var product = InventoryStateScript.new(product_config)
         assert(not products.has(product.product_id))
         products[product.product_id] = product
         product_order.append(product.product_id)
 
 
-func get_product(product_id: String) -> InventoryState:
+func get_product(product_id: String):
     assert(products.has(product_id))
     return products[product_id]
 
 
 func try_take_one(product_id: String) -> Dictionary:
-    var product := get_product(product_id)
+    var product = get_product(product_id)
     if not product.try_take_one():
         return {}
     return {

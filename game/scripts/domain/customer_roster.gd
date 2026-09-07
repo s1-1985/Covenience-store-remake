@@ -26,18 +26,18 @@ func can_admit() -> bool:
     return active_customer_id.is_empty() or active().phase == "done"
 
 
-func admit(entry: Vector2i, initial_route: Array[Vector2i]) -> CustomerState:
+func admit(entry: Vector2i, initial_route: Array[Vector2i]):
     assert(can_admit())
     var customer_id := "%s-%d" % [_id_prefix, _next_sequence]
     _next_sequence += 1
-    var customer: CustomerState = CustomerStateScript.new({"id": customer_id})
+    var customer = CustomerStateScript.new({"id": customer_id})
     customer.begin(entry, initial_route, _visit_plan_product_ids)
     customers[customer_id] = customer
     active_customer_id = customer_id
     return customer
 
 
-func active() -> CustomerState:
+func active():
     assert(not active_customer_id.is_empty() and customers.has(active_customer_id))
     return customers[active_customer_id]
 

@@ -18,13 +18,13 @@ func _init(staff_config: Dictionary) -> void:
 func reset() -> void:
     members.clear()
     for member_config in _member_configs:
-        var staff: StaffState = StaffStateScript.new(member_config)
+        var staff = StaffStateScript.new(member_config)
         assert(not members.has(staff.staff_id))
         members[staff.staff_id] = staff
     assert(members.has(checkout_staff_id))
 
 
-func checkout_staff() -> StaffState:
+func checkout_staff():
     assert(members.has(checkout_staff_id))
     return members[checkout_staff_id]
 

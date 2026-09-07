@@ -20,7 +20,7 @@ const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_sim
 @onready var rotate_fixture_button: Button = $UI/Panel/Margin/VBox/RotateFixtureButton
 
 var config: Dictionary
-var simulation: VerticalSliceSimulation
+var simulation
 var tick_seconds := 0.25
 var accumulator := 0.0
 var paused := false
@@ -133,7 +133,7 @@ func _on_rotate_fixture_pressed() -> void:
 func _refresh_ui() -> void:
     if simulation == null:
         return
-    var snapshot := simulation.snapshot()
+    var snapshot: Dictionary = simulation.snapshot()
     clock_label.text = str(snapshot["clock_text"])
     cash_label.text = "¥%s" % _format_integer(int(snapshot["cash_yen"]))
     stock_label.text = "%d units" % int(snapshot["stock_units"])

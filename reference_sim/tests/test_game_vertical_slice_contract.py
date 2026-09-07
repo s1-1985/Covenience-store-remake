@@ -185,7 +185,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             self.assertIn(script_name, simulation)
             self.assertIn(filename, simulation)
 
-        self.assertIn("var record := economy.settle_basket(", simulation)
+        self.assertIn("var record: Dictionary = economy.settle_basket(", simulation)
         self.assertIn("layout.find_path", simulation)
         self.assertIn("layout.interaction_for_fixture", simulation)
         self.assertNotIn("func _find_path", simulation)
@@ -290,6 +290,38 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn('main_scene.instantiate()', smoke)
         self.assertNotIn(' --editor ', workflow)
         self.assertIn('timeout-minutes: 5', workflow)
+
+    def test_direct_headless_script_does_not_require_global_class_cache(self):
+        custom_types = (
+            "VerticalSliceSimulation",
+            "StoreLayout",
+            "InventoryState",
+            "InventoryCatalog",
+            "EconomyState",
+            "CustomerState",
+            "CustomerRoster",
+            "StaffState",
+            "StaffRoster",
+        )
+        scripts = list((GAME_ROOT / "scripts").rglob("*.gd"))
+        for script_path in scripts:
+            source = script_path.read_text(encoding="utf-8")
+            for custom_type in custom_types:
+                self.assertNotIn(
+                    f": {custom_type}",
+                    source,
+                    f"{script_path.relative_to(GAME_ROOT)} relies on global class cache",
+                )
+                self.assertNotIn(
+                    f"-> {custom_type}",
+                    source,
+                    f"{script_path.relative_to(GAME_ROOT)} relies on global class cache",
+                )
+
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("var initial_cash: int =", smoke)
+        self.assertIn("var initial_fixture_snapshot: Array =", smoke)
+        self.assertIn("func _run_visit(simulation) -> int:", smoke)
 
     @staticmethod
     def _reachable(start, goal, width, height, blocked):

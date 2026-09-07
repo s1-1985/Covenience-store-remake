@@ -6,7 +6,7 @@ signal fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i
 const SUBCELL_PIXELS := 42.0
 
 var config: Dictionary = {}
-var simulation: VerticalSliceSimulation
+var simulation
 var selected_fixture_id := ""
 
 
@@ -14,7 +14,7 @@ func selected_fixture() -> String:
     return selected_fixture_id
 
 
-func bind(source_config: Dictionary, source_simulation: VerticalSliceSimulation) -> void:
+func bind(source_config: Dictionary, source_simulation) -> void:
     config = source_config
     simulation = source_simulation
     queue_redraw()
@@ -39,7 +39,7 @@ func _unhandled_input(event: InputEvent) -> void:
     var local_position := to_local(pointer_position)
     var cell := Vector2i(floori(local_position.x / SUBCELL_PIXELS), floori(local_position.y / SUBCELL_PIXELS))
     if not simulation.layout.is_walkable(cell):
-        var fixture_id := simulation.layout.fixture_at(cell)
+        var fixture_id: String = simulation.layout.fixture_at(cell)
         if not fixture_id.is_empty():
             selected_fixture_id = fixture_id
             fixture_selected.emit(fixture_id)
@@ -55,8 +55,8 @@ func _draw() -> void:
     if config.is_empty() or simulation == null:
         return
 
-    var width := simulation.layout.width_subcells * SUBCELL_PIXELS
-    var height := simulation.layout.height_subcells * SUBCELL_PIXELS
+    var width: float = simulation.layout.width_subcells * SUBCELL_PIXELS
+    var height: float = simulation.layout.height_subcells * SUBCELL_PIXELS
     draw_rect(Rect2(Vector2.ZERO, Vector2(width, height)), Color("f5f1e8"), true)
     draw_rect(Rect2(Vector2.ZERO, Vector2(width, height)), Color("373737"), false, 3.0)
 
@@ -120,17 +120,17 @@ func _draw_fixtures() -> void:
 
 
 func _draw_customer() -> void:
-    var customer := simulation.customers.active()
+    var customer = simulation.customers.active()
     if customer.phase == "done":
         return
-    var center := _cell_center(customer.position)
+    var center: Vector2 = _cell_center(customer.position)
     draw_circle(center, 13.0, Color("ef476f"))
     draw_circle(center, 13.0, Color("3a2630"), false, 2.0)
 
 
 func _draw_staff() -> void:
     for staff_member in simulation.staff.all_staff():
-        var center := _cell_center(staff_member.position)
+        var center: Vector2 = _cell_center(staff_member.position)
         var rect := Rect2(center - Vector2(12, 12), Vector2(24, 24))
         draw_rect(rect, Color("118ab2"), true)
         draw_rect(rect, Color("17324d"), false, 2.0)

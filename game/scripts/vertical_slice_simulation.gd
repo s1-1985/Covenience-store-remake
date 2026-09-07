@@ -8,11 +8,11 @@ const CustomerRosterScript := preload("res://scripts/domain/customer_roster.gd")
 const StaffRosterScript := preload("res://scripts/domain/staff_roster.gd")
 
 var config: Dictionary
-var layout: StoreLayout
-var inventory: InventoryCatalog
-var economy: EconomyState
-var customers: CustomerRoster
-var staff: StaffRoster
+var layout
+var inventory
+var economy
+var customers
+var staff
 
 var minute_of_day: int
 var last_event := "store opened"
@@ -69,7 +69,7 @@ func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
         return false
     if layout.fixture_origin(fixture_id) == Vector2i(-1, -1):
         return false
-    var previous := layout.fixture_snapshot()
+    var previous: Array = layout.fixture_snapshot()
     if not layout.try_move_fixture(fixture_id, new_origin):
         return false
     _refresh_interactions()
@@ -84,7 +84,7 @@ func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
 func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
     if not customers.can_admit():
         return false
-    var previous := layout.fixture_snapshot()
+    var previous: Array = layout.fixture_snapshot()
     if not layout.try_rotate_fixture_clockwise(fixture_id):
         return false
     _refresh_interactions()
@@ -98,8 +98,8 @@ func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
 
 func step() -> void:
     minute_of_day = (minute_of_day + _step_game_minutes) % (24 * 60)
-    var customer := customers.active()
-    var checkout_staff := staff.checkout_staff()
+    var customer = customers.active()
+    var checkout_staff = staff.checkout_staff()
     match customer.phase:
         "to_shelf":
             if customer.move_along_route("shopping"):
@@ -108,15 +108,15 @@ func step() -> void:
         "shopping":
             customer.shopping_ticks_remaining -= 1
             if customer.shopping_ticks_remaining <= 0:
-                var product_id := customer.current_product_id()
-                var line := inventory.try_take_one(product_id)
+                var product_id: String = customer.current_product_id()
+                var line: Dictionary = inventory.try_take_one(product_id)
                 if not line.is_empty():
                     customer.add_basket_line(line)
                     last_event = "customer picked %s" % product_id
                 else:
                     last_event = "%s unavailable" % product_id
                 customer.advance_plan()
-                var next_product_id := customer.current_product_id()
+                var next_product_id: String = customer.current_product_id()
                 if not next_product_id.is_empty():
                     customer.phase = "to_shelf"
                     customer.route = layout.find_path(
@@ -139,7 +139,7 @@ func step() -> void:
             customer.checkout_ticks_remaining -= 1
             if customer.checkout_ticks_remaining <= 0:
                 if not customer.basket.is_empty():
-                    var record := economy.settle_basket(
+                    var record: Dictionary = economy.settle_basket(
                         customer.customer_id,
                         minute_of_day,
                         customer.basket
@@ -163,8 +163,8 @@ func clock_text() -> String:
 
 
 func snapshot() -> Dictionary:
-    var customer := customers.active()
-    var checkout_staff := staff.checkout_staff()
+    var customer = customers.active()
+    var checkout_staff = staff.checkout_staff()
     return {
         "minute_of_day": minute_of_day,
         "clock_text": clock_text(),
@@ -189,7 +189,7 @@ func snapshot() -> Dictionary:
 
 
 func _start_customer() -> void:
-    var customer := customers.admit(
+    var customer = customers.admit(
         layout.entry,
         layout.find_path(
             layout.entry,
@@ -207,7 +207,7 @@ func _refresh_interactions() -> void:
 
 
 func _required_routes_are_reachable() -> bool:
-    var cursor := layout.entry
+    var cursor: Vector2i = layout.entry
     for product_id in config["customer"]["visit_plan_product_ids"]:
         var interaction := _product_interaction(str(product_id))
         if not layout.has_path(cursor, interaction):
@@ -220,14 +220,14 @@ func _required_routes_are_reachable() -> bool:
 
 
 func _product_interaction(product_id: String) -> Vector2i:
-    var product := inventory.get_product(product_id)
+    var product = inventory.get_product(product_id)
     return layout.interaction_for_fixture(product.fixture_id, "shelf")
 
 
 func _inventory_snapshot() -> Array[Dictionary]:
     var rows: Array[Dictionary] = []
     for product_id in inventory.product_order:
-        var product := inventory.get_product(product_id)
+        var product = inventory.get_product(product_id)
         rows.append({
             "product_id": product.product_id,
             "fixture_id": product.fixture_id,

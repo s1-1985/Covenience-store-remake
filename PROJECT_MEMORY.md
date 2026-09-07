@@ -383,6 +383,10 @@ prototype time, basket lines, and total, allowing cash/sellout reconciliation wi
 mutable actor state. Record IDs, timestamp granularity, and storage shape are PROVISIONAL telemetry,
 not a recovered original receipt or accounting format.
 
+Godot CI invokes the smoke harness directly via `--script`. Its preload graph therefore avoids
+cross-script custom `class_name` annotations that require an editor-generated global class cache;
+this is a CI/runtime loading constraint, not a gameplay or compatibility rule.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
