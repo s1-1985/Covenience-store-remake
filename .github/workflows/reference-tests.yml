@@ -14,7 +14,7 @@ on:
       - '.github/workflows/reference-tests.yml'
 
 jobs:
-  test:
+  reference-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,3 +24,13 @@ jobs:
       - name: Run reference and production-client contract tests
         working-directory: reference_sim
         run: PYTHONPATH=. python -m unittest discover -s tests -v
+
+  godot-headless-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    container:
+      image: barichello/godot-ci:4.3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load the main scene and run the vertical-slice smoke test
+        run: godot --headless --path game --script res://scripts/headless_smoke.gd

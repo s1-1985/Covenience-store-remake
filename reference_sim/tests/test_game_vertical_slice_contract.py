@@ -107,12 +107,38 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "scripts/main.gd",
             "scripts/store_view.gd",
             "scripts/vertical_slice_simulation.gd",
+            "scripts/headless_smoke.gd",
         ):
             self.assertTrue((GAME_ROOT / relative).is_file(), relative)
 
         scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
         self.assertIn('res://scripts/main.gd', scene)
         self.assertIn('res://scripts/store_view.gd', scene)
+
+    def test_vertical_slice_supports_repeat_customer_visits(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("func start_next_customer() -> bool:", simulation)
+        self.assertIn('simulation.start_next_customer()', main)
+        self.assertIn('name="NextCustomerButton"', scene)
+        self.assertIn("while simulation.stock_units > 0:", smoke)
+        self.assertIn("sales_after_sellout", smoke)
+
+    def test_godot_smoke_loads_main_scene_without_redundant_editor_startup(self):
+        workflow = (
+            REPO_ROOT / ".github" / "workflows" / "reference-tests.yml"
+        ).read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn('load(MAIN_SCENE_PATH) as PackedScene', smoke)
+        self.assertIn('main_scene.instantiate()', smoke)
+        self.assertNotIn(' --editor ', workflow)
+        self.assertIn('timeout-minutes: 5', workflow)
 
     @staticmethod
     def _reachable(start, goal, width, height, blocked):

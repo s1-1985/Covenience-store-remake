@@ -1,6 +1,9 @@
-# Claude Code と ChatGPT の分担ルール
+# Claude Code と Codex の分担・Git運用ルール
 
-このリポジトリは ChatGPT と Claude Code が**並行して**作業する。両者が同時に走っていても事故が起きないように、触る領域を物理的に分ける。
+このリポジトリは Codex（旧ChatGPT担当を含む）と Claude Code が**並行して**作業する。両者が同時に走っていても事故が起きないように、触る領域とPR単位を分ける。
+
+Codexチャット、PR、マージの具体的な区切り方は
+[`docs/handoff/codex-chat-pr-workflow.md`](codex-chat-pr-workflow.md) を正本とする。
 
 ## なぜ分けるか(実際に起きたこと)
 
@@ -23,6 +26,8 @@
 | `docs/decisions/` | **ChatGPT** | 設計判断の記録 |
 | `docs/handoff/` | **Claude Code** | 申し送り・レビュー結果 |
 | `PROJECT_MEMORY.md` | **ChatGPT** | 方針の正本 |
+
+表中の **ChatGPT** は今後 **Codex** と読み替える。
 
 例外: ChatGPT がテストを書くこと、Claude Code が本体コードを直すことを禁止はしない。ただし**その回だけの明示的な依頼があるときに限る**。デフォルトは上の表。
 
