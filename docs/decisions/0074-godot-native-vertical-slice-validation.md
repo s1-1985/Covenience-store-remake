@@ -22,9 +22,14 @@ The CI job has a five-minute timeout. A separate editor-mode import command is d
 the smoke script already loads the relevant scene and the extra editor startup made every PR wait
 without increasing the behavioral coverage of this vertical slice.
 
-The smoke check runs the deterministic slice to a bounded completion and verifies exactly one
-sale, one unit of stock depletion, the corresponding cash credit, and customer exit. Python
-contracts remain as fast structural checks; they do not replace the engine-native run.
+The smoke check runs the deterministic slice to bounded completion and verifies multi-product
+baskets, stock depletion, cash/ledger reconciliation, customer exit, layout editing, and reset.
+Python contracts remain fast structural checks; they do not replace the engine-native run.
+
+Because CI invokes `headless_smoke.gd` directly with `--script`, that script and its preload graph
+must not depend on the editor-generated global class-name cache for static type resolution. Cross-
+script variables use preloaded constructors with untyped references, while built-in values used by
+the smoke script receive explicit built-in types when inference starts from such a reference.
 
 ## Evidence boundary
 
