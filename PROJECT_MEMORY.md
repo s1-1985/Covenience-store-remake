@@ -346,8 +346,10 @@ replay can compare representative runs against recorded evidence.
 
 The production client now exists under `game/` as a Godot 4 vertical slice. Its first executable
 loop covers entry, pathfinding, product pickup, stock depletion, staffed checkout, cash settlement,
-and exit, using newly drawn primitives and explicitly provisional JSON inputs. Godot-native
-headless validation protects that loop in CI.
+and exit, using newly drawn primitives and explicitly provisional JSON inputs. Completed visits can
+be repeated explicitly while preserving stock and cash, including a no-sale sellout path. This is a
+manual prototype admission boundary rather than an invented demand formula. Godot-native headless
+validation protects the loop in CI.
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
@@ -369,3 +371,8 @@ Scheduled runs are a background cadence, not an exclusive gate for progress.
    regression suite, then use a focused branch, PR review and squash merge.
 4. Record new evidence under `docs/research/`, deliberate compatibility choices under
    `docs/decisions/`, and durable cross-session status in this file or `docs/handoff/`.
+
+Codexのチャット・PR・マージ運用の詳細は
+`docs/handoff/codex-chat-pr-workflow.md` を参照する。一往復ごとには区切らず、一つの目的を
+同じチャットで完成させ、マージ前チェック後にPR化する。PRマージ後の独立作業は、古い
+作業ブランチへ積まず、最新 `main` から新しいチャットを開始する。

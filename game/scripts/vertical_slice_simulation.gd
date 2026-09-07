@@ -1,7 +1,7 @@
 class_name VerticalSliceSimulation
 extends RefCounted
 
-const CARDINAL_DIRECTIONS := [
+const CARDINAL_DIRECTIONS: Array[Vector2i] = [
     Vector2i(1, 0),
     Vector2i(-1, 0),
     Vector2i(0, 1),
@@ -26,6 +26,8 @@ var staff_state := "waiting_checkout"
 var customer_has_product := false
 var last_event := "store opened"
 var completed_sales := 0
+var completed_visits := 0
+var started_visits := 0
 
 var _route: Array[Vector2i] = []
 var _entry := Vector2i.ZERO
@@ -63,16 +65,19 @@ func reset() -> void:
     cash_yen = int(config["economy"]["initial_cash_yen"])
     stock_units = int(config["product"]["initial_stock_units"])
     sale_price_yen = int(config["product"]["sale_price_yen"])
-    customer_position = _entry
     staff_position = _vec2i(config["staff"]["start_subcell"])
-    customer_phase = "to_shelf"
     staff_state = "waiting_checkout"
-    customer_has_product = false
-    shopping_ticks_remaining = 0
-    checkout_ticks_remaining = 0
     completed_sales = 0
-    last_event = "customer entered"
-    _route = _find_path(customer_position, _shelf_interaction)
+    completed_visits = 0
+    started_visits = 0
+    _start_customer()
+
+
+func start_next_customer() -> bool:
+    if customer_phase != "done":
+        return false
+    _start_customer()
+    return true
 
 
 func step() -> void:
@@ -116,6 +121,7 @@ func step() -> void:
         "leaving":
             _move_customer_along_route("done")
             if customer_phase == "done":
+                completed_visits += 1
                 last_event = "customer left store"
         "done":
             last_event = "day slice complete"
@@ -139,8 +145,21 @@ func snapshot() -> Dictionary:
         "staff_position": staff_position,
         "customer_has_product": customer_has_product,
         "completed_sales": completed_sales,
+        "completed_visits": completed_visits,
+        "started_visits": started_visits,
         "last_event": last_event,
     }
+
+
+func _start_customer() -> void:
+    customer_position = _entry
+    customer_phase = "to_shelf"
+    customer_has_product = false
+    shopping_ticks_remaining = 0
+    checkout_ticks_remaining = 0
+    started_visits += 1
+    last_event = "customer %d entered" % started_visits
+    _route = _find_path(customer_position, _shelf_interaction)
 
 
 func _move_customer_along_route(next_phase: String) -> void:
@@ -162,7 +181,7 @@ func _find_path(start: Vector2i, goal: Vector2i) -> Array[Vector2i]:
         var current: Vector2i = frontier[head]
         head += 1
         for direction in CARDINAL_DIRECTIONS:
-            var candidate := current + direction
+            var candidate: Vector2i = current + direction
             if not _inside(candidate):
                 continue
             if blocked.has(candidate) and candidate != goal:

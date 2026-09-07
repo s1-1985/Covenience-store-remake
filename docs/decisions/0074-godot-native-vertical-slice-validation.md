@@ -12,10 +12,15 @@ project, parse its GDScript, instantiate the simulation, or execute the player-v
 
 ## Decision
 
-CI performs two Godot 4.3 headless checks whenever `game/**` or the shared workflow changes:
+CI performs one bounded Godot 4.3 headless command whenever `game/**` or the shared workflow changes.
+The command:
 
-1. import the project and main scene in editor mode;
-2. execute `scripts/headless_smoke.gd` against the same provisional JSON consumed by the client.
+1. loads and instantiates the project main scene, which parses its attached scripts;
+2. executes `scripts/headless_smoke.gd` against the same provisional JSON consumed by the client.
+
+The CI job has a five-minute timeout. A separate editor-mode import command is deliberately avoided:
+the smoke script already loads the relevant scene and the extra editor startup made every PR wait
+without increasing the behavioral coverage of this vertical slice.
 
 The smoke check runs the deterministic slice to a bounded completion and verifies exactly one
 sale, one unit of stock depletion, the corresponding cash credit, and customer exit. Python
