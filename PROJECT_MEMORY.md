@@ -340,18 +340,25 @@ cash/day-end bookkeeping, representative-day and sub-day clocks, opening hours, 
 replay/statistics, customer-share recalculation gates, fixed-time promotion events, temporary
 closure behavior, and an effective-opening-state customer admission gate.
 
-This is still a headless reference simulator. Most actions are explicitly supplied by the caller;
-the original customer demand, staff task-selection, timing, economy, town, rival and progression
-policies are not yet autonomous, and there is no production Android client in this repository.
+The autonomous representative-day milestone has been reached. The Python implementation now acts
+primarily as a compatibility oracle: unresolved original policies remain explicit and observation
+replay can compare representative runs against recorded evidence.
 
-The next large milestone is **one small store running one representative day autonomously**:
+The production client now exists under `game/` as a Godot 4 vertical slice. Its first executable
+loop covers entry, pathfinding, product pickup, stock depletion, staffed checkout, cash settlement,
+and exit, using newly drawn primitives and explicitly provisional JSON inputs. Completed visits can
+be repeated explicitly while preserving stock and cash, including a no-sale sellout path. This is a
+manual prototype admission boundary rather than an invented demand formula. Godot-native headless
+validation protects the loop in CI.
 
-- use a minimum evidence-backed store/fixture/product/staff dataset with no silent zero defaults;
-- generate customer arrivals and purchase intentions through replaceable policies;
-- select staff checkout/replenishment/cleaning/rest work through an explicit policy;
-- run from opening to day-end without manually injecting every event;
-- compare arrivals, queues, stamina, stock and cash output against V01/V02/V03 observations;
-- retain `None` or an explicit provisional parameter wherever the original value is unresolved.
+The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
+
+- extract reusable customer, staff, fixture, inventory and store-domain objects in Godot;
+- keep provisional client tuning isolated from recovered first-title facts;
+- port evidence-backed contracts from the reference simulator only as production features need them;
+- add touch-first store interaction and fixture placement;
+- preserve deterministic engine-native smoke coverage while expanding the playable loop;
+- continue replacing unknown/provisional rules with observation or reverse-engineering evidence.
 
 ## 20. Execution cadence and user-directed work
 
