@@ -203,10 +203,32 @@ PERMITS = tuple(
     for permit_id in ("tobacco", "alcohol", "medicine")
 )
 
+SCENARIO_GUIDE = WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"
+
 SCENARIOS = (
-    ScenarioDefinition("beginner", EvidenceValue(200_000_000, EvidenceLevel.CONFIRMED_VISUAL, "Official/current PS screenshot"), EvidenceValue("metropolitan_government_after_population_threshold", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
-    ScenarioDefinition("intermediate", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("10_player_stores", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
-    ScenarioDefinition("advanced", EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"), EvidenceValue("owner_rating_5_stars", EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5")),
+    ScenarioDefinition(
+        "beginner",
+        EvidenceValue(200_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_GUIDE),
+        EvidenceValue(
+            "metropolitan_government_after_population_threshold",
+            EvidenceLevel.CONFIRMED_COMMUNITY,
+            SCENARIO_GUIDE,
+        ),
+    ),
+    ScenarioDefinition(
+        "intermediate",
+        EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_GUIDE),
+        EvidenceValue(
+            "10_player_stores", EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_GUIDE
+        ),
+    ),
+    ScenarioDefinition(
+        "advanced",
+        EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_GUIDE),
+        EvidenceValue(
+            "owner_rating_5_stars", EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_GUIDE
+        ),
+    ),
 )
 
 TOWN_FACILITIES = (

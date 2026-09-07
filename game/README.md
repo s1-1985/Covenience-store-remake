@@ -42,11 +42,25 @@ Controls:
 - **Reset** — restore the initial vertical-slice state.
 - **Space** — Pause / Resume shortcut.
 
+## Headless validation
+
+With Godot 4.3 available, import and execute the deterministic vertical slice without a display:
+
+```bash
+godot --headless --path game --editor --quit-after 1
+godot --headless --path game --script res://scripts/headless_smoke.gd
+```
+
+The smoke script verifies that the configured customer completes one sale, consumes one stock
+unit, credits the configured price, and exits within a bounded number of steps. CI runs both the
+Godot import and this executable smoke check in addition to the Python contracts.
+
 ## Architecture direction
 
 - `scripts/vertical_slice_simulation.gd` — deterministic prototype domain state; no rendering.
 - `scripts/store_view.gd` — generated 2D visualization only.
 - `scripts/main.gd` — client orchestration and HUD binding.
+- `scripts/headless_smoke.gd` — Godot-native deterministic executable check.
 - `data/vertical_slice.json` — explicit provisional inputs.
 - `scenes/main.tscn` — player-facing scene composition.
 - `reference_sim/` — compatibility oracle and evidence-backed validation, not a runtime dependency of the Godot app.
