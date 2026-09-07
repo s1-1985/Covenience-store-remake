@@ -107,6 +107,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "scripts/main.gd",
             "scripts/store_view.gd",
             "scripts/vertical_slice_simulation.gd",
+            "scripts/headless_smoke.gd",
         ):
             self.assertTrue((GAME_ROOT / relative).is_file(), relative)
 
