@@ -351,12 +351,44 @@ be repeated explicitly while preserving stock and cash, including a no-sale sell
 manual prototype admission boundary rather than an invented demand formula. Godot-native headless
 validation protects the loop in CI.
 
+The vertical-slice runtime now composes separate engine-native state objects for store layout,
+inventory, economy, one customer, and one staff member. This is an architecture boundary only:
+the orchestrator still runs the same explicitly provisional visit, and the split does not promote
+prototype pathing, demand, purchase, staff, timing, or economy behavior into recovered first-title
+rules.
+
+Customer and staff state now live in explicit rosters. Every manual visit retains a distinct
+terminal customer record, while the prototype still allows only one active customer and explicitly
+selects its checkout staff. These limits avoid inventing original concurrent-arrival, collision,
+queue, or staff-dispatch behavior while creating a stable boundary for later evidence replay.
+
+The client also has a touch/mouse prototype for transactional fixture relocation between visits.
+It preserves bounds, occupancy, staff cells, and the current required route, but its interaction
+flow and validation policy are explicitly PROVISIONAL rather than a claim about the original
+construction menu, closure requirements, costs, or time behavior.
+
+Selected fixtures can also be rotated transactionally, and full Reset restores the immutable
+configured layout along with actors, inventory, and cash. Rotation exists in original evidence,
+but the prototype's clockwise control, pivot, interaction-cell transform, edit gate, and lack of
+cost remain PROVISIONAL.
+
+The client inventory is now a product-ID catalog with per-product fixture binding, stock, and price,
+and customers retain basket lines across an explicit ordered multi-product visit plan. The included
+two-product plan exercises shelf-to-shelf-to-checkout traversal and sellout reconciliation without
+inventing original demand, product choice, incidental purchase, substitution, or quantity rules;
+the plan and all values remain PROVISIONAL.
+
+Successful prototype checkouts now retain immutable cause-neutral sale records linking customer,
+prototype time, basket lines, and total, allowing cash/sellout reconciliation without reconstructing
+mutable actor state. Record IDs, timestamp granularity, and storage shape are PROVISIONAL telemetry,
+not a recovered original receipt or accounting format.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
-- extract reusable customer, staff, fixture, inventory and store-domain objects in Godot;
+- connect actor rosters and explicit product plans to evidence-backed observation replay;
 - keep provisional client tuning isolated from recovered first-title facts;
 - port evidence-backed contracts from the reference simulator only as production features need them;
-- add touch-first store interaction and fixture placement;
+- recover and replace provisional fixture-edit gating, rotation, cost, and persistence behavior;
 - preserve deterministic engine-native smoke coverage while expanding the playable loop;
 - continue replacing unknown/provisional rules with observation or reverse-engineering evidence.
 
