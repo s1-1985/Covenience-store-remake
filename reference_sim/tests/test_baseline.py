@@ -93,7 +93,9 @@ class BaselineDataTests(unittest.TestCase):
 
     def test_unknown_store_values_stay_unknown(self):
         by_id = {variant.id: variant for variant in STORE_VARIANTS}
-        self.assertIsNone(by_id["medium_top"].construction_price_yen)
+        # V02 now supplies the upper medium-store price; the lower variant
+        # and world-facing orientation still lack direct evidence.
+        self.assertIsNone(by_id["medium_bottom"].construction_price_yen)
         self.assertIsNone(by_id["small_bottom"].orientation)
 
     def test_permits_are_independent_and_distances_unknown(self):

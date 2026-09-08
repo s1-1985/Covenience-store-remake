@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "video_id": "V02",
+  "attachment_id": "file_00000000c34c81fb9faf86aeef98972e",
+  "library_file_id": "libfile_06b745d500f48191a741b28dfc1fc4a3",
+  "duration_seconds": 5616.001451,
+  "scope": {
+    "start_seconds": 0,
+    "end_seconds": 1200,
+    "coarse_stride_seconds": 10,
+    "last_coarse_sample_seconds": 1190,
+    "next_start_seconds": 1200,
+    "full_frame_review": false
+  },
+  "evidence": "confirmed_visual",
+  "semantics": "Observed UI values, not runtime ledger events. Cash displayed during editing is not assumed authoritative.",
+  "store_quotes": [
+    {
+      "id": "small_bottom",
+      "video_seconds": 552,
+      "price_yen": 6000000
+    },
+    {
+      "id": "medium_top",
+      "video_seconds": 545,
+      "price_yen": 12000000
+    },
+    {
+      "id": "large_top",
+      "video_seconds": 547,
+      "price_yen": 18000000
+    },
+    {
+      "id": "large_bottom",
+      "video_seconds": 546,
+      "price_yen": 18000000
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "ambient_shelf_40",
+      "capacity": 40,
+      "attention": 10,
+      "purchase_price_yen": 60,
+      "maintenance_yen_per_day": 24,
+      "video_time": "15:01"
+    },
+    {
+      "id": "ambient_shelf_80",
+      "capacity": 80,
+      "attention": 10,
+      "purchase_price_yen": 100,
+      "maintenance_yen_per_day": 48,
+      "video_time": "13:00; 15:01.3"
+    },
+    {
+      "id": "ambient_shelf_120",
+      "capacity": 120,
+      "attention": 10,
+      "purchase_price_yen": 140,
+      "maintenance_yen_per_day": 72,
+      "video_time": "13:10"
+    },
+    {
+      "id": "steamed_bun_case_20",
+      "capacity": 20,
+      "attention": 30,
+      "purchase_price_yen": 300,
+      "maintenance_yen_per_day": 1920,
+      "video_time": "13:40"
+    },
+    {
+      "id": "cold_drink_vending_20",
+      "capacity": 20,
+      "attention": 15,
+      "purchase_price_yen": 800,
+      "maintenance_yen_per_day": 480,
+      "video_time": "09:50"
+    }
+  ],
+  "product_selection_readings": [
+    {
+      "category": "bento",
+      "fixture_capacity": 120,
+      "displayed_yen_per_day": 28800,
+      "video_seconds": 800,
+      "unit_cost_yen": null,
+      "unit_retail_price_yen": null
+    },
+    {
+      "category": "bento",
+      "fixture_capacity": 80,
+      "displayed_yen_per_day": 19200,
+      "video_seconds": 901.5,
+      "unit_cost_yen": null,
+      "unit_retail_price_yen": null
+    },
+    {
+      "category": "bread",
+      "fixture_capacity": 120,
+      "displayed_yen_per_day": 18000,
+      "video_seconds": 870,
+      "unit_cost_yen": null,
+      "unit_retail_price_yen": null
+    },
+    {
+      "category": "bread",
+      "fixture_capacity": 80,
+      "displayed_yen_per_day": 12000,
+      "video_seconds": 891,
+      "unit_cost_yen": null,
+      "unit_retail_price_yen": null
+    },
+    {
+      "category": "instant_food",
+      "fixture_capacity": 80,
+      "displayed_yen_per_day": 7200,
+      "video_seconds": 891.2,
+      "unit_cost_yen": null,
+      "unit_retail_price_yen": null
+    },
+    {
+      "category": "electrical_goods",
+      "fixture_capacity": 80,
+      "displayed_yen_per_day": 38400,
+      "video_seconds": 903,
+      "unit_cost_yen": null,
+      "unit_retail_price_yen": null
+    },
+    {
+      "category": "underwear",
+      "fixture_capacity": 120,
+      "displayed_yen_per_day": 72000,
+      "video_seconds": 830,
+      "unit_cost_yen": null,
+      "unit_retail_price_yen": null
+    }
+  ],
+  "editor_cash_readings": [
+    {
+      "video_seconds": 731,
+      "displayed_cash_yen": 110837400,
+      "state": "empty_remodeled_store"
+    },
+    {
+      "video_seconds": 733,
+      "displayed_cash_yen": 110513200,
+      "state": "layout_loaded"
+    },
+    {
+      "video_seconds": 883,
+      "displayed_cash_yen": 110513200,
+      "state": "bread_placement_preview"
+    },
+    {
+      "video_seconds": 884,
+      "displayed_cash_yen": 110501100,
+      "state": "bread_placed"
+    },
+    {
+      "video_seconds": 891.2,
+      "displayed_cash_yen": 110501100,
+      "state": "instant_food_selected"
+    },
+    {
+      "video_seconds": 891.5,
+      "displayed_cash_yen": 110505900,
+      "state": "product_replaced"
+    },
+    {
+      "video_seconds": 905,
+      "displayed_cash_yen": 110505900,
+      "state": "electrical_placement_preview"
+    },
+    {
+      "video_seconds": 906,
+      "displayed_cash_yen": 110467400,
+      "state": "electrical_placed"
+    },
+    {
+      "video_seconds": 911.1,
+      "displayed_cash_yen": 110467400,
+      "state": "editor_exited_clock_01_28"
+    },
+    {
+      "video_seconds": 911.2,
+      "displayed_cash_yen": 110837400,
+      "state": "clock_01_30_new_layout_remains"
+    }
+  ],
+  "night_cash_readings": [
+    {
+      "video_seconds": 1127.5,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 1,
+      "game_time": "23:10",
+      "displayed_cash_yen": 110860924,
+      "lower_right_yen": 23524,
+      "weather": "sunny",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1128.5,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 1,
+      "game_time": "23:40",
+      "displayed_cash_yen": 110860124,
+      "lower_right_yen": 23524,
+      "weather": "sunny",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1129,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 1,
+      "game_time": "23:50",
+      "displayed_cash_yen": 110860124,
+      "lower_right_yen": 23524,
+      "weather": "sunny",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1129.0666666666666,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 1,
+      "game_time": "23:52",
+      "displayed_cash_yen": 110859944,
+      "lower_right_yen": 23524,
+      "weather": "sunny",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1129.1666666666667,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 1,
+      "game_time": "23:56",
+      "displayed_cash_yen": 110859819,
+      "lower_right_yen": 23524,
+      "weather": "sunny",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1129.2333333333333,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 1,
+      "game_time": "23:58",
+      "displayed_cash_yen": 110859819,
+      "lower_right_yen": 23524,
+      "weather": "sunny",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1129.4,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 2,
+      "game_time": "00:00",
+      "displayed_cash_yen": 110859819,
+      "lower_right_yen": 0,
+      "weather": "sunny",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1129.4666666666667,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 2,
+      "game_time": "00:02",
+      "displayed_cash_yen": 110829031,
+      "lower_right_yen": 0,
+      "weather": "clear",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1129.5666666666666,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 2,
+      "game_time": "00:06",
+      "displayed_cash_yen": 110828851,
+      "lower_right_yen": 0,
+      "weather": "clear",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1130,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 2,
+      "game_time": "00:22",
+      "displayed_cash_yen": 110828011,
+      "lower_right_yen": 0,
+      "weather": "clear",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1133,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 2,
+      "game_time": "01:56",
+      "displayed_cash_yen": 110824423,
+      "lower_right_yen": 0,
+      "weather": "clear",
+      "store_closed": true,
+      "expense_kind": null
+    },
+    {
+      "video_seconds": 1139,
+      "game_year": 1,
+      "game_month": 1,
+      "game_day": 2,
+      "game_time": "04:26",
+      "displayed_cash_yen": 110817433,
+      "lower_right_yen": 0,
+      "weather": "clear",
+      "store_closed": true,
+      "expense_kind": null
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "capacity_scaled_product_display",
+      "evidence": "hypothesis",
+      "supported_categories": [
+        "bento",
+        "bread"
+      ],
+      "claim": "Selection display equals fixture capacity times category coefficient in the two sampled capacities; not identified as a unit retail/procurement price."
+    },
+    {
+      "id": "editor_net_settlement",
+      "evidence": "hypothesis",
+      "claim": "Two placements match fixture price plus product display; one product swap credits the display-value difference. A later 370000 yen restoration prevents treating these as permanent debits."
+    },
+    {
+      "id": "editor_cash_restoration_cause",
+      "evidence": "hypothesis",
+      "claim": "Separate editor/runtime balance synchronization or remodel/layout-specific behavior is possible; underlying cause unresolved."
+    }
+  ],
+  "derived_differences": {
+    "bread_placement": -12100,
+    "product_swap": 4800,
+    "electrical_placement": -38500,
+    "editor_exit_restoration": 370000,
+    "day_2_00_00_to_00_02": -30788
+  }
+}
