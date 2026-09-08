@@ -43,7 +43,12 @@ STORE_VARIANTS = (
         id="small_bottom",
         size_tier="small",
         orientation=None,
-        construction_price_yen=None,
+        construction_price_yen=EvidenceValue(
+            6_000_000,
+            EvidenceLevel.CONFIRMED_VISUAL,
+            "V02 Console Archives PS5 video 09:12; video-v02-opening-transactions-2026-09-08.md",
+            "Menu position identifies the variant; world-facing orientation remains unknown.",
+        ),
         editable_floor=None,
         unlocked_at_beginner_start=EvidenceValue(
             True,
@@ -55,7 +60,12 @@ STORE_VARIANTS = (
         id="medium_top",
         size_tier="medium",
         orientation=None,
-        construction_price_yen=None,
+        construction_price_yen=EvidenceValue(
+            12_000_000,
+            EvidenceLevel.CONFIRMED_VISUAL,
+            "V02 Console Archives PS5 video 09:05; 12:05-12:10; video-v02-opening-transactions-2026-09-08.md",
+            "Menu position identifies the variant; world-facing orientation remains unknown.",
+        ),
         editable_floor=None,
         unlocked_at_beginner_start=EvidenceValue(
             False,
@@ -79,7 +89,12 @@ STORE_VARIANTS = (
         id="large_top",
         size_tier="large",
         orientation=None,
-        construction_price_yen=None,
+        construction_price_yen=EvidenceValue(
+            18_000_000,
+            EvidenceLevel.CONFIRMED_VISUAL,
+            "V02 Console Archives PS5 video 09:07; video-v02-opening-transactions-2026-09-08.md",
+            "Menu position identifies the variant; world-facing orientation remains unknown.",
+        ),
         editable_floor=EvidenceValue(
             (13, 14),
             EvidenceLevel.CONFIRMED_COMMUNITY,
@@ -96,7 +111,12 @@ STORE_VARIANTS = (
         id="large_bottom",
         size_tier="large",
         orientation=None,
-        construction_price_yen=None,
+        construction_price_yen=EvidenceValue(
+            18_000_000,
+            EvidenceLevel.CONFIRMED_VISUAL,
+            "V02 Console Archives PS5 video 09:06; video-v02-opening-transactions-2026-09-08.md",
+            "Menu position identifies the variant; world-facing orientation remains unknown.",
+        ),
         editable_floor=None,
         unlocked_at_beginner_start=EvidenceValue(
             False,
@@ -166,6 +186,87 @@ FIXTURES = (
         "vending_machine",
         footprint=None,
         sale_mode="self_service_candidate",
+    ),
+    FixtureDefinition(
+        "ambient_shelf_40",
+        footprint=None,
+        maintenance_yen_per_day=EvidenceValue(
+            24, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 15:01"
+        ),
+        purchase_price_yen=EvidenceValue(
+            60, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 15:01"
+        ),
+        capacity=EvidenceValue(
+            40, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 15:01"
+        ),
+        attention=EvidenceValue(
+            10, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 15:01"
+        ),
+    ),
+    FixtureDefinition(
+        "ambient_shelf_80",
+        footprint=None,
+        maintenance_yen_per_day=EvidenceValue(
+            48, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:00; 15:01.3"
+        ),
+        purchase_price_yen=EvidenceValue(
+            100, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:00; 15:01.3"
+        ),
+        capacity=EvidenceValue(
+            80, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:00; 15:01.3"
+        ),
+        attention=EvidenceValue(
+            10, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:00; 15:01.3"
+        ),
+    ),
+    FixtureDefinition(
+        "ambient_shelf_120",
+        footprint=None,
+        maintenance_yen_per_day=EvidenceValue(
+            72, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:10"
+        ),
+        purchase_price_yen=EvidenceValue(
+            140, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:10"
+        ),
+        capacity=EvidenceValue(
+            120, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:10"
+        ),
+        attention=EvidenceValue(
+            10, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:10"
+        ),
+    ),
+    FixtureDefinition(
+        "steamed_bun_case_20",
+        footprint=None,
+        maintenance_yen_per_day=EvidenceValue(
+            1920, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:40"
+        ),
+        purchase_price_yen=EvidenceValue(
+            300, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:40"
+        ),
+        capacity=EvidenceValue(
+            20, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:40"
+        ),
+        attention=EvidenceValue(
+            30, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 13:40"
+        ),
+    ),
+    FixtureDefinition(
+        "cold_drink_vending_20",
+        footprint=None,
+        sale_mode="self_service_candidate",
+        maintenance_yen_per_day=EvidenceValue(
+            480, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 09:50"
+        ),
+        purchase_price_yen=EvidenceValue(
+            800, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 09:50"
+        ),
+        capacity=EvidenceValue(
+            20, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 09:50"
+        ),
+        attention=EvidenceValue(
+            15, EvidenceLevel.CONFIRMED_VISUAL, "V02 Console Archives PS5 video 09:50"
+        ),
     ),
 )
 

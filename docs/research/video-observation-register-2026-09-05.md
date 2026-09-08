@@ -160,3 +160,29 @@ Detailed continuation notes:
 6. additional day-4 to month-end transitions with sales/cost figures visible, to test whether the observed rollover sequence repeats
 
 Measurement rule: one isolated occurrence is an observation; repeated independent occurrences are required before promoting a numeric rule into the executable baseline.
+
+## V02 reattachment and opening observations — 2026-09-08
+
+The reattached Console Archives PS5 video is readable: 5,616.001451 seconds,
+1280x720, 30 fps, 362,825,047 bytes. Attachment:
+`file_00000000c34c81fb9faf86aeef98972e`; persistent source:
+`libfile_06b745d500f48191a741b28dfc1fc4a3`.
+
+- Coarse scan: 00:00–20:00 at 10-second intervals, last sample 19:50.
+  Targeted transaction/day-boundary samples reach 0.1 seconds and 1/30 second.
+  This does not mark the whole interval as continuously reviewed.
+- Added five fixture variants and four store-price fields from direct menu values.
+- Two bento/bread capacities support a capacity-proportional product-selection
+  display hypothesis. Displayed yen/day is not a confirmed unit retail or procurement price.
+- In one editor session, placements debit fixture price plus the product amount;
+  replacing bread with instant food credits 4,800 yen. At clock resumption the
+  entire 370,000 yen editor balance difference disappears while the new layout
+  remains visible. Cause unresolved; do not implement unconditional refunds.
+- At day 2 00:00 the lower-right figure resets; at 00:02 cash drops 30,788 yen
+  and weather changes. Other cash decreases occur before/after this while closed.
+  The expense breakdown and internal function ordering are not yet established.
+- Next V02 coarse scan: 20:00 onward.
+
+Evidence and exact timestamps:
+`video-v02-opening-transactions-2026-09-08.md` and
+`data/video-v02-opening-2026-09-08.json`.
