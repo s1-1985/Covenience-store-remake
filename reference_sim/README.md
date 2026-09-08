@@ -43,7 +43,7 @@ Rules:
 - `purchases.py` — explicit customer baskets connecting inventory depletion to known/unknown sale revenue without inventing product-choice, quantity or checkout/self-service policy.
 - `customer_share.py` — explicit customer-share inputs and recalculation requests without inventing the share formula or coefficients.
 - `promotion.py` — evidence-backed promotion scheduling and popularity events without assuming unresolved payment or month-skip behavior.
-- `inducement.py` — facility-aid reservation, observed location quotes and cancellation refund without guessing land-cost calculation or successful-placement semantics.
+- `inducement.py` — facility-aid reservation, observed site quotes, cancellation refund and explicit confirmation payment without guessing site-price or construction rules.
 - `store_runtime.py` — headless composition of movement, customers, staff, checkout, inventory, purchases, cleaning, economy, effective opening state, temporary closure and gated customer admission into one explicit vertical slice.
 - `master_audit.py` — field-level completeness audit for guide-derived fixture/product/customer/staff masters; only evidence-tagged values count as known.
 
@@ -65,7 +65,7 @@ Pathfinding in `store_grid.py` is intentionally simple 4-neighbor BFS. `traffic.
 
 V03 directly confirms that direct-mail cost is charged when its day-2 10:00 event fires, at the same event that adds 12 popularity to both visible owned stores. `apply_confirmed_triggered_promotion` composes that one visually confirmed payment timing with the cash ledger; other promotion methods remain payment-timing-gated.
 
-`inducement.py` implements only the visually repeated placement-entry/cancellation loop: the selected aid amount is debited when location selection begins and refunded in full on cancellation. Location-dependent displayed totals are stored as observations, not calculated, and successful placement remains deliberately unimplemented until its final debit and construction timing are observed.
+`inducement.py` debits aid on entry and refunds it on cancellation. V01 police-box and corrected V03 pool observations also support an additional site-quote debit on `confirm()`. The latest quote must be placeable and known; confirmation and cancellation are mutually exclusive. `displayed_site_cost_yen` replaces the misleading `displayed_total_yen` name. Site prices, affordability policy, construction timing and activation remain unresolved. Confirmation records a caller-authorized payment, not a completed building.
 
 `purchases.py` requires the caller to supply the chosen slot, quantity and sale price. Taking an item immediately depletes fixture inventory, but cash changes only on explicit settlement. This keeps normal checkout and self-service candidate flows representable without asserting unverified routing or purchase-choice AI.
 
