@@ -26,7 +26,7 @@ func _init(store_config: Dictionary, fixture_configs: Array) -> void:
     height_subcells = int(store_config["height_tiles"]) * scale
     entry = _vec2i(store_config["entry_subcell"])
     exit = _vec2i(store_config["exit_subcell"])
-    _initial_fixtures = fixture_configs.duplicate(true)
+    _initial_fixtures = _normalize_fixture_configs(fixture_configs)
     fixtures = _initial_fixtures.duplicate(true)
     assert(width_subcells > 0 and height_subcells > 0 and scale > 0)
     assert(_inside(entry) and _inside(exit))
@@ -223,3 +223,20 @@ func _inside(cell: Vector2i) -> bool:
 
 func _vec2i(value: Array) -> Vector2i:
     return Vector2i(int(value[0]), int(value[1]))
+
+
+func _normalize_fixture_configs(configs: Array) -> Array:
+    # JSON.parse_string() returns every number as float, including
+    # subcell coordinates. Rotation/relocation write these fields back as
+    # int (via Vector2i components), so a fixture that returns to its
+    # original position would otherwise compare unequal to the
+    # JSON-parsed original (5 vs 5.0) under Array/Dictionary equality.
+    # Casting to int once at ingestion keeps every fixture dict
+    # consistently typed for the lifetime of this layout.
+    var normalized: Array = configs.duplicate(true)
+    for fixture in normalized:
+        fixture["origin_subcell"] = [int(fixture["origin_subcell"][0]), int(fixture["origin_subcell"][1])]
+        fixture["interaction_subcell"] = [int(fixture["interaction_subcell"][0]), int(fixture["interaction_subcell"][1])]
+        fixture["footprint_tiles"] = [int(fixture["footprint_tiles"][0]), int(fixture["footprint_tiles"][1])]
+        fixture["rotation_quarter_turns"] = int(fixture.get("rotation_quarter_turns", 0))
+    return normalized
