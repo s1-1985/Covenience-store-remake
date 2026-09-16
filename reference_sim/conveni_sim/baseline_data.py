@@ -220,6 +220,8 @@ STORE_VARIANTS = (
         # rows both show 6,000,000 yen for every "small" variant regardless
         # of orientation, so this previously-unknown price can be filled in
         # without touching small_top's separately-sourced editable_floor.
+        # Independently confirmed by direct video observation (V02 Console
+        # Archives PS5 video 09:12; video-v02-opening-transactions-2026-09-08.md).
         construction_price_yen=EvidenceValue(6_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         editable_floor=None,
         unlocked_at_beginner_start=EvidenceValue(
@@ -232,6 +234,8 @@ STORE_VARIANTS = (
         id="medium_top",
         size_tier="medium",
         orientation=None,
+        # Independently confirmed by direct video observation (V02 Console
+        # Archives PS5 video 09:05; 12:05-12:10; video-v02-opening-transactions-2026-09-08.md).
         construction_price_yen=EvidenceValue(12_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         editable_floor=None,
         unlocked_at_beginner_start=EvidenceValue(
@@ -261,7 +265,9 @@ STORE_VARIANTS = (
         # of its "大" (large) case-study layouts independently agree on
         # 18,000,000 yen (7 sources vs. 1). This is an internal conflict in
         # the source material itself, not a cross-source one; 18,000,000 is
-        # used as the majority value. See
+        # used as the majority value, and is independently confirmed by
+        # direct video observation (V02 Console Archives PS5 video 09:07;
+        # video-v02-opening-transactions-2026-09-08.md). See
         # docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md.
         construction_price_yen=EvidenceValue(18_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         editable_floor=EvidenceValue(
@@ -280,6 +286,8 @@ STORE_VARIANTS = (
         id="large_bottom",
         size_tier="large",
         orientation=None,
+        # Independently confirmed by direct video observation (V02 Console
+        # Archives PS5 video 09:06; video-v02-opening-transactions-2026-09-08.md).
         construction_price_yen=EvidenceValue(18_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         editable_floor=None,
         unlocked_at_beginner_start=EvidenceValue(
@@ -396,6 +404,13 @@ FIXTURES = (
         sale_mode="self_service_candidate",
     ),
 ) + STRATEGY_GUIDE_FIXTURES
+# V02 Console Archives PS5 video (timestamps 09:50, 13:00-15:01) independently
+# confirms, via direct gameplay observation, the exact same
+# maintenance/purchase-price/capacity/attention values already recorded above
+# for small_ambient_shelf, medium_ambient_shelf, large_ambient_shelf,
+# steamed_bun_case, and small_cold_drink_vending (all sourced from the
+# strategy guide's own fixture data pages). See
+# docs/research/video-v02-opening-transactions-2026-09-08.md.
 
 PROMOTIONS = (
     PromotionDefinition(
