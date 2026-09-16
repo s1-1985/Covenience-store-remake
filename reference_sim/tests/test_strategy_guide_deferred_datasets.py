@@ -162,5 +162,50 @@ class ProductSeasonalDemandTests(unittest.TestCase):
             self.assertIsNone(by_id[category_id].seasonal_demand)
 
 
+class ProductRestockQuantityTests(unittest.TestCase):
+    # Transcribed on a second, higher-fidelity re-read of the same DATA LIST
+    # product table (book page 85) that decision 0078 could not read with
+    # confidence; see decision 0080. Every category's already-confirmed
+    # price/cost_rate/margin_rate matched exactly on this re-read, which is
+    # the cross-check that raised confidence in this new column.
+    def test_restock_quantities_match_the_guides_data_list_table(self):
+        by_id = {c.id: c for c in PRODUCT_CATEGORY_PRICING}
+        expected = {
+            "cold_drink": 55,
+            "hot_drink": 60,
+            "alcohol": 300,
+            "bento": 160,
+            "bread": 150,
+            "instant_food": 60,
+            "snacks": 80,
+            "books": 160,
+            "tobacco": 75,
+            "ice_cream": 50,
+            "stationery": 60,
+            "retort_food": 240,
+            "electronics": 320,
+            "seasoning": 160,
+            "vegetables": 750,
+            "frozen_food": 200,
+            "fish": 400,
+            "oden": 125,
+            "meat": 600,
+            "daily_goods": 320,
+            "copy_paper": 20,
+            "event_goods": 400,
+            "parcel_delivery_form": 200,
+            "chinese_steamed_bun": 68,
+            "medicine": 450,
+            "underwear": 400,
+            "cash": 0,
+        }
+        for category_id, quantity in expected.items():
+            self.assertEqual(by_id[category_id].restock_quantity.value, quantity, category_id)
+
+    def test_every_category_has_a_restock_quantity(self):
+        for category in PRODUCT_CATEGORY_PRICING:
+            self.assertIsNotNone(category.restock_quantity, category.id)
+
+
 if __name__ == "__main__":
     unittest.main()
