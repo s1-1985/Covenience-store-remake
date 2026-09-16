@@ -41,10 +41,18 @@ class StrategyGuideFixtureTests(unittest.TestCase):
                 self.assertIn("strategy guide", value.source)
 
     def test_new_fixture_rows_do_not_invent_fields_the_guide_does_not_cover(self):
-        # The guide's fixture table does not publish compatible_product_categories
-        # or interaction_sides; those must stay UNKNOWN (None), not be guessed.
+        # The guide's fixture table does not publish interaction_sides,
+        # service_bonus, or security_bonus; those must stay UNKNOWN (None),
+        # not be guessed. compatible_product_categories was later filled in
+        # (a separate pass, from each fixture's own "取扱商品" column) for
+        # most rows, but not for the registers with no listed product
+        # ("取扱商品: なし") or the break rooms, which stay None.
+        no_product_ids = {"register_1", "register_3", "break_room_1", "break_room_2"}
         for fixture in STRATEGY_GUIDE_FIXTURES:
-            self.assertIsNone(fixture.compatible_product_categories)
+            if fixture.id in no_product_ids:
+                self.assertIsNone(fixture.compatible_product_categories)
+            else:
+                self.assertIsInstance(fixture.compatible_product_categories, EvidenceValue)
             self.assertIsNone(fixture.interaction_sides)
             self.assertIsNone(fixture.service_bonus)
             self.assertIsNone(fixture.security_bonus)
