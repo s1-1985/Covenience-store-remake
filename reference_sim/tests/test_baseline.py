@@ -69,8 +69,10 @@ class BaselineDataTests(unittest.TestCase):
         self.assertEqual(copier_b.maintenance_yen_per_day.value, 1_440)
         self.assertEqual(copier_b.capacity.evidence, EvidenceLevel.CONFIRMED_VISUAL)
 
-        self.assertIsNone(copier_a.footprint)
-        self.assertIsNone(copier_b.compatible_product_categories)
+        self.assertEqual(copier_a.footprint.value, (1, 1))
+        self.assertEqual(copier_b.footprint.value, (2, 1))
+        self.assertEqual(copier_a.compatible_product_categories.value, ("copy_paper",))
+        self.assertEqual(copier_b.compatible_product_categories.value, ("copy_paper",))
 
     def test_video_confirmed_town_facility_aid_values(self):
         by_id = {facility.id: facility for facility in TOWN_FACILITIES}
@@ -93,10 +95,9 @@ class BaselineDataTests(unittest.TestCase):
 
     def test_unknown_store_values_stay_unknown(self):
         by_id = {variant.id: variant for variant in STORE_VARIANTS}
-        # V02 now supplies the upper medium-store price; the lower variant
-        # and world-facing orientation still lack direct evidence.
-        self.assertIsNone(by_id["medium_bottom"].construction_price_yen)
+        self.assertEqual(by_id["medium_top"].construction_price_yen.value, 12_000_000)
         self.assertIsNone(by_id["small_bottom"].orientation)
+        self.assertIsNone(by_id["medium_top"].editable_floor)
 
     def test_permits_are_independent_and_distances_unknown(self):
         self.assertEqual({p.id for p in PERMITS}, {"tobacco", "alcohol", "medicine"})

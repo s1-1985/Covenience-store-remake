@@ -1,12 +1,20 @@
 extends Node2D
 
+signal fixture_selected(fixture_id: String)
+signal fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i)
+
 const SUBCELL_PIXELS := 42.0
 
 var config: Dictionary = {}
-var simulation: VerticalSliceSimulation
+var simulation
+var selected_fixture_id := ""
 
 
-func bind(source_config: Dictionary, source_simulation: VerticalSliceSimulation) -> void:
+func selected_fixture() -> String:
+    return selected_fixture_id
+
+
+func bind(source_config: Dictionary, source_simulation) -> void:
     config = source_config
     simulation = source_simulation
     queue_redraw()
@@ -17,12 +25,38 @@ func _process(_delta: float) -> void:
         queue_redraw()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+    var pointer_position := Vector2.ZERO
+    var pressed := false
+    if event is InputEventMouseButton:
+        pressed = event.pressed and event.button_index == MOUSE_BUTTON_LEFT
+        pointer_position = event.position
+    elif event is InputEventScreenTouch:
+        pressed = event.pressed
+        pointer_position = event.position
+    if not pressed or simulation == null:
+        return
+    var local_position := to_local(pointer_position)
+    var cell := Vector2i(floori(local_position.x / SUBCELL_PIXELS), floori(local_position.y / SUBCELL_PIXELS))
+    if not simulation.layout.is_walkable(cell):
+        var fixture_id: String = simulation.layout.fixture_at(cell)
+        if not fixture_id.is_empty():
+            selected_fixture_id = fixture_id
+            fixture_selected.emit(fixture_id)
+            queue_redraw()
+            get_viewport().set_input_as_handled()
+        return
+    if not selected_fixture_id.is_empty():
+        fixture_relocation_requested.emit(selected_fixture_id, cell)
+        get_viewport().set_input_as_handled()
+
+
 func _draw() -> void:
     if config.is_empty() or simulation == null:
         return
 
-    var width := simulation.width_subcells * SUBCELL_PIXELS
-    var height := simulation.height_subcells * SUBCELL_PIXELS
+    var width: float = simulation.layout.width_subcells * SUBCELL_PIXELS
+    var height: float = simulation.layout.height_subcells * SUBCELL_PIXELS
     draw_rect(Rect2(Vector2.ZERO, Vector2(width, height)), Color("f5f1e8"), true)
     draw_rect(Rect2(Vector2.ZERO, Vector2(width, height)), Color("373737"), false, 3.0)
 
@@ -35,12 +69,12 @@ func _draw() -> void:
 
 func _draw_grid(width: float, height: float) -> void:
     var subcells_per_tile := int(config["store"]["subcells_per_tile"])
-    for x in range(simulation.width_subcells + 1):
+    for x in range(simulation.layout.width_subcells + 1):
         var thickness := 2.0 if x % subcells_per_tile == 0 else 1.0
         var shade := Color("aaa69d") if x % subcells_per_tile == 0 else Color("d8d4cb")
         var px := x * SUBCELL_PIXELS
         draw_line(Vector2(px, 0), Vector2(px, height), shade, thickness)
-    for y in range(simulation.height_subcells + 1):
+    for y in range(simulation.layout.height_subcells + 1):
         var thickness := 2.0 if y % subcells_per_tile == 0 else 1.0
         var shade := Color("aaa69d") if y % subcells_per_tile == 0 else Color("d8d4cb")
         var py := y * SUBCELL_PIXELS
@@ -58,7 +92,7 @@ func _draw_entry_exit() -> void:
 
 func _draw_fixtures() -> void:
     var scale := int(config["store"]["subcells_per_tile"])
-    for fixture in config["fixtures"]:
+    for fixture in simulation.layout.fixtures:
         var origin := _vec2i(fixture["origin_subcell"])
         var footprint: Array = fixture["footprint_tiles"]
         var size_subcells := Vector2i(int(footprint[0]) * scale, int(footprint[1]) * scale)
@@ -68,7 +102,9 @@ func _draw_fixtures() -> void:
         ).grow(-3)
         var fill := Color("84a9d8") if fixture["kind"] == "shelf" else Color("d69a69")
         draw_rect(rect, fill, true)
-        draw_rect(rect, Color("363636"), false, 2.0)
+        var outline := Color("f4d35e") if fixture["id"] == selected_fixture_id else Color("363636")
+        var outline_width := 5.0 if fixture["id"] == selected_fixture_id else 2.0
+        draw_rect(rect, outline, false, outline_width)
         var interaction := _vec2i(fixture["interaction_subcell"])
         draw_circle(_cell_center(interaction), 7.0, Color("f4d35e"))
         var label := "SHELF" if fixture["kind"] == "shelf" else "CHECKOUT"
@@ -84,18 +120,20 @@ func _draw_fixtures() -> void:
 
 
 func _draw_customer() -> void:
-    if simulation.customer_phase == "done":
+    var customer = simulation.customers.active()
+    if customer.phase == "done":
         return
-    var center := _cell_center(simulation.customer_position)
+    var center: Vector2 = _cell_center(customer.position)
     draw_circle(center, 13.0, Color("ef476f"))
     draw_circle(center, 13.0, Color("3a2630"), false, 2.0)
 
 
 func _draw_staff() -> void:
-    var center := _cell_center(simulation.staff_position)
-    var rect := Rect2(center - Vector2(12, 12), Vector2(24, 24))
-    draw_rect(rect, Color("118ab2"), true)
-    draw_rect(rect, Color("17324d"), false, 2.0)
+    for staff_member in simulation.staff.all_staff():
+        var center: Vector2 = _cell_center(staff_member.position)
+        var rect := Rect2(center - Vector2(12, 12), Vector2(24, 24))
+        draw_rect(rect, Color("118ab2"), true)
+        draw_rect(rect, Color("17324d"), false, 2.0)
 
 
 func _draw_text_at(cell: Vector2i, text: String) -> void:

@@ -48,8 +48,10 @@ class MasterSchemaTests(unittest.TestCase):
     def test_existing_plant_anchor_reports_only_currently_known_core_fields(self):
         plant = next(fixture for fixture in FIXTURES if fixture.id == "potted_plant")
         result = audit_fixture(plant)
-        self.assertEqual(set(result.known_fields), {"footprint", "maintenance_yen_per_day"})
-        self.assertIn("purchase_price_yen", result.unknown_fields)
+        self.assertEqual(
+            set(result.known_fields),
+            {"footprint", "maintenance_yen_per_day", "purchase_price_yen"},
+        )
         self.assertIn("capacity", result.unknown_fields)
         self.assertIn("compatible_product_categories", result.unknown_fields)
         self.assertIn("interaction_sides", result.unknown_fields)
