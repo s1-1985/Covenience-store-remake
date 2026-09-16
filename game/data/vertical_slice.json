@@ -31,9 +31,9 @@
       "id": "shelf-2",
       "kind": "shelf",
       "rotation_quarter_turns": 0,
-      "origin_subcell": [4, 8],
+      "origin_subcell": [4, 10],
       "footprint_tiles": [2, 1],
-      "interaction_subcell": [5, 7]
+      "interaction_subcell": [5, 9]
     }
   ],
   "products": [
