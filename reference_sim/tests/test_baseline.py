@@ -69,7 +69,9 @@ class BaselineDataTests(unittest.TestCase):
         self.assertEqual(copier_b.maintenance_yen_per_day.value, 1_440)
         self.assertEqual(copier_b.capacity.evidence, EvidenceLevel.CONFIRMED_VISUAL)
 
-        self.assertIsNone(copier_a.footprint)
+        self.assertEqual(copier_a.footprint.value, (1, 1))
+        self.assertEqual(copier_b.footprint.value, (2, 1))
+        self.assertIsNone(copier_a.compatible_product_categories)
         self.assertIsNone(copier_b.compatible_product_categories)
 
     def test_video_confirmed_town_facility_aid_values(self):

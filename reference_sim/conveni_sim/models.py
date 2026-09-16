@@ -52,6 +52,8 @@ class FixtureDefinition:
     interaction_sides: Optional[EvidenceValue] = None
     attention: Optional[EvidenceValue] = None
     security_bonus: Optional[EvidenceValue] = None
+    placement: Optional[EvidenceValue] = None
+    """Where the fixture may be sited: indoor / outdoor / indoor_outdoor."""
 
 
 @dataclass(frozen=True)
@@ -138,3 +140,46 @@ class TownFacilityAnchor:
     observed_population_range: Optional[EvidenceValue] = None
     construction_delay_is_nonzero: Optional[EvidenceValue] = None
     inducement_aid_yen: Optional[EvidenceValue] = None
+
+
+@dataclass(frozen=True)
+class ProductCategoryPricing:
+    """Category-level standard price / cost-rate / margin-rate master row.
+
+    This is distinct from `ProductDefinition`, which models one specific
+    product SKU. The strategy guide only publishes category-level pricing,
+    not per-SKU prices, so this class exists to hold that coarser table
+    without inventing individual product rows.
+    """
+
+    id: str
+    display_name_ja: str
+    standard_retail_price_yen: EvidenceValue
+    cost_rate_pct: EvidenceValue
+    margin_rate_pct: EvidenceValue
+
+    def __post_init__(self) -> None:
+        cost = self.cost_rate_pct.value
+        margin = self.margin_rate_pct.value
+        if cost + margin != 100:
+            raise ValueError(
+                f"{self.id}: cost_rate_pct + margin_rate_pct must equal 100, "
+                f"got {cost} + {margin}"
+            )
+
+    @property
+    def procurement_cost_yen(self) -> Optional[int]:
+        """Derived as base_price * cost_rate / 100; rounding rule is unconfirmed."""
+        price = self.standard_retail_price_yen.value
+        rate = self.cost_rate_pct.value
+        if price is None or rate is None:
+            return None
+        return price * rate // 100
+
+
+@dataclass(frozen=True)
+class SalaryTableEntry:
+    """One age -> monthly salary anchor point from the strategy guide's staff table."""
+
+    age_years: int
+    monthly_salary_yen: EvidenceValue
