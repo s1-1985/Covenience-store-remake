@@ -203,6 +203,19 @@ Claude Codeによるコードレビューで気づいた事項を、ChatGPTに�
 - テスト: `reference_sim/tests/test_strategy_guide_deferred_datasets.py`(20件)を新規追加。全491テストgreen。
 - 要判断として残っている項目(引き続きCodex側の判断/実装検討を推奨): 項目19の未実装公式群(サービス値/セキュリティ値/清掃値/店舗評価/イベント発生条件等)、`editable_floor`の未解決値、`bench`/`fountain`の`service_bonus`矛盾、店舗「大」サイズ建設費の内部矛盾、商品テーブルの「1回補給」列の意味確認。
 
+### 21. 項目19の未実装公式群8件をランタイムに実装(★本体コードへの最大級の越境)
+
+- 対象コミット: 項目20と同じブランチの後続コミット。背景: ユーザーから「8つの公式をランタイムに実装して」との明示的な指示があり、`reference_sim/conveni_sim/`配下に新規モジュール3本+既存2モジュールへの追記という形で実装した。**これまでで最も大きく本体コード領域(`reference_sim/conveni_sim/`)へ越境した回**であり、Codex側の並行作業との衝突可能性に注意されたい。詳細は `docs/decisions/0079-strategy-guide-formula-runtime-implementation.md` を参照。
+- **新規モジュール**:
+  - `store_value.py`: `compute_service_value`/`compute_security_value`/`compute_cleaning_value`、`SecurityFacilityCoverage`(交番/消防署の16×16圏内タイル数→上限付きボーナス)。
+  - `store_rating.py`: `evaluate_monthly_rating_change`(★評価の月次増減、5項目中3つクリアで+5、条件1つにつき-1)、`star_rank_for_internal_value`。
+  - `store_events.py`: `donation_event_is_eligible`/`magazine_or_contest_event_is_eligible`/`compute_contest_prize_yen`/`shoplifting_is_possible`/`FireOrRobberyRisk`/`scenario_time_limit_exceeded`(100年ゲームオーバー)。
+- **既存モジュールへの追記**: `inducement.py`に`compute_new_store_land_cost_yen`(旧docstringの「土地代計算は意図的に未実装」を解消)、`promotion.py`に`promotion_effect_decay_applies`(既存の`PopularityDecayOpportunity`機構はそのまま、新たに確認できた発動条件=★3以下のみ追加)。
+- **実装方針**: 完全に数式が確定しているもの(サービス値/セキュリティ値/清掃値/評価表/土地代/100年ゲームオーバー)は確定ロジックとして実装。発動条件のみ確定・確率や正確な数値が未確定のもの(寄付の控除額、業界誌掲載/コンテストの抽選、万引きの発生確率、火災強盗の発生確率、宣伝減衰の日次率)は、既存コードベース自身の慣習(`PopularityDecayOpportunity`等の「境界は確定・大きさは未確定」パターン)に倣い、判定関数のみ実装して数値を捏造していない。
+- **`store_runtime.py`への配線は未実施**: 既存の`promotion.py`/`visitor_milestone.py`/`manager_magazine_event.py`も同様に`store_runtime.py`へ自動結合されていないため、この方針に合わせた。いつ・どのゲームステップでこれらを呼び出すかの設計はCodex側の判断に委ねる。
+- テスト: `test_store_value.py`/`test_store_rating.py`/`test_store_events.py`(新規)+`test_inducement.py`/`test_promotion.py`への追記、計64件。全540テストgreen。
+- 要判断: 上記の「配線」設計そのもの、および万引き判定に使う「顧客マナー値」の実データ源(現状`CUSTOMER_VISIT_SCHEDULE.behavior_stats_raw`に未分解のまま格納されており、どの位置の値がマナーに相当するか特定が必要)。
+
 ---
 
 ## 検証して問題が無かった領域(`554d78d` 時点)
