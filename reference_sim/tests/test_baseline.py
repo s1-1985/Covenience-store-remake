@@ -71,8 +71,8 @@ class BaselineDataTests(unittest.TestCase):
 
         self.assertEqual(copier_a.footprint.value, (1, 1))
         self.assertEqual(copier_b.footprint.value, (2, 1))
-        self.assertIsNone(copier_a.compatible_product_categories)
-        self.assertIsNone(copier_b.compatible_product_categories)
+        self.assertEqual(copier_a.compatible_product_categories.value, ("copy_paper",))
+        self.assertEqual(copier_b.compatible_product_categories.value, ("copy_paper",))
 
     def test_video_confirmed_town_facility_aid_values(self):
         by_id = {facility.id: facility for facility in TOWN_FACILITIES}
