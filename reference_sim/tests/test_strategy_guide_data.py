@@ -116,13 +116,13 @@ class SalaryTableTests(unittest.TestCase):
     def test_salary_table_is_sorted_by_age_and_monotonically_increases(self):
         ages = [entry.age_years for entry in SALARY_TABLE]
         self.assertEqual(ages, sorted(ages))
-        salaries = [entry.monthly_salary_yen.value for entry in SALARY_TABLE]
+        salaries = [entry.hourly_wage_yen.value for entry in SALARY_TABLE]
         self.assertEqual(salaries, sorted(salaries))
 
     def test_salary_entries_are_tagged_confirmed_official_strategy_guide(self):
         for entry in SALARY_TABLE:
-            self.assertEqual(entry.monthly_salary_yen.evidence, EvidenceLevel.CONFIRMED_OFFICIAL)
-            self.assertIn("strategy guide", entry.monthly_salary_yen.source)
+            self.assertEqual(entry.hourly_wage_yen.evidence, EvidenceLevel.CONFIRMED_OFFICIAL)
+            self.assertIn("strategy guide", entry.hourly_wage_yen.source)
 
     def test_salary_table_spans_the_guides_documented_age_range(self):
         ages = {entry.age_years for entry in SALARY_TABLE}

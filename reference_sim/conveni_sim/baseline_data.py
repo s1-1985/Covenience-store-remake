@@ -171,7 +171,11 @@ STORE_VARIANTS = (
         id="small_bottom",
         size_tier="small",
         orientation=None,
-        construction_price_yen=None,
+        # Strategy guide's store-selection screen and its 店舗1/店舗2 data
+        # rows both show 6,000,000 yen for every "small" variant regardless
+        # of orientation, so this previously-unknown price can be filled in
+        # without touching small_top's separately-sourced editable_floor.
+        construction_price_yen=EvidenceValue(6_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         editable_floor=None,
         unlocked_at_beginner_start=EvidenceValue(
             True,
@@ -183,7 +187,7 @@ STORE_VARIANTS = (
         id="medium_top",
         size_tier="medium",
         orientation=None,
-        construction_price_yen=None,
+        construction_price_yen=EvidenceValue(12_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         editable_floor=None,
         unlocked_at_beginner_start=EvidenceValue(
             False,
@@ -195,7 +199,7 @@ STORE_VARIANTS = (
         id="medium_bottom",
         size_tier="medium",
         orientation=None,
-        construction_price_yen=None,
+        construction_price_yen=EvidenceValue(12_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         editable_floor=None,
         unlocked_at_beginner_start=EvidenceValue(
             False,
@@ -207,7 +211,14 @@ STORE_VARIANTS = (
         id="large_top",
         size_tier="large",
         orientation=None,
-        construction_price_yen=None,
+        # NOTE: the guide's own store-selection screen (chapter 1) prints
+        # 24,000,000 yen for this tier, but its data-table page and all six
+        # of its "大" (large) case-study layouts independently agree on
+        # 18,000,000 yen (7 sources vs. 1). This is an internal conflict in
+        # the source material itself, not a cross-source one; 18,000,000 is
+        # used as the majority value. See
+        # docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md.
+        construction_price_yen=EvidenceValue(18_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         editable_floor=EvidenceValue(
             (13, 14),
             EvidenceLevel.CONFIRMED_COMMUNITY,
@@ -224,7 +235,7 @@ STORE_VARIANTS = (
         id="large_bottom",
         size_tier="large",
         orientation=None,
-        construction_price_yen=None,
+        construction_price_yen=EvidenceValue(18_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         editable_floor=None,
         unlocked_at_beginner_start=EvidenceValue(
             False,
@@ -239,6 +250,8 @@ FIXTURES = (
         "potted_plant",
         EvidenceValue((1, 1), EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         EvidenceValue(120, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
+        # Strategy guide independently confirms this +2 service_bonus
+        # ("店舗のサービス値が2上昇する"), matching the existing wiki value exactly.
         EvidenceValue(2, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         # Strategy guide confirms the same 1x1 footprint and 120 yen/day
         # maintenance independently; only purchase_price_yen was previously
@@ -255,6 +268,10 @@ FIXTURES = (
         # The wiki-derived 168 value is kept as-is rather than silently
         # overwritten.
         EvidenceValue(168, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
+        # NOTE: strategy guide reports a +4 service_bonus ("サービス値が4上昇する"),
+        # not +3. Same conflict pattern as the maintenance figure above; the
+        # wiki-derived 3 is kept, not silently overwritten. See the
+        # crosscheck research note.
         EvidenceValue(3, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         purchase_price_yen=EvidenceValue(2_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         placement=EvidenceValue("indoor_outdoor", EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
@@ -263,6 +280,9 @@ FIXTURES = (
         "fountain",
         EvidenceValue((2, 2), EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         EvidenceValue(2_400, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
+        # NOTE: strategy guide reports a +30 service_bonus ("サービス値が30上昇する"),
+        # not +25. Same conflict pattern as bench above; the wiki-derived 25
+        # is kept, not silently overwritten. See the crosscheck research note.
         EvidenceValue(25, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         # Strategy guide confirms the same 2400 yen/day maintenance.
         purchase_price_yen=EvidenceValue(5_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
@@ -345,9 +365,16 @@ PROMOTIONS = (
         ),
     ),
     PromotionDefinition("newspaper", EvidenceValue(500_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(20, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(2, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(7, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
-    PromotionDefinition("airship", EvidenceValue(1_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(30, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(3, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(15, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
-    PromotionDefinition("radio", EvidenceValue(3_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(50, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(1, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(17, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
-    PromotionDefinition("tv", EvidenceValue(5_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(100, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(1, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(19, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
+    # airship/radio/tv popularity_gain corrected from the WIKI-derived
+    # +30/+50/+100 to the strategy guide's +40/+60/+90: cost/trigger_day/
+    # trigger_hour already matched the guide exactly, and the guide's own
+    # popularity_gain value was independently confirmed on four separate
+    # primary-source pages (docs/research/strategy-guide-full-decode-2026-09-16.md
+    # and the original scans), making it the stronger source for this one
+    # field. See docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md.
+    PromotionDefinition("airship", EvidenceValue(1_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE), EvidenceValue(3, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(15, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
+    PromotionDefinition("radio", EvidenceValue(3_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(60, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE), EvidenceValue(1, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(17, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
+    PromotionDefinition("tv", EvidenceValue(5_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(90, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE), EvidenceValue(1, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(19, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
 )
 
 PERMITS = tuple(
@@ -392,6 +419,38 @@ SCENARIOS = (
     ),
 )
 
+
+def _sg_facility(
+    facility_id: str,
+    *,
+    footprint: tuple[int, int],
+    inducement_aid_yen: int,
+    shopping_population: Optional[int] = None,
+) -> TownFacilityAnchor:
+    """Build one new strategy-guide-sourced inducement facility.
+
+    Source: docs/research/strategy-guide-full-decode-2026-09-16.md section 9
+    and the primary guide scans (inducement facility list, and the separate
+    per-facility customer-count table). All 6 pre-existing facilities this
+    file already carried (police_box/company/pool/vocational_school/
+    university/station) were independently cross-checked against the same
+    guide tables and matched exactly, which is why this new batch is trusted
+    at CONFIRMED_OFFICIAL rather than left as a lower evidence tier.
+    """
+
+    evidence = EvidenceLevel.CONFIRMED_OFFICIAL
+    return TownFacilityAnchor(
+        facility_id,
+        shopping_population=(
+            EvidenceValue(shopping_population, evidence, STRATEGY_GUIDE)
+            if shopping_population is not None
+            else None
+        ),
+        inducement_aid_yen=EvidenceValue(inducement_aid_yen, evidence, STRATEGY_GUIDE),
+        footprint=EvidenceValue(footprint, evidence, STRATEGY_GUIDE),
+    )
+
+
 TOWN_FACILITIES = (
     TownFacilityAnchor(
         "station",
@@ -400,18 +459,29 @@ TOWN_FACILITIES = (
     TownFacilityAnchor(
         "police_box",
         inducement_aid_yen=EvidenceValue(400_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_LONGRUN),
+        # Strategy guide independently confirms the same 400,000 yen aid and
+        # adds the previously-unknown 2x2 footprint.
+        footprint=EvidenceValue((2, 2), EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
     TownFacilityAnchor(
         "company",
         inducement_aid_yen=EvidenceValue(5_400_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_LONGRUN),
+        # Strategy guide independently confirms the same 5,400,000 yen aid.
+        shopping_population=EvidenceValue(90, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        footprint=EvidenceValue((3, 3), EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
     TownFacilityAnchor(
         "pool",
         inducement_aid_yen=EvidenceValue(1_800_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_V03_SEP2),
+        # Strategy guide independently confirms the same 1,800,000 yen aid.
+        shopping_population=EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        footprint=EvidenceValue((3, 2), EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
     TownFacilityAnchor(
         "vocational_school",
         inducement_aid_yen=EvidenceValue(4_800_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_LONGRUN),
+        # Strategy guide independently confirms the same 4,800,000 yen aid.
+        footprint=EvidenceValue((3, 4), EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
     TownFacilityAnchor(
         "university",
@@ -422,11 +492,30 @@ TOWN_FACILITIES = (
             "Observed long-play range only; not an exact fixed population value.",
         ),
         inducement_aid_yen=EvidenceValue(9_800_000, EvidenceLevel.CONFIRMED_VISUAL, VIDEO_LONGRUN),
+        # Strategy guide independently confirms the same 9,800,000 yen aid.
+        footprint=EvidenceValue((7, 7), EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
     TownFacilityAnchor(
         "fire_station",
         construction_delay_is_nonzero=EvidenceValue(True, EvidenceLevel.PROVISIONAL, "PS long-play observation"),
+        inducement_aid_yen=EvidenceValue(600_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        shopping_population=EvidenceValue(12, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        footprint=EvidenceValue((2, 3), EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
+    # New facilities from the strategy guide's inducement list with no prior
+    # entry in this file.
+    _sg_facility("mansion", footprint=(2, 3), inducement_aid_yen=4_200_000),
+    _sg_facility("gym", footprint=(2, 3), inducement_aid_yen=4_200_000, shopping_population=30),
+    _sg_facility("athletic_field", footprint=(4, 5), inducement_aid_yen=2_000_000, shopping_population=30),
+    _sg_facility("event_hall", footprint=(2, 2), inducement_aid_yen=6_000_000, shopping_population=260),
+    _sg_facility("kindergarten", footprint=(2, 3), inducement_aid_yen=1_200_000),
+    _sg_facility("elementary_school", footprint=(4, 4), inducement_aid_yen=3_200_000),
+    _sg_facility("middle_school", footprint=(5, 5), inducement_aid_yen=5_000_000),
+    _sg_facility("high_school", footprint=(6, 6), inducement_aid_yen=7_200_000),
+    _sg_facility("park", footprint=(2, 2), inducement_aid_yen=2_000_000, shopping_population=24),
+    _sg_facility("aquarium", footprint=(3, 3), inducement_aid_yen=2_700_000, shopping_population=60),
+    _sg_facility("zoo", footprint=(6, 6), inducement_aid_yen=7_200_000, shopping_population=500),
+    _sg_facility("amusement_park", footprint=(7, 7), inducement_aid_yen=9_800_000, shopping_population=750),
 )
 
 
@@ -491,10 +580,12 @@ PRODUCT_CATEGORY_PRICING: tuple[ProductCategoryPricing, ...] = (
 )
 
 
-# Age (years) -> monthly salary (yen) anchor table from the strategy guide
-# (docs/research/strategy-guide-full-decode-2026-09-16.md section 5). The
-# guide's own unit label was not independently re-confirmed against in-game
-# UI, so the raw value is kept as printed rather than converted.
+# Age (years) -> base hourly wage (yen) anchor table, transcribed directly
+# from the strategy guide page headed "年齢別・社員の基本時給(円)"
+# (age-based base hourly wage). A separate guide page states the generating
+# formula hourly_wage_yen = age_years * 10 + 100, which reproduces every
+# point below exactly; the labor-cost note on payroll confirms wages are
+# computed as hourly_wage * hours_worked, not a flat monthly figure.
 SALARY_TABLE: tuple[SalaryTableEntry, ...] = (
     SalaryTableEntry(15, EvidenceValue(250, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE)),
     SalaryTableEntry(20, EvidenceValue(300, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE)),

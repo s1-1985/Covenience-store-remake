@@ -95,8 +95,9 @@ class BaselineDataTests(unittest.TestCase):
 
     def test_unknown_store_values_stay_unknown(self):
         by_id = {variant.id: variant for variant in STORE_VARIANTS}
-        self.assertIsNone(by_id["medium_top"].construction_price_yen)
+        self.assertEqual(by_id["medium_top"].construction_price_yen.value, 12_000_000)
         self.assertIsNone(by_id["small_bottom"].orientation)
+        self.assertIsNone(by_id["medium_top"].editable_floor)
 
     def test_permits_are_independent_and_distances_unknown(self):
         self.assertEqual({p.id for p in PERMITS}, {"tobacco", "alcohol", "medicine"})
