@@ -3,11 +3,31 @@ import unittest
 from conveni_sim.baseline_data import PROMOTIONS
 from conveni_sim.economy import FinancialEventKind, StoreCashLedger
 from conveni_sim.promotion import (
+    PROMOTION_DECAY_STAR_THRESHOLD,
     PromotionMoment,
     PromotionScheduler,
     StorePopularityRuntime,
     apply_confirmed_triggered_promotion,
+    promotion_effect_decay_applies,
 )
+
+
+class PromotionEffectDecayEligibilityTests(unittest.TestCase):
+    # Trigger condition transcribed from the strategy guide's customer-guide
+    # page, implemented here for the first time; see decision 0079. Only the
+    # eligibility condition is confirmed, not a numeric daily decay rate.
+
+    def test_applies_at_and_below_the_threshold(self):
+        self.assertTrue(promotion_effect_decay_applies(PROMOTION_DECAY_STAR_THRESHOLD))
+        self.assertTrue(promotion_effect_decay_applies(0))
+
+    def test_does_not_apply_above_the_threshold(self):
+        self.assertFalse(promotion_effect_decay_applies(PROMOTION_DECAY_STAR_THRESHOLD + 1))
+        self.assertFalse(promotion_effect_decay_applies(5))
+
+    def test_rejects_negative_rating(self):
+        with self.assertRaises(ValueError):
+            promotion_effect_decay_applies(-1)
 
 
 class PromotionSchedulerTests(unittest.TestCase):

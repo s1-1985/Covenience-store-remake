@@ -1,7 +1,31 @@
 import unittest
 
 from conveni_sim.economy import CashDirection, FinancialEventKind, StoreCashLedger
-from conveni_sim.inducement import InducementPlacementSession, InducementPlacementState
+from conveni_sim.inducement import (
+    InducementPlacementSession,
+    InducementPlacementState,
+    compute_new_store_land_cost_yen,
+)
+
+
+class NewStoreLandCostTests(unittest.TestCase):
+    # Formula transcribed from the strategy guide's "オールテクニックガイド"
+    # 新規出店 page, implemented here for the first time; see decision 0079.
+
+    def test_adds_land_price_and_half_the_building_valuation(self):
+        self.assertEqual(compute_new_store_land_cost_yen(2_000_000, 1_000_000), 2_500_000)
+
+    def test_vacant_land_has_no_building_valuation_component(self):
+        self.assertEqual(compute_new_store_land_cost_yen(2_000_000, 0), 2_000_000)
+
+    def test_odd_valuation_floors_rather_than_rounds(self):
+        self.assertEqual(compute_new_store_land_cost_yen(0, 3), 1)
+
+    def test_rejects_negative_inputs(self):
+        with self.assertRaises(ValueError):
+            compute_new_store_land_cost_yen(-1, 0)
+        with self.assertRaises(ValueError):
+            compute_new_store_land_cost_yen(0, -1)
 
 
 class InducementPlacementSessionTests(unittest.TestCase):

@@ -20,14 +20,38 @@ class InducementPlacementQuote:
     displayed_site_cost_yen: Optional[int]
 
 
+def compute_new_store_land_cost_yen(
+    land_price_yen_per_4_tiles: int,
+    building_valuation_yen: int,
+) -> int:
+    """新規出店時の土地代 = 地価(4エリア分) + 建物評価額/2.
+
+    Source: strategy guide "オールテクニックガイド" 新規出店 page
+    ("新規出店時の土地代 = 地価(4エリア分) + 建物評価額/2 (複数の施設を撤去
+    する場合は合計額の1/2)"). `building_valuation_yen` is the already-summed
+    valuation of whatever existing building(s) occupy the target tiles
+    (0 for vacant land); the guide does not state a rounding rule for the
+    odd-yen case, so integer floor division is used without asserting that
+    as a confirmed rounding behavior.
+    """
+    if land_price_yen_per_4_tiles < 0:
+        raise ValueError("land_price_yen_per_4_tiles must be >= 0")
+    if building_valuation_yen < 0:
+        raise ValueError("building_valuation_yen must be >= 0")
+    return land_price_yen_per_4_tiles + building_valuation_yen // 2
+
+
 class InducementPlacementSession:
     """Evidence-bounded facility-placement transaction.
 
     V03 directly shows the selected facility's aid amount leaving cash when
     placement mode begins and returning in full when placement is cancelled.
     V01 police-box and V03 pool confirmation debit the location quote in
-    addition to the aid already paid. Site-price calculation, affordability
-    policy, construction and activation remain outside this transaction.
+    addition to the aid already paid via `confirm()`. Land cost itself can
+    now be computed via `compute_new_store_land_cost_yen` (strategy guide
+    formula), but wiring it into `record_quote`'s `displayed_site_cost_yen`
+    is left to the caller; affordability policy, construction and
+    activation remain outside this transaction.
     """
 
     def __init__(

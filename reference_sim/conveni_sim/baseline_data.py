@@ -589,18 +589,20 @@ def _sg_category(
     cost_rate_pct: int,
     margin_rate_pct: int,
     seasonal_demand: Optional[str] = None,
+    restock_quantity: Optional[int] = None,
 ) -> ProductCategoryPricing:
     """Build one strategy-guide product-category pricing row with uniform provenance.
 
     Source: docs/research/strategy-guide-full-decode-2026-09-16.md section 3.
     This is category-level standard pricing, not a per-SKU price list; no
     prior baseline_data.py table covered this, so there is nothing to
-    cross-check or conflict with here. `seasonal_demand` comes from the
-    guide's DATA LIST product table's own "季節" (season) column
-    (book page 85); the table's other two trailing numeric columns
-    ("1回補給" restock quantity and a third unlabeled column) were not
-    transcribed here, since their exact column semantics could not be read
-    with confidence at the source scan's resolution.
+    cross-check or conflict with here. `seasonal_demand` and
+    `restock_quantity` come from the guide's DATA LIST product table's own
+    "季節" (season) and "1回補給" (restock quantity) columns (book page 85).
+    That table has two further trailing numeric columns which remain
+    unmapped, since their exact semantics could not be read with confidence
+    even on a second, higher-fidelity re-read of the same page; see decision
+    0080.
     """
 
     evidence = EvidenceLevel.CONFIRMED_OFFICIAL
@@ -615,6 +617,11 @@ def _sg_category(
             if seasonal_demand is not None
             else None
         ),
+        restock_quantity=(
+            EvidenceValue(restock_quantity, evidence, STRATEGY_GUIDE)
+            if restock_quantity is not None
+            else None
+        ),
     )
 
 
@@ -623,33 +630,33 @@ def _sg_category(
 # section 3). `cash` (現金, the special zero-margin category used for cash-like
 # instruments) is included as-is from the source table.
 PRODUCT_CATEGORY_PRICING: tuple[ProductCategoryPricing, ...] = (
-    _sg_category("cold_drink", "冷たい飲料", standard_retail_price_yen=110, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="summer"),
-    _sg_category("hot_drink", "温かい飲料", standard_retail_price_yen=110, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="winter"),
-    _sg_category("alcohol", "酒類", standard_retail_price_yen=1_000, cost_rate_pct=70, margin_rate_pct=30),
-    _sg_category("bento", "弁当類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("bread", "パン類", standard_retail_price_yen=300, cost_rate_pct=50, margin_rate_pct=50),
-    _sg_category("instant_food", "インスタント類", standard_retail_price_yen=150, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("snacks", "菓子類", standard_retail_price_yen=200, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("books", "本類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("tobacco", "たばこ", standard_retail_price_yen=250, cost_rate_pct=70, margin_rate_pct=30),
-    _sg_category("ice_cream", "アイスクリーム", standard_retail_price_yen=100, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="summer"),
-    _sg_category("stationery", "文房具", standard_retail_price_yen=150, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("retort_food", "レトルト類", standard_retail_price_yen=600, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("electronics", "電機製品類", standard_retail_price_yen=800, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("seasoning", "調味料類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("vegetables", "野菜類", standard_retail_price_yen=1_500, cost_rate_pct=50, margin_rate_pct=50),
-    _sg_category("frozen_food", "冷凍食品類", standard_retail_price_yen=500, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("fish", "魚類", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("oden", "おでん", standard_retail_price_yen=250, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="winter"),
-    _sg_category("meat", "肉類", standard_retail_price_yen=1_200, cost_rate_pct=50, margin_rate_pct=50),
-    _sg_category("daily_goods", "日用品", standard_retail_price_yen=800, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("copy_paper", "コピー用紙", standard_retail_price_yen=50, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("event_goods", "イベント商品", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("parcel_delivery_form", "宅急便申込書", standard_retail_price_yen=1_000, cost_rate_pct=80, margin_rate_pct=20),
-    _sg_category("chinese_steamed_bun", "中華まん", standard_retail_price_yen=170, cost_rate_pct=60, margin_rate_pct=40, seasonal_demand="winter"),
-    _sg_category("medicine", "薬品", standard_retail_price_yen=1_500, cost_rate_pct=70, margin_rate_pct=30),
-    _sg_category("underwear", "下着類", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40),
-    _sg_category("cash", "現金", standard_retail_price_yen=0, cost_rate_pct=100, margin_rate_pct=0),
+    _sg_category("cold_drink", "冷たい飲料", standard_retail_price_yen=110, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="summer", restock_quantity=55),
+    _sg_category("hot_drink", "温かい飲料", standard_retail_price_yen=110, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="winter", restock_quantity=60),
+    _sg_category("alcohol", "酒類", standard_retail_price_yen=1_000, cost_rate_pct=70, margin_rate_pct=30, restock_quantity=300),
+    _sg_category("bento", "弁当類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=160),
+    _sg_category("bread", "パン類", standard_retail_price_yen=300, cost_rate_pct=50, margin_rate_pct=50, restock_quantity=150),
+    _sg_category("instant_food", "インスタント類", standard_retail_price_yen=150, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=60),
+    _sg_category("snacks", "菓子類", standard_retail_price_yen=200, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=80),
+    _sg_category("books", "本類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=160),
+    _sg_category("tobacco", "たばこ", standard_retail_price_yen=250, cost_rate_pct=70, margin_rate_pct=30, restock_quantity=75),
+    _sg_category("ice_cream", "アイスクリーム", standard_retail_price_yen=100, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="summer", restock_quantity=50),
+    _sg_category("stationery", "文房具", standard_retail_price_yen=150, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=60),
+    _sg_category("retort_food", "レトルト類", standard_retail_price_yen=600, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=240),
+    _sg_category("electronics", "電機製品類", standard_retail_price_yen=800, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=320),
+    _sg_category("seasoning", "調味料類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=160),
+    _sg_category("vegetables", "野菜類", standard_retail_price_yen=1_500, cost_rate_pct=50, margin_rate_pct=50, restock_quantity=750),
+    _sg_category("frozen_food", "冷凍食品類", standard_retail_price_yen=500, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=200),
+    _sg_category("fish", "魚類", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=400),
+    _sg_category("oden", "おでん", standard_retail_price_yen=250, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="winter", restock_quantity=125),
+    _sg_category("meat", "肉類", standard_retail_price_yen=1_200, cost_rate_pct=50, margin_rate_pct=50, restock_quantity=600),
+    _sg_category("daily_goods", "日用品", standard_retail_price_yen=800, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=320),
+    _sg_category("copy_paper", "コピー用紙", standard_retail_price_yen=50, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=20),
+    _sg_category("event_goods", "イベント商品", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=400),
+    _sg_category("parcel_delivery_form", "宅急便申込書", standard_retail_price_yen=1_000, cost_rate_pct=80, margin_rate_pct=20, restock_quantity=200),
+    _sg_category("chinese_steamed_bun", "中華まん", standard_retail_price_yen=170, cost_rate_pct=60, margin_rate_pct=40, seasonal_demand="winter", restock_quantity=68),
+    _sg_category("medicine", "薬品", standard_retail_price_yen=1_500, cost_rate_pct=70, margin_rate_pct=30, restock_quantity=450),
+    _sg_category("underwear", "下着類", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=400),
+    _sg_category("cash", "現金", standard_retail_price_yen=0, cost_rate_pct=100, margin_rate_pct=0, restock_quantity=0),
 )
 
 

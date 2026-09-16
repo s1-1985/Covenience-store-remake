@@ -225,6 +225,10 @@ class ProductCategoryPricing:
     seasonal_demand: Optional[EvidenceValue] = None
     """"summer" / "winter" if the guide flags this category as seasonal,
     else None (year-round, per the guide's own "なし" (none) marking)."""
+    restock_quantity: Optional[EvidenceValue] = None
+    """Units replenished per restock action ("1回補給"), from the guide's
+    DATA LIST product table. The same table's other two trailing numeric
+    columns remain unmapped; see decision 0080."""
 
     def __post_init__(self) -> None:
         cost = self.cost_rate_pct.value

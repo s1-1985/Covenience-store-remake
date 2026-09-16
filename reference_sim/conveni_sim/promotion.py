@@ -164,6 +164,23 @@ class PromotionScheduler:
         return tuple(due)
 
 
+PROMOTION_DECAY_STAR_THRESHOLD = 3
+"""Source: strategy guide "オールテクニックガイド" 顧客ガイド page
+("ランク評価が3つ星以下の店舗は、1日毎に宣伝の効果が薄れていく"). Only the
+condition under which decay applies is confirmed here, not a numeric daily
+rate; see `promotion_effect_decay_applies` and the existing
+PopularityDecayOpportunity machinery below, which already records decay
+events without inventing their magnitude.
+"""
+
+
+def promotion_effect_decay_applies(store_star_rating: int) -> bool:
+    """Whether a store's rank is low enough for its promotion effect to decay daily."""
+    if store_star_rating < 0:
+        raise ValueError("store_star_rating must be >= 0")
+    return store_star_rating <= PROMOTION_DECAY_STAR_THRESHOLD
+
+
 class StorePopularityRuntime:
     """Per-store popularity with explicit gains and unresolved decay opportunities.
 
