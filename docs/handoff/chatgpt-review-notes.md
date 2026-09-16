@@ -169,6 +169,17 @@ Claude Codeによるコードレビューで気づいた事項を、ChatGPTに�
 - 現状 `confirm()` に相当する機能が無く `cancel()` のみなので、セッションを放置すると現金が引かれたままになる。これはdocstringに明示されている想定内の状態。
 - 「1施設1セッション」の制約を課すかどうかは設計判断。配置確定を実装する際に併せて整理するのが自然。
 
+### 18. 攻略本フルデコードデータ取り込み時に見つかった数値矛盾3件(要判断)
+
+- 対象コミット: このメモ追記時点のブランチ `claude/code-review-6s2a9n`(ユーザーから一回限りの明示的依頼により、例外的に `reference_sim/conveni_sim/` へ直接実装した回)。
+- 背景: ユーザーが `docs/research/strategy-guide-full-decode-2026-09-16.md`(Codexが攻略本スキャンから抽出したデータ)を渡し、実装を依頼した。P0範囲(新規什器36件、`ProductCategoryPricing`27件、`SALARY_TABLE`10件、既存什器の未確認フィールド埋め)を実装済み。詳細は `docs/decisions/0076-strategy-guide-full-decode-data-import.md` を参照。
+- 発見した数値矛盾3件(いずれも既存の確認済み値を上書きせず、そのまま維持): 詳細は `docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md`。
+  1. `bench` のメンテナンス費: 既存168円/日 vs 攻略本160円/日。
+  2. `PROMOTIONS` の `popularity_gain`: airship/radio/tv で既存+30/+50/+100 vs 攻略本+40/+60/+90(費用・発火タイミングは両者完全一致)。
+  3. `STORE_VARIANTS` の `small_top.editable_floor=(8,13)` が、攻略本 `store_1` の店内7x10・店舗外形9x10のいずれとも一致しない(建物代6,000,000円は一致)。このため店舗建物データ(guide section 1)は今回未実装。
+- 要判断: どちらの値が実機の正しい値か、あるいは列の対応関係をCodex側の一次証拠(動画等)で再確認してほしい。判断がつけば該当データの更新と、この項目のクローズをお願いしたい。
+- P1として保留: 顧客嗜好・店員候補の行列データは、攻略本自身が「画像の行対応を手作業で確認する必要がある」としているため、今回は着手していない(guide section 44)。
+
 ---
 
 ## 検証して問題が無かった領域(`554d78d` 時点)
