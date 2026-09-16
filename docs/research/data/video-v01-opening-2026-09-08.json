@@ -1,0 +1,434 @@
+{
+  "schema_version": 1,
+  "video_id": "V01",
+  "uploaded_name": "【レトロゲーム】ザ・コンビニ  さくさくクリア目指すプレイ(1).mp4",
+  "duration_seconds": 6105.106576,
+  "resolution": [
+    640,
+    360
+  ],
+  "fps": 30,
+  "platform": "PS-family inferred from title/controls; exact ROM revision unknown",
+  "evidence_level": "CONFIRMED_VISUAL",
+  "coverage": {
+    "coarse_seconds": [
+      0,
+      600
+    ],
+    "coarse_interval_seconds": 10,
+    "fine_windows_seconds": [
+      [
+        50,
+        152
+      ],
+      [
+        345,
+        381
+      ],
+      [
+        390,
+        435
+      ],
+      [
+        441,
+        480
+      ],
+      [
+        536,
+        572
+      ]
+    ],
+    "note": "Fine windows sampled at 1–3 s; not exhaustive frame-by-frame or event timing coverage."
+  },
+  "price_display_samples": [
+    {
+      "video_seconds": 64,
+      "product": "冷たい飲料",
+      "markup_up_percent": 50,
+      "displayed_profit_percent": 100,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 66,
+      "product": "酒類",
+      "markup_up_percent": 61,
+      "displayed_profit_percent": 91,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 68,
+      "product": "弁当類",
+      "markup_up_percent": 54,
+      "displayed_profit_percent": 94,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 70,
+      "product": "インスタント類",
+      "markup_up_percent": 52,
+      "displayed_profit_percent": 92,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 72,
+      "product": "菓子類",
+      "markup_up_percent": 60,
+      "displayed_profit_percent": 100,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 74,
+      "product": "タバコ",
+      "markup_up_percent": 51,
+      "displayed_profit_percent": 81,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 76,
+      "product": "タバコ",
+      "markup_up_percent": 70,
+      "displayed_profit_percent": 100,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 78,
+      "product": "文房具",
+      "markup_up_percent": 60,
+      "displayed_profit_percent": 100,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 80,
+      "product": "野菜類",
+      "markup_up_percent": 50,
+      "displayed_profit_percent": 100,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 82,
+      "product": "肉類",
+      "markup_up_percent": 50,
+      "displayed_profit_percent": 100,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 84,
+      "product": "調味料類",
+      "markup_up_percent": 50,
+      "displayed_profit_percent": 90,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 86,
+      "product": "冷凍食品類",
+      "markup_up_percent": 54,
+      "displayed_profit_percent": 94,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 88,
+      "product": "日用品",
+      "markup_up_percent": 55,
+      "displayed_profit_percent": 95,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 90,
+      "product": "コピー用紙",
+      "markup_up_percent": 52,
+      "displayed_profit_percent": 92,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 92,
+      "product": "宅配便申込書",
+      "markup_up_percent": 56,
+      "displayed_profit_percent": 76,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 94,
+      "product": "宅配便申込書",
+      "markup_up_percent": 80,
+      "displayed_profit_percent": 100,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 96,
+      "product": "薬品",
+      "markup_up_percent": 64,
+      "displayed_profit_percent": 94,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 98,
+      "product": "下着類",
+      "markup_up_percent": 57,
+      "displayed_profit_percent": 97,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 100,
+      "product": "イベント商品",
+      "markup_up_percent": 60,
+      "displayed_profit_percent": 100,
+      "game_date": "01年目01月01日",
+      "game_time": "00:00"
+    },
+    {
+      "video_seconds": 399,
+      "product": "酒類",
+      "markup_up_percent": 51,
+      "displayed_profit_percent": 81,
+      "game_date": "01年目01月01日",
+      "game_time": "00:12"
+    },
+    {
+      "video_seconds": 402,
+      "product": "弁当類",
+      "markup_up_percent": 53,
+      "displayed_profit_percent": 93,
+      "game_date": "01年目01月01日",
+      "game_time": "00:12"
+    },
+    {
+      "video_seconds": 405,
+      "product": "菓子類",
+      "markup_up_percent": 50,
+      "displayed_profit_percent": 90,
+      "game_date": "01年目01月01日",
+      "game_time": "00:12"
+    },
+    {
+      "video_seconds": 408,
+      "product": "タバコ",
+      "markup_up_percent": 51,
+      "displayed_profit_percent": 81,
+      "game_date": "01年目01月01日",
+      "game_time": "00:12"
+    },
+    {
+      "video_seconds": 411,
+      "product": "文房具",
+      "markup_up_percent": 51,
+      "displayed_profit_percent": 91,
+      "game_date": "01年目01月01日",
+      "game_time": "00:12"
+    },
+    {
+      "video_seconds": 414,
+      "product": "野菜類",
+      "markup_up_percent": 50,
+      "displayed_profit_percent": 100,
+      "game_date": "01年目01月01日",
+      "game_time": "00:12"
+    },
+    {
+      "video_seconds": 417,
+      "product": "レトルト類",
+      "markup_up_percent": 52,
+      "displayed_profit_percent": 92,
+      "game_date": "01年目01月01日",
+      "game_time": "00:12"
+    },
+    {
+      "video_seconds": 420,
+      "product": "冷凍食品類",
+      "markup_up_percent": 50,
+      "displayed_profit_percent": 90,
+      "game_date": "01年目01月01日",
+      "game_time": "00:12"
+    },
+    {
+      "video_seconds": 423,
+      "product": "日用品",
+      "markup_up_percent": 58,
+      "displayed_profit_percent": 98,
+      "game_date": "01年目01月01日",
+      "game_time": "00:12"
+    }
+  ],
+  "overall_price_display_samples": [
+    {
+      "video_seconds": 56,
+      "markup_up_percent": 0,
+      "displayed_average_profit_percent": 40,
+      "note": "during overall setting"
+    },
+    {
+      "video_seconds": 60,
+      "markup_up_percent": 21,
+      "displayed_average_profit_percent": 61,
+      "note": "during overall setting"
+    },
+    {
+      "video_seconds": 62,
+      "markup_up_percent": 45,
+      "displayed_average_profit_percent": 85,
+      "note": "during overall setting"
+    },
+    {
+      "video_seconds": 102,
+      "markup_up_percent": 59,
+      "displayed_average_profit_percent": 100,
+      "note": "after individual edits"
+    },
+    {
+      "video_seconds": 393,
+      "markup_up_percent": 3,
+      "displayed_average_profit_percent": 43,
+      "note": "during overall setting"
+    },
+    {
+      "video_seconds": 396,
+      "markup_up_percent": 39,
+      "displayed_average_profit_percent": 79,
+      "note": "during overall setting"
+    }
+  ],
+  "salary_pairs": [
+    {
+      "name": "長沢達也",
+      "age": 34,
+      "hire_video_seconds": 110,
+      "hire_yen_per_day": 7440,
+      "assignment_video_seconds": 465,
+      "assignment_yen_per_day": 4960,
+      "opening_hours": 16
+    },
+    {
+      "name": "金田哲也",
+      "age": 36,
+      "hire_video_seconds": 357,
+      "hire_yen_per_day": 7920,
+      "assignment_video_seconds": 375,
+      "assignment_yen_per_day": 5280,
+      "opening_hours": 16
+    },
+    {
+      "name": "今野京介",
+      "age": 21,
+      "hire_video_seconds": 372,
+      "hire_yen_per_day": 6720,
+      "assignment_video_seconds": 375,
+      "assignment_yen_per_day": 4480,
+      "opening_hours": 16
+    }
+  ],
+  "staff_hire_samples": [
+    {
+      "video_seconds": 110,
+      "name": "長沢達也",
+      "age": 34,
+      "sex": "男",
+      "experience_display": "経験なし",
+      "salary_yen_per_day": 7440,
+      "stamina": 85,
+      "education": 80,
+      "agility": 75,
+      "sociability": 75
+    },
+    {
+      "video_seconds": 357,
+      "name": "金田哲也",
+      "age": 36,
+      "sex": "男",
+      "experience_display": "経験なし",
+      "salary_yen_per_day": 7920,
+      "stamina": 75,
+      "education": 85,
+      "agility": 75,
+      "sociability": 80
+    },
+    {
+      "video_seconds": 360,
+      "name": "竹中小百合",
+      "age": 28,
+      "sex": "女",
+      "experience_display": "経験なし",
+      "salary_yen_per_day": 6720,
+      "stamina": 80,
+      "education": 90,
+      "agility": 65,
+      "sociability": 90
+    },
+    {
+      "video_seconds": 361,
+      "name": "竹中小百合",
+      "age": 28,
+      "sex": "女",
+      "experience_display": "経験あり",
+      "salary_yen_per_day": 6720,
+      "stamina": 80,
+      "education": 90,
+      "agility": 65,
+      "sociability": 90
+    },
+    {
+      "video_seconds": 372,
+      "name": "今野京介",
+      "age": 21,
+      "sex": "男",
+      "experience_display": "経験なし",
+      "salary_yen_per_day": 6720,
+      "stamina": 80,
+      "education": 85,
+      "agility": 70,
+      "sociability": 75
+    }
+  ],
+  "inducement": {
+    "facility": "交番",
+    "game_date": "01年目01月01日",
+    "game_time": "00:54",
+    "aid_yen": 400000,
+    "cash_samples": [
+      {
+        "video_seconds": 545,
+        "cash_yen": 80600145,
+        "state": "facility selection"
+      },
+      {
+        "video_seconds": 546,
+        "cash_yen": 80200145,
+        "state": "location selection"
+      },
+      {
+        "video_seconds": 560,
+        "cash_yen": 80200145,
+        "state": "current site quote",
+        "site_quote_yen": 2000000
+      },
+      {
+        "video_seconds": 561,
+        "cash_yen": 78200145,
+        "state": "returned to promotion menu after confirmation"
+      }
+    ]
+  },
+  "unknowns": [
+    "retail and procurement yen formula",
+    "salary rounding and actual debit",
+    "staff growth formula",
+    "site price formula",
+    "facility activation delay"
+  ]
+}

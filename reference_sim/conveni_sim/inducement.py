@@ -10,13 +10,14 @@ from .economy import FinancialEvent, FinancialEventKind, StoreCashLedger
 class InducementPlacementState(str, Enum):
     ACTIVE = "active"
     CANCELLED = "cancelled"
+    CONFIRMED = "confirmed"
 
 
 @dataclass(frozen=True)
 class InducementPlacementQuote:
     location_id: str
     placeable: bool
-    displayed_total_yen: Optional[int]
+    displayed_site_cost_yen: Optional[int]
 
 
 def compute_new_store_land_cost_yen(
@@ -45,11 +46,12 @@ class InducementPlacementSession:
 
     V03 directly shows the selected facility's aid amount leaving cash when
     placement mode begins and returning in full when placement is cancelled.
-    Location-dependent totals can be recorded, but this class deliberately
-    does not implement placement confirmation yet. Land cost itself can now
-    be computed via `compute_new_store_land_cost_yen` (strategy guide
-    formula), but wiring it into this session's confirm-and-debit flow is
-    left for when placement confirmation itself is implemented.
+    V01 police-box and V03 pool confirmation debit the location quote in
+    addition to the aid already paid via `confirm()`. Land cost itself can
+    now be computed via `compute_new_store_land_cost_yen` (strategy guide
+    formula), but wiring it into `record_quote`'s `displayed_site_cost_yen`
+    is left to the caller; affordability policy, construction and
+    activation remain outside this transaction.
     """
 
     def __init__(
@@ -69,6 +71,7 @@ class InducementPlacementSession:
         self.state = InducementPlacementState.ACTIVE
         self._quotes: list[InducementPlacementQuote] = []
         self.refund_event: Optional[FinancialEvent] = None
+        self.confirmation_event: Optional[FinancialEvent] = None
         self.aid_debit_event = ledger.record_cost(
             FinancialEventKind.INDUCEMENT,
             aid_yen,
@@ -85,21 +88,44 @@ class InducementPlacementSession:
         location_id: str,
         *,
         placeable: bool,
-        displayed_total_yen: Optional[int] = None,
+        displayed_site_cost_yen: Optional[int] = None,
     ) -> InducementPlacementQuote:
         if self.state is not InducementPlacementState.ACTIVE:
             raise ValueError("inducement placement session is no longer active")
         if not location_id:
             raise ValueError("location_id must be non-empty")
-        if displayed_total_yen is not None and displayed_total_yen < 0:
-            raise ValueError("displayed_total_yen must be >= 0 or None")
+        if displayed_site_cost_yen is not None and displayed_site_cost_yen < 0:
+            raise ValueError("displayed_site_cost_yen must be >= 0 or None")
         quote = InducementPlacementQuote(
             location_id=location_id,
             placeable=placeable,
-            displayed_total_yen=displayed_total_yen,
+            displayed_site_cost_yen=displayed_site_cost_yen,
         )
         self._quotes.append(quote)
         return quote
+
+    def confirm(self) -> FinancialEvent:
+        """Commit the current location's explicit quote exactly once.
+
+        This records a caller-authorized transaction; it does not decide
+        whether the original game permits a purchase with insufficient cash.
+        """
+        if self.state is not InducementPlacementState.ACTIVE:
+            raise ValueError("inducement placement session is no longer active")
+        if not self._quotes:
+            raise ValueError("a current placement quote is required")
+        quote = self._quotes[-1]
+        if not quote.placeable or quote.displayed_site_cost_yen is None:
+            raise ValueError("current location must be placeable with a known site cost")
+        event = self.ledger.record_cost(
+            FinancialEventKind.INDUCEMENT,
+            quote.displayed_site_cost_yen,
+            source_id=self.facility_id,
+            note=f"additional placement payment at {quote.location_id}",
+        )
+        self.confirmation_event = event
+        self.state = InducementPlacementState.CONFIRMED
+        return event
 
     def cancel(self) -> FinancialEvent:
         if self.state is not InducementPlacementState.ACTIVE:
