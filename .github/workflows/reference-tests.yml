@@ -32,5 +32,7 @@ jobs:
       image: barichello/godot-ci:4.3
     steps:
       - uses: actions/checkout@v4
-      - name: Load the main scene and run the vertical-slice smoke test
-        run: godot --headless --path game --script res://scripts/headless_smoke.gd
+      - name: Import the Godot project and run the vertical-slice smoke test
+        run: |
+          godot --headless --editor --path game --quit
+          godot --headless --path game --script res://scripts/headless_smoke.gd

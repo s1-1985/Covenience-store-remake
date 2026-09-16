@@ -13,18 +13,25 @@ project, parse its GDScript, instantiate the simulation, or execute the player-v
 ## Decision
 
 CI performs one bounded Godot 4.3 headless command whenever `game/**` or the shared workflow changes.
-The command:
+The job:
 
-1. loads and instantiates the project main scene, which parses its attached scripts;
-2. executes `scripts/headless_smoke.gd` against the same provisional JSON consumed by the client.
+1. runs one bounded headless editor import to build the same script-class metadata a normal project
+   open creates and to parse project resources;
+2. executes `scripts/headless_smoke.gd` against the same provisional JSON consumed by the client;
+3. loads and instantiates the project main scene from the smoke harness.
 
-The CI job has a five-minute timeout. A separate editor-mode import command is deliberately avoided:
-the smoke script already loads the relevant scene and the extra editor startup made every PR wait
-without increasing the behavioral coverage of this vertical slice.
+The CI job has a five-minute timeout. The editor import is required: direct `--script` startup does
+not guarantee that the editor-generated global script-class cache exists in a clean checkout. The
+import and executable smoke remain separate commands in the same job and workspace.
 
-The smoke check runs the deterministic slice to a bounded completion and verifies exactly one
-sale, one unit of stock depletion, the corresponding cash credit, and customer exit. Python
-contracts remain as fast structural checks; they do not replace the engine-native run.
+The smoke check runs the deterministic slice to bounded completion and verifies multi-product
+baskets, stock depletion, cash/ledger reconciliation, customer exit, layout editing, and reset.
+Python contracts remain fast structural checks; they do not replace the engine-native run.
+
+The smoke preload graph also avoids depending on custom class annotations, so direct script parsing
+remains robust even before cache generation. Built-in values used by the smoke script receive
+explicit built-in types when inference starts from an untyped cross-script reference. The import
+step is retained as defense in depth and as a project-resource validation boundary.
 
 ## Evidence boundary
 

@@ -28,9 +28,9 @@ script = ExtResource("2_store")
 
 [node name="Panel" type="PanelContainer" parent="UI"]
 offset_left = 690.0
-offset_top = 40.0
+offset_top = 20.0
 offset_right = 1240.0
-offset_bottom = 680.0
+offset_bottom = 700.0
 
 [node name="Margin" type="MarginContainer" parent="UI/Panel"]
 theme_override_constants/margin_left = 24
@@ -70,7 +70,13 @@ text = "¥1,000"
 text = "Shelf stock"
 
 [node name="StockValue" type="Label" parent="UI/Panel/Margin/VBox"]
-text = "3 units"
+text = "6 units"
+
+[node name="BasketTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Current basket"
+
+[node name="BasketValue" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "0 items / ¥0"
 
 [node name="CustomerTitle" type="Label" parent="UI/Panel/Margin/VBox"]
 text = "Customer"
@@ -94,6 +100,18 @@ text = "0"
 text = "Visits: 0 / 1"
 
 [node name="Separator2" type="HSeparator" parent="UI/Panel/Margin/VBox"]
+
+[node name="LayoutEditTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Prototype layout editor"
+
+[node name="LayoutEditValue" type="Label" parent="UI/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 48)
+text = "Tap a fixture, then tap an empty grid cell after the visit"
+autowrap_mode = 2
+
+[node name="RotateFixtureButton" type="Button" parent="UI/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Rotate selected fixture clockwise"
 
 [node name="EventTitle" type="Label" parent="UI/Panel/Margin/VBox"]
 text = "Last event"
