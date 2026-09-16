@@ -99,15 +99,28 @@ class CustomerVisitProfile:
     (a single coarse profile per archetype) rather than an attempt to force
     this richer per-visit data into that coarser shape.
 
-    The guide's own column header abbreviates 9 per-row tuning stats as
-    ス/素/マ/集/買/価/距/サ/平/休 (stamina/agility/manner/concentration/
-    shopping-importance/price-focus/distance-focus/service-focus/weekday-
-    rate/holiday-rate); at the scan resolution available, the exact digit
-    count printed per row was not always legible as a clean 9-tuple. Rather
-    than force each row into 9 named fields with false precision,
-    `behavior_stats_raw` keeps the printed digits as one raw tuple in
-    left-to-right reading order; see the crosscheck research note for the
-    header's intended column order and the confidence caveat.
+    The guide's own numbered legend (items 7-17 on the same page) defines 10
+    per-row tuning stats, in this printed order:
+    ス スタミナ (stamina; endurance for things like checkout queueing)
+    素 素早さ (quickness; speed picking products)
+    マ マナー (manner; propensity to shoplift / leave comments)
+    集 集中力 (focus; resistance to buying anything besides the wanted item)
+    買 買物重要度 (how important shopping is to this customer)
+    価 価格重視度 (price sensitivity)
+    距 距離重視度 (sensitivity to store distance)
+    サ サービス重視度 (service sensitivity)
+    平 平日来店割合 (weekday visit-rate share)
+    休 休日来店割合 (holiday visit-rate share)
+    On a second, dedicated re-read attempt, the *labels* above are now
+    confirmed with high confidence (large, clearly legible legend text), but
+    the *digit count actually printed per data row* still was not: re-parsing
+    the same archetype's adjacent rows independently produced different
+    counts (9 vs. 11) at the scan resolution available, which is the same
+    kind of inconsistency that blocked a confident per-row decomposition the
+    first time. Decomposing into 10 named fields would therefore still risk
+    misaligning values across rows. `behavior_stats_raw` keeps the printed
+    digits as one raw tuple in left-to-right reading order instead; see the
+    crosscheck research note for detail.
     """
 
     archetype_id: str
@@ -143,6 +156,15 @@ class StaffDefinition:
     security_skill: Optional[EvidenceValue] = None
     cleaning_skill: Optional[EvidenceValue] = None
     service_skill: Optional[EvidenceValue] = None
+    service_skill_growth_ceiling: Optional[EvidenceValue] = None
+    register_skill_growth_ceiling: Optional[EvidenceValue] = None
+    cleaning_skill_growth_ceiling: Optional[EvidenceValue] = None
+    replenishment_skill_growth_ceiling: Optional[EvidenceValue] = None
+    security_skill_growth_ceiling: Optional[EvidenceValue] = None
+    """The guide's "能力の分岐ポイント" value per skill: the point at which
+    that skill's growth rate slows. Independent of the matching *_skill
+    (initial) field; a candidate can have a known growth ceiling even when
+    their initial value for a different skill is unconfirmed."""
 
 
 @dataclass(frozen=True)

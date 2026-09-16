@@ -55,6 +55,52 @@ class StaffCandidateTests(unittest.TestCase):
             self.assertIn("strategy guide", candidate.stamina.source)
 
 
+class StaffGrowthCeilingTests(unittest.TestCase):
+    # Transcribed from the guide's large-font per-candidate cards (book
+    # pages 126-133), a different, more reliable source than the small
+    # consolidated DATA LIST table. Every candidate's already-confirmed
+    # initial skill values were cross-checked against this same source
+    # before trusting its growth-ceiling column; all 34 candidates with a
+    # known security_skill matched exactly (see decision 0081).
+    def test_every_candidate_has_all_five_growth_ceilings(self):
+        for candidate in STAFF_CANDIDATES:
+            for field in (
+                "service_skill_growth_ceiling",
+                "register_skill_growth_ceiling",
+                "cleaning_skill_growth_ceiling",
+                "replenishment_skill_growth_ceiling",
+                "security_skill_growth_ceiling",
+            ):
+                self.assertIsNotNone(getattr(candidate, field), (candidate.id, field))
+
+    def test_spot_check_growth_ceilings_against_the_guide(self):
+        by_id = {s.id: s for s in STAFF_CANDIDATES}
+        takenaka = by_id["takenaka_sayuri"]
+        self.assertEqual(takenaka.service_skill_growth_ceiling.value, 54)
+        self.assertEqual(takenaka.register_skill_growth_ceiling.value, 52)
+        self.assertEqual(takenaka.cleaning_skill_growth_ceiling.value, 52)
+        self.assertEqual(takenaka.replenishment_skill_growth_ceiling.value, 48)
+        self.assertEqual(takenaka.security_skill_growth_ceiling.value, 51)
+
+        maruyama = by_id["maruyama_akio"]
+        self.assertIsNone(maruyama.security_skill)
+        self.assertEqual(maruyama.security_skill_growth_ceiling.value, 50)
+
+    def test_growth_ceiling_is_never_below_the_initial_value(self):
+        for candidate in STAFF_CANDIDATES:
+            pairs = (
+                (candidate.service_skill, candidate.service_skill_growth_ceiling),
+                (candidate.register_skill, candidate.register_skill_growth_ceiling),
+                (candidate.cleaning_skill, candidate.cleaning_skill_growth_ceiling),
+                (candidate.replenishment_skill, candidate.replenishment_skill_growth_ceiling),
+                (candidate.security_skill, candidate.security_skill_growth_ceiling),
+            )
+            for initial, ceiling in pairs:
+                if initial is None:
+                    continue
+                self.assertGreaterEqual(ceiling.value, initial.value, candidate.id)
+
+
 class CustomerArchetypeTests(unittest.TestCase):
     def test_all_21_archetypes_load_with_unique_ids(self):
         self.assertEqual(len(CUSTOMER_ARCHETYPES), 21)
