@@ -140,6 +140,8 @@ class TownFacilityAnchor:
     observed_population_range: Optional[EvidenceValue] = None
     construction_delay_is_nonzero: Optional[EvidenceValue] = None
     inducement_aid_yen: Optional[EvidenceValue] = None
+    footprint: Optional[EvidenceValue] = None
+    """Facility footprint in map tiles, e.g. (2, 2)."""
 
 
 @dataclass(frozen=True)
@@ -179,7 +181,13 @@ class ProductCategoryPricing:
 
 @dataclass(frozen=True)
 class SalaryTableEntry:
-    """One age -> monthly salary anchor point from the strategy guide's staff table."""
+    """One age -> base hourly wage anchor point from the strategy guide's staff table.
+
+    The guide prints this table under the heading "年齢別・社員の基本時給(円)"
+    (age-based base hourly wage) and states the generating formula elsewhere
+    as hourly_wage_yen = age_years * 10 + 100; both agree with every sampled
+    point here.
+    """
 
     age_years: int
-    monthly_salary_yen: EvidenceValue
+    hourly_wage_yen: EvidenceValue
