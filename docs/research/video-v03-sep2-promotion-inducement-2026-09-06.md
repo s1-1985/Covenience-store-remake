@@ -2,6 +2,10 @@
 
 Source: user-supplied first-title gameplay video `【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps.mp4` (V03).
 
+Correction 2026-09-08: the pool sequence was previously misread as cancellation.
+Reinspection shows an additional placement debit. See
+[V01 comparison and correction](video-v01-opening-parameters-2026-09-08.md).
+
 Scope in this pass:
 
 - coarse scan: `00:33:20–00:43:20` at 10-second intervals;
@@ -39,7 +43,7 @@ Store comparison screens immediately before and after the event show:
 
 Popularity rises by exactly 12 at both owned stores. The other three displayed ratings do not change. This directly corroborates the previously community-sourced `+12`, day 2, 10:00 rule and confirms that the event affects both visible owned branches.
 
-## 2. Facility selection reserves aid and cancellation refunds it
+## 2. Facility selection reserves aid; cancellation and confirmation differ
 
 ### Company sample
 
@@ -51,28 +55,30 @@ At Sep 2 10:30:
 4. exact entry debit: `¥5,400,000`;
 5. cancelling location selection restores cash to `¥7,330,572`.
 
-While the company remains selected, moving across the map alternates between `誘致不可能` and `誘致可能`. Readable possible-location totals include `¥6,800,000`, `¥6,700,000`, `¥6,300,000` and `¥5,900,000` while game time and cash remain paused.
+While the company remains selected, moving across the map alternates between `誘致不可能` and `誘致可能`. Location quotes change while game time and cash remain paused. The old transcription of the individual company quotes has not been reverified in the correction pass and should not be used as measured price data.
 
 ### Pool sample
 
-At Sep 2 11:52 the same flow repeats independently:
+At Sep 2 11:52 the entry debit repeats, followed by confirmation (corrected):
 
 1. cash before selection: `¥7,331,292`;
 2. facility menu: `プール`, `援助額 ¥1,800,000`;
 3. on entering location selection: cash `¥5,531,292`;
 4. exact entry debit: `¥1,800,000`;
-5. cancelling restores cash to `¥7,331,292`.
+5. the final location quote is `¥3,800,000` around video `00:34:59`;
+6. confirmation leaves cash at **`¥1,731,292`**, around `00:35:00`.
 
-Readable possible-location totals include `¥4,200,000`, `¥7,300,000`, `¥6,000,000`, `¥6,200,000`, `¥5,100,000` and `¥3,800,000`.
+The final additional debit is exactly `¥3,800,000`; the combined aid and placement debit is `¥5,600,000`. The earlier statement that the pool cancellation returned the aid was incorrect.
 
 ### Boundary established by the two samples
 
 - The selected facility's displayed aid is reflected in cash immediately when location selection begins.
-- Cancellation returns exactly that aid amount.
-- The numeric total depends on target location even though facility, time and reserved aid remain unchanged.
-- `誘致可能` can be displayed when the quoted total exceeds the post-reservation cash balance; therefore this label must not be implemented as a simple `cash >= quote` test.
+- Company cancellation returns exactly the aid amount.
+- Pool confirmation debits the displayed site quote in addition to aid already paid.
+- The quote depends on target location even though facility, time and reserved aid remain unchanged.
+- `誘致可能` can be displayed when a quote exceeds the post-reservation cash balance; this label is not sufficient evidence for a `cash >= quote` purchase-authorization rule.
 
-The footage does not confirm a placement. It therefore does **not** yet establish the final debit, construction timing, insufficient-funds outcome, or a universal equation for the displayed total. The visual pattern is consistent with the separately sourced `facility aid + target land` hypothesis, but is not by itself proof of that formula.
+The corrected pool sample and independent V01 police-box sample establish the final additional debit for those transactions. They do not establish construction/activation timing, insufficient-funds outcomes or the site-price calculation. The quote must not be labelled as the combined aid-plus-site total.
 
 ## 3. Two more ordinary rollovers
 
@@ -107,12 +113,13 @@ Safe to implement now:
 - inducement aid reservation on placement entry;
 - location-specific quote observations;
 - exact aid refund on cancellation.
+- additional quoted site payment on explicit confirmation (2026-09-08 correction).
 
 Still unresolved:
 
 - payment timing of the other four promotion methods;
 - promotion target snapshot rules for stores opened/closed near the event;
-- inducement total-price formula and successful-placement debit;
+- inducement site-price formula and insufficient-funds policy;
 - facility construction delay/activation;
 - composition of the repeated `¥94,344` debit.
 

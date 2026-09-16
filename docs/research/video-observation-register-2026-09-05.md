@@ -21,6 +21,16 @@ Scope: first-title gameplay footage supplied directly by the user. This file sto
 
 ## Direct visual values already recovered
 
+### V01 opening pass — 2026-09-08
+
+- V01 (long-run video; source item 3 above) was reattached and decoded successfully: 6105.106576 seconds, 640×360, 30 fps.
+- `00:00–00:10:00`: coarse scan at 10-second intervals; selected pricing, hiring/transfer and inducement screens sampled at 1–3-second intervals. This is not whole-video completion.
+- 28 individual price-display samples support an additive display relationship; 3 hire/assignment salary pairs match a 16/24 ratio. Both general formulas remain hypotheses.
+- Police-box aid `400,000 yen` is followed by an additional quoted `2,000,000 yen` payment.
+- Reinspection corrects the old V03 pool-refund claim: it confirms a `3,800,000 yen` additional payment instead.
+- [Detailed observations and next target](video-v01-opening-parameters-2026-09-08.md); [structured numeric observations](data/video-v01-opening-2026-09-08.json).
+- V01 next coarse interval begins at `00:10:00`. V02 remains unprocessed locally after a 2026-09-08 transfer attempt returned HTTP 502.
+
 ### Copy machines
 
 - Copy machine A
