@@ -41,10 +41,12 @@ class BaselineDataTests(unittest.TestCase):
             self.assertEqual(value.evidence, EvidenceLevel.CONFIRMED_VISUAL)
 
     def test_service_fixture_values(self):
+        # bench/fountain: RESOLVED 2026-09-17 in the strategy guide's favor
+        # (was 3/25 from the wiki; see test_strategy_guide_primary_scan.py).
         by_id = {fixture.id: fixture for fixture in FIXTURES}
         self.assertEqual(by_id["potted_plant"].service_bonus.value, 2)
-        self.assertEqual(by_id["bench"].service_bonus.value, 3)
-        self.assertEqual(by_id["fountain"].service_bonus.value, 25)
+        self.assertEqual(by_id["bench"].service_bonus.value, 4)
+        self.assertEqual(by_id["fountain"].service_bonus.value, 30)
 
     def test_parking_values(self):
         by_id = {fixture.id: fixture for fixture in FIXTURES}
@@ -97,7 +99,10 @@ class BaselineDataTests(unittest.TestCase):
         by_id = {variant.id: variant for variant in STORE_VARIANTS}
         self.assertEqual(by_id["medium_top"].construction_price_yen.value, 12_000_000)
         self.assertIsNone(by_id["small_bottom"].orientation)
-        self.assertIsNone(by_id["medium_top"].editable_floor)
+        # medium_top.editable_floor was filled in 2026-09-17 from the
+        # strategy guide's 店舗データ table; see
+        # test_strategy_guide_primary_scan.py for the full set.
+        self.assertEqual(by_id["medium_top"].editable_floor.value, (7, 10))
 
     def test_permits_are_independent_and_distances_unknown(self):
         self.assertEqual({p.id for p in PERMITS}, {"tobacco", "alcohol", "medicine"})

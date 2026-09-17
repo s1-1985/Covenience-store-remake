@@ -111,16 +111,20 @@ class CustomerVisitProfile:
     サ サービス重視度 (service sensitivity)
     平 平日来店割合 (weekday visit-rate share)
     休 休日来店割合 (holiday visit-rate share)
-    On a second, dedicated re-read attempt, the *labels* above are now
-    confirmed with high confidence (large, clearly legible legend text), but
-    the *digit count actually printed per data row* still was not: re-parsing
-    the same archetype's adjacent rows independently produced different
-    counts (9 vs. 11) at the scan resolution available, which is the same
-    kind of inconsistency that blocked a confident per-row decomposition the
-    first time. Decomposing into 10 named fields would therefore still risk
-    misaligning values across rows. `behavior_stats_raw` keeps the printed
-    digits as one raw tuple in left-to-right reading order instead; see the
-    crosscheck research note for detail.
+    A first re-read attempt confirmed the labels above with high confidence
+    but could not reliably resolve the *digit count actually printed per
+    data row* at the scan resolution then available (9 vs. 11 digits on
+    independent re-parses of the same row). A subsequently supplied
+    higher-resolution scan of the same pages renders the header and every
+    data row unambiguously, with exactly 10 digits per row in every case;
+    `behavior_stats_raw` now holds those 10 values in the printed
+    left-to-right order documented above. It remains a single raw tuple
+    (rather than 10 separate named fields) purely to avoid a larger,
+    separately-reviewable schema change; the mapping is no longer uncertain.
+    One row (`boy_elementary_student`'s 15:00 visit) prints "700" in the 平
+    position where every other row is <=100; this is preserved verbatim as
+    an apparent source misprint rather than silently corrected -- see
+    docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md.
     """
 
     archetype_id: str
@@ -247,10 +251,44 @@ class ProductCategoryPricing:
     seasonal_demand: Optional[EvidenceValue] = None
     """"summer" / "winter" if the guide flags this category as seasonal,
     else None (year-round, per the guide's own "なし" (none) marking)."""
-    restock_quantity: Optional[EvidenceValue] = None
-    """Units replenished per restock action ("1回補給"), from the guide's
-    DATA LIST product table. The same table's other two trailing numeric
-    columns remain unmapped; see decision 0080."""
+    profit_per_unit_yen: Optional[EvidenceValue] = None
+    """The guide's own "1個の利益" (profit per unit) column from the DATA
+    LIST product table (book page 85): standard_retail_price_yen minus the
+    per-unit procurement cost, i.e. price * margin_rate / 100. This field
+    was previously named `restock_quantity` and documented as the table's
+    "1回補給" column; a higher-resolution re-read of the same page found no
+    "1回補給" column at all -- the guide's actual column order there is
+    定価(price) / 原価率(cost rate) / 1個の利益(profit per unit) / 季節
+    (season) / 商品棚(compatible fixtures) / 最大維持費(max maintenance) /
+    最大収容力(max capacity) / 需要数例(demand example). Every value under
+    the old name matched this column (not a restock quantity) exactly, so
+    the field was renamed rather than kept under its previous, incorrect
+    label; there is still no confirmed "units per restock action" figure
+    anywhere in the guide.
+    """
+    max_maintenance_yen_per_day: Optional[EvidenceValue] = None
+    """The DATA LIST product table's "最大維持費" column: the highest daily
+    maintenance cost among the fixtures this category can be displayed on
+    (see `compatible_fixtures_text`), not a per-category running cost of
+    its own."""
+    max_capacity: Optional[EvidenceValue] = None
+    """The same table's "最大収容力" column: the highest stock capacity
+    among the fixtures this category can be displayed on."""
+    demand_example_count: Optional[EvidenceValue] = None
+    """The same table's "需要数例" column. The guide's own caption
+    explicitly warns this is worked example under one specific unstated set
+    of conditions ("いろいろな条件が重なるため、実際にはこうなるわけではない。
+    あくまでも一例" -- many conditions overlap, so it will not actually turn
+    out this way; just one example), not a demand formula or coefficient.
+    None for "cash", where the guide prints "?" instead of a number."""
+    compatible_fixtures_text: Optional[EvidenceValue] = None
+    """The same table's "商品棚" column, verbatim: the fixture group names
+    (as printed, comma-separated) this category can be displayed on. Kept
+    as raw text rather than resolved to `FixtureDefinition` ids, consistent
+    with this file's policy of not inventing mappings; cross-reference
+    against `FixtureDefinition.compatible_product_categories` (transcribed
+    separately, from each fixture's own "取扱商品" column) rather than
+    relying on either table alone."""
 
     def __post_init__(self) -> None:
         cost = self.cost_rate_pct.value

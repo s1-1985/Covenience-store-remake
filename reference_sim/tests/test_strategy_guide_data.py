@@ -68,13 +68,14 @@ class StrategyGuideFixtureTests(unittest.TestCase):
         self.assertEqual(by_id["copier_b"].capacity.value, 40)
         self.assertEqual(by_id["copier_b"].maintenance_yen_per_day.value, 1_440)
 
-    def test_bench_maintenance_conflict_was_not_silently_overwritten(self):
-        # Guide reports 160 yen/day for the bench; the existing community
-        # value is 168 yen/day. Per guide policy this is a recorded conflict,
-        # not a silent overwrite, so the existing value must remain.
+    def test_bench_maintenance_now_matches_the_guide(self):
+        # RESOLVED 2026-09-17: an explicit one-off user instruction directed
+        # that guide-vs-existing conflicts be settled in the guide's favor.
+        # Guide reports 160 yen/day for the bench (independently confirmed
+        # twice); the previous community-sourced 168 is superseded.
         by_id = {fixture.id: fixture for fixture in FIXTURES}
         bench = by_id["bench"]
-        self.assertEqual(bench.maintenance_yen_per_day.value, 168)
+        self.assertEqual(bench.maintenance_yen_per_day.value, 160)
 
     def test_new_fixtures_satisfy_the_implementation_field_audit(self):
         for fixture in STRATEGY_GUIDE_FIXTURES:

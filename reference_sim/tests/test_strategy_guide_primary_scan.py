@@ -37,12 +37,15 @@ class PrimaryScanServiceBonusTests(unittest.TestCase):
         by_id = {fixture.id: fixture for fixture in FIXTURES}
         self.assertEqual(by_id["potted_plant"].service_bonus.value, 2)
 
-    def test_bench_and_fountain_service_bonus_conflicts_were_not_silently_overwritten(self):
-        # Guide reports bench=+4 and fountain=+30; existing wiki-derived
-        # values (3 and 25) are kept per the never-silently-overwrite policy.
+    def test_bench_and_fountain_service_bonus_now_match_the_guide(self):
+        # RESOLVED 2026-09-17: an explicit one-off user instruction directed
+        # that guide-vs-existing conflicts be settled in the guide's favor.
+        # Guide reports bench=+4 and fountain=+30, independently confirmed
+        # twice each; the previous wiki-derived values (3 and 25) are
+        # superseded.
         by_id = {fixture.id: fixture for fixture in FIXTURES}
-        self.assertEqual(by_id["bench"].service_bonus.value, 3)
-        self.assertEqual(by_id["fountain"].service_bonus.value, 25)
+        self.assertEqual(by_id["bench"].service_bonus.value, 4)
+        self.assertEqual(by_id["fountain"].service_bonus.value, 30)
 
 
 class PrimaryScanStoreVariantTests(unittest.TestCase):
@@ -54,13 +57,20 @@ class PrimaryScanStoreVariantTests(unittest.TestCase):
         self.assertEqual(by_id["large_top"].construction_price_yen.value, 18_000_000)
         self.assertEqual(by_id["large_bottom"].construction_price_yen.value, 18_000_000)
 
-    def test_existing_editable_floor_values_were_not_touched(self):
-        # small_top and large_top already carried editable_floor from other
-        # sources that conflict with the guide's own store-data table; this
-        # pass only fills construction_price_yen, never editable_floor.
+    def test_editable_floor_now_matches_the_guides_store_data_table(self):
+        # RESOLVED 2026-09-17 (same instruction as the service-bonus fix
+        # above). The guide's own 店舗データ table gives every variant's
+        # 店舗内 dimensions directly; none matched the previous
+        # visual-reconstruction-derived (8, 13) / (13, 14) values, which are
+        # superseded. store1/3/5 -> *_top and store2/4/6 -> *_bottom is an
+        # inferred pairing by list order, not a confirmed orientation match.
         by_id = {variant.id: variant for variant in STORE_VARIANTS}
-        self.assertEqual(by_id["small_top"].editable_floor.value, (8, 13))
-        self.assertEqual(by_id["large_top"].editable_floor.value, (13, 14))
+        self.assertEqual(by_id["small_top"].editable_floor.value, (5, 8))
+        self.assertEqual(by_id["small_bottom"].editable_floor.value, (8, 5))
+        self.assertEqual(by_id["medium_top"].editable_floor.value, (7, 10))
+        self.assertEqual(by_id["medium_bottom"].editable_floor.value, (10, 7))
+        self.assertEqual(by_id["large_top"].editable_floor.value, (8, 12))
+        self.assertEqual(by_id["large_bottom"].editable_floor.value, (12, 8))
 
 
 class PrimaryScanTownFacilityTests(unittest.TestCase):
