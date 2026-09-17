@@ -15,7 +15,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     def test_prototype_values_are_explicitly_marked_provisional(self):
-        self.assertEqual(self.config["schema_version"], 5)
+        self.assertEqual(self.config["schema_version"], 6)
         self.assertIs(self.config["provisional"], True)
         self.assertTrue(self.config["evidence_note"].strip())
         self.assertIn("not claims", self.config["evidence_note"])
@@ -155,6 +155,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "scripts/domain/staff_state.gd",
             "scripts/domain/staff_roster.gd",
             "scripts/domain/runtime_event_log.gd",
+            "scripts/domain/demand_policy.gd",
         ):
             self.assertTrue((GAME_ROOT / relative).is_file(), relative)
 
@@ -296,6 +297,44 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("each visit must retain a distinct customer state", smoke)
         self.assertIn("customer ids must remain unique", smoke)
 
+    def test_demand_driven_customer_arrival_is_a_tagged_remake_default(self):
+        demand = self.config["demand"]
+        for key in (
+            "nearby_population",
+            "customer_share_percent",
+            "daily_visit_rate_per_population",
+            "opening_minutes_per_day",
+            "bad_weather_visit_multiplier",
+            "rng_seed",
+        ):
+            self.assertIn(key, demand)
+        self.assertGreaterEqual(demand["nearby_population"], 0)
+        self.assertGreaterEqual(demand["customer_share_percent"], 0.0)
+        self.assertLessEqual(demand["customer_share_percent"], 100.0)
+        self.assertGreater(demand["opening_minutes_per_day"], 0)
+
+        demand_policy = (GAME_ROOT / "scripts" / "domain" / "demand_policy.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("REMAKE_BALANCED_DEFAULT", demand_policy)
+        self.assertIn("func expected_arrivals_per_minute() -> float:", demand_policy)
+        self.assertIn("func customer_arrives_this_minute() -> bool:", demand_policy)
+        self.assertIn("func demand_admit_if_due() -> bool:", simulation)
+        self.assertIn("func tick_idle_for_demand() -> bool:", simulation)
+        self.assertIn("simulation.tick_idle_for_demand()", main)
+        self.assertIn("a saturated demand rate must always admit a customer", smoke)
+        self.assertIn("a zero demand rate must never admit a customer", smoke)
+        self.assertIn(
+            "demand-driven admission must be blocked while a customer visit is still active",
+            smoke,
+        )
+
     def test_explicit_customer_admission_accepts_observed_identity_and_plan(self):
         roster = (GAME_ROOT / "scripts" / "domain" / "customer_roster.gd").read_text(
             encoding="utf-8"
@@ -385,6 +424,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "StaffState",
             "StaffRoster",
             "RuntimeEventLog",
+            "DemandPolicy",
         )
         scripts = list((GAME_ROOT / "scripts").rglob("*.gd"))
         for script_path in scripts:

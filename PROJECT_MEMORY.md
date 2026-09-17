@@ -402,6 +402,17 @@ An explicit between-visit restock seam can add caller-supplied units for a known
 deduct a caller-supplied total procurement cost, and record matching expense/event facts. It does not
 invent capacity, reorder timing, quantity, supplier pricing, delivery, or staff-task selection.
 
+The vertical slice now gains customers on its own. `scripts/domain/demand_policy.gd` ports
+`reference_sim/conveni_sim/remake_demand_policy.py`'s REMAKE_BALANCED_DEFAULT arrival-rate formula
+(population x share% x a per-population daily visit rate, spread across opening minutes, reduced
+under bad weather) so `VerticalSliceSimulation.tick_idle_for_demand()` can admit the next customer
+via a per-minute probability roll once the store is empty, instead of requiring the manual
+`start_next_customer()` boundary every time. The manual boundary still exists as an override. This
+does not add concurrency: the existing single-active-customer constraint (original concurrent-
+arrival and collision rules remain unrecovered) is unchanged, and `nearby_population`/
+`customer_share_percent` are still supplied directly in `data/vertical_slice.json` because no town/
+trade-area spatial simulation exists in this client yet (see decision 0088).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

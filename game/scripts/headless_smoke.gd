@@ -1,6 +1,7 @@
 extends SceneTree
 
 const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_simulation.gd")
+const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAX_STEPS := 256
@@ -232,6 +233,103 @@ func _initialize() -> void:
         return
     if not simulation.economy.expense_records.is_empty():
         _fail("full reset must clear explicit expense records")
+        return
+
+    var demand_config: Dictionary = config["demand"]
+    var expected_configured_rate := (
+        float(demand_config["nearby_population"])
+        * (float(demand_config["customer_share_percent"]) / 100.0)
+        * float(demand_config["daily_visit_rate_per_population"])
+        / float(demand_config["opening_minutes_per_day"])
+    )
+    if abs(simulation.demand.expected_arrivals_per_minute() - expected_configured_rate) > 0.0000001:
+        _fail("demand policy rate must match the configured population/share/rate formula")
+        return
+
+    var always_rng := RandomNumberGenerator.new()
+    always_rng.seed = 1
+    var always_policy = DemandPolicyScript.new({
+        "nearby_population": 1000,
+        "customer_share_percent": 100.0,
+        "daily_visit_rate_per_population": 1.0,
+        "opening_minutes_per_day": 1,
+        "bad_weather_visit_multiplier": 1.0,
+    }, always_rng)
+    for _trial in range(20):
+        if not always_policy.customer_arrives_this_minute():
+            _fail("a saturated demand rate must always admit a customer")
+            return
+
+    var never_rng := RandomNumberGenerator.new()
+    never_rng.seed = 1
+    var never_policy = DemandPolicyScript.new({
+        "nearby_population": 0,
+        "customer_share_percent": 0.0,
+        "daily_visit_rate_per_population": 0.0,
+        "opening_minutes_per_day": 960,
+        "bad_weather_visit_multiplier": 0.0,
+    }, never_rng)
+    for _trial in range(20):
+        if never_policy.customer_arrives_this_minute():
+            _fail("a zero demand rate must never admit a customer")
+            return
+
+    var bad_weather_rng := RandomNumberGenerator.new()
+    bad_weather_rng.seed = 1
+    var bad_weather_policy = DemandPolicyScript.new({
+        "nearby_population": 1000,
+        "customer_share_percent": 100.0,
+        "daily_visit_rate_per_population": 0.05,
+        "opening_minutes_per_day": 960,
+        "bad_weather_visit_multiplier": 0.6,
+        "is_bad_weather": true,
+    }, bad_weather_rng)
+    var expected_bad_weather_rate := (1000.0 * 1.0 * 0.05 * 0.6) / 960.0
+    if abs(bad_weather_policy.expected_arrivals_per_minute() - expected_bad_weather_rate) > 0.0000001:
+        _fail("bad weather must scale expected arrivals by the configured multiplier")
+        return
+
+    var saturated_demand_config: Dictionary = config.duplicate(true)
+    saturated_demand_config["demand"] = {
+        "nearby_population": 1000000,
+        "customer_share_percent": 100.0,
+        "daily_visit_rate_per_population": 1.0,
+        "opening_minutes_per_day": 1,
+        "bad_weather_visit_multiplier": 1.0,
+        "is_bad_weather": false,
+        "rng_seed": 7,
+    }
+    var demand_simulation = VerticalSliceSimulationScript.new(saturated_demand_config)
+    if demand_simulation.customers.can_admit():
+        _fail("a freshly reset simulation must start with an active default customer")
+        return
+    if demand_simulation.demand_admit_if_due():
+        _fail("demand-driven admission must be blocked while a customer visit is still active")
+        return
+    if demand_simulation.customers.customers.size() != 1:
+        _fail("blocked demand-driven admission must not create a customer record")
+        return
+    steps += _run_visit(demand_simulation)
+    if demand_simulation.customers.active().phase != "done":
+        _fail("demand-driven simulation's scripted visit must still complete")
+        return
+    var customers_before_demand_admission: int = demand_simulation.customers.customers.size()
+    if not demand_simulation.demand_admit_if_due():
+        _fail("a saturated demand rate must admit a customer once the store is empty")
+        return
+    if demand_simulation.customers.customers.size() != customers_before_demand_admission + 1:
+        _fail("demand-driven admission must create exactly one new customer record")
+        return
+    if demand_simulation.customers.can_admit():
+        _fail("a newly admitted demand-driven customer must occupy the store")
+        return
+    steps += _run_visit(demand_simulation)
+    var minute_before_idle_tick: int = int(demand_simulation.minute_of_day)
+    if not demand_simulation.tick_idle_for_demand():
+        _fail("tick_idle_for_demand must also admit under a saturated demand rate")
+        return
+    if int(demand_simulation.minute_of_day) == minute_before_idle_tick:
+        _fail("tick_idle_for_demand must advance the clock even while idle")
         return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)

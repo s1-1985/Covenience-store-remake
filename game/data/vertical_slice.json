@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -75,6 +75,16 @@
   "customer": {
     "id_prefix": "customer",
     "visit_plan_product_ids": ["prototype-bread", "prototype-drink"]
+  },
+  "demand": {
+    "evidence_note": "REMAKE_BALANCED_DEFAULT placeholder ported from reference_sim/conveni_sim/remake_demand_policy.py. nearby_population/customer_share_percent are supplied directly because no town/trade-area spatial model exists yet in this client.",
+    "nearby_population": 2000,
+    "customer_share_percent": 50.0,
+    "daily_visit_rate_per_population": 0.05,
+    "opening_minutes_per_day": 960,
+    "bad_weather_visit_multiplier": 0.6,
+    "is_bad_weather": false,
+    "rng_seed": 1
   },
   "simulation": {
     "checkout_fixture_id": "checkout-1",

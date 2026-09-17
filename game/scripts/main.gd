@@ -44,15 +44,16 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-    if simulation == null or paused or simulation.customers.active().phase == "done":
+    if simulation == null or paused:
         return
     accumulator += delta
     while accumulator >= tick_seconds:
         accumulator -= tick_seconds
-        simulation.step()
-        _refresh_ui()
         if simulation.customers.active().phase == "done":
-            break
+            simulation.tick_idle_for_demand()
+        else:
+            simulation.step()
+        _refresh_ui()
 
 
 func _unhandled_input(event: InputEvent) -> void:

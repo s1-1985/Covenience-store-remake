@@ -19,7 +19,23 @@ The current playable loop is:
 7. the customer pathfinds to the exit;
 8. the HUD shows game time, cash, aggregate stock, current basket, customer state, staff state,
    completed sales/visits, and the last event;
-9. after a customer exits, the player can admit another customer while preserving stock and cash.
+9. once the store is empty, the next customer now arrives on their own via a demand-driven
+   probability roll (see "Customer arrival" below) each simulated minute; the player can still
+   force the next admission manually as an override while preserving stock and cash.
+
+### Customer arrival
+
+`scripts/domain/demand_policy.gd` is a REMAKE_BALANCED_DEFAULT port of
+`reference_sim/conveni_sim/remake_demand_policy.py`'s guessed customer-arrival rate
+(population × store share % × a per-population daily visit rate, spread across opening minutes,
+reduced under bad weather). The strategy guide confirms an arrival formula exists
+(`strategy-guide-full-decode-2026-09-16.md` section 41, "客数発生式") but never publishes it, so
+this rate is a tagged placeholder to retune after playtesting, not a recovered original formula.
+`data/vertical_slice.json`'s `demand` block supplies `nearby_population`/`customer_share_percent`
+directly because no town/trade-area spatial simulation exists yet in this client; only the
+per-minute Bernoulli roll and the single-active-customer admission boundary are enforced here.
+This client still deliberately keeps only one active customer at a time -- the demand policy only
+automates *when* the next admission happens, not concurrent arrivals, which remain unrecovered.
 
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;
@@ -61,7 +77,8 @@ Controls:
 - **Pause / Resume** — pause automatic prototype ticks.
 - **Step** — execute exactly one prototype simulation step while paused.
 - **Reset** — restore the initial vertical-slice state.
-- **Admit next customer** — start another visit after the current customer exits.
+- **Admit next customer** — manually force the next visit instead of waiting for the automatic
+  demand-driven arrival roll to succeed (see "Customer arrival" above).
 - **Prototype layout relocation** — after a visit finishes, tap/click a fixture and then an empty
   grid cell. Invalid or route-breaking moves are rejected atomically. This interaction is
   PROVISIONAL and is not a reconstruction of the original construction menu.
@@ -105,6 +122,9 @@ runs both the Godot import and this executable smoke check in addition to the Py
   provisional checkout staff; it does not choose tasks autonomously.
 - `scripts/domain/runtime_event_log.gd` — immutable sequenced facts for deterministic observation
   export; event names and timestamp shape remain provisional.
+- `scripts/domain/demand_policy.gd` — REMAKE_BALANCED_DEFAULT per-minute customer-arrival
+  probability, ported from `reference_sim/conveni_sim/remake_demand_policy.py`; decides only
+  *whether* the next customer arrives, not concurrent arrivals.
 - `scripts/store_view.gd` — generated 2D visualization only.
 - `scripts/main.gd` — client orchestration and HUD binding.
 - `scripts/headless_smoke.gd` — Godot-native deterministic executable check.
@@ -113,7 +133,9 @@ runs both the Godot import and this executable smoke check in addition to the Py
 - `reference_sim/` — compatibility oracle and evidence-backed validation, not a runtime dependency of the Godot app.
 
 The vertical slice now composes reusable engine-native layout, customer, staff, inventory, and
-economy state objects plus explicit actor rosters. The next production steps are to connect those
-rosters and explicit product plans to evidence-backed observation replay, introduce demand or
-concurrency only behind separately identified policies, and expand store interaction without
-changing unresolved original rules silently.
+economy state objects plus explicit actor rosters. Customer admission is now demand-driven via a
+separately identified, tagged-guess policy (`demand_policy.gd`) rather than only manual, but
+concurrency (more than one active customer) remains unimplemented and unrecovered. The next
+production steps are to connect actor rosters and explicit product plans to evidence-backed
+observation replay, introduce genuine concurrency only behind a separately identified policy, and
+expand store interaction without changing unresolved original rules silently.

@@ -7,6 +7,7 @@ const EconomyStateScript := preload("res://scripts/domain/economy_state.gd")
 const CustomerRosterScript := preload("res://scripts/domain/customer_roster.gd")
 const StaffRosterScript := preload("res://scripts/domain/staff_roster.gd")
 const RuntimeEventLogScript := preload("res://scripts/domain/runtime_event_log.gd")
+const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
 
 var config: Dictionary
 var layout
@@ -15,6 +16,8 @@ var economy
 var customers
 var staff
 var event_log
+var demand
+var _demand_rng: RandomNumberGenerator
 
 var minute_of_day: int
 var last_event := "store opened"
@@ -33,6 +36,8 @@ func _init(source_config: Dictionary) -> void:
     customers = CustomerRosterScript.new(config["customer"])
     staff = StaffRosterScript.new(config["staff"])
     event_log = RuntimeEventLogScript.new()
+    _demand_rng = RandomNumberGenerator.new()
+    demand = DemandPolicyScript.new(config["demand"], _demand_rng)
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -57,6 +62,7 @@ func reset() -> void:
     customers.reset()
     staff.reset()
     event_log.reset()
+    _demand_rng.seed = int(config["demand"]["rng_seed"])
     _refresh_interactions()
     _start_default_customer()
 
@@ -82,6 +88,20 @@ func start_explicit_customer(customer_id: String, product_ids: Array[String]) ->
     )
     _record_customer_entered(customer)
     return true
+
+
+func demand_admit_if_due() -> bool:
+    if not customers.can_admit():
+        return false
+    if not demand.customer_arrives_this_minute():
+        return false
+    _start_default_customer()
+    return true
+
+
+func tick_idle_for_demand() -> bool:
+    minute_of_day = (minute_of_day + _step_game_minutes) % (24 * 60)
+    return demand_admit_if_due()
 
 
 func apply_explicit_restock(
@@ -255,6 +275,7 @@ func snapshot() -> Dictionary:
         "completed_visits": customers.completed_count(),
         "started_visits": customers.customers.size(),
         "last_event": last_event,
+        "expected_arrivals_per_minute": demand.expected_arrivals_per_minute(),
     }
 
 
@@ -357,8 +378,8 @@ func _all_staff_are_walkable() -> bool:
 
 
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 5)
-    for key in ["store", "fixtures", "products", "economy", "provisional_restock", "staff", "customer", "simulation"]:
+    assert(int(config.get("schema_version", -1)) == 6)
+    for key in ["store", "fixtures", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
             assert(false)
@@ -367,4 +388,16 @@ func _require_config() -> void:
     for key in ["start_minute_of_day", "tick_seconds", "step_game_minutes", "shopping_ticks", "checkout_ticks", "checkout_fixture_id"]:
         if not simulation.has(key):
             push_error("vertical slice simulation config missing required key: %s" % key)
+            assert(false)
+    var demand_config: Dictionary = config["demand"]
+    for key in [
+        "nearby_population",
+        "customer_share_percent",
+        "daily_visit_rate_per_population",
+        "opening_minutes_per_day",
+        "bad_weather_visit_multiplier",
+        "rng_seed",
+    ]:
+        if not demand_config.has(key):
+            push_error("vertical slice demand config missing required key: %s" % key)
             assert(false)
