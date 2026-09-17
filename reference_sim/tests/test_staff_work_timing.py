@@ -88,7 +88,10 @@ class StaffWorkTimingTests(unittest.TestCase):
         self.assertEqual(runtime.cash.known_cash_yen, 940)
         self.assertEqual(runtime.staff.staff_member("s1").completed_count(StaffTask.REPLENISH), 1)
         self.assertEqual(runtime.staff.staff_member("s1").task, StaffTask.IDLE)
-        self.assertEqual(len(runtime.staff.growth_opportunities), 1)
+        # RESOLVED 2026-09-17: replenish now also opens cleaning/security
+        # growth opportunities per the guide's multi-skill diagram (see
+        # WORK_GROWTH_SKILL in staff.py), on top of replenishment's own.
+        self.assertEqual(len(runtime.staff.growth_opportunities), 3)
         self.assertEqual(timing.active_states, ())
 
     def test_duplicate_cleaning_target_releases_second_staff_without_false_work_event(self):

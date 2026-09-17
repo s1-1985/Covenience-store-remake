@@ -33,10 +33,22 @@ class StaffSkill(str, Enum):
 
 
 WORK_TASKS = frozenset({StaffTask.CHECKOUT, StaffTask.REPLENISH, StaffTask.CLEAN})
-WORK_GROWTH_SKILL = {
-    StaffTask.CHECKOUT: StaffSkill.REGISTER,
-    StaffTask.REPLENISH: StaffSkill.REPLENISHMENT,
-    StaffTask.CLEAN: StaffSkill.CLEANING,
+
+# The strategy guide's own "仕事内容とパラメータ変化の関係" diagram (book page
+# 26) shows each work task growing multiple skills at once, not one:
+# レジ(checkout) -> レジ+サービス(register+service), 補充(replenish) ->
+# 補充+清掃+警備(replenishment+cleaning+security), 清掃(clean) ->
+# 清掃+警備(cleaning+security). This was previously modeled as exactly one
+# skill per task (sourced from separate, narrower first-title community
+# evidence for the replenish/clean increments only); that community
+# evidence still only supports a known increment for one skill per task
+# (see EVIDENCE_BACKED_UNIT_GROWTH in staff_growth_resolution.py), so the
+# newly-added skills below create real growth opportunities with an
+# unresolved increment, the same way checkout/register already did.
+WORK_GROWTH_SKILL: dict[StaffTask, tuple[StaffSkill, ...]] = {
+    StaffTask.CHECKOUT: (StaffSkill.REGISTER, StaffSkill.SERVICE),
+    StaffTask.REPLENISH: (StaffSkill.REPLENISHMENT, StaffSkill.CLEANING, StaffSkill.SECURITY),
+    StaffTask.CLEAN: (StaffSkill.CLEANING, StaffSkill.SECURITY),
 }
 
 
@@ -233,10 +245,10 @@ class StoreStaffRoster:
         self,
         staff_id: str,
         task: StaffTask,
+        skill: StaffSkill,
         *,
         work_event_count: int,
     ) -> StaffGrowthOpportunity:
-        skill = WORK_GROWTH_SKILL[task]
         state = self._staff[staff_id]
         manager_staff_id = self._manager_staff_id
         if manager_staff_id == staff_id:
@@ -272,11 +284,13 @@ class StoreStaffRoster:
         state = self._staff[staff_id]
         work_event_count = state.completed_count(task) + 1
         state.completed_work_events[task] = work_event_count
-        self._record_growth_opportunity(
-            staff_id,
-            task,
-            work_event_count=work_event_count,
-        )
+        for skill in WORK_GROWTH_SKILL[task]:
+            self._record_growth_opportunity(
+                staff_id,
+                task,
+                skill,
+                work_event_count=work_event_count,
+            )
         if stamina_cost is not None:
             self.consume_stamina(
                 staff_id,

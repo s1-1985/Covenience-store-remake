@@ -321,3 +321,28 @@ class SalaryTableEntry:
 
     age_years: int
     hourly_wage_yen: EvidenceValue
+
+
+@dataclass(frozen=True)
+class TradeAreaRadiusEntry:
+    """One arrival-method -> trade-area radius anchor from the strategy guide.
+
+    The guide prints this under "お客の来店手段で、範囲が変わる" / "来店手段/
+    エリア半径" (book page 31): a customer's arrival method changes the
+    radius of the circle, centered on the store, within which the guide's
+    own diagram shows population being drawn as potential customers. This
+    is the guide's own answer to what earlier research
+    (docs/research/strategy-guide-full-decode-2026-09-16.md section 19.1)
+    listed as an unconfirmed "商圏半径の内部計算式" (trade-area radius
+    formula) -- at least the per-arrival-method radius anchors are directly
+    printed, though the guide does not state the tile/distance unit, nor
+    whether overlap with a rival's circle is resolved by simple proportional
+    split, nearest-store-wins, or something else (see `arrival_method` on
+    `CustomerVisitProfile` for the same four method strings used here).
+    """
+
+    arrival_method: EvidenceValue
+    """徒歩(on foot) / 自転車(bicycle) / バイク(motorbike) / 自動車(car), matching
+    `CustomerVisitProfile.arrival_method`'s own values."""
+    radius: EvidenceValue
+    """Printed as a bare number ("エリア半径"); unit not stated by the guide."""
