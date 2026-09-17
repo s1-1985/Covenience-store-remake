@@ -3,12 +3,22 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 
-from .staff import StaffGrowthOpportunity, StaffTask, StoreStaffRoster
+from .staff import StaffGrowthOpportunity, StaffSkill, StaffTask, StoreStaffRoster
 
 
+# Keyed by (task, skill) rather than by task alone: since the strategy
+# guide's multi-skill growth diagram (see WORK_GROWTH_SKILL in staff.py) was
+# incorporated, one task can create growth opportunities for several skills,
+# but first-title community evidence only ever measured a per-action
+# increment for one skill per task -- replenishment work growing the
+# replenishment skill, and cleaning work growing the cleaning skill. The
+# guide's newly-added secondary skills (replenish also growing cleaning and
+# security; clean also growing security) have a confirmed *existence* but no
+# confirmed *increment*, so they are deliberately left out of this mapping
+# rather than assigned the same +1 by assumption.
 EVIDENCE_BACKED_UNIT_GROWTH = {
-    StaffTask.REPLENISH: 1,
-    StaffTask.CLEAN: 1,
+    (StaffTask.REPLENISH, StaffSkill.REPLENISHMENT): 1,
+    (StaffTask.CLEAN, StaffSkill.CLEANING): 1,
 }
 
 
@@ -35,9 +45,13 @@ class EvidenceBackedStaffGrowthResolver:
     """Resolve only numerically recovered first-title work-growth rules.
 
     Current first-title dedicated community evidence explicitly supports +1 per
-    replenishment action and +1 per floor-cleaning action. Checkout work is known
-    to grow register skill, but its exact increment remains unresolved and is
-    therefore intentionally left pending.
+    replenishment action (growing the replenishment skill) and +1 per
+    floor-cleaning action (growing the cleaning skill). Every other
+    (task, skill) growth opportunity the strategy guide's multi-skill
+    diagram confirms exists -- checkout growing register and service;
+    replenish also growing cleaning and security; clean also growing
+    security -- has an unresolved increment and is therefore intentionally
+    left pending.
 
     Normal growth also needs a known current value and known normal base cap. If
     either is missing, or the runtime value is already above the normal cap due
@@ -48,7 +62,7 @@ class EvidenceBackedStaffGrowthResolver:
         self.roster = roster
 
     def resolve_opportunity(self, opportunity: StaffGrowthOpportunity) -> StaffGrowthResolution:
-        increment = EVIDENCE_BACKED_UNIT_GROWTH.get(opportunity.task)
+        increment = EVIDENCE_BACKED_UNIT_GROWTH.get((opportunity.task, opportunity.skill))
         if increment is None:
             return StaffGrowthResolution(
                 opportunity.sequence,
@@ -109,7 +123,7 @@ class EvidenceBackedStaffGrowthResolver:
         """
         results: list[StaffGrowthResolution] = []
         for opportunity in self.roster.unresolved_growth_opportunities:
-            if opportunity.task not in EVIDENCE_BACKED_UNIT_GROWTH:
+            if (opportunity.task, opportunity.skill) not in EVIDENCE_BACKED_UNIT_GROWTH:
                 continue
             results.append(self.resolve_opportunity(opportunity))
         return tuple(results)

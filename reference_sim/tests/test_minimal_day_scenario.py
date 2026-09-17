@@ -104,12 +104,16 @@ class MinimalDayScenarioTests(unittest.TestCase):
         self.assertEqual(len(resolved_growth), 2)
         self.assertTrue(all(growth.task is StaffTask.REPLENISH for growth in resolved_growth))
 
+        # RESOLVED 2026-09-17: checkout now also opens a service growth
+        # opportunity per the guide's multi-skill diagram, alongside
+        # register's own (see WORK_GROWTH_SKILL in staff.py); neither has a
+        # confirmed increment, so both stay unresolved.
         checkout_growth = [
             opportunity
             for opportunity in scenario.runtime.staff.unresolved_growth_opportunities
             if opportunity.task is StaffTask.CHECKOUT
         ]
-        self.assertEqual(len(checkout_growth), 1)
+        self.assertEqual(len(checkout_growth), 2)
 
         self.assertEqual(result.day_end.summary.known_credits_yen, 120)
         self.assertEqual(result.day_end.summary.known_debits_yen, 100)

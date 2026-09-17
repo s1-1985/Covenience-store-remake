@@ -7,6 +7,7 @@ from conveni_sim.baseline_data import (
     SCENARIOS,
     STORE_VARIANTS,
     TOWN_FACILITIES,
+    TRADE_AREA_RADIUS_TILES,
 )
 from conveni_sim.clock import RepresentativeDayType, SimulationClock
 from conveni_sim.models import EvidenceLevel
@@ -104,11 +105,29 @@ class BaselineDataTests(unittest.TestCase):
         # test_strategy_guide_primary_scan.py for the full set.
         self.assertEqual(by_id["medium_top"].editable_floor.value, (7, 10))
 
-    def test_permits_are_independent_and_distances_unknown(self):
+    def test_permit_fees_and_distances_match_the_guide(self):
+        # RESOLVED 2026-09-17: previously both fields were None for every
+        # permit; the guide's own "販売許可に必要な金額" table and distance
+        # diagram (book pages 6-7) give explicit values for all three.
         self.assertEqual({p.id for p in PERMITS}, {"tobacco", "alcohol", "medicine"})
+        by_id = {p.id: p for p in PERMITS}
+        self.assertEqual(by_id["tobacco"].fee_yen.value, 7_000_000)
+        self.assertEqual(by_id["tobacco"].exclusion_distance_tiles.value, 7)
+        self.assertEqual(by_id["alcohol"].fee_yen.value, 3_000_000)
+        self.assertEqual(by_id["alcohol"].exclusion_distance_tiles.value, 11)
+        self.assertEqual(by_id["medicine"].fee_yen.value, 10_000_000)
+        self.assertEqual(by_id["medicine"].exclusion_distance_tiles.value, 15)
         for permit in PERMITS:
             self.assertTrue(permit.eligibility_is_independent.value)
-            self.assertIsNone(permit.exclusion_distance_tiles)
+
+    def test_trade_area_radius_by_arrival_method_matches_the_guide(self):
+        # New 2026-09-17: the guide's own "来店手段/エリア半径" table (book
+        # page 31) directly answers part of what was previously recorded as
+        # an unconfirmed trade-area radius formula.
+        by_method = {entry.arrival_method.value: entry.radius.value for entry in TRADE_AREA_RADIUS_TILES}
+        self.assertEqual(by_method, {"徒歩": 20, "自転車": 40, "バイク": 60, "自動車": 70})
+        for entry in TRADE_AREA_RADIUS_TILES:
+            self.assertEqual(entry.radius.evidence, EvidenceLevel.CONFIRMED_OFFICIAL)
 
 
 class ClockTests(unittest.TestCase):

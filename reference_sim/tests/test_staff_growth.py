@@ -5,6 +5,9 @@ from conveni_sim.staff import StaffSkill, StaffTask, StoreStaffRoster
 
 class StaffGrowthOpportunityTests(unittest.TestCase):
     def test_checkout_replenish_and_clean_create_matching_growth_opportunities(self):
+        # RESOLVED 2026-09-17: the strategy guide's "仕事内容とパラメータ変化
+        # の関係" diagram (book page 26) shows each task growing multiple
+        # skills, not one; see WORK_GROWTH_SKILL in staff.py.
         roster = StoreStaffRoster()
         roster.add_staff("s1")
 
@@ -16,13 +19,17 @@ class StaffGrowthOpportunityTests(unittest.TestCase):
             tuple(opportunity.skill for opportunity in roster.growth_opportunities),
             (
                 StaffSkill.REGISTER,
+                StaffSkill.SERVICE,
                 StaffSkill.REPLENISHMENT,
                 StaffSkill.CLEANING,
+                StaffSkill.SECURITY,
+                StaffSkill.CLEANING,
+                StaffSkill.SECURITY,
             ),
         )
         self.assertEqual(
             tuple(opportunity.work_event_count for opportunity in roster.growth_opportunities),
-            (1, 1, 1),
+            (1, 1, 1, 1, 1, 1, 1),
         )
 
     def test_growth_trigger_does_not_invent_unknown_skill_values(self):
@@ -30,7 +37,7 @@ class StaffGrowthOpportunityTests(unittest.TestCase):
         staff = roster.add_staff("s1")
 
         roster.record_completed_work("s1", StaffTask.CHECKOUT)
-        opportunity = roster.growth_opportunities[-1]
+        opportunity = next(o for o in roster.growth_opportunities if o.skill is StaffSkill.REGISTER)
 
         self.assertIsNone(opportunity.before_value)
         self.assertIsNone(opportunity.base_cap)
@@ -51,7 +58,7 @@ class StaffGrowthOpportunityTests(unittest.TestCase):
         )
 
         roster.record_completed_work("worker", StaffTask.CHECKOUT)
-        opportunity = roster.growth_opportunities[-1]
+        opportunity = next(o for o in roster.growth_opportunities if o.skill is StaffSkill.REGISTER)
 
         self.assertEqual(opportunity.manager_staff_id, "manager")
         self.assertEqual(opportunity.manager_education, 95)
@@ -70,7 +77,7 @@ class StaffGrowthOpportunityTests(unittest.TestCase):
         )
 
         roster.record_completed_work("manager", StaffTask.CLEAN)
-        opportunity = roster.growth_opportunities[-1]
+        opportunity = next(o for o in roster.growth_opportunities if o.skill is StaffSkill.CLEANING)
 
         self.assertIsNone(opportunity.manager_staff_id)
         self.assertIsNone(opportunity.manager_education)
@@ -83,7 +90,7 @@ class StaffGrowthOpportunityTests(unittest.TestCase):
             base_skill_caps={StaffSkill.REPLENISHMENT: 70},
         )
         roster.record_completed_work("s1", StaffTask.REPLENISH)
-        opportunity = roster.growth_opportunities[-1]
+        opportunity = next(o for o in roster.growth_opportunities if o.skill is StaffSkill.REPLENISHMENT)
 
         resolved = roster.resolve_growth_opportunity(
             opportunity.sequence,
@@ -93,7 +100,11 @@ class StaffGrowthOpportunityTests(unittest.TestCase):
         self.assertTrue(resolved.resolved)
         self.assertEqual(resolved.resolved_after, 31)
         self.assertEqual(staff.skill_value(StaffSkill.REPLENISHMENT), 31)
-        self.assertEqual(roster.unresolved_growth_opportunities, ())
+        # The same replenish event also opened cleaning/security growth
+        # opportunities (see WORK_GROWTH_SKILL); those have no confirmed
+        # increment and are unaffected by resolving replenishment's.
+        remaining_skills = {o.skill for o in roster.unresolved_growth_opportunities}
+        self.assertEqual(remaining_skills, {StaffSkill.CLEANING, StaffSkill.SECURITY})
 
     def test_normal_work_resolution_cannot_exceed_known_base_cap(self):
         roster = StoreStaffRoster()
@@ -103,7 +114,7 @@ class StaffGrowthOpportunityTests(unittest.TestCase):
             base_skill_caps={StaffSkill.CLEANING: 50},
         )
         roster.record_completed_work("s1", StaffTask.CLEAN)
-        sequence = roster.growth_opportunities[-1].sequence
+        sequence = next(o for o in roster.growth_opportunities if o.skill is StaffSkill.CLEANING).sequence
 
         with self.assertRaises(ValueError):
             roster.resolve_growth_opportunity(sequence, after_value=51)
@@ -116,7 +127,7 @@ class StaffGrowthOpportunityTests(unittest.TestCase):
             base_skill_caps={StaffSkill.REGISTER: 20},
         )
         roster.record_completed_work("s1", StaffTask.CHECKOUT)
-        sequence = roster.growth_opportunities[-1].sequence
+        sequence = next(o for o in roster.growth_opportunities if o.skill is StaffSkill.REGISTER).sequence
         roster.resolve_growth_opportunity(sequence, after_value=11)
 
         with self.assertRaises(ValueError):

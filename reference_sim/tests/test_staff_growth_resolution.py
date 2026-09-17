@@ -32,7 +32,19 @@ class StaffGrowthResolutionTests(unittest.TestCase):
         ])
         self.assertEqual(roster.staff_member("s1").skill_value(StaffSkill.REPLENISHMENT), 6)
         self.assertEqual(roster.staff_member("s1").skill_value(StaffSkill.CLEANING), 7)
-        self.assertEqual(roster.unresolved_growth_opportunities, ())
+        # RESOLVED 2026-09-17: replenish/clean each now also open a security
+        # growth opportunity (and replenish a cleaning one) per the guide's
+        # multi-skill diagram; none of those increments are evidence-backed,
+        # so they stay unresolved even though replenishment/cleaning resolved.
+        remaining = {(o.task, o.skill) for o in roster.unresolved_growth_opportunities}
+        self.assertEqual(
+            remaining,
+            {
+                (StaffTask.REPLENISH, StaffSkill.CLEANING),
+                (StaffTask.REPLENISH, StaffSkill.SECURITY),
+                (StaffTask.CLEAN, StaffSkill.SECURITY),
+            },
+        )
 
     def test_checkout_growth_remains_unresolved_because_increment_is_unknown(self):
         roster = StoreStaffRoster()
@@ -46,7 +58,10 @@ class StaffGrowthResolutionTests(unittest.TestCase):
         results = EvidenceBackedStaffGrowthResolver(roster).resolve_supported_pending()
 
         self.assertEqual(results, ())
-        self.assertEqual(len(roster.unresolved_growth_opportunities), 1)
+        # RESOLVED 2026-09-17: checkout now also opens a service growth
+        # opportunity per the guide's multi-skill diagram; its increment is
+        # equally unresolved, so both stay pending.
+        self.assertEqual(len(roster.unresolved_growth_opportunities), 2)
         self.assertEqual(roster.staff_member("s1").skill_value(StaffSkill.REGISTER), 10)
 
     def test_missing_cap_keeps_supported_growth_pending(self):
@@ -62,7 +77,10 @@ class StaffGrowthResolutionTests(unittest.TestCase):
 
         self.assertEqual(result.status, StaffGrowthResolutionStatus.UNKNOWN_BASE_CAP)
         self.assertEqual(roster.staff_member("s1").skill_value(StaffSkill.REPLENISHMENT), 10)
-        self.assertEqual(len(roster.unresolved_growth_opportunities), 1)
+        # RESOLVED 2026-09-17: the same replenish event also opened cleaning
+        # and security growth opportunities (unresolved increment), on top
+        # of replenishment's own UNKNOWN_BASE_CAP one.
+        self.assertEqual(len(roster.unresolved_growth_opportunities), 3)
 
     def test_value_above_normal_cap_is_not_reduced_by_normal_growth(self):
         roster = StoreStaffRoster()
@@ -77,7 +95,10 @@ class StaffGrowthResolutionTests(unittest.TestCase):
 
         self.assertEqual(result.status, StaffGrowthResolutionStatus.ABOVE_BASE_CAP)
         self.assertEqual(roster.staff_member("s1").skill_value(StaffSkill.CLEANING), 12)
-        self.assertEqual(len(roster.unresolved_growth_opportunities), 1)
+        # RESOLVED 2026-09-17: the same clean event also opened a security
+        # growth opportunity (unresolved increment), on top of cleaning's
+        # own ABOVE_BASE_CAP one.
+        self.assertEqual(len(roster.unresolved_growth_opportunities), 2)
 
 
 if __name__ == "__main__":

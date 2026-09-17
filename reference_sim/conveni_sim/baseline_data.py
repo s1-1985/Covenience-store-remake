@@ -16,6 +16,7 @@ from .models import (
     StoreVariant,
     TownBuildingProfile,
     TownFacilityAnchor,
+    TradeAreaRadiusEntry,
 )
 
 WIKI = "https://wikiwiki.jp/theconveni1/"
@@ -482,11 +483,32 @@ PROMOTIONS = (
     PromotionDefinition("tv", EvidenceValue(5_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(90, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE), EvidenceValue(1, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(19, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
 )
 
+_PERMIT_FEE_AND_DISTANCE_YEN_TILES = {
+    # From the guide's own "販売許可に必要な金額" table and its distance
+    # diagram (both book pages 6-7), independently corroborated by the same
+    # page's "合計2千万円になってしまう" (3M + 7M + 10M = 20M) body text.
+    # The diagram's rings are labeled 店建設可能=5 / たばこ販売可能=7 /
+    # 酒類販売可能=11 / 薬類販売可能=15 tiles out from a store; the 5-tile
+    # ring is the store-to-store minimum distance (see
+    # docs/research/permit-timing-and-state-reset-exploits-2026-09-06.md),
+    # not a permit, so only the outer three map to a permit id here.
+    "tobacco": (7_000_000, 7),
+    "alcohol": (3_000_000, 11),
+    "medicine": (10_000_000, 15),
+}
+
 PERMITS = tuple(
     PermitDefinition(
         id=permit_id,
-        fee_yen=None,
-        exclusion_distance_tiles=None,
+        fee_yen=EvidenceValue(
+            _PERMIT_FEE_AND_DISTANCE_YEN_TILES[permit_id][0], EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE
+        ),
+        exclusion_distance_tiles=EvidenceValue(
+            _PERMIT_FEE_AND_DISTANCE_YEN_TILES[permit_id][1],
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            STRATEGY_GUIDE,
+            "Tile unit and whether this is Chebyshev/Euclidean distance is not confirmed by the guide.",
+        ),
         eligibility_is_independent=EvidenceValue(
             True,
             EvidenceLevel.CONFIRMED_COMMUNITY,
@@ -760,6 +782,29 @@ SALARY_TABLE: tuple[SalaryTableEntry, ...] = (
     SalaryTableEntry(50, EvidenceValue(600, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE)),
     SalaryTableEntry(55, EvidenceValue(650, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE)),
     SalaryTableEntry(60, EvidenceValue(700, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE)),
+)
+
+# Trade-area radius by arrival method, transcribed from the guide's "来店手段
+# /エリア半径" table (book page 31). See `TradeAreaRadiusEntry`'s docstring:
+# this directly answers part of what prior research had recorded as an
+# unresolved "商圏半径の内部計算式".
+TRADE_AREA_RADIUS_TILES: tuple[TradeAreaRadiusEntry, ...] = (
+    TradeAreaRadiusEntry(
+        EvidenceValue("徒歩", EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+    ),
+    TradeAreaRadiusEntry(
+        EvidenceValue("自転車", EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+    ),
+    TradeAreaRadiusEntry(
+        EvidenceValue("バイク", EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        EvidenceValue(60, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+    ),
+    TradeAreaRadiusEntry(
+        EvidenceValue("自動車", EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        EvidenceValue(70, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+    ),
 )
 
 
