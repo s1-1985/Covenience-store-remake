@@ -5,6 +5,7 @@ var cash_yen: int
 var completed_sales: int
 var sale_records: Array[Dictionary] = []
 var expense_records: Array[Dictionary] = []
+var month_end_records: Array[Dictionary] = []
 var _initial_cash_yen: int
 var _next_sale_sequence := 1
 var _settled_customer_ids: Dictionary = {}
@@ -21,6 +22,7 @@ func reset() -> void:
     completed_sales = 0
     sale_records.clear()
     expense_records.clear()
+    month_end_records.clear()
     _settled_customer_ids.clear()
     _next_sale_sequence = 1
 
@@ -100,3 +102,20 @@ func recorded_expenses_yen() -> int:
     for record in expense_records:
         total += int(record["amount_yen"])
     return total
+
+
+func record_month_end_settlement(
+    minute_of_day: int,
+    amount_yen: int,
+    details: Dictionary = {}
+) -> Dictionary:
+    assert(minute_of_day >= 0 and minute_of_day < 24 * 60)
+    var record := {
+        "settlement_id": "prototype-month-end-%d" % (month_end_records.size() + 1),
+        "minute_of_day": minute_of_day,
+        "amount_yen": amount_yen,
+        "details": details.duplicate(true),
+    }
+    month_end_records.append(record)
+    cash_yen += amount_yen
+    return record.duplicate(true)

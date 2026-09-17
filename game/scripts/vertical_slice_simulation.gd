@@ -9,6 +9,15 @@ const StaffRosterScript := preload("res://scripts/domain/staff_roster.gd")
 const RuntimeEventLogScript := preload("res://scripts/domain/runtime_event_log.gd")
 const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
 
+# CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
+# directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
+# mirrors the same citation). What the guide does not state is how each
+# representative day's own net result is computed internally; this client,
+# like month_aggregation.py, only turns the already-tracked cash change
+# across REPRESENTATIVE_DAYS_PER_MONTH days into the displayed monthly figure.
+const REPRESENTATIVE_DAYS_PER_MONTH := 4
+const MONTH_MULTIPLIER := 8
+
 var config: Dictionary
 var layout
 var inventory
@@ -20,6 +29,8 @@ var demand
 var _demand_rng: RandomNumberGenerator
 
 var minute_of_day: int
+var day_count: int
+var month_count: int
 var last_event := "store opened"
 var _checkout_interaction := Vector2i.ZERO
 var _shopping_ticks: int
@@ -28,6 +39,8 @@ var _step_game_minutes: int
 var _restock_ticks: int
 var _restock_trigger_stock_units_at_or_below: int
 var _restock_task_enabled: bool
+var _days_completed_this_month: int
+var _cash_at_month_start: int
 
 
 func _init(source_config: Dictionary) -> void:
@@ -65,12 +78,16 @@ func _init(source_config: Dictionary) -> void:
 
 func reset() -> void:
     minute_of_day = int(config["simulation"]["start_minute_of_day"])
+    day_count = 0
+    month_count = 0
+    _days_completed_this_month = 0
     layout.reset()
     inventory.reset()
     economy.reset()
     customers.reset()
     staff.reset()
     event_log.reset()
+    _cash_at_month_start = economy.cash_yen
     _demand_rng.seed = int(config["demand"]["rng_seed"])
     _refresh_interactions()
     _start_default_customer()
@@ -109,7 +126,7 @@ func demand_admit_if_due() -> bool:
 
 
 func tick_idle_for_demand() -> bool:
-    minute_of_day = (minute_of_day + _step_game_minutes) % (24 * 60)
+    _advance_minute_of_day()
     _step_restock_tasks()
     return demand_admit_if_due()
 
@@ -177,7 +194,7 @@ func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
 
 
 func step() -> void:
-    minute_of_day = (minute_of_day + _step_game_minutes) % (24 * 60)
+    _advance_minute_of_day()
     var customer = customers.active()
     var checkout_staff = staff.checkout_staff()
     match customer.phase:
@@ -288,6 +305,8 @@ func snapshot() -> Dictionary:
         "last_event": last_event,
         "expected_arrivals_per_minute": demand.expected_arrivals_per_minute(),
         "restock_staff_states": _restock_staff_snapshot(),
+        "day_count": day_count,
+        "month_count": month_count,
     }
 
 
@@ -387,6 +406,44 @@ func _all_staff_are_walkable() -> bool:
         if not layout.is_walkable(staff_member.position):
             return false
     return true
+
+
+func _advance_minute_of_day() -> void:
+    minute_of_day += _step_game_minutes
+    while minute_of_day >= 24 * 60:
+        minute_of_day -= 24 * 60
+        _handle_day_boundary()
+
+
+func _handle_day_boundary() -> void:
+    day_count += 1
+    _days_completed_this_month += 1
+    if _days_completed_this_month >= REPRESENTATIVE_DAYS_PER_MONTH:
+        _settle_month_end()
+
+
+func _settle_month_end() -> void:
+    var four_day_net_result_yen: int = economy.cash_yen - _cash_at_month_start
+    var month_result_yen: int = four_day_net_result_yen * MONTH_MULTIPLIER
+    var adjustment_yen: int = month_result_yen - four_day_net_result_yen
+    var record: Dictionary = economy.record_month_end_settlement(
+        minute_of_day,
+        adjustment_yen,
+        {
+            "month_number": month_count + 1,
+            "four_day_net_result_yen": four_day_net_result_yen,
+            "month_result_yen": month_result_yen,
+        }
+    )
+    _record_event("month_end_settlement", {
+        "month_number": month_count + 1,
+        "four_day_net_result_yen": four_day_net_result_yen,
+        "month_result_yen": month_result_yen,
+        "settlement_id": record["settlement_id"],
+    })
+    month_count += 1
+    _days_completed_this_month = 0
+    _cash_at_month_start = economy.cash_yen
 
 
 func _step_restock_tasks() -> void:

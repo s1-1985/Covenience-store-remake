@@ -425,6 +425,15 @@ demonstrates a shelf staying empty after sellout; enabling it there would silent
 existing, tested behavior. A dedicated headless-smoke configuration exercises it instead (see
 decision 0089). Layout edits are now also blocked while any restock task is active.
 
+`minute_of_day` no longer just wraps silently forever: `VerticalSliceSimulation` now counts each
+midnight crossing as a day (`day_count`) and, every `REPRESENTATIVE_DAYS_PER_MONTH` (4) days,
+settles a month by taking the net cash change across those 4 days and multiplying it by
+`MONTH_MULTIPLIER` (8), applying the difference as a lump-sum `month_end_settlement` record. Unlike
+the demand/restock features above, this multiplier is `CONFIRMED_OFFICIAL` -- the guide states
+"1月=4日間×8" directly, matching `reference_sim/conveni_sim/month_aggregation.py`'s own citation --
+this client only ports the already-confirmed formula, it does not invent how each representative
+day's own result is computed (see decision 0090).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

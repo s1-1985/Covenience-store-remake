@@ -58,6 +58,19 @@ slice's existing sellout scenario deliberately demonstrates a shelf staying empt
 unit sells -- see decision 0089 for why enabling it by default would silently invalidate that
 scenario, and for the dedicated test configuration that exercises this feature instead.
 
+### Representative-day / month cycle
+
+`minute_of_day` used to just wrap silently at midnight forever, with no concept of a "day" or
+"month" at all. `vertical_slice_simulation.gd` now counts each midnight crossing as a day
+(`day_count`) and, every `REPRESENTATIVE_DAYS_PER_MONTH` (4) days, settles a month: it takes the
+net change in cash across those 4 days and multiplies it by `MONTH_MULTIPLIER` (8), applying the
+difference as a lump-sum `month_end_settlement`. Unlike the demand/restock features above, **this
+multiplier is `CONFIRMED_OFFICIAL`, not a guess** -- the strategy guide states it directly
+("1月=4日間×8"), and `reference_sim/conveni_sim/month_aggregation.py` already carries the same
+citation. What neither the guide nor this client invents is *how* each representative day's own
+result is computed internally; both simply turn an already-tracked 4-day cash change into the
+displayed monthly figure. See decision 0090.
+
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;
 its IDs and shape are not a reconstruction of an original receipt system.
@@ -133,7 +146,7 @@ runs both the Godot import and this executable smoke check in addition to the Py
   bindings, and sellout reconciliation.
 - `scripts/domain/economy_state.gd` — cash and completed-sale settlement state.
   It also retains immutable cause-neutral sale records for reconciliation and later observation
-  export.
+  export, plus month-end settlement records for the CONFIRMED_OFFICIAL 4-day x8 month cycle.
 - `scripts/domain/customer_state.gd` — one customer's route, phase, position, explicit visit plan,
   basket lines, and action timers.
 - `scripts/domain/customer_roster.gd` — unique customer identity, retained visit state, and the

@@ -336,6 +336,31 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
 
+    def test_representative_day_month_cycle_uses_the_confirmed_4x8_multiplier(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        economy = (GAME_ROOT / "scripts" / "domain" / "economy_state.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("const REPRESENTATIVE_DAYS_PER_MONTH := 4", simulation)
+        self.assertIn("const MONTH_MULTIPLIER := 8", simulation)
+        self.assertIn("CONFIRMED_OFFICIAL", simulation)
+        self.assertIn("func _advance_minute_of_day() -> void:", simulation)
+        self.assertIn("func _handle_day_boundary() -> void:", simulation)
+        self.assertIn("func _settle_month_end() -> void:", simulation)
+        self.assertIn("four_day_net_result_yen * MONTH_MULTIPLIER", simulation)
+        self.assertIn("func record_month_end_settlement(", economy)
+        self.assertIn(
+            "month-end cash must equal the pre-settlement cash plus the x8 adjustment", smoke
+        )
+        self.assertIn(
+            "the settlement record must retain month_result_yen = four_day_net_result_yen * 8",
+            smoke,
+        )
+
     def test_automatic_restock_task_assignment_is_disabled_by_default_and_provisional(self):
         simulation_config = self.config["simulation"]
         for key in (

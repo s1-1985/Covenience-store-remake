@@ -5,6 +5,8 @@ const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAX_STEPS := 256
+const REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST := 4
+const MONTH_MULTIPLIER_FOR_TEST := 8
 
 
 func _initialize() -> void:
@@ -404,6 +406,68 @@ func _initialize() -> void:
     var other_product = restock_simulation.inventory.get_product(other_product_id)
     if other_product.stock_units != other_product.initial_stock_units - 1:
         _fail("only the sold-out product should have been restocked; the other must be untouched")
+        return
+
+    var month_config: Dictionary = config.duplicate(true)
+    month_config["demand"] = {
+        "nearby_population": 0,
+        "customer_share_percent": 0.0,
+        "daily_visit_rate_per_population": 0.0,
+        "opening_minutes_per_day": 960,
+        "bad_weather_visit_multiplier": 0.0,
+        "is_bad_weather": false,
+        "rng_seed": 11,
+    }
+    var month_simulation = VerticalSliceSimulationScript.new(month_config)
+    if month_simulation.day_count != 0 or month_simulation.month_count != 0:
+        _fail("a freshly reset simulation must start at day 0 / month 0")
+        return
+
+    steps += _run_visit(month_simulation)
+    var cash_after_initial_sale: int = int(month_simulation.economy.cash_yen)
+    if not month_simulation.apply_explicit_restock("prototype-bread", "staff-2", 1, 50):
+        _fail("explicit restock during the month-end test setup must be accepted")
+        return
+    var cash_before_month_end: int = int(month_simulation.economy.cash_yen)
+    if cash_before_month_end != cash_after_initial_sale - 50:
+        _fail("the manual restock expense must be reflected in cash before month end")
+        return
+    var expected_four_day_net_result_yen: int = cash_before_month_end - 1000
+
+    var month_end_ticks := 0
+    while month_simulation.day_count < REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST and month_end_ticks < 20000:
+        month_simulation.tick_idle_for_demand()
+        month_end_ticks += 1
+    if month_end_ticks >= 20000:
+        _fail("advancing to the end of the representative month took too long")
+        return
+    if month_simulation.day_count != REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST:
+        _fail("day_count must equal REPRESENTATIVE_DAYS_PER_MONTH once the month ends")
+        return
+    if month_simulation.month_count != 1:
+        _fail("exactly one month-end settlement must have occurred")
+        return
+    if month_simulation.economy.month_end_records.size() != 1:
+        _fail("exactly one month_end settlement record must be retained")
+        return
+    if month_simulation.event_log.count_type("month_end_settlement") != 1:
+        _fail("exactly one month_end_settlement event must be recorded")
+        return
+    var expected_month_result_yen: int = (
+        expected_four_day_net_result_yen * MONTH_MULTIPLIER_FOR_TEST
+    )
+    var expected_cash_after_month_end: int = cash_before_month_end + (
+        expected_month_result_yen - expected_four_day_net_result_yen
+    )
+    if month_simulation.economy.cash_yen != expected_cash_after_month_end:
+        _fail("month-end cash must equal the pre-settlement cash plus the x8 adjustment")
+        return
+    var settlement_record: Dictionary = month_simulation.economy.month_end_records[0]
+    if int(settlement_record["details"]["four_day_net_result_yen"]) != expected_four_day_net_result_yen:
+        _fail("the settlement record must retain the exact four-day net result it aggregated")
+        return
+    if int(settlement_record["details"]["month_result_yen"]) != expected_month_result_yen:
+        _fail("the settlement record must retain month_result_yen = four_day_net_result_yen * 8")
         return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
