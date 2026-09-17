@@ -122,7 +122,7 @@ class CustomerArchetypeTests(unittest.TestCase):
             self.assertIn(row.archetype_id, archetype_ids)
 
     def test_visit_schedule_has_140_rows_and_covers_every_archetype(self):
-        self.assertEqual(len(CUSTOMER_VISIT_SCHEDULE), 140)
+        self.assertEqual(len(CUSTOMER_VISIT_SCHEDULE), 143)
         covered = {row.archetype_id for row in CUSTOMER_VISIT_SCHEDULE}
         self.assertEqual(covered, {a.id for a in CUSTOMER_ARCHETYPES})
 
@@ -208,17 +208,21 @@ class ProductSeasonalDemandTests(unittest.TestCase):
             self.assertIsNone(by_id[category_id].seasonal_demand)
 
 
-class ProductRestockQuantityTests(unittest.TestCase):
-    # Transcribed on a second, higher-fidelity re-read of the same DATA LIST
-    # product table (book page 85) that decision 0078 could not read with
-    # confidence; see decision 0080. Every category's already-confirmed
-    # price/cost_rate/margin_rate matched exactly on this re-read, which is
-    # the cross-check that raised confidence in this new column.
-    def test_restock_quantities_match_the_guides_data_list_table(self):
+class ProductProfitPerUnitTests(unittest.TestCase):
+    # A higher-resolution re-read of the same DATA LIST product table (book
+    # page 85) found no "1回補給" (restock quantity) column at all: the
+    # guide's actual trailing columns are 1個の利益(profit per unit) / 商品棚
+    # (compatible fixtures) / 最大維持費(max maintenance) / 最大収容力
+    # (max capacity) / 需要数例(demand example). Every value previously filed
+    # under a `restock_quantity` field matched this "1個の利益" column
+    # exactly (price * margin_rate / 100), confirming the earlier field was
+    # mislabeled rather than simply low-confidence; see decision 0080 and
+    # `ProductCategoryPricing.profit_per_unit_yen`'s docstring.
+    def test_profit_per_unit_matches_the_guides_data_list_table(self):
         by_id = {c.id: c for c in PRODUCT_CATEGORY_PRICING}
         expected = {
             "cold_drink": 55,
-            "hot_drink": 60,
+            "hot_drink": 55,
             "alcohol": 300,
             "bento": 160,
             "bread": 150,
@@ -245,12 +249,45 @@ class ProductRestockQuantityTests(unittest.TestCase):
             "underwear": 400,
             "cash": 0,
         }
-        for category_id, quantity in expected.items():
-            self.assertEqual(by_id[category_id].restock_quantity.value, quantity, category_id)
+        for category_id, profit in expected.items():
+            self.assertEqual(by_id[category_id].profit_per_unit_yen.value, profit, category_id)
+            category = by_id[category_id]
+            price = category.standard_retail_price_yen.value
+            margin = category.margin_rate_pct.value
+            self.assertEqual(profit, price * margin // 100, category_id)
 
-    def test_every_category_has_a_restock_quantity(self):
+    def test_every_category_has_a_profit_per_unit(self):
         for category in PRODUCT_CATEGORY_PRICING:
-            self.assertIsNotNone(category.restock_quantity, category.id)
+            self.assertIsNotNone(category.profit_per_unit_yen, category.id)
+
+
+class ProductFixtureCapacityTests(unittest.TestCase):
+    # Same table, its two other trailing numeric columns (see decision
+    # 0080's follow-up note): 最大維持費(max_maintenance_yen_per_day) and
+    # 最大収容力(max_capacity), the highest maintenance/capacity among the
+    # fixtures a category can be displayed on.
+    def test_every_category_has_max_maintenance_and_capacity(self):
+        for category in PRODUCT_CATEGORY_PRICING:
+            self.assertIsNotNone(category.max_maintenance_yen_per_day, category.id)
+            self.assertIsNotNone(category.max_capacity, category.id)
+
+    def test_spot_check_against_the_guide(self):
+        by_id = {c.id: c for c in PRODUCT_CATEGORY_PRICING}
+        self.assertEqual(by_id["cold_drink"].max_maintenance_yen_per_day.value, 130)
+        self.assertEqual(by_id["cold_drink"].max_capacity.value, 90)
+        self.assertEqual(by_id["tobacco"].max_maintenance_yen_per_day.value, 20)
+        self.assertEqual(by_id["tobacco"].max_capacity.value, 40)
+        self.assertEqual(by_id["bread"].max_maintenance_yen_per_day.value, 4)
+        self.assertEqual(by_id["bread"].max_capacity.value, 120)
+
+    def test_demand_example_is_none_only_for_cash(self):
+        # The guide prints "?" instead of a number for 現金's 需要数例 cell.
+        by_id = {c.id: c for c in PRODUCT_CATEGORY_PRICING}
+        self.assertIsNone(by_id["cash"].demand_example_count)
+        for category in PRODUCT_CATEGORY_PRICING:
+            if category.id == "cash":
+                continue
+            self.assertIsNotNone(category.demand_example_count, category.id)
 
 
 if __name__ == "__main__":

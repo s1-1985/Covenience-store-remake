@@ -201,10 +201,23 @@ STORE_VARIANTS = (
             "PS store-selection screenshot",
             "Exact top/bottom orientation mapping is still unknown.",
         ),
+        # RESOLVED (2026-09-17, explicit one-off user instruction: on a
+        # strategy-guide vs. existing-value conflict, take the guide's
+        # value). The guide's 店舗データ table (book pages 106-109) prints
+        # each store size as two orientations with distinct 店舗内(editable
+        # floor) dimensions: 店舗1=5x8, 店舗2=8x5 (small); 店舗3=7x10,
+        # 店舗4=10x7 (medium); 店舗5=8x12, 店舗6=12x8 (large). Neither
+        # matched the previous (8,13)/(13,14) visual-reconstruction values,
+        # which are superseded here. The guide does not label which of its
+        # two orientations is this codebase's "top" vs. "bottom" id; store1/
+        # 3/5 are assigned to *_top and store2/4/6 to *_bottom purely by
+        # matching list order on both sides -- an inference, not a confirmed
+        # mapping. See docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md.
         editable_floor=EvidenceValue(
-            (8, 13),
-            EvidenceLevel.CONFIRMED_VISUAL,
-            "PS small-store visual reconstruction",
+            (5, 8),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            STRATEGY_GUIDE,
+            "店舗1's 店舗内 dimensions; top/bottom orientation match to store1/2 is inferred, not confirmed.",
         ),
         unlocked_at_beginner_start=EvidenceValue(
             True,
@@ -223,7 +236,12 @@ STORE_VARIANTS = (
         # Independently confirmed by direct video observation (V02 Console
         # Archives PS5 video 09:12; video-v02-opening-transactions-2026-09-08.md).
         construction_price_yen=EvidenceValue(6_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
-        editable_floor=None,
+        editable_floor=EvidenceValue(
+            (8, 5),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            STRATEGY_GUIDE,
+            "店舗2's 店舗内 dimensions; top/bottom orientation match to store1/2 is inferred, not confirmed.",
+        ),
         unlocked_at_beginner_start=EvidenceValue(
             True,
             EvidenceLevel.CONFIRMED_VISUAL,
@@ -237,7 +255,14 @@ STORE_VARIANTS = (
         # Independently confirmed by direct video observation (V02 Console
         # Archives PS5 video 09:05; 12:05-12:10; video-v02-opening-transactions-2026-09-08.md).
         construction_price_yen=EvidenceValue(12_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
-        editable_floor=None,
+        # See small_top's comment: guide's 店舗3 店舗内 dimensions; top/bottom
+        # match to store3/4 is inferred by list order, not confirmed.
+        editable_floor=EvidenceValue(
+            (7, 10),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            STRATEGY_GUIDE,
+            "店舗3's 店舗内 dimensions; top/bottom orientation match to store3/4 is inferred, not confirmed.",
+        ),
         unlocked_at_beginner_start=EvidenceValue(
             False,
             EvidenceLevel.CONFIRMED_VISUAL,
@@ -249,7 +274,12 @@ STORE_VARIANTS = (
         size_tier="medium",
         orientation=None,
         construction_price_yen=EvidenceValue(12_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
-        editable_floor=None,
+        editable_floor=EvidenceValue(
+            (10, 7),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            STRATEGY_GUIDE,
+            "店舗4's 店舗内 dimensions; top/bottom orientation match to store3/4 is inferred, not confirmed.",
+        ),
         unlocked_at_beginner_start=EvidenceValue(
             False,
             EvidenceLevel.CONFIRMED_VISUAL,
@@ -270,11 +300,16 @@ STORE_VARIANTS = (
         # video-v02-opening-transactions-2026-09-08.md). See
         # docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md.
         construction_price_yen=EvidenceValue(18_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        # RESOLVED (2026-09-17): see small_top's comment above. Guide's 店舗5
+        # 店舗内 dimensions; superseded the wiki-derived 13x14, which did not
+        # match either the guide's 店舗内 or 店舗外周 columns for any store
+        # (see the crosscheck note). Top/bottom match to store5/6 is
+        # inferred by list order, not confirmed.
         editable_floor=EvidenceValue(
-            (13, 14),
-            EvidenceLevel.CONFIRMED_COMMUNITY,
-            WIKI + "%E5%86%85%E8%A3%85",
-            "Large-store 13x14 case; exact variant/orientation mapping remains unresolved.",
+            (8, 12),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            STRATEGY_GUIDE,
+            "店舗5's 店舗内 dimensions; top/bottom orientation match to store5/6 is inferred, not confirmed.",
         ),
         unlocked_at_beginner_start=EvidenceValue(
             False,
@@ -289,7 +324,12 @@ STORE_VARIANTS = (
         # Independently confirmed by direct video observation (V02 Console
         # Archives PS5 video 09:06; video-v02-opening-transactions-2026-09-08.md).
         construction_price_yen=EvidenceValue(18_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
-        editable_floor=None,
+        editable_floor=EvidenceValue(
+            (12, 8),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            STRATEGY_GUIDE,
+            "店舗6's 店舗内 dimensions; top/bottom orientation match to store5/6 is inferred, not confirmed.",
+        ),
         unlocked_at_beginner_start=EvidenceValue(
             False,
             EvidenceLevel.CONFIRMED_VISUAL,
@@ -315,17 +355,19 @@ FIXTURES = (
     FixtureDefinition(
         "bench",
         EvidenceValue((1, 1), EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
-        # NOTE: strategy guide reports 160 yen/day maintenance for the bench,
-        # not 168. This is a direct numeric conflict between two sources; see
-        # docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md.
-        # The wiki-derived 168 value is kept as-is rather than silently
-        # overwritten.
-        EvidenceValue(168, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
-        # NOTE: strategy guide reports a +4 service_bonus ("サービス値が4上昇する"),
-        # not +3. Same conflict pattern as the maintenance figure above; the
-        # wiki-derived 3 is kept, not silently overwritten. See the
-        # crosscheck research note.
-        EvidenceValue(3, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
+        # RESOLVED (2026-09-17, explicit one-off user instruction: on a
+        # strategy-guide vs. existing-value conflict, take the guide's
+        # value). Guide reports 160 yen/day maintenance
+        # ("維持費160円/日"), independently confirmed twice more (fixture
+        # data table and オールテクニックガイド, book pages 69/118-119); the
+        # wiki-derived 168 previously kept here is superseded. See
+        # docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md for
+        # the earlier never-overwrite record of this conflict.
+        EvidenceValue(160, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        # RESOLVED (same instruction/session as above): guide reports +4
+        # service_bonus ("サービス値が4上昇する"), independently confirmed
+        # twice; the wiki-derived +3 previously kept here is superseded.
+        EvidenceValue(4, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         purchase_price_yen=EvidenceValue(2_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         placement=EvidenceValue("indoor_outdoor", EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
@@ -333,10 +375,11 @@ FIXTURES = (
         "fountain",
         EvidenceValue((2, 2), EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
         EvidenceValue(2_400, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
-        # NOTE: strategy guide reports a +30 service_bonus ("サービス値が30上昇する"),
-        # not +25. Same conflict pattern as bench above; the wiki-derived 25
-        # is kept, not silently overwritten. See the crosscheck research note.
-        EvidenceValue(25, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%86%85%E8%A3%85"),
+        # RESOLVED (2026-09-17, same instruction as bench above): guide
+        # reports +30 service_bonus ("サービス値が30上昇する"), independently
+        # confirmed twice; the wiki-derived +25 previously kept here is
+        # superseded.
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         # Strategy guide confirms the same 2400 yen/day maintenance.
         purchase_price_yen=EvidenceValue(5_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         placement=EvidenceValue("indoor_outdoor", EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
@@ -589,20 +632,29 @@ def _sg_category(
     cost_rate_pct: int,
     margin_rate_pct: int,
     seasonal_demand: Optional[str] = None,
-    restock_quantity: Optional[int] = None,
+    profit_per_unit_yen: Optional[int] = None,
+    max_maintenance_yen_per_day: Optional[int] = None,
+    max_capacity: Optional[int] = None,
+    demand_example_count: Optional[int] = None,
+    compatible_fixtures_text: Optional[str] = None,
 ) -> ProductCategoryPricing:
     """Build one strategy-guide product-category pricing row with uniform provenance.
 
-    Source: docs/research/strategy-guide-full-decode-2026-09-16.md section 3.
-    This is category-level standard pricing, not a per-SKU price list; no
-    prior baseline_data.py table covered this, so there is nothing to
-    cross-check or conflict with here. `seasonal_demand` and
-    `restock_quantity` come from the guide's DATA LIST product table's own
-    "季節" (season) and "1回補給" (restock quantity) columns (book page 85).
-    That table has two further trailing numeric columns which remain
-    unmapped, since their exact semantics could not be read with confidence
-    even on a second, higher-fidelity re-read of the same page; see decision
-    0080.
+    Source: docs/research/strategy-guide-full-decode-2026-09-16.md section 3,
+    re-read against the guide's DATA LIST product table (book page 85) on a
+    higher-resolution scan. This is category-level standard pricing, not a
+    per-SKU price list; no prior baseline_data.py table covered this, so
+    there is nothing to cross-check or conflict with here.
+
+    `seasonal_demand` comes from that table's own "季節" (season) column.
+    The remaining four keyword args come from its 定価/原価率 columns'
+    trailing five columns -- 1個の利益(profit_per_unit_yen) / 商品棚
+    (compatible_fixtures_text) / 最大維持費(max_maintenance_yen_per_day) /
+    最大収容力(max_capacity) / 需要数例(demand_example_count) -- which an
+    earlier, lower-resolution read of this same page could not resolve with
+    confidence and mapped incorrectly (see `ProductCategoryPricing`'s
+    `profit_per_unit_yen` docstring for the correction record; decision
+    0080 documents the original, mistaken reading).
     """
 
     evidence = EvidenceLevel.CONFIRMED_OFFICIAL
@@ -617,9 +669,35 @@ def _sg_category(
             if seasonal_demand is not None
             else None
         ),
-        restock_quantity=(
-            EvidenceValue(restock_quantity, evidence, STRATEGY_GUIDE)
-            if restock_quantity is not None
+        profit_per_unit_yen=(
+            EvidenceValue(profit_per_unit_yen, evidence, STRATEGY_GUIDE)
+            if profit_per_unit_yen is not None
+            else None
+        ),
+        max_maintenance_yen_per_day=(
+            EvidenceValue(max_maintenance_yen_per_day, evidence, STRATEGY_GUIDE)
+            if max_maintenance_yen_per_day is not None
+            else None
+        ),
+        max_capacity=(
+            EvidenceValue(max_capacity, evidence, STRATEGY_GUIDE)
+            if max_capacity is not None
+            else None
+        ),
+        demand_example_count=(
+            EvidenceValue(
+                demand_example_count,
+                evidence,
+                STRATEGY_GUIDE,
+                note="Guide's own caption: a worked example under one unstated "
+                "condition set, not a demand formula or coefficient.",
+            )
+            if demand_example_count is not None
+            else None
+        ),
+        compatible_fixtures_text=(
+            EvidenceValue(compatible_fixtures_text, evidence, STRATEGY_GUIDE)
+            if compatible_fixtures_text is not None
             else None
         ),
     )
@@ -628,35 +706,40 @@ def _sg_category(
 # Category-level standard price / cost-rate / margin-rate table, transcribed
 # from the strategy guide (docs/research/strategy-guide-full-decode-2026-09-16.md
 # section 3). `cash` (現金, the special zero-margin category used for cash-like
-# instruments) is included as-is from the source table.
+# instruments) is included as-is from the source table. The five trailing
+# keyword args on every row (profit_per_unit_yen through
+# compatible_fixtures_text) were re-read from a higher-resolution scan of the
+# same DATA LIST product table (book page 85); see `_sg_category`'s
+# docstring for why `profit_per_unit_yen` replaces a previous, incorrect
+# `restock_quantity` field of the same values.
 PRODUCT_CATEGORY_PRICING: tuple[ProductCategoryPricing, ...] = (
-    _sg_category("cold_drink", "冷たい飲料", standard_retail_price_yen=110, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="summer", restock_quantity=55),
-    _sg_category("hot_drink", "温かい飲料", standard_retail_price_yen=110, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="winter", restock_quantity=60),
-    _sg_category("alcohol", "酒類", standard_retail_price_yen=1_000, cost_rate_pct=70, margin_rate_pct=30, restock_quantity=300),
-    _sg_category("bento", "弁当類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=160),
-    _sg_category("bread", "パン類", standard_retail_price_yen=300, cost_rate_pct=50, margin_rate_pct=50, restock_quantity=150),
-    _sg_category("instant_food", "インスタント類", standard_retail_price_yen=150, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=60),
-    _sg_category("snacks", "菓子類", standard_retail_price_yen=200, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=80),
-    _sg_category("books", "本類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=160),
-    _sg_category("tobacco", "たばこ", standard_retail_price_yen=250, cost_rate_pct=70, margin_rate_pct=30, restock_quantity=75),
-    _sg_category("ice_cream", "アイスクリーム", standard_retail_price_yen=100, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="summer", restock_quantity=50),
-    _sg_category("stationery", "文房具", standard_retail_price_yen=150, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=60),
-    _sg_category("retort_food", "レトルト類", standard_retail_price_yen=600, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=240),
-    _sg_category("electronics", "電機製品類", standard_retail_price_yen=800, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=320),
-    _sg_category("seasoning", "調味料類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=160),
-    _sg_category("vegetables", "野菜類", standard_retail_price_yen=1_500, cost_rate_pct=50, margin_rate_pct=50, restock_quantity=750),
-    _sg_category("frozen_food", "冷凍食品類", standard_retail_price_yen=500, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=200),
-    _sg_category("fish", "魚類", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=400),
-    _sg_category("oden", "おでん", standard_retail_price_yen=250, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="winter", restock_quantity=125),
-    _sg_category("meat", "肉類", standard_retail_price_yen=1_200, cost_rate_pct=50, margin_rate_pct=50, restock_quantity=600),
-    _sg_category("daily_goods", "日用品", standard_retail_price_yen=800, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=320),
-    _sg_category("copy_paper", "コピー用紙", standard_retail_price_yen=50, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=20),
-    _sg_category("event_goods", "イベント商品", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=400),
-    _sg_category("parcel_delivery_form", "宅急便申込書", standard_retail_price_yen=1_000, cost_rate_pct=80, margin_rate_pct=20, restock_quantity=200),
-    _sg_category("chinese_steamed_bun", "中華まん", standard_retail_price_yen=170, cost_rate_pct=60, margin_rate_pct=40, seasonal_demand="winter", restock_quantity=68),
-    _sg_category("medicine", "薬品", standard_retail_price_yen=1_500, cost_rate_pct=70, margin_rate_pct=30, restock_quantity=450),
-    _sg_category("underwear", "下着類", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40, restock_quantity=400),
-    _sg_category("cash", "現金", standard_retail_price_yen=0, cost_rate_pct=100, margin_rate_pct=0, restock_quantity=0),
+    _sg_category("cold_drink", "冷たい飲料", standard_retail_price_yen=110, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="summer", profit_per_unit_yen=55, max_maintenance_yen_per_day=130, max_capacity=90, demand_example_count=48, compatible_fixtures_text="冷蔵棚/ワゴン,飲料自販・冷蔵/温冷"),
+    _sg_category("hot_drink", "温かい飲料", standard_retail_price_yen=110, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="winter", profit_per_unit_yen=55, max_maintenance_yen_per_day=80, max_capacity=30, demand_example_count=37, compatible_fixtures_text="温ジュース,飲料自販・温冷"),
+    _sg_category("alcohol", "酒類", standard_retail_price_yen=1_000, cost_rate_pct=70, margin_rate_pct=30, profit_per_unit_yen=300, max_maintenance_yen_per_day=130, max_capacity=90, demand_example_count=23, compatible_fixtures_text="冷蔵棚/ワゴン,飲料自販・冷蔵"),
+    _sg_category("bento", "弁当類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=160, max_maintenance_yen_per_day=130, max_capacity=120, demand_example_count=28, compatible_fixtures_text="常温棚/ワゴン,冷蔵棚/ワゴン"),
+    _sg_category("bread", "パン類", standard_retail_price_yen=300, cost_rate_pct=50, margin_rate_pct=50, profit_per_unit_yen=150, max_maintenance_yen_per_day=4, max_capacity=120, demand_example_count=22, compatible_fixtures_text="常温棚/ワゴン"),
+    _sg_category("instant_food", "インスタント類", standard_retail_price_yen=150, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=60, max_maintenance_yen_per_day=4, max_capacity=120, demand_example_count=26, compatible_fixtures_text="常温棚/ワゴン"),
+    _sg_category("snacks", "菓子類", standard_retail_price_yen=200, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=80, max_maintenance_yen_per_day=4, max_capacity=120, demand_example_count=37, compatible_fixtures_text="常温棚/ワゴン"),
+    _sg_category("books", "本類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=160, max_maintenance_yen_per_day=4, max_capacity=120, demand_example_count=7, compatible_fixtures_text="常温棚/ワゴン"),
+    _sg_category("tobacco", "たばこ", standard_retail_price_yen=250, cost_rate_pct=70, margin_rate_pct=30, profit_per_unit_yen=75, max_maintenance_yen_per_day=20, max_capacity=40, demand_example_count=23, compatible_fixtures_text="たばこ自販"),
+    _sg_category("ice_cream", "アイスクリーム", standard_retail_price_yen=100, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="summer", profit_per_unit_yen=50, max_maintenance_yen_per_day=130, max_capacity=60, demand_example_count=19, compatible_fixtures_text="冷凍棚/ワゴン"),
+    _sg_category("stationery", "文房具", standard_retail_price_yen=150, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=60, max_maintenance_yen_per_day=4, max_capacity=120, demand_example_count=4, compatible_fixtures_text="常温棚/ワゴン"),
+    _sg_category("retort_food", "レトルト類", standard_retail_price_yen=600, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=240, max_maintenance_yen_per_day=4, max_capacity=120, demand_example_count=17, compatible_fixtures_text="常温棚/ワゴン"),
+    _sg_category("electronics", "電機製品類", standard_retail_price_yen=800, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=320, max_maintenance_yen_per_day=4, max_capacity=120, demand_example_count=8, compatible_fixtures_text="常温棚/ワゴン"),
+    _sg_category("seasoning", "調味料類", standard_retail_price_yen=400, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=160, max_maintenance_yen_per_day=4, max_capacity=120, demand_example_count=1, compatible_fixtures_text="常温棚/ワゴン"),
+    _sg_category("vegetables", "野菜類", standard_retail_price_yen=1_500, cost_rate_pct=50, margin_rate_pct=50, profit_per_unit_yen=750, max_maintenance_yen_per_day=130, max_capacity=90, demand_example_count=18, compatible_fixtures_text="冷蔵棚/ワゴン"),
+    _sg_category("frozen_food", "冷凍食品類", standard_retail_price_yen=500, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=200, max_maintenance_yen_per_day=130, max_capacity=60, demand_example_count=1, compatible_fixtures_text="冷凍棚/ワゴン"),
+    _sg_category("fish", "魚類", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=400, max_maintenance_yen_per_day=130, max_capacity=90, demand_example_count=18, compatible_fixtures_text="冷蔵棚/ワゴン"),
+    _sg_category("oden", "おでん", standard_retail_price_yen=250, cost_rate_pct=50, margin_rate_pct=50, seasonal_demand="winter", profit_per_unit_yen=125, max_maintenance_yen_per_day=80, max_capacity=10, demand_example_count=14, compatible_fixtures_text="おでん専用ケース"),
+    _sg_category("daily_goods", "日用品", standard_retail_price_yen=800, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=320, max_maintenance_yen_per_day=4, max_capacity=120, demand_example_count=16, compatible_fixtures_text="常温棚/ワゴン"),
+    _sg_category("copy_paper", "コピー用紙", standard_retail_price_yen=50, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=20, max_maintenance_yen_per_day=60, max_capacity=40, demand_example_count=5, compatible_fixtures_text="コピー機"),
+    _sg_category("parcel_delivery_form", "宅急便申込書", standard_retail_price_yen=1_000, cost_rate_pct=80, margin_rate_pct=20, profit_per_unit_yen=200, max_maintenance_yen_per_day=80, max_capacity=90, demand_example_count=4, compatible_fixtures_text="レジ"),
+    _sg_category("medicine", "薬品", standard_retail_price_yen=1_500, cost_rate_pct=70, margin_rate_pct=30, profit_per_unit_yen=450, max_maintenance_yen_per_day=130, max_capacity=120, demand_example_count=13, compatible_fixtures_text="常温棚/ワゴン,冷蔵棚/ワゴン"),
+    _sg_category("underwear", "下着類", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=400, max_maintenance_yen_per_day=4, max_capacity=120, demand_example_count=28, compatible_fixtures_text="常温棚/ワゴン"),
+    _sg_category("event_goods", "イベント商品", standard_retail_price_yen=1_000, cost_rate_pct=60, margin_rate_pct=40, profit_per_unit_yen=400, max_maintenance_yen_per_day=80, max_capacity=60, demand_example_count=12, compatible_fixtures_text="イベントケース棚/ワゴン"),
+    _sg_category("chinese_steamed_bun", "中華まん", standard_retail_price_yen=170, cost_rate_pct=60, margin_rate_pct=40, seasonal_demand="winter", profit_per_unit_yen=68, max_maintenance_yen_per_day=80, max_capacity=20, demand_example_count=7, compatible_fixtures_text="中華まん専用ケース"),
+    _sg_category("meat", "肉類", standard_retail_price_yen=1_200, cost_rate_pct=50, margin_rate_pct=50, profit_per_unit_yen=600, max_maintenance_yen_per_day=130, max_capacity=90, demand_example_count=10, compatible_fixtures_text="冷蔵棚/ワゴン"),
+    _sg_category("cash", "現金", standard_retail_price_yen=0, cost_rate_pct=100, margin_rate_pct=0, profit_per_unit_yen=0, max_maintenance_yen_per_day=100, max_capacity=90, compatible_fixtures_text="キャッシュディスペンサー"),
 )
 
 
@@ -886,174 +969,182 @@ CUSTOMER_ARCHETYPES: tuple[CustomerArchetypeDefinition, ...] = (
 )
 
 
-# Per-archetype, per-visit-time schedule rows (140 rows across the 21
+# Per-archetype, per-visit-time schedule rows (143 rows across the 21
 # archetypes above), transcribed directly from the strategy guide's primary
-# page scans (book pages 134-143). The guide's own instruction (section 44)
-# flagged this table as needing manual image-row cross-checking; it has now
-# been transcribed, but `behavior_stats_raw`'s exact per-digit reading
-# carries more uncertainty than the larger-font time/budget/product columns
-# -- see docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md.
+# page scans (book pages 134-143). This replaces an earlier transcription
+# pass whose `behavior_stats_raw` tuples were unreliable (missing digits,
+# 7-9 elements instead of 10) because the scan resolution then available
+# could not resolve the dense per-row digit blocks with confidence (see the
+# now-superseded uncertainty note this file used to carry, and
+# docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md). A
+# subsequently supplied higher-resolution scan of the same pages renders the
+# 10-column ス/素/マ/集/買/価/距/サ/平/休 header and every data row legibly
+# with no ambiguity, so every row below has been re-read from that scan and
+# every tuple has exactly 10 elements in the guide's own printed order.
 CUSTOMER_VISIT_SCHEDULE: tuple[CustomerVisitProfile, ...] = (
-    # 女子大生 (18~23歳)
-    _sg_visit("female_college_student", "6:00", 120, "徒歩", (50, 80, 40, 30, 50, 80, 20, 100, 50), 500, "bread", ("cold_drink",)),
-    _sg_visit("female_college_student", "7:00", 60, "自転車", (50, 90, 50, 10, 40, 80, 20, 100, 50), 800, "bread", ("hot_drink", "snacks", "daily_goods")),
-    _sg_visit("female_college_student", "6:00", 120, "徒歩", (50, 80, 40, 30, 50, 80, 20, 100, 50), 1000, "bread", ("cold_drink", "snacks", "medicine")),
-    _sg_visit("female_college_student", "7:00", 120, "徒歩", (50, 90, 50, 30, 50, 80, 20, 100, 50), 700, "bread", ("hot_drink", "books")),
-    _sg_visit("female_college_student", "11:00", 120, "徒歩", (50, 100, 60, 30, 50, 60, 20, 100, 50), 800, "bento", ("cold_drink", "snacks", "copy_paper")),
-    _sg_visit("female_college_student", "12:00", 60, "自転車", (50, 100, 80, 20, 30, 40, 20, 100, 50), 1000, "bread", ("cold_drink", "books", "tobacco")),
-    _sg_visit("female_college_student", "12:00", 120, "徒歩", (50, 100, 60, 30, 50, 60, 20, 100, 50), 800, "bento", ("cold_drink", "snacks", "event_goods")),
-    _sg_visit("female_college_student", "17:00", 120, "徒歩", (50, 100, 60, 30, 50, 60, 20, 100, 50), 1000, "bento", ("hot_drink", "ice_cream", "copy_paper")),
-    _sg_visit("female_college_student", "18:00", 60, "自転車", (60, 100, 60, 40, 30, 80, 20, 100, 50), 1000, "instant_food", ("hot_drink", "snacks", "tobacco")),
-    _sg_visit("female_college_student", "18:00", 120, "徒歩", (60, 100, 60, 40, 30, 80, 20, 100, 50), 1500, "retort_food", ("cold_drink", "copy_paper", "stationery")),
-    _sg_visit("female_college_student", "19:00", 120, "徒歩", (60, 100, 60, 50, 30, 60, 20, 100, 50), 3000, "event_goods", ("snacks", "books", "stationery")),
-    _sg_visit("female_college_student", "19:00", 120, "徒歩", (50, 100, 60, 30, 50, 60, 20, 100, 50), 1000, "bento", ("cold_drink", "snacks", "chinese_steamed_bun")),
-    _sg_visit("female_college_student", "20:00", 60, "自転車", (50, 100, 60, 30, 50, 60, 20, 100, 50), 1000, "bento", ("cold_drink", "snacks", "alcohol")),
-    _sg_visit("female_college_student", "20:00", 60, "徒歩", (50, 100, 60, 30, 50, 60, 20, 100, 50), 3000, "copy_paper", ("cold_drink", "snacks", "ice_cream")),
-    _sg_visit("female_college_student", "20:00", 60, "自動車", (50, 100, 60, 30, 50, 60, 20, 100, 50), 5000, "parcel_delivery_form", ("hot_drink", "snacks", "event_goods")),
-    _sg_visit("female_college_student", "20:00", 180, "徒歩", (50, 100, 60, 90, 70, 30, 20, 100, 50), 1500, "snacks", ("instant_food", "ice_cream", "books")),
-    _sg_visit("female_college_student", "21:00", 180, "自転車", (90, 100, 60, 10, 10, 50, 20, 100, 50), 3000, "medicine", ("daily_goods",)),
-    _sg_visit("female_college_student", "17:00", 60, "自動車", (80, 100, 60, 70, 60, 20, 80, 20, 100), 3000, "cold_drink", ("ice_cream", "snacks", "event_goods")),
-    # 大学生 (18~23歳)
-    _sg_visit("college_student", "6:00", 120, "徒歩", (90, 100, 60, 10, 70, 60, 50, 100, 50), 400, "bread", ("cold_drink",)),
-    _sg_visit("college_student", "6:00", 120, "自転車", (90, 100, 60, 30, 80, 40, 10, 100, 50), 800, "bento", ("hot_drink", "tobacco", "stationery")),
-    _sg_visit("college_student", "7:00", 120, "徒歩", (90, 100, 60, 30, 80, 50, 10, 100, 50), 400, "bread", ("cold_drink", "books", "stationery")),
-    _sg_visit("college_student", "7:00", 120, "徒歩", (90, 100, 60, 30, 80, 50, 10, 100, 50), 800, "bento", ("hot_drink", "tobacco", "copy_paper")),
-    _sg_visit("college_student", "6:00", 120, "自転車", (90, 100, 40, 10, 100, 10, 10, 100, 50), 500, "tobacco", ("cold_drink",)),
-    _sg_visit("college_student", "11:00", 120, "徒歩", (90, 100, 60, 30, 70, 60, 10, 100, 50), 400, "bread", ("cold_drink",)),
-    _sg_visit("college_student", "12:00", 120, "徒歩", (90, 100, 60, 30, 70, 60, 10, 100, 50), 800, "bento", ("hot_drink", "tobacco", "chinese_steamed_bun")),
-    _sg_visit("college_student", "12:00", 120, "徒歩", (90, 100, 60, 30, 70, 60, 10, 100, 50), 800, "bread", ("cold_drink", "tobacco", "chinese_steamed_bun")),
-    _sg_visit("college_student", "13:00", 120, "徒歩", (90, 100, 60, 30, 70, 60, 10, 100, 50), 800, "bento", ("cold_drink", "books")),
-    _sg_visit("college_student", "13:00", 120, "自転車", (100, 100, 40, 10, 100, 10, 10, 100, 50), 500, "tobacco", ("cold_drink",)),
-    _sg_visit("college_student", "17:00", 120, "徒歩", (90, 100, 60, 40, 70, 60, 20, 100, 50), 1200, "bento", ("cold_drink", "books", "daily_goods")),
-    _sg_visit("college_student", "18:00", 120, "徒歩", (90, 100, 60, 40, 70, 60, 20, 100, 50), 1200, "instant_food", ("cold_drink", "books", "copy_paper")),
-    _sg_visit("college_student", "18:00", 120, "徒歩", (90, 100, 60, 40, 70, 60, 20, 100, 50), 1200, "bento", ("cold_drink", "alcohol", "tobacco", "oden")),
-    _sg_visit("college_student", "19:00", 120, "徒歩", (90, 100, 60, 80, 80, 80, 50, 40, 100, 50), 1200, "meat", ("vegetables", "fish", "seasoning")),
-    _sg_visit("college_student", "21:00", 120, "徒歩", (90, 100, 60, 40, 70, 60, 20, 100, 50), 1200, "instant_food", ("hot_drink", "books", "stationery")),
-    _sg_visit("college_student", "22:00", 120, "徒歩", (90, 100, 60, 40, 70, 60, 20, 100, 50), 1200, "retort_food", ("chinese_steamed_bun", "hot_drink", "snacks")),
-    _sg_visit("college_student", "22:00", 120, "自転車", (90, 100, 60, 90, 40, 30, 10, 100, 50), 3000, "alcohol", ("oden", "snacks", "tobacco")),
-    _sg_visit("college_student", "22:00", 120, "バイク", (90, 100, 60, 10, 100, 10, 100, 50), 2000, "tobacco", ("hot_drink", "alcohol", "chinese_steamed_bun")),
-    _sg_visit("college_student", "22:00", 120, "バイク", (90, 100, 60, 90, 60, 20, 100, 50), 3000, "ice_cream", ("instant_food", "frozen_food", "chinese_steamed_bun")),
-    _sg_visit("college_student", "23:00", 120, "徒歩", (90, 100, 60, 70, 50, 10, 100, 50), 1200, "fish", ("alcohol", "tobacco", "oden")),
-    _sg_visit("college_student", "23:00", 180, "バイク", (90, 100, 60, 90, 60, 10, 100, 50), 3000, "copy_paper", ("hot_drink", "stationery", "tobacco")),
-    _sg_visit("college_student", "0:00", 120, "徒歩", (90, 100, 60, 50, 10, 100, 50), 1200, "bento", ("alcohol", "books", "oden")),
-    _sg_visit("college_student", "2:00", 120, "徒歩", (60, 60, 50, 80, 10, 20, 100, 50), 1200, "bento", ("oden", "chinese_steamed_bun", "snacks")),
-    _sg_visit("college_student", "3:00", 120, "徒歩", (90, 100, 60, 50, 10, 20, 100, 50), 2000, "tobacco", ("hot_drink", "alcohol", "chinese_steamed_bun")),
-    # サラリーマン (25~40歳)
+    # 女子大生 (18~23歳) -- 20 rows
+    _sg_visit("female_college_student", "6:00", 120, "徒歩", (50, 80, 40, 10, 30, 50, 80, 20, 100, 50), 500, "bread", ("cold_drink",)),
+    _sg_visit("female_college_student", "7:00", 60, "自転車", (50, 90, 50, 10, 50, 80, 40, 20, 100, 50), 800, "bread", ("hot_drink", "snacks", "daily_goods")),
+    _sg_visit("female_college_student", "6:00", 120, "徒歩", (50, 80, 40, 40, 30, 50, 80, 20, 100, 50), 1000, "bread", ("cold_drink", "snacks", "medicine")),
+    _sg_visit("female_college_student", "7:00", 120, "徒歩", (50, 90, 50, 30, 30, 50, 80, 20, 100, 50), 700, "bread", ("hot_drink", "books")),
+    _sg_visit("female_college_student", "11:00", 120, "徒歩", (50, 100, 60, 20, 30, 50, 60, 20, 100, 50), 800, "bread", ("cold_drink", "snacks", "copy_paper")),
+    _sg_visit("female_college_student", "12:00", 60, "自転車", (50, 100, 80, 20, 30, 80, 40, 20, 100, 50), 1000, "bread", ("hot_drink", "books", "tobacco")),
+    _sg_visit("female_college_student", "11:00", 120, "徒歩", (50, 100, 60, 20, 30, 50, 60, 20, 100, 50), 800, "bento", ("cold_drink", "snacks", "event_goods")),
+    _sg_visit("female_college_student", "12:00", 120, "徒歩", (50, 100, 60, 30, 30, 50, 60, 20, 100, 50), 800, "bento", ("cold_drink", "ice_cream", "event_goods")),
+    _sg_visit("female_college_student", "17:00", 120, "徒歩", (50, 100, 60, 40, 30, 50, 60, 20, 100, 60), 1000, "bento", ("hot_drink", "ice_cream", "copy_paper")),
+    _sg_visit("female_college_student", "18:00", 60, "自転車", (60, 100, 60, 40, 50, 80, 40, 20, 100, 60), 1000, "instant_food", ("hot_drink", "snacks", "tobacco")),
+    _sg_visit("female_college_student", "18:00", 120, "徒歩", (50, 100, 60, 40, 30, 50, 60, 40, 100, 60), 1500, "retort_food", ("cold_drink", "copy_paper", "stationery")),
+    _sg_visit("female_college_student", "19:00", 120, "徒歩", (60, 100, 60, 80, 70, 20, 20, 20, 100, 50), 3000, "event_goods", ("snacks", "books", "stationery")),
+    _sg_visit("female_college_student", "19:00", 120, "徒歩", (50, 100, 60, 50, 30, 50, 60, 40, 100, 50), 1000, "bento", ("cold_drink", "snacks", "chinese_steamed_bun")),
+    _sg_visit("female_college_student", "20:00", 60, "自転車", (50, 100, 60, 50, 50, 80, 40, 20, 100, 50), 1000, "bento", ("hot_drink", "snacks", "alcohol")),
+    _sg_visit("female_college_student", "20:00", 60, "徒歩", (50, 100, 60, 50, 80, 50, 40, 20, 100, 50), 3000, "copy_paper", ("cold_drink", "snacks", "ice_cream")),
+    _sg_visit("female_college_student", "20:00", 60, "自動車", (50, 100, 60, 50, 90, 50, 40, 20, 100, 50), 5000, "parcel_delivery_form", ("hot_drink", "snacks", "event_goods")),
+    _sg_visit("female_college_student", "20:00", 180, "徒歩", (50, 100, 60, 90, 70, 50, 60, 40, 100, 50), 1500, "snacks", ("instant_food", "ice_cream", "books")),
+    _sg_visit("female_college_student", "21:00", 180, "自転車", (90, 100, 60, 10, 100, 10, 10, 10, 100, 50), 3000, "medicine", ("daily_goods",)),
+    _sg_visit("female_college_student", "21:00", 120, "徒歩", (50, 80, 50, 80, 80, 50, 60, 40, 100, 50), 3000, "instant_food", ("alcohol", "tobacco", "event_goods")),
+    _sg_visit("female_college_student", "17:00", 60, "自動車", (80, 80, 70, 80, 60, 20, 80, 20, 100, 50), 3000, "cold_drink", ("ice_cream", "snacks", "event_goods")),
+    # 大学生 (18~23歳) -- 25 rows
+    _sg_visit("college_student", "6:00", 120, "徒歩", (90, 100, 60, 10, 70, 60, 50, 10, 100, 50), 400, "bread", ("cold_drink",)),
+    _sg_visit("college_student", "6:00", 120, "自転車", (90, 100, 60, 30, 80, 60, 40, 10, 100, 50), 800, "bento", ("hot_drink", "tobacco", "stationery")),
+    _sg_visit("college_student", "7:00", 120, "徒歩", (90, 100, 60, 30, 80, 60, 40, 10, 100, 50), 400, "bread", ("cold_drink", "books", "stationery")),
+    _sg_visit("college_student", "7:00", 120, "徒歩", (90, 100, 60, 50, 70, 60, 40, 10, 100, 50), 800, "bento", ("hot_drink", "tobacco", "copy_paper")),
+    _sg_visit("college_student", "6:00", 120, "自転車", (90, 100, 40, 10, 100, 100, 10, 10, 100, 50), 500, "tobacco", ("cold_drink",)),
+    _sg_visit("college_student", "11:00", 120, "徒歩", (90, 100, 60, 30, 70, 60, 50, 10, 100, 50), 400, "bread", ("cold_drink",)),
+    _sg_visit("college_student", "12:00", 120, "徒歩", (90, 100, 60, 30, 70, 60, 50, 10, 100, 50), 800, "bento", ("hot_drink", "tobacco", "chinese_steamed_bun")),
+    _sg_visit("college_student", "12:00", 120, "徒歩", (90, 100, 60, 30, 70, 60, 50, 10, 100, 50), 800, "bento", ("cold_drink", "chinese_steamed_bun")),
+    _sg_visit("college_student", "13:00", 120, "徒歩", (90, 100, 60, 30, 70, 60, 50, 10, 100, 50), 800, "bento", ("cold_drink", "books", "copy_paper")),
+    _sg_visit("college_student", "13:00", 120, "自転車", (100, 100, 40, 10, 100, 10, 10, 10, 100, 50), 500, "tobacco", ("cold_drink",)),
+    _sg_visit("college_student", "17:00", 120, "徒歩", (90, 100, 60, 40, 70, 60, 50, 10, 100, 50), 1200, "bento", ("hot_drink", "books", "daily_goods")),
+    _sg_visit("college_student", "18:00", 120, "徒歩", (90, 100, 60, 40, 70, 60, 50, 20, 100, 50), 1200, "retort_food", ("cold_drink", "books", "copy_paper")),
+    _sg_visit("college_student", "18:00", 120, "徒歩", (90, 100, 60, 40, 70, 60, 50, 20, 100, 50), 1200, "instant_food", ("cold_drink", "copy_paper", "tobacco")),
+    _sg_visit("college_student", "19:00", 120, "徒歩", (90, 100, 60, 40, 70, 60, 50, 20, 100, 50), 1200, "bento", ("alcohol", "tobacco", "oden")),
+    _sg_visit("college_student", "19:00", 120, "徒歩", (90, 80, 60, 80, 80, 80, 50, 40, 100, 50), 1200, "meat", ("vegetables", "fish", "seasoning")),
+    _sg_visit("college_student", "21:00", 120, "徒歩", (90, 100, 60, 50, 70, 60, 50, 20, 100, 50), 1200, "instant_food", ("hot_drink", "books", "stationery")),
+    _sg_visit("college_student", "22:00", 120, "徒歩", (90, 100, 60, 60, 70, 60, 50, 10, 100, 50), 1200, "retort_food", ("chinese_steamed_bun", "hot_drink", "snacks")),
+    _sg_visit("college_student", "22:00", 120, "自転車", (90, 100, 60, 90, 90, 40, 30, 10, 100, 50), 3000, "alcohol", ("oden", "snacks", "tobacco")),
+    _sg_visit("college_student", "22:00", 120, "バイク", (90, 100, 60, 80, 100, 10, 20, 10, 100, 50), 2000, "tobacco", ("hot_drink", "alcohol", "chinese_steamed_bun")),
+    _sg_visit("college_student", "22:00", 120, "バイク", (90, 100, 60, 80, 100, 10, 20, 10, 100, 50), 3000, "ice_cream", ("instant_food", "frozen_food", "chinese_steamed_bun")),
+    _sg_visit("college_student", "23:00", 120, "徒歩", (90, 100, 60, 50, 70, 60, 50, 20, 100, 50), 1200, "fish", ("alcohol", "tobacco", "oden")),
+    _sg_visit("college_student", "23:00", 180, "バイク", (90, 100, 60, 60, 90, 60, 50, 20, 100, 50), 3000, "copy_paper", ("hot_drink", "stationery", "tobacco")),
+    _sg_visit("college_student", "0:00", 120, "徒歩", (90, 100, 60, 50, 70, 60, 50, 10, 100, 50), 1200, "bento", ("alcohol", "books", "oden")),
+    _sg_visit("college_student", "2:00", 120, "徒歩", (60, 60, 50, 80, 90, 10, 20, 10, 100, 50), 1200, "bento", ("oden", "chinese_steamed_bun", "snacks")),
+    _sg_visit("college_student", "3:00", 120, "徒歩", (90, 60, 50, 80, 100, 10, 20, 10, 100, 50), 2000, "tobacco", ("hot_drink", "alcohol", "chinese_steamed_bun")),
+    # サラリーマン (25~40歳) -- 18 rows
     _sg_visit("salaryman", "5:00", 120, "徒歩", (70, 90, 90, 30, 70, 30, 60, 30, 100, 20), 1000, "bread", ("hot_drink", "stationery")),
     _sg_visit("salaryman", "6:00", 120, "徒歩", (70, 90, 90, 30, 70, 30, 60, 30, 100, 20), 800, "bread", ("cold_drink", "tobacco")),
-    _sg_visit("salaryman", "7:00", 60, "徒歩", (70, 90, 90, 50, 70, 30, 60, 30, 100, 20), 1000, "bento", ("hot_drink", "books")),
+    _sg_visit("salaryman", "7:00", 60, "徒歩", (70, 90, 90, 50, 70, 30, 60, 30, 100, 20), 1000, "bento", ("hot_drink", "books", "tobacco")),
     _sg_visit("salaryman", "8:00", 60, "自転車", (70, 90, 90, 50, 70, 30, 60, 30, 100, 20), 800, "bread", ("cold_drink", "medicine", "tobacco")),
     _sg_visit("salaryman", "12:00", 60, "徒歩", (70, 90, 90, 30, 70, 30, 60, 30, 100, 20), 1000, "bread", ("hot_drink", "tobacco")),
     _sg_visit("salaryman", "12:00", 60, "徒歩", (70, 90, 90, 30, 70, 30, 60, 30, 100, 20), 1300, "bento", ("cold_drink", "daily_goods")),
     _sg_visit("salaryman", "12:00", 60, "徒歩", (70, 90, 90, 30, 70, 30, 60, 30, 100, 20), 1000, "instant_food", ("cold_drink", "books", "chinese_steamed_bun")),
     _sg_visit("salaryman", "12:00", 60, "徒歩", (70, 90, 90, 30, 70, 30, 60, 30, 100, 20), 1500, "bento", ("cold_drink", "books")),
-    _sg_visit("salaryman", "12:00", 60, "徒歩", (100, 90, 100, 60, 100, 70, 30, 100, 20), 700, "tobacco", ("cold_drink", "hot_drink")),
-    _sg_visit("salaryman", "19:00", 60, "徒歩", (70, 90, 90, 30, 70, 30, 60, 30, 100, 20), 2000, "bento", ("cold_drink", "medicine", "tobacco")),
+    _sg_visit("salaryman", "12:00", 60, "徒歩", (100, 90, 100, 60, 100, 100, 70, 30, 100, 20), 700, "tobacco", ("cold_drink", "hot_drink")),
+    _sg_visit("salaryman", "19:00", 60, "徒歩", (70, 90, 90, 60, 70, 30, 60, 30, 100, 20), 2000, "bento", ("cold_drink", "medicine", "tobacco")),
     _sg_visit("salaryman", "20:00", 60, "徒歩", (70, 90, 90, 60, 70, 30, 60, 30, 100, 20), 2000, "retort_food", ("hot_drink", "alcohol", "oden")),
+    _sg_visit("salaryman", "19:00", 60, "徒歩", (70, 90, 90, 60, 70, 30, 60, 30, 100, 20), 2000, "bento", ("cold_drink", "medicine", "tobacco")),
     _sg_visit("salaryman", "20:00", 120, "徒歩", (70, 90, 90, 60, 70, 30, 60, 30, 100, 20), 2000, "retort_food", ("hot_drink", "alcohol", "oden")),
     _sg_visit("salaryman", "22:00", 60, "徒歩", (70, 60, 80, 90, 90, 80, 70, 20, 100, 20), 5000, "alcohol", ("oden", "snacks", "retort_food")),
-    _sg_visit("salaryman", "23:00", 60, "徒歩", (70, 90, 90, 30, 70, 30, 60, 30, 100, 20), 2500, "instant_food", ("alcohol", "instant_food", "tobacco")),
-    _sg_visit("salaryman", "0:00", 60, "徒歩", (70, 80, 90, 50, 70, 30, 60, 30, 100, 20), 2500, "bento", ("oden", "chinese_steamed_bun")),
+    _sg_visit("salaryman", "23:00", 60, "徒歩", (70, 80, 90, 60, 70, 30, 60, 30, 100, 20), 2500, "instant_food", ("alcohol", "instant_food", "tobacco")),
+    _sg_visit("salaryman", "0:00", 60, "徒歩", (70, 80, 90, 50, 70, 30, 60, 30, 100, 20), 2500, "bento", ("hot_drink", "oden", "chinese_steamed_bun")),
     _sg_visit("salaryman", "1:00", 60, "自転車", (70, 80, 90, 50, 70, 30, 60, 30, 100, 20), 3000, "instant_food", ("alcohol", "instant_food", "tobacco")),
-    _sg_visit("salaryman", "0:00", 120, "徒歩", (100, 70, 80, 70, 100, 100, 10, 10, 100), 1000, "tobacco", ("hot_drink", "alcohol", "chinese_steamed_bun")),
-    # OL (20~38歳)
-    _sg_visit("ol", "6:00", 60, "徒歩", (70, 80, 90, 30, 70, 70, 40, 100, 20), 1000, "bread", ("hot_drink", "books")),
-    _sg_visit("ol", "7:00", 60, "徒歩", (70, 80, 90, 30, 70, 50, 70, 40, 100, 20), 1000, "bread", ("hot_drink", "medicine", "tobacco")),
-    _sg_visit("ol", "7:00", 60, "徒歩", (70, 90, 90, 40, 70, 60, 40, 100, 20), 800, "bread", ("hot_drink",)),
-    _sg_visit("ol", "8:00", 60, "徒歩", (70, 90, 90, 60, 30, 70, 40, 100, 20), 1000, "bread", ("cold_drink", "snacks", "books")),
-    _sg_visit("ol", "12:00", 60, "徒歩", (70, 90, 90, 30, 30, 70, 40, 100, 20), 1200, "bento", ("cold_drink", "ice_cream", "tobacco")),
-    _sg_visit("ol", "12:00", 60, "徒歩", (70, 90, 90, 30, 30, 70, 40, 100, 20), 1200, "bread", ("cold_drink", "snacks", "event_goods")),
-    _sg_visit("ol", "12:00", 60, "徒歩", (70, 90, 90, 30, 30, 70, 40, 100, 20), 1500, "bento", ("hot_drink", "snacks", "ice_cream")),
-    _sg_visit("ol", "12:00", 60, "徒歩", (70, 90, 90, 50, 30, 70, 40, 100, 20), 2000, "bento", ("cold_drink", "medicine", "daily_goods")),
-    _sg_visit("ol", "18:00", 60, "徒歩", (70, 90, 90, 30, 30, 70, 40, 100, 20), 2000, "instant_food", ("cold_drink", "snacks", "tobacco")),
-    _sg_visit("ol", "19:00", 180, "徒歩", (70, 90, 90, 80, 80, 80, 50, 100, 20), 4000, "vegetables", ("meat", "fish", "seasoning")),
-    _sg_visit("ol", "19:00", 120, "徒歩", (70, 90, 90, 30, 70, 70, 40, 100, 20), 2000, "bread", ("hot_drink", "snacks", "event_goods")),
-    _sg_visit("ol", "20:00", 60, "徒歩", (70, 90, 90, 30, 90, 50, 90, 40, 100, 20), 2000, "bento", ("cold_drink", "snacks", "books")),
-    _sg_visit("ol", "20:00", 120, "徒歩", (70, 90, 90, 50, 90, 60, 40, 100, 20), 1000, "copy_paper", ("cold_drink", "hot_drink", "books")),
-    _sg_visit("ol", "21:00", 60, "徒歩", (70, 80, 90, 40, 30, 70, 70, 40, 100, 20), 3000, "retort_food", ("instant_food", "frozen_food", "chinese_steamed_bun")),
-    _sg_visit("ol", "21:00", 120, "徒歩", (70, 80, 90, 60, 40, 100, 20), 3000, "alcohol", ("snacks", "oden", "instant_food")),
-    _sg_visit("ol", "21:00", 120, "徒歩", (70, 80, 90, 60, 40, 100, 20), 5000, "daily_goods", ("snacks", "hot_drink", "frozen_food")),
-    _sg_visit("ol", "21:00", 120, "徒歩", (70, 80, 90, 60, 40, 100, 20), 5000, "books", ("snacks", "alcohol", "oden")),
-    _sg_visit("ol", "22:00", 60, "徒歩", (70, 80, 90, 50, 30, 70, 70, 40, 100, 20), 3000, "instant_food", ("hot_drink", "oden", "snacks")),
-    # おじさん (40~55歳)
-    _sg_visit("middle_aged_man", "22:00", 120, "徒歩", (50, 70, 70, 50, 10, 10, 50, 70, 100), 8000, "alcohol", ("oden", "snacks", "tobacco")),
-    _sg_visit("middle_aged_man", "23:00", 120, "自動車", (50, 70, 30, 70, 100, 10, 10, 70, 100), 10000, "alcohol", ("oden", "snacks", "tobacco")),
-    _sg_visit("middle_aged_man", "15:00", 120, "自動車", (50, 70, 70, 50, 10, 10, 70, 100), 1500, "ice_cream", ("cold_drink", "tobacco")),
-    _sg_visit("middle_aged_man", "15:00", 120, "バイク", (50, 70, 70, 50, 10, 10, 70, 100), 1000, "ice_cream", ("tobacco", "hot_drink")),
-    _sg_visit("middle_aged_man", "23:00", 120, "自動車", (50, 70, 30, 80, 100, 10, 10, 70, 100), 5000, "tobacco", ("alcohol", "snacks", "tobacco")),
-    _sg_visit("middle_aged_man", "15:00", 120, "徒歩", (50, 70, 70, 60, 50, 10, 10, 50, 70, 100), 1500, "tobacco", ("cold_drink", "hot_drink")),
-    # おばさん (40~58歳)
-    _sg_visit("middle_aged_woman", "10:00", 240, "徒歩", (100, 50, 80, 50, 100, 100, 40, 70, 80, 100), 10000, "daily_goods", ("fish", "meat", "frozen_food")),
-    _sg_visit("middle_aged_woman", "14:00", 240, "自転車", (100, 50, 80, 40, 100, 20, 70, 80, 100), 15000, "underwear", ("vegetables", "meat", "electronics")),
+    _sg_visit("salaryman", "0:00", 120, "徒歩", (100, 70, 80, 70, 100, 100, 30, 10, 100, 20), 1000, "tobacco", ("hot_drink", "alcohol", "chinese_steamed_bun")),
+    # OL (20~38歳) -- 18 rows
+    _sg_visit("ol", "6:00", 60, "徒歩", (70, 80, 90, 30, 30, 70, 70, 40, 100, 20), 1000, "bread", ("hot_drink", "books")),
+    _sg_visit("ol", "7:00", 60, "徒歩", (70, 80, 90, 70, 50, 70, 70, 40, 100, 20), 1000, "bread", ("hot_drink", "medicine", "tobacco")),
+    _sg_visit("ol", "7:00", 60, "徒歩", (70, 90, 90, 30, 30, 70, 70, 40, 100, 20), 800, "bread", ("hot_drink",)),
+    _sg_visit("ol", "8:00", 60, "徒歩", (70, 90, 90, 60, 30, 70, 70, 40, 100, 20), 1000, "bread", ("cold_drink", "snacks", "books")),
+    _sg_visit("ol", "12:00", 60, "徒歩", (70, 90, 90, 30, 30, 70, 70, 40, 100, 20), 1200, "bento", ("cold_drink", "ice_cream", "tobacco")),
+    _sg_visit("ol", "12:00", 60, "徒歩", (70, 90, 90, 30, 30, 70, 70, 40, 100, 20), 1200, "bread", ("cold_drink", "tobacco", "event_goods")),
+    _sg_visit("ol", "12:00", 60, "徒歩", (70, 90, 90, 30, 30, 70, 70, 40, 100, 20), 1500, "bento", ("hot_drink", "snacks", "ice_cream")),
+    _sg_visit("ol", "12:00", 60, "徒歩", (70, 90, 90, 50, 30, 70, 70, 40, 100, 20), 2000, "bento", ("cold_drink", "medicine", "daily_goods")),
+    _sg_visit("ol", "18:00", 60, "徒歩", (70, 90, 90, 30, 30, 70, 70, 40, 100, 20), 2000, "instant_food", ("cold_drink", "snacks", "tobacco")),
+    _sg_visit("ol", "19:00", 180, "徒歩", (70, 90, 90, 80, 80, 80, 80, 50, 100, 20), 4000, "vegetables", ("meat", "fish", "seasoning")),
+    _sg_visit("ol", "19:00", 120, "徒歩", (70, 90, 90, 30, 30, 70, 70, 40, 100, 20), 2000, "bread", ("hot_drink", "snacks", "event_goods")),
+    _sg_visit("ol", "20:00", 60, "徒歩", (70, 90, 90, 30, 90, 90, 40, 20, 100, 20), 2000, "bento", ("cold_drink", "snacks", "books")),
+    _sg_visit("ol", "20:00", 120, "徒歩", (70, 90, 90, 50, 90, 60, 40, 20, 100, 20), 1000, "copy_paper", ("cold_drink", "hot_drink", "books")),
+    _sg_visit("ol", "21:00", 60, "徒歩", (70, 80, 90, 40, 30, 70, 90, 40, 100, 20), 3000, "retort_food", ("instant_food", "frozen_food", "chinese_steamed_bun")),
+    _sg_visit("ol", "21:00", 120, "徒歩", (80, 70, 80, 80, 80, 70, 60, 40, 100, 20), 4000, "alcohol", ("snacks", "oden", "instant_food")),
+    _sg_visit("ol", "21:00", 120, "徒歩", (80, 70, 80, 80, 80, 70, 60, 40, 100, 20), 5000, "daily_goods", ("snacks", "hot_drink", "frozen_food")),
+    _sg_visit("ol", "21:00", 120, "徒歩", (80, 70, 80, 80, 80, 70, 60, 40, 100, 20), 5000, "books", ("snacks", "alcohol", "oden")),
+    _sg_visit("ol", "22:00", 60, "徒歩", (70, 70, 80, 50, 30, 70, 70, 40, 100, 20), 3000, "instant_food", ("hot_drink", "oden", "snacks")),
+    # おじさん (40~55歳) -- 6 rows
+    _sg_visit("middle_aged_man", "22:00", 120, "徒歩", (50, 70, 70, 70, 50, 10, 10, 50, 70, 100), 8000, "alcohol", ("oden", "snacks", "tobacco")),
+    _sg_visit("middle_aged_man", "23:00", 120, "自動車", (50, 70, 30, 70, 100, 10, 10, 10, 70, 100), 10000, "alcohol", ("oden", "snacks", "tobacco")),
+    _sg_visit("middle_aged_man", "15:00", 120, "自動車", (50, 70, 70, 50, 50, 10, 10, 50, 70, 100), 1500, "ice_cream", ("cold_drink", "tobacco")),
+    _sg_visit("middle_aged_man", "15:00", 120, "バイク", (50, 70, 70, 50, 50, 10, 10, 50, 70, 100), 1000, "ice_cream", ("tobacco", "hot_drink")),
+    _sg_visit("middle_aged_man", "23:00", 120, "自動車", (50, 70, 30, 80, 100, 10, 10, 10, 70, 100), 5000, "tobacco", ("alcohol", "snacks", "tobacco")),
+    _sg_visit("middle_aged_man", "15:00", 120, "徒歩", (50, 70, 70, 50, 60, 10, 10, 50, 70, 100), 1500, "tobacco", ("cold_drink", "hot_drink")),
+    # おばさん (40~58歳) -- 10 rows
+    _sg_visit("middle_aged_woman", "10:00", 240, "徒歩", (100, 50, 80, 40, 100, 100, 40, 70, 80, 100), 10000, "daily_goods", ("fish", "meat", "frozen_food")),
+    _sg_visit("middle_aged_woman", "14:00", 240, "自転車", (100, 50, 80, 40, 100, 100, 20, 70, 80, 100), 15000, "underwear", ("vegetables", "meat", "electronics")),
     _sg_visit("middle_aged_woman", "10:00", 240, "徒歩", (100, 50, 80, 50, 100, 100, 40, 70, 80, 100), 12000, "underwear", ("daily_goods", "retort_food", "vegetables")),
-    _sg_visit("middle_aged_woman", "14:00", 240, "自転車", (100, 50, 80, 50, 100, 20, 70, 80, 100), 12000, "underwear", ("vegetables", "frozen_food", "seasoning")),
-    _sg_visit("middle_aged_woman", "10:00", 240, "徒歩", (100, 50, 80, 50, 100, 90, 80, 80, 100), 5000, "vegetables", ("retort_food", "frozen_food", "meat")),
-    _sg_visit("middle_aged_woman", "10:00", 240, "自転車", (100, 50, 80, 40, 100, 90, 20, 70, 80, 100), 5000, "meat", ("bread", "instant_food", "frozen_food")),
-    _sg_visit("middle_aged_woman", "15:00", 240, "徒歩", (100, 50, 80, 30, 100, 90, 80, 80, 100), 8000, "vegetables", ("fish", "meat", "seasoning")),
-    _sg_visit("middle_aged_woman", "15:00", 240, "自動車", (100, 50, 80, 30, 100, 90, 80, 80, 100), 8000, "fish", ("vegetables", "meat", "seasoning")),
-    _sg_visit("middle_aged_woman", "16:00", 240, "バイク", (100, 50, 80, 30, 100, 90, 10, 80, 100), 10000, "vegetables", ("fish", "meat", "seasoning")),
+    _sg_visit("middle_aged_woman", "14:00", 240, "自転車", (100, 50, 80, 50, 100, 100, 20, 70, 80, 100), 12000, "underwear", ("vegetables", "frozen_food", "seasoning")),
+    _sg_visit("middle_aged_woman", "10:00", 240, "徒歩", (100, 50, 80, 40, 100, 100, 30, 80, 80, 100), 5000, "vegetables", ("retort_food", "frozen_food", "meat")),
+    _sg_visit("middle_aged_woman", "10:00", 240, "自転車", (100, 50, 80, 40, 100, 90, 20, 80, 80, 100), 5000, "meat", ("bread", "instant_food", "frozen_food")),
+    _sg_visit("middle_aged_woman", "15:00", 240, "徒歩", (100, 50, 80, 30, 100, 90, 30, 80, 80, 100), 8000, "vegetables", ("fish", "meat", "seasoning")),
+    _sg_visit("middle_aged_woman", "15:00", 240, "自動車", (100, 50, 80, 30, 100, 90, 10, 80, 80, 100), 8000, "fish", ("vegetables", "meat", "seasoning")),
+    _sg_visit("middle_aged_woman", "16:00", 240, "バイク", (100, 50, 80, 30, 100, 90, 10, 80, 80, 100), 10000, "vegetables", ("fish", "meat", "seasoning")),
     _sg_visit("middle_aged_woman", "17:00", 240, "自動車", (100, 50, 80, 30, 100, 90, 10, 80, 80, 100), 10000, "vegetables", ("fish", "meat", "seasoning")),
-    # おじいさん (65~78歳)
+    # おじいさん (65~78歳) -- 4 rows
     _sg_visit("elderly_man", "10:00", 360, "徒歩", (10, 20, 100, 70, 80, 20, 80, 80, 70, 100), 3000, "tobacco", ("hot_drink", "chinese_steamed_bun", "medicine")),
-    _sg_visit("elderly_man", "15:00", 360, "徒歩", (10, 20, 100, 70, 20, 80, 70, 100), 5000, "alcohol", ("snacks", "fish", "vegetables")),
-    _sg_visit("elderly_man", "9:00", 360, "徒歩", (10, 20, 100, 70, 20, 90, 100, 70, 100), 5000, "daily_goods", ("underwear", "electronics", "medicine")),
+    _sg_visit("elderly_man", "15:00", 360, "徒歩", (10, 20, 100, 70, 70, 20, 80, 70, 100, 100), 5000, "alcohol", ("snacks", "fish", "vegetables")),
+    _sg_visit("elderly_man", "9:00", 360, "徒歩", (10, 20, 100, 70, 20, 20, 90, 100, 70, 100), 5000, "daily_goods", ("underwear", "electronics", "medicine")),
     _sg_visit("elderly_man", "10:00", 360, "徒歩", (10, 20, 100, 70, 10, 20, 90, 100, 70, 100), 8000, "underwear", ("daily_goods", "frozen_food", "medicine")),
-    # おばあさん (65~78歳)
+    # おばあさん (65~78歳) -- 6 rows
     _sg_visit("elderly_woman", "11:00", 360, "徒歩", (20, 20, 100, 70, 20, 30, 90, 100, 70, 100), 10000, "daily_goods", ("underwear", "electronics", "medicine")),
-    _sg_visit("elderly_woman", "11:00", 360, "自転車", (100, 50, 80, 40, 100, 20, 70, 80, 100), 8000, "underwear", ("daily_goods", "frozen_food", "medicine")),
-    _sg_visit("elderly_woman", "11:00", 360, "徒歩", (20, 20, 100, 70, 10, 30, 100, 70, 100), 8000, "underwear", ("daily_goods", "frozen_food", "medicine")),
-    _sg_visit("elderly_woman", "16:00", 360, "徒歩", (20, 20, 100, 70, 50, 20, 90, 100, 70, 100), 6000, "fish", ("vegetables", "meat", "seasoning")),
+    _sg_visit("elderly_woman", "11:00", 360, "徒歩", (20, 20, 100, 70, 10, 30, 90, 100, 70, 100), 8000, "underwear", ("daily_goods", "frozen_food", "medicine")),
+    _sg_visit("elderly_woman", "16:00", 360, "徒歩", (10, 20, 100, 70, 50, 20, 90, 100, 70, 100), 6000, "fish", ("vegetables", "meat", "seasoning")),
     _sg_visit("elderly_woman", "15:00", 360, "徒歩", (20, 20, 100, 70, 50, 30, 90, 100, 70, 100), 6000, "fish", ("vegetables", "meat", "seasoning")),
-    _sg_visit("elderly_woman", "11:00", 360, "徒歩", (20, 20, 100, 70, 20, 30, 90, 100, 70, 100), 8000, "medicine", ("underwear", "daily_goods", "vegetables")),
-    _sg_visit("elderly_woman", "13:00", 360, "徒歩", (20, 20, 100, 70, 10, 70, 100, 70, 100), 7000, "parcel_delivery_form", ("hot_drink", "snacks", "electronics")),
-    # 男子小学生 (7~12歳)
-    _sg_visit("boy_elementary_student", "14:00", 120, "自転車", (100, 70, 50, 80, 50, 10, 70, 50, 100), 1000, "stationery", ("cold_drink", "snacks", "event_goods")),
-    _sg_visit("boy_elementary_student", "15:00", 120, "自転車", (100, 70, 50, 30, 10, 70, 50), 700, "snacks", ("cold_drink", "event_goods")),
-    # 女子小学生 (7~12歳)
-    _sg_visit("girl_elementary_student", "15:00", 120, "自転車", (100, 70, 50, 80, 50, 10, 70, 50, 100), 1000, "stationery", ("cold_drink", "snacks", "event_goods")),
-    _sg_visit("girl_elementary_student", "14:00", 120, "自転車", (100, 70, 50, 30, 10, 70, 50), 800, "snacks", ("cold_drink", "event_goods")),
-    # 男子中学生 (13~15歳)
-    _sg_visit("boy_middle_school_student", "7:00", 60, "自転車", (100, 80, 50, 10, 90, 30, 10, 70, 100), 500, "stationery", ()),
-    _sg_visit("boy_middle_school_student", "14:00", 120, "自転車", (100, 80, 50, 30, 80, 10, 30, 70, 100), 800, "cold_drink", ("hot_drink", "snacks", "books")),
-    _sg_visit("boy_middle_school_student", "15:00", 120, "徒歩", (100, 80, 50, 30, 80, 10, 30, 70, 100), 800, "cold_drink", ("stationery", "snacks")),
-    _sg_visit("boy_middle_school_student", "17:00", 120, "自転車", (100, 80, 50, 30, 80, 30, 10, 70, 100), 1500, "event_goods", ("snacks", "cold_drink", "books")),
-    _sg_visit("boy_middle_school_student", "15:00", 120, "徒歩", (100, 100, 10, 80, 50, 10, 10, 70, 100), 3000, "cold_drink", ("hot_drink", "books", "event_goods")),
-    # 女子中学生 (13~15歳)
+    _sg_visit("elderly_woman", "11:00", 360, "徒歩", (20, 20, 100, 70, 90, 30, 70, 80, 70, 100), 8000, "medicine", ("underwear", "daily_goods", "vegetables")),
+    _sg_visit("elderly_woman", "13:00", 360, "徒歩", (20, 20, 100, 70, 80, 20, 100, 80, 70, 100), 7000, "parcel_delivery_form", ("hot_drink", "snacks", "electronics")),
+    # 男子小学生 (7~12歳) -- 2 rows
+    _sg_visit("boy_elementary_student", "14:00", 120, "自転車", (100, 70, 50, 80, 50, 10, 70, 50, 70, 100), 1000, "stationery", ("cold_drink", "snacks", "event_goods")),
+    _sg_visit("boy_elementary_student", "15:00", 120, "自転車", (100, 70, 50, 80, 50, 10, 70, 50, 700, 100), 800, "snacks", ("cold_drink", "event_goods")),
+    # 女子小学生 (7~12歳) -- 2 rows
+    _sg_visit("girl_elementary_student", "15:00", 120, "自転車", (100, 70, 50, 80, 50, 10, 70, 50, 70, 100), 1000, "stationery", ("cold_drink", "snacks", "event_goods")),
+    _sg_visit("girl_elementary_student", "14:00", 120, "自転車", (100, 70, 50, 80, 50, 10, 70, 50, 70, 100), 800, "snacks", ("cold_drink", "event_goods")),
+    # 男子中学生 (13~15歳) -- 5 rows
+    _sg_visit("boy_middle_school_student", "7:00", 60, "自転車", (100, 80, 50, 10, 90, 10, 50, 10, 70, 100), 500, "stationery", ()),
+    _sg_visit("boy_middle_school_student", "14:00", 120, "自転車", (100, 80, 50, 30, 80, 10, 30, 10, 70, 100), 800, "cold_drink", ("hot_drink", "snacks", "books")),
+    _sg_visit("boy_middle_school_student", "15:00", 120, "徒歩", (100, 80, 50, 30, 80, 10, 30, 10, 70, 100), 800, "cold_drink", ("hot_drink", "stationery", "snacks")),
+    _sg_visit("boy_middle_school_student", "17:00", 120, "自転車", (100, 80, 50, 30, 80, 30, 30, 10, 70, 100), 1500, "event_goods", ("snacks", "cold_drink", "books")),
+    _sg_visit("boy_middle_school_student", "15:00", 120, "徒歩", (100, 100, 10, 80, 50, 10, 30, 10, 70, 100), 3000, "cold_drink", ("hot_drink", "books", "event_goods")),
+    # 女子中学生 (13~15歳) -- 4 rows
     _sg_visit("girl_middle_school_student", "7:00", 60, "徒歩", (100, 80, 50, 10, 90, 20, 50, 10, 70, 100), 500, "stationery", ()),
-    _sg_visit("girl_middle_school_student", "15:00", 120, "自転車", (100, 80, 50, 30, 80, 30, 10, 70, 100), 1000, "cold_drink", ("ice_cream", "snacks", "stationery")),
-    _sg_visit("girl_middle_school_student", "17:00", 120, "自転車", (100, 80, 50, 30, 80, 30, 10, 70, 100), 1000, "cold_drink", ("ice_cream", "stationery", "books")),
+    _sg_visit("girl_middle_school_student", "15:00", 120, "徒歩", (100, 80, 50, 30, 80, 30, 30, 10, 70, 100), 1000, "cold_drink", ("ice_cream", "snacks", "stationery")),
+    _sg_visit("girl_middle_school_student", "17:00", 120, "自転車", (100, 80, 50, 30, 80, 30, 30, 10, 70, 100), 1000, "cold_drink", ("ice_cream", "stationery", "books")),
     _sg_visit("girl_middle_school_student", "15:00", 120, "徒歩", (100, 80, 50, 30, 80, 10, 30, 10, 70, 100), 1200, "event_goods", ("chinese_steamed_bun", "hot_drink", "snacks")),
-    # 男子高校生 (16~18歳)
+    # 男子高校生 (16~18歳) -- 4 rows
     _sg_visit("boy_high_school_student", "16:00", 120, "徒歩", (100, 90, 40, 30, 80, 10, 30, 10, 70, 100), 1500, "cold_drink", ("hot_drink", "event_goods", "stationery")),
-    _sg_visit("boy_high_school_student", "17:00", 120, "バイク", (100, 90, 40, 30, 80, 10, 10, 70, 100), 1500, "cold_drink", ("event_goods", "snacks", "stationery")),
-    _sg_visit("boy_high_school_student", "16:00", 120, "バイク", (100, 90, 40, 30, 80, 10, 10, 70, 100), 3000, "event_goods", ("chinese_steamed_bun", "cold_drink", "stationery")),
-    _sg_visit("boy_high_school_student", "17:00", 120, "バイク", (100, 90, 10, 80, 50, 10, 10, 70, 100), 4000, "medicine", ("cold_drink", "hot_drink", "chinese_steamed_bun")),
-    # 女子高校生 (16~18歳)
-    _sg_visit("girl_high_school_student", "16:00", 180, "徒歩", (100, 90, 40, 30, 100, 50, 30, 70, 100), 3000, "copy_paper", ("cold_drink", "stationery", "event_goods")),
-    _sg_visit("girl_high_school_student", "16:00", 120, "徒歩", (100, 90, 40, 30, 80, 10, 30, 70, 100), 2000, "cold_drink", ("hot_drink", "snacks", "event_goods")),
-    _sg_visit("girl_high_school_student", "17:00", 120, "自転車", (100, 90, 40, 30, 80, 10, 20, 30, 70, 100), 2000, "cold_drink", ("stationery", "snacks", "books")),
-    _sg_visit("girl_high_school_student", "16:00", 120, "徒歩", (100, 90, 40, 30, 80, 10, 30, 70, 100), 2000, "ice_cream", ("cold_drink", "snacks", "books")),
+    _sg_visit("boy_high_school_student", "17:00", 120, "バイク", (100, 90, 40, 30, 80, 10, 10, 10, 70, 100), 1500, "cold_drink", ("hot_drink", "event_goods", "stationery")),
+    _sg_visit("boy_high_school_student", "16:00", 120, "バイク", (100, 90, 40, 30, 80, 10, 10, 10, 70, 100), 3000, "event_goods", ("chinese_steamed_bun", "cold_drink", "stationery")),
+    _sg_visit("boy_high_school_student", "17:00", 120, "バイク", (100, 90, 10, 80, 50, 10, 10, 10, 70, 100), 4000, "medicine", ("cold_drink", "event_goods", "chinese_steamed_bun")),
+    # 女子高校生 (16~18歳) -- 5 rows
+    _sg_visit("girl_high_school_student", "16:00", 180, "徒歩", (100, 90, 40, 30, 100, 50, 50, 30, 70, 100), 3000, "copy_paper", ("cold_drink", "stationery", "event_goods")),
+    _sg_visit("girl_high_school_student", "16:00", 120, "徒歩", (100, 90, 40, 30, 80, 10, 30, 30, 70, 100), 2000, "cold_drink", ("hot_drink", "snacks", "event_goods")),
+    _sg_visit("girl_high_school_student", "17:00", 120, "自転車", (100, 90, 40, 30, 80, 10, 20, 30, 70, 100), 2000, "cold_drink", ("hot_drink", "snacks", "books")),
+    _sg_visit("girl_high_school_student", "16:00", 120, "徒歩", (100, 90, 40, 30, 80, 10, 30, 30, 70, 100), 2000, "ice_cream", ("cold_drink", "snacks", "books")),
     _sg_visit("girl_high_school_student", "17:00", 120, "自転車", (100, 90, 40, 30, 80, 10, 20, 30, 70, 100), 3500, "event_goods", ("snacks", "cold_drink", "stationery")),
-    # 男子幼稚園児 (4~6歳)
-    _sg_visit("boy_kindergartner", "13:00", 120, "徒歩", (40, 60, 50, 100, 30, 0, 90, 80, 100), 500, "snacks", ("cold_drink", "event_goods")),
-    # 女子幼稚園児 (4~6歳)
-    _sg_visit("girl_kindergartner", "13:00", 120, "徒歩", (40, 60, 50, 100, 30, 0, 90, 80, 100), 500, "snacks", ("cold_drink", "event_goods")),
-    # 子供連れのおじさん (35~38歳)
-    _sg_visit("man_with_child", "20:00", 240, "自動車", (40, 30, 70, 60, 50, 20, 30, 20, 100), 4000, "snacks", ("cold_drink", "ice_cream", "event_goods")),
-    _sg_visit("man_with_child", "15:00", 240, "自転車", (50, 60, 80, 50, 60, 70, 80, 20, 100), 20000, "electronics", ("daily_goods", "underwear", "event_goods")),
-    _sg_visit("man_with_child", "16:00", 60, "自動車", (40, 40, 80, 60, 70, 60, 20, 20, 100), 6000, "cold_drink", ("ice_cream", "snacks", "event_goods")),
-    # 子供連れのおばさん (38~41歳)
-    _sg_visit("woman_with_child", "20:00", 240, "徒歩", (40, 30, 70, 60, 50, 20, 30, 20, 100), 5000, "snacks", ("cold_drink", "event_goods", "medicine")),
-    _sg_visit("woman_with_child", "14:00", 240, "自転車", (50, 60, 80, 50, 80, 90, 40, 70, 20, 100), 10000, "daily_goods", ("vegetables", "meat", "seasoning")),
-    _sg_visit("woman_with_child", "15:00", 240, "自動車", (50, 60, 80, 50, 80, 90, 10, 70, 20, 100), 15000, "underwear", ("vegetables", "frozen_food", "seasoning")),
-    _sg_visit("woman_with_child", "16:00", 240, "自動車", (50, 60, 80, 40, 100, 90, 10, 70, 20, 100), 5000, "fish", ("vegetables", "frozen_food", "seasoning")),
-    _sg_visit("woman_with_child", "17:00", 240, "徒歩", (50, 60, 80, 50, 80, 100, 90, 70, 20, 100), 8000, "meat", ("vegetables", "fish", "seasoning")),
-    _sg_visit("woman_with_child", "16:00", 60, "自動車", (40, 40, 80, 60, 70, 60, 20, 20, 100), 6000, "cold_drink", ("ice_cream", "snacks", "event_goods")),
-    # 子抱きのおばさん (30~39歳)
-    _sg_visit("woman_carrying_infant", "15:00", 240, "自動車", (40, 30, 70, 60, 70, 80, 20, 20, 100), 18000, "electronics", ("underwear", "daily_goods", "event_goods")),
-    # 車椅子の男性 (30~33歳)
+    # 男子幼稚園児 (4~6歳) -- 1 row
+    _sg_visit("boy_kindergartner", "13:00", 120, "徒歩", (40, 60, 50, 100, 30, 0, 90, 80, 50, 100), 500, "snacks", ("cold_drink", "event_goods")),
+    # 女子幼稚園児 (4~6歳) -- 1 row
+    _sg_visit("girl_kindergartner", "13:00", 120, "徒歩", (40, 60, 50, 100, 30, 0, 90, 80, 50, 100), 500, "snacks", ("cold_drink", "event_goods")),
+    # 子供連れのおじさん (35~38歳) -- 3 rows
+    _sg_visit("man_with_child", "20:00", 240, "自動車", (40, 30, 80, 70, 60, 50, 20, 30, 20, 100), 4000, "snacks", ("cold_drink", "ice_cream", "event_goods")),
+    _sg_visit("man_with_child", "15:00", 240, "徒歩", (40, 30, 80, 70, 80, 50, 50, 30, 20, 100), 20000, "electronics", ("daily_goods", "underwear", "event_goods")),
+    _sg_visit("man_with_child", "16:00", 60, "自動車", (40, 40, 80, 60, 70, 20, 80, 20, 20, 100), 6000, "cold_drink", ("ice_cream", "snacks", "event_goods")),
+    # 子供連れのおばさん (38~41歳) -- 6 rows
+    _sg_visit("woman_with_child", "20:00", 240, "徒歩", (40, 30, 70, 60, 50, 80, 60, 70, 20, 100), 5000, "snacks", ("cold_drink", "event_goods", "medicine")),
+    _sg_visit("woman_with_child", "14:00", 240, "自転車", (50, 30, 80, 50, 80, 90, 40, 70, 20, 100), 10000, "daily_goods", ("vegetables", "meat", "seasoning")),
+    _sg_visit("woman_with_child", "15:00", 240, "自動車", (50, 30, 80, 50, 80, 90, 10, 70, 20, 100), 15000, "underwear", ("vegetables", "frozen_food", "seasoning")),
+    _sg_visit("woman_with_child", "16:00", 240, "自動車", (50, 30, 80, 40, 100, 90, 10, 70, 20, 100), 5000, "fish", ("vegetables", "frozen_food", "seasoning")),
+    _sg_visit("woman_with_child", "17:00", 240, "徒歩", (50, 30, 80, 40, 100, 90, 70, 70, 20, 100), 8000, "meat", ("vegetables", "fish", "seasoning")),
+    _sg_visit("woman_with_child", "16:00", 60, "自動車", (40, 40, 80, 70, 70, 20, 80, 20, 20, 100), 6000, "cold_drink", ("ice_cream", "snacks", "event_goods")),
+    # 子抱きのおばさん (30~39歳) -- 1 row
+    _sg_visit("woman_carrying_infant", "15:00", 240, "自動車", (40, 30, 70, 60, 70, 80, 20, 70, 20, 100), 18000, "electronics", ("underwear", "daily_goods", "event_goods")),
+    # 車椅子の男性 (30~33歳) -- 1 row
     _sg_visit("man_in_wheelchair", "14:00", 360, "徒歩", (30, 10, 80, 50, 20, 0, 100, 50, 70, 100), 15000, "books", ("cold_drink", "snacks", "medicine")),
-    # 松葉杖の男性 (25~28歳)
+    # 松葉杖の男性 (25~28歳) -- 1 row
     _sg_visit("man_on_crutches", "11:00", 360, "徒歩", (30, 10, 80, 50, 20, 0, 100, 50, 70, 100), 15000, "books", ("cold_drink", "snacks", "medicine")),
 )
 

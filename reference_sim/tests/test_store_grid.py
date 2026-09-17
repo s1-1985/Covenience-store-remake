@@ -7,10 +7,13 @@ from conveni_sim.store_grid import Direction, GridPoint, PlacementError, StoreGr
 
 class StoreGridTests(unittest.TestCase):
     def test_small_store_uses_half_tile_internal_resolution(self):
+        # small_top.editable_floor was corrected 2026-09-17 from a weaker
+        # visual-reconstruction value (8, 13) to the strategy guide's own
+        # 店舗データ table value (5, 8); see test_strategy_guide_primary_scan.py.
         small_top = next(v for v in STORE_VARIANTS if v.id == "small_top")
         grid = StoreGrid.from_store_variant(small_top)
-        self.assertEqual((grid.width_tiles, grid.height_tiles), (8, 13))
-        self.assertEqual((grid.width_subcells, grid.height_subcells), (16, 26))
+        self.assertEqual((grid.width_tiles, grid.height_tiles), (5, 8))
+        self.assertEqual((grid.width_subcells, grid.height_subcells), (10, 16))
 
     def test_1x1_fixture_occupies_four_half_tile_subcells(self):
         grid = StoreGrid(4, 4)
