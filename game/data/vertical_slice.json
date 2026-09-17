@@ -1,5 +1,5 @@
 {
-  "schema_version": 6,
+  "schema_version": 7,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -41,13 +41,15 @@
       "id": "prototype-bread",
       "fixture_id": "shelf-1",
       "initial_stock_units": 3,
-      "sale_price_yen": 120
+      "sale_price_yen": 120,
+      "restock_unit_cost_yen": 60
     },
     {
       "id": "prototype-drink",
       "fixture_id": "shelf-2",
       "initial_stock_units": 3,
-      "sale_price_yen": 160
+      "sale_price_yen": 160,
+      "restock_unit_cost_yen": 80
     }
   ],
   "economy": {
@@ -92,6 +94,10 @@
     "tick_seconds": 0.25,
     "step_game_minutes": 1,
     "shopping_ticks": 2,
-    "checkout_ticks": 3
+    "checkout_ticks": 3,
+    "restock_ticks": 3,
+    "restock_trigger_stock_units_at_or_below": 0,
+    "restock_task_enabled": false,
+    "restock_task_evidence_note": "Automatic restock task-assignment for non-checkout staff is PROVISIONAL and disabled by default so it does not interfere with this scenario's existing sellout behavior. See docs/decisions for the dedicated test scenario that exercises it."
   }
 }

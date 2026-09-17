@@ -413,6 +413,18 @@ arrival and collision rules remain unrecovered) is unchanged, and `nearby_popula
 `customer_share_percent` are still supplied directly in `data/vertical_slice.json` because no town/
 trade-area spatial simulation exists in this client yet (see decision 0088).
 
+The second, non-checkout staff member is no longer permanent furniture. `staff_state.gd` gains a
+`to_restock`/`restocking` task cycle, and `VerticalSliceSimulation._assign_idle_restock_tasks()`
+dispatches the first idle non-checkout staff member to the first sold-out product each tick (a
+simple greedy match, not a skill- or priority-based dispatcher), restocking it back to its own
+configured `initial_stock_units` and deducting `quantity x restock_unit_cost_yen` from cash through
+the existing expense/event-log plumbing. This PROVISIONAL prototype rule -- the guide only confirms
+that register-assignment AI exists and is imperfect, never its dispatch logic -- is disabled by
+default (`restock_task_enabled: false`) because this vertical slice's base scenario deliberately
+demonstrates a shelf staying empty after sellout; enabling it there would silently invalidate that
+existing, tested behavior. A dedicated headless-smoke configuration exercises it instead (see
+decision 0089). Layout edits are now also blocked while any restock task is active.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

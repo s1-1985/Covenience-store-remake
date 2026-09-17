@@ -332,6 +332,80 @@ func _initialize() -> void:
         _fail("tick_idle_for_demand must advance the clock even while idle")
         return
 
+    var restock_config: Dictionary = config.duplicate(true)
+    restock_config["demand"] = {
+        "nearby_population": 0,
+        "customer_share_percent": 0.0,
+        "daily_visit_rate_per_population": 0.0,
+        "opening_minutes_per_day": 960,
+        "bad_weather_visit_multiplier": 0.0,
+        "is_bad_weather": false,
+        "rng_seed": 3,
+    }
+    restock_config["simulation"]["restock_task_enabled"] = true
+    restock_config["simulation"]["restock_ticks"] = 2
+    restock_config["simulation"]["restock_trigger_stock_units_at_or_below"] = 0
+    var restock_simulation = VerticalSliceSimulationScript.new(restock_config)
+    var restock_staff_id := str(restock_config["provisional_restock"]["staff_id"])
+    if restock_staff_id == str(restock_config["staff"]["checkout_staff_id"]):
+        _fail("restock test config must designate a non-checkout staff member")
+        return
+    if restock_simulation.staff.members[restock_staff_id].state != "idle":
+        _fail("a non-checkout staff member must start idle")
+        return
+
+    steps += _run_visit(restock_simulation)
+
+    var restock_product_id := "prototype-bread"
+    var restock_product = restock_simulation.inventory.get_product(restock_product_id)
+    var restock_cash_before := int(restock_simulation.economy.cash_yen)
+    while restock_product.stock_units > 0:
+        if restock_simulation.inventory.try_take_one(restock_product_id).is_empty():
+            _fail("directly depleting the restock test product must succeed while stock remains")
+            return
+    if restock_simulation.staff.members[restock_staff_id].state != "idle":
+        _fail("depleting stock must not itself dispatch a restock task before the next tick")
+        return
+
+    restock_simulation.tick_idle_for_demand()
+    if restock_simulation.staff.members[restock_staff_id].state == "idle":
+        _fail("an idle non-checkout staff member must be dispatched once a product sells out")
+        return
+    if restock_simulation.staff.members[restock_staff_id].restock_target_product_id != restock_product_id:
+        _fail("the dispatched staff member must target the sold-out product")
+        return
+    if restock_simulation.try_relocate_fixture(
+        str(restock_config["products"][1]["fixture_id"]), Vector2i(0, 4)
+    ):
+        _fail("fixture relocation must be blocked while a restock task is active")
+        return
+
+    var restock_task_steps := 0
+    while restock_simulation.staff.members[restock_staff_id].state != "idle" and restock_task_steps < MAX_STEPS:
+        restock_simulation.tick_idle_for_demand()
+        restock_task_steps += 1
+    if restock_task_steps >= MAX_STEPS:
+        _fail("the automatic restock task did not complete within %d steps" % MAX_STEPS)
+        return
+    if restock_product.stock_units != restock_product.initial_stock_units:
+        _fail("a completed restock task must return the product to its configured initial stock")
+        return
+    if restock_simulation.event_log.count_type("inventory_restock") != 1:
+        _fail("a completed automatic restock task must record exactly one inventory_restock event")
+        return
+    var expected_restock_cost: int = (
+        restock_product.initial_stock_units * restock_product.restock_unit_cost_yen
+    )
+    if restock_simulation.economy.cash_yen != restock_cash_before - expected_restock_cost:
+        _fail("automatic restock cost must match quantity times the configured unit cost")
+        return
+
+    var other_product_id := "prototype-drink"
+    var other_product = restock_simulation.inventory.get_product(other_product_id)
+    if other_product.stock_units != other_product.initial_stock_units - 1:
+        _fail("only the sold-out product should have been restocked; the other must be untouched")
+        return
+
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
 

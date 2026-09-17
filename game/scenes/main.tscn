@@ -88,7 +88,7 @@ text = "to_shelf"
 text = "Staff"
 
 [node name="StaffValue" type="Label" parent="UI/Panel/Margin/VBox"]
-text = "waiting_checkout"
+text = "idle"
 
 [node name="SalesTitle" type="Label" parent="UI/Panel/Margin/VBox"]
 text = "Completed sales"

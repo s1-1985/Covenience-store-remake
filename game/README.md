@@ -37,6 +37,27 @@ per-minute Bernoulli roll and the single-active-customer admission boundary are 
 This client still deliberately keeps only one active customer at a time -- the demand policy only
 automates *when* the next admission happens, not concurrent arrivals, which remain unrecovered.
 
+### Staff task assignment
+
+The second, non-checkout staff member was previously permanent furniture: it never moved or acted.
+`scripts/domain/staff_state.gd` now gives any non-checkout staff member a `to_restock` /
+`restocking` task cycle, and `vertical_slice_simulation.gd`'s `_assign_idle_restock_tasks()`
+dispatches the first idle non-checkout staff member to the first sold-out product (a simple greedy
+match, not a skill- or priority-based dispatcher). On completion it restocks the product back to
+its own configured `initial_stock_units` and deducts `quantity x restock_unit_cost_yen` from cash,
+reusing the same expense/event-log plumbing as the existing manual `apply_explicit_restock`
+boundary. Layout edits are now also blocked while any restock task is active, in addition to the
+existing active-visit lock.
+
+This is a PROVISIONAL prototype task-assignment rule, not a recovered original staff-AI policy --
+the strategy guide only confirms that register-assignment AI behavior exists and is imperfect
+(PROJECT_MEMORY.md section 19 / `ps-gameplay-economy-evidence-2026-09-05.md` section 10), without
+publishing its trigger, priority, or dispatch logic. It is **disabled by default**
+(`data/vertical_slice.json`'s `simulation.restock_task_enabled: false`) because this vertical
+slice's existing sellout scenario deliberately demonstrates a shelf staying empty after the last
+unit sells -- see decision 0089 for why enabling it by default would silently invalidate that
+scenario, and for the dedicated test configuration that exercises this feature instead.
+
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;
 its IDs and shape are not a reconstruction of an original receipt system.
@@ -117,9 +138,11 @@ runs both the Godot import and this executable smoke check in addition to the Py
   basket lines, and action timers.
 - `scripts/domain/customer_roster.gd` — unique customer identity, retained visit state, and the
   explicit single-active-customer admission boundary.
-- `scripts/domain/staff_state.gd` — one staff member's identity, position, and prototype task state.
+- `scripts/domain/staff_state.gd` — one staff member's identity, position, and prototype task state,
+  including the PROVISIONAL `to_restock`/`restocking` cycle for non-checkout staff.
 - `scripts/domain/staff_roster.gd` — configured staff membership and the explicitly selected
-  provisional checkout staff; it does not choose tasks autonomously.
+  provisional checkout staff; task *assignment* across non-checkout staff now happens in
+  `vertical_slice_simulation.gd`'s `_assign_idle_restock_tasks()`, not here.
 - `scripts/domain/runtime_event_log.gd` — immutable sequenced facts for deterministic observation
   export; event names and timestamp shape remain provisional.
 - `scripts/domain/demand_policy.gd` — REMAKE_BALANCED_DEFAULT per-minute customer-arrival

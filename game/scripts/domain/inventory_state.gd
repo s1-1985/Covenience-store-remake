@@ -6,6 +6,7 @@ var fixture_id: String
 var stock_units: int
 var sale_price_yen: int
 var initial_stock_units: int
+var restock_unit_cost_yen: int
 
 
 func _init(product_config: Dictionary) -> void:
@@ -13,8 +14,9 @@ func _init(product_config: Dictionary) -> void:
     fixture_id = str(product_config["fixture_id"])
     initial_stock_units = int(product_config["initial_stock_units"])
     sale_price_yen = int(product_config["sale_price_yen"])
+    restock_unit_cost_yen = int(product_config["restock_unit_cost_yen"])
     assert(not product_id.is_empty() and not fixture_id.is_empty())
-    assert(initial_stock_units >= 0 and sale_price_yen >= 0)
+    assert(initial_stock_units >= 0 and sale_price_yen >= 0 and restock_unit_cost_yen >= 0)
     reset()
 
 

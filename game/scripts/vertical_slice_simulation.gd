@@ -25,6 +25,9 @@ var _checkout_interaction := Vector2i.ZERO
 var _shopping_ticks: int
 var _checkout_ticks: int
 var _step_game_minutes: int
+var _restock_ticks: int
+var _restock_trigger_stock_units_at_or_below: int
+var _restock_task_enabled: bool
 
 
 func _init(source_config: Dictionary) -> void:
@@ -46,7 +49,13 @@ func _init(source_config: Dictionary) -> void:
     _shopping_ticks = int(simulation["shopping_ticks"])
     _checkout_ticks = int(simulation["checkout_ticks"])
     _step_game_minutes = int(simulation["step_game_minutes"])
+    _restock_ticks = int(simulation["restock_ticks"])
+    _restock_trigger_stock_units_at_or_below = int(
+        simulation["restock_trigger_stock_units_at_or_below"]
+    )
+    _restock_task_enabled = bool(simulation["restock_task_enabled"])
     assert(_shopping_ticks > 0 and _checkout_ticks > 0 and _step_game_minutes > 0)
+    assert(_restock_ticks > 0 and _restock_trigger_stock_units_at_or_below >= 0)
     assert(float(simulation["tick_seconds"]) > 0.0)
     for staff_member in staff.all_staff():
         assert(layout.is_walkable(staff_member.position))
@@ -101,6 +110,7 @@ func demand_admit_if_due() -> bool:
 
 func tick_idle_for_demand() -> bool:
     minute_of_day = (minute_of_day + _step_game_minutes) % (24 * 60)
+    _step_restock_tasks()
     return demand_admit_if_due()
 
 
@@ -132,7 +142,7 @@ func apply_explicit_restock(
 
 
 func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
-    if not customers.can_admit():
+    if not customers.can_admit() or _any_restock_task_active():
         return false
     if layout.fixture_origin(fixture_id) == Vector2i(-1, -1):
         return false
@@ -152,7 +162,7 @@ func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
 
 
 func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
-    if not customers.can_admit():
+    if not customers.can_admit() or _any_restock_task_active():
         return false
     var previous: Array = layout.fixture_snapshot()
     if not layout.try_rotate_fixture_clockwise(fixture_id):
@@ -229,7 +239,7 @@ func step() -> void:
                         customer.basket
                     )
                     customer.mark_settled(record)
-                checkout_staff.state = "waiting_checkout"
+                checkout_staff.state = "idle"
                 customer.phase = "leaving"
                 customer.route = layout.find_path(customer.position, layout.exit)
                 _record_event("checkout_completed", {
@@ -244,6 +254,7 @@ func step() -> void:
             last_event = "day slice complete"
         _:
             push_error("Unknown customer phase: %s" % customer.phase)
+    _step_restock_tasks()
 
 
 func clock_text() -> String:
@@ -276,6 +287,7 @@ func snapshot() -> Dictionary:
         "started_visits": customers.customers.size(),
         "last_event": last_event,
         "expected_arrivals_per_minute": demand.expected_arrivals_per_minute(),
+        "restock_staff_states": _restock_staff_snapshot(),
     }
 
 
@@ -377,15 +389,114 @@ func _all_staff_are_walkable() -> bool:
     return true
 
 
+func _step_restock_tasks() -> void:
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id == staff.checkout_staff_id:
+            continue
+        match staff_member.state:
+            "to_restock":
+                if staff_member.move_along_route("restocking"):
+                    staff_member.restock_ticks_remaining = _restock_ticks
+                    _record_event("restock_started", {
+                        "staff_id": staff_member.staff_id,
+                        "product_id": staff_member.restock_target_product_id,
+                    })
+            "restocking":
+                staff_member.restock_ticks_remaining -= 1
+                if staff_member.restock_ticks_remaining <= 0:
+                    _complete_restock(staff_member)
+    _assign_idle_restock_tasks()
+
+
+func _complete_restock(staff_member) -> void:
+    var product_id: String = staff_member.restock_target_product_id
+    var product = inventory.get_product(product_id)
+    var quantity: int = product.initial_stock_units - product.stock_units
+    if quantity > 0:
+        var resulting_stock: int = inventory.add_explicit_units(product_id, quantity)
+        var total_cost_yen: int = quantity * product.restock_unit_cost_yen
+        var expense: Dictionary = economy.record_explicit_expense(
+            "inventory_restock",
+            minute_of_day,
+            total_cost_yen,
+            {"product_id": product_id, "quantity": quantity, "staff_id": staff_member.staff_id}
+        )
+        _record_event("inventory_restock", {
+            "product_id": product_id,
+            "quantity": quantity,
+            "staff_id": staff_member.staff_id,
+            "expense_id": expense["expense_id"],
+            "resulting_stock_units": resulting_stock,
+        })
+    staff_member.finish_restock()
+
+
+func _assign_idle_restock_tasks() -> void:
+    if not _restock_task_enabled:
+        return
+    var claimed_product_ids: Dictionary = {}
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state != "idle":
+            claimed_product_ids[staff_member.restock_target_product_id] = true
+    for product_id in inventory.product_order:
+        if claimed_product_ids.has(product_id):
+            continue
+        if inventory.get_product(product_id).stock_units > _restock_trigger_stock_units_at_or_below:
+            continue
+        var idle_staff = _find_idle_restock_staff()
+        if idle_staff == null:
+            return
+        idle_staff.begin_restock(product_id, layout.find_path(idle_staff.position, _product_interaction(product_id)))
+        claimed_product_ids[product_id] = true
+
+
+func _find_idle_restock_staff():
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state == "idle":
+            return staff_member
+    return null
+
+
+func _any_restock_task_active() -> bool:
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state != "idle":
+            return true
+    return false
+
+
+func _restock_staff_snapshot() -> Array[Dictionary]:
+    var rows: Array[Dictionary] = []
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id == staff.checkout_staff_id:
+            continue
+        rows.append({
+            "staff_id": staff_member.staff_id,
+            "state": staff_member.state,
+            "position": staff_member.position,
+            "restock_target_product_id": staff_member.restock_target_product_id,
+        })
+    return rows
+
+
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 6)
+    assert(int(config.get("schema_version", -1)) == 7)
     for key in ["store", "fixtures", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
             assert(false)
     assert(config.get("provisional", false) == true)
     var simulation: Dictionary = config["simulation"]
-    for key in ["start_minute_of_day", "tick_seconds", "step_game_minutes", "shopping_ticks", "checkout_ticks", "checkout_fixture_id"]:
+    for key in [
+        "start_minute_of_day",
+        "tick_seconds",
+        "step_game_minutes",
+        "shopping_ticks",
+        "checkout_ticks",
+        "checkout_fixture_id",
+        "restock_ticks",
+        "restock_trigger_stock_units_at_or_below",
+        "restock_task_enabled",
+    ]:
         if not simulation.has(key):
             push_error("vertical slice simulation config missing required key: %s" % key)
             assert(false)

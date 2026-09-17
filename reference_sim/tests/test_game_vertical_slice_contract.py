@@ -15,7 +15,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     def test_prototype_values_are_explicitly_marked_provisional(self):
-        self.assertEqual(self.config["schema_version"], 6)
+        self.assertEqual(self.config["schema_version"], 7)
         self.assertIs(self.config["provisional"], True)
         self.assertTrue(self.config["evidence_note"].strip())
         self.assertIn("not claims", self.config["evidence_note"])
@@ -72,6 +72,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         for product in self.config["products"]:
             self.assertGreaterEqual(product["initial_stock_units"], 0)
             self.assertGreaterEqual(product["sale_price_yen"], 0)
+            self.assertGreaterEqual(product["restock_unit_cost_yen"], 0)
         self.assertGreaterEqual(self.config["economy"]["initial_cash_yen"], 0)
         restock = self.config["provisional_restock"]
         self.assertIn(restock["product_id"], product_ids)
@@ -332,6 +333,44 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("a zero demand rate must never admit a customer", smoke)
         self.assertIn(
             "demand-driven admission must be blocked while a customer visit is still active",
+            smoke,
+        )
+
+    def test_automatic_restock_task_assignment_is_disabled_by_default_and_provisional(self):
+        simulation_config = self.config["simulation"]
+        for key in (
+            "restock_ticks",
+            "restock_trigger_stock_units_at_or_below",
+            "restock_task_enabled",
+        ):
+            self.assertIn(key, simulation_config)
+        self.assertGreater(simulation_config["restock_ticks"], 0)
+        self.assertGreaterEqual(simulation_config["restock_trigger_stock_units_at_or_below"], 0)
+        self.assertIs(simulation_config["restock_task_enabled"], False)
+
+        staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("func begin_restock(product_id: String", staff_state)
+        self.assertIn("func finish_restock() -> void:", staff_state)
+        self.assertIn("func _step_restock_tasks() -> void:", simulation)
+        self.assertIn("func _assign_idle_restock_tasks() -> void:", simulation)
+        self.assertIn("if not _restock_task_enabled:", simulation)
+        self.assertIn("_any_restock_task_active()", simulation)
+        self.assertIn(
+            "an idle non-checkout staff member must be dispatched once a product sells out",
+            smoke,
+        )
+        self.assertIn(
+            "fixture relocation must be blocked while a restock task is active", smoke
+        )
+        self.assertIn(
+            "a completed restock task must return the product to its configured initial stock",
             smoke,
         )
 
