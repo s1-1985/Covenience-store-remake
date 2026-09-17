@@ -64,6 +64,7 @@ class StoreGrid:
         *,
         subcells_per_tile: int = 2,
         editable_cells: Optional[Iterable[GridPoint]] = None,
+        size_tier: Optional[str] = None,
     ) -> None:
         if width_tiles <= 0 or height_tiles <= 0:
             raise ValueError("store dimensions must be positive")
@@ -75,6 +76,11 @@ class StoreGrid:
         self.subcells_per_tile = subcells_per_tile
         self.width_subcells = width_tiles * subcells_per_tile
         self.height_subcells = height_tiles * subcells_per_tile
+        self.size_tier = size_tier
+        """StoreVariant.size_tier ("small"/"medium"/"large"), when the grid was
+        built `from_store_variant`; None for a bare grid built without one.
+        Consumed by store_evaluation.py's security/cleaning value formulas,
+        which need this store-size multiplier alongside staff skills."""
 
         if editable_cells is None:
             self._editable = frozenset(
@@ -101,7 +107,12 @@ class StoreGrid:
         if variant.editable_floor is None:
             raise ValueError(f"store variant {variant.id} has unknown editable floor")
         width_tiles, height_tiles = variant.editable_floor.value
-        return cls(width_tiles, height_tiles, subcells_per_tile=subcells_per_tile)
+        return cls(
+            width_tiles,
+            height_tiles,
+            subcells_per_tile=subcells_per_tile,
+            size_tier=variant.size_tier,
+        )
 
     def in_bounds(self, point: GridPoint) -> bool:
         return 0 <= point.x < self.width_subcells and 0 <= point.y < self.height_subcells
