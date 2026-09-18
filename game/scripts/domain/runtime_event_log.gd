@@ -28,6 +28,14 @@ func snapshot() -> Array:
     return records.duplicate(true)
 
 
+func restore_snapshot(snapshot_data: Array) -> void:
+    records.assign(snapshot_data)
+    var max_sequence := 0
+    for record in records:
+        max_sequence = max(max_sequence, int(record["sequence"]))
+    _next_sequence = max_sequence + 1
+
+
 func count_type(event_type: String) -> int:
     var total := 0
     for record in records:

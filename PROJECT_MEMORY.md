@@ -510,6 +510,25 @@ fixtures or spatial search exist) and the guide's per-event rating deltas (angry
 shoplifting/donation), since their trigger events aren't wired into this client either
 (decision 0096).
 
+Task #28 (セーブ/ロードをGodotに実装) is a pure engine feature -- no `reference_sim` counterpart,
+so decision 0097 records design choices rather than evidence tags. `VerticalSliceSimulation.
+save_state()`/`load_state()` round-trip time/day/month, game-over/clear state, popularity/rating,
+permits, promotions, the full store layout, inventory, economy, and event log. Deliberately not
+saved/restored: the active customer's/staff's mid-visit/mid-task walk state, since both are
+transient and a fresh `reset()` already produces a sensible state on load -- `load_state()` in fact
+resets every subsystem to its config-derived starting point first, applies the saved fields,
+restores the layout, and only then admits a fresh default customer (admitting one before the layout
+is restored would leave its cached route stale). `load_state()` rejects an incompatible save
+(different scenario_id/config_schema_version/save_schema_version) by returning `false` without
+mutating anything, the same convention as this client's `try_*` methods; a structurally corrupted
+save instead asserts, matching `_require_config()`. `save_game_service.gd`'s `SaveGameService` is
+the only I/O-touching piece (JSON under `user://saves/`), kept separate from the I/O-free
+`scripts/domain/` classes. Implementing this surfaced and fixed two existing latent bugs:
+`StoreLayout.restore_fixture_snapshot()` wasn't normalizing float-typed coordinates from a JSON
+round-trip, and naively rebuilding `EconomyState`'s settled-customer guard from saved sale records
+would have permanently blocked a freshly re-admitted customer of the same recycled id from ever
+completing a sale.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

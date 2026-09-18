@@ -590,6 +590,105 @@ func observation_snapshot() -> Dictionary:
     }
 
 
+const SAVE_SCHEMA_VERSION := 1
+
+# Deliberately not saved/restored: the active customer's mid-visit walk
+# state (position along a route, basket-so-far, checkout progress) and
+# staff members' mid-task walk/restock state (position along a route,
+# restock_ticks_remaining). Both are transient, sub-representative-day
+# animation progress; on load they are simply whatever a fresh reset()
+# already produces (an idle staff roster and one freshly-admitted default
+# customer), the same as this client's other reset boundaries. Persisting
+# an exact mid-route position would need to serialize pathfinding routes
+# for very little player-facing value, since the same route recomputes
+# deterministically once the game resumes.
+func save_state() -> Dictionary:
+    return {
+        "save_schema_version": SAVE_SCHEMA_VERSION,
+        "scenario_id": str(config["scenario_id"]),
+        "config_schema_version": int(config["schema_version"]),
+        "minute_of_day": minute_of_day,
+        "day_count": day_count,
+        "month_count": month_count,
+        "days_completed_this_month": _days_completed_this_month,
+        "cash_at_month_start": _cash_at_month_start,
+        "revenue_at_month_start": _revenue_at_month_start,
+        "is_game_over": is_game_over,
+        "game_over_reason": game_over_reason,
+        "clear_condition_met": clear_condition_met,
+        "popularity": popularity,
+        "internal_rating_value": internal_rating_value,
+        "star_rating": star_rating,
+        "permits_held": _permits_held.keys(),
+        "promotions_used_this_month": _promotions_used_this_month.keys(),
+        "scheduled_promotions": _scheduled_promotions.duplicate(true),
+        "fixtures": layout.fixture_snapshot(),
+        "inventory": inventory.snapshot(),
+        "economy": economy.snapshot(),
+        "events": event_log.snapshot(),
+    }
+
+
+# Returns false, without mutating this simulation, when the save data does
+# not belong to the currently-loaded config (different scenario_id, or a
+# schema_version the running config no longer matches) -- an expected,
+# recoverable condition, the same as this client's other try_* actions.
+# A structurally corrupted save (missing keys entirely) is not treated as
+# this same recoverable case; it asserts, matching _require_config()'s own
+# convention for malformed input this client did not itself produce.
+func load_state(data: Dictionary) -> bool:
+    if str(data.get("scenario_id", "")) != str(config["scenario_id"]):
+        return false
+    if int(data.get("config_schema_version", -1)) != int(config["schema_version"]):
+        return false
+    if int(data.get("save_schema_version", -1)) != SAVE_SCHEMA_VERSION:
+        return false
+    _require_save_data(data)
+    if not layout.fixture_snapshot_is_valid(data["fixtures"]):
+        return false
+    # Clears every subsystem back to its config-derived starting point
+    # first (the same subsystems reset() touches, minus admitting a
+    # customer) so load_state() is safe to call on a simulation that has
+    # already been running, not only a freshly-constructed one, and so a
+    # customer is only admitted below once the layout is in its final,
+    # loaded state -- admitting one before restoring fixtures could leave
+    # its cached route stale against a layout that is about to change.
+    layout.reset()
+    inventory.reset()
+    economy.reset()
+    customers.reset()
+    staff.reset()
+    event_log.reset()
+    minute_of_day = int(data["minute_of_day"])
+    day_count = int(data["day_count"])
+    month_count = int(data["month_count"])
+    _days_completed_this_month = int(data["days_completed_this_month"])
+    _cash_at_month_start = int(data["cash_at_month_start"])
+    _revenue_at_month_start = int(data["revenue_at_month_start"])
+    is_game_over = bool(data["is_game_over"])
+    game_over_reason = str(data["game_over_reason"])
+    clear_condition_met = bool(data["clear_condition_met"])
+    popularity = int(data["popularity"])
+    internal_rating_value = int(data["internal_rating_value"])
+    star_rating = int(data["star_rating"])
+    _permits_held.clear()
+    for permit_id in data["permits_held"]:
+        _permits_held[str(permit_id)] = true
+    _promotions_used_this_month.clear()
+    for key in data["promotions_used_this_month"]:
+        _promotions_used_this_month[str(key)] = true
+    _scheduled_promotions.clear()
+    for scheduled in data["scheduled_promotions"]:
+        _scheduled_promotions.append((scheduled as Dictionary).duplicate(true))
+    layout.restore_fixture_snapshot(data["fixtures"])
+    inventory.restore_snapshot(data["inventory"])
+    economy.restore_snapshot(data["economy"])
+    event_log.restore_snapshot(data["events"])
+    _refresh_interactions()
+    _start_default_customer()
+    return true
+
+
 func _record_event(event_type: String, details: Dictionary = {}) -> void:
     event_log.append(event_type, minute_of_day, details)
     last_event = event_type.replace("_", " ")
@@ -889,6 +988,38 @@ func _restock_staff_snapshot() -> Array[Dictionary]:
             "restock_target_product_id": staff_member.restock_target_product_id,
         })
     return rows
+
+
+func _require_save_data(data: Dictionary) -> void:
+    for key in [
+        "minute_of_day",
+        "day_count",
+        "month_count",
+        "days_completed_this_month",
+        "cash_at_month_start",
+        "revenue_at_month_start",
+        "is_game_over",
+        "game_over_reason",
+        "clear_condition_met",
+        "popularity",
+        "internal_rating_value",
+        "star_rating",
+        "permits_held",
+        "promotions_used_this_month",
+        "scheduled_promotions",
+        "fixtures",
+        "inventory",
+        "economy",
+        "events",
+    ]:
+        if not data.has(key):
+            push_error("save data missing required key: %s" % key)
+            assert(false)
+    var economy_data: Dictionary = data["economy"]
+    for key in ["cash_yen", "sale_records", "expense_records", "month_end_records", "next_sale_sequence"]:
+        if not economy_data.has(key):
+            push_error("save data economy section missing required key: %s" % key)
+            assert(false)
 
 
 func _require_config() -> void:

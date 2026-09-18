@@ -400,6 +400,56 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("rival dilution must be capped at MAX_RIVAL_DILUTION", smoke)
         self.assertIn("land_value_yen must match LandValuePolicy's formula", smoke)
 
+    def test_save_load_round_trips_progress_and_rejects_incompatible_saves(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        save_service = (GAME_ROOT / "scripts" / "save_game_service.gd").read_text(
+            encoding="utf-8"
+        )
+        economy_state = (GAME_ROOT / "scripts" / "domain" / "economy_state.gd").read_text(
+            encoding="utf-8"
+        )
+        inventory_catalog = (
+            GAME_ROOT / "scripts" / "domain" / "inventory_catalog.gd"
+        ).read_text(encoding="utf-8")
+        store_layout = (GAME_ROOT / "scripts" / "domain" / "store_layout.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("func save_state() -> Dictionary:", simulation)
+        self.assertIn("func load_state(data: Dictionary) -> bool:", simulation)
+        # An incompatible save (wrong scenario/schema) is an expected,
+        # recoverable rejection (returns false), not a crash.
+        self.assertIn('if str(data.get("scenario_id", "")) != str(config["scenario_id"]):', simulation)
+        self.assertIn('if int(data.get("config_schema_version", -1)) != int(config["schema_version"]):', simulation)
+
+        self.assertIn("class_name SaveGameService", save_service)
+        self.assertIn("func save_to_path(", save_service)
+        self.assertIn("func load_from_path(", save_service)
+        self.assertIn('const DEFAULT_SAVE_PATH := "user://saves/vertical_slice_save.json"', save_service)
+
+        self.assertIn("func snapshot() -> Dictionary:", economy_state)
+        self.assertIn("func restore_snapshot(data: Dictionary) -> void:", economy_state)
+        self.assertIn("func snapshot() -> Array:", inventory_catalog)
+        self.assertIn("func restore_snapshot(snapshot_data: Array) -> void:", inventory_catalog)
+        self.assertIn("func fixture_snapshot_is_valid(snapshot: Array) -> bool:", store_layout)
+
+        # Deliberately not restored: mid-visit customer/staff walk state --
+        # both come back to whatever a fresh reset() already produces.
+        self.assertIn("Deliberately not saved/restored", simulation)
+
+        self.assertIn(
+            "a loaded simulation must restore the exact saved cash", smoke
+        )
+        self.assertIn(
+            "loading a save with a different scenario_id must be rejected", smoke
+        )
+        self.assertIn(
+            "a save file round trip must preserve the exact saved cash", smoke
+        )
+
     def test_store_rating_ports_confirmed_guide_thresholds_into_the_monthly_loop(self):
         store = self.config["store"]
         self.assertIn("size_tier", store)

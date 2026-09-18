@@ -6,6 +6,7 @@ const TownStateScript := preload("res://scripts/domain/town_state.gd")
 const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.gd")
 const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
 const StoreValueScript := preload("res://scripts/domain/store_value.gd")
+const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAX_STEPS := 256
@@ -817,6 +818,119 @@ func _initialize() -> void:
         return
     if int(rating_simulation.snapshot()["star_rating"]) != rating_simulation.star_rating:
         _fail("snapshot() must expose the same star_rating the simulation tracks")
+        return
+
+    var save_config: Dictionary = config.duplicate(true)
+    save_config["demand"] = {
+        "nearby_population": 0,
+        "customer_share_percent": 0.0,
+        "daily_visit_rate_per_population": 0.0,
+        "opening_minutes_per_day": 960,
+        "bad_weather_visit_multiplier": 0.0,
+        "is_bad_weather": false,
+        "rng_seed": 19,
+    }
+    var save_simulation = VerticalSliceSimulationScript.new(save_config)
+    steps += _run_visit(save_simulation)
+    save_simulation.economy.cash_yen = 1_000_000
+    if not save_simulation.try_purchase_fixture(
+        "potted_plant", "amenity-save-1", Vector2i(12, 0), Vector2i(12, 2)
+    ):
+        _fail("the save/load test's fixture purchase setup must be accepted")
+        return
+    if not save_simulation.try_purchase_promotion("direct_mail"):
+        _fail("the save/load test's promotion scheduling setup must be accepted")
+        return
+    var save_setup_ticks := 0
+    while (
+        save_simulation.day_count < REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST
+        and save_setup_ticks < 20000
+    ):
+        save_simulation.tick_idle_for_demand()
+        save_setup_ticks += 1
+    if save_setup_ticks >= 20000:
+        _fail("advancing the save/load test's setup simulation took too long")
+        return
+    if save_simulation.month_count != 1 or save_simulation.popularity != 12:
+        _fail("the save/load test's setup simulation must have settled one month and fired its promotion")
+        return
+
+    var save_data: Dictionary = save_simulation.save_state()
+    var loaded_simulation = VerticalSliceSimulationScript.new(save_config)
+    if not loaded_simulation.load_state(save_data):
+        _fail("loading a save produced by save_state() for the same config must be accepted")
+        return
+    if loaded_simulation.economy.cash_yen != save_simulation.economy.cash_yen:
+        _fail("a loaded simulation must restore the exact saved cash")
+        return
+    if loaded_simulation.day_count != save_simulation.day_count:
+        _fail("a loaded simulation must restore the exact saved day_count")
+        return
+    if loaded_simulation.month_count != save_simulation.month_count:
+        _fail("a loaded simulation must restore the exact saved month_count")
+        return
+    if loaded_simulation.popularity != save_simulation.popularity:
+        _fail("a loaded simulation must restore the exact saved popularity")
+        return
+    if loaded_simulation.internal_rating_value != save_simulation.internal_rating_value:
+        _fail("a loaded simulation must restore the exact saved internal_rating_value")
+        return
+    if loaded_simulation.layout.fixture_origin("amenity-save-1") != Vector2i(12, 0):
+        _fail("a loaded simulation must restore the exact saved fixture layout")
+        return
+    if loaded_simulation.inventory.total_stock_units() != save_simulation.inventory.total_stock_units():
+        _fail("a loaded simulation must restore the exact saved inventory stock")
+        return
+    # +1: load_state() admits a fresh default customer once the loaded
+    # layout is in place (customer/staff walk state is not saved/restored
+    # -- see save_state()'s own comment), recording one more
+    # customer_entered event on top of the restored history.
+    if loaded_simulation.event_log.records.size() != save_simulation.event_log.records.size() + 1:
+        _fail("a loaded simulation must restore the saved event log plus its own fresh customer_entered event")
+        return
+    if loaded_simulation.economy.sale_records.size() != save_simulation.economy.sale_records.size():
+        _fail("a loaded simulation must restore the exact saved sale records")
+        return
+    if loaded_simulation.economy.month_end_records.size() != save_simulation.economy.month_end_records.size():
+        _fail("a loaded simulation must restore the exact saved month-end records")
+        return
+
+    var mismatched_scenario_data: Dictionary = save_data.duplicate(true)
+    mismatched_scenario_data["scenario_id"] = "wrong-scenario"
+    if loaded_simulation.load_state(mismatched_scenario_data):
+        _fail("loading a save with a different scenario_id must be rejected")
+        return
+    var mismatched_schema_data: Dictionary = save_data.duplicate(true)
+    mismatched_schema_data["config_schema_version"] = -1
+    if loaded_simulation.load_state(mismatched_schema_data):
+        _fail("loading a save with a different config_schema_version must be rejected")
+        return
+
+    var save_service = SaveGameServiceScript.new()
+    var test_save_path := "user://saves/headless_smoke_test_save.json"
+    save_service.delete_save(test_save_path)
+    if save_service.load_from_path(save_simulation, test_save_path):
+        _fail("loading from a path with no save file must be rejected")
+        return
+    if not save_service.save_to_path(save_simulation, test_save_path):
+        _fail("saving to a writable user:// path must succeed")
+        return
+    if not save_service.save_exists(test_save_path):
+        _fail("save_exists must report true once a save has been written")
+        return
+    var file_loaded_simulation = VerticalSliceSimulationScript.new(save_config)
+    if not save_service.load_from_path(file_loaded_simulation, test_save_path):
+        _fail("loading a save file just written by save_to_path must succeed")
+        return
+    if file_loaded_simulation.economy.cash_yen != save_simulation.economy.cash_yen:
+        _fail("a save file round trip must preserve the exact saved cash")
+        return
+    if file_loaded_simulation.popularity != save_simulation.popularity:
+        _fail("a save file round trip must preserve the exact saved popularity")
+        return
+    save_service.delete_save(test_save_path)
+    if save_service.save_exists(test_save_path):
+        _fail("delete_save must remove the save file")
         return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)

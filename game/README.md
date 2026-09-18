@@ -191,6 +191,32 @@ search exist yet) and the guide's per-event rating deltas (an angry customer at 
 shoplifting, -1; a donation, +5) -- their trigger events aren't wired into this client either. See
 decision 0096. **This closes out task #27.**
 
+### Save / load
+
+`VerticalSliceSimulation.save_state()`/`load_state(data)` are a pure engine feature -- there is no
+`reference_sim` counterpart to port, so this is a design-decision record rather than an
+evidence-tagging one (decision 0097). They round-trip time/day/month counters, game-over/clear
+state, popularity/rating, held permits, scheduled/used promotions, the store layout (including
+purchased/moved/rotated fixtures), full inventory (including procured product SKUs), and the
+complete economy (cash, sale/expense/month-end history) and event log. Deliberately **not**
+saved/restored: the active customer's mid-visit walk state and staff members' mid-task walk/restock
+state -- both are transient sub-representative-day animation progress that a fresh `reset()`
+already produces on its own, the same as this client's other reset boundaries. Because of that,
+`load_state()` resets every subsystem to its config-derived starting point first, applies the saved
+fields, restores the layout, and only *then* admits a fresh default customer -- admitting one
+before the layout is restored could leave its cached route stale against fixtures that are about to
+change. `load_state()` rejects (returns `false`, no mutation) a save with a different
+`scenario_id`/`config_schema_version`/`save_schema_version` than the running config, the same
+"expected, recoverable rejection" convention as this client's other `try_*` methods; a structurally
+corrupted save (missing keys entirely) instead asserts, matching `_require_config()`'s own
+convention. `save_game_service.gd`'s `SaveGameService` is a thin I/O boundary (kept out of
+`scripts/domain/`, which stays I/O-free) turning that Dictionary into/from a JSON file under
+Godot's `user://saves/`. Implementing this surfaced and fixed two existing latent bugs: `StoreLayout
+.restore_fixture_snapshot()` wasn't normalizing float-typed coordinates from a JSON round-trip, and
+naively rebuilding `EconomyState`'s settled-customer guard from saved sale records would have
+permanently blocked the freshly re-admitted customer of the same recycled id from ever completing a
+sale. **This closes out task #28.**
+
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;
 its IDs and shape are not a reconstruction of an original receipt system.

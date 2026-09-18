@@ -119,3 +119,30 @@ func record_month_end_settlement(
     month_end_records.append(record)
     cash_yen += amount_yen
     return record.duplicate(true)
+
+
+func snapshot() -> Dictionary:
+    return {
+        "cash_yen": cash_yen,
+        "sale_records": sale_records.duplicate(true),
+        "expense_records": expense_records.duplicate(true),
+        "month_end_records": month_end_records.duplicate(true),
+        "next_sale_sequence": _next_sale_sequence,
+    }
+
+
+func restore_snapshot(data: Dictionary) -> void:
+    cash_yen = int(data["cash_yen"])
+    sale_records.assign(data["sale_records"])
+    expense_records.assign(data["expense_records"])
+    month_end_records.assign(data["month_end_records"])
+    completed_sales = sale_records.size()
+    _next_sale_sequence = int(data["next_sale_sequence"])
+    # Deliberately cleared, not rebuilt from the restored sale_records'
+    # customer_ids: the caller's customer roster is not restored by this
+    # snapshot (see VerticalSliceSimulation.load_state()'s own note on
+    # this) and always restarts its id sequence from "<prefix>-1", so a
+    # historical sale settled under that same recycled id would otherwise
+    # permanently block the freshly-admitted customer of the same name
+    # from ever completing a sale after load.
+    _settled_customer_ids.clear()
