@@ -14,6 +14,15 @@ extends RefCounted
 # has no police-box/fire-station fixtures or spatial facility search yet,
 # so that bonus is omitted here entirely (equivalent to always passing
 # zero coverage) rather than guessed at.
+#
+# STORE_SIZE_VALUE_MULTIPLIER below is keyed by size_tier ("small"/"medium"/
+# "large"), not by tile dimensions: the guide prints this table's own
+# labels as "10x10=1.5 / 12x12=1.65 / 14x14=1.8", which is a separate,
+# already-flagged-as-conflicting size notation from the editable_floor
+# tile dimensions used for the actual store grid (game/data/vertical_slice.json
+# "store", resolved as 5x8 for "small" -- see
+# docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md sections 3
+# and 7). Do not infer one notation's numbers from the other.
 
 const STORE_SIZE_VALUE_MULTIPLIER := {
     "small": 1.5,

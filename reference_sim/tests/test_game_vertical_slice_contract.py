@@ -161,6 +161,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "scripts/domain/staff_state.gd",
             "scripts/domain/chain_visitor_milestone.gd",
             "scripts/domain/store_events.gd",
+            "scripts/domain/checkout_timing.gd",
             "scripts/domain/staff_roster.gd",
             "scripts/domain/runtime_event_log.gd",
             "scripts/domain/demand_policy.gd",
@@ -646,6 +647,142 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("star_rank_for_internal_value must match the guide's confirmed breakpoints", smoke)
         self.assertIn("exactly one store_rating_evaluated event must be recorded at month end", smoke)
 
+    def test_named_staff_candidate_roster_ports_all_35_confirmed_official_entries(self):
+        from conveni_sim.baseline_data import STAFF_CANDIDATES
+
+        self.assertIn("staff_candidates", self.config)
+        self.assertIn("staff_candidates_evidence_note", self.config)
+        self.assertIn("CONFIRMED_OFFICIAL", self.config["staff_candidates_evidence_note"])
+
+        candidates = self.config["staff_candidates"]
+        self.assertEqual(len(candidates), 35)
+        self.assertEqual(len(candidates), len(STAFF_CANDIDATES))
+
+        ids = [entry["candidate_id"] for entry in candidates]
+        self.assertEqual(len(ids), len(set(ids)))
+
+        # Every candidate ports digit-for-digit from reference_sim's own
+        # STAFF_CANDIDATES tuple, not a re-transcription that could drift.
+        reference_by_id = {c.id: c for c in STAFF_CANDIDATES}
+        self.assertEqual(set(ids), set(reference_by_id.keys()))
+        for entry in candidates:
+            reference = reference_by_id[entry["candidate_id"]]
+            self.assertEqual(entry["display_name"], reference.display_name.value)
+            self.assertEqual(entry["age_years"], reference.starting_age_years.value)
+            self.assertEqual(
+                entry["salary_yen_per_day_24h"], reference.salary_yen_per_day_24h.value
+            )
+            for field, value_obj in (
+                ("stamina", reference.stamina),
+                ("academic_background", reference.academic_background),
+                ("agility", reference.agility),
+                ("sociability", reference.sociability),
+                ("education", reference.education),
+                ("service_skill", reference.service_skill),
+                ("register_skill", reference.register_skill),
+                ("cleaning_skill", reference.cleaning_skill),
+                ("replenishment_skill", reference.replenishment_skill),
+                ("service_skill_growth_ceiling", reference.service_skill_growth_ceiling),
+                ("register_skill_growth_ceiling", reference.register_skill_growth_ceiling),
+                ("cleaning_skill_growth_ceiling", reference.cleaning_skill_growth_ceiling),
+                (
+                    "replenishment_skill_growth_ceiling",
+                    reference.replenishment_skill_growth_ceiling,
+                ),
+                ("security_skill_growth_ceiling", reference.security_skill_growth_ceiling),
+            ):
+                self.assertEqual(entry[field], value_obj.value)
+            # security_skill is the one field allowed to be null (exactly
+            # one candidate's printed value could not be read with
+            # confidence), never guessed to fill the gap.
+            expected_security = (
+                reference.security_skill.value if reference.security_skill is not None else None
+            )
+            self.assertEqual(entry["security_skill"], expected_security)
+        self.assertEqual(
+            sum(1 for entry in candidates if entry["security_skill"] is None), 1
+        )
+
+        # The two active roster slots now bind to real named candidates
+        # instead of a flat, identical placeholder repeated on both.
+        members = self.config["staff"]["members"]
+        self.assertEqual(len(members), 2)
+        candidates_by_id = {entry["candidate_id"]: entry for entry in candidates}
+        for member in members:
+            self.assertIn("candidate_id", member)
+            self.assertIn(member["candidate_id"], candidates_by_id)
+            bound = candidates_by_id[member["candidate_id"]]
+            for key in (
+                "service_skill",
+                "security_skill",
+                "cleaning_skill",
+                "register_skill",
+                "replenishment_skill",
+            ):
+                self.assertEqual(member[key], bound[key])
+        member_candidate_ids = [member["candidate_id"] for member in members]
+        self.assertEqual(len(member_candidate_ids), len(set(member_candidate_ids)))
+
+        staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("task #32", staff_state)
+
+    def test_register_skill_checkout_timing_is_a_tagged_remake_default(self):
+        from conveni_sim.baseline_data import STAFF_CANDIDATES
+
+        checkout_timing = (
+            GAME_ROOT / "scripts" / "domain" / "checkout_timing.gd"
+        ).read_text(encoding="utf-8")
+        staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+
+        # The evidence note is explicit that this scaling shape is invented
+        # by this project, not a recovered original formula -- the research
+        # note it cites confirms only a qualitative effect.
+        self.assertIn("REMAKE_BALANCED_DEFAULT", checkout_timing)
+        self.assertIn("not a recovered original formula", checkout_timing)
+        self.assertIn("func required_ticks(register_skill: int, reference_ticks: int) -> int:", checkout_timing)
+        self.assertIn("const MIN_CHECKOUT_TICKS := 1", checkout_timing)
+
+        # REFERENCE_REGISTER_SKILL must actually be the median of the ported
+        # 35-candidate roster, not an arbitrary number.
+        register_skills = sorted(c.register_skill.value for c in STAFF_CANDIDATES)
+        median = register_skills[len(register_skills) // 2]
+        self.assertEqual(len(register_skills) % 2, 1)
+        self.assertIn(f"const REFERENCE_REGISTER_SKILL := {median}", checkout_timing)
+
+        self.assertIn("var register_skill: int", staff_state)
+        self.assertIn('register_skill = int(staff_config.get("register_skill", 0))', staff_state)
+
+        # Wired into the actual checkout-start transition, not just defined
+        # standalone.
+        self.assertIn("const CheckoutTimingScript := preload", simulation)
+        self.assertIn(
+            "customer.checkout_ticks_remaining = _checkout_timing.required_ticks(\n"
+            "                    checkout_staff.register_skill, _checkout_ticks\n"
+            "                )",
+            simulation,
+        )
+
+        # checkout_ticks itself is documented as reinterpreted, not silently
+        # redefined without a trace.
+        self.assertIn("checkout_ticks_evidence_note", self.config["simulation"])
+        self.assertIn(
+            "REFERENCE_REGISTER_SKILL", self.config["simulation"]["checkout_ticks_evidence_note"]
+        )
+
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn(
+            "required_ticks must return reference_ticks unchanged exactly at REFERENCE_REGISTER_SKILL",
+            smoke,
+        )
+        self.assertIn("required_ticks must never fall below MIN_CHECKOUT_TICKS", smoke)
+
     def test_promotions_port_confirmed_reference_sim_timing_and_apply_at_trigger(self):
         promotions = self.config["promotions"]
         promotion_ids = [entry["promotion_id"] for entry in promotions]
@@ -773,6 +910,51 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("purchasing on top of an existing fixture must be rejected", smoke)
         self.assertIn(
             "a fixture purchase costing more than available cash must be rejected", smoke
+        )
+
+    def test_parking_fixtures_port_confirmed_reference_sim_data(self):
+        from conveni_sim.baseline_data import FIXTURES
+
+        catalog_by_id = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        reference_by_id = {f.id: f for f in FIXTURES}
+        for catalog_id in ("parking_ground", "parking_two_story", "parking_tower"):
+            self.assertIn(catalog_id, catalog_by_id)
+            entry = catalog_by_id[catalog_id]
+            reference = reference_by_id[catalog_id]
+            self.assertEqual(entry["kind"], "parking")
+            self.assertEqual(
+                entry["footprint_tiles"], list(reference.footprint.value)
+            )
+            self.assertEqual(
+                entry["purchase_price_yen"], reference.purchase_price_yen.value
+            )
+            self.assertEqual(
+                entry["maintenance_yen_per_day"], reference.maintenance_yen_per_day.value
+            )
+            self.assertEqual(
+                entry["parking_capacity"], reference.parking_capacity.value
+            )
+            self.assertIs(entry["blocks_pedestrian"], reference.blocks_pedestrian.value)
+            self.assertEqual(entry["placement"], reference.placement.value)
+            self.assertIn("CONFIRMED", entry["evidence_note"])
+
+        layout = (GAME_ROOT / "scripts" / "domain" / "store_layout.gd").read_text(
+            encoding="utf-8"
+        )
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # No kind-specific carve-out was added to StoreLayout: every fixture
+        # already blocks its full footprint unconditionally regardless of
+        # kind, so parking's confirmed blocks_pedestrian fact requires no
+        # new placement mechanic, only the informational catalog field
+        # above.
+        self.assertIn("for fixture in fixtures:", layout)
+        self.assertIn('elif fixture["kind"] == "parking":', store_view)
+        self.assertIn("a valid parking fixture purchase must be accepted", smoke)
+        self.assertIn(
+            "a placed parking fixture's footprint must not be walkable, same as any other fixture",
+            smoke,
         )
 
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):

@@ -9,6 +9,7 @@ const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
 const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
+const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
@@ -116,10 +117,10 @@ func _initialize() -> void:
     if simulation.layout.fixture_origin(shelf_id) != initial_shelf_origin:
         _fail("rejected fixture relocation must be atomic")
         return
-    if not simulation.try_relocate_fixture(shelf_id, Vector2i(4, 6)):
+    if not simulation.try_relocate_fixture(shelf_id, Vector2i(1, 10)):
         _fail("valid completed-visit fixture relocation was rejected")
         return
-    if simulation.layout.fixture_origin(shelf_id) != Vector2i(4, 6):
+    if simulation.layout.fixture_origin(shelf_id) != Vector2i(1, 10):
         _fail("accepted fixture relocation did not update the layout")
         return
 
@@ -562,7 +563,7 @@ func _initialize() -> void:
         return
     var cash_before_any_purchase: int = int(purchase_simulation.economy.cash_yen)
     if purchase_simulation.try_purchase_fixture(
-        "potted_plant", "amenity-occupied", Vector2i(4, 4), Vector2i(2, 4)
+        "potted_plant", "amenity-occupied", Vector2i(1, 6), Vector2i(2, 5)
     ):
         _fail("purchasing on top of an existing fixture must be rejected")
         return
@@ -570,37 +571,51 @@ func _initialize() -> void:
         _fail("a rejected fixture purchase must not change cash")
         return
     if not purchase_simulation.try_purchase_fixture(
-        "potted_plant", "amenity-1", Vector2i(12, 0), Vector2i(12, 2)
+        "potted_plant", "amenity-1", Vector2i(1, 10), Vector2i(1, 9)
     ):
         _fail("a valid, affordable fixture purchase must be accepted")
         return
     if purchase_simulation.economy.cash_yen != cash_before_any_purchase - 1000:
         _fail("a fixture purchase must deduct exactly its configured purchase price")
         return
-    if purchase_simulation.layout.fixture_origin("amenity-1") != Vector2i(12, 0):
+    if purchase_simulation.layout.fixture_origin("amenity-1") != Vector2i(1, 10):
         _fail("a purchased fixture must be placed at the requested origin")
         return
     if purchase_simulation.event_log.count_type("fixture_purchased") != 1:
         _fail("a completed fixture purchase must record exactly one fixture_purchased event")
         return
     if purchase_simulation.try_purchase_fixture(
-        "bench", "amenity-1", Vector2i(10, 0), Vector2i(10, 2)
+        "bench", "amenity-1", Vector2i(4, 10), Vector2i(4, 9)
     ):
         _fail("a duplicate fixture instance id must be rejected")
         return
     if purchase_simulation.try_purchase_fixture(
-        "unknown_catalog_entry", "amenity-2", Vector2i(10, 0), Vector2i(10, 2)
+        "unknown_catalog_entry", "amenity-2", Vector2i(4, 10), Vector2i(4, 9)
     ):
         _fail("an unknown fixture catalog id must be rejected")
         return
     var cash_before_unaffordable_purchase: int = int(purchase_simulation.economy.cash_yen)
     if purchase_simulation.try_purchase_fixture(
-        "fountain", "amenity-4", Vector2i(10, 0), Vector2i(10, 2)
+        "fountain", "amenity-4", Vector2i(1, 12), Vector2i(1, 11)
     ):
         _fail("a fixture purchase costing more than available cash must be rejected")
         return
     if purchase_simulation.economy.cash_yen != cash_before_unaffordable_purchase:
         _fail("a rejected fixture purchase must not change cash")
+        return
+
+    var parking_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(parking_simulation)
+    if not parking_simulation.try_purchase_fixture(
+        "parking_ground", "parking-1", Vector2i(6, 12), Vector2i(5, 12)
+    ):
+        _fail("a valid parking fixture purchase must be accepted")
+        return
+    if parking_simulation.layout.fixture_origin("parking-1") != Vector2i(6, 12):
+        _fail("a purchased parking fixture must be placed at the requested origin")
+        return
+    if parking_simulation.layout.is_walkable(Vector2i(6, 12)):
+        _fail("a placed parking fixture's footprint must not be walkable, same as any other fixture")
         return
 
     var permit_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
@@ -612,7 +627,7 @@ func _initialize() -> void:
         _fail("a permit purchase without sufficient cash must be rejected")
         return
     if permit_simulation.try_purchase_fixture(
-        "small_tobacco_vending", "tobacco-shelf-1", Vector2i(12, 0), Vector2i(12, 2)
+        "small_tobacco_vending", "tobacco-shelf-1", Vector2i(4, 10), Vector2i(4, 9)
     ):
         _fail("a permit-gated fixture purchase must be rejected without the permit")
         return
@@ -640,7 +655,7 @@ func _initialize() -> void:
 
     var cash_before_vending_purchase: int = int(permit_simulation.economy.cash_yen)
     if not permit_simulation.try_purchase_fixture(
-        "small_tobacco_vending", "tobacco-shelf-1", Vector2i(12, 0), Vector2i(12, 2)
+        "small_tobacco_vending", "tobacco-shelf-1", Vector2i(6, 10), Vector2i(6, 9)
     ):
         _fail("a permit-gated fixture purchase must be accepted once the permit is held")
         return
@@ -800,6 +815,23 @@ func _initialize() -> void:
         _fail("compute_cleaning_value must equal the summed staff skill times the size-tier multiplier")
         return
 
+    var checkout_timing = CheckoutTimingScript.new()
+    if checkout_timing.required_ticks(checkout_timing.REFERENCE_REGISTER_SKILL, 3) != 3:
+        _fail("required_ticks must return reference_ticks unchanged exactly at REFERENCE_REGISTER_SKILL")
+        return
+    if checkout_timing.required_ticks(checkout_timing.REFERENCE_REGISTER_SKILL * 2, 3) != 2:
+        _fail("required_ticks must decrease for a register_skill above the reference")
+        return
+    if checkout_timing.required_ticks(1, 3) != checkout_timing.REFERENCE_REGISTER_SKILL * 3:
+        _fail("required_ticks must scale up sharply for a very low register_skill")
+        return
+    if checkout_timing.required_ticks(0, 3) != checkout_timing.REFERENCE_REGISTER_SKILL * 3:
+        _fail("required_ticks must use the zero-skill guard rather than dividing by zero")
+        return
+    if checkout_timing.required_ticks(1000, 3) != checkout_timing.MIN_CHECKOUT_TICKS:
+        _fail("required_ticks must never fall below MIN_CHECKOUT_TICKS")
+        return
+
     var rating_config: Dictionary = config.duplicate(true)
     rating_config["demand"] = {
         "nearby_population": 0,
@@ -839,13 +871,13 @@ func _initialize() -> void:
     if int(rating_event_details["monthly_sales_yen"]) != expected_monthly_sales_yen:
         _fail("monthly_sales_yen fed into the store rating must equal the representative month's revenue x8")
         return
-    if abs(float(rating_event_details["service_value"]) - 20.0) > 0.0000001:
+    if abs(float(rating_event_details["service_value"]) - 17.0) > 0.0000001:
         _fail("service_value must equal the average staff service_skill plus any fixture service bonuses")
         return
-    if abs(float(rating_event_details["security_value"]) - 45.0) > 0.0000001:
+    if abs(float(rating_event_details["security_value"]) - 57.0) > 0.0000001:
         _fail("security_value must equal total staff security_skill times the store's size-tier multiplier")
         return
-    if abs(float(rating_event_details["cleaning_value"]) - 45.0) > 0.0000001:
+    if abs(float(rating_event_details["cleaning_value"]) - 51.0) > 0.0000001:
         _fail("cleaning_value must equal total staff cleaning_skill times the store's size-tier multiplier")
         return
     if rating_simulation.star_rating != store_rating.star_rank_for_internal_value(
@@ -871,7 +903,7 @@ func _initialize() -> void:
     steps += _run_visit(save_simulation)
     save_simulation.economy.cash_yen = 1_000_000
     if not save_simulation.try_purchase_fixture(
-        "potted_plant", "amenity-save-1", Vector2i(12, 0), Vector2i(12, 2)
+        "potted_plant", "amenity-save-1", Vector2i(1, 10), Vector2i(1, 9)
     ):
         _fail("the save/load test's fixture purchase setup must be accepted")
         return
@@ -912,7 +944,7 @@ func _initialize() -> void:
     if loaded_simulation.internal_rating_value != save_simulation.internal_rating_value:
         _fail("a loaded simulation must restore the exact saved internal_rating_value")
         return
-    if loaded_simulation.layout.fixture_origin("amenity-save-1") != Vector2i(12, 0):
+    if loaded_simulation.layout.fixture_origin("amenity-save-1") != Vector2i(1, 10):
         _fail("a loaded simulation must restore the exact saved fixture layout")
         return
     if loaded_simulation.inventory.total_stock_units() != save_simulation.inventory.total_stock_units():

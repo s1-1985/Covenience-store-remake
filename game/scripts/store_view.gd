@@ -3,7 +3,7 @@ extends Node2D
 signal fixture_selected(fixture_id: String)
 signal fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i)
 
-const SUBCELL_PIXELS := 42.0
+const SUBCELL_PIXELS := 36.0
 
 var config: Dictionary = {}
 var simulation
@@ -107,6 +107,9 @@ func _draw_fixtures() -> void:
             label = "CHECKOUT"
         elif fixture["kind"] == "amenity":
             fill = Color("9ad6a8")
+            label = str(fixture["id"]).to_upper()
+        elif fixture["kind"] == "parking":
+            fill = Color("8d8d8d")
             label = str(fixture["id"]).to_upper()
         draw_rect(rect, fill, true)
         var outline := Color("f4d35e") if fixture["id"] == selected_fixture_id else Color("363636")

@@ -14,6 +14,7 @@ const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
 const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
 const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
+const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -109,6 +110,7 @@ var _store_size_tier: String
 var player_store_count: int
 var _chain_visitor_milestone
 var _store_events
+var _checkout_timing
 
 
 func _init(source_config: Dictionary) -> void:
@@ -141,6 +143,7 @@ func _init(source_config: Dictionary) -> void:
     _store_size_tier = str(config["store"]["size_tier"])
     assert(_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
     _store_events = StoreEventsScript.new()
+    _checkout_timing = CheckoutTimingScript.new()
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -529,7 +532,9 @@ func step() -> void:
                     customer.route = layout.find_path(customer.position, _checkout_interaction)
         "to_checkout":
             if customer.move_along_route("checkout"):
-                customer.checkout_ticks_remaining = _checkout_ticks
+                customer.checkout_ticks_remaining = _checkout_timing.required_ticks(
+                    checkout_staff.register_skill, _checkout_ticks
+                )
                 checkout_staff.state = "checkout"
                 _record_event("checkout_started", {
                     "customer_id": customer.customer_id,

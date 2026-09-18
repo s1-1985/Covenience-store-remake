@@ -287,6 +287,81 @@ known-product order for future observation replay; it still makes no arrival or 
 
 The store renderer also shows the tile/subcell grid, fixture footprints, interaction points, entry/exit points, customer, and staff.
 
+### Store grid dimensions and circulation (fidelity fix)
+
+The vertical slice's store grid was originally an arbitrary `7x6`-tile placeholder never
+cross-checked against any research, and its entry/exit sat on opposite corners of the store --
+neither is defensible as first-title-faithful. `store.width_tiles`/`height_tiles` now port
+`reference_sim/conveni_sim/baseline_data.py`'s `STORE_VARIANTS['small_top'].editable_floor = (5, 8)`
+tiles, a **CONFIRMED_OFFICIAL** strategy-guide transcription (book pages 106-109) that a prior
+session resolved into `reference_sim` but never carried into this file (see
+`docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md` sections 3 and 9). Entry and exit
+now sit on the same wall rather than diagonal corners, per the passage-width and
+circular-flow-with-minimal-dead-ends guidance in
+`docs/research/store-dimensions-and-fixture-costs-2026-09-05.md` section 5 and
+`docs/research/strategy-guide-full-decode-2026-09-16.md` section 20.3. The new fixture/staff
+coordinates were verified reachable (entry -> each shelf in `visit_plan_product_ids` order ->
+checkout -> exit) with a 4-directional BFS mirroring `store_layout.gd`'s own reachability check
+before being written into `vertical_slice.json`, and every hardcoded test coordinate in
+`headless_smoke.gd` that assumed the old grid was updated to match. `store_view.gd`'s
+`SUBCELL_PIXELS` dropped from `42.0` to `36.0` so the new, taller subcell grid still fits the
+1280x720 window without overlapping the status panel. See decision 0100. **This closes out task
+#31.**
+
+### Named staff candidate roster (35 people)
+
+`data/vertical_slice.json`'s `staff.members` used to give staff-1 and staff-2 the exact same flat,
+arbitrary `service_skill=20 / security_skill=15 / cleaning_skill=15` -- not tied to any real
+candidate. `reference_sim/conveni_sim/baseline_data.py`'s `STAFF_CANDIDATES` already held a
+**CONFIRMED_OFFICIAL** 35-person roster transcribed from the strategy guide's individual candidate
+cards (book pages 127-133; see `docs/research/strategy-guide-full-decode-2026-09-16.md` section
+"店員データ"), so this task ports it. A new `staff_candidates` array carries all 35 entries
+verbatim (generated directly from `reference_sim` via script rather than hand-transcribed, to avoid
+drift) as a reference-only hiring-pool catalog -- nothing in this client lets the player hire from
+it yet. `staff-1`/`staff-2` are now bound to two specific real candidates (`manda_machiko`, highest
+`register_skill`; `sugawara_fumio`, highest `replenishment_skill`) instead of the identical
+placeholder, with their `service_skill`/`security_skill`/`cleaning_skill`/`register_skill`/
+`replenishment_skill` set from that candidate's card. `register_skill`/`replenishment_skill` are
+carried as data but not consumed by any simulation logic yet (task #33 wires `register_skill` into
+checkout timing). See decision 0101. **This closes out task #32.**
+
+### Register-skill checkout timing
+
+`checkout_ticks` used to be one flat duration applied no matter which staff member ran the
+register, so the `register_skill` field ported in task #32 was carried as inert data. The research
+note (`docs/research/checkout-staff-dispatch-evidence-2026-09-05.md` section 5) confirms only a
+qualitative effect ("the lowest register skill can take a whole game day per customer, high skill
+becomes extremely fast") and explicitly says not to invent a numeric formula from it;
+`reference_sim/conveni_sim/checkout_service_timing.py` likewise only defines an abstract, swappable
+duration policy Protocol with no concrete formula. A new `scripts/domain/checkout_timing.gd`
+(`CheckoutTiming`) therefore implements this client's own tagged **REMAKE_BALANCED_DEFAULT**
+inverse-proportion scaling: `checkout_ticks` is reinterpreted as the duration at
+`REFERENCE_REGISTER_SKILL` (`13`, not arbitrary -- the median `register_skill` across the 35 ported
+candidates) and scales inversely with whichever staff member is actually serving, floored at
+`MIN_CHECKOUT_TICKS = 1`. `StaffState` gained a `register_skill` field (same
+config-with-fallback pattern as its other skills), and `VerticalSliceSimulation`'s checkout-start
+transition now calls `_checkout_timing.required_ticks(checkout_staff.register_skill,
+_checkout_ticks)` instead of using the flat constant directly. See decision 0102. **This closes out
+task #33.**
+
+### Parking fixtures
+
+`fixture_catalog` gained three parking fixtures (`parking_ground`, `parking_two_story`,
+`parking_tower`), ported verbatim from `reference_sim/conveni_sim/baseline_data.py`'s `FIXTURES`
+(footprint/capacity/`blocks_pedestrian` CONFIRMED_COMMUNITY from the first-title wiki,
+purchase price CONFIRMED_OFFICIAL from the strategy guide). `store_layout.gd` needed no new code:
+it already marks every fixture's full footprint non-walkable regardless of `kind`
+(`_build_blocked_cells`), so the confirmed "parking cells block pedestrians" fact already held
+before this catalog data existed -- `blocks_pedestrian`/`parking_capacity` are carried as
+informational catalog fields (`parking_capacity` isn't consumed by any logic; no vehicle simulation
+exists). `store_view.gd` gained a `parking` kind render branch so these fixtures don't render
+mislabeled as a shelf. The guide records these as `outdoor` fixtures, but this client's store grid
+represents only the interior editable floor -- no outdoor/exterior space model exists yet (same
+scope boundary as the town/rival spatial model deferred in task #26) -- so purchasing one currently
+places it on the interior grid like any other fixture; this gap is documented in the catalog's
+`evidence_note` rather than worked around. See decision 0103. **This closes out task #34, the last
+item on the user-approved priority list (store grid -> named staff -> register skill -> parking).**
+
 ## Important evidence boundary
 
 `data/vertical_slice.json` is explicitly marked `provisional: true`.

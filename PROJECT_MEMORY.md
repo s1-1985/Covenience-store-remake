@@ -503,9 +503,10 @@ downgrade thresholds costs -1. `VerticalSliceSimulation._evaluate_store_rating()
 `service_skill`/`security_skill`/`cleaning_skill` are new static REMAKE_BALANCED_DEFAULT config
 fields on `StaffState` -- the guide's skill-growth model (work-event counting, manager-education
 bonus) has not been ported to Godot at all yet, so these never change on their own; `size_tier`
-("small") is likewise a REMAKE_BALANCED_DEFAULT house-rule mapping, since the guide's three tiers
-are defined by exact dimensions (10x10/12x12/14x14) that this prototype's 7x6 store matches none
-of. Deliberately not implemented: the police-box/fire-station security-facility bonus (no such
+("small") is likewise a REMAKE_BALANCED_DEFAULT house-rule mapping, since `STORE_SIZE_VALUE_MULTIPLIER`'s
+three tiers are keyed by a *different*, already-flagged-as-conflicting guide dimension notation
+(10x10/12x12/14x14) than the store's actual `editable_floor` grid dimensions (see task #31 below).
+Deliberately not implemented: the police-box/fire-station security-facility bonus (no such
 fixtures or spatial search exist) and the guide's per-event rating deltas (angry customer/
 shoplifting/donation), since their trigger events aren't wired into this client either
 (decision 0096).
@@ -560,6 +561,65 @@ store simultaneously (a much larger architecture redesign, out of scope exactly 
 spatial model was in task #26), a dedicated victory screen, the contest's actual draw/payout, and
 rival chain open/acquire/close transitions (no rival-store entity exists in Godot yet). Chain state
 now round-trips through save/load (`SAVE_SCHEMA_VERSION` bumped 1 -> 2) (decision 0099).
+
+Task #31 (店舗グリッド寸法・動線を既存研究(攻略本準拠)に合わせる) fixes a fidelity gap the user
+directly flagged: the vertical slice's `7x6`-tile store grid and diagonal-corner entry/exit were
+never cross-checked against any research and are not plausible for the first title. `store.
+width_tiles`/`height_tiles` now port `STORE_VARIANTS['small_top'].editable_floor = (5, 8)` tiles from
+`reference_sim/conveni_sim/baseline_data.py`, a CONFIRMED_OFFICIAL strategy-guide transcription a
+prior session had already resolved into `reference_sim` but never carried into this file (see
+`docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md` sections 3 and 9). Entry and exit now
+sit on the same wall instead of opposite corners, per the passage-width/circular-flow guidance in
+`docs/research/store-dimensions-and-fixture-costs-2026-09-05.md` section 5 and
+`docs/research/strategy-guide-full-decode-2026-09-16.md` section 20.3; the new fixture/staff layout
+was verified reachable with a BFS mirroring `store_layout.gd`'s own check before being written, and
+every hardcoded coordinate in `headless_smoke.gd` that assumed the old grid was updated to match.
+`store_view.gd`'s `SUBCELL_PIXELS` dropped 42.0 -> 36.0 so the taller new grid still fits the window
+(decision 0100).
+
+Task #32 (スタッフ実名候補データ(35名)をGodotへ移植) replaces another identical-placeholder gap:
+`staff.members`' staff-1/staff-2 both carried the exact same flat `service_skill=20/security_skill=
+15/cleaning_skill=15`, tied to no real candidate. `reference_sim/conveni_sim/baseline_data.py`'s
+`STAFF_CANDIDATES` already held a CONFIRMED_OFFICIAL 35-person roster from the strategy guide's
+individual candidate cards (book pages 127-133,
+`docs/research/strategy-guide-full-decode-2026-09-16.md` section "店員データ"). A new
+`staff_candidates` array in `vertical_slice.json` ports all 35 verbatim (generated directly from
+`reference_sim` via script to avoid transcription drift) as a reference-only hiring-pool catalog --
+no hiring UI exists yet to actually pick from it. `staff-1`/`staff-2` are now bound to two specific
+real candidates (`manda_machiko`, highest `register_skill`; `sugawara_fumio`, highest
+`replenishment_skill`) instead of the shared placeholder; `register_skill`/`replenishment_skill` ride
+along as unconsumed data (task #33 wires `register_skill` into checkout timing). This changed the
+store-rating headless-smoke test's expected service/security/cleaning values (20.0/45.0/45.0 ->
+17.0/57.0/51.0), updated accordingly (decision 0101).
+
+Task #33 (レジ能力(register_skill)をチェック時間に反映) makes that ported register_skill data
+actually do something: `checkout_ticks` used to apply as one flat duration no matter which staff
+member ran the register. The research note confirms only a qualitative effect and explicitly warns
+against inventing a numeric formula, and reference_sim's own `checkout_service_timing.py` likewise
+only defines an abstract duration-policy Protocol with no concrete formula. A new
+`scripts/domain/checkout_timing.gd` (`CheckoutTiming`) implements this client's own tagged
+REMAKE_BALANCED_DEFAULT inverse-proportion scaling: `checkout_ticks` is reinterpreted as the
+duration at `REFERENCE_REGISTER_SKILL` (13 -- the median register_skill across the 35 ported
+candidates, not arbitrary) and scales inversely with the actual serving staff member's
+register_skill, floored at 1 tick. `StaffState` gained a `register_skill` field; the checkout-start
+transition now calls `_checkout_timing.required_ticks(checkout_staff.register_skill,
+_checkout_ticks)`. This changed the headless smoke test's step count (515 -> 500), since staff-1
+(manda_machiko, register_skill=20) now checks out faster than the old flat 3-tick constant
+(decision 0102).
+
+Task #34 (駐車場什器の追加), the last item on the user-approved priority list, adds
+`parking_ground`/`parking_two_story`/`parking_tower` to `fixture_catalog`, ported verbatim from
+reference_sim's `FIXTURES` (footprint/capacity/`blocks_pedestrian` CONFIRMED_COMMUNITY from the
+first-title wiki, purchase price CONFIRMED_OFFICIAL). `store_layout.gd` needed no new mechanic:
+every fixture already blocks its full footprint regardless of `kind`, so the confirmed
+"parking blocks pedestrians" fact already held; `blocks_pedestrian`/`parking_capacity` are carried
+as informational catalog fields only. `store_view.gd` gained a render branch so parking fixtures
+don't render mislabeled as a shelf. The guide's `outdoor` placement fact is not enforced -- this
+client has no outdoor/exterior space model yet (same boundary as task #26's deferred town/rival
+spatial model) -- so purchasing one places it on the interior grid like any other fixture; this gap
+is documented rather than worked around (decision 0103). This closes the priority list the user
+approved after the store-grid audit: store grid -> named staff roster -> register-skill checkout
+timing -> parking fixtures.
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
