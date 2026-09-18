@@ -140,10 +140,15 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
     def test_godot_entry_scene_and_scripts_exist(self):
         project = (GAME_ROOT / "project.godot").read_text(encoding="utf-8")
-        self.assertIn('run/main_scene="res://scenes/main.tscn"', project)
+        self.assertIn('run/main_scene="res://scenes/main_menu.tscn"', project)
+        self.assertIn('GameLaunchState="*res://scripts/game_launch_state.gd"', project)
         for relative in (
             "scenes/main.tscn",
+            "scenes/main_menu.tscn",
             "scripts/main.gd",
+            "scripts/main_menu.gd",
+            "scripts/game_launch_state.gd",
+            "scripts/save_game_service.gd",
             "scripts/store_view.gd",
             "scripts/vertical_slice_simulation.gd",
             "scripts/headless_smoke.gd",
@@ -163,6 +168,62 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
         self.assertIn('res://scripts/main.gd', scene)
         self.assertIn('res://scripts/store_view.gd', scene)
+
+        menu_scene = (GAME_ROOT / "scenes" / "main_menu.tscn").read_text(encoding="utf-8")
+        self.assertIn('res://scripts/main_menu.gd', menu_scene)
+
+        # The entry point (main_menu.tscn) must actually lead back to the
+        # gameplay scene (main.tscn) it replaced as run/main_scene.
+        main_menu_script = (GAME_ROOT / "scripts" / "main_menu.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('GAMEPLAY_SCENE_PATH := "res://scenes/main.tscn"', main_menu_script)
+
+    def test_basic_menu_ui_wires_new_game_continue_quit_and_in_game_save_load(self):
+        main_menu_script = (GAME_ROOT / "scripts" / "main_menu.gd").read_text(
+            encoding="utf-8"
+        )
+        main_script = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        launch_state = (GAME_ROOT / "scripts" / "game_launch_state.gd").read_text(
+            encoding="utf-8"
+        )
+        main_scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # Main menu: New Game / Continue / Quit.
+        self.assertIn("func _on_new_game_pressed() -> void:", main_menu_script)
+        self.assertIn("func _on_continue_pressed() -> void:", main_menu_script)
+        self.assertIn("func _on_quit_pressed() -> void:", main_menu_script)
+        self.assertIn("get_tree().quit()", main_menu_script)
+        # New Game must not silently touch an existing save file.
+        self.assertNotIn("delete_save", main_menu_script)
+
+        # A parameterless autoload is the only way to pass "continue" across
+        # change_scene_to_file(), since Godot scenes cannot take arguments.
+        self.assertIn("var continue_from_save := false", launch_state)
+        self.assertIn("GameLaunchState.continue_from_save = true", main_menu_script)
+        self.assertIn("GameLaunchState.continue_from_save", main_script)
+        # The flag must be consumed (reset to false) once read, not left set
+        # for every future fresh game entered directly.
+        self.assertIn("GameLaunchState.continue_from_save = false", main_script)
+
+        # In-game menu: Save / Load / Quit to Menu, using the same
+        # SaveGameService task #28 already built (not a second, parallel
+        # save mechanism).
+        self.assertIn("func _on_save_pressed() -> void:", main_script)
+        self.assertIn("func _on_load_pressed() -> void:", main_script)
+        self.assertIn("func _on_quit_to_menu_pressed() -> void:", main_script)
+        self.assertIn("_save_service.save_to_path(simulation)", main_script)
+        self.assertIn("_save_service.load_from_path(simulation)", main_script)
+        self.assertIn('name="SaveButton"', main_scene)
+        self.assertIn('name="LoadButton"', main_scene)
+        self.assertIn('name="QuitToMenuButton"', main_scene)
+
+        self.assertIn("main scene is missing expected node", smoke)
+        self.assertIn("main menu scene is missing expected node", smoke)
+        self.assertIn(
+            "the Continue button must start disabled when no save file exists", smoke
+        )
 
     def test_vertical_slice_supports_repeat_customer_visits(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(

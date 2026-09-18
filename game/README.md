@@ -217,6 +217,26 @@ naively rebuilding `EconomyState`'s settled-customer guard from saved sale recor
 permanently blocked the freshly re-admitted customer of the same recycled id from ever completing a
 sale. **This closes out task #28.**
 
+### Basic menu UI
+
+`scenes/main_menu.tscn`/`scripts/main_menu.gd` is now `project.godot`'s `run/main_scene`: a title
+screen with New Game / Continue / Quit. `Continue` starts disabled and only enables once
+`SaveGameService.save_exists()` is true. Since Godot's `change_scene_to_file()` cannot pass
+parameters between scenes, a minimal autoload singleton (`scripts/game_launch_state.gd`,
+registered as `GameLaunchState` in `project.godot`'s `[autoload]`) carries a single
+`continue_from_save: bool` flag from the menu to the gameplay scene; `main.gd`'s `_ready()` reads
+and immediately clears it, loading the save only when it was set (never on a direct launch of
+`main.tscn`, including the CI headless-smoke scene check). New Game deliberately does **not**
+delete an existing save file -- it just starts fresh without loading one, leaving any save
+untouched until the player explicitly overwrites it. The gameplay screen itself also gained Save /
+Load / Quit to Menu buttons, calling the exact same `SaveGameService` task #28 already built (no
+second save mechanism). Because `godot --script`'s `PackedScene.instantiate()` never enters the
+tree on its own, `@onready var`/`_ready()` never actually run during the existing CI
+"instantiate-then-free" scene check -- so the new NodePaths this task's buttons/labels rely on are
+instead checked explicitly via `get_node_or_null()` in `headless_smoke.gd`, since nothing else
+would catch a typo in one before an actual play session. See decision 0098. **This closes out task
+#29.**
+
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;
 its IDs and shape are not a reconstruction of an original receipt system.

@@ -529,6 +529,19 @@ round-trip, and naively rebuilding `EconomyState`'s settled-customer guard from 
 would have permanently blocked a freshly re-admitted customer of the same recycled id from ever
 completing a sale.
 
+Task #29 (基本メニューUIをGodotに実装) adds a title screen: `scenes/main_menu.tscn`/
+`scripts/main_menu.gd` is now `project.godot`'s `run/main_scene`, with New Game / Continue / Quit.
+`Continue` is disabled until `SaveGameService.save_exists()` is true. Since Godot cannot pass
+parameters across `change_scene_to_file()`, a minimal autoload (`game_launch_state.gd`, registered
+as `GameLaunchState`) carries a single `continue_from_save` flag from the menu to the gameplay
+scene; `main.gd._ready()` reads and immediately clears it, loading the save only when it was set
+(never on a direct launch of `main.tscn`). New Game deliberately does not delete an existing save.
+The gameplay screen also gained Save/Load/Quit-to-Menu buttons calling the same `SaveGameService`
+task #28 built. Since `godot --script`'s `instantiate()` never enters the tree on its own,
+`@onready var`/`_ready()` never actually run during the existing CI "instantiate-then-free" scene
+check, so this task's new NodePaths are checked explicitly via `get_node_or_null()` in
+`headless_smoke.gd` instead (decision 0098).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

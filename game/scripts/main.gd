@@ -1,6 +1,8 @@
 extends Node2D
 
 const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_simulation.gd")
+const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
+const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
 
 @onready var store_view: Node2D = $StoreView
 @onready var clock_label: Label = $UI/Panel/Margin/VBox/ClockValue
@@ -18,12 +20,16 @@ const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_sim
 @onready var reset_button: Button = $UI/Panel/Margin/VBox/Buttons/ResetButton
 @onready var next_customer_button: Button = $UI/Panel/Margin/VBox/NextCustomerButton
 @onready var rotate_fixture_button: Button = $UI/Panel/Margin/VBox/RotateFixtureButton
+@onready var save_button: Button = $UI/Panel/Margin/VBox/MenuButtons/SaveButton
+@onready var load_button: Button = $UI/Panel/Margin/VBox/MenuButtons/LoadButton
+@onready var quit_to_menu_button: Button = $UI/Panel/Margin/VBox/MenuButtons/QuitToMenuButton
 
 var config: Dictionary
 var simulation
 var tick_seconds := 0.25
 var accumulator := 0.0
 var paused := false
+var _save_service
 
 
 func _ready() -> void:
@@ -32,12 +38,24 @@ func _ready() -> void:
         return
     simulation = VerticalSliceSimulationScript.new(config)
     tick_seconds = float(config["simulation"]["tick_seconds"])
+    _save_service = SaveGameServiceScript.new()
+    # GameLaunchState is an autoload (project.godot [autoload]); it is only
+    # ever set by main_menu.gd's Continue button, so this is a no-op (and
+    # every field above stays exactly the fresh-game state) whenever this
+    # scene is entered directly, including the CI headless-smoke
+    # instantiate-and-free check.
+    if GameLaunchState.continue_from_save:
+        GameLaunchState.continue_from_save = false
+        _save_service.load_from_path(simulation)
     store_view.bind(config, simulation)
     pause_button.pressed.connect(_on_pause_pressed)
     step_button.pressed.connect(_on_step_pressed)
     reset_button.pressed.connect(_on_reset_pressed)
     next_customer_button.pressed.connect(_on_next_customer_pressed)
     rotate_fixture_button.pressed.connect(_on_rotate_fixture_pressed)
+    save_button.pressed.connect(_on_save_pressed)
+    load_button.pressed.connect(_on_load_pressed)
+    quit_to_menu_button.pressed.connect(_on_quit_to_menu_pressed)
     store_view.fixture_selected.connect(_on_fixture_selected)
     store_view.fixture_relocation_requested.connect(_on_fixture_relocation_requested)
     _refresh_ui()
@@ -129,6 +147,34 @@ func _on_rotate_fixture_pressed() -> void:
     else:
         layout_edit_label.text = "Cannot rotate there: blocked or route would break"
     _refresh_ui()
+
+
+func _on_save_pressed() -> void:
+    if simulation == null:
+        return
+    if _save_service.save_to_path(simulation):
+        layout_edit_label.text = "Game saved"
+    else:
+        layout_edit_label.text = "Save failed"
+    _refresh_ui()
+
+
+func _on_load_pressed() -> void:
+    if simulation == null:
+        return
+    if _save_service.load_from_path(simulation):
+        paused = false
+        pause_button.text = "Pause"
+        accumulator = 0.0
+        layout_edit_label.text = "Game loaded"
+    else:
+        layout_edit_label.text = "No compatible save found"
+    _refresh_ui()
+
+
+func _on_quit_to_menu_pressed() -> void:
+    GameLaunchState.continue_from_save = false
+    get_tree().change_scene_to_file(MAIN_MENU_SCENE_PATH)
 
 
 func _refresh_ui() -> void:

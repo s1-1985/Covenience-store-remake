@@ -9,6 +9,7 @@ const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
+const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
 const MAX_STEPS := 256
 const REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST := 4
 const MONTH_MULTIPLIER_FOR_TEST := 8
@@ -23,7 +24,41 @@ func _initialize() -> void:
     if main_instance == null:
         _fail("main scene could not be instantiated")
         return
+    # instantiate() alone does not enter the tree, so @onready vars (and
+    # _ready()) do not run here; this only catches a structurally broken
+    # scene file. Node paths this task added are checked explicitly below
+    # since nothing else would validate them before an actual play session.
+    for node_path in [
+        "UI/Panel/Margin/VBox/MenuButtons/SaveButton",
+        "UI/Panel/Margin/VBox/MenuButtons/LoadButton",
+        "UI/Panel/Margin/VBox/MenuButtons/QuitToMenuButton",
+    ]:
+        if main_instance.get_node_or_null(node_path) == null:
+            _fail("main scene is missing expected node: %s" % node_path)
+            return
     main_instance.free()
+
+    var main_menu_scene := load(MAIN_MENU_SCENE_PATH) as PackedScene
+    if main_menu_scene == null:
+        _fail("main menu scene could not be loaded")
+        return
+    var main_menu_instance := main_menu_scene.instantiate()
+    if main_menu_instance == null:
+        _fail("main menu scene could not be instantiated")
+        return
+    for node_path in [
+        "Panel/Margin/VBox/NewGameButton",
+        "Panel/Margin/VBox/ContinueButton",
+        "Panel/Margin/VBox/QuitButton",
+        "Panel/Margin/VBox/StatusLabel",
+    ]:
+        if main_menu_instance.get_node_or_null(node_path) == null:
+            _fail("main menu scene is missing expected node: %s" % node_path)
+            return
+    if not (main_menu_instance.get_node("Panel/Margin/VBox/ContinueButton") as Button).disabled:
+        _fail("the Continue button must start disabled when no save file exists")
+        return
+    main_menu_instance.free()
 
     var parsed = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
     if typeof(parsed) != TYPE_DICTIONARY:
