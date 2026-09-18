@@ -43,9 +43,20 @@ func fixture_snapshot() -> Array:
     return fixtures.duplicate(true)
 
 
+func fixture_snapshot_is_valid(snapshot: Array) -> bool:
+    return _fixture_configs_are_valid(snapshot)
+
+
 func restore_fixture_snapshot(snapshot: Array) -> void:
     assert(_fixture_configs_are_valid(snapshot))
-    fixtures = snapshot.duplicate(true)
+    # Normalizes rather than a plain duplicate() so a snapshot that has been
+    # through a JSON round-trip (e.g. save/load, where JSON.parse_string()
+    # returns every number as float) still ends up with int-typed subcell
+    # coordinates, matching _init()'s own reasoning above
+    # _normalize_fixture_configs(). Idempotent for already-int snapshots
+    # (the purchase/relocate/rotate rollback's own use of this method), so
+    # this is a safe behavior change for every existing caller too.
+    fixtures = _normalize_fixture_configs(snapshot)
     _build_blocked_cells(_subcells_per_tile)
 
 
@@ -102,6 +113,19 @@ func fixture_at(cell: Vector2i) -> String:
         if Rect2i(origin, size).has_point(cell):
             return str(fixture["id"])
     return ""
+
+
+func try_add_fixture(fixture_config: Dictionary) -> bool:
+    var fixture_id := str(fixture_config.get("id", ""))
+    if fixture_id.is_empty() or fixtures_by_id.has(fixture_id):
+        return false
+    var candidate_fixtures := fixtures.duplicate(true)
+    candidate_fixtures.append_array(_normalize_fixture_configs([fixture_config]))
+    if not _fixture_configs_are_valid(candidate_fixtures):
+        return false
+    fixtures = candidate_fixtures
+    _build_blocked_cells(_subcells_per_tile)
+    return true
 
 
 func try_move_fixture(fixture_id: String, new_origin: Vector2i) -> bool:

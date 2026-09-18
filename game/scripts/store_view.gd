@@ -100,14 +100,20 @@ func _draw_fixtures() -> void:
             Vector2(origin.x, origin.y) * SUBCELL_PIXELS,
             Vector2(size_subcells.x, size_subcells.y) * SUBCELL_PIXELS
         ).grow(-3)
-        var fill := Color("84a9d8") if fixture["kind"] == "shelf" else Color("d69a69")
+        var fill := Color("84a9d8")
+        var label := "SHELF"
+        if fixture["kind"] == "checkout":
+            fill = Color("d69a69")
+            label = "CHECKOUT"
+        elif fixture["kind"] == "amenity":
+            fill = Color("9ad6a8")
+            label = str(fixture["id"]).to_upper()
         draw_rect(rect, fill, true)
         var outline := Color("f4d35e") if fixture["id"] == selected_fixture_id else Color("363636")
         var outline_width := 5.0 if fixture["id"] == selected_fixture_id else 2.0
         draw_rect(rect, outline, false, outline_width)
         var interaction := _vec2i(fixture["interaction_subcell"])
         draw_circle(_cell_center(interaction), 7.0, Color("f4d35e"))
-        var label := "SHELF" if fixture["kind"] == "shelf" else "CHECKOUT"
         draw_string(
             ThemeDB.fallback_font,
             rect.position + Vector2(10, 24),

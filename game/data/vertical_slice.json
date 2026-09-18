@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 12,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -8,7 +8,9 @@
     "height_tiles": 6,
     "subcells_per_tile": 2,
     "entry_subcell": [0, 0],
-    "exit_subcell": [0, 10]
+    "exit_subcell": [0, 10],
+    "size_tier": "small",
+    "size_tier_evidence_note": "REMAKE_BALANCED_DEFAULT house-rule mapping, not a recovered value. reference_sim/conveni_sim/store_value.py's STORE_SIZE_VALUE_MULTIPLIER is keyed by the guide's own three size tiers (small=10x10 tiles, medium=12x12, large=14x14), and this prototype's 7x6 store does not match any of them exactly; 'small' (the smallest tier) is used as the closest reasonable fit."
   },
   "fixtures": [
     {
@@ -36,18 +38,133 @@
       "interaction_subcell": [5, 9]
     }
   ],
+  "fixture_catalog": [
+    {
+      "catalog_id": "potted_plant",
+      "kind": "amenity",
+      "footprint_tiles": [1, 1],
+      "purchase_price_yen": 1000,
+      "maintenance_yen_per_day": 120,
+      "service_bonus": 2,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['potted_plant'] (strategy guide purchase price/maintenance/service_bonus). service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is still not consumed anywhere in this client."
+    },
+    {
+      "catalog_id": "bench",
+      "kind": "amenity",
+      "footprint_tiles": [1, 1],
+      "purchase_price_yen": 2000,
+      "maintenance_yen_per_day": 160,
+      "service_bonus": 4,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['bench']. service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is still not consumed anywhere in this client."
+    },
+    {
+      "catalog_id": "fountain",
+      "kind": "amenity",
+      "footprint_tiles": [2, 2],
+      "purchase_price_yen": 5000,
+      "maintenance_yen_per_day": 2400,
+      "service_bonus": 30,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['fountain']. service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is still not consumed anywhere in this client."
+    },
+    {
+      "catalog_id": "small_ambient_shelf",
+      "kind": "shelf",
+      "footprint_tiles": [1, 1],
+      "purchase_price_yen": 60,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_ambient_shelf']. No required_permit_id: this fixture is not category-restricted."
+    },
+    {
+      "catalog_id": "small_tobacco_vending",
+      "kind": "shelf",
+      "footprint_tiles": [1, 1],
+      "purchase_price_yen": 600,
+      "required_permit_id": "tobacco",
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_tobacco_vending'] (compatible_product_categories=('tobacco',)). required_permit_id is this client's own gating choice, since the fixture is dedicated to a permit-gated category; the guide does not state that owning the fixture itself requires the permit."
+    }
+  ],
+  "permits": [
+    {
+      "permit_id": "tobacco",
+      "fee_yen": 7000000,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['tobacco']. Its exclusion_distance_tiles (7 tiles from another tobacco-permitted store) is NOT enforced here: no town/rival spatial model exists in this client yet (see task #26)."
+    },
+    {
+      "permit_id": "alcohol",
+      "fee_yen": 3000000,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['alcohol']. exclusion_distance_tiles (11 tiles) not enforced yet, for the same reason as tobacco above."
+    },
+    {
+      "permit_id": "medicine",
+      "fee_yen": 10000000,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['medicine']. exclusion_distance_tiles (15 tiles) not enforced yet, for the same reason as tobacco above."
+    }
+  ],
+  "product_catalog": [
+    {
+      "catalog_id": "tobacco",
+      "sale_price_yen": 250,
+      "restock_unit_cost_yen": 175,
+      "initial_stock_units": 10,
+      "required_permit_id": "tobacco",
+      "evidence_note": "sale_price_yen/restock_unit_cost_yen are CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py's たばこ category (_sg_category('tobacco', ...): standard_retail_price_yen=250, profit_per_unit_yen=75, so restock_unit_cost_yen = 250-75 = 175). initial_stock_units=10 is a PROVISIONAL prototype batch size not stated by the guide."
+    }
+  ],
+  "promotions": [
+    {
+      "promotion_id": "direct_mail",
+      "cost_yen": 100000,
+      "popularity_gain": 12,
+      "trigger_day": 2,
+      "trigger_hour": 10,
+      "evidence_note": "CONFIRMED_VISUAL (direct gameplay video observation), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['direct_mail']. Cash is debited exactly when the scheduled event fires, not at purchase time."
+    },
+    {
+      "promotion_id": "newspaper",
+      "cost_yen": 500000,
+      "popularity_gain": 20,
+      "trigger_day": 2,
+      "trigger_hour": 7,
+      "evidence_note": "CONFIRMED_COMMUNITY, ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['newspaper']."
+    },
+    {
+      "promotion_id": "airship",
+      "cost_yen": 1000000,
+      "popularity_gain": 40,
+      "trigger_day": 3,
+      "trigger_hour": 15,
+      "evidence_note": "cost_yen/trigger_day/trigger_hour CONFIRMED_COMMUNITY, popularity_gain CONFIRMED_OFFICIAL (strategy guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['airship']."
+    },
+    {
+      "promotion_id": "radio",
+      "cost_yen": 3000000,
+      "popularity_gain": 60,
+      "trigger_day": 1,
+      "trigger_hour": 17,
+      "evidence_note": "cost_yen/trigger_day/trigger_hour CONFIRMED_COMMUNITY, popularity_gain CONFIRMED_OFFICIAL (strategy guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['radio']."
+    },
+    {
+      "promotion_id": "tv",
+      "cost_yen": 5000000,
+      "popularity_gain": 90,
+      "trigger_day": 1,
+      "trigger_hour": 19,
+      "evidence_note": "cost_yen/trigger_day/trigger_hour CONFIRMED_COMMUNITY, popularity_gain CONFIRMED_OFFICIAL (strategy guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['tv']."
+    }
+  ],
   "products": [
     {
       "id": "prototype-bread",
       "fixture_id": "shelf-1",
       "initial_stock_units": 3,
-      "sale_price_yen": 120
+      "sale_price_yen": 120,
+      "restock_unit_cost_yen": 60
     },
     {
       "id": "prototype-drink",
       "fixture_id": "shelf-2",
       "initial_stock_units": 3,
-      "sale_price_yen": 160
+      "sale_price_yen": 160,
+      "restock_unit_cost_yen": 80
     }
   ],
   "economy": {
@@ -61,14 +178,21 @@
   },
   "staff": {
     "checkout_staff_id": "staff-1",
+    "skill_evidence_note": "service_skill/security_skill/cleaning_skill are REMAKE_BALANCED_DEFAULT static placeholders, not a recovered starting value (the guide never states one) and not grown over time: reference_sim/conveni_sim/staff.py's skill-growth model (work-event counting, manager-education bonus) has not been ported to this client yet.",
     "members": [
       {
         "id": "staff-1",
-        "start_subcell": [9, 5]
+        "start_subcell": [9, 5],
+        "service_skill": 20,
+        "security_skill": 15,
+        "cleaning_skill": 15
       },
       {
         "id": "staff-2",
-        "start_subcell": [11, 5]
+        "start_subcell": [11, 5],
+        "service_skill": 20,
+        "security_skill": 15,
+        "cleaning_skill": 15
       }
     ]
   },
@@ -76,12 +200,31 @@
     "id_prefix": "customer",
     "visit_plan_product_ids": ["prototype-bread", "prototype-drink"]
   },
+  "demand": {
+    "evidence_note": "REMAKE_BALANCED_DEFAULT placeholder ported from reference_sim/conveni_sim/remake_demand_policy.py. nearby_population/customer_share_percent are supplied directly rather than derived from the town section below, since this client has no town/trade-area spatial model to compute them from; only the rival dilution multiplier is derived from town.store_count_including_rivals (VerticalSliceSimulation._init).",
+    "nearby_population": 2000,
+    "customer_share_percent": 50.0,
+    "daily_visit_rate_per_population": 0.05,
+    "opening_minutes_per_day": 960,
+    "bad_weather_visit_multiplier": 0.6,
+    "is_bad_weather": false,
+    "rng_seed": 1
+  },
+  "town": {
+    "evidence_note": "Non-spatial TownState (game/scripts/domain/town_state.gd), ported from reference_sim/conveni_sim/town.py. No town/map spatial simulation exists to generate these numbers, so they are set to a fixed default: population matches demand.nearby_population above, and store_count_including_rivals of 1 (the player's own store only) means zero rival stores and therefore no rival-dilution effect on arrivals by default.",
+    "population": 2000,
+    "store_count_including_rivals": 1
+  },
   "simulation": {
     "checkout_fixture_id": "checkout-1",
     "start_minute_of_day": 540,
     "tick_seconds": 0.25,
     "step_game_minutes": 1,
     "shopping_ticks": 2,
-    "checkout_ticks": 3
+    "checkout_ticks": 3,
+    "restock_ticks": 3,
+    "restock_trigger_stock_units_at_or_below": 0,
+    "restock_task_enabled": false,
+    "restock_task_evidence_note": "Automatic restock task-assignment for non-checkout staff is PROVISIONAL and disabled by default so it does not interfere with this scenario's existing sellout behavior. See docs/decisions for the dedicated test scenario that exercises it."
   }
 }

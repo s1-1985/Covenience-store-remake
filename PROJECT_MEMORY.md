@@ -402,6 +402,146 @@ An explicit between-visit restock seam can add caller-supplied units for a known
 deduct a caller-supplied total procurement cost, and record matching expense/event facts. It does not
 invent capacity, reorder timing, quantity, supplier pricing, delivery, or staff-task selection.
 
+The vertical slice now gains customers on its own. `scripts/domain/demand_policy.gd` ports
+`reference_sim/conveni_sim/remake_demand_policy.py`'s REMAKE_BALANCED_DEFAULT arrival-rate formula
+(population x share% x a per-population daily visit rate, spread across opening minutes, reduced
+under bad weather) so `VerticalSliceSimulation.tick_idle_for_demand()` can admit the next customer
+via a per-minute probability roll once the store is empty, instead of requiring the manual
+`start_next_customer()` boundary every time. The manual boundary still exists as an override. This
+does not add concurrency: the existing single-active-customer constraint (original concurrent-
+arrival and collision rules remain unrecovered) is unchanged, and `nearby_population`/
+`customer_share_percent` are still supplied directly in `data/vertical_slice.json` because no town/
+trade-area spatial simulation exists in this client yet (see decision 0088).
+
+The second, non-checkout staff member is no longer permanent furniture. `staff_state.gd` gains a
+`to_restock`/`restocking` task cycle, and `VerticalSliceSimulation._assign_idle_restock_tasks()`
+dispatches the first idle non-checkout staff member to the first sold-out product each tick (a
+simple greedy match, not a skill- or priority-based dispatcher), restocking it back to its own
+configured `initial_stock_units` and deducting `quantity x restock_unit_cost_yen` from cash through
+the existing expense/event-log plumbing. This PROVISIONAL prototype rule -- the guide only confirms
+that register-assignment AI exists and is imperfect, never its dispatch logic -- is disabled by
+default (`restock_task_enabled: false`) because this vertical slice's base scenario deliberately
+demonstrates a shelf staying empty after sellout; enabling it there would silently invalidate that
+existing, tested behavior. A dedicated headless-smoke configuration exercises it instead (see
+decision 0089). Layout edits are now also blocked while any restock task is active.
+
+`minute_of_day` no longer just wraps silently forever: `VerticalSliceSimulation` now counts each
+midnight crossing as a day (`day_count`) and, every `REPRESENTATIVE_DAYS_PER_MONTH` (4) days,
+settles a month by taking the net cash change across those 4 days and multiplying it by
+`MONTH_MULTIPLIER` (8), applying the difference as a lump-sum `month_end_settlement` record. Unlike
+the demand/restock features above, this multiplier is `CONFIRMED_OFFICIAL` -- the guide states
+"1月=4日間×8" directly, matching `reference_sim/conveni_sim/month_aggregation.py`'s own citation --
+this client only ports the already-confirmed formula, it does not invent how each representative
+day's own result is computed (see decision 0090).
+
+Every month-end settlement now also evaluates two CONFIRMED (not guessed) terminal rules:
+bankruptcy when cash is negative at a day/month boundary
+(`reference_sim/conveni_sim/month_boundary.py`'s `MonthBoundaryBankruptcyPolicy`; cash exactly at
+zero stays explicitly unresolved, matching that policy's own unresolved `bankrupt_when_zero`), and
+a 100-year time limit without meeting the scenario's clear condition
+(`reference_sim/conveni_sim/store_events.scenario_time_limit_exceeded`). This client has no
+scenario/clear-condition system yet, so `clear_condition_met` defaults to `false`. Once
+`is_game_over` is set, every mutating method (`step`, `tick_idle_for_demand`,
+`start_next_customer`, `apply_explicit_restock`, layout edits) becomes a no-op (see decision 0091).
+
+Task #25 (什器購入・商品仕入れ・許可・広告) bundles four independent systems. The first,
+fixture purchase, is implemented: `try_purchase_fixture()` adds a new fixture from a
+`fixture_catalog` config section (potted plant/bench/fountain, prices ported from
+`reference_sim/conveni_sim/baseline_data.py`'s `FIXTURES`, CONFIRMED_OFFICIAL) with the same
+atomic route/walkability safety check as fixture relocation (decision 0092). The second, permits
+and product procurement, is also implemented: `try_purchase_permit()`/`has_permit()` (tobacco
+¥7,000,000 / alcohol ¥3,000,000 / medicine ¥10,000,000, CONFIRMED_OFFICIAL from `PERMITS`) and
+`try_procure_product()` (adds a new product SKU from `product_catalog` to an unoccupied fixture;
+currently just `tobacco`, CONFIRMED_OFFICIAL pricing from the guide's category table). Both
+permit-gated fixtures and permit-gated products refuse purchase without the permit held first.
+Each permit's confirmed exclusion-distance-from-other-stores rule is deliberately left
+unenforced (would need an actual rival-store map, which task #26 deliberately did not build);
+fixture-to-category compatibility is also not checked (decision 0093).
+
+Task #25's fourth and final system, advertising, is also implemented, completing the task.
+`reference_sim/conveni_sim/promotion.py` already had a complete evidence-safe design for this
+(`PromotionScheduler`/`StorePopularityRuntime`/`apply_confirmed_triggered_promotion`), so Godot
+ports it faithfully: `trigger_day`/`trigger_hour` are an absolute representative-day-of-month
+(1-4)/hour (not "days after purchase"), cost is debited only when the event fires (not at
+purchase), popularity is capped at 100, and each promotion method can only be used once per
+month. `try_purchase_promotion()` schedules from a `promotions` catalog (direct mail/newspaper/
+airship/radio/tv, CONFIRMED pricing/timing from `PROMOTIONS`); `_fire_due_promotions()` runs
+every tick before day-boundary handling (so a trigger on a month's last tick still resolves
+against the correct day) and applies cost/popularity once due. The guide-confirmed daily
+popularity decay for low-rated stores is not modeled, since `reference_sim` itself leaves the
+decay amount unresolved (decision 0094).
+
+Task #26 (町・ライバル店・地価) deliberately scoped down from "spatial model" to three
+non-spatial pieces, since neither `reference_sim` nor this project's research has an actual town
+map, facility-placement, or population-growth simulation to port (section 13/17 gap). `TownState`
+(`town_state.gd`) mirrors `reference_sim/conveni_sim/town.py` exactly: just tracked
+`population`/`store_count_including_rivals`. The one piece with a real gameplay effect is rival
+dilution: `demand.rival_store_count = max(0, town.store_count_including_rivals - 1)`, and
+`DemandPolicy.expected_arrivals_per_minute()` scales down by
+`min(MAX_RIVAL_DILUTION, RIVAL_DILUTION_PER_COMPETITOR * rival_store_count)` -- reusing
+`remake_customer_share.py`'s confirmed constants (0.08/competitor, capped at 0.6) but applied to
+the whole expected-visitor estimate rather than that module's 0-100 customer-share score, since
+this client has no service/cleaning/security/assortment stats yet. Defaults to zero rivals (a
+no-op). `land_value_policy.gd` ports `remake_land_value.py`'s land-price formula
+(REMAKE_BALANCED_DEFAULT) verbatim as an informational `snapshot()` field only -- no
+purchase/sale mechanic consumes it. Deliberately not implemented: the spatial map itself, rival
+store placement/distance-based trade-area overlap, and the rival AI decision function
+(`remake_rival_policy.py`), since no rival-store entity exists in Godot yet for it to act on
+(decision 0095).
+
+Task #27 (店舗評価をゲームループへ反映) ports `reference_sim/conveni_sim/store_rating.py`/
+`store_value.py` -- direct CONFIRMED_OFFICIAL transcriptions of the guide's own ★-rank table and
+service/security/cleaning value formulas (書籍頁74-75), not this project's guesses. `store_rating.gd`/
+`store_value.gd` mirror them verbatim: a 0-100 internal value maps to 0-5 stars at fixed
+breakpoints, and each representative month, >=3 of (price change/service/security/cleaning/sales)
+meeting the current rank's upgrade thresholds grants +5 while each of the 5 falling below the
+downgrade thresholds costs -1. `VerticalSliceSimulation._evaluate_store_rating()` runs from
+`_settle_month_end()`, feeding it staff `service_skill` average plus purchased amenity fixtures'
+`service_bonus` (service value), staff `security_skill`/`cleaning_skill` totals times the store's
+`size_tier` multiplier (security/cleaning value), the representative month's sales revenue x8
+(section 9's 4x8 rule), and `price_change_pct=0` (no price-setting mechanic exists yet). Staff
+`service_skill`/`security_skill`/`cleaning_skill` are new static REMAKE_BALANCED_DEFAULT config
+fields on `StaffState` -- the guide's skill-growth model (work-event counting, manager-education
+bonus) has not been ported to Godot at all yet, so these never change on their own; `size_tier`
+("small") is likewise a REMAKE_BALANCED_DEFAULT house-rule mapping, since the guide's three tiers
+are defined by exact dimensions (10x10/12x12/14x14) that this prototype's 7x6 store matches none
+of. Deliberately not implemented: the police-box/fire-station security-facility bonus (no such
+fixtures or spatial search exist) and the guide's per-event rating deltas (angry customer/
+shoplifting/donation), since their trigger events aren't wired into this client either
+(decision 0096).
+
+Task #28 (セーブ/ロードをGodotに実装) is a pure engine feature -- no `reference_sim` counterpart,
+so decision 0097 records design choices rather than evidence tags. `VerticalSliceSimulation.
+save_state()`/`load_state()` round-trip time/day/month, game-over/clear state, popularity/rating,
+permits, promotions, the full store layout, inventory, economy, and event log. Deliberately not
+saved/restored: the active customer's/staff's mid-visit/mid-task walk state, since both are
+transient and a fresh `reset()` already produces a sensible state on load -- `load_state()` in fact
+resets every subsystem to its config-derived starting point first, applies the saved fields,
+restores the layout, and only then admits a fresh default customer (admitting one before the layout
+is restored would leave its cached route stale). `load_state()` rejects an incompatible save
+(different scenario_id/config_schema_version/save_schema_version) by returning `false` without
+mutating anything, the same convention as this client's `try_*` methods; a structurally corrupted
+save instead asserts, matching `_require_config()`. `save_game_service.gd`'s `SaveGameService` is
+the only I/O-touching piece (JSON under `user://saves/`), kept separate from the I/O-free
+`scripts/domain/` classes. Implementing this surfaced and fixed two existing latent bugs:
+`StoreLayout.restore_fixture_snapshot()` wasn't normalizing float-typed coordinates from a JSON
+round-trip, and naively rebuilding `EconomyState`'s settled-customer guard from saved sale records
+would have permanently blocked a freshly re-admitted customer of the same recycled id from ever
+completing a sale.
+
+Task #29 (基本メニューUIをGodotに実装) adds a title screen: `scenes/main_menu.tscn`/
+`scripts/main_menu.gd` is now `project.godot`'s `run/main_scene`, with New Game / Continue / Quit.
+`Continue` is disabled until `SaveGameService.save_exists()` is true. Since Godot cannot pass
+parameters across `change_scene_to_file()`, a minimal autoload (`game_launch_state.gd`, registered
+as `GameLaunchState`) carries a single `continue_from_save` flag from the menu to the gameplay
+scene; `main.gd._ready()` reads and immediately clears it, loading the save only when it was set
+(never on a direct launch of `main.tscn`). New Game deliberately does not delete an existing save.
+The gameplay screen also gained Save/Load/Quit-to-Menu buttons calling the same `SaveGameService`
+task #28 built. Since `godot --script`'s `instantiate()` never enters the tree on its own,
+`@onready var`/`_ready()` never actually run during the existing CI "instantiate-then-free" scene
+check, so this task's new NodePaths are checked explicitly via `get_node_or_null()` in
+`headless_smoke.gd` instead (decision 0098).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

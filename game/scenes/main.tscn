@@ -88,7 +88,7 @@ text = "to_shelf"
 text = "Staff"
 
 [node name="StaffValue" type="Label" parent="UI/Panel/Margin/VBox"]
-text = "waiting_checkout"
+text = "idle"
 
 [node name="SalesTitle" type="Label" parent="UI/Panel/Margin/VBox"]
 text = "Completed sales"
@@ -140,6 +140,23 @@ text = "Reset"
 custom_minimum_size = Vector2(0, 44)
 disabled = true
 text = "Admit next customer"
+
+[node name="Separator3" type="HSeparator" parent="UI/Panel/Margin/VBox"]
+
+[node name="MenuButtons" type="HBoxContainer" parent="UI/Panel/Margin/VBox"]
+theme_override_constants/separation = 10
+
+[node name="SaveButton" type="Button" parent="UI/Panel/Margin/VBox/MenuButtons"]
+custom_minimum_size = Vector2(145, 40)
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="UI/Panel/Margin/VBox/MenuButtons"]
+custom_minimum_size = Vector2(145, 40)
+text = "Load"
+
+[node name="QuitToMenuButton" type="Button" parent="UI/Panel/Margin/VBox/MenuButtons"]
+custom_minimum_size = Vector2(145, 40)
+text = "Quit to Menu"
 
 [node name="Hint" type="Label" parent="UI/Panel/Margin/VBox"]
 text = "Space: Pause / Resume"

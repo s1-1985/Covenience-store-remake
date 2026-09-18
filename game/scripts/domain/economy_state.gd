@@ -5,6 +5,7 @@ var cash_yen: int
 var completed_sales: int
 var sale_records: Array[Dictionary] = []
 var expense_records: Array[Dictionary] = []
+var month_end_records: Array[Dictionary] = []
 var _initial_cash_yen: int
 var _next_sale_sequence := 1
 var _settled_customer_ids: Dictionary = {}
@@ -21,6 +22,7 @@ func reset() -> void:
     completed_sales = 0
     sale_records.clear()
     expense_records.clear()
+    month_end_records.clear()
     _settled_customer_ids.clear()
     _next_sale_sequence = 1
 
@@ -100,3 +102,47 @@ func recorded_expenses_yen() -> int:
     for record in expense_records:
         total += int(record["amount_yen"])
     return total
+
+
+func record_month_end_settlement(
+    minute_of_day: int,
+    amount_yen: int,
+    details: Dictionary = {}
+) -> Dictionary:
+    assert(minute_of_day >= 0 and minute_of_day < 24 * 60)
+    var record := {
+        "settlement_id": "prototype-month-end-%d" % (month_end_records.size() + 1),
+        "minute_of_day": minute_of_day,
+        "amount_yen": amount_yen,
+        "details": details.duplicate(true),
+    }
+    month_end_records.append(record)
+    cash_yen += amount_yen
+    return record.duplicate(true)
+
+
+func snapshot() -> Dictionary:
+    return {
+        "cash_yen": cash_yen,
+        "sale_records": sale_records.duplicate(true),
+        "expense_records": expense_records.duplicate(true),
+        "month_end_records": month_end_records.duplicate(true),
+        "next_sale_sequence": _next_sale_sequence,
+    }
+
+
+func restore_snapshot(data: Dictionary) -> void:
+    cash_yen = int(data["cash_yen"])
+    sale_records.assign(data["sale_records"])
+    expense_records.assign(data["expense_records"])
+    month_end_records.assign(data["month_end_records"])
+    completed_sales = sale_records.size()
+    _next_sale_sequence = int(data["next_sale_sequence"])
+    # Deliberately cleared, not rebuilt from the restored sale_records'
+    # customer_ids: the caller's customer roster is not restored by this
+    # snapshot (see VerticalSliceSimulation.load_state()'s own note on
+    # this) and always restarts its id sequence from "<prefix>-1", so a
+    # historical sale settled under that same recycled id would otherwise
+    # permanently block the freshly-admitted customer of the same name
+    # from ever completing a sale after load.
+    _settled_customer_ids.clear()

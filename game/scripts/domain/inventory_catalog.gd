@@ -29,6 +29,20 @@ func get_product(product_id: String):
     return products[product_id]
 
 
+func add_product(product_config: Dictionary) -> bool:
+    var product_id := str(product_config.get("id", ""))
+    if product_id.is_empty() or products.has(product_id):
+        return false
+    var fixture_id := str(product_config.get("fixture_id", ""))
+    for existing_product in products.values():
+        if existing_product.fixture_id == fixture_id:
+            return false
+    var product = InventoryStateScript.new(product_config)
+    products[product_id] = product
+    product_order.append(product_id)
+    return true
+
+
 func try_take_one(product_id: String) -> Dictionary:
     var product = get_product(product_id)
     if not product.try_take_one():
@@ -63,3 +77,30 @@ func expected_full_sellout_revenue_yen() -> int:
     for product in products.values():
         total += product.initial_stock_units * product.sale_price_yen
     return total
+
+
+func snapshot() -> Array:
+    var result: Array = []
+    for product_id in product_order:
+        var product = products[product_id]
+        result.append({
+            "id": product.product_id,
+            "fixture_id": product.fixture_id,
+            "stock_units": product.stock_units,
+            "sale_price_yen": product.sale_price_yen,
+            "initial_stock_units": product.initial_stock_units,
+            "restock_unit_cost_yen": product.restock_unit_cost_yen,
+        })
+    return result
+
+
+func restore_snapshot(snapshot_data: Array) -> void:
+    products.clear()
+    product_order.clear()
+    for product_config in snapshot_data:
+        var product = InventoryStateScript.new(product_config)
+        product.stock_units = int(product_config["stock_units"])
+        assert(product.stock_units >= 0)
+        assert(not products.has(product.product_id))
+        products[product.product_id] = product
+        product_order.append(product.product_id)

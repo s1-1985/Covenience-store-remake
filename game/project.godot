@@ -6,7 +6,10 @@ config_version=5
 
 [application]
 config/name="Convenience Store Remake"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
+
+[autoload]
+GameLaunchState="*res://scripts/game_launch_state.gd"
 
 [display]
 window/size/viewport_width=1280

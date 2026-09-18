@@ -7,6 +7,47 @@ const EconomyStateScript := preload("res://scripts/domain/economy_state.gd")
 const CustomerRosterScript := preload("res://scripts/domain/customer_roster.gd")
 const StaffRosterScript := preload("res://scripts/domain/staff_roster.gd")
 const RuntimeEventLogScript := preload("res://scripts/domain/runtime_event_log.gd")
+const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
+const TownStateScript := preload("res://scripts/domain/town_state.gd")
+const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.gd")
+const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
+const StoreValueScript := preload("res://scripts/domain/store_value.gd")
+
+# CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
+# directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
+# mirrors the same citation). What the guide does not state is how each
+# representative day's own net result is computed internally; this client,
+# like month_aggregation.py, only turns the already-tracked cash change
+# across REPRESENTATIVE_DAYS_PER_MONTH days into the displayed monthly figure.
+const REPRESENTATIVE_DAYS_PER_MONTH := 4
+const MONTH_MULTIPLIER := 8
+
+# CONFIRMED, not a guess:
+# - bankruptcy: PS footage and an SS play record support game over when cash
+#   is negative at a day/month boundary
+#   (reference_sim/conveni_sim/month_boundary.py's
+#   MonthBoundaryBankruptcyPolicy.bankrupt_when_negative=True). No zero-cash
+#   sample is known, so cash == 0 is explicitly left unresolved there
+#   (bankrupt_when_zero=None) -- this client leaves it unresolved too, and
+#   does NOT treat it as bankruptcy.
+# - time limit: the guide's own second game-over path, 100 years without
+#   meeting the scenario's clear condition
+#   (reference_sim/conveni_sim/store_events.scenario_time_limit_exceeded /
+#   GAME_OVER_YEAR_LIMIT). This client has no scenario/clear-condition
+#   system yet, so `clear_condition_met` defaults to false (never met);
+#   MONTHS_PER_YEAR mirrors reference_sim/conveni_sim/observations.py.
+const GAME_OVER_YEAR_LIMIT := 100
+const MONTHS_PER_YEAR := 12
+
+# CONFIRMED_COMMUNITY floor, not a guess: the original game's Wiki records a
+# minimum land price of 20,000,000 yen
+# (docs/research/store-unlock-and-daily-pricing-delta-2026-09-05.md section
+# 5). reference_sim/conveni_sim/remake_land_value.py takes
+# base_land_price_yen as a caller-supplied parameter rather than hardcoding
+# it, so this constant -- picking the confirmed floor as the base for the
+# player's own store's land -- is this client's own choice, not a ported
+# value.
+const BASE_LAND_PRICE_YEN := 20_000_000
 
 var config: Dictionary
 var layout
@@ -15,24 +56,72 @@ var economy
 var customers
 var staff
 var event_log
+var demand
+var _demand_rng: RandomNumberGenerator
 
 var minute_of_day: int
+var day_count: int
+var month_count: int
 var last_event := "store opened"
 var _checkout_interaction := Vector2i.ZERO
 var _shopping_ticks: int
 var _checkout_ticks: int
 var _step_game_minutes: int
+var _restock_ticks: int
+var _restock_trigger_stock_units_at_or_below: int
+var _restock_task_enabled: bool
+var _days_completed_this_month: int
+var _cash_at_month_start: int
+var _revenue_at_month_start: int
+var is_game_over: bool
+var game_over_reason: String
+var clear_condition_met: bool
+var _fixture_catalog: Dictionary = {}
+var _permit_catalog: Dictionary = {}
+var _product_catalog: Dictionary = {}
+var _permits_held: Dictionary = {}
+var _promotion_catalog: Dictionary = {}
+var _promotions_used_this_month: Dictionary = {}
+var _scheduled_promotions: Array[Dictionary] = []
+var popularity: int
+var town
+var _land_value_policy
+var internal_rating_value: int
+var star_rating: int
+var _store_rating
+var _store_value
+var _store_size_tier: String
 
 
 func _init(source_config: Dictionary) -> void:
     config = source_config.duplicate(true)
     _require_config()
+    for entry in config["fixture_catalog"]:
+        _fixture_catalog[str(entry["catalog_id"])] = entry
+    for entry in config["permits"]:
+        _permit_catalog[str(entry["permit_id"])] = entry
+    for entry in config["product_catalog"]:
+        _product_catalog[str(entry["catalog_id"])] = entry
+    for entry in config["promotions"]:
+        _promotion_catalog[str(entry["promotion_id"])] = entry
     layout = StoreLayoutScript.new(config["store"], config["fixtures"])
     inventory = InventoryCatalogScript.new(config["products"])
     economy = EconomyStateScript.new(config["economy"])
     customers = CustomerRosterScript.new(config["customer"])
     staff = StaffRosterScript.new(config["staff"])
     event_log = RuntimeEventLogScript.new()
+    _demand_rng = RandomNumberGenerator.new()
+    demand = DemandPolicyScript.new(config["demand"], _demand_rng)
+    town = TownStateScript.new(config["town"])
+    _land_value_policy = LandValuePolicyScript.new()
+    # The dilution formula counts competing/rival stores, not the player's
+    # own store, so store_count_including_rivals is reduced by one (never
+    # below zero) before being applied.
+    demand.rival_store_count = max(0, town.store_count_including_rivals - 1)
+    _store_rating = StoreRatingScript.new()
+    _store_value = StoreValueScript.new()
+    _store_size_tier = str(config["store"]["size_tier"])
+    assert(_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -41,7 +130,13 @@ func _init(source_config: Dictionary) -> void:
     _shopping_ticks = int(simulation["shopping_ticks"])
     _checkout_ticks = int(simulation["checkout_ticks"])
     _step_game_minutes = int(simulation["step_game_minutes"])
+    _restock_ticks = int(simulation["restock_ticks"])
+    _restock_trigger_stock_units_at_or_below = int(
+        simulation["restock_trigger_stock_units_at_or_below"]
+    )
+    _restock_task_enabled = bool(simulation["restock_task_enabled"])
     assert(_shopping_ticks > 0 and _checkout_ticks > 0 and _step_game_minutes > 0)
+    assert(_restock_ticks > 0 and _restock_trigger_stock_units_at_or_below >= 0)
     assert(float(simulation["tick_seconds"]) > 0.0)
     for staff_member in staff.all_staff():
         assert(layout.is_walkable(staff_member.position))
@@ -51,25 +146,46 @@ func _init(source_config: Dictionary) -> void:
 
 func reset() -> void:
     minute_of_day = int(config["simulation"]["start_minute_of_day"])
+    day_count = 0
+    month_count = 0
+    _days_completed_this_month = 0
     layout.reset()
     inventory.reset()
     economy.reset()
     customers.reset()
     staff.reset()
     event_log.reset()
+    _cash_at_month_start = economy.cash_yen
+    _revenue_at_month_start = economy.recorded_revenue_yen()
+    is_game_over = false
+    game_over_reason = ""
+    clear_condition_met = false
+    _permits_held.clear()
+    _promotions_used_this_month.clear()
+    _scheduled_promotions.clear()
+    popularity = 0
+    # No confirmed starting evaluation for a brand-new store exists (the
+    # guide never states one; store_evaluation.py's own
+    # internal_rating_value likewise starts unknown until a caller sets
+    # it), so 0 (the lowest tier, 0-19 -> 0 stars) is used as the most
+    # natural REMAKE_BALANCED_DEFAULT starting point, matching the
+    # precedent already set for `popularity`.
+    internal_rating_value = 0
+    star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
+    _demand_rng.seed = int(config["demand"]["rng_seed"])
     _refresh_interactions()
     _start_default_customer()
 
 
 func start_next_customer() -> bool:
-    if not customers.can_admit():
+    if is_game_over or not customers.can_admit():
         return false
     _start_default_customer()
     return true
 
 
 func start_explicit_customer(customer_id: String, product_ids: Array[String]) -> bool:
-    if not customers.can_admit() or customer_id.is_empty():
+    if is_game_over or not customers.can_admit() or customer_id.is_empty():
         return false
     if customers.customers.has(customer_id) or not _product_plan_is_valid(product_ids):
         return false
@@ -84,13 +200,30 @@ func start_explicit_customer(customer_id: String, product_ids: Array[String]) ->
     return true
 
 
+func demand_admit_if_due() -> bool:
+    if is_game_over or not customers.can_admit():
+        return false
+    if not demand.customer_arrives_this_minute():
+        return false
+    _start_default_customer()
+    return true
+
+
+func tick_idle_for_demand() -> bool:
+    if is_game_over:
+        return false
+    _advance_minute_of_day()
+    _step_restock_tasks()
+    return demand_admit_if_due()
+
+
 func apply_explicit_restock(
     product_id: String,
     staff_id: String,
     quantity: int,
     total_cost_yen: int
 ) -> bool:
-    if not customers.can_admit() or quantity <= 0 or total_cost_yen < 0:
+    if is_game_over or not customers.can_admit() or quantity <= 0 or total_cost_yen < 0:
         return false
     if not inventory.products.has(product_id) or not staff.members.has(staff_id):
         return false
@@ -111,8 +244,158 @@ func apply_explicit_restock(
     return true
 
 
+func try_purchase_fixture(
+    catalog_id: String,
+    instance_id: String,
+    origin_subcell: Vector2i,
+    interaction_subcell: Vector2i
+) -> bool:
+    if is_game_over or not customers.can_admit() or _any_restock_task_active():
+        return false
+    if instance_id.is_empty() or layout.fixtures_by_id.has(instance_id):
+        return false
+    if not _fixture_catalog.has(catalog_id):
+        return false
+    var catalog_entry: Dictionary = _fixture_catalog[catalog_id]
+    var required_permit_id := str(catalog_entry.get("required_permit_id", ""))
+    if not required_permit_id.is_empty() and not has_permit(required_permit_id):
+        return false
+    var price_yen: int = int(catalog_entry["purchase_price_yen"])
+    if economy.cash_yen < price_yen:
+        return false
+    var catalog_footprint_tiles: Array = catalog_entry["footprint_tiles"]
+    var fixture_config := {
+        "id": instance_id,
+        "kind": str(catalog_entry["kind"]),
+        "catalog_id": catalog_id,
+        "rotation_quarter_turns": 0,
+        "origin_subcell": [origin_subcell.x, origin_subcell.y],
+        "footprint_tiles": catalog_footprint_tiles.duplicate(),
+        "interaction_subcell": [interaction_subcell.x, interaction_subcell.y],
+    }
+    var previous_fixtures: Array = layout.fixture_snapshot()
+    if not layout.try_add_fixture(fixture_config):
+        return false
+    _refresh_interactions()
+    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+        layout.restore_fixture_snapshot(previous_fixtures)
+        _refresh_interactions()
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "fixture_purchase",
+        minute_of_day,
+        price_yen,
+        {"catalog_id": catalog_id, "instance_id": instance_id}
+    )
+    _record_event("fixture_purchased", {
+        "catalog_id": catalog_id,
+        "instance_id": instance_id,
+        "expense_id": expense["expense_id"],
+        "origin_subcell": [origin_subcell.x, origin_subcell.y],
+    })
+    return true
+
+
+func has_permit(permit_id: String) -> bool:
+    return _permits_held.has(permit_id)
+
+
+func try_purchase_permit(permit_id: String) -> bool:
+    if is_game_over or not customers.can_admit():
+        return false
+    if has_permit(permit_id) or not _permit_catalog.has(permit_id):
+        return false
+    var fee_yen: int = int(_permit_catalog[permit_id]["fee_yen"])
+    if economy.cash_yen < fee_yen:
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "permit_purchase",
+        minute_of_day,
+        fee_yen,
+        {"permit_id": permit_id}
+    )
+    _permits_held[permit_id] = true
+    _record_event("permit_purchased", {
+        "permit_id": permit_id,
+        "expense_id": expense["expense_id"],
+    })
+    return true
+
+
+func try_procure_product(catalog_id: String, instance_id: String, fixture_id: String) -> bool:
+    if is_game_over or not customers.can_admit():
+        return false
+    if instance_id.is_empty() or inventory.products.has(instance_id):
+        return false
+    if not _product_catalog.has(catalog_id):
+        return false
+    if not layout.fixtures_by_id.has(fixture_id):
+        return false
+    var catalog_entry: Dictionary = _product_catalog[catalog_id]
+    var required_permit_id := str(catalog_entry.get("required_permit_id", ""))
+    if not required_permit_id.is_empty() and not has_permit(required_permit_id):
+        return false
+    var initial_stock_units: int = int(catalog_entry["initial_stock_units"])
+    var restock_unit_cost_yen: int = int(catalog_entry["restock_unit_cost_yen"])
+    var procurement_cost_yen: int = initial_stock_units * restock_unit_cost_yen
+    if economy.cash_yen < procurement_cost_yen:
+        return false
+    var product_config := {
+        "id": instance_id,
+        "fixture_id": fixture_id,
+        "initial_stock_units": initial_stock_units,
+        "sale_price_yen": int(catalog_entry["sale_price_yen"]),
+        "restock_unit_cost_yen": restock_unit_cost_yen,
+    }
+    if not inventory.add_product(product_config):
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "product_procurement",
+        minute_of_day,
+        procurement_cost_yen,
+        {"catalog_id": catalog_id, "instance_id": instance_id, "fixture_id": fixture_id}
+    )
+    _record_event("product_procured", {
+        "catalog_id": catalog_id,
+        "instance_id": instance_id,
+        "fixture_id": fixture_id,
+        "expense_id": expense["expense_id"],
+    })
+    return true
+
+
+func try_purchase_promotion(promotion_id: String) -> bool:
+    if is_game_over or not customers.can_admit():
+        return false
+    if not _promotion_catalog.has(promotion_id):
+        return false
+    if _promotions_used_this_month.has(promotion_id):
+        return false
+    var catalog_entry: Dictionary = _promotion_catalog[promotion_id]
+    var trigger_day: int = int(catalog_entry["trigger_day"])
+    var trigger_hour: int = int(catalog_entry["trigger_hour"])
+    var current_day_of_month := _days_completed_this_month + 1
+    var current_hour := minute_of_day / 60
+    if current_day_of_month > trigger_day or (
+        current_day_of_month == trigger_day and current_hour > trigger_hour
+    ):
+        return false
+    _promotions_used_this_month[promotion_id] = true
+    _scheduled_promotions.append({
+        "promotion_id": promotion_id,
+        "trigger_day": trigger_day,
+        "trigger_hour": trigger_hour,
+    })
+    _record_event("promotion_scheduled", {
+        "promotion_id": promotion_id,
+        "trigger_day": trigger_day,
+        "trigger_hour": trigger_hour,
+    })
+    return true
+
+
 func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
-    if not customers.can_admit():
+    if is_game_over or not customers.can_admit() or _any_restock_task_active():
         return false
     if layout.fixture_origin(fixture_id) == Vector2i(-1, -1):
         return false
@@ -132,7 +415,7 @@ func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
 
 
 func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
-    if not customers.can_admit():
+    if is_game_over or not customers.can_admit() or _any_restock_task_active():
         return false
     var previous: Array = layout.fixture_snapshot()
     if not layout.try_rotate_fixture_clockwise(fixture_id):
@@ -147,7 +430,9 @@ func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
 
 
 func step() -> void:
-    minute_of_day = (minute_of_day + _step_game_minutes) % (24 * 60)
+    if is_game_over:
+        return
+    _advance_minute_of_day()
     var customer = customers.active()
     var checkout_staff = staff.checkout_staff()
     match customer.phase:
@@ -209,7 +494,7 @@ func step() -> void:
                         customer.basket
                     )
                     customer.mark_settled(record)
-                checkout_staff.state = "waiting_checkout"
+                checkout_staff.state = "idle"
                 customer.phase = "leaving"
                 customer.route = layout.find_path(customer.position, layout.exit)
                 _record_event("checkout_completed", {
@@ -224,6 +509,7 @@ func step() -> void:
             last_event = "day slice complete"
         _:
             push_error("Unknown customer phase: %s" % customer.phase)
+    _step_restock_tasks()
 
 
 func clock_text() -> String:
@@ -255,6 +541,21 @@ func snapshot() -> Dictionary:
         "completed_visits": customers.completed_count(),
         "started_visits": customers.customers.size(),
         "last_event": last_event,
+        "expected_arrivals_per_minute": demand.expected_arrivals_per_minute(),
+        "restock_staff_states": _restock_staff_snapshot(),
+        "day_count": day_count,
+        "month_count": month_count,
+        "is_game_over": is_game_over,
+        "game_over_reason": game_over_reason,
+        "permits_held": _permits_held.keys(),
+        "popularity": popularity,
+        "town_population": town.population,
+        "town_store_count_including_rivals": town.store_count_including_rivals,
+        "land_value_yen": _land_value_policy.current_land_price_yen(
+            BASE_LAND_PRICE_YEN, town, float(month_count) / MONTHS_PER_YEAR
+        ),
+        "internal_rating_value": internal_rating_value,
+        "star_rating": star_rating,
     }
 
 
@@ -287,6 +588,105 @@ func observation_snapshot() -> Dictionary:
         "expenses": economy.expense_records.duplicate(true),
         "inventory": _inventory_snapshot(),
     }
+
+
+const SAVE_SCHEMA_VERSION := 1
+
+# Deliberately not saved/restored: the active customer's mid-visit walk
+# state (position along a route, basket-so-far, checkout progress) and
+# staff members' mid-task walk/restock state (position along a route,
+# restock_ticks_remaining). Both are transient, sub-representative-day
+# animation progress; on load they are simply whatever a fresh reset()
+# already produces (an idle staff roster and one freshly-admitted default
+# customer), the same as this client's other reset boundaries. Persisting
+# an exact mid-route position would need to serialize pathfinding routes
+# for very little player-facing value, since the same route recomputes
+# deterministically once the game resumes.
+func save_state() -> Dictionary:
+    return {
+        "save_schema_version": SAVE_SCHEMA_VERSION,
+        "scenario_id": str(config["scenario_id"]),
+        "config_schema_version": int(config["schema_version"]),
+        "minute_of_day": minute_of_day,
+        "day_count": day_count,
+        "month_count": month_count,
+        "days_completed_this_month": _days_completed_this_month,
+        "cash_at_month_start": _cash_at_month_start,
+        "revenue_at_month_start": _revenue_at_month_start,
+        "is_game_over": is_game_over,
+        "game_over_reason": game_over_reason,
+        "clear_condition_met": clear_condition_met,
+        "popularity": popularity,
+        "internal_rating_value": internal_rating_value,
+        "star_rating": star_rating,
+        "permits_held": _permits_held.keys(),
+        "promotions_used_this_month": _promotions_used_this_month.keys(),
+        "scheduled_promotions": _scheduled_promotions.duplicate(true),
+        "fixtures": layout.fixture_snapshot(),
+        "inventory": inventory.snapshot(),
+        "economy": economy.snapshot(),
+        "events": event_log.snapshot(),
+    }
+
+
+# Returns false, without mutating this simulation, when the save data does
+# not belong to the currently-loaded config (different scenario_id, or a
+# schema_version the running config no longer matches) -- an expected,
+# recoverable condition, the same as this client's other try_* actions.
+# A structurally corrupted save (missing keys entirely) is not treated as
+# this same recoverable case; it asserts, matching _require_config()'s own
+# convention for malformed input this client did not itself produce.
+func load_state(data: Dictionary) -> bool:
+    if str(data.get("scenario_id", "")) != str(config["scenario_id"]):
+        return false
+    if int(data.get("config_schema_version", -1)) != int(config["schema_version"]):
+        return false
+    if int(data.get("save_schema_version", -1)) != SAVE_SCHEMA_VERSION:
+        return false
+    _require_save_data(data)
+    if not layout.fixture_snapshot_is_valid(data["fixtures"]):
+        return false
+    # Clears every subsystem back to its config-derived starting point
+    # first (the same subsystems reset() touches, minus admitting a
+    # customer) so load_state() is safe to call on a simulation that has
+    # already been running, not only a freshly-constructed one, and so a
+    # customer is only admitted below once the layout is in its final,
+    # loaded state -- admitting one before restoring fixtures could leave
+    # its cached route stale against a layout that is about to change.
+    layout.reset()
+    inventory.reset()
+    economy.reset()
+    customers.reset()
+    staff.reset()
+    event_log.reset()
+    minute_of_day = int(data["minute_of_day"])
+    day_count = int(data["day_count"])
+    month_count = int(data["month_count"])
+    _days_completed_this_month = int(data["days_completed_this_month"])
+    _cash_at_month_start = int(data["cash_at_month_start"])
+    _revenue_at_month_start = int(data["revenue_at_month_start"])
+    is_game_over = bool(data["is_game_over"])
+    game_over_reason = str(data["game_over_reason"])
+    clear_condition_met = bool(data["clear_condition_met"])
+    popularity = int(data["popularity"])
+    internal_rating_value = int(data["internal_rating_value"])
+    star_rating = int(data["star_rating"])
+    _permits_held.clear()
+    for permit_id in data["permits_held"]:
+        _permits_held[str(permit_id)] = true
+    _promotions_used_this_month.clear()
+    for key in data["promotions_used_this_month"]:
+        _promotions_used_this_month[str(key)] = true
+    _scheduled_promotions.clear()
+    for scheduled in data["scheduled_promotions"]:
+        _scheduled_promotions.append((scheduled as Dictionary).duplicate(true))
+    layout.restore_fixture_snapshot(data["fixtures"])
+    inventory.restore_snapshot(data["inventory"])
+    economy.restore_snapshot(data["economy"])
+    event_log.restore_snapshot(data["events"])
+    _refresh_interactions()
+    _start_default_customer()
+    return true
 
 
 func _record_event(event_type: String, details: Dictionary = {}) -> void:
@@ -356,15 +756,337 @@ func _all_staff_are_walkable() -> bool:
     return true
 
 
+func _advance_minute_of_day() -> void:
+    minute_of_day += _step_game_minutes
+    _fire_due_promotions()
+    while minute_of_day >= 24 * 60:
+        minute_of_day -= 24 * 60
+        _handle_day_boundary()
+
+
+func _handle_day_boundary() -> void:
+    day_count += 1
+    _days_completed_this_month += 1
+    if _days_completed_this_month >= REPRESENTATIVE_DAYS_PER_MONTH:
+        _settle_month_end()
+
+
+func _settle_month_end() -> void:
+    var four_day_net_result_yen: int = economy.cash_yen - _cash_at_month_start
+    var month_result_yen: int = four_day_net_result_yen * MONTH_MULTIPLIER
+    var adjustment_yen: int = month_result_yen - four_day_net_result_yen
+    var record: Dictionary = economy.record_month_end_settlement(
+        minute_of_day,
+        adjustment_yen,
+        {
+            "month_number": month_count + 1,
+            "four_day_net_result_yen": four_day_net_result_yen,
+            "month_result_yen": month_result_yen,
+        }
+    )
+    _record_event("month_end_settlement", {
+        "month_number": month_count + 1,
+        "four_day_net_result_yen": four_day_net_result_yen,
+        "month_result_yen": month_result_yen,
+        "settlement_id": record["settlement_id"],
+    })
+    var four_day_revenue_yen: int = economy.recorded_revenue_yen() - _revenue_at_month_start
+    var monthly_sales_yen: int = four_day_revenue_yen * MONTH_MULTIPLIER
+    _evaluate_store_rating(monthly_sales_yen)
+    month_count += 1
+    _days_completed_this_month = 0
+    _cash_at_month_start = economy.cash_yen
+    _revenue_at_month_start = economy.recorded_revenue_yen()
+    _promotions_used_this_month.clear()
+    _evaluate_terminal_state()
+
+
+func _evaluate_store_rating(monthly_sales_yen: int) -> void:
+    var service_skills: Array = []
+    var security_skills: Array = []
+    var cleaning_skills: Array = []
+    for staff_member in staff.all_staff():
+        service_skills.append(staff_member.service_skill)
+        security_skills.append(staff_member.security_skill)
+        cleaning_skills.append(staff_member.cleaning_skill)
+    var fixture_service_bonuses: Array = []
+    for fixture in layout.fixtures:
+        var catalog_id := str(fixture.get("catalog_id", ""))
+        if catalog_id.is_empty() or not _fixture_catalog.has(catalog_id):
+            continue
+        var catalog_entry: Dictionary = _fixture_catalog[catalog_id]
+        if catalog_entry.has("service_bonus"):
+            fixture_service_bonuses.append(int(catalog_entry["service_bonus"]))
+    var service_value: float = _store_value.compute_service_value(
+        service_skills, fixture_service_bonuses
+    )
+    var security_value: float = _store_value.compute_security_value(
+        security_skills, _store_size_tier
+    )
+    var cleaning_value: float = _store_value.compute_cleaning_value(
+        cleaning_skills, _store_size_tier
+    )
+    # No price-setting mechanic exists in this vertical slice yet (product
+    # sale prices are fixed config values), so price_change_pct is always 0
+    # ("no change from baseline") rather than a guessed nonzero value.
+    var evaluation: Dictionary = _store_rating.evaluate_monthly_rating_change(
+        internal_rating_value, 0, service_value, security_value, cleaning_value, monthly_sales_yen
+    )
+    internal_rating_value = int(evaluation["next_internal_value"])
+    star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
+    _record_event("store_rating_evaluated", {
+        "month_number": month_count + 1,
+        "monthly_sales_yen": monthly_sales_yen,
+        "service_value": service_value,
+        "security_value": security_value,
+        "cleaning_value": cleaning_value,
+        "criteria_met": evaluation["criteria_met"],
+        "upgrade_applies": evaluation["upgrade_applies"],
+        "downgrade_points": evaluation["downgrade_points"],
+        "internal_rating_value": internal_rating_value,
+        "star_rating": star_rating,
+    })
+
+
+func _evaluate_terminal_state() -> void:
+    if economy.cash_yen < 0:
+        _trigger_game_over("bankrupt")
+        return
+    var current_year: int = (month_count / MONTHS_PER_YEAR) + 1
+    if current_year > GAME_OVER_YEAR_LIMIT and not clear_condition_met:
+        _trigger_game_over("time_limit_exceeded")
+
+
+func _trigger_game_over(reason: String) -> void:
+    is_game_over = true
+    game_over_reason = reason
+    _record_event("game_over", {"reason": reason})
+
+
+func _fire_due_promotions() -> void:
+    if _scheduled_promotions.is_empty():
+        return
+    var current_day_of_month := _days_completed_this_month + 1
+    var current_hour := minute_of_day / 60
+    var remaining: Array[Dictionary] = []
+    for scheduled in _scheduled_promotions:
+        var due_day: int = int(scheduled["trigger_day"])
+        var due_hour: int = int(scheduled["trigger_hour"])
+        if current_day_of_month > due_day or (
+            current_day_of_month == due_day and current_hour >= due_hour
+        ):
+            _fire_promotion(scheduled)
+        else:
+            remaining.append(scheduled)
+    _scheduled_promotions = remaining
+
+
+func _fire_promotion(scheduled: Dictionary) -> void:
+    var promotion_id: String = str(scheduled["promotion_id"])
+    var catalog_entry: Dictionary = _promotion_catalog[promotion_id]
+    var cost_yen: int = int(catalog_entry["cost_yen"])
+    var popularity_gain: int = int(catalog_entry["popularity_gain"])
+    var expense: Dictionary = economy.record_explicit_expense(
+        "promotion_cost",
+        minute_of_day,
+        cost_yen,
+        {"promotion_id": promotion_id}
+    )
+    popularity = min(100, popularity + popularity_gain)
+    _record_event("promotion_fired", {
+        "promotion_id": promotion_id,
+        "popularity_gain": popularity_gain,
+        "popularity_after": popularity,
+        "expense_id": expense["expense_id"],
+    })
+
+
+func _step_restock_tasks() -> void:
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id == staff.checkout_staff_id:
+            continue
+        match staff_member.state:
+            "to_restock":
+                if staff_member.move_along_route("restocking"):
+                    staff_member.restock_ticks_remaining = _restock_ticks
+                    _record_event("restock_started", {
+                        "staff_id": staff_member.staff_id,
+                        "product_id": staff_member.restock_target_product_id,
+                    })
+            "restocking":
+                staff_member.restock_ticks_remaining -= 1
+                if staff_member.restock_ticks_remaining <= 0:
+                    _complete_restock(staff_member)
+    _assign_idle_restock_tasks()
+
+
+func _complete_restock(staff_member) -> void:
+    var product_id: String = staff_member.restock_target_product_id
+    var product = inventory.get_product(product_id)
+    var quantity: int = product.initial_stock_units - product.stock_units
+    if quantity > 0:
+        var resulting_stock: int = inventory.add_explicit_units(product_id, quantity)
+        var total_cost_yen: int = quantity * product.restock_unit_cost_yen
+        var expense: Dictionary = economy.record_explicit_expense(
+            "inventory_restock",
+            minute_of_day,
+            total_cost_yen,
+            {"product_id": product_id, "quantity": quantity, "staff_id": staff_member.staff_id}
+        )
+        _record_event("inventory_restock", {
+            "product_id": product_id,
+            "quantity": quantity,
+            "staff_id": staff_member.staff_id,
+            "expense_id": expense["expense_id"],
+            "resulting_stock_units": resulting_stock,
+        })
+    staff_member.finish_restock()
+
+
+func _assign_idle_restock_tasks() -> void:
+    if not _restock_task_enabled:
+        return
+    var claimed_product_ids: Dictionary = {}
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state != "idle":
+            claimed_product_ids[staff_member.restock_target_product_id] = true
+    for product_id in inventory.product_order:
+        if claimed_product_ids.has(product_id):
+            continue
+        if inventory.get_product(product_id).stock_units > _restock_trigger_stock_units_at_or_below:
+            continue
+        var idle_staff = _find_idle_restock_staff()
+        if idle_staff == null:
+            return
+        idle_staff.begin_restock(product_id, layout.find_path(idle_staff.position, _product_interaction(product_id)))
+        claimed_product_ids[product_id] = true
+
+
+func _find_idle_restock_staff():
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state == "idle":
+            return staff_member
+    return null
+
+
+func _any_restock_task_active() -> bool:
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state != "idle":
+            return true
+    return false
+
+
+func _restock_staff_snapshot() -> Array[Dictionary]:
+    var rows: Array[Dictionary] = []
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id == staff.checkout_staff_id:
+            continue
+        rows.append({
+            "staff_id": staff_member.staff_id,
+            "state": staff_member.state,
+            "position": staff_member.position,
+            "restock_target_product_id": staff_member.restock_target_product_id,
+        })
+    return rows
+
+
+func _require_save_data(data: Dictionary) -> void:
+    for key in [
+        "minute_of_day",
+        "day_count",
+        "month_count",
+        "days_completed_this_month",
+        "cash_at_month_start",
+        "revenue_at_month_start",
+        "is_game_over",
+        "game_over_reason",
+        "clear_condition_met",
+        "popularity",
+        "internal_rating_value",
+        "star_rating",
+        "permits_held",
+        "promotions_used_this_month",
+        "scheduled_promotions",
+        "fixtures",
+        "inventory",
+        "economy",
+        "events",
+    ]:
+        if not data.has(key):
+            push_error("save data missing required key: %s" % key)
+            assert(false)
+    var economy_data: Dictionary = data["economy"]
+    for key in ["cash_yen", "sale_records", "expense_records", "month_end_records", "next_sale_sequence"]:
+        if not economy_data.has(key):
+            push_error("save data economy section missing required key: %s" % key)
+            assert(false)
+
+
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 5)
-    for key in ["store", "fixtures", "products", "economy", "provisional_restock", "staff", "customer", "simulation"]:
+    assert(int(config.get("schema_version", -1)) == 12)
+    for key in ["store", "fixtures", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand", "town"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
             assert(false)
     assert(config.get("provisional", false) == true)
     var simulation: Dictionary = config["simulation"]
-    for key in ["start_minute_of_day", "tick_seconds", "step_game_minutes", "shopping_ticks", "checkout_ticks", "checkout_fixture_id"]:
+    for key in [
+        "start_minute_of_day",
+        "tick_seconds",
+        "step_game_minutes",
+        "shopping_ticks",
+        "checkout_ticks",
+        "checkout_fixture_id",
+        "restock_ticks",
+        "restock_trigger_stock_units_at_or_below",
+        "restock_task_enabled",
+    ]:
         if not simulation.has(key):
             push_error("vertical slice simulation config missing required key: %s" % key)
             assert(false)
+    var demand_config: Dictionary = config["demand"]
+    for key in [
+        "nearby_population",
+        "customer_share_percent",
+        "daily_visit_rate_per_population",
+        "opening_minutes_per_day",
+        "bad_weather_visit_multiplier",
+        "rng_seed",
+    ]:
+        if not demand_config.has(key):
+            push_error("vertical slice demand config missing required key: %s" % key)
+            assert(false)
+    for catalog_entry in config["fixture_catalog"]:
+        for key in ["catalog_id", "kind", "footprint_tiles", "purchase_price_yen"]:
+            if not catalog_entry.has(key):
+                push_error("fixture catalog entry missing required key: %s" % key)
+                assert(false)
+    for permit_entry in config["permits"]:
+        for key in ["permit_id", "fee_yen"]:
+            if not permit_entry.has(key):
+                push_error("permit entry missing required key: %s" % key)
+                assert(false)
+    for product_entry in config["product_catalog"]:
+        for key in ["catalog_id", "sale_price_yen", "restock_unit_cost_yen", "initial_stock_units"]:
+            if not product_entry.has(key):
+                push_error("product catalog entry missing required key: %s" % key)
+                assert(false)
+    for promotion_entry in config["promotions"]:
+        for key in ["promotion_id", "cost_yen", "popularity_gain", "trigger_day", "trigger_hour"]:
+            if not promotion_entry.has(key):
+                push_error("promotion entry missing required key: %s" % key)
+                assert(false)
+    var town_config: Dictionary = config["town"]
+    for key in ["population", "store_count_including_rivals"]:
+        if not town_config.has(key):
+            push_error("town config missing required key: %s" % key)
+            assert(false)
+    var store_config: Dictionary = config["store"]
+    if not store_config.has("size_tier"):
+        push_error("store config missing required key: size_tier")
+        assert(false)
+    for staff_entry in config["staff"]["members"]:
+        for key in ["service_skill", "security_skill", "cleaning_skill"]:
+            if not staff_entry.has(key):
+                push_error("staff member config missing required key: %s" % key)
+                assert(false)
