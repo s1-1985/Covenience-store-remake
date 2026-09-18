@@ -128,6 +128,48 @@
       "purchase_price_yen": 600,
       "required_permit_id": "tobacco",
       "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_tobacco_vending'] (compatible_product_categories=('tobacco',)). required_permit_id is this client's own gating choice, since the fixture is dedicated to a permit-gated category; the guide does not state that owning the fixture itself requires the permit."
+    },
+    {
+      "catalog_id": "parking_ground",
+      "kind": "parking",
+      "footprint_tiles": [
+        1,
+        2
+      ],
+      "purchase_price_yen": 500,
+      "maintenance_yen_per_day": 0,
+      "parking_capacity": 2,
+      "blocks_pedestrian": true,
+      "placement": "outdoor",
+      "evidence_note": "CONFIRMED_OFFICIAL/CONFIRMED_COMMUNITY, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['parking_ground'] (footprint/parking_capacity/blocks_pedestrian are CONFIRMED_COMMUNITY from the first-title wiki; purchase_price_yen is CONFIRMED_OFFICIAL from the strategy guide). blocks_pedestrian is included for schema parity with reference_sim, but does not change this client's placement behavior: StoreLayout already marks every fixture's full footprint as non-walkable regardless of kind (game/scripts/domain/store_layout.gd's _build_blocked_cells), so parking cells were already correctly non-walkable before this field existed. parking_capacity is not consumed anywhere in this client yet (no car/vehicle simulation exists). placement='outdoor' is not enforced: this client's store grid represents only the interior editable floor (no outdoor/exterior space model exists yet -- same scope boundary as the town/rival spatial model deferred in task #26), so purchasing this fixture currently places it on the interior grid like any other fixture, which is not evidentially faithful to its outdoor placement. Deliberately not implemented: an outdoor/exterior placement area distinct from the interior floor."
+    },
+    {
+      "catalog_id": "parking_two_story",
+      "kind": "parking",
+      "footprint_tiles": [
+        1,
+        2
+      ],
+      "purchase_price_yen": 1000,
+      "maintenance_yen_per_day": 240,
+      "parking_capacity": 4,
+      "blocks_pedestrian": true,
+      "placement": "outdoor",
+      "evidence_note": "CONFIRMED_OFFICIAL/CONFIRMED_COMMUNITY, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['parking_two_story']. See parking_ground's evidence_note for the blocks_pedestrian/parking_capacity/placement caveats, which apply identically here."
+    },
+    {
+      "catalog_id": "parking_tower",
+      "kind": "parking",
+      "footprint_tiles": [
+        2,
+        3
+      ],
+      "purchase_price_yen": 9000,
+      "maintenance_yen_per_day": 4800,
+      "parking_capacity": 20,
+      "blocks_pedestrian": true,
+      "placement": "outdoor",
+      "evidence_note": "CONFIRMED_OFFICIAL/CONFIRMED_COMMUNITY, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['parking_tower']. See parking_ground's evidence_note for the blocks_pedestrian/parking_capacity/placement caveats, which apply identically here."
     }
   ],
   "permits": [

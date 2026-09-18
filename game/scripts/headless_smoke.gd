@@ -604,6 +604,20 @@ func _initialize() -> void:
         _fail("a rejected fixture purchase must not change cash")
         return
 
+    var parking_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(parking_simulation)
+    if not parking_simulation.try_purchase_fixture(
+        "parking_ground", "parking-1", Vector2i(6, 12), Vector2i(5, 12)
+    ):
+        _fail("a valid parking fixture purchase must be accepted")
+        return
+    if parking_simulation.layout.fixture_origin("parking-1") != Vector2i(6, 12):
+        _fail("a purchased parking fixture must be placed at the requested origin")
+        return
+    if parking_simulation.layout.is_walkable(Vector2i(6, 12)):
+        _fail("a placed parking fixture's footprint must not be walkable, same as any other fixture")
+        return
+
     var permit_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(permit_simulation)
     if permit_simulation.has_permit("tobacco"):

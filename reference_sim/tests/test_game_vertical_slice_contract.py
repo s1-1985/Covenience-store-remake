@@ -912,6 +912,51 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "a fixture purchase costing more than available cash must be rejected", smoke
         )
 
+    def test_parking_fixtures_port_confirmed_reference_sim_data(self):
+        from conveni_sim.baseline_data import FIXTURES
+
+        catalog_by_id = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        reference_by_id = {f.id: f for f in FIXTURES}
+        for catalog_id in ("parking_ground", "parking_two_story", "parking_tower"):
+            self.assertIn(catalog_id, catalog_by_id)
+            entry = catalog_by_id[catalog_id]
+            reference = reference_by_id[catalog_id]
+            self.assertEqual(entry["kind"], "parking")
+            self.assertEqual(
+                entry["footprint_tiles"], list(reference.footprint.value)
+            )
+            self.assertEqual(
+                entry["purchase_price_yen"], reference.purchase_price_yen.value
+            )
+            self.assertEqual(
+                entry["maintenance_yen_per_day"], reference.maintenance_yen_per_day.value
+            )
+            self.assertEqual(
+                entry["parking_capacity"], reference.parking_capacity.value
+            )
+            self.assertIs(entry["blocks_pedestrian"], reference.blocks_pedestrian.value)
+            self.assertEqual(entry["placement"], reference.placement.value)
+            self.assertIn("CONFIRMED", entry["evidence_note"])
+
+        layout = (GAME_ROOT / "scripts" / "domain" / "store_layout.gd").read_text(
+            encoding="utf-8"
+        )
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # No kind-specific carve-out was added to StoreLayout: every fixture
+        # already blocks its full footprint unconditionally regardless of
+        # kind, so parking's confirmed blocks_pedestrian fact requires no
+        # new placement mechanic, only the informational catalog field
+        # above.
+        self.assertIn("for fixture in fixtures:", layout)
+        self.assertIn('elif fixture["kind"] == "parking":', store_view)
+        self.assertIn("a valid parking fixture purchase must be accepted", smoke)
+        self.assertIn(
+            "a placed parking fixture's footprint must not be walkable, same as any other fixture",
+            smoke,
+        )
+
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"

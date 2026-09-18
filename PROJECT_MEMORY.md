@@ -607,6 +607,20 @@ _checkout_ticks)`. This changed the headless smoke test's step count (515 -> 500
 (manda_machiko, register_skill=20) now checks out faster than the old flat 3-tick constant
 (decision 0102).
 
+Task #34 (駐車場什器の追加), the last item on the user-approved priority list, adds
+`parking_ground`/`parking_two_story`/`parking_tower` to `fixture_catalog`, ported verbatim from
+reference_sim's `FIXTURES` (footprint/capacity/`blocks_pedestrian` CONFIRMED_COMMUNITY from the
+first-title wiki, purchase price CONFIRMED_OFFICIAL). `store_layout.gd` needed no new mechanic:
+every fixture already blocks its full footprint regardless of `kind`, so the confirmed
+"parking blocks pedestrians" fact already held; `blocks_pedestrian`/`parking_capacity` are carried
+as informational catalog fields only. `store_view.gd` gained a render branch so parking fixtures
+don't render mislabeled as a shelf. The guide's `outdoor` placement fact is not enforced -- this
+client has no outdoor/exterior space model yet (same boundary as task #26's deferred town/rival
+spatial model) -- so purchasing one places it on the interior grid like any other fixture; this gap
+is documented rather than worked around (decision 0103). This closes the priority list the user
+approved after the store-grid audit: store grid -> named staff roster -> register-skill checkout
+timing -> parking fixtures.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

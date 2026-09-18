@@ -344,6 +344,24 @@ transition now calls `_checkout_timing.required_ticks(checkout_staff.register_sk
 _checkout_ticks)` instead of using the flat constant directly. See decision 0102. **This closes out
 task #33.**
 
+### Parking fixtures
+
+`fixture_catalog` gained three parking fixtures (`parking_ground`, `parking_two_story`,
+`parking_tower`), ported verbatim from `reference_sim/conveni_sim/baseline_data.py`'s `FIXTURES`
+(footprint/capacity/`blocks_pedestrian` CONFIRMED_COMMUNITY from the first-title wiki,
+purchase price CONFIRMED_OFFICIAL from the strategy guide). `store_layout.gd` needed no new code:
+it already marks every fixture's full footprint non-walkable regardless of `kind`
+(`_build_blocked_cells`), so the confirmed "parking cells block pedestrians" fact already held
+before this catalog data existed -- `blocks_pedestrian`/`parking_capacity` are carried as
+informational catalog fields (`parking_capacity` isn't consumed by any logic; no vehicle simulation
+exists). `store_view.gd` gained a `parking` kind render branch so these fixtures don't render
+mislabeled as a shelf. The guide records these as `outdoor` fixtures, but this client's store grid
+represents only the interior editable floor -- no outdoor/exterior space model exists yet (same
+scope boundary as the town/rival spatial model deferred in task #26) -- so purchasing one currently
+places it on the interior grid like any other fixture; this gap is documented in the catalog's
+`evidence_note` rather than worked around. See decision 0103. **This closes out task #34, the last
+item on the user-approved priority list (store grid -> named staff -> register skill -> parking).**
+
 ## Important evidence boundary
 
 `data/vertical_slice.json` is explicitly marked `provisional: true`.

@@ -108,6 +108,9 @@ func _draw_fixtures() -> void:
         elif fixture["kind"] == "amenity":
             fill = Color("9ad6a8")
             label = str(fixture["id"]).to_upper()
+        elif fixture["kind"] == "parking":
+            fill = Color("8d8d8d")
+            label = str(fixture["id"]).to_upper()
         draw_rect(rect, fill, true)
         var outline := Color("f4d35e") if fixture["id"] == selected_fixture_id else Color("363636")
         var outline_width := 5.0 if fixture["id"] == selected_fixture_id else 2.0
