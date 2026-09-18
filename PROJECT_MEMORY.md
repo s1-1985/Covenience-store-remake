@@ -542,6 +542,25 @@ task #28 built. Since `godot --script`'s `instantiate()` never enters the tree o
 check, so this task's new NodePaths are checked explicitly via `get_node_or_null()` in
 `headless_smoke.gd` instead (decision 0098).
 
+Task #30 (複数店舗(チェーン展開)管理), the last task on this session's self-generated Godot-porting
+roadmap (#21-#30), ports `reference_sim/conveni_sim/visitor_milestone.py`'s
+`ChainVisitorMilestoneRuntime` verbatim -- CONFIRMED first-title evidence for a free +100 popularity
+event every 10,000 cumulative visitors across the player's store chain. `chain_visitor_milestone.gd`
+is fed this single store's completed-visit count today (the whole "chain" for now), so it already
+generalizes correctly once a second playable store exists. `try_expand_chain()` models opening a new
+branch as an abstract economic action (no second store is actually simulated), reusing task #26's
+land-value infrastructure for its cost; success increments a new `player_store_count`, which
+`PLAYER_STORE_COUNT_SCENARIO_TARGET = 10` wires into `clear_condition_met` for the first time
+(previously always false, decision 0091) -- tagged PROVISIONAL, one rung weaker than
+REMAKE_BALANCED_DEFAULT, since its own community source (section 14 above) is itself flagged
+unverified. `store_events.gd` ports the guide's CONFIRMED_OFFICIAL magazine/contest eligibility gate
+and prize formula as informational `snapshot()` fields only, never rolling the event's own
+unconfirmed "may or may not be picked" draw. Deliberately not implemented: actually playing a second
+store simultaneously (a much larger architecture redesign, out of scope exactly as the town/rival
+spatial model was in task #26), a dedicated victory screen, the contest's actual draw/payout, and
+rival chain open/acquire/close transitions (no rival-store entity exists in Godot yet). Chain state
+now round-trips through save/load (`SAVE_SCHEMA_VERSION` bumped 1 -> 2) (decision 0099).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

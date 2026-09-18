@@ -159,6 +159,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "scripts/domain/customer_state.gd",
             "scripts/domain/customer_roster.gd",
             "scripts/domain/staff_state.gd",
+            "scripts/domain/chain_visitor_milestone.gd",
+            "scripts/domain/store_events.gd",
             "scripts/domain/staff_roster.gd",
             "scripts/domain/runtime_event_log.gd",
             "scripts/domain/demand_policy.gd",
@@ -460,6 +462,74 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("rival dilution must reduce expected arrivals", smoke)
         self.assertIn("rival dilution must be capped at MAX_RIVAL_DILUTION", smoke)
         self.assertIn("land_value_yen must match LandValuePolicy's formula", smoke)
+
+    def test_chain_expansion_ports_confirmed_visitor_milestone_and_store_count_target(self):
+        chain_visitor_milestone = (
+            GAME_ROOT / "scripts" / "domain" / "chain_visitor_milestone.gd"
+        ).read_text(encoding="utf-8")
+        store_events = (GAME_ROOT / "scripts" / "domain" / "store_events.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # ChainVisitorMilestone: CONFIRMED first-title evidence (a +100
+        # popularity event every 10,000 cumulative chain visitors), ported
+        # verbatim from visitor_milestone.py, not a REMAKE_BALANCED_DEFAULT
+        # guess.
+        self.assertIn("const THRESHOLD_STEP := 10000", chain_visitor_milestone)
+        self.assertIn("const POPULARITY_GAIN := 100", chain_visitor_milestone)
+        self.assertIn("func observe_total_visitors(", chain_visitor_milestone)
+        self.assertIn("func pop_due(", chain_visitor_milestone)
+        self.assertIn(
+            "A skipped threshold (crossed without an exact observed multiple) is",
+            chain_visitor_milestone,
+        )
+
+        # StoreEvents: CONFIRMED_OFFICIAL magazine/contest eligibility gate
+        # and prize formula, ported verbatim; the "may or may not be
+        # picked" draw itself is deliberately never rolled here.
+        self.assertIn("CONFIRMED_OFFICIAL", store_events)
+        self.assertIn("const TOWN_POPULATION_THRESHOLD := 10000", store_events)
+        self.assertIn("const STORE_COUNT_THRESHOLD := 5", store_events)
+        self.assertIn("const CONTEST_PRIZE_YEN_PER_STORE := 10000000", store_events)
+        self.assertIn("func magazine_or_contest_event_is_eligible(", store_events)
+        self.assertIn("func compute_contest_prize_yen(", store_events)
+
+        # PLAYER_STORE_COUNT_SCENARIO_TARGET is explicitly tagged weaker
+        # than REMAKE_BALANCED_DEFAULT (PROVISIONAL), since its own
+        # community source (PROJECT_MEMORY.md section 14) is itself
+        # unverified.
+        self.assertIn("const PLAYER_STORE_COUNT_SCENARIO_TARGET := 10", simulation)
+        self.assertIn("PROVISIONAL, not CONFIRMED_OFFICIAL", simulation)
+        self.assertIn("func try_expand_chain() -> bool:", simulation)
+        self.assertIn("func chain_expansion_cost_yen() -> int:", simulation)
+        self.assertIn(
+            "if player_store_count >= PLAYER_STORE_COUNT_SCENARIO_TARGET:", simulation
+        )
+        self.assertIn("clear_condition_met = true", simulation)
+        # The expansion cost reuses task #26's land-value infrastructure
+        # rather than inventing a second, unrelated price.
+        self.assertIn(
+            "_land_value_policy.current_land_price_yen(\n        BASE_LAND_PRICE_YEN, town,",
+            simulation,
+        )
+        self.assertIn("func _observe_chain_visitor_milestone() -> void:", simulation)
+        self.assertIn("func _fire_due_chain_visitor_milestones() -> void:", simulation)
+
+        self.assertIn(
+            "a successful chain expansion must increment player_store_count by exactly 1", smoke
+        )
+        self.assertIn(
+            "clear_condition_met must be set once player_store_count reaches the scenario target",
+            smoke,
+        )
+        self.assertIn(
+            "a fired chain visitor milestone must apply exactly its configured popularity_gain",
+            smoke,
+        )
 
     def test_save_load_round_trips_progress_and_rejects_incompatible_saves(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(

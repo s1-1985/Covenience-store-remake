@@ -12,6 +12,8 @@ const TownStateScript := preload("res://scripts/domain/town_state.gd")
 const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.gd")
 const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
 const StoreValueScript := preload("res://scripts/domain/store_value.gd")
+const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
+const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -33,8 +35,9 @@ const MONTH_MULTIPLIER := 8
 # - time limit: the guide's own second game-over path, 100 years without
 #   meeting the scenario's clear condition
 #   (reference_sim/conveni_sim/store_events.scenario_time_limit_exceeded /
-#   GAME_OVER_YEAR_LIMIT). This client has no scenario/clear-condition
-#   system yet, so `clear_condition_met` defaults to false (never met);
+#   GAME_OVER_YEAR_LIMIT). `clear_condition_met` defaults to false and is
+#   set true once `player_store_count` reaches
+#   PLAYER_STORE_COUNT_SCENARIO_TARGET (see that constant below);
 #   MONTHS_PER_YEAR mirrors reference_sim/conveni_sim/observations.py.
 const GAME_OVER_YEAR_LIMIT := 100
 const MONTHS_PER_YEAR := 12
@@ -48,6 +51,18 @@ const MONTHS_PER_YEAR := 12
 # player's own store's land -- is this client's own choice, not a ported
 # value.
 const BASE_LAND_PRICE_YEN := 20_000_000
+
+# PROVISIONAL, not CONFIRMED_OFFICIAL: PROJECT_MEMORY.md section 14 records
+# "intermediate: reach 10 company stores" as a scenario clear condition
+# from community sources, explicitly flagged there as unverified
+# ("must be verified against manual/gameplay before implementation"). This
+# is the only concrete numeric scenario-clear target this project has
+# found for chain expansion, so it is used as a playable placeholder --
+# expected to be retuned or replaced if better evidence surfaces, exactly
+# like this client's other REMAKE_BALANCED_DEFAULT placeholders, but kept
+# under its own weaker PROVISIONAL tag since even the community source
+# itself is unconfirmed here.
+const PLAYER_STORE_COUNT_SCENARIO_TARGET := 10
 
 var config: Dictionary
 var layout
@@ -91,6 +106,9 @@ var star_rating: int
 var _store_rating
 var _store_value
 var _store_size_tier: String
+var player_store_count: int
+var _chain_visitor_milestone
+var _store_events
 
 
 func _init(source_config: Dictionary) -> void:
@@ -122,6 +140,7 @@ func _init(source_config: Dictionary) -> void:
     _store_value = StoreValueScript.new()
     _store_size_tier = str(config["store"]["size_tier"])
     assert(_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
+    _store_events = StoreEventsScript.new()
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -172,6 +191,10 @@ func reset() -> void:
     # precedent already set for `popularity`.
     internal_rating_value = 0
     star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
+    # This playable vertical slice is itself the player's first store, so
+    # the chain always starts at 1, not 0.
+    player_store_count = 1
+    _chain_visitor_milestone = ChainVisitorMilestoneScript.new()
     _demand_rng.seed = int(config["demand"]["rng_seed"])
     _refresh_interactions()
     _start_default_customer()
@@ -394,6 +417,34 @@ func try_purchase_promotion(promotion_id: String) -> bool:
     return true
 
 
+func chain_expansion_cost_yen() -> int:
+    return _land_value_policy.current_land_price_yen(
+        BASE_LAND_PRICE_YEN, town, float(month_count) / MONTHS_PER_YEAR
+    )
+
+
+func try_expand_chain() -> bool:
+    if is_game_over or not customers.can_admit() or _any_restock_task_active():
+        return false
+    var expansion_cost_yen := chain_expansion_cost_yen()
+    if economy.cash_yen < expansion_cost_yen:
+        return false
+    var new_store_sequence := player_store_count + 1
+    var expense: Dictionary = economy.record_explicit_expense(
+        "chain_expansion",
+        minute_of_day,
+        expansion_cost_yen,
+        {"new_store_sequence": new_store_sequence}
+    )
+    player_store_count = new_store_sequence
+    _record_event("chain_expanded", {
+        "player_store_count": player_store_count,
+        "cost_yen": expansion_cost_yen,
+        "expense_id": expense["expense_id"],
+    })
+    return true
+
+
 func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
     if is_game_over or not customers.can_admit() or _any_restock_task_active():
         return false
@@ -505,6 +556,7 @@ func step() -> void:
         "leaving":
             if customer.move_along_route("done"):
                 _record_event("customer_exited", {"customer_id": customer.customer_id})
+                _observe_chain_visitor_milestone()
         "done":
             last_event = "day slice complete"
         _:
@@ -556,6 +608,14 @@ func snapshot() -> Dictionary:
         ),
         "internal_rating_value": internal_rating_value,
         "star_rating": star_rating,
+        "player_store_count": player_store_count,
+        "chain_expansion_cost_yen": chain_expansion_cost_yen(),
+        "magazine_or_contest_eligible": _store_events.magazine_or_contest_event_is_eligible(
+            town.population, town.store_count_including_rivals
+        ),
+        "contest_prize_yen": _store_events.compute_contest_prize_yen(
+            town.store_count_including_rivals
+        ),
     }
 
 
@@ -590,7 +650,7 @@ func observation_snapshot() -> Dictionary:
     }
 
 
-const SAVE_SCHEMA_VERSION := 1
+const SAVE_SCHEMA_VERSION := 2
 
 # Deliberately not saved/restored: the active customer's mid-visit walk
 # state (position along a route, basket-so-far, checkout progress) and
@@ -619,6 +679,12 @@ func save_state() -> Dictionary:
         "popularity": popularity,
         "internal_rating_value": internal_rating_value,
         "star_rating": star_rating,
+        "player_store_count": player_store_count,
+        "chain_visitor_milestone": {
+            "last_observed_total": _chain_visitor_milestone.last_observed_total,
+            "next_threshold": _chain_visitor_milestone.next_threshold,
+            "events": _chain_visitor_milestone.events.duplicate(true),
+        },
         "permits_held": _permits_held.keys(),
         "promotions_used_this_month": _promotions_used_this_month.keys(),
         "scheduled_promotions": _scheduled_promotions.duplicate(true),
@@ -671,6 +737,12 @@ func load_state(data: Dictionary) -> bool:
     popularity = int(data["popularity"])
     internal_rating_value = int(data["internal_rating_value"])
     star_rating = int(data["star_rating"])
+    player_store_count = int(data["player_store_count"])
+    var milestone_data: Dictionary = data["chain_visitor_milestone"]
+    _chain_visitor_milestone = ChainVisitorMilestoneScript.new()
+    _chain_visitor_milestone.last_observed_total = int(milestone_data["last_observed_total"])
+    _chain_visitor_milestone.next_threshold = int(milestone_data["next_threshold"])
+    _chain_visitor_milestone.events.assign(milestone_data["events"])
     _permits_held.clear()
     for permit_id in data["permits_held"]:
         _permits_held[str(permit_id)] = true
@@ -762,6 +834,7 @@ func _advance_minute_of_day() -> void:
     while minute_of_day >= 24 * 60:
         minute_of_day -= 24 * 60
         _handle_day_boundary()
+    _fire_due_chain_visitor_milestones()
 
 
 func _handle_day_boundary() -> void:
@@ -852,6 +925,8 @@ func _evaluate_terminal_state() -> void:
     if economy.cash_yen < 0:
         _trigger_game_over("bankrupt")
         return
+    if player_store_count >= PLAYER_STORE_COUNT_SCENARIO_TARGET:
+        clear_condition_met = true
     var current_year: int = (month_count / MONTHS_PER_YEAR) + 1
     if current_year > GAME_OVER_YEAR_LIMIT and not clear_condition_met:
         _trigger_game_over("time_limit_exceeded")
@@ -899,6 +974,34 @@ func _fire_promotion(scheduled: Dictionary) -> void:
         "popularity_after": popularity,
         "expense_id": expense["expense_id"],
     })
+
+
+func _observe_chain_visitor_milestone() -> void:
+    _chain_visitor_milestone.observe_total_visitors(
+        customers.completed_count(), day_count + 1, minute_of_day / 60
+    )
+
+
+func _fire_due_chain_visitor_milestones() -> void:
+    # Checked after the day-boundary loop above (using the now-current
+    # day_count), since the milestone's "next day 00:00" trigger is most
+    # naturally read as firing once that day begins -- unlike promotions,
+    # whose trigger_day/trigger_hour is checked against the still-current
+    # day so a trigger landing on a month's last tick still resolves
+    # correctly (decision 0094). This store doesn't simulate overnight
+    # hours, so "00:00" in practice means the first tick of the following
+    # day, not literal midnight.
+    var due: Array[Dictionary] = _chain_visitor_milestone.pop_due(
+        day_count + 1, minute_of_day / 60
+    )
+    for milestone_event in due:
+        var gain: int = int(milestone_event["popularity_gain"])
+        popularity = min(100, popularity + gain)
+        _record_event("chain_visitor_milestone_fired", {
+            "threshold_visitors": int(milestone_event["threshold_visitors"]),
+            "popularity_gain": gain,
+            "popularity_after": popularity,
+        })
 
 
 func _step_restock_tasks() -> void:
@@ -1004,6 +1107,8 @@ func _require_save_data(data: Dictionary) -> void:
         "popularity",
         "internal_rating_value",
         "star_rating",
+        "player_store_count",
+        "chain_visitor_milestone",
         "permits_held",
         "promotions_used_this_month",
         "scheduled_promotions",
@@ -1019,6 +1124,11 @@ func _require_save_data(data: Dictionary) -> void:
     for key in ["cash_yen", "sale_records", "expense_records", "month_end_records", "next_sale_sequence"]:
         if not economy_data.has(key):
             push_error("save data economy section missing required key: %s" % key)
+            assert(false)
+    var milestone_data: Dictionary = data["chain_visitor_milestone"]
+    for key in ["last_observed_total", "next_threshold", "events"]:
+        if not milestone_data.has(key):
+            push_error("save data chain_visitor_milestone section missing required key: %s" % key)
             assert(false)
 
 

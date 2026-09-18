@@ -237,6 +237,35 @@ instead checked explicitly via `get_node_or_null()` in `headless_smoke.gd`, sinc
 would catch a typo in one before an actual play session. See decision 0098. **This closes out task
 #29.**
 
+### Chain expansion
+
+`reference_sim/conveni_sim/visitor_milestone.py`'s `ChainVisitorMilestoneRuntime` is
+**CONFIRMED** first-title evidence: a free +100 popularity event every 10,000 cumulative visitors
+across the player's store chain, firing at 00:00 on the day after the milestone is observed.
+`chain_visitor_milestone.gd` ports it verbatim (including refusing to invent catch-up behavior for
+a skipped threshold); `VerticalSliceSimulation._observe_chain_visitor_milestone()` feeds it this
+single store's completed-visit count (the whole "chain" today), so the same runtime already
+generalizes correctly the day a second playable store exists. `try_expand_chain()` models opening a
+new branch as an abstract economic action -- no second store is actually simulated -- reusing task
+#26's `LandValuePolicy`/`BASE_LAND_PRICE_YEN` for its cost rather than inventing a new price;
+success increments `player_store_count`. `PLAYER_STORE_COUNT_SCENARIO_TARGET = 10` wires
+`player_store_count` into `clear_condition_met` for the first time (previously always false, per
+decision 0091) -- PROJECT_MEMORY.md section 14's own community source for "intermediate: reach 10
+company stores" is explicitly flagged there as unverified, so this constant carries a **PROVISIONAL**
+tag, one rung weaker than this project's REMAKE_BALANCED_DEFAULT placeholders elsewhere.
+`store_events.gd` ports the guide's **CONFIRMED_OFFICIAL** magazine/contest eligibility gate and
+prize formula (population >= 10,000 and town store count >= 5; prize = store count x
+¥10,000,000) as informational `snapshot()` fields only -- the guide itself says the event "may or
+may not be picked" once eligible, an unconfirmed draw this client never rolls. Deliberately **not**
+implemented: actually playing a second store simultaneously (a full multi-store architecture is a
+much larger redesign, out of scope here just as the town/rival spatial model was in task #26), a
+dedicated victory/ending screen for `clear_condition_met` (unchanged from decision 0091's scope),
+the contest's actual draw/payout, and rival chain open/acquire/close transitions (no rival-store
+entity exists in Godot yet, same reasoning as decision 0095). `player_store_count` and the
+milestone runtime's state now round-trip through save/load too (`SAVE_SCHEMA_VERSION` bumped 1 -> 2,
+so an old save is cleanly rejected rather than partially applied). See decision 0099. **This closes
+out task #30 -- the last task on this session's self-generated Godot-porting roadmap (#21-#30).**
+
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;
 its IDs and shape are not a reconstruction of an original receipt system.
