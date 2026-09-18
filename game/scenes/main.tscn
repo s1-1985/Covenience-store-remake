@@ -99,6 +99,19 @@ text = "0"
 [node name="VisitsValue" type="Label" parent="UI/Panel/Margin/VBox"]
 text = "Visits: 0 / 1"
 
+[node name="RatingTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Store rating"
+
+[node name="RatingValue" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "☆☆☆☆☆ (popularity 0)"
+
+[node name="TownTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Town / land value"
+
+[node name="TownValue" type="Label" parent="UI/Panel/Margin/VBox"]
+autowrap_mode = 2
+text = "population 0, 0 rival stores, land ¥0"
+
 [node name="Separator2" type="HSeparator" parent="UI/Panel/Margin/VBox"]
 
 [node name="LayoutEditTitle" type="Label" parent="UI/Panel/Margin/VBox"]
