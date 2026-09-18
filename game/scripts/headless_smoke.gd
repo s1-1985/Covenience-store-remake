@@ -4,6 +4,8 @@ const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_sim
 const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
 const TownStateScript := preload("res://scripts/domain/town_state.gd")
 const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.gd")
+const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
+const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAX_STEPS := 256
@@ -719,6 +721,102 @@ func _initialize() -> void:
     var expected_inflated_price: int = int(round(20000000 * 3.0 * 1.05))
     if inflated_price != expected_inflated_price:
         _fail("current_land_price_yen must apply the annual inflation rate for elapsed_years > 0")
+        return
+
+    var store_rating = StoreRatingScript.new()
+    var star_breakpoints := {
+        0: 0, 19: 0, 20: 1, 39: 1, 40: 2, 59: 2, 60: 3, 79: 3, 80: 4, 99: 4, 100: 5,
+    }
+    for internal_value in star_breakpoints:
+        if store_rating.star_rank_for_internal_value(internal_value) != star_breakpoints[internal_value]:
+            _fail("star_rank_for_internal_value must match the guide's confirmed breakpoints")
+            return
+
+    var upgrade_and_downgrade_evaluation: Dictionary = store_rating.evaluate_monthly_rating_change(
+        0, -5, 60.0, 75.0, 0.0, 0
+    )
+    if int(upgrade_and_downgrade_evaluation["criteria_met"]) != 3:
+        _fail("exactly 3 of the 5 rank-1 upgrade criteria must be counted as met")
+        return
+    if not bool(upgrade_and_downgrade_evaluation["upgrade_applies"]):
+        _fail("meeting >= UPGRADE_MIN_CRITERIA_MET criteria must apply the upgrade")
+        return
+    if int(upgrade_and_downgrade_evaluation["downgrade_points"]) != -2:
+        _fail("downgrade points must equal -1 per failed downgrade criterion")
+        return
+    if int(upgrade_and_downgrade_evaluation["next_internal_value"]) != 3:
+        _fail("next_internal_value must equal current + downgrade_points + UPGRADE_POINTS, clamped 0..100")
+        return
+
+    var store_value = StoreValueScript.new()
+    var service_value_check: float = store_value.compute_service_value([10, 30], [2, 4])
+    if abs(service_value_check - 26.0) > 0.0000001:
+        _fail("compute_service_value must equal the staff average plus the summed fixture bonuses")
+        return
+    var security_value_check: float = store_value.compute_security_value([10, 20], "small")
+    if abs(security_value_check - 45.0) > 0.0000001:
+        _fail("compute_security_value must equal the summed staff skill times the size-tier multiplier")
+        return
+    var cleaning_value_check: float = store_value.compute_cleaning_value([5, 15], "large")
+    if abs(cleaning_value_check - 36.0) > 0.0000001:
+        _fail("compute_cleaning_value must equal the summed staff skill times the size-tier multiplier")
+        return
+
+    var rating_config: Dictionary = config.duplicate(true)
+    rating_config["demand"] = {
+        "nearby_population": 0,
+        "customer_share_percent": 0.0,
+        "daily_visit_rate_per_population": 0.0,
+        "opening_minutes_per_day": 960,
+        "bad_weather_visit_multiplier": 0.0,
+        "is_bad_weather": false,
+        "rng_seed": 13,
+    }
+    var rating_simulation = VerticalSliceSimulationScript.new(rating_config)
+    if rating_simulation.internal_rating_value != 0 or rating_simulation.star_rating != 0:
+        _fail("a freshly reset simulation must start at internal_rating_value 0 / star_rating 0")
+        return
+    steps += _run_visit(rating_simulation)
+    var single_sale_revenue_yen: int = rating_simulation.economy.recorded_revenue_yen()
+
+    var rating_ticks := 0
+    while (
+        rating_simulation.day_count < REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST
+        and rating_ticks < 20000
+    ):
+        rating_simulation.tick_idle_for_demand()
+        rating_ticks += 1
+    if rating_ticks >= 20000:
+        _fail("advancing to the end of the representative month took too long (store rating test)")
+        return
+    if rating_simulation.event_log.count_type("store_rating_evaluated") != 1:
+        _fail("exactly one store_rating_evaluated event must be recorded at month end")
+        return
+
+    var rating_event_details: Dictionary = {}
+    for record in rating_simulation.event_log.records:
+        if record["event_type"] == "store_rating_evaluated":
+            rating_event_details = record["details"]
+    var expected_monthly_sales_yen: int = single_sale_revenue_yen * MONTH_MULTIPLIER_FOR_TEST
+    if int(rating_event_details["monthly_sales_yen"]) != expected_monthly_sales_yen:
+        _fail("monthly_sales_yen fed into the store rating must equal the representative month's revenue x8")
+        return
+    if abs(float(rating_event_details["service_value"]) - 20.0) > 0.0000001:
+        _fail("service_value must equal the average staff service_skill plus any fixture service bonuses")
+        return
+    if abs(float(rating_event_details["security_value"]) - 45.0) > 0.0000001:
+        _fail("security_value must equal total staff security_skill times the store's size-tier multiplier")
+        return
+    if abs(float(rating_event_details["cleaning_value"]) - 45.0) > 0.0000001:
+        _fail("cleaning_value must equal total staff cleaning_skill times the store's size-tier multiplier")
+        return
+    if rating_simulation.star_rating != store_rating.star_rank_for_internal_value(
+        rating_simulation.internal_rating_value
+    ):
+        _fail("star_rating must always equal star_rank_for_internal_value(internal_rating_value)")
+        return
+    if int(rating_simulation.snapshot()["star_rating"]) != rating_simulation.star_rating:
+        _fail("snapshot() must expose the same star_rating the simulation tracks")
         return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)

@@ -15,7 +15,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     def test_prototype_values_are_explicitly_marked_provisional(self):
-        self.assertEqual(self.config["schema_version"], 11)
+        self.assertEqual(self.config["schema_version"], 12)
         self.assertIs(self.config["provisional"], True)
         self.assertTrue(self.config["evidence_note"].strip())
         self.assertIn("not claims", self.config["evidence_note"])
@@ -399,6 +399,71 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("rival dilution must reduce expected arrivals", smoke)
         self.assertIn("rival dilution must be capped at MAX_RIVAL_DILUTION", smoke)
         self.assertIn("land_value_yen must match LandValuePolicy's formula", smoke)
+
+    def test_store_rating_ports_confirmed_guide_thresholds_into_the_monthly_loop(self):
+        store = self.config["store"]
+        self.assertIn("size_tier", store)
+        for member in self.config["staff"]["members"]:
+            for key in ("service_skill", "security_skill", "cleaning_skill"):
+                self.assertIn(key, member)
+                self.assertGreaterEqual(member[key], 0)
+
+        store_rating = (GAME_ROOT / "scripts" / "domain" / "store_rating.gd").read_text(
+            encoding="utf-8"
+        )
+        store_value = (GAME_ROOT / "scripts" / "domain" / "store_value.gd").read_text(
+            encoding="utf-8"
+        )
+        staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # store_rating.gd/store_value.gd are CONFIRMED_OFFICIAL ports of the
+        # guide's own published table, not a REMAKE_BALANCED_DEFAULT guess.
+        self.assertIn("CONFIRMED_OFFICIAL", store_rating)
+        self.assertIn("CONFIRMED_OFFICIAL", store_value)
+        self.assertIn("func star_rank_for_internal_value(internal_value: int) -> int:", store_rating)
+        self.assertIn("func evaluate_monthly_rating_change(", store_rating)
+        self.assertIn('"min_service": 60, "min_security": 75, "min_cleaning": 85, "min_sales_yen": 5000000', store_rating)
+        self.assertIn("func compute_service_value(", store_value)
+        self.assertIn("func compute_security_value(", store_value)
+        self.assertIn("func compute_cleaning_value(", store_value)
+        self.assertIn('"small": 1.5,', store_value)
+        self.assertIn('"medium": 1.65,', store_value)
+        self.assertIn('"large": 1.8,', store_value)
+
+        # No skill-growth system is ported yet: the three fields are static
+        # REMAKE_BALANCED_DEFAULT config values on StaffState.
+        self.assertIn("var service_skill: int", staff_state)
+        self.assertIn("var security_skill: int", staff_state)
+        self.assertIn("var cleaning_skill: int", staff_state)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", staff_state)
+
+        # Wired into the monthly game loop, not just defined standalone.
+        self.assertIn("func _evaluate_store_rating(monthly_sales_yen: int) -> void:", simulation)
+        self.assertIn("_evaluate_store_rating(monthly_sales_yen)", simulation)
+        self.assertIn('"internal_rating_value": internal_rating_value,', simulation)
+        self.assertIn('"star_rating": star_rating,', simulation)
+        # price_change_pct is always 0: no price-setting mechanic exists yet.
+        self.assertIn(
+            "_store_rating.evaluate_monthly_rating_change(\n        internal_rating_value, 0,",
+            simulation,
+        )
+
+        # What is deliberately NOT implemented: the police-box/fire-station
+        # security facility bonus (no such fixtures/spatial search exist
+        # yet) and the per-event rating deltas (angry customer/shoplifting/
+        # donation), since the underlying trigger events aren't wired into
+        # this client either.
+        self.assertNotIn("facility_coverage", store_value)
+        self.assertNotIn("police_box", simulation.lower())
+
+        self.assertIn("star_rank_for_internal_value must match the guide's confirmed breakpoints", smoke)
+        self.assertIn("exactly one store_rating_evaluated event must be recorded at month end", smoke)
 
     def test_promotions_port_confirmed_reference_sim_timing_and_apply_at_trigger(self):
         promotions = self.config["promotions"]

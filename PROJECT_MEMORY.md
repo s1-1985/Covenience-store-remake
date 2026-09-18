@@ -489,6 +489,27 @@ store placement/distance-based trade-area overlap, and the rival AI decision fun
 (`remake_rival_policy.py`), since no rival-store entity exists in Godot yet for it to act on
 (decision 0095).
 
+Task #27 (店舗評価をゲームループへ反映) ports `reference_sim/conveni_sim/store_rating.py`/
+`store_value.py` -- direct CONFIRMED_OFFICIAL transcriptions of the guide's own ★-rank table and
+service/security/cleaning value formulas (書籍頁74-75), not this project's guesses. `store_rating.gd`/
+`store_value.gd` mirror them verbatim: a 0-100 internal value maps to 0-5 stars at fixed
+breakpoints, and each representative month, >=3 of (price change/service/security/cleaning/sales)
+meeting the current rank's upgrade thresholds grants +5 while each of the 5 falling below the
+downgrade thresholds costs -1. `VerticalSliceSimulation._evaluate_store_rating()` runs from
+`_settle_month_end()`, feeding it staff `service_skill` average plus purchased amenity fixtures'
+`service_bonus` (service value), staff `security_skill`/`cleaning_skill` totals times the store's
+`size_tier` multiplier (security/cleaning value), the representative month's sales revenue x8
+(section 9's 4x8 rule), and `price_change_pct=0` (no price-setting mechanic exists yet). Staff
+`service_skill`/`security_skill`/`cleaning_skill` are new static REMAKE_BALANCED_DEFAULT config
+fields on `StaffState` -- the guide's skill-growth model (work-event counting, manager-education
+bonus) has not been ported to Godot at all yet, so these never change on their own; `size_tier`
+("small") is likewise a REMAKE_BALANCED_DEFAULT house-rule mapping, since the guide's three tiers
+are defined by exact dimensions (10x10/12x12/14x14) that this prototype's 7x6 store matches none
+of. Deliberately not implemented: the police-box/fire-station security-facility bonus (no such
+fixtures or spatial search exist) and the guide's per-event rating deltas (angry customer/
+shoplifting/donation), since their trigger events aren't wired into this client either
+(decision 0096).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

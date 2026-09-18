@@ -10,6 +10,8 @@ const RuntimeEventLogScript := preload("res://scripts/domain/runtime_event_log.g
 const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
 const TownStateScript := preload("res://scripts/domain/town_state.gd")
 const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.gd")
+const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
+const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -70,6 +72,7 @@ var _restock_trigger_stock_units_at_or_below: int
 var _restock_task_enabled: bool
 var _days_completed_this_month: int
 var _cash_at_month_start: int
+var _revenue_at_month_start: int
 var is_game_over: bool
 var game_over_reason: String
 var clear_condition_met: bool
@@ -83,6 +86,11 @@ var _scheduled_promotions: Array[Dictionary] = []
 var popularity: int
 var town
 var _land_value_policy
+var internal_rating_value: int
+var star_rating: int
+var _store_rating
+var _store_value
+var _store_size_tier: String
 
 
 func _init(source_config: Dictionary) -> void:
@@ -110,6 +118,10 @@ func _init(source_config: Dictionary) -> void:
     # own store, so store_count_including_rivals is reduced by one (never
     # below zero) before being applied.
     demand.rival_store_count = max(0, town.store_count_including_rivals - 1)
+    _store_rating = StoreRatingScript.new()
+    _store_value = StoreValueScript.new()
+    _store_size_tier = str(config["store"]["size_tier"])
+    assert(_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -144,6 +156,7 @@ func reset() -> void:
     staff.reset()
     event_log.reset()
     _cash_at_month_start = economy.cash_yen
+    _revenue_at_month_start = economy.recorded_revenue_yen()
     is_game_over = false
     game_over_reason = ""
     clear_condition_met = false
@@ -151,6 +164,14 @@ func reset() -> void:
     _promotions_used_this_month.clear()
     _scheduled_promotions.clear()
     popularity = 0
+    # No confirmed starting evaluation for a brand-new store exists (the
+    # guide never states one; store_evaluation.py's own
+    # internal_rating_value likewise starts unknown until a caller sets
+    # it), so 0 (the lowest tier, 0-19 -> 0 stars) is used as the most
+    # natural REMAKE_BALANCED_DEFAULT starting point, matching the
+    # precedent already set for `popularity`.
+    internal_rating_value = 0
+    star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
     _demand_rng.seed = int(config["demand"]["rng_seed"])
     _refresh_interactions()
     _start_default_customer()
@@ -246,6 +267,7 @@ func try_purchase_fixture(
     var fixture_config := {
         "id": instance_id,
         "kind": str(catalog_entry["kind"]),
+        "catalog_id": catalog_id,
         "rotation_quarter_turns": 0,
         "origin_subcell": [origin_subcell.x, origin_subcell.y],
         "footprint_tiles": catalog_footprint_tiles.duplicate(),
@@ -532,6 +554,8 @@ func snapshot() -> Dictionary:
         "land_value_yen": _land_value_policy.current_land_price_yen(
             BASE_LAND_PRICE_YEN, town, float(month_count) / MONTHS_PER_YEAR
         ),
+        "internal_rating_value": internal_rating_value,
+        "star_rating": star_rating,
     }
 
 
@@ -667,11 +691,62 @@ func _settle_month_end() -> void:
         "month_result_yen": month_result_yen,
         "settlement_id": record["settlement_id"],
     })
+    var four_day_revenue_yen: int = economy.recorded_revenue_yen() - _revenue_at_month_start
+    var monthly_sales_yen: int = four_day_revenue_yen * MONTH_MULTIPLIER
+    _evaluate_store_rating(monthly_sales_yen)
     month_count += 1
     _days_completed_this_month = 0
     _cash_at_month_start = economy.cash_yen
+    _revenue_at_month_start = economy.recorded_revenue_yen()
     _promotions_used_this_month.clear()
     _evaluate_terminal_state()
+
+
+func _evaluate_store_rating(monthly_sales_yen: int) -> void:
+    var service_skills: Array = []
+    var security_skills: Array = []
+    var cleaning_skills: Array = []
+    for staff_member in staff.all_staff():
+        service_skills.append(staff_member.service_skill)
+        security_skills.append(staff_member.security_skill)
+        cleaning_skills.append(staff_member.cleaning_skill)
+    var fixture_service_bonuses: Array = []
+    for fixture in layout.fixtures:
+        var catalog_id := str(fixture.get("catalog_id", ""))
+        if catalog_id.is_empty() or not _fixture_catalog.has(catalog_id):
+            continue
+        var catalog_entry: Dictionary = _fixture_catalog[catalog_id]
+        if catalog_entry.has("service_bonus"):
+            fixture_service_bonuses.append(int(catalog_entry["service_bonus"]))
+    var service_value: float = _store_value.compute_service_value(
+        service_skills, fixture_service_bonuses
+    )
+    var security_value: float = _store_value.compute_security_value(
+        security_skills, _store_size_tier
+    )
+    var cleaning_value: float = _store_value.compute_cleaning_value(
+        cleaning_skills, _store_size_tier
+    )
+    # No price-setting mechanic exists in this vertical slice yet (product
+    # sale prices are fixed config values), so price_change_pct is always 0
+    # ("no change from baseline") rather than a guessed nonzero value.
+    var evaluation: Dictionary = _store_rating.evaluate_monthly_rating_change(
+        internal_rating_value, 0, service_value, security_value, cleaning_value, monthly_sales_yen
+    )
+    internal_rating_value = int(evaluation["next_internal_value"])
+    star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
+    _record_event("store_rating_evaluated", {
+        "month_number": month_count + 1,
+        "monthly_sales_yen": monthly_sales_yen,
+        "service_value": service_value,
+        "security_value": security_value,
+        "cleaning_value": cleaning_value,
+        "criteria_met": evaluation["criteria_met"],
+        "upgrade_applies": evaluation["upgrade_applies"],
+        "downgrade_points": evaluation["downgrade_points"],
+        "internal_rating_value": internal_rating_value,
+        "star_rating": star_rating,
+    })
 
 
 func _evaluate_terminal_state() -> void:
@@ -817,7 +892,7 @@ func _restock_staff_snapshot() -> Array[Dictionary]:
 
 
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 11)
+    assert(int(config.get("schema_version", -1)) == 12)
     for key in ["store", "fixtures", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand", "town"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
@@ -875,3 +950,12 @@ func _require_config() -> void:
         if not town_config.has(key):
             push_error("town config missing required key: %s" % key)
             assert(false)
+    var store_config: Dictionary = config["store"]
+    if not store_config.has("size_tier"):
+        push_error("store config missing required key: size_tier")
+        assert(false)
+    for staff_entry in config["staff"]["members"]:
+        for key in ["service_skill", "security_skill", "cleaning_skill"]:
+            if not staff_entry.has(key):
+                push_error("staff member config missing required key: %s" % key)
+                assert(false)

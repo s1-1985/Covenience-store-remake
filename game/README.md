@@ -164,6 +164,33 @@ exclusion-distance enforcement, and the rival AI decision function
 (`remake_rival_policy.py`'s `RemakeBalancedRivalPolicy.decide()`) -- there is no rival-store entity
 in Godot yet for such a decision to act on. See decision 0095. **This closes out task #26.**
 
+### Store rating (★ rank)
+
+`reference_sim/conveni_sim/store_rating.py`/`store_value.py` are direct transcriptions of the
+strategy guide's own published ★-rank table and service/security/cleaning-value formulas
+(書籍頁74-75) -- **CONFIRMED_OFFICIAL**, not this project's own guess. `store_rating.gd`/
+`store_value.gd` port them verbatim: a 0-100 internal evaluation value maps to 0-5 stars at fixed
+breakpoints, and each representative month, at least 3 of (price change / service / security /
+cleaning / sales) meeting the current rank's upgrade thresholds grants +5, while each of those 5
+criteria falling below the rank's downgrade thresholds costs -1. `VerticalSliceSimulation` calls
+`_evaluate_store_rating()` from `_settle_month_end()`, feeding it: the average of all staff
+`service_skill` values plus the summed `service_bonus` of purchased amenity fixtures (service
+value); staff `security_skill`/`cleaning_skill` totals times the store's `size_tier` multiplier
+(security/cleaning value); the representative month's sales revenue extrapolated x8 (same
+4-day-to-month rule as decision 0090); and `price_change_pct = 0`, since this vertical slice has no
+price-setting mechanic yet. `internal_rating_value`/`star_rating` update and a
+`store_rating_evaluated` event is recorded every month end. Staff `service_skill`/`security_skill`/
+`cleaning_skill` are new static, config-supplied **REMAKE_BALANCED_DEFAULT** fields on
+`StaffState` -- the guide's own skill-growth model (work-event counting, manager-education bonus,
+`reference_sim/conveni_sim/staff.py`) has not been ported to this client at all yet, so these
+values never change on their own. The store's `size_tier` ("small") is also a
+REMAKE_BALANCED_DEFAULT house-rule mapping: the guide only defines three tiers by exact dimensions
+(10x10/12x12/14x14 tiles) and this prototype's 7x6 store matches none of them. Deliberately **not**
+implemented: the police-box/fire-station security-facility bonus (no such fixtures or spatial
+search exist yet) and the guide's per-event rating deltas (an angry customer at 1/6 odds, -1;
+shoplifting, -1; a donation, +5) -- their trigger events aren't wired into this client either. See
+decision 0096. **This closes out task #27.**
+
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;
 its IDs and shape are not a reconstruction of an original receipt system.

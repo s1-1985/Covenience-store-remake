@@ -1,5 +1,5 @@
 {
-  "schema_version": 11,
+  "schema_version": 12,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -8,7 +8,9 @@
     "height_tiles": 6,
     "subcells_per_tile": 2,
     "entry_subcell": [0, 0],
-    "exit_subcell": [0, 10]
+    "exit_subcell": [0, 10],
+    "size_tier": "small",
+    "size_tier_evidence_note": "REMAKE_BALANCED_DEFAULT house-rule mapping, not a recovered value. reference_sim/conveni_sim/store_value.py's STORE_SIZE_VALUE_MULTIPLIER is keyed by the guide's own three size tiers (small=10x10 tiles, medium=12x12, large=14x14), and this prototype's 7x6 store does not match any of them exactly; 'small' (the smallest tier) is used as the closest reasonable fit."
   },
   "fixtures": [
     {
@@ -44,7 +46,7 @@
       "purchase_price_yen": 1000,
       "maintenance_yen_per_day": 120,
       "service_bonus": 2,
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['potted_plant'] (strategy guide purchase price/maintenance/service_bonus). maintenance_yen_per_day/service_bonus are not yet consumed anywhere in this client."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['potted_plant'] (strategy guide purchase price/maintenance/service_bonus). service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is still not consumed anywhere in this client."
     },
     {
       "catalog_id": "bench",
@@ -53,7 +55,7 @@
       "purchase_price_yen": 2000,
       "maintenance_yen_per_day": 160,
       "service_bonus": 4,
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['bench']. maintenance_yen_per_day/service_bonus are not yet consumed anywhere in this client."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['bench']. service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is still not consumed anywhere in this client."
     },
     {
       "catalog_id": "fountain",
@@ -62,7 +64,7 @@
       "purchase_price_yen": 5000,
       "maintenance_yen_per_day": 2400,
       "service_bonus": 30,
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['fountain']. maintenance_yen_per_day/service_bonus are not yet consumed anywhere in this client."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['fountain']. service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is still not consumed anywhere in this client."
     },
     {
       "catalog_id": "small_ambient_shelf",
@@ -176,14 +178,21 @@
   },
   "staff": {
     "checkout_staff_id": "staff-1",
+    "skill_evidence_note": "service_skill/security_skill/cleaning_skill are REMAKE_BALANCED_DEFAULT static placeholders, not a recovered starting value (the guide never states one) and not grown over time: reference_sim/conveni_sim/staff.py's skill-growth model (work-event counting, manager-education bonus) has not been ported to this client yet.",
     "members": [
       {
         "id": "staff-1",
-        "start_subcell": [9, 5]
+        "start_subcell": [9, 5],
+        "service_skill": 20,
+        "security_skill": 15,
+        "cleaning_skill": 15
       },
       {
         "id": "staff-2",
-        "start_subcell": [11, 5]
+        "start_subcell": [11, 5],
+        "service_skill": 20,
+        "security_skill": 15,
+        "cleaning_skill": 15
       }
     ]
   },
