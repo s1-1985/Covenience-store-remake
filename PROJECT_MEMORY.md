@@ -691,6 +691,31 @@ plausibly affect an add-on-purchase probability that doesn't exist in this clien
 remains unstarted pending an explicit user decision to lift that boundary, the same way task #33 got
 one for register-skill checkout timing.
 
+Task #38 (経済アクションをUIに接続) responded to the user directly asking, after tasks #35-37 had
+already landed, how far this client actually is from "playable as a game." Investigating turned up
+that `vertical_slice_simulation.gd` already implemented six substantial player-facing economy actions
+(`try_purchase_fixture`, `try_purchase_permit`, `try_procure_product`, `try_purchase_promotion`,
+`try_expand_chain`, `apply_explicit_restock`) that `main.gd` never called at all -- only
+`headless_smoke.gd` ever reached them. A player could not buy a fixture, get a permit, stock a
+product, run a promotion, restock a shelf, or expand the chain through any UI control, which is most
+of what "running a convenience store" actually consists of. This task wires all six into the HUD:
+one OptionButton+Button pair per catalog-driven action (fixture/permit/product/promotion), plus a
+restock button and a chain-expansion button. Buying a new fixture reuses store_view's existing
+tap-to-target flow (the same `fixture_relocation_requested` signal relocate already uses) via a
+`"__new:" + catalog_id` sentinel on the pending selection, rather than a second input mode; since the
+catalog has no interaction-point data for a newly bought fixture, `_find_open_interaction_cell()`
+derives one from the existing convention (every current fixture's interaction cell sits exactly one
+subcell outside its own footprint) rather than requiring a second tap, giving up rather than guessing
+if none of the four cardinal candidates are open. The STORE STATUS panel outgrew its fixed-height
+`Panel` once this task's controls joined tasks #35-37's, so `UI/Panel/Margin/VBox` moved under a new
+`UI/Panel/Margin/Scroll` (`ScrollContainer`), with `main.gd`'s `@onready` paths and
+`headless_smoke.gd`'s structural node-path check updated to match. This task also added
+`headless_smoke.gd`'s first scenario that actually enters the scene tree (`add_child`) to exercise
+`main.gd` itself, since every earlier scenario in that file drove `vertical_slice_simulation.gd`
+directly and this is the first time UI-layer logic (option-list population, the sentinel-based
+placement flow, the interaction-cell heuristic) needed its own coverage beyond a manual Xvfb screenshot
+(decision 0107).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

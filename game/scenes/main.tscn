@@ -38,149 +38,202 @@ theme_override_constants/margin_top = 22
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 22
 
-[node name="VBox" type="VBoxContainer" parent="UI/Panel/Margin"]
+[node name="Scroll" type="ScrollContainer" parent="UI/Panel/Margin"]
+horizontal_scroll_mode = 0
+
+[node name="VBox" type="VBoxContainer" parent="UI/Panel/Margin/Scroll"]
+custom_minimum_size = Vector2(486, 0)
+size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
-[node name="Heading" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="Heading" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 theme_override_font_sizes/font_size = 22
 text = "STORE STATUS"
 
-[node name="PrototypeNotice" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="PrototypeNotice" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 theme_override_colors/font_color = Color(0.95, 0.72, 0.28, 1)
 text = "PROVISIONAL PLAYABLE CLIENT\nTiming/layout values are not recovered original rules."
 autowrap_mode = 2
 
-[node name="Separator1" type="HSeparator" parent="UI/Panel/Margin/VBox"]
+[node name="Separator1" type="HSeparator" parent="UI/Panel/Margin/Scroll/VBox"]
 
-[node name="ClockTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="ClockTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Game clock"
 
-[node name="ClockValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="ClockValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 theme_override_font_sizes/font_size = 28
 text = "09:00"
 
-[node name="CashTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="CashTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Cash"
 
-[node name="CashValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="CashValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 theme_override_font_sizes/font_size = 22
 text = "¥1,000"
 
-[node name="StockTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="StockTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Shelf stock"
 
-[node name="StockValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="StockValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "6 units"
 
-[node name="BasketTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="BasketTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Current basket"
 
-[node name="BasketValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="BasketValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "0 items / ¥0"
 
-[node name="CustomerTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="CustomerTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Customer"
 
-[node name="CustomerValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="CustomerValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 autowrap_mode = 2
 text = "to_shelf"
 
-[node name="StaffTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="StaffTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Staff"
 
-[node name="StaffValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="StaffValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "idle"
 
-[node name="SalesTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="SalesTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Completed sales"
 
-[node name="SalesValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="SalesValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "0"
 
-[node name="VisitsValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="VisitsValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Visits: 0 / 1"
 
-[node name="RatingTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="RatingTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Store rating"
 
-[node name="RatingValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="RatingValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "☆☆☆☆☆ (popularity 0)"
 
-[node name="TownTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="TownTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Town / land value"
 
-[node name="TownValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="TownValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 autowrap_mode = 2
 text = "population 0, 0 rival stores, land ¥0"
 
-[node name="Separator2" type="HSeparator" parent="UI/Panel/Margin/VBox"]
+[node name="Separator2" type="HSeparator" parent="UI/Panel/Margin/Scroll/VBox"]
 
-[node name="LayoutEditTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="LayoutEditTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Prototype layout editor"
 
-[node name="LayoutEditValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="LayoutEditValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 custom_minimum_size = Vector2(0, 48)
 text = "Tap a fixture, then tap an empty grid cell after the visit"
 autowrap_mode = 2
 
-[node name="RotateFixtureButton" type="Button" parent="UI/Panel/Margin/VBox"]
+[node name="RotateFixtureButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
 custom_minimum_size = Vector2(0, 40)
 text = "Rotate selected fixture clockwise"
 
-[node name="SampleLayoutTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="SampleLayoutTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Sample layout"
 
-[node name="SampleLayoutOption" type="OptionButton" parent="UI/Panel/Margin/VBox"]
+[node name="SampleLayoutOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
 custom_minimum_size = Vector2(0, 40)
 
-[node name="LoadSampleLayoutButton" type="Button" parent="UI/Panel/Margin/VBox"]
+[node name="LoadSampleLayoutButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
 custom_minimum_size = Vector2(0, 40)
 text = "Load sample layout (replaces current, not undoable)"
 
-[node name="EventTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="Separator4" type="HSeparator" parent="UI/Panel/Margin/Scroll/VBox"]
+
+[node name="EconomyTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
+theme_override_font_sizes/font_size = 18
+text = "Economy actions"
+
+[node name="FixtureCatalogOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+
+[node name="BuyFixtureButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Buy fixture (tap grid to place)"
+
+[node name="PermitOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+
+[node name="BuyPermitButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Buy permit"
+
+[node name="ProductCatalogOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+
+[node name="ProcureFixtureOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+
+[node name="ProcureProductButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Stock product on selected shelf"
+
+[node name="RestockProductOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+
+[node name="RestockButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Restock selected product"
+
+[node name="PromotionOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+
+[node name="BuyPromotionButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Buy promotion"
+
+[node name="ExpandChainButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Expand chain"
+
+[node name="Separator3" type="HSeparator" parent="UI/Panel/Margin/Scroll/VBox"]
+
+[node name="EventTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Last event"
 
-[node name="EventValue" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="EventValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 custom_minimum_size = Vector2(0, 58)
 text = "customer entered"
 autowrap_mode = 2
 
-[node name="Buttons" type="HBoxContainer" parent="UI/Panel/Margin/VBox"]
+[node name="Buttons" type="HBoxContainer" parent="UI/Panel/Margin/Scroll/VBox"]
 theme_override_constants/separation = 10
 
-[node name="PauseButton" type="Button" parent="UI/Panel/Margin/VBox/Buttons"]
+[node name="PauseButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox/Buttons"]
 custom_minimum_size = Vector2(145, 44)
 text = "Pause"
 
-[node name="StepButton" type="Button" parent="UI/Panel/Margin/VBox/Buttons"]
+[node name="StepButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox/Buttons"]
 custom_minimum_size = Vector2(145, 44)
 text = "Step"
 
-[node name="ResetButton" type="Button" parent="UI/Panel/Margin/VBox/Buttons"]
+[node name="ResetButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox/Buttons"]
 custom_minimum_size = Vector2(145, 44)
 text = "Reset"
 
-[node name="NextCustomerButton" type="Button" parent="UI/Panel/Margin/VBox"]
+[node name="NextCustomerButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
 custom_minimum_size = Vector2(0, 44)
 disabled = true
 text = "Admit next customer"
 
-[node name="Separator3" type="HSeparator" parent="UI/Panel/Margin/VBox"]
-
-[node name="MenuButtons" type="HBoxContainer" parent="UI/Panel/Margin/VBox"]
+[node name="MenuButtons" type="HBoxContainer" parent="UI/Panel/Margin/Scroll/VBox"]
 theme_override_constants/separation = 10
 
-[node name="SaveButton" type="Button" parent="UI/Panel/Margin/VBox/MenuButtons"]
+[node name="SaveButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox/MenuButtons"]
 custom_minimum_size = Vector2(145, 40)
 text = "Save"
 
-[node name="LoadButton" type="Button" parent="UI/Panel/Margin/VBox/MenuButtons"]
+[node name="LoadButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox/MenuButtons"]
 custom_minimum_size = Vector2(145, 40)
 text = "Load"
 
-[node name="QuitToMenuButton" type="Button" parent="UI/Panel/Margin/VBox/MenuButtons"]
+[node name="QuitToMenuButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox/MenuButtons"]
 custom_minimum_size = Vector2(145, 40)
 text = "Quit to Menu"
 
-[node name="Hint" type="Label" parent="UI/Panel/Margin/VBox"]
+[node name="Hint" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Space: Pause / Resume"
