@@ -18,6 +18,23 @@ const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
 const REPRESENTATIVE_DAYS_PER_MONTH := 4
 const MONTH_MULTIPLIER := 8
 
+# CONFIRMED, not a guess:
+# - bankruptcy: PS footage and an SS play record support game over when cash
+#   is negative at a day/month boundary
+#   (reference_sim/conveni_sim/month_boundary.py's
+#   MonthBoundaryBankruptcyPolicy.bankrupt_when_negative=True). No zero-cash
+#   sample is known, so cash == 0 is explicitly left unresolved there
+#   (bankrupt_when_zero=None) -- this client leaves it unresolved too, and
+#   does NOT treat it as bankruptcy.
+# - time limit: the guide's own second game-over path, 100 years without
+#   meeting the scenario's clear condition
+#   (reference_sim/conveni_sim/store_events.scenario_time_limit_exceeded /
+#   GAME_OVER_YEAR_LIMIT). This client has no scenario/clear-condition
+#   system yet, so `clear_condition_met` defaults to false (never met);
+#   MONTHS_PER_YEAR mirrors reference_sim/conveni_sim/observations.py.
+const GAME_OVER_YEAR_LIMIT := 100
+const MONTHS_PER_YEAR := 12
+
 var config: Dictionary
 var layout
 var inventory
@@ -41,6 +58,9 @@ var _restock_trigger_stock_units_at_or_below: int
 var _restock_task_enabled: bool
 var _days_completed_this_month: int
 var _cash_at_month_start: int
+var is_game_over: bool
+var game_over_reason: String
+var clear_condition_met: bool
 
 
 func _init(source_config: Dictionary) -> void:
@@ -88,20 +108,23 @@ func reset() -> void:
     staff.reset()
     event_log.reset()
     _cash_at_month_start = economy.cash_yen
+    is_game_over = false
+    game_over_reason = ""
+    clear_condition_met = false
     _demand_rng.seed = int(config["demand"]["rng_seed"])
     _refresh_interactions()
     _start_default_customer()
 
 
 func start_next_customer() -> bool:
-    if not customers.can_admit():
+    if is_game_over or not customers.can_admit():
         return false
     _start_default_customer()
     return true
 
 
 func start_explicit_customer(customer_id: String, product_ids: Array[String]) -> bool:
-    if not customers.can_admit() or customer_id.is_empty():
+    if is_game_over or not customers.can_admit() or customer_id.is_empty():
         return false
     if customers.customers.has(customer_id) or not _product_plan_is_valid(product_ids):
         return false
@@ -117,7 +140,7 @@ func start_explicit_customer(customer_id: String, product_ids: Array[String]) ->
 
 
 func demand_admit_if_due() -> bool:
-    if not customers.can_admit():
+    if is_game_over or not customers.can_admit():
         return false
     if not demand.customer_arrives_this_minute():
         return false
@@ -126,6 +149,8 @@ func demand_admit_if_due() -> bool:
 
 
 func tick_idle_for_demand() -> bool:
+    if is_game_over:
+        return false
     _advance_minute_of_day()
     _step_restock_tasks()
     return demand_admit_if_due()
@@ -137,7 +162,7 @@ func apply_explicit_restock(
     quantity: int,
     total_cost_yen: int
 ) -> bool:
-    if not customers.can_admit() or quantity <= 0 or total_cost_yen < 0:
+    if is_game_over or not customers.can_admit() or quantity <= 0 or total_cost_yen < 0:
         return false
     if not inventory.products.has(product_id) or not staff.members.has(staff_id):
         return false
@@ -159,7 +184,7 @@ func apply_explicit_restock(
 
 
 func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
-    if not customers.can_admit() or _any_restock_task_active():
+    if is_game_over or not customers.can_admit() or _any_restock_task_active():
         return false
     if layout.fixture_origin(fixture_id) == Vector2i(-1, -1):
         return false
@@ -179,7 +204,7 @@ func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
 
 
 func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
-    if not customers.can_admit() or _any_restock_task_active():
+    if is_game_over or not customers.can_admit() or _any_restock_task_active():
         return false
     var previous: Array = layout.fixture_snapshot()
     if not layout.try_rotate_fixture_clockwise(fixture_id):
@@ -194,6 +219,8 @@ func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
 
 
 func step() -> void:
+    if is_game_over:
+        return
     _advance_minute_of_day()
     var customer = customers.active()
     var checkout_staff = staff.checkout_staff()
@@ -307,6 +334,8 @@ func snapshot() -> Dictionary:
         "restock_staff_states": _restock_staff_snapshot(),
         "day_count": day_count,
         "month_count": month_count,
+        "is_game_over": is_game_over,
+        "game_over_reason": game_over_reason,
     }
 
 
@@ -444,6 +473,22 @@ func _settle_month_end() -> void:
     month_count += 1
     _days_completed_this_month = 0
     _cash_at_month_start = economy.cash_yen
+    _evaluate_terminal_state()
+
+
+func _evaluate_terminal_state() -> void:
+    if economy.cash_yen < 0:
+        _trigger_game_over("bankrupt")
+        return
+    var current_year: int = (month_count / MONTHS_PER_YEAR) + 1
+    if current_year > GAME_OVER_YEAR_LIMIT and not clear_condition_met:
+        _trigger_game_over("time_limit_exceeded")
+
+
+func _trigger_game_over(reason: String) -> void:
+    is_game_over = true
+    game_over_reason = reason
+    _record_event("game_over", {"reason": reason})
 
 
 func _step_restock_tasks() -> void:

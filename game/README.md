@@ -71,6 +71,26 @@ citation. What neither the guide nor this client invents is *how* each represent
 result is computed internally; both simply turn an already-tracked 4-day cash change into the
 displayed monthly figure. See decision 0090.
 
+### Bankruptcy and time-limit game over
+
+Every month-end settlement now also evaluates whether the scenario has ended terminally, using two
+**CONFIRMED**, not guessed, rules:
+
+- **Bankruptcy**: PS footage and an SS play record support game over when cash is negative at a
+  day/month boundary (`reference_sim/conveni_sim/month_boundary.py`'s
+  `MonthBoundaryBankruptcyPolicy.bankrupt_when_negative`). No zero-cash sample is known, so cash
+  exactly equal to zero is explicitly left unresolved -- this client leaves it unresolved too and
+  does **not** treat it as bankruptcy.
+- **Time limit**: the guide's second game-over path, 100 years without meeting the scenario's own
+  clear condition (`reference_sim/conveni_sim/store_events.scenario_time_limit_exceeded`). This
+  client has no scenario/clear-condition system yet, so `clear_condition_met` defaults to `false`
+  (never met) until a future scenario layer sets it.
+
+Once either condition fires, `is_game_over` becomes `true` and every mutating method
+(`step()`, `tick_idle_for_demand()`, `start_next_customer()`, `apply_explicit_restock()`, layout
+edits, ...) becomes a no-op; nothing invents what should visually happen next (no ending screen,
+no restart flow) beyond that frozen, inspectable state. See decision 0091.
+
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;
 its IDs and shape are not a reconstruction of an original receipt system.

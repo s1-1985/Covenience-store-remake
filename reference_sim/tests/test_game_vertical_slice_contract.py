@@ -336,6 +336,35 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
 
+    def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("const GAME_OVER_YEAR_LIMIT := 100", simulation)
+        self.assertIn("const MONTHS_PER_YEAR := 12", simulation)
+        self.assertIn("func _evaluate_terminal_state() -> void:", simulation)
+        self.assertIn("func _trigger_game_over(reason: String) -> void:", simulation)
+        self.assertIn("if economy.cash_yen < 0:", simulation)
+        self.assertIn('_trigger_game_over("bankrupt")', simulation)
+        self.assertIn('_trigger_game_over("time_limit_exceeded")', simulation)
+        self.assertIn("if is_game_over:", simulation)
+        self.assertIn(
+            "negative cash at a month boundary must trigger bankrupt game over", smoke
+        )
+        self.assertIn(
+            "exactly zero cash at a month boundary must remain unresolved, not bankrupt", smoke
+        )
+        self.assertIn(
+            "exceeding 100 years without a clear condition must trigger time_limit_exceeded game over",
+            smoke,
+        )
+        self.assertIn(
+            "meeting the clear condition must prevent the time-limit game over", smoke
+        )
+        self.assertIn("step() must be a no-op once the simulation is game over", smoke)
+
     def test_representative_day_month_cycle_uses_the_confirmed_4x8_multiplier(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"

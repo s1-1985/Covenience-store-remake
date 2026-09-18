@@ -470,6 +470,49 @@ func _initialize() -> void:
         _fail("the settlement record must retain month_result_yen = four_day_net_result_yen * 8")
         return
 
+    var bankruptcy_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    bankruptcy_simulation.economy.cash_yen = -1
+    bankruptcy_simulation._evaluate_terminal_state()
+    if not bankruptcy_simulation.is_game_over or bankruptcy_simulation.game_over_reason != "bankrupt":
+        _fail("negative cash at a month boundary must trigger bankrupt game over")
+        return
+    var minute_before_frozen_step: int = int(bankruptcy_simulation.minute_of_day)
+    bankruptcy_simulation.step()
+    if int(bankruptcy_simulation.minute_of_day) != minute_before_frozen_step:
+        _fail("step() must be a no-op once the simulation is game over")
+        return
+    if bankruptcy_simulation.tick_idle_for_demand():
+        _fail("tick_idle_for_demand() must return false once the simulation is game over")
+        return
+    if bankruptcy_simulation.start_next_customer():
+        _fail("start_next_customer() must be rejected once the simulation is game over")
+        return
+    if bankruptcy_simulation.apply_explicit_restock("prototype-bread", "staff-2", 1, 10):
+        _fail("apply_explicit_restock() must be rejected once the simulation is game over")
+        return
+
+    var zero_cash_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    zero_cash_simulation.economy.cash_yen = 0
+    zero_cash_simulation._evaluate_terminal_state()
+    if zero_cash_simulation.is_game_over:
+        _fail("exactly zero cash at a month boundary must remain unresolved, not bankrupt")
+        return
+
+    var time_limit_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    time_limit_simulation.month_count = 1200
+    time_limit_simulation._evaluate_terminal_state()
+    if not time_limit_simulation.is_game_over or time_limit_simulation.game_over_reason != "time_limit_exceeded":
+        _fail("exceeding 100 years without a clear condition must trigger time_limit_exceeded game over")
+        return
+
+    var cleared_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    cleared_simulation.month_count = 1200
+    cleared_simulation.clear_condition_met = true
+    cleared_simulation._evaluate_terminal_state()
+    if cleared_simulation.is_game_over:
+        _fail("meeting the clear condition must prevent the time-limit game over")
+        return
+
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
 

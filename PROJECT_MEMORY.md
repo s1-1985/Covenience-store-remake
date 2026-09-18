@@ -434,6 +434,16 @@ the demand/restock features above, this multiplier is `CONFIRMED_OFFICIAL` -- th
 this client only ports the already-confirmed formula, it does not invent how each representative
 day's own result is computed (see decision 0090).
 
+Every month-end settlement now also evaluates two CONFIRMED (not guessed) terminal rules:
+bankruptcy when cash is negative at a day/month boundary
+(`reference_sim/conveni_sim/month_boundary.py`'s `MonthBoundaryBankruptcyPolicy`; cash exactly at
+zero stays explicitly unresolved, matching that policy's own unresolved `bankrupt_when_zero`), and
+a 100-year time limit without meeting the scenario's clear condition
+(`reference_sim/conveni_sim/store_events.scenario_time_limit_exceeded`). This client has no
+scenario/clear-condition system yet, so `clear_condition_met` defaults to `false`. Once
+`is_game_over` is set, every mutating method (`step`, `tick_idle_for_demand`,
+`start_next_customer`, `apply_explicit_restock`, layout edits) becomes a no-op (see decision 0091).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
