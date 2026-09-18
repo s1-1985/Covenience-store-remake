@@ -308,6 +308,23 @@ before being written into `vertical_slice.json`, and every hardcoded test coordi
 1280x720 window without overlapping the status panel. See decision 0100. **This closes out task
 #31.**
 
+### Named staff candidate roster (35 people)
+
+`data/vertical_slice.json`'s `staff.members` used to give staff-1 and staff-2 the exact same flat,
+arbitrary `service_skill=20 / security_skill=15 / cleaning_skill=15` -- not tied to any real
+candidate. `reference_sim/conveni_sim/baseline_data.py`'s `STAFF_CANDIDATES` already held a
+**CONFIRMED_OFFICIAL** 35-person roster transcribed from the strategy guide's individual candidate
+cards (book pages 127-133; see `docs/research/strategy-guide-full-decode-2026-09-16.md` section
+"店員データ"), so this task ports it. A new `staff_candidates` array carries all 35 entries
+verbatim (generated directly from `reference_sim` via script rather than hand-transcribed, to avoid
+drift) as a reference-only hiring-pool catalog -- nothing in this client lets the player hire from
+it yet. `staff-1`/`staff-2` are now bound to two specific real candidates (`manda_machiko`, highest
+`register_skill`; `sugawara_fumio`, highest `replenishment_skill`) instead of the identical
+placeholder, with their `service_skill`/`security_skill`/`cleaning_skill`/`register_skill`/
+`replenishment_skill` set from that candidate's card. `register_skill`/`replenishment_skill` are
+carried as data but not consumed by any simulation logic yet (task #33 wires `register_skill` into
+checkout timing). See decision 0101. **This closes out task #32.**
+
 ## Important evidence boundary
 
 `data/vertical_slice.json` is explicitly marked `provisional: true`.

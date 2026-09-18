@@ -577,6 +577,21 @@ every hardcoded coordinate in `headless_smoke.gd` that assumed the old grid was 
 `store_view.gd`'s `SUBCELL_PIXELS` dropped 42.0 -> 36.0 so the taller new grid still fits the window
 (decision 0100).
 
+Task #32 (スタッフ実名候補データ(35名)をGodotへ移植) replaces another identical-placeholder gap:
+`staff.members`' staff-1/staff-2 both carried the exact same flat `service_skill=20/security_skill=
+15/cleaning_skill=15`, tied to no real candidate. `reference_sim/conveni_sim/baseline_data.py`'s
+`STAFF_CANDIDATES` already held a CONFIRMED_OFFICIAL 35-person roster from the strategy guide's
+individual candidate cards (book pages 127-133,
+`docs/research/strategy-guide-full-decode-2026-09-16.md` section "店員データ"). A new
+`staff_candidates` array in `vertical_slice.json` ports all 35 verbatim (generated directly from
+`reference_sim` via script to avoid transcription drift) as a reference-only hiring-pool catalog --
+no hiring UI exists yet to actually pick from it. `staff-1`/`staff-2` are now bound to two specific
+real candidates (`manda_machiko`, highest `register_skill`; `sugawara_fumio`, highest
+`replenishment_skill`) instead of the shared placeholder; `register_skill`/`replenishment_skill` ride
+along as unconsumed data (task #33 wires `register_skill` into checkout timing). This changed the
+store-rating headless-smoke test's expected service/security/cleaning values (20.0/45.0/45.0 ->
+17.0/57.0/51.0), updated accordingly (decision 0101).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

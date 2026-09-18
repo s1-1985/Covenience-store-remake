@@ -839,13 +839,13 @@ func _initialize() -> void:
     if int(rating_event_details["monthly_sales_yen"]) != expected_monthly_sales_yen:
         _fail("monthly_sales_yen fed into the store rating must equal the representative month's revenue x8")
         return
-    if abs(float(rating_event_details["service_value"]) - 20.0) > 0.0000001:
+    if abs(float(rating_event_details["service_value"]) - 17.0) > 0.0000001:
         _fail("service_value must equal the average staff service_skill plus any fixture service bonuses")
         return
-    if abs(float(rating_event_details["security_value"]) - 45.0) > 0.0000001:
+    if abs(float(rating_event_details["security_value"]) - 57.0) > 0.0000001:
         _fail("security_value must equal total staff security_skill times the store's size-tier multiplier")
         return
-    if abs(float(rating_event_details["cleaning_value"]) - 45.0) > 0.0000001:
+    if abs(float(rating_event_details["cleaning_value"]) - 51.0) > 0.0000001:
         _fail("cleaning_value must equal total staff cleaning_skill times the store's size-tier multiplier")
         return
     if rating_simulation.star_rating != store_rating.star_rank_for_internal_value(

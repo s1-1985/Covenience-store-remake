@@ -21,9 +21,16 @@ func _init(staff_config: Dictionary) -> void:
     # client has not ported the growth system itself yet (no work-event
     # counting, no manager-education bonus) -- see
     # reference_sim/conveni_sim/staff.py's StaffRuntimeState/
-    # StaffGrowthOpportunity. These three fields are therefore static,
-    # REMAKE_BALANCED_DEFAULT config values, not a recovered starting
-    # skill (the guide never states a new hire's starting value either).
+    # StaffGrowthOpportunity. These three fields are therefore static for
+    # the lifetime of a StaffState and never change on their own, whatever
+    # their starting value's own evidence level is. The vertical slice's
+    # `data/vertical_slice.json` now sources staff-1/staff-2's starting
+    # values from two of the 35 named CONFIRMED_OFFICIAL strategy-guide
+    # candidates in that file's `staff_candidates` (task #32), not an
+    # arbitrary guess; a caller that omits a field here still silently
+    # falls back to a REMAKE_BALANCED_DEFAULT `0` rather than asserting,
+    # since this class has no way to tell a real candidate's config apart
+    # from a placeholder one.
     service_skill = int(staff_config.get("service_skill", 0))
     security_skill = int(staff_config.get("security_skill", 0))
     cleaning_skill = int(staff_config.get("cleaning_skill", 0))
