@@ -514,6 +514,10 @@ func _initialize() -> void:
         return
 
     var purchase_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(purchase_simulation)
+    if purchase_simulation.customers.can_admit() != true:
+        _fail("the purchase test's initial scripted visit must complete before purchasing")
+        return
     var cash_before_any_purchase: int = int(purchase_simulation.economy.cash_yen)
     if purchase_simulation.try_purchase_fixture(
         "potted_plant", "amenity-occupied", Vector2i(4, 4), Vector2i(2, 4)
