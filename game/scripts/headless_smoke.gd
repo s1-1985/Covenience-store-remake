@@ -32,13 +32,25 @@ func _initialize() -> void:
     # scene file. Node paths this task added are checked explicitly below
     # since nothing else would validate them before an actual play session.
     for node_path in [
-        "UI/Panel/Margin/VBox/MenuButtons/SaveButton",
-        "UI/Panel/Margin/VBox/MenuButtons/LoadButton",
-        "UI/Panel/Margin/VBox/MenuButtons/QuitToMenuButton",
-        "UI/Panel/Margin/VBox/RatingValue",
-        "UI/Panel/Margin/VBox/TownValue",
-        "UI/Panel/Margin/VBox/SampleLayoutOption",
-        "UI/Panel/Margin/VBox/LoadSampleLayoutButton",
+        "UI/Panel/Margin/Scroll/VBox/MenuButtons/SaveButton",
+        "UI/Panel/Margin/Scroll/VBox/MenuButtons/LoadButton",
+        "UI/Panel/Margin/Scroll/VBox/MenuButtons/QuitToMenuButton",
+        "UI/Panel/Margin/Scroll/VBox/RatingValue",
+        "UI/Panel/Margin/Scroll/VBox/TownValue",
+        "UI/Panel/Margin/Scroll/VBox/SampleLayoutOption",
+        "UI/Panel/Margin/Scroll/VBox/LoadSampleLayoutButton",
+        "UI/Panel/Margin/Scroll/VBox/FixtureCatalogOption",
+        "UI/Panel/Margin/Scroll/VBox/BuyFixtureButton",
+        "UI/Panel/Margin/Scroll/VBox/PermitOption",
+        "UI/Panel/Margin/Scroll/VBox/BuyPermitButton",
+        "UI/Panel/Margin/Scroll/VBox/ProductCatalogOption",
+        "UI/Panel/Margin/Scroll/VBox/ProcureFixtureOption",
+        "UI/Panel/Margin/Scroll/VBox/ProcureProductButton",
+        "UI/Panel/Margin/Scroll/VBox/RestockProductOption",
+        "UI/Panel/Margin/Scroll/VBox/RestockButton",
+        "UI/Panel/Margin/Scroll/VBox/PromotionOption",
+        "UI/Panel/Margin/Scroll/VBox/BuyPromotionButton",
+        "UI/Panel/Margin/Scroll/VBox/ExpandChainButton",
     ]:
         if main_instance.get_node_or_null(node_path) == null:
             _fail("main scene is missing expected node: %s" % node_path)
@@ -1262,6 +1274,114 @@ func _initialize() -> void:
     if milestone_simulation.event_log.count_type("chain_visitor_milestone_fired") != 1:
         _fail("a fired chain visitor milestone must record exactly one event")
         return
+
+    # Task #38: the economy-action buttons/OptionButtons main.gd wires up
+    # (buy fixture, buy permit, stock product, restock, buy promotion,
+    # expand chain) previously had no coverage beyond the underlying
+    # simulation methods, since those methods were never reachable from the
+    # UI at all. This exercises main.gd itself (unlike the rest of this
+    # file, which drives vertical_slice_simulation.gd directly), so the
+    # scene must actually enter the tree for its @onready bindings to
+    # resolve.
+    var economy_ui_scene: Node = (load(MAIN_SCENE_PATH) as PackedScene).instantiate()
+    get_root().add_child(economy_ui_scene)
+    await process_frame
+    while not economy_ui_scene.simulation.customers.all_settled():
+        economy_ui_scene.simulation.step()
+        steps += 1
+    economy_ui_scene.simulation.economy.cash_yen += 50_000_000
+
+    var bench_index: int = economy_ui_scene._fixture_catalog_ids.find("bench")
+    if bench_index < 0:
+        _fail("economy UI: fixture catalog option did not include 'bench'")
+        return
+    economy_ui_scene.fixture_catalog_option.selected = bench_index
+    economy_ui_scene._on_buy_fixture_pressed()
+    if economy_ui_scene.store_view.selected_fixture_id != "__new:bench":
+        _fail("economy UI: pressing Buy fixture must select the pending-placement sentinel")
+        return
+    economy_ui_scene._on_fixture_relocation_requested(
+        economy_ui_scene.store_view.selected_fixture_id, Vector2i(1, 10)
+    )
+    if not economy_ui_scene.simulation.layout.fixtures_by_id.has("fixture-purchase-1"):
+        _fail("economy UI: tapping an empty cell after Buy fixture must place the fixture")
+        return
+    if not economy_ui_scene.store_view.selected_fixture_id.is_empty():
+        _fail("economy UI: placing a new fixture must clear the pending-placement selection")
+        return
+
+    var tobacco_permit_index: int = economy_ui_scene._permit_ids.find("tobacco")
+    if tobacco_permit_index < 0:
+        _fail("economy UI: permit option did not include 'tobacco'")
+        return
+    economy_ui_scene.permit_option.selected = tobacco_permit_index
+    economy_ui_scene._on_buy_permit_pressed()
+    if not economy_ui_scene.simulation.has_permit("tobacco"):
+        _fail("economy UI: Buy permit must grant the selected permit")
+        return
+
+    var shelf_index: int = economy_ui_scene._fixture_catalog_ids.find("small_ambient_shelf")
+    if shelf_index < 0:
+        _fail("economy UI: fixture catalog option did not include 'small_ambient_shelf'")
+        return
+    economy_ui_scene.fixture_catalog_option.selected = shelf_index
+    economy_ui_scene._on_buy_fixture_pressed()
+    economy_ui_scene._on_fixture_relocation_requested(
+        economy_ui_scene.store_view.selected_fixture_id, Vector2i(4, 10)
+    )
+    var new_shelf_index: int = economy_ui_scene._procure_fixture_ids.find("fixture-purchase-2")
+    if new_shelf_index < 0:
+        _fail("economy UI: buying a shelf-kind fixture must refresh the procure-target option list")
+        return
+
+    var tobacco_product_index: int = economy_ui_scene._product_catalog_ids.find("tobacco")
+    if tobacco_product_index < 0:
+        _fail("economy UI: product catalog option did not include 'tobacco'")
+        return
+    economy_ui_scene.product_catalog_option.selected = tobacco_product_index
+    economy_ui_scene.procure_fixture_option.selected = new_shelf_index
+    economy_ui_scene._on_procure_product_pressed()
+    if not economy_ui_scene.simulation.inventory.products.has("product-purchase-1"):
+        _fail("economy UI: Stock product must procure onto the selected fixture")
+        return
+    if economy_ui_scene._restock_product_ids.find("product-purchase-1") < 0:
+        _fail("economy UI: procuring a product must refresh the restock option list")
+        return
+
+    var bread_restock_index: int = economy_ui_scene._restock_product_ids.find("prototype-bread")
+    if bread_restock_index < 0:
+        _fail("economy UI: restock option did not include the default 'prototype-bread' product")
+        return
+    economy_ui_scene.restock_product_option.selected = bread_restock_index
+    var stock_before_restock: int = economy_ui_scene.simulation.inventory.get_product("prototype-bread").stock_units
+    var cash_before_explicit_restock: int = economy_ui_scene.simulation.economy.cash_yen
+    economy_ui_scene._on_restock_pressed()
+    var bread_product = economy_ui_scene.simulation.inventory.get_product("prototype-bread")
+    if bread_product.stock_units != stock_before_restock + bread_product.initial_stock_units:
+        _fail("economy UI: Restock must add exactly initial_stock_units of the selected product")
+        return
+    var expected_explicit_restock_cost: int = bread_product.initial_stock_units * bread_product.restock_unit_cost_yen
+    if economy_ui_scene.simulation.economy.cash_yen != cash_before_explicit_restock - expected_explicit_restock_cost:
+        _fail("economy UI: Restock must charge quantity * restock_unit_cost_yen")
+        return
+
+    var promotion_index: int = economy_ui_scene._promotion_ids.find("direct_mail")
+    if promotion_index < 0:
+        _fail("economy UI: promotion option did not include 'direct_mail'")
+        return
+    economy_ui_scene.promotion_option.selected = promotion_index
+    var cash_before_promotion: int = economy_ui_scene.simulation.economy.cash_yen
+    economy_ui_scene._on_buy_promotion_pressed()
+    if economy_ui_scene.simulation.economy.cash_yen != cash_before_promotion:
+        _fail("economy UI: buying a promotion must not charge cash until its scheduled trigger fires")
+        return
+
+    var store_count_before_expansion: int = economy_ui_scene.simulation.player_store_count
+    economy_ui_scene._on_expand_chain_pressed()
+    if economy_ui_scene.simulation.player_store_count != store_count_before_expansion + 1:
+        _fail("economy UI: Expand chain must increase player_store_count by exactly one")
+        return
+    economy_ui_scene.free()
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)

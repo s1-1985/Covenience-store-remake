@@ -533,6 +533,81 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func _on_load_sample_layout_pressed() -> void:", main)
         self.assertIn("simulation.try_load_sample_layout(sample_id)", main)
 
+    def test_economy_actions_are_reachable_from_the_ui_not_only_headless_smoke(self):
+        # Before task #38, vertical_slice_simulation.gd already implemented
+        # try_purchase_fixture/try_purchase_permit/try_procure_product/
+        # try_purchase_promotion/try_expand_chain/apply_explicit_restock,
+        # but main.gd called none of them: a player could not buy a
+        # fixture, get a permit, stock a product, run a promotion, restock
+        # a shelf, or expand the chain at all, only headless_smoke.gd could
+        # reach these methods. This asserts every one of them is now wired
+        # to an actual HUD control.
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        for node_name in (
+            "FixtureCatalogOption",
+            "BuyFixtureButton",
+            "PermitOption",
+            "BuyPermitButton",
+            "ProductCatalogOption",
+            "ProcureFixtureOption",
+            "ProcureProductButton",
+            "RestockProductOption",
+            "RestockButton",
+            "PromotionOption",
+            "BuyPromotionButton",
+            "ExpandChainButton",
+        ):
+            self.assertIn('name="%s"' % node_name, scene)
+
+        for call in (
+            "simulation.try_purchase_fixture(catalog_id, instance_id, origin_subcell, interaction)",
+            "simulation.try_purchase_permit(permit_id)",
+            "simulation.try_procure_product(catalog_id, instance_id, fixture_id)",
+            "simulation.apply_explicit_restock(product_id, staff_id, quantity, total_cost_yen)",
+            "simulation.try_purchase_promotion(promotion_id)",
+            "simulation.try_expand_chain()",
+        ):
+            self.assertIn(call, main)
+
+        # Buying a new fixture reuses the same tap-to-target flow relocate
+        # already uses (store_view's fixture_relocation_requested signal),
+        # via a sentinel prefix on the pending selection, rather than a
+        # second bespoke input mode.
+        self.assertIn("NEW_FIXTURE_SELECTION_PREFIX", main)
+        self.assertIn("func _on_fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i) -> void:", main)
+        self.assertIn("func _try_place_new_fixture(catalog_id: String, origin_subcell: Vector2i) -> void:", main)
+
+        # The catalog has no interaction-point data of its own for a newly
+        # bought fixture; main.gd derives one from the existing convention
+        # (one subcell outside the footprint) rather than requiring a
+        # second tap, and gives up rather than guessing past that.
+        self.assertIn("func _find_open_interaction_cell", main)
+        self.assertIn("Vector2i(-1, -1)", main)
+
+        # The status panel grew enough new controls (fixture/permit/
+        # product/restock/promotion/chain, on top of everything task #35-37
+        # already added) that it needed to become scrollable rather than
+        # spilling off the bottom of the window.
+        self.assertIn('type="ScrollContainer"', scene)
+
+        # Covered end-to-end (not just presence-checked) by a headless_smoke
+        # scenario that actually enters the scene tree, since this task
+        # exercises main.gd itself rather than only
+        # vertical_slice_simulation.gd.
+        self.assertIn("(load(MAIN_SCENE_PATH) as PackedScene).instantiate()", smoke)
+        self.assertIn("_on_buy_fixture_pressed()", smoke)
+        self.assertIn("_on_procure_product_pressed()", smoke)
+        self.assertIn("_on_restock_pressed()", smoke)
+        self.assertIn("_on_buy_promotion_pressed()", smoke)
+        self.assertIn("_on_expand_chain_pressed()", smoke)
+        self.assertIn(
+            "buying a promotion must not charge cash until its scheduled trigger fires",
+            smoke,
+        )
+
     def test_demand_driven_customer_arrival_is_a_tagged_remake_default(self):
         demand = self.config["demand"]
         for key in (
