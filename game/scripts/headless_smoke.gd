@@ -624,6 +624,48 @@ func _initialize() -> void:
         _fail("procuring a second product onto an already-occupied fixture must be rejected")
         return
 
+    var promotion_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(promotion_simulation)
+    if promotion_simulation.popularity != 0:
+        _fail("a freshly reset simulation must start with zero popularity")
+        return
+    if promotion_simulation.try_purchase_promotion("unknown_promotion"):
+        _fail("an unknown promotion id must be rejected")
+        return
+    var cash_before_scheduling: int = int(promotion_simulation.economy.cash_yen)
+    if not promotion_simulation.try_purchase_promotion("direct_mail"):
+        _fail("scheduling a promotion before its trigger moment this month must be accepted")
+        return
+    if promotion_simulation.economy.cash_yen != cash_before_scheduling:
+        _fail("a promotion's cost must not be charged until its scheduled event fires")
+        return
+    if promotion_simulation.event_log.count_type("promotion_scheduled") != 1:
+        _fail("a scheduled promotion must record exactly one promotion_scheduled event")
+        return
+    if promotion_simulation.try_purchase_promotion("direct_mail"):
+        _fail("scheduling the same promotion method twice in one month must be rejected")
+        return
+
+    var promotion_ticks := 0
+    while promotion_simulation.popularity == 0 and promotion_ticks < 5000:
+        promotion_simulation.tick_idle_for_demand()
+        promotion_ticks += 1
+    if promotion_ticks >= 5000:
+        _fail("the scheduled direct_mail promotion did not fire within 5000 ticks")
+        return
+    if promotion_simulation.popularity != 12:
+        _fail("a fired promotion must apply exactly its configured popularity_gain")
+        return
+    if promotion_simulation.economy.cash_yen != cash_before_scheduling - 100000:
+        _fail("a fired promotion must deduct exactly its configured cost at trigger time")
+        return
+    if promotion_simulation.event_log.count_type("promotion_fired") != 1:
+        _fail("a fired promotion must record exactly one promotion_fired event")
+        return
+    if promotion_simulation.try_purchase_promotion("newspaper"):
+        _fail("scheduling a promotion after its trigger moment has already passed this month must be rejected")
+        return
+
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
 

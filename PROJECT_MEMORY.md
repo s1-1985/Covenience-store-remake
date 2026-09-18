@@ -456,7 +456,20 @@ currently just `tobacco`, CONFIRMED_OFFICIAL pricing from the guide's category t
 permit-gated fixtures and permit-gated products refuse purchase without the permit held first.
 Each permit's confirmed exclusion-distance-from-other-stores rule is deliberately left
 unenforced (needs task #26's town/rival spatial model); fixture-to-category compatibility is
-also not checked (decision 0093). Only advertising remains unimplemented in task #25.
+also not checked (decision 0093).
+
+Task #25's fourth and final system, advertising, is also implemented, completing the task.
+`reference_sim/conveni_sim/promotion.py` already had a complete evidence-safe design for this
+(`PromotionScheduler`/`StorePopularityRuntime`/`apply_confirmed_triggered_promotion`), so Godot
+ports it faithfully: `trigger_day`/`trigger_hour` are an absolute representative-day-of-month
+(1-4)/hour (not "days after purchase"), cost is debited only when the event fires (not at
+purchase), popularity is capped at 100, and each promotion method can only be used once per
+month. `try_purchase_promotion()` schedules from a `promotions` catalog (direct mail/newspaper/
+airship/radio/tv, CONFIRMED pricing/timing from `PROMOTIONS`); `_fire_due_promotions()` runs
+every tick before day-boundary handling (so a trigger on a month's last tick still resolves
+against the correct day) and applies cost/popularity once due. The guide-confirmed daily
+popularity decay for low-rated stores is not modeled, since `reference_sim` itself leaves the
+decay amount unresolved (decision 0094).
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 

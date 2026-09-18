@@ -1,5 +1,5 @@
 {
-  "schema_version": 9,
+  "schema_version": 10,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -105,6 +105,48 @@
       "initial_stock_units": 10,
       "required_permit_id": "tobacco",
       "evidence_note": "sale_price_yen/restock_unit_cost_yen are CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py's たばこ category (_sg_category('tobacco', ...): standard_retail_price_yen=250, profit_per_unit_yen=75, so restock_unit_cost_yen = 250-75 = 175). initial_stock_units=10 is a PROVISIONAL prototype batch size not stated by the guide."
+    }
+  ],
+  "promotions": [
+    {
+      "promotion_id": "direct_mail",
+      "cost_yen": 100000,
+      "popularity_gain": 12,
+      "trigger_day": 2,
+      "trigger_hour": 10,
+      "evidence_note": "CONFIRMED_VISUAL (direct gameplay video observation), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['direct_mail']. Cash is debited exactly when the scheduled event fires, not at purchase time."
+    },
+    {
+      "promotion_id": "newspaper",
+      "cost_yen": 500000,
+      "popularity_gain": 20,
+      "trigger_day": 2,
+      "trigger_hour": 7,
+      "evidence_note": "CONFIRMED_COMMUNITY, ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['newspaper']."
+    },
+    {
+      "promotion_id": "airship",
+      "cost_yen": 1000000,
+      "popularity_gain": 40,
+      "trigger_day": 3,
+      "trigger_hour": 15,
+      "evidence_note": "cost_yen/trigger_day/trigger_hour CONFIRMED_COMMUNITY, popularity_gain CONFIRMED_OFFICIAL (strategy guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['airship']."
+    },
+    {
+      "promotion_id": "radio",
+      "cost_yen": 3000000,
+      "popularity_gain": 60,
+      "trigger_day": 1,
+      "trigger_hour": 17,
+      "evidence_note": "cost_yen/trigger_day/trigger_hour CONFIRMED_COMMUNITY, popularity_gain CONFIRMED_OFFICIAL (strategy guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['radio']."
+    },
+    {
+      "promotion_id": "tv",
+      "cost_yen": 5000000,
+      "popularity_gain": 90,
+      "trigger_day": 1,
+      "trigger_hour": 19,
+      "evidence_note": "cost_yen/trigger_day/trigger_hour CONFIRMED_COMMUNITY, popularity_gain CONFIRMED_OFFICIAL (strategy guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['tv']."
     }
   ],
   "products": [

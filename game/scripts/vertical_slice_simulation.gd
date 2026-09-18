@@ -65,6 +65,10 @@ var _fixture_catalog: Dictionary = {}
 var _permit_catalog: Dictionary = {}
 var _product_catalog: Dictionary = {}
 var _permits_held: Dictionary = {}
+var _promotion_catalog: Dictionary = {}
+var _promotions_used_this_month: Dictionary = {}
+var _scheduled_promotions: Array[Dictionary] = []
+var popularity: int
 
 
 func _init(source_config: Dictionary) -> void:
@@ -76,6 +80,8 @@ func _init(source_config: Dictionary) -> void:
         _permit_catalog[str(entry["permit_id"])] = entry
     for entry in config["product_catalog"]:
         _product_catalog[str(entry["catalog_id"])] = entry
+    for entry in config["promotions"]:
+        _promotion_catalog[str(entry["promotion_id"])] = entry
     layout = StoreLayoutScript.new(config["store"], config["fixtures"])
     inventory = InventoryCatalogScript.new(config["products"])
     economy = EconomyStateScript.new(config["economy"])
@@ -122,6 +128,9 @@ func reset() -> void:
     game_over_reason = ""
     clear_condition_met = false
     _permits_held.clear()
+    _promotions_used_this_month.clear()
+    _scheduled_promotions.clear()
+    popularity = 0
     _demand_rng.seed = int(config["demand"]["rng_seed"])
     _refresh_interactions()
     _start_default_customer()
@@ -313,6 +322,36 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
     return true
 
 
+func try_purchase_promotion(promotion_id: String) -> bool:
+    if is_game_over or not customers.can_admit():
+        return false
+    if not _promotion_catalog.has(promotion_id):
+        return false
+    if _promotions_used_this_month.has(promotion_id):
+        return false
+    var catalog_entry: Dictionary = _promotion_catalog[promotion_id]
+    var trigger_day: int = int(catalog_entry["trigger_day"])
+    var trigger_hour: int = int(catalog_entry["trigger_hour"])
+    var current_day_of_month := _days_completed_this_month + 1
+    var current_hour := minute_of_day / 60
+    if current_day_of_month > trigger_day or (
+        current_day_of_month == trigger_day and current_hour > trigger_hour
+    ):
+        return false
+    _promotions_used_this_month[promotion_id] = true
+    _scheduled_promotions.append({
+        "promotion_id": promotion_id,
+        "trigger_day": trigger_day,
+        "trigger_hour": trigger_hour,
+    })
+    _record_event("promotion_scheduled", {
+        "promotion_id": promotion_id,
+        "trigger_day": trigger_day,
+        "trigger_hour": trigger_hour,
+    })
+    return true
+
+
 func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
     if is_game_over or not customers.can_admit() or _any_restock_task_active():
         return false
@@ -467,6 +506,7 @@ func snapshot() -> Dictionary:
         "is_game_over": is_game_over,
         "game_over_reason": game_over_reason,
         "permits_held": _permits_held.keys(),
+        "popularity": popularity,
     }
 
 
@@ -570,6 +610,7 @@ func _all_staff_are_walkable() -> bool:
 
 func _advance_minute_of_day() -> void:
     minute_of_day += _step_game_minutes
+    _fire_due_promotions()
     while minute_of_day >= 24 * 60:
         minute_of_day -= 24 * 60
         _handle_day_boundary()
@@ -604,6 +645,7 @@ func _settle_month_end() -> void:
     month_count += 1
     _days_completed_this_month = 0
     _cash_at_month_start = economy.cash_yen
+    _promotions_used_this_month.clear()
     _evaluate_terminal_state()
 
 
@@ -620,6 +662,44 @@ func _trigger_game_over(reason: String) -> void:
     is_game_over = true
     game_over_reason = reason
     _record_event("game_over", {"reason": reason})
+
+
+func _fire_due_promotions() -> void:
+    if _scheduled_promotions.is_empty():
+        return
+    var current_day_of_month := _days_completed_this_month + 1
+    var current_hour := minute_of_day / 60
+    var remaining: Array[Dictionary] = []
+    for scheduled in _scheduled_promotions:
+        var due_day: int = int(scheduled["trigger_day"])
+        var due_hour: int = int(scheduled["trigger_hour"])
+        if current_day_of_month > due_day or (
+            current_day_of_month == due_day and current_hour >= due_hour
+        ):
+            _fire_promotion(scheduled)
+        else:
+            remaining.append(scheduled)
+    _scheduled_promotions = remaining
+
+
+func _fire_promotion(scheduled: Dictionary) -> void:
+    var promotion_id: String = str(scheduled["promotion_id"])
+    var catalog_entry: Dictionary = _promotion_catalog[promotion_id]
+    var cost_yen: int = int(catalog_entry["cost_yen"])
+    var popularity_gain: int = int(catalog_entry["popularity_gain"])
+    var expense: Dictionary = economy.record_explicit_expense(
+        "promotion_cost",
+        minute_of_day,
+        cost_yen,
+        {"promotion_id": promotion_id}
+    )
+    popularity = min(100, popularity + popularity_gain)
+    _record_event("promotion_fired", {
+        "promotion_id": promotion_id,
+        "popularity_gain": popularity_gain,
+        "popularity_after": popularity,
+        "expense_id": expense["expense_id"],
+    })
 
 
 func _step_restock_tasks() -> void:
@@ -712,8 +792,8 @@ func _restock_staff_snapshot() -> Array[Dictionary]:
 
 
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 9)
-    for key in ["store", "fixtures", "fixture_catalog", "permits", "product_catalog", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand"]:
+    assert(int(config.get("schema_version", -1)) == 10)
+    for key in ["store", "fixtures", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
             assert(false)
@@ -759,4 +839,9 @@ func _require_config() -> void:
         for key in ["catalog_id", "sale_price_yen", "restock_unit_cost_yen", "initial_stock_units"]:
             if not product_entry.has(key):
                 push_error("product catalog entry missing required key: %s" % key)
+                assert(false)
+    for promotion_entry in config["promotions"]:
+        for key in ["promotion_id", "cost_yen", "popularity_gain", "trigger_day", "trigger_hour"]:
+            if not promotion_entry.has(key):
+                push_error("promotion entry missing required key: %s" % key)
                 assert(false)

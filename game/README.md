@@ -118,7 +118,26 @@ purchase/procure without the `tobacco` permit held first. See decision 0093 for 
 deliberately does **not** model: each permit's confirmed exclusion-distance-from-other-stores
 rule (7/11/15 tiles) is left unenforced, since it needs the town/rival spatial model task #26 owns,
 and fixture-to-category compatibility (e.g. only refrigerated fixtures for cold drinks) isn't
-checked either. This is the second of task #25's four systems; only advertising remains.
+checked either.
+
+### Advertising / promotions
+
+`reference_sim/conveni_sim/promotion.py` already had a complete, evidence-safe design for this
+(`PromotionScheduler`/`StorePopularityRuntime`/`apply_confirmed_triggered_promotion`); this ports
+it faithfully rather than reinterpreting the evidence. Key confirmed facts from that module:
+`trigger_day`/`trigger_hour` are an **absolute** representative-day-of-month (1-4) and hour, not
+"days after purchase"; a promotion can only be scheduled if the current moment is at or before its
+trigger this month; cost is debited only when the event actually fires, not at purchase time
+(confirmed by direct video observation: "cash falls by exactly ¥100,000 as the day-2 10:00 event
+fires"); popularity is capped at 100; and each promotion method can only be used once per month.
+`VerticalSliceSimulation.try_purchase_promotion(promotion_id)` schedules a promotion from
+`data/vertical_slice.json`'s `promotions` catalog (direct mail/newspaper/airship/radio/tv, all
+**CONFIRMED_OFFICIAL or CONFIRMED_COMMUNITY** pricing/timing from `reference_sim`'s `PROMOTIONS`);
+`_fire_due_promotions()` (checked every tick, before day-boundary handling so a trigger landing on
+a month's last tick still resolves against the correct day) applies the cost and `popularity`
+gain once due. Deliberately not modeled: the guide-confirmed daily popularity decay for
+low-rated stores, since `reference_sim` itself leaves the decay amount unresolved. See decision
+0094. **This closes out task #25** (fixture purchase, permits/procurement, and advertising).
 
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;

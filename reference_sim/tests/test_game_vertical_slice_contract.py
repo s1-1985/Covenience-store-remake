@@ -15,7 +15,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     def test_prototype_values_are_explicitly_marked_provisional(self):
-        self.assertEqual(self.config["schema_version"], 9)
+        self.assertEqual(self.config["schema_version"], 10)
         self.assertIs(self.config["provisional"], True)
         self.assertTrue(self.config["evidence_note"].strip())
         self.assertIn("not claims", self.config["evidence_note"])
@@ -333,6 +333,51 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("a zero demand rate must never admit a customer", smoke)
         self.assertIn(
             "demand-driven admission must be blocked while a customer visit is still active",
+            smoke,
+        )
+
+    def test_promotions_port_confirmed_reference_sim_timing_and_apply_at_trigger(self):
+        promotions = self.config["promotions"]
+        promotion_ids = [entry["promotion_id"] for entry in promotions]
+        self.assertEqual(len(promotion_ids), len(set(promotion_ids)))
+        self.assertIn("direct_mail", promotion_ids)
+        for entry in promotions:
+            for key in ("promotion_id", "cost_yen", "popularity_gain", "trigger_day", "trigger_hour"):
+                self.assertIn(key, entry)
+            self.assertGreater(entry["cost_yen"], 0)
+            self.assertGreater(entry["popularity_gain"], 0)
+            self.assertTrue(1 <= entry["trigger_day"] <= 4)
+            self.assertTrue(0 <= entry["trigger_hour"] <= 23)
+
+        direct_mail = next(entry for entry in promotions if entry["promotion_id"] == "direct_mail")
+        self.assertEqual(direct_mail["cost_yen"], 100000)
+        self.assertEqual(direct_mail["popularity_gain"], 12)
+        self.assertEqual(direct_mail["trigger_day"], 2)
+        self.assertEqual(direct_mail["trigger_hour"], 10)
+
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("func try_purchase_promotion(promotion_id: String) -> bool:", simulation)
+        self.assertIn("func _fire_due_promotions() -> void:", simulation)
+        self.assertIn("func _fire_promotion(scheduled: Dictionary) -> void:", simulation)
+        self.assertIn("_promotions_used_this_month", simulation)
+        self.assertIn(
+            "a promotion's cost must not be charged until its scheduled event fires", smoke
+        )
+        self.assertIn(
+            "scheduling the same promotion method twice in one month must be rejected", smoke
+        )
+        self.assertIn(
+            "a fired promotion must apply exactly its configured popularity_gain", smoke
+        )
+        self.assertIn(
+            "a fired promotion must deduct exactly its configured cost at trigger time", smoke
+        )
+        self.assertIn(
+            "scheduling a promotion after its trigger moment has already passed this month must be rejected",
             smoke,
         )
 
