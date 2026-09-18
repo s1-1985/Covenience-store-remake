@@ -91,6 +91,20 @@ Once either condition fires, `is_game_over` becomes `true` and every mutating me
 edits, ...) becomes a no-op; nothing invents what should visually happen next (no ending screen,
 no restart flow) beyond that frozen, inspectable state. See decision 0091.
 
+### Fixture purchase
+
+`VerticalSliceSimulation.try_purchase_fixture(catalog_id, instance_id, origin_subcell,
+interaction_subcell)` adds a brand-new fixture from `data/vertical_slice.json`'s
+`fixture_catalog` -- currently potted plant / bench / fountain, with purchase prices ported
+directly from `reference_sim/conveni_sim/baseline_data.py`'s `FIXTURES` (**CONFIRMED_OFFICIAL**,
+not a guess). It reuses `try_relocate_fixture`'s safety checks (atomic rollback if the new
+fixture would block a required route or trap a staff member) and its expense/event-log plumbing.
+Each catalog entry also carries `maintenance_yen_per_day`/`service_bonus`, but **neither is
+consumed anywhere yet** -- daily maintenance deduction and store-evaluation service value remain
+future work (the latter is task #27's job). See decision 0092. This is the first of task #25's
+four planned systems (什器購入・商品仕入れ・許可・広告); product procurement, permits, and
+advertising are still unimplemented.
+
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;
 its IDs and shape are not a reconstruction of an original receipt system.

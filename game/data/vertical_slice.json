@@ -1,5 +1,5 @@
 {
-  "schema_version": 7,
+  "schema_version": 8,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -34,6 +34,35 @@
       "origin_subcell": [4, 10],
       "footprint_tiles": [2, 1],
       "interaction_subcell": [5, 9]
+    }
+  ],
+  "fixture_catalog": [
+    {
+      "catalog_id": "potted_plant",
+      "kind": "amenity",
+      "footprint_tiles": [1, 1],
+      "purchase_price_yen": 1000,
+      "maintenance_yen_per_day": 120,
+      "service_bonus": 2,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['potted_plant'] (strategy guide purchase price/maintenance/service_bonus). maintenance_yen_per_day/service_bonus are not yet consumed anywhere in this client."
+    },
+    {
+      "catalog_id": "bench",
+      "kind": "amenity",
+      "footprint_tiles": [1, 1],
+      "purchase_price_yen": 2000,
+      "maintenance_yen_per_day": 160,
+      "service_bonus": 4,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['bench']. maintenance_yen_per_day/service_bonus are not yet consumed anywhere in this client."
+    },
+    {
+      "catalog_id": "fountain",
+      "kind": "amenity",
+      "footprint_tiles": [2, 2],
+      "purchase_price_yen": 5000,
+      "maintenance_yen_per_day": 2400,
+      "service_bonus": 30,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['fountain']. maintenance_yen_per_day/service_bonus are not yet consumed anywhere in this client."
     }
   ],
   "products": [

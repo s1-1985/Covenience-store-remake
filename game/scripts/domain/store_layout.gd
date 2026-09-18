@@ -104,6 +104,19 @@ func fixture_at(cell: Vector2i) -> String:
     return ""
 
 
+func try_add_fixture(fixture_config: Dictionary) -> bool:
+    var fixture_id := str(fixture_config.get("id", ""))
+    if fixture_id.is_empty() or fixtures_by_id.has(fixture_id):
+        return false
+    var candidate_fixtures := fixtures.duplicate(true)
+    candidate_fixtures.append_array(_normalize_fixture_configs([fixture_config]))
+    if not _fixture_configs_are_valid(candidate_fixtures):
+        return false
+    fixtures = candidate_fixtures
+    _build_blocked_cells(_subcells_per_tile)
+    return true
+
+
 func try_move_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
     if not fixtures_by_id.has(fixture_id):
         return false

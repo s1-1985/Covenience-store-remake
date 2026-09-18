@@ -513,6 +513,50 @@ func _initialize() -> void:
         _fail("meeting the clear condition must prevent the time-limit game over")
         return
 
+    var purchase_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    var cash_before_any_purchase: int = int(purchase_simulation.economy.cash_yen)
+    if purchase_simulation.try_purchase_fixture(
+        "potted_plant", "amenity-occupied", Vector2i(4, 4), Vector2i(2, 4)
+    ):
+        _fail("purchasing on top of an existing fixture must be rejected")
+        return
+    if purchase_simulation.economy.cash_yen != cash_before_any_purchase:
+        _fail("a rejected fixture purchase must not change cash")
+        return
+    if not purchase_simulation.try_purchase_fixture(
+        "potted_plant", "amenity-1", Vector2i(12, 0), Vector2i(12, 2)
+    ):
+        _fail("a valid, affordable fixture purchase must be accepted")
+        return
+    if purchase_simulation.economy.cash_yen != cash_before_any_purchase - 1000:
+        _fail("a fixture purchase must deduct exactly its configured purchase price")
+        return
+    if purchase_simulation.layout.fixture_origin("amenity-1") != Vector2i(12, 0):
+        _fail("a purchased fixture must be placed at the requested origin")
+        return
+    if purchase_simulation.event_log.count_type("fixture_purchased") != 1:
+        _fail("a completed fixture purchase must record exactly one fixture_purchased event")
+        return
+    if purchase_simulation.try_purchase_fixture(
+        "bench", "amenity-1", Vector2i(10, 0), Vector2i(10, 2)
+    ):
+        _fail("a duplicate fixture instance id must be rejected")
+        return
+    if purchase_simulation.try_purchase_fixture(
+        "unknown_catalog_entry", "amenity-2", Vector2i(10, 0), Vector2i(10, 2)
+    ):
+        _fail("an unknown fixture catalog id must be rejected")
+        return
+    var cash_before_unaffordable_purchase: int = int(purchase_simulation.economy.cash_yen)
+    if purchase_simulation.try_purchase_fixture(
+        "fountain", "amenity-4", Vector2i(10, 0), Vector2i(10, 2)
+    ):
+        _fail("a fixture purchase costing more than available cash must be rejected")
+        return
+    if purchase_simulation.economy.cash_yen != cash_before_unaffordable_purchase:
+        _fail("a rejected fixture purchase must not change cash")
+        return
+
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
 

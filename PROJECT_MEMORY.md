@@ -444,6 +444,13 @@ scenario/clear-condition system yet, so `clear_condition_met` defaults to `false
 `is_game_over` is set, every mutating method (`step`, `tick_idle_for_demand`,
 `start_next_customer`, `apply_explicit_restock`, layout edits) becomes a no-op (see decision 0091).
 
+Task #25 (什器購入・商品仕入れ・許可・広告) bundles four independent systems; the first,
+fixture purchase, is now implemented: `try_purchase_fixture()` adds a new fixture from a
+`fixture_catalog` config section (potted plant/bench/fountain, prices ported from
+`reference_sim/conveni_sim/baseline_data.py`'s `FIXTURES`, CONFIRMED_OFFICIAL) with the same
+atomic route/walkability safety check as fixture relocation (see decision 0092). Product
+procurement, permits, and advertising remain unimplemented; task #25 is not yet complete.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

@@ -15,7 +15,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     def test_prototype_values_are_explicitly_marked_provisional(self):
-        self.assertEqual(self.config["schema_version"], 7)
+        self.assertEqual(self.config["schema_version"], 8)
         self.assertIs(self.config["provisional"], True)
         self.assertTrue(self.config["evidence_note"].strip())
         self.assertIn("not claims", self.config["evidence_note"])
@@ -334,6 +334,37 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn(
             "demand-driven admission must be blocked while a customer visit is still active",
             smoke,
+        )
+
+    def test_fixture_purchase_catalog_ports_confirmed_reference_sim_prices(self):
+        catalog = self.config["fixture_catalog"]
+        self.assertGreaterEqual(len(catalog), 1)
+        catalog_ids = [entry["catalog_id"] for entry in catalog]
+        self.assertEqual(len(catalog_ids), len(set(catalog_ids)))
+        for entry in catalog:
+            for key in ("catalog_id", "kind", "footprint_tiles", "purchase_price_yen"):
+                self.assertIn(key, entry)
+            self.assertGreater(entry["purchase_price_yen"], 0)
+            self.assertEqual(len(entry["footprint_tiles"]), 2)
+
+        layout = (GAME_ROOT / "scripts" / "domain" / "store_layout.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("func try_add_fixture(fixture_config: Dictionary) -> bool:", layout)
+        self.assertIn("func try_purchase_fixture(", simulation)
+        self.assertIn("_fixture_catalog", simulation)
+        self.assertIn("_required_routes_are_reachable() or not _all_staff_are_walkable()", simulation)
+        self.assertIn("a valid, affordable fixture purchase must be accepted", smoke)
+        self.assertIn("a duplicate fixture instance id must be rejected", smoke)
+        self.assertIn("an unknown fixture catalog id must be rejected", smoke)
+        self.assertIn("purchasing on top of an existing fixture must be rejected", smoke)
+        self.assertIn(
+            "a fixture purchase costing more than available cash must be rejected", smoke
         )
 
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):

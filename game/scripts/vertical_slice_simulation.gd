@@ -61,11 +61,14 @@ var _cash_at_month_start: int
 var is_game_over: bool
 var game_over_reason: String
 var clear_condition_met: bool
+var _fixture_catalog: Dictionary = {}
 
 
 func _init(source_config: Dictionary) -> void:
     config = source_config.duplicate(true)
     _require_config()
+    for entry in config["fixture_catalog"]:
+        _fixture_catalog[str(entry["catalog_id"])] = entry
     layout = StoreLayoutScript.new(config["store"], config["fixtures"])
     inventory = InventoryCatalogScript.new(config["products"])
     economy = EconomyStateScript.new(config["economy"])
@@ -179,6 +182,54 @@ func apply_explicit_restock(
         "staff_id": staff_id,
         "expense_id": expense["expense_id"],
         "resulting_stock_units": resulting_stock,
+    })
+    return true
+
+
+func try_purchase_fixture(
+    catalog_id: String,
+    instance_id: String,
+    origin_subcell: Vector2i,
+    interaction_subcell: Vector2i
+) -> bool:
+    if is_game_over or not customers.can_admit() or _any_restock_task_active():
+        return false
+    if instance_id.is_empty() or layout.fixtures_by_id.has(instance_id):
+        return false
+    if not _fixture_catalog.has(catalog_id):
+        return false
+    var catalog_entry: Dictionary = _fixture_catalog[catalog_id]
+    var price_yen: int = int(catalog_entry["purchase_price_yen"])
+    if economy.cash_yen < price_yen:
+        return false
+    var catalog_footprint_tiles: Array = catalog_entry["footprint_tiles"]
+    var fixture_config := {
+        "id": instance_id,
+        "kind": str(catalog_entry["kind"]),
+        "rotation_quarter_turns": 0,
+        "origin_subcell": [origin_subcell.x, origin_subcell.y],
+        "footprint_tiles": catalog_footprint_tiles.duplicate(),
+        "interaction_subcell": [interaction_subcell.x, interaction_subcell.y],
+    }
+    var previous_fixtures: Array = layout.fixture_snapshot()
+    if not layout.try_add_fixture(fixture_config):
+        return false
+    _refresh_interactions()
+    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+        layout.restore_fixture_snapshot(previous_fixtures)
+        _refresh_interactions()
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "fixture_purchase",
+        minute_of_day,
+        price_yen,
+        {"catalog_id": catalog_id, "instance_id": instance_id}
+    )
+    _record_event("fixture_purchased", {
+        "catalog_id": catalog_id,
+        "instance_id": instance_id,
+        "expense_id": expense["expense_id"],
+        "origin_subcell": [origin_subcell.x, origin_subcell.y],
     })
     return true
 
@@ -581,8 +632,8 @@ func _restock_staff_snapshot() -> Array[Dictionary]:
 
 
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 7)
-    for key in ["store", "fixtures", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand"]:
+    assert(int(config.get("schema_version", -1)) == 8)
+    for key in ["store", "fixtures", "fixture_catalog", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
             assert(false)
@@ -614,3 +665,8 @@ func _require_config() -> void:
         if not demand_config.has(key):
             push_error("vertical slice demand config missing required key: %s" % key)
             assert(false)
+    for catalog_entry in config["fixture_catalog"]:
+        for key in ["catalog_id", "kind", "footprint_tiles", "purchase_price_yen"]:
+            if not catalog_entry.has(key):
+                push_error("fixture catalog entry missing required key: %s" % key)
+                assert(false)
