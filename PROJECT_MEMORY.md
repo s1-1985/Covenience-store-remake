@@ -621,6 +621,19 @@ is documented rather than worked around (decision 0103). This closes the priorit
 approved after the store-grid audit: store grid -> named staff roster -> register-skill checkout
 timing -> parking fixtures.
 
+Task #35 (STORE STATUSパネルのUI表示ギャップ解消) closes a gap flagged before the priority-list audit
+even started: `vertical_slice_simulation.gd`'s `snapshot()` already computed `star_rating`/
+`popularity`/`town_population`/`land_value_yen` (tasks #26/#27), but `main.tscn`'s STORE STATUS panel
+had no labels for any of them -- backend-only data invisible on screen, the concrete case behind the
+original "is this playable at all?" question. `main.gd`/`main.tscn` gained two label pairs (star
+rating + popularity, town population/rival count/land value) that only read existing `snapshot()`
+fields; no simulation logic changed. `town_store_count_including_rivals` is the *total* store count
+including the player's own, not a rival-only count (confirmed by `headless_smoke.gd`'s own
+assertion), so the displayed rival count subtracts `player_store_count` rather than showing the raw
+field under a misleading label (decision 0104). The other three items surfaced alongside this one in
+the prior handoff (simultaneous customers/queue ordering, sample-layout loading, fixture-attention
+differentiation) remain out of scope by user decision -- no task number assigned.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

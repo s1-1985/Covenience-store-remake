@@ -35,6 +35,8 @@ func _initialize() -> void:
         "UI/Panel/Margin/VBox/MenuButtons/SaveButton",
         "UI/Panel/Margin/VBox/MenuButtons/LoadButton",
         "UI/Panel/Margin/VBox/MenuButtons/QuitToMenuButton",
+        "UI/Panel/Margin/VBox/RatingValue",
+        "UI/Panel/Margin/VBox/TownValue",
     ]:
         if main_instance.get_node_or_null(node_path) == null:
             _fail("main scene is missing expected node: %s" % node_path)

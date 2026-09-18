@@ -13,6 +13,8 @@ const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
 @onready var staff_label: Label = $UI/Panel/Margin/VBox/StaffValue
 @onready var sales_label: Label = $UI/Panel/Margin/VBox/SalesValue
 @onready var visits_label: Label = $UI/Panel/Margin/VBox/VisitsValue
+@onready var rating_label: Label = $UI/Panel/Margin/VBox/RatingValue
+@onready var town_label: Label = $UI/Panel/Margin/VBox/TownValue
 @onready var event_label: Label = $UI/Panel/Margin/VBox/EventValue
 @onready var layout_edit_label: Label = $UI/Panel/Margin/VBox/LayoutEditValue
 @onready var pause_button: Button = $UI/Panel/Margin/VBox/Buttons/PauseButton
@@ -202,6 +204,17 @@ func _refresh_ui() -> void:
         int(snapshot["completed_visits"]),
         int(snapshot["started_visits"]),
     ]
+    rating_label.text = "%s (popularity %d)" % [
+        _star_rank_text(int(snapshot["star_rating"])),
+        int(snapshot["popularity"]),
+    ]
+    var rival_store_count: int = int(snapshot["town_store_count_including_rivals"]) - int(snapshot["player_store_count"])
+    town_label.text = "population %s, %d rival store%s, land ¥%s" % [
+        _format_integer(int(snapshot["town_population"])),
+        rival_store_count,
+        "" if rival_store_count == 1 else "s",
+        _format_integer(int(snapshot["land_value_yen"])),
+    ]
     event_label.text = str(snapshot["last_event"])
     if paused:
         event_label.text += "  [PAUSED]"
@@ -224,6 +237,11 @@ func _load_config() -> Dictionary:
         push_error("Vertical slice config must explicitly remain provisional")
         return {}
     return loaded
+
+
+func _star_rank_text(star_rating: int) -> String:
+    assert(star_rating >= 0 and star_rating <= 5)
+    return "★".repeat(star_rating) + "☆".repeat(5 - star_rating)
 
 
 func _format_integer(value: int) -> String:
