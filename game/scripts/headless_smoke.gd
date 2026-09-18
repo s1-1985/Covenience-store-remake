@@ -620,6 +620,96 @@ func _initialize() -> void:
         _fail("a placed parking fixture's footprint must not be walkable, same as any other fixture")
         return
 
+    # Task #36: start_next_customer() (the manual "Admit next customer"
+    # button) now also supports concurrent admission, same as
+    # start_explicit_customer() -- only the fully-automatic passive demand
+    # flow (demand_admit_if_due(), tested above at "demand-driven admission
+    # must be blocked while a customer visit is still active") deliberately
+    # stays single-customer.
+    var manual_admit_config: Dictionary = config.duplicate(true)
+    manual_admit_config["customer"]["max_concurrent_customers"] = 2
+    var manual_admit_simulation = VerticalSliceSimulationScript.new(manual_admit_config)
+    steps += _run_visit(manual_admit_simulation)
+    if not manual_admit_simulation.customers.all_settled():
+        _fail("the manual-admit scenario's initial default customer should have finished draining")
+        return
+    if not manual_admit_simulation.start_next_customer():
+        _fail("start_next_customer() could not admit the first customer of the manual-admit scenario")
+        return
+    if not manual_admit_simulation.start_next_customer():
+        _fail("start_next_customer() must be able to admit a second customer while the first is still active (task #36)")
+        return
+    if manual_admit_simulation.start_next_customer():
+        _fail("start_next_customer() must be rejected once max_concurrent_customers is already reached")
+        return
+
+    # Two customers admitted concurrently (both via the explicit/observed
+    # path here, with an identical plan so their routes stay in lockstep for
+    # a deterministic queueing test) must both be able to shop at once, but
+    # the single checkout fixture/staff still serializes service: whichever
+    # arrives at checkout second must wait in a FIFO queue rather than being
+    # served simultaneously.
+    var concurrent_config: Dictionary = config.duplicate(true)
+    concurrent_config["customer"]["max_concurrent_customers"] = 2
+    var concurrent_simulation = VerticalSliceSimulationScript.new(concurrent_config)
+    steps += _run_visit(concurrent_simulation)
+    var completed_before_concurrency: int = concurrent_simulation.customers.completed_count()
+    var sales_before_concurrency: int = concurrent_simulation.economy.completed_sales
+    var shared_plan: Array[String] = ["prototype-bread"]
+    if not concurrent_simulation.start_explicit_customer("concurrent-a", shared_plan):
+        _fail("first concurrent customer could not be admitted")
+        return
+    if concurrent_simulation.customers.all_settled():
+        _fail("all_settled() must be false immediately after admitting a customer")
+        return
+    if not concurrent_simulation.start_explicit_customer("concurrent-b", shared_plan):
+        _fail("a second customer with an identical plan must be admittable while the first is still shopping (task #36)")
+        return
+    if concurrent_simulation.start_explicit_customer("concurrent-c", shared_plan):
+        _fail("a third customer must not be admittable once max_concurrent_customers (2) is already reached")
+        return
+
+    var concurrent_steps := 0
+    var saw_simultaneous_wait := false
+    var simultaneous_checkout_violation := false
+    while (
+        concurrent_simulation.customers.completed_count() < completed_before_concurrency + 2
+        and concurrent_steps < MAX_STEPS
+    ):
+        concurrent_simulation.step()
+        concurrent_steps += 1
+        var checkout_count := 0
+        var waiting_count := 0
+        for customer in concurrent_simulation.customers.active_customers():
+            if customer.phase == "checkout":
+                checkout_count += 1
+            elif customer.phase == "waiting_checkout":
+                waiting_count += 1
+        if checkout_count > 1:
+            simultaneous_checkout_violation = true
+        if checkout_count == 1 and waiting_count >= 1:
+            saw_simultaneous_wait = true
+    steps += concurrent_steps
+
+    if simultaneous_checkout_violation:
+        _fail("no more than one customer may occupy the single checkout's service slot at once")
+        return
+    if not saw_simultaneous_wait:
+        _fail("second customer never had to wait in the checkout queue behind the first")
+        return
+    if concurrent_simulation.customers.completed_count() != completed_before_concurrency + 2:
+        _fail("both concurrently-admitted customers must eventually complete their visit")
+        return
+    if concurrent_simulation.economy.completed_sales != sales_before_concurrency + 2:
+        _fail("both concurrently-queued customers must each complete a sale")
+        return
+    if not concurrent_simulation.customers.all_settled():
+        _fail("all_settled() must become true once every admitted customer is done")
+        return
+    if not concurrent_simulation.customers.can_admit_concurrent():
+        _fail("can_admit_concurrent() must be true again once both customers are done")
+        return
+
     var permit_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(permit_simulation)
     if permit_simulation.has_permit("tobacco"):

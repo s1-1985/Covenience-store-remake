@@ -1,5 +1,5 @@
 {
-  "schema_version": 12,
+  "schema_version": 13,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -1043,7 +1043,9 @@
     "visit_plan_product_ids": [
       "prototype-bread",
       "prototype-drink"
-    ]
+    ],
+    "max_concurrent_customers": 3,
+    "max_concurrent_customers_evidence_note": "REMAKE_BALANCED_DEFAULT (task #36): no strategy-guide/wiki source states how many shoppers the original title allows in a store at once, so this cap is this project's own scope decision, not a recovered original limit. Customers beyond this cap wait outside the admission gate (CustomerRoster.can_admit()) rather than in the store; the in-store checkout queue itself (_checkout_queue in vertical_slice_simulation.gd) has no separate cap."
   },
   "demand": {
     "evidence_note": "REMAKE_BALANCED_DEFAULT placeholder ported from reference_sim/conveni_sim/remake_demand_policy.py. nearby_population/customer_share_percent are supplied directly rather than derived from the town section below, since this client has no town/trade-area spatial model to compute them from; only the rival dilution multiplier is derived from town.store_count_including_rivals (VerticalSliceSimulation._init).",

@@ -15,7 +15,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     def test_prototype_values_are_explicitly_marked_provisional(self):
-        self.assertEqual(self.config["schema_version"], 12)
+        self.assertEqual(self.config["schema_version"], 13)
         self.assertIs(self.config["provisional"], True)
         self.assertTrue(self.config["evidence_note"].strip())
         self.assertIn("not claims", self.config["evidence_note"])
@@ -349,8 +349,22 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("explicit restock must create one immutable expense record", smoke)
         self.assertIn("restocked product did not return to the sale flow", smoke)
 
-    def test_customer_visits_are_retained_without_inventing_concurrent_arrivals(self):
+    def test_customer_visits_are_retained_and_passive_demand_flow_stays_single_customer(self):
+        # Renamed from ..._without_inventing_concurrent_arrivals: task #36
+        # added a real concurrent-customer path (see
+        # test_concurrent_customers_are_supported_via_the_explicit_admission_path
+        # below), so "no concurrent arrivals anywhere" is no longer true of
+        # this client as a whole. What is still true, and still asserted
+        # here, is that the fully-automatic passive demand flow
+        # (demand_admit_if_due(), gated by the original single-customer
+        # can_admit()) deliberately was not changed and stays exactly as
+        # single-customer as before. start_next_customer() -- the manual
+        # "Admit next customer" button -- did gain concurrency; see the next
+        # test.
         roster = (GAME_ROOT / "scripts" / "domain" / "customer_roster.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"
         )
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(
@@ -359,8 +373,105 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func can_admit() -> bool:", roster)
         self.assertIn('active().phase == "done"', roster)
         self.assertIn("customers[customer_id] = customer", roster)
+        self.assertIn("func demand_admit_if_due() -> bool:", simulation)
+        self.assertIn("not customers.can_admit():\n        return false\n    if not demand", simulation)
         self.assertIn("each visit must retain a distinct customer state", smoke)
         self.assertIn("customer ids must remain unique", smoke)
+        self.assertIn(
+            "demand-driven admission must be blocked while a customer visit is still active",
+            smoke,
+        )
+
+    def test_concurrent_customers_are_supported_via_the_explicit_admission_path(self):
+        roster = (GAME_ROOT / "scripts" / "domain" / "customer_roster.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        config = self.config
+
+        # max_concurrent_customers is a REMAKE_BALANCED_DEFAULT scope
+        # decision (no strategy-guide/wiki source states a capacity), not a
+        # recovered original limit.
+        customer = config["customer"]
+        self.assertIn("max_concurrent_customers", customer)
+        self.assertGreaterEqual(customer["max_concurrent_customers"], 1)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", customer["max_concurrent_customers_evidence_note"])
+
+        self.assertIn("func can_admit_concurrent() -> bool:", roster)
+        self.assertIn("func all_settled() -> bool:", roster)
+        self.assertIn("func active_customers() -> Array:", roster)
+
+        # can_admit_concurrent() (not the single-customer can_admit()) gates
+        # both the explicit/observed admission path and the manual "Admit
+        # next customer" button, so a player can actually reach concurrent
+        # customers through play, not only through the observed/scripted
+        # path -- only the fully-automatic passive demand flow
+        # (demand_admit_if_due(), covered by the previous test) stays
+        # single-customer.
+        self.assertIn("func start_explicit_customer", simulation)
+        self.assertIn("func start_next_customer() -> bool:\n    if is_game_over or not customers.can_admit_concurrent():", simulation)
+        self.assertIn("not customers.can_admit_concurrent()", simulation)
+
+        # Layout-edit-safety gates were moved off can_admit() to all_settled():
+        # with more than one customer possibly active, can_admit() alone only
+        # reflects the single most-recently-admitted customer and could
+        # wrongly read as "safe to edit" while an earlier customer is still
+        # mid-visit.
+        for guarded_function in (
+            "func try_purchase_fixture(",
+            "func try_relocate_fixture(",
+            "func try_rotate_fixture_clockwise(",
+            "func try_purchase_permit(",
+            "func try_procure_product(",
+            "func try_purchase_promotion(",
+            "func try_expand_chain(",
+            "func apply_explicit_restock(",
+        ):
+            self.assertIn(guarded_function, simulation)
+        self.assertIn("not customers.all_settled()", simulation)
+
+        # The single checkout fixture/staff still serializes service: a
+        # customer that finishes shopping queues rather than starting
+        # checkout immediately, and only one customer is dispatched off the
+        # queue at a time.
+        self.assertIn("_checkout_queue", simulation)
+        self.assertIn("func _dispatch_checkout_queue() -> void:", simulation)
+        self.assertIn('"waiting_checkout"', simulation)
+
+        # Rendering and the HUD were both updated to show every active
+        # customer, not only the single most-recently-admitted one.
+        self.assertIn("simulation.customers.active_customers()", store_view)
+        self.assertIn("active_customers", main)
+
+        self.assertIn(
+            "a second customer with an identical plan must be admittable while the first is still shopping",
+            smoke,
+        )
+        self.assertIn(
+            "a third customer must not be admittable once max_concurrent_customers",
+            smoke,
+        )
+        self.assertIn(
+            "no more than one customer may occupy the single checkout's service slot at once",
+            smoke,
+        )
+        self.assertIn(
+            "start_next_customer() must be able to admit a second customer while the first is still active",
+            smoke,
+        )
+        self.assertIn(
+            "start_next_customer() must be rejected once max_concurrent_customers is already reached",
+            smoke,
+        )
+        self.assertIn(
+            "second customer never had to wait in the checkout queue behind the first",
+            smoke,
+        )
 
     def test_demand_driven_customer_arrival_is_a_tagged_remake_default(self):
         demand = self.config["demand"]
@@ -762,10 +873,15 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # Wired into the actual checkout-start transition, not just defined
         # standalone.
         self.assertIn("const CheckoutTimingScript := preload", simulation)
+        # Task #36 moved this assignment out of the per-customer step() match
+        # statement into _dispatch_checkout_queue(), the single choke point
+        # that now hands the shared checkout fixture to the next queued
+        # customer (concurrent customers no longer let every customer start
+        # checkout the instant they arrive).
         self.assertIn(
             "customer.checkout_ticks_remaining = _checkout_timing.required_ticks(\n"
-            "                    checkout_staff.register_skill, _checkout_ticks\n"
-            "                )",
+            "        checkout_staff.register_skill, _checkout_ticks\n"
+            "    )",
             simulation,
         )
 

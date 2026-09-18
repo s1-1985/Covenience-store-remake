@@ -129,12 +129,21 @@ func _draw_fixtures() -> void:
 
 
 func _draw_customer() -> void:
-    var customer = simulation.customers.active()
-    if customer.phase == "done":
-        return
-    var center: Vector2 = _cell_center(customer.position)
-    draw_circle(center, 13.0, Color("ef476f"))
-    draw_circle(center, 13.0, Color("3a2630"), false, 2.0)
+    # Every customer still in the store is drawn (task #36, concurrent
+    # customers), not only the single most-recently-admitted one. Customers
+    # sharing a cell (e.g. several waiting in the checkout queue, which has
+    # no dedicated queue-cell geometry yet -- see decision 0105) are offset
+    # slightly so they stay individually visible instead of fully
+    # overlapping; this is a cosmetic-only spread, not a claim about the
+    # original game's queue positions.
+    var seen_positions: Dictionary = {}
+    for customer in simulation.customers.active_customers():
+        var center: Vector2 = _cell_center(customer.position)
+        var stack_index: int = seen_positions.get(customer.position, 0)
+        seen_positions[customer.position] = stack_index + 1
+        center += Vector2(stack_index * 6.0, stack_index * 6.0)
+        draw_circle(center, 13.0, Color("ef476f"))
+        draw_circle(center, 13.0, Color("3a2630"), false, 2.0)
 
 
 func _draw_staff() -> void:

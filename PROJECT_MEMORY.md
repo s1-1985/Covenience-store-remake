@@ -630,9 +630,39 @@ rating + popularity, town population/rival count/land value) that only read exis
 fields; no simulation logic changed. `town_store_count_including_rivals` is the *total* store count
 including the player's own, not a rival-only count (confirmed by `headless_smoke.gd`'s own
 assertion), so the displayed rival count subtracts `player_store_count` rather than showing the raw
-field under a misleading label (decision 0104). The other three items surfaced alongside this one in
-the prior handoff (simultaneous customers/queue ordering, sample-layout loading, fixture-attention
-differentiation) remain out of scope by user decision -- no task number assigned.
+field under a misleading label (decision 0104). Of the other three items surfaced alongside this one
+in the prior handoff, the user approved proceeding and the first (simultaneous customers/queue
+ordering) became task #36 below; sample-layout loading and fixture-attention differentiation remain
+out of scope -- no task number assigned.
+
+Task #36 (同時複数顧客・チェックアウト待ち行列) ports a capability `reference_sim`'s
+`CheckoutStationRuntime` already had (multiple waiting customers, explicit non-forced-FIFO service
+selection) into `game/`, which previously hard-capped the store at exactly one active customer via
+`CustomerRoster.can_admit()`. Rather than loosening that existing single-customer gate in place (an
+existing `headless_smoke.gd`/reference_sim-contract test locks in that the fully-automatic passive
+demand flow, `demand_admit_if_due()`, stays single-customer -- there is no guide/wiki evidence for
+how many shoppers the original title allows in a store at once, so this project is not inventing an
+answer there), a second, additive gate `can_admit_concurrent()` was introduced
+(`_active_non_done_count() < max_concurrent_customers`, a REMAKE_BALANCED_DEFAULT cap of 3 read from
+`vertical_slice.json`). Both the observed/explicit admission path (`start_explicit_customer`) and the
+manual "Admit next customer" button (`start_next_customer`) now use it, so a player can actually reach
+concurrent customers through ordinary play, not only through a scripted/observation path. The single
+checkout fixture/staff still serializes service through a new `_checkout_queue` FIFO and
+`_dispatch_checkout_queue()`, dispatched once per tick after every customer's own phase transition
+runs; the customer-facing phase gained a `waiting_checkout` step between `to_checkout` and `checkout`.
+Because more than one customer can now be active, the eight layout-edit-safety checks
+(`try_purchase_fixture` and its seven siblings) that used to reuse `can_admit()` as a "no visit in
+progress" proxy needed their own predicate, `all_settled()`: with concurrency, `can_admit()` alone
+only reflects the single most-recently-admitted customer and could wrongly read as safe to edit while
+an earlier-admitted customer is still mid-visit. `store_view.gd` and the HUD's Customer line were
+updated to draw/list every active customer instead of only one; `snapshot()` kept its existing
+singular `customer_id`/`customer_phase`/`customer_basket_*` fields untouched for backward
+compatibility and added a new `active_customers` array alongside them. `vertical_slice.json`'s
+`schema_version` moved 12 -> 13 for the new required `customer.max_concurrent_customers` field
+(decision 0105). Not attempted: queue-cell geometry (the research note this task cites explicitly
+says exact queue coordinates are unconfirmed) and register-orientation-dependent queue direction --
+waiting customers stay logically queued at the checkout interaction cell, offset only cosmetically in
+the renderer.
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
