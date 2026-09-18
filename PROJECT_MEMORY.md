@@ -444,12 +444,19 @@ scenario/clear-condition system yet, so `clear_condition_met` defaults to `false
 `is_game_over` is set, every mutating method (`step`, `tick_idle_for_demand`,
 `start_next_customer`, `apply_explicit_restock`, layout edits) becomes a no-op (see decision 0091).
 
-Task #25 (什器購入・商品仕入れ・許可・広告) bundles four independent systems; the first,
-fixture purchase, is now implemented: `try_purchase_fixture()` adds a new fixture from a
+Task #25 (什器購入・商品仕入れ・許可・広告) bundles four independent systems. The first,
+fixture purchase, is implemented: `try_purchase_fixture()` adds a new fixture from a
 `fixture_catalog` config section (potted plant/bench/fountain, prices ported from
 `reference_sim/conveni_sim/baseline_data.py`'s `FIXTURES`, CONFIRMED_OFFICIAL) with the same
-atomic route/walkability safety check as fixture relocation (see decision 0092). Product
-procurement, permits, and advertising remain unimplemented; task #25 is not yet complete.
+atomic route/walkability safety check as fixture relocation (decision 0092). The second, permits
+and product procurement, is also implemented: `try_purchase_permit()`/`has_permit()` (tobacco
+¥7,000,000 / alcohol ¥3,000,000 / medicine ¥10,000,000, CONFIRMED_OFFICIAL from `PERMITS`) and
+`try_procure_product()` (adds a new product SKU from `product_catalog` to an unoccupied fixture;
+currently just `tobacco`, CONFIRMED_OFFICIAL pricing from the guide's category table). Both
+permit-gated fixtures and permit-gated products refuse purchase without the permit held first.
+Each permit's confirmed exclusion-distance-from-other-stores rule is deliberately left
+unenforced (needs task #26's town/rival spatial model); fixture-to-category compatibility is
+also not checked (decision 0093). Only advertising remains unimplemented in task #25.
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 

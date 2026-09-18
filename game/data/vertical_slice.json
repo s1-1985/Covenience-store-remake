@@ -1,5 +1,5 @@
 {
-  "schema_version": 8,
+  "schema_version": 9,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -63,6 +63,48 @@
       "maintenance_yen_per_day": 2400,
       "service_bonus": 30,
       "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['fountain']. maintenance_yen_per_day/service_bonus are not yet consumed anywhere in this client."
+    },
+    {
+      "catalog_id": "small_ambient_shelf",
+      "kind": "shelf",
+      "footprint_tiles": [1, 1],
+      "purchase_price_yen": 60,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_ambient_shelf']. No required_permit_id: this fixture is not category-restricted."
+    },
+    {
+      "catalog_id": "small_tobacco_vending",
+      "kind": "shelf",
+      "footprint_tiles": [1, 1],
+      "purchase_price_yen": 600,
+      "required_permit_id": "tobacco",
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_tobacco_vending'] (compatible_product_categories=('tobacco',)). required_permit_id is this client's own gating choice, since the fixture is dedicated to a permit-gated category; the guide does not state that owning the fixture itself requires the permit."
+    }
+  ],
+  "permits": [
+    {
+      "permit_id": "tobacco",
+      "fee_yen": 7000000,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['tobacco']. Its exclusion_distance_tiles (7 tiles from another tobacco-permitted store) is NOT enforced here: no town/rival spatial model exists in this client yet (see task #26)."
+    },
+    {
+      "permit_id": "alcohol",
+      "fee_yen": 3000000,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['alcohol']. exclusion_distance_tiles (11 tiles) not enforced yet, for the same reason as tobacco above."
+    },
+    {
+      "permit_id": "medicine",
+      "fee_yen": 10000000,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['medicine']. exclusion_distance_tiles (15 tiles) not enforced yet, for the same reason as tobacco above."
+    }
+  ],
+  "product_catalog": [
+    {
+      "catalog_id": "tobacco",
+      "sale_price_yen": 250,
+      "restock_unit_cost_yen": 175,
+      "initial_stock_units": 10,
+      "required_permit_id": "tobacco",
+      "evidence_note": "sale_price_yen/restock_unit_cost_yen are CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py's たばこ category (_sg_category('tobacco', ...): standard_retail_price_yen=250, profit_per_unit_yen=75, so restock_unit_cost_yen = 250-75 = 175). initial_stock_units=10 is a PROVISIONAL prototype batch size not stated by the guide."
     }
   ],
   "products": [

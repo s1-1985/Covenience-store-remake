@@ -62,6 +62,9 @@ var is_game_over: bool
 var game_over_reason: String
 var clear_condition_met: bool
 var _fixture_catalog: Dictionary = {}
+var _permit_catalog: Dictionary = {}
+var _product_catalog: Dictionary = {}
+var _permits_held: Dictionary = {}
 
 
 func _init(source_config: Dictionary) -> void:
@@ -69,6 +72,10 @@ func _init(source_config: Dictionary) -> void:
     _require_config()
     for entry in config["fixture_catalog"]:
         _fixture_catalog[str(entry["catalog_id"])] = entry
+    for entry in config["permits"]:
+        _permit_catalog[str(entry["permit_id"])] = entry
+    for entry in config["product_catalog"]:
+        _product_catalog[str(entry["catalog_id"])] = entry
     layout = StoreLayoutScript.new(config["store"], config["fixtures"])
     inventory = InventoryCatalogScript.new(config["products"])
     economy = EconomyStateScript.new(config["economy"])
@@ -114,6 +121,7 @@ func reset() -> void:
     is_game_over = false
     game_over_reason = ""
     clear_condition_met = false
+    _permits_held.clear()
     _demand_rng.seed = int(config["demand"]["rng_seed"])
     _refresh_interactions()
     _start_default_customer()
@@ -199,6 +207,9 @@ func try_purchase_fixture(
     if not _fixture_catalog.has(catalog_id):
         return false
     var catalog_entry: Dictionary = _fixture_catalog[catalog_id]
+    var required_permit_id := str(catalog_entry.get("required_permit_id", ""))
+    if not required_permit_id.is_empty() and not has_permit(required_permit_id):
+        return false
     var price_yen: int = int(catalog_entry["purchase_price_yen"])
     if economy.cash_yen < price_yen:
         return false
@@ -230,6 +241,74 @@ func try_purchase_fixture(
         "instance_id": instance_id,
         "expense_id": expense["expense_id"],
         "origin_subcell": [origin_subcell.x, origin_subcell.y],
+    })
+    return true
+
+
+func has_permit(permit_id: String) -> bool:
+    return _permits_held.has(permit_id)
+
+
+func try_purchase_permit(permit_id: String) -> bool:
+    if is_game_over or not customers.can_admit():
+        return false
+    if has_permit(permit_id) or not _permit_catalog.has(permit_id):
+        return false
+    var fee_yen: int = int(_permit_catalog[permit_id]["fee_yen"])
+    if economy.cash_yen < fee_yen:
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "permit_purchase",
+        minute_of_day,
+        fee_yen,
+        {"permit_id": permit_id}
+    )
+    _permits_held[permit_id] = true
+    _record_event("permit_purchased", {
+        "permit_id": permit_id,
+        "expense_id": expense["expense_id"],
+    })
+    return true
+
+
+func try_procure_product(catalog_id: String, instance_id: String, fixture_id: String) -> bool:
+    if is_game_over or not customers.can_admit():
+        return false
+    if instance_id.is_empty() or inventory.products.has(instance_id):
+        return false
+    if not _product_catalog.has(catalog_id):
+        return false
+    if not layout.fixtures_by_id.has(fixture_id):
+        return false
+    var catalog_entry: Dictionary = _product_catalog[catalog_id]
+    var required_permit_id := str(catalog_entry.get("required_permit_id", ""))
+    if not required_permit_id.is_empty() and not has_permit(required_permit_id):
+        return false
+    var initial_stock_units: int = int(catalog_entry["initial_stock_units"])
+    var restock_unit_cost_yen: int = int(catalog_entry["restock_unit_cost_yen"])
+    var procurement_cost_yen: int = initial_stock_units * restock_unit_cost_yen
+    if economy.cash_yen < procurement_cost_yen:
+        return false
+    var product_config := {
+        "id": instance_id,
+        "fixture_id": fixture_id,
+        "initial_stock_units": initial_stock_units,
+        "sale_price_yen": int(catalog_entry["sale_price_yen"]),
+        "restock_unit_cost_yen": restock_unit_cost_yen,
+    }
+    if not inventory.add_product(product_config):
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "product_procurement",
+        minute_of_day,
+        procurement_cost_yen,
+        {"catalog_id": catalog_id, "instance_id": instance_id, "fixture_id": fixture_id}
+    )
+    _record_event("product_procured", {
+        "catalog_id": catalog_id,
+        "instance_id": instance_id,
+        "fixture_id": fixture_id,
+        "expense_id": expense["expense_id"],
     })
     return true
 
@@ -387,6 +466,7 @@ func snapshot() -> Dictionary:
         "month_count": month_count,
         "is_game_over": is_game_over,
         "game_over_reason": game_over_reason,
+        "permits_held": _permits_held.keys(),
     }
 
 
@@ -632,8 +712,8 @@ func _restock_staff_snapshot() -> Array[Dictionary]:
 
 
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 8)
-    for key in ["store", "fixtures", "fixture_catalog", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand"]:
+    assert(int(config.get("schema_version", -1)) == 9)
+    for key in ["store", "fixtures", "fixture_catalog", "permits", "product_catalog", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
             assert(false)
@@ -669,4 +749,14 @@ func _require_config() -> void:
         for key in ["catalog_id", "kind", "footprint_tiles", "purchase_price_yen"]:
             if not catalog_entry.has(key):
                 push_error("fixture catalog entry missing required key: %s" % key)
+                assert(false)
+    for permit_entry in config["permits"]:
+        for key in ["permit_id", "fee_yen"]:
+            if not permit_entry.has(key):
+                push_error("permit entry missing required key: %s" % key)
+                assert(false)
+    for product_entry in config["product_catalog"]:
+        for key in ["catalog_id", "sale_price_yen", "restock_unit_cost_yen", "initial_stock_units"]:
+            if not product_entry.has(key):
+                push_error("product catalog entry missing required key: %s" % key)
                 assert(false)

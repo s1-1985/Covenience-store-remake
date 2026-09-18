@@ -102,8 +102,23 @@ fixture would block a required route or trap a staff member) and its expense/eve
 Each catalog entry also carries `maintenance_yen_per_day`/`service_bonus`, but **neither is
 consumed anywhere yet** -- daily maintenance deduction and store-evaluation service value remain
 future work (the latter is task #27's job). See decision 0092. This is the first of task #25's
-four planned systems (什器購入・商品仕入れ・許可・広告); product procurement, permits, and
-advertising are still unimplemented.
+four planned systems (什器購入・商品仕入れ・許可・広告).
+
+### Permits and product procurement
+
+`VerticalSliceSimulation.try_purchase_permit(permit_id)` pays a one-time fee (tobacco
+¥7,000,000 / alcohol ¥3,000,000 / medicine ¥10,000,000, **CONFIRMED_OFFICIAL** from
+`reference_sim/conveni_sim/baseline_data.py`'s `PERMITS`) and `has_permit(permit_id)` reports it
+afterward. `try_procure_product(catalog_id, instance_id, fixture_id)` adds a new product SKU
+from `data/vertical_slice.json`'s `product_catalog` to an existing, unoccupied fixture --
+currently just `tobacco` (sale price ¥250 / procurement cost ¥175, also CONFIRMED_OFFICIAL, ported
+from the guide's たばこ category pricing). Both a permit-gated fixture
+(`small_tobacco_vending`, added to `fixture_catalog`) and the `tobacco` product itself refuse to
+purchase/procure without the `tobacco` permit held first. See decision 0093 for what this
+deliberately does **not** model: each permit's confirmed exclusion-distance-from-other-stores
+rule (7/11/15 tiles) is left unenforced, since it needs the town/rival spatial model task #26 owns,
+and fixture-to-category compatibility (e.g. only refrigerated fixtures for cold drinks) isn't
+checked either. This is the second of task #25's four systems; only advertising remains.
 
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;

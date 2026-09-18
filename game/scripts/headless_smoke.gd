@@ -561,6 +561,69 @@ func _initialize() -> void:
         _fail("a rejected fixture purchase must not change cash")
         return
 
+    var permit_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(permit_simulation)
+    if permit_simulation.has_permit("tobacco"):
+        _fail("a fresh simulation must not start with any permits held")
+        return
+    if permit_simulation.try_purchase_permit("tobacco"):
+        _fail("a permit purchase without sufficient cash must be rejected")
+        return
+    if permit_simulation.try_purchase_fixture(
+        "small_tobacco_vending", "tobacco-shelf-1", Vector2i(12, 0), Vector2i(12, 2)
+    ):
+        _fail("a permit-gated fixture purchase must be rejected without the permit")
+        return
+    if permit_simulation.try_procure_product("tobacco", "tobacco-1", "shelf-1"):
+        _fail("permit-gated product procurement must be rejected without the permit")
+        return
+
+    permit_simulation.economy.cash_yen = 20_000_000
+    var cash_before_permit: int = int(permit_simulation.economy.cash_yen)
+    if not permit_simulation.try_purchase_permit("tobacco"):
+        _fail("an affordable permit purchase must be accepted")
+        return
+    if not permit_simulation.has_permit("tobacco"):
+        _fail("has_permit must reflect a completed permit purchase")
+        return
+    if permit_simulation.economy.cash_yen != cash_before_permit - 7000000:
+        _fail("a permit purchase must deduct exactly its configured fee")
+        return
+    if permit_simulation.try_purchase_permit("tobacco"):
+        _fail("purchasing an already-held permit must be rejected")
+        return
+    if permit_simulation.event_log.count_type("permit_purchased") != 1:
+        _fail("a completed permit purchase must record exactly one permit_purchased event")
+        return
+
+    var cash_before_vending_purchase: int = int(permit_simulation.economy.cash_yen)
+    if not permit_simulation.try_purchase_fixture(
+        "small_tobacco_vending", "tobacco-shelf-1", Vector2i(12, 0), Vector2i(12, 2)
+    ):
+        _fail("a permit-gated fixture purchase must be accepted once the permit is held")
+        return
+    if permit_simulation.economy.cash_yen != cash_before_vending_purchase - 600:
+        _fail("the tobacco vending fixture purchase must deduct exactly its configured price")
+        return
+
+    var cash_before_procurement: int = int(permit_simulation.economy.cash_yen)
+    if not permit_simulation.try_procure_product("tobacco", "tobacco-1", "tobacco-shelf-1"):
+        _fail("permit-gated product procurement must be accepted once the permit is held")
+        return
+    var expected_procurement_cost := 10 * 175
+    if permit_simulation.economy.cash_yen != cash_before_procurement - expected_procurement_cost:
+        _fail("product procurement cost must equal initial stock units times unit cost")
+        return
+    if permit_simulation.inventory.get_product("tobacco-1").stock_units != 10:
+        _fail("a procured product must start with its configured initial stock")
+        return
+    if permit_simulation.event_log.count_type("product_procured") != 1:
+        _fail("a completed product procurement must record exactly one product_procured event")
+        return
+    if permit_simulation.try_procure_product("tobacco", "tobacco-2", "tobacco-shelf-1"):
+        _fail("procuring a second product onto an already-occupied fixture must be rejected")
+        return
+
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
 

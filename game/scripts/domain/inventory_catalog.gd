@@ -29,6 +29,20 @@ func get_product(product_id: String):
     return products[product_id]
 
 
+func add_product(product_config: Dictionary) -> bool:
+    var product_id := str(product_config.get("id", ""))
+    if product_id.is_empty() or products.has(product_id):
+        return false
+    var fixture_id := str(product_config.get("fixture_id", ""))
+    for existing_product in products.values():
+        if existing_product.fixture_id == fixture_id:
+            return false
+    var product = InventoryStateScript.new(product_config)
+    products[product_id] = product
+    product_order.append(product_id)
+    return true
+
+
 func try_take_one(product_id: String) -> Dictionary:
     var product = get_product(product_id)
     if not product.try_take_one():

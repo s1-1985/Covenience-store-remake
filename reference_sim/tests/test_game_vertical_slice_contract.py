@@ -15,7 +15,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     def test_prototype_values_are_explicitly_marked_provisional(self):
-        self.assertEqual(self.config["schema_version"], 8)
+        self.assertEqual(self.config["schema_version"], 9)
         self.assertIs(self.config["provisional"], True)
         self.assertTrue(self.config["evidence_note"].strip())
         self.assertIn("not claims", self.config["evidence_note"])
@@ -334,6 +334,59 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn(
             "demand-driven admission must be blocked while a customer visit is still active",
             smoke,
+        )
+
+    def test_permits_and_product_procurement_port_confirmed_reference_sim_data(self):
+        permits = self.config["permits"]
+        permit_ids = [entry["permit_id"] for entry in permits]
+        self.assertEqual(len(permit_ids), len(set(permit_ids)))
+        self.assertIn("tobacco", permit_ids)
+        for entry in permits:
+            for key in ("permit_id", "fee_yen"):
+                self.assertIn(key, entry)
+            self.assertGreater(entry["fee_yen"], 0)
+
+        product_catalog = self.config["product_catalog"]
+        catalog_ids = [entry["catalog_id"] for entry in product_catalog]
+        self.assertEqual(len(catalog_ids), len(set(catalog_ids)))
+        for entry in product_catalog:
+            for key in ("catalog_id", "sale_price_yen", "restock_unit_cost_yen", "initial_stock_units"):
+                self.assertIn(key, entry)
+            self.assertGreater(entry["sale_price_yen"], 0)
+            self.assertGreaterEqual(entry["restock_unit_cost_yen"], 0)
+            self.assertGreater(entry["initial_stock_units"], 0)
+
+        tobacco_fixture = next(
+            entry for entry in self.config["fixture_catalog"] if entry["catalog_id"] == "small_tobacco_vending"
+        )
+        self.assertEqual(tobacco_fixture.get("required_permit_id"), "tobacco")
+
+        inventory_catalog = (GAME_ROOT / "scripts" / "domain" / "inventory_catalog.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("func add_product(product_config: Dictionary) -> bool:", inventory_catalog)
+        self.assertIn("func try_purchase_permit(permit_id: String) -> bool:", simulation)
+        self.assertIn("func has_permit(permit_id: String) -> bool:", simulation)
+        self.assertIn("func try_procure_product(", simulation)
+        self.assertIn(
+            "a permit-gated fixture purchase must be rejected without the permit", smoke
+        )
+        self.assertIn(
+            "permit-gated product procurement must be rejected without the permit", smoke
+        )
+        self.assertIn(
+            "a permit-gated fixture purchase must be accepted once the permit is held", smoke
+        )
+        self.assertIn(
+            "permit-gated product procurement must be accepted once the permit is held", smoke
+        )
+        self.assertIn(
+            "procuring a second product onto an already-occupied fixture must be rejected", smoke
         )
 
     def test_fixture_purchase_catalog_ports_confirmed_reference_sim_prices(self):
