@@ -111,6 +111,15 @@ var player_store_count: int
 var _chain_visitor_milestone
 var _store_events
 var _checkout_timing
+# FIFO order in which customers who have finished shopping are waiting for
+# the single checkout fixture's one staff-service slot (task #36, concurrent
+# customers). Serving strictly in arrival order is this project's own
+# REMAKE_BALANCED_DEFAULT choice: reference_sim's CheckoutStationRuntime
+# deliberately leaves service order to an explicit policy rather than
+# forcing FIFO, citing first-title FAQ evidence that a later-arriving
+# customer can sometimes be served first, so this is not a claim about the
+# original game's tie-break rule.
+var _checkout_queue: Array[String] = []
 
 
 func _init(source_config: Dictionary) -> void:
@@ -177,6 +186,7 @@ func reset() -> void:
     customers.reset()
     staff.reset()
     event_log.reset()
+    _checkout_queue.clear()
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
     is_game_over = false
@@ -204,14 +214,14 @@ func reset() -> void:
 
 
 func start_next_customer() -> bool:
-    if is_game_over or not customers.can_admit():
+    if is_game_over or not customers.can_admit_concurrent():
         return false
     _start_default_customer()
     return true
 
 
 func start_explicit_customer(customer_id: String, product_ids: Array[String]) -> bool:
-    if is_game_over or not customers.can_admit() or customer_id.is_empty():
+    if is_game_over or not customers.can_admit_concurrent() or customer_id.is_empty():
         return false
     if customers.customers.has(customer_id) or not _product_plan_is_valid(product_ids):
         return false
@@ -249,7 +259,7 @@ func apply_explicit_restock(
     quantity: int,
     total_cost_yen: int
 ) -> bool:
-    if is_game_over or not customers.can_admit() or quantity <= 0 or total_cost_yen < 0:
+    if is_game_over or not customers.all_settled() or quantity <= 0 or total_cost_yen < 0:
         return false
     if not inventory.products.has(product_id) or not staff.members.has(staff_id):
         return false
@@ -276,7 +286,7 @@ func try_purchase_fixture(
     origin_subcell: Vector2i,
     interaction_subcell: Vector2i
 ) -> bool:
-    if is_game_over or not customers.can_admit() or _any_restock_task_active():
+    if is_game_over or not customers.all_settled() or _any_restock_task_active():
         return false
     if instance_id.is_empty() or layout.fixtures_by_id.has(instance_id):
         return false
@@ -327,7 +337,7 @@ func has_permit(permit_id: String) -> bool:
 
 
 func try_purchase_permit(permit_id: String) -> bool:
-    if is_game_over or not customers.can_admit():
+    if is_game_over or not customers.all_settled():
         return false
     if has_permit(permit_id) or not _permit_catalog.has(permit_id):
         return false
@@ -349,7 +359,7 @@ func try_purchase_permit(permit_id: String) -> bool:
 
 
 func try_procure_product(catalog_id: String, instance_id: String, fixture_id: String) -> bool:
-    if is_game_over or not customers.can_admit():
+    if is_game_over or not customers.all_settled():
         return false
     if instance_id.is_empty() or inventory.products.has(instance_id):
         return false
@@ -391,7 +401,7 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
 
 
 func try_purchase_promotion(promotion_id: String) -> bool:
-    if is_game_over or not customers.can_admit():
+    if is_game_over or not customers.all_settled():
         return false
     if not _promotion_catalog.has(promotion_id):
         return false
@@ -427,7 +437,7 @@ func chain_expansion_cost_yen() -> int:
 
 
 func try_expand_chain() -> bool:
-    if is_game_over or not customers.can_admit() or _any_restock_task_active():
+    if is_game_over or not customers.all_settled() or _any_restock_task_active():
         return false
     var expansion_cost_yen := chain_expansion_cost_yen()
     if economy.cash_yen < expansion_cost_yen:
@@ -449,7 +459,7 @@ func try_expand_chain() -> bool:
 
 
 func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
-    if is_game_over or not customers.can_admit() or _any_restock_task_active():
+    if is_game_over or not customers.all_settled() or _any_restock_task_active():
         return false
     if layout.fixture_origin(fixture_id) == Vector2i(-1, -1):
         return false
@@ -469,7 +479,7 @@ func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
 
 
 func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
-    if is_game_over or not customers.can_admit() or _any_restock_task_active():
+    if is_game_over or not customers.all_settled() or _any_restock_task_active():
         return false
     var previous: Array = layout.fixture_snapshot()
     if not layout.try_rotate_fixture_clockwise(fixture_id):
@@ -487,8 +497,20 @@ func step() -> void:
     if is_game_over:
         return
     _advance_minute_of_day()
-    var customer = customers.active()
-    var checkout_staff = staff.checkout_staff()
+    # Every customer still in progress (not just the single most-recently-
+    # admitted one) advances its own phase machine this tick (task #36,
+    # concurrent customers). The single checkout fixture/staff is still a
+    # shared, serialized resource: a customer that finishes shopping joins
+    # _checkout_queue instead of starting service immediately, and
+    # _dispatch_checkout_queue() below hands the fixture to the next queued
+    # customer only once it is free.
+    for customer in customers.active_customers():
+        _advance_customer(customer)
+    _dispatch_checkout_queue()
+    _step_restock_tasks()
+
+
+func _advance_customer(customer) -> void:
     match customer.phase:
         "to_shelf":
             if customer.move_along_route("shopping"):
@@ -531,18 +553,18 @@ func step() -> void:
                     customer.phase = "to_checkout"
                     customer.route = layout.find_path(customer.position, _checkout_interaction)
         "to_checkout":
-            if customer.move_along_route("checkout"):
-                customer.checkout_ticks_remaining = _checkout_timing.required_ticks(
-                    checkout_staff.register_skill, _checkout_ticks
-                )
-                checkout_staff.state = "checkout"
-                _record_event("checkout_started", {
+            if customer.move_along_route("waiting_checkout"):
+                _checkout_queue.append(customer.customer_id)
+                _record_event("customer_queued_for_checkout", {
                     "customer_id": customer.customer_id,
-                    "staff_id": checkout_staff.staff_id,
+                    "queue_position": _checkout_queue.size(),
                 })
+        "waiting_checkout":
+            pass  # Dequeued by _dispatch_checkout_queue() once the checkout is free.
         "checkout":
             customer.checkout_ticks_remaining -= 1
             if customer.checkout_ticks_remaining <= 0:
+                var checkout_staff = staff.checkout_staff()
                 if not customer.basket.is_empty():
                     var record: Dictionary = economy.settle_basket(
                         customer.customer_id,
@@ -562,11 +584,32 @@ func step() -> void:
             if customer.move_along_route("done"):
                 _record_event("customer_exited", {"customer_id": customer.customer_id})
                 _observe_chain_visitor_milestone()
-        "done":
-            last_event = "day slice complete"
         _:
             push_error("Unknown customer phase: %s" % customer.phase)
-    _step_restock_tasks()
+
+
+# Hands the single checkout fixture's one service slot to the
+# longest-waiting queued customer once the currently-serving staff member is
+# free. Runs after every customer has taken its own turn this tick, so a
+# customer that just joined the queue this same tick can be dispatched
+# immediately if the checkout was already idle -- matching this client's
+# pre-task-#36 behavior of starting service in the same tick a lone customer
+# arrives.
+func _dispatch_checkout_queue() -> void:
+    var checkout_staff = staff.checkout_staff()
+    if checkout_staff.state != "idle" or _checkout_queue.is_empty():
+        return
+    var customer_id: String = _checkout_queue.pop_front()
+    var customer = customers.customer(customer_id)
+    customer.phase = "checkout"
+    customer.checkout_ticks_remaining = _checkout_timing.required_ticks(
+        checkout_staff.register_skill, _checkout_ticks
+    )
+    checkout_staff.state = "checkout"
+    _record_event("checkout_started", {
+        "customer_id": customer.customer_id,
+        "staff_id": checkout_staff.staff_id,
+    })
 
 
 func clock_text() -> String:
@@ -621,6 +664,11 @@ func snapshot() -> Dictionary:
         "contest_prize_yen": _store_events.compute_contest_prize_yen(
             town.store_count_including_rivals
         ),
+        # Every customer still in the store this tick (task #36, concurrent
+        # customers), not only the single one the customer_id/customer_phase/
+        # customer_basket_* fields above still describe for backward
+        # compatibility with existing single-customer callers and tests.
+        "active_customers": _active_customers_snapshot(),
     }
 
 
@@ -822,6 +870,18 @@ func _inventory_snapshot() -> Array[Dictionary]:
             "fixture_id": product.fixture_id,
             "stock_units": product.stock_units,
             "sale_price_yen": product.sale_price_yen,
+        })
+    return rows
+
+
+func _active_customers_snapshot() -> Array[Dictionary]:
+    var rows: Array[Dictionary] = []
+    for customer in customers.active_customers():
+        rows.append({
+            "customer_id": customer.customer_id,
+            "phase": customer.phase,
+            "position": customer.position,
+            "basket_count": customer.basket.size(),
         })
     return rows
 
@@ -1138,7 +1198,7 @@ func _require_save_data(data: Dictionary) -> void:
 
 
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 12)
+    assert(int(config.get("schema_version", -1)) == 13)
     for key in ["store", "fixtures", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand", "town"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)

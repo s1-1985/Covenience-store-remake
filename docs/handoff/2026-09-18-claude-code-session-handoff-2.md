@@ -56,26 +56,46 @@ crosscheckドキュメントを必ず先に確認すること。
 2. 上記の発見(3.3節が既に解決済み)を確認。
 3. ユーザーに「3.2節(同時複数顧客/待ち行列、サンプルレイアウト読み込み、什器
    attention差別化)に新規タスク番号を割り振って着手するか」を確認 →
-   「UIギャップ修正を優先」の回答を得た。3.2節は今回も対象外のまま
-   (タスク番号未割り当て)。
+   まず「UIギャップ修正を優先」の回答を得たため、3.2節はいったん対象外のまま
+   タスク#35に着手。
 4. **タスク#35**(STORE STATUSパネルのUI表示ギャップ解消、前回記録3.1節):
    `vertical_slice_simulation.gd`の`snapshot()`が既に返している
    `star_rating`/`popularity`/`town_population`/`town_store_count_including_
    rivals`/`land_value_yen`を、`main.tscn`のSTORE STATUSパネルに新設した
    ラベルペア(`RatingTitle`/`RatingValue`、`TownTitle`/`TownValue`)で表示する
    よう`main.gd`を配線した。シミュレーション側のロジックは一切変更していない。
-   決定書0104。
+   決定書0104。PR #205として作成、CI green確認後ユーザーがready化しマージ済み。
+5. ユーザーから「進めて」の指示を受け、3.2節の1件目に着手する判断とした。
+   ブランチはPR #205マージ後に`origin/main`から作り直した。
+6. **タスク#36**(同時複数顧客・チェックアウト待ち行列、前回記録3.2節1件目):
+   `reference_sim/conveni_sim/checkout.py`の`CheckoutStationRuntime`が既に
+   複数顧客同時待機・非FIFO強制のサービス選択を実装済みだったことを発見。
+   `CustomerRoster`に`can_admit_concurrent()`(新規、容量ベース)と
+   `all_settled()`(新規、「入店中の客が0人」)を追加し、既存の単一顧客判定
+   `can_admit()`は自動デマンド来店(`demand_admit_if_due()`)専用として温存。
+   `start_explicit_customer()`と`start_next_customer()`(「Admit next
+   customer」ボタン)の両方が`can_admit_concurrent()`経由で複数客を受け入れる
+   ようになり、プレイヤーが通常のプレイ操作でも同時複数客を実際に見られる
+   ようにした。`step()`を客ごとの状態遷移と`_dispatch_checkout_queue()`
+   (単一レジの直列化、FIFO、REMAKE_BALANCED_DEFAULT)に分離。レイアウト編集の
+   安全確認8箇所は`all_settled()`へ移行(`can_admit()`のままだと複数客が
+   同時に存在しうる状況で誤動作するため)。決定書0105。
 
 ## 3. 検証
 
-- `headless_smoke.gd`(構造チェックに新ラベルのノードパスを追加): Godot 4.3
-  公式バイナリでPASS(`Vertical-slice headless smoke passed in 530 steps.`)。
-- Xvfb + 実Godotバイナリで`main.tscn`を実際にレンダリングし、スクリーンショットで
+- `headless_smoke.gd`: タスク#35は構造チェックに新ラベルのノードパスを追加、
+  タスク#36は同時複数顧客・待ち行列を検証する専用シナリオ2件を追加。Godot 4.3
+  公式バイナリでPASS(タスク#35時点530ステップ→タスク#36で614ステップ)。
+- Xvfb + 実Godotバイナリで`main.tscn`を実際にレンダリングし、タスク#35は
   「☆☆☆☆☆ (popularity 0)」「population 2,000, 0 rival stores, land
-  ¥24,400,000」が意図通り表示されることを目視確認。
-- `reference_sim/tests`フルスイート(651件 + xfail 1件)PASS(このタスクは
-  `reference_sim`のデータ・ロジックには触れていないため、無影響であることの確認
-  目的)。
+  ¥24,400,000」、タスク#36は「Admit next customer」を追加操作して
+  「2 active — customer-1: to_shelf, customer-2: to_shelf」が意図通り
+  表示されることをそれぞれスクリーンショットで目視確認。
+- `reference_sim/tests`フルスイート: タスク#35時点651件+xfail1件PASS
+  (無影響確認)。タスク#36では既存テスト1件を改名・訂正(「同時来店を
+  一切発明していない」という古い主張の訂正)、新規テスト1件を追加、
+  スキーマバージョン依存/インデント依存の既存アサーションを2箇所更新し、
+  652件+xfail1件PASS。
 
 ## 4. Godot実行環境について
 
@@ -87,9 +107,14 @@ download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip`から再ダウンロー�
 
 ## 5. 現時点で残っているタスク(次にやるべきこと)
 
-1. **3.2節の3項目**(同時複数顧客/待ち行列、サンプルレイアウト読み込み、什器
-   attention差別化)は、今回もユーザーの明示的判断で対象外のまま。次回
-   着手するかどうかを改めて確認すること。
+1. **3.2節の残り2項目**(サンプルレイアウト読み込み、什器attention差別化)は
+   今回も対象外のまま。特に什器attention差別化は、`docs/decisions/0004`の
+   「deliberately absent: incidental/add-on purchase probability」という
+   明示的な据え置きと衝突する(attentionが影響しうるのは「ついで買い」の
+   発生確率であり、この確率自体がまだ一切実装されていない)。着手する場合は
+   まずこの境界を外すかどうかをユーザーに確認すること(タスク#33の
+   register_skillと同様、「衝突する場合は3箇所でタグ付けすれば実装してよい」
+   という前例はあるが、今回はまだその確認を取っていない)。
 2. `PROJECT_MEMORY.md`第19節末尾の既存ロードマップ(観測リプレイとの接続等)は
    今回変更なし、引き続き有効。
 3. 什器の`maintenance_yen_per_day`(ベンチ含む全什器)は、依然として
@@ -98,12 +123,18 @@ download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip`から再ダウンロー�
 4. 大型店舗建設費データ(18,000,000円、小/中/大の3ティア)は、複数店舗サイズを
    選べる新規出店UIが実装される時になって初めて必要になる。現時点では
    `game/`側に実装先が存在しないため、着手不要。
+5. タスク#36で実装した待ち行列は「客はチェックアウトの対話セルに留まり、
+   描画側で視認性のためオフセットするのみ」で、専用の列セル座標・レジの
+   向き依存の列方向(研究ノート第2節)は未反映。座標が確定した場合は
+   `waiting_checkout`フェーズの客の描画位置を専用の列セルへ差し替える余地が
+   ある。
 
 ## 6. このセッションのPR一覧
 
 | PR | 内容 | 結果 |
 |---|---|---|
-| (作成予定) | タスク#35(STORE STATUSパネルのUI表示ギャップ解消) | 作業中 |
+| #205 | タスク#35(STORE STATUSパネルのUI表示ギャップ解消) | マージ済み |
+| (作成予定) | タスク#36(同時複数顧客・チェックアウト待ち行列) | 作業中 |
 
 ## 7. 作業ブランチについて
 

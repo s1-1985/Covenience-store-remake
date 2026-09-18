@@ -69,7 +69,7 @@ func _process(delta: float) -> void:
     accumulator += delta
     while accumulator >= tick_seconds:
         accumulator -= tick_seconds
-        if simulation.customers.active().phase == "done":
+        if simulation.customers.all_settled():
             simulation.tick_idle_for_demand()
         else:
             simulation.step()
@@ -91,7 +91,7 @@ func _on_pause_pressed() -> void:
 
 
 func _on_step_pressed() -> void:
-    if simulation == null or simulation.customers.active().phase == "done":
+    if simulation == null or simulation.customers.all_settled():
         return
     paused = true
     pause_button.text = "Resume"
@@ -131,7 +131,7 @@ func _on_fixture_relocation_requested(fixture_id: String, origin_subcell: Vector
             origin_subcell.x,
             origin_subcell.y,
         ]
-    elif not simulation.customers.can_admit():
+    elif not simulation.customers.all_settled():
         layout_edit_label.text = "Finish the active visit before editing layout"
     else:
         layout_edit_label.text = "Cannot move there: blocked, outside, or route would break"
@@ -144,7 +144,7 @@ func _on_rotate_fixture_pressed() -> void:
         layout_edit_label.text = "Select a fixture before rotating"
     elif simulation.try_rotate_fixture_clockwise(fixture_id):
         layout_edit_label.text = "Rotated %s clockwise" % fixture_id
-    elif not simulation.customers.can_admit():
+    elif not simulation.customers.all_settled():
         layout_edit_label.text = "Finish the active visit before editing layout"
     else:
         layout_edit_label.text = "Cannot rotate there: blocked or route would break"
@@ -190,7 +190,14 @@ func _refresh_ui() -> void:
         int(snapshot["customer_basket_count"]),
         _format_integer(int(snapshot["customer_basket_total_yen"])),
     ]
-    customer_label.text = "%s: %s" % [snapshot["customer_id"], snapshot["customer_phase"]]
+    var active_customers: Array = snapshot["active_customers"]
+    if active_customers.is_empty():
+        customer_label.text = "no active customers"
+    else:
+        var customer_parts: Array[String] = []
+        for entry in active_customers:
+            customer_parts.append("%s: %s" % [entry["customer_id"], entry["phase"]])
+        customer_label.text = "%d active — %s" % [active_customers.size(), ", ".join(customer_parts)]
     staff_label.text = "%s: %s (%d staff)" % [
         snapshot["staff_id"],
         snapshot["staff_state"],
@@ -218,7 +225,7 @@ func _refresh_ui() -> void:
     event_label.text = str(snapshot["last_event"])
     if paused:
         event_label.text += "  [PAUSED]"
-    next_customer_button.disabled = not simulation.customers.can_admit()
+    next_customer_button.disabled = not simulation.customers.can_admit_concurrent()
     rotate_fixture_button.disabled = store_view.selected_fixture().is_empty()
     store_view.queue_redraw()
 
