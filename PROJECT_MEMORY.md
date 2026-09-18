@@ -592,6 +592,21 @@ along as unconsumed data (task #33 wires `register_skill` into checkout timing).
 store-rating headless-smoke test's expected service/security/cleaning values (20.0/45.0/45.0 ->
 17.0/57.0/51.0), updated accordingly (decision 0101).
 
+Task #33 (レジ能力(register_skill)をチェック時間に反映) makes that ported register_skill data
+actually do something: `checkout_ticks` used to apply as one flat duration no matter which staff
+member ran the register. The research note confirms only a qualitative effect and explicitly warns
+against inventing a numeric formula, and reference_sim's own `checkout_service_timing.py` likewise
+only defines an abstract duration-policy Protocol with no concrete formula. A new
+`scripts/domain/checkout_timing.gd` (`CheckoutTiming`) implements this client's own tagged
+REMAKE_BALANCED_DEFAULT inverse-proportion scaling: `checkout_ticks` is reinterpreted as the
+duration at `REFERENCE_REGISTER_SKILL` (13 -- the median register_skill across the 35 ported
+candidates, not arbitrary) and scales inversely with the actual serving staff member's
+register_skill, floored at 1 tick. `StaffState` gained a `register_skill` field; the checkout-start
+transition now calls `_checkout_timing.required_ticks(checkout_staff.register_skill,
+_checkout_ticks)`. This changed the headless smoke test's step count (515 -> 500), since staff-1
+(manda_machiko, register_skill=20) now checks out faster than the old flat 3-tick constant
+(decision 0102).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

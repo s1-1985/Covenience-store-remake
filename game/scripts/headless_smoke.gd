@@ -9,6 +9,7 @@ const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
 const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
+const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
@@ -798,6 +799,23 @@ func _initialize() -> void:
     var cleaning_value_check: float = store_value.compute_cleaning_value([5, 15], "large")
     if abs(cleaning_value_check - 36.0) > 0.0000001:
         _fail("compute_cleaning_value must equal the summed staff skill times the size-tier multiplier")
+        return
+
+    var checkout_timing = CheckoutTimingScript.new()
+    if checkout_timing.required_ticks(checkout_timing.REFERENCE_REGISTER_SKILL, 3) != 3:
+        _fail("required_ticks must return reference_ticks unchanged exactly at REFERENCE_REGISTER_SKILL")
+        return
+    if checkout_timing.required_ticks(checkout_timing.REFERENCE_REGISTER_SKILL * 2, 3) != 2:
+        _fail("required_ticks must decrease for a register_skill above the reference")
+        return
+    if checkout_timing.required_ticks(1, 3) != checkout_timing.REFERENCE_REGISTER_SKILL * 3:
+        _fail("required_ticks must scale up sharply for a very low register_skill")
+        return
+    if checkout_timing.required_ticks(0, 3) != checkout_timing.REFERENCE_REGISTER_SKILL * 3:
+        _fail("required_ticks must use the zero-skill guard rather than dividing by zero")
+        return
+    if checkout_timing.required_ticks(1000, 3) != checkout_timing.MIN_CHECKOUT_TICKS:
+        _fail("required_ticks must never fall below MIN_CHECKOUT_TICKS")
         return
 
     var rating_config: Dictionary = config.duplicate(true)

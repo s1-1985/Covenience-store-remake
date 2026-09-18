@@ -1028,6 +1028,7 @@
     "restock_ticks": 3,
     "restock_trigger_stock_units_at_or_below": 0,
     "restock_task_enabled": false,
-    "restock_task_evidence_note": "Automatic restock task-assignment for non-checkout staff is PROVISIONAL and disabled by default so it does not interfere with this scenario's existing sellout behavior. See docs/decisions for the dedicated test scenario that exercises it."
+    "restock_task_evidence_note": "Automatic restock task-assignment for non-checkout staff is PROVISIONAL and disabled by default so it does not interfere with this scenario's existing sellout behavior. See docs/decisions for the dedicated test scenario that exercises it.",
+    "checkout_ticks_evidence_note": "checkout_ticks is no longer a flat duration applied to every staff member: CheckoutTiming (game/scripts/domain/checkout_timing.gd, task #33) now reinterprets it as the number of ticks required at REFERENCE_REGISTER_SKILL (13, the median register_skill across the 35 CONFIRMED_OFFICIAL staff_candidates), and scales it inversely with whichever staff member is actually running the checkout's register_skill. The inverse-proportion shape of that scaling is this project's own REMAKE_BALANCED_DEFAULT invention, not a recovered original formula -- docs/research/checkout-staff-dispatch-evidence-2026-09-05.md section 5 confirms only that register_skill has a large qualitative effect on checkout speed, explicitly without a numeric formula."
   }
 }

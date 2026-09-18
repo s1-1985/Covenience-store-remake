@@ -325,6 +325,25 @@ placeholder, with their `service_skill`/`security_skill`/`cleaning_skill`/`regis
 carried as data but not consumed by any simulation logic yet (task #33 wires `register_skill` into
 checkout timing). See decision 0101. **This closes out task #32.**
 
+### Register-skill checkout timing
+
+`checkout_ticks` used to be one flat duration applied no matter which staff member ran the
+register, so the `register_skill` field ported in task #32 was carried as inert data. The research
+note (`docs/research/checkout-staff-dispatch-evidence-2026-09-05.md` section 5) confirms only a
+qualitative effect ("the lowest register skill can take a whole game day per customer, high skill
+becomes extremely fast") and explicitly says not to invent a numeric formula from it;
+`reference_sim/conveni_sim/checkout_service_timing.py` likewise only defines an abstract, swappable
+duration policy Protocol with no concrete formula. A new `scripts/domain/checkout_timing.gd`
+(`CheckoutTiming`) therefore implements this client's own tagged **REMAKE_BALANCED_DEFAULT**
+inverse-proportion scaling: `checkout_ticks` is reinterpreted as the duration at
+`REFERENCE_REGISTER_SKILL` (`13`, not arbitrary -- the median `register_skill` across the 35 ported
+candidates) and scales inversely with whichever staff member is actually serving, floored at
+`MIN_CHECKOUT_TICKS = 1`. `StaffState` gained a `register_skill` field (same
+config-with-fallback pattern as its other skills), and `VerticalSliceSimulation`'s checkout-start
+transition now calls `_checkout_timing.required_ticks(checkout_staff.register_skill,
+_checkout_ticks)` instead of using the flat constant directly. See decision 0102. **This closes out
+task #33.**
+
 ## Important evidence boundary
 
 `data/vertical_slice.json` is explicitly marked `provisional: true`.

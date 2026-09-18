@@ -161,6 +161,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "scripts/domain/staff_state.gd",
             "scripts/domain/chain_visitor_milestone.gd",
             "scripts/domain/store_events.gd",
+            "scripts/domain/checkout_timing.gd",
             "scripts/domain/staff_roster.gd",
             "scripts/domain/runtime_event_log.gd",
             "scripts/domain/demand_policy.gd",
@@ -726,6 +727,61 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn("task #32", staff_state)
+
+    def test_register_skill_checkout_timing_is_a_tagged_remake_default(self):
+        from conveni_sim.baseline_data import STAFF_CANDIDATES
+
+        checkout_timing = (
+            GAME_ROOT / "scripts" / "domain" / "checkout_timing.gd"
+        ).read_text(encoding="utf-8")
+        staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+
+        # The evidence note is explicit that this scaling shape is invented
+        # by this project, not a recovered original formula -- the research
+        # note it cites confirms only a qualitative effect.
+        self.assertIn("REMAKE_BALANCED_DEFAULT", checkout_timing)
+        self.assertIn("not a recovered original formula", checkout_timing)
+        self.assertIn("func required_ticks(register_skill: int, reference_ticks: int) -> int:", checkout_timing)
+        self.assertIn("const MIN_CHECKOUT_TICKS := 1", checkout_timing)
+
+        # REFERENCE_REGISTER_SKILL must actually be the median of the ported
+        # 35-candidate roster, not an arbitrary number.
+        register_skills = sorted(c.register_skill.value for c in STAFF_CANDIDATES)
+        median = register_skills[len(register_skills) // 2]
+        self.assertEqual(len(register_skills) % 2, 1)
+        self.assertIn(f"const REFERENCE_REGISTER_SKILL := {median}", checkout_timing)
+
+        self.assertIn("var register_skill: int", staff_state)
+        self.assertIn('register_skill = int(staff_config.get("register_skill", 0))', staff_state)
+
+        # Wired into the actual checkout-start transition, not just defined
+        # standalone.
+        self.assertIn("const CheckoutTimingScript := preload", simulation)
+        self.assertIn(
+            "customer.checkout_ticks_remaining = _checkout_timing.required_ticks(\n"
+            "                    checkout_staff.register_skill, _checkout_ticks\n"
+            "                )",
+            simulation,
+        )
+
+        # checkout_ticks itself is documented as reinterpreted, not silently
+        # redefined without a trace.
+        self.assertIn("checkout_ticks_evidence_note", self.config["simulation"])
+        self.assertIn(
+            "REFERENCE_REGISTER_SKILL", self.config["simulation"]["checkout_ticks_evidence_note"]
+        )
+
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn(
+            "required_ticks must return reference_ticks unchanged exactly at REFERENCE_REGISTER_SKILL",
+            smoke,
+        )
+        self.assertIn("required_ticks must never fall below MIN_CHECKOUT_TICKS", smoke)
 
     def test_promotions_port_confirmed_reference_sim_timing_and_apply_at_trigger(self):
         promotions = self.config["promotions"]
