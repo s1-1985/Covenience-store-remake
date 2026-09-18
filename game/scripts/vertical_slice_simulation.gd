@@ -8,6 +8,8 @@ const CustomerRosterScript := preload("res://scripts/domain/customer_roster.gd")
 const StaffRosterScript := preload("res://scripts/domain/staff_roster.gd")
 const RuntimeEventLogScript := preload("res://scripts/domain/runtime_event_log.gd")
 const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
+const TownStateScript := preload("res://scripts/domain/town_state.gd")
+const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -34,6 +36,16 @@ const MONTH_MULTIPLIER := 8
 #   MONTHS_PER_YEAR mirrors reference_sim/conveni_sim/observations.py.
 const GAME_OVER_YEAR_LIMIT := 100
 const MONTHS_PER_YEAR := 12
+
+# CONFIRMED_COMMUNITY floor, not a guess: the original game's Wiki records a
+# minimum land price of 20,000,000 yen
+# (docs/research/store-unlock-and-daily-pricing-delta-2026-09-05.md section
+# 5). reference_sim/conveni_sim/remake_land_value.py takes
+# base_land_price_yen as a caller-supplied parameter rather than hardcoding
+# it, so this constant -- picking the confirmed floor as the base for the
+# player's own store's land -- is this client's own choice, not a ported
+# value.
+const BASE_LAND_PRICE_YEN := 20_000_000
 
 var config: Dictionary
 var layout
@@ -69,6 +81,8 @@ var _promotion_catalog: Dictionary = {}
 var _promotions_used_this_month: Dictionary = {}
 var _scheduled_promotions: Array[Dictionary] = []
 var popularity: int
+var town
+var _land_value_policy
 
 
 func _init(source_config: Dictionary) -> void:
@@ -90,6 +104,12 @@ func _init(source_config: Dictionary) -> void:
     event_log = RuntimeEventLogScript.new()
     _demand_rng = RandomNumberGenerator.new()
     demand = DemandPolicyScript.new(config["demand"], _demand_rng)
+    town = TownStateScript.new(config["town"])
+    _land_value_policy = LandValuePolicyScript.new()
+    # The dilution formula counts competing/rival stores, not the player's
+    # own store, so store_count_including_rivals is reduced by one (never
+    # below zero) before being applied.
+    demand.rival_store_count = max(0, town.store_count_including_rivals - 1)
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -507,6 +527,11 @@ func snapshot() -> Dictionary:
         "game_over_reason": game_over_reason,
         "permits_held": _permits_held.keys(),
         "popularity": popularity,
+        "town_population": town.population,
+        "town_store_count_including_rivals": town.store_count_including_rivals,
+        "land_value_yen": _land_value_policy.current_land_price_yen(
+            BASE_LAND_PRICE_YEN, town, float(month_count) / MONTHS_PER_YEAR
+        ),
     }
 
 
@@ -792,8 +817,8 @@ func _restock_staff_snapshot() -> Array[Dictionary]:
 
 
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 10)
-    for key in ["store", "fixtures", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand"]:
+    assert(int(config.get("schema_version", -1)) == 11)
+    for key in ["store", "fixtures", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand", "town"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
             assert(false)
@@ -845,3 +870,8 @@ func _require_config() -> void:
             if not promotion_entry.has(key):
                 push_error("promotion entry missing required key: %s" % key)
                 assert(false)
+    var town_config: Dictionary = config["town"]
+    for key in ["population", "store_count_including_rivals"]:
+        if not town_config.has(key):
+            push_error("town config missing required key: %s" % key)
+            assert(false)

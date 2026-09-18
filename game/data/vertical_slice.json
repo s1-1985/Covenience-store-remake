@@ -1,5 +1,5 @@
 {
-  "schema_version": 10,
+  "schema_version": 11,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -192,7 +192,7 @@
     "visit_plan_product_ids": ["prototype-bread", "prototype-drink"]
   },
   "demand": {
-    "evidence_note": "REMAKE_BALANCED_DEFAULT placeholder ported from reference_sim/conveni_sim/remake_demand_policy.py. nearby_population/customer_share_percent are supplied directly because no town/trade-area spatial model exists yet in this client.",
+    "evidence_note": "REMAKE_BALANCED_DEFAULT placeholder ported from reference_sim/conveni_sim/remake_demand_policy.py. nearby_population/customer_share_percent are supplied directly rather than derived from the town section below, since this client has no town/trade-area spatial model to compute them from; only the rival dilution multiplier is derived from town.store_count_including_rivals (VerticalSliceSimulation._init).",
     "nearby_population": 2000,
     "customer_share_percent": 50.0,
     "daily_visit_rate_per_population": 0.05,
@@ -200,6 +200,11 @@
     "bad_weather_visit_multiplier": 0.6,
     "is_bad_weather": false,
     "rng_seed": 1
+  },
+  "town": {
+    "evidence_note": "Non-spatial TownState (game/scripts/domain/town_state.gd), ported from reference_sim/conveni_sim/town.py. No town/map spatial simulation exists to generate these numbers, so they are set to a fixed default: population matches demand.nearby_population above, and store_count_including_rivals of 1 (the player's own store only) means zero rival stores and therefore no rival-dilution effect on arrivals by default.",
+    "population": 2000,
+    "store_count_including_rivals": 1
   },
   "simulation": {
     "checkout_fixture_id": "checkout-1",

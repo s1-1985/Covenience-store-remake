@@ -116,9 +116,9 @@ from the guide's たばこ category pricing). Both a permit-gated fixture
 (`small_tobacco_vending`, added to `fixture_catalog`) and the `tobacco` product itself refuse to
 purchase/procure without the `tobacco` permit held first. See decision 0093 for what this
 deliberately does **not** model: each permit's confirmed exclusion-distance-from-other-stores
-rule (7/11/15 tiles) is left unenforced, since it needs the town/rival spatial model task #26 owns,
-and fixture-to-category compatibility (e.g. only refrigerated fixtures for cold drinks) isn't
-checked either.
+rule (7/11/15 tiles) is left unenforced -- it would need an actual spatial map of rival-store
+locations, which task #26 (below) deliberately did not build -- and fixture-to-category
+compatibility (e.g. only refrigerated fixtures for cold drinks) isn't checked either.
 
 ### Advertising / promotions
 
@@ -138,6 +138,31 @@ a month's last tick still resolves against the correct day) applies the cost and
 gain once due. Deliberately not modeled: the guide-confirmed daily popularity decay for
 low-rated stores, since `reference_sim` itself leaves the decay amount unresolved. See decision
 0094. **This closes out task #25** (fixture purchase, permits/procurement, and advertising).
+
+### Town, rival dilution, and land value
+
+`reference_sim/conveni_sim/town.py`'s `TownState` is ported as-is (`town_state.gd`): just tracked
+`population`/`store_count_including_rivals`, no invented spatial map, facility placement, or
+population-growth simulation -- `reference_sim` itself has none of those either, and
+`PROJECT_MEMORY.md` section 17 lists the general town-growth formula as an open research gap, not
+something to guess at. `VerticalSliceSimulation` constructs `town` from `data/vertical_slice.json`'s
+new `town` section and wires exactly one real gameplay effect from it: rival dilution. It sets
+`demand.rival_store_count = max(0, town.store_count_including_rivals - 1)` (excluding the player's
+own store), and `DemandPolicy.expected_arrivals_per_minute()` now scales down by
+`min(MAX_RIVAL_DILUTION, RIVAL_DILUTION_PER_COMPETITOR * rival_store_count)` --
+**CONFIRMED_OFFICIAL/COMMUNITY-adjacent constants** (0.08 per competitor, capped at 0.6) reused
+unchanged from `reference_sim/conveni_sim/remake_customer_share.py`, but applied to the whole
+expected-visitor estimate rather than that module's 0-100 customer-share score, since this client
+has no service/cleaning/security/assortment stats yet to feed that score. Defaults to zero rivals
+(a no-op), so every existing test that never sets `town` is unaffected. `land_value_policy.gd`
+ports `reference_sim/conveni_sim/remake_land_value.py`'s `RemakeBalancedLandValuePolicy` formula
+(local development from population/store density, times annual 5% inflation) verbatim as another
+tagged **REMAKE_BALANCED_DEFAULT** placeholder, exposed as `snapshot()`'s `land_value_yen` purely
+for display -- no purchase/sale mechanic consumes it yet. Deliberately **not** implemented: any
+actual spatial/map simulation, rival store placement, distance-based trade-area overlap or permit
+exclusion-distance enforcement, and the rival AI decision function
+(`remake_rival_policy.py`'s `RemakeBalancedRivalPolicy.decide()`) -- there is no rival-store entity
+in Godot yet for such a decision to act on. See decision 0095. **This closes out task #26.**
 
 Each successful checkout also appends an immutable prototype sale record linking the customer,
 minute-of-day, basket lines, and total. This ledger is factual telemetry for the explicit slice;

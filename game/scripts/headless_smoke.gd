@@ -2,6 +2,8 @@ extends SceneTree
 
 const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_simulation.gd")
 const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
+const TownStateScript := preload("res://scripts/domain/town_state.gd")
+const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAX_STEPS := 256
@@ -664,6 +666,59 @@ func _initialize() -> void:
         return
     if promotion_simulation.try_purchase_promotion("newspaper"):
         _fail("scheduling a promotion after its trigger moment has already passed this month must be rejected")
+        return
+
+    var town_simulation_no_rivals = VerticalSliceSimulationScript.new(config.duplicate(true))
+    if town_simulation_no_rivals.town.population != 2000:
+        _fail("the vertical-slice config's town population must be ported into TownState unchanged")
+        return
+    if town_simulation_no_rivals.demand.rival_store_count != 0:
+        _fail("the default vertical-slice config's town has no rivals, so rival_store_count must be zero")
+        return
+    var expected_default_land_value_yen := 24400000
+    if int(town_simulation_no_rivals.snapshot()["land_value_yen"]) != expected_default_land_value_yen:
+        _fail("land_value_yen must match LandValuePolicy's formula for the configured town at month 0")
+        return
+
+    var rival_town_config: Dictionary = config.duplicate(true)
+    rival_town_config["town"]["store_count_including_rivals"] = 4
+    var rival_simulation = VerticalSliceSimulationScript.new(rival_town_config)
+    if rival_simulation.demand.rival_store_count != 3:
+        _fail("rival_store_count must equal store_count_including_rivals minus the player's own store")
+        return
+    var no_rival_rate: float = town_simulation_no_rivals.demand.expected_arrivals_per_minute()
+    var rival_rate: float = rival_simulation.demand.expected_arrivals_per_minute()
+    var expected_rival_rate: float = no_rival_rate * (1.0 - 0.24)
+    if abs(rival_rate - expected_rival_rate) > 0.0000001:
+        _fail("rival dilution must reduce expected arrivals by RIVAL_DILUTION_PER_COMPETITOR per rival")
+        return
+
+    var capped_rival_config: Dictionary = config.duplicate(true)
+    capped_rival_config["town"]["store_count_including_rivals"] = 31
+    var capped_rival_simulation = VerticalSliceSimulationScript.new(capped_rival_config)
+    if capped_rival_simulation.demand.rival_store_count != 30:
+        _fail("rival_store_count must equal store_count_including_rivals minus the player's own store")
+        return
+    var capped_rate: float = capped_rival_simulation.demand.expected_arrivals_per_minute()
+    var expected_capped_rate: float = no_rival_rate * (1.0 - 0.6)
+    if abs(capped_rate - expected_capped_rate) > 0.0000001:
+        _fail("rival dilution must be capped at MAX_RIVAL_DILUTION even with many rivals")
+        return
+
+    var land_value_policy = LandValuePolicyScript.new()
+    var fully_developed_town = TownStateScript.new({"population": 20000, "store_count_including_rivals": 8})
+    var max_development_price: int = land_value_policy.current_land_price_yen(
+        20000000, fully_developed_town, 0.0
+    )
+    if max_development_price != 60000000:
+        _fail("a town at or above both development reference points must reach the maximum local development factor")
+        return
+    var inflated_price: int = land_value_policy.current_land_price_yen(
+        20000000, fully_developed_town, 1.0
+    )
+    var expected_inflated_price: int = int(round(20000000 * 3.0 * 1.05))
+    if inflated_price != expected_inflated_price:
+        _fail("current_land_price_yen must apply the annual inflation rate for elapsed_years > 0")
         return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)

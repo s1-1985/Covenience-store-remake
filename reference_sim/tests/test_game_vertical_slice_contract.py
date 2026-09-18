@@ -15,7 +15,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     def test_prototype_values_are_explicitly_marked_provisional(self):
-        self.assertEqual(self.config["schema_version"], 10)
+        self.assertEqual(self.config["schema_version"], 11)
         self.assertIs(self.config["provisional"], True)
         self.assertTrue(self.config["evidence_note"].strip())
         self.assertIn("not claims", self.config["evidence_note"])
@@ -335,6 +335,70 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "demand-driven admission must be blocked while a customer visit is still active",
             smoke,
         )
+
+    def test_town_state_and_rival_dilution_are_tagged_and_wired_into_demand(self):
+        town = self.config["town"]
+        for key in ("population", "store_count_including_rivals"):
+            self.assertIn(key, town)
+        self.assertGreaterEqual(town["population"], 0)
+        self.assertGreaterEqual(town["store_count_including_rivals"], 0)
+
+        town_state = (GAME_ROOT / "scripts" / "domain" / "town_state.gd").read_text(
+            encoding="utf-8"
+        )
+        land_value_policy = (
+            GAME_ROOT / "scripts" / "domain" / "land_value_policy.gd"
+        ).read_text(encoding="utf-8")
+        demand_policy = (GAME_ROOT / "scripts" / "domain" / "demand_policy.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # TownState mirrors reference_sim/conveni_sim/town.py: tracked state
+        # only, no invented spatial/map simulation.
+        self.assertIn("class_name TownState", town_state)
+        self.assertIn("var population: int", town_state)
+        self.assertIn("var store_count_including_rivals: int", town_state)
+
+        # LandValuePolicy is a REMAKE_BALANCED_DEFAULT placeholder ported
+        # from reference_sim/conveni_sim/remake_land_value.py, informational
+        # only (no feature yet consumes it).
+        self.assertIn("REMAKE_BALANCED_DEFAULT", land_value_policy)
+        self.assertIn("func local_development_factor(town) -> float:", land_value_policy)
+        self.assertIn("func time_inflation_factor(elapsed_years: float) -> float:", land_value_policy)
+        self.assertIn("func current_land_price_yen(", land_value_policy)
+        self.assertIn("informational only in this client", land_value_policy)
+
+        # Rival dilution reuses reference_sim's confirmed constants
+        # (remake_customer_share.py's RIVAL_DILUTION_PER_COMPETITOR /
+        # MAX_RIVAL_DILUTION) but applies them to the whole expected-visitor
+        # estimate rather than a 0-100 customer-share score, since this
+        # client has no service/cleaning/security/assortment stats yet.
+        self.assertIn("var rival_store_count: int", demand_policy)
+        self.assertIn("const RIVAL_DILUTION_PER_COMPETITOR := 0.08", demand_policy)
+        self.assertIn("const MAX_RIVAL_DILUTION := 0.6", demand_policy)
+        self.assertIn("scope simplification", demand_policy)
+
+        self.assertIn("town = TownStateScript.new(config[\"town\"])", simulation)
+        self.assertIn(
+            "demand.rival_store_count = max(0, town.store_count_including_rivals - 1)",
+            simulation,
+        )
+        self.assertIn("BASE_LAND_PRICE_YEN := 20_000_000", simulation)
+        self.assertIn('"land_value_yen":', simulation)
+
+        # What is deliberately NOT implemented: no rival AI decision logic
+        # (remake_rival_policy.py) is ported, since no rival-store entity
+        # exists in Godot yet for such a decision to act upon.
+        self.assertNotIn("RemakeBalancedRivalPolicy", simulation)
+        self.assertNotIn("rival_policy", simulation.lower())
+
+        self.assertIn("rival dilution must reduce expected arrivals", smoke)
+        self.assertIn("rival dilution must be capped at MAX_RIVAL_DILUTION", smoke)
+        self.assertIn("land_value_yen must match LandValuePolicy's formula", smoke)
 
     def test_promotions_port_confirmed_reference_sim_timing_and_apply_at_trigger(self):
         promotions = self.config["promotions"]
