@@ -1,6 +1,6 @@
 # Convenience Store Remake — Project Memory
 
-Last updated: 2026-09-06 (JST)
+Last updated: 2026-09-18 (JST)
 
 This file is the canonical memory checkpoint for the project. If chat context is lost, start by reading this file and the files under `docs/research/`.
 
@@ -646,3 +646,7 @@ Codexのチャット・PR・マージ運用の詳細は
 `docs/handoff/codex-chat-pr-workflow.md` を参照する。一往復ごとには区切らず、一つの目的を
 同じチャットで完成させ、マージ前チェック後にPR化する。PRマージ後の独立作業は、古い
 作業ブランチへ積まず、最新 `main` から新しいチャットを開始する。
+
+2026-09-18セッションの詳細な引き継ぎ(このセッションで決まった運用ルール、YouTube動画
+視聴不可という環境制約、UI表示ギャップ、先送りされた3項目、未検証の動画候補URL等)は
+`docs/handoff/2026-09-18-claude-code-session-handoff.md` を参照する。
