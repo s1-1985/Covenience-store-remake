@@ -287,6 +287,27 @@ known-product order for future observation replay; it still makes no arrival or 
 
 The store renderer also shows the tile/subcell grid, fixture footprints, interaction points, entry/exit points, customer, and staff.
 
+### Store grid dimensions and circulation (fidelity fix)
+
+The vertical slice's store grid was originally an arbitrary `7x6`-tile placeholder never
+cross-checked against any research, and its entry/exit sat on opposite corners of the store --
+neither is defensible as first-title-faithful. `store.width_tiles`/`height_tiles` now port
+`reference_sim/conveni_sim/baseline_data.py`'s `STORE_VARIANTS['small_top'].editable_floor = (5, 8)`
+tiles, a **CONFIRMED_OFFICIAL** strategy-guide transcription (book pages 106-109) that a prior
+session resolved into `reference_sim` but never carried into this file (see
+`docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md` sections 3 and 9). Entry and exit
+now sit on the same wall rather than diagonal corners, per the passage-width and
+circular-flow-with-minimal-dead-ends guidance in
+`docs/research/store-dimensions-and-fixture-costs-2026-09-05.md` section 5 and
+`docs/research/strategy-guide-full-decode-2026-09-16.md` section 20.3. The new fixture/staff
+coordinates were verified reachable (entry -> each shelf in `visit_plan_product_ids` order ->
+checkout -> exit) with a 4-directional BFS mirroring `store_layout.gd`'s own reachability check
+before being written into `vertical_slice.json`, and every hardcoded test coordinate in
+`headless_smoke.gd` that assumed the old grid was updated to match. `store_view.gd`'s
+`SUBCELL_PIXELS` dropped from `42.0` to `36.0` so the new, taller subcell grid still fits the
+1280x720 window without overlapping the status panel. See decision 0100. **This closes out task
+#31.**
+
 ## Important evidence boundary
 
 `data/vertical_slice.json` is explicitly marked `provisional: true`.

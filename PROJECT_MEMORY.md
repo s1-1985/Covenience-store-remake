@@ -503,9 +503,10 @@ downgrade thresholds costs -1. `VerticalSliceSimulation._evaluate_store_rating()
 `service_skill`/`security_skill`/`cleaning_skill` are new static REMAKE_BALANCED_DEFAULT config
 fields on `StaffState` -- the guide's skill-growth model (work-event counting, manager-education
 bonus) has not been ported to Godot at all yet, so these never change on their own; `size_tier`
-("small") is likewise a REMAKE_BALANCED_DEFAULT house-rule mapping, since the guide's three tiers
-are defined by exact dimensions (10x10/12x12/14x14) that this prototype's 7x6 store matches none
-of. Deliberately not implemented: the police-box/fire-station security-facility bonus (no such
+("small") is likewise a REMAKE_BALANCED_DEFAULT house-rule mapping, since `STORE_SIZE_VALUE_MULTIPLIER`'s
+three tiers are keyed by a *different*, already-flagged-as-conflicting guide dimension notation
+(10x10/12x12/14x14) than the store's actual `editable_floor` grid dimensions (see task #31 below).
+Deliberately not implemented: the police-box/fire-station security-facility bonus (no such
 fixtures or spatial search exist) and the guide's per-event rating deltas (angry customer/
 shoplifting/donation), since their trigger events aren't wired into this client either
 (decision 0096).
@@ -560,6 +561,21 @@ store simultaneously (a much larger architecture redesign, out of scope exactly 
 spatial model was in task #26), a dedicated victory screen, the contest's actual draw/payout, and
 rival chain open/acquire/close transitions (no rival-store entity exists in Godot yet). Chain state
 now round-trips through save/load (`SAVE_SCHEMA_VERSION` bumped 1 -> 2) (decision 0099).
+
+Task #31 (店舗グリッド寸法・動線を既存研究(攻略本準拠)に合わせる) fixes a fidelity gap the user
+directly flagged: the vertical slice's `7x6`-tile store grid and diagonal-corner entry/exit were
+never cross-checked against any research and are not plausible for the first title. `store.
+width_tiles`/`height_tiles` now port `STORE_VARIANTS['small_top'].editable_floor = (5, 8)` tiles from
+`reference_sim/conveni_sim/baseline_data.py`, a CONFIRMED_OFFICIAL strategy-guide transcription a
+prior session had already resolved into `reference_sim` but never carried into this file (see
+`docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md` sections 3 and 9). Entry and exit now
+sit on the same wall instead of opposite corners, per the passage-width/circular-flow guidance in
+`docs/research/store-dimensions-and-fixture-costs-2026-09-05.md` section 5 and
+`docs/research/strategy-guide-full-decode-2026-09-16.md` section 20.3; the new fixture/staff layout
+was verified reachable with a BFS mirroring `store_layout.gd`'s own check before being written, and
+every hardcoded coordinate in `headless_smoke.gd` that assumed the old grid was updated to match.
+`store_view.gd`'s `SUBCELL_PIXELS` dropped 42.0 -> 36.0 so the taller new grid still fits the window
+(decision 0100).
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 

@@ -4,38 +4,38 @@
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
   "store": {
-    "width_tiles": 7,
-    "height_tiles": 6,
+    "width_tiles": 5,
+    "height_tiles": 8,
     "subcells_per_tile": 2,
     "entry_subcell": [0, 0],
-    "exit_subcell": [0, 10],
+    "exit_subcell": [8, 0],
     "size_tier": "small",
-    "size_tier_evidence_note": "REMAKE_BALANCED_DEFAULT house-rule mapping, not a recovered value. reference_sim/conveni_sim/store_value.py's STORE_SIZE_VALUE_MULTIPLIER is keyed by the guide's own three size tiers (small=10x10 tiles, medium=12x12, large=14x14), and this prototype's 7x6 store does not match any of them exactly; 'small' (the smallest tier) is used as the closest reasonable fit."
+    "size_tier_evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py STORE_VARIANTS['small_top'].editable_floor = (5, 8) tiles (strategy guide 店舗データ table, book pages 106-109; see docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md section 3, resolved 2026-09-17). Supersedes this file's previous arbitrary 7x6 placeholder, which was never cross-checked against this data. The guide prints two orientations per size tier (5x8 and 8x5 for 'small'); which one the guide calls 'top' vs 'bottom' is itself an inferred, not confirmed, mapping (see the same research note), so either is equally defensible -- 5x8 ('small_top') is used here. Entry/exit are both placed on the same (front) wall rather than opposite corners, per the confirmed passage-width and circular-flow-with-minimal-dead-ends guidance in docs/research/store-dimensions-and-fixture-costs-2026-09-05.md section 5 and docs/research/strategy-guide-full-decode-2026-09-16.md section 20.3."
   },
   "fixtures": [
-    {
-      "id": "shelf-1",
-      "kind": "shelf",
-      "rotation_quarter_turns": 0,
-      "origin_subcell": [4, 4],
-      "footprint_tiles": [2, 1],
-      "interaction_subcell": [5, 3]
-    },
     {
       "id": "checkout-1",
       "kind": "checkout",
       "rotation_quarter_turns": 0,
-      "origin_subcell": [8, 6],
+      "origin_subcell": [3, 1],
       "footprint_tiles": [2, 1],
-      "interaction_subcell": [9, 5]
+      "interaction_subcell": [4, 3]
+    },
+    {
+      "id": "shelf-1",
+      "kind": "shelf",
+      "rotation_quarter_turns": 0,
+      "origin_subcell": [1, 6],
+      "footprint_tiles": [2, 1],
+      "interaction_subcell": [2, 5]
     },
     {
       "id": "shelf-2",
       "kind": "shelf",
       "rotation_quarter_turns": 0,
-      "origin_subcell": [4, 10],
+      "origin_subcell": [6, 6],
       "footprint_tiles": [2, 1],
-      "interaction_subcell": [5, 9]
+      "interaction_subcell": [7, 5]
     }
   ],
   "fixture_catalog": [
@@ -182,14 +182,14 @@
     "members": [
       {
         "id": "staff-1",
-        "start_subcell": [9, 5],
+        "start_subcell": [5, 3],
         "service_skill": 20,
         "security_skill": 15,
         "cleaning_skill": 15
       },
       {
         "id": "staff-2",
-        "start_subcell": [11, 5],
+        "start_subcell": [5, 9],
         "service_skill": 20,
         "security_skill": 15,
         "cleaning_skill": 15

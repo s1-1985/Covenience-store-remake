@@ -116,10 +116,10 @@ func _initialize() -> void:
     if simulation.layout.fixture_origin(shelf_id) != initial_shelf_origin:
         _fail("rejected fixture relocation must be atomic")
         return
-    if not simulation.try_relocate_fixture(shelf_id, Vector2i(4, 6)):
+    if not simulation.try_relocate_fixture(shelf_id, Vector2i(1, 10)):
         _fail("valid completed-visit fixture relocation was rejected")
         return
-    if simulation.layout.fixture_origin(shelf_id) != Vector2i(4, 6):
+    if simulation.layout.fixture_origin(shelf_id) != Vector2i(1, 10):
         _fail("accepted fixture relocation did not update the layout")
         return
 
@@ -562,7 +562,7 @@ func _initialize() -> void:
         return
     var cash_before_any_purchase: int = int(purchase_simulation.economy.cash_yen)
     if purchase_simulation.try_purchase_fixture(
-        "potted_plant", "amenity-occupied", Vector2i(4, 4), Vector2i(2, 4)
+        "potted_plant", "amenity-occupied", Vector2i(1, 6), Vector2i(2, 5)
     ):
         _fail("purchasing on top of an existing fixture must be rejected")
         return
@@ -570,32 +570,32 @@ func _initialize() -> void:
         _fail("a rejected fixture purchase must not change cash")
         return
     if not purchase_simulation.try_purchase_fixture(
-        "potted_plant", "amenity-1", Vector2i(12, 0), Vector2i(12, 2)
+        "potted_plant", "amenity-1", Vector2i(1, 10), Vector2i(1, 9)
     ):
         _fail("a valid, affordable fixture purchase must be accepted")
         return
     if purchase_simulation.economy.cash_yen != cash_before_any_purchase - 1000:
         _fail("a fixture purchase must deduct exactly its configured purchase price")
         return
-    if purchase_simulation.layout.fixture_origin("amenity-1") != Vector2i(12, 0):
+    if purchase_simulation.layout.fixture_origin("amenity-1") != Vector2i(1, 10):
         _fail("a purchased fixture must be placed at the requested origin")
         return
     if purchase_simulation.event_log.count_type("fixture_purchased") != 1:
         _fail("a completed fixture purchase must record exactly one fixture_purchased event")
         return
     if purchase_simulation.try_purchase_fixture(
-        "bench", "amenity-1", Vector2i(10, 0), Vector2i(10, 2)
+        "bench", "amenity-1", Vector2i(4, 10), Vector2i(4, 9)
     ):
         _fail("a duplicate fixture instance id must be rejected")
         return
     if purchase_simulation.try_purchase_fixture(
-        "unknown_catalog_entry", "amenity-2", Vector2i(10, 0), Vector2i(10, 2)
+        "unknown_catalog_entry", "amenity-2", Vector2i(4, 10), Vector2i(4, 9)
     ):
         _fail("an unknown fixture catalog id must be rejected")
         return
     var cash_before_unaffordable_purchase: int = int(purchase_simulation.economy.cash_yen)
     if purchase_simulation.try_purchase_fixture(
-        "fountain", "amenity-4", Vector2i(10, 0), Vector2i(10, 2)
+        "fountain", "amenity-4", Vector2i(1, 12), Vector2i(1, 11)
     ):
         _fail("a fixture purchase costing more than available cash must be rejected")
         return
@@ -612,7 +612,7 @@ func _initialize() -> void:
         _fail("a permit purchase without sufficient cash must be rejected")
         return
     if permit_simulation.try_purchase_fixture(
-        "small_tobacco_vending", "tobacco-shelf-1", Vector2i(12, 0), Vector2i(12, 2)
+        "small_tobacco_vending", "tobacco-shelf-1", Vector2i(4, 10), Vector2i(4, 9)
     ):
         _fail("a permit-gated fixture purchase must be rejected without the permit")
         return
@@ -640,7 +640,7 @@ func _initialize() -> void:
 
     var cash_before_vending_purchase: int = int(permit_simulation.economy.cash_yen)
     if not permit_simulation.try_purchase_fixture(
-        "small_tobacco_vending", "tobacco-shelf-1", Vector2i(12, 0), Vector2i(12, 2)
+        "small_tobacco_vending", "tobacco-shelf-1", Vector2i(6, 10), Vector2i(6, 9)
     ):
         _fail("a permit-gated fixture purchase must be accepted once the permit is held")
         return
@@ -871,7 +871,7 @@ func _initialize() -> void:
     steps += _run_visit(save_simulation)
     save_simulation.economy.cash_yen = 1_000_000
     if not save_simulation.try_purchase_fixture(
-        "potted_plant", "amenity-save-1", Vector2i(12, 0), Vector2i(12, 2)
+        "potted_plant", "amenity-save-1", Vector2i(1, 10), Vector2i(1, 9)
     ):
         _fail("the save/load test's fixture purchase setup must be accepted")
         return
@@ -912,7 +912,7 @@ func _initialize() -> void:
     if loaded_simulation.internal_rating_value != save_simulation.internal_rating_value:
         _fail("a loaded simulation must restore the exact saved internal_rating_value")
         return
-    if loaded_simulation.layout.fixture_origin("amenity-save-1") != Vector2i(12, 0):
+    if loaded_simulation.layout.fixture_origin("amenity-save-1") != Vector2i(1, 10):
         _fail("a loaded simulation must restore the exact saved fixture layout")
         return
     if loaded_simulation.inventory.total_stock_units() != save_simulation.inventory.total_stock_units():

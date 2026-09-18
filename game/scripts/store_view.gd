@@ -3,7 +3,7 @@ extends Node2D
 signal fixture_selected(fixture_id: String)
 signal fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i)
 
-const SUBCELL_PIXELS := 42.0
+const SUBCELL_PIXELS := 36.0
 
 var config: Dictionary = {}
 var simulation
