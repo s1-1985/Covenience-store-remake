@@ -7,6 +7,8 @@ const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.g
 const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
 const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
+const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
+const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
@@ -966,6 +968,118 @@ func _initialize() -> void:
     save_service.delete_save(test_save_path)
     if save_service.save_exists(test_save_path):
         _fail("delete_save must remove the save file")
+        return
+
+    var chain_visitor_milestone = ChainVisitorMilestoneScript.new()
+    if not chain_visitor_milestone.observe_total_visitors(5000, 1, 9).is_empty():
+        _fail("observing a total below the next threshold must not schedule an event")
+        return
+    var milestone_event: Dictionary = chain_visitor_milestone.observe_total_visitors(10000, 1, 9)
+    if milestone_event.is_empty():
+        _fail("observing an exact threshold multiple must schedule an event")
+        return
+    if int(milestone_event["trigger_day_index"]) != 2 or int(milestone_event["trigger_hour"]) != 0:
+        _fail("a milestone must trigger at 00:00 on the day after it was observed")
+        return
+    if int(milestone_event["popularity_gain"]) != 100:
+        _fail("a milestone's popularity gain must be exactly 100")
+        return
+    if not chain_visitor_milestone.pop_due(1, 23).is_empty():
+        _fail("a milestone must not be due before its trigger day")
+        return
+    var due_events: Array[Dictionary] = chain_visitor_milestone.pop_due(2, 0)
+    if due_events.size() != 1:
+        _fail("a milestone must become due at exactly its trigger day/hour")
+        return
+    if not chain_visitor_milestone.pop_due(2, 0).is_empty():
+        _fail("a fired milestone must not be popped as due a second time")
+        return
+
+    var store_events = StoreEventsScript.new()
+    if store_events.magazine_or_contest_event_is_eligible(9999, 5):
+        _fail("magazine/contest eligibility must require population >= 10000")
+        return
+    if store_events.magazine_or_contest_event_is_eligible(10000, 4):
+        _fail("magazine/contest eligibility must require store_count_including_rivals >= 5")
+        return
+    if not store_events.magazine_or_contest_event_is_eligible(10000, 5):
+        _fail("magazine/contest eligibility must accept the exact threshold values")
+        return
+    if store_events.compute_contest_prize_yen(7) != 70000000:
+        _fail("the contest prize must equal store_count_including_rivals x 10,000,000 yen")
+        return
+
+    var chain_config: Dictionary = config.duplicate(true)
+    chain_config["demand"] = {
+        "nearby_population": 0,
+        "customer_share_percent": 0.0,
+        "daily_visit_rate_per_population": 0.0,
+        "opening_minutes_per_day": 960,
+        "bad_weather_visit_multiplier": 0.0,
+        "is_bad_weather": false,
+        "rng_seed": 23,
+    }
+    var chain_simulation = VerticalSliceSimulationScript.new(chain_config)
+    if chain_simulation.player_store_count != 1:
+        _fail("a freshly reset simulation must start with exactly one store in the chain")
+        return
+    steps += _run_visit(chain_simulation)
+    var expansion_cost_yen: int = chain_simulation.chain_expansion_cost_yen()
+    if chain_simulation.try_expand_chain():
+        _fail("expanding the chain without sufficient cash must be rejected")
+        return
+    chain_simulation.economy.cash_yen = expansion_cost_yen
+    var cash_before_expansion: int = int(chain_simulation.economy.cash_yen)
+    if not chain_simulation.try_expand_chain():
+        _fail("expanding the chain with exactly sufficient cash must be accepted")
+        return
+    if chain_simulation.player_store_count != 2:
+        _fail("a successful chain expansion must increment player_store_count by exactly 1")
+        return
+    if chain_simulation.economy.cash_yen != cash_before_expansion - expansion_cost_yen:
+        _fail("a chain expansion must deduct exactly its computed cost")
+        return
+    if chain_simulation.event_log.count_type("chain_expanded") != 1:
+        _fail("a successful chain expansion must record exactly one chain_expanded event")
+        return
+    if chain_simulation.clear_condition_met:
+        _fail("clear_condition_met must not be set before reaching the scenario's store-count target")
+        return
+
+    var chain_snapshot: Dictionary = chain_simulation.snapshot()
+    if int(chain_snapshot["player_store_count"]) != 2:
+        _fail("snapshot() must expose the current player_store_count")
+        return
+    if int(chain_snapshot["chain_expansion_cost_yen"]) != chain_simulation.chain_expansion_cost_yen():
+        _fail("snapshot() must expose the current chain_expansion_cost_yen")
+        return
+
+    chain_simulation.player_store_count = 10
+    chain_simulation._evaluate_terminal_state()
+    if not chain_simulation.clear_condition_met:
+        _fail("clear_condition_met must be set once player_store_count reaches the scenario target")
+        return
+
+    var milestone_simulation = VerticalSliceSimulationScript.new(chain_config)
+    steps += _run_visit(milestone_simulation)
+    if milestone_simulation.popularity != 0:
+        _fail("a freshly reset simulation must start with zero popularity (chain milestone test)")
+        return
+    milestone_simulation._chain_visitor_milestone.observe_total_visitors(
+        10000, milestone_simulation.day_count + 1, milestone_simulation.minute_of_day / 60
+    )
+    var milestone_ticks := 0
+    while milestone_simulation.popularity == 0 and milestone_ticks < 20000:
+        milestone_simulation.tick_idle_for_demand()
+        milestone_ticks += 1
+    if milestone_ticks >= 20000:
+        _fail("the observed chain visitor milestone did not fire within 20000 ticks")
+        return
+    if milestone_simulation.popularity != 100:
+        _fail("a fired chain visitor milestone must apply exactly its configured popularity_gain")
+        return
+    if milestone_simulation.event_log.count_type("chain_visitor_milestone_fired") != 1:
+        _fail("a fired chain visitor milestone must record exactly one event")
         return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
