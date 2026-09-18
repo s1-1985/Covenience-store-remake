@@ -1,5 +1,5 @@
 {
-  "schema_version": 13,
+  "schema_version": 14,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -68,6 +68,79 @@
       "interaction_subcell": [
         7,
         5
+      ]
+    }
+  ],
+  "sample_layouts": [
+    {
+      "sample_id": "default_layout",
+      "label": "Default layout",
+      "evidence_note": "REMAKE_BALANCED_DEFAULT (task #37): first-title evidence (docs/research/ss-layout-entrance-register-and-chain-cannibalization-2026-09-06.md section 3) confirms the original title offers a built-in sample-layout loading path and that loading one is not trivially reversible, but not the exact content of any sample. This entry is simply this scenario's own starting arrangement (identical to the initial 'fixtures' array above), offered as a no-cost 'restore the starting layout' option so the destructive-load mechanism has a genuinely free-to-pick sample; it is not a claim about a recovered original sample layout.",
+      "fixtures": [
+        {
+          "id": "checkout-1",
+          "kind": "checkout",
+          "rotation_quarter_turns": 0,
+          "origin_subcell": [3, 1],
+          "footprint_tiles": [2, 1],
+          "interaction_subcell": [4, 3]
+        },
+        {
+          "id": "shelf-1",
+          "kind": "shelf",
+          "rotation_quarter_turns": 0,
+          "origin_subcell": [1, 6],
+          "footprint_tiles": [2, 1],
+          "interaction_subcell": [2, 5]
+        },
+        {
+          "id": "shelf-2",
+          "kind": "shelf",
+          "rotation_quarter_turns": 0,
+          "origin_subcell": [6, 6],
+          "footprint_tiles": [2, 1],
+          "interaction_subcell": [7, 5]
+        }
+      ]
+    },
+    {
+      "sample_id": "with_bench",
+      "label": "With a bench near the entrance",
+      "evidence_note": "REMAKE_BALANCED_DEFAULT (task #37): same evidence boundary as 'default_layout' above -- this is this project's own placeholder second sample (reuses the same checkout/shelf positions and adds one purchasable bench fixture), not a recovered original sample layout. Demonstrates that loading a sample can add a fixture not already owned, at that fixture's normal catalog price.",
+      "fixtures": [
+        {
+          "id": "checkout-1",
+          "kind": "checkout",
+          "rotation_quarter_turns": 0,
+          "origin_subcell": [3, 1],
+          "footprint_tiles": [2, 1],
+          "interaction_subcell": [4, 3]
+        },
+        {
+          "id": "shelf-1",
+          "kind": "shelf",
+          "rotation_quarter_turns": 0,
+          "origin_subcell": [1, 6],
+          "footprint_tiles": [2, 1],
+          "interaction_subcell": [2, 5]
+        },
+        {
+          "id": "shelf-2",
+          "kind": "shelf",
+          "rotation_quarter_turns": 0,
+          "origin_subcell": [6, 6],
+          "footprint_tiles": [2, 1],
+          "interaction_subcell": [7, 5]
+        },
+        {
+          "id": "sample-bench-1",
+          "kind": "amenity",
+          "catalog_id": "bench",
+          "rotation_quarter_turns": 0,
+          "origin_subcell": [1, 10],
+          "footprint_tiles": [1, 1],
+          "interaction_subcell": [1, 9]
+        }
       ]
     }
   ],

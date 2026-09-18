@@ -127,6 +127,16 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(0, 40)
 text = "Rotate selected fixture clockwise"
 
+[node name="SampleLayoutTitle" type="Label" parent="UI/Panel/Margin/VBox"]
+text = "Sample layout"
+
+[node name="SampleLayoutOption" type="OptionButton" parent="UI/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 40)
+
+[node name="LoadSampleLayoutButton" type="Button" parent="UI/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Load sample layout (replaces current, not undoable)"
+
 [node name="EventTitle" type="Label" parent="UI/Panel/Margin/VBox"]
 text = "Last event"
 

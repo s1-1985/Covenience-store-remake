@@ -22,6 +22,8 @@ const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
 @onready var reset_button: Button = $UI/Panel/Margin/VBox/Buttons/ResetButton
 @onready var next_customer_button: Button = $UI/Panel/Margin/VBox/NextCustomerButton
 @onready var rotate_fixture_button: Button = $UI/Panel/Margin/VBox/RotateFixtureButton
+@onready var sample_layout_option: OptionButton = $UI/Panel/Margin/VBox/SampleLayoutOption
+@onready var load_sample_layout_button: Button = $UI/Panel/Margin/VBox/LoadSampleLayoutButton
 @onready var save_button: Button = $UI/Panel/Margin/VBox/MenuButtons/SaveButton
 @onready var load_button: Button = $UI/Panel/Margin/VBox/MenuButtons/LoadButton
 @onready var quit_to_menu_button: Button = $UI/Panel/Margin/VBox/MenuButtons/QuitToMenuButton
@@ -32,6 +34,7 @@ var tick_seconds := 0.25
 var accumulator := 0.0
 var paused := false
 var _save_service
+var _sample_layout_ids: Array[String] = []
 
 
 func _ready() -> void:
@@ -50,11 +53,13 @@ func _ready() -> void:
         GameLaunchState.continue_from_save = false
         _save_service.load_from_path(simulation)
     store_view.bind(config, simulation)
+    _populate_sample_layout_option()
     pause_button.pressed.connect(_on_pause_pressed)
     step_button.pressed.connect(_on_step_pressed)
     reset_button.pressed.connect(_on_reset_pressed)
     next_customer_button.pressed.connect(_on_next_customer_pressed)
     rotate_fixture_button.pressed.connect(_on_rotate_fixture_pressed)
+    load_sample_layout_button.pressed.connect(_on_load_sample_layout_pressed)
     save_button.pressed.connect(_on_save_pressed)
     load_button.pressed.connect(_on_load_pressed)
     quit_to_menu_button.pressed.connect(_on_quit_to_menu_pressed)
@@ -148,6 +153,27 @@ func _on_rotate_fixture_pressed() -> void:
         layout_edit_label.text = "Finish the active visit before editing layout"
     else:
         layout_edit_label.text = "Cannot rotate there: blocked or route would break"
+    _refresh_ui()
+
+
+func _populate_sample_layout_option() -> void:
+    sample_layout_option.clear()
+    _sample_layout_ids.clear()
+    for entry in config["sample_layouts"]:
+        _sample_layout_ids.append(str(entry["sample_id"]))
+        sample_layout_option.add_item(str(entry["label"]))
+
+
+func _on_load_sample_layout_pressed() -> void:
+    if _sample_layout_ids.is_empty():
+        return
+    var sample_id: String = _sample_layout_ids[sample_layout_option.selected]
+    if simulation.try_load_sample_layout(sample_id):
+        layout_edit_label.text = "Loaded sample layout: %s" % sample_id
+    elif not simulation.customers.all_settled():
+        layout_edit_label.text = "Finish the active visit before loading a sample layout"
+    else:
+        layout_edit_label.text = "Cannot load that sample layout: unaffordable or would strand stocked inventory"
     _refresh_ui()
 
 

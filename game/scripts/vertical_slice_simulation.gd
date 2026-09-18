@@ -93,6 +93,7 @@ var is_game_over: bool
 var game_over_reason: String
 var clear_condition_met: bool
 var _fixture_catalog: Dictionary = {}
+var _sample_layout_catalog: Dictionary = {}
 var _permit_catalog: Dictionary = {}
 var _product_catalog: Dictionary = {}
 var _permits_held: Dictionary = {}
@@ -133,6 +134,8 @@ func _init(source_config: Dictionary) -> void:
         _product_catalog[str(entry["catalog_id"])] = entry
     for entry in config["promotions"]:
         _promotion_catalog[str(entry["promotion_id"])] = entry
+    for entry in config["sample_layouts"]:
+        _sample_layout_catalog[str(entry["sample_id"])] = entry
     layout = StoreLayoutScript.new(config["store"], config["fixtures"])
     inventory = InventoryCatalogScript.new(config["products"])
     economy = EconomyStateScript.new(config["economy"])
@@ -490,6 +493,74 @@ func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
         _refresh_interactions()
         return false
     _record_event("fixture_rotated", {"fixture_id": fixture_id})
+    return true
+
+
+# Replaces the entire store layout with a pre-built sample from
+# sample_layouts (task #37). Confirmed first-title evidence: a sample-layout
+# loading path exists in the original UI, and loading one is not trivially
+# reversible (docs/research/ss-layout-entrance-register-and-chain-
+# cannibalization-2026-09-06.md section 3) -- there is no confirmed undo, so
+# this client does not add one either. Any fixture id the sample reuses from
+# the current layout keeps its existing ownership at no extra cost (this is
+# a rearrangement, not a repurchase); any id the sample introduces that the
+# current layout does not already have is charged at that catalog entry's
+# normal purchase price, same as try_purchase_fixture. To avoid inventing an
+# "auto-clear inventory" rule the evidence does not describe, loading a
+# sample that would remove a fixture currently holding procured stock is
+# rejected outright rather than silently discarding that inventory.
+func try_load_sample_layout(sample_id: String) -> bool:
+    if is_game_over or not customers.all_settled() or _any_restock_task_active():
+        return false
+    if not _sample_layout_catalog.has(sample_id):
+        return false
+    var sample_fixtures: Array = _sample_layout_catalog[sample_id]["fixtures"]
+    var checkout_fixture_id := str(config["simulation"]["checkout_fixture_id"])
+    var sample_ids: Dictionary = {}
+    var total_cost_yen := 0
+    for entry in sample_fixtures:
+        var fixture_id := str(entry["id"])
+        sample_ids[fixture_id] = true
+        if str(entry["kind"]) == "checkout" and fixture_id != checkout_fixture_id:
+            return false
+    if not sample_ids.has(checkout_fixture_id):
+        return false
+    for entry in sample_fixtures:
+        var fixture_id := str(entry["id"])
+        if layout.fixtures_by_id.has(fixture_id):
+            continue
+        var catalog_id := str(entry.get("catalog_id", ""))
+        if catalog_id.is_empty() or not _fixture_catalog.has(catalog_id):
+            return false
+        total_cost_yen += int(_fixture_catalog[catalog_id]["purchase_price_yen"])
+    for product in inventory.products.values():
+        if not sample_ids.has(str(product.fixture_id)):
+            return false
+    if economy.cash_yen < total_cost_yen:
+        return false
+    var candidate_fixtures: Array = []
+    for entry in sample_fixtures:
+        candidate_fixtures.append((entry as Dictionary).duplicate(true))
+    if not layout.fixture_snapshot_is_valid(candidate_fixtures):
+        return false
+    var previous_fixtures: Array = layout.fixture_snapshot()
+    layout.restore_fixture_snapshot(candidate_fixtures)
+    _refresh_interactions()
+    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+        layout.restore_fixture_snapshot(previous_fixtures)
+        _refresh_interactions()
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "sample_layout_loaded",
+        minute_of_day,
+        total_cost_yen,
+        {"sample_id": sample_id}
+    )
+    _record_event("sample_layout_loaded", {
+        "sample_id": sample_id,
+        "expense_id": expense["expense_id"],
+        "fixture_count": sample_fixtures.size(),
+    })
     return true
 
 
@@ -1198,8 +1269,8 @@ func _require_save_data(data: Dictionary) -> void:
 
 
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 13)
-    for key in ["store", "fixtures", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand", "town"]:
+    assert(int(config.get("schema_version", -1)) == 14)
+    for key in ["store", "fixtures", "sample_layouts", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand", "town"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
             assert(false)
