@@ -664,6 +664,33 @@ says exact queue coordinates are unconfirmed) and register-orientation-dependent
 waiting customers stay logically queued at the checkout interaction cell, offset only cosmetically in
 the renderer.
 
+Task #37 (サンプルレイアウト読み込み機能) closes the second item of that same backlog. First-title
+evidence confirms a built-in sample-layout loading path exists and that loading one is not trivially
+reversible, but not what any sample actually contains -- an asymmetry this task's implementation keeps
+explicit: the *mechanism* (`try_load_sample_layout`) is a CONFIRMED requirement, while the two sample
+layouts themselves (`default_layout`, `with_bench`, in `vertical_slice.json`'s new `sample_layouts`
+section) are this project's own REMAKE_BALANCED_DEFAULT placeholders, tagged as such in their own
+`evidence_note` rather than presented as recovered data. Loading a sample reuses any fixture id already
+in the current layout for free (a rearrangement, not a resale) and only charges catalog price for ids
+the sample introduces that the layout doesn't already have -- sidestepping the research note's other
+unresolved question (exact resale ratio) entirely rather than inventing an answer to it. No undo/sell
+mechanic exists, matching the note's own instruction to treat `load sample`, `sell/remove fixture`, and
+`restore previous layout` as separate, still-open questions; internally, `restore_fixture_snapshot` is
+used only for atomic rollback of a *rejected* load, never as a player-facing "undo". Loading a sample
+that would strand currently-procured inventory on a fixture the sample omits is rejected rather than
+this client inventing an auto-clear-inventory rule, and a sample missing the fixed `checkout_fixture_id`
+is rejected before `_refresh_interactions()` would otherwise assert on a missing fixture. `vertical_
+slice.json`'s `schema_version` moved 13 -> 14 for the new required `sample_layouts` section. A dedicated
+`SampleLayoutOption`/`LoadSampleLayoutButton` pair in `main.tscn` makes this reachable through ordinary
+play, same as task #36's concurrency work (decision 0106).
+
+Of the three items in the "3.2節" backlog the 2026-09-18 handoff first deferred, two are now done
+(tasks #36 and #37); the third, fixture-attention differentiation, conflicts with decision 0004's
+explicit "deliberately absent: incidental/add-on purchase probability" boundary (attention could only
+plausibly affect an add-on-purchase probability that doesn't exist in this client at all yet) and
+remains unstarted pending an explicit user decision to lift that boundary, the same way task #33 got
+one for register-skill checkout timing.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

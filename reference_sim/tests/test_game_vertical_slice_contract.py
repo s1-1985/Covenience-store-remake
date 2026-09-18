@@ -15,7 +15,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     def test_prototype_values_are_explicitly_marked_provisional(self):
-        self.assertEqual(self.config["schema_version"], 13)
+        self.assertEqual(self.config["schema_version"], 14)
         self.assertIs(self.config["provisional"], True)
         self.assertTrue(self.config["evidence_note"].strip())
         self.assertIn("not claims", self.config["evidence_note"])
@@ -472,6 +472,66 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "second customer never had to wait in the checkout queue behind the first",
             smoke,
         )
+
+    def test_sample_layouts_can_be_loaded_and_are_destructive_not_undoable(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        layout = (GAME_ROOT / "scripts" / "domain" / "store_layout.gd").read_text(
+            encoding="utf-8"
+        )
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        config = self.config
+
+        # Sample-layout existence and its destructive/non-reversible loading
+        # are CONFIRMED first-title evidence
+        # (docs/research/ss-layout-entrance-register-and-chain-
+        # cannibalization-2026-09-06.md section 3); the exact content of any
+        # sample is not, so every sample here must be tagged
+        # REMAKE_BALANCED_DEFAULT rather than presented as recovered data.
+        self.assertIn("sample_layouts", config)
+        self.assertGreaterEqual(len(config["sample_layouts"]), 1)
+        sample_ids = set()
+        for sample in config["sample_layouts"]:
+            self.assertIn("sample_id", sample)
+            self.assertIn("REMAKE_BALANCED_DEFAULT", sample["evidence_note"])
+            sample_ids.add(sample["sample_id"])
+            fixture_ids = {f["id"] for f in sample["fixtures"]}
+            self.assertIn(config["simulation"]["checkout_fixture_id"], fixture_ids)
+        self.assertIn("default_layout", sample_ids)
+        self.assertIn("with_bench", sample_ids)
+
+        self.assertIn("func try_load_sample_layout(sample_id: String) -> bool:", simulation)
+        self.assertIn("not customers.all_settled()", simulation)
+
+        # No undo/resale mechanic is invented: reusing an already-owned
+        # fixture id is free, a genuinely new one costs its normal catalog
+        # price, and there is no separate "sell fixture"/"restore previous
+        # layout" path -- matching the research note's own boundary ("Keep
+        # `load sample`, `sell/remove fixture`, and `restore previous
+        # layout` as separate research questions").
+        self.assertIn("purchase_price_yen", simulation)
+        self.assertNotIn("func try_sell_fixture", simulation)
+        self.assertNotIn("func try_undo_sample_layout", simulation)
+
+        # Loading a sample that would strand currently-stocked inventory on
+        # a fixture the sample omits is rejected outright, rather than this
+        # client inventing an auto-clear-inventory rule the evidence does
+        # not describe.
+        self.assertIn("func fixture_snapshot_is_valid", layout)
+        self.assertIn(
+            "a sample that omits a fixture holding procured stock must be rejected",
+            smoke,
+        )
+
+        # Reachable from ordinary play through dedicated HUD controls, not
+        # only a scripted/test-only path.
+        self.assertIn('name="SampleLayoutOption"', scene)
+        self.assertIn('name="LoadSampleLayoutButton"', scene)
+        self.assertIn("func _on_load_sample_layout_pressed() -> void:", main)
+        self.assertIn("simulation.try_load_sample_layout(sample_id)", main)
 
     def test_demand_driven_customer_arrival_is_a_tagged_remake_default(self):
         demand = self.config["demand"]

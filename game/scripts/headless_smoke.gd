@@ -37,6 +37,8 @@ func _initialize() -> void:
         "UI/Panel/Margin/VBox/MenuButtons/QuitToMenuButton",
         "UI/Panel/Margin/VBox/RatingValue",
         "UI/Panel/Margin/VBox/TownValue",
+        "UI/Panel/Margin/VBox/SampleLayoutOption",
+        "UI/Panel/Margin/VBox/LoadSampleLayoutButton",
     ]:
         if main_instance.get_node_or_null(node_path) == null:
             _fail("main scene is missing expected node: %s" % node_path)
@@ -708,6 +710,61 @@ func _initialize() -> void:
         return
     if not concurrent_simulation.customers.can_admit_concurrent():
         _fail("can_admit_concurrent() must be true again once both customers are done")
+        return
+
+    # Task #37: loading a built-in sample layout.
+    var sample_layout_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(sample_layout_simulation)
+    var cash_before_sample_load: int = sample_layout_simulation.economy.cash_yen
+    if not sample_layout_simulation.try_load_sample_layout("default_layout"):
+        _fail("loading a sample that reuses only already-owned fixture ids must always be accepted")
+        return
+    if sample_layout_simulation.economy.cash_yen != cash_before_sample_load:
+        _fail("loading a sample that reuses only already-owned fixtures must not charge anything")
+        return
+    if sample_layout_simulation.try_load_sample_layout("with_bench"):
+        _fail("loading a sample that adds a new fixture must be rejected when unaffordable")
+        return
+    sample_layout_simulation.economy.cash_yen += 100_000
+    if not sample_layout_simulation.try_load_sample_layout("with_bench"):
+        _fail("a valid, affordable sample layout must be accepted")
+        return
+    if not sample_layout_simulation.layout.fixtures_by_id.has("sample-bench-1"):
+        _fail("loading the with_bench sample must add its bench fixture")
+        return
+    var cash_after_bench_load: int = sample_layout_simulation.economy.cash_yen
+    if not sample_layout_simulation.try_load_sample_layout("with_bench"):
+        _fail("re-loading a sample whose fixtures are all already owned must be accepted")
+        return
+    if sample_layout_simulation.economy.cash_yen != cash_after_bench_load:
+        _fail("re-loading a sample must not charge again for fixtures it already owns")
+        return
+    if sample_layout_simulation.try_load_sample_layout("does-not-exist"):
+        _fail("loading an unknown sample id must be rejected")
+        return
+    if not sample_layout_simulation.start_next_customer():
+        _fail("could not start a customer to test the sample-layout edit lock")
+        return
+    if sample_layout_simulation.try_load_sample_layout("default_layout"):
+        _fail("loading a sample layout must be locked during an active visit, same as other layout edits")
+        return
+    steps += _run_visit(sample_layout_simulation)
+
+    # A sample that omits a fixture currently holding procured stock must be
+    # rejected rather than silently discarding that inventory.
+    var orphan_config: Dictionary = config.duplicate(true)
+    var orphan_sample: Dictionary = (orphan_config["sample_layouts"][0] as Dictionary).duplicate(true)
+    orphan_sample["sample_id"] = "test-only-omits-shelf-2"
+    var orphan_fixtures: Array = []
+    for fixture in (orphan_sample["fixtures"] as Array):
+        if str((fixture as Dictionary)["id"]) != "shelf-2":
+            orphan_fixtures.append(fixture)
+    orphan_sample["fixtures"] = orphan_fixtures
+    orphan_config["sample_layouts"].append(orphan_sample)
+    var orphan_simulation = VerticalSliceSimulationScript.new(orphan_config)
+    steps += _run_visit(orphan_simulation)
+    if orphan_simulation.try_load_sample_layout("test-only-omits-shelf-2"):
+        _fail("a sample that omits a fixture holding procured stock must be rejected, not silently discard it")
         return
 
     var permit_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
