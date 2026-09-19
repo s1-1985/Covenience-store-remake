@@ -17,6 +17,7 @@ const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor
 const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
 const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
 const RestockTimingScript := preload("res://scripts/domain/restock_timing.gd")
+const StaffGrowthScript := preload("res://scripts/domain/staff_growth.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -116,6 +117,7 @@ var _chain_visitor_milestone
 var _store_events
 var _checkout_timing
 var _restock_timing
+var _staff_growth
 # FIFO order in which customers who have finished shopping are waiting for
 # the single checkout fixture's one staff-service slot (task #36, concurrent
 # customers). Serving strictly in arrival order is this project's own
@@ -162,6 +164,7 @@ func _init(source_config: Dictionary) -> void:
     _store_events = StoreEventsScript.new()
     _checkout_timing = CheckoutTimingScript.new()
     _restock_timing = RestockTimingScript.new()
+    _staff_growth = StaffGrowthScript.new()
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -673,6 +676,20 @@ func _advance_customer(customer) -> void:
                     "staff_id": checkout_staff.staff_id,
                     "transaction_id": customer.settled_transaction_id,
                 })
+                # Task #48: a completed checkout task is a confirmed work-
+                # growth trigger (register_skill/service_skill), applied
+                # whether or not the customer actually bought anything --
+                # the guide's growth model is about performing the work
+                # task, not the resulting transaction.
+                var checkout_growth: Array[Dictionary] = _staff_growth.apply_checkout_growth(
+                    checkout_staff
+                )
+                if not checkout_growth.is_empty():
+                    _record_event("staff_skill_growth", {
+                        "staff_id": checkout_staff.staff_id,
+                        "task": "checkout",
+                        "skills": checkout_growth,
+                    })
         "leaving":
             if customer.move_along_route("done"):
                 _record_event("customer_exited", {"customer_id": customer.customer_id})
@@ -808,6 +825,16 @@ const SAVE_SCHEMA_VERSION := 2
 # an exact mid-route position would need to serialize pathfinding routes
 # for very little player-facing value, since the same route recomputes
 # deterministically once the game resumes.
+#
+# Also not saved/restored as of task #48: any register_skill/service_skill/
+# replenishment_skill/cleaning_skill/security_skill growth staff members
+# accumulated from completed work (StaffGrowth). load_state()'s staff.reset()
+# call restores every skill to its config-derived starting value, same as
+# every other subsystem this function's own comment already promises to
+# clear "back to its config-derived starting point" -- so a save/load round
+# trip currently reverts accumulated skill growth rather than preserving it.
+# Extending the save format to persist current skill values is explicitly
+# out of scope for task #48 (see decision 0117).
 func save_state() -> Dictionary:
     return {
         "save_schema_version": SAVE_SCHEMA_VERSION,
@@ -1277,6 +1304,18 @@ func _complete_restock(staff_member) -> void:
             "staff_id": staff_member.staff_id,
             "expense_id": expense["expense_id"],
             "resulting_stock_units": resulting_stock,
+        })
+    # Task #48: a completed restock task is a confirmed work-growth
+    # trigger (replenishment_skill/cleaning_skill/security_skill),
+    # applied whether or not any units actually needed restocking (the
+    # guide's growth model is about performing the work task, not its
+    # economic result) -- same rationale as checkout growth above.
+    var restock_growth: Array[Dictionary] = _staff_growth.apply_replenish_growth(staff_member)
+    if not restock_growth.is_empty():
+        _record_event("staff_skill_growth", {
+            "staff_id": staff_member.staff_id,
+            "task": "replenish",
+            "skills": restock_growth,
         })
     staff_member.finish_restock()
 

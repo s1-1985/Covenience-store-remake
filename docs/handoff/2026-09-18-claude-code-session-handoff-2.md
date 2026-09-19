@@ -286,6 +286,25 @@ crosscheckドキュメントを必ず先に確認すること。
     (register_skill/replenishment_skillを「将来消費予定」のまま古い記述に
     していた)が見つかったため併せて是正。決定書0116。
 
+22. PR #218マージ後、次タスクの候補を2つ調査して`AskUserQuestion`で提示
+    (「スタッフのスキル成長」vs「チェックアウト怒りペナルティ」、後者は
+    reference_sim自体が閾値/下限値を未確定のまま呼び出し側に委ねている
+    ため見送り推奨とした)。ユーザーが「スタッフのスキル成長(推奨)」を
+    選択。**タスク#48**: `game/scripts/domain/staff_growth.gd`を新規作成し、
+    `reference_sim/conveni_sim/staff_growth_resolution.py` +
+    `remake_staff_growth.py`を移植(`apply_checkout_growth()`/
+    `apply_replenish_growth()`、レジ/補充の完了ごとにスキルを+1、各スキル
+    自身の`*_skill_growth_ceiling`でクランプ)。5ペア中「補充→補充スキル」
+    のみCONFIRMED_COMMUNITYで、残り4ペアはREMAKE_BALANCED_DEFAULT。
+    `staff.members`に`*_skill_growth_ceiling`(CONFIRMED_OFFICIAL、
+    `staff_candidates`から複製)を追加し、`StaffState.reset()`がスキルを
+    起点値へ復元するよう拡張(`load_state()`の既存コメントの契約を保つ
+    ため)。店長教育ボーナスと清掃タスクの成長は、それぞれ「マネージャー
+    指定データなし」「清掃タスク自体が未実装」という理由で対象外。
+    月末レーティングテストのハードコード値がチェックアウト成長で壊れた
+    ため、実際のスタッフ状態/`CustomerShare`クラスから動的に再計算する
+    形に修正。決定書0117。
+
 ## 3. 検証
 
 - `headless_smoke.gd`: タスク#35は構造チェックに新ラベルのノードパスを追加、
@@ -409,7 +428,8 @@ download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip`から再ダウンロー�
 | #215 | タスク#44(customer_share_percentを月次で再計算するよう配線) | マージ済み |
 | #216 | タスク#45(什器のcapacity/compatible_product_categoriesを仕入れ処理へ配線) | マージ済み |
 | #217 | タスク#46(什器のmaintenance_yen_per_dayを日次収支へ配線) | マージ済み |
-| (作成予定) | タスク#47(スタッフのsalary_yen_per_day_24hを日次収支へ配線) | 作業中 |
+| #218 | タスク#47(スタッフのsalary_yen_per_day_24hを日次収支へ配線) | マージ済み |
+| (作成予定) | タスク#48(スタッフのスキル成長をwork-eventベースで配線) | 作業中 |
 
 ## 7. 作業ブランチについて
 

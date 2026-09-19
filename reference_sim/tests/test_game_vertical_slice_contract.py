@@ -1691,6 +1691,87 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         self.assertIn("exactly one staff_wages_charged event must be recorded", smoke)
 
+    def test_staff_skill_growth_ceilings_are_wired_into_work_event_growth(self):
+        from conveni_sim.baseline_data import STAFF_CANDIDATES
+
+        candidates_by_id = {c.id: c for c in STAFF_CANDIDATES}
+        members = self.config["staff"]["members"]
+        self.assertEqual(len(members), 2)
+
+        # Every *_skill_growth_ceiling on each active staff.members entry
+        # must be CONFIRMED_OFFICIAL, duplicated verbatim from that
+        # member's own bound candidate card -- the same pattern the five
+        # skills and salary_yen_per_day_24h already follow (tasks #32/#47).
+        ceiling_fields = (
+            "service_skill_growth_ceiling",
+            "register_skill_growth_ceiling",
+            "cleaning_skill_growth_ceiling",
+            "replenishment_skill_growth_ceiling",
+            "security_skill_growth_ceiling",
+        )
+        for member in members:
+            bound = candidates_by_id[member["candidate_id"]]
+            for field in ceiling_fields:
+                self.assertEqual(member[field], getattr(bound, field).value)
+
+        staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
+            encoding="utf-8"
+        )
+        for field in ceiling_fields:
+            self.assertIn("var %s: int" % field, staff_state)
+            self.assertIn('staff_config.get("%s", 0)' % field, staff_state)
+        # Skill growth must be undone by reset(), not just position/state,
+        # now that skills are no longer static for a StaffState's lifetime.
+        self.assertIn("service_skill = _start_service_skill", staff_state)
+        self.assertIn("register_skill = _start_register_skill", staff_state)
+
+        growth = (GAME_ROOT / "scripts" / "domain" / "staff_growth.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("class_name StaffGrowth", growth)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", growth)
+        self.assertIn("CONFIRMED_COMMUNITY", growth)
+        self.assertIn("func apply_checkout_growth(staff_member) -> Array[Dictionary]:", growth)
+        self.assertIn("func apply_replenish_growth(staff_member) -> Array[Dictionary]:", growth)
+
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # Wired into the two real work-task completion points, not just
+        # present as an unused class.
+        self.assertIn("_staff_growth.apply_checkout_growth(", simulation)
+        self.assertIn("_staff_growth.apply_replenish_growth(", simulation)
+        self.assertIn('_record_event("staff_skill_growth"', simulation)
+
+        # Explicit restock (the instant UI action, apply_explicit_restock())
+        # must stay distinct from the automatic work-task growth trigger:
+        # it models no staff work time at all, so it must never call into
+        # StaffGrowth.
+        explicit_restock_body = simulation.split("func apply_explicit_restock(")[1].split(
+            "\nfunc "
+        )[0]
+        self.assertNotIn("_staff_growth", explicit_restock_body)
+
+        self.assertIn(
+            "must grow the checkout staff's register_skill/service_skill by +1", smoke
+        )
+        self.assertIn(
+            "must grow the restock staff's replenishment/cleaning/security skills by +1", smoke
+        )
+        self.assertIn("exactly one staff_skill_growth event must be recorded per completed", smoke)
+
+        # No stale claim should remain anywhere after this task (the same
+        # kind of drift task #43 corrected for service/security/
+        # cleaning_skill, and task #46/#47 corrected for their own fields).
+        self.assertNotIn("growth ceilings remain unconsumed", self.config["staff_candidates_evidence_note"])
+        self.assertNotIn(
+            "these values are static starting points that never change on their own",
+            self.config["staff"]["skill_evidence_note"],
+        )
+        self.assertIn("REMAKE_BALANCED_DEFAULT", self.config["staff"]["skill_evidence_note"])
+
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"

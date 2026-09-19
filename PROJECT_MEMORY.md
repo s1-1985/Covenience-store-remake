@@ -933,6 +933,36 @@ listed salary among unconsumed fields, both now false). See decision 0116. `head
 at 764 steps (reused task #46's own scenario rather than adding a new one); `reference_sim` full suite 661
 passed/1 xfailed.
 
+**Task #48 (2026-09-19)**: the user was offered a choice between wiring staff skill growth (work-event
+counting against each candidate's own CONFIRMED_OFFICIAL `*_skill_growth_ceiling`, already flagged as the
+next candidate in task #47's own out-of-scope note) and a checkout-anger penalty (blocked on an unconfirmed
+trigger threshold/floor reference_sim itself leaves for callers to invent), and chose skill growth. New
+`game/scripts/domain/staff_growth.gd` ports `reference_sim/conveni_sim/staff_growth_resolution.py` +
+`remake_staff_growth.py` into `apply_checkout_growth()` (register_skill+service_skill) and
+`apply_replenish_growth()` (replenishment_skill+cleaning_skill+security_skill), each +1 per completed work
+task, clamped to that skill's own growth ceiling. Of these five (task, skill) pairs, only
+replenish->replenishment_skill's +1 is CONFIRMED_COMMUNITY; the other four reuse +1 as a
+REMAKE_BALANCED_DEFAULT guess, matching reference_sim's own equivalent default. Wired into
+`VerticalSliceSimulation` at the two real work-task completion points (checkout phase completion,
+`_complete_restock()`), applied regardless of whether the task produced a sale/restocked quantity (the
+guide's growth model is about performing the work, not its economic result); deliberately NOT wired into
+`apply_explicit_restock()` (the instant UI restock action models no staff work time at all). Not ported:
+the manager-education growth bonus (no "who is the manager" designation exists among `staff.members` in
+this vertical slice) and clean-task growth (no standalone cleaning task/mechanic exists in this client at
+all, unaffected since task #41). `staff.members`' two active entries gained the five `*_skill_growth_ceiling`
+fields (CONFIRMED_OFFICIAL, duplicated from their bound `staff_candidates` entry, same pattern as tasks
+#32/#47), and `StaffState.reset()` now restores skills to their config-derived starting value (previously a
+no-op since skills were static) so `VerticalSliceSimulation.load_state()`'s existing "clears every subsystem
+back to its config-derived starting point" comment stays true; skill growth itself is explicitly not part of
+the save/load format yet (noted in `save_state()`'s own comment), so a save/load round trip currently reverts
+accumulated growth. Fixing this broke the month-end rating scenario's hardcoded `service_value`/
+`customer_share_percent` expectations (the scenario's own single checkout grows staff-1's service_skill
+17->18 before the rating fires); rewritten to compute both dynamically from the simulation's actual
+post-growth state instead of hand-derived literals. See decision 0117. `headless_smoke.gd` gained direct
+`StaffGrowth` unit coverage (mirroring CheckoutTiming/RestockTiming's own unit tests) plus growth assertions
+added to task #40's existing automatic-restock scenario; 764 steps (no new independent scenario, assertions
+only). `reference_sim` full suite 662 passed/1 xfailed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
