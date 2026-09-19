@@ -695,8 +695,10 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # Rival dilution reuses reference_sim's confirmed constants
         # (remake_customer_share.py's RIVAL_DILUTION_PER_COMPETITOR /
         # MAX_RIVAL_DILUTION) but applies them to the whole expected-visitor
-        # estimate rather than a 0-100 customer-share score, since this
-        # client has no service/cleaning/security/assortment stats yet.
+        # estimate rather than a 0-100 customer-share score: service/
+        # security/cleaning stats exist since task #27 (store_value.gd) but
+        # feed the monthly star rating, not a customer_share_percent
+        # formula here, and assortment breadth still has no stat at all.
         self.assertIn("var rival_store_count: int", demand_policy)
         self.assertIn("const RIVAL_DILUTION_PER_COMPETITOR := 0.08", demand_policy)
         self.assertIn("const MAX_RIVAL_DILUTION := 0.6", demand_policy)
