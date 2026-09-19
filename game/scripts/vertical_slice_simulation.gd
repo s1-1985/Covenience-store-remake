@@ -18,6 +18,7 @@ const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
 const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
 const RestockTimingScript := preload("res://scripts/domain/restock_timing.gd")
 const StaffGrowthScript := preload("res://scripts/domain/staff_growth.gd")
+const CheckoutAngerScript := preload("res://scripts/domain/checkout_anger.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -118,6 +119,7 @@ var _store_events
 var _checkout_timing
 var _restock_timing
 var _staff_growth
+var _checkout_anger
 # FIFO order in which customers who have finished shopping are waiting for
 # the single checkout fixture's one staff-service slot (task #36, concurrent
 # customers). Serving strictly in arrival order is this project's own
@@ -165,6 +167,7 @@ func _init(source_config: Dictionary) -> void:
     _checkout_timing = CheckoutTimingScript.new()
     _restock_timing = RestockTimingScript.new()
     _staff_growth = StaffGrowthScript.new()
+    _checkout_anger = CheckoutAngerScript.new()
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -659,6 +662,26 @@ func _advance_customer(customer) -> void:
             pass  # Dequeued by _dispatch_checkout_queue() once the checkout is free.
         "checkout":
             customer.checkout_ticks_remaining -= 1
+            # Task #49: a checkout service running unusually long (relative
+            # to the confirmed CheckoutTiming reference duration) angers the
+            # customer exactly once per checkout, applying the confirmed -2
+            # penalty to the currently serving staff member.
+            if not customer.checkout_anger_triggered:
+                var elapsed_ticks: int = (
+                    customer.checkout_assigned_ticks - customer.checkout_ticks_remaining
+                )
+                if elapsed_ticks > _checkout_anger.trigger_ticks(_checkout_ticks):
+                    customer.checkout_anger_triggered = true
+                    var angry_checkout_staff = staff.checkout_staff()
+                    var penalty_results: Dictionary = _checkout_anger.apply_penalty(
+                        angry_checkout_staff
+                    )
+                    _record_event("checkout_anger_triggered", {
+                        "customer_id": customer.customer_id,
+                        "staff_id": angry_checkout_staff.staff_id,
+                        "elapsed_ticks": elapsed_ticks,
+                        "skills": penalty_results,
+                    })
             if customer.checkout_ticks_remaining <= 0:
                 var checkout_staff = staff.checkout_staff()
                 if not customer.basket.is_empty():
@@ -715,6 +738,7 @@ func _dispatch_checkout_queue() -> void:
     customer.checkout_ticks_remaining = _checkout_timing.required_ticks(
         checkout_staff.register_skill, _checkout_ticks
     )
+    customer.checkout_assigned_ticks = customer.checkout_ticks_remaining
     checkout_staff.state = "checkout"
     _record_event("checkout_started", {
         "customer_id": customer.customer_id,

@@ -9,6 +9,8 @@ var planned_product_ids: Array[String] = []
 var plan_index := 0
 var shopping_ticks_remaining := 0
 var checkout_ticks_remaining := 0
+var checkout_assigned_ticks := 0
+var checkout_anger_triggered := false
 var route: Array[Vector2i] = []
 var settled_transaction_id := ""
 var settled_total_yen := 0
@@ -31,6 +33,8 @@ func begin(
     plan_index = 0
     shopping_ticks_remaining = 0
     checkout_ticks_remaining = 0
+    checkout_assigned_ticks = 0
+    checkout_anger_triggered = false
     route = initial_route
     settled_transaction_id = ""
     settled_total_yen = 0
