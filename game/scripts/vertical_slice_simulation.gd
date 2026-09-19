@@ -251,6 +251,43 @@ func start_explicit_customer(customer_id: String, product_ids: Array[String]) ->
     return true
 
 
+# Task #52: an explicit player action, confirmed by the strategy guide
+# (book p.35, CONFIRMED_OFFICIAL, directly re-read): "怒りやすいお客さん
+# は、おじさんやおじいさんに多い。もしレジ前の混雑にこの人が混じってい
+# たら、カーソルをこの人に合わせて決定ボタン。怒り出すまえに"つまみだ
+# す"を選んで、お店の外に出してしまうといいぞ。" Selecting a customer
+# who is in the checkout queue or being served and choosing to eject them
+# removes them from the store before they can trigger the (task #51,
+# store-wide) checkout-anger penalty, at the cost of forfeiting their
+# purchase entirely. Scoped to "waiting_checkout"/"checkout" only, matching
+# the guide's own "レジ前の混雑" (checkout-front congestion) framing -- a
+# customer still shopping elsewhere in the store isn't eligible. Whether an
+# already-picked-up basket's units return to shelf stock on ejection is not
+# stated by any source; this project's own REMAKE_BALANCED_DEFAULT choice
+# is that they do not (the customer simply leaves with whatever they were
+# already holding), since this client has no other "undo a pick-up"
+# mechanic anywhere to reuse instead of inventing one -- ejecting a
+# customer who already filled their basket is a real shrinkage cost, not a
+# free do-over.
+func try_eject_customer(customer_id: String) -> bool:
+    if is_game_over or not customers.customers.has(customer_id):
+        return false
+    var ejected_customer = customers.customer(customer_id)
+    if ejected_customer.phase != "waiting_checkout" and ejected_customer.phase != "checkout":
+        return false
+    if ejected_customer.phase == "waiting_checkout":
+        _checkout_queue.erase(customer_id)
+    else:
+        staff.checkout_staff().state = "idle"
+    ejected_customer.phase = "leaving"
+    ejected_customer.route = layout.find_path(ejected_customer.position, layout.exit)
+    _record_event("customer_ejected", {
+        "customer_id": customer_id,
+        "had_unsettled_basket": not ejected_customer.basket.is_empty(),
+    })
+    return true
+
+
 func demand_admit_if_due() -> bool:
     if is_game_over or not customers.can_admit():
         return false

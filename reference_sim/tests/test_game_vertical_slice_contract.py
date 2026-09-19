@@ -1879,6 +1879,64 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "CONFIRMED_COMMUNITY", self.config["simulation"]["checkout_anger_evidence_note"]
         )
 
+    def test_eject_customer_action_is_wired_and_confirmed_official(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+
+        # Task #52: a direct re-read of the strategy guide (book p.35)
+        # confirmed CONFIRMED_OFFICIAL that ejecting a customer from the
+        # checkout queue/service before they get angry is a real player
+        # action in the original game, not this project's own invention --
+        # only the "items don't return to stock" sub-choice is tagged
+        # REMAKE_BALANCED_DEFAULT.
+        note = self.config["simulation"]["eject_customer_evidence_note"]
+        self.assertIn("CONFIRMED_OFFICIAL", note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
+        self.assertIn("つまみだす", note)
+
+        self.assertIn("func try_eject_customer(customer_id: String) -> bool:", simulation)
+        self.assertIn(
+            'if ejected_customer.phase != "waiting_checkout" and ejected_customer.phase != "checkout":',
+            simulation,
+        )
+        self.assertIn('_record_event("customer_ejected"', simulation)
+        self.assertIn("staff.checkout_staff().state = \"idle\"", simulation)
+
+        self.assertIn(
+            "try_eject_customer() must be rejected for a customer still shopping", smoke
+        )
+        self.assertIn(
+            "try_eject_customer() must be rejected for an unknown customer id", smoke
+        )
+        self.assertIn("ejecting a customer currently being served must be accepted", smoke)
+        self.assertIn(
+            "ejecting the customer being served must immediately free the checkout staff", smoke
+        )
+        self.assertIn("an ejected customer must never complete a sale", smoke)
+        self.assertIn(
+            "only the non-ejected eject-scenario customer's sale should be recorded", smoke
+        )
+
+        # Task #52 also wired this into the actual HUD, not only
+        # VerticalSliceSimulation/headless_smoke.gd -- same discipline task
+        # #38 established for the other economy actions.
+        self.assertIn('name="EjectCustomerOption"', scene)
+        self.assertIn('name="EjectCustomerButton"', scene)
+        self.assertIn("func _refresh_eject_customer_option() -> void:", main)
+        self.assertIn("func _on_eject_customer_pressed() -> void:", main)
+        self.assertIn("simulation.try_eject_customer(customer_id)", main)
+        self.assertIn(
+            "UI/Panel/Margin/Scroll/VBox/EjectCustomerOption", smoke
+        )
+        self.assertIn(
+            "UI/Panel/Margin/Scroll/VBox/EjectCustomerButton", smoke
+        )
+        self.assertIn("economy UI: pressing Eject customer must transition", smoke)
+
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"

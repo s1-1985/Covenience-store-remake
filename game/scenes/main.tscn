@@ -220,6 +220,15 @@ custom_minimum_size = Vector2(0, 44)
 disabled = true
 text = "Admit next customer"
 
+[node name="EjectCustomerOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+disabled = true
+
+[node name="EjectCustomerButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 44)
+disabled = true
+text = "Eject selected customer (before they get angry)"
+
 [node name="MenuButtons" type="HBoxContainer" parent="UI/Panel/Margin/Scroll/VBox"]
 theme_override_constants/separation = 10
 

@@ -1036,6 +1036,25 @@ confirmed against book p.120's own "広告データ" table this task). See decis
 `headless_smoke.gd` unchanged at 831 steps (existing scenario extended with new assertions, no new
 scenario); `reference_sim` full suite 663 passed/1 xfailed.
 
+**Task #52 (2026-09-19)**: the same book page 35 that task #51 re-read also confirmed a second,
+previously-uncoded mechanic (CONFIRMED_OFFICIAL): "怒りやすいお客さんは、おじさんやおじいさんに
+多い。もしレジ前の混雑にこの人が混じっていたら、カーソルをこの人に合わせて決定ボタン。怒り出す
+まえに"つまみだす"を選んで、お店の外に出してしまうといいぞ。" -- an explicit player action to
+eject a customer from the checkout queue/service before they can get angry, forfeiting their
+purchase. `VerticalSliceSimulation.try_eject_customer(customer_id)` transitions a customer in
+`waiting_checkout`/`checkout` phase to the existing `"leaving"` phase (reusing the no-sale-sellout
+pattern rather than inventing a new one), freeing the checkout staff/dequeuing as needed. Whether an
+ejected customer's already-picked-up basket returns to shelf stock is unconfirmed by any source;
+this project's own REMAKE_BALANCED_DEFAULT choice is that it does not (no other "undo a pick-up"
+mechanic exists in this client to reuse). Following task #38's own established discipline that
+economy/gameplay actions must be reachable from the UI, not only headless_smoke.gd, this task also
+added `EjectCustomerOption`/`EjectCustomerButton` to the STORE STATUS panel, refreshed every tick
+(unlike the other catalog-driven option lists, the set of ejectable customers changes on its own as
+customers walk through the store, not only after an explicit player action). See decision 0121.
+`headless_smoke.gd` grew from 831 to 897 steps (two new scenarios: a direct backend exercise and a
+real-UI exercise reusing task #38's `economy_ui_scene`); `reference_sim` full suite 664 passed/1
+xfailed (one new test function).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1109,6 +1128,8 @@ parallel research agents (all pages read, no sampling):
 - **Task #51** (checkout-anger penalty is store-wide, not scoped to the serving staff member) --
   see section 19 and decision 0120. Re-verified directly against the PDF scan, not just the
   research doc's summary.
+- **Task #52** ("eject a customer" (つまみ出す) action, avoiding the anger penalty at the cost of
+  their purchase) -- see section 19 and decision 0121, including UI wiring.
 - **Section 4 above** (bench/fountain service_bonus and bench maintenance) was stale, still
   showing pre-2026-09-17-correction wiki values instead of the guide-sourced values already live
   in `baseline_data.py`; corrected in place (no code change, this file only).
@@ -1153,13 +1174,6 @@ order.
   pool after ~1 year with decayed-but-above-rookie stats (qualitative, no formula given); 80+-year
   staff can become a "スーパー社員" (all stats 100) at unspecified probability. None implemented
   (no hiring/firing UI exists yet at all, per section 17's "スタッフ雇用・解雇UI" gap).
-- **"Eject an angry customer" (つまみ出す)**: book p.35, CONFIRMED_OFFICIAL, directly re-read --
-  "怒りやすいお客さんは、おじさんやおじいさんに多い。もしレジ前の混雑にこの人が混じっていたら、
-  カーソルをこの人に合わせて決定ボタン。怒り出すまえに"つまみだす"を選んで、お店の外に出して
-  しまうといいぞ。" An explicit player action: select a customer prone to anger before they
-  actually get angry and eject them, avoiding the (now confirmed store-wide, task #51) skill
-  penalty at the cost of forfeiting their purchase. No such action, or any "about to get angry"
-  customer state, exists in `game/` yet.
 - **Building/facility per-time-slot visitor counts**: DATA 4 建物's 朝/昼/夕/夜/深夜/早朝 numeric
   columns (transcribed with an explicit confidence caveat -- see `quick-reference-guide-part2-
   2026-09-19.md` for the row-alignment uncertainty note before using these numbers) plus a

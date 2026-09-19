@@ -56,6 +56,8 @@ func _initialize() -> void:
         "UI/Panel/Margin/Scroll/VBox/PromotionOption",
         "UI/Panel/Margin/Scroll/VBox/BuyPromotionButton",
         "UI/Panel/Margin/Scroll/VBox/ExpandChainButton",
+        "UI/Panel/Margin/Scroll/VBox/EjectCustomerOption",
+        "UI/Panel/Margin/Scroll/VBox/EjectCustomerButton",
     ]:
         if main_instance.get_node_or_null(node_path) == null:
             _fail("main scene is missing expected node: %s" % node_path)
@@ -772,6 +774,77 @@ func _initialize() -> void:
         return
     if not concurrent_simulation.customers.can_admit_concurrent():
         _fail("can_admit_concurrent() must be true again once both customers are done")
+        return
+
+    # Task #52: ejecting a customer from the checkout queue/service avoids
+    # them ever completing a sale (or triggering the anger penalty), and
+    # frees the checkout resource for the next queued customer.
+    var eject_config: Dictionary = config.duplicate(true)
+    eject_config["customer"]["max_concurrent_customers"] = 2
+    var eject_simulation = VerticalSliceSimulationScript.new(eject_config)
+    var fresh_default_customer_id: String = eject_simulation.customers.active_customer_id
+    if eject_simulation.try_eject_customer(fresh_default_customer_id):
+        _fail("try_eject_customer() must be rejected for a customer still shopping (not yet at checkout)")
+        return
+    if eject_simulation.try_eject_customer("no-such-customer-id"):
+        _fail("try_eject_customer() must be rejected for an unknown customer id")
+        return
+    steps += _run_visit(eject_simulation)
+    var completed_before_eject: int = eject_simulation.customers.completed_count()
+    var sales_before_eject: int = eject_simulation.economy.completed_sales
+    var eject_plan: Array[String] = ["prototype-bread"]
+    if not eject_simulation.start_explicit_customer("eject-a", eject_plan):
+        _fail("first eject-scenario customer could not be admitted")
+        return
+    if not eject_simulation.start_explicit_customer("eject-b", eject_plan):
+        _fail("second eject-scenario customer could not be admitted while the first is still shopping")
+        return
+    var eject_wait_ticks := 0
+    while (
+        eject_simulation.customers.customer("eject-a").phase != "checkout"
+        and eject_wait_ticks < MAX_STEPS
+    ):
+        eject_simulation.step()
+        eject_wait_ticks += 1
+    steps += eject_wait_ticks
+    if eject_wait_ticks >= MAX_STEPS:
+        _fail("first eject-scenario customer never reached checkout")
+        return
+    if eject_simulation.staff.checkout_staff().state != "checkout":
+        _fail("checkout staff must be busy serving the first eject-scenario customer")
+        return
+    if not eject_simulation.try_eject_customer("eject-a"):
+        _fail("ejecting a customer currently being served must be accepted")
+        return
+    if eject_simulation.event_log.count_type("customer_ejected") != 1:
+        _fail("exactly one customer_ejected event must be recorded")
+        return
+    if eject_simulation.staff.checkout_staff().state != "idle":
+        _fail("ejecting the customer being served must immediately free the checkout staff")
+        return
+    if eject_simulation.customers.customer("eject-a").phase != "leaving":
+        _fail("an ejected customer must transition to the leaving phase")
+        return
+    if eject_simulation.try_eject_customer("eject-a"):
+        _fail("a customer already ejected (now leaving) must not be ejectable again")
+        return
+
+    var eject_finish_ticks := 0
+    while (
+        eject_simulation.customers.completed_count() < completed_before_eject + 2
+        and eject_finish_ticks < MAX_STEPS
+    ):
+        eject_simulation.step()
+        eject_finish_ticks += 1
+    steps += eject_finish_ticks
+    if eject_finish_ticks >= MAX_STEPS:
+        _fail("both eject-scenario customers never finished their visit")
+        return
+    if eject_simulation.customers.customer("eject-a").settled_transaction_id != "":
+        _fail("an ejected customer must never complete a sale")
+        return
+    if eject_simulation.economy.completed_sales != sales_before_eject + 1:
+        _fail("only the non-ejected eject-scenario customer's sale should be recorded")
         return
 
     # Task #37: loading a built-in sample layout.
@@ -1694,6 +1767,35 @@ func _initialize() -> void:
     if economy_ui_scene.simulation.player_store_count != store_count_before_expansion + 1:
         _fail("economy UI: Expand chain must increase player_store_count by exactly one")
         return
+
+    # Task #52: the eject-customer action reachable from the UI, not only
+    # from VerticalSliceSimulation.try_eject_customer() directly.
+    var eject_ui_plan: Array[String] = ["prototype-bread"]
+    if not economy_ui_scene.simulation.start_explicit_customer("eject-ui-customer", eject_ui_plan):
+        _fail("economy UI: could not admit a customer for the eject-UI scenario")
+        return
+    var eject_ui_ticks := 0
+    while (
+        economy_ui_scene.simulation.customers.customer("eject-ui-customer").phase != "checkout"
+        and eject_ui_ticks < MAX_STEPS
+    ):
+        economy_ui_scene.simulation.step()
+        eject_ui_ticks += 1
+    steps += eject_ui_ticks
+    if eject_ui_ticks >= MAX_STEPS:
+        _fail("economy UI: eject-UI customer never reached checkout")
+        return
+    economy_ui_scene._refresh_eject_customer_option()
+    var eject_ui_index: int = economy_ui_scene._eject_customer_ids.find("eject-ui-customer")
+    if eject_ui_index < 0:
+        _fail("economy UI: eject customer option did not include the customer at checkout")
+        return
+    economy_ui_scene.eject_customer_option.selected = eject_ui_index
+    economy_ui_scene._on_eject_customer_pressed()
+    if economy_ui_scene.simulation.customers.customer("eject-ui-customer").phase != "leaving":
+        _fail("economy UI: pressing Eject customer must transition the selected customer to leaving")
+        return
+
     economy_ui_scene.free()
 
     # Task #49/#51: an unusually slow checkout (a deliberately below-
