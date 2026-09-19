@@ -285,13 +285,17 @@ func _try_place_new_fixture(catalog_id: String, origin_subcell: Vector2i) -> voi
     _refresh_ui()
 
 
-# The catalog only records a fixture's footprint, not where its interaction
-# point goes -- every existing fixture in vertical_slice.json places that
-# point one subcell outside its own footprint, so a newly-bought fixture
-# reuses the same convention rather than requiring a second tap from the
-# player. Tries the four cardinal neighbors of the footprint's top-left
-# corner and returns the first that is walkable before this fixture is
-# added; Vector2i(-1, -1) means none of the four worked.
+# REMAKE_BALANCED_DEFAULT (task #38): the catalog only records a fixture's
+# footprint, not where its interaction point goes, and no strategy-guide/
+# wiki source states a placement rule for where a newly-bought fixture's
+# interaction point should land -- this is not a recovered original
+# placement rule. Every existing fixture in vertical_slice.json happens to
+# place that point one subcell outside its own footprint, so this reuses
+# that observation as a convenience heuristic (avoiding a second tap from
+# the player) rather than inventing an unrelated rule. Tries the four
+# cardinal neighbors of the footprint's top-left corner and returns the
+# first that is walkable before this fixture is added; Vector2i(-1, -1)
+# means none of the four worked.
 func _find_open_interaction_cell(origin: Vector2i, width: int, height: int) -> Vector2i:
     var candidates: Array[Vector2i] = [
         Vector2i(origin.x, origin.y - 1),
@@ -392,6 +396,13 @@ func _on_restock_pressed() -> void:
         return
     var product_id: String = _restock_product_ids[restock_product_option.selected]
     var product = simulation.inventory.get_product(product_id)
+    # REMAKE_BALANCED_DEFAULT (task #38): apply_explicit_restock() takes an
+    # arbitrary caller-chosen quantity; no strategy-guide/wiki source states
+    # a real order-lot size, so this button's one-tap batch size (the
+    # product's own initial_stock_units) is this UI's own default, not a
+    # recovered original restock quantity. total_cost_yen is not invented,
+    # though: it is quantity times the product's own CONFIRMED_OFFICIAL
+    # restock_unit_cost_yen.
     var quantity: int = maxi(1, product.initial_stock_units)
     var total_cost_yen: int = quantity * product.restock_unit_cost_yen
     var staff_id: String = simulation.staff.checkout_staff().staff_id
