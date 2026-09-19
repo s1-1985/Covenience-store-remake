@@ -1223,9 +1223,20 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         permit_ids = {entry["permit_id"] for entry in self.config["permits"]}
         for catalog_id, entry in catalog_by_id.items():
+            reference = reference_by_id[catalog_id]
+
+            # initial_stock_units must be this category's own CONFIRMED_
+            # OFFICIAL max_capacity, not an arbitrary flat constant (task
+            # #42 correction of task #39's original flat "10" for every
+            # category regardless of scale): the number itself has to be
+            # traceable to real per-category evidence, an analogy-based
+            # derivation, even though "start at full capacity" as the rule
+            # for choosing that number is still this project's own
+            # REMAKE_BALANCED_DEFAULT assumption.
+            self.assertEqual(entry["initial_stock_units"], reference.max_capacity.value)
+
             if catalog_id == "tobacco":
                 continue
-            reference = reference_by_id[catalog_id]
             expected_price = reference.standard_retail_price_yen.value
             expected_cost = expected_price - reference.profit_per_unit_yen.value
             self.assertEqual(entry["sale_price_yen"], expected_price)
