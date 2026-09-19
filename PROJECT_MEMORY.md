@@ -129,7 +129,18 @@ The game visibly simulates individual customers rather than only converting dema
 
 Observed / reported customer groups include office workers, students, housewives/mothers, elderly people, child-accompanied customers, etc. Groups of visually identical customers can arrive together.
 
-The community research suggests destination-product demand plus incidental/add-on purchasing. Large wagons may have higher `attention` and possibly affect incidental purchase probability; this remains a hypothesis and must not yet be treated as an exact formula.
+The community research suggests destination-product demand plus incidental/add-on purchasing. Large wagons may have higher `attention` and possibly affect incidental purchase probability; the `attention`-weighting angle specifically remains a HYPOTHESIS and must not yet be treated as an exact formula.
+
+**Incidental-purchase count upgraded to CONFIRMED-OFFICIAL (2026-09-19)**: directly re-read from
+「クイックリファレンス」book p.9: "顧客は購入希望の品を求めて来店する。希望の品を購入した後、
+時間が許せばそのほかの商品も購入する。それぞれの顧客に3品程度の「ついでに欲しい品」があるので、
+それらを揃えておくことも大切だ。" Each customer wants roughly 3 additional in-stock products beyond
+their primary destination purchase, bought afterward if time allows. This is now wired into `game/`
+(task #55, decision 0124, lifting decision 0004's "incidental/add-on purchase probability" boundary
+with the user's explicit go-ahead) as a uniform-random draw from currently-stocked products, not a
+weighted-by-category or `attention`-weighted draw -- the guide's own per-category bar chart is
+single-playthrough example data, not a confirmed general weighting table, so that part of the
+HYPOTHESIS above remains open.
 
 Source:
 - https://mimora.mimoza.jp/yao_game/retro/contents/ctg_main/memorandum/SS/detail/gmr_SS-0001.php
@@ -1089,6 +1100,24 @@ both files. See decision 0123. No test suite changes (no existing test covered t
 candidate's specific field); `reference_sim` 665 passed/1 xfailed, `headless_smoke.gd` unchanged at
 957 steps.
 
+**Task #55 (2026-09-19)**: decision 0004 (2026-09-05) deliberately left "incidental/add-on purchase
+probability" absent, explicitly pending "guide/video evidence... strong enough," and task #43's
+audit kept this boundary standing as "pending an explicit user decision." Section 7's HYPOTHESIS
+note was upgraded to CONFIRMED-OFFICIAL this session (see section 7): each customer wants ~3
+additional in-stock products beyond their primary plan, bought after it. Asked the user directly
+whether to lift the boundary now that this evidence exists; they said yes. `VerticalSliceSimulation.
+_start_default_customer()` now appends up to `INCIDENTAL_WANT_PRODUCT_COUNT` (3) extra product ids,
+drawn via a uniform-random pick from currently-stocked products (reusing the shared demand RNG, not
+a new stream), to a demand-driven customer's plan -- no new phase or mechanic needed, since the
+existing multi-product plan/pickup machinery already supported an arbitrary-length ordered list.
+Deliberately scoped to demand-driven admission only: `start_explicit_customer()` (the observation-
+replay path) is untouched and still replays exactly the caller-supplied plan, so existing
+determinism there is preserved. `CustomerRoster.admit_default()`'s signature changed to take the
+caller's (possibly-extended) plan instead of always reusing its own static default list internally.
+See decision 0124. `headless_smoke.gd` grew from 957 to 1009 steps (one new scenario, made RNG-
+seed-independent by stocking exactly one extra product so the incidental draw is deterministic);
+`reference_sim` full suite 666 passed/1 xfailed (one new test function).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1171,6 +1200,8 @@ parallel research agents (all pages read, no sampling):
   their purchase) -- see section 19 and decision 0121, including UI wiring.
 - **Task #53** (price-setting/margin mechanic, consumed by both live purchases and the monthly
   rating's `price_change_pct`) -- see section 19 and decision 0122, including UI wiring.
+- **Task #55** (incidental-want products for demand-driven customers, lifting decision 0004's
+  boundary with the user's explicit go-ahead) -- see section 19 and decision 0124.
 - **Section 4 above** (bench/fountain service_bonus and bench maintenance) was stale, still
   showing pre-2026-09-17-correction wiki values instead of the guide-sourced values already live
   in `baseline_data.py`; corrected in place (no code change, this file only).
@@ -1208,12 +1239,6 @@ order.
   anywhere (`land_value_policy.gd` only models value *growth over time*, not acquisition cost) --
   but this client also has no land-acquisition/multi-store-placement mechanic to attach it to yet
   (same boundary as decision 0095/0026).
-- **Incidental-purchase item count**: each customer has ~3 "ついでに欲しい品" beyond their
-  destination purchase (クイックリファレンス p.9, CONFIRMED_OFFICIAL with an exact count) --
-  upgrades section 7's standing HYPOTHESIS to confirmed, and is exactly the evidence task #43
-  said was missing before decision 0004's "no incidental purchase" boundary could be reconsidered.
-  Still unimplemented; lifting decision 0004's boundary is a real scope decision, not a
-  drop-in fix.
 - **Rival-store mechanics with numbers**: rival withdrawal after continuous deficit takes ~6
   months if left alone (実習マニュアル, stated in 2 scenarios); holding a permit may block nearby
   *rivals* from selling that category too, not just gate the player (実習マニュアル); a 20%-off

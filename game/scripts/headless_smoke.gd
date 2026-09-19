@@ -1936,6 +1936,53 @@ func _initialize() -> void:
         _fail("checkout anger must also lower the non-checkout staff member's security_skill by 2")
         return
 
+    # Task #55: a demand-driven customer's plan gets extended with
+    # incidental-want products drawn from currently-stocked products beyond
+    # the primary plan, but an explicitly-admitted (observation-replay)
+    # customer's plan must stay exactly as given. A single extra stocked
+    # product (beyond the default scenario's own two) makes this
+    # deterministic regardless of RNG seed: with exactly one candidate,
+    # that candidate must be the one incidental item selected.
+    var incidental_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(incidental_simulation)
+    incidental_simulation.economy.cash_yen += 50_000_000
+    if not incidental_simulation.try_purchase_fixture(
+        "small_ambient_shelf", "incidental-shelf-1", Vector2i(8, 10), Vector2i(8, 9)
+    ):
+        _fail("could not buy an extra shelf for the incidental-want scenario")
+        return
+    if not incidental_simulation.try_procure_product("bread", "incidental-extra-product", "incidental-shelf-1"):
+        _fail("could not stock an extra product for the incidental-want scenario")
+        return
+
+    var explicit_plan: Array[String] = ["prototype-bread"]
+    if not incidental_simulation.start_explicit_customer("explicit-plan-customer", explicit_plan):
+        _fail("could not admit an explicit customer for the incidental-want scenario")
+        return
+    var explicit_customer = incidental_simulation.customers.customer("explicit-plan-customer")
+    if explicit_customer.planned_product_ids != explicit_plan:
+        _fail("start_explicit_customer() must never inflate the caller-supplied plan with incidental items")
+        return
+    steps += _run_visit(incidental_simulation)
+
+    if not incidental_simulation.start_next_customer():
+        _fail("could not admit a demand-driven customer for the incidental-want scenario")
+        return
+    var default_customer = incidental_simulation.customers.active()
+    var expected_default_plan: Array[String] = []
+    expected_default_plan.assign(config["customer"]["visit_plan_product_ids"])
+    expected_default_plan.append("incidental-extra-product")
+    if default_customer.planned_product_ids.size() != expected_default_plan.size():
+        _fail("a demand-driven customer's plan must gain exactly one incidental item when exactly one stocked product is eligible")
+        return
+    for product_id in expected_default_plan:
+        if not default_customer.planned_product_ids.has(product_id):
+            _fail("a demand-driven customer's extended plan must include every expected primary and incidental product id")
+            return
+    if not default_customer.planned_product_ids.has("incidental-extra-product"):
+        _fail("a demand-driven customer's incidental item must be drawn from currently-stocked products")
+        return
+
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
 

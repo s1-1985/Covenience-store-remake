@@ -1993,6 +1993,59 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "UI/Panel/Margin/Scroll/VBox/SetPricePolicyButton", smoke
         )
 
+    def test_incidental_want_products_extend_only_demand_driven_customer_plans(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        roster = (GAME_ROOT / "scripts" / "domain" / "customer_roster.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # Task #55: a direct re-read of the strategy guide (quick reference
+        # book p.9) confirmed CONFIRMED_OFFICIAL that each customer wants
+        # roughly 3 additional in-stock products beyond their primary plan,
+        # purchased after it -- upgrading PROJECT_MEMORY.md section 7's
+        # standing HYPOTHESIS and unblocking decision 0004's previously-
+        # deferred incidental-purchase boundary (lifted with the user's
+        # explicit go-ahead, per that decision's own condition).
+        note = self.config["simulation"]["incidental_want_evidence_note"]
+        self.assertIn("CONFIRMED_OFFICIAL", note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
+        self.assertIn("3", note)
+
+        self.assertIn("const INCIDENTAL_WANT_PRODUCT_COUNT := 3", simulation)
+        self.assertIn(
+            "func _select_incidental_want_product_ids(exclude_product_ids: Array[String]) -> Array[String]:",
+            simulation,
+        )
+        self.assertIn("plan.append_array(_select_incidental_want_product_ids(plan))", simulation)
+        # Reuses the shared demand RNG rather than a new stream.
+        self.assertIn("_demand_rng.randi_range(0, candidates.size() - 1)", simulation)
+
+        # admit_default() now takes the caller's own (possibly-extended)
+        # plan instead of always reusing the roster's static default plan
+        # internally -- but start_explicit_customer()/admit_explicit() are
+        # untouched, so the observation-replay path still stays exactly as
+        # the caller specifies.
+        self.assertIn(
+            "func admit_default(entry: Vector2i, initial_route: Array[Vector2i], visit_plan_product_ids: Array[String]):",
+            roster,
+        )
+        self.assertIn(
+            "return admit_explicit(customer_id, entry, initial_route, visit_plan_product_ids)", roster
+        )
+
+        self.assertIn(
+            "must never inflate the caller-supplied plan with incidental items", smoke
+        )
+        self.assertIn(
+            "must gain exactly one incidental item when exactly one stocked product is eligible", smoke
+        )
+        self.assertIn(
+            "incidental item must be drawn from currently-stocked products", smoke
+        )
+
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"

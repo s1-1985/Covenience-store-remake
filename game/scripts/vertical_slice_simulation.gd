@@ -906,16 +906,61 @@ func snapshot() -> Dictionary:
     }
 
 
+# Task #55: CONFIRMED_OFFICIAL (docs/research/quick-reference-guide-part1-
+# 2026-09-19.md, directly re-read book p.9): "顧客は購入希望の品を求めて
+# 来店する。希望の品を購入した後、時間が許せばそのほかの商品も購入する。
+# それぞれの顧客に3品程度の「ついでに欲しい品」があるので、それらを揃え
+# ておくことも大切だ。" Every demand-driven customer now also wants
+# roughly 3 additional in-stock products beyond their primary destination
+# plan, purchased after it via the exact same existing plan/pickup
+# machinery -- no new phase or mechanic was needed, only extending the
+# plan array before admission. This client models no customer-patience/
+# time-budget mechanic at all (PROJECT_MEMORY.md section 7's own standing
+# HYPOTHESIS, still unconfirmed), so "時間が許せば" (if time allows) is
+# simplified to "always" here, matching how the primary plan is already
+# handled unconditionally -- REMAKE_BALANCED_DEFAULT, since inventing a
+# time-budget/abandonment mechanic instead would be a much larger,
+# unconfirmed addition than this task's narrow scope. The exact count (3,
+# not "roughly 3") and the selection method (a uniform random draw from
+# currently-stocked products, reusing the shared demand RNG rather than a
+# new stream) are also this project's own REMAKE_BALANCED_DEFAULT choices:
+# the guide's own bar chart of relative per-category incidental-purchase
+# weight is single-playthrough example data, not a confirmed general
+# game-data table, so it is deliberately not used as a weighting scheme.
+# Deliberately scoped to demand-driven admission only (this function,
+# covering both the automatic tick_idle_for_demand() path and the manual
+# "Admit next customer" button, which both call this): the explicit/
+# observed customer path (start_explicit_customer()) exists specifically
+# to replay a caller-supplied EXACT plan and must stay uninflated by
+# invented items.
+const INCIDENTAL_WANT_PRODUCT_COUNT := 3
+
+
 func _start_default_customer() -> void:
     var plan: Array[String] = customers.default_plan()
+    plan.append_array(_select_incidental_want_product_ids(plan))
     var customer = customers.admit_default(
         layout.entry,
         layout.find_path(
             layout.entry,
             _product_interaction(plan[0])
-        )
+        ),
+        plan
     )
     _record_customer_entered(customer)
+
+
+func _select_incidental_want_product_ids(exclude_product_ids: Array[String]) -> Array[String]:
+    var candidates: Array[String] = []
+    for product_id in inventory.product_order:
+        if not exclude_product_ids.has(product_id):
+            candidates.append(product_id)
+    var selected: Array[String] = []
+    while not candidates.is_empty() and selected.size() < INCIDENTAL_WANT_PRODUCT_COUNT:
+        var index: int = _demand_rng.randi_range(0, candidates.size() - 1)
+        selected.append(candidates[index])
+        candidates.remove_at(index)
+    return selected
 
 
 func _record_customer_entered(customer) -> void:
