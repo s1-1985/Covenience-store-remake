@@ -58,10 +58,13 @@ Sources:
 - Popular goods being placed deeper in the store can influence traffic flow.
 - Large store layout data includes a 13 x 14 case; the community notes a cursor bug in one orientation.
 
-Confirmed service fixtures:
+Confirmed service fixtures (values below match `reference_sim/conveni_sim/baseline_data.py`'s
+current CONFIRMED_OFFICIAL strategy-guide figures; a 2026-09-17 session resolved a wiki-vs-guide
+conflict in favor of the guide for bench/fountain's service_bonus and bench's maintenance -- this
+section previously still showed the superseded wiki-derived numbers, corrected here):
 - Potted plant: service +2, size 1x1, maintenance 120 yen/day.
-- Bench: service +3, size 1x1, maintenance 168 yen/day.
-- Fountain: service +25, size 2x2, maintenance 2,400 yen/day.
+- Bench: service +4, size 1x1, maintenance 160 yen/day.
+- Fountain: service +30, size 2x2, maintenance 2,400 yen/day.
 
 Confirmed parking:
 - Ground parking: 2 cars, size 1x2, maintenance 0/day.
@@ -987,6 +990,29 @@ member, with that staff member's own register/service growth ceilings overridden
 task #48's growth so the two mechanics' expected values don't have to be hand-composed); 831 steps (up from
 764, the new scenario's own long low-skill checkout). `reference_sim` full suite 663 passed/1 xfailed.
 
+**Task #50 (2026-09-19)**: the user provided 4 PDF scans of two previously-unseen strategy guide
+books (「ザ・コンビニ 新人店長実習マニュアル」, ~143 pages, and 「クイックリファレンス」, ~95
+pages -- see section 21 below). Four parallel research agents transcribed every page
+(`docs/research/strategy-guide-shopkeeper-manual-part{1,2}-2026-09-19.md`, `docs/research/
+quick-reference-guide-part{1,2}-2026-09-19.md`). The 新人店長実習マニュアル turned out to be
+the exact same physical source already cited in `baseline_data.py` as `本1.pdf`/`本2.pdf` (an
+independent re-verification, not new territory); the クイックリファレンス's DATA 4 建物 table
+likewise turned out already ported as `TOWN_BUILDINGS`. But its 時間 section (p.2) surfaced a
+concrete formula that closes an explicit gap decision 0116 had left open: 什器維持費/スタッフ給与
+は共に「24時間営業基準の日額」であり、実際には設定営業時間に応じて按分される
+(CONFIRMED_OFFICIAL, "維持費...営業時間に応じて"/"人件費...時給×営業時間", independently stated
+twice for wages). `VerticalSliceSimulation._scale_yen_to_configured_business_hours()`
+(REMAKE_BALANCED_DEFAULT floor-rounding only; the proportional relationship itself is confirmed)
+now scales both `_apply_daily_fixture_maintenance()`/`_apply_daily_staff_wages()` by
+`demand.opening_minutes_per_day` before summing, replacing the flat-charge simplification tasks
+#46/#47 had adopted for lack of this formula. No new staff-shift tracking was needed: the guide's
+formula scales by the *store's* configured hours, not by each staff member's individually-worked
+hours. See decision 0119. `headless_smoke.gd` unchanged at 831 steps (only expense amounts
+changed, not scenario length); `reference_sim` full suite 663 passed/1 xfailed (2 existing
+contract tests updated, no new test functions added). Several other findings from this research
+pass -- some contradicting already-CONFIRMED values, some closing other open gaps -- were
+deliberately left untouched pending further triage; see section 21 for the full catalogue.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1020,5 +1046,148 @@ Codexのチャット・PR・マージ運用の詳細は
 タスク#39〜#49(2026-09-19、`CLAUDE.md`新設の経緯、標準指令3件の原文、確立された
 運用ルール・禁止事項、決定事項の採択背景、残っているタスクの分類、画像・音声を除いた
 システム面の完成度評価を含む)の詳細な引き継ぎは
-`docs/handoff/2026-09-19-claude-code-session-handoff-3.md` を参照する。CLAUDE.mdの
-規約により、`docs/handoff/`配下で最新の本ファイルが矛盾する旧記載に優先する。
+`docs/handoff/2026-09-19-claude-code-session-handoff-3.md` を参照する。
+
+タスク#50(2026-09-19、2冊分のPDF一次資料の全ページ書き起こし、什器維持費・
+スタッフ給与の営業時間比例配線、第21節の研究成果カタログ)の詳細な引き継ぎは
+`docs/handoff/2026-09-19-claude-code-session-handoff-4.md` を参照する。CLAUDE.mdの
+規約により、`docs/handoff/`配下で最新の本ファイル(`-4.md`)が矛盾する旧記載に優先する。
+
+## 21. 2026-09-19 PDF一次資料(2冊)の研究成果カタログ(タスク#50以降)
+
+This section catalogues findings from the 4-PDF research pass that started task #50 (section 19),
+so a future session does not have to re-read the 4 research docs from scratch to know what is
+still actionable. **The classification below (NEW/CONFIRMS/CONTRADICTS, "actionable" framing) is
+Claude's own triage, not confirmed fact** -- the underlying page citations in the linked docs are
+the primary evidence; this section is a navigational summary of them.
+
+### 21.1 New primary sources
+
+Two previously-unseen strategy guide books were scanned by the user and transcribed in full by 4
+parallel research agents (all pages read, no sampling):
+
+- 「ザ・コンビニ 新人店長実習マニュアル」(~143 pages) -- turned out to be the **same physical
+  book** already cited in `baseline_data.py` as `本1.pdf`/`本2.pdf`. Re-transcription functioned
+  mostly as independent re-verification (it even reproduced an existing known misprint in the
+  customer-visit-schedule table). See `docs/research/strategy-guide-shopkeeper-manual-part1-
+  2026-09-19.md` (chapters 1-2, pp.6-71) and `-part2-2026-09-19.md` (chapters 2-4 remainder,
+  pp.72-143).
+- 「クイックリファレンス」(~95 pages, a physically-separate book from the "full-decode"/"fixture-
+  crosscheck" 2026-09-16 source, though its DATA 4 建物 table turned out to already be ported as
+  `TOWN_BUILDINGS`) -- see `docs/research/quick-reference-guide-part1-2026-09-19.md` (時間/店舗/
+  スタッフ/顧客/町 dense-data front section, pp.2-12, plus a second physically-bound-together
+  book of themed store-layout examples, pp.16-47) and `-part2-2026-09-19.md` (店舗レイアウト実例
+  continuation + オールテクニックガイド + DATA 1-4, pp.48-95).
+
+### 21.2 Resolved this session
+
+- **Task #50** (fixture maintenance / staff wages scale with configured business hours instead of
+  charging a flat 24h-basis figure) -- see section 19 and decision 0119.
+- **Section 4 above** (bench/fountain service_bonus and bench maintenance) was stale, still
+  showing pre-2026-09-17-correction wiki values instead of the guide-sourced values already live
+  in `baseline_data.py`; corrected in place (no code change, this file only).
+
+### 21.3 NEW findings not yet implemented (candidates for future tasks)
+
+Grouped by rough topic, each citing which research doc has the page-level evidence. None of these
+have been implemented yet; picking one is a future-session decision, not a standing priority
+order.
+
+- **Security facilities (交番/消防署)**: both books independently give **quantified** bonuses for
+  the first time (previously only qualitative in section 12) -- but the two books disagree on the
+  exact shape (flat +40/+30 within a 7-area radius per the 実習マニュアル vs. a per-area-scaled
+  +10/area max+40 (police, 2x2) / +5/area max+30 (fire station, 2x3) within a 16x16-tile radius
+  per the クイックリファレンス). This needs a side-by-side re-read before implementing, not a
+  pick-one guess. No such fixtures exist in `fixture_catalog` yet (blocked since decision 0096).
+- **Land-purchase cost formula**: empty lot = area land price x number of areas; occupied lot =
+  land price + 50% of the existing building's appraised value (実習マニュアル p.7). Not modeled
+  anywhere (`land_value_policy.gd` only models value *growth over time*, not acquisition cost) --
+  but this client also has no land-acquisition/multi-store-placement mechanic to attach it to yet
+  (same boundary as decision 0095/0026).
+- **Incidental-purchase item count**: each customer has ~3 "ついでに欲しい品" beyond their
+  destination purchase (クイックリファレンス p.9, CONFIRMED_OFFICIAL with an exact count) --
+  upgrades section 7's standing HYPOTHESIS to confirmed, and is exactly the evidence task #43
+  said was missing before decision 0004's "no incidental purchase" boundary could be reconsidered.
+  Still unimplemented; lifting decision 0004's boundary is a real scope decision, not a
+  drop-in fix.
+- **Rival-store mechanics with numbers**: rival withdrawal after continuous deficit takes ~6
+  months if left alone (実習マニュアル, stated in 2 scenarios); holding a permit may block nearby
+  *rivals* from selling that category too, not just gate the player (実習マニュアル); a 20%-off
+  campaign near a rival branch can force its withdrawal (クイックリファレンス); a ¥500,000
+  rival-store investigation fee exists separate from acquisition cost. None modeled in
+  `remake_rival_policy.py`/Godot (no rival-store entity exists at all yet, per decision 0095).
+- **Staff mechanics**: PS版固定 3% wage-negotiation base-up; explicit 3-staff-per-store cap; a
+  pre-hire stat interpretation band (40-69=普通/70-100=高い); fired staff return to the hiring
+  pool after ~1 year with decayed-but-above-rookie stats (qualitative, no formula given); 80+-year
+  staff can become a "スーパー社員" (all stats 100) at unspecified probability. None implemented
+  (no hiring/firing UI exists yet at all, per section 17's "スタッフ雇用・解雇UI" gap).
+- **"Eject an angry customer" (つまみ出す)**: an explicit player action that avoids the
+  store-wide skill penalty by ejecting the customer first. No such action exists in `game/`.
+- **Building/facility per-time-slot visitor counts**: DATA 4 建物's 朝/昼/夕/夜/深夜/早朝 numeric
+  columns (transcribed with an explicit confidence caveat -- see `quick-reference-guide-part2-
+  2026-09-19.md` for the row-alignment uncertainty note before using these numbers) plus a
+  time-band hour-range definition table (朝=7-11h, 昼=12-15h, 夕=16-19h, 夜=20-23h, 深夜=24-3h,
+  早朝=4-6h) not recorded anywhere in the codebase.
+- **Facility/scenario data**: 都庁 auto-build trigger text (population >20,000, upgrades an
+  existing PROVISIONAL wiki note toward CONFIRMED_OFFICIAL); station-spacing rule (2 stations per
+  line if lines are >=40 areas apart); a 4-tier (not section 14's provisional 3-tier)
+  初級/中級/上級/極上 scenario structure with concrete starting-data blocks (cash/population/
+  rival stats/security-facility counts) per map, plus numeric advanced-scenario clear-condition
+  targets (10 stores, ~200,000 cumulative visitors, ~¥30,000,000 annual revenue, 30,000 town
+  population, all stores 5-star); an attraction-facility footprint/shopping-population table (10
+  facility types) closing part of section 17's "facility list and population/demand effects" gap;
+  a full building-area breakdown (総面積/建物全体/床面積/店外スペース) for all 6 store variants
+  (only `editable_floor`+price were previously ported); large-store upgrade is population-gated,
+  not purely a cash transaction; hidden 4th map's shape differs PS vs. Saturn (upgrades its
+  existence to CONFIRMED_OFFICIAL from wiki-only CONFIRMED_COMMUNITY); contest prize eligibility
+  is specifically gated on cleanliness value.
+- **Price-margin/discount UI shape**: a global "all items X% off list price" slider plus a
+  per-item override, baseline 40% margin -- confirms the shape of the still-unimplemented
+  price-setting mechanic `store_rating.gd`'s `price_change_pct` field has always awaited (always
+  hardcoded to 0 today, no UI exists).
+
+### 21.4 CONTRADICTS findings flagged for re-verification (deliberately NOT resolved)
+
+Per CLAUDE.md's discipline, these are recorded rather than silently picked one way or the other:
+
+- **Weather table column labels**: this session's independent read of クイックリファレンス p.2-3
+  gives 快晴/曇り/雨/台風/荒天, but `remake_customer_share.py`'s `BAD_WEATHER_VALUES` comment
+  already claims (citing the same book) 快晴/大雨/雪/台風/荒天. Needs a higher-resolution rescan
+  before either is trusted; not changed.
+- **Business hours option ③**: transcribed as "AM11:00-AM2:00" labeled "16時間営業" (only 15h,
+  inconsistent with its own label) -- very likely a scan/OCR misread of "AM3:00", but not
+  corrected without a clearer rescan.
+- **Checkout-anger penalty scope**: 実習マニュアル states an angry customer drops **every staff
+  member's** ability ("店員全員"), while `checkout_anger.gd` (task #49) applies the penalty only
+  to the currently-serving staff member. Same CONFIRMED_COMMUNITY -2 magnitude either way, but
+  this book is CONFIRMED_OFFICIAL-tier evidence the *scope* may be store-wide, not per-staff.
+  Worth a dedicated follow-up look before changing `checkout_anger.gd`.
+- **A "parameter growth per work action" matrix and a customer-anger-penalty matrix** on
+  クイックリファレンス p.7, potentially bearing on `staff_growth.gd`'s (task #48) +1/skill-pair
+  guesses and the checkout-anger magnitude above -- read confidence on the exact column mapping
+  was only moderate; flagged, not asserted or acted on.
+- **Bench maintenance, secondary data point**: クイックリファレンス's DATA 2 商品棚 table states
+  a per-hour rate ("7 yen/hour") that, x24, reproduces 168 yen/day -- conflicting with the
+  already-twice-confirmed-from-本1/本2 160 yen/day currently in `baseline_data.py` (see section
+  4 above and the 2026-09-17 resolution cited there). Given 160 is directly stated as a yen/day
+  figure twice in the higher-authority source already used to resolve this exact conflict, while
+  168 here is a derived (hourly x24) reading from a different book, **160 was kept unchanged**;
+  168 is recorded here as a secondary data point worth a rescan, not a reason to flip the value.
+- **Store-rating table / large-store footprint**: pre-existing known conflicts (already resolved
+  in code before this session) were independently rediscovered by this pass, not newly
+  introduced -- see `strategy-guide-shopkeeper-manual-part1-2026-09-19.md` and `-part2-
+  2026-09-19.md` for the record. A third data point (large-store footprint stated as "16x16" in 4
+  unanimous case-study captions, vs. the already-known "14x14"/"18M-vs-24M" conflicts) surfaced in
+  `-part2`; still unresolved.
+- **Station shopping-population figure**: 2,000 on one page vs. 2,240 on another page of the same
+  book -- possibly different size tiers rather than a real conflict; not resolved.
+- **小宮千明's security_skill_growth_ceiling**: read as 44 in this session's scan vs. 42 in
+  existing code -- low-confidence, could be a misread on either side, not asserted as a real
+  contradiction.
+
+### 21.5 Deliberately not re-litigated
+
+The customer-archetype visit-schedule table (21 archetypes, 143 rows) and the DATA 4 建物 table
+were both independently re-transcribed in full and matched the already-ported
+`CUSTOMER_ARCHETYPES`/`CUSTOMER_VISIT_SCHEDULE`/`TOWN_BUILDINGS` field-for-field (including
+reproducing an existing known misprint) -- no changes needed, not re-listed as findings above.
