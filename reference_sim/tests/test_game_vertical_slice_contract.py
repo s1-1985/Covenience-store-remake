@@ -1583,6 +1583,61 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
 
+    def test_fixture_maintenance_is_charged_daily(self):
+        from conveni_sim.baseline_data import FIXTURES
+
+        reference_by_id = {f.id: f for f in FIXTURES}
+
+        # Every fixture_catalog entry's own maintenance_yen_per_day is
+        # CONFIRMED_OFFICIAL, matching reference_sim's FIXTURES exactly --
+        # this task only changes whether it's consumed, not the values.
+        for entry in self.config["fixture_catalog"]:
+            if "maintenance_yen_per_day" not in entry:
+                # small_ambient_shelf/small_tobacco_vending never carried
+                # this field (predates this task, tasks #32/#41's own
+                # scope), so there is nothing here for them to be charged.
+                continue
+            reference = reference_by_id[entry["catalog_id"]]
+            self.assertEqual(
+                entry["maintenance_yen_per_day"], reference.maintenance_yen_per_day.value
+            )
+
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # Wired into the actual day-boundary transition, not just present
+        # as data. A fixture with no fixture_catalog origin (shelf-1/
+        # shelf-2/checkout-1, from before the catalog system existed) has
+        # no confirmed maintenance figure to charge and is skipped, same
+        # precedent as the compatibility/capacity check task #45 added.
+        self.assertIn("func _apply_daily_fixture_maintenance() -> void:", simulation)
+        self.assertIn("_apply_daily_fixture_maintenance()", simulation)
+        self.assertIn(
+            'if catalog_id.is_empty() or not _fixture_catalog.has(catalog_id):', simulation
+        )
+        self.assertIn('"fixture_maintenance", minute_of_day, total_maintenance_yen', simulation)
+        self.assertIn('_record_event("fixture_maintenance_charged"', simulation)
+
+        # No stale "unconsumed" claim should remain anywhere in the catalog
+        # after this task (the same kind of drift task #43 corrected for
+        # service/security/cleaning_skill).
+        for entry in self.config["fixture_catalog"]:
+            self.assertNotIn("maintenance_yen_per_day is still not consumed", entry["evidence_note"])
+            self.assertNotIn("remains unconsumed", entry["evidence_note"])
+
+        self.assertIn(
+            "a day with no catalog-purchased fixtures must not record a "
+            "fixture_maintenance_charged event",
+            smoke,
+        )
+        self.assertIn(
+            "daily fixture maintenance must deduct exactly the sum of every "
+            "owned fixture's maintenance_yen_per_day",
+            smoke,
+        )
+
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"

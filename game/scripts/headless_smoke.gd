@@ -1060,6 +1060,48 @@ func _initialize() -> void:
         _fail("compute_customer_share_percent must clamp a service_value above 100 to 100")
         return
 
+    var maintenance_config: Dictionary = config.duplicate(true)
+    maintenance_config["demand"] = {
+        "nearby_population": 0,
+        "customer_share_percent": 0.0,
+        "daily_visit_rate_per_population": 0.0,
+        "opening_minutes_per_day": 960,
+        "bad_weather_visit_multiplier": 0.0,
+        "is_bad_weather": false,
+        "rng_seed": 17,
+    }
+    var maintenance_simulation = VerticalSliceSimulationScript.new(maintenance_config)
+    steps += _run_visit(maintenance_simulation)
+    if maintenance_simulation.event_log.count_type("fixture_maintenance_charged") != 0:
+        _fail("a day with no catalog-purchased fixtures must not record a fixture_maintenance_charged event")
+        return
+    var bench_catalog_entry: Dictionary = {}
+    for fixture_catalog_entry in config["fixture_catalog"]:
+        if str(fixture_catalog_entry["catalog_id"]) == "bench":
+            bench_catalog_entry = fixture_catalog_entry
+            break
+    maintenance_simulation.economy.cash_yen = 1_000_000
+    if not maintenance_simulation.try_purchase_fixture(
+        "bench", "maintenance-bench-1", Vector2i(8, 10), Vector2i(8, 9)
+    ):
+        _fail("a valid fixture purchase for the maintenance test must be accepted")
+        return
+    var cash_before_maintenance: int = int(maintenance_simulation.economy.cash_yen)
+    var maintenance_ticks := 0
+    while maintenance_simulation.day_count < 1 and maintenance_ticks < 20000:
+        maintenance_simulation.tick_idle_for_demand()
+        maintenance_ticks += 1
+    if maintenance_ticks >= 20000:
+        _fail("advancing past the first day boundary took too long (maintenance test)")
+        return
+    if maintenance_simulation.event_log.count_type("fixture_maintenance_charged") != 1:
+        _fail("exactly one fixture_maintenance_charged event must be recorded per day boundary crossed")
+        return
+    var expected_daily_maintenance_yen: int = int(bench_catalog_entry["maintenance_yen_per_day"])
+    if maintenance_simulation.economy.cash_yen != cash_before_maintenance - expected_daily_maintenance_yen:
+        _fail("daily fixture maintenance must deduct exactly the sum of every owned fixture's maintenance_yen_per_day")
+        return
+
     var rating_config: Dictionary = config.duplicate(true)
     rating_config["demand"] = {
         "nearby_population": 0,

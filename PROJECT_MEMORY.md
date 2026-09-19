@@ -893,6 +893,26 @@ Added a new scenario exercising both the rejection (tobacco onto small_ambient_s
 (bread onto the same fixture) paths. `headless_smoke.gd` unchanged at 734 steps; `reference_sim` full
 suite 659 passed/1 xfailed.
 
+**Task #46 (2026-09-19)**: the user stated a standing development-order directive -- build out the system
+side completely first, and only at the end generate images/audio and wire them to the system -- and, in
+that spirit, chose to wire fixture `maintenance_yen_per_day` into daily cashflow next. Every one of the 35
+`fixture_catalog` entries carries a CONFIRMED_OFFICIAL `maintenance_yen_per_day`, but nothing ever
+deducted it. New `VerticalSliceSimulation._apply_daily_fixture_maintenance()`, called from `_handle_day_
+boundary()`, sums it across every currently-owned fixture that actually has a `fixture_catalog` origin
+(skipping `shelf-1`/`shelf-2`/`checkout-1`, which predate the catalog system and have no confirmed figure
+to charge -- same precedent task #45 set for the compatibility check) and deducts the total once per
+simulated day via `economy.record_explicit_expense("fixture_maintenance", ...)`, recording no event at
+all on a zero-maintenance day rather than a redundant zero-yen entry. Because this happens inside the
+4-simulated-day window `_settle_month_end()` already reads via `economy.cash_yen`'s own delta, it needed
+no separate x8 scaling logic of its own. Removed the now-false "not consumed" claim from all 35
+`fixture_catalog` `evidence_note`s (the same kind of staleness task #43 corrected for service/security/
+cleaning_skill). Investigating this also turned up that `salary_yen_per_day_24h` (on the 35-candidate
+hiring pool, not on the active `staff.members` entries themselves) is similarly unconsumed -- deliberately
+left out of this task's scope (the user asked specifically about fixture maintenance) and noted as a
+separate future candidate. See decision 0115. `headless_smoke.gd` gained a dedicated scenario (buy a
+bench, cross one day boundary, confirm the exact deduction and event) plus a no-op-day check; 764 steps
+(up from 734, the new scenario's own ticks). `reference_sim` full suite 660 passed/1 xfailed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
