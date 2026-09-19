@@ -540,14 +540,18 @@ func _initialize() -> void:
     if month_simulation.event_log.count_type("month_end_settlement") != 1:
         _fail("exactly one month_end_settlement event must be recorded")
         return
-    # Task #47: every day boundary crossed in the loop above also charges
-    # each active staff member's own salary_yen_per_day_24h, so the
-    # expected 4-day net result must account for that alongside the manual
-    # restock above (fixture maintenance stays 0 here: month_config never
-    # purchases a catalog fixture).
+    # Task #47/#50: every day boundary crossed in the loop above also
+    # charges each active staff member's own salary_yen_per_day_24h, scaled
+    # to the configured opening_minutes_per_day, so the expected 4-day net
+    # result must account for that alongside the manual restock above
+    # (fixture maintenance stays 0 here: month_config never purchases a
+    # catalog fixture).
     var daily_wages_yen := 0
     for staff_member_config in config["staff"]["members"]:
-        daily_wages_yen += int(staff_member_config.get("salary_yen_per_day_24h", 0))
+        daily_wages_yen += _expected_daily_yen_at_business_hours(
+            int(staff_member_config.get("salary_yen_per_day_24h", 0)),
+            int(month_config["demand"]["opening_minutes_per_day"])
+        )
     var days_crossed_in_month_end_loop: int = (
         REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST - day_count_before_month_end_loop
     )
@@ -956,11 +960,15 @@ func _initialize() -> void:
     if promotion_simulation.popularity != 12:
         _fail("a fired promotion must apply exactly its configured popularity_gain")
         return
-    # Task #47: reaching the promotion's trigger_day crosses at least one day
-    # boundary, which now also charges staff wages for each day crossed.
+    # Task #47/#50: reaching the promotion's trigger_day crosses at least
+    # one day boundary, which now also charges staff wages (scaled to the
+    # configured opening_minutes_per_day) for each day crossed.
     var promotion_daily_wages_yen := 0
     for staff_member_config in config["staff"]["members"]:
-        promotion_daily_wages_yen += int(staff_member_config.get("salary_yen_per_day_24h", 0))
+        promotion_daily_wages_yen += _expected_daily_yen_at_business_hours(
+            int(staff_member_config.get("salary_yen_per_day_24h", 0)),
+            int(config["demand"]["opening_minutes_per_day"])
+        )
     var promotion_days_crossed: int = (
         promotion_simulation.day_count - day_count_before_promotion_wait
     )
@@ -1244,13 +1252,20 @@ func _initialize() -> void:
     if maintenance_simulation.event_log.count_type("fixture_maintenance_charged") != 1:
         _fail("exactly one fixture_maintenance_charged event must be recorded per day boundary crossed")
         return
-    var expected_daily_maintenance_yen: int = int(bench_catalog_entry["maintenance_yen_per_day"])
-    # Task #47: the same day boundary also charges each active staff
-    # member's own salary_yen_per_day_24h (exactly one day's worth here,
-    # since the loop above stops at the first day boundary crossed).
+    var maintenance_opening_minutes_per_day: int = int(maintenance_config["demand"]["opening_minutes_per_day"])
+    var expected_daily_maintenance_yen: int = _expected_daily_yen_at_business_hours(
+        int(bench_catalog_entry["maintenance_yen_per_day"]), maintenance_opening_minutes_per_day
+    )
+    # Task #47/#50: the same day boundary also charges each active staff
+    # member's own salary_yen_per_day_24h, scaled to the configured
+    # opening_minutes_per_day (exactly one day's worth here, since the loop
+    # above stops at the first day boundary crossed).
     var expected_daily_wages_yen := 0
     for staff_member_config in config["staff"]["members"]:
-        expected_daily_wages_yen += int(staff_member_config.get("salary_yen_per_day_24h", 0))
+        expected_daily_wages_yen += _expected_daily_yen_at_business_hours(
+            int(staff_member_config.get("salary_yen_per_day_24h", 0)),
+            maintenance_opening_minutes_per_day
+        )
     var expected_cash_after_maintenance: int = (
         cash_before_maintenance - expected_daily_maintenance_yen - expected_daily_wages_yen
     )
@@ -1743,6 +1758,14 @@ func _initialize() -> void:
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
+
+
+# Task #50: mirrors VerticalSliceSimulation._scale_yen_to_configured_business_hours()
+# exactly, so these expected-value computations stay correct if that
+# formula or its rounding convention ever changes.
+func _expected_daily_yen_at_business_hours(value_at_24h_basis: int, opening_minutes_per_day: int) -> int:
+    const MINUTES_PER_24H_DAY := 24 * 60
+    return int(floor(float(value_at_24h_basis) * opening_minutes_per_day / float(MINUTES_PER_24H_DAY)))
 
 
 func _run_visit(simulation) -> int:

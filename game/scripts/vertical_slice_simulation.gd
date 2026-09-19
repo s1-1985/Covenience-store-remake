@@ -1055,19 +1055,44 @@ func _handle_day_boundary() -> void:
         _settle_month_end()
 
 
-# Task #46: maintenance_yen_per_day exists as CONFIRMED_OFFICIAL data on
-# every fixture_catalog entry but was never deducted anywhere. This sums it
-# across every currently-owned fixture that actually has a fixture_catalog
-# origin (skipping the prototype scenario's shelf-1/shelf-2/checkout-1,
-# which predate the catalog system and have no confirmed maintenance figure
-# to charge) and deducts the total once per simulated day, the same "per
-# real calendar day" unit the confirmed field's own name states. This
-# happens inside the 4-simulated-day window _settle_month_end() later reads
-# via economy.cash_yen's own delta, so it is automatically included in that
-# month's x8 projection with no separate scaling logic of its own. A day
-# with nothing to charge (the prototype scenario's own two starting
-# fixtures, before any catalog fixture is purchased) records no expense at
-# all rather than a redundant zero-yen entry every single day.
+# Task #50: both maintenance_yen_per_day and salary_yen_per_day_24h are
+# stated by the strategy guide to be a 24-hour-basis daily figure that is
+# actually charged in proportion to the store's configured business hours,
+# not a flat per-day amount -- CONFIRMED_OFFICIAL, independently stated
+# twice for wages and once for maintenance
+# (docs/research/quick-reference-guide-part1-2026-09-19.md section 1.2:
+# "維持費...営業時間に応じて、毎日売上げから差し引かれる" / "人件費...時給
+# ×営業時間...営業時間0時間の臨時休業日は、日給表示も0円"). demand.
+# opening_minutes_per_day is this client's own single existing "configured
+# business hours" quantity (DemandPolicy already uses it to spread expected
+# arrivals across the open window), so it is reused here rather than
+# inventing a second one. The floor-rounding to a whole yen amount below is
+# this project's own REMAKE_BALANCED_DEFAULT choice -- the guide states the
+# proportional relationship but never an explicit sub-yen rounding rule --
+# matching the same floor-and-clamp convention CheckoutTiming/RestockTiming
+# already use for their own invented scaling shapes.
+func _scale_yen_to_configured_business_hours(value_at_24h_basis: int) -> int:
+    const MINUTES_PER_24H_DAY := 24 * 60
+    return int(floor(
+        float(value_at_24h_basis) * demand.opening_minutes_per_day / float(MINUTES_PER_24H_DAY)
+    ))
+
+
+# Task #46/#50: maintenance_yen_per_day exists as CONFIRMED_OFFICIAL data on
+# every fixture_catalog entry. This sums, across every currently-owned
+# fixture that actually has a fixture_catalog origin (skipping the
+# prototype scenario's shelf-1/shelf-2/checkout-1, which predate the
+# catalog system and have no confirmed maintenance figure to charge), each
+# fixture's own 24h-basis maintenance_yen_per_day scaled down to the
+# store's configured opening_minutes_per_day (see
+# _scale_yen_to_configured_business_hours above), and deducts the total
+# once per simulated day. This happens inside the 4-simulated-day window
+# _settle_month_end() later reads via economy.cash_yen's own delta, so it
+# is automatically included in that month's x8 projection with no separate
+# scaling logic of its own. A day with nothing to charge (the prototype
+# scenario's own two starting fixtures, before any catalog fixture is
+# purchased) records no expense at all rather than a redundant zero-yen
+# entry every single day.
 func _apply_daily_fixture_maintenance() -> void:
     var total_maintenance_yen := 0
     for fixture in layout.fixtures:
@@ -1076,7 +1101,9 @@ func _apply_daily_fixture_maintenance() -> void:
             continue
         var catalog_entry: Dictionary = _fixture_catalog[catalog_id]
         if catalog_entry.has("maintenance_yen_per_day"):
-            total_maintenance_yen += int(catalog_entry["maintenance_yen_per_day"])
+            total_maintenance_yen += _scale_yen_to_configured_business_hours(
+                int(catalog_entry["maintenance_yen_per_day"])
+            )
     if total_maintenance_yen <= 0:
         return
     var expense: Dictionary = economy.record_explicit_expense(
@@ -1088,26 +1115,28 @@ func _apply_daily_fixture_maintenance() -> void:
     })
 
 
-# Task #47: salary_yen_per_day_24h exists as CONFIRMED_OFFICIAL data on every
-# active staff.members entry (task #32 duplicated it, along with the five
-# skills, from its bound staff_candidates card) but was never deducted
-# anywhere. This charges the full confirmed figure for every active staff
-# member once per simulated day -- the same "per calendar day" unit its own
-# name states -- rather than prorating it against actual hours worked: this
-# client has no shift/hours-worked tracking for staff at all (StaffState is
-# a task-based idle/to_restock/restocking/checkout state machine, not a
-# clocked shift), so deriving a fractional-day amount would require
-# inventing that tracking and a work-fraction assumption neither the guide
-# nor reference_sim states, not just reusing an already-confirmed number.
-# Same "no expense on a zero-total day" choice as fixture maintenance,
-# though in practice this client always has at least the two starting
-# staff members, so that branch is unreachable today -- kept for parity and
-# so it remains correct if a future hiring/firing UI ever lets the roster
-# go empty.
+# Task #47/#50: salary_yen_per_day_24h exists as CONFIRMED_OFFICIAL data on
+# every active staff.members entry (task #32 duplicated it, along with the
+# five skills, from its bound staff_candidates card). This charges every
+# active staff member's own 24h-basis salary_yen_per_day_24h scaled down to
+# the store's configured opening_minutes_per_day (see
+# _scale_yen_to_configured_business_hours above) once per simulated day.
+# This client still has no shift/hours-worked tracking for individual staff
+# (StaffState is a task-based idle/to_restock/restocking/checkout state
+# machine, not a clocked shift), but that is no longer needed here: the
+# guide's own formula scales by the *store's* configured business hours,
+# not by how many of those hours each individual staff member personally
+# worked, so no new per-staff tracking has to be invented to apply it. Same
+# "no expense on a zero-total day" choice as fixture maintenance, though in
+# practice this client always has at least the two starting staff members,
+# so that branch is unreachable today -- kept for parity and so it remains
+# correct if a future hiring/firing UI ever lets the roster go empty.
 func _apply_daily_staff_wages() -> void:
     var total_wages_yen := 0
     for staff_member in staff.all_staff():
-        total_wages_yen += staff_member.salary_yen_per_day_24h
+        total_wages_yen += _scale_yen_to_configured_business_hours(
+            staff_member.salary_yen_per_day_24h
+        )
     if total_wages_yen <= 0:
         return
     var expense: Dictionary = economy.record_explicit_expense(

@@ -1620,6 +1620,22 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn('"fixture_maintenance", minute_of_day, total_maintenance_yen', simulation)
         self.assertIn('_record_event("fixture_maintenance_charged"', simulation)
 
+        # Task #50: maintenance_yen_per_day is a 24-hour-basis figure that
+        # must be scaled down to the store's configured
+        # opening_minutes_per_day, not charged flat regardless of hours --
+        # CONFIRMED_OFFICIAL (docs/research/quick-reference-guide-part1-
+        # 2026-09-19.md section 1.2). The floor-rounding itself is this
+        # project's own REMAKE_BALANCED_DEFAULT choice.
+        self.assertIn(
+            "func _scale_yen_to_configured_business_hours(value_at_24h_basis: int) -> int:",
+            simulation,
+        )
+        self.assertIn(
+            "total_maintenance_yen += _scale_yen_to_configured_business_hours(", simulation
+        )
+        self.assertIn("REMAKE_BALANCED_DEFAULT", simulation)
+        self.assertIn("demand.opening_minutes_per_day", simulation)
+
         # No stale "unconsumed" claim should remain anywhere in the catalog
         # after this task (the same kind of drift task #43 corrected for
         # service/security/cleaning_skill).
@@ -1670,16 +1686,29 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         )
 
         # Wired into the actual day-boundary transition, not just present
-        # as data -- and charged in full, not prorated against hours
-        # worked (this client has no shift/hours-worked tracking to
-        # prorate against).
+        # as data.
         self.assertIn("func _apply_daily_staff_wages() -> void:", simulation)
         self.assertIn("_apply_daily_staff_wages()", simulation)
-        self.assertIn(
-            "total_wages_yen += staff_member.salary_yen_per_day_24h", simulation
-        )
         self.assertIn('"staff_wages", minute_of_day, total_wages_yen', simulation)
         self.assertIn('_record_event("staff_wages_charged"', simulation)
+
+        # Task #50: salary_yen_per_day_24h is a 24-hour-basis figure that
+        # must be scaled down to the store's configured
+        # opening_minutes_per_day (wage = hourly_rate x business_hours),
+        # not charged flat regardless of hours -- CONFIRMED_OFFICIAL,
+        # stated twice independently (docs/research/quick-reference-guide-
+        # part1-2026-09-19.md section 1.2). This client still has no
+        # shift/hours-worked tracking for *individual* staff, but the
+        # guide's formula scales by the store's business hours, not by
+        # each staff member's personal hours worked, so none is needed.
+        self.assertIn(
+            "func _scale_yen_to_configured_business_hours(value_at_24h_basis: int) -> int:",
+            simulation,
+        )
+        self.assertIn(
+            "total_wages_yen += _scale_yen_to_configured_business_hours(", simulation
+        )
+        self.assertIn("REMAKE_BALANCED_DEFAULT", simulation)
 
         # No stale claim should remain anywhere after this task (the same
         # kind of drift task #43 corrected for service/security/
