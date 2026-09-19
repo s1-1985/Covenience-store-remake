@@ -1638,6 +1638,59 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
 
+    def test_staff_wages_are_charged_daily(self):
+        from conveni_sim.baseline_data import STAFF_CANDIDATES
+
+        candidates_by_id = {c.id: c for c in STAFF_CANDIDATES}
+        members = self.config["staff"]["members"]
+        self.assertEqual(len(members), 2)
+
+        # salary_yen_per_day_24h on each active staff.members entry must be
+        # CONFIRMED_OFFICIAL, duplicated verbatim from that member's own
+        # bound candidate card, the same pattern the five skills already
+        # follow (task #32).
+        for member in members:
+            bound = candidates_by_id[member["candidate_id"]]
+            self.assertEqual(
+                member["salary_yen_per_day_24h"], bound.salary_yen_per_day_24h.value
+            )
+
+        staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("var salary_yen_per_day_24h: int", staff_state)
+        self.assertIn(
+            'salary_yen_per_day_24h = int(staff_config.get("salary_yen_per_day_24h", 0))',
+            staff_state,
+        )
+
+        # Wired into the actual day-boundary transition, not just present
+        # as data -- and charged in full, not prorated against hours
+        # worked (this client has no shift/hours-worked tracking to
+        # prorate against).
+        self.assertIn("func _apply_daily_staff_wages() -> void:", simulation)
+        self.assertIn("_apply_daily_staff_wages()", simulation)
+        self.assertIn(
+            "total_wages_yen += staff_member.salary_yen_per_day_24h", simulation
+        )
+        self.assertIn('"staff_wages", minute_of_day, total_wages_yen', simulation)
+        self.assertIn('_record_event("staff_wages_charged"', simulation)
+
+        # No stale claim should remain anywhere after this task (the same
+        # kind of drift task #43 corrected for service/security/
+        # cleaning_skill, and task #46 corrected for fixture maintenance).
+        self.assertNotIn(
+            "stamina/academic_background/agility/sociability/education/age_years/salary/growth",
+            self.config["staff_candidates_evidence_note"],
+        )
+
+        self.assertIn("exactly one staff_wages_charged event must be recorded", smoke)
+
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"

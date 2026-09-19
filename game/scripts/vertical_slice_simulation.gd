@@ -999,6 +999,7 @@ func _handle_day_boundary() -> void:
     day_count += 1
     _days_completed_this_month += 1
     _apply_daily_fixture_maintenance()
+    _apply_daily_staff_wages()
     if _days_completed_this_month >= REPRESENTATIVE_DAYS_PER_MONTH:
         _settle_month_end()
 
@@ -1032,6 +1033,37 @@ func _apply_daily_fixture_maintenance() -> void:
     )
     _record_event("fixture_maintenance_charged", {
         "total_maintenance_yen": total_maintenance_yen,
+        "expense_id": expense["expense_id"],
+    })
+
+
+# Task #47: salary_yen_per_day_24h exists as CONFIRMED_OFFICIAL data on every
+# active staff.members entry (task #32 duplicated it, along with the five
+# skills, from its bound staff_candidates card) but was never deducted
+# anywhere. This charges the full confirmed figure for every active staff
+# member once per simulated day -- the same "per calendar day" unit its own
+# name states -- rather than prorating it against actual hours worked: this
+# client has no shift/hours-worked tracking for staff at all (StaffState is
+# a task-based idle/to_restock/restocking/checkout state machine, not a
+# clocked shift), so deriving a fractional-day amount would require
+# inventing that tracking and a work-fraction assumption neither the guide
+# nor reference_sim states, not just reusing an already-confirmed number.
+# Same "no expense on a zero-total day" choice as fixture maintenance,
+# though in practice this client always has at least the two starting
+# staff members, so that branch is unreachable today -- kept for parity and
+# so it remains correct if a future hiring/firing UI ever lets the roster
+# go empty.
+func _apply_daily_staff_wages() -> void:
+    var total_wages_yen := 0
+    for staff_member in staff.all_staff():
+        total_wages_yen += staff_member.salary_yen_per_day_24h
+    if total_wages_yen <= 0:
+        return
+    var expense: Dictionary = economy.record_explicit_expense(
+        "staff_wages", minute_of_day, total_wages_yen
+    )
+    _record_event("staff_wages_charged", {
+        "total_wages_yen": total_wages_yen,
         "expense_id": expense["expense_id"],
     })
 

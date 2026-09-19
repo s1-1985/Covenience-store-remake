@@ -12,6 +12,7 @@ var security_skill: int
 var cleaning_skill: int
 var register_skill: int
 var replenishment_skill: int
+var salary_yen_per_day_24h: int
 var _start_position := Vector2i.ZERO
 
 
@@ -23,12 +24,15 @@ func _init(staff_config: Dictionary) -> void:
     # client has not ported the growth system itself yet (no work-event
     # counting, no manager-education bonus) -- see
     # reference_sim/conveni_sim/staff.py's StaffRuntimeState/
-    # StaffGrowthOpportunity. These five fields are therefore static for
-    # the lifetime of a StaffState and never change on their own, whatever
-    # their starting value's own evidence level is. The vertical slice's
-    # `data/vertical_slice.json` now sources staff-1/staff-2's starting
-    # values from two of the 35 named CONFIRMED_OFFICIAL strategy-guide
-    # candidates in that file's `staff_candidates` (task #32), not an
+    # StaffGrowthOpportunity. These six fields (five skills plus salary)
+    # are therefore static for the lifetime of a StaffState and never
+    # change on their own, whatever their starting value's own evidence
+    # level is. The vertical slice's `data/vertical_slice.json` now
+    # sources staff-1/staff-2's starting values from two of the 35 named
+    # CONFIRMED_OFFICIAL strategy-guide candidates in that file's
+    # `staff_candidates` (task #32 for the five skills, task #47 for
+    # salary_yen_per_day_24h -- the same duplication-from-candidate
+    # pattern, just added to this field two tasks later), not an
     # arbitrary guess; a caller that omits a field here still silently
     # falls back to a REMAKE_BALANCED_DEFAULT `0` rather than asserting,
     # since this class has no way to tell a real candidate's config apart
@@ -36,15 +40,17 @@ func _init(staff_config: Dictionary) -> void:
     # `CheckoutTiming` (task #33) to vary checkout duration per staff
     # member instead of a single flat tick count for everyone;
     # replenishment_skill is consumed the same way by `RestockTiming`
-    # (task #40) for restock duration.
+    # (task #40) for restock duration; salary_yen_per_day_24h is consumed
+    # by `VerticalSliceSimulation._apply_daily_staff_wages()` (task #47).
     service_skill = int(staff_config.get("service_skill", 0))
     security_skill = int(staff_config.get("security_skill", 0))
     cleaning_skill = int(staff_config.get("cleaning_skill", 0))
     register_skill = int(staff_config.get("register_skill", 0))
     replenishment_skill = int(staff_config.get("replenishment_skill", 0))
+    salary_yen_per_day_24h = int(staff_config.get("salary_yen_per_day_24h", 0))
     assert(not staff_id.is_empty())
     assert(service_skill >= 0 and security_skill >= 0 and cleaning_skill >= 0)
-    assert(register_skill >= 0 and replenishment_skill >= 0)
+    assert(register_skill >= 0 and replenishment_skill >= 0 and salary_yen_per_day_24h >= 0)
     reset()
 
 

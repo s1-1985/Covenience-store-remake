@@ -268,7 +268,23 @@ crosscheckドキュメントを必ず先に確認すること。
     調査の過程で判明した`salary_yen_per_day_24h`(スタッフ給与、35名候補
     データにのみ存在し実働staff.membersには無い)は今回の対象外とし、
     将来タスクの候補として記録。全35エントリのevidence_noteから「未消費」
-    の古い記述を除去。決定書0115。
+    の古い記述を除去。決定書0115。PR #217として作成、CI green確認後
+    ユーザーがready化しマージ済み。
+21. タスク#46で見つけた「スタッフ給与も未消費」という候補にユーザーの
+    明示的な選択を待たず(直前の調査で既にデータを確認済みだったため)
+    続けて着手。**タスク#47**: `salary_yen_per_day_24h`をタスク#32と同じ
+    「候補者データを`staff.members`へ複製する」パターンで複製し
+    (staff-1=7680円、staff-2=7920円)、新規`_apply_daily_staff_wages()`
+    を`_apply_daily_fixture_maintenance()`と全く同じ形で追加した。実労働
+    時間による按分はスタッフの勤務時間追跡機構自体が存在しないため対象外
+    とし、確定額をそのまま日額として控除。この変更により月末決済テスト・
+    広告発火テストの期待値計算が壊れたため、日境界を跨いだ回数を動的に
+    追跡する形に修正(特に月末決済テストの`expected_cash_after_month_end`
+    は、日境界での支出が存在しなかった旧世界でたまたま成立していた式を、
+    `_settle_month_end()`の実装から直接導ける頑健な式に置き換えた)。
+    `staff_candidates_evidence_note`も、タスク#43是正と同種の陳腐化
+    (register_skill/replenishment_skillを「将来消費予定」のまま古い記述に
+    していた)が見つかったため併せて是正。決定書0116。
 
 ## 3. 検証
 
@@ -392,7 +408,8 @@ download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip`から再ダウンロー�
 | #214 | タスク#43(service/security/cleaning_skill「未消費」記述の是正) | マージ済み |
 | #215 | タスク#44(customer_share_percentを月次で再計算するよう配線) | マージ済み |
 | #216 | タスク#45(什器のcapacity/compatible_product_categoriesを仕入れ処理へ配線) | マージ済み |
-| (作成予定) | タスク#46(什器のmaintenance_yen_per_dayを日次収支へ配線) | 作業中 |
+| #217 | タスク#46(什器のmaintenance_yen_per_dayを日次収支へ配線) | マージ済み |
+| (作成予定) | タスク#47(スタッフのsalary_yen_per_day_24hを日次収支へ配線) | 作業中 |
 
 ## 7. 作業ブランチについて
 

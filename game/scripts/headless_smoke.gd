@@ -493,7 +493,7 @@ func _initialize() -> void:
     if cash_before_month_end != cash_after_initial_sale - 50:
         _fail("the manual restock expense must be reflected in cash before month end")
         return
-    var expected_four_day_net_result_yen: int = cash_before_month_end - 1000
+    var day_count_before_month_end_loop: int = month_simulation.day_count
 
     var month_end_ticks := 0
     while month_simulation.day_count < REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST and month_end_ticks < 20000:
@@ -514,12 +514,30 @@ func _initialize() -> void:
     if month_simulation.event_log.count_type("month_end_settlement") != 1:
         _fail("exactly one month_end_settlement event must be recorded")
         return
+    # Task #47: every day boundary crossed in the loop above also charges
+    # each active staff member's own salary_yen_per_day_24h, so the
+    # expected 4-day net result must account for that alongside the manual
+    # restock above (fixture maintenance stays 0 here: month_config never
+    # purchases a catalog fixture).
+    var daily_wages_yen := 0
+    for staff_member_config in config["staff"]["members"]:
+        daily_wages_yen += int(staff_member_config.get("salary_yen_per_day_24h", 0))
+    var days_crossed_in_month_end_loop: int = (
+        REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST - day_count_before_month_end_loop
+    )
+    var expected_four_day_net_result_yen: int = (
+        cash_before_month_end - 1000 - daily_wages_yen * days_crossed_in_month_end_loop
+    )
     var expected_month_result_yen: int = (
         expected_four_day_net_result_yen * MONTH_MULTIPLIER_FOR_TEST
     )
-    var expected_cash_after_month_end: int = cash_before_month_end + (
-        expected_month_result_yen - expected_four_day_net_result_yen
-    )
+    # cash_after_settlement = cash_at_month_start + four_day_net_result_yen +
+    # (month_result_yen - four_day_net_result_yen) = cash_at_month_start +
+    # month_result_yen, by construction of _settle_month_end() -- simpler
+    # and, since task #47, more robust than reusing cash_before_month_end
+    # (no longer equal to cash right before settlement's own adjustment,
+    # now that day-boundary expenses can fall between the two).
+    var expected_cash_after_month_end: int = 1000 + expected_month_result_yen
     if month_simulation.economy.cash_yen != expected_cash_after_month_end:
         _fail("month-end cash must equal the pre-settlement cash plus the x8 adjustment")
         return
@@ -901,6 +919,7 @@ func _initialize() -> void:
         _fail("scheduling the same promotion method twice in one month must be rejected")
         return
 
+    var day_count_before_promotion_wait: int = promotion_simulation.day_count
     var promotion_ticks := 0
     while promotion_simulation.popularity == 0 and promotion_ticks < 5000:
         promotion_simulation.tick_idle_for_demand()
@@ -911,7 +930,18 @@ func _initialize() -> void:
     if promotion_simulation.popularity != 12:
         _fail("a fired promotion must apply exactly its configured popularity_gain")
         return
-    if promotion_simulation.economy.cash_yen != cash_before_scheduling - 100000:
+    # Task #47: reaching the promotion's trigger_day crosses at least one day
+    # boundary, which now also charges staff wages for each day crossed.
+    var promotion_daily_wages_yen := 0
+    for staff_member_config in config["staff"]["members"]:
+        promotion_daily_wages_yen += int(staff_member_config.get("salary_yen_per_day_24h", 0))
+    var promotion_days_crossed: int = (
+        promotion_simulation.day_count - day_count_before_promotion_wait
+    )
+    var expected_cash_after_promotion: int = (
+        cash_before_scheduling - 100000 - promotion_daily_wages_yen * promotion_days_crossed
+    )
+    if promotion_simulation.economy.cash_yen != expected_cash_after_promotion:
         _fail("a fired promotion must deduct exactly its configured cost at trigger time")
         return
     if promotion_simulation.event_log.count_type("promotion_fired") != 1:
@@ -1098,8 +1128,20 @@ func _initialize() -> void:
         _fail("exactly one fixture_maintenance_charged event must be recorded per day boundary crossed")
         return
     var expected_daily_maintenance_yen: int = int(bench_catalog_entry["maintenance_yen_per_day"])
-    if maintenance_simulation.economy.cash_yen != cash_before_maintenance - expected_daily_maintenance_yen:
+    # Task #47: the same day boundary also charges each active staff
+    # member's own salary_yen_per_day_24h (exactly one day's worth here,
+    # since the loop above stops at the first day boundary crossed).
+    var expected_daily_wages_yen := 0
+    for staff_member_config in config["staff"]["members"]:
+        expected_daily_wages_yen += int(staff_member_config.get("salary_yen_per_day_24h", 0))
+    var expected_cash_after_maintenance: int = (
+        cash_before_maintenance - expected_daily_maintenance_yen - expected_daily_wages_yen
+    )
+    if maintenance_simulation.economy.cash_yen != expected_cash_after_maintenance:
         _fail("daily fixture maintenance must deduct exactly the sum of every owned fixture's maintenance_yen_per_day")
+        return
+    if maintenance_simulation.event_log.count_type("staff_wages_charged") != 1:
+        _fail("exactly one staff_wages_charged event must be recorded per day boundary crossed")
         return
 
     var rating_config: Dictionary = config.duplicate(true)
