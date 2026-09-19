@@ -1324,6 +1324,68 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
 
+    def test_shelf_fixture_catalog_expansion_ports_confirmed_reference_sim_data(self):
+        from conveni_sim.baseline_data import FIXTURES
+
+        catalog_by_id = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        reference_by_id = {f.id: f for f in FIXTURES}
+
+        # Mechanics this client does not implement -- multi-register
+        # checkout routing, a copier/print service, an ATM-like cash
+        # dispenser, and a staff break/rest room -- are deliberately
+        # excluded from this port, the same reasoning task #39 used to
+        # exclude the "cash" product category.
+        excluded_ids = {
+            "register_1", "register_2", "register_3", "register_4",
+            "copier_a", "copier_b", "indoor_dispenser",
+            "break_room_1", "break_room_2", "vending_machine",
+        }
+        for excluded_id in excluded_ids:
+            self.assertNotIn(excluded_id, catalog_by_id)
+
+        # Every other reference_sim fixture not already in the catalog
+        # before this task (the 3 amenity + 3 parking + 2 shelf entries)
+        # must now be ported.
+        pre_existing_ids = {
+            "potted_plant", "bench", "fountain",
+            "parking_ground", "parking_two_story", "parking_tower",
+            "small_ambient_shelf", "small_tobacco_vending",
+        }
+        expected_new_ids = set(reference_by_id) - excluded_ids - pre_existing_ids
+        actual_new_ids = set(catalog_by_id) - pre_existing_ids
+        self.assertEqual(actual_new_ids, expected_new_ids)
+
+        for catalog_id in actual_new_ids:
+            entry = catalog_by_id[catalog_id]
+            reference = reference_by_id[catalog_id]
+            self.assertEqual(entry["kind"], "shelf")
+            self.assertEqual(entry["footprint_tiles"], list(reference.footprint.value))
+            self.assertEqual(entry["purchase_price_yen"], reference.purchase_price_yen.value)
+            self.assertEqual(
+                entry["maintenance_yen_per_day"], reference.maintenance_yen_per_day.value
+            )
+            self.assertIn("CONFIRMED_OFFICIAL", entry["evidence_note"])
+            required_permit_id = entry.get("required_permit_id")
+            if required_permit_id is not None:
+                self.assertIn(
+                    required_permit_id,
+                    [permit["permit_id"] for permit in self.config["permits"]],
+                )
+
+        # Only the tobacco-dedicated vending fixture is permit-gated, same
+        # precedent as the existing small_tobacco_vending entry.
+        self.assertEqual(catalog_by_id["large_tobacco_vending"].get("required_permit_id"), "tobacco")
+        for catalog_id in actual_new_ids - {"large_tobacco_vending"}:
+            self.assertNotIn("required_permit_id", catalog_by_id[catalog_id])
+
+        # No kind-specific carve-out is needed: main.gd's fixture catalog UI
+        # and try_purchase_fixture are already fully generic over kind, and
+        # any fixture without its own store_view.gd branch already falls
+        # back to the existing default blue "SHELF" rendering, which is
+        # correct for every entry added here (they are all kind="shelf").
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        self.assertIn('var label := "SHELF"', store_view)
+
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"

@@ -766,6 +766,25 @@ decision 0109. Automatic restock dispatch stays disabled by default (task #36's 
 than an exact tick count, so it needed no change. `reference_sim` full suite 656 passed/1 xfailed, no
 flake this run.
 
+**Task #41 (2026-09-19)**: continuing the same priority after task #40 merged (PR #211), `game/data/
+vertical_slice.json`'s `fixture_catalog` still held only the 8 fixtures ported in tasks #32/#34, while
+`reference_sim/conveni_sim/baseline_data.py`'s `FIXTURES` has 45 CONFIRMED_OFFICIAL entries from the
+strategy guide's DATA LIST fixture table. `try_purchase_fixture`/`main.gd`'s `fixture_catalog_option` are
+already fully generic over `catalog_id`, and `store_view.gd` already falls back to a default blue "SHELF"
+render for any `kind` other than `"checkout"`/`"amenity"`/`"parking"` (confirmed correct behavior since
+task #34's parking fixtures), so 27 more fixtures were ported as `kind: "shelf"` data with zero code
+changes -- ambient/refrigerated/frozen shelves and wagons at every size, the hot-drink/oden/steamed-bun
+cases, event fixtures, and the large tobacco/cold-drink/hot-cold-drink vending machines.
+`capacity`/`compatible_product_categories` stay unconsumed, matching task #39's identical choice to leave
+the product side's `compatible_fixtures_text` unconsumed. 10 fixtures were deliberately excluded as
+mechanics this client doesn't implement: `register_1`-`register_4` (multi-checkout routing isn't
+simulated -- a single fixed `checkout_fixture_id`/`_checkout_queue` exists), `copier_a`/`copier_b`
+(no copier service), `indoor_dispenser` (an ATM-like cash mechanic, same reasoning as excluding the
+`cash` product category in task #39), `break_room_1`/`break_room_2` (no staff rest mechanic), and
+`vending_machine` (its reference_sim entry itself has no confirmed footprint/price/maintenance data at
+all -- an incomplete placeholder, nothing to port). See decision 0110. `headless_smoke.gd` unchanged at
+734 steps (no code touched); `reference_sim` full suite 657 passed/1 xfailed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
