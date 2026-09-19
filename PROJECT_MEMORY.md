@@ -913,6 +913,26 @@ separate future candidate. See decision 0115. `headless_smoke.gd` gained a dedic
 bench, cross one day boundary, confirm the exact deduction and event) plus a no-op-day check; 764 steps
 (up from 734, the new scenario's own ticks). `reference_sim` full suite 660 passed/1 xfailed.
 
+**Task #47 (2026-09-19)**: continuing directly from task #46's own leftover candidate, `salary_yen_per_day_
+24h` (CONFIRMED_OFFICIAL on the 35-candidate hiring pool) is now duplicated onto `staff.members`' two
+active entries too (7680/7920 for staff-1/staff-2), the same copy-from-bound-candidate pattern task #32
+already established for the five skill fields. New `VerticalSliceSimulation._apply_daily_staff_wages()`,
+mirroring `_apply_daily_fixture_maintenance()`'s exact shape, sums it across every active staff member and
+deducts the total once per simulated day via `economy.record_explicit_expense("staff_wages", ...)`. Charged
+in full rather than prorated by hours worked, since this client has no shift/hours-worked tracking for
+staff at all to prorate against. Fixing this also forced two existing `headless_smoke.gd` tests to update:
+the month-end settlement test's expected cash now accounts for the wages charged across the 4 day
+boundaries crossed, and its `expected_cash_after_month_end` formula was rebuilt from `_settle_month_end()`'s
+own arithmetic (`cash_at_month_start + month_result_yen`) rather than reusing a pre-day-boundary cash
+snapshot that, only before day-boundary expenses existed, happened to equal the pre-settlement figure; the
+promotion-firing test now tracks how many day boundaries were actually crossed while waiting for the
+promotion to trigger and adds that many days' wages to its expected deduction. Also corrected
+`staff_candidates_evidence_note`, which had gone stale in the same way task #43 caught for
+`staff.skill_evidence_note` (it still claimed register_skill/replenishment_skill were future-only and
+listed salary among unconsumed fields, both now false). See decision 0116. `headless_smoke.gd` unchanged
+at 764 steps (reused task #46's own scenario rather than adding a new one); `reference_sim` full suite 661
+passed/1 xfailed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
