@@ -105,6 +105,13 @@ var _promotion_catalog: Dictionary = {}
 var _promotions_used_this_month: Dictionary = {}
 var _scheduled_promotions: Array[Dictionary] = []
 var popularity: int
+# Task #53: CONFIRMED_OFFICIAL that a price-setting/margin mechanic exists
+# (see try_set_price_policy below for the citation); 0 means "no change
+# from the catalog's own list price," matching the guide's own baseline
+# framing ("通常は全て40%に設定されており、これが定価と考えられる" --
+# the catalog's sale_price_yen values already assume that baseline margin,
+# so this client does not re-derive prices from a separate margin input).
+var price_change_pct: int
 var town
 var _land_value_policy
 var internal_rating_value: int
@@ -211,6 +218,7 @@ func reset() -> void:
     _promotions_used_this_month.clear()
     _scheduled_promotions.clear()
     popularity = 0
+    price_change_pct = 0
     # No confirmed starting evaluation for a brand-new store exists (the
     # guide never states one; store_evaluation.py's own
     # internal_rating_value likewise starts unknown until a caller sets
@@ -248,6 +256,43 @@ func start_explicit_customer(customer_id: String, product_ids: Array[String]) ->
         product_ids
     )
     _record_customer_entered(customer)
+    return true
+
+
+# Task #52: an explicit player action, confirmed by the strategy guide
+# (book p.35, CONFIRMED_OFFICIAL, directly re-read): "怒りやすいお客さん
+# は、おじさんやおじいさんに多い。もしレジ前の混雑にこの人が混じってい
+# たら、カーソルをこの人に合わせて決定ボタン。怒り出すまえに"つまみだ
+# す"を選んで、お店の外に出してしまうといいぞ。" Selecting a customer
+# who is in the checkout queue or being served and choosing to eject them
+# removes them from the store before they can trigger the (task #51,
+# store-wide) checkout-anger penalty, at the cost of forfeiting their
+# purchase entirely. Scoped to "waiting_checkout"/"checkout" only, matching
+# the guide's own "レジ前の混雑" (checkout-front congestion) framing -- a
+# customer still shopping elsewhere in the store isn't eligible. Whether an
+# already-picked-up basket's units return to shelf stock on ejection is not
+# stated by any source; this project's own REMAKE_BALANCED_DEFAULT choice
+# is that they do not (the customer simply leaves with whatever they were
+# already holding), since this client has no other "undo a pick-up"
+# mechanic anywhere to reuse instead of inventing one -- ejecting a
+# customer who already filled their basket is a real shrinkage cost, not a
+# free do-over.
+func try_eject_customer(customer_id: String) -> bool:
+    if is_game_over or not customers.customers.has(customer_id):
+        return false
+    var ejected_customer = customers.customer(customer_id)
+    if ejected_customer.phase != "waiting_checkout" and ejected_customer.phase != "checkout":
+        return false
+    if ejected_customer.phase == "waiting_checkout":
+        _checkout_queue.erase(customer_id)
+    else:
+        staff.checkout_staff().state = "idle"
+    ejected_customer.phase = "leaving"
+    ejected_customer.route = layout.find_path(ejected_customer.position, layout.exit)
+    _record_event("customer_ejected", {
+        "customer_id": customer_id,
+        "had_unsettled_basket": not ejected_customer.basket.is_empty(),
+    })
     return true
 
 
@@ -429,6 +474,50 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
         "expense_id": expense["expense_id"],
     })
     return true
+
+
+# Task #53: a price-setting/margin mechanic is CONFIRMED_OFFICIAL, directly
+# re-read from the strategy guide (クイックリファレンス book pages 5-6):
+# "商品価格を決定して下さい。利益率の割合。通常は全て40%に設定されており、
+# これが定価と考えられる。個別に設定" (a global profit-margin percentage,
+# defaulting to 40% -- this client's product_catalog sale_price_yen values
+# already assume that baseline) and a screenshot showing "全商品平均利益率
+# 20% / 全体に設定 <20%OFFに> / 個別に設定" (a global "all items X% off"
+# slider, plus a per-item override). This client only ports the GLOBAL
+# slider, not the per-item override -- REMAKE_BALANCED_DEFAULT scope choice,
+# not a claim that per-item pricing doesn't exist in the original. The
+# confirmed section-8 fact that merchandise price is one factor in customer
+# monopoly/footfall is deliberately NOT wired here: no source states a
+# price-to-demand formula, so demand_policy.gd's arrival rate stays
+# unaffected by price_change_pct (inventing that link would be a much
+# larger, unconfirmed addition, not this task's narrow scope of finally
+# consuming the price_change_pct field store_rating.gd has awaited since
+# task #27). The lower bound of -100 (a 100% markdown, i.e. free) is this
+# project's own REMAKE_BALANCED_DEFAULT sanity floor -- no source states a
+# minimum, but a price below 0% of list price is not a meaningful discount.
+func try_set_price_policy(new_price_change_pct: int) -> bool:
+    if is_game_over or not customers.all_settled():
+        return false
+    if new_price_change_pct < -100:
+        return false
+    var previous_price_change_pct := price_change_pct
+    price_change_pct = new_price_change_pct
+    _record_event("price_policy_changed", {
+        "previous_price_change_pct": previous_price_change_pct,
+        "price_change_pct": price_change_pct,
+    })
+    return true
+
+
+# Scales a product's own list price (product_catalog's confirmed
+# sale_price_yen) by the currently configured price_change_pct, floored to
+# a whole yen and never negative. Called once per unit at the moment a
+# customer picks it up (inventory.try_take_one()'s own CONFIRMED_OFFICIAL
+# unit_price_yen is the pre-discount list price), so the price actually
+# charged reflects whatever price_change_pct was in effect at pickup time,
+# not at checkout time.
+func _apply_price_policy(list_price_yen: int) -> int:
+    return max(0, int(floor(float(list_price_yen) * (100 + price_change_pct) / 100.0)))
 
 
 func try_purchase_promotion(promotion_id: String) -> bool:
@@ -624,6 +713,7 @@ func _advance_customer(customer) -> void:
                 var product_id: String = customer.current_product_id()
                 var line: Dictionary = inventory.try_take_one(product_id)
                 if not line.is_empty():
+                    line["unit_price_yen"] = _apply_price_policy(int(line["unit_price_yen"]))
                     customer.add_basket_line(line)
                     _record_event("product_picked", {
                         "customer_id": customer.customer_id,
@@ -662,10 +752,17 @@ func _advance_customer(customer) -> void:
             pass  # Dequeued by _dispatch_checkout_queue() once the checkout is free.
         "checkout":
             customer.checkout_ticks_remaining -= 1
-            # Task #49: a checkout service running unusually long (relative
-            # to the confirmed CheckoutTiming reference duration) angers the
-            # customer exactly once per checkout, applying the confirmed -2
-            # penalty to the currently serving staff member.
+            # Task #49/#51: a checkout service running unusually long
+            # (relative to the confirmed CheckoutTiming reference duration)
+            # angers the customer exactly once per checkout, applying the
+            # confirmed -2 penalty. Task #51 corrected the penalty's scope:
+            # the strategy guide, directly re-read (book pp.34-35,
+            # "お客さんに怒られると店員全員の能力が下がってしまう"),
+            # states CONFIRMED_OFFICIAL that an angry customer lowers EVERY
+            # active staff member's ability, not only the one who served
+            # them -- task #49 had scoped this down to the serving staff
+            # member alone, a REMAKE_BALANCED_DEFAULT simplification this
+            # stronger, officially-tier evidence now supersedes.
             if not customer.checkout_anger_triggered:
                 var elapsed_ticks: int = (
                     customer.checkout_assigned_ticks - customer.checkout_ticks_remaining
@@ -673,14 +770,16 @@ func _advance_customer(customer) -> void:
                 if elapsed_ticks > _checkout_anger.trigger_ticks(_checkout_ticks):
                     customer.checkout_anger_triggered = true
                     var angry_checkout_staff = staff.checkout_staff()
-                    var penalty_results: Dictionary = _checkout_anger.apply_penalty(
-                        angry_checkout_staff
-                    )
+                    var skills_by_staff: Dictionary = {}
+                    for angered_staff_member in staff.all_staff():
+                        skills_by_staff[angered_staff_member.staff_id] = (
+                            _checkout_anger.apply_penalty(angered_staff_member)
+                        )
                     _record_event("checkout_anger_triggered", {
                         "customer_id": customer.customer_id,
                         "staff_id": angry_checkout_staff.staff_id,
                         "elapsed_ticks": elapsed_ticks,
-                        "skills": penalty_results,
+                        "skills_by_staff": skills_by_staff,
                     })
             if customer.checkout_ticks_remaining <= 0:
                 var checkout_staff = staff.checkout_staff()
@@ -783,6 +882,7 @@ func snapshot() -> Dictionary:
         "game_over_reason": game_over_reason,
         "permits_held": _permits_held.keys(),
         "popularity": popularity,
+        "price_change_pct": price_change_pct,
         "town_population": town.population,
         "town_store_count_including_rivals": town.store_count_including_rivals,
         "land_value_yen": _land_value_policy.current_land_price_yen(
@@ -806,16 +906,61 @@ func snapshot() -> Dictionary:
     }
 
 
+# Task #55: CONFIRMED_OFFICIAL (docs/research/quick-reference-guide-part1-
+# 2026-09-19.md, directly re-read book p.9): "顧客は購入希望の品を求めて
+# 来店する。希望の品を購入した後、時間が許せばそのほかの商品も購入する。
+# それぞれの顧客に3品程度の「ついでに欲しい品」があるので、それらを揃え
+# ておくことも大切だ。" Every demand-driven customer now also wants
+# roughly 3 additional in-stock products beyond their primary destination
+# plan, purchased after it via the exact same existing plan/pickup
+# machinery -- no new phase or mechanic was needed, only extending the
+# plan array before admission. This client models no customer-patience/
+# time-budget mechanic at all (PROJECT_MEMORY.md section 7's own standing
+# HYPOTHESIS, still unconfirmed), so "時間が許せば" (if time allows) is
+# simplified to "always" here, matching how the primary plan is already
+# handled unconditionally -- REMAKE_BALANCED_DEFAULT, since inventing a
+# time-budget/abandonment mechanic instead would be a much larger,
+# unconfirmed addition than this task's narrow scope. The exact count (3,
+# not "roughly 3") and the selection method (a uniform random draw from
+# currently-stocked products, reusing the shared demand RNG rather than a
+# new stream) are also this project's own REMAKE_BALANCED_DEFAULT choices:
+# the guide's own bar chart of relative per-category incidental-purchase
+# weight is single-playthrough example data, not a confirmed general
+# game-data table, so it is deliberately not used as a weighting scheme.
+# Deliberately scoped to demand-driven admission only (this function,
+# covering both the automatic tick_idle_for_demand() path and the manual
+# "Admit next customer" button, which both call this): the explicit/
+# observed customer path (start_explicit_customer()) exists specifically
+# to replay a caller-supplied EXACT plan and must stay uninflated by
+# invented items.
+const INCIDENTAL_WANT_PRODUCT_COUNT := 3
+
+
 func _start_default_customer() -> void:
     var plan: Array[String] = customers.default_plan()
+    plan.append_array(_select_incidental_want_product_ids(plan))
     var customer = customers.admit_default(
         layout.entry,
         layout.find_path(
             layout.entry,
             _product_interaction(plan[0])
-        )
+        ),
+        plan
     )
     _record_customer_entered(customer)
+
+
+func _select_incidental_want_product_ids(exclude_product_ids: Array[String]) -> Array[String]:
+    var candidates: Array[String] = []
+    for product_id in inventory.product_order:
+        if not exclude_product_ids.has(product_id):
+            candidates.append(product_id)
+    var selected: Array[String] = []
+    while not candidates.is_empty() and selected.size() < INCIDENTAL_WANT_PRODUCT_COUNT:
+        var index: int = _demand_rng.randi_range(0, candidates.size() - 1)
+        selected.append(candidates[index])
+        candidates.remove_at(index)
+    return selected
 
 
 func _record_customer_entered(customer) -> void:
@@ -837,7 +982,7 @@ func observation_snapshot() -> Dictionary:
     }
 
 
-const SAVE_SCHEMA_VERSION := 2
+const SAVE_SCHEMA_VERSION := 3
 
 # Deliberately not saved/restored: the active customer's mid-visit walk
 # state (position along a route, basket-so-far, checkout progress) and
@@ -874,6 +1019,7 @@ func save_state() -> Dictionary:
         "game_over_reason": game_over_reason,
         "clear_condition_met": clear_condition_met,
         "popularity": popularity,
+        "price_change_pct": price_change_pct,
         "internal_rating_value": internal_rating_value,
         "star_rating": star_rating,
         "player_store_count": player_store_count,
@@ -932,6 +1078,7 @@ func load_state(data: Dictionary) -> bool:
     game_over_reason = str(data["game_over_reason"])
     clear_condition_met = bool(data["clear_condition_met"])
     popularity = int(data["popularity"])
+    price_change_pct = int(data["price_change_pct"])
     internal_rating_value = int(data["internal_rating_value"])
     star_rating = int(data["star_rating"])
     player_store_count = int(data["player_store_count"])
@@ -1203,11 +1350,15 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
     var cleaning_value: float = _store_value.compute_cleaning_value(
         cleaning_skills, _store_size_tier
     )
-    # No price-setting mechanic exists in this vertical slice yet (product
-    # sale prices are fixed config values), so price_change_pct is always 0
-    # ("no change from baseline") rather than a guessed nonzero value.
+    # Task #53: price_change_pct now reflects the player's own configured
+    # price policy (try_set_price_policy()) instead of always being 0.
     var evaluation: Dictionary = _store_rating.evaluate_monthly_rating_change(
-        internal_rating_value, 0, service_value, security_value, cleaning_value, monthly_sales_yen
+        internal_rating_value,
+        price_change_pct,
+        service_value,
+        security_value,
+        cleaning_value,
+        monthly_sales_yen
     )
     internal_rating_value = int(evaluation["next_internal_value"])
     star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
@@ -1432,6 +1583,7 @@ func _require_save_data(data: Dictionary) -> void:
         "game_over_reason",
         "clear_condition_met",
         "popularity",
+        "price_change_pct",
         "internal_rating_value",
         "star_rating",
         "player_store_count",

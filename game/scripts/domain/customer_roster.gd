@@ -68,11 +68,17 @@ func default_plan() -> Array[String]:
     return _visit_plan_product_ids.duplicate()
 
 
-func admit_default(entry: Vector2i, initial_route: Array[Vector2i]):
+# Task #55: visit_plan_product_ids is caller-supplied (the caller is
+# expected to start from default_plan() and may extend it, e.g. with
+# incidental-want products) rather than always reusing
+# _visit_plan_product_ids internally, so "default" now describes only how
+# the customer_id/entry route are derived, not that the plan itself is
+# fixed.
+func admit_default(entry: Vector2i, initial_route: Array[Vector2i], visit_plan_product_ids: Array[String]):
     assert(can_admit_concurrent())
     var customer_id := "%s-%d" % [_id_prefix, _next_sequence]
     _next_sequence += 1
-    return admit_explicit(customer_id, entry, initial_route, _visit_plan_product_ids)
+    return admit_explicit(customer_id, entry, initial_route, visit_plan_product_ids)
 
 
 func admit_explicit(

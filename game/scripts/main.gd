@@ -27,6 +27,8 @@ const NEW_FIXTURE_SELECTION_PREFIX := "__new:"
 @onready var step_button: Button = $UI/Panel/Margin/Scroll/VBox/Buttons/StepButton
 @onready var reset_button: Button = $UI/Panel/Margin/Scroll/VBox/Buttons/ResetButton
 @onready var next_customer_button: Button = $UI/Panel/Margin/Scroll/VBox/NextCustomerButton
+@onready var eject_customer_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/EjectCustomerOption
+@onready var eject_customer_button: Button = $UI/Panel/Margin/Scroll/VBox/EjectCustomerButton
 @onready var rotate_fixture_button: Button = $UI/Panel/Margin/Scroll/VBox/RotateFixtureButton
 @onready var sample_layout_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/SampleLayoutOption
 @onready var load_sample_layout_button: Button = $UI/Panel/Margin/Scroll/VBox/LoadSampleLayoutButton
@@ -42,6 +44,8 @@ const NEW_FIXTURE_SELECTION_PREFIX := "__new:"
 @onready var promotion_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/PromotionOption
 @onready var buy_promotion_button: Button = $UI/Panel/Margin/Scroll/VBox/BuyPromotionButton
 @onready var expand_chain_button: Button = $UI/Panel/Margin/Scroll/VBox/ExpandChainButton
+@onready var price_change_spin_box: SpinBox = $UI/Panel/Margin/Scroll/VBox/PriceChangeSpinBox
+@onready var set_price_policy_button: Button = $UI/Panel/Margin/Scroll/VBox/SetPricePolicyButton
 @onready var save_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/SaveButton
 @onready var load_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/LoadButton
 @onready var quit_to_menu_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/QuitToMenuButton
@@ -58,6 +62,7 @@ var _permit_ids: Array[String] = []
 var _product_catalog_ids: Array[String] = []
 var _procure_fixture_ids: Array[String] = []
 var _restock_product_ids: Array[String] = []
+var _eject_customer_ids: Array[String] = []
 var _promotion_ids: Array[String] = []
 var _next_fixture_purchase_sequence := 1
 var _next_product_purchase_sequence := 1
@@ -90,6 +95,7 @@ func _ready() -> void:
     step_button.pressed.connect(_on_step_pressed)
     reset_button.pressed.connect(_on_reset_pressed)
     next_customer_button.pressed.connect(_on_next_customer_pressed)
+    eject_customer_button.pressed.connect(_on_eject_customer_pressed)
     rotate_fixture_button.pressed.connect(_on_rotate_fixture_pressed)
     load_sample_layout_button.pressed.connect(_on_load_sample_layout_pressed)
     buy_fixture_button.pressed.connect(_on_buy_fixture_pressed)
@@ -98,6 +104,7 @@ func _ready() -> void:
     restock_button.pressed.connect(_on_restock_pressed)
     buy_promotion_button.pressed.connect(_on_buy_promotion_pressed)
     expand_chain_button.pressed.connect(_on_expand_chain_pressed)
+    set_price_policy_button.pressed.connect(_on_set_price_policy_pressed)
     save_button.pressed.connect(_on_save_pressed)
     load_button.pressed.connect(_on_load_pressed)
     quit_to_menu_button.pressed.connect(_on_quit_to_menu_pressed)
@@ -162,6 +169,36 @@ func _on_next_customer_pressed() -> void:
     paused = false
     pause_button.text = "Pause"
     accumulator = 0.0
+    _refresh_ui()
+
+
+# Task #52: unlike the other catalog-driven option lists above (fixtures/
+# permits/products/promotions), which only change after an explicit player
+# action and so are refreshed just after those actions, the set of
+# ejectable customers changes on its own every tick as customers walk
+# through the store -- so this is also called from _refresh_ui() (task
+# #52), not only from _ready()/explicit action handlers.
+func _refresh_eject_customer_option() -> void:
+    eject_customer_option.clear()
+    _eject_customer_ids.clear()
+    for customer in simulation.customers.active_customers():
+        if customer.phase == "waiting_checkout" or customer.phase == "checkout":
+            _eject_customer_ids.append(customer.customer_id)
+            eject_customer_option.add_item("%s (%s)" % [customer.customer_id, customer.phase])
+    eject_customer_option.disabled = _eject_customer_ids.is_empty()
+    eject_customer_button.disabled = _eject_customer_ids.is_empty()
+
+
+func _on_eject_customer_pressed() -> void:
+    if _eject_customer_ids.is_empty():
+        layout_edit_label.text = "No customer currently at checkout to eject"
+        _refresh_ui()
+        return
+    var customer_id: String = _eject_customer_ids[eject_customer_option.selected]
+    if simulation.try_eject_customer(customer_id):
+        layout_edit_label.text = "Ejected customer %s before they could get angry" % customer_id
+    else:
+        layout_edit_label.text = "Could not eject %s" % customer_id
     _refresh_ui()
 
 
@@ -455,6 +492,17 @@ func _on_expand_chain_pressed() -> void:
     _refresh_ui()
 
 
+func _on_set_price_policy_pressed() -> void:
+    var new_price_change_pct: int = int(round(price_change_spin_box.value))
+    if simulation.try_set_price_policy(new_price_change_pct):
+        layout_edit_label.text = "Price policy set: %+d%% from list price" % new_price_change_pct
+    elif not simulation.customers.all_settled():
+        layout_edit_label.text = "Finish the active visit before changing the price policy"
+    else:
+        layout_edit_label.text = "Cannot set that price policy (must be -100% or above)"
+    _refresh_ui()
+
+
 func _on_save_pressed() -> void:
     if simulation == null:
         return
@@ -532,11 +580,13 @@ func _refresh_ui() -> void:
     if paused:
         event_label.text += "  [PAUSED]"
     next_customer_button.disabled = not simulation.customers.can_admit_concurrent()
+    _refresh_eject_customer_option()
     rotate_fixture_button.disabled = store_view.selected_fixture().is_empty()
     expand_chain_button.text = "Expand chain (¥%s, currently %d store(s))" % [
         _format_integer(int(simulation.chain_expansion_cost_yen())),
         int(snapshot["player_store_count"]),
     ]
+    set_price_policy_button.text = "Set price policy (currently %+d%%)" % int(snapshot["price_change_pct"])
     store_view.queue_redraw()
 
 

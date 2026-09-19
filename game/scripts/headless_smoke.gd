@@ -56,6 +56,10 @@ func _initialize() -> void:
         "UI/Panel/Margin/Scroll/VBox/PromotionOption",
         "UI/Panel/Margin/Scroll/VBox/BuyPromotionButton",
         "UI/Panel/Margin/Scroll/VBox/ExpandChainButton",
+        "UI/Panel/Margin/Scroll/VBox/EjectCustomerOption",
+        "UI/Panel/Margin/Scroll/VBox/EjectCustomerButton",
+        "UI/Panel/Margin/Scroll/VBox/PriceChangeSpinBox",
+        "UI/Panel/Margin/Scroll/VBox/SetPricePolicyButton",
     ]:
         if main_instance.get_node_or_null(node_path) == null:
             _fail("main scene is missing expected node: %s" % node_path)
@@ -772,6 +776,116 @@ func _initialize() -> void:
         return
     if not concurrent_simulation.customers.can_admit_concurrent():
         _fail("can_admit_concurrent() must be true again once both customers are done")
+        return
+
+    # Task #52: ejecting a customer from the checkout queue/service avoids
+    # them ever completing a sale (or triggering the anger penalty), and
+    # frees the checkout resource for the next queued customer.
+    var eject_config: Dictionary = config.duplicate(true)
+    eject_config["customer"]["max_concurrent_customers"] = 2
+    var eject_simulation = VerticalSliceSimulationScript.new(eject_config)
+    var fresh_default_customer_id: String = eject_simulation.customers.active_customer_id
+    if eject_simulation.try_eject_customer(fresh_default_customer_id):
+        _fail("try_eject_customer() must be rejected for a customer still shopping (not yet at checkout)")
+        return
+    if eject_simulation.try_eject_customer("no-such-customer-id"):
+        _fail("try_eject_customer() must be rejected for an unknown customer id")
+        return
+    steps += _run_visit(eject_simulation)
+    var completed_before_eject: int = eject_simulation.customers.completed_count()
+    var sales_before_eject: int = eject_simulation.economy.completed_sales
+    var eject_plan: Array[String] = ["prototype-bread"]
+    if not eject_simulation.start_explicit_customer("eject-a", eject_plan):
+        _fail("first eject-scenario customer could not be admitted")
+        return
+    if not eject_simulation.start_explicit_customer("eject-b", eject_plan):
+        _fail("second eject-scenario customer could not be admitted while the first is still shopping")
+        return
+    var eject_wait_ticks := 0
+    while (
+        eject_simulation.customers.customer("eject-a").phase != "checkout"
+        and eject_wait_ticks < MAX_STEPS
+    ):
+        eject_simulation.step()
+        eject_wait_ticks += 1
+    steps += eject_wait_ticks
+    if eject_wait_ticks >= MAX_STEPS:
+        _fail("first eject-scenario customer never reached checkout")
+        return
+    if eject_simulation.staff.checkout_staff().state != "checkout":
+        _fail("checkout staff must be busy serving the first eject-scenario customer")
+        return
+    if not eject_simulation.try_eject_customer("eject-a"):
+        _fail("ejecting a customer currently being served must be accepted")
+        return
+    if eject_simulation.event_log.count_type("customer_ejected") != 1:
+        _fail("exactly one customer_ejected event must be recorded")
+        return
+    if eject_simulation.staff.checkout_staff().state != "idle":
+        _fail("ejecting the customer being served must immediately free the checkout staff")
+        return
+    if eject_simulation.customers.customer("eject-a").phase != "leaving":
+        _fail("an ejected customer must transition to the leaving phase")
+        return
+    if eject_simulation.try_eject_customer("eject-a"):
+        _fail("a customer already ejected (now leaving) must not be ejectable again")
+        return
+
+    var eject_finish_ticks := 0
+    while (
+        eject_simulation.customers.completed_count() < completed_before_eject + 2
+        and eject_finish_ticks < MAX_STEPS
+    ):
+        eject_simulation.step()
+        eject_finish_ticks += 1
+    steps += eject_finish_ticks
+    if eject_finish_ticks >= MAX_STEPS:
+        _fail("both eject-scenario customers never finished their visit")
+        return
+    if eject_simulation.customers.customer("eject-a").settled_transaction_id != "":
+        _fail("an ejected customer must never complete a sale")
+        return
+    if eject_simulation.economy.completed_sales != sales_before_eject + 1:
+        _fail("only the non-ejected eject-scenario customer's sale should be recorded")
+        return
+
+    # Task #53: a configured price policy scales the unit price actually
+    # charged when a customer picks up a product, is rejected below -100%
+    # (a discount past 0% of list price), and feeds the monthly rating
+    # evaluation via price_change_pct instead of always being 0.
+    var price_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(price_simulation)
+    if price_simulation.try_set_price_policy(-101):
+        _fail("try_set_price_policy() must reject a price change below -100%")
+        return
+    if price_simulation.price_change_pct != 0:
+        _fail("a rejected price policy change must not mutate price_change_pct")
+        return
+    if not price_simulation.try_set_price_policy(-50):
+        _fail("a valid -50% price policy change must be accepted")
+        return
+    if price_simulation.price_change_pct != -50:
+        _fail("try_set_price_policy() must update price_change_pct")
+        return
+    if price_simulation.event_log.count_type("price_policy_changed") != 1:
+        _fail("exactly one price_policy_changed event must be recorded")
+        return
+    var expected_discounted_total_yen := 0
+    for product_config in config["products"]:
+        expected_discounted_total_yen += int(floor(float(int(product_config["sale_price_yen"])) * 0.5))
+    var price_check_plan: Array[String] = []
+    for product_config in config["products"]:
+        price_check_plan.append(str(product_config["id"]))
+    if not price_simulation.start_explicit_customer("price-check-customer", price_check_plan):
+        _fail("could not admit a customer to verify the discounted price")
+        return
+    steps += _run_visit(price_simulation)
+    var price_last_sale: Dictionary = price_simulation.economy.sale_record_for_customer("price-check-customer")
+    if price_last_sale.is_empty():
+        _fail("the price-policy scenario's second visit must complete a sale")
+        return
+    if int(price_last_sale["total_yen"]) != expected_discounted_total_yen:
+        _fail("a purchase made under a -50% price policy must charge exactly half the list price (floored) per item")
         return
 
     # Task #37: loading a built-in sample layout.
@@ -1694,13 +1808,45 @@ func _initialize() -> void:
     if economy_ui_scene.simulation.player_store_count != store_count_before_expansion + 1:
         _fail("economy UI: Expand chain must increase player_store_count by exactly one")
         return
+
+    # Task #52: the eject-customer action reachable from the UI, not only
+    # from VerticalSliceSimulation.try_eject_customer() directly.
+    var eject_ui_plan: Array[String] = ["prototype-bread"]
+    if not economy_ui_scene.simulation.start_explicit_customer("eject-ui-customer", eject_ui_plan):
+        _fail("economy UI: could not admit a customer for the eject-UI scenario")
+        return
+    var eject_ui_ticks := 0
+    while (
+        economy_ui_scene.simulation.customers.customer("eject-ui-customer").phase != "checkout"
+        and eject_ui_ticks < MAX_STEPS
+    ):
+        economy_ui_scene.simulation.step()
+        eject_ui_ticks += 1
+    steps += eject_ui_ticks
+    if eject_ui_ticks >= MAX_STEPS:
+        _fail("economy UI: eject-UI customer never reached checkout")
+        return
+    economy_ui_scene._refresh_eject_customer_option()
+    var eject_ui_index: int = economy_ui_scene._eject_customer_ids.find("eject-ui-customer")
+    if eject_ui_index < 0:
+        _fail("economy UI: eject customer option did not include the customer at checkout")
+        return
+    economy_ui_scene.eject_customer_option.selected = eject_ui_index
+    economy_ui_scene._on_eject_customer_pressed()
+    if economy_ui_scene.simulation.customers.customer("eject-ui-customer").phase != "leaving":
+        _fail("economy UI: pressing Eject customer must transition the selected customer to leaving")
+        return
+
     economy_ui_scene.free()
 
-    # Task #49: an unusually slow checkout (a deliberately below-reference
-    # register_skill) must trigger exactly one checkout_anger_triggered
-    # event and apply the confirmed -2 penalty to the serving staff
-    # member's five affected skills. register_skill/service_skill's own
-    # growth ceilings are overridden to their post-anger floor here so
+    # Task #49/#51: an unusually slow checkout (a deliberately below-
+    # reference register_skill) must trigger exactly one
+    # checkout_anger_triggered event and apply the confirmed -2 penalty to
+    # EVERY active staff member's five affected skills, not only the one
+    # who served the customer (task #51 corrected this scope after
+    # directly re-reading the strategy guide's own "店員全員の能力が下が
+    # ってしまう" statement, book pp.34-35). register_skill/service_skill's
+    # own growth ceilings are overridden to their post-anger floor here so
     # task #48's checkout-completion growth (+1 to those same two skills)
     # cannot also fire and complicate the expected value -- isolating this
     # scenario to the anger mechanic alone, the same technique the
@@ -1754,6 +1900,87 @@ func _initialize() -> void:
         return
     if angered_staff.security_skill != max(0, int(anger_staff_config_before["security_skill"]) - 2):
         _fail("checkout anger must lower security_skill by 2")
+        return
+
+    # Task #51: the non-checkout staff member (who never served this
+    # customer at all) must ALSO have every one of the same five skills
+    # lowered by exactly 2, confirming the penalty is store-wide rather
+    # than scoped to whichever staff member happened to be at the register.
+    var other_staff_id := ""
+    var other_staff_config_before: Dictionary = {}
+    for staff_member_config in anger_config["staff"]["members"]:
+        if str(staff_member_config["id"]) != checkout_staff_id:
+            other_staff_id = str(staff_member_config["id"])
+            other_staff_config_before = staff_member_config
+            break
+    if other_staff_id.is_empty():
+        _fail("checkout-anger test config must find a second, non-checkout staff member")
+        return
+    var other_angered_staff = anger_simulation.staff.members[other_staff_id]
+    if other_angered_staff.register_skill != max(0, int(other_staff_config_before["register_skill"]) - 2):
+        _fail("checkout anger must also lower the non-checkout staff member's register_skill by 2")
+        return
+    if other_angered_staff.service_skill != max(0, int(other_staff_config_before["service_skill"]) - 2):
+        _fail("checkout anger must also lower the non-checkout staff member's service_skill by 2")
+        return
+    if (
+        other_angered_staff.replenishment_skill
+        != max(0, int(other_staff_config_before["replenishment_skill"]) - 2)
+    ):
+        _fail("checkout anger must also lower the non-checkout staff member's replenishment_skill by 2")
+        return
+    if other_angered_staff.cleaning_skill != max(0, int(other_staff_config_before["cleaning_skill"]) - 2):
+        _fail("checkout anger must also lower the non-checkout staff member's cleaning_skill by 2")
+        return
+    if other_angered_staff.security_skill != max(0, int(other_staff_config_before["security_skill"]) - 2):
+        _fail("checkout anger must also lower the non-checkout staff member's security_skill by 2")
+        return
+
+    # Task #55: a demand-driven customer's plan gets extended with
+    # incidental-want products drawn from currently-stocked products beyond
+    # the primary plan, but an explicitly-admitted (observation-replay)
+    # customer's plan must stay exactly as given. A single extra stocked
+    # product (beyond the default scenario's own two) makes this
+    # deterministic regardless of RNG seed: with exactly one candidate,
+    # that candidate must be the one incidental item selected.
+    var incidental_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(incidental_simulation)
+    incidental_simulation.economy.cash_yen += 50_000_000
+    if not incidental_simulation.try_purchase_fixture(
+        "small_ambient_shelf", "incidental-shelf-1", Vector2i(8, 10), Vector2i(8, 9)
+    ):
+        _fail("could not buy an extra shelf for the incidental-want scenario")
+        return
+    if not incidental_simulation.try_procure_product("bread", "incidental-extra-product", "incidental-shelf-1"):
+        _fail("could not stock an extra product for the incidental-want scenario")
+        return
+
+    var explicit_plan: Array[String] = ["prototype-bread"]
+    if not incidental_simulation.start_explicit_customer("explicit-plan-customer", explicit_plan):
+        _fail("could not admit an explicit customer for the incidental-want scenario")
+        return
+    var explicit_customer = incidental_simulation.customers.customer("explicit-plan-customer")
+    if explicit_customer.planned_product_ids != explicit_plan:
+        _fail("start_explicit_customer() must never inflate the caller-supplied plan with incidental items")
+        return
+    steps += _run_visit(incidental_simulation)
+
+    if not incidental_simulation.start_next_customer():
+        _fail("could not admit a demand-driven customer for the incidental-want scenario")
+        return
+    var default_customer = incidental_simulation.customers.active()
+    var expected_default_plan: Array[String] = []
+    expected_default_plan.assign(config["customer"]["visit_plan_product_ids"])
+    expected_default_plan.append("incidental-extra-product")
+    if default_customer.planned_product_ids.size() != expected_default_plan.size():
+        _fail("a demand-driven customer's plan must gain exactly one incidental item when exactly one stocked product is eligible")
+        return
+    for product_id in expected_default_plan:
+        if not default_customer.planned_product_ids.has(product_id):
+            _fail("a demand-driven customer's extended plan must include every expected primary and incidental product id")
+            return
+    if not default_customer.planned_product_ids.has("incidental-extra-product"):
+        _fail("a demand-driven customer's incidental item must be drawn from currently-stocked products")
         return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)

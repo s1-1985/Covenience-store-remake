@@ -129,7 +129,18 @@ The game visibly simulates individual customers rather than only converting dema
 
 Observed / reported customer groups include office workers, students, housewives/mothers, elderly people, child-accompanied customers, etc. Groups of visually identical customers can arrive together.
 
-The community research suggests destination-product demand plus incidental/add-on purchasing. Large wagons may have higher `attention` and possibly affect incidental purchase probability; this remains a hypothesis and must not yet be treated as an exact formula.
+The community research suggests destination-product demand plus incidental/add-on purchasing. Large wagons may have higher `attention` and possibly affect incidental purchase probability; the `attention`-weighting angle specifically remains a HYPOTHESIS and must not yet be treated as an exact formula.
+
+**Incidental-purchase count upgraded to CONFIRMED-OFFICIAL (2026-09-19)**: directly re-read from
+「クイックリファレンス」book p.9: "顧客は購入希望の品を求めて来店する。希望の品を購入した後、
+時間が許せばそのほかの商品も購入する。それぞれの顧客に3品程度の「ついでに欲しい品」があるので、
+それらを揃えておくことも大切だ。" Each customer wants roughly 3 additional in-stock products beyond
+their primary destination purchase, bought afterward if time allows. This is now wired into `game/`
+(task #55, decision 0124, lifting decision 0004's "incidental/add-on purchase probability" boundary
+with the user's explicit go-ahead) as a uniform-random draw from currently-stocked products, not a
+weighted-by-category or `attention`-weighted draw -- the guide's own per-category bar chart is
+single-playthrough example data, not a confirmed general weighting table, so that part of the
+HYPOTHESIS above remains open.
 
 Source:
 - https://mimora.mimoza.jp/yao_game/retro/contents/ctg_main/memorandum/SS/detail/gmr_SS-0001.php
@@ -184,15 +195,20 @@ Source:
 
 ## 11. Promotion — confirmed values
 
-Community data currently records:
+Values below match `reference_sim/conveni_sim/baseline_data.py`'s current `PROMOTIONS`
+(CONFIRMED_OFFICIAL for airship/radio/tv's popularity_gain, directly re-verified 2026-09-19
+against 「新人店長実習マニュアル」book page 120's own "広告データ" table; CONFIRMED_COMMUNITY
+wiki source for the rest). This table previously still showed superseded wiki-derived
+airship/radio/tv popularity figures (+30/+50/+100) after an earlier session had already
+corrected the code; corrected here to match.
 
 | Promotion | Cost | Popularity gain |
 |---|---:|---:|
 | Direct mail | 100,000 yen | +12 |
 | Newspaper ad | 500,000 yen | +20 |
-| Airship | 1,000,000 yen | +30 |
-| Radio | 3,000,000 yen | +50 |
-| TV | 5,000,000 yen | +100 |
+| Airship | 1,000,000 yen | +40 |
+| Radio | 3,000,000 yen | +60 |
+| TV | 5,000,000 yen | +90 |
 
 Also reported: every additional cumulative 10,000 visitors can trigger an idol one-day-owner event, temporarily raising popularity to 100.
 
@@ -1013,6 +1029,95 @@ contract tests updated, no new test functions added). Several other findings fro
 pass -- some contradicting already-CONFIRMED values, some closing other open gaps -- were
 deliberately left untouched pending further triage; see section 21 for the full catalogue.
 
+**Task #51 (2026-09-19)**: continuing directly from task #50, two items flagged as CONTRADICTS in
+section 21.4 were re-verified against the original PDF scans (still accessible this session) rather
+than left open indefinitely. Directly re-reading 「新人店長実習マニュアル」book pp.34-35 confirmed,
+in the guide's own prose ("お客さんに怒られると店員全員の能力が下がってしまう"), that an angry
+customer's -2 skill penalty is store-wide (every active staff member), not scoped to whichever staff
+member happened to be serving -- CONFIRMED_OFFICIAL, superseding task #49's original single-staff-
+member scoping (a REMAKE_BALANCED_DEFAULT simplification made without this evidence). `Vertical
+SliceSimulation`'s checkout-anger handling now loops `_checkout_anger.apply_penalty()` across
+`staff.all_staff()` instead of only `staff.checkout_staff()`. Separately, re-reading book p.118
+directly confirmed bench maintenance is 160 yen/day (matching existing code exactly), resolving the
+"168 yen/day" secondary data point section 21.4 had flagged from the other book's indirect
+hourly-rate derivation -- no code change needed there, just confirmation. Also fixed a stale
+`PROJECT_MEMORY.md` section 11 (still showing wiki-derived airship/radio/tv popularity-gain figures
++30/+50/+100; `baseline_data.py` already had the guide-correct +40/+60/+90, independently re-
+confirmed against book p.120's own "広告データ" table this task). See decision 0120.
+`headless_smoke.gd` unchanged at 831 steps (existing scenario extended with new assertions, no new
+scenario); `reference_sim` full suite 663 passed/1 xfailed.
+
+**Task #52 (2026-09-19)**: the same book page 35 that task #51 re-read also confirmed a second,
+previously-uncoded mechanic (CONFIRMED_OFFICIAL): "怒りやすいお客さんは、おじさんやおじいさんに
+多い。もしレジ前の混雑にこの人が混じっていたら、カーソルをこの人に合わせて決定ボタン。怒り出す
+まえに"つまみだす"を選んで、お店の外に出してしまうといいぞ。" -- an explicit player action to
+eject a customer from the checkout queue/service before they can get angry, forfeiting their
+purchase. `VerticalSliceSimulation.try_eject_customer(customer_id)` transitions a customer in
+`waiting_checkout`/`checkout` phase to the existing `"leaving"` phase (reusing the no-sale-sellout
+pattern rather than inventing a new one), freeing the checkout staff/dequeuing as needed. Whether an
+ejected customer's already-picked-up basket returns to shelf stock is unconfirmed by any source;
+this project's own REMAKE_BALANCED_DEFAULT choice is that it does not (no other "undo a pick-up"
+mechanic exists in this client to reuse). Following task #38's own established discipline that
+economy/gameplay actions must be reachable from the UI, not only headless_smoke.gd, this task also
+added `EjectCustomerOption`/`EjectCustomerButton` to the STORE STATUS panel, refreshed every tick
+(unlike the other catalog-driven option lists, the set of ejectable customers changes on its own as
+customers walk through the store, not only after an explicit player action). See decision 0121.
+`headless_smoke.gd` grew from 831 to 897 steps (two new scenarios: a direct backend exercise and a
+real-UI exercise reusing task #38's `economy_ui_scene`); `reference_sim` full suite 664 passed/1
+xfailed (one new test function).
+
+**Task #53 (2026-09-19)**: a direct re-read of the quick reference guide (book pp.5-6) confirmed
+CONFIRMED_OFFICIAL that a price-setting/margin mechanic exists in the original game -- a global
+"all items X% off list price" slider (plus a per-item override this task deliberately does not
+port) defaulting to a 40% profit margin ("通常は全て40%に設定されており、これが定価と考えられ
+る"). `store_rating.gd`'s `price_change_pct` input has been hardcoded to 0 since task #27, with an
+explicit comment that no price-setting mechanic existed yet to feed it. `VerticalSliceSimulation.
+try_set_price_policy(new_price_change_pct)` now sets a persistent `price_change_pct` state (0 =
+baseline, rejected below -100 as this project's own REMAKE_BALANCED_DEFAULT sanity floor), consumed
+both at the moment a customer picks up a product (`_apply_price_policy()` scales the product's own
+confirmed `sale_price_yen`, floored) and by the monthly rating evaluation (finally passing the real
+value instead of a hardcoded 0). Deliberately NOT wired: the confirmed section-8 fact that price is
+one factor in customer monopoly/footfall -- no source states a price-to-demand formula, so
+`demand_policy.gd`'s arrival rate stays unaffected, matching this project's standing "don't invent
+an unconfirmed formula" discipline. `price_change_pct` round-trips through save/load like every
+other durable state field (`SAVE_SCHEMA_VERSION` bumped 2->3). Following task #38's UI-reachability
+precedent, a `PriceChangeSpinBox`/`SetPricePolicyButton` pair was added to the STORE STATUS panel.
+See decision 0122. `headless_smoke.gd` grew from 897 to 957 steps; `reference_sim` full suite 665
+passed/1 xfailed (one new test function, plus a stale task-#27 assertion corrected to match the new
+wiring).
+
+**Task #54 (2026-09-19)**: re-verified two more section-21.4 items directly against the original
+PDF scans. (1) The security-facility (交番/消防署) bonus "conflict" between the two books turned
+out not to be a conflict at all: the 実習マニュアル's flat "+40/+30 within a 7-area radius" is
+exactly the fully-contained case of the クイックリファレンス's more granular "per-area-cell x rate,
+capped at footprint_area x rate" formula (2x2 police x 10/cell = 40; 2x3 fire x 5/cell = 30, both
+matching exactly) -- reconciled and documented in section 21.3, though still blocked on this
+client's complete lack of a town-facility-placement/spatial-distance model (decision 0095), not on
+the formula itself. (2) 小宮千明's `security_skill_growth_ceiling` was re-read directly from book
+p.127 as 44, not the 41 currently in both `baseline_data.py` and `vertical_slice.json` (an
+adjacent-cell transcription slip, most likely picking up a neighboring column's value) -- fixed in
+both files. See decision 0123. No test suite changes (no existing test covered this specific
+candidate's specific field); `reference_sim` 665 passed/1 xfailed, `headless_smoke.gd` unchanged at
+957 steps.
+
+**Task #55 (2026-09-19)**: decision 0004 (2026-09-05) deliberately left "incidental/add-on purchase
+probability" absent, explicitly pending "guide/video evidence... strong enough," and task #43's
+audit kept this boundary standing as "pending an explicit user decision." Section 7's HYPOTHESIS
+note was upgraded to CONFIRMED-OFFICIAL this session (see section 7): each customer wants ~3
+additional in-stock products beyond their primary plan, bought after it. Asked the user directly
+whether to lift the boundary now that this evidence exists; they said yes. `VerticalSliceSimulation.
+_start_default_customer()` now appends up to `INCIDENTAL_WANT_PRODUCT_COUNT` (3) extra product ids,
+drawn via a uniform-random pick from currently-stocked products (reusing the shared demand RNG, not
+a new stream), to a demand-driven customer's plan -- no new phase or mechanic needed, since the
+existing multi-product plan/pickup machinery already supported an arbitrary-length ordered list.
+Deliberately scoped to demand-driven admission only: `start_explicit_customer()` (the observation-
+replay path) is untouched and still replays exactly the caller-supplied plan, so existing
+determinism there is preserved. `CustomerRoster.admit_default()`'s signature changed to take the
+caller's (possibly-extended) plan instead of always reusing its own static default list internally.
+See decision 0124. `headless_smoke.gd` grew from 957 to 1009 steps (one new scenario, made RNG-
+seed-independent by stocking exactly one extra product so the incidental draw is deterministic);
+`reference_sim` full suite 666 passed/1 xfailed (one new test function).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1050,8 +1155,13 @@ Codexのチャット・PR・マージ運用の詳細は
 
 タスク#50(2026-09-19、2冊分のPDF一次資料の全ページ書き起こし、什器維持費・
 スタッフ給与の営業時間比例配線、第21節の研究成果カタログ)の詳細な引き継ぎは
-`docs/handoff/2026-09-19-claude-code-session-handoff-4.md` を参照する。CLAUDE.mdの
-規約により、`docs/handoff/`配下で最新の本ファイル(`-4.md`)が矛盾する旧記載に優先する。
+`docs/handoff/2026-09-19-claude-code-session-handoff-4.md` を参照する。
+
+タスク#51〜#54(2026-09-19、チェックアウト怒りペナルティのスコープ是正、
+「つまみだす」アクション、価格設定メカニクス、治安施設公式の再検証と
+データ是正2件)の詳細な引き継ぎは
+`docs/handoff/2026-09-19-claude-code-session-handoff-5.md` を参照する。CLAUDE.mdの
+規約により、`docs/handoff/`配下で最新の本ファイル(`-5.md`)が矛盾する旧記載に優先する。
 
 ## 21. 2026-09-19 PDF一次資料(2冊)の研究成果カタログ(タスク#50以降)
 
@@ -1083,9 +1193,24 @@ parallel research agents (all pages read, no sampling):
 
 - **Task #50** (fixture maintenance / staff wages scale with configured business hours instead of
   charging a flat 24h-basis figure) -- see section 19 and decision 0119.
+- **Task #51** (checkout-anger penalty is store-wide, not scoped to the serving staff member) --
+  see section 19 and decision 0120. Re-verified directly against the PDF scan, not just the
+  research doc's summary.
+- **Task #52** ("eject a customer" (つまみ出す) action, avoiding the anger penalty at the cost of
+  their purchase) -- see section 19 and decision 0121, including UI wiring.
+- **Task #53** (price-setting/margin mechanic, consumed by both live purchases and the monthly
+  rating's `price_change_pct`) -- see section 19 and decision 0122, including UI wiring.
+- **Task #55** (incidental-want products for demand-driven customers, lifting decision 0004's
+  boundary with the user's explicit go-ahead) -- see section 19 and decision 0124.
 - **Section 4 above** (bench/fountain service_bonus and bench maintenance) was stale, still
   showing pre-2026-09-17-correction wiki values instead of the guide-sourced values already live
   in `baseline_data.py`; corrected in place (no code change, this file only).
+- **Section 11 above** (promotion popularity-gain table) was likewise stale, still showing
+  wiki-derived airship/radio/tv figures (+30/+50/+100) after `baseline_data.py` had already been
+  corrected to the guide-sourced +40/+60/+90; corrected in place (task #51, no code change).
+- **Bench maintenance 168-vs-160** (section 21.4's item) -- directly re-read book p.118: confirms
+  160, matching existing code exactly. The 168 figure was a weaker, indirect (hourly-rate x24)
+  reading from the other book; no code change was needed or made.
 
 ### 21.3 NEW findings not yet implemented (candidates for future tasks)
 
@@ -1093,23 +1218,27 @@ Grouped by rough topic, each citing which research doc has the page-level eviden
 have been implemented yet; picking one is a future-session decision, not a standing priority
 order.
 
-- **Security facilities (交番/消防署)**: both books independently give **quantified** bonuses for
-  the first time (previously only qualitative in section 12) -- but the two books disagree on the
-  exact shape (flat +40/+30 within a 7-area radius per the 実習マニュアル vs. a per-area-scaled
-  +10/area max+40 (police, 2x2) / +5/area max+30 (fire station, 2x3) within a 16x16-tile radius
-  per the クイックリファレンス). This needs a side-by-side re-read before implementing, not a
-  pick-one guess. No such fixtures exist in `fixture_catalog` yet (blocked since decision 0096).
+- **Security facilities (交番/消防署) -- RESOLVED NOT a conflict (re-verified 2026-09-19)**: both
+  books were directly re-read (実習マニュアル book pp.46-47; クイックリファレンス book p.10). The
+  実習マニュアル states a flat "police box +40 / fire station +30" security bonus within a 7-area
+  radius, reduced proportionally if the facility's footprint spills outside that radius. The
+  クイックリファレンス states a per-area-unit formula: police box (2x2 footprint) +10 security per
+  area-cell within a 16x16-tile radius, max +40; fire station (2x3 footprint) +5/area-cell, max
+  +30. These are the SAME formula at two levels of detail, not a disagreement: 2x2=4 cells x 10 =
+  40 exactly matches the police box's stated max; 2x3=6 cells x 5 = 30 exactly matches the fire
+  station's max. The "flat +40/+30, reduced if the footprint spills outside the range" framing is
+  just the fully-contained case of "per-cell-within-range x rate." Confirmed formula: `bonus =
+  (footprint_cells_within_the_effective_radius) x per_cell_rate` (police 10/cell, fire 5/cell).
+  What remains genuinely blocked is unrelated to this formula: this client's `TownState` (game/) is
+  a single scalar population/store_count with no facility-placement or spatial-distance model at
+  all (decision 0095), so there is nowhere yet to place an induced police box/fire station or
+  compute its distance from the store. Implementing the confirmed bonus formula itself is no longer
+  the blocker; building a minimal town-facility-placement/distance subsystem to attach it to is.
 - **Land-purchase cost formula**: empty lot = area land price x number of areas; occupied lot =
   land price + 50% of the existing building's appraised value (実習マニュアル p.7). Not modeled
   anywhere (`land_value_policy.gd` only models value *growth over time*, not acquisition cost) --
   but this client also has no land-acquisition/multi-store-placement mechanic to attach it to yet
   (same boundary as decision 0095/0026).
-- **Incidental-purchase item count**: each customer has ~3 "ついでに欲しい品" beyond their
-  destination purchase (クイックリファレンス p.9, CONFIRMED_OFFICIAL with an exact count) --
-  upgrades section 7's standing HYPOTHESIS to confirmed, and is exactly the evidence task #43
-  said was missing before decision 0004's "no incidental purchase" boundary could be reconsidered.
-  Still unimplemented; lifting decision 0004's boundary is a real scope decision, not a
-  drop-in fix.
 - **Rival-store mechanics with numbers**: rival withdrawal after continuous deficit takes ~6
   months if left alone (実習マニュアル, stated in 2 scenarios); holding a permit may block nearby
   *rivals* from selling that category too, not just gate the player (実習マニュアル); a 20%-off
@@ -1121,8 +1250,6 @@ order.
   pool after ~1 year with decayed-but-above-rookie stats (qualitative, no formula given); 80+-year
   staff can become a "スーパー社員" (all stats 100) at unspecified probability. None implemented
   (no hiring/firing UI exists yet at all, per section 17's "スタッフ雇用・解雇UI" gap).
-- **"Eject an angry customer" (つまみ出す)**: an explicit player action that avoids the
-  store-wide skill penalty by ejecting the customer first. No such action exists in `game/`.
 - **Building/facility per-time-slot visitor counts**: DATA 4 建物's 朝/昼/夕/夜/深夜/早朝 numeric
   columns (transcribed with an explicit confidence caveat -- see `quick-reference-guide-part2-
   2026-09-19.md` for the row-alignment uncertainty note before using these numbers) plus a
@@ -1141,10 +1268,6 @@ order.
   not purely a cash transaction; hidden 4th map's shape differs PS vs. Saturn (upgrades its
   existence to CONFIRMED_OFFICIAL from wiki-only CONFIRMED_COMMUNITY); contest prize eligibility
   is specifically gated on cleanliness value.
-- **Price-margin/discount UI shape**: a global "all items X% off list price" slider plus a
-  per-item override, baseline 40% margin -- confirms the shape of the still-unimplemented
-  price-setting mechanic `store_rating.gd`'s `price_change_pct` field has always awaited (always
-  hardcoded to 0 today, no UI exists).
 
 ### 21.4 CONTRADICTS findings flagged for re-verification (deliberately NOT resolved)
 
@@ -1157,22 +1280,10 @@ Per CLAUDE.md's discipline, these are recorded rather than silently picked one w
 - **Business hours option ③**: transcribed as "AM11:00-AM2:00" labeled "16時間営業" (only 15h,
   inconsistent with its own label) -- very likely a scan/OCR misread of "AM3:00", but not
   corrected without a clearer rescan.
-- **Checkout-anger penalty scope**: 実習マニュアル states an angry customer drops **every staff
-  member's** ability ("店員全員"), while `checkout_anger.gd` (task #49) applies the penalty only
-  to the currently-serving staff member. Same CONFIRMED_COMMUNITY -2 magnitude either way, but
-  this book is CONFIRMED_OFFICIAL-tier evidence the *scope* may be store-wide, not per-staff.
-  Worth a dedicated follow-up look before changing `checkout_anger.gd`.
 - **A "parameter growth per work action" matrix and a customer-anger-penalty matrix** on
   クイックリファレンス p.7, potentially bearing on `staff_growth.gd`'s (task #48) +1/skill-pair
   guesses and the checkout-anger magnitude above -- read confidence on the exact column mapping
   was only moderate; flagged, not asserted or acted on.
-- **Bench maintenance, secondary data point**: クイックリファレンス's DATA 2 商品棚 table states
-  a per-hour rate ("7 yen/hour") that, x24, reproduces 168 yen/day -- conflicting with the
-  already-twice-confirmed-from-本1/本2 160 yen/day currently in `baseline_data.py` (see section
-  4 above and the 2026-09-17 resolution cited there). Given 160 is directly stated as a yen/day
-  figure twice in the higher-authority source already used to resolve this exact conflict, while
-  168 here is a derived (hourly x24) reading from a different book, **160 was kept unchanged**;
-  168 is recorded here as a secondary data point worth a rescan, not a reason to flip the value.
 - **Store-rating table / large-store footprint**: pre-existing known conflicts (already resolved
   in code before this session) were independently rediscovered by this pass, not newly
   introduced -- see `strategy-guide-shopkeeper-manual-part1-2026-09-19.md` and `-part2-
@@ -1181,9 +1292,6 @@ Per CLAUDE.md's discipline, these are recorded rather than silently picked one w
   `-part2`; still unresolved.
 - **Station shopping-population figure**: 2,000 on one page vs. 2,240 on another page of the same
   book -- possibly different size tiers rather than a real conflict; not resolved.
-- **小宮千明's security_skill_growth_ceiling**: read as 44 in this session's scan vs. 42 in
-  existing code -- low-confidence, could be a misread on either side, not asserted as a real
-  contradiction.
 
 ### 21.5 Deliberately not re-litigated
 
