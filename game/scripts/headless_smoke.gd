@@ -12,6 +12,8 @@ const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
 const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
 const RestockTimingScript := preload("res://scripts/domain/restock_timing.gd")
 const CustomerShareScript := preload("res://scripts/domain/customer_share.gd")
+const StaffStateScript := preload("res://scripts/domain/staff_state.gd")
+const StaffGrowthScript := preload("res://scripts/domain/staff_growth.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
@@ -461,6 +463,29 @@ func _initialize() -> void:
     )
     if restock_simulation.economy.cash_yen != restock_cash_before - expected_restock_cost:
         _fail("automatic restock cost must match quantity times the configured unit cost")
+        return
+
+    # Task #48: the single checkout _run_visit() completed above and the
+    # single automatic restock task just completed are each one confirmed
+    # work-growth trigger, so staff-1 (checkout) and staff-2 (restock) must
+    # each show the corresponding skills grown by exactly the unit growth,
+    # and exactly one staff_skill_growth event per task.
+    var checkout_growth_staff = restock_simulation.staff.members[
+        str(restock_config["staff"]["checkout_staff_id"])
+    ]
+    if checkout_growth_staff.register_skill != 21 or checkout_growth_staff.service_skill != 18:
+        _fail("a completed checkout task must grow the checkout staff's register_skill/service_skill by +1")
+        return
+    var restock_growth_staff = restock_simulation.staff.members[restock_staff_id]
+    if (
+        restock_growth_staff.replenishment_skill != 21
+        or restock_growth_staff.cleaning_skill != 18
+        or restock_growth_staff.security_skill != 21
+    ):
+        _fail("a completed restock task must grow the restock staff's replenishment/cleaning/security skills by +1")
+        return
+    if restock_simulation.event_log.count_type("staff_skill_growth") != 2:
+        _fail("exactly one staff_skill_growth event must be recorded per completed checkout/restock task")
         return
 
     var other_product_id := "prototype-drink"
@@ -1077,6 +1102,59 @@ func _initialize() -> void:
         _fail("required_ticks must never fall below MIN_RESTOCK_TICKS")
         return
 
+    # Task #48: StaffGrowth unit coverage, isolated from the full
+    # simulation the way CheckoutTiming/RestockTiming are tested above.
+    var growth = StaffGrowthScript.new()
+    var growth_staff = StaffStateScript.new({
+        "id": "growth-test-staff",
+        "start_subcell": [0, 0],
+        "register_skill": 10,
+        "service_skill": 10,
+        "replenishment_skill": 10,
+        "cleaning_skill": 10,
+        "security_skill": 10,
+        "register_skill_growth_ceiling": 12,
+        "service_skill_growth_ceiling": 10,
+        "replenishment_skill_growth_ceiling": 12,
+        "cleaning_skill_growth_ceiling": 12,
+        "security_skill_growth_ceiling": 12,
+    })
+    var checkout_growth_result: Array[Dictionary] = growth.apply_checkout_growth(growth_staff)
+    if growth_staff.register_skill != 11:
+        _fail("apply_checkout_growth must grow register_skill by the unit growth")
+        return
+    if growth_staff.service_skill != 10:
+        _fail("apply_checkout_growth must not grow a skill already at its own growth ceiling")
+        return
+    if checkout_growth_result.size() != 1 or str(checkout_growth_result[0]["skill"]) != "register_skill":
+        _fail("apply_checkout_growth must report only the skill that actually grew")
+        return
+
+    var replenish_growth_result: Array[Dictionary] = growth.apply_replenish_growth(growth_staff)
+    if (
+        growth_staff.replenishment_skill != 11
+        or growth_staff.cleaning_skill != 11
+        or growth_staff.security_skill != 11
+    ):
+        _fail("apply_replenish_growth must grow replenishment/cleaning/security skills by the unit growth")
+        return
+    if replenish_growth_result.size() != 3:
+        _fail("apply_replenish_growth must report every skill that grew")
+        return
+
+    growth.apply_checkout_growth(growth_staff)
+    if growth_staff.register_skill != 12:
+        _fail("apply_checkout_growth must grow register_skill up to its own ceiling")
+        return
+    var clamped_growth_result: Array[Dictionary] = growth.apply_checkout_growth(growth_staff)
+    if not clamped_growth_result.is_empty():
+        _fail("apply_checkout_growth must report no growth once every mapped skill is at its ceiling")
+        return
+    growth_staff.reset()
+    if growth_staff.register_skill != 10 or growth_staff.replenishment_skill != 10:
+        _fail("StaffState.reset() must restore every skill to its config-derived starting value")
+        return
+
     var customer_share = CustomerShareScript.new()
     if customer_share.compute_customer_share_percent(100, 100.0, 100.0, 100.0, 30, 1440) != 100:
         _fail("compute_customer_share_percent must score 100 when every factor is maxed out")
@@ -1183,7 +1261,18 @@ func _initialize() -> void:
     if int(rating_event_details["monthly_sales_yen"]) != expected_monthly_sales_yen:
         _fail("monthly_sales_yen fed into the store rating must equal the representative month's revenue x8")
         return
-    if abs(float(rating_event_details["service_value"]) - 17.0) > 0.0000001:
+    # Task #48: the single checkout _run_visit() completed above is itself a
+    # confirmed work-growth trigger, so staff-1's service_skill (and
+    # register_skill) may already have grown past its config starting value
+    # by the time this month-end rating fires -- service_value is therefore
+    # read from the staff roster's own current (post-growth) state rather
+    # than the pre-task-#48 hardcoded 17.0 average.
+    var expected_service_value: float = 0.0
+    var rating_staff: Array = rating_simulation.staff.all_staff()
+    for rating_staff_member in rating_staff:
+        expected_service_value += float(rating_staff_member.service_skill)
+    expected_service_value /= rating_staff.size()
+    if abs(float(rating_event_details["service_value"]) - expected_service_value) > 0.0000001:
         _fail("service_value must equal the average staff service_skill plus any fixture service bonuses")
         return
     if abs(float(rating_event_details["security_value"]) - 57.0) > 0.0000001:
@@ -1192,11 +1281,17 @@ func _initialize() -> void:
     if abs(float(rating_event_details["cleaning_value"]) - 51.0) > 0.0000001:
         _fail("cleaning_value must equal total staff cleaning_skill times the store's size-tier multiplier")
         return
-    # popularity=0, service=17.0, cleaning=51.0, security=57.0, 2 distinct
-    # stocked products (assortment_score=10.0), opening_minutes_per_day=960
-    # (hours_score=66.6667): weighted_sum = 0.30*0 + 0.25*17.0 + 0.15*51.0 +
-    # 0.10*57.0 + 0.10*10.0 + 0.10*66.6667 = 25.2667, rounds to 25.
-    if int(rating_event_details["customer_share_percent"]) != 25:
+    # popularity=0, cleaning=51.0, security=57.0, 2 distinct stocked
+    # products (assortment_score=10.0), opening_minutes_per_day=960
+    # (hours_score=66.6667); service_value is expected_service_value above
+    # (growth-dependent, see comment there). Recomputed with the same
+    # CustomerShare class store_rating actually calls, rather than a
+    # hand-derived literal that would go stale the moment checkout growth
+    # changes service_value.
+    var expected_customer_share_percent: int = customer_share.compute_customer_share_percent(
+        0, expected_service_value, 51.0, 57.0, 2, 960
+    )
+    if int(rating_event_details["customer_share_percent"]) != expected_customer_share_percent:
         _fail("customer_share_percent must be recomputed from CustomerShare.compute_customer_share_percent()")
         return
     if abs(rating_simulation.demand.customer_share_percent - 25.0) > 0.0000001:

@@ -13,32 +13,46 @@ var cleaning_skill: int
 var register_skill: int
 var replenishment_skill: int
 var salary_yen_per_day_24h: int
+var service_skill_growth_ceiling: int
+var register_skill_growth_ceiling: int
+var cleaning_skill_growth_ceiling: int
+var replenishment_skill_growth_ceiling: int
+var security_skill_growth_ceiling: int
 var _start_position := Vector2i.ZERO
+var _start_service_skill: int
+var _start_security_skill: int
+var _start_cleaning_skill: int
+var _start_register_skill: int
+var _start_replenishment_skill: int
 
 
 func _init(staff_config: Dictionary) -> void:
     staff_id = str(staff_config["id"])
     _start_position = _vec2i(staff_config["start_subcell"])
     # CONFIRMED: the guide's skill-growth model (register/service/
-    # replenishment/cleaning/security, book page 26) exists, but this
-    # client has not ported the growth system itself yet (no work-event
-    # counting, no manager-education bonus) -- see
-    # reference_sim/conveni_sim/staff.py's StaffRuntimeState/
-    # StaffGrowthOpportunity. These six fields (five skills plus salary)
-    # are therefore static for the lifetime of a StaffState and never
-    # change on their own, whatever their starting value's own evidence
-    # level is. The vertical slice's `data/vertical_slice.json` now
-    # sources staff-1/staff-2's starting values from two of the 35 named
-    # CONFIRMED_OFFICIAL strategy-guide candidates in that file's
-    # `staff_candidates` (task #32 for the five skills, task #47 for
-    # salary_yen_per_day_24h -- the same duplication-from-candidate
-    # pattern, just added to this field two tasks later), not an
-    # arbitrary guess; a caller that omits a field here still silently
-    # falls back to a REMAKE_BALANCED_DEFAULT `0` rather than asserting,
-    # since this class has no way to tell a real candidate's config apart
-    # from a placeholder one. register_skill is consumed by
-    # `CheckoutTiming` (task #33) to vary checkout duration per staff
-    # member instead of a single flat tick count for everyone;
+    # replenishment/cleaning/security, book page 26) exists. This client
+    # now ports the work-event side of it (task #48:
+    # `StaffGrowth.apply_checkout_growth()`/`apply_replenish_growth()`,
+    # wired into `VerticalSliceSimulation` at checkout/restock task
+    # completion) but not the manager-education bonus from
+    # `reference_sim/conveni_sim/remake_staff_growth.py`, since this
+    # vertical slice has no "who is the manager among staff.members"
+    # designation to source a manager_education value from. The
+    # `*_skill_growth_ceiling` fields below are each CONFIRMED_OFFICIAL
+    # (the guide's own "能力の分岐ポイント" value per skill, ported
+    # verbatim from the bound `staff_candidates` entry, same as the five
+    # skills themselves), not invented caps. The vertical slice's
+    # `data/vertical_slice.json` sources staff-1/staff-2's starting
+    # values from two of the 35 named CONFIRMED_OFFICIAL strategy-guide
+    # candidates in that file's `staff_candidates` (task #32 for the five
+    # skills, task #47 for salary_yen_per_day_24h, task #48 for the five
+    # growth ceilings -- the same duplication-from-candidate pattern each
+    # time), not an arbitrary guess; a caller that omits a field here
+    # still silently falls back to a REMAKE_BALANCED_DEFAULT `0` rather
+    # than asserting, since this class has no way to tell a real
+    # candidate's config apart from a placeholder one. register_skill is
+    # consumed by `CheckoutTiming` (task #33) to vary checkout duration
+    # per staff member instead of a single flat tick count for everyone;
     # replenishment_skill is consumed the same way by `RestockTiming`
     # (task #40) for restock duration; salary_yen_per_day_24h is consumed
     # by `VerticalSliceSimulation._apply_daily_staff_wages()` (task #47).
@@ -48,18 +62,51 @@ func _init(staff_config: Dictionary) -> void:
     register_skill = int(staff_config.get("register_skill", 0))
     replenishment_skill = int(staff_config.get("replenishment_skill", 0))
     salary_yen_per_day_24h = int(staff_config.get("salary_yen_per_day_24h", 0))
+    service_skill_growth_ceiling = int(staff_config.get("service_skill_growth_ceiling", 0))
+    register_skill_growth_ceiling = int(staff_config.get("register_skill_growth_ceiling", 0))
+    cleaning_skill_growth_ceiling = int(staff_config.get("cleaning_skill_growth_ceiling", 0))
+    replenishment_skill_growth_ceiling = int(
+        staff_config.get("replenishment_skill_growth_ceiling", 0)
+    )
+    security_skill_growth_ceiling = int(staff_config.get("security_skill_growth_ceiling", 0))
     assert(not staff_id.is_empty())
     assert(service_skill >= 0 and security_skill >= 0 and cleaning_skill >= 0)
     assert(register_skill >= 0 and replenishment_skill >= 0 and salary_yen_per_day_24h >= 0)
+    assert(
+        service_skill_growth_ceiling >= 0 and register_skill_growth_ceiling >= 0
+        and cleaning_skill_growth_ceiling >= 0
+    )
+    assert(
+        replenishment_skill_growth_ceiling >= 0 and security_skill_growth_ceiling >= 0
+    )
+    _start_service_skill = service_skill
+    _start_security_skill = security_skill
+    _start_cleaning_skill = cleaning_skill
+    _start_register_skill = register_skill
+    _start_replenishment_skill = replenishment_skill
     reset()
 
 
+# Restores every skill to its config-derived starting value, undoing any
+# work-event growth (task #48) accumulated since this StaffState was
+# constructed. Growth ceilings never change, so they are not part of this
+# reset. This keeps `VerticalSliceSimulation.load_state()`'s existing
+# "clears every subsystem back to its config-derived starting point"
+# contract honest now that skills are no longer static for the lifetime of
+# a StaffState -- skill growth itself is not part of the save/load format
+# (see save_state()'s own note on what stays unsaved), so a save/load round
+# trip currently reverts any accumulated growth rather than preserving it.
 func reset() -> void:
     position = _start_position
     state = "idle"
     route = []
     restock_target_product_id = ""
     restock_ticks_remaining = 0
+    service_skill = _start_service_skill
+    security_skill = _start_security_skill
+    cleaning_skill = _start_cleaning_skill
+    register_skill = _start_register_skill
+    replenishment_skill = _start_replenishment_skill
 
 
 func begin_restock(product_id: String, initial_route: Array[Vector2i]) -> void:
