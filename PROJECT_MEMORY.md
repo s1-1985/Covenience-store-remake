@@ -850,6 +850,27 @@ low-priority choice rather than an oversight; and (b) wiring `remake_customer_sh
 weighted 0-100 share formula into `demand_policy.gd` now that task #27's service/security/cleaning stats
 exist to feed it -- a real integration (medium scope), not a one-line hookup.
 
+**Task #44 (2026-09-19)**: the user chose to proceed with the customer-share integration. New
+`game/scripts/domain/customer_share.gd` (`CustomerShare`) ports `remake_customer_share.py`'s
+`compute_customer_share_percent()` field-for-field (all six weights, `ASSORTMENT_SATURATION_PRODUCT_
+COUNT=20`), wired into `VerticalSliceSimulation._evaluate_store_rating()` right after `service_value`/
+`security_value`/`cleaning_value` are computed each month: it now also feeds them, plus `popularity`
+(previously completely unused outside `snapshot()`/save-load -- itself a confirmed-but-unwired stat this
+audit turned up) `inventory.products.size()` (assortment proxy), and `demand.opening_minutes_per_day`,
+into the ported formula, and overwrites `demand.customer_share_percent` with the result -- which was
+previously a static config placeholder that never changed. Deliberately not ported: the Python source's
+`weather`/`competing_store_ids` dilution and its "unknown factor" renormalization branch, since
+`demand_policy.gd` already applies weather/rival dilution downstream to the whole visitor estimate (double-
+applying it in the share score too would double-count, not add fidelity) and every one of the six factors
+is always known by the time this client calls it (no reachable "unknown" case to renormalize around).
+`service_value`/`cleaning_value`/`security_value` are clamped to [0, 100] before feeding in -- reusing the
+same ceiling `store_rating.gd`'s own CONFIRMED_OFFICIAL upgrade/downgrade thresholds already treat those
+three values as (e.g. `min_service: 100` for 5-star), not inventing a new one. See decision 0113.
+`headless_smoke.gd` gained 3 direct unit tests for the ported function plus an assertion on the existing
+monthly-rating scenario (hand-computed expected share of 25 from that scenario's known service=17.0/
+cleaning=51.0/security=57.0/2 products/960 minutes); unchanged at 734 steps otherwise (the main long
+scenario never reaches month-end). `reference_sim` full suite 658 passed/1 xfailed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

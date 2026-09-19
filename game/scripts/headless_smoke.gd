@@ -11,6 +11,7 @@ const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor
 const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
 const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
 const RestockTimingScript := preload("res://scripts/domain/restock_timing.gd")
+const CustomerShareScript := preload("res://scripts/domain/customer_share.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
@@ -1019,6 +1020,19 @@ func _initialize() -> void:
         _fail("required_ticks must never fall below MIN_RESTOCK_TICKS")
         return
 
+    var customer_share = CustomerShareScript.new()
+    if customer_share.compute_customer_share_percent(100, 100.0, 100.0, 100.0, 30, 1440) != 100:
+        _fail("compute_customer_share_percent must score 100 when every factor is maxed out")
+        return
+    if customer_share.compute_customer_share_percent(0, 0.0, 0.0, 0.0, 0, 0) != 0:
+        _fail("compute_customer_share_percent must score 0 when every factor is at its floor")
+        return
+    if customer_share.compute_customer_share_percent(0, 150.0, 0.0, 0.0, 0, 0) != int(
+        round(customer_share.SERVICE_WEIGHT * 100.0)
+    ):
+        _fail("compute_customer_share_percent must clamp a service_value above 100 to 100")
+        return
+
     var rating_config: Dictionary = config.duplicate(true)
     rating_config["demand"] = {
         "nearby_population": 0,
@@ -1066,6 +1080,16 @@ func _initialize() -> void:
         return
     if abs(float(rating_event_details["cleaning_value"]) - 51.0) > 0.0000001:
         _fail("cleaning_value must equal total staff cleaning_skill times the store's size-tier multiplier")
+        return
+    # popularity=0, service=17.0, cleaning=51.0, security=57.0, 2 distinct
+    # stocked products (assortment_score=10.0), opening_minutes_per_day=960
+    # (hours_score=66.6667): weighted_sum = 0.30*0 + 0.25*17.0 + 0.15*51.0 +
+    # 0.10*57.0 + 0.10*10.0 + 0.10*66.6667 = 25.2667, rounds to 25.
+    if int(rating_event_details["customer_share_percent"]) != 25:
+        _fail("customer_share_percent must be recomputed from CustomerShare.compute_customer_share_percent()")
+        return
+    if abs(rating_simulation.demand.customer_share_percent - 25.0) > 0.0000001:
+        _fail("demand.customer_share_percent must be overwritten by the monthly store rating evaluation")
         return
     if rating_simulation.star_rating != store_rating.star_rank_for_internal_value(
         rating_simulation.internal_rating_value

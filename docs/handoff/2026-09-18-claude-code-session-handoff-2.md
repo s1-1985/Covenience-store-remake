@@ -224,7 +224,22 @@ crosscheckドキュメントを必ず先に確認すること。
     配線は過去3回意図的に未消費のまま据え置かれている経緯があり単純な
     見落としとは言い切れない、`remake_customer_share.py`の0-100
     シェア式を`demand_policy.gd`へ統合するのは中規模の統合作業)。
-    ユーザーへの確認待ち。
+    ユーザーへの確認待ち。PR #214として作成、CI(reference-tests)が
+    セッション中3回目の既知の無関係なflaky testで一度赤くなったが、
+    ユーザーが再実行してgreen化、ready化しマージ済み。
+18. ユーザーが「顧客シェア式の統合を進める」を選択。**タスク#44**:
+    `reference_sim`の`remake_customer_share.py`が持つ`compute_customer_
+    share_percent()`(popularity/service/cleaning/security/品揃え/営業時間
+    の6要素加重平均、既にREMAKE_BALANCED_DEFAULTタグ済み)を、新規
+    `game/scripts/domain/customer_share.gd`として重み・定数を完全一致で
+    移植し、`_evaluate_store_rating()`(タスク#27で毎月既に計算済みの
+    service_value/security_value/cleaning_valueがある箇所)へ配線した。
+    調査の過程で`popularity`(人気度)自体がsnapshot()とセーブ/ロード
+    以外どこにも使われておらず、客数シミュレーションに一切影響して
+    いなかったことも判明し、これも合わせて配線した。天候・ライバル希釈は
+    `demand_policy.gd`側で既に来店客数全体に適用済みのため、二重計上を
+    避けて意図的に移植しなかった(ファイル冒頭コメントに明記)。決定書
+    0113。
 
 ## 3. 検証
 
@@ -345,7 +360,8 @@ download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip`から再ダウンロー�
 | #211 | タスク#40(replenishment_skillの補充所要時間への配線) | マージ済み |
 | #212 | タスク#41(什器カタログを45種類中35種類へ拡充) | マージ済み |
 | #213 | タスク#42是正(initial_stock_unitsを類推ベースの値へ是正、CLAUDE.md新設) | マージ済み |
-| (作成予定) | タスク#43(service/security/cleaning_skill「未消費」記述の是正) | 作業中 |
+| #214 | タスク#43(service/security/cleaning_skill「未消費」記述の是正) | マージ済み |
+| (作成予定) | タスク#44(customer_share_percentを月次で再計算するよう配線) | 作業中 |
 
 ## 7. 作業ブランチについて
 
