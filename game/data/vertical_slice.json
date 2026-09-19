@@ -1113,7 +1113,7 @@
       "register_skill_growth_ceiling": 41,
       "cleaning_skill_growth_ceiling": 44,
       "replenishment_skill_growth_ceiling": 41,
-      "security_skill_growth_ceiling": 41
+      "security_skill_growth_ceiling": 44
     },
     {
       "candidate_id": "hamada_yuko",

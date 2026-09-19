@@ -914,10 +914,18 @@ def _sg_staff_candidate(
 # Full named staff-candidate roster (35 people) transcribed directly from
 # the strategy guide's primary page scans (book pages 127-133). No prior
 # StaffDefinition rows existed in this file.
+#
+# RESOLVED (2026-09-19): komiya_chiaki's security_skill_growth_ceiling was
+# transcribed as 41 (matching register_skill_growth_ceiling/
+# replenishment_skill_growth_ceiling's own 41s on the same card, an easy
+# adjacent-cell misread), but a direct re-read of the source card (book
+# page 127) confirms the printed value is 44 (matching service_skill_
+# growth_ceiling/cleaning_skill_growth_ceiling's own 44s instead). Fixed
+# below; see docs/decisions for the task that made this correction.
 STAFF_CANDIDATES: tuple[StaffDefinition, ...] = (
     _sg_staff_candidate("takenaka_sayuri", "竹中小百合", age_years=28, hourly_wage_yen=280, stamina=80, agility=65, academic_background=90, sociability=90, education=90, service_skill=14, register_skill=14, cleaning_skill=14, replenishment_skill=12, security_skill=14, service_skill_growth_ceiling=54, register_skill_growth_ceiling=52, cleaning_skill_growth_ceiling=52, replenishment_skill_growth_ceiling=48, security_skill_growth_ceiling=51),
     _sg_staff_candidate("yoshida_yuki", "吉田有紀", age_years=24, hourly_wage_yen=270, stamina=60, agility=80, academic_background=65, sociability=80, education=65, service_skill=11, register_skill=10, cleaning_skill=11, replenishment_skill=11, security_skill=10, service_skill_growth_ceiling=44, register_skill_growth_ceiling=45, cleaning_skill_growth_ceiling=41, replenishment_skill_growth_ceiling=40, security_skill_growth_ceiling=38),
-    _sg_staff_candidate("komiya_chiaki", "小宮千明", age_years=30, hourly_wage_yen=280, stamina=70, agility=70, academic_background=70, sociability=75, education=70, service_skill=13, register_skill=13, cleaning_skill=13, replenishment_skill=13, security_skill=13, service_skill_growth_ceiling=44, register_skill_growth_ceiling=41, cleaning_skill_growth_ceiling=44, replenishment_skill_growth_ceiling=41, security_skill_growth_ceiling=41),
+    _sg_staff_candidate("komiya_chiaki", "小宮千明", age_years=30, hourly_wage_yen=280, stamina=70, agility=70, academic_background=70, sociability=75, education=70, service_skill=13, register_skill=13, cleaning_skill=13, replenishment_skill=13, security_skill=13, service_skill_growth_ceiling=44, register_skill_growth_ceiling=41, cleaning_skill_growth_ceiling=44, replenishment_skill_growth_ceiling=41, security_skill_growth_ceiling=44),
     _sg_staff_candidate("hamada_yuko", "浜田夕子", age_years=22, hourly_wage_yen=270, stamina=65, agility=70, academic_background=55, sociability=50, education=55, service_skill=10, register_skill=11, cleaning_skill=9, replenishment_skill=9, security_skill=9, service_skill_growth_ceiling=33, register_skill_growth_ceiling=44, cleaning_skill_growth_ceiling=40, replenishment_skill_growth_ceiling=25, security_skill_growth_ceiling=27),
     _sg_staff_candidate("manda_machiko", "万田町子", age_years=42, hourly_wage_yen=320, stamina=70, agility=65, academic_background=60, sociability=65, education=65, service_skill=17, register_skill=20, cleaning_skill=17, replenishment_skill=17, security_skill=18, service_skill_growth_ceiling=41, register_skill_growth_ceiling=55, cleaning_skill_growth_ceiling=36, replenishment_skill_growth_ceiling=35, security_skill_growth_ceiling=42),
     _sg_staff_candidate("tominaga_fukuko", "富永福子", age_years=58, hourly_wage_yen=320, stamina=40, agility=40, academic_background=70, sociability=70, education=70, service_skill=19, register_skill=20, cleaning_skill=20, replenishment_skill=16, security_skill=18, service_skill_growth_ceiling=36, register_skill_growth_ceiling=40, cleaning_skill_growth_ceiling=40, replenishment_skill_growth_ceiling=32, security_skill_growth_ceiling=34),

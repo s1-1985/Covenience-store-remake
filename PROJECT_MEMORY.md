@@ -1075,6 +1075,20 @@ See decision 0122. `headless_smoke.gd` grew from 897 to 957 steps; `reference_si
 passed/1 xfailed (one new test function, plus a stale task-#27 assertion corrected to match the new
 wiring).
 
+**Task #54 (2026-09-19)**: re-verified two more section-21.4 items directly against the original
+PDF scans. (1) The security-facility (交番/消防署) bonus "conflict" between the two books turned
+out not to be a conflict at all: the 実習マニュアル's flat "+40/+30 within a 7-area radius" is
+exactly the fully-contained case of the クイックリファレンス's more granular "per-area-cell x rate,
+capped at footprint_area x rate" formula (2x2 police x 10/cell = 40; 2x3 fire x 5/cell = 30, both
+matching exactly) -- reconciled and documented in section 21.3, though still blocked on this
+client's complete lack of a town-facility-placement/spatial-distance model (decision 0095), not on
+the formula itself. (2) 小宮千明's `security_skill_growth_ceiling` was re-read directly from book
+p.127 as 44, not the 41 currently in both `baseline_data.py` and `vertical_slice.json` (an
+adjacent-cell transcription slip, most likely picking up a neighboring column's value) -- fixed in
+both files. See decision 0123. No test suite changes (no existing test covered this specific
+candidate's specific field); `reference_sim` 665 passed/1 xfailed, `headless_smoke.gd` unchanged at
+957 steps.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1168,12 +1182,22 @@ Grouped by rough topic, each citing which research doc has the page-level eviden
 have been implemented yet; picking one is a future-session decision, not a standing priority
 order.
 
-- **Security facilities (交番/消防署)**: both books independently give **quantified** bonuses for
-  the first time (previously only qualitative in section 12) -- but the two books disagree on the
-  exact shape (flat +40/+30 within a 7-area radius per the 実習マニュアル vs. a per-area-scaled
-  +10/area max+40 (police, 2x2) / +5/area max+30 (fire station, 2x3) within a 16x16-tile radius
-  per the クイックリファレンス). This needs a side-by-side re-read before implementing, not a
-  pick-one guess. No such fixtures exist in `fixture_catalog` yet (blocked since decision 0096).
+- **Security facilities (交番/消防署) -- RESOLVED NOT a conflict (re-verified 2026-09-19)**: both
+  books were directly re-read (実習マニュアル book pp.46-47; クイックリファレンス book p.10). The
+  実習マニュアル states a flat "police box +40 / fire station +30" security bonus within a 7-area
+  radius, reduced proportionally if the facility's footprint spills outside that radius. The
+  クイックリファレンス states a per-area-unit formula: police box (2x2 footprint) +10 security per
+  area-cell within a 16x16-tile radius, max +40; fire station (2x3 footprint) +5/area-cell, max
+  +30. These are the SAME formula at two levels of detail, not a disagreement: 2x2=4 cells x 10 =
+  40 exactly matches the police box's stated max; 2x3=6 cells x 5 = 30 exactly matches the fire
+  station's max. The "flat +40/+30, reduced if the footprint spills outside the range" framing is
+  just the fully-contained case of "per-cell-within-range x rate." Confirmed formula: `bonus =
+  (footprint_cells_within_the_effective_radius) x per_cell_rate` (police 10/cell, fire 5/cell).
+  What remains genuinely blocked is unrelated to this formula: this client's `TownState` (game/) is
+  a single scalar population/store_count with no facility-placement or spatial-distance model at
+  all (decision 0095), so there is nowhere yet to place an induced police box/fire station or
+  compute its distance from the store. Implementing the confirmed bonus formula itself is no longer
+  the blocker; building a minimal town-facility-placement/distance subsystem to attach it to is.
 - **Land-purchase cost formula**: empty lot = area land price x number of areas; occupied lot =
   land price + 50% of the existing building's appraised value (実習マニュアル p.7). Not modeled
   anywhere (`land_value_policy.gd` only models value *growth over time*, not acquisition cost) --
@@ -1238,9 +1262,6 @@ Per CLAUDE.md's discipline, these are recorded rather than silently picked one w
   `-part2`; still unresolved.
 - **Station shopping-population figure**: 2,000 on one page vs. 2,240 on another page of the same
   book -- possibly different size tiers rather than a real conflict; not resolved.
-- **小宮千明's security_skill_growth_ceiling**: read as 44 in this session's scan vs. 42 in
-  existing code -- low-confidence, could be a misread on either side, not asserted as a real
-  contradiction.
 
 ### 21.5 Deliberately not re-litigated
 
