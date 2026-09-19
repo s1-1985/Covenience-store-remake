@@ -1772,6 +1772,70 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         )
         self.assertIn("REMAKE_BALANCED_DEFAULT", self.config["staff"]["skill_evidence_note"])
 
+    def test_checkout_anger_penalty_is_wired_into_checkout_service(self):
+        from conveni_sim.checkout_anger_penalty import (
+            CHECKOUT_ANGER_AFFECTED_SKILLS,
+            CHECKOUT_ANGER_SKILL_DELTA,
+        )
+
+        self.assertEqual(CHECKOUT_ANGER_SKILL_DELTA, -2)
+        affected_skill_names = {skill.value for skill in CHECKOUT_ANGER_AFFECTED_SKILLS}
+        self.assertEqual(
+            affected_skill_names,
+            {"register", "replenishment", "security", "cleaning", "service"},
+        )
+
+        anger = (GAME_ROOT / "scripts" / "domain" / "checkout_anger.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("class_name CheckoutAnger", anger)
+        self.assertIn("CONFIRMED_COMMUNITY", anger)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", anger)
+        self.assertIn("const SKILL_DELTA := -2", anger)
+        self.assertIn("const MINIMUM_SKILL_VALUE := 0", anger)
+        self.assertIn("func trigger_ticks(reference_ticks: int) -> int:", anger)
+        self.assertIn("func apply_penalty(staff_member) -> Dictionary:", anger)
+        for skill_field in (
+            "register_skill",
+            "replenishment_skill",
+            "security_skill",
+            "cleaning_skill",
+            "service_skill",
+        ):
+            self.assertIn('results["%s"]' % skill_field, anger)
+
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        customer_state = (GAME_ROOT / "scripts" / "domain" / "customer_state.gd").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("var checkout_assigned_ticks := 0", customer_state)
+        self.assertIn("var checkout_anger_triggered := false", customer_state)
+
+        # Wired into the real checkout-service tick, not just present as an
+        # unused class.
+        self.assertIn("_checkout_anger.trigger_ticks(_checkout_ticks)", simulation)
+        self.assertIn("_checkout_anger.apply_penalty(", simulation)
+        self.assertIn('_record_event("checkout_anger_triggered"', simulation)
+        self.assertIn(
+            "customer.checkout_assigned_ticks = customer.checkout_ticks_remaining", simulation
+        )
+
+        self.assertIn(
+            "must trigger exactly one checkout_anger_triggered event", smoke
+        )
+        self.assertIn("must lower register_skill by 2, clamped at the floor", smoke)
+
+        self.assertIn(
+            "REMAKE_BALANCED_DEFAULT", self.config["simulation"]["checkout_anger_evidence_note"]
+        )
+        self.assertIn(
+            "CONFIRMED_COMMUNITY", self.config["simulation"]["checkout_anger_evidence_note"]
+        )
+
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"

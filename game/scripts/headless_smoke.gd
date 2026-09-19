@@ -14,6 +14,7 @@ const RestockTimingScript := preload("res://scripts/domain/restock_timing.gd")
 const CustomerShareScript := preload("res://scripts/domain/customer_share.gd")
 const StaffStateScript := preload("res://scripts/domain/staff_state.gd")
 const StaffGrowthScript := preload("res://scripts/domain/staff_growth.gd")
+const CheckoutAngerScript := preload("res://scripts/domain/checkout_anger.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
@@ -1155,6 +1156,44 @@ func _initialize() -> void:
         _fail("StaffState.reset() must restore every skill to its config-derived starting value")
         return
 
+    # Task #49: CheckoutAnger unit coverage, isolated the same way.
+    var anger = CheckoutAngerScript.new()
+    if anger.trigger_ticks(3) != 6:
+        _fail("trigger_ticks must scale the reference duration by TRIGGER_MULTIPLIER")
+        return
+    var anger_staff = StaffStateScript.new({
+        "id": "anger-test-staff",
+        "start_subcell": [0, 0],
+        "register_skill": 10,
+        "service_skill": 1,
+        "replenishment_skill": 10,
+        "cleaning_skill": 10,
+        "security_skill": 10,
+        "register_skill_growth_ceiling": 10,
+        "service_skill_growth_ceiling": 10,
+        "replenishment_skill_growth_ceiling": 10,
+        "cleaning_skill_growth_ceiling": 10,
+        "security_skill_growth_ceiling": 10,
+    })
+    var penalty_results: Dictionary = anger.apply_penalty(anger_staff)
+    if (
+        anger_staff.register_skill != 8
+        or anger_staff.replenishment_skill != 8
+        or anger_staff.cleaning_skill != 8
+        or anger_staff.security_skill != 8
+    ):
+        _fail("apply_penalty must lower register/replenishment/cleaning/security skills by exactly 2")
+        return
+    if anger_staff.service_skill != 0:
+        _fail("apply_penalty must clamp a skill at MINIMUM_SKILL_VALUE rather than going negative")
+        return
+    if (
+        int(penalty_results["service_skill"]["before"]) != 1
+        or int(penalty_results["service_skill"]["after"]) != 0
+    ):
+        _fail("apply_penalty must report the actual before/after values, not the unclamped delta")
+        return
+
     var customer_share = CustomerShareScript.new()
     if customer_share.compute_customer_share_percent(100, 100.0, 100.0, 100.0, 30, 1440) != 100:
         _fail("compute_customer_share_percent must score 100 when every factor is maxed out")
@@ -1641,6 +1680,66 @@ func _initialize() -> void:
         _fail("economy UI: Expand chain must increase player_store_count by exactly one")
         return
     economy_ui_scene.free()
+
+    # Task #49: an unusually slow checkout (a deliberately below-reference
+    # register_skill) must trigger exactly one checkout_anger_triggered
+    # event and apply the confirmed -2 penalty to the serving staff
+    # member's five affected skills. register_skill/service_skill's own
+    # growth ceilings are overridden to their post-anger floor here so
+    # task #48's checkout-completion growth (+1 to those same two skills)
+    # cannot also fire and complicate the expected value -- isolating this
+    # scenario to the anger mechanic alone, the same technique the
+    # StaffGrowth unit tests above already use to force a "no growth"
+    # branch.
+    var anger_config: Dictionary = config.duplicate(true)
+    anger_config["demand"] = {
+        "nearby_population": 0,
+        "customer_share_percent": 0.0,
+        "daily_visit_rate_per_population": 0.0,
+        "opening_minutes_per_day": 960,
+        "bad_weather_visit_multiplier": 0.0,
+        "is_bad_weather": false,
+        "rng_seed": 19,
+    }
+    var checkout_staff_id := str(anger_config["staff"]["checkout_staff_id"])
+    var slow_staff_index := -1
+    for i in anger_config["staff"]["members"].size():
+        if str(anger_config["staff"]["members"][i]["id"]) == checkout_staff_id:
+            slow_staff_index = i
+            break
+    if slow_staff_index < 0:
+        _fail("checkout-anger test config must find the checkout staff member")
+        return
+    var anger_staff_config_before: Dictionary = (
+        anger_config["staff"]["members"][slow_staff_index].duplicate(true)
+    )
+    anger_config["staff"]["members"][slow_staff_index]["register_skill"] = 1
+    anger_config["staff"]["members"][slow_staff_index]["register_skill_growth_ceiling"] = 0
+    anger_config["staff"]["members"][slow_staff_index]["service_skill_growth_ceiling"] = 0
+    var anger_simulation = VerticalSliceSimulationScript.new(anger_config)
+    steps += _run_visit(anger_simulation)
+    if anger_simulation.event_log.count_type("checkout_anger_triggered") != 1:
+        _fail("an unusually slow checkout must trigger exactly one checkout_anger_triggered event")
+        return
+    var angered_staff = anger_simulation.staff.members[checkout_staff_id]
+    if angered_staff.register_skill != max(0, 1 - 2):
+        _fail("checkout anger must lower register_skill by 2, clamped at the floor")
+        return
+    if angered_staff.service_skill != max(0, int(anger_staff_config_before["service_skill"]) - 2):
+        _fail("checkout anger must lower service_skill by 2")
+        return
+    if (
+        angered_staff.replenishment_skill
+        != max(0, int(anger_staff_config_before["replenishment_skill"]) - 2)
+    ):
+        _fail("checkout anger must lower replenishment_skill by 2")
+        return
+    if angered_staff.cleaning_skill != max(0, int(anger_staff_config_before["cleaning_skill"]) - 2):
+        _fail("checkout anger must lower cleaning_skill by 2")
+        return
+    if angered_staff.security_skill != max(0, int(anger_staff_config_before["security_skill"]) - 2):
+        _fail("checkout anger must lower security_skill by 2")
+        return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)

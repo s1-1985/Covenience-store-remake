@@ -963,6 +963,30 @@ post-growth state instead of hand-derived literals. See decision 0117. `headless
 added to task #40's existing automatic-restock scenario; 764 steps (no new independent scenario, assertions
 only). `reference_sim` full suite 662 passed/1 xfailed.
 
+**Task #49 (2026-09-19)**: the user was offered a choice between the checkout-anger penalty (initially
+floated in task #45's investigation and passed over there for lacking a confirmed trigger) and a larger-scope
+staff hiring/firing UI, and chose the penalty after a reassessment found it structurally identical to task
+#33's own precedent: the -2 effect itself is CONFIRMED_COMMUNITY, only the *shape* of the trigger threshold
+needs this project's own REMAKE_BALANCED_DEFAULT invention -- exactly the same situation `checkout_timing.gd`
+already resolved for the checkout-duration formula. New `game/scripts/domain/checkout_anger.gd` ports
+`reference_sim/conveni_sim/checkout_anger_penalty.py` + `checkout_anger_timing.py`: `SKILL_DELTA := -2`
+(CONFIRMED_COMMUNITY, register/replenishment/security/cleaning/service, education/stamina unaffected),
+`MINIMUM_SKILL_VALUE := 0` (reuses this codebase's existing non-negative floor rather than inventing a new
+one), and `TRIGGER_MULTIPLIER := 2.0` (REMAKE_BALANCED_DEFAULT) applied to `CheckoutTiming`'s own already-
+confirmed reference duration -- so the trigger threshold is anchored to already-confirmed data (CLAUDE.md
+priority 2, analogy) rather than an unrelated new absolute number (priority 3). Wired into
+`VerticalSliceSimulation`'s checkout-service tick: once per checkout, once elapsed service ticks exceed
+`trigger_ticks(checkout_ticks)`, applies the penalty to the currently serving staff member and records a
+`checkout_anger_triggered` event. `CustomerState` gained `checkout_assigned_ticks`/`checkout_anger_triggered`
+to track this per visit. Because both staff-1/staff-2's register_skill already exceed the reference skill
+(13), this mechanic never fires under the default roster (and skill growth from task #48 only widens that
+margin further, so there is no interaction risk with the existing scenarios) -- it only activates for a
+below-reference hire, matching the guide's own causal story. See decision 0118. `headless_smoke.gd` gained
+direct `CheckoutAnger` unit coverage plus a new dedicated scenario (a deliberately slow checkout staff
+member, with that staff member's own register/service growth ceilings overridden to isolate this test from
+task #48's growth so the two mechanics' expected values don't have to be hand-composed); 831 steps (up from
+764, the new scenario's own long low-skill checkout). `reference_sim` full suite 663 passed/1 xfailed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

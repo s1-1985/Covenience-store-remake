@@ -305,6 +305,27 @@ crosscheckドキュメントを必ず先に確認すること。
     ため、実際のスタッフ状態/`CustomerShare`クラスから動的に再計算する
     形に修正。決定書0117。
 
+23. PR #219マージ後、`AskUserQuestion`で次候補を再提示
+    (「チェックアウト怒りペナルティ」vs「スタッフ雇用・解雇UI」)。
+    今回は前回見送ったチェックアウト怒りペナルティを、タスク#33の
+    `checkout_timing.gd`と全く同じ構造(効果は確定済み、閾値の形だけ
+    プロジェクト独自のREMAKE_BALANCED_DEFAULT)だと再評価した上で
+    「推奨」として提示し、ユーザーが選択。**タスク#49**: 新規
+    `game/scripts/domain/checkout_anger.gd`を作成し、
+    `checkout_anger_penalty.py` + `checkout_anger_timing.py`を移植。
+    -2ペナルティ(レジ/補充/警備/清掃/接客の5スキル、CONFIRMED_COMMUNITY)、
+    下限値0(既存の非負制約を再利用、新規発明なし)、発火閾値は
+    `CheckoutTiming`の基準所要時間への倍率(TRIGGER_MULTIPLIER=2.0、
+    REMAKE_BALANCED_DEFAULT)として、無関係な新しい絶対時間ではなく
+    既存の確定済みデータへ類推的に紐づけた。`VerticalSliceSimulation`の
+    チェックアウト処理へ配線し、`CustomerState`に
+    `checkout_assigned_ticks`/`checkout_anger_triggered`を追加。
+    既定のstaff-1/staff-2は基準スキルを上回るため既定構成では発火せず、
+    タスク#48のスキル成長との相互作用リスクもない。`headless_smoke.gd`に
+    単体テストと、低スキルスタッフを使った専用シナリオ(タスク#48の
+    成長機構による干渉を避けるため、対象スタッフの成長ceilingを
+    意図的に0へオーバーライドして分離)を追加。決定書0118。
+
 ## 3. 検証
 
 - `headless_smoke.gd`: タスク#35は構造チェックに新ラベルのノードパスを追加、
@@ -429,7 +450,8 @@ download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip`から再ダウンロー�
 | #216 | タスク#45(什器のcapacity/compatible_product_categoriesを仕入れ処理へ配線) | マージ済み |
 | #217 | タスク#46(什器のmaintenance_yen_per_dayを日次収支へ配線) | マージ済み |
 | #218 | タスク#47(スタッフのsalary_yen_per_day_24hを日次収支へ配線) | マージ済み |
-| #219 | タスク#48(スタッフのスキル成長をwork-eventベースで配線) | 作業中 |
+| #219 | タスク#48(スタッフのスキル成長をwork-eventベースで配線) | マージ済み |
+| #220 | タスク#49(チェックアウト怒りペナルティを配線) | 作業中 |
 
 ## 7. 作業ブランチについて
 
