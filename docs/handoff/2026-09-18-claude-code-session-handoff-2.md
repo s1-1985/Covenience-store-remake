@@ -256,7 +256,19 @@ crosscheckドキュメントを必ず先に確認すること。
     矛盾しうる値を、小さい方を採用することで解消した(新しい数値の発明
     ではない)。既存のたばこ仕入れテスト・経済UIのE2Eテストが新ルールで
     壊れたため動的化・修正し、互換性の拒否/受理を検証する新規シナリオを
-    追加。決定書0114。
+    追加。決定書0114。PR #216として作成、CI green確認後ユーザーがready化
+    しマージ済み。
+20. ユーザーが「什器のmaintenance_yen_per_day→日次収支」を選択。
+    **タスク#46**: `fixture_catalog`全35エントリが持つCONFIRMED_OFFICIALな
+    `maintenance_yen_per_day`が一切消費されていなかった。新規
+    `_apply_daily_fixture_maintenance()`を`_handle_day_boundary()`から
+    呼び出し、所有する全什器(カタログ由来のもののみ)の維持費を合計して
+    毎シミュレーション日1回控除するようにした。既存の月次×8投影は現金差分
+    をそのまま読むだけの仕組みのため、追加のスケーリング処理は不要だった。
+    調査の過程で判明した`salary_yen_per_day_24h`(スタッフ給与、35名候補
+    データにのみ存在し実働staff.membersには無い)は今回の対象外とし、
+    将来タスクの候補として記録。全35エントリのevidence_noteから「未消費」
+    の古い記述を除去。決定書0115。
 
 ## 3. 検証
 
@@ -379,7 +391,8 @@ download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip`から再ダウンロー�
 | #213 | タスク#42是正(initial_stock_unitsを類推ベースの値へ是正、CLAUDE.md新設) | マージ済み |
 | #214 | タスク#43(service/security/cleaning_skill「未消費」記述の是正) | マージ済み |
 | #215 | タスク#44(customer_share_percentを月次で再計算するよう配線) | マージ済み |
-| (作成予定) | タスク#45(什器のcapacity/compatible_product_categoriesを仕入れ処理へ配線) | 作業中 |
+| #216 | タスク#45(什器のcapacity/compatible_product_categoriesを仕入れ処理へ配線) | マージ済み |
+| (作成予定) | タスク#46(什器のmaintenance_yen_per_dayを日次収支へ配線) | 作業中 |
 
 ## 7. 作業ブランチについて
 

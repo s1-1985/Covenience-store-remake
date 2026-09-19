@@ -998,8 +998,42 @@ func _advance_minute_of_day() -> void:
 func _handle_day_boundary() -> void:
     day_count += 1
     _days_completed_this_month += 1
+    _apply_daily_fixture_maintenance()
     if _days_completed_this_month >= REPRESENTATIVE_DAYS_PER_MONTH:
         _settle_month_end()
+
+
+# Task #46: maintenance_yen_per_day exists as CONFIRMED_OFFICIAL data on
+# every fixture_catalog entry but was never deducted anywhere. This sums it
+# across every currently-owned fixture that actually has a fixture_catalog
+# origin (skipping the prototype scenario's shelf-1/shelf-2/checkout-1,
+# which predate the catalog system and have no confirmed maintenance figure
+# to charge) and deducts the total once per simulated day, the same "per
+# real calendar day" unit the confirmed field's own name states. This
+# happens inside the 4-simulated-day window _settle_month_end() later reads
+# via economy.cash_yen's own delta, so it is automatically included in that
+# month's x8 projection with no separate scaling logic of its own. A day
+# with nothing to charge (the prototype scenario's own two starting
+# fixtures, before any catalog fixture is purchased) records no expense at
+# all rather than a redundant zero-yen entry every single day.
+func _apply_daily_fixture_maintenance() -> void:
+    var total_maintenance_yen := 0
+    for fixture in layout.fixtures:
+        var catalog_id := str(fixture.get("catalog_id", ""))
+        if catalog_id.is_empty() or not _fixture_catalog.has(catalog_id):
+            continue
+        var catalog_entry: Dictionary = _fixture_catalog[catalog_id]
+        if catalog_entry.has("maintenance_yen_per_day"):
+            total_maintenance_yen += int(catalog_entry["maintenance_yen_per_day"])
+    if total_maintenance_yen <= 0:
+        return
+    var expense: Dictionary = economy.record_explicit_expense(
+        "fixture_maintenance", minute_of_day, total_maintenance_yen
+    )
+    _record_event("fixture_maintenance_charged", {
+        "total_maintenance_yen": total_maintenance_yen,
+        "expense_id": expense["expense_id"],
+    })
 
 
 func _settle_month_end() -> void:

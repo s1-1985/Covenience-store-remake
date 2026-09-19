@@ -155,7 +155,7 @@
       "purchase_price_yen": 1000,
       "maintenance_yen_per_day": 120,
       "service_bonus": 2,
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['potted_plant'] (strategy guide purchase price/maintenance/service_bonus). service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is still not consumed anywhere in this client."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['potted_plant'] (strategy guide purchase price/maintenance/service_bonus). service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is consumed as of task #46: VerticalSliceSimulation._handle_day_boundary() sums maintenance_yen_per_day across every currently-owned fixture with a fixture_catalog origin and deducts the total as a single daily 'fixture_maintenance' expense."
     },
     {
       "catalog_id": "bench",
@@ -167,7 +167,7 @@
       "purchase_price_yen": 2000,
       "maintenance_yen_per_day": 160,
       "service_bonus": 4,
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['bench']. service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is still not consumed anywhere in this client."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['bench']. service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is consumed as of task #46: VerticalSliceSimulation._handle_day_boundary() sums maintenance_yen_per_day across every currently-owned fixture with a fixture_catalog origin and deducts the total as a single daily 'fixture_maintenance' expense."
     },
     {
       "catalog_id": "fountain",
@@ -179,7 +179,7 @@
       "purchase_price_yen": 5000,
       "maintenance_yen_per_day": 2400,
       "service_bonus": 30,
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['fountain']. service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is still not consumed anywhere in this client."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['fountain']. service_bonus feeds the monthly store-rating service value once this fixture is purchased (VerticalSliceSimulation._evaluate_store_rating); maintenance_yen_per_day is consumed as of task #46: VerticalSliceSimulation._handle_day_boundary() sums maintenance_yen_per_day across every currently-owned fixture with a fixture_catalog origin and deducts the total as a single daily 'fixture_maintenance' expense."
     },
     {
       "catalog_id": "small_ambient_shelf",
@@ -241,7 +241,7 @@
         "daily_goods",
         "underwear"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_ambient_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_ambient_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "large_ambient_shelf",
@@ -267,7 +267,7 @@
         "underwear",
         "medicine"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_ambient_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_ambient_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "small_ambient_wagon",
@@ -291,7 +291,7 @@
         "daily_goods",
         "underwear"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_ambient_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_ambient_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "medium_ambient_wagon",
@@ -317,7 +317,7 @@
         "underwear",
         "medicine"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_ambient_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_ambient_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "large_ambient_wagon",
@@ -343,7 +343,7 @@
         "medicine",
         "underwear"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_ambient_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_ambient_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "large_ambient_wagon_2",
@@ -369,7 +369,7 @@
         "medicine",
         "underwear"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_ambient_wagon_2'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_ambient_wagon_2'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "small_refrigerated_shelf",
@@ -390,7 +390,7 @@
         "meat",
         "snacks"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_refrigerated_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_refrigerated_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "medium_refrigerated_shelf",
@@ -411,7 +411,7 @@
         "meat",
         "snacks"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_refrigerated_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_refrigerated_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "large_refrigerated_shelf",
@@ -432,7 +432,7 @@
         "meat",
         "medicine"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_refrigerated_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_refrigerated_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "small_refrigerated_wagon",
@@ -452,7 +452,7 @@
         "meat",
         "snacks"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_refrigerated_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_refrigerated_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "medium_refrigerated_wagon",
@@ -473,7 +473,7 @@
         "meat",
         "snacks"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_refrigerated_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_refrigerated_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "large_refrigerated_wagon_1",
@@ -494,7 +494,7 @@
         "meat",
         "medicine"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_refrigerated_wagon_1'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_refrigerated_wagon_1'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "large_refrigerated_wagon_2",
@@ -515,7 +515,7 @@
         "meat",
         "medicine"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_refrigerated_wagon_2'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_refrigerated_wagon_2'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "small_frozen_shelf",
@@ -531,7 +531,7 @@
         "frozen_food",
         "ice_cream"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_frozen_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_frozen_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "medium_frozen_shelf",
@@ -547,7 +547,7 @@
         "frozen_food",
         "ice_cream"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_frozen_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_frozen_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "small_frozen_wagon",
@@ -563,7 +563,7 @@
         "frozen_food",
         "ice_cream"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_frozen_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_frozen_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "medium_frozen_wagon",
@@ -579,7 +579,7 @@
         "frozen_food",
         "ice_cream"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_frozen_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_frozen_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "hot_drink_case",
@@ -594,7 +594,7 @@
       "compatible_product_categories": [
         "hot_drink"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['hot_drink_case'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['hot_drink_case'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "oden_case",
@@ -609,7 +609,7 @@
       "compatible_product_categories": [
         "oden"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['oden_case'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['oden_case'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "steamed_bun_case",
@@ -624,7 +624,7 @@
       "compatible_product_categories": [
         "chinese_steamed_bun"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['steamed_bun_case'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['steamed_bun_case'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "event_shelf",
@@ -639,7 +639,7 @@
       "compatible_product_categories": [
         "event_goods"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['event_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['event_shelf'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "event_wagon",
@@ -654,7 +654,7 @@
       "compatible_product_categories": [
         "event_goods"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['event_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['event_wagon'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "large_tobacco_vending",
@@ -670,7 +670,7 @@
         "tobacco"
       ],
       "required_permit_id": "tobacco",
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_tobacco_vending'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_tobacco_vending'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "small_cold_drink_vending",
@@ -686,7 +686,7 @@
         "cold_drink",
         "alcohol"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "large_cold_drink_vending",
@@ -702,7 +702,7 @@
         "cold_drink",
         "alcohol"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "small_hot_cold_drink_vending",
@@ -718,7 +718,7 @@
         "cold_drink",
         "hot_drink"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_hot_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_hot_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "large_hot_cold_drink_vending",
@@ -734,7 +734,7 @@
         "cold_drink",
         "hot_drink"
       ],
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_hot_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day remains unconsumed, matching the existing amenity/parking catalog entries' pattern."
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_hot_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance/capacity/compatible_product_categories). As of task #45, capacity/compatible_product_categories are consumed by try_procure_product(): a product's own catalog_id must appear in this fixture's compatible_product_categories, and the procured quantity is capped at this fixture's own capacity (product_catalog entries' initial_stock_units use each category's confirmed max_capacity, which can exceed a specific fixture's own capacity when that max_capacity assumes a larger fixture than the one actually purchased). maintenance_yen_per_day is consumed as of task #46 (see potted_plant's evidence_note for how)."
     },
     {
       "catalog_id": "parking_ground",
@@ -748,7 +748,7 @@
       "parking_capacity": 2,
       "blocks_pedestrian": true,
       "placement": "outdoor",
-      "evidence_note": "CONFIRMED_OFFICIAL/CONFIRMED_COMMUNITY, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['parking_ground'] (footprint/parking_capacity/blocks_pedestrian are CONFIRMED_COMMUNITY from the first-title wiki; purchase_price_yen is CONFIRMED_OFFICIAL from the strategy guide). blocks_pedestrian is included for schema parity with reference_sim, but does not change this client's placement behavior: StoreLayout already marks every fixture's full footprint as non-walkable regardless of kind (game/scripts/domain/store_layout.gd's _build_blocked_cells), so parking cells were already correctly non-walkable before this field existed. parking_capacity is not consumed anywhere in this client yet (no car/vehicle simulation exists). placement='outdoor' is not enforced: this client's store grid represents only the interior editable floor (no outdoor/exterior space model exists yet -- same scope boundary as the town/rival spatial model deferred in task #26), so purchasing this fixture currently places it on the interior grid like any other fixture, which is not evidentially faithful to its outdoor placement. Deliberately not implemented: an outdoor/exterior placement area distinct from the interior floor."
+      "evidence_note": "CONFIRMED_OFFICIAL/CONFIRMED_COMMUNITY, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['parking_ground'] (footprint/parking_capacity/blocks_pedestrian are CONFIRMED_COMMUNITY from the first-title wiki; purchase_price_yen is CONFIRMED_OFFICIAL from the strategy guide). blocks_pedestrian is included for schema parity with reference_sim, but does not change this client's placement behavior: StoreLayout already marks every fixture's full footprint as non-walkable regardless of kind (game/scripts/domain/store_layout.gd's _build_blocked_cells), so parking cells were already correctly non-walkable before this field existed. parking_capacity is not consumed anywhere in this client yet (no car/vehicle simulation exists); maintenance_yen_per_day is consumed as of task #46 like every other fixture_catalog entry (VerticalSliceSimulation._handle_day_boundary()), even though this specific entry's confirmed value happens to be 0. placement='outdoor' is not enforced: this client's store grid represents only the interior editable floor (no outdoor/exterior space model exists yet -- same scope boundary as the town/rival spatial model deferred in task #26), so purchasing this fixture currently places it on the interior grid like any other fixture, which is not evidentially faithful to its outdoor placement. Deliberately not implemented: an outdoor/exterior placement area distinct from the interior floor."
     },
     {
       "catalog_id": "parking_two_story",
