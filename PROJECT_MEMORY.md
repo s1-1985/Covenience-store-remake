@@ -746,6 +746,26 @@ unrelated unseeded-RNG flake in `test_remake_purchase_policy.py` confirmed to pa
 `headless_smoke.gd` unchanged at 734 steps (its tobacco-selection test already looked the catalog id up
 dynamically rather than assuming index 0).
 
+**Task #40 (2026-09-19)**: continuing the same "wire confirmed logic before inventing" priority after
+task #39 merged (PR #210), `vertical_slice.json`'s own `staff.skill_evidence_note` still said
+`replenishment_skill` was ported data but consumed by no GDScript logic (task #33 had only wired its
+sibling `register_skill` into checkout timing). Two qualitative research notes support a real effect --
+"early low-skill staff clean slowly because they are also occupied with replenishment"
+(`ss-early-store-operations-and-acquisition-2026-09-06.md` section 4, DIRECT-PLAY-SS) and "agility bounds
+replenishment" (`checkout-staff-dispatch-evidence-2026-09-05.md` section 6) -- with no numeric formula in
+either, the same evidence shape task #33 used for register_skill. New `game/scripts/domain/restock_timing.gd`
+(`RestockTiming`) reuses `CheckoutTiming`'s exact inverse-proportion shape, wired into
+`_step_restock_tasks()`'s `"to_restock"` transition in place of the flat `_restock_ticks` constant.
+`REFERENCE_REPLENISHMENT_SKILL := 13` is the median `replenishment_skill` across the same 35
+CONFIRMED_OFFICIAL candidates task #32 ported (coincidentally equal to register_skill's median). Tagged
+REMAKE_BALANCED_DEFAULT in the code comment, the new `simulation.restock_ticks_evidence_note`, and a new
+contract test mirroring task #33's, per the tagging discipline the task #38 correction established. See
+decision 0109. Automatic restock dispatch stays disabled by default (task #36's existing carve-out), so
+`headless_smoke.gd`'s main scenario is unaffected (734 steps, unchanged); only the dedicated
+`restock_task_enabled=true` test block exercises this wiring, and it already waited on staff state rather
+than an exact tick count, so it needed no change. `reference_sim` full suite 656 passed/1 xfailed, no
+flake this run.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

@@ -156,6 +156,27 @@ crosscheckドキュメントを必ず先に確認すること。
     `initial_stock_units`はたばこの前例(10)を踏襲しつつ、今回は
     `REMAKE_BALANCED_DEFAULT`タグをJSON本体の`evidence_note`に最初から
     明記した(前回の是正で確立した規律をそのまま適用)。決定書0108。
+    PR #210として作成、CI(reference-tests)が既存の無関係なflaky test
+    (`test_remake_purchase_policy.py`、シードなしRNGによる非決定性、
+    ローカル再実行で成功済み)で一度赤くなったが、ユーザーが再実行して
+    green化、ready化しマージ済み。
+14. ユーザーから「続けて」の指示を受け、次の配線待ち候補に着手する判断と
+    した。ブランチはPR #210マージ後に`origin/main`から作り直した。
+    **タスク#40**(replenishment_skillの補充所要時間への配線): タスク#33が
+    `register_skill`をチェックアウト時間に配線した際、`vertical_slice.json`
+    の`skill_evidence_note`は「replenishment_skillも同様にタスク#33が配線
+    予定」と書いていたが、実際に配線されたのはregister_skillのみで
+    replenishment_skillは未消費のまま残っていた。`_step_restock_tasks()`の
+    `_restock_ticks`はどのスタッフが担当しても常に固定値だった。定性的証拠
+    (低スキルスタッフは補充作業にも追われて掃除が遅い、agilityが
+    replenishmentの上限に関係する)はあるが数式は未確認という、タスク#33の
+    register_skillと全く同じ証拠の性質のため、`CheckoutTiming`と全く同じ
+    反比例スケーリングの形を再利用する新規`RestockTiming`
+    (`game/scripts/domain/restock_timing.gd`)を実装し、`_step_restock_
+    tasks()`に配線した。`REFERENCE_REPLENISHMENT_SKILL := 13`は35名
+    candidateのreplenishment_skill中央値(register_skillの中央値と偶然
+    同じ値)。自動補充タスクは既定で無効のままのため、`headless_smoke.gd`の
+    メインシナリオは無変化(734ステップ)。決定書0109。
 
 ## 3. 検証
 
@@ -262,7 +283,8 @@ download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip`から再ダウンロー�
 | #207 | タスク#37(サンプルレイアウト読み込み機能) | マージ済み |
 | #208 | タスク#38(経済アクションをUIに接続) | マージ済み |
 | #209 | タスク#38是正(REMAKE_BALANCED_DEFAULTタグ付け漏れの修正) | マージ済み |
-| (作成予定) | タスク#39(商品カタログを27種類中25種類へ拡充) | 作業中 |
+| #210 | タスク#39(商品カタログを27種類中25種類へ拡充) | マージ済み |
+| (作成予定) | タスク#40(replenishment_skillの補充所要時間への配線) | 作業中 |
 
 ## 7. 作業ブランチについて
 

@@ -15,6 +15,7 @@ const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
 const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
 const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
+const RestockTimingScript := preload("res://scripts/domain/restock_timing.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -112,6 +113,7 @@ var player_store_count: int
 var _chain_visitor_milestone
 var _store_events
 var _checkout_timing
+var _restock_timing
 # FIFO order in which customers who have finished shopping are waiting for
 # the single checkout fixture's one staff-service slot (task #36, concurrent
 # customers). Serving strictly in arrival order is this project's own
@@ -156,6 +158,7 @@ func _init(source_config: Dictionary) -> void:
     assert(_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
     _store_events = StoreEventsScript.new()
     _checkout_timing = CheckoutTimingScript.new()
+    _restock_timing = RestockTimingScript.new()
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -1147,7 +1150,9 @@ func _step_restock_tasks() -> void:
         match staff_member.state:
             "to_restock":
                 if staff_member.move_along_route("restocking"):
-                    staff_member.restock_ticks_remaining = _restock_ticks
+                    staff_member.restock_ticks_remaining = _restock_timing.required_ticks(
+                        staff_member.replenishment_skill, _restock_ticks
+                    )
                     _record_event("restock_started", {
                         "staff_id": staff_member.staff_id,
                         "product_id": staff_member.restock_target_product_id,

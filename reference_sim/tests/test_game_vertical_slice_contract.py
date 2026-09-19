@@ -162,6 +162,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "scripts/domain/chain_visitor_milestone.gd",
             "scripts/domain/store_events.gd",
             "scripts/domain/checkout_timing.gd",
+            "scripts/domain/restock_timing.gd",
             "scripts/domain/staff_roster.gd",
             "scripts/domain/runtime_event_log.gd",
             "scripts/domain/demand_policy.gd",
@@ -1042,6 +1043,68 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
         self.assertIn("required_ticks must never fall below MIN_CHECKOUT_TICKS", smoke)
+
+    def test_replenishment_skill_restock_timing_is_a_tagged_remake_default(self):
+        from conveni_sim.baseline_data import STAFF_CANDIDATES
+
+        restock_timing = (
+            GAME_ROOT / "scripts" / "domain" / "restock_timing.gd"
+        ).read_text(encoding="utf-8")
+        staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
+            encoding="utf-8"
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+
+        # The evidence note is explicit that this scaling shape is invented
+        # by this project (reusing CheckoutTiming's shape), not a recovered
+        # original formula -- the research notes it cites confirm only a
+        # qualitative effect.
+        self.assertIn("REMAKE_BALANCED_DEFAULT", restock_timing)
+        self.assertIn("not a recovered original formula", restock_timing)
+        self.assertIn(
+            "func required_ticks(replenishment_skill: int, reference_ticks: int) -> int:",
+            restock_timing,
+        )
+        self.assertIn("const MIN_RESTOCK_TICKS := 1", restock_timing)
+
+        # REFERENCE_REPLENISHMENT_SKILL must actually be the median of the
+        # ported 35-candidate roster, not an arbitrary number.
+        replenishment_skills = sorted(c.replenishment_skill.value for c in STAFF_CANDIDATES)
+        median = replenishment_skills[len(replenishment_skills) // 2]
+        self.assertEqual(len(replenishment_skills) % 2, 1)
+        self.assertIn(f"const REFERENCE_REPLENISHMENT_SKILL := {median}", restock_timing)
+
+        self.assertIn("var replenishment_skill: int", staff_state)
+        self.assertIn(
+            'replenishment_skill = int(staff_config.get("replenishment_skill", 0))', staff_state
+        )
+
+        # Wired into the actual restock-start transition, not just defined
+        # standalone.
+        self.assertIn("const RestockTimingScript := preload", simulation)
+        self.assertIn(
+            "staff_member.restock_ticks_remaining = _restock_timing.required_ticks(\n"
+            "                        staff_member.replenishment_skill, _restock_ticks\n"
+            "                    )",
+            simulation,
+        )
+
+        # restock_ticks itself is documented as reinterpreted, not silently
+        # redefined without a trace.
+        self.assertIn("restock_ticks_evidence_note", self.config["simulation"])
+        self.assertIn(
+            "REFERENCE_REPLENISHMENT_SKILL", self.config["simulation"]["restock_ticks_evidence_note"]
+        )
+
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn(
+            "required_ticks must return reference_ticks unchanged exactly at "
+            "REFERENCE_REPLENISHMENT_SKILL",
+            smoke,
+        )
+        self.assertIn("required_ticks must never fall below MIN_RESTOCK_TICKS", smoke)
 
     def test_promotions_port_confirmed_reference_sim_timing_and_apply_at_trigger(self):
         promotions = self.config["promotions"]
