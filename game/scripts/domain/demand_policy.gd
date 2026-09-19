@@ -23,9 +23,16 @@ extends RefCounted
 # customer_share_percent score, but here multiplies the whole expected-
 # visitor estimate instead. That target-quantity difference is a deliberate
 # scope simplification, not a second independent guess at the constants
-# themselves: this Godot port has no service/cleaning/security/assortment
-# gameplay stats yet to feed compute_customer_share_percent()'s full
-# weighted formula, so there is no 0-100 share score here to dilute.
+# themselves: as of task #27, this Godot port does compute service/
+# security/cleaning gameplay stats (store_value.gd's compute_service_value/
+# compute_security_value/compute_cleaning_value, fed monthly into the star
+# rating by VerticalSliceSimulation._evaluate_store_rating()), but nothing
+# feeds them into remake_customer_share.py's weighted
+# compute_customer_share_percent() formula here, and assortment breadth
+# still has no stat at all -- so there is still no 0-100 share score in
+# this port for rival_store_count to dilute (this comment previously
+# (incorrectly) said the stats themselves didn't exist yet; corrected in
+# task #43).
 # Defaults to 0 (no rival stores), which is a no-op multiplier of 1.0 and
 # leaves every existing caller/test that never sets it unaffected.
 

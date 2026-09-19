@@ -828,6 +828,28 @@ it in this file's section 15. See decision 0111. `reference_sim` full suite 657 
 data-count change, only field-level correction); `headless_smoke.gd` unchanged at 734 steps once both
 hard-coded assertions were fixed.
 
+**Task #43 (2026-09-19)**: after task #42 merged (PR #213), the user said "続けて" and a fresh audit ran
+for remaining confirmed-but-unwired logic under CLAUDE.md's new priority order. The audit found `vertical_
+slice.json`'s own `staff.skill_evidence_note` still claiming `service_skill`/`security_skill`/`cleaning_
+skill` were "present as data but unconsumed by any GDScript logic" -- false since task #27, which already
+wired all three into `VerticalSliceSimulation._evaluate_store_rating()` -> `store_value.gd`'s `compute_
+service_value`/`compute_security_value`/`compute_cleaning_value` -> the monthly star rating, with existing
+`headless_smoke.gd` coverage. `demand_policy.gd`'s header comment carried the same stale premise ("this
+Godot port has no service/cleaning/security/assortment gameplay stats yet"). Fixed both (and a matching
+test-file comment) to state what's actually true: the three stats exist and feed the monthly rating, but
+nothing threads them into `demand_policy.gd`'s customer-arrival formula, and assortment breadth still has
+no stat at all -- so the comment's actual point (no 0-100 share score exists here for `rival_store_count`
+to dilute) stays correct. Pure evidence-accuracy fix, no logic or test-assertion change. See decision 0112.
+`reference_sim` full suite 657 passed/1 xfailed, `headless_smoke.gd` unchanged at 734 steps.
+
+The same audit also surfaced two candidates left for the user to prioritize rather than assumed as
+"next": (a) porting `FIXTURES`' CONFIRMED_OFFICIAL `capacity`/`compatible_product_categories` into
+`fixture_catalog` and enforcing them in `try_procure_product` -- deliberately left unconsumed three times
+already (decision 0093, and again in tasks #39/#41's own evidence_notes), so possibly an intentional
+low-priority choice rather than an oversight; and (b) wiring `remake_customer_share.py`'s already-tagged
+weighted 0-100 share formula into `demand_policy.gd` now that task #27's service/security/cleaning stats
+exist to feed it -- a real integration (medium scope), not a one-line hookup.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
