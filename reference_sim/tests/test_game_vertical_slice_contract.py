@@ -1497,6 +1497,92 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
         self.assertIn('var label := "SHELF"', store_view)
 
+    def test_fixture_capacity_and_compatibility_are_wired_into_procurement(self):
+        from conveni_sim.baseline_data import FIXTURES
+
+        catalog_by_id = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        reference_by_id = {f.id: f for f in FIXTURES}
+        product_catalog_ids = {entry["catalog_id"] for entry in self.config["product_catalog"]}
+
+        shelf_ids = [
+            catalog_id for catalog_id, entry in catalog_by_id.items() if entry["kind"] == "shelf"
+        ]
+        self.assertEqual(len(shelf_ids), 29)
+
+        for catalog_id in shelf_ids:
+            entry = catalog_by_id[catalog_id]
+            reference = reference_by_id[catalog_id]
+            self.assertEqual(entry["capacity"], reference.capacity.value)
+            self.assertEqual(
+                entry["compatible_product_categories"],
+                list(reference.compatible_product_categories.value),
+            )
+            self.assertIn("CONFIRMED_OFFICIAL", entry["evidence_note"])
+            # Every compatible category this fixture lists must itself be a
+            # real product_catalog entry, or the compatibility check would
+            # silently accept a category this client never lets the player
+            # procure in the first place.
+            for category in entry["compatible_product_categories"]:
+                self.assertIn(category, product_catalog_ids)
+
+        # copy_paper/parcel_delivery_form are real product_catalog entries
+        # (task #39) but reference_sim's own compatible_fixtures_text for
+        # them names コピー機/レジ (copier/register), both fixtures this
+        # client deliberately excluded (task #41) since neither mechanic
+        # exists here. No shelf-kind fixture lists them as compatible,
+        # which is the correct, evidence-consistent result of that earlier
+        # exclusion, not a gap in this task.
+        all_compatible = {
+            category
+            for entry in catalog_by_id.values()
+            for category in entry.get("compatible_product_categories", [])
+        }
+        self.assertNotIn("copy_paper", all_compatible)
+        self.assertNotIn("parcel_delivery_form", all_compatible)
+
+        # No amenity/parking/checkout entry carries either field: they
+        # never hold products, and reference_sim's own FIXTURES agrees
+        # (capacity/compatible_product_categories are None for all of them).
+        for catalog_id, entry in catalog_by_id.items():
+            if entry["kind"] != "shelf":
+                self.assertNotIn("capacity", entry)
+                self.assertNotIn("compatible_product_categories", entry)
+
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # Wired into the actual procurement transition, not just present as
+        # data: a fixture without its own catalog_id (the prototype
+        # scenario's shelf-1/shelf-2) has no confirmed data to check and
+        # stays unrestricted rather than inventing a rule for it.
+        self.assertIn(
+            "if fixture_catalog_entry.has(\"compatible_product_categories\"):", simulation
+        )
+        self.assertIn("if not compatible_categories.has(catalog_id):", simulation)
+        self.assertIn('if fixture_catalog_entry.has("capacity"):', simulation)
+        self.assertIn(
+            "initial_stock_units = min(initial_stock_units, int(fixture_catalog_entry[\"capacity\"]))",
+            simulation,
+        )
+
+        self.assertIn(
+            "a procured product must start with its configured initial stock, "
+            "capped at the fixture's own capacity",
+            smoke,
+        )
+        self.assertIn(
+            "procuring a product onto a fixture whose compatible_product_categories "
+            "excludes it must be rejected",
+            smoke,
+        )
+        self.assertIn(
+            "procuring a product a fixture's compatible_product_categories does "
+            "include must be accepted",
+            smoke,
+        )
+
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"

@@ -871,6 +871,28 @@ monthly-rating scenario (hand-computed expected share of 25 from that scenario's
 cleaning=51.0/security=57.0/2 products/960 minutes); unchanged at 734 steps otherwise (the main long
 scenario never reaches month-end). `reference_sim` full suite 658 passed/1 xfailed.
 
+**Task #45 (2026-09-19)**: the user chose the other task #43 candidate -- wiring fixture `capacity`/
+`compatible_product_categories`. All 29 shelf-kind `fixture_catalog` entries gained both CONFIRMED_
+OFFICIAL fields (ported from `FIXTURES`, matching `product_catalog`'s catalog_id vocabulary exactly since
+task #39 already ported product categories as catalog entries). `try_procure_product()` now rejects a
+procurement whose `catalog_id` isn't in the target fixture's `compatible_product_categories` (skipped
+entirely for a fixture with no `fixture_catalog` origin at all, e.g. the prototype scenario's shelf-1/
+shelf-2 from before the catalog system existed -- no confirmed data to check, so no invented rule for
+them either), and clamps the procured quantity to `min(product_catalog's own initial_stock_units,
+the fixture's own capacity)`. That clamp matters because task #42 set `initial_stock_units` from each
+category's *general* `max_capacity` (e.g. bread=120), which can exceed the *specific* fixture actually
+purchased (e.g. `small_ambient_shelf`'s capacity=40) -- resolved by taking the smaller of two already-
+confirmed numbers, not inventing a third. Since the clamped quantity is stored as the product's own
+`initial_stock_units`, every later restock path (`apply_explicit_restock`, automatic `_complete_restock`)
+respects the cap with no further changes, since both already restock toward that same field. See decision
+0114. Fixed two headless_smoke.gd tests that broke under the new rules: the tobacco-procurement cost/
+stock assertions now read the fixture's own capacity dynamically too (40 -> 20, since `small_tobacco_
+vending`'s capacity is 20), and the economy-UI end-to-end scenario swapped its second fixture purchase
+from `small_ambient_shelf` to `small_tobacco_vending` so procuring tobacco onto it stays compatible.
+Added a new scenario exercising both the rejection (tobacco onto small_ambient_shelf) and acceptance
+(bread onto the same fixture) paths. `headless_smoke.gd` unchanged at 734 steps; `reference_sim` full
+suite 659 passed/1 xfailed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

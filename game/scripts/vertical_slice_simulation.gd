@@ -380,7 +380,23 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
     var required_permit_id := str(catalog_entry.get("required_permit_id", ""))
     if not required_permit_id.is_empty() and not has_permit(required_permit_id):
         return false
+    # Task #45: a fixture only carries compatible_product_categories/capacity
+    # when it was purchased from fixture_catalog (has its own catalog_id) and
+    # that catalog entry actually defines them (every shelf-kind entry does;
+    # amenity/parking/checkout entries never hold products and don't). A
+    # fixture with neither -- e.g. shelf-1/shelf-2, the prototype scenario's
+    # two starting shelves from before the catalog system existed -- has no
+    # confirmed data to check against, so it stays unrestricted rather than
+    # inventing a rule for it.
+    var fixture: Dictionary = layout.fixtures_by_id[fixture_id]
+    var fixture_catalog_entry: Dictionary = _fixture_catalog.get(str(fixture.get("catalog_id", "")), {})
+    if fixture_catalog_entry.has("compatible_product_categories"):
+        var compatible_categories: Array = fixture_catalog_entry["compatible_product_categories"]
+        if not compatible_categories.has(catalog_id):
+            return false
     var initial_stock_units: int = int(catalog_entry["initial_stock_units"])
+    if fixture_catalog_entry.has("capacity"):
+        initial_stock_units = min(initial_stock_units, int(fixture_catalog_entry["capacity"]))
     var restock_unit_cost_yen: int = int(catalog_entry["restock_unit_cost_yen"])
     var procurement_cost_yen: int = initial_stock_units * restock_unit_cost_yen
     if economy.cash_yen < procurement_cost_yen:
