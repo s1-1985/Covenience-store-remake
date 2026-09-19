@@ -12,6 +12,7 @@ const TownStateScript := preload("res://scripts/domain/town_state.gd")
 const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.gd")
 const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
 const StoreValueScript := preload("res://scripts/domain/store_value.gd")
+const CustomerShareScript := preload("res://scripts/domain/customer_share.gd")
 const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
 const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
 const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
@@ -108,6 +109,7 @@ var internal_rating_value: int
 var star_rating: int
 var _store_rating
 var _store_value
+var _customer_share
 var _store_size_tier: String
 var player_store_count: int
 var _chain_visitor_milestone
@@ -154,6 +156,7 @@ func _init(source_config: Dictionary) -> void:
     demand.rival_store_count = max(0, town.store_count_including_rivals - 1)
     _store_rating = StoreRatingScript.new()
     _store_value = StoreValueScript.new()
+    _customer_share = CustomerShareScript.new()
     _store_size_tier = str(config["store"]["size_tier"])
     assert(_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
     _store_events = StoreEventsScript.new()
@@ -1046,6 +1049,14 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
     )
     internal_rating_value = int(evaluation["next_internal_value"])
     star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
+    demand.customer_share_percent = float(_customer_share.compute_customer_share_percent(
+        popularity,
+        service_value,
+        cleaning_value,
+        security_value,
+        inventory.products.size(),
+        demand.opening_minutes_per_day
+    ))
     _record_event("store_rating_evaluated", {
         "month_number": month_count + 1,
         "monthly_sales_yen": monthly_sales_yen,
@@ -1057,6 +1068,7 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
         "downgrade_points": evaluation["downgrade_points"],
         "internal_rating_value": internal_rating_value,
         "star_rating": star_rating,
+        "customer_share_percent": demand.customer_share_percent,
     })
 
 

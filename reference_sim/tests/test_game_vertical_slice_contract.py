@@ -1108,6 +1108,104 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         )
         self.assertIn("required_ticks must never fall below MIN_RESTOCK_TICKS", smoke)
 
+    def test_customer_share_percent_is_wired_into_monthly_store_rating(self):
+        from conveni_sim import remake_customer_share
+
+        customer_share = (
+            GAME_ROOT / "scripts" / "domain" / "customer_share.gd"
+        ).read_text(encoding="utf-8")
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # The evidence note is explicit that this weighted combination is
+        # invented by this project's reference_sim source, not a recovered
+        # original formula, and that this port mirrors it field-for-field.
+        self.assertIn("REMAKE_BALANCED_DEFAULT", customer_share)
+        self.assertIn("not a recovered original formula", customer_share)
+        self.assertIn(
+            "func compute_customer_share_percent(", customer_share
+        )
+
+        # The six weights, the assortment saturation point, and the
+        # full-day-minutes constant must actually match
+        # remake_customer_share.py's own values, not just resemble them.
+        self.assertIn(
+            f"const POPULARITY_WEIGHT := {remake_customer_share.POPULARITY_WEIGHT}", customer_share
+        )
+        self.assertIn(
+            f"const SERVICE_WEIGHT := {remake_customer_share.SERVICE_WEIGHT}", customer_share
+        )
+        self.assertIn(
+            f"const CLEANING_WEIGHT := {remake_customer_share.CLEANING_WEIGHT}", customer_share
+        )
+        self.assertIn(
+            f"const SECURITY_WEIGHT := {remake_customer_share.SECURITY_WEIGHT}", customer_share
+        )
+        self.assertIn(
+            f"const ASSORTMENT_WEIGHT := {remake_customer_share.ASSORTMENT_WEIGHT}", customer_share
+        )
+        self.assertIn(
+            f"const HOURS_WEIGHT := {remake_customer_share.HOURS_WEIGHT}", customer_share
+        )
+        self.assertEqual(
+            sum((
+                remake_customer_share.POPULARITY_WEIGHT,
+                remake_customer_share.SERVICE_WEIGHT,
+                remake_customer_share.CLEANING_WEIGHT,
+                remake_customer_share.SECURITY_WEIGHT,
+                remake_customer_share.ASSORTMENT_WEIGHT,
+                remake_customer_share.HOURS_WEIGHT,
+            )),
+            1.0,
+        )
+        self.assertIn(
+            f"const ASSORTMENT_SATURATION_PRODUCT_COUNT := "
+            f"{remake_customer_share.ASSORTMENT_SATURATION_PRODUCT_COUNT}",
+            customer_share,
+        )
+        self.assertEqual(remake_customer_share.FULL_DAY_MINUTES, 24 * 60)
+        self.assertIn("const FULL_DAY_MINUTES := 24 * 60", customer_share)
+
+        # Deliberately not ported: the Python source's weather/rival dilution
+        # and its "unknown factor" renormalization branch, since this client
+        # already applies weather/rival dilution downstream in demand_policy.gd
+        # and always knows all six factors by the time this is called.
+        self.assertNotIn("BAD_WEATHER_PENALTY", customer_share)
+        self.assertNotIn("RIVAL_DILUTION_PER_COMPETITOR", customer_share)
+
+        # Wired into the actual monthly store-rating evaluation, not just
+        # defined standalone, and its output overwrites demand.customer_share_percent.
+        self.assertIn("const CustomerShareScript := preload", simulation)
+        self.assertIn(
+            "demand.customer_share_percent = float(_customer_share.compute_customer_share_percent(",
+            simulation,
+        )
+        self.assertIn("inventory.products.size()", simulation)
+        self.assertIn("demand.opening_minutes_per_day", simulation)
+
+        # demand.customer_share_percent's config value is documented as only
+        # an initial value, now overwritten monthly -- not silently
+        # redefined without a trace.
+        self.assertIn(
+            "task #44", self.config["demand"]["evidence_note"]
+        )
+        self.assertIn(
+            "CustomerShare.compute_customer_share_percent()", self.config["demand"]["evidence_note"]
+        )
+
+        self.assertIn(
+            "compute_customer_share_percent must score 100 when every factor is maxed out", smoke
+        )
+        self.assertIn(
+            "compute_customer_share_percent must score 0 when every factor is at its floor", smoke
+        )
+        self.assertIn(
+            "customer_share_percent must be recomputed from CustomerShare.compute_customer_share_percent()",
+            smoke,
+        )
+
     def test_promotions_port_confirmed_reference_sim_timing_and_apply_at_trigger(self):
         promotions = self.config["promotions"]
         promotion_ids = [entry["promotion_id"] for entry in promotions]
