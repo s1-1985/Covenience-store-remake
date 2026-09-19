@@ -203,6 +203,304 @@
       "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_tobacco_vending'] (compatible_product_categories=('tobacco',)). required_permit_id is this client's own gating choice, since the fixture is dedicated to a permit-gated category; the guide does not state that owning the fixture itself requires the permit."
     },
     {
+      "catalog_id": "medium_ambient_shelf",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        1
+      ],
+      "purchase_price_yen": 100,
+      "maintenance_yen_per_day": 48,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_ambient_shelf'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "large_ambient_shelf",
+      "kind": "shelf",
+      "footprint_tiles": [
+        3,
+        1
+      ],
+      "purchase_price_yen": 140,
+      "maintenance_yen_per_day": 72,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_ambient_shelf'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "small_ambient_wagon",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 30,
+      "maintenance_yen_per_day": 24,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_ambient_wagon'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "medium_ambient_wagon",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        1
+      ],
+      "purchase_price_yen": 50,
+      "maintenance_yen_per_day": 48,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_ambient_wagon'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "large_ambient_wagon",
+      "kind": "shelf",
+      "footprint_tiles": [
+        3,
+        1
+      ],
+      "purchase_price_yen": 70,
+      "maintenance_yen_per_day": 72,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_ambient_wagon'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "large_ambient_wagon_2",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "purchase_price_yen": 90,
+      "maintenance_yen_per_day": 96,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_ambient_wagon_2'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "small_refrigerated_shelf",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 200,
+      "maintenance_yen_per_day": 720,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_refrigerated_shelf'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "medium_refrigerated_shelf",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 350,
+      "maintenance_yen_per_day": 1200,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_refrigerated_shelf'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "large_refrigerated_shelf",
+      "kind": "shelf",
+      "footprint_tiles": [
+        3,
+        1
+      ],
+      "purchase_price_yen": 500,
+      "maintenance_yen_per_day": 1920,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_refrigerated_shelf'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "small_refrigerated_wagon",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 120,
+      "maintenance_yen_per_day": 960,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_refrigerated_wagon'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "medium_refrigerated_wagon",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        1
+      ],
+      "purchase_price_yen": 200,
+      "maintenance_yen_per_day": 1680,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_refrigerated_wagon'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "large_refrigerated_wagon_1",
+      "kind": "shelf",
+      "footprint_tiles": [
+        3,
+        1
+      ],
+      "purchase_price_yen": 280,
+      "maintenance_yen_per_day": 2400,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_refrigerated_wagon_1'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "large_refrigerated_wagon_2",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        2
+      ],
+      "purchase_price_yen": 360,
+      "maintenance_yen_per_day": 3120,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_refrigerated_wagon_2'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "small_frozen_shelf",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 300,
+      "maintenance_yen_per_day": 2160,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_frozen_shelf'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "medium_frozen_shelf",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        1
+      ],
+      "purchase_price_yen": 500,
+      "maintenance_yen_per_day": 3600,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_frozen_shelf'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "small_frozen_wagon",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 200,
+      "maintenance_yen_per_day": 1920,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_frozen_wagon'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "medium_frozen_wagon",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        1
+      ],
+      "purchase_price_yen": 380,
+      "maintenance_yen_per_day": 3120,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['medium_frozen_wagon'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "hot_drink_case",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 300,
+      "maintenance_yen_per_day": 1680,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['hot_drink_case'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "oden_case",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 100,
+      "maintenance_yen_per_day": 1920,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['oden_case'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "steamed_bun_case",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 300,
+      "maintenance_yen_per_day": 1920,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['steamed_bun_case'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "event_shelf",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        1
+      ],
+      "purchase_price_yen": 600,
+      "maintenance_yen_per_day": 1920,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['event_shelf'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "event_wagon",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        1
+      ],
+      "purchase_price_yen": 300,
+      "maintenance_yen_per_day": 1200,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['event_wagon'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "large_tobacco_vending",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        1
+      ],
+      "purchase_price_yen": 1000,
+      "maintenance_yen_per_day": 480,
+      "required_permit_id": "tobacco",
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_tobacco_vending'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern. required_permit_id='tobacco' matches small_tobacco_vending's existing precedent: this client's own gating choice for a fixture dedicated to a permit-gated category, not a guide claim that owning the fixture itself requires the permit."
+    },
+    {
+      "catalog_id": "small_cold_drink_vending",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 800,
+      "maintenance_yen_per_day": 480,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "large_cold_drink_vending",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        1
+      ],
+      "purchase_price_yen": 1400,
+      "maintenance_yen_per_day": 960,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "small_hot_cold_drink_vending",
+      "kind": "shelf",
+      "footprint_tiles": [
+        1,
+        1
+      ],
+      "purchase_price_yen": 1000,
+      "maintenance_yen_per_day": 960,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['small_hot_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
+      "catalog_id": "large_hot_cold_drink_vending",
+      "kind": "shelf",
+      "footprint_tiles": [
+        2,
+        1
+      ],
+      "purchase_price_yen": 1800,
+      "maintenance_yen_per_day": 1920,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['large_hot_cold_drink_vending'] (strategy guide purchase price/footprint/maintenance). capacity/compatible_product_categories are also CONFIRMED_OFFICIAL in that source but, like small_ambient_shelf's existing entry, are not consumed by this client: no fixture-vs-product compatibility or per-fixture stock-capacity check exists (task #39 kept the equivalent product-side compatible_fixtures_text unconsumed for the same reason -- any product can be procured onto any shelf-kind fixture). maintenance_yen_per_day is likewise not consumed anywhere in this client yet, matching the existing amenity/parking catalog entries' pattern."
+    },
+    {
       "catalog_id": "parking_ground",
       "kind": "parking",
       "footprint_tiles": [
