@@ -1141,6 +1141,50 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "procuring a second product onto an already-occupied fixture must be rejected", smoke
         )
 
+    def test_product_category_catalog_expansion_ports_confirmed_reference_sim_pricing(self):
+        from conveni_sim.baseline_data import PRODUCT_CATEGORY_PRICING
+
+        catalog_by_id = {entry["catalog_id"]: entry for entry in self.config["product_catalog"]}
+        reference_by_id = {category.id: category for category in PRODUCT_CATEGORY_PRICING}
+
+        # "cash" (現金) is the guide's own zero-margin instrument row, tied to
+        # a キャッシュディスペンサー (cash dispenser) fixture -- an ATM-like
+        # mechanic distinct from a restockable shelf product, and no such
+        # fixture/mechanic exists in this client. It is deliberately excluded
+        # from this catalog port rather than treated as an ordinary product.
+        self.assertNotIn("cash", catalog_by_id)
+
+        ported_ids = set(catalog_by_id) - {"tobacco"}
+        expected_ids = set(reference_by_id) - {"cash", "tobacco"}
+        self.assertEqual(ported_ids, expected_ids)
+
+        permit_ids = {entry["permit_id"] for entry in self.config["permits"]}
+        for catalog_id, entry in catalog_by_id.items():
+            if catalog_id == "tobacco":
+                continue
+            reference = reference_by_id[catalog_id]
+            expected_price = reference.standard_retail_price_yen.value
+            expected_cost = expected_price - reference.profit_per_unit_yen.value
+            self.assertEqual(entry["sale_price_yen"], expected_price)
+            self.assertEqual(entry["restock_unit_cost_yen"], expected_cost)
+            self.assertIn("CONFIRMED_OFFICIAL", entry["evidence_note"])
+            self.assertIn("REMAKE_BALANCED_DEFAULT", entry["evidence_note"])
+            required_permit_id = entry.get("required_permit_id")
+            if required_permit_id is not None:
+                self.assertIn(required_permit_id, permit_ids)
+
+        # Only alcohol/medicine have a corresponding permit ported into this
+        # file (see test_permits_and_product_procurement_port_confirmed_
+        # reference_sim_data above); every other category is deliberately
+        # left unrestricted rather than inventing a permit requirement the
+        # guide does not state.
+        self.assertEqual(catalog_by_id["alcohol"].get("required_permit_id"), "alcohol")
+        self.assertEqual(catalog_by_id["medicine"].get("required_permit_id"), "medicine")
+        for catalog_id, entry in catalog_by_id.items():
+            if catalog_id in ("tobacco", "alcohol", "medicine"):
+                continue
+            self.assertNotIn("required_permit_id", entry)
+
     def test_fixture_purchase_catalog_ports_confirmed_reference_sim_prices(self):
         catalog = self.config["fixture_catalog"]
         self.assertGreaterEqual(len(catalog), 1)

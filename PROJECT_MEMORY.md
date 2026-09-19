@@ -727,6 +727,25 @@ that discipline, not a false alarm. Both call sites now carry that tag in a code
 present, so this class of gap is now caught mechanically rather than relying on remembering to add it.
 No behavior changed.
 
+**Task #39 (2026-09-19)**: after the correction above merged (PR #209), the user asked to prioritize
+wiring/porting already-confirmed logic over inventing new content. An audit of `vertical_slice_simulation.gd`/
+`domain/*.gd` for confirmed-but-unwired logic (mirroring how task #38 found six unwired economy actions)
+turned up that `game/data/vertical_slice.json`'s `product_catalog` still held only the one "tobacco" entry
+from task #32, while `reference_sim/conveni_sim/baseline_data.py`'s `PRODUCT_CATEGORY_PRICING` has 27
+CONFIRMED_OFFICIAL product categories transcribed from the strategy guide's DATA LIST table (book page 85).
+Since `try_procure_product`/`apply_explicit_restock` and `main.gd`'s `product_catalog_option` are already
+fully generic over `catalog_id`, this required no new mechanic: 25 of the 27 categories were ported as
+data (`sale_price_yen`/`restock_unit_cost_yen` computed the same way as the existing tobacco entry;
+`alcohol`/`medicine` carry `required_permit_id` matching this file's existing permits). `cash` (現金) was
+excluded -- it is the guide's zero-margin instrument row tied to a cash-dispenser fixture (an ATM-like
+mechanic), not an ordinary restockable product, and no such fixture exists in this client. `initial_stock_units`
+stays a REMAKE_BALANCED_DEFAULT of 10 per entry, matching tobacco's precedent, and is now tagged as such
+directly in each entry's `evidence_note` (not just in the decision doc), per the tagging discipline the
+correction above established. See decision 0108. `reference_sim` full suite 655 passed/1 xfailed (one
+unrelated unseeded-RNG flake in `test_remake_purchase_policy.py` confirmed to pass on rerun/isolation);
+`headless_smoke.gd` unchanged at 734 steps (its tobacco-selection test already looked the catalog id up
+dynamically rather than assuming index 0).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
