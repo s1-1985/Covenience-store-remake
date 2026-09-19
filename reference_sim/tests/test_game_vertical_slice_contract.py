@@ -1861,6 +1861,20 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn(
             "REMAKE_BALANCED_DEFAULT", self.config["simulation"]["checkout_anger_evidence_note"]
         )
+
+        # Task #51: a direct re-read of the strategy guide (book pp.34-35,
+        # "店員全員の能力が下がってしまう") confirmed CONFIRMED_OFFICIAL that
+        # the penalty is store-wide, not scoped to whichever staff member
+        # happened to be serving -- correcting task #49's original scoping.
+        self.assertIn("CONFIRMED_OFFICIAL", self.config["simulation"]["checkout_anger_evidence_note"])
+        self.assertIn(
+            "penalty applies to EVERY active staff member",
+            self.config["simulation"]["checkout_anger_evidence_note"],
+        )
+        self.assertIn("for angered_staff_member in staff.all_staff():", simulation)
+        self.assertIn(
+            "must also lower the non-checkout staff member's register_skill by 2", smoke
+        )
         self.assertIn(
             "CONFIRMED_COMMUNITY", self.config["simulation"]["checkout_anger_evidence_note"]
         )

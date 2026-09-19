@@ -184,15 +184,20 @@ Source:
 
 ## 11. Promotion — confirmed values
 
-Community data currently records:
+Values below match `reference_sim/conveni_sim/baseline_data.py`'s current `PROMOTIONS`
+(CONFIRMED_OFFICIAL for airship/radio/tv's popularity_gain, directly re-verified 2026-09-19
+against 「新人店長実習マニュアル」book page 120's own "広告データ" table; CONFIRMED_COMMUNITY
+wiki source for the rest). This table previously still showed superseded wiki-derived
+airship/radio/tv popularity figures (+30/+50/+100) after an earlier session had already
+corrected the code; corrected here to match.
 
 | Promotion | Cost | Popularity gain |
 |---|---:|---:|
 | Direct mail | 100,000 yen | +12 |
 | Newspaper ad | 500,000 yen | +20 |
-| Airship | 1,000,000 yen | +30 |
-| Radio | 3,000,000 yen | +50 |
-| TV | 5,000,000 yen | +100 |
+| Airship | 1,000,000 yen | +40 |
+| Radio | 3,000,000 yen | +60 |
+| TV | 5,000,000 yen | +90 |
 
 Also reported: every additional cumulative 10,000 visitors can trigger an idol one-day-owner event, temporarily raising popularity to 100.
 
@@ -1013,6 +1018,24 @@ contract tests updated, no new test functions added). Several other findings fro
 pass -- some contradicting already-CONFIRMED values, some closing other open gaps -- were
 deliberately left untouched pending further triage; see section 21 for the full catalogue.
 
+**Task #51 (2026-09-19)**: continuing directly from task #50, two items flagged as CONTRADICTS in
+section 21.4 were re-verified against the original PDF scans (still accessible this session) rather
+than left open indefinitely. Directly re-reading 「新人店長実習マニュアル」book pp.34-35 confirmed,
+in the guide's own prose ("お客さんに怒られると店員全員の能力が下がってしまう"), that an angry
+customer's -2 skill penalty is store-wide (every active staff member), not scoped to whichever staff
+member happened to be serving -- CONFIRMED_OFFICIAL, superseding task #49's original single-staff-
+member scoping (a REMAKE_BALANCED_DEFAULT simplification made without this evidence). `Vertical
+SliceSimulation`'s checkout-anger handling now loops `_checkout_anger.apply_penalty()` across
+`staff.all_staff()` instead of only `staff.checkout_staff()`. Separately, re-reading book p.118
+directly confirmed bench maintenance is 160 yen/day (matching existing code exactly), resolving the
+"168 yen/day" secondary data point section 21.4 had flagged from the other book's indirect
+hourly-rate derivation -- no code change needed there, just confirmation. Also fixed a stale
+`PROJECT_MEMORY.md` section 11 (still showing wiki-derived airship/radio/tv popularity-gain figures
++30/+50/+100; `baseline_data.py` already had the guide-correct +40/+60/+90, independently re-
+confirmed against book p.120's own "広告データ" table this task). See decision 0120.
+`headless_smoke.gd` unchanged at 831 steps (existing scenario extended with new assertions, no new
+scenario); `reference_sim` full suite 663 passed/1 xfailed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1083,9 +1106,18 @@ parallel research agents (all pages read, no sampling):
 
 - **Task #50** (fixture maintenance / staff wages scale with configured business hours instead of
   charging a flat 24h-basis figure) -- see section 19 and decision 0119.
+- **Task #51** (checkout-anger penalty is store-wide, not scoped to the serving staff member) --
+  see section 19 and decision 0120. Re-verified directly against the PDF scan, not just the
+  research doc's summary.
 - **Section 4 above** (bench/fountain service_bonus and bench maintenance) was stale, still
   showing pre-2026-09-17-correction wiki values instead of the guide-sourced values already live
   in `baseline_data.py`; corrected in place (no code change, this file only).
+- **Section 11 above** (promotion popularity-gain table) was likewise stale, still showing
+  wiki-derived airship/radio/tv figures (+30/+50/+100) after `baseline_data.py` had already been
+  corrected to the guide-sourced +40/+60/+90; corrected in place (task #51, no code change).
+- **Bench maintenance 168-vs-160** (section 21.4's item) -- directly re-read book p.118: confirms
+  160, matching existing code exactly. The 168 figure was a weaker, indirect (hourly-rate x24)
+  reading from the other book; no code change was needed or made.
 
 ### 21.3 NEW findings not yet implemented (candidates for future tasks)
 
@@ -1121,8 +1153,13 @@ order.
   pool after ~1 year with decayed-but-above-rookie stats (qualitative, no formula given); 80+-year
   staff can become a "スーパー社員" (all stats 100) at unspecified probability. None implemented
   (no hiring/firing UI exists yet at all, per section 17's "スタッフ雇用・解雇UI" gap).
-- **"Eject an angry customer" (つまみ出す)**: an explicit player action that avoids the
-  store-wide skill penalty by ejecting the customer first. No such action exists in `game/`.
+- **"Eject an angry customer" (つまみ出す)**: book p.35, CONFIRMED_OFFICIAL, directly re-read --
+  "怒りやすいお客さんは、おじさんやおじいさんに多い。もしレジ前の混雑にこの人が混じっていたら、
+  カーソルをこの人に合わせて決定ボタン。怒り出すまえに"つまみだす"を選んで、お店の外に出して
+  しまうといいぞ。" An explicit player action: select a customer prone to anger before they
+  actually get angry and eject them, avoiding the (now confirmed store-wide, task #51) skill
+  penalty at the cost of forfeiting their purchase. No such action, or any "about to get angry"
+  customer state, exists in `game/` yet.
 - **Building/facility per-time-slot visitor counts**: DATA 4 建物's 朝/昼/夕/夜/深夜/早朝 numeric
   columns (transcribed with an explicit confidence caveat -- see `quick-reference-guide-part2-
   2026-09-19.md` for the row-alignment uncertainty note before using these numbers) plus a
@@ -1157,22 +1194,10 @@ Per CLAUDE.md's discipline, these are recorded rather than silently picked one w
 - **Business hours option ③**: transcribed as "AM11:00-AM2:00" labeled "16時間営業" (only 15h,
   inconsistent with its own label) -- very likely a scan/OCR misread of "AM3:00", but not
   corrected without a clearer rescan.
-- **Checkout-anger penalty scope**: 実習マニュアル states an angry customer drops **every staff
-  member's** ability ("店員全員"), while `checkout_anger.gd` (task #49) applies the penalty only
-  to the currently-serving staff member. Same CONFIRMED_COMMUNITY -2 magnitude either way, but
-  this book is CONFIRMED_OFFICIAL-tier evidence the *scope* may be store-wide, not per-staff.
-  Worth a dedicated follow-up look before changing `checkout_anger.gd`.
 - **A "parameter growth per work action" matrix and a customer-anger-penalty matrix** on
   クイックリファレンス p.7, potentially bearing on `staff_growth.gd`'s (task #48) +1/skill-pair
   guesses and the checkout-anger magnitude above -- read confidence on the exact column mapping
   was only moderate; flagged, not asserted or acted on.
-- **Bench maintenance, secondary data point**: クイックリファレンス's DATA 2 商品棚 table states
-  a per-hour rate ("7 yen/hour") that, x24, reproduces 168 yen/day -- conflicting with the
-  already-twice-confirmed-from-本1/本2 160 yen/day currently in `baseline_data.py` (see section
-  4 above and the 2026-09-17 resolution cited there). Given 160 is directly stated as a yen/day
-  figure twice in the higher-authority source already used to resolve this exact conflict, while
-  168 here is a derived (hourly x24) reading from a different book, **160 was kept unchanged**;
-  168 is recorded here as a secondary data point worth a rescan, not a reason to flip the value.
 - **Store-rating table / large-store footprint**: pre-existing known conflicts (already resolved
   in code before this session) were independently rediscovered by this pass, not newly
   introduced -- see `strategy-guide-shopkeeper-manual-part1-2026-09-19.md` and `-part2-

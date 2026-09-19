@@ -662,10 +662,17 @@ func _advance_customer(customer) -> void:
             pass  # Dequeued by _dispatch_checkout_queue() once the checkout is free.
         "checkout":
             customer.checkout_ticks_remaining -= 1
-            # Task #49: a checkout service running unusually long (relative
-            # to the confirmed CheckoutTiming reference duration) angers the
-            # customer exactly once per checkout, applying the confirmed -2
-            # penalty to the currently serving staff member.
+            # Task #49/#51: a checkout service running unusually long
+            # (relative to the confirmed CheckoutTiming reference duration)
+            # angers the customer exactly once per checkout, applying the
+            # confirmed -2 penalty. Task #51 corrected the penalty's scope:
+            # the strategy guide, directly re-read (book pp.34-35,
+            # "お客さんに怒られると店員全員の能力が下がってしまう"),
+            # states CONFIRMED_OFFICIAL that an angry customer lowers EVERY
+            # active staff member's ability, not only the one who served
+            # them -- task #49 had scoped this down to the serving staff
+            # member alone, a REMAKE_BALANCED_DEFAULT simplification this
+            # stronger, officially-tier evidence now supersedes.
             if not customer.checkout_anger_triggered:
                 var elapsed_ticks: int = (
                     customer.checkout_assigned_ticks - customer.checkout_ticks_remaining
@@ -673,14 +680,16 @@ func _advance_customer(customer) -> void:
                 if elapsed_ticks > _checkout_anger.trigger_ticks(_checkout_ticks):
                     customer.checkout_anger_triggered = true
                     var angry_checkout_staff = staff.checkout_staff()
-                    var penalty_results: Dictionary = _checkout_anger.apply_penalty(
-                        angry_checkout_staff
-                    )
+                    var skills_by_staff: Dictionary = {}
+                    for angered_staff_member in staff.all_staff():
+                        skills_by_staff[angered_staff_member.staff_id] = (
+                            _checkout_anger.apply_penalty(angered_staff_member)
+                        )
                     _record_event("checkout_anger_triggered", {
                         "customer_id": customer.customer_id,
                         "staff_id": angry_checkout_staff.staff_id,
                         "elapsed_ticks": elapsed_ticks,
-                        "skills": penalty_results,
+                        "skills_by_staff": skills_by_staff,
                     })
             if customer.checkout_ticks_remaining <= 0:
                 var checkout_staff = staff.checkout_staff()

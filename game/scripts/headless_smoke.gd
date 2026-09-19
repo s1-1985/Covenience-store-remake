@@ -1696,11 +1696,14 @@ func _initialize() -> void:
         return
     economy_ui_scene.free()
 
-    # Task #49: an unusually slow checkout (a deliberately below-reference
-    # register_skill) must trigger exactly one checkout_anger_triggered
-    # event and apply the confirmed -2 penalty to the serving staff
-    # member's five affected skills. register_skill/service_skill's own
-    # growth ceilings are overridden to their post-anger floor here so
+    # Task #49/#51: an unusually slow checkout (a deliberately below-
+    # reference register_skill) must trigger exactly one
+    # checkout_anger_triggered event and apply the confirmed -2 penalty to
+    # EVERY active staff member's five affected skills, not only the one
+    # who served the customer (task #51 corrected this scope after
+    # directly re-reading the strategy guide's own "店員全員の能力が下が
+    # ってしまう" statement, book pp.34-35). register_skill/service_skill's
+    # own growth ceilings are overridden to their post-anger floor here so
     # task #48's checkout-completion growth (+1 to those same two skills)
     # cannot also fire and complicate the expected value -- isolating this
     # scenario to the anger mechanic alone, the same technique the
@@ -1754,6 +1757,40 @@ func _initialize() -> void:
         return
     if angered_staff.security_skill != max(0, int(anger_staff_config_before["security_skill"]) - 2):
         _fail("checkout anger must lower security_skill by 2")
+        return
+
+    # Task #51: the non-checkout staff member (who never served this
+    # customer at all) must ALSO have every one of the same five skills
+    # lowered by exactly 2, confirming the penalty is store-wide rather
+    # than scoped to whichever staff member happened to be at the register.
+    var other_staff_id := ""
+    var other_staff_config_before: Dictionary = {}
+    for staff_member_config in anger_config["staff"]["members"]:
+        if str(staff_member_config["id"]) != checkout_staff_id:
+            other_staff_id = str(staff_member_config["id"])
+            other_staff_config_before = staff_member_config
+            break
+    if other_staff_id.is_empty():
+        _fail("checkout-anger test config must find a second, non-checkout staff member")
+        return
+    var other_angered_staff = anger_simulation.staff.members[other_staff_id]
+    if other_angered_staff.register_skill != max(0, int(other_staff_config_before["register_skill"]) - 2):
+        _fail("checkout anger must also lower the non-checkout staff member's register_skill by 2")
+        return
+    if other_angered_staff.service_skill != max(0, int(other_staff_config_before["service_skill"]) - 2):
+        _fail("checkout anger must also lower the non-checkout staff member's service_skill by 2")
+        return
+    if (
+        other_angered_staff.replenishment_skill
+        != max(0, int(other_staff_config_before["replenishment_skill"]) - 2)
+    ):
+        _fail("checkout anger must also lower the non-checkout staff member's replenishment_skill by 2")
+        return
+    if other_angered_staff.cleaning_skill != max(0, int(other_staff_config_before["cleaning_skill"]) - 2):
+        _fail("checkout anger must also lower the non-checkout staff member's cleaning_skill by 2")
+        return
+    if other_angered_staff.security_skill != max(0, int(other_staff_config_before["security_skill"]) - 2):
+        _fail("checkout anger must also lower the non-checkout staff member's security_skill by 2")
         return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
