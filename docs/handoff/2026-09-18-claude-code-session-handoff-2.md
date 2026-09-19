@@ -429,7 +429,7 @@ download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip`から再ダウンロー�
 | #216 | タスク#45(什器のcapacity/compatible_product_categoriesを仕入れ処理へ配線) | マージ済み |
 | #217 | タスク#46(什器のmaintenance_yen_per_dayを日次収支へ配線) | マージ済み |
 | #218 | タスク#47(スタッフのsalary_yen_per_day_24hを日次収支へ配線) | マージ済み |
-| (作成予定) | タスク#48(スタッフのスキル成長をwork-eventベースで配線) | 作業中 |
+| #219 | タスク#48(スタッフのスキル成長をwork-eventベースで配線) | 作業中 |
 
 ## 7. 作業ブランチについて
 
