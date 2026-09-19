@@ -11,6 +11,7 @@ var service_skill: int
 var security_skill: int
 var cleaning_skill: int
 var register_skill: int
+var replenishment_skill: int
 var _start_position := Vector2i.ZERO
 
 
@@ -22,7 +23,7 @@ func _init(staff_config: Dictionary) -> void:
     # client has not ported the growth system itself yet (no work-event
     # counting, no manager-education bonus) -- see
     # reference_sim/conveni_sim/staff.py's StaffRuntimeState/
-    # StaffGrowthOpportunity. These four fields are therefore static for
+    # StaffGrowthOpportunity. These five fields are therefore static for
     # the lifetime of a StaffState and never change on their own, whatever
     # their starting value's own evidence level is. The vertical slice's
     # `data/vertical_slice.json` now sources staff-1/staff-2's starting
@@ -33,14 +34,17 @@ func _init(staff_config: Dictionary) -> void:
     # since this class has no way to tell a real candidate's config apart
     # from a placeholder one. register_skill is consumed by
     # `CheckoutTiming` (task #33) to vary checkout duration per staff
-    # member instead of a single flat tick count for everyone.
+    # member instead of a single flat tick count for everyone;
+    # replenishment_skill is consumed the same way by `RestockTiming`
+    # (task #40) for restock duration.
     service_skill = int(staff_config.get("service_skill", 0))
     security_skill = int(staff_config.get("security_skill", 0))
     cleaning_skill = int(staff_config.get("cleaning_skill", 0))
     register_skill = int(staff_config.get("register_skill", 0))
+    replenishment_skill = int(staff_config.get("replenishment_skill", 0))
     assert(not staff_id.is_empty())
     assert(service_skill >= 0 and security_skill >= 0 and cleaning_skill >= 0)
-    assert(register_skill >= 0)
+    assert(register_skill >= 0 and replenishment_skill >= 0)
     reset()
 
 

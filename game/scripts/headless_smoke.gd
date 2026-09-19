@@ -10,6 +10,7 @@ const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
 const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
 const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
+const RestockTimingScript := preload("res://scripts/domain/restock_timing.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
@@ -991,6 +992,23 @@ func _initialize() -> void:
         return
     if checkout_timing.required_ticks(1000, 3) != checkout_timing.MIN_CHECKOUT_TICKS:
         _fail("required_ticks must never fall below MIN_CHECKOUT_TICKS")
+        return
+
+    var restock_timing = RestockTimingScript.new()
+    if restock_timing.required_ticks(restock_timing.REFERENCE_REPLENISHMENT_SKILL, 3) != 3:
+        _fail("required_ticks must return reference_ticks unchanged exactly at REFERENCE_REPLENISHMENT_SKILL")
+        return
+    if restock_timing.required_ticks(restock_timing.REFERENCE_REPLENISHMENT_SKILL * 2, 3) != 2:
+        _fail("required_ticks must decrease for a replenishment_skill above the reference")
+        return
+    if restock_timing.required_ticks(1, 3) != restock_timing.REFERENCE_REPLENISHMENT_SKILL * 3:
+        _fail("required_ticks must scale up sharply for a very low replenishment_skill")
+        return
+    if restock_timing.required_ticks(0, 3) != restock_timing.REFERENCE_REPLENISHMENT_SKILL * 3:
+        _fail("required_ticks must use the zero-skill guard rather than dividing by zero")
+        return
+    if restock_timing.required_ticks(1000, 3) != restock_timing.MIN_RESTOCK_TICKS:
+        _fail("required_ticks must never fall below MIN_RESTOCK_TICKS")
         return
 
     var rating_config: Dictionary = config.duplicate(true)
