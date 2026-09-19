@@ -44,6 +44,8 @@ const NEW_FIXTURE_SELECTION_PREFIX := "__new:"
 @onready var promotion_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/PromotionOption
 @onready var buy_promotion_button: Button = $UI/Panel/Margin/Scroll/VBox/BuyPromotionButton
 @onready var expand_chain_button: Button = $UI/Panel/Margin/Scroll/VBox/ExpandChainButton
+@onready var price_change_spin_box: SpinBox = $UI/Panel/Margin/Scroll/VBox/PriceChangeSpinBox
+@onready var set_price_policy_button: Button = $UI/Panel/Margin/Scroll/VBox/SetPricePolicyButton
 @onready var save_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/SaveButton
 @onready var load_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/LoadButton
 @onready var quit_to_menu_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/QuitToMenuButton
@@ -102,6 +104,7 @@ func _ready() -> void:
     restock_button.pressed.connect(_on_restock_pressed)
     buy_promotion_button.pressed.connect(_on_buy_promotion_pressed)
     expand_chain_button.pressed.connect(_on_expand_chain_pressed)
+    set_price_policy_button.pressed.connect(_on_set_price_policy_pressed)
     save_button.pressed.connect(_on_save_pressed)
     load_button.pressed.connect(_on_load_pressed)
     quit_to_menu_button.pressed.connect(_on_quit_to_menu_pressed)
@@ -489,6 +492,17 @@ func _on_expand_chain_pressed() -> void:
     _refresh_ui()
 
 
+func _on_set_price_policy_pressed() -> void:
+    var new_price_change_pct: int = int(round(price_change_spin_box.value))
+    if simulation.try_set_price_policy(new_price_change_pct):
+        layout_edit_label.text = "Price policy set: %+d%% from list price" % new_price_change_pct
+    elif not simulation.customers.all_settled():
+        layout_edit_label.text = "Finish the active visit before changing the price policy"
+    else:
+        layout_edit_label.text = "Cannot set that price policy (must be -100% or above)"
+    _refresh_ui()
+
+
 func _on_save_pressed() -> void:
     if simulation == null:
         return
@@ -572,6 +586,7 @@ func _refresh_ui() -> void:
         _format_integer(int(simulation.chain_expansion_cost_yen())),
         int(snapshot["player_store_count"]),
     ]
+    set_price_policy_button.text = "Set price policy (currently %+d%%)" % int(snapshot["price_change_pct"])
     store_view.queue_redraw()
 
 

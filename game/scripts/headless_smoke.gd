@@ -58,6 +58,8 @@ func _initialize() -> void:
         "UI/Panel/Margin/Scroll/VBox/ExpandChainButton",
         "UI/Panel/Margin/Scroll/VBox/EjectCustomerOption",
         "UI/Panel/Margin/Scroll/VBox/EjectCustomerButton",
+        "UI/Panel/Margin/Scroll/VBox/PriceChangeSpinBox",
+        "UI/Panel/Margin/Scroll/VBox/SetPricePolicyButton",
     ]:
         if main_instance.get_node_or_null(node_path) == null:
             _fail("main scene is missing expected node: %s" % node_path)
@@ -845,6 +847,45 @@ func _initialize() -> void:
         return
     if eject_simulation.economy.completed_sales != sales_before_eject + 1:
         _fail("only the non-ejected eject-scenario customer's sale should be recorded")
+        return
+
+    # Task #53: a configured price policy scales the unit price actually
+    # charged when a customer picks up a product, is rejected below -100%
+    # (a discount past 0% of list price), and feeds the monthly rating
+    # evaluation via price_change_pct instead of always being 0.
+    var price_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(price_simulation)
+    if price_simulation.try_set_price_policy(-101):
+        _fail("try_set_price_policy() must reject a price change below -100%")
+        return
+    if price_simulation.price_change_pct != 0:
+        _fail("a rejected price policy change must not mutate price_change_pct")
+        return
+    if not price_simulation.try_set_price_policy(-50):
+        _fail("a valid -50% price policy change must be accepted")
+        return
+    if price_simulation.price_change_pct != -50:
+        _fail("try_set_price_policy() must update price_change_pct")
+        return
+    if price_simulation.event_log.count_type("price_policy_changed") != 1:
+        _fail("exactly one price_policy_changed event must be recorded")
+        return
+    var expected_discounted_total_yen := 0
+    for product_config in config["products"]:
+        expected_discounted_total_yen += int(floor(float(int(product_config["sale_price_yen"])) * 0.5))
+    var price_check_plan: Array[String] = []
+    for product_config in config["products"]:
+        price_check_plan.append(str(product_config["id"]))
+    if not price_simulation.start_explicit_customer("price-check-customer", price_check_plan):
+        _fail("could not admit a customer to verify the discounted price")
+        return
+    steps += _run_visit(price_simulation)
+    var price_last_sale: Dictionary = price_simulation.economy.sale_record_for_customer("price-check-customer")
+    if price_last_sale.is_empty():
+        _fail("the price-policy scenario's second visit must complete a sale")
+        return
+    if int(price_last_sale["total_yen"]) != expected_discounted_total_yen:
+        _fail("a purchase made under a -50% price policy must charge exactly half the list price (floored) per item")
         return
 
     # Task #37: loading a built-in sample layout.

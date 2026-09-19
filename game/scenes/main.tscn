@@ -190,6 +190,17 @@ text = "Buy promotion"
 custom_minimum_size = Vector2(0, 40)
 text = "Expand chain"
 
+[node name="PriceChangeSpinBox" type="SpinBox" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+min_value = -100.0
+max_value = 100.0
+value = 0.0
+suffix = "% change from list price"
+
+[node name="SetPricePolicyButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Set price policy"
+
 [node name="Separator3" type="HSeparator" parent="UI/Panel/Margin/Scroll/VBox"]
 
 [node name="EventTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]

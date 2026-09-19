@@ -1055,6 +1055,26 @@ customers walk through the store, not only after an explicit player action). See
 real-UI exercise reusing task #38's `economy_ui_scene`); `reference_sim` full suite 664 passed/1
 xfailed (one new test function).
 
+**Task #53 (2026-09-19)**: a direct re-read of the quick reference guide (book pp.5-6) confirmed
+CONFIRMED_OFFICIAL that a price-setting/margin mechanic exists in the original game -- a global
+"all items X% off list price" slider (plus a per-item override this task deliberately does not
+port) defaulting to a 40% profit margin ("通常は全て40%に設定されており、これが定価と考えられ
+る"). `store_rating.gd`'s `price_change_pct` input has been hardcoded to 0 since task #27, with an
+explicit comment that no price-setting mechanic existed yet to feed it. `VerticalSliceSimulation.
+try_set_price_policy(new_price_change_pct)` now sets a persistent `price_change_pct` state (0 =
+baseline, rejected below -100 as this project's own REMAKE_BALANCED_DEFAULT sanity floor), consumed
+both at the moment a customer picks up a product (`_apply_price_policy()` scales the product's own
+confirmed `sale_price_yen`, floored) and by the monthly rating evaluation (finally passing the real
+value instead of a hardcoded 0). Deliberately NOT wired: the confirmed section-8 fact that price is
+one factor in customer monopoly/footfall -- no source states a price-to-demand formula, so
+`demand_policy.gd`'s arrival rate stays unaffected, matching this project's standing "don't invent
+an unconfirmed formula" discipline. `price_change_pct` round-trips through save/load like every
+other durable state field (`SAVE_SCHEMA_VERSION` bumped 2->3). Following task #38's UI-reachability
+precedent, a `PriceChangeSpinBox`/`SetPricePolicyButton` pair was added to the STORE STATUS panel.
+See decision 0122. `headless_smoke.gd` grew from 897 to 957 steps; `reference_sim` full suite 665
+passed/1 xfailed (one new test function, plus a stale task-#27 assertion corrected to match the new
+wiring).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1130,6 +1150,8 @@ parallel research agents (all pages read, no sampling):
   research doc's summary.
 - **Task #52** ("eject a customer" (つまみ出す) action, avoiding the anger penalty at the cost of
   their purchase) -- see section 19 and decision 0121, including UI wiring.
+- **Task #53** (price-setting/margin mechanic, consumed by both live purchases and the monthly
+  rating's `price_change_pct`) -- see section 19 and decision 0122, including UI wiring.
 - **Section 4 above** (bench/fountain service_bonus and bench maintenance) was stale, still
   showing pre-2026-09-17-correction wiki values instead of the guide-sourced values already live
   in `baseline_data.py`; corrected in place (no code change, this file only).
@@ -1192,10 +1214,6 @@ order.
   not purely a cash transaction; hidden 4th map's shape differs PS vs. Saturn (upgrades its
   existence to CONFIRMED_OFFICIAL from wiki-only CONFIRMED_COMMUNITY); contest prize eligibility
   is specifically gated on cleanliness value.
-- **Price-margin/discount UI shape**: a global "all items X% off list price" slider plus a
-  per-item override, baseline 40% margin -- confirms the shape of the still-unimplemented
-  price-setting mechanic `store_rating.gd`'s `price_change_pct` field has always awaited (always
-  hardcoded to 0 today, no UI exists).
 
 ### 21.4 CONTRADICTS findings flagged for re-verification (deliberately NOT resolved)
 

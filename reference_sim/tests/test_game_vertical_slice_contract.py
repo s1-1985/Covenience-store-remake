@@ -888,9 +888,11 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("_evaluate_store_rating(monthly_sales_yen)", simulation)
         self.assertIn('"internal_rating_value": internal_rating_value,', simulation)
         self.assertIn('"star_rating": star_rating,', simulation)
-        # price_change_pct is always 0: no price-setting mechanic exists yet.
+        # As of task #53, price_change_pct reflects the player's own
+        # configured price policy (see test_price_policy_action_is_wired_
+        # and_confirmed_official) rather than a hardcoded 0.
         self.assertIn(
-            "_store_rating.evaluate_monthly_rating_change(\n        internal_rating_value, 0,",
+            "_store_rating.evaluate_monthly_rating_change(\n        internal_rating_value,\n        price_change_pct,",
             simulation,
         )
 
@@ -1936,6 +1938,60 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "UI/Panel/Margin/Scroll/VBox/EjectCustomerButton", smoke
         )
         self.assertIn("economy UI: pressing Eject customer must transition", smoke)
+
+    def test_price_policy_action_is_wired_and_confirmed_official(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+
+        # Task #53: a direct re-read of the strategy guide (クイックリファ
+        # レンス book pages 5-6) confirmed CONFIRMED_OFFICIAL that a global
+        # price/margin-setting mechanic exists in the original game -- only
+        # the per-item override and the price-affects-demand link (section
+        # 8) are deliberately out of scope, tagged REMAKE_BALANCED_DEFAULT/
+        # left unwired respectively.
+        note = self.config["simulation"]["price_policy_evidence_note"]
+        self.assertIn("CONFIRMED_OFFICIAL", note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
+        self.assertIn("40%", note)
+
+        self.assertIn("var price_change_pct: int", simulation)
+        self.assertIn("func try_set_price_policy(new_price_change_pct: int) -> bool:", simulation)
+        self.assertIn("func _apply_price_policy(list_price_yen: int) -> int:", simulation)
+        self.assertIn("if new_price_change_pct < -100:", simulation)
+        self.assertIn(
+            'line["unit_price_yen"] = _apply_price_policy(int(line["unit_price_yen"]))', simulation
+        )
+        # Wired into the monthly rating evaluation, not just stored.
+        self.assertIn(
+            "internal_rating_value,\n        price_change_pct,\n        service_value,", simulation
+        )
+        # Persisted through save/load, like every other durable piece of
+        # simulation state (task #28's own convention).
+        self.assertIn('"price_change_pct": price_change_pct,', simulation)
+        self.assertIn('price_change_pct = int(data["price_change_pct"])', simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 3", simulation)
+
+        self.assertIn(
+            "try_set_price_policy() must reject a price change below -100%", smoke
+        )
+        self.assertIn(
+            "must charge exactly half the list price (floored) per item", smoke
+        )
+
+        self.assertIn('name="PriceChangeSpinBox"', scene)
+        self.assertIn('name="SetPricePolicyButton"', scene)
+        self.assertIn("func _on_set_price_policy_pressed() -> void:", main)
+        self.assertIn("simulation.try_set_price_policy(new_price_change_pct)", main)
+        self.assertIn(
+            "UI/Panel/Margin/Scroll/VBox/PriceChangeSpinBox", smoke
+        )
+        self.assertIn(
+            "UI/Panel/Margin/Scroll/VBox/SetPricePolicyButton", smoke
+        )
 
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(

@@ -105,6 +105,13 @@ var _promotion_catalog: Dictionary = {}
 var _promotions_used_this_month: Dictionary = {}
 var _scheduled_promotions: Array[Dictionary] = []
 var popularity: int
+# Task #53: CONFIRMED_OFFICIAL that a price-setting/margin mechanic exists
+# (see try_set_price_policy below for the citation); 0 means "no change
+# from the catalog's own list price," matching the guide's own baseline
+# framing ("通常は全て40%に設定されており、これが定価と考えられる" --
+# the catalog's sale_price_yen values already assume that baseline margin,
+# so this client does not re-derive prices from a separate margin input).
+var price_change_pct: int
 var town
 var _land_value_policy
 var internal_rating_value: int
@@ -211,6 +218,7 @@ func reset() -> void:
     _promotions_used_this_month.clear()
     _scheduled_promotions.clear()
     popularity = 0
+    price_change_pct = 0
     # No confirmed starting evaluation for a brand-new store exists (the
     # guide never states one; store_evaluation.py's own
     # internal_rating_value likewise starts unknown until a caller sets
@@ -468,6 +476,50 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
     return true
 
 
+# Task #53: a price-setting/margin mechanic is CONFIRMED_OFFICIAL, directly
+# re-read from the strategy guide (クイックリファレンス book pages 5-6):
+# "商品価格を決定して下さい。利益率の割合。通常は全て40%に設定されており、
+# これが定価と考えられる。個別に設定" (a global profit-margin percentage,
+# defaulting to 40% -- this client's product_catalog sale_price_yen values
+# already assume that baseline) and a screenshot showing "全商品平均利益率
+# 20% / 全体に設定 <20%OFFに> / 個別に設定" (a global "all items X% off"
+# slider, plus a per-item override). This client only ports the GLOBAL
+# slider, not the per-item override -- REMAKE_BALANCED_DEFAULT scope choice,
+# not a claim that per-item pricing doesn't exist in the original. The
+# confirmed section-8 fact that merchandise price is one factor in customer
+# monopoly/footfall is deliberately NOT wired here: no source states a
+# price-to-demand formula, so demand_policy.gd's arrival rate stays
+# unaffected by price_change_pct (inventing that link would be a much
+# larger, unconfirmed addition, not this task's narrow scope of finally
+# consuming the price_change_pct field store_rating.gd has awaited since
+# task #27). The lower bound of -100 (a 100% markdown, i.e. free) is this
+# project's own REMAKE_BALANCED_DEFAULT sanity floor -- no source states a
+# minimum, but a price below 0% of list price is not a meaningful discount.
+func try_set_price_policy(new_price_change_pct: int) -> bool:
+    if is_game_over or not customers.all_settled():
+        return false
+    if new_price_change_pct < -100:
+        return false
+    var previous_price_change_pct := price_change_pct
+    price_change_pct = new_price_change_pct
+    _record_event("price_policy_changed", {
+        "previous_price_change_pct": previous_price_change_pct,
+        "price_change_pct": price_change_pct,
+    })
+    return true
+
+
+# Scales a product's own list price (product_catalog's confirmed
+# sale_price_yen) by the currently configured price_change_pct, floored to
+# a whole yen and never negative. Called once per unit at the moment a
+# customer picks it up (inventory.try_take_one()'s own CONFIRMED_OFFICIAL
+# unit_price_yen is the pre-discount list price), so the price actually
+# charged reflects whatever price_change_pct was in effect at pickup time,
+# not at checkout time.
+func _apply_price_policy(list_price_yen: int) -> int:
+    return max(0, int(floor(float(list_price_yen) * (100 + price_change_pct) / 100.0)))
+
+
 func try_purchase_promotion(promotion_id: String) -> bool:
     if is_game_over or not customers.all_settled():
         return false
@@ -661,6 +713,7 @@ func _advance_customer(customer) -> void:
                 var product_id: String = customer.current_product_id()
                 var line: Dictionary = inventory.try_take_one(product_id)
                 if not line.is_empty():
+                    line["unit_price_yen"] = _apply_price_policy(int(line["unit_price_yen"]))
                     customer.add_basket_line(line)
                     _record_event("product_picked", {
                         "customer_id": customer.customer_id,
@@ -829,6 +882,7 @@ func snapshot() -> Dictionary:
         "game_over_reason": game_over_reason,
         "permits_held": _permits_held.keys(),
         "popularity": popularity,
+        "price_change_pct": price_change_pct,
         "town_population": town.population,
         "town_store_count_including_rivals": town.store_count_including_rivals,
         "land_value_yen": _land_value_policy.current_land_price_yen(
@@ -883,7 +937,7 @@ func observation_snapshot() -> Dictionary:
     }
 
 
-const SAVE_SCHEMA_VERSION := 2
+const SAVE_SCHEMA_VERSION := 3
 
 # Deliberately not saved/restored: the active customer's mid-visit walk
 # state (position along a route, basket-so-far, checkout progress) and
@@ -920,6 +974,7 @@ func save_state() -> Dictionary:
         "game_over_reason": game_over_reason,
         "clear_condition_met": clear_condition_met,
         "popularity": popularity,
+        "price_change_pct": price_change_pct,
         "internal_rating_value": internal_rating_value,
         "star_rating": star_rating,
         "player_store_count": player_store_count,
@@ -978,6 +1033,7 @@ func load_state(data: Dictionary) -> bool:
     game_over_reason = str(data["game_over_reason"])
     clear_condition_met = bool(data["clear_condition_met"])
     popularity = int(data["popularity"])
+    price_change_pct = int(data["price_change_pct"])
     internal_rating_value = int(data["internal_rating_value"])
     star_rating = int(data["star_rating"])
     player_store_count = int(data["player_store_count"])
@@ -1249,11 +1305,15 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
     var cleaning_value: float = _store_value.compute_cleaning_value(
         cleaning_skills, _store_size_tier
     )
-    # No price-setting mechanic exists in this vertical slice yet (product
-    # sale prices are fixed config values), so price_change_pct is always 0
-    # ("no change from baseline") rather than a guessed nonzero value.
+    # Task #53: price_change_pct now reflects the player's own configured
+    # price policy (try_set_price_policy()) instead of always being 0.
     var evaluation: Dictionary = _store_rating.evaluate_monthly_rating_change(
-        internal_rating_value, 0, service_value, security_value, cleaning_value, monthly_sales_yen
+        internal_rating_value,
+        price_change_pct,
+        service_value,
+        security_value,
+        cleaning_value,
+        monthly_sales_yen
     )
     internal_rating_value = int(evaluation["next_internal_value"])
     star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
@@ -1478,6 +1538,7 @@ func _require_save_data(data: Dictionary) -> void:
         "game_over_reason",
         "clear_condition_met",
         "popularity",
+        "price_change_pct",
         "internal_rating_value",
         "star_rating",
         "player_store_count",
