@@ -835,21 +835,48 @@ func _initialize() -> void:
         if str(catalog_entry["catalog_id"]) == "tobacco":
             tobacco_catalog_entry = catalog_entry
             break
+    var tobacco_vending_catalog_entry: Dictionary = {}
+    for fixture_catalog_entry in config["fixture_catalog"]:
+        if str(fixture_catalog_entry["catalog_id"]) == "small_tobacco_vending":
+            tobacco_vending_catalog_entry = fixture_catalog_entry
+            break
+    # Task #45: the fixture's own capacity caps how many units actually get
+    # procured, which can be lower than the product catalog's own
+    # initial_stock_units (itself the category's max_capacity, which can
+    # assume a larger fixture than the one actually purchased here).
+    var expected_procurement_quantity: int = min(
+        int(tobacco_catalog_entry["initial_stock_units"]),
+        int(tobacco_vending_catalog_entry["capacity"])
+    )
     var expected_procurement_cost: int = (
-        int(tobacco_catalog_entry["initial_stock_units"])
-        * int(tobacco_catalog_entry["restock_unit_cost_yen"])
+        expected_procurement_quantity * int(tobacco_catalog_entry["restock_unit_cost_yen"])
     )
     if permit_simulation.economy.cash_yen != cash_before_procurement - expected_procurement_cost:
         _fail("product procurement cost must equal initial stock units times unit cost")
         return
-    if permit_simulation.inventory.get_product("tobacco-1").stock_units != int(tobacco_catalog_entry["initial_stock_units"]):
-        _fail("a procured product must start with its configured initial stock")
+    if permit_simulation.inventory.get_product("tobacco-1").stock_units != expected_procurement_quantity:
+        _fail("a procured product must start with its configured initial stock, capped at the fixture's own capacity")
         return
     if permit_simulation.event_log.count_type("product_procured") != 1:
         _fail("a completed product procurement must record exactly one product_procured event")
         return
     if permit_simulation.try_procure_product("tobacco", "tobacco-2", "tobacco-shelf-1"):
         _fail("procuring a second product onto an already-occupied fixture must be rejected")
+        return
+
+    # Task #45: small_ambient_shelf's confirmed compatible_product_categories
+    # does not include tobacco, so procuring it there must be rejected even
+    # though both the permit and the catalog entry are otherwise valid.
+    if not permit_simulation.try_purchase_fixture(
+        "small_ambient_shelf", "incompatible-shelf-1", Vector2i(8, 10), Vector2i(8, 9)
+    ):
+        _fail("a valid fixture purchase for the compatibility-rejection test must be accepted")
+        return
+    if permit_simulation.try_procure_product("tobacco", "tobacco-incompatible", "incompatible-shelf-1"):
+        _fail("procuring a product onto a fixture whose compatible_product_categories excludes it must be rejected")
+        return
+    if not permit_simulation.try_procure_product("bread", "bread-compatible", "incompatible-shelf-1"):
+        _fail("procuring a product a fixture's compatible_product_categories does include must be accepted")
         return
 
     var promotion_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
@@ -1370,9 +1397,12 @@ func _initialize() -> void:
         _fail("economy UI: Buy permit must grant the selected permit")
         return
 
-    var shelf_index: int = economy_ui_scene._fixture_catalog_ids.find("small_ambient_shelf")
+    # small_tobacco_vending (not small_ambient_shelf) so the tobacco
+    # procurement below stays within this fixture's confirmed
+    # compatible_product_categories (task #45).
+    var shelf_index: int = economy_ui_scene._fixture_catalog_ids.find("small_tobacco_vending")
     if shelf_index < 0:
-        _fail("economy UI: fixture catalog option did not include 'small_ambient_shelf'")
+        _fail("economy UI: fixture catalog option did not include 'small_tobacco_vending'")
         return
     economy_ui_scene.fixture_catalog_option.selected = shelf_index
     economy_ui_scene._on_buy_fixture_pressed()
