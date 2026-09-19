@@ -104,3 +104,22 @@ cell()`がfootprintの上下左右4方向を順に試し、最初に見つかっ
 - 店舗サイズの複数選択(小/中/大)や2店舗目の実シミュレーションは、依然
   として`try_expand_chain()`の抽象的な数字上昇のみで、実際の2店舗目は
   シミュレートされない(タスク#30の既存の割り切り、変更なし)。
+
+## 追記(2026-09-19): タグ付けの是正
+
+ユーザーから「初代ザ・コンビニの再現を忘れるな、わけのわからないオリジナル
+ゲームに向かうな」という指摘を受けた。棚卸しした結果、`main.gd`に追加した
+2つの独自発明——什器のinteraction_subcell自動導出ヒューリスティック
+(`_find_open_interaction_cell()`)と、補充ボタンの数量・コスト既定値——が、
+この決定書とPR説明文には「原作の主張ではない」と書いていたにもかかわらず、
+**コード本体には`REMAKE_BALANCED_DEFAULT`のタグを付けていなかった**ことが
+判明した。`vertical_slice_simulation.gd`や`domain/`配下では、タスク#33以降
+「独自発明はコード内コメント・JSON evidence_note・テストの3箇所全てに
+明示する」という規律が確立していたが、今回の`main.gd`への追加はこの規律から
+抜け落ちていた。
+
+該当2箇所に`REMAKE_BALANCED_DEFAULT`の明示コメントを追加し、
+`reference_sim/tests/test_game_vertical_slice_contract.py`の
+`test_economy_actions_are_reachable_from_the_ui_not_only_headless_smoke`に
+そのタグ文字列の存在を検証するアサーションを追加した。これにより、UI層の
+独自発明も今後同じ規律の対象であることを機械的に強制する。

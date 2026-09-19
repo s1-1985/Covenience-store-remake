@@ -587,6 +587,15 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func _find_open_interaction_cell", main)
         self.assertIn("Vector2i(-1, -1)", main)
 
+        # Neither the interaction-cell placement heuristic above nor the
+        # restock button's batch-size default below are recovered original
+        # rules; both must say so in-code with the project's own
+        # REMAKE_BALANCED_DEFAULT tag (a doc/PR description alone is not
+        # enough), the same discipline domain-layer files like
+        # checkout_timing.gd already follow.
+        self.assertIn("REMAKE_BALANCED_DEFAULT (task #38): the catalog only records a fixture's", main)
+        self.assertIn("REMAKE_BALANCED_DEFAULT (task #38): apply_explicit_restock() takes an", main)
+
         # The status panel grew enough new controls (fixture/permit/
         # product/restock/promotion/chain, on top of everything task #35-37
         # already added) that it needed to become scrollable rather than

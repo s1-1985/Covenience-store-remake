@@ -716,6 +716,17 @@ directly and this is the first time UI-layer logic (option-list population, the 
 placement flow, the interaction-cell heuristic) needed its own coverage beyond a manual Xvfb screenshot
 (decision 0107).
 
+**Correction (2026-09-19)**: the user pushed back hard after task #38 -- "don't forget this is a
+recreation of the original The Conveni; don't drift toward some incomprehensible original game." An
+audit turned up that task #38's two own inventions in `main.gd` (the interaction-cell placement
+heuristic and the restock button's batch-size/cost default) were documented as non-original in decision
+0107 and the PR description, but were missing the in-code `REMAKE_BALANCED_DEFAULT` tag that
+`vertical_slice_simulation.gd` and every `domain/` file have followed since task #33 -- a real gap in
+that discipline, not a false alarm. Both call sites now carry that tag in a code comment, and
+`test_economy_actions_are_reachable_from_the_ui_not_only_headless_smoke` asserts the tag text is
+present, so this class of gap is now caught mechanically rather than relying on remembering to add it.
+No behavior changed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
