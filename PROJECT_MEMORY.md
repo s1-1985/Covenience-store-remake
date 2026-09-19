@@ -247,6 +247,26 @@ Use evidence labels going forward:
 
 Do not silently promote a community guess into a game rule.
 
+**When implementing (not just researching) and no CONFIRMED value covers a needed number or mechanic**,
+work down this priority order rather than jumping straight to invention:
+
+1. Recovered evidence (the CONFIRMED-* levels above).
+2. **Analogy-based inference from another already-CONFIRMED, related data point** on the same entity or
+   source row -- e.g. deriving an unstated per-category order size from that same category's own
+   CONFIRMED_OFFICIAL shelf `max_capacity`, rather than picking an unrelated round number. Prefer this
+   over (3) whenever a real anchor point exists anywhere in the already-recovered data.
+3. This project's own invented `REMAKE_BALANCED_DEFAULT` placeholder, only when neither (1) nor (2) is
+   available (including when a qualitative research note explicitly says no formula should be invented
+   from it).
+
+A session was corrected on exactly this ordering in task #39: `product_catalog`'s `initial_stock_units`
+was set to a flat `10` for every ported category, even though each category's own CONFIRMED_OFFICIAL
+`max_capacity` was sitting in the same source row unused. Task #42 fixed it to derive the number from
+`max_capacity` instead. See `CLAUDE.md` (project root) for the standing version of this rule and
+`docs/decisions/0111-*.md` for the fix. Every bucket-3 invention still needs the full `REMAKE_BALANCED_
+DEFAULT` tagging discipline from section 19's task #38 correction: code comment + JSON `evidence_note` +
+test assertion, all three, not just a decision doc.
+
 ## 16. Primary research sources collected so far
 
 Official/current:
@@ -784,6 +804,29 @@ simulated -- a single fixed `checkout_fixture_id`/`_checkout_queue` exists), `co
 `vending_machine` (its reference_sim entry itself has no confirmed footprint/price/maintenance data at
 all -- an incomplete placeholder, nothing to port). See decision 0110. `headless_smoke.gd` unchanged at
 734 steps (no code touched); `reference_sim` full suite 657 passed/1 xfailed.
+
+**Task #42 (2026-09-19, correction)**: after task #41 merged (PR #212), the user pushed back again --
+paraphrased, "this project reconstructs the original even where the guide doesn't fully resolve
+something, by analogy from other data; it must not add arbitrary original elements, and recent work felt
+like it was doing that." No `CLAUDE.md` existed in this repo at all (confirmed by search), so this
+principle had never been written down anywhere a session would see it automatically. A self-audit of
+tasks #39-#41 found one real instance: task #39 set every one of the 26 `product_catalog` entries'
+`initial_stock_units` to a flat `10`, even though each category's own CONFIRMED_OFFICIAL `max_capacity`
+(from the same `PRODUCT_CATEGORY_PRICING` source row) was sitting right there unused -- a real anchor
+point ignored in favor of an untethered guess. Tasks #40/#41 were re-checked and found clean on this
+same standard (task #40 reused an already-accepted formula *shape*, not a fresh flat guess; task #41 was
+a pure CONFIRMED_OFFICIAL data port with no invented numbers). Fixed by re-deriving all 26
+`initial_stock_units` values from each category's own `max_capacity` instead (tobacco included, for
+internal consistency: 10 -> 40). This surfaced a second, unrelated latent problem while testing: two
+`headless_smoke.gd` assertions had hard-coded tobacco's old `10 * 175` procurement cost and `10` stock
+count as literal numbers instead of reading them from `config["product_catalog"]`, so they broke the
+instant the underlying data changed -- fixed to look the values up dynamically instead of repeating them.
+Wrote `CLAUDE.md` (project root, previously absent) to make this priority order (confirmed evidence >
+analogy from other confirmed data > this project's own tagged invention, in that order) a standing,
+automatically-loaded rule rather than something that only lived in one session's memory; also formalized
+it in this file's section 15. See decision 0111. `reference_sim` full suite 657 passed/1 xfailed (no
+data-count change, only field-level correction); `headless_smoke.gd` unchanged at 734 steps once both
+hard-coded assertions were fixed.
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 

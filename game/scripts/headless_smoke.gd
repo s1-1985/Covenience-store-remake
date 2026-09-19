@@ -829,11 +829,19 @@ func _initialize() -> void:
     if not permit_simulation.try_procure_product("tobacco", "tobacco-1", "tobacco-shelf-1"):
         _fail("permit-gated product procurement must be accepted once the permit is held")
         return
-    var expected_procurement_cost := 10 * 175
+    var tobacco_catalog_entry: Dictionary = {}
+    for catalog_entry in config["product_catalog"]:
+        if str(catalog_entry["catalog_id"]) == "tobacco":
+            tobacco_catalog_entry = catalog_entry
+            break
+    var expected_procurement_cost: int = (
+        int(tobacco_catalog_entry["initial_stock_units"])
+        * int(tobacco_catalog_entry["restock_unit_cost_yen"])
+    )
     if permit_simulation.economy.cash_yen != cash_before_procurement - expected_procurement_cost:
         _fail("product procurement cost must equal initial stock units times unit cost")
         return
-    if permit_simulation.inventory.get_product("tobacco-1").stock_units != 10:
+    if permit_simulation.inventory.get_product("tobacco-1").stock_units != int(tobacco_catalog_entry["initial_stock_units"]):
         _fail("a procured product must start with its configured initial stock")
         return
     if permit_simulation.event_log.count_type("product_procured") != 1:
