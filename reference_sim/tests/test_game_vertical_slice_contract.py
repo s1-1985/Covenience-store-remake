@@ -1973,7 +1973,10 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # simulation state (task #28's own convention).
         self.assertIn('"price_change_pct": price_change_pct,', simulation)
         self.assertIn('price_change_pct = int(data["price_change_pct"])', simulation)
-        self.assertIn("const SAVE_SCHEMA_VERSION := 3", simulation)
+        # SAVE_SCHEMA_VERSION itself is asserted by
+        # test_staff_hiring_action_is_wired_and_confirmed_official (task
+        # #56 bumped it again, 3 -> 4); this test only needs price_change_
+        # pct's own save/load wiring, not the exact current version number.
 
         self.assertIn(
             "try_set_price_policy() must reject a price change below -100%", smoke
@@ -2044,6 +2047,90 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         )
         self.assertIn(
             "incidental item must be drawn from currently-stocked products", smoke
+        )
+
+    def test_staff_hiring_action_is_wired_and_confirmed_official(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+
+        # Task #56: a direct re-read of the quick reference book p.6
+        # confirmed CONFIRMED_OFFICIAL that a hiring pool with a normal
+        # 2-employee cap exists in the original game -- the 3rd manager
+        # slot and the スーパー社員 mechanic are deliberately out of scope,
+        # tagged REMAKE_BALANCED_DEFAULT.
+        note = self.config["simulation"]["staff_hiring_evidence_note"]
+        self.assertIn("CONFIRMED_OFFICIAL", note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
+        self.assertIn("店員は2人まで雇用できる", note)
+
+        self.assertIn("var _staff_candidate_catalog: Dictionary = {}", simulation)
+        self.assertIn(
+            'for entry in config["staff_candidates"]:\n        _staff_candidate_catalog[str(entry["candidate_id"])] = entry',
+            simulation,
+        )
+        self.assertIn(
+            "func try_hire_candidate(staff_id: String, candidate_id: String) -> bool:", simulation
+        )
+        self.assertIn(
+            "func _apply_hire(staff_id: String, candidate_id: String) -> bool:", simulation
+        )
+        # Cross-slot collision rule: a real candidate can't occupy two
+        # roster slots at once.
+        self.assertIn(
+            "if existing_staff_member.staff_id != staff_id and existing_staff_member.candidate_id == candidate_id:",
+            simulation,
+        )
+        self.assertIn('_record_event("staff_hired"', simulation)
+        self.assertIn("func hire(new_candidate_config: Dictionary) -> void:", staff_state)
+
+        # Persisted through save/load, like every other durable piece of
+        # simulation state (task #28's own convention) -- staff.reset()
+        # would otherwise silently revert a hire on load.
+        self.assertIn("func _staff_roster_snapshot() -> Array[Dictionary]:", simulation)
+        self.assertIn('"staff_roster": _staff_roster_snapshot(),', simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 4", simulation)
+        self.assertIn(
+            'staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])',
+            simulation,
+        )
+
+        self.assertIn(
+            "try_hire_candidate() must reject hiring a candidate already employed in the other slot",
+            smoke,
+        )
+        self.assertIn("try_hire_candidate() must reject an unknown candidate_id", smoke)
+        self.assertIn("try_hire_candidate() must reject an unknown staff_id", smoke)
+        self.assertIn(
+            "try_hire_candidate() must re-baseline the roster slot's skills", smoke
+        )
+        self.assertIn(
+            "a candidate vacated from one slot must become hireable into another", smoke
+        )
+        self.assertIn(
+            "a loaded simulation must restore the exact saved staff hire", smoke
+        )
+
+        # Task #56 also wired this into the actual HUD, not only
+        # VerticalSliceSimulation/headless_smoke.gd -- same discipline task
+        # #38 established for the other economy actions.
+        self.assertIn('name="StaffSlotOption"', scene)
+        self.assertIn('name="HireCandidateOption"', scene)
+        self.assertIn('name="HireCandidateButton"', scene)
+        self.assertIn("func _refresh_hire_candidate_option() -> void:", main)
+        self.assertIn("func _on_hire_candidate_pressed() -> void:", main)
+        self.assertIn("simulation.try_hire_candidate(staff_id, candidate_id)", main)
+        self.assertIn("UI/Panel/Margin/Scroll/VBox/StaffSlotOption", smoke)
+        self.assertIn("UI/Panel/Margin/Scroll/VBox/HireCandidateOption", smoke)
+        self.assertIn("UI/Panel/Margin/Scroll/VBox/HireCandidateButton", smoke)
+        self.assertIn(
+            "economy UI: pressing Hire candidate must update the selected slot's candidate_id", smoke
         )
 
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):

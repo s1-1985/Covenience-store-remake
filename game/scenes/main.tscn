@@ -240,6 +240,21 @@ custom_minimum_size = Vector2(0, 44)
 disabled = true
 text = "Eject selected customer (before they get angry)"
 
+[node name="Separator5" type="HSeparator" parent="UI/Panel/Margin/Scroll/VBox"]
+
+[node name="StaffHiringTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
+text = "Staff hiring"
+
+[node name="StaffSlotOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+
+[node name="HireCandidateOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+
+[node name="HireCandidateButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Hire candidate into selected slot"
+
 [node name="MenuButtons" type="HBoxContainer" parent="UI/Panel/Margin/Scroll/VBox"]
 theme_override_constants/separation = 10
 

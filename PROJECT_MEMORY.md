@@ -1118,6 +1118,31 @@ See decision 0124. `headless_smoke.gd` grew from 957 to 1009 steps (one new scen
 seed-independent by stocking exactly one extra product so the incidental draw is deterministic);
 `reference_sim` full suite 666 passed/1 xfailed (one new test function).
 
+**Task #56 (2026-09-20)**: the `staff_candidates` pool (task #32, 35 named CONFIRMED_OFFICIAL
+candidates) has existed since early in this project, but `staff.members`' two roster slots
+(staff-1/staff-2) were always statically bound at config load time to one fixed candidate each, with
+no way for a player to actually draw from the other 33. Section 21.3 tracked this as an unwired
+CONFIRMED_OFFICIAL mechanic. A direct re-read of the quick reference book p.6 confirmed
+CONFIRMED_OFFICIAL that a hiring pool with a normal 2-employee cap exists ("店員は2人まで雇用でき
+る"), and separately named a 店長 (manager) role and a "スーパー社員" (super employee, 3-headcount)
+mechanic that no source states a formula or trigger condition for. `VerticalSliceSimulation.
+try_hire_candidate(staff_id, candidate_id)` now lets a player replace whoever occupies an existing
+roster slot with a different candidate from the pool; scoped as a fixed-2-slot swap only (no 3rd
+manager slot, no スーパー社員), both tagged REMAKE_BALANCED_DEFAULT and explicitly out of scope in
+the decision doc, since neither has a stated formula to implement from. Rejects an unknown staff_id/
+candidate_id and a candidate already employed in the other slot; discards the outgoing occupant's
+accumulated skill growth (task #48). `staff_roster` was added to `snapshot()`/`save_state()`/
+`load_state()` so a hire survives a save/load round trip (`SAVE_SCHEMA_VERSION` 3->4); `load_state()`
+reapplies it via `StaffState.hire()` directly rather than the guarded `_apply_hire()`, since applying
+the cross-slot collision check one slot at a time immediately after `staff.reset()` could spuriously
+reject a legitimate two-slot swap reload. Wired into the actual HUD (`StaffSlotOption`/
+`HireCandidateOption`/`HireCandidateButton` in `main.tscn`/`main.gd`), not only
+`headless_smoke.gd`/`VerticalSliceSimulation`, per the task #38 UI-reachability discipline. See
+decision 0125. `headless_smoke.gd` grew from 1009 to 1046 steps (direct try_hire_candidate scenario,
+UI-reachability scenario, and a save/load round-trip check); `reference_sim` full suite 668 passed/1
+xfailed (one new test function; also fixed a stale `SAVE_SCHEMA_VERSION := 3` hardcoded assertion in
+the price-policy test that this task's version bump to 4 would otherwise have broken).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1245,11 +1270,17 @@ order.
   campaign near a rival branch can force its withdrawal (クイックリファレンス); a ¥500,000
   rival-store investigation fee exists separate from acquisition cost. None modeled in
   `remake_rival_policy.py`/Godot (no rival-store entity exists at all yet, per decision 0095).
-- **Staff mechanics**: PS版固定 3% wage-negotiation base-up; explicit 3-staff-per-store cap; a
-  pre-hire stat interpretation band (40-69=普通/70-100=高い); fired staff return to the hiring
-  pool after ~1 year with decayed-but-above-rookie stats (qualitative, no formula given); 80+-year
-  staff can become a "スーパー社員" (all stats 100) at unspecified probability. None implemented
-  (no hiring/firing UI exists yet at all, per section 17's "スタッフ雇用・解雇UI" gap).
+- **Staff mechanics**: basic hiring (replacing a fixed roster slot's occupant with a different
+  candidate from the 35-person pool) implemented in task #56 (decision 0125) -- see section 19's
+  task #56 entry. Still NOT implemented, each for the reason noted: PS版固定 3% wage-negotiation
+  base-up (no wage-negotiation mechanic exists to attach a base-up rate to); explicit 3-staff-per-
+  store cap / 店長 (manager) 3rd slot (this client's roster is a fixed 2 slots, task #56 scoped
+  down deliberately, no formula existed to expand it from); a pre-hire stat interpretation band
+  (40-69=普通/70-100=高い, cosmetic UI labeling only, not a mechanic with numeric effect); fired
+  staff return to the hiring pool after ~1 year with decayed-but-above-rookie stats (qualitative,
+  no formula given, and this client has no "fire" action separate from "replace" to begin with);
+  80+-year staff can become a "スーパー社員" (all stats 100) at unspecified probability (no trigger
+  condition or probability stated anywhere).
 - **Building/facility per-time-slot visitor counts**: DATA 4 建物's 朝/昼/夕/夜/深夜/早朝 numeric
   columns (transcribed with an explicit confidence caveat -- see `quick-reference-guide-part2-
   2026-09-19.md` for the row-alignment uncertainty note before using these numbers) plus a

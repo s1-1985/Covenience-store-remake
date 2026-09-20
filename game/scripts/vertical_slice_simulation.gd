@@ -100,6 +100,7 @@ var _fixture_catalog: Dictionary = {}
 var _sample_layout_catalog: Dictionary = {}
 var _permit_catalog: Dictionary = {}
 var _product_catalog: Dictionary = {}
+var _staff_candidate_catalog: Dictionary = {}
 var _permits_held: Dictionary = {}
 var _promotion_catalog: Dictionary = {}
 var _promotions_used_this_month: Dictionary = {}
@@ -151,6 +152,8 @@ func _init(source_config: Dictionary) -> void:
         _promotion_catalog[str(entry["promotion_id"])] = entry
     for entry in config["sample_layouts"]:
         _sample_layout_catalog[str(entry["sample_id"])] = entry
+    for entry in config["staff_candidates"]:
+        _staff_candidate_catalog[str(entry["candidate_id"])] = entry
     layout = StoreLayoutScript.new(config["store"], config["fixtures"])
     inventory = InventoryCatalogScript.new(config["products"])
     economy = EconomyStateScript.new(config["economy"])
@@ -550,6 +553,50 @@ func try_purchase_promotion(promotion_id: String) -> bool:
     return true
 
 
+# Task #56: CONFIRMED_OFFICIAL (docs/research/quick-reference-guide-part1-
+# 2026-09-19.md, directly re-read book p.6) that the 35-person
+# staff_candidates pool (task #32) is an actual hiring pool a player draws
+# from, not just reference lore -- but no hiring/firing UI has ever called
+# into it. This client's staff.members roster is a fixed 2 slots (matching
+# the guide's own "店員は2人まで雇用できる" ordinary-case cap, a manager/
+# 店長 role and the rare "スーパー社員" headcount-of-3 promotion are both
+# out of scope, see the decision doc), so "hiring" here means replacing
+# whoever currently occupies an existing slot with a different candidate,
+# not adding a third slot. Guarded the same way every other roster-
+# affecting action already is (customers.all_settled()); additionally
+# rejects hiring a candidate who is already employed in the OTHER slot
+# (the same real person can't occupy both), and an unknown staff_id/
+# candidate_id. Any accumulated skill growth (task #48) the outgoing
+# occupant had is discarded -- see StaffState.hire()'s own comment.
+func try_hire_candidate(staff_id: String, candidate_id: String) -> bool:
+    if is_game_over or not customers.all_settled():
+        return false
+    var previous_candidate_id := ""
+    if staff.members.has(staff_id):
+        previous_candidate_id = staff.members[staff_id].candidate_id
+    if not _apply_hire(staff_id, candidate_id):
+        return false
+    _record_event("staff_hired", {
+        "staff_id": staff_id,
+        "candidate_id": candidate_id,
+        "previous_candidate_id": previous_candidate_id,
+    })
+    return true
+
+
+# Shared by try_hire_candidate() (guarded, player-facing) and load_state()
+# (unguarded, since load_state() already resets every subsystem to a known
+# state before reapplying saved facts -- see its own comment).
+func _apply_hire(staff_id: String, candidate_id: String) -> bool:
+    if not staff.members.has(staff_id) or not _staff_candidate_catalog.has(candidate_id):
+        return false
+    for existing_staff_member in staff.all_staff():
+        if existing_staff_member.staff_id != staff_id and existing_staff_member.candidate_id == candidate_id:
+            return false
+    staff.members[staff_id].hire(_staff_candidate_catalog[candidate_id])
+    return true
+
+
 func chain_expansion_cost_yen() -> int:
     return _land_value_policy.current_land_price_yen(
         BASE_LAND_PRICE_YEN, town, float(month_count) / MONTHS_PER_YEAR
@@ -865,6 +912,7 @@ func snapshot() -> Dictionary:
         "staff_state": checkout_staff.state,
         "staff_position": checkout_staff.position,
         "staff_count": staff.members.size(),
+        "staff_roster": _staff_roster_snapshot(),
         "customer_basket_count": customer.basket.size(),
         "customer_basket_total_yen": customer.basket_total_yen(),
         "completed_sales": economy.completed_sales,
@@ -982,7 +1030,7 @@ func observation_snapshot() -> Dictionary:
     }
 
 
-const SAVE_SCHEMA_VERSION := 3
+const SAVE_SCHEMA_VERSION := 4
 
 # Deliberately not saved/restored: the active customer's mid-visit walk
 # state (position along a route, basket-so-far, checkout progress) and
@@ -1031,6 +1079,12 @@ func save_state() -> Dictionary:
         "permits_held": _permits_held.keys(),
         "promotions_used_this_month": _promotions_used_this_month.keys(),
         "scheduled_promotions": _scheduled_promotions.duplicate(true),
+        # Task #56: which candidate currently occupies each roster slot is
+        # now player-changeable (try_hire_candidate()), so it can no longer
+        # be assumed to always match config's own static staff.members --
+        # persisted here so a load reapplies any hire the config-derived
+        # staff.reset() below would otherwise silently revert.
+        "staff_roster": _staff_roster_snapshot(),
         "fixtures": layout.fixture_snapshot(),
         "inventory": inventory.snapshot(),
         "economy": economy.snapshot(),
@@ -1067,6 +1121,23 @@ func load_state(data: Dictionary) -> bool:
     economy.reset()
     customers.reset()
     staff.reset()
+    # Task #56: staff.reset() above restores every slot to its config-
+    # derived DEFAULT candidate, undoing any try_hire_candidate() swap the
+    # player made since starting. Reapply the saved roster directly via
+    # StaffState.hire() (not the guarded _apply_hire()/try_hire_candidate()
+    # path): that path's cross-slot collision check compares against
+    # every OTHER slot's CURRENT candidate, which can spuriously reject a
+    # legitimate two-slot swap reload if applied one entry at a time right
+    # after a reset (e.g. slot A's saved candidate can momentarily still
+    # match slot B's not-yet-overwritten default). Saved data was only
+    # ever produced by a hire that already passed that check when it
+    # happened, so re-trusting it here (the same convention
+    # _require_save_data() already applies to every other field) is safe.
+    for roster_entry in data["staff_roster"]:
+        var roster_staff_id := str(roster_entry["staff_id"])
+        var roster_candidate_id := str(roster_entry["candidate_id"])
+        if staff.members.has(roster_staff_id) and _staff_candidate_catalog.has(roster_candidate_id):
+            staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])
     event_log.reset()
     minute_of_day = int(data["minute_of_day"])
     day_count = int(data["day_count"])
@@ -1161,6 +1232,17 @@ func _inventory_snapshot() -> Array[Dictionary]:
             "fixture_id": product.fixture_id,
             "stock_units": product.stock_units,
             "sale_price_yen": product.sale_price_yen,
+        })
+    return rows
+
+
+func _staff_roster_snapshot() -> Array[Dictionary]:
+    var rows: Array[Dictionary] = []
+    for staff_member in staff.all_staff():
+        rows.append({
+            "staff_id": staff_member.staff_id,
+            "candidate_id": staff_member.candidate_id,
+            "display_name": staff_member.display_name,
         })
     return rows
 
@@ -1591,6 +1673,7 @@ func _require_save_data(data: Dictionary) -> void:
         "permits_held",
         "promotions_used_this_month",
         "scheduled_promotions",
+        "staff_roster",
         "fixtures",
         "inventory",
         "economy",
@@ -1613,7 +1696,7 @@ func _require_save_data(data: Dictionary) -> void:
 
 func _require_config() -> void:
     assert(int(config.get("schema_version", -1)) == 14)
-    for key in ["store", "fixtures", "sample_layouts", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "customer", "simulation", "demand", "town"]:
+    for key in ["store", "fixtures", "sample_layouts", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "staff_candidates", "customer", "simulation", "demand", "town"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
             assert(false)
