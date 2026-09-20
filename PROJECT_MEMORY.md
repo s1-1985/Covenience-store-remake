@@ -1163,6 +1163,39 @@ Godot side, and no Godot files were touched. See decision 0126. `headless_smoke.
 steps (re-run to confirm no regression); `reference_sim` full suite 668 passed/1 xfailed (one new test
 function).
 
+**Task #58 (2026-09-20)**: decision 0095 (task #26) had declined to build any town/map spatial
+simulation, reasoning that `reference_sim` itself had no spatial model and inventing one would fill
+"the area with the thinnest evidence" without an anchor. The user re-shared the source PDFs (this
+time split into 4 files instead of 2) and explicitly asked to begin the spatial model now. A direct
+re-read of the strategy guide's own distance diagram (book pages 6-7) re-confirmed data that was
+already CONFIRMED_OFFICIAL but sitting unconsumed in the codebase: four concentric radii from a
+store -- 5 tiles (new-store construction minimum spacing), 7/11/15 tiles (tobacco/alcohol/medicine
+permit mutual-exclusion) -- already ported as `PermitDefinition.exclusion_distance_tiles` but with
+every `game/data/vertical_slice.json` permit entry's own evidence_note stating "not enforced here:
+no town/rival spatial model exists in this client yet (see task #26)". Also re-confirmed the guide's
+"来店手段/エリア半径" table (book page 31, `TRADE_AREA_RADIUS_TILES`, already CONFIRMED_OFFICIAL)
+and noticed `remake_rival_policy.RivalPolicyInputs.trade_area_overlap_ratio` had always been an
+abstract caller-supplied float with no caller able to actually compute it. Rather than reopening
+decision 0095's declined full town/map simulation (map size, facility placement, population growth --
+still no evidence for any of these), this task added a narrower `reference_sim/conveni_sim/
+remake_town_spatial.py`: pure functions operating on caller-supplied `Position` (x, y) tuples --
+`chebyshev_distance_tiles()`, `can_construct_store_at()`/`can_acquire_permit_at()` (both directly
+enforcing the four CONFIRMED_OFFICIAL radii above, `STORE_CONSTRUCTION_MIN_DISTANCE_TILES=5` newly
+promoted from a code comment to an actual named constant), and `trade_area_overlap_ratio()` (a
+REMAKE_BALANCED_DEFAULT circle-circle geometric overlap computation over the CONFIRMED_OFFICIAL
+trade-area radii). Added integration tests in `test_remake_rival_policy.py` actually driving
+`RemakeBalancedRivalPolicy.decide()` from a computed overlap ratio -- the first real caller for that
+input, closing the "no caller exists, would just be dead code" concern decision 0095 raised for the
+rival policy module specifically. `reference_sim`-only, same as task #57: no rival-store entity (with
+a tracked position and known permit holdings) exists in `game/` yet to wire `can_acquire_permit_at()`
+into `try_purchase_permit()`, and the town-map-scale, rival-spawn-algorithm, and per-rival-permit-
+ownership questions remain genuinely unanswered by any source -- all left as open gaps, not invented.
+Security-facility coverage's police-box/fire-station bonus (section 21.3's other spatial item) needs
+a different computation (footprint-rectangle-vs-radius area overlap, not point-to-point distance) and
+was not attempted here. See decision 0127. `headless_smoke.gd` unchanged at 1046 steps (re-run, no
+regression); `reference_sim` full suite 696 passed/1 xfailed (28 new test functions: 26 in the new
+spatial-module test file, 2 rival-policy integration tests).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1279,17 +1312,28 @@ order.
   all (decision 0095), so there is nowhere yet to place an induced police box/fire station or
   compute its distance from the store. Implementing the confirmed bonus formula itself is no longer
   the blocker; building a minimal town-facility-placement/distance subsystem to attach it to is.
+  Task #58 (decision 0127) built a *point-to-point* store distance module
+  (`remake_town_spatial.py`), which is NOT directly this formula's shape (footprint-rectangle-vs-
+  radius area overlap) -- still open.
 - **Land-purchase cost formula**: empty lot = area land price x number of areas; occupied lot =
   land price + 50% of the existing building's appraised value (実習マニュアル p.7). Not modeled
   anywhere (`land_value_policy.gd` only models value *growth over time*, not acquisition cost) --
   but this client also has no land-acquisition/multi-store-placement mechanic to attach it to yet
-  (same boundary as decision 0095/0026).
+  (same boundary as decision 0095/0026). Still open after task #58: that task's distance module
+  operates on already-known store positions, and does not create the "map of areas, each with its
+  own land price" concept this formula needs.
 - **Rival-store mechanics with numbers**: rival withdrawal after continuous deficit takes ~6
   months if left alone (実習マニュアル, stated in 2 scenarios); holding a permit may block nearby
-  *rivals* from selling that category too, not just gate the player (実習マニュアル); a 20%-off
-  campaign near a rival branch can force its withdrawal (クイックリファレンス); a ¥500,000
-  rival-store investigation fee exists separate from acquisition cost. None modeled in
-  `remake_rival_policy.py`/Godot (no rival-store entity exists at all yet, per decision 0095).
+  *rivals* from selling that category too, not just gate the player (実習マニュアル) -- task #58
+  (decision 0127) confirmed and ported the exact distance diagram (5/7/11/15 tiles) this mutual-
+  exclusion behavior runs on, as `remake_town_spatial.can_acquire_permit_at()`, but still has no
+  rival-store entity (tracked position, known permit holdings) in either `reference_sim` or `game/`
+  to actually call it against -- `rival.py`'s `RivalChainRuntime` tracks rivals by an abstract
+  `location_id: str`, not a spatial position; a 20%-off campaign near a rival branch can force its
+  withdrawal (クイックリファレンス); a ¥500,000 rival-store investigation fee exists separate from
+  acquisition cost. `remake_rival_policy.py`'s decision policy is wired to a real geometric input
+  for the first time (task #58's `trade_area_overlap_ratio()` integration test), but still has no
+  production (`game/`) caller. None of this is in Godot yet.
 - **Staff mechanics**: basic hiring (replacing a fixed roster slot's occupant with a different
   candidate from the 35-person pool) implemented in task #56 (decision 0125) -- see section 19's
   task #56 entry. Still NOT implemented, each for the reason noted: PS版固定 3% wage-negotiation

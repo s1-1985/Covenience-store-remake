@@ -5,6 +5,7 @@ from conveni_sim.remake_rival_policy import (
     RivalDecision,
     RivalPolicyInputs,
 )
+from conveni_sim.remake_town_spatial import trade_area_overlap_ratio
 
 
 def make_inputs(**overrides):
@@ -116,6 +117,56 @@ class RemakeBalancedRivalPolicyDecisionTests(unittest.TestCase):
     def test_equal_footing_holds(self):
         inputs = make_inputs()
         self.assertEqual(self.policy.decide(inputs), RivalDecision.HOLD)
+
+
+class SpatialTradeAreaOverlapIntegrationTests(unittest.TestCase):
+    """Task #58: `RivalPolicyInputs.trade_area_overlap_ratio` was always a
+    caller-supplied abstract float -- decision 0095 explicitly declined to
+    build the spatial layer that would compute it from real store
+    positions, since no rival entity/position existed yet. remake_town_
+    spatial.py now provides that computation; these tests are the first
+    actual caller wiring a real (position, radius) pair into this policy,
+    closing the gap decision 0095 left open rather than leaving this
+    module's spatial input permanently unreachable."""
+
+    def setUp(self) -> None:
+        self.policy = RemakeBalancedRivalPolicy()
+
+    def test_far_apart_stores_have_no_competitive_pressure_regardless_of_the_gap(self):
+        ratio = trade_area_overlap_ratio((0, 0), 20, (1000, 0), 20)
+        inputs = make_inputs(
+            own_popularity=10,
+            rival_popularity=90,
+            own_service_value=10.0,
+            rival_service_value=90.0,
+            trade_area_overlap_ratio=ratio,
+        )
+        # A losing-badly store with a losing-money branch still does not
+        # retreat if the two stores are too far apart to actually compete.
+        inputs_losing = make_inputs(
+            monthly_profit_yen=-1,
+            own_popularity=10,
+            rival_popularity=90,
+            own_service_value=10.0,
+            rival_service_value=90.0,
+            trade_area_overlap_ratio=ratio,
+        )
+        self.assertEqual(ratio, 0.0)
+        self.assertEqual(self.policy.decide(inputs), RivalDecision.HOLD)
+        self.assertEqual(self.policy.decide(inputs_losing), RivalDecision.HOLD)
+
+    def test_fully_overlapping_stores_let_a_losing_branch_retreat(self):
+        ratio = trade_area_overlap_ratio((0, 0), 20, (0, 0), 20)
+        inputs = make_inputs(
+            monthly_profit_yen=-1,
+            own_popularity=10,
+            rival_popularity=90,
+            own_service_value=10.0,
+            rival_service_value=90.0,
+            trade_area_overlap_ratio=ratio,
+        )
+        self.assertEqual(ratio, 1.0)
+        self.assertEqual(self.policy.decide(inputs), RivalDecision.RETREAT)
 
 
 if __name__ == "__main__":
