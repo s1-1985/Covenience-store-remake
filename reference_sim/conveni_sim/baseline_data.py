@@ -225,6 +225,16 @@ STORE_VARIANTS = (
             EvidenceLevel.CONFIRMED_VISUAL,
             "PS store-selection screenshot",
         ),
+        # Task #57: 建物面積 breakdown (総面積/建物全体/床面積/店外スペース),
+        # 店舗1's row. CONFIRMED_OFFICIAL, cross-checked against the guide's
+        # own chapter-4 資料集 table (book pages 106-109) against the
+        # already-ported 本2.pdf source and found value-for-value identical;
+        # see docs/research/strategy-guide-shopkeeper-manual-part2-2026-09-19.md
+        # section 4.1.
+        total_area_tiles=EvidenceValue(100, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        whole_building_area_tiles=EvidenceValue(70, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        floor_area_tiles=EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        exterior_space_tiles=EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
     StoreVariant(
         id="small_bottom",
@@ -248,6 +258,12 @@ STORE_VARIANTS = (
             EvidenceLevel.CONFIRMED_VISUAL,
             "PS store-selection screenshot",
         ),
+        # Task #57: 店舗2's row; guide states the same small-tier area
+        # breakdown for both orientations (see small_top's own comment).
+        total_area_tiles=EvidenceValue(100, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        whole_building_area_tiles=EvidenceValue(70, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        floor_area_tiles=EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        exterior_space_tiles=EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
     StoreVariant(
         id="medium_top",
@@ -269,6 +285,11 @@ STORE_VARIANTS = (
             EvidenceLevel.CONFIRMED_VISUAL,
             "PS store-selection screenshot",
         ),
+        # Task #57: 店舗3's row (see small_top's comment for source/method).
+        total_area_tiles=EvidenceValue(144, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        whole_building_area_tiles=EvidenceValue(108, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        floor_area_tiles=EvidenceValue(70, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        exterior_space_tiles=EvidenceValue(36, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
     StoreVariant(
         id="medium_bottom",
@@ -286,6 +307,13 @@ STORE_VARIANTS = (
             EvidenceLevel.CONFIRMED_VISUAL,
             "PS store-selection screenshot",
         ),
+        # Task #57: 店舗4's row (same area breakdown as medium_top -- the
+        # guide's table gives identical values for both medium orientations,
+        # same as it does for the small tier).
+        total_area_tiles=EvidenceValue(144, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        whole_building_area_tiles=EvidenceValue(108, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        floor_area_tiles=EvidenceValue(70, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        exterior_space_tiles=EvidenceValue(36, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
     StoreVariant(
         id="large_top",
@@ -317,6 +345,16 @@ STORE_VARIANTS = (
             EvidenceLevel.CONFIRMED_VISUAL,
             "PS store-selection screenshot",
         ),
+        # Task #57: 店舗5's row. total_area_tiles=196=14x14, independently
+        # re-confirming (not resolving) the already-flagged large-tier
+        # footprint conflict noted above: this matches 14x14, not the case-
+        # study captions' 16x16 (see docs/research/strategy-guide-shopkeeper-
+        # manual-part2-2026-09-19.md section 4.1's own cross-check note).
+        # Left as-is, same as the existing conflict -- not adjudicated here.
+        total_area_tiles=EvidenceValue(196, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        whole_building_area_tiles=EvidenceValue(154, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        floor_area_tiles=EvidenceValue(108, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        exterior_space_tiles=EvidenceValue(42, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
     StoreVariant(
         id="large_bottom",
@@ -336,6 +374,11 @@ STORE_VARIANTS = (
             EvidenceLevel.CONFIRMED_VISUAL,
             "PS store-selection screenshot",
         ),
+        # Task #57: 店舗6's row (same area breakdown as large_top).
+        total_area_tiles=EvidenceValue(196, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        whole_building_area_tiles=EvidenceValue(154, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        floor_area_tiles=EvidenceValue(108, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+        exterior_space_tiles=EvidenceValue(42, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
     ),
 )
 
