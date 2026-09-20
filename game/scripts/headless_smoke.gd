@@ -60,6 +60,9 @@ func _initialize() -> void:
         "UI/Panel/Margin/Scroll/VBox/EjectCustomerButton",
         "UI/Panel/Margin/Scroll/VBox/PriceChangeSpinBox",
         "UI/Panel/Margin/Scroll/VBox/SetPricePolicyButton",
+        "UI/Panel/Margin/Scroll/VBox/StaffSlotOption",
+        "UI/Panel/Margin/Scroll/VBox/HireCandidateOption",
+        "UI/Panel/Margin/Scroll/VBox/HireCandidateButton",
     ]:
         if main_instance.get_node_or_null(node_path) == null:
             _fail("main scene is missing expected node: %s" % node_path)
@@ -888,6 +891,55 @@ func _initialize() -> void:
         _fail("a purchase made under a -50% price policy must charge exactly half the list price (floored) per item")
         return
 
+    # Task #56: try_hire_candidate() lets the player replace whoever
+    # currently occupies a staff.members roster slot with a different
+    # candidate from the 35-person staff_candidates pool, rejects an
+    # unknown staff_id/candidate_id, and rejects hiring a candidate who is
+    # already employed in the OTHER slot (a real person can't occupy both).
+    var hire_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(hire_simulation)
+    if hire_simulation.staff.members["staff-1"].candidate_id != "manda_machiko":
+        _fail("staff-1 must start bound to its configured default candidate (manda_machiko)")
+        return
+    if hire_simulation.try_hire_candidate("staff-1", "sugawara_fumio"):
+        _fail("try_hire_candidate() must reject hiring a candidate already employed in the other slot")
+        return
+    if hire_simulation.try_hire_candidate("staff-1", "no-such-candidate"):
+        _fail("try_hire_candidate() must reject an unknown candidate_id")
+        return
+    if hire_simulation.try_hire_candidate("no-such-staff-slot", "takenaka_sayuri"):
+        _fail("try_hire_candidate() must reject an unknown staff_id")
+        return
+    if hire_simulation.staff.members["staff-1"].candidate_id != "manda_machiko":
+        _fail("a rejected hire must not mutate the roster slot")
+        return
+    if not hire_simulation.try_hire_candidate("staff-1", "takenaka_sayuri"):
+        _fail("a valid hire (unemployed candidate into an existing slot) must be accepted")
+        return
+    if hire_simulation.staff.members["staff-1"].candidate_id != "takenaka_sayuri":
+        _fail("try_hire_candidate() must update the roster slot's candidate_id")
+        return
+    if hire_simulation.staff.members["staff-1"].display_name != "竹中小百合":
+        _fail("try_hire_candidate() must update the roster slot's display_name to the newly hired candidate's")
+        return
+    # takenaka_sayuri's register_skill (14) differs from manda_machiko's
+    # (20, the config-derived starting value _run_visit() above already
+    # exercised); confirms hire() actually re-baselines the skill fields
+    # StaffState uses elsewhere (CheckoutTiming/RestockTiming/store rating),
+    # not just the identity fields.
+    if hire_simulation.staff.members["staff-1"].register_skill != 14:
+        _fail("try_hire_candidate() must re-baseline the roster slot's skills to the newly hired candidate's")
+        return
+    if hire_simulation.event_log.count_type("staff_hired") != 1:
+        _fail("exactly one staff_hired event must be recorded for the accepted hire")
+        return
+    # manda_machiko, now vacated from staff-1, must become hireable again
+    # (into staff-2, replacing sugawara_fumio) -- the collision check only
+    # looks at CURRENT occupants, not history.
+    if not hire_simulation.try_hire_candidate("staff-2", "manda_machiko"):
+        _fail("a candidate vacated from one slot must become hireable into another")
+        return
+
     # Task #37: loading a built-in sample layout.
     var sample_layout_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(sample_layout_simulation)
@@ -1495,6 +1547,14 @@ func _initialize() -> void:
     if not save_simulation.try_purchase_promotion("direct_mail"):
         _fail("the save/load test's promotion scheduling setup must be accepted")
         return
+    # Task #56: a staff hire is a durable roster fact like the fixture/
+    # promotion setup above -- staff.reset() (called by load_state()) would
+    # otherwise silently revert staff-2 back to its config-derived default
+    # candidate (sugawara_fumio) if staff_roster were not itself saved and
+    # reapplied.
+    if not save_simulation.try_hire_candidate("staff-2", "takenaka_sayuri"):
+        _fail("the save/load test's staff hire setup must be accepted")
+        return
     var save_setup_ticks := 0
     while (
         save_simulation.day_count < REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST
@@ -1534,6 +1594,12 @@ func _initialize() -> void:
         return
     if loaded_simulation.inventory.total_stock_units() != save_simulation.inventory.total_stock_units():
         _fail("a loaded simulation must restore the exact saved inventory stock")
+        return
+    if loaded_simulation.staff.members["staff-2"].candidate_id != "takenaka_sayuri":
+        _fail("a loaded simulation must restore the exact saved staff hire (staff-2 -> takenaka_sayuri)")
+        return
+    if loaded_simulation.staff.members["staff-1"].candidate_id != "manda_machiko":
+        _fail("a loaded simulation must leave an un-hired-into staff slot at its config-derived default")
         return
     # +1: load_state() admits a fresh default customer once the loaded
     # layout is in place (customer/staff walk state is not saved/restored
@@ -1835,6 +1901,48 @@ func _initialize() -> void:
     economy_ui_scene._on_eject_customer_pressed()
     if economy_ui_scene.simulation.customers.customer("eject-ui-customer").phase != "leaving":
         _fail("economy UI: pressing Eject customer must transition the selected customer to leaving")
+        return
+
+    # Task #56: the staff-hiring action reachable from the UI, not only from
+    # VerticalSliceSimulation.try_hire_candidate() directly. try_hire_
+    # candidate() is guarded by customers.all_settled() like every other
+    # roster-affecting action, so the just-ejected customer must finish
+    # leaving first.
+    var hire_ui_settle_ticks := 0
+    while (
+        not economy_ui_scene.simulation.customers.all_settled()
+        and hire_ui_settle_ticks < MAX_STEPS
+    ):
+        economy_ui_scene.simulation.step()
+        hire_ui_settle_ticks += 1
+    steps += hire_ui_settle_ticks
+    if hire_ui_settle_ticks >= MAX_STEPS:
+        _fail("economy UI: the ejected customer never settled before the hire-UI scenario")
+        return
+    var hire_ui_slot_index: int = economy_ui_scene._staff_slot_ids.find("staff-2")
+    if hire_ui_slot_index < 0:
+        _fail("economy UI: staff slot option did not include 'staff-2'")
+        return
+    economy_ui_scene.staff_slot_option.selected = hire_ui_slot_index
+    economy_ui_scene._on_staff_slot_selected(hire_ui_slot_index)
+    var hire_ui_candidate_index: int = economy_ui_scene._hire_candidate_ids.find("hamada_yuko")
+    if hire_ui_candidate_index < 0:
+        _fail("economy UI: hire candidate option did not include an unemployed candidate ('hamada_yuko')")
+        return
+    economy_ui_scene.hire_candidate_option.selected = hire_ui_candidate_index
+    economy_ui_scene._on_hire_candidate_pressed()
+    if economy_ui_scene.simulation.staff.members["staff-2"].candidate_id != "hamada_yuko":
+        _fail("economy UI: pressing Hire candidate must update the selected slot's candidate_id")
+        return
+    # The just-hired candidate must drop out of the OTHER slot's option
+    # list (try_hire_candidate()'s own cross-slot collision rule), proving
+    # _refresh_hire_candidate_option() actually re-filters after a hire
+    # rather than only clearing/repopulating with the same stale set.
+    var hire_ui_other_slot_index: int = economy_ui_scene._staff_slot_ids.find("staff-1")
+    economy_ui_scene.staff_slot_option.selected = hire_ui_other_slot_index
+    economy_ui_scene._on_staff_slot_selected(hire_ui_other_slot_index)
+    if economy_ui_scene._hire_candidate_ids.find("hamada_yuko") >= 0:
+        _fail("economy UI: a just-hired candidate must not remain selectable for the other slot")
         return
 
     economy_ui_scene.free()

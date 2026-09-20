@@ -46,6 +46,9 @@ const NEW_FIXTURE_SELECTION_PREFIX := "__new:"
 @onready var expand_chain_button: Button = $UI/Panel/Margin/Scroll/VBox/ExpandChainButton
 @onready var price_change_spin_box: SpinBox = $UI/Panel/Margin/Scroll/VBox/PriceChangeSpinBox
 @onready var set_price_policy_button: Button = $UI/Panel/Margin/Scroll/VBox/SetPricePolicyButton
+@onready var staff_slot_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/StaffSlotOption
+@onready var hire_candidate_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/HireCandidateOption
+@onready var hire_candidate_button: Button = $UI/Panel/Margin/Scroll/VBox/HireCandidateButton
 @onready var save_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/SaveButton
 @onready var load_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/LoadButton
 @onready var quit_to_menu_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/QuitToMenuButton
@@ -64,6 +67,8 @@ var _procure_fixture_ids: Array[String] = []
 var _restock_product_ids: Array[String] = []
 var _eject_customer_ids: Array[String] = []
 var _promotion_ids: Array[String] = []
+var _staff_slot_ids: Array[String] = []
+var _hire_candidate_ids: Array[String] = []
 var _next_fixture_purchase_sequence := 1
 var _next_product_purchase_sequence := 1
 
@@ -91,6 +96,8 @@ func _ready() -> void:
     _populate_promotion_option()
     _refresh_procure_fixture_option()
     _refresh_restock_product_option()
+    _populate_staff_slot_option()
+    _refresh_hire_candidate_option()
     pause_button.pressed.connect(_on_pause_pressed)
     step_button.pressed.connect(_on_step_pressed)
     reset_button.pressed.connect(_on_reset_pressed)
@@ -105,6 +112,8 @@ func _ready() -> void:
     buy_promotion_button.pressed.connect(_on_buy_promotion_pressed)
     expand_chain_button.pressed.connect(_on_expand_chain_pressed)
     set_price_policy_button.pressed.connect(_on_set_price_policy_pressed)
+    staff_slot_option.item_selected.connect(_on_staff_slot_selected)
+    hire_candidate_button.pressed.connect(_on_hire_candidate_pressed)
     save_button.pressed.connect(_on_save_pressed)
     load_button.pressed.connect(_on_load_pressed)
     quit_to_menu_button.pressed.connect(_on_quit_to_menu_pressed)
@@ -160,6 +169,7 @@ func _on_reset_pressed() -> void:
     layout_edit_label.text = "Layout reset to configured prototype"
     _refresh_procure_fixture_option()
     _refresh_restock_product_option()
+    _refresh_hire_candidate_option()
     _refresh_ui()
 
 
@@ -503,6 +513,75 @@ func _on_set_price_policy_pressed() -> void:
     _refresh_ui()
 
 
+# Task #56: staff_slot_option is populated once at _ready() (the roster's
+# two slot ids, staff-1/staff-2, never change -- only who occupies them
+# does), unlike hire_candidate_option below.
+func _populate_staff_slot_option() -> void:
+    staff_slot_option.clear()
+    _staff_slot_ids.clear()
+    for staff_id in simulation.staff.members.keys():
+        _staff_slot_ids.append(str(staff_id))
+        staff_slot_option.add_item(str(staff_id))
+
+
+func _on_staff_slot_selected(_index: int) -> void:
+    _refresh_hire_candidate_option()
+
+
+# Task #56: unlike the static catalog-driven option lists above (fixtures/
+# permits/products/promotions), which are populated once from config and
+# never change again, which candidates are selectable here changes as soon
+# as a hire happens elsewhere -- try_hire_candidate()'s own cross-slot
+# collision rule (a real person can't occupy both slots at once) means the
+# newly-hired candidate must drop out of this list for the OTHER slot,
+# while whoever they replaced becomes selectable again. So this is
+# refreshed after every hire, on slot-selection change, and on reset/load,
+# but (unlike _refresh_eject_customer_option()) not every _process() tick,
+# since nothing else changes this set between explicit player actions.
+func _refresh_hire_candidate_option() -> void:
+    hire_candidate_option.clear()
+    _hire_candidate_ids.clear()
+    if _staff_slot_ids.is_empty():
+        hire_candidate_button.disabled = true
+        return
+    var selected_staff_id: String = _staff_slot_ids[staff_slot_option.selected]
+    var employed_elsewhere: Array[String] = []
+    for staff_member in simulation.staff.all_staff():
+        if staff_member.staff_id != selected_staff_id:
+            employed_elsewhere.append(staff_member.candidate_id)
+    for entry in config["staff_candidates"]:
+        var candidate_id := str(entry["candidate_id"])
+        if candidate_id in employed_elsewhere:
+            continue
+        _hire_candidate_ids.append(candidate_id)
+        hire_candidate_option.add_item(
+            "%s — register %d / replen %d / ¥%s/day" % [
+                entry["display_name"],
+                int(entry["register_skill"]),
+                int(entry["replenishment_skill"]),
+                _format_integer(int(entry["salary_yen_per_day_24h"])),
+            ]
+        )
+    hire_candidate_button.disabled = _hire_candidate_ids.is_empty()
+
+
+func _on_hire_candidate_pressed() -> void:
+    if _staff_slot_ids.is_empty() or _hire_candidate_ids.is_empty():
+        layout_edit_label.text = "No candidate available to hire"
+        _refresh_ui()
+        return
+    var staff_id: String = _staff_slot_ids[staff_slot_option.selected]
+    var candidate_id: String = _hire_candidate_ids[hire_candidate_option.selected]
+    if simulation.try_hire_candidate(staff_id, candidate_id):
+        layout_edit_label.text = "Hired %s into %s" % [candidate_id, staff_id]
+        _refresh_hire_candidate_option()
+    elif not simulation.customers.all_settled():
+        layout_edit_label.text = "Finish the active visit before hiring"
+    else:
+        layout_edit_label.text = "Cannot hire %s into %s" % [candidate_id, staff_id]
+    _refresh_ui()
+
+
 func _on_save_pressed() -> void:
     if simulation == null:
         return
@@ -523,6 +602,7 @@ func _on_load_pressed() -> void:
         layout_edit_label.text = "Game loaded"
         _refresh_procure_fixture_option()
         _refresh_restock_product_option()
+        _refresh_hire_candidate_option()
     else:
         layout_edit_label.text = "No compatible save found"
     _refresh_ui()

@@ -2,6 +2,14 @@ class_name StaffState
 extends RefCounted
 
 var staff_id: String
+# Task #56: identity fields the 35-candidate staff_candidates pool already
+# carries per entry (CONFIRMED_OFFICIAL, task #32) but this class never
+# stored -- there was no hiring UI to need them for until now. Not part of
+# reset()'s work-growth restoration (identity isn't growth), but changed
+# by hire() below and persisted through save/load like any other durable
+# roster fact.
+var candidate_id: String
+var display_name: String
 var position := Vector2i.ZERO
 var state := "idle"
 var route: Array[Vector2i] = []
@@ -28,6 +36,8 @@ var _start_replenishment_skill: int
 
 func _init(staff_config: Dictionary) -> void:
     staff_id = str(staff_config["id"])
+    candidate_id = str(staff_config.get("candidate_id", ""))
+    display_name = str(staff_config.get("display_name", ""))
     _start_position = _vec2i(staff_config["start_subcell"])
     # CONFIRMED: the guide's skill-growth model (register/service/
     # replenishment/cleaning/security, book page 26) exists. This client
@@ -107,6 +117,44 @@ func reset() -> void:
     cleaning_skill = _start_cleaning_skill
     register_skill = _start_register_skill
     replenishment_skill = _start_replenishment_skill
+
+
+# Task #56: replaces whoever currently occupies this roster slot with a
+# different candidate (CONFIRMED_OFFICIAL data from the same
+# staff_candidates pool _init() already draws from), re-baselining every
+# skill/ceiling/salary/identity field -- including _start_* -- so a later
+# reset() (e.g. from load_state()) restores to the NEWLY hired person, not
+# the one they replaced. staff_id and position stay put: they describe the
+# store's own roster slot/register-front standing spot, not the person
+# filling it. Any accumulated skill growth (task #48) the previous
+# occupant had is discarded, matching how firing someone in a real
+# register-front role doesn't carry their learned proficiency to whoever
+# replaces them.
+func hire(new_candidate_config: Dictionary) -> void:
+    candidate_id = str(new_candidate_config.get("candidate_id", ""))
+    display_name = str(new_candidate_config.get("display_name", ""))
+    service_skill = int(new_candidate_config.get("service_skill", 0))
+    security_skill = int(new_candidate_config.get("security_skill", 0))
+    cleaning_skill = int(new_candidate_config.get("cleaning_skill", 0))
+    register_skill = int(new_candidate_config.get("register_skill", 0))
+    replenishment_skill = int(new_candidate_config.get("replenishment_skill", 0))
+    salary_yen_per_day_24h = int(new_candidate_config.get("salary_yen_per_day_24h", 0))
+    service_skill_growth_ceiling = int(new_candidate_config.get("service_skill_growth_ceiling", 0))
+    register_skill_growth_ceiling = int(new_candidate_config.get("register_skill_growth_ceiling", 0))
+    cleaning_skill_growth_ceiling = int(new_candidate_config.get("cleaning_skill_growth_ceiling", 0))
+    replenishment_skill_growth_ceiling = int(
+        new_candidate_config.get("replenishment_skill_growth_ceiling", 0)
+    )
+    security_skill_growth_ceiling = int(new_candidate_config.get("security_skill_growth_ceiling", 0))
+    _start_service_skill = service_skill
+    _start_security_skill = security_skill
+    _start_cleaning_skill = cleaning_skill
+    _start_register_skill = register_skill
+    _start_replenishment_skill = replenishment_skill
+    state = "idle"
+    route = []
+    restock_target_product_id = ""
+    restock_ticks_remaining = 0
 
 
 func begin_restock(product_id: String, initial_route: Array[Vector2i]) -> void:
