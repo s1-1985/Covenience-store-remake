@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Optional
 
 from .town import TownState
 
@@ -52,6 +53,13 @@ MAX_LOCAL_DEVELOPMENT_FACTOR = 3.0
 fully-built-up tile cannot inflate to an unusable magnitude on its own;
 time inflation (unbounded, see below) is the long-run driver instead."""
 
+EXISTING_BUILDING_ACQUISITION_RATE = 0.5
+"""CONFIRMED_OFFICIAL, not invented: the guide's own 建てる場所や店の規模を
+決める page (実習マニュアル book page 7) states the purchase cost of an
+occupied lot as 土地代 + 買収費(建物評価額の50%) -- acquiring a site that
+already has a building on it costs the land price plus exactly half that
+building's appraised value."""
+
 
 @dataclass(frozen=True)
 class RemakeBalancedLandValuePolicy:
@@ -97,3 +105,47 @@ class RemakeBalancedLandValuePolicy:
             elapsed_years
         )
         return round(base_land_price_yen * factor)
+
+    # Task #60: the guide's own 建てる場所や店の規模を決める page (実習
+    # マニュアル book page 7) states this formula directly: 必要金額=土地代
+    # (a vacant lot costs only the land price) where 地代~(エリア地価×
+    # エリア数) (land price is approximately area land price times area
+    # count) -- CONFIRMED_OFFICIAL that this multiplicative shape exists,
+    # though the guide does not give a standalone "per-area land price"
+    # table separate from current_land_price_yen()'s own whole-price output
+    # above.
+    #
+    # ANALOGY-BASED (CLAUDE.md priority 2), not invented from nothing:
+    # `base_land_price_per_area_yen` reinterprets current_land_price_yen()'s
+    # own existing `base_land_price_yen` input/output as a PER-AREA rate
+    # rather than a whole-plot price -- the same already-established
+    # REMAKE_BALANCED_DEFAULT uniform-town-wide-price simplification
+    # (decision 0095) applied per area instead of per plot, not a new
+    # simplification. `area_count` is meant to come from a store variant's
+    # own CONFIRMED_OFFICIAL `total_area_tiles` (task #57), on the
+    # inference that this project's "エリア" and "tile" units are the same
+    # (both the police-box/fire-station security bonus and this store-size
+    # table describe footprints in the same "エリア" unit, e.g. "2x2
+    # エリア" == a 2x2-tile footprint elsewhere) -- an inference, not a
+    # statement the guide makes explicitly.
+    def land_purchase_cost_yen(
+        self,
+        base_land_price_per_area_yen: int,
+        area_count: int,
+        town: TownState,
+        elapsed_years: float,
+        existing_building_construction_price_yen: Optional[int] = None,
+    ) -> int:
+        if area_count < 0:
+            raise ValueError("area_count must be >= 0")
+        land_cost_yen = (
+            self.current_land_price_yen(base_land_price_per_area_yen, town, elapsed_years)
+            * area_count
+        )
+        if existing_building_construction_price_yen is None:
+            return land_cost_yen
+        if existing_building_construction_price_yen < 0:
+            raise ValueError("existing_building_construction_price_yen must be >= 0")
+        return land_cost_yen + round(
+            existing_building_construction_price_yen * EXISTING_BUILDING_ACQUISITION_RATE
+        )
