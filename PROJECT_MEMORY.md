@@ -1218,6 +1218,32 @@ to. See decision 0128. `headless_smoke.gd` grew from 1046 to 1106 steps (two new
 near-rival-blocks/far-rival-doesn't-block case, and an exact-radius-boundary case); `reference_sim`
 full suite 697 passed/1 xfailed (one new test function).
 
+**Task #60 (2026-09-20)**: a standing self-correction. Section 21.3's land-purchase-cost item had
+been described (including in this session's own earlier status summary to the user) as blocked on
+missing evidence, alongside similar framing suggesting some systems might permanently stay
+unimplemented for lack of confirmed data. The user directly corrected this: CLAUDE.md's own 3-tier
+priority order (recovered evidence -> analogy from confirmed related data -> this project's own
+tagged REMAKE_BALANCED_DEFAULT placeholder, "the last resort, not the default") means nothing is
+meant to stay permanently blocked on missing evidence -- tier 3 always exists precisely so every gap
+gets filled, tagged appropriately. `land_value_policy.gd`'s entire growth-factor structure and
+`remake_rival_policy.py`'s entire decision policy are existing examples of exactly this: full
+REMAKE_BALANCED_DEFAULT structures built over confirmed factors, not held back pending more
+evidence. Applying that same standing methodology (not a new one) to the land-purchase-cost item:
+the guide's own 建てる場所や店の規模を決める page (実習マニュアル book page 7) states 必要金額=
+土地代(エリア地価×エリア数)for a vacant lot, or +建物評価額の50%(CONFIRMED_OFFICIAL rate) for
+an occupied one. Added `RemakeBalancedLandValuePolicy.land_purchase_cost_yen()` to `remake_land_
+value.py`: it reinterprets the existing `current_land_price_yen()` as a per-area rate (analogy-based
+-- the same already-established uniform-town-wide-price simplification from decision 0095, applied
+per-area instead of per-whole-plot, not a new one) multiplied by an `area_count` meant to be sourced
+from a store variant's own CONFIRMED_OFFICIAL `total_area_tiles` (task #57) -- on the inference
+(analogy-based, not confirmed) that this project's "エリア" and "tile" units are the same, since the
+police-box/fire-station security bonus formula and this store-size table both describe footprints in
+"エリア" units matching known tile footprints elsewhere. `reference_sim`-only for now: `game/` has no
+multi-store-placement mechanic (`try_expand_chain()` is a purely abstract number, not a site-purchase
+action) to actually call this from yet, same boundary as tasks #57/#58. See decision 0129.
+`headless_smoke.gd` unchanged at 1106 steps (re-run, no regression); `reference_sim` full suite 705
+passed/1 xfailed (8 new test functions).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1343,12 +1369,16 @@ order.
   (`remake_town_spatial.py`), which is NOT directly this formula's shape (footprint-rectangle-vs-
   radius area overlap) -- still open.
 - **Land-purchase cost formula**: empty lot = area land price x number of areas; occupied lot =
-  land price + 50% of the existing building's appraised value (実習マニュアル p.7). Not modeled
-  anywhere (`land_value_policy.gd` only models value *growth over time*, not acquisition cost) --
-  but this client also has no land-acquisition/multi-store-placement mechanic to attach it to yet
-  (same boundary as decision 0095/0026). Still open after task #58: that task's distance module
-  operates on already-known store positions, and does not create the "map of areas, each with its
-  own land price" concept this formula needs.
+  land price + 50% of the existing building's appraised value (実習マニュアル p.7) -- formula
+  shape and the 50% rate are both CONFIRMED_OFFICIAL. Implemented in task #60 (decision 0129) as
+  `RemakeBalancedLandValuePolicy.land_purchase_cost_yen()`, reusing `current_land_price_yen()`
+  reinterpreted as a per-area rate (analogy-based, decision 0095's existing uniform-price
+  simplification applied per-area) and sourcing `area_count` from a store variant's CONFIRMED_
+  OFFICIAL `total_area_tiles` (task #57) on the inference that "エリア" and "tile" are the same
+  unit. `reference_sim`-only: this client still has no land-acquisition/multi-store-placement
+  mechanic to attach it to (`try_expand_chain()` is a purely abstract number), so it is not wired
+  into `game/` yet -- that boundary (decision 0095/0026) is unchanged, but the formula itself is no
+  longer unimplemented.
 - **Rival-store mechanics with numbers**: rival withdrawal after continuous deficit takes ~6
   months if left alone (実習マニュアル, stated in 2 scenarios); holding a permit may block nearby
   *rivals* from selling that category too, not just gate the player (実習マニュアル) -- task #58
