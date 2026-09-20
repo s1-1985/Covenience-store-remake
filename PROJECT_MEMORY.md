@@ -1244,6 +1244,27 @@ action) to actually call this from yet, same boundary as tasks #57/#58. See deci
 `headless_smoke.gd` unchanged at 1106 steps (re-run, no regression); `reference_sim` full suite 705
 passed/1 xfailed (8 new test functions).
 
+**Task #61 (2026-09-20)**: continuing the same corrected methodology from task #60. `store_value.
+SecurityFacilityCoverage`'s own docstring explicitly left "the spatial search itself (counting how
+many area tiles of a facility fall in that range)... out of scope" -- it only turns an already-
+counted tile count into the CONFIRMED_OFFICIAL bonus (police box +10/tile up to +40, fire station
++5/tile up to +30, both within a 16-tile "店舗周囲16×16エリア" range). All the inputs that spatial
+search needs were already CONFIRMED_OFFICIAL and sitting in `baseline_data.TOWN_FACILITIES`: police_
+box's (2, 2) footprint and fire_station's (2, 3) footprint. Added `remake_town_spatial.facility_area_
+tiles_within_range(store_position, facility_position, facility_footprint, range_tiles)`, reusing
+task #58's `chebyshev_distance_tiles()` to count how many of a facility's footprint tiles fall within
+range of the store -- its output is exactly what `SecurityFacilityCoverage`'s `police_box_area_
+tiles`/`fire_station_area_tiles` fields expect. Added an integration test that actually feeds this
+function's output into `SecurityFacilityCoverage` and checks the confirmed bonus formula fires
+correctly -- the first real caller of those fields computed from positions rather than a caller-
+supplied constant. The "16x16エリア範囲内" region's exact shape/anchor is still not stated by any
+source; this reuses `store_value.py`'s own pre-existing implicit reading of it as a Chebyshev-
+distance threshold (not a new interpretation introduced here), flagged the same way task #58 already
+flags its own distance-metric choice. `reference_sim`-only: this client still has no security-
+facility placement mechanic (`TownState` remains non-spatial, decision 0095) to call this from in
+`game/`. See decision 0130. `headless_smoke.gd` unchanged at 1106 steps (re-run, no regression);
+`reference_sim` full suite 713 passed/1 xfailed (8 new test functions).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1363,11 +1384,11 @@ order.
   What remains genuinely blocked is unrelated to this formula: this client's `TownState` (game/) is
   a single scalar population/store_count with no facility-placement or spatial-distance model at
   all (decision 0095), so there is nowhere yet to place an induced police box/fire station or
-  compute its distance from the store. Implementing the confirmed bonus formula itself is no longer
-  the blocker; building a minimal town-facility-placement/distance subsystem to attach it to is.
-  Task #58 (decision 0127) built a *point-to-point* store distance module
-  (`remake_town_spatial.py`), which is NOT directly this formula's shape (footprint-rectangle-vs-
-  radius area overlap) -- still open.
+  compute its distance from the store. Task #61 (decision 0130) implemented the footprint-rectangle-
+  vs-radius spatial search itself (`remake_town_spatial.facility_area_tiles_within_range()`), so the
+  formula end-to-end is no longer unimplemented in `reference_sim` -- what remains open is purely
+  `game/`-side: this client still has no facility-placement mechanic (`TownState` stays non-spatial)
+  to actually call it from.
 - **Land-purchase cost formula**: empty lot = area land price x number of areas; occupied lot =
   land price + 50% of the existing building's appraised value (実習マニュアル p.7) -- formula
   shape and the 50% rate are both CONFIRMED_OFFICIAL. Implemented in task #60 (decision 0129) as
