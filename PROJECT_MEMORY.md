@@ -1143,6 +1143,26 @@ UI-reachability scenario, and a save/load round-trip check); `reference_sim` ful
 xfailed (one new test function; also fixed a stale `SAVE_SCHEMA_VERSION := 3` hardcoded assertion in
 the price-policy test that this task's version bump to 4 would otherwise have broken).
 
+**Task #57 (2026-09-20)**: section 21.3's "Facility/scenario data" item flagged a full 建物面積
+breakdown (総面積/建物全体/床面積/店外スペース) for all 6 store variants (店舗1-6) as CONFIRMED_
+OFFICIAL, cross-checked value-for-value against the already-ported `本2.pdf` source in the newly
+transcribed `docs/research/strategy-guide-shopkeeper-manual-part2-2026-09-19.md` section 4.1, but
+never actually ported as fields on `StoreVariant` -- only `editable_floor` (店舗内, the in-store
+placement grid) and `construction_price_yen` were. Unlike most of section 21.3's remaining items,
+this one is not blocked on a missing subsystem (no town/map spatial model, no rival-store entity):
+it is pure reference data with an established "hold it even though nothing consumes it yet" landing
+spot (the same pattern `land_value_yen`, decision 0095, and fixture `service_bonus`/
+`maintenance_yen_per_day` already established), so it was ported directly. Added `total_area_tiles`/
+`whole_building_area_tiles`/`floor_area_tiles`/`exterior_space_tiles` (each `Optional[EvidenceValue]`)
+to `reference_sim/conveni_sim/models.py`'s `StoreVariant` and populated all 6 `STORE_VARIANTS`
+entries in `baseline_data.py`. Confirmed these are genuinely distinct from `editable_floor` (not a
+derivable width*height duplicate) with a dedicated test assertion. `reference_sim`-only change: `game/`
+has no multi-store-variant selection mechanism at all (it hardcodes the `small_top` prototype size
+per decision 0100), so there is nowhere yet for this data to be consumed or even displayed on the
+Godot side, and no Godot files were touched. See decision 0126. `headless_smoke.gd` unchanged at 1046
+steps (re-run to confirm no regression); `reference_sim` full suite 668 passed/1 xfailed (one new test
+function).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1294,8 +1314,9 @@ order.
   targets (10 stores, ~200,000 cumulative visitors, ~¥30,000,000 annual revenue, 30,000 town
   population, all stores 5-star); an attraction-facility footprint/shopping-population table (10
   facility types) closing part of section 17's "facility list and population/demand effects" gap;
-  a full building-area breakdown (総面積/建物全体/床面積/店外スペース) for all 6 store variants
-  (only `editable_floor`+price were previously ported); large-store upgrade is population-gated,
+  ~~a full building-area breakdown (総面積/建物全体/床面積/店外スペース) for all 6 store variants
+  (only `editable_floor`+price were previously ported)~~ -- ported in task #57 (decision 0126) as
+  reference-only `StoreVariant` fields in `reference_sim`; large-store upgrade is population-gated,
   not purely a cash transaction; hidden 4th map's shape differs PS vs. Saturn (upgrades its
   existence to CONFIRMED_OFFICIAL from wiki-only CONFIRMED_COMMUNITY); contest prize eligibility
   is specifically gated on cleanliness value.

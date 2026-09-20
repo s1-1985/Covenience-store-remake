@@ -35,6 +35,16 @@ class StoreVariant:
     construction_price_yen: Optional[EvidenceValue]
     editable_floor: Optional[EvidenceValue]
     unlocked_at_beginner_start: Optional[EvidenceValue]
+    # Task #57: 建物面積 breakdown from the guide's own 店舗データ table
+    # (book pages 106-109), distinct from editable_floor (店舗内, the
+    # in-store placement grid used by store_grid.py). Reference-only for
+    # now, like several other fields on this dataclass -- nothing in
+    # reference_sim or game/ consumes a store's total footprint/whole-
+    # building/floor/exterior area yet.
+    total_area_tiles: Optional[EvidenceValue] = None
+    whole_building_area_tiles: Optional[EvidenceValue] = None
+    floor_area_tiles: Optional[EvidenceValue] = None
+    exterior_space_tiles: Optional[EvidenceValue] = None
 
 
 @dataclass(frozen=True)

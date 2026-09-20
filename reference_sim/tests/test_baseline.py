@@ -105,6 +105,44 @@ class BaselineDataTests(unittest.TestCase):
         # test_strategy_guide_primary_scan.py for the full set.
         self.assertEqual(by_id["medium_top"].editable_floor.value, (7, 10))
 
+    def test_store_variant_building_area_breakdown_matches_the_guide(self):
+        # Task #57: 建物面積 breakdown (総面積/建物全体/床面積/店外スペース) from
+        # the guide's own 店舗データ table (book pages 106-109),
+        # cross-checked value-for-value against 本2.pdf; see
+        # docs/research/strategy-guide-shopkeeper-manual-part2-2026-09-19.md
+        # section 4.1. Distinct from editable_floor (店舗内, the in-store
+        # placement grid).
+        by_id = {variant.id: variant for variant in STORE_VARIANTS}
+        expected = {
+            "small_top": (100, 70, 40, 30),
+            "small_bottom": (100, 70, 40, 30),
+            "medium_top": (144, 108, 70, 36),
+            "medium_bottom": (144, 108, 70, 36),
+            "large_top": (196, 154, 108, 42),
+            "large_bottom": (196, 154, 108, 42),
+        }
+        for variant_id, (total, whole_building, floor, exterior) in expected.items():
+            variant = by_id[variant_id]
+            self.assertEqual(variant.total_area_tiles.value, total)
+            self.assertEqual(variant.whole_building_area_tiles.value, whole_building)
+            self.assertEqual(variant.floor_area_tiles.value, floor)
+            self.assertEqual(variant.exterior_space_tiles.value, exterior)
+            for field in (
+                variant.total_area_tiles,
+                variant.whole_building_area_tiles,
+                variant.floor_area_tiles,
+                variant.exterior_space_tiles,
+            ):
+                self.assertEqual(field.evidence, EvidenceLevel.CONFIRMED_OFFICIAL)
+        # total_area_tiles is not simply width*height of editable_floor (a
+        # different, smaller in-store placement grid) -- confirms these are
+        # genuinely separate figures, not a derivable duplicate.
+        small_top = by_id["small_top"]
+        self.assertNotEqual(
+            small_top.total_area_tiles.value,
+            small_top.editable_floor.value[0] * small_top.editable_floor.value[1],
+        )
+
     def test_permit_fees_and_distances_match_the_guide(self):
         # RESOLVED 2026-09-17: previously both fields were None for every
         # permit; the guide's own "販売許可に必要な金額" table and distance
