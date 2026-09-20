@@ -19,6 +19,7 @@ const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
 const RestockTimingScript := preload("res://scripts/domain/restock_timing.gd")
 const StaffGrowthScript := preload("res://scripts/domain/staff_growth.gd")
 const CheckoutAngerScript := preload("res://scripts/domain/checkout_anger.gd")
+const TownSpatialScript := preload("res://scripts/domain/town_spatial.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -128,6 +129,24 @@ var _checkout_timing
 var _restock_timing
 var _staff_growth
 var _checkout_anger
+var _town_spatial
+# Task #59: the player's own store's position on the same abstract distance
+# scale as `_rival_stores` below, so `TownSpatial.can_acquire_permit_at()`
+# has something to measure a permit-exclusion distance from. This client
+# has no real town/map spatial simulation (decision 0095/0127), so this is
+# just a fixed reference point, not a placed position on an actual map.
+var _player_store_position: Vector2i
+# Task #59: REMAKE_BALANCED_DEFAULT rival-store roster -- position and
+# held permits for each configured rival, used only to enforce the
+# CONFIRMED_OFFICIAL permit-exclusion distance rule
+# (TownSpatial.can_acquire_permit_at()) against try_purchase_permit().
+# Defaults to empty in the default scenario config (a no-op, same
+# convention as demand.rival_store_count's own default), since no source
+# states how many rivals exist, where they are, or which permits they
+# hold -- this array only ever reflects config a caller supplied, never a
+# value this client invents on its own. Static for this vertical slice's
+# lifetime: no rival AI/spawn loop exists to change it after _init().
+var _rival_stores: Array[Dictionary] = []
 # FIFO order in which customers who have finished shopping are waiting for
 # the single checkout fixture's one staff-service slot (task #36, concurrent
 # customers). Serving strictly in arrival order is this project's own
@@ -178,6 +197,16 @@ func _init(source_config: Dictionary) -> void:
     _restock_timing = RestockTimingScript.new()
     _staff_growth = StaffGrowthScript.new()
     _checkout_anger = CheckoutAngerScript.new()
+    _town_spatial = TownSpatialScript.new()
+    _player_store_position = _vec2i_from_array(config["town"]["player_store_position"])
+    for rival_entry in config["town"].get("rival_stores", []):
+        var rival_permits_held: Array[String] = []
+        rival_permits_held.assign(rival_entry.get("permits_held", []))
+        _rival_stores.append({
+            "id": str(rival_entry["id"]),
+            "position": _vec2i_from_array(rival_entry["position"]),
+            "permits_held": rival_permits_held,
+        })
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -404,6 +433,8 @@ func try_purchase_permit(permit_id: String) -> bool:
         return false
     if has_permit(permit_id) or not _permit_catalog.has(permit_id):
         return false
+    if not _can_acquire_permit(permit_id):
+        return false
     var fee_yen: int = int(_permit_catalog[permit_id]["fee_yen"])
     if economy.cash_yen < fee_yen:
         return false
@@ -419,6 +450,25 @@ func try_purchase_permit(permit_id: String) -> bool:
         "expense_id": expense["expense_id"],
     })
     return true
+
+
+# Task #59: CONFIRMED_OFFICIAL rule (guide book page 9) that a permit
+# cannot be acquired within that permit's exclusion distance of another
+# store already holding it. `_rival_stores` is the only other-store source
+# this client has (no multi-store placement mechanic exists for the
+# player's own chain, see try_expand_chain()'s own note), so this only
+# checks against configured rivals; it defaults to a no-op (permit always
+# acquirable) when `_rival_stores` is empty, which is the default scenario
+# config's own setting.
+func _can_acquire_permit(permit_id: String) -> bool:
+    var exclusion_distance_tiles: int = int(_permit_catalog[permit_id]["exclusion_distance_tiles"])
+    var holder_positions: Array[Vector2i] = []
+    for rival in _rival_stores:
+        if (rival["permits_held"] as Array).has(permit_id):
+            holder_positions.append(rival["position"])
+    return _town_spatial.can_acquire_permit_at(
+        exclusion_distance_tiles, _player_store_position, holder_positions
+    )
 
 
 func try_procure_product(catalog_id: String, instance_id: String, fixture_id: String) -> bool:
@@ -1201,6 +1251,10 @@ func _required_routes_are_reachable() -> bool:
     )
 
 
+func _vec2i_from_array(value: Array) -> Vector2i:
+    return Vector2i(int(value[0]), int(value[1]))
+
+
 func _product_interaction(product_id: String) -> Vector2i:
     var product = inventory.get_product(product_id)
     return layout.interaction_for_fixture(product.fixture_id, "shelf")
@@ -1734,7 +1788,7 @@ func _require_config() -> void:
                 push_error("fixture catalog entry missing required key: %s" % key)
                 assert(false)
     for permit_entry in config["permits"]:
-        for key in ["permit_id", "fee_yen"]:
+        for key in ["permit_id", "fee_yen", "exclusion_distance_tiles"]:
             if not permit_entry.has(key):
                 push_error("permit entry missing required key: %s" % key)
                 assert(false)
@@ -1749,7 +1803,7 @@ func _require_config() -> void:
                 push_error("promotion entry missing required key: %s" % key)
                 assert(false)
     var town_config: Dictionary = config["town"]
-    for key in ["population", "store_count_including_rivals"]:
+    for key in ["population", "store_count_including_rivals", "player_store_position"]:
         if not town_config.has(key):
             push_error("town config missing required key: %s" % key)
             assert(false)

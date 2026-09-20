@@ -783,17 +783,20 @@
     {
       "permit_id": "tobacco",
       "fee_yen": 7000000,
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['tobacco']. Its exclusion_distance_tiles (7 tiles from another tobacco-permitted store) is NOT enforced here: no town/rival spatial model exists in this client yet (see task #26)."
+      "exclusion_distance_tiles": 7,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['tobacco']. As of task #59, exclusion_distance_tiles (7 tiles from another tobacco-permitted store, guide book page 9's mutual-exclusion rule) IS enforced by VerticalSliceSimulation._can_acquire_permit() against the REMAKE_BALANCED_DEFAULT town.rival_stores roster (see town_spatial_evidence_note) -- superseding the earlier note that this was unenforced pending a spatial model (task #26)."
     },
     {
       "permit_id": "alcohol",
       "fee_yen": 3000000,
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['alcohol']. exclusion_distance_tiles (11 tiles) not enforced yet, for the same reason as tobacco above."
+      "exclusion_distance_tiles": 11,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['alcohol']. exclusion_distance_tiles (11 tiles) is now enforced as of task #59, for the same reason as tobacco above."
     },
     {
       "permit_id": "medicine",
       "fee_yen": 10000000,
-      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['medicine']. exclusion_distance_tiles (15 tiles) not enforced yet, for the same reason as tobacco above."
+      "exclusion_distance_tiles": 15,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py PERMITS['medicine']. exclusion_distance_tiles (15 tiles) is now enforced as of task #59, for the same reason as tobacco above."
     }
   ],
   "product_catalog": [
@@ -1856,7 +1859,10 @@
   "town": {
     "evidence_note": "Non-spatial TownState (game/scripts/domain/town_state.gd), ported from reference_sim/conveni_sim/town.py. No town/map spatial simulation exists to generate these numbers, so they are set to a fixed default: population matches demand.nearby_population above, and store_count_including_rivals of 1 (the player's own store only) means zero rival stores and therefore no rival-dilution effect on arrivals by default.",
     "population": 2000,
-    "store_count_including_rivals": 1
+    "store_count_including_rivals": 1,
+    "player_store_position": [0, 0],
+    "rival_stores": [],
+    "town_spatial_evidence_note": "Task #59: player_store_position and rival_stores are this client's first actual (x, y) positions, added specifically to enforce the CONFIRMED_OFFICIAL permit-exclusion distance rule (guide book page 9; distances themselves from book pages 6-7, see each permit's own exclusion_distance_tiles) via game/scripts/domain/town_spatial.gd (ported from reference_sim/conveni_sim/remake_town_spatial.py, decision 0127/task #58). player_store_position=[0,0] is this project's own REMAKE_BALANCED_DEFAULT choice of coordinate origin, not a recovered original map position -- no town/map spatial simulation exists here (decision 0095), so this is only a reference point for distance math, not a placement on an actual map. rival_stores defaults to empty (a no-op, same convention as store_count_including_rivals=1 meaning zero rivals above) since no source states how many rivals exist, where they are, or which permits they hold; a populated entry looks like {\"id\": str, \"position\": [x, y], \"permits_held\": [permit_id, ...]}, entirely REMAKE_BALANCED_DEFAULT test/scenario data when used. STORE_CONSTRUCTION_MIN_DISTANCE_TILES (5 tiles, also CONFIRMED_OFFICIAL from the same diagram) is ported in town_spatial.gd but not yet enforced anywhere in this client, since try_expand_chain() has no store-placement mechanic to attach it to."
   },
   "simulation": {
     "checkout_fixture_id": "checkout-1",

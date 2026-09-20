@@ -1093,6 +1093,51 @@ func _initialize() -> void:
         _fail("procuring a product a fixture's compatible_product_categories does include must be accepted")
         return
 
+    # Task #59: the CONFIRMED_OFFICIAL permit-exclusion distance rule (guide
+    # book page 9) is now enforced against town.rival_stores. The default
+    # scenario config has no rivals (a no-op, exercised implicitly by
+    # permit_simulation above already succeeding with zero rivals present),
+    # so this scenario configures its own rivals to exercise the actual
+    # enforcement.
+    var spatial_config: Dictionary = config.duplicate(true)
+    spatial_config["town"] = (spatial_config["town"] as Dictionary).duplicate(true)
+    # tobacco's exclusion_distance_tiles is 7: a rival at (6, 0) is distance
+    # 6 from the player's store at (0, 0) -- inside the radius.
+    spatial_config["town"]["rival_stores"] = [
+        {"id": "rival-near-tobacco", "position": [6, 0], "permits_held": ["tobacco"]},
+        {"id": "rival-far-alcohol", "position": [50, 50], "permits_held": ["alcohol"]},
+    ]
+    var spatial_simulation = VerticalSliceSimulationScript.new(spatial_config)
+    steps += _run_visit(spatial_simulation)
+    spatial_simulation.economy.cash_yen = 20_000_000
+    if spatial_simulation.try_purchase_permit("tobacco"):
+        _fail("try_purchase_permit() must reject a permit already held (within radius) by a configured rival")
+        return
+    # alcohol's exclusion_distance_tiles is 11: the rival at (50, 50) is far
+    # outside it, and the near rival only holds tobacco, not alcohol -- so
+    # alcohol must remain purchasable despite both rivals being configured.
+    if not spatial_simulation.try_purchase_permit("alcohol"):
+        _fail("try_purchase_permit() must not reject a permit no nearby rival holds")
+        return
+    # medicine's exclusion_distance_tiles is 15: still well outside either
+    # rival's actual holdings, so also purchasable.
+    if not spatial_simulation.try_purchase_permit("medicine"):
+        _fail("try_purchase_permit() must not reject a permit unrelated to any configured rival's holdings")
+        return
+    # Moving the same rival just outside tobacco's 7-tile radius (distance
+    # exactly 7, the boundary case) must flip the outcome to accepted.
+    var boundary_config: Dictionary = config.duplicate(true)
+    boundary_config["town"] = (boundary_config["town"] as Dictionary).duplicate(true)
+    boundary_config["town"]["rival_stores"] = [
+        {"id": "rival-at-boundary", "position": [7, 0], "permits_held": ["tobacco"]},
+    ]
+    var boundary_simulation = VerticalSliceSimulationScript.new(boundary_config)
+    steps += _run_visit(boundary_simulation)
+    boundary_simulation.economy.cash_yen = 20_000_000
+    if not boundary_simulation.try_purchase_permit("tobacco"):
+        _fail("try_purchase_permit() must accept a permit exactly at the exclusion radius boundary")
+        return
+
     var promotion_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(promotion_simulation)
     if promotion_simulation.popularity != 0:

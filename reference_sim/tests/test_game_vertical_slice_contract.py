@@ -2133,6 +2133,64 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "economy UI: pressing Hire candidate must update the selected slot's candidate_id", smoke
         )
 
+    def test_permit_exclusion_distance_is_wired_and_confirmed_official(self):
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        town_spatial = (GAME_ROOT / "scripts" / "domain" / "town_spatial.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # Task #59: a direct re-read of the strategy guide (book pages 6-7's
+        # distance diagram, book page 9's mutual-exclusion rule) confirmed
+        # CONFIRMED_OFFICIAL that a permit cannot be acquired within its
+        # exclusion radius of another store already holding it -- data that
+        # was already ported (task #26/#58) but explicitly left unenforced
+        # for lack of any spatial model. town_spatial.gd (ported from
+        # reference_sim/conveni_sim/remake_town_spatial.py, decision 0127)
+        # is this client's first actual (x, y) position data.
+        note = self.config["town"]["town_spatial_evidence_note"]
+        self.assertIn("CONFIRMED_OFFICIAL", note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
+        self.assertIn("player_store_position", note)
+
+        for permit_id, expected_distance in (("tobacco", 7), ("alcohol", 11), ("medicine", 15)):
+            permit_entry = next(
+                entry for entry in self.config["permits"] if entry["permit_id"] == permit_id
+            )
+            self.assertEqual(permit_entry["exclusion_distance_tiles"], expected_distance)
+
+        self.assertIn("class_name TownSpatial", town_spatial)
+        self.assertIn(
+            "func chebyshev_distance_tiles(a: Vector2i, b: Vector2i) -> int:", town_spatial
+        )
+        self.assertIn(
+            "func can_acquire_permit_at(\n    exclusion_distance_tiles: int,\n    candidate: Vector2i,\n    other_permit_holder_positions: Array[Vector2i]\n) -> bool:",
+            town_spatial,
+        )
+
+        self.assertIn("var _player_store_position: Vector2i", simulation)
+        self.assertIn("var _rival_stores: Array[Dictionary] = []", simulation)
+        self.assertIn("func _can_acquire_permit(permit_id: String) -> bool:", simulation)
+        self.assertIn("if not _can_acquire_permit(permit_id):", simulation)
+        self.assertIn(
+            "_town_spatial.can_acquire_permit_at(\n        exclusion_distance_tiles, _player_store_position, holder_positions\n    )",
+            simulation,
+        )
+
+        self.assertIn(
+            "try_purchase_permit() must reject a permit already held (within radius) by a configured rival",
+            smoke,
+        )
+        self.assertIn(
+            "try_purchase_permit() must not reject a permit no nearby rival holds", smoke
+        )
+        self.assertIn(
+            "try_purchase_permit() must accept a permit exactly at the exclusion radius boundary",
+            smoke,
+        )
+
     def test_bankruptcy_and_time_limit_game_over_are_confirmed_terminal_rules(self):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
             encoding="utf-8"
