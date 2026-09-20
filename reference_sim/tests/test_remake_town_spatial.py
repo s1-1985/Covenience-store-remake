@@ -8,6 +8,7 @@ from conveni_sim.remake_town_spatial import (
     can_acquire_permit_at,
     can_construct_store_at,
     chebyshev_distance_tiles,
+    facility_area_tiles_within_range,
     trade_area_overlap_ratio,
 )
 
@@ -129,6 +130,68 @@ class TradeAreaOverlapRatioTests(unittest.TestCase):
         self.assertGreater(
             trade_area_overlap_ratio((0, 0), car_radius, (45, 0), car_radius), 0.0
         )
+
+
+class FacilityAreaTilesWithinRangeTests(unittest.TestCase):
+    def test_facility_entirely_within_range_counts_every_footprint_tile(self):
+        # A 2x2 police box 10 tiles away from the store, well within a
+        # 16-tile range: all 4 footprint tiles count.
+        self.assertEqual(facility_area_tiles_within_range((0, 0), (10, 0), (2, 2), 16), 4)
+
+    def test_facility_straddling_the_range_boundary_counts_only_in_range_tiles(self):
+        # A 2x2 footprint at x=16..17: only the x=16 column (distance
+        # exactly 16, still in range) counts; x=17 (distance 17) does not.
+        self.assertEqual(facility_area_tiles_within_range((0, 0), (16, 0), (2, 2), 16), 2)
+
+    def test_facility_entirely_outside_range_counts_zero(self):
+        self.assertEqual(facility_area_tiles_within_range((0, 0), (17, 0), (2, 2), 16), 0)
+
+    def test_larger_footprint_counts_more_tiles_when_fully_in_range(self):
+        # fire_station's confirmed (2, 3) footprint vs police_box's (2, 2).
+        police_box_tiles = facility_area_tiles_within_range((0, 0), (5, 5), (2, 2), 16)
+        fire_station_tiles = facility_area_tiles_within_range((0, 0), (5, 5), (2, 3), 16)
+        self.assertEqual(police_box_tiles, 4)
+        self.assertEqual(fire_station_tiles, 6)
+        self.assertGreater(fire_station_tiles, police_box_tiles)
+
+    def test_zero_range_only_counts_a_footprint_tile_exactly_at_the_store(self):
+        self.assertEqual(facility_area_tiles_within_range((0, 0), (0, 0), (1, 1), 0), 1)
+        self.assertEqual(facility_area_tiles_within_range((0, 0), (1, 0), (1, 1), 0), 0)
+
+    def test_negative_footprint_dimension_rejected(self):
+        with self.assertRaises(ValueError):
+            facility_area_tiles_within_range((0, 0), (0, 0), (-1, 2), 16)
+
+    def test_negative_range_rejected(self):
+        with self.assertRaises(ValueError):
+            facility_area_tiles_within_range((0, 0), (0, 0), (2, 2), -1)
+
+    def test_feeds_confirmed_bonus_formula_via_security_facility_coverage(self):
+        # Task #61 integration: the spatial count this function produces is
+        # exactly what store_value.SecurityFacilityCoverage expects as
+        # police_box_area_tiles/fire_station_area_tiles -- the first actual
+        # caller of that class's *_area_tiles fields computed from real
+        # positions instead of a caller-supplied constant.
+        from conveni_sim.store_value import (
+            FIRE_STATION_BONUS_PER_AREA_TILE,
+            POLICE_BOX_BONUS_PER_AREA_TILE,
+            SECURITY_FACILITY_RANGE_TILES,
+            SecurityFacilityCoverage,
+        )
+
+        store_position = (0, 0)
+        police_box_tiles = facility_area_tiles_within_range(
+            store_position, (5, 5), (2, 2), SECURITY_FACILITY_RANGE_TILES
+        )
+        fire_station_tiles = facility_area_tiles_within_range(
+            store_position, (-5, -5), (2, 3), SECURITY_FACILITY_RANGE_TILES
+        )
+        coverage = SecurityFacilityCoverage(
+            police_box_area_tiles=police_box_tiles, fire_station_area_tiles=fire_station_tiles
+        )
+        self.assertEqual(coverage.police_box_bonus, police_box_tiles * POLICE_BOX_BONUS_PER_AREA_TILE)
+        self.assertEqual(coverage.fire_station_bonus, fire_station_tiles * FIRE_STATION_BONUS_PER_AREA_TILE)
+        self.assertTrue(coverage.has_any_protection)
 
 
 if __name__ == "__main__":

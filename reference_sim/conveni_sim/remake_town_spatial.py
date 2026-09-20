@@ -159,3 +159,48 @@ def trade_area_overlap_ratio(
     overlap_area = part1 + part2 - part3
     smaller_circle_area = math.pi * smaller_radius * smaller_radius
     return min(1.0, max(0.0, overlap_area / smaller_circle_area))
+
+
+def facility_area_tiles_within_range(
+    store_position: Position,
+    facility_position: Position,
+    facility_footprint: Tuple[int, int],
+    range_tiles: int,
+) -> int:
+    """Task #61: the spatial search `store_value.SecurityFacilityCoverage`'s
+    own docstring explicitly leaves out of scope -- "counting how many area
+    tiles of a facility fall in that range... is out of scope here; this
+    module only turns an already-counted tile count into a bonus." This
+    supplies exactly that count, given caller-known positions (same
+    convention as the rest of this module): `police_box_area_tiles`/
+    `fire_station_area_tiles` = facility_area_tiles_within_range(store_pos,
+    facility_pos, CONFIRMED_OFFICIAL footprint from `baseline_data.
+    TOWN_FACILITIES`, `store_value.SECURITY_FACILITY_RANGE_TILES`).
+
+    CONFIRMED_OFFICIAL inputs: police_box's (2, 2) and fire_station's (2, 3)
+    footprints (`baseline_data.TOWN_FACILITIES`), and the 16-tile range
+    itself (`store_value.SECURITY_FACILITY_RANGE_TILES`, guide's own "店舗
+    周囲16×16エリア" wording).
+
+    REMAKE_BALANCED_DEFAULT interpretation (already implicit in `store_
+    value.py`'s own "within this many tiles" phrasing, not newly introduced
+    here): "16x16エリア範囲内" is read as "Chebyshev distance <=
+    range_tiles from the store's own position", not as a literal 16x16-tile
+    square region anchored some other way -- the guide states the
+    dimensions and per-cell rate but not the exact region shape or anchor
+    point, the same kind of gap this module's own tile-distance-metric note
+    above already discusses.
+    """
+
+    footprint_width, footprint_height = facility_footprint
+    if footprint_width < 0 or footprint_height < 0:
+        raise ValueError("facility_footprint dimensions must be >= 0")
+    if range_tiles < 0:
+        raise ValueError("range_tiles must be >= 0")
+    count = 0
+    for dx in range(footprint_width):
+        for dy in range(footprint_height):
+            tile: Position = (facility_position[0] + dx, facility_position[1] + dy)
+            if chebyshev_distance_tiles(store_position, tile) <= range_tiles:
+                count += 1
+    return count
