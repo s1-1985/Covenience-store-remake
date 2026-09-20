@@ -1196,6 +1196,28 @@ was not attempted here. See decision 0127. `headless_smoke.gd` unchanged at 1046
 regression); `reference_sim` full suite 696 passed/1 xfailed (28 new test functions: 26 in the new
 spatial-module test file, 2 rival-policy integration tests).
 
+**Task #59 (2026-09-20)**: decision 0127 (task #58) had explicitly deferred wiring
+`remake_town_spatial.py`'s permit-exclusion rule into `game/`, since no rival-store entity (a
+tracked position and known permit holdings) existed in this client yet. This task added exactly
+that: `game/scripts/domain/town_spatial.gd` (a Godot port of only the piece of `remake_town_
+spatial.py` with an actual caller here -- `can_acquire_permit_at()`/`chebyshev_distance_tiles()`;
+`trade_area_overlap_ratio()` still has no Godot caller, so it stays unported) and two new
+`VerticalSliceSimulation` fields, `_player_store_position` (a REMAKE_BALANCED_DEFAULT coordinate
+origin -- this client still has no real town/map spatial simulation, decision 0095, so this is only
+a reference point for distance math) and `_rival_stores` (a static, config-supplied roster of
+position + held-permits; defaults to empty/no-op, same convention as `demand.rival_store_count`'s
+own default). `try_purchase_permit()` now calls a new `_can_acquire_permit()` helper that rejects a
+purchase if a configured rival within that permit's CONFIRMED_OFFICIAL exclusion radius (7/11/15
+tiles for tobacco/alcohol/medicine, book pages 6-7) already holds it -- the rule stated on book page
+9 that was ported as data back in task #26 but explicitly marked "not enforced here" ever since.
+`exclusion_distance_tiles` is now an actual numeric field on each `vertical_slice.json` permit entry
+(previously only mentioned in prose inside its evidence_note). `STORE_CONSTRUCTION_MIN_DISTANCE_
+TILES` (5 tiles, same diagram) is ported in `town_spatial.gd` but still unenforced anywhere in
+Godot: `try_expand_chain()` has no store-placement mechanic to attach a construction-distance check
+to. See decision 0128. `headless_smoke.gd` grew from 1046 to 1106 steps (two new scenarios: a
+near-rival-blocks/far-rival-doesn't-block case, and an exact-radius-boundary case); `reference_sim`
+full suite 697 passed/1 xfailed (one new test function).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1331,14 +1353,22 @@ order.
   months if left alone (実習マニュアル, stated in 2 scenarios); holding a permit may block nearby
   *rivals* from selling that category too, not just gate the player (実習マニュアル) -- task #58
   (decision 0127) confirmed and ported the exact distance diagram (5/7/11/15 tiles) this mutual-
-  exclusion behavior runs on, as `remake_town_spatial.can_acquire_permit_at()`, but still has no
-  rival-store entity (tracked position, known permit holdings) in either `reference_sim` or `game/`
-  to actually call it against -- `rival.py`'s `RivalChainRuntime` tracks rivals by an abstract
-  `location_id: str`, not a spatial position; a 20%-off campaign near a rival branch can force its
-  withdrawal (クイックリファレンス); a ¥500,000 rival-store investigation fee exists separate from
-  acquisition cost. `remake_rival_policy.py`'s decision policy is wired to a real geometric input
-  for the first time (task #58's `trade_area_overlap_ratio()` integration test), but still has no
-  production (`game/`) caller. None of this is in Godot yet.
+  exclusion behavior runs on, as `remake_town_spatial.can_acquire_permit_at()`; task #59 (decision
+  0128) then wired the Godot-side half of it -- `game/scripts/domain/town_spatial.gd` plus a
+  `VerticalSliceSimulation._rival_stores` roster (config-supplied position + held-permits, defaults
+  to empty/no-op) -- so `try_purchase_permit()` now actually rejects a purchase blocked by a
+  configured rival. What remains open: no source states how many rivals exist, where they sit, or
+  which permits they actually hold in a real playthrough, so `_rival_stores`/`remake_town_spatial`'s
+  own equivalent stay entirely caller-supplied (test/scenario data only) rather than something this
+  client generates on its own; `rival.py`'s `RivalChainRuntime` (reference_sim) still tracks rivals
+  by an abstract `location_id: str`, not a spatial position, so it is not the same entity as
+  `_rival_stores` above -- the two have not been unified. A 20%-off campaign near a rival branch can
+  force its withdrawal (クイックリファレンス); a ¥500,000 rival-store investigation fee exists
+  separate from acquisition cost. `remake_rival_policy.py`'s decision policy is wired to a real
+  geometric input for the first time (task #58's `trade_area_overlap_ratio()` integration test), but
+  still has no production (`game/`) caller -- no rival-AI decision loop exists in Godot to call it
+  from, and `trade_area_overlap_ratio()` itself was deliberately not ported into `town_spatial.gd`
+  for the same "no caller yet" reason.
 - **Staff mechanics**: basic hiring (replacing a fixed roster slot's occupant with a different
   candidate from the 35-person pool) implemented in task #56 (decision 0125) -- see section 19's
   task #56 entry. Still NOT implemented, each for the reason noted: PS版固定 3% wage-negotiation
