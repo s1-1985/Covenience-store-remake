@@ -1,6 +1,6 @@
 # Convenience Store Remake — Project Memory
 
-Last updated: 2026-09-18 (JST)
+Last updated: 2026-09-21 (JST)
 
 This file is the canonical memory checkpoint for the project. If chat context is lost, start by reading this file and the files under `docs/research/`.
 
@@ -10,7 +10,7 @@ This file is the canonical memory checkpoint for the project. If chat context is
 - Development method: GitHub is the source of truth for code, research, decisions, handoff notes, and later generated assets.
 - Baseline design target: reproduce the gameplay structure and feel of the first home-console version of **『ザ・コンビニ ～あの町を独占せよ～』**, released for PlayStation / Sega Saturn in 1997, as closely as practical.
 - After the baseline is playable, add original systems and modernization step by step.
-- Do not reuse original copyrighted game assets, logos, music, text dumps, or sprites. Visual/audio assets for this project should be newly created.
+- Distribution scope (owner decision, 2026-09-21): this project is for the owner's personal use only and will not be publicly distributed or shared with unspecified third parties. Given that, original-title assets/data may be referenced directly (including via disc-image analysis) when preparing this project's own visual/audio assets, superseding this section's earlier blanket "do not reuse, always create new" instruction. A separate, later original convenience-store-management game the owner plans to build using know-how from this project will not reuse any assets or data derived from the original title.
 - The previous project `Convenience-store-Frontier` is reference material only. Do not import its architecture blindly.
 
 ## 2. Why PS/SS 1997 is the baseline
