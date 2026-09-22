@@ -1,0 +1,102 @@
+[
+  {
+    "source": "01-1000263623.png",
+    "sha256": "cc13b37db7656a9e1b6c5da99612157b1c649e983d84c0542256ba8bbced0857",
+    "size": [
+      1536,
+      1152
+    ],
+    "detected_cells": 25,
+    "retained": 16
+  },
+  {
+    "source": "02-1000263624.png",
+    "sha256": "f250f75270b2c8301779c92222c1d29f7406d529ec78771193bc5946939103c1",
+    "size": [
+      1536,
+      1152
+    ],
+    "detected_cells": 52,
+    "retained": 30
+  },
+  {
+    "source": "03-1000263625.png",
+    "sha256": "279835890999b63a5856e6705bf47efd5d76554887bc2681e817ca2a02107c88",
+    "size": [
+      1536,
+      1152
+    ],
+    "detected_cells": 36,
+    "retained": 27
+  },
+  {
+    "source": "04-1000263626.png",
+    "sha256": "a7d4d341eaaa5af1eac3f8dd9a16664d6526d3fcae361e76bcb57b9bbb420e79",
+    "size": [
+      1536,
+      1536
+    ],
+    "detected_cells": 90,
+    "retained": 0
+  },
+  {
+    "source": "05-1000263627.png",
+    "sha256": "56a573beb0184be5cb217f47a98d77b4464f291c1b42172342ccb63a6de92d27",
+    "size": [
+      1536,
+      1536
+    ],
+    "detected_cells": 102,
+    "retained": 7
+  },
+  {
+    "source": "06-1000263628.png",
+    "sha256": "99f11a8d260b3db21a1087af51eb351bec84d976657bdf311bf0cab77eb684da",
+    "size": [
+      1536,
+      1536
+    ],
+    "detected_cells": 90,
+    "retained": 22
+  },
+  {
+    "source": "07-1000263633.png",
+    "sha256": "91522391625bcf7a13c795c2a2dea96db31754e42bf975677f339a4fdcdf7317",
+    "size": [
+      1536,
+      1536
+    ],
+    "detected_cells": 70,
+    "retained": 4
+  },
+  {
+    "source": "08-1000263631.png",
+    "sha256": "5ab0fa1bb678f7a990f776a5d505ee79162d7a82225ed5c2e78208fff05b365e",
+    "size": [
+      1536,
+      1536
+    ],
+    "detected_cells": 70,
+    "retained": 0
+  },
+  {
+    "source": "09-1000263630.png",
+    "sha256": "b1b2f0e1f0c863a84b2ace396ad2525499280590113e9d8e10b0a6130702741d",
+    "size": [
+      1536,
+      1536
+    ],
+    "detected_cells": 80,
+    "retained": 0
+  },
+  {
+    "source": "10-1000263629.png",
+    "sha256": "c00dae808103ba42b540bcc62a9cb06c3d90b41d25524d722f424e190aef404b",
+    "size": [
+      1536,
+      1536
+    ],
+    "detected_cells": 70,
+    "retained": 15
+  }
+]

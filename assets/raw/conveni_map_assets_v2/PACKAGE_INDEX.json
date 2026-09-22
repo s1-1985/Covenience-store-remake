@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "building_count": 52,
+  "terrain_count": 121,
+  "total_unique_assets": 173,
+  "combined_manifest": "map_assets_manifest.json",
+  "buildings": {
+    "manifest": "manifest.json",
+    "atlas": "atlas.png",
+    "frames": "atlas.json"
+  },
+  "terrain": {
+    "manifest": "terrain/manifest.json",
+    "atlas": "terrain/atlas.png",
+    "frames": "terrain/atlas.json"
+  },
+  "read_first": "README_V2_JA.md"
+}

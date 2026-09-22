@@ -1,0 +1,1708 @@
+{
+  "frames": {
+    "map_dirt_sparse": {
+      "frame": {
+        "x": 3,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_dirt_stones": {
+      "frame": {
+        "x": 73,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_dirt_weeds": {
+      "frame": {
+        "x": 143,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_forest_clearing": {
+      "frame": {
+        "x": 213,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_forest_dense": {
+      "frame": {
+        "x": 283,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_grass_dirt": {
+      "frame": {
+        "x": 353,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_grass_flowers": {
+      "frame": {
+        "x": 423,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_grass_plain": {
+      "frame": {
+        "x": 493,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_grass_tall": {
+      "frame": {
+        "x": 563,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_shrubs_dirt": {
+      "frame": {
+        "x": 633,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_shrubs_flowers": {
+      "frame": {
+        "x": 703,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_shrubs_large": {
+      "frame": {
+        "x": 773,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_shrubs_sparse": {
+      "frame": {
+        "x": 843,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_trees_clearing": {
+      "frame": {
+        "x": 913,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_trees_medium": {
+      "frame": {
+        "x": 983,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_trees_sparse": {
+      "frame": {
+        "x": 1053,
+        "y": 3,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_concrete": {
+      "frame": {
+        "x": 3,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_gravel": {
+      "frame": {
+        "x": 73,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_paving_weeds": {
+      "frame": {
+        "x": 143,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_sand": {
+      "frame": {
+        "x": 213,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_soil_dark": {
+      "frame": {
+        "x": 283,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_wood_dark": {
+      "frame": {
+        "x": 353,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_wood_light": {
+      "frame": {
+        "x": 423,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_sidewalk_cross": {
+      "frame": {
+        "x": 493,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_sidewalk_es": {
+      "frame": {
+        "x": 563,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_sidewalk_ew": {
+      "frame": {
+        "x": 633,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_sidewalk_ne": {
+      "frame": {
+        "x": 703,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_sidewalk_ns": {
+      "frame": {
+        "x": 773,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_sidewalk_nw": {
+      "frame": {
+        "x": 843,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_bench_flowers": {
+      "frame": {
+        "x": 913,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_flowerbed": {
+      "frame": {
+        "x": 983,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_hedges": {
+      "frame": {
+        "x": 1053,
+        "y": 73,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_lamps": {
+      "frame": {
+        "x": 3,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_paving_edge": {
+      "frame": {
+        "x": 73,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_paving_t": {
+      "frame": {
+        "x": 143,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_tree_planter": {
+      "frame": {
+        "x": 213,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_branch_e": {
+      "frame": {
+        "x": 283,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_branch_w": {
+      "frame": {
+        "x": 353,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_cross": {
+      "frame": {
+        "x": 423,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_ew": {
+      "frame": {
+        "x": 493,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_ne": {
+      "frame": {
+        "x": 563,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_ns": {
+      "frame": {
+        "x": 633,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_nw": {
+      "frame": {
+        "x": 703,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_overgrown": {
+      "frame": {
+        "x": 773,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_platform_e": {
+      "frame": {
+        "x": 843,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_platform_w": {
+      "frame": {
+        "x": 913,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_stop_e": {
+      "frame": {
+        "x": 983,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_stop_s": {
+      "frame": {
+        "x": 1053,
+        "y": 143,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_stop_w": {
+      "frame": {
+        "x": 3,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_y": {
+      "frame": {
+        "x": 73,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_crossing_basic": {
+      "frame": {
+        "x": 143,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_crossing_closed": {
+      "frame": {
+        "x": 213,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_parking_bay_ew": {
+      "frame": {
+        "x": 283,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_parking_bay_s": {
+      "frame": {
+        "x": 353,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_cross": {
+      "frame": {
+        "x": 423,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_cross_zebra": {
+      "frame": {
+        "x": 493,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_end_s": {
+      "frame": {
+        "x": 563,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_end_w": {
+      "frame": {
+        "x": 633,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_ew": {
+      "frame": {
+        "x": 703,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_median_long": {
+      "frame": {
+        "x": 773,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_median_round": {
+      "frame": {
+        "x": 843,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_ne": {
+      "frame": {
+        "x": 913,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_ns": {
+      "frame": {
+        "x": 983,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_round_end_s": {
+      "frame": {
+        "x": 1053,
+        "y": 213,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_t_new": {
+      "frame": {
+        "x": 3,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_t_wes": {
+      "frame": {
+        "x": 73,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_turnaround_s": {
+      "frame": {
+        "x": 143,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_wide_cross": {
+      "frame": {
+        "x": 213,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_wide_end_w": {
+      "frame": {
+        "x": 283,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_wide_ew": {
+      "frame": {
+        "x": 353,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_wide_t_new": {
+      "frame": {
+        "x": 423,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_wide_t_sew": {
+      "frame": {
+        "x": 493,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_wide_zebra": {
+      "frame": {
+        "x": 563,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_ws": {
+      "frame": {
+        "x": 633,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_yellow_curve": {
+      "frame": {
+        "x": 703,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_zebra_ns": {
+      "frame": {
+        "x": 773,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_grade_separation_cross": {
+      "frame": {
+        "x": 843,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_bridge_ew": {
+      "frame": {
+        "x": 913,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_bridge_ns": {
+      "frame": {
+        "x": 983,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_elevated_ew": {
+      "frame": {
+        "x": 1053,
+        "y": 283,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_truss_ew": {
+      "frame": {
+        "x": 3,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_truss_ns": {
+      "frame": {
+        "x": 73,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_rail_tunnel_s": {
+      "frame": {
+        "x": 143,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_retaining_stairs": {
+      "frame": {
+        "x": 213,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_retaining_wall": {
+      "frame": {
+        "x": 283,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_bridge_ew": {
+      "frame": {
+        "x": 353,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_bridge_ns": {
+      "frame": {
+        "x": 423,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_elevated_ew": {
+      "frame": {
+        "x": 493,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_road_tunnel_s": {
+      "frame": {
+        "x": 563,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_waterfront_stairs": {
+      "frame": {
+        "x": 633,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_waterfront_wall": {
+      "frame": {
+        "x": 703,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_channel_diagonal": {
+      "frame": {
+        "x": 773,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_headland": {
+      "frame": {
+        "x": 843,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_land_e": {
+      "frame": {
+        "x": 913,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_land_e_bulge": {
+      "frame": {
+        "x": 983,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_land_e_step": {
+      "frame": {
+        "x": 1053,
+        "y": 353,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_land_s": {
+      "frame": {
+        "x": 3,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_land_s_inlet": {
+      "frame": {
+        "x": 73,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_land_s_wavy": {
+      "frame": {
+        "x": 143,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_land_se": {
+      "frame": {
+        "x": 213,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_land_sw": {
+      "frame": {
+        "x": 283,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_land_sw_square": {
+      "frame": {
+        "x": 353,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_land_w_bulge": {
+      "frame": {
+        "x": 423,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_water_ne": {
+      "frame": {
+        "x": 493,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_coast_water_nw": {
+      "frame": {
+        "x": 563,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_inlet_w": {
+      "frame": {
+        "x": 633,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_pond_channel_s": {
+      "frame": {
+        "x": 703,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_pond_irregular": {
+      "frame": {
+        "x": 773,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_pond_round": {
+      "frame": {
+        "x": 843,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_pond_small": {
+      "frame": {
+        "x": 913,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_river_basin_s": {
+      "frame": {
+        "x": 983,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_river_cross": {
+      "frame": {
+        "x": 1053,
+        "y": 423,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_river_es": {
+      "frame": {
+        "x": 3,
+        "y": 493,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_river_ew": {
+      "frame": {
+        "x": 73,
+        "y": 493,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_river_meander": {
+      "frame": {
+        "x": 143,
+        "y": 493,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_river_mouth_s": {
+      "frame": {
+        "x": 213,
+        "y": 493,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_river_mouth_s_square": {
+      "frame": {
+        "x": 283,
+        "y": 493,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_river_ne": {
+      "frame": {
+        "x": 353,
+        "y": 493,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_river_ns": {
+      "frame": {
+        "x": 423,
+        "y": 493,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_sea_waves": {
+      "frame": {
+        "x": 493,
+        "y": 493,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    },
+    "map_water_calm": {
+      "frame": {
+        "x": 563,
+        "y": 493,
+        "w": 64,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": false,
+      "sourceSize": {
+        "w": 64,
+        "h": 64
+      }
+    }
+  },
+  "meta": {
+    "image": "atlas.png",
+    "size": {
+      "w": 1120,
+      "h": 560
+    },
+    "scale": "1",
+    "extrusion": 2,
+    "coordinate_origin": "top_left"
+  }
+}

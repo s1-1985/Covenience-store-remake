@@ -1,0 +1,686 @@
+﻿source,row,column,detected_bbox,status,asset_id,reason
+01-1000263623.png,1,1,"[78, 54, 283, 251]",retained,map_dirt_sparse,core_style_representative
+01-1000263623.png,1,2,"[371, 54, 576, 251]",retained,map_dirt_weeds,core_style_representative
+01-1000263623.png,1,3,"[666, 54, 870, 251]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+01-1000263623.png,1,4,"[959, 54, 1164, 251]",retained,map_dirt_stones,core_style_representative
+01-1000263623.png,1,5,"[1253, 54, 1459, 251]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+01-1000263623.png,2,1,"[78, 269, 283, 465]",retained,map_grass_plain,core_style_representative
+01-1000263623.png,2,2,"[370, 269, 576, 465]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+01-1000263623.png,2,3,"[666, 269, 870, 465]",retained,map_grass_flowers,core_style_representative
+01-1000263623.png,2,4,"[959, 269, 1165, 465]",retained,map_grass_tall,core_style_representative
+01-1000263623.png,2,5,"[1253, 269, 1459, 465]",retained,map_grass_dirt,core_style_representative
+01-1000263623.png,3,1,"[78, 484, 283, 675]",retained,map_shrubs_sparse,core_style_representative
+01-1000263623.png,3,2,"[370, 484, 576, 675]",retained,map_shrubs_large,core_style_representative
+01-1000263623.png,3,3,"[665, 484, 870, 675]",retained,map_shrubs_flowers,core_style_representative
+01-1000263623.png,3,4,"[959, 484, 1164, 675]",retained,map_shrubs_dirt,core_style_representative
+01-1000263623.png,3,5,"[1253, 484, 1459, 675]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+01-1000263623.png,4,1,"[78, 693, 283, 888]",retained,map_trees_sparse,core_style_representative
+01-1000263623.png,4,2,"[370, 693, 576, 888]",retained,map_trees_clearing,core_style_representative
+01-1000263623.png,4,3,"[665, 693, 870, 887]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+01-1000263623.png,4,4,"[960, 693, 1165, 888]",retained,map_trees_medium,core_style_representative
+01-1000263623.png,4,5,"[1253, 693, 1459, 888]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+01-1000263623.png,5,1,"[78, 904, 283, 1100]",retained,map_forest_dense,core_style_representative
+01-1000263623.png,5,2,"[370, 904, 576, 1100]",retained,map_forest_clearing,core_style_representative
+01-1000263623.png,5,3,"[665, 904, 870, 1100]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+01-1000263623.png,5,4,"[959, 904, 1164, 1100]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+01-1000263623.png,5,5,"[1253, 904, 1459, 1100]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,1,1,"[28, 45, 185, 199]",retained,map_sea_waves,core_style_representative
+02-1000263624.png,1,2,"[205, 44, 370, 199]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,1,3,"[397, 44, 563, 199]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,1,4,"[586, 44, 755, 199]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,1,5,"[785, 44, 946, 199]",retained,map_water_calm,core_style_representative
+02-1000263624.png,1,6,"[969, 44, 1137, 198]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,1,7,"[1163, 44, 1333, 199]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,1,8,"[1355, 44, 1509, 199]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,2,1,"[27, 229, 154, 360]",retained,map_coast_land_s,core_style_representative
+02-1000263624.png,2,2,"[168, 229, 292, 360]",retained,map_coast_land_s_wavy,core_style_representative
+02-1000263624.png,2,3,"[306, 229, 437, 360]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,2,4,"[453, 229, 583, 360]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,2,5,"[599, 229, 728, 360]",retained,map_coast_land_sw,core_style_representative
+02-1000263624.png,2,6,"[752, 229, 877, 360]",retained,map_coast_land_e,core_style_representative
+02-1000263624.png,2,7,"[897, 229, 1036, 360]",retained,map_coast_land_e_step,core_style_representative
+02-1000263624.png,2,8,"[1061, 229, 1192, 360]",retained,map_coast_land_sw_square,core_style_representative
+02-1000263624.png,2,9,"[1214, 228, 1349, 360]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,2,10,"[1371, 227, 1508, 360]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,3,1,"[28, 393, 154, 520]",retained,map_coast_water_ne,core_style_representative
+02-1000263624.png,3,2,"[176, 393, 304, 520]",retained,map_coast_water_nw,core_style_representative
+02-1000263624.png,3,3,"[331, 393, 577, 520]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,3,4,"[600, 393, 721, 521]",retained,map_coast_land_w_bulge,core_style_representative
+02-1000263624.png,3,5,"[746, 393, 874, 520]",retained,map_coast_land_e_bulge,core_style_representative
+02-1000263624.png,3,6,"[899, 393, 1027, 520]",retained,map_coast_land_s_inlet,core_style_representative
+02-1000263624.png,3,7,"[1050, 393, 1188, 521]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,3,8,"[1214, 393, 1346, 521]",retained,map_coast_land_se,core_style_representative
+02-1000263624.png,3,9,"[1371, 393, 1508, 520]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,4,1,"[33, 552, 207, 696]",retained,map_pond_round,core_style_representative
+02-1000263624.png,4,2,"[232, 552, 385, 696]",retained,map_pond_irregular,core_style_representative
+02-1000263624.png,4,3,"[412, 552, 562, 696]",retained,map_pond_small,core_style_representative
+02-1000263624.png,4,4,"[587, 552, 724, 696]",retained,map_inlet_w,core_style_representative
+02-1000263624.png,4,5,"[749, 552, 896, 696]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,4,6,"[923, 552, 1072, 696]",retained,map_channel_diagonal,core_style_representative
+02-1000263624.png,4,7,"[1097, 551, 1286, 696]",retained,map_river_meander,core_style_representative
+02-1000263624.png,4,8,"[1313, 552, 1504, 696]",retained,map_pond_channel_s,core_style_representative
+02-1000263624.png,5,1,"[30, 729, 160, 873]",retained,map_river_ns,core_style_representative
+02-1000263624.png,5,2,"[184, 729, 320, 874]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,5,3,"[346, 730, 498, 873]",retained,map_river_ew,core_style_representative
+02-1000263624.png,5,4,"[521, 730, 672, 873]",retained,map_river_es,core_style_representative
+02-1000263624.png,5,5,"[700, 730, 861, 874]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,5,6,"[888, 730, 1023, 874]",retained,map_river_ne,core_style_representative
+02-1000263624.png,5,7,"[1047, 731, 1193, 873]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,5,8,"[1217, 730, 1352, 873]",retained,map_river_cross,core_style_representative
+02-1000263624.png,5,9,"[1376, 730, 1508, 873]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,6,1,"[28, 907, 195, 1077]",retained,map_river_mouth_s,core_style_representative
+02-1000263624.png,6,2,"[219, 907, 387, 1076]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,6,3,"[411, 907, 582, 1076]",retained,map_river_mouth_s_square,core_style_representative
+02-1000263624.png,6,4,"[608, 907, 773, 1076]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,6,5,"[798, 907, 962, 1074]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,6,6,"[989, 906, 1140, 1074]",retained,map_river_basin_s,core_style_representative
+02-1000263624.png,6,7,"[1162, 906, 1318, 1074]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+02-1000263624.png,6,8,"[1345, 907, 1508, 1074]",retained,map_coast_headland,core_style_representative
+03-1000263625.png,1,1,"[52, 90, 220, 259]",retained,map_road_ns,core_style_representative
+03-1000263625.png,1,2,"[256, 90, 424, 258]",retained,map_road_ew,core_style_representative
+03-1000263625.png,1,3,"[461, 90, 631, 259]",retained,map_road_ws,core_style_representative
+03-1000263625.png,1,4,"[674, 90, 839, 258]",retained,map_road_ne,core_style_representative
+03-1000263625.png,1,5,"[879, 90, 1051, 259]",retained,map_road_cross,core_style_representative
+03-1000263625.png,1,6,"[1091, 90, 1271, 259]",retained,map_road_t_wes,core_style_representative
+03-1000263625.png,1,7,"[1313, 90, 1483, 259]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+03-1000263625.png,2,1,"[52, 301, 221, 471]",retained,map_road_end_s,core_style_representative
+03-1000263625.png,2,2,"[256, 301, 423, 471]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+03-1000263625.png,2,3,"[466, 301, 635, 471]",retained,map_road_end_w,core_style_representative
+03-1000263625.png,2,4,"[674, 301, 838, 471]",retained,map_road_turnaround_s,core_style_representative
+03-1000263625.png,2,5,"[879, 300, 1051, 470]",retained,map_crossing_basic,core_style_representative
+03-1000263625.png,2,6,"[1091, 300, 1271, 470]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+03-1000263625.png,2,7,"[1312, 300, 1482, 471]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+03-1000263625.png,3,1,"[56, 534, 216, 691]",retained,map_rail_ns,core_style_representative
+03-1000263625.png,3,2,"[257, 535, 422, 691]",retained,map_rail_ew,core_style_representative
+03-1000263625.png,3,3,"[467, 534, 630, 691]",retained,map_rail_nw,core_style_representative
+03-1000263625.png,3,4,"[676, 534, 838, 689]",retained,map_rail_ne,core_style_representative
+03-1000263625.png,3,5,"[882, 533, 1046, 689]",retained,map_rail_cross,core_style_representative
+03-1000263625.png,3,6,"[1094, 533, 1266, 689]",excluded,,ambiguous_geometry: 分岐・交差部のレール構造が不明瞭
+03-1000263625.png,3,7,"[1313, 533, 1478, 689]",excluded,,ambiguous_geometry: 分岐・交差部のレール構造が不明瞭
+03-1000263625.png,4,1,"[53, 733, 216, 881]",retained,map_rail_stop_s,core_style_representative
+03-1000263625.png,4,2,"[256, 736, 422, 883]",retained,map_rail_stop_w,core_style_representative
+03-1000263625.png,4,3,"[465, 735, 633, 882]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+03-1000263625.png,4,4,"[675, 732, 839, 881]",retained,map_rail_y,core_style_representative
+03-1000263625.png,4,5,"[882, 733, 1049, 881]",retained,map_rail_branch_e,core_style_representative
+03-1000263625.png,4,6,"[1094, 733, 1263, 880]",retained,map_rail_branch_w,core_style_representative
+03-1000263625.png,4,7,"[1312, 733, 1478, 881]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+03-1000263625.png,5,1,"[51, 939, 217, 1083]",retained,map_road_bridge_ns,core_style_representative
+03-1000263625.png,5,2,"[257, 939, 424, 1083]",retained,map_rail_bridge_ns,core_style_representative
+03-1000263625.png,5,3,"[461, 939, 611, 1083]",retained,map_road_tunnel_s,core_style_representative
+03-1000263625.png,5,4,"[641, 939, 784, 1083]",retained,map_rail_tunnel_s,core_style_representative
+03-1000263625.png,5,5,"[812, 940, 957, 1083]",retained,map_grade_separation_cross,core_style_representative
+03-1000263625.png,5,6,"[989, 940, 1133, 1082]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+03-1000263625.png,5,7,"[1165, 940, 1309, 1082]",retained,map_road_elevated_ew,core_style_representative
+03-1000263625.png,5,8,"[1343, 940, 1485, 1082]",retained,map_rail_elevated_ew,core_style_representative
+04-1000263626.png,1,1,"[18, 23, 156, 172]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,1,2,"[169, 23, 305, 172]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,1,3,"[320, 23, 457, 172]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,1,4,"[473, 23, 609, 172]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,1,5,"[623, 23, 760, 172]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,1,6,"[774, 23, 912, 172]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,1,7,"[926, 23, 1062, 172]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,1,8,"[1078, 23, 1215, 172]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,1,9,"[1230, 23, 1367, 172]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,1,10,"[1381, 23, 1518, 172]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,2,1,"[18, 189, 156, 338]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,2,2,"[169, 189, 305, 338]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,2,3,"[320, 189, 457, 338]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,2,4,"[473, 189, 609, 339]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,2,5,"[623, 189, 760, 338]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,2,6,"[774, 189, 912, 338]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,2,7,"[926, 189, 1062, 338]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,2,8,"[1078, 189, 1215, 338]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,2,9,"[1230, 189, 1367, 338]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,2,10,"[1381, 189, 1517, 338]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,3,1,"[18, 354, 156, 503]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,3,2,"[169, 354, 305, 503]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,3,3,"[319, 354, 457, 503]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,3,4,"[473, 354, 609, 503]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,3,5,"[623, 354, 760, 503]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,3,6,"[774, 354, 912, 503]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,3,7,"[926, 354, 1062, 503]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,3,8,"[1078, 354, 1215, 503]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,3,9,"[1230, 354, 1367, 503]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,3,10,"[1381, 354, 1518, 503]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,4,1,"[18, 517, 156, 664]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,4,2,"[169, 517, 305, 664]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,4,3,"[319, 517, 457, 664]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,4,4,"[473, 517, 609, 664]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,4,5,"[623, 517, 760, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,4,6,"[774, 517, 911, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,4,7,"[926, 518, 1062, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,4,8,"[1078, 518, 1215, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,4,9,"[1230, 518, 1367, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,4,10,"[1381, 518, 1517, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,5,1,"[18, 678, 156, 833]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,5,2,"[169, 678, 305, 833]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,5,3,"[319, 678, 457, 833]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,5,4,"[473, 678, 609, 833]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,5,5,"[623, 678, 760, 833]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,5,6,"[774, 678, 911, 833]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,5,7,"[926, 678, 1062, 833]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,5,8,"[1078, 678, 1215, 833]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,5,9,"[1230, 678, 1367, 833]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,5,10,"[1381, 678, 1517, 833]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,6,1,"[18, 847, 156, 1002]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,6,2,"[169, 847, 305, 1002]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,6,3,"[319, 847, 457, 1002]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,6,4,"[473, 847, 609, 1002]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,6,5,"[623, 847, 760, 1002]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,6,6,"[774, 847, 911, 1002]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,6,7,"[926, 847, 1062, 1002]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,6,8,"[1078, 847, 1215, 1002]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,6,9,"[1230, 847, 1367, 1003]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,6,10,"[1381, 847, 1517, 1003]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,7,1,"[18, 1017, 156, 1168]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,7,2,"[169, 1017, 305, 1168]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,7,3,"[320, 1017, 457, 1168]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,7,4,"[473, 1017, 609, 1168]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,7,5,"[623, 1017, 760, 1168]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,7,6,"[774, 1017, 911, 1168]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,7,7,"[926, 1017, 1062, 1168]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,7,8,"[1078, 1017, 1215, 1168]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,7,9,"[1230, 1017, 1366, 1168]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,7,10,"[1381, 1018, 1517, 1168]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,8,1,"[18, 1183, 156, 1317]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,8,2,"[169, 1183, 305, 1317]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,8,3,"[320, 1183, 457, 1317]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,8,4,"[473, 1184, 609, 1317]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,8,5,"[623, 1184, 760, 1317]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,8,6,"[775, 1184, 911, 1317]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,8,7,"[926, 1184, 1062, 1317]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,8,8,"[1078, 1184, 1215, 1317]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,8,9,"[1231, 1184, 1366, 1317]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,8,10,"[1381, 1184, 1517, 1317]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,9,1,"[18, 1331, 156, 1469]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,9,2,"[169, 1331, 305, 1470]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,9,3,"[320, 1331, 457, 1470]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,9,4,"[473, 1331, 609, 1470]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,9,5,"[623, 1331, 760, 1470]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,9,6,"[775, 1331, 911, 1470]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,9,7,"[927, 1331, 1062, 1470]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,9,8,"[1078, 1331, 1215, 1470]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,9,9,"[1231, 1331, 1366, 1470]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+04-1000263626.png,9,10,"[1381, 1331, 1517, 1470]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+05-1000263627.png,1,1,"[18, 23, 155, 153]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,1,2,"[168, 23, 305, 153]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,1,3,"[319, 23, 457, 153]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,1,4,"[472, 23, 609, 153]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,1,5,"[623, 23, 761, 153]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,1,6,"[774, 23, 913, 153]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,1,7,"[926, 23, 1064, 153]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,1,8,"[1079, 23, 1217, 153]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,1,9,"[1231, 23, 1367, 153]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,1,10,"[1380, 23, 1518, 153]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,2,1,"[18, 167, 155, 299]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,2,2,"[168, 166, 305, 299]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,2,3,"[319, 166, 457, 299]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,2,4,"[472, 167, 609, 299]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,2,5,"[623, 167, 760, 299]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,2,6,"[774, 167, 912, 299]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,2,7,"[926, 167, 1064, 299]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,2,8,"[1079, 166, 1217, 299]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,2,9,"[1231, 166, 1367, 299]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,2,10,"[1380, 167, 1517, 299]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,3,1,"[19, 314, 155, 446]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,3,2,"[168, 314, 305, 446]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,3,3,"[319, 314, 457, 446]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,3,4,"[472, 314, 609, 446]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,3,5,"[623, 314, 760, 446]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,3,6,"[774, 315, 912, 446]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,3,7,"[926, 314, 1064, 446]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,3,8,"[1079, 314, 1217, 446]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,3,9,"[1231, 314, 1367, 446]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,3,10,"[1380, 314, 1517, 446]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,4,1,"[19, 458, 155, 589]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,4,2,"[168, 458, 304, 588]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,4,3,"[319, 458, 457, 589]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,4,4,"[472, 458, 609, 589]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,4,5,"[623, 457, 760, 589]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,4,6,"[774, 458, 912, 589]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,4,7,"[926, 458, 1064, 589]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,4,8,"[1079, 458, 1217, 589]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,4,9,"[1231, 458, 1367, 589]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,4,10,"[1380, 458, 1517, 589]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,5,1,"[19, 604, 154, 738]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,5,2,"[168, 604, 304, 738]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,5,3,"[319, 604, 457, 738]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,5,4,"[472, 604, 609, 738]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,5,5,"[624, 604, 760, 738]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,5,6,"[774, 604, 911, 738]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,5,7,"[926, 604, 1064, 738]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,5,8,"[1079, 604, 1216, 738]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,5,9,"[1232, 604, 1366, 738]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,5,10,"[1380, 604, 1517, 738]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,6,1,"[19, 751, 154, 886]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,6,2,"[168, 751, 304, 886]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,6,3,"[319, 751, 457, 886]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,6,4,"[472, 751, 609, 886]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,6,5,"[623, 751, 760, 886]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,6,6,"[774, 751, 911, 886]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,6,7,"[926, 751, 1064, 886]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,6,8,"[1079, 751, 1217, 886]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,6,9,"[1231, 751, 1367, 886]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,6,10,"[1380, 751, 1517, 886]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,7,1,"[19, 899, 154, 1035]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,7,2,"[168, 899, 304, 1035]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,7,3,"[319, 899, 457, 1035]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,7,4,"[472, 899, 609, 1035]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,7,5,"[623, 899, 760, 1035]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,7,6,"[774, 899, 912, 1035]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,7,7,"[926, 899, 1064, 1035]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,7,8,"[1079, 899, 1217, 1035]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,7,9,"[1231, 899, 1367, 1035]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,7,10,"[1380, 899, 1517, 1035]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,8,1,"[19, 1050, 154, 1185]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,8,2,"[168, 1050, 304, 1184]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,8,3,"[319, 1050, 457, 1185]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,8,4,"[472, 1050, 609, 1185]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,8,5,"[623, 1050, 760, 1185]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,8,6,"[774, 1050, 912, 1185]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,8,7,"[926, 1050, 1064, 1185]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,8,8,"[1079, 1050, 1217, 1185]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,8,9,"[1231, 1050, 1366, 1185]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,8,10,"[1380, 1050, 1517, 1185]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,9,1,"[19, 1197, 154, 1335]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,9,2,"[168, 1197, 305, 1334]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,9,3,"[319, 1197, 457, 1334]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,9,4,"[472, 1197, 609, 1334]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,9,5,"[624, 1197, 760, 1334]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,9,6,"[774, 1197, 912, 1334]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,9,7,"[926, 1197, 1064, 1334]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,9,8,"[1079, 1197, 1217, 1334]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,9,9,"[1231, 1197, 1367, 1334]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,9,10,"[1380, 1197, 1516, 1334]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+05-1000263627.png,10,1,"[20, 1351, 119, 1474]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,10,2,"[130, 1351, 229, 1474]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,10,3,"[241, 1351, 341, 1474]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,10,4,"[353, 1351, 452, 1474]",retained,map_concrete,supplement_missing_material_or_function
+05-1000263627.png,10,5,"[464, 1351, 563, 1474]",retained,map_gravel,supplement_missing_material_or_function
+05-1000263627.png,10,6,"[575, 1351, 674, 1475]",retained,map_paving_weeds,supplement_missing_material_or_function
+05-1000263627.png,10,7,"[685, 1351, 784, 1475]",retained,map_wood_dark,supplement_missing_material_or_function
+05-1000263627.png,10,8,"[796, 1351, 894, 1474]",retained,map_wood_light,supplement_missing_material_or_function
+05-1000263627.png,10,9,"[906, 1351, 1005, 1475]",retained,map_sand,supplement_missing_material_or_function
+05-1000263627.png,10,10,"[1017, 1351, 1117, 1474]",retained,map_soil_dark,supplement_missing_material_or_function
+05-1000263627.png,10,11,"[1241, 1351, 1374, 1474]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+05-1000263627.png,10,12,"[1387, 1351, 1516, 1474]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,1,1,"[18, 23, 155, 173]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,1,2,"[169, 23, 304, 173]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,1,3,"[320, 23, 457, 173]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,1,4,"[472, 23, 609, 173]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,1,5,"[624, 23, 761, 173]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,1,6,"[775, 23, 911, 173]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,1,7,"[927, 23, 1064, 173]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,1,8,"[1079, 23, 1216, 173]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,1,9,"[1232, 23, 1367, 173]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,1,10,"[1381, 23, 1518, 173]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,2,1,"[18, 189, 155, 337]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,2,2,"[169, 189, 304, 337]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,2,3,"[320, 189, 457, 337]",retained,map_road_bridge_ew,supplement_missing_material_or_function
+06-1000263628.png,2,4,"[472, 189, 609, 337]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,2,5,"[624, 189, 761, 337]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,2,6,"[775, 189, 911, 337]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,2,7,"[927, 189, 1064, 337]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,2,8,"[1079, 189, 1216, 337]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,2,9,"[1232, 189, 1367, 337]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,2,10,"[1381, 189, 1517, 337]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,3,1,"[18, 353, 155, 501]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,3,2,"[169, 353, 304, 501]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,3,3,"[319, 354, 457, 502]",retained,map_rail_truss_ns,supplement_missing_material_or_function
+06-1000263628.png,3,4,"[472, 354, 609, 502]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,3,5,"[624, 353, 761, 501]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,3,6,"[775, 354, 911, 502]",retained,map_rail_bridge_ew,supplement_missing_material_or_function
+06-1000263628.png,3,7,"[927, 353, 1064, 502]",retained,map_rail_truss_ew,supplement_missing_material_or_function
+06-1000263628.png,3,8,"[1079, 353, 1217, 502]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,3,9,"[1232, 353, 1367, 501]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,3,10,"[1381, 353, 1517, 502]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,4,1,"[18, 516, 155, 662]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,4,2,"[169, 516, 304, 661]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,4,3,"[320, 517, 457, 662]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,4,4,"[472, 517, 608, 661]",retained,map_crossing_closed,supplement_missing_material_or_function
+06-1000263628.png,4,5,"[624, 517, 761, 661]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,4,6,"[775, 517, 911, 662]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,4,7,"[927, 517, 1064, 662]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,4,8,"[1079, 517, 1216, 662]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,4,9,"[1232, 517, 1367, 661]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,4,10,"[1381, 517, 1517, 662]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,5,1,"[18, 676, 155, 819]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,5,2,"[169, 676, 304, 819]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,5,3,"[320, 676, 457, 819]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,5,4,"[472, 676, 609, 819]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,5,5,"[624, 676, 761, 819]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,5,6,"[775, 676, 911, 819]",retained,map_road_cross_zebra,supplement_missing_material_or_function
+06-1000263628.png,5,7,"[927, 676, 1064, 819]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,5,8,"[1079, 676, 1217, 819]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,5,9,"[1232, 676, 1367, 819]",retained,map_road_round_end_s,supplement_missing_material_or_function
+06-1000263628.png,5,10,"[1381, 676, 1517, 819]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,6,1,"[18, 834, 155, 968]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,6,2,"[169, 834, 304, 969]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,6,3,"[320, 834, 457, 969]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,6,4,"[472, 834, 609, 969]",retained,map_parking_bay_s,supplement_missing_material_or_function
+06-1000263628.png,6,5,"[624, 834, 761, 969]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,6,6,"[775, 834, 911, 969]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,6,7,"[927, 834, 1064, 969]",retained,map_parking_bay_ew,supplement_missing_material_or_function
+06-1000263628.png,6,8,"[1079, 834, 1216, 969]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,6,9,"[1232, 834, 1366, 969]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,6,10,"[1381, 834, 1517, 969]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,7,1,"[18, 984, 155, 1126]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,7,2,"[169, 984, 304, 1126]",retained,map_road_median_long,supplement_missing_material_or_function
+06-1000263628.png,7,3,"[319, 984, 457, 1126]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,7,4,"[472, 984, 609, 1126]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,7,5,"[624, 984, 761, 1126]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,7,6,"[775, 984, 911, 1126]",retained,map_road_median_round,supplement_missing_material_or_function
+06-1000263628.png,7,7,"[927, 984, 1063, 1126]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,7,8,"[1079, 984, 1216, 1126]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,7,9,"[1232, 984, 1366, 1126]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,7,10,"[1381, 984, 1517, 1126]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,8,1,"[18, 1141, 155, 1280]",retained,map_retaining_wall,supplement_missing_material_or_function
+06-1000263628.png,8,2,"[169, 1140, 304, 1280]",retained,map_retaining_stairs,supplement_missing_material_or_function
+06-1000263628.png,8,3,"[320, 1141, 457, 1280]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,8,4,"[473, 1141, 608, 1280]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,8,5,"[624, 1141, 761, 1280]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,8,6,"[775, 1141, 911, 1280]",retained,map_waterfront_stairs,supplement_missing_material_or_function
+06-1000263628.png,8,7,"[927, 1141, 1064, 1280]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,8,8,"[1079, 1141, 1216, 1280]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,8,9,"[1232, 1141, 1366, 1280]",retained,map_waterfront_wall,supplement_missing_material_or_function
+06-1000263628.png,8,10,"[1381, 1141, 1517, 1280]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,9,1,"[18, 1294, 154, 1433]",retained,map_flowerbed,supplement_missing_material_or_function
+06-1000263628.png,9,2,"[169, 1294, 304, 1433]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,9,3,"[320, 1294, 457, 1433]",retained,map_bench_flowers,supplement_missing_material_or_function
+06-1000263628.png,9,4,"[473, 1294, 608, 1433]",retained,map_tree_planter,supplement_missing_material_or_function
+06-1000263628.png,9,5,"[624, 1294, 760, 1433]",retained,map_lamps,supplement_missing_material_or_function
+06-1000263628.png,9,6,"[775, 1294, 911, 1433]",retained,map_hedges,supplement_missing_material_or_function
+06-1000263628.png,9,7,"[927, 1294, 1063, 1433]",retained,map_paving_t,supplement_missing_material_or_function
+06-1000263628.png,9,8,"[1079, 1294, 1215, 1433]",retained,map_paving_edge,supplement_missing_material_or_function
+06-1000263628.png,9,9,"[1232, 1294, 1366, 1433]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+06-1000263628.png,9,10,"[1382, 1294, 1517, 1433]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,1,1,"[17, 23, 156, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,1,2,"[169, 23, 305, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,1,3,"[318, 23, 456, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,1,4,"[470, 23, 609, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,1,5,"[623, 23, 761, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,1,6,"[774, 23, 913, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,1,7,"[927, 23, 1065, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,1,8,"[1079, 23, 1217, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,1,9,"[1230, 23, 1367, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,1,10,"[1380, 23, 1519, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,2,1,"[17, 188, 156, 362]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,2,2,"[169, 188, 305, 362]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,2,3,"[318, 188, 456, 362]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,2,4,"[470, 188, 609, 362]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,2,5,"[623, 188, 761, 362]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,2,6,"[774, 188, 913, 362]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,2,7,"[927, 188, 1065, 362]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,2,8,"[1079, 188, 1217, 362]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,2,9,"[1230, 188, 1367, 362]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,2,10,"[1380, 188, 1519, 363]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,3,1,"[18, 380, 156, 551]",retained,map_rail_stop_e,supplement_missing_material_or_function
+07-1000263633.png,3,2,"[169, 379, 305, 551]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,3,3,"[319, 379, 456, 551]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,3,4,"[470, 379, 609, 551]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,3,5,"[623, 379, 761, 551]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,3,6,"[774, 379, 913, 551]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,3,7,"[927, 379, 1065, 551]",retained,map_rail_overgrown,supplement_missing_material_or_function
+07-1000263633.png,3,8,"[1079, 379, 1217, 551]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,3,9,"[1230, 379, 1367, 552]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,3,10,"[1380, 379, 1519, 552]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,4,1,"[18, 568, 156, 746]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,4,2,"[169, 568, 305, 746]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,4,3,"[319, 568, 456, 746]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,4,4,"[471, 567, 609, 746]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,4,5,"[623, 568, 760, 746]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,4,6,"[774, 568, 912, 746]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,4,7,"[926, 568, 1064, 747]",retained,map_rail_platform_e,supplement_missing_material_or_function
+07-1000263633.png,4,8,"[1079, 568, 1216, 747]",retained,map_rail_platform_w,supplement_missing_material_or_function
+07-1000263633.png,4,9,"[1230, 568, 1365, 747]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,4,10,"[1380, 568, 1519, 747]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,5,1,"[18, 764, 156, 961]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,5,2,"[169, 764, 305, 961]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,5,3,"[319, 764, 456, 961]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,5,4,"[470, 764, 609, 961]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,5,5,"[624, 764, 760, 961]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,5,6,"[773, 763, 911, 961]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,5,7,"[926, 764, 1063, 961]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,5,8,"[1079, 764, 1216, 961]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,5,9,"[1231, 763, 1366, 961]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,5,10,"[1379, 764, 1518, 961]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,6,1,"[17, 978, 156, 1197]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,6,2,"[169, 978, 305, 1197]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,6,3,"[319, 978, 456, 1197]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,6,4,"[470, 978, 609, 1198]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,6,5,"[623, 978, 760, 1198]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,6,6,"[773, 978, 910, 1197]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,6,7,"[925, 978, 1063, 1197]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,6,8,"[1079, 978, 1216, 1197]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,6,9,"[1230, 978, 1365, 1197]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,6,10,"[1379, 978, 1518, 1197]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,7,1,"[17, 1214, 156, 1414]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,7,2,"[169, 1214, 305, 1414]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,7,3,"[319, 1214, 456, 1414]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,7,4,"[470, 1214, 609, 1414]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,7,5,"[623, 1214, 760, 1414]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,7,6,"[773, 1214, 911, 1414]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,7,7,"[925, 1214, 1063, 1414]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,7,8,"[1078, 1214, 1216, 1414]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,7,9,"[1231, 1214, 1365, 1414]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+07-1000263633.png,7,10,"[1379, 1214, 1518, 1414]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+08-1000263631.png,1,1,"[17, 24, 155, 171]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,1,2,"[169, 24, 306, 171]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,1,3,"[320, 24, 458, 171]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,1,4,"[472, 24, 610, 171]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,1,5,"[624, 24, 761, 171]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,1,6,"[775, 24, 912, 171]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,1,7,"[927, 24, 1064, 171]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,1,8,"[1079, 24, 1216, 171]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,1,9,"[1230, 24, 1367, 171]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,1,10,"[1381, 24, 1518, 171]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,2,1,"[18, 189, 155, 337]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,2,2,"[169, 188, 306, 337]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,2,3,"[320, 189, 458, 337]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,2,4,"[472, 188, 610, 337]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,2,5,"[624, 188, 761, 337]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,2,6,"[775, 188, 912, 337]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,2,7,"[926, 188, 1064, 337]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,2,8,"[1078, 188, 1216, 337]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,2,9,"[1230, 189, 1367, 337]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,2,10,"[1381, 188, 1518, 337]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,3,1,"[17, 354, 155, 501]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,3,2,"[169, 354, 306, 501]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,3,3,"[320, 354, 458, 501]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,3,4,"[472, 354, 610, 501]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,3,5,"[624, 353, 761, 501]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,3,6,"[775, 353, 912, 501]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,3,7,"[926, 353, 1064, 501]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,3,8,"[1078, 354, 1216, 501]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,3,9,"[1230, 353, 1367, 501]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,3,10,"[1381, 354, 1518, 501]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,4,1,"[17, 517, 155, 664]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,4,2,"[169, 517, 306, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,4,3,"[320, 517, 457, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,4,4,"[472, 517, 610, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,4,5,"[624, 517, 761, 664]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,4,6,"[775, 517, 912, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,4,7,"[926, 517, 1064, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,4,8,"[1079, 517, 1216, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,4,9,"[1230, 517, 1367, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,4,10,"[1381, 517, 1518, 663]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,5,1,"[17, 679, 155, 827]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,5,2,"[169, 679, 306, 827]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,5,3,"[320, 679, 458, 826]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,5,4,"[472, 679, 610, 826]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,5,5,"[624, 679, 761, 826]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,5,6,"[775, 679, 913, 826]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,5,7,"[926, 679, 1064, 826]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,5,8,"[1078, 679, 1216, 826]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,5,9,"[1230, 679, 1367, 826]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,5,10,"[1381, 679, 1518, 826]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,6,1,"[17, 843, 155, 988]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,6,2,"[169, 842, 306, 988]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,6,3,"[320, 842, 457, 988]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,6,4,"[472, 842, 610, 988]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,6,5,"[624, 842, 761, 988]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,6,6,"[775, 842, 912, 988]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,6,7,"[926, 842, 1064, 988]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,6,8,"[1079, 842, 1216, 988]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,6,9,"[1230, 842, 1367, 988]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,6,10,"[1381, 842, 1518, 988]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,7,1,"[17, 1004, 155, 1150]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,7,2,"[169, 1004, 306, 1150]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,7,3,"[320, 1004, 457, 1150]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,7,4,"[472, 1004, 610, 1150]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,7,5,"[624, 1004, 761, 1150]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,7,6,"[775, 1004, 912, 1150]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,7,7,"[926, 1004, 1064, 1150]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,7,8,"[1078, 1004, 1216, 1150]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,7,9,"[1230, 1004, 1367, 1150]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+08-1000263631.png,7,10,"[1381, 1004, 1518, 1150]",excluded,,style_mismatch: 水面・岩肌の細かな描写が基準の簡略化された水場と異なる
+09-1000263630.png,1,1,"[17, 23, 157, 172]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,1,2,"[168, 23, 307, 172]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,1,3,"[318, 23, 458, 172]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,1,4,"[471, 23, 610, 172]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,1,5,"[622, 23, 762, 172]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,1,6,"[773, 23, 914, 172]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,1,7,"[927, 23, 1066, 172]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,1,8,"[1078, 23, 1217, 172]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,1,9,"[1229, 23, 1369, 172]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,1,10,"[1380, 23, 1519, 172]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,2,1,"[17, 188, 157, 337]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,2,2,"[167, 188, 307, 337]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,2,3,"[318, 188, 458, 337]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,2,4,"[470, 188, 610, 337]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,2,5,"[622, 189, 762, 337]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,2,6,"[773, 189, 914, 337]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,2,7,"[926, 189, 1066, 338]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,2,8,"[1077, 189, 1216, 338]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,2,9,"[1229, 189, 1369, 338]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,2,10,"[1380, 189, 1519, 338]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,3,1,"[17, 354, 157, 503]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,3,2,"[167, 354, 306, 503]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,3,3,"[317, 354, 457, 503]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,3,4,"[470, 354, 609, 503]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,3,5,"[621, 354, 761, 503]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,3,6,"[773, 354, 914, 503]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,3,7,"[926, 354, 1065, 503]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,3,8,"[1077, 354, 1216, 503]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,3,9,"[1228, 354, 1369, 503]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,3,10,"[1380, 354, 1519, 503]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,4,1,"[17, 517, 156, 665]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,4,2,"[167, 517, 306, 665]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,4,3,"[318, 517, 457, 665]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,4,4,"[470, 517, 610, 665]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,4,5,"[622, 517, 761, 665]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,4,6,"[773, 517, 914, 665]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,4,7,"[926, 517, 1065, 665]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,4,8,"[1078, 517, 1216, 665]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,4,9,"[1229, 517, 1369, 665]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,4,10,"[1380, 517, 1519, 665]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,5,1,"[17, 679, 156, 841]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,5,2,"[167, 679, 306, 842]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,5,3,"[318, 679, 457, 842]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,5,4,"[471, 679, 610, 841]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,5,5,"[622, 679, 761, 841]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,5,6,"[774, 679, 913, 842]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,5,7,"[927, 679, 1065, 842]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,5,8,"[1078, 679, 1216, 842]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,5,9,"[1229, 679, 1368, 842]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,5,10,"[1380, 679, 1519, 841]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,6,1,"[17, 858, 156, 1023]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,6,2,"[168, 858, 306, 1023]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,6,3,"[318, 858, 457, 1023]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,6,4,"[471, 858, 609, 1023]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,6,5,"[622, 858, 761, 1022]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,6,6,"[774, 858, 914, 1022]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,6,7,"[927, 858, 1065, 1022]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,6,8,"[1078, 858, 1216, 1022]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,6,9,"[1229, 858, 1367, 1022]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,6,10,"[1380, 858, 1518, 1022]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,7,1,"[17, 1036, 157, 1197]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,7,2,"[168, 1036, 306, 1197]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,7,3,"[318, 1036, 457, 1197]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,7,4,"[470, 1035, 610, 1197]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,7,5,"[622, 1035, 761, 1197]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,7,6,"[774, 1035, 914, 1197]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,7,7,"[926, 1036, 1065, 1197]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,7,8,"[1078, 1035, 1216, 1197]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,7,9,"[1229, 1035, 1368, 1197]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,7,10,"[1380, 1036, 1519, 1197]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,8,1,"[18, 1212, 156, 1382]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,8,2,"[169, 1212, 306, 1382]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,8,3,"[319, 1212, 458, 1382]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,8,4,"[471, 1212, 609, 1382]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,8,5,"[622, 1212, 762, 1382]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,8,6,"[774, 1212, 914, 1382]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,8,7,"[927, 1212, 1065, 1382]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,8,8,"[1078, 1212, 1216, 1382]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,8,9,"[1229, 1212, 1368, 1382]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+09-1000263630.png,8,10,"[1380, 1212, 1518, 1382]",excluded,,style_or_near_duplicate: 葉・地面・水面の描写差。基準の土地・樹木・水場を優先
+10-1000263629.png,1,1,"[18, 23, 155, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,1,2,"[168, 23, 305, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,1,3,"[319, 23, 457, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,1,4,"[472, 23, 609, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,1,5,"[623, 23, 761, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,1,6,"[774, 23, 913, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,1,7,"[927, 23, 1065, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,1,8,"[1079, 23, 1218, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,1,9,"[1231, 23, 1367, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,1,10,"[1380, 23, 1517, 172]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,2,1,"[18, 189, 155, 338]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,2,2,"[168, 190, 304, 338]",retained,map_road_t_new,supplement_missing_material_or_function
+10-1000263629.png,2,3,"[318, 190, 456, 338]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,2,4,"[472, 190, 609, 338]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,2,5,"[623, 189, 761, 338]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,2,6,"[775, 190, 912, 338]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,2,7,"[927, 189, 1065, 338]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,2,8,"[1080, 189, 1217, 338]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,2,9,"[1231, 190, 1366, 338]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,2,10,"[1380, 190, 1517, 338]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,3,1,"[18, 354, 155, 542]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,3,2,"[168, 354, 304, 542]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,3,3,"[318, 354, 456, 542]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,3,4,"[472, 354, 609, 542]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,3,5,"[623, 354, 761, 541]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,3,6,"[775, 355, 912, 541]",retained,map_road_zebra_ns,supplement_missing_material_or_function
+10-1000263629.png,3,7,"[927, 355, 1065, 541]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,3,8,"[1080, 355, 1217, 541]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,3,9,"[1231, 355, 1366, 541]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,3,10,"[1380, 355, 1517, 541]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,4,1,"[18, 558, 154, 743]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,4,2,"[168, 558, 304, 744]",retained,map_road_wide_ew,supplement_missing_material_or_function
+10-1000263629.png,4,3,"[318, 558, 456, 743]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,4,4,"[472, 558, 609, 743]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,4,5,"[623, 558, 761, 743]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,4,6,"[775, 558, 912, 743]",retained,map_road_wide_t_new,supplement_missing_material_or_function
+10-1000263629.png,4,7,"[927, 558, 1065, 743]",retained,map_road_wide_t_sew,supplement_missing_material_or_function
+10-1000263629.png,4,8,"[1080, 558, 1217, 744]",retained,map_road_wide_cross,supplement_missing_material_or_function
+10-1000263629.png,4,9,"[1231, 558, 1366, 744]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,4,10,"[1380, 558, 1517, 744]",retained,map_road_yellow_curve,supplement_missing_material_or_function
+10-1000263629.png,5,1,"[18, 760, 154, 948]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,5,2,"[168, 760, 304, 948]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,5,3,"[318, 760, 456, 948]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,5,4,"[472, 760, 609, 948]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,5,5,"[623, 760, 761, 948]",retained,map_road_wide_end_w,supplement_missing_material_or_function
+10-1000263629.png,5,6,"[775, 760, 913, 947]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,5,7,"[927, 760, 1065, 947]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,5,8,"[1080, 760, 1217, 947]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,5,9,"[1231, 760, 1366, 947]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,5,10,"[1380, 760, 1516, 947]",retained,map_road_wide_zebra,supplement_missing_material_or_function
+10-1000263629.png,6,1,"[18, 964, 154, 1170]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,6,2,"[168, 964, 304, 1170]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,6,3,"[319, 964, 456, 1170]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,6,4,"[472, 964, 609, 1170]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,6,5,"[623, 964, 761, 1170]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,6,6,"[775, 964, 912, 1170]",retained,map_sidewalk_ns,supplement_missing_material_or_function
+10-1000263629.png,6,7,"[927, 963, 1064, 1170]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,6,8,"[1080, 964, 1217, 1170]",retained,map_sidewalk_es,supplement_missing_material_or_function
+10-1000263629.png,6,9,"[1232, 964, 1366, 1170]",retained,map_sidewalk_nw,supplement_missing_material_or_function
+10-1000263629.png,6,10,"[1380, 964, 1516, 1170]",retained,map_sidewalk_ne,supplement_missing_material_or_function
+10-1000263629.png,7,1,"[19, 1187, 154, 1381]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,7,2,"[168, 1187, 304, 1381]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,7,3,"[319, 1187, 456, 1381]",retained,map_sidewalk_ew,supplement_missing_material_or_function
+10-1000263629.png,7,4,"[472, 1187, 609, 1381]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,7,5,"[624, 1187, 761, 1381]",retained,map_sidewalk_cross,supplement_missing_material_or_function
+10-1000263629.png,7,6,"[775, 1187, 913, 1381]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,7,7,"[927, 1188, 1065, 1381]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,7,8,"[1080, 1188, 1217, 1381]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,7,9,"[1231, 1187, 1366, 1381]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用
+10-1000263629.png,7,10,"[1380, 1187, 1516, 1381]",excluded,,near_duplicate_or_alternative: 同用途・近似構図の候補を整理し、代表を採用

@@ -1,0 +1,1359 @@
+{
+  "schema_version": 1,
+  "pixels_per_tile": 64,
+  "asset_count": 52,
+  "assets": [
+    {
+      "id": "kindergarten_building",
+      "name_ja": "幼稚園",
+      "file": "sprites/kindergarten_building.png",
+      "footprint": [
+        3,
+        2
+      ],
+      "width_px": 192,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        6,
+        191,
+        122
+      ],
+      "content_size": [
+        190,
+        116
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "f164af917a80b251bb504f15133b020d21ae58e1414664776b5b482647569ee0"
+    },
+    {
+      "id": "elementary_school_building",
+      "name_ja": "小学校",
+      "file": "sprites/elementary_school_building.png",
+      "footprint": [
+        4,
+        4
+      ],
+      "width_px": 256,
+      "height_px": 256,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        11,
+        255,
+        245
+      ],
+      "content_size": [
+        254,
+        234
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "c23a4e27648b4764f321b4433e2eed16965d13e46dd6c728a6e790648c2bc323"
+    },
+    {
+      "id": "middle_school_building",
+      "name_ja": "中学校",
+      "file": "sprites/middle_school_building.png",
+      "footprint": [
+        5,
+        5
+      ],
+      "width_px": 320,
+      "height_px": 320,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        4,
+        319,
+        316
+      ],
+      "content_size": [
+        318,
+        312
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "6a740e6175e83c25c3ca2498e96ec3cfca826a433954c4670e53f26bba7d4a4e"
+    },
+    {
+      "id": "high_school_building",
+      "name_ja": "高校",
+      "file": "sprites/high_school_building.png",
+      "footprint": [
+        6,
+        6
+      ],
+      "width_px": 384,
+      "height_px": 384,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        6,
+        383,
+        378
+      ],
+      "content_size": [
+        382,
+        372
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "4e3d0a5d032f86857b456e4bfc3ea383a72977cf5a72bef8dea8ac3ef257d328"
+    },
+    {
+      "id": "vocational_school_building",
+      "name_ja": "専門学校",
+      "file": "sprites/vocational_school_building.png",
+      "footprint": [
+        4,
+        3
+      ],
+      "width_px": 256,
+      "height_px": 192,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        11,
+        255,
+        180
+      ],
+      "content_size": [
+        254,
+        169
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "2ef8093f75498b7fa8188e3778acef8b61f81b9bc4814340621afd24b9688281"
+    },
+    {
+      "id": "university_building",
+      "name_ja": "大学",
+      "file": "sprites/university_building.png",
+      "footprint": [
+        7,
+        7
+      ],
+      "width_px": 448,
+      "height_px": 448,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        5,
+        1,
+        443,
+        447
+      ],
+      "content_size": [
+        438,
+        446
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "4b6de4780c8177272c684f87183a8c75ca5a5547cbe58ae7ad18d7108c88557a"
+    },
+    {
+      "id": "village_office",
+      "name_ja": "役場(村役場)",
+      "file": "sprites/village_office.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        4,
+        127,
+        124
+      ],
+      "content_size": [
+        126,
+        120
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "998765d96aaa8ff3e0f7a872b45404eba5aa14302dedb2bda109609fbf5c67f2"
+    },
+    {
+      "id": "prefectural_office",
+      "name_ja": "役所(県庁)",
+      "file": "sprites/prefectural_office.png",
+      "footprint": [
+        5,
+        5
+      ],
+      "width_px": 320,
+      "height_px": 320,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        8,
+        319,
+        312
+      ],
+      "content_size": [
+        318,
+        304
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "b74db399ac6d22a0532e2684a3f1dcf975f8de34d8d4e44ccb540417924a714f"
+    },
+    {
+      "id": "metropolitan_government_office",
+      "name_ja": "都庁",
+      "file": "sprites/metropolitan_government_office.png",
+      "footprint": [
+        7,
+        7
+      ],
+      "width_px": 448,
+      "height_px": 448,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        447,
+        447
+      ],
+      "content_size": [
+        446,
+        446
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "4861826c1e129e45c01eb3060391b01e1da762016f4f93d13d89e8e93345f3b3"
+    },
+    {
+      "id": "amusement_park_building",
+      "name_ja": "遊園地",
+      "file": "sprites/amusement_park_building.png",
+      "footprint": [
+        7,
+        7
+      ],
+      "width_px": 448,
+      "height_px": 448,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        3,
+        447,
+        445
+      ],
+      "content_size": [
+        446,
+        442
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "bcc4c7247227ea8c0c6c55647b56f6ec14ed36af4b8abc76b9e9229ef043e59d"
+    },
+    {
+      "id": "aquarium_building",
+      "name_ja": "水族館",
+      "file": "sprites/aquarium_building.png",
+      "footprint": [
+        3,
+        3
+      ],
+      "width_px": 192,
+      "height_px": 192,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        5,
+        191,
+        187
+      ],
+      "content_size": [
+        190,
+        182
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "fb7a1578fc9130fa33400ee4b33a437f34a793d1080a7253534690e24ca40501"
+    },
+    {
+      "id": "zoo_building",
+      "name_ja": "動物園",
+      "file": "sprites/zoo_building.png",
+      "footprint": [
+        6,
+        6
+      ],
+      "width_px": 384,
+      "height_px": 384,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        3,
+        383,
+        381
+      ],
+      "content_size": [
+        382,
+        378
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "f3b0723ce01685ca824afe4779ca399fd338d9399055cc1771fa374dfcd3e85a"
+    },
+    {
+      "id": "small_park_building",
+      "name_ja": "公園(小)",
+      "file": "sprites/small_park_building.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        63,
+        62
+      ],
+      "content_size": [
+        62,
+        61
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "f0daf2219e60dfee01a74cbef78552f65dd796a78f21d9e54b47be763aa3450b"
+    },
+    {
+      "id": "large_park_building",
+      "name_ja": "公園(大)",
+      "file": "sprites/large_park_building.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        127,
+        126
+      ],
+      "content_size": [
+        126,
+        124
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "44d103f683230da5d2686d4e9eacb7a2723cb872126389d72125e9b07aae1b37"
+    },
+    {
+      "id": "game_center",
+      "name_ja": "ゲームセンター",
+      "file": "sprites/game_center.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        3,
+        63,
+        61
+      ],
+      "content_size": [
+        62,
+        58
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "1cca8494483d8547aa2f7362f2bc7d247c3cd09abea2286405a57afc91a6db32"
+    },
+    {
+      "id": "pachinko_parlor",
+      "name_ja": "パチンコ屋",
+      "file": "sprites/pachinko_parlor.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        127,
+        126
+      ],
+      "content_size": [
+        126,
+        124
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "42b91dd2b3268a3e9ba4244c2a7c13536853276446ac35e63e4d593cd722fe8e"
+    },
+    {
+      "id": "bathhouse",
+      "name_ja": "銭湯",
+      "file": "sprites/bathhouse.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        127,
+        126
+      ],
+      "content_size": [
+        126,
+        125
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "e7fd7359890b008c89925a52c57d0e70e5c6fc7b8706022fca21b0b8bb5a79db"
+    },
+    {
+      "id": "family_restaurant",
+      "name_ja": "ファミリーレストラン",
+      "file": "sprites/family_restaurant.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        3,
+        127,
+        124
+      ],
+      "content_size": [
+        126,
+        121
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "a1ffd0b6cfb67d54f305f4c85471946bc541fbb417511445693cbeb1557b87a6"
+    },
+    {
+      "id": "family_restaurant_a",
+      "name_ja": "ファミリーレストランA",
+      "file": "sprites/family_restaurant_a.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        3,
+        127,
+        124
+      ],
+      "content_size": [
+        126,
+        121
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "a5e28195e53921bbddd206f5f66f7f9aca93dcd742ddbfb18497771e985e1b38"
+    },
+    {
+      "id": "family_restaurant_b",
+      "name_ja": "ファミリーレストランB",
+      "file": "sprites/family_restaurant_b.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        4,
+        127,
+        124
+      ],
+      "content_size": [
+        126,
+        120
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "35e80bf719e2a3395d45bb508c5e4c0f743ff4dc999f821c7b064110cf56b5d5"
+    },
+    {
+      "id": "restaurant",
+      "name_ja": "レストラン",
+      "file": "sprites/restaurant.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "width_px": 128,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        5,
+        127,
+        58
+      ],
+      "content_size": [
+        126,
+        53
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "af037c9b17060d6eb3641c535c9d85da85d09878833cc5b39c2bbba495339f28"
+    },
+    {
+      "id": "fast_food_a",
+      "name_ja": "ファーストフードA",
+      "file": "sprites/fast_food_a.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        63,
+        61
+      ],
+      "content_size": [
+        62,
+        59
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "61f60fc9c53a8d7d1ca2641063ee73a3f0c8fa39d5366021547aa48c776b3530"
+    },
+    {
+      "id": "fast_food_b",
+      "name_ja": "ファーストフードB",
+      "file": "sprites/fast_food_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        63,
+        62
+      ],
+      "content_size": [
+        62,
+        61
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "821e02517a54103d68004dda886f5e3f94d8b2284e24b0deda0ee1abc482ea16"
+    },
+    {
+      "id": "soba_shop",
+      "name_ja": "そば屋",
+      "file": "sprites/soba_shop.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        63,
+        62
+      ],
+      "content_size": [
+        62,
+        61
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "10bb7f84cd6c2767fbb24b5514723ae8c9a4257dea5b52031a2b04f9015bc32b"
+    },
+    {
+      "id": "ramen_shop",
+      "name_ja": "ラーメン屋",
+      "file": "sprites/ramen_shop.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        63,
+        61
+      ],
+      "content_size": [
+        62,
+        59
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "ad71aea0886793e4f14ef2c6ef0a80af0018d719b48482c2086b6b047e6edf92"
+    },
+    {
+      "id": "izakaya_a",
+      "name_ja": "飲み屋A",
+      "file": "sprites/izakaya_a.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        3,
+        63,
+        60
+      ],
+      "content_size": [
+        62,
+        57
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "cc452e58dcad6bbfa7263351523033f3a42b5d26a5e38a602e4d7574a398aa25"
+    },
+    {
+      "id": "izakaya_b",
+      "name_ja": "飲み屋B",
+      "file": "sprites/izakaya_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        63,
+        62
+      ],
+      "content_size": [
+        62,
+        60
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "15c74bae283a364c21761ad785c040e2a60ced9c8e52957350b0d645a3c37fe4"
+    },
+    {
+      "id": "izakaya_c",
+      "name_ja": "飲み屋C",
+      "file": "sprites/izakaya_c.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        63,
+        61
+      ],
+      "content_size": [
+        62,
+        59
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "c1bf75d2040caf94f12548ac0acc83b8057698b060c9e9b8dec0fcaa9f6ec65f"
+    },
+    {
+      "id": "toy_store",
+      "name_ja": "おもちゃ屋",
+      "file": "sprites/toy_store.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        6,
+        63,
+        57
+      ],
+      "content_size": [
+        62,
+        51
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "99004fe49592510bc078c7a445e644526dadd534969f484e50888aebe88b7b10"
+    },
+    {
+      "id": "clothing_store",
+      "name_ja": "洋品店",
+      "file": "sprites/clothing_store.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        63,
+        61
+      ],
+      "content_size": [
+        62,
+        59
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "7235833c811f0a60a1ae2350877ba89f2e17318069dfb75213c44065568d5a38"
+    },
+    {
+      "id": "electronics_store",
+      "name_ja": "電気屋",
+      "file": "sprites/electronics_store.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        63,
+        63
+      ],
+      "content_size": [
+        62,
+        62
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "369c2769f84cd51fca97e2575c3cffa71431e8c0213f02a7ada8ef01045d77a5"
+    },
+    {
+      "id": "bookstore",
+      "name_ja": "本屋",
+      "file": "sprites/bookstore.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        63,
+        62
+      ],
+      "content_size": [
+        62,
+        61
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "3f3a17474b2fdc48b0dd9f88b76b60548f4afd40e9f7619875abb75b50a50af2"
+    },
+    {
+      "id": "house_small_a",
+      "name_ja": "住宅(小A)",
+      "file": "sprites/house_small_a.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        63,
+        62
+      ],
+      "content_size": [
+        62,
+        60
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "60b214909d0152ca6519f10a7df6b785294f72351897a474e94e7c84c340087b"
+    },
+    {
+      "id": "house_small_b",
+      "name_ja": "住宅(小B)",
+      "file": "sprites/house_small_b.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        63,
+        62
+      ],
+      "content_size": [
+        62,
+        61
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "47f6a563bab67df4ecd765f16d0b5b9097a2214924c57021f57ea98d33f79f43"
+    },
+    {
+      "id": "house_small_c",
+      "name_ja": "住宅(小C)",
+      "file": "sprites/house_small_c.png",
+      "footprint": [
+        1,
+        1
+      ],
+      "width_px": 64,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        63,
+        62
+      ],
+      "content_size": [
+        62,
+        61
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "8e2c6017d534088c04562caac878c7ecc14f932d299421baba1c951bbcdbb7d8"
+    },
+    {
+      "id": "house_small_d",
+      "name_ja": "住宅(小D)",
+      "file": "sprites/house_small_d.png",
+      "footprint": [
+        1,
+        2
+      ],
+      "width_px": 64,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        4,
+        1,
+        59,
+        127
+      ],
+      "content_size": [
+        55,
+        126
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "4d3e76647075f3880014512d7c11f691b5cbb7b2aaca699090153156c69367cb"
+    },
+    {
+      "id": "house_medium_a",
+      "name_ja": "住宅(中A)",
+      "file": "sprites/house_medium_a.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        127,
+        126
+      ],
+      "content_size": [
+        126,
+        124
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "cd6d62ddbeee7dcf1fc8d51cb6f65d566c1016d7e1409bf8e797540bb0662509"
+    },
+    {
+      "id": "house_medium_b",
+      "name_ja": "住宅(中B)",
+      "file": "sprites/house_medium_b.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        127,
+        125
+      ],
+      "content_size": [
+        126,
+        123
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "d416272aaba96097e475d68391c55356b5ecb9df2bc8b01f4ee5a0c22a97031c"
+    },
+    {
+      "id": "house_large_c",
+      "name_ja": "住宅(大C)",
+      "file": "sprites/house_large_c.png",
+      "footprint": [
+        3,
+        2
+      ],
+      "width_px": 192,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        10,
+        191,
+        118
+      ],
+      "content_size": [
+        190,
+        108
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "a069c12a4467dcb559cd9e449478126823702320263b7a25c559fb001dc0fa27"
+    },
+    {
+      "id": "company_small_a",
+      "name_ja": "会社(小A)",
+      "file": "sprites/company_small_a.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        127,
+        127
+      ],
+      "content_size": [
+        126,
+        126
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "b7ab659f3e8a72b565554af008ee253ad0a76ceba7db5a189f5d4c5b7335f8b3"
+    },
+    {
+      "id": "company_small_b",
+      "name_ja": "会社(小B)",
+      "file": "sprites/company_small_b.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        127,
+        126
+      ],
+      "content_size": [
+        126,
+        124
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "a3b637d65a0a59bb4abbdaeaa60ba5bfd5fcc0ff5872ba4387fc89482861fbc2"
+    },
+    {
+      "id": "company_small_c",
+      "name_ja": "会社(小C)",
+      "file": "sprites/company_small_c.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        127,
+        125
+      ],
+      "content_size": [
+        126,
+        123
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "d21a1fc813b8567d7666bc1166732ce9713a257ce6befd0a6e1e74da049fafef"
+    },
+    {
+      "id": "company_large_a",
+      "name_ja": "会社(大A)",
+      "file": "sprites/company_large_a.png",
+      "footprint": [
+        3,
+        3
+      ],
+      "width_px": 192,
+      "height_px": 192,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        2,
+        191,
+        190
+      ],
+      "content_size": [
+        190,
+        188
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "e7be830e12545b38a412a43ae88f86ffe9e0b52100ac1fd40895c44d941de04d"
+    },
+    {
+      "id": "company_large_b",
+      "name_ja": "会社(大B)",
+      "file": "sprites/company_large_b.png",
+      "footprint": [
+        3,
+        3
+      ],
+      "width_px": 192,
+      "height_px": 192,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        3,
+        191,
+        189
+      ],
+      "content_size": [
+        190,
+        186
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "a6f67cd84e67394714881298c9d6d6c4a1596b75fb25289ddce37c36dcf9295d"
+    },
+    {
+      "id": "police_box_building",
+      "name_ja": "交番",
+      "file": "sprites/police_box_building.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        3,
+        127,
+        125
+      ],
+      "content_size": [
+        126,
+        122
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "00ce2fa7cd01d85b2225683e17d108e1ff8708bbb9ab2e25f4b92ec4b62353cd"
+    },
+    {
+      "id": "fire_station_building",
+      "name_ja": "消防署",
+      "file": "sprites/fire_station_building.png",
+      "footprint": [
+        3,
+        2
+      ],
+      "width_px": 192,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        190,
+        127
+      ],
+      "content_size": [
+        189,
+        126
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "468670dde5aee3e56a5066a7ca16e31544ac3a94bef5a909a7de3e56c106b87d"
+    },
+    {
+      "id": "gym_building",
+      "name_ja": "体育館",
+      "file": "sprites/gym_building.png",
+      "footprint": [
+        3,
+        3
+      ],
+      "width_px": 192,
+      "height_px": 192,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        5,
+        191,
+        186
+      ],
+      "content_size": [
+        190,
+        181
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "0a0d40ae5cae4516f3cb891696fa74dd2027a8768357d4a7922d3a9b42424cd2"
+    },
+    {
+      "id": "athletic_field_building",
+      "name_ja": "運動場",
+      "file": "sprites/athletic_field_building.png",
+      "footprint": [
+        5,
+        4
+      ],
+      "width_px": 320,
+      "height_px": 256,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        12,
+        319,
+        243
+      ],
+      "content_size": [
+        318,
+        231
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "6fbe1768a9426f31bb3c833d6c7e157f860e53bbd45102c7d3bb318b6ef64428"
+    },
+    {
+      "id": "pool_building",
+      "name_ja": "プール",
+      "file": "sprites/pool_building.png",
+      "footprint": [
+        3,
+        2
+      ],
+      "width_px": 192,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        6,
+        191,
+        121
+      ],
+      "content_size": [
+        190,
+        115
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "b13b0f5449698a8dfaea2642e1f444a704b38583c3f495bf04a98ed56da0a5bc"
+    },
+    {
+      "id": "event_hall_building",
+      "name_ja": "イベント会場",
+      "file": "sprites/event_hall_building.png",
+      "footprint": [
+        2,
+        2
+      ],
+      "width_px": 128,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        1,
+        127,
+        127
+      ],
+      "content_size": [
+        126,
+        126
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "9be37962719150c781228fc31a2c8d72be5f219ef7e38b829c2979e4826f5dc9"
+    },
+    {
+      "id": "station_small",
+      "name_ja": "駅(小)",
+      "file": "sprites/station_small.png",
+      "footprint": [
+        2,
+        1
+      ],
+      "width_px": 128,
+      "height_px": 64,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        7,
+        127,
+        57
+      ],
+      "content_size": [
+        126,
+        50
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "bd5f4b140d3a8d4454b3f2e9216a0876ea5a755f2737c6a5ae1cb87d6fee3060"
+    },
+    {
+      "id": "station_large",
+      "name_ja": "駅(大)",
+      "file": "sprites/station_large.png",
+      "footprint": [
+        4,
+        2
+      ],
+      "width_px": 256,
+      "height_px": 128,
+      "pixels_per_tile": 64,
+      "anchor": "top_left",
+      "alpha_bbox": [
+        1,
+        3,
+        255,
+        124
+      ],
+      "content_size": [
+        254,
+        121
+      ],
+      "resampling": "nearest",
+      "isotropic_scale": true,
+      "sha256": "0cc1c3fa460b43082409123faa3f54ee290784f81558270080466b3acc3e5e2c"
+    }
+  ]
+}

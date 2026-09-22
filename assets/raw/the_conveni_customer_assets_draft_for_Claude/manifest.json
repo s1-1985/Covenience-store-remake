@@ -1,0 +1,4049 @@
+{
+  "title": "初代ザ・コンビニ 店内客アセット暫定版",
+  "character_count": 21,
+  "direction_count": 4,
+  "frames_per_direction": 2,
+  "sprite_count": 168,
+  "frame_size_px": [
+    160,
+    160
+  ],
+  "anchor_px": [
+    80,
+    154
+  ],
+  "sprites": [
+    {
+      "customer_id": "customer_01",
+      "original_no": 1,
+      "display_name_ja": "女子大生",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_01/down_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 1,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        369,
+        147,
+        453,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_01",
+      "original_no": 1,
+      "display_name_ja": "女子大生",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_01/down_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 1,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        508,
+        148,
+        595,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_01",
+      "original_no": 1,
+      "display_name_ja": "女子大生",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_01/left_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 1,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        658,
+        143,
+        759,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_01",
+      "original_no": 1,
+      "display_name_ja": "女子大生",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_01/left_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 1,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        795,
+        147,
+        873,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_01",
+      "original_no": 1,
+      "display_name_ja": "女子大生",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_01/right_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 1,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        937,
+        143,
+        1012,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_01",
+      "original_no": 1,
+      "display_name_ja": "女子大生",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_01/right_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 1,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1076,
+        143,
+        1152,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_01",
+      "original_no": 1,
+      "display_name_ja": "女子大生",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_01/up_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 1,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1213,
+        143,
+        1295,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_01",
+      "original_no": 1,
+      "display_name_ja": "女子大生",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_01/up_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 1,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1357,
+        143,
+        1465,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_02",
+      "original_no": 2,
+      "display_name_ja": "大学生",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_02/down_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 2,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        347,
+        261,
+        453,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_02",
+      "original_no": 2,
+      "display_name_ja": "大学生",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_02/down_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 2,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        514,
+        265,
+        594,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_02",
+      "original_no": 2,
+      "display_name_ja": "大学生",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_02/left_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 2,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        656,
+        261,
+        763,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_02",
+      "original_no": 2,
+      "display_name_ja": "大学生",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_02/left_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 2,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        771,
+        261,
+        873,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_02",
+      "original_no": 2,
+      "display_name_ja": "大学生",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_02/right_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 2,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        936,
+        261,
+        1015,
+        371
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_02",
+      "original_no": 2,
+      "display_name_ja": "大学生",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_02/right_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 2,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1077,
+        261,
+        1153,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_02",
+      "original_no": 2,
+      "display_name_ja": "大学生",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_02/up_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 2,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1215,
+        261,
+        1296,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_02",
+      "original_no": 2,
+      "display_name_ja": "大学生",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_02/up_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 2,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1358,
+        261,
+        1465,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_03",
+      "original_no": 3,
+      "display_name_ja": "サラリーマン",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_03/down_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 3,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        374,
+        382,
+        454,
+        500
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_03",
+      "original_no": 3,
+      "display_name_ja": "サラリーマン",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_03/down_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 3,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        515,
+        382,
+        596,
+        497
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_03",
+      "original_no": 3,
+      "display_name_ja": "サラリーマン",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_03/left_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 3,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        657,
+        382,
+        763,
+        500
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_03",
+      "original_no": 3,
+      "display_name_ja": "サラリーマン",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_03/left_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 3,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        795,
+        382,
+        871,
+        497
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_03",
+      "original_no": 3,
+      "display_name_ja": "サラリーマン",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_03/right_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 3,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        911,
+        382,
+        1044,
+        500
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_03",
+      "original_no": 3,
+      "display_name_ja": "サラリーマン",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_03/right_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 3,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1076,
+        382,
+        1150,
+        500
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_03",
+      "original_no": 3,
+      "display_name_ja": "サラリーマン",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_03/up_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 3,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1215,
+        382,
+        1313,
+        500
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_03",
+      "original_no": 3,
+      "display_name_ja": "サラリーマン",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_03/up_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 3,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1357,
+        382,
+        1465,
+        500
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_04",
+      "original_no": 4,
+      "display_name_ja": "OL",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_04/down_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 4,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        371,
+        506,
+        454,
+        624
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_04",
+      "original_no": 4,
+      "display_name_ja": "OL",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_04/down_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 4,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        510,
+        506,
+        594,
+        624
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_04",
+      "original_no": 4,
+      "display_name_ja": "OL",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_04/left_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 4,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        653,
+        509,
+        735,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_04",
+      "original_no": 4,
+      "display_name_ja": "OL",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_04/left_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 4,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        791,
+        506,
+        870,
+        624
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_04",
+      "original_no": 4,
+      "display_name_ja": "OL",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_04/right_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 4,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        930,
+        506,
+        1011,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_04",
+      "original_no": 4,
+      "display_name_ja": "OL",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_04/right_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 4,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1074,
+        513,
+        1150,
+        626
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_04",
+      "original_no": 4,
+      "display_name_ja": "OL",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_04/up_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 4,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1216,
+        511,
+        1296,
+        624
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_04",
+      "original_no": 4,
+      "display_name_ja": "OL",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_04/up_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 4,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1332,
+        506,
+        1465,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_05",
+      "original_no": 5,
+      "display_name_ja": "おじさん",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_05/down_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 5,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        372,
+        633,
+        453,
+        752
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_05",
+      "original_no": 5,
+      "display_name_ja": "おじさん",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_05/down_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 5,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        514,
+        633,
+        592,
+        748
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_05",
+      "original_no": 5,
+      "display_name_ja": "おじさん",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_05/left_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 5,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        656,
+        637,
+        730,
+        752
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_05",
+      "original_no": 5,
+      "display_name_ja": "おじさん",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_05/left_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 5,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        795,
+        633,
+        871,
+        744
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_05",
+      "original_no": 5,
+      "display_name_ja": "おじさん",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_05/right_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 5,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        936,
+        633,
+        1011,
+        744
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_05",
+      "original_no": 5,
+      "display_name_ja": "おじさん",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_05/right_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 5,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1076,
+        633,
+        1150,
+        745
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_05",
+      "original_no": 5,
+      "display_name_ja": "おじさん",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_05/up_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 5,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1216,
+        633,
+        1296,
+        750
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_05",
+      "original_no": 5,
+      "display_name_ja": "おじさん",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_05/up_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 5,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1358,
+        633,
+        1465,
+        753
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_06",
+      "original_no": 6,
+      "display_name_ja": "おばさん",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_06/down_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 6,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        367,
+        763,
+        458,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_06",
+      "original_no": 6,
+      "display_name_ja": "おばさん",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_06/down_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 6,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        506,
+        759,
+        595,
+        884
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_06",
+      "original_no": 6,
+      "display_name_ja": "おばさん",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_06/left_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 6,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        653,
+        759,
+        736,
+        879
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_06",
+      "original_no": 6,
+      "display_name_ja": "おばさん",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_06/left_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 6,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        791,
+        759,
+        872,
+        878
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_06",
+      "original_no": 6,
+      "display_name_ja": "おばさん",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_06/right_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 6,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        933,
+        759,
+        1015,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_06",
+      "original_no": 6,
+      "display_name_ja": "おばさん",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_06/right_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 6,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1071,
+        759,
+        1153,
+        884
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_06",
+      "original_no": 6,
+      "display_name_ja": "おばさん",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_06/up_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 6,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1211,
+        759,
+        1297,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_06",
+      "original_no": 6,
+      "display_name_ja": "おばさん",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_06/up_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 6,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1356,
+        759,
+        1465,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_07",
+      "original_no": 7,
+      "display_name_ja": "おじいさん",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_07/down_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 7,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        373,
+        896,
+        452,
+        1006
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_07",
+      "original_no": 7,
+      "display_name_ja": "おじいさん",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_07/down_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 7,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        514,
+        898,
+        595,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_07",
+      "original_no": 7,
+      "display_name_ja": "おじいさん",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_07/left_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 7,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        656,
+        891,
+        729,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_07",
+      "original_no": 7,
+      "display_name_ja": "おじいさん",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_07/left_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 7,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        797,
+        891,
+        870,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_07",
+      "original_no": 7,
+      "display_name_ja": "おじいさん",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_07/right_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 7,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        938,
+        895,
+        1011,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_07",
+      "original_no": 7,
+      "display_name_ja": "おじいさん",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_07/right_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 7,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1076,
+        891,
+        1150,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_07",
+      "original_no": 7,
+      "display_name_ja": "おじいさん",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_07/up_A.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 7,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1214,
+        897,
+        1293,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_07",
+      "original_no": 7,
+      "display_name_ja": "おじいさん",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_07/up_B.png",
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_row": 7,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1359,
+        891,
+        1465,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_08",
+      "original_no": 8,
+      "display_name_ja": "おばあさん",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_08/down_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 1,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        371,
+        150,
+        448,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_08",
+      "original_no": 8,
+      "display_name_ja": "おばあさん",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_08/down_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 1,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        512,
+        150,
+        588,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_08",
+      "original_no": 8,
+      "display_name_ja": "おばあさん",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_08/left_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 1,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        655,
+        150,
+        730,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_08",
+      "original_no": 8,
+      "display_name_ja": "おばあさん",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_08/left_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 1,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        794,
+        150,
+        869,
+        251
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_08",
+      "original_no": 8,
+      "display_name_ja": "おばあさん",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_08/right_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 1,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        934,
+        143,
+        1044,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_08",
+      "original_no": 8,
+      "display_name_ja": "おばあさん",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_08/right_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 1,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1074,
+        143,
+        1184,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_08",
+      "original_no": 8,
+      "display_name_ja": "おばあさん",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_08/up_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 1,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1213,
+        143,
+        1324,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_08",
+      "original_no": 8,
+      "display_name_ja": "おばあさん",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_08/up_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 1,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1355,
+        143,
+        1465,
+        255
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_09",
+      "original_no": 9,
+      "display_name_ja": "男子小学生",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_09/down_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 2,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        370,
+        264,
+        448,
+        370
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_09",
+      "original_no": 9,
+      "display_name_ja": "男子小学生",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_09/down_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 2,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        510,
+        266,
+        587,
+        370
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_09",
+      "original_no": 9,
+      "display_name_ja": "男子小学生",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_09/left_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 2,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        650,
+        264,
+        726,
+        371
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_09",
+      "original_no": 9,
+      "display_name_ja": "男子小学生",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_09/left_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 2,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        794,
+        265,
+        870,
+        371
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_09",
+      "original_no": 9,
+      "display_name_ja": "男子小学生",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_09/right_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 2,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        934,
+        261,
+        1044,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_09",
+      "original_no": 9,
+      "display_name_ja": "男子小学生",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_09/right_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 2,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1074,
+        261,
+        1184,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_09",
+      "original_no": 9,
+      "display_name_ja": "男子小学生",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_09/up_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 2,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1213,
+        261,
+        1324,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_09",
+      "original_no": 9,
+      "display_name_ja": "男子小学生",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_09/up_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 2,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1354,
+        261,
+        1465,
+        376
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_10",
+      "original_no": 10,
+      "display_name_ja": "女子小学生",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_10/down_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 3,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        361,
+        386,
+        459,
+        495
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_10",
+      "original_no": 10,
+      "display_name_ja": "女子小学生",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_10/down_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 3,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        501,
+        386,
+        598,
+        495
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_10",
+      "original_no": 10,
+      "display_name_ja": "女子小学生",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_10/left_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 3,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        644,
+        386,
+        730,
+        495
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_10",
+      "original_no": 10,
+      "display_name_ja": "女子小学生",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_10/left_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 3,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        786,
+        386,
+        871,
+        495
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_10",
+      "original_no": 10,
+      "display_name_ja": "女子小学生",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_10/right_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 3,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        925,
+        382,
+        1044,
+        500
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_10",
+      "original_no": 10,
+      "display_name_ja": "女子小学生",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_10/right_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 3,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1068,
+        382,
+        1184,
+        500
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_10",
+      "original_no": 10,
+      "display_name_ja": "女子小学生",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_10/up_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 3,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1204,
+        382,
+        1324,
+        500
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_10",
+      "original_no": 10,
+      "display_name_ja": "女子小学生",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_10/up_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 3,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1345,
+        382,
+        1465,
+        500
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_11",
+      "original_no": 11,
+      "display_name_ja": "男子中学生",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_11/down_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 4,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        347,
+        508,
+        480,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_11",
+      "original_no": 11,
+      "display_name_ja": "男子中学生",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_11/down_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 4,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        488,
+        508,
+        621,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_11",
+      "original_no": 11,
+      "display_name_ja": "男子中学生",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_11/left_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 4,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        629,
+        506,
+        763,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_11",
+      "original_no": 11,
+      "display_name_ja": "男子中学生",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_11/left_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 4,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        771,
+        506,
+        903,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_11",
+      "original_no": 11,
+      "display_name_ja": "男子中学生",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_11/right_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 4,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        911,
+        506,
+        1044,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_11",
+      "original_no": 11,
+      "display_name_ja": "男子中学生",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_11/right_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 4,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1052,
+        506,
+        1184,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_11",
+      "original_no": 11,
+      "display_name_ja": "男子中学生",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_11/up_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 4,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1192,
+        506,
+        1324,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_11",
+      "original_no": 11,
+      "display_name_ja": "男子中学生",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_11/up_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 4,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1332,
+        506,
+        1465,
+        627
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_12",
+      "original_no": 12,
+      "display_name_ja": "女子中学生",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_12/down_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 5,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        347,
+        634,
+        480,
+        752
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_12",
+      "original_no": 12,
+      "display_name_ja": "女子中学生",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_12/down_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 5,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        488,
+        634,
+        621,
+        752
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_12",
+      "original_no": 12,
+      "display_name_ja": "女子中学生",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_12/left_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 5,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        629,
+        633,
+        763,
+        752
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_12",
+      "original_no": 12,
+      "display_name_ja": "女子中学生",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_12/left_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 5,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        771,
+        635,
+        903,
+        752
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_12",
+      "original_no": 12,
+      "display_name_ja": "女子中学生",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_12/right_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 5,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        911,
+        633,
+        1044,
+        753
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_12",
+      "original_no": 12,
+      "display_name_ja": "女子中学生",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_12/right_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 5,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1052,
+        633,
+        1184,
+        753
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_12",
+      "original_no": 12,
+      "display_name_ja": "女子中学生",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_12/up_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 5,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1192,
+        633,
+        1324,
+        753
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_12",
+      "original_no": 12,
+      "display_name_ja": "女子中学生",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_12/up_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 5,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1332,
+        633,
+        1465,
+        753
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_13",
+      "original_no": 13,
+      "display_name_ja": "男子高校生",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_13/down_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 6,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        347,
+        759,
+        480,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_13",
+      "original_no": 13,
+      "display_name_ja": "男子高校生",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_13/down_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 6,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        488,
+        759,
+        621,
+        879
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_13",
+      "original_no": 13,
+      "display_name_ja": "男子高校生",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_13/left_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 6,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        629,
+        759,
+        763,
+        879
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_13",
+      "original_no": 13,
+      "display_name_ja": "男子高校生",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_13/left_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 6,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        771,
+        759,
+        903,
+        879
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_13",
+      "original_no": 13,
+      "display_name_ja": "男子高校生",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_13/right_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 6,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        911,
+        759,
+        1044,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_13",
+      "original_no": 13,
+      "display_name_ja": "男子高校生",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_13/right_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 6,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1052,
+        759,
+        1184,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_13",
+      "original_no": 13,
+      "display_name_ja": "男子高校生",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_13/up_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 6,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1192,
+        759,
+        1324,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_13",
+      "original_no": 13,
+      "display_name_ja": "男子高校生",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_13/up_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 6,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1332,
+        759,
+        1465,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_14",
+      "original_no": 14,
+      "display_name_ja": "女子高校生",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_14/down_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 7,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        347,
+        891,
+        480,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_14",
+      "original_no": 14,
+      "display_name_ja": "女子高校生",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_14/down_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 7,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        488,
+        891,
+        621,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_14",
+      "original_no": 14,
+      "display_name_ja": "女子高校生",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_14/left_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 7,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        629,
+        891,
+        763,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_14",
+      "original_no": 14,
+      "display_name_ja": "女子高校生",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_14/left_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 7,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        771,
+        891,
+        903,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_14",
+      "original_no": 14,
+      "display_name_ja": "女子高校生",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_14/right_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 7,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        911,
+        891,
+        1044,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_14",
+      "original_no": 14,
+      "display_name_ja": "女子高校生",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_14/right_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 7,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1052,
+        891,
+        1184,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_14",
+      "original_no": 14,
+      "display_name_ja": "女子高校生",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_14/up_A.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 7,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1192,
+        891,
+        1324,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_14",
+      "original_no": 14,
+      "display_name_ja": "女子高校生",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_14/up_B.png",
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_row": 7,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1332,
+        891,
+        1465,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_15",
+      "original_no": 15,
+      "display_name_ja": "男子幼稚園児",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_15/down_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 1,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        372,
+        150,
+        449,
+        252
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_15",
+      "original_no": 15,
+      "display_name_ja": "男子幼稚園児",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_15/down_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 1,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        514,
+        150,
+        591,
+        252
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_15",
+      "original_no": 15,
+      "display_name_ja": "男子幼稚園児",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_15/left_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 1,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        657,
+        149,
+        731,
+        251
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_15",
+      "original_no": 15,
+      "display_name_ja": "男子幼稚園児",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_15/left_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 1,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        797,
+        150,
+        871,
+        251
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_15",
+      "original_no": 15,
+      "display_name_ja": "男子幼稚園児",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_15/right_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 1,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        938,
+        150,
+        1012,
+        251
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_15",
+      "original_no": 15,
+      "display_name_ja": "男子幼稚園児",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_15/right_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 1,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1077,
+        150,
+        1152,
+        254
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_15",
+      "original_no": 15,
+      "display_name_ja": "男子幼稚園児",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_15/up_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 1,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1221,
+        152,
+        1292,
+        252
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_15",
+      "original_no": 15,
+      "display_name_ja": "男子幼稚園児",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_15/up_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 1,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1360,
+        152,
+        1432,
+        252
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_16",
+      "original_no": 16,
+      "display_name_ja": "女子幼稚園児",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_16/down_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 2,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        365,
+        268,
+        457,
+        374
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_16",
+      "original_no": 16,
+      "display_name_ja": "女子幼稚園児",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_16/down_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 2,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        507,
+        268,
+        599,
+        374
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_16",
+      "original_no": 16,
+      "display_name_ja": "女子幼稚園児",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_16/left_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 2,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        655,
+        267,
+        735,
+        373
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_16",
+      "original_no": 16,
+      "display_name_ja": "女子幼稚園児",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_16/left_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 2,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        790,
+        268,
+        872,
+        374
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_16",
+      "original_no": 16,
+      "display_name_ja": "女子幼稚園児",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_16/right_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 2,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        932,
+        268,
+        1013,
+        373
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_16",
+      "original_no": 16,
+      "display_name_ja": "女子幼稚園児",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_16/right_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 2,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1073,
+        268,
+        1153,
+        374
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_16",
+      "original_no": 16,
+      "display_name_ja": "女子幼稚園児",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_16/up_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 2,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1214,
+        268,
+        1298,
+        373
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_16",
+      "original_no": 16,
+      "display_name_ja": "女子幼稚園児",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_16/up_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 2,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1354,
+        268,
+        1439,
+        374
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_17",
+      "original_no": 17,
+      "display_name_ja": "子供連れのおじさん",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_17/down_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 3,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        359,
+        384,
+        459,
+        499
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_17",
+      "original_no": 17,
+      "display_name_ja": "子供連れのおじさん",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_17/down_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 3,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        502,
+        386,
+        604,
+        499
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_17",
+      "original_no": 17,
+      "display_name_ja": "子供連れのおじさん",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_17/left_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 3,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        646,
+        385,
+        738,
+        497
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_17",
+      "original_no": 17,
+      "display_name_ja": "子供連れのおじさん",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_17/left_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 3,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        787,
+        385,
+        879,
+        497
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_17",
+      "original_no": 17,
+      "display_name_ja": "子供連れのおじさん",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_17/right_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 3,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        929,
+        386,
+        1022,
+        497
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_17",
+      "original_no": 17,
+      "display_name_ja": "子供連れのおじさん",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_17/right_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 3,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1068,
+        385,
+        1162,
+        497
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_17",
+      "original_no": 17,
+      "display_name_ja": "子供連れのおじさん",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_17/up_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 3,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1211,
+        385,
+        1308,
+        498
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_17",
+      "original_no": 17,
+      "display_name_ja": "子供連れのおじさん",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_17/up_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 3,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1344,
+        385,
+        1440,
+        498
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_18",
+      "original_no": 18,
+      "display_name_ja": "子供連れのおばさん",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_18/down_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 4,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        363,
+        510,
+        462,
+        624
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_18",
+      "original_no": 18,
+      "display_name_ja": "子供連れのおばさん",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_18/down_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 4,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        507,
+        511,
+        604,
+        624
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_18",
+      "original_no": 18,
+      "display_name_ja": "子供連れのおばさん",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_18/left_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 4,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        655,
+        510,
+        738,
+        623
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_18",
+      "original_no": 18,
+      "display_name_ja": "子供連れのおばさん",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_18/left_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 4,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        785,
+        510,
+        877,
+        623
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_18",
+      "original_no": 18,
+      "display_name_ja": "子供連れのおばさん",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_18/right_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 4,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        931,
+        510,
+        1007,
+        624
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_18",
+      "original_no": 18,
+      "display_name_ja": "子供連れのおばさん",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_18/right_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 4,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1065,
+        511,
+        1160,
+        624
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_18",
+      "original_no": 18,
+      "display_name_ja": "子供連れのおばさん",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_18/up_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 4,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1218,
+        511,
+        1304,
+        624
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_18",
+      "original_no": 18,
+      "display_name_ja": "子供連れのおばさん",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_18/up_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 4,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1347,
+        511,
+        1435,
+        622
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_19",
+      "original_no": 19,
+      "display_name_ja": "子抱きのおばさん",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_19/down_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 5,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        370,
+        633,
+        446,
+        749
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_19",
+      "original_no": 19,
+      "display_name_ja": "子抱きのおばさん",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_19/down_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 5,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        515,
+        633,
+        590,
+        749
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_19",
+      "original_no": 19,
+      "display_name_ja": "子抱きのおばさん",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_19/left_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 5,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        654,
+        633,
+        728,
+        748
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_19",
+      "original_no": 19,
+      "display_name_ja": "子抱きのおばさん",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_19/left_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 5,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        792,
+        633,
+        868,
+        748
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_19",
+      "original_no": 19,
+      "display_name_ja": "子抱きのおばさん",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_19/right_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 5,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        939,
+        633,
+        1013,
+        748
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_19",
+      "original_no": 19,
+      "display_name_ja": "子抱きのおばさん",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_19/right_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 5,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1076,
+        633,
+        1153,
+        748
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_19",
+      "original_no": 19,
+      "display_name_ja": "子抱きのおばさん",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_19/up_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 5,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1222,
+        636,
+        1294,
+        748
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_19",
+      "original_no": 19,
+      "display_name_ja": "子抱きのおばさん",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_19/up_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 5,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1360,
+        636,
+        1430,
+        748
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_20",
+      "original_no": 20,
+      "display_name_ja": "車椅子の男性",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_20/down_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 6,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        347,
+        761,
+        480,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_20",
+      "original_no": 20,
+      "display_name_ja": "車椅子の男性",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_20/down_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 6,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        488,
+        761,
+        621,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_20",
+      "original_no": 20,
+      "display_name_ja": "車椅子の男性",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_20/left_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 6,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        629,
+        761,
+        763,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_20",
+      "original_no": 20,
+      "display_name_ja": "車椅子の男性",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_20/left_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 6,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        771,
+        761,
+        903,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_20",
+      "original_no": 20,
+      "display_name_ja": "車椅子の男性",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_20/right_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 6,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        911,
+        761,
+        1044,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_20",
+      "original_no": 20,
+      "display_name_ja": "車椅子の男性",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_20/right_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 6,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1052,
+        761,
+        1184,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_20",
+      "original_no": 20,
+      "display_name_ja": "車椅子の男性",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_20/up_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 6,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1192,
+        761,
+        1324,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_20",
+      "original_no": 20,
+      "display_name_ja": "車椅子の男性",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_20/up_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 6,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1332,
+        761,
+        1465,
+        885
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_21",
+      "original_no": 21,
+      "display_name_ja": "松葉杖の男性",
+      "direction": "down",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_21/down_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 7,
+      "source_column": 1,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        371,
+        891,
+        448,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_21",
+      "original_no": 21,
+      "display_name_ja": "松葉杖の男性",
+      "direction": "down",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_21/down_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 7,
+      "source_column": 2,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        512,
+        891,
+        588,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_21",
+      "original_no": 21,
+      "display_name_ja": "松葉杖の男性",
+      "direction": "left",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_21/left_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 7,
+      "source_column": 3,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        650,
+        891,
+        724,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_21",
+      "original_no": 21,
+      "display_name_ja": "松葉杖の男性",
+      "direction": "left",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_21/left_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 7,
+      "source_column": 4,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        790,
+        891,
+        864,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_21",
+      "original_no": 21,
+      "display_name_ja": "松葉杖の男性",
+      "direction": "right",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_21/right_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 7,
+      "source_column": 5,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        936,
+        891,
+        1011,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_21",
+      "original_no": 21,
+      "display_name_ja": "松葉杖の男性",
+      "direction": "right",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_21/right_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 7,
+      "source_column": 6,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1073,
+        891,
+        1148,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_21",
+      "original_no": 21,
+      "display_name_ja": "松葉杖の男性",
+      "direction": "up",
+      "phase": "A",
+      "frame_index": 0,
+      "sprite_path": "sprites/customer_21/up_A.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 7,
+      "source_column": 7,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1216,
+        891,
+        1294,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    },
+    {
+      "customer_id": "customer_21",
+      "original_no": 21,
+      "display_name_ja": "松葉杖の男性",
+      "direction": "up",
+      "phase": "B",
+      "frame_index": 1,
+      "sprite_path": "sprites/customer_21/up_B.png",
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_row": 7,
+      "source_column": 8,
+      "sprite_px": "160x160",
+      "anchor": {
+        "x": 80,
+        "y": 154
+      },
+      "source_bbox_px": [
+        1359,
+        891,
+        1434,
+        1007
+      ],
+      "source_type": "newly generated provisional reconstruction, not an extracted game ROM sprite"
+    }
+  ]
+}

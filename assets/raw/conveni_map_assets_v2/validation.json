@@ -1,0 +1,428 @@
+{
+  "expected_assets": 52,
+  "actual_assets": 52,
+  "all_present": true,
+  "all_numeric_checks_pass": true,
+  "checks": [
+    {
+      "id": "kindergarten_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "elementary_school_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "middle_school_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "high_school_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "vocational_school_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "university_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "village_office",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "prefectural_office",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "metropolitan_government_office",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "amusement_park_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "aquarium_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "zoo_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "small_park_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "large_park_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "game_center",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "pachinko_parlor",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "bathhouse",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "family_restaurant",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "family_restaurant_a",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "family_restaurant_b",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "restaurant",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "fast_food_a",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "fast_food_b",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "soba_shop",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "ramen_shop",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "izakaya_a",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "izakaya_b",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "izakaya_c",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "toy_store",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "clothing_store",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "electronics_store",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "bookstore",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "house_small_a",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "house_small_b",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "house_small_c",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "house_small_d",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "house_medium_a",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "house_medium_b",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "house_large_c",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "company_small_a",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "company_small_b",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "company_small_c",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "company_large_a",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "company_large_b",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "police_box_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "fire_station_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "gym_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "athletic_field_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "pool_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "event_hall_building",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "station_small",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    },
+    {
+      "id": "station_large",
+      "dimensions_match": true,
+      "rgba": true,
+      "transparent_background": true,
+      "nonempty": true,
+      "no_geometry_stretch": true
+    }
+  ],
+  "exact_id_set_match": true,
+  "unique_image_hashes": true,
+  "strict_overhead_visual_compliance": false,
+  "visual_notes": "Some buildings retain visible front facades; strict 90-degree overhead requirement is not fully met. See CLAUDE_HANDOFF.md."
+}
