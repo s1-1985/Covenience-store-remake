@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "note": "EXAMPLE SCHEMA ONLY: replace [] with crop boxes inspected against each original source image at native size. Do not invent boxes from a resized preview. Every source_file must be a filename in your separately recovered read-only image folder; output path must be disjoint. Example intentionally contains no fake sprite entries.",
+  "crops": [],
+  "fields_for_each_crop": {
+    "asset_id": "stable lower-case string, e.g. building_kindergarten_v1",
+    "source_file": "original_source_sheet.png",
+    "box_px": ["left inclusive", "top inclusive", "right exclusive", "bottom exclusive"],
+    "footprint_rows_cols": ["verified map rows (north/south)", "verified map columns (east/west)"],
+    "view": "OVERHEAD_VERIFIED or UNVERIFIED"
+  }
+}
