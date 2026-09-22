@@ -1,0 +1,427 @@
+{
+  "image": "atlas.png",
+  "size": [
+    2048,
+    2048
+  ],
+  "origin": "top_left",
+  "padding_px": 2,
+  "frames": {
+    "kindergarten_building": {
+      "x": 2,
+      "y": 2,
+      "w": 192,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "elementary_school_building": {
+      "x": 198,
+      "y": 2,
+      "w": 256,
+      "h": 256,
+      "rotated": false,
+      "trimmed": false
+    },
+    "middle_school_building": {
+      "x": 458,
+      "y": 2,
+      "w": 320,
+      "h": 320,
+      "rotated": false,
+      "trimmed": false
+    },
+    "high_school_building": {
+      "x": 782,
+      "y": 2,
+      "w": 384,
+      "h": 384,
+      "rotated": false,
+      "trimmed": false
+    },
+    "vocational_school_building": {
+      "x": 1170,
+      "y": 2,
+      "w": 256,
+      "h": 192,
+      "rotated": false,
+      "trimmed": false
+    },
+    "university_building": {
+      "x": 1430,
+      "y": 2,
+      "w": 448,
+      "h": 448,
+      "rotated": false,
+      "trimmed": false
+    },
+    "village_office": {
+      "x": 1882,
+      "y": 2,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "prefectural_office": {
+      "x": 2,
+      "y": 454,
+      "w": 320,
+      "h": 320,
+      "rotated": false,
+      "trimmed": false
+    },
+    "metropolitan_government_office": {
+      "x": 326,
+      "y": 454,
+      "w": 448,
+      "h": 448,
+      "rotated": false,
+      "trimmed": false
+    },
+    "amusement_park_building": {
+      "x": 778,
+      "y": 454,
+      "w": 448,
+      "h": 448,
+      "rotated": false,
+      "trimmed": false
+    },
+    "aquarium_building": {
+      "x": 1230,
+      "y": 454,
+      "w": 192,
+      "h": 192,
+      "rotated": false,
+      "trimmed": false
+    },
+    "zoo_building": {
+      "x": 1426,
+      "y": 454,
+      "w": 384,
+      "h": 384,
+      "rotated": false,
+      "trimmed": false
+    },
+    "small_park_building": {
+      "x": 1814,
+      "y": 454,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "large_park_building": {
+      "x": 1882,
+      "y": 454,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "game_center": {
+      "x": 2,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "pachinko_parlor": {
+      "x": 70,
+      "y": 906,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "bathhouse": {
+      "x": 202,
+      "y": 906,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "family_restaurant": {
+      "x": 334,
+      "y": 906,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "family_restaurant_a": {
+      "x": 466,
+      "y": 906,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "family_restaurant_b": {
+      "x": 598,
+      "y": 906,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "restaurant": {
+      "x": 730,
+      "y": 906,
+      "w": 128,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "fast_food_a": {
+      "x": 862,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "fast_food_b": {
+      "x": 930,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "soba_shop": {
+      "x": 998,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "ramen_shop": {
+      "x": 1066,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "izakaya_a": {
+      "x": 1134,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "izakaya_b": {
+      "x": 1202,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "izakaya_c": {
+      "x": 1270,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "toy_store": {
+      "x": 1338,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "clothing_store": {
+      "x": 1406,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "electronics_store": {
+      "x": 1474,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "bookstore": {
+      "x": 1542,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "house_small_a": {
+      "x": 1610,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "house_small_b": {
+      "x": 1678,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "house_small_c": {
+      "x": 1746,
+      "y": 906,
+      "w": 64,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "house_small_d": {
+      "x": 1814,
+      "y": 906,
+      "w": 64,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "house_medium_a": {
+      "x": 1882,
+      "y": 906,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "house_medium_b": {
+      "x": 2,
+      "y": 1038,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "house_large_c": {
+      "x": 134,
+      "y": 1038,
+      "w": 192,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "company_small_a": {
+      "x": 330,
+      "y": 1038,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "company_small_b": {
+      "x": 462,
+      "y": 1038,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "company_small_c": {
+      "x": 594,
+      "y": 1038,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "company_large_a": {
+      "x": 726,
+      "y": 1038,
+      "w": 192,
+      "h": 192,
+      "rotated": false,
+      "trimmed": false
+    },
+    "company_large_b": {
+      "x": 922,
+      "y": 1038,
+      "w": 192,
+      "h": 192,
+      "rotated": false,
+      "trimmed": false
+    },
+    "police_box_building": {
+      "x": 1118,
+      "y": 1038,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "fire_station_building": {
+      "x": 1250,
+      "y": 1038,
+      "w": 192,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "gym_building": {
+      "x": 1446,
+      "y": 1038,
+      "w": 192,
+      "h": 192,
+      "rotated": false,
+      "trimmed": false
+    },
+    "athletic_field_building": {
+      "x": 1642,
+      "y": 1038,
+      "w": 320,
+      "h": 256,
+      "rotated": false,
+      "trimmed": false
+    },
+    "pool_building": {
+      "x": 2,
+      "y": 1298,
+      "w": 192,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "event_hall_building": {
+      "x": 198,
+      "y": 1298,
+      "w": 128,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    },
+    "station_small": {
+      "x": 330,
+      "y": 1298,
+      "w": 128,
+      "h": 64,
+      "rotated": false,
+      "trimmed": false
+    },
+    "station_large": {
+      "x": 462,
+      "y": 1298,
+      "w": 256,
+      "h": 128,
+      "rotated": false,
+      "trimmed": false
+    }
+  }
+}
