@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "producer": "ChatGPT",
+  "inventory_scope": "partial; original conversation-generated candidate sheets, no extracted sprites",
+  "source_image_bytes_in_repo": false,
+  "private_file_ids_in_public_repo": false,
+  "source_status": "source names recovered from the conversation; local bytes and exact crop rectangles not yet verified",
+  "source_sheets": [
+    {"source_file": "レトロ風地形タイルシート.png", "category": ["dirt", "grass", "shrub", "grove", "forest"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "海岸と湖のピクセルアート地形タイルセット.png", "category": ["sea", "coast", "lake", "wetland"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "レトロ水辺タイルセット大全.png", "category": ["river", "lake", "coast", "water_junction"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "道路インフラ_タイルセット図鑑.png", "category": ["road", "intersection", "sidewalk", "level_crossing"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "鉄道ピクセルアートタイルセット.png", "category": ["railway", "rail_switch", "level_crossing"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "16ビット水辺タイルセット大全.png", "category": ["river", "coast", "estuary"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "16ビット風地形タイルセット大全.png", "category": ["dirt", "grass", "shrub", "forest"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "都市交通インフラ_ピクセルタイルセット.png", "category": ["road", "bridge", "rail_bridge", "level_crossing"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "学校_公共施設_駅の街づくりスプライトセット.png", "category": ["schools", "government", "station"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "日本の住宅タイルセット_sprite_sheet.png", "category": ["housing"], "status": "CANDIDATE_SHEET; variants must be retained"},
+    {"source_file": "日本の街並み建物ピクセルアート集.png", "category": ["building_mixed"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "日本風商業施設ピクセルアート素材集.png", "category": ["shops"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "会社建物ピクセルアート素材集.png", "category": ["company"], "status": "CANDIDATE_SHEET"},
+    {"source_file": "都市施設タイルスプライトシート.png", "category": ["public_facility"], "status": "CANDIDATE_SHEET"}
+  ],
+  "outstanding": ["Recover original PNG bytes to an isolated workspace", "Inspect source pixels and label all 52 building IDs", "Record non-overlapping reviewed crop rectangles", "Determine town renderer pixels per tile from code", "Export individual PNGs", "Validate same-direction seams and render test map"],
+  "note": "Filename/category indexing only. Neither completeness nor implementability is inferred from a generated sheet. Source file IDs are kept out of this public repository."
+}
