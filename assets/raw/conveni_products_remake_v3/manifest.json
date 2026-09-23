@@ -1,0 +1,2046 @@
+{
+  "tile_px": 64,
+  "alpha": "0 or 255 only",
+  "assets": [
+    {
+      "id": "cold_drink",
+      "name_ja": "冷たい飲料",
+      "description": "缶・ペットボトルが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/cold_drink_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "ドリンク蓋のピクセルアート三列.png",
+      "source_crop": [
+        50,
+        75,
+        582,
+        615
+      ]
+    },
+    {
+      "id": "cold_drink",
+      "name_ja": "冷たい飲料",
+      "description": "缶・ペットボトルが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/cold_drink_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "ドリンク蓋のピクセルアート三列.png",
+      "source_crop": [
+        50,
+        75,
+        582,
+        615
+      ]
+    },
+    {
+      "id": "cold_drink",
+      "name_ja": "冷たい飲料",
+      "description": "缶・ペットボトルが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/cold_drink_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "ドリンク蓋のピクセルアート三列.png",
+      "source_crop": [
+        50,
+        75,
+        582,
+        615
+      ]
+    },
+    {
+      "id": "hot_drink",
+      "name_ja": "温かい飲料",
+      "description": "缶・紙カップが並ぶ、湯気なし(温保存ケース側で表現)",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/hot_drink_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "ドリンク蓋のピクセルアート三列.png",
+      "source_crop": [
+        671,
+        75,
+        1208,
+        615
+      ]
+    },
+    {
+      "id": "hot_drink",
+      "name_ja": "温かい飲料",
+      "description": "缶・紙カップが並ぶ、湯気なし(温保存ケース側で表現)",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/hot_drink_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "ドリンク蓋のピクセルアート三列.png",
+      "source_crop": [
+        671,
+        75,
+        1208,
+        615
+      ]
+    },
+    {
+      "id": "hot_drink",
+      "name_ja": "温かい飲料",
+      "description": "缶・紙カップが並ぶ、湯気なし(温保存ケース側で表現)",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/hot_drink_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "ドリンク蓋のピクセルアート三列.png",
+      "source_crop": [
+        671,
+        75,
+        1208,
+        615
+      ]
+    },
+    {
+      "id": "alcohol",
+      "name_ja": "酒類",
+      "description": "瓶・缶が並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/alcohol_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "ドリンク蓋のピクセルアート三列.png",
+      "source_crop": [
+        1295,
+        75,
+        1827,
+        615
+      ]
+    },
+    {
+      "id": "alcohol",
+      "name_ja": "酒類",
+      "description": "瓶・缶が並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/alcohol_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "ドリンク蓋のピクセルアート三列.png",
+      "source_crop": [
+        1295,
+        75,
+        1827,
+        615
+      ]
+    },
+    {
+      "id": "alcohol",
+      "name_ja": "酒類",
+      "description": "瓶・缶が並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/alcohol_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "ドリンク蓋のピクセルアート三列.png",
+      "source_crop": [
+        1295,
+        75,
+        1827,
+        615
+      ]
+    },
+    {
+      "id": "bento",
+      "name_ja": "弁当類",
+      "description": "パック詰め弁当が並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/bento_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "店舗用トップビュー商品在庫スプライトシート.png",
+      "source_crop": [
+        120,
+        774,
+        369,
+        989
+      ]
+    },
+    {
+      "id": "bento",
+      "name_ja": "弁当類",
+      "description": "パック詰め弁当が並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/bento_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "店舗用トップビュー商品在庫スプライトシート.png",
+      "source_crop": [
+        120,
+        774,
+        369,
+        989
+      ]
+    },
+    {
+      "id": "bento",
+      "name_ja": "弁当類",
+      "description": "パック詰め弁当が並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/bento_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "店舗用トップビュー商品在庫スプライトシート.png",
+      "source_crop": [
+        120,
+        774,
+        369,
+        989
+      ]
+    },
+    {
+      "id": "bread",
+      "name_ja": "パン類",
+      "description": "袋入りパンが並ぶ",
+      "notes": "コンビニらしく個包装で描く",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/bread_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "店舗用トップビュー商品在庫スプライトシート.png",
+      "source_crop": [
+        115,
+        1010,
+        375,
+        1240
+      ]
+    },
+    {
+      "id": "bread",
+      "name_ja": "パン類",
+      "description": "袋入りパンが並ぶ",
+      "notes": "コンビニらしく個包装で描く",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/bread_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "店舗用トップビュー商品在庫スプライトシート.png",
+      "source_crop": [
+        115,
+        1010,
+        375,
+        1240
+      ]
+    },
+    {
+      "id": "bread",
+      "name_ja": "パン類",
+      "description": "袋入りパンが並ぶ",
+      "notes": "コンビニらしく個包装で描く",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/bread_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "店舗用トップビュー商品在庫スプライトシート.png",
+      "source_crop": [
+        115,
+        1010,
+        375,
+        1240
+      ]
+    },
+    {
+      "id": "instant_food",
+      "name_ja": "インスタント類",
+      "description": "カップ麺の箱/カップが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/instant_food_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        73,
+        30,
+        582,
+        535
+      ]
+    },
+    {
+      "id": "instant_food",
+      "name_ja": "インスタント類",
+      "description": "カップ麺の箱/カップが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/instant_food_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        73,
+        30,
+        582,
+        535
+      ]
+    },
+    {
+      "id": "instant_food",
+      "name_ja": "インスタント類",
+      "description": "カップ麺の箱/カップが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/instant_food_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        73,
+        30,
+        582,
+        535
+      ]
+    },
+    {
+      "id": "snacks",
+      "name_ja": "菓子類",
+      "description": "袋菓子が並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/snacks_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "5段3列のレトロ商品ピクセルオーバーレイ.png",
+      "source_crop": [
+        140,
+        270,
+        370,
+        492
+      ]
+    },
+    {
+      "id": "snacks",
+      "name_ja": "菓子類",
+      "description": "袋菓子が並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/snacks_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "5段3列のレトロ商品ピクセルオーバーレイ.png",
+      "source_crop": [
+        140,
+        270,
+        370,
+        492
+      ]
+    },
+    {
+      "id": "snacks",
+      "name_ja": "菓子類",
+      "description": "袋菓子が並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/snacks_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "5段3列のレトロ商品ピクセルオーバーレイ.png",
+      "source_crop": [
+        140,
+        270,
+        370,
+        492
+      ]
+    },
+    {
+      "id": "books",
+      "name_ja": "本類",
+      "description": "雑誌・書籍が並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/books_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "5段3列のレトロ商品ピクセルオーバーレイ.png",
+      "source_crop": [
+        138,
+        520,
+        372,
+        750
+      ]
+    },
+    {
+      "id": "books",
+      "name_ja": "本類",
+      "description": "雑誌・書籍が並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/books_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "5段3列のレトロ商品ピクセルオーバーレイ.png",
+      "source_crop": [
+        138,
+        520,
+        372,
+        750
+      ]
+    },
+    {
+      "id": "books",
+      "name_ja": "本類",
+      "description": "雑誌・書籍が並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/books_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "5段3列のレトロ商品ピクセルオーバーレイ.png",
+      "source_crop": [
+        138,
+        520,
+        372,
+        750
+      ]
+    },
+    {
+      "id": "tobacco",
+      "name_ja": "たばこ",
+      "description": "パッケージ箱が並ぶ(自販機内部用)",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/tobacco_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "5段3列のレトロ商品ピクセルオーバーレイ.png",
+      "source_crop": [
+        142,
+        782,
+        371,
+        987
+      ]
+    },
+    {
+      "id": "tobacco",
+      "name_ja": "たばこ",
+      "description": "パッケージ箱が並ぶ(自販機内部用)",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/tobacco_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "5段3列のレトロ商品ピクセルオーバーレイ.png",
+      "source_crop": [
+        142,
+        782,
+        371,
+        987
+      ]
+    },
+    {
+      "id": "tobacco",
+      "name_ja": "たばこ",
+      "description": "パッケージ箱が並ぶ(自販機内部用)",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/tobacco_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "5段3列のレトロ商品ピクセルオーバーレイ.png",
+      "source_crop": [
+        142,
+        782,
+        371,
+        987
+      ]
+    },
+    {
+      "id": "ice_cream",
+      "name_ja": "アイスクリーム",
+      "description": "カップ・バーアイスが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/ice_cream_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        658,
+        40,
+        1188,
+        540
+      ]
+    },
+    {
+      "id": "ice_cream",
+      "name_ja": "アイスクリーム",
+      "description": "カップ・バーアイスが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/ice_cream_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        658,
+        40,
+        1188,
+        540
+      ]
+    },
+    {
+      "id": "ice_cream",
+      "name_ja": "アイスクリーム",
+      "description": "カップ・バーアイスが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/ice_cream_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        658,
+        40,
+        1188,
+        540
+      ]
+    },
+    {
+      "id": "stationery",
+      "name_ja": "文房具",
+      "description": "文具パッケージが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/stationery_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        95,
+        527,
+        276
+      ]
+    },
+    {
+      "id": "stationery",
+      "name_ja": "文房具",
+      "description": "文具パッケージが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/stationery_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        95,
+        527,
+        276
+      ]
+    },
+    {
+      "id": "stationery",
+      "name_ja": "文房具",
+      "description": "文具パッケージが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/stationery_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        95,
+        527,
+        276
+      ]
+    },
+    {
+      "id": "retort_food",
+      "name_ja": "レトルト類",
+      "description": "レトルトパウチの箱が並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/retort_food_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        351,
+        527,
+        502
+      ]
+    },
+    {
+      "id": "retort_food",
+      "name_ja": "レトルト類",
+      "description": "レトルトパウチの箱が並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/retort_food_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        351,
+        527,
+        502
+      ]
+    },
+    {
+      "id": "retort_food",
+      "name_ja": "レトルト類",
+      "description": "レトルトパウチの箱が並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/retort_food_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        351,
+        527,
+        502
+      ]
+    },
+    {
+      "id": "electronics",
+      "name_ja": "電機製品類",
+      "description": "小型家電のパッケージが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/electronics_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        600,
+        527,
+        762
+      ]
+    },
+    {
+      "id": "electronics",
+      "name_ja": "電機製品類",
+      "description": "小型家電のパッケージが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/electronics_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        600,
+        527,
+        762
+      ]
+    },
+    {
+      "id": "electronics",
+      "name_ja": "電機製品類",
+      "description": "小型家電のパッケージが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/electronics_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        600,
+        527,
+        762
+      ]
+    },
+    {
+      "id": "seasoning",
+      "name_ja": "調味料類",
+      "description": "調味料瓶・パウチが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/seasoning_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        849,
+        527,
+        967
+      ]
+    },
+    {
+      "id": "seasoning",
+      "name_ja": "調味料類",
+      "description": "調味料瓶・パウチが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/seasoning_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        849,
+        527,
+        967
+      ]
+    },
+    {
+      "id": "seasoning",
+      "name_ja": "調味料類",
+      "description": "調味料瓶・パウチが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/seasoning_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        849,
+        527,
+        967
+      ]
+    },
+    {
+      "id": "vegetables",
+      "name_ja": "野菜類",
+      "description": "野菜パックが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/vegetables_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        1064,
+        527,
+        1205
+      ]
+    },
+    {
+      "id": "vegetables",
+      "name_ja": "野菜類",
+      "description": "野菜パックが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/vegetables_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        1064,
+        527,
+        1205
+      ]
+    },
+    {
+      "id": "vegetables",
+      "name_ja": "野菜類",
+      "description": "野菜パックが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/vegetables_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "真上構図の商品ピクセルアートシート.png",
+      "source_crop": [
+        15,
+        1064,
+        527,
+        1205
+      ]
+    },
+    {
+      "id": "frozen_food",
+      "name_ja": "冷凍食品類",
+      "description": "冷凍食品パッケージが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/frozen_food_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "90年代風商品ドット絵グリッド.png",
+      "source_crop": [
+        78,
+        32,
+        337,
+        261
+      ]
+    },
+    {
+      "id": "frozen_food",
+      "name_ja": "冷凍食品類",
+      "description": "冷凍食品パッケージが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/frozen_food_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "90年代風商品ドット絵グリッド.png",
+      "source_crop": [
+        78,
+        32,
+        337,
+        261
+      ]
+    },
+    {
+      "id": "frozen_food",
+      "name_ja": "冷凍食品類",
+      "description": "冷凍食品パッケージが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/frozen_food_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "90年代風商品ドット絵グリッド.png",
+      "source_crop": [
+        78,
+        32,
+        337,
+        261
+      ]
+    },
+    {
+      "id": "fish",
+      "name_ja": "魚類",
+      "description": "鮮魚パックが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/fish_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "90年代風商品ドット絵グリッド.png",
+      "source_crop": [
+        79,
+        333,
+        339,
+        541
+      ]
+    },
+    {
+      "id": "fish",
+      "name_ja": "魚類",
+      "description": "鮮魚パックが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/fish_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "90年代風商品ドット絵グリッド.png",
+      "source_crop": [
+        79,
+        333,
+        339,
+        541
+      ]
+    },
+    {
+      "id": "fish",
+      "name_ja": "魚類",
+      "description": "鮮魚パックが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/fish_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "90年代風商品ドット絵グリッド.png",
+      "source_crop": [
+        79,
+        333,
+        339,
+        541
+      ]
+    },
+    {
+      "id": "oden",
+      "name_ja": "おでん",
+      "description": "鍋の中の具材(串・練り物等)",
+      "notes": "oden_case専用、什器一体型のイメージ",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/oden_high.png",
+      "visible_units": 6,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        702,
+        647,
+        1130,
+        1147
+      ]
+    },
+    {
+      "id": "oden",
+      "name_ja": "おでん",
+      "description": "鍋の中の具材(串・練り物等)",
+      "notes": "oden_case専用、什器一体型のイメージ",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/oden_medium.png",
+      "visible_units": 3,
+      "unit_indices": [
+        0,
+        1,
+        2
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        702,
+        647,
+        1130,
+        1147
+      ]
+    },
+    {
+      "id": "oden",
+      "name_ja": "おでん",
+      "description": "鍋の中の具材(串・練り物等)",
+      "notes": "oden_case専用、什器一体型のイメージ",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/oden_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        5
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        702,
+        647,
+        1130,
+        1147
+      ]
+    },
+    {
+      "id": "daily_goods",
+      "name_ja": "日用品",
+      "description": "日用品パッケージが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/daily_goods_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "90年代風商品ドット絵グリッド.png",
+      "source_crop": [
+        78,
+        894,
+        341,
+        1131
+      ]
+    },
+    {
+      "id": "daily_goods",
+      "name_ja": "日用品",
+      "description": "日用品パッケージが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/daily_goods_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "90年代風商品ドット絵グリッド.png",
+      "source_crop": [
+        78,
+        894,
+        341,
+        1131
+      ]
+    },
+    {
+      "id": "daily_goods",
+      "name_ja": "日用品",
+      "description": "日用品パッケージが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/daily_goods_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "90年代風商品ドット絵グリッド.png",
+      "source_crop": [
+        78,
+        894,
+        341,
+        1131
+      ]
+    },
+    {
+      "id": "medicine",
+      "name_ja": "薬品",
+      "description": "薬箱が並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/medicine_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        69,
+        683,
+        606,
+        1131
+      ]
+    },
+    {
+      "id": "medicine",
+      "name_ja": "薬品",
+      "description": "薬箱が並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/medicine_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        69,
+        683,
+        606,
+        1131
+      ]
+    },
+    {
+      "id": "medicine",
+      "name_ja": "薬品",
+      "description": "薬箱が並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/medicine_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "無地パッケージの食品・薬品スプライトシート.png",
+      "source_crop": [
+        69,
+        683,
+        606,
+        1131
+      ]
+    },
+    {
+      "id": "underwear",
+      "name_ja": "下着類",
+      "description": "パッケージが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/underwear_high.png",
+      "visible_units": 6,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        120,
+        19,
+        375,
+        209
+      ]
+    },
+    {
+      "id": "underwear",
+      "name_ja": "下着類",
+      "description": "パッケージが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/underwear_medium.png",
+      "visible_units": 3,
+      "unit_indices": [
+        0,
+        1,
+        2
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        120,
+        19,
+        375,
+        209
+      ]
+    },
+    {
+      "id": "underwear",
+      "name_ja": "下着類",
+      "description": "パッケージが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/underwear_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        5
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        120,
+        19,
+        375,
+        209
+      ]
+    },
+    {
+      "id": "event_goods",
+      "name_ja": "イベント商品",
+      "description": "季節商品パッケージが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/event_goods_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        112,
+        265,
+        379,
+        481
+      ]
+    },
+    {
+      "id": "event_goods",
+      "name_ja": "イベント商品",
+      "description": "季節商品パッケージが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/event_goods_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        112,
+        265,
+        379,
+        481
+      ]
+    },
+    {
+      "id": "event_goods",
+      "name_ja": "イベント商品",
+      "description": "季節商品パッケージが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/event_goods_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        112,
+        265,
+        379,
+        481
+      ]
+    },
+    {
+      "id": "chinese_steamed_bun",
+      "name_ja": "中華まん",
+      "description": "蒸し器の中の中華まん",
+      "notes": "steamed_bun_case専用",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/chinese_steamed_bun_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        112,
+        527,
+        381,
+        756
+      ]
+    },
+    {
+      "id": "chinese_steamed_bun",
+      "name_ja": "中華まん",
+      "description": "蒸し器の中の中華まん",
+      "notes": "steamed_bun_case専用",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/chinese_steamed_bun_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        112,
+        527,
+        381,
+        756
+      ]
+    },
+    {
+      "id": "chinese_steamed_bun",
+      "name_ja": "中華まん",
+      "description": "蒸し器の中の中華まん",
+      "notes": "steamed_bun_case専用",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/chinese_steamed_bun_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        112,
+        527,
+        381,
+        756
+      ]
+    },
+    {
+      "id": "meat",
+      "name_ja": "肉類",
+      "description": "精肉パックが並ぶ",
+      "notes": "",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/meat_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        107,
+        802,
+        387,
+        1010
+      ]
+    },
+    {
+      "id": "meat",
+      "name_ja": "肉類",
+      "description": "精肉パックが並ぶ",
+      "notes": "",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/meat_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        107,
+        802,
+        387,
+        1010
+      ]
+    },
+    {
+      "id": "meat",
+      "name_ja": "肉類",
+      "description": "精肉パックが並ぶ",
+      "notes": "",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/meat_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        107,
+        802,
+        387,
+        1010
+      ]
+    },
+    {
+      "id": "parcel_delivery_form",
+      "name_ja": "宅急便申込書",
+      "description": "レジカウンター上の伝票用紙の束",
+      "notes": "register_2/4専用",
+      "state": "high",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/parcel_delivery_form_high.png",
+      "visible_units": 9,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        107,
+        1050,
+        383,
+        1236
+      ]
+    },
+    {
+      "id": "parcel_delivery_form",
+      "name_ja": "宅急便申込書",
+      "description": "レジカウンター上の伝票用紙の束",
+      "notes": "register_2/4専用",
+      "state": "medium",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/parcel_delivery_form_medium.png",
+      "visible_units": 5,
+      "unit_indices": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        107,
+        1050,
+        383,
+        1236
+      ]
+    },
+    {
+      "id": "parcel_delivery_form",
+      "name_ja": "宅急便申込書",
+      "description": "レジカウンター上の伝票用紙の束",
+      "notes": "register_2/4専用",
+      "state": "low",
+      "size": [
+        64,
+        64
+      ],
+      "file": "sprites/parcel_delivery_form_low.png",
+      "visible_units": 2,
+      "unit_indices": [
+        0,
+        8
+      ],
+      "source_file": "5カテゴリの商品ピクセル素材シート.png",
+      "source_crop": [
+        107,
+        1050,
+        383,
+        1236
+      ]
+    }
+  ]
+}

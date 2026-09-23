@@ -1,0 +1,906 @@
+{
+  "count": 75,
+  "all_checks_passed": true,
+  "checks": [
+    {
+      "file": "sprites/cold_drink_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "1318cc9f58a2dc6cb839276cbfbdf6b78e9922649a7ac944f5dae99888f9420b"
+    },
+    {
+      "file": "sprites/cold_drink_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "e28f58160ca489505ac087c51478feb1b66aaeeaea01acbbb9bf03be85928fc5"
+    },
+    {
+      "file": "sprites/cold_drink_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "8421d0040bd65351d0ed1837df489f479ff09e63f808fa61f333e4bca2ee3e17"
+    },
+    {
+      "file": "sprites/hot_drink_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "9ee8f2451a55d87d5db0658daa197e040c627d2f3e55c5b8c792639dcde44d9b"
+    },
+    {
+      "file": "sprites/hot_drink_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "51c7ade7e6aeaac04291f9e2830ee12658575cabe04329681e860cedec557955"
+    },
+    {
+      "file": "sprites/hot_drink_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "7e07de30abee591cc3047406ad341eaee269059276c0481c4b097efd9ea45171"
+    },
+    {
+      "file": "sprites/alcohol_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "f52e88630a6289d5887a2cd59dd0b86a32b0acd37d3685fb3942df4bf9b0699c"
+    },
+    {
+      "file": "sprites/alcohol_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "a4360a9a94a9cd8bb2fda50dfe670c902629f03813884947379dcd652d9386d1"
+    },
+    {
+      "file": "sprites/alcohol_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "032f764ea37e910ca1f473bc1549e34465b7b68feae85d197383fa60cdbd8ae3"
+    },
+    {
+      "file": "sprites/bento_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "11ef9b20105e3186dd991c93c7bf4afbd1a86fd498eed0b40e340289c196b5b0"
+    },
+    {
+      "file": "sprites/bento_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "805b80ebad3b5599fc674803d5f5b64ae8157f33b5a220af8185ba64ecaff0d4"
+    },
+    {
+      "file": "sprites/bento_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "da940b35ec4f6963e692481ad811779315473a5f7c5694e40580140dba8b7747"
+    },
+    {
+      "file": "sprites/bread_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "d894765d1cc1bd67ebd064aad44bca436014e8e9fe5b04db12358db33adcfb9d"
+    },
+    {
+      "file": "sprites/bread_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "6169ba6525ee14c6afd4b4b4cc6f1c6ca020de70f9198bb24c5259a215e205d3"
+    },
+    {
+      "file": "sprites/bread_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "82b3b22c15cdc089398cdc040243caaf571fb6ae51b95b36ac114c38bb8690f9"
+    },
+    {
+      "file": "sprites/instant_food_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "f6a54f1e21c625e5f90cb712f22c5004181ff334aac1fbe103c2c447bee70776"
+    },
+    {
+      "file": "sprites/instant_food_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "45d2d360e27bc37cdb7bad6ea46a43a448015a3a9dab67fdd190bd0e1c363e35"
+    },
+    {
+      "file": "sprites/instant_food_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "ca55e0e46e262ce94221bf90f362be87efb47a8340e332f4d380d2fb5575fb7e"
+    },
+    {
+      "file": "sprites/snacks_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "a19a311f107068362fa8e1d7d36ebf3aca7254d86a6ce737d7236f8fcc7ff914"
+    },
+    {
+      "file": "sprites/snacks_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "fb5ef386dedbd5a9d557907e6825f54cc7aa8ae894bc1134c8292b4816370f31"
+    },
+    {
+      "file": "sprites/snacks_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "ed54009bd0a89e2fa4706c4d276791d0be1455e41f602fae55a01652fd21f8aa"
+    },
+    {
+      "file": "sprites/books_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "58e704c6e37103610e2b590f21429096872f75edc16d99d715064adae2cd7fca"
+    },
+    {
+      "file": "sprites/books_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "72a82dc206cda27c4898b9f0d13c2820c26cc32df942523b9dc5ef453770fb76"
+    },
+    {
+      "file": "sprites/books_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "f3de65a5efb0b32f70c7b3f88e1ab1548af1f7ab4b762bdbfdf6470a2cce15d5"
+    },
+    {
+      "file": "sprites/tobacco_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "9716a3990f573fa3947433d8253c250a499a5622d286649bcf7ee98eddf97724"
+    },
+    {
+      "file": "sprites/tobacco_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "c3c6175a83a1b0ef61c7d53e2b0f93a0e666c80e363c4da248d42431294a8cde"
+    },
+    {
+      "file": "sprites/tobacco_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "ce2a09e04abeaae5c7e63db4c868c0f39b89fd674fe816a6d2677e70e5c9cc8c"
+    },
+    {
+      "file": "sprites/ice_cream_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "ce2c2c0709c27f7c42d184944b6faf4be198c15a735332d182e740629b4eff26"
+    },
+    {
+      "file": "sprites/ice_cream_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "73c91dd33b1d9120367d5aabdadc14abe58148ab5bde23a660f251ca299a828f"
+    },
+    {
+      "file": "sprites/ice_cream_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "cce73577319c798e12cff1713d83e5b142944c8b7239003b51ecd06bb421f7c6"
+    },
+    {
+      "file": "sprites/stationery_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "e861dc298dd3a79df12cc23c254f08649254d326d3427bcb6fb84047b3aed128"
+    },
+    {
+      "file": "sprites/stationery_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "5d3f212de46b1705988710da735c385dbe2e100392dd3740921b24860869d4cc"
+    },
+    {
+      "file": "sprites/stationery_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "fc0e7f9b0f6e80bfd2be36460d6a73a75eec45955679c64ee419723e923fc85a"
+    },
+    {
+      "file": "sprites/retort_food_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "fa3241345da8a71b7d21876cf622685fbea2f0f87c85ecd6a6fd8d4ceeee1458"
+    },
+    {
+      "file": "sprites/retort_food_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "1eabca1ecbf9c1d432fb26d79f8f98bbdc7cf563025e356b21e5a6c02a8ef733"
+    },
+    {
+      "file": "sprites/retort_food_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "668265d564bd64a24bb7ba40728fea6412f969903f1d574d3eadd65a448b5731"
+    },
+    {
+      "file": "sprites/electronics_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "46e700a02a09034a67f0cee9ac2452e8974fa408db88c88892e08071ce69cc41"
+    },
+    {
+      "file": "sprites/electronics_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "df4824c769d066fa7a349dd57bdea2321115fd8a1727f5ebcdb882ae94de4915"
+    },
+    {
+      "file": "sprites/electronics_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "06f2282933464cce1e52028d24f20e596798330d00fdd85c8b1cd4ccc794ab55"
+    },
+    {
+      "file": "sprites/seasoning_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "826a47e81a0b977c176865cd60b791f868a7e5206216c80dca8738c9e9d2b8ce"
+    },
+    {
+      "file": "sprites/seasoning_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "bfc9117d4debfa6ce644c914462640035b85567c4ff026fdb81d2851acc8c3b1"
+    },
+    {
+      "file": "sprites/seasoning_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "862730604602d0c8d9bbc7007edd7eb2e4c5f9140f1e8e590e0430010e544ced"
+    },
+    {
+      "file": "sprites/vegetables_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "79537b60db09b9ddf639393f7ff20ddd166c8c4f2ba0b8e8ee53c64cfe204910"
+    },
+    {
+      "file": "sprites/vegetables_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "9965c7bc084291e5a04fc1270df47dac759c95011b11d351daf3593147035dde"
+    },
+    {
+      "file": "sprites/vegetables_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "a83b7c79cd2a04b66a7cd3030112349d5b3ecf12f9b1c4c315d37c8d4443f508"
+    },
+    {
+      "file": "sprites/frozen_food_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "f0a56119d74b6a83955448902502050278b946941b24d8b6346fe91046eff6d5"
+    },
+    {
+      "file": "sprites/frozen_food_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "220176318a9cb114dfa22820b0882aca50912c690745e9a6f76a6fdfd56241a2"
+    },
+    {
+      "file": "sprites/frozen_food_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "02014ace7204aea7cb764d02af7f97f57f3dbb8fda4d4df5a5c2de5d2fcdd376"
+    },
+    {
+      "file": "sprites/fish_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "e77004834a12bdcb42bd08178c3a42fec3c10a8ce49f93baf5315283f2b6b81e"
+    },
+    {
+      "file": "sprites/fish_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "5122dfa551383efa2ce9b46815b3f11fadb79842fd7b7a789a25a8292eee66f1"
+    },
+    {
+      "file": "sprites/fish_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "7ba57bcef200dbe2d05073f469bd7de0389f06c2a59e8e6391d7606528d9364e"
+    },
+    {
+      "file": "sprites/oden_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "b1b3eebe6d45f4be50b30728dc8b9d19af57c3975ea9e8dcc2981905a7200978"
+    },
+    {
+      "file": "sprites/oden_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "6c508c4cf2afbf50723cebf37ed83b1fbd2548311e83e7991761996ebc1bc4bb"
+    },
+    {
+      "file": "sprites/oden_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "d3a8cd74aff554b30efa0d3bb0f3524f9cfca30dd0bbcf40e869fb19e828b3e2"
+    },
+    {
+      "file": "sprites/daily_goods_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "5e3beb556be76f2b21dd1ad78be0d4511f593b0ce3cedd985fdbac3b51919625"
+    },
+    {
+      "file": "sprites/daily_goods_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "c068cf6544ed5713a1a1dd94d5df2cf6a17c45a47bb92da0c234e915200fe356"
+    },
+    {
+      "file": "sprites/daily_goods_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "60fe59c0630f74c41d8dfd842d147087de00fbf2138c6b1e4cf3555db17f1754"
+    },
+    {
+      "file": "sprites/medicine_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "2d5b09b240775f4562476219c2b879d6d95fd3a9fc4f788491cb6d3b7fee075f"
+    },
+    {
+      "file": "sprites/medicine_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "4519cfe4d267af64e5d1d4bf9cf45325e1648834b7ecb29212aab034f6b9f3ad"
+    },
+    {
+      "file": "sprites/medicine_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "d2355d2660c58ae3f61ccf695243dbae4aae05a92d174d08e4f5d1d865bbcf81"
+    },
+    {
+      "file": "sprites/underwear_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "23a37d1ec762f2852154055af12f288d01ed0360e0927ac065fbe96e4f6f1a50"
+    },
+    {
+      "file": "sprites/underwear_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "1bfe3b4dbc6a00e197b217db2ecab901ffd8615504da32ed331c7829b7fdb9b3"
+    },
+    {
+      "file": "sprites/underwear_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "f8aaa8596c59cbe7402083e6626dbf95293e6420013f6a745c285672e42fc007"
+    },
+    {
+      "file": "sprites/event_goods_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "7ec910252ad69645c7c9cbf04b7b078e0a368c3d6f6b027b52ef4f2255c8c10d"
+    },
+    {
+      "file": "sprites/event_goods_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "f9bb5fc30ca0dc7504ac6bcbc1564ef95d6c65c311e69c421d7e2f06743b9636"
+    },
+    {
+      "file": "sprites/event_goods_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "6f9da8311294e69e7bcd44434e1515ff7eb1981864a3da724610dc83dda48ce0"
+    },
+    {
+      "file": "sprites/chinese_steamed_bun_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "7192a6f27b1e5ec79b18efc2c614edfe0b86b363405bfa7985b7dd082fafdbd8"
+    },
+    {
+      "file": "sprites/chinese_steamed_bun_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "377189eface6bdc3b01dde86f3e6b2617f24a64a158b0a0eae695372ebefd581"
+    },
+    {
+      "file": "sprites/chinese_steamed_bun_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "1acb05a2aa55d64d287f832024185f9719964c50cb61293ba21acb85baa67726"
+    },
+    {
+      "file": "sprites/meat_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "dbfdae920a16a1bf9130fb7f806db01812eaabbb432b55a088a71ddba62275b9"
+    },
+    {
+      "file": "sprites/meat_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "0780a3e39e18716202f309c844db05a1b1dc6b92ea743e425fb2d6ef8d05d60b"
+    },
+    {
+      "file": "sprites/meat_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "558f970e16a53d5b3bad45c806e88a4bcff70ab108ef1bd4cfbddbb19148eeb1"
+    },
+    {
+      "file": "sprites/parcel_delivery_form_high.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "c73388183d3e427e7d3680774e1f1edd46a0cf46d2bcbaa1c807bfa64aa3be25"
+    },
+    {
+      "file": "sprites/parcel_delivery_form_medium.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "60c87a608ddddc4cc4f987215587def28e976f1026b0dbbc0b2d89f92f496c90"
+    },
+    {
+      "file": "sprites/parcel_delivery_form_low.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "a5160ae0d17b5a6159801d7211a7a9cccf246f01574d34d1bf6602a5814f1fae"
+    }
+  ]
+}
