@@ -1,0 +1,1901 @@
+{
+  "tile_px": 64,
+  "alpha": "0 or 255 only",
+  "assets": [
+    {
+      "id": "small_ambient_shelf",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "小型の据え置き棚、木目調または白の棚板2〜3段",
+      "file": "sprites/small_ambient_shelf.png",
+      "source_file": "7種の空の陳列面ピクセルアート.png",
+      "source_crop": [
+        110,
+        145,
+        285,
+        301
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medium_ambient_shelf",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "横に長い中型棚、同系統",
+      "file": "sprites/medium_ambient_shelf.png",
+      "source_file": "7種の空の陳列面ピクセルアート.png",
+      "source_crop": [
+        410,
+        145,
+        725,
+        301
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            64,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large_ambient_shelf",
+      "footprint": [
+        3,
+        1
+      ],
+      "size": [
+        192,
+        64
+      ],
+      "description": "さらに横長の大型棚",
+      "file": "sprites/large_ambient_shelf.png",
+      "source_file": "7種の空の陳列面ピクセルアート.png",
+      "source_crop": [
+        768,
+        138,
+        1235,
+        301
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        190,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            64,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            128,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "small_ambient_wagon",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "低い開放型のカゴ台車(ワゴン)、キャスター付き",
+      "file": "sprites/small_ambient_wagon.png",
+      "source_file": "7種の空の陳列面ピクセルアート.png",
+      "source_crop": [
+        105,
+        425,
+        290,
+        600
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medium_ambient_wagon",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "中型ワゴン",
+      "file": "sprites/medium_ambient_wagon.png",
+      "source_file": "7種の空の陳列面ピクセルアート.png",
+      "source_crop": [
+        408,
+        425,
+        728,
+        600
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            64,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large_ambient_wagon",
+      "footprint": [
+        3,
+        1
+      ],
+      "size": [
+        192,
+        64
+      ],
+      "description": "大型ワゴン(横長)",
+      "file": "sprites/large_ambient_wagon.png",
+      "source_file": "7種の空の陳列面ピクセルアート.png",
+      "source_crop": [
+        770,
+        422,
+        1235,
+        600
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        190,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            64,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            128,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large_ambient_wagon_2",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "description": "正方形に近い大型ワゴン",
+      "file": "sprites/large_ambient_wagon_2.png",
+      "source_file": "7種の空の陳列面ピクセルアート.png",
+      "source_crop": [
+        85,
+        695,
+        453,
+        1047
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        126
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            64,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            0,
+            64
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            64,
+            64
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "small_refrigerated_shelf",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "小型冷蔵ショーケース、ガラス扉",
+      "file": "sprites/small_refrigerated_shelf.png",
+      "source_file": "空の冷蔵棚・ワゴン配置図.png",
+      "source_crop": [
+        135,
+        55,
+        325,
+        249
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medium_refrigerated_shelf",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "同サイズだが収容力が高い型(棚段が多い見た目で差別化)",
+      "file": "sprites/medium_refrigerated_shelf.png",
+      "source_file": "空の冷蔵棚・ワゴン配置図.png",
+      "source_crop": [
+        510,
+        55,
+        720,
+        249
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large_refrigerated_shelf",
+      "footprint": [
+        3,
+        1
+      ],
+      "size": [
+        192,
+        64
+      ],
+      "description": "横長の大型冷蔵ショーケース",
+      "file": "sprites/large_refrigerated_shelf.png",
+      "source_file": "空の冷蔵棚・ワゴン配置図.png",
+      "source_crop": [
+        902,
+        55,
+        1465,
+        249
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        190,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        },
+        {
+          "origin": [
+            70,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        },
+        {
+          "origin": [
+            134,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "small_refrigerated_wagon",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "開放型の冷蔵ワゴン(平台)",
+      "file": "sprites/small_refrigerated_wagon.png",
+      "source_file": "空の冷蔵棚・ワゴン配置図.png",
+      "source_crop": [
+        132,
+        334,
+        325,
+        525
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medium_refrigerated_wagon",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "中型冷蔵ワゴン",
+      "file": "sprites/medium_refrigerated_wagon.png",
+      "source_file": "空の冷蔵棚・ワゴン配置図.png",
+      "source_crop": [
+        440,
+        334,
+        800,
+        525
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        },
+        {
+          "origin": [
+            70,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large_refrigerated_wagon_1",
+      "footprint": [
+        3,
+        1
+      ],
+      "size": [
+        192,
+        64
+      ],
+      "description": "大型冷蔵ワゴン(横長)",
+      "file": "sprites/large_refrigerated_wagon_1.png",
+      "source_file": "空の冷蔵棚・ワゴン配置図.png",
+      "source_crop": [
+        902,
+        334,
+        1465,
+        525
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        190,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        },
+        {
+          "origin": [
+            70,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        },
+        {
+          "origin": [
+            134,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "large_refrigerated_wagon_2",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "description": "大型冷蔵ワゴン(正方形)",
+      "file": "sprites/large_refrigerated_wagon_2.png",
+      "source_file": "空の冷蔵棚・ワゴン配置図.png",
+      "source_crop": [
+        64,
+        600,
+        405,
+        931
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        126
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        },
+        {
+          "origin": [
+            70,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        },
+        {
+          "origin": [
+            6,
+            74
+          ],
+          "size": [
+            52,
+            52
+          ]
+        },
+        {
+          "origin": [
+            70,
+            74
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "small_frozen_shelf",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "小型冷凍ショーケース、白い霜の質感",
+      "file": "sprites/small_frozen_shelf.png",
+      "source_file": "俯瞰の冷凍ショーケース4種.png",
+      "source_crop": [
+        125,
+        55,
+        505,
+        412
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medium_frozen_shelf",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "中型冷凍ショーケース",
+      "file": "sprites/medium_frozen_shelf.png",
+      "source_file": "俯瞰の冷凍ショーケース4種.png",
+      "source_crop": [
+        700,
+        55,
+        1410,
+        412
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        },
+        {
+          "origin": [
+            70,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "small_frozen_wagon",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "小型冷凍平台ワゴン",
+      "file": "sprites/small_frozen_wagon.png",
+      "source_file": "俯瞰の冷凍ショーケース4種.png",
+      "source_crop": [
+        125,
+        533,
+        505,
+        895
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medium_frozen_wagon",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "中型冷凍平台ワゴン",
+      "file": "sprites/medium_frozen_wagon.png",
+      "source_file": "俯瞰の冷凍ショーケース4種.png",
+      "source_crop": [
+        700,
+        533,
+        1410,
+        895
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            6,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        },
+        {
+          "origin": [
+            70,
+            10
+          ],
+          "size": [
+            52,
+            52
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hot_drink_case",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "温かい飲み物用の縦型保温ケース、暖色の内部照明",
+      "file": "sprites/hot_drink_case.png",
+      "source_file": "空の屋台トレイ5種.png",
+      "source_crop": [
+        102,
+        77,
+        480,
+        443
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oden_case",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "おでん専用の鍋型什器、湯気の質感",
+      "file": "sprites/oden_case.png",
+      "source_file": "空の屋台トレイ5種.png",
+      "source_crop": [
+        579,
+        77,
+        960,
+        443
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "steamed_bun_case",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "中華まん専用の蒸し器型什器",
+      "file": "sprites/steamed_bun_case.png",
+      "source_file": "空の屋台トレイ5種.png",
+      "source_crop": [
+        1052,
+        77,
+        1435,
+        443
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "event_shelf",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "イベント商品用の装飾的な棚(季節装飾つき)",
+      "file": "sprites/event_shelf.png",
+      "source_file": "空の屋台トレイ5種.png",
+      "source_crop": [
+        55,
+        563,
+        751,
+        857
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            64,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "event_wagon",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "イベント商品用の装飾的なワゴン",
+      "file": "sprites/event_wagon.png",
+      "source_file": "空の屋台トレイ5種.png",
+      "source_crop": [
+        786,
+        563,
+        1480,
+        857
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            0,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        },
+        {
+          "origin": [
+            64,
+            0
+          ],
+          "size": [
+            64,
+            64
+          ]
+        }
+      ]
+    },
+    {
+      "id": "small_tobacco_vending",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "縦型たばこ自販機、ボタンパネル",
+      "file": "sprites/small_tobacco_vending.png",
+      "source_file": "真上視点・6種自販機ドット絵.png",
+      "source_crop": [
+        135,
+        99,
+        418,
+        352
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "large_tobacco_vending",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "横に大きいたばこ自販機",
+      "file": "sprites/large_tobacco_vending.png",
+      "source_file": "真上視点・6種自販機ドット絵.png",
+      "source_crop": [
+        570,
+        99,
+        1142,
+        352
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "small_cold_drink_vending",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "縦型冷たい飲料自販機",
+      "file": "sprites/small_cold_drink_vending.png",
+      "source_file": "真上視点・6種自販機ドット絵.png",
+      "source_crop": [
+        135,
+        478,
+        418,
+        729
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "large_cold_drink_vending",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "大型冷たい飲料自販機",
+      "file": "sprites/large_cold_drink_vending.png",
+      "source_file": "真上視点・6種自販機ドット絵.png",
+      "source_crop": [
+        570,
+        478,
+        1142,
+        729
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "small_hot_cold_drink_vending",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "温冷両対応の自販機(小)",
+      "file": "sprites/small_hot_cold_drink_vending.png",
+      "source_file": "真上視点・6種自販機ドット絵.png",
+      "source_crop": [
+        135,
+        875,
+        418,
+        1140
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "large_hot_cold_drink_vending",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "温冷両対応の自販機(大)",
+      "file": "sprites/large_hot_cold_drink_vending.png",
+      "source_file": "真上視点・6種自販機ドット絵.png",
+      "source_crop": [
+        570,
+        875,
+        1142,
+        1140
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "register_1",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "基本のレジカウンター",
+      "file": "sprites/register_1.png",
+      "source_file": "レジとディスペンサーの平面図.png",
+      "source_crop": [
+        162,
+        77,
+        653,
+        244
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "register_2",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "宅配便受付機能つきレジカウンター(端末が追加された見た目)",
+      "file": "sprites/register_2.png",
+      "source_file": "レジとディスペンサーの平面図.png",
+      "source_crop": [
+        865,
+        77,
+        1375,
+        244
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            97,
+            18
+          ],
+          "size": [
+            26,
+            26
+          ],
+          "category": "parcel_delivery_form"
+        }
+      ]
+    },
+    {
+      "id": "register_3",
+      "footprint": [
+        3,
+        1
+      ],
+      "size": [
+        192,
+        64
+      ],
+      "description": "大型レジカウンター(2人打ち想定の横長)",
+      "file": "sprites/register_3.png",
+      "source_file": "レジとディスペンサーの平面図.png",
+      "source_crop": [
+        68,
+        365,
+        750,
+        538
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        190,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "register_4",
+      "footprint": [
+        3,
+        1
+      ],
+      "size": [
+        192,
+        64
+      ],
+      "description": "大型・宅配便対応レジカウンター",
+      "file": "sprites/register_4.png",
+      "source_file": "レジとディスペンサーの平面図.png",
+      "source_crop": [
+        786,
+        365,
+        1470,
+        538
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        190,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": [
+        {
+          "origin": [
+            161,
+            18
+          ],
+          "size": [
+            26,
+            26
+          ],
+          "category": "parcel_delivery_form"
+        }
+      ]
+    },
+    {
+      "id": "indoor_dispenser",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "キャッシュディスペンサー(現金自動預払機)、壁掛け/据え置き",
+      "file": "sprites/indoor_dispenser.png",
+      "source_file": "レジとディスペンサーの平面図.png",
+      "source_crop": [
+        274,
+        642,
+        540,
+        929
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        62
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "copier_a",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "小型コピー機",
+      "file": "sprites/copier_a.png",
+      "source_file": "真上から見た2種のコピー機.png",
+      "source_crop": [
+        140,
+        145,
+        563,
+        640
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        6,
+        2,
+        57,
+        62
+      ],
+      "normalization": "fit_preserving_aspect",
+      "overlay_slots": []
+    },
+    {
+      "id": "copier_b",
+      "footprint": [
+        2,
+        1
+      ],
+      "size": [
+        128,
+        64
+      ],
+      "description": "中型コピー機(横長)",
+      "file": "sprites/copier_b.png",
+      "source_file": "真上から見た2種のコピー機.png",
+      "source_crop": [
+        780,
+        145,
+        1645,
+        640
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        10,
+        2,
+        117,
+        62
+      ],
+      "normalization": "fit_preserving_aspect",
+      "overlay_slots": []
+    },
+    {
+      "id": "potted_plant",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "観葉植物の鉢",
+      "file": "sprites/potted_plant.png",
+      "source_file": "90年代風トップダウン公園・駐車場スプライト.png",
+      "source_crop": [
+        185,
+        125,
+        440,
+        358
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        4,
+        62,
+        61
+      ],
+      "normalization": "fit_preserving_aspect",
+      "overlay_slots": []
+    },
+    {
+      "id": "bench",
+      "footprint": [
+        1,
+        1
+      ],
+      "size": [
+        64,
+        64
+      ],
+      "description": "ベンチ",
+      "file": "sprites/bench.png",
+      "source_file": "90年代風トップダウン公園・駐車場スプライト.png",
+      "source_crop": [
+        591,
+        151,
+        865,
+        339
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        15,
+        62,
+        48
+      ],
+      "normalization": "fit_preserving_aspect",
+      "overlay_slots": []
+    },
+    {
+      "id": "fountain",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "description": "噴水",
+      "file": "sprites/fountain.png",
+      "source_file": "90年代風トップダウン公園・駐車場スプライト.png",
+      "source_crop": [
+        979,
+        15,
+        1350,
+        382
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        126
+      ],
+      "normalization": "fit_preserving_aspect",
+      "overlay_slots": []
+    },
+    {
+      "id": "parking_ground",
+      "footprint": [
+        1,
+        2
+      ],
+      "size": [
+        64,
+        128
+      ],
+      "description": "平面駐車場の区画線",
+      "file": "sprites/parking_ground.png",
+      "source_file": "90年代風トップダウン公園・駐車場スプライト.png",
+      "source_crop": [
+        220,
+        463,
+        427,
+        917
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        126
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "parking_two_story",
+      "footprint": [
+        1,
+        2
+      ],
+      "size": [
+        64,
+        128
+      ],
+      "description": "2階建て駐車場の構造物(平面駐車場と差別化した外観)",
+      "file": "sprites/parking_two_story.png",
+      "source_file": "90年代風トップダウン公園・駐車場スプライト.png",
+      "source_crop": [
+        626,
+        463,
+        837,
+        917
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        62,
+        126
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "parking_tower",
+      "footprint": [
+        2,
+        3
+      ],
+      "size": [
+        128,
+        192
+      ],
+      "description": "タワー型立体駐車場",
+      "file": "sprites/parking_tower.png",
+      "source_file": "90年代風トップダウン公園・駐車場スプライト.png",
+      "source_crop": [
+        983,
+        427,
+        1350,
+        931
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        190
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "break_room_1",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "description": "簡素な休憩スペース(テーブル・椅子)",
+      "file": "sprites/break_room_1.png",
+      "source_file": "2つのドット絵休憩室.png",
+      "source_crop": [
+        205,
+        103,
+        855,
+        723
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        126
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    },
+    {
+      "id": "break_room_2",
+      "footprint": [
+        2,
+        2
+      ],
+      "size": [
+        128,
+        128
+      ],
+      "description": "上位グレードの休憩室(ロッカー等が追加された見た目)",
+      "file": "sprites/break_room_2.png",
+      "source_file": "2つのドット絵休憩室.png",
+      "source_crop": [
+        917,
+        103,
+        1572,
+        723
+      ],
+      "anchor": [
+        0,
+        0
+      ],
+      "content_bbox": [
+        2,
+        2,
+        126,
+        126
+      ],
+      "normalization": "normalized_to_footprint_inner_canvas",
+      "overlay_slots": []
+    }
+  ]
+}

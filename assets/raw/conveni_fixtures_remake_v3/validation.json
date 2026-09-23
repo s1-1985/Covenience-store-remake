@@ -1,0 +1,534 @@
+{
+  "count": 44,
+  "all_checks_passed": true,
+  "checks": [
+    {
+      "file": "sprites/small_ambient_shelf.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "0c96d50cfbff6ecd9a6e034703568df186c6639638019c5f0b8cc434ad8d29ba"
+    },
+    {
+      "file": "sprites/medium_ambient_shelf.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "ccfb02edaadac01d023412db634a15c56a0f2c51acb0d1f34a1db24cefe7c88a"
+    },
+    {
+      "file": "sprites/large_ambient_shelf.png",
+      "size": [
+        192,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "d35df7440b15f9ad704f2136c3793b1469f5531c86bfb30ab1c5856d9d266ca4"
+    },
+    {
+      "file": "sprites/small_ambient_wagon.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "183ebef5b748124c6327df04c62be1abe4ebef065ee652fc0b35dc8993203ff7"
+    },
+    {
+      "file": "sprites/medium_ambient_wagon.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "73a39b4bfde1d0cb1793acc6a793f6ece329526b9f750c84f6442420b6762d8d"
+    },
+    {
+      "file": "sprites/large_ambient_wagon.png",
+      "size": [
+        192,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "71ba04b0a274f047d45dcf38ac8be860202b0c3043e96ee0d8c7393af8cc46cb"
+    },
+    {
+      "file": "sprites/large_ambient_wagon_2.png",
+      "size": [
+        128,
+        128
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "8a51053d3f7826fc4b168778006689a32f67f8bca125a20ae7552cb52d604729"
+    },
+    {
+      "file": "sprites/small_refrigerated_shelf.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "eafa3ad4c85bfbdd8429f40977ecb91217a3f61d7f101974d63c1641c8f09475"
+    },
+    {
+      "file": "sprites/medium_refrigerated_shelf.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "a92994f1826fd0f82fd3d4771d7c7d6b388ac3317e992074bdbe42c7af10b812"
+    },
+    {
+      "file": "sprites/large_refrigerated_shelf.png",
+      "size": [
+        192,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "d9ffb96383bd30c4440872b4f22b74662fc12a6755c70f85ed2ae45b78bd877c"
+    },
+    {
+      "file": "sprites/small_refrigerated_wagon.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "69e11b6cc558b0197e747ca094fb45b3053eff90d7bb29ab55f86d115df61199"
+    },
+    {
+      "file": "sprites/medium_refrigerated_wagon.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "a4b45b1f938967b755059179003f895cd58558acdd985beaf72a2730cb622c3f"
+    },
+    {
+      "file": "sprites/large_refrigerated_wagon_1.png",
+      "size": [
+        192,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "b3498ad2d0c0426dba8cf46475ae3152fc0697f8182ec0eeca005e5789596bb6"
+    },
+    {
+      "file": "sprites/large_refrigerated_wagon_2.png",
+      "size": [
+        128,
+        128
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "b59ec5acac43cec64b6d2339d351107ff4ae0bbc853862fc820823d18f43d5ac"
+    },
+    {
+      "file": "sprites/small_frozen_shelf.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "279a4c4d774d45c04accb77a1559926a97c3c869739d122ced03b770fb860495"
+    },
+    {
+      "file": "sprites/medium_frozen_shelf.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "1b4d4cfec1be33f97f5a991431f74bbf1ceb13748e457b6cb2d074a70443c49c"
+    },
+    {
+      "file": "sprites/small_frozen_wagon.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "2548daf1e562372c1d7d8508fcdfe8dfce0702b5c6a6c595ea8e25671e0a3d97"
+    },
+    {
+      "file": "sprites/medium_frozen_wagon.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "d85847dce5a7229329b6cae88827962f135cc90cf72ddb2d810875de473dc090"
+    },
+    {
+      "file": "sprites/hot_drink_case.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "27af8b412bac038cabec887f83a8f8ee92bae5bfab8630faf4ad3cd10c4cd18f"
+    },
+    {
+      "file": "sprites/oden_case.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "d22e3cfc14e51525d5f649a76b9695244bfbbb0a235a503afc5a266ecd90cd53"
+    },
+    {
+      "file": "sprites/steamed_bun_case.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "e75e229b0f53ecbe72e997f04e49dae65de02f8853dc9d64f93817ed4788a526"
+    },
+    {
+      "file": "sprites/event_shelf.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "d4408fc740d2a1b4fb03f9dac4a5a2c9531d7588341772a7221c682f2bb7bf37"
+    },
+    {
+      "file": "sprites/event_wagon.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "4783aa513ed8b2afba065e978aecb7d3ac8fb52c014231432ea659083598b33b"
+    },
+    {
+      "file": "sprites/small_tobacco_vending.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "80e7b7b0d69c457096429c5cce3eb803d5cc29a1676922b53000e51e8b197305"
+    },
+    {
+      "file": "sprites/large_tobacco_vending.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "4b5c7257df85a10a4e4b82025cca96f81372404e724edba42a1610144ffeb2d2"
+    },
+    {
+      "file": "sprites/small_cold_drink_vending.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "eca72d72e96b060e24b2191a49d4375902bcaab2085c5ce7b9eb3c20fb67dd5d"
+    },
+    {
+      "file": "sprites/large_cold_drink_vending.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "af54b4e9241727dbfe5007621bae1f8339be957852a18098b8ada5f952675932"
+    },
+    {
+      "file": "sprites/small_hot_cold_drink_vending.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "f24a5b9faab9fcdce2d6749e7a18a4d5f96a614657860f9bf2fdf322eb44d539"
+    },
+    {
+      "file": "sprites/large_hot_cold_drink_vending.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "fd6195f71ed6b87aa1de1e4d8cfd46d415addbc4de56d1e6d274b7420f0754d1"
+    },
+    {
+      "file": "sprites/register_1.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "2ee8269c984ec9e9af34c858eab20bf8c7c0fe544f61c2e979c4b6e1b1b47271"
+    },
+    {
+      "file": "sprites/register_2.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "c86348d0600bb84d9b7f5d319bc6df7e4568776a96077560e63c642d810a1cf6"
+    },
+    {
+      "file": "sprites/register_3.png",
+      "size": [
+        192,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "261d6a2a1135f5d447ccb1839da9e41f996fe0dbb808eefd618d8f2fc699c5dd"
+    },
+    {
+      "file": "sprites/register_4.png",
+      "size": [
+        192,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "e661194d636749bd983df49dc86ae378d8c5e0c304ab42a3dabfcc5b05049fb7"
+    },
+    {
+      "file": "sprites/indoor_dispenser.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "46016200151a05d9e28c35f463a392b62f8b78f8b28917b44423e972ec6c3d8e"
+    },
+    {
+      "file": "sprites/copier_a.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "db858e6fdb25a58ac6c525741736ded1173ff466d827320dfbd1280a8bb156d2"
+    },
+    {
+      "file": "sprites/copier_b.png",
+      "size": [
+        128,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "cbc0b4c72ea525b0cdc686ccf7a95462c7c42e3bf1f20e829bdd804bc652a4aa"
+    },
+    {
+      "file": "sprites/potted_plant.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "91abaa3d1a7f2032c35b3ed6728557dd82262289dcc1ad29cf6948f60acc8195"
+    },
+    {
+      "file": "sprites/bench.png",
+      "size": [
+        64,
+        64
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "1765ed439d41dff9c0ffbe7b780d2a76d59f2b89baf70802c916c9a610321631"
+    },
+    {
+      "file": "sprites/fountain.png",
+      "size": [
+        128,
+        128
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "56a6be487b5b3817e8c17afed4055c880acd39b71aaf8d9c67bd4db3f850f3af"
+    },
+    {
+      "file": "sprites/parking_ground.png",
+      "size": [
+        64,
+        128
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "abee3ed1b465cf0ad04390603144e0967728a626f216d18a1874679c6e14ac04"
+    },
+    {
+      "file": "sprites/parking_two_story.png",
+      "size": [
+        64,
+        128
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "4e89492a5096542fe35f13efc177497bab8bf943aa3ef22c97b7a559325721d9"
+    },
+    {
+      "file": "sprites/parking_tower.png",
+      "size": [
+        128,
+        192
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "6d19ff8bca919433c26a5c3a90c146a60e646991c34b9da2af38bc1e15dc7734"
+    },
+    {
+      "file": "sprites/break_room_1.png",
+      "size": [
+        128,
+        128
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "f0fee0e7f09994d1b448dbeee8f0b2fb69c5842f114d6641bdc42081709473e2"
+    },
+    {
+      "file": "sprites/break_room_2.png",
+      "size": [
+        128,
+        128
+      ],
+      "alpha_values": [
+        0,
+        255
+      ],
+      "sha256": "5dbf868a4773087851e9e82f1c399a03f1c9876c4a7a84799ad509a5eb5c1a65"
+    }
+  ]
+}
