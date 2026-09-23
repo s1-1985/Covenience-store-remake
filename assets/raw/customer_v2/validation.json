@@ -1,0 +1,1025 @@
+{
+  "checks": {
+    "count": 168,
+    "all_rgba": true,
+    "all_have_transparent_margin": true,
+    "frame_size": [
+      160,
+      160
+    ],
+    "all_reference_paths_exist": true,
+    "atlas_matches_png": true,
+    "exact_duplicate_groups": [],
+    "mirrored_frames": 25
+  },
+  "edge_cleanup": [
+    {
+      "file": "customer/sprites/customer_01/down_A.png",
+      "changed_pixels": 390,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_01/down_B.png",
+      "changed_pixels": 357,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_01/left_A.png",
+      "changed_pixels": 368,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_01/left_B.png",
+      "changed_pixels": 366,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_01/right_A.png",
+      "changed_pixels": 318,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_01/right_B.png",
+      "changed_pixels": 367,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_01/up_A.png",
+      "changed_pixels": 386,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_01/up_B.png",
+      "changed_pixels": 362,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_02/down_A.png",
+      "changed_pixels": 418,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_02/down_B.png",
+      "changed_pixels": 393,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_02/left_A.png",
+      "changed_pixels": 379,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_02/left_B.png",
+      "changed_pixels": 381,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_02/right_A.png",
+      "changed_pixels": 342,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_02/right_B.png",
+      "changed_pixels": 387,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_02/up_A.png",
+      "changed_pixels": 408,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_02/up_B.png",
+      "changed_pixels": 400,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_03/down_A.png",
+      "changed_pixels": 365,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_03/down_B.png",
+      "changed_pixels": 363,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_03/left_A.png",
+      "changed_pixels": 393,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_03/left_B.png",
+      "changed_pixels": 363,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_03/right_A.png",
+      "changed_pixels": 342,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_03/right_B.png",
+      "changed_pixels": 371,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_03/up_A.png",
+      "changed_pixels": 374,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_03/up_B.png",
+      "changed_pixels": 353,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_04/down_A.png",
+      "changed_pixels": 403,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_04/down_B.png",
+      "changed_pixels": 363,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_04/left_A.png",
+      "changed_pixels": 381,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_04/left_B.png",
+      "changed_pixels": 380,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_04/right_A.png",
+      "changed_pixels": 346,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_04/right_B.png",
+      "changed_pixels": 377,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_04/up_A.png",
+      "changed_pixels": 395,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_04/up_B.png",
+      "changed_pixels": 379,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_05/down_A.png",
+      "changed_pixels": 400,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_05/down_B.png",
+      "changed_pixels": 399,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_05/left_A.png",
+      "changed_pixels": 381,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_05/left_B.png",
+      "changed_pixels": 382,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_05/right_A.png",
+      "changed_pixels": 352,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_05/right_B.png",
+      "changed_pixels": 385,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_05/up_A.png",
+      "changed_pixels": 401,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_05/up_B.png",
+      "changed_pixels": 390,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_06/down_A.png",
+      "changed_pixels": 433,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_06/down_B.png",
+      "changed_pixels": 416,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_06/left_A.png",
+      "changed_pixels": 418,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_06/left_B.png",
+      "changed_pixels": 423,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_06/right_A.png",
+      "changed_pixels": 398,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_06/right_B.png",
+      "changed_pixels": 420,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_06/up_A.png",
+      "changed_pixels": 422,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_06/up_B.png",
+      "changed_pixels": 404,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_07/down_A.png",
+      "changed_pixels": 389,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_07/down_B.png",
+      "changed_pixels": 390,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_07/left_A.png",
+      "changed_pixels": 389,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_07/left_B.png",
+      "changed_pixels": 385,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_07/right_A.png",
+      "changed_pixels": 370,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_07/right_B.png",
+      "changed_pixels": 386,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_07/up_A.png",
+      "changed_pixels": 402,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_07/up_B.png",
+      "changed_pixels": 385,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_08/down_A.png",
+      "changed_pixels": 335,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_08/down_B.png",
+      "changed_pixels": 331,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_08/left_A.png",
+      "changed_pixels": 377,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_08/left_B.png",
+      "changed_pixels": 364,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_08/right_A.png",
+      "changed_pixels": 330,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_08/right_B.png",
+      "changed_pixels": 367,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_08/up_A.png",
+      "changed_pixels": 354,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_08/up_B.png",
+      "changed_pixels": 357,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_09/down_A.png",
+      "changed_pixels": 378,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_09/down_B.png",
+      "changed_pixels": 359,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_09/left_A.png",
+      "changed_pixels": 364,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_09/left_B.png",
+      "changed_pixels": 365,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_09/right_A.png",
+      "changed_pixels": 361,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_09/right_B.png",
+      "changed_pixels": 368,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_09/up_A.png",
+      "changed_pixels": 378,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_09/up_B.png",
+      "changed_pixels": 372,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_10/down_A.png",
+      "changed_pixels": 427,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_10/down_B.png",
+      "changed_pixels": 423,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_10/left_A.png",
+      "changed_pixels": 412,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_10/left_B.png",
+      "changed_pixels": 389,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_10/right_A.png",
+      "changed_pixels": 401,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_10/right_B.png",
+      "changed_pixels": 395,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_10/up_A.png",
+      "changed_pixels": 447,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_10/up_B.png",
+      "changed_pixels": 433,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_11/down_A.png",
+      "changed_pixels": 395,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_11/down_B.png",
+      "changed_pixels": 373,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_11/left_A.png",
+      "changed_pixels": 400,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_11/left_B.png",
+      "changed_pixels": 391,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_11/right_A.png",
+      "changed_pixels": 350,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_11/right_B.png",
+      "changed_pixels": 393,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_11/up_A.png",
+      "changed_pixels": 388,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_11/up_B.png",
+      "changed_pixels": 373,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_12/down_A.png",
+      "changed_pixels": 371,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_12/down_B.png",
+      "changed_pixels": 374,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_12/left_A.png",
+      "changed_pixels": 372,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_12/left_B.png",
+      "changed_pixels": 366,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_12/right_A.png",
+      "changed_pixels": 339,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_12/right_B.png",
+      "changed_pixels": 366,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_12/up_A.png",
+      "changed_pixels": 368,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_12/up_B.png",
+      "changed_pixels": 351,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_13/down_A.png",
+      "changed_pixels": 418,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_13/down_B.png",
+      "changed_pixels": 397,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_13/left_A.png",
+      "changed_pixels": 414,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_13/left_B.png",
+      "changed_pixels": 394,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_13/right_A.png",
+      "changed_pixels": 344,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_13/right_B.png",
+      "changed_pixels": 399,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_13/up_A.png",
+      "changed_pixels": 409,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_13/up_B.png",
+      "changed_pixels": 401,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_14/down_A.png",
+      "changed_pixels": 375,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_14/down_B.png",
+      "changed_pixels": 373,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_14/left_A.png",
+      "changed_pixels": 401,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_14/left_B.png",
+      "changed_pixels": 388,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_14/right_A.png",
+      "changed_pixels": 372,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_14/right_B.png",
+      "changed_pixels": 386,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_14/up_A.png",
+      "changed_pixels": 394,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_14/up_B.png",
+      "changed_pixels": 367,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_15/down_A.png",
+      "changed_pixels": 375,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_15/down_B.png",
+      "changed_pixels": 361,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_15/left_A.png",
+      "changed_pixels": 380,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_15/left_B.png",
+      "changed_pixels": 387,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_15/right_A.png",
+      "changed_pixels": 334,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_15/right_B.png",
+      "changed_pixels": 390,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_15/up_A.png",
+      "changed_pixels": 365,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_15/up_B.png",
+      "changed_pixels": 361,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_16/down_A.png",
+      "changed_pixels": 405,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_16/down_B.png",
+      "changed_pixels": 391,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_16/left_A.png",
+      "changed_pixels": 409,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_16/left_B.png",
+      "changed_pixels": 409,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_16/right_A.png",
+      "changed_pixels": 384,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_16/right_B.png",
+      "changed_pixels": 412,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_16/up_A.png",
+      "changed_pixels": 388,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_16/up_B.png",
+      "changed_pixels": 387,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_17/down_A.png",
+      "changed_pixels": 480,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_17/down_B.png",
+      "changed_pixels": 444,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_17/left_A.png",
+      "changed_pixels": 386,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_17/left_B.png",
+      "changed_pixels": 456,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_17/right_A.png",
+      "changed_pixels": 393,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_17/right_B.png",
+      "changed_pixels": 460,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_17/up_A.png",
+      "changed_pixels": 466,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_17/up_B.png",
+      "changed_pixels": 457,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_18/down_A.png",
+      "changed_pixels": 456,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_18/down_B.png",
+      "changed_pixels": 428,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_18/left_A.png",
+      "changed_pixels": 358,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_18/left_B.png",
+      "changed_pixels": 437,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_18/right_A.png",
+      "changed_pixels": 354,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_18/right_B.png",
+      "changed_pixels": 441,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_18/up_A.png",
+      "changed_pixels": 422,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_18/up_B.png",
+      "changed_pixels": 407,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_19/down_A.png",
+      "changed_pixels": 366,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_19/down_B.png",
+      "changed_pixels": 357,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_19/left_A.png",
+      "changed_pixels": 375,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_19/left_B.png",
+      "changed_pixels": 378,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_19/right_A.png",
+      "changed_pixels": 341,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_19/right_B.png",
+      "changed_pixels": 375,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_19/up_A.png",
+      "changed_pixels": 369,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_19/up_B.png",
+      "changed_pixels": 352,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_20/down_A.png",
+      "changed_pixels": 421,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_20/down_B.png",
+      "changed_pixels": 428,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_20/left_A.png",
+      "changed_pixels": 441,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_20/left_B.png",
+      "changed_pixels": 432,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_20/right_A.png",
+      "changed_pixels": 389,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_20/right_B.png",
+      "changed_pixels": 435,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_20/up_A.png",
+      "changed_pixels": 422,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_20/up_B.png",
+      "changed_pixels": 406,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_21/down_A.png",
+      "changed_pixels": 490,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_21/down_B.png",
+      "changed_pixels": 411,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_21/left_A.png",
+      "changed_pixels": 448,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_21/left_B.png",
+      "changed_pixels": 472,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_21/right_A.png",
+      "changed_pixels": 398,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_21/right_B.png",
+      "changed_pixels": 473,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_21/up_A.png",
+      "changed_pixels": 514,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    },
+    {
+      "file": "customer/sprites/customer_21/up_B.png",
+      "changed_pixels": 480,
+      "interior_identical": true,
+      "canvas_and_anchor_unchanged": true
+    }
+  ]
+}

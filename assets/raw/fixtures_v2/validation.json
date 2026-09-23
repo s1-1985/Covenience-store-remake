@@ -1,0 +1,11 @@
+{
+  "checks": {
+    "types": 45,
+    "runtime_frames": 180,
+    "logical_originals": 45,
+    "all_source_files_byte_identical": true,
+    "dimensions_match_grid": true,
+    "clockwise_rotations_match": true,
+    "logical_2x_nearest_match": true
+  }
+}

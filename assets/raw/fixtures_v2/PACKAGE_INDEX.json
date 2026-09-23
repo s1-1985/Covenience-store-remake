@@ -1,0 +1,3066 @@
+{
+  "category": "fixtures",
+  "runtime_frame_count": 180,
+  "assets": [
+    {
+      "id": "fixture_001_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_001.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "68cc45169857716ad6471a3b398deb59c11d70b7a10875827c82c46bb0748916"
+    },
+    {
+      "id": "fixture_001_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_001_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "d133815664aa0a4cff1310e6c95a7980a57f11ff5f1be6c204d20b2871949082"
+    },
+    {
+      "id": "fixture_001_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_001_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "2a8afde8db6dac72299d7754539985db9dc71c39d2ee9f50503ddb757c6534de"
+    },
+    {
+      "id": "fixture_001_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_001_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "154fc5abc6572c6cd24056484d602f8bd1af0dbae546c9dfa82df25aad8e108b"
+    },
+    {
+      "id": "fixture_002_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_002.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "d77760407f2c304e1e4c5a42b06b4af35f193680d9de0603be993146b163c930"
+    },
+    {
+      "id": "fixture_002_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_002_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "6878b9bbb8458c1530883c761bd2fbf3bf440c57d570441fec07e221b1c1b284"
+    },
+    {
+      "id": "fixture_002_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_002_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "6fa24ea755c90deedca17113fe3706e8868859347a2c165b345dfb52387d4ac0"
+    },
+    {
+      "id": "fixture_002_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_002_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "1a2e29a8413f0b363463184a2d29c24d0b82e189820c68d058b766cce1c283d4"
+    },
+    {
+      "id": "fixture_003_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_003.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "9f8cbd62818af24cf61c53d6f1e1f5ef34bf3fb8d9667985706eea0234c1c7d4"
+    },
+    {
+      "id": "fixture_003_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_003_90.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "6bd979029132a92221b2eedcf903d327a912e52aea4f7ecf6f9118d1b3e55799"
+    },
+    {
+      "id": "fixture_003_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_003_180.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "47077ad9211eb6157f59172a76bc5f887ffef4332ee1175947e0761cd10bbd33"
+    },
+    {
+      "id": "fixture_003_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_003_270.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "b2f56cd4b61918101e59c5f0775756314f8298d9e529a899be326ceec2119be8"
+    },
+    {
+      "id": "fixture_004_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_004.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "816c7ad73fdc81dfbf6d077c23c8b19c5c438c4789c6d0d0ad2f4b33f77b2c28"
+    },
+    {
+      "id": "fixture_004_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_004_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "77d870c16b234cec9750322d79168bbee28283ae4428f19605e3d85eabdb70cd"
+    },
+    {
+      "id": "fixture_004_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_004_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "df5cf7d0a1ca7246a897d335021a5c35860b63be5712cf6bb11d821ae6bcb9b3"
+    },
+    {
+      "id": "fixture_004_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_004_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "40f4a43ad78c11f4dd24fd97ae7ad74ce7c75767f7a068303438dcb8928e8afd"
+    },
+    {
+      "id": "fixture_005_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_005.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "d61a47b27e16bcb520945159a1372c27b4298fc1038dd865e81dec7924ee642b"
+    },
+    {
+      "id": "fixture_005_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_005_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "45d6447a9b7fe3d8585b8b90a69074b41c2f17626afc10dedd8a9494e10e65d9"
+    },
+    {
+      "id": "fixture_005_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_005_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "33739ccc49745773d6eb5ea44b4506eb3b0ecd4373ceb3a5c39a501df68462dc"
+    },
+    {
+      "id": "fixture_005_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_005_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "b49fa429621ee51e2929a8a55c46901494761f1853d43579f05fa96de4828647"
+    },
+    {
+      "id": "fixture_006_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_006.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "821d63e4ea05765f3faa9fcb56def42f7072dfeeff9f80d30d2d4662c2e587a2"
+    },
+    {
+      "id": "fixture_006_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_006_90.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "480e9bf65eb5f57327938ca8f8997d902105dd8519ca25c3e7b5b8d895e5bb4f"
+    },
+    {
+      "id": "fixture_006_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_006_180.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "035a690513ded8905917a905a7479895b5fb59c852279ecde1289b7fcde3240d"
+    },
+    {
+      "id": "fixture_006_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_006_270.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "c23627ca9d3da039906be7b815be3a1a17a5b32f048a10e8cf0a5bef34bfb440"
+    },
+    {
+      "id": "fixture_007_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_007.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "e4aaff03b2d41b05cb45163ff3edaf08cdeb100ce1a02b2445108bdf404cee63"
+    },
+    {
+      "id": "fixture_007_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_007_90.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "c834f61cfd53a2a1358a4a7e5dd20a8e074f557a31815a483eb4538b039dcb8b"
+    },
+    {
+      "id": "fixture_007_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_007_180.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "bb60ecf8f72d0a825de95a1981f5e2ddea3c96fd8834c48ab165157d041287cb"
+    },
+    {
+      "id": "fixture_007_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_007_270.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "8a48f80cea7d7fc19dfbbfd53c0d262528a8470fc5ce9a50132e7afc9ee374f3"
+    },
+    {
+      "id": "fixture_008_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_008.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "5445544fe7c723067305201392cded9da635ca2c49b8fc180ed319ea1d6a2bdd"
+    },
+    {
+      "id": "fixture_008_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_008_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "5ab9c7d331679a9bd339128bf3eb4e66ecfff1400b87ccfa9bae34f57e296d5e"
+    },
+    {
+      "id": "fixture_008_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_008_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "92051bf385eedbaf88d3864222d8982b862b0f3edb79c97c05ee8237a4cc5ecc"
+    },
+    {
+      "id": "fixture_008_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_008_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "3d0d5c9c816eeb74b61c24f64b4b0648b0d6ef672f42324f15b574f1bd049daf"
+    },
+    {
+      "id": "fixture_009_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_009.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "6fada6e4385c2137627ab71d7ecb9cbeb0700acc146a448d1ff1e15f78e9eff1"
+    },
+    {
+      "id": "fixture_009_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_009_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "edd359339d0a5281400a7ef36c00bf93566e5adae07a0ccd15648bcd54fad201"
+    },
+    {
+      "id": "fixture_009_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_009_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "1f6eb5a4722c94bcd314e18ae38a074306e25a9203513e94674ad2de50aacc78"
+    },
+    {
+      "id": "fixture_009_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_009_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "8e5d4225f884796279fa423852a1e4f6835fe11439661f2b07edfe0f9124880a"
+    },
+    {
+      "id": "fixture_010_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_010.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "5dd92750a93040b46c6d40f0447e852227a756e9de1d55288e0cdf419eae48ea"
+    },
+    {
+      "id": "fixture_010_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_010_90.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "915d693b14ac5669d221bfadde90024b38a9148be60cc2b15ed17b1a9c141930"
+    },
+    {
+      "id": "fixture_010_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_010_180.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "81a2bc357ee43999aa9fdf2b0583925b493e6a1c37a9213ed71b1fa06b3de110"
+    },
+    {
+      "id": "fixture_010_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_010_270.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "10981764de2b8f4880df769d5d1b4e191ed82fc8fa3110f51ec91f12c39bee00"
+    },
+    {
+      "id": "fixture_011_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_011.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "015d371f64a6dfd5e354edbf6ce1e9b09c814b6b79eb3a7fa767b2309612199b"
+    },
+    {
+      "id": "fixture_011_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_011_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "637ffbe342896bfc982f4ba186747b3105e39be5fdd4b466ec12db316318a6ea"
+    },
+    {
+      "id": "fixture_011_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_011_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "c9343feb42d413a26fed17a005e98dfee944149e8c080856fa5039a69964af0c"
+    },
+    {
+      "id": "fixture_011_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_011_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "06c6db80ef7992793dde74c8ab315c044b721aa6665add5a41f221f9d9b78757"
+    },
+    {
+      "id": "fixture_012_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_012.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "b697a6cbb2cd937f94fc143cedddc9b60fd6cb2d7b027159cdfe33f0e1739456"
+    },
+    {
+      "id": "fixture_012_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_012_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "6fa9372c26700c521e908605417d930b3db3d256127f0703cedd53c554bf997f"
+    },
+    {
+      "id": "fixture_012_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_012_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "f4961914bc2fc9e752346d124f3b1322c59b876acb2a33adb17ef017467cb04b"
+    },
+    {
+      "id": "fixture_012_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_012_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "200e8bddd3bcf263c62771e6a6fbd83807078c8155d1b7d7adb53b9d552e6eac"
+    },
+    {
+      "id": "fixture_013_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_013.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "0b0d114810ddd1b863325d660ba08675f425638c25c9dea7d3833a359626bfc2"
+    },
+    {
+      "id": "fixture_013_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_013_90.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "908a83a628d9d82e4b0070e444afc46ce6cbaf6da4fa9c70e36355b0f1fb07e2"
+    },
+    {
+      "id": "fixture_013_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_013_180.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "767122b36b4f6c2519922a68cd20cc360ec12b4e2abdf19ed0c80686708b8db5"
+    },
+    {
+      "id": "fixture_013_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_013_270.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "ce0da19fa707e09e6f29a0fedbc75b3456c98a40d2e6366d47d028c641635712"
+    },
+    {
+      "id": "fixture_014_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_014.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "d29329fdf9636c57fb731293716cca33c19d0674d426e845bf41555d3f074647"
+    },
+    {
+      "id": "fixture_014_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_014_90.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "720ed18c738ff4b1949a43aac4e6c0f931642015f7adad666d5cfe2ff9fab335"
+    },
+    {
+      "id": "fixture_014_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_014_180.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "e7f46a55c29468c2634c897ea6237c16c8e6f0ef70beffda28281a45a91141b0"
+    },
+    {
+      "id": "fixture_014_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_014_270.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "a0066fdf20ee07208201a81ab15b4cb2a059cbcfaa9a53569b82c995a3d5f98f"
+    },
+    {
+      "id": "fixture_015_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_015.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "e853091600e7536e67f77651c5e17c8278f4af91ab0aeab65934d3c63cb1e0c6"
+    },
+    {
+      "id": "fixture_015_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_015_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "92352011f741b618303f8420520590ae3f867ddba35948ca98159e690ca65f96"
+    },
+    {
+      "id": "fixture_015_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_015_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "c65345379d5ba9e6d0f51f9fed9d72d35ad21e75674cd6fdcde787dfb533e161"
+    },
+    {
+      "id": "fixture_015_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_015_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "ec19b8ddad26c63c1095a8858bfa0c2c580c4f298ebf01b1e19519bf59f09585"
+    },
+    {
+      "id": "fixture_016_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_016.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "a9966d9961a4bcc4dbb314f2de2864a35e37af7875d3aec33b310f1a1c082d83"
+    },
+    {
+      "id": "fixture_016_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_016_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "96f667dcf2873ca31661570f2726d663a5dfc20f6e020963fd7e1f5e0973ec81"
+    },
+    {
+      "id": "fixture_016_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_016_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "7c889c0fe22a36401a733ff79cae3e6fa3b4411f880e870ffc3f189383ad7da6"
+    },
+    {
+      "id": "fixture_016_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_016_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "c6555af49d1f7344f6e2df27c2cb25c52652536fb304ee477f92e96ff465f52e"
+    },
+    {
+      "id": "fixture_017_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_017.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "dfbc34d19134ac5dc3965598c71a6f60f2f5a3abffffea78fba2d3b77520eef2"
+    },
+    {
+      "id": "fixture_017_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_017_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "3c724967c9d202769bd54812f277208b39cb9cd7f223c6b18c5df6b7f20dbcc1"
+    },
+    {
+      "id": "fixture_017_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_017_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "0d8ff66a618b09bceaafefe0b721ce376c2b96eac0a26cadef23e3dddd0cd015"
+    },
+    {
+      "id": "fixture_017_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_017_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "c3fca43e1018643253633b7d2adcbbddca44a2f0b8da8d5add66112cfce41f4a"
+    },
+    {
+      "id": "fixture_018_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_018.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "8c70e5b4d0c989af268fb30a2c42159025335d8c841cff4f5b1a80f3118b7e7d"
+    },
+    {
+      "id": "fixture_018_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_018_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "ed55b76ddf364d74cd14d0e0a5f6688ed50d7edf9c6adc31b94c94932de29dc1"
+    },
+    {
+      "id": "fixture_018_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_018_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "ca519be220690531b6aa343938d16e81608638f32cc35873a0dc89f11d2ce68c"
+    },
+    {
+      "id": "fixture_018_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_018_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "c16ba7b711a53b2c352296000b5b7f99bd0a715e6973e6ffc699a5ba36dcecd6"
+    },
+    {
+      "id": "fixture_019_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_019.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "5b91464c662ca5ceccd84cd4fc49001aed83e786db76fe9f1d5afe50e321abbc"
+    },
+    {
+      "id": "fixture_019_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_019_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "96be22b53252e8169fed1ea33179b34a7780bff5ba9edb020b0c16eed0136fda"
+    },
+    {
+      "id": "fixture_019_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_019_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "b8910362c118ce2617b9c0ff4817a04e84c33b13b52bfe8e5b09e3329288616c"
+    },
+    {
+      "id": "fixture_019_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_019_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "63ff7bd94869b35d1cb5ba8c2bf25ebdfbe8822c78ac2d05ddf24f58cef80aca"
+    },
+    {
+      "id": "fixture_020_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_020.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "629a1b6cb340aaf0ddb73196f403ea34e4ac697446c1f452997d74f08c3cf7ed"
+    },
+    {
+      "id": "fixture_020_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_020_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "e23155446480fb7179cbf13e66517f059cb1d67f56a11d3bfef8a5edffff5497"
+    },
+    {
+      "id": "fixture_020_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_020_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "b5dcd1f1b7f35153802e3db2fb45ffd090392b8250812eb55508de56d4415bcb"
+    },
+    {
+      "id": "fixture_020_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_020_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "d925fa9a85dea4ee91b6e1f01160f184df5549edd1532370f933383aade3c29d"
+    },
+    {
+      "id": "fixture_021_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_021.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "a86823f3ccb47ddb0ad0d92acb584293ecdf2b66a2d97541ffc0864ccbfb66db"
+    },
+    {
+      "id": "fixture_021_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_021_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "eeb7ac88955035fdc4cdd6a892f25c9dc0e3443fc64fe48b3599f05d931ae489"
+    },
+    {
+      "id": "fixture_021_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_021_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "fb71af92b021bb136e80594956394f1fd936e1fae68b3199d89885fc29b231e2"
+    },
+    {
+      "id": "fixture_021_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_021_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "b39cfffb0935ebd94e34e6f386f35f667370e1b8e062af609ebd46e44c3893f1"
+    },
+    {
+      "id": "fixture_022_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_022.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "5faf72379218eb288c9d2cbbcfac4c933387f18d336546e987046208372c842f"
+    },
+    {
+      "id": "fixture_022_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_022_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "0c9beed052f88bc0d384b9f03a068592695b79fdc669c238ea5bedf36196beff"
+    },
+    {
+      "id": "fixture_022_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_022_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "b23be6c2dae4d3092730274dee5d4d7f54ec50b432c7f84bb664bc7d15c81fa4"
+    },
+    {
+      "id": "fixture_022_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_022_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "5d81f934688061534f9a134a1d1b69b175d8f8c635d32ce3e90719098df7d8e8"
+    },
+    {
+      "id": "fixture_023_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_023.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "77df6e5302ee1cb84370c5bb54e3f01ead6ef87436168655a8fb9c829ed6f008"
+    },
+    {
+      "id": "fixture_023_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_023_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "c26d7a17963520e459c8ffa8e7a50616d2f493c8892f5f87009d003a37825c72"
+    },
+    {
+      "id": "fixture_023_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_023_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "278ca3804310f3f429a1286f4cc54df81a382300e71b4b9320d7c126e4391434"
+    },
+    {
+      "id": "fixture_023_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_023_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "18695d31777912a965e079f81be35477d7697c731c92bb007eb6555bbda72f3d"
+    },
+    {
+      "id": "fixture_024_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_024.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "f8e1ddee9cb3ce54edacabebc2501c9436d8b3d3ccdb611fabd8d2018c4ebac9"
+    },
+    {
+      "id": "fixture_024_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_024_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "7f24607c2d7c1a9486643fdf791a92125be68d48ae8f92db77d450ca45981b5c"
+    },
+    {
+      "id": "fixture_024_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_024_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "fce806cd131545209a1f9e1c2d44f274ea3d06b38f11ecabe5688bebca577baa"
+    },
+    {
+      "id": "fixture_024_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_024_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "458e339f792404936c962a86d5d06fc04888970aabe40ee5fc1124d2ba1185e4"
+    },
+    {
+      "id": "fixture_025_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_025.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "2ca798a9e89cedff5e74f8a5bdbae5ebf7a08d6bff0fbd34258f14dc2f0b1c27"
+    },
+    {
+      "id": "fixture_025_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_025_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "8c0cf37a02bf04b1d50824a4445b9bf9b19b7ca3a23da11502b6d2851fd4a7f4"
+    },
+    {
+      "id": "fixture_025_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_025_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "c871fbad7adb40fbff79effa546137a7051e577c300d1c9204a4aa7831613bea"
+    },
+    {
+      "id": "fixture_025_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_025_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "54cf7df989e924deec3c54cf095b4c6b64ae85dde4e5776c16e85d018b66e6b0"
+    },
+    {
+      "id": "fixture_026_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_026.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "5d70319044149abe264a97b5c179a20a330647018d234c829f9c1b138ef3ab43"
+    },
+    {
+      "id": "fixture_026_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_026_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "7a5285288c813dbdc88f202ed44bd83c9b36dd11dcbfc9d937dfd039bcab822b"
+    },
+    {
+      "id": "fixture_026_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_026_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "3e4a09676798b4f8ac844be722e686abd74ea2f7890b8762350e70eca25236e2"
+    },
+    {
+      "id": "fixture_026_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_026_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "55ddd813c5550de8d835ab956e945aac0ecac66fc0d4af0621301620488e1a96"
+    },
+    {
+      "id": "fixture_027_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_027.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "eae0e1f6f5a2d4289f580bb51e845dda9260fdc14e12f386e2d57d3e4450871c"
+    },
+    {
+      "id": "fixture_027_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_027_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "2ee9566e38d1e8094c6823d7dcb30e33a2f95ff5c8b48e6ef9b694a71ec3ecb5"
+    },
+    {
+      "id": "fixture_027_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_027_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "8f0a8503c2f262b70ba5cde2a4439060d360c669ca9206890e4c98d7343ec8ea"
+    },
+    {
+      "id": "fixture_027_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_027_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "bcc51521ccab27b7a57c62f18329f099aa0369666f9831361808e3393d7ba0b8"
+    },
+    {
+      "id": "fixture_028_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_028.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "09cb019c15ab99eebe93756d8eb06d2bc456a98ec247c6bdfcf5afd2e8262050"
+    },
+    {
+      "id": "fixture_028_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_028_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "ccd4c37145d1d7c0d27479a55cc5672a063bf4880e29ae225757dbd6019d95b2"
+    },
+    {
+      "id": "fixture_028_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_028_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "f560e95594796f2f1f25c1c4f9ac6ff8cff4e50400146130a55dbb9dab4d9f09"
+    },
+    {
+      "id": "fixture_028_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_028_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "546f703a2b194e86bc80a3b26fb912627367af2df67170c115094716883f39b4"
+    },
+    {
+      "id": "fixture_029_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_029.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "9609a567b658186f4118e4b4a5fbc4cca17f1d893c7c8f74e13477b28c8a0440"
+    },
+    {
+      "id": "fixture_029_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_029_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "ab99b594842e2f71853dde825b7aa6a056473d548c26c5936dd0655ecfce3b31"
+    },
+    {
+      "id": "fixture_029_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_029_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "072bd214295601ac4983a2ac23636383c3273918a77a57f79c597dacfbb8e713"
+    },
+    {
+      "id": "fixture_029_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_029_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "f3f8e1603d7cc8c44195eb1cb26bc64d3d0cabc63a189b1b0f01e4ece2075e01"
+    },
+    {
+      "id": "fixture_030_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_030.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "399d0c4f48d0b438c3f734b8063e98403aa70cc0679da689458b2e47423691b8"
+    },
+    {
+      "id": "fixture_030_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_030_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "6162358588bb619de4e225a46f773cb66e8948c416024b17312ac9114346511c"
+    },
+    {
+      "id": "fixture_030_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_030_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "967560a344fde231f4f6edbff75b1ec5418f7b03461d4434bef3bd33d79f34a0"
+    },
+    {
+      "id": "fixture_030_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_030_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "d15805103e15069dc886ee96eded5732824d03ca8186bd4dfd7336a9b29589fc"
+    },
+    {
+      "id": "fixture_031_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_031.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "01e2a9d5cd5cb2fb9028476606d2960ef156f79ea9529a3cc636442aba6f8e2a"
+    },
+    {
+      "id": "fixture_031_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_031_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "0ad9154269db7819f7281f8a07a1a587e5245b90dd024eff2008131abe95c717"
+    },
+    {
+      "id": "fixture_031_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_031_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "3d9e25a156b4c10f43eaa2b7a035e485d6ae4ed26cd8c95413550e2499af093e"
+    },
+    {
+      "id": "fixture_031_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_031_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "f43c3786f6924316831b2bf3579be7125725045b53b1b42985ac7f6167202815"
+    },
+    {
+      "id": "fixture_032_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_032.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "dd22206ce67a8fe6d266af48c4a340faaaad3c2c9e40a0bd512e56190662180f"
+    },
+    {
+      "id": "fixture_032_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_032_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "d20ed266e44c62c0ff6f28b6e7661b4c5227d18fb0a9b4cb6b980156c0455a0b"
+    },
+    {
+      "id": "fixture_032_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_032_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "325493801ec00c8f6690f297e3c2ed4a8ae69b78fb9a07776b8e4cec67861425"
+    },
+    {
+      "id": "fixture_032_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_032_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "6bfadb1854f1edeafe119c13fd0c7c97f1b96b03b1d754529aa7c6bb40edd733"
+    },
+    {
+      "id": "fixture_033_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_033.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "48625526fe044db71e74a7bf7209ec39f2ecdb8e6771bb98782a0f998ea00dae"
+    },
+    {
+      "id": "fixture_033_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_033_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "46a98dfe9edfb1941c241dc542e5a2d6d2c486aa77212b0b13511a96aceed1c7"
+    },
+    {
+      "id": "fixture_033_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_033_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "d6005d246f1786b668c371e29d34bc15b7e543719e7c7b1a608858237a274a5b"
+    },
+    {
+      "id": "fixture_033_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_033_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "5017f80723bd3402133e7c2354fd83e3e627a2b72b7ac49326977546a313e67b"
+    },
+    {
+      "id": "fixture_034_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_034.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "156e203697f2eafa4e361a098771bbedc04dc8671ba49619fd674e28b97b5f83"
+    },
+    {
+      "id": "fixture_034_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_034_90.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "ec9bedb96362582a7ac49ba8db5be9a551a6a3bbe16cb77dbc8a51ca7a2361e9"
+    },
+    {
+      "id": "fixture_034_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_034_180.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "4617c09c0d782c0a32fb7c9c2c78d5af98c2f7b53a03a9410295204573aebac2"
+    },
+    {
+      "id": "fixture_034_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_034_270.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "dadc8ed8946f80e634d1d8682f138631215aaa5e9ba359a8eb1fc517be1929fb"
+    },
+    {
+      "id": "fixture_035_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_035.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "2c2c87cf7a76d57c54cc8ac90ed11037bfec621e06e74652b6822384f6185092"
+    },
+    {
+      "id": "fixture_035_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_035_90.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "925b292562fa0610f0711f515dd2bec551e86cf23d41052f2545b04ccbae8129"
+    },
+    {
+      "id": "fixture_035_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_035_180.png",
+      "width_px": 144,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "626046dde413601f6bab85eaeaa8ae9f0ab901bd36402ae5a4515bc799590231"
+    },
+    {
+      "id": "fixture_035_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_035_270.png",
+      "width_px": 48,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        3
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "6abb7966ba4f00992989997346c308dce2f98258573d2bf2c8162e138f789e6a"
+    },
+    {
+      "id": "fixture_036_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_036.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "fe6c7921a85d0a6b0f0c7f1e0da5990c391771e3f2e5046d1005bbb75be6bd76"
+    },
+    {
+      "id": "fixture_036_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_036_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "209ca8daa3f585c04682350fcdb0b6356eaa41fc1874cc20ada2392d653f3da2"
+    },
+    {
+      "id": "fixture_036_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_036_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "4ce627d83ad617208b65059a639b0ab58be426848746207576091a9fc67ff590"
+    },
+    {
+      "id": "fixture_036_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_036_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "bd0d78a7bcb84776e237a9228e80554c503b751ee06482fafc62235b681b9fe5"
+    },
+    {
+      "id": "fixture_037_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_037.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "35781b5496208bb25d611adcffa37553cf024d12060ce49d60528d87710f6e07"
+    },
+    {
+      "id": "fixture_037_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_037_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "0a73315b2456416a8895bb81d368c31a575aff0f6310d4b07919122ffab59078"
+    },
+    {
+      "id": "fixture_037_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_037_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "16d4beb4b4807112c5cd6fb8098f02aecc506f89d680576cfab1900fba02a247"
+    },
+    {
+      "id": "fixture_037_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_037_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "d98f1b9982d9b4f747c20a75bd918e075474f10ceb6207860726a1bdcf352409"
+    },
+    {
+      "id": "fixture_038_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_038.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "a0e306733b9230b1767188d0d24e7bacb9cf9c8091a489a6aca0439c66bb20a8"
+    },
+    {
+      "id": "fixture_038_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_038_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "ce5deed909573901f5f052acb1a7b0a6ef94546b2c0f8c93bcb86a26cd0e8df9"
+    },
+    {
+      "id": "fixture_038_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_038_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "9fd631479e6df9e1552e155316e6889617f6226938ecfb8402e279728e03416c"
+    },
+    {
+      "id": "fixture_038_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_038_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "19f8593a79bf8a5ef187cdbf0209971294ad7a86f9c341a54c2aea8bb09c55c5"
+    },
+    {
+      "id": "fixture_039_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_039.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "c1224173be12b267971e9dd22fd0d66342e765b482539a0153f7fb53ec1572bd"
+    },
+    {
+      "id": "fixture_039_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_039_90.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "74906d2c9804d741977ff9237f168889f3b23a7be20654f8a17e7105a36d226b"
+    },
+    {
+      "id": "fixture_039_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_039_180.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "b395db84076d360c6ad2954d4aa329089c5d47676913bf0f63db7d9729e784f2"
+    },
+    {
+      "id": "fixture_039_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_039_270.png",
+      "width_px": 48,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        1
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "1e6c645cb90c76d2cd3030bb57228cf84947f4406abc2c6816e8ea26cb37027a"
+    },
+    {
+      "id": "fixture_040_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_040.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "ebed9d998e5262a2896e4ea9a4f8566d47702d356a566dd5b2da30b4edae1c3f"
+    },
+    {
+      "id": "fixture_040_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_040_90.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "7a979225838d7b9a63b6f151272088ec817b4224ec645786695f00a72fe6f2a3"
+    },
+    {
+      "id": "fixture_040_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_040_180.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "10c7b3b730a5a7936e4474248c94fc79ed068cfee4f771e2be7b8dd3ee29eda9"
+    },
+    {
+      "id": "fixture_040_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_040_270.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "311ffe0316057941f8829009ea999e16cef8a7aea8553e7b38017a4d73da31da"
+    },
+    {
+      "id": "fixture_041_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_041.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "2a336d99a048952a6f5e146867ca5baef9b5c829a1fd9f44c20f8dc0a4fda813"
+    },
+    {
+      "id": "fixture_041_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_041_90.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "fa9457e5c272baf311e40b1eae76807bbb7247a4d15422556cbbb3b52759f4c6"
+    },
+    {
+      "id": "fixture_041_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_041_180.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "41fba0c967ca492c370bb12204b184ef32f93577f50bebbb9d7345d5afec31b1"
+    },
+    {
+      "id": "fixture_041_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_041_270.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "ff1496548e5fb7fb7e8760dbd3d65764896d204eef60287c3ab8d79c70caface"
+    },
+    {
+      "id": "fixture_042_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_042.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "00fd982b4b5486686dbc4464520d92d8920921706ea9dba9c5091a7568571154"
+    },
+    {
+      "id": "fixture_042_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_042_90.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "a93468e4c8e9a02a64d20b7c23ba3405b245e3e1a660daa15f535bb9acbcf8eb"
+    },
+    {
+      "id": "fixture_042_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_042_180.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "9b8c476ff6daa3576d5ac5b2836b17f2642a1d9ec9aa29b9a1de782ec0f61464"
+    },
+    {
+      "id": "fixture_042_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_042_270.png",
+      "width_px": 96,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "38b8615aaca518abf4fc36a1d656ec2accf7b47837d503cdc8c81241a8785057"
+    },
+    {
+      "id": "fixture_043_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_043.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "86e88cd871b6adfd07936d384dd06bd5246245246dcfee581540d105dc6ac7e4"
+    },
+    {
+      "id": "fixture_043_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_043_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "f87581dd37ff091e140b23a3d274db49b7a0dca0abf2619e66dbb30b64e016b3"
+    },
+    {
+      "id": "fixture_043_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_043_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "849dbd0550e5c542d8df5680952d1707682350c7f2bee87d58b27f395e9aa6e7"
+    },
+    {
+      "id": "fixture_043_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_043_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "fa019e8cb5d942d21585b1a9280496930f5a51603b61b771317953590440991b"
+    },
+    {
+      "id": "fixture_044_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_044.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "14492ebe8047130474797ad5b429b1b737b4aaa5b34f77a427bb9a75b52d8411"
+    },
+    {
+      "id": "fixture_044_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_044_90.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "2188ca4395f0b685d5da287717bed2508e63077c91657c13b9e5c19d39290ab4"
+    },
+    {
+      "id": "fixture_044_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_044_180.png",
+      "width_px": 96,
+      "height_px": 48,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        1
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "2c40c0dea3efd5d7c48257772f9fa7aa55435452d4649951d03aae0abb1544db"
+    },
+    {
+      "id": "fixture_044_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_044_270.png",
+      "width_px": 48,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        1,
+        2
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "326b60e53ac8ef68628f7acaf0289b3dbcc5e3ac36fee27ea2ecaa7e515b0166"
+    },
+    {
+      "id": "fixture_045_0",
+      "group": "fixtures",
+      "file": "fixtures/sprites/empty/fixture_045.png",
+      "width_px": 144,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        2
+      ],
+      "rotation_clockwise": 0,
+      "sha256": "c65b7aa03914f0715a87586c418124630c048444a6e32c9e71b49b7ff331f031"
+    },
+    {
+      "id": "fixture_045_90",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_045_90.png",
+      "width_px": 96,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        3
+      ],
+      "rotation_clockwise": 90,
+      "sha256": "9d2c8fed9311596c3d51b7e920a0a75f8220aed63d733fd3834d61bee1c535a4"
+    },
+    {
+      "id": "fixture_045_180",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_045_180.png",
+      "width_px": 144,
+      "height_px": 96,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        3,
+        2
+      ],
+      "rotation_clockwise": 180,
+      "sha256": "ba4b3d2922ad08034df805fcec4338d1872980ef44983cd9556d8ed898d2bc90"
+    },
+    {
+      "id": "fixture_045_270",
+      "group": "fixtures",
+      "file": "fixtures/sprites/rotations/fixture_045_270.png",
+      "width_px": 96,
+      "height_px": 144,
+      "anchor_px": [
+        0,
+        0
+      ],
+      "footprint_xy": [
+        2,
+        3
+      ],
+      "rotation_clockwise": 270,
+      "sha256": "9435b88aa784abc40bd1419d72a5c12075586163f7c520c55977deff55e12aec"
+    }
+  ]
+}

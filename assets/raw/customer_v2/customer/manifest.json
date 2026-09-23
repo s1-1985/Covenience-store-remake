@@ -1,0 +1,6567 @@
+{
+  "version": 2,
+  "character_count": 21,
+  "sprite_count": 168,
+  "frame_size_px": [
+    160,
+    160
+  ],
+  "anchor_px": [
+    80,
+    154
+  ],
+  "sprites": [
+    {
+      "id": "customer_01",
+      "name_ja": "女子大生",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_01/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        52,
+        120,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        347,
+        144,
+        480,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 390,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_01",
+      "name_ja": "女子大生",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_01/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        39,
+        53,
+        121,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        488,
+        144,
+        621,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 357,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_01",
+      "name_ja": "女子大生",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_01/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        54,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        629,
+        144,
+        763,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 368,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_01",
+      "name_ja": "女子大生",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_01/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        55,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        144,
+        1184,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 366,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_01",
+      "name_ja": "女子大生",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_01/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        54,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        911,
+        144,
+        1044,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 318,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_01",
+      "name_ja": "女子大生",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_01/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        55,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        144,
+        1184,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 367,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_01",
+      "name_ja": "女子大生",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_01/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        51,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1192,
+        144,
+        1325,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 386,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_01",
+      "name_ja": "女子大生",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_01/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        54,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1333,
+        144,
+        1462,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 362,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_02",
+      "name_ja": "大学生",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_02/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        48,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        347,
+        262,
+        480,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 418,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_02",
+      "name_ja": "大学生",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_02/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        50,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        488,
+        262,
+        621,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 393,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_02",
+      "name_ja": "大学生",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_02/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        49,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        629,
+        262,
+        763,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 379,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_02",
+      "name_ja": "大学生",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_02/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        50,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        262,
+        1184,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 381,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_02",
+      "name_ja": "大学生",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_02/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        49,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        911,
+        262,
+        1044,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 342,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_02",
+      "name_ja": "大学生",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_02/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        50,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        262,
+        1184,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 387,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_02",
+      "name_ja": "大学生",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_02/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        49,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1192,
+        262,
+        1325,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 408,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_02",
+      "name_ja": "大学生",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_02/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        49,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1333,
+        262,
+        1462,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 400,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_03",
+      "name_ja": "サラリーマン",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_03/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        46,
+        120,
+        154
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        347,
+        383,
+        480,
+        499
+      ],
+      "source_row": 3,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 365,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_03",
+      "name_ja": "サラリーマン",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_03/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        46,
+        119,
+        154
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        488,
+        383,
+        621,
+        499
+      ],
+      "source_row": 3,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 363,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_03",
+      "name_ja": "サラリーマン",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_03/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        45,
+        49,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        629,
+        383,
+        763,
+        499
+      ],
+      "source_row": 3,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 393,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_03",
+      "name_ja": "サラリーマン",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_03/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        49,
+        116,
+        154
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        383,
+        1184,
+        499
+      ],
+      "source_row": 3,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 363,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_03",
+      "name_ja": "サラリーマン",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_03/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        45,
+        49,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        911,
+        383,
+        1044,
+        499
+      ],
+      "source_row": 3,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 342,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_03",
+      "name_ja": "サラリーマン",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_03/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        49,
+        116,
+        154
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        383,
+        1184,
+        499
+      ],
+      "source_row": 3,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 371,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_03",
+      "name_ja": "サラリーマン",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_03/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        47,
+        118,
+        154
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1192,
+        383,
+        1325,
+        499
+      ],
+      "source_row": 3,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 374,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_03",
+      "name_ja": "サラリーマン",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_03/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        47,
+        117,
+        154
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1333,
+        383,
+        1462,
+        499
+      ],
+      "source_row": 3,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 353,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_04",
+      "name_ja": "OL",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_04/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        40,
+        43,
+        120,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        347,
+        507,
+        480,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 403,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_04",
+      "name_ja": "OL",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_04/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        40,
+        43,
+        121,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        488,
+        507,
+        621,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 363,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_04",
+      "name_ja": "OL",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_04/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        49,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        629,
+        507,
+        763,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 381,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_04",
+      "name_ja": "OL",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_04/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        50,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        507,
+        1184,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 380,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_04",
+      "name_ja": "OL",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_04/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        49,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        911,
+        507,
+        1044,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 346,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_04",
+      "name_ja": "OL",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_04/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        50,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        507,
+        1184,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 377,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_04",
+      "name_ja": "OL",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_04/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        42,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1192,
+        507,
+        1325,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 395,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_04",
+      "name_ja": "OL",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_04/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        44,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1333,
+        507,
+        1462,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 379,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_05",
+      "name_ja": "おじさん",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_05/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        49,
+        120,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        347,
+        634,
+        480,
+        751
+      ],
+      "source_row": 5,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 400,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_05",
+      "name_ja": "おじさん",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_05/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        48,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        488,
+        634,
+        621,
+        751
+      ],
+      "source_row": 5,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 399,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_05",
+      "name_ja": "おじさん",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_05/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        45,
+        47,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        629,
+        634,
+        763,
+        751
+      ],
+      "source_row": 5,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 381,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_05",
+      "name_ja": "おじさん",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_05/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        49,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        634,
+        1184,
+        751
+      ],
+      "source_row": 5,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 382,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_05",
+      "name_ja": "おじさん",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_05/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        48,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        911,
+        634,
+        1044,
+        751
+      ],
+      "source_row": 5,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 352,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_05",
+      "name_ja": "おじさん",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_05/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        49,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        634,
+        1184,
+        751
+      ],
+      "source_row": 5,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 385,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_05",
+      "name_ja": "おじさん",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_05/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        49,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1192,
+        634,
+        1325,
+        751
+      ],
+      "source_row": 5,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 401,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_05",
+      "name_ja": "おじさん",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_05/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        47,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1333,
+        634,
+        1462,
+        751
+      ],
+      "source_row": 5,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 390,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_06",
+      "name_ja": "おばさん",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_06/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        37,
+        39,
+        123,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        347,
+        759,
+        480,
+        884
+      ],
+      "source_row": 6,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 433,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_06",
+      "name_ja": "おばさん",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_06/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        38,
+        40,
+        122,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        488,
+        759,
+        621,
+        884
+      ],
+      "source_row": 6,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 416,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_06",
+      "name_ja": "おばさん",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_06/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        41,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        629,
+        759,
+        763,
+        884
+      ],
+      "source_row": 6,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 418,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_06",
+      "name_ja": "おばさん",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_06/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        39,
+        120,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        759,
+        1184,
+        884
+      ],
+      "source_row": 6,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 423,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_06",
+      "name_ja": "おばさん",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_06/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        40,
+        41,
+        120,
+        152
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        911,
+        759,
+        1044,
+        884
+      ],
+      "source_row": 6,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 398,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_06",
+      "name_ja": "おばさん",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_06/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        39,
+        120,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        759,
+        1184,
+        884
+      ],
+      "source_row": 6,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 420,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_06",
+      "name_ja": "おばさん",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_06/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        40,
+        40,
+        121,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1192,
+        759,
+        1325,
+        884
+      ],
+      "source_row": 6,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 422,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_06",
+      "name_ja": "おばさん",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_06/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        40,
+        120,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1333,
+        759,
+        1462,
+        884
+      ],
+      "source_row": 6,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 404,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_07",
+      "name_ja": "おじいさん",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_07/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        48,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        347,
+        892,
+        480,
+        1016
+      ],
+      "source_row": 7,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 389,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_07",
+      "name_ja": "おじいさん",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_07/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        47,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        488,
+        892,
+        621,
+        1016
+      ],
+      "source_row": 7,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 390,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_07",
+      "name_ja": "おじいさん",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_07/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        46,
+        44,
+        115,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        629,
+        892,
+        763,
+        1016
+      ],
+      "source_row": 7,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 389,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_07",
+      "name_ja": "おじいさん",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_07/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        45,
+        44,
+        115,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        892,
+        1184,
+        1016
+      ],
+      "source_row": 7,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 385,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_07",
+      "name_ja": "おじいさん",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_07/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        46,
+        44,
+        115,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        911,
+        892,
+        1044,
+        1016
+      ],
+      "source_row": 7,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 370,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_07",
+      "name_ja": "おじいさん",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_07/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        45,
+        44,
+        115,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        892,
+        1184,
+        1016
+      ],
+      "source_row": 7,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 386,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_07",
+      "name_ja": "おじいさん",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_07/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        48,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1192,
+        892,
+        1325,
+        1016
+      ],
+      "source_row": 7,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 402,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_07",
+      "name_ja": "おじいさん",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_07/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        47,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_01_07_reference.png",
+      "source_cell_xyxy": [
+        1333,
+        892,
+        1462,
+        1016
+      ],
+      "source_row": 7,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 385,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_08",
+      "name_ja": "おばあさん",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_08/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        53,
+        118,
+        154
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        345,
+        142,
+        477,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 335,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_08",
+      "name_ja": "おばあさん",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_08/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        52,
+        117,
+        154
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        485,
+        142,
+        617,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 331,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_08",
+      "name_ja": "おばあさん",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_08/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        51,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        625,
+        142,
+        759,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 377,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_08",
+      "name_ja": "おばあさん",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_08/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        52,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        142,
+        1179,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 364,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_08",
+      "name_ja": "おばあさん",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_08/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        53,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        908,
+        142,
+        1039,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 330,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_08",
+      "name_ja": "おばあさん",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_08/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        52,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        142,
+        1179,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 367,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_08",
+      "name_ja": "おばあさん",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_08/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        52,
+        118,
+        154
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1187,
+        142,
+        1319,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 354,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_08",
+      "name_ja": "おばあさん",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_08/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        53,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1327,
+        142,
+        1460,
+        254
+      ],
+      "source_row": 1,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 357,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_09",
+      "name_ja": "男子小学生",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_09/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        50,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        345,
+        262,
+        477,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 378,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_09",
+      "name_ja": "男子小学生",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_09/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        51,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        485,
+        262,
+        617,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 359,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_09",
+      "name_ja": "男子小学生",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_09/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        50,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        625,
+        262,
+        759,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 364,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_09",
+      "name_ja": "男子小学生",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_09/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        50,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        262,
+        1179,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 365,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_09",
+      "name_ja": "男子小学生",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_09/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        50,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        908,
+        262,
+        1039,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 361,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_09",
+      "name_ja": "男子小学生",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_09/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        50,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        262,
+        1179,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 368,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_09",
+      "name_ja": "男子小学生",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_09/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        50,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1187,
+        262,
+        1319,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 378,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_09",
+      "name_ja": "男子小学生",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_09/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        49,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1327,
+        262,
+        1460,
+        375
+      ],
+      "source_row": 2,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 372,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_10",
+      "name_ja": "女子小学生",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_10/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        32,
+        46,
+        128,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        345,
+        383,
+        477,
+        498
+      ],
+      "source_row": 3,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 427,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_10",
+      "name_ja": "女子小学生",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_10/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        33,
+        47,
+        128,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        485,
+        383,
+        617,
+        498
+      ],
+      "source_row": 3,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 423,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_10",
+      "name_ja": "女子小学生",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_10/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        39,
+        46,
+        122,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        625,
+        383,
+        759,
+        498
+      ],
+      "source_row": 3,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 412,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_10",
+      "name_ja": "女子小学生",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_10/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        39,
+        46,
+        122,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        383,
+        1179,
+        498
+      ],
+      "source_row": 3,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 389,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_10",
+      "name_ja": "女子小学生",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_10/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        38,
+        46,
+        122,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        908,
+        383,
+        1039,
+        498
+      ],
+      "source_row": 3,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 401,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_10",
+      "name_ja": "女子小学生",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_10/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        39,
+        46,
+        122,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        383,
+        1179,
+        498
+      ],
+      "source_row": 3,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 395,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_10",
+      "name_ja": "女子小学生",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_10/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        34,
+        45,
+        126,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1187,
+        383,
+        1319,
+        498
+      ],
+      "source_row": 3,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 447,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_10",
+      "name_ja": "女子小学生",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_10/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        35,
+        46,
+        126,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1327,
+        383,
+        1460,
+        498
+      ],
+      "source_row": 3,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 433,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_11",
+      "name_ja": "男子中学生",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_11/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        46,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        345,
+        506,
+        477,
+        623
+      ],
+      "source_row": 4,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 395,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_11",
+      "name_ja": "男子中学生",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_11/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        46,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        485,
+        506,
+        617,
+        623
+      ],
+      "source_row": 4,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 373,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_11",
+      "name_ja": "男子中学生",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_11/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        45,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        625,
+        506,
+        759,
+        623
+      ],
+      "source_row": 4,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 400,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_11",
+      "name_ja": "男子中学生",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_11/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        46,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        506,
+        1179,
+        623
+      ],
+      "source_row": 4,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 391,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_11",
+      "name_ja": "男子中学生",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_11/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        46,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        908,
+        506,
+        1039,
+        623
+      ],
+      "source_row": 4,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 350,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_11",
+      "name_ja": "男子中学生",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_11/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        46,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        506,
+        1179,
+        623
+      ],
+      "source_row": 4,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 393,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_11",
+      "name_ja": "男子中学生",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_11/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        46,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1187,
+        506,
+        1319,
+        623
+      ],
+      "source_row": 4,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 388,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_11",
+      "name_ja": "男子中学生",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_11/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        46,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1327,
+        506,
+        1460,
+        623
+      ],
+      "source_row": 4,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 373,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_12",
+      "name_ja": "女子中学生",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_12/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        48,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        345,
+        631,
+        477,
+        747
+      ],
+      "source_row": 5,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 371,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_12",
+      "name_ja": "女子中学生",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_12/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        47,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        485,
+        631,
+        617,
+        747
+      ],
+      "source_row": 5,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 374,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_12",
+      "name_ja": "女子中学生",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_12/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        48,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        625,
+        631,
+        759,
+        747
+      ],
+      "source_row": 5,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 372,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_12",
+      "name_ja": "女子中学生",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_12/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        49,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        631,
+        1179,
+        747
+      ],
+      "source_row": 5,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 366,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_12",
+      "name_ja": "女子中学生",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_12/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        48,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        908,
+        631,
+        1039,
+        747
+      ],
+      "source_row": 5,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 339,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_12",
+      "name_ja": "女子中学生",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_12/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        49,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        631,
+        1179,
+        747
+      ],
+      "source_row": 5,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 366,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_12",
+      "name_ja": "女子中学生",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_12/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        49,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1187,
+        631,
+        1319,
+        747
+      ],
+      "source_row": 5,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 368,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_12",
+      "name_ja": "女子中学生",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_12/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        49,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1327,
+        631,
+        1460,
+        747
+      ],
+      "source_row": 5,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 351,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_13",
+      "name_ja": "男子高校生",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_13/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        42,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        345,
+        755,
+        477,
+        874
+      ],
+      "source_row": 6,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 418,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_13",
+      "name_ja": "男子高校生",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_13/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        43,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        485,
+        755,
+        617,
+        874
+      ],
+      "source_row": 6,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 397,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_13",
+      "name_ja": "男子高校生",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_13/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        43,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        625,
+        755,
+        759,
+        874
+      ],
+      "source_row": 6,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 414,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_13",
+      "name_ja": "男子高校生",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_13/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        42,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        755,
+        1179,
+        874
+      ],
+      "source_row": 6,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 394,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_13",
+      "name_ja": "男子高校生",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_13/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        41,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        908,
+        755,
+        1039,
+        874
+      ],
+      "source_row": 6,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 344,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_13",
+      "name_ja": "男子高校生",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_13/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        42,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        755,
+        1179,
+        874
+      ],
+      "source_row": 6,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 399,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_13",
+      "name_ja": "男子高校生",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_13/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        44,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1187,
+        755,
+        1319,
+        874
+      ],
+      "source_row": 6,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 409,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_13",
+      "name_ja": "男子高校生",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_13/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        40,
+        118,
+        152
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1327,
+        755,
+        1460,
+        874
+      ],
+      "source_row": 6,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 401,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_14",
+      "name_ja": "女子高校生",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_14/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        37,
+        39,
+        124,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        345,
+        882,
+        477,
+        1003
+      ],
+      "source_row": 7,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 375,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_14",
+      "name_ja": "女子高校生",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_14/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        37,
+        39,
+        123,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        485,
+        882,
+        617,
+        1003
+      ],
+      "source_row": 7,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 373,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_14",
+      "name_ja": "女子高校生",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_14/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        40,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        625,
+        882,
+        759,
+        1003
+      ],
+      "source_row": 7,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 401,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_14",
+      "name_ja": "女子高校生",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_14/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        40,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        882,
+        1179,
+        1003
+      ],
+      "source_row": 7,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 388,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_14",
+      "name_ja": "女子高校生",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_14/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        41,
+        120,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        908,
+        882,
+        1039,
+        1003
+      ],
+      "source_row": 7,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 372,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_14",
+      "name_ja": "女子高校生",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_14/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        40,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1047,
+        882,
+        1179,
+        1003
+      ],
+      "source_row": 7,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 386,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_14",
+      "name_ja": "女子高校生",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_14/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        39,
+        38,
+        121,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1187,
+        882,
+        1319,
+        1003
+      ],
+      "source_row": 7,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 394,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_14",
+      "name_ja": "女子高校生",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_14/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        39,
+        39,
+        121,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_08_14_reference.png",
+      "source_cell_xyxy": [
+        1327,
+        882,
+        1460,
+        1003
+      ],
+      "source_row": 7,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 367,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_15",
+      "name_ja": "男子幼稚園児",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_15/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        53,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        346,
+        143,
+        479,
+        253
+      ],
+      "source_row": 1,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 375,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_15",
+      "name_ja": "男子幼稚園児",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_15/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        54,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        487,
+        143,
+        620,
+        253
+      ],
+      "source_row": 1,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 361,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_15",
+      "name_ja": "男子幼稚園児",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_15/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        54,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        628,
+        143,
+        762,
+        253
+      ],
+      "source_row": 1,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 380,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_15",
+      "name_ja": "男子幼稚園児",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_15/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        54,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        143,
+        1185,
+        253
+      ],
+      "source_row": 1,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 387,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_15",
+      "name_ja": "男子幼稚園児",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_15/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        45,
+        54,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        911,
+        143,
+        1044,
+        253
+      ],
+      "source_row": 1,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 334,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_15",
+      "name_ja": "男子幼稚園児",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_15/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        54,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        143,
+        1185,
+        253
+      ],
+      "source_row": 1,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 390,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_15",
+      "name_ja": "男子幼稚園児",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_15/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        46,
+        55,
+        115,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1193,
+        143,
+        1326,
+        253
+      ],
+      "source_row": 1,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 365,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_15",
+      "name_ja": "男子幼稚園児",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_15/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        45,
+        56,
+        115,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1334,
+        143,
+        1461,
+        253
+      ],
+      "source_row": 1,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 361,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_16",
+      "name_ja": "女子幼稚園児",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_16/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        35,
+        49,
+        125,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        346,
+        261,
+        479,
+        376
+      ],
+      "source_row": 2,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 405,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_16",
+      "name_ja": "女子幼稚園児",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_16/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        35,
+        50,
+        125,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        487,
+        261,
+        620,
+        376
+      ],
+      "source_row": 2,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 391,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_16",
+      "name_ja": "女子幼稚園児",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_16/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        50,
+        119,
+        152
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        628,
+        261,
+        762,
+        376
+      ],
+      "source_row": 2,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 409,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_16",
+      "name_ja": "女子幼稚園児",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_16/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        50,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        261,
+        1185,
+        376
+      ],
+      "source_row": 2,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 409,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_16",
+      "name_ja": "女子幼稚園児",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_16/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        50,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        911,
+        261,
+        1044,
+        376
+      ],
+      "source_row": 2,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 384,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_16",
+      "name_ja": "女子幼稚園児",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_16/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        50,
+        119,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        261,
+        1185,
+        376
+      ],
+      "source_row": 2,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 412,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_16",
+      "name_ja": "女子幼稚園児",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_16/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        39,
+        51,
+        121,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1193,
+        261,
+        1326,
+        376
+      ],
+      "source_row": 2,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 388,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_16",
+      "name_ja": "女子幼稚園児",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_16/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        39,
+        50,
+        121,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1334,
+        261,
+        1461,
+        376
+      ],
+      "source_row": 2,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 387,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_17",
+      "name_ja": "子供連れのおじさん",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_17/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        31,
+        40,
+        129,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        346,
+        384,
+        479,
+        500
+      ],
+      "source_row": 3,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 480,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_17",
+      "name_ja": "子供連れのおじさん",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_17/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        31,
+        42,
+        130,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        487,
+        384,
+        620,
+        500
+      ],
+      "source_row": 3,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 444,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_17",
+      "name_ja": "子供連れのおじさん",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_17/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        35,
+        44,
+        125,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        911,
+        384,
+        1044,
+        500
+      ],
+      "source_row": 3,
+      "source_column": 5,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 386,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_17",
+      "name_ja": "子供連れのおじさん",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_17/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        35,
+        44,
+        126,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        384,
+        1185,
+        500
+      ],
+      "source_row": 3,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 456,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_17",
+      "name_ja": "子供連れのおじさん",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_17/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        36,
+        44,
+        126,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        911,
+        384,
+        1044,
+        500
+      ],
+      "source_row": 3,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 393,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_17",
+      "name_ja": "子供連れのおじさん",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_17/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        35,
+        44,
+        126,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        384,
+        1185,
+        500
+      ],
+      "source_row": 3,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 460,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_17",
+      "name_ja": "子供連れのおじさん",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_17/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        33,
+        42,
+        128,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1193,
+        384,
+        1326,
+        500
+      ],
+      "source_row": 3,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 466,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_17",
+      "name_ja": "子供連れのおじさん",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_17/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        34,
+        42,
+        127,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1334,
+        384,
+        1461,
+        500
+      ],
+      "source_row": 3,
+      "source_column": 8,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 457,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_18",
+      "name_ja": "子供連れのおばさん",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_18/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        32,
+        41,
+        129,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        346,
+        508,
+        479,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 456,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_18",
+      "name_ja": "子供連れのおばさん",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_18/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        32,
+        42,
+        127,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        487,
+        508,
+        620,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 428,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_18",
+      "name_ja": "子供連れのおばさん",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_18/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        42,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        911,
+        508,
+        1044,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 5,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 358,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_18",
+      "name_ja": "子供連れのおばさん",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_18/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        34,
+        42,
+        126,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        508,
+        1185,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 437,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_18",
+      "name_ja": "子供連れのおばさん",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_18/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        42,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        911,
+        508,
+        1044,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 354,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_18",
+      "name_ja": "子供連れのおばさん",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_18/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        34,
+        42,
+        126,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        508,
+        1185,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 441,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_18",
+      "name_ja": "子供連れのおばさん",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_18/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        39,
+        42,
+        122,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1193,
+        508,
+        1326,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 422,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_18",
+      "name_ja": "子供連れのおばさん",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_18/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        38,
+        44,
+        123,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1334,
+        508,
+        1461,
+        626
+      ],
+      "source_row": 4,
+      "source_column": 8,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 407,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_19",
+      "name_ja": "子抱きのおばさん",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_19/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        39,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        346,
+        634,
+        479,
+        750
+      ],
+      "source_row": 5,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 366,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_19",
+      "name_ja": "子抱きのおばさん",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_19/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        40,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        487,
+        634,
+        620,
+        750
+      ],
+      "source_row": 5,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 357,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_19",
+      "name_ja": "子抱きのおばさん",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_19/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        40,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        628,
+        634,
+        762,
+        750
+      ],
+      "source_row": 5,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 375,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_19",
+      "name_ja": "子抱きのおばさん",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_19/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        40,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        634,
+        1185,
+        750
+      ],
+      "source_row": 5,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 378,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_19",
+      "name_ja": "子抱きのおばさん",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_19/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        45,
+        40,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        911,
+        634,
+        1044,
+        750
+      ],
+      "source_row": 5,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 341,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_19",
+      "name_ja": "子抱きのおばさん",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_19/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        40,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        634,
+        1185,
+        750
+      ],
+      "source_row": 5,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 375,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_19",
+      "name_ja": "子抱きのおばさん",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_19/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        45,
+        45,
+        115,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1193,
+        634,
+        1326,
+        750
+      ],
+      "source_row": 5,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 369,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_19",
+      "name_ja": "子抱きのおばさん",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_19/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        46,
+        43,
+        114,
+        152
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1334,
+        634,
+        1461,
+        750
+      ],
+      "source_row": 5,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 352,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_20",
+      "name_ja": "車椅子の男性",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_20/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        41,
+        47,
+        120,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        346,
+        758,
+        479,
+        876
+      ],
+      "source_row": 6,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 421,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_20",
+      "name_ja": "車椅子の男性",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_20/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        40,
+        46,
+        120,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        487,
+        758,
+        620,
+        876
+      ],
+      "source_row": 6,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 428,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_20",
+      "name_ja": "車椅子の男性",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_20/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        36,
+        44,
+        124,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        628,
+        758,
+        762,
+        876
+      ],
+      "source_row": 6,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 441,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_20",
+      "name_ja": "車椅子の男性",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_20/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        35,
+        44,
+        125,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        758,
+        1185,
+        876
+      ],
+      "source_row": 6,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 432,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_20",
+      "name_ja": "車椅子の男性",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_20/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        37,
+        44,
+        123,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        911,
+        758,
+        1044,
+        876
+      ],
+      "source_row": 6,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 389,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_20",
+      "name_ja": "車椅子の男性",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_20/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        35,
+        44,
+        125,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        758,
+        1185,
+        876
+      ],
+      "source_row": 6,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 435,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_20",
+      "name_ja": "車椅子の男性",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_20/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        44,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1193,
+        758,
+        1326,
+        876
+      ],
+      "source_row": 6,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 422,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_20",
+      "name_ja": "車椅子の男性",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_20/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        45,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1334,
+        758,
+        1461,
+        876
+      ],
+      "source_row": 6,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 406,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_21",
+      "name_ja": "松葉杖の男性",
+      "direction": "down",
+      "phase": "A",
+      "file": "sprites/customer_21/down_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        31,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        346,
+        884,
+        479,
+        1013
+      ],
+      "source_row": 7,
+      "source_column": 1,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 490,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_21",
+      "name_ja": "松葉杖の男性",
+      "direction": "down",
+      "phase": "B",
+      "file": "sprites/customer_21/down_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        43,
+        31,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        487,
+        884,
+        620,
+        1013
+      ],
+      "source_row": 7,
+      "source_column": 2,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 411,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_21",
+      "name_ja": "松葉杖の男性",
+      "direction": "left",
+      "phase": "A",
+      "file": "sprites/customer_21/left_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        45,
+        31,
+        116,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        628,
+        884,
+        762,
+        1013
+      ],
+      "source_row": 7,
+      "source_column": 3,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 448,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_21",
+      "name_ja": "松葉杖の男性",
+      "direction": "left",
+      "phase": "B",
+      "file": "sprites/customer_21/left_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        30,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        884,
+        1185,
+        1013
+      ],
+      "source_row": 7,
+      "source_column": 6,
+      "operation": "crop_background_remove_and_mirror",
+      "mirrored": true,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 472,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_21",
+      "name_ja": "松葉杖の男性",
+      "direction": "right",
+      "phase": "A",
+      "file": "sprites/customer_21/right_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        32,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        911,
+        884,
+        1044,
+        1013
+      ],
+      "source_row": 7,
+      "source_column": 5,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 398,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_21",
+      "name_ja": "松葉杖の男性",
+      "direction": "right",
+      "phase": "B",
+      "file": "sprites/customer_21/right_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        30,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1052,
+        884,
+        1185,
+        1013
+      ],
+      "source_row": 7,
+      "source_column": 6,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 473,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_21",
+      "name_ja": "松葉杖の男性",
+      "direction": "up",
+      "phase": "A",
+      "file": "sprites/customer_21/up_A.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        42,
+        30,
+        118,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1193,
+        884,
+        1326,
+        1013
+      ],
+      "source_row": 7,
+      "source_column": 7,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 514,
+        "interior_unchanged": true
+      }
+    },
+    {
+      "id": "customer_21",
+      "name_ja": "松葉杖の男性",
+      "direction": "up",
+      "phase": "B",
+      "file": "sprites/customer_21/up_B.png",
+      "frame_size": [
+        160,
+        160
+      ],
+      "anchor_px": [
+        80,
+        154
+      ],
+      "alpha_bbox": [
+        44,
+        31,
+        117,
+        153
+      ],
+      "source_sheet": "source_sheets/customer_15_21_reference.png",
+      "source_cell_xyxy": [
+        1334,
+        884,
+        1461,
+        1013
+      ],
+      "source_row": 7,
+      "source_column": 8,
+      "operation": "crop_background_remove",
+      "mirrored": false,
+      "scale_applied": false,
+      "motion_authenticity": "not_original_game_verified",
+      "edge_cleanup": {
+        "method": "one_pixel_white_matte_removal",
+        "removed_pixels": 480,
+        "interior_unchanged": true
+      }
+    }
+  ]
+}

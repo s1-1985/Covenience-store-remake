@@ -1,0 +1,2022 @@
+{
+  "category": "customer",
+  "runtime_frame_count": 168,
+  "assets": [
+    {
+      "id": "customer_01_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_01/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f4b39eb181b54ae105b2b3a7f79251d4f754cea929a7462338dba64b1c9a9069"
+    },
+    {
+      "id": "customer_01_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_01/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2b59a6a5ed57522f24448cc541204c5581e31af3da2522ab55da7049dbcb1b16"
+    },
+    {
+      "id": "customer_01_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_01/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "469faaa7b722bbe69e12c11a404637659006bf4ec9486db209939e58b7c68277"
+    },
+    {
+      "id": "customer_01_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_01/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "fe5e19216ee54bbbd90af5b169618fd479407d8138ff9651b1e388e6c42e419f"
+    },
+    {
+      "id": "customer_01_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_01/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "de4d68479ce9986a59724478550744cd2197c6435e9289e8af3dfd4c29e143b4"
+    },
+    {
+      "id": "customer_01_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_01/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d0fc73415fc4e1d8d18b1d0c8d6d4e5c6976f5990cb7fc4a6459800932b9f7c0"
+    },
+    {
+      "id": "customer_01_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_01/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "02a85346e467a58aa857d4fcd38f1637c31c2c5e1a5ef477f7993afb529881a2"
+    },
+    {
+      "id": "customer_01_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_01/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "37fa442b33f2dd3e5caa48385b706750d80f88e6dd016cbebb96586446a0d376"
+    },
+    {
+      "id": "customer_02_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_02/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "97af27d302f91c911e5f95584bf0d66155c3d27efbf956a5ead947b232527c7a"
+    },
+    {
+      "id": "customer_02_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_02/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ba9cbfafedc86b80d592c65e011d9dc8d293e1b5803743504d1b5b4b87df49e7"
+    },
+    {
+      "id": "customer_02_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_02/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9e280ce9c4e8dd4913060b4db0978ac1c4b526262c3df745a6655da9e243dcc3"
+    },
+    {
+      "id": "customer_02_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_02/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d77bf956e399a8861c79fc216c5180de36f3b1c97c2138d12d97131ef31f82a0"
+    },
+    {
+      "id": "customer_02_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_02/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "efcf4bb086545fdbd3db74c58bfbf90efe6f100ef29cf4219c28d9c44e101833"
+    },
+    {
+      "id": "customer_02_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_02/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "1ec6bbd86a3a8bfb57f9cfd8b0cfddc8e3f12c76a6052c2e3eef66756a3cc4d4"
+    },
+    {
+      "id": "customer_02_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_02/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "dcf947a0411de8832c425f91971cac83b073003c302257df4ae3a9dfcf769663"
+    },
+    {
+      "id": "customer_02_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_02/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "45abeb53666d34f23490e29f1280cf41d4ad578016fab4e1ee8e5059b990405f"
+    },
+    {
+      "id": "customer_03_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_03/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5ca2e952f00438149bad858b7a37d8f95932d23fc1fce504c67f60fe5056f542"
+    },
+    {
+      "id": "customer_03_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_03/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6940d5abbed86fc310ebc0db65973eb794b2548f3c36f1e1abbca3a46d0f0c45"
+    },
+    {
+      "id": "customer_03_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_03/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "0cfe1e63b56997926329b754a7ec6a2ffeef22950cf28f74124276d241c6d35f"
+    },
+    {
+      "id": "customer_03_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_03/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "32a7acf18ddfcb8041210656bef3eb45000e2fcb6d6bf47cac6e901b40eeebd5"
+    },
+    {
+      "id": "customer_03_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_03/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a568f38ce134bc8ce0acba60745f83c3491eab5f995a63e2e5f157b42b0c3bde"
+    },
+    {
+      "id": "customer_03_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_03/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "90dd415c526801b4424c7fa27b49ce6f2242999733b0e68da8e3a20bc14283cc"
+    },
+    {
+      "id": "customer_03_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_03/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "839d089f6f117c8ec55d8cb3ad4ad9a988f637ab59442cd1fcc3a76870f2b782"
+    },
+    {
+      "id": "customer_03_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_03/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5b9c6b457e6628b43f950875fae63c85a36e97e71388c96ce9bfa0919f98e040"
+    },
+    {
+      "id": "customer_04_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_04/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "56fe4d986d47d3df09f8592219ece1ba68f347af7b5da1824d3d55408dc17f5c"
+    },
+    {
+      "id": "customer_04_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_04/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e02b77c946820f2a8e4827817a2dddb5fcab676029badfec1957f5e88e88f3ac"
+    },
+    {
+      "id": "customer_04_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_04/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "90cf4f5b4d6ec70f58f2ff751f54cf2aaf69de3e701abb55cf7b92694208f371"
+    },
+    {
+      "id": "customer_04_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_04/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6e17c082bf60606ebdc50d0557e38fa65514cb574fe3b7289a43f384b5265404"
+    },
+    {
+      "id": "customer_04_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_04/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "10343e59566fc173d91ac0955ccfb59e01a0090dc16da82ef63b0cc1bdd069e5"
+    },
+    {
+      "id": "customer_04_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_04/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ab0554df0d4812df3669540823b913fd4102e848106d1dc9ce69065ef6cd6a0d"
+    },
+    {
+      "id": "customer_04_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_04/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a9b99ded0a14babcaed37ea67bebae1a2b83729a9ff05c33ccde4a9c9ea8a59a"
+    },
+    {
+      "id": "customer_04_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_04/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "eacadf87100c25f9d8545a92db870151d05a71c2c531d8625baeb54b226ddb01"
+    },
+    {
+      "id": "customer_05_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_05/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "eaa7c13afd1b199fdc9a2500ee1d5e4e354ea8c50068c73735e57ab45f105933"
+    },
+    {
+      "id": "customer_05_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_05/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6c0763ff49cc0ceaf54af77ff3de0e0a4cb343a87e9be09cc18e1d2059367059"
+    },
+    {
+      "id": "customer_05_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_05/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "bd4736a4296eb0644f742f1b78dedf2ed27a63e23e0332041c35d12ae57e0653"
+    },
+    {
+      "id": "customer_05_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_05/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "1edd067d1152ccde24402a2f49c5127010bd34180242f03914581966124515cb"
+    },
+    {
+      "id": "customer_05_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_05/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6ff4ff872a5b2dab30c17ced9eb89959b274b0faa3aebd21be68cf97ff19bf46"
+    },
+    {
+      "id": "customer_05_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_05/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4e014133d7ea83ec2fc95e6254a783e7241e3923a102ce82f2b1d72a9d0da21c"
+    },
+    {
+      "id": "customer_05_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_05/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "edf2875e36ee102bca294fb218c54b5695204346e764c693d6445d4a11c64e66"
+    },
+    {
+      "id": "customer_05_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_05/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7b980a5fe6987de8d3b99da767449e372b05ae5db82826a52a29caf987bfa393"
+    },
+    {
+      "id": "customer_06_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_06/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "dc24112488646161646c76fe2a47d137a7ed0e905e1df6a36d938b40c7eaba08"
+    },
+    {
+      "id": "customer_06_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_06/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "07486ec02f5eaa943a9990856a0cb585886e30fcb929a97ae2b4ebc0aa45c730"
+    },
+    {
+      "id": "customer_06_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_06/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9628a4ab1bb17463cf9191f7301cba5a97e16a9645a790a0044c02094d8d77e6"
+    },
+    {
+      "id": "customer_06_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_06/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5728bdccd24d056f1beb6318ce3ac343c6de755c7e77bdce876e7d889121c7e7"
+    },
+    {
+      "id": "customer_06_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_06/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "0223538e8bd407bac3092b1448d23aaeeeff47f30d7c5390a04b52755fd6ba00"
+    },
+    {
+      "id": "customer_06_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_06/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3dbafe5783ce960604dd4500357c1c7f31016416da51910c28d3ed85a436f25f"
+    },
+    {
+      "id": "customer_06_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_06/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7fb1a5b576387284d65995a7edf8f69a58091db25a43befc6d30146c1f7c60e8"
+    },
+    {
+      "id": "customer_06_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_06/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2903f8b1ab638ef05a334e8843f69fad0046790b7ca4641605b46a9cf968ba86"
+    },
+    {
+      "id": "customer_07_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_07/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "91e6c14ee43f873b9980e265aedcbefb0ecf286ee2ab56c2011c77294869aa12"
+    },
+    {
+      "id": "customer_07_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_07/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "19c57e6975f8a22036b89fa3f615ff956831592ebd2673449166a506ea2f5843"
+    },
+    {
+      "id": "customer_07_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_07/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a407f2b92b87854020d818cd58d8c1d56e108ef0aa46e257bd713c065aea383d"
+    },
+    {
+      "id": "customer_07_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_07/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "39e24ffbbb2332dc1d1b44904ca346e219146cfb31be95d4aafbf40ea4abff39"
+    },
+    {
+      "id": "customer_07_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_07/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "cefead37fefc7289f4680083b9d01338786d52face8c1969e16d0a9bc414f3c9"
+    },
+    {
+      "id": "customer_07_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_07/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5ea332a05b1fd49a3966588ed459af353406c79bae14c20d84cce9813e295313"
+    },
+    {
+      "id": "customer_07_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_07/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "cf04e7a3e36255bad119ef980102b98132be2a3d746fd4c94824f89038523deb"
+    },
+    {
+      "id": "customer_07_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_07/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a62bc99de8784dde574fb7ad40d380dbf32ab8d84e468bf9033dcc5aa8ecb23f"
+    },
+    {
+      "id": "customer_08_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_08/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d4db416cfd63b7d541fc5a3877eaa614bd6522f3c6c3ee779cdc6da82ff208e3"
+    },
+    {
+      "id": "customer_08_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_08/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b52150a524367f18d0044b44f53a3308429a9b3c3d22b6c85e32e8a5c93ea9a9"
+    },
+    {
+      "id": "customer_08_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_08/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f3308cdaaaabeef3a2313103970917f129bc254e1a29d2b49110fc8238a99540"
+    },
+    {
+      "id": "customer_08_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_08/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "89b60cc13092cc634e3d5145d2bbc180bf12d0894771ef5ad48b01618197ee40"
+    },
+    {
+      "id": "customer_08_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_08/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "395af05c8d2e7f9fa965dea47ef502cb341a17cdb3caeebdc805d15a1f1bd86f"
+    },
+    {
+      "id": "customer_08_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_08/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e9b026c64a2a311f9aa2d828040408f4f59358a2ece012db691824f2c96d8b03"
+    },
+    {
+      "id": "customer_08_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_08/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a9343c43bd03bc3911a719ccc1dd858ff45cf038b895a347fb76795c6142ca8b"
+    },
+    {
+      "id": "customer_08_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_08/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "03cfbec9f295852bb9620505d4c7cebafa0c15e55c0d4c84a437972d604a06c1"
+    },
+    {
+      "id": "customer_09_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_09/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7f71688fcaaa06fa892b25584675c868efd95696fd3f86f83bd23b637d4d0ae2"
+    },
+    {
+      "id": "customer_09_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_09/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e23f05bd8a12842eccef7ec7f55702eb1069cd9584f0793ad3e02a769640d264"
+    },
+    {
+      "id": "customer_09_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_09/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "35eb80bb7f4e9b02d2ee75e7276092f35208b4242c4054a2116ecf35f796805c"
+    },
+    {
+      "id": "customer_09_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_09/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b8ef18ace3d2965b885e3988e329684c9eecfde8ab3f07fe0a13f4acca3b626a"
+    },
+    {
+      "id": "customer_09_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_09/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "cabe35b65e88889fae5d077b7faed19e2b5148d8831f3de3dc18d8e915e1ccec"
+    },
+    {
+      "id": "customer_09_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_09/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "bac578ce589e2dfbd13dbabeb8c6880bd7c7d00aca90c6304854a633b8a637a6"
+    },
+    {
+      "id": "customer_09_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_09/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "74eded2ee766f9e85852865a30f5c41d0ecb4ca75e180989d3b54e0f058d3f08"
+    },
+    {
+      "id": "customer_09_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_09/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9676f6577bd42a484cd55a9c6e1344d2c81db61b6061b7c2ec4af4b45d0f83a4"
+    },
+    {
+      "id": "customer_10_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_10/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6fd30e0f946629284ad1fd5a16475c571bd59e8d0c91f66bc769d9de81132c3b"
+    },
+    {
+      "id": "customer_10_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_10/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5575c191ee18900b5d0c9947128bfbdaad484b8ed11642bea816b36428d6e114"
+    },
+    {
+      "id": "customer_10_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_10/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "fc836c48eda876837e3ccd2719350cc63c073e0367a6fcaf09fac3071c8ab2a0"
+    },
+    {
+      "id": "customer_10_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_10/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ff8908f081326de3f2e0778302f7f2c4921cb83e7a2953a4c1c1e8da69358ac4"
+    },
+    {
+      "id": "customer_10_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_10/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9ca178f5381a60a7de987667d9e41abded1ccd6d54068e44f6edf55914192e30"
+    },
+    {
+      "id": "customer_10_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_10/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f0d61f2d72dcf6d6abf36a5ddb443697e1da029de923160e6a7f8c5c56d097b2"
+    },
+    {
+      "id": "customer_10_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_10/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8185fb852ff087ad06988f80ea4de6f3aa1a468df728b26899344159b54eedfa"
+    },
+    {
+      "id": "customer_10_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_10/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "222840c10dfe38ee6a7ede012590cc3a7a5442e407da60a520b27bdd68d00680"
+    },
+    {
+      "id": "customer_11_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_11/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ac3ac5939533870e3ab30dca4a687b4888dff1ecd23760419d826663bf86d0e0"
+    },
+    {
+      "id": "customer_11_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_11/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "1cbf925f45a6cd6196879c901b8213b4ff400ccc3eb7a5453ed1fc998a98f5e2"
+    },
+    {
+      "id": "customer_11_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_11/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d82ca3cf059ed1989e2e7ac4d3630a5bee980092a73784d1d36e251d197b7def"
+    },
+    {
+      "id": "customer_11_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_11/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "62f95f0a2de36e265dba2766eb1c2b5adb6cca44844828372f4d343f3b241021"
+    },
+    {
+      "id": "customer_11_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_11/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "946c50804a6e33cb086de85eae79bee8402f5ad71f60297ca5d4eb168f82030d"
+    },
+    {
+      "id": "customer_11_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_11/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f5aac82fdcc8514449c7721532371ce7e75c6b5de124acfa7b22d3c88f79917f"
+    },
+    {
+      "id": "customer_11_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_11/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "bad3db5ba11cdd90dcce9dc34722f226d5aef62bd073b1116c0b22c5b7bde9ca"
+    },
+    {
+      "id": "customer_11_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_11/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3cbae7a766882f84eac32dc4d716f2643a8509bcf9cc7e679539316815d24deb"
+    },
+    {
+      "id": "customer_12_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_12/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ffa0a6b0acedd50709f9feb6c0fdfff99f31737649723b7b10c1613ad0d77dba"
+    },
+    {
+      "id": "customer_12_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_12/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ebc9731c0345b21ae5cb8ccb6c7d7ad86a9819e69dd5b66b3a26e04996f9f0dc"
+    },
+    {
+      "id": "customer_12_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_12/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c18b8e2c2358bacc8963a2b58c98c662cf212fd273ac8fbb2946be8765c46237"
+    },
+    {
+      "id": "customer_12_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_12/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "58f7849e2126dada3483a0f59fb76dd1dda76e4540f758a741c4d30e277687be"
+    },
+    {
+      "id": "customer_12_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_12/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "bf3352c925deeae429fa1ec0ff187b7cf77e852093d05bab9964d5294a070c64"
+    },
+    {
+      "id": "customer_12_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_12/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b396f717d7d5565e40e8e02ee5888501d283c52400ea0c8abde82fd5667060c1"
+    },
+    {
+      "id": "customer_12_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_12/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d9ee7934352eb48447a421bba9248788a71330dc61ccbd795e832c50bda0f057"
+    },
+    {
+      "id": "customer_12_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_12/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8e4faef9a853496e59444773420ae3875206d9ca8d96f24ea101764b6281de45"
+    },
+    {
+      "id": "customer_13_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_13/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5b2d3889a01598382670a23820535cee692556c1dd21ddeff700b1365aeba6c9"
+    },
+    {
+      "id": "customer_13_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_13/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "984fd7e382e9c416160556380832bd7c366ef29f5ad2f9ab9a629edab3bd8a1c"
+    },
+    {
+      "id": "customer_13_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_13/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a47dd26be3c6285d2e1d2788a00b0015916eba22ca258b11c064f4fc0f68decf"
+    },
+    {
+      "id": "customer_13_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_13/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6f79dba89cc0331f2599f648dda60cdde1120802cc236abd9fd61522d1a6220d"
+    },
+    {
+      "id": "customer_13_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_13/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "bd29d990f4004b507f14414c0e76c495fe4514f728f789164b1e2240f87d3f46"
+    },
+    {
+      "id": "customer_13_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_13/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6a20c03dc0a8d41c71450885d5b57f2009502325e2a5385cb720a659ce6d6418"
+    },
+    {
+      "id": "customer_13_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_13/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e0255ae4ccfe3d075bd17d2ae8c776c27f8d4b260ca0792dd221c6a1a18a7dfd"
+    },
+    {
+      "id": "customer_13_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_13/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "72bc00f30f74fee622dc6aed84bc8412174ca280cdfa63c82d01359e106e5a50"
+    },
+    {
+      "id": "customer_14_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_14/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8ff540c41660c118d72b7e0ab050202f1ddb79c5a8a4153ca626244c0d100bba"
+    },
+    {
+      "id": "customer_14_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_14/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "52d4d00d529e35e34b2ce5ff00396fb631c2425c404398b91d91f4fe9e74457e"
+    },
+    {
+      "id": "customer_14_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_14/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c8ad7d547b7bd27cabc40fd37c8224d10f93bdf92d0027e5b1373eb397e05866"
+    },
+    {
+      "id": "customer_14_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_14/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "bf0a4d1403288ef435a6d194bdab243023099ef98b01bb0b020d0c77a19c1e81"
+    },
+    {
+      "id": "customer_14_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_14/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3c27e1f0c138925890cc1bf60aace28581adbbfa5419573c2d85078f560995f5"
+    },
+    {
+      "id": "customer_14_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_14/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6b4a9dc04a755aef200062ffeed2cc0a1fb5dddc7f8190e521be9eada16972f9"
+    },
+    {
+      "id": "customer_14_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_14/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "1903db9ffcdf6f21ed5eb4a2da746d7441dd44cf98c8c76d5004358a34473a5c"
+    },
+    {
+      "id": "customer_14_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_14/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2f486af55a25777c6317b382cf25962e37e91d006957536882cbeea07538f856"
+    },
+    {
+      "id": "customer_15_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_15/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9e7144ef56fd8f1baf0185dab414aa47b86ff3b4bb32064e666fb24c1ff4e26f"
+    },
+    {
+      "id": "customer_15_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_15/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d9db4691662e2c8d24ecb738a053634c114ccf7ca1e746a4bfc2c59afbf489db"
+    },
+    {
+      "id": "customer_15_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_15/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c2ea388a223d6f953f6d583f7fcb77fde6e17b2e46813295ed7910c2fd70e96d"
+    },
+    {
+      "id": "customer_15_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_15/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4fa44aa860932de05278823194293ece765d434265f7d5599ae60fb0248729dc"
+    },
+    {
+      "id": "customer_15_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_15/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "70f761eb5be0dcf6a2fd6047807aaffd964d3ea657aa3e0074573525cd511fae"
+    },
+    {
+      "id": "customer_15_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_15/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a1a1b4935f34abf54e8d4206ca21edab1cfe016483d4d38767b7f391eceed7d0"
+    },
+    {
+      "id": "customer_15_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_15/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c75cc1d246a350a47240e7851f86cfc8f66e563cc4c404142abc5240c3460726"
+    },
+    {
+      "id": "customer_15_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_15/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4d6b99492ac9c04bfb654c181c90bdac810a852d27e000131b6fb1ef9ccaf009"
+    },
+    {
+      "id": "customer_16_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_16/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5508508886ec14ea2d6bdff1b6dacd9ff79d42926b13e2e0b24a37e5affb7878"
+    },
+    {
+      "id": "customer_16_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_16/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6beac83a964b295e4e0e76e81f830dd7d0c1f44188c62a8c5494a10e70f6a23a"
+    },
+    {
+      "id": "customer_16_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_16/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "bcbd1725b8d877da100e7297b839c916d68b4a2d1f3ac21e2ad9ab55ccde591a"
+    },
+    {
+      "id": "customer_16_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_16/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "eb20c921a92b7a04d5c1ff4976cc721262c3564ab8383ea5bf7b49178da3cd1f"
+    },
+    {
+      "id": "customer_16_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_16/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a2d011035d717ea8909d065cf690e62539b98c55d0f1de6423deee4b4f48ddb8"
+    },
+    {
+      "id": "customer_16_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_16/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "59540ff2b4a6bdfe316676ca617cd6da939a156e2925109e08240a727d3f3f1a"
+    },
+    {
+      "id": "customer_16_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_16/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8650b23157441683cacb15530750ad081d29d7f3ce556eef908e1fca400dd5dd"
+    },
+    {
+      "id": "customer_16_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_16/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8c9dc0fe314b4a46d38d54d6bb421766d3b7c0ce4a975899b60da90d6b976666"
+    },
+    {
+      "id": "customer_17_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_17/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "00fd3aade24b20791d2775a5d7ac1e3ff82a7d844cffafff5d59d316942eb2fb"
+    },
+    {
+      "id": "customer_17_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_17/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ae3a3f114e0f81a47770bf46fb47b61df76588f87e55dfff98cc4bbfdaa60de4"
+    },
+    {
+      "id": "customer_17_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_17/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7d18fdee151217528b890c48fa66e69cbb6c1d22dd6ca85a21fd842884950921"
+    },
+    {
+      "id": "customer_17_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_17/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "51b89a1f920a23492da3a96ed533f38d6bd71d92e9034a24f1fa1c5129300213"
+    },
+    {
+      "id": "customer_17_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_17/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "73efe8382ea230a1fb6053177f5557e0129f835cfd9226ab6dfd5d3a227e4c82"
+    },
+    {
+      "id": "customer_17_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_17/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9e3e841695d2e9a1903dba3095ffb90a6de070a0860c00d6656810471da83d9e"
+    },
+    {
+      "id": "customer_17_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_17/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5681446441580633746ed934ffc667964032993772c1e34335acf0699a45425c"
+    },
+    {
+      "id": "customer_17_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_17/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9681d5d796293e17cbba55547e223867feee3a39c8d91b23097877f86fa4743d"
+    },
+    {
+      "id": "customer_18_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_18/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2801933b081379b01563592b19e530375d6e7335e8ed45961241e5c88c71ef15"
+    },
+    {
+      "id": "customer_18_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_18/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d60919e313ac5cfb14257ead4921fd94bc2bf35e1de8e9bbfcb92ed55dd64f8b"
+    },
+    {
+      "id": "customer_18_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_18/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e8f63a8a485c8edba5cf42760720cb45e3afebf2c2f439c994f226335450622e"
+    },
+    {
+      "id": "customer_18_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_18/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6ddacfc162a297544f845407d1c6e4d63e0740e2cfd8f7ffece492bf4624ead4"
+    },
+    {
+      "id": "customer_18_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_18/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3b70a3efa730f9d99f2fed1948c5f45e5bb551eee16e47e9adbd5e0ab5f2853c"
+    },
+    {
+      "id": "customer_18_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_18/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ead6959bccf1e6e0ca6561105130a10ab7730890b88771d8ff81401867c44b65"
+    },
+    {
+      "id": "customer_18_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_18/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "bc409a05644b4bd8adaf21840107b3b9ace0bc4eb625929deb16a21882dc2b8d"
+    },
+    {
+      "id": "customer_18_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_18/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "16c792495f30eecdb97ef84c1e6ccc1e5f485b720746c0dc08983eee43d39017"
+    },
+    {
+      "id": "customer_19_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_19/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b60e8c04bb75bc90bae0fafa11e5f5e5fde0f15f711087402fe85c8c3523dfd4"
+    },
+    {
+      "id": "customer_19_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_19/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "822b023f3a39d8374d938b66669f85c2fd528985f8687c0e86e7260c65109d16"
+    },
+    {
+      "id": "customer_19_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_19/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d162973f40b9e3e44f19e4f5e405766339e28253d3c4a5e408e60b90d9ffdbfa"
+    },
+    {
+      "id": "customer_19_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_19/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "255deb14d5bc5572aba4e1c05c26a93a7a694b46cedf206224b09de536ccd690"
+    },
+    {
+      "id": "customer_19_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_19/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "953d61ad2bea746c6209364398e72fabc8f64496428cee70477b235f0e3575bf"
+    },
+    {
+      "id": "customer_19_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_19/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d2c53dfa384be1cfceab42f89581d46d323fd81b5a4707b4f3f08a594c44bcb6"
+    },
+    {
+      "id": "customer_19_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_19/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f157755c39f9bb2c09a606e5d1f495e7d3fc3e25afe24c5494436ce494b2acc0"
+    },
+    {
+      "id": "customer_19_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_19/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c79d02ed3e6a86d79352a475d465599f8199d010bf3bf8347fcf77335b529d2b"
+    },
+    {
+      "id": "customer_20_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_20/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "19dcc865c9863aeeae3f9259c7294599c906b70cd16a07f87fc8f91f52c03530"
+    },
+    {
+      "id": "customer_20_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_20/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c2ce6606c2b2a4b4e893b3908416d92febfc6f694a85f00f8d1704b3dc76736e"
+    },
+    {
+      "id": "customer_20_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_20/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f7ca01bb2d409f2c09af678afe35c84707433fefc47b3978a9bab1c711d0f44b"
+    },
+    {
+      "id": "customer_20_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_20/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a432e99f7f0941be93b359c4f9e237b31ce76c12765d12b954735689abc65939"
+    },
+    {
+      "id": "customer_20_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_20/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4f8819eed8be2422b2ec158f2e7acc33f094e7312a80f40c0e1e8ac36c32eba0"
+    },
+    {
+      "id": "customer_20_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_20/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "652652d91139d16b2c020d1739a4e0bd212e0aaf6f7376283c1fc3cd8f4986ab"
+    },
+    {
+      "id": "customer_20_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_20/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f0dd56d15cc605ab04a0f06aa247f373ca4a334d0edc8deab5dcf7f516a4bf08"
+    },
+    {
+      "id": "customer_20_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_20/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3bafa515e9840f2034b9f9164b914b9439caf305c7a5abba1d84c0609d75d375"
+    },
+    {
+      "id": "customer_21_down_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_21/down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "719a2f1d08b83f63ba8816d3fca23b57ba0e74bf7274e51f454ef9ea4d68e130"
+    },
+    {
+      "id": "customer_21_down_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_21/down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8034474ca85254ff6f6391b0877beff46958b451d8d228d6d6a2284cec9be9e7"
+    },
+    {
+      "id": "customer_21_left_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_21/left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c7665be4a9443312d91ed10a1c5c86b821be8e375ed95fa109011d07ac39b655"
+    },
+    {
+      "id": "customer_21_left_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_21/left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "fbdca591021325b771230f70b68102386abf9b403124d493dcabdd0352df378f"
+    },
+    {
+      "id": "customer_21_right_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_21/right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "cc4c7e1d86e8c43f1e24089a4b54ca04302dea9bc35f353662f8c5369c04780f"
+    },
+    {
+      "id": "customer_21_right_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_21/right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f3864d6b4625a1d4672b27d3a260d7d3af44bdac80c2d43a7608d9777aeb0163"
+    },
+    {
+      "id": "customer_21_up_A",
+      "group": "customer",
+      "file": "customer/sprites/customer_21/up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "54c166d8d995ea3872743c68fb1a706cfd90ff34ac2d2edf34a341145b9abc38"
+    },
+    {
+      "id": "customer_21_up_B",
+      "group": "customer",
+      "file": "customer/sprites/customer_21/up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9d7f06db5ae24c1adccee6508290b7e6e406827461c5f555289791448964e895"
+    }
+  ]
+}

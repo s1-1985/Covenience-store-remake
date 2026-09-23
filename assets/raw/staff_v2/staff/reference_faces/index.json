@@ -1,0 +1,807 @@
+[
+  {
+    "asset_id": "staff_001",
+    "avatar_file": "portraits/staff_001.png",
+    "data_reference_file": "source_cards/staff_001_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "27",
+    "source_printed_page": "127",
+    "source_side": "right",
+    "source_row_top_to_bottom": "1",
+    "source_card_crop_render3_xyxy": [
+      1359,
+      84,
+      2415,
+      393
+    ],
+    "portrait_crop_render3_xyxy": [
+      1398,
+      180,
+      1584,
+      366
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_002",
+    "avatar_file": "portraits/staff_002.png",
+    "data_reference_file": "source_cards/staff_002_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "27",
+    "source_printed_page": "127",
+    "source_side": "right",
+    "source_row_top_to_bottom": "2",
+    "source_card_crop_render3_xyxy": [
+      1356,
+      408,
+      2412,
+      717
+    ],
+    "portrait_crop_render3_xyxy": [
+      1395,
+      504,
+      1581,
+      690
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_003",
+    "avatar_file": "portraits/staff_003.png",
+    "data_reference_file": "source_cards/staff_003_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "27",
+    "source_printed_page": "127",
+    "source_side": "right",
+    "source_row_top_to_bottom": "3",
+    "source_card_crop_render3_xyxy": [
+      1356,
+      732,
+      2412,
+      1044
+    ],
+    "portrait_crop_render3_xyxy": [
+      1395,
+      828,
+      1581,
+      1014
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_004",
+    "avatar_file": "portraits/staff_004.png",
+    "data_reference_file": "source_cards/staff_004_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "27",
+    "source_printed_page": "127",
+    "source_side": "right",
+    "source_row_top_to_bottom": "4",
+    "source_card_crop_render3_xyxy": [
+      1356,
+      1059,
+      2412,
+      1368
+    ],
+    "portrait_crop_render3_xyxy": [
+      1395,
+      1155,
+      1581,
+      1341
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_005",
+    "avatar_file": "portraits/staff_005.png",
+    "data_reference_file": "source_cards/staff_005_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "27",
+    "source_printed_page": "127",
+    "source_side": "right",
+    "source_row_top_to_bottom": "5",
+    "source_card_crop_render3_xyxy": [
+      1356,
+      1380,
+      2412,
+      1692
+    ],
+    "portrait_crop_render3_xyxy": [
+      1395,
+      1476,
+      1581,
+      1662
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_006",
+    "avatar_file": "portraits/staff_006.png",
+    "data_reference_file": "source_cards/staff_006_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "28",
+    "source_printed_page": "128",
+    "source_side": "left",
+    "source_row_top_to_bottom": "1",
+    "source_card_crop_render3_xyxy": [
+      150,
+      87,
+      1206,
+      402
+    ],
+    "portrait_crop_render3_xyxy": [
+      189,
+      183,
+      375,
+      369
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_007",
+    "avatar_file": "portraits/staff_007.png",
+    "data_reference_file": "source_cards/staff_007_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "28",
+    "source_printed_page": "128",
+    "source_side": "left",
+    "source_row_top_to_bottom": "2",
+    "source_card_crop_render3_xyxy": [
+      141,
+      411,
+      1197,
+      726
+    ],
+    "portrait_crop_render3_xyxy": [
+      180,
+      507,
+      366,
+      693
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_008",
+    "avatar_file": "portraits/staff_008.png",
+    "data_reference_file": "source_cards/staff_008_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "28",
+    "source_printed_page": "128",
+    "source_side": "left",
+    "source_row_top_to_bottom": "3",
+    "source_card_crop_render3_xyxy": [
+      144,
+      735,
+      1203,
+      1050
+    ],
+    "portrait_crop_render3_xyxy": [
+      183,
+      831,
+      369,
+      1017
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_009",
+    "avatar_file": "portraits/staff_009.png",
+    "data_reference_file": "source_cards/staff_009_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "28",
+    "source_printed_page": "128",
+    "source_side": "left",
+    "source_row_top_to_bottom": "4",
+    "source_card_crop_render3_xyxy": [
+      144,
+      1062,
+      1200,
+      1377
+    ],
+    "portrait_crop_render3_xyxy": [
+      183,
+      1158,
+      369,
+      1344
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_010",
+    "avatar_file": "portraits/staff_010.png",
+    "data_reference_file": "source_cards/staff_010_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "28",
+    "source_printed_page": "128",
+    "source_side": "left",
+    "source_row_top_to_bottom": "5",
+    "source_card_crop_render3_xyxy": [
+      141,
+      1386,
+      1197,
+      1701
+    ],
+    "portrait_crop_render3_xyxy": [
+      180,
+      1482,
+      366,
+      1668
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_011",
+    "avatar_file": "portraits/staff_011.png",
+    "data_reference_file": "source_cards/staff_011_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "28",
+    "source_printed_page": "129",
+    "source_side": "right",
+    "source_row_top_to_bottom": "1",
+    "source_card_crop_render3_xyxy": [
+      1344,
+      90,
+      2400,
+      402
+    ],
+    "portrait_crop_render3_xyxy": [
+      1383,
+      186,
+      1569,
+      372
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_012",
+    "avatar_file": "portraits/staff_012.png",
+    "data_reference_file": "source_cards/staff_012_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "28",
+    "source_printed_page": "129",
+    "source_side": "right",
+    "source_row_top_to_bottom": "2",
+    "source_card_crop_render3_xyxy": [
+      1341,
+      414,
+      2397,
+      726
+    ],
+    "portrait_crop_render3_xyxy": [
+      1380,
+      510,
+      1566,
+      696
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_013",
+    "avatar_file": "portraits/staff_013.png",
+    "data_reference_file": "source_cards/staff_013_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "28",
+    "source_printed_page": "129",
+    "source_side": "right",
+    "source_row_top_to_bottom": "3",
+    "source_card_crop_render3_xyxy": [
+      1341,
+      741,
+      2397,
+      1050
+    ],
+    "portrait_crop_render3_xyxy": [
+      1380,
+      837,
+      1566,
+      1023
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_014",
+    "avatar_file": "portraits/staff_014.png",
+    "data_reference_file": "source_cards/staff_014_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "28",
+    "source_printed_page": "129",
+    "source_side": "right",
+    "source_row_top_to_bottom": "4",
+    "source_card_crop_render3_xyxy": [
+      1341,
+      1065,
+      2397,
+      1377
+    ],
+    "portrait_crop_render3_xyxy": [
+      1380,
+      1161,
+      1566,
+      1347
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_015",
+    "avatar_file": "portraits/staff_015.png",
+    "data_reference_file": "source_cards/staff_015_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "28",
+    "source_printed_page": "129",
+    "source_side": "right",
+    "source_row_top_to_bottom": "5",
+    "source_card_crop_render3_xyxy": [
+      1338,
+      1389,
+      2394,
+      1701
+    ],
+    "portrait_crop_render3_xyxy": [
+      1377,
+      1485,
+      1563,
+      1671
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_016",
+    "avatar_file": "portraits/staff_016.png",
+    "data_reference_file": "source_cards/staff_016_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "29",
+    "source_printed_page": "130",
+    "source_side": "left",
+    "source_row_top_to_bottom": "1",
+    "source_card_crop_render3_xyxy": [
+      165,
+      87,
+      1221,
+      405
+    ],
+    "portrait_crop_render3_xyxy": [
+      204,
+      183,
+      390,
+      369
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_017",
+    "avatar_file": "portraits/staff_017.png",
+    "data_reference_file": "source_cards/staff_017_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "29",
+    "source_printed_page": "130",
+    "source_side": "left",
+    "source_row_top_to_bottom": "2",
+    "source_card_crop_render3_xyxy": [
+      162,
+      411,
+      1218,
+      729
+    ],
+    "portrait_crop_render3_xyxy": [
+      201,
+      507,
+      387,
+      693
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_018",
+    "avatar_file": "portraits/staff_018.png",
+    "data_reference_file": "source_cards/staff_018_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "29",
+    "source_printed_page": "130",
+    "source_side": "left",
+    "source_row_top_to_bottom": "3",
+    "source_card_crop_render3_xyxy": [
+      159,
+      738,
+      1215,
+      1053
+    ],
+    "portrait_crop_render3_xyxy": [
+      198,
+      834,
+      384,
+      1020
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_019",
+    "avatar_file": "portraits/staff_019.png",
+    "data_reference_file": "source_cards/staff_019_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "29",
+    "source_printed_page": "130",
+    "source_side": "left",
+    "source_row_top_to_bottom": "4",
+    "source_card_crop_render3_xyxy": [
+      156,
+      1062,
+      1212,
+      1380
+    ],
+    "portrait_crop_render3_xyxy": [
+      195,
+      1158,
+      381,
+      1344
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_020",
+    "avatar_file": "portraits/staff_020.png",
+    "data_reference_file": "source_cards/staff_020_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "29",
+    "source_printed_page": "130",
+    "source_side": "left",
+    "source_row_top_to_bottom": "5",
+    "source_card_crop_render3_xyxy": [
+      153,
+      1386,
+      1209,
+      1704
+    ],
+    "portrait_crop_render3_xyxy": [
+      192,
+      1482,
+      378,
+      1668
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_021",
+    "avatar_file": "portraits/staff_021.png",
+    "data_reference_file": "source_cards/staff_021_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "29",
+    "source_printed_page": "131",
+    "source_side": "right",
+    "source_row_top_to_bottom": "1",
+    "source_card_crop_render3_xyxy": [
+      1359,
+      99,
+      2418,
+      417
+    ],
+    "portrait_crop_render3_xyxy": [
+      1398,
+      195,
+      1584,
+      381
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_022",
+    "avatar_file": "portraits/staff_022.png",
+    "data_reference_file": "source_cards/staff_022_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "29",
+    "source_printed_page": "131",
+    "source_side": "right",
+    "source_row_top_to_bottom": "2",
+    "source_card_crop_render3_xyxy": [
+      1356,
+      423,
+      2415,
+      741
+    ],
+    "portrait_crop_render3_xyxy": [
+      1395,
+      519,
+      1581,
+      705
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_023",
+    "avatar_file": "portraits/staff_023.png",
+    "data_reference_file": "source_cards/staff_023_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "29",
+    "source_printed_page": "131",
+    "source_side": "right",
+    "source_row_top_to_bottom": "3",
+    "source_card_crop_render3_xyxy": [
+      1353,
+      750,
+      2412,
+      1065
+    ],
+    "portrait_crop_render3_xyxy": [
+      1392,
+      846,
+      1578,
+      1032
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_024",
+    "avatar_file": "portraits/staff_024.png",
+    "data_reference_file": "source_cards/staff_024_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "29",
+    "source_printed_page": "131",
+    "source_side": "right",
+    "source_row_top_to_bottom": "4",
+    "source_card_crop_render3_xyxy": [
+      1350,
+      1074,
+      2409,
+      1389
+    ],
+    "portrait_crop_render3_xyxy": [
+      1389,
+      1170,
+      1575,
+      1356
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_025",
+    "avatar_file": "portraits/staff_025.png",
+    "data_reference_file": "source_cards/staff_025_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "29",
+    "source_printed_page": "131",
+    "source_side": "right",
+    "source_row_top_to_bottom": "5",
+    "source_card_crop_render3_xyxy": [
+      1347,
+      1398,
+      2406,
+      1713
+    ],
+    "portrait_crop_render3_xyxy": [
+      1386,
+      1494,
+      1572,
+      1680
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_026",
+    "avatar_file": "portraits/staff_026.png",
+    "data_reference_file": "source_cards/staff_026_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "30",
+    "source_printed_page": "132",
+    "source_side": "left",
+    "source_row_top_to_bottom": "1",
+    "source_card_crop_render3_xyxy": [
+      126,
+      93,
+      1179,
+      408
+    ],
+    "portrait_crop_render3_xyxy": [
+      165,
+      189,
+      351,
+      375
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_027",
+    "avatar_file": "portraits/staff_027.png",
+    "data_reference_file": "source_cards/staff_027_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "30",
+    "source_printed_page": "132",
+    "source_side": "left",
+    "source_row_top_to_bottom": "2",
+    "source_card_crop_render3_xyxy": [
+      123,
+      417,
+      1179,
+      732
+    ],
+    "portrait_crop_render3_xyxy": [
+      162,
+      513,
+      348,
+      699
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_028",
+    "avatar_file": "portraits/staff_028.png",
+    "data_reference_file": "source_cards/staff_028_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "30",
+    "source_printed_page": "132",
+    "source_side": "left",
+    "source_row_top_to_bottom": "3",
+    "source_card_crop_render3_xyxy": [
+      120,
+      744,
+      1176,
+      1059
+    ],
+    "portrait_crop_render3_xyxy": [
+      159,
+      840,
+      345,
+      1026
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_029",
+    "avatar_file": "portraits/staff_029.png",
+    "data_reference_file": "source_cards/staff_029_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "30",
+    "source_printed_page": "132",
+    "source_side": "left",
+    "source_row_top_to_bottom": "4",
+    "source_card_crop_render3_xyxy": [
+      117,
+      1068,
+      1173,
+      1383
+    ],
+    "portrait_crop_render3_xyxy": [
+      156,
+      1164,
+      342,
+      1350
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_030",
+    "avatar_file": "portraits/staff_030.png",
+    "data_reference_file": "source_cards/staff_030_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "30",
+    "source_printed_page": "132",
+    "source_side": "left",
+    "source_row_top_to_bottom": "5",
+    "source_card_crop_render3_xyxy": [
+      114,
+      1392,
+      1173,
+      1707
+    ],
+    "portrait_crop_render3_xyxy": [
+      153,
+      1488,
+      339,
+      1674
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_031",
+    "avatar_file": "portraits/staff_031.png",
+    "data_reference_file": "source_cards/staff_031_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "30",
+    "source_printed_page": "133",
+    "source_side": "right",
+    "source_row_top_to_bottom": "1",
+    "source_card_crop_render3_xyxy": [
+      1326,
+      108,
+      2382,
+      420
+    ],
+    "portrait_crop_render3_xyxy": [
+      1365,
+      204,
+      1551,
+      390
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_032",
+    "avatar_file": "portraits/staff_032.png",
+    "data_reference_file": "source_cards/staff_032_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "30",
+    "source_printed_page": "133",
+    "source_side": "right",
+    "source_row_top_to_bottom": "2",
+    "source_card_crop_render3_xyxy": [
+      1329,
+      429,
+      2382,
+      747
+    ],
+    "portrait_crop_render3_xyxy": [
+      1368,
+      525,
+      1554,
+      711
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_033",
+    "avatar_file": "portraits/staff_033.png",
+    "data_reference_file": "source_cards/staff_033_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "30",
+    "source_printed_page": "133",
+    "source_side": "right",
+    "source_row_top_to_bottom": "3",
+    "source_card_crop_render3_xyxy": [
+      1329,
+      753,
+      2385,
+      1071
+    ],
+    "portrait_crop_render3_xyxy": [
+      1368,
+      849,
+      1554,
+      1035
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_034",
+    "avatar_file": "portraits/staff_034.png",
+    "data_reference_file": "source_cards/staff_034_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "30",
+    "source_printed_page": "133",
+    "source_side": "right",
+    "source_row_top_to_bottom": "4",
+    "source_card_crop_render3_xyxy": [
+      1332,
+      1077,
+      2385,
+      1395
+    ],
+    "portrait_crop_render3_xyxy": [
+      1371,
+      1173,
+      1557,
+      1359
+    ],
+    "restored_from_provided_pdf": true
+  },
+  {
+    "asset_id": "staff_035",
+    "avatar_file": "portraits/staff_035.png",
+    "data_reference_file": "source_cards/staff_035_data.jpg",
+    "source_pdf": "downloadfile(1).PDF",
+    "source_pdf_page": "30",
+    "source_printed_page": "133",
+    "source_side": "right",
+    "source_row_top_to_bottom": "5",
+    "source_card_crop_render3_xyxy": [
+      1332,
+      1401,
+      2388,
+      1722
+    ],
+    "portrait_crop_render3_xyxy": [
+      1371,
+      1497,
+      1557,
+      1683
+    ],
+    "restored_from_provided_pdf": true
+  }
+]
