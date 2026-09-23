@@ -1,0 +1,3366 @@
+{
+  "category": "staff",
+  "runtime_frame_count": 280,
+  "assets": [
+    {
+      "id": "staff_001_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_001_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "93fea5dca70b0e68a5e2c2132c18baea94378cfa46add6cd644a1f2b4b0fbdb4"
+    },
+    {
+      "id": "staff_001_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_001_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "590f0066ce6fb9717304ad91d80a9cfb273aa19f74c034234ef0d5ccebcaacaf"
+    },
+    {
+      "id": "staff_001_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_001_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b56300970f310bb318061f4391ed7b138e8d9f41844ac711efd0bb51e258269c"
+    },
+    {
+      "id": "staff_001_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_001_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5f2f93634778641c566ef95a5415e2e4f45a57a10736c78aa75e9df202b4e555"
+    },
+    {
+      "id": "staff_001_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_001_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "799f3ef1425c528d8ddfd508f155fc5fc2b41e58f0afca4001e3c765269014e6"
+    },
+    {
+      "id": "staff_001_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_001_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "624613fb8d21b8309039176434a09e94c90dbfc116f4c4683c07cd3b348ab19b"
+    },
+    {
+      "id": "staff_001_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_001_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a1cffeac06b51b24c782170e92d7b20493e92d9d4627b2215e00539770d32376"
+    },
+    {
+      "id": "staff_001_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_001_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "18436feaee34466d26ee10f9779994cde7f1d2acaa4eb1e79371fb199843408f"
+    },
+    {
+      "id": "staff_002_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_002_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8eb24b53d7d96604cd818077b4f21553b079503fd6959c00b74cdb4a02294f2b"
+    },
+    {
+      "id": "staff_002_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_002_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "bb7b4c33243bf2fbc5bc5755dc3910fc5c8204fc1b51122fa57f302934690c9b"
+    },
+    {
+      "id": "staff_002_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_002_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "323bb74791889e8ba412f2bcfe4b02714a22f3acdb79058c5f51f9b7053bef67"
+    },
+    {
+      "id": "staff_002_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_002_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "71b08de6ba1461e628dc71d70efc674311cb4ca3f6261a4ebc6573f0c5c9486b"
+    },
+    {
+      "id": "staff_002_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_002_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b0daacb9f1d956604f60950196802ab33125c995012ad32bbe8acaa70c261212"
+    },
+    {
+      "id": "staff_002_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_002_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9e269b1457fc26070d33eeb4f4472e13db885fe9e6d558f598f834a2810526f8"
+    },
+    {
+      "id": "staff_002_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_002_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9ec31405641d47185d3784bdb92f0d173a6dd523d8c5b752df707f2dba16598e"
+    },
+    {
+      "id": "staff_002_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_002_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "1eb1cca00688b845698287a32163f2f1da2d3bb87252a00c46486a4e7b6e1690"
+    },
+    {
+      "id": "staff_003_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_003_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a948aa7d7e8510cd1326b26b2c33f8362c28e35b7f97b5a9e07bb9f194f41f51"
+    },
+    {
+      "id": "staff_003_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_003_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "090291b83a04c07191765397a73071f09891d6c94154af722567f855bc8c15ca"
+    },
+    {
+      "id": "staff_003_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_003_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "47d2feccec9a1ccfd939c63432a8593a04e63d2e2339216911413001ad01c29f"
+    },
+    {
+      "id": "staff_003_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_003_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "16218b9fe19f5fd2fa5a085f45d3c521fe959a40b6c8834958bd9d4761ba9edc"
+    },
+    {
+      "id": "staff_003_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_003_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "731d714b8da0eeb1d10b63b4fd1daab1e97e3dbc4bd46ba4938f2a9605347eb3"
+    },
+    {
+      "id": "staff_003_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_003_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "0b8e99fd9f7438dacf12b832720c51a206d4fec2d79356be38fe01dbef920f1b"
+    },
+    {
+      "id": "staff_003_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_003_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b44a84566a648e46cf565cb506d2c7f00e500babd59e882e77eb7bee2c0af6e1"
+    },
+    {
+      "id": "staff_003_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_003_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3abe5d3c94a48170a3e0b800c0719d711691dbe396b6555444fb4d5e3d93b4d6"
+    },
+    {
+      "id": "staff_004_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_004_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b78fbefda475eb1bf81f0ea66eed0187c9c82faf74c55fae9832e1d8c82371e1"
+    },
+    {
+      "id": "staff_004_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_004_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c604a8f45a5153dcdd5270f1ffbe88e76746fcaadf5a561e05093e642301f0ee"
+    },
+    {
+      "id": "staff_004_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_004_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "089c82e6bb943bfb0ddd016cfb18e27fce666ca3acf1b0221e18206eb304dd39"
+    },
+    {
+      "id": "staff_004_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_004_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "fdad70b88cbfc6c83bf11be251f97643a40969b1996884b18a824c7c459989dc"
+    },
+    {
+      "id": "staff_004_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_004_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f34ca77f230e7dfe3d34748f906593d359273233fa37989afaa567579702ee16"
+    },
+    {
+      "id": "staff_004_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_004_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6231e6d5bc500c67a6861541867739256e0ae4a250f4f504171f322b9892d293"
+    },
+    {
+      "id": "staff_004_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_004_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7a5715f42e9a2006f23887e7bcbf084b2dd9e16a6cc3b94a7e0808296d44d98f"
+    },
+    {
+      "id": "staff_004_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_004_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "32f38edb6108981ec2c7868fd2c780ebd8f136be4f6040d99c4755b74f6bc593"
+    },
+    {
+      "id": "staff_005_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_005_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "956a52add2a1687d01b1b0895cb088c39c6fa4642c63a87726a1b799f9948d9e"
+    },
+    {
+      "id": "staff_005_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_005_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d71f47849c67c93e8e078720cb534f5ec10175c272ba647383bc02db9896fdb2"
+    },
+    {
+      "id": "staff_005_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_005_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6c3cf38de944be78213b0691faaf76b6a0523ff0f16ad32264d20530ec94e30c"
+    },
+    {
+      "id": "staff_005_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_005_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "0d189e5453acd63766d0f13e5f1c92a1f2a2f8795f2d53ed0bd0e1039f4dead1"
+    },
+    {
+      "id": "staff_005_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_005_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "34b9b28791776c76c066fcb8f9a591693fa7ea098bea9c3bf4992b5b8f3e2eee"
+    },
+    {
+      "id": "staff_005_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_005_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "cfa3224e1dfd93b8d2bf8dd475bf1f2dd84a8213cda74f6fb4de2263d5c5c6f4"
+    },
+    {
+      "id": "staff_005_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_005_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "52a8372bfadad4f55ac87a2c37b4352c8112df4d321c8f14ca168af5cbe582cc"
+    },
+    {
+      "id": "staff_005_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_005_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "575a5182b4eed10aae4d0f14956872cf7d7da1572e56cc8c010ea6d7b19d6e6f"
+    },
+    {
+      "id": "staff_006_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_006_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "89887435a376aedeb27ba595e320c4a211ff4faaeacb8f5c8b3d2bc38bc2f288"
+    },
+    {
+      "id": "staff_006_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_006_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2a9495dd6a848752fd8713db5efd44fedef5b93f6446be99a5734e6e0a9b92af"
+    },
+    {
+      "id": "staff_006_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_006_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "32a8a182abcce4da24e26507bc74d7d4d30aee5383e81d0501adde7c6cf6313f"
+    },
+    {
+      "id": "staff_006_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_006_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "442e132b3e1acb79fa9a91b6d57530eccbc5993fc97e7d91af6b3d5644ca5666"
+    },
+    {
+      "id": "staff_006_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_006_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "1f0e56129544adfae8ea4f122cc59e0d0a2475bc8280d80d1c09feb178e64ed5"
+    },
+    {
+      "id": "staff_006_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_006_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a5107bcba8b436a7a57f3d008d847f135ecfb0eb28eefbee0742d8ca560d42d8"
+    },
+    {
+      "id": "staff_006_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_006_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e09738d267101ed6a3a5ad21e87d4f1f2937eaa14e6d4a07b41008eb685f3065"
+    },
+    {
+      "id": "staff_006_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_006_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ff83056d905e7a8270604ac62021f592b1cfd389bee455c5f66c7f95fbc8b00e"
+    },
+    {
+      "id": "staff_007_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_007_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4f69197257ae70d1d53c993549098c4807ea401aefb6e83dcea084dba01d2ada"
+    },
+    {
+      "id": "staff_007_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_007_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d8b7aa95f44f411b7f8e2f7631e0e745935494aad6844303bf6be275b839379a"
+    },
+    {
+      "id": "staff_007_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_007_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "dc0aae9c5c8fb39c5d7027db69a1d0459cd128d40dff2bbaaa27f2a533f8b1f2"
+    },
+    {
+      "id": "staff_007_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_007_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "977609489352862bca928cccc617c21374961d506bf84fce9e703b5d9059accf"
+    },
+    {
+      "id": "staff_007_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_007_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "86feee2a7537d183d9615b99c223e09f9c92bc09b57796c729e84717d39c4db0"
+    },
+    {
+      "id": "staff_007_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_007_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d73de8134b279b34f6e04a11fba6b81a271bd730a2366487dacacaba8c61efb2"
+    },
+    {
+      "id": "staff_007_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_007_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9366312108139809331c2cb43406c4fbdc6627fef7b83ded1ecddee0987aa4ca"
+    },
+    {
+      "id": "staff_007_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_007_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7dc82a1dc6a586a50cb9d647f087c81d21e2e8387b8ff3ac740ec62407b5fa64"
+    },
+    {
+      "id": "staff_008_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_008_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5e407fea17f7fadbbd3e972292e6f24cca8a46122e191ae963ab70b7b43003e1"
+    },
+    {
+      "id": "staff_008_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_008_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "cf2ee06015a09f79a191d72881f10a9760a566fd9b66302004893b4a1bcc47b2"
+    },
+    {
+      "id": "staff_008_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_008_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "86f43f7b55823d9f573681d29901422a0c9f4942e85b6693e8aa770ac13700b8"
+    },
+    {
+      "id": "staff_008_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_008_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "126b9685a912f1a6dfe36c998b5d9a2863eff29013abbd1020ef24d771217be4"
+    },
+    {
+      "id": "staff_008_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_008_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ca096a33f5009fec85ffd3d995b21532cd662a57b75bc7e755c2c900102fc2eb"
+    },
+    {
+      "id": "staff_008_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_008_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9cb272e33d991246ebb5f5f10001e815808f1f3c4e46dc3622f094089917f3f2"
+    },
+    {
+      "id": "staff_008_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_008_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "266e2dcac96b9db9eb0709fda23acd2c4751fb4b06d1604295312616419005ce"
+    },
+    {
+      "id": "staff_008_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_008_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ebaef4d2554bf5931b91b4634202201159aa0ac0b229d1ebdec94b06da9d890d"
+    },
+    {
+      "id": "staff_009_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_009_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "96fb8978cdd6c8bf7a561e2b77f6fcd4b907ec1541de455f4efc2cff25a6b832"
+    },
+    {
+      "id": "staff_009_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_009_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9da89a52f5083ad460fbffa555f07c2f2b3bd679ccf1a7cc3aebab5f3952481e"
+    },
+    {
+      "id": "staff_009_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_009_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "fef5e4d19fdd68b44e91e13c7d187fd2b854431c18ff1276b0506449da3dcc0a"
+    },
+    {
+      "id": "staff_009_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_009_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ae883ea9afaca11160f2cf73e5a3d527b6a8f81670ead6dd88a451364dcdf939"
+    },
+    {
+      "id": "staff_009_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_009_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "007ffe2c88de0f38b51eb1e4cc1f5d7854bac5022a71976a7690c97410d7b922"
+    },
+    {
+      "id": "staff_009_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_009_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a467ddf10abbf1e4ba98479f1d136336148ec324b6e5fca37f4aa85c7d9afbef"
+    },
+    {
+      "id": "staff_009_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_009_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d428cc1f40b19cea35bc39b114f65dfb62114be37f3cf73b285636ed83eecbf6"
+    },
+    {
+      "id": "staff_009_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_009_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6cf9d307a1c629f64de881996ecd145b8532be7251999e49a77f58810ceee58f"
+    },
+    {
+      "id": "staff_010_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_010_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2100c6431fb30d089d171bf7c7bf26edbb1d100196a75b8634fbbafba6881dc6"
+    },
+    {
+      "id": "staff_010_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_010_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ab9efbe3e2f198f8e1c8fb218375db19fa2e8ee7aa4aebad8556172b05a2b824"
+    },
+    {
+      "id": "staff_010_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_010_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e9583d4322f9cd850aef8d32bf99957b7a6418af8b890b5ae43560ae4e683d4f"
+    },
+    {
+      "id": "staff_010_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_010_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a122670d2e5c6ec4bbf8a276532f49224367b713f40a31e3382aa18e63a9ce17"
+    },
+    {
+      "id": "staff_010_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_010_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "1f4e00f545096e5996243f27c06172bd8814e7599b88cc26592bf481209e2020"
+    },
+    {
+      "id": "staff_010_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_010_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4ce315483ba8758914aebced2e52c53567246398541d704d924c526a59b097cb"
+    },
+    {
+      "id": "staff_010_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_010_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "cde845e8a0c04cbe124b32b871bdcc3b3c562c80a2c1cde061f2380de023bdc1"
+    },
+    {
+      "id": "staff_010_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_010_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c8c4d0ed10296613201bf37e8df9ce86783f8bcd4cbc176d4da33c1b549a7346"
+    },
+    {
+      "id": "staff_011_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_011_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c42bd8f9a23ffc175db3708bb91e0c12ffa110ebbb563f562fed889f079b4301"
+    },
+    {
+      "id": "staff_011_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_011_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c7eaab4818a5b377af7ddb76955a004f29af7c50e83c5f9c7c677c25d4673453"
+    },
+    {
+      "id": "staff_011_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_011_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "29c0e8b9c9706093c3ab379834493f8ede0ff9cdaefd499342cc48d7fac6557e"
+    },
+    {
+      "id": "staff_011_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_011_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ea0f0c9ad01ac1fae0f292677059b8ba3c6eef549006c92f1349e15d38acedcd"
+    },
+    {
+      "id": "staff_011_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_011_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "67d4bf10ee003ffc0cea340f45b579aa7d6c4ee893b2b7a111562ac07c33fbf3"
+    },
+    {
+      "id": "staff_011_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_011_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "0ab0a4311e8a7eade0c666e1d7d9ea50cfec65a8379e6aae3ac075c3742fbb35"
+    },
+    {
+      "id": "staff_011_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_011_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2b0ead21606d6904d8d6c29ab133620806ebd9868f213fa1fbfb6c6dce83fa5a"
+    },
+    {
+      "id": "staff_011_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_011_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6cd6a6347d3d9a15831b7d3db33ead19eb6a67b5f4a239a2b92591dc49fe18a3"
+    },
+    {
+      "id": "staff_012_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_012_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f3e647fa5d4b124296bdfd3152ae00a3d347618661565ca7da033d16d8bd1899"
+    },
+    {
+      "id": "staff_012_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_012_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "299d01f839ccc39b47dfe2bf546ff44e36e9fe60454f7dabd39809d62edbc521"
+    },
+    {
+      "id": "staff_012_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_012_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f34704acb4019e35cdd163219fd827dfdd9b80df29c51d7730308108af05e773"
+    },
+    {
+      "id": "staff_012_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_012_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9606cce17fe0e217a1ebe46535b44c855ec8da2ef4a8e3457d345f30d7c29ed3"
+    },
+    {
+      "id": "staff_012_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_012_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "aa73aa7c2d14e892f80655d6cbd66dd8c639527f5e25cc29b22dc68b217516e1"
+    },
+    {
+      "id": "staff_012_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_012_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8a8b8edbe0d6507d153b68f08f28cae8bacd5859dbf0dd7e60b63c19a9ffe83e"
+    },
+    {
+      "id": "staff_012_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_012_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2e499d7b08904b8f6a534cd7252579ee4f61f3b7130e1e0316d1647a05c4d09f"
+    },
+    {
+      "id": "staff_012_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_012_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d62e4af5d60468c03fea8fb2534f83549eae55d853fe182c0a5fc6872a4d2b28"
+    },
+    {
+      "id": "staff_013_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_013_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d18b19a3265cac4f14213eeb2af3a28356888e186892bc53f4ad2b3d5f62d71d"
+    },
+    {
+      "id": "staff_013_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_013_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e80372f3e69455dcc1bff54e27d0e390bcfb912b820bb9f4cdbe33b7b907031c"
+    },
+    {
+      "id": "staff_013_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_013_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "09f0dd3a8ab973487dfbeb15a5d551a12eb9ad931c74d2898ee37b62eea1895e"
+    },
+    {
+      "id": "staff_013_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_013_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "02235c7e5d46eac1377ff321612ec17d32237e8e41f0cec63cffb59c567d014d"
+    },
+    {
+      "id": "staff_013_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_013_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7d6625fce2dd7db11e2288c0e529c5b56994df7652627065553fb3e2d3474b64"
+    },
+    {
+      "id": "staff_013_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_013_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9c4916a7a5d9aa9d4be4ae00d8a61bbbbb4481c2344b29e668452c840845c8cd"
+    },
+    {
+      "id": "staff_013_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_013_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "59adfc67c8bc8700389984b013494638f6d42fae337f586bd83a6240e155e200"
+    },
+    {
+      "id": "staff_013_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_013_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "94eb3ea59a3283952140a5752634da6ab07cc52f55a8e3b685d0a2f56c8e07e6"
+    },
+    {
+      "id": "staff_014_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_014_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "af969c7e5a1c71edb7c6f33dd0355e1b6e5c54a2958e1d2e995d28f897c16a30"
+    },
+    {
+      "id": "staff_014_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_014_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f03968423aea7ab274fd942630e69c6a0ffda26e61889147b3b066d343423697"
+    },
+    {
+      "id": "staff_014_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_014_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "697afbc75c56e4942525089c74d3009cb6f38c1f2f48511158760f8fb5052921"
+    },
+    {
+      "id": "staff_014_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_014_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d318dacb1dfd5dc43bfc35648bab2c4b4d840c3f1457a703eae89d3d9200a72d"
+    },
+    {
+      "id": "staff_014_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_014_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "be88c8df3806245d6a548ea83da8da3c2838010b5935b0301f33d032745f895b"
+    },
+    {
+      "id": "staff_014_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_014_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b8c67a1a95c1f5a36ba4418bab7d32ac44deb459b02fb97c32eab0f9d186c2ce"
+    },
+    {
+      "id": "staff_014_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_014_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2e82f510070159674a3f47fcf4352399c2ee2a8cd37a3a15175bbfd70352294f"
+    },
+    {
+      "id": "staff_014_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_014_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "33a1c458e7d64d57a45158414f0a9b56816d97ae0cd093bcb71d7e5540ecc95b"
+    },
+    {
+      "id": "staff_015_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_015_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2b6167cdc52e19576967a25059d2cd9a5a4c4c16e88c8c7f44b999f9801e0a5a"
+    },
+    {
+      "id": "staff_015_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_015_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a80ebd088e325875c497984e7999f2f8106519726926fb44e7e7bf76e18233ac"
+    },
+    {
+      "id": "staff_015_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_015_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d4074810f85178d2b256cda54256baa42b7d3f2ce5fe253427c4a43aa6bbfc7c"
+    },
+    {
+      "id": "staff_015_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_015_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a417ff3ff00a8ee288b5ec0b96d41a4db2e88d9f4dfc4b4de4e03a008b07f1dd"
+    },
+    {
+      "id": "staff_015_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_015_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c96e01df5b538d2b33261954cace670043ad44ef968b9d2001aee7e047000a95"
+    },
+    {
+      "id": "staff_015_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_015_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "41b12ba3adba18963d86a013c1ffcdf8b2d2b707e6731e242b8292535ce1db8d"
+    },
+    {
+      "id": "staff_015_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_015_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f15e157397b9df65aae4c48cce040c509808c73a1c9481f8d197758ebf0f7429"
+    },
+    {
+      "id": "staff_015_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_015_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4c6666f9be8e6360e96da7383a26c65ec6cdfb1d8603effb9b2a56f80d6a2f69"
+    },
+    {
+      "id": "staff_016_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_016_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c6f8c5898d5050ae93d1f5408747ff9eac388bfbba2b9f0fadfae22aea44f541"
+    },
+    {
+      "id": "staff_016_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_016_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9c99ad73e76fd75a6bf013685243bc9a963b66d83c325efbd99edfda0440f6d1"
+    },
+    {
+      "id": "staff_016_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_016_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "eaf116f7204a02775dcf6035990a160a977b033e9696dd7750b8fbb8db321536"
+    },
+    {
+      "id": "staff_016_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_016_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "11b39fbc01743c80b72637ac8ab6e1ad1d497bfc048fdda1a4de09aa9df17bfc"
+    },
+    {
+      "id": "staff_016_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_016_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "adea9888529a1a849ae6f4fbe594e58964c0c5e27a2f2cc850250abb0375b35a"
+    },
+    {
+      "id": "staff_016_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_016_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "44bc12d2c3ea9ded3081a1913988adcabe1caa2fe00229d4cbc3a7537819f476"
+    },
+    {
+      "id": "staff_016_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_016_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4124db9f196fd0eced608ba0477fcc50c4da27264d57a5911fb47b8a05e4233d"
+    },
+    {
+      "id": "staff_016_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_016_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f178cdb9f0b9845172505d5f8362ffd4daefbd7ce45514ef3e506b2026c79173"
+    },
+    {
+      "id": "staff_017_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_017_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b7784a1bbc663cd1fc5386797145d207ac2eb01609196c2c9b09c10a683638a7"
+    },
+    {
+      "id": "staff_017_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_017_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "120251943128f1397e6f565c30c9a0e007e107bd801e1e7556b019975bf0c217"
+    },
+    {
+      "id": "staff_017_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_017_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7801480290fdcb9ba264d54cba69483fea55ddcd30c2f6e0951771312489311a"
+    },
+    {
+      "id": "staff_017_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_017_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2ca2a09008cee75bfc45f8054c4c7804d7f85ef0be65cf9349dc0ab13c469cfe"
+    },
+    {
+      "id": "staff_017_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_017_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4e453d7d2e67f516d60faa0277af415db39f9a12c7723be5c517a830d7ef668d"
+    },
+    {
+      "id": "staff_017_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_017_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9210a83da5a41c896143026908e22070ea46445031505ac7aaac9bbdfbfbb1f7"
+    },
+    {
+      "id": "staff_017_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_017_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7514cc2dc828563aacabfcf02a84ca978f077ac5d9869a5b03182459c8d986c6"
+    },
+    {
+      "id": "staff_017_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_017_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "65938bb09338764d2dc2e4fc4a7a57f16b8de347911b9b7d92bb354f07b1136c"
+    },
+    {
+      "id": "staff_018_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_018_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "805d560d84c11b2bb6e5eebe50a3d548cd6b9c7b3703a430dc363f1a86fcdad1"
+    },
+    {
+      "id": "staff_018_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_018_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "48887688e87c70975502f2fce6880d426f5ced50954eee3da7abdc76ade78033"
+    },
+    {
+      "id": "staff_018_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_018_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "033950c99f8b346838f0b77cfbeb8427e62a26785ad920795c0918b632faeb10"
+    },
+    {
+      "id": "staff_018_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_018_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "388b280d46782c94a64fbd1d29dc0e308e3a19032636e0562177b2030ef3e51c"
+    },
+    {
+      "id": "staff_018_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_018_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3a5c9ce34eb0f4b5a2169c67e2e295b5a7afc395cf2169181ed95088db5a5188"
+    },
+    {
+      "id": "staff_018_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_018_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ea6383ba8314189f1c56185134c9633d0da5d39e56fef49885cb235fb5b796d0"
+    },
+    {
+      "id": "staff_018_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_018_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b4932608da88a21dba1c21ac25956dbeef02c156c23964f1e215e28ff31e117d"
+    },
+    {
+      "id": "staff_018_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_018_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "90f6722339f3da5c2d374e13b5a4b2852d47adf6074b02659706d06995a92fc4"
+    },
+    {
+      "id": "staff_019_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_019_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "558e6ba0c55fc010ce3760b181960c670ad1b460d266afc6e102ea0c93da56e9"
+    },
+    {
+      "id": "staff_019_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_019_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2ef2291f605432dec21cb30bde2a4b5693b044b19341a7f40758057a051abb84"
+    },
+    {
+      "id": "staff_019_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_019_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "80800de27ddc1d008bddcd8d51ec2f46c1fa559cb1001d2d26d5d729c9e05a79"
+    },
+    {
+      "id": "staff_019_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_019_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2da466eab33663373e6a31dbb5bd0a663dd8554cf40b5b645061a7c3ec9f8ff1"
+    },
+    {
+      "id": "staff_019_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_019_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "101dcb6ab9cfcd8e5c81094c7587bf8641f0fa3af1f3aa94f82d79e65bdbfc15"
+    },
+    {
+      "id": "staff_019_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_019_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "71a36ebdce8a3ad6bd4cac1ef05d085e76a4708862aed9b052b1f9360ec49938"
+    },
+    {
+      "id": "staff_019_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_019_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "be83a219a79ed6b41316f6f226ec4743e6de125e6b249eb3017b0b609f006e74"
+    },
+    {
+      "id": "staff_019_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_019_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d66698579846d8a432509cf65f4ef6adaf5cf96c236ce51d5c26ef82273d5bda"
+    },
+    {
+      "id": "staff_020_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_020_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f774635795f6c1ae59cbf79c815084a4986b80cde6e04f1bb508d91254677a62"
+    },
+    {
+      "id": "staff_020_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_020_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "600dd8faa779b687a9da9039120d13a4443e911e6aaa2317092fe6971e0956cb"
+    },
+    {
+      "id": "staff_020_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_020_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d057e0840b8a2d1ebfd5ad84710f42916aa26123dbe4d43d7888ca43b29ff31b"
+    },
+    {
+      "id": "staff_020_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_020_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "464c4464e65975d158c4f26e1e5e157259889eebd09df002fda44c85110d33cc"
+    },
+    {
+      "id": "staff_020_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_020_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2c29f9e1fcc65e53cc43d41aff654efdc9bd0c8956f710d3b25ef2081f0dc1ff"
+    },
+    {
+      "id": "staff_020_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_020_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "17d928818ffc76d87dd4e09d8896eabd072bbd85f509ae67536e03ac9c97e2b8"
+    },
+    {
+      "id": "staff_020_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_020_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6d56f5645a281b390f6c18e1de5020b17bf606dccaae0ceb8f8446eb15ceda4d"
+    },
+    {
+      "id": "staff_020_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_020_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a6b017fb1abefa6da421fcf4a5f3f8005ca8b684d5dc77f10289ee42e34e3616"
+    },
+    {
+      "id": "staff_021_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_021_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5f3d0332dd3004b97d5059f5bd6257659fc7448cdedce95751be3bab5eec4853"
+    },
+    {
+      "id": "staff_021_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_021_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "eb1825020487bb56708e47a6bc3e2c01b7da386ef3a2369d64eb5530a3b1f63d"
+    },
+    {
+      "id": "staff_021_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_021_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7f6ef2e6f6c9c35102bfb5d3e8de2d4723ea35d05c08a49fe4986b89fe2fbf01"
+    },
+    {
+      "id": "staff_021_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_021_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a05c320c1accf2e1fe31b569ba057f4a73131331eba1d9ee02c35feea7db0c48"
+    },
+    {
+      "id": "staff_021_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_021_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2a4bd0ef0748d6dbf24dffcb0075aae6ccdbaed4d082ef568aa7590a5ed78d7a"
+    },
+    {
+      "id": "staff_021_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_021_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2a9ad59c96680653680c933c17804b03ce262c9ad10227d5e8a74ba0940e7ffb"
+    },
+    {
+      "id": "staff_021_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_021_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ab9f58d91e52fd504dbc79519824e8f4c35927818ca7da11ae63559cd1a96782"
+    },
+    {
+      "id": "staff_021_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_021_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8e3a8db1792f00d1479844ba74e6d68eb4829d8cee2f5b5ad17c1e8739d72f82"
+    },
+    {
+      "id": "staff_022_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_022_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6640a33a54ef9a32844c186abd0e0421eddafad1543daa3d6f07dd92e264223a"
+    },
+    {
+      "id": "staff_022_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_022_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a76b554ec75cfa022390d00c5d68daa18418fa72985b8a29bc7525bc22295919"
+    },
+    {
+      "id": "staff_022_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_022_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "36acb3223b9da64c8d611506ac492c1d11e21ae95187e801c57ed2f41c0f8c28"
+    },
+    {
+      "id": "staff_022_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_022_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5384edcafc68bc65d4e9e04163039fca58f75952b6da7b03068ec4538036b1d8"
+    },
+    {
+      "id": "staff_022_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_022_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4af1b903407105bad43cb30d4830e967912d4249e8618ce2fc1cbe806bec2528"
+    },
+    {
+      "id": "staff_022_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_022_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "0c875eaedfa669a51f1712d91712434f163b0e65307067c7925b46282dedf7d4"
+    },
+    {
+      "id": "staff_022_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_022_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "975d0cadbacdbfd87e05509bf23f971e124fc6cc410aa2b28a9612fa8279a68d"
+    },
+    {
+      "id": "staff_022_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_022_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9c64eade94fb65b1c5dad256db88fbe6a91c84f359b52615c108e61c18d1a833"
+    },
+    {
+      "id": "staff_023_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_023_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "700cf94425019329d738fde2297b53e434de4c6ce46b8ccecb1d85ef0bfb922f"
+    },
+    {
+      "id": "staff_023_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_023_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9d471df975a3a99d49ab7333aa8f12b4a5bad2c751e96aabe25c2d61c8af6572"
+    },
+    {
+      "id": "staff_023_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_023_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9b40ad8dd95d5bff5c78867468cf53fb52f77831eac1e183f8463e030e3fa50c"
+    },
+    {
+      "id": "staff_023_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_023_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d09d5837f175783466be7a8109f8d459a39d4ee3d4cc86b1bdc32e08be1c4521"
+    },
+    {
+      "id": "staff_023_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_023_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ac744056dba4c97a1a74806c8707294bcce93cb6286dd56e9dece2ed23d95fdc"
+    },
+    {
+      "id": "staff_023_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_023_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c2f28532147d05f5427d1907466da4125d4e682f8140062b22d35bb665255257"
+    },
+    {
+      "id": "staff_023_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_023_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f22b1a0e2ec0092271e72cc177637e53f9ec9214fa3f4e0c298887c792ea114e"
+    },
+    {
+      "id": "staff_023_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_023_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a38b1a744f55b51c1883e6f60e09e8ec19e754534fbb47d4e89e8ee5e6e34ba5"
+    },
+    {
+      "id": "staff_024_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_024_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "afa38be253f433d79a730e3aeb39f5e5eb3a29c9ed974b73f46d23a42891a276"
+    },
+    {
+      "id": "staff_024_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_024_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "89fe3c376f71f31de75fcff5fa3bec0a7488fea54ff7e4d394e6a5cd302f8344"
+    },
+    {
+      "id": "staff_024_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_024_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "4fae3680bdb95da38c198349ab4df5308e37a6cbd51402a7689c5b6dd57d8ff5"
+    },
+    {
+      "id": "staff_024_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_024_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c27e3809036908bb4fbc433978878ff5b2260cd3f5111ecf3a3f2b148c109a3c"
+    },
+    {
+      "id": "staff_024_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_024_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "490977ca0bbfc68832c82a412bcbd7bf732605e0d2ec185a42666c5a7fef525a"
+    },
+    {
+      "id": "staff_024_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_024_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3634b5682309d51f86ee770d2d8b2c9bb7d1d70140b193358cbdd8df84cb6671"
+    },
+    {
+      "id": "staff_024_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_024_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6c534de7420374356e4103af41c7ce20f62294f77c93dfa122eeb6a8eb934df5"
+    },
+    {
+      "id": "staff_024_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_024_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2e906e3955a7ec8a1a7fa00349e228f2c674de21d2b58b6bbb2124bb1f147248"
+    },
+    {
+      "id": "staff_025_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_025_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ebd137385ed73593f9f18d844213b9eb97d188ae7814bedbb146ec08ad8e90a3"
+    },
+    {
+      "id": "staff_025_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_025_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "409a83b3b6062e717edcc2e9a53addc6885d1070559a17667cba8a11e651c81d"
+    },
+    {
+      "id": "staff_025_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_025_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "703532fb06e883d5bf3406cd69b87d07df61d3c4efb7f22e66b128c973283d6f"
+    },
+    {
+      "id": "staff_025_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_025_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "02fd8a8b1747eb010d3df80902902c5d23e6f8f7e7e604d3656bb2f83108d94e"
+    },
+    {
+      "id": "staff_025_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_025_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6b472ea065145e424c09af10f90a23734ba4975603a4046457a83e695ca20576"
+    },
+    {
+      "id": "staff_025_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_025_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b7a67a4d3002b0fe8154660867c86abe4ed77477e8f5313cd0219391d61086bc"
+    },
+    {
+      "id": "staff_025_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_025_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3c305914782e178a15ba28271b501d849eff0559f9a96b043b89c3fd94b4bc4f"
+    },
+    {
+      "id": "staff_025_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_025_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7652bafb94b1ae95842e62d2eaa1cf7533f17c463cfdd55558ad9f4d0ee2388b"
+    },
+    {
+      "id": "staff_026_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_026_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5da5850198b22f3b0190781b80d56ae3644ffc67d61e546b151fab407a21adbf"
+    },
+    {
+      "id": "staff_026_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_026_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "092c7c3120e5066fb70d8e57d69f7c0d477f235d345eda339039cd7a3ecc9e17"
+    },
+    {
+      "id": "staff_026_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_026_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "0e9f807f7b901cf018fb94b3a8e6f9669c00e39ebd8a943ee72edcaff9845738"
+    },
+    {
+      "id": "staff_026_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_026_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3d95e3b86855e286b6f7ec260b9ceb600dc53df6872d2c3ee40d5502ee86b38d"
+    },
+    {
+      "id": "staff_026_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_026_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ab16312544220426b154c20ba0274bab5cbec399768e5c5d7335adc76d5bfaf1"
+    },
+    {
+      "id": "staff_026_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_026_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9a6dac9ac61f4a6586c6d0bcf270ad52c765ace57850f6207e872ca647e37bdb"
+    },
+    {
+      "id": "staff_026_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_026_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "702b3ab3a046bbd880d6fddf6ef36e38b0600a372ba4f491d3ef0c2157ca5e9e"
+    },
+    {
+      "id": "staff_026_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_026_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f2f86c6a5e9ee70e3d28ef24501d699e4437b0c9fa75dc90f1084569cda154d2"
+    },
+    {
+      "id": "staff_027_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_027_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c9de235d55dc027d406e6f1b42ec2be52268d8979f7d5e922eb99dfc671fb1ed"
+    },
+    {
+      "id": "staff_027_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_027_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e474613a95572cdfc2febae848c3e923d48bb071e9900ac9684c4314a80d1806"
+    },
+    {
+      "id": "staff_027_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_027_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "548bcacb10422a8f01295a63ba423c66af6bf1e269791d154832b343d4dacbf7"
+    },
+    {
+      "id": "staff_027_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_027_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ab2535dfd0df13d2baa085ad38fea5b6e01523355f0cec04cdbbcb51ef13a499"
+    },
+    {
+      "id": "staff_027_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_027_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f09f9e47765033df11e01754973120f771c2c472a4ef2c3d0d0290416d2e7a1a"
+    },
+    {
+      "id": "staff_027_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_027_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8879ffb304e4f18f5382cb18bcfeafed22c419bc7607b15384b5133177b4b335"
+    },
+    {
+      "id": "staff_027_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_027_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "aee09f19d25da1f25a985772b2eaf8c4be6729eb06bc0ead238986405c5baabb"
+    },
+    {
+      "id": "staff_027_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_027_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ba010acb895f14cf17f32b56babc59de36640c4284611a2d9cb8bf7ef8e49445"
+    },
+    {
+      "id": "staff_028_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_028_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5d4fbf47e6f47ec2c36f2a9b591c02e78ca37546a09fd3998a67c7e22a228e12"
+    },
+    {
+      "id": "staff_028_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_028_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f5c591aa90505909158baab21833aad927bfe4ea030a0ec8e12ac8ce7732ee1e"
+    },
+    {
+      "id": "staff_028_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_028_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a307ea9f25cca1852eb6cd5cc69396d48f93dd1e51af1aa1789ed0dccbe577d9"
+    },
+    {
+      "id": "staff_028_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_028_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "68621ea89932cdc98889ab77e8f9589df14bd238d59e81b865e7321cc335bb36"
+    },
+    {
+      "id": "staff_028_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_028_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e66c8de56e140183d1b427c02691e2db134ad7a247dcd76f640b99d50140ed14"
+    },
+    {
+      "id": "staff_028_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_028_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "183665ec81d64defac239699b494fe1950032dd764d28c9daa3e74f58a2d9f1f"
+    },
+    {
+      "id": "staff_028_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_028_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c31e1eecb8569eef0945a79f0b2b3bcb9ff9a6675ec3e860c90464cad4b34258"
+    },
+    {
+      "id": "staff_028_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_028_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "90c5280ea24d95a6b312ceec11bf2dd37b91c7e12e202aee90d46317e5153ca9"
+    },
+    {
+      "id": "staff_029_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_029_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "1b7ca0576517d65b521de7a3827282d1c5bf68bcc3bbdcdffc2a20d4a0f51f14"
+    },
+    {
+      "id": "staff_029_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_029_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3c42d0c17bc1081f0169fe9d08ae5990146cf251dbc1e560717975acf1c1c071"
+    },
+    {
+      "id": "staff_029_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_029_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "dd898c4633d5c35ab0a81018f690ef400c0ccadeb5f25cdcc68d247cb9a4f9fd"
+    },
+    {
+      "id": "staff_029_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_029_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "0929ae78db3051b3ecac5ae3502237baea3c0d8546d459d988f756d72c3f9742"
+    },
+    {
+      "id": "staff_029_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_029_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "158c8157b2fb3d096ab4b43db02836c96e3d7ff98bc62d169781c87f06797c0f"
+    },
+    {
+      "id": "staff_029_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_029_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7530586b8d831a080c4b5d1898c03504043e67699aa8fbecc52fabfde3bc9b79"
+    },
+    {
+      "id": "staff_029_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_029_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c571def51f5a0ce6d40b15c5ba4775a5dae66de0f5eb5f3710ba5ad7f161101d"
+    },
+    {
+      "id": "staff_029_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_029_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "aa8e998a4163b5e69b3d1985d3f9bee917082492bea7fd8735384f4e4dfbf2ed"
+    },
+    {
+      "id": "staff_030_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_030_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8c91bc2594dbbd394f24537bc4a93a73a190911e52c7a6dfb16aa0d1af0de5b7"
+    },
+    {
+      "id": "staff_030_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_030_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "8211941490d824d9eb5b8a87fe9276a16f7562ec39c2ae78ad39aee0c9ea5fad"
+    },
+    {
+      "id": "staff_030_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_030_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "ebceca33162f5084c7cc9d39254e813ac67ce70c43e74adb9d6427fa8704802a"
+    },
+    {
+      "id": "staff_030_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_030_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6dadb12976038f5327852ad90f153da2d1ed20c1a65017d6cdcaf2b4ee874153"
+    },
+    {
+      "id": "staff_030_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_030_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "a3a978519928272b0894128acd540b931a703f08bd8b7a0a2f86f1377d19e74b"
+    },
+    {
+      "id": "staff_030_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_030_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e3f8a2d9e2db01fd1ad335b7a5400fac1d21be9f4e130e2244ea7ea6044e6ad5"
+    },
+    {
+      "id": "staff_030_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_030_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7f1b2ec2c53632a24fba650b300c0318e7209db2fb8f591de29792f2a6ef9296"
+    },
+    {
+      "id": "staff_030_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_030_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "2e0f63bdf3c096d64fd6371df3c68114a1304c98853043381b2cfac46be2e88e"
+    },
+    {
+      "id": "staff_031_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_031_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "eb4071fae6ee6aa1efded3c7d5bcf54a29e8e62388acd6c4405646a668d2fea2"
+    },
+    {
+      "id": "staff_031_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_031_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "1b4b202f3a7fcaf467a41e0731e9ee0a139427a3601577b2d0fc6427202d71b5"
+    },
+    {
+      "id": "staff_031_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_031_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "987e3165b1c07274a65275c1b8570805d8ed92cb89cf5203f08e5b3f1eca9605"
+    },
+    {
+      "id": "staff_031_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_031_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d836627c89aebf7cd38f95af2d0335793df2e8264b1b497b158825740c9b1a17"
+    },
+    {
+      "id": "staff_031_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_031_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6b99dd6e39df818cf1bacdb7d5ae2aeed33d683c6bb3bbf7685da1408d24e9b2"
+    },
+    {
+      "id": "staff_031_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_031_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "9160a11c492ba461c06f64573d91f788e5cefa7a899cc2a6866dd369b4604749"
+    },
+    {
+      "id": "staff_031_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_031_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "eec80e6aadc635fd4e902c1968e38f546763dff5fe3bac55e868120aae4f22e4"
+    },
+    {
+      "id": "staff_031_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_031_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "510f129228e8016701d1c5d613852c9c96068917504300fb5417f654604f38fd"
+    },
+    {
+      "id": "staff_032_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_032_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7eba57aca6a20c5f04c16e51e4089a2451f5d09a31db1ebbd626217298b7a144"
+    },
+    {
+      "id": "staff_032_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_032_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "87dd89522f960db787a2533b09adb686ab458b1b2ccc983903cd05a3d5188a78"
+    },
+    {
+      "id": "staff_032_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_032_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "475fd7e4d03922f1853d0e8fc51fd66ffc49c99a73ab3e43b99da80f5843a463"
+    },
+    {
+      "id": "staff_032_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_032_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "5c20486f97b4a79e26ebf2634ddd6980d62f6ff29a293d0712c394fc5c2e76c0"
+    },
+    {
+      "id": "staff_032_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_032_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b17f1468d5a26ec653258ad7d3377726f7d4137b10cdc96573bcdc1daca3195e"
+    },
+    {
+      "id": "staff_032_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_032_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e3fd5385339f0d73900da8a93595d00ec0db2025f2dd6a8005e840f599163462"
+    },
+    {
+      "id": "staff_032_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_032_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7551755014143abc2fa2e610a18a2685c58fe8c7b4ffe502fa09843f344cceee"
+    },
+    {
+      "id": "staff_032_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_032_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "c3cf8f83b99c2d4d44bace8157a3d23ea62a9220074e8b8fa4696a4dafdbae8e"
+    },
+    {
+      "id": "staff_033_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_033_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "da477c46479849acd61629399d4f3c4f9e2870733f6c968a37608fd71900916a"
+    },
+    {
+      "id": "staff_033_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_033_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "65b664d00f414651aca941536bc1978a9a1b72871641fd9a1cf122daf5201608"
+    },
+    {
+      "id": "staff_033_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_033_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "40a23b72f3c00734d402c4a5c7357c6b4a2221e2d6cff339e9f208782847cb0e"
+    },
+    {
+      "id": "staff_033_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_033_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "b93414d56e17b1a626483455e63ad82161bf6835015a3a2a4089af8390a3abb7"
+    },
+    {
+      "id": "staff_033_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_033_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "7b2e40d423b37037167277dbee7e72f6a96a1fd9a2843d5430b9a54e7a09203c"
+    },
+    {
+      "id": "staff_033_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_033_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "11d04bb3e324a029276b5e2a5ea91a5c2c05dfe0c05cd63ceb8dd4e58ec45224"
+    },
+    {
+      "id": "staff_033_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_033_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "89b15d6499f92aab0386e80d9b9fea4584864341f9ca5e3b977f512a2d6333c9"
+    },
+    {
+      "id": "staff_033_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_033_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "523aac6de6405a4287f35ae12d1e53109d568476e557baf3753e7160faa5e497"
+    },
+    {
+      "id": "staff_034_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_034_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d3ce1f17d18d52bfb9f21e24befbd984342e3a221085fcfb0911b7743c71f1e2"
+    },
+    {
+      "id": "staff_034_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_034_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "e28c7c734217d79887a0ec7fc240cb526ba2a1e8a509986cec797d4c554ed28d"
+    },
+    {
+      "id": "staff_034_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_034_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "57d6da268ba0d83737e66c343faefead8aff847516a4670200cc3901c70e7ad6"
+    },
+    {
+      "id": "staff_034_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_034_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3eb1ebb53c96e7a7a16a8f7e931387cc1777f8eb2762a608cd0ed6b1fd72e0fb"
+    },
+    {
+      "id": "staff_034_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_034_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f626fab62aedba89c057722a5f344fb5f1c79874575334a5005570a888236edd"
+    },
+    {
+      "id": "staff_034_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_034_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "6e8748bc5b0d7893db37e2ad765b47054333b4e2fe61d3c2f2d033684f926b77"
+    },
+    {
+      "id": "staff_034_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_034_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "3a84d7205340bb73e0af87c4f422cc32a65e4341edc76dfbf8fe2d7c2f0bb657"
+    },
+    {
+      "id": "staff_034_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_034_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "803c2344c38d1c392a813bd6c15c988c88c2f75575567b51715befc49d060944"
+    },
+    {
+      "id": "staff_035_down_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_035_down_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "65ff212653e0abe56983e67869b541758614c964680e4e2437d40ba94489cd4a"
+    },
+    {
+      "id": "staff_035_down_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_035_down_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "bed91aa415630d832b7f2328e15034527f1530a4db71fdc0d6e04f162f51ca5d"
+    },
+    {
+      "id": "staff_035_left_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_035_left_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "f08c48e9f32b0cc72f309cc9be4d8f9ffa7dcf9d0c68751a9588657555097765"
+    },
+    {
+      "id": "staff_035_left_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_035_left_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "14623219832cd2809cf93d6f0c816bd48e63aa85232735368484f9aa3cac435e"
+    },
+    {
+      "id": "staff_035_right_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_035_right_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "38b76f04a3701427f34f996b3705c8c4d37a9100ac9b91f03c9f7b3ef98288f4"
+    },
+    {
+      "id": "staff_035_right_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_035_right_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "be73859534f588cc41f1279b5dad112c29d70e2cad2878bca3c3d8d02201ab77"
+    },
+    {
+      "id": "staff_035_up_A",
+      "group": "staff",
+      "file": "staff/sprites/staff_035_up_A.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "662ddcc430759462438fc17a7a578d3414d25f98214924b9ee5443c09b6d922e"
+    },
+    {
+      "id": "staff_035_up_B",
+      "group": "staff",
+      "file": "staff/sprites/staff_035_up_B.png",
+      "width_px": 160,
+      "height_px": 160,
+      "anchor_px": [
+        80,
+        154
+      ],
+      "sha256": "d923fe606656a5ca91f429edbec7fce5e51757fc3200178f14b188af77b3322d"
+    }
+  ]
+}

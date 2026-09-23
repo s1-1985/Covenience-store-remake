@@ -1,0 +1,3933 @@
+{
+  "frames": {
+    "staff_001_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_001_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_001_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_001_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_001_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_001_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_001_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_001_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_002_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_002_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_002_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_002_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_002_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_002_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_002_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_002_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 2,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_003_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_003_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_003_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_003_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_003_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_003_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_003_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_003_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_004_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_004_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_004_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_004_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_004_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_004_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_004_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_004_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 166,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_005_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_005_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_005_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_005_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_005_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_005_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_005_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_005_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_006_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_006_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_006_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_006_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_006_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_006_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_006_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_006_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 330,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_007_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_007_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_007_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_007_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_007_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_007_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_007_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_007_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_008_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_008_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_008_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_008_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_008_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_008_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_008_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_008_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 494,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_009_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_009_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_009_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_009_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_009_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_009_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_009_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_009_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_010_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_010_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_010_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_010_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_010_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_010_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_010_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_010_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 658,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_011_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_011_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_011_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_011_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_011_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_011_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_011_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_011_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_012_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_012_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_012_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_012_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_012_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_012_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_012_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_012_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 822,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_013_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_013_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_013_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_013_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_013_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_013_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_013_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_013_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_014_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_014_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_014_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_014_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_014_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_014_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_014_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_014_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 986,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_015_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_015_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_015_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_015_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_015_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_015_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_015_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_015_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_016_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_016_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_016_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_016_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_016_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_016_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_016_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_016_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 1150,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_017_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_017_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_017_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_017_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_017_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_017_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_017_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_017_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_018_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_018_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_018_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_018_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_018_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_018_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_018_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_018_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 1314,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_019_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_019_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_019_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_019_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_019_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_019_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_019_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_019_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_020_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_020_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_020_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_020_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_020_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_020_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_020_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_020_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 1478,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_021_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_021_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_021_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_021_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_021_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_021_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_021_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_021_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_022_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_022_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_022_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_022_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_022_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_022_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_022_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_022_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 1642,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_023_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_023_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_023_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_023_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_023_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_023_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_023_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_023_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_024_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_024_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_024_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_024_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_024_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_024_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_024_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_024_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 1806,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_025_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_025_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_025_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_025_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_025_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_025_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_025_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_025_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_026_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_026_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_026_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_026_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_026_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_026_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_026_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_026_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 1970,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_027_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_027_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_027_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_027_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_027_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_027_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_027_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_027_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_028_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_028_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_028_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_028_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_028_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_028_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_028_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_028_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 2134,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_029_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_029_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_029_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_029_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_029_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_029_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_029_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_029_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_030_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_030_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_030_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_030_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_030_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_030_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_030_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_030_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 2298,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_031_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_031_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_031_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_031_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_031_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_031_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_031_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_031_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_032_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_032_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_032_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_032_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_032_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_032_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_032_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_032_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 2462,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_033_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_033_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_033_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_033_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_033_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_033_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_033_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_033_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_034_down_A": {
+      "frame": {
+        "x": 1314,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_034_down_B": {
+      "frame": {
+        "x": 1478,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_034_left_A": {
+      "frame": {
+        "x": 1642,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_034_left_B": {
+      "frame": {
+        "x": 1806,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_034_right_A": {
+      "frame": {
+        "x": 1970,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_034_right_B": {
+      "frame": {
+        "x": 2134,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_034_up_A": {
+      "frame": {
+        "x": 2298,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_034_up_B": {
+      "frame": {
+        "x": 2462,
+        "y": 2626,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_035_down_A": {
+      "frame": {
+        "x": 2,
+        "y": 2790,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_035_down_B": {
+      "frame": {
+        "x": 166,
+        "y": 2790,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_035_left_A": {
+      "frame": {
+        "x": 330,
+        "y": 2790,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_035_left_B": {
+      "frame": {
+        "x": 494,
+        "y": 2790,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_035_right_A": {
+      "frame": {
+        "x": 658,
+        "y": 2790,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_035_right_B": {
+      "frame": {
+        "x": 822,
+        "y": 2790,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_035_up_A": {
+      "frame": {
+        "x": 986,
+        "y": 2790,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    },
+    "staff_035_up_B": {
+      "frame": {
+        "x": 1150,
+        "y": 2790,
+        "w": 160,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": false,
+      "anchor_px": [
+        80,
+        154
+      ]
+    }
+  },
+  "meta": {
+    "image": "atlas.png",
+    "origin": "top_left",
+    "padding": 2,
+    "frame_size": [
+      160,
+      160
+    ]
+  }
+}
