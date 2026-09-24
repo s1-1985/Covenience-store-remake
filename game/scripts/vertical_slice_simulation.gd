@@ -807,10 +807,100 @@ func step() -> void:
     _step_restock_tasks()
 
 
+# Task #66: CONFIRMED_OFFICIAL passage-width rule, re-verified 2026-09-24 at
+# 400dpi (quick reference guide, 店舗 section, book page 5): "1マス通路...
+# 客や店員が2人並んで通れる幅。すれ違えるので混雑しにくい" / "1/2マス通路...
+# 客や店員1人が通れる幅。すれ違うことができず、混雑しやすい。" This client's
+# grid already splits every tile into `subcells_per_tile=2` subcells
+# (store_layout.gd/reference_sim's store_grid.py) for exactly this reason,
+# though until now that comment called the 0.5-tile granularity itself
+# unconfirmed; it is confirmed now, and the rule it exists to support was
+# simply never wired -- no two actors ever blocked each other's movement.
+#
+# Rather than compute an explicit corridor-width value (which would need a
+# direction-aware geometric analysis the guide does not spell out further),
+# this reproduces the same outcome as an emergent property of exclusive
+# subcell occupancy: no two actors (customer or staff) may occupy the same
+# subcell at once. A 2-subcell-wide (1 masu) passage always has a free
+# parallel subcell for a second actor, so movement there is never blocked
+# (matches "passable, does not congest"); a 1-subcell-wide (1/2 masu)
+# corridor has nowhere for an oncoming actor to step aside, so movement
+# blocks until the cell clears (matches "cannot pass, congests easily").
+#
+# A blocked actor waits in place rather than re-routing this tick. First-
+# title evidence separately confirms multiple routes CAN let customers
+# detour around congestion (PROJECT_MEMORY.md section 4), but does not say
+# whether an individual blocked actor reroutes or simply waits its turn, so
+# this project is not inventing that decision; "wait, retry next tick" is
+# the minimal REMAKE_BALANCED_DEFAULT choice for this pass. A pathological
+# store layout with only ever a single 1-wide route between two points
+# could in principle deadlock two actors approaching each other -- this is
+# a known, accepted limitation of this MVP, not silently worked around.
+func _subcell_is_free_for(mover, target: Vector2i) -> bool:
+    # Every fixture's interaction cell is a deliberate exception, not a
+    # physical aisle subject to the passage-width rule. The checkout
+    # interaction cell is the clearest case (task #36): every queued
+    # customer's logical position converges on this single point
+    # (store_view.gd offsets them only cosmetically for rendering), so
+    # exclusive occupancy there would silently break the FIFO queue itself
+    # (a second customer could never finish "arriving" to be enqueued).
+    # Discovered by CI (task #66) that the same reasoning applies to shelf
+    # interaction cells too: this smoke suite's shared-plan concurrency
+    # scenario has two customers wanting the same product, so the second
+    # customer would otherwise be blocked at the shelf's single interaction
+    # point for the entire duration of the first customer's shopping_ticks
+    # -- a "browsing the same shelf" contention this project has no evidence
+    # for and is not modeling, as opposed to genuine aisle-corridor passing.
+    for fixture in layout.fixtures_by_id.values():
+        if target == _vec2i_from_array(fixture["interaction_subcell"]):
+            return true
+    for customer in customers.active_customers():
+        if customer != mover and customer.position == target:
+            return false
+    for staff_member in staff.all_staff():
+        # The checkout staff member is permanently stationed behind the
+        # register (never assigned a route; state stays idle/checkout for
+        # the whole simulation) rather than walking the floor like a
+        # restocking staff member or a customer. Discovered by CI (task
+        # #66): the default scenario's checkout staff start_subcell sits
+        # immediately next to the checkout interaction cell, and without
+        # this exemption a customer's ordinary route to/from a shelf could
+        # be permanently blocked by staff who can structurally never step
+        # aside -- unlike a genuinely passing pedestrian, which is what the
+        # guide's passage-width rule is about. Same reasoning as the
+        # checkout-interaction-cell exemption above, extended to the fixed
+        # post next to it.
+        if staff_member.staff_id == staff.checkout_staff_id:
+            continue
+        # Discovered by CI (task #66): an idle non-checkout staff member's
+        # start_subcell is just a static home-base marker, not a modeled
+        # physical stance -- this client has no "step aside while idle"
+        # behavior, so treating an idle staff member as a permanent
+        # obstacle is over-inventing beyond the guide's rule (which is
+        # about two actors actively contending for the same aisle, not
+        # furniture). A demonstrable case: relocating a shelf during this
+        # smoke suite's own fixture-editing test shifted a customer route
+        # to pass through idle staff-2's fixed position, permanently
+        # blocking every subsequent visit. A staff member actively working
+        # (to_restock/restocking) IS out on the floor and remains a real
+        # obstacle, consistent with the guide's "客や店員が" wording.
+        if staff_member.state == "idle":
+            continue
+        if staff_member != mover and staff_member.position == target:
+            return false
+    return true
+
+
+func _try_move_along_route(mover, next_phase: String) -> bool:
+    if not mover.route.is_empty() and not _subcell_is_free_for(mover, mover.route[0]):
+        return false
+    return mover.move_along_route(next_phase)
+
+
 func _advance_customer(customer) -> void:
     match customer.phase:
         "to_shelf":
-            if customer.move_along_route("shopping"):
+            if _try_move_along_route(customer, "shopping"):
                 customer.shopping_ticks_remaining = _shopping_ticks
                 _record_event("customer_reached_product", {
                     "customer_id": customer.customer_id,
@@ -851,7 +941,7 @@ func _advance_customer(customer) -> void:
                     customer.phase = "to_checkout"
                     customer.route = layout.find_path(customer.position, _checkout_interaction)
         "to_checkout":
-            if customer.move_along_route("waiting_checkout"):
+            if _try_move_along_route(customer, "waiting_checkout"):
                 _checkout_queue.append(customer.customer_id)
                 _record_event("customer_queued_for_checkout", {
                     "customer_id": customer.customer_id,
@@ -946,7 +1036,7 @@ func _advance_customer(customer) -> void:
                         "skills": checkout_growth,
                     })
         "leaving":
-            if customer.move_along_route("done"):
+            if _try_move_along_route(customer, "done"):
                 _record_event("customer_exited", {"customer_id": customer.customer_id})
                 _observe_chain_visitor_milestone()
         _:
@@ -1646,7 +1736,7 @@ func _step_restock_tasks() -> void:
             continue
         match staff_member.state:
             "to_restock":
-                if staff_member.move_along_route("restocking"):
+                if _try_move_along_route(staff_member, "restocking"):
                     staff_member.restock_ticks_remaining = _restock_timing.required_ticks(
                         staff_member.replenishment_skill, _restock_ticks
                     )

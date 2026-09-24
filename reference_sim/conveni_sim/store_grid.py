@@ -51,10 +51,19 @@ class FixturePlacement:
 class StoreGrid:
     """Engine-independent store grid with configurable sub-tile resolution.
 
-    First-title research says 0.5-tile contact/gaps can materially affect
-    interaction and congestion, but does not prove the original engine's
-    internal cell size. The reference model therefore uses two subcells per
-    tile by default while keeping the scale configurable.
+    CONFIRMED_OFFICIAL as of 2026-09-24 (task #66): the strategy guide's
+    quick reference book (店舗 section, book page 5) states directly that a
+    "1マス通路" (1-tile passage) is wide enough for two people/staff abreast
+    and passable ("すれ違えるので混雑しにくい"), while a "1/2マス通路"
+    (half-tile passage) fits only one and cannot be passed
+    ("すれ違うことができず、混雑しやすい") -- i.e. the original engine's
+    internal cell size for this purpose genuinely is half a tile. This
+    upgrades what was previously an unconfirmed 0.5-tile granularity guess;
+    the reference model still defaults to two subcells per tile while
+    keeping the scale configurable, but that default is no longer a guess.
+    Passing/congestion behavior itself is not modeled by this class (see
+    `game/scripts/vertical_slice_simulation.gd`'s `_subcell_is_free_for` for
+    where this client enforces it via exclusive subcell occupancy).
     """
 
     def __init__(

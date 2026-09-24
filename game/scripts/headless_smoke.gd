@@ -743,6 +743,18 @@ func _initialize() -> void:
     var concurrent_steps := 0
     var saw_simultaneous_wait := false
     var simultaneous_checkout_violation := false
+    # Task #66: concurrent-a/concurrent-b share an identical plan, so their
+    # find_path() routes are identical too -- both admitted in the same tick,
+    # they start stacked on the entry subcell. The confirmed passage-width
+    # rule (a 1/2-masu-wide corridor is exclusive) must then make the second
+    # one wait a tick behind the first rather than overlapping it for the
+    # rest of the walk. This checks that invariant across every tick of the
+    # whole scenario, excluding the checkout interaction cell itself, where
+    # queued customers are deliberately designed to converge (see
+    # _subcell_is_free_for's own exemption).
+    var position_collision_detected := false
+    var customer_b_stalled_while_moving := false
+    var previous_customer_b_position: Vector2i = concurrent_simulation.customers.customer("concurrent-b").position
     while (
         concurrent_simulation.customers.completed_count() < completed_before_concurrency + 2
         and concurrent_steps < MAX_STEPS
@@ -751,15 +763,29 @@ func _initialize() -> void:
         concurrent_steps += 1
         var checkout_count := 0
         var waiting_count := 0
+        var seen_positions: Dictionary = {}
         for customer in concurrent_simulation.customers.active_customers():
             if customer.phase == "checkout":
                 checkout_count += 1
-            elif customer.phase == "waiting_checkout":
+                continue  # deliberately converges on the checkout cell
+            if customer.phase == "waiting_checkout":
                 waiting_count += 1
+                continue  # same shared cell, same exemption
+            if customer.phase == "shopping":
+                continue  # stationed at a shelf's interaction cell, same exemption
+            if seen_positions.has(customer.position):
+                position_collision_detected = true
+            seen_positions[customer.position] = true
         if checkout_count > 1:
             simultaneous_checkout_violation = true
         if checkout_count == 1 and waiting_count >= 1:
             saw_simultaneous_wait = true
+        if concurrent_simulation.customers.customers.has("concurrent-b"):
+            var customer_b = concurrent_simulation.customers.customer("concurrent-b")
+            var moving_phase: bool = customer_b.phase in ["to_shelf", "to_checkout", "leaving"]
+            if moving_phase and customer_b.position == previous_customer_b_position:
+                customer_b_stalled_while_moving = true
+            previous_customer_b_position = customer_b.position
     steps += concurrent_steps
 
     if simultaneous_checkout_violation:
@@ -767,6 +793,12 @@ func _initialize() -> void:
         return
     if not saw_simultaneous_wait:
         _fail("second customer never had to wait in the checkout queue behind the first")
+        return
+    if position_collision_detected:
+        _fail("two in-transit customers must never occupy the same non-checkout subcell at once (task #66)")
+        return
+    if not customer_b_stalled_while_moving:
+        _fail("the trailing customer must be forced to wait at least once by the passage-width rule (task #66); this scenario is not exercising it")
         return
     if concurrent_simulation.customers.completed_count() != completed_before_concurrency + 2:
         _fail("both concurrently-admitted customers must eventually complete their visit")

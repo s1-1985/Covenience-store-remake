@@ -1378,6 +1378,31 @@ re-verified at 400dpi and implemented:
    notes which parts this session independently re-verified at higher resolution vs. which remain
    first-pass only), for a future session to triage -- not all implemented in this pass.
 
+**Task #66 (2026-09-24)**: the user chose "passage-width/passing constraint" from the section
+21.3-style candidate list this session's research surfaced. A 400dpi re-verification of the quick
+reference guide's 店舗 section (book page 5) directly confirms "1マス通路...客や店員が2人並んで
+通れる幅。すれ違えるので混雑しにくい" / "1/2マス通路...客や店員1人が通れる幅。すれ違うこと
+ができず、混雑しやすい" -- upgrading `store_grid.py`'s existing `subcells_per_tile=2` default
+(previously flagged as an unconfirmed 0.5-tile granularity guess) to CONFIRMED_OFFICIAL, and
+revealing that the passing/congestion RULE itself had never been wired anywhere: customer/staff
+movement had zero collision checking, so multiple actors could freely overlap the same subcell.
+New `VerticalSliceSimulation._subcell_is_free_for()`/`_try_move_along_route()` enforce exclusive
+subcell occupancy (no two actors share a subcell) across all 4 existing movement call sites
+(customer to_shelf/to_checkout/leaving, staff to_restock) -- this reproduces both guide rules as an
+emergent property (a 2-subcell corridor always has a free parallel cell, a 1-subcell corridor does
+not) without needing an explicit direction-aware corridor-width calculation the guide doesn't
+specify. A blocked actor waits in place and retries next tick (REMAKE_BALANCED_DEFAULT choice; the
+guide separately confirms multi-route detours are possible but not whether a blocked individual
+actor reroutes or waits). The checkout interaction cell is explicitly exempted, since task #36's
+queued-customer design already deliberately converges multiple customers' logical position there
+(cosmetic-only offset in the renderer) -- without this exemption the FIFO queue itself would break
+(a second customer could never finish "arriving" to be enqueued). `reference_sim`-only doc update
+(no logic change there; no real-time collision runtime exists there to wire this into).
+`game/scripts/headless_smoke.gd`'s existing task #36 concurrent-customer scenario (two customers
+with an identical plan, admitted in the same tick so they start stacked on the entry subcell) was
+extended to verify the new invariant holds every tick and that the trailing customer is actually
+forced to wait at least once (proving the scenario isn't vacuously passing). See decision 0136.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
