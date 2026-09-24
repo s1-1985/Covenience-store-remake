@@ -1613,7 +1613,33 @@ reproduced via `_evaluate_terminal_state()`, task #65's own technique). See deci
 out of scope: a full visual redesign of the sidebar-debug-tool-style UI itself (this task closed only
 the highest-value functional gap -- the total absence of end-state feedback -- not a look-and-feel
 pass), and a one-time celebratory notification for `clear_condition_met` (chose the simpler always-on
-label over adding "already shown" bookkeeping to the UI layer).
+label over adding "already shown" bookkeeping to the UI layer). CI caught a real bug in the first push:
+`clear_condition_met` had only ever been added to `save_state()`'s dict, never `snapshot()`'s, so
+`_refresh_ui()` (which reads `snapshot()`) crashed every frame the moment this task's own new code ran.
+Fixed by adding the missing field to `snapshot()` alongside `is_game_over`/`game_over_reason` (which it
+already had), plus a contract test asserting both dicts carry it so this exact class of
+`snapshot()`/`save_state()` field drift can't recur silently.
+
+**Task #76 (2026-09-24)**: after task #75/PR #252 merged, the user picked "見た目のビジュアルポリッシュ"
+(visual polish) from a menu of UI/gameplay-feel directions. Introduced `game/themes/ui_theme.tres` --
+this project's first hand-authored Godot Theme/StyleBoxFlat resource -- giving `PanelContainer`s a
+rounded-corner card look and `Button`/`OptionButton`s real normal/hover/pressed/disabled states (a
+teal accent), replacing the fully-default engine theme the sidebar had used since task #38. `theme` is
+a `Control`-only property (neither `Node2D` nor `CanvasLayer` has it), so it is applied directly to the
+`UI/Panel` and `GameOverLayer/Panel` `PanelContainer` nodes (and `main_menu.tscn`'s own `Panel`) rather
+than to an ancestor -- Theme cascades to descendant Controls from there with zero node-reparenting, so
+no `main.gd` `@onready` path needed to change. Section headers (`Heading`/`EconomyTitle`/
+`StaffHiringTitle`) and `CashValue` got accent-color tints for visual hierarchy; `GameOverTitle` got a
+distinct warning-red, separate from the existing amber PROVISIONAL notice and green scenario-cleared
+label. Pure UI chrome, not simulated game data -- no REMAKE_BALANCED_DEFAULT tag needed, same as this
+scene's pre-existing label colors. Since this sandbox has no Godot editor to validate a hand-authored
+`.tres` resource before pushing, `headless_smoke.gd`'s real `main.tscn`-instantiated scenario now also
+confirms the theme actually parsed (non-null, `default_font_size == 15`, `has_stylebox()` for both
+`PanelContainer` and `Button`) rather than silently falling back to the engine default. `reference_sim`
+full suite grew from 740 to 741 passed/1 xfailed (one new contract test). See decision 0146. Explicitly
+out of scope: restructuring the sidebar's node tree into separate per-section card panels (too much
+`@onready`-path risk for this pass), `SpinBox`/`HSeparator` restyling, a custom font (none exists in
+this project's assets), and `store_view.gd`'s own `_draw()`-based canvas rendering.
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 

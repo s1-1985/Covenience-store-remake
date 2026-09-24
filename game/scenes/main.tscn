@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="Script" path="res://scripts/store_view.gd" id="2_store"]
 [ext_resource type="Script" path="res://scripts/town_view.gd" id="3_town"]
+[ext_resource type="Theme" path="res://themes/ui_theme.tres" id="4_theme"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_main")
@@ -33,6 +34,7 @@ script = ExtResource("3_town")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="PanelContainer" parent="UI"]
+theme = ExtResource("4_theme")
 offset_left = 690.0
 offset_top = 20.0
 offset_right = 1240.0
@@ -53,6 +55,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 4
 
 [node name="Heading" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
+theme_override_colors/font_color = Color(0.55, 0.85, 0.87, 1)
 theme_override_font_sizes/font_size = 22
 text = "STORE STATUS"
 
@@ -77,6 +80,7 @@ text = "Month 1 · Day 1 of 4 (Day 0 overall)"
 text = "Cash"
 
 [node name="CashValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
+theme_override_colors/font_color = Color(0.85, 0.75, 0.35, 1)
 theme_override_font_sizes/font_size = 22
 text = "¥1,000"
 
@@ -163,6 +167,7 @@ text = "Load sample layout (replaces current, not undoable)"
 [node name="Separator4" type="HSeparator" parent="UI/Panel/Margin/Scroll/VBox"]
 
 [node name="EconomyTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
+theme_override_colors/font_color = Color(0.55, 0.85, 0.87, 1)
 theme_override_font_sizes/font_size = 18
 text = "Economy actions"
 
@@ -261,6 +266,8 @@ text = "Eject selected customer (before they get angry)"
 [node name="Separator5" type="HSeparator" parent="UI/Panel/Margin/Scroll/VBox"]
 
 [node name="StaffHiringTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
+theme_override_colors/font_color = Color(0.55, 0.85, 0.87, 1)
+theme_override_font_sizes/font_size = 18
 text = "Staff hiring"
 
 [node name="StaffSlotOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
@@ -301,6 +308,7 @@ offset_bottom = 720.0
 color = Color(0, 0, 0, 0.72)
 
 [node name="Panel" type="PanelContainer" parent="GameOverLayer"]
+theme = ExtResource("4_theme")
 offset_left = 390.0
 offset_top = 260.0
 offset_right = 890.0
@@ -316,6 +324,7 @@ theme_override_constants/margin_bottom = 22
 theme_override_constants/separation = 12
 
 [node name="GameOverTitle" type="Label" parent="GameOverLayer/Panel/Margin/VBox"]
+theme_override_colors/font_color = Color(0.9, 0.35, 0.32, 1)
 theme_override_font_sizes/font_size = 26
 text = "GAME OVER"
 horizontal_alignment = 1
