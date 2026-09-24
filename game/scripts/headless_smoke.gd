@@ -2017,7 +2017,7 @@ func _initialize() -> void:
                     ]
                 )
                 return
-    var first_customer_sprite_id := economy_ui_scene.store_view._customer_sprite_id_for_id("customer-1")
+    var first_customer_sprite_id: String = economy_ui_scene.store_view._customer_sprite_id_for_id("customer-1")
     if not first_customer_sprite_id.begins_with("customer_"):
         _fail("customer sprite id must use the 'customer_NN' naming convention")
         return
