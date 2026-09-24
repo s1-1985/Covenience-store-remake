@@ -30,6 +30,8 @@ const MENU_ICON_DIR := "res://assets/menu_icons/"
 var _menu_icon_textures: Dictionary = {}
 
 @onready var store_view: Node2D = $StoreView
+@onready var town_view: Node2D = $TownView
+@onready var show_town_map_button: Button = $UI/Panel/Margin/Scroll/VBox/ShowTownMapButton
 @onready var clock_label: Label = $UI/Panel/Margin/Scroll/VBox/ClockValue
 @onready var cash_label: Label = $UI/Panel/Margin/Scroll/VBox/CashValue
 @onready var stock_label: Label = $UI/Panel/Margin/Scroll/VBox/StockValue
@@ -108,6 +110,7 @@ func _ready() -> void:
         GameLaunchState.continue_from_save = false
         _save_service.load_from_path(simulation)
     store_view.bind(config, simulation)
+    town_view.bind(simulation)
     _populate_sample_layout_option()
     _populate_fixture_catalog_option()
     _populate_permit_option()
@@ -136,6 +139,7 @@ func _ready() -> void:
     save_button.pressed.connect(_on_save_pressed)
     load_button.pressed.connect(_on_load_pressed)
     quit_to_menu_button.pressed.connect(_on_quit_to_menu_pressed)
+    show_town_map_button.pressed.connect(_on_show_town_map_pressed)
     store_view.fixture_selected.connect(_on_fixture_selected)
     store_view.fixture_relocation_requested.connect(_on_fixture_relocation_requested)
     _refresh_ui()
@@ -158,6 +162,14 @@ func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("ui_accept"):
         _on_pause_pressed()
         get_viewport().set_input_as_handled()
+
+
+func _on_show_town_map_pressed() -> void:
+    town_view.visible = not town_view.visible
+    store_view.visible = not town_view.visible
+    show_town_map_button.text = "Show store" if town_view.visible else "Show town map"
+    if town_view.visible:
+        town_view.queue_redraw()
 
 
 func _on_pause_pressed() -> void:

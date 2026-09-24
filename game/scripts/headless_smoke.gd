@@ -22,6 +22,15 @@ const MAX_STEPS := 256
 const REPRESENTATIVE_DAYS_PER_MONTH_FOR_TEST := 4
 const MONTH_MULTIPLIER_FOR_TEST := 8
 
+# Task #72: a minimal duck-typed stand-in for VerticalSliceSimulation,
+# exposing only the two fields town_view.gd's _town_points() actually reads
+# (_player_store_position/_rival_stores), so the town-map bounding-box math
+# can be exercised against a synthetic multi-rival roster without needing a
+# second real simulation/scene instance.
+class _FakeTownSimulation:
+    var _player_store_position: Vector2i
+    var _rival_stores: Array[Dictionary] = []
+
 
 func _initialize() -> void:
     var main_scene := load(MAIN_SCENE_PATH) as PackedScene
@@ -2257,6 +2266,51 @@ func _initialize() -> void:
     economy_ui_scene._on_staff_slot_selected(hire_ui_other_slot_index)
     if economy_ui_scene._hire_candidate_ids.find("hamada_yuko") >= 0:
         _fail("economy UI: a just-hired candidate must not remain selectable for the other slot")
+        return
+
+    # Task #72: town-map wiring. TownView draws only the two things this
+    # client already tracks (_player_store_position/_rival_stores, added
+    # in task #59 solely for permit-exclusion-distance math), not the 52
+    # town-facility sprites (none of which depict a store, and this client
+    # has no placement data for any of them -- see town_view.gd's own note).
+    # First, exercise the toggle wiring end-to-end against the real scene
+    # (default scenario: player at the origin, zero rival stores).
+    if economy_ui_scene.town_view.visible:
+        _fail("town view must start hidden behind the store view")
+        return
+    economy_ui_scene._on_show_town_map_pressed()
+    if not economy_ui_scene.town_view.visible or economy_ui_scene.store_view.visible:
+        _fail("pressing 'Show town map' must show the town view and hide the store view")
+        return
+    if economy_ui_scene.show_town_map_button.text != "Show store":
+        _fail("the toggle button must relabel itself while showing the town view")
+        return
+    economy_ui_scene._on_show_town_map_pressed()
+    if economy_ui_scene.town_view.visible or not economy_ui_scene.store_view.visible:
+        _fail("pressing the toggle again must restore the store view")
+        return
+    var default_town_points: Array = economy_ui_scene.town_view._town_points(economy_ui_scene.simulation)
+    if default_town_points.size() != 1 or default_town_points[0]["position"] != Vector2i.ZERO:
+        _fail("the default scenario must show exactly one town marker at the origin")
+        return
+
+    # Then exercise the bounding-box math directly against a synthetic
+    # multi-rival roster (a pure function, independent of any real
+    # simulation/scenario data).
+    var fake_town_simulation := _FakeTownSimulation.new()
+    fake_town_simulation._player_store_position = Vector2i(0, 0)
+    var fake_rival_stores: Array[Dictionary] = [
+        {"id": "rival-a", "position": Vector2i(4, -3), "permits_held": []},
+        {"id": "rival-b", "position": Vector2i(-2, 6), "permits_held": []},
+    ]
+    fake_town_simulation._rival_stores = fake_rival_stores
+    var fake_town_points: Array = economy_ui_scene.town_view._town_points(fake_town_simulation)
+    if fake_town_points.size() != 3:
+        _fail("expected one marker for the player plus one per configured rival")
+        return
+    var fake_town_box: Dictionary = economy_ui_scene.town_view._bounding_box(fake_town_points)
+    if fake_town_box["origin"] != Vector2i(-3, -4) or fake_town_box["size"] != Vector2i(9, 12):
+        _fail("town view bounding box did not cover every marker with the expected margin")
         return
 
     economy_ui_scene.free()

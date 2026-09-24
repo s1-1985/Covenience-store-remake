@@ -2592,6 +2592,54 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("product_catalog_option.get_item_icon(product_catalog_index)", smoke)
         self.assertIn("hire_candidate_option.get_item_icon(hire_candidate_index)", smoke)
 
+    def test_town_map_shows_only_tracked_positions_not_invented_facility_layout(self):
+        town_view = (GAME_ROOT / "scripts" / "town_view.gd").read_text(encoding="utf-8")
+        main_script = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # assets/raw/conveni_map_assets_v2/'s 52 facility sprites are
+        # explicitly NOT used here -- investigating them surfaced that none
+        # depict a store, and this client has no placement data for any of
+        # the 52 facility types (inventing one would mean guessing an
+        # unconfirmed town spatial simulation, PROJECT_MEMORY.md section
+        # 17's explicit research gap). Confirm that boundary actually holds
+        # in the shipped code, not just in the decision doc.
+        self.assertNotIn(".png", town_view)
+        self.assertNotIn("ResourceLoader", town_view)
+        self.assertIn(
+            "Inventing\n# a full facility layout would mean guessing an unconfirmed town spatial",
+            town_view,
+        )
+
+        # TownView draws only the two fields task #59 already tracks.
+        self.assertIn("func _town_points(source_simulation) -> Array:", town_view)
+        self.assertIn("_player_store_position", town_view)
+        self.assertIn("_rival_stores", town_view)
+        self.assertIn("func _bounding_box(points: Array) -> Dictionary:", town_view)
+
+        # Wired as a toggle over the existing store view, not a new scene/
+        # navigation flow.
+        self.assertIn('[node name="TownView" type="Node2D" parent="."]', scene)
+        self.assertIn('[node name="ShowTownMapButton" type="Button" parent=', scene)
+        self.assertIn("func _on_show_town_map_pressed() -> void:", main_script)
+        self.assertIn("town_view.bind(simulation)", main_script)
+        # StoreView must stop reacting to taps while hidden behind the town
+        # view, or a tap on the town map would silently relocate a fixture
+        # underneath it.
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        self.assertIn("if not visible:\n        return", store_view)
+
+        # Covered end-to-end by headless_smoke.gd: the toggle actually
+        # flips visibility both ways, the default scenario (player at the
+        # origin, zero rival stores) yields exactly one marker, and the
+        # bounding-box math is exercised directly against a synthetic
+        # multi-rival roster via a duck-typed fake (no second real
+        # simulation/scene instance needed).
+        self.assertIn("_FakeTownSimulation", smoke)
+        self.assertIn("town_view._town_points(economy_ui_scene.simulation)", smoke)
+        self.assertIn('fake_town_box["origin"] != Vector2i(-3, -4)', smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])
