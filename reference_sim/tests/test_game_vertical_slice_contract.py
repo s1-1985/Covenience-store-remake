@@ -2776,6 +2776,42 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         )
         self.assertIn("economy_ui_scene._on_reset_pressed()", smoke)
 
+    def test_calendar_label_matches_confirmed_official_year_month_day_format(self):
+        # Task #77: the user directly asked whether recent UI work was
+        # still tracking a faithful recreation or drifting into an
+        # independent design. Checking found a concrete, correctable gap:
+        # task #75's calendar format ("Month X · Day Y of Z (Day N
+        # overall)") was invented without consulting docs/research/
+        # official-screenshot-evidence-2026-09-05.md section 1, which
+        # already had CONFIRMED_OFFICIAL/CONFIRMED_VISUAL evidence -- the
+        # official PS-version screenshot ss01 shows the date as
+        # "01年目01月01日" (year/month/day), with no "day N of 4" or
+        # running total-day counter on screen at all.
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        research_note = (
+            GAME_ROOT.parent / "docs" / "research" / "official-screenshot-evidence-2026-09-05.md"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("01年目01月01日", research_note)
+
+        self.assertIn('"Year %d · Month %d, Day %d" % [', main)
+        self.assertNotIn("of 4 (Day %d overall)", main)
+        self.assertIn(
+            "int(snapshot[\"month_count\"]) / VerticalSliceSimulationScript.MONTHS_PER_YEAR + 1",
+            main,
+        )
+        self.assertIn(
+            "int(snapshot[\"month_count\"]) % VerticalSliceSimulationScript.MONTHS_PER_YEAR + 1",
+            main,
+        )
+
+        self.assertIn('"Year %d · Month %d, Day %d" % [', smoke)
+        self.assertIn(
+            "economy_ui_scene.simulation.month_count / economy_ui_scene.simulation.MONTHS_PER_YEAR + 1",
+            smoke,
+        )
+
     def test_ui_theme_is_wired_into_both_scenes_and_verified_in_headless_smoke(self):
         # Task #76: the user chose visual polish as the next UI direction
         # after task #75's functional UI gaps were closed. game/themes/

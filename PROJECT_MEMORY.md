@@ -1641,6 +1641,30 @@ out of scope: restructuring the sidebar's node tree into separate per-section ca
 `@onready`-path risk for this pass), `SpinBox`/`HSeparator` restyling, a custom font (none exists in
 this project's assets), and `store_view.gd`'s own `_draw()`-based canvas rendering.
 
+**Task #77 (2026-09-24)**: after task #76/PR #253 merged, the user directly challenged whether recent
+work was still tracking a faithful recreation or drifting into an independent design ("あのさ、今更だけど、
+ちゃんと初代ザ・コンビニを再現する方向で動いてる？独自路線を突っ走ってない？"). Checking found a concrete,
+correctable gap: task #75's calendar format ("Month X · Day Y of Z (Day N overall)") was invented without
+consulting `docs/research/official-screenshot-evidence-2026-09-05.md` section 1, which already had
+CONFIRMED_OFFICIAL/CONFIRMED_VISUAL evidence for this -- the official PS-version screenshot `ss01` shows
+the date as `01年目01月01日` (year/month/day), with no "day N of 4" or running total-day counter on
+screen at all. Fixed `main.gd`'s `_refresh_ui()` to `"Year %d · Month %d, Day %d"`, reusing the same
+`(month_count / MONTHS_PER_YEAR) + 1` year computation `_evaluate_terminal_state()` already had (not a
+new formula); the month-internal day (1-4) itself was already correct, since `REPRESENTATIVE_DAYS_PER_
+MONTH`=4 is independently CONFIRMED_OFFICIAL ("1月=4日間×8") -- only the missing Year field and the
+invented "of 4 (Day N overall)" suffix were real gaps. Kept the label text in English rather than the
+screenshot's literal Japanese, for consistency with the rest of this client's UI text (a project-goal
+choice, not an evidence gap: the confirmed *fact* is the year/month/day structure, not the display
+language). `docs/research/official-screenshot-evidence-2026-09-05.md` also documents the original's
+interior-editing top command structure as five distinct commands (配置/移動/入れ替え/売却/終了, screenshot
+`ss02`) -- this client's own "Prototype layout editor" (tap-to-select, tap-to-place/relocate, one Rotate
+button) has never been reconciled with that confirmed structure and no `docs/decisions/` file addresses
+it; flagged to the user as a separate, larger-scope follow-up (needs new mechanics this client doesn't
+have yet, e.g. an explicit fixture-sell action) rather than folded into this narrower text-format fix.
+`reference_sim` full suite grew from 741 to 742 passed/1 xfailed (one new contract test, which also
+asserts the research file's own `01年目01月01日` citation is present so this evidence can't silently
+disappear). See decision 0147.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

@@ -74,7 +74,7 @@ theme_override_font_sizes/font_size = 28
 text = "09:00"
 
 [node name="CalendarValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
-text = "Month 1 · Day 1 of 4 (Day 0 overall)"
+text = "Year 1 · Month 1, Day 1"
 
 [node name="CashTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Cash"

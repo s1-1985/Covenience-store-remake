@@ -676,11 +676,26 @@ func _refresh_ui() -> void:
         return
     var snapshot: Dictionary = simulation.snapshot()
     clock_label.text = str(snapshot["clock_text"])
-    calendar_label.text = "Month %d · Day %d of %d (Day %d overall)" % [
-        int(snapshot["month_count"]) + 1,
+    # Task #77: task #75's original "Month X · Day Y of Z (Day N overall)"
+    # was invented without checking docs/research/official-screenshot-
+    # evidence-2026-09-05.md section 1, which already had CONFIRMED_
+    # OFFICIAL/CONFIRMED_VISUAL evidence for this: the official PS-version
+    # screenshot ss01 shows the date as "01年目01月01日" (year/month/day),
+    # not a bare month+day counter, and omits any "day N of 4" or running
+    # total. This client's own REPRESENTATIVE_DAYS_PER_MONTH=4 (also
+    # CONFIRMED_OFFICIAL, "1月=4日間×8") means the day this client actually
+    # simulates within a month IS 1-4, so showing days_completed_this_month
+    # + 1 as "Day" is the correct representative-day value, not an invented
+    # abstraction -- only the missing Year field and the extra "of 4 (Day N
+    # overall)" suffix (neither shown on the official screen) were the
+    # actual gaps. Kept in English rather than the screenshot's literal
+    # Japanese to stay consistent with the rest of this client's UI text.
+    var calendar_year: int = int(snapshot["month_count"]) / VerticalSliceSimulationScript.MONTHS_PER_YEAR + 1
+    var calendar_month_in_year: int = int(snapshot["month_count"]) % VerticalSliceSimulationScript.MONTHS_PER_YEAR + 1
+    calendar_label.text = "Year %d · Month %d, Day %d" % [
+        calendar_year,
+        calendar_month_in_year,
         int(snapshot["days_completed_this_month"]) + 1,
-        VerticalSliceSimulationScript.REPRESENTATIVE_DAYS_PER_MONTH,
-        int(snapshot["day_count"]),
     ]
     cash_label.text = "¥%s" % _format_integer(int(snapshot["cash_yen"]))
     stock_label.text = "%d units" % int(snapshot["stock_units"])

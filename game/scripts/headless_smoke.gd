@@ -2406,11 +2406,16 @@ func _initialize() -> void:
     # directly rather than through _process(), so _refresh_ui() must be
     # called explicitly here to be sure the label is not stale.
     economy_ui_scene._refresh_ui()
-    var expected_calendar_text := "Month %d · Day %d of %d (Day %d overall)" % [
-        economy_ui_scene.simulation.month_count + 1,
+    # Task #77: the confirmed official PS-version screenshot (ss01, docs/
+    # research/official-screenshot-evidence-2026-09-05.md section 1) shows
+    # the date as year/month/day ("01年目01月01日"), not the month+day-of-4
+    # format task #75 originally invented without checking that evidence.
+    var expected_calendar_year: int = economy_ui_scene.simulation.month_count / economy_ui_scene.simulation.MONTHS_PER_YEAR + 1
+    var expected_calendar_month: int = economy_ui_scene.simulation.month_count % economy_ui_scene.simulation.MONTHS_PER_YEAR + 1
+    var expected_calendar_text := "Year %d · Month %d, Day %d" % [
+        expected_calendar_year,
+        expected_calendar_month,
         economy_ui_scene.simulation._days_completed_this_month + 1,
-        economy_ui_scene.simulation.REPRESENTATIVE_DAYS_PER_MONTH,
-        economy_ui_scene.simulation.day_count,
     ]
     if economy_ui_scene.calendar_label.text != expected_calendar_text:
         _fail("the calendar label must reflect the simulation's actual day/month progression")
