@@ -2512,6 +2512,11 @@ func _initialize() -> void:
     # already holding product-purchase-1 from the earlier "Stock product"
     # test above) rather than purchasing new fixtures, since both are still
     # present and their occupancy state is exactly what this test needs.
+    # By this point the scene's many earlier purchases (fixtures, permit,
+    # product, promotion, chain expansion) have drawn cash back down to
+    # near the ¥1,000 starting amount, which does not cover the swap
+    # test's own bench/potted_plant purchases below; top up again.
+    economy_ui_scene.simulation.economy.cash_yen += 50_000
     if economy_ui_scene.sell_fixture_button.disabled != true:
         _fail("the sell button must start disabled with nothing selected")
         return
