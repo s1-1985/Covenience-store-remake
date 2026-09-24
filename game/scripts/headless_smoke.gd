@@ -693,6 +693,11 @@ func _initialize() -> void:
     # simulation.gd).
     var sell_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(sell_simulation)
+    # Default starting cash (¥1,000) does not cover a shelf purchase plus
+    # procuring a full shelf of stock (medium_ambient_shelf's capacity=80
+    # x bread's restock_unit_cost_yen=150 = ¥12,000 alone); top up first,
+    # same as other purchase-heavy scenarios in this file.
+    sell_simulation.economy.cash_yen += 50_000
     if sell_simulation.try_sell_fixture("checkout-1"):
         _fail("selling the checkout fixture must be rejected")
         return
@@ -746,6 +751,9 @@ func _initialize() -> void:
     # DEFAULT reading of what it does (see the function's own comment).
     var swap_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(swap_simulation)
+    # Default starting cash (¥1,000) does not cover both fixtures this
+    # scenario purchases (potted_plant ¥1,000 + bench ¥2,000).
+    swap_simulation.economy.cash_yen += 50_000
     if not swap_simulation.try_purchase_fixture(
         "potted_plant", "swap-a", Vector2i(1, 10), Vector2i(1, 9)
     ):
