@@ -863,6 +863,20 @@ func _subcell_is_free_for(mover, target: Vector2i) -> bool:
         # post next to it.
         if staff_member.staff_id == staff.checkout_staff_id:
             continue
+        # Discovered by CI (task #66): an idle non-checkout staff member's
+        # start_subcell is just a static home-base marker, not a modeled
+        # physical stance -- this client has no "step aside while idle"
+        # behavior, so treating an idle staff member as a permanent
+        # obstacle is over-inventing beyond the guide's rule (which is
+        # about two actors actively contending for the same aisle, not
+        # furniture). A demonstrable case: relocating a shelf during this
+        # smoke suite's own fixture-editing test shifted a customer route
+        # to pass through idle staff-2's fixed position, permanently
+        # blocking every subsequent visit. A staff member actively working
+        # (to_restock/restocking) IS out on the floor and remains a real
+        # obstacle, consistent with the guide's "客や店員が" wording.
+        if staff_member.state == "idle":
+            continue
         if staff_member != mover and staff_member.position == target:
             return false
     return true
