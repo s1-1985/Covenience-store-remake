@@ -1525,6 +1525,30 @@ into. `reference_sim` full suite grew from 735 to 736 passed/1 xfailed (one new 
 also verifies, at the filesystem level, that every catalog entry actually has a matching icon file
 on disk, not just that the code claims so). See decision 0141.
 
+**Task #72 (2026-09-24)**: after task #71 merged (PR #248, both CI checks green), the user chose
+"town map/building tiles" as the next direction. Investigating `assets/raw/conveni_map_assets_v2/`
+surfaced a serious gap that changed the task's scope before any code was written: its 52 sprites are
+all town FACILITIES (schools, parks, restaurants, houses, companies, stations, ...) -- none depict a
+convenience store (the player's own or a rival's) -- and this client has zero placement data for any
+of the 52 facility types (`TownState` is just two counters; `_player_store_position`/`_rival_stores`,
+task #59, are abstract distance-math reference points, not map placements, and `_rival_stores`
+defaults to empty). Actually rendering a meaningful town map with those 52 sprites would mean
+inventing a full facility layout -- guessing an unconfirmed town spatial simulation, exactly what
+PROJECT_MEMORY.md section 17 names as a research gap not to be papered over. Presented with this
+finding, the user chose the minimal honest option: show only what the data model already tracks. New
+`game/scripts/town_view.gd` draws `_player_store_position`/`_rival_stores` as plain colored markers
+on the abstract coordinate grid -- no facility sprites at all, so the default scenario shows exactly
+one marker (the player's own store at the origin). Wired as a toggle over the existing StoreView in
+`main.tscn` (a "Show town map" button flips visibility) rather than a new scene/navigation flow; this
+also surfaced and fixed a real latent bug -- `store_view.gd`'s `_unhandled_input()` had no visibility
+guard, so taps would have still tried to relocate fixtures while the town view covered it. Bounding-
+box math is a pure function tested directly against a synthetic multi-rival roster via a duck-typed
+fake object, independent of any real simulation/scenario data. `reference_sim` full suite grew from
+736 to 737 passed/1 xfailed (one new contract test, which also asserts `town_view.gd` contains no
+`.png`/`ResourceLoader` reference at all, confirming the 52-sprite package really isn't used). See
+decision 0142. Explicitly out of scope: any actual facility-placement/town-growth mechanic, and the
+52-sprite package itself (revisit only if confirmed or analogy-based placement data ever surfaces).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="Script" path="res://scripts/store_view.gd" id="2_store"]
+[ext_resource type="Script" path="res://scripts/town_view.gd" id="3_town"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_main")
@@ -23,6 +24,11 @@ text = "Convenience Store Remake — Playable Vertical Slice"
 [node name="StoreView" type="Node2D" parent="."]
 position = Vector2(40, 100)
 script = ExtResource("2_store")
+
+[node name="TownView" type="Node2D" parent="."]
+position = Vector2(40, 100)
+visible = false
+script = ExtResource("3_town")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -117,6 +123,10 @@ text = "Town / land value"
 [node name="TownValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 autowrap_mode = 2
 text = "population 0, 0 rival stores, land ¥0"
+
+[node name="ShowTownMapButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Show town map"
 
 [node name="Separator2" type="HSeparator" parent="UI/Panel/Margin/Scroll/VBox"]
 

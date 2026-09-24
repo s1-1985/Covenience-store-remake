@@ -274,6 +274,11 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+    # Task #72: while the town map (TownView) is shown in this store view's
+    # place, this node is hidden but would otherwise still process taps
+    # against its own (stale) coordinates -- guard on visibility.
+    if not visible:
+        return
     var pointer_position := Vector2.ZERO
     var pressed := false
     if event is InputEventMouseButton:
