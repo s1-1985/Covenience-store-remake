@@ -2,6 +2,7 @@ import unittest
 
 from conveni_sim.remake_land_value import (
     EXISTING_BUILDING_ACQUISITION_RATE,
+    NEW_BRANCH_LAND_AREA_COUNT,
     RemakeBalancedLandValuePolicy,
 )
 from conveni_sim.town import TownState
@@ -142,6 +143,19 @@ class LandPurchaseCostYenTests(unittest.TestCase):
             1_000_000, 100, developed_town, elapsed_years=10
         )
         self.assertLess(cost_base_year_0, cost_developed_year_10)
+
+    def test_new_branch_opening_uses_the_confirmed_4_area_constant(self):
+        # Task #65/decision 0135: the guide states an exact area count (4)
+        # for opening a new branch specifically, distinct from the
+        # total_area_tiles-derived inference used elsewhere.
+        self.assertEqual(NEW_BRANCH_LAND_AREA_COUNT, 4)
+        policy = RemakeBalancedLandValuePolicy()
+        town = TownState()
+        per_area_cost = policy.land_purchase_cost_yen(1_000_000, 1, town, elapsed_years=0)
+        new_branch_cost = policy.land_purchase_cost_yen(
+            1_000_000, NEW_BRANCH_LAND_AREA_COUNT, town, elapsed_years=0
+        )
+        self.assertEqual(new_branch_cost, per_area_cost * NEW_BRANCH_LAND_AREA_COUNT)
 
 
 if __name__ == "__main__":

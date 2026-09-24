@@ -58,6 +58,18 @@ const MONTHS_PER_YEAR := 12
 # value.
 const BASE_LAND_PRICE_YEN := 20_000_000
 
+# Task #65: CONFIRMED_OFFICIAL, re-verified 2026-09-24 directly against a
+# 400dpi rescan of the strategy guide's third companion book ("攻略&データ
+# ブック", オールテクニックガイド ライバル対策, print page 79): "新規出店時
+# の土地代 = 地価（4エリア分）+建物評価額／2". `chain_expansion_cost_yen()`
+# previously charged the bare per-area land price with no area multiplier at
+# all (an unstated implicit ×1) -- this constant supplies the guide's own
+# exact ×4 multiplier for opening a new branch. The "+建物評価額／2" existing-
+# building-removal term is not applied here: try_expand_chain() is (per
+# decision 0099) a purely abstract economic action with no specific plot or
+# existing structure to appraise.
+const NEW_BRANCH_LAND_AREA_COUNT := 4
+
 # PROVISIONAL, not CONFIRMED_OFFICIAL: PROJECT_MEMORY.md section 14 records
 # "intermediate: reach 10 company stores" as a scenario clear condition
 # from community sources, explicitly flagged there as unverified
@@ -650,7 +662,7 @@ func _apply_hire(staff_id: String, candidate_id: String) -> bool:
 func chain_expansion_cost_yen() -> int:
     return _land_value_policy.current_land_price_yen(
         BASE_LAND_PRICE_YEN, town, float(month_count) / MONTHS_PER_YEAR
-    )
+    ) * NEW_BRANCH_LAND_AREA_COUNT
 
 
 func try_expand_chain() -> bool:
@@ -872,11 +884,35 @@ func _advance_customer(customer) -> void:
                         skills_by_staff[angered_staff_member.staff_id] = (
                             _checkout_anger.apply_penalty(angered_staff_member)
                         )
+                    # Task #65: the guide's own confirmed per-event rating
+                    # modifier ("お客に怒られる=1/6の確率で-1", store_rating.gd's
+                    # ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_*/DOWNGRADE_POINTS)
+                    # was defined but never rolled anywhere, since no angry-
+                    # customer trigger existed in this client when it was
+                    # first ported (decision 0096). checkout_anger_triggered
+                    # (task #49) is that trigger now, so this reuses the
+                    # shared demand RNG for the roll -- the same "one shared
+                    # random stream, not a new one per mechanic" convention
+                    # task #55's incidental-want-product draw already
+                    # established for this client.
+                    var rating_penalty_applied := (
+                        _demand_rng.randi_range(
+                            1, StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_DENOMINATOR
+                        ) <= StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_NUMERATOR
+                    )
+                    if rating_penalty_applied:
+                        internal_rating_value = max(0, min(
+                            100,
+                            internal_rating_value + StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_POINTS
+                        ))
+                        star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
                     _record_event("checkout_anger_triggered", {
                         "customer_id": customer.customer_id,
                         "staff_id": angry_checkout_staff.staff_id,
                         "elapsed_ticks": elapsed_ticks,
                         "skills_by_staff": skills_by_staff,
+                        "rating_penalty_applied": rating_penalty_applied,
+                        "internal_rating_value": internal_rating_value,
                     })
             if customer.checkout_ticks_remaining <= 0:
                 var checkout_staff = staff.checkout_staff()

@@ -1334,6 +1334,50 @@ scenario-selection mechanic to attach a beginner-specific clear condition to (sa
 task #62/decision 0131). See decision 0133. `reference_sim` full suite grew from 726 to 730
 passed/1 xfailed (4 new test functions).
 
+**Task #65 (2026-09-24)**: after tasks #63/#64, a background agent was asked to transcribe all 115
+pages of the same 4 re-shared PDFs in full (independent of the already-existing task #50 research
+docs, as a fresh cross-check). It reported that PDF4 (`d9b60a50-downloadfile3.PDF`) pages 10-24 are
+not more of the already-known 2-book set at all, but a **previously-unseen third companion book**
+("攻略&データブック", オールテクニックガイド + データリスト). Two of its findings were directly
+re-verified at 400dpi and implemented:
+
+1. **Angry-customer store-rating penalty, wired for the first time.** Print page 75's rank table
+   footer states "お客に怒られる=1/6の確率で-1、万引き=-1、寄付イベント=+5" -- re-verification
+   found this exactly CONFIRMS constants `store_rating.py`/`store_rating.gd` already carried
+   (`ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY=(1,6)`, `_POINTS=-1`, `SHOPLIFTING_DOWNGRADE_POINTS=-1`,
+   `DONATION_UPGRADE_POINTS=5`), but decision 0096 (task #27) had left all three unwired because "no
+   trigger events exist in this client." That premise is now stale for the angry-customer case
+   specifically: task #49 (2026-09-19) wired a real `checkout_anger_triggered` event that fires on
+   every slow checkout. `vertical_slice_simulation.gd`'s existing anger-trigger block now also rolls
+   this 1/6 chance (reusing the shared `_demand_rng`, matching task #55's "one shared random stream"
+   convention) and applies the confirmed -1 to `internal_rating_value` when it hits, recording
+   `rating_penalty_applied`/`internal_rating_value` on the event. Shoplifting/donation stay unwired
+   (no such mechanics exist in `game/` at all yet) -- decision 0096's reasoning still holds for those
+   two. See decision 0134.
+2. **New-branch land cost's exact area multiplier.** Print page 79 states directly "新規出店時の
+   土地代 = 地価（4エリア分）+建物評価額／2" -- a fixed 4-area count for opening a new branch,
+   independent of store size, distinct from decision 0129's `total_area_tiles`-based analogy (which
+   remains this project's best guess for some other, not-yet-built land-purchase context). Investigating
+   this surfaced a real, concrete gap: `chain_expansion_cost_yen()` (task #30's abstract chain-
+   expansion cost) had never actually called `land_purchase_cost_yen()` at all -- it charged the bare
+   per-area land price with an implicit ×1. New `NEW_BRANCH_LAND_AREA_COUNT=4` (both
+   `remake_land_value.py` and `vertical_slice_simulation.gd`) now makes `chain_expansion_cost_yen()`
+   charge exactly ×4 the per-area rate; the formula's other "+建物評価額／2" term is not applied,
+   since `try_expand_chain()` still has no specific plot/existing-building to appraise (decision 0099's
+   abstraction is otherwise unchanged). See decision 0135. Both fixes are corrections to code already
+   believed complete, not new-territory guesses -- this is exactly the kind of gap CLAUDE.md's evidence
+   discipline exists to catch (a stale "unwired" premise, and an inference quietly overridden by a more
+   specific confirmed number). `reference_sim` full suite grew from 730 to 731 passed/1 xfailed (one
+   new test function; task #64's own additions already covered in that count). `headless_smoke.gd`
+   step count unchanged (assertions added to two existing scenarios, no new scenario). The remaining
+   findings from this background pass (item-level 季節 tags for cold/hot drinks & おでん/中華まん,
+   aisle-width exact rule, per-building hourly customer-frequency matrices, exact security-value/
+   cleaning-value formulas with store-size multipliers, the secret 極上 map's 5-rival starting
+   handicap, and more) are catalogued in the agent's full 115-page transcript, now committed at
+   `docs/research/strategy-guide-third-companion-book-full-extraction-2026-09-24.md` (its own header
+   notes which parts this session independently re-verified at higher resolution vs. which remain
+   first-pass only), for a future session to triage -- not all implemented in this pass.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
