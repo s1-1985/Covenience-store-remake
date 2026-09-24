@@ -60,6 +60,14 @@ occupied lot as 土地代 + 買収費(建物評価額の50%) -- acquiring a site
 already has a building on it costs the land price plus exactly half that
 building's appraised value."""
 
+NEW_BRANCH_LAND_AREA_COUNT = 4
+"""CONFIRMED_OFFICIAL: the guide's third companion book ("攻略&データ
+ブック", オールテクニックガイド ライバル対策, print page 79) states directly
+"新規出店時の土地代 = 地価（4エリア分）+建物評価額／2" -- opening a new branch
+costs exactly 4 areas' worth of land price, a fixed number independent of
+the new store's eventual size. Pass this as `land_purchase_cost_yen()`'s
+`area_count` when modeling a new-branch-opening cost specifically."""
+
 
 @dataclass(frozen=True)
 class RemakeBalancedLandValuePolicy:
@@ -128,6 +136,21 @@ class RemakeBalancedLandValuePolicy:
     # table describe footprints in the same "エリア" unit, e.g. "2x2
     # エリア" == a 2x2-tile footprint elsewhere) -- an inference, not a
     # statement the guide makes explicitly.
+    #
+    # Task #65 update (2026-09-24): for the specific case of opening a NEW
+    # branch (as opposed to buying land for some other, size-chosen purpose),
+    # the guide's third companion book ("攻略&データブック", オールテクニック
+    # ガイド ライバル対策, print page 79) gives an exact, different number:
+    # "新規出店時の土地代 = 地価（4エリア分）+建物評価額／2" -- a NEW branch's
+    # area_count is CONFIRMED_OFFICIAL 4, a fixed constant independent of
+    # whatever store size the player eventually builds, not derived from
+    # `total_area_tiles` at all. This supersedes the total_area_tiles
+    # inference above for that one specific call site (see
+    # NEW_BRANCH_LAND_AREA_COUNT below); the total_area_tiles inference may
+    # still be the best available anchor for some other, not-yet-built
+    # land-purchase context (e.g. relocating the player's existing store),
+    # since the guide does not say the ×4 figure generalizes beyond "新規
+    # 出店" (opening a new branch).
     def land_purchase_cost_yen(
         self,
         base_land_price_per_area_yen: int,

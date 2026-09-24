@@ -1753,6 +1753,20 @@ func _initialize() -> void:
         return
     steps += _run_visit(chain_simulation)
     var expansion_cost_yen: int = chain_simulation.chain_expansion_cost_yen()
+    # Task #65: opening a new branch must cost exactly the guide's confirmed
+    # 4-area land price (地価（4エリア分）), not the bare per-area rate
+    # try_expand_chain() previously charged with an implicit ×1.
+    var land_value_policy_check = LandValuePolicyScript.new()
+    var expected_expansion_cost_yen: int = (
+        land_value_policy_check.current_land_price_yen(
+            VerticalSliceSimulationScript.BASE_LAND_PRICE_YEN,
+            chain_simulation.town,
+            float(chain_simulation.month_count) / chain_simulation.MONTHS_PER_YEAR
+        ) * VerticalSliceSimulationScript.NEW_BRANCH_LAND_AREA_COUNT
+    )
+    if expansion_cost_yen != expected_expansion_cost_yen:
+        _fail("chain_expansion_cost_yen must equal the per-area land price times the confirmed 4-area count")
+        return
     if chain_simulation.try_expand_chain():
         _fail("expanding the chain without sufficient cash must be rejected")
         return
@@ -2087,6 +2101,35 @@ func _initialize() -> void:
         return
     if other_angered_staff.security_skill != max(0, int(other_staff_config_before["security_skill"]) - 2):
         _fail("checkout anger must also lower the non-checkout staff member's security_skill by 2")
+        return
+
+    # Task #65: the same checkout_anger_triggered event must also roll the
+    # guide's confirmed 1/6-chance store-rating penalty. The roll's outcome
+    # is RNG-seed-dependent (rng_seed=19 in anger_config), so this only
+    # checks that the field was actually recorded (proving the wiring ran)
+    # rather than asserting a specific stochastic result.
+    var anger_events: Array = anger_simulation.event_log.records
+    var anger_event_details: Dictionary = {}
+    var found_anger_event := false
+    for record in anger_events:
+        if record["event_type"] == "checkout_anger_triggered":
+            anger_event_details = record["details"]
+            found_anger_event = true
+            break
+    if not found_anger_event:
+        _fail("checkout_anger_triggered event must be present in the event log")
+        return
+    if not anger_event_details.has("rating_penalty_applied"):
+        _fail("checkout_anger_triggered event must record whether the rating penalty was rolled")
+        return
+    if typeof(anger_event_details["rating_penalty_applied"]) != TYPE_BOOL:
+        _fail("rating_penalty_applied must be a bool")
+        return
+    # internal_rating_value starts at 0 in this scenario, so a -1 penalty
+    # clamps right back to 0 either way -- this only confirms the clamp
+    # itself never goes negative, not which branch was taken (see above).
+    if anger_simulation.internal_rating_value < 0:
+        _fail("internal_rating_value must never go negative")
         return
 
     # Task #55: a demand-driven customer's plan gets extended with

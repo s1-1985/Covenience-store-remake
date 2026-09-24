@@ -20,6 +20,16 @@ const ANGRY_CUSTOMER_DOWNGRADE_POINTS := -1
 const SHOPLIFTING_DOWNGRADE_POINTS := -1
 const DONATION_UPGRADE_POINTS := 5
 
+# Task #65: re-verified 2026-09-24 directly against a 400dpi rescan of the
+# strategy guide's third companion book ("攻略&データブック", オールテク
+# ニックガイド 評価関連, print page 75): "お客に怒られる=1/6の確率で-1、
+# 万引き=-1、寄付イベント=+5" -- confirms the three point constants above
+# exactly (this file already had them, ported from reference_sim/conveni_sim/
+# store_rating.py) and gives the angry-customer trigger's exact probability,
+# which this file had not yet carried as a named constant.
+const ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_NUMERATOR := 1
+const ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_DENOMINATOR := 6
+
 const UPGRADE_THRESHOLDS_BY_CURRENT_STARS := {
     5: {"max_price_change_pct": -30, "min_service": 100, "min_security": 100, "min_cleaning": 100, "min_sales_yen": 15000000},
     4: {"max_price_change_pct": -20, "min_service": 90, "min_security": 90, "min_cleaning": 95, "min_sales_yen": 10000000},
