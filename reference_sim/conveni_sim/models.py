@@ -373,3 +373,72 @@ class TradeAreaRadiusEntry:
     `CustomerVisitProfile.arrival_method`'s own values."""
     radius: EvidenceValue
     """Printed as a bare number ("エリア半径"); unit not stated by the guide."""
+
+
+@dataclass(frozen=True)
+class AnnualCalendarMonthEntry:
+    """One row of the quick-reference guide's 年間カレンダー table (book page 3).
+
+    The table gives, for each of the 12 in-game months, a 季節(season) label
+    and a 平日(weekday)/休日(holiday) flag for each of the 4 representative
+    days simulated that month (see `clock.py`/`month_aggregation.py` -- these
+    are the scenario's 4 representative days, not real calendar dates). Most
+    months follow a 3-weekday + 1-holiday pattern, but January/May/August/
+    December each have an extra 休日, plausibly reflecting real Japanese
+    holiday clusters (New Year, Golden Week, Obon, year-end) -- this
+    project's own inference, not a stated fact.
+    """
+
+    month: int
+    season: EvidenceValue
+    """"冬期" (winter half) or "夏期" (summer half); the guide's own coarse
+    two-season split, distinct from `MONTHLY_WEATHER_PERCENTAGES`'s 12-way
+    monthly table. No source states what, if anything, consumes this label."""
+    day_types: EvidenceValue
+    """4-tuple of "weekday"/"holiday" strings for representative days 1-4."""
+
+
+@dataclass(frozen=True)
+class BusinessHoursPresetEntry:
+    """One of the quick-reference guide's 5 numbered fixed-hours presets
+    (book page 2), plus 24-hour operation and temporary closure as separate,
+    unnumbered options the same page names alongside them.
+
+    `hours` holds an `OperatingHours` built from the printed start/end
+    clock times (None for the two non-fixed-interval options, 24h/closed).
+    `printed_label` is the guide's own parenthetical duration label exactly
+    as printed, kept verbatim even where it does not arithmetically match
+    the printed start/end times (preset 3, "AM11:00~AM2:00", is printed
+    labeled "16時間営業" but only spans 15 hours -- re-verified at 400dpi
+    against the original page directly, confirming this is what the guide
+    itself prints, not a scan-legibility artifact; this project does not
+    silently correct it).
+    """
+
+    preset_number: Optional[int]
+    """1-5 for the fixed-hours presets; None for 24h/closed."""
+    label: EvidenceValue
+    """"AM10:00~PM6:00" etc., or "24時間営業"/"臨時休業"."""
+    printed_label: EvidenceValue
+    """The guide's own parenthetical, e.g. "8時間営業" -- see docstring."""
+    hours: Optional[EvidenceValue]
+    """`OperatingHours`, or None for 24h/closed (24h already has its own
+    `OperatingHours.twenty_four_hours()`; closed has no interval at all)."""
+
+
+@dataclass(frozen=True)
+class MonthlyWeatherPercentagesEntry:
+    """One row of the quick-reference guide's 天候のパーセンテージ設定 table
+    (book page 3): the probability, by month, of each of 5 weather
+    categories -- 快晴(clear)/晴れ(fine)/曇り(cloudy)/雨・雪(rain or snow)/
+    荒天(storm, itself glossed by the guide as "大雨・雷雨・台風・大雪" --
+    heavy rain, thunderstorm, typhoon, or heavy snow). Every month's 5
+    values sum to exactly 100.
+    """
+
+    month: int
+    clear_percent: EvidenceValue
+    fine_percent: EvidenceValue
+    cloudy_percent: EvidenceValue
+    rain_or_snow_percent: EvidenceValue
+    storm_percent: EvidenceValue

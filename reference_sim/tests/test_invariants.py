@@ -15,6 +15,7 @@ import random
 import unittest
 from collections import Counter
 
+from conveni_sim.baseline_data import ANNUAL_CALENDAR
 from conveni_sim.clock import RepresentativeDayType, SimulationClock
 from conveni_sim.customer import CustomerState, PurchaseFlow
 from conveni_sim.economy import BankruptcyPolicy, CashDirection, FinancialEventKind
@@ -297,6 +298,14 @@ class StoreRuntimeInvariantTests(unittest.TestCase):
                 )
 
 
+_CALENDAR_DAY_TYPE_BY_MONTH_DAY = {
+    (entry.month, day_index + 1): RepresentativeDayType(day_type)
+    for entry in ANNUAL_CALENDAR
+    for day_index, day_type in enumerate(entry.day_types.value)
+}
+_CALENDAR_ENTRY_BY_MONTH = {entry.month: entry for entry in ANNUAL_CALENDAR}
+
+
 class CalendarInvariantTests(unittest.TestCase):
     """4日represent月を長期間回したときのカレンダー/台帳の整合性。"""
 
@@ -324,15 +333,12 @@ class CalendarInvariantTests(unittest.TestCase):
             for _ in range(months):
                 for _day in range(4):
                     day = recorder.clock.day
-                    expected_type = (
-                        RepresentativeDayType.HOLIDAY
-                        if day == 4
-                        else RepresentativeDayType.WEEKDAY
-                    )
+                    month = recorder.clock.month
+                    expected_type = _CALENDAR_DAY_TYPE_BY_MONTH_DAY[(month, day)]
                     self.assertIs(
                         recorder.clock.representative_day_type,
                         expected_type,
-                        f"day {day} has the wrong representative type (seed={seed})",
+                        f"month {month} day {day} has the wrong representative type (seed={seed})",
                     )
                     runtime.advance_game_minutes(60 * rng.choice([4, 6, 8]))
                     runtime.cash.record_sale(rng.randint(0, 50_000), source_id="daily")
@@ -349,8 +355,15 @@ class CalendarInvariantTests(unittest.TestCase):
                     sample.representative_days, (1, 2, 3, 4), f"month days (seed={seed})"
                 )
                 self.assertTrue(sample.complete_four_day_sample)
-                self.assertEqual(len(sample.weekday_records), 3)
-                self.assertEqual(len(sample.holiday_records), 1)
+                calendar_entry = _CALENDAR_ENTRY_BY_MONTH[sample.month]
+                expected_weekdays = calendar_entry.day_types.value.count("weekday")
+                expected_holidays = calendar_entry.day_types.value.count("holiday")
+                self.assertEqual(
+                    len(sample.weekday_records), expected_weekdays, f"month={sample.month}"
+                )
+                self.assertEqual(
+                    len(sample.holiday_records), expected_holidays, f"month={sample.month}"
+                )
 
             keys = [(sample.year, sample.month) for sample in samples]
             self.assertEqual(len(keys), len(set(keys)), f"duplicate month (seed={seed})")

@@ -1,7 +1,10 @@
 import unittest
 
 from conveni_sim.baseline_data import (
+    ANNUAL_CALENDAR,
+    BUSINESS_HOURS_PRESETS,
     FIXTURES,
+    MONTHLY_WEATHER_PERCENTAGES,
     PERMITS,
     PROMOTIONS,
     SCENARIOS,
@@ -188,16 +191,93 @@ class BaselineDataTests(unittest.TestCase):
         for entry in TRADE_AREA_RADIUS_TILES:
             self.assertEqual(entry.radius.evidence, EvidenceLevel.CONFIRMED_OFFICIAL)
 
+    def test_monthly_weather_percentages_each_sum_to_100(self):
+        # Decision 0132: re-verified 2026-09-24 at 400dpi against the same
+        # quick reference book page 3 the 2026-09-19 pass flagged 3 rows of
+        # (July/September/December) as not summing to 100 at reduced
+        # confidence. Every one of the 12 rows now sums exactly.
+        self.assertEqual(len(MONTHLY_WEATHER_PERCENTAGES), 12)
+        for entry in MONTHLY_WEATHER_PERCENTAGES:
+            total = (
+                entry.clear_percent.value
+                + entry.fine_percent.value
+                + entry.cloudy_percent.value
+                + entry.rain_or_snow_percent.value
+                + entry.storm_percent.value
+            )
+            self.assertEqual(total, 100, f"month={entry.month}")
+            self.assertEqual(entry.clear_percent.evidence, EvidenceLevel.CONFIRMED_OFFICIAL)
+
+    def test_business_hours_presets_match_the_guides_clock_diagram(self):
+        by_label = {entry.label.value: entry for entry in BUSINESS_HOURS_PRESETS}
+        self.assertEqual(
+            set(by_label),
+            {
+                "AM10:00~PM6:00",
+                "AM7:00~PM11:00",
+                "AM11:00~AM2:00",
+                "PM0:00~AM4:00",
+                "PM7:00~AM11:00",
+                "24時間営業",
+                "臨時休業",
+            },
+        )
+        # Preset 3 is transcribed verbatim even though the guide's own
+        # printed duration label doesn't arithmetically match its own
+        # printed start/end times (11:00~2:00 is 15h, not the printed 16h) --
+        # re-verified directly against the source scan, not a scan-legibility
+        # guess. This project does not silently correct the source.
+        preset_3 = by_label["AM11:00~AM2:00"]
+        self.assertEqual(preset_3.printed_label.value, "16時間営業")
+        self.assertEqual(preset_3.hours.value.open_minute, 11 * 60)
+        self.assertEqual(preset_3.hours.value.close_minute, 2 * 60)
+        closed = by_label["臨時休業"]
+        self.assertIsNone(closed.hours)
+        for entry in BUSINESS_HOURS_PRESETS:
+            self.assertEqual(entry.label.evidence, EvidenceLevel.CONFIRMED_OFFICIAL)
+
+    def test_annual_calendar_has_one_entry_per_month_with_four_days_each(self):
+        self.assertEqual(sorted(entry.month for entry in ANNUAL_CALENDAR), list(range(1, 13)))
+        for entry in ANNUAL_CALENDAR:
+            self.assertEqual(len(entry.day_types.value), 4)
+            self.assertIn(entry.season.value, {"冬期", "夏期"})
+            for day_type in entry.day_types.value:
+                self.assertIn(day_type, {"weekday", "holiday"})
+
 
 class ClockTests(unittest.TestCase):
-    def test_first_three_days_are_weekdays_and_fourth_is_holiday(self):
-        clock = SimulationClock(day=1)
+    def test_representative_day_type_matches_the_guides_annual_calendar(self):
+        # Task #63/decision 0132: representative_day_type now reads
+        # baseline_data.ANNUAL_CALENDAR (book page 3) instead of a "day==4 is
+        # the only holiday" simplification. Exercise every (month, day) pair
+        # the table defines, rather than duplicating its literal values here.
+        for entry in ANNUAL_CALENDAR:
+            for day_index, expected in enumerate(entry.day_types.value):
+                clock = SimulationClock(month=entry.month, day=day_index + 1)
+                self.assertEqual(
+                    clock.representative_day_type,
+                    RepresentativeDayType(expected),
+                    f"month={entry.month} day={day_index + 1}",
+                )
+
+    def test_march_is_three_weekdays_and_a_holiday(self):
+        # A representative month that does still follow the common
+        # 3-weekday + 1-holiday shape (most months do; January/May/August/
+        # December each carry one extra 休日 -- see ANNUAL_CALENDAR).
+        clock = SimulationClock(month=3, day=1)
         self.assertEqual(clock.representative_day_type, RepresentativeDayType.WEEKDAY)
         clock.advance_day()
         self.assertEqual(clock.representative_day_type, RepresentativeDayType.WEEKDAY)
         clock.advance_day()
         self.assertEqual(clock.representative_day_type, RepresentativeDayType.WEEKDAY)
         clock.advance_day()
+        self.assertEqual(clock.representative_day_type, RepresentativeDayType.HOLIDAY)
+
+    def test_january_has_a_holiday_on_day_one_too(self):
+        # January deviates from the common shape (holiday, weekday, weekday,
+        # holiday) -- plausibly New Year's Day, per ANNUAL_CALENDAR's own
+        # docstring inference, not a stated fact.
+        clock = SimulationClock(month=1, day=1)
         self.assertEqual(clock.representative_day_type, RepresentativeDayType.HOLIDAY)
 
     def test_day_four_rolls_to_next_month_day_one(self):
