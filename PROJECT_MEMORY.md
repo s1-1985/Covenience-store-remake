@@ -1483,6 +1483,26 @@ site) was followed via one new contract test. `reference_sim` full suite grew fr
 passed/1 xfailed. See decision 0139. Explicitly out of scope (same boundary as tasks #67/#68):
 customer sprites, the town map, the 5 menu-UI packages, and walk-cycle animation (phase "A" only).
 
+**Task #70 (2026-09-24)**: after task #69 merged (PR #246, both CI checks green), the user chose
+"customer sprites" as the fourth asset-wiring pass. `assets/raw/customer_v2/customer/` ships 21
+anonymous walking figures (`customer_01`-`customer_21`, same 4-direction/2-phase/160x160/feet-
+anchored geometry as task #69's staff package, 168 PNGs), copied (flattened from the source's
+one-subfolder-per-character layout) into `game/assets/customers/`. Unlike staff, `CustomerState`
+has no identity field at all -- only an opaque `customer_id` -- and is never linked to any of the
+21 CONFIRMED_OFFICIAL `CUSTOMER_ARCHETYPES` (book pages 134-143): this vertical slice has no
+demand/visit-plan mechanic that assigns an archetype per customer, so there is no real value to
+thread through the way task #68 threaded `InventoryState.catalog_id` or task #69 relied on
+`StaffState.candidate_id`. `_customer_sprite_id_for_id()` therefore derives a sprite deterministically
+from each `customer_id`'s own hash (REMAKE_BALANCED_DEFAULT, not list position -- there is no roster
+to have a position in), purely so each customer instance renders as a distinct, consistent-looking
+person; it carries no demographic or behavioral meaning. A more "plausible" archetype-from-purchased-
+product heuristic was considered and rejected as a stronger, unevidenced invention than a plain
+hash. Facing-direction derivation and the static "A" phase reuse task #69's exact logic. Tagging
+discipline follows the same code-comment + contract-test pattern as tasks #67/#69 (no new
+`vertical_slice.json` field). `reference_sim` full suite grew from 734 to 735 passed/1 xfailed. See
+decision 0140. Explicitly out of scope: the town map, the 5 menu-UI packages, walk-cycle animation,
+and any actual customer-archetype/demand mechanic (this task is display-only).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
