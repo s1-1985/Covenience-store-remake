@@ -5,9 +5,34 @@ signal fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i
 
 const SUBCELL_PIXELS := 36.0
 
+# Task #67: first asset-wiring pass. These sprites (assets/raw/
+# conveni_fixtures_remake_v3/) are this project's own newly-drawn art, not a
+# recovered original asset (PROJECT_MEMORY.md section 1's 2026-09-21 policy
+# note) -- a REMAKE_BALANCED_DEFAULT visual choice, same evidence tier as
+# any other placeholder in this client. The sprite directory is copied into
+# game/assets/fixtures/ (outside res:// paths cannot be loaded by Godot) at
+# one PNG per fixture_catalog catalog_id, filenames matching catalog_id
+# exactly. checkout-1/shelf-1/shelf-2 predate the catalog system (task #39/
+# #41) and carry no catalog_id at all; FALLBACK_VISUAL_CATALOG_ID_BY_KIND
+# gives them a same-footprint stand-in sprite for display only -- this does
+# not assert they ARE that specific catalog fixture, only that they render
+# with a plausible, correctly-sized sprite instead of a bare rectangle.
+const FIXTURE_SPRITE_DIR := "res://assets/fixtures/"
+const FALLBACK_VISUAL_CATALOG_ID_BY_KIND := {
+    "checkout": "register_1",
+    "shelf": "medium_ambient_shelf",
+}
+
 var config: Dictionary = {}
 var simulation
 var selected_fixture_id := ""
+var _fixture_textures: Dictionary = {}
+
+
+func _ready() -> void:
+    # Pixel art stays crisp instead of the engine's default linear blur when
+    # sprite rects are scaled to fit each fixture's in-game footprint.
+    texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 
 func selected_fixture() -> String:
@@ -18,6 +43,19 @@ func bind(source_config: Dictionary, source_simulation) -> void:
     config = source_config
     simulation = source_simulation
     queue_redraw()
+
+
+func _fixture_texture(catalog_id: String) -> Texture2D:
+    if catalog_id.is_empty():
+        return null
+    if _fixture_textures.has(catalog_id):
+        return _fixture_textures[catalog_id] as Texture2D
+    var path := FIXTURE_SPRITE_DIR + catalog_id + ".png"
+    var texture: Texture2D = null
+    if ResourceLoader.exists(path):
+        texture = load(path) as Texture2D
+    _fixture_textures[catalog_id] = texture
+    return texture
 
 
 func _process(_delta: float) -> void:
@@ -100,6 +138,10 @@ func _draw_fixtures() -> void:
             Vector2(origin.x, origin.y) * SUBCELL_PIXELS,
             Vector2(size_subcells.x, size_subcells.y) * SUBCELL_PIXELS
         ).grow(-3)
+        var catalog_id := str(fixture.get("catalog_id", ""))
+        if catalog_id.is_empty():
+            catalog_id = str(FALLBACK_VISUAL_CATALOG_ID_BY_KIND.get(fixture["kind"], ""))
+        var texture := _fixture_texture(catalog_id)
         var fill := Color("84a9d8")
         var label := "SHELF"
         if fixture["kind"] == "checkout":
@@ -111,21 +153,24 @@ func _draw_fixtures() -> void:
         elif fixture["kind"] == "parking":
             fill = Color("8d8d8d")
             label = str(fixture["id"]).to_upper()
-        draw_rect(rect, fill, true)
+        if texture != null:
+            draw_texture_rect(texture, rect, false)
+        else:
+            draw_rect(rect, fill, true)
+            draw_string(
+                ThemeDB.fallback_font,
+                rect.position + Vector2(10, 24),
+                label,
+                HORIZONTAL_ALIGNMENT_LEFT,
+                -1,
+                16,
+                Color("202020")
+            )
         var outline := Color("f4d35e") if fixture["id"] == selected_fixture_id else Color("363636")
         var outline_width := 5.0 if fixture["id"] == selected_fixture_id else 2.0
         draw_rect(rect, outline, false, outline_width)
         var interaction := _vec2i(fixture["interaction_subcell"])
         draw_circle(_cell_center(interaction), 7.0, Color("f4d35e"))
-        draw_string(
-            ThemeDB.fallback_font,
-            rect.position + Vector2(10, 24),
-            label,
-            HORIZONTAL_ALIGNMENT_LEFT,
-            -1,
-            16,
-            Color("202020")
-        )
 
 
 func _draw_customer() -> void:
