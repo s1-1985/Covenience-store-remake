@@ -1567,6 +1567,26 @@ within the documented 40-100 range). `reference_sim` full suite grew from 737 to
 exact-number display, and the stamina/academic_background/agility/sociability -> real-skill-pair
 correlation model itself (unneeded since this client already holds the real skill numbers directly).
 
+**Task #74 (2026-09-24)**: after task #73 merged (PR #250, both CI checks green), the user chose to
+directly audit `game/scripts/save_game_service.gd` (the save/load path) for gaps rather than pick a
+new feature. `save_game_service.gd` itself is a thin I/O wrapper with no logic issues; the real state
+transform lives in `vertical_slice_simulation.gd`'s `save_state()`/`load_state()`. That function's
+own comment already documents two deliberate, known gaps (mid-visit customer/staff walk state; task
+#48's staff skill growth). Diffing `reset()` against `load_state()` line-by-line line-for-line
+surfaced a real, previously-undiscovered one: `reset()` has always cleared `_checkout_queue`
+(task #36's FIFO checkout wait list) right after resetting customers/staff, but `load_state()` never
+did. A save taken while a second customer was queued at checkout left that customer_id behind after
+`customers.reset()` had already discarded the actual customer record -- the next
+`_dispatch_checkout_queue()` call would then null-dereference it (`CustomerRoster.customer()` is a
+raw dict lookup returning `null` for a missing id) and crash. This is a genuine, reproducible bug a
+real player could hit, not a documented tradeoff. Fixed with one line (`_checkout_queue.clear()`,
+matching `reset()`'s own convention exactly) plus a new headless_smoke.gd scenario that actually
+reproduces the queued state, saves/loads across it, and confirms the loaded simulation both starts
+with an empty queue and keeps running (not crashing) afterward. The rest of the audit (every other
+`reset()`-touched subsystem's `snapshot()`/`restore_snapshot()` symmetry, plus `town`/
+`_player_store_position`/`_rival_stores`, none of which mutate at runtime) turned up nothing else.
+`reference_sim` full suite grew from 738 to 739 passed/1 xfailed. See decision 0144.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

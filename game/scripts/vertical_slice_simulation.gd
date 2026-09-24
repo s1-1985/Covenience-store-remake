@@ -1301,6 +1301,14 @@ func load_state(data: Dictionary) -> bool:
     economy.reset()
     customers.reset()
     staff.reset()
+    # Task #74: reset() itself clears this right after the same five calls
+    # above, but load_state() had never done so -- a save taken while a
+    # second customer was queued at checkout (_checkout_queue non-empty)
+    # left that customer_id behind after customers.reset() had already
+    # discarded the actual customer record, so the next
+    # _dispatch_checkout_queue() call would null-dereference it. Found by
+    # directly auditing this function against reset()'s own gap-clearing.
+    _checkout_queue.clear()
     # Task #56: staff.reset() above restores every slot to its config-
     # derived DEFAULT candidate, undoing any try_hire_candidate() swap the
     # player made since starting. Reapply the saved roster directly via
