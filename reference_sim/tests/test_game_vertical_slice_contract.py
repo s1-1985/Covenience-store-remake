@@ -2507,6 +2507,42 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("_staff_facing_direction(\"test-staff\", Vector2i(8, 5)) != \"right\"", smoke)
         self.assertIn("_staff_facing_direction(\"test-staff\", Vector2i(8, 2)) != \"up\"", smoke)
 
+    def test_customer_sprites_are_wired_and_tagged_remake_default(self):
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        customer_state = (
+            GAME_ROOT / "scripts" / "domain" / "customer_state.gd"
+        ).read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # Unlike task #69's staff (which already had a real candidate_id
+        # roster to key a position-based lookup off of), CustomerState has
+        # no archetype/identity field whatsoever -- confirm that boundary
+        # actually holds rather than assuming it.
+        self.assertNotIn("archetype", customer_state)
+
+        self.assertIn("CUSTOMER_SPRITE_DIR", store_view)
+        self.assertIn("func _customer_sprite_id_for_id(customer_id: String) -> String:", store_view)
+        self.assertIn("func _customer_facing_direction(customer_id: String, position: Vector2i) -> String:", store_view)
+        self.assertIn(
+            "CUSTOMER_ARCHETYPES (reference_sim/conveni_sim/baseline_data.py,",
+            store_view,
+        )
+        self.assertIn(
+            "This is not an archetype assignment: it carries no",
+            store_view,
+        )
+
+        # Covered end-to-end by headless_smoke.gd: all 21 sprites' 4
+        # directions load a real texture, the hash-based lookup is
+        # deterministic and empty-safe, and the facing-direction derivation
+        # (identical logic to task #69's staff version) is exercised
+        # directly with synthetic positions.
+        self.assertIn("CUSTOMER_SPRITE_DIRECTIONS", smoke)
+        self.assertIn("_customer_sprite_id_for_id must be deterministic", smoke)
+        self.assertIn("_customer_facing_direction(\"test-customer\", Vector2i(5, 5)) != \"down\"", smoke)
+        self.assertIn("_customer_facing_direction(\"test-customer\", Vector2i(8, 5)) != \"right\"", smoke)
+        self.assertIn("_customer_facing_direction(\"test-customer\", Vector2i(8, 2)) != \"up\"", smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])

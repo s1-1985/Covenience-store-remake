@@ -1995,6 +1995,51 @@ func _initialize() -> void:
         _fail("moving in -y must face 'up'")
         return
 
+    # Task #70: fourth asset-wiring pass, customer walking sprites. Unlike
+    # staff, no archetype/roster identity exists for customers in this
+    # client at all, so sprite assignment is a pure hash of customer_id
+    # (REMAKE_BALANCED_DEFAULT, docs/decisions/0140-customer-sprite-wiring.md)
+    # rather than a position-based lookup. Confirm all 21 sprites' 4
+    # directions load, the hash-based lookup is deterministic and uses the
+    # expected naming convention, and the facing-direction derivation
+    # (shared logic with staff, exercised the same way) behaves correctly.
+    for customer_sprite_number in range(1, economy_ui_scene.store_view.CUSTOMER_SPRITE_COUNT + 1):
+        var expected_customer_sprite_id := "customer_%02d" % customer_sprite_number
+        for customer_sprite_direction in economy_ui_scene.store_view.CUSTOMER_SPRITE_DIRECTIONS:
+            if economy_ui_scene.store_view._customer_texture(
+                expected_customer_sprite_id,
+                customer_sprite_direction,
+                economy_ui_scene.store_view.CUSTOMER_SPRITE_STATIC_PHASE
+            ) == null:
+                _fail(
+                    "customer sprite failed to load for %s/%s" % [
+                        expected_customer_sprite_id, customer_sprite_direction
+                    ]
+                )
+                return
+    var first_customer_sprite_id: String = economy_ui_scene.store_view._customer_sprite_id_for_id("customer-1")
+    if not first_customer_sprite_id.begins_with("customer_"):
+        _fail("customer sprite id must use the 'customer_NN' naming convention")
+        return
+    if economy_ui_scene.store_view._customer_sprite_id_for_id("customer-1") != first_customer_sprite_id:
+        _fail("_customer_sprite_id_for_id must be deterministic for the same customer_id")
+        return
+    if economy_ui_scene.store_view._customer_sprite_id_for_id("") != "":
+        _fail("an empty customer_id must resolve to no sprite")
+        return
+    if economy_ui_scene.store_view._customer_facing_direction("test-customer", Vector2i(5, 5)) != "down":
+        _fail("a customer with no prior recorded position must default to facing 'down'")
+        return
+    if economy_ui_scene.store_view._customer_facing_direction("test-customer", Vector2i(8, 5)) != "right":
+        _fail("moving in +x must face 'right'")
+        return
+    if economy_ui_scene.store_view._customer_facing_direction("test-customer", Vector2i(8, 5)) != "right":
+        _fail("an unchanged position must keep facing the previously resolved direction")
+        return
+    if economy_ui_scene.store_view._customer_facing_direction("test-customer", Vector2i(8, 2)) != "up":
+        _fail("moving in -y must face 'up'")
+        return
+
     var bench_index: int = economy_ui_scene._fixture_catalog_ids.find("bench")
     if bench_index < 0:
         _fail("economy UI: fixture catalog option did not include 'bench'")

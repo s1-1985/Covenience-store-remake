@@ -85,6 +85,34 @@ const STAFF_SPRITE_STATIC_PHASE := "A"
 const STAFF_SPRITE_SIZE_PX := SUBCELL_PIXELS * 2.0
 const STAFF_SPRITE_ANCHOR_FRACTION := Vector2(0.5, 0.9625)
 
+# Task #70: fourth asset-wiring pass, customer walking sprites (assets/raw/
+# customer_v2/customer/) -- same REMAKE_BALANCED_DEFAULT evidence tier as
+# tasks #67-#69 above. manifest.json ships 21 anonymous walking figures
+# ("customer_01".."customer_21", 4 directions x 2 walk-cycle phases each,
+# 160x160 RGBA, feet-anchored at (80,154) -- same geometry as the task #69
+# staff package) copied (flattened from the source's one-subfolder-per-
+# character layout) into game/assets/customers/ as
+# "<sprite_id>_<direction>_<phase>.png". Unlike staff_candidates, this
+# client's CustomerState has no archetype/identity field at all: customers
+# are created with only an opaque customer_id (e.g. "customer-3",
+# "concurrent-a") and are never linked to any of the 21 CONFIRMED_OFFICIAL
+# CUSTOMER_ARCHETYPES (reference_sim/conveni_sim/baseline_data.py,
+# book pages 134-143) -- no demand/visit-plan mechanic in this vertical
+# slice selects an archetype per customer, so there is no real value to
+# thread through the way task #68 threaded InventoryState.catalog_id.
+# _customer_sprite_id_for_id() below therefore derives a sprite
+# deterministically from each customer_id's own hash (not list position --
+# there is no roster to have a position in) purely so each customer
+# instance renders as a distinct, consistent-looking person instead of a
+# plain circle. This is not an archetype assignment: it carries no
+# demographic, behavioral, or visit-plan meaning whatsoever.
+const CUSTOMER_SPRITE_DIR := "res://assets/customers/"
+const CUSTOMER_SPRITE_COUNT := 21
+const CUSTOMER_SPRITE_DIRECTIONS := ["down", "left", "right", "up"]
+const CUSTOMER_SPRITE_STATIC_PHASE := "A"
+const CUSTOMER_SPRITE_SIZE_PX := SUBCELL_PIXELS * 2.0
+const CUSTOMER_SPRITE_ANCHOR_FRACTION := Vector2(0.5, 0.9625)
+
 var config: Dictionary = {}
 var simulation
 var selected_fixture_id := ""
@@ -93,6 +121,9 @@ var _product_textures: Dictionary = {}
 var _staff_textures: Dictionary = {}
 var _staff_last_position: Dictionary = {}
 var _staff_last_direction: Dictionary = {}
+var _customer_textures: Dictionary = {}
+var _customer_last_position: Dictionary = {}
+var _customer_last_direction: Dictionary = {}
 
 
 func _ready() -> void:
@@ -198,6 +229,42 @@ func _staff_facing_direction(staff_id: String, position: Vector2i) -> String:
             direction = "down" if delta.y > 0 else "up"
     _staff_last_position[staff_id] = position
     _staff_last_direction[staff_id] = direction
+    return direction
+
+
+func _customer_texture(sprite_id: String, direction: String, phase: String) -> Texture2D:
+    if sprite_id.is_empty() or direction.is_empty() or phase.is_empty():
+        return null
+    var cache_key := sprite_id + "_" + direction + "_" + phase
+    if _customer_textures.has(cache_key):
+        return _customer_textures[cache_key] as Texture2D
+    var path := CUSTOMER_SPRITE_DIR + cache_key + ".png"
+    var texture: Texture2D = null
+    if ResourceLoader.exists(path):
+        texture = load(path) as Texture2D
+    _customer_textures[cache_key] = texture
+    return texture
+
+
+func _customer_sprite_id_for_id(customer_id: String) -> String:
+    if customer_id.is_empty():
+        return ""
+    var sprite_number := (absi(customer_id.hash()) % CUSTOMER_SPRITE_COUNT) + 1
+    return "customer_%02d" % sprite_number
+
+
+func _customer_facing_direction(customer_id: String, position: Vector2i) -> String:
+    var previous_position: Vector2i = _customer_last_position.get(customer_id, position)
+    var previous_direction: String = _customer_last_direction.get(customer_id, "down")
+    var delta := position - previous_position
+    var direction := previous_direction
+    if delta != Vector2i.ZERO:
+        if absi(delta.x) >= absi(delta.y):
+            direction = "right" if delta.x > 0 else "left"
+        else:
+            direction = "down" if delta.y > 0 else "up"
+    _customer_last_position[customer_id] = position
+    _customer_last_direction[customer_id] = direction
     return direction
 
 
@@ -354,8 +421,19 @@ func _draw_customer() -> void:
         var stack_index: int = seen_positions.get(customer.position, 0)
         seen_positions[customer.position] = stack_index + 1
         center += Vector2(stack_index * 6.0, stack_index * 6.0)
-        draw_circle(center, 13.0, Color("ef476f"))
-        draw_circle(center, 13.0, Color("3a2630"), false, 2.0)
+        var sprite_id := _customer_sprite_id_for_id(customer.customer_id)
+        var direction := _customer_facing_direction(customer.customer_id, customer.position)
+        var texture := _customer_texture(sprite_id, direction, CUSTOMER_SPRITE_STATIC_PHASE)
+        if texture != null:
+            var draw_size := Vector2(CUSTOMER_SPRITE_SIZE_PX, CUSTOMER_SPRITE_SIZE_PX)
+            var anchor_offset := Vector2(
+                CUSTOMER_SPRITE_ANCHOR_FRACTION.x * draw_size.x,
+                CUSTOMER_SPRITE_ANCHOR_FRACTION.y * draw_size.y
+            )
+            draw_texture_rect(texture, Rect2(center - anchor_offset, draw_size), false)
+        else:
+            draw_circle(center, 13.0, Color("ef476f"))
+            draw_circle(center, 13.0, Color("3a2630"), false, 2.0)
 
 
 func _draw_staff() -> void:
