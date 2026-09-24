@@ -2798,7 +2798,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         self.assertIn("01年目01月01日", research_note)
 
-        self.assertIn('"Year %d · Month %d, Day %d" % [', main)
+        self.assertIn('tr("Year %d · Month %d, Day %d") % [', main)
         self.assertNotIn("of 4 (Day %d overall)", main)
         self.assertIn(
             "int(snapshot[\"month_count\"]) / VerticalSliceSimulationScript.MONTHS_PER_YEAR + 1",

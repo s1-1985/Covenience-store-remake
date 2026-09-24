@@ -1,0 +1,638 @@
+msgid ""
+msgstr ""
+"Language: ja\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Convenience Store Remake"
+msgstr "ザ・コンビニ 再現試作"
+
+msgid "Convenience Store Remake — Playable Vertical Slice"
+msgstr "ザ・コンビニ 再現試作"
+
+msgid "PROVISIONAL PLAYABLE CLIENT"
+msgstr "開発途中のプレイ確認版"
+
+msgid "New Game"
+msgstr "はじめから"
+
+msgid "Continue"
+msgstr "つづきから"
+
+msgid "Quit"
+msgstr "終了"
+
+msgid "STORE STATUS"
+msgstr "店舗の状況"
+
+msgid "Game clock"
+msgstr "時刻"
+
+msgid "Cash"
+msgstr "所持金"
+
+msgid "Shelf stock"
+msgstr "商品在庫"
+
+msgid "Current basket"
+msgstr "買い物かご"
+
+msgid "Customer"
+msgstr "お客さん"
+
+msgid "Staff"
+msgstr "店員"
+
+msgid "Completed sales"
+msgstr "販売実績"
+
+msgid "Store rating"
+msgstr "店舗評価"
+
+msgid "Town / land value"
+msgstr "街・地価"
+
+msgid "Show town map"
+msgstr "街を見る"
+
+msgid "Show store"
+msgstr "店内に戻る"
+
+msgid "Interior edit (配置/移動/入れ替え/売却/終了)"
+msgstr "内装の編集"
+
+msgid "Tap a fixture, then tap an empty grid cell after the visit"
+msgstr "棚を選び、移動先の空きマスをタップ"
+
+msgid "Move (移動)"
+msgstr "移動"
+
+msgid "Swap (入れ替え)"
+msgstr "入れ替え"
+
+msgid "Rotate selected fixture clockwise"
+msgstr "選択した設備を回転"
+
+msgid "Sell selected fixture (売却, 50% refund)"
+msgstr "選択した設備を売却（半額）"
+
+msgid "Deselect (終了)"
+msgstr "選択を解除"
+
+msgid "Sample layout"
+msgstr "内装の見本"
+
+msgid "Load sample layout (replaces current, not undoable)"
+msgstr "見本に入れ替える（現在の内装を置換）"
+
+msgid "Economy actions"
+msgstr "仕入れ・経営"
+
+msgid "Buy fixture (tap grid to place)"
+msgstr "設備を購入 → 空きマスに配置"
+
+msgid "Buy permit"
+msgstr "販売許可を取得"
+
+msgid "Stock product on selected shelf"
+msgstr "選択した棚に商品を仕入れる"
+
+msgid "Restock selected product"
+msgstr "選択した商品を補充"
+
+msgid "Buy promotion"
+msgstr "広告を申し込む"
+
+msgid "Expand chain"
+msgstr "支店を増やす"
+
+msgid "Set price policy"
+msgstr "価格を設定"
+
+msgid "Last event"
+msgstr "直近の出来事"
+
+msgid "Pause"
+msgstr "一時停止"
+
+msgid "Resume"
+msgstr "再開"
+
+msgid "Step"
+msgstr "1コマ進める"
+
+msgid "Reset"
+msgstr "やり直す"
+
+msgid "Admit next customer"
+msgstr "次のお客さんを入れる"
+
+msgid "Eject selected customer (before they get angry)"
+msgstr "選択したお客さんをつまみ出す"
+
+msgid "Staff hiring"
+msgstr "店員の雇用"
+
+msgid "Hire candidate into selected slot"
+msgstr "選択した枠に雇う"
+
+msgid "Save"
+msgstr "セーブ"
+
+msgid "Load"
+msgstr "ロード"
+
+msgid "Quit to Menu"
+msgstr "タイトルへ"
+
+msgid "Space: Pause / Resume"
+msgstr "店内をタップして選択／右のメニューは上下にスクロール"
+
+msgid "GAME OVER"
+msgstr "ゲームオーバー"
+
+msgid "Play Again"
+msgstr "もう一度遊ぶ"
+
+msgid "Return to Menu"
+msgstr "タイトルに戻る"
+
+msgid "No save file found."
+msgstr "セーブデータが見つからない"
+
+msgid "Game saved"
+msgstr "セーブ完了"
+
+msgid "Save failed"
+msgstr "セーブに失敗した"
+
+msgid "Game loaded"
+msgstr "ロード完了"
+
+msgid "No compatible save found"
+msgstr "対応するセーブデータが見つからない"
+
+msgid "Year %d · Month %d, Day %d"
+msgstr "%02d年目%02d月%02d日"
+
+msgid "%d units"
+msgstr "%d個"
+
+msgid "%d items / ¥%s"
+msgstr "%d点／¥%s"
+
+msgid "no active customers"
+msgstr "お客さんは店内にいない"
+
+msgid "%d active — %s"
+msgstr "店内%d人：%s"
+
+msgid "%s: %s (%d staff)"
+msgstr "%s：%s（店員%d人）"
+
+msgid " (last: ¥%s)"
+msgstr "（直近 ¥%s）"
+
+msgid "Visits: %d / %d"
+msgstr "来客：会計終了%d人／入店%d人"
+
+msgid "%s (popularity %d)"
+msgstr "%s（人気度%d）"
+
+msgid "Scenario cleared — reached %d stores (you can keep playing)"
+msgstr "目標の%d店舗に到達！ 引き続き遊べる"
+
+msgid "population %s, %d rival store%s, land ¥%s"
+msgstr "人口%s人／競合%d店%s／地価¥%s"
+
+msgid "Restock %s (stock: %d)"
+msgstr "%sを補充（在庫%d）"
+
+msgid "Expand chain (¥%s, currently %d store(s))"
+msgstr "出店 ¥%s（現在%d店）"
+
+msgid "Set price policy (currently %+d%%)"
+msgstr "価格を設定（現在%+d%%）"
+
+msgid "Cash went negative at a day/month boundary."
+msgstr "日付の切り替わりに所持金がマイナスとなった。"
+
+msgid "100 years passed without reaching the scenario's clear condition."
+msgstr "目標未達のまま100年が経過した。"
+
+msgid "Layout reset to configured prototype"
+msgstr "開始時の状態に戻した"
+
+msgid "No customer currently at checkout to eject"
+msgstr "レジに対象のお客さんがいない"
+
+msgid "Ejected customer %s before they could get angry"
+msgstr "お客さん%sをつまみ出した"
+
+msgid "Could not eject %s"
+msgstr "%sをつまみ出せなかった"
+
+msgid "Selected: %s — tap another fixture to swap"
+msgstr "%sを選択中：入れ替える設備をタップ"
+
+msgid "Selected: %s — tap an empty grid cell to move"
+msgstr "%sを選択中：移動先の空きマスをタップ"
+
+msgid "Moved %s to (%d, %d)"
+msgstr "%sを（%d, %d）へ移動した"
+
+msgid "Finish the active visit before editing layout"
+msgstr "お客さんの退店後に内装を変更できる"
+
+msgid "Cannot move there: blocked, outside, or route would break"
+msgstr "移動できない。空きスペースと通路を確認"
+
+msgid "Select a fixture before rotating"
+msgstr "回転する設備を選択"
+
+msgid "Rotated %s clockwise"
+msgstr "%sを回転した"
+
+msgid "Cannot rotate there: blocked or route would break"
+msgstr "スペースや通路を確保できないため回転できない"
+
+msgid "Swapped %s and %s"
+msgstr "%sと%sを入れ替えた"
+
+msgid "Cannot swap those: route would break"
+msgstr "通路がなくなるため入れ替えできない"
+
+msgid "Select a fixture before selling"
+msgstr "売却する設備を選択"
+
+msgid "Sold %s"
+msgstr "%sを売却した"
+
+msgid "Finish the active visit before selling a fixture"
+msgstr "お客さんの退店後に売却できる"
+
+msgid "Cannot sell that fixture: it's the checkout, holds stock, or has no catalog price"
+msgstr "レジ・在庫のある棚・価格不明の設備は売却できない"
+
+msgid "Deselected"
+msgstr "選択を解除した"
+
+msgid "Loaded sample layout: %s"
+msgstr "内装の見本%sを読み込んだ"
+
+msgid "Finish the active visit before loading a sample layout"
+msgstr "お客さんの退店後に内装の見本を使える"
+
+msgid "Cannot load that sample layout: unaffordable or would strand stocked inventory"
+msgstr "資金不足、または在庫の置き場所がなくなるため変更できない"
+
+msgid "Buying %s — tap an empty grid cell to place it"
+msgstr "%sを購入：配置先の空きマスをタップ"
+
+msgid "Cannot place %s there: no open cell next to it for customers/staff to use"
+msgstr "%sの隣に利用する人のための通路が必要"
+
+msgid "Purchased %s"
+msgstr "%sを購入した"
+
+msgid "Finish the active visit before buying a fixture"
+msgstr "お客さんの退店後に設備を購入できる"
+
+msgid "Cannot place %s there: blocked, unaffordable, or route would break"
+msgstr "%sを置けない。資金・空きスペース・通路を確認"
+
+msgid "Already hold the %s permit"
+msgstr "%sの販売許可は取得済み"
+
+msgid "Purchased permit: %s"
+msgstr "%sの販売許可を取得した"
+
+msgid "Finish the active visit before buying a permit"
+msgstr "お客さんの退店後に販売許可を取得できる"
+
+msgid "Cannot afford the %s permit"
+msgstr "%sの販売許可を取得する資金が足りない"
+
+msgid "No shelf fixture available to stock (buy one first)"
+msgstr "商品を置く棚がない。先に棚を購入"
+
+msgid "Stocked %s on %s"
+msgstr "%sを%sに仕入れた"
+
+msgid "Finish the active visit before stocking a product"
+msgstr "お客さんの退店後に仕入れできる"
+
+msgid "Cannot stock %s on %s: missing permit, unaffordable, or already stocked there"
+msgstr "%sを%sに仕入れできない。販売許可・資金・棚の在庫を確認"
+
+msgid "Select a shelf whose stock is running low to restock it"
+msgstr "在庫が少なくなった棚を選択すると補充できる"
+
+msgid "Restocked %d units of %s for ¥%s"
+msgstr "%d個の%sを補充した（¥%s）"
+
+msgid "Finish the active visit before restocking"
+msgstr "お客さんの退店後に補充できる"
+
+msgid "Scheduled promotion: %s"
+msgstr "広告%sを申し込んだ"
+
+msgid "Finish the active visit before buying a promotion"
+msgstr "お客さんの退店後に広告を申し込める"
+
+msgid "Cannot buy that promotion: unaffordable or already scheduled/used this month"
+msgstr "資金不足、または今月すでに申し込み済みの広告である"
+
+msgid "Expanded the chain to %d store(s)"
+msgstr "%d店舗になった"
+
+msgid "Finish the active visit before expanding the chain"
+msgstr "お客さんの退店後に出店できる"
+
+msgid "Cannot expand the chain: unaffordable, or the scenario target is already reached"
+msgstr "資金不足、またはこの試作版の出店上限に到達している"
+
+msgid "Price policy set: %+d%% from list price"
+msgstr "定価から%+d%%の価格に設定した"
+
+msgid "Finish the active visit before changing the price policy"
+msgstr "お客さんの退店後に価格を変更できる"
+
+msgid "Cannot set that price policy (must be -100% or above)"
+msgstr "価格は定価の-100%以上で指定"
+
+msgid "No candidate available to hire"
+msgstr "雇える候補者がいない"
+
+msgid "Hired %s into %s"
+msgstr "%sを%sに雇用した"
+
+msgid "Finish the active visit before hiring"
+msgstr "お客さんの退店後に雇用できる"
+
+msgid "Cannot hire %s into %s"
+msgstr "%sを%sに雇用できない"
+
+msgid "%s — ¥%s/unit"
+msgstr "%s：仕入れ単価¥%s"
+
+msgid "%s — ¥%s (+%d popularity)"
+msgstr "%s：¥%s（人気度+%d）"
+
+msgid "%s — register %d / replen %d / ¥%s/day (体力%s 学歴%s 敏捷性%s 社交性%s)"
+msgstr "%s：レジ%d／補充%d／日給¥%s（体力%s 学歴%s 敏捷性%s 社交性%s）"
+
+msgid "PROVISIONAL PLAYABLE CLIENT\nTiming/layout values are not recovered original rules."
+msgstr "再現試作版：原作と異なる仮仕様を含む"
+
+msgid "Default layout"
+msgstr "開始時の内装"
+
+msgid "With a bench near the entrance"
+msgstr "入口近くにベンチを置く"
+
+msgid "potted_plant"
+msgstr "観葉植物"
+
+msgid "bench"
+msgstr "ベンチ"
+
+msgid "fountain"
+msgstr "噴水"
+
+msgid "parking_ground"
+msgstr "平面駐車場"
+
+msgid "parking_two_story"
+msgstr "二階建駐車場"
+
+msgid "parking_tower"
+msgstr "立体駐車場"
+
+msgid "hot_drink_case"
+msgstr "温かい飲料ケース"
+
+msgid "oden_case"
+msgstr "おでんケース"
+
+msgid "steamed_bun_case"
+msgstr "中華まんケース"
+
+msgid "event_shelf"
+msgstr "催事用棚"
+
+msgid "event_wagon"
+msgstr "催事用ワゴン"
+
+msgid "tobacco"
+msgstr "たばこ"
+
+msgid "cold_drink"
+msgstr "冷たい飲料"
+
+msgid "hot_drink"
+msgstr "温かい飲料"
+
+msgid "alcohol"
+msgstr "酒類"
+
+msgid "bento"
+msgstr "弁当"
+
+msgid "bread"
+msgstr "パン"
+
+msgid "instant_food"
+msgstr "インスタント食品"
+
+msgid "snacks"
+msgstr "菓子"
+
+msgid "books"
+msgstr "本・雑誌"
+
+msgid "ice_cream"
+msgstr "アイスクリーム"
+
+msgid "stationery"
+msgstr "文房具"
+
+msgid "retort_food"
+msgstr "レトルト食品"
+
+msgid "electronics"
+msgstr "電気製品"
+
+msgid "seasoning"
+msgstr "調味料"
+
+msgid "vegetables"
+msgstr "野菜"
+
+msgid "frozen_food"
+msgstr "冷凍食品"
+
+msgid "fish"
+msgstr "魚"
+
+msgid "oden"
+msgstr "おでん"
+
+msgid "daily_goods"
+msgstr "日用雑貨"
+
+msgid "copy_paper"
+msgstr "コピー用紙"
+
+msgid "parcel_delivery_form"
+msgstr "宅配便伝票"
+
+msgid "medicine"
+msgstr "薬"
+
+msgid "underwear"
+msgstr "下着"
+
+msgid "event_goods"
+msgstr "催事商品"
+
+msgid "chinese_steamed_bun"
+msgstr "中華まん"
+
+msgid "meat"
+msgstr "肉"
+
+msgid "direct_mail"
+msgstr "ダイレクトメール"
+
+msgid "newspaper"
+msgstr "新聞広告"
+
+msgid "airship"
+msgstr "飛行船"
+
+msgid "radio"
+msgstr "ラジオCM"
+
+msgid "tv"
+msgstr "テレビCM"
+
+msgid "staff-1"
+msgstr "担当1"
+
+msgid "staff-2"
+msgstr "担当2"
+
+msgid "staff-3"
+msgstr "担当3"
+
+msgid "idle"
+msgstr "待機中"
+
+msgid "to_shelf"
+msgstr "商品を探している"
+
+msgid "shopping"
+msgstr "商品を選んでいる"
+
+msgid "to_checkout"
+msgstr "レジへ移動中"
+
+msgid "waiting_checkout"
+msgstr "レジ待ち"
+
+msgid "checkout"
+msgstr "会計中"
+
+msgid "leaving"
+msgstr "退店中"
+
+msgid "done"
+msgstr "退店済み"
+
+msgid "restocking"
+msgstr "補充中"
+
+msgid "replenishing"
+msgstr "補充中"
+
+msgid "cleaning"
+msgstr "清掃中"
+
+msgid "resting"
+msgstr "休憩中"
+
+msgid "serving"
+msgstr "接客中"
+
+msgid "small_ambient_shelf"
+msgstr "小型常温棚"
+
+msgid "small_tobacco_vending"
+msgstr "小型たばこ自動販売機"
+
+msgid "medium_ambient_shelf"
+msgstr "中型常温棚"
+
+msgid "large_ambient_shelf"
+msgstr "大型常温棚"
+
+msgid "small_ambient_wagon"
+msgstr "小型常温ワゴン"
+
+msgid "medium_ambient_wagon"
+msgstr "中型常温ワゴン"
+
+msgid "large_ambient_wagon"
+msgstr "大型常温ワゴン"
+
+msgid "large_ambient_wagon_2"
+msgstr "大型常温ワゴン2"
+
+msgid "small_refrigerated_shelf"
+msgstr "小型冷蔵棚"
+
+msgid "medium_refrigerated_shelf"
+msgstr "中型冷蔵棚"
+
+msgid "large_refrigerated_shelf"
+msgstr "大型冷蔵棚"
+
+msgid "small_refrigerated_wagon"
+msgstr "小型冷蔵ワゴン"
+
+msgid "medium_refrigerated_wagon"
+msgstr "中型冷蔵ワゴン"
+
+msgid "large_refrigerated_wagon_1"
+msgstr "大型冷蔵ワゴン1"
+
+msgid "large_refrigerated_wagon_2"
+msgstr "大型冷蔵ワゴン2"
+
+msgid "small_frozen_shelf"
+msgstr "小型冷凍棚"
+
+msgid "medium_frozen_shelf"
+msgstr "中型冷凍棚"
+
+msgid "small_frozen_wagon"
+msgstr "小型冷凍ワゴン"
+
+msgid "medium_frozen_wagon"
+msgstr "中型冷凍ワゴン"
+
+msgid "large_tobacco_vending"
+msgstr "大型たばこ自動販売機"
+
+msgid "small_cold_drink_vending"
+msgstr "小型冷たい飲料自動販売機"
+
+msgid "large_cold_drink_vending"
+msgstr "大型冷たい飲料自動販売機"
+
+msgid "small_hot_cold_drink_vending"
+msgstr "小型温冷飲料自動販売機"
+
+msgid "large_hot_cold_drink_vending"
+msgstr "大型温冷飲料自動販売機"
+

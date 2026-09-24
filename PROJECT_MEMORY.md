@@ -1833,6 +1833,8 @@ The next large milestone is **turning the single scripted vertical slice into re
 - preserve deterministic engine-native smoke coverage while expanding the playable loop;
 - continue replacing unknown/provisional rules with observation or reverse-engineering evidence.
 
+- **2026-09-24 Android Japanese preview (decision 0154):** Japanese UI/font, larger Android controls, shortcuts/quick save and separate preview package. Android-only starting cash uses the researched 200-million-yen beginner anchor with a free furnished test shop (REMAKE_BALANCED_DEFAULT). Real scene-flow test verifies purchase/save/load/Continue. Still a vertical slice; no claim of complete recreation. See `docs/handoff/2026-09-24-android-preview-delivery.md`.
+
 ## 20. Execution cadence and user-directed work
 
 Scheduled runs are a background cadence, not an exclusive gate for progress.
