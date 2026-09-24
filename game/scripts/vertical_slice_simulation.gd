@@ -837,14 +837,23 @@ func step() -> void:
 # could in principle deadlock two actors approaching each other -- this is
 # a known, accepted limitation of this MVP, not silently worked around.
 func _subcell_is_free_for(mover, target: Vector2i) -> bool:
-    # The checkout interaction cell is a deliberate exception (task #36):
-    # every queued customer's logical position converges on this single
-    # point (store_view.gd offsets them only cosmetically for rendering),
-    # so it is not a physical aisle subject to the passage-width rule --
+    # Every fixture's interaction cell is a deliberate exception, not a
+    # physical aisle subject to the passage-width rule. The checkout
+    # interaction cell is the clearest case (task #36): every queued
+    # customer's logical position converges on this single point
+    # (store_view.gd offsets them only cosmetically for rendering), so
     # exclusive occupancy there would silently break the FIFO queue itself
     # (a second customer could never finish "arriving" to be enqueued).
-    if target == _checkout_interaction:
-        return true
+    # Discovered by CI (task #66) that the same reasoning applies to shelf
+    # interaction cells too: this smoke suite's shared-plan concurrency
+    # scenario has two customers wanting the same product, so the second
+    # customer would otherwise be blocked at the shelf's single interaction
+    # point for the entire duration of the first customer's shopping_ticks
+    # -- a "browsing the same shelf" contention this project has no evidence
+    # for and is not modeling, as opposed to genuine aisle-corridor passing.
+    for fixture in layout.fixtures_by_id.values():
+        if target == _vec2i_from_array(fixture["interaction_subcell"]):
+            return true
     for customer in customers.active_customers():
         if customer != mover and customer.position == target:
             return false

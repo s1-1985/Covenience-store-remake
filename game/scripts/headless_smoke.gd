@@ -771,6 +771,8 @@ func _initialize() -> void:
             if customer.phase == "waiting_checkout":
                 waiting_count += 1
                 continue  # same shared cell, same exemption
+            if customer.phase == "shopping":
+                continue  # stationed at a shelf's interaction cell, same exemption
             if seen_positions.has(customer.position):
                 position_collision_detected = true
             seen_positions[customer.position] = true
