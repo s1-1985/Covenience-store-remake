@@ -2563,12 +2563,16 @@ func _initialize() -> void:
     if not economy_ui_scene.simulation.try_purchase_fixture(
         "potted_plant", "swap-ui-b", Vector2i(5, 12), Vector2i(5, 11)
     ):
+        var swap_ui_b_layout = economy_ui_scene.simulation.layout
         _fail(
-            "swap-ui test: setup fixture B purchase failed (cash=%d, is_game_over=%s, all_settled=%s, has_swap_ui_b=%s)" % [
-                int(economy_ui_scene.simulation.economy.cash_yen),
-                str(economy_ui_scene.simulation.is_game_over),
-                str(economy_ui_scene.simulation.customers.all_settled()),
-                str(economy_ui_scene.simulation.layout.fixtures_by_id.has("swap-ui-b")),
+            "swap-ui test: setup fixture B purchase failed (walkable(5,12)=%s, walkable(6,12)=%s, walkable(5,13)=%s, walkable(6,13)=%s, walkable(5,11)=%s, fixture_at(5,12)=%s, fixture_at(5,11)=%s)" % [
+                str(swap_ui_b_layout.is_walkable(Vector2i(5, 12))),
+                str(swap_ui_b_layout.is_walkable(Vector2i(6, 12))),
+                str(swap_ui_b_layout.is_walkable(Vector2i(5, 13))),
+                str(swap_ui_b_layout.is_walkable(Vector2i(6, 13))),
+                str(swap_ui_b_layout.is_walkable(Vector2i(5, 11))),
+                swap_ui_b_layout.fixture_at(Vector2i(5, 12)),
+                swap_ui_b_layout.fixture_at(Vector2i(5, 11)),
             ]
         )
         return
