@@ -1,0 +1,97 @@
+{
+  "source": "guide PDF17–18 / printed106–109",
+  "units": "guide building grid, not image pixels",
+  "note": "店舗5の床面積欄108と8×12=96が食い違う。原資料の誤記の可能性があり、実装時に画面と照合すること。",
+  "stores": [
+    {
+      "id": "store_type_01",
+      "interior_wh": [
+        5,
+        8
+      ],
+      "building_wh": [
+        7,
+        10
+      ],
+      "outside_wh": [
+        3,
+        10
+      ]
+    },
+    {
+      "id": "store_type_02",
+      "interior_wh": [
+        8,
+        5
+      ],
+      "building_wh": [
+        10,
+        7
+      ],
+      "outside_wh": [
+        10,
+        3
+      ]
+    },
+    {
+      "id": "store_type_03",
+      "interior_wh": [
+        7,
+        10
+      ],
+      "building_wh": [
+        9,
+        12
+      ],
+      "outside_wh": [
+        3,
+        12
+      ]
+    },
+    {
+      "id": "store_type_04",
+      "interior_wh": [
+        10,
+        7
+      ],
+      "building_wh": [
+        12,
+        9
+      ],
+      "outside_wh": [
+        12,
+        3
+      ]
+    },
+    {
+      "id": "store_type_05",
+      "interior_wh": [
+        8,
+        12
+      ],
+      "building_wh": [
+        10,
+        14
+      ],
+      "outside_wh": [
+        3,
+        14
+      ]
+    },
+    {
+      "id": "store_type_06",
+      "interior_wh": [
+        12,
+        8
+      ],
+      "building_wh": [
+        14,
+        10
+      ],
+      "outside_wh": [
+        14,
+        3
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1080 @@
+{
+  "asset_count": 43,
+  "extracted_count": 38,
+  "generated_frame_count": 5,
+  "assets": [
+    {
+      "id": "map_blue_hq",
+      "name_ja": "青・本店",
+      "group": "map_store_marker",
+      "file": "extracted/map_blue_hq.png",
+      "size": [
+        47,
+        45
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 150,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        766,
+        170,
+        813,
+        215
+      ],
+      "name_confirmed": true,
+      "notes": "文字込みの原表示。色だけで所有者の内部IDを決めない。店舗の建築タイプ1〜6とは別。",
+      "sha256": "3db694c5faa1807e1e613c89e6569045f421fba93589b8f9fcd34641337d4575"
+    },
+    {
+      "id": "map_blue_02",
+      "name_ja": "青・02",
+      "group": "map_store_marker",
+      "file": "extracted/map_blue_02.png",
+      "size": [
+        48,
+        49
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 150,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        197,
+        213,
+        245,
+        262
+      ],
+      "name_confirmed": true,
+      "notes": "文字込みの原表示。色だけで所有者の内部IDを決めない。店舗の建築タイプ1〜6とは別。",
+      "sha256": "9262d8870771ea45e7fb25fcf154f614e3351ad90b1651117c60e69e67ef82a0"
+    },
+    {
+      "id": "map_red_hq",
+      "name_ja": "赤・本店",
+      "group": "map_store_marker",
+      "file": "extracted/map_red_hq.png",
+      "size": [
+        49,
+        49
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 2070,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        480,
+        263,
+        529,
+        312
+      ],
+      "name_confirmed": true,
+      "notes": "文字込みの原表示。色だけで所有者の内部IDを決めない。店舗の建築タイプ1〜6とは別。",
+      "sha256": "dff06654ad67c64708b4747544752955c5074d0d46251f8b91828d9e587da93e"
+    },
+    {
+      "id": "map_red_02",
+      "name_ja": "赤・02",
+      "group": "map_store_marker",
+      "file": "extracted/map_red_02.png",
+      "size": [
+        48,
+        46
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 150,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        834,
+        507,
+        882,
+        553
+      ],
+      "name_confirmed": true,
+      "notes": "文字込みの原表示。色だけで所有者の内部IDを決めない。店舗の建築タイプ1〜6とは別。",
+      "sha256": "8b05b3ed986ed7232f4ab3846f5d5ab962dd81e9c3e7cd1acb1e03d124b59b01"
+    },
+    {
+      "id": "induce_p1_r1_c1",
+      "name_ja": "誘致メニュー1頁・1行1列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p1_r1_c1.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        375,
+        240,
+        469,
+        336
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "8211b93583314b586e49f2c2db521822063b59f255747ec83449a3f7587b729f"
+    },
+    {
+      "id": "induce_p1_r1_c2",
+      "name_ja": "消防署",
+      "group": "induction_menu",
+      "file": "extracted/induce_p1_r1_c2.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 157,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        493,
+        240,
+        587,
+        336
+      ],
+      "name_confirmed": true,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "17a941dfaa9cfb0d68b94b7ac81cd403c2b3a27958755cef40e421176e4add2b"
+    },
+    {
+      "id": "induce_p1_r1_c3",
+      "name_ja": "マンション",
+      "group": "induction_menu",
+      "file": "extracted/induce_p1_r1_c3.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        611,
+        240,
+        705,
+        336
+      ],
+      "name_confirmed": true,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "fed943f23a3b0572033e5fc5a922bf8f06eb33045fd9b46544835e3d2aea5551"
+    },
+    {
+      "id": "induce_p1_r1_c4",
+      "name_ja": "会社",
+      "group": "induction_menu",
+      "file": "extracted/induce_p1_r1_c4.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        729,
+        240,
+        823,
+        336
+      ],
+      "name_confirmed": true,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "50e6e67de380831cb735a0b9bac68745415e418f9d7b42f3b87e4dbcf2aec686"
+    },
+    {
+      "id": "induce_p1_r1_c5",
+      "name_ja": "誘致メニュー1頁・1行5列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p1_r1_c5.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        847,
+        240,
+        941,
+        336
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "4fb9c091719f06fe6a53ea66fa0a5d06eb375e7ad886e9d8c946090a0605e39d"
+    },
+    {
+      "id": "induce_p1_r2_c1",
+      "name_ja": "誘致メニュー1頁・2行1列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p1_r2_c1.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        375,
+        360,
+        469,
+        456
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "b0d6bd67a47f6828d98f041bf9bf988bde2a935a4d19eace9089fdc3aa056a39"
+    },
+    {
+      "id": "induce_p1_r2_c2",
+      "name_ja": "運動場",
+      "group": "induction_menu",
+      "file": "extracted/induce_p1_r2_c2.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        493,
+        360,
+        587,
+        456
+      ],
+      "name_confirmed": true,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "c96797226f0c0ea268f103bf0b38fd545266951dfaf81c26bba25078303af4b0"
+    },
+    {
+      "id": "induce_p1_r2_c3",
+      "name_ja": "イベント会場",
+      "group": "induction_menu",
+      "file": "extracted/induce_p1_r2_c3.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        611,
+        360,
+        705,
+        456
+      ],
+      "name_confirmed": true,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "55585c42692786cf5edcc954d03401caf933051bd902fb0fb9de88dba534b61a"
+    },
+    {
+      "id": "induce_p1_r2_c4",
+      "name_ja": "誘致メニュー1頁・2行4列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p1_r2_c4.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        729,
+        360,
+        823,
+        456
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "2bb8fa629531375cb7b6acf2cbf6af0ae09bdf6612162189164d3769cf9105e8"
+    },
+    {
+      "id": "induce_p1_r2_c5",
+      "name_ja": "誘致メニュー1頁・2行5列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p1_r2_c5.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        847,
+        360,
+        941,
+        456
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "9391029d1c642154053f92f80344b701ac11d5523901f157016ae48cac1d2d9c"
+    },
+    {
+      "id": "induce_p2_r1_c1",
+      "name_ja": "誘致メニュー2頁・1行1列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p2_r1_c1.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 165,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        375,
+        240,
+        469,
+        336
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "ef15631f2d332003da4f0a46380472cd64b018a555f36e87df7392fc0db85e71"
+    },
+    {
+      "id": "induce_p2_r1_c2",
+      "name_ja": "誘致メニュー2頁・1行2列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p2_r1_c2.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 165,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        493,
+        240,
+        587,
+        336
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "6fd9e8b37c780fd5c41049518d6defd19a061a54dc1ff346a0c0fc637795d04c"
+    },
+    {
+      "id": "induce_p2_r1_c3",
+      "name_ja": "大学",
+      "group": "induction_menu",
+      "file": "extracted/induce_p2_r1_c3.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 167,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        611,
+        240,
+        705,
+        336
+      ],
+      "name_confirmed": true,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "7f2458238f086856b9dd3fffe4382d26ea55933bb79ff6ead4478b8a38b49e59"
+    },
+    {
+      "id": "induce_p2_r1_c4",
+      "name_ja": "誘致メニュー2頁・1行4列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p2_r1_c4.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 165,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        729,
+        240,
+        823,
+        336
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "3f8a04d6e8213061a3303c9a56e5e0aa3028b35439a5468916fa4c2fdbccf8ad"
+    },
+    {
+      "id": "induce_p2_r2_c1",
+      "name_ja": "公園",
+      "group": "induction_menu",
+      "file": "extracted/induce_p2_r2_c1.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 165,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        375,
+        360,
+        469,
+        456
+      ],
+      "name_confirmed": true,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "2d171fa0309fd4fb1296abe69aecfbdb381829639c6ff8e0c14cce2a39bfa99b"
+    },
+    {
+      "id": "induce_p2_r2_c2",
+      "name_ja": "誘致メニュー2頁・2行2列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p2_r2_c2.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 165,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        493,
+        360,
+        587,
+        456
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "cb33494b972d18335146853c254b9c871db525932cf7a79137e903e659be7415"
+    },
+    {
+      "id": "induce_p2_r2_c3",
+      "name_ja": "誘致メニュー2頁・2行3列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p2_r2_c3.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 165,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        611,
+        360,
+        705,
+        456
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "cbe6ad017d4e28cfcb93c1c4ad317554c112b4a7ec66cc747d5e4e8d9002eb9a"
+    },
+    {
+      "id": "induce_p2_r2_c4",
+      "name_ja": "誘致メニュー2頁・2行4列（名称未照合）",
+      "group": "induction_menu",
+      "file": "extracted/induce_p2_r2_c4.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 165,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        729,
+        360,
+        823,
+        456
+      ],
+      "name_confirmed": false,
+      "notes": "カーソルが重ならない別時刻を選択。名称が未照合の枠は位置IDで保持。似た図柄でもメニュー上は別項目。",
+      "sha256": "78c67e1a11af25b58666dedd13155d3ce2a90a0eb248a20add5c15683cf18cc1"
+    },
+    {
+      "id": "ad_direct_mail_unchecked",
+      "name_ja": "direct_mail・未選択",
+      "group": "advertising_state",
+      "file": "extracted/ad_direct_mail_unchecked.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 191,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        375,
+        288,
+        469,
+        384
+      ],
+      "name_confirmed": true,
+      "notes": "暗い表示は動画で観測した未選択状態。操作不能・無効状態とは断定しない。",
+      "sha256": "c7285051eb6afe1143489234266fce07fb400f6407e929602b0740f70eff4a81"
+    },
+    {
+      "id": "ad_newspaper_unchecked",
+      "name_ja": "newspaper・未選択",
+      "group": "advertising_state",
+      "file": "extracted/ad_newspaper_unchecked.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 189,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        493,
+        288,
+        587,
+        384
+      ],
+      "name_confirmed": true,
+      "notes": "暗い表示は動画で観測した未選択状態。操作不能・無効状態とは断定しない。",
+      "sha256": "50963bfbe8b347a3ed01ac183b194424e9ab0f682fb81310e10c48b4963302c7"
+    },
+    {
+      "id": "ad_airship_unchecked",
+      "name_ja": "airship・未選択",
+      "group": "advertising_state",
+      "file": "extracted/ad_airship_unchecked.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 189,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        611,
+        288,
+        705,
+        384
+      ],
+      "name_confirmed": true,
+      "notes": "暗い表示は動画で観測した未選択状態。操作不能・無効状態とは断定しない。",
+      "sha256": "b19dd44eecfea9b989d401ea06ff24b65acc3ab88f8d8c946af95bed5dedf79f"
+    },
+    {
+      "id": "ad_radio_unchecked",
+      "name_ja": "radio・未選択",
+      "group": "advertising_state",
+      "file": "extracted/ad_radio_unchecked.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 189,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        729,
+        288,
+        823,
+        384
+      ],
+      "name_confirmed": true,
+      "notes": "暗い表示は動画で観測した未選択状態。操作不能・無効状態とは断定しない。",
+      "sha256": "804277e4e5a271f66c2ae3bb33ba83f4e21d15700c69822ff846f6bdc295e662"
+    },
+    {
+      "id": "ad_television_unchecked",
+      "name_ja": "television・未選択",
+      "group": "advertising_state",
+      "file": "extracted/ad_television_unchecked.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 189,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        847,
+        288,
+        941,
+        384
+      ],
+      "name_confirmed": true,
+      "notes": "暗い表示は動画で観測した未選択状態。操作不能・無効状態とは断定しない。",
+      "sha256": "fe949158d9f86766c97061daffe16ed2a03f50f9cc6fe241dde55247ee172ee8"
+    },
+    {
+      "id": "ad_direct_mail_checked",
+      "name_ja": "ダイレクトメール・選択済み",
+      "group": "advertising_state",
+      "file": "extracted/ad_direct_mail_checked.png",
+      "size": [
+        94,
+        96
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 187,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        375,
+        288,
+        469,
+        384
+      ],
+      "name_confirmed": true,
+      "notes": "",
+      "sha256": "bae8a58fcf6eb16a55487310a8d488c98805aa0c8ea100c976c9d62140a4bd38"
+    },
+    {
+      "id": "panel_beige_nw",
+      "name_ja": "ベージュ窓・nw",
+      "group": "ui_panel",
+      "file": "extracted/panel_beige_nw.png",
+      "size": [
+        10,
+        10
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        324,
+        135,
+        334,
+        145
+      ],
+      "name_confirmed": true,
+      "notes": "不透明なパネル部材。9分割画像として使用。文字を含まない部分を採用。",
+      "sha256": "96d92735d5bf858901fe65f8cd9b5c5aa08ccc67ba39016e9026bb87228509a9"
+    },
+    {
+      "id": "panel_beige_n",
+      "name_ja": "ベージュ窓・n",
+      "group": "ui_panel",
+      "file": "extracted/panel_beige_n.png",
+      "size": [
+        32,
+        10
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        940,
+        135,
+        972,
+        145
+      ],
+      "name_confirmed": true,
+      "notes": "不透明なパネル部材。9分割画像として使用。文字を含まない部分を採用。",
+      "sha256": "c31d1fb6aa07f63b7a6ee75f599c3f03d4b06a09303ad1a437202e0aaa144781"
+    },
+    {
+      "id": "panel_beige_ne",
+      "name_ja": "ベージュ窓・ne",
+      "group": "ui_panel",
+      "file": "extracted/panel_beige_ne.png",
+      "size": [
+        10,
+        10
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        997,
+        135,
+        1007,
+        145
+      ],
+      "name_confirmed": true,
+      "notes": "不透明なパネル部材。9分割画像として使用。文字を含まない部分を採用。",
+      "sha256": "ed484cc8c91470329feacdf1926d893a4a84e69e666201d0d9255f1875be541e"
+    },
+    {
+      "id": "panel_beige_w",
+      "name_ja": "ベージュ窓・w",
+      "group": "ui_panel",
+      "file": "extracted/panel_beige_w.png",
+      "size": [
+        10,
+        32
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        324,
+        397,
+        334,
+        429
+      ],
+      "name_confirmed": true,
+      "notes": "不透明なパネル部材。9分割画像として使用。文字を含まない部分を採用。",
+      "sha256": "7a684f92afca93c45e79246bdfc4c9f0d900496bd2158d279268b60429aa66fe"
+    },
+    {
+      "id": "panel_beige_center",
+      "name_ja": "ベージュ窓・center",
+      "group": "ui_panel",
+      "file": "extracted/panel_beige_center.png",
+      "size": [
+        32,
+        32
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        950,
+        397,
+        982,
+        429
+      ],
+      "name_confirmed": true,
+      "notes": "不透明なパネル部材。9分割画像として使用。文字を含まない部分を採用。",
+      "sha256": "1567a6b5489554bd8db411953145f173ede3035f814611b734baf2298bdc7133"
+    },
+    {
+      "id": "panel_beige_e",
+      "name_ja": "ベージュ窓・e",
+      "group": "ui_panel",
+      "file": "extracted/panel_beige_e.png",
+      "size": [
+        10,
+        32
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        997,
+        397,
+        1007,
+        429
+      ],
+      "name_confirmed": true,
+      "notes": "不透明なパネル部材。9分割画像として使用。文字を含まない部分を採用。",
+      "sha256": "b320de30f13ce9410770d507b01aa958847fda26045b851c8dfc5e178799bfce"
+    },
+    {
+      "id": "panel_beige_sw",
+      "name_ja": "ベージュ窓・sw",
+      "group": "ui_panel",
+      "file": "extracted/panel_beige_sw.png",
+      "size": [
+        10,
+        10
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        324,
+        483,
+        334,
+        493
+      ],
+      "name_confirmed": true,
+      "notes": "不透明なパネル部材。9分割画像として使用。文字を含まない部分を採用。",
+      "sha256": "0ef81f8cde2247c035d5b852e72b236c0fd12edad9b26ce68ecfa7533c2a391f"
+    },
+    {
+      "id": "panel_beige_s",
+      "name_ja": "ベージュ窓・s",
+      "group": "ui_panel",
+      "file": "extracted/panel_beige_s.png",
+      "size": [
+        32,
+        10
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        940,
+        483,
+        972,
+        493
+      ],
+      "name_confirmed": true,
+      "notes": "不透明なパネル部材。9分割画像として使用。文字を含まない部分を採用。",
+      "sha256": "eeb99b4528c865a66ed2173e58ccdf2fbab70fe46a510cce6413c727185826fd"
+    },
+    {
+      "id": "panel_beige_se",
+      "name_ja": "ベージュ窓・se",
+      "group": "ui_panel",
+      "file": "extracted/panel_beige_se.png",
+      "size": [
+        10,
+        10
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 155,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        997,
+        483,
+        1007,
+        493
+      ],
+      "name_confirmed": true,
+      "notes": "不透明なパネル部材。9分割画像として使用。文字を含まない部分を採用。",
+      "sha256": "9e8f88573d6cb8791720b7ade6f119bfd6338e3b9c31420665df28573cb2f076"
+    },
+    {
+      "id": "menu_highlight_pink",
+      "name_ja": "メニュー選択行のピンク色",
+      "group": "ui_selection",
+      "file": "extracted/menu_highlight_pink.png",
+      "size": [
+        37,
+        23
+      ],
+      "origin": "video_crop",
+      "source_video": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+      "timestamp_seconds": 150,
+      "source_frame_size": [
+        1280,
+        720
+      ],
+      "crop_xyxy": [
+        433,
+        278,
+        470,
+        301
+      ],
+      "name_confirmed": true,
+      "notes": "行背景用の不透明な色片。文字は別描画。",
+      "sha256": "3f4a0fc9853e9a131ff770a3b0c0b01c5dc5a3042fe55c465591b982836d08c1"
+    },
+    {
+      "id": "fire_00",
+      "name_ja": "火災補完フレーム1",
+      "group": "optional_effect",
+      "file": "generated_optional/fire_00.png",
+      "size": [
+        32,
+        48
+      ],
+      "origin": "newly_generated",
+      "notes": "原作のフレームではない。採用判断が必要。",
+      "pivot": [
+        16,
+        46
+      ],
+      "sha256": "1495b0c048b6d7e907833a6cc487380229f635fe3800dccc055e0cd6baa06d1e"
+    },
+    {
+      "id": "fire_01",
+      "name_ja": "火災補完フレーム2",
+      "group": "optional_effect",
+      "file": "generated_optional/fire_01.png",
+      "size": [
+        32,
+        48
+      ],
+      "origin": "newly_generated",
+      "notes": "原作のフレームではない。採用判断が必要。",
+      "pivot": [
+        16,
+        46
+      ],
+      "sha256": "1fd35fe916807382331d51f7bddf780193f977fc836d901607e78fa994e7f492"
+    },
+    {
+      "id": "fire_02",
+      "name_ja": "火災補完フレーム3",
+      "group": "optional_effect",
+      "file": "generated_optional/fire_02.png",
+      "size": [
+        32,
+        48
+      ],
+      "origin": "newly_generated",
+      "notes": "原作のフレームではない。採用判断が必要。",
+      "pivot": [
+        16,
+        46
+      ],
+      "sha256": "ccd2e1aa830d192611c771eeeb3ed9f37eb5989a7dff2d5ba24788980771ece9"
+    },
+    {
+      "id": "fire_03",
+      "name_ja": "火災補完フレーム4",
+      "group": "optional_effect",
+      "file": "generated_optional/fire_03.png",
+      "size": [
+        32,
+        48
+      ],
+      "origin": "newly_generated",
+      "notes": "原作のフレームではない。採用判断が必要。",
+      "pivot": [
+        16,
+        46
+      ],
+      "sha256": "625df60a903e0be2af4705321506ca3925c79124240b975a44095ed498057a9e"
+    },
+    {
+      "id": "airship_left",
+      "name_ja": "広告飛行船・左向き（補完候補）",
+      "group": "optional_effect",
+      "file": "generated_optional/airship_left.png",
+      "size": [
+        64,
+        32
+      ],
+      "origin": "newly_generated",
+      "notes": "広告アイコンの配色を参考に生成。原作の移動演出の存在・形状は未確認。画面移動は座標更新で実装し、静止画を原作アニメーションと呼ばない。",
+      "pivot": [
+        32,
+        16
+      ],
+      "sha256": "10862f6e145dad50db83c88e299f811045063306ad2ac247b69c21f89a9b0f46"
+    }
+  ]
+}

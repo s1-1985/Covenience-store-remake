@@ -1,0 +1,1286 @@
+{
+  "asset_count": 28,
+  "origin": "extracted_from_user_supplied_sources",
+  "generated_assets": 0,
+  "source_pdf_sha256": "a9578b92efca28583d90354b5276f6c964e1935f5c51aec381b9ee1e548407a0",
+  "assets": [
+    {
+      "id": "store_type_01",
+      "name_ja": "店舗1の選択アイコン",
+      "category": "store_menu",
+      "file": "icons_64/store_type_01.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/store_type_01.png",
+      "native_crop_size": [
+        235,
+        235
+      ],
+      "variants": {
+        "32": "icons_32/store_type_01.png",
+        "64": "icons_64/store_type_01.png",
+        "128": "icons_128/store_type_01.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 17,
+        "printed_page": 107,
+        "render_scale": 3,
+        "crop_xyxy": [
+          2126,
+          144,
+          2361,
+          379
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "ada999ebe2f1d33d1ddb58da08e9f47690dd0eeb17452c37c23c665f0dff236d"
+    },
+    {
+      "id": "store_type_02",
+      "name_ja": "店舗2の選択アイコン",
+      "category": "store_menu",
+      "file": "icons_64/store_type_02.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/store_type_02.png",
+      "native_crop_size": [
+        236,
+        236
+      ],
+      "variants": {
+        "32": "icons_32/store_type_02.png",
+        "64": "icons_64/store_type_02.png",
+        "128": "icons_128/store_type_02.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 17,
+        "printed_page": 107,
+        "render_scale": 3,
+        "crop_xyxy": [
+          2130,
+          964,
+          2366,
+          1200
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "43a1b72dd695acf95b5f3d12c4b896b4df5275c06d0bdf4fe408b1f601f614fa"
+    },
+    {
+      "id": "store_type_03",
+      "name_ja": "店舗3の選択アイコン",
+      "category": "store_menu",
+      "file": "icons_64/store_type_03.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/store_type_03.png",
+      "native_crop_size": [
+        235,
+        236
+      ],
+      "variants": {
+        "32": "icons_32/store_type_03.png",
+        "64": "icons_64/store_type_03.png",
+        "128": "icons_128/store_type_03.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 18,
+        "printed_page": 108,
+        "render_scale": 3,
+        "crop_xyxy": [
+          954,
+          148,
+          1189,
+          384
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "7d6c566096a50ed9e6acc7cda782fdb5e21567035fc5dc199d7308c9cfd0ed6c"
+    },
+    {
+      "id": "store_type_04",
+      "name_ja": "店舗4の選択アイコン",
+      "category": "store_menu",
+      "file": "icons_64/store_type_04.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/store_type_04.png",
+      "native_crop_size": [
+        236,
+        236
+      ],
+      "variants": {
+        "32": "icons_32/store_type_04.png",
+        "64": "icons_64/store_type_04.png",
+        "128": "icons_128/store_type_04.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 18,
+        "printed_page": 108,
+        "render_scale": 3,
+        "crop_xyxy": [
+          947,
+          973,
+          1183,
+          1209
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "efba2d2bec3cd294b77ce0ce2f69162189afde18297ac85523319557499f7f1f"
+    },
+    {
+      "id": "store_type_05",
+      "name_ja": "店舗5の選択アイコン",
+      "category": "store_menu",
+      "file": "icons_64/store_type_05.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/store_type_05.png",
+      "native_crop_size": [
+        236,
+        236
+      ],
+      "variants": {
+        "32": "icons_32/store_type_05.png",
+        "64": "icons_64/store_type_05.png",
+        "128": "icons_128/store_type_05.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 18,
+        "printed_page": 109,
+        "render_scale": 3,
+        "crop_xyxy": [
+          2130,
+          137,
+          2366,
+          373
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "0605f1761eb440530ada31da3fb906ccf2e51ad2678aef522a1f9d8a2523d9de"
+    },
+    {
+      "id": "store_type_06",
+      "name_ja": "店舗6の選択アイコン",
+      "category": "store_menu",
+      "file": "icons_64/store_type_06.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/store_type_06.png",
+      "native_crop_size": [
+        236,
+        236
+      ],
+      "variants": {
+        "32": "icons_32/store_type_06.png",
+        "64": "icons_64/store_type_06.png",
+        "128": "icons_128/store_type_06.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 18,
+        "printed_page": 109,
+        "render_scale": 3,
+        "crop_xyxy": [
+          2132,
+          958,
+          2368,
+          1194
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "bf99b84f3f904407f1cc91c1982426af4cf221e9f1da26d0b34885ebd726337a"
+    },
+    {
+      "id": "advertising_direct_mail",
+      "name_ja": "ダイレクトメール",
+      "category": "advertising_menu",
+      "file": "icons_64/advertising_direct_mail.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/advertising_direct_mail.png",
+      "native_crop_size": [
+        240,
+        240
+      ],
+      "variants": {
+        "32": "icons_32/advertising_direct_mail.png",
+        "64": "icons_64/advertising_direct_mail.png",
+        "128": "icons_128/advertising_direct_mail.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 24,
+        "printed_page": 121,
+        "render_scale": 3,
+        "crop_xyxy": [
+          1382,
+          141,
+          1622,
+          381
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "dc9216a19ac92faf300ae3ec01774c82ca62d2335786748b27b09558b2b77fcc"
+    },
+    {
+      "id": "advertising_newspaper",
+      "name_ja": "新聞広告",
+      "category": "advertising_menu",
+      "file": "icons_64/advertising_newspaper.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/advertising_newspaper.png",
+      "native_crop_size": [
+        240,
+        240
+      ],
+      "variants": {
+        "32": "icons_32/advertising_newspaper.png",
+        "64": "icons_64/advertising_newspaper.png",
+        "128": "icons_128/advertising_newspaper.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 24,
+        "printed_page": 121,
+        "render_scale": 3,
+        "crop_xyxy": [
+          1382,
+          465,
+          1622,
+          705
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "954e8a4d05ce6e54bb8ba1359c9816fb881a9ad81c52a4f72e864ff7c0ca0896"
+    },
+    {
+      "id": "advertising_airship",
+      "name_ja": "飛行船",
+      "category": "advertising_menu",
+      "file": "icons_64/advertising_airship.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/advertising_airship.png",
+      "native_crop_size": [
+        240,
+        240
+      ],
+      "variants": {
+        "32": "icons_32/advertising_airship.png",
+        "64": "icons_64/advertising_airship.png",
+        "128": "icons_128/advertising_airship.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 24,
+        "printed_page": 121,
+        "render_scale": 3,
+        "crop_xyxy": [
+          1382,
+          791,
+          1622,
+          1031
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "8f78f3718af058e86166351bc661313079d9c896acae476d8e268acfb57aa5ae"
+    },
+    {
+      "id": "advertising_radio",
+      "name_ja": "ラジオCM",
+      "category": "advertising_menu",
+      "file": "icons_64/advertising_radio.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/advertising_radio.png",
+      "native_crop_size": [
+        240,
+        240
+      ],
+      "variants": {
+        "32": "icons_32/advertising_radio.png",
+        "64": "icons_64/advertising_radio.png",
+        "128": "icons_128/advertising_radio.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 24,
+        "printed_page": 121,
+        "render_scale": 3,
+        "crop_xyxy": [
+          1382,
+          1116,
+          1622,
+          1356
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "4990e205c8f0801c4564b39c9fa4ccfb01376c0901751089b1699fe818a7e00f"
+    },
+    {
+      "id": "advertising_television",
+      "name_ja": "テレビCM",
+      "category": "advertising_menu",
+      "file": "icons_64/advertising_television.png",
+      "size": [
+        64,
+        64
+      ],
+      "source_crop": "source_crops/advertising_television.png",
+      "native_crop_size": [
+        240,
+        240
+      ],
+      "variants": {
+        "32": "icons_32/advertising_television.png",
+        "64": "icons_64/advertising_television.png",
+        "128": "icons_128/advertising_television.png"
+      },
+      "source": {
+        "type": "guide",
+        "file": "downloadfile(1)(7).PDF",
+        "pdf_page": 24,
+        "printed_page": 121,
+        "render_scale": 3,
+        "crop_xyxy": [
+          1382,
+          1440,
+          1622,
+          1680
+        ]
+      },
+      "notes": "攻略本のメニュー図。青い枠・内部背景を保持。マップ配置用ではない。",
+      "sha256": "93ed4f1f536870a20a42aaa93869a239e1cd6d65d7763d09789f82245ad1926e"
+    },
+    {
+      "id": "entrance_in",
+      "name_ja": "入店側の入口",
+      "category": "interior",
+      "file": "sprites/entrance_in.png",
+      "size": [
+        46,
+        45
+      ],
+      "source_crop": "source_crops/entrance_in.png",
+      "native_crop_size": [
+        46,
+        45
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 904,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          410,
+          240,
+          456,
+          285
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "下向き赤矢印・マット・敷居を含む。不透明な建築部材。",
+      "sha256": "3b51a31e661e6033903c9d516e705e3c3711a90e6fc7f2c11399b30ca4198441"
+    },
+    {
+      "id": "entrance_out",
+      "name_ja": "退店側の入口",
+      "category": "interior",
+      "file": "sprites/entrance_out.png",
+      "size": [
+        47,
+        45
+      ],
+      "source_crop": "source_crops/entrance_out.png",
+      "native_crop_size": [
+        47,
+        45
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 904,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          456,
+          240,
+          503,
+          285
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "上向き赤矢印・マット・敷居を含む。不透明な建築部材。",
+      "sha256": "85aed7ce4fb93caad421ba1ebb3818ca073f2e37a5e3b9a8455a136ec20ae67a"
+    },
+    {
+      "id": "floor_blue_repeat",
+      "name_ja": "店内の青い床",
+      "category": "interior",
+      "file": "sprites/floor_blue_repeat.png",
+      "size": [
+        47,
+        47
+      ],
+      "source_crop": "source_crops/floor_blue_repeat.png",
+      "native_crop_size": [
+        47,
+        47
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          342,
+          532,
+          389,
+          579
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "無人の床を切り出した反復用候補。映像の拡大・圧縮で境界に微差あり。ゲームの1マスと同義ではない。",
+      "sha256": "566a4d636f4d6ed0d53b8eb34e175a3b29564d1b00845a7df1d507ca5eec70f3"
+    },
+    {
+      "id": "ground_exterior_gray",
+      "name_ja": "店舗外の灰色舗装",
+      "category": "interior",
+      "file": "sprites/ground_exterior_gray.png",
+      "size": [
+        47,
+        47
+      ],
+      "source_crop": "source_crops/ground_exterior_gray.png",
+      "native_crop_size": [
+        47,
+        47
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          600,
+          125,
+          647,
+          172
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "舗装の反復用候補。ゲームの1マスと同義ではない。",
+      "sha256": "5b19534d7b7812d771503cb649f1343b41340e531245c5d0442d176462df39dd"
+    },
+    {
+      "id": "ground_perimeter_tan",
+      "name_ja": "店舗周囲の茶色地面",
+      "category": "interior",
+      "file": "sprites/ground_perimeter_tan.png",
+      "size": [
+        20,
+        20
+      ],
+      "source_crop": "source_crops/ground_perimeter_tan.png",
+      "native_crop_size": [
+        20,
+        20
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          190,
+          350,
+          210,
+          370
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "外周帯の地面。細い帯からの切り出しで、小面積向け。",
+      "sha256": "6c0c3e52ae022086086613b67f86c9462483909212ed9ea821b3ef8b52ce78bd"
+    },
+    {
+      "id": "wall_west",
+      "name_ja": "左外周線",
+      "category": "interior",
+      "file": "sprites/wall_west.png",
+      "size": [
+        11,
+        47
+      ],
+      "source_crop": "source_crops/wall_west.png",
+      "native_crop_size": [
+        11,
+        47
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          211,
+          350,
+          222,
+          397
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "動画の外周線部材。元画面の拡大率に依存する。辺は長辺方向だけを伸縮・反復し、角は伸縮しない。隣の什器色が端に残る可能性あり。",
+      "sha256": "3e9b85706cf7ac335eb6bfc845ebdd0d845479fd7b339a1f49281a8cf7a61352"
+    },
+    {
+      "id": "wall_east",
+      "name_ja": "右外周線",
+      "category": "interior",
+      "file": "sprites/wall_east.png",
+      "size": [
+        11,
+        47
+      ],
+      "source_crop": "source_crops/wall_east.png",
+      "native_crop_size": [
+        11,
+        47
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          689,
+          350,
+          700,
+          397
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "動画の外周線部材。元画面の拡大率に依存する。辺は長辺方向だけを伸縮・反復し、角は伸縮しない。隣の什器色が端に残る可能性あり。",
+      "sha256": "0f61864946e2e44684ef2acec8c693b1fa6ca3ec0401109d3523e839583af520"
+    },
+    {
+      "id": "wall_north",
+      "name_ja": "上外周線",
+      "category": "interior",
+      "file": "sprites/wall_north.png",
+      "size": [
+        47,
+        9
+      ],
+      "source_crop": "source_crops/wall_north.png",
+      "native_crop_size": [
+        47,
+        9
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          550,
+          277,
+          597,
+          286
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "動画の外周線部材。元画面の拡大率に依存する。辺は長辺方向だけを伸縮・反復し、角は伸縮しない。隣の什器色が端に残る可能性あり。",
+      "sha256": "1ed8ca60a8619fe522701560f4ccad6de2341f8563569e963914a3e07ac1b496"
+    },
+    {
+      "id": "wall_south",
+      "name_ja": "下外周線",
+      "category": "interior",
+      "file": "sprites/wall_south.png",
+      "size": [
+        47,
+        13
+      ],
+      "source_crop": "source_crops/wall_south.png",
+      "native_crop_size": [
+        47,
+        13
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          550,
+          624,
+          597,
+          637
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "動画の外周線部材。元画面の拡大率に依存する。辺は長辺方向だけを伸縮・反復し、角は伸縮しない。隣の什器色が端に残る可能性あり。",
+      "sha256": "32224002cb4e06db740261e6837d7c98c564c19f215337e239b7103c82dc4561"
+    },
+    {
+      "id": "wall_nw",
+      "name_ja": "外周左上角",
+      "category": "interior",
+      "file": "sprites/wall_nw.png",
+      "size": [
+        12,
+        13
+      ],
+      "source_crop": "source_crops/wall_nw.png",
+      "native_crop_size": [
+        12,
+        13
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          211,
+          277,
+          223,
+          290
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "動画の外周線部材。元画面の拡大率に依存する。辺は長辺方向だけを伸縮・反復し、角は伸縮しない。隣の什器色が端に残る可能性あり。",
+      "sha256": "64111b92847de7f5794657fea791da9cadf72d63816e1580a7b7774830297ea0"
+    },
+    {
+      "id": "wall_ne",
+      "name_ja": "外周右上角",
+      "category": "interior",
+      "file": "sprites/wall_ne.png",
+      "size": [
+        12,
+        13
+      ],
+      "source_crop": "source_crops/wall_ne.png",
+      "native_crop_size": [
+        12,
+        13
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          688,
+          277,
+          700,
+          290
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "動画の外周線部材。元画面の拡大率に依存する。辺は長辺方向だけを伸縮・反復し、角は伸縮しない。隣の什器色が端に残る可能性あり。",
+      "sha256": "9146d1c76faa48332ce03d3049bb3b0d531a3a594ae32987a7340d578559d7c4"
+    },
+    {
+      "id": "wall_sw",
+      "name_ja": "外周左下角",
+      "category": "interior",
+      "file": "sprites/wall_sw.png",
+      "size": [
+        13,
+        13
+      ],
+      "source_crop": "source_crops/wall_sw.png",
+      "native_crop_size": [
+        13,
+        13
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          211,
+          624,
+          224,
+          637
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "動画の外周線部材。元画面の拡大率に依存する。辺は長辺方向だけを伸縮・反復し、角は伸縮しない。隣の什器色が端に残る可能性あり。",
+      "sha256": "dd87dc76ef86b0c334d88135db016660998f3365bcb89e6339e500fa9781bca8"
+    },
+    {
+      "id": "wall_se",
+      "name_ja": "外周右下角",
+      "category": "interior",
+      "file": "sprites/wall_se.png",
+      "size": [
+        12,
+        13
+      ],
+      "source_crop": "source_crops/wall_se.png",
+      "native_crop_size": [
+        12,
+        13
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          688,
+          624,
+          700,
+          637
+        ],
+        "alpha_polygon_absolute": null,
+        "alpha_hole_absolute": null
+      },
+      "notes": "動画の外周線部材。元画面の拡大率に依存する。辺は長辺方向だけを伸縮・反復し、角は伸縮しない。隣の什器色が端に残る可能性あり。",
+      "sha256": "7ef01470d83eee644a9206c92bbcb8dcf60dc9992a509d2b5eafbb2713960bfb"
+    },
+    {
+      "id": "status_tobacco",
+      "name_ja": "たばこの表示アイコン",
+      "category": "status",
+      "file": "sprites/status_tobacco.png",
+      "size": [
+        42,
+        41
+      ],
+      "source_crop": "source_crops/status_tobacco.png",
+      "native_crop_size": [
+        42,
+        41
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          654,
+          646,
+          696,
+          687
+        ],
+        "alpha_polygon_absolute": [
+          [
+            655,
+            676
+          ],
+          [
+            661,
+            670
+          ],
+          [
+            664,
+            663
+          ],
+          [
+            679,
+            650
+          ],
+          [
+            681,
+            646
+          ],
+          [
+            686,
+            647
+          ],
+          [
+            690,
+            650
+          ],
+          [
+            695,
+            654
+          ],
+          [
+            691,
+            660
+          ],
+          [
+            677,
+            673
+          ],
+          [
+            669,
+            681
+          ],
+          [
+            665,
+            687
+          ],
+          [
+            660,
+            684
+          ],
+          [
+            658,
+            681
+          ],
+          [
+            654,
+            680
+          ]
+        ],
+        "alpha_hole_absolute": null
+      },
+      "notes": "煙を含む手動輪郭。販売許可等との正確な表示条件は未確定。",
+      "sha256": "afe1856a10dc4cf93f451cb573b299d51fd3335ef8ca9f1e210becbf2039feee"
+    },
+    {
+      "id": "status_alcohol",
+      "name_ja": "酒の表示アイコン",
+      "category": "status",
+      "file": "sprites/status_alcohol.png",
+      "size": [
+        41,
+        45
+      ],
+      "source_crop": "source_crops/status_alcohol.png",
+      "native_crop_size": [
+        41,
+        45
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          698,
+          643,
+          739,
+          688
+        ],
+        "alpha_polygon_absolute": [
+          [
+            700,
+            657
+          ],
+          [
+            704,
+            652
+          ],
+          [
+            703,
+            648
+          ],
+          [
+            708,
+            648
+          ],
+          [
+            710,
+            643
+          ],
+          [
+            719,
+            643
+          ],
+          [
+            721,
+            648
+          ],
+          [
+            726,
+            647
+          ],
+          [
+            730,
+            654
+          ],
+          [
+            729,
+            658
+          ],
+          [
+            735,
+            661
+          ],
+          [
+            738,
+            664
+          ],
+          [
+            738,
+            679
+          ],
+          [
+            734,
+            683
+          ],
+          [
+            730,
+            683
+          ],
+          [
+            729,
+            687
+          ],
+          [
+            700,
+            687
+          ],
+          [
+            698,
+            683
+          ],
+          [
+            698,
+            660
+          ]
+        ],
+        "alpha_hole_absolute": [
+          [
+            729,
+            667
+          ],
+          [
+            731,
+            667
+          ],
+          [
+            731,
+            675
+          ],
+          [
+            729,
+            675
+          ]
+        ]
+      },
+      "notes": "ビールジョッキ。元映像の小さな持ち手内側を透過。表示条件は未確定。",
+      "sha256": "532b7116f6b65ff441d86f0ecfc97ab35a43b548cec686bea69ae8da76b05a29"
+    },
+    {
+      "id": "status_medicine",
+      "name_ja": "薬の表示アイコン",
+      "category": "status",
+      "file": "sprites/status_medicine.png",
+      "size": [
+        44,
+        44
+      ],
+      "source_crop": "source_crops/status_medicine.png",
+      "native_crop_size": [
+        44,
+        44
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          742,
+          644,
+          786,
+          688
+        ],
+        "alpha_polygon_absolute": [
+          [
+            749,
+            644
+          ],
+          [
+            777,
+            644
+          ],
+          [
+            777,
+            649
+          ],
+          [
+            781,
+            649
+          ],
+          [
+            781,
+            656
+          ],
+          [
+            785,
+            656
+          ],
+          [
+            785,
+            687
+          ],
+          [
+            742,
+            687
+          ],
+          [
+            742,
+            656
+          ],
+          [
+            748,
+            656
+          ],
+          [
+            748,
+            649
+          ]
+        ],
+        "alpha_hole_absolute": [
+          [
+            756,
+            653
+          ],
+          [
+            771,
+            653
+          ],
+          [
+            771,
+            656
+          ],
+          [
+            756,
+            656
+          ]
+        ]
+      },
+      "notes": "救急箱。取っ手の穴を透過。表示条件は未確定。",
+      "sha256": "b1bc029fa49ab60e1430c39f6ff999237958f12e5e50d83cc19b13890acd5535"
+    },
+    {
+      "id": "cursor_pointer",
+      "name_ja": "白い矢印カーソル",
+      "category": "cursor",
+      "file": "sprites/cursor_pointer.png",
+      "size": [
+        32,
+        51
+      ],
+      "source_crop": "source_crops/cursor_pointer.png",
+      "native_crop_size": [
+        32,
+        51
+      ],
+      "variants": {},
+      "source": {
+        "type": "video",
+        "file": "【作業用BGM】ザ・コンビニ　1時間【プレイ動画】_HD_60fps(6).mp4",
+        "timestamp_seconds": 900,
+        "frame_size": [
+          1280,
+          720
+        ],
+        "crop_xyxy": [
+          724,
+          349,
+          756,
+          400
+        ],
+        "alpha_polygon_absolute": [
+          [
+            728,
+            351
+          ],
+          [
+            730,
+            351
+          ],
+          [
+            734,
+            356
+          ],
+          [
+            741,
+            362
+          ],
+          [
+            748,
+            369
+          ],
+          [
+            753,
+            373
+          ],
+          [
+            753,
+            377
+          ],
+          [
+            743,
+            378
+          ],
+          [
+            744,
+            382
+          ],
+          [
+            748,
+            388
+          ],
+          [
+            752,
+            392
+          ],
+          [
+            752,
+            397
+          ],
+          [
+            747,
+            398
+          ],
+          [
+            743,
+            394
+          ],
+          [
+            739,
+            387
+          ],
+          [
+            736,
+            379
+          ],
+          [
+            734,
+            379
+          ],
+          [
+            730,
+            383
+          ],
+          [
+            726,
+            383
+          ],
+          [
+            726,
+            353
+          ]
+        ],
+        "alpha_hole_absolute": null
+      },
+      "notes": "白い矢印と輪郭を保持。hotspotは元切り出し内[4,2]。映像由来の輪郭のにじみあり。",
+      "sha256": "945700ae41706e5ad0be6cf30616fb359c04cb78ac05263001c38d36559f7ca6"
+    }
+  ]
+}

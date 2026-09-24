@@ -1,0 +1,15 @@
+{
+  "image": "fire_sheet.png",
+  "frame_size": [
+    32,
+    48
+  ],
+  "count": 4,
+  "pivot": [
+    16,
+    46
+  ],
+  "suggested_frame_ms": 120,
+  "timing_reconstructed": false,
+  "original_frames": false
+}

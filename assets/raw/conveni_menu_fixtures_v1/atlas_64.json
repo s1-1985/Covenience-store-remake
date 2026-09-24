@@ -1,0 +1,279 @@
+{
+  "image": "atlas_64.png",
+  "size": [
+    544,
+    408
+  ],
+  "frames": {
+    "small_ambient_shelf": {
+      "x": 2,
+      "y": 2,
+      "w": 64,
+      "h": 64
+    },
+    "medium_ambient_shelf": {
+      "x": 70,
+      "y": 2,
+      "w": 64,
+      "h": 64
+    },
+    "large_ambient_shelf": {
+      "x": 138,
+      "y": 2,
+      "w": 64,
+      "h": 64
+    },
+    "small_ambient_wagon": {
+      "x": 206,
+      "y": 2,
+      "w": 64,
+      "h": 64
+    },
+    "medium_ambient_wagon": {
+      "x": 274,
+      "y": 2,
+      "w": 64,
+      "h": 64
+    },
+    "large_ambient_wagon": {
+      "x": 342,
+      "y": 2,
+      "w": 64,
+      "h": 64
+    },
+    "large_ambient_wagon_2": {
+      "x": 410,
+      "y": 2,
+      "w": 64,
+      "h": 64
+    },
+    "small_refrigerated_shelf": {
+      "x": 478,
+      "y": 2,
+      "w": 64,
+      "h": 64
+    },
+    "medium_refrigerated_shelf": {
+      "x": 2,
+      "y": 70,
+      "w": 64,
+      "h": 64
+    },
+    "large_refrigerated_shelf": {
+      "x": 70,
+      "y": 70,
+      "w": 64,
+      "h": 64
+    },
+    "small_refrigerated_wagon": {
+      "x": 138,
+      "y": 70,
+      "w": 64,
+      "h": 64
+    },
+    "medium_refrigerated_wagon": {
+      "x": 206,
+      "y": 70,
+      "w": 64,
+      "h": 64
+    },
+    "large_refrigerated_wagon_1": {
+      "x": 274,
+      "y": 70,
+      "w": 64,
+      "h": 64
+    },
+    "large_refrigerated_wagon_2": {
+      "x": 342,
+      "y": 70,
+      "w": 64,
+      "h": 64
+    },
+    "small_frozen_shelf": {
+      "x": 410,
+      "y": 70,
+      "w": 64,
+      "h": 64
+    },
+    "medium_frozen_shelf": {
+      "x": 478,
+      "y": 70,
+      "w": 64,
+      "h": 64
+    },
+    "small_frozen_wagon": {
+      "x": 2,
+      "y": 138,
+      "w": 64,
+      "h": 64
+    },
+    "medium_frozen_wagon": {
+      "x": 70,
+      "y": 138,
+      "w": 64,
+      "h": 64
+    },
+    "hot_drink_case": {
+      "x": 138,
+      "y": 138,
+      "w": 64,
+      "h": 64
+    },
+    "oden_case": {
+      "x": 206,
+      "y": 138,
+      "w": 64,
+      "h": 64
+    },
+    "steamed_bun_case": {
+      "x": 274,
+      "y": 138,
+      "w": 64,
+      "h": 64
+    },
+    "event_shelf": {
+      "x": 342,
+      "y": 138,
+      "w": 64,
+      "h": 64
+    },
+    "event_wagon": {
+      "x": 410,
+      "y": 138,
+      "w": 64,
+      "h": 64
+    },
+    "small_tobacco_vending": {
+      "x": 478,
+      "y": 138,
+      "w": 64,
+      "h": 64
+    },
+    "large_tobacco_vending": {
+      "x": 2,
+      "y": 206,
+      "w": 64,
+      "h": 64
+    },
+    "small_cold_drink_vending": {
+      "x": 70,
+      "y": 206,
+      "w": 64,
+      "h": 64
+    },
+    "large_cold_drink_vending": {
+      "x": 138,
+      "y": 206,
+      "w": 64,
+      "h": 64
+    },
+    "small_hot_cold_drink_vending": {
+      "x": 206,
+      "y": 206,
+      "w": 64,
+      "h": 64
+    },
+    "large_hot_cold_drink_vending": {
+      "x": 274,
+      "y": 206,
+      "w": 64,
+      "h": 64
+    },
+    "copier_a": {
+      "x": 342,
+      "y": 206,
+      "w": 64,
+      "h": 64
+    },
+    "copier_b": {
+      "x": 410,
+      "y": 206,
+      "w": 64,
+      "h": 64
+    },
+    "register_1": {
+      "x": 478,
+      "y": 206,
+      "w": 64,
+      "h": 64
+    },
+    "register_2": {
+      "x": 2,
+      "y": 274,
+      "w": 64,
+      "h": 64
+    },
+    "register_3": {
+      "x": 70,
+      "y": 274,
+      "w": 64,
+      "h": 64
+    },
+    "register_4": {
+      "x": 138,
+      "y": 274,
+      "w": 64,
+      "h": 64
+    },
+    "indoor_dispenser": {
+      "x": 206,
+      "y": 274,
+      "w": 64,
+      "h": 64
+    },
+    "outdoor_dispenser": {
+      "x": 274,
+      "y": 274,
+      "w": 64,
+      "h": 64
+    },
+    "potted_plant": {
+      "x": 342,
+      "y": 274,
+      "w": 64,
+      "h": 64
+    },
+    "bench": {
+      "x": 410,
+      "y": 274,
+      "w": 64,
+      "h": 64
+    },
+    "fountain": {
+      "x": 478,
+      "y": 274,
+      "w": 64,
+      "h": 64
+    },
+    "break_room_1": {
+      "x": 2,
+      "y": 342,
+      "w": 64,
+      "h": 64
+    },
+    "break_room_2": {
+      "x": 70,
+      "y": 342,
+      "w": 64,
+      "h": 64
+    },
+    "parking_ground": {
+      "x": 138,
+      "y": 342,
+      "w": 64,
+      "h": 64
+    },
+    "parking_two_story": {
+      "x": 206,
+      "y": 342,
+      "w": 64,
+      "h": 64
+    },
+    "parking_tower": {
+      "x": 274,
+      "y": 342,
+      "w": 64,
+      "h": 64
+    }
+  }
+}

@@ -1,0 +1,1142 @@
+{
+  "category": "fixtures",
+  "asset_count": 45,
+  "matched_existing_count": 44,
+  "source": "user-supplied guide scan; extracted and normalized, not newly illustrated",
+  "intended_use": "menu icons only; not world sprites",
+  "sizes": [
+    32,
+    48,
+    64,
+    128
+  ],
+  "alpha": "binary 0/255, blue/purple source frame retained; paper exterior removed",
+  "assets": [
+    {
+      "id": "small_ambient_shelf",
+      "files": {
+        "32": "icons_32/small_ambient_shelf.png",
+        "48": "icons_48/small_ambient_shelf.png",
+        "64": "icons_64/small_ambient_shelf.png",
+        "128": "icons_128/small_ambient_shelf.png"
+      },
+      "source_pdf_page": 19,
+      "source_side": "right",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        1395,
+        184,
+        1579,
+        369
+      ],
+      "frame_crop": [
+        3,
+        2,
+        179,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "medium_ambient_shelf",
+      "files": {
+        "32": "icons_32/medium_ambient_shelf.png",
+        "48": "icons_48/medium_ambient_shelf.png",
+        "64": "icons_64/medium_ambient_shelf.png",
+        "128": "icons_128/medium_ambient_shelf.png"
+      },
+      "source_pdf_page": 19,
+      "source_side": "right",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        1395,
+        508,
+        1579,
+        692
+      ],
+      "frame_crop": [
+        3,
+        3,
+        178,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "large_ambient_shelf",
+      "files": {
+        "32": "icons_32/large_ambient_shelf.png",
+        "48": "icons_48/large_ambient_shelf.png",
+        "64": "icons_64/large_ambient_shelf.png",
+        "128": "icons_128/large_ambient_shelf.png"
+      },
+      "source_pdf_page": 19,
+      "source_side": "right",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        1395,
+        834,
+        1579,
+        1018
+      ],
+      "frame_crop": [
+        2,
+        1,
+        178,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "small_ambient_wagon",
+      "files": {
+        "32": "icons_32/small_ambient_wagon.png",
+        "48": "icons_48/small_ambient_wagon.png",
+        "64": "icons_64/small_ambient_wagon.png",
+        "128": "icons_128/small_ambient_wagon.png"
+      },
+      "source_pdf_page": 19,
+      "source_side": "right",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        1395,
+        1159,
+        1579,
+        1344
+      ],
+      "frame_crop": [
+        2,
+        1,
+        177,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "medium_ambient_wagon",
+      "files": {
+        "32": "icons_32/medium_ambient_wagon.png",
+        "48": "icons_48/medium_ambient_wagon.png",
+        "64": "icons_64/medium_ambient_wagon.png",
+        "128": "icons_128/medium_ambient_wagon.png"
+      },
+      "source_pdf_page": 19,
+      "source_side": "right",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        1393,
+        1483,
+        1577,
+        1667
+      ],
+      "frame_crop": [
+        3,
+        1,
+        178,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "large_ambient_wagon",
+      "files": {
+        "32": "icons_32/large_ambient_wagon.png",
+        "48": "icons_48/large_ambient_wagon.png",
+        "64": "icons_64/large_ambient_wagon.png",
+        "128": "icons_128/large_ambient_wagon.png"
+      },
+      "source_pdf_page": 20,
+      "source_side": "left",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        212,
+        189,
+        396,
+        373
+      ],
+      "frame_crop": [
+        4,
+        1,
+        181,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "large_ambient_wagon_2",
+      "files": {
+        "32": "icons_32/large_ambient_wagon_2.png",
+        "48": "icons_48/large_ambient_wagon_2.png",
+        "64": "icons_64/large_ambient_wagon_2.png",
+        "128": "icons_128/large_ambient_wagon_2.png"
+      },
+      "source_pdf_page": 20,
+      "source_side": "left",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        210,
+        512,
+        394,
+        696
+      ],
+      "frame_crop": [
+        2,
+        3,
+        180,
+        182
+      ],
+      "extra": false
+    },
+    {
+      "id": "small_refrigerated_shelf",
+      "files": {
+        "32": "icons_32/small_refrigerated_shelf.png",
+        "48": "icons_48/small_refrigerated_shelf.png",
+        "64": "icons_64/small_refrigerated_shelf.png",
+        "128": "icons_128/small_refrigerated_shelf.png"
+      },
+      "source_pdf_page": 20,
+      "source_side": "left",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        206,
+        838,
+        390,
+        1022
+      ],
+      "frame_crop": [
+        2,
+        1,
+        181,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "medium_refrigerated_shelf",
+      "files": {
+        "32": "icons_32/medium_refrigerated_shelf.png",
+        "48": "icons_48/medium_refrigerated_shelf.png",
+        "64": "icons_64/medium_refrigerated_shelf.png",
+        "128": "icons_128/medium_refrigerated_shelf.png"
+      },
+      "source_pdf_page": 20,
+      "source_side": "left",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        201,
+        1164,
+        386,
+        1348
+      ],
+      "frame_crop": [
+        3,
+        0,
+        182,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "large_refrigerated_shelf",
+      "files": {
+        "32": "icons_32/large_refrigerated_shelf.png",
+        "48": "icons_48/large_refrigerated_shelf.png",
+        "64": "icons_64/large_refrigerated_shelf.png",
+        "128": "icons_128/large_refrigerated_shelf.png"
+      },
+      "source_pdf_page": 20,
+      "source_side": "left",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        197,
+        1489,
+        381,
+        1674
+      ],
+      "frame_crop": [
+        4,
+        0,
+        183,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "small_refrigerated_wagon",
+      "files": {
+        "32": "icons_32/small_refrigerated_wagon.png",
+        "48": "icons_48/small_refrigerated_wagon.png",
+        "64": "icons_64/small_refrigerated_wagon.png",
+        "128": "icons_128/small_refrigerated_wagon.png"
+      },
+      "source_pdf_page": 20,
+      "source_side": "right",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        1391,
+        197,
+        1575,
+        381
+      ],
+      "frame_crop": [
+        2,
+        0,
+        179,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "medium_refrigerated_wagon",
+      "files": {
+        "32": "icons_32/medium_refrigerated_wagon.png",
+        "48": "icons_48/medium_refrigerated_wagon.png",
+        "64": "icons_64/medium_refrigerated_wagon.png",
+        "128": "icons_128/medium_refrigerated_wagon.png"
+      },
+      "source_pdf_page": 20,
+      "source_side": "right",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        1389,
+        523,
+        1573,
+        707
+      ],
+      "frame_crop": [
+        3,
+        0,
+        180,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "large_refrigerated_wagon_1",
+      "files": {
+        "32": "icons_32/large_refrigerated_wagon_1.png",
+        "48": "icons_48/large_refrigerated_wagon_1.png",
+        "64": "icons_64/large_refrigerated_wagon_1.png",
+        "128": "icons_128/large_refrigerated_wagon_1.png"
+      },
+      "source_pdf_page": 20,
+      "source_side": "right",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        1386,
+        846,
+        1571,
+        1031
+      ],
+      "frame_crop": [
+        5,
+        0,
+        182,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "large_refrigerated_wagon_2",
+      "files": {
+        "32": "icons_32/large_refrigerated_wagon_2.png",
+        "48": "icons_48/large_refrigerated_wagon_2.png",
+        "64": "icons_64/large_refrigerated_wagon_2.png",
+        "128": "icons_128/large_refrigerated_wagon_2.png"
+      },
+      "source_pdf_page": 20,
+      "source_side": "right",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        1384,
+        1172,
+        1569,
+        1356
+      ],
+      "frame_crop": [
+        5,
+        0,
+        183,
+        176
+      ],
+      "extra": false
+    },
+    {
+      "id": "small_frozen_shelf",
+      "files": {
+        "32": "icons_32/small_frozen_shelf.png",
+        "48": "icons_48/small_frozen_shelf.png",
+        "64": "icons_64/small_frozen_shelf.png",
+        "128": "icons_128/small_frozen_shelf.png"
+      },
+      "source_pdf_page": 20,
+      "source_side": "right",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        1384,
+        1496,
+        1569,
+        1680
+      ],
+      "frame_crop": [
+        4,
+        0,
+        181,
+        177
+      ],
+      "extra": false
+    },
+    {
+      "id": "medium_frozen_shelf",
+      "files": {
+        "32": "icons_32/medium_frozen_shelf.png",
+        "48": "icons_48/medium_frozen_shelf.png",
+        "64": "icons_64/medium_frozen_shelf.png",
+        "128": "icons_128/medium_frozen_shelf.png"
+      },
+      "source_pdf_page": 21,
+      "source_side": "left",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        201,
+        184,
+        386,
+        369
+      ],
+      "frame_crop": [
+        3,
+        3,
+        180,
+        181
+      ],
+      "extra": false
+    },
+    {
+      "id": "small_frozen_wagon",
+      "files": {
+        "32": "icons_32/small_frozen_wagon.png",
+        "48": "icons_48/small_frozen_wagon.png",
+        "64": "icons_64/small_frozen_wagon.png",
+        "128": "icons_128/small_frozen_wagon.png"
+      },
+      "source_pdf_page": 21,
+      "source_side": "left",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        201,
+        510,
+        386,
+        694
+      ],
+      "frame_crop": [
+        4,
+        1,
+        182,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "medium_frozen_wagon",
+      "files": {
+        "32": "icons_32/medium_frozen_wagon.png",
+        "48": "icons_48/medium_frozen_wagon.png",
+        "64": "icons_64/medium_frozen_wagon.png",
+        "128": "icons_128/medium_frozen_wagon.png"
+      },
+      "source_pdf_page": 21,
+      "source_side": "left",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        201,
+        834,
+        386,
+        1018
+      ],
+      "frame_crop": [
+        5,
+        2,
+        184,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "hot_drink_case",
+      "files": {
+        "32": "icons_32/hot_drink_case.png",
+        "48": "icons_48/hot_drink_case.png",
+        "64": "icons_64/hot_drink_case.png",
+        "128": "icons_128/hot_drink_case.png"
+      },
+      "source_pdf_page": 21,
+      "source_side": "left",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        201,
+        1159,
+        386,
+        1344
+      ],
+      "frame_crop": [
+        9,
+        1,
+        185,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "oden_case",
+      "files": {
+        "32": "icons_32/oden_case.png",
+        "48": "icons_48/oden_case.png",
+        "64": "icons_64/oden_case.png",
+        "128": "icons_128/oden_case.png"
+      },
+      "source_pdf_page": 21,
+      "source_side": "left",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        201,
+        1483,
+        386,
+        1667
+      ],
+      "frame_crop": [
+        9,
+        3,
+        185,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "steamed_bun_case",
+      "files": {
+        "32": "icons_32/steamed_bun_case.png",
+        "48": "icons_48/steamed_bun_case.png",
+        "64": "icons_64/steamed_bun_case.png",
+        "128": "icons_128/steamed_bun_case.png"
+      },
+      "source_pdf_page": 21,
+      "source_side": "right",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        1384,
+        180,
+        1569,
+        364
+      ],
+      "frame_crop": [
+        3,
+        2,
+        179,
+        181
+      ],
+      "extra": false
+    },
+    {
+      "id": "event_shelf",
+      "files": {
+        "32": "icons_32/event_shelf.png",
+        "48": "icons_48/event_shelf.png",
+        "64": "icons_64/event_shelf.png",
+        "128": "icons_128/event_shelf.png"
+      },
+      "source_pdf_page": 21,
+      "source_side": "right",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        1384,
+        504,
+        1569,
+        688
+      ],
+      "frame_crop": [
+        3,
+        3,
+        179,
+        181
+      ],
+      "extra": false
+    },
+    {
+      "id": "event_wagon",
+      "files": {
+        "32": "icons_32/event_wagon.png",
+        "48": "icons_48/event_wagon.png",
+        "64": "icons_64/event_wagon.png",
+        "128": "icons_128/event_wagon.png"
+      },
+      "source_pdf_page": 21,
+      "source_side": "right",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        1384,
+        829,
+        1569,
+        1014
+      ],
+      "frame_crop": [
+        2,
+        2,
+        179,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "small_tobacco_vending",
+      "files": {
+        "32": "icons_32/small_tobacco_vending.png",
+        "48": "icons_48/small_tobacco_vending.png",
+        "64": "icons_64/small_tobacco_vending.png",
+        "128": "icons_128/small_tobacco_vending.png"
+      },
+      "source_pdf_page": 21,
+      "source_side": "right",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        1384,
+        1155,
+        1569,
+        1339
+      ],
+      "frame_crop": [
+        2,
+        1,
+        178,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "large_tobacco_vending",
+      "files": {
+        "32": "icons_32/large_tobacco_vending.png",
+        "48": "icons_48/large_tobacco_vending.png",
+        "64": "icons_64/large_tobacco_vending.png",
+        "128": "icons_128/large_tobacco_vending.png"
+      },
+      "source_pdf_page": 21,
+      "source_side": "right",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        1384,
+        1479,
+        1569,
+        1663
+      ],
+      "frame_crop": [
+        2,
+        1,
+        178,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "small_cold_drink_vending",
+      "files": {
+        "32": "icons_32/small_cold_drink_vending.png",
+        "48": "icons_48/small_cold_drink_vending.png",
+        "64": "icons_64/small_cold_drink_vending.png",
+        "128": "icons_128/small_cold_drink_vending.png"
+      },
+      "source_pdf_page": 22,
+      "source_side": "left",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        199,
+        186,
+        384,
+        371
+      ],
+      "frame_crop": [
+        6,
+        2,
+        183,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "large_cold_drink_vending",
+      "files": {
+        "32": "icons_32/large_cold_drink_vending.png",
+        "48": "icons_48/large_cold_drink_vending.png",
+        "64": "icons_64/large_cold_drink_vending.png",
+        "128": "icons_128/large_cold_drink_vending.png"
+      },
+      "source_pdf_page": 22,
+      "source_side": "left",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        199,
+        510,
+        384,
+        694
+      ],
+      "frame_crop": [
+        5,
+        2,
+        182,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "small_hot_cold_drink_vending",
+      "files": {
+        "32": "icons_32/small_hot_cold_drink_vending.png",
+        "48": "icons_48/small_hot_cold_drink_vending.png",
+        "64": "icons_64/small_hot_cold_drink_vending.png",
+        "128": "icons_128/small_hot_cold_drink_vending.png"
+      },
+      "source_pdf_page": 22,
+      "source_side": "left",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        199,
+        836,
+        384,
+        1020
+      ],
+      "frame_crop": [
+        5,
+        1,
+        182,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "large_hot_cold_drink_vending",
+      "files": {
+        "32": "icons_32/large_hot_cold_drink_vending.png",
+        "48": "icons_48/large_hot_cold_drink_vending.png",
+        "64": "icons_64/large_hot_cold_drink_vending.png",
+        "128": "icons_128/large_hot_cold_drink_vending.png"
+      },
+      "source_pdf_page": 22,
+      "source_side": "left",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        199,
+        1161,
+        384,
+        1346
+      ],
+      "frame_crop": [
+        4,
+        0,
+        182,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "copier_a",
+      "files": {
+        "32": "icons_32/copier_a.png",
+        "48": "icons_48/copier_a.png",
+        "64": "icons_64/copier_a.png",
+        "128": "icons_128/copier_a.png"
+      },
+      "source_pdf_page": 22,
+      "source_side": "left",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        199,
+        1485,
+        384,
+        1669
+      ],
+      "frame_crop": [
+        2,
+        1,
+        181,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "copier_b",
+      "files": {
+        "32": "icons_32/copier_b.png",
+        "48": "icons_48/copier_b.png",
+        "64": "icons_64/copier_b.png",
+        "128": "icons_128/copier_b.png"
+      },
+      "source_pdf_page": 22,
+      "source_side": "right",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        1376,
+        199,
+        1560,
+        384
+      ],
+      "frame_crop": [
+        3,
+        0,
+        181,
+        177
+      ],
+      "extra": false
+    },
+    {
+      "id": "register_1",
+      "files": {
+        "32": "icons_32/register_1.png",
+        "48": "icons_48/register_1.png",
+        "64": "icons_64/register_1.png",
+        "128": "icons_128/register_1.png"
+      },
+      "source_pdf_page": 22,
+      "source_side": "right",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        1376,
+        525,
+        1560,
+        709
+      ],
+      "frame_crop": [
+        4,
+        0,
+        181,
+        175
+      ],
+      "extra": false
+    },
+    {
+      "id": "register_2",
+      "files": {
+        "32": "icons_32/register_2.png",
+        "48": "icons_48/register_2.png",
+        "64": "icons_64/register_2.png",
+        "128": "icons_128/register_2.png"
+      },
+      "source_pdf_page": 22,
+      "source_side": "right",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        1376,
+        851,
+        1560,
+        1035
+      ],
+      "frame_crop": [
+        5,
+        0,
+        181,
+        173
+      ],
+      "extra": false
+    },
+    {
+      "id": "register_3",
+      "files": {
+        "32": "icons_32/register_3.png",
+        "48": "icons_48/register_3.png",
+        "64": "icons_64/register_3.png",
+        "128": "icons_128/register_3.png"
+      },
+      "source_pdf_page": 22,
+      "source_side": "right",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        1376,
+        1174,
+        1560,
+        1359
+      ],
+      "frame_crop": [
+        6,
+        0,
+        182,
+        174
+      ],
+      "extra": false
+    },
+    {
+      "id": "register_4",
+      "files": {
+        "32": "icons_32/register_4.png",
+        "48": "icons_48/register_4.png",
+        "64": "icons_64/register_4.png",
+        "128": "icons_128/register_4.png"
+      },
+      "source_pdf_page": 22,
+      "source_side": "right",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        1376,
+        1500,
+        1560,
+        1684
+      ],
+      "frame_crop": [
+        6,
+        0,
+        182,
+        173
+      ],
+      "extra": false
+    },
+    {
+      "id": "indoor_dispenser",
+      "files": {
+        "32": "icons_32/indoor_dispenser.png",
+        "48": "icons_48/indoor_dispenser.png",
+        "64": "icons_64/indoor_dispenser.png",
+        "128": "icons_128/indoor_dispenser.png"
+      },
+      "source_pdf_page": 23,
+      "source_side": "left",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        193,
+        216,
+        377,
+        401
+      ],
+      "frame_crop": [
+        3,
+        3,
+        181,
+        181
+      ],
+      "extra": false
+    },
+    {
+      "id": "outdoor_dispenser",
+      "files": {
+        "32": "icons_32/outdoor_dispenser.png",
+        "48": "icons_48/outdoor_dispenser.png",
+        "64": "icons_64/outdoor_dispenser.png",
+        "128": "icons_128/outdoor_dispenser.png"
+      },
+      "source_pdf_page": 23,
+      "source_side": "left",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        193,
+        540,
+        377,
+        724
+      ],
+      "frame_crop": [
+        4,
+        3,
+        181,
+        181
+      ],
+      "extra": true
+    },
+    {
+      "id": "potted_plant",
+      "files": {
+        "32": "icons_32/potted_plant.png",
+        "48": "icons_48/potted_plant.png",
+        "64": "icons_64/potted_plant.png",
+        "128": "icons_128/potted_plant.png"
+      },
+      "source_pdf_page": 23,
+      "source_side": "left",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        193,
+        866,
+        377,
+        1050
+      ],
+      "frame_crop": [
+        5,
+        2,
+        182,
+        181
+      ],
+      "extra": false
+    },
+    {
+      "id": "bench",
+      "files": {
+        "32": "icons_32/bench.png",
+        "48": "icons_48/bench.png",
+        "64": "icons_64/bench.png",
+        "128": "icons_128/bench.png"
+      },
+      "source_pdf_page": 23,
+      "source_side": "left",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        193,
+        1189,
+        377,
+        1374
+      ],
+      "frame_crop": [
+        5,
+        4,
+        183,
+        182
+      ],
+      "extra": false
+    },
+    {
+      "id": "fountain",
+      "files": {
+        "32": "icons_32/fountain.png",
+        "48": "icons_48/fountain.png",
+        "64": "icons_64/fountain.png",
+        "128": "icons_128/fountain.png"
+      },
+      "source_pdf_page": 23,
+      "source_side": "left",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        193,
+        1515,
+        377,
+        1699
+      ],
+      "frame_crop": [
+        5,
+        2,
+        183,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "break_room_1",
+      "files": {
+        "32": "icons_32/break_room_1.png",
+        "48": "icons_48/break_room_1.png",
+        "64": "icons_64/break_room_1.png",
+        "128": "icons_128/break_room_1.png"
+      },
+      "source_pdf_page": 23,
+      "source_side": "right",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        1386,
+        214,
+        1571,
+        399
+      ],
+      "frame_crop": [
+        3,
+        0,
+        181,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "break_room_2",
+      "files": {
+        "32": "icons_32/break_room_2.png",
+        "48": "icons_48/break_room_2.png",
+        "64": "icons_64/break_room_2.png",
+        "128": "icons_128/break_room_2.png"
+      },
+      "source_pdf_page": 23,
+      "source_side": "right",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        1386,
+        538,
+        1571,
+        722
+      ],
+      "frame_crop": [
+        4,
+        0,
+        182,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "parking_ground",
+      "files": {
+        "32": "icons_32/parking_ground.png",
+        "48": "icons_48/parking_ground.png",
+        "64": "icons_64/parking_ground.png",
+        "128": "icons_128/parking_ground.png"
+      },
+      "source_pdf_page": 23,
+      "source_side": "right",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        1389,
+        864,
+        1573,
+        1048
+      ],
+      "frame_crop": [
+        3,
+        0,
+        181,
+        177
+      ],
+      "extra": false
+    },
+    {
+      "id": "parking_two_story",
+      "files": {
+        "32": "icons_32/parking_two_story.png",
+        "48": "icons_48/parking_two_story.png",
+        "64": "icons_64/parking_two_story.png",
+        "128": "icons_128/parking_two_story.png"
+      },
+      "source_pdf_page": 23,
+      "source_side": "right",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        1391,
+        1187,
+        1575,
+        1371
+      ],
+      "frame_crop": [
+        3,
+        0,
+        179,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "parking_tower",
+      "files": {
+        "32": "icons_32/parking_tower.png",
+        "48": "icons_48/parking_tower.png",
+        "64": "icons_64/parking_tower.png",
+        "128": "icons_128/parking_tower.png"
+      },
+      "source_pdf_page": 23,
+      "source_side": "right",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        1391,
+        1513,
+        1575,
+        1697
+      ],
+      "frame_crop": [
+        5,
+        0,
+        183,
+        178
+      ],
+      "extra": false
+    }
+  ],
+  "source_pdf_sha256": "a9578b92efca28583d90354b5276f6c964e1935f5c51aec381b9ee1e548407a0"
+}

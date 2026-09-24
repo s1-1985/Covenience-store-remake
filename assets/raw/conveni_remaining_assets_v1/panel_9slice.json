@@ -1,0 +1,17 @@
+{
+  "border_px": 10,
+  "parts": {
+    "nw": "extracted/panel_beige_nw.png",
+    "n": "extracted/panel_beige_n.png",
+    "ne": "extracted/panel_beige_ne.png",
+    "w": "extracted/panel_beige_w.png",
+    "center": "extracted/panel_beige_center.png",
+    "e": "extracted/panel_beige_e.png",
+    "sw": "extracted/panel_beige_sw.png",
+    "s": "extracted/panel_beige_s.png",
+    "se": "extracted/panel_beige_se.png"
+  },
+  "mode": "opaque",
+  "edge_resize": "nearest stretch",
+  "center_resize": "nearest stretch"
+}
