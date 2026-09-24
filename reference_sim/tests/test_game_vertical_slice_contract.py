@@ -2465,6 +2465,48 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("_product_display_catalog_id(prototype_bread_product)", smoke)
         self.assertIn("procured_tobacco_product.catalog_id != \"tobacco\"", smoke)
 
+    def test_staff_sprites_are_wired_and_tagged_remake_default(self):
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # StaffState.candidate_id already existed (task #56) and needed no
+        # new threading, unlike task #68's InventoryState.catalog_id gap --
+        # only the display-side lookup is new here.
+        self.assertIn("STAFF_SPRITE_DIR", store_view)
+        self.assertIn("func _staff_sprite_id_for_candidate(candidate_id: String) -> String:", store_view)
+        self.assertIn("func _staff_facing_direction(staff_id: String, position: Vector2i) -> String:", store_view)
+
+        # Three separate inventions here each need their own
+        # REMAKE_BALANCED_DEFAULT tag: (1) which of the 35 anonymous sprites
+        # a named candidate is assigned (position in staff_candidates, not a
+        # confirmed identity link -- the source package itself ships no
+        # sprite-to-candidate correspondence), (2) always using the static
+        # "A" walk-cycle frame instead of inventing an animation timing
+        # convention, and (3) deriving on-screen facing direction from the
+        # staff member's own last movement rather than any confirmed rule.
+        self.assertIn(
+            "REMAKE_BALANCED_DEFAULT (task #69): only a walk cycle (A/B) ships,",
+            store_view,
+        )
+        self.assertIn(
+            "REMAKE_BALANCED_DEFAULT (task #69): which of the 4 shipped directions to",
+            store_view,
+        )
+        self.assertIn("staff_candidates[N] IS the person drawn in sprite staff_(N+1)", store_view)
+
+        # Covered end-to-end by headless_smoke.gd: every one of the 35
+        # candidates' 4 directions loads a real texture, the position-based
+        # mapping resolves correctly for a live roster member (staff-1 /
+        # manda_machiko), an empty/unknown candidate_id resolves to no
+        # sprite, and the pure facing-direction derivation is exercised
+        # directly (default/right/unchanged/up) rather than depending on a
+        # specific movement scenario happening to occur.
+        self.assertIn("STAFF_SPRITE_DIRECTIONS", smoke)
+        self.assertIn("_staff_sprite_id_for_candidate(checkout_staff_candidate_id) != \"staff_005\"", smoke)
+        self.assertIn("_staff_facing_direction(\"test-staff\", Vector2i(5, 5)) != \"down\"", smoke)
+        self.assertIn("_staff_facing_direction(\"test-staff\", Vector2i(8, 5)) != \"right\"", smoke)
+        self.assertIn("_staff_facing_direction(\"test-staff\", Vector2i(8, 2)) != \"up\"", smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])

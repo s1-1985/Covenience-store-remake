@@ -53,11 +53,46 @@ const FALLBACK_PRODUCT_CATALOG_ID_BY_PRODUCT_ID := {
     "prototype-drink": "cold_drink",
 }
 
+# Task #69: third asset-wiring pass, staff walking sprites (assets/raw/
+# staff_v2/staff/) -- same REMAKE_BALANCED_DEFAULT evidence tier as tasks
+# #67/#68 above. manifest.json ships 35 anonymous walking figures
+# ("staff_001".."staff_035", 4 directions x 2 walk-cycle phases each, 160x160
+# RGBA, feet-anchored at (80,154)) named "<sprite_id>_<direction>_<phase>.png"
+# in game/assets/staff/ -- these are NOT identified with any of the 35 named
+# staff_candidates entries by the source package itself (no name is printed
+# on any sprite; reference_faces/ restores each candidate's PORTRAIT
+# separately from the same guide pages but ships no sprite-to-portrait
+# correspondence). _staff_sprite_id_for_candidate() below assigns sprites
+# to candidates purely by list position in this file's own staff_candidates
+# array (index 0 -> staff_001, index 1 -> staff_002, ...) so every named
+# candidate at least renders as a distinct person instead of a plain
+# rectangle -- this is a display-only convention, not a claim that
+# staff_candidates[N] IS the person drawn in sprite staff_(N+1).
+const STAFF_SPRITE_DIR := "res://assets/staff/"
+const STAFF_SPRITE_DIRECTIONS := ["down", "left", "right", "up"]
+# REMAKE_BALANCED_DEFAULT (task #69): only a walk cycle (A/B) ships, no
+# dedicated standing/idle frame -- phase "A" is used for every staff member
+# regardless of movement state, rather than inventing a walk-cycle timing
+# convention this turn/tick-based simulation (no delta-time animation exists
+# anywhere else in this renderer) has no confirmed basis for.
+const STAFF_SPRITE_STATIC_PHASE := "A"
+# REMAKE_BALANCED_DEFAULT (task #69): which of the 4 shipped directions to
+# face is derived from the staff member's own last observed movement (the
+# simulation's route/position data), not from anything the guide specifies
+# about on-screen staff orientation. A staff member who has not yet moved,
+# or whose position is unchanged since the last redraw, keeps facing
+# whatever direction it last resolved to (initially "down").
+const STAFF_SPRITE_SIZE_PX := SUBCELL_PIXELS * 2.0
+const STAFF_SPRITE_ANCHOR_FRACTION := Vector2(0.5, 0.9625)
+
 var config: Dictionary = {}
 var simulation
 var selected_fixture_id := ""
 var _fixture_textures: Dictionary = {}
 var _product_textures: Dictionary = {}
+var _staff_textures: Dictionary = {}
+var _staff_last_position: Dictionary = {}
+var _staff_last_direction: Dictionary = {}
 
 
 func _ready() -> void:
@@ -125,6 +160,45 @@ func _product_display_catalog_id(product) -> String:
     if not product.catalog_id.is_empty():
         return product.catalog_id
     return str(FALLBACK_PRODUCT_CATALOG_ID_BY_PRODUCT_ID.get(product.product_id, ""))
+
+
+func _staff_texture(sprite_id: String, direction: String, phase: String) -> Texture2D:
+    if sprite_id.is_empty() or direction.is_empty() or phase.is_empty():
+        return null
+    var cache_key := sprite_id + "_" + direction + "_" + phase
+    if _staff_textures.has(cache_key):
+        return _staff_textures[cache_key] as Texture2D
+    var path := STAFF_SPRITE_DIR + cache_key + ".png"
+    var texture: Texture2D = null
+    if ResourceLoader.exists(path):
+        texture = load(path) as Texture2D
+    _staff_textures[cache_key] = texture
+    return texture
+
+
+func _staff_sprite_id_for_candidate(candidate_id: String) -> String:
+    if candidate_id.is_empty():
+        return ""
+    var candidates: Array = config.get("staff_candidates", [])
+    for candidate_index in range(candidates.size()):
+        if str(candidates[candidate_index]["candidate_id"]) == candidate_id:
+            return "staff_%03d" % (candidate_index + 1)
+    return ""
+
+
+func _staff_facing_direction(staff_id: String, position: Vector2i) -> String:
+    var previous_position: Vector2i = _staff_last_position.get(staff_id, position)
+    var previous_direction: String = _staff_last_direction.get(staff_id, "down")
+    var delta := position - previous_position
+    var direction := previous_direction
+    if delta != Vector2i.ZERO:
+        if absi(delta.x) >= absi(delta.y):
+            direction = "right" if delta.x > 0 else "left"
+        else:
+            direction = "down" if delta.y > 0 else "up"
+    _staff_last_position[staff_id] = position
+    _staff_last_direction[staff_id] = direction
+    return direction
 
 
 func _process(_delta: float) -> void:
@@ -287,9 +361,20 @@ func _draw_customer() -> void:
 func _draw_staff() -> void:
     for staff_member in simulation.staff.all_staff():
         var center: Vector2 = _cell_center(staff_member.position)
-        var rect := Rect2(center - Vector2(12, 12), Vector2(24, 24))
-        draw_rect(rect, Color("118ab2"), true)
-        draw_rect(rect, Color("17324d"), false, 2.0)
+        var sprite_id := _staff_sprite_id_for_candidate(staff_member.candidate_id)
+        var direction := _staff_facing_direction(staff_member.staff_id, staff_member.position)
+        var texture := _staff_texture(sprite_id, direction, STAFF_SPRITE_STATIC_PHASE)
+        if texture != null:
+            var draw_size := Vector2(STAFF_SPRITE_SIZE_PX, STAFF_SPRITE_SIZE_PX)
+            var anchor_offset := Vector2(
+                STAFF_SPRITE_ANCHOR_FRACTION.x * draw_size.x,
+                STAFF_SPRITE_ANCHOR_FRACTION.y * draw_size.y
+            )
+            draw_texture_rect(texture, Rect2(center - anchor_offset, draw_size), false)
+        else:
+            var rect := Rect2(center - Vector2(12, 12), Vector2(24, 24))
+            draw_rect(rect, Color("118ab2"), true)
+            draw_rect(rect, Color("17324d"), false, 2.0)
 
 
 func _draw_text_at(cell: Vector2i, text: String) -> void:

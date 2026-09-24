@@ -1459,6 +1459,30 @@ passed/1 xfailed (task #68's own two new contract tests). See decision 0138. Exp
 scope (same boundary as task #67): staff sprites, customer sprites, the town map, the 5 menu-UI
 packages, and orientation-aware overlay sprites on fixture rotation.
 
+**Task #69 (2026-09-24)**: after task #68 merged (PR #245, both CI checks green), the user chose
+"staff sprites" as the third asset-wiring pass. `assets/raw/staff_v2/staff/` ships 35 anonymous
+walking figures (`staff_001`-`staff_035`, 4 directions x 2 walk-cycle phases each, 280 PNGs,
+160x160px, feet-anchored at (80,154)), copied into `game/assets/staff/`. Unlike task #68,
+`StaffState.candidate_id` already existed (task #56) and needed no new threading -- only
+`store_view.gd`'s display side was new. The real gap here was different: the sprite package itself
+never links any of its 35 anonymous figures to any of the 35 *named* `staff_candidates` -- no name
+is printed on a sprite, and `reference_faces/` (which separately restores each candidate's actual
+portrait from the same guide pages, 127-133) ships no sprite-to-portrait correspondence, even
+though `STAFF_CANDIDATES`'s own comment cites that identical page range. That page-range overlap
+makes a same-order correspondence plausible but unverified, so it is not treated as confirmed:
+`_staff_sprite_id_for_candidate()` instead assigns sprites purely by each candidate's list position
+in `staff_candidates` (index 0 -> `staff_001`, ...), tagged REMAKE_BALANCED_DEFAULT as a
+display-only convention, not an identity claim -- the same judgment class as tasks #67/#68's
+fallback mappings. Two more choices needed the same tag: using the static "A" walk-cycle frame
+always (no idle-specific sprite ships, and no delta-time animation convention exists anywhere else
+in this tick-driven renderer to switch to "B"), and deriving on-screen facing direction from each
+staff member's own last-observed movement delta (no confirmed rule exists for this either). Both
+tasks #67's and #68's established tagging-discipline fix pattern (code comment + test assertion,
+this task's feature adds no new `vertical_slice.json` field so there is no per-entry evidence_note
+site) was followed via one new contract test. `reference_sim` full suite grew from 733 to 734
+passed/1 xfailed. See decision 0139. Explicitly out of scope (same boundary as tasks #67/#68):
+customer sprites, the town map, the 5 menu-UI packages, and walk-cycle animation (phase "A" only).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
