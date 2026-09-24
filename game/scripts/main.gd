@@ -65,7 +65,6 @@ var _menu_icon_textures: Dictionary = {}
 @onready var product_catalog_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/ProductCatalogOption
 @onready var procure_fixture_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/ProcureFixtureOption
 @onready var procure_product_button: Button = $UI/Panel/Margin/Scroll/VBox/ProcureProductButton
-@onready var restock_product_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/RestockProductOption
 @onready var restock_button: Button = $UI/Panel/Margin/Scroll/VBox/RestockButton
 @onready var promotion_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/PromotionOption
 @onready var buy_promotion_button: Button = $UI/Panel/Margin/Scroll/VBox/BuyPromotionButton
@@ -94,7 +93,6 @@ var _fixture_catalog_ids: Array[String] = []
 var _permit_ids: Array[String] = []
 var _product_catalog_ids: Array[String] = []
 var _procure_fixture_ids: Array[String] = []
-var _restock_product_ids: Array[String] = []
 var _eject_customer_ids: Array[String] = []
 var _promotion_ids: Array[String] = []
 var _staff_slot_ids: Array[String] = []
@@ -126,7 +124,6 @@ func _ready() -> void:
     _populate_product_catalog_option()
     _populate_promotion_option()
     _refresh_procure_fixture_option()
-    _refresh_restock_product_option()
     _populate_staff_slot_option()
     _refresh_hire_candidate_option()
     pause_button.pressed.connect(_on_pause_pressed)
@@ -218,7 +215,6 @@ func _on_reset_pressed() -> void:
     simulation.reset()
     layout_edit_label.text = "Layout reset to configured prototype"
     _refresh_procure_fixture_option()
-    _refresh_restock_product_option()
     _refresh_hire_candidate_option()
     _refresh_ui()
 
@@ -324,7 +320,6 @@ func _on_sell_fixture_pressed() -> void:
         layout_edit_label.text = "Sold %s" % fixture_id
         store_view.selected_fixture_id = ""
         _refresh_procure_fixture_option()
-        _refresh_restock_product_option()
     elif not simulation.customers.all_settled():
         layout_edit_label.text = "Finish the active visit before selling a fixture"
     else:
@@ -353,7 +348,6 @@ func _on_load_sample_layout_pressed() -> void:
     if simulation.try_load_sample_layout(sample_id):
         layout_edit_label.text = "Loaded sample layout: %s" % sample_id
         _refresh_procure_fixture_option()
-        _refresh_restock_product_option()
     elif not simulation.customers.all_settled():
         layout_edit_label.text = "Finish the active visit before loading a sample layout"
     else:
@@ -513,7 +507,6 @@ func _on_procure_product_pressed() -> void:
     _next_product_purchase_sequence += 1
     if simulation.try_procure_product(catalog_id, instance_id, fixture_id):
         layout_edit_label.text = "Stocked %s on %s" % [catalog_id, fixture_id]
-        _refresh_restock_product_option()
     elif not simulation.customers.all_settled():
         layout_edit_label.text = "Finish the active visit before stocking a product"
     else:
@@ -524,25 +517,36 @@ func _on_procure_product_pressed() -> void:
     _refresh_ui()
 
 
-# Repopulated whenever the set of stocked products can have changed
-# (procuring one, reset, load); sample-layout loading never removes a
-# fixture holding stock (task #37), so it does not need to trigger this.
-func _refresh_restock_product_option() -> void:
-    restock_product_option.clear()
-    _restock_product_ids.clear()
-    for product_id in simulation.inventory.product_order:
-        var product = simulation.inventory.get_product(product_id)
-        _restock_product_ids.append(product_id)
-        restock_product_option.add_item("%s (stock: %d)" % [product_id, product.stock_units])
+# Task #79: CONFIRMED_COMMUNITY (direct owner testimony, 2026-09-24 -- the
+# strategy-guide/wiki research corpus does not independently document this
+# specific interaction yet; see docs/decisions/0149-*.md): the restock
+# command is not an always-available generic picker. It only becomes
+# available for the currently selected fixture, and only once that
+# fixture's stocked product is running low. This reuses
+# store_view.selected_fixture()/_product_on_fixture() (the same fixture
+# selection this UI already uses for move/swap/sell/rotate) and the
+# existing restock_trigger_stock_units_at_or_below threshold that
+# _step_restock_tasks() already uses to trigger the autonomous staff
+# restock task (decision 0089) -- not a second, independently invented
+# threshold.
+func _selected_fixture_restock_target():
+    var fixture_id: String = store_view.selected_fixture()
+    if fixture_id.is_empty():
+        return null
+    var product = store_view._product_on_fixture(fixture_id)
+    if product == null:
+        return null
+    if product.stock_units > simulation._restock_trigger_stock_units_at_or_below:
+        return null
+    return product
 
 
 func _on_restock_pressed() -> void:
-    if _restock_product_ids.is_empty():
-        layout_edit_label.text = "No stocked product to restock yet"
+    var product = _selected_fixture_restock_target()
+    if product == null:
+        layout_edit_label.text = "Select a shelf whose stock is running low to restock it"
         _refresh_ui()
         return
-    var product_id: String = _restock_product_ids[restock_product_option.selected]
-    var product = simulation.inventory.get_product(product_id)
     # REMAKE_BALANCED_DEFAULT (task #38): apply_explicit_restock() takes an
     # arbitrary caller-chosen quantity; no strategy-guide/wiki source states
     # a real order-lot size, so this button's one-tap batch size (the
@@ -553,13 +557,12 @@ func _on_restock_pressed() -> void:
     var quantity: int = maxi(1, product.initial_stock_units)
     var total_cost_yen: int = quantity * product.restock_unit_cost_yen
     var staff_id: String = simulation.staff.checkout_staff().staff_id
-    if simulation.apply_explicit_restock(product_id, staff_id, quantity, total_cost_yen):
+    if simulation.apply_explicit_restock(product.product_id, staff_id, quantity, total_cost_yen):
         layout_edit_label.text = "Restocked %d units of %s for ¥%s" % [
             quantity,
-            product_id,
+            product.product_id,
             _format_integer(total_cost_yen),
         ]
-        _refresh_restock_product_option()
     else:
         layout_edit_label.text = "Finish the active visit before restocking"
     _refresh_ui()
@@ -708,7 +711,6 @@ func _on_load_pressed() -> void:
         accumulator = 0.0
         layout_edit_label.text = "Game loaded"
         _refresh_procure_fixture_option()
-        _refresh_restock_product_option()
         _refresh_hire_candidate_option()
     else:
         layout_edit_label.text = "No compatible save found"
@@ -802,6 +804,16 @@ func _refresh_ui() -> void:
     _refresh_eject_customer_option()
     rotate_fixture_button.disabled = store_view.selected_fixture().is_empty()
     sell_fixture_button.disabled = store_view.selected_fixture().is_empty()
+    # Task #79: contextual restock -- see the evidence comment on
+    # _selected_fixture_restock_target() for why this is gated on the
+    # selected fixture's own stock level rather than always enabled.
+    var restock_target = _selected_fixture_restock_target()
+    if restock_target == null:
+        restock_button.disabled = true
+        restock_button.text = "Restock selected product"
+    else:
+        restock_button.disabled = false
+        restock_button.text = "Restock %s (stock: %d)" % [restock_target.product_id, restock_target.stock_units]
     expand_chain_button.text = "Expand chain (¥%s, currently %d store(s))" % [
         _format_integer(int(simulation.chain_expansion_cost_yen())),
         int(snapshot["player_store_count"]),

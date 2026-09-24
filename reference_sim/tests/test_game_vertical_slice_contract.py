@@ -559,7 +559,6 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "ProductCatalogOption",
             "ProcureFixtureOption",
             "ProcureProductButton",
-            "RestockProductOption",
             "RestockButton",
             "PromotionOption",
             "BuyPromotionButton",
@@ -571,7 +570,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "simulation.try_purchase_fixture(catalog_id, instance_id, origin_subcell, interaction)",
             "simulation.try_purchase_permit(permit_id)",
             "simulation.try_procure_product(catalog_id, instance_id, fixture_id)",
-            "simulation.apply_explicit_restock(product_id, staff_id, quantity, total_cost_yen)",
+            "simulation.apply_explicit_restock(product.product_id, staff_id, quantity, total_cost_yen)",
             "simulation.try_purchase_promotion(promotion_id)",
             "simulation.try_expand_chain()",
         ):
@@ -2882,6 +2881,69 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("economy_ui_scene._on_fixture_swap_requested(", smoke)
         self.assertIn("economy_ui_scene._on_edit_mode_selected(1)", smoke)
         self.assertIn("economy_ui_scene._on_deselect_fixture_pressed()", smoke)
+
+    def test_manual_restock_is_contextual_to_the_selected_low_stock_fixture(self):
+        # Task #79: a second recreation-fidelity challenge (after task #77's
+        # calendar-format fix) found that the restock button was an
+        # always-available generic "pick any stocked product" dropdown, with
+        # no source ever confirming a player-initiated restock action exists
+        # in the original at all -- docs/research/inventory-restock-boundary-
+        # 2026-09-05.md section 9 explicitly marked manual_restock_action as
+        # UNKNOWN. The project owner then supplied direct-play testimony
+        # (CONFIRMED_COMMUNITY, per CLAUDE.md evidence tier 1): selecting a
+        # shelf whose stock is running low is what makes a restock command
+        # available, not a standalone product picker. This asserts the
+        # research note records that testimony and that the UI now gates
+        # restock on the selected fixture's own low stock rather than
+        # exposing every stocked product regardless of selection.
+        research_note = (
+            GAME_ROOT.parent / "docs" / "research" / "inventory-restock-boundary-2026-09-05.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("manual_restock_action: UNKNOWN", research_note)
+        self.assertIn("プロジェクトオーナー本人の直接プレイ証言", research_note)
+        self.assertIn(
+            "対象の商品棚を選択し、中身が減っていると補充のコマンドが出て、プレイヤーが",
+            research_note,
+        )
+
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        self.assertNotIn('name="RestockProductOption"', scene)
+        self.assertIn('name="RestockButton"', scene)
+        self.assertIn(
+            '[node name="RestockButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]\n'
+            "custom_minimum_size = Vector2(0, 40)\n"
+            "disabled = true",
+            scene,
+        )
+
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        self.assertNotIn("restock_product_option", main)
+        self.assertNotIn("_restock_product_ids", main)
+        self.assertNotIn("_refresh_restock_product_option", main)
+        self.assertIn("func _selected_fixture_restock_target():", main)
+        self.assertIn("store_view.selected_fixture()", main.split("func _selected_fixture_restock_target()")[1][:400])
+        self.assertIn(
+            "simulation._restock_trigger_stock_units_at_or_below",
+            main.split("func _selected_fixture_restock_target()")[1][:600],
+        )
+        restock_target_comment = main.split("func _selected_fixture_restock_target()")[0].split(
+            "func _on_procure_product_pressed"
+        )[-1]
+        self.assertIn("CONFIRMED_COMMUNITY", restock_target_comment)
+        self.assertIn("decision 0089", restock_target_comment)
+        self.assertIn("restock_button.disabled", main)
+
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("economy_ui_scene.store_view.selected_fixture_id = \"shelf-1\"", smoke)
+        self.assertIn("economy_ui_scene._selected_fixture_restock_target()", smoke)
+        self.assertIn(
+            "restock target must stay null while the selected fixture's stock is not low",
+            smoke,
+        )
+        self.assertIn(
+            "pressing Restock while ungated (no low-stock target) must not charge cash",
+            smoke,
+        )
 
     def test_ui_theme_is_wired_into_both_scenes_and_verified_in_headless_smoke(self):
         # Task #76: the user chose visual polish as the next UI direction
