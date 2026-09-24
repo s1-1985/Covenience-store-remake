@@ -1403,6 +1403,33 @@ with an identical plan, admitted in the same tick so they start stacked on the e
 extended to verify the new invariant holds every tick and that the trailing customer is actually
 forced to wait at least once (proving the scenario isn't vacuously passing). See decision 0136.
 
+**Task #67 (2026-09-24)**: the user chose "asset wiring" as the next direction after this session's
+system-side fixes (tasks #63-#66), matching task #46's own standing development order ("build out
+the system side completely first, then generate images/audio and wire them"). This is the project's
+**first asset-integration work** -- `game/` previously had zero image assets; `store_view.gd`'s
+`_draw()` drew only colored rectangles. Scoped to fixtures only (of the several asset categories
+sitting in `assets/raw/`, per the 2026-09-24 handoff): `assets/raw/conveni_fixtures_remake_v3/`'s
+manifest turned out to have exactly one sprite per `fixture_catalog` catalog_id (all 35, zero
+mismatch either direction), the cleanest of the un-wired packages. Sprites were copied into
+`game/assets/fixtures/` (Godot can only load `res://`-relative paths, not the project-external
+`assets/raw/`), and `store_view.gd`'s `_draw_fixtures()` now draws the matching texture via
+`draw_texture_rect()` when one exists, falling back to the pre-existing colored-rect+label rendering
+otherwise (nothing regresses for a fixture with no sprite). `checkout-1`/`shelf-1`/`shelf-2` predate
+the catalog system entirely (task #39/#41) and carry no `catalog_id` at all; a new
+`FALLBACK_VISUAL_CATALOG_ID_BY_KIND` gives them a same-footprint stand-in sprite
+(`register_1`/`medium_ambient_shelf`) for display only -- explicitly not a claim that these specific
+scenario fixtures ARE those catalog items. These sprites are this project's own newly-generated art
+(REMAKE_BALANCED_DEFAULT visual tier, per PROJECT_MEMORY section 1's 2026-09-21 personal-use policy),
+not a recovered original asset. `headless_smoke.gd`'s existing task #38 UI scenario (the only one that
+actually instantiates `main.tscn` into the scene tree) now also verifies every one of the 35
+catalog sprites, plus the `register_1` fallback, actually loads as a real `Texture2D` under a fresh
+CI editor import -- not just that the files exist on disk. See decision 0137. `reference_sim`
+untouched (this task is `game/`-only); could not run `headless_smoke.gd` locally (no Godot binary in
+this sandbox) so this was validated via the CI feedback loop established in tasks #63-#66. Explicitly
+out of scope: product overlays, staff sprites, customer sprites, the town map, and the 5 menu-UI
+asset packages -- each a separate future task; fixture rotation does not yet change which sprite
+variant is drawn (no orientation-specific sprites exist in the source manifest).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

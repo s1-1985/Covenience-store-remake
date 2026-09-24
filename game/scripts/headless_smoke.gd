@@ -1872,6 +1872,24 @@ func _initialize() -> void:
         steps += 1
     economy_ui_scene.simulation.economy.cash_yen += 50_000_000
 
+    # Task #67: the first asset-wiring pass copied one sprite per
+    # fixture_catalog entry into game/assets/fixtures/. Confirm every one of
+    # them actually loads through StoreView's own lookup (proves the sprite
+    # file exists, is named to match its catalog_id exactly, and imports as
+    # a real Texture2D under the CI editor's fresh import pass) rather than
+    # only checking the files exist on disk.
+    for fixture_entry in config["fixture_catalog"]:
+        var fixture_catalog_id := str(fixture_entry["catalog_id"])
+        if economy_ui_scene.store_view._fixture_texture(fixture_catalog_id) == null:
+            _fail("fixture sprite failed to load for catalog_id: %s" % fixture_catalog_id)
+            return
+    # The pre-catalog-system checkout-1 fixture (no catalog_id of its own)
+    # falls back to the "register_1" sprite for display only; that sprite
+    # isn't itself a fixture_catalog entry, so the loop above never checks it.
+    if economy_ui_scene.store_view._fixture_texture("register_1") == null:
+        _fail("fallback checkout sprite (register_1) failed to load")
+        return
+
     var bench_index: int = economy_ui_scene._fixture_catalog_ids.find("bench")
     if bench_index < 0:
         _fail("economy UI: fixture catalog option did not include 'bench'")
