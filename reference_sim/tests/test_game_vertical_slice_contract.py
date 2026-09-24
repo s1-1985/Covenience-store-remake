@@ -507,14 +507,18 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func try_load_sample_layout(sample_id: String) -> bool:", simulation)
         self.assertIn("not customers.all_settled()", simulation)
 
-        # No undo/resale mechanic is invented: reusing an already-owned
-        # fixture id is free, a genuinely new one costs its normal catalog
-        # price, and there is no separate "sell fixture"/"restore previous
-        # layout" path -- matching the research note's own boundary ("Keep
-        # `load sample`, `sell/remove fixture`, and `restore previous
-        # layout` as separate research questions").
+        # No undo/restore-previous-layout mechanic is invented: reusing an
+        # already-owned fixture id is free, a genuinely new one costs its
+        # normal catalog price, and there is no "restore previous layout"
+        # path -- matching the research note's own boundary ("Keep `load
+        # sample`, `sell/remove fixture`, and `restore previous layout` as
+        # separate research questions"). `sell/remove fixture` was that
+        # boundary's other deferred item; task #78 revisited it once the
+        # official screenshot evidence for the interior-edit screen's own
+        # distinct `売却` command was found, so try_sell_fixture() now
+        # exists (see test_interior_edit_sell_and_swap_commands_are_wired_
+        # and_tagged) -- only try_undo_sample_layout remains out of scope.
         self.assertIn("purchase_price_yen", simulation)
-        self.assertNotIn("func try_sell_fixture", simulation)
         self.assertNotIn("func try_undo_sample_layout", simulation)
 
         # Loading a sample that would strand currently-stocked inventory on
@@ -2811,6 +2815,73 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "economy_ui_scene.simulation.month_count / economy_ui_scene.simulation.MONTHS_PER_YEAR + 1",
             smoke,
         )
+
+    def test_interior_edit_sell_and_swap_commands_are_wired_and_tagged(self):
+        # Task #78: the same recreation-fidelity check that led to task #77
+        # also found docs/research/menu-hierarchy-evidence-2026-09-05.md /
+        # official-ui-state-reconstruction-2026-09-05.md documenting the
+        # original's interior-edit screen as five distinct commands
+        # (配置/移動/入れ替え/売却/終了, official PS screenshot ss02) that
+        # this client's own tap-to-select/relocate editor had never been
+        # reconciled with. 配置 (buy fixture) and 移動 (relocate) already
+        # existed; this task adds explicit 入れ替え (swap) and 売却 (sell)
+        # actions plus a deselect ("終了") button, closing the structural
+        # gap. The exact refund percentage and swap semantics are not
+        # stated by any source, so both carry this project's own
+        # REMAKE_BALANCED_DEFAULT tag.
+        research_note = (
+            GAME_ROOT.parent / "docs" / "research" / "menu-hierarchy-evidence-2026-09-05.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("配置/移動/入れ替え/売却/終了", research_note)
+
+        layout = (GAME_ROOT / "scripts" / "domain" / "store_layout.gd").read_text(encoding="utf-8")
+        self.assertIn("func try_remove_fixture(fixture_id: String) -> bool:", layout)
+        self.assertIn("func try_swap_fixture_positions(fixture_id_a: String, fixture_id_b: String) -> bool:", layout)
+
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("func try_sell_fixture(fixture_id: String) -> bool:", simulation)
+        self.assertIn("func try_swap_fixtures(fixture_id_a: String, fixture_id_b: String) -> bool:", simulation)
+        self.assertIn("const FIXTURE_SELL_REFUND_PERCENT := 50", simulation)
+        sell_comment = simulation.split("const FIXTURE_SELL_REFUND_PERCENT")[0].split(
+            "func try_swap_fixtures"
+        )[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", sell_comment)
+        swap_comment = simulation.split("func try_swap_fixtures")[0].split(
+            "func try_rotate_fixture_clockwise"
+        )[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", swap_comment)
+
+        economy = (GAME_ROOT / "scripts" / "domain" / "economy_state.gd").read_text(encoding="utf-8")
+        self.assertIn("amount_yen may be negative to record a rebate", economy)
+
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        self.assertIn("signal fixture_swap_requested(fixture_id_a: String, fixture_id_b: String)", store_view)
+        self.assertIn('var edit_mode := "move"', store_view)
+
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        for node_name in ("EditModeOption", "SellFixtureButton", "DeselectFixtureButton"):
+            self.assertIn(f'name="{node_name}"', scene)
+        for symbol in (
+            "edit_mode_option",
+            "sell_fixture_button",
+            "deselect_fixture_button",
+            "func _on_edit_mode_selected(index: int) -> void:",
+            "func _on_fixture_swap_requested(fixture_id_a: String, fixture_id_b: String) -> void:",
+            "func _on_sell_fixture_pressed() -> void:",
+            "func _on_deselect_fixture_pressed() -> void:",
+        ):
+            self.assertIn(symbol, main)
+
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("sell_simulation.try_sell_fixture(", smoke)
+        self.assertIn("swap_simulation.try_swap_fixtures(", smoke)
+        self.assertIn("economy_ui_scene._on_sell_fixture_pressed()", smoke)
+        self.assertIn("economy_ui_scene._on_fixture_swap_requested(", smoke)
+        self.assertIn("economy_ui_scene._on_edit_mode_selected(1)", smoke)
+        self.assertIn("economy_ui_scene._on_deselect_fixture_pressed()", smoke)
 
     def test_ui_theme_is_wired_into_both_scenes_and_verified_in_headless_smoke(self):
         # Task #76: the user chose visual polish as the next UI direction

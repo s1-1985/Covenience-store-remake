@@ -686,6 +686,97 @@ func _initialize() -> void:
         _fail("a rejected fixture purchase must not change cash")
         return
 
+    # Task #78: try_sell_fixture() -- CONFIRMED_OFFICIAL that "売却" exists
+    # as an interior-edit command; the 50% refund and the specific
+    # rejection rules below are this project's own REMAKE_BALANCED_DEFAULT
+    # choices (see the function's own comment in vertical_slice_
+    # simulation.gd).
+    var sell_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(sell_simulation)
+    if sell_simulation.try_sell_fixture("checkout-1"):
+        _fail("selling the checkout fixture must be rejected")
+        return
+    if sell_simulation.try_sell_fixture("shelf-1"):
+        _fail("selling a pre-catalog fixture with no catalog_id must be rejected (no price to refund from)")
+        return
+    if sell_simulation.try_sell_fixture("no-such-fixture"):
+        _fail("selling an unknown fixture id must be rejected")
+        return
+    if not sell_simulation.try_purchase_fixture(
+        "small_tobacco_vending", "sell-shelf-1", Vector2i(1, 10), Vector2i(1, 9)
+    ):
+        _fail("sell test: setup shelf purchase failed")
+        return
+    if not sell_simulation.try_procure_product("tobacco", "sell-product-1", "sell-shelf-1"):
+        _fail("sell test: setup product procurement failed")
+        return
+    if sell_simulation.try_sell_fixture("sell-shelf-1"):
+        _fail("selling a fixture that still holds procured stock must be rejected")
+        return
+    if not sell_simulation.try_purchase_fixture(
+        "potted_plant", "sell-amenity-1", Vector2i(4, 10), Vector2i(4, 9)
+    ):
+        _fail("sell test: setup amenity purchase failed")
+        return
+    var potted_plant_price := 0
+    for entry in config["fixture_catalog"]:
+        if str(entry["catalog_id"]) == "potted_plant":
+            potted_plant_price = int(entry["purchase_price_yen"])
+            break
+    var cash_before_sell: int = int(sell_simulation.economy.cash_yen)
+    if not sell_simulation.try_sell_fixture("sell-amenity-1"):
+        _fail("selling a valid, unoccupied, non-checkout fixture must be accepted")
+        return
+    var expected_refund: int = (
+        potted_plant_price * sell_simulation.FIXTURE_SELL_REFUND_PERCENT / 100
+    )
+    if sell_simulation.economy.cash_yen != cash_before_sell + expected_refund:
+        _fail("selling a fixture must refund exactly FIXTURE_SELL_REFUND_PERCENT of its catalog price")
+        return
+    if sell_simulation.layout.fixtures_by_id.has("sell-amenity-1"):
+        _fail("a sold fixture must actually be removed from the layout")
+        return
+    if sell_simulation.event_log.count_type("fixture_sold") != 1:
+        _fail("a completed fixture sale must record exactly one fixture_sold event")
+        return
+
+    # Task #78: try_swap_fixtures() -- CONFIRMED_OFFICIAL that "入れ替え"
+    # exists as a distinct interior-edit command; exchanging two already-
+    # placed fixtures' positions is this project's own REMAKE_BALANCED_
+    # DEFAULT reading of what it does (see the function's own comment).
+    var swap_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    steps += _run_visit(swap_simulation)
+    if not swap_simulation.try_purchase_fixture(
+        "potted_plant", "swap-a", Vector2i(1, 10), Vector2i(1, 9)
+    ):
+        _fail("swap test: setup fixture A purchase failed")
+        return
+    if not swap_simulation.try_purchase_fixture(
+        "bench", "swap-b", Vector2i(4, 10), Vector2i(4, 9)
+    ):
+        _fail("swap test: setup fixture B purchase failed")
+        return
+    var swap_a_origin_before: Vector2i = swap_simulation.layout.fixture_origin("swap-a")
+    var swap_b_origin_before: Vector2i = swap_simulation.layout.fixture_origin("swap-b")
+    if swap_simulation.try_swap_fixtures("swap-a", "swap-a"):
+        _fail("swapping a fixture with itself must be rejected")
+        return
+    if swap_simulation.try_swap_fixtures("swap-a", "no-such-fixture"):
+        _fail("swapping with an unknown fixture id must be rejected")
+        return
+    if not swap_simulation.try_swap_fixtures("swap-a", "swap-b"):
+        _fail("swapping two valid, unoccupied fixtures must be accepted")
+        return
+    if swap_simulation.layout.fixture_origin("swap-a") != swap_b_origin_before:
+        _fail("swap must move fixture A to fixture B's former origin")
+        return
+    if swap_simulation.layout.fixture_origin("swap-b") != swap_a_origin_before:
+        _fail("swap must move fixture B to fixture A's former origin")
+        return
+    if swap_simulation.event_log.count_type("fixtures_swapped") != 1:
+        _fail("a completed swap must record exactly one fixtures_swapped event")
+        return
+
     var parking_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(parking_simulation)
     if not parking_simulation.try_purchase_fixture(
@@ -2392,6 +2483,71 @@ func _initialize() -> void:
     var fake_town_box: Dictionary = economy_ui_scene.town_view._bounding_box(fake_town_points)
     if fake_town_box["origin"] != Vector2i(-3, -4) or fake_town_box["size"] != Vector2i(9, 12):
         _fail("town view bounding box did not cover every marker with the expected margin")
+        return
+
+    # Task #78: EditModeOption/SellFixtureButton/DeselectFixtureButton wiring
+    # against the real instantiated main.tscn scene. Reuses fixture-purchase-1
+    # (bench, unoccupied) and fixture-purchase-2 (small_tobacco_vending,
+    # already holding product-purchase-1 from the earlier "Stock product"
+    # test above) rather than purchasing new fixtures, since both are still
+    # present and their occupancy state is exactly what this test needs.
+    if economy_ui_scene.sell_fixture_button.disabled != true:
+        _fail("the sell button must start disabled with nothing selected")
+        return
+    economy_ui_scene.store_view.selected_fixture_id = "fixture-purchase-2"
+    economy_ui_scene._refresh_ui()
+    if economy_ui_scene.sell_fixture_button.disabled:
+        _fail("the sell button must enable once a fixture is selected")
+        return
+    economy_ui_scene._on_sell_fixture_pressed()
+    if not economy_ui_scene.simulation.layout.fixtures_by_id.has("fixture-purchase-2"):
+        _fail("selling a fixture that still holds procured stock must be rejected, not silently removed")
+        return
+    economy_ui_scene.store_view.selected_fixture_id = "fixture-purchase-1"
+    var cash_before_ui_sell: int = int(economy_ui_scene.simulation.economy.cash_yen)
+    economy_ui_scene._on_sell_fixture_pressed()
+    if economy_ui_scene.simulation.layout.fixtures_by_id.has("fixture-purchase-1"):
+        _fail("selling an unoccupied, non-checkout fixture through the UI button must remove it")
+        return
+    if not economy_ui_scene.store_view.selected_fixture_id.is_empty():
+        _fail("selling the selected fixture must clear the selection (it no longer exists)")
+        return
+    if economy_ui_scene.simulation.economy.cash_yen <= cash_before_ui_sell:
+        _fail("selling a fixture through the UI button must actually refund cash")
+        return
+
+    # EditModeOption's default is "move" (existing tap-to-relocate
+    # behavior, unit-tested at the store_view.gd level already); switching
+    # it to "swap" (item id 1) must flip store_view.edit_mode.
+    economy_ui_scene._on_edit_mode_selected(1)
+    if economy_ui_scene.store_view.edit_mode != "swap":
+        _fail("selecting the 'Swap' item must set store_view.edit_mode to 'swap'")
+        return
+    if not economy_ui_scene.simulation.try_purchase_fixture(
+        "bench", "swap-ui-a", Vector2i(1, 12), Vector2i(0, 12)
+    ):
+        _fail("swap test: setup fixture A purchase failed")
+        return
+    if not economy_ui_scene.simulation.try_purchase_fixture(
+        "potted_plant", "swap-ui-b", Vector2i(5, 12), Vector2i(9, 12)
+    ):
+        _fail("swap test: setup fixture B purchase failed")
+        return
+    economy_ui_scene._on_fixture_swap_requested("swap-ui-a", "swap-ui-b")
+    if economy_ui_scene.simulation.layout.fixture_origin("swap-ui-a") != Vector2i(5, 12):
+        _fail("swapping through the UI signal handler must move fixture A to fixture B's origin")
+        return
+    if economy_ui_scene.simulation.layout.fixture_origin("swap-ui-b") != Vector2i(1, 12):
+        _fail("swapping through the UI signal handler must move fixture B to fixture A's origin")
+        return
+
+    economy_ui_scene._on_deselect_fixture_pressed()
+    if not economy_ui_scene.store_view.selected_fixture_id.is_empty():
+        _fail("the Deselect button must clear the current fixture selection")
+        return
+    economy_ui_scene._on_edit_mode_selected(0)
+    if economy_ui_scene.store_view.edit_mode != "move":
+        _fail("selecting the 'Move' item must set store_view.edit_mode back to 'move'")
         return
 
     # Task #75: day/month progression and the game-over/scenario-clear

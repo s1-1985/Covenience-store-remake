@@ -1665,6 +1665,36 @@ have yet, e.g. an explicit fixture-sell action) rather than folded into this nar
 asserts the research file's own `01年目01月01日` citation is present so this evidence can't silently
 disappear). See decision 0147.
 
+**Task #78 (2026-09-24)**: the follow-up task #77 flagged -- reconciling this client's ad-hoc "Prototype
+layout editor" (tap-to-select, tap-to-place/relocate, one Rotate button) with the confirmed official
+5-command interior-edit structure (配置/移動/入れ替え/売却/終了). 配置 (buy) and 移動 (relocate) already
+existed; 入れ替え (swap) and 売却 (sell) did not, and needed new mechanics with no confirmed rule behind
+them -- asked the user how to handle the two invented pieces before implementing; answer: "REMAKE_
+BALANCED_DEFAULTで発明して進める" (invent with the tag and proceed). Added `store_layout.gd` `try_remove_
+fixture()`/`try_swap_fixture_positions()` and `vertical_slice_simulation.gd` `try_sell_fixture()`/
+`try_swap_fixtures()`, following the exact snapshot/rollback pattern the existing relocate/rotate
+actions already use. `FIXTURE_SELL_REFUND_PERCENT := 50` (half the catalog price back) is this client's
+own REMAKE_BALANCED_DEFAULT choice, no source states an actual figure; the swap semantics (exchanging
+two already-placed fixtures' positions, distinct from single-fixture relocate) are this client's own
+REMAKE_BALANCED_DEFAULT reading of what "入れ替え" does interactively, chosen because it is the one
+reading not already achievable via two sequential relocates (a fully packed layout can leave no empty
+cell for either fixture to move through). Selling is restricted to fixtures with a real fixture_catalog
+origin (no price to refund otherwise), never the checkout fixture (this client assumes exactly one, no
+reassignment mechanic), and never a fixture still holding stock -- reusing `try_load_sample_layout()`'s
+own "reject rather than silently discard inventory" precedent rather than inventing an auto-clear rule.
+`economy_state.gd`'s `record_explicit_expense()` assert was relaxed to allow a negative `amount_yen`
+(a rebate through the same ledger) -- every existing caller already always passed non-negative amounts,
+so this changes no prior behavior. `store_view.gd` gained an `edit_mode` ("move" default / "swap"); only
+in "swap" mode does tapping a second fixture emit a new `fixture_swap_requested` signal instead of just
+re-selecting -- "move" mode's tap behavior is byte-for-byte unchanged. `main.tscn`/`main.gd` got an
+`EditModeOption` dropdown, a `SellFixtureButton`, and a `DeselectFixtureButton` (終了). Found and fixed a
+stale test boundary along the way: task #37's own contract test had asserted `try_sell_fixture` must NOT
+exist, encoding the "keep sell/remove fixture a separate research question" scope decision from
+`docs/research/ss-layout-entrance-register-and-chain-cannibalization-2026-09-06.md` -- updated it to
+reflect that this boundary was deliberately revisited (only `try_undo_sample_layout` remains out of
+scope from that original note). `reference_sim` full suite grew from 742 to 743 passed/1 xfailed. See
+decision 0148.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

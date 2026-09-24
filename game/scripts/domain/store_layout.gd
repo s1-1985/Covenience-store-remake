@@ -181,6 +181,55 @@ func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
     return true
 
 
+# Task #78: removing a fixture from an already-valid layout can only ever
+# free cells, never collide with anything, so this skips the
+# _fixture_configs_are_valid() re-check every other mutator here runs --
+# there is nothing it could reject.
+func try_remove_fixture(fixture_id: String) -> bool:
+    if not fixtures_by_id.has(fixture_id):
+        return false
+    var candidate_fixtures := fixtures.duplicate(true)
+    for index in range(candidate_fixtures.size()):
+        if str(candidate_fixtures[index]["id"]) == fixture_id:
+            candidate_fixtures.remove_at(index)
+            break
+    fixtures = candidate_fixtures
+    _build_blocked_cells(_subcells_per_tile)
+    return true
+
+
+# Task #78: exchanges two existing fixtures' origin/interaction subcells
+# with each other in one atomic step, using the exact same delta-shift
+# math try_move_fixture() already applies to a single fixture. Needed as
+# its own operation (not just two sequential try_move_fixture() calls)
+# because a fully packed layout can leave no empty cell for either
+# fixture to move through on its way to the other's spot.
+func try_swap_fixture_positions(fixture_id_a: String, fixture_id_b: String) -> bool:
+    if fixture_id_a == fixture_id_b:
+        return false
+    if not fixtures_by_id.has(fixture_id_a) or not fixtures_by_id.has(fixture_id_b):
+        return false
+    var candidate_fixtures := fixtures.duplicate(true)
+    var origin_a := _vec2i(fixtures_by_id[fixture_id_a]["origin_subcell"])
+    var origin_b := _vec2i(fixtures_by_id[fixture_id_b]["origin_subcell"])
+    for fixture in candidate_fixtures:
+        var fixture_id := str(fixture["id"])
+        if fixture_id != fixture_id_a and fixture_id != fixture_id_b:
+            continue
+        var old_origin := _vec2i(fixture["origin_subcell"])
+        var old_interaction := _vec2i(fixture["interaction_subcell"])
+        var new_origin: Vector2i = origin_b if fixture_id == fixture_id_a else origin_a
+        var delta := new_origin - old_origin
+        fixture["origin_subcell"] = [new_origin.x, new_origin.y]
+        var new_interaction := old_interaction + delta
+        fixture["interaction_subcell"] = [new_interaction.x, new_interaction.y]
+    if not _fixture_configs_are_valid(candidate_fixtures):
+        return false
+    fixtures = candidate_fixtures
+    _build_blocked_cells(_subcells_per_tile)
+    return true
+
+
 func _build_blocked_cells(scale: int) -> void:
     blocked.clear()
     fixtures_by_id.clear()

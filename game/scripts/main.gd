@@ -52,7 +52,10 @@ var _menu_icon_textures: Dictionary = {}
 @onready var next_customer_button: Button = $UI/Panel/Margin/Scroll/VBox/NextCustomerButton
 @onready var eject_customer_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/EjectCustomerOption
 @onready var eject_customer_button: Button = $UI/Panel/Margin/Scroll/VBox/EjectCustomerButton
+@onready var edit_mode_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/EditModeOption
 @onready var rotate_fixture_button: Button = $UI/Panel/Margin/Scroll/VBox/RotateFixtureButton
+@onready var sell_fixture_button: Button = $UI/Panel/Margin/Scroll/VBox/SellFixtureButton
+@onready var deselect_fixture_button: Button = $UI/Panel/Margin/Scroll/VBox/DeselectFixtureButton
 @onready var sample_layout_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/SampleLayoutOption
 @onready var load_sample_layout_button: Button = $UI/Panel/Margin/Scroll/VBox/LoadSampleLayoutButton
 @onready var fixture_catalog_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/FixtureCatalogOption
@@ -131,7 +134,11 @@ func _ready() -> void:
     reset_button.pressed.connect(_on_reset_pressed)
     next_customer_button.pressed.connect(_on_next_customer_pressed)
     eject_customer_button.pressed.connect(_on_eject_customer_pressed)
+    edit_mode_option.item_selected.connect(_on_edit_mode_selected)
     rotate_fixture_button.pressed.connect(_on_rotate_fixture_pressed)
+    sell_fixture_button.pressed.connect(_on_sell_fixture_pressed)
+    deselect_fixture_button.pressed.connect(_on_deselect_fixture_pressed)
+    store_view.fixture_swap_requested.connect(_on_fixture_swap_requested)
     load_sample_layout_button.pressed.connect(_on_load_sample_layout_pressed)
     buy_fixture_button.pressed.connect(_on_buy_fixture_pressed)
     buy_permit_button.pressed.connect(_on_buy_permit_pressed)
@@ -256,7 +263,10 @@ func _on_eject_customer_pressed() -> void:
 
 
 func _on_fixture_selected(fixture_id: String) -> void:
-    layout_edit_label.text = "Selected: %s — tap an empty grid cell to move" % fixture_id
+    if store_view.edit_mode == "swap":
+        layout_edit_label.text = "Selected: %s — tap another fixture to swap" % fixture_id
+    else:
+        layout_edit_label.text = "Selected: %s — tap an empty grid cell to move" % fixture_id
 
 
 func _on_fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i) -> void:
@@ -286,6 +296,45 @@ func _on_rotate_fixture_pressed() -> void:
         layout_edit_label.text = "Finish the active visit before editing layout"
     else:
         layout_edit_label.text = "Cannot rotate there: blocked or route would break"
+    _refresh_ui()
+
+
+# Task #78: EditModeOption's two items are declared in main.tscn as
+# id 0 = "Move", id 1 = "Swap" (matching store_view.edit_mode's own
+# "move"/"swap" string values).
+func _on_edit_mode_selected(index: int) -> void:
+    store_view.edit_mode = "swap" if edit_mode_option.get_item_id(index) == 1 else "move"
+
+
+func _on_fixture_swap_requested(fixture_id_a: String, fixture_id_b: String) -> void:
+    if simulation.try_swap_fixtures(fixture_id_a, fixture_id_b):
+        layout_edit_label.text = "Swapped %s and %s" % [fixture_id_a, fixture_id_b]
+    elif not simulation.customers.all_settled():
+        layout_edit_label.text = "Finish the active visit before editing layout"
+    else:
+        layout_edit_label.text = "Cannot swap those: route would break"
+    _refresh_ui()
+
+
+func _on_sell_fixture_pressed() -> void:
+    var fixture_id: String = store_view.selected_fixture()
+    if fixture_id.is_empty():
+        layout_edit_label.text = "Select a fixture before selling"
+    elif simulation.try_sell_fixture(fixture_id):
+        layout_edit_label.text = "Sold %s" % fixture_id
+        store_view.selected_fixture_id = ""
+        _refresh_procure_fixture_option()
+        _refresh_restock_product_option()
+    elif not simulation.customers.all_settled():
+        layout_edit_label.text = "Finish the active visit before selling a fixture"
+    else:
+        layout_edit_label.text = "Cannot sell that fixture: it's the checkout, holds stock, or has no catalog price"
+    _refresh_ui()
+
+
+func _on_deselect_fixture_pressed() -> void:
+    store_view.selected_fixture_id = ""
+    layout_edit_label.text = "Deselected"
     _refresh_ui()
 
 
@@ -752,6 +801,7 @@ func _refresh_ui() -> void:
     next_customer_button.disabled = not simulation.customers.can_admit_concurrent()
     _refresh_eject_customer_option()
     rotate_fixture_button.disabled = store_view.selected_fixture().is_empty()
+    sell_fixture_button.disabled = store_view.selected_fixture().is_empty()
     expand_chain_button.text = "Expand chain (¥%s, currently %d store(s))" % [
         _format_integer(int(simulation.chain_expansion_cost_yen())),
         int(snapshot["player_store_count"]),

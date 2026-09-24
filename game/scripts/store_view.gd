@@ -2,6 +2,9 @@ extends Node2D
 
 signal fixture_selected(fixture_id: String)
 signal fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i)
+# Task #78: emitted instead of re-selecting when a second fixture is tapped
+# while edit_mode == "swap" (see edit_mode below).
+signal fixture_swap_requested(fixture_id_a: String, fixture_id_b: String)
 
 const SUBCELL_PIXELS := 36.0
 
@@ -116,6 +119,11 @@ const CUSTOMER_SPRITE_ANCHOR_FRACTION := Vector2(0.5, 0.9625)
 var config: Dictionary = {}
 var simulation
 var selected_fixture_id := ""
+# Task #78: "move" (default) preserves the exact pre-existing tap
+# behavior below (tapping a second fixture re-selects it); "swap" is the
+# only mode in which tapping a second fixture emits fixture_swap_requested
+# instead. main.gd sets this from its own EditModeOption dropdown.
+var edit_mode := "move"
 var _fixture_textures: Dictionary = {}
 var _product_textures: Dictionary = {}
 var _staff_textures: Dictionary = {}
@@ -294,6 +302,14 @@ func _unhandled_input(event: InputEvent) -> void:
     if not simulation.layout.is_walkable(cell):
         var fixture_id: String = simulation.layout.fixture_at(cell)
         if not fixture_id.is_empty():
+            # Task #78: in "swap" mode, tapping a second, different fixture
+            # requests a swap instead of just changing the selection --
+            # every other mode (including the default "move") keeps the
+            # original re-select behavior unchanged.
+            if edit_mode == "swap" and not selected_fixture_id.is_empty() and fixture_id != selected_fixture_id:
+                fixture_swap_requested.emit(selected_fixture_id, fixture_id)
+                get_viewport().set_input_as_handled()
+                return
             selected_fixture_id = fixture_id
             fixture_selected.emit(fixture_id)
             queue_redraw()
