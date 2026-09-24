@@ -1106,8 +1106,16 @@ func snapshot() -> Dictionary:
         "restock_staff_states": _restock_staff_snapshot(),
         "day_count": day_count,
         "month_count": month_count,
+        # Task #75: the UI previously never displayed day/month progression
+        # at all (only the intra-day clock_text). REPRESENTATIVE_DAYS_PER_
+        # MONTH is the same CONFIRMED_OFFICIAL 4-day-per-month figure
+        # _settle_month_end() already uses, so exposing this counter here
+        # lets the UI show "day X of 4 this month" without inventing a
+        # second calendar concept.
+        "days_completed_this_month": _days_completed_this_month,
         "is_game_over": is_game_over,
         "game_over_reason": game_over_reason,
+        "clear_condition_met": clear_condition_met,
         "permits_held": _permits_held.keys(),
         "popularity": popularity,
         "price_change_pct": price_change_pct,

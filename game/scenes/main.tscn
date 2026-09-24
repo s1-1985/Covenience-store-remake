@@ -70,6 +70,9 @@ text = "Game clock"
 theme_override_font_sizes/font_size = 28
 text = "09:00"
 
+[node name="CalendarValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
+text = "Month 1 · Day 1 of 4 (Day 0 overall)"
+
 [node name="CashTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Cash"
 
@@ -116,6 +119,11 @@ text = "Store rating"
 
 [node name="RatingValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "☆☆☆☆☆ (popularity 0)"
+
+[node name="ScenarioStatusValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
+theme_override_colors/font_color = Color(0.4, 0.85, 0.4, 1)
+autowrap_mode = 2
+text = ""
 
 [node name="TownTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Town / land value"
@@ -282,3 +290,49 @@ text = "Quit to Menu"
 
 [node name="Hint" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Space: Pause / Resume"
+
+[node name="GameOverLayer" type="CanvasLayer" parent="."]
+layer = 5
+visible = false
+
+[node name="Background" type="ColorRect" parent="GameOverLayer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.72)
+
+[node name="Panel" type="PanelContainer" parent="GameOverLayer"]
+offset_left = 390.0
+offset_top = 260.0
+offset_right = 890.0
+offset_bottom = 470.0
+
+[node name="Margin" type="MarginContainer" parent="GameOverLayer/Panel"]
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 22
+
+[node name="VBox" type="VBoxContainer" parent="GameOverLayer/Panel/Margin"]
+theme_override_constants/separation = 12
+
+[node name="GameOverTitle" type="Label" parent="GameOverLayer/Panel/Margin/VBox"]
+theme_override_font_sizes/font_size = 26
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="GameOverReason" type="Label" parent="GameOverLayer/Panel/Margin/VBox"]
+autowrap_mode = 2
+horizontal_alignment = 1
+text = ""
+
+[node name="GameOverButtons" type="HBoxContainer" parent="GameOverLayer/Panel/Margin/VBox"]
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="GameOverResetButton" type="Button" parent="GameOverLayer/Panel/Margin/VBox/GameOverButtons"]
+custom_minimum_size = Vector2(160, 44)
+text = "Play Again"
+
+[node name="GameOverMenuButton" type="Button" parent="GameOverLayer/Panel/Margin/VBox/GameOverButtons"]
+custom_minimum_size = Vector2(160, 44)
+text = "Return to Menu"

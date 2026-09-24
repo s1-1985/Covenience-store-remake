@@ -33,6 +33,7 @@ var _menu_icon_textures: Dictionary = {}
 @onready var town_view: Node2D = $TownView
 @onready var show_town_map_button: Button = $UI/Panel/Margin/Scroll/VBox/ShowTownMapButton
 @onready var clock_label: Label = $UI/Panel/Margin/Scroll/VBox/ClockValue
+@onready var calendar_label: Label = $UI/Panel/Margin/Scroll/VBox/CalendarValue
 @onready var cash_label: Label = $UI/Panel/Margin/Scroll/VBox/CashValue
 @onready var stock_label: Label = $UI/Panel/Margin/Scroll/VBox/StockValue
 @onready var basket_label: Label = $UI/Panel/Margin/Scroll/VBox/BasketValue
@@ -41,6 +42,7 @@ var _menu_icon_textures: Dictionary = {}
 @onready var sales_label: Label = $UI/Panel/Margin/Scroll/VBox/SalesValue
 @onready var visits_label: Label = $UI/Panel/Margin/Scroll/VBox/VisitsValue
 @onready var rating_label: Label = $UI/Panel/Margin/Scroll/VBox/RatingValue
+@onready var scenario_status_label: Label = $UI/Panel/Margin/Scroll/VBox/ScenarioStatusValue
 @onready var town_label: Label = $UI/Panel/Margin/Scroll/VBox/TownValue
 @onready var event_label: Label = $UI/Panel/Margin/Scroll/VBox/EventValue
 @onready var layout_edit_label: Label = $UI/Panel/Margin/Scroll/VBox/LayoutEditValue
@@ -73,6 +75,10 @@ var _menu_icon_textures: Dictionary = {}
 @onready var save_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/SaveButton
 @onready var load_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/LoadButton
 @onready var quit_to_menu_button: Button = $UI/Panel/Margin/Scroll/VBox/MenuButtons/QuitToMenuButton
+@onready var game_over_layer: CanvasLayer = $GameOverLayer
+@onready var game_over_reason_label: Label = $GameOverLayer/Panel/Margin/VBox/GameOverReason
+@onready var game_over_reset_button: Button = $GameOverLayer/Panel/Margin/VBox/GameOverButtons/GameOverResetButton
+@onready var game_over_menu_button: Button = $GameOverLayer/Panel/Margin/VBox/GameOverButtons/GameOverMenuButton
 
 var config: Dictionary
 var simulation
@@ -140,6 +146,12 @@ func _ready() -> void:
     load_button.pressed.connect(_on_load_pressed)
     quit_to_menu_button.pressed.connect(_on_quit_to_menu_pressed)
     show_town_map_button.pressed.connect(_on_show_town_map_pressed)
+    # Task #75: the game-over overlay reuses the exact same handlers as the
+    # sidebar's own Reset/Quit-to-Menu buttons, rather than duplicating
+    # their logic -- "Play Again" is just this client's existing full
+    # reset() path, and "Return to Menu" is the existing scene-change path.
+    game_over_reset_button.pressed.connect(_on_reset_pressed)
+    game_over_menu_button.pressed.connect(_on_quit_to_menu_pressed)
     store_view.fixture_selected.connect(_on_fixture_selected)
     store_view.fixture_relocation_requested.connect(_on_fixture_relocation_requested)
     _refresh_ui()
@@ -664,6 +676,12 @@ func _refresh_ui() -> void:
         return
     var snapshot: Dictionary = simulation.snapshot()
     clock_label.text = str(snapshot["clock_text"])
+    calendar_label.text = "Month %d · Day %d of %d (Day %d overall)" % [
+        int(snapshot["month_count"]) + 1,
+        int(snapshot["days_completed_this_month"]) + 1,
+        VerticalSliceSimulationScript.REPRESENTATIVE_DAYS_PER_MONTH,
+        int(snapshot["day_count"]),
+    ]
     cash_label.text = "¥%s" % _format_integer(int(snapshot["cash_yen"]))
     stock_label.text = "%d units" % int(snapshot["stock_units"])
     basket_label.text = "%d items / ¥%s" % [
@@ -695,6 +713,17 @@ func _refresh_ui() -> void:
         _star_rank_text(int(snapshot["star_rating"])),
         int(snapshot["popularity"]),
     ]
+    # Task #75: clear_condition_met (player_store_count reaching the
+    # PROVISIONAL PLAYER_STORE_COUNT_SCENARIO_TARGET) is a permanent flag,
+    # not a one-time event -- the player keeps playing after clearing it
+    # (see _evaluate_terminal_state()'s own comment), so this label just
+    # stays on rather than needing separate "already shown once" state.
+    if bool(snapshot["clear_condition_met"]):
+        scenario_status_label.text = "Scenario cleared — reached %d stores (you can keep playing)" % [
+            VerticalSliceSimulationScript.PLAYER_STORE_COUNT_SCENARIO_TARGET
+        ]
+    else:
+        scenario_status_label.text = ""
     var rival_store_count: int = int(snapshot["town_store_count_including_rivals"]) - int(snapshot["player_store_count"])
     town_label.text = "population %s, %d rival store%s, land ¥%s" % [
         _format_integer(int(snapshot["town_population"])),
@@ -713,6 +742,20 @@ func _refresh_ui() -> void:
         int(snapshot["player_store_count"]),
     ]
     set_price_policy_button.text = "Set price policy (currently %+d%%)" % int(snapshot["price_change_pct"])
+    # Task #75: is_game_over/game_over_reason have existed on the simulation
+    # since the bankrupt/time-limit game-over paths were wired, but nothing
+    # in this UI ever surfaced them -- every economy action's own is_game_
+    # over guard already made them silently stop working, with no on-screen
+    # explanation. The overlay's full-screen background blocks further
+    # input by default Control mouse-filter behavior, so no other button
+    # needs its own is_game_over check added.
+    var game_over_now: bool = bool(snapshot["is_game_over"])
+    game_over_layer.visible = game_over_now
+    if game_over_now:
+        game_over_reason_label.text = _game_over_reason_text(str(snapshot["game_over_reason"]))
+        if not paused:
+            paused = true
+            pause_button.text = "Resume"
     store_view.queue_redraw()
 
 
@@ -735,6 +778,22 @@ func _load_config() -> Dictionary:
 func _star_rank_text(star_rating: int) -> String:
     assert(star_rating >= 0 and star_rating <= 5)
     return "★".repeat(star_rating) + "☆".repeat(5 - star_rating)
+
+
+# Task #75: game_over_reason is one of the two literal strings
+# _trigger_game_over() ever passes ("bankrupt"/"time_limit_exceeded", see
+# vertical_slice_simulation.gd's own CONFIRMED comment on
+# GAME_OVER_YEAR_LIMIT/bankruptcy above _init()) -- this only translates
+# those two known values into player-facing copy, it does not invent a
+# third game-over condition.
+func _game_over_reason_text(reason: String) -> String:
+    match reason:
+        "bankrupt":
+            return "Cash went negative at a day/month boundary."
+        "time_limit_exceeded":
+            return "100 years passed without reaching the scenario's clear condition."
+        _:
+            return reason
 
 
 func _menu_icon(category: String, id: String) -> Texture2D:

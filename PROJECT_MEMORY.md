@@ -1587,6 +1587,34 @@ with an empty queue and keeps running (not crashing) afterward. The rest of the 
 `_player_store_position`/`_rival_stores`, none of which mutate at runtime) turned up nothing else.
 `reference_sim` full suite grew from 738 to 739 passed/1 xfailed. See decision 0144.
 
+**Task #75 (2026-09-24)**: after task #74/PR #251 merged, the user pivoted from system-side audits to
+the UI directly ("UIとかは? ゲームとして動くように作りこんでいって" -- what about the UI? build it out
+so it actually works as a playable game). Auditing `main.gd`/`main.tscn` against `vertical_slice_
+simulation.gd`'s own `snapshot()` found two pieces of already-tracked state that had never been
+surfaced anywhere in the UI at all: (1) `day_count`/`month_count` -- the UI only ever showed the
+intra-day clock (HH:MM), giving the player no way to know what day or month it currently was, even
+though this client's entire economic loop (representative-day/month settlement, staff wages, fixture
+maintenance, the 100-year game-over clock) revolves around day/month progression; (2) `is_game_over`/
+`game_over_reason`/`clear_condition_met` -- every economy action already silently stopped working via
+its own `is_game_over` guard once bankruptcy or the 100-year time limit hit, but nothing ever told the
+player why, and there was no way back to the menu or to try again short of quitting the app. Added a
+`CalendarValue` label (`"Month %d · Day %d of %d (Day %d overall)"`, reusing the existing CONFIRMED_
+OFFICIAL `REPRESENTATIVE_DAYS_PER_MONTH`=4 constant rather than hardcoding it again) and a full-screen
+`GameOverLayer` overlay (hidden by default; shows the translated bankrupt/time-limit-exceeded reason,
+auto-pauses, and offers "Play Again"/"Return to Menu" wired to the exact same `_on_reset_pressed()`/
+`_on_quit_to_menu_pressed()` handlers the sidebar's own buttons already use). `clear_condition_met`
+(reaching the PROVISIONAL `PLAYER_STORE_COUNT_SCENARIO_TARGET`=10 stores) is a permanent flag the
+player keeps playing past, not a one-time event (per `_evaluate_terminal_state()`'s own comment), so
+it got a persistent sidebar label instead of a dismissable modal. Pure UI wiring of already-CONFIRMED/
+PROVISIONAL simulation state -- no new REMAKE_BALANCED_DEFAULT tag needed (no new number or mechanic
+invented). `reference_sim` full suite grew from 739 to 740 passed/1 xfailed (one new contract test,
+covering the real `main.tscn`-instantiated UI end-to-end including a genuine bankrupt game over
+reproduced via `_evaluate_terminal_state()`, task #65's own technique). See decision 0145. Explicitly
+out of scope: a full visual redesign of the sidebar-debug-tool-style UI itself (this task closed only
+the highest-value functional gap -- the total absence of end-state feedback -- not a look-and-feel
+pass), and a one-time celebratory notification for `clear_condition_met` (chose the simpler always-on
+label over adding "already shown" bookkeeping to the UI layer).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
