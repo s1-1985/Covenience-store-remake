@@ -67,9 +67,22 @@ class RemakePurchasePolicyTests(unittest.TestCase):
         self.assertEqual(expensive_rate, policy.primary_purchase_probability * policy.price_sensitivity_floor)
 
     def test_certain_purchase_buys_cheapest_priced_offer(self):
+        # Setting primary_purchase_probability alone does not make this
+        # "certain": choose_purchase() also multiplies by a price-based
+        # price_factor (max(price_sensitivity_floor, 1 - price_ratio)),
+        # which is < 1.0 for any offer priced above zero. That left this
+        # test's outcome genuinely probabilistic (failing at roughly the
+        # rate 1 - price_factor) despite its name and intent -- and the
+        # stray `policy.rng = random.Random()` right after construction
+        # (overwriting the seeded rng=random.Random(0) with an unseeded
+        # one) turned that latent ~5% failure rate into an observable
+        # flake instead of a fixed, silently-wrong pass/fail. Flooring
+        # price_sensitivity_floor at 1.0 makes price_factor == 1.0
+        # unconditionally, so the purchase really is certain regardless of
+        # price or rng state, matching the test's actual name.
         policy = RemakeBalancedPurchasePolicy(rng=random.Random(0))
-        policy.rng = random.Random()
         policy.primary_purchase_probability = 1.0
+        policy.price_sensitivity_floor = 1.0
         expensive = make_offer(slot_id="expensive", price=100_000, units=1)
         cheap = make_offer(slot_id="cheap", price=50, units=1)
 
