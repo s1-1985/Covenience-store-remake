@@ -1928,6 +1928,16 @@ func _initialize() -> void:
         _fail("economy UI: buying a promotion must not charge cash until its scheduled trigger fires")
         return
 
+    # Task #65: chain_expansion_cost_yen() now charges the confirmed x4 area
+    # multiplier, so top up cash to guarantee this scenario's earlier
+    # spending (fixture/permit/product/restock/promotion purchases) hasn't
+    # left too little for the expansion itself -- this test's point is the
+    # UI wiring, not exercising the insufficient-cash rejection path (that
+    # is already covered by the dedicated chain-expansion scenario above).
+    economy_ui_scene.simulation.economy.cash_yen = max(
+        economy_ui_scene.simulation.economy.cash_yen,
+        economy_ui_scene.simulation.chain_expansion_cost_yen()
+    )
     var store_count_before_expansion: int = economy_ui_scene.simulation.player_store_count
     economy_ui_scene._on_expand_chain_pressed()
     if economy_ui_scene.simulation.player_store_count != store_count_before_expansion + 1:
