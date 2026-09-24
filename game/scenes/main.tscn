@@ -213,11 +213,9 @@ custom_minimum_size = Vector2(0, 40)
 custom_minimum_size = Vector2(0, 40)
 text = "Stock product on selected shelf"
 
-[node name="RestockProductOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
-custom_minimum_size = Vector2(0, 40)
-
 [node name="RestockButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
 custom_minimum_size = Vector2(0, 40)
+disabled = true
 text = "Restock selected product"
 
 [node name="PromotionOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]

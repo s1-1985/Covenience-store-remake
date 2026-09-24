@@ -1695,6 +1695,32 @@ reflect that this boundary was deliberately revisited (only `try_undo_sample_lay
 scope from that original note). `reference_sim` full suite grew from 742 to 743 passed/1 xfailed. See
 decision 0148.
 
+**Task #79 (2026-09-24)**: after task #78/PR #254 merged, the user picked "操作フローの改善"
+(workflow/UX cleanup) as the next direction but immediately raised a second recreation-fidelity
+challenge on the option text itself: "商品仕入れとか書いてあるけど、実際の初代ザ・コンビニには
+商品の仕入れとかなかったはずだけど？" Investigation found `docs/research/inventory-restock-
+boundary-2026-09-05.md` section 9 explicitly marks `manual_restock_action: UNKNOWN` -- only the
+autonomous staff-restock mechanic (decision 0089) is CONFIRMED-COMMUNITY, not a player-initiated
+restock button, yet task #38/decision 0107 had already shipped one as an always-available generic
+product picker. Presented this honestly to the user, who then supplied new direct-play testimony
+(CLAUDE.md evidence tier 1, direct-play observation): "対象の商品棚を選択し、中身が減っていると
+補充のコマンドが出て、プレイヤーが任意で補充できたはず." Recorded this testimony as a 2026-09-24
+addendum to the research note's section 9 (CONFIRMED_COMMUNITY structure: selecting a shelf makes
+a restock command available only once its stock is low; the exact threshold/order-lot/UI wording
+remain unconfirmed) and redesigned the restock UI accordingly. Removed `main.tscn`'s always-present
+`RestockProductOption` dropdown and the `restock_button.disabled = true` default now gates on a new
+`main.gd` `_selected_fixture_restock_target()`, which resolves `store_view.selected_fixture()`'s
+product via the existing `_product_on_fixture()` helper (task #68) and returns it only when
+`stock_units <= simulation._restock_trigger_stock_units_at_or_below` -- reusing decision 0089's
+existing threshold rather than inventing a second one. `_on_restock_pressed()`/`_refresh_ui()` were
+rewritten around this target instead of an option-list index; the REMAKE_BALANCED_DEFAULT
+quantity/cost comment from task #38 is unchanged. Removed every now-dead
+`_refresh_restock_product_option()`/`_restock_product_ids` reference across `main.gd` and updated
+`headless_smoke.gd`'s UI-level economy scenario to drive `prototype-bread`'s stock down to the
+threshold and assert the button stays gated (no charge) until then. `reference_sim` full suite grew
+from 743 to 744 passed/1 xfailed (one new contract test asserting the research-note addendum, the
+UI wiring, and the CONFIRMED_COMMUNITY/decision-0089 citations survive). See decision 0149.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

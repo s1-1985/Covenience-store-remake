@@ -60,7 +60,6 @@ func _initialize() -> void:
         "UI/Panel/Margin/Scroll/VBox/ProductCatalogOption",
         "UI/Panel/Margin/Scroll/VBox/ProcureFixtureOption",
         "UI/Panel/Margin/Scroll/VBox/ProcureProductButton",
-        "UI/Panel/Margin/Scroll/VBox/RestockProductOption",
         "UI/Panel/Margin/Scroll/VBox/RestockButton",
         "UI/Panel/Margin/Scroll/VBox/PromotionOption",
         "UI/Panel/Margin/Scroll/VBox/BuyPromotionButton",
@@ -2318,8 +2317,12 @@ func _initialize() -> void:
     if not economy_ui_scene.simulation.inventory.products.has("product-purchase-1"):
         _fail("economy UI: Stock product must procure onto the selected fixture")
         return
-    if economy_ui_scene._restock_product_ids.find("product-purchase-1") < 0:
-        _fail("economy UI: procuring a product must refresh the restock option list")
+    # Task #79: no more separate restock option list to refresh -- the
+    # newly-procured product becomes a valid contextual restock target as
+    # soon as its own fixture is selected and its stock is low, checked via
+    # store_view._product_on_fixture() directly.
+    if economy_ui_scene.store_view._product_on_fixture("fixture-purchase-2") == null:
+        _fail("economy UI: procuring a product must make it resolvable via _product_on_fixture")
         return
 
     # Task #68: try_procure_product() now threads its own catalog_id
@@ -2334,11 +2337,31 @@ func _initialize() -> void:
         _fail("product-purchase-1's display catalog_id did not resolve to 'tobacco'")
         return
 
-    var bread_restock_index: int = economy_ui_scene._restock_product_ids.find("prototype-bread")
-    if bread_restock_index < 0:
-        _fail("economy UI: restock option did not include the default 'prototype-bread' product")
+    # Task #79: the restock command is now contextual to the selected
+    # fixture, gated on that fixture's own stock level -- it is not an
+    # always-available generic picker any more (see docs/decisions/0149-*.md
+    # for the CONFIRMED_COMMUNITY owner testimony this responds to).
+    economy_ui_scene.store_view.selected_fixture_id = "shelf-1"
+    var bread_product_above_threshold = economy_ui_scene.simulation.inventory.get_product("prototype-bread")
+    if bread_product_above_threshold.stock_units <= economy_ui_scene.simulation._restock_trigger_stock_units_at_or_below:
+        _fail("economy UI restock precondition: prototype-bread must start above the restock threshold")
         return
-    economy_ui_scene.restock_product_option.selected = bread_restock_index
+    if economy_ui_scene._selected_fixture_restock_target() != null:
+        _fail("economy UI: restock target must stay null while the selected fixture's stock is not low")
+        return
+    var cash_before_gated_restock_attempt: int = economy_ui_scene.simulation.economy.cash_yen
+    economy_ui_scene._on_restock_pressed()
+    if economy_ui_scene.simulation.economy.cash_yen != cash_before_gated_restock_attempt:
+        _fail("economy UI: pressing Restock while ungated (no low-stock target) must not charge cash")
+        return
+
+    economy_ui_scene.simulation.inventory.get_product("prototype-bread").stock_units = (
+        economy_ui_scene.simulation._restock_trigger_stock_units_at_or_below
+    )
+    var restock_target = economy_ui_scene._selected_fixture_restock_target()
+    if restock_target == null or restock_target.product_id != "prototype-bread":
+        _fail("economy UI: restock target must resolve to the selected fixture's low-stock product")
+        return
     var stock_before_restock: int = economy_ui_scene.simulation.inventory.get_product("prototype-bread").stock_units
     var cash_before_explicit_restock: int = economy_ui_scene.simulation.economy.cash_yen
     economy_ui_scene._on_restock_pressed()
@@ -2350,6 +2373,10 @@ func _initialize() -> void:
     if economy_ui_scene.simulation.economy.cash_yen != cash_before_explicit_restock - expected_explicit_restock_cost:
         _fail("economy UI: Restock must charge quantity * restock_unit_cost_yen")
         return
+    # Clear the selection this restock test made -- later checks in this same
+    # scenario (e.g. the sell button below) assume nothing is selected by
+    # default, same as before task #79 introduced fixture selection here.
+    economy_ui_scene.store_view.selected_fixture_id = ""
 
     var promotion_index: int = economy_ui_scene._promotion_ids.find("direct_mail")
     if promotion_index < 0:
