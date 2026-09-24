@@ -1786,6 +1786,22 @@ Explicitly out of scope: release-signed (non-debug) builds, a CI job that builds
 launcher icon art, and any real-device UX pass (touch hit-target sizing, orientation, etc.) -- the ask
 was a one-time "let me see it on my phone," not a distribution pipeline.
 
+**Task #82 (2026-09-24, decision 0152)**: after a direct complaint that the playable client did not
+look like a recreation of the first title, moved the game-state readout (calendar, clock, cash) out of
+the long scrolling action sidebar and into a new always-visible top HUD bar (`UI/TopBar` in
+`main.tscn`), matching the layout confirmed in `docs/research/original-screen-visual-register-
+2026-09-05.md` entries V001/V005 (CONFIRMED_VISUAL: original screens show a persistent top bar with
+year/month-day/weather/time/cash, plus a store-name label -- "本店" for the single store this client
+actually simulates). Weather stays out of scope, same precedent as task #77 (decision 0147): no weather
+mechanic exists in `game/` yet, so displaying one would be an invented value, not a ported fact. This is
+the first task in a while where a real Godot 4.3 binary was available in-session (fetched to scratchpad,
+same method as task #81) rather than deferring visual verification to CI -- both `godot --headless
+--script res://scripts/headless_smoke.gd` and an `xvfb-run` screenshot of the actual instantiated scene
+were used to confirm the new layout renders without overlap before pushing. `reference_sim` (745 passed,
+1 xfailed) unchanged since no Python code was touched. Explicitly out of scope: a weather HUD, converting
+the sidebar's action controls into the original's modal-window style (PROJECT_MEMORY section 5), and any
+floor/wall/fixture sprite art pass -- all flagged as candidate follow-ups, not done here.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
