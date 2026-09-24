@@ -2040,6 +2040,39 @@ func _initialize() -> void:
         _fail("moving in -y must face 'up'")
         return
 
+    # Task #71: first menu-UI asset pass. Unlike the world sprites above,
+    # these icons are cropped directly from the strategy guide's own printed
+    # menu-icon pages (CONFIRMED_VISUAL, not REMAKE_BALANCED_DEFAULT --
+    # see main.gd's own note at MENU_ICON_DIR). Every fixture_catalog and
+    # product_catalog entry already has a matching icon; confirm each
+    # OptionButton item actually carries one after population.
+    for fixture_catalog_index in range(economy_ui_scene._fixture_catalog_ids.size()):
+        if economy_ui_scene.fixture_catalog_option.get_item_icon(fixture_catalog_index) == null:
+            _fail(
+                "fixture catalog menu icon failed to load for %s" % [
+                    economy_ui_scene._fixture_catalog_ids[fixture_catalog_index]
+                ]
+            )
+            return
+    for product_catalog_index in range(economy_ui_scene._product_catalog_ids.size()):
+        if economy_ui_scene.product_catalog_option.get_item_icon(product_catalog_index) == null:
+            _fail(
+                "product catalog menu icon failed to load for %s" % [
+                    economy_ui_scene._product_catalog_ids[product_catalog_index]
+                ]
+            )
+            return
+    # hire_candidate_option's face icons reuse the task #69 staff sprite
+    # numbering (position in staff_candidates), not a new mapping.
+    for hire_candidate_index in range(economy_ui_scene._hire_candidate_ids.size()):
+        if economy_ui_scene.hire_candidate_option.get_item_icon(hire_candidate_index) == null:
+            _fail(
+                "staff hire menu icon failed to load for %s" % [
+                    economy_ui_scene._hire_candidate_ids[hire_candidate_index]
+                ]
+            )
+            return
+
     var bench_index: int = economy_ui_scene._fixture_catalog_ids.find("bench")
     if bench_index < 0:
         _fail("economy UI: fixture catalog option did not include 'bench'")

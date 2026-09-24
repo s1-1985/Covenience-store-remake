@@ -10,6 +10,25 @@ const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
 # below also carries the same prefix.
 const NEW_FIXTURE_SELECTION_PREFIX := "__new:"
 
+# Task #71: first menu-UI asset pass. Unlike tasks #67-#70's world sprites
+# (this project's own newly-drawn art), these icons (assets/raw/
+# conveni_menu_fixtures_v1/, conveni_menu_products_v1/, conveni_menu_
+# staff_v1/) are cropped directly from the strategy guide's own printed
+# menu-icon pages (README_CLAUDE.md: "攻略本の掲載アイコンを切り出し...
+# 新規描き起こしではありません", each entry's manifest citing its exact
+# source_pdf_page) -- CONFIRMED_VISUAL evidence for the icon artwork itself,
+# not a REMAKE_BALANCED_DEFAULT placeholder. Every fixture_catalog/
+# product_catalog entry in this file has a matching icon (verified: zero
+# gaps either direction beyond a handful of icons for fixtures/products
+# this client hasn't implemented yet, e.g. register_2..4, indoor/
+# outdoor_dispenser, cash -- those simply go unused). Staff face icons use
+# the exact same "staff_001".."staff_035" numbering as the task #69 walking
+# sprites, so _menu_icon() reuses store_view's existing (REMAKE_BALANCED_
+# DEFAULT, position-based) _staff_sprite_id_for_candidate() rather than
+# inventing a second numbering convention.
+const MENU_ICON_DIR := "res://assets/menu_icons/"
+var _menu_icon_textures: Dictionary = {}
+
 @onready var store_view: Node2D = $StoreView
 @onready var clock_label: Label = $UI/Panel/Margin/Scroll/VBox/ClockValue
 @onready var cash_label: Label = $UI/Panel/Margin/Scroll/VBox/CashValue
@@ -286,10 +305,14 @@ func _populate_fixture_catalog_option() -> void:
     fixture_catalog_option.clear()
     _fixture_catalog_ids.clear()
     for entry in config["fixture_catalog"]:
-        _fixture_catalog_ids.append(str(entry["catalog_id"]))
+        var catalog_id := str(entry["catalog_id"])
+        _fixture_catalog_ids.append(catalog_id)
         fixture_catalog_option.add_item(
-            "%s — ¥%s" % [entry["catalog_id"], _format_integer(int(entry["purchase_price_yen"]))]
+            "%s — ¥%s" % [catalog_id, _format_integer(int(entry["purchase_price_yen"]))]
         )
+        var icon := _menu_icon("fixtures", catalog_id)
+        if icon != null:
+            fixture_catalog_option.set_item_icon(fixture_catalog_option.item_count - 1, icon)
 
 
 func _on_buy_fixture_pressed() -> void:
@@ -383,10 +406,14 @@ func _populate_product_catalog_option() -> void:
     product_catalog_option.clear()
     _product_catalog_ids.clear()
     for entry in config["product_catalog"]:
-        _product_catalog_ids.append(str(entry["catalog_id"]))
+        var catalog_id := str(entry["catalog_id"])
+        _product_catalog_ids.append(catalog_id)
         product_catalog_option.add_item(
-            "%s — ¥%s/unit" % [entry["catalog_id"], _format_integer(int(entry["restock_unit_cost_yen"]))]
+            "%s — ¥%s/unit" % [catalog_id, _format_integer(int(entry["restock_unit_cost_yen"]))]
         )
+        var icon := _menu_icon("products", catalog_id)
+        if icon != null:
+            product_catalog_option.set_item_icon(product_catalog_option.item_count - 1, icon)
 
 
 # Only shelf-kind fixtures hold products in this client (checkout/amenity/
@@ -562,6 +589,9 @@ func _refresh_hire_candidate_option() -> void:
                 _format_integer(int(entry["salary_yen_per_day_24h"])),
             ]
         )
+        var icon := _menu_icon("staff", store_view._staff_sprite_id_for_candidate(candidate_id))
+        if icon != null:
+            hire_candidate_option.set_item_icon(hire_candidate_option.item_count - 1, icon)
     hire_candidate_button.disabled = _hire_candidate_ids.is_empty()
 
 
@@ -689,6 +719,20 @@ func _load_config() -> Dictionary:
 func _star_rank_text(star_rating: int) -> String:
     assert(star_rating >= 0 and star_rating <= 5)
     return "★".repeat(star_rating) + "☆".repeat(5 - star_rating)
+
+
+func _menu_icon(category: String, id: String) -> Texture2D:
+    if category.is_empty() or id.is_empty():
+        return null
+    var cache_key := category + "/" + id
+    if _menu_icon_textures.has(cache_key):
+        return _menu_icon_textures[cache_key] as Texture2D
+    var path := MENU_ICON_DIR + cache_key + ".png"
+    var texture: Texture2D = null
+    if ResourceLoader.exists(path):
+        texture = load(path) as Texture2D
+    _menu_icon_textures[cache_key] = texture
+    return texture
 
 
 func _format_integer(value: int) -> String:
