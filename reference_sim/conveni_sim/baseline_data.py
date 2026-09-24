@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 from .models import (
+    AnnualCalendarMonthEntry,
+    BusinessHoursPresetEntry,
     CustomerArchetypeDefinition,
     CustomerVisitProfile,
     EvidenceLevel,
     EvidenceValue,
     FixtureDefinition,
+    MonthlyWeatherPercentagesEntry,
     PermitDefinition,
     ProductCategoryPricing,
     PromotionDefinition,
@@ -18,6 +21,7 @@ from .models import (
     TownFacilityAnchor,
     TradeAreaRadiusEntry,
 )
+from .operating_time import OperatingHours
 
 WIKI = "https://wikiwiki.jp/theconveni1/"
 VIDEO_PS5 = "user-provided Console Archives PS5 first-title video, fixture UI around 14-17m"
@@ -562,6 +566,13 @@ PERMITS = tuple(
 )
 
 SCENARIO_GUIDE = WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"
+QUICK_REFERENCE_GUIDE_MAP_CLEAR_CONDITIONS = (
+    "official strategy guide quick reference book, マップ攻略 section (book "
+    "pages 80-83): body text \"20000人の人口を集めれば、役所用地に都庁が建設さ"
+    "れる\" for the 初級(beginner) scenario's own clear condition -- see "
+    "docs/research/quick-reference-guide-part2-2026-09-19.md section 3.9 and "
+    "docs/decisions/0133-*.md"
+)
 SCENARIO_INITIAL_RIVAL_TOPOLOGY = (
     "docs/research/scenario-initial-rival-topology-2026-09-06.md, citing PS long-play records "
     "https://pinkblue.sakura.ne.jp/contents/kansou/game/psgame/ps-simulation/ps-ai/"
@@ -574,8 +585,11 @@ SCENARIOS = (
         EvidenceValue(200_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_GUIDE),
         EvidenceValue(
             "metropolitan_government_after_population_threshold",
-            EvidenceLevel.CONFIRMED_COMMUNITY,
-            SCENARIO_GUIDE,
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_MAP_CLEAR_CONDITIONS,
+            "Upgraded from CONFIRMED_COMMUNITY (task #64/decision 0133): the strategy guide's own "
+            "body text states the exact 20,000-population threshold directly -- see "
+            "store_events.METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD.",
         ),
         # Task #62: exact initial rival store count is UNKNOWN (research doc
         # section 4) -- only that at least one rival branch exists at start.
@@ -877,6 +891,318 @@ TRADE_AREA_RADIUS_TILES: tuple[TradeAreaRadiusEntry, ...] = (
     TradeAreaRadiusEntry(
         EvidenceValue("自動車", EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
         EvidenceValue(70, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE),
+    ),
+)
+
+QUICK_REFERENCE_GUIDE_TIME_PAGE = (
+    "official strategy guide quick reference book, \"時間\" section (book "
+    "page 2-3); re-verified 2026-09-24 against a 400dpi rescan of the same "
+    "physical page, superseding the 2026-09-19 moderate-confidence "
+    "transcription in docs/research/quick-reference-guide-part1-2026-09-19.md "
+    "section 1.6/1.7 where the two disagree (see docs/decisions/0132-*.md)"
+)
+
+# 年間カレンダー table (書籍頁3): season + weekday/holiday flag for each of the
+# 4 representative days simulated per in-game month. CONFIRMED_OFFICIAL, not a
+# guess -- clock.py's RepresentativeDayType previously used only a "day==4 is
+# the sole holiday" simplification (its own comment invited replacement "if
+# the guidebook contradicts it"); this table is that contradiction; see
+# decision 0132.
+ANNUAL_CALENDAR: tuple[AnnualCalendarMonthEntry, ...] = (
+    AnnualCalendarMonthEntry(
+        1,
+        EvidenceValue("冬期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("holiday", "weekday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        2,
+        EvidenceValue("冬期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("weekday", "weekday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        3,
+        EvidenceValue("冬期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("weekday", "weekday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        4,
+        EvidenceValue("冬期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("weekday", "weekday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        5,
+        EvidenceValue("冬期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("holiday", "holiday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        6,
+        EvidenceValue("夏期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("weekday", "weekday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        7,
+        EvidenceValue("夏期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("weekday", "weekday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        8,
+        EvidenceValue("夏期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("weekday", "holiday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        9,
+        EvidenceValue("夏期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("weekday", "weekday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        10,
+        EvidenceValue("夏期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("weekday", "weekday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        11,
+        EvidenceValue("夏期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("weekday", "weekday", "weekday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+    AnnualCalendarMonthEntry(
+        12,
+        EvidenceValue("冬期", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(
+            ("weekday", "weekday", "holiday", "holiday"),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_TIME_PAGE,
+        ),
+    ),
+)
+
+# 天候のパーセンテージ設定 table (書籍頁3): monthly percentage weights for 5
+# weather categories. CONFIRMED_OFFICIAL; every row sums to exactly 100. This
+# supersedes `remake_customer_share.BAD_WEATHER_VALUES`'s old comment, which
+# mis-cited this same table's column headers as "快晴/大雨/雪/台風/荒天" --
+# 大雨/雪 are not their own columns, they are two of the four conditions the
+# table's own parenthetical bundles into 荒天 ("荒天=大雨・雷雨・台風・大雪");
+# see decision 0132.
+MONTHLY_WEATHER_PERCENTAGES: tuple[MonthlyWeatherPercentagesEntry, ...] = (
+    MonthlyWeatherPercentagesEntry(
+        1,
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(15, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(5, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        2,
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        3,
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(15, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(5, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        4,
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(15, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(5, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        5,
+        EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(15, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(5, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        6,
+        EvidenceValue(1, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(9, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(50, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        7,
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        8,
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        9,
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        10,
+        EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        11,
+        EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(10, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(15, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(5, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+    MonthlyWeatherPercentagesEntry(
+        12,
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(30, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(20, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(15, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+        EvidenceValue(5, EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_TIME_PAGE),
+    ),
+)
+
+QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM = QUICK_REFERENCE_GUIDE_TIME_PAGE.replace(
+    "\"時間\" section (book page 2-3)", "\"時間\" section, hours clock diagram (book page 2)"
+)
+
+# 5 numbered fixed-hours presets, plus 24h/temporary-closure, from the quick
+# reference guide's clock diagram (書籍頁2). CONFIRMED_OFFICIAL; `printed_label`
+# is transcribed verbatim including preset 3's own internal inconsistency
+# (11:00~2:00 is 15 hours, printed labeled "16時間営業") -- see
+# BusinessHoursPresetEntry's docstring and decision 0132. No caller consumes
+# this table yet (`operating_time.OperatingHours` remains free-form); this is
+# reference data only, the same "hold it even though nothing consumes it yet"
+# pattern already used for `StoreVariant.total_area_tiles` etc. (task #57).
+BUSINESS_HOURS_PRESETS: tuple[BusinessHoursPresetEntry, ...] = (
+    BusinessHoursPresetEntry(
+        1,
+        EvidenceValue("AM10:00~PM6:00", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue("8時間営業", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue(
+            OperatingHours.from_hm(10, 0, 18, 0),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM,
+        ),
+    ),
+    BusinessHoursPresetEntry(
+        2,
+        EvidenceValue("AM7:00~PM11:00", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue("16時間営業", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue(
+            OperatingHours.from_hm(7, 0, 23, 0),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM,
+        ),
+    ),
+    BusinessHoursPresetEntry(
+        3,
+        EvidenceValue("AM11:00~AM2:00", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue("16時間営業", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue(
+            OperatingHours.from_hm(11, 0, 2, 0),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM,
+        ),
+    ),
+    BusinessHoursPresetEntry(
+        4,
+        EvidenceValue("PM0:00~AM4:00", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue("16時間営業", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue(
+            OperatingHours.from_hm(12, 0, 4, 0),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM,
+        ),
+    ),
+    BusinessHoursPresetEntry(
+        5,
+        EvidenceValue("PM7:00~AM11:00", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue("16時間営業", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue(
+            OperatingHours.from_hm(19, 0, 11, 0),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM,
+        ),
+    ),
+    BusinessHoursPresetEntry(
+        None,
+        EvidenceValue("24時間営業", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue("24時間営業", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue(
+            OperatingHours.twenty_four_hours(),
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM,
+        ),
+    ),
+    BusinessHoursPresetEntry(
+        None,
+        EvidenceValue("臨時休業", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        EvidenceValue("臨時休業", EvidenceLevel.CONFIRMED_OFFICIAL, QUICK_REFERENCE_GUIDE_HOURS_DIAGRAM),
+        None,
     ),
 )
 

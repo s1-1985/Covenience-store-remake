@@ -44,10 +44,18 @@ this fraction off the pre-rival score, capped by MAX_RIVAL_DILUTION so a
 crowded map can't zero a store out entirely from this factor alone."""
 MAX_RIVAL_DILUTION = 0.6
 
-BAD_WEATHER_VALUES = frozenset({"大雨", "雪", "台風", "荒天"})
-"""Matches the guide's own 5-way weather category table (quick reference,
-"天候のパーセンテージ設定": 快晴/大雨/雪/台風/荒天); everything but 快晴
-counts as bad weather here."""
+BAD_WEATHER_VALUES = frozenset({"雨", "雪", "雨・雪", "大雨", "雷雨", "台風", "大雪", "荒天"})
+"""The guide's own 5-way weather category table (quick reference,
+"天候のパーセンテージ設定", book page 3) is 快晴/晴れ/曇り/雨・雪/荒天, with
+荒天 itself glossed as the umbrella "大雨・雷雨・台風・大雪" -- re-verified
+2026-09-24 against a 400dpi rescan (see baseline_data.MONTHLY_WEATHER_
+PERCENTAGES and decision 0132), superseding this constant's own prior
+comment, which mis-cited the columns as "快晴/大雨/雪/台風/荒天" (treating
+荒天's own component conditions as if they were separate top-level columns).
+This set includes both the two adverse bucket names themselves (雨・雪,
+荒天) and their component condition words, so a caller passing either the
+bucket label or a specific condition is recognized; 快晴/晴れ/曇り are not
+bad weather here (the guide does not say cloudy skies reduce visits)."""
 BAD_WEATHER_PENALTY = 0.15
 
 

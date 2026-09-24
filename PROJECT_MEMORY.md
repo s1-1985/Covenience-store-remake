@@ -1289,6 +1289,51 @@ work: no `game/` scenario-selection or multi-rival-placement mechanic exists yet
 integration loop is left for a future task. See decision 0131. `reference_sim` full suite 722
 passed/1 xfailed (9 new test functions); `game/` untouched.
 
+**Task #63 (2026-09-24)**: the user re-shared the same 4 PDF strategy-guide scans already fully
+transcribed in task #50 (2026-09-19) and asked to continue system-side work. Rather than
+re-transcribing from scratch, this session re-opened the two pages already flagged as CONTRADICTS
+in section 21.4 at 400dpi (`pdftoppm -r 400` + targeted `convert -crop`), well above the original
+scan resolution, and read them directly. Two items resolved with high confidence: (1) the quick
+reference guide's 天候のパーセンテージ設定 table (book page 3) actually has 5 columns 快晴/晴れ/
+曇り/雨・雪/荒天 (荒天 glossed as "大雨・雷雨・台風・大雪") -- different from both the existing
+code comment's claimed columns and the task #50 transcription's own moderate-confidence reading;
+all 12 monthly rows now sum exactly to 100 (task #50's reading had 3 rows that didn't). (2) the
+same page's 年間カレンダー table gives an exact weekday/holiday flag per (month, representative
+day 1-4), confirming `clock.py`'s existing "day==4 is the only holiday" simplification -- whose own
+comment invited replacement "if the guidebook contradicts it" -- is wrong for January/May/August/
+December, each of which carries one extra 休日. Also directly re-confirmed the business-hours
+preset③ text ("AM11:00~AM2:00 (16時間営業)") is exactly what the source prints (an internal
+15h-vs-16h-label inconsistency in the original book itself, not a scan misread as task #50 had
+guessed). New `baseline_data.ANNUAL_CALENDAR`/`MONTHLY_WEATHER_PERCENTAGES`/
+`BUSINESS_HOURS_PRESETS` (all CONFIRMED_OFFICIAL) hold this data; `clock.py`'s
+`representative_day_type` now looks up `ANNUAL_CALENDAR` instead of the old day==4 rule, and
+`remake_customer_share.BAD_WEATHER_VALUES` is corrected/extended to match the real column
+vocabulary. `reference_sim`-only, matching the established "add confirmed data even before a
+consumer exists" pattern for the weather/hours tables: `game/` has no weekday/holiday, weather-
+roll, or business-hours-preset-selection mechanic to wire these into yet. See decision 0132.
+`reference_sim` full suite grew from 725 to 726 passed/1 xfailed (two existing tests -- the day==4
+clock assumption and the 14-month calendar-invariant fuzz test -- rewritten to compute their
+expected values from `ANNUAL_CALENDAR` itself rather than a hardcoded simplification; four new
+test functions for the three new tables).
+
+**Task #64 (2026-09-24)**: continuing the same session, the task #50 research catalogue (section
+21.3) flagged a 都庁(metropolitan government building) auto-build population threshold as a
+candidate to upgrade from PROVISIONAL/CONFIRMED_COMMUNITY to CONFIRMED_OFFICIAL: the strategy
+guide's own body text (quick reference book, マップ攻略 section, pages 80-83) states directly
+"20000人の人口を集めれば、役所用地に都庁が建設される" for the beginner scenario's clear
+condition. `baseline_data.SCENARIOS`'s `beginner.objective` field previously cited only a wiki
+source at CONFIRMED_COMMUNITY with no numeric threshold anywhere in code; its evidence level is
+now CONFIRMED_OFFICIAL, citing the guide's own text, and new `store_events.
+METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD` (20,000) plus `metropolitan_government_is_induced()`
+give the actual number for the first time. Investigating the same research section's other
+candidate (contest-prize eligibility gated on cleanliness value) found only qualitative advice
+("keep cleanliness maxed") with no stated number or probability, so it was left alone rather than
+inventing a threshold -- consistent with `store_events.py`'s existing decision (0099) not to model
+the contest's own "may or may not be picked" draw at all. `reference_sim`-only: `game/` has no
+scenario-selection mechanic to attach a beginner-specific clear condition to (same boundary as
+task #62/decision 0131). See decision 0133. `reference_sim` full suite grew from 726 to 730
+passed/1 xfailed (4 new test functions).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1477,8 +1522,10 @@ order.
   2026-09-19.md` for the row-alignment uncertainty note before using these numbers) plus a
   time-band hour-range definition table (朝=7-11h, 昼=12-15h, 夕=16-19h, 夜=20-23h, 深夜=24-3h,
   早朝=4-6h) not recorded anywhere in the codebase.
-- **Facility/scenario data**: 都庁 auto-build trigger text (population >20,000, upgrades an
-  existing PROVISIONAL wiki note toward CONFIRMED_OFFICIAL); station-spacing rule (2 stations per
+- **Facility/scenario data**: ~~都庁 auto-build trigger text (population >20,000, upgrades an
+  existing PROVISIONAL wiki note toward CONFIRMED_OFFICIAL)~~ -- done in task #64 (decision 0133):
+  `store_events.METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD`/`metropolitan_government_is_induced()`,
+  `reference_sim`-only (no `game/` scenario-selection mechanic to attach it to yet); station-spacing rule (2 stations per
   line if lines are >=40 areas apart); a 4-tier (not section 14's provisional 3-tier)
   初級/中級/上級/極上 scenario structure with concrete starting-data blocks (cash/population/
   rival stats/security-facility counts) per map, plus numeric advanced-scenario clear-condition
@@ -1496,13 +1543,18 @@ order.
 
 Per CLAUDE.md's discipline, these are recorded rather than silently picked one way or the other:
 
-- **Weather table column labels**: this session's independent read of クイックリファレンス p.2-3
-  gives 快晴/曇り/雨/台風/荒天, but `remake_customer_share.py`'s `BAD_WEATHER_VALUES` comment
-  already claims (citing the same book) 快晴/大雨/雪/台風/荒天. Needs a higher-resolution rescan
-  before either is trusted; not changed.
-- **Business hours option ③**: transcribed as "AM11:00-AM2:00" labeled "16時間営業" (only 15h,
-  inconsistent with its own label) -- very likely a scan/OCR misread of "AM3:00", but not
-  corrected without a clearer rescan.
+- **Weather table column labels -- RESOLVED 2026-09-24 (task #63)**: a 400dpi targeted rescan of
+  クイックリファレンス book page 3 settles this decisively: the columns are 快晴/晴れ/曇り/雨・雪/
+  荒天 (荒天 glossed by the guide's own parenthetical as "大雨・雷雨・台風・大雪"), matching
+  neither of this session's two prior competing readings (快晴/曇り/雨/台風/荒天, or the older code
+  comment's 快晴/大雨/雪/台風/荒天). All 12 monthly rows sum exactly to 100 under this reading
+  (the prior reading had 3 rows that did not) -- see decision 0132, `baseline_data.MONTHLY_WEATHER_
+  PERCENTAGES`, and the corrected `remake_customer_share.BAD_WEATHER_VALUES`.
+- **Business hours option ③ -- RESOLVED 2026-09-24 (task #63)**: the same 400dpi rescan directly
+  confirms the source itself prints "AM11:00~AM2:00 (16時間営業)" -- not a scan/OCR misread of
+  "AM3:00" as previously guessed. This is an internal inconsistency in the original guide (15h
+  actual span, 16h printed label), transcribed verbatim rather than silently corrected -- see
+  decision 0132, `baseline_data.BUSINESS_HOURS_PRESETS`.
 - **A "parameter growth per work action" matrix and a customer-anger-penalty matrix** on
   クイックリファレンス p.7, potentially bearing on `staff_growth.gd`'s (task #48) +1/skill-pair
   guesses and the checkout-anger magnitude above -- read confidence on the exact column mapping

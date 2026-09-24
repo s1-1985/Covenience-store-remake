@@ -3,10 +3,19 @@ from __future__ import annotations
 from dataclasses import dataclass
 from enum import Enum
 
+from .baseline_data import ANNUAL_CALENDAR
+
 
 class RepresentativeDayType(str, Enum):
     WEEKDAY = "weekday"
     HOLIDAY = "holiday"
+
+
+_DAY_TYPE_BY_MONTH_DAY: dict[tuple[int, int], RepresentativeDayType] = {
+    (entry.month, day_index + 1): RepresentativeDayType(day_type)
+    for entry in ANNUAL_CALENDAR
+    for day_index, day_type in enumerate(entry.day_types.value)
+}
 
 
 @dataclass(frozen=True)
@@ -35,9 +44,15 @@ class SimulationClock:
 
     @property
     def representative_day_type(self) -> RepresentativeDayType:
-        # SS direct-play evidence says 3 weekdays + 1 holiday. Keep this in the
-        # reference harness so it can be replaced if the guidebook contradicts it.
-        return RepresentativeDayType.HOLIDAY if self.day == 4 else RepresentativeDayType.WEEKDAY
+        # Previously a "day==4 is the only holiday" simplification, kept only
+        # because SS direct-play evidence showed 3 weekdays + 1 holiday and the
+        # code invited replacement "if the guidebook contradicts it" -- it now
+        # does: baseline_data.ANNUAL_CALENDAR (CONFIRMED_OFFICIAL, quick
+        # reference book page 3) gives the exact weekday/holiday flag per
+        # (month, day) -- January/May/August/December each carry one extra
+        # 休日, so the fourth representative day is not always the sole
+        # holiday (see decision 0132).
+        return _DAY_TYPE_BY_MONTH_DAY[(self.month, self.day)]
 
     def advance_day(self) -> MonthBoundary | None:
         if self.day < 4:
