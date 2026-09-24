@@ -703,18 +703,18 @@ func _initialize() -> void:
         _fail("selling an unknown fixture id must be rejected")
         return
     if not sell_simulation.try_purchase_fixture(
-        "small_tobacco_vending", "sell-shelf-1", Vector2i(1, 10), Vector2i(1, 9)
+        "medium_ambient_shelf", "sell-shelf-1", Vector2i(1, 10), Vector2i(1, 9)
     ):
         _fail("sell test: setup shelf purchase failed")
         return
-    if not sell_simulation.try_procure_product("tobacco", "sell-product-1", "sell-shelf-1"):
+    if not sell_simulation.try_procure_product("bread", "sell-product-1", "sell-shelf-1"):
         _fail("sell test: setup product procurement failed")
         return
     if sell_simulation.try_sell_fixture("sell-shelf-1"):
         _fail("selling a fixture that still holds procured stock must be rejected")
         return
     if not sell_simulation.try_purchase_fixture(
-        "potted_plant", "sell-amenity-1", Vector2i(4, 10), Vector2i(4, 9)
+        "potted_plant", "sell-amenity-1", Vector2i(6, 10), Vector2i(6, 9)
     ):
         _fail("sell test: setup amenity purchase failed")
         return
