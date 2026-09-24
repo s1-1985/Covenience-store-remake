@@ -2563,7 +2563,14 @@ func _initialize() -> void:
     if not economy_ui_scene.simulation.try_purchase_fixture(
         "potted_plant", "swap-ui-b", Vector2i(5, 12), Vector2i(5, 11)
     ):
-        _fail("swap test: setup fixture B purchase failed")
+        _fail(
+            "swap-ui test: setup fixture B purchase failed (cash=%d, is_game_over=%s, all_settled=%s, has_swap_ui_b=%s)" % [
+                int(economy_ui_scene.simulation.economy.cash_yen),
+                str(economy_ui_scene.simulation.is_game_over),
+                str(economy_ui_scene.simulation.customers.all_settled()),
+                str(economy_ui_scene.simulation.layout.fixtures_by_id.has("swap-ui-b")),
+            ]
+        )
         return
     economy_ui_scene._on_fixture_swap_requested("swap-ui-a", "swap-ui-b")
     if economy_ui_scene.simulation.layout.fixture_origin("swap-ui-a") != Vector2i(5, 12):
