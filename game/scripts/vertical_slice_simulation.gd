@@ -357,6 +357,16 @@ func tick_idle_for_demand() -> bool:
     return demand_admit_if_due()
 
 
+# Task #80: CONFIRMED_OFFICIAL (docs/research/strategy-guide-third-companion-
+# book-full-extraction-2026-09-24.md, PDF1 p.68-71 Q&A: manual restock
+# "stunts staff 補充 growth") -- unlike _complete_restock() (the autonomous
+# staff-restock task, decision 0089), this deliberately does not call
+# _staff_growth.apply_replenish_growth(): a player-initiated restock must
+# not grant the same 補充 skill growth an autonomous staff restock does.
+# This asymmetry already existed (task #38, before this rule was confirmed
+# in the source above) and needed no code change once the rule was found --
+# only this comment, to record that the match is intentional, not
+# coincidental.
 func apply_explicit_restock(
     product_id: String,
     staff_id: String,

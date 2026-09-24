@@ -278,6 +278,41 @@ docs/decisions/0149-*.md)では、上記の「対象棚を選択→在庫が閾�
 (PROVISIONAL、この証言とは独立に既存)をそのまま再利用している(新たな閾値を
 この証言から逆算・発明してはいない)。
 
+### 追記2(2026-09-24): 攻略本(第3companion book)による独立裏付けを発見
+
+タスク#79の直後、`docs/research/strategy-guide-third-companion-book-full-
+extraction-2026-09-24.md`(このプロジェクトに既に存在していた、2026-09-24
+付の公式攻略本PDF1-4全115ページの全文書き起こし。タスク#65で追加されていた
+ものだが、この「手動補充」の論点では今回初めて参照した)を確認したところ、
+PDF1 p.68-71「販売管理の質問」Q&Aセクションに以下の記述があることが判明した:
+
+> Q: 棚やワゴンが空になる、万引きか? → NOT shoplifting -- just normal
+> sell-through outpacing low-補充 staff; player CAN manually restock via
+> cursor+select but this stunts staff 補充 growth (see Notable findings).
+
+これは上記追記1のプロジェクトオーナー証言(CONFIRMED_COMMUNITY)とは独立の、
+公式攻略本(CONFIRMED_OFFICIAL)による裏付けである。`manual_restock_action`は
+これによりCONFIRMED_OFFICIAL(プレイヤーがカーソル選択で任意に補充できる)へ
+格上げできる。加えて、この攻略本記述は既存資料からは分からなかった新しい
+ニュアンスも含む: プレイヤーによる手動補充は、店員が自律的に行う補充と違い、
+店員の`補充`スキルの成長に寄与しない("stunts staff 補充 growth")。
+
+**この項目についてはコード変更は不要だった**: `game/scripts/vertical_slice_
+simulation.gd`の`_complete_restock()`(店員の自律補充タスク、決定書0089)は
+`_staff_growth.apply_replenish_growth(staff_member)`を呼んで`補充`スキルを
+成長させるが、`apply_explicit_restock()`(プレイヤーの手動補充、タスク#38/
+#79)は元から`_staff_growth`を一切呼んでいない。つまり「手動補充はスキル成長に
+寄与しない」という今回確認された公式ルールに、実装は(この記述を知る前から)
+既に一致していた。この非対称性が意図的な設計だったのか偶然の一致だったのかは
+記録に残っていなかったため、この追記でその一致を明示的にドキュメント化する。
+
+なお、`補充費 = 仕入単価 × 数量`という補充コストの計算式自体も同じ攻略本
+(PDF3 p.2)でCONFIRMED_OFFICIALとして明記されている
+(`restock_unit_cost_yen`として既に実装済み、変更不要)。一方、依然として
+未確定なのは、閾値(何個以下で補充コマンドが出現するか)とプレイヤー補充1回
+あたりの発注数量(ロットサイズ)で、これらはこの攻略本のQ&A本文にも数値の
+記載が無い。
+
 ---
 
 ## 10. 品切れとアンケートの接続
