@@ -1316,6 +1316,24 @@ clock assumption and the 14-month calendar-invariant fuzz test -- rewritten to c
 expected values from `ANNUAL_CALENDAR` itself rather than a hardcoded simplification; four new
 test functions for the three new tables).
 
+**Task #64 (2026-09-24)**: continuing the same session, the task #50 research catalogue (section
+21.3) flagged a 都庁(metropolitan government building) auto-build population threshold as a
+candidate to upgrade from PROVISIONAL/CONFIRMED_COMMUNITY to CONFIRMED_OFFICIAL: the strategy
+guide's own body text (quick reference book, マップ攻略 section, pages 80-83) states directly
+"20000人の人口を集めれば、役所用地に都庁が建設される" for the beginner scenario's clear
+condition. `baseline_data.SCENARIOS`'s `beginner.objective` field previously cited only a wiki
+source at CONFIRMED_COMMUNITY with no numeric threshold anywhere in code; its evidence level is
+now CONFIRMED_OFFICIAL, citing the guide's own text, and new `store_events.
+METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD` (20,000) plus `metropolitan_government_is_induced()`
+give the actual number for the first time. Investigating the same research section's other
+candidate (contest-prize eligibility gated on cleanliness value) found only qualitative advice
+("keep cleanliness maxed") with no stated number or probability, so it was left alone rather than
+inventing a threshold -- consistent with `store_events.py`'s existing decision (0099) not to model
+the contest's own "may or may not be picked" draw at all. `reference_sim`-only: `game/` has no
+scenario-selection mechanic to attach a beginner-specific clear condition to (same boundary as
+task #62/decision 0131). See decision 0133. `reference_sim` full suite grew from 726 to 730
+passed/1 xfailed (4 new test functions).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1504,8 +1522,10 @@ order.
   2026-09-19.md` for the row-alignment uncertainty note before using these numbers) plus a
   time-band hour-range definition table (朝=7-11h, 昼=12-15h, 夕=16-19h, 夜=20-23h, 深夜=24-3h,
   早朝=4-6h) not recorded anywhere in the codebase.
-- **Facility/scenario data**: 都庁 auto-build trigger text (population >20,000, upgrades an
-  existing PROVISIONAL wiki note toward CONFIRMED_OFFICIAL); station-spacing rule (2 stations per
+- **Facility/scenario data**: ~~都庁 auto-build trigger text (population >20,000, upgrades an
+  existing PROVISIONAL wiki note toward CONFIRMED_OFFICIAL)~~ -- done in task #64 (decision 0133):
+  `store_events.METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD`/`metropolitan_government_is_induced()`,
+  `reference_sim`-only (no `game/` scenario-selection mechanic to attach it to yet); station-spacing rule (2 stations per
   line if lines are >=40 areas apart); a 4-tier (not section 14's provisional 3-tier)
   初級/中級/上級/極上 scenario structure with concrete starting-data blocks (cash/population/
   rival stats/security-facility counts) per map, plus numeric advanced-scenario clear-condition

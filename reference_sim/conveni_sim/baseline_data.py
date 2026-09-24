@@ -566,6 +566,13 @@ PERMITS = tuple(
 )
 
 SCENARIO_GUIDE = WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"
+QUICK_REFERENCE_GUIDE_MAP_CLEAR_CONDITIONS = (
+    "official strategy guide quick reference book, マップ攻略 section (book "
+    "pages 80-83): body text \"20000人の人口を集めれば、役所用地に都庁が建設さ"
+    "れる\" for the 初級(beginner) scenario's own clear condition -- see "
+    "docs/research/quick-reference-guide-part2-2026-09-19.md section 3.9 and "
+    "docs/decisions/0133-*.md"
+)
 SCENARIO_INITIAL_RIVAL_TOPOLOGY = (
     "docs/research/scenario-initial-rival-topology-2026-09-06.md, citing PS long-play records "
     "https://pinkblue.sakura.ne.jp/contents/kansou/game/psgame/ps-simulation/ps-ai/"
@@ -578,8 +585,11 @@ SCENARIOS = (
         EvidenceValue(200_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_GUIDE),
         EvidenceValue(
             "metropolitan_government_after_population_threshold",
-            EvidenceLevel.CONFIRMED_COMMUNITY,
-            SCENARIO_GUIDE,
+            EvidenceLevel.CONFIRMED_OFFICIAL,
+            QUICK_REFERENCE_GUIDE_MAP_CLEAR_CONDITIONS,
+            "Upgraded from CONFIRMED_COMMUNITY (task #64/decision 0133): the strategy guide's own "
+            "body text states the exact 20,000-population threshold directly -- see "
+            "store_events.METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD.",
         ),
         # Task #62: exact initial rival store count is UNKNOWN (research doc
         # section 4) -- only that at least one rival branch exists at start.

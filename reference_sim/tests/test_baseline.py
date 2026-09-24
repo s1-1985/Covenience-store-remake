@@ -30,6 +30,17 @@ class BaselineDataTests(unittest.TestCase):
                 EvidenceLevel.CONFIRMED_COMMUNITY,
             )
 
+    def test_beginner_objective_is_confirmed_official_population_threshold(self):
+        # Task #64/decision 0133: upgraded from CONFIRMED_COMMUNITY (wiki) to
+        # CONFIRMED_OFFICIAL -- the strategy guide's own body text states the
+        # 20,000-population threshold directly.
+        by_id = {scenario.id: scenario for scenario in SCENARIOS}
+        beginner_objective = by_id["beginner"].objective
+        self.assertEqual(
+            beginner_objective.value, "metropolitan_government_after_population_threshold"
+        )
+        self.assertEqual(beginner_objective.evidence, EvidenceLevel.CONFIRMED_OFFICIAL)
+
     def test_scenario_initial_rival_topology_matches_the_confirmed_long_play_records(self):
         by_id = {scenario.id: scenario for scenario in SCENARIOS}
 

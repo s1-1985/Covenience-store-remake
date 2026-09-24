@@ -26,6 +26,34 @@ whether the event actually fires once eligible is described as "選ばれる
 draw.
 """
 
+METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD = 20_000
+"""Source: strategy guide quick reference book, マップ攻略 section (book
+pages 80-83), body text for the 初級(beginner) scenario's own clear
+condition: "20000人の人口を集めれば、役所用地に都庁が建設される" (once town
+population reaches 20,000, the metropolitan government building is built
+automatically on the designated 役場用地 land). CONFIRMED_OFFICIAL -- this
+upgrades what `baseline_data.SCENARIOS`'s `beginner.objective` field and an
+earlier wiki-only research note had recorded as a PROVISIONAL/CONFIRMED_
+COMMUNITY "population threshold" into a directly-quoted guide body-text
+statement, and gives the exact number for the first time. Not wired into
+`game/`: no scenario-selection mechanic exists there to attach a beginner-
+specific clear condition to (same boundary as decision 0131's rival
+topology work)."""
+
+
+def metropolitan_government_is_induced(town_population: int) -> bool:
+    """初級シナリオのクリア条件: 町人口が20000人に達すると都庁が自動建設される。
+
+    This is a population threshold, not a player action -- the guide's own
+    text frames it as "誘致というより、マップ内の人口をいかにして増やすかが課題だ"
+    (less "inducing" it than growing the town's population). See
+    METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD for the source citation.
+    """
+    if town_population < 0:
+        raise ValueError("town_population must be >= 0")
+    return town_population >= METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD
+
+
 GAME_OVER_YEAR_LIMIT = 100
 """Source: strategy guide ("ゲームオーバー: 破産、またはクリア条件未達成の
 まま100年経過"). "100年経過" is read as year > 100 (100 full years have

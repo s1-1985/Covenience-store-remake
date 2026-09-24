@@ -2,12 +2,14 @@ import unittest
 
 from conveni_sim.store_events import (
     DONATION_CASH_THRESHOLD_YEN,
+    METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD,
     STORE_COUNT_THRESHOLD,
     TOWN_POPULATION_THRESHOLD,
     FireOrRobberyRisk,
     compute_contest_prize_yen,
     donation_event_is_eligible,
     magazine_or_contest_event_is_eligible,
+    metropolitan_government_is_induced,
     scenario_time_limit_exceeded,
     shoplifting_is_possible,
 )
@@ -54,6 +56,23 @@ class MagazineContestEligibilityTests(unittest.TestCase):
             magazine_or_contest_event_is_eligible(-1, 5)
         with self.assertRaises(ValueError):
             compute_contest_prize_yen(-1)
+
+
+class MetropolitanGovernmentInducementTests(unittest.TestCase):
+    def test_induced_at_threshold(self):
+        self.assertEqual(METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD, 20_000)
+        self.assertTrue(
+            metropolitan_government_is_induced(METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD)
+        )
+
+    def test_not_induced_below_threshold(self):
+        self.assertFalse(
+            metropolitan_government_is_induced(METROPOLITAN_GOVERNMENT_POPULATION_THRESHOLD - 1)
+        )
+
+    def test_rejects_negative_population(self):
+        with self.assertRaises(ValueError):
+            metropolitan_government_is_induced(-1)
 
 
 class ShopliftingTests(unittest.TestCase):
