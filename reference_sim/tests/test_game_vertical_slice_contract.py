@@ -2705,6 +2705,67 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
 
+    def test_calendar_and_game_over_overlay_are_wired_into_the_gameplay_ui(self):
+        # Task #75: the user pivoted from a system-side save/load audit to
+        # asking about the UI directly ("UIとかは？ゲームとして動くように
+        # 作りこんでいって"). Auditing main.gd/main.tscn found two pieces of
+        # already-tracked simulation state (day_count/month_count and
+        # is_game_over/game_over_reason/clear_condition_met) that had never
+        # been surfaced anywhere -- every economy action's own is_game_over
+        # guard already made the game silently stop responding, with zero
+        # on-screen explanation, and the player had no way to see what day
+        # or month it was at all.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn('"days_completed_this_month": _days_completed_this_month', simulation)
+
+        for node_name in (
+            "CalendarValue",
+            "ScenarioStatusValue",
+            "GameOverLayer",
+            "GameOverReason",
+            "GameOverResetButton",
+            "GameOverMenuButton",
+        ):
+            self.assertIn(f'name="{node_name}"', scene)
+
+        for symbol in (
+            "calendar_label",
+            "scenario_status_label",
+            "game_over_layer",
+            "game_over_reason_label",
+            "game_over_reset_button",
+            "game_over_menu_button",
+        ):
+            self.assertIn(symbol, main)
+        self.assertIn("game_over_reset_button.pressed.connect(_on_reset_pressed)", main)
+        self.assertIn("game_over_menu_button.pressed.connect(_on_quit_to_menu_pressed)", main)
+        self.assertIn("func _game_over_reason_text(reason: String) -> String:", main)
+        self.assertIn('"bankrupt":', main)
+        self.assertIn('"time_limit_exceeded":', main)
+
+        # Covered end-to-end by headless_smoke.gd against the real
+        # instantiated main.tscn scene: the overlay starts hidden, the
+        # scenario-clear label reacts to clear_condition_met, and a real
+        # bankrupt game over (same _evaluate_terminal_state() technique the
+        # reference bankruptcy scenario already uses) shows the overlay,
+        # auto-pauses, and can be recovered from via "Play Again".
+        self.assertIn("economy_ui_scene.calendar_label.text != expected_calendar_text", smoke)
+        self.assertIn("economy_ui_scene.simulation.clear_condition_met = true", smoke)
+        self.assertIn('economy_ui_scene.scenario_status_label.text.find("10 stores") < 0', smoke)
+        self.assertIn("economy_ui_scene.simulation.economy.cash_yen = -1", smoke)
+        self.assertIn("economy_ui_scene.simulation._evaluate_terminal_state()", smoke)
+        self.assertIn(
+            'economy_ui_scene.game_over_reason_label.text != economy_ui_scene._game_over_reason_text("bankrupt")',
+            smoke,
+        )
+        self.assertIn("economy_ui_scene._on_reset_pressed()", smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])

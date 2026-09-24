@@ -2373,6 +2373,70 @@ func _initialize() -> void:
         _fail("town view bounding box did not cover every marker with the expected margin")
         return
 
+    # Task #75: day/month progression and the game-over/scenario-clear
+    # state were tracked by the simulation (snapshot()'s day_count/
+    # month_count/is_game_over/game_over_reason/clear_condition_met) but
+    # never surfaced anywhere in this UI -- economy actions already
+    # silently stopped working once is_game_over was true, with no
+    # on-screen explanation. Computed from the scene's own current
+    # simulation state (not a hardcoded "day 0" assumption), since several
+    # step() loops earlier in this same scenario may already have crossed
+    # a day boundary. Several of those loops call simulation.step()
+    # directly rather than through _process(), so _refresh_ui() must be
+    # called explicitly here to be sure the label is not stale.
+    economy_ui_scene._refresh_ui()
+    var expected_calendar_text := "Month %d · Day %d of %d (Day %d overall)" % [
+        economy_ui_scene.simulation.month_count + 1,
+        economy_ui_scene.simulation._days_completed_this_month + 1,
+        economy_ui_scene.simulation.REPRESENTATIVE_DAYS_PER_MONTH,
+        economy_ui_scene.simulation.day_count,
+    ]
+    if economy_ui_scene.calendar_label.text != expected_calendar_text:
+        _fail("the calendar label must reflect the simulation's actual day/month progression")
+        return
+    if economy_ui_scene.game_over_layer.visible:
+        _fail("the game-over overlay must start hidden")
+        return
+    if economy_ui_scene.scenario_status_label.text != "":
+        _fail("the scenario-clear label must start blank before the clear condition is met")
+        return
+
+    economy_ui_scene.simulation.clear_condition_met = true
+    economy_ui_scene._refresh_ui()
+    if economy_ui_scene.scenario_status_label.text.find("10 stores") < 0:
+        _fail("the scenario-clear label must announce the target once clear_condition_met is true")
+        return
+    economy_ui_scene.simulation.clear_condition_met = false
+
+    # Reuse the same direct _evaluate_terminal_state() technique the
+    # reference bankruptcy/time-limit scenario above already uses (task
+    # #65's own bankruptcy_simulation), since driving a real month boundary
+    # through this scene's own step() loop would take far longer than this
+    # check needs.
+    economy_ui_scene.simulation.economy.cash_yen = -1
+    economy_ui_scene.simulation._evaluate_terminal_state()
+    economy_ui_scene._refresh_ui()
+    if not economy_ui_scene.game_over_layer.visible:
+        _fail("the game-over overlay must show once the simulation reports is_game_over")
+        return
+    if economy_ui_scene.game_over_reason_label.text != economy_ui_scene._game_over_reason_text("bankrupt"):
+        _fail("the game-over overlay must show the bankrupt reason's translated text")
+        return
+    if not economy_ui_scene.paused:
+        _fail("reaching game over must auto-pause the running simulation")
+        return
+
+    # "Play Again" (game_over_reset_button) is wired to the exact same
+    # handler as the sidebar's own Reset button -- confirm it actually
+    # clears is_game_over and hides the overlay again on the next refresh.
+    economy_ui_scene._on_reset_pressed()
+    if economy_ui_scene.simulation.is_game_over:
+        _fail("Play Again must clear is_game_over via the existing full reset() path")
+        return
+    if economy_ui_scene.game_over_layer.visible:
+        _fail("Play Again must hide the game-over overlay again")
+        return
+
     economy_ui_scene.free()
 
     # Task #49/#51: an unusually slow checkout (a deliberately below-
