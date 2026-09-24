@@ -594,11 +594,15 @@ func _refresh_hire_candidate_option() -> void:
             continue
         _hire_candidate_ids.append(candidate_id)
         hire_candidate_option.add_item(
-            "%s — register %d / replen %d / ¥%s/day" % [
+            "%s — register %d / replen %d / ¥%s/day (体力%s 学歴%s 敏捷性%s 社交性%s)" % [
                 entry["display_name"],
                 int(entry["register_skill"]),
                 int(entry["replenishment_skill"]),
                 _format_integer(int(entry["salary_yen_per_day_24h"])),
+                _resume_stat_band(int(entry["stamina"])),
+                _resume_stat_band(int(entry["academic_background"])),
+                _resume_stat_band(int(entry["agility"])),
+                _resume_stat_band(int(entry["sociability"])),
             ]
         )
         var icon := _menu_icon("staff", store_view._staff_sprite_id_for_candidate(candidate_id))
@@ -745,6 +749,21 @@ func _menu_icon(category: String, id: String) -> Texture2D:
         texture = load(path) as Texture2D
     _menu_icon_textures[cache_key] = texture
     return texture
+
+
+# CONFIRMED_OFFICIAL (third companion book, docs/research/strategy-guide-
+# third-companion-book-full-extraction-2026-09-24.md, "人材募集した段階
+# では、その人のこまかい能力まではわからない...4つの能力とパラメータは
+# 下の表のようになっている" -- 体力~スタミナ, 学歴~レジ・セキュリティ
+# 能力, 敏捷性~商品補充・店内移動速度, 社交性~サービス・清掃能力): the
+# original hiring screen's 4 résumé stats (体力/学歴/敏捷性/社交性) each
+# reveal only a coarse band before hiring, not the exact underlying
+# number -- 40-69 is "普通", 70-100 is "高い". This dropdown already shows
+# the exact real skill numbers (task #56's staff_candidates data), so the
+# band is appended as additional source-faithful context, not a removal
+# of information the player currently sees.
+func _resume_stat_band(value: int) -> String:
+    return "高い" if value >= 70 else "普通"
 
 
 func _format_integer(value: int) -> String:

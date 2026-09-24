@@ -2252,6 +2252,19 @@ func _initialize() -> void:
     if hire_ui_candidate_index < 0:
         _fail("economy UI: hire candidate option did not include an unemployed candidate ('hamada_yuko')")
         return
+
+    # CONFIRMED_OFFICIAL (third companion book): the pre-hire résumé stat
+    # band (40-69="普通", 70-100="高い"). hamada_yuko's confirmed stats are
+    # stamina=65/academic_background=55/agility=70/sociability=50, so the
+    # displayed candidate text must show 普通/普通/高い/普通 for those four.
+    if economy_ui_scene._resume_stat_band(69) != "普通" or economy_ui_scene._resume_stat_band(70) != "高い":
+        _fail("_resume_stat_band did not split at the confirmed 40-69/70-100 boundary")
+        return
+    var hire_ui_candidate_text: String = economy_ui_scene.hire_candidate_option.get_item_text(hire_ui_candidate_index)
+    if not hire_ui_candidate_text.contains("体力普通 学歴普通 敏捷性高い 社交性普通"):
+        _fail("hire candidate option text did not show hamada_yuko's expected résumé stat bands")
+        return
+
     economy_ui_scene.hire_candidate_option.selected = hire_ui_candidate_index
     economy_ui_scene._on_hire_candidate_pressed()
     if economy_ui_scene.simulation.staff.members["staff-2"].candidate_id != "hamada_yuko":

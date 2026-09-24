@@ -2640,6 +2640,38 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("town_view._town_points(economy_ui_scene.simulation)", smoke)
         self.assertIn('fake_town_box["origin"] != Vector2i(-3, -4)', smoke)
 
+    def test_hire_dropdown_shows_confirmed_pre_hire_resume_stat_bands(self):
+        main_script = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # CONFIRMED_OFFICIAL (third companion book): the original hiring
+        # screen's 4 résumé stats (体力/学歴/敏捷性/社交性) reveal only a
+        # coarse band pre-hire, not the exact number -- 40-69="普通",
+        # 70-100="高い". This is recovered evidence, not an invented
+        # REMAKE_BALANCED_DEFAULT default, so it needs a citation and a
+        # test, not the three-part REMAKE_BALANCED_DEFAULT tag.
+        self.assertIn("func _resume_stat_band(value: int) -> String:", main_script)
+        self.assertIn('return "高い" if value >= 70 else "普通"', main_script)
+        self.assertIn(
+            "third companion book, docs/research/strategy-guide-\n# third-companion-book-full-extraction-2026-09-24.md",
+            main_script,
+        )
+
+        # Added as extra context on the existing hire dropdown, not a
+        # replacement of the exact register/replenishment numbers already
+        # shown there (task #56) -- verify both survive in the same format
+        # string.
+        self.assertIn("register %d / replen %d", main_script)
+        self.assertIn("体力%s 学歴%s 敏捷性%s 社交性%s", main_script)
+
+        # Covered end-to-end by headless_smoke.gd: the boundary value split
+        # (69 -> 普通, 70 -> 高い) and the real displayed dropdown text for
+        # a known candidate (hamada_yuko) with confirmed stats spanning
+        # both bands.
+        self.assertIn('_resume_stat_band(69) != "普通"', smoke)
+        self.assertIn('_resume_stat_band(70) != "高い"', smoke)
+        self.assertIn("体力普通 学歴普通 敏捷性高い 社交性普通", smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])
