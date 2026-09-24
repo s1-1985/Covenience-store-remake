@@ -2549,32 +2549,24 @@ func _initialize() -> void:
     if economy_ui_scene.store_view.edit_mode != "swap":
         _fail("selecting the 'Swap' item must set store_view.edit_mode to 'swap'")
         return
-    # Interaction cells go directly above each fixture's own origin (not
-    # sideways) so that swapping -- which shifts each fixture's
-    # interaction cell by the same delta as its origin -- never lands one
-    # fixture's shifted interaction cell inside the other's new footprint
-    # (both footprints stay in the y=12/13 rows; an interaction cell at
-    # y=11 can never fall inside them regardless of the x shift).
+    # Interaction cells go directly below each fixture's own footprint
+    # (y=14, not sideways or immediately above) so that swapping -- which
+    # shifts each fixture's interaction cell by the same delta as its
+    # origin -- never lands one fixture's shifted interaction cell inside
+    # the other's new footprint (both footprints stay in the y=12/13 rows)
+    # nor inside fixture-purchase-2's still-standing footprint (task #45's
+    # small_tobacco_vending is a 1x1-tile fixture, i.e. 2x2 subcells, so it
+    # actually occupies BOTH y=10 and y=11 at x=4-5 -- not just y=10 as an
+    # earlier, wrong version of this fix at y=11 assumed).
     if not economy_ui_scene.simulation.try_purchase_fixture(
-        "bench", "swap-ui-a", Vector2i(1, 12), Vector2i(1, 11)
+        "bench", "swap-ui-a", Vector2i(1, 12), Vector2i(1, 14)
     ):
         _fail("swap test: setup fixture A purchase failed")
         return
     if not economy_ui_scene.simulation.try_purchase_fixture(
-        "potted_plant", "swap-ui-b", Vector2i(5, 12), Vector2i(5, 11)
+        "potted_plant", "swap-ui-b", Vector2i(5, 12), Vector2i(5, 14)
     ):
-        var swap_ui_b_layout = economy_ui_scene.simulation.layout
-        _fail(
-            "swap-ui test: setup fixture B purchase failed (walkable(5,12)=%s, walkable(6,12)=%s, walkable(5,13)=%s, walkable(6,13)=%s, walkable(5,11)=%s, fixture_at(5,12)=%s, fixture_at(5,11)=%s)" % [
-                str(swap_ui_b_layout.is_walkable(Vector2i(5, 12))),
-                str(swap_ui_b_layout.is_walkable(Vector2i(6, 12))),
-                str(swap_ui_b_layout.is_walkable(Vector2i(5, 13))),
-                str(swap_ui_b_layout.is_walkable(Vector2i(6, 13))),
-                str(swap_ui_b_layout.is_walkable(Vector2i(5, 11))),
-                swap_ui_b_layout.fixture_at(Vector2i(5, 12)),
-                swap_ui_b_layout.fixture_at(Vector2i(5, 11)),
-            ]
-        )
+        _fail("swap test: setup fixture B purchase failed")
         return
     economy_ui_scene._on_fixture_swap_requested("swap-ui-a", "swap-ui-b")
     if economy_ui_scene.simulation.layout.fixture_origin("swap-ui-a") != Vector2i(5, 12):
