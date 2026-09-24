@@ -1549,6 +1549,24 @@ fake object, independent of any real simulation/scenario data. `reference_sim` f
 decision 0142. Explicitly out of scope: any actual facility-placement/town-growth mechanic, and the
 52-sprite package itself (revisit only if confirmed or analogy-based placement data ever surfaces).
 
+**Task #73 (2026-09-24)**: after task #72 merged (PR #249, both CI checks green), the user chose to
+return to system-side work after the tasks #67-#72 asset-wiring arc. Picked from section 21.3's
+candidate list: unlike the other open items there (town facility placement, rival AI, scenario
+selection -- each blocked on a whole new subsystem not yet built), "pre-hire résumé stat band" was
+the one candidate scoped entirely to the existing `hire_candidate_option` dropdown, with the needed
+data (`stamina`/`academic_background`/`agility`/`sociability`) already CONFIRMED_OFFICIAL in
+`staff_candidates` since task #32. The third companion book (task #65's find) directly confirms the
+original hiring screen never shows the exact number for these 4 résumé stats before hiring, only a
+coarse band ("普通" for 40-69, "高い" for 70-100) -- this client's dropdown has shown the exact real
+skill numbers since task #56 (a deliberate simplification, not something to walk back single-
+handedly), so the confirmed band is appended as extra source-faithful context rather than replacing
+the existing numbers. New `main.gd` `_resume_stat_band()` -- CONFIRMED_OFFICIAL, not
+REMAKE_BALANCED_DEFAULT (no invented threshold; verified all 35 candidates' values already fall
+within the documented 40-100 range). `reference_sim` full suite grew from 737 to 738 passed/1 xfailed
+(one new contract test). See decision 0143. Explicitly out of scope: replacing/removing the existing
+exact-number display, and the stamina/academic_background/agility/sociability -> real-skill-pair
+correlation model itself (unneeded since this client already holds the real skill numbers directly).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
