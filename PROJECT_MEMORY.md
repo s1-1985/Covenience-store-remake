@@ -1721,6 +1721,33 @@ threshold and assert the button stays gated (no charge) until then. `reference_s
 from 743 to 744 passed/1 xfailed (one new contract test asserting the research-note addendum, the
 UI wiring, and the CONFIRMED_COMMUNITY/decision-0089 citations survive). See decision 0149.
 
+**Task #80 (2026-09-24)**: after task #79/PR #255 merged, the user picked "操作フローの改善を継続"
+(continue workflow-flow improvement) as the next direction. Continuing the same fidelity-check
+approach, re-read `docs/research/strategy-guide-third-companion-book-full-extraction-2026-09-24.md`
+(added in task #65, but never previously consulted for the manual-restock question) and found an
+independent CONFIRMED_OFFICIAL corroboration in its PDF1 p.68-71 Q&A transcription: "player CAN
+manually restock via cursor+select but this stunts staff 補充 growth." This upgrades
+`manual_restock_action` from task #79's CONFIRMED_COMMUNITY (owner testimony only) to
+CONFIRMED_OFFICIAL (independently corroborated by the official strategy guide), and surfaces a
+nuance not in the existing corpus: manual restock does not grant the staff `補充` skill growth an
+autonomous staff restock does. Checking `vertical_slice_simulation.gd` found this already true with
+zero code changes needed -- `_complete_restock()` (decision 0089's autonomous staff task) calls
+`_staff_growth.apply_replenish_growth()`, while `apply_explicit_restock()` (task #38's manual-restock
+API) never has, a pre-existing asymmetry an existing contract test
+(`test_explicit_restock_records_stock_expense_and_event_without_formula`) already locked in place
+without anyone knowing why it mattered. Added a CONFIRMED_OFFICIAL-tagged comment documenting that
+this match is intentional (not to be "fixed" by a future refactor), upgraded `main.gd`'s
+`_selected_fixture_restock_target()` comment's evidence tag and citation, and appended a second
+addendum to `docs/research/inventory-restock-boundary-2026-09-05.md` section 9 recording the new
+source. Also reconfirmed (no code change) that the restock-cost formula 補充費=仕入単価×数量 the
+same guide states (PDF3 p.2) already matches `restock_unit_cost_yen`'s existing use exactly. Flagged
+to the user, but explicitly out of this task's scope: the same extraction document contains a large
+amount of still-unmined CONFIRMED_OFFICIAL data (exact 5-method advertising cost/effect table, store
+rating increase/decrease thresholds, per-product season tags, per-building customer-count tables)
+well beyond this task's restock-only focus. `reference_sim` full suite grew from 744 to 745 passed/1
+xfailed (one new contract test verifying the upgraded citations and the unchanged no-growth
+behavior). See decision 0150.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

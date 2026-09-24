@@ -517,12 +517,14 @@ func _on_procure_product_pressed() -> void:
     _refresh_ui()
 
 
-# Task #79: CONFIRMED_COMMUNITY (direct owner testimony, 2026-09-24 -- the
-# strategy-guide/wiki research corpus does not independently document this
-# specific interaction yet; see docs/decisions/0149-*.md): the restock
-# command is not an always-available generic picker. It only becomes
-# available for the currently selected fixture, and only once that
-# fixture's stocked product is running low. This reuses
+# Task #79/#80: CONFIRMED_OFFICIAL (owner direct-play testimony, 2026-09-24,
+# independently corroborated by docs/research/strategy-guide-third-companion-
+# book-full-extraction-2026-09-24.md's PDF1 p.68-71 Q&A transcription --
+# "player CAN manually restock via cursor+select"; see docs/decisions/
+# 0149-*.md and 0150-*.md): the restock command is not an always-available
+# generic picker. It only becomes available for the currently selected
+# fixture, and only once that fixture's stocked product is running low.
+# This reuses
 # store_view.selected_fixture()/_product_on_fixture() (the same fixture
 # selection this UI already uses for move/swap/sell/rotate) and the
 # existing restock_trigger_stock_units_at_or_below threshold that

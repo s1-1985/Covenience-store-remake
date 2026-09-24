@@ -2929,7 +2929,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         restock_target_comment = main.split("func _selected_fixture_restock_target()")[0].split(
             "func _on_procure_product_pressed"
         )[-1]
-        self.assertIn("CONFIRMED_COMMUNITY", restock_target_comment)
+        self.assertIn("CONFIRMED_OFFICIAL", restock_target_comment)
         self.assertIn("decision 0089", restock_target_comment)
         self.assertIn("restock_button.disabled", main)
 
@@ -2944,6 +2944,53 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "pressing Restock while ungated (no low-stock target) must not charge cash",
             smoke,
         )
+
+    def test_manual_restock_evidence_is_upgraded_by_the_strategy_guide_qa(self):
+        # Task #80: immediately after task #79 shipped the contextual restock
+        # UI on CONFIRMED_COMMUNITY (owner testimony) evidence alone, a
+        # re-read of docs/research/strategy-guide-third-companion-book-full-
+        # extraction-2026-09-24.md (added in task #65, but not previously
+        # consulted for this specific question) turned up an independent
+        # CONFIRMED_OFFICIAL corroboration: PDF1 p.68-71's Q&A transcription
+        # states the player can manually restock via cursor+select, and that
+        # doing so does not grant the same staff 補充 skill growth an
+        # autonomous staff restock does. This asserts the research note
+        # records that second, independent source, and that main.gd/
+        # vertical_slice_simulation.gd's code comments cite the upgraded
+        # CONFIRMED_OFFICIAL tier rather than the original CONFIRMED_
+        # COMMUNITY-only claim.
+        research_note = (
+            GAME_ROOT.parent / "docs" / "research" / "inventory-restock-boundary-2026-09-05.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn("追記2(2026-09-24): 攻略本(第3companion book)による独立裏付けを発見", research_note)
+        self.assertIn("player CAN manually restock via", research_note)
+        self.assertIn("stunts staff 補充 growth", research_note)
+
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        restock_target_comment = main.split("func _selected_fixture_restock_target()")[0].split(
+            "func _on_procure_product_pressed"
+        )[-1]
+        self.assertIn("CONFIRMED_OFFICIAL", restock_target_comment)
+        self.assertIn("strategy-guide-third-companion-", restock_target_comment)
+        self.assertIn("book-full-extraction-2026-09-24.md", restock_target_comment)
+
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        # The no-staff-growth behavior on manual restock already existed
+        # (task #38, decision 0107's addendum) before this rule was
+        # confirmed -- this asserts the still-true code contract (no growth
+        # call in apply_explicit_restock()) and its now-updated citation,
+        # not a new behavior change.
+        self.assertIn("func apply_explicit_restock(", simulation)
+        explicit_restock_body = simulation.split("func apply_explicit_restock(")[1].split(
+            "\n\n\n"
+        )[0]
+        self.assertNotIn("_staff_growth", explicit_restock_body)
+        restock_growth_comment = simulation.split("func apply_explicit_restock(")[0][-1200:]
+        self.assertIn("CONFIRMED_OFFICIAL", restock_growth_comment)
+        self.assertIn("stunts staff", restock_growth_comment)
+        self.assertIn("_staff_growth.apply_replenish_growth(staff_member)", simulation)
 
     def test_ui_theme_is_wired_into_both_scenes_and_verified_in_headless_smoke(self):
         # Task #76: the user chose visual polish as the next UI direction
