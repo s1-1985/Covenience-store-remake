@@ -1928,6 +1928,27 @@ func _initialize() -> void:
         steps += 1
     economy_ui_scene.simulation.economy.cash_yen += 50_000_000
 
+    # Task #76: visual-polish pass introducing game/themes/ui_theme.tres
+    # (a hand-authored StyleBoxFlat/Theme resource, never validated by a
+    # real Godot editor in this sandbox). Confirm it actually loaded as a
+    # real Theme with the expected values, rather than silently failing to
+    # parse and leaving the sidebar on the engine's default theme -- the
+    # kind of resource-format mistake this sandbox has no other way to
+    # catch before CI.
+    var themed_panel: PanelContainer = economy_ui_scene.get_node("UI/Panel")
+    if themed_panel.theme == null:
+        _fail("UI/Panel must have the ui_theme.tres Theme resource assigned")
+        return
+    if int(themed_panel.theme.default_font_size) != 15:
+        _fail("ui_theme.tres must set default_font_size to 15")
+        return
+    if not themed_panel.theme.has_stylebox("panel", "PanelContainer"):
+        _fail("ui_theme.tres must define a PanelContainer panel style")
+        return
+    if not themed_panel.theme.has_stylebox("normal", "Button"):
+        _fail("ui_theme.tres must define a Button normal style")
+        return
+
     # Task #67: the first asset-wiring pass copied one sprite per
     # fixture_catalog entry into game/assets/fixtures/. Confirm every one of
     # them actually loads through StoreView's own lookup (proves the sprite

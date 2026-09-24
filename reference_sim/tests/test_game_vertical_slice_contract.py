@@ -2776,6 +2776,50 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         )
         self.assertIn("economy_ui_scene._on_reset_pressed()", smoke)
 
+    def test_ui_theme_is_wired_into_both_scenes_and_verified_in_headless_smoke(self):
+        # Task #76: the user chose visual polish as the next UI direction
+        # after task #75's functional UI gaps were closed. game/themes/
+        # ui_theme.tres is this project's first hand-authored Theme
+        # resource -- pure UI chrome (panel/button colors, corner radii,
+        # font sizes), not simulated game data, so it carries no evidence
+        # tier and needs no REMAKE_BALANCED_DEFAULT tag, same as the
+        # pre-existing Title/PrototypeNotice label colors this scene
+        # already had before this task.
+        theme_path = GAME_ROOT / "themes" / "ui_theme.tres"
+        self.assertTrue(theme_path.is_file())
+        theme = theme_path.read_text(encoding="utf-8")
+        self.assertIn('type="Theme"', theme)
+        self.assertIn("default_font_size = 15", theme)
+        self.assertIn('PanelContainer/styles/panel = SubResource("StyleBoxFlat_panel_card")', theme)
+        self.assertIn('Button/styles/normal = SubResource("StyleBoxFlat_button_normal")', theme)
+
+        main_scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        self.assertIn('res://themes/ui_theme.tres', main_scene)
+        # Applied directly to the two PanelContainer nodes (not to a
+        # Node2D/CanvasLayer ancestor, neither of which has a `theme`
+        # property at all) -- Theme cascades to every descendant Control
+        # of the matching type from there.
+        self.assertIn('[node name="Panel" type="PanelContainer" parent="UI"]\ntheme = ExtResource("4_theme")', main_scene)
+        self.assertIn(
+            '[node name="Panel" type="PanelContainer" parent="GameOverLayer"]\ntheme = ExtResource("4_theme")',
+            main_scene,
+        )
+
+        menu_scene = (GAME_ROOT / "scenes" / "main_menu.tscn").read_text(encoding="utf-8")
+        self.assertIn('res://themes/ui_theme.tres', menu_scene)
+        self.assertIn('theme = ExtResource("2_theme")', menu_scene)
+
+        # Covered end-to-end by headless_smoke.gd against the real
+        # instantiated main.tscn scene: the theme must actually parse as a
+        # real Theme resource with the expected values, not silently fail
+        # and leave the sidebar on the engine default (this sandbox has no
+        # Godot editor to validate a hand-authored .tres resource against
+        # before pushing).
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("themed_panel.theme.default_font_size", smoke)
+        self.assertIn('themed_panel.theme.has_stylebox("panel", "PanelContainer")', smoke)
+        self.assertIn('themed_panel.theme.has_stylebox("normal", "Button")', smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])
