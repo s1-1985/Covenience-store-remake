@@ -1748,6 +1748,44 @@ well beyond this task's restock-only focus. `reference_sim` full suite grew from
 xfailed (one new contract test verifying the upgraded citations and the unchanged no-growth
 behavior). See decision 0150.
 
+**Task #81 (2026-09-24)**: after task #80/PR #256 merged, the user asked for a genuinely honest
+completion-percentage estimate ("完成を100%とすると今何%？"), answered with a clearly-labeled
+subjective estimate (~20-30% toward the stated "Android smartphone game" goal, breaking out core-loop
+fidelity vs. content breadth vs. platform readiness vs. unmined source data as separate sub-estimates)
+grounded in concrete facts gathered fresh (single `vertical_slice.json` scenario, no second-store/town/
+rival spatial simulation in `game/`, zero audio assets, no `export_presets.cfg` at all despite the
+stated Android target). The user then asked to actually install a build on their phone. This sandbox
+had no Godot editor, Android SDK, or signing keystore at any point -- built the entire toolchain from
+scratch in the scratchpad (not committed): the exact Godot 4.3-stable Linux editor binary CI already
+uses, its export templates, an Android SDK (`platform-tools`+`build-tools;34.0.0`+`platforms;android-
+34` via `sdkmanager`; no NDK/Gradle needed since this project has zero GDExtension/native code, so the
+non-gradle template-based export path applies), and a debug keystore. First export attempt failed with
+a genuinely unhelpful blank error ("configuration errors:" with no text) -- read godotengine/godot's
+own 4.3-stable C++ source directly (`export_plugin.cpp`'s `has_valid_project_configuration()`) and
+found a known-quiet failure mode: `!ResourceImporterTextureSettings::should_import_etc2_astc()` sets
+`valid = false` without ever appending to the error string. This project's `project.godot` had only
+desktop-facing rendering settings and had never enabled ETC2/ASTC texture import (a hard Android
+export requirement), so this was a genuine, previously-undiscovered project misconfiguration, not a
+tooling bug on this session's part. Fixed with one line
+(`textures/vram_compression/import_etc2_astc=true`) -- pure engine/build config, same no-tag precedent
+as `renderer/rendering_method.mobile`. Hand-authored `game/export_presets.cfg` (this project's first
+ever) by reading the exact `get_export_options()` defaults from the matching Godot source tag, since
+no GUI is available in this headless sandbox to generate one interactively; left all `keystore/*`
+fields empty so it falls back to the machine-local Editor Settings debug keystore rather than
+committing any signing material. The resulting export succeeded end-to-end: a 30MB debug APK,
+`apksigner verify` confirming valid v1/v2/v3 signatures, `aapt dump badging` confirming the expected
+package/version metadata -- sent directly to the user via `SendUserFile`. Also discovered and fixed an
+unrelated latent gap while doing this: the repository had **never** had a `.gitignore` at all, so the
+first-ever local texture reimport in this sandbox surfaced 666 untracked `*.png.import` sidecar files
+plus a `.godot/` cache directory that would otherwise have been an easy accidental-commit trap for a
+future task; added a `.gitignore` (Godot cache/import sidecars, `game/build/`, Python cache) before
+touching anything else. No `reference_sim` changes (nothing here touches Python code); no new
+`headless_smoke.gd` assertions (a build-tooling task, not a gameplay-logic change) -- verified instead
+by the export's own end-to-end success and the signature/badging checks above. See decision 0151.
+Explicitly out of scope: release-signed (non-debug) builds, a CI job that builds APKs automatically,
+launcher icon art, and any real-device UX pass (touch hit-target sizing, orientation, etc.) -- the ask
+was a one-time "let me see it on my phone," not a distribution pipeline.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
