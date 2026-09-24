@@ -562,6 +562,11 @@ PERMITS = tuple(
 )
 
 SCENARIO_GUIDE = WIKI + "%E3%82%B2%E3%83%BC%E3%83%A0%E3%83%A2%E3%83%BC%E3%83%89%E6%94%BB%E7%95%A5"
+SCENARIO_INITIAL_RIVAL_TOPOLOGY = (
+    "docs/research/scenario-initial-rival-topology-2026-09-06.md, citing PS long-play records "
+    "https://pinkblue.sakura.ne.jp/contents/kansou/game/psgame/ps-simulation/ps-ai/"
+    "ai-the-conbini-tyukyu.html (intermediate) and ai-the-conbini-jokyu.html (advanced)"
+)
 
 SCENARIOS = (
     ScenarioDefinition(
@@ -572,6 +577,13 @@ SCENARIOS = (
             EvidenceLevel.CONFIRMED_COMMUNITY,
             SCENARIO_GUIDE,
         ),
+        # Task #62: exact initial rival store count is UNKNOWN (research doc
+        # section 4) -- only that at least one rival branch exists at start.
+        initial_rival_branch_exists=EvidenceValue(
+            True, EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_INITIAL_RIVAL_TOPOLOGY,
+            "PS beginner long-play record shows a rival branch (2号店) acquired shortly after "
+            "start; total rival store count at start is not stated anywhere found so far.",
+        ),
     ),
     ScenarioDefinition(
         "intermediate",
@@ -579,12 +591,30 @@ SCENARIOS = (
         EvidenceValue(
             "10_player_stores", EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_GUIDE
         ),
+        # Task #62: PS intermediate long-play explicitly states "ライバル店は
+        # 最初3店舗ありました" (1 headquarters + 2 branches), two of which the
+        # player then acquires -- position/size/permits/staff/layout remain
+        # UNKNOWN and are deliberately not invented here.
+        initial_rival_store_roles=EvidenceValue(
+            ("headquarters", "branch", "branch"),
+            EvidenceLevel.CONFIRMED_COMMUNITY,
+            SCENARIO_INITIAL_RIVAL_TOPOLOGY,
+        ),
     ),
     ScenarioDefinition(
         "advanced",
         EvidenceValue(150_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_GUIDE),
         EvidenceValue(
             "owner_rating_5_stars", EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_GUIDE
+        ),
+        # Task #62: PS advanced long-play explicitly states the rival has
+        # only a headquarters at start ("ライバル店も本店のみ"), then opens
+        # branches over time (3 rival stores by year 2).
+        initial_rival_store_roles=EvidenceValue(
+            ("headquarters",), EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_INITIAL_RIVAL_TOPOLOGY
+        ),
+        rival_can_open_branches_after_start=EvidenceValue(
+            True, EvidenceLevel.CONFIRMED_COMMUNITY, SCENARIO_INITIAL_RIVAL_TOPOLOGY
         ),
     ),
 )

@@ -27,6 +27,27 @@ class BaselineDataTests(unittest.TestCase):
                 EvidenceLevel.CONFIRMED_COMMUNITY,
             )
 
+    def test_scenario_initial_rival_topology_matches_the_confirmed_long_play_records(self):
+        by_id = {scenario.id: scenario for scenario in SCENARIOS}
+
+        beginner = by_id["beginner"]
+        self.assertIsNone(beginner.initial_rival_store_roles)
+        self.assertEqual(beginner.initial_rival_branch_exists.value, True)
+        self.assertEqual(beginner.initial_rival_branch_exists.evidence, EvidenceLevel.CONFIRMED_COMMUNITY)
+
+        intermediate = by_id["intermediate"]
+        self.assertEqual(
+            intermediate.initial_rival_store_roles.value, ("headquarters", "branch", "branch")
+        )
+        self.assertEqual(
+            intermediate.initial_rival_store_roles.evidence, EvidenceLevel.CONFIRMED_COMMUNITY
+        )
+        self.assertIsNone(intermediate.rival_can_open_branches_after_start)
+
+        advanced = by_id["advanced"]
+        self.assertEqual(advanced.initial_rival_store_roles.value, ("headquarters",))
+        self.assertEqual(advanced.rival_can_open_branches_after_start.value, True)
+
     def test_all_five_promotions_total_9_6m(self):
         self.assertEqual(sum(p.cost_yen.value for p in PROMOTIONS), 9_600_000)
 
