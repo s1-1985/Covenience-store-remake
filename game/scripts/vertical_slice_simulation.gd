@@ -523,6 +523,10 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
         "initial_stock_units": initial_stock_units,
         "sale_price_yen": int(catalog_entry["sale_price_yen"]),
         "restock_unit_cost_yen": restock_unit_cost_yen,
+        # Task #68: this is the exact catalog_id this call already looked up
+        # catalog_entry with, not a guess -- store_view.gd uses it to pick
+        # the matching product overlay sprite.
+        "catalog_id": catalog_id,
     }
     if not inventory.add_product(product_config):
         return false

@@ -2394,6 +2394,77 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("var initial_fixture_snapshot: Array =", smoke)
         self.assertIn("func _run_visit(simulation) -> int:", smoke)
 
+    def test_fixture_sprite_visual_fallback_is_a_tagged_remake_default(self):
+        # CLAUDE.md's tagging discipline requires all three of a code
+        # comment, an evidence_note (or here, this contract test standing in
+        # for one), and a test assertion that the tag text is actually
+        # present -- not just a decision doc. Task #67 (fixture sprite
+        # wiring) shipped the code comment but this contract test itself was
+        # missing, the same class of gap CLAUDE.md names as previously
+        # corrected (task #38->#38, PR #209); task #68 closes it.
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        self.assertIn("FIXTURE_SPRITE_DIR", store_view)
+        self.assertIn("FALLBACK_VISUAL_CATALOG_ID_BY_KIND", store_view)
+        self.assertIn(
+            "REMAKE_BALANCED_DEFAULT visual choice, same evidence tier as", store_view
+        )
+
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("_fixture_texture(fixture_catalog_id)", smoke)
+        self.assertIn('_fixture_texture("register_1")', smoke)
+
+    def test_product_overlay_sprites_are_wired_and_tagged_remake_default(self):
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        inventory_state = (
+            GAME_ROOT / "scripts" / "domain" / "inventory_state.gd"
+        ).read_text(encoding="utf-8")
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # InventoryState.catalog_id threads the real catalog_id
+        # try_procure_product() already looked up onto the product itself
+        # (previously discarded), rather than store_view.gd inventing one.
+        self.assertIn("var catalog_id: String", inventory_state)
+        self.assertIn('"catalog_id": catalog_id,', simulation)
+
+        # The stock-ratio cutoffs that pick which of the three shipped
+        # sprites (high/medium/low) to show, and the fallback catalog_id
+        # for the two pre-catalog-system prototype products, are both this
+        # project's own invention -- CLAUDE.md requires the
+        # REMAKE_BALANCED_DEFAULT tag on both, not just one.
+        self.assertIn("PRODUCT_SPRITE_DIR", store_view)
+        self.assertIn("HIGH_STOCK_DISPLAY_RATIO", store_view)
+        self.assertIn("MEDIUM_STOCK_DISPLAY_RATIO", store_view)
+        self.assertIn("FALLBACK_PRODUCT_CATALOG_ID_BY_PRODUCT_ID", store_view)
+        self.assertIn(
+            "REMAKE_BALANCED_DEFAULT (task #68): the source package only ever states",
+            store_view,
+        )
+        self.assertIn(
+            "REMAKE_BALANCED_DEFAULT (task #68): prototype-bread/prototype-drink",
+            store_view,
+        )
+
+        # vertical_slice.json's own products entries carry the same tag
+        # (CLAUDE.md's evidence_note requirement) rather than only the code
+        # comment.
+        for product_entry in self.config["products"]:
+            if product_entry["id"] in ("prototype-bread", "prototype-drink"):
+                self.assertIn("catalog_id", product_entry["evidence_note"])
+                self.assertNotIn("catalog_id", product_entry)
+
+        # Covered end-to-end by headless_smoke.gd: every product_catalog
+        # sprite loads (except the one documented gap, copy_paper), the
+        # fallback resolves for the legacy prototype products, and a
+        # catalog-procured product's catalog_id survives into the overlay
+        # lookup.
+        self.assertIn("PRODUCT_STOCK_DISPLAY_STATES", smoke)
+        self.assertIn("copy_paper", smoke)
+        self.assertIn("_product_display_catalog_id(prototype_bread_product)", smoke)
+        self.assertIn("procured_tobacco_product.catalog_id != \"tobacco\"", smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])
