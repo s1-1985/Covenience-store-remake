@@ -2672,6 +2672,39 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn('_resume_stat_band(70) != "高い"', smoke)
         self.assertIn("体力普通 学歴普通 敏捷性高い 社交性普通", smoke)
 
+    def test_load_state_clears_checkout_queue_like_reset_does(self):
+        # Task #74: the user asked to directly audit save/load for gaps
+        # rather than pick a new feature. reset() clears _checkout_queue
+        # right after resetting customers/staff; load_state() never did,
+        # so a save taken while a second customer was queued at checkout
+        # left a stale customer_id behind that the next
+        # _dispatch_checkout_queue() call would null-dereference (the
+        # freshly-reset customer roster no longer has that id).
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        reset_body = simulation.split("func reset() -> void:")[1].split("func start_next_customer")[0]
+        self.assertIn("_checkout_queue.clear()", reset_body)
+
+        load_state_body = simulation.split("func load_state(data: Dictionary) -> bool:")[1].split(
+            "func _record_event"
+        )[0]
+        self.assertIn("_checkout_queue.clear()", load_state_body)
+
+        # Covered end-to-end by headless_smoke.gd: reproduce a non-empty
+        # _checkout_queue, save/load across it, and confirm the loaded
+        # simulation both starts with an empty queue and keeps running
+        # (rather than crashing on the stale entry) afterward.
+        self.assertIn("queue-bug-a", smoke)
+        self.assertIn("queue-bug-b", smoke)
+        self.assertIn("queue_bug_loaded._checkout_queue.is_empty()", smoke)
+        self.assertIn(
+            "while not queue_bug_loaded.customers.all_settled() and queue_bug_post_load_steps < MAX_STEPS:",
+            smoke,
+        )
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])

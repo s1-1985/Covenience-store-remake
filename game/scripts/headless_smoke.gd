@@ -1712,6 +1712,53 @@ func _initialize() -> void:
         _fail("loading a save with a different config_schema_version must be rejected")
         return
 
+    # Task #74: a genuine save/load bug found by directly auditing
+    # load_state() against reset()'s own gap-clearing (the user asked to
+    # check for gaps, not just add a new feature). reset() has always
+    # cleared _checkout_queue right after resetting customers/staff;
+    # load_state() never did, so a save taken while a second customer was
+    # queued at checkout left that customer_id behind after customers.
+    # reset() had already discarded the actual customer record -- the next
+    # _dispatch_checkout_queue() call would then null-dereference it and
+    # crash. Reproduce the queued state, then confirm a save/load round
+    # trip is safe and the loaded simulation keeps running afterward.
+    var queue_bug_config: Dictionary = config.duplicate(true)
+    queue_bug_config["customer"]["max_concurrent_customers"] = 2
+    var queue_bug_simulation = VerticalSliceSimulationScript.new(queue_bug_config)
+    steps += _run_visit(queue_bug_simulation)
+    var queue_bug_plan: Array[String] = ["prototype-bread"]
+    if not queue_bug_simulation.start_explicit_customer("queue-bug-a", queue_bug_plan):
+        _fail("queue-bug scenario: first customer could not be admitted")
+        return
+    if not queue_bug_simulation.start_explicit_customer("queue-bug-b", queue_bug_plan):
+        _fail("queue-bug scenario: second customer could not be admitted")
+        return
+    var queue_bug_steps := 0
+    while queue_bug_simulation._checkout_queue.is_empty() and queue_bug_steps < MAX_STEPS:
+        queue_bug_simulation.step()
+        queue_bug_steps += 1
+    if queue_bug_simulation._checkout_queue.is_empty():
+        _fail("queue-bug scenario: never got a second customer queued at checkout")
+        return
+    steps += queue_bug_steps
+
+    var queue_bug_save_data: Dictionary = queue_bug_simulation.save_state()
+    var queue_bug_loaded = VerticalSliceSimulationScript.new(queue_bug_config)
+    if not queue_bug_loaded.load_state(queue_bug_save_data):
+        _fail("loading a save taken with a non-empty checkout queue must be accepted")
+        return
+    if not queue_bug_loaded._checkout_queue.is_empty():
+        _fail("load_state() must clear _checkout_queue like reset() does -- a stale queued customer_id no longer exists in the freshly-reset roster")
+        return
+    var queue_bug_post_load_steps := 0
+    while not queue_bug_loaded.customers.all_settled() and queue_bug_post_load_steps < MAX_STEPS:
+        queue_bug_loaded.step()
+        queue_bug_post_load_steps += 1
+    if queue_bug_post_load_steps >= MAX_STEPS:
+        _fail("the loaded simulation did not settle after a save/load round trip taken mid-checkout-queue")
+        return
+    steps += queue_bug_post_load_steps
+
     var save_service = SaveGameServiceScript.new()
     var test_save_path := "user://saves/headless_smoke_test_save.json"
     save_service.delete_save(test_save_path)
