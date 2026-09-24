@@ -1,0 +1,16 @@
+# Godot 4 editor-generated cache and per-asset import cache (regenerated
+# automatically on first import; never hand-edited, not project source).
+game/.godot/
+game/*/.godot/
+*.translation
+*.import
+
+# Local export build output (APKs, AABs, etc.) -- never a source artifact,
+# and can be multiple hundred MB; rebuild via `godot --export-*` instead of
+# committing binaries.
+game/build/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
