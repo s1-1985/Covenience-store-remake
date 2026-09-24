@@ -1802,6 +1802,28 @@ were used to confirm the new layout renders without overlap before pushing. `ref
 the sidebar's action controls into the original's modal-window style (PROJECT_MEMORY section 5), and any
 floor/wall/fixture sprite art pass -- all flagged as candidate follow-ups, not done here.
 
+**Task #83 (2026-09-24, decision 0153)**: the user's next explicit ask was fixture/floor-tile visual
+fidelity. Found that `assets/raw/conveni_additional_assets_v1/` (ingested in an earlier session but never
+wired into `game/`) already holds 11 CONFIRMED_VISUAL crops taken directly from an actual first-title
+playthrough video (each manifest entry cites its exact source video filename/timestamp/crop coordinates):
+a repeatable checkered floor tile, 8 wall edge/corner border pieces, and entrance-in/entrance-out arrow
+sprites. Copied them into `game/assets/floor/` and rewired `store_view.gd`'s `_draw()` (new `_draw_floor()`/
+`_draw_walls()`, rewritten `_draw_entry_exit()`) to use them in place of the flat placeholder fill/black
+border/colored-rect-plus-English-text entry markers, following the asset package's own README usage notes
+(edges tile only along their long axis, corners unstretched, not a finished 9-slice set). `_draw_grid()`'s
+lines were kept for fixture-placement usability but weakened to near-transparent since the real floor
+texture now supplies the visual tile pattern -- pure UI-chrome adjustment, no REMAKE_BALANCED_DEFAULT tag
+needed (same precedent as task #76/#82). Verified with the same in-session Godot 4.3 binary as task #82:
+headless_smoke.gd passes, and an xvfb screenshot confirmed the real floor/wall/entrance art renders
+correctly and matches the source video frame's actual appearance. `reference_sim` (745 passed, 1 xfailed)
+unchanged (no Python touched; confirmed no existing contract test asserts the specific color literals or
+draw functions this task replaced). Explicitly out of scope, and flagged as the natural next step: the
+in-store fixture sprites (shelves/cases/registers) are still task #67's own "remake" invented art, not
+evidence-based -- but the same source video frames already sitting in the repo (`assets/raw/
+conveni_additional_assets_v1/reference/video_900s.png` and `video_904s.png`) clearly show real fixture
+artwork at native resolution and are ready to use for that follow-up; extracting and catalog-ID-matching
+individual fixture crops from them is a larger, separate task than this one's floor/wall/entrance wiring.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

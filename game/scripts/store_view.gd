@@ -116,6 +116,29 @@ const CUSTOMER_SPRITE_STATIC_PHASE := "A"
 const CUSTOMER_SPRITE_SIZE_PX := SUBCELL_PIXELS * 2.0
 const CUSTOMER_SPRITE_ANCHOR_FRACTION := Vector2(0.5, 0.9625)
 
+# Task #83: unlike the task #67-#70 world sprites above (this project's own
+# newly-drawn "remake" art), these 11 pieces (assets/raw/
+# conveni_additional_assets_v1/) are direct crops from an actual first-title
+# playthrough video ("type": "video" in that package's manifest.json, exact
+# source_video/timestamp_seconds/crop_xyxy cited per entry) -- CONFIRMED_
+# VISUAL evidence for the floor/wall/entrance artwork itself, not a REMAKE_
+# BALANCED_DEFAULT placeholder. They were extracted in an earlier session
+# but never wired into game/ until now. floor_blue_repeat is a repeatable-
+# candidate crop of the store's own checkered floor (the package's own
+# README notes it is not a strictly seamless tile -- video compression
+# leaves minor seams, accepted here as still far closer to the original
+# than the previous flat fill color). The 8 wall_* pieces are edge/corner
+# border candidates, not a finished 9-slice set (same README caveat): edges
+# are tiled only along their long axis below, corners are drawn at native
+# size unstretched, exactly as the source package's own usage notes specify.
+const FLOOR_SPRITE_DIR := "res://assets/floor/"
+# REMAKE_BALANCED_DEFAULT: each wall/corner piece is drawn at its own native
+# crop pixel size (not rescaled to SUBCELL_PIXELS) and positioned flush
+# against the interior grid's own edge -- how thick the frame ends up
+# looking on screen is this renderer's own display choice, since the source
+# video's own scale does not convert 1:1 to this client's grid (see the
+# asset package's README).
+
 var config: Dictionary = {}
 var simulation
 var selected_fixture_id := ""
@@ -132,12 +155,23 @@ var _staff_last_direction: Dictionary = {}
 var _customer_textures: Dictionary = {}
 var _customer_last_position: Dictionary = {}
 var _customer_last_direction: Dictionary = {}
+# Task #83: fixed 11-entry set (not catalog-driven, unlike the fixture/
+# product/staff/customer texture caches above), so these are loaded once
+# by exact filename rather than looked up dynamically.
+var _floor_textures: Dictionary = {}
 
 
 func _ready() -> void:
     # Pixel art stays crisp instead of the engine's default linear blur when
     # sprite rects are scaled to fit each fixture's in-game footprint.
     texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+    for sprite_name in [
+        "floor_blue_repeat",
+        "wall_north", "wall_south", "wall_east", "wall_west",
+        "wall_nw", "wall_ne", "wall_sw", "wall_se",
+        "entrance_in", "entrance_out",
+    ]:
+        _floor_textures[sprite_name] = load(FLOOR_SPRITE_DIR + sprite_name + ".png") as Texture2D
 
 
 func selected_fixture() -> String:
@@ -326,8 +360,8 @@ func _draw() -> void:
 
     var width: float = simulation.layout.width_subcells * SUBCELL_PIXELS
     var height: float = simulation.layout.height_subcells * SUBCELL_PIXELS
-    draw_rect(Rect2(Vector2.ZERO, Vector2(width, height)), Color("f5f1e8"), true)
-    draw_rect(Rect2(Vector2.ZERO, Vector2(width, height)), Color("373737"), false, 3.0)
+    _draw_floor(width, height)
+    _draw_walls(width, height)
 
     _draw_grid(width, height)
     _draw_entry_exit()
@@ -336,27 +370,79 @@ func _draw() -> void:
     _draw_customer()
 
 
+# Task #83: tiles the CONFIRMED_VISUAL floor crop (see _floor_textures'
+# declaration above) at its own native pixel size across the interior,
+# replacing the previous flat fill color. draw_texture_rect's own tile
+# behavior (not a manual loop) handles the repeat.
+func _draw_floor(width: float, height: float) -> void:
+    var floor_texture: Texture2D = _floor_textures["floor_blue_repeat"]
+    if floor_texture == null:
+        draw_rect(Rect2(Vector2.ZERO, Vector2(width, height)), Color("f5f1e8"), true)
+        return
+    draw_texture_rect(floor_texture, Rect2(Vector2.ZERO, Vector2(width, height)), true)
+
+
+# Task #83: draws the 8 real wall/corner crops as a frame immediately
+# outside the interior rect -- edges tiled along their long axis only,
+# corners at native size unstretched, per the source asset package's own
+# usage notes (see _floor_textures' declaration above).
+func _draw_walls(width: float, height: float) -> void:
+    var north: Texture2D = _floor_textures["wall_north"]
+    var south: Texture2D = _floor_textures["wall_south"]
+    var east: Texture2D = _floor_textures["wall_east"]
+    var west: Texture2D = _floor_textures["wall_west"]
+    var nw: Texture2D = _floor_textures["wall_nw"]
+    var ne: Texture2D = _floor_textures["wall_ne"]
+    var sw: Texture2D = _floor_textures["wall_sw"]
+    var se: Texture2D = _floor_textures["wall_se"]
+    if north == null or south == null or east == null or west == null \
+            or nw == null or ne == null or sw == null or se == null:
+        draw_rect(Rect2(Vector2.ZERO, Vector2(width, height)), Color("373737"), false, 3.0)
+        return
+    draw_texture_rect(north, Rect2(Vector2(0, -north.get_height()), Vector2(width, north.get_height())), true)
+    draw_texture_rect(south, Rect2(Vector2(0, height), Vector2(width, south.get_height())), true)
+    draw_texture_rect(west, Rect2(Vector2(-west.get_width(), 0), Vector2(west.get_width(), height)), true)
+    draw_texture_rect(east, Rect2(Vector2(width, 0), Vector2(east.get_width(), height)), true)
+    draw_texture_rect(nw, Rect2(Vector2(-nw.get_width(), -nw.get_height()), nw.get_size()), false)
+    draw_texture_rect(ne, Rect2(Vector2(width, -ne.get_height()), ne.get_size()), false)
+    draw_texture_rect(sw, Rect2(Vector2(-sw.get_width(), height), sw.get_size()), false)
+    draw_texture_rect(se, Rect2(Vector2(width, height), se.get_size()), false)
+
+
 func _draw_grid(width: float, height: float) -> void:
     var subcells_per_tile := int(config["store"]["subcells_per_tile"])
     for x in range(simulation.layout.width_subcells + 1):
-        var thickness := 2.0 if x % subcells_per_tile == 0 else 1.0
-        var shade := Color("aaa69d") if x % subcells_per_tile == 0 else Color("d8d4cb")
+        var thickness := 1.5 if x % subcells_per_tile == 0 else 1.0
+        var shade := Color(0, 0, 0, 0.18) if x % subcells_per_tile == 0 else Color(0, 0, 0, 0.08)
         var px := x * SUBCELL_PIXELS
         draw_line(Vector2(px, 0), Vector2(px, height), shade, thickness)
     for y in range(simulation.layout.height_subcells + 1):
-        var thickness := 2.0 if y % subcells_per_tile == 0 else 1.0
-        var shade := Color("aaa69d") if y % subcells_per_tile == 0 else Color("d8d4cb")
+        var thickness := 1.5 if y % subcells_per_tile == 0 else 1.0
+        var shade := Color(0, 0, 0, 0.18) if y % subcells_per_tile == 0 else Color(0, 0, 0, 0.08)
         var py := y * SUBCELL_PIXELS
         draw_line(Vector2(0, py), Vector2(width, py), shade, thickness)
 
 
+# Task #83: replaces the previous flat-colored rounded rects + "IN"/"OUT"
+# text labels with the real entrance crops (see _floor_textures'
+# declaration above) -- the source footage shows no roman-letter overlay,
+# only the arrow-and-mat artwork itself, so this drops the synthetic text
+# rather than layering it over the real sprite.
 func _draw_entry_exit() -> void:
     var entry := _vec2i(config["store"]["entry_subcell"])
     var exit := _vec2i(config["store"]["exit_subcell"])
-    draw_rect(_cell_rect(entry).grow(-5), Color("8bd17c"), true)
-    draw_rect(_cell_rect(exit).grow(-5), Color("efa36f"), true)
-    _draw_text_at(entry, "IN")
-    _draw_text_at(exit, "OUT")
+    var entry_texture: Texture2D = _floor_textures["entrance_in"]
+    var exit_texture: Texture2D = _floor_textures["entrance_out"]
+    if entry_texture != null:
+        draw_texture_rect(entry_texture, _cell_rect(entry), false)
+    else:
+        draw_rect(_cell_rect(entry).grow(-5), Color("8bd17c"), true)
+        _draw_text_at(entry, "IN")
+    if exit_texture != null:
+        draw_texture_rect(exit_texture, _cell_rect(exit), false)
+    else:
+        draw_rect(_cell_rect(exit).grow(-5), Color("efa36f"), true)
+        _draw_text_at(exit, "OUT")
 
 
 func _draw_fixtures() -> void:
