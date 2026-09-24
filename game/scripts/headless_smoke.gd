@@ -2373,6 +2373,10 @@ func _initialize() -> void:
     if economy_ui_scene.simulation.economy.cash_yen != cash_before_explicit_restock - expected_explicit_restock_cost:
         _fail("economy UI: Restock must charge quantity * restock_unit_cost_yen")
         return
+    # Clear the selection this restock test made -- later checks in this same
+    # scenario (e.g. the sell button below) assume nothing is selected by
+    # default, same as before task #79 introduced fixture selection here.
+    economy_ui_scene.store_view.selected_fixture_id = ""
 
     var promotion_index: int = economy_ui_scene._promotion_ids.find("direct_mail")
     if promotion_index < 0:
