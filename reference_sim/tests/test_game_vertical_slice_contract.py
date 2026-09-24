@@ -2543,6 +2543,55 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("_customer_facing_direction(\"test-customer\", Vector2i(8, 5)) != \"right\"", smoke)
         self.assertIn("_customer_facing_direction(\"test-customer\", Vector2i(8, 2)) != \"up\"", smoke)
 
+    def test_menu_icons_cover_every_catalog_entry_and_are_confirmed_visual(self):
+        main_script = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        # Unlike tasks #67-#70's world sprites (this project's own newly-
+        # drawn art, REMAKE_BALANCED_DEFAULT), these menu icons are cropped
+        # directly from the strategy guide's own printed pages -- a
+        # materially different, stronger evidence tier for the artwork
+        # itself that must not be conflated with the placeholder tag.
+        self.assertIn("MENU_ICON_DIR", main_script)
+        self.assertIn("func _menu_icon(category: String, id: String) -> Texture2D:", main_script)
+        self.assertIn(
+            "CONFIRMED_VISUAL evidence for the icon artwork itself,", main_script
+        )
+        self.assertIn(
+            "not a REMAKE_BALANCED_DEFAULT placeholder", main_script
+        )
+        # The staff face-icon numbering reuses task #69's own
+        # REMAKE_BALANCED_DEFAULT position-based mapping rather than
+        # inventing a second one.
+        self.assertIn("_staff_sprite_id_for_candidate(candidate_id)", main_script)
+
+        # Verify the factual claim (not just the prose comment): every
+        # fixture_catalog/product_catalog entry actually has a menu icon
+        # file on disk, by id.
+        fixture_icon_dir = GAME_ROOT / "assets" / "menu_icons" / "fixtures"
+        product_icon_dir = GAME_ROOT / "assets" / "menu_icons" / "products"
+        for entry in self.config["fixture_catalog"]:
+            catalog_id = entry["catalog_id"]
+            self.assertTrue(
+                (fixture_icon_dir / f"{catalog_id}.png").is_file(),
+                f"missing fixture menu icon for {catalog_id}",
+            )
+        for entry in self.config["product_catalog"]:
+            catalog_id = entry["catalog_id"]
+            self.assertTrue(
+                (product_icon_dir / f"{catalog_id}.png").is_file(),
+                f"missing product menu icon for {catalog_id}",
+            )
+        staff_icon_dir = GAME_ROOT / "assets" / "menu_icons" / "staff"
+        self.assertEqual(len(list(staff_icon_dir.glob("*.png"))), len(self.config["staff_candidates"]))
+
+        # Covered end-to-end by headless_smoke.gd: after the scene's own
+        # _ready() populates every OptionButton, each item actually carries
+        # a non-null icon.
+        self.assertIn("fixture_catalog_option.get_item_icon(fixture_catalog_index)", smoke)
+        self.assertIn("product_catalog_option.get_item_icon(product_catalog_index)", smoke)
+        self.assertIn("hire_candidate_option.get_item_icon(hire_candidate_index)", smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])

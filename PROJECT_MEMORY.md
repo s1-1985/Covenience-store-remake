@@ -1503,6 +1503,28 @@ discipline follows the same code-comment + contract-test pattern as tasks #67/#6
 decision 0140. Explicitly out of scope: the town map, the 5 menu-UI packages, walk-cycle animation,
 and any actual customer-archetype/demand mechanic (this task is display-only).
 
+**Task #71 (2026-09-24)**: after task #70 merged (PR #247, both CI checks green after fixing a
+GDScript type-inference parse error), the user chose "menu-UI asset wiring" as the next direction,
+having wired all four world-sprite packages (tasks #67-#70). Investigating the 5 menu-UI packages
+(`conveni_menu_fixtures_v1`/`_products_v1`/`_staff_v1`/`conveni_additional_assets_v1`/
+`conveni_remaining_assets_v1`) surfaced an important evidence-tier distinction: unlike tasks
+#67-#70's world sprites (this project's own newly-generated art, REMAKE_BALANCED_DEFAULT), the 3
+menu-icon packages are cropped directly from the strategy guide's own printed menu-icon pages (each
+manifest entry cites its exact `source_pdf_page`) -- CONFIRMED_VISUAL evidence for the icon artwork
+itself. Their IDs also turned out to match this project's existing data with zero gaps: all 35
+`fixture_catalog` and all 26 `product_catalog` entries have a matching icon (plus some unused
+"extra" icons for fixtures/products this client hasn't implemented yet, e.g. register_2-4, cash),
+and the 35 staff face icons reuse the exact same `staff_001`-`staff_035` numbering task #69 already
+established. This made for a clean, contained task: added icons to the 3 existing OptionButton
+dropdowns (`fixture_catalog_option`/`product_catalog_option`/`hire_candidate_option` in `main.gd`)
+via `set_item_icon()`, reusing `store_view._staff_sprite_id_for_candidate()` (task #69's
+REMAKE_BALANCED_DEFAULT position-based mapping) for the staff icons rather than inventing a second
+numbering. The other 2 packages (store-select icons, ad icons, ground textures, town-map assets)
+were left out of scope -- no corresponding screen exists in this vertical slice yet to wire them
+into. `reference_sim` full suite grew from 735 to 736 passed/1 xfailed (one new contract test that
+also verifies, at the filesystem level, that every catalog entry actually has a matching icon file
+on disk, not just that the code claims so). See decision 0141.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
