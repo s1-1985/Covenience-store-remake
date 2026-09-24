@@ -102,6 +102,7 @@ var _next_product_purchase_sequence := 1
 
 
 func _ready() -> void:
+    _prepare_android_ui()
     config = _load_config()
     if config.is_empty():
         return
@@ -132,6 +133,8 @@ func _ready() -> void:
     next_customer_button.pressed.connect(_on_next_customer_pressed)
     eject_customer_button.pressed.connect(_on_eject_customer_pressed)
     edit_mode_option.item_selected.connect(_on_edit_mode_selected)
+    if edit_mode_option.selected < 0:
+        edit_mode_option.select(0)
     rotate_fixture_button.pressed.connect(_on_rotate_fixture_pressed)
     sell_fixture_button.pressed.connect(_on_sell_fixture_pressed)
     deselect_fixture_button.pressed.connect(_on_deselect_fixture_pressed)
@@ -183,7 +186,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_show_town_map_pressed() -> void:
     town_view.visible = not town_view.visible
     store_view.visible = not town_view.visible
-    show_town_map_button.text = "Show store" if town_view.visible else "Show town map"
+    show_town_map_button.text = tr("Show store") if town_view.visible else tr("Show town map")
     if town_view.visible:
         town_view.queue_redraw()
 
@@ -192,7 +195,7 @@ func _on_pause_pressed() -> void:
     if simulation == null:
         return
     paused = not paused
-    pause_button.text = "Resume" if paused else "Pause"
+    pause_button.text = tr("Resume") if paused else tr("Pause")
     _refresh_ui()
 
 
@@ -200,7 +203,7 @@ func _on_step_pressed() -> void:
     if simulation == null or simulation.customers.all_settled():
         return
     paused = true
-    pause_button.text = "Resume"
+    pause_button.text = tr("Resume")
     accumulator = 0.0
     simulation.step()
     _refresh_ui()
@@ -210,10 +213,10 @@ func _on_reset_pressed() -> void:
     if simulation == null:
         return
     paused = false
-    pause_button.text = "Pause"
+    pause_button.text = tr("Pause")
     accumulator = 0.0
     simulation.reset()
-    layout_edit_label.text = "Layout reset to configured prototype"
+    layout_edit_label.text = tr("Layout reset to configured prototype")
     _refresh_procure_fixture_option()
     _refresh_hire_candidate_option()
     _refresh_ui()
@@ -223,7 +226,7 @@ func _on_next_customer_pressed() -> void:
     if simulation == null or not simulation.start_next_customer():
         return
     paused = false
-    pause_button.text = "Pause"
+    pause_button.text = tr("Pause")
     accumulator = 0.0
     _refresh_ui()
 
@@ -247,22 +250,22 @@ func _refresh_eject_customer_option() -> void:
 
 func _on_eject_customer_pressed() -> void:
     if _eject_customer_ids.is_empty():
-        layout_edit_label.text = "No customer currently at checkout to eject"
+        layout_edit_label.text = tr("No customer currently at checkout to eject")
         _refresh_ui()
         return
     var customer_id: String = _eject_customer_ids[eject_customer_option.selected]
     if simulation.try_eject_customer(customer_id):
-        layout_edit_label.text = "Ejected customer %s before they could get angry" % customer_id
+        layout_edit_label.text = tr("Ejected customer %s before they could get angry") % customer_id
     else:
-        layout_edit_label.text = "Could not eject %s" % customer_id
+        layout_edit_label.text = tr("Could not eject %s") % customer_id
     _refresh_ui()
 
 
 func _on_fixture_selected(fixture_id: String) -> void:
     if store_view.edit_mode == "swap":
-        layout_edit_label.text = "Selected: %s — tap another fixture to swap" % fixture_id
+        layout_edit_label.text = tr("Selected: %s — tap another fixture to swap") % fixture_id
     else:
-        layout_edit_label.text = "Selected: %s — tap an empty grid cell to move" % fixture_id
+        layout_edit_label.text = tr("Selected: %s — tap an empty grid cell to move") % fixture_id
 
 
 func _on_fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i) -> void:
@@ -270,28 +273,28 @@ func _on_fixture_relocation_requested(fixture_id: String, origin_subcell: Vector
         _try_place_new_fixture(fixture_id.substr(NEW_FIXTURE_SELECTION_PREFIX.length()), origin_subcell)
         return
     if simulation.try_relocate_fixture(fixture_id, origin_subcell):
-        layout_edit_label.text = "Moved %s to (%d, %d)" % [
+        layout_edit_label.text = tr("Moved %s to (%d, %d)") % [
             fixture_id,
             origin_subcell.x,
             origin_subcell.y,
         ]
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before editing layout"
+        layout_edit_label.text = tr("Finish the active visit before editing layout")
     else:
-        layout_edit_label.text = "Cannot move there: blocked, outside, or route would break"
+        layout_edit_label.text = tr("Cannot move there: blocked, outside, or route would break")
     _refresh_ui()
 
 
 func _on_rotate_fixture_pressed() -> void:
     var fixture_id: String = store_view.selected_fixture()
     if fixture_id.is_empty():
-        layout_edit_label.text = "Select a fixture before rotating"
+        layout_edit_label.text = tr("Select a fixture before rotating")
     elif simulation.try_rotate_fixture_clockwise(fixture_id):
-        layout_edit_label.text = "Rotated %s clockwise" % fixture_id
+        layout_edit_label.text = tr("Rotated %s clockwise") % fixture_id
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before editing layout"
+        layout_edit_label.text = tr("Finish the active visit before editing layout")
     else:
-        layout_edit_label.text = "Cannot rotate there: blocked or route would break"
+        layout_edit_label.text = tr("Cannot rotate there: blocked or route would break")
     _refresh_ui()
 
 
@@ -304,32 +307,32 @@ func _on_edit_mode_selected(index: int) -> void:
 
 func _on_fixture_swap_requested(fixture_id_a: String, fixture_id_b: String) -> void:
     if simulation.try_swap_fixtures(fixture_id_a, fixture_id_b):
-        layout_edit_label.text = "Swapped %s and %s" % [fixture_id_a, fixture_id_b]
+        layout_edit_label.text = tr("Swapped %s and %s") % [fixture_id_a, fixture_id_b]
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before editing layout"
+        layout_edit_label.text = tr("Finish the active visit before editing layout")
     else:
-        layout_edit_label.text = "Cannot swap those: route would break"
+        layout_edit_label.text = tr("Cannot swap those: route would break")
     _refresh_ui()
 
 
 func _on_sell_fixture_pressed() -> void:
     var fixture_id: String = store_view.selected_fixture()
     if fixture_id.is_empty():
-        layout_edit_label.text = "Select a fixture before selling"
+        layout_edit_label.text = tr("Select a fixture before selling")
     elif simulation.try_sell_fixture(fixture_id):
-        layout_edit_label.text = "Sold %s" % fixture_id
+        layout_edit_label.text = tr("Sold %s") % fixture_id
         store_view.selected_fixture_id = ""
         _refresh_procure_fixture_option()
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before selling a fixture"
+        layout_edit_label.text = tr("Finish the active visit before selling a fixture")
     else:
-        layout_edit_label.text = "Cannot sell that fixture: it's the checkout, holds stock, or has no catalog price"
+        layout_edit_label.text = tr("Cannot sell that fixture: it's the checkout, holds stock, or has no catalog price")
     _refresh_ui()
 
 
 func _on_deselect_fixture_pressed() -> void:
     store_view.selected_fixture_id = ""
-    layout_edit_label.text = "Deselected"
+    layout_edit_label.text = tr("Deselected")
     _refresh_ui()
 
 
@@ -338,7 +341,7 @@ func _populate_sample_layout_option() -> void:
     _sample_layout_ids.clear()
     for entry in config["sample_layouts"]:
         _sample_layout_ids.append(str(entry["sample_id"]))
-        sample_layout_option.add_item(str(entry["label"]))
+        sample_layout_option.add_item(tr(str(entry["label"])))
 
 
 func _on_load_sample_layout_pressed() -> void:
@@ -346,12 +349,12 @@ func _on_load_sample_layout_pressed() -> void:
         return
     var sample_id: String = _sample_layout_ids[sample_layout_option.selected]
     if simulation.try_load_sample_layout(sample_id):
-        layout_edit_label.text = "Loaded sample layout: %s" % sample_id
+        layout_edit_label.text = tr("Loaded sample layout: %s") % sample_id
         _refresh_procure_fixture_option()
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before loading a sample layout"
+        layout_edit_label.text = tr("Finish the active visit before loading a sample layout")
     else:
-        layout_edit_label.text = "Cannot load that sample layout: unaffordable or would strand stocked inventory"
+        layout_edit_label.text = tr("Cannot load that sample layout: unaffordable or would strand stocked inventory")
     _refresh_ui()
 
 
@@ -375,7 +378,7 @@ func _populate_fixture_catalog_option() -> void:
         var catalog_id := str(entry["catalog_id"])
         _fixture_catalog_ids.append(catalog_id)
         fixture_catalog_option.add_item(
-            "%s — ¥%s" % [catalog_id, _format_integer(int(entry["purchase_price_yen"]))]
+            "%s — ¥%s" % [tr(catalog_id), _format_integer(int(entry["purchase_price_yen"]))]
         )
         var icon := _menu_icon("fixtures", catalog_id)
         if icon != null:
@@ -387,7 +390,7 @@ func _on_buy_fixture_pressed() -> void:
         return
     var catalog_id: String = _fixture_catalog_ids[fixture_catalog_option.selected]
     store_view.selected_fixture_id = NEW_FIXTURE_SELECTION_PREFIX + catalog_id
-    layout_edit_label.text = "Buying %s — tap an empty grid cell to place it" % catalog_id
+    layout_edit_label.text = tr("Buying %s — tap an empty grid cell to place it") % catalog_id
     _refresh_ui()
 
 
@@ -407,18 +410,18 @@ func _try_place_new_fixture(catalog_id: String, origin_subcell: Vector2i) -> voi
     var height: int = int(footprint[1]) * subcells_per_tile
     var interaction := _find_open_interaction_cell(origin_subcell, width, height)
     if interaction == Vector2i(-1, -1):
-        layout_edit_label.text = "Cannot place %s there: no open cell next to it for customers/staff to use" % catalog_id
+        layout_edit_label.text = tr("Cannot place %s there: no open cell next to it for customers/staff to use") % catalog_id
         _refresh_ui()
         return
     var instance_id := "fixture-purchase-%d" % _next_fixture_purchase_sequence
     _next_fixture_purchase_sequence += 1
     if simulation.try_purchase_fixture(catalog_id, instance_id, origin_subcell, interaction):
-        layout_edit_label.text = "Purchased %s" % catalog_id
+        layout_edit_label.text = tr("Purchased %s") % catalog_id
         _refresh_procure_fixture_option()
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before buying a fixture"
+        layout_edit_label.text = tr("Finish the active visit before buying a fixture")
     else:
-        layout_edit_label.text = "Cannot place %s there: blocked, unaffordable, or route would break" % catalog_id
+        layout_edit_label.text = tr("Cannot place %s there: blocked, unaffordable, or route would break") % catalog_id
     _refresh_ui()
 
 
@@ -451,7 +454,7 @@ func _populate_permit_option() -> void:
     _permit_ids.clear()
     for entry in config["permits"]:
         _permit_ids.append(str(entry["permit_id"]))
-        permit_option.add_item("%s — ¥%s" % [entry["permit_id"], _format_integer(int(entry["fee_yen"]))])
+        permit_option.add_item("%s — ¥%s" % [tr(str(entry["permit_id"])), _format_integer(int(entry["fee_yen"]))])
 
 
 func _on_buy_permit_pressed() -> void:
@@ -459,13 +462,13 @@ func _on_buy_permit_pressed() -> void:
         return
     var permit_id: String = _permit_ids[permit_option.selected]
     if simulation.has_permit(permit_id):
-        layout_edit_label.text = "Already hold the %s permit" % permit_id
+        layout_edit_label.text = tr("Already hold the %s permit") % permit_id
     elif simulation.try_purchase_permit(permit_id):
-        layout_edit_label.text = "Purchased permit: %s" % permit_id
+        layout_edit_label.text = tr("Purchased permit: %s") % permit_id
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before buying a permit"
+        layout_edit_label.text = tr("Finish the active visit before buying a permit")
     else:
-        layout_edit_label.text = "Cannot afford the %s permit" % permit_id
+        layout_edit_label.text = tr("Cannot afford the %s permit") % permit_id
     _refresh_ui()
 
 
@@ -476,7 +479,7 @@ func _populate_product_catalog_option() -> void:
         var catalog_id := str(entry["catalog_id"])
         _product_catalog_ids.append(catalog_id)
         product_catalog_option.add_item(
-            "%s — ¥%s/unit" % [catalog_id, _format_integer(int(entry["restock_unit_cost_yen"]))]
+            tr("%s — ¥%s/unit") % [tr(catalog_id), _format_integer(int(entry["restock_unit_cost_yen"]))]
         )
         var icon := _menu_icon("products", catalog_id)
         if icon != null:
@@ -498,7 +501,7 @@ func _refresh_procure_fixture_option() -> void:
 
 func _on_procure_product_pressed() -> void:
     if _product_catalog_ids.is_empty() or _procure_fixture_ids.is_empty():
-        layout_edit_label.text = "No shelf fixture available to stock (buy one first)"
+        layout_edit_label.text = tr("No shelf fixture available to stock (buy one first)")
         _refresh_ui()
         return
     var catalog_id: String = _product_catalog_ids[product_catalog_option.selected]
@@ -506,11 +509,11 @@ func _on_procure_product_pressed() -> void:
     var instance_id := "product-purchase-%d" % _next_product_purchase_sequence
     _next_product_purchase_sequence += 1
     if simulation.try_procure_product(catalog_id, instance_id, fixture_id):
-        layout_edit_label.text = "Stocked %s on %s" % [catalog_id, fixture_id]
+        layout_edit_label.text = tr("Stocked %s on %s") % [catalog_id, fixture_id]
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before stocking a product"
+        layout_edit_label.text = tr("Finish the active visit before stocking a product")
     else:
-        layout_edit_label.text = "Cannot stock %s on %s: missing permit, unaffordable, or already stocked there" % [
+        layout_edit_label.text = tr("Cannot stock %s on %s: missing permit, unaffordable, or already stocked there") % [
             catalog_id,
             fixture_id,
         ]
@@ -546,7 +549,7 @@ func _selected_fixture_restock_target():
 func _on_restock_pressed() -> void:
     var product = _selected_fixture_restock_target()
     if product == null:
-        layout_edit_label.text = "Select a shelf whose stock is running low to restock it"
+        layout_edit_label.text = tr("Select a shelf whose stock is running low to restock it")
         _refresh_ui()
         return
     # REMAKE_BALANCED_DEFAULT (task #38): apply_explicit_restock() takes an
@@ -560,13 +563,13 @@ func _on_restock_pressed() -> void:
     var total_cost_yen: int = quantity * product.restock_unit_cost_yen
     var staff_id: String = simulation.staff.checkout_staff().staff_id
     if simulation.apply_explicit_restock(product.product_id, staff_id, quantity, total_cost_yen):
-        layout_edit_label.text = "Restocked %d units of %s for ¥%s" % [
+        layout_edit_label.text = tr("Restocked %d units of %s for ¥%s") % [
             quantity,
             product.product_id,
             _format_integer(total_cost_yen),
         ]
     else:
-        layout_edit_label.text = "Finish the active visit before restocking"
+        layout_edit_label.text = tr("Finish the active visit before restocking")
     _refresh_ui()
 
 
@@ -576,8 +579,8 @@ func _populate_promotion_option() -> void:
     for entry in config["promotions"]:
         _promotion_ids.append(str(entry["promotion_id"]))
         promotion_option.add_item(
-            "%s — ¥%s (+%d popularity)" % [
-                entry["promotion_id"],
+            tr("%s — ¥%s (+%d popularity)") % [
+                tr(str(entry["promotion_id"])),
                 _format_integer(int(entry["cost_yen"])),
                 int(entry["popularity_gain"]),
             ]
@@ -589,32 +592,32 @@ func _on_buy_promotion_pressed() -> void:
         return
     var promotion_id: String = _promotion_ids[promotion_option.selected]
     if simulation.try_purchase_promotion(promotion_id):
-        layout_edit_label.text = "Scheduled promotion: %s" % promotion_id
+        layout_edit_label.text = tr("Scheduled promotion: %s") % promotion_id
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before buying a promotion"
+        layout_edit_label.text = tr("Finish the active visit before buying a promotion")
     else:
-        layout_edit_label.text = "Cannot buy that promotion: unaffordable or already scheduled/used this month"
+        layout_edit_label.text = tr("Cannot buy that promotion: unaffordable or already scheduled/used this month")
     _refresh_ui()
 
 
 func _on_expand_chain_pressed() -> void:
     if simulation.try_expand_chain():
-        layout_edit_label.text = "Expanded the chain to %d store(s)" % int(simulation.player_store_count)
+        layout_edit_label.text = tr("Expanded the chain to %d store(s)") % int(simulation.player_store_count)
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before expanding the chain"
+        layout_edit_label.text = tr("Finish the active visit before expanding the chain")
     else:
-        layout_edit_label.text = "Cannot expand the chain: unaffordable, or the scenario target is already reached"
+        layout_edit_label.text = tr("Cannot expand the chain: unaffordable, or the scenario target is already reached")
     _refresh_ui()
 
 
 func _on_set_price_policy_pressed() -> void:
     var new_price_change_pct: int = int(round(price_change_spin_box.value))
     if simulation.try_set_price_policy(new_price_change_pct):
-        layout_edit_label.text = "Price policy set: %+d%% from list price" % new_price_change_pct
+        layout_edit_label.text = tr("Price policy set: %+d%% from list price") % new_price_change_pct
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before changing the price policy"
+        layout_edit_label.text = tr("Finish the active visit before changing the price policy")
     else:
-        layout_edit_label.text = "Cannot set that price policy (must be -100% or above)"
+        layout_edit_label.text = tr("Cannot set that price policy (must be -100% or above)")
     _refresh_ui()
 
 
@@ -660,7 +663,7 @@ func _refresh_hire_candidate_option() -> void:
             continue
         _hire_candidate_ids.append(candidate_id)
         hire_candidate_option.add_item(
-            "%s — register %d / replen %d / ¥%s/day (体力%s 学歴%s 敏捷性%s 社交性%s)" % [
+            tr("%s — register %d / replen %d / ¥%s/day (体力%s 学歴%s 敏捷性%s 社交性%s)") % [
                 entry["display_name"],
                 int(entry["register_skill"]),
                 int(entry["replenishment_skill"]),
@@ -679,18 +682,18 @@ func _refresh_hire_candidate_option() -> void:
 
 func _on_hire_candidate_pressed() -> void:
     if _staff_slot_ids.is_empty() or _hire_candidate_ids.is_empty():
-        layout_edit_label.text = "No candidate available to hire"
+        layout_edit_label.text = tr("No candidate available to hire")
         _refresh_ui()
         return
     var staff_id: String = _staff_slot_ids[staff_slot_option.selected]
     var candidate_id: String = _hire_candidate_ids[hire_candidate_option.selected]
     if simulation.try_hire_candidate(staff_id, candidate_id):
-        layout_edit_label.text = "Hired %s into %s" % [candidate_id, staff_id]
+        layout_edit_label.text = tr("Hired %s into %s") % [candidate_id, staff_id]
         _refresh_hire_candidate_option()
     elif not simulation.customers.all_settled():
-        layout_edit_label.text = "Finish the active visit before hiring"
+        layout_edit_label.text = tr("Finish the active visit before hiring")
     else:
-        layout_edit_label.text = "Cannot hire %s into %s" % [candidate_id, staff_id]
+        layout_edit_label.text = tr("Cannot hire %s into %s") % [candidate_id, staff_id]
     _refresh_ui()
 
 
@@ -698,9 +701,9 @@ func _on_save_pressed() -> void:
     if simulation == null:
         return
     if _save_service.save_to_path(simulation):
-        layout_edit_label.text = "Game saved"
+        layout_edit_label.text = tr("Game saved")
     else:
-        layout_edit_label.text = "Save failed"
+        layout_edit_label.text = tr("Save failed")
     _refresh_ui()
 
 
@@ -709,13 +712,13 @@ func _on_load_pressed() -> void:
         return
     if _save_service.load_from_path(simulation):
         paused = false
-        pause_button.text = "Pause"
+        pause_button.text = tr("Pause")
         accumulator = 0.0
-        layout_edit_label.text = "Game loaded"
+        layout_edit_label.text = tr("Game loaded")
         _refresh_procure_fixture_option()
         _refresh_hire_candidate_option()
     else:
-        layout_edit_label.text = "No compatible save found"
+        layout_edit_label.text = tr("No compatible save found")
     _refresh_ui()
 
 
@@ -745,39 +748,39 @@ func _refresh_ui() -> void:
     # Japanese to stay consistent with the rest of this client's UI text.
     var calendar_year: int = int(snapshot["month_count"]) / VerticalSliceSimulationScript.MONTHS_PER_YEAR + 1
     var calendar_month_in_year: int = int(snapshot["month_count"]) % VerticalSliceSimulationScript.MONTHS_PER_YEAR + 1
-    calendar_label.text = "Year %d · Month %d, Day %d" % [
+    calendar_label.text = tr("Year %d · Month %d, Day %d") % [
         calendar_year,
         calendar_month_in_year,
         int(snapshot["days_completed_this_month"]) + 1,
     ]
     cash_label.text = "¥%s" % _format_integer(int(snapshot["cash_yen"]))
-    stock_label.text = "%d units" % int(snapshot["stock_units"])
-    basket_label.text = "%d items / ¥%s" % [
+    stock_label.text = tr("%d units") % int(snapshot["stock_units"])
+    basket_label.text = tr("%d items / ¥%s") % [
         int(snapshot["customer_basket_count"]),
         _format_integer(int(snapshot["customer_basket_total_yen"])),
     ]
     var active_customers: Array = snapshot["active_customers"]
     if active_customers.is_empty():
-        customer_label.text = "no active customers"
+        customer_label.text = tr("no active customers")
     else:
         var customer_parts: Array[String] = []
         for entry in active_customers:
-            customer_parts.append("%s: %s" % [entry["customer_id"], entry["phase"]])
-        customer_label.text = "%d active — %s" % [active_customers.size(), ", ".join(customer_parts)]
-    staff_label.text = "%s: %s (%d staff)" % [
-        snapshot["staff_id"],
-        snapshot["staff_state"],
+            customer_parts.append(tr(str(entry["phase"])))
+        customer_label.text = tr("%d active — %s") % [active_customers.size(), ", ".join(customer_parts)]
+    staff_label.text = tr("%s: %s (%d staff)") % [
+        tr(str(snapshot["staff_id"])),
+        tr(str(snapshot["staff_state"])),
         int(snapshot["staff_count"]),
     ]
     var last_sale: Dictionary = snapshot["last_sale"]
     sales_label.text = str(snapshot["completed_sales"])
     if not last_sale.is_empty():
-        sales_label.text += " (last: ¥%s)" % _format_integer(int(last_sale["total_yen"]))
-    visits_label.text = "Visits: %d / %d" % [
+        sales_label.text += tr(" (last: ¥%s)") % _format_integer(int(last_sale["total_yen"]))
+    visits_label.text = tr("Visits: %d / %d") % [
         int(snapshot["completed_visits"]),
         int(snapshot["started_visits"]),
     ]
-    rating_label.text = "%s (popularity %d)" % [
+    rating_label.text = tr("%s (popularity %d)") % [
         _star_rank_text(int(snapshot["star_rating"])),
         int(snapshot["popularity"]),
     ]
@@ -787,16 +790,16 @@ func _refresh_ui() -> void:
     # (see _evaluate_terminal_state()'s own comment), so this label just
     # stays on rather than needing separate "already shown once" state.
     if bool(snapshot["clear_condition_met"]):
-        scenario_status_label.text = "Scenario cleared — reached %d stores (you can keep playing)" % [
+        scenario_status_label.text = tr("Scenario cleared — reached %d stores (you can keep playing)") % [
             VerticalSliceSimulationScript.PLAYER_STORE_COUNT_SCENARIO_TARGET
         ]
     else:
         scenario_status_label.text = ""
     var rival_store_count: int = int(snapshot["town_store_count_including_rivals"]) - int(snapshot["player_store_count"])
-    town_label.text = "population %s, %d rival store%s, land ¥%s" % [
+    town_label.text = tr("population %s, %d rival store%s, land ¥%s") % [
         _format_integer(int(snapshot["town_population"])),
         rival_store_count,
-        "" if rival_store_count == 1 else "s",
+        "" if TranslationServer.get_locale().begins_with("ja") or rival_store_count == 1 else "s",
         _format_integer(int(snapshot["land_value_yen"])),
     ]
     event_label.text = str(snapshot["last_event"])
@@ -812,15 +815,15 @@ func _refresh_ui() -> void:
     var restock_target = _selected_fixture_restock_target()
     if restock_target == null:
         restock_button.disabled = true
-        restock_button.text = "Restock selected product"
+        restock_button.text = tr("Restock selected product")
     else:
         restock_button.disabled = false
-        restock_button.text = "Restock %s (stock: %d)" % [restock_target.product_id, restock_target.stock_units]
-    expand_chain_button.text = "Expand chain (¥%s, currently %d store(s))" % [
+        restock_button.text = tr("Restock %s (stock: %d)") % [restock_target.product_id, restock_target.stock_units]
+    expand_chain_button.text = tr("Expand chain (¥%s, currently %d store(s))") % [
         _format_integer(int(simulation.chain_expansion_cost_yen())),
         int(snapshot["player_store_count"]),
     ]
-    set_price_policy_button.text = "Set price policy (currently %+d%%)" % int(snapshot["price_change_pct"])
+    set_price_policy_button.text = tr("Set price policy (currently %+d%%)") % int(snapshot["price_change_pct"])
     # Task #75: is_game_over/game_over_reason have existed on the simulation
     # since the bankrupt/time-limit game-over paths were wired, but nothing
     # in this UI ever surfaced them -- every economy action's own is_game_
@@ -834,7 +837,7 @@ func _refresh_ui() -> void:
         game_over_reason_label.text = _game_over_reason_text(str(snapshot["game_over_reason"]))
         if not paused:
             paused = true
-            pause_button.text = "Resume"
+            pause_button.text = tr("Resume")
     store_view.queue_redraw()
 
 
@@ -851,6 +854,10 @@ func _load_config() -> Dictionary:
     if loaded.get("provisional", false) != true:
         push_error("Vertical slice config must explicitly remain provisional")
         return {}
+    # REMAKE_BALANCED_DEFAULT: preview setup uses the researched beginner
+    # cash anchor but grants a furnished shop; JSON records this deviation.
+    if _is_android_preview():
+        loaded["economy"]["initial_cash_yen"] = int(loaded["android_preview"]["starting_cash_yen"])
     return loaded
 
 
@@ -868,9 +875,9 @@ func _star_rank_text(star_rating: int) -> String:
 func _game_over_reason_text(reason: String) -> String:
     match reason:
         "bankrupt":
-            return "Cash went negative at a day/month boundary."
+            return tr("Cash went negative at a day/month boundary.")
         "time_limit_exceeded":
-            return "100 years passed without reaching the scenario's clear condition."
+            return tr("100 years passed without reaching the scenario's clear condition.")
         _:
             return reason
 
@@ -913,3 +920,50 @@ func _format_integer(value: int) -> String:
     chunks.push_front(raw)
     var joined := ",".join(chunks)
     return "-%s" % joined if value < 0 else joined
+
+
+func _is_android_preview() -> bool:
+    return OS.has_feature("android") or "--android-preview" in OS.get_cmdline_user_args()
+
+
+func _prepare_android_ui() -> void:
+    if not _is_android_preview():
+        return
+    # Platform presentation only, not recovered original gameplay data.
+    var panel: PanelContainer = $UI/Panel
+    var mobile_theme := panel.theme.duplicate() as Theme
+    mobile_theme.default_font_size = 22
+    for type_name in ["Button", "OptionButton", "PopupMenu"]:
+        mobile_theme.set_font_size("font_size", type_name, 22)
+    panel.theme = mobile_theme
+    for node in panel.find_children("*", "BaseButton", true, false):
+        node.custom_minimum_size.y = 64
+        if node is Button:
+            node.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+        if node is OptionButton:
+            node.fit_to_longest_item = false
+    for node in panel.find_children("*", "Label", true, false):
+        node.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    var shortcuts := VBoxContainer.new()
+    shortcuts.name = "AndroidShortcuts"
+    shortcuts.position = Vector2(440, 130)
+    shortcuts.size.x = 230
+    shortcuts.theme = mobile_theme
+    shortcuts.add_theme_constant_override("separation", 12)
+    $UI.add_child(shortcuts)
+    var targets := {"店舗情報": "Heading", "内装": "LayoutEditTitle", "仕入れ・経営": "EconomyTitle", "店員": "StaffHiringTitle"}
+    for caption in targets:
+        var button := Button.new()
+        button.text = caption
+        button.custom_minimum_size = Vector2(230, 64)
+        shortcuts.add_child(button)
+        var target: Control = $UI/Panel/Margin/Scroll/VBox.get_node(targets[caption])
+        button.pressed.connect(func(): $UI/Panel/Margin/Scroll.scroll_vertical = int(target.position.y))
+    var quick_save := Button.new()
+    quick_save.text = "セーブ"
+    quick_save.custom_minimum_size = Vector2(230, 64)
+    shortcuts.add_child(quick_save)
+    quick_save.pressed.connect(func():
+        _on_save_pressed()
+        quick_save.text = "保存完了" if layout_edit_label.text == tr("Game saved") else "保存失敗"
+    )

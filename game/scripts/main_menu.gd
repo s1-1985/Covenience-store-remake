@@ -12,6 +12,17 @@ var _save_service
 
 
 func _ready() -> void:
+    if OS.has_feature("android") or "--android-preview" in OS.get_cmdline_user_args():
+        $Panel.offset_left = 340
+        $Panel.offset_right = 940
+        $Panel.offset_top = 140
+        $Panel.offset_bottom = 580
+        var mobile_theme := $Panel.theme.duplicate() as Theme
+        mobile_theme.default_font_size = 22
+        mobile_theme.set_font_size("font_size", "Button", 26)
+        $Panel.theme = mobile_theme
+        for button in [new_game_button, continue_button, quit_button]:
+            button.custom_minimum_size.y = 72
     _save_service = SaveGameServiceScript.new()
     continue_button.disabled = not _save_service.save_exists()
     new_game_button.pressed.connect(_on_new_game_pressed)
@@ -26,7 +37,7 @@ func _on_new_game_pressed() -> void:
 
 func _on_continue_pressed() -> void:
     if not _save_service.save_exists():
-        status_label.text = "No save file found."
+        status_label.text = tr("No save file found.")
         continue_button.disabled = true
         return
     GameLaunchState.continue_from_save = true
