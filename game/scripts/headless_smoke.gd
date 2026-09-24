@@ -763,7 +763,14 @@ func _initialize() -> void:
     if not swap_simulation.try_purchase_fixture(
         "potted_plant", "swap-a", Vector2i(1, 10), Vector2i(1, 9)
     ):
-        _fail("swap test: setup fixture A purchase failed")
+        _fail(
+            "swap test: setup fixture A purchase failed (cash=%d, is_game_over=%s, all_settled=%s, has_swap_a=%s)" % [
+                int(swap_simulation.economy.cash_yen),
+                str(swap_simulation.is_game_over),
+                str(swap_simulation.customers.all_settled()),
+                str(swap_simulation.layout.fixtures_by_id.has("swap-a")),
+            ]
+        )
         return
     if not swap_simulation.try_purchase_fixture(
         "bench", "swap-b", Vector2i(4, 10), Vector2i(4, 9)
