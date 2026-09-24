@@ -1115,6 +1115,7 @@ func snapshot() -> Dictionary:
         "days_completed_this_month": _days_completed_this_month,
         "is_game_over": is_game_over,
         "game_over_reason": game_over_reason,
+        "clear_condition_met": clear_condition_met,
         "permits_held": _permits_held.keys(),
         "popularity": popularity,
         "price_change_pct": price_change_pct,

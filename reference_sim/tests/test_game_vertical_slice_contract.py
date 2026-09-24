@@ -2723,6 +2723,16 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
 
         self.assertIn('"days_completed_this_month": _days_completed_this_month', simulation)
+        # CI caught a real bug here: clear_condition_met had only ever been
+        # added to save_state()'s dict, not snapshot()'s -- _refresh_ui()
+        # reads snapshot(), so every frame crashed with "Invalid access to
+        # property or key 'clear_condition_met'" the moment this task's own
+        # new scenario-status code ran. Assert both dicts carry it so this
+        # exact class of snapshot()/save_state() drift can't recur silently.
+        snapshot_body = simulation.split("func snapshot() -> Dictionary:")[1].split(
+            "func observation_snapshot"
+        )[0]
+        self.assertIn('"clear_condition_met": clear_condition_met', snapshot_body)
 
         for node_name in (
             "CalendarValue",
