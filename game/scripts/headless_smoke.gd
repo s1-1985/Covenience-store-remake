@@ -1937,6 +1937,64 @@ func _initialize() -> void:
         _fail("_product_on_fixture('shelf-1') did not resolve to prototype-bread")
         return
 
+    # Task #69: third asset-wiring pass, staff walking sprites. Confirm every
+    # one of the 35 staff_candidates positions resolves to its own sprite id
+    # (list position -> "staff_%03d", REMAKE_BALANCED_DEFAULT, docs/decisions/
+    # 0139-staff-sprite-wiring.md) and that all 4 shipped directions actually
+    # load for each one under CI's fresh editor import.
+    for candidate_index in range(config["staff_candidates"].size()):
+        var expected_staff_sprite_id := "staff_%03d" % (candidate_index + 1)
+        var candidate_id_at_index := str(config["staff_candidates"][candidate_index]["candidate_id"])
+        if economy_ui_scene.store_view._staff_sprite_id_for_candidate(candidate_id_at_index) != expected_staff_sprite_id:
+            _fail("candidate at index %d did not resolve to %s" % [candidate_index, expected_staff_sprite_id])
+            return
+        for staff_sprite_direction in economy_ui_scene.store_view.STAFF_SPRITE_DIRECTIONS:
+            if economy_ui_scene.store_view._staff_texture(
+                expected_staff_sprite_id,
+                staff_sprite_direction,
+                economy_ui_scene.store_view.STAFF_SPRITE_STATIC_PHASE
+            ) == null:
+                _fail(
+                    "staff sprite failed to load for %s/%s" % [
+                        expected_staff_sprite_id, staff_sprite_direction
+                    ]
+                )
+                return
+    if economy_ui_scene.store_view._staff_sprite_id_for_candidate("") != "":
+        _fail("an empty candidate_id must resolve to no sprite")
+        return
+    if economy_ui_scene.store_view._staff_sprite_id_for_candidate("no-such-candidate") != "":
+        _fail("an unknown candidate_id must resolve to no sprite")
+        return
+
+    # staff-1 (the scenario's checkout staff) is bound to the confirmed
+    # manda_machiko candidate; confirm the live roster entry resolves
+    # end-to-end, not just the raw lookup function in isolation.
+    var checkout_staff_candidate_id: String = economy_ui_scene.simulation.staff.members["staff-1"].candidate_id
+    if checkout_staff_candidate_id != "manda_machiko":
+        _fail("staff-1 was expected to be bound to the confirmed 'manda_machiko' candidate")
+        return
+    if economy_ui_scene.store_view._staff_sprite_id_for_candidate(checkout_staff_candidate_id) != "staff_005":
+        _fail("staff-1's bound candidate did not resolve to the expected sprite id")
+        return
+
+    # _staff_facing_direction() is a pure display-derivation function (no
+    # confirmed original rule governs on-screen staff orientation, see
+    # store_view.gd); exercise it directly with synthetic positions rather
+    # than depending on a specific movement scenario happening to occur.
+    if economy_ui_scene.store_view._staff_facing_direction("test-staff", Vector2i(5, 5)) != "down":
+        _fail("a staff member with no prior recorded position must default to facing 'down'")
+        return
+    if economy_ui_scene.store_view._staff_facing_direction("test-staff", Vector2i(8, 5)) != "right":
+        _fail("moving in +x must face 'right'")
+        return
+    if economy_ui_scene.store_view._staff_facing_direction("test-staff", Vector2i(8, 5)) != "right":
+        _fail("an unchanged position must keep facing the previously resolved direction")
+        return
+    if economy_ui_scene.store_view._staff_facing_direction("test-staff", Vector2i(8, 2)) != "up":
+        _fail("moving in -y must face 'up'")
+        return
+
     var bench_index: int = economy_ui_scene._fixture_catalog_ids.find("bench")
     if bench_index < 0:
         _fail("economy UI: fixture catalog option did not include 'bench'")
