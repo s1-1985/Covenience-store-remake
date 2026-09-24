@@ -1034,14 +1034,16 @@
       "fixture_id": "shelf-1",
       "initial_stock_units": 3,
       "sale_price_yen": 120,
-      "restock_unit_cost_yen": 60
+      "restock_unit_cost_yen": 60,
+      "evidence_note": "This is a task #38 pre-catalog-system placeholder product (its price does not match product_catalog's own CONFIRMED_OFFICIAL bread entry above), so no catalog_id field is added here -- that would assert a specific product_catalog category this entry was never actually procured as. game/scripts/store_view.gd's FALLBACK_PRODUCT_CATALOG_ID_BY_PRODUCT_ID (REMAKE_BALANCED_DEFAULT, task #68, docs/decisions/0138-product-overlay-sprite-wiring.md) maps this id to the 'bread' overlay sprite for display only."
     },
     {
       "id": "prototype-drink",
       "fixture_id": "shelf-2",
       "initial_stock_units": 3,
       "sale_price_yen": 160,
-      "restock_unit_cost_yen": 80
+      "restock_unit_cost_yen": 80,
+      "evidence_note": "This is a task #38 pre-catalog-system placeholder product (its price does not match product_catalog's own CONFIRMED_OFFICIAL cold_drink entry above), so no catalog_id field is added here -- that would assert a specific product_catalog category this entry was never actually procured as. game/scripts/store_view.gd's FALLBACK_PRODUCT_CATALOG_ID_BY_PRODUCT_ID (REMAKE_BALANCED_DEFAULT, task #68, docs/decisions/0138-product-overlay-sprite-wiring.md) maps this id to the 'cold_drink' overlay sprite for display only."
     }
   ],
   "economy": {

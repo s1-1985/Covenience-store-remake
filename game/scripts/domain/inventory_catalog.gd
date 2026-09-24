@@ -90,6 +90,7 @@ func snapshot() -> Array:
             "sale_price_yen": product.sale_price_yen,
             "initial_stock_units": product.initial_stock_units,
             "restock_unit_cost_yen": product.restock_unit_cost_yen,
+            "catalog_id": product.catalog_id,
         })
     return result
 

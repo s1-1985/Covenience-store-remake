@@ -1890,6 +1890,53 @@ func _initialize() -> void:
         _fail("fallback checkout sprite (register_1) failed to load")
         return
 
+    # Task #68: second asset-wiring pass, product overlay sprites. Confirm
+    # every product_catalog category's three stock-display states
+    # (high/medium/low) load, except copy_paper -- the one category the
+    # source package (assets/raw/conveni_products_remake_v3/README_CLAUDE.md)
+    # explicitly never shipped a sprite for -- where the absence itself is
+    # asserted, so the known gap can't silently grow or shrink unnoticed.
+    for product_catalog_entry in config["product_catalog"]:
+        var product_catalog_entry_id := str(product_catalog_entry["catalog_id"])
+        for stock_display_state in economy_ui_scene.store_view.PRODUCT_STOCK_DISPLAY_STATES:
+            var product_sprite_texture = economy_ui_scene.store_view._product_texture(
+                product_catalog_entry_id, stock_display_state
+            )
+            if product_catalog_entry_id == "copy_paper":
+                if product_sprite_texture != null:
+                    _fail("expected no product overlay sprite for copy_paper, but one loaded")
+                    return
+            elif product_sprite_texture == null:
+                _fail(
+                    "product overlay sprite failed to load for catalog_id/state: %s/%s" % [
+                        product_catalog_entry_id, stock_display_state
+                    ]
+                )
+                return
+
+    # The two pre-catalog-system prototype products (task #38) carry no
+    # catalog_id of their own; store_view.gd's
+    # FALLBACK_PRODUCT_CATALOG_ID_BY_PRODUCT_ID (REMAKE_BALANCED_DEFAULT,
+    # docs/decisions/0138-product-overlay-sprite-wiring.md) stands in for
+    # display only. Confirm the fallback resolves and a full-stock shelf
+    # actually renders the "high" state end to end.
+    var prototype_bread_product = economy_ui_scene.simulation.inventory.get_product("prototype-bread")
+    if not prototype_bread_product.catalog_id.is_empty():
+        _fail("prototype-bread was expected to carry no catalog_id (pre-catalog-system product)")
+        return
+    if economy_ui_scene.store_view._product_display_catalog_id(prototype_bread_product) != "bread":
+        _fail("prototype-bread's display fallback did not resolve to the 'bread' catalog_id")
+        return
+    if economy_ui_scene.store_view._product_stock_display_state(
+        prototype_bread_product.stock_units, prototype_bread_product.initial_stock_units
+    ) != "high":
+        _fail("a freshly-stocked prototype-bread shelf was expected to display the 'high' state")
+        return
+    var product_on_shelf_1 = economy_ui_scene.store_view._product_on_fixture("shelf-1")
+    if product_on_shelf_1 == null or product_on_shelf_1.product_id != "prototype-bread":
+        _fail("_product_on_fixture('shelf-1') did not resolve to prototype-bread")
+        return
+
     var bench_index: int = economy_ui_scene._fixture_catalog_ids.find("bench")
     if bench_index < 0:
         _fail("economy UI: fixture catalog option did not include 'bench'")
@@ -1948,6 +1995,18 @@ func _initialize() -> void:
         return
     if economy_ui_scene._restock_product_ids.find("product-purchase-1") < 0:
         _fail("economy UI: procuring a product must refresh the restock option list")
+        return
+
+    # Task #68: try_procure_product() now threads its own catalog_id
+    # argument onto the resulting InventoryState (previously discarded once
+    # catalog_entry was looked up) so store_view.gd can pick the correct
+    # product overlay sprite without guessing.
+    var procured_tobacco_product = economy_ui_scene.simulation.inventory.get_product("product-purchase-1")
+    if procured_tobacco_product.catalog_id != "tobacco":
+        _fail("product-purchase-1 was expected to carry catalog_id 'tobacco'")
+        return
+    if economy_ui_scene.store_view._product_display_catalog_id(procured_tobacco_product) != "tobacco":
+        _fail("product-purchase-1's display catalog_id did not resolve to 'tobacco'")
         return
 
     var bread_restock_index: int = economy_ui_scene._restock_product_ids.find("prototype-bread")

@@ -23,10 +23,41 @@ const FALLBACK_VISUAL_CATALOG_ID_BY_KIND := {
     "shelf": "medium_ambient_shelf",
 }
 
+# Task #68: second asset-wiring pass, product overlay sprites (assets/raw/
+# conveni_products_remake_v3/) -- same REMAKE_BALANCED_DEFAULT evidence tier
+# as the task #67 fixture sprites above (this project's own newly-drawn
+# art, not recovered original assets). manifest.json's 25 catalog_id values
+# each ship three sprites (high/medium/low, one PNG per file already
+# depicting that many units -- there is no in-code count/scale step) named
+# "<catalog_id>_<state>.png" in game/assets/products/.
+const PRODUCT_SPRITE_DIR := "res://assets/products/"
+const PRODUCT_STOCK_DISPLAY_STATES := ["high", "medium", "low"]
+# REMAKE_BALANCED_DEFAULT (task #68): the source package only ever states
+# that fewer visible units should render at lower stock (README_CLAUDE.md's
+# 9/5/2 example counts); it never states what stock_units/initial_stock_units
+# ratio should switch the displayed sprite from one discrete state to the
+# next. These two cutoffs are this project's own choice, not a recovered
+# rule -- see docs/decisions/0138-product-overlay-sprite-wiring.md.
+const HIGH_STOCK_DISPLAY_RATIO := 0.66
+const MEDIUM_STOCK_DISPLAY_RATIO := 0.33
+# REMAKE_BALANCED_DEFAULT (task #68): prototype-bread/prototype-drink (the
+# vertical_slice.json "products" entries from task #38, before the
+# product_catalog/catalog_id system existed at all -- see InventoryState's
+# own catalog_id field, which is empty for exactly these two) have no
+# recorded category. Their ids are unambiguous ("bread"/"drink"), but
+# mapping them here is still this project's own display-only stand-in, the
+# same status as FALLBACK_VISUAL_CATALOG_ID_BY_KIND above -- not a claim
+# that InventoryState now knows their true category.
+const FALLBACK_PRODUCT_CATALOG_ID_BY_PRODUCT_ID := {
+    "prototype-bread": "bread",
+    "prototype-drink": "cold_drink",
+}
+
 var config: Dictionary = {}
 var simulation
 var selected_fixture_id := ""
 var _fixture_textures: Dictionary = {}
+var _product_textures: Dictionary = {}
 
 
 func _ready() -> void:
@@ -56,6 +87,44 @@ func _fixture_texture(catalog_id: String) -> Texture2D:
         texture = load(path) as Texture2D
     _fixture_textures[catalog_id] = texture
     return texture
+
+
+func _product_texture(catalog_id: String, stock_display_state: String) -> Texture2D:
+    if catalog_id.is_empty() or stock_display_state.is_empty():
+        return null
+    var cache_key := catalog_id + "_" + stock_display_state
+    if _product_textures.has(cache_key):
+        return _product_textures[cache_key] as Texture2D
+    var path := PRODUCT_SPRITE_DIR + cache_key + ".png"
+    var texture: Texture2D = null
+    if ResourceLoader.exists(path):
+        texture = load(path) as Texture2D
+    _product_textures[cache_key] = texture
+    return texture
+
+
+func _product_stock_display_state(stock_units: int, initial_stock_units: int) -> String:
+    if stock_units <= 0 or initial_stock_units <= 0:
+        return ""
+    var ratio := float(stock_units) / float(initial_stock_units)
+    if ratio > HIGH_STOCK_DISPLAY_RATIO:
+        return "high"
+    elif ratio > MEDIUM_STOCK_DISPLAY_RATIO:
+        return "medium"
+    return "low"
+
+
+func _product_on_fixture(fixture_id: String):
+    for product in simulation.inventory.products.values():
+        if product.fixture_id == fixture_id:
+            return product
+    return null
+
+
+func _product_display_catalog_id(product) -> String:
+    if not product.catalog_id.is_empty():
+        return product.catalog_id
+    return str(FALLBACK_PRODUCT_CATALOG_ID_BY_PRODUCT_ID.get(product.product_id, ""))
 
 
 func _process(_delta: float) -> void:
@@ -166,11 +235,35 @@ func _draw_fixtures() -> void:
                 16,
                 Color("202020")
             )
+        var product = _product_on_fixture(str(fixture["id"]))
+        if product != null:
+            var product_catalog_id := _product_display_catalog_id(product)
+            var stock_display_state := _product_stock_display_state(
+                product.stock_units, product.initial_stock_units
+            )
+            var product_texture := _product_texture(product_catalog_id, stock_display_state)
+            if product_texture != null:
+                _draw_product_overlay(product_texture, origin, footprint, scale)
         var outline := Color("f4d35e") if fixture["id"] == selected_fixture_id else Color("363636")
         var outline_width := 5.0 if fixture["id"] == selected_fixture_id else 2.0
         draw_rect(rect, outline, false, outline_width)
         var interaction := _vec2i(fixture["interaction_subcell"])
         draw_circle(_cell_center(interaction), 7.0, Color("f4d35e"))
+
+
+func _draw_product_overlay(texture: Texture2D, origin: Vector2i, footprint: Array, scale: int) -> void:
+    # README_CLAUDE.md ("商品の重ね方"): "2×1や3×1はタイルごとに繰り返す" --
+    # a multi-tile shelf repeats the same overlay once per tile rather than
+    # stretching one sprite across the whole footprint.
+    var tile_pixels := SUBCELL_PIXELS * scale
+    for tile_x in range(int(footprint[0])):
+        for tile_y in range(int(footprint[1])):
+            var tile_origin := Vector2(
+                (origin.x + tile_x * scale) * SUBCELL_PIXELS,
+                (origin.y + tile_y * scale) * SUBCELL_PIXELS
+            )
+            var tile_rect := Rect2(tile_origin, Vector2(tile_pixels, tile_pixels)).grow(-6)
+            draw_texture_rect(texture, tile_rect, false)
 
 
 func _draw_customer() -> void:

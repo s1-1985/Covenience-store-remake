@@ -1430,6 +1430,35 @@ out of scope: product overlays, staff sprites, customer sprites, the town map, a
 asset packages -- each a separate future task; fixture rotation does not yet change which sprite
 variant is drawn (no orientation-specific sprites exist in the source manifest).
 
+**Task #68 (2026-09-24)**: after task #67 merged (PR #244, both CI checks green), the user chose
+"product overlays" as the second asset-wiring pass. `assets/raw/conveni_products_remake_v3/`
+(same brief as the task #67 fixture package) ships 25 product-category sprites x 3 stock states
+(high/medium/low, 75 PNGs total, `<catalog_id>_<state>.png`) copied into `game/assets/products/`.
+Investigating how to pick the right sprite surfaced a real gap: `InventoryState` never recorded
+which `product_catalog` category a procured product actually was -- `try_procure_product()` looked
+up `catalog_id` to price the purchase and then discarded it, so even a catalog-procured product
+had no data-level link back to its category. New `InventoryState.catalog_id` threads that
+already-known value through instead of inventing one. The two task #38 pre-catalog-system
+prototype products (`prototype-bread`/`prototype-drink`, whose prices don't match their
+same-named `product_catalog` entries) still get no `catalog_id` in the data itself -- same
+judgment as task #67's checkout-1/shelf-1/shelf-2 -- and instead resolve through a new
+`store_view.gd` display-only fallback (`FALLBACK_PRODUCT_CATALOG_ID_BY_PRODUCT_ID`). Since each
+sprite already depicts its own unit count as artwork (no per-unit scaling needed in code), the
+only invented value is which stock-ratio cutoff switches the displayed sprite between the three
+states; 0.66/0.33 are tagged REMAKE_BALANCED_DEFAULT, and `_draw_product_overlay()` repeats the
+sprite once per footprint tile per the source README's own instruction ("2x1や3x1はタイルごとに
+繰り返す"). `product_catalog`'s one sprite-less category (`copy_paper`, per the source package's
+own README) is asserted to stay sprite-less rather than silently drifting. This task also closed a
+tagging-discipline gap task #67 itself had left open: CLAUDE.md requires the REMAKE_BALANCED_DEFAULT
+string in a code comment, a `vertical_slice.json` evidence_note, AND a test assertion checking the
+tag text is actually present -- task #67 shipped only the code comment. Both task #67's and task
+#68's tags now have all three, via two new tests in
+`reference_sim/tests/test_game_vertical_slice_contract.py` and new `evidence_note` fields on the two
+prototype product entries in `vertical_slice.json`. `reference_sim` full suite grew from 731 to 733
+passed/1 xfailed (task #68's own two new contract tests). See decision 0138. Explicitly out of
+scope (same boundary as task #67): staff sprites, customer sprites, the town map, the 5 menu-UI
+packages, and orientation-aware overlay sprites on fixture rotation.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
