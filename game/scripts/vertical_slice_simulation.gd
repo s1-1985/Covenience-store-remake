@@ -849,6 +849,20 @@ func _subcell_is_free_for(mover, target: Vector2i) -> bool:
         if customer != mover and customer.position == target:
             return false
     for staff_member in staff.all_staff():
+        # The checkout staff member is permanently stationed behind the
+        # register (never assigned a route; state stays idle/checkout for
+        # the whole simulation) rather than walking the floor like a
+        # restocking staff member or a customer. Discovered by CI (task
+        # #66): the default scenario's checkout staff start_subcell sits
+        # immediately next to the checkout interaction cell, and without
+        # this exemption a customer's ordinary route to/from a shelf could
+        # be permanently blocked by staff who can structurally never step
+        # aside -- unlike a genuinely passing pedestrian, which is what the
+        # guide's passage-width rule is about. Same reasoning as the
+        # checkout-interaction-cell exemption above, extended to the fixed
+        # post next to it.
+        if staff_member.staff_id == staff.checkout_staff_id:
+            continue
         if staff_member != mover and staff_member.position == target:
             return false
     return true
