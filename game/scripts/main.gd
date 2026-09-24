@@ -52,7 +52,10 @@ var _menu_icon_textures: Dictionary = {}
 @onready var next_customer_button: Button = $UI/Panel/Margin/Scroll/VBox/NextCustomerButton
 @onready var eject_customer_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/EjectCustomerOption
 @onready var eject_customer_button: Button = $UI/Panel/Margin/Scroll/VBox/EjectCustomerButton
+@onready var edit_mode_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/EditModeOption
 @onready var rotate_fixture_button: Button = $UI/Panel/Margin/Scroll/VBox/RotateFixtureButton
+@onready var sell_fixture_button: Button = $UI/Panel/Margin/Scroll/VBox/SellFixtureButton
+@onready var deselect_fixture_button: Button = $UI/Panel/Margin/Scroll/VBox/DeselectFixtureButton
 @onready var sample_layout_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/SampleLayoutOption
 @onready var load_sample_layout_button: Button = $UI/Panel/Margin/Scroll/VBox/LoadSampleLayoutButton
 @onready var fixture_catalog_option: OptionButton = $UI/Panel/Margin/Scroll/VBox/FixtureCatalogOption
@@ -131,7 +134,11 @@ func _ready() -> void:
     reset_button.pressed.connect(_on_reset_pressed)
     next_customer_button.pressed.connect(_on_next_customer_pressed)
     eject_customer_button.pressed.connect(_on_eject_customer_pressed)
+    edit_mode_option.item_selected.connect(_on_edit_mode_selected)
     rotate_fixture_button.pressed.connect(_on_rotate_fixture_pressed)
+    sell_fixture_button.pressed.connect(_on_sell_fixture_pressed)
+    deselect_fixture_button.pressed.connect(_on_deselect_fixture_pressed)
+    store_view.fixture_swap_requested.connect(_on_fixture_swap_requested)
     load_sample_layout_button.pressed.connect(_on_load_sample_layout_pressed)
     buy_fixture_button.pressed.connect(_on_buy_fixture_pressed)
     buy_permit_button.pressed.connect(_on_buy_permit_pressed)
@@ -256,7 +263,10 @@ func _on_eject_customer_pressed() -> void:
 
 
 func _on_fixture_selected(fixture_id: String) -> void:
-    layout_edit_label.text = "Selected: %s — tap an empty grid cell to move" % fixture_id
+    if store_view.edit_mode == "swap":
+        layout_edit_label.text = "Selected: %s — tap another fixture to swap" % fixture_id
+    else:
+        layout_edit_label.text = "Selected: %s — tap an empty grid cell to move" % fixture_id
 
 
 func _on_fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i) -> void:
@@ -286,6 +296,45 @@ func _on_rotate_fixture_pressed() -> void:
         layout_edit_label.text = "Finish the active visit before editing layout"
     else:
         layout_edit_label.text = "Cannot rotate there: blocked or route would break"
+    _refresh_ui()
+
+
+# Task #78: EditModeOption's two items are declared in main.tscn as
+# id 0 = "Move", id 1 = "Swap" (matching store_view.edit_mode's own
+# "move"/"swap" string values).
+func _on_edit_mode_selected(index: int) -> void:
+    store_view.edit_mode = "swap" if edit_mode_option.get_item_id(index) == 1 else "move"
+
+
+func _on_fixture_swap_requested(fixture_id_a: String, fixture_id_b: String) -> void:
+    if simulation.try_swap_fixtures(fixture_id_a, fixture_id_b):
+        layout_edit_label.text = "Swapped %s and %s" % [fixture_id_a, fixture_id_b]
+    elif not simulation.customers.all_settled():
+        layout_edit_label.text = "Finish the active visit before editing layout"
+    else:
+        layout_edit_label.text = "Cannot swap those: route would break"
+    _refresh_ui()
+
+
+func _on_sell_fixture_pressed() -> void:
+    var fixture_id: String = store_view.selected_fixture()
+    if fixture_id.is_empty():
+        layout_edit_label.text = "Select a fixture before selling"
+    elif simulation.try_sell_fixture(fixture_id):
+        layout_edit_label.text = "Sold %s" % fixture_id
+        store_view.selected_fixture_id = ""
+        _refresh_procure_fixture_option()
+        _refresh_restock_product_option()
+    elif not simulation.customers.all_settled():
+        layout_edit_label.text = "Finish the active visit before selling a fixture"
+    else:
+        layout_edit_label.text = "Cannot sell that fixture: it's the checkout, holds stock, or has no catalog price"
+    _refresh_ui()
+
+
+func _on_deselect_fixture_pressed() -> void:
+    store_view.selected_fixture_id = ""
+    layout_edit_label.text = "Deselected"
     _refresh_ui()
 
 
@@ -676,11 +725,26 @@ func _refresh_ui() -> void:
         return
     var snapshot: Dictionary = simulation.snapshot()
     clock_label.text = str(snapshot["clock_text"])
-    calendar_label.text = "Month %d · Day %d of %d (Day %d overall)" % [
-        int(snapshot["month_count"]) + 1,
+    # Task #77: task #75's original "Month X · Day Y of Z (Day N overall)"
+    # was invented without checking docs/research/official-screenshot-
+    # evidence-2026-09-05.md section 1, which already had CONFIRMED_
+    # OFFICIAL/CONFIRMED_VISUAL evidence for this: the official PS-version
+    # screenshot ss01 shows the date as "01年目01月01日" (year/month/day),
+    # not a bare month+day counter, and omits any "day N of 4" or running
+    # total. This client's own REPRESENTATIVE_DAYS_PER_MONTH=4 (also
+    # CONFIRMED_OFFICIAL, "1月=4日間×8") means the day this client actually
+    # simulates within a month IS 1-4, so showing days_completed_this_month
+    # + 1 as "Day" is the correct representative-day value, not an invented
+    # abstraction -- only the missing Year field and the extra "of 4 (Day N
+    # overall)" suffix (neither shown on the official screen) were the
+    # actual gaps. Kept in English rather than the screenshot's literal
+    # Japanese to stay consistent with the rest of this client's UI text.
+    var calendar_year: int = int(snapshot["month_count"]) / VerticalSliceSimulationScript.MONTHS_PER_YEAR + 1
+    var calendar_month_in_year: int = int(snapshot["month_count"]) % VerticalSliceSimulationScript.MONTHS_PER_YEAR + 1
+    calendar_label.text = "Year %d · Month %d, Day %d" % [
+        calendar_year,
+        calendar_month_in_year,
         int(snapshot["days_completed_this_month"]) + 1,
-        VerticalSliceSimulationScript.REPRESENTATIVE_DAYS_PER_MONTH,
-        int(snapshot["day_count"]),
     ]
     cash_label.text = "¥%s" % _format_integer(int(snapshot["cash_yen"]))
     stock_label.text = "%d units" % int(snapshot["stock_units"])
@@ -737,6 +801,7 @@ func _refresh_ui() -> void:
     next_customer_button.disabled = not simulation.customers.can_admit_concurrent()
     _refresh_eject_customer_option()
     rotate_fixture_button.disabled = store_view.selected_fixture().is_empty()
+    sell_fixture_button.disabled = store_view.selected_fixture().is_empty()
     expand_chain_button.text = "Expand chain (¥%s, currently %d store(s))" % [
         _format_integer(int(simulation.chain_expansion_cost_yen())),
         int(snapshot["player_store_count"]),

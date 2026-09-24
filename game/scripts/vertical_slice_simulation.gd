@@ -726,6 +726,93 @@ func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
     return true
 
 
+# Task #78: CONFIRMED_OFFICIAL that "入れ替え" (swap) exists as one of the
+# interior-edit screen's 5 top-level commands, alongside 配置/移動/売却/
+# 終了 (official PS screenshot ss02, docs/research/menu-hierarchy-
+# evidence-2026-09-05.md / official-ui-state-reconstruction-2026-09-05.md),
+# directly re-checked 2026-09-24 following the user's question about
+# recreation fidelity drift. No source describes what exactly "入れ替え"
+# does interactively beyond the command's name/existence, so this client's
+# own reading -- exchanging two already-placed fixtures' positions in one
+# atomic step, distinct from 移動's single-fixture relocate -- is this
+# project's own REMAKE_BALANCED_DEFAULT interpretation, not a recovered
+# original rule. Chosen because it is the one reading that is NOT already
+# achievable via two sequential try_relocate_fixture() calls (a fully
+# packed layout can leave no empty cell for either fixture to move
+# through), which is the only sense in which a distinct third command is
+# actually necessary alongside 配置/移動.
+func try_swap_fixtures(fixture_id_a: String, fixture_id_b: String) -> bool:
+    if is_game_over or not customers.all_settled() or _any_restock_task_active():
+        return false
+    var previous: Array = layout.fixture_snapshot()
+    if not layout.try_swap_fixture_positions(fixture_id_a, fixture_id_b):
+        return false
+    _refresh_interactions()
+    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+        layout.restore_fixture_snapshot(previous)
+        _refresh_interactions()
+        return false
+    _record_event("fixtures_swapped", {"fixture_id_a": fixture_id_a, "fixture_id_b": fixture_id_b})
+    return true
+
+
+# Task #78: CONFIRMED_OFFICIAL that "売却" (sell) exists as one of the
+# interior-edit screen's 5 top-level commands (same ss02/menu-hierarchy
+# citation as try_swap_fixtures() above). No source states the refund
+# percentage a sold fixture actually returns, so FIXTURE_SELL_REFUND_
+# PERCENT below is this project's own REMAKE_BALANCED_DEFAULT choice
+# (half the catalog purchase price back, half lost -- a plausible middle
+# ground between "no refund" and "full refund", not a recovered original
+# value). Restricted to fixtures with a real fixture_catalog origin (no
+# purchase_price_yen exists to refund from otherwise -- the prototype
+# scenario's pre-catalog checkout-1/shelf-1/shelf-2 are not sellable),
+# never the checkout fixture itself (this client's architecture assumes
+# exactly one, config["simulation"]["checkout_fixture_id"], with no
+# mechanic to reassign it), and never a fixture still holding procured
+# stock -- same "reject rather than silently discard inventory" precedent
+# try_load_sample_layout() already established, rather than inventing an
+# auto-clear rule the evidence does not describe.
+const FIXTURE_SELL_REFUND_PERCENT := 50
+
+
+func try_sell_fixture(fixture_id: String) -> bool:
+    if is_game_over or not customers.all_settled() or _any_restock_task_active():
+        return false
+    if not layout.fixtures_by_id.has(fixture_id):
+        return false
+    if fixture_id == str(config["simulation"]["checkout_fixture_id"]):
+        return false
+    var fixture: Dictionary = layout.fixtures_by_id[fixture_id]
+    var catalog_id := str(fixture.get("catalog_id", ""))
+    if catalog_id.is_empty() or not _fixture_catalog.has(catalog_id):
+        return false
+    for product in inventory.products.values():
+        if str(product.fixture_id) == fixture_id:
+            return false
+    var previous: Array = layout.fixture_snapshot()
+    if not layout.try_remove_fixture(fixture_id):
+        return false
+    _refresh_interactions()
+    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+        layout.restore_fixture_snapshot(previous)
+        _refresh_interactions()
+        return false
+    var refund_yen: int = int(_fixture_catalog[catalog_id]["purchase_price_yen"]) * FIXTURE_SELL_REFUND_PERCENT / 100
+    var expense: Dictionary = economy.record_explicit_expense(
+        "fixture_sold",
+        minute_of_day,
+        -refund_yen,
+        {"catalog_id": catalog_id, "instance_id": fixture_id}
+    )
+    _record_event("fixture_sold", {
+        "catalog_id": catalog_id,
+        "instance_id": fixture_id,
+        "refund_yen": refund_yen,
+        "expense_id": expense["expense_id"],
+    })
+    return true
+
+
 # Replaces the entire store layout with a pre-built sample from
 # sample_layouts (task #37). Confirmed first-title evidence: a sample-layout
 # loading path exists in the original UI, and loading one is not trivially

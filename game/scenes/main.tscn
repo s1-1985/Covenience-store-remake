@@ -74,7 +74,7 @@ theme_override_font_sizes/font_size = 28
 text = "09:00"
 
 [node name="CalendarValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
-text = "Month 1 · Day 1 of 4 (Day 0 overall)"
+text = "Year 1 · Month 1, Day 1"
 
 [node name="CashTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Cash"
@@ -143,16 +143,34 @@ text = "Show town map"
 [node name="Separator2" type="HSeparator" parent="UI/Panel/Margin/Scroll/VBox"]
 
 [node name="LayoutEditTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
-text = "Prototype layout editor"
+theme_override_colors/font_color = Color(0.55, 0.85, 0.87, 1)
+theme_override_font_sizes/font_size = 18
+text = "Interior edit (配置/移動/入れ替え/売却/終了)"
 
 [node name="LayoutEditValue" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 custom_minimum_size = Vector2(0, 48)
 text = "Tap a fixture, then tap an empty grid cell after the visit"
 autowrap_mode = 2
 
+[node name="EditModeOption" type="OptionButton" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+item_count = 2
+popup/item_0/text = "Move (移動)"
+popup/item_0/id = 0
+popup/item_1/text = "Swap (入れ替え)"
+popup/item_1/id = 1
+
 [node name="RotateFixtureButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
 custom_minimum_size = Vector2(0, 40)
 text = "Rotate selected fixture clockwise"
+
+[node name="SellFixtureButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Sell selected fixture (売却, 50% refund)"
+
+[node name="DeselectFixtureButton" type="Button" parent="UI/Panel/Margin/Scroll/VBox"]
+custom_minimum_size = Vector2(0, 40)
+text = "Deselect (終了)"
 
 [node name="SampleLayoutTitle" type="Label" parent="UI/Panel/Margin/Scroll/VBox"]
 text = "Sample layout"

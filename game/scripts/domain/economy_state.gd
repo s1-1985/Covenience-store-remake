@@ -83,7 +83,12 @@ func record_explicit_expense(
     amount_yen: int,
     details: Dictionary = {}
 ) -> Dictionary:
-    assert(not expense_type.is_empty() and amount_yen >= 0)
+    # Task #78: amount_yen may be negative to record a rebate (e.g.
+    # try_sell_fixture()'s partial refund) through this same ledger rather
+    # than adding a second, parallel "income" record type -- every existing
+    # caller before this task always passed a non-negative amount, so
+    # relaxing this assert changes no prior caller's behavior.
+    assert(not expense_type.is_empty())
     assert(minute_of_day >= 0 and minute_of_day < 24 * 60)
     var record := {
         "expense_id": "prototype-expense-%d" % (expense_records.size() + 1),
