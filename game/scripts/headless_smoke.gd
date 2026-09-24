@@ -754,7 +754,7 @@ func _initialize() -> void:
     # _subcell_is_free_for's own exemption).
     var position_collision_detected := false
     var customer_b_stalled_while_moving := false
-    var previous_customer_b_position := concurrent_simulation.customers.customer("concurrent-b").position
+    var previous_customer_b_position: Vector2i = concurrent_simulation.customers.customer("concurrent-b").position
     while (
         concurrent_simulation.customers.completed_count() < completed_before_concurrency + 2
         and concurrent_steps < MAX_STEPS
@@ -780,7 +780,7 @@ func _initialize() -> void:
             saw_simultaneous_wait = true
         if concurrent_simulation.customers.customers.has("concurrent-b"):
             var customer_b = concurrent_simulation.customers.customer("concurrent-b")
-            var moving_phase := customer_b.phase in ["to_shelf", "to_checkout", "leaving"]
+            var moving_phase: bool = customer_b.phase in ["to_shelf", "to_checkout", "leaving"]
             if moving_phase and customer_b.position == previous_customer_b_position:
                 customer_b_stalled_while_moving = true
             previous_customer_b_position = customer_b.position
