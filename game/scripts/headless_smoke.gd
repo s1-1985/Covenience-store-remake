@@ -2549,20 +2549,19 @@ func _initialize() -> void:
     if economy_ui_scene.store_view.edit_mode != "swap":
         _fail("selecting the 'Swap' item must set store_view.edit_mode to 'swap'")
         return
+    # Interaction cells go directly above each fixture's own origin (not
+    # sideways) so that swapping -- which shifts each fixture's
+    # interaction cell by the same delta as its origin -- never lands one
+    # fixture's shifted interaction cell inside the other's new footprint
+    # (both footprints stay in the y=12/13 rows; an interaction cell at
+    # y=11 can never fall inside them regardless of the x shift).
     if not economy_ui_scene.simulation.try_purchase_fixture(
-        "bench", "swap-ui-a", Vector2i(1, 12), Vector2i(0, 12)
+        "bench", "swap-ui-a", Vector2i(1, 12), Vector2i(1, 11)
     ):
-        _fail(
-            "swap-ui test: setup fixture A purchase failed (cash=%d, is_game_over=%s, all_settled=%s, has_swap_ui_a=%s)" % [
-                int(economy_ui_scene.simulation.economy.cash_yen),
-                str(economy_ui_scene.simulation.is_game_over),
-                str(economy_ui_scene.simulation.customers.all_settled()),
-                str(economy_ui_scene.simulation.layout.fixtures_by_id.has("swap-ui-a")),
-            ]
-        )
+        _fail("swap test: setup fixture A purchase failed")
         return
     if not economy_ui_scene.simulation.try_purchase_fixture(
-        "potted_plant", "swap-ui-b", Vector2i(5, 12), Vector2i(9, 12)
+        "potted_plant", "swap-ui-b", Vector2i(5, 12), Vector2i(5, 11)
     ):
         _fail("swap test: setup fixture B purchase failed")
         return
