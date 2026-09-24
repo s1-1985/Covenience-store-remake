@@ -1,0 +1,682 @@
+{
+  "category": "staff",
+  "asset_count": 35,
+  "matched_existing_count": 35,
+  "source": "user-supplied guide scan; extracted and normalized, not newly illustrated",
+  "intended_use": "menu icons only; not world sprites",
+  "sizes": [
+    32,
+    48,
+    64,
+    128
+  ],
+  "alpha": "binary 0/255, blue/purple source frame retained; paper exterior removed",
+  "assets": [
+    {
+      "id": "staff_001",
+      "files": {
+        "32": "icons_32/staff_001.png",
+        "48": "icons_48/staff_001.png",
+        "64": "icons_64/staff_001.png",
+        "128": "icons_128/staff_001.png"
+      },
+      "source_pdf_page": 27,
+      "source_side": "right",
+      "source_row": 1,
+      "extra": false,
+      "frame_crop": [
+        8,
+        8,
+        234,
+        234
+      ]
+    },
+    {
+      "id": "staff_002",
+      "files": {
+        "32": "icons_32/staff_002.png",
+        "48": "icons_48/staff_002.png",
+        "64": "icons_64/staff_002.png",
+        "128": "icons_128/staff_002.png"
+      },
+      "source_pdf_page": 27,
+      "source_side": "right",
+      "source_row": 2,
+      "extra": false,
+      "frame_crop": [
+        11,
+        8,
+        238,
+        235
+      ]
+    },
+    {
+      "id": "staff_003",
+      "files": {
+        "32": "icons_32/staff_003.png",
+        "48": "icons_48/staff_003.png",
+        "64": "icons_64/staff_003.png",
+        "128": "icons_128/staff_003.png"
+      },
+      "source_pdf_page": 27,
+      "source_side": "right",
+      "source_row": 3,
+      "extra": false,
+      "frame_crop": [
+        11,
+        8,
+        238,
+        234
+      ]
+    },
+    {
+      "id": "staff_004",
+      "files": {
+        "32": "icons_32/staff_004.png",
+        "48": "icons_48/staff_004.png",
+        "64": "icons_64/staff_004.png",
+        "128": "icons_128/staff_004.png"
+      },
+      "source_pdf_page": 27,
+      "source_side": "right",
+      "source_row": 4,
+      "extra": false,
+      "frame_crop": [
+        11,
+        8,
+        234,
+        233
+      ]
+    },
+    {
+      "id": "staff_005",
+      "files": {
+        "32": "icons_32/staff_005.png",
+        "48": "icons_48/staff_005.png",
+        "64": "icons_64/staff_005.png",
+        "128": "icons_128/staff_005.png"
+      },
+      "source_pdf_page": 27,
+      "source_side": "right",
+      "source_row": 5,
+      "extra": false,
+      "frame_crop": [
+        9,
+        9,
+        234,
+        236
+      ]
+    },
+    {
+      "id": "staff_006",
+      "files": {
+        "32": "icons_32/staff_006.png",
+        "48": "icons_48/staff_006.png",
+        "64": "icons_64/staff_006.png",
+        "128": "icons_128/staff_006.png"
+      },
+      "source_pdf_page": 28,
+      "source_side": "left",
+      "source_row": 1,
+      "extra": false,
+      "frame_crop": [
+        9,
+        8,
+        235,
+        233
+      ]
+    },
+    {
+      "id": "staff_007",
+      "files": {
+        "32": "icons_32/staff_007.png",
+        "48": "icons_48/staff_007.png",
+        "64": "icons_64/staff_007.png",
+        "128": "icons_128/staff_007.png"
+      },
+      "source_pdf_page": 28,
+      "source_side": "left",
+      "source_row": 2,
+      "extra": false,
+      "frame_crop": [
+        11,
+        8,
+        236,
+        238
+      ]
+    },
+    {
+      "id": "staff_008",
+      "files": {
+        "32": "icons_32/staff_008.png",
+        "48": "icons_48/staff_008.png",
+        "64": "icons_64/staff_008.png",
+        "128": "icons_128/staff_008.png"
+      },
+      "source_pdf_page": 28,
+      "source_side": "left",
+      "source_row": 3,
+      "extra": false,
+      "frame_crop": [
+        13,
+        8,
+        238,
+        234
+      ]
+    },
+    {
+      "id": "staff_009",
+      "files": {
+        "32": "icons_32/staff_009.png",
+        "48": "icons_48/staff_009.png",
+        "64": "icons_64/staff_009.png",
+        "128": "icons_128/staff_009.png"
+      },
+      "source_pdf_page": 28,
+      "source_side": "left",
+      "source_row": 4,
+      "extra": false,
+      "frame_crop": [
+        9,
+        8,
+        236,
+        231
+      ]
+    },
+    {
+      "id": "staff_010",
+      "files": {
+        "32": "icons_32/staff_010.png",
+        "48": "icons_48/staff_010.png",
+        "64": "icons_64/staff_010.png",
+        "128": "icons_128/staff_010.png"
+      },
+      "source_pdf_page": 28,
+      "source_side": "left",
+      "source_row": 5,
+      "extra": false,
+      "frame_crop": [
+        12,
+        8,
+        238,
+        233
+      ]
+    },
+    {
+      "id": "staff_011",
+      "files": {
+        "32": "icons_32/staff_011.png",
+        "48": "icons_48/staff_011.png",
+        "64": "icons_64/staff_011.png",
+        "128": "icons_128/staff_011.png"
+      },
+      "source_pdf_page": 28,
+      "source_side": "right",
+      "source_row": 1,
+      "extra": false,
+      "frame_crop": [
+        11,
+        8,
+        235,
+        236
+      ]
+    },
+    {
+      "id": "staff_012",
+      "files": {
+        "32": "icons_32/staff_012.png",
+        "48": "icons_48/staff_012.png",
+        "64": "icons_64/staff_012.png",
+        "128": "icons_128/staff_012.png"
+      },
+      "source_pdf_page": 28,
+      "source_side": "right",
+      "source_row": 2,
+      "extra": false,
+      "frame_crop": [
+        14,
+        9,
+        238,
+        236
+      ]
+    },
+    {
+      "id": "staff_013",
+      "files": {
+        "32": "icons_32/staff_013.png",
+        "48": "icons_48/staff_013.png",
+        "64": "icons_64/staff_013.png",
+        "128": "icons_128/staff_013.png"
+      },
+      "source_pdf_page": 28,
+      "source_side": "right",
+      "source_row": 3,
+      "extra": false,
+      "frame_crop": [
+        12,
+        8,
+        236,
+        234
+      ]
+    },
+    {
+      "id": "staff_014",
+      "files": {
+        "32": "icons_32/staff_014.png",
+        "48": "icons_48/staff_014.png",
+        "64": "icons_64/staff_014.png",
+        "128": "icons_128/staff_014.png"
+      },
+      "source_pdf_page": 28,
+      "source_side": "right",
+      "source_row": 4,
+      "extra": false,
+      "frame_crop": [
+        9,
+        8,
+        236,
+        235
+      ]
+    },
+    {
+      "id": "staff_015",
+      "files": {
+        "32": "icons_32/staff_015.png",
+        "48": "icons_48/staff_015.png",
+        "64": "icons_64/staff_015.png",
+        "128": "icons_128/staff_015.png"
+      },
+      "source_pdf_page": 28,
+      "source_side": "right",
+      "source_row": 5,
+      "extra": false,
+      "frame_crop": [
+        12,
+        9,
+        238,
+        236
+      ]
+    },
+    {
+      "id": "staff_016",
+      "files": {
+        "32": "icons_32/staff_016.png",
+        "48": "icons_48/staff_016.png",
+        "64": "icons_64/staff_016.png",
+        "128": "icons_128/staff_016.png"
+      },
+      "source_pdf_page": 29,
+      "source_side": "left",
+      "source_row": 1,
+      "extra": false,
+      "frame_crop": [
+        8,
+        8,
+        235,
+        234
+      ]
+    },
+    {
+      "id": "staff_017",
+      "files": {
+        "32": "icons_32/staff_017.png",
+        "48": "icons_48/staff_017.png",
+        "64": "icons_64/staff_017.png",
+        "128": "icons_128/staff_017.png"
+      },
+      "source_pdf_page": 29,
+      "source_side": "left",
+      "source_row": 2,
+      "extra": false,
+      "frame_crop": [
+        8,
+        8,
+        234,
+        235
+      ]
+    },
+    {
+      "id": "staff_018",
+      "files": {
+        "32": "icons_32/staff_018.png",
+        "48": "icons_48/staff_018.png",
+        "64": "icons_64/staff_018.png",
+        "128": "icons_128/staff_018.png"
+      },
+      "source_pdf_page": 29,
+      "source_side": "left",
+      "source_row": 3,
+      "extra": false,
+      "frame_crop": [
+        8,
+        8,
+        235,
+        233
+      ]
+    },
+    {
+      "id": "staff_019",
+      "files": {
+        "32": "icons_32/staff_019.png",
+        "48": "icons_48/staff_019.png",
+        "64": "icons_64/staff_019.png",
+        "128": "icons_128/staff_019.png"
+      },
+      "source_pdf_page": 29,
+      "source_side": "left",
+      "source_row": 4,
+      "extra": false,
+      "frame_crop": [
+        8,
+        8,
+        234,
+        234
+      ]
+    },
+    {
+      "id": "staff_020",
+      "files": {
+        "32": "icons_32/staff_020.png",
+        "48": "icons_48/staff_020.png",
+        "64": "icons_64/staff_020.png",
+        "128": "icons_128/staff_020.png"
+      },
+      "source_pdf_page": 29,
+      "source_side": "left",
+      "source_row": 5,
+      "extra": false,
+      "frame_crop": [
+        8,
+        8,
+        234,
+        234
+      ]
+    },
+    {
+      "id": "staff_021",
+      "files": {
+        "32": "icons_32/staff_021.png",
+        "48": "icons_48/staff_021.png",
+        "64": "icons_64/staff_021.png",
+        "128": "icons_128/staff_021.png"
+      },
+      "source_pdf_page": 29,
+      "source_side": "right",
+      "source_row": 1,
+      "extra": false,
+      "frame_crop": [
+        13,
+        11,
+        239,
+        238
+      ]
+    },
+    {
+      "id": "staff_022",
+      "files": {
+        "32": "icons_32/staff_022.png",
+        "48": "icons_48/staff_022.png",
+        "64": "icons_64/staff_022.png",
+        "128": "icons_128/staff_022.png"
+      },
+      "source_pdf_page": 29,
+      "source_side": "right",
+      "source_row": 2,
+      "extra": false,
+      "frame_crop": [
+        13,
+        12,
+        239,
+        239
+      ]
+    },
+    {
+      "id": "staff_023",
+      "files": {
+        "32": "icons_32/staff_023.png",
+        "48": "icons_48/staff_023.png",
+        "64": "icons_64/staff_023.png",
+        "128": "icons_128/staff_023.png"
+      },
+      "source_pdf_page": 29,
+      "source_side": "right",
+      "source_row": 3,
+      "extra": false,
+      "frame_crop": [
+        14,
+        8,
+        238,
+        235
+      ]
+    },
+    {
+      "id": "staff_024",
+      "files": {
+        "32": "icons_32/staff_024.png",
+        "48": "icons_48/staff_024.png",
+        "64": "icons_64/staff_024.png",
+        "128": "icons_128/staff_024.png"
+      },
+      "source_pdf_page": 29,
+      "source_side": "right",
+      "source_row": 4,
+      "extra": false,
+      "frame_crop": [
+        13,
+        9,
+        240,
+        236
+      ]
+    },
+    {
+      "id": "staff_025",
+      "files": {
+        "32": "icons_32/staff_025.png",
+        "48": "icons_48/staff_025.png",
+        "64": "icons_64/staff_025.png",
+        "128": "icons_128/staff_025.png"
+      },
+      "source_pdf_page": 29,
+      "source_side": "right",
+      "source_row": 5,
+      "extra": false,
+      "frame_crop": [
+        14,
+        8,
+        242,
+        236
+      ]
+    },
+    {
+      "id": "staff_026",
+      "files": {
+        "32": "icons_32/staff_026.png",
+        "48": "icons_48/staff_026.png",
+        "64": "icons_64/staff_026.png",
+        "128": "icons_128/staff_026.png"
+      },
+      "source_pdf_page": 30,
+      "source_side": "left",
+      "source_row": 1,
+      "extra": false,
+      "frame_crop": [
+        8,
+        9,
+        234,
+        235
+      ]
+    },
+    {
+      "id": "staff_027",
+      "files": {
+        "32": "icons_32/staff_027.png",
+        "48": "icons_48/staff_027.png",
+        "64": "icons_64/staff_027.png",
+        "128": "icons_128/staff_027.png"
+      },
+      "source_pdf_page": 30,
+      "source_side": "left",
+      "source_row": 2,
+      "extra": false,
+      "frame_crop": [
+        8,
+        12,
+        234,
+        236
+      ]
+    },
+    {
+      "id": "staff_028",
+      "files": {
+        "32": "icons_32/staff_028.png",
+        "48": "icons_48/staff_028.png",
+        "64": "icons_64/staff_028.png",
+        "128": "icons_128/staff_028.png"
+      },
+      "source_pdf_page": 30,
+      "source_side": "left",
+      "source_row": 3,
+      "extra": false,
+      "frame_crop": [
+        9,
+        9,
+        235,
+        233
+      ]
+    },
+    {
+      "id": "staff_029",
+      "files": {
+        "32": "icons_32/staff_029.png",
+        "48": "icons_48/staff_029.png",
+        "64": "icons_64/staff_029.png",
+        "128": "icons_128/staff_029.png"
+      },
+      "source_pdf_page": 30,
+      "source_side": "left",
+      "source_row": 4,
+      "extra": false,
+      "frame_crop": [
+        9,
+        8,
+        235,
+        235
+      ]
+    },
+    {
+      "id": "staff_030",
+      "files": {
+        "32": "icons_32/staff_030.png",
+        "48": "icons_48/staff_030.png",
+        "64": "icons_64/staff_030.png",
+        "128": "icons_128/staff_030.png"
+      },
+      "source_pdf_page": 30,
+      "source_side": "left",
+      "source_row": 5,
+      "extra": false,
+      "frame_crop": [
+        11,
+        11,
+        236,
+        235
+      ]
+    },
+    {
+      "id": "staff_031",
+      "files": {
+        "32": "icons_32/staff_031.png",
+        "48": "icons_48/staff_031.png",
+        "64": "icons_64/staff_031.png",
+        "128": "icons_128/staff_031.png"
+      },
+      "source_pdf_page": 30,
+      "source_side": "right",
+      "source_row": 1,
+      "extra": false,
+      "frame_crop": [
+        11,
+        8,
+        236,
+        236
+      ]
+    },
+    {
+      "id": "staff_032",
+      "files": {
+        "32": "icons_32/staff_032.png",
+        "48": "icons_48/staff_032.png",
+        "64": "icons_64/staff_032.png",
+        "128": "icons_128/staff_032.png"
+      },
+      "source_pdf_page": 30,
+      "source_side": "right",
+      "source_row": 2,
+      "extra": false,
+      "frame_crop": [
+        9,
+        14,
+        235,
+        242
+      ]
+    },
+    {
+      "id": "staff_033",
+      "files": {
+        "32": "icons_32/staff_033.png",
+        "48": "icons_48/staff_033.png",
+        "64": "icons_64/staff_033.png",
+        "128": "icons_128/staff_033.png"
+      },
+      "source_pdf_page": 30,
+      "source_side": "right",
+      "source_row": 3,
+      "extra": false,
+      "frame_crop": [
+        11,
+        14,
+        236,
+        242
+      ]
+    },
+    {
+      "id": "staff_034",
+      "files": {
+        "32": "icons_32/staff_034.png",
+        "48": "icons_48/staff_034.png",
+        "64": "icons_64/staff_034.png",
+        "128": "icons_128/staff_034.png"
+      },
+      "source_pdf_page": 30,
+      "source_side": "right",
+      "source_row": 4,
+      "extra": false,
+      "frame_crop": [
+        9,
+        14,
+        235,
+        242
+      ]
+    },
+    {
+      "id": "staff_035",
+      "files": {
+        "32": "icons_32/staff_035.png",
+        "48": "icons_48/staff_035.png",
+        "64": "icons_64/staff_035.png",
+        "128": "icons_128/staff_035.png"
+      },
+      "source_pdf_page": 30,
+      "source_side": "right",
+      "source_row": 5,
+      "extra": false,
+      "frame_crop": [
+        12,
+        17,
+        236,
+        243
+      ]
+    }
+  ],
+  "source_pdf_sha256": "a9578b92efca28583d90354b5276f6c964e1935f5c51aec381b9ee1e548407a0"
+}

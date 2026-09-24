@@ -1,0 +1,692 @@
+{
+  "category": "products",
+  "asset_count": 27,
+  "matched_existing_count": 25,
+  "source": "user-supplied guide scan; extracted and normalized, not newly illustrated",
+  "intended_use": "menu icons only; not world sprites",
+  "sizes": [
+    32,
+    48,
+    64,
+    128
+  ],
+  "alpha": "binary 0/255, blue/purple source frame retained; paper exterior removed",
+  "assets": [
+    {
+      "id": "cold_drink",
+      "files": {
+        "32": "icons_32/cold_drink.png",
+        "48": "icons_48/cold_drink.png",
+        "64": "icons_64/cold_drink.png",
+        "128": "icons_128/cold_drink.png"
+      },
+      "source_pdf_page": 25,
+      "source_side": "right-left",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        1395,
+        204,
+        1579,
+        388
+      ],
+      "frame_crop": [
+        0,
+        6,
+        175,
+        183
+      ],
+      "extra": false
+    },
+    {
+      "id": "hot_drink",
+      "files": {
+        "32": "icons_32/hot_drink.png",
+        "48": "icons_48/hot_drink.png",
+        "64": "icons_64/hot_drink.png",
+        "128": "icons_128/hot_drink.png"
+      },
+      "source_pdf_page": 25,
+      "source_side": "right-left",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        1395,
+        531,
+        1579,
+        716
+      ],
+      "frame_crop": [
+        3,
+        3,
+        178,
+        181
+      ],
+      "extra": false
+    },
+    {
+      "id": "alcohol",
+      "files": {
+        "32": "icons_32/alcohol.png",
+        "48": "icons_48/alcohol.png",
+        "64": "icons_64/alcohol.png",
+        "128": "icons_128/alcohol.png"
+      },
+      "source_pdf_page": 25,
+      "source_side": "right-left",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        1395,
+        855,
+        1579,
+        1039
+      ],
+      "frame_crop": [
+        5,
+        4,
+        181,
+        182
+      ],
+      "extra": false
+    },
+    {
+      "id": "bento",
+      "files": {
+        "32": "icons_32/bento.png",
+        "48": "icons_48/bento.png",
+        "64": "icons_64/bento.png",
+        "128": "icons_128/bento.png"
+      },
+      "source_pdf_page": 25,
+      "source_side": "right-left",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        1395,
+        1181,
+        1579,
+        1365
+      ],
+      "frame_crop": [
+        8,
+        2,
+        184,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "bread",
+      "files": {
+        "32": "icons_32/bread.png",
+        "48": "icons_48/bread.png",
+        "64": "icons_64/bread.png",
+        "128": "icons_128/bread.png"
+      },
+      "source_pdf_page": 25,
+      "source_side": "right-left",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        1395,
+        1506,
+        1579,
+        1691
+      ],
+      "frame_crop": [
+        10,
+        2,
+        184,
+        180
+      ],
+      "extra": false
+    },
+    {
+      "id": "instant_food",
+      "files": {
+        "32": "icons_32/instant_food.png",
+        "48": "icons_48/instant_food.png",
+        "64": "icons_64/instant_food.png",
+        "128": "icons_128/instant_food.png"
+      },
+      "source_pdf_page": 25,
+      "source_side": "right-right",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        1941,
+        204,
+        2126,
+        388
+      ],
+      "frame_crop": [
+        0,
+        1,
+        180,
+        177
+      ],
+      "extra": false
+    },
+    {
+      "id": "snacks",
+      "files": {
+        "32": "icons_32/snacks.png",
+        "48": "icons_48/snacks.png",
+        "64": "icons_64/snacks.png",
+        "128": "icons_128/snacks.png"
+      },
+      "source_pdf_page": 25,
+      "source_side": "right-right",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        1941,
+        531,
+        2126,
+        716
+      ],
+      "frame_crop": [
+        3,
+        0,
+        181,
+        175
+      ],
+      "extra": false
+    },
+    {
+      "id": "books",
+      "files": {
+        "32": "icons_32/books.png",
+        "48": "icons_48/books.png",
+        "64": "icons_64/books.png",
+        "128": "icons_128/books.png"
+      },
+      "source_pdf_page": 25,
+      "source_side": "right-right",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        1941,
+        855,
+        2126,
+        1039
+      ],
+      "frame_crop": [
+        6,
+        0,
+        182,
+        175
+      ],
+      "extra": false
+    },
+    {
+      "id": "tobacco",
+      "files": {
+        "32": "icons_32/tobacco.png",
+        "48": "icons_48/tobacco.png",
+        "64": "icons_64/tobacco.png",
+        "128": "icons_128/tobacco.png"
+      },
+      "source_pdf_page": 25,
+      "source_side": "right-right",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        1941,
+        1181,
+        2126,
+        1365
+      ],
+      "frame_crop": [
+        10,
+        0,
+        185,
+        173
+      ],
+      "extra": false
+    },
+    {
+      "id": "ice_cream",
+      "files": {
+        "32": "icons_32/ice_cream.png",
+        "48": "icons_48/ice_cream.png",
+        "64": "icons_64/ice_cream.png",
+        "128": "icons_128/ice_cream.png"
+      },
+      "source_pdf_page": 25,
+      "source_side": "right-right",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        1941,
+        1506,
+        2126,
+        1691
+      ],
+      "frame_crop": [
+        12,
+        0,
+        185,
+        171
+      ],
+      "extra": false
+    },
+    {
+      "id": "stationery",
+      "files": {
+        "32": "icons_32/stationery.png",
+        "48": "icons_48/stationery.png",
+        "64": "icons_64/stationery.png",
+        "128": "icons_128/stationery.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "left-left",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        180,
+        193,
+        364,
+        377
+      ],
+      "frame_crop": [
+        7,
+        3,
+        181,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "electronics",
+      "files": {
+        "32": "icons_32/electronics.png",
+        "48": "icons_48/electronics.png",
+        "64": "icons_64/electronics.png",
+        "128": "icons_128/electronics.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "left-left",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        178,
+        519,
+        362,
+        703
+      ],
+      "frame_crop": [
+        6,
+        1,
+        182,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "vegetables",
+      "files": {
+        "32": "icons_32/vegetables.png",
+        "48": "icons_48/vegetables.png",
+        "64": "icons_64/vegetables.png",
+        "128": "icons_128/vegetables.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "left-left",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        176,
+        844,
+        360,
+        1029
+      ],
+      "frame_crop": [
+        7,
+        0,
+        183,
+        177
+      ],
+      "extra": false
+    },
+    {
+      "id": "fish",
+      "files": {
+        "32": "icons_32/fish.png",
+        "48": "icons_48/fish.png",
+        "64": "icons_64/fish.png",
+        "128": "icons_128/fish.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "left-left",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        174,
+        1170,
+        358,
+        1354
+      ],
+      "frame_crop": [
+        7,
+        0,
+        182,
+        175
+      ],
+      "extra": false
+    },
+    {
+      "id": "meat",
+      "files": {
+        "32": "icons_32/meat.png",
+        "48": "icons_48/meat.png",
+        "64": "icons_64/meat.png",
+        "128": "icons_128/meat.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "left-left",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        171,
+        1494,
+        356,
+        1678
+      ],
+      "frame_crop": [
+        8,
+        1,
+        184,
+        175
+      ],
+      "extra": false
+    },
+    {
+      "id": "retort_food",
+      "files": {
+        "32": "icons_32/retort_food.png",
+        "48": "icons_48/retort_food.png",
+        "64": "icons_64/retort_food.png",
+        "128": "icons_128/retort_food.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "left-right",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        726,
+        193,
+        911,
+        377
+      ],
+      "frame_crop": [
+        8,
+        5,
+        183,
+        181
+      ],
+      "extra": false
+    },
+    {
+      "id": "seasoning",
+      "files": {
+        "32": "icons_32/seasoning.png",
+        "48": "icons_48/seasoning.png",
+        "64": "icons_64/seasoning.png",
+        "128": "icons_128/seasoning.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "left-right",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        726,
+        519,
+        911,
+        703
+      ],
+      "frame_crop": [
+        6,
+        3,
+        180,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "frozen_food",
+      "files": {
+        "32": "icons_32/frozen_food.png",
+        "48": "icons_48/frozen_food.png",
+        "64": "icons_64/frozen_food.png",
+        "128": "icons_128/frozen_food.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "left-right",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        724,
+        844,
+        909,
+        1029
+      ],
+      "frame_crop": [
+        6,
+        2,
+        181,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "oden",
+      "files": {
+        "32": "icons_32/oden.png",
+        "48": "icons_48/oden.png",
+        "64": "icons_64/oden.png",
+        "128": "icons_128/oden.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "left-right",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        724,
+        1170,
+        909,
+        1354
+      ],
+      "frame_crop": [
+        5,
+        1,
+        178,
+        177
+      ],
+      "extra": false
+    },
+    {
+      "id": "daily_goods",
+      "files": {
+        "32": "icons_32/daily_goods.png",
+        "48": "icons_48/daily_goods.png",
+        "64": "icons_64/daily_goods.png",
+        "128": "icons_128/daily_goods.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "left-right",
+      "source_row": 5,
+      "crop_at_render_scale_3": [
+        722,
+        1494,
+        906,
+        1678
+      ],
+      "frame_crop": [
+        4,
+        1,
+        179,
+        177
+      ],
+      "extra": false
+    },
+    {
+      "id": "copy_paper",
+      "files": {
+        "32": "icons_32/copy_paper.png",
+        "48": "icons_48/copy_paper.png",
+        "64": "icons_64/copy_paper.png",
+        "128": "icons_128/copy_paper.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "right-left",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        1393,
+        184,
+        1577,
+        369
+      ],
+      "frame_crop": [
+        4,
+        4,
+        179,
+        179
+      ],
+      "extra": true
+    },
+    {
+      "id": "parcel_delivery_form",
+      "files": {
+        "32": "icons_32/parcel_delivery_form.png",
+        "48": "icons_48/parcel_delivery_form.png",
+        "64": "icons_64/parcel_delivery_form.png",
+        "128": "icons_128/parcel_delivery_form.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "right-left",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        1393,
+        510,
+        1577,
+        694
+      ],
+      "frame_crop": [
+        4,
+        3,
+        180,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "medicine",
+      "files": {
+        "32": "icons_32/medicine.png",
+        "48": "icons_48/medicine.png",
+        "64": "icons_64/medicine.png",
+        "128": "icons_128/medicine.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "right-left",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        1393,
+        834,
+        1577,
+        1018
+      ],
+      "frame_crop": [
+        4,
+        4,
+        180,
+        179
+      ],
+      "extra": false
+    },
+    {
+      "id": "underwear",
+      "files": {
+        "32": "icons_32/underwear.png",
+        "48": "icons_48/underwear.png",
+        "64": "icons_64/underwear.png",
+        "128": "icons_128/underwear.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "right-left",
+      "source_row": 4,
+      "crop_at_render_scale_3": [
+        1393,
+        1159,
+        1577,
+        1344
+      ],
+      "frame_crop": [
+        4,
+        3,
+        177,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "event_goods",
+      "files": {
+        "32": "icons_32/event_goods.png",
+        "48": "icons_48/event_goods.png",
+        "64": "icons_64/event_goods.png",
+        "128": "icons_128/event_goods.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "right-right",
+      "source_row": 1,
+      "crop_at_render_scale_3": [
+        1941,
+        184,
+        2126,
+        369
+      ],
+      "frame_crop": [
+        2,
+        4,
+        180,
+        181
+      ],
+      "extra": false
+    },
+    {
+      "id": "chinese_steamed_bun",
+      "files": {
+        "32": "icons_32/chinese_steamed_bun.png",
+        "48": "icons_48/chinese_steamed_bun.png",
+        "64": "icons_64/chinese_steamed_bun.png",
+        "128": "icons_128/chinese_steamed_bun.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "right-right",
+      "source_row": 2,
+      "crop_at_render_scale_3": [
+        1941,
+        510,
+        2126,
+        694
+      ],
+      "frame_crop": [
+        3,
+        2,
+        179,
+        178
+      ],
+      "extra": false
+    },
+    {
+      "id": "cash",
+      "files": {
+        "32": "icons_32/cash.png",
+        "48": "icons_48/cash.png",
+        "64": "icons_64/cash.png",
+        "128": "icons_128/cash.png"
+      },
+      "source_pdf_page": 26,
+      "source_side": "right-right",
+      "source_row": 3,
+      "crop_at_render_scale_3": [
+        1941,
+        834,
+        2126,
+        1018
+      ],
+      "frame_crop": [
+        4,
+        2,
+        179,
+        177
+      ],
+      "extra": true
+    }
+  ],
+  "source_pdf_sha256": "a9578b92efca28583d90354b5276f6c964e1935f5c51aec381b9ee1e548407a0"
+}
