@@ -204,6 +204,23 @@ class ScenarioDefinition:
     id: str
     initial_cash_yen: EvidenceValue
     objective: EvidenceValue
+    # Task #62: docs/research/scenario-initial-rival-topology-2026-09-06.md
+    # confirms the scenarios do NOT share one initial rival topology. Each
+    # field below is None where that research doc itself has no confirmed
+    # value for this scenario -- never filled in by guessing.
+    initial_rival_store_roles: Optional[EvidenceValue] = None
+    """Tuple of "headquarters"/"branch" strings, in the confirmed count and
+    role order, for scenarios where the exact initial rival composition is
+    confirmed (intermediate: [headquarters, branch, branch]; advanced:
+    [headquarters])."""
+    initial_rival_branch_exists: Optional[EvidenceValue] = None
+    """True where a source confirms at least one rival branch exists at
+    scenario start, without confirming the exact total count (beginner
+    only -- see the research doc section 4)."""
+    rival_can_open_branches_after_start: Optional[EvidenceValue] = None
+    """True where a source confirms the rival chain opens branches after
+    scenario start rather than staying fixed (advanced only, confirmed by
+    the same long-play record's 2-year-mark observation)."""
 
 
 @dataclass(frozen=True)

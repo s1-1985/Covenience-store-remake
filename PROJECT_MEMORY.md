@@ -1,6 +1,6 @@
 # Convenience Store Remake — Project Memory
 
-Last updated: 2026-09-21 (JST)
+Last updated: 2026-09-24 (JST)
 
 This file is the canonical memory checkpoint for the project. If chat context is lost, start by reading this file and the files under `docs/research/`.
 
@@ -1265,6 +1265,30 @@ facility placement mechanic (`TownState` remains non-spatial, decision 0095) to 
 `game/`. See decision 0130. `headless_smoke.gd` unchanged at 1106 steps (re-run, no regression);
 `reference_sim` full suite 713 passed/1 xfailed (8 new test functions).
 
+Task #62 (シナリオ初期ライバル構成 + 自社/ライバル合計店舗上限) picks up the handoff-7-flagged
+"rival spawn timing/location" candidate, but scopes it to what `docs/research/scenario-initial-
+rival-topology-2026-09-06.md` (an existing but previously unimplemented research doc) actually
+confirms: PS long-play records state the intermediate scenario starts with 1 headquarters + 2
+rival branches ("ライバル店は最初3店舗ありました") while the advanced scenario starts with just a
+headquarters and grows branches over its first 2 years -- two genuinely different topologies, not
+a single shared default. `ScenarioDefinition` (models.py) gained three new `Optional[EvidenceValue]`
+fields (`initial_rival_store_roles`, `initial_rival_branch_exists`, `rival_can_open_branches_
+after_start`), left `None` wherever unconfirmed (beginner's exact rival count stays UNKNOWN, only
+"at least one branch exists" is confirmed). A new `scenario_initial_rival_topology.
+seed_rival_chain_for_scenario()` turns the confirmed role list into a populated `rival.
+RivalChainRuntime`, using an opaque placeholder `location_id` string (not a spatial claim --
+`rival.py`'s `location_id` was already an opaque key, not a position) since exact coordinates are
+UNKNOWN. Separately, two independent CONFIRMED_COMMUNITY sources (the first-title wiki and a PS
+long-play record) agree on a hard "player + rival combined <= 10 stores" map-wide construction cap,
+distinct from the intermediate scenario's own "reach 10 player stores" clear condition that happens
+to share the same number; added as `town.TOTAL_STORE_CAP_INCLUDING_RIVALS` plus a non-mutating
+`TownState.has_capacity_for_new_store()` check. `reference_sim`-only, as usual for this class of
+work: no `game/` scenario-selection or multi-rival-placement mechanic exists yet to wire this into
+(same decision-0095/0128 boundary), and the rival policy's EXPAND/HOLD/RETREAT decisions
+(`remake_rival_policy.py`) are still not integrated with this new seeding/cap machinery -- that
+integration loop is left for a future task. See decision 0131. `reference_sim` full suite 722
+passed/1 xfailed (9 new test functions); `game/` untouched.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -1425,7 +1449,18 @@ order.
   geometric input for the first time (task #58's `trade_area_overlap_ratio()` integration test), but
   still has no production (`game/`) caller -- no rival-AI decision loop exists in Godot to call it
   from, and `trade_area_overlap_ratio()` itself was deliberately not ported into `town_spatial.gd`
-  for the same "no caller yet" reason.
+  for the same "no caller yet" reason. Task #62 (decision 0131) closed part of "where they sit"'s
+  companion question -- how many rivals exist and with what roles at scenario start -- using a
+  previously-unimplemented research doc (`scenario-initial-rival-topology-2026-09-06.md`):
+  intermediate starts with 1 HQ + 2 branches, advanced with just an HQ that grows branches over
+  time, beginner's exact count stays UNKNOWN. `scenario_initial_rival_topology.
+  seed_rival_chain_for_scenario()` seeds a `RivalChainRuntime` from this (reference_sim-only); it
+  is not yet unified with `_rival_stores` (game/) or with `RemakeBalancedRivalPolicy`'s own
+  decisions, so the "which permits they actually hold" and "where they sit" halves of this gap
+  remain exactly as open as before. Task #62 also added a `TownState.has_capacity_for_new_store()`
+  hard cap (CONFIRMED_COMMUNITY, two independent sources: player+rival combined <= 10 stores per
+  map) -- a map-wide construction limit, not the same fact as the intermediate scenario's own "10
+  player stores" clear condition.
 - **Staff mechanics**: basic hiring (replacing a fixed roster slot's occupant with a different
   candidate from the 35-person pool) implemented in task #56 (decision 0125) -- see section 19's
   task #56 entry. Still NOT implemented, each for the reason noted: PS版固定 3% wage-negotiation

@@ -2,6 +2,18 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+# Task #62: CONFIRMED_COMMUNITY, two independent sources agree exactly --
+# the first-title wiki's own game-mode-strategy page states a combined
+# player+rival cap of 10 stores per map (docs/research/first-title-wiki-
+# full-scan-delta-2026-09-05.md: "プレイヤー+ライバル合計10店舗上限"), and a
+# PS long-play record independently reaches "プレイヤー5店+ライバル5店に
+# なった時点で、これ以上新店舗は造れない" (docs/research/ps-longplay-rival-
+# economy-events-2026-09-05.md section 5). This is a hard construction cap
+# on the whole map, not the intermediate scenario's separate "10 player
+# stores" clear condition (baseline_data.SCENARIOS' `objective` field) --
+# the two are different facts that happen to share the number 10.
+TOTAL_STORE_CAP_INCLUDING_RIVALS = 10
+
 
 @dataclass
 class TownState:
@@ -37,3 +49,13 @@ class TownState:
             raise ValueError("population must be >= 0")
         if self.store_count_including_rivals < 0:
             raise ValueError("store_count_including_rivals must be >= 0")
+
+    def has_capacity_for_new_store(self) -> bool:
+        """CONFIRMED_COMMUNITY: whether the map can still fit another store
+        of either side, per `TOTAL_STORE_CAP_INCLUDING_RIVALS`'s own note.
+        Callers (player construction, rival expansion) should check this
+        before adding a store and increment `store_count_including_rivals`
+        themselves once the store is actually built -- this method does not
+        mutate state, matching this class's existing caller-tracked design."""
+
+        return self.store_count_including_rivals < TOTAL_STORE_CAP_INCLUDING_RIVALS
