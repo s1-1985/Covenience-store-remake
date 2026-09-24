@@ -693,6 +693,9 @@ func _initialize() -> void:
     # simulation.gd).
     var sell_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(sell_simulation)
+    if not sell_simulation.customers.all_settled():
+        _fail("the sell test's initial scripted visit must complete before selling")
+        return
     # Default starting cash (¥1,000) does not cover a shelf purchase plus
     # procuring a full shelf of stock (medium_ambient_shelf's capacity=80
     # x bread's restock_unit_cost_yen=150 = ¥12,000 alone); top up first,
@@ -751,6 +754,9 @@ func _initialize() -> void:
     # DEFAULT reading of what it does (see the function's own comment).
     var swap_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(swap_simulation)
+    if not swap_simulation.customers.all_settled():
+        _fail("the swap test's initial scripted visit must complete before purchasing")
+        return
     # Default starting cash (¥1,000) does not cover both fixtures this
     # scenario purchases (potted_plant ¥1,000 + bench ¥2,000).
     swap_simulation.economy.cash_yen += 50_000
