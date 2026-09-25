@@ -1977,6 +1977,31 @@
     "starting_cash_yen": 200000000,
     "evidence_note": "CONFIRMED_COMMUNITY anchor: beginner initial cash 200,000,000 yen (docs/research/ui-consistency-audit-2026-09-05.md). REMAKE_BALANCED_DEFAULT: preview grants a furnished shop (as of task #89 the guide p.48 store, guide_starting_store) without deducting its construction or setup costs; not the original complete beginner scenario. Task #95: every real new game (not only the phone preview) starts with this cash and first buys the store's land on the town map (guide_town_map.store_site), which is paid out of it."
   },
+  "sound": {
+    "evidence_note": "Task #96. CONFIRMED (existence only): the original has background music (the V03 gameplay video is titled 【作業用BGM】ザ・コンビニ) and sound effects (an effect on reaching a scenario goal, docs/research/advanced-evaluation-ending-2026-09-05.md section 4; a car horn when parking runs short, quick-reference-guide-part1 section 2.3). No recording, score or list of the original's sounds was recovered, and its music may not be copied. REMAKE_BALANCED_DEFAULT: both tunes, every effect, and which event plays which effect (event_sfx) are this project's own, synthesized at run time by game/scripts/audio/sound_synth.gd (no audio file ships). The car horn is not used: parking is not modeled.",
+    "event_sfx": {
+      "customer_entered": "door_chime",
+      "checkout_completed": "register",
+      "fixture_purchased": "purchase",
+      "permit_purchased": "purchase",
+      "product_procured": "purchase",
+      "promotion_scheduled": "purchase",
+      "staff_hired": "purchase",
+      "store_site_bought": "purchase",
+      "chain_expanded": "purchase",
+      "fixture_relocated": "place",
+      "fixture_rotated": "place",
+      "fixtures_swapped": "place",
+      "fixture_sold": "place",
+      "sample_layout_loaded": "place",
+      "checkout_anger_triggered": "anger",
+      "month_end_settlement": "settlement",
+      "game_over": "game_over"
+    },
+    "clear_sfx": "fanfare",
+    "button_sfx": "select",
+    "refused_sfx": "error"
+  },
   "guide_starting_store": {
     "scenario_id": "guide-p48-large-store-v1",
     "evidence_note": "Task #89. The store every new game starts in (main.gd applies this block over the top-level prototype store, which the automated tests keep using). Floor = the CONFIRMED_OFFICIAL large store 12x8 tiles (STORE_VARIANTS large_bottom); the guide's p.48 diagram measures exactly 12x8 tiles. Fixture positions and 1x1 footprints: CONFIRMED_VISUAL from that diagram. Each shelf's product category: PROVISIONAL (this project's reading of the product pictures; per-fixture guide_reading). Shelf type: the 1x1 shelf whose DATA2 (p.86-89) temperature function carries the category. Starting stock = that shelf's CONFIRMED_OFFICIAL capacity (analogy: a newly stocked shelf starts full). Entrance: the diagram's only opening is a 2-tile walkway into the top wall at tiles 5-6; the IN/OUT mats sit side by side in it. Not placed: the diagram's cash dispenser (8,6) and copier (9,6) (no such mechanic in this client), and the outdoor parking/vending machines/plants (no outdoor lot yet). REMAKE_BALANCED_DEFAULT: which side of each shelf customers use, the register's customer side, the break-room door side, the staff posts, and the plant's unused interaction cell are this project's own choices. The diagram shows liquor-like bottles at (11,5)/(11,6), but selling 酒類 needs the alcohol permit (CONFIRMED_OFFICIAL), which a new store does not hold; those shelves start with cold_drink instead.",

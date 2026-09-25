@@ -3108,6 +3108,34 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         android = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("Time must not run before the store has a site", android)
 
+    def test_sounds_are_this_projects_own_and_wired_to_real_events(self):
+        # Task #96: music and effects, synthesized at run time.
+        sound = self.config["sound"]
+        for tag in ("REMAKE_BALANCED_DEFAULT", "作業用BGM", "may not be copied"):
+            self.assertIn(tag, sound["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        recorded = set(re.findall(r'_record_event\("([a-z_]+)"', simulation))
+        self.assertLessEqual(set(sound["event_sfx"]), recorded)
+        synth = (GAME_ROOT / "scripts" / "audio" / "sound_synth.gd").read_text(encoding="utf-8")
+        sfx_ids = set(re.findall(r'^    "([a-z_]+)",', synth.split("const SFX_IDS := [")[1].split("]")[0], re.M))
+        used = set(sound["event_sfx"].values()) | {sound["clear_sfx"], sound["button_sfx"], sound["refused_sfx"]}
+        self.assertLessEqual(used, sfx_ids)
+        self.assertIn("# REMAKE_BALANCED_DEFAULT: every melody, chord progression and effect below", synth)
+        themes = (GAME_ROOT / "scripts" / "audio" / "sound_themes.gd").read_text(encoding="utf-8")
+        self.assertIn("# Task #96: the two background tunes. REMAKE_BALANCED_DEFAULT", themes)
+        project = (GAME_ROOT / "project.godot").read_text(encoding="utf-8")
+        self.assertIn('SoundManager="*res://scripts/audio/sound_manager.gd"', project)
+        # No audio file ships: everything is synthesized.
+        audio_files = [
+            path for path in GAME_ROOT.rglob("*")
+            if path.suffix.lower() in {".wav", ".ogg", ".mp3"} and ".godot" not in path.parts
+        ]
+        self.assertEqual(audio_files, [])
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        self.assertIn('SoundManager.play_theme("town" if selecting_site else "store")', main)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the sounds must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は
         # 2人まで雇用できる」 -> manager + 2 staff = 3 per store.

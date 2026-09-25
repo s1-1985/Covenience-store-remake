@@ -827,3 +827,9 @@ msgstr "土地を買って店を建てました"
 
 msgid "store site bought"
 msgstr "出店場所を決めた"
+
+msgid "Sound: on"
+msgstr "音：オン（押すと消音）"
+
+msgid "Sound: off"
+msgstr "音：オフ（押すと鳴らす）"

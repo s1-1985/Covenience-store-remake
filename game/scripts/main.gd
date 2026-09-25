@@ -13,6 +13,11 @@ var site_panel: PanelContainer = null
 var site_info_label: Label = null
 var site_buy_button: Button = null
 var _site_origin := Vector2i(-1, -1)
+# Task #96: the newest event already turned into a sound, and whether the
+# clear fanfare has played.
+var _heard_event_sequence := 0
+var _heard_clear := false
+var sound_toggle_button: Button = null
 
 # Test seam (task #89): see _load_config(). An Engine meta flag rather than a
 # static var because the --script smoke runner cannot preload this script
@@ -184,6 +189,12 @@ func _ready() -> void:
     game_over_menu_button.pressed.connect(_on_quit_to_menu_pressed)
     store_view.fixture_selected.connect(_on_fixture_selected)
     store_view.fixture_relocation_requested.connect(_on_fixture_relocation_requested)
+    _build_sound_toggle()
+    var button_sfx := str(config["sound"]["button_sfx"])
+    for node in $UI.find_children("*", "BaseButton", true, false):
+        (node as BaseButton).pressed.connect(func(): SoundManager.play_sfx(button_sfx))
+    _heard_event_sequence = _latest_event_sequence()
+    _heard_clear = simulation.clear_condition_met
     _sync_site_selection()
     _refresh_ui()
 
@@ -239,6 +250,8 @@ func _on_reset_pressed() -> void:
     pause_button.text = tr("Pause")
     accumulator = 0.0
     simulation.reset()
+    _heard_event_sequence = _latest_event_sequence()
+    _heard_clear = simulation.clear_condition_met
     layout_edit_label.text = tr("Layout reset to configured prototype")
     _refresh_procure_fixture_option()
     _refresh_hire_candidate_option()
@@ -736,6 +749,8 @@ func _on_load_pressed() -> void:
     if simulation == null:
         return
     if _save_service.load_from_path(simulation):
+        _heard_event_sequence = _latest_event_sequence()
+        _heard_clear = simulation.clear_condition_met
         paused = false
         pause_button.text = tr("Pause")
         accumulator = 0.0
@@ -868,6 +883,7 @@ func _refresh_ui() -> void:
             paused = true
             pause_button.text = tr("Resume")
     store_view.queue_redraw()
+    _play_event_sounds()
 
 
 func _load_config() -> Dictionary:
@@ -1042,6 +1058,7 @@ func _sync_site_selection() -> void:
         store_view.visible = true
         show_town_map_button.text = tr("Show town map")
     town_view.center_on_store()
+    SoundManager.play_theme("town" if selecting_site else "store")
 
 
 func _on_site_tapped(origin: Vector2i) -> void:
@@ -1051,6 +1068,8 @@ func _on_site_tapped(origin: Vector2i) -> void:
     var quote: Dictionary = simulation.store_site_quote(origin)
     town_view.show_site_cursor(origin, bool(quote["buildable"]))
     site_info_label.text = _site_quote_text(quote)
+    if not bool(quote["buildable"]):
+        SoundManager.play_sfx(str(config["sound"]["refused_sfx"]))
     site_buy_button.disabled = (
         not bool(quote["buildable"]) or simulation.economy.cash_yen < int(quote["total_yen"])
     )
@@ -1084,6 +1103,7 @@ func _on_buy_site_pressed() -> void:
         return
     if not simulation.try_buy_store_site(_site_origin):
         site_info_label.text = tr("Cannot buy this land")
+        SoundManager.play_sfx(str(config["sound"]["refused_sfx"]))
         return
     layout_edit_label.text = tr("Bought the land and opened the store")
     _sync_site_selection()
@@ -1091,6 +1111,55 @@ func _on_buy_site_pressed() -> void:
     pause_button.text = tr("Pause")
     accumulator = 0.0
     _refresh_ui()
+
+
+# Task #96: sounds for what just happened -- each event type in
+# config["sound"]["event_sfx"] plays its effect (at most once per refresh),
+# and reaching the scenario goal plays the fanfare once. REMAKE_BALANCED_DEFAULT
+# pairing, see that block's evidence_note.
+func _latest_event_sequence() -> int:
+    var records: Array = simulation.event_log.records
+    return 0 if records.is_empty() else int(records[-1]["sequence"])
+
+
+func _play_event_sounds() -> void:
+    var records: Array = simulation.event_log.records
+    var event_sfx: Dictionary = config["sound"]["event_sfx"]
+    var newest := _latest_event_sequence()
+    if newest < _heard_event_sequence:
+        _heard_event_sequence = 0
+    var to_play: Array[String] = []
+    var index := records.size() - 1
+    while index >= 0 and int(records[index]["sequence"]) > _heard_event_sequence:
+        var sfx := str(event_sfx.get(str(records[index]["event_type"]), ""))
+        if not sfx.is_empty() and not to_play.has(sfx):
+            to_play.append(sfx)
+        index -= 1
+    _heard_event_sequence = newest
+    for sfx in to_play:
+        SoundManager.play_sfx(sfx)
+    if simulation.clear_condition_met and not _heard_clear:
+        SoundManager.play_sfx(str(config["sound"]["clear_sfx"]))
+    _heard_clear = simulation.clear_condition_met
+
+
+func _build_sound_toggle() -> void:
+    sound_toggle_button = Button.new()
+    sound_toggle_button.name = "SoundToggleButton"
+    var vbox := $UI/Panel/Margin/Scroll/VBox
+    vbox.add_child(sound_toggle_button)
+    vbox.move_child(sound_toggle_button, vbox.get_node("MenuButtons").get_index() + 1)
+    if _is_android_preview():
+        sound_toggle_button.custom_minimum_size.y = 64
+    _refresh_sound_toggle()
+    sound_toggle_button.pressed.connect(func():
+        SoundManager.set_enabled(not SoundManager.enabled)
+        _refresh_sound_toggle()
+    )
+
+
+func _refresh_sound_toggle() -> void:
+    sound_toggle_button.text = tr("Sound: on") if SoundManager.enabled else tr("Sound: off")
 
 
 # Task #92: player-facing names for internal ids, so no message shows a raw

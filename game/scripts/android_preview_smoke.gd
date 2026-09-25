@@ -41,6 +41,8 @@ func _run() -> void:
     # time does not run until a site is bought.
     if not _require(game.selecting_site and game.site_panel.visible, "A new game must start by choosing a site"):
         return
+    if not _require(game.get_node("/root/SoundManager").current_theme == "town", "The town tune plays while choosing the site"):
+        return
     if not _require(game.town_view.visible and not game.store_view.visible, "Site choice happens on the town map"):
         return
     var start_minute: int = game.simulation.minute_of_day
@@ -89,6 +91,20 @@ func _run() -> void:
     game._refresh_ui()
     if not _require(game.simulation.snapshot()["completed_sales"] > 0, "A customer must walk, queue, and purchase"):
         return
+    # Task #96: what happened is heard -- the door chime, the register.
+    game.simulation.start_next_customer()
+    game._refresh_ui()
+    var heard: Array = game.get_node("/root/SoundManager").sfx_history
+    if not _require(heard.has("door_chime") and heard.has("register") and heard.has("purchase"), "Entering, paying and buying land must make sounds: %s" % [heard]):
+        return
+    if not _require(game.get_node("/root/SoundManager").current_theme == "store", "The shop tune plays once the store is open"):
+        return
+    var sound_manager = game.get_node("/root/SoundManager")
+    var sound_was_on: bool = sound_manager.enabled
+    game.sound_toggle_button.pressed.emit()
+    if not _require(sound_manager.enabled != sound_was_on and game.sound_toggle_button.text.begins_with("音："), "The sound button must switch sound on and off"):
+        return
+    game.sound_toggle_button.pressed.emit()
     await _capture("preview-store")
     # Task #94: the store is drawn at full size and the panel is a closed
     # drawer until a shortcut opens it.

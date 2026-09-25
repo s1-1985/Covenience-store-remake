@@ -1995,6 +1995,15 @@ Every real new game now starts with ¥200,000,000. Save schema 6 stores the site
 Not done: store-size choice (only small is selectable at the PS start, but the p.48 large store is still
 granted; ask the user), permits right after the land, town growth, a site chooser for later branches.
 
+**Task #96 (2026-09-25, decision 0167)**: BGM and sound effects, all this project's own (REMAKE). The original
+has BGM (the V03 video title) and effects (a clear effect; a horn when parking runs short), but no recording or
+score was recovered and its music may not be copied. game/scripts/audio/sound_synth.gd synthesizes everything
+at run time (no audio file ships; the APK is at the 30MiB delivery limit): a 132bpm store tune, a 100bpm town
+tune (title and site choice), rendered on a worker thread, and effects mapped from events by
+vertical_slice.json "sound".event_sfx (door chime on entry, register beep on checkout, purchase, place, anger,
+month end, clear fanfare, game over, refusal, button blip). SoundManager autoload; a 音 on/off button in the
+panel, saved in user://settings.cfg.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

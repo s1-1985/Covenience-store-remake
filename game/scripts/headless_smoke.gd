@@ -16,6 +16,8 @@ const StaffStateScript := preload("res://scripts/domain/staff_state.gd")
 const StaffGrowthScript := preload("res://scripts/domain/staff_growth.gd")
 const CheckoutAngerScript := preload("res://scripts/domain/checkout_anger.gd")
 const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
+const SoundSynthScript := preload("res://scripts/audio/sound_synth.gd")
+const SoundThemesScript := preload("res://scripts/audio/sound_themes.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
@@ -3099,6 +3101,8 @@ func _initialize() -> void:
 
     if not _check_store_site(config):
         return
+    if not _check_sound(config):
+        return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
@@ -3244,3 +3248,46 @@ func _run_visit(simulation) -> int:
 func _fail(message: String) -> void:
     push_error(message)
     quit(1)
+
+
+# Task #96: the synthesized music and effects.
+func _check_sound(config: Dictionary) -> bool:
+    var sound: Dictionary = config["sound"]
+    if "REMAKE_BALANCED_DEFAULT" not in str(sound["evidence_note"]):
+        _fail("the sounds must stay tagged REMAKE_BALANCED_DEFAULT (this project's own)")
+        return false
+    var used: Array = sound["event_sfx"].values() + [sound["clear_sfx"], sound["button_sfx"], sound["refused_sfx"]]
+    for id in used:
+        if not SoundSynthScript.SFX_IDS.has(id):
+            _fail("event sound %s has no synthesized effect" % id)
+            return false
+    for id in SoundSynthScript.SFX_IDS:
+        var samples: PackedFloat32Array = SoundSynthScript.sfx_samples(id)
+        if samples.size() < SoundSynthScript.MIX_RATE / 50 or samples.size() > SoundSynthScript.MIX_RATE * 3:
+            _fail("sound effect %s must last between 20 ms and 3 s" % id)
+            return false
+        var peak := 0.0
+        for value in samples:
+            peak = maxf(peak, absf(value))
+        if peak < 0.05 or peak > 1.0:
+            _fail("sound effect %s must be audible and not clip (peak %f)" % [id, peak])
+            return false
+    if not is_equal_approx(SoundSynthScript.note_hz("A4"), 440.0) or not is_equal_approx(SoundSynthScript.note_hz("A5"), 880.0):
+        _fail("note names must map to equal-tempered pitches")
+        return false
+    for theme_id in ["store", "town"]:
+        var song: Dictionary = SoundThemesScript.theme(theme_id)
+        if song["lead"].size() != song["bass"].size():
+            _fail("each tune needs a bass bar for every melody bar")
+            return false
+        var bar: PackedFloat32Array = SoundSynthScript.render_song(song, 1)
+        var expected := int(8 * (60.0 / float(song["bpm"]) / 2.0) * SoundSynthScript.MIX_RATE)
+        if bar.size() != expected:
+            _fail("one bar of %s must be 8 eighth notes long" % theme_id)
+            return false
+    var loop: AudioStreamWAV = SoundSynthScript.to_wav(SoundSynthScript.render_song(SoundThemesScript.TOWN, 1), true)
+    if loop.loop_mode != AudioStreamWAV.LOOP_FORWARD or loop.mix_rate != SoundSynthScript.MIX_RATE:
+        _fail("background music must loop")
+        return false
+    return true
+
