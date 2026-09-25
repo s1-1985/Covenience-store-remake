@@ -958,9 +958,7 @@ func _fit_store_view() -> void:
     store_view.scale = Vector2(fit, fit)
     # Task #90: the town map uses the same area.
     town_view.position = store_view.position
-    var town_tiles: Vector2i = town_view.guide_map_tiles()
-    if town_tiles != Vector2i.ZERO:
-        town_view.map_tile_pixels = floorf(minf(available.x / town_tiles.x, available.y / town_tiles.y))
+    town_view.view_size = available
 
 
 # Task #92: player-facing names for internal ids, so no message shows a raw

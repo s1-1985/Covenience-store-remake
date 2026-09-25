@@ -2627,14 +2627,10 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # No invented facility layout: task #72 kept the 52 facility sprites
         # out entirely because no placement data existed. Task #90 added
         # placement data read from the guide p.11 screenshot
-        # (guide_town_map); the only sprites drawn are the three 1x1 house
-        # sprites on that map's building tiles, never a facility type placed
-        # by this project's own guess.
-        self.assertEqual(
-            sorted(set(re.findall(r'"(\w+)"', town_view.split("const HOUSE_SPRITE_IDS := ")[1].split("\n")[0]))),
-            ["house_small_a", "house_small_b", "house_small_c"],
-        )
-        self.assertIn('"B":', town_view)
+        # (guide_town_map); since task #93 every building drawn comes from
+        # that data's buildings list (one per building tile or 2x2 block of
+        # them), never a facility placed by this project's own guess.
+        self.assertIn('for building in guide["buildings"]:', town_view)
         self.assertIn('return simulation.config.get("guide_town_map", {})', town_view)
         self.assertIn(
             "Inventing\n# a full facility layout would mean guessing an unconfirmed town spatial",
@@ -2994,9 +2990,34 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertEqual(town["source_image"], "assets/raw/conveni_guide_town_v1/" + asset["file"])
 
         town_view = (GAME_ROOT / "scripts" / "town_view.gd").read_text(encoding="utf-8")
-        self.assertIn("# REMAKE_BALANCED_DEFAULT: building tiles use this project's own generated", town_view)
-        for sprite_id in ("house_small_a", "house_small_b", "house_small_c"):
-            self.assertTrue((GAME_ROOT / "assets" / "town" / f"{sprite_id}.png").is_file())
+        # Task #93: drawn with the generated terrain tiles and building
+        # sprites; every sprite the data names ships with the game and comes
+        # from the generated package, and each building stands only on
+        # building tiles.
+        self.assertIn("REMAKE_BALANCED_DEFAULT: which terrain tile stands for each", town_view)
+        raw = REPO_ROOT / "assets" / "raw" / "conveni_map_assets_v2"
+        for tile_id in set(town["terrain_tiles"].values()) | {
+            "map_road_ns", "map_road_cross", "map_road_t_wes", "map_crossing_basic", "map_road_end_s"
+        }:
+            self.assertTrue((GAME_ROOT / "assets" / "town" / f"{tile_id}.png").is_file(), tile_id)
+            self.assertTrue((raw / "terrain" / "tiles_64" / f"{tile_id}.png").is_file(), tile_id)
+        occupied = set()
+        for building in town["buildings"]:
+            sprite = building["sprite"]
+            self.assertTrue((GAME_ROOT / "assets" / "town" / f"{sprite}.png").is_file(), sprite)
+            self.assertTrue((raw / "sprites" / f"{sprite}.png").is_file(), sprite)
+            x, y = building["tile"]
+            w, h = building["size"]
+            for dy in range(h):
+                for dx in range(w):
+                    self.assertEqual(rows[y + dy][x + dx], "B")
+                    self.assertNotIn((x + dx, y + dy), occupied)
+                    occupied.add((x + dx, y + dy))
+        building_tiles = {(x, y) for y, row in enumerate(rows) for x, c in enumerate(row) if c == "B"}
+        self.assertEqual(occupied, building_tiles)
+        self.assertGreaterEqual(len({b["sprite"] for b in town["buildings"]}), 10)
+        self.assertEqual(town["store_mark_sprite"], "map_blue_hq")
+        self.assertTrue((GAME_ROOT / "assets" / "town" / "map_blue_hq.png").is_file())
 
     def test_town_map_block_matches_a_fresh_reading_of_the_screenshot(self):
         # Needs numpy and Pillow (not installed in CI); run locally after

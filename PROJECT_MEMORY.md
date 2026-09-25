@@ -1960,6 +1960,20 @@ at startup; event names are translated; ids go through _fixture_label/_product_l
 _candidate_label. staff-3 shows as 店長. A contract test requires a translation for every tr() string and
 every recorded event name.
 
+**Task #93 (2026-09-25, decision 0164)**: the town map now uses the generated terrain and building
+sprites. The user pointed out that the map was bare and ignored the ChatGPT assets; task #90 drew flat
+colours and 3 house sprites. conveni_map_assets_v2 also has 121 terrain/infrastructure tiles (README_V2_JA),
+and none of them were used. tools/build_guide_town_map.py now also emits:
+- 'g' (trees) for grass tiles darker than the screenshot's lower quartile;
+- a `buildings` list: 2x2 blocks become 2x2 office/house sprites; single tiles are picked by roof colour
+  (blue -> house_small_a, red -> house_small_b, per the sprite brief; white -> shops), 20 sprite types in all.
+town_view.gd:
+- draws terrain tiles, choosing road straight/T/cross/end by neighbour links (rotated), with level crossings
+  where roads cross the rail;
+- draws the 本店 mark (video crop) on a concrete lot;
+- shows only part of the town at 24px per tile, drag-to-pan, starting centred on the store.
+Tile and sprite choice is REMAKE.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

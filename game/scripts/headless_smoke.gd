@@ -2749,10 +2749,22 @@ func _initialize() -> void:
         _fail("the town view must draw the guide's beginner-map town")
         return
     var town_tile_pixels: float = economy_ui_scene.town_view.map_tile_pixels
-    var town_right_edge: float = economy_ui_scene.town_view.position.x + 41 * town_tile_pixels
-    if town_tile_pixels < 8.0 or town_right_edge > (economy_ui_scene.get_node("UI/Panel") as Control).offset_left:
+    var town_shown: Vector2i = economy_ui_scene.town_view.view_tiles()
+    var town_right_edge: float = economy_ui_scene.town_view.position.x + town_shown.x * town_tile_pixels
+    if town_tile_pixels < 16.0 or town_right_edge > (economy_ui_scene.get_node("UI/Panel") as Control).offset_left:
         _fail("the town map must be legible and fit left of the side panel")
         return
+    # Task #93: the view scrolls in whole tiles and stops at the town's edge.
+    economy_ui_scene.town_view.view_origin_tile = Vector2i.ZERO
+    economy_ui_scene.town_view.scroll_by_tiles(Vector2i(-5, -5))
+    if economy_ui_scene.town_view.view_origin_tile != Vector2i.ZERO:
+        _fail("the town view must not scroll past the town's top-left edge")
+        return
+    economy_ui_scene.town_view.scroll_by_tiles(Vector2i(1000, 1000))
+    if economy_ui_scene.town_view.view_origin_tile != Vector2i(41, 35) - town_shown:
+        _fail("the town view must stop at the town's bottom-right edge")
+        return
+    economy_ui_scene.town_view.center_on_store()
 
     # Task #78: EditModeOption/SellFixtureButton/DeselectFixtureButton wiring
     # against the real instantiated main.tscn scene. Reuses fixture-purchase-1
