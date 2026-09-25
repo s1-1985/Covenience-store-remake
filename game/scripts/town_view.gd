@@ -41,6 +41,8 @@ const SITE_BLOCKED_COLOR := Color("ef476f")
 const TAP_SLOP_PIXELS := 12.0
 
 signal site_tapped(origin: Vector2i)
+# Task #101: a tap on the map outside site selection (e.g. on a rival store).
+signal map_tapped(tile: Vector2i)
 
 var simulation
 var map_tile_pixels := 24.0
@@ -132,7 +134,7 @@ func show_site_cursor(origin: Vector2i, ok: bool) -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if not visible or guide_map().is_empty():
         return
-    if selecting_site and (event is InputEventScreenTouch or event is InputEventMouseButton):
+    if event is InputEventScreenTouch or event is InputEventMouseButton:
         if event is InputEventMouseButton and event.button_index != MOUSE_BUTTON_LEFT:
             return
         if event.pressed:
@@ -144,7 +146,10 @@ func _unhandled_input(event: InputEvent) -> void:
         var shown := view_tiles()
         if local_point.x < 0 or local_point.y < 0 or local_point.x >= shown.x * map_tile_pixels or local_point.y >= shown.y * map_tile_pixels:
             return
-        site_tapped.emit(tile_at_local(local_point))
+        if selecting_site:
+            site_tapped.emit(tile_at_local(local_point))
+        else:
+            map_tapped.emit(tile_at_local(local_point))
         get_viewport().set_input_as_handled()
         return
     var relative := Vector2.ZERO
@@ -302,6 +307,17 @@ func _draw_guide_map(guide: Dictionary) -> void:
         else:
             draw_rect(marker.grow(-1), RIVAL_MARKER_COLOR, true)
             draw_rect(marker.grow(-1), MARKER_OUTLINE_COLOR, false, 1.0)
+    # Task #101: rival branches the player bought, as the blue 02 mark
+    # (gameplay video crop, map_blue_02).
+    for branch in simulation.owned_branches:
+        var branch_cell := Vector2(branch["position"])
+        if not shown_rect.encloses(Rect2(branch_cell, Vector2(2, 2))):
+            continue
+        var branch_rect := Rect2(branch_cell * t - origin, Vector2(2 * t, 2 * t))
+        for dy in 2:
+            for dx in 2:
+                _draw_tile("map_concrete", Rect2(branch_rect.position + Vector2(dx, dy) * t, Vector2(t, t)))
+        _draw_tile("map_blue_02", branch_rect)
     if selecting_site and site_cursor.x >= 0:
         var cursor := Rect2(Vector2(site_cursor) * t - origin, Vector2(2 * t, 2 * t))
         var cursor_color := SITE_OK_COLOR if site_cursor_ok else SITE_BLOCKED_COLOR

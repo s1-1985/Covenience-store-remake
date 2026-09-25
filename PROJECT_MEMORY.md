@@ -2051,6 +2051,15 @@ dilution is not applied on top. Not done: rival management AI, buyouts, rival pe
 every customer to leave; the store is almost never empty while open, so they had been effectively unusable. Fixture
 edits, procurement and hiring still wait.
 
+**Task #101 (2026-09-25, decision 0172)**: rival investigation and buyout. Tapping a rival on the town map opens
+「調査する(¥600,000) / 買収する / 何もしない」.
+- CONFIRMED_OFFICIAL: the menu, the take-over of store, land and staff, and the 2号店's 46,721,490 start price.
+- CONFIRMED_COMMUNITY: 本店 cannot be bought.
+- PROVISIONAL: the fee (600,000 vs 500,000).
+- REMAKE: the price grows with the land rate; a bought branch counts as a player store (blue 02 mark) but its own
+  sales are not simulated.
+Save schema 7.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

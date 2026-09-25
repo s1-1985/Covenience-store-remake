@@ -2119,7 +2119,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # would otherwise silently revert a hire on load.
         self.assertIn("func _staff_roster_snapshot() -> Array[Dictionary]:", simulation)
         self.assertIn('"staff_roster": _staff_roster_snapshot(),', simulation)
-        self.assertIn("const SAVE_SCHEMA_VERSION := 6", simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 7", simulation)
         self.assertIn(
             'staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])',
             simulation,
@@ -3220,6 +3220,25 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("a permit can be bought while customers are in the store", smoke)
         self.assertIn("moving a fixture still waits for customers to leave", smoke)
+
+    def test_rival_branch_can_be_investigated_and_bought_out(self):
+        # Task #101: 調査する / 買収する / 何もしない on the town map.
+        town = self.config["guide_town_map"]
+        actions = town["rival_actions"]
+        self.assertEqual(actions["investigation_cost_yen"], 600_000)
+        for tag in ("CONFIRMED_OFFICIAL", "CONFIRMED_COMMUNITY", "PROVISIONAL", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, actions["evidence_note"])
+        buyable = {r["id"]: r["buyable"] for r in town["rival_stores"]}
+        self.assertEqual(buyable, {"rival-hq": False, "rival-02": True})
+        self.assertTrue((GAME_ROOT / "assets" / "town" / "map_blue_02.png").is_file())
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("const SAVE_SCHEMA_VERSION := 7", simulation)
+        self.assertIn("# REMAKE_BALANCED_DEFAULT: the guide's start price grown by the land price's", simulation)
+        self.assertIn('"bought_rival_ids": owned_branches.map(', simulation)
+        self.assertEqual(self.config["sound"]["event_sfx"]["rival_bought_out"], "purchase")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the 2号店 costs the guide's 46,721,490 at the start", smoke)
+        self.assertIn("the rival 本店 cannot be bought", smoke)
 
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は

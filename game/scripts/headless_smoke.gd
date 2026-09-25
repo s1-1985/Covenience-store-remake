@@ -3104,6 +3104,8 @@ func _initialize() -> void:
         return
     if not _check_stamina():
         return
+    if not _check_rival_buyout():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -3472,3 +3474,46 @@ func _check_actions_while_open(config: Dictionary) -> bool:
         return false
     return true
 
+# Task #101: investigating and buying out the rival's branch.
+func _check_rival_buyout() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.economy.cash_yen = 200_000_000
+    simulation.try_buy_store_site(Vector2i(13, 21))
+    if simulation.rival_is_buyable("rival-hq") or simulation.try_buy_out_rival("rival-hq"):
+        _fail("the rival 本店 cannot be bought")
+        return false
+    if simulation.rival_buyout_price_yen("rival-02") != 46_721_490:
+        _fail("the 2号店 costs the guide's 46,721,490 at the start")
+        return false
+    var cash_before: int = simulation.economy.cash_yen
+    if not simulation.try_investigate_rival("rival-02") or simulation.economy.cash_yen != cash_before - 600_000:
+        _fail("investigating a rival costs 600,000")
+        return false
+    if simulation.try_investigate_rival("rival-02"):
+        _fail("a rival is investigated once")
+        return false
+    var population_before: int = simulation.demand.nearby_population
+    cash_before = simulation.economy.cash_yen
+    if not simulation.try_buy_out_rival("rival-02"):
+        _fail("the 2号店 can be bought with enough cash")
+        return false
+    if simulation.economy.cash_yen != cash_before - 46_721_490 or simulation.player_store_count != 2:
+        _fail("buying out pays the price and adds a store to the chain")
+        return false
+    if simulation._rival_stores.size() != 1 or simulation.owned_branches.size() != 1 or simulation.rival_at(Vector2i(27, 9)) != "":
+        _fail("the bought branch is no longer a rival")
+        return false
+    if simulation.demand.nearby_population < population_before:
+        _fail("buying out a rival never loses the main store customers")
+        return false
+    var saved: Dictionary = simulation.save_state()
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(saved) or reloaded.owned_branches.size() != 1 or reloaded._rival_stores.size() != 1 or not reloaded.rival_investigated("rival-02"):
+        _fail("load must keep the bought branch and the investigation")
+        return false
+    reloaded.reset()
+    if reloaded._rival_stores.size() != 2 or not reloaded.owned_branches.is_empty():
+        _fail("a new game starts with both rivals again")
+        return false
+    return true

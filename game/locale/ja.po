@@ -860,3 +860,30 @@ msgstr "掃除に向かっている"
 
 msgid "staff exhausted"
 msgstr "店員が疲れて休憩に入った"
+
+msgid "Do nothing"
+msgstr "何もしない"
+
+msgid "Hours %s, popularity %d, security %d, cleaning %d, service %d"
+msgstr "営業 %s　人気%d　警備%d　清掃%d　サービス%d"
+
+msgid "Investigate (¥%s)"
+msgstr "調査する（¥%s）"
+
+msgid "Buy out (¥%s)"
+msgstr "買収する（¥%s）"
+
+msgid "A main store cannot be bought"
+msgstr "本店は買収できません"
+
+msgid "Investigated the rival store"
+msgstr "ライバル店を調査した"
+
+msgid "Bought out the rival store: now %d stores"
+msgstr "ライバル店を買収した（%d店舗）"
+
+msgid "rival investigated"
+msgstr "ライバル店を調査した"
+
+msgid "rival bought out"
+msgstr "ライバル店を買収した"

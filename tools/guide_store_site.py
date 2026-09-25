@@ -182,6 +182,31 @@ RIVAL_STORES = (
 )
 
 
+# Task #101: investigating and buying out a rival.
+# CONFIRMED_OFFICIAL: the rival menu offers 「調査する 費用 / 買収する 費用 / 何もしない」
+# (guide p.53, p.65, p.72-73 screenshots); a buyout takes the rival's store,
+# land and staff over as the player's own (p.53 「相手の店や社員ごと自分のものに」,
+# p.72 「土地も店舗も一度にプレーヤーのものに」); the 2号店 costs 46,721,490 at the
+# start (the DATA block). CONFIRMED_COMMUNITY: only branches can be bought, not
+# the 本店 (first-title wiki; the DATA block likewise prints a buyout price for
+# the 2号店 only). PROVISIONAL: the investigation fee -- 600,000 in the two
+# screenshots that show the DATA block's 46,721,490, 500,000 in the p.53 one.
+RIVAL_ACTIONS = {
+    "investigation_cost_yen": 600_000,
+    "evidence_note": (
+        "Task #101. CONFIRMED_OFFICIAL: 調査する / 買収する / 何もしない (guide p.53, p.65, p.72-73); "
+        "a buyout takes over the store, land and staff; the 2号店 costs 46,721,490 at the start "
+        "(DATA block). CONFIRMED_COMMUNITY: 本店 cannot be bought (first-title wiki). "
+        "PROVISIONAL: investigation 600,000 (two screenshots; 500,000 in a third). "
+        "CONFIRMED that the price grows with the years and the store's sales (wiki: about 45,000,000 "
+        "at the start, over 200,000,000 some years later), formula unknown; "
+        "REMAKE_BALANCED_DEFAULT: the start price grows with the land price's yearly rate, a bought "
+        "branch is counted as one of the player's stores and drawn as the blue 02 mark, and its own "
+        "sales are not simulated (like the chain-expansion action)."
+    ),
+}
+
+
 def in_catchment(store_origin, tile):
     r = STORE_SITE_CATCHMENT_TILES
     return (
@@ -220,6 +245,6 @@ def place_rivals(rows, buildings):
                     best = (score, origin)
         placed.append(best[1])
     return [
-        dict(rival, position=list(origin), permits_held=[])
+        dict(rival, position=list(origin), permits_held=[], buyable="buyout_yen" in rival["guide_data"])
         for rival, origin in zip(RIVAL_STORES, placed)
     ]

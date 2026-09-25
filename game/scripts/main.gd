@@ -23,6 +23,13 @@ var sound_toggle_button: Button = null
 var fixture_info_panel: PanelContainer = null
 var fixture_info_label: Label = null
 var fixture_restock_button: Button = null
+# Task #101: the rival store menu on the town map, like the original's
+# 「調査する / 買収する / 何もしない」 (guide p.53).
+var rival_panel: PanelContainer = null
+var rival_info_label: Label = null
+var rival_investigate_button: Button = null
+var rival_buyout_button: Button = null
+var _rival_id := ""
 
 # Test seam (task #89): see _load_config(). An Engine meta flag rather than a
 # static var because the --script smoke runner cannot preload this script
@@ -152,6 +159,8 @@ func _ready() -> void:
     _fit_store_view()
     _build_site_panel()
     _build_fixture_info_panel()
+    _build_rival_panel()
+    town_view.map_tapped.connect(_on_map_tapped)
     town_view.site_tapped.connect(_on_site_tapped)
     _populate_sample_layout_option()
     _populate_fixture_catalog_option()
@@ -229,6 +238,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_show_town_map_pressed() -> void:
     if selecting_site:
         return
+    _rival_id = ""
     town_view.visible = not town_view.visible
     store_view.visible = not town_view.visible
     show_town_map_button.text = tr("Show store") if town_view.visible else tr("Show town map")
@@ -892,6 +902,8 @@ func _refresh_ui() -> void:
             pause_button.text = tr("Resume")
     store_view.queue_redraw()
     _refresh_fixture_info()
+    if rival_panel != null:
+        _refresh_rival_panel()
     _play_event_sounds()
 
 
@@ -1195,6 +1207,94 @@ func _build_fixture_info_panel() -> void:
     close.pressed.connect(_on_deselect_fixture_pressed)
     row.add_child(close)
     $UI.add_child(fixture_info_panel)
+
+
+func _build_rival_panel() -> void:
+    rival_panel = PanelContainer.new()
+    rival_panel.name = "RivalPanel"
+    rival_panel.theme = ($UI/Panel as Control).theme
+    rival_panel.visible = false
+    var box := VBoxContainer.new()
+    rival_panel.add_child(box)
+    rival_info_label = Label.new()
+    rival_info_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    rival_info_label.custom_minimum_size.x = town_view.view_size.x - 40.0
+    box.add_child(rival_info_label)
+    var row := HBoxContainer.new()
+    box.add_child(row)
+    rival_investigate_button = Button.new()
+    rival_investigate_button.name = "RivalInvestigateButton"
+    rival_investigate_button.pressed.connect(_on_investigate_rival_pressed)
+    row.add_child(rival_investigate_button)
+    rival_buyout_button = Button.new()
+    rival_buyout_button.name = "RivalBuyoutButton"
+    rival_buyout_button.pressed.connect(_on_buy_out_rival_pressed)
+    row.add_child(rival_buyout_button)
+    var leave := Button.new()
+    leave.name = "RivalLeaveButton"
+    leave.text = tr("Do nothing")
+    leave.pressed.connect(func(): _show_rival(""))
+    row.add_child(leave)
+    for button in [rival_investigate_button, rival_buyout_button, leave]:
+        button.custom_minimum_size = Vector2(0, 56)
+        button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    $UI.add_child(rival_panel)
+    rival_panel.position = Vector2(town_view.position.x, town_view.position.y + town_view.view_size.y - 150.0)
+    rival_panel.size = Vector2(town_view.view_size.x, 140.0)
+
+
+func _on_map_tapped(tile: Vector2i) -> void:
+    if selecting_site:
+        return
+    _show_rival(simulation.rival_at(tile))
+
+
+func _show_rival(rival_id: String) -> void:
+    _rival_id = rival_id
+    _refresh_rival_panel()
+
+
+func _refresh_rival_panel() -> void:
+    rival_panel.visible = not _rival_id.is_empty() and town_view.visible and not selecting_site
+    if not rival_panel.visible:
+        return
+    var entry: Dictionary = simulation._rival_guide_entry(_rival_id)
+    var text := str(entry.get("name", _rival_id))
+    if simulation.rival_investigated(_rival_id):
+        var data: Dictionary = entry.get("guide_data", {})
+        text += "　" + tr("Hours %s, popularity %d, security %d, cleaning %d, service %d") % [
+            str(data.get("hours", "")), int(data.get("popularity", 0)), int(data.get("security", 0)),
+            int(data.get("cleaning", 0)), int(data.get("service", 0)),
+        ]
+    rival_info_label.text = text
+    rival_investigate_button.text = tr("Investigate (¥%s)") % _format_integer(simulation.rival_investigation_cost_yen())
+    rival_investigate_button.disabled = (
+        simulation.rival_investigated(_rival_id)
+        or simulation.economy.cash_yen < simulation.rival_investigation_cost_yen()
+    )
+    if simulation.rival_is_buyable(_rival_id):
+        var price: int = simulation.rival_buyout_price_yen(_rival_id)
+        rival_buyout_button.text = tr("Buy out (¥%s)") % _format_integer(price)
+        rival_buyout_button.disabled = simulation.economy.cash_yen < price
+    else:
+        rival_buyout_button.text = tr("A main store cannot be bought")
+        rival_buyout_button.disabled = true
+
+
+func _on_investigate_rival_pressed() -> void:
+    if simulation.try_investigate_rival(_rival_id):
+        layout_edit_label.text = tr("Investigated the rival store")
+    _refresh_ui()
+
+
+func _on_buy_out_rival_pressed() -> void:
+    if simulation.try_buy_out_rival(_rival_id):
+        layout_edit_label.text = tr("Bought out the rival store: now %d stores") % simulation.player_store_count
+        _show_rival("")
+        town_view.queue_redraw()
+    else:
+        SoundManager.play_sfx(str(config["sound"]["refused_sfx"]))
+    _refresh_ui()
 
 
 # Name, product and stock of the selected fixture. The panel sits along

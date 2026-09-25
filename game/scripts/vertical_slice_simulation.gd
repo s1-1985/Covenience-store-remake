@@ -181,6 +181,10 @@ var _bought_buildings: Array[int] = []
 # value this client invents on its own. Static for this vertical slice's
 # lifetime: no rival AI/spawn loop exists to change it after _init().
 var _rival_stores: Array[Dictionary] = []
+# Task #101: rival branches the player bought out, now the player's own
+# stores ({"id", "position"}), and rivals already investigated.
+var owned_branches: Array[Dictionary] = []
+var _investigated_rivals: Dictionary = {}
 # FIFO order in which customers who have finished shopping are waiting for
 # the single checkout fixture's one staff-service slot (task #36, concurrent
 # customers). Serving strictly in arrival order is this project's own
@@ -236,14 +240,7 @@ func _init(source_config: Dictionary) -> void:
     _player_store_position = _vec2i_from_array(config["town"]["player_store_position"])
     if config.has("guide_town_map"):
         store_site = StoreSiteScript.new(config["guide_town_map"])
-    for rival_entry in config["town"].get("rival_stores", []):
-        var rival_permits_held: Array[String] = []
-        rival_permits_held.assign(rival_entry.get("permits_held", []))
-        _rival_stores.append({
-            "id": str(rival_entry["id"]),
-            "position": _vec2i_from_array(rival_entry["position"]),
-            "permits_held": rival_permits_held,
-        })
+    _load_rivals()
     var simulation: Dictionary = config["simulation"]
     _checkout_interaction = layout.interaction_for_fixture(
         str(simulation["checkout_fixture_id"]),
@@ -283,6 +280,7 @@ func reset() -> void:
     _checkout_queue.clear()
     _dirty_cells.clear()
     _reset_stamina()
+    _load_rivals()
     _clear_store_site()
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
@@ -746,6 +744,112 @@ func _apply_hire(staff_id: String, candidate_id: String) -> bool:
     return true
 
 
+func _load_rivals() -> void:
+    _rival_stores.clear()
+    owned_branches.clear()
+    _investigated_rivals.clear()
+    for rival_entry in config["town"].get("rival_stores", []):
+        var rival_permits_held: Array[String] = []
+        rival_permits_held.assign(rival_entry.get("permits_held", []))
+        _rival_stores.append({
+            "id": str(rival_entry["id"]),
+            "position": _vec2i_from_array(rival_entry["position"]),
+            "permits_held": rival_permits_held,
+        })
+
+
+# Task #101: investigating and buying out a rival (evidence in
+# guide_town_map.rival_actions.evidence_note). Only rivals placed on the
+# guide town map carry the guide's data; others cannot be bought.
+func _rival_guide_entry(rival_id: String) -> Dictionary:
+    if not config.has("guide_town_map"):
+        return {}
+    for entry in config["guide_town_map"].get("rival_stores", []):
+        if str(entry["id"]) == rival_id:
+            return entry
+    return {}
+
+
+func rival_at(tile: Vector2i) -> String:
+    for rival in _rival_stores:
+        var origin: Vector2i = rival["position"]
+        if tile.x >= origin.x and tile.x < origin.x + 2 and tile.y >= origin.y and tile.y < origin.y + 2:
+            return str(rival["id"])
+    return ""
+
+
+func rival_is_buyable(rival_id: String) -> bool:
+    return bool(_rival_guide_entry(rival_id).get("buyable", false))
+
+
+# REMAKE_BALANCED_DEFAULT: the guide's start price grown by the land price's
+# yearly rate (the price is CONFIRMED to rise with the years and the
+# store's sales; the formula is not recovered).
+func rival_buyout_price_yen(rival_id: String) -> int:
+    var guide_data: Dictionary = _rival_guide_entry(rival_id).get("guide_data", {})
+    if not rival_is_buyable(rival_id) or not guide_data.has("buyout_yen"):
+        return 0
+    return int(round(float(guide_data["buyout_yen"]) * land_price_growth_factor()))
+
+
+func rival_investigation_cost_yen() -> int:
+    if not config.has("guide_town_map"):
+        return 0
+    return int(config["guide_town_map"]["rival_actions"]["investigation_cost_yen"])
+
+
+func rival_investigated(rival_id: String) -> bool:
+    return _investigated_rivals.has(rival_id)
+
+
+func try_investigate_rival(rival_id: String) -> bool:
+    if is_game_over or _rival_guide_entry(rival_id).is_empty() or rival_investigated(rival_id):
+        return false
+    if _rival_index(rival_id) < 0 or economy.cash_yen < rival_investigation_cost_yen():
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "rival_investigation", minute_of_day, rival_investigation_cost_yen(), {"rival_id": rival_id}
+    )
+    _investigated_rivals[rival_id] = true
+    _record_event("rival_investigated", {"rival_id": rival_id, "expense_id": expense["expense_id"]})
+    return true
+
+
+func try_buy_out_rival(rival_id: String) -> bool:
+    var index := _rival_index(rival_id)
+    if is_game_over or index < 0 or not rival_is_buyable(rival_id):
+        return false
+    var price := rival_buyout_price_yen(rival_id)
+    if economy.cash_yen < price:
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "rival_buyout", minute_of_day, price, {"rival_id": rival_id}
+    )
+    var bought: Dictionary = _rival_stores[index]
+    _rival_stores.remove_at(index)
+    owned_branches.append({"id": rival_id, "position": bought["position"]})
+    player_store_count += 1
+    # The store is no longer a competitor: the player's own store keeps the
+    # customers it shared with it (REMAKE_BALANCED_DEFAULT: the branch's own
+    # sales are not simulated, like the chain-expansion action).
+    if has_store_site():
+        _apply_store_site(store_site_origin, [])
+    _record_event("rival_bought_out", {
+        "rival_id": rival_id,
+        "cost_yen": price,
+        "player_store_count": player_store_count,
+        "expense_id": expense["expense_id"],
+    })
+    return true
+
+
+func _rival_index(rival_id: String) -> int:
+    for index in _rival_stores.size():
+        if str(_rival_stores[index]["id"]) == rival_id:
+            return index
+    return -1
+
+
 func has_store_site() -> bool:
     return store_site_origin != NO_STORE_SITE
 
@@ -774,6 +878,8 @@ func store_site_quote(origin: Vector2i) -> Dictionary:
     var others: Array = []
     for rival in _rival_stores:
         others.append(rival["position"])
+    for branch in owned_branches:
+        others.append(branch["position"])
     var result: Dictionary = store_site.quote(origin, land_price_growth_factor(), others, _bought_buildings)
     var permits := {}
     for permit_id in _permit_catalog:
@@ -1532,7 +1638,7 @@ func observation_snapshot() -> Dictionary:
     }
 
 
-const SAVE_SCHEMA_VERSION := 6
+const SAVE_SCHEMA_VERSION := 7
 
 # Deliberately not saved/restored: the active customer's mid-visit walk
 # state (position along a route, basket-so-far, checkout progress) and
@@ -1576,6 +1682,9 @@ func save_state() -> Dictionary:
         # Task #95 (schema 6): the bought site and the buildings cleared for it.
         "store_site_origin": [store_site_origin.x, store_site_origin.y],
         "bought_buildings": _bought_buildings.duplicate(),
+        # Task #101 (schema 7): rivals bought out and rivals investigated.
+        "bought_rival_ids": owned_branches.map(func(branch): return str(branch["id"])),
+        "investigated_rival_ids": _investigated_rivals.keys(),
         "weather_category_index": weather_category_index,
         "chain_visitor_milestone": {
             "last_observed_total": _chain_visitor_milestone.last_observed_total,
@@ -1668,6 +1777,14 @@ func load_state(data: Dictionary) -> bool:
     internal_rating_value = int(data["internal_rating_value"])
     star_rating = int(data["star_rating"])
     player_store_count = int(data["player_store_count"])
+    _load_rivals()
+    for rival_id in data["bought_rival_ids"]:
+        var rival_index := _rival_index(str(rival_id))
+        if rival_index >= 0:
+            owned_branches.append({"id": str(rival_id), "position": _rival_stores[rival_index]["position"]})
+            _rival_stores.remove_at(rival_index)
+    for rival_id in data["investigated_rival_ids"]:
+        _investigated_rivals[str(rival_id)] = true
     _clear_store_site()
     var saved_site := _vec2i_from_array(data["store_site_origin"])
     if saved_site != NO_STORE_SITE and store_site != null:
@@ -2475,6 +2592,8 @@ func _require_save_data(data: Dictionary) -> void:
         "player_store_count",
         "store_site_origin",
         "bought_buildings",
+        "bought_rival_ids",
+        "investigated_rival_ids",
         "weather_category_index",
         "chain_visitor_milestone",
         "permits_held",

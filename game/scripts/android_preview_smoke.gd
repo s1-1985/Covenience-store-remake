@@ -81,6 +81,19 @@ func _run() -> void:
         return
     if not _require(game.simulation._rival_stores.size() == 2 and "競合2店" in game.town_label.text, "The rival 本店 and 2号店 are in town: " + game.town_label.text):
         return
+    # Task #101: tapping the rival 2号店 on the town map offers 調査/買収/何もしない.
+    game.show_town_map_button.pressed.emit()
+    game._on_map_tapped(Vector2i(28, 10))
+    if not _require(game.rival_panel.visible and "買収する（¥46,721,490）" == game.rival_buyout_button.text, "The rival menu offers the buyout: " + game.rival_buyout_button.text):
+        return
+    game.rival_buyout_button.pressed.emit()
+    if not _require(game.simulation.player_store_count == 2 and "競合1店" in game.town_label.text and not game.rival_panel.visible, "Buying out the 2号店 makes it the player's: " + game.town_label.text):
+        return
+    game._on_map_tapped(Vector2i(9, 11))
+    if not _require(game.rival_buyout_button.disabled and "本店は買収できません" == game.rival_buyout_button.text, "The 本店 cannot be bought"):
+        return
+    game.find_child("RivalLeaveButton", true, false).pressed.emit()
+    game.show_town_map_button.pressed.emit()
     if not _require(ThemeDB.fallback_font.has_char(0x5E97), "Japanese glyphs must be available"):
         return
     for tick in range(500):
