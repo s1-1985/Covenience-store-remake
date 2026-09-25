@@ -535,7 +535,7 @@ msgid "staff-2"
 msgstr "担当2"
 
 msgid "staff-3"
-msgstr "担当3"
+msgstr "店長"
 
 msgid "idle"
 msgstr "待機中"
@@ -648,3 +648,143 @@ msgstr "小型温冷飲料自動販売機"
 msgid "large_hot_cold_drink_vending"
 msgstr "大型温冷飲料自動販売機"
 
+msgid "chain expanded"
+msgstr "新しい店舗を出店した"
+
+msgid "chain visitor milestone fired"
+msgstr "来客数の記念イベントが起きた"
+
+msgid "checkout anger triggered"
+msgstr "レジ待ちでお客さんが怒った"
+
+msgid "checkout completed"
+msgstr "会計が済んだ"
+
+msgid "checkout started"
+msgstr "会計を始めた"
+
+msgid "customer ejected"
+msgstr "お客さんをつまみ出した"
+
+msgid "customer entered"
+msgstr "お客さんが来店した"
+
+msgid "customer exited"
+msgstr "お客さんが帰った"
+
+msgid "customer leaving without sale"
+msgstr "お客さんが何も買わずに帰る"
+
+msgid "customer queued for checkout"
+msgstr "お客さんがレジに並んだ"
+
+msgid "customer reached product"
+msgstr "お客さんが商品棚に着いた"
+
+msgid "fixture maintenance charged"
+msgstr "設備の維持費を払った"
+
+msgid "fixture purchased"
+msgstr "設備を購入した"
+
+msgid "fixture relocated"
+msgstr "設備を移動した"
+
+msgid "fixture rotated"
+msgstr "設備を回転した"
+
+msgid "fixture sold"
+msgstr "設備を売却した"
+
+msgid "fixtures swapped"
+msgstr "設備を入れ替えた"
+
+msgid "game over"
+msgstr "ゲームオーバー"
+
+msgid "inventory restock"
+msgstr "商品を補充した"
+
+msgid "month end settlement"
+msgstr "月末の決算"
+
+msgid "permit purchased"
+msgstr "販売許可を取った"
+
+msgid "price policy changed"
+msgstr "価格を変更した"
+
+msgid "product picked"
+msgstr "お客さんが商品をかごに入れた"
+
+msgid "product procured"
+msgstr "商品を仕入れた"
+
+msgid "product unavailable"
+msgstr "商品が品切れだった"
+
+msgid "promotion fired"
+msgstr "広告が出た"
+
+msgid "promotion scheduled"
+msgstr "広告を申し込んだ"
+
+msgid "restock started"
+msgstr "店員が補充を始めた"
+
+msgid "sample layout loaded"
+msgstr "内装を見本に入れ替えた"
+
+msgid "staff hired"
+msgstr "店員を雇った"
+
+msgid "staff rest started"
+msgstr "店員が休憩室で休み始めた"
+
+msgid "staff returning to post"
+msgstr "店員が持ち場に戻る"
+
+msgid "staff skill growth"
+msgstr "店員の能力が上がった"
+
+msgid "staff wages charged"
+msgstr "人件費を払った"
+
+msgid "store rating evaluated"
+msgstr "店舗評価が決まった"
+
+msgid "  [PAUSED]"
+msgstr "　（一時停止中）"
+
+msgid "%s (%s)"
+msgstr "%s（%s）"
+
+msgid "Customer %s"
+msgstr "お客さん%s"
+
+msgid "fixture_kind_checkout"
+msgstr "レジ"
+
+msgid "fixture_kind_shelf"
+msgstr "棚"
+
+msgid "fixture_kind_amenity"
+msgstr "設備"
+
+msgid "fixture_kind_break_room"
+msgstr "休憩室"
+
+msgid "fixture_kind_parking"
+msgstr "駐車場"
+
+msgid "prototype-bread"
+msgstr "パン"
+
+msgid "prototype-drink"
+msgstr "飲み物"
+
+msgid "% change from list price"
+msgstr "%（定価比）"
+
+msgid "to_restock"
+msgstr "補充に向かっている"

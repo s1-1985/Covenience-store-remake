@@ -1953,6 +1953,13 @@ whole roster automatically. The smoke rating test now computes security/cleaning
 instead of literals written for 2 people. Section 21.3's "manager 3rd slot not implemented" is resolved;
 the manager-education growth bonus and スーパー社員 remain open.
 
+**Task #92 (2026-09-25, decision 0163)**: the UI is always Japanese. Every tr() string already had a ja.po
+entry; English showed because the locale followed the device, and some text bypassed tr() (event names,
+[PAUSED], the price suffix, raw ids like shelf-bread-1/customer-12). main.gd/main_menu.gd now set_locale("ja")
+at startup; event names are translated; ids go through _fixture_label/_product_label/_customer_label/
+_candidate_label. staff-3 shows as 店長. A contract test requires a translation for every tr() string and
+every recorded event name.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

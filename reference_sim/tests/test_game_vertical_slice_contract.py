@@ -2796,7 +2796,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # auto-pauses, and can be recovered from via "Play Again".
         self.assertIn("economy_ui_scene.calendar_label.text != expected_calendar_text", smoke)
         self.assertIn("economy_ui_scene.simulation.clear_condition_met = true", smoke)
-        self.assertIn('economy_ui_scene.scenario_status_label.text.find("10 stores") < 0', smoke)
+        self.assertIn('economy_ui_scene.scenario_status_label.text.find("10") < 0', smoke)
         self.assertIn("economy_ui_scene.simulation.economy.cash_yen = -1", smoke)
         self.assertIn("economy_ui_scene.simulation._evaluate_terminal_state()", smoke)
         self.assertIn(
@@ -3035,6 +3035,30 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("a store must run with its manager plus two staff", smoke)
 
+    def test_ui_is_always_japanese(self):
+        # Task #92: the original is Japanese; every player-facing string has
+        # a Japanese entry and the game fixes the locale to ja.
+        po = (GAME_ROOT / "locale" / "ja.po").read_text(encoding="utf-8")
+        msgids = set(re.findall(r'^msgid "(.*)"$', po, re.M))
+        scripts = [
+            path for path in (GAME_ROOT / "scripts").rglob("*.gd")
+            if "smoke" not in path.name and not path.name.startswith("_")
+        ]
+        missing = set()
+        events = set()
+        for path in scripts:
+            text = path.read_text(encoding="utf-8")
+            missing |= {m for m in re.findall(r'\btr\("((?:[^"\\]|\\.)*)"\)', text) if m not in msgids}
+            events |= set(re.findall(r'_record_event\("([a-z_]+)"', text))
+        self.assertEqual(missing, set())
+        self.assertEqual({e.replace("_", " ") for e in events} - msgids, set())
+        for scene in ("main.gd", "main_menu.gd"):
+            source = (GAME_ROOT / "scripts" / scene).read_text(encoding="utf-8")
+            self.assertIn('TranslationServer.set_locale("ja")', source)
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        self.assertIn('event_label.text = tr(str(snapshot["last_event"]))', main)
+        self.assertIn("procure_fixture_option.add_item(_fixture_label(fixture_id))", main)
+
     def test_store_rating_gd_thresholds_match_reference_sim_row_for_row(self):
         # Task #86: game/'s copy of the guide's rating table (printed
         # identically on book pages 39 and 75) must not drift from
@@ -3146,7 +3170,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             main,
         )
 
-        self.assertIn('"Year %d · Month %d, Day %d" % [', smoke)
+        self.assertIn('economy_ui_scene.tr("Year %d · Month %d, Day %d") % [', smoke)
         self.assertIn(
             "economy_ui_scene.simulation.month_count / economy_ui_scene.simulation.MONTHS_PER_YEAR + 1",
             smoke,

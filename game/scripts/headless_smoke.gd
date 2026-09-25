@@ -2713,7 +2713,7 @@ func _initialize() -> void:
     if not economy_ui_scene.town_view.visible or economy_ui_scene.store_view.visible:
         _fail("pressing 'Show town map' must show the town view and hide the store view")
         return
-    if economy_ui_scene.show_town_map_button.text != "Show store":
+    if economy_ui_scene.show_town_map_button.text != economy_ui_scene.tr("Show store"):
         _fail("the toggle button must relabel itself while showing the town view")
         return
     economy_ui_scene._on_show_town_map_pressed()
@@ -2853,7 +2853,9 @@ func _initialize() -> void:
     # format task #75 originally invented without checking that evidence.
     var expected_calendar_year: int = economy_ui_scene.simulation.month_count / economy_ui_scene.simulation.MONTHS_PER_YEAR + 1
     var expected_calendar_month: int = economy_ui_scene.simulation.month_count % economy_ui_scene.simulation.MONTHS_PER_YEAR + 1
-    var expected_calendar_text := "Year %d · Month %d, Day %d" % [
+    # Task #92: the game always runs in Japanese, so the expected text goes
+    # through the same translation the label uses.
+    var expected_calendar_text := economy_ui_scene.tr("Year %d · Month %d, Day %d") % [
         expected_calendar_year,
         expected_calendar_month,
         economy_ui_scene.simulation._days_completed_this_month + 1,
@@ -2874,7 +2876,7 @@ func _initialize() -> void:
 
     economy_ui_scene.simulation.clear_condition_met = true
     economy_ui_scene._refresh_ui()
-    if economy_ui_scene.scenario_status_label.text.find("10 stores") < 0:
+    if economy_ui_scene.scenario_status_label.text.find("10") < 0 or economy_ui_scene.scenario_status_label.text.is_empty():
         _fail("the scenario-clear label must announce the target once clear_condition_met is true")
         return
     economy_ui_scene.simulation.clear_condition_met = false
