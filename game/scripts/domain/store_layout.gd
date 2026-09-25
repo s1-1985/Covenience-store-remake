@@ -101,6 +101,32 @@ func find_path(start: Vector2i, goal: Vector2i) -> Array[Vector2i]:
     return []
 
 
+# Same breadth-first search as find_path(), additionally treating the keys of
+# `avoid` (cells currently occupied by other people) as impassable.
+func find_path_avoiding(start: Vector2i, goal: Vector2i, avoid: Dictionary) -> Array[Vector2i]:
+    if start == goal:
+        return []
+    var frontier: Array[Vector2i] = [start]
+    var head := 0
+    var came_from: Dictionary = {start: start}
+    while head < frontier.size():
+        var current: Vector2i = frontier[head]
+        head += 1
+        for direction in CARDINAL_DIRECTIONS:
+            var candidate := current + direction
+            if not _inside(candidate):
+                continue
+            if (blocked.has(candidate) or avoid.has(candidate)) and candidate != goal:
+                continue
+            if came_from.has(candidate):
+                continue
+            came_from[candidate] = current
+            if candidate == goal:
+                return _reconstruct_path(came_from, start, goal)
+            frontier.append(candidate)
+    return []
+
+
 func has_path(start: Vector2i, goal: Vector2i) -> bool:
     return start == goal or not find_path(start, goal).is_empty()
 

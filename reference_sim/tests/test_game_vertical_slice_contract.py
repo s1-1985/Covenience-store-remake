@@ -651,7 +651,23 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func customer_arrives_this_minute() -> bool:", demand_policy)
         self.assertIn("func demand_admit_if_due() -> bool:", simulation)
         self.assertIn("func tick_idle_for_demand() -> bool:", simulation)
-        self.assertIn("simulation.tick_idle_for_demand()", main)
+        # Task #87: main.gd's real-time loop is tick(), which also rolls
+        # arrivals while customers are already shopping (previously arrivals
+        # were only rolled once the store was empty, serializing visits).
+        self.assertIn("simulation.tick()", main)
+        self.assertNotIn("simulation.tick_idle_for_demand()", main)
+        self.assertIn("func tick() -> void:", simulation)
+        self.assertIn(
+            "if customers.can_admit_concurrent() and demand.customer_arrives_this_minute():",
+            simulation,
+        )
+        self.assertIn(
+            "more than one customer must be able to shop at the same time in the default game",
+            smoke,
+        )
+        self.assertIn(
+            "customers must keep completing visits across a full day without gridlock", smoke
+        )
         self.assertIn("a saturated demand rate must always admit a customer", smoke)
         self.assertIn("a zero demand rate must never admit a customer", smoke)
         self.assertIn(
@@ -2248,7 +2264,9 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
 
-    def test_automatic_restock_task_assignment_is_disabled_by_default_and_provisional(self):
+    def test_automatic_restock_task_assignment_is_enabled_by_default(self):
+        # Task #87: staff restocking on their own is confirmed first-title
+        # behavior; it had been disabled only for an old scripted scenario.
         simulation_config = self.config["simulation"]
         for key in (
             "restock_ticks",
@@ -2258,7 +2276,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             self.assertIn(key, simulation_config)
         self.assertGreater(simulation_config["restock_ticks"], 0)
         self.assertGreaterEqual(simulation_config["restock_trigger_stock_units_at_or_below"], 0)
-        self.assertIs(simulation_config["restock_task_enabled"], False)
+        self.assertIs(simulation_config["restock_task_enabled"], True)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", simulation_config["restock_task_evidence_note"])
 
         staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
             encoding="utf-8"
@@ -2278,6 +2297,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "an idle non-checkout staff member must be dispatched once a product sells out",
             smoke,
         )
+        self.assertIn("staff must restock shelves on their own in the default game", smoke)
         self.assertIn(
             "fixture relocation must be blocked while a restock task is active", smoke
         )
@@ -2778,6 +2798,31 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
         self.assertIn("economy_ui_scene._on_reset_pressed()", smoke)
+
+    def test_entrance_and_exit_are_side_by_side_and_shoppers_detour(self):
+        # Task #87: the gameplay-video frames show the IN and OUT door mats
+        # directly next to each other, and customers can route around
+        # congestion (PROJECT_MEMORY.md section 4).
+        store = self.config["store"]
+        entry = store["entry_subcell"]
+        exit_point = store["exit_subcell"]
+        self.assertEqual(abs(entry[0] - exit_point[0]) + abs(entry[1] - exit_point[1]), 1)
+        self.assertIn("crop_xyxy [410,240,456,285] and [456,240,503,285]", store["size_tier_evidence_note"])
+        manifest = json.loads(
+            (REPO_ROOT / "assets" / "raw" / "conveni_additional_assets_v1" / "manifest.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        crops = {a["id"]: a["source"]["crop_xyxy"] for a in manifest["assets"] if a["id"].startswith("entrance_")}
+        self.assertEqual(crops["entrance_in"][2], crops["entrance_out"][0])
+        self.assertEqual(crops["entrance_in"][1], crops["entrance_out"][1])
+
+        layout = (GAME_ROOT / "scripts" / "domain" / "store_layout.gd").read_text(encoding="utf-8")
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("func find_path_avoiding(", layout)
+        self.assertIn("func _try_detour(mover) -> bool:", simulation)
 
     def test_store_rating_gd_thresholds_match_reference_sim_row_for_row(self):
         # Task #86: game/'s copy of the guide's rating table (printed

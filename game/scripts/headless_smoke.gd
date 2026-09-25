@@ -105,6 +105,32 @@ func _initialize() -> void:
         return
 
     var config: Dictionary = parsed
+
+    # Task #87: the shipped config run the way main.gd runs it (tick()),
+    # for one representative business day. Before this, arrivals were only
+    # rolled once the store was empty (one visit at a time), two shoppers
+    # meeting head-on could block each other forever, and automatic staff
+    # restocking was switched off, so the restock clerk never moved.
+    var live_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    live_simulation.economy.cash_yen = 100_000_000
+    var live_max_active := 0
+    for live_minute in range(960):
+        live_simulation.tick()
+        live_max_active = max(live_max_active, live_simulation.customers.active_customers().size())
+    if live_max_active < 2:
+        _fail("more than one customer must be able to shop at the same time in the default game")
+        return
+    if int(live_simulation.snapshot()["completed_visits"]) < 10:
+        _fail("customers must keep completing visits across a full day without gridlock")
+        return
+    if live_simulation.event_log.count_type("restock_started") < 1:
+        _fail("staff must restock shelves on their own in the default game")
+        return
+
+    # The scenarios below predate task #87 and script exact sell-out
+    # sequences, so they keep automatic restocking off; the dedicated
+    # restock scenario further down turns it back on explicitly.
+    config["simulation"]["restock_task_enabled"] = false
     var simulation = VerticalSliceSimulationScript.new(config)
     if simulation.staff.members.size() < 2:
         _fail("actor roster smoke requires multiple retained staff states")
@@ -873,6 +899,10 @@ func _initialize() -> void:
     # queued customers are deliberately designed to converge (see
     # _subcell_is_free_for's own exemption).
     var position_collision_detected := false
+    var concurrent_interaction_cells: Dictionary = {}
+    for concurrent_fixture in concurrent_simulation.layout.fixtures:
+        var concurrent_cell: Array = concurrent_fixture["interaction_subcell"]
+        concurrent_interaction_cells[Vector2i(int(concurrent_cell[0]), int(concurrent_cell[1]))] = true
     var customer_b_stalled_while_moving := false
     var previous_customer_b_position: Vector2i = concurrent_simulation.customers.customer("concurrent-b").position
     while (
@@ -893,6 +923,10 @@ func _initialize() -> void:
                 continue  # same shared cell, same exemption
             if customer.phase == "shopping":
                 continue  # stationed at a shelf's interaction cell, same exemption
+            # Task #87: two shoppers who finish at the same shelf leave from
+            # its (shared, exempt) interaction cell on the same tick.
+            if concurrent_interaction_cells.has(customer.position):
+                continue
             if seen_positions.has(customer.position):
                 position_collision_detected = true
             seen_positions[customer.position] = true

@@ -365,6 +365,23 @@ func tick_idle_for_demand() -> bool:
     return demand_admit_if_due()
 
 
+# Task #87: the real-time game loop. Before this, main.gd only ran the
+# arrival roll (tick_idle_for_demand) once every admitted customer had
+# left, and step() never admitted anyone -- so no matter how busy the store
+# was, customers entered strictly one visit at a time. The original fills
+# the store with many shoppers at once (a single gameplay-video frame,
+# assets/raw/conveni_additional_assets_v1/reference/video_900s.png, shows
+# about eight customers inside a small store simultaneously). step() and
+# tick_idle_for_demand() keep their narrower semantics for the existing
+# scripted smoke scenarios.
+func tick() -> void:
+    if is_game_over:
+        return
+    step()
+    if customers.can_admit_concurrent() and demand.customer_arrives_this_minute():
+        _start_default_customer()
+
+
 # Task #80: CONFIRMED_OFFICIAL (docs/research/strategy-guide-third-companion-
 # book-full-extraction-2026-09-24.md, PDF1 p.68-71 Q&A: manual restock
 # "stunts staff 補充 growth") -- unlike _complete_restock() (the autonomous
@@ -1002,8 +1019,33 @@ func _subcell_is_free_for(mover, target: Vector2i) -> bool:
 
 func _try_move_along_route(mover, next_phase: String) -> bool:
     if not mover.route.is_empty() and not _subcell_is_free_for(mover, mover.route[0]):
-        return false
+        if not _try_detour(mover):
+            return false
     return mover.move_along_route(next_phase)
+
+
+# Task #87: CONFIRMED_COMMUNITY (PROJECT_MEMORY.md section 4, from the
+# first-title wiki's 内装 page): "Multiple routes can allow customers to
+# detour around congestion." When the next cell is taken, look for another
+# route to the same goal around everyone currently standing in the way and
+# take it if its first step is free; otherwise keep waiting (a 1/2-masu
+# corridor with no way around still congests, per the passage-width rule
+# above). Once customers could shop concurrently (tick()), the old "always
+# wait" behavior let two shoppers heading at each other block forever.
+func _try_detour(mover) -> bool:
+    var goal: Vector2i = mover.route[mover.route.size() - 1]
+    var occupied: Dictionary = {}
+    for customer in customers.active_customers():
+        if customer != mover and not _subcell_is_free_for(mover, customer.position):
+            occupied[customer.position] = true
+    for staff_member in staff.all_staff():
+        if staff_member != mover and not _subcell_is_free_for(mover, staff_member.position):
+            occupied[staff_member.position] = true
+    var detour: Array[Vector2i] = layout.find_path_avoiding(mover.position, goal, occupied)
+    if detour.is_empty() or not _subcell_is_free_for(mover, detour[0]):
+        return false
+    mover.route = detour
+    return true
 
 
 func _advance_customer(customer) -> void:
