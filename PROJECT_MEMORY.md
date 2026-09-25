@@ -1824,7 +1824,7 @@ conveni_additional_assets_v1/reference/video_900s.png` and `video_904s.png`) cle
 artwork at native resolution and are ready to use for that follow-up; extracting and catalog-ID-matching
 individual fixture crops from them is a larger, separate task than this one's floor/wall/entrance wiring.
 
-**Task #84 (2026-09-25, decision 0154)**: user said to keep going autonomously, with a standing reminder
+**Task #84 (2026-09-25, decision 0155 -- originally numbered 0154, renumbered after colliding with PR #261's own 0154)**: user said to keep going autonomously, with a standing reminder
 to always keep first-title fidelity in mind. Attempted to start on task #83's flagged fixture-sprite
 follow-up first, but cropping candidate regions out of `video_900s.png` for closer inspection showed the
 top-row candidates are plausibly a UI menu overlay (an advertising-selection-style red bar), not confirmed
@@ -2084,7 +2084,7 @@ Per CLAUDE.md's discipline, these are recorded rather than silently picked one w
   `-part2`; still unresolved.
 - **Station shopping-population figure**: 2,000 on one page vs. 2,240 on another page of the same
   book -- possibly different size tiers rather than a real conflict; not resolved.
-- **Promotion popularity-boost decay condition (found in task #84, decision 0154)**: two different
+- **Promotion popularity-boost decay condition (found in task #84, decision 0155)**: two different
   strategy guides describe the ad-popularity-boost decay differently. The third companion book
   (`strategy-guide-third-companion-book-full-extraction-2026-09-24.md` PDF1 p.36-37) states the
   effect is universal and one-day-only for every store regardless of rating: "広告の効果が持続する
