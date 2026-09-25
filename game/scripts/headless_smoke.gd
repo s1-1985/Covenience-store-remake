@@ -241,6 +241,10 @@ func _initialize() -> void:
     if simulation.staff.members.size() < 2:
         _fail("actor roster smoke requires multiple retained staff states")
         return
+    # Task #91: 店長 + 店員2人 (クイックリファレンス p.6).
+    if simulation.staff.members.size() != 3 or not simulation.staff.members.has(str(config["staff"]["manager_staff_id"])):
+        _fail("a store must run with its manager plus two staff")
+        return
     if simulation.staff.checkout_staff().staff_id != str(config["staff"]["checkout_staff_id"]):
         _fail("checkout staff selection must match the explicit provisional config")
         return
@@ -1840,13 +1844,21 @@ func _initialize() -> void:
     if abs(float(rating_event_details["service_value"]) - expected_service_value) > 0.0000001:
         _fail("service_value must equal the average staff service_skill plus any fixture service bonuses")
         return
-    if abs(float(rating_event_details["security_value"]) - 57.0) > 0.0000001:
+    # Task #91: summed over the whole roster (3 since the manager slot was
+    # added) times the small store's 1.5 size-tier multiplier, instead of a
+    # literal worked out for the old 2-person roster.
+    var expected_security_value := 0.0
+    var expected_cleaning_value := 0.0
+    for rating_staff_member in rating_staff:
+        expected_security_value += float(rating_staff_member.security_skill) * 1.5
+        expected_cleaning_value += float(rating_staff_member.cleaning_skill) * 1.5
+    if abs(float(rating_event_details["security_value"]) - expected_security_value) > 0.0000001:
         _fail("security_value must equal total staff security_skill times the store's size-tier multiplier")
         return
-    if abs(float(rating_event_details["cleaning_value"]) - 51.0) > 0.0000001:
+    if abs(float(rating_event_details["cleaning_value"]) - expected_cleaning_value) > 0.0000001:
         _fail("cleaning_value must equal total staff cleaning_skill times the store's size-tier multiplier")
         return
-    # popularity=0, cleaning=51.0, security=57.0, 2 distinct stocked
+    # popularity=0, cleaning/security as computed above, 2 distinct stocked
     # products (assortment_score=10.0), opening_minutes_per_day=960
     # (hours_score=66.6667); service_value is expected_service_value above
     # (growth-dependent, see comment there). Recomputed with the same
@@ -1854,12 +1866,12 @@ func _initialize() -> void:
     # hand-derived literal that would go stale the moment checkout growth
     # changes service_value.
     var expected_customer_share_percent: int = customer_share.compute_customer_share_percent(
-        0, expected_service_value, 51.0, 57.0, 2, 960
+        0, expected_service_value, expected_cleaning_value, expected_security_value, 2, 960
     )
     if int(rating_event_details["customer_share_percent"]) != expected_customer_share_percent:
         _fail("customer_share_percent must be recomputed from CustomerShare.compute_customer_share_percent()")
         return
-    if abs(rating_simulation.demand.customer_share_percent - 25.0) > 0.0000001:
+    if abs(rating_simulation.demand.customer_share_percent - float(expected_customer_share_percent)) > 0.0000001:
         _fail("demand.customer_share_percent must be overwritten by the monthly store rating evaluation")
         return
     if rating_simulation.star_rating != store_rating.star_rank_for_internal_value(
@@ -2701,7 +2713,7 @@ func _initialize() -> void:
     if not economy_ui_scene.town_view.visible or economy_ui_scene.store_view.visible:
         _fail("pressing 'Show town map' must show the town view and hide the store view")
         return
-    if economy_ui_scene.show_town_map_button.text != "Show store":
+    if economy_ui_scene.show_town_map_button.text != economy_ui_scene.tr("Show store"):
         _fail("the toggle button must relabel itself while showing the town view")
         return
     economy_ui_scene._on_show_town_map_pressed()
@@ -2737,10 +2749,22 @@ func _initialize() -> void:
         _fail("the town view must draw the guide's beginner-map town")
         return
     var town_tile_pixels: float = economy_ui_scene.town_view.map_tile_pixels
-    var town_right_edge: float = economy_ui_scene.town_view.position.x + 41 * town_tile_pixels
-    if town_tile_pixels < 8.0 or town_right_edge > (economy_ui_scene.get_node("UI/Panel") as Control).offset_left:
+    var town_shown: Vector2i = economy_ui_scene.town_view.view_tiles()
+    var town_right_edge: float = economy_ui_scene.town_view.position.x + town_shown.x * town_tile_pixels
+    if town_tile_pixels < 16.0 or town_right_edge > (economy_ui_scene.get_node("UI/Panel") as Control).offset_left:
         _fail("the town map must be legible and fit left of the side panel")
         return
+    # Task #93: the view scrolls in whole tiles and stops at the town's edge.
+    economy_ui_scene.town_view.view_origin_tile = Vector2i.ZERO
+    economy_ui_scene.town_view.scroll_by_tiles(Vector2i(-5, -5))
+    if economy_ui_scene.town_view.view_origin_tile != Vector2i.ZERO:
+        _fail("the town view must not scroll past the town's top-left edge")
+        return
+    economy_ui_scene.town_view.scroll_by_tiles(Vector2i(1000, 1000))
+    if economy_ui_scene.town_view.view_origin_tile != Vector2i(41, 35) - town_shown:
+        _fail("the town view must stop at the town's bottom-right edge")
+        return
+    economy_ui_scene.town_view.center_on_store()
 
     # Task #78: EditModeOption/SellFixtureButton/DeselectFixtureButton wiring
     # against the real instantiated main.tscn scene. Reuses fixture-purchase-1
@@ -2841,7 +2865,9 @@ func _initialize() -> void:
     # format task #75 originally invented without checking that evidence.
     var expected_calendar_year: int = economy_ui_scene.simulation.month_count / economy_ui_scene.simulation.MONTHS_PER_YEAR + 1
     var expected_calendar_month: int = economy_ui_scene.simulation.month_count % economy_ui_scene.simulation.MONTHS_PER_YEAR + 1
-    var expected_calendar_text := "Year %d · Month %d, Day %d" % [
+    # Task #92: the game always runs in Japanese, so the expected text goes
+    # through the same translation the label uses.
+    var expected_calendar_text := economy_ui_scene.tr("Year %d · Month %d, Day %d") % [
         expected_calendar_year,
         expected_calendar_month,
         economy_ui_scene.simulation._days_completed_this_month + 1,
@@ -2862,7 +2888,7 @@ func _initialize() -> void:
 
     economy_ui_scene.simulation.clear_condition_met = true
     economy_ui_scene._refresh_ui()
-    if economy_ui_scene.scenario_status_label.text.find("10 stores") < 0:
+    if economy_ui_scene.scenario_status_label.text.find("10") < 0 or economy_ui_scene.scenario_status_label.text.is_empty():
         _fail("the scenario-clear label must announce the target once clear_condition_met is true")
         return
     economy_ui_scene.simulation.clear_condition_met = false

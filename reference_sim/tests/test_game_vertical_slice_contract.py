@@ -986,7 +986,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # The two active roster slots now bind to real named candidates
         # instead of a flat, identical placeholder repeated on both.
         members = self.config["staff"]["members"]
-        self.assertEqual(len(members), 2)
+        self.assertEqual(len(members), 3)
         candidates_by_id = {entry["candidate_id"]: entry for entry in candidates}
         for member in members:
             self.assertIn("candidate_id", member)
@@ -1683,7 +1683,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         candidates_by_id = {c.id: c for c in STAFF_CANDIDATES}
         members = self.config["staff"]["members"]
-        self.assertEqual(len(members), 2)
+        self.assertEqual(len(members), 3)
 
         # salary_yen_per_day_24h on each active staff.members entry must be
         # CONFIRMED_OFFICIAL, duplicated verbatim from that member's own
@@ -1749,7 +1749,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         candidates_by_id = {c.id: c for c in STAFF_CANDIDATES}
         members = self.config["staff"]["members"]
-        self.assertEqual(len(members), 2)
+        self.assertEqual(len(members), 3)
 
         # Every *_skill_growth_ceiling on each active staff.members entry
         # must be CONFIRMED_OFFICIAL, duplicated verbatim from that
@@ -2627,14 +2627,10 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # No invented facility layout: task #72 kept the 52 facility sprites
         # out entirely because no placement data existed. Task #90 added
         # placement data read from the guide p.11 screenshot
-        # (guide_town_map); the only sprites drawn are the three 1x1 house
-        # sprites on that map's building tiles, never a facility type placed
-        # by this project's own guess.
-        self.assertEqual(
-            sorted(set(re.findall(r'"(\w+)"', town_view.split("const HOUSE_SPRITE_IDS := ")[1].split("\n")[0]))),
-            ["house_small_a", "house_small_b", "house_small_c"],
-        )
-        self.assertIn('"B":', town_view)
+        # (guide_town_map); since task #93 every building drawn comes from
+        # that data's buildings list (one per building tile or 2x2 block of
+        # them), never a facility placed by this project's own guess.
+        self.assertIn('for building in guide["buildings"]:', town_view)
         self.assertIn('return simulation.config.get("guide_town_map", {})', town_view)
         self.assertIn(
             "Inventing\n# a full facility layout would mean guessing an unconfirmed town spatial",
@@ -2796,7 +2792,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # auto-pauses, and can be recovered from via "Play Again".
         self.assertIn("economy_ui_scene.calendar_label.text != expected_calendar_text", smoke)
         self.assertIn("economy_ui_scene.simulation.clear_condition_met = true", smoke)
-        self.assertIn('economy_ui_scene.scenario_status_label.text.find("10 stores") < 0', smoke)
+        self.assertIn('economy_ui_scene.scenario_status_label.text.find("10") < 0', smoke)
         self.assertIn("economy_ui_scene.simulation.economy.cash_yen = -1", smoke)
         self.assertIn("economy_ui_scene.simulation._evaluate_terminal_state()", smoke)
         self.assertIn(
@@ -2994,9 +2990,34 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertEqual(town["source_image"], "assets/raw/conveni_guide_town_v1/" + asset["file"])
 
         town_view = (GAME_ROOT / "scripts" / "town_view.gd").read_text(encoding="utf-8")
-        self.assertIn("# REMAKE_BALANCED_DEFAULT: building tiles use this project's own generated", town_view)
-        for sprite_id in ("house_small_a", "house_small_b", "house_small_c"):
-            self.assertTrue((GAME_ROOT / "assets" / "town" / f"{sprite_id}.png").is_file())
+        # Task #93: drawn with the generated terrain tiles and building
+        # sprites; every sprite the data names ships with the game and comes
+        # from the generated package, and each building stands only on
+        # building tiles.
+        self.assertIn("REMAKE_BALANCED_DEFAULT: which terrain tile stands for each", town_view)
+        raw = REPO_ROOT / "assets" / "raw" / "conveni_map_assets_v2"
+        for tile_id in set(town["terrain_tiles"].values()) | {
+            "map_road_ns", "map_road_cross", "map_road_t_wes", "map_crossing_basic", "map_road_end_s"
+        }:
+            self.assertTrue((GAME_ROOT / "assets" / "town" / f"{tile_id}.png").is_file(), tile_id)
+            self.assertTrue((raw / "terrain" / "tiles_64" / f"{tile_id}.png").is_file(), tile_id)
+        occupied = set()
+        for building in town["buildings"]:
+            sprite = building["sprite"]
+            self.assertTrue((GAME_ROOT / "assets" / "town" / f"{sprite}.png").is_file(), sprite)
+            self.assertTrue((raw / "sprites" / f"{sprite}.png").is_file(), sprite)
+            x, y = building["tile"]
+            w, h = building["size"]
+            for dy in range(h):
+                for dx in range(w):
+                    self.assertEqual(rows[y + dy][x + dx], "B")
+                    self.assertNotIn((x + dx, y + dy), occupied)
+                    occupied.add((x + dx, y + dy))
+        building_tiles = {(x, y) for y, row in enumerate(rows) for x, c in enumerate(row) if c == "B"}
+        self.assertEqual(occupied, building_tiles)
+        self.assertGreaterEqual(len({b["sprite"] for b in town["buildings"]}), 10)
+        self.assertEqual(town["store_mark_sprite"], "map_blue_hq")
+        self.assertTrue((GAME_ROOT / "assets" / "town" / "map_blue_hq.png").is_file())
 
     def test_town_map_block_matches_a_fresh_reading_of_the_screenshot(self):
         # Needs numpy and Pillow (not installed in CI); run locally after
@@ -3014,6 +3035,50 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         builder = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(builder)
         self.assertEqual(builder.build(), self.config["guide_town_map"])
+
+    def test_every_store_has_a_manager_and_two_staff(self):
+        # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は
+        # 2人まで雇用できる」 -> manager + 2 staff = 3 per store.
+        staff = self.config["staff"]
+        members = {member["id"]: member for member in staff["members"]}
+        self.assertEqual(len(members), 3)
+        manager = members[staff["manager_staff_id"]]
+        self.assertEqual(manager["role"], "manager")
+        self.assertNotEqual(staff["manager_staff_id"], staff["checkout_staff_id"])
+        candidates = self.config["staff_candidates"]
+        top_education = max(c["education"] for c in candidates if c.get("education") is not None)
+        bound = {c["candidate_id"]: c for c in candidates}[manager["candidate_id"]]
+        self.assertEqual(bound["education"], top_education)
+        self.assertIn("店長が必ず必要", staff["manager_evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", staff["manager_evidence_note"])
+        guide_posts = self.config["guide_starting_store"]["staff_start_subcells"]
+        self.assertEqual(set(guide_posts), set(members))
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a store must run with its manager plus two staff", smoke)
+
+    def test_ui_is_always_japanese(self):
+        # Task #92: the original is Japanese; every player-facing string has
+        # a Japanese entry and the game fixes the locale to ja.
+        po = (GAME_ROOT / "locale" / "ja.po").read_text(encoding="utf-8")
+        msgids = set(re.findall(r'^msgid "(.*)"$', po, re.M))
+        scripts = [
+            path for path in (GAME_ROOT / "scripts").rglob("*.gd")
+            if "smoke" not in path.name and not path.name.startswith("_")
+        ]
+        missing = set()
+        events = set()
+        for path in scripts:
+            text = path.read_text(encoding="utf-8")
+            missing |= {m for m in re.findall(r'\btr\("((?:[^"\\]|\\.)*)"\)', text) if m not in msgids}
+            events |= set(re.findall(r'_record_event\("([a-z_]+)"', text))
+        self.assertEqual(missing, set())
+        self.assertEqual({e.replace("_", " ") for e in events} - msgids, set())
+        for scene in ("main.gd", "main_menu.gd"):
+            source = (GAME_ROOT / "scripts" / scene).read_text(encoding="utf-8")
+            self.assertIn('TranslationServer.set_locale("ja")', source)
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        self.assertIn('event_label.text = tr(str(snapshot["last_event"]))', main)
+        self.assertIn("procure_fixture_option.add_item(_fixture_label(fixture_id))", main)
 
     def test_store_rating_gd_thresholds_match_reference_sim_row_for_row(self):
         # Task #86: game/'s copy of the guide's rating table (printed
@@ -3126,7 +3191,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             main,
         )
 
-        self.assertIn('"Year %d · Month %d, Day %d" % [', smoke)
+        self.assertIn('economy_ui_scene.tr("Year %d · Month %d, Day %d") % [', smoke)
         self.assertIn(
             "economy_ui_scene.simulation.month_count / economy_ui_scene.simulation.MONTHS_PER_YEAR + 1",
             smoke,

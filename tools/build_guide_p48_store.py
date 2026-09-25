@@ -176,7 +176,7 @@ def build(config):
         "fixtures": fixtures,
         "products": products,
         "checkout_fixture_id": "checkout-1",
-        "staff_start_subcells": {"staff-1": [12, 14], "staff-2": [14, 10]},
+        "staff_start_subcells": {"staff-1": [12, 14], "staff-2": [14, 10], "staff-3": [8, 6]},
         "customer_visit_plan_product_ids": [],
         "max_concurrent_customers": 8,
         "max_concurrent_customers_evidence_note": (
@@ -200,7 +200,13 @@ def main():
     # its hand-maintained formatting.
     start = text.find('\n  "guide_starting_store": ')
     if start != -1:
-        text = text[:start].rstrip().rstrip(",") + "\n}\n"
+        # Cut out only this block: up to the next top-level key, or the
+        # closing brace when it is the last one.
+        following = re.search(r'\n  "[^"]+": ', text[start + 1:])
+        if following is None:
+            text = text[:start].rstrip().rstrip(",") + "\n}\n"
+        else:
+            text = text[:start] + text[start + 1 + following.start():]
     body = json.dumps(block, ensure_ascii=False, indent=2)
     body = re.sub(r"\[\s*(-?[\d.]+),\s*(-?[\d.]+)\s*\]", r"[\1, \2]", body)
     body = "\n".join("  " + line for line in body.splitlines()).lstrip()

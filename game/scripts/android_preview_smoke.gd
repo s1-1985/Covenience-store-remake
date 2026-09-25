@@ -50,10 +50,22 @@ func _run() -> void:
     if not _require(game.simulation.snapshot()["completed_sales"] > 0, "A customer must walk, queue, and purchase"):
         return
     await _capture("preview-store")
+    # Task #94: the store is drawn at full size and the panel is a closed
+    # drawer until a shortcut opens it.
+    if not _require(is_equal_approx(game.store_view.scale.x, 1.0), "The phone store must be drawn at full size"):
+        return
+    var drawer: Control = game.get_node("UI/Panel")
+    if not _require(drawer.offset_left >= 1280.0, "The phone panel must start closed"):
+        return
     game.get_node("UI/AndroidShortcuts").get_child(2).pressed.emit()
     await process_frame
     await process_frame
     if not _require(game.get_node("UI/Panel/Margin/Scroll").scroll_vertical > 0, "Economy shortcut must navigate"):
+        return
+    if not _require(drawer.offset_left < 1280.0, "A shortcut must open the panel"):
+        return
+    game.get_node("UI/AndroidShortcuts/ClosePanel").pressed.emit()
+    if not _require(drawer.offset_left >= 1280.0, "閉じる must close the panel"):
         return
     await _capture("preview-economy")
     game.get_node("UI/AndroidShortcuts").get_child(4).pressed.emit()

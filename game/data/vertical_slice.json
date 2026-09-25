@@ -1838,7 +1838,9 @@
   ],
   "staff": {
     "checkout_staff_id": "staff-1",
-    "skill_evidence_note": "staff-1/staff-2 are now bound to two real named strategy-guide candidates (manda_machiko / sugawara_fumio out of the 35-person roster in staff_candidates below) rather than an arbitrary flat 20/15/15 placeholder repeated on both slots -- their service_skill/security_skill/cleaning_skill/register_skill/replenishment_skill/salary_yen_per_day_24h/*_skill_growth_ceiling values are CONFIRMED_OFFICIAL, ported verbatim from that candidate's guide card (see staff_candidates_evidence_note). register_skill is consumed by CheckoutTiming (task #33) for checkout duration; replenishment_skill is consumed the same way by RestockTiming (task #40) for restock duration. service_skill/security_skill/cleaning_skill are consumed too, since task #27: VerticalSliceSimulation._evaluate_store_rating() collects every staff member's values and feeds them to store_value.gd's compute_service_value/compute_security_value/compute_cleaning_value each month, which roll into the monthly star rating (store_rating.gd). This note previously (incorrectly) claimed those three fields were unconsumed; corrected in task #43 after an audit found the claim had gone stale without anyone updating it. salary_yen_per_day_24h is consumed as of task #47: VerticalSliceSimulation._apply_daily_staff_wages() charges every active staff member once per simulated day. As of task #50, each staff member's salary_yen_per_day_24h is treated as a 24-hour-basis figure and scaled down to demand.opening_minutes_per_day (docs/research/quick-reference-guide-part1-2026-09-19.md section 1.2, CONFIRMED_OFFICIAL, stated twice: 人件費...時給×営業時間) rather than charging the flat 24h figure regardless of configured hours; this client still has no shift/hours-worked tracking for *individual* staff, but the guide's own formula scales by the store's configured business hours, not by how many of those hours each staff member personally worked, so no such tracking needs to be invented to apply it. The floor-rounding of the scaling is this project's own REMAKE_BALANCED_DEFAULT choice. As of task #48, the guide's skill-growth model (work-event counting) is also wired: StaffGrowth.apply_checkout_growth()/apply_replenish_growth() (game/scripts/domain/staff_growth.gd) grow register_skill+service_skill on every completed checkout task and replenishment_skill+cleaning_skill+security_skill on every completed restock task, each clamped to that skill's own *_skill_growth_ceiling. Of those five (task, skill) pairs, only replenish->replenishment_skill's +1 magnitude is CONFIRMED_COMMUNITY (reference_sim/conveni_sim/staff_growth_resolution.py's EVIDENCE_BACKED_UNIT_GROWTH); the other four reuse the same +1 as a REMAKE_BALANCED_DEFAULT guess, matching reference_sim/conveni_sim/remake_staff_growth.py's own equivalent default. Not ported: the manager-education growth bonus (no manager designation exists among staff.members here) and clean-task growth (no standalone cleaning task/mechanic exists in this client). Skill growth is also not part of the save/load format yet (see vertical_slice_simulation.gd's save_state() comment) -- a save/load round trip currently reverts accumulated growth.",
+    "manager_staff_id": "staff-3",
+    "manager_evidence_note": "CONFIRMED_OFFICIAL (クイックリファレンス book p.6: 各店舗に店長が必ず必要。店員は2人まで雇用できる; docs/research/staff-minimum-autovending-2026-09-05.md: PS新規出店標準 = 店長1 + 店員2 = 3名): every store runs with a manager plus up to 2 staff, so the roster has 3 slots, staff-3 being the manager. Task #91 corrects task #56 (decision 0125), which kept only the 2 staff slots. The manager is fukumoto_takahito because the guide says a manager is chosen for education (第三の攻略本: 店長に求められるのは教育パラメータの高さ) and he has the pool's highest education (95); REMAKE_BALANCED_DEFAULT: the tie with okudaira_yasuo (also 95) is broken by the lower salary. The manager otherwise works like staff-2 (restocking, resting); the manager-education growth bonus is still not modeled.",
+    "skill_evidence_note": "staff-1/staff-2 are now bound to two real named strategy-guide candidates (manda_machiko / sugawara_fumio out of the 35-person roster in staff_candidates below) rather than an arbitrary flat 20/15/15 placeholder repeated on both slots -- their service_skill/security_skill/cleaning_skill/register_skill/replenishment_skill/salary_yen_per_day_24h/*_skill_growth_ceiling values are CONFIRMED_OFFICIAL, ported verbatim from that candidate's guide card (see staff_candidates_evidence_note). register_skill is consumed by CheckoutTiming (task #33) for checkout duration; replenishment_skill is consumed the same way by RestockTiming (task #40) for restock duration. service_skill/security_skill/cleaning_skill are consumed too, since task #27: VerticalSliceSimulation._evaluate_store_rating() collects every staff member's values and feeds them to store_value.gd's compute_service_value/compute_security_value/compute_cleaning_value each month, which roll into the monthly star rating (store_rating.gd). This note previously (incorrectly) claimed those three fields were unconsumed; corrected in task #43 after an audit found the claim had gone stale without anyone updating it. salary_yen_per_day_24h is consumed as of task #47: VerticalSliceSimulation._apply_daily_staff_wages() charges every active staff member once per simulated day. As of task #50, each staff member's salary_yen_per_day_24h is treated as a 24-hour-basis figure and scaled down to demand.opening_minutes_per_day (docs/research/quick-reference-guide-part1-2026-09-19.md section 1.2, CONFIRMED_OFFICIAL, stated twice: 人件費...時給×営業時間) rather than charging the flat 24h figure regardless of configured hours; this client still has no shift/hours-worked tracking for *individual* staff, but the guide's own formula scales by the store's configured business hours, not by how many of those hours each staff member personally worked, so no such tracking needs to be invented to apply it. The floor-rounding of the scaling is this project's own REMAKE_BALANCED_DEFAULT choice. As of task #48, the guide's skill-growth model (work-event counting) is also wired: StaffGrowth.apply_checkout_growth()/apply_replenish_growth() (game/scripts/domain/staff_growth.gd) grow register_skill+service_skill on every completed checkout task and replenishment_skill+cleaning_skill+security_skill on every completed restock task, each clamped to that skill's own *_skill_growth_ceiling. Of those five (task, skill) pairs, only replenish->replenishment_skill's +1 magnitude is CONFIRMED_COMMUNITY (reference_sim/conveni_sim/staff_growth_resolution.py's EVIDENCE_BACKED_UNIT_GROWTH); the other four reuse the same +1 as a REMAKE_BALANCED_DEFAULT guess, matching reference_sim/conveni_sim/remake_staff_growth.py's own equivalent default. Not ported: the manager-education growth bonus (task #91 now designates staff-3 as the manager, but the bonus formula itself is still not ported) and clean-task growth (no standalone cleaning task/mechanic exists in this client). Skill growth is also not part of the save/load format yet (see vertical_slice_simulation.gd's save_state() comment) -- a save/load round trip currently reverts accumulated growth.",
     "members": [
       {
         "id": "staff-1",
@@ -1879,6 +1881,24 @@
         "cleaning_skill_growth_ceiling": 35,
         "replenishment_skill_growth_ceiling": 42,
         "security_skill_growth_ceiling": 50
+      },
+      {
+        "id": "staff-3",
+        "role": "manager",
+        "start_subcell": [8, 3],
+        "candidate_id": "fukumoto_takahito",
+        "display_name": "福本孝仁",
+        "service_skill": 13,
+        "security_skill": 16,
+        "cleaning_skill": 13,
+        "register_skill": 16,
+        "replenishment_skill": 13,
+        "salary_yen_per_day_24h": 7440,
+        "service_skill_growth_ceiling": 58,
+        "register_skill_growth_ceiling": 68,
+        "cleaning_skill_growth_ceiling": 63,
+        "replenishment_skill_growth_ceiling": 62,
+        "security_skill_growth_ceiling": 63
       }
     ]
   },
@@ -2654,7 +2674,8 @@
     "checkout_fixture_id": "checkout-1",
     "staff_start_subcells": {
       "staff-1": [12, 14],
-      "staff-2": [14, 10]
+      "staff-2": [14, 10],
+      "staff-3": [8, 6]
     },
     "customer_visit_plan_product_ids": [],
     "max_concurrent_customers": 8,
@@ -2663,54 +2684,777 @@
     "sample_layout_label": "Guide p.48 layout"
   },
   "guide_town_map": {
-    "evidence_note": "Task #90. The town around the player's first store: the visible part of the beginner map (初級マップ) at the start of a game, read tile by tile from the guide p.11 screenshot (assets/raw/conveni_guide_town_v1). Road/railway positions and the grid are CONFIRMED_VISUAL (straight lines measured on the image); each tile's grass/bare-ground/building class is PROVISIONAL (automatic colour classification of a halftone print, tools/build_guide_town_map.py). The orange 5x5 lot is drawn where the screenshot shows it; that it marks the player's store site is PROVISIONAL (the screen is taken before any store opens). REMAKE_BALANCED_DEFAULT: building tiles are drawn with this project's own generated house sprites (assets/raw/conveni_map_assets_v2 is new art, not original graphics); which sprite goes on which building tile is this project's own choice.",
+    "evidence_note": "Task #90. The town around the player's first store: the visible part of the beginner map (初級マップ) at the start of a game, read tile by tile from the guide p.11 screenshot (assets/raw/conveni_guide_town_v1). Road/railway positions and the grid are CONFIRMED_VISUAL (straight lines measured on the image); each tile's grass/bare-ground/building class is PROVISIONAL (automatic colour classification of a halftone print, tools/build_guide_town_map.py). The orange 5x5 lot is drawn where the screenshot shows it; that it marks the player's store site is PROVISIONAL (the screen is taken before any store opens). Task #93: the town is drawn with the generated terrain tiles and building sprites of assets/raw/conveni_map_assets_v2 (new art, not original graphics). Grass tiles darker than the screenshot's lower quartile are drawn as trees (the original map is dotted with round trees, video_155s/189s). The player's store is drawn as the flat 本店 mark cut from the gameplay video (CONFIRMED_VISUAL, assets/raw/conveni_remaining_assets_v1 map_blue_hq) on a paved lot. REMAKE_BALANCED_DEFAULT: which building sprite stands on which building tile (roof colour -> house A/B/C per the sprite brief, white -> shops/offices, 2x2 blocks -> 2x2 sprites) and which terrain tile stands for each class are this project's own choices.",
     "source_image": "assets/raw/conveni_guide_town_v1/beginner_map_start.png",
     "legend": {
       "G": "grass",
+      "g": "trees",
       "D": "bare_ground",
       "R": "road",
       "T": "railway",
       "B": "building",
       "O": "store_lot"
     },
+    "terrain_tiles": {
+      "G": "map_grass_plain",
+      "g": "map_trees_sparse",
+      "D": "map_dirt_sparse",
+      "B": "map_grass_plain",
+      "O": "map_concrete",
+      "T": "map_rail_ew",
+      "R": "map_road_ew"
+    },
+    "buildings": [
+      {
+        "tile": [29, 4],
+        "size": [2, 2],
+        "sprite": "house_medium_a"
+      },
+      {
+        "tile": [4, 7],
+        "size": [2, 2],
+        "sprite": "company_small_a"
+      },
+      {
+        "tile": [6, 7],
+        "size": [2, 2],
+        "sprite": "company_small_b"
+      },
+      {
+        "tile": [9, 7],
+        "size": [2, 2],
+        "sprite": "house_medium_b"
+      },
+      {
+        "tile": [13, 7],
+        "size": [2, 2],
+        "sprite": "house_medium_a"
+      },
+      {
+        "tile": [32, 7],
+        "size": [2, 2],
+        "sprite": "house_medium_b"
+      },
+      {
+        "tile": [34, 7],
+        "size": [2, 2],
+        "sprite": "house_medium_a"
+      },
+      {
+        "tile": [29, 8],
+        "size": [2, 2],
+        "sprite": "company_small_c"
+      },
+      {
+        "tile": [32, 10],
+        "size": [2, 2],
+        "sprite": "company_small_a"
+      },
+      {
+        "tile": [32, 27],
+        "size": [2, 2],
+        "sprite": "company_small_b"
+      },
+      {
+        "tile": [21, 0],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [25, 0],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [30, 0],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [32, 0],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [37, 0],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [32, 1],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [38, 1],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [0, 2],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [5, 2],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [8, 2],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [13, 2],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [30, 2],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [32, 2],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [3, 3],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [8, 3],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [10, 3],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [12, 3],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [21, 3],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [28, 3],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [32, 3],
+        "size": [1, 1],
+        "sprite": "bookstore"
+      },
+      {
+        "tile": [9, 4],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [14, 4],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [4, 5],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [7, 5],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [9, 5],
+        "size": [1, 1],
+        "sprite": "electronics_store"
+      },
+      {
+        "tile": [10, 5],
+        "size": [1, 1],
+        "sprite": "clothing_store"
+      },
+      {
+        "tile": [12, 5],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [14, 5],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [16, 5],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [18, 5],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [27, 5],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [28, 5],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [32, 5],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [33, 5],
+        "size": [1, 1],
+        "sprite": "toy_store"
+      },
+      {
+        "tile": [34, 5],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [35, 5],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [37, 5],
+        "size": [1, 1],
+        "sprite": "soba_shop"
+      },
+      {
+        "tile": [38, 5],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [1, 7],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [3, 7],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [17, 7],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [18, 7],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [24, 7],
+        "size": [1, 1],
+        "sprite": "ramen_shop"
+      },
+      {
+        "tile": [25, 7],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [27, 7],
+        "size": [1, 1],
+        "sprite": "fast_food_a"
+      },
+      {
+        "tile": [28, 7],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [30, 7],
+        "size": [1, 1],
+        "sprite": "fast_food_b"
+      },
+      {
+        "tile": [36, 7],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [38, 7],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [2, 8],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [12, 8],
+        "size": [1, 1],
+        "sprite": "izakaya_a"
+      },
+      {
+        "tile": [15, 8],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [24, 8],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [27, 8],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [37, 8],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [38, 8],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [4, 9],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [5, 9],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [6, 9],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [8, 9],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [10, 9],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [12, 9],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [19, 9],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [32, 9],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [7, 10],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [10, 10],
+        "size": [1, 1],
+        "sprite": "izakaya_b"
+      },
+      {
+        "tile": [12, 10],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [34, 10],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [7, 11],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [10, 11],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [20, 11],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [22, 11],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [30, 11],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [34, 11],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [6, 13],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [9, 14],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [15, 14],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [27, 14],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [12, 15],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [22, 15],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [30, 15],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [32, 15],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [15, 16],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [29, 16],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [32, 16],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [33, 16],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [12, 18],
+        "size": [1, 1],
+        "sprite": "izakaya_c"
+      },
+      {
+        "tile": [14, 18],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [28, 18],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [32, 18],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [32, 19],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [6, 20],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [13, 20],
+        "size": [1, 1],
+        "sprite": "game_center"
+      },
+      {
+        "tile": [17, 20],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [25, 21],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [30, 21],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [22, 23],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [30, 23],
+        "size": [1, 1],
+        "sprite": "bookstore"
+      },
+      {
+        "tile": [0, 24],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [10, 24],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [30, 24],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [8, 25],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [9, 25],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [17, 25],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [26, 25],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [33, 25],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [34, 25],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [35, 25],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [5, 27],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [9, 27],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [10, 27],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [34, 27],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [0, 28],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [1, 28],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [3, 28],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [25, 28],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [34, 28],
+        "size": [1, 1],
+        "sprite": "electronics_store"
+      },
+      {
+        "tile": [15, 29],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [33, 29],
+        "size": [1, 1],
+        "sprite": "clothing_store"
+      },
+      {
+        "tile": [34, 29],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [33, 30],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [32, 31],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      },
+      {
+        "tile": [30, 32],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [0, 33],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [32, 33],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [33, 33],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [0, 34],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [5, 34],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [8, 34],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [30, 34],
+        "size": [1, 1],
+        "sprite": "house_small_c"
+      },
+      {
+        "tile": [32, 34],
+        "size": [1, 1],
+        "sprite": "house_small_b"
+      },
+      {
+        "tile": [34, 34],
+        "size": [1, 1],
+        "sprite": "house_small_a"
+      }
+    ],
+    "store_mark_sprite": "map_blue_hq",
     "width_tiles": 41,
     "height_tiles": 35,
     "tile_rows": [
-      "GGGGGDGGGGGRGGGGGGGGDBGGGBGGGDBRBGGGGBGGG",
-      "GGDGGGDGGGGRGGGGGGGGGGGGGGGGGGGRBGGGGGBGG",
-      "BGGGGBGGBGGRGBGGGGGGGGGGGGGGGGBRBGGGGGGGG",
-      "GGGBGGGGBGBRBGGGGGGGGBGGGGGGBGGRBGGGGGGGD",
-      "GGGGGGGDGBGRGGBGGGGGGGGDGGGGGBBRGGGGGGGGG",
-      "GGGGBGGBGBBRBGBGBGBGGGGGGDGBBBBRBBBBGBBGG",
+      "GGGGGDGGGGGRGGGGGGGGDBGGGBGGGDBRBGGGgBGGG",
+      "GGDGGgDGGGGRGGGGGGGGGGGGgGGGGGGRBGGGGGBGG",
+      "BGGgGBGGBGgRGBGGGGGGGGGGGGgGGGBRBGGGGGGGG",
+      "GGGBGGGGBGBRBGGGGGGGgBGGGGGGBGgRBGGGGGGGD",
+      "GGGGGGGDGBGRGGBGGGGgGgGDGGGGGBBRGGGGGGGgG",
+      "GGGGBGGBGBBRBGBGBGBGGGGgGDgBBBBRBBBBGBBGG",
       "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
       "GBGBBBBBDBBRDBBGGBBGGRGGBBGBBGBRBBBBBGBDD",
-      "GGBGBBBBGBBRBBBBGGDGGRGGBGGBGBBRBBBBGBBGG",
-      "GGGGBBBGBGBRBGGGGGDBGRGGGGGGGBBRBDGGDGGDG",
-      "GDGGGGGBGGBRBGGGGGGGGRGGGDGGGGGRBBBGGGGGG",
-      "GGGGGGGBGGBRGGGGGGGGBRBGDGGDGGBRBBBGGGGGG",
+      "GGBgBBBBGBBRBBBBgGDGGRGGBGGBGBBRBBBBGBBGG",
+      "GgGGBBBGBgBRBGGGgGDBGRGGGgGGGBBRBDGGDGGDG",
+      "GDGgGGGBGGBRBGGGGGggGRGGGDGgGGGRBBBggGGGG",
+      "GGGgGGGBGGBRGgGggGGgBRBGDGgDGGBRBBBGGGGGG",
       "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
-      "GGGGGGBGGGGRGDGGGGDGGRGGGGGGGGGRGGGGGDGGD",
-      "GDGGGGGGGBGRGGGBGGGGGRGGGGDBGGGRGGDGGGGGG",
-      "GGGGGGGGGGDRBGDGGGGDGRBDGGGGGGBRBGGGGGGGD",
-      "GGGGDGGGGGGRDDGBDGDGDRDGGGGGGBGRBBGGGDGGG",
-      "GGGDGGGGGGGRGGGGGGGGGRGGGGGGGGGRGGGGGGGGG",
-      "GGDGGGGDGGGRBGBDGGGGGRGGGGGGBGGRBGGGGGGGG",
-      "GGGGGGGGDGGRRRRRRRRRRRRRRRRRRRRRBGGGDGGGG",
-      "GGGDGGBDGGGRGBGGGBGGGRGGGGGGGDGRGGGGDGGGG",
-      "GDGGGGGGGDGROOOOOGGDGRGGGBGGGGBRGGGGGGGGG",
-      "GGGGGGGDGGDROOOOOGGDGRGGGDGGGGGRGGGGGGGDG",
-      "GGGGGGGDGGGROOOOOGGGGRBGGDGGGGBRDGGGDGGGG",
-      "BDGGDDDGGGBROOOOOGGDGRGGGGGGGGBRGGGGGGGGG",
-      "GGGGGGGDBBGROOOOOBGDGRDGGGBGGGGRGBBBGGDGG",
+      "GGgGGGBGGGgRGDGGGgDGGRgGGGGGGGGRGGGGGDGGD",
+      "GDGGGGGgGBGRGGgBGGGgGRGGggDBGGGRGGDGGGGGG",
+      "GGGGGGGGggDRBgDGggGDGRBDGGgGGgBRBGGGGggGD",
+      "GgGgDgGggGgRDDGBDGDGDRDGGGGGGBgRBBGGGDGGG",
+      "GGGDgggGgGgRGGGGGGGGGRgGGgGGGgGRGGGgGGGGG",
+      "GGDGgGgDgGGRBgBDGGGgGRGGGGgGBGGRBGGgGGGGg",
+      "GGgggggGDGGRRRRRRRRRRRRRRRRRRRRRBgGGDGGGG",
+      "GGgDggBDggGRGBGggBGGGRgGGGGGGDGRGgGGDGGGG",
+      "GDgGgGGGgDgROOOOOgGDGRGggBGGggBRGGGGGGGgG",
+      "GGgggGGDGgDROOOOOGGDgRggGDGGGGgRgGggGGgDG",
+      "GGgGGggDGGGROOOOOgggGRBGGDgggGBRDGGGDgggG",
+      "BDgGDDDgGGBROOOOOgGDgRGgGGggggBRGGGGGGGGG",
+      "GGgggGgDBBGROOOOOBgDGRDggGBggGgRGBBBGgDgG",
       "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
-      "DGGDDBGGGBBGGGDGGGGGGGGGGGGGGGGRBBBDGGGGG",
-      "BBGBGGGGDGGGGGGDGDGGGGGGGBGGDGGRBBBGGGGGG",
-      "GGGGGGGGGGGGGGGBGGGGGGGGGGGGGGDRGBBGGGGGG",
-      "GDGGGGGGGGGGGGGGGGGDGGGGGGGGGGDRGBGGGGGGG",
-      "GGGGDGGGDGGGGDGGGGGGGGGDGGGGGGGRBGGGGGGGG",
-      "GGGDGGGGGGGGGGGGGGGGGGGGGGGGGGBRGGGGGGGGD",
-      "BGGDGGGGGGGGGGDGGGGGGGGGGGGGGGGRBBGGDGGGG",
-      "BGGGGBGGBGGGGGDDGGGGGGGGGGGGGGBRBGBGDGGGG"
+      "DGGDDBGGgBBgGGDggGgGGggggGggGGGRBBBDGGGgG",
+      "BBGBGGGGDGGgggGDgDGGGgGgGBggDgGRBBBGGGGGG",
+      "GgGggGGggGGGGgGBggGGgggggggGGGDRGBBGGGGgG",
+      "gDGggggGGGGGGggGGGgDggGGGgGGGGDRGBGGGGGGG",
+      "GGGGDGGGDGGGgDGGGGggGGGDGGGGGGgRBggGGggGG",
+      "GgGDGGggGGgGggGgGGgGGGGGGGGGGGBRGggGGGGGD",
+      "BGgDGGGgGGgGGGDGgGgGgGGGGGGgGGGRBBGgDGGGg",
+      "BGGgGBGGBGGGGGDDGGGgGGGGGGGGGGBRBGBgDGGGG"
     ],
     "store_lot_origin_tile": [12, 21]
   }

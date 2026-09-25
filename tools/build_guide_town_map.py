@@ -76,6 +76,88 @@ def classify(image_path=SOURCE):
     return rows
 
 
+# REMAKE_BALANCED_DEFAULT (task #93): which generated sprite
+# (assets/raw/conveni_map_assets_v2, new art) stands for each building tile.
+# Roof colour follows that package's own brief (house_small_a = blue roof,
+# house_small_b = red roof, house_small_c = green roof); the screenshot is too
+# small to tell shops from offices, so white/grey single tiles cycle through
+# the brief's 1x1 shop sprites and 2x2 blocks of building tiles use its 2x2
+# office/house sprites.
+SHOP_SPRITES = (
+    "bookstore", "electronics_store", "clothing_store", "toy_store", "soba_shop", "ramen_shop",
+    "fast_food_a", "fast_food_b", "izakaya_a", "izakaya_b", "izakaya_c", "game_center",
+)
+HOUSE_SPRITES = ("house_small_c", "house_small_a", "house_small_b")
+OFFICE_SPRITES = ("company_small_a", "company_small_b", "company_small_c")
+MEDIUM_HOUSE_SPRITES = ("house_medium_a", "house_medium_b")
+# Tiles of the generated terrain package drawn for each map class.
+TERRAIN_TILES = {
+    "G": "map_grass_plain",
+    "g": "map_trees_sparse",
+    "D": "map_dirt_sparse",
+    "B": "map_grass_plain",
+    "O": "map_concrete",
+    "T": "map_rail_ew",
+    "R": "map_road_ew",
+}
+DARK_GRASS_TONE = 135
+
+
+def _tile_shares(im, col, row):
+    r, g, b = im[..., 0], im[..., 1], im[..., 2]
+    x0 = int(round(X0 + col * TILE_W))
+    y0 = int(round(Y0 + row * TILE_H))
+    x1 = int(round(X0 + (col + 1) * TILE_W))
+    y1 = int(round(Y0 + (row + 1) * TILE_H))
+    ys, xs = slice(y0, y1), slice(x0, x1)
+    n = (y1 - y0) * (x1 - x0)
+    green = ((g > r + 15) & (g > b))[ys, xs]
+    return {
+        "green_tone": float(g[ys, xs][green].mean()) if green.any() else 0.0,
+        "red": float(((r > 160) & (g < 120) & (b < 120))[ys, xs].sum() / n),
+        "blue": float(((b > 150) & (r < 130))[ys, xs].sum() / n),
+        "white": float(((r > 190) & (g > 190) & (b > 190))[ys, xs].sum() / n),
+    }
+
+
+def _buildings(rows, im):
+    used = set()
+    placed = []
+    offices = houses = 0
+    height, width = len(rows), len(rows[0])
+    for y in range(height - 1):
+        for x in range(width - 1):
+            block = [(x, y), (x + 1, y), (x, y + 1), (x + 1, y + 1)]
+            if any(rows[by][bx] != "B" or (bx, by) in used for bx, by in block):
+                continue
+            white = sum(_tile_shares(im, bx + FIRST_COL, by)["white"] for bx, by in block) / 4
+            if white > 0.2:
+                sprite = OFFICE_SPRITES[offices % len(OFFICE_SPRITES)]
+                offices += 1
+            else:
+                sprite = MEDIUM_HOUSE_SPRITES[houses % len(MEDIUM_HOUSE_SPRITES)]
+                houses += 1
+            used.update(block)
+            placed.append({"tile": [x, y], "size": [2, 2], "sprite": sprite})
+    shops = 0
+    for y, line in enumerate(rows):
+        for x, c in enumerate(line):
+            if c != "B" or (x, y) in used:
+                continue
+            shares = _tile_shares(im, x + FIRST_COL, y)
+            if shares["red"] > max(shares["blue"], 0.08) and shares["red"] >= shares["white"] * 0.5:
+                sprite = "house_small_b"
+            elif shares["blue"] > 0.08 and shares["blue"] >= shares["white"] * 0.5:
+                sprite = "house_small_a"
+            elif shares["white"] > 0.15:
+                sprite = SHOP_SPRITES[shops % len(SHOP_SPRITES)]
+                shops += 1
+            else:
+                sprite = HOUSE_SPRITES[(x * 7 + y * 3) % len(HOUSE_SPRITES)]
+            placed.append({"tile": [x, y], "size": [1, 1], "sprite": sprite})
+    return placed
+
+
 def build():
     rows = classify()
     # The lot is one solid 5x5 block on screen; print noise leaves a few of
@@ -91,6 +173,15 @@ def build():
         )
         for y, line in enumerate(rows)
     ]
+    im = np.array(Image.open(SOURCE).convert("RGB")).astype(int)
+    rows = [
+        "".join(
+            "g" if c == "G" and _tile_shares(im, x + FIRST_COL, y)["green_tone"] < DARK_GRASS_TONE else c
+            for x, c in enumerate(line)
+        )
+        for y, line in enumerate(rows)
+    ]
+    buildings = _buildings(rows, im)
     return {
         "evidence_note": (
             "Task #90. The town around the player's first store: the visible part of the "
@@ -101,13 +192,22 @@ def build():
             "classification of a halftone print, tools/build_guide_town_map.py). The orange "
             "5x5 lot is drawn where the screenshot shows it; that it marks the player's store "
             "site is PROVISIONAL (the screen is taken before any store opens). "
-            "REMAKE_BALANCED_DEFAULT: building tiles are drawn with this project's own "
-            "generated house sprites (assets/raw/conveni_map_assets_v2 is new art, not "
-            "original graphics); which sprite goes on which building tile is this project's "
-            "own choice."
+            "Task #93: the town is drawn with the generated terrain tiles and building sprites "
+            "of assets/raw/conveni_map_assets_v2 (new art, not original graphics). Grass tiles "
+            "darker than the screenshot's lower quartile are drawn as trees (the original map "
+            "is dotted with round trees, video_155s/189s). The player's store is drawn as the "
+            "flat 本店 mark cut from the gameplay video (CONFIRMED_VISUAL, "
+            "assets/raw/conveni_remaining_assets_v1 map_blue_hq) on a paved lot. "
+            "REMAKE_BALANCED_DEFAULT: which building sprite stands on which building tile "
+            "(roof colour -> house A/B/C per the sprite brief, white -> shops/offices, 2x2 "
+            "blocks -> 2x2 sprites) and which terrain tile stands for each class are this "
+            "project's own choices."
         ),
         "source_image": "assets/raw/conveni_guide_town_v1/beginner_map_start.png",
-        "legend": {"G": "grass", "D": "bare_ground", "R": "road", "T": "railway", "B": "building", "O": "store_lot"},
+        "legend": {"G": "grass", "g": "trees", "D": "bare_ground", "R": "road", "T": "railway", "B": "building", "O": "store_lot"},
+        "terrain_tiles": TERRAIN_TILES,
+        "buildings": buildings,
+        "store_mark_sprite": "map_blue_hq",
         "width_tiles": COLS,
         "height_tiles": ROWS,
         "tile_rows": rows,
@@ -122,7 +222,13 @@ def main():
     block = build()
     start = text.find('\n  "guide_town_map": ')
     if start != -1:
-        text = text[:start].rstrip().rstrip(",") + "\n}\n"
+        # Cut out only this block: up to the next top-level key, or the
+        # closing brace when it is the last one.
+        following = re.search(r'\n  "[^"]+": ', text[start + 1:])
+        if following is None:
+            text = text[:start].rstrip().rstrip(",") + "\n}\n"
+        else:
+            text = text[:start] + text[start + 1 + following.start():]
     body = json.dumps(block, ensure_ascii=False, indent=2)
     body = re.sub(r"\[\s*(-?[\d.]+),\s*(-?[\d.]+)\s*\]", r"[\1, \2]", body)
     body = "\n".join("  " + line for line in body.splitlines()).lstrip()

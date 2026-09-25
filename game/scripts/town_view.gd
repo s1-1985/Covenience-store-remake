@@ -23,17 +23,12 @@ extends Node2D
 # the railway, houses and the store lot -- instead of the bare markers
 # described above. The markers remain the fallback for configs without it.
 const TOWN_SPRITE_DIR := "res://assets/town/"
-# REMAKE_BALANCED_DEFAULT: building tiles use this project's own generated
-# 1x1 house sprites (assets/raw/conveni_map_assets_v2, new art); which of
-# the three goes on a tile is this project's own deterministic choice.
-const HOUSE_SPRITE_IDS := ["house_small_a", "house_small_b", "house_small_c"]
-const GRASS_COLOR := Color("3f8f3a")
-const GRASS_SPECK_COLOR := Color("357a31")
-const GROUND_COLOR := Color("8a5a32")
-const ROAD_COLOR := Color("7b7d80")
-const RAIL_BED_COLOR := Color("a7a39a")
-const RAIL_COLOR := Color("e6e6e6")
-const LOT_COLOR := Color("e8872a")
+# Task #93: the town is drawn with the generated terrain tiles and building
+# sprites of assets/raw/conveni_map_assets_v2 (new art) copied into
+# assets/town/. REMAKE_BALANCED_DEFAULT: which terrain tile stands for each
+# map class and which building sprite stands on each building tile are this
+# project's own choices, recorded in guide_town_map (terrain_tiles/buildings)
+# by tools/build_guide_town_map.py.
 const TILE_PIXELS := 48.0
 const MARGIN_TILES := 1
 const PLAYER_MARKER_COLOR := Color("8bd17c")
@@ -41,8 +36,15 @@ const RIVAL_MARKER_COLOR := Color("ef476f")
 const MARKER_OUTLINE_COLOR := Color("202020")
 
 var simulation
-var map_tile_pixels := 16.0
-var _house_textures: Array = []
+var map_tile_pixels := 24.0
+# Task #93: like the original town screen, only part of the town is shown
+# at a time and the view scrolls (here: drag to pan, in whole tiles).
+# view_size is set by main.gd; view_origin_tile is the top-left tile shown.
+var view_size := Vector2(640, 560)
+var view_origin_tile := Vector2i.ZERO
+var _town_textures: Dictionary = {}
+var _drag_remainder := Vector2.ZERO
+var _view_centered := false
 
 
 func bind(source_simulation) -> void:
@@ -65,12 +67,59 @@ func guide_map_tiles() -> Vector2i:
     return Vector2i(int(guide["width_tiles"]), int(guide["height_tiles"]))
 
 
-func _house_texture(x: int, y: int) -> Texture2D:
-    if _house_textures.is_empty():
-        for sprite_id in HOUSE_SPRITE_IDS:
-            var path: String = TOWN_SPRITE_DIR + str(sprite_id) + ".png"
-            _house_textures.append(load(path) as Texture2D if ResourceLoader.exists(path) else null)
-    return _house_textures[(x * 7 + y * 3) % _house_textures.size()]
+# Tiles that fit in view_size.
+func view_tiles() -> Vector2i:
+    var tiles := guide_map_tiles()
+    return Vector2i(
+        mini(tiles.x, int(view_size.x / map_tile_pixels)),
+        mini(tiles.y, int(view_size.y / map_tile_pixels))
+    )
+
+
+func scroll_by_tiles(delta: Vector2i) -> void:
+    var tiles := guide_map_tiles()
+    var shown := view_tiles()
+    view_origin_tile = Vector2i(
+        clampi(view_origin_tile.x + delta.x, 0, maxi(0, tiles.x - shown.x)),
+        clampi(view_origin_tile.y + delta.y, 0, maxi(0, tiles.y - shown.y))
+    )
+    queue_redraw()
+
+
+func center_on_store() -> void:
+    var guide := guide_map()
+    if guide.is_empty():
+        return
+    var lot: Array = guide["store_lot_origin_tile"]
+    var shown := view_tiles()
+    view_origin_tile = Vector2i.ZERO
+    scroll_by_tiles(Vector2i(int(lot[0]) + 2 - shown.x / 2, int(lot[1]) + 2 - shown.y / 2))
+    _view_centered = true
+
+
+func _unhandled_input(event: InputEvent) -> void:
+    if not visible or guide_map().is_empty():
+        return
+    var relative := Vector2.ZERO
+    if event is InputEventScreenDrag:
+        relative = event.relative
+    elif event is InputEventMouseMotion and (event.button_mask & MOUSE_BUTTON_MASK_LEFT) != 0:
+        relative = event.relative
+    else:
+        return
+    # Dragging moves the town with the finger, so the view moves the other way.
+    _drag_remainder -= relative / scale.x
+    var whole := Vector2i(int(_drag_remainder.x / map_tile_pixels), int(_drag_remainder.y / map_tile_pixels))
+    if whole != Vector2i.ZERO:
+        _drag_remainder -= Vector2(whole) * map_tile_pixels
+        scroll_by_tiles(whole)
+
+
+func _town_texture(sprite_id: String) -> Texture2D:
+    if not _town_textures.has(sprite_id):
+        var path := TOWN_SPRITE_DIR + sprite_id + ".png"
+        _town_textures[sprite_id] = load(path) as Texture2D if ResourceLoader.exists(path) else null
+    return _town_textures[sprite_id] as Texture2D
 
 
 func _tile_at(rows: Array, x: int, y: int) -> String:
@@ -82,56 +131,112 @@ func _tile_at(rows: Array, x: int, y: int) -> String:
     return line[x]
 
 
+# Which sides of a road tile continue as road (or cross the railway). A road
+# running off the map edge continues too, when the tile behind it is road.
+func _road_links(rows: Array, x: int, y: int) -> Dictionary:
+    var links := {}
+    for step in [Vector2i(0, -1), Vector2i(1, 0), Vector2i(0, 1), Vector2i(-1, 0)]:
+        var neighbor := _tile_at(rows, x + step.x, y + step.y)
+        if neighbor == "R" or neighbor == "T":
+            links[step] = true
+        elif neighbor == "" and _tile_at(rows, x - step.x, y - step.y) == "R":
+            links[step] = true
+    return links
+
+
+# Road tile id and clockwise quarter turns for a set of links.
+func _road_tile(links: Dictionary) -> Array:
+    var n := links.has(Vector2i(0, -1))
+    var e := links.has(Vector2i(1, 0))
+    var s := links.has(Vector2i(0, 1))
+    var w := links.has(Vector2i(-1, 0))
+    match links.size():
+        4:
+            return ["map_road_cross", 0]
+        3:
+            # map_road_t_wes joins W, E and S; turn it so its missing side
+            # lands on this tile's missing side.
+            if not n:
+                return ["map_road_t_wes", 0]
+            if not e:
+                return ["map_road_t_wes", 1]
+            if not s:
+                return ["map_road_t_wes", 2]
+            return ["map_road_t_wes", 3]
+        2:
+            if n and s:
+                return ["map_road_ns", 0]
+            return ["map_road_ew", 0]
+        1:
+            # map_road_end_s is a dead end opening to the south.
+            if s:
+                return ["map_road_end_s", 0]
+            if w:
+                return ["map_road_end_s", 1]
+            if n:
+                return ["map_road_end_s", 2]
+            return ["map_road_end_s", 3]
+    return ["map_road_ew", 0]
+
+
+func _draw_tile(sprite_id: String, rect: Rect2, quarter_turns: int = 0) -> void:
+    var texture := _town_texture(sprite_id)
+    if texture == null:
+        draw_rect(rect, Color("3f8f3a"), true)
+        return
+    if quarter_turns == 0:
+        draw_texture_rect(texture, rect, false)
+        return
+    draw_set_transform(rect.get_center(), PI * 0.5 * quarter_turns, Vector2.ONE)
+    draw_texture_rect(texture, Rect2(-rect.size * 0.5, rect.size), false)
+    draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+
+
 func _draw_guide_map(guide: Dictionary) -> void:
+    if not _view_centered:
+        center_on_store()
     var rows: Array = guide["tile_rows"]
+    var tiles: Dictionary = guide["terrain_tiles"]
     var t := map_tile_pixels
-    for y in range(rows.size()):
+    var shown := view_tiles()
+    var origin := Vector2(view_origin_tile) * t
+    for y in range(view_origin_tile.y, view_origin_tile.y + shown.y):
         var line := str(rows[y])
-        for x in range(line.length()):
+        for x in range(view_origin_tile.x, view_origin_tile.x + shown.x):
             var kind := line[x]
-            var rect := Rect2(Vector2(x, y) * t, Vector2(t, t))
-            var ground := GROUND_COLOR if kind == "D" else GRASS_COLOR
-            draw_rect(rect, ground, true)
-            if kind == "G" and (x * 5 + y * 3) % 4 == 0:
-                draw_rect(Rect2(rect.position + Vector2(t * 0.25, t * 0.25), Vector2(t * 0.3, t * 0.3)), GRASS_SPECK_COLOR, true)
-            match kind:
-                "R":
-                    var half := t * 0.22
-                    var center := rect.get_center()
-                    draw_rect(Rect2(center - Vector2(half, half), Vector2(half, half) * 2.0), ROAD_COLOR, true)
-                    for step in [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]:
-                        var neighbor := _tile_at(rows, x + step.x, y + step.y)
-                        if neighbor == "R" or neighbor == "T":
-                            var arm := Rect2(center - Vector2(half, half), Vector2(half, half) * 2.0)
-                            arm = arm.expand(center + Vector2(step) * t * 0.5 + Vector2(step.y, step.x).abs() * half)
-                            arm = arm.expand(center + Vector2(step) * t * 0.5 - Vector2(step.y, step.x).abs() * half)
-                            draw_rect(arm, ROAD_COLOR, true)
-                "T":
-                    draw_rect(Rect2(rect.position + Vector2(0, t * 0.2), Vector2(t, t * 0.6)), RAIL_BED_COLOR, true)
-                    draw_line(rect.position + Vector2(0, t * 0.35), rect.position + Vector2(t, t * 0.35), RAIL_COLOR, 1.5)
-                    draw_line(rect.position + Vector2(0, t * 0.65), rect.position + Vector2(t, t * 0.65), RAIL_COLOR, 1.5)
-                "B":
-                    var house := _house_texture(x, y)
-                    if house != null:
-                        draw_texture_rect(house, rect, false)
-                    else:
-                        draw_rect(rect.grow(-2), Color("d9534f"), true)
-                "O":
-                    draw_rect(rect, LOT_COLOR, true)
-                    draw_rect(rect, LOT_COLOR.darkened(0.2), false, 1.0)
+            var rect := Rect2(Vector2(x, y) * t - origin, Vector2(t, t))
+            if kind == "R":
+                var road := _road_tile(_road_links(rows, x, y))
+                _draw_tile(str(road[0]), rect, int(road[1]))
+            elif kind == "T" and _tile_at(rows, x, y - 1) == "R" and _tile_at(rows, x, y + 1) == "R":
+                _draw_tile("map_crossing_basic", rect)
+            else:
+                _draw_tile(str(tiles.get(kind, "map_grass_plain")), rect)
+    var shown_rect := Rect2(Vector2(view_origin_tile), Vector2(shown))
+    for building in guide["buildings"]:
+        var tile: Array = building["tile"]
+        var size: Array = building["size"]
+        var footprint := Rect2(Vector2(int(tile[0]), int(tile[1])), Vector2(int(size[0]), int(size[1])))
+        if not shown_rect.encloses(footprint):
+            continue
+        _draw_tile(str(building["sprite"]), Rect2(footprint.position * t - origin, footprint.size * t))
+    # The player's store: the flat 本店 mark seen on the original town map
+    # (CONFIRMED_VISUAL, video crop), about 2x2 tiles, on the paved lot.
     var lot: Array = guide["store_lot_origin_tile"]
-    var lot_rect := Rect2(Vector2(int(lot[0]), int(lot[1])) * t, Vector2(5, 5) * t)
-    draw_rect(lot_rect, Color("202020"), false, 2.0)
-    draw_string(ThemeDB.fallback_font, lot_rect.position + Vector2(4, lot_rect.size.y * 0.6), tr("Main store"), HORIZONTAL_ALIGNMENT_LEFT, -1, int(t * 0.9), Color("111111"))
+    var mark := Rect2(Vector2(int(lot[0]), int(lot[1])) + Vector2(1.5, 1.5), Vector2(2, 2))
+    if shown_rect.encloses(mark):
+        _draw_tile(str(guide["store_mark_sprite"]), Rect2(mark.position * t - origin, mark.size * t))
     # Rival stores keep this client's abstract tile offsets from the
     # player's store (task #59), drawn relative to the lot.
     for rival in simulation._rival_stores:
         var offset: Vector2i = rival["position"] - simulation._player_store_position
         var cell := Vector2(int(lot[0]) + 2 + offset.x, int(lot[1]) + 2 + offset.y)
-        var marker := Rect2(cell * t, Vector2(t, t)).grow(-1)
+        if not shown_rect.has_point(cell):
+            continue
+        var marker := Rect2(cell * t - origin, Vector2(t, t)).grow(-1)
         draw_rect(marker, RIVAL_MARKER_COLOR, true)
         draw_rect(marker, MARKER_OUTLINE_COLOR, false, 1.0)
-    draw_rect(Rect2(Vector2.ZERO, Vector2(guide_map_tiles()) * t), Color("202020"), false, 2.0)
+    draw_rect(Rect2(Vector2.ZERO, Vector2(shown) * t), Color("202020"), false, 2.0)
 
 
 # Pure data extraction, kept separate from _draw() so it can be unit-tested

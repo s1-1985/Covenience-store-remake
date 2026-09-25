@@ -1944,6 +1944,42 @@ house sprites = REMAKE); the old marker view is the fallback. The Android shortc
 "only the house sprites on building tiles". Still open: building types, town growth, and choosing a store
 site.
 
+**Task #91 (2026-09-25, decision 0162)**: 3-person roster (店長 + 店員2). The user pointed out that stores
+have 3 staff. Guide p.6 (CONFIRMED_OFFICIAL) says 「各店舗に店長が必ず必要。店員は2人まで雇用できる」, and the PS
+opening flow hires 店長1 + 従業員2. Task #56 had kept only 2 slots, which was wrong. Added staff-3
+(role manager, `staff.manager_staff_id`). The manager is the highest-education candidate (guide: a manager
+is chosen for education); the 95/95 tie was broken by lower salary (REMAKE). Wages and rating values sum the
+whole roster automatically. The smoke rating test now computes security/cleaning/share from the roster
+instead of literals written for 2 people. Section 21.3's "manager 3rd slot not implemented" is resolved;
+the manager-education growth bonus and スーパー社員 remain open.
+
+**Task #92 (2026-09-25, decision 0163)**: the UI is always Japanese. Every tr() string already had a ja.po
+entry; English showed because the locale followed the device, and some text bypassed tr() (event names,
+[PAUSED], the price suffix, raw ids like shelf-bread-1/customer-12). main.gd/main_menu.gd now set_locale("ja")
+at startup; event names are translated; ids go through _fixture_label/_product_label/_customer_label/
+_candidate_label. staff-3 shows as 店長. A contract test requires a translation for every tr() string and
+every recorded event name.
+
+**Task #93 (2026-09-25, decision 0164)**: the town map now uses the generated terrain and building
+sprites. The user pointed out that the map was bare and ignored the ChatGPT assets; task #90 drew flat
+colours and 3 house sprites. conveni_map_assets_v2 also has 121 terrain/infrastructure tiles (README_V2_JA),
+and none of them were used. tools/build_guide_town_map.py now also emits:
+- 'g' (trees) for grass tiles darker than the screenshot's lower quartile;
+- a `buildings` list: 2x2 blocks become 2x2 office/house sprites; single tiles are picked by roof colour
+  (blue -> house_small_a, red -> house_small_b, per the sprite brief; white -> shops), 20 sprite types in all.
+town_view.gd:
+- draws terrain tiles, choosing road straight/T/cross/end by neighbour links (rotated), with level crossings
+  where roads cross the rail;
+- draws the 本店 mark (video crop) on a concrete lot;
+- shows only part of the town at 24px per tile, drag-to-pan, starting centred on the store.
+Tile and sprite choice is REMAKE.
+
+**Task #94 (2026-09-25, decision 0165)**: phone store at full size. The generated product overlays have been
+drawn since task #68, but on the phone the 12x8 store was shrunk to 0.81 next to the shortcut column and
+panel. The phone layout is now: store at scale 1.0 on the left, shortcut column at the right edge, and
+the panel as an off-screen drawer. Shortcuts open the drawer, 閉じる closes it; it is moved rather than
+hidden so its layout stays valid. The yellow interaction dots now appear only while a fixture is selected.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
