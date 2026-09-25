@@ -15,6 +15,8 @@ func _ready() -> void:
     # Task #92: the original is a Japanese game; the UI is always Japanese,
     # whatever the device language.
     TranslationServer.set_locale("ja")
+    # Task #96: the calm town tune (this project's own, see sound_synth.gd).
+    SoundManager.play_theme("town")
     if OS.has_feature("android") or "--android-preview" in OS.get_cmdline_user_args():
         $Panel.offset_left = 340
         $Panel.offset_right = 940

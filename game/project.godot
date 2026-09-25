@@ -11,6 +11,7 @@ run/main_scene="res://scenes/main_menu.tscn"
 
 [autoload]
 GameLaunchState="*res://scripts/game_launch_state.gd"
+SoundManager="*res://scripts/audio/sound_manager.gd"
 
 [display]
 window/size/viewport_width=1280

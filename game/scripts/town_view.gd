@@ -34,6 +34,13 @@ const MARGIN_TILES := 1
 const PLAYER_MARKER_COLOR := Color("8bd17c")
 const RIVAL_MARKER_COLOR := Color("ef476f")
 const MARKER_OUTLINE_COLOR := Color("202020")
+# Task #95: the 2x2 cursor while the player picks where to build.
+const SITE_OK_COLOR := Color("ffd23f")
+const SITE_BLOCKED_COLOR := Color("ef476f")
+# A press that moves less than this (pixels) is a tap, not a drag.
+const TAP_SLOP_PIXELS := 12.0
+
+signal site_tapped(origin: Vector2i)
 
 var simulation
 var map_tile_pixels := 24.0
@@ -45,6 +52,12 @@ var view_origin_tile := Vector2i.ZERO
 var _town_textures: Dictionary = {}
 var _drag_remainder := Vector2.ZERO
 var _view_centered := false
+# Task #95: while true, a tap on the map picks the 2x2 site under it (its
+# top-left square) and site_tapped is emitted; site_cursor is drawn.
+var selecting_site := false
+var site_cursor := Vector2i(-1, -1)
+var site_cursor_ok := false
+var _press_travel := 0.0
 
 
 func bind(source_simulation) -> void:
@@ -86,19 +99,53 @@ func scroll_by_tiles(delta: Vector2i) -> void:
     queue_redraw()
 
 
+# Centres the view on the player's store, or on the middle of the map
+# before a site has been bought.
 func center_on_store() -> void:
     var guide := guide_map()
     if guide.is_empty():
         return
-    var lot: Array = guide["store_lot_origin_tile"]
+    var focus := guide_map_tiles() / 2
+    if simulation.has_store_site():
+        focus = simulation.store_site_origin + Vector2i.ONE
+    elif site_cursor.x >= 0:
+        focus = site_cursor + Vector2i.ONE
     var shown := view_tiles()
     view_origin_tile = Vector2i.ZERO
-    scroll_by_tiles(Vector2i(int(lot[0]) + 2 - shown.x / 2, int(lot[1]) + 2 - shown.y / 2))
+    scroll_by_tiles(focus - shown / 2)
     _view_centered = true
+
+
+# Map square under a point in this node's own (unscaled) coordinates.
+func tile_at_local(local_point: Vector2) -> Vector2i:
+    return view_origin_tile + Vector2i(
+        int(floor(local_point.x / map_tile_pixels)), int(floor(local_point.y / map_tile_pixels))
+    )
+
+
+func show_site_cursor(origin: Vector2i, ok: bool) -> void:
+    site_cursor = origin
+    site_cursor_ok = ok
+    queue_redraw()
 
 
 func _unhandled_input(event: InputEvent) -> void:
     if not visible or guide_map().is_empty():
+        return
+    if selecting_site and (event is InputEventScreenTouch or event is InputEventMouseButton):
+        if event is InputEventMouseButton and event.button_index != MOUSE_BUTTON_LEFT:
+            return
+        if event.pressed:
+            _press_travel = 0.0
+            return
+        if _press_travel > TAP_SLOP_PIXELS:
+            return
+        var local_point: Vector2 = get_global_transform_with_canvas().affine_inverse() * event.position
+        var shown := view_tiles()
+        if local_point.x < 0 or local_point.y < 0 or local_point.x >= shown.x * map_tile_pixels or local_point.y >= shown.y * map_tile_pixels:
+            return
+        site_tapped.emit(tile_at_local(local_point))
+        get_viewport().set_input_as_handled()
         return
     var relative := Vector2.ZERO
     if event is InputEventScreenDrag:
@@ -107,6 +154,7 @@ func _unhandled_input(event: InputEvent) -> void:
         relative = event.relative
     else:
         return
+    _press_travel += relative.length()
     # Dragging moves the town with the finger, so the view moves the other way.
     _drag_remainder -= relative / scale.x
     var whole := Vector2i(int(_drag_remainder.x / map_tile_pixels), int(_drag_remainder.y / map_tile_pixels))
@@ -213,7 +261,11 @@ func _draw_guide_map(guide: Dictionary) -> void:
             else:
                 _draw_tile(str(tiles.get(kind, "map_grass_plain")), rect)
     var shown_rect := Rect2(Vector2(view_origin_tile), Vector2(shown))
-    for building in guide["buildings"]:
+    var bought: Array = simulation.bought_buildings()
+    for index in guide["buildings"].size():
+        if bought.has(index):
+            continue
+        var building: Dictionary = guide["buildings"][index]
         var tile: Array = building["tile"]
         var size: Array = building["size"]
         var footprint := Rect2(Vector2(int(tile[0]), int(tile[1])), Vector2(int(size[0]), int(size[1])))
@@ -221,21 +273,30 @@ func _draw_guide_map(guide: Dictionary) -> void:
             continue
         _draw_tile(str(building["sprite"]), Rect2(footprint.position * t - origin, footprint.size * t))
     # The player's store: the flat 本店 mark seen on the original town map
-    # (CONFIRMED_VISUAL, video crop), about 2x2 tiles, on the paved lot.
-    var lot: Array = guide["store_lot_origin_tile"]
-    var mark := Rect2(Vector2(int(lot[0]), int(lot[1])) + Vector2(1.5, 1.5), Vector2(2, 2))
-    if shown_rect.encloses(mark):
-        _draw_tile(str(guide["store_mark_sprite"]), Rect2(mark.position * t - origin, mark.size * t))
-    # Rival stores keep this client's abstract tile offsets from the
-    # player's store (task #59), drawn relative to the lot.
+    # (CONFIRMED_VISUAL, video crop) on the 2x2 site the player bought
+    # (DATA4 コンビニ(自) 2×2), on paving.
+    if simulation.has_store_site():
+        var mark := Rect2(Vector2(simulation.store_site_origin), Vector2(2, 2))
+        if shown_rect.encloses(mark):
+            var mark_rect := Rect2(mark.position * t - origin, mark.size * t)
+            for dy in 2:
+                for dx in 2:
+                    _draw_tile("map_concrete", Rect2(mark_rect.position + Vector2(dx, dy) * t, Vector2(t, t)))
+            _draw_tile(str(guide["store_mark_sprite"]), mark_rect)
+    # Rival stores: with the guide map their positions are map squares
+    # (task #95), each a 2x2 store.
     for rival in simulation._rival_stores:
-        var offset: Vector2i = rival["position"] - simulation._player_store_position
-        var cell := Vector2(int(lot[0]) + 2 + offset.x, int(lot[1]) + 2 + offset.y)
-        if not shown_rect.has_point(cell):
+        var cell := Vector2(rival["position"])
+        if not shown_rect.encloses(Rect2(cell, Vector2(2, 2))):
             continue
-        var marker := Rect2(cell * t - origin, Vector2(t, t)).grow(-1)
+        var marker := Rect2(cell * t - origin, Vector2(2 * t, 2 * t)).grow(-1)
         draw_rect(marker, RIVAL_MARKER_COLOR, true)
         draw_rect(marker, MARKER_OUTLINE_COLOR, false, 1.0)
+    if selecting_site and site_cursor.x >= 0:
+        var cursor := Rect2(Vector2(site_cursor) * t - origin, Vector2(2 * t, 2 * t))
+        var cursor_color := SITE_OK_COLOR if site_cursor_ok else SITE_BLOCKED_COLOR
+        draw_rect(cursor, Color(cursor_color, 0.35), true)
+        draw_rect(cursor, cursor_color, false, 3.0)
     draw_rect(Rect2(Vector2.ZERO, Vector2(shown) * t), Color("202020"), false, 2.0)
 
 

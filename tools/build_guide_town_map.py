@@ -13,6 +13,11 @@ Grid (measured on that image, CONFIRMED_VISUAL):
   columns 12, 22, 32; horizontal roads at rows 6, 19, 26; railway at row 12.
 Per-tile class (PROVISIONAL, colour classification of a halftone print):
   G grass, D bare ground, R road, T railway, B building, O the orange lot.
+Task #95: the orange 5x5 block is read as the land-selection cursor of the
+start screen, not as land that belongs to the player (the screen is taken
+before any store exists, and the player's store is 2x2 on the map, DATA4).
+Its tiles are written as grass, and the player picks any 2x2 site instead
+(see STORE_SITE below).
 """
 import json
 import re
@@ -25,6 +30,11 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "game" / "data" / "vertical_slice.json"
 SOURCE = ROOT / "assets" / "raw" / "conveni_guide_town_v1" / "beginner_map_start.png"
+
+sys.path.insert(0, str(ROOT / "reference_sim"))
+sys.path.insert(0, str(ROOT / "tools"))
+from conveni_sim.baseline_data import TOWN_BUILDINGS  # noqa: E402
+from guide_store_site import store_site_rules  # noqa: E402
 
 TILE_W, TILE_H = 9.875, 10.45
 X0, Y0 = 120.0 - 12.5 * TILE_W, 76.5 - 6.5 * TILE_H
@@ -96,11 +106,11 @@ TERRAIN_TILES = {
     "g": "map_trees_sparse",
     "D": "map_dirt_sparse",
     "B": "map_grass_plain",
-    "O": "map_concrete",
     "T": "map_rail_ew",
     "R": "map_road_ew",
 }
 DARK_GRASS_TONE = 135
+
 
 
 def _tile_shares(im, col, row):
@@ -160,15 +170,16 @@ def _buildings(rows, im):
 
 def build():
     rows = classify()
-    # The lot is one solid 5x5 block on screen; print noise leaves a few of
-    # its edge tiles unclassified, so it is restored to its bounding box.
+    # Task #95: the orange 5x5 block is the start screen's selection cursor;
+    # what lies under it is not visible, so it is written as grass
+    # (REMAKE_BALANCED_DEFAULT).
     lot = [(x, y) for y, line in enumerate(rows) for x, c in enumerate(line) if c == "O"]
     lot_min = [min(x for x, _ in lot), min(y for _, y in lot)]
     lot_max = [max(x for x, _ in lot), max(y for _, y in lot)]
     assert (lot_max[0] - lot_min[0], lot_max[1] - lot_min[1]) == (4, 4)
     rows = [
         "".join(
-            "O" if lot_min[0] <= x <= lot_max[0] and lot_min[1] <= y <= lot_max[1] else c
+            "G" if lot_min[0] <= x <= lot_max[0] and lot_min[1] <= y <= lot_max[1] else c
             for x, c in enumerate(line)
         )
         for y, line in enumerate(rows)
@@ -182,6 +193,14 @@ def build():
         for y, line in enumerate(rows)
     ]
     buildings = _buildings(rows, im)
+    catalog = {}
+    for profile in TOWN_BUILDINGS:
+        if any(b["sprite"] == profile.id for b in buildings):
+            catalog[profile.id] = {
+                "name": profile.display_name_ja,
+                "price": profile.building_price_yen.value,
+            }
+    site = store_site_rules(rows, buildings)
     return {
         "evidence_note": (
             "Task #90. The town around the player's first store: the visible part of the "
@@ -197,21 +216,27 @@ def build():
             "darker than the screenshot's lower quartile are drawn as trees (the original map "
             "is dotted with round trees, video_155s/189s). The player's store is drawn as the "
             "flat 本店 mark cut from the gameplay video (CONFIRMED_VISUAL, "
-            "assets/raw/conveni_remaining_assets_v1 map_blue_hq) on a paved lot. "
+            "assets/raw/conveni_remaining_assets_v1 map_blue_hq). "
+            "Task #95: the orange 5x5 block is read as the start screen's land-selection cursor "
+            "(inference: the screen is taken before any store exists); its tiles are grass "
+            "(REMAKE_BALANCED_DEFAULT, what lies under it is not visible) and the player picks "
+            "a 2x2 site anywhere (store_site). building_catalog: each building sprite's DATA4 "
+            "name and printed price (CONFIRMED_OFFICIAL, guide p.92-95). "
             "REMAKE_BALANCED_DEFAULT: which building sprite stands on which building tile "
             "(roof colour -> house A/B/C per the sprite brief, white -> shops/offices, 2x2 "
             "blocks -> 2x2 sprites) and which terrain tile stands for each class are this "
             "project's own choices."
         ),
         "source_image": "assets/raw/conveni_guide_town_v1/beginner_map_start.png",
-        "legend": {"G": "grass", "g": "trees", "D": "bare_ground", "R": "road", "T": "railway", "B": "building", "O": "store_lot"},
+        "legend": {"G": "grass", "g": "trees", "D": "bare_ground", "R": "road", "T": "railway", "B": "building"},
         "terrain_tiles": TERRAIN_TILES,
         "buildings": buildings,
+        "building_catalog": catalog,
+        "store_site": site,
         "store_mark_sprite": "map_blue_hq",
         "width_tiles": COLS,
         "height_tiles": ROWS,
         "tile_rows": rows,
-        "store_lot_origin_tile": lot_min,
     }
 
 
@@ -239,7 +264,7 @@ def main():
     CONFIG.write_text(text, encoding="utf-8")
     for line in block["tile_rows"]:
         print(line)
-    print("lot", block["store_lot_origin_tile"])
+    print("store_site", {k: v for k, v in block["store_site"].items() if k != "evidence_note"})
 
 
 if __name__ == "__main__":

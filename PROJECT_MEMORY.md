@@ -1980,6 +1980,30 @@ panel. The phone layout is now: store at scale 1.0 on the left, shortcut column 
 the panel as an off-screen drawer. Shortcuts open the drawer, 閉じる closes it; it is moved rather than
 hidden so its layout stays valid. The yellow interaction dots now appear only while a fixture is selected.
 
+**Task #95 (2026-09-25, decision 0166)**: the player chooses the store's site. The user pointed out that the
+original lets you buy land anywhere, with prices that differ by site, while this client fixed the store on
+the p.11 screenshot's orange 5x5 block. That block is now read as the start screen's selection cursor
+(inference) and is grass. A new game starts on the town map with 「出店場所を選んで下さい」 and time stopped:
+- tap -> 2x2 cursor and 「空地 ¥21,000,000 たばこ○ 酒○ 薬○」 (building name and land/buy-out split when occupied);
+- rules (CONFIRMED_OFFICIAL): 2x2 footprint (DATA4), not on road/rail/off-map, no store within 5 squares,
+  cost = land (4 areas) + building value / 2;
+- price shape (REMAKE, anchored to the guide's examples): 20M floor, +5M on a road, up to +5M by buildings in
+  the surrounding 16x16 squares, rounded to 1M, grown by LandValuePolicy's yearly rate; DATA4 building
+  prices read as 万円 (PROVISIONAL);
+- the site sets demand.nearby_population (2,000 x the site's building squares / the mean site; REMAKE).
+Every real new game now starts with ¥200,000,000. Save schema 6 stores the site and the cleared buildings.
+Not done: store-size choice (only small is selectable at the PS start, but the p.48 large store is still
+granted; ask the user), permits right after the land, town growth, a site chooser for later branches.
+
+**Task #96 (2026-09-25, decision 0167)**: BGM and sound effects, all this project's own (REMAKE). The original
+has BGM (the V03 video title) and effects (a clear effect; a horn when parking runs short), but no recording or
+score was recovered and its music may not be copied. game/scripts/audio/sound_synth.gd synthesizes everything
+at run time (no audio file ships; the APK is at the 30MiB delivery limit): a 132bpm store tune, a 100bpm town
+tune (title and site choice), rendered on a worker thread, and effects mapped from events by
+vertical_slice.json "sound".event_sfx (door chime on entry, register beep on checkout, purchase, place, anger,
+month end, clear fanfare, game over, refusal, button blip). SoundManager autoload; a 音 on/off button in the
+panel, saved in user://settings.cfg.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

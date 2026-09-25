@@ -1,0 +1,159 @@
+"""Task #95: the store-site rules of the guide town map (no numpy/Pillow, so
+the contract test can import it). build_guide_town_map.py writes
+store_site_rules() into guide_town_map.store_site; site_quote() is the Python
+mirror of game/scripts/domain/store_site.gd, and the contract test checks
+both give the same numbers.
+"""
+
+# Task #95: where the player may open a store and what the land costs.
+# CONFIRMED_OFFICIAL / CONFIRMED_COMMUNITY anchors:
+# - a convenience store takes 2x2 map squares (DATA4 コンビニ(自) 2×2, guide
+#   p.92-95);
+# - a new store's land cost = 地価(4エリア分) + 建物評価額÷2 (guide third book
+#   p.79; p.7 "買収費~建物評価額の50%");
+# - no store within 5 squares of another store (guide p.7 ring diagram,
+#   店建設可能 5; TownSpatial.STORE_CONSTRUCTION_MIN_DISTANCE_TILES);
+# - start-of-game vacant lots cost 20,000,000 (rail side, map centre),
+#   25,000,000 (near a school, facing a main road), 26,000,000 and 30,000,000
+#   yen (guide p.6-8 screenshots; 20,000,000 is also the wiki's minimum).
+# REMAKE_BALANCED_DEFAULT: the shape that turns a site into a price -- the
+# 20,000,000 floor, +5,000,000 when the site touches a road (the guide's
+# 大通り example minus the floor), up to +5,000,000 more for how built-up the
+# surrounding 16x16 squares are (so a vacant lot tops out at the guide's
+# highest vacant example, 30,000,000), rounded to the million like every
+# guide example -- and the customer catchment below are this project's own.
+STORE_SITE_FOOTPRINT = (2, 2)
+STORE_SITE_LAND_AREA_COUNT = 4
+STORE_SITE_MIN_STORE_DISTANCE = 5
+STORE_SITE_FLOOR_PRICE_YEN = 20_000_000
+STORE_SITE_ROAD_BONUS_YEN = 5_000_000
+STORE_SITE_DENSITY_BONUS_YEN = 5_000_000
+STORE_SITE_PRICE_STEP_YEN = 1_000_000
+# The guide's 16x16-square zone around a store (security facilities, PDF3
+# p.10): 7 squares out from the 2x2 store on every side. Used here, by
+# analogy, as the area whose buildings send customers to the store.
+STORE_SITE_CATCHMENT_TILES = 7
+STORE_SITE_UNBUILDABLE = ("R", "T")
+# DATA4 prints building prices as bare numbers (住宅(小A) 1000). PROVISIONAL:
+# read as 万円, the only unit under which the guide's own example of a lot
+# with a house (34,000,000) comes out next to its vacant ones (26-30,000,000).
+BUILDING_PRICE_UNIT_YEN = 10_000
+
+
+def building_tiles(buildings):
+    """Map square -> index of the building standing on it."""
+    tiles = {}
+    for index, building in enumerate(buildings):
+        x0, y0 = building["tile"]
+        w, h = building["size"]
+        for y in range(y0, y0 + h):
+            for x in range(x0, x0 + w):
+                tiles[(x, y)] = index
+    return tiles
+
+
+def site_footprint(origin):
+    return [
+        (origin[0] + dx, origin[1] + dy)
+        for dy in range(STORE_SITE_FOOTPRINT[1])
+        for dx in range(STORE_SITE_FOOTPRINT[0])
+    ]
+
+
+def site_is_buildable(rows, origin):
+    height, width = len(rows), len(rows[0])
+    for x, y in site_footprint(origin):
+        if not (0 <= x < width and 0 <= y < height) or rows[y][x] in STORE_SITE_UNBUILDABLE:
+            return False
+    return True
+
+
+def site_faces_road(rows, origin):
+    height, width = len(rows), len(rows[0])
+    for x, y in site_footprint(origin):
+        for dx, dy in ((0, -1), (1, 0), (0, 1), (-1, 0)):
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < width and 0 <= ny < height and rows[ny][nx] == "R":
+                return True
+    return False
+
+
+def catchment_building_tiles(tiles, origin, removed=()):
+    """Building squares within STORE_SITE_CATCHMENT_TILES of the 2x2 site;
+    squares off the map count as empty (the guide: a store at the map edge
+    gets no customers from beyond it)."""
+    r = STORE_SITE_CATCHMENT_TILES
+    count = 0
+    for y in range(origin[1] - r, origin[1] + STORE_SITE_FOOTPRINT[1] + r):
+        for x in range(origin[0] - r, origin[0] + STORE_SITE_FOOTPRINT[0] + r):
+            index = tiles.get((x, y))
+            if index is not None and index not in removed:
+                count += 1
+    return count
+
+
+def store_site_rules(rows, buildings):
+    tiles = building_tiles(buildings)
+    counts = [
+        catchment_building_tiles(tiles, (x, y))
+        for y in range(len(rows))
+        for x in range(len(rows[0]))
+        if site_is_buildable(rows, (x, y))
+    ]
+    return {
+        "evidence_note": (
+            "Task #95. CONFIRMED_OFFICIAL: a store takes 2x2 map squares (DATA4 コンビニ(自)); "
+            "land cost = 地価(4エリア分) + 建物評価額÷2 (guide third book p.79, p.7); no store "
+            "within 5 squares of another (guide p.7 ring diagram). CONFIRMED_OFFICIAL/"
+            "CONFIRMED_COMMUNITY price anchors: start-of-game vacant lots 20,000,000 (rail side, "
+            "map centre; the wiki minimum), 25,000,000 (near a school, facing a main road), "
+            "26,000,000 and 30,000,000 (guide p.6-8). REMAKE_BALANCED_DEFAULT: the price shape "
+            "(floor 20,000,000, +5,000,000 when the site touches a road, up to +5,000,000 by the "
+            "share of built-up squares in the surrounding 16x16 area relative to the busiest "
+            "site, rounded to 1,000,000), the later growth by LandValuePolicy's yearly rate, "
+            "and the customer catchment: the site's nearby population = demand.nearby_population "
+            "x (building squares in that 16x16 area / the mean over every buildable site). "
+            "The 16x16 area itself is the guide's zone around a store for security facilities "
+            "(PDF3 p.10), used by analogy. PROVISIONAL: DATA4's bare building prices read as "
+            "万円 (building_price_unit_yen)."
+        ),
+        "footprint_tiles": list(STORE_SITE_FOOTPRINT),
+        "land_area_count": STORE_SITE_LAND_AREA_COUNT,
+        "min_store_distance_tiles": STORE_SITE_MIN_STORE_DISTANCE,
+        "unbuildable_tiles": list(STORE_SITE_UNBUILDABLE),
+        "floor_land_price_yen": STORE_SITE_FLOOR_PRICE_YEN,
+        "road_bonus_yen": STORE_SITE_ROAD_BONUS_YEN,
+        "density_bonus_yen": STORE_SITE_DENSITY_BONUS_YEN,
+        "price_step_yen": STORE_SITE_PRICE_STEP_YEN,
+        "catchment_tiles": STORE_SITE_CATCHMENT_TILES,
+        "max_catchment_building_tiles": max(counts),
+        "mean_catchment_building_tiles": round(sum(counts) / len(counts), 3),
+        "building_price_unit_yen": BUILDING_PRICE_UNIT_YEN,
+    }
+
+
+def site_quote(block, origin, removed=()):
+    """Start-of-game quote for a 2x2 site, mirrored by game/scripts/domain/
+    store_site.gd (the contract test checks both give the same numbers)."""
+    rows, buildings, rules = block["tile_rows"], block["buildings"], block["store_site"]
+    if not site_is_buildable(rows, origin):
+        return None
+    tiles = building_tiles(buildings)
+    density = catchment_building_tiles(tiles, origin) / rules["max_catchment_building_tiles"]
+    price = rules["floor_land_price_yen"] + rules["density_bonus_yen"] * min(1.0, density)
+    if site_faces_road(rows, origin):
+        price += rules["road_bonus_yen"]
+    step = rules["price_step_yen"]
+    land = int((price + step / 2) // step * step)
+    bought = sorted({tiles[t] for t in site_footprint(origin) if t in tiles})
+    building_value = sum(
+        block["building_catalog"][buildings[i]["sprite"]]["price"] * rules["building_price_unit_yen"]
+        for i in bought
+    )
+    return {
+        "land_yen": land,
+        "building_yen": building_value // 2,
+        "total_yen": land + building_value // 2,
+        "bought_buildings": bought,
+        "catchment_building_tiles": catchment_building_tiles(tiles, origin, set(bought)),
+    }

@@ -16,6 +16,8 @@ const StaffStateScript := preload("res://scripts/domain/staff_state.gd")
 const StaffGrowthScript := preload("res://scripts/domain/staff_growth.gd")
 const CheckoutAngerScript := preload("res://scripts/domain/checkout_anger.gd")
 const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
+const SoundSynthScript := preload("res://scripts/audio/sound_synth.gd")
+const SoundThemesScript := preload("res://scripts/audio/sound_themes.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
@@ -3097,8 +3099,134 @@ func _initialize() -> void:
         _fail("a demand-driven customer's incidental item must be drawn from currently-stocked products")
         return
 
+    if not _check_store_site(config):
+        return
+    if not _check_sound(config):
+        return
+
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
+
+
+# Task #95: choosing and buying the store's 2x2 site on the guide town map.
+# Expected prices are the ones tools/build_guide_town_map.py's site_quote()
+# gives for the same squares (the contract test runs that side).
+func _check_store_site(config: Dictionary) -> bool:
+    var simulation = VerticalSliceSimulationScript.new(config)
+    if simulation.store_site == null or simulation.has_store_site():
+        _fail("the guide town map must give a site chooser with no site bought yet")
+        return false
+    var rules: Dictionary = config["guide_town_map"]["store_site"]
+    if "REMAKE_BALANCED_DEFAULT" not in str(rules["evidence_note"]):
+        _fail("the land price shape must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    if Vector2i(int(rules["footprint_tiles"][0]), int(rules["footprint_tiles"][1])) != Vector2i(2, 2):
+        _fail("a store takes 2x2 squares on the town map (DATA4)")
+        return false
+    var vacant: Dictionary = simulation.store_site_quote(Vector2i(13, 21))
+    if not bool(vacant["buildable"]) or int(vacant["total_yen"]) != 21_000_000 or int(vacant["building_yen"]) != 0:
+        _fail("the vacant site (13, 21) must cost 21,000,000 yen: %s" % vacant)
+        return false
+    var with_house: Dictionary = simulation.store_site_quote(Vector2i(12, 20))
+    if int(with_house["land_yen"]) != 27_000_000 or int(with_house["building_yen"]) != 10_000_000 or int(with_house["total_yen"]) != 37_000_000:
+        _fail("a site with a house must cost its land plus half the house's value: %s" % with_house)
+        return false
+    if str(with_house["label"]).is_empty():
+        _fail("a site with a building must name it")
+        return false
+    for blocked in [Vector2i(11, 20), Vector2i(5, 12), Vector2i(40, 34), Vector2i(-1, 3)]:
+        if bool(simulation.store_site_quote(blocked)["buildable"]):
+            _fail("roads, the railway and the map edge are not building sites: %s" % blocked)
+            return false
+    # Every start-of-game vacant lot costs between the guide's cheapest and
+    # dearest vacant examples, and at least one sits at each end.
+    var lowest := 1 << 40
+    var highest := 0
+    for y in 35:
+        for x in 41:
+            var quote: Dictionary = simulation.store_site_quote(Vector2i(x, y))
+            if bool(quote["buildable"]) and int(quote["building_yen"]) == 0:
+                lowest = mini(lowest, int(quote["land_yen"]))
+                highest = maxi(highest, int(quote["land_yen"]))
+    if lowest != 20_000_000 or highest > 30_000_000 or highest < 28_000_000:
+        _fail("vacant lots must span the guide's 20,000,000-30,000,000 yen: %d-%d" % [lowest, highest])
+        return false
+    var permits: Dictionary = vacant["permits_available"]
+    if not (permits.get("tobacco", false) and permits.get("alcohol", false) and permits.get("medicine", false)):
+        _fail("with no rival stores every permit must be available at a site")
+        return false
+    # No store within 5 squares of another (guide p.7).
+    var rival_config: Dictionary = config.duplicate(true)
+    rival_config["town"]["rival_stores"] = [{"id": "rival-1", "position": [16, 24], "permits_held": ["tobacco"]}]
+    var rival_simulation = VerticalSliceSimulationScript.new(rival_config)
+    var near: Dictionary = rival_simulation.store_site_quote(Vector2i(13, 21))
+    if bool(near["buildable"]) or str(near["reason"]) != "too_close_to_store":
+        _fail("a site 3 squares from a rival store must be refused")
+        return false
+    var apart: Dictionary = rival_simulation.store_site_quote(Vector2i(16, 30))
+    if not bool(apart["buildable"]) or bool(apart["permits_available"]["tobacco"]):
+        _fail("5+ squares away the site is buildable, but inside the rival's 7-square tobacco range: %s" % apart)
+        return false
+    # Buying: needs the cash, pays it once, sets the store's catchment.
+    if simulation.try_buy_store_site(Vector2i(13, 21)):
+        _fail("the test budget cannot buy land")
+        return false
+    simulation.economy.cash_yen = 200_000_000
+    if simulation.try_buy_store_site(Vector2i(11, 20)):
+        _fail("a road square cannot be bought")
+        return false
+    if not simulation.try_buy_store_site(Vector2i(12, 20)):
+        _fail("the house site must be buyable with 200,000,000 yen")
+        return false
+    if simulation.economy.cash_yen != 200_000_000 - 37_000_000:
+        _fail("buying must pay the quoted 37,000,000 yen")
+        return false
+    if simulation.store_site_origin != Vector2i(12, 20) or simulation._player_store_position != Vector2i(12, 20):
+        _fail("the bought site must become the store's position")
+        return false
+    if simulation.bought_buildings().size() != 1:
+        _fail("the house on the site must be bought and cleared")
+        return false
+    var expected_population := int(round(
+        float(config["demand"]["nearby_population"])
+        * float(simulation.store_site.catchment_building_tiles(Vector2i(12, 20), simulation.bought_buildings()))
+        / float(rules["mean_catchment_building_tiles"])
+    ))
+    if simulation.demand.nearby_population != expected_population:
+        _fail("the store's nearby population must come from its site")
+        return false
+    if simulation.try_buy_store_site(Vector2i(30, 30)):
+        _fail("a game has one store site")
+        return false
+    if int(simulation.snapshot()["land_value_yen"]) != 27_000_000:
+        _fail("the HUD land value must be the bought site's own land price")
+        return false
+    # A denser catchment draws more people than a sparse one.
+    var dense_population := int(simulation.store_site_quote(Vector2i(9, 4))["nearby_population"])
+    var sparse_population := int(simulation.store_site_quote(Vector2i(0, 18))["nearby_population"])
+    if dense_population <= sparse_population:
+        _fail("a built-up site must draw more nearby population than an empty one")
+        return false
+    # Save/load keeps the site; reset (a new game) clears it.
+    var saved: Dictionary = simulation.save_state()
+    var reloaded = VerticalSliceSimulationScript.new(config)
+    if not reloaded.load_state(saved):
+        _fail("a save with a store site must load")
+        return false
+    if reloaded.store_site_origin != Vector2i(12, 20) or reloaded.bought_buildings() != simulation.bought_buildings():
+        _fail("load must restore the site and the cleared buildings")
+        return false
+    if reloaded.demand.nearby_population != expected_population:
+        _fail("load must restore the site's nearby population")
+        return false
+    simulation.reset()
+    if simulation.has_store_site() or not simulation.bought_buildings().is_empty():
+        _fail("a new game must start without a site")
+        return false
+    if simulation.demand.nearby_population != int(config["demand"]["nearby_population"]):
+        _fail("a new game must restore the scenario's nearby population")
+        return false
+    return true
 
 
 # Task #50: mirrors VerticalSliceSimulation._scale_yen_to_configured_business_hours()
@@ -3120,3 +3248,46 @@ func _run_visit(simulation) -> int:
 func _fail(message: String) -> void:
     push_error(message)
     quit(1)
+
+
+# Task #96: the synthesized music and effects.
+func _check_sound(config: Dictionary) -> bool:
+    var sound: Dictionary = config["sound"]
+    if "REMAKE_BALANCED_DEFAULT" not in str(sound["evidence_note"]):
+        _fail("the sounds must stay tagged REMAKE_BALANCED_DEFAULT (this project's own)")
+        return false
+    var used: Array = sound["event_sfx"].values() + [sound["clear_sfx"], sound["button_sfx"], sound["refused_sfx"]]
+    for id in used:
+        if not SoundSynthScript.SFX_IDS.has(id):
+            _fail("event sound %s has no synthesized effect" % id)
+            return false
+    for id in SoundSynthScript.SFX_IDS:
+        var samples: PackedFloat32Array = SoundSynthScript.sfx_samples(id)
+        if samples.size() < SoundSynthScript.MIX_RATE / 50 or samples.size() > SoundSynthScript.MIX_RATE * 3:
+            _fail("sound effect %s must last between 20 ms and 3 s" % id)
+            return false
+        var peak := 0.0
+        for value in samples:
+            peak = maxf(peak, absf(value))
+        if peak < 0.05 or peak > 1.0:
+            _fail("sound effect %s must be audible and not clip (peak %f)" % [id, peak])
+            return false
+    if not is_equal_approx(SoundSynthScript.note_hz("A4"), 440.0) or not is_equal_approx(SoundSynthScript.note_hz("A5"), 880.0):
+        _fail("note names must map to equal-tempered pitches")
+        return false
+    for theme_id in ["store", "town"]:
+        var song: Dictionary = SoundThemesScript.theme(theme_id)
+        if song["lead"].size() != song["bass"].size():
+            _fail("each tune needs a bass bar for every melody bar")
+            return false
+        var bar: PackedFloat32Array = SoundSynthScript.render_song(song, 1)
+        var expected := int(8 * (60.0 / float(song["bpm"]) / 2.0) * SoundSynthScript.MIX_RATE)
+        if bar.size() != expected:
+            _fail("one bar of %s must be 8 eighth notes long" % theme_id)
+            return false
+    var loop: AudioStreamWAV = SoundSynthScript.to_wav(SoundSynthScript.render_song(SoundThemesScript.TOWN, 1), true)
+    if loop.loop_mode != AudioStreamWAV.LOOP_FORWARD or loop.mix_rate != SoundSynthScript.MIX_RATE:
+        _fail("background music must loop")
+        return false
+    return true
+
