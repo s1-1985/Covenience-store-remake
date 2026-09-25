@@ -157,3 +157,69 @@ def site_quote(block, origin, removed=()):
         "bought_buildings": bought,
         "catchment_building_tiles": catchment_building_tiles(tiles, origin, set(bought)),
     }
+
+
+# Task #98: rival stores. CONFIRMED_OFFICIAL: the beginner map starts with
+# the rival's 本店 and 2号店 (quick reference guide オールテクニックガイド, book
+# pages 66-83, the beginner map's DATA block:
+# 本店 AM7:00-PM11:00 人気20 警備89 清掃30 サービス30; 2号店 AM7:00-PM11:00
+# 人気20 警備58 清掃30 サービス31, 買収46,721,490円), drawn on the town map as
+# the red 本 and 02 marks (gameplay video, map_red_hq / map_red_02). Where they
+# stand is not recorded anywhere. REMAKE_BALANCED_DEFAULT: each is placed, in
+# turn, on the vacant 2x2 site whose customers (split with the stores
+# already placed) are the most, at least STORE_SITE_MIN_STORE_DISTANCE from
+# them; ties go to the top-left-most site. A building square inside several
+# stores' catchments sends each of them an equal share of its customers.
+RIVAL_STORES = (
+    {
+        "id": "rival-hq", "name": "ライバル本店", "sprite": "map_red_hq",
+        "guide_data": {"hours": "AM7:00〜PM11:00", "popularity": 20, "security": 89, "cleaning": 30, "service": 30},
+    },
+    {
+        "id": "rival-02", "name": "ライバル2号店", "sprite": "map_red_02",
+        "guide_data": {"hours": "AM7:00〜PM11:00", "popularity": 20, "security": 58, "cleaning": 30, "service": 31, "buyout_yen": 46_721_490},
+    },
+)
+
+
+def in_catchment(store_origin, tile):
+    r = STORE_SITE_CATCHMENT_TILES
+    return (
+        store_origin[0] - r <= tile[0] < store_origin[0] + STORE_SITE_FOOTPRINT[0] + r
+        and store_origin[1] - r <= tile[1] < store_origin[1] + STORE_SITE_FOOTPRINT[1] + r
+    )
+
+
+def shared_catchment(tiles, origin, others, removed=()):
+    """Building squares in the site's catchment, each counted as 1/n when n
+    stores (this one included) have it in their catchment."""
+    total = 0.0
+    for tile, index in tiles.items():
+        if index in removed or not in_catchment(origin, tile):
+            continue
+        total += 1.0 / (1 + sum(1 for other in others if in_catchment(other, tile)))
+    return total
+
+
+def place_rivals(rows, buildings):
+    tiles = building_tiles(buildings)
+    placed = []
+    for rival in RIVAL_STORES:
+        best = None
+        for y in range(len(rows)):
+            for x in range(len(rows[0])):
+                origin = (x, y)
+                if not site_is_buildable(rows, origin):
+                    continue
+                if any(t in tiles for t in site_footprint(origin)):
+                    continue
+                if any(max(abs(x - o[0]), abs(y - o[1])) < STORE_SITE_MIN_STORE_DISTANCE for o in placed):
+                    continue
+                score = shared_catchment(tiles, origin, placed)
+                if best is None or score > best[0] + 1e-9:
+                    best = (score, origin)
+        placed.append(best[1])
+    return [
+        dict(rival, position=list(origin), permits_held=[])
+        for rival, origin in zip(RIVAL_STORES, placed)
+    ]

@@ -3100,6 +3100,8 @@ func _initialize() -> void:
         return
     if not _check_staff_work(config):
         return
+    if not _check_rivals():
+        return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
@@ -3354,4 +3356,38 @@ func _check_staff_work(config: Dictionary) -> bool:
         _fail("a mover that did not move this tick stands still")
         return false
     view.free()
+    return true
+
+# Task #98: the rival's 本店 and 2号店 on the town map, sharing customers
+# where their catchments overlap the player's store.
+func _check_rivals() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var guide_rivals: Array = fresh["guide_town_map"]["rival_stores"]
+    if guide_rivals.size() != 2 or "REMAKE_BALANCED_DEFAULT" not in str(fresh["guide_town_map"]["evidence_note"]):
+        _fail("the beginner map has the rival 本店 and 2号店, placed by a tagged REMAKE rule")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if simulation._rival_stores.size() != 2 or simulation.town.store_count_including_rivals != 3:
+        _fail("a new game must start with both rival stores in town")
+        return false
+    var hq: Vector2i = simulation._rival_stores[0]["position"]
+    var near: Dictionary = simulation.store_site_quote(hq + Vector2i(3, 1))
+    if bool(near["buildable"]):
+        _fail("no store may be built within 5 squares of a rival")
+        return false
+    # A site sharing its catchment with the rival draws fewer people than it
+    # would alone; a site far from both keeps them all.
+    var shared_site := hq + Vector2i(6, 0)
+    var alone: int = simulation.store_site.nearby_population(shared_site, 2000, [], [])
+    var shared: int = int(simulation.store_site_quote(shared_site)["nearby_population"])
+    if not bool(simulation.store_site_quote(shared_site)["buildable"]) or shared >= alone:
+        _fail("a rival nearby must take part of a site's customers (%d vs %d alone)" % [shared, alone])
+        return false
+    simulation.economy.cash_yen = 200_000_000
+    if not simulation.try_buy_store_site(Vector2i(13, 21)):
+        _fail("the vacant site (13, 21) must be buyable in the real game")
+        return false
+    if simulation.demand.rival_store_count != 0:
+        _fail("with rivals on the map, competition is the shared catchment, not the flat dilution too")
+        return false
     return true

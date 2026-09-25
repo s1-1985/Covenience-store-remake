@@ -284,14 +284,24 @@ func _draw_guide_map(guide: Dictionary) -> void:
                     _draw_tile("map_concrete", Rect2(mark_rect.position + Vector2(dx, dy) * t, Vector2(t, t)))
             _draw_tile(str(guide["store_mark_sprite"]), mark_rect)
     # Rival stores: with the guide map their positions are map squares
-    # (task #95), each a 2x2 store.
+    # (task #95), each a 2x2 store, drawn as the red 本/02 marks cut from
+    # the gameplay video (task #98, guide_town_map.rival_stores).
+    var rival_sprites := {}
+    for entry in guide.get("rival_stores", []):
+        rival_sprites[str(entry["id"])] = str(entry["sprite"])
     for rival in simulation._rival_stores:
         var cell := Vector2(rival["position"])
         if not shown_rect.encloses(Rect2(cell, Vector2(2, 2))):
             continue
-        var marker := Rect2(cell * t - origin, Vector2(2 * t, 2 * t)).grow(-1)
-        draw_rect(marker, RIVAL_MARKER_COLOR, true)
-        draw_rect(marker, MARKER_OUTLINE_COLOR, false, 1.0)
+        var marker := Rect2(cell * t - origin, Vector2(2 * t, 2 * t))
+        if rival_sprites.has(str(rival["id"])):
+            for dy in 2:
+                for dx in 2:
+                    _draw_tile("map_concrete", Rect2(marker.position + Vector2(dx, dy) * t, Vector2(t, t)))
+            _draw_tile(rival_sprites[str(rival["id"])], marker)
+        else:
+            draw_rect(marker.grow(-1), RIVAL_MARKER_COLOR, true)
+            draw_rect(marker.grow(-1), MARKER_OUTLINE_COLOR, false, 1.0)
     if selecting_site and site_cursor.x >= 0:
         var cursor := Rect2(Vector2(site_cursor) * t - origin, Vector2(2 * t, 2 * t))
         var cursor_color := SITE_OK_COLOR if site_cursor_ok else SITE_BLOCKED_COLOR

@@ -3158,6 +3158,37 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("the staff work rules must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
         self.assertIn("staff must clean where customers have walked", smoke)
 
+    def test_rival_stores_are_on_the_town_map(self):
+        # Task #98: the beginner map's rival 本店 and 2号店.
+        import importlib.util
+
+        town = self.config["guide_town_map"]
+        rivals = town["rival_stores"]
+        self.assertEqual([r["id"] for r in rivals], ["rival-hq", "rival-02"])
+        self.assertEqual(rivals[0]["guide_data"]["security"], 89)
+        self.assertEqual(rivals[1]["guide_data"]["buyout_yen"], 46_721_490)
+        for rival in rivals:
+            self.assertTrue((GAME_ROOT / "assets" / "town" / f"{rival['sprite']}.png").is_file())
+            self.assertTrue(
+                (REPO_ROOT / "assets" / "raw" / "conveni_remaining_assets_v1" / "extracted" / f"{rival['sprite']}.png").is_file()
+            )
+        spec = importlib.util.spec_from_file_location(
+            "guide_store_site", REPO_ROOT / "tools" / "guide_store_site.py"
+        )
+        site = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(site)
+        self.assertEqual(site.place_rivals(town["tile_rows"], town["buildings"]), rivals)
+        a, b = (tuple(r["position"]) for r in rivals)
+        self.assertGreaterEqual(max(abs(a[0] - b[0]), abs(a[1] - b[1])), town["store_site"]["min_store_distance_tiles"])
+        self.assertIn("rival_stores -- the beginner map starts with the rival's 本店 and 2号店", town["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT, each takes in turn", town["evidence_note"])
+        store_site = (GAME_ROOT / "scripts" / "domain" / "store_site.gd").read_text(encoding="utf-8")
+        self.assertIn("# REMAKE_BALANCED_DEFAULT (tools/guide_store_site.py shared_catchment()).", store_site)
+        helper = (GAME_ROOT / "scripts" / "domain" / "guide_starting_store.gd").read_text(encoding="utf-8")
+        self.assertIn('applied["town"]["rival_stores"] = rivals', helper)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a rival nearby must take part of a site's customers", smoke)
+
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は
         # 2人まで雇用できる」 -> manager + 2 staff = 3 per store.

@@ -34,7 +34,7 @@ SOURCE = ROOT / "assets" / "raw" / "conveni_guide_town_v1" / "beginner_map_start
 sys.path.insert(0, str(ROOT / "reference_sim"))
 sys.path.insert(0, str(ROOT / "tools"))
 from conveni_sim.baseline_data import TOWN_BUILDINGS  # noqa: E402
-from guide_store_site import store_site_rules  # noqa: E402
+from guide_store_site import place_rivals, store_site_rules  # noqa: E402
 
 TILE_W, TILE_H = 9.875, 10.45
 X0, Y0 = 120.0 - 12.5 * TILE_W, 76.5 - 6.5 * TILE_H
@@ -222,6 +222,12 @@ def build():
             "(REMAKE_BALANCED_DEFAULT, what lies under it is not visible) and the player picks "
             "a 2x2 site anywhere (store_site). building_catalog: each building sprite's DATA4 "
             "name and printed price (CONFIRMED_OFFICIAL, guide p.92-95). "
+            "Task #98: rival_stores -- the beginner map starts with the rival's 本店 and 2号店 "
+            "(CONFIRMED_OFFICIAL, the beginner map's DATA block, quick reference guide book pages 66-83; guide_data "
+            "copies its figures), drawn as the red 本/02 marks (CONFIRMED_VISUAL, gameplay video). "
+            "Their positions are not recorded anywhere: REMAKE_BALANCED_DEFAULT, each takes in turn "
+            "the vacant site with the most customers left to it (tools/guide_store_site.py "
+            "place_rivals). "
             "REMAKE_BALANCED_DEFAULT: which building sprite stands on which building tile "
             "(roof colour -> house A/B/C per the sprite brief, white -> shops/offices, 2x2 "
             "blocks -> 2x2 sprites) and which terrain tile stands for each class are this "
@@ -233,6 +239,7 @@ def build():
         "buildings": buildings,
         "building_catalog": catalog,
         "store_site": site,
+        "rival_stores": place_rivals(rows, buildings),
         "store_mark_sprite": "map_blue_hq",
         "width_tiles": COLS,
         "height_tiles": ROWS,

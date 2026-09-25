@@ -736,6 +736,7 @@ func _clear_store_site() -> void:
     _bought_buildings.clear()
     _player_store_position = _vec2i_from_array(config["town"]["player_store_position"])
     demand.nearby_population = int(config["demand"]["nearby_population"])
+    demand.rival_store_count = maxi(0, town.store_count_including_rivals - 1)
 
 
 # Land price growth since the start of the game: LandValuePolicy's yearly
@@ -760,7 +761,8 @@ func store_site_quote(origin: Vector2i) -> Dictionary:
         permits[permit_id] = _can_acquire_permit_at(str(permit_id), origin)
     result["permits_available"] = permits
     result["nearby_population"] = store_site.nearby_population(
-        origin, int(config["demand"]["nearby_population"]), _bought_buildings + result["bought_buildings"]
+        origin, int(config["demand"]["nearby_population"]), _bought_buildings + result["bought_buildings"],
+        _rival_positions()
     )
     return result
 
@@ -802,8 +804,19 @@ func _apply_store_site(origin: Vector2i, bought: Array) -> void:
         if not _bought_buildings.has(int(index)):
             _bought_buildings.append(int(index))
     demand.nearby_population = store_site.nearby_population(
-        origin, int(config["demand"]["nearby_population"]), _bought_buildings
+        origin, int(config["demand"]["nearby_population"]), _bought_buildings, _rival_positions()
     )
+    # Task #98: on the town map, rivals take customers where their
+    # catchments overlap the store's (nearby_population above), so the flat
+    # per-rival dilution is not applied on top.
+    demand.rival_store_count = 0
+
+
+func _rival_positions() -> Array:
+    var positions: Array = []
+    for rival in _rival_stores:
+        positions.append(rival["position"])
+    return positions
 
 
 # The HUD's land value: the bought site's own land price today (task #95),

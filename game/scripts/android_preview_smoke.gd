@@ -79,6 +79,8 @@ func _run() -> void:
         return
     if not _require(game.simulation.economy.cash_yen == 200000000 - 21000000, "The land is paid from the starting cash"):
         return
+    if not _require(game.simulation._rival_stores.size() == 2 and "競合2店" in game.town_label.text, "The rival 本店 and 2号店 are in town: " + game.town_label.text):
+        return
     if not _require(ThemeDB.fallback_font.has_char(0x5E97), "Japanese glyphs must be available"):
         return
     for tick in range(500):

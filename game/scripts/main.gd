@@ -1188,7 +1188,8 @@ func _build_fixture_info_panel() -> void:
     fixture_info_panel.add_child(row)
     fixture_info_label = Label.new()
     fixture_info_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-    fixture_info_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    fixture_info_label.clip_text = true
+    fixture_info_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
     row.add_child(fixture_info_label)
     fixture_restock_button = Button.new()
     fixture_restock_button.name = "FixtureRestockButton"
@@ -1237,7 +1238,7 @@ func _refresh_fixture_info() -> void:
     var store_size: Vector2 = Vector2(
         simulation.layout.width_subcells, simulation.layout.height_subcells
     ) * store_view.SUBCELL_PIXELS * store_view.scale
-    var height := 72.0
+    var height: float = maxf(72.0, fixture_info_panel.get_combined_minimum_size().y)
     var origin_y := float(_vec2i_of(fixture["origin_subcell"]).y) / float(simulation.layout.height_subcells)
     var y: float = store_view.position.y + store_size.y - height if origin_y < 0.5 else store_view.position.y
     fixture_info_panel.position = Vector2(store_view.position.x, y)

@@ -27,6 +27,18 @@ static func apply(config: Dictionary) -> Dictionary:
     var work: Dictionary = guide["staff_work"]
     applied["simulation"]["restock_trigger_share_of_full"] = float(work["restock_trigger_share_of_full"])
     applied["simulation"]["cleaning_task_enabled"] = bool(work["cleaning_task_enabled"])
+    # Task #98: the rival's 本店 and 2号店 on the town map (see
+    # guide_town_map.rival_stores: CONFIRMED_OFFICIAL that they exist,
+    # REMAKE_BALANCED_DEFAULT where they stand).
+    var rivals: Array = []
+    for rival in config["guide_town_map"]["rival_stores"]:
+        rivals.append({
+            "id": str(rival["id"]),
+            "position": (rival["position"] as Array).duplicate(),
+            "permits_held": (rival["permits_held"] as Array).duplicate(),
+        })
+    applied["town"]["rival_stores"] = rivals
+    applied["town"]["store_count_including_rivals"] = 1 + rivals.size()
     for member in applied["staff"]["members"]:
         member["start_subcell"] = (guide["staff_start_subcells"][str(member["id"])] as Array).duplicate()
     applied["customer"]["visit_plan_product_ids"] = (guide["customer_visit_plan_product_ids"] as Array).duplicate()

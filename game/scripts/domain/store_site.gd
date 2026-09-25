@@ -119,6 +119,36 @@ func catchment_building_tiles(origin: Vector2i, removed: Array = []) -> int:
     return count
 
 
+# Task #98: is a map square inside a store's catchment (the same square
+# area catchment_building_tiles() counts)?
+func in_catchment(store_origin: Vector2i, tile: Vector2i) -> bool:
+    var reach := int(rules["catchment_tiles"])
+    return (
+        tile.x >= store_origin.x - reach and tile.x < store_origin.x + footprint.x + reach
+        and tile.y >= store_origin.y - reach and tile.y < store_origin.y + footprint.y + reach
+    )
+
+
+# Task #98: building squares in the site's catchment, each counted as 1/n
+# when n stores (this site included) have it in their catchment -- the
+# customers of a building near two stores are shared between them.
+# REMAKE_BALANCED_DEFAULT (tools/guide_store_site.py shared_catchment()).
+func shared_catchment(origin: Vector2i, others: Array, removed: Array = []) -> float:
+    var reach := int(rules["catchment_tiles"])
+    var total := 0.0
+    for y in range(origin.y - reach, origin.y + footprint.y + reach):
+        for x in range(origin.x - reach, origin.x + footprint.x + reach):
+            var tile := Vector2i(x, y)
+            if not _building_at.has(tile) or removed.has(_building_at[tile]):
+                continue
+            var stores := 1
+            for other in others:
+                if in_catchment(other, tile):
+                    stores += 1
+            total += 1.0 / stores
+    return total
+
+
 # REMAKE_BALANCED_DEFAULT price shape (see the file header), before any
 # growth over time.
 func start_land_price_yen(origin: Vector2i) -> int:
@@ -133,9 +163,9 @@ func start_land_price_yen(origin: Vector2i) -> int:
 # Nearby population a store on this site draws: the scenario's
 # nearby_population scaled by this site's catchment against the mean site
 # (REMAKE_BALANCED_DEFAULT, see the file header).
-func nearby_population(origin: Vector2i, base_population: int, removed: Array = []) -> int:
+func nearby_population(origin: Vector2i, base_population: int, removed: Array = [], others: Array = []) -> int:
     var mean := float(rules["mean_catchment_building_tiles"])
-    return int(round(float(base_population) * float(catchment_building_tiles(origin, removed)) / mean))
+    return int(round(float(base_population) * shared_catchment(origin, others, removed) / mean))
 
 
 # Full quote for buying the site now. `growth` scales the land price for

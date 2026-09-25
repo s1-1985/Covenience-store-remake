@@ -2014,6 +2014,30 @@ The correct build was 30.01 MiB, over the 30 MiB delivery limit. Explicit small 
 (game/assets/app_icon/, nearest-neighbour upscales of the register menu icon; platform presentation only)
 replace Godot's auto-scaled ~150 KB ones. That brings the APK to 29.50 MiB.
 
+**Task #97 (2026-09-25, decision 0168)**: the user reported, after playing 0.1.6: staff never move; customers move
+choppily; the shelf picture never changes; a selected fixture shows nothing and cannot be refilled.
+Causes found by running the real game:
+- staff only restocked at stock 0 (shelves hold 40-120) and had no cleaning task;
+- people jumped one subcell per 0.25 s tick on one walk frame;
+- shelf pictures changed only at 66%/33% of stock;
+- manual restock required stock <= 0 and an empty store.
+Fixes:
+- staff refill a shelf at <= 8/9 full and clean the squares customers walked on (guide p.26:
+  clean -> cleaning + security growth);
+- movers slide between squares and alternate walk frames A/B;
+- shelves draw ceil(stock share x 9) items per tile;
+- tapping a fixture shows 「小型常温棚：パン　在庫 38／40　[補充(¥300)] [閉じる]」, and restock works whenever the
+  shelf is not full, fills to full, and is allowed with customers in the store (owner testimony
+  「中身が減っていると」).
+Thresholds, dirt and drawing are REMAKE.
+
+**Task #98 (2026-09-25, decision 0169)**: rival stores. The beginner map starts with the rival 本店 and 2号店
+(quick reference guide DATA block, CONFIRMED_OFFICIAL, with their figures), drawn as the red 本/02 marks. Their
+positions are not recorded; tools/guide_store_site.py place_rivals() puts each, in turn, on the vacant site with the
+most customers left to it, 5+ squares apart (REMAKE): (8,10) and (27,9). A building square in several stores'
+16x16 catchments is shared equally between them; this sets the player's nearby population, and the flat per-rival
+dilution is not applied on top. Not done: rival management AI, buyouts, rival permits.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
