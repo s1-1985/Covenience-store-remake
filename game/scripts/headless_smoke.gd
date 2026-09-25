@@ -3421,6 +3421,10 @@ func _check_stamina() -> bool:
     if cleaner.stamina_max != expected_max or cleaner.stamina != expected_max:
         _fail("a staff member starts with their printed 体力")
         return false
+    # Open hours, with a shopper inside (task #105: nobody is in the store
+    # at the 00:00 start any more).
+    simulation.minute_of_day = 8 * 60
+    simulation.start_next_customer()
     cleaner.stamina = 1
     var exhausted_at := -1
     var rested_at := -1
@@ -3593,6 +3597,15 @@ func _check_business_hours() -> bool:
     var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
     if simulation.minute_of_day != 0 or simulation.business_hours_id != "7_23":
         _fail("a new game starts at 00:00, open AM7:00~PM11:00")
+        return false
+    # Task #105: nobody is inside the closed store at the start, and the
+    # HUD, save and load cope with that.
+    if not simulation.customers.customers.is_empty() or str(simulation.snapshot()["customer_phase"]) != "none":
+        _fail("nobody is inside a closed store at the 00:00 start")
+        return false
+    var empty_reload = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not empty_reload.load_state(simulation.save_state()) or not empty_reload.customers.customers.is_empty():
+        _fail("a save of the empty closed store must load empty")
         return false
     var expected_minutes := {"10_18": 480, "7_23": 960, "10_2": 960, "12_4": 960, "19_11": 960, "24h": 1440, "closed": 0}
     for preset in simulation.business_hours_presets():

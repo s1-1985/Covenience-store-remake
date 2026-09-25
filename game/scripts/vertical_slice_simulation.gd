@@ -349,7 +349,15 @@ func reset() -> void:
     _weather_rng.seed = int(config["weather"]["rng_seed"])
     _roll_weather()
     _refresh_interactions()
-    _start_default_customer()
+    _start_opening_customer()
+
+
+# The customer already inside when a game starts or loads. Task #105: not
+# while the store is closed (a new real game starts at 00:00, before its
+# AM7:00 opening) -- nobody is inside a closed store.
+func _start_opening_customer() -> void:
+    if is_open_now():
+        _start_default_customer()
 
 
 func start_next_customer() -> bool:
@@ -1078,7 +1086,7 @@ func _build_store_type(type_id: String) -> void:
     _reset_stamina()
     _refresh_interactions()
     assert(_all_staff_are_walkable() and _required_routes_are_reachable())
-    _start_default_customer()
+    _start_opening_customer()
 
 
 func _apply_store_site(origin: Vector2i, bought: Array) -> void:
@@ -1663,8 +1671,11 @@ func clock_text() -> String:
 
 
 func snapshot() -> Dictionary:
-    var customer = customers.active()
     var checkout_staff = staff.checkout_staff()
+    # Task #105: before the first customer of the day there is none.
+    var customer = null
+    if not customers.active_customer_id.is_empty():
+        customer = customers.active()
     return {
         "minute_of_day": minute_of_day,
         "clock_text": clock_text(),
@@ -1672,16 +1683,16 @@ func snapshot() -> Dictionary:
         "cash_yen": economy.cash_yen,
         "stock_units": inventory.total_stock_units(),
         "inventory": _inventory_snapshot(),
-        "customer_id": customer.customer_id,
-        "customer_phase": customer.phase,
-        "customer_position": customer.position,
+        "customer_id": customer.customer_id if customer != null else "",
+        "customer_phase": customer.phase if customer != null else "none",
+        "customer_position": customer.position if customer != null else layout.entry,
         "staff_id": checkout_staff.staff_id,
         "staff_state": checkout_staff.state,
         "staff_position": checkout_staff.position,
         "staff_count": staff.members.size(),
         "staff_roster": _staff_roster_snapshot(),
-        "customer_basket_count": customer.basket.size(),
-        "customer_basket_total_yen": customer.basket_total_yen(),
+        "customer_basket_count": customer.basket.size() if customer != null else 0,
+        "customer_basket_total_yen": customer.basket_total_yen() if customer != null else 0,
         "completed_sales": economy.completed_sales,
         "last_sale": economy.last_sale_record(),
         "expenses_yen": economy.recorded_expenses_yen(),
@@ -2045,7 +2056,7 @@ func load_state(data: Dictionary) -> bool:
     economy.restore_snapshot(data["economy"])
     event_log.restore_snapshot(data["events"])
     _refresh_interactions()
-    _start_default_customer()
+    _start_opening_customer()
     return true
 
 

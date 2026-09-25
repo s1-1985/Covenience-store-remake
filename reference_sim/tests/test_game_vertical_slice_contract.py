@@ -3278,6 +3278,9 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("if customers.can_admit_concurrent() and is_open_now() and demand.customer_arrives_this_minute():", simulation)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("no customer comes in while the store is closed", smoke)
+        # Task #105: nobody is inside when a game starts before opening time.
+        self.assertIn("func _start_opening_customer() -> void:\n    if is_open_now():", simulation)
+        self.assertIn("nobody is inside a closed store at the 00:00 start", smoke)
 
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は

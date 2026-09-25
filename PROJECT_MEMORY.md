@@ -2084,6 +2084,10 @@ squares in the catchment, shared with rivals) and want up to 3 of that building'
   purchase was multiplied by 8, which bankrupted every new game at its first month end since task #95.
 - Save schema 9.
 
+**Task #105 (2026-09-25, decision 0176)**: nobody is inside the store at the 00:00 start.
+- The first customer at start, load or rebuild is admitted only while the store is open (`_start_opening_customer`).
+- This resolves the known point in decision 0174.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
