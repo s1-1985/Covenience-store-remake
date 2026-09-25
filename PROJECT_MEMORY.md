@@ -1974,6 +1974,12 @@ town_view.gd:
 - shows only part of the town at 24px per tile, drag-to-pan, starting centred on the store.
 Tile and sprite choice is REMAKE.
 
+**Task #94 (2026-09-25, decision 0165)**: phone store at full size. The generated product overlays have been
+drawn since task #68, but on the phone the 12x8 store was shrunk to 0.81 next to the shortcut column and
+panel. The phone layout is now: store at scale 1.0 on the left, shortcut column at the right edge, and
+the panel as an off-screen drawer. Shortcuts open the drawer, 閉じる closes it; it is moved rather than
+hidden so its layout stays valid. The yellow interaction dots now appear only while a fixture is selected.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

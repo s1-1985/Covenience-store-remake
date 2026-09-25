@@ -4,6 +4,8 @@ const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_sim
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
 
+var _android_panel: Control = null
+
 # Test seam (task #89): see _load_config(). An Engine meta flag rather than a
 # static var because the --script smoke runner cannot preload this script
 # (its GameLaunchState autoload reference only resolves inside a full run).
@@ -1029,12 +1031,15 @@ func _prepare_android_ui() -> void:
             node.size_flags_horizontal = Control.SIZE_EXPAND_FILL
     var shortcuts := VBoxContainer.new()
     shortcuts.name = "AndroidShortcuts"
-    # Task #89: the guide starting store is 12x8 tiles, so on the phone the
-    # store takes the left side and the shortcut column and panel move right.
-    shortcuts.position = Vector2(730, 130)
+    # Task #94: the 12x8 store is drawn at full size (72px tiles, so the
+    # shelf/product sprites are legible) across the left of the screen, the
+    # shortcut column sits at the right edge, and the panel is a drawer that
+    # slides over the store when a shortcut is tapped (and closes with 閉じる).
+    # Platform presentation only, like the rest of this function.
+    shortcuts.position = Vector2(1090, 130)
     shortcuts.size.x = 180
-    panel.offset_left = 920.0
-    panel.offset_right = 1270.0
+    _android_panel = panel
+    _set_android_panel_open(false)
     shortcuts.theme = mobile_theme
     shortcuts.add_theme_constant_override("separation", 12)
     $UI.add_child(shortcuts)
@@ -1045,7 +1050,10 @@ func _prepare_android_ui() -> void:
         button.custom_minimum_size = Vector2(180, 64)
         shortcuts.add_child(button)
         var target: Control = $UI/Panel/Margin/Scroll/VBox.get_node(targets[caption])
-        button.pressed.connect(func(): $UI/Panel/Margin/Scroll.scroll_vertical = int(target.position.y))
+        button.pressed.connect(func():
+            _set_android_panel_open(true)
+            $UI/Panel/Margin/Scroll.scroll_vertical = int(target.position.y)
+        )
     var quick_save := Button.new()
     quick_save.text = "セーブ"
     quick_save.custom_minimum_size = Vector2(180, 64)
@@ -1060,4 +1068,22 @@ func _prepare_android_ui() -> void:
     town_toggle.text = "町／店内"
     town_toggle.custom_minimum_size = Vector2(180, 64)
     shortcuts.add_child(town_toggle)
-    town_toggle.pressed.connect(func(): show_town_map_button.pressed.emit())
+    town_toggle.pressed.connect(func():
+        _set_android_panel_open(false)
+        show_town_map_button.pressed.emit()
+    )
+    var close_panel := Button.new()
+    close_panel.name = "ClosePanel"
+    close_panel.text = "閉じる"
+    close_panel.custom_minimum_size = Vector2(180, 64)
+    shortcuts.add_child(close_panel)
+    close_panel.pressed.connect(func(): _set_android_panel_open(false))
+
+
+# Task #94: the phone panel is parked off-screen rather than hidden, so its
+# layout (and the shortcut scroll targets) stay valid while closed.
+func _set_android_panel_open(open: bool) -> void:
+    if _android_panel == null:
+        return
+    _android_panel.offset_left = 540.0 if open else 1300.0
+    _android_panel.offset_right = _android_panel.offset_left + 540.0

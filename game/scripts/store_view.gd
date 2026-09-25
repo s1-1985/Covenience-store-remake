@@ -495,8 +495,11 @@ func _draw_fixtures() -> void:
         var outline := Color("f4d35e") if fixture["id"] == selected_fixture_id else Color("363636")
         var outline_width := 5.0 if fixture["id"] == selected_fixture_id else 2.0
         draw_rect(rect, outline, false, outline_width)
-        var interaction := _vec2i(fixture["interaction_subcell"])
-        draw_circle(_cell_center(interaction), 7.0, Color("f4d35e"))
+        # Task #94: the original shows no interaction markers; they only
+        # appear while a fixture is selected for layout editing.
+        if not selected_fixture_id.is_empty():
+            var interaction := _vec2i(fixture["interaction_subcell"])
+            draw_circle(_cell_center(interaction), 7.0, Color("f4d35e"))
 
 
 func _draw_product_overlay(texture: Texture2D, origin: Vector2i, footprint: Array, scale: int) -> void:
