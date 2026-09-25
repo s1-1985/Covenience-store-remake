@@ -3104,6 +3104,8 @@ func _initialize() -> void:
         return
     if not _check_stamina():
         return
+    if not _check_actions_while_open(config):
+        return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
@@ -3441,3 +3443,32 @@ func _check_stamina() -> bool:
         _fail("stamina is off in the prototype scenarios")
         return false
     return true
+
+
+# Task #100: economy actions that touch no fixture work while customers
+# are in the store; layout edits still wait for them to leave.
+func _check_actions_while_open(config: Dictionary) -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(fresh)
+    simulation.economy.cash_yen = 500_000_000
+    if simulation.customers.all_settled():
+        _fail("a new simulation starts with a customer in the store")
+        return false
+    if not simulation.try_purchase_permit("tobacco"):
+        _fail("a permit can be bought while customers are in the store")
+        return false
+    if not simulation.try_purchase_promotion("direct_mail"):
+        _fail("advertising can be bought while customers are in the store")
+        return false
+    if not simulation.try_set_price_policy(-10):
+        _fail("the price policy can change while customers are in the store")
+        return false
+    if not simulation.try_expand_chain():
+        _fail("the chain can expand while customers are in the store")
+        return false
+    var shelf_id := str(fresh["fixtures"][0]["id"])
+    if simulation.try_relocate_fixture(shelf_id, Vector2i(0, 12)):
+        _fail("moving a fixture still waits for customers to leave")
+        return false
+    return true
+

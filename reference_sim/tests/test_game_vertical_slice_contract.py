@@ -3203,6 +3203,24 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("an exhausted staff member rests in the break room, recovers and goes back to work", smoke)
 
+    def test_economy_actions_work_while_customers_are_in(self):
+        # Task #100: permits, promotions, price policy and chain expansion
+        # no longer wait for the store to empty.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        for fn in (
+            "func try_purchase_permit(",
+            "func try_set_price_policy(",
+            "func try_purchase_promotion(",
+            "func try_expand_chain(",
+        ):
+            body = simulation.split(fn)[1][:600]
+            self.assertIn("# Task #100: allowed while customers are in the store", body)
+            self.assertNotIn("customers.all_settled()", body.split("\n\n")[0])
+        self.assertIn("if is_game_over or not customers.all_settled() or _any_restock_task_active():", simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a permit can be bought while customers are in the store", smoke)
+        self.assertIn("moving a fixture still waits for customers to leave", smoke)
+
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は
         # 2人まで雇用できる」 -> manager + 2 staff = 3 per store.

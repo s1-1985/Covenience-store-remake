@@ -2047,6 +2047,10 @@ dilution is not applied on top. Not done: rival management AI, buyouts, rival pe
 - An exhausted cashier leaves the register unmanned while resting.
 - A small gauge is drawn under each staff member. Real game only (staff_work.stamina_enabled); not saved.
 
+**Task #100 (2026-09-25, decision 0171)**: permits, promotions, the price policy and chain expansion no longer wait for
+every customer to leave; the store is almost never empty while open, so they had been effectively unusable. Fixture
+edits, procurement and hiring still wait.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

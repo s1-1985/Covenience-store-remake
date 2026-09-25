@@ -505,7 +505,10 @@ func has_permit(permit_id: String) -> bool:
 
 
 func try_purchase_permit(permit_id: String) -> bool:
-    if is_game_over or not customers.all_settled():
+    # Task #100: allowed while customers are in the store -- this changes
+    # no fixture, route or basket (during opening hours the store is almost
+    # never empty, so waiting for it blocked the action for good).
+    if is_game_over:
         return false
     if has_permit(permit_id) or not _permit_catalog.has(permit_id):
         return false
@@ -633,7 +636,10 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
 # project's own REMAKE_BALANCED_DEFAULT sanity floor -- no source states a
 # minimum, but a price below 0% of list price is not a meaningful discount.
 func try_set_price_policy(new_price_change_pct: int) -> bool:
-    if is_game_over or not customers.all_settled():
+    # Task #100: allowed while customers are in the store -- this changes
+    # no fixture, route or basket (during opening hours the store is almost
+    # never empty, so waiting for it blocked the action for good).
+    if is_game_over:
         return false
     if new_price_change_pct < -100:
         return false
@@ -658,7 +664,10 @@ func _apply_price_policy(list_price_yen: int) -> int:
 
 
 func try_purchase_promotion(promotion_id: String) -> bool:
-    if is_game_over or not customers.all_settled():
+    # Task #100: allowed while customers are in the store -- this changes
+    # no fixture, route or basket (during opening hours the store is almost
+    # never empty, so waiting for it blocked the action for good).
+    if is_game_over:
         return false
     if not _promotion_catalog.has(promotion_id):
         return false
@@ -850,7 +859,10 @@ func chain_expansion_cost_yen() -> int:
 
 
 func try_expand_chain() -> bool:
-    if is_game_over or not customers.all_settled() or _any_restock_task_active():
+    # Task #100: allowed while customers are in the store -- this changes
+    # no fixture, route or basket (during opening hours the store is almost
+    # never empty, so waiting for it blocked the action for good).
+    if is_game_over:
         return false
     var expansion_cost_yen := chain_expansion_cost_yen()
     if economy.cash_yen < expansion_cost_yen:
