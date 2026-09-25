@@ -2555,36 +2555,31 @@ func _initialize() -> void:
     # always-available generic picker any more (see docs/decisions/0149-*.md
     # for the CONFIRMED_COMMUNITY owner testimony this responds to).
     economy_ui_scene.store_view.selected_fixture_id = "shelf-1"
-    var bread_product_above_threshold = economy_ui_scene.simulation.inventory.get_product("prototype-bread")
-    if bread_product_above_threshold.stock_units <= economy_ui_scene.simulation._restock_trigger_stock_units_at_or_below:
-        _fail("economy UI restock precondition: prototype-bread must start above the restock threshold")
-        return
+    var bread_product_full = economy_ui_scene.simulation.inventory.get_product("prototype-bread")
+    bread_product_full.stock_units = bread_product_full.initial_stock_units
     if economy_ui_scene._selected_fixture_restock_target() != null:
-        _fail("economy UI: restock target must stay null while the selected fixture's stock is not low")
+        _fail("economy UI: a full shelf has nothing to restock")
         return
     var cash_before_gated_restock_attempt: int = economy_ui_scene.simulation.economy.cash_yen
     economy_ui_scene._on_restock_pressed()
     if economy_ui_scene.simulation.economy.cash_yen != cash_before_gated_restock_attempt:
-        _fail("economy UI: pressing Restock while ungated (no low-stock target) must not charge cash")
+        _fail("economy UI: pressing Restock on a full shelf must not charge cash")
         return
-
-    economy_ui_scene.simulation.inventory.get_product("prototype-bread").stock_units = (
-        economy_ui_scene.simulation._restock_trigger_stock_units_at_or_below
-    )
+    # Task #97: as soon as the shelf is short (「中身が減っていると」), even
+    # by a few units and with customers in the store, it can be filled.
+    bread_product_full.stock_units = bread_product_full.initial_stock_units - 3
     var restock_target = economy_ui_scene._selected_fixture_restock_target()
     if restock_target == null or restock_target.product_id != "prototype-bread":
-        _fail("economy UI: restock target must resolve to the selected fixture's low-stock product")
+        _fail("economy UI: restock target must resolve to the selected fixture's short product")
         return
-    var stock_before_restock: int = economy_ui_scene.simulation.inventory.get_product("prototype-bread").stock_units
     var cash_before_explicit_restock: int = economy_ui_scene.simulation.economy.cash_yen
     economy_ui_scene._on_restock_pressed()
     var bread_product = economy_ui_scene.simulation.inventory.get_product("prototype-bread")
-    if bread_product.stock_units != stock_before_restock + bread_product.initial_stock_units:
-        _fail("economy UI: Restock must add exactly initial_stock_units of the selected product")
+    if bread_product.stock_units != bread_product.initial_stock_units:
+        _fail("economy UI: Restock must fill the shelf back to full, not beyond")
         return
-    var expected_explicit_restock_cost: int = bread_product.initial_stock_units * bread_product.restock_unit_cost_yen
-    if economy_ui_scene.simulation.economy.cash_yen != cash_before_explicit_restock - expected_explicit_restock_cost:
-        _fail("economy UI: Restock must charge quantity * restock_unit_cost_yen")
+    if economy_ui_scene.simulation.economy.cash_yen != cash_before_explicit_restock - 3 * bread_product.restock_unit_cost_yen:
+        _fail("economy UI: Restock must charge the missing units * restock_unit_cost_yen")
         return
     # Clear the selection this restock test made -- later checks in this same
     # scenario (e.g. the sell button below) assume nothing is selected by
@@ -3103,6 +3098,8 @@ func _initialize() -> void:
         return
     if not _check_sound(config):
         return
+    if not _check_staff_work(config):
+        return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
@@ -3291,3 +3288,70 @@ func _check_sound(config: Dictionary) -> bool:
         return false
     return true
 
+# Task #97: staff clean and refill shelves as they go down; the shelf
+# picture shows 0-9 items per tile; people slide between squares.
+func _check_staff_work(config: Dictionary) -> bool:
+    var work: Dictionary = config["guide_starting_store"]["staff_work"]
+    if "REMAKE_BALANCED_DEFAULT" not in str(work["evidence_note"]):
+        _fail("the staff work rules must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var store_view_script = load("res://scripts/store_view.gd")
+    for case in [[40, 40, 1, 9], [35, 40, 1, 8], [1, 40, 1, 1], [0, 40, 1, 0], [40, 40, 2, 18], [20, 40, 2, 9]]:
+        if store_view_script.visible_item_count(case[0], case[1], case[2]) != case[3]:
+            _fail("shelf picture item count for %s must be %d" % [case, case[3]])
+            return false
+    # A fresh copy: earlier checks change the shared config (e.g. restock).
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    var bread = simulation.inventory.get_product("product-bread-1")
+    if simulation.restock_trigger_units(bread) != 35:
+        _fail("a 40-unit shelf is refilled once it is at or below 8/9 full (35)")
+        return false
+    # Take items off one shelf: a staff member goes to refill it.
+    bread.stock_units = 35
+    var restocked := false
+    var cleaned := false
+    for tick in 1200:
+        simulation.tick()
+        if simulation.event_log.count_type("inventory_restock") > 0:
+            restocked = true
+        if simulation.event_log.count_type("staff_cleaned") > 0:
+            cleaned = true
+        if restocked and cleaned:
+            break
+    if not restocked:
+        _fail("staff must refill a shelf that has gone down to its trigger level")
+        return false
+    if not cleaned:
+        _fail("staff must clean where customers have walked")
+        return false
+    var checkout_id: String = simulation.staff.checkout_staff_id
+    for event in simulation.event_log.records:
+        if str(event["event_type"]) == "staff_cleaned" and str(event["details"]["staff_id"]) == checkout_id:
+            _fail("the register clerk stays at the register instead of cleaning")
+            return false
+    # The prototype scenarios keep their old rules.
+    var prototype = VerticalSliceSimulationScript.new(fresh)
+    if prototype.restock_trigger_units(prototype.inventory.get_product("prototype-bread")) != int(fresh["simulation"]["restock_trigger_stock_units_at_or_below"]):
+        _fail("the prototype store keeps its fixed restock trigger")
+        return false
+    # Smooth movement: halfway through a tick a mover is halfway between squares.
+    var view = store_view_script.new()
+    view.tick_serial = 1
+    view.tick_progress = 1.0
+    view._moving_center("x", Vector2i(2, 2))
+    view.tick_serial = 2
+    view.tick_progress = 0.5
+    var halfway: Array = view._moving_center("x", Vector2i(3, 2))
+    var expected_halfway: Vector2 = (view._cell_center(Vector2i(2, 2)) + view._cell_center(Vector2i(3, 2))) / 2.0
+    if not (halfway[0] as Vector2).is_equal_approx(expected_halfway) or str(halfway[1]) != "B":
+        _fail("a mover must be drawn halfway between squares halfway through a tick, on its second walk frame")
+        return false
+    view.tick_serial = 3
+    view.tick_progress = 0.2
+    var standing: Array = view._moving_center("x", Vector2i(3, 2))
+    if not (standing[0] as Vector2).is_equal_approx(view._cell_center(Vector2i(3, 2))):
+        _fail("a mover that did not move this tick stands still")
+        return false
+    view.free()
+    return true

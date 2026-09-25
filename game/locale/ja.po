@@ -833,3 +833,27 @@ msgstr "音：オン（押すと消音）"
 
 msgid "Sound: off"
 msgstr "音：オフ（押すと鳴らす）"
+
+msgid "Select a shelf that is not full to restock it"
+msgstr "補充する棚を選んで下さい（満杯の棚は補充できません）"
+
+msgid "Cannot restock now"
+msgstr "今は補充できません"
+
+msgid "Close"
+msgstr "閉じる"
+
+msgid "%s: %s, stock %d / %d"
+msgstr "%s：%s　在庫 %d／%d"
+
+msgid "Restock (¥%s)"
+msgstr "補充（¥%s）"
+
+msgid "Full"
+msgstr "満杯"
+
+msgid "staff cleaned"
+msgstr "店員が掃除した"
+
+msgid "to_clean"
+msgstr "掃除に向かっている"

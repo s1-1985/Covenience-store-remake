@@ -48,6 +48,15 @@ func apply_replenish_growth(staff_member) -> Array[Dictionary]:
     return results
 
 
+# Task #97: the guide's clean -> cleaning + security pair (book page 26),
+# now that a cleaning task exists. Same +1 magnitude as above.
+func apply_clean_growth(staff_member) -> Array[Dictionary]:
+    var results: Array[Dictionary] = []
+    _grow(staff_member, "cleaning_skill", results)
+    _grow(staff_member, "security_skill", results)
+    return results
+
+
 func _grow(staff_member, skill_field: String, results: Array[Dictionary]) -> void:
     var before: int
     var ceiling: int

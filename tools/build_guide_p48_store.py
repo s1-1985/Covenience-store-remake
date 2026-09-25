@@ -188,6 +188,20 @@ def build(config):
         ),
         "provisional_restock_product_id": products[0]["id"],
         "sample_layout_label": "Guide p.48 layout",
+        # Task #97: how the staff work in the real game.
+        "staff_work": {
+            "restock_trigger_share_of_full": round(8 / 9, 6),
+            "cleaning_task_enabled": True,
+            "evidence_note": (
+                "Task #97. CONFIRMED: staff notice shelves going down and refill them on their "
+                "own (docs/research/inventory-restock-boundary-2026-09-05.md section 2, exact "
+                "trigger unknown), and clean the store on their own, cleaning growing 清掃 and "
+                "セキュリティ (guide p.26). REMAKE_BALANCED_DEFAULT: a staff member goes to refill "
+                "a shelf once it is at or below 8/9 of full (the shelf picture shows 9 items per "
+                "tile, so: once it has visibly lost an item), and cleans the floor squares "
+                "customers have walked on, one at a time, when there is nothing to refill."
+            ),
+        },
     }
 
 

@@ -432,9 +432,11 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "func try_procure_product(",
             "func try_purchase_promotion(",
             "func try_expand_chain(",
-            "func apply_explicit_restock(",
         ):
             self.assertIn(guarded_function, simulation)
+        # Task #97: restocking a shelf is allowed while customers are in the
+        # store (it changes no route or basket).
+        self.assertIn("# Task #97: no longer waits for every customer to leave", simulation)
         self.assertIn("not customers.all_settled()", simulation)
 
         # The single checkout fixture/staff still serializes service: a
@@ -3136,6 +3138,26 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("the sounds must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
 
+    def test_staff_work_and_store_drawing_changes_are_tagged(self):
+        # Task #97: staff clean and refill as shelves go down; shelves show
+        # items by stock; people slide between squares.
+        work = self.config["guide_starting_store"]["staff_work"]
+        self.assertAlmostEqual(work["restock_trigger_share_of_full"], 8 / 9, places=5)
+        self.assertTrue(work["cleaning_task_enabled"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", work["evidence_note"])
+        self.assertIn("guide p.26", work["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("# Task #97: cleaning. CONFIRMED: staff clean the store on their own", simulation)
+        self.assertIn("# 2026-09-05.md section 2: exact trigger unknown). REMAKE_BALANCED_DEFAULT:", simulation)
+        growth = (GAME_ROOT / "scripts" / "domain" / "staff_growth.gd").read_text(encoding="utf-8")
+        self.assertIn("func apply_clean_growth(staff_member)", growth)
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        self.assertIn("# picture. REMAKE_BALANCED_DEFAULT: items shown = stock share of the full", store_view)
+        self.assertIn("# positions and timing are unchanged. REMAKE_BALANCED_DEFAULT: the linear", store_view)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the staff work rules must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("staff must clean where customers have walked", smoke)
+
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は
         # 2人まで雇用できる」 -> manager + 2 staff = 3 per store.
@@ -3404,10 +3426,13 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertNotIn("_refresh_restock_product_option", main)
         self.assertIn("func _selected_fixture_restock_target():", main)
         self.assertIn("store_view.selected_fixture()", main.split("func _selected_fixture_restock_target()")[1][:400])
+        # Task #97: available as soon as the shelf is not full (the owner's
+        # 「中身が減っていると」), filled back to full.
         self.assertIn(
-            "simulation._restock_trigger_stock_units_at_or_below",
-            main.split("func _selected_fixture_restock_target()")[1][:600],
+            "if product.stock_units >= product.initial_stock_units:",
+            main.split("func _selected_fixture_restock_target()")[1][:900],
         )
+        self.assertIn("var quantity: int = product.initial_stock_units - product.stock_units", main)
         restock_target_comment = main.split("func _selected_fixture_restock_target()")[0].split(
             "func _on_procure_product_pressed"
         )[-1]
@@ -3418,14 +3443,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("economy_ui_scene.store_view.selected_fixture_id = \"shelf-1\"", smoke)
         self.assertIn("economy_ui_scene._selected_fixture_restock_target()", smoke)
-        self.assertIn(
-            "restock target must stay null while the selected fixture's stock is not low",
-            smoke,
-        )
-        self.assertIn(
-            "pressing Restock while ungated (no low-stock target) must not charge cash",
-            smoke,
-        )
+        self.assertIn("economy UI: a full shelf has nothing to restock", smoke)
+        self.assertIn("pressing Restock on a full shelf must not charge cash", smoke)
 
     def test_manual_restock_evidence_is_upgraded_by_the_strategy_guide_qa(self):
         # Task #80: immediately after task #79 shipped the contextual restock

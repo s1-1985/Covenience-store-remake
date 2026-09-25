@@ -109,6 +109,13 @@ var _step_game_minutes: int
 var _restock_ticks: int
 var _restock_trigger_stock_units_at_or_below: int
 var _restock_task_enabled: bool
+# Task #97: staff work in the real game (guide_starting_store.staff_work).
+# 0.0 / false keep the prototype scenarios' old behavior.
+var _restock_trigger_share_of_full := 0.0
+var _cleaning_task_enabled := false
+# Where customers have walked and nobody has cleaned since (oldest first).
+var _dirty_cells: Array[Vector2i] = []
+const MAX_DIRTY_CELLS := 24
 var _days_completed_this_month: int
 var _cash_at_month_start: int
 var _revenue_at_month_start: int
@@ -248,6 +255,8 @@ func _init(source_config: Dictionary) -> void:
         simulation["restock_trigger_stock_units_at_or_below"]
     )
     _restock_task_enabled = bool(simulation["restock_task_enabled"])
+    _restock_trigger_share_of_full = float(simulation.get("restock_trigger_share_of_full", 0.0))
+    _cleaning_task_enabled = bool(simulation.get("cleaning_task_enabled", false))
     assert(_shopping_ticks > 0 and _checkout_ticks > 0 and _step_game_minutes > 0)
     assert(_restock_ticks > 0 and _restock_trigger_stock_units_at_or_below >= 0)
     assert(float(simulation["tick_seconds"]) > 0.0)
@@ -269,6 +278,7 @@ func reset() -> void:
     staff.reset()
     event_log.reset()
     _checkout_queue.clear()
+    _dirty_cells.clear()
     _clear_store_site()
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
@@ -409,7 +419,11 @@ func apply_explicit_restock(
     quantity: int,
     total_cost_yen: int
 ) -> bool:
-    if is_game_over or not customers.all_settled() or quantity <= 0 or total_cost_yen < 0:
+    # Task #97: no longer waits for every customer to leave -- during
+    # opening hours the store is almost never empty, so the button could
+    # effectively never be used. Adding units to a shelf does not touch any
+    # route or basket (a customer reads the stock when reaching the shelf).
+    if is_game_over or quantity <= 0 or total_cost_yen < 0:
         return false
     if not inventory.products.has(product_id) or not staff.members.has(staff_id):
         return false
@@ -1039,6 +1053,8 @@ func step() -> void:
         _advance_customer(customer)
     _dispatch_checkout_queue()
     _step_restock_tasks()
+    _note_dirty_cells()
+    _step_cleaning_tasks()
     _step_staff_rest()
 
 
@@ -2203,18 +2219,133 @@ func _assign_idle_restock_tasks() -> void:
         return
     var claimed_product_ids: Dictionary = {}
     for staff_member in staff.all_staff():
-        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state != "idle":
+        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state in ["to_restock", "restocking"]:
             claimed_product_ids[staff_member.restock_target_product_id] = true
     for product_id in inventory.product_order:
         if claimed_product_ids.has(product_id):
             continue
-        if inventory.get_product(product_id).stock_units > _restock_trigger_stock_units_at_or_below:
+        if inventory.get_product(product_id).stock_units > restock_trigger_units(inventory.get_product(product_id)):
             continue
         var idle_staff = _find_idle_restock_staff()
         if idle_staff == null:
             return
         idle_staff.begin_restock(product_id, layout.find_path(idle_staff.position, _product_interaction(product_id)))
         claimed_product_ids[product_id] = true
+
+
+# Task #97: the stock level at or below which a staff member goes to refill
+# a shelf. The guide/community only say staff notice shelves going down and
+# refill them on their own (docs/research/inventory-restock-boundary-
+# 2026-09-05.md section 2: exact trigger unknown). REMAKE_BALANCED_DEFAULT:
+# in the real game (restock_trigger_share_of_full = 8/9) a staff member
+# goes once the shelf picture has lost an item (store_view.gd shows 9 items
+# per tile); the prototype scenarios keep the fixed unit threshold.
+func restock_trigger_units(product) -> int:
+    return maxi(
+        _restock_trigger_stock_units_at_or_below,
+        int(floor(float(product.initial_stock_units) * _restock_trigger_share_of_full))
+    )
+
+
+# Task #97: cleaning. CONFIRMED: staff clean the store on their own
+# (behavior-rules-evidence, first-title FAQ: they even clean and restock
+# while closed), and cleaning grows 清掃 and セキュリティ (guide p.26
+# 「仕事内容とパラメータ変化の関係」). REMAKE_BALANCED_DEFAULT: what needs
+# cleaning -- the floor squares customers have walked on since they were
+# last cleaned -- how long one spot takes (the restock duration scaled by
+# the cleaner's own cleaning_skill, same shape as RestockTiming), and that
+# restocking and resting come first.
+func _note_dirty_cells() -> void:
+    if not _cleaning_task_enabled:
+        return
+    for customer in customers.active_customers():
+        var cell: Vector2i = customer.position
+        if _dirty_cells.has(cell) or not layout.is_walkable(cell):
+            continue
+        _dirty_cells.append(cell)
+        if _dirty_cells.size() > MAX_DIRTY_CELLS:
+            _dirty_cells.remove_at(0)
+
+
+func dirty_cells() -> Array[Vector2i]:
+    return _dirty_cells.duplicate()
+
+
+func _step_cleaning_tasks() -> void:
+    if not _cleaning_task_enabled:
+        return
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id == staff.checkout_staff_id:
+            continue
+        match staff_member.state:
+            "to_clean":
+                if _step_staff_walk(staff_member):
+                    if staff_member.rest_phase == "stale":
+                        staff_member.state = "idle"
+                        continue
+                    staff_member.state = "cleaning"
+                    staff_member.restock_ticks_remaining = _restock_timing.required_ticks(
+                        staff_member.cleaning_skill, _restock_ticks
+                    )
+            "cleaning":
+                staff_member.restock_ticks_remaining -= 1
+                if staff_member.restock_ticks_remaining <= 0:
+                    _dirty_cells.erase(staff_member.position)
+                    var growth: Array[Dictionary] = _staff_growth.apply_clean_growth(staff_member)
+                    _record_event("staff_cleaned", {
+                        "staff_id": staff_member.staff_id,
+                        "cell": [staff_member.position.x, staff_member.position.y],
+                    })
+                    if not growth.is_empty():
+                        _record_event("staff_skill_growth", {
+                            "staff_id": staff_member.staff_id,
+                            "task": "clean",
+                            "skills": growth,
+                        })
+                    staff_member.state = "idle"
+                    # Walk back to the post afterwards (see _step_staff_rest).
+                    staff_member.rest_phase = "stale"
+    # Refilling comes first: while a shelf is waiting for someone, a staff
+    # member who just became free is left for _assign_idle_restock_tasks().
+    if customers.all_settled() or _shelf_waiting_for_restock():
+        return
+    for staff_member in staff.all_staff():
+        if staff_member.staff_id == staff.checkout_staff_id or staff_member.state != "idle":
+            continue
+        var target := _next_dirty_cell_for(staff_member)
+        if target == NO_BREAK_ROOM_DOOR:
+            return
+        staff_member.route = layout.find_path(staff_member.position, target)
+        staff_member.rest_phase = ""
+        staff_member.state = "to_clean"
+
+
+func _shelf_waiting_for_restock() -> bool:
+    if not _restock_task_enabled:
+        return false
+    var claimed: Dictionary = {}
+    for staff_member in staff.all_staff():
+        if staff_member.state in ["to_restock", "restocking"]:
+            claimed[staff_member.restock_target_product_id] = true
+    for product_id in inventory.product_order:
+        var product = inventory.get_product(product_id)
+        if not claimed.has(product_id) and product.stock_units <= restock_trigger_units(product):
+            return true
+    return false
+
+
+# The oldest dirty square nobody is already heading to or standing on.
+func _next_dirty_cell_for(cleaner) -> Vector2i:
+    var claimed := {}
+    for staff_member in staff.all_staff():
+        if staff_member != cleaner and (staff_member.state == "to_clean" or staff_member.state == "cleaning"):
+            if not staff_member.route.is_empty():
+                claimed[staff_member.route[staff_member.route.size() - 1]] = true
+            claimed[staff_member.position] = true
+    for cell in _dirty_cells:
+        if not claimed.has(cell) and layout.is_walkable(cell):
+            return cell
+    return NO_BREAK_ROOM_DOOR
 
 
 func _find_idle_restock_staff():
@@ -2226,7 +2357,7 @@ func _find_idle_restock_staff():
 
 func _any_restock_task_active() -> bool:
     for staff_member in staff.all_staff():
-        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state != "idle":
+        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state in ["to_restock", "restocking"]:
             return true
     return false
 

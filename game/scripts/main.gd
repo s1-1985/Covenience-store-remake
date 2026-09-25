@@ -18,6 +18,11 @@ var _site_origin := Vector2i(-1, -1)
 var _heard_event_sequence := 0
 var _heard_clear := false
 var sound_toggle_button: Button = null
+# Task #97: what the tapped fixture holds, with its restock button, shown
+# over the store (the side panel is a closed drawer on the phone).
+var fixture_info_panel: PanelContainer = null
+var fixture_info_label: Label = null
+var fixture_restock_button: Button = null
 
 # Test seam (task #89): see _load_config(). An Engine meta flag rather than a
 # static var because the --script smoke runner cannot preload this script
@@ -146,6 +151,7 @@ func _ready() -> void:
     town_view.bind(simulation)
     _fit_store_view()
     _build_site_panel()
+    _build_fixture_info_panel()
     town_view.site_tapped.connect(_on_site_tapped)
     _populate_sample_layout_option()
     _populate_fixture_catalog_option()
@@ -201,12 +207,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
     if simulation == null or paused or selecting_site:
+        store_view.tick_progress = 1.0
         return
     accumulator += delta
     while accumulator >= tick_seconds:
         accumulator -= tick_seconds
         simulation.tick()
+        store_view.tick_serial += 1
         _refresh_ui()
+    # Task #97: how far through the current tick we are, for the smooth
+    # movement drawing (store_view.gd).
+    store_view.tick_progress = accumulator / tick_seconds
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -578,7 +589,10 @@ func _selected_fixture_restock_target():
     var product = store_view._product_on_fixture(fixture_id)
     if product == null:
         return null
-    if product.stock_units > simulation._restock_trigger_stock_units_at_or_below:
+    # Task #97: the owner's testimony (decision 0149) is 「中身が減っていると
+    # 補充のコマンドが出て」 -- available as soon as the shelf is not full,
+    # not only once it is empty (the old reading of the staff trigger level).
+    if product.stock_units >= product.initial_stock_units:
         return null
     return product
 
@@ -586,7 +600,7 @@ func _selected_fixture_restock_target():
 func _on_restock_pressed() -> void:
     var product = _selected_fixture_restock_target()
     if product == null:
-        layout_edit_label.text = tr("Select a shelf whose stock is running low to restock it")
+        layout_edit_label.text = tr("Select a shelf that is not full to restock it")
         _refresh_ui()
         return
     # REMAKE_BALANCED_DEFAULT (task #38): apply_explicit_restock() takes an
@@ -596,7 +610,9 @@ func _on_restock_pressed() -> void:
     # recovered original restock quantity. total_cost_yen is not invented,
     # though: it is quantity times the product's own CONFIRMED_OFFICIAL
     # restock_unit_cost_yen.
-    var quantity: int = maxi(1, product.initial_stock_units)
+    # Task #97: fills the shelf back up to its starting (full) stock, never
+    # beyond it.
+    var quantity: int = product.initial_stock_units - product.stock_units
     var total_cost_yen: int = quantity * product.restock_unit_cost_yen
     var staff_id: String = simulation.staff.checkout_staff().staff_id
     if simulation.apply_explicit_restock(product.product_id, staff_id, quantity, total_cost_yen):
@@ -606,7 +622,7 @@ func _on_restock_pressed() -> void:
             _format_integer(total_cost_yen),
         ]
     else:
-        layout_edit_label.text = tr("Finish the active visit before restocking")
+        layout_edit_label.text = tr("Cannot restock now")
     _refresh_ui()
 
 
@@ -883,6 +899,7 @@ func _refresh_ui() -> void:
             paused = true
             pause_button.text = tr("Resume")
     store_view.queue_redraw()
+    _refresh_fixture_info()
     _play_event_sounds()
 
 
@@ -1160,6 +1177,75 @@ func _build_sound_toggle() -> void:
 
 func _refresh_sound_toggle() -> void:
     sound_toggle_button.text = tr("Sound: on") if SoundManager.enabled else tr("Sound: off")
+
+
+func _build_fixture_info_panel() -> void:
+    fixture_info_panel = PanelContainer.new()
+    fixture_info_panel.name = "FixtureInfoPanel"
+    fixture_info_panel.theme = ($UI/Panel as Control).theme
+    fixture_info_panel.visible = false
+    var row := HBoxContainer.new()
+    fixture_info_panel.add_child(row)
+    fixture_info_label = Label.new()
+    fixture_info_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    fixture_info_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    row.add_child(fixture_info_label)
+    fixture_restock_button = Button.new()
+    fixture_restock_button.name = "FixtureRestockButton"
+    fixture_restock_button.custom_minimum_size = Vector2(170, 52)
+    fixture_restock_button.pressed.connect(_on_restock_pressed)
+    row.add_child(fixture_restock_button)
+    var close := Button.new()
+    close.name = "FixtureInfoClose"
+    close.text = tr("Close")
+    close.custom_minimum_size = Vector2(90, 52)
+    close.pressed.connect(_on_deselect_fixture_pressed)
+    row.add_child(close)
+    $UI.add_child(fixture_info_panel)
+
+
+# Name, product and stock of the selected fixture. The panel sits along
+# the bottom of the store, or along the top when the fixture is in the
+# lower half, so it never covers what it describes.
+func _refresh_fixture_info() -> void:
+    var fixture_id: String = store_view.selected_fixture()
+    var show: bool = (
+        not fixture_id.is_empty()
+        and store_view.visible
+        and not selecting_site
+        and simulation.layout.fixtures_by_id.has(fixture_id)
+    )
+    fixture_info_panel.visible = show
+    if not show:
+        return
+    var fixture: Dictionary = simulation.layout.fixtures_by_id[fixture_id]
+    var product = store_view._product_on_fixture(fixture_id)
+    var name_key := str(fixture.get("catalog_id", ""))
+    if name_key.is_empty():
+        name_key = "fixture_kind_" + str(fixture["kind"])
+    if product == null:
+        fixture_info_label.text = tr(name_key)
+        fixture_restock_button.visible = false
+    else:
+        fixture_info_label.text = tr("%s: %s, stock %d / %d") % [
+            tr(name_key), _product_label(product.product_id), product.stock_units, product.initial_stock_units,
+        ]
+        var missing: int = product.initial_stock_units - product.stock_units
+        fixture_restock_button.visible = true
+        fixture_restock_button.disabled = missing <= 0
+        fixture_restock_button.text = tr("Restock (¥%s)") % _format_integer(missing * product.restock_unit_cost_yen) if missing > 0 else tr("Full")
+    var store_size: Vector2 = Vector2(
+        simulation.layout.width_subcells, simulation.layout.height_subcells
+    ) * store_view.SUBCELL_PIXELS * store_view.scale
+    var height := 72.0
+    var origin_y := float(_vec2i_of(fixture["origin_subcell"]).y) / float(simulation.layout.height_subcells)
+    var y: float = store_view.position.y + store_size.y - height if origin_y < 0.5 else store_view.position.y
+    fixture_info_panel.position = Vector2(store_view.position.x, y)
+    fixture_info_panel.size = Vector2(store_size.x, height)
+
+
+func _vec2i_of(value: Array) -> Vector2i:
+    return Vector2i(int(value[0]), int(value[1]))
 
 
 # Task #92: player-facing names for internal ids, so no message shows a raw

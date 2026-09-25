@@ -22,6 +22,11 @@ static func apply(config: Dictionary) -> Dictionary:
         "fixtures": (guide["fixtures"] as Array).duplicate(true),
     }]
     applied["simulation"]["checkout_fixture_id"] = str(guide["checkout_fixture_id"])
+    # Task #97 (REMAKE_BALANCED_DEFAULT, see staff_work.evidence_note):
+    # staff refill shelves once they visibly go down, and clean.
+    var work: Dictionary = guide["staff_work"]
+    applied["simulation"]["restock_trigger_share_of_full"] = float(work["restock_trigger_share_of_full"])
+    applied["simulation"]["cleaning_task_enabled"] = bool(work["cleaning_task_enabled"])
     for member in applied["staff"]["members"]:
         member["start_subcell"] = (guide["staff_start_subcells"][str(member["id"])] as Array).duplicate()
     applied["customer"]["visit_plan_product_ids"] = (guide["customer_visit_plan_product_ids"] as Array).duplicate()

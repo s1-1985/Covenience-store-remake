@@ -99,6 +99,24 @@ func _run() -> void:
         return
     if not _require(game.get_node("/root/SoundManager").current_theme == "store", "The shop tune plays once the store is open"):
         return
+    # Task #97: tapping a shelf shows what it holds, and it can be
+    # refilled right there while customers are in the store.
+    var shelf = game.simulation.inventory.get_product("product-bread-1")
+    shelf.stock_units = shelf.initial_stock_units - 4
+    game.store_view.selected_fixture_id = shelf.fixture_id
+    game._refresh_ui()
+    var stock_text := "在庫 %d／%d" % [shelf.stock_units, shelf.initial_stock_units]
+    if not _require(game.fixture_info_panel.visible and stock_text in game.fixture_info_label.text, "A selected shelf must show its product and stock: " + game.fixture_info_label.text):
+        return
+    if not _require(not game.fixture_restock_button.disabled, "A shelf that is not full can be refilled"):
+        return
+    var cash_before_refill: int = game.simulation.economy.cash_yen
+    game.fixture_restock_button.pressed.emit()
+    if not _require(shelf.stock_units == shelf.initial_stock_units and game.simulation.economy.cash_yen == cash_before_refill - 4 * shelf.restock_unit_cost_yen, "Refilling fills the shelf and pays for the missing units"):
+        return
+    game.fixture_info_panel.find_child("FixtureInfoClose", true, false).pressed.emit()
+    if not _require(not game.fixture_info_panel.visible, "閉じる hides the fixture info"):
+        return
     var sound_manager = game.get_node("/root/SoundManager")
     var sound_was_on: bool = sound_manager.enabled
     game.sound_toggle_button.pressed.emit()
