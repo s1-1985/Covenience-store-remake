@@ -3,7 +3,9 @@ import unittest
 from conveni_sim.store_rating import (
     ANGRY_CUSTOMER_DOWNGRADE_POINTS,
     DONATION_UPGRADE_POINTS,
+    DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS,
     SHOPLIFTING_DOWNGRADE_POINTS,
+    UPGRADE_THRESHOLDS_BY_CURRENT_STARS,
     RatingMonthlyInputs,
     evaluate_monthly_rating_change,
     star_rank_for_internal_value,
@@ -79,13 +81,13 @@ class MonthlyRatingEvaluationTests(unittest.TestCase):
         self.assertFalse(result.upgrade_applies)
 
     def test_downgrade_is_minus_one_per_failed_criterion(self):
-        # ★5 downgrade row: price>=1%, service<100, security<80, cleaning<80, sales<3,000,000
+        # ★5 downgrade row: price>=1%, service<80, security<80, cleaning<100, sales<3,000,000
         inputs = RatingMonthlyInputs(
             current_internal_value=100,
             price_change_pct=5,  # fails (overpriced)
             service_value=50,  # fails
             security_value=90,  # ok
-            cleaning_value=90,  # ok
+            cleaning_value=100,  # ok
             monthly_sales_yen=1_000_000,  # fails
         )
         result = evaluate_monthly_rating_change(inputs)
@@ -93,19 +95,57 @@ class MonthlyRatingEvaluationTests(unittest.TestCase):
         self.assertFalse(result.upgrade_applies)
         self.assertEqual(result.next_internal_value, 97)
 
-    def test_zero_star_store_uses_the_one_star_table_row(self):
+    def test_zero_star_store_uses_its_own_printed_row(self):
+        # Task #86: both printed tables have a ☆☆☆☆☆ row (-1%以下 / 50 / 70
+        # / 80 / 300万円以上), easier than the ★1 row.
         inputs = RatingMonthlyInputs(
             current_internal_value=10,
-            price_change_pct=-5,
-            service_value=60,
-            security_value=75,
-            cleaning_value=85,
-            monthly_sales_yen=5_000_000,
+            price_change_pct=-1,
+            service_value=50,
+            security_value=70,
+            cleaning_value=80,
+            monthly_sales_yen=3_000_000,
         )
         result = evaluate_monthly_rating_change(inputs)
         self.assertEqual(result.current_stars, 0)
         self.assertEqual(result.criteria_met, 5)
         self.assertTrue(result.upgrade_applies)
+        self.assertEqual(result.downgrade_points, 0)
+
+    def test_thresholds_match_the_guides_printed_table_cell_for_cell(self):
+        # Task #86: transcribed from the table printed identically on book
+        # pages 39 and 75 (re-read at 5x render). Columns: price, service,
+        # security, cleaning, sales.
+        printed_increase = {
+            5: (-30, 100, 100, 100, 15_000_000),
+            4: (-20, 90, 90, 100, 10_000_000),
+            3: (-15, 80, 85, 95, 9_000_000),
+            2: (-10, 70, 80, 90, 7_000_000),
+            1: (-5, 60, 75, 85, 5_000_000),
+            0: (-1, 50, 70, 80, 3_000_000),
+        }
+        printed_decrease = {
+            5: (1, 80, 80, 100, 3_000_000),
+            4: (1, 70, 70, 95, 2_500_000),
+            3: (1, 60, 65, 90, 2_000_000),
+            2: (1, 50, 60, 85, 1_500_000),
+            1: (1, 40, 55, 80, 1_000_000),
+            0: (1, 30, 50, 75, 500_000),
+        }
+        for stars, row in printed_increase.items():
+            t = UPGRADE_THRESHOLDS_BY_CURRENT_STARS[stars]
+            self.assertEqual(
+                (t.max_price_change_pct, t.min_service, t.min_security, t.min_cleaning, t.min_sales_yen),
+                row,
+                stars,
+            )
+        for stars, row in printed_decrease.items():
+            t = DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS[stars]
+            self.assertEqual(
+                (t.min_price_change_pct, t.below_service, t.below_security, t.below_cleaning, t.below_sales_yen),
+                row,
+                stars,
+            )
 
     def test_next_internal_value_does_not_go_below_zero(self):
         inputs = RatingMonthlyInputs(

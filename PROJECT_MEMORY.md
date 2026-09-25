@@ -1868,6 +1868,19 @@ starting a task. Out of scope: mid-day weather changes, per-weather/per-season m
 qualitative only), weather visuals, and feeding weather into `customer_share.gd` (demand already applies
 it; avoided double-counting).
 
+**Task #86 (2026-09-25, decision 0157)**: store-rating (★) monthly increase/decrease table corrected.
+The user-attached strategy-guide PDFs are available in-session, so the table flagged in section 21.4
+as "two near-duplicate printings that differ" was re-read at 5x render from both printings (book p.39 =
+PDF1 page 17, book p.75 = PDF4 page 14). They are cell-for-cell identical; the earlier "difference" was
+a transcription error, and the shipped `store_rating.py`/`store_rating.gd` thresholds were wrong in 11
+cells and lacked the printed ☆☆☆☆☆ (0-star) row (code instead reused the ★1 row for 0-star stores).
+Fixed both files, removed the ★1-row fallback, and added a unit test pinning every printed cell plus a
+contract test that the GDScript table matches the Python table row for row. The ★5 decrease-side 清掃
+cell is printed as a bare "100" (no 未満) on both pages; encoded as "below 100" from its column, noted in
+code/docs. Transcription recorded in `docs/research/store-rating-table-reverification-2026-09-25.md`,
+with supersession notes added to the two older research docs. Impact: early-game (0-star) stores now
+use the easier printed row, and several ★3-★5 thresholds changed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -2100,7 +2113,11 @@ Per CLAUDE.md's discipline, these are recorded rather than silently picked one w
   introduced -- see `strategy-guide-shopkeeper-manual-part1-2026-09-19.md` and `-part2-
   2026-09-19.md` for the record. A third data point (large-store footprint stated as "16x16" in 4
   unanimous case-study captions, vs. the already-known "14x14"/"18M-vs-24M" conflicts) surfaced in
-  `-part2`; still unresolved.
+  `-part2`; still unresolved. **Store-rating half RESOLVED 2026-09-25 (task #86)**: a 5x re-read of
+  both printed copies (book p.39 and p.75) found them cell-for-cell identical -- the "conflict" was a
+  transcription error, and the shipped thresholds themselves were wrong in 11 cells and missing the
+  printed 0-star row. Fixed in code; see `docs/research/store-rating-table-reverification-2026-09-25.md`
+  and decision 0157. The large-store footprint half is still unresolved.
 - **Station shopping-population figure**: 2,000 on one page vs. 2,240 on another page of the same
   book -- possibly different size tiers rather than a real conflict; not resolved.
 - **Promotion popularity-boost decay condition (found in task #84, decision 0155)**: two different

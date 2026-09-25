@@ -2779,6 +2779,36 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         )
         self.assertIn("economy_ui_scene._on_reset_pressed()", smoke)
 
+    def test_store_rating_gd_thresholds_match_reference_sim_row_for_row(self):
+        # Task #86: game/'s copy of the guide's rating table (printed
+        # identically on book pages 39 and 75) must not drift from
+        # reference_sim's, including the 0-star row both pages carry.
+        from conveni_sim.store_rating import (
+            DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS,
+            UPGRADE_THRESHOLDS_BY_CURRENT_STARS,
+        )
+
+        store_rating = (GAME_ROOT / "scripts" / "domain" / "store_rating.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertEqual(sorted(UPGRADE_THRESHOLDS_BY_CURRENT_STARS), [0, 1, 2, 3, 4, 5])
+        self.assertEqual(sorted(DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS), [0, 1, 2, 3, 4, 5])
+        for stars, row in UPGRADE_THRESHOLDS_BY_CURRENT_STARS.items():
+            self.assertIn(
+                f'    {stars}: {{"max_price_change_pct": {row.max_price_change_pct}, '
+                f'"min_service": {row.min_service}, "min_security": {row.min_security}, '
+                f'"min_cleaning": {row.min_cleaning}, "min_sales_yen": {row.min_sales_yen}}},',
+                store_rating,
+            )
+        for stars, row in DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS.items():
+            self.assertIn(
+                f'    {stars}: {{"min_price_change_pct": {row.min_price_change_pct}, '
+                f'"below_service": {row.below_service}, "below_security": {row.below_security}, '
+                f'"below_cleaning": {row.below_cleaning}, "below_sales_yen": {row.below_sales_yen}}},',
+                store_rating,
+            )
+        self.assertNotIn("max(current_stars, 1)", store_rating)
+
     def test_weather_rolls_from_confirmed_monthly_table_and_shows_in_hud(self):
         # Task #85: the original HUD shows the current weather
         # ("01年目07月04日［雨 ］"), and weather changes customer share.
