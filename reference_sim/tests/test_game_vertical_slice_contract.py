@@ -986,7 +986,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # The two active roster slots now bind to real named candidates
         # instead of a flat, identical placeholder repeated on both.
         members = self.config["staff"]["members"]
-        self.assertEqual(len(members), 2)
+        self.assertEqual(len(members), 3)
         candidates_by_id = {entry["candidate_id"]: entry for entry in candidates}
         for member in members:
             self.assertIn("candidate_id", member)
@@ -1683,7 +1683,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         candidates_by_id = {c.id: c for c in STAFF_CANDIDATES}
         members = self.config["staff"]["members"]
-        self.assertEqual(len(members), 2)
+        self.assertEqual(len(members), 3)
 
         # salary_yen_per_day_24h on each active staff.members entry must be
         # CONFIRMED_OFFICIAL, duplicated verbatim from that member's own
@@ -1749,7 +1749,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         candidates_by_id = {c.id: c for c in STAFF_CANDIDATES}
         members = self.config["staff"]["members"]
-        self.assertEqual(len(members), 2)
+        self.assertEqual(len(members), 3)
 
         # Every *_skill_growth_ceiling on each active staff.members entry
         # must be CONFIRMED_OFFICIAL, duplicated verbatim from that
@@ -3014,6 +3014,26 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         builder = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(builder)
         self.assertEqual(builder.build(), self.config["guide_town_map"])
+
+    def test_every_store_has_a_manager_and_two_staff(self):
+        # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は
+        # 2人まで雇用できる」 -> manager + 2 staff = 3 per store.
+        staff = self.config["staff"]
+        members = {member["id"]: member for member in staff["members"]}
+        self.assertEqual(len(members), 3)
+        manager = members[staff["manager_staff_id"]]
+        self.assertEqual(manager["role"], "manager")
+        self.assertNotEqual(staff["manager_staff_id"], staff["checkout_staff_id"])
+        candidates = self.config["staff_candidates"]
+        top_education = max(c["education"] for c in candidates if c.get("education") is not None)
+        bound = {c["candidate_id"]: c for c in candidates}[manager["candidate_id"]]
+        self.assertEqual(bound["education"], top_education)
+        self.assertIn("店長が必ず必要", staff["manager_evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", staff["manager_evidence_note"])
+        guide_posts = self.config["guide_starting_store"]["staff_start_subcells"]
+        self.assertEqual(set(guide_posts), set(members))
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a store must run with its manager plus two staff", smoke)
 
     def test_store_rating_gd_thresholds_match_reference_sim_row_for_row(self):
         # Task #86: game/'s copy of the guide's rating table (printed

@@ -241,6 +241,10 @@ func _initialize() -> void:
     if simulation.staff.members.size() < 2:
         _fail("actor roster smoke requires multiple retained staff states")
         return
+    # Task #91: 店長 + 店員2人 (クイックリファレンス p.6).
+    if simulation.staff.members.size() != 3 or not simulation.staff.members.has(str(config["staff"]["manager_staff_id"])):
+        _fail("a store must run with its manager plus two staff")
+        return
     if simulation.staff.checkout_staff().staff_id != str(config["staff"]["checkout_staff_id"]):
         _fail("checkout staff selection must match the explicit provisional config")
         return
@@ -1840,13 +1844,21 @@ func _initialize() -> void:
     if abs(float(rating_event_details["service_value"]) - expected_service_value) > 0.0000001:
         _fail("service_value must equal the average staff service_skill plus any fixture service bonuses")
         return
-    if abs(float(rating_event_details["security_value"]) - 57.0) > 0.0000001:
+    # Task #91: summed over the whole roster (3 since the manager slot was
+    # added) times the small store's 1.5 size-tier multiplier, instead of a
+    # literal worked out for the old 2-person roster.
+    var expected_security_value := 0.0
+    var expected_cleaning_value := 0.0
+    for rating_staff_member in rating_staff:
+        expected_security_value += float(rating_staff_member.security_skill) * 1.5
+        expected_cleaning_value += float(rating_staff_member.cleaning_skill) * 1.5
+    if abs(float(rating_event_details["security_value"]) - expected_security_value) > 0.0000001:
         _fail("security_value must equal total staff security_skill times the store's size-tier multiplier")
         return
-    if abs(float(rating_event_details["cleaning_value"]) - 51.0) > 0.0000001:
+    if abs(float(rating_event_details["cleaning_value"]) - expected_cleaning_value) > 0.0000001:
         _fail("cleaning_value must equal total staff cleaning_skill times the store's size-tier multiplier")
         return
-    # popularity=0, cleaning=51.0, security=57.0, 2 distinct stocked
+    # popularity=0, cleaning/security as computed above, 2 distinct stocked
     # products (assortment_score=10.0), opening_minutes_per_day=960
     # (hours_score=66.6667); service_value is expected_service_value above
     # (growth-dependent, see comment there). Recomputed with the same
@@ -1854,12 +1866,12 @@ func _initialize() -> void:
     # hand-derived literal that would go stale the moment checkout growth
     # changes service_value.
     var expected_customer_share_percent: int = customer_share.compute_customer_share_percent(
-        0, expected_service_value, 51.0, 57.0, 2, 960
+        0, expected_service_value, expected_cleaning_value, expected_security_value, 2, 960
     )
     if int(rating_event_details["customer_share_percent"]) != expected_customer_share_percent:
         _fail("customer_share_percent must be recomputed from CustomerShare.compute_customer_share_percent()")
         return
-    if abs(rating_simulation.demand.customer_share_percent - 25.0) > 0.0000001:
+    if abs(rating_simulation.demand.customer_share_percent - float(expected_customer_share_percent)) > 0.0000001:
         _fail("demand.customer_share_percent must be overwritten by the monthly store rating evaluation")
         return
     if rating_simulation.star_rating != store_rating.star_rank_for_internal_value(

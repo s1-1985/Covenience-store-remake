@@ -1944,6 +1944,15 @@ house sprites = REMAKE); the old marker view is the fallback. The Android shortc
 "only the house sprites on building tiles". Still open: building types, town growth, and choosing a store
 site.
 
+**Task #91 (2026-09-25, decision 0162)**: 3-person roster (店長 + 店員2). The user pointed out that stores
+have 3 staff. Guide p.6 (CONFIRMED_OFFICIAL) says 「各店舗に店長が必ず必要。店員は2人まで雇用できる」, and the PS
+opening flow hires 店長1 + 従業員2. Task #56 had kept only 2 slots, which was wrong. Added staff-3
+(role manager, `staff.manager_staff_id`). The manager is the highest-education candidate (guide: a manager
+is chosen for education); the 95/95 tie was broken by lower salary (REMAKE). Wages and rating values sum the
+whole roster automatically. The smoke rating test now computes security/cleaning/share from the roster
+instead of literals written for 2 people. Section 21.3's "manager 3rd slot not implemented" is resolved;
+the manager-education growth bonus and スーパー社員 remain open.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

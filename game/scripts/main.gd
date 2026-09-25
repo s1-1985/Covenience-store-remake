@@ -627,8 +627,9 @@ func _on_set_price_policy_pressed() -> void:
 
 
 # Task #56: staff_slot_option is populated once at _ready() (the roster's
-# two slot ids, staff-1/staff-2, never change -- only who occupies them
-# does), unlike hire_candidate_option below.
+# slot ids -- staff-1/staff-2 plus the manager's staff-3 since task #91 --
+# never change, only who occupies them does), unlike hire_candidate_option
+# below.
 func _populate_staff_slot_option() -> void:
     staff_slot_option.clear()
     _staff_slot_ids.clear()
