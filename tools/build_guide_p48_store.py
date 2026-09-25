@@ -188,6 +188,29 @@ def build(config):
         ),
         "provisional_restock_product_id": products[0]["id"],
         "sample_layout_label": "Guide p.48 layout",
+        # Task #103: the business-hours choices of the 営業方針 screen.
+        "business_hours": {
+            "presets": [
+                {"id": "10_18", "label": "AM10:00〜PM6:00", "open": 600, "close": 1080},
+                {"id": "7_23", "label": "AM7:00〜PM11:00", "open": 420, "close": 1380},
+                {"id": "10_2", "label": "AM10:00〜AM2:00", "open": 600, "close": 120},
+                {"id": "12_4", "label": "PM0:00〜AM4:00", "open": 720, "close": 240},
+                {"id": "19_11", "label": "PM7:00〜AM11:00", "open": 1140, "close": 660},
+                {"id": "24h", "label": "24時間営業", "open": 0, "close": 1440},
+                {"id": "closed", "label": "臨時休業", "open": 0, "close": 0},
+            ],
+            "default_id": "7_23",
+            "start_minute_of_day": 0,
+            "evidence_note": (
+                "Task #103. CONFIRMED_OFFICIAL (guide PDF3 p.2): five fixed hours -- AM10:00~PM6:00 "
+                "(8 hours), AM7:00~PM11:00, a 10/11 o'clock~AM2:00, PM0:00~AM4:00 and PM7:00~AM11:00 "
+                "(16 hours each) -- plus 24時間営業 and 臨時休業; longer hours sell more but cost more. "
+                "The third preset's start reads 11 or 10 in the scan; 10 matches its printed 16 hours "
+                "and the PS review's list (10:00~翌02:00). Guide p.23: start with AM7:00~PM11:00. "
+                "CONFIRMED_COMMUNITY (first-title FAQ): while closed, wages and upkeep stop. "
+                "CONFIRMED_OFFICIAL: a game starts at 1年目1月1日 00:00 (guide p.6, p.11 screenshots)."
+            ),
+        },
         # Task #97: how the staff work in the real game.
         "staff_work": {
             "restock_trigger_share_of_full": round(8 / 9, 6),

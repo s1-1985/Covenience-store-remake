@@ -117,6 +117,10 @@ var _stamina_enabled := false
 # Task #102: customers come from the buildings around the store and want
 # what DATA4 says those buildings want; the month's survey (アンケート).
 var _building_demand_enabled := false
+# Task #103: business hours (guide_starting_store.business_hours). Empty in
+# the prototype scenarios, which stay open all day as before.
+var _business_hours: Array = []
+var business_hours_id := ""
 var _catchment_weights: Dictionary = {}
 var survey_bought: Dictionary = {}
 var survey_missing: Dictionary = {}
@@ -265,6 +269,7 @@ func _init(source_config: Dictionary) -> void:
     _cleaning_task_enabled = bool(simulation.get("cleaning_task_enabled", false))
     _stamina_enabled = bool(simulation.get("stamina_enabled", false))
     _building_demand_enabled = bool(simulation.get("building_demand_enabled", false))
+    _business_hours = simulation.get("business_hours", [])
     assert(_shopping_ticks > 0 and _checkout_ticks > 0 and _step_game_minutes > 0)
     assert(_restock_ticks > 0 and _restock_trigger_stock_units_at_or_below >= 0)
     assert(float(simulation["tick_seconds"]) > 0.0)
@@ -289,6 +294,8 @@ func reset() -> void:
     _dirty_cells.clear()
     _reset_stamina()
     _load_rivals()
+    if not _business_hours.is_empty():
+        _apply_business_hours(str(config["simulation"]["business_hours_default_id"]))
     survey_bought.clear()
     survey_missing.clear()
     last_survey = {}
@@ -383,7 +390,7 @@ func try_eject_customer(customer_id: String) -> bool:
 
 
 func demand_admit_if_due() -> bool:
-    if is_game_over or not customers.can_admit():
+    if is_game_over or not customers.can_admit() or not is_open_now():
         return false
     if not demand.customer_arrives_this_minute():
         return false
@@ -412,7 +419,7 @@ func tick() -> void:
     if is_game_over:
         return
     step()
-    if customers.can_admit_concurrent() and demand.customer_arrives_this_minute():
+    if customers.can_admit_concurrent() and is_open_now() and demand.customer_arrives_this_minute():
         _start_default_customer()
 
 
@@ -859,6 +866,57 @@ func _rival_index(rival_id: String) -> int:
         if str(_rival_stores[index]["id"]) == rival_id:
             return index
     return -1
+
+
+# Task #103 (evidence in guide_starting_store.business_hours.evidence_note):
+# customers arrive only while open; wages and upkeep already scale with
+# demand.opening_minutes_per_day (_scale_yen_to_configured_business_hours),
+# so a closed day (臨時休業) costs none of them. Customers already inside
+# at closing time finish their visit.
+func business_hours_presets() -> Array:
+    return _business_hours
+
+
+func _business_hours_preset(preset_id: String) -> Dictionary:
+    for preset in _business_hours:
+        if str(preset["id"]) == preset_id:
+            return preset
+    return {}
+
+
+static func open_minutes(preset: Dictionary) -> int:
+    var open := int(preset["open"])
+    var close := int(preset["close"])
+    if close == open:
+        return 0
+    return close - open if close > open else 24 * 60 - open + close
+
+
+func is_open_now() -> bool:
+    if _business_hours.is_empty():
+        return true
+    var preset := _business_hours_preset(business_hours_id)
+    var open := int(preset["open"])
+    var close := int(preset["close"])
+    if open_minutes(preset) == 0:
+        return false
+    if close > open:
+        return minute_of_day >= open and minute_of_day < close
+    return minute_of_day >= open or minute_of_day < close
+
+
+func _apply_business_hours(preset_id: String) -> void:
+    business_hours_id = preset_id
+    demand.opening_minutes_per_day = open_minutes(_business_hours_preset(preset_id))
+
+
+func try_set_business_hours(preset_id: String) -> bool:
+    if is_game_over or _business_hours_preset(preset_id).is_empty() or preset_id == business_hours_id:
+        return false
+    var previous := business_hours_id
+    _apply_business_hours(preset_id)
+    _record_event("business_hours_changed", {"previous": previous, "business_hours": preset_id})
+    return true
 
 
 func has_store_site() -> bool:
@@ -1707,7 +1765,7 @@ func observation_snapshot() -> Dictionary:
     }
 
 
-const SAVE_SCHEMA_VERSION := 7
+const SAVE_SCHEMA_VERSION := 8
 
 # Deliberately not saved/restored: the active customer's mid-visit walk
 # state (position along a route, basket-so-far, checkout progress) and
@@ -1754,6 +1812,8 @@ func save_state() -> Dictionary:
         # Task #101 (schema 7): rivals bought out and rivals investigated.
         "bought_rival_ids": owned_branches.map(func(branch): return str(branch["id"])),
         "investigated_rival_ids": _investigated_rivals.keys(),
+        # Task #103 (schema 8).
+        "business_hours_id": business_hours_id,
         "weather_category_index": weather_category_index,
         "chain_visitor_milestone": {
             "last_observed_total": _chain_visitor_milestone.last_observed_total,
@@ -1854,6 +1914,8 @@ func load_state(data: Dictionary) -> bool:
             _rival_stores.remove_at(rival_index)
     for rival_id in data["investigated_rival_ids"]:
         _investigated_rivals[str(rival_id)] = true
+    if not _business_hours.is_empty():
+        _apply_business_hours(str(data["business_hours_id"]))
     _clear_store_site()
     var saved_site := _vec2i_from_array(data["store_site_origin"])
     if saved_site != NO_STORE_SITE and store_site != null:
@@ -2666,6 +2728,7 @@ func _require_save_data(data: Dictionary) -> void:
         "bought_buildings",
         "bought_rival_ids",
         "investigated_rival_ids",
+        "business_hours_id",
         "weather_category_index",
         "chain_visitor_milestone",
         "permits_held",

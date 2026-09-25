@@ -902,3 +902,15 @@ msgstr "欲しかった商品："
 
 msgid "none"
 msgstr "なし"
+
+msgid "Closed"
+msgstr "閉店中"
+
+msgid "Business hours"
+msgstr "営業時間"
+
+msgid "Business hours: %s"
+msgstr "営業時間：%s"
+
+msgid "business hours changed"
+msgstr "営業時間を変えた"

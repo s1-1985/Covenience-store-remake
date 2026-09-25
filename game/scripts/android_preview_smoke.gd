@@ -96,7 +96,7 @@ func _run() -> void:
     game.show_town_map_button.pressed.emit()
     if not _require(ThemeDB.fallback_font.has_char(0x5E97), "Japanese glyphs must be available"):
         return
-    for tick in range(500):
+    for tick in range(1500):
         if game.simulation.customers.all_settled():
             game.simulation.tick_idle_for_demand()
         else:
@@ -113,6 +113,9 @@ func _run() -> void:
     if not _require(heard.has("door_chime") and heard.has("register") and heard.has("purchase"), "Entering, paying and buying land must make sounds: %s" % [heard]):
         return
     if not _require(game.get_node("/root/SoundManager").current_theme == "store", "The shop tune plays once the store is open"):
+        return
+    # Task #103: business hours can be changed from the panel.
+    if not _require(game.business_hours_option != null and game.business_hours_option.get_item_text(game.business_hours_option.selected) == "AM7:00〜PM11:00", "The store opens AM7:00~PM11:00"):
         return
     # Task #102: the survey is shown with the store information.
     if not _require(game.survey_label != null and "アンケート" in game.survey_label.text and "欲しかった商品：" in game.survey_label.text, "The customer survey must be shown"):

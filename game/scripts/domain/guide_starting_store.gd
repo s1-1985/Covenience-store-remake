@@ -29,6 +29,12 @@ static func apply(config: Dictionary) -> Dictionary:
     applied["simulation"]["cleaning_task_enabled"] = bool(work["cleaning_task_enabled"])
     applied["simulation"]["stamina_enabled"] = bool(work["stamina_enabled"])
     applied["simulation"]["building_demand_enabled"] = bool(work["building_demand_enabled"])
+    # Task #103: the game starts at 00:00 (CONFIRMED_OFFICIAL screenshots),
+    # open AM7:00~PM11:00 as the guide advises for a new store.
+    var hours: Dictionary = guide["business_hours"]
+    applied["simulation"]["start_minute_of_day"] = int(hours["start_minute_of_day"])
+    applied["simulation"]["business_hours"] = (hours["presets"] as Array).duplicate(true)
+    applied["simulation"]["business_hours_default_id"] = str(hours["default_id"])
     # Task #98: the rival's 本店 and 2号店 on the town map (see
     # guide_town_map.rival_stores: CONFIRMED_OFFICIAL that they exist,
     # REMAKE_BALANCED_DEFAULT where they stand).

@@ -205,6 +205,7 @@ func _ready() -> void:
     store_view.fixture_selected.connect(_on_fixture_selected)
     store_view.fixture_relocation_requested.connect(_on_fixture_relocation_requested)
     _build_sound_toggle()
+    _build_business_hours_controls()
     var button_sfx := str(config["sound"]["button_sfx"])
     for node in $UI.find_children("*", "BaseButton", true, false):
         (node as BaseButton).pressed.connect(func(): SoundManager.play_sfx(button_sfx))
@@ -273,6 +274,7 @@ func _on_reset_pressed() -> void:
     simulation.reset()
     _heard_event_sequence = _latest_event_sequence()
     _heard_clear = simulation.clear_condition_met
+    _select_current_business_hours()
     layout_edit_label.text = tr("Layout reset to configured prototype")
     _refresh_procure_fixture_option()
     _refresh_hire_candidate_option()
@@ -767,6 +769,7 @@ func _on_load_pressed() -> void:
     if simulation == null:
         return
     if _save_service.load_from_path(simulation):
+        _select_current_business_hours()
         _heard_event_sequence = _latest_event_sequence()
         _heard_clear = simulation.clear_condition_met
         paused = false
@@ -791,6 +794,9 @@ func _refresh_ui() -> void:
         return
     var snapshot: Dictionary = simulation.snapshot()
     clock_label.text = str(snapshot["clock_text"])
+    # Task #103: whether the store is open right now.
+    if not simulation.is_open_now():
+        clock_label.text += "　" + tr("Closed")
     # Task #77: task #75's original "Month X · Day Y of Z (Day N overall)"
     # was invented without checking docs/research/official-screenshot-
     # evidence-2026-09-05.md section 1, which already had CONFIRMED_
@@ -1197,6 +1203,45 @@ func _survey_top(counts: Dictionary) -> String:
     for key in keys.slice(0, 5):
         parts.append("%s%d" % [tr(str(key)), int(counts[key])])
     return "、".join(parts) if not parts.is_empty() else tr("none")
+
+
+# Task #103: 営業時間 (business hours), next to the price policy.
+var business_hours_option: OptionButton = null
+
+
+func _build_business_hours_controls() -> void:
+    var presets: Array = simulation.business_hours_presets()
+    if presets.is_empty():
+        return
+    var vbox := $UI/Panel/Margin/Scroll/VBox
+    var title := Label.new()
+    title.text = tr("Business hours")
+    vbox.add_child(title)
+    vbox.move_child(title, set_price_policy_button.get_index() + 1)
+    business_hours_option = OptionButton.new()
+    business_hours_option.name = "BusinessHoursOption"
+    for preset in presets:
+        business_hours_option.add_item(str(preset["label"]))
+    vbox.add_child(business_hours_option)
+    vbox.move_child(business_hours_option, title.get_index() + 1)
+    _select_current_business_hours()
+    business_hours_option.item_selected.connect(func(index: int):
+        var preset_id := str(presets[index]["id"])
+        if simulation.try_set_business_hours(preset_id):
+            layout_edit_label.text = tr("Business hours: %s") % str(presets[index]["label"])
+        _refresh_ui()
+    )
+    if _is_android_preview():
+        business_hours_option.custom_minimum_size.y = 64
+
+
+func _select_current_business_hours() -> void:
+    if business_hours_option == null:
+        return
+    var presets: Array = simulation.business_hours_presets()
+    for index in presets.size():
+        if str(presets[index]["id"]) == simulation.business_hours_id:
+            business_hours_option.select(index)
 
 
 func _build_sound_toggle() -> void:

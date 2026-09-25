@@ -2068,6 +2068,12 @@ squares in the catchment, shared with rivals) and want up to 3 of that building'
 - One simulated day at (13,21): tobacco 15, alcohol 9 wanted but missing.
 - Real game only; survey not saved.
 
+**Task #103 (2026-09-25, decision 0174)**: business hours.
+- The guide's 5 fixed presets + 24h + 臨時休業 are selectable in the panel (CONFIRMED_OFFICIAL, PDF3 p.2).
+- The real game starts at 00:00 (screenshots) on AM7:00~PM11:00 (guide p.23).
+- Customers arrive only while open; wages and upkeep follow the open minutes, so 臨時休業 costs none.
+- 「閉店中」 is shown by the clock. Save schema 8.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

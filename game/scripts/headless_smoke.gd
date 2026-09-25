@@ -3108,6 +3108,8 @@ func _initialize() -> void:
         return
     if not _check_building_demand():
         return
+    if not _check_business_hours():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -3575,5 +3577,53 @@ func _check_building_demand() -> bool:
     var prototype = VerticalSliceSimulationScript.new(fresh)
     if prototype._building_demand_enabled:
         _fail("building demand is off in the prototype scenarios")
+        return false
+    return true
+
+# Task #103: business hours -- customers only while open, costs scale with
+# the hours, 臨時休業 costs nothing.
+func _check_business_hours() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if simulation.minute_of_day != 0 or simulation.business_hours_id != "7_23":
+        _fail("a new game starts at 00:00, open AM7:00~PM11:00")
+        return false
+    var expected_minutes := {"10_18": 480, "7_23": 960, "10_2": 960, "12_4": 960, "19_11": 960, "24h": 1440, "closed": 0}
+    for preset in simulation.business_hours_presets():
+        if VerticalSliceSimulationScript.open_minutes(preset) != int(expected_minutes[str(preset["id"])]):
+            _fail("wrong open minutes for %s" % preset["id"])
+            return false
+    if simulation.is_open_now():
+        _fail("the store is closed at 00:00 on AM7:00~PM11:00")
+        return false
+    var entered_before: int = simulation.event_log.count_type("customer_entered")
+    for tick in 400:
+        simulation.tick()
+    if simulation.event_log.count_type("customer_entered") != entered_before:
+        _fail("no customer comes in while the store is closed")
+        return false
+    simulation.minute_of_day = 8 * 60
+    if not simulation.is_open_now():
+        _fail("the store is open at 8:00")
+        return false
+    simulation.try_set_business_hours("10_2")
+    simulation.minute_of_day = 60
+    if not simulation.is_open_now() or simulation.demand.opening_minutes_per_day != 960:
+        _fail("AM10:00~AM2:00 is open at 1:00 for 16 hours a day")
+        return false
+    if not simulation.try_set_business_hours("closed") or simulation.is_open_now():
+        _fail("臨時休業 closes the store")
+        return false
+    if simulation._scale_yen_to_configured_business_hours(10000) != 0 or simulation.demand.expected_arrivals_per_minute() != 0.0:
+        _fail("a closed day has no hour-based costs and no arrivals")
+        return false
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(simulation.save_state()) or reloaded.business_hours_id != "closed":
+        _fail("load must keep the business hours")
+        return false
+    var prototype = VerticalSliceSimulationScript.new(fresh)
+    prototype.minute_of_day = 2 * 60
+    if not prototype.is_open_now():
+        _fail("the prototype scenarios stay open all day")
         return false
     return true

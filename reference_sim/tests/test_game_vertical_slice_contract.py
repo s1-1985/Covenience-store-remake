@@ -2119,7 +2119,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # would otherwise silently revert a hire on load.
         self.assertIn("func _staff_roster_snapshot() -> Array[Dictionary]:", simulation)
         self.assertIn('"staff_roster": _staff_roster_snapshot(),', simulation)
-        self.assertIn("const SAVE_SCHEMA_VERSION := 7", simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 8", simulation)
         self.assertIn(
             'staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])',
             simulation,
@@ -3232,7 +3232,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertEqual(buyable, {"rival-hq": False, "rival-02": True})
         self.assertTrue((GAME_ROOT / "assets" / "town" / "map_blue_02.png").is_file())
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
-        self.assertIn("const SAVE_SCHEMA_VERSION := 7", simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 8", simulation)
         self.assertIn("# REMAKE_BALANCED_DEFAULT: the guide's start price grown by the land price's", simulation)
         self.assertIn('"bought_rival_ids": owned_branches.map(', simulation)
         self.assertEqual(self.config["sound"]["event_sfx"]["rival_bought_out"], "purchase")
@@ -3259,6 +3259,24 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("var night := minute_of_day < 7 * 60", simulation)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("a 朝から夜だけ building sends no customer at 2:00", smoke)
+
+    def test_business_hours_presets(self):
+        # Task #103: the guide's five fixed hours + 24h + 臨時休業.
+        hours = self.config["guide_starting_store"]["business_hours"]
+        labels = [p["label"] for p in hours["presets"]]
+        self.assertEqual(
+            labels,
+            ["AM10:00〜PM6:00", "AM7:00〜PM11:00", "AM10:00〜AM2:00", "PM0:00〜AM4:00",
+             "PM7:00〜AM11:00", "24時間営業", "臨時休業"],
+        )
+        self.assertEqual(hours["default_id"], "7_23")
+        self.assertEqual(hours["start_minute_of_day"], 0)
+        for tag in ("CONFIRMED_OFFICIAL (guide PDF3 p.2)", "CONFIRMED_COMMUNITY"):
+            self.assertIn(tag, hours["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("if customers.can_admit_concurrent() and is_open_now() and demand.customer_arrives_this_minute():", simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("no customer comes in while the store is closed", smoke)
 
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は

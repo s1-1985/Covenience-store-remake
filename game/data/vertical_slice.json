@@ -3795,6 +3795,55 @@
     "max_concurrent_customers_evidence_note": "CONFIRMED_VISUAL lower bound: the gameplay-video frame assets/raw/conveni_additional_assets_v1/reference/video_900s.png shows about 8 customers inside one store at once (this project's count of the figures). REMAKE_BALANCED_DEFAULT: using that count as a hard cap is this project's own choice; no source states the original's limit, if any.",
     "provisional_restock_product_id": "product-bread-1",
     "sample_layout_label": "Guide p.48 layout",
+    "business_hours": {
+      "presets": [
+        {
+          "id": "10_18",
+          "label": "AM10:00〜PM6:00",
+          "open": 600,
+          "close": 1080
+        },
+        {
+          "id": "7_23",
+          "label": "AM7:00〜PM11:00",
+          "open": 420,
+          "close": 1380
+        },
+        {
+          "id": "10_2",
+          "label": "AM10:00〜AM2:00",
+          "open": 600,
+          "close": 120
+        },
+        {
+          "id": "12_4",
+          "label": "PM0:00〜AM4:00",
+          "open": 720,
+          "close": 240
+        },
+        {
+          "id": "19_11",
+          "label": "PM7:00〜AM11:00",
+          "open": 1140,
+          "close": 660
+        },
+        {
+          "id": "24h",
+          "label": "24時間営業",
+          "open": 0,
+          "close": 1440
+        },
+        {
+          "id": "closed",
+          "label": "臨時休業",
+          "open": 0,
+          "close": 0
+        }
+      ],
+      "default_id": "7_23",
+      "start_minute_of_day": 0,
+      "evidence_note": "Task #103. CONFIRMED_OFFICIAL (guide PDF3 p.2): five fixed hours -- AM10:00~PM6:00 (8 hours), AM7:00~PM11:00, a 10/11 o'clock~AM2:00, PM0:00~AM4:00 and PM7:00~AM11:00 (16 hours each) -- plus 24時間営業 and 臨時休業; longer hours sell more but cost more. The third preset's start reads 11 or 10 in the scan; 10 matches its printed 16 hours and the PS review's list (10:00~翌02:00). Guide p.23: start with AM7:00~PM11:00. CONFIRMED_COMMUNITY (first-title FAQ): while closed, wages and upkeep stop. CONFIRMED_OFFICIAL: a game starts at 1年目1月1日 00:00 (guide p.6, p.11 screenshots)."
+    },
     "staff_work": {
       "restock_trigger_share_of_full": 0.888889,
       "cleaning_task_enabled": true,
