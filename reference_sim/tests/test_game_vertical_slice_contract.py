@@ -651,7 +651,23 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func customer_arrives_this_minute() -> bool:", demand_policy)
         self.assertIn("func demand_admit_if_due() -> bool:", simulation)
         self.assertIn("func tick_idle_for_demand() -> bool:", simulation)
-        self.assertIn("simulation.tick_idle_for_demand()", main)
+        # Task #87: main.gd's real-time loop is tick(), which also rolls
+        # arrivals while customers are already shopping (previously arrivals
+        # were only rolled once the store was empty, serializing visits).
+        self.assertIn("simulation.tick()", main)
+        self.assertNotIn("simulation.tick_idle_for_demand()", main)
+        self.assertIn("func tick() -> void:", simulation)
+        self.assertIn(
+            "if customers.can_admit_concurrent() and demand.customer_arrives_this_minute():",
+            simulation,
+        )
+        self.assertIn(
+            "more than one customer must be able to shop at the same time in the default game",
+            smoke,
+        )
+        self.assertIn(
+            "customers must keep completing visits across a full day without gridlock", smoke
+        )
         self.assertIn("a saturated demand rate must always admit a customer", smoke)
         self.assertIn("a zero demand rate must never admit a customer", smoke)
         self.assertIn(
@@ -1448,13 +1464,14 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         # Mechanics this client does not implement -- multi-register
         # checkout routing, a copier/print service, an ATM-like cash
-        # dispenser, and a staff break/rest room -- are deliberately
-        # excluded from this port, the same reasoning task #39 used to
-        # exclude the "cash" product category.
+        # dispenser -- are deliberately excluded from this port, the same
+        # reasoning task #39 used to exclude the "cash" product category.
+        # The staff break room was excluded here too until task #88 gave
+        # it a mechanic (staff rest there while the store is empty); it is
+        # checked by test_starting_store_has_a_break_room_staff_rest_in.
         excluded_ids = {
             "register_1", "register_2", "register_3", "register_4",
-            "copier_a", "copier_b", "indoor_dispenser",
-            "break_room_1", "break_room_2", "vending_machine",
+            "copier_a", "copier_b", "indoor_dispenser", "vending_machine",
         }
         for excluded_id in excluded_ids:
             self.assertNotIn(excluded_id, catalog_by_id)
@@ -1466,6 +1483,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "potted_plant", "bench", "fountain",
             "parking_ground", "parking_two_story", "parking_tower",
             "small_ambient_shelf", "small_tobacco_vending",
+            "break_room_1", "break_room_2",
         }
         expected_new_ids = set(reference_by_id) - excluded_ids - pre_existing_ids
         actual_new_ids = set(catalog_by_id) - pre_existing_ids
@@ -2248,7 +2266,9 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
 
-    def test_automatic_restock_task_assignment_is_disabled_by_default_and_provisional(self):
+    def test_automatic_restock_task_assignment_is_enabled_by_default(self):
+        # Task #87: staff restocking on their own is confirmed first-title
+        # behavior; it had been disabled only for an old scripted scenario.
         simulation_config = self.config["simulation"]
         for key in (
             "restock_ticks",
@@ -2258,7 +2278,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             self.assertIn(key, simulation_config)
         self.assertGreater(simulation_config["restock_ticks"], 0)
         self.assertGreaterEqual(simulation_config["restock_trigger_stock_units_at_or_below"], 0)
-        self.assertIs(simulation_config["restock_task_enabled"], False)
+        self.assertIs(simulation_config["restock_task_enabled"], True)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", simulation_config["restock_task_evidence_note"])
 
         staff_state = (GAME_ROOT / "scripts" / "domain" / "staff_state.gd").read_text(
             encoding="utf-8"
@@ -2278,6 +2299,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "an idle non-checkout staff member must be dispatched once a product sells out",
             smoke,
         )
+        self.assertIn("staff must restock shelves on their own in the default game", smoke)
         self.assertIn(
             "fixture relocation must be blocked while a restock task is active", smoke
         )
@@ -2778,6 +2800,79 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
         self.assertIn("economy_ui_scene._on_reset_pressed()", smoke)
+
+    def test_entrance_and_exit_are_side_by_side_and_shoppers_detour(self):
+        # Task #87: the gameplay-video frames show the IN and OUT door mats
+        # directly next to each other, and customers can route around
+        # congestion (PROJECT_MEMORY.md section 4).
+        store = self.config["store"]
+        entry = store["entry_subcell"]
+        exit_point = store["exit_subcell"]
+        self.assertEqual(abs(entry[0] - exit_point[0]) + abs(entry[1] - exit_point[1]), 1)
+        self.assertIn("crop_xyxy [410,240,456,285] and [456,240,503,285]", store["size_tier_evidence_note"])
+        manifest = json.loads(
+            (REPO_ROOT / "assets" / "raw" / "conveni_additional_assets_v1" / "manifest.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        crops = {a["id"]: a["source"]["crop_xyxy"] for a in manifest["assets"] if a["id"].startswith("entrance_")}
+        self.assertEqual(crops["entrance_in"][2], crops["entrance_out"][0])
+        self.assertEqual(crops["entrance_in"][1], crops["entrance_out"][1])
+
+        layout = (GAME_ROOT / "scripts" / "domain" / "store_layout.gd").read_text(encoding="utf-8")
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("func find_path_avoiding(", layout)
+        self.assertIn("func _try_detour(mover) -> bool:", simulation)
+
+    def test_starting_store_has_a_break_room_staff_rest_in(self):
+        # Task #88: guide p.16 「お客さんがいないとき店員は休憩室で休んでいる」.
+        from conveni_sim.baseline_data import FIXTURES
+
+        baseline = {fixture.id: fixture for fixture in FIXTURES}
+        catalog = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        for catalog_id in ("break_room_1", "break_room_2"):
+            entry = catalog[catalog_id]
+            self.assertEqual(entry["kind"], "break_room")
+            self.assertEqual(tuple(entry["footprint_tiles"]), baseline[catalog_id].footprint.value)
+            self.assertEqual(
+                entry["purchase_price_yen"], baseline[catalog_id].purchase_price_yen.value
+            )
+            self.assertEqual(
+                entry["maintenance_yen_per_day"],
+                baseline[catalog_id].maintenance_yen_per_day.value,
+            )
+            self.assertTrue((GAME_ROOT / "assets" / "fixtures" / f"{catalog_id}.png").is_file())
+        self.assertIn("REMAKE_BALANCED_DEFAULT", catalog["break_room_1"]["evidence_note"])
+        self.assertIn(
+            "break_room_1",
+            [f.get("catalog_id") for f in self.config["fixtures"] if f["kind"] == "break_room"],
+        )
+
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("「お客さんがいないとき店員は休憩室で休んでいる。", simulation)
+        self.assertIn("    _step_staff_rest()\n", simulation)
+        self.assertIn("checkout_staff.position != checkout_staff.home_position()", simulation)
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        rest_draw = store_view[store_view.index("func _draw_staff() -> void:"):]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", rest_draw[: rest_draw.index("var sprite_id")])
+
+        # The sprite is cropped from the guide's own printed store diagram,
+        # and the shipped copies are byte-identical to the recorded crop.
+        import hashlib
+
+        raw_dir = REPO_ROOT / "assets" / "raw" / "conveni_guide_diagram_sprites_v1"
+        manifest = json.loads((raw_dir / "manifest.json").read_text(encoding="utf-8"))
+        asset = {a["id"]: a for a in manifest["assets"]}["break_room"]
+        self.assertEqual(asset["source"]["printed_page"], 48)
+        raw_sha = hashlib.sha256((raw_dir / asset["file"]).read_bytes()).hexdigest()
+        self.assertEqual(raw_sha, asset["sha256"])
+        for catalog_id in ("break_room_1", "break_room_2"):
+            shipped = (GAME_ROOT / "assets" / "fixtures" / f"{catalog_id}.png").read_bytes()
+            self.assertEqual(hashlib.sha256(shipped).hexdigest(), raw_sha)
 
     def test_store_rating_gd_thresholds_match_reference_sim_row_for_row(self):
         # Task #86: game/'s copy of the guide's rating table (printed

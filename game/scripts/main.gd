@@ -171,10 +171,7 @@ func _process(delta: float) -> void:
     accumulator += delta
     while accumulator >= tick_seconds:
         accumulator -= tick_seconds
-        if simulation.customers.all_settled():
-            simulation.tick_idle_for_demand()
-        else:
-            simulation.step()
+        simulation.tick()
         _refresh_ui()
 
 

@@ -1881,6 +1881,36 @@ code/docs. Transcription recorded in `docs/research/store-rating-table-reverific
 with supersession notes added to the two older research docs. Impact: early-game (0-star) stores now
 use the easier printed row, and several ★3-★5 thresholds changed.
 
+**Task #87 (2026-09-25, decision 0158)**: live store floor. After playing the Android preview the user
+reported: staff never move, entrance and exit are far apart, customers enter one at a time. All three
+were this client's own structural problems, not original behavior. (1) main.gd only rolled arrivals
+once the store was empty, and step() never admitted anyone, so visits were strictly serialized; new
+`tick()` = step() + arrival roll within the concurrency cap, and main.gd now calls only that. (2) With
+concurrent shoppers, two customers meeting head-on blocked each other forever (task #66's "just wait"
+limitation); added `_try_detour()`/`find_path_avoiding()` -- reroute around occupied cells when possible
+(CONFIRMED_COMMUNITY "multiple routes let customers detour around congestion", section 4), still wait in a
+1/2-masu corridor with no way around. (3) Exit moved from (8,0) to (1,0), directly beside the entry
+(CONFIRMED_VISUAL: entrance_in/entrance_out video crops are side by side). (4) Automatic staff restock
+was switched off by default only to keep an old scripted sellout test deterministic; turned it on
+(confirmed original staff behavior), trigger level unchanged (REMAKE). New smoke scenario runs the
+shipped config through tick() for a full day (>=2 concurrent shoppers, >=10 completed visits, staff
+restock starts); older scripted scenarios now disable restock explicitly. Still open: overall customer
+volume (demand coefficients REMAKE, far below the ~8 shoppers seen in a video frame), the near-empty
+prototype layout (2 shelves / 2 products), staff cleaning/rest movement, and the town map.
+
+**Task #88 (2026-09-25, decision 0159)**: staff rest in the break room. Guide p.16 (re-read from the
+scan): 「お客さんがいないとき店員は休憩室で休んでいる。だからレジと休憩室の距離が近いほうが、すぐにレジに
+向かうことができて便利なのだ。」 Ported break_room_1/2 (CONFIRMED_OFFICIAL price/maintenance/2x2 from
+baseline_data.FIXTURES; previously excluded by task #41 for lack of a mechanic) and put break_room_1 in the
+starting store (bottom-right; the guide advises near the register, to be revisited with a guide-published
+layout). New `_step_staff_rest()`: while no customer is in the store, idle staff walk to the break-room door
+and rest (`StaffState.rest_phase`, kept separate from `state` so existing idle checks are unchanged); once a
+customer is in, they walk back to their post, and checkout does not start until the checkout staff member is
+back behind the register. Resting staff are drawn inside the room (placement REMAKE_BALANCED_DEFAULT); the
+room sprite is cropped from the guide's p.48 store diagram (assets/raw/conveni_guide_diagram_sprites_v1).
+Not yet modeled: stamina (CONFIRMED_COMMUNITY: 0 -> back to the break room until fully recovered; no numeric
+rates) and cleaning. Legacy scripted smoke scenarios strip the break room explicitly.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

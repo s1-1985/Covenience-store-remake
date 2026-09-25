@@ -365,6 +365,23 @@ func tick_idle_for_demand() -> bool:
     return demand_admit_if_due()
 
 
+# Task #87: the real-time game loop. Before this, main.gd only ran the
+# arrival roll (tick_idle_for_demand) once every admitted customer had
+# left, and step() never admitted anyone -- so no matter how busy the store
+# was, customers entered strictly one visit at a time. The original fills
+# the store with many shoppers at once (a single gameplay-video frame,
+# assets/raw/conveni_additional_assets_v1/reference/video_900s.png, shows
+# about eight customers inside a small store simultaneously). step() and
+# tick_idle_for_demand() keep their narrower semantics for the existing
+# scripted smoke scenarios.
+func tick() -> void:
+    if is_game_over:
+        return
+    step()
+    if customers.can_admit_concurrent() and demand.customer_arrives_this_minute():
+        _start_default_customer()
+
+
 # Task #80: CONFIRMED_OFFICIAL (docs/research/strategy-guide-third-companion-
 # book-full-extraction-2026-09-24.md, PDF1 p.68-71 Q&A: manual restock
 # "stunts staff 補充 growth") -- unlike _complete_restock() (the autonomous
@@ -914,6 +931,7 @@ func step() -> void:
         _advance_customer(customer)
     _dispatch_checkout_queue()
     _step_restock_tasks()
+    _step_staff_rest()
 
 
 # Task #66: CONFIRMED_OFFICIAL passage-width rule, re-verified 2026-09-24 at
@@ -1002,8 +1020,33 @@ func _subcell_is_free_for(mover, target: Vector2i) -> bool:
 
 func _try_move_along_route(mover, next_phase: String) -> bool:
     if not mover.route.is_empty() and not _subcell_is_free_for(mover, mover.route[0]):
-        return false
+        if not _try_detour(mover):
+            return false
     return mover.move_along_route(next_phase)
+
+
+# Task #87: CONFIRMED_COMMUNITY (PROJECT_MEMORY.md section 4, from the
+# first-title wiki's 内装 page): "Multiple routes can allow customers to
+# detour around congestion." When the next cell is taken, look for another
+# route to the same goal around everyone currently standing in the way and
+# take it if its first step is free; otherwise keep waiting (a 1/2-masu
+# corridor with no way around still congests, per the passage-width rule
+# above). Once customers could shop concurrently (tick()), the old "always
+# wait" behavior let two shoppers heading at each other block forever.
+func _try_detour(mover) -> bool:
+    var goal: Vector2i = mover.route[mover.route.size() - 1]
+    var occupied: Dictionary = {}
+    for customer in customers.active_customers():
+        if customer != mover and not _subcell_is_free_for(mover, customer.position):
+            occupied[customer.position] = true
+    for staff_member in staff.all_staff():
+        if staff_member != mover and not _subcell_is_free_for(mover, staff_member.position):
+            occupied[staff_member.position] = true
+    var detour: Array[Vector2i] = layout.find_path_avoiding(mover.position, goal, occupied)
+    if detour.is_empty() or not _subcell_is_free_for(mover, detour[0]):
+        return false
+    mover.route = detour
+    return true
 
 
 func _advance_customer(customer) -> void:
@@ -1162,6 +1205,12 @@ func _advance_customer(customer) -> void:
 func _dispatch_checkout_queue() -> void:
     var checkout_staff = staff.checkout_staff()
     if checkout_staff.state != "idle" or _checkout_queue.is_empty():
+        return
+    # Task #88: a checkout staff member walking back from the break room
+    # (guide p.16) cannot ring anyone up until they are back behind the
+    # register -- queued customers wait meanwhile, which is exactly why the
+    # guide advises keeping the register close to the break room.
+    if not checkout_staff.rest_phase.is_empty() or checkout_staff.position != checkout_staff.home_position():
         return
     var customer_id: String = _checkout_queue.pop_front()
     var customer = customers.customer(customer_id)
@@ -1889,6 +1938,87 @@ func _fire_due_chain_visitor_milestones() -> void:
             "popularity_gain": gain,
             "popularity_after": popularity,
         })
+
+
+# Task #88: CONFIRMED_OFFICIAL, strategy guide p.16 (PDF1 page 6,
+# 「レジの場所」): 「お客さんがいないとき店員は休憩室で休んでいる。だから
+# レジと休憩室の距離が近いほうが、すぐにレジに向かうことができて便利なのだ。」
+# While no customer is in the store, every idle staff member walks to the
+# break room's door and rests there; as soon as a customer is in the store
+# again they walk back to their post (the checkout staff member back behind
+# the register, see _dispatch_checkout_queue()). A staff member called to a
+# restock task leaves the cycle immediately (begin_restock() clears
+# rest_phase). Not modeled yet: stamina (guide p.17: 「休憩室は、疲れた店員
+# のスタミナを回復する大事な場所」, community wiki: stamina 0 -> back to the
+# break room until fully recovered), so break_room_1 and break_room_2
+# currently behave the same. A store with no break room keeps every staff
+# member at their post.
+func _step_staff_rest() -> void:
+    var door := _break_room_door()
+    var store_is_empty: bool = customers.all_settled()
+    for staff_member in staff.all_staff():
+        if staff_member.state != "idle":
+            continue
+        var wants_rest: bool = store_is_empty and door != NO_BREAK_ROOM_DOOR
+        if wants_rest:
+            if staff_member.position == door:
+                if staff_member.rest_phase != "resting":
+                    staff_member.rest_phase = "resting"
+                    staff_member.route.clear()
+                    _record_event("staff_rest_started", {"staff_id": staff_member.staff_id})
+                continue
+            if staff_member.rest_phase != "to_break_room" or not _route_ends_at(staff_member, door):
+                staff_member.route = layout.find_path(staff_member.position, door)
+                staff_member.rest_phase = "to_break_room"
+            _step_staff_walk(staff_member)
+        else:
+            if staff_member.rest_phase.is_empty():
+                continue
+            var home: Vector2i = staff_member.home_position()
+            if staff_member.position == home:
+                staff_member.rest_phase = ""
+                staff_member.route.clear()
+                continue
+            if staff_member.rest_phase != "to_post" or not _route_ends_at(staff_member, home):
+                if staff_member.rest_phase == "resting" or staff_member.rest_phase == "to_break_room":
+                    _record_event("staff_returning_to_post", {"staff_id": staff_member.staff_id})
+                staff_member.route = layout.find_path(staff_member.position, home)
+                staff_member.rest_phase = "to_post"
+            if _step_staff_walk(staff_member) and staff_member.position == home:
+                staff_member.rest_phase = ""
+
+
+const NO_BREAK_ROOM_DOOR := Vector2i(-1, -1)
+
+
+func _break_room_door() -> Vector2i:
+    for fixture in layout.fixtures:
+        if str(fixture["kind"]) == "break_room":
+            return _vec2i_from_array(fixture["interaction_subcell"])
+    return NO_BREAK_ROOM_DOOR
+
+
+func _route_ends_at(mover, goal: Vector2i) -> bool:
+    return not mover.route.is_empty() and mover.route[mover.route.size() - 1] == goal
+
+
+# One step along a staff member's rest-cycle route, with the same
+# occupancy/detour rules as every other mover. Returns true once the route
+# is used up. A route cell that became blocked (the player moved a fixture
+# while staff were resting) forces a fresh path next tick.
+func _step_staff_walk(mover) -> bool:
+    if mover.route.is_empty():
+        return true
+    var next_cell: Vector2i = mover.route[0]
+    if not layout.is_walkable(next_cell) and next_cell != mover.route[mover.route.size() - 1]:
+        mover.route.clear()
+        mover.rest_phase = "stale"
+        return false
+    if not _subcell_is_free_for(mover, next_cell):
+        if not _try_detour(mover):
+            return false
+    mover.position = mover.route.pop_front()
+    return mover.route.is_empty()
 
 
 func _step_restock_tasks() -> void:

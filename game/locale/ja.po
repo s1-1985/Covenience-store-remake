@@ -408,6 +408,12 @@ msgstr "二階建駐車場"
 msgid "parking_tower"
 msgstr "立体駐車場"
 
+msgid "break_room_1"
+msgstr "社員休憩室1"
+
+msgid "break_room_2"
+msgstr "社員休憩室2"
+
 msgid "hot_drink_case"
 msgstr "温かい飲料ケース"
 
