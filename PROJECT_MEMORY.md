@@ -1911,6 +1911,39 @@ room sprite is cropped from the guide's p.48 store diagram (assets/raw/conveni_g
 Not yet modeled: stamina (CONFIRMED_COMMUNITY: 0 -> back to the break room until fully recovered; no numeric
 rates) and cleaning. Legacy scripted smoke scenarios strip the break room explicitly.
 
+**Task #89 (2026-09-25, decision 0160)**: new games start in the strategy guide's p.48 store. Read the
+p.48 「未開の土地に開店するなら!」 diagram on a 137 px grid (page rendered at scale 6): the floor is exactly
+12x8 tiles (= CONFIRMED_OFFICIAL large_bottom), the only opening is a 2-tile walkway in the top wall, and
+it holds 34 one-tile shelves, a 2x2 break room, a 2-tile register, a plant, and an ATM/copier (not placed:
+no mechanic). `tools/build_guide_p48_store.py` holds the per-cell table and writes vertical_slice.json's
+`guide_starting_store` block. Positions are CONFIRMED_VISUAL; product categories are PROVISIONAL readings;
+shelf temperature type comes from DATA2 compatibility; starting stock = shelf capacity. The two liquor-like
+shelves hold cold_drink because a new store has no alcohol permit. `GuideStartingStore.apply()` overlays
+this on the prototype store and main.gd always uses it. Tests keep the prototype store through the
+`use_prototype_store_for_tests` Engine meta, because main.gd can't be preloaded from `--script`. Guide
+store also uses:
+- empty fixed plan (random 3 wants from all 34 products),
+- concurrency cap 8 (video_900s.png shows ~8 shoppers; used as cap = REMAKE),
+- 200M yen starting cash (CONFIRMED_COMMUNITY).
+main.gd `_fit_store_view()` scales the store to fit; the Android layout is store | shortcuts | panel.
+video_900s.png also shows a staff member drawn inside the break room, so task #88's in-room drawing is
+now CONFIRMED_VISUAL (the exact spot is still REMAKE). Found, not fixed: baseline_data's
+medium_refrigerated_shelf is (1,1), but DATA2 p.86 prints 1x2. Still open: customer volume (demand
+coefficients REMAKE; only ~2-3 shoppers at once), archetype-based wants, the outdoor lot and town map,
+and shelf art cropped from p.48.
+
+**Task #90 (2026-09-25, decision 0161)**: town map from the guide p.11 beginner-map screenshot. Cropped the
+初級マップ start screen (1年目1月1日 00:00 ¥200,000,000) at scan resolution into
+assets/raw/conveni_guide_town_v1. The grid was measured on it: tiles are 9.875 x 10.45 px, roads run every
+10 columns and every ~13/20 rows, and the railway is row 12. tools/build_guide_town_map.py reads it tile by
+tile into vertical_slice.json's `guide_town_map` (41x35 rows of G/D/R/T/B/O). Road/rail positions are
+CONFIRMED_VISUAL; per-tile grass/ground/building is PROVISIONAL (colour classification); that the orange
+5x5 lot is the player's store is PROVISIONAL. town_view.gd draws this town (buildings use 3 generated
+house sprites = REMAKE); the old marker view is the fallback. The Android shortcuts gain 「町／店内」, and
+200M starting cash is now CONFIRMED_VISUAL too. Task #72's "no sprites in the town view" test is narrowed to
+"only the house sprites on building tiles". Still open: building types, town growth, and choosing a store
+site.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

@@ -1,4 +1,5 @@
 import json
+import re
 import unittest
 from collections import deque
 from pathlib import Path
@@ -2623,15 +2624,18 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
 
-        # assets/raw/conveni_map_assets_v2/'s 52 facility sprites are
-        # explicitly NOT used here -- investigating them surfaced that none
-        # depict a store, and this client has no placement data for any of
-        # the 52 facility types (inventing one would mean guessing an
-        # unconfirmed town spatial simulation, PROJECT_MEMORY.md section
-        # 17's explicit research gap). Confirm that boundary actually holds
-        # in the shipped code, not just in the decision doc.
-        self.assertNotIn(".png", town_view)
-        self.assertNotIn("ResourceLoader", town_view)
+        # No invented facility layout: task #72 kept the 52 facility sprites
+        # out entirely because no placement data existed. Task #90 added
+        # placement data read from the guide p.11 screenshot
+        # (guide_town_map); the only sprites drawn are the three 1x1 house
+        # sprites on that map's building tiles, never a facility type placed
+        # by this project's own guess.
+        self.assertEqual(
+            sorted(set(re.findall(r'"(\w+)"', town_view.split("const HOUSE_SPRITE_IDS := ")[1].split("\n")[0]))),
+            ["house_small_a", "house_small_b", "house_small_c"],
+        )
+        self.assertIn('"B":', town_view)
+        self.assertIn('return simulation.config.get("guide_town_map", {})', town_view)
         self.assertIn(
             "Inventing\n# a full facility layout would mean guessing an unconfirmed town spatial",
             town_view,
@@ -2873,6 +2877,143 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         for catalog_id in ("break_room_1", "break_room_2"):
             shipped = (GAME_ROOT / "assets" / "fixtures" / f"{catalog_id}.png").read_bytes()
             self.assertEqual(hashlib.sha256(shipped).hexdigest(), raw_sha)
+
+    def test_new_games_start_in_the_guide_p48_store(self):
+        # Task #89: guide p.48's store diagram, placed on the confirmed 12x8
+        # large floor, is the store every new game starts in.
+        import importlib.util
+
+        from conveni_sim.baseline_data import STORE_VARIANTS
+
+        guide = self.config["guide_starting_store"]
+        store = guide["store"]
+        large_bottom = {v.id: v for v in STORE_VARIANTS}["large_bottom"]
+        self.assertEqual(
+            (store["width_tiles"], store["height_tiles"]), large_bottom.editable_floor.value
+        )
+        self.assertIn("CONFIRMED_VISUAL", guide["evidence_note"])
+        self.assertIn("PROVISIONAL", guide["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", guide["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", guide["max_concurrent_customers_evidence_note"])
+        self.assertIn("video_900s.png", guide["max_concurrent_customers_evidence_note"])
+
+        # The JSON block is exactly what the documented table generates.
+        spec = importlib.util.spec_from_file_location(
+            "build_guide_p48_store", REPO_ROOT / "tools" / "build_guide_p48_store.py"
+        )
+        builder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(builder)
+        base = {k: v for k, v in self.config.items() if k != "guide_starting_store"}
+        self.assertEqual(builder.build(base), guide)
+
+        catalog = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        pricing = {entry["catalog_id"]: entry for entry in self.config["product_catalog"]}
+        fixtures = {fixture["id"]: fixture for fixture in guide["fixtures"]}
+        self.assertEqual(sum(1 for f in guide["fixtures"] if f["kind"] == "shelf"), 34)
+        self.assertEqual(len(guide["products"]), 34)
+        for product in guide["products"]:
+            fixture = fixtures[product["fixture_id"]]
+            shelf = catalog[fixture["catalog_id"]]
+            category = pricing[product["catalog_id"]]
+            self.assertEqual(fixture["footprint_tiles"], [1, 1])
+            self.assertIn(product["catalog_id"], shelf["compatible_product_categories"])
+            self.assertEqual(product["initial_stock_units"], shelf["capacity"])
+            self.assertEqual(product["sale_price_yen"], category["sale_price_yen"])
+            self.assertEqual(product["restock_unit_cost_yen"], category["restock_unit_cost_yen"])
+            # A new store holds no permit, so nothing permit-gated is stocked.
+            self.assertNotIn("required_permit_id", category)
+
+        # Footprints stay inside the floor without overlapping, the doors
+        # are free and side by side, and every shelf, the register and the
+        # break room door can be reached from the entrance.
+        scale = store["subcells_per_tile"]
+        width, height = store["width_tiles"] * scale, store["height_tiles"] * scale
+        blocked = set()
+        for fixture in guide["fixtures"]:
+            ox, oy = fixture["origin_subcell"]
+            for dy in range(fixture["footprint_tiles"][1] * scale):
+                for dx in range(fixture["footprint_tiles"][0] * scale):
+                    cell = (ox + dx, oy + dy)
+                    self.assertTrue(0 <= cell[0] < width and 0 <= cell[1] < height)
+                    self.assertNotIn(cell, blocked)
+                    blocked.add(cell)
+        entry, exit_point = tuple(store["entry_subcell"]), tuple(store["exit_subcell"])
+        self.assertEqual(abs(entry[0] - exit_point[0]) + abs(entry[1] - exit_point[1]), 1)
+        seen, queue = {entry}, deque([entry])
+        while queue:
+            x, y = queue.popleft()
+            for nxt in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if 0 <= nxt[0] < width and 0 <= nxt[1] < height and nxt not in blocked and nxt not in seen:
+                    seen.add(nxt)
+                    queue.append(nxt)
+        for fixture in guide["fixtures"]:
+            if fixture["kind"] == "amenity":
+                continue
+            self.assertIn(tuple(fixture["interaction_subcell"]), seen, fixture["id"])
+        self.assertIn(exit_point, seen)
+        for position in guide["staff_start_subcells"].values():
+            self.assertIn(tuple(position), seen)
+
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        self.assertIn("loaded = GuideStartingStoreScript.apply(loaded)", main)
+        helper = (GAME_ROOT / "scripts" / "domain" / "guide_starting_store.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("REMAKE_BALANCED_DEFAULT cap anchored to a CONFIRMED_VISUAL count", helper)
+
+    def test_town_map_is_read_from_the_guide_beginner_map_screenshot(self):
+        # Task #90: the town view draws the beginner map's start screen as
+        # printed on guide p.11, read tile by tile.
+        import hashlib
+
+        town = self.config["guide_town_map"]
+        rows = town["tile_rows"]
+        self.assertEqual((town["width_tiles"], town["height_tiles"]), (41, 35))
+        self.assertEqual(len(rows), 35)
+        self.assertTrue(all(len(row) == 41 and set(row) <= set(town["legend"]) for row in rows))
+        # Straight lines measured on the screenshot: the railway crosses the
+        # whole map; two horizontal roads and one vertical road do too.
+        self.assertEqual(rows[12], "T" * 41)
+        self.assertEqual(rows[6], "R" * 41)
+        self.assertEqual(rows[26], "R" * 41)
+        self.assertTrue(all(row[31] in "RT" for row in rows))
+        lx, ly = town["store_lot_origin_tile"]
+        lot = {(x, y) for y, row in enumerate(rows) for x, c in enumerate(row) if c == "O"}
+        self.assertEqual(lot, {(lx + dx, ly + dy) for dx in range(5) for dy in range(5)})
+        self.assertIn("CONFIRMED_VISUAL", town["evidence_note"])
+        self.assertIn("PROVISIONAL", town["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", town["evidence_note"])
+
+        raw_dir = REPO_ROOT / "assets" / "raw" / "conveni_guide_town_v1"
+        manifest = json.loads((raw_dir / "manifest.json").read_text(encoding="utf-8"))
+        asset = manifest["assets"][0]
+        self.assertEqual(asset["source"]["printed_page"], 11)
+        self.assertEqual(
+            hashlib.sha256((raw_dir / asset["file"]).read_bytes()).hexdigest(), asset["sha256"]
+        )
+        self.assertEqual(town["source_image"], "assets/raw/conveni_guide_town_v1/" + asset["file"])
+
+        town_view = (GAME_ROOT / "scripts" / "town_view.gd").read_text(encoding="utf-8")
+        self.assertIn("# REMAKE_BALANCED_DEFAULT: building tiles use this project's own generated", town_view)
+        for sprite_id in ("house_small_a", "house_small_b", "house_small_c"):
+            self.assertTrue((GAME_ROOT / "assets" / "town" / f"{sprite_id}.png").is_file())
+
+    def test_town_map_block_matches_a_fresh_reading_of_the_screenshot(self):
+        # Needs numpy and Pillow (not installed in CI); run locally after
+        # changing tools/build_guide_town_map.py or its source image.
+        try:
+            import importlib.util
+
+            import numpy  # noqa: F401
+            import PIL  # noqa: F401
+        except ImportError:
+            self.skipTest("numpy/Pillow not installed")
+        spec = importlib.util.spec_from_file_location(
+            "build_guide_town_map", REPO_ROOT / "tools" / "build_guide_town_map.py"
+        )
+        builder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(builder)
+        self.assertEqual(builder.build(), self.config["guide_town_map"])
 
     def test_store_rating_gd_thresholds_match_reference_sim_row_for_row(self):
         # Task #86: game/'s copy of the guide's rating table (printed

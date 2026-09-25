@@ -46,9 +46,10 @@
 ### 3. 表示
 
 休憩中の店員の論理上の位置は休憩室の出入口マスだが、休憩室の絵の中に描く。
-`REMAKE_BALANCED_DEFAULT`: 原作が休憩室の中の店員をどう描くかは回収済みの資料に
-無いため、室内の位置とずらし方(`store_view.gd`の`_break_room_rest_spot()`)は
-このプロジェクト独自。休憩室の絵そのものは攻略本 p.48 の店舗図から切り出したもの
+休憩室の中に描くこと自体はCONFIRMED_VISUAL(タスク#89で追記: プレイ動画フレーム
+`assets/raw/conveni_additional_assets_v1/reference/video_900s.png`で、右下の休憩室の
+中に店員が1人描かれている)。`REMAKE_BALANCED_DEFAULT`: 室内のどこに描くかとずらし方
+(`store_view.gd`の`_break_room_rest_spot()`)はこのプロジェクト独自。休憩室の絵そのものは攻略本 p.48 の店舗図から切り出したもの
 (`assets/raw/conveni_guide_diagram_sprites_v1/`、切り出し座標とハッシュは
 `manifest.json`)。その図だけでは休憩室1と2のどちらの絵か判別できないため、
 両方に同じ絵を使っている。

@@ -1,0 +1,30 @@
+{
+  "origin": "cropped_from_user_supplied_strategy_guide",
+  "assets": [
+    {
+      "id": "beginner_map_start",
+      "name_ja": "初級マップ開始時の画面写真(攻略本p.11「マップ」)",
+      "file": "beginner_map_start.png",
+      "size": [
+        542,
+        384
+      ],
+      "source": {
+        "type": "guide",
+        "file": "downloadfile2.PDF (third companion guide PDF3, 23 pages)",
+        "file_sha256": "b81ab748a1e07fc83bec0a05f4296ac661714bdca944f8fa340c1172a3cd3037",
+        "pdf_page": 5,
+        "printed_page": 11,
+        "render_scale": 4.1667,
+        "clip_pt": [
+          463.0,
+          133.0,
+          593.0,
+          225.0
+        ]
+      },
+      "notes": "「初級マップは人口を増やす」の画面写真(1年目1月1日[快晴]00:00 ¥200,000,000)。ゲーム内の町マップの見えている範囲。右端は画面のサイドバー(ザ・コンビニ柄)で町ではない。印刷の網点あり。",
+      "sha256": "b5db0398ea614ca555f7b58f4f2fbb3dc8a06505f2178371662cf886876383f0"
+    }
+  ]
+}

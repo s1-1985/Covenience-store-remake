@@ -57,6 +57,9 @@ msgstr "街を見る"
 msgid "Show store"
 msgstr "店内に戻る"
 
+msgid "Main store"
+msgstr "本店"
+
 msgid "Interior edit (配置/移動/入れ替え/売却/終了)"
 msgstr "内装の編集"
 
@@ -389,6 +392,9 @@ msgstr "開始時の内装"
 
 msgid "With a bench near the entrance"
 msgstr "入口近くにベンチを置く"
+
+msgid "Guide p.48 layout"
+msgstr "攻略本p.48の内装"
 
 msgid "potted_plant"
 msgstr "観葉植物"

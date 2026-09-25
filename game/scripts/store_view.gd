@@ -549,10 +549,11 @@ func _draw_staff() -> void:
         var center: Vector2 = _cell_center(staff_member.position)
         # Task #88: a resting staff member's logical position is the break
         # room's door (its interaction cell); they are drawn inside the room
-        # itself so "resting" reads differently from "standing at the door".
-        # REMAKE_BALANCED_DEFAULT: no recovered source shows how the original
-        # draws staff inside the 社員休憩室, so the in-room spot and the
-        # fan-out offsets in _break_room_rest_spot() are this project's own.
+        # itself. CONFIRMED_VISUAL: the gameplay-video frame
+        # assets/raw/conveni_additional_assets_v1/reference/video_900s.png
+        # shows a staff member drawn inside the break room.
+        # REMAKE_BALANCED_DEFAULT: the exact in-room spot and the fan-out
+        # offsets in _break_room_rest_spot() are this project's own.
         if staff_member.rest_phase == "resting":
             var rest_spot = _break_room_rest_spot(resting_index)
             if rest_spot != null:

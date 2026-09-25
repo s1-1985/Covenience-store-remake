@@ -15,6 +15,7 @@ const CustomerShareScript := preload("res://scripts/domain/customer_share.gd")
 const StaffStateScript := preload("res://scripts/domain/staff_state.gd")
 const StaffGrowthScript := preload("res://scripts/domain/staff_growth.gd")
 const CheckoutAngerScript := preload("res://scripts/domain/checkout_anger.gd")
+const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
 const CONFIG_PATH := "res://data/vertical_slice.json"
 const MAIN_SCENE_PATH := "res://scenes/main.tscn"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
@@ -33,6 +34,9 @@ class _FakeTownSimulation:
 
 
 func _initialize() -> void:
+    # Task #89: the UI scenarios below script coordinates in the small
+    # prototype store; the guide starting store gets its own scenario.
+    Engine.set_meta("use_prototype_store_for_tests", true)
     var main_scene := load(MAIN_SCENE_PATH) as PackedScene
     if main_scene == null:
         _fail("main scene could not be loaded")
@@ -175,6 +179,49 @@ func _initialize() -> void:
     if rest_checkout_staff.position != rest_checkout_staff.home_position() or rest_checkout_staff.rest_phase != "":
         _fail("checkout must only start once the checkout staff member is back behind the register")
         return
+
+    # Task #89: the store every new game starts in -- the guide's p.48
+    # store (12x8 tiles, 34 stocked shelves) -- run for a full business day.
+    var guide_config: Dictionary = GuideStartingStoreScript.apply(config)
+    if guide_config["store"]["width_tiles"] != 12 or guide_config["store"]["height_tiles"] != 8:
+        _fail("the guide starting store must use the confirmed 12x8 large floor")
+        return
+    if config["store"]["width_tiles"] != 5:
+        _fail("GuideStartingStore.apply() must not modify the config it is given")
+        return
+    var guide_simulation = VerticalSliceSimulationScript.new(guide_config)
+    if guide_simulation.inventory.product_order.size() != 34:
+        _fail("the guide starting store must stock one product per p.48 shelf")
+        return
+    var guide_max_active := 0
+    for guide_minute in range(960):
+        guide_simulation.tick()
+        guide_max_active = max(guide_max_active, guide_simulation.customers.active_customers().size())
+    if guide_simulation.is_game_over:
+        _fail("the guide starting store must not go bankrupt on its first day")
+        return
+    if guide_max_active < 2 or int(guide_simulation.snapshot()["completed_visits"]) < 10:
+        _fail("customers must shop concurrently and keep completing visits in the guide store")
+        return
+    var guide_sold_products: Dictionary = {}
+    for guide_sale in guide_simulation.economy.sale_records:
+        for guide_line in guide_sale["lines"]:
+            guide_sold_products[str(guide_line["product_id"])] = true
+    if guide_sold_products.size() < 10:
+        _fail("customers in the guide store must buy across many different shelves")
+        return
+    # A busy guide store is rarely empty, so the break-room walk is checked
+    # on a fresh copy that admits nobody after its opening customer leaves.
+    var guide_rest_simulation = VerticalSliceSimulationScript.new(guide_config.duplicate(true))
+    for guide_rest_minute in range(240):
+        guide_rest_simulation.step()
+    if not guide_rest_simulation.customers.all_settled():
+        _fail("the guide store's opening customer must finish their visit")
+        return
+    for guide_rest_staff in guide_rest_simulation.staff.all_staff():
+        if guide_rest_staff.rest_phase != "resting":
+            _fail("staff must walk to the guide store's break room once it is empty")
+            return
 
     # The scenarios below predate task #87 and script exact sell-out
     # sequences, so they keep automatic restocking off; the dedicated
@@ -2683,6 +2730,16 @@ func _initialize() -> void:
     var fake_town_box: Dictionary = economy_ui_scene.town_view._bounding_box(fake_town_points)
     if fake_town_box["origin"] != Vector2i(-3, -4) or fake_town_box["size"] != Vector2i(9, 12):
         _fail("town view bounding box did not cover every marker with the expected margin")
+        return
+    # Task #90: with the guide p.11 beginner map in the config, the town
+    # view draws that 41x35-tile town, sized to sit left of the panel.
+    if economy_ui_scene.town_view.guide_map_tiles() != Vector2i(41, 35):
+        _fail("the town view must draw the guide's beginner-map town")
+        return
+    var town_tile_pixels: float = economy_ui_scene.town_view.map_tile_pixels
+    var town_right_edge: float = economy_ui_scene.town_view.position.x + 41 * town_tile_pixels
+    if town_tile_pixels < 8.0 or town_right_edge > (economy_ui_scene.get_node("UI/Panel") as Control).offset_left:
+        _fail("the town map must be legible and fit left of the side panel")
         return
 
     # Task #78: EditModeOption/SellFixtureButton/DeselectFixtureButton wiring
