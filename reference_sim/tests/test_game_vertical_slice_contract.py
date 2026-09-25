@@ -2117,7 +2117,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # would otherwise silently revert a hire on load.
         self.assertIn("func _staff_roster_snapshot() -> Array[Dictionary]:", simulation)
         self.assertIn('"staff_roster": _staff_roster_snapshot(),', simulation)
-        self.assertIn("const SAVE_SCHEMA_VERSION := 5", simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 6", simulation)
         self.assertIn(
             'staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])',
             simulation,
@@ -2196,8 +2196,10 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("var _rival_stores: Array[Dictionary] = []", simulation)
         self.assertIn("func _can_acquire_permit(permit_id: String) -> bool:", simulation)
         self.assertIn("if not _can_acquire_permit(permit_id):", simulation)
+        # Task #95: the same check also runs for a site being considered.
+        self.assertIn("return _can_acquire_permit_at(permit_id, _player_store_position)", simulation)
         self.assertIn(
-            "_town_spatial.can_acquire_permit_at(\n        exclusion_distance_tiles, _player_store_position, holder_positions\n    )",
+            "_town_spatial.can_acquire_permit_at(\n        exclusion_distance_tiles, position, holder_positions\n    )",
             simulation,
         )
 
@@ -2630,7 +2632,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # (guide_town_map); since task #93 every building drawn comes from
         # that data's buildings list (one per building tile or 2x2 block of
         # them), never a facility placed by this project's own guess.
-        self.assertIn('for building in guide["buildings"]:', town_view)
+        self.assertIn('var building: Dictionary = guide["buildings"][index]', town_view)
         self.assertIn('return simulation.config.get("guide_town_map", {})', town_view)
         self.assertIn(
             "Inventing\n# a full facility layout would mean guessing an unconfirmed town spatial",
@@ -2973,9 +2975,11 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertEqual(rows[6], "R" * 41)
         self.assertEqual(rows[26], "R" * 41)
         self.assertTrue(all(row[31] in "RT" for row in rows))
-        lx, ly = town["store_lot_origin_tile"]
-        lot = {(x, y) for y, row in enumerate(rows) for x, c in enumerate(row) if c == "O"}
-        self.assertEqual(lot, {(lx + dx, ly + dy) for dx in range(5) for dy in range(5)})
+        # Task #95: the orange 5x5 block is the start screen's selection
+        # cursor, not the player's land; no lot is fixed in the data.
+        self.assertNotIn("O", town["legend"])
+        self.assertNotIn("store_lot_origin_tile", town)
+        self.assertTrue(all(set(rows[y][12:17]) <= set("Gg") for y in range(21, 26)))
         self.assertIn("CONFIRMED_VISUAL", town["evidence_note"])
         self.assertIn("PROVISIONAL", town["evidence_note"])
         self.assertIn("REMAKE_BALANCED_DEFAULT", town["evidence_note"])
@@ -3035,6 +3039,74 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         builder = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(builder)
         self.assertEqual(builder.build(), self.config["guide_town_map"])
+
+    def test_store_site_is_chosen_freely_with_a_land_price_per_site(self):
+        # Task #95: like the original, the player picks any 2x2 site on the
+        # town map; its price depends on the site.
+        import importlib.util
+
+        from conveni_sim.baseline_data import TOWN_BUILDINGS
+        from conveni_sim.remake_land_value import NEW_BRANCH_LAND_AREA_COUNT
+        from conveni_sim.remake_town_spatial import STORE_CONSTRUCTION_MIN_DISTANCE_TILES
+
+        town = self.config["guide_town_map"]
+        rules = town["store_site"]
+        # CONFIRMED rules, the same numbers reference_sim already carries.
+        self.assertEqual(rules["footprint_tiles"], [2, 2])
+        own_store = next(b for b in TOWN_BUILDINGS if b.id == "own_conveni_lot")
+        self.assertEqual(tuple(rules["footprint_tiles"]), own_store.footprint.value)
+        self.assertEqual(rules["land_area_count"], NEW_BRANCH_LAND_AREA_COUNT)
+        self.assertEqual(rules["min_store_distance_tiles"], STORE_CONSTRUCTION_MIN_DISTANCE_TILES)
+        self.assertEqual(rules["floor_land_price_yen"], 20_000_000)
+        self.assertEqual(
+            rules["floor_land_price_yen"] + rules["road_bonus_yen"] + rules["density_bonus_yen"], 30_000_000
+        )
+        for tag in ("CONFIRMED_OFFICIAL", "REMAKE_BALANCED_DEFAULT", "PROVISIONAL", "地価(4エリア分)"):
+            self.assertIn(tag, rules["evidence_note"])
+        # Every building's name and price is its DATA4 row.
+        by_id = {b.id: b for b in TOWN_BUILDINGS}
+        self.assertEqual(set(town["building_catalog"]), {b["sprite"] for b in town["buildings"]})
+        for sprite, entry in town["building_catalog"].items():
+            self.assertEqual(entry["name"], by_id[sprite].display_name_ja)
+            self.assertEqual(entry["price"], by_id[sprite].building_price_yen.value)
+
+        spec = importlib.util.spec_from_file_location(
+            "guide_store_site", REPO_ROOT / "tools" / "guide_store_site.py"
+        )
+        site = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(site)
+        self.assertEqual(site.store_site_rules(town["tile_rows"], town["buildings"]), rules)
+        # The numbers headless_smoke.gd expects from store_site.gd.
+        self.assertEqual(site.site_quote(town, (13, 21))["total_yen"], 21_000_000)
+        with_house = site.site_quote(town, (12, 20))
+        self.assertEqual(
+            (with_house["land_yen"], with_house["building_yen"], with_house["total_yen"]),
+            (27_000_000, 10_000_000, 37_000_000),
+        )
+        self.assertIsNone(site.site_quote(town, (11, 20)))
+        vacant = [
+            q["land_yen"]
+            for y in range(35)
+            for x in range(41)
+            if (q := site.site_quote(town, (x, y))) and not q["bought_buildings"]
+        ]
+        self.assertEqual(min(vacant), 20_000_000)
+        self.assertLessEqual(max(vacant), 30_000_000)
+        self.assertGreaterEqual(len(set(vacant)), 8)
+
+        store_site = (GAME_ROOT / "scripts" / "domain" / "store_site.gd").read_text(encoding="utf-8")
+        self.assertIn("# - REMAKE_BALANCED_DEFAULT: the price shape", store_site)
+        self.assertIn("return int(floor((price + step / 2.0) / step) * step)", store_site)
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn('"store_site_origin": [store_site_origin.x, store_site_origin.y],', simulation)
+        self.assertIn("rate (REMAKE_BALANCED_DEFAULT, remake_land_value.ANNUAL_INFLATION_RATE)", simulation)
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        self.assertIn("if simulation == null or paused or selecting_site:", main)
+        self.assertIn('title.text = tr("Choose where to build your store")', main)
+        po = (GAME_ROOT / "locale" / "ja.po").read_text(encoding="utf-8")
+        self.assertIn('msgstr "出店場所を選んで下さい"', po)
+        android = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("Time must not run before the store has a site", android)
 
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は

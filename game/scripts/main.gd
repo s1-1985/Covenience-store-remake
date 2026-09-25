@@ -5,6 +5,14 @@ const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
 
 var _android_panel: Control = null
+# Task #95: a new game starts on the town map with 「出店場所を選んで下さい」
+# (the original's order: site first, then the store, guide p.6-11 and the
+# PS review's opening flow); time stays stopped until a site is bought.
+var selecting_site := false
+var site_panel: PanelContainer = null
+var site_info_label: Label = null
+var site_buy_button: Button = null
+var _site_origin := Vector2i(-1, -1)
 
 # Test seam (task #89): see _load_config(). An Engine meta flag rather than a
 # static var because the --script smoke runner cannot preload this script
@@ -132,6 +140,8 @@ func _ready() -> void:
     store_view.bind(config, simulation)
     town_view.bind(simulation)
     _fit_store_view()
+    _build_site_panel()
+    town_view.site_tapped.connect(_on_site_tapped)
     _populate_sample_layout_option()
     _populate_fixture_catalog_option()
     _populate_permit_option()
@@ -174,11 +184,12 @@ func _ready() -> void:
     game_over_menu_button.pressed.connect(_on_quit_to_menu_pressed)
     store_view.fixture_selected.connect(_on_fixture_selected)
     store_view.fixture_relocation_requested.connect(_on_fixture_relocation_requested)
+    _sync_site_selection()
     _refresh_ui()
 
 
 func _process(delta: float) -> void:
-    if simulation == null or paused:
+    if simulation == null or paused or selecting_site:
         return
     accumulator += delta
     while accumulator >= tick_seconds:
@@ -194,6 +205,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_show_town_map_pressed() -> void:
+    if selecting_site:
+        return
     town_view.visible = not town_view.visible
     store_view.visible = not town_view.visible
     show_town_map_button.text = tr("Show store") if town_view.visible else tr("Show town map")
@@ -202,7 +215,7 @@ func _on_show_town_map_pressed() -> void:
 
 
 func _on_pause_pressed() -> void:
-    if simulation == null:
+    if simulation == null or selecting_site:
         return
     paused = not paused
     pause_button.text = tr("Resume") if paused else tr("Pause")
@@ -229,6 +242,7 @@ func _on_reset_pressed() -> void:
     layout_edit_label.text = tr("Layout reset to configured prototype")
     _refresh_procure_fixture_option()
     _refresh_hire_candidate_option()
+    _sync_site_selection()
     _refresh_ui()
 
 
@@ -728,6 +742,7 @@ func _on_load_pressed() -> void:
         layout_edit_label.text = tr("Game loaded")
         _refresh_procure_fixture_option()
         _refresh_hire_candidate_option()
+        _sync_site_selection()
     else:
         layout_edit_label.text = tr("No compatible save found")
     _refresh_ui()
@@ -874,9 +889,12 @@ func _load_config() -> Dictionary:
     # prototype store their scripted coordinates were written against.
     if not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META):
         loaded = GuideStartingStoreScript.apply(loaded)
-    # REMAKE_BALANCED_DEFAULT: preview setup uses the researched beginner
-    # cash anchor but grants a furnished shop; JSON records this deviation.
-    if _is_android_preview():
+    # The researched beginner cash anchor (¥200,000,000, also on the guide
+    # p.11 start screen the town map is read from). Task #95: every real new
+    # game now starts with it, since the land is bought out of it; the
+    # furnished store itself is still granted (REMAKE_BALANCED_DEFAULT, see
+    # android_preview.evidence_note).
+    if _is_android_preview() or not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META):
         loaded["economy"]["initial_cash_yen"] = int(loaded["android_preview"]["starting_cash_yen"])
     return loaded
 
@@ -961,6 +979,118 @@ func _fit_store_view() -> void:
     # Task #90: the town map uses the same area.
     town_view.position = store_view.position
     town_view.view_size = available
+
+
+# Task #95: the 「出店場所を選んで下さい」 bar along the bottom of the town
+# map: what the tapped site is and costs, and the button that buys it.
+# Platform presentation; the rules and prices come from StoreSite.
+func _build_site_panel() -> void:
+    site_panel = PanelContainer.new()
+    site_panel.name = "SitePanel"
+    site_panel.theme = ($UI/Panel as Control).theme
+    site_panel.visible = false
+    var box := VBoxContainer.new()
+    site_panel.add_child(box)
+    var title := Label.new()
+    title.text = tr("Choose where to build your store")
+    box.add_child(title)
+    var row := HBoxContainer.new()
+    box.add_child(row)
+    site_info_label = Label.new()
+    site_info_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    site_info_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    row.add_child(site_info_label)
+    site_buy_button = Button.new()
+    site_buy_button.name = "BuySiteButton"
+    site_buy_button.text = tr("Buy this land")
+    site_buy_button.custom_minimum_size = Vector2(200, 56)
+    site_buy_button.pressed.connect(_on_buy_site_pressed)
+    row.add_child(site_buy_button)
+    $UI.add_child(site_panel)
+    site_panel.position = Vector2(town_view.position.x, town_view.position.y + town_view.view_size.y - 130.0)
+    site_panel.size = Vector2(town_view.view_size.x, 120.0)
+
+
+func _needs_store_site() -> bool:
+    return (
+        simulation.store_site != null
+        and not simulation.has_store_site()
+        and not simulation.is_game_over
+        and not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META)
+    )
+
+
+# Enters or leaves site selection to match the simulation (new game, reset,
+# load).
+func _sync_site_selection() -> void:
+    var was_selecting := selecting_site
+    selecting_site = _needs_store_site()
+    site_panel.visible = selecting_site
+    town_view.selecting_site = selecting_site
+    town_view.show_site_cursor(Vector2i(-1, -1), false)
+    _site_origin = Vector2i(-1, -1)
+    if selecting_site:
+        _set_android_panel_open(false)
+        town_view.visible = true
+        store_view.visible = false
+        show_town_map_button.text = tr("Show store")
+        site_info_label.text = tr("Tap the map to pick a 2x2 site")
+        site_buy_button.disabled = true
+    elif was_selecting:
+        # The store now stands on the bought site: show it.
+        town_view.visible = false
+        store_view.visible = true
+        show_town_map_button.text = tr("Show town map")
+    town_view.center_on_store()
+
+
+func _on_site_tapped(origin: Vector2i) -> void:
+    if not selecting_site:
+        return
+    _site_origin = origin
+    var quote: Dictionary = simulation.store_site_quote(origin)
+    town_view.show_site_cursor(origin, bool(quote["buildable"]))
+    site_info_label.text = _site_quote_text(quote)
+    site_buy_button.disabled = (
+        not bool(quote["buildable"]) or simulation.economy.cash_yen < int(quote["total_yen"])
+    )
+
+
+# Like the original's land popup 「空地 ¥20,000,000 🚬○🍺○💊○」 (guide p.10),
+# with the permit icons written out as words.
+func _site_quote_text(quote: Dictionary) -> String:
+    if not bool(quote["buildable"]):
+        match str(quote["reason"]):
+            "too_close_to_store":
+                return tr("Too close to another store (no store within 5 squares)")
+            _:
+                return tr("Cannot build here (roads, railway and the map edge)")
+    var marks: Array[String] = []
+    for permit_id in ["tobacco", "alcohol", "medicine"]:
+        var available: bool = bool((quote["permits_available"] as Dictionary).get(permit_id, false))
+        marks.append("%s%s" % [tr("permit_short_" + permit_id), "○" if available else "×"])
+    var name := str(quote["label"]) if not str(quote["label"]).is_empty() else tr("Vacant lot")
+    var text := "%s ¥%s  %s" % [name, _format_integer(int(quote["total_yen"])), " ".join(marks)]
+    if int(quote["building_yen"]) > 0:
+        text += "\n" + tr("(land ¥%s + buying the building ¥%s)") % [
+            _format_integer(int(quote["land_yen"])),
+            _format_integer(int(quote["building_yen"])),
+        ]
+    return text
+
+
+func _on_buy_site_pressed() -> void:
+    if not selecting_site or _site_origin.x < 0:
+        return
+    if not simulation.try_buy_store_site(_site_origin):
+        site_info_label.text = tr("Cannot buy this land")
+        return
+    layout_edit_label.text = tr("Bought the land and opened the store")
+    _sync_site_selection()
+    paused = false
+    pause_button.text = tr("Pause")
+    accumulator = 0.0
+    _refresh_ui()
 
 
 # Task #92: player-facing names for internal ids, so no message shows a raw

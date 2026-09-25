@@ -20,6 +20,7 @@ const RestockTimingScript := preload("res://scripts/domain/restock_timing.gd")
 const StaffGrowthScript := preload("res://scripts/domain/staff_growth.gd")
 const CheckoutAngerScript := preload("res://scripts/domain/checkout_anger.gd")
 const TownSpatialScript := preload("res://scripts/domain/town_spatial.gd")
+const StoreSiteScript := preload("res://scripts/domain/store_site.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -153,6 +154,13 @@ var _town_spatial
 # has no real town/map spatial simulation (decision 0095/0127), so this is
 # just a fixed reference point, not a placed position on an actual map.
 var _player_store_position: Vector2i
+# Task #95: the 2x2 site the player bought on the guide town map
+# (NO_STORE_SITE until then), and the buildings bought and cleared with it.
+# store_site is null for configs without guide_town_map.
+const NO_STORE_SITE := Vector2i(-1, -1)
+var store_site
+var store_site_origin := NO_STORE_SITE
+var _bought_buildings: Array[int] = []
 # Task #59: REMAKE_BALANCED_DEFAULT rival-store roster -- position and
 # held permits for each configured rival, used only to enforce the
 # CONFIRMED_OFFICIAL permit-exclusion distance rule
@@ -217,6 +225,8 @@ func _init(source_config: Dictionary) -> void:
     _checkout_anger = CheckoutAngerScript.new()
     _town_spatial = TownSpatialScript.new()
     _player_store_position = _vec2i_from_array(config["town"]["player_store_position"])
+    if config.has("guide_town_map"):
+        store_site = StoreSiteScript.new(config["guide_town_map"])
     for rival_entry in config["town"].get("rival_stores", []):
         var rival_permits_held: Array[String] = []
         rival_permits_held.assign(rival_entry.get("permits_held", []))
@@ -259,6 +269,7 @@ func reset() -> void:
     staff.reset()
     event_log.reset()
     _checkout_queue.clear()
+    _clear_store_site()
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
     is_game_over = false
@@ -508,13 +519,17 @@ func try_purchase_permit(permit_id: String) -> bool:
 # acquirable) when `_rival_stores` is empty, which is the default scenario
 # config's own setting.
 func _can_acquire_permit(permit_id: String) -> bool:
+    return _can_acquire_permit_at(permit_id, _player_store_position)
+
+
+func _can_acquire_permit_at(permit_id: String, position: Vector2i) -> bool:
     var exclusion_distance_tiles: int = int(_permit_catalog[permit_id]["exclusion_distance_tiles"])
     var holder_positions: Array[Vector2i] = []
     for rival in _rival_stores:
         if (rival["permits_held"] as Array).has(permit_id):
             holder_positions.append(rival["position"])
     return _town_spatial.can_acquire_permit_at(
-        exclusion_distance_tiles, _player_store_position, holder_positions
+        exclusion_distance_tiles, position, holder_positions
     )
 
 
@@ -696,6 +711,99 @@ func _apply_hire(staff_id: String, candidate_id: String) -> bool:
             return false
     staff.members[staff_id].hire(_staff_candidate_catalog[candidate_id])
     return true
+
+
+func has_store_site() -> bool:
+    return store_site_origin != NO_STORE_SITE
+
+
+func _clear_store_site() -> void:
+    store_site_origin = NO_STORE_SITE
+    _bought_buildings.clear()
+    _player_store_position = _vec2i_from_array(config["town"]["player_store_position"])
+    demand.nearby_population = int(config["demand"]["nearby_population"])
+
+
+# Land price growth since the start of the game: LandValuePolicy's yearly
+# rate (REMAKE_BALANCED_DEFAULT, remake_land_value.ANNUAL_INFLATION_RATE).
+func land_price_growth_factor() -> float:
+    return _land_value_policy.time_inflation_factor(float(month_count) / MONTHS_PER_YEAR)
+
+
+# Task #95: what buying the 2x2 site at `origin` costs now, whether it may
+# be bought, and which tobacco/alcohol/medicine permits a store there could
+# still get (the ○/× of the original's land popup, guide p.10). Other
+# stores are the configured rivals, whose positions are map squares here.
+func store_site_quote(origin: Vector2i) -> Dictionary:
+    if store_site == null:
+        return {"buildable": false, "reason": "no_town_map"}
+    var others: Array = []
+    for rival in _rival_stores:
+        others.append(rival["position"])
+    var result: Dictionary = store_site.quote(origin, land_price_growth_factor(), others, _bought_buildings)
+    var permits := {}
+    for permit_id in _permit_catalog:
+        permits[permit_id] = _can_acquire_permit_at(str(permit_id), origin)
+    result["permits_available"] = permits
+    result["nearby_population"] = store_site.nearby_population(
+        origin, int(config["demand"]["nearby_population"]), _bought_buildings + result["bought_buildings"]
+    )
+    return result
+
+
+# Task #95: buy the site and put the store on it. Pays the land plus half
+# the value of any building on it (CONFIRMED_OFFICIAL formula, see
+# StoreSite), clears those buildings, and sets the store's nearby population
+# from the site. Only once per game (a new store elsewhere is a separate,
+# not yet built flow).
+func try_buy_store_site(origin: Vector2i) -> bool:
+    if is_game_over or store_site == null or has_store_site():
+        return false
+    var site_quote := store_site_quote(origin)
+    if not bool(site_quote["buildable"]) or economy.cash_yen < int(site_quote["total_yen"]):
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "store_site",
+        minute_of_day,
+        int(site_quote["total_yen"]),
+        {
+            "origin": [origin.x, origin.y],
+            "land_yen": int(site_quote["land_yen"]),
+            "building_yen": int(site_quote["building_yen"]),
+        }
+    )
+    _apply_store_site(origin, site_quote["bought_buildings"])
+    _record_event("store_site_bought", {
+        "origin": [origin.x, origin.y],
+        "cost_yen": int(site_quote["total_yen"]),
+        "expense_id": expense["expense_id"],
+    })
+    return true
+
+
+func _apply_store_site(origin: Vector2i, bought: Array) -> void:
+    store_site_origin = origin
+    _player_store_position = origin
+    for index in bought:
+        if not _bought_buildings.has(int(index)):
+            _bought_buildings.append(int(index))
+    demand.nearby_population = store_site.nearby_population(
+        origin, int(config["demand"]["nearby_population"]), _bought_buildings
+    )
+
+
+# The HUD's land value: the bought site's own land price today (task #95),
+# or the town-wide figure when no site has been bought.
+func _current_land_value_yen() -> int:
+    if has_store_site():
+        return int(round(float(store_site.start_land_price_yen(store_site_origin)) * land_price_growth_factor()))
+    return _land_value_policy.current_land_price_yen(
+        BASE_LAND_PRICE_YEN, town, float(month_count) / MONTHS_PER_YEAR
+    )
+
+
+func bought_buildings() -> Array[int]:
+    return _bought_buildings.duplicate()
 
 
 func chain_expansion_cost_yen() -> int:
@@ -1276,9 +1384,8 @@ func snapshot() -> Dictionary:
         "price_change_pct": price_change_pct,
         "town_population": town.population,
         "town_store_count_including_rivals": town.store_count_including_rivals,
-        "land_value_yen": _land_value_policy.current_land_price_yen(
-            BASE_LAND_PRICE_YEN, town, float(month_count) / MONTHS_PER_YEAR
-        ),
+        "land_value_yen": _current_land_value_yen(),
+        "store_site_origin": [store_site_origin.x, store_site_origin.y],
         "internal_rating_value": internal_rating_value,
         "star_rating": star_rating,
         "player_store_count": player_store_count,
@@ -1373,7 +1480,7 @@ func observation_snapshot() -> Dictionary:
     }
 
 
-const SAVE_SCHEMA_VERSION := 5
+const SAVE_SCHEMA_VERSION := 6
 
 # Deliberately not saved/restored: the active customer's mid-visit walk
 # state (position along a route, basket-so-far, checkout progress) and
@@ -1414,6 +1521,9 @@ func save_state() -> Dictionary:
         "internal_rating_value": internal_rating_value,
         "star_rating": star_rating,
         "player_store_count": player_store_count,
+        # Task #95 (schema 6): the bought site and the buildings cleared for it.
+        "store_site_origin": [store_site_origin.x, store_site_origin.y],
+        "bought_buildings": _bought_buildings.duplicate(),
         "weather_category_index": weather_category_index,
         "chain_visitor_milestone": {
             "last_observed_total": _chain_visitor_milestone.last_observed_total,
@@ -1505,6 +1615,10 @@ func load_state(data: Dictionary) -> bool:
     internal_rating_value = int(data["internal_rating_value"])
     star_rating = int(data["star_rating"])
     player_store_count = int(data["player_store_count"])
+    _clear_store_site()
+    var saved_site := _vec2i_from_array(data["store_site_origin"])
+    if saved_site != NO_STORE_SITE and store_site != null:
+        _apply_store_site(saved_site, data["bought_buildings"])
     _apply_weather(int(data["weather_category_index"]))
     var milestone_data: Dictionary = data["chain_visitor_milestone"]
     _chain_visitor_milestone = ChainVisitorMilestoneScript.new()
@@ -2147,6 +2261,8 @@ func _require_save_data(data: Dictionary) -> void:
         "internal_rating_value",
         "star_rating",
         "player_store_count",
+        "store_site_origin",
+        "bought_buildings",
         "weather_category_index",
         "chain_visitor_milestone",
         "permits_held",

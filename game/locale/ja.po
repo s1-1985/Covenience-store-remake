@@ -788,3 +788,42 @@ msgstr "%（定価比）"
 
 msgid "to_restock"
 msgstr "補充に向かっている"
+
+msgid "Choose where to build your store"
+msgstr "出店場所を選んで下さい"
+
+msgid "Buy this land"
+msgstr "この土地を買う"
+
+msgid "Tap the map to pick a 2x2 site"
+msgstr "地図をタップして2×2マスの土地を選んで下さい"
+
+msgid "Too close to another store (no store within 5 squares)"
+msgstr "他の店に近すぎます（5マス以内には建てられません）"
+
+msgid "Cannot build here (roads, railway and the map edge)"
+msgstr "ここには建てられません（道路・線路・地図の端）"
+
+msgid "permit_short_tobacco"
+msgstr "たばこ"
+
+msgid "permit_short_alcohol"
+msgstr "酒"
+
+msgid "permit_short_medicine"
+msgstr "薬"
+
+msgid "Vacant lot"
+msgstr "空地"
+
+msgid "(land ¥%s + buying the building ¥%s)"
+msgstr "（土地代 ¥%s ＋ 建物買収費 ¥%s）"
+
+msgid "Cannot buy this land"
+msgstr "この土地は買えません"
+
+msgid "Bought the land and opened the store"
+msgstr "土地を買って店を建てました"
+
+msgid "store site bought"
+msgstr "出店場所を決めた"

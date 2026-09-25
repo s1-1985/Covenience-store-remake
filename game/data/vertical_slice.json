@@ -1975,7 +1975,7 @@
   },
   "android_preview": {
     "starting_cash_yen": 200000000,
-    "evidence_note": "CONFIRMED_COMMUNITY anchor: beginner initial cash 200,000,000 yen (docs/research/ui-consistency-audit-2026-09-05.md). REMAKE_BALANCED_DEFAULT: preview grants a furnished shop (as of task #89 the guide p.48 store, guide_starting_store) without deducting land/setup costs; not the original complete beginner scenario."
+    "evidence_note": "CONFIRMED_COMMUNITY anchor: beginner initial cash 200,000,000 yen (docs/research/ui-consistency-audit-2026-09-05.md). REMAKE_BALANCED_DEFAULT: preview grants a furnished shop (as of task #89 the guide p.48 store, guide_starting_store) without deducting its construction or setup costs; not the original complete beginner scenario. Task #95: every real new game (not only the phone preview) starts with this cash and first buys the store's land on the town map (guide_town_map.store_site), which is paid out of it."
   },
   "guide_starting_store": {
     "scenario_id": "guide-p48-large-store-v1",
@@ -2684,7 +2684,7 @@
     "sample_layout_label": "Guide p.48 layout"
   },
   "guide_town_map": {
-    "evidence_note": "Task #90. The town around the player's first store: the visible part of the beginner map (初級マップ) at the start of a game, read tile by tile from the guide p.11 screenshot (assets/raw/conveni_guide_town_v1). Road/railway positions and the grid are CONFIRMED_VISUAL (straight lines measured on the image); each tile's grass/bare-ground/building class is PROVISIONAL (automatic colour classification of a halftone print, tools/build_guide_town_map.py). The orange 5x5 lot is drawn where the screenshot shows it; that it marks the player's store site is PROVISIONAL (the screen is taken before any store opens). Task #93: the town is drawn with the generated terrain tiles and building sprites of assets/raw/conveni_map_assets_v2 (new art, not original graphics). Grass tiles darker than the screenshot's lower quartile are drawn as trees (the original map is dotted with round trees, video_155s/189s). The player's store is drawn as the flat 本店 mark cut from the gameplay video (CONFIRMED_VISUAL, assets/raw/conveni_remaining_assets_v1 map_blue_hq) on a paved lot. REMAKE_BALANCED_DEFAULT: which building sprite stands on which building tile (roof colour -> house A/B/C per the sprite brief, white -> shops/offices, 2x2 blocks -> 2x2 sprites) and which terrain tile stands for each class are this project's own choices.",
+    "evidence_note": "Task #90. The town around the player's first store: the visible part of the beginner map (初級マップ) at the start of a game, read tile by tile from the guide p.11 screenshot (assets/raw/conveni_guide_town_v1). Road/railway positions and the grid are CONFIRMED_VISUAL (straight lines measured on the image); each tile's grass/bare-ground/building class is PROVISIONAL (automatic colour classification of a halftone print, tools/build_guide_town_map.py). The orange 5x5 lot is drawn where the screenshot shows it; that it marks the player's store site is PROVISIONAL (the screen is taken before any store opens). Task #93: the town is drawn with the generated terrain tiles and building sprites of assets/raw/conveni_map_assets_v2 (new art, not original graphics). Grass tiles darker than the screenshot's lower quartile are drawn as trees (the original map is dotted with round trees, video_155s/189s). The player's store is drawn as the flat 本店 mark cut from the gameplay video (CONFIRMED_VISUAL, assets/raw/conveni_remaining_assets_v1 map_blue_hq). Task #95: the orange 5x5 block is read as the start screen's land-selection cursor (inference: the screen is taken before any store exists); its tiles are grass (REMAKE_BALANCED_DEFAULT, what lies under it is not visible) and the player picks a 2x2 site anywhere (store_site). building_catalog: each building sprite's DATA4 name and printed price (CONFIRMED_OFFICIAL, guide p.92-95). REMAKE_BALANCED_DEFAULT: which building sprite stands on which building tile (roof colour -> house A/B/C per the sprite brief, white -> shops/offices, 2x2 blocks -> 2x2 sprites) and which terrain tile stands for each class are this project's own choices.",
     "source_image": "assets/raw/conveni_guide_town_v1/beginner_map_start.png",
     "legend": {
       "G": "grass",
@@ -2692,15 +2692,13 @@
       "D": "bare_ground",
       "R": "road",
       "T": "railway",
-      "B": "building",
-      "O": "store_lot"
+      "B": "building"
     },
     "terrain_tiles": {
       "G": "map_grass_plain",
       "g": "map_trees_sparse",
       "D": "map_dirt_sparse",
       "B": "map_grass_plain",
-      "O": "map_concrete",
       "T": "map_rail_ew",
       "R": "map_road_ew"
     },
@@ -3416,6 +3414,106 @@
         "sprite": "house_small_a"
       }
     ],
+    "building_catalog": {
+      "game_center": {
+        "name": "ゲームセンター",
+        "price": 2000
+      },
+      "house_medium_a": {
+        "name": "住宅(中A)",
+        "price": 700
+      },
+      "fast_food_a": {
+        "name": "ファーストフードA",
+        "price": 1000
+      },
+      "fast_food_b": {
+        "name": "ファーストフードB",
+        "price": 2000
+      },
+      "soba_shop": {
+        "name": "そば屋",
+        "price": 1000
+      },
+      "toy_store": {
+        "name": "おもちゃ屋",
+        "price": 1000
+      },
+      "clothing_store": {
+        "name": "洋品店",
+        "price": 1000
+      },
+      "electronics_store": {
+        "name": "電気屋",
+        "price": 1000
+      },
+      "company_small_a": {
+        "name": "会社(小A)",
+        "price": 800
+      },
+      "company_small_b": {
+        "name": "会社(小B)",
+        "price": 800
+      },
+      "company_small_c": {
+        "name": "会社(小C)",
+        "price": 1000
+      },
+      "house_small_a": {
+        "name": "住宅(小A)",
+        "price": 1000
+      },
+      "house_small_b": {
+        "name": "住宅(小B)",
+        "price": 1000
+      },
+      "house_small_c": {
+        "name": "住宅(小C)",
+        "price": 2000
+      },
+      "house_medium_b": {
+        "name": "住宅(中B)",
+        "price": 700
+      },
+      "ramen_shop": {
+        "name": "ラーメン屋",
+        "price": 2000
+      },
+      "izakaya_a": {
+        "name": "飲み屋A",
+        "price": 1000
+      },
+      "izakaya_b": {
+        "name": "飲み屋B",
+        "price": 1000
+      },
+      "izakaya_c": {
+        "name": "飲み屋C",
+        "price": 1000
+      },
+      "bookstore": {
+        "name": "本屋",
+        "price": 1000
+      }
+    },
+    "store_site": {
+      "evidence_note": "Task #95. CONFIRMED_OFFICIAL: a store takes 2x2 map squares (DATA4 コンビニ(自)); land cost = 地価(4エリア分) + 建物評価額÷2 (guide third book p.79, p.7); no store within 5 squares of another (guide p.7 ring diagram). CONFIRMED_OFFICIAL/CONFIRMED_COMMUNITY price anchors: start-of-game vacant lots 20,000,000 (rail side, map centre; the wiki minimum), 25,000,000 (near a school, facing a main road), 26,000,000 and 30,000,000 (guide p.6-8). REMAKE_BALANCED_DEFAULT: the price shape (floor 20,000,000, +5,000,000 when the site touches a road, up to +5,000,000 by the share of built-up squares in the surrounding 16x16 area relative to the busiest site, rounded to 1,000,000), the later growth by LandValuePolicy's yearly rate, and the customer catchment: the site's nearby population = demand.nearby_population x (building squares in that 16x16 area / the mean over every buildable site). The 16x16 area itself is the guide's zone around a store for security facilities (PDF3 p.10), used by analogy. PROVISIONAL: DATA4's bare building prices read as 万円 (building_price_unit_yen).",
+      "footprint_tiles": [2, 2],
+      "land_area_count": 4,
+      "min_store_distance_tiles": 5,
+      "unbuildable_tiles": [
+        "R",
+        "T"
+      ],
+      "floor_land_price_yen": 20000000,
+      "road_bonus_yen": 5000000,
+      "density_bonus_yen": 5000000,
+      "price_step_yen": 1000000,
+      "catchment_tiles": 7,
+      "max_catchment_building_tiles": 54,
+      "mean_catchment_building_tiles": 24.611,
+      "building_price_unit_yen": 10000
+    },
     "store_mark_sprite": "map_blue_hq",
     "width_tiles": 41,
     "height_tiles": 35,
@@ -3441,11 +3539,11 @@
       "GGDGgGgDgGGRBgBDGGGgGRGGGGgGBGGRBGGgGGGGg",
       "GGgggggGDGGRRRRRRRRRRRRRRRRRRRRRBgGGDGGGG",
       "GGgDggBDggGRGBGggBGGGRgGGGGGGDGRGgGGDGGGG",
-      "GDgGgGGGgDgROOOOOgGDGRGggBGGggBRGGGGGGGgG",
-      "GGgggGGDGgDROOOOOGGDgRggGDGGGGgRgGggGGgDG",
-      "GGgGGggDGGGROOOOOgggGRBGGDgggGBRDGGGDgggG",
-      "BDgGDDDgGGBROOOOOgGDgRGgGGggggBRGGGGGGGGG",
-      "GGgggGgDBBGROOOOOBgDGRDggGBggGgRGBBBGgDgG",
+      "GDgGgGGGgDgRGgGGggGDGRGggBGGggBRGGGGGGGgG",
+      "GGgggGGDGgDRggggGGGDgRggGDGGGGgRgGggGGgDG",
+      "GGgGGggDGGGRggggGgggGRBGGDgggGBRDGGGDgggG",
+      "BDgGDDDgGGBRggggGgGDgRGgGGggggBRGGGGGGGGG",
+      "GGgggGgDBBGRgggggBgDGRDggGBggGgRGBBBGgDgG",
       "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
       "DGGDDBGGgBBgGGDggGgGGggggGggGGGRBBBDGGGgG",
       "BBGBGGGGDGGgggGDgDGGGgGgGBggDgGRBBBGGGGGG",
@@ -3455,7 +3553,6 @@
       "GgGDGGggGGgGggGgGGgGGGGGGGGGGGBRGggGGGGGD",
       "BGgDGGGgGGgGGGDGgGgGgGGGGGGgGGGRBBGgDGGGg",
       "BGGgGBGGBGGGGGDDGGGgGGGGGGGGGGBRBGBgDGGGG"
-    ],
-    "store_lot_origin_tile": [12, 21]
+    ]
   }
 }
