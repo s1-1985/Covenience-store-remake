@@ -113,6 +113,8 @@ var _restock_task_enabled: bool
 # 0.0 / false keep the prototype scenarios' old behavior.
 var _restock_trigger_share_of_full := 0.0
 var _cleaning_task_enabled := false
+var _stamina_enabled := false
+var _stamina_rng := RandomNumberGenerator.new()
 # Where customers have walked and nobody has cleaned since (oldest first).
 var _dirty_cells: Array[Vector2i] = []
 const MAX_DIRTY_CELLS := 24
@@ -257,6 +259,7 @@ func _init(source_config: Dictionary) -> void:
     _restock_task_enabled = bool(simulation["restock_task_enabled"])
     _restock_trigger_share_of_full = float(simulation.get("restock_trigger_share_of_full", 0.0))
     _cleaning_task_enabled = bool(simulation.get("cleaning_task_enabled", false))
+    _stamina_enabled = bool(simulation.get("stamina_enabled", false))
     assert(_shopping_ticks > 0 and _checkout_ticks > 0 and _step_game_minutes > 0)
     assert(_restock_ticks > 0 and _restock_trigger_stock_units_at_or_below >= 0)
     assert(float(simulation["tick_seconds"]) > 0.0)
@@ -279,6 +282,7 @@ func reset() -> void:
     event_log.reset()
     _checkout_queue.clear()
     _dirty_cells.clear()
+    _reset_stamina()
     _clear_store_site()
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
@@ -724,6 +728,12 @@ func _apply_hire(staff_id: String, candidate_id: String) -> bool:
         if existing_staff_member.staff_id != staff_id and existing_staff_member.candidate_id == candidate_id:
             return false
     staff.members[staff_id].hire(_staff_candidate_catalog[candidate_id])
+    # A newly hired member arrives rested (first-title wiki: fire and
+    # re-hire gives a full 体力).
+    var hired = staff.members[staff_id]
+    hired.stamina_max = int(_staff_candidate_catalog[candidate_id].get("stamina", 0))
+    hired.stamina = hired.stamina_max
+    hired.exhausted = false
     return true
 
 
@@ -1303,6 +1313,7 @@ func _advance_customer(customer) -> void:
                     )
                     customer.mark_settled(record)
                 checkout_staff.state = "idle"
+                _spend_stamina(checkout_staff)
                 customer.phase = "leaving"
                 customer.route = layout.find_path(customer.position, layout.exit)
                 _record_event("checkout_completed", {
@@ -1630,6 +1641,7 @@ func load_state(data: Dictionary) -> bool:
         if staff.members.has(roster_staff_id) and _staff_candidate_catalog.has(roster_candidate_id):
             staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])
     event_log.reset()
+    _reset_stamina()
     minute_of_day = int(data["minute_of_day"])
     day_count = int(data["day_count"])
     month_count = int(data["month_count"])
@@ -2109,9 +2121,10 @@ func _step_staff_rest() -> void:
     for staff_member in staff.all_staff():
         if staff_member.state != "idle":
             continue
-        var wants_rest: bool = store_is_empty and door != NO_BREAK_ROOM_DOOR
+        var wants_rest: bool = (store_is_empty or staff_member.exhausted) and door != NO_BREAK_ROOM_DOOR
         if wants_rest:
             if staff_member.position == door:
+                _recover_stamina(staff_member)
                 if staff_member.rest_phase != "resting":
                     staff_member.rest_phase = "resting"
                     staff_member.route.clear()
@@ -2139,6 +2152,47 @@ func _step_staff_rest() -> void:
 
 
 const NO_BREAK_ROOM_DOOR := Vector2i(-1, -1)
+
+# Task #99: stamina. CONFIRMED_COMMUNITY (first-title staff wiki, docs/
+# research/behavior-rules-evidence-2026-09-05.md section 7): checkout,
+# restocking and cleaning use up 体力; at 0 the staff member goes back to
+# the break room and rests there until fully recovered; resting recovers 1
+# at a time, with a chance of 2 that rises with 敏捷性 (about 90% at 100,
+# an observed figure). Each member's maximum is their CONFIRMED_OFFICIAL
+# printed 体力 (staff_candidates). REMAKE_BALANCED_DEFAULT: each finished
+# task (one checkout, one shelf refilled, one spot cleaned) costs 1; resting
+# recovers once per game minute, +2 with chance 0.9 x 敏捷性 / 100 (a straight
+# line through the one observed point). Only in the real game
+# (guide_starting_store.staff_work.stamina_enabled). Not saved: after a load
+# everyone starts rested, like the other mid-task staff state.
+func _reset_stamina() -> void:
+    _stamina_rng.seed = int(config["demand"]["rng_seed"]) + 99
+    for staff_member in staff.all_staff():
+        var candidate: Dictionary = _staff_candidate_catalog.get(staff_member.candidate_id, {})
+        staff_member.stamina_max = int(candidate.get("stamina", 0))
+        staff_member.stamina = staff_member.stamina_max
+        staff_member.exhausted = false
+
+
+func _spend_stamina(staff_member) -> void:
+    if not _stamina_enabled or staff_member.stamina_max <= 0:
+        return
+    staff_member.stamina = maxi(0, staff_member.stamina - 1)
+    if staff_member.stamina == 0 and not staff_member.exhausted:
+        staff_member.exhausted = true
+        _record_event("staff_exhausted", {"staff_id": staff_member.staff_id})
+
+
+func _recover_stamina(staff_member) -> void:
+    if not _stamina_enabled or staff_member.stamina >= staff_member.stamina_max:
+        if staff_member.exhausted and staff_member.stamina >= staff_member.stamina_max:
+            staff_member.exhausted = false
+        return
+    var agility := int(_staff_candidate_catalog.get(staff_member.candidate_id, {}).get("agility", 0))
+    var gain := 2 if _stamina_rng.randf() < 0.9 * float(agility) / 100.0 else 1
+    staff_member.stamina = mini(staff_member.stamina_max, staff_member.stamina + gain)
+    if staff_member.stamina >= staff_member.stamina_max:
+        staff_member.exhausted = false
 
 
 func _break_room_door() -> Vector2i:
@@ -2225,6 +2279,7 @@ func _complete_restock(staff_member) -> void:
             "skills": restock_growth,
         })
     staff_member.finish_restock()
+    _spend_stamina(staff_member)
 
 
 func _assign_idle_restock_tasks() -> void:
@@ -2318,12 +2373,13 @@ func _step_cleaning_tasks() -> void:
                     staff_member.state = "idle"
                     # Walk back to the post afterwards (see _step_staff_rest).
                     staff_member.rest_phase = "stale"
+                    _spend_stamina(staff_member)
     # Refilling comes first: while a shelf is waiting for someone, a staff
     # member who just became free is left for _assign_idle_restock_tasks().
     if customers.all_settled() or _shelf_waiting_for_restock():
         return
     for staff_member in staff.all_staff():
-        if staff_member.staff_id == staff.checkout_staff_id or staff_member.state != "idle":
+        if staff_member.staff_id == staff.checkout_staff_id or staff_member.state != "idle" or staff_member.exhausted:
             continue
         var target := _next_dirty_cell_for(staff_member)
         if target == NO_BREAK_ROOM_DOOR:
@@ -2363,7 +2419,7 @@ func _next_dirty_cell_for(cleaner) -> Vector2i:
 
 func _find_idle_restock_staff():
     for staff_member in staff.all_staff():
-        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state == "idle":
+        if staff_member.staff_id != staff.checkout_staff_id and staff_member.state == "idle" and not staff_member.exhausted:
             return staff_member
     return null
 

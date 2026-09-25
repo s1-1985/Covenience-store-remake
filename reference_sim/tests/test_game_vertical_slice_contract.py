@@ -3189,6 +3189,20 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("a rival nearby must take part of a site's customers", smoke)
 
+    def test_staff_stamina_is_tagged_and_wired(self):
+        # Task #99: 体力 used up by work, rest until full.
+        work = self.config["guide_starting_store"]["staff_work"]
+        self.assertTrue(work["stamina_enabled"])
+        self.assertIn("Task #99, stamina: CONFIRMED_COMMUNITY", work["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT: 1 per finished", work["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("# printed 体力 (staff_candidates). REMAKE_BALANCED_DEFAULT: each finished", simulation)
+        self.assertIn("var wants_rest: bool = (store_is_empty or staff_member.exhausted)", simulation)
+        for candidate in self.config["staff_candidates"]:
+            self.assertGreater(candidate["stamina"], 0)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("an exhausted staff member rests in the break room, recovers and goes back to work", smoke)
+
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は
         # 2人まで雇用できる」 -> manager + 2 staff = 3 per store.

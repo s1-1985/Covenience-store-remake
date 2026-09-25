@@ -22,6 +22,11 @@ var restock_ticks_remaining := 0
 # member still counts as idle for restock assignment and for the
 # "no work in progress" checks that gate player edits.
 var rest_phase := ""
+# Task #99: stamina (体力). stamina_max is the candidate's printed 体力;
+# `exhausted` is set when stamina runs out and cleared once it is full again.
+var stamina := 0
+var stamina_max := 0
+var exhausted := false
 var service_skill: int
 var security_skill: int
 var cleaning_skill: int

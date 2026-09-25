@@ -2038,6 +2038,15 @@ most customers left to it, 5+ squares apart (REMAKE): (8,10) and (27,9). A build
 16x16 catchments is shared equally between them; this sets the player's nearby population, and the flat per-rival
 dilution is not applied on top. Not done: rival management AI, buyouts, rival permits.
 
+**Task #99 (2026-09-25, decision 0170)**: staff stamina (体力).
+- CONFIRMED_COMMUNITY (staff wiki): work uses it up; at 0 the staff member rests in the break room until full;
+  agility raises the chance of +2 instead of +1 recovery (about 90% at 100).
+- The maximum is each candidate's CONFIRMED_OFFICIAL 体力.
+- REMAKE: 1 per finished checkout / refill / cleaned spot; one recovery roll per game minute, +2 with chance
+  0.9 x agility / 100.
+- An exhausted cashier leaves the register unmanned while resting.
+- A small gauge is drawn under each staff member. Real game only (staff_work.stamina_enabled); not saved.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

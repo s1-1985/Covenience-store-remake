@@ -3102,6 +3102,8 @@ func _initialize() -> void:
         return
     if not _check_rivals():
         return
+    if not _check_stamina():
+        return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
@@ -3389,5 +3391,53 @@ func _check_rivals() -> bool:
         return false
     if simulation.demand.rival_store_count != 0:
         _fail("with rivals on the map, competition is the shared catchment, not the flat dilution too")
+        return false
+    return true
+
+# Task #99: stamina -- work uses it up, at 0 the staff member rests in the
+# break room until full, then goes back to work.
+func _check_stamina() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    if not bool(fresh["guide_starting_store"]["staff_work"]["stamina_enabled"]):
+        _fail("the real game must use stamina")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    var cleaner = simulation.staff.members["staff-3"]
+    var expected_max: int = int(simulation._staff_candidate_catalog[cleaner.candidate_id]["stamina"])
+    if cleaner.stamina_max != expected_max or cleaner.stamina != expected_max:
+        _fail("a staff member starts with their printed 体力")
+        return false
+    cleaner.stamina = 1
+    var exhausted_at := -1
+    var rested_at := -1
+    var back_to_work := false
+    for tick in 3000:
+        simulation.tick()
+        if exhausted_at < 0 and cleaner.exhausted:
+            exhausted_at = tick
+        if exhausted_at >= 0 and rested_at < 0:
+            if cleaner.state != "idle":
+                _fail("an exhausted staff member takes no new task")
+                return false
+            if not cleaner.exhausted:
+                rested_at = tick
+                if cleaner.stamina != cleaner.stamina_max:
+                    _fail("rest lasts until 体力 is full")
+                    return false
+        if rested_at >= 0 and cleaner.state in ["to_clean", "cleaning", "to_restock", "restocking"]:
+            back_to_work = true
+            break
+    if exhausted_at < 0 or simulation.event_log.count_type("staff_exhausted") < 1:
+        _fail("a finished task at 1 体力 must exhaust the staff member")
+        return false
+    if rested_at < 0 or not back_to_work:
+        _fail("an exhausted staff member rests in the break room, recovers and goes back to work")
+        return false
+    # The prototype scenarios never tire.
+    var prototype = VerticalSliceSimulationScript.new(fresh)
+    prototype.staff.members["staff-2"].stamina = 1
+    prototype._spend_stamina(prototype.staff.members["staff-2"])
+    if prototype.staff.members["staff-2"].exhausted:
+        _fail("stamina is off in the prototype scenarios")
         return false
     return true

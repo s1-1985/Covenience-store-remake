@@ -857,3 +857,6 @@ msgstr "店員が掃除した"
 
 msgid "to_clean"
 msgstr "掃除に向かっている"
+
+msgid "staff exhausted"
+msgstr "店員が疲れて休憩に入った"

@@ -630,6 +630,14 @@ func _draw_staff() -> void:
             var rect := Rect2(center - Vector2(12, 12), Vector2(24, 24))
             draw_rect(rect, Color("118ab2"), true)
             draw_rect(rect, Color("17324d"), false, 2.0)
+        # Task #99: a small 体力 gauge under each staff member (presentation
+        # only; the original shows 体力 on its staff screen, not here).
+        if simulation._stamina_enabled and staff_member.stamina_max > 0:
+            var share := float(staff_member.stamina) / float(staff_member.stamina_max)
+            var bar := Rect2(center + Vector2(-16, 6), Vector2(32, 5))
+            draw_rect(bar, Color("202020"), true)
+            var fill := Color("4caf50") if share > 0.5 else (Color("f4d35e") if share > 0.2 else Color("ef476f"))
+            draw_rect(Rect2(bar.position, Vector2(bar.size.x * share, bar.size.y)), fill, true)
 
 
 func _break_room_rest_spot(index: int):
