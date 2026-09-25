@@ -15,7 +15,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
     def test_prototype_values_are_explicitly_marked_provisional(self):
-        self.assertEqual(self.config["schema_version"], 14)
+        self.assertEqual(self.config["schema_version"], 15)
         self.assertIs(self.config["provisional"], True)
         self.assertTrue(self.config["evidence_note"].strip())
         self.assertIn("not claims", self.config["evidence_note"])
@@ -2098,7 +2098,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # would otherwise silently revert a hire on load.
         self.assertIn("func _staff_roster_snapshot() -> Array[Dictionary]:", simulation)
         self.assertIn('"staff_roster": _staff_roster_snapshot(),', simulation)
-        self.assertIn("const SAVE_SCHEMA_VERSION := 4", simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 5", simulation)
         self.assertIn(
             'staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])',
             simulation,
@@ -2778,6 +2778,57 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             smoke,
         )
         self.assertIn("economy_ui_scene._on_reset_pressed()", smoke)
+
+    def test_weather_rolls_from_confirmed_monthly_table_and_shows_in_hud(self):
+        # Task #85: the original HUD shows the current weather
+        # ("01年目07月04日［雨 ］"), and weather changes customer share.
+        # The per-month category weights are CONFIRMED_OFFICIAL; rolling
+        # once per day and the 雨・雪/荒天 display strings are this
+        # project's own REMAKE_BALANCED_DEFAULT choices.
+        from conveni_sim.baseline_data import MONTHLY_WEATHER_PERCENTAGES
+        from conveni_sim.remake_customer_share import BAD_WEATHER_VALUES
+
+        weather = self.config["weather"]
+        self.assertEqual(weather["categories"], ["快晴", "晴れ", "曇り", "雨・雪", "荒天"])
+        expected_rows = [
+            [
+                entry.clear_percent.value,
+                entry.fine_percent.value,
+                entry.cloudy_percent.value,
+                entry.rain_or_snow_percent.value,
+                entry.storm_percent.value,
+            ]
+            for entry in sorted(MONTHLY_WEATHER_PERCENTAGES, key=lambda entry: entry.month)
+        ]
+        self.assertEqual(weather["monthly_percentages"], expected_rows)
+        for category in weather["bad_weather_categories"]:
+            self.assertIn(category, BAD_WEATHER_VALUES)
+        self.assertIn("CONFIRMED_OFFICIAL", weather["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", weather["roll_timing_evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", weather["display_labels_evidence_note"])
+
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        scene = (GAME_ROOT / "scenes" / "main.tscn").read_text(encoding="utf-8")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+
+        self.assertIn("func _roll_weather() -> void:", simulation)
+        self.assertIn("REMAKE_BALANCED_DEFAULT: rolling\n# exactly once per day", simulation)
+        self.assertIn('"weather_category_index": weather_category_index,', simulation)
+        self.assertIn('_apply_weather(int(data["weather_category_index"]))', simulation)
+        self.assertIn('name="WeatherValue"', scene)
+        self.assertIn('weather_label.text = "［%s］" % str(snapshot["weather_display_label"]).rpad(2)', main)
+        self.assertIn(
+            "the first day after a month rollover must roll from the new month's row", smoke
+        )
+        self.assertIn(
+            "a loaded simulation must restore the saved weather and its bad-weather demand flag", smoke
+        )
+        # Bundled font glyph coverage is checked in Godot itself
+        # (Font.has_char), since this CI job has no font library.
+        self.assertIn("the bundled ConveniJP.ttf subset must contain every weather HUD glyph", smoke)
 
     def test_calendar_label_matches_confirmed_official_year_month_day_format(self):
         # Task #77: the user directly asked whether recent UI work was

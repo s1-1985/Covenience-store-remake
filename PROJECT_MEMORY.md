@@ -1849,6 +1849,25 @@ values, not evidence-tier strings). Explicitly out of scope: implementing the ad
 document's own note flags its digit-alignment as needing a higher-resolution re-crop before trusting it),
 and the fixture-sprite real-extraction task deferred from #83.
 
+**Task #85 (2026-09-25, decision 0156)**: weather. The original HUD always shows the current weather
+(`［雨 ］` etc.) and weather affects customer share, but `game/` had no weather state at all
+(`demand.is_bad_weather` fixed false). Ported `reference_sim`'s CONFIRMED_OFFICIAL 12x5
+`MONTHLY_WEATHER_PERCENTAGES` into a new `weather` config section (contract test asserts an exact match),
+rolled with its own `_weather_rng` (so the existing seeded demand sequence is unchanged) once at start and
+at every day boundary after month-end settlement, and drove `demand.is_bad_weather` from it (雨・雪/荒天,
+same set as `BAD_WEATHER_VALUES`; the 0.6 multiplier is unchanged). Top bar now shows `01年目01月01日
+［快晴］ 09:00`. REMAKE_BALANCED_DEFAULT, tagged in code/JSON/tests: the once-per-day roll timing (the
+original can change weather mid-day; frequency unknown) and displaying 雨・雪 as 雨 / 荒天 as 荒天 (no
+source says when 雪 or which storm type shows). `weather_category_index` is saved (SAVE_SCHEMA_VERSION
+4->5; config schema_version 14->15). Also found PR #261's bundled `game/fonts/ConveniJP.ttf` subset lacked
+快/晴/曇/荒/天 and had no build script; added `tools/build_conveni_font.py` (same Noto Sans JP 2.004
+source at wght 400, keeps every previously shipped glyph plus all characters in ja.po/vertical_slice.json/
+game scripts+scenes; same layout features; 250KB->258KB) and a Godot `Font.has_char` smoke check. Note
+for future sessions: another workflow (PR #261) now also pushes to main -- always fetch/merge main before
+starting a task. Out of scope: mid-day weather changes, per-weather/per-season multipliers (sources are
+qualitative only), weather visuals, and feeding weather into `customer_share.gd` (demand already applies
+it; avoided double-counting).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

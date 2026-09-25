@@ -1,5 +1,5 @@
 {
-  "schema_version": 14,
+  "schema_version": 15,
   "scenario_id": "prototype-small-store-v1",
   "provisional": true,
   "evidence_note": "This file exists only to make the first production-client vertical slice playable. Values here are not claims about unrecovered original formulas or exact first-title layout data.",
@@ -1856,7 +1856,32 @@
     "opening_minutes_per_day": 960,
     "bad_weather_visit_multiplier": 0.6,
     "is_bad_weather": false,
+    "is_bad_weather_evidence_note": "Task #85: only this scenario's pre-roll default. VerticalSliceSimulation overwrites demand.is_bad_weather from the rolled weather (see the weather section) at start and at every day boundary.",
     "rng_seed": 1
+  },
+  "weather": {
+    "evidence_note": "monthly_percentages is CONFIRMED_OFFICIAL, ported unchanged from reference_sim/conveni_sim/baseline_data.py MONTHLY_WEATHER_PERCENTAGES (quick-reference guide 天候のパーセンテージ設定 table, book page 3, re-verified at 400dpi in task #63 / decision 0132; all 12 rows sum to 100). Rows are calendar months 1-12, columns follow categories below. The original also re-evaluates customer share when weather changes mid-day (docs/research/behavior-rules-evidence-2026-09-05.md), so weather can change within a day, but no source states how often or when.",
+    "categories": ["快晴", "晴れ", "曇り", "雨・雪", "荒天"],
+    "monthly_percentages": [
+      [30, 30, 20, 15, 5],
+      [30, 30, 10, 20, 10],
+      [30, 30, 20, 15, 5],
+      [30, 30, 20, 15, 5],
+      [40, 30, 10, 15, 5],
+      [1, 9, 30, 50, 10],
+      [20, 20, 30, 20, 10],
+      [30, 30, 20, 10, 10],
+      [20, 30, 20, 10, 20],
+      [40, 30, 10, 10, 10],
+      [40, 30, 10, 15, 5],
+      [30, 30, 20, 15, 5]
+    ],
+    "roll_timing_evidence_note": "REMAKE_BALANCED_DEFAULT: weather is rolled once at game start and once at each day boundary. The original can change weather mid-day, but its frequency/timing is not stated by any source, so a once-per-day roll is this project's own placeholder.",
+    "display_labels": ["快晴", "晴れ", "曇り", "雨", "荒天"],
+    "display_labels_evidence_note": "快晴/晴れ/雨 are strings actually observed in the original HUD ([快晴] official PS screenshot ss01 / V001, [晴れ] V005, [雨 ] gameplay video frame video_900s.png). 曇り is the table's own category name. REMAKE_BALANCED_DEFAULT: the 雨・雪 category always displays 雨 and the 荒天 category displays the table's umbrella term 荒天, since no source states when the original shows 雪 or which of 大雨/雷雨/台風/大雪 it shows for 荒天 (decision 0132 already noted that choice needs this tag).",
+    "bad_weather_categories": ["雨・雪", "荒天"],
+    "bad_weather_categories_evidence_note": "Matches reference_sim/conveni_sim/remake_customer_share.py BAD_WEATHER_VALUES (which contains both 雨・雪 and 荒天). Snow cutting customer share to under half is CONFIRMED_COMMUNITY (docs/research/customer-share-weather-hours-and-head-store-bias-2026-09-06.md section 4); the 0.6 multiplier itself stays the existing REMAKE_BALANCED_DEFAULT demand.bad_weather_visit_multiplier.",
+    "rng_seed": 7
   },
   "town": {
     "evidence_note": "Non-spatial TownState (game/scripts/domain/town_state.gd), ported from reference_sim/conveni_sim/town.py. No town/map spatial simulation exists to generate these numbers, so they are set to a fixed default: population matches demand.nearby_population above, and store_count_including_rivals of 1 (the player's own store only) means zero rival stores and therefore no rival-dilution effect on arrivals by default.",

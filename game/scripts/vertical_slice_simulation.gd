@@ -91,6 +91,11 @@ var staff
 var event_log
 var demand
 var _demand_rng: RandomNumberGenerator
+# Task #85: separate from _demand_rng so adding weather rolls does not shift
+# the existing seeded arrival/product-choice sequence.
+var _weather_rng: RandomNumberGenerator
+# Index into config["weather"]["categories"] (快晴/晴れ/曇り/雨・雪/荒天).
+var weather_category_index := 0
 
 var minute_of_day: int
 var day_count: int
@@ -192,6 +197,7 @@ func _init(source_config: Dictionary) -> void:
     staff = StaffRosterScript.new(config["staff"])
     event_log = RuntimeEventLogScript.new()
     _demand_rng = RandomNumberGenerator.new()
+    _weather_rng = RandomNumberGenerator.new()
     demand = DemandPolicyScript.new(config["demand"], _demand_rng)
     town = TownStateScript.new(config["town"])
     _land_value_policy = LandValuePolicyScript.new()
@@ -276,6 +282,8 @@ func reset() -> void:
     player_store_count = 1
     _chain_visitor_milestone = ChainVisitorMilestoneScript.new()
     _demand_rng.seed = int(config["demand"]["rng_seed"])
+    _weather_rng.seed = int(config["weather"]["rng_seed"])
+    _roll_weather()
     _refresh_interactions()
     _start_default_customer()
 
@@ -1179,6 +1187,7 @@ func snapshot() -> Dictionary:
     return {
         "minute_of_day": minute_of_day,
         "clock_text": clock_text(),
+        "weather_display_label": weather_display_label(),
         "cash_yen": economy.cash_yen,
         "stock_units": inventory.total_stock_units(),
         "inventory": _inventory_snapshot(),
@@ -1315,7 +1324,7 @@ func observation_snapshot() -> Dictionary:
     }
 
 
-const SAVE_SCHEMA_VERSION := 4
+const SAVE_SCHEMA_VERSION := 5
 
 # Deliberately not saved/restored: the active customer's mid-visit walk
 # state (position along a route, basket-so-far, checkout progress) and
@@ -1356,6 +1365,7 @@ func save_state() -> Dictionary:
         "internal_rating_value": internal_rating_value,
         "star_rating": star_rating,
         "player_store_count": player_store_count,
+        "weather_category_index": weather_category_index,
         "chain_visitor_milestone": {
             "last_observed_total": _chain_visitor_milestone.last_observed_total,
             "next_threshold": _chain_visitor_milestone.next_threshold,
@@ -1446,6 +1456,7 @@ func load_state(data: Dictionary) -> bool:
     internal_rating_value = int(data["internal_rating_value"])
     star_rating = int(data["star_rating"])
     player_store_count = int(data["player_store_count"])
+    _apply_weather(int(data["weather_category_index"]))
     var milestone_data: Dictionary = data["chain_visitor_milestone"]
     _chain_visitor_milestone = ChainVisitorMilestoneScript.new()
     _chain_visitor_milestone.last_observed_total = int(milestone_data["last_observed_total"])
@@ -1579,6 +1590,39 @@ func _handle_day_boundary() -> void:
     _apply_daily_staff_wages()
     if _days_completed_this_month >= REPRESENTATIVE_DAYS_PER_MONTH:
         _settle_month_end()
+    # After _settle_month_end() so a month rollover rolls from the new
+    # month's row.
+    _roll_weather()
+
+
+# Task #85: the per-month category weights are CONFIRMED_OFFICIAL (see
+# config["weather"]["evidence_note"]). REMAKE_BALANCED_DEFAULT: rolling
+# exactly once per day (at start and at each day boundary) is this
+# project's own placeholder -- the original can change weather mid-day
+# but no source states how often.
+func _roll_weather() -> void:
+    var weights: Array = config["weather"]["monthly_percentages"][month_count % MONTHS_PER_YEAR]
+    var roll := _weather_rng.randi_range(1, 100)
+    var cumulative := 0
+    for index in range(weights.size()):
+        cumulative += int(weights[index])
+        if roll <= cumulative:
+            _apply_weather(index)
+            return
+    _apply_weather(weights.size() - 1)
+
+
+func _apply_weather(category_index: int) -> void:
+    weather_category_index = category_index
+    demand.is_bad_weather = config["weather"]["bad_weather_categories"].has(weather_category())
+
+
+func weather_category() -> String:
+    return str(config["weather"]["categories"][weather_category_index])
+
+
+func weather_display_label() -> String:
+    return str(config["weather"]["display_labels"][weather_category_index])
 
 
 # Task #50: both maintenance_yen_per_day and salary_yen_per_day_24h are
@@ -1966,6 +2010,7 @@ func _require_save_data(data: Dictionary) -> void:
         "internal_rating_value",
         "star_rating",
         "player_store_count",
+        "weather_category_index",
         "chain_visitor_milestone",
         "permits_held",
         "promotions_used_this_month",
@@ -1992,8 +2037,8 @@ func _require_save_data(data: Dictionary) -> void:
 
 
 func _require_config() -> void:
-    assert(int(config.get("schema_version", -1)) == 14)
-    for key in ["store", "fixtures", "sample_layouts", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "staff_candidates", "customer", "simulation", "demand", "town"]:
+    assert(int(config.get("schema_version", -1)) == 15)
+    for key in ["store", "fixtures", "sample_layouts", "fixture_catalog", "permits", "product_catalog", "promotions", "products", "economy", "provisional_restock", "staff", "staff_candidates", "customer", "simulation", "demand", "weather", "town"]:
         if not config.has(key):
             push_error("vertical slice config missing required key: %s" % key)
             assert(false)
@@ -2025,6 +2070,19 @@ func _require_config() -> void:
         if not demand_config.has(key):
             push_error("vertical slice demand config missing required key: %s" % key)
             assert(false)
+    var weather_config: Dictionary = config["weather"]
+    for key in ["categories", "monthly_percentages", "display_labels", "bad_weather_categories", "rng_seed"]:
+        if not weather_config.has(key):
+            push_error("vertical slice weather config missing required key: %s" % key)
+            assert(false)
+    assert(weather_config["monthly_percentages"].size() == MONTHS_PER_YEAR)
+    for month_row in weather_config["monthly_percentages"]:
+        assert(month_row.size() == weather_config["categories"].size())
+        var month_total := 0
+        for percent in month_row:
+            month_total += int(percent)
+        assert(month_total == 100)
+    assert(weather_config["display_labels"].size() == weather_config["categories"].size())
     for catalog_entry in config["fixture_catalog"]:
         for key in ["catalog_id", "kind", "footprint_tiles", "purchase_price_yen"]:
             if not catalog_entry.has(key):
