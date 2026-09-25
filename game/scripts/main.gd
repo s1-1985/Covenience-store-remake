@@ -864,6 +864,7 @@ func _refresh_ui() -> void:
         "" if TranslationServer.get_locale().begins_with("ja") or rival_store_count == 1 else "s",
         _format_integer(int(snapshot["land_value_yen"])),
     ]
+    _refresh_survey_label()
     event_label.text = tr(str(snapshot["last_event"]))
     if paused:
         event_label.text += tr("  [PAUSED]")
@@ -1162,6 +1163,40 @@ func _play_event_sounds() -> void:
     if simulation.clear_condition_met and not _heard_clear:
         SoundManager.play_sfx(str(config["sound"]["clear_sfx"]))
     _heard_clear = simulation.clear_condition_met
+
+
+# Task #102: the monthly customer survey (アンケート: 買った商品 /
+# 欲しかった商品, guide p.70 screenshot), under the store information.
+var survey_label: Label = null
+
+
+func _refresh_survey_label() -> void:
+    if survey_label == null:
+        survey_label = Label.new()
+        survey_label.name = "SurveyValue"
+        survey_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+        var vbox := $UI/Panel/Margin/Scroll/VBox
+        vbox.add_child(survey_label)
+        vbox.move_child(survey_label, town_label.get_index() + 1)
+    var survey: Dictionary = simulation.last_survey
+    var title := tr("Survey (last month)")
+    if survey.is_empty():
+        survey = {"bought": simulation.survey_bought, "missing": simulation.survey_missing}
+        title = tr("Survey (this month so far)")
+    survey_label.text = "%s\n%s %s\n%s %s" % [
+        title,
+        tr("Bought:"), _survey_top(survey["bought"]),
+        tr("Wanted but not in the store:"), _survey_top(survey["missing"]),
+    ]
+
+
+func _survey_top(counts: Dictionary) -> String:
+    var keys: Array = counts.keys()
+    keys.sort_custom(func(a, b): return int(counts[a]) > int(counts[b]))
+    var parts: Array[String] = []
+    for key in keys.slice(0, 5):
+        parts.append("%s%d" % [tr(str(key)), int(counts[key])])
+    return "、".join(parts) if not parts.is_empty() else tr("none")
 
 
 func _build_sound_toggle() -> void:

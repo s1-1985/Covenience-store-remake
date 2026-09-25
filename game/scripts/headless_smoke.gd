@@ -3106,6 +3106,8 @@ func _initialize() -> void:
         return
     if not _check_rival_buyout():
         return
+    if not _check_building_demand():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -3515,5 +3517,63 @@ func _check_rival_buyout() -> bool:
     reloaded.reset()
     if reloaded._rival_stores.size() != 2 or not reloaded.owned_branches.is_empty():
         _fail("a new game starts with both rivals again")
+        return false
+    return true
+
+# Task #102: customers come from the buildings around the store and want
+# what those buildings want (DATA4); what the store lacks goes to the survey.
+func _check_building_demand() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.economy.cash_yen = 200_000_000
+    simulation.try_buy_store_site(Vector2i(13, 21))
+    if simulation._catchment_weights.is_empty():
+        _fail("a store site must have buildings in its catchment")
+        return false
+    var day_building := -1
+    var night_building := -1
+    for index in simulation._catchment_weights:
+        if bool(simulation.store_site.building_profile(int(index))["overnight"]):
+            night_building = int(index)
+        else:
+            day_building = int(index)
+    if day_building < 0 or night_building < 0:
+        _fail("the test site needs both kinds of buildings nearby")
+        return false
+    # Late at night a daytime-only building sends nobody.
+    simulation._catchment_weights = {day_building: 1.0}
+    simulation.minute_of_day = 2 * 60
+    if not simulation._building_customer_plan().is_empty():
+        _fail("a 朝から夜だけ building sends no customer at 2:00")
+        return false
+    # A night building's customer wants only its DATA4 categories; a
+    # category the store lacks goes to the survey.
+    simulation._catchment_weights = {night_building: 1.0}
+    var wanted: Array = simulation.store_site.building_profile(night_building)["wanted"]
+    for attempt in 20:
+        for product_id in simulation._building_customer_plan():
+            if not wanted.has(simulation.inventory.get_product(product_id).catalog_id):
+                _fail("a customer only wants what their building wants")
+                return false
+    var missing_total := 0
+    for category in simulation.survey_missing:
+        if not wanted.has(category):
+            _fail("the survey only lists categories the customers wanted")
+            return false
+        missing_total += int(simulation.survey_missing[category])
+    var carried := {}
+    for product_id in simulation.inventory.product_order:
+        carried[simulation.inventory.get_product(product_id).catalog_id] = true
+    var lacks_something := false
+    for category in wanted:
+        if not carried.has(category):
+            lacks_something = true
+    if lacks_something and missing_total == 0:
+        _fail("categories the store does not carry must show up in the survey")
+        return false
+    # The prototype scenarios keep their old random wants.
+    var prototype = VerticalSliceSimulationScript.new(fresh)
+    if prototype._building_demand_enabled:
+        _fail("building demand is off in the prototype scenarios")
         return false
     return true

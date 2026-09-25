@@ -2060,6 +2060,14 @@ edits, procurement and hiring still wait.
   sales are not simulated.
 Save schema 7.
 
+**Task #102 (2026-09-25, decision 0173)**: customers come from the buildings around the store (weight = the building's
+squares in the catchment, shared with rivals) and want up to 3 of that building's DATA4 主なほしい品物.
+- Daytime-only buildings send nobody 0:00-6:59.
+- A wanted category the store does not have in stock goes into the monthly survey (アンケート 買った商品/欲しかった商品,
+  guide p.70), which is shown under the town information.
+- One simulated day at (13,21): tobacco 15, alcohol 9 wanted but missing.
+- Real game only; survey not saved.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

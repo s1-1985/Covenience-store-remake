@@ -114,6 +114,9 @@ func _run() -> void:
         return
     if not _require(game.get_node("/root/SoundManager").current_theme == "store", "The shop tune plays once the store is open"):
         return
+    # Task #102: the survey is shown with the store information.
+    if not _require(game.survey_label != null and "アンケート" in game.survey_label.text and "欲しかった商品：" in game.survey_label.text, "The customer survey must be shown"):
+        return
     # Task #97: tapping a shelf shows what it holds, and it can be
     # refilled right there while customers are in the store.
     var shelf = game.simulation.inventory.get_product("product-bread-1")

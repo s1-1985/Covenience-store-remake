@@ -199,6 +199,10 @@ def build():
             catalog[profile.id] = {
                 "name": profile.display_name_ja,
                 "price": profile.building_price_yen.value,
+                # Task #102: DATA4's 主なほしい品物 and whether the building
+                # has customers late at night too (CONFIRMED_OFFICIAL).
+                "wanted": list(profile.wanted_products.value),
+                "overnight": profile.active_overnight.value,
             }
     site = store_site_rules(rows, buildings)
     return {
@@ -221,7 +225,8 @@ def build():
             "(inference: the screen is taken before any store exists); its tiles are grass "
             "(REMAKE_BALANCED_DEFAULT, what lies under it is not visible) and the player picks "
             "a 2x2 site anywhere (store_site). building_catalog: each building sprite's DATA4 "
-            "name and printed price (CONFIRMED_OFFICIAL, guide p.92-95). "
+            "name, printed price, 主なほしい品物 (wanted) and whether it has customers late at night "
+            "(overnight) (CONFIRMED_OFFICIAL, guide p.92-95). "
             "Task #98: rival_stores -- the beginner map starts with the rival's 本店 and 2号店 "
             "(CONFIRMED_OFFICIAL, the beginner map's DATA block, quick reference guide book pages 66-83; guide_data "
             "copies its figures), drawn as the red 本/02 marks (CONFIRMED_VISUAL, gameplay video). "

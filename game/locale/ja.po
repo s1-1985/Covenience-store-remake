@@ -887,3 +887,18 @@ msgstr "ライバル店を調査した"
 
 msgid "rival bought out"
 msgstr "ライバル店を買収した"
+
+msgid "Survey (last month)"
+msgstr "アンケート（先月）"
+
+msgid "Survey (this month so far)"
+msgstr "アンケート（今月）"
+
+msgid "Bought:"
+msgstr "買った商品："
+
+msgid "Wanted but not in the store:"
+msgstr "欲しかった商品："
+
+msgid "none"
+msgstr "なし"

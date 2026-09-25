@@ -114,6 +114,13 @@ var _restock_task_enabled: bool
 var _restock_trigger_share_of_full := 0.0
 var _cleaning_task_enabled := false
 var _stamina_enabled := false
+# Task #102: customers come from the buildings around the store and want
+# what DATA4 says those buildings want; the month's survey (アンケート).
+var _building_demand_enabled := false
+var _catchment_weights: Dictionary = {}
+var survey_bought: Dictionary = {}
+var survey_missing: Dictionary = {}
+var last_survey: Dictionary = {}
 var _stamina_rng := RandomNumberGenerator.new()
 # Where customers have walked and nobody has cleaned since (oldest first).
 var _dirty_cells: Array[Vector2i] = []
@@ -257,6 +264,7 @@ func _init(source_config: Dictionary) -> void:
     _restock_trigger_share_of_full = float(simulation.get("restock_trigger_share_of_full", 0.0))
     _cleaning_task_enabled = bool(simulation.get("cleaning_task_enabled", false))
     _stamina_enabled = bool(simulation.get("stamina_enabled", false))
+    _building_demand_enabled = bool(simulation.get("building_demand_enabled", false))
     assert(_shopping_ticks > 0 and _checkout_ticks > 0 and _step_game_minutes > 0)
     assert(_restock_ticks > 0 and _restock_trigger_stock_units_at_or_below >= 0)
     assert(float(simulation["tick_seconds"]) > 0.0)
@@ -281,6 +289,9 @@ func reset() -> void:
     _dirty_cells.clear()
     _reset_stamina()
     _load_rivals()
+    survey_bought.clear()
+    survey_missing.clear()
+    last_survey = {}
     _clear_store_site()
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
@@ -931,6 +942,7 @@ func _apply_store_site(origin: Vector2i, bought: Array) -> void:
     demand.nearby_population = store_site.nearby_population(
         origin, int(config["demand"]["nearby_population"]), _bought_buildings, _rival_positions()
     )
+    _catchment_weights = store_site.catchment_building_weights(origin, _rival_positions(), _bought_buildings)
     # Task #98: on the town map, rivals take customers where their
     # catchments overlap the store's (nearby_population above), so the flat
     # per-rival dilution is not applied on top.
@@ -1430,6 +1442,12 @@ func _advance_customer(customer) -> void:
                         customer.basket
                     )
                     customer.mark_settled(record)
+                    for line in customer.basket:
+                        var bought_product = inventory.get_product(str(line["product_id"]))
+                        if bought_product != null and not bought_product.catalog_id.is_empty():
+                            survey_bought[bought_product.catalog_id] = (
+                                int(survey_bought.get(bought_product.catalog_id, 0)) + int(line["quantity"])
+                            )
                 checkout_staff.state = "idle"
                 _spend_stamina(checkout_staff)
                 customer.phase = "leaving"
@@ -1594,7 +1612,12 @@ const INCIDENTAL_WANT_PRODUCT_COUNT := 3
 
 func _start_default_customer() -> void:
     var plan: Array[String] = customers.default_plan()
-    plan.append_array(_select_incidental_want_product_ids(plan))
+    if _building_demand_enabled and has_store_site():
+        plan = _building_customer_plan()
+        if plan.is_empty():
+            return
+    else:
+        plan.append_array(_select_incidental_want_product_ids(plan))
     var customer = customers.admit_default(
         layout.entry,
         layout.find_path(
@@ -1604,6 +1627,52 @@ func _start_default_customer() -> void:
         plan
     )
     _record_customer_entered(customer)
+
+
+# Task #102. CONFIRMED_OFFICIAL (guide DATA4, p.92-95): each building has
+# its 主なほしい品物, and buildings in the 「朝から夜だけ客のいる建物」 list
+# send no customers late at night (朝=7-11時 ... 夜=20-23時, 深夜=24-3時,
+# 早朝=4-6時). Guide p.6: the store's customers are the residents of the
+# buildings around it. REMAKE_BALANCED_DEFAULT: which building a customer
+# comes from (chance in proportion to its squares in the store's catchment,
+# shared with rivals like the nearby population), that they want up to
+# INCIDENTAL_WANT_PRODUCT_COUNT of its wanted categories, that a category the
+# store does not carry (or has sold out on every shelf) is noted in the
+# month's survey instead, and that a customer who would find nothing does
+# not come in. Real game only (staff_work.building_demand_enabled).
+func _building_customer_plan() -> Array[String]:
+    var night := minute_of_day < 7 * 60
+    var candidates: Array = []
+    var total := 0.0
+    for index in _catchment_weights:
+        var profile: Dictionary = store_site.building_profile(int(index))
+        if night and not bool(profile.get("overnight", false)):
+            continue
+        candidates.append([int(index), float(_catchment_weights[index])])
+        total += float(_catchment_weights[index])
+    var plan: Array[String] = []
+    if candidates.is_empty() or total <= 0.0:
+        return plan
+    var roll := _demand_rng.randf() * total
+    var origin_index: int = int(candidates[candidates.size() - 1][0])
+    for candidate in candidates:
+        roll -= float(candidate[1])
+        if roll <= 0.0:
+            origin_index = int(candidate[0])
+            break
+    var wanted: Array = (store_site.building_profile(origin_index)["wanted"] as Array).duplicate()
+    while not wanted.is_empty() and plan.size() < INCIDENTAL_WANT_PRODUCT_COUNT:
+        var category := str(wanted.pop_at(_demand_rng.randi_range(0, wanted.size() - 1)))
+        var shelves: Array[String] = []
+        for product_id in inventory.product_order:
+            var product = inventory.get_product(product_id)
+            if product.catalog_id == category and product.stock_units > 0:
+                shelves.append(product_id)
+        if shelves.is_empty():
+            survey_missing[category] = int(survey_missing.get(category, 0)) + 1
+            continue
+        plan.append(shelves[_demand_rng.randi_range(0, shelves.size() - 1)])
+    return plan
 
 
 func _select_incidental_want_product_ids(exclude_product_ids: Array[String]) -> Array[String]:
@@ -2080,6 +2149,9 @@ func _settle_month_end() -> void:
     var four_day_revenue_yen: int = economy.recorded_revenue_yen() - _revenue_at_month_start
     var monthly_sales_yen: int = four_day_revenue_yen * MONTH_MULTIPLIER
     _evaluate_store_rating(monthly_sales_yen)
+    last_survey = {"bought": survey_bought.duplicate(), "missing": survey_missing.duplicate()}
+    survey_bought.clear()
+    survey_missing.clear()
     month_count += 1
     _days_completed_this_month = 0
     _cash_at_month_start = economy.cash_yen

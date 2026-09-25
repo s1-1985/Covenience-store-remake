@@ -193,6 +193,7 @@ def build(config):
             "restock_trigger_share_of_full": round(8 / 9, 6),
             "cleaning_task_enabled": True,
             "stamina_enabled": True,
+            "building_demand_enabled": True,
             "evidence_note": (
                 "Task #97. CONFIRMED: staff notice shelves going down and refill them on their "
                 "own (docs/research/inventory-restock-boundary-2026-09-05.md section 2, exact "
@@ -205,7 +206,12 @@ def build(config):
                 "体力, that at 0 a staff member rests in the break room until full, and that 敏捷性 "
                 "raises the chance of recovering 2 instead of 1 (about 90% at 100); the maximum is "
                 "each candidate's CONFIRMED_OFFICIAL 体力. REMAKE_BALANCED_DEFAULT: 1 per finished "
-                "task, one recovery roll per game minute, +2 with chance 0.9 x 敏捷性/100."
+                "task, one recovery roll per game minute, +2 with chance 0.9 x 敏捷性/100. "
+                "Task #102, customers: CONFIRMED_OFFICIAL that each building wants its DATA4 "
+                "主なほしい品物 and that the 朝から夜だけ buildings send nobody late at night; "
+                "REMAKE_BALANCED_DEFAULT which building a customer comes from (in proportion to "
+                "its squares in the store's catchment), up to 3 wanted categories each, and that "
+                "a category the store lacks goes into the month's survey instead."
             ),
         },
     }

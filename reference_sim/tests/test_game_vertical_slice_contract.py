@@ -3240,6 +3240,26 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("the 2号店 costs the guide's 46,721,490 at the start", smoke)
         self.assertIn("the rival 本店 cannot be bought", smoke)
 
+    def test_customers_want_what_nearby_buildings_want(self):
+        # Task #102: DATA4 wants and day/night activity per building.
+        from conveni_sim.baseline_data import TOWN_BUILDINGS
+
+        by_id = {b.id: b for b in TOWN_BUILDINGS}
+        catalog = self.config["guide_town_map"]["building_catalog"]
+        product_ids = {c["catalog_id"] for c in self.config["product_catalog"]}
+        for sprite, entry in catalog.items():
+            self.assertEqual(entry["wanted"], list(by_id[sprite].wanted_products.value))
+            self.assertEqual(entry["overnight"], by_id[sprite].active_overnight.value)
+            self.assertLessEqual(set(entry["wanted"]), product_ids)
+        work = self.config["guide_starting_store"]["staff_work"]
+        self.assertTrue(work["building_demand_enabled"])
+        self.assertIn("Task #102, customers: CONFIRMED_OFFICIAL", work["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("# buildings around it. REMAKE_BALANCED_DEFAULT: which building a customer", simulation)
+        self.assertIn("var night := minute_of_day < 7 * 60", simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a 朝から夜だけ building sends no customer at 2:00", smoke)
+
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は
         # 2人まで雇用できる」 -> manager + 2 staff = 3 per store.

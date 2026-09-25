@@ -160,6 +160,30 @@ func start_land_price_yen(origin: Vector2i) -> int:
     return int(floor((price + step / 2.0) / step) * step)
 
 
+# Task #102: each building in the site's catchment and the share of its
+# squares that belong to this store (1/n per square when n stores reach it),
+# as {building index: weight}.
+func catchment_building_weights(origin: Vector2i, others: Array, removed: Array = []) -> Dictionary:
+    var reach := int(rules["catchment_tiles"])
+    var weights := {}
+    for y in range(origin.y - reach, origin.y + footprint.y + reach):
+        for x in range(origin.x - reach, origin.x + footprint.x + reach):
+            var tile := Vector2i(x, y)
+            if not _building_at.has(tile) or removed.has(_building_at[tile]):
+                continue
+            var stores := 1
+            for other in others:
+                if in_catchment(other, tile):
+                    stores += 1
+            var index: int = _building_at[tile]
+            weights[index] = float(weights.get(index, 0.0)) + 1.0 / stores
+    return weights
+
+
+func building_profile(index: int) -> Dictionary:
+    return catalog[str(buildings[index]["sprite"])]
+
+
 # Nearby population a store on this site draws: the scenario's
 # nearby_population scaled by this site's catchment against the mean site
 # (REMAKE_BALANCED_DEFAULT, see the file header).

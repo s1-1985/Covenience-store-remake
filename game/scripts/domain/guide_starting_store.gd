@@ -28,6 +28,7 @@ static func apply(config: Dictionary) -> Dictionary:
     applied["simulation"]["restock_trigger_share_of_full"] = float(work["restock_trigger_share_of_full"])
     applied["simulation"]["cleaning_task_enabled"] = bool(work["cleaning_task_enabled"])
     applied["simulation"]["stamina_enabled"] = bool(work["stamina_enabled"])
+    applied["simulation"]["building_demand_enabled"] = bool(work["building_demand_enabled"])
     # Task #98: the rival's 本店 and 2号店 on the town map (see
     # guide_town_map.rival_stores: CONFIRMED_OFFICIAL that they exist,
     # REMAKE_BALANCED_DEFAULT where they stand).
