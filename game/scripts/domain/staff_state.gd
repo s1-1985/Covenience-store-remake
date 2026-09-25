@@ -15,6 +15,13 @@ var state := "idle"
 var route: Array[Vector2i] = []
 var restock_target_product_id := ""
 var restock_ticks_remaining := 0
+# Task #88: where an otherwise-idle staff member is on the store floor's
+# rest cycle (guide p.16: staff rest in the break room while no customers
+# are in the store). "" = at/around their post, "to_break_room",
+# "resting", "to_post". Kept separate from `state` so a resting staff
+# member still counts as idle for restock assignment and for the
+# "no work in progress" checks that gate player edits.
+var rest_phase := ""
 var service_skill: int
 var security_skill: int
 var cleaning_skill: int
@@ -112,6 +119,7 @@ func reset() -> void:
     route = []
     restock_target_product_id = ""
     restock_ticks_remaining = 0
+    rest_phase = ""
     service_skill = _start_service_skill
     security_skill = _start_security_skill
     cleaning_skill = _start_cleaning_skill
@@ -152,6 +160,7 @@ func hire(new_candidate_config: Dictionary) -> void:
     _start_register_skill = register_skill
     _start_replenishment_skill = replenishment_skill
     state = "idle"
+    rest_phase = ""
     route = []
     restock_target_product_id = ""
     restock_ticks_remaining = 0
@@ -161,6 +170,7 @@ func begin_restock(product_id: String, initial_route: Array[Vector2i]) -> void:
     assert(state == "idle" and not product_id.is_empty())
     restock_target_product_id = product_id
     restock_ticks_remaining = 0
+    rest_phase = ""
     route = initial_route
     state = "to_restock"
 
@@ -169,6 +179,10 @@ func finish_restock() -> void:
     restock_target_product_id = ""
     restock_ticks_remaining = 0
     state = "idle"
+
+
+func home_position() -> Vector2i:
+    return _start_position
 
 
 func move_along_route(next_state: String) -> bool:

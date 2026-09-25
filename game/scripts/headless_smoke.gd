@@ -127,10 +127,69 @@ func _initialize() -> void:
         _fail("staff must restock shelves on their own in the default game")
         return
 
+    # Task #88 (guide p.16: お客さんがいないとき店員は休憩室で休んでいる):
+    # over a full live day the staff must go rest and come back out.
+    if live_simulation.event_log.count_type("staff_rest_started") < 1:
+        _fail("staff must go rest in the break room while the store is empty")
+        return
+    if live_simulation.event_log.count_type("staff_returning_to_post") < 1:
+        _fail("resting staff must come back out when customers arrive")
+        return
+
+    # Task #88, deterministic: with nobody in the store every staff member
+    # walks to the break room door; once a customer is in, the checkout
+    # staff member walks back behind the register, and nobody is rung up
+    # until they are there.
+    var rest_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    rest_simulation.economy.cash_yen = 100_000_000
+    var rest_door := Vector2i.ZERO
+    for rest_fixture in rest_simulation.layout.fixtures:
+        if str(rest_fixture["kind"]) == "break_room":
+            rest_door = Vector2i(
+                int(rest_fixture["interaction_subcell"][0]), int(rest_fixture["interaction_subcell"][1])
+            )
+    for rest_minute in range(120):
+        rest_simulation.step()
+    for rest_staff in rest_simulation.staff.all_staff():
+        if rest_staff.rest_phase != "resting" or rest_staff.position != rest_door:
+            _fail("every idle staff member must be resting at the break room door in an empty store")
+            return
+    var rest_checkout_staff = rest_simulation.staff.checkout_staff()
+    if rest_simulation.event_log.count_type("staff_returning_to_post") != 0:
+        _fail("nobody may leave the break room while the store stays empty")
+        return
+    if not rest_simulation.start_next_customer():
+        _fail("a customer must be admissible while staff rest")
+        return
+    var rest_checkouts_before: int = rest_simulation.event_log.count_type("checkout_started")
+    var rest_checkout_steps := 0
+    while (
+        rest_simulation.event_log.count_type("checkout_started") == rest_checkouts_before
+        and rest_checkout_steps < MAX_STEPS
+    ):
+        rest_simulation.step()
+        rest_checkout_steps += 1
+    if rest_simulation.event_log.count_type("checkout_started") != rest_checkouts_before + 1:
+        _fail("the customer must eventually be rung up after staff return from the break room")
+        return
+    if rest_checkout_staff.position != rest_checkout_staff.home_position() or rest_checkout_staff.rest_phase != "":
+        _fail("checkout must only start once the checkout staff member is back behind the register")
+        return
+
     # The scenarios below predate task #87 and script exact sell-out
     # sequences, so they keep automatic restocking off; the dedicated
     # restock scenario further down turns it back on explicitly.
     config["simulation"]["restock_task_enabled"] = false
+    # They also predate task #88's starting break room (whose CONFIRMED
+    # daily maintenance they don't account for, and whose rest walk would
+    # delay their scripted checkouts), so it is taken out for them.
+    config["fixtures"] = config["fixtures"].filter(
+        func(fixture_config): return str(fixture_config["kind"]) != "break_room"
+    )
+    for legacy_sample_layout in config["sample_layouts"]:
+        legacy_sample_layout["fixtures"] = legacy_sample_layout["fixtures"].filter(
+            func(fixture_config): return str(fixture_config["kind"]) != "break_room"
+        )
     var simulation = VerticalSliceSimulationScript.new(config)
     if simulation.staff.members.size() < 2:
         _fail("actor roster smoke requires multiple retained staff states")
@@ -2677,19 +2736,21 @@ func _initialize() -> void:
     # nor inside fixture-purchase-2's still-standing footprint (task #45's
     # small_tobacco_vending is a 1x1-tile fixture, i.e. 2x2 subcells, so it
     # actually occupies BOTH y=10 and y=11 at x=4-5 -- not just y=10 as an
-    # earlier, wrong version of this fix at y=11 assumed).
+    # earlier, wrong version of this fix at y=11 assumed). Fixture B sits at
+    # x=4 rather than x=5 since task #88's starting break room occupies
+    # x=6-9, y=12-15 in the shipped layout this UI scene loads.
     if not economy_ui_scene.simulation.try_purchase_fixture(
         "bench", "swap-ui-a", Vector2i(1, 12), Vector2i(1, 14)
     ):
         _fail("swap test: setup fixture A purchase failed")
         return
     if not economy_ui_scene.simulation.try_purchase_fixture(
-        "potted_plant", "swap-ui-b", Vector2i(5, 12), Vector2i(5, 14)
+        "potted_plant", "swap-ui-b", Vector2i(4, 12), Vector2i(4, 14)
     ):
         _fail("swap test: setup fixture B purchase failed")
         return
     economy_ui_scene._on_fixture_swap_requested("swap-ui-a", "swap-ui-b")
-    if economy_ui_scene.simulation.layout.fixture_origin("swap-ui-a") != Vector2i(5, 12):
+    if economy_ui_scene.simulation.layout.fixture_origin("swap-ui-a") != Vector2i(4, 12):
         _fail("swapping through the UI signal handler must move fixture A to fixture B's origin")
         return
     if economy_ui_scene.simulation.layout.fixture_origin("swap-ui-b") != Vector2i(1, 12):

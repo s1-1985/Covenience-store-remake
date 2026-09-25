@@ -544,8 +544,20 @@ func _draw_customer() -> void:
 
 
 func _draw_staff() -> void:
+    var resting_index := 0
     for staff_member in simulation.staff.all_staff():
         var center: Vector2 = _cell_center(staff_member.position)
+        # Task #88: a resting staff member's logical position is the break
+        # room's door (its interaction cell); they are drawn inside the room
+        # itself so "resting" reads differently from "standing at the door".
+        # REMAKE_BALANCED_DEFAULT: no recovered source shows how the original
+        # draws staff inside the 社員休憩室, so the in-room spot and the
+        # fan-out offsets in _break_room_rest_spot() are this project's own.
+        if staff_member.rest_phase == "resting":
+            var rest_spot = _break_room_rest_spot(resting_index)
+            if rest_spot != null:
+                center = rest_spot
+                resting_index += 1
         var sprite_id := _staff_sprite_id_for_candidate(staff_member.candidate_id)
         var direction := _staff_facing_direction(staff_member.staff_id, staff_member.position)
         var texture := _staff_texture(sprite_id, direction, STAFF_SPRITE_STATIC_PHASE)
@@ -560,6 +572,22 @@ func _draw_staff() -> void:
             var rect := Rect2(center - Vector2(12, 12), Vector2(24, 24))
             draw_rect(rect, Color("118ab2"), true)
             draw_rect(rect, Color("17324d"), false, 2.0)
+
+
+func _break_room_rest_spot(index: int):
+    var scale := int(config["store"]["subcells_per_tile"])
+    for fixture in simulation.layout.fixtures:
+        if str(fixture["kind"]) != "break_room":
+            continue
+        var origin := _vec2i(fixture["origin_subcell"])
+        var footprint: Array = fixture["footprint_tiles"]
+        var size := Vector2(int(footprint[0]) * scale, int(footprint[1]) * scale) * SUBCELL_PIXELS
+        var room_center := Vector2(origin.x, origin.y) * SUBCELL_PIXELS + size * 0.5
+        var offsets: Array[Vector2] = [
+            Vector2(-0.22, 0.1), Vector2(0.22, 0.1), Vector2(-0.22, -0.2), Vector2(0.22, -0.2)
+        ]
+        return room_center + offsets[index % offsets.size()] * size
+    return null
 
 
 func _draw_text_at(cell: Vector2i, text: String) -> void:

@@ -931,6 +931,7 @@ func step() -> void:
         _advance_customer(customer)
     _dispatch_checkout_queue()
     _step_restock_tasks()
+    _step_staff_rest()
 
 
 # Task #66: CONFIRMED_OFFICIAL passage-width rule, re-verified 2026-09-24 at
@@ -1204,6 +1205,12 @@ func _advance_customer(customer) -> void:
 func _dispatch_checkout_queue() -> void:
     var checkout_staff = staff.checkout_staff()
     if checkout_staff.state != "idle" or _checkout_queue.is_empty():
+        return
+    # Task #88: a checkout staff member walking back from the break room
+    # (guide p.16) cannot ring anyone up until they are back behind the
+    # register -- queued customers wait meanwhile, which is exactly why the
+    # guide advises keeping the register close to the break room.
+    if not checkout_staff.rest_phase.is_empty() or checkout_staff.position != checkout_staff.home_position():
         return
     var customer_id: String = _checkout_queue.pop_front()
     var customer = customers.customer(customer_id)
@@ -1931,6 +1938,87 @@ func _fire_due_chain_visitor_milestones() -> void:
             "popularity_gain": gain,
             "popularity_after": popularity,
         })
+
+
+# Task #88: CONFIRMED_OFFICIAL, strategy guide p.16 (PDF1 page 6,
+# 「レジの場所」): 「お客さんがいないとき店員は休憩室で休んでいる。だから
+# レジと休憩室の距離が近いほうが、すぐにレジに向かうことができて便利なのだ。」
+# While no customer is in the store, every idle staff member walks to the
+# break room's door and rests there; as soon as a customer is in the store
+# again they walk back to their post (the checkout staff member back behind
+# the register, see _dispatch_checkout_queue()). A staff member called to a
+# restock task leaves the cycle immediately (begin_restock() clears
+# rest_phase). Not modeled yet: stamina (guide p.17: 「休憩室は、疲れた店員
+# のスタミナを回復する大事な場所」, community wiki: stamina 0 -> back to the
+# break room until fully recovered), so break_room_1 and break_room_2
+# currently behave the same. A store with no break room keeps every staff
+# member at their post.
+func _step_staff_rest() -> void:
+    var door := _break_room_door()
+    var store_is_empty: bool = customers.all_settled()
+    for staff_member in staff.all_staff():
+        if staff_member.state != "idle":
+            continue
+        var wants_rest: bool = store_is_empty and door != NO_BREAK_ROOM_DOOR
+        if wants_rest:
+            if staff_member.position == door:
+                if staff_member.rest_phase != "resting":
+                    staff_member.rest_phase = "resting"
+                    staff_member.route.clear()
+                    _record_event("staff_rest_started", {"staff_id": staff_member.staff_id})
+                continue
+            if staff_member.rest_phase != "to_break_room" or not _route_ends_at(staff_member, door):
+                staff_member.route = layout.find_path(staff_member.position, door)
+                staff_member.rest_phase = "to_break_room"
+            _step_staff_walk(staff_member)
+        else:
+            if staff_member.rest_phase.is_empty():
+                continue
+            var home: Vector2i = staff_member.home_position()
+            if staff_member.position == home:
+                staff_member.rest_phase = ""
+                staff_member.route.clear()
+                continue
+            if staff_member.rest_phase != "to_post" or not _route_ends_at(staff_member, home):
+                if staff_member.rest_phase == "resting" or staff_member.rest_phase == "to_break_room":
+                    _record_event("staff_returning_to_post", {"staff_id": staff_member.staff_id})
+                staff_member.route = layout.find_path(staff_member.position, home)
+                staff_member.rest_phase = "to_post"
+            if _step_staff_walk(staff_member) and staff_member.position == home:
+                staff_member.rest_phase = ""
+
+
+const NO_BREAK_ROOM_DOOR := Vector2i(-1, -1)
+
+
+func _break_room_door() -> Vector2i:
+    for fixture in layout.fixtures:
+        if str(fixture["kind"]) == "break_room":
+            return _vec2i_from_array(fixture["interaction_subcell"])
+    return NO_BREAK_ROOM_DOOR
+
+
+func _route_ends_at(mover, goal: Vector2i) -> bool:
+    return not mover.route.is_empty() and mover.route[mover.route.size() - 1] == goal
+
+
+# One step along a staff member's rest-cycle route, with the same
+# occupancy/detour rules as every other mover. Returns true once the route
+# is used up. A route cell that became blocked (the player moved a fixture
+# while staff were resting) forces a fresh path next tick.
+func _step_staff_walk(mover) -> bool:
+    if mover.route.is_empty():
+        return true
+    var next_cell: Vector2i = mover.route[0]
+    if not layout.is_walkable(next_cell) and next_cell != mover.route[mover.route.size() - 1]:
+        mover.route.clear()
+        mover.rest_phase = "stale"
+        return false
+    if not _subcell_is_free_for(mover, next_cell):
+        if not _try_detour(mover):
+            return false
+    mover.position = mover.route.pop_front()
+    return mover.route.is_empty()
 
 
 func _step_restock_tasks() -> void:

@@ -69,6 +69,15 @@
         7,
         5
       ]
+    },
+    {
+      "id": "break-room-1",
+      "kind": "break_room",
+      "catalog_id": "break_room_1",
+      "rotation_quarter_turns": 0,
+      "origin_subcell": [6, 12],
+      "footprint_tiles": [2, 2],
+      "interaction_subcell": [7, 11]
     }
   ],
   "sample_layouts": [
@@ -100,6 +109,15 @@
           "origin_subcell": [6, 6],
           "footprint_tiles": [2, 1],
           "interaction_subcell": [7, 5]
+        },
+        {
+          "id": "break-room-1",
+          "kind": "break_room",
+          "catalog_id": "break_room_1",
+          "rotation_quarter_turns": 0,
+          "origin_subcell": [6, 12],
+          "footprint_tiles": [2, 2],
+          "interaction_subcell": [7, 11]
         }
       ]
     },
@@ -140,6 +158,15 @@
           "origin_subcell": [1, 10],
           "footprint_tiles": [1, 1],
           "interaction_subcell": [1, 9]
+        },
+        {
+          "id": "break-room-1",
+          "kind": "break_room",
+          "catalog_id": "break_room_1",
+          "rotation_quarter_turns": 0,
+          "origin_subcell": [6, 12],
+          "footprint_tiles": [2, 2],
+          "interaction_subcell": [7, 11]
         }
       ]
     }
@@ -777,6 +804,22 @@
       "blocks_pedestrian": true,
       "placement": "outdoor",
       "evidence_note": "CONFIRMED_OFFICIAL/CONFIRMED_COMMUNITY, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['parking_tower']. See parking_ground's evidence_note for the blocks_pedestrian/parking_capacity/placement caveats, which apply identically here."
+    },
+    {
+      "catalog_id": "break_room_1",
+      "kind": "break_room",
+      "footprint_tiles": [2, 2],
+      "purchase_price_yen": 3000,
+      "maintenance_yen_per_day": 1200,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['break_room_1'] (strategy guide 社員休憩室1: 3,000円 / 維持費1,200円 / 2×2). Task #88: staff walk here and rest while no customers are in the store (guide p.16: お客さんがいないとき店員は休憩室で休んでいる). Sprite: cropped from the guide's own p.48 store diagram (assets/raw/conveni_guide_diagram_sprites_v1). REMAKE_BALANCED_DEFAULT: where resting staff are drawn inside the room (store_view.gd _break_room_rest_spot()) is this project's own display choice; no recovered source shows it."
+    },
+    {
+      "catalog_id": "break_room_2",
+      "kind": "break_room",
+      "footprint_tiles": [2, 2],
+      "purchase_price_yen": 7000,
+      "maintenance_yen_per_day": 2400,
+      "evidence_note": "CONFIRMED_OFFICIAL, ported from reference_sim/conveni_sim/baseline_data.py FIXTURES['break_room_2'] (strategy guide 社員休憩室2: 7,000円 / 維持費2,400円 / 2×2; also shown on p.17's purchase screenshot). The guide says the pricier room recovers stamina faster; this client has no stamina model yet, so both rooms currently behave the same."
     }
   ],
   "permits": [

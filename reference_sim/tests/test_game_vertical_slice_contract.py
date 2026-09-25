@@ -1464,13 +1464,14 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         # Mechanics this client does not implement -- multi-register
         # checkout routing, a copier/print service, an ATM-like cash
-        # dispenser, and a staff break/rest room -- are deliberately
-        # excluded from this port, the same reasoning task #39 used to
-        # exclude the "cash" product category.
+        # dispenser -- are deliberately excluded from this port, the same
+        # reasoning task #39 used to exclude the "cash" product category.
+        # The staff break room was excluded here too until task #88 gave
+        # it a mechanic (staff rest there while the store is empty); it is
+        # checked by test_starting_store_has_a_break_room_staff_rest_in.
         excluded_ids = {
             "register_1", "register_2", "register_3", "register_4",
-            "copier_a", "copier_b", "indoor_dispenser",
-            "break_room_1", "break_room_2", "vending_machine",
+            "copier_a", "copier_b", "indoor_dispenser", "vending_machine",
         }
         for excluded_id in excluded_ids:
             self.assertNotIn(excluded_id, catalog_by_id)
@@ -1482,6 +1483,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "potted_plant", "bench", "fountain",
             "parking_ground", "parking_two_story", "parking_tower",
             "small_ambient_shelf", "small_tobacco_vending",
+            "break_room_1", "break_room_2",
         }
         expected_new_ids = set(reference_by_id) - excluded_ids - pre_existing_ids
         actual_new_ids = set(catalog_by_id) - pre_existing_ids
@@ -2823,6 +2825,54 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         )
         self.assertIn("func find_path_avoiding(", layout)
         self.assertIn("func _try_detour(mover) -> bool:", simulation)
+
+    def test_starting_store_has_a_break_room_staff_rest_in(self):
+        # Task #88: guide p.16 「お客さんがいないとき店員は休憩室で休んでいる」.
+        from conveni_sim.baseline_data import FIXTURES
+
+        baseline = {fixture.id: fixture for fixture in FIXTURES}
+        catalog = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        for catalog_id in ("break_room_1", "break_room_2"):
+            entry = catalog[catalog_id]
+            self.assertEqual(entry["kind"], "break_room")
+            self.assertEqual(tuple(entry["footprint_tiles"]), baseline[catalog_id].footprint.value)
+            self.assertEqual(
+                entry["purchase_price_yen"], baseline[catalog_id].purchase_price_yen.value
+            )
+            self.assertEqual(
+                entry["maintenance_yen_per_day"],
+                baseline[catalog_id].maintenance_yen_per_day.value,
+            )
+            self.assertTrue((GAME_ROOT / "assets" / "fixtures" / f"{catalog_id}.png").is_file())
+        self.assertIn("REMAKE_BALANCED_DEFAULT", catalog["break_room_1"]["evidence_note"])
+        self.assertIn(
+            "break_room_1",
+            [f.get("catalog_id") for f in self.config["fixtures"] if f["kind"] == "break_room"],
+        )
+
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("「お客さんがいないとき店員は休憩室で休んでいる。", simulation)
+        self.assertIn("    _step_staff_rest()\n", simulation)
+        self.assertIn("checkout_staff.position != checkout_staff.home_position()", simulation)
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        rest_draw = store_view[store_view.index("func _draw_staff() -> void:"):]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", rest_draw[: rest_draw.index("var sprite_id")])
+
+        # The sprite is cropped from the guide's own printed store diagram,
+        # and the shipped copies are byte-identical to the recorded crop.
+        import hashlib
+
+        raw_dir = REPO_ROOT / "assets" / "raw" / "conveni_guide_diagram_sprites_v1"
+        manifest = json.loads((raw_dir / "manifest.json").read_text(encoding="utf-8"))
+        asset = {a["id"]: a for a in manifest["assets"]}["break_room"]
+        self.assertEqual(asset["source"]["printed_page"], 48)
+        raw_sha = hashlib.sha256((raw_dir / asset["file"]).read_bytes()).hexdigest()
+        self.assertEqual(raw_sha, asset["sha256"])
+        for catalog_id in ("break_room_1", "break_room_2"):
+            shipped = (GAME_ROOT / "assets" / "fixtures" / f"{catalog_id}.png").read_bytes()
+            self.assertEqual(hashlib.sha256(shipped).hexdigest(), raw_sha)
 
     def test_store_rating_gd_thresholds_match_reference_sim_row_for_row(self):
         # Task #86: game/'s copy of the guide's rating table (printed

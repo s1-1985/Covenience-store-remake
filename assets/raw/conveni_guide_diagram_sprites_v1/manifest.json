@@ -1,0 +1,23 @@
+{
+  "asset_count": 1,
+  "origin": "cropped_from_user_supplied_strategy_guide",
+  "assets": [
+    {
+      "id": "break_room",
+      "name_ja": "社員休憩室(店内の真上視点)",
+      "file": "break_room.png",
+      "size": [269, 263],
+      "source": {
+        "type": "guide",
+        "file": "downloadfile3.PDF (third companion guide PDF4, 24 pages)",
+        "file_sha256": "50dc6648eccd6afe8ac518d43809024ab380221f505d3986195ad5bf5bd408ee",
+        "pdf_page": 1,
+        "printed_page": 48,
+        "render_scale": 6,
+        "crop_xyxy": [1372, 1459, 1641, 1722]
+      },
+      "notes": "「未開の土地に開店するなら!」の店舗図の中央、2×2マスの休憩室。ゲーム内の真上視点の什器画像(メニュー用の斜め視点アイコンとは別物)。印刷由来のにじみ・網点あり。この図だけでは休憩室1(3,000円)と休憩室2(7,000円)のどちらかは判別できない。",
+      "sha256": "3c3f81657ddc99c60b60d8750dd346ddfbb402bbb8da73437b4873199e41b208"
+    }
+  ]
+}
