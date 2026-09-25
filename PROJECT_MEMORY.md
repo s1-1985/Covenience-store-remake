@@ -2004,6 +2004,16 @@ vertical_slice.json "sound".event_sfx (door chime on entry, register beep on che
 month end, clear fanfare, game over, refusal, button blip). SoundManager autoload; a 音 on/off button in the
 panel, saved in user://settings.cfg.
 
+**APK delivery fix (2026-09-25, after task #96)**: the first 0.1.6 APK sent to the user was a stale file.
+The headless export printed `Parameter "fd" is null` errors and left the previous build (0.1.5, versionCode 6)
+in game/build/android/. The user installed it and still saw the old fixed 5x5 lot. Rule from now on:
+- delete the old APK;
+- run `godot --headless --path game --import` before `--export-debug`;
+- before sending, check the APK: versionCode (aapt2 dump badging) and the new scripts/data inside it.
+The correct build was 30.01 MiB, over the 30 MiB delivery limit. Explicit small launcher icons
+(game/assets/app_icon/, nearest-neighbour upscales of the register menu icon; platform presentation only)
+replace Godot's auto-scaled ~150 KB ones. That brings the APK to 29.50 MiB.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
