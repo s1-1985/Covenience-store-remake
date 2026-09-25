@@ -376,7 +376,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn('active().phase == "done"', roster)
         self.assertIn("customers[customer_id] = customer", roster)
         self.assertIn("func demand_admit_if_due() -> bool:", simulation)
-        self.assertIn("not customers.can_admit():\n        return false\n    if not demand", simulation)
+        # Task #103: admission also waits for opening hours.
+        self.assertIn("not customers.can_admit() or not is_open_now():\n        return false\n    if not demand", simulation)
         self.assertIn("each visit must retain a distinct customer state", smoke)
         self.assertIn("customer ids must remain unique", smoke)
         self.assertIn(
@@ -661,7 +662,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertNotIn("simulation.tick_idle_for_demand()", main)
         self.assertIn("func tick() -> void:", simulation)
         self.assertIn(
-            "if customers.can_admit_concurrent() and demand.customer_arrives_this_minute():",
+            "if customers.can_admit_concurrent() and is_open_now() and demand.customer_arrives_this_minute():",
             simulation,
         )
         self.assertIn(
