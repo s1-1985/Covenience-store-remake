@@ -13,6 +13,11 @@ transcription was produced by a background agent reading the same page images th
 `Read`/`pdftoppm` calls also examined at higher, targeted resolution (400dpi crops of specific
 regions vs. this doc's whole-page reads). Where the two disagree, the higher-resolution direct
 re-crop is the one implemented in code; check these before trusting a specific digit here:
+- The store-evaluation increase/decrease table (PDF1 p.38-39, this doc's lines ~169-185) has
+  several misread cells and a garbled 6th-row note. A 5x-render re-read (task #86) found it is
+  cell-for-cell identical to PDF4 print p.75's table, including a printed ☆☆☆☆☆ row on both
+  sides -- see `docs/research/store-rating-table-reverification-2026-09-25.md`, which supersedes
+  this doc's transcription of that table.
 - The weather-percentage table (PDF3 p.3, this doc's line ~421) is flagged here as medium-confidence
   with column-set OCR ambiguity ("月/晴天/曇り/雨/雨天/荒天/大雪"). A 400dpi crop of the same table
   this session found the columns are actually 快晴/晴れ/曇り/雨・雪/荒天 (5 columns, all 12 rows sum

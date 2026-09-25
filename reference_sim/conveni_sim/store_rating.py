@@ -51,26 +51,40 @@ class RatingDowngradeThreshold:
     below_sales_yen: int
 
 
-# Source: strategy guide "オールテクニックガイド" 評価関連 page (書籍頁74-75),
-# used as the primary reading over the near-duplicate table on 書籍頁38-39,
-# whose security/cleaning thresholds differed slightly on manual
-# transcription; see the crosscheck research note for the discrepancy.
-# `price_change_pct` is the sale price's percent change from the guide's
-# standard price (negative = discounted, positive = marked up).
+# Source: the guide's "ランク評価値の増減要因" table, printed twice with
+# cell-for-cell identical values: "オールテクニックガイド" 評価関連 (書籍頁75,
+# PDF4 page 14) and "お店の評価の増加・減少の原因" (書籍頁39, PDF1 page 17).
+# Task #86 re-read both at 5x render and corrected 11 cells that an earlier
+# manual transcription had wrong (the "near-duplicate tables differ" note
+# this comment used to carry was that transcription error, not a real
+# conflict), and added the 0-star (☆☆☆☆☆) row both pages print but the
+# earlier transcription had dropped. `price_change_pct` is the sale price's
+# percent change from the guide's standard price (negative = discounted,
+# positive = marked up); the guide prints it as "-30%以下" (p.75) /
+# "30%以下" in a 販売価格率 column (p.39), and the decrease side as "+1%以上"
+# / "101%以上".
 UPGRADE_THRESHOLDS_BY_CURRENT_STARS: dict[int, RatingUpgradeThreshold] = {
     5: RatingUpgradeThreshold(max_price_change_pct=-30, min_service=100, min_security=100, min_cleaning=100, min_sales_yen=15_000_000),
-    4: RatingUpgradeThreshold(max_price_change_pct=-20, min_service=90, min_security=90, min_cleaning=95, min_sales_yen=10_000_000),
-    3: RatingUpgradeThreshold(max_price_change_pct=-15, min_service=85, min_security=90, min_cleaning=95, min_sales_yen=9_000_000),
+    4: RatingUpgradeThreshold(max_price_change_pct=-20, min_service=90, min_security=90, min_cleaning=100, min_sales_yen=10_000_000),
+    3: RatingUpgradeThreshold(max_price_change_pct=-15, min_service=80, min_security=85, min_cleaning=95, min_sales_yen=9_000_000),
     2: RatingUpgradeThreshold(max_price_change_pct=-10, min_service=70, min_security=80, min_cleaning=90, min_sales_yen=7_000_000),
     1: RatingUpgradeThreshold(max_price_change_pct=-5, min_service=60, min_security=75, min_cleaning=85, min_sales_yen=5_000_000),
+    0: RatingUpgradeThreshold(max_price_change_pct=-1, min_service=50, min_security=70, min_cleaning=80, min_sales_yen=3_000_000),
 }
 
+# The ★5 decrease row's 清掃 cell is printed as a bare "100" on both pages,
+# where every other cell in that column reads "N未満". Encoded as
+# below_cleaning=100 (i.e. "less than 100"), the only reading under which
+# the cell is a penalty condition at all; a literal "cleaning == 100 costs a
+# point" would penalise a perfect score. Not a numeric guess: the printed
+# number is kept as-is, only the missing "未満" is inferred from its column.
 DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS: dict[int, RatingDowngradeThreshold] = {
-    5: RatingDowngradeThreshold(min_price_change_pct=1, below_service=100, below_security=80, below_cleaning=80, below_sales_yen=3_000_000),
-    4: RatingDowngradeThreshold(min_price_change_pct=1, below_service=70, below_security=65, below_cleaning=95, below_sales_yen=2_500_000),
-    3: RatingDowngradeThreshold(min_price_change_pct=1, below_service=60, below_security=60, below_cleaning=90, below_sales_yen=2_000_000),
-    2: RatingDowngradeThreshold(min_price_change_pct=1, below_service=55, below_security=60, below_cleaning=85, below_sales_yen=1_500_000),
-    1: RatingDowngradeThreshold(min_price_change_pct=1, below_service=30, below_security=50, below_cleaning=75, below_sales_yen=1_000_000),
+    5: RatingDowngradeThreshold(min_price_change_pct=1, below_service=80, below_security=80, below_cleaning=100, below_sales_yen=3_000_000),
+    4: RatingDowngradeThreshold(min_price_change_pct=1, below_service=70, below_security=70, below_cleaning=95, below_sales_yen=2_500_000),
+    3: RatingDowngradeThreshold(min_price_change_pct=1, below_service=60, below_security=65, below_cleaning=90, below_sales_yen=2_000_000),
+    2: RatingDowngradeThreshold(min_price_change_pct=1, below_service=50, below_security=60, below_cleaning=85, below_sales_yen=1_500_000),
+    1: RatingDowngradeThreshold(min_price_change_pct=1, below_service=40, below_security=55, below_cleaning=80, below_sales_yen=1_000_000),
+    0: RatingDowngradeThreshold(min_price_change_pct=1, below_service=30, below_security=50, below_cleaning=75, below_sales_yen=500_000),
 }
 
 UPGRADE_MIN_CRITERIA_MET = 3
@@ -143,12 +157,8 @@ def evaluate_monthly_rating_change(inputs: RatingMonthlyInputs) -> RatingMonthly
     star count; call `star_rank_for_internal_value` on the result if needed.
     """
     current_stars = star_rank_for_internal_value(inputs.current_internal_value)
-    # The guide's table has 5 rows (★1..★5); a ☆ (0-star, internal value
-    # 0-19) store has no row of its own, so it is evaluated against the ★1
-    # row rather than inventing a sixth, easier tier.
-    table_rank = max(current_stars, 1)
-    upgrade = UPGRADE_THRESHOLDS_BY_CURRENT_STARS[table_rank]
-    downgrade = DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS[table_rank]
+    upgrade = UPGRADE_THRESHOLDS_BY_CURRENT_STARS[current_stars]
+    downgrade = DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS[current_stars]
 
     criteria_met = sum(
         (

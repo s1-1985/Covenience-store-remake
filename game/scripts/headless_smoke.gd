@@ -1413,8 +1413,10 @@ func _initialize() -> void:
     var upgrade_and_downgrade_evaluation: Dictionary = store_rating.evaluate_monthly_rating_change(
         0, -5, 60.0, 75.0, 0.0, 0
     )
+    # Task #86: internal value 0 is a ☆☆☆☆☆ store, evaluated against the
+    # 0-star row both printed tables carry (-1% / 50 / 70 / 80 / 300万円).
     if int(upgrade_and_downgrade_evaluation["criteria_met"]) != 3:
-        _fail("exactly 3 of the 5 rank-1 upgrade criteria must be counted as met")
+        _fail("exactly 3 of the 5 zero-star-row upgrade criteria must be counted as met")
         return
     if not bool(upgrade_and_downgrade_evaluation["upgrade_applies"]):
         _fail("meeting >= UPGRADE_MIN_CRITERIA_MET criteria must apply the upgrade")
@@ -1424,6 +1426,12 @@ func _initialize() -> void:
         return
     if int(upgrade_and_downgrade_evaluation["next_internal_value"]) != 3:
         _fail("next_internal_value must equal current + downgrade_points + UPGRADE_POINTS, clamped 0..100")
+        return
+    var zero_star_row_evaluation: Dictionary = store_rating.evaluate_monthly_rating_change(
+        10, -1, 50.0, 70.0, 80.0, 3000000
+    )
+    if int(zero_star_row_evaluation["criteria_met"]) != 5 or int(zero_star_row_evaluation["downgrade_points"]) != 0:
+        _fail("a zero-star store must be judged by its own printed row, not the one-star row")
         return
 
     var store_value = StoreValueScript.new()
