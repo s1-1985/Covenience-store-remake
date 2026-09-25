@@ -2731,6 +2731,16 @@ func _initialize() -> void:
     if fake_town_box["origin"] != Vector2i(-3, -4) or fake_town_box["size"] != Vector2i(9, 12):
         _fail("town view bounding box did not cover every marker with the expected margin")
         return
+    # Task #90: with the guide p.11 beginner map in the config, the town
+    # view draws that 41x35-tile town, sized to sit left of the panel.
+    if economy_ui_scene.town_view.guide_map_tiles() != Vector2i(41, 35):
+        _fail("the town view must draw the guide's beginner-map town")
+        return
+    var town_tile_pixels: float = economy_ui_scene.town_view.map_tile_pixels
+    var town_right_edge: float = economy_ui_scene.town_view.position.x + 41 * town_tile_pixels
+    if town_tile_pixels < 8.0 or town_right_edge > (economy_ui_scene.get_node("UI/Panel") as Control).offset_left:
+        _fail("the town map must be legible and fit left of the side panel")
+        return
 
     # Task #78: EditModeOption/SellFixtureButton/DeselectFixtureButton wiring
     # against the real instantiated main.tscn scene. Reuses fixture-purchase-1

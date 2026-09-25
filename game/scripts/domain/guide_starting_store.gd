@@ -30,7 +30,10 @@ static func apply(config: Dictionary) -> Dictionary:
     applied["customer"]["max_concurrent_customers"] = int(guide["max_concurrent_customers"])
     applied["provisional_restock"]["product_id"] = str(guide["provisional_restock_product_id"])
     # CONFIRMED_COMMUNITY beginner starting cash (android_preview's own
-    # anchor, docs/research/ui-consistency-audit-2026-09-05.md): a furnished
+    # anchor, docs/research/ui-consistency-audit-2026-09-05.md), and
+    # CONFIRMED_VISUAL since task #90: the guide p.11 beginner-map screenshot
+    # reads 1年目1月1日 00:00 ¥200,000,000 (assets/raw/conveni_guide_town_v1).
+    # A furnished
     # large store's daily upkeep would bankrupt the prototype's 1,000 yen at
     # the first day boundary.
     applied["economy"]["initial_cash_yen"] = int(config["android_preview"]["starting_cash_yen"])

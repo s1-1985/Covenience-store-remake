@@ -57,6 +57,9 @@ msgstr "街を見る"
 msgid "Show store"
 msgstr "店内に戻る"
 
+msgid "Main store"
+msgstr "本店"
+
 msgid "Interior edit (配置/移動/入れ替え/売却/終了)"
 msgstr "内装の編集"
 

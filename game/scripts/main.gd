@@ -125,8 +125,8 @@ func _ready() -> void:
         GameLaunchState.continue_from_save = false
         _save_service.load_from_path(simulation)
     store_view.bind(config, simulation)
-    _fit_store_view()
     town_view.bind(simulation)
+    _fit_store_view()
     _populate_sample_layout_option()
     _populate_fixture_catalog_option()
     _populate_permit_option()
@@ -952,6 +952,11 @@ func _fit_store_view() -> void:
     var available := Vector2(right_edge - store_view.position.x, 710.0 - store_view.position.y)
     var fit := minf(1.0, minf(available.x / natural.x, available.y / natural.y))
     store_view.scale = Vector2(fit, fit)
+    # Task #90: the town map uses the same area.
+    town_view.position = store_view.position
+    var town_tiles: Vector2i = town_view.guide_map_tiles()
+    if town_tiles != Vector2i.ZERO:
+        town_view.map_tile_pixels = floorf(minf(available.x / town_tiles.x, available.y / town_tiles.y))
 
 
 func _is_android_preview() -> bool:
@@ -1011,3 +1016,10 @@ func _prepare_android_ui() -> void:
         _on_save_pressed()
         quick_save.text = "保存完了" if layout_edit_label.text == tr("Game saved") else "保存失敗"
     )
+    # Task #90: the town map, one tap away like the other sections.
+    var town_toggle := Button.new()
+    town_toggle.name = "TownToggle"
+    town_toggle.text = "町／店内"
+    town_toggle.custom_minimum_size = Vector2(180, 64)
+    shortcuts.add_child(town_toggle)
+    town_toggle.pressed.connect(func(): show_town_map_button.pressed.emit())

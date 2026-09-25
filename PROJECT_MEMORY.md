@@ -1932,6 +1932,18 @@ medium_refrigerated_shelf is (1,1), but DATA2 p.86 prints 1x2. Still open: custo
 coefficients REMAKE; only ~2-3 shoppers at once), archetype-based wants, the outdoor lot and town map,
 and shelf art cropped from p.48.
 
+**Task #90 (2026-09-25, decision 0161)**: town map from the guide p.11 beginner-map screenshot. Cropped the
+初級マップ start screen (1年目1月1日 00:00 ¥200,000,000) at scan resolution into
+assets/raw/conveni_guide_town_v1. The grid was measured on it: tiles are 9.875 x 10.45 px, roads run every
+10 columns and every ~13/20 rows, and the railway is row 12. tools/build_guide_town_map.py reads it tile by
+tile into vertical_slice.json's `guide_town_map` (41x35 rows of G/D/R/T/B/O). Road/rail positions are
+CONFIRMED_VISUAL; per-tile grass/ground/building is PROVISIONAL (colour classification); that the orange
+5x5 lot is the player's store is PROVISIONAL. town_view.gd draws this town (buildings use 3 generated
+house sprites = REMAKE); the old marker view is the fallback. The Android shortcuts gain 「町／店内」, and
+200M starting cash is now CONFIRMED_VISUAL too. Task #72's "no sprites in the town view" test is narrowed to
+"only the house sprites on building tiles". Still open: building types, town growth, and choosing a store
+site.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
