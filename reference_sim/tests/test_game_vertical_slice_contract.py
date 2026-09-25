@@ -2874,6 +2874,89 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             shipped = (GAME_ROOT / "assets" / "fixtures" / f"{catalog_id}.png").read_bytes()
             self.assertEqual(hashlib.sha256(shipped).hexdigest(), raw_sha)
 
+    def test_new_games_start_in_the_guide_p48_store(self):
+        # Task #89: guide p.48's store diagram, placed on the confirmed 12x8
+        # large floor, is the store every new game starts in.
+        import importlib.util
+
+        from conveni_sim.baseline_data import STORE_VARIANTS
+
+        guide = self.config["guide_starting_store"]
+        store = guide["store"]
+        large_bottom = {v.id: v for v in STORE_VARIANTS}["large_bottom"]
+        self.assertEqual(
+            (store["width_tiles"], store["height_tiles"]), large_bottom.editable_floor.value
+        )
+        self.assertIn("CONFIRMED_VISUAL", guide["evidence_note"])
+        self.assertIn("PROVISIONAL", guide["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", guide["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", guide["max_concurrent_customers_evidence_note"])
+        self.assertIn("video_900s.png", guide["max_concurrent_customers_evidence_note"])
+
+        # The JSON block is exactly what the documented table generates.
+        spec = importlib.util.spec_from_file_location(
+            "build_guide_p48_store", REPO_ROOT / "tools" / "build_guide_p48_store.py"
+        )
+        builder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(builder)
+        base = {k: v for k, v in self.config.items() if k != "guide_starting_store"}
+        self.assertEqual(builder.build(base), guide)
+
+        catalog = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        pricing = {entry["catalog_id"]: entry for entry in self.config["product_catalog"]}
+        fixtures = {fixture["id"]: fixture for fixture in guide["fixtures"]}
+        self.assertEqual(sum(1 for f in guide["fixtures"] if f["kind"] == "shelf"), 34)
+        self.assertEqual(len(guide["products"]), 34)
+        for product in guide["products"]:
+            fixture = fixtures[product["fixture_id"]]
+            shelf = catalog[fixture["catalog_id"]]
+            category = pricing[product["catalog_id"]]
+            self.assertEqual(fixture["footprint_tiles"], [1, 1])
+            self.assertIn(product["catalog_id"], shelf["compatible_product_categories"])
+            self.assertEqual(product["initial_stock_units"], shelf["capacity"])
+            self.assertEqual(product["sale_price_yen"], category["sale_price_yen"])
+            self.assertEqual(product["restock_unit_cost_yen"], category["restock_unit_cost_yen"])
+            # A new store holds no permit, so nothing permit-gated is stocked.
+            self.assertNotIn("required_permit_id", category)
+
+        # Footprints stay inside the floor without overlapping, the doors
+        # are free and side by side, and every shelf, the register and the
+        # break room door can be reached from the entrance.
+        scale = store["subcells_per_tile"]
+        width, height = store["width_tiles"] * scale, store["height_tiles"] * scale
+        blocked = set()
+        for fixture in guide["fixtures"]:
+            ox, oy = fixture["origin_subcell"]
+            for dy in range(fixture["footprint_tiles"][1] * scale):
+                for dx in range(fixture["footprint_tiles"][0] * scale):
+                    cell = (ox + dx, oy + dy)
+                    self.assertTrue(0 <= cell[0] < width and 0 <= cell[1] < height)
+                    self.assertNotIn(cell, blocked)
+                    blocked.add(cell)
+        entry, exit_point = tuple(store["entry_subcell"]), tuple(store["exit_subcell"])
+        self.assertEqual(abs(entry[0] - exit_point[0]) + abs(entry[1] - exit_point[1]), 1)
+        seen, queue = {entry}, deque([entry])
+        while queue:
+            x, y = queue.popleft()
+            for nxt in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+                if 0 <= nxt[0] < width and 0 <= nxt[1] < height and nxt not in blocked and nxt not in seen:
+                    seen.add(nxt)
+                    queue.append(nxt)
+        for fixture in guide["fixtures"]:
+            if fixture["kind"] == "amenity":
+                continue
+            self.assertIn(tuple(fixture["interaction_subcell"]), seen, fixture["id"])
+        self.assertIn(exit_point, seen)
+        for position in guide["staff_start_subcells"].values():
+            self.assertIn(tuple(position), seen)
+
+        main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
+        self.assertIn("loaded = GuideStartingStoreScript.apply(loaded)", main)
+        helper = (GAME_ROOT / "scripts" / "domain" / "guide_starting_store.gd").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("REMAKE_BALANCED_DEFAULT cap anchored to a CONFIRMED_VISUAL count", helper)
+
     def test_store_rating_gd_thresholds_match_reference_sim_row_for_row(self):
         # Task #86: game/'s copy of the guide's rating table (printed
         # identically on book pages 39 and 75) must not drift from

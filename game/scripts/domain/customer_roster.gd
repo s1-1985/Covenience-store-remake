@@ -20,7 +20,11 @@ func _init(customer_config: Dictionary) -> void:
     _id_prefix = str(customer_config["id_prefix"])
     _visit_plan_product_ids.assign(customer_config["visit_plan_product_ids"])
     _max_concurrent_customers = int(customer_config["max_concurrent_customers"])
-    assert(not _id_prefix.is_empty() and not _visit_plan_product_ids.is_empty())
+    # Task #89: an empty default plan is allowed -- the guide starting store
+    # leaves every visit's wants to the per-visit random picks
+    # (VerticalSliceSimulation._select_incidental_want_product_ids()), and
+    # admit_explicit() still refuses an empty plan.
+    assert(not _id_prefix.is_empty())
     assert(_max_concurrent_customers >= 1)
 
 

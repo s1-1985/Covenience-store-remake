@@ -1548,6 +1548,13 @@ func _required_routes_are_reachable() -> bool:
         if not layout.has_path(cursor, interaction):
             return false
         cursor = interaction
+    # Task #89: with no fixed default plan (the guide starting store), any
+    # stocked product can be a visit's want, so every shelf must stay
+    # reachable from the entrance.
+    if (config["customer"]["visit_plan_product_ids"] as Array).is_empty():
+        for product_id in inventory.product_order:
+            if not layout.has_path(layout.entry, _product_interaction(product_id)):
+                return false
     return layout.has_path(cursor, _checkout_interaction) and layout.has_path(
         _checkout_interaction,
         layout.exit

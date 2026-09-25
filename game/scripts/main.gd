@@ -2,6 +2,12 @@ extends Node2D
 
 const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_simulation.gd")
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
+const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
+
+# Test seam (task #89): see _load_config(). An Engine meta flag rather than a
+# static var because the --script smoke runner cannot preload this script
+# (its GameLaunchState autoload reference only resolves inside a full run).
+const PROTOTYPE_STORE_FOR_TESTS_META := "use_prototype_store_for_tests"
 const MAIN_MENU_SCENE_PATH := "res://scenes/main_menu.tscn"
 # Sentinel prefix store_view.selected_fixture_id carries while the player is
 # placing a newly-bought fixture (task #38), reusing the same tap-to-target
@@ -119,6 +125,7 @@ func _ready() -> void:
         GameLaunchState.continue_from_save = false
         _save_service.load_from_path(simulation)
     store_view.bind(config, simulation)
+    _fit_store_view()
     town_view.bind(simulation)
     _populate_sample_layout_option()
     _populate_fixture_catalog_option()
@@ -855,6 +862,12 @@ func _load_config() -> Dictionary:
     if loaded.get("provisional", false) != true:
         push_error("Vertical slice config must explicitly remain provisional")
         return {}
+    # Task #89: every new game starts in the strategy guide's p.48 store
+    # (GuideStartingStore). The automated UI scenarios set the
+    # PROTOTYPE_STORE_FOR_TESTS_META Engine meta to keep the small
+    # prototype store their scripted coordinates were written against.
+    if not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META):
+        loaded = GuideStartingStoreScript.apply(loaded)
     # REMAKE_BALANCED_DEFAULT: preview setup uses the researched beginner
     # cash anchor but grants a furnished shop; JSON records this deviation.
     if _is_android_preview():
@@ -923,6 +936,24 @@ func _format_integer(value: int) -> String:
     return "-%s" % joined if value < 0 else joined
 
 
+# Task #89: platform presentation only. Shrinks the store drawing (never
+# enlarges it) so the whole floor fits left of the controls; the prototype
+# store used by the tests already fits and stays at scale 1. Taps still map
+# correctly because store_view converts them with to_local().
+func _fit_store_view() -> void:
+    var store: Dictionary = config["store"]
+    var tile_pixels: float = store_view.SUBCELL_PIXELS * int(store["subcells_per_tile"])
+    var natural := Vector2(int(store["width_tiles"]), int(store["height_tiles"])) * tile_pixels
+    var right_edge: float = ($UI/Panel as Control).offset_left - 20.0
+    var shortcuts := $UI.get_node_or_null("AndroidShortcuts") as Control
+    if shortcuts != null:
+        store_view.position.x = 20.0
+        right_edge = shortcuts.position.x - 10.0
+    var available := Vector2(right_edge - store_view.position.x, 710.0 - store_view.position.y)
+    var fit := minf(1.0, minf(available.x / natural.x, available.y / natural.y))
+    store_view.scale = Vector2(fit, fit)
+
+
 func _is_android_preview() -> bool:
     return OS.has_feature("android") or "--android-preview" in OS.get_cmdline_user_args()
 
@@ -945,10 +976,22 @@ func _prepare_android_ui() -> void:
             node.fit_to_longest_item = false
     for node in panel.find_children("*", "Label", true, false):
         node.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    # Task #89: the side panel is narrower next to the 12x8 store, so the two
+    # three-button rows share their row width instead of 145 px each, and
+    # the column itself drops its 420 px desktop minimum.
+    ($UI/Panel/Margin/Scroll/VBox as Control).custom_minimum_size.x = 0
+    for row_name in ["Buttons", "MenuButtons"]:
+        for node in $UI/Panel/Margin/Scroll/VBox.get_node(row_name).get_children():
+            node.custom_minimum_size.x = 0
+            node.size_flags_horizontal = Control.SIZE_EXPAND_FILL
     var shortcuts := VBoxContainer.new()
     shortcuts.name = "AndroidShortcuts"
-    shortcuts.position = Vector2(440, 130)
-    shortcuts.size.x = 230
+    # Task #89: the guide starting store is 12x8 tiles, so on the phone the
+    # store takes the left side and the shortcut column and panel move right.
+    shortcuts.position = Vector2(730, 130)
+    shortcuts.size.x = 180
+    panel.offset_left = 920.0
+    panel.offset_right = 1270.0
     shortcuts.theme = mobile_theme
     shortcuts.add_theme_constant_override("separation", 12)
     $UI.add_child(shortcuts)
@@ -956,13 +999,13 @@ func _prepare_android_ui() -> void:
     for caption in targets:
         var button := Button.new()
         button.text = caption
-        button.custom_minimum_size = Vector2(230, 64)
+        button.custom_minimum_size = Vector2(180, 64)
         shortcuts.add_child(button)
         var target: Control = $UI/Panel/Margin/Scroll/VBox.get_node(targets[caption])
         button.pressed.connect(func(): $UI/Panel/Margin/Scroll.scroll_vertical = int(target.position.y))
     var quick_save := Button.new()
     quick_save.text = "セーブ"
-    quick_save.custom_minimum_size = Vector2(230, 64)
+    quick_save.custom_minimum_size = Vector2(180, 64)
     shortcuts.add_child(quick_save)
     quick_save.pressed.connect(func():
         _on_save_pressed()
