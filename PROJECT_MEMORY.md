@@ -1824,7 +1824,7 @@ conveni_additional_assets_v1/reference/video_900s.png` and `video_904s.png`) cle
 artwork at native resolution and are ready to use for that follow-up; extracting and catalog-ID-matching
 individual fixture crops from them is a larger, separate task than this one's floor/wall/entrance wiring.
 
-**Task #84 (2026-09-25, decision 0154)**: user said to keep going autonomously, with a standing reminder
+**Task #84 (2026-09-25, decision 0155 -- originally numbered 0154, renumbered after colliding with PR #261's own 0154)**: user said to keep going autonomously, with a standing reminder
 to always keep first-title fidelity in mind. Attempted to start on task #83's flagged fixture-sprite
 follow-up first, but cropping candidate regions out of `video_900s.png` for closer inspection showed the
 top-row candidates are plausibly a UI menu overlay (an advertising-selection-style red bar), not confirmed
@@ -1848,6 +1848,25 @@ values, not evidence-tier strings). Explicitly out of scope: implementing the ad
 (blocked on the contradiction above), the store-rating (★1-5) threshold table (PDF1 p.38-39, the source
 document's own note flags its digit-alignment as needing a higher-resolution re-crop before trusting it),
 and the fixture-sprite real-extraction task deferred from #83.
+
+**Task #85 (2026-09-25, decision 0156)**: weather. The original HUD always shows the current weather
+(`［雨 ］` etc.) and weather affects customer share, but `game/` had no weather state at all
+(`demand.is_bad_weather` fixed false). Ported `reference_sim`'s CONFIRMED_OFFICIAL 12x5
+`MONTHLY_WEATHER_PERCENTAGES` into a new `weather` config section (contract test asserts an exact match),
+rolled with its own `_weather_rng` (so the existing seeded demand sequence is unchanged) once at start and
+at every day boundary after month-end settlement, and drove `demand.is_bad_weather` from it (雨・雪/荒天,
+same set as `BAD_WEATHER_VALUES`; the 0.6 multiplier is unchanged). Top bar now shows `01年目01月01日
+［快晴］ 09:00`. REMAKE_BALANCED_DEFAULT, tagged in code/JSON/tests: the once-per-day roll timing (the
+original can change weather mid-day; frequency unknown) and displaying 雨・雪 as 雨 / 荒天 as 荒天 (no
+source says when 雪 or which storm type shows). `weather_category_index` is saved (SAVE_SCHEMA_VERSION
+4->5; config schema_version 14->15). Also found PR #261's bundled `game/fonts/ConveniJP.ttf` subset lacked
+快/晴/曇/荒/天 and had no build script; added `tools/build_conveni_font.py` (same Noto Sans JP 2.004
+source at wght 400, keeps every previously shipped glyph plus all characters in ja.po/vertical_slice.json/
+game scripts+scenes; same layout features; 250KB->258KB) and a Godot `Font.has_char` smoke check. Note
+for future sessions: another workflow (PR #261) now also pushes to main -- always fetch/merge main before
+starting a task. Out of scope: mid-day weather changes, per-weather/per-season multipliers (sources are
+qualitative only), weather visuals, and feeding weather into `customer_share.gd` (demand already applies
+it; avoided double-counting).
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
@@ -2084,7 +2103,7 @@ Per CLAUDE.md's discipline, these are recorded rather than silently picked one w
   `-part2`; still unresolved.
 - **Station shopping-population figure**: 2,000 on one page vs. 2,240 on another page of the same
   book -- possibly different size tiers rather than a real conflict; not resolved.
-- **Promotion popularity-boost decay condition (found in task #84, decision 0154)**: two different
+- **Promotion popularity-boost decay condition (found in task #84, decision 0155)**: two different
   strategy guides describe the ad-popularity-boost decay differently. The third companion book
   (`strategy-guide-third-companion-book-full-extraction-2026-09-24.md` PDF1 p.36-37) states the
   effect is universal and one-day-only for every store regardless of rating: "広告の効果が持続する

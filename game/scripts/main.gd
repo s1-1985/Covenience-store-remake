@@ -34,6 +34,7 @@ var _menu_icon_textures: Dictionary = {}
 @onready var show_town_map_button: Button = $UI/Panel/Margin/Scroll/VBox/ShowTownMapButton
 @onready var clock_label: Label = $UI/TopBar/Margin/HBox/ClockValue
 @onready var calendar_label: Label = $UI/TopBar/Margin/HBox/CalendarValue
+@onready var weather_label: Label = $UI/TopBar/Margin/HBox/WeatherValue
 @onready var cash_label: Label = $UI/TopBar/Margin/HBox/CashValue
 @onready var stock_label: Label = $UI/Panel/Margin/Scroll/VBox/StockValue
 @onready var basket_label: Label = $UI/Panel/Margin/Scroll/VBox/BasketValue
@@ -753,6 +754,9 @@ func _refresh_ui() -> void:
         calendar_month_in_year,
         int(snapshot["days_completed_this_month"]) + 1,
     ]
+    # Task #85: bracketed like the original HUD, one-character labels padded
+    # to two cells ("［雨 ］" in the gameplay-video frame video_900s.png).
+    weather_label.text = "［%s］" % str(snapshot["weather_display_label"]).rpad(2)
     cash_label.text = "¥%s" % _format_integer(int(snapshot["cash_yen"]))
     stock_label.text = tr("%d units") % int(snapshot["stock_units"])
     basket_label.text = tr("%d items / ¥%s") % [

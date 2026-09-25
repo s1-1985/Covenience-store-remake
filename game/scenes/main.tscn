@@ -58,6 +58,10 @@ text = "本店"
 theme_override_font_sizes/font_size = 18
 text = "Year 1 · Month 1, Day 1"
 
+[node name="WeatherValue" type="Label" parent="UI/TopBar/Margin/HBox"]
+theme_override_font_sizes/font_size = 18
+text = "［快晴］"
+
 [node name="ClockValue" type="Label" parent="UI/TopBar/Margin/HBox"]
 theme_override_font_sizes/font_size = 18
 text = "09:00"

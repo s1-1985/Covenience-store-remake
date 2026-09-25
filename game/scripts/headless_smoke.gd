@@ -1723,6 +1723,51 @@ func _initialize() -> void:
         _fail("snapshot() must expose the same star_rating the simulation tracks")
         return
 
+    # Task #85: weather rolled from the CONFIRMED_OFFICIAL monthly table.
+    var weather_categories: Array = config["weather"]["categories"]
+    var weather_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
+    for category_index in range(weather_categories.size()):
+        weather_simulation._apply_weather(category_index)
+        var expected_bad_weather: bool = config["weather"]["bad_weather_categories"].has(weather_categories[category_index])
+        if weather_simulation.demand.is_bad_weather != expected_bad_weather:
+            _fail("each weather category must set demand.is_bad_weather from bad_weather_categories")
+            return
+    # The bundled Noto Sans JP subset only contains glyphs the UI uses
+    # (tools/build_conveni_font.py); a missing one renders as a blank box.
+    var bundled_font: FontFile = load("res://fonts/ConveniJP.ttf")
+    for weather_label_text in config["weather"]["display_labels"] + ["［", "］"]:
+        for weather_character in str(weather_label_text):
+            if not bundled_font.has_char(weather_character.unicode_at(0)):
+                _fail("the bundled ConveniJP.ttf subset must contain every weather HUD glyph")
+                return
+    weather_simulation._apply_weather(3)
+    if weather_simulation.weather_display_label() != "雨":
+        _fail("the 雨・雪 weather category must display as the observed original HUD string 雨")
+        return
+    var weather_month_config: Dictionary = config.duplicate(true)
+    weather_month_config["weather"]["monthly_percentages"][0] = [100, 0, 0, 0, 0]
+    weather_month_config["weather"]["monthly_percentages"][1] = [0, 0, 0, 0, 100]
+    var weather_month_simulation = VerticalSliceSimulationScript.new(weather_month_config)
+    if weather_month_simulation.weather_category() != "快晴":
+        _fail("the first day's weather must be rolled from month 1's row")
+        return
+    while weather_month_simulation.month_count == 0:
+        weather_month_simulation._handle_day_boundary()
+        if weather_month_simulation.month_count == 0 and weather_month_simulation.weather_category() != "快晴":
+            _fail("every day of month 1 must keep rolling from month 1's row")
+            return
+    if weather_month_simulation.weather_category() != "荒天":
+        _fail("the first day after a month rollover must roll from the new month's row")
+        return
+    var weather_twin_a = VerticalSliceSimulationScript.new(config.duplicate(true))
+    var weather_twin_b = VerticalSliceSimulationScript.new(config.duplicate(true))
+    for weather_day in range(12):
+        if weather_twin_a.weather_category_index != weather_twin_b.weather_category_index:
+            _fail("the same weather.rng_seed must reproduce the same daily weather sequence")
+            return
+        weather_twin_a._handle_day_boundary()
+        weather_twin_b._handle_day_boundary()
+
     var save_config: Dictionary = config.duplicate(true)
     save_config["demand"] = {
         "nearby_population": 0,
@@ -1766,6 +1811,9 @@ func _initialize() -> void:
         _fail("the save/load test's setup simulation must have settled one month and fired its promotion")
         return
 
+    # Task #85: a weather different from whatever a fresh simulation rolls,
+    # so the round trip below proves it was actually restored.
+    save_simulation._apply_weather(4)
     var save_data: Dictionary = save_simulation.save_state()
     var loaded_simulation = VerticalSliceSimulationScript.new(save_config)
     if not loaded_simulation.load_state(save_data):
@@ -1797,6 +1845,9 @@ func _initialize() -> void:
         return
     if loaded_simulation.staff.members["staff-1"].candidate_id != "manda_machiko":
         _fail("a loaded simulation must leave an un-hired-into staff slot at its config-derived default")
+        return
+    if loaded_simulation.weather_category_index != 4 or not loaded_simulation.demand.is_bad_weather:
+        _fail("a loaded simulation must restore the saved weather and its bad-weather demand flag")
         return
     # +1: load_state() admits a fresh default customer once the loaded
     # layout is in place (customer/staff walk state is not saved/restored
@@ -2637,6 +2688,10 @@ func _initialize() -> void:
     ]
     if economy_ui_scene.calendar_label.text != expected_calendar_text:
         _fail("the calendar label must reflect the simulation's actual day/month progression")
+        return
+    # Task #85: original-style bracketed weather, one-character labels padded.
+    if economy_ui_scene.weather_label.text != "［%s］" % economy_ui_scene.simulation.weather_display_label().rpad(2):
+        _fail("the top bar must show the simulation's current weather in the original's bracketed form")
         return
     if economy_ui_scene.game_over_layer.visible:
         _fail("the game-over overlay must start hidden")
