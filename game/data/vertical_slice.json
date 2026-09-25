@@ -1001,7 +1001,7 @@
       "popularity_gain": 20,
       "trigger_day": 2,
       "trigger_hour": 7,
-      "evidence_note": "CONFIRMED_COMMUNITY, ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['newspaper']."
+      "evidence_note": "cost_yen/trigger_day/trigger_hour CONFIRMED_OFFICIAL (third companion strategy guide, cross-confirmed on two of its own pages), popularity_gain CONFIRMED_COMMUNITY, ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['newspaper']."
     },
     {
       "promotion_id": "airship",
@@ -1009,7 +1009,7 @@
       "popularity_gain": 40,
       "trigger_day": 3,
       "trigger_hour": 15,
-      "evidence_note": "cost_yen/trigger_day/trigger_hour CONFIRMED_COMMUNITY, popularity_gain CONFIRMED_OFFICIAL (strategy guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['airship']."
+      "evidence_note": "cost_yen/trigger_day/trigger_hour and popularity_gain all CONFIRMED_OFFICIAL (strategy guide; cost/day/hour cross-confirmed on two pages of the third companion guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['airship']."
     },
     {
       "promotion_id": "radio",
@@ -1017,7 +1017,7 @@
       "popularity_gain": 60,
       "trigger_day": 1,
       "trigger_hour": 17,
-      "evidence_note": "cost_yen/trigger_day/trigger_hour CONFIRMED_COMMUNITY, popularity_gain CONFIRMED_OFFICIAL (strategy guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['radio']."
+      "evidence_note": "cost_yen/trigger_day/trigger_hour and popularity_gain all CONFIRMED_OFFICIAL (strategy guide; cost/day/hour cross-confirmed on two pages of the third companion guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['radio']."
     },
     {
       "promotion_id": "tv",
@@ -1025,7 +1025,7 @@
       "popularity_gain": 90,
       "trigger_day": 1,
       "trigger_hour": 19,
-      "evidence_note": "cost_yen/trigger_day/trigger_hour CONFIRMED_COMMUNITY, popularity_gain CONFIRMED_OFFICIAL (strategy guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['tv']."
+      "evidence_note": "cost_yen/trigger_day/trigger_hour and popularity_gain all CONFIRMED_OFFICIAL (strategy guide; cost/day/hour cross-confirmed on two pages of the third companion guide), ported from reference_sim/conveni_sim/baseline_data.py PROMOTIONS['tv']."
     }
   ],
   "products": [

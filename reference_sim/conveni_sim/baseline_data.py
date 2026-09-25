@@ -31,6 +31,17 @@ STRATEGY_GUIDE = (
     "official strategy guide scan (本1.pdf/本2.pdf/本2-1.pdf/本2-2.pdf), "
     "see docs/research/strategy-guide-full-decode-2026-09-16.md"
 )
+# Task #84: a third, separately-scanned strategy guide ("新人店長実習マニュアル",
+# PDF1/PDF2 in the doc below) full-transcribed 2026-09-24, distinct from the
+# STRATEGY_GUIDE scan set above. Its advertising table (PDF1 p.36-37) is
+# itself cross-confirmed word-for-word by a second page of the SAME book
+# (PDF2 p.120-121, "広告データ") -- two independent citations within one
+# source document, not a single unverified read.
+STRATEGY_GUIDE_THIRD_COMPANION = (
+    "official strategy guide scan (新人店長実習マニュアル, PDF1 p.36-37 "
+    "cross-confirmed by PDF2 p.120-121 広告データ), see "
+    "docs/research/strategy-guide-third-companion-book-full-extraction-2026-09-24.md"
+)
 
 
 def _sg_fixture(
@@ -517,7 +528,14 @@ PROMOTIONS = (
             "Cash falls by exactly 100,000 yen as the day-2 10:00 event fires.",
         ),
     ),
-    PromotionDefinition("newspaper", EvidenceValue(500_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(20, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(2, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(7, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
+    # Task #84: cost_yen/trigger_day/trigger_hour upgraded from WIKI-sourced
+    # CONFIRMED_COMMUNITY to CONFIRMED_OFFICIAL -- the third companion book's
+    # own advertising table (STRATEGY_GUIDE_THIRD_COMPANION) states the exact
+    # same four numbers per method (10万円/2日10時, 50万円/2日7時, 100万円/
+    # 3日15時, 300万円/1日17時, 500万円/1日19時) that this file already had
+    # from the wiki, so this is a same-value tier upgrade via independent
+    # primary-source confirmation, not a numeric change.
+    PromotionDefinition("newspaper", EvidenceValue(500_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION), EvidenceValue(20, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(2, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION), EvidenceValue(7, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION)),
     # airship/radio/tv popularity_gain corrected from the WIKI-derived
     # +30/+50/+100 to the strategy guide's +40/+60/+90: cost/trigger_day/
     # trigger_hour already matched the guide exactly, and the guide's own
@@ -525,9 +543,9 @@ PROMOTIONS = (
     # primary-source pages (docs/research/strategy-guide-full-decode-2026-09-16.md
     # and the original scans), making it the stronger source for this one
     # field. See docs/research/strategy-guide-fixture-crosscheck-2026-09-16.md.
-    PromotionDefinition("airship", EvidenceValue(1_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE), EvidenceValue(3, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(15, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
-    PromotionDefinition("radio", EvidenceValue(3_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(60, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE), EvidenceValue(1, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(17, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
-    PromotionDefinition("tv", EvidenceValue(5_000_000, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(90, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE), EvidenceValue(1, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D"), EvidenceValue(19, EvidenceLevel.CONFIRMED_COMMUNITY, WIKI + "%E5%AE%A3%E4%BC%9D")),
+    PromotionDefinition("airship", EvidenceValue(1_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION), EvidenceValue(40, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE), EvidenceValue(3, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION), EvidenceValue(15, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION)),
+    PromotionDefinition("radio", EvidenceValue(3_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION), EvidenceValue(60, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE), EvidenceValue(1, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION), EvidenceValue(17, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION)),
+    PromotionDefinition("tv", EvidenceValue(5_000_000, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION), EvidenceValue(90, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE), EvidenceValue(1, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION), EvidenceValue(19, EvidenceLevel.CONFIRMED_OFFICIAL, STRATEGY_GUIDE_THIRD_COMPANION)),
 )
 
 _PERMIT_FEE_AND_DISTANCE_YEN_TILES = {

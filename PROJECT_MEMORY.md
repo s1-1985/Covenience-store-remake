@@ -1824,6 +1824,31 @@ conveni_additional_assets_v1/reference/video_900s.png` and `video_904s.png`) cle
 artwork at native resolution and are ready to use for that follow-up; extracting and catalog-ID-matching
 individual fixture crops from them is a larger, separate task than this one's floor/wall/entrance wiring.
 
+**Task #84 (2026-09-25, decision 0154)**: user said to keep going autonomously, with a standing reminder
+to always keep first-title fidelity in mind. Attempted to start on task #83's flagged fixture-sprite
+follow-up first, but cropping candidate regions out of `video_900s.png` for closer inspection showed the
+top-row candidates are plausibly a UI menu overlay (an advertising-selection-style red bar), not confirmed
+in-world fixtures -- given the real risk of embedding a wrong CONFIRMED_VISUAL claim from a single
+ambiguous frame of an NPC store, backed off that approach rather than push through it (flagged in decision
+0154 for a future attempt using multiple corroborating frames instead of one). Pivoted to a zero-risk,
+already-cross-confirmed data-evidence upgrade instead: `docs/research/strategy-guide-third-companion-
+book-full-extraction-2026-09-24.md`'s advertising table (PDF1 p.36-37, itself cross-confirmed word-for-
+word by the same book's PDF2 p.120-121 "広告データ") states the exact same cost_yen/trigger_day/
+trigger_hour numbers that `baseline_data.py`'s `PROMOTIONS` already had for newspaper/airship/radio/tv
+from a CONFIRMED_COMMUNITY wiki citation -- upgraded those three fields on all four entries to
+CONFIRMED_OFFICIAL citing the new `STRATEGY_GUIDE_THIRD_COMPANION` constant (no numeric values changed,
+since they already matched), and synced `game/data/vertical_slice.json`'s evidence_note strings.
+Separately, while reading `promotion.py`'s existing `PROMOTION_DECAY_STAR_THRESHOLD` docstring, found a
+CONTRADICTS finding: the third companion book describes the ad popularity boost as universally one-day-
+only for every store, while promotion.py's own cited "オールテクニックガイド" describes decay as
+conditional on the store being 3-star or below -- recorded in section 21.4 rather than resolved either
+way, and `promotion.py`'s existing decay machinery (which deliberately never invents a numeric rate) was
+left untouched. `reference_sim`'s existing promotion contract test passed unchanged (it asserts numeric
+values, not evidence-tier strings). Explicitly out of scope: implementing the ad decay mechanic itself
+(blocked on the contradiction above), the store-rating (★1-5) threshold table (PDF1 p.38-39, the source
+document's own note flags its digit-alignment as needing a higher-resolution re-crop before trusting it),
+and the fixture-sprite real-extraction task deferred from #83.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
@@ -2059,6 +2084,19 @@ Per CLAUDE.md's discipline, these are recorded rather than silently picked one w
   `-part2`; still unresolved.
 - **Station shopping-population figure**: 2,000 on one page vs. 2,240 on another page of the same
   book -- possibly different size tiers rather than a real conflict; not resolved.
+- **Promotion popularity-boost decay condition (found in task #84, decision 0154)**: two different
+  strategy guides describe the ad-popularity-boost decay differently. The third companion book
+  (`strategy-guide-third-companion-book-full-extraction-2026-09-24.md` PDF1 p.36-37) states the
+  effect is universal and one-day-only for every store regardless of rating: "広告の効果が持続する
+  のは、広告を出したその日だけ。翌日になると上がった人気度がドンドン下がってしまう." The
+  "オールテクニックガイド" already cited in `reference_sim/conveni_sim/promotion.py`'s
+  `PROMOTION_DECAY_STAR_THRESHOLD` states decay only applies to stores at 3-star or below:
+  "ランク評価が3つ星以下の店舗は、1日毎に宣伝の効果が薄れていく." `promotion.py`'s existing
+  `PopularityDecayOpportunity` machinery already deliberately records decay events without
+  inventing a numeric rate (per its own docstring) -- this newer conflict is a second, more basic
+  disagreement about the *condition* under which decay applies at all (universal vs. rating-gated),
+  not just its magnitude. Flagged per CLAUDE.md's discipline rather than silently picking one guide
+  over the other; not resolved or acted on in task #84.
 
 ### 21.5 Deliberately not re-litigated
 
