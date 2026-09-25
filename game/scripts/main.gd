@@ -13,6 +13,13 @@ var site_panel: PanelContainer = null
 var site_info_label: Label = null
 var site_buy_button: Button = null
 var _site_origin := Vector2i(-1, -1)
+# Task #104: the 「店舗を選んで下さい」 panel shown after the land is chosen.
+var store_type_panel: PanelContainer = null
+var store_type_info_label: Label = null
+var store_type_build_button: Button = null
+var _store_type_buttons: Dictionary = {}
+var _store_type_choice := ""
+var _store_view_left := -1.0
 # Task #96: the newest event already turned into a sound, and whether the
 # clear fanfare has played.
 var _heard_event_sequence := 0
@@ -144,6 +151,9 @@ func _ready() -> void:
     if config.is_empty():
         return
     simulation = VerticalSliceSimulationScript.new(config)
+    # Task #104: the store (and so config["store"]/["fixtures"]/...) can
+    # change when it is built, so the UI reads the simulation's own config.
+    config = simulation.config
     tick_seconds = float(config["simulation"]["tick_seconds"])
     _save_service = SaveGameServiceScript.new()
     # GameLaunchState is an autoload (project.godot [autoload]); it is only
@@ -158,6 +168,7 @@ func _ready() -> void:
     town_view.bind(simulation)
     _fit_store_view()
     _build_site_panel()
+    _build_store_type_panel()
     _build_fixture_info_panel()
     _build_rival_panel()
     town_view.map_tapped.connect(_on_map_tapped)
@@ -927,8 +938,9 @@ func _load_config() -> Dictionary:
     if loaded.get("provisional", false) != true:
         push_error("Vertical slice config must explicitly remain provisional")
         return {}
-    # Task #89: every new game starts in the strategy guide's p.48 store
-    # (GuideStartingStore). The automated UI scenarios set the
+    # Task #89/#104: every new game gets the guide town and, once the land
+    # and store are chosen, a furnished small store (GuideStartingStore).
+    # The automated UI scenarios set the
     # PROTOTYPE_STORE_FOR_TESTS_META Engine meta to keep the small
     # prototype store their scripted coordinates were written against.
     if not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META):
@@ -1014,6 +1026,9 @@ func _fit_store_view() -> void:
     var natural := Vector2(int(store["width_tiles"]), int(store["height_tiles"])) * tile_pixels
     var right_edge: float = ($UI/Panel as Control).offset_left - 20.0
     var shortcuts := $UI.get_node_or_null("AndroidShortcuts") as Control
+    if _store_view_left < 0.0:
+        _store_view_left = store_view.position.x
+    store_view.position.x = _store_view_left
     if shortcuts != null:
         store_view.position.x = 20.0
         right_edge = shortcuts.position.x - 10.0
@@ -1023,6 +1038,9 @@ func _fit_store_view() -> void:
     # Task #90: the town map uses the same area.
     town_view.position = store_view.position
     town_view.view_size = available
+    # Task #104: a small store is centred in that area instead of hugging
+    # its left edge.
+    store_view.position.x += maxf(0.0, (available.x - natural.x * fit) / 2.0)
 
 
 # Task #95: the 「出店場所を選んで下さい」 bar along the bottom of the town
@@ -1070,6 +1088,8 @@ func _sync_site_selection() -> void:
     var was_selecting := selecting_site
     selecting_site = _needs_store_site()
     site_panel.visible = selecting_site
+    store_type_panel.visible = false
+    _store_layout_changed()
     town_view.selecting_site = selecting_site
     town_view.show_site_cursor(Vector2i(-1, -1), false)
     _site_origin = Vector2i(-1, -1)
@@ -1090,7 +1110,7 @@ func _sync_site_selection() -> void:
 
 
 func _on_site_tapped(origin: Vector2i) -> void:
-    if not selecting_site:
+    if not selecting_site or store_type_panel.visible:
         return
     _site_origin = origin
     var quote: Dictionary = simulation.store_site_quote(origin)
@@ -1101,6 +1121,17 @@ func _on_site_tapped(origin: Vector2i) -> void:
     site_buy_button.disabled = (
         not bool(quote["buildable"]) or simulation.economy.cash_yen < int(quote["total_yen"])
     )
+
+
+# Task #104: the store just built (or loaded) may be another size than the
+# one drawn so far.
+func _store_layout_changed() -> void:
+    config = simulation.config
+    store_view.bind(config, simulation)
+    store_view.selected_fixture_id = ""
+    _fit_store_view()
+    _populate_sample_layout_option()
+    _refresh_procure_fixture_option()
 
 
 # Like the original's land popup 「空地 ¥20,000,000 🚬○🍺○💊○」 (guide p.10),
@@ -1129,16 +1160,122 @@ func _site_quote_text(quote: Dictionary) -> String:
 func _on_buy_site_pressed() -> void:
     if not selecting_site or _site_origin.x < 0:
         return
-    if not simulation.try_buy_store_site(_site_origin):
+    if simulation.store_types().is_empty():
+        _build_store(simulation.store_type_id)
+        return
+    # Task #104: like the original, the store is picked after the land.
+    _store_type_choice = ""
+    for entry in simulation.store_types():
+        if simulation.store_type_is_selectable(str(entry["id"])):
+            _store_type_choice = str(entry["id"])
+            break
+    store_type_panel.visible = true
+    _refresh_store_type_panel()
+
+
+func _build_store(type_id: String) -> void:
+    if not simulation.try_buy_store_site(_site_origin, type_id):
         site_info_label.text = tr("Cannot buy this land")
+        if store_type_panel.visible:
+            store_type_info_label.text = tr("Not enough money to buy the land and build this store")
         SoundManager.play_sfx(str(config["sound"]["refused_sfx"]))
         return
+    store_type_panel.visible = false
     layout_edit_label.text = tr("Bought the land and opened the store")
     _sync_site_selection()
     paused = false
     pause_button.text = tr("Pause")
     accumulator = 0.0
     _refresh_ui()
+
+
+# Task #104: 「店舗を選んで下さい」 -- the six stores in 2 rows x 3 columns
+# with the ones that cannot be built yet greyed out, and the chosen one's
+# price (CONFIRMED_VISUAL layout of the PS screen, see
+# guide_store_types.evidence_note). Platform presentation.
+func _build_store_type_panel() -> void:
+    store_type_panel = PanelContainer.new()
+    store_type_panel.name = "StoreTypePanel"
+    store_type_panel.theme = ($UI/Panel as Control).theme
+    store_type_panel.visible = false
+    var box := VBoxContainer.new()
+    store_type_panel.add_child(box)
+    var title := Label.new()
+    title.text = tr("Choose your store")
+    title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    box.add_child(title)
+    var grid := GridContainer.new()
+    grid.columns = 3
+    box.add_child(grid)
+    var cells: Dictionary = {}
+    for entry in simulation.store_types():
+        var cell: Array = entry["grid_cell"]
+        cells[Vector2i(int(cell[0]), int(cell[1]))] = entry
+    for row in 2:
+        for column in 3:
+            var entry: Dictionary = cells.get(Vector2i(column, row), {})
+            var button := Button.new()
+            button.custom_minimum_size = Vector2(96, 96)
+            button.toggle_mode = true
+            button.expand_icon = true
+            if not entry.is_empty():
+                var type_id := str(entry["id"])
+                button.name = "StoreType_" + type_id
+                button.icon = _menu_icon("store_types", str(entry["icon"]))
+                button.disabled = not simulation.store_type_is_selectable(type_id)
+                if button.disabled:
+                    button.modulate = Color(0.4, 0.4, 0.4)
+                button.pressed.connect(func():
+                    _store_type_choice = type_id
+                    _refresh_store_type_panel())
+                _store_type_buttons[type_id] = button
+            else:
+                button.disabled = true
+            grid.add_child(button)
+    store_type_info_label = Label.new()
+    store_type_info_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    store_type_info_label.custom_minimum_size = Vector2(320, 0)
+    box.add_child(store_type_info_label)
+    var row_box := HBoxContainer.new()
+    box.add_child(row_box)
+    store_type_build_button = Button.new()
+    store_type_build_button.name = "BuildStoreButton"
+    store_type_build_button.text = tr("Build this store")
+    store_type_build_button.pressed.connect(func(): _build_store(_store_type_choice))
+    row_box.add_child(store_type_build_button)
+    var back := Button.new()
+    back.name = "StoreTypeBackButton"
+    back.text = tr("Back")
+    back.pressed.connect(func(): store_type_panel.visible = false)
+    row_box.add_child(back)
+    for button in [store_type_build_button, back]:
+        button.custom_minimum_size = Vector2(0, 56)
+        button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    $UI.add_child(store_type_panel)
+    var panel_size := store_type_panel.get_combined_minimum_size()
+    store_type_panel.size = panel_size
+    store_type_panel.position = town_view.position + (town_view.view_size - panel_size) / 2.0
+
+
+func _refresh_store_type_panel() -> void:
+    for type_id in _store_type_buttons:
+        (_store_type_buttons[type_id] as Button).set_pressed_no_signal(type_id == _store_type_choice)
+    var entry: Dictionary = GuideStartingStoreScript.store_type_entry(config, _store_type_choice)
+    if entry.is_empty():
+        store_type_info_label.text = ""
+        store_type_build_button.disabled = true
+        return
+    var floor_tiles: Array = entry["floor_tiles"]
+    var price := int(entry["construction_price_yen"])
+    var land := int(simulation.store_site_quote(_site_origin).get("total_yen", 0))
+    store_type_info_label.text = "%s（%d×%d）　¥%s\n%s" % [
+        tr("store_tier_" + str(entry["size_tier"])), int(floor_tiles[0]), int(floor_tiles[1]),
+        _format_integer(price),
+        tr("Land ¥%s + store ¥%s = ¥%s") % [
+            _format_integer(land), _format_integer(price), _format_integer(land + price),
+        ],
+    ]
+    store_type_build_button.disabled = simulation.economy.cash_yen < land + price
 
 
 # Task #96: sounds for what just happened -- each event type in

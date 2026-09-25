@@ -74,10 +74,26 @@ func _run() -> void:
         return
     await _capture("preview-site")
     game.site_buy_button.pressed.emit()
-    game.paused = true
-    if not _require(not game.selecting_site and game.store_view.visible, "Buying the land opens the store"):
+    # Task #104: then 「店舗を選んで下さい」 -- six stores, the two small
+    # ones pickable, the chosen one's price shown.
+    if not _require(game.store_type_panel.visible and game.selecting_site, "Buying the land asks which store to build"):
         return
-    if not _require(game.simulation.economy.cash_yen == 200000000 - 21000000, "The land is paid from the starting cash"):
+    var locked := 0
+    for type_id in game._store_type_buttons:
+        if (game._store_type_buttons[type_id] as Button).disabled:
+            locked += 1
+    if not _require(game._store_type_buttons.size() == 6 and locked == 4, "Six stores, four of them locked at the start"):
+        return
+    if not _require(game._store_type_choice == "small_top" and "小型店（5×8）　¥6,000,000" in game.store_type_info_label.text, "The small store and its price are shown: " + game.store_type_info_label.text):
+        return
+    await _capture("preview-store-type")
+    game.find_child("BuildStoreButton", true, false).pressed.emit()
+    game.paused = true
+    if not _require(not game.selecting_site and game.store_view.visible and not game.store_type_panel.visible, "Building the store opens it"):
+        return
+    if not _require(game.simulation.economy.cash_yen == 200000000 - 21000000 - 6000000, "The land and the store are paid from the starting cash"):
+        return
+    if not _require(game.simulation.layout.width_subcells == 10 and game.simulation.inventory.product_order.size() == 14, "The furnished 5x8 small store stands on the site"):
         return
     if not _require(game.simulation._rival_stores.size() == 2 and "競合2店" in game.town_label.text, "The rival 本店 and 2号店 are in town: " + game.town_label.text):
         return

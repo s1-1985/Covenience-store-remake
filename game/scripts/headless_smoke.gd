@@ -184,7 +184,11 @@ func _initialize() -> void:
 
     # Task #89: the store every new game starts in -- the guide's p.48
     # store (12x8 tiles, 34 stocked shelves) -- run for a full business day.
-    var guide_config: Dictionary = GuideStartingStoreScript.apply(config)
+    # Task #104: new games now open in a small store (checked below); the
+    # p.48 store stays in the data, checked here without the store types.
+    var p48_source: Dictionary = config.duplicate(true)
+    p48_source.erase("guide_store_types")
+    var guide_config: Dictionary = GuideStartingStoreScript.apply(p48_source)
     if guide_config["store"]["width_tiles"] != 12 or guide_config["store"]["height_tiles"] != 8:
         _fail("the guide starting store must use the confirmed 12x8 large floor")
         return
@@ -3110,6 +3114,8 @@ func _initialize() -> void:
         return
     if not _check_business_hours():
         return
+    if not _check_store_types():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -3626,4 +3632,98 @@ func _check_business_hours() -> bool:
     if not prototype.is_open_now():
         _fail("the prototype scenarios stay open all day")
         return false
+    return true
+
+
+# Task #104: 「店舗を選んで下さい」 -- six stores, only the two small ones
+# buildable at the start, the construction price paid on top of the land,
+# and each small store's furnished opening layout working for a whole day.
+func _check_store_types() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    if "REMAKE_BALANCED_DEFAULT" not in str(fresh["guide_store_types"]["evidence_note"]):
+        _fail("the small opening layouts must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var applied: Dictionary = GuideStartingStoreScript.apply(fresh)
+    if Vector2i(int(applied["store"]["width_tiles"]), int(applied["store"]["height_tiles"])) != Vector2i(5, 8):
+        _fail("a new game opens in the 5x8 small store until one is built")
+        return false
+    var expected := {
+        "small_top": [6_000_000, true, [0, 0]], "small_bottom": [6_000_000, true, [0, 1]],
+        "medium_top": [12_000_000, false, [1, 0]], "medium_bottom": [12_000_000, false, [1, 1]],
+        "large_top": [18_000_000, false, [2, 0]], "large_bottom": [18_000_000, false, [2, 1]],
+    }
+    var simulation = VerticalSliceSimulationScript.new(applied)
+    if simulation.store_types().size() != 6:
+        _fail("the store selection has six stores")
+        return false
+    for entry in simulation.store_types():
+        var want: Array = expected[str(entry["id"])]
+        if (
+            simulation.store_type_price_yen(str(entry["id"])) != int(want[0])
+            or simulation.store_type_is_selectable(str(entry["id"])) != bool(want[1])
+            or Vector2i(int(entry["grid_cell"][0]), int(entry["grid_cell"][1])) != Vector2i(want[2][0], want[2][1])
+        ):
+            _fail("wrong price, lock or place for store %s" % entry["id"])
+            return false
+    if simulation.try_buy_store_site(Vector2i(13, 21), "medium_top"):
+        _fail("a medium store cannot be built at the start")
+        return false
+    var cash_before: int = simulation.economy.cash_yen
+    if not simulation.try_buy_store_site(Vector2i(13, 21), "small_bottom"):
+        _fail("the 8x5 small store must be buildable")
+        return false
+    if simulation.economy.cash_yen != cash_before - 21_000_000 - 6_000_000:
+        _fail("building pays the land and the store's 6,000,000 yen")
+        return false
+    if (
+        simulation.store_type_id != "small_bottom"
+        or simulation.layout.width_subcells != 16 or simulation.layout.height_subcells != 10
+        or simulation.event_log.count_type("store_built") != 1
+    ):
+        _fail("the 8x5 store must stand on the site")
+        return false
+    if simulation.inventory.product_order.size() != 14 or not simulation._all_staff_are_walkable():
+        _fail("the small store opens with 14 stocked shelves and its staff inside")
+        return false
+    for product_id in simulation.inventory.product_order:
+        var product = simulation.inventory.get_product(product_id)
+        if product.stock_units <= 0:
+            _fail("every opening shelf starts stocked")
+            return false
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(simulation.save_state()):
+        _fail("a save of the 8x5 store must load into a new game")
+        return false
+    if reloaded.store_type_id != "small_bottom" or reloaded.layout.width_subcells != 16:
+        _fail("load must rebuild the saved store type")
+        return false
+    # A whole day in each small store: customers keep coming, shop at the
+    # same time and buy across the shelves.
+    for type_id in ["small_top", "small_bottom"]:
+        var day = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+        if not day.try_buy_store_site(Vector2i(13, 21), type_id):
+            _fail("%s must be buildable" % type_id)
+            return false
+        var most_inside := 0
+        for minute in 24 * 60:
+            day.tick()
+            most_inside = maxi(most_inside, day.customers.active_customers().size())
+        var sold: Dictionary = {}
+        for sale in day.economy.sale_records:
+            for line in sale["lines"]:
+                sold[str(line["product_id"])] = true
+        if day.is_game_over or most_inside < 2 or int(day.snapshot()["completed_visits"]) < 10 or sold.size() < 8:
+            _fail("%s must run a normal first day: inside %d, visits %d, products %d" % [
+                type_id, most_inside, int(day.snapshot()["completed_visits"]), sold.size(),
+            ])
+            return false
+        # The first month end multiplies the four days' running result by
+        # 8, but not the land and the store, which were paid once.
+        if type_id == "small_top":
+            while day.month_count == 0:
+                day.tick()
+            var settlement: Dictionary = day.economy.month_end_records[0]["details"]
+            if int(settlement["capital_yen"]) != 27_000_000 or day.is_game_over:
+                _fail("the month end must leave the land and store out of the x8: %s" % settlement)
+                return false
     return true

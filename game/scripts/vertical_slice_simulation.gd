@@ -21,6 +21,7 @@ const StaffGrowthScript := preload("res://scripts/domain/staff_growth.gd")
 const CheckoutAngerScript := preload("res://scripts/domain/checkout_anger.gd")
 const TownSpatialScript := preload("res://scripts/domain/town_spatial.gd")
 const StoreSiteScript := preload("res://scripts/domain/store_site.gd")
+const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -30,6 +31,19 @@ const StoreSiteScript := preload("res://scripts/domain/store_site.gd")
 # across REPRESENTATIVE_DAYS_PER_MONTH days into the displayed monthly figure.
 const REPRESENTATIVE_DAYS_PER_MONTH := 4
 const MONTH_MULTIPLIER := 8
+# Task #104: one-off purchases (land, the store building, buying out a
+# rival, fixtures, permits...) are paid once, not part of the four days'
+# running 収支 that the guide multiplies by 8. The guide's wording ("4日間の
+# 収支を8倍することで、1月の収支が決定する") is about running the store;
+# scaling a 20,000,000-yen land purchase to 160,000,000 would bankrupt every
+# new game at its first month end, which the guide's own play (start with
+# 200,000,000, buy land, keep going) rules out -- an inference, not a
+# stated rule. Promotions, stock and wages stay in the x8 as before.
+const CAPITAL_EXPENSE_TYPES := [
+    "store_site", "store_construction", "chain_expansion", "rival_buyout",
+    "rival_investigation", "fixture_purchase", "fixture_sold", "permit_purchase",
+    "sample_layout_loaded",
+]
 
 # CONFIRMED, not a guess:
 # - bankruptcy: PS footage and an SS play record support game over when cash
@@ -131,6 +145,10 @@ var _dirty_cells: Array[Vector2i] = []
 const MAX_DIRTY_CELLS := 24
 var _days_completed_this_month: int
 var _cash_at_month_start: int
+# Task #104: expense_records index where this month began, so the month-end
+# settlement can leave one-off purchases out of the x8 (see
+# CAPITAL_EXPENSE_TYPES).
+var _expense_index_at_month_start := 0
 var _revenue_at_month_start: int
 var is_game_over: bool
 var game_over_reason: String
@@ -181,6 +199,9 @@ const NO_STORE_SITE := Vector2i(-1, -1)
 var store_site
 var store_site_origin := NO_STORE_SITE
 var _bought_buildings: Array[int] = []
+# Task #104: which of the 「店舗を選んで下さい」 stores stands on the site
+# (config["store_types"], guide_store_types); "" for configs without them.
+var store_type_id := ""
 # Task #59: REMAKE_BALANCED_DEFAULT rival-store roster -- position and
 # held permits for each configured rival, used only to enforce the
 # CONFIRMED_OFFICIAL permit-exclusion distance rule
@@ -242,6 +263,7 @@ func _init(source_config: Dictionary) -> void:
     _customer_share = CustomerShareScript.new()
     _store_size_tier = str(config["store"]["size_tier"])
     assert(_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
+    store_type_id = str(config.get("store_type_id", ""))
     _store_events = StoreEventsScript.new()
     _checkout_timing = CheckoutTimingScript.new()
     _restock_timing = RestockTimingScript.new()
@@ -302,6 +324,7 @@ func reset() -> void:
     _clear_store_site()
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
+    _expense_index_at_month_start = economy.expense_records.size()
     is_game_over = false
     game_over_reason = ""
     clear_condition_met = false
@@ -966,12 +989,24 @@ func store_site_quote(origin: Vector2i) -> Dictionary:
 # StoreSite), clears those buildings, and sets the store's nearby population
 # from the site. Only once per game (a new store elsewhere is a separate,
 # not yet built flow).
-func try_buy_store_site(origin: Vector2i) -> bool:
+func try_buy_store_site(origin: Vector2i, type_id := "") -> bool:
     if is_game_over or store_site == null or has_store_site():
         return false
     var site_quote := store_site_quote(origin)
-    if not bool(site_quote["buildable"]) or economy.cash_yen < int(site_quote["total_yen"]):
+    if type_id.is_empty():
+        type_id = store_type_id
+    var construction_yen := 0
+    if not store_types().is_empty():
+        if not store_type_is_selectable(type_id):
+            return false
+        construction_yen = store_type_price_yen(type_id)
+    if (
+        not bool(site_quote["buildable"])
+        or economy.cash_yen < int(site_quote["total_yen"]) + construction_yen
+    ):
         return false
+    if type_id != store_type_id:
+        _build_store_type(type_id)
     var expense: Dictionary = economy.record_explicit_expense(
         "store_site",
         minute_of_day,
@@ -988,7 +1023,62 @@ func try_buy_store_site(origin: Vector2i) -> bool:
         "cost_yen": int(site_quote["total_yen"]),
         "expense_id": expense["expense_id"],
     })
+    if construction_yen > 0:
+        var construction: Dictionary = economy.record_explicit_expense(
+            "store_construction", minute_of_day, construction_yen, {"store_type_id": type_id}
+        )
+        _record_event("store_built", {
+            "store_type_id": type_id,
+            "cost_yen": construction_yen,
+            "expense_id": construction["expense_id"],
+        })
     return true
+
+
+# Task #104: the six stores of 「店舗を選んで下さい」 (guide_store_types:
+# CONFIRMED_VISUAL that only the two small ones can be picked at the start,
+# CONFIRMED_OFFICIAL sizes and prices).
+func store_types() -> Array:
+    return config.get("store_types", [])
+
+
+func store_type_is_selectable(type_id: String) -> bool:
+    var entry := GuideStartingStoreScript.store_type_entry(config, type_id)
+    return bool(entry.get("selectable_at_start", false)) and entry.has("layout")
+
+
+func store_type_price_yen(type_id: String) -> int:
+    var entry := GuideStartingStoreScript.store_type_entry(config, type_id)
+    return int(entry.get("construction_price_yen", 0))
+
+
+# Replaces the store (floor, fixtures, shelves and their stock, staff posts)
+# with store type `type_id`'s opening layout. Only before the store opens:
+# anything that happened inside the old floor (a customer, dirt, layout
+# edits) goes with it; hired staff stay hired.
+func _build_store_type(type_id: String) -> void:
+    var roster: Array[Dictionary] = _staff_roster_snapshot()
+    GuideStartingStoreScript.apply_store_type(config, type_id)
+    store_type_id = type_id
+    _sample_layout_catalog.clear()
+    for entry in config["sample_layouts"]:
+        _sample_layout_catalog[str(entry["sample_id"])] = entry
+    layout = StoreLayoutScript.new(config["store"], config["fixtures"])
+    inventory = InventoryCatalogScript.new(config["products"])
+    customers = CustomerRosterScript.new(config["customer"])
+    staff = StaffRosterScript.new(config["staff"])
+    for roster_entry in roster:
+        var candidate_id := str(roster_entry["candidate_id"])
+        if staff.members.has(str(roster_entry["staff_id"])) and _staff_candidate_catalog.has(candidate_id):
+            staff.members[str(roster_entry["staff_id"])].hire(_staff_candidate_catalog[candidate_id])
+    _store_size_tier = str(config["store"]["size_tier"])
+    assert(_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
+    _checkout_queue.clear()
+    _dirty_cells.clear()
+    _reset_stamina()
+    _refresh_interactions()
+    assert(_all_staff_are_walkable() and _required_routes_are_reachable())
+    _start_default_customer()
 
 
 func _apply_store_site(origin: Vector2i, bought: Array) -> void:
@@ -1765,7 +1855,7 @@ func observation_snapshot() -> Dictionary:
     }
 
 
-const SAVE_SCHEMA_VERSION := 8
+const SAVE_SCHEMA_VERSION := 9
 
 # Deliberately not saved/restored: the active customer's mid-visit walk
 # state (position along a route, basket-so-far, checkout progress) and
@@ -1798,6 +1888,7 @@ func save_state() -> Dictionary:
         "days_completed_this_month": _days_completed_this_month,
         "cash_at_month_start": _cash_at_month_start,
         "revenue_at_month_start": _revenue_at_month_start,
+        "expense_index_at_month_start": _expense_index_at_month_start,
         "is_game_over": is_game_over,
         "game_over_reason": game_over_reason,
         "clear_condition_met": clear_condition_met,
@@ -1814,6 +1905,8 @@ func save_state() -> Dictionary:
         "investigated_rival_ids": _investigated_rivals.keys(),
         # Task #103 (schema 8).
         "business_hours_id": business_hours_id,
+        # Task #104 (schema 9): which store stands on the site.
+        "store_type_id": store_type_id,
         "weather_category_index": weather_category_index,
         "chain_visitor_milestone": {
             "last_observed_total": _chain_visitor_milestone.last_observed_total,
@@ -1851,7 +1944,18 @@ func load_state(data: Dictionary) -> bool:
     if int(data.get("save_schema_version", -1)) != SAVE_SCHEMA_VERSION:
         return false
     _require_save_data(data)
+    # Task #104: the saved store may be another type than the one this
+    # simulation stands in; build that one first (and put this one back if
+    # the save does not fit it after all).
+    var saved_type := str(data["store_type_id"])
+    var previous_type := store_type_id
+    if saved_type != store_type_id:
+        if saved_type.is_empty() or not GuideStartingStoreScript.store_type_entry(config, saved_type).has("layout"):
+            return false
+        _build_store_type(saved_type)
     if not layout.fixture_snapshot_is_valid(data["fixtures"]):
+        if previous_type != store_type_id:
+            _build_store_type(previous_type)
         return false
     # Clears every subsystem back to its config-derived starting point
     # first (the same subsystems reset() touches, minus admitting a
@@ -1898,6 +2002,7 @@ func load_state(data: Dictionary) -> bool:
     _days_completed_this_month = int(data["days_completed_this_month"])
     _cash_at_month_start = int(data["cash_at_month_start"])
     _revenue_at_month_start = int(data["revenue_at_month_start"])
+    _expense_index_at_month_start = int(data["expense_index_at_month_start"])
     is_game_over = bool(data["is_game_over"])
     game_over_reason = str(data["game_over_reason"])
     clear_condition_met = bool(data["clear_condition_met"])
@@ -2189,8 +2294,18 @@ func _apply_daily_staff_wages() -> void:
     })
 
 
+func _capital_spent_this_month_yen() -> int:
+    var total := 0
+    for index in range(_expense_index_at_month_start, economy.expense_records.size()):
+        var record: Dictionary = economy.expense_records[index]
+        if CAPITAL_EXPENSE_TYPES.has(str(record["expense_type"])):
+            total += int(record["amount_yen"])
+    return total
+
+
 func _settle_month_end() -> void:
-    var four_day_net_result_yen: int = economy.cash_yen - _cash_at_month_start
+    var capital_yen := _capital_spent_this_month_yen()
+    var four_day_net_result_yen: int = economy.cash_yen - _cash_at_month_start + capital_yen
     var month_result_yen: int = four_day_net_result_yen * MONTH_MULTIPLIER
     var adjustment_yen: int = month_result_yen - four_day_net_result_yen
     var record: Dictionary = economy.record_month_end_settlement(
@@ -2200,6 +2315,7 @@ func _settle_month_end() -> void:
             "month_number": month_count + 1,
             "four_day_net_result_yen": four_day_net_result_yen,
             "month_result_yen": month_result_yen,
+            "capital_yen": capital_yen,
         }
     )
     _record_event("month_end_settlement", {
@@ -2218,6 +2334,7 @@ func _settle_month_end() -> void:
     _days_completed_this_month = 0
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
+    _expense_index_at_month_start = economy.expense_records.size()
     _promotions_used_this_month.clear()
     _evaluate_terminal_state()
 
@@ -2716,6 +2833,7 @@ func _require_save_data(data: Dictionary) -> void:
         "days_completed_this_month",
         "cash_at_month_start",
         "revenue_at_month_start",
+        "expense_index_at_month_start",
         "is_game_over",
         "game_over_reason",
         "clear_condition_met",
@@ -2729,6 +2847,7 @@ func _require_save_data(data: Dictionary) -> void:
         "bought_rival_ids",
         "investigated_rival_ids",
         "business_hours_id",
+        "store_type_id",
         "weather_category_index",
         "chain_visitor_milestone",
         "permits_held",

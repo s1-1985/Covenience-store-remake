@@ -2074,6 +2074,16 @@ squares in the catchment, shared with rivals) and want up to 3 of that building'
 - Customers arrive only while open; wages and upkeep follow the open minutes, so 臨時休業 costs none.
 - 「閉店中」 is shown by the clock. Save schema 8.
 
+**Task #104 (2026-09-25, decision 0175)**: the store is chosen after the land, and a new game starts in a small store.
+- 「店舗を選んで下さい」 shows the 6 stores in 2 rows × 3 columns. Only the two small ones can be built at the start;
+  the other four are greyed out (CONFIRMED_VISUAL).
+- Construction costs 6/12/18 million yen and is paid on top of the land (CONFIRMED_OFFICIAL).
+- The furnished 5×8 and 8×5 opening layouts are REMAKE_BALANCED_DEFAULT: 14 shelves and the category mix are taken
+  by analogy from the guide's p.48 store (`tools/build_guide_store_types.py`, block `guide_store_types`).
+- Fix: the month-end ×8 no longer multiplies one-off purchases (`CAPITAL_EXPENSE_TYPES`). Before this, the land
+  purchase was multiplied by 8, which bankrupted every new game at its first month end since task #95.
+- Save schema 9.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

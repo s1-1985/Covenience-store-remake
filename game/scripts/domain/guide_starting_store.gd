@@ -62,4 +62,45 @@ static func apply(config: Dictionary) -> Dictionary:
     # large store's daily upkeep would bankrupt the prototype's 1,000 yen at
     # the first day boundary.
     applied["economy"]["initial_cash_yen"] = int(config["android_preview"]["starting_cash_yen"])
+    # Task #104: the store itself is picked after the land (「店舗を選んで下
+    # さい」, guide_store_types); a new game opens with the default small
+    # store until then.
+    if config.has("guide_store_types"):
+        var store_types: Dictionary = config["guide_store_types"]
+        applied["scenario_id"] = str(store_types["scenario_id"])
+        applied["store_types"] = (store_types["types"] as Array).duplicate(true)
+        apply_store_type(applied, str(store_types["default_id"]))
     return applied
+
+
+# Task #104: lays the furnished layout of store type `type_id` (one of
+# config["store_types"] with a "layout") over `config`, in place. The
+# small layouts are REMAKE_BALANCED_DEFAULT (see
+# guide_store_types.evidence_note).
+static func store_type_entry(config: Dictionary, type_id: String) -> Dictionary:
+    for entry in config.get("store_types", []):
+        if str(entry["id"]) == type_id:
+            return entry
+    return {}
+
+
+static func apply_store_type(config: Dictionary, type_id: String) -> void:
+    var entry := store_type_entry(config, type_id)
+    assert(entry.has("layout"))
+    var layout: Dictionary = entry["layout"]
+    config["store_type_id"] = type_id
+    config["store"] = (layout["store"] as Dictionary).duplicate(true)
+    config["fixtures"] = (layout["fixtures"] as Array).duplicate(true)
+    config["products"] = (layout["products"] as Array).duplicate(true)
+    config["sample_layouts"] = [{
+        "sample_id": "opening_layout",
+        "label": str(layout["sample_layout_label"]),
+        "evidence_note": "The store's own opening arrangement (see guide_store_types.evidence_note), offered as a free 'restore the starting layout' sample.",
+        "fixtures": (layout["fixtures"] as Array).duplicate(true),
+    }]
+    config["simulation"]["checkout_fixture_id"] = str(layout["checkout_fixture_id"])
+    for member in config["staff"]["members"]:
+        member["start_subcell"] = (layout["staff_start_subcells"][str(member["id"])] as Array).duplicate()
+    # REMAKE_BALANCED_DEFAULT: p.48's customer cap scaled by floor area.
+    config["customer"]["max_concurrent_customers"] = int(layout["max_concurrent_customers"])
+    config["provisional_restock"]["product_id"] = str(layout["provisional_restock_product_id"])

@@ -2120,7 +2120,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # would otherwise silently revert a hire on load.
         self.assertIn("func _staff_roster_snapshot() -> Array[Dictionary]:", simulation)
         self.assertIn('"staff_roster": _staff_roster_snapshot(),', simulation)
-        self.assertIn("const SAVE_SCHEMA_VERSION := 8", simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 9", simulation)
         self.assertIn(
             'staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])',
             simulation,
@@ -3233,7 +3233,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertEqual(buyable, {"rival-hq": False, "rival-02": True})
         self.assertTrue((GAME_ROOT / "assets" / "town" / "map_blue_02.png").is_file())
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
-        self.assertIn("const SAVE_SCHEMA_VERSION := 8", simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 9", simulation)
         self.assertIn("# REMAKE_BALANCED_DEFAULT: the guide's start price grown by the land price's", simulation)
         self.assertIn('"bought_rival_ids": owned_branches.map(', simulation)
         self.assertEqual(self.config["sound"]["event_sfx"]["rival_bought_out"], "purchase")
@@ -3657,6 +3657,114 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("themed_panel.theme.default_font_size", smoke)
         self.assertIn('themed_panel.theme.has_stylebox("panel", "PanelContainer")', smoke)
         self.assertIn('themed_panel.theme.has_stylebox("normal", "Button")', smoke)
+
+    def test_store_selection_offers_six_stores_with_only_the_small_ones_at_start(self):
+        # Task #104: 「店舗を選んで下さい」 after the land.
+        import importlib.util
+
+        block = self.config["guide_store_types"]
+        for tag in ("CONFIRMED_VISUAL", "CONFIRMED_OFFICIAL", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, block["evidence_note"])
+        types = {entry["id"]: entry for entry in block["types"]}
+        self.assertEqual(
+            {k: (v["construction_price_yen"], v["selectable_at_start"], tuple(v["floor_tiles"]), tuple(v["grid_cell"]))
+             for k, v in types.items()},
+            {
+                "small_top": (6_000_000, True, (5, 8), (0, 0)),
+                "small_bottom": (6_000_000, True, (8, 5), (0, 1)),
+                "medium_top": (12_000_000, False, (7, 10), (1, 0)),
+                "medium_bottom": (12_000_000, False, (10, 7), (1, 1)),
+                "large_top": (18_000_000, False, (8, 12), (2, 0)),
+                "large_bottom": (18_000_000, False, (12, 8), (2, 1)),
+            },
+        )
+        # Sizes and prices agree with the reference sim's STORE_VARIANTS.
+        from conveni_sim.baseline_data import STORE_VARIANTS
+
+        for variant in STORE_VARIANTS:
+            self.assertEqual(types[variant.id]["construction_price_yen"], variant.construction_price_yen.value)
+            self.assertEqual(tuple(types[variant.id]["floor_tiles"]), tuple(variant.editable_floor.value))
+        for entry in block["types"]:
+            icon = GAME_ROOT / "assets" / "menu_icons" / "store_types" / (entry["icon"] + ".png")
+            self.assertTrue(icon.is_file(), icon)
+            self.assertEqual("layout" in entry, entry["selectable_at_start"])
+
+        # The JSON block is exactly what the documented tool generates.
+        spec = importlib.util.spec_from_file_location(
+            "build_guide_store_types", REPO_ROOT / "tools" / "build_guide_store_types.py"
+        )
+        builder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(builder)
+        base = {k: v for k, v in self.config.items() if k != "guide_store_types"}
+        self.assertEqual(builder.build(base), block)
+        # Analogy with the guide's p.48 store: 34 shelves per 96 tiles -> 14
+        # on 40 tiles, each category's shelf share scaled to 14.
+        self.assertEqual(builder.shelf_count(40), 14)
+        self.assertEqual(
+            builder.assortment(base, 14),
+            {"vegetables": 2, "cold_drink": 2, "snacks": 2, "bread": 1, "daily_goods": 1,
+             "instant_food": 1, "fish": 1, "meat": 1, "underwear": 1, "bento": 1, "ice_cream": 1},
+        )
+
+        catalog = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        for type_id in ("small_top", "small_bottom"):
+            layout = types[type_id]["layout"]
+            store = layout["store"]
+            width, height = store["width_tiles"] * 2, store["height_tiles"] * 2
+            self.assertEqual((store["width_tiles"], store["height_tiles"]), tuple(types[type_id]["floor_tiles"]))
+            self.assertEqual(store["size_tier"], "small")
+            blocked = set()
+            for fixture in layout["fixtures"]:
+                ox, oy = fixture["origin_subcell"]
+                fw, fh = fixture["footprint_tiles"]
+                cells = {(x, y) for x in range(ox, ox + fw * 2) for y in range(oy, oy + fh * 2)}
+                self.assertFalse(cells & blocked, fixture["id"])
+                blocked |= cells
+                self.assertTrue(all(0 <= x < width and 0 <= y < height for x, y in cells))
+            entry = tuple(store["entry_subcell"])
+            goals = [tuple(f["interaction_subcell"]) for f in layout["fixtures"]]
+            goals += [tuple(cell) for cell in layout["staff_start_subcells"].values()]
+            goals.append(tuple(store["exit_subcell"]))
+            for goal in goals:
+                self.assertNotIn(goal, blocked)
+                self.assertTrue(self._reachable(entry, goal, width, height, blocked), (type_id, goal))
+            shelves = {f["id"]: f for f in layout["fixtures"] if f["kind"] == "shelf"}
+            self.assertEqual(len(shelves), 14)
+            for product in layout["products"]:
+                shelf = shelves[product["fixture_id"]]
+                self.assertIn(product["catalog_id"], catalog[shelf["catalog_id"]]["compatible_product_categories"])
+                self.assertEqual(product["initial_stock_units"], catalog[shelf["catalog_id"]]["capacity"])
+            self.assertEqual(layout["max_concurrent_customers"], 3)
+
+        # Code comment + test assertion for the REMAKE layouts, and the
+        # construction price paid on top of the land.
+        starting = (GAME_ROOT / "scripts" / "domain" / "guide_starting_store.gd").read_text(encoding="utf-8")
+        self.assertIn("REMAKE_BALANCED_DEFAULT", starting.split("static func apply_store_type")[0].split("Task #104")[-1])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn('"store_construction", minute_of_day, construction_yen', simulation)
+        self.assertIn('"store_type_id": store_type_id,', simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the small opening layouts must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("building pays the land and the store's 6,000,000 yen", smoke)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("Six stores, four of them locked at the start", preview)
+
+    def test_month_end_x8_leaves_one_off_purchases_out(self):
+        # Task #104: the land, the store building, buyouts, fixtures and
+        # permits are paid once; only the four days' running result is x8.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        capital = re.search(r"const CAPITAL_EXPENSE_TYPES := \[(.*?)\]", simulation, re.S).group(1)
+        for expense_type in ("store_site", "store_construction", "rival_buyout", "fixture_purchase", "permit_purchase"):
+            self.assertIn('"%s"' % expense_type, capital)
+        for expense_type in ("staff_wages", "fixture_maintenance", "inventory_restock", "promotion_cost"):
+            self.assertNotIn('"%s"' % expense_type, capital)
+        self.assertIn(
+            "var four_day_net_result_yen: int = economy.cash_yen - _cash_at_month_start + capital_yen",
+            simulation,
+        )
+        self.assertIn('"expense_index_at_month_start": _expense_index_at_month_start,', simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the month end must leave the land and store out of the x8", smoke)
 
     @staticmethod
     def _reachable(start, goal, width, height, blocked):

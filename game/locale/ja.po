@@ -914,3 +914,30 @@ msgstr "営業時間：%s"
 
 msgid "business hours changed"
 msgstr "営業時間を変えた"
+
+msgid "Choose your store"
+msgstr "店舗を選んで下さい"
+
+msgid "Build this store"
+msgstr "この店舗を建てる"
+
+msgid "Back"
+msgstr "戻る"
+
+msgid "store_tier_small"
+msgstr "小型店"
+
+msgid "store_tier_medium"
+msgstr "中型店"
+
+msgid "store_tier_large"
+msgstr "大型店"
+
+msgid "Land ¥%s + store ¥%s = ¥%s"
+msgstr "土地 ¥%s + 店舗 ¥%s = ¥%s"
+
+msgid "Not enough money to buy the land and build this store"
+msgstr "土地と店舗を買うお金が足りません"
+
+msgid "store built"
+msgstr "店舗を建てた"
