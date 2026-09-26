@@ -2158,6 +2158,13 @@ hours, and whether it is inside the store's area. The 買い物人口 is shown o
 - Fixtures, products and UI icons stay lossless (0.6 MiB together). The engine library is 20.8 MiB of the APK.
 - No game data or mechanic changed.
 
+**Task #116 (2026-09-26, decision 0187)**: the Android APK is built with this project's own slim Godot 4.3 engine.
+- `tools/build_godot_templates.sh` builds it without 3D, Vulkan and unused modules, and with the fallback text server.
+- The engine library drops from 22.1 MiB to 10.0 MiB in the APK; the APK from 26.29 MiB to 16.31 MiB (0.1.15-preview).
+- Exported with `--export-release`, signed with the same debug key as before so it installs over older builds.
+- The template lives in `build/templates/` (not in git); rebuild it with the script on a new machine.
+- Both smokes and screenshots were checked on a Linux build with the same configuration; not yet run on a phone.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
