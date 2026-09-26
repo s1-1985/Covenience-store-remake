@@ -941,3 +941,12 @@ msgstr "土地と店舗を買うお金が足りません"
 
 msgid "store built"
 msgstr "店舗を建てた"
+
+msgid "Losing money for %d months in a row"
+msgstr "%dか月連続の赤字"
+
+msgid "rival withdrew"
+msgstr "ライバル店が撤退した"
+
+msgid "rival opened"
+msgstr "ライバル店が新しく出店した"

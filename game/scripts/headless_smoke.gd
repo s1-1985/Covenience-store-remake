@@ -3116,6 +3116,8 @@ func _initialize() -> void:
         return
     if not _check_store_types():
         return
+    if not _check_rival_withdrawal():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -3739,4 +3741,78 @@ func _check_store_types() -> bool:
             if int(settlement["capital_yen"]) != 27_000_000 or day.is_game_over:
                 _fail("the month end must leave the land and store out of the x8: %s" % settlement)
                 return false
+    return true
+
+
+# Task #106: a rival that the player's stores keep undercutting loses
+# month after month, withdraws after six, and opens again elsewhere; the
+# 本店 holds on while the rival still has a branch. Pressures and sites are
+# the ones tools/guide_store_site.py gives (the contract test runs that side).
+func _check_rival_withdrawal() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    if "REMAKE_BALANCED_DEFAULT" not in str(fresh["guide_town_map"]["rival_ai"]["evidence_note"]):
+        _fail("the rival withdrawal shape must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not simulation.try_buy_store_site(Vector2i(32, 9), "small_top"):
+        _fail("the site next to the rival 2号店 must be buildable")
+        return false
+    var pressure: float = simulation.store_site.rival_pressure(Vector2i(27, 9), [Vector2i(32, 9)], -20, 20)
+    if absf(pressure - 15.0 / 17.0) > 1e-6:
+        _fail("rival pressure at 20%% off must be 15/17: %f" % pressure)
+        return false
+    # List prices: the 2号店 does fine.
+    for month in 7:
+        simulation._step_rivals_at_month_end()
+    if simulation.rival_at(Vector2i(27, 9)) != "rival-02" or simulation.rival_deficit_months("rival-02") != 0:
+        _fail("a rival nobody undercuts keeps trading")
+        return false
+    # 5% off is not enough (the long-play records), 20% off is.
+    simulation.try_set_price_policy(-5)
+    simulation._step_rivals_at_month_end()
+    if simulation.rival_deficit_months("rival-02") != 0:
+        _fail("5%% off next door must not put the 2号店 in the red")
+        return false
+    simulation.try_set_price_policy(-20)
+    for month in 5:
+        simulation._step_rivals_at_month_end()
+    if simulation.rival_deficit_months("rival-02") != 5 or simulation.rival_at(Vector2i(27, 9)) != "rival-02":
+        _fail("five losing months do not make a rival withdraw yet")
+        return false
+    if simulation.rival_deficit_months("rival-hq") != 0:
+        _fail("the far-away 本店 does not feel the price cut")
+        return false
+    simulation._step_rivals_at_month_end()
+    if simulation.rival_at(Vector2i(27, 9)) != "" or simulation.event_log.count_type("rival_withdrew") != 1:
+        _fail("after six losing months in a row the 2号店 withdraws")
+        return false
+    # It opens again at the next month end, somewhere else; a save in
+    # between keeps it waiting.
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(simulation.save_state()) or reloaded._rivals_to_reopen.size() != 1 or reloaded.rival_at(Vector2i(27, 9)) != "":
+        _fail("a save must keep the withdrawn branch waiting to reopen")
+        return false
+    reloaded._step_rivals_at_month_end()
+    if reloaded.rival_at(Vector2i(13, 9)) != "rival-02" or reloaded.event_log.count_type("rival_opened") != 1:
+        _fail("the withdrawn branch must reopen on the best other site (13, 9): %s" % [reloaded._rival_stores])
+        return false
+    if reloaded.rival_deficit_months("rival-02") != 0:
+        _fail("a store that just opened has not lost a month yet")
+        return false
+    # The 本店 holds on while a branch is left, and does not come back.
+    var head = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    head.try_buy_store_site(Vector2i(8, 4), "small_top")
+    head.try_set_price_policy(-20)
+    for month in 6:
+        head._step_rivals_at_month_end()
+    if head.rival_at(Vector2i(8, 10)) != "rival-hq" or head.rival_deficit_months("rival-hq") != 6:
+        _fail("the 本店 must hold on while the rival has a branch")
+        return false
+    head.economy.cash_yen = 200_000_000
+    head.try_buy_out_rival("rival-02")
+    head._step_rivals_at_month_end()
+    head._step_rivals_at_month_end()
+    if head.rival_at(Vector2i(8, 10)) != "" or not head._rival_stores.is_empty() or not head._rivals_to_reopen.is_empty():
+        _fail("with no branch left the losing 本店 withdraws for good")
+        return false
     return true

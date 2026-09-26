@@ -229,3 +229,61 @@ func quote(origin: Vector2i, growth: float, other_stores: Array, removed: Array 
     result["bought_buildings"] = bought
     result["label"] = "・".join(names)
     return result
+
+
+# Task #106: how hard the player's stores press a rival this month --
+# the share of the rival's catchment building squares that are also in a
+# player store's catchment, times the price cut against the cut that has
+# full effect. REMAKE_BALANCED_DEFAULT shape (guide_town_map.rival_ai,
+# tools/guide_store_site.py rival_pressure()).
+func rival_pressure(
+    rival_origin: Vector2i, player_origins: Array, price_change_pct: int,
+    full_effect_cut_pct: int, removed: Array = []
+) -> float:
+    var reach := int(rules["catchment_tiles"])
+    var mine := 0
+    var shared := 0
+    for y in range(rival_origin.y - reach, rival_origin.y + footprint.y + reach):
+        for x in range(rival_origin.x - reach, rival_origin.x + footprint.x + reach):
+            var tile := Vector2i(x, y)
+            if not _building_at.has(tile) or removed.has(_building_at[tile]):
+                continue
+            mine += 1
+            for origin in player_origins:
+                if in_catchment(origin, tile):
+                    shared += 1
+                    break
+    if mine == 0:
+        return 0.0
+    var cut := minf(1.0, float(maxi(0, -price_change_pct)) / float(full_effect_cut_pct))
+    return float(shared) / float(mine) * cut
+
+
+# Task #106: the vacant 2x2 site a rival opens a store on -- the one whose
+# customers (shared with the other stores) are the most, at least
+# min_store_distance_tiles from every store and from the `avoid` sites
+# (where it just withdrew from), top-left-most on a tie; (-1, -1) when
+# there is none. Same rule as tools/guide_store_site.py
+# best_open_site() / place_rivals() (REMAKE_BALANCED_DEFAULT).
+func best_open_site(stores: Array, removed: Array = [], avoid: Array = []) -> Vector2i:
+    var min_distance := int(rules["min_store_distance_tiles"])
+    var best := Vector2i(-1, -1)
+    var best_score := -1.0
+    for y in height:
+        for x in width:
+            var origin := Vector2i(x, y)
+            if not is_buildable_ground(origin) or not buildings_on(origin, removed).is_empty():
+                continue
+            var too_close := false
+            for other in stores + avoid:
+                var other_origin: Vector2i = other
+                if maxi(absi(x - other_origin.x), absi(y - other_origin.y)) < min_distance:
+                    too_close = true
+                    break
+            if too_close:
+                continue
+            var score := shared_catchment(origin, stores, removed)
+            if score > best_score + 1e-9:
+                best_score = score
+                best = origin
+    return best

@@ -217,6 +217,9 @@ var _rival_stores: Array[Dictionary] = []
 # stores ({"id", "position"}), and rivals already investigated.
 var owned_branches: Array[Dictionary] = []
 var _investigated_rivals: Dictionary = {}
+# Task #106: rival branches that withdrew and open again at the next month
+# end (guide_town_map.rival_ai): {"id", "left": the site it left}.
+var _rivals_to_reopen: Array[Dictionary] = []
 # FIFO order in which customers who have finished shopping are waiting for
 # the single checkout fixture's one staff-service slot (task #36, concurrent
 # customers). Serving strictly in arrival order is this project's own
@@ -797,14 +800,113 @@ func _load_rivals() -> void:
     _rival_stores.clear()
     owned_branches.clear()
     _investigated_rivals.clear()
+    _rivals_to_reopen.clear()
     for rival_entry in config["town"].get("rival_stores", []):
-        var rival_permits_held: Array[String] = []
-        rival_permits_held.assign(rival_entry.get("permits_held", []))
-        _rival_stores.append({
-            "id": str(rival_entry["id"]),
-            "position": _vec2i_from_array(rival_entry["position"]),
-            "permits_held": rival_permits_held,
-        })
+        _rival_stores.append(_rival_store(str(rival_entry["id"]), _vec2i_from_array(rival_entry["position"]), 0))
+
+
+func _rival_store(rival_id: String, position: Vector2i, deficit_months: int) -> Dictionary:
+    var rival_permits_held: Array[String] = []
+    for rival_entry in config["town"].get("rival_stores", []):
+        if str(rival_entry["id"]) == rival_id:
+            rival_permits_held.assign(rival_entry.get("permits_held", []))
+    return {
+        "id": rival_id,
+        "position": position,
+        "permits_held": rival_permits_held,
+        "deficit_months": deficit_months,
+    }
+
+
+# Task #106: rivals losing money, withdrawing and opening again elsewhere
+# (evidence in guide_town_map.rival_ai.evidence_note). At each month end:
+# a branch that withdrew at the previous month end opens again on the best
+# vacant site, while the town has fewer than town_store_limit stores
+# (CONFIRMED_OFFICIAL 10, rivals included); then each rival loses the month
+# when the player's stores press it hard enough -- REMAKE_BALANCED_DEFAULT:
+# StoreSite.rival_pressure() >= deficit_pressure_threshold -- and withdraws
+# after withdraw_after_deficit_months losing months in a row (the guide's
+# 半年). PROVISIONAL: the 本店 holds on while the rival has a branch, and a
+# withdrawn 本店 never comes back.
+func _rival_ai() -> Dictionary:
+    if not config.has("guide_town_map"):
+        return {}
+    return config["guide_town_map"].get("rival_ai", {})
+
+
+func _player_store_origins() -> Array:
+    var origins: Array = [store_site_origin]
+    for branch in owned_branches:
+        origins.append(branch["position"])
+    return origins
+
+
+func _rival_is_head(rival_id: String) -> bool:
+    return str(_rival_guide_entry(rival_id).get("role", "branch")) == "head"
+
+
+func rival_deficit_months(rival_id: String) -> int:
+    var index := _rival_index(rival_id)
+    return 0 if index < 0 else int(_rival_stores[index]["deficit_months"])
+
+
+func _step_rivals_at_month_end() -> void:
+    var ai := _rival_ai()
+    if ai.is_empty() or store_site == null or not has_store_site():
+        return
+    var changed := false
+    var reopening: Array[Dictionary] = _rivals_to_reopen.duplicate()
+    _rivals_to_reopen.clear()
+    # A store opened just now has not traded a month yet.
+    var opened_now: Array[String] = []
+    for waiting in reopening:
+        var rival_id := str(waiting["id"])
+        var site := NO_STORE_SITE
+        if player_store_count + _rival_stores.size() < int(ai["town_store_limit"]):
+            site = store_site.best_open_site(
+                _rival_positions() + _player_store_origins(), _bought_buildings, [waiting["left"]]
+            )
+        if site == NO_STORE_SITE:
+            _rivals_to_reopen.append(waiting)
+            continue
+        _rival_stores.append(_rival_store(rival_id, site, 0))
+        _investigated_rivals.erase(rival_id)
+        opened_now.append(rival_id)
+        changed = true
+        _record_event("rival_opened", {"rival_id": rival_id, "position": [site.x, site.y]})
+    var has_branch := false
+    for rival in _rival_stores:
+        if not _rival_is_head(str(rival["id"])):
+            has_branch = true
+    var withdrawing: Array[String] = []
+    for rival in _rival_stores:
+        if opened_now.has(str(rival["id"])):
+            continue
+        var pressure: float = store_site.rival_pressure(
+            rival["position"], _player_store_origins(), price_change_pct,
+            int(ai["full_effect_price_cut_pct"]), _bought_buildings
+        )
+        if pressure >= float(ai["deficit_pressure_threshold"]):
+            rival["deficit_months"] = int(rival["deficit_months"]) + 1
+        else:
+            rival["deficit_months"] = 0
+        if int(rival["deficit_months"]) < int(ai["withdraw_after_deficit_months"]):
+            continue
+        if _rival_is_head(str(rival["id"])) and has_branch:
+            continue
+        withdrawing.append(str(rival["id"]))
+    for rival_id in withdrawing:
+        var index := _rival_index(rival_id)
+        var months := int(_rival_stores[index]["deficit_months"])
+        var left: Vector2i = _rival_stores[index]["position"]
+        _rival_stores.remove_at(index)
+        _investigated_rivals.erase(rival_id)
+        if not _rival_is_head(rival_id):
+            _rivals_to_reopen.append({"id": rival_id, "left": left})
+        changed = true
+        _record_event("rival_withdrew", {"rival_id": rival_id, "deficit_months": months})
+    if changed:
+        _apply_store_site(store_site_origin, [])
 
 
 # Task #101: investigating and buying out a rival (evidence in
@@ -1914,6 +2016,17 @@ func save_state() -> Dictionary:
         # Task #101 (schema 7): rivals bought out and rivals investigated.
         "bought_rival_ids": owned_branches.map(func(branch): return str(branch["id"])),
         "investigated_rival_ids": _investigated_rivals.keys(),
+        # Task #106 (schema 9): where each rival stands now, its losing
+        # months, and the branches waiting to open again.
+        "rival_stores": _rival_stores.map(func(rival): return {
+            "id": str(rival["id"]),
+            "position": [rival["position"].x, rival["position"].y],
+            "deficit_months": int(rival["deficit_months"]),
+        }),
+        "rivals_to_reopen": _rivals_to_reopen.map(func(waiting): return {
+            "id": str(waiting["id"]),
+            "left": [waiting["left"].x, waiting["left"].y],
+        }),
         # Task #103 (schema 8).
         "business_hours_id": business_hours_id,
         # Task #104 (schema 9): which store stands on the site.
@@ -2028,6 +2141,13 @@ func load_state(data: Dictionary) -> bool:
         if rival_index >= 0:
             owned_branches.append({"id": str(rival_id), "position": _rival_stores[rival_index]["position"]})
             _rival_stores.remove_at(rival_index)
+    _rival_stores.clear()
+    for rival_data in data["rival_stores"]:
+        _rival_stores.append(_rival_store(
+            str(rival_data["id"]), _vec2i_from_array(rival_data["position"]), int(rival_data["deficit_months"])
+        ))
+    for waiting in data["rivals_to_reopen"]:
+        _rivals_to_reopen.append({"id": str(waiting["id"]), "left": _vec2i_from_array(waiting["left"])})
     for rival_id in data["investigated_rival_ids"]:
         _investigated_rivals[str(rival_id)] = true
     if not _business_hours.is_empty():
@@ -2347,6 +2467,7 @@ func _settle_month_end() -> void:
     _revenue_at_month_start = economy.recorded_revenue_yen()
     _expense_index_at_month_start = economy.expense_records.size()
     _promotions_used_this_month.clear()
+    _step_rivals_at_month_end()
     _evaluate_terminal_state()
 
 
@@ -2857,6 +2978,8 @@ func _require_save_data(data: Dictionary) -> void:
         "bought_buildings",
         "bought_rival_ids",
         "investigated_rival_ids",
+        "rival_stores",
+        "rivals_to_reopen",
         "business_hours_id",
         "store_type_id",
         "weather_category_index",

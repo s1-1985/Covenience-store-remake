@@ -2088,6 +2088,14 @@ squares in the catchment, shared with rivals) and want up to 3 of that building'
 - The first customer at start, load or rebuild is admitted only while the store is open (`_start_opening_customer`).
 - This resolves the known point in decision 0174.
 
+**Task #106 (2026-09-26, decision 0177)**: rivals lose money, withdraw and reopen elsewhere.
+- Evidence: CONFIRMED_OFFICIAL that a 15-20% cut nearby causes several losing months and then withdrawal, and that
+  six months (半年) of losses make a rival withdraw; also the 10-store map limit. CONFIRMED_COMMUNITY that a branch
+  reopens elsewhere. PROVISIONAL that the 本店 holds on while a branch remains.
+- REMAKE_BALANCED_DEFAULT pressure: overlap share × min(1, cut/20%); a month is a loss at pressure 0.5 or more.
+- A withdrawn branch reopens at the next month end on the best other site.
+- The rival panel shows the losing months once the rival has been investigated.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

@@ -172,11 +172,11 @@ def site_quote(block, origin, removed=()):
 # stores' catchments sends each of them an equal share of its customers.
 RIVAL_STORES = (
     {
-        "id": "rival-hq", "name": "ライバル本店", "sprite": "map_red_hq",
+        "id": "rival-hq", "role": "head", "name": "ライバル本店", "sprite": "map_red_hq",
         "guide_data": {"hours": "AM7:00〜PM11:00", "popularity": 20, "security": 89, "cleaning": 30, "service": 30},
     },
     {
-        "id": "rival-02", "name": "ライバル2号店", "sprite": "map_red_02",
+        "id": "rival-02", "role": "branch", "name": "ライバル2号店", "sprite": "map_red_02",
         "guide_data": {"hours": "AM7:00〜PM11:00", "popularity": 20, "security": 58, "cleaning": 30, "service": 31, "buyout_yen": 46_721_490},
     },
 )
@@ -205,6 +205,79 @@ RIVAL_ACTIONS = {
         "sales are not simulated (like the chain-expansion action)."
     ),
 }
+
+
+# Task #106: rivals losing money, withdrawing and opening again elsewhere.
+# CONFIRMED_OFFICIAL: cutting the new store's 商品利益率 15-20% near a rival
+# branch makes it post losses several months in a row, and it withdraws
+# (guide p.53 flowchart); "赤字が半年も続けば、ライバルは撤退するはずだ" (two
+# map strategy pages); a map holds at most 10 stores, rivals included (quick
+# reference, 中級). CONFIRMED_COMMUNITY (PS/SS long-play records, B+): after a
+# branch closes the rival soon opens a branch somewhere else; 5% off did not
+# topple a strong branch, 15% did; a price cut far from the branch had no
+# effect. PROVISIONAL (a player's inference): the 本店 does not withdraw while
+# the rival still has a branch.
+# REMAKE_BALANCED_DEFAULT: the shape -- a rival loses the month when
+# (share of its catchment's building squares also in a player store's
+# catchment) x min(1, price cut / 20%) >= 0.5; it withdraws after 6 losing
+# months in a row; a withdrawn branch reopens at the next month end on the
+# vacant site place_rivals() would pick, at least 5 squares from where it was
+# (the records say it opens somewhere else); a withdrawn 本店 never reopens.
+RIVAL_AI = {
+    "full_effect_price_cut_pct": 20,
+    "deficit_pressure_threshold": 0.5,
+    "withdraw_after_deficit_months": 6,
+    "town_store_limit": 10,
+    "reopen_after_month_ends": 1,
+    "evidence_note": (
+        "Task #106. CONFIRMED_OFFICIAL: cutting the store's 商品利益率 15-20% near a rival branch makes it "
+        "post losses several months in a row and withdraw (guide p.53); 赤字が半年も続けば、ライバルは撤退する "
+        "(two map strategy pages); at most 10 stores on a map, rivals included (quick reference, 中級). "
+        "CONFIRMED_COMMUNITY (PS/SS long-play records): a closed branch soon reopens elsewhere; 5% off did not "
+        "topple a strong branch while 15% did; a cut far from the branch had no effect. PROVISIONAL: the 本店 "
+        "does not withdraw while the rival has a branch. Reading the game's price policy (% from list price) "
+        "as the guide's 商品利益率 cut is an inference. REMAKE_BALANCED_DEFAULT: a rival loses the month when "
+        "(share of its catchment's building squares also in a player store's catchment) x min(1, price cut / "
+        "20%) >= 0.5; it withdraws after 6 losing months in a row; a withdrawn branch reopens at the next "
+        "month end on the vacant site with the most customers left to it, at least 5 squares from where it was "
+        "(the records say it opens somewhere else); a withdrawn 本店 never reopens."
+    ),
+}
+
+
+def rival_pressure(tiles, rival_origin, player_origins, price_change_pct, removed=()):
+    """How hard the player's stores press a rival this month (REMAKE shape)."""
+    mine = [t for t, index in tiles.items() if index not in removed and in_catchment(rival_origin, t)]
+    if not mine:
+        return 0.0
+    shared = sum(1 for t in mine if any(in_catchment(o, t) for o in player_origins))
+    cut = min(1.0, max(0, -price_change_pct) / RIVAL_AI["full_effect_price_cut_pct"])
+    return shared / len(mine) * cut
+
+
+def best_open_site(rows, buildings, stores, removed=(), avoid=()):
+    """The vacant 2x2 site a rival opens on: most customers left to it,
+    at least STORE_SITE_MIN_STORE_DISTANCE from every store and from the
+    `avoid` sites (where it just withdrew from: it opens somewhere else);
+    ties go to the top-left-most site (same rule as place_rivals)."""
+    tiles = building_tiles(buildings)
+    best = None
+    for y in range(len(rows)):
+        for x in range(len(rows[0])):
+            origin = (x, y)
+            if not site_is_buildable(rows, origin):
+                continue
+            if any(t in tiles and tiles[t] not in removed for t in site_footprint(origin)):
+                continue
+            if any(
+                max(abs(x - o[0]), abs(y - o[1])) < STORE_SITE_MIN_STORE_DISTANCE
+                for o in list(stores) + list(avoid)
+            ):
+                continue
+            score = shared_catchment(tiles, origin, stores, removed)
+            if best is None or score > best[0] + 1e-9:
+                best = (score, origin)
+    return None if best is None else best[1]
 
 
 def in_catchment(store_origin, tile):

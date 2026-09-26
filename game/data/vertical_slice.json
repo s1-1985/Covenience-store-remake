@@ -1989,7 +1989,9 @@
       "staff_hired": "purchase",
       "store_site_bought": "purchase",
       "chain_expanded": "purchase",
-    "rival_bought_out": "purchase",
+      "rival_bought_out": "purchase",
+      "store_built": "purchase",
+      "rival_withdrew": "fanfare",
       "fixture_relocated": "place",
       "fixture_rotated": "place",
       "fixtures_swapped": "place",
@@ -3015,6 +3017,7 @@
     "rival_stores": [
       {
         "id": "rival-hq",
+        "role": "head",
         "name": "ライバル本店",
         "sprite": "map_red_hq",
         "guide_data": {
@@ -3030,6 +3033,7 @@
       },
       {
         "id": "rival-02",
+        "role": "branch",
         "name": "ライバル2号店",
         "sprite": "map_red_02",
         "guide_data": {
@@ -3048,6 +3052,14 @@
     "rival_actions": {
       "investigation_cost_yen": 600000,
       "evidence_note": "Task #101. CONFIRMED_OFFICIAL: 調査する / 買収する / 何もしない (guide p.53, p.65, p.72-73); a buyout takes over the store, land and staff; the 2号店 costs 46,721,490 at the start (DATA block). CONFIRMED_COMMUNITY: 本店 cannot be bought (first-title wiki). PROVISIONAL: investigation 600,000 (two screenshots; 500,000 in a third). CONFIRMED that the price grows with the years and the store's sales (wiki: about 45,000,000 at the start, over 200,000,000 some years later), formula unknown; REMAKE_BALANCED_DEFAULT: the start price grows with the land price's yearly rate, a bought branch is counted as one of the player's stores and drawn as the blue 02 mark, and its own sales are not simulated (like the chain-expansion action)."
+    },
+    "rival_ai": {
+      "full_effect_price_cut_pct": 20,
+      "deficit_pressure_threshold": 0.5,
+      "withdraw_after_deficit_months": 6,
+      "town_store_limit": 10,
+      "reopen_after_month_ends": 1,
+      "evidence_note": "Task #106. CONFIRMED_OFFICIAL: cutting the store's 商品利益率 15-20% near a rival branch makes it post losses several months in a row and withdraw (guide p.53); 赤字が半年も続けば、ライバルは撤退する (two map strategy pages); at most 10 stores on a map, rivals included (quick reference, 中級). CONFIRMED_COMMUNITY (PS/SS long-play records): a closed branch soon reopens elsewhere; 5% off did not topple a strong branch while 15% did; a cut far from the branch had no effect. PROVISIONAL: the 本店 does not withdraw while the rival has a branch. Reading the game's price policy (% from list price) as the guide's 商品利益率 cut is an inference. REMAKE_BALANCED_DEFAULT: a rival loses the month when (share of its catchment's building squares also in a player store's catchment) x min(1, price cut / 20%) >= 0.5; it withdraws after 6 losing months in a row; a withdrawn branch reopens at the next month end on the vacant site with the most customers left to it, at least 5 squares from where it was (the records say it opens somewhere else); a withdrawn 本店 never reopens."
     },
     "store_mark_sprite": "map_blue_hq",
     "width_tiles": 41,

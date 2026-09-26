@@ -34,7 +34,7 @@ SOURCE = ROOT / "assets" / "raw" / "conveni_guide_town_v1" / "beginner_map_start
 sys.path.insert(0, str(ROOT / "reference_sim"))
 sys.path.insert(0, str(ROOT / "tools"))
 from conveni_sim.baseline_data import TOWN_BUILDINGS  # noqa: E402
-from guide_store_site import RIVAL_ACTIONS, place_rivals, store_site_rules  # noqa: E402
+from guide_store_site import RIVAL_ACTIONS, RIVAL_AI, place_rivals, store_site_rules  # noqa: E402
 
 TILE_W, TILE_H = 9.875, 10.45
 X0, Y0 = 120.0 - 12.5 * TILE_W, 76.5 - 6.5 * TILE_H
@@ -246,6 +246,7 @@ def build():
         "store_site": site,
         "rival_stores": place_rivals(rows, buildings),
         "rival_actions": RIVAL_ACTIONS,
+        "rival_ai": RIVAL_AI,
         "store_mark_sprite": "map_blue_hq",
         "width_tiles": COLS,
         "height_tiles": ROWS,

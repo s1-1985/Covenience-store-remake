@@ -1483,6 +1483,10 @@ func _refresh_rival_panel() -> void:
             str(data.get("hours", "")), int(data.get("popularity", 0)), int(data.get("security", 0)),
             int(data.get("cleaning", 0)), int(data.get("service", 0)),
         ]
+        # Task #106: what the investigation shows about its losses.
+        var losing: int = simulation.rival_deficit_months(_rival_id)
+        if losing > 0:
+            text += "　" + tr("Losing money for %d months in a row") % losing
     rival_info_label.text = text
     rival_investigate_button.text = tr("Investigate (¥%s)") % _format_integer(simulation.rival_investigation_cost_yen())
     rival_investigate_button.disabled = (

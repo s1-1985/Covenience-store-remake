@@ -3769,6 +3769,50 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("the month end must leave the land and store out of the x8", smoke)
 
+    def test_rivals_lose_withdraw_and_reopen_elsewhere(self):
+        # Task #106: the Python side of headless_smoke's _check_rival_withdrawal.
+        import importlib.util
+        import sys
+
+        sys.path.insert(0, str(REPO_ROOT / "tools"))
+        spec = importlib.util.spec_from_file_location("guide_store_site", REPO_ROOT / "tools" / "guide_store_site.py")
+        site = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(site)
+        town = self.config["guide_town_map"]
+        ai = town["rival_ai"]
+        self.assertEqual(ai, site.RIVAL_AI)
+        for tag in ("CONFIRMED_OFFICIAL", "CONFIRMED_COMMUNITY", "PROVISIONAL", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, ai["evidence_note"])
+        self.assertEqual(ai["withdraw_after_deficit_months"], 6)
+        self.assertEqual(ai["town_store_limit"], 10)
+        self.assertEqual({r["id"]: r["role"] for r in town["rival_stores"]}, {"rival-hq": "head", "rival-02": "branch"})
+        tiles = site.building_tiles(town["buildings"])
+        self.assertAlmostEqual(site.rival_pressure(tiles, (27, 9), [(32, 9)], -20), 15 / 17)
+        self.assertLess(site.rival_pressure(tiles, (27, 9), [(32, 9)], -5), ai["deficit_pressure_threshold"])
+        self.assertEqual(site.rival_pressure(tiles, (8, 10), [(32, 9)], -20), 0.0)
+        self.assertGreaterEqual(site.rival_pressure(tiles, (8, 10), [(8, 4)], -20), ai["deficit_pressure_threshold"])
+        removed = sorted({tiles[t] for t in site.site_footprint((32, 9)) if t in tiles})
+        self.assertEqual(removed, [8, 73])
+        self.assertEqual(
+            site.best_open_site(town["tile_rows"], town["buildings"], [(8, 10), (32, 9)], removed, avoid=[(27, 9)]),
+            (13, 9),
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        body = simulation.split("func _rival_ai() -> Dictionary:")[0].split("# Task #106: rivals losing money")[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", body)
+        self.assertIn("    _step_rivals_at_month_end()\n    _evaluate_terminal_state()", simulation)
+        store_site = (GAME_ROOT / "scripts" / "domain" / "store_site.gd").read_text(encoding="utf-8")
+        self.assertIn("func rival_pressure(", store_site)
+        self.assertIn("func best_open_site(stores: Array, removed: Array = [], avoid: Array = []) -> Vector2i:", store_site)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        for text in (
+            "the rival withdrawal shape must stay tagged REMAKE_BALANCED_DEFAULT",
+            "rival pressure at 20%% off must be 15/17",
+            "the withdrawn branch must reopen on the best other site (13, 9)",
+            "the 本店 must hold on while the rival has a branch",
+        ):
+            self.assertIn(text, smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])
