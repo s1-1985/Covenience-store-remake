@@ -29,6 +29,37 @@ class GameVerticalSliceContractTests(unittest.TestCase):
                 self.assertIn("compress/mode=1", imported)
                 self.assertIn("compress/lossy_quality=0.7", imported)
 
+    def test_slim_engine_template_keeps_what_the_game_uses(self):
+        # Task #116: the Android release export uses this project's own
+        # Godot 4.3 template, built without 3D, Vulkan and unused modules.
+        script = (REPO_ROOT / "tools" / "build_godot_templates.sh").read_text(encoding="utf-8")
+        for flag in (
+            "disable_3d=yes",
+            "vulkan=no",
+            "opengl3=yes",
+            "modules_enabled_by_default=no",
+            "module_gdscript_enabled=yes",
+            "module_freetype_enabled=yes",
+            "module_text_server_fb_enabled=yes",
+            # The staff and customer sprites are lossy WebP textures (#115).
+            "module_webp_enabled=yes",
+            "module_svg_enabled=yes",
+        ):
+            self.assertIn(flag, script)
+        preset = (GAME_ROOT / "export_presets.cfg").read_text(encoding="utf-8")
+        self.assertIn('custom_template/release="../build/templates/android_release.apk"', preset)
+        self.assertIn('custom_template/debug=""', preset)
+        # Nothing the slim engine leaves out: no 3D nodes, navigation, RegEx,
+        # networking, or audio/image/model files needing a removed importer.
+        sources = [path for folder in ("scripts", "scenes", "themes") for path in (GAME_ROOT / folder).rglob("*.*")
+                   if path.suffix in (".gd", ".tscn", ".tres")]
+        sources.append(GAME_ROOT / "project.godot")
+        for path in sources:
+            text = path.read_text(encoding="utf-8")
+            self.assertIsNone(re.search(r"\b[A-Za-z]+3D\b|\bRegEx\b|HTTPRequest|\bNavigation[A-Z]", text), path.name)
+        for suffix in (".ogg", ".mp3", ".wav", ".jpg", ".jpeg", ".glb", ".gltf", ".svg", ".webp"):
+            self.assertEqual(list(GAME_ROOT.joinpath("assets").rglob("*" + suffix)), [], suffix)
+
     def test_prototype_values_are_explicitly_marked_provisional(self):
         self.assertEqual(self.config["schema_version"], 15)
         self.assertIs(self.config["provisional"], True)
