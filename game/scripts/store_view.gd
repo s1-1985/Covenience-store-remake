@@ -174,6 +174,18 @@ var _floor_textures: Dictionary = {}
 # tick_serial on every simulation tick. Presentation only: the simulation's
 # positions and timing are unchanged. REMAKE_BALANCED_DEFAULT: the linear
 # slide and switching A->B halfway through each step are this renderer's own.
+# Task #125: a fixture shown in red for a moment (the shelf an edit would
+# have cut off).
+var _warn_fixture_id := ""
+var _warn_until_msec := 0
+
+
+func warn_fixture(fixture_id: String) -> void:
+    _warn_fixture_id = fixture_id
+    _warn_until_msec = Time.get_ticks_msec() + 2500
+    queue_redraw()
+
+
 var tick_progress := 1.0
 var tick_serial := 0
 var _motion: Dictionary = {}
@@ -340,12 +352,39 @@ func _process(_delta: float) -> void:
         queue_redraw()
 
 
+# Task #125: in 内装, a fixture can be dragged to its new place (a tap on the
+# floor still works); a ghost shows where it would go.
+var _drag_fixture := ""
+var _drag_offset := Vector2i.ZERO
+var _drag_cell := Vector2i.ZERO
+var _drag_start_cell := Vector2i.ZERO
+
+
 func _unhandled_input(event: InputEvent) -> void:
     # Task #72: while the town map (TownView) is shown in this store view's
     # place, this node is hidden but would otherwise still process taps
     # against its own (stale) coordinates -- guard on visibility.
     if not visible:
         return
+    if not _drag_fixture.is_empty():
+        if event is InputEventMouseMotion or event is InputEventScreenDrag:
+            var moved_to := to_local(event.position)
+            _drag_cell = Vector2i(floori(moved_to.x / SUBCELL_PIXELS), floori(moved_to.y / SUBCELL_PIXELS))
+            queue_redraw()
+            get_viewport().set_input_as_handled()
+            return
+        var released: bool = (
+            (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed)
+            or (event is InputEventScreenTouch and not event.pressed)
+        )
+        if released:
+            var dragged := _drag_fixture
+            _drag_fixture = ""
+            queue_redraw()
+            if _drag_cell != _drag_start_cell:
+                fixture_relocation_requested.emit(dragged, _drag_cell - _drag_offset)
+            get_viewport().set_input_as_handled()
+            return
     var pointer_position := Vector2.ZERO
     var pressed := false
     if event is InputEventMouseButton:
@@ -377,6 +416,11 @@ func _unhandled_input(event: InputEvent) -> void:
                 return
             selected_fixture_id = fixture_id
             fixture_selected.emit(fixture_id)
+            if editing and edit_mode == "move":
+                _drag_fixture = fixture_id
+                _drag_offset = cell - simulation.layout.fixture_origin(fixture_id)
+                _drag_cell = cell
+                _drag_start_cell = cell
             queue_redraw()
             get_viewport().set_input_as_handled()
         return
@@ -404,6 +448,24 @@ func _customer_near(local_position: Vector2) -> String:
     return best
 
 
+# Task #125: where a dragged fixture would land.
+func _draw_drag_ghost() -> void:
+    if _drag_fixture.is_empty() or _drag_cell == _drag_start_cell:
+        return
+    if not simulation.layout.fixtures_by_id.has(_drag_fixture):
+        return
+    var fixture: Dictionary = simulation.layout.fixtures_by_id[_drag_fixture]
+    var footprint: Array = fixture["footprint_tiles"]
+    var scale_cells := int(config["store"]["subcells_per_tile"])
+    var origin := _drag_cell - _drag_offset
+    var rect := Rect2(
+        Vector2(origin) * SUBCELL_PIXELS,
+        Vector2(int(footprint[0]) * scale_cells, int(footprint[1]) * scale_cells) * SUBCELL_PIXELS
+    )
+    draw_rect(rect, Color(0.96, 0.83, 0.37, 0.35), true)
+    draw_rect(rect, Color("f4d35e"), false, 4.0)
+
+
 func _draw() -> void:
     if config.is_empty() or simulation == null:
         return
@@ -416,6 +478,7 @@ func _draw() -> void:
     _draw_grid(width, height)
     _draw_entry_exit()
     _draw_fixtures()
+    _draw_drag_ghost()
     _draw_staff()
     _draw_customer()
 
@@ -543,6 +606,9 @@ func _draw_fixtures() -> void:
                 _draw_product_items(product_texture, origin, footprint, scale, items)
         var outline := Color("f4d35e") if fixture["id"] == selected_fixture_id else Color("363636")
         var outline_width := 5.0 if fixture["id"] == selected_fixture_id else 2.0
+        if fixture["id"] == _warn_fixture_id and Time.get_ticks_msec() < _warn_until_msec:
+            outline = Color("e04848")
+            outline_width = 6.0
         draw_rect(rect, outline, false, outline_width)
         # Task #94: the original shows no interaction markers; they only
         # appear while a fixture is selected for layout editing.

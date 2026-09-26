@@ -1561,7 +1561,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func try_add_fixture(fixture_config: Dictionary) -> bool:", layout)
         self.assertIn("func try_purchase_fixture(", simulation)
         self.assertIn("_fixture_catalog", simulation)
-        self.assertIn("_required_routes_are_reachable() or not _reroute_after_layout_change(checkout_before)", simulation)
+        # Task #125: every layout edit is kept or undone by _accept_layout_change().
+        self.assertIn("if not _accept_layout_change(previous_fixtures, checkout_before):", simulation)
         self.assertIn("a valid, affordable fixture purchase must be accepted", smoke)
         self.assertIn("a duplicate fixture instance id must be rejected", smoke)
         self.assertIn("an unknown fixture catalog id must be rejected", smoke)
@@ -3854,7 +3855,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         for entry in block["types"]:
             icon = GAME_ROOT / "assets" / "menu_icons" / "store_types" / (entry["icon"] + ".png")
             self.assertTrue(icon.is_file(), icon)
-            self.assertEqual("layout" in entry, entry["selectable_at_start"])
+            # Task #126: every store has a layout, for renovating into.
+            self.assertIn("layout", entry)
 
         # The JSON block is exactly what the documented tool generates.
         spec = importlib.util.spec_from_file_location(
@@ -3874,12 +3876,12 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         )
 
         catalog = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
-        for type_id in ("small_top", "small_bottom"):
+        for type_id in types:
             layout = types[type_id]["layout"]
             store = layout["store"]
             width, height = store["width_tiles"] * 2, store["height_tiles"] * 2
             self.assertEqual((store["width_tiles"], store["height_tiles"]), tuple(types[type_id]["floor_tiles"]))
-            self.assertEqual(store["size_tier"], "small")
+            self.assertEqual(store["size_tier"], types[type_id]["size_tier"])
             blocked = set()
             for fixture in layout["fixtures"]:
                 ox, oy = fixture["origin_subcell"]
@@ -3896,12 +3898,22 @@ class GameVerticalSliceContractTests(unittest.TestCase):
                 self.assertNotIn(goal, blocked)
                 self.assertTrue(self._reachable(entry, goal, width, height, blocked), (type_id, goal))
             shelves = {f["id"]: f for f in layout["fixtures"] if f["kind"] == "shelf"}
-            self.assertEqual(len(shelves), 14)
+            if type_id == builder.P48_TYPE:
+                # The guide's p.48 store itself (CONFIRMED_VISUAL).
+                self.assertEqual(layout["fixtures"], self.config["guide_starting_store"]["fixtures"])
+                self.assertEqual(layout["max_concurrent_customers"], 8)
+                continue
+            floor = store["width_tiles"] * store["height_tiles"]
+            if store["size_tier"] == "small":
+                self.assertEqual(len(shelves), 14)
+            else:
+                # p.48's shelves per tile, or as many spots as the plan has.
+                self.assertTrue(10 <= len(shelves) <= builder.shelf_count(floor), (type_id, len(shelves)))
             for product in layout["products"]:
                 shelf = shelves[product["fixture_id"]]
                 self.assertIn(product["catalog_id"], catalog[shelf["catalog_id"]]["compatible_product_categories"])
                 self.assertEqual(product["initial_stock_units"], catalog[shelf["catalog_id"]]["capacity"])
-            self.assertEqual(layout["max_concurrent_customers"], 3)
+            self.assertEqual(layout["max_concurrent_customers"], max(1, round(8 * floor / 96)))
 
         # Code comment + test assertion for the REMAKE layouts, and the
         # construction price paid on top of the land.
@@ -3915,6 +3927,35 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("building pays the land and the store's 6,000,000 yen", smoke)
         preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("Six stores, four of them locked at the start", preview)
+
+    def test_store_growth_editing_and_renovation_are_tagged(self):
+        # Tasks #124-#126: REMAKE_BALANCED_DEFAULT in the code, the JSON and
+        # the smoke test (CLAUDE.md tagging discipline).
+        rules = self.config["guide_starting_store"]["store_rules"]
+        note = rules["evidence_note"]
+        for task in ("Task #124", "Task #125"):
+            self.assertIn(task, note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
+        growth = rules["store_growth"]
+        self.assertEqual(growth["new_store_recognition"], 0.0)
+        self.assertLess(growth["demand_factor_at_zero"], 1.0)
+        self.assertGreater(growth["demand_factor_at_full"], 1.0)
+        self.assertTrue(rules["edit_front_search"])
+        types_note = self.config["guide_store_types"]["evidence_note"]
+        self.assertIn("Task #126", types_note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", types_note)
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("REMAKE_BALANCED_DEFAULT (store_rules.edit_front_search)", simulation)
+        self.assertIn("REMAKE_BALANCED_DEFAULT: in the original the store is only", simulation)
+        self.assertIn("# --- Task #125: the store's storage (倉庫). REMAKE_BALANCED_DEFAULT", simulation)
+        growth_code = simulation.split("func _start_store_growth")[0]
+        self.assertIn("Task #124", growth_code)
+        self.assertIn('"store_renovation"', re.search(r"const CAPITAL_EXPENSE_TYPES := \[(.*?)\]", simulation, re.S).group(1))
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the store growth rules must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("the front search must stay on and tagged (Task #125)", smoke)
+        self.assertIn("the renovation rules must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("try_renovate_store() must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
 
     def test_month_end_x8_leaves_one_off_purchases_out(self):
         # Task #104: the land, the store building, buyouts, fixtures and
@@ -4011,8 +4052,13 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         lock = simulation.split("func _layout_edit_locked() -> bool:")[0].split("# Task #109: whether a layout edit must wait.")[-1]
         self.assertIn("REMAKE_BALANCED_DEFAULT", lock)
-        self.assertEqual(simulation.count("    if _layout_edit_locked():\n        return false\n"), 6)
-        self.assertEqual(simulation.count("not _reroute_after_layout_change(checkout_before)"), 6)
+        # Task #125: the six edits plus storing and unstoring a fixture; each
+        # keeps or undoes its change through _accept_layout_change(), which
+        # reroutes everyone on the move.
+        self.assertEqual(simulation.count("    if _layout_edit_locked():\n"), 8)
+        accept = simulation.split("func _accept_layout_change(")[1].split("\nfunc ")[0]
+        self.assertIn("_reroute_after_layout_change(checkout_before)", accept)
+        self.assertGreaterEqual(simulation.count("_accept_layout_change(previous"), 8)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         for text in (
             "editing while open must stay tagged REMAKE_BALANCED_DEFAULT",

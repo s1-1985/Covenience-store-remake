@@ -995,3 +995,48 @@ msgstr "お客さんが商品を棚に戻した"
 
 msgid "product returned"
 msgstr "商品を返品した"
+
+msgid "Set the fixture down from storage"
+msgstr "倉庫の設備を置いた"
+
+msgid "That would cut off the register or the exit"
+msgstr "そこだとレジか出口へ行けなくなります"
+
+msgid "That would cut off the %s shelf"
+msgstr "そこだと%sの棚へ行けなくなります（赤い枠の棚）"
+
+msgid "Someone is standing in the way"
+msgstr "人がいるので置けません"
+
+msgid "A wall or another fixture is in the way"
+msgstr "壁か他の設備に重なるので置けません"
+
+msgid "Put %s into storage"
+msgstr "%sを倉庫にしまった"
+
+msgid "The register and the break room stay in place"
+msgstr "レジと休憩室はしまえません"
+
+msgid "Not enough money to renovate"
+msgstr "改装する資金が足りません"
+
+msgid "Cannot renovate into this store"
+msgstr "この店舗には改装できません"
+
+msgid "Renovated the store (%d fixtures put in storage)"
+msgstr "店舗を改装しました（倉庫に入れた設備 %d 個）"
+
+msgid "tall"
+msgstr "縦長"
+
+msgid "wide"
+msgstr "横長"
+
+msgid "store renovated"
+msgstr "店舗を改装"
+
+msgid "fixture stored"
+msgstr "設備を倉庫へ"
+
+msgid "fixture unstored"
+msgstr "倉庫から設備を配置"

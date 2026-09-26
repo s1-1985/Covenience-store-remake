@@ -307,6 +307,36 @@ func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
     return true
 
 
+# Task #125: moves `fixture_id` to `new_origin` (keeping its footprint) with
+# its front at `front`. Same validity rules as try_move_fixture().
+func try_place_fixture(fixture_id: String, new_origin: Vector2i, front: Vector2i) -> bool:
+    if not fixtures_by_id.has(fixture_id):
+        return false
+    var candidate_fixtures := fixtures.duplicate(true)
+    for fixture in candidate_fixtures:
+        if str(fixture["id"]) == fixture_id:
+            fixture["origin_subcell"] = [new_origin.x, new_origin.y]
+            fixture["interaction_subcell"] = [front.x, front.y]
+    _settle_any_side_fronts(candidate_fixtures)
+    if not _fixture_configs_are_valid(candidate_fixtures):
+        return false
+    fixtures = candidate_fixtures
+    _build_blocked_cells(_subcells_per_tile)
+    return true
+
+
+# Task #125: the cells a fixture of `footprint_tiles` at `origin` could
+# have as its front -- every cell along its four sides, `preferred` first.
+func front_candidates(origin: Vector2i, footprint_tiles: Array, preferred: Vector2i) -> Array[Vector2i]:
+    var cells: Array[Vector2i] = []
+    if _inside(preferred):
+        cells.append(preferred)
+    for cell in _side_cells({"origin_subcell": [origin.x, origin.y], "footprint_tiles": footprint_tiles}):
+        if not cells.has(cell) and cell != entry and cell != exit:
+            cells.append(cell)
+    return cells
+
+
 # Task #78: removing a fixture from an already-valid layout can only ever
 # free cells, never collide with anything, so this skips the
 # _fixture_configs_are_valid() re-check every other mutator here runs --

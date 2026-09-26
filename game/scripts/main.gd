@@ -363,16 +363,96 @@ func _on_fixture_relocation_requested(fixture_id: String, origin_subcell: Vector
     if fixture_id.begins_with(NEW_FIXTURE_SELECTION_PREFIX):
         _try_place_new_fixture(fixture_id.substr(NEW_FIXTURE_SELECTION_PREFIX.length()), origin_subcell)
         return
+    if fixture_id.begins_with(STORED_FIXTURE_SELECTION_PREFIX):
+        # Task #125: setting a fixture down out of storage.
+        var index := int(fixture_id.substr(STORED_FIXTURE_SELECTION_PREFIX.length()))
+        store_view.selected_fixture_id = ""
+        if simulation.try_place_stored_fixture(index, origin_subcell):
+            layout_edit_label.text = tr("Set the fixture down from storage")
+            _reopen_interior_window()
+        else:
+            _show_edit_refusal()
+        _refresh_ui()
+        return
     if simulation.try_relocate_fixture(fixture_id, origin_subcell):
         layout_edit_label.text = tr("Moved %s to (%d, %d)") % [
             _fixture_label(fixture_id),
             origin_subcell.x,
             origin_subcell.y,
         ]
-    elif not simulation.customers.all_settled():
+    elif not simulation.customers.all_settled() and not simulation._edits_while_open:
         layout_edit_label.text = tr("Finish the active visit before editing layout")
     else:
-        layout_edit_label.text = tr("Cannot move there: blocked, outside, or route would break")
+        _show_edit_refusal()
+    _refresh_ui()
+
+
+# Task #125: why an edit was refused, and the shelf it would cut off shown
+# in red for a moment.
+const STORED_FIXTURE_SELECTION_PREFIX := "__stored:"
+
+
+func _show_edit_refusal() -> void:
+    var reason: String = simulation.edit_refusal
+    if reason == "locked":
+        layout_edit_label.text = tr("Finish the active visit before editing layout")
+    elif reason == "route:checkout":
+        layout_edit_label.text = tr("That would cut off the register or the exit")
+    elif reason.begins_with("route:"):
+        var product_id := reason.substr(6)
+        layout_edit_label.text = tr("That would cut off the %s shelf") % _product_label(product_id)
+        if simulation.inventory.products.has(product_id):
+            store_view.warn_fixture(simulation.inventory.get_product(product_id).fixture_id)
+    elif reason == "people":
+        layout_edit_label.text = tr("Someone is standing in the way")
+    else:
+        layout_edit_label.text = tr("A wall or another fixture is in the way")
+
+
+# Task #126: 改装 -- the store becomes store type `type_id` (another size or
+# orientation), see VerticalSliceSimulation.try_renovate_store().
+func renovate_store(type_id: String) -> bool:
+    if not simulation.try_renovate_store(type_id):
+        layout_edit_label.text = tr("Not enough money to renovate") if simulation.edit_refusal == "cash" else tr("Cannot renovate into this store")
+        SoundManager.play_sfx(str(config["sound"]["refused_sfx"]))
+        return false
+    store_view.selected_fixture_id = ""
+    _store_layout_changed()
+    var moved: Dictionary = simulation.event_log.records[-1]["details"] if simulation.event_log.records[-1]["event_type"] == "store_renovated" else {}
+    layout_edit_label.text = tr("Renovated the store (%d fixtures put in storage)") % int(moved.get("fixtures_stored", 0))
+    _reopen_interior_window()
+    _refresh_ui()
+    return true
+
+
+# The size, orientation (縦長/横長) and floor of a store type, for the
+# store type buttons.
+func store_type_caption(entry: Dictionary) -> String:
+    var floor_tiles: Array = entry["floor_tiles"]
+    var shape := tr("tall") if int(floor_tiles[1]) > int(floor_tiles[0]) else tr("wide")
+    return "%s・%s %d×%d" % [tr("store_tier_" + str(entry["size_tier"])), shape, int(floor_tiles[0]), int(floor_tiles[1])]
+
+
+# The phone's 内装 window lists the storage; rebuild it after a change.
+func _reopen_interior_window() -> void:
+    if phone_ui != null and phone_ui.window_id == "interior":
+        phone_ui.open_window("interior")
+
+
+func _on_store_fixture_pressed() -> void:
+    var fixture_id: String = store_view.selected_fixture()
+    if fixture_id.is_empty() or fixture_id.begins_with("__"):
+        return
+    var label := _fixture_label(fixture_id)
+    if simulation.try_store_fixture(fixture_id):
+        store_view.selected_fixture_id = ""
+        layout_edit_label.text = tr("Put %s into storage") % label
+        _refresh_procure_fixture_option()
+        _reopen_interior_window()
+    elif simulation.edit_refusal == "locked":
+        _show_edit_refusal()
+    else:
+        layout_edit_label.text = tr("The register and the break room stay in place")
     _refresh_ui()
 
 
@@ -382,10 +462,10 @@ func _on_rotate_fixture_pressed() -> void:
         layout_edit_label.text = tr("Select a fixture before rotating")
     elif simulation.try_rotate_fixture_clockwise(fixture_id):
         layout_edit_label.text = tr("Rotated %s clockwise") % _fixture_label(fixture_id)
-    elif not simulation.customers.all_settled():
+    elif not simulation.customers.all_settled() and not simulation._edits_while_open:
         layout_edit_label.text = tr("Finish the active visit before editing layout")
     else:
-        layout_edit_label.text = tr("Cannot rotate there: blocked or route would break")
+        _show_edit_refusal()
     _refresh_ui()
 
 
@@ -506,6 +586,19 @@ func _try_place_new_fixture(catalog_id: String, origin_subcell: Vector2i) -> voi
     var subcells_per_tile: int = int(config["store"]["subcells_per_tile"])
     var width: int = int(footprint[0]) * subcells_per_tile
     var height: int = int(footprint[1]) * subcells_per_tile
+    if simulation._front_search_enabled():
+        # Task #125: the front goes on whichever side works.
+        var auto_id := "fixture-purchase-%d" % _next_fixture_purchase_sequence
+        _next_fixture_purchase_sequence += 1
+        if simulation.try_purchase_fixture_at(catalog_id, auto_id, origin_subcell):
+            layout_edit_label.text = tr("Purchased %s") % tr(catalog_id)
+            _refresh_procure_fixture_option()
+        elif simulation.economy.cash_yen < int(catalog_entry["purchase_price_yen"]):
+            layout_edit_label.text = tr("Cannot place %s there: blocked, unaffordable, or route would break") % tr(catalog_id)
+        else:
+            _show_edit_refusal()
+        _refresh_ui()
+        return
     var interaction := _find_open_interaction_cell(origin_subcell, width, height)
     if interaction == Vector2i(-1, -1):
         layout_edit_label.text = tr("Cannot place %s there: no open cell next to it for customers/staff to use") % tr(catalog_id)
@@ -1306,6 +1399,12 @@ func _build_store_type_panel() -> void:
                 var type_id := str(entry["id"])
                 button.name = "StoreType_" + type_id
                 button.icon = _menu_icon("store_types", str(entry["icon"]))
+                # Task #126: which way the floor runs (縦長/横長) and its size.
+                button.text = store_type_caption(entry)
+                button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+                button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
+                button.add_theme_font_size_override("font_size", 14)
+                button.custom_minimum_size = Vector2(132, 112)
                 button.disabled = not simulation.store_type_is_selectable(type_id)
                 if button.disabled:
                     button.modulate = Color(0.4, 0.4, 0.4)
@@ -1349,11 +1448,10 @@ func _refresh_store_type_panel() -> void:
         store_type_info_label.text = ""
         store_type_build_button.disabled = true
         return
-    var floor_tiles: Array = entry["floor_tiles"]
     var price := int(entry["construction_price_yen"])
     var land := int(simulation.store_site_quote(_site_origin).get("total_yen", 0))
-    store_type_info_label.text = "%s（%d×%d）　¥%s\n%s" % [
-        tr("store_tier_" + str(entry["size_tier"])), int(floor_tiles[0]), int(floor_tiles[1]),
+    store_type_info_label.text = "%s　¥%s\n%s" % [
+        store_type_caption(entry),
         _format_integer(price),
         tr("Land ¥%s + store ¥%s = ¥%s") % [
             _format_integer(land), _format_integer(price), _format_integer(land + price),

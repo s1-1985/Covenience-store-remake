@@ -86,6 +86,76 @@ LAYOUTS = {
     },
 }
 
+def auto_spec(width, height, shelves):
+    """Task #126: a floor plan for the medium and large stores, which the
+    player can renovate into (REMAKE_BALANCED_DEFAULT: no furnished medium
+    or large store was recovered). Entrance in the middle of the front wall
+    as in the small layouts; break room in the top-right corner;
+    register 2x1 just inside the entrance; shelves in columns of two back to
+    back, each facing an aisle column (every third column), with a cross
+    aisle half way down and the two front rows kept clear. The first
+    `shelves` spots (p.48's shelves per floor tile, as for the small stores)
+    are used (or as many as there are), column by column from the left wall."""
+    break_room = {(width - 2, 0), (width - 1, 0), (width - 2, 1), (width - 1, 1)}
+    cx = width // 2 - 1
+    checkout = {(cx, 2), (cx + 1, 2)}
+    free = {(x, y) for x in range(width) for y in (0, 1)}
+    free |= {(width - 2, 2), (width - 1, 2), (cx - 1, 2), (cx + 2, 2)}
+    for x in range(cx - 1, cx + 3):
+        free |= {(x, 1), (x, 3)}
+    cross = height // 2 + 1
+    spots = []
+    for x in range(width):
+        column = x % 3
+        if column == 1 or (column == 0 and x + 1 >= width):
+            continue
+        facing = "right" if column == 0 else "left"
+        for y in range(2, height):
+            tile = (x, y)
+            if tile in break_room or tile in checkout or tile in free or y == cross:
+                continue
+            spots.append((x, y, facing))
+    return {
+        "entry": [width - 1, 0],
+        "exit": [width, 0],
+        "shelves": spots[:shelves],
+        "checkout": {"origin_subcell": [cx * 2, 4], "interaction_subcell": [cx * 2 + 1, 3]},
+        "break_room": {"origin_subcell": [(width - 2) * 2, 0], "interaction_subcell": [(width - 2) * 2, 4]},
+        "staff_start_subcells": {
+            "staff-1": [cx * 2 + 1, 6],
+            "staff-2": [2, 3],
+            "staff-3": [(width - 3) * 2, 3],
+        },
+    }
+
+
+def reachable_everywhere(layout):
+    """Every shelf front, the register, the break room and the exit can be
+    walked to from the entrance (subcells, 4 directions)."""
+    from collections import deque
+    store = layout["store"]
+    width, height = store["width_tiles"] * 2, store["height_tiles"] * 2
+    blocked = set()
+    for fixture in layout["fixtures"]:
+        ox, oy = fixture["origin_subcell"]
+        fw, fh = fixture["footprint_tiles"]
+        for y in range(oy, oy + fh * 2):
+            for x in range(ox, ox + fw * 2):
+                blocked.add((x, y))
+    start = tuple(store["entry_subcell"])
+    seen = {start}
+    queue = deque([start])
+    while queue:
+        x, y = queue.popleft()
+        for nx, ny in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+            if 0 <= nx < width and 0 <= ny < height and (nx, ny) not in blocked and (nx, ny) not in seen:
+                seen.add((nx, ny))
+                queue.append((nx, ny))
+    goals = [tuple(f["interaction_subcell"]) for f in layout["fixtures"]] + [tuple(store["exit_subcell"])]
+    goals += [tuple(cell) for cell in layout["staff_start_subcells"].values()]
+    return all(goal in seen for goal in goals)
+
+
 # Which category goes on which spot: cold shelves first along one wall, then
 # the rest; same order for both layouts (REMAKE_BALANCED_DEFAULT placement).
 PLACEMENT_ORDER = [
@@ -129,12 +199,12 @@ def assortment(config, shelves):
     return {category: n for category, n in result.items() if n > 0}
 
 
-def build_layout(config, type_id, size):
-    spec = LAYOUTS[type_id]
+def build_layout(config, type_id, size, tier="small"):
+    spec = LAYOUTS[type_id] if type_id in LAYOUTS else auto_spec(size[0], size[1], shelf_count(size[0] * size[1]))
     catalog = {entry["catalog_id"]: entry for entry in config["fixture_catalog"]}
     pricing = {entry["catalog_id"]: entry for entry in config["product_catalog"]}
     spots = spec["shelves"]
-    assert len(spots) == shelf_count(size[0] * size[1]), type_id
+    assert type_id not in LAYOUTS or len(spots) == shelf_count(size[0] * size[1]), type_id
     counts = assortment(config, len(spots))
     categories = []
     for category in PLACEMENT_ORDER:
@@ -199,7 +269,7 @@ def build_layout(config, type_id, size):
             "subcells_per_tile": 2,
             "entry_subcell": spec["entry"],
             "exit_subcell": spec["exit"],
-            "size_tier": "small",
+            "size_tier": tier,
             "size_tier_evidence_note": "See guide_store_types.evidence_note.",
         },
         "fixtures": fixtures,
@@ -215,6 +285,25 @@ def build_layout(config, type_id, size):
     }
 
 
+# Task #126: the 12x8 large store is the guide's p.48 store itself
+# (CONFIRMED_VISUAL layout, guide_starting_store).
+P48_TYPE = "large_bottom"
+
+
+def p48_layout(config):
+    guide = config["guide_starting_store"]
+    return {
+        "store": dict(guide["store"]),
+        "fixtures": [dict(f) for f in guide["fixtures"]],
+        "products": [dict(p) for p in guide["products"]],
+        "checkout_fixture_id": guide["checkout_fixture_id"],
+        "staff_start_subcells": dict(guide["staff_start_subcells"]),
+        "max_concurrent_customers": guide["max_concurrent_customers"],
+        "provisional_restock_product_id": guide["provisional_restock_product_id"],
+        "sample_layout_label": str(guide["sample_layout_label"]),
+    }
+
+
 def build(config):
     types = []
     for type_id, icon, tier, size, price, pickable, cell in STORE_TYPES:
@@ -227,8 +316,11 @@ def build(config):
             "selectable_at_start": pickable,
             "grid_cell": cell,
         }
-        if type_id in LAYOUTS:
-            entry["layout"] = build_layout(config, type_id, size)
+        if type_id == P48_TYPE:
+            entry["layout"] = p48_layout(config)
+        else:
+            entry["layout"] = build_layout(config, type_id, size, tier)
+        assert reachable_everywhere(entry["layout"]), type_id
         types.append(entry)
     return {
         "scenario_id": "guide-small-store-start-v1",
@@ -249,7 +341,14 @@ def build(config):
             "categories (p.48's shelf share per category scaled to 14 shelves, ties broken by the "
             "town buildings' DATA4 wanted items) taken by analogy from the guide's p.48 store. "
             "Shelf type, starting stock (= capacity) and break room follow p.48 the same way. "
-            "The customer cap is p.48's 8 scaled by floor area (REMAKE_BALANCED_DEFAULT)."
+            "The customer cap is p.48's 8 scaled by floor area (REMAKE_BALANCED_DEFAULT). "
+            "Task #126: the medium and large stores (which a store can be renovated into) have layouts "
+            "too: the 12x8 one is the guide's p.48 store itself (CONFIRMED_VISUAL); the others are this "
+            "project's own aisle-grid plans (REMAKE_BALANCED_DEFAULT), with p.48's shelves per floor tile. "
+            "改装 (renovating an open store into another size or orientation) is REMAKE_BALANCED_DEFAULT too: "
+            "no source shows an open store changing size; it costs the new store's construction price less "
+            "half the current one's, customers inside go home, and the fixtures move onto the new floor's "
+            "shelf spots with their goods (what does not fit goes to storage, its goods back at cost)."
         ),
         "types": types,
     }

@@ -265,7 +265,22 @@ def store_rules(config):
         "checkout_rotation_enabled": True,
         "customer_types_enabled": True,
         "any_side_catalog_ids": wagons,
+        # Task #125: a moved/turned/bought fixture tries every side for its front.
+        "edit_front_search": True,
         "fixture_attention": attention,
+        # Task #124: the store's own growth (see evidence_note).
+        "store_growth": {
+            "start_popularity": 20,
+            "new_store_recognition": 0.0,
+            "bought_store_recognition": 30.0,
+            "recognition_per_happy_visit": 0.15,
+            "recognition_per_unhappy_visit": 0.4,
+            "demand_factor_at_zero": 0.4,
+            "demand_factor_at_full": 1.6,
+            "popularity_base": 20,
+            "popularity_per_recognition": 0.6,
+            "popularity_daily_pull": 0.3,
+        },
         "evidence_note": (
             "Task #117, selling a stocked shelf / changing its product (the owner's request): no source "
             "says what happens to the goods; REMAKE_BALANCED_DEFAULT, they go back to the supplier at "
@@ -282,7 +297,19 @@ def store_rules(config):
             "goods are taken from a shelf's front only but from any free side of a wagon (the fixtures "
             "whose guide name is a ワゴン); 注目度 1.0 for shelves, 1.5 for wagons, 2.0 for the 2x2 wagons, "
             "scaling the add-on chance. "
-            "Task #120: customer types, see guide_customer_types.evidence_note."
+            "Task #120: customer types, see guide_customer_types.evidence_note. "
+            "Task #124, the store's growth: CONFIRMED_COMMUNITY that a store starts at 人気度 20 and that "
+            "顧客独占率 is worked out again at every day change from 人気, service, cleaning, assortment, price, "
+            "hours, weather and nearby population; CONFIRMED_OFFICIAL (qualitative, guide p.36) that an advert's "
+            "人気度 fades from the next day and that lower prices and better service slowly bring other stores' "
+            "customers over. REMAKE_BALANCED_DEFAULT: 知名度 (0-100) -- a new store starts at 0, a bought one at "
+            "30; each satisfied customer adds 0.15 x (1 - 知名度/100), each one leaving with nothing or angry takes "
+            "0.4 x 知名度/100; visitors scale from 0.4 (unknown) to 1.6 (fully known); 人気度 moves 30% of the way "
+            "to 20 + 0.6 x 知名度 each day; 顧客独占率 is recomputed daily. "
+            "Task #125, editing the floor (the owner: rearranging a small store was too hard): "
+            "REMAKE_BALANCED_DEFAULT, a fixture whose front would be blocked gets another side as its front, a "
+            "refused edit says which shelf would be cut off, and fixtures can be put into storage for free and set "
+            "down again later (their goods go back at cost)."
         ),
     }
 

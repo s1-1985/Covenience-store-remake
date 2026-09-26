@@ -1009,10 +1009,10 @@ func _fill_interior() -> void:
     var help := _text("")
     _updaters.append(func():
         var selected: String = main.store_view.selected_fixture()
-        if selected.begins_with(main.NEW_FIXTURE_SELECTION_PREFIX):
+        if selected.begins_with(main.NEW_FIXTURE_SELECTION_PREFIX) or selected.begins_with(main.STORED_FIXTURE_SELECTION_PREFIX):
             help.text = "空いているマスをタップして置く"
         elif selected.is_empty():
-            help.text = "動かしたい設備をタップ" if main.store_view.edit_mode == "move" else "入れ替える設備を2つ続けてタップ"
+            help.text = "設備をドラッグして動かす（タップで選んでから置き場所をタップでも可）" if main.store_view.edit_mode == "move" else "入れ替える設備を2つ続けてタップ"
         else:
             help.text = "%s を選択中　置きたいマスをタップ" % main._fixture_label(selected)
             if main.store_view.edit_mode == "swap":
@@ -1029,12 +1029,34 @@ func _fill_interior() -> void:
         swap.add_theme_stylebox_override("normal", _box(CHOSEN if main.store_view.edit_mode == "swap" else BUTTON)))
     var actions := _row()
     var rotate := _button("回転", main._on_rotate_fixture_pressed, actions)
+    # Task #125: put away for free, to set down again later.
+    var store := _button("しまう", main._on_store_fixture_pressed, actions)
+    store.name = "StoreFixtureButton"
     var sell := _button("売却", main._on_sell_fixture_pressed, actions)
     _updaters.append(func():
         var selected: String = main.store_view.selected_fixture()
-        var has_fixture: bool = not selected.is_empty() and not selected.begins_with(main.NEW_FIXTURE_SELECTION_PREFIX)
+        var has_fixture: bool = not selected.is_empty() and not selected.begins_with("__")
         rotate.disabled = not has_fixture
+        store.disabled = not has_fixture
         sell.disabled = not has_fixture)
+    # Task #125: the fixtures in storage, tap one then a free square.
+    if not main.simulation.stored_fixtures.is_empty():
+        _section("倉庫（タップして置く・無料）")
+        var stored_grid := GridContainer.new()
+        stored_grid.columns = 3
+        window_body.add_child(stored_grid)
+        for index in main.simulation.stored_fixtures.size():
+            var stored: Dictionary = main.simulation.stored_fixtures[index]
+            var stored_index: int = index
+            var stored_button := _picture_button(
+                main._menu_icon("fixtures", str(stored["catalog_id"])),
+                main.tr(str(stored["catalog_id"])),
+                func():
+                    main.store_view.edit_mode = "move"
+                    main.store_view.selected_fixture_id = main.STORED_FIXTURE_SELECTION_PREFIX + str(stored_index),
+                stored_grid
+            )
+            stored_button.name = "Stored_%d" % index
     _section("配置（買って置く）")
     var grid := GridContainer.new()
     grid.columns = 3
@@ -1057,6 +1079,48 @@ func _fill_interior() -> void:
             button.disabled = main.simulation.economy.cash_yen < price or (not permit.is_empty() and not main.simulation.has_permit(permit)))
     _section("見本")
     _button("開店時の配置に戻す", main._on_load_sample_layout_pressed)
+    _fill_renovation()
+
+
+# Task #126: 改装 -- another size or orientation for this store. Tap a store,
+# then 改装する. The fixtures move onto the new floor's shelf spots; what
+# does not fit goes to storage.
+var _renovation_choice := ""
+
+
+func _fill_renovation() -> void:
+    var simulation = main.simulation
+    if simulation.store_types().is_empty():
+        return
+    _section("改装（店舗の大きさ・向きを変える）")
+    var current: Dictionary = main.GuideStartingStoreScript.store_type_entry(main.config, simulation.store_type_id)
+    if not current.is_empty():
+        _text("いまの店舗: " + main.store_type_caption(current))
+    var grid := GridContainer.new()
+    grid.columns = 3
+    window_body.add_child(grid)
+    _renovation_choice = ""
+    var buttons: Dictionary = {}
+    for entry in simulation.store_types():
+        var type_id := str(entry["id"])
+        if not simulation.can_renovate_to(type_id):
+            continue
+        var button := _picture_button(
+            main._menu_icon("store_types", str(entry["icon"])),
+            "%s\n¥%s" % [main.store_type_caption(entry), main._format_integer(simulation.renovation_price_yen(type_id))],
+            func(): _renovation_choice = type_id,
+            grid
+        )
+        button.name = "Renovate_" + type_id
+        buttons[type_id] = button
+    var go := _button("改装する", func():
+        if not _renovation_choice.is_empty():
+            main.renovate_store(_renovation_choice))
+    go.name = "RenovateButton"
+    _updaters.append(func():
+        for type_id in buttons:
+            (buttons[type_id] as Button).add_theme_stylebox_override("normal", _box(CHOSEN if type_id == _renovation_choice else BUTTON))
+        go.disabled = _renovation_choice.is_empty() or simulation.economy.cash_yen < simulation.renovation_price_yen(_renovation_choice))
 
 
 func _fill_staff() -> void:

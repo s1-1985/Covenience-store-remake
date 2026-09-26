@@ -196,6 +196,10 @@ func _initialize() -> void:
         _fail("GuideStartingStore.apply() must not modify the config it is given")
         return
     var guide_simulation = VerticalSliceSimulationScript.new(guide_config)
+    # Task #124: a new store starts unknown; this check is about a store
+    # that has been trading (half known, as an older save loads).
+    guide_simulation.recognition = 50.0
+    guide_simulation._apply_recognition()
     if guide_simulation.inventory.product_order.size() != 34:
         _fail("the guide starting store must stock one product per p.48 shelf")
         return
@@ -3167,6 +3171,12 @@ func _initialize() -> void:
         return
     if not _check_customer_roster_stays_small():
         return
+    if not _check_store_growth():
+        return
+    if not _check_layout_editing():
+        return
+    if not _check_renovation():
+        return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
     quit(0)
@@ -3768,6 +3778,10 @@ func _check_store_types() -> bool:
         if not day.try_buy_store_site(Vector2i(13, 21), type_id):
             _fail("%s must be buildable" % type_id)
             return false
+        # Task #124: a new store starts unknown with few customers
+        # (_check_store_growth); this is a store that has been trading.
+        day.recognition = 50.0
+        day._apply_recognition()
         var most_inside := 0
         for minute in 24 * 60:
             day.tick()
@@ -4086,6 +4100,10 @@ func _check_shelves_stay_filled() -> bool:
     var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
     var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
     simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    # Task #124: a store that has been trading (a new one sells little at
+    # first, see _check_store_growth).
+    simulation.recognition = 50.0
+    simulation._apply_recognition()
     var full: int = simulation.inventory.total_stock_units()
     for day in 6:
         var refills_before: int = simulation.event_log.count_type("restock_started")
@@ -4423,6 +4441,9 @@ func _check_branch_stores() -> bool:
 # Task #121: the customers who have left are not kept for ever.
 func _check_customer_roster_stays_small() -> bool:
     var simulation = _real_game_simulation()
+    # Task #124: a store that has been trading, so six days bring plenty.
+    simulation.recognition = 50.0
+    simulation._apply_recognition()
     for minute in 1440 * 6:
         simulation.tick()
     var started: int = simulation.customers.started_count()
@@ -4434,5 +4455,196 @@ func _check_customer_roster_stays_small() -> bool:
         return false
     if simulation.customers.completed_count() + simulation.customers.active_customers().size() != started:
         _fail("the visit totals must still count everyone")
+        return false
+    return true
+
+
+# Task #124: a new store starts unknown and becomes known and popular as it
+# serves its customers (REMAKE_BALANCED_DEFAULT shapes on CONFIRMED anchors).
+func _check_store_growth() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var rules: Dictionary = fresh["guide_starting_store"]["store_rules"]
+    if "Task #124" not in str(rules["evidence_note"]) or "REMAKE_BALANCED_DEFAULT" not in str(rules["evidence_note"]):
+        _fail("the store growth rules must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var growth: Dictionary = rules["store_growth"]
+    var simulation = _real_game_simulation()
+    if simulation.recognition != 0.0 or simulation.popularity != int(growth["start_popularity"]):
+        _fail("a new store opens unknown, with the starting popularity")
+        return false
+    if not is_equal_approx(simulation.demand.recognition_factor, float(growth["demand_factor_at_zero"])):
+        _fail("an unknown store draws only part of its catchment")
+        return false
+    var first_day_visits := 0
+    for minute in 1440:
+        simulation.tick()
+    first_day_visits = simulation.customers.started_count()
+    for minute in 1440 * 9:
+        simulation.tick()
+    if simulation.recognition <= 1.0:
+        _fail("served customers make the store known: %.2f" % simulation.recognition)
+        return false
+    if simulation.demand.recognition_factor <= float(growth["demand_factor_at_zero"]):
+        _fail("a better known store draws more of its catchment")
+        return false
+    if simulation.popularity <= int(growth["start_popularity"]) and simulation.popularity_target() > int(growth["start_popularity"]):
+        _fail("popularity follows how known the store is")
+        return false
+    if simulation.customers.started_count() <= first_day_visits * 5:
+        _fail("ten days bring more visits as the store grows")
+        return false
+    var copy = _real_game_simulation()
+    if not copy.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))):
+        _fail("a growing store's save must load")
+        return false
+    if not is_equal_approx(copy.recognition, simulation.recognition):
+        _fail("how known the store is survives a load")
+        return false
+    if not simulation.try_buy_out_rival("rival-02") or simulation.store_field(1, "recognition") != float(growth["bought_store_recognition"]):
+        _fail("a bought store comes with its own customers already knowing it")
+        return false
+    return true
+
+
+# Task #125: editing a small store -- a fixture's front finds a free side,
+# fixtures can be put in storage for free, and a refusal says why.
+func _check_layout_editing() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var rules: Dictionary = fresh["guide_starting_store"]["store_rules"]
+    if not bool(rules["edit_front_search"]) or "Task #125" not in str(rules["evidence_note"]):
+        _fail("the front search must stay on and tagged (Task #125)")
+        return false
+    var simulation = _real_game_simulation()
+    var shelf_id := "shelf-vegetables-1"
+    var origin: Vector2i = simulation.layout.fixture_origin(shelf_id)
+    var product_id: String = simulation.inventory.product_on_fixture(shelf_id)
+    var cash: int = simulation.economy.cash_yen
+    if not simulation.try_store_fixture(shelf_id) or simulation.stored_fixtures.size() != 1:
+        _fail("a stocked shelf can be put in storage")
+        return false
+    if simulation.layout.fixtures_by_id.has(shelf_id) or simulation.inventory.products.has(product_id):
+        _fail("a stored shelf leaves the floor, its goods go back")
+        return false
+    if simulation.economy.cash_yen < cash:
+        _fail("storing costs nothing (the goods are refunded at cost)")
+        return false
+    if simulation.try_store_fixture(str(simulation.config["simulation"]["checkout_fixture_id"])):
+        _fail("the register stays on the floor")
+        return false
+    cash = simulation.economy.cash_yen
+    if not simulation.try_place_stored_fixture(0, origin) or not simulation.stored_fixtures.is_empty():
+        _fail("a stored fixture can be set down again")
+        return false
+    if simulation.economy.cash_yen != cash:
+        _fail("setting a stored fixture down is free")
+        return false
+    # Turning a wall shelf: its front goes to whichever side is open.
+    for turn in 4:
+        if not simulation.try_rotate_fixture_clockwise(shelf_id):
+            _fail("a shelf against the wall still turns (turn %d)" % turn)
+            return false
+    var other: Vector2i = simulation.layout.fixture_origin("shelf-vegetables-2")
+    if simulation.try_relocate_fixture(shelf_id, other) or simulation.edit_refusal != "occupied":
+        _fail("moving onto another fixture is refused as occupied")
+        return false
+    if simulation._unreachable_goal() != "":
+        _fail("after the edits every shelf is still reachable")
+        return false
+    var data: Dictionary = JSON.parse_string(JSON.stringify(simulation.save_state()))
+    simulation.try_store_fixture("shelf-vegetables-2")
+    data = JSON.parse_string(JSON.stringify(simulation.save_state()))
+    var copy = _real_game_simulation()
+    if not copy.load_state(data) or copy.stored_fixtures.size() != 1:
+        _fail("the storage survives a load")
+        return false
+    return true
+
+
+# Task #126: 改装 -- an open store changes size or orientation; its fixtures
+# and goods move to the new floor, what does not fit goes to storage
+# (REMAKE_BALANCED_DEFAULT, see guide_store_types.evidence_note).
+func _check_renovation() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var note := str(fresh["guide_store_types"]["evidence_note"])
+    if "Task #126" not in note or "REMAKE_BALANCED_DEFAULT" not in note:
+        _fail("the renovation rules must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    for entry in fresh["guide_store_types"]["types"]:
+        if not (entry as Dictionary).has("layout"):
+            _fail("every store type has a floor to renovate into: " + str(entry["id"]))
+            return false
+    var simulation = _real_game_simulation()
+    for minute in 600:
+        simulation.tick()
+    if simulation.try_renovate_store("small_top"):
+        _fail("renovating into the same store does nothing")
+        return false
+    var shelves_before: int = simulation.inventory.product_order.size()
+    var cash: int = simulation.economy.cash_yen
+    var price: int = simulation.renovation_price_yen("medium_top")
+    if price != 12000000 - 6000000 / 2:
+        _fail("renovating costs the new store less half the old one: %d" % price)
+        return false
+    if not simulation.try_renovate_store("medium_top"):
+        _fail("a small store can be renovated into a medium one")
+        return false
+    if simulation.economy.cash_yen != cash - price or simulation.store_type_id != "medium_top":
+        _fail("the renovation is paid and the store is the new type")
+        return false
+    if simulation.layout.width_subcells != 14 or simulation.layout.height_subcells != 20:
+        _fail("the medium store's floor is 7x10 tiles")
+        return false
+    if simulation.inventory.product_order.size() != shelves_before or not simulation.stored_fixtures.is_empty():
+        _fail("every shelf fits into the bigger store with its goods")
+        return false
+    if not simulation.customers.active_customers().is_empty() or simulation._unreachable_goal() != "":
+        _fail("the customers left during the renovation and every shelf is reachable")
+        return false
+    if simulation.customers._max_concurrent_customers <= 3 or simulation._store_size_tier != "medium":
+        _fail("a bigger store holds more customers")
+        return false
+    # Fill the bigger floor's free shelf spots, then shrink and turn it
+    # into the wide (横長) small store: what does not fit is stored.
+    var extras := 0
+    for spot in simulation.config["fixtures"]:
+        var spot_origin := Vector2i(int(spot["origin_subcell"][0]), int(spot["origin_subcell"][1]))
+        if str(spot["kind"]) == "shelf" and simulation.layout.is_walkable(spot_origin):
+            if simulation.try_purchase_fixture_at("small_ambient_shelf", "extra-%d" % extras, spot_origin):
+                extras += 1
+    if extras < 3:
+        _fail("the medium store has room for more shelves: %d" % extras)
+        return false
+    if not simulation.try_renovate_store("small_bottom") or simulation.layout.width_subcells != 16:
+        _fail("the store can be turned into the wide (横長) small store")
+        return false
+    if simulation.stored_fixtures.is_empty():
+        _fail("fixtures that do not fit the smaller floor go to storage")
+        return false
+    if simulation.layout.fixture_snapshot().size() - 2 + simulation.stored_fixtures.size() != shelves_before + extras:
+        _fail("no fixture is lost in a renovation")
+        return false
+    for stored in simulation.stored_fixtures:
+        if simulation.inventory.product_on_fixture(str(stored["id"])) != "":
+            _fail("a stored fixture's goods went back")
+            return false
+    if not simulation._all_staff_are_walkable() or simulation._unreachable_goal() != "":
+        _fail("after renovating, the staff stand on the floor and the shelves are reachable")
+        return false
+    var sales: int = simulation._store_sales_yen
+    for minute in 900:
+        simulation.tick()
+    if simulation._store_sales_yen <= sales:
+        _fail("the renovated store trades")
+        return false
+    var copy = _real_game_simulation()
+    if not copy.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))) or copy.store_type_id != "small_bottom":
+        _fail("a renovated store loads as its new type")
+        return false
+    if copy.layout.fixture_snapshot().size() != simulation.layout.fixture_snapshot().size():
+        _fail("a renovated store's fixtures survive a load")
+        return false
+    var code := FileAccess.get_file_as_string("res://scripts/vertical_slice_simulation.gd")
+    if "REMAKE_BALANCED_DEFAULT: in the original the store is only" not in code:
+        _fail("try_renovate_store() must stay tagged REMAKE_BALANCED_DEFAULT")
         return false
     return true

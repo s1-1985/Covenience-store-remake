@@ -44,6 +44,9 @@ var bad_weather_visit_multiplier: float
 var is_bad_weather: bool
 var rival_store_count: int
 var rng: RandomNumberGenerator
+# Task #124: how well known the store is (VerticalSliceSimulation's 知名度),
+# scaling the visitors it gets; 1.0 = no effect (the prototype scenarios).
+var recognition_factor := 1.0
 
 const RIVAL_DILUTION_PER_COMPETITOR := 0.08
 const MAX_RIVAL_DILUTION := 0.6
@@ -72,6 +75,7 @@ func expected_arrivals_per_minute() -> float:
     )
     if is_bad_weather:
         expected_daily_visitors *= bad_weather_visit_multiplier
+    expected_daily_visitors *= recognition_factor
     if rival_store_count > 0:
         var dilution: float = min(
             MAX_RIVAL_DILUTION, RIVAL_DILUTION_PER_COMPETITOR * rival_store_count

@@ -1991,6 +1991,7 @@
       "chain_expanded": "purchase",
       "rival_bought_out": "purchase",
       "store_built": "purchase",
+      "store_renovated": "purchase",
       "rival_withdrew": "fanfare",
       "fixture_relocated": "place",
       "fixture_rotated": "place",
@@ -4377,6 +4378,7 @@
         "small_frozen_wagon",
         "small_refrigerated_wagon"
       ],
+      "edit_front_search": true,
       "fixture_attention": {
         "small_ambient_shelf": 1.0,
         "small_tobacco_vending": 1.0,
@@ -4408,13 +4410,25 @@
         "small_hot_cold_drink_vending": 1.0,
         "large_hot_cold_drink_vending": 1.0
       },
-      "evidence_note": "Task #117, selling a stocked shelf / changing its product (the owner's request): no source says what happens to the goods; REMAKE_BALANCED_DEFAULT, they go back to the supplier at their purchase cost. Task #118, register duty: CONFIRMED_COMMUNITY (first-title FAQ, docs/research/staff-checkout-task-arbitration-2026-09-06.md) that whoever reaches the register takes it and a tired cashier leaves for the break room; REMAKE_BALANCED_DEFAULT, between customers a cashier who is exhausted or under half 体力 hands over to the idle colleague with the most 体力 (for the half-tired case at least a quarter gauge more), and the two swap posts. Task #119, shelves and wagons: CONFIRMED_OFFICIAL capacities (a wagon holds less than the shelf of its size, fixture_catalog) and CONFIRMED_COMMUNITY that the 2x2 large wagon draws more 注目度 than a narrow one, which the wiki thinks raises ついで買い (docs/research/customer-purchase-role-merchandising-2026-09-05.md). REMAKE_BALANCED_DEFAULT (the owner's request): goods are taken from a shelf's front only but from any free side of a wagon (the fixtures whose guide name is a ワゴン); 注目度 1.0 for shelves, 1.5 for wagons, 2.0 for the 2x2 wagons, scaling the add-on chance. Task #120: customer types, see guide_customer_types.evidence_note."
+      "store_growth": {
+        "start_popularity": 20,
+        "new_store_recognition": 0.0,
+        "bought_store_recognition": 30.0,
+        "recognition_per_happy_visit": 0.15,
+        "recognition_per_unhappy_visit": 0.4,
+        "demand_factor_at_zero": 0.4,
+        "demand_factor_at_full": 1.6,
+        "popularity_base": 20,
+        "popularity_per_recognition": 0.6,
+        "popularity_daily_pull": 0.3
+      },
+      "evidence_note": "Task #117, selling a stocked shelf / changing its product (the owner's request): no source says what happens to the goods; REMAKE_BALANCED_DEFAULT, they go back to the supplier at their purchase cost. Task #118, register duty: CONFIRMED_COMMUNITY (first-title FAQ, docs/research/staff-checkout-task-arbitration-2026-09-06.md) that whoever reaches the register takes it and a tired cashier leaves for the break room; REMAKE_BALANCED_DEFAULT, between customers a cashier who is exhausted or under half 体力 hands over to the idle colleague with the most 体力 (for the half-tired case at least a quarter gauge more), and the two swap posts. Task #119, shelves and wagons: CONFIRMED_OFFICIAL capacities (a wagon holds less than the shelf of its size, fixture_catalog) and CONFIRMED_COMMUNITY that the 2x2 large wagon draws more 注目度 than a narrow one, which the wiki thinks raises ついで買い (docs/research/customer-purchase-role-merchandising-2026-09-05.md). REMAKE_BALANCED_DEFAULT (the owner's request): goods are taken from a shelf's front only but from any free side of a wagon (the fixtures whose guide name is a ワゴン); 注目度 1.0 for shelves, 1.5 for wagons, 2.0 for the 2x2 wagons, scaling the add-on chance. Task #120: customer types, see guide_customer_types.evidence_note. Task #124, the store's growth: CONFIRMED_COMMUNITY that a store starts at 人気度 20 and that 顧客独占率 is worked out again at every day change from 人気, service, cleaning, assortment, price, hours, weather and nearby population; CONFIRMED_OFFICIAL (qualitative, guide p.36) that an advert's 人気度 fades from the next day and that lower prices and better service slowly bring other stores' customers over. REMAKE_BALANCED_DEFAULT: 知名度 (0-100) -- a new store starts at 0, a bought one at 30; each satisfied customer adds 0.15 x (1 - 知名度/100), each one leaving with nothing or angry takes 0.4 x 知名度/100; visitors scale from 0.4 (unknown) to 1.6 (fully known); 人気度 moves 30% of the way to 20 + 0.6 x 知名度 each day; 顧客独占率 is recomputed daily. Task #125, editing the floor (the owner: rearranging a small store was too hard): REMAKE_BALANCED_DEFAULT, a fixture whose front would be blocked gets another side as its front, a refused edit says which shelf would be cut off, and fixtures can be put into storage for free and set down again later (their goods go back at cost)."
     }
   },
   "guide_store_types": {
     "scenario_id": "guide-small-store-start-v1",
     "default_id": "small_top",
-    "evidence_note": "Task #104. After buying the land the player picks the store in 「店舗を選んで下さい」: 6 stores in 2 rows x 3 columns, of which only the left column (the two small stores) can be picked at the start, the other four greyed out (CONFIRMED_VISUAL, PS screenshot, docs/research/ps-store-selection-lock-visual-2026-09-05.md); the top-left store shows ¥6,000,000 (CONFIRMED_VISUAL). Sizes 5x8/8x5, 7x10/10x7, 8x12/12x8 tiles and prices 6/12/18 million yen: CONFIRMED_OFFICIAL (guide 店舗データ, book pages 106-109, reference_sim STORE_VARIANTS). Which orientation is 'top'/'bottom' follows the guide's list order (inference, as in STORE_VARIANTS). The construction price is paid when the store is built, on top of the land. The furnished small layouts are REMAKE_BALANCED_DEFAULT (no furnished small store was recovered; the guide's 小規模店作成用おすすめアイテム list is unreadable): this project's own arrangement, with the shelf count (p.48's 34 shelves per 96 floor tiles x 40 tiles = 14) and the categories (p.48's shelf share per category scaled to 14 shelves, ties broken by the town buildings' DATA4 wanted items) taken by analogy from the guide's p.48 store. Shelf type, starting stock (= capacity) and break room follow p.48 the same way. The customer cap is p.48's 8 scaled by floor area (REMAKE_BALANCED_DEFAULT).",
+    "evidence_note": "Task #104. After buying the land the player picks the store in 「店舗を選んで下さい」: 6 stores in 2 rows x 3 columns, of which only the left column (the two small stores) can be picked at the start, the other four greyed out (CONFIRMED_VISUAL, PS screenshot, docs/research/ps-store-selection-lock-visual-2026-09-05.md); the top-left store shows ¥6,000,000 (CONFIRMED_VISUAL). Sizes 5x8/8x5, 7x10/10x7, 8x12/12x8 tiles and prices 6/12/18 million yen: CONFIRMED_OFFICIAL (guide 店舗データ, book pages 106-109, reference_sim STORE_VARIANTS). Which orientation is 'top'/'bottom' follows the guide's list order (inference, as in STORE_VARIANTS). The construction price is paid when the store is built, on top of the land. The furnished small layouts are REMAKE_BALANCED_DEFAULT (no furnished small store was recovered; the guide's 小規模店作成用おすすめアイテム list is unreadable): this project's own arrangement, with the shelf count (p.48's 34 shelves per 96 floor tiles x 40 tiles = 14) and the categories (p.48's shelf share per category scaled to 14 shelves, ties broken by the town buildings' DATA4 wanted items) taken by analogy from the guide's p.48 store. Shelf type, starting stock (= capacity) and break room follow p.48 the same way. The customer cap is p.48's 8 scaled by floor area (REMAKE_BALANCED_DEFAULT). Task #126: the medium and large stores (which a store can be renovated into) have layouts too: the 12x8 one is the guide's p.48 store itself (CONFIRMED_VISUAL); the others are this project's own aisle-grid plans (REMAKE_BALANCED_DEFAULT), with p.48's shelves per floor tile. 改装 (renovating an open store into another size or orientation) is REMAKE_BALANCED_DEFAULT too: no source shows an open store changing size; it costs the new store's construction price less half the current one's, customers inside go home, and the fixtures move onto the new floor's shelf spots with their goods (what does not fit goes to storage, its goods back at cost).",
     "types": [
       {
         "id": "small_top",
@@ -4999,7 +5013,439 @@
         "floor_tiles": [7, 10],
         "construction_price_yen": 12000000,
         "selectable_at_start": false,
-        "grid_cell": [1, 0]
+        "grid_cell": [1, 0],
+        "layout": {
+          "store": {
+            "width_tiles": 7,
+            "height_tiles": 10,
+            "subcells_per_tile": 2,
+            "entry_subcell": [6, 0],
+            "exit_subcell": [7, 0],
+            "size_tier": "medium",
+            "size_tier_evidence_note": "See guide_store_types.evidence_note."
+          },
+          "fixtures": [
+            {
+              "id": "checkout-1",
+              "kind": "checkout",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 4],
+              "footprint_tiles": [2, 1],
+              "interaction_subcell": [5, 3]
+            },
+            {
+              "id": "break-room-1",
+              "kind": "break_room",
+              "catalog_id": "break_room_2",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 0],
+              "footprint_tiles": [2, 2],
+              "interaction_subcell": [10, 4]
+            },
+            {
+              "id": "shelf-vegetables-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 4],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 5]
+            },
+            {
+              "id": "shelf-vegetables-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 6],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 7]
+            },
+            {
+              "id": "shelf-vegetables-3",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 9]
+            },
+            {
+              "id": "shelf-fish-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 11]
+            },
+            {
+              "id": "shelf-meat-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 14],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 15]
+            },
+            {
+              "id": "shelf-bento-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 16],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 17]
+            },
+            {
+              "id": "shelf-cold-drink-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 18],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 19]
+            },
+            {
+              "id": "shelf-cold-drink-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 9]
+            },
+            {
+              "id": "shelf-cold-drink-3",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 11]
+            },
+            {
+              "id": "shelf-ice-cream-1",
+              "kind": "shelf",
+              "catalog_id": "small_frozen_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 14],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 15]
+            },
+            {
+              "id": "shelf-bread-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 16],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 17]
+            },
+            {
+              "id": "shelf-bread-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 18],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 19]
+            },
+            {
+              "id": "shelf-snacks-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 9]
+            },
+            {
+              "id": "shelf-snacks-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 11]
+            },
+            {
+              "id": "shelf-snacks-3",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 14],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 15]
+            },
+            {
+              "id": "shelf-instant-food-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 16],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 17]
+            },
+            {
+              "id": "shelf-daily-goods-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 18],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 19]
+            },
+            {
+              "id": "shelf-daily-goods-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 6],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 7]
+            },
+            {
+              "id": "shelf-underwear-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 9]
+            },
+            {
+              "id": "shelf-electronics-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 11]
+            },
+            {
+              "id": "shelf-stationery-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 14],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 15]
+            },
+            {
+              "id": "shelf-books-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 16],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 17]
+            },
+            {
+              "id": "shelf-frozen-food-1",
+              "kind": "shelf",
+              "catalog_id": "small_frozen_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 18],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 19]
+            }
+          ],
+          "products": [
+            {
+              "id": "product-vegetables-1",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-vegetables-2",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-vegetables-3",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-3",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-fish-1",
+              "catalog_id": "fish",
+              "fixture_id": "shelf-fish-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-meat-1",
+              "catalog_id": "meat",
+              "fixture_id": "shelf-meat-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1200,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-bento-1",
+              "catalog_id": "bento",
+              "fixture_id": "shelf-bento-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 400,
+              "restock_unit_cost_yen": 240
+            },
+            {
+              "id": "product-cold-drink-1",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-cold-drink-2",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-cold-drink-3",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-3",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-ice-cream-1",
+              "catalog_id": "ice_cream",
+              "fixture_id": "shelf-ice-cream-1",
+              "initial_stock_units": 25,
+              "sale_price_yen": 100,
+              "restock_unit_cost_yen": 50
+            },
+            {
+              "id": "product-bread-1",
+              "catalog_id": "bread",
+              "fixture_id": "shelf-bread-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 300,
+              "restock_unit_cost_yen": 150
+            },
+            {
+              "id": "product-bread-2",
+              "catalog_id": "bread",
+              "fixture_id": "shelf-bread-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 300,
+              "restock_unit_cost_yen": 150
+            },
+            {
+              "id": "product-snacks-1",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-snacks-2",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-snacks-3",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-3",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-instant-food-1",
+              "catalog_id": "instant_food",
+              "fixture_id": "shelf-instant-food-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 150,
+              "restock_unit_cost_yen": 90
+            },
+            {
+              "id": "product-daily-goods-1",
+              "catalog_id": "daily_goods",
+              "fixture_id": "shelf-daily-goods-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-daily-goods-2",
+              "catalog_id": "daily_goods",
+              "fixture_id": "shelf-daily-goods-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-underwear-1",
+              "catalog_id": "underwear",
+              "fixture_id": "shelf-underwear-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-electronics-1",
+              "catalog_id": "electronics",
+              "fixture_id": "shelf-electronics-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-stationery-1",
+              "catalog_id": "stationery",
+              "fixture_id": "shelf-stationery-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 150,
+              "restock_unit_cost_yen": 90
+            },
+            {
+              "id": "product-books-1",
+              "catalog_id": "books",
+              "fixture_id": "shelf-books-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 400,
+              "restock_unit_cost_yen": 240
+            },
+            {
+              "id": "product-frozen-food-1",
+              "catalog_id": "frozen_food",
+              "fixture_id": "shelf-frozen-food-1",
+              "initial_stock_units": 25,
+              "sale_price_yen": 500,
+              "restock_unit_cost_yen": 300
+            }
+          ],
+          "checkout_fixture_id": "checkout-1",
+          "staff_start_subcells": {
+            "staff-1": [5, 6],
+            "staff-2": [2, 3],
+            "staff-3": [8, 3]
+          },
+          "max_concurrent_customers": 6,
+          "provisional_restock_product_id": "product-vegetables-1",
+          "sample_layout_label": "開店時の配置"
+        }
       },
       {
         "id": "medium_bottom",
@@ -5008,7 +5454,337 @@
         "floor_tiles": [10, 7],
         "construction_price_yen": 12000000,
         "selectable_at_start": false,
-        "grid_cell": [1, 1]
+        "grid_cell": [1, 1],
+        "layout": {
+          "store": {
+            "width_tiles": 10,
+            "height_tiles": 7,
+            "subcells_per_tile": 2,
+            "entry_subcell": [9, 0],
+            "exit_subcell": [10, 0],
+            "size_tier": "medium",
+            "size_tier_evidence_note": "See guide_store_types.evidence_note."
+          },
+          "fixtures": [
+            {
+              "id": "checkout-1",
+              "kind": "checkout",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [8, 4],
+              "footprint_tiles": [2, 1],
+              "interaction_subcell": [9, 3]
+            },
+            {
+              "id": "break-room-1",
+              "kind": "break_room",
+              "catalog_id": "break_room_2",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [16, 0],
+              "footprint_tiles": [2, 2],
+              "interaction_subcell": [16, 4]
+            },
+            {
+              "id": "shelf-vegetables-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 4],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 5]
+            },
+            {
+              "id": "shelf-vegetables-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 6],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 7]
+            },
+            {
+              "id": "shelf-vegetables-3",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 11]
+            },
+            {
+              "id": "shelf-fish-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 13]
+            },
+            {
+              "id": "shelf-meat-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 4],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 5]
+            },
+            {
+              "id": "shelf-bento-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 6],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 7]
+            },
+            {
+              "id": "shelf-cold-drink-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 11]
+            },
+            {
+              "id": "shelf-cold-drink-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 13]
+            },
+            {
+              "id": "shelf-ice-cream-1",
+              "kind": "shelf",
+              "catalog_id": "small_frozen_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 11]
+            },
+            {
+              "id": "shelf-bread-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 13]
+            },
+            {
+              "id": "shelf-bread-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 11]
+            },
+            {
+              "id": "shelf-snacks-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 13]
+            },
+            {
+              "id": "shelf-snacks-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [12, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [14, 11]
+            },
+            {
+              "id": "shelf-instant-food-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [12, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [14, 13]
+            },
+            {
+              "id": "shelf-daily-goods-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [16, 6],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [15, 7]
+            },
+            {
+              "id": "shelf-daily-goods-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [16, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [15, 11]
+            },
+            {
+              "id": "shelf-underwear-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [16, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [15, 13]
+            }
+          ],
+          "products": [
+            {
+              "id": "product-vegetables-1",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-vegetables-2",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-vegetables-3",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-3",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-fish-1",
+              "catalog_id": "fish",
+              "fixture_id": "shelf-fish-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-meat-1",
+              "catalog_id": "meat",
+              "fixture_id": "shelf-meat-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1200,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-bento-1",
+              "catalog_id": "bento",
+              "fixture_id": "shelf-bento-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 400,
+              "restock_unit_cost_yen": 240
+            },
+            {
+              "id": "product-cold-drink-1",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-cold-drink-2",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-ice-cream-1",
+              "catalog_id": "ice_cream",
+              "fixture_id": "shelf-ice-cream-1",
+              "initial_stock_units": 25,
+              "sale_price_yen": 100,
+              "restock_unit_cost_yen": 50
+            },
+            {
+              "id": "product-bread-1",
+              "catalog_id": "bread",
+              "fixture_id": "shelf-bread-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 300,
+              "restock_unit_cost_yen": 150
+            },
+            {
+              "id": "product-bread-2",
+              "catalog_id": "bread",
+              "fixture_id": "shelf-bread-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 300,
+              "restock_unit_cost_yen": 150
+            },
+            {
+              "id": "product-snacks-1",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-snacks-2",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-instant-food-1",
+              "catalog_id": "instant_food",
+              "fixture_id": "shelf-instant-food-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 150,
+              "restock_unit_cost_yen": 90
+            },
+            {
+              "id": "product-daily-goods-1",
+              "catalog_id": "daily_goods",
+              "fixture_id": "shelf-daily-goods-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-daily-goods-2",
+              "catalog_id": "daily_goods",
+              "fixture_id": "shelf-daily-goods-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-underwear-1",
+              "catalog_id": "underwear",
+              "fixture_id": "shelf-underwear-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            }
+          ],
+          "checkout_fixture_id": "checkout-1",
+          "staff_start_subcells": {
+            "staff-1": [9, 6],
+            "staff-2": [2, 3],
+            "staff-3": [14, 3]
+          },
+          "max_concurrent_customers": 6,
+          "provisional_restock_product_id": "product-vegetables-1",
+          "sample_layout_label": "開店時の配置"
+        }
       },
       {
         "id": "large_top",
@@ -5017,7 +5793,626 @@
         "floor_tiles": [8, 12],
         "construction_price_yen": 18000000,
         "selectable_at_start": false,
-        "grid_cell": [2, 0]
+        "grid_cell": [2, 0],
+        "layout": {
+          "store": {
+            "width_tiles": 8,
+            "height_tiles": 12,
+            "subcells_per_tile": 2,
+            "entry_subcell": [7, 0],
+            "exit_subcell": [8, 0],
+            "size_tier": "large",
+            "size_tier_evidence_note": "See guide_store_types.evidence_note."
+          },
+          "fixtures": [
+            {
+              "id": "checkout-1",
+              "kind": "checkout",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 4],
+              "footprint_tiles": [2, 1],
+              "interaction_subcell": [7, 3]
+            },
+            {
+              "id": "break-room-1",
+              "kind": "break_room",
+              "catalog_id": "break_room_2",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [12, 0],
+              "footprint_tiles": [2, 2],
+              "interaction_subcell": [12, 4]
+            },
+            {
+              "id": "shelf-vegetables-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 4],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 5]
+            },
+            {
+              "id": "shelf-vegetables-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 6],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 7]
+            },
+            {
+              "id": "shelf-vegetables-3",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 9]
+            },
+            {
+              "id": "shelf-vegetables-4",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 11]
+            },
+            {
+              "id": "shelf-vegetables-5",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 13]
+            },
+            {
+              "id": "shelf-fish-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 16],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 17]
+            },
+            {
+              "id": "shelf-fish-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 18],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 19]
+            },
+            {
+              "id": "shelf-meat-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 20],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 21]
+            },
+            {
+              "id": "shelf-meat-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [0, 22],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [2, 23]
+            },
+            {
+              "id": "shelf-bento-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 9]
+            },
+            {
+              "id": "shelf-cold-drink-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 11]
+            },
+            {
+              "id": "shelf-cold-drink-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 13]
+            },
+            {
+              "id": "shelf-cold-drink-3",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 16],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 17]
+            },
+            {
+              "id": "shelf-cold-drink-4",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 18],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 19]
+            },
+            {
+              "id": "shelf-cold-drink-5",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 20],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 21]
+            },
+            {
+              "id": "shelf-ice-cream-1",
+              "kind": "shelf",
+              "catalog_id": "small_frozen_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 22],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 23]
+            },
+            {
+              "id": "shelf-bread-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 9]
+            },
+            {
+              "id": "shelf-bread-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 11]
+            },
+            {
+              "id": "shelf-bread-3",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 13]
+            },
+            {
+              "id": "shelf-snacks-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 16],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 17]
+            },
+            {
+              "id": "shelf-snacks-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 18],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 19]
+            },
+            {
+              "id": "shelf-snacks-3",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 20],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 21]
+            },
+            {
+              "id": "shelf-snacks-4",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 22],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 23]
+            },
+            {
+              "id": "shelf-instant-food-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 9]
+            },
+            {
+              "id": "shelf-instant-food-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 11]
+            },
+            {
+              "id": "shelf-daily-goods-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 13]
+            },
+            {
+              "id": "shelf-daily-goods-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 16],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 17]
+            },
+            {
+              "id": "shelf-daily-goods-3",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 18],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 19]
+            },
+            {
+              "id": "shelf-underwear-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 20],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 21]
+            },
+            {
+              "id": "shelf-underwear-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 22],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [9, 23]
+            },
+            {
+              "id": "shelf-electronics-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [12, 6],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [14, 7]
+            },
+            {
+              "id": "shelf-stationery-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [12, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [14, 9]
+            },
+            {
+              "id": "shelf-books-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [12, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [14, 11]
+            },
+            {
+              "id": "shelf-frozen-food-1",
+              "kind": "shelf",
+              "catalog_id": "small_frozen_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [12, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [14, 13]
+            }
+          ],
+          "products": [
+            {
+              "id": "product-vegetables-1",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-vegetables-2",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-vegetables-3",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-3",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-vegetables-4",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-4",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-vegetables-5",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-5",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-fish-1",
+              "catalog_id": "fish",
+              "fixture_id": "shelf-fish-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-fish-2",
+              "catalog_id": "fish",
+              "fixture_id": "shelf-fish-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-meat-1",
+              "catalog_id": "meat",
+              "fixture_id": "shelf-meat-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1200,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-meat-2",
+              "catalog_id": "meat",
+              "fixture_id": "shelf-meat-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1200,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-bento-1",
+              "catalog_id": "bento",
+              "fixture_id": "shelf-bento-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 400,
+              "restock_unit_cost_yen": 240
+            },
+            {
+              "id": "product-cold-drink-1",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-cold-drink-2",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-cold-drink-3",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-3",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-cold-drink-4",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-4",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-cold-drink-5",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-5",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-ice-cream-1",
+              "catalog_id": "ice_cream",
+              "fixture_id": "shelf-ice-cream-1",
+              "initial_stock_units": 25,
+              "sale_price_yen": 100,
+              "restock_unit_cost_yen": 50
+            },
+            {
+              "id": "product-bread-1",
+              "catalog_id": "bread",
+              "fixture_id": "shelf-bread-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 300,
+              "restock_unit_cost_yen": 150
+            },
+            {
+              "id": "product-bread-2",
+              "catalog_id": "bread",
+              "fixture_id": "shelf-bread-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 300,
+              "restock_unit_cost_yen": 150
+            },
+            {
+              "id": "product-bread-3",
+              "catalog_id": "bread",
+              "fixture_id": "shelf-bread-3",
+              "initial_stock_units": 40,
+              "sale_price_yen": 300,
+              "restock_unit_cost_yen": 150
+            },
+            {
+              "id": "product-snacks-1",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-snacks-2",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-snacks-3",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-3",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-snacks-4",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-4",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-instant-food-1",
+              "catalog_id": "instant_food",
+              "fixture_id": "shelf-instant-food-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 150,
+              "restock_unit_cost_yen": 90
+            },
+            {
+              "id": "product-instant-food-2",
+              "catalog_id": "instant_food",
+              "fixture_id": "shelf-instant-food-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 150,
+              "restock_unit_cost_yen": 90
+            },
+            {
+              "id": "product-daily-goods-1",
+              "catalog_id": "daily_goods",
+              "fixture_id": "shelf-daily-goods-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-daily-goods-2",
+              "catalog_id": "daily_goods",
+              "fixture_id": "shelf-daily-goods-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-daily-goods-3",
+              "catalog_id": "daily_goods",
+              "fixture_id": "shelf-daily-goods-3",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-underwear-1",
+              "catalog_id": "underwear",
+              "fixture_id": "shelf-underwear-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-underwear-2",
+              "catalog_id": "underwear",
+              "fixture_id": "shelf-underwear-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-electronics-1",
+              "catalog_id": "electronics",
+              "fixture_id": "shelf-electronics-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-stationery-1",
+              "catalog_id": "stationery",
+              "fixture_id": "shelf-stationery-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 150,
+              "restock_unit_cost_yen": 90
+            },
+            {
+              "id": "product-books-1",
+              "catalog_id": "books",
+              "fixture_id": "shelf-books-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 400,
+              "restock_unit_cost_yen": 240
+            },
+            {
+              "id": "product-frozen-food-1",
+              "catalog_id": "frozen_food",
+              "fixture_id": "shelf-frozen-food-1",
+              "initial_stock_units": 25,
+              "sale_price_yen": 500,
+              "restock_unit_cost_yen": 300
+            }
+          ],
+          "checkout_fixture_id": "checkout-1",
+          "staff_start_subcells": {
+            "staff-1": [7, 6],
+            "staff-2": [2, 3],
+            "staff-3": [10, 3]
+          },
+          "max_concurrent_customers": 8,
+          "provisional_restock_product_id": "product-vegetables-1",
+          "sample_layout_label": "開店時の配置"
+        }
       },
       {
         "id": "large_bottom",
@@ -5026,7 +6421,709 @@
         "floor_tiles": [12, 8],
         "construction_price_yen": 18000000,
         "selectable_at_start": false,
-        "grid_cell": [2, 1]
+        "grid_cell": [2, 1],
+        "layout": {
+          "store": {
+            "width_tiles": 12,
+            "height_tiles": 8,
+            "subcells_per_tile": 2,
+            "entry_subcell": [11, 0],
+            "exit_subcell": [12, 0],
+            "size_tier": "large",
+            "size_tier_evidence_note": "See guide_starting_store.evidence_note."
+          },
+          "fixtures": [
+            {
+              "id": "checkout-1",
+              "kind": "checkout",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 12],
+              "footprint_tiles": [2, 1],
+              "interaction_subcell": [11, 11],
+              "guide_tile": [5, 6],
+              "guide_reading": "counter plus register machine across tiles (5,6)-(6,6)"
+            },
+            {
+              "id": "break-room-1",
+              "kind": "break_room",
+              "catalog_id": "break_room_2",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 3],
+              "footprint_tiles": [2, 2],
+              "interaction_subcell": [9, 4],
+              "guide_tile": [5, 1.5],
+              "guide_reading": "break room; the diagonal item at its top-left matches DATA2's 職員休憩室2 silhouette (PROVISIONAL)"
+            },
+            {
+              "id": "plant-1",
+              "kind": "amenity",
+              "catalog_id": "potted_plant",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [0, 10],
+              "guide_tile": [2, 5],
+              "guide_reading": "potted plant (matches DATA2 観葉植物)"
+            },
+            {
+              "id": "shelf-bread-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [22, 0],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [21, 1],
+              "guide_tile": [11, 0],
+              "guide_reading": "round buns and croissant-like bread"
+            },
+            {
+              "id": "shelf-snacks-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [2, 2],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 1],
+              "guide_tile": [1, 1],
+              "guide_reading": "heart-shaped packs over boxes; read as sweets (uncertain)"
+            },
+            {
+              "id": "shelf-snacks-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 2],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [5, 1],
+              "guide_tile": [2, 1],
+              "guide_reading": "small colourful boxes (uncertain)"
+            },
+            {
+              "id": "shelf-instant-food-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 2],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [7, 1],
+              "guide_tile": [3, 1],
+              "guide_reading": "colourful packets (uncertain)"
+            },
+            {
+              "id": "shelf-daily-goods-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [2, 4],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 6],
+              "guide_tile": [1, 2],
+              "guide_reading": "tall printed boxes and white bottles"
+            },
+            {
+              "id": "shelf-vegetables-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 4],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [5, 6],
+              "guide_tile": [2, 2],
+              "guide_reading": "oranges, lemons and grapes"
+            },
+            {
+              "id": "shelf-vegetables-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 4],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [7, 6],
+              "guide_tile": [3, 2],
+              "guide_reading": "green onions and tomatoes"
+            },
+            {
+              "id": "shelf-cold-drink-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [16, 2],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [15, 3],
+              "guide_tile": [8, 1],
+              "guide_reading": "blue cans and white cartons"
+            },
+            {
+              "id": "shelf-fish-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [16, 4],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [15, 5],
+              "guide_tile": [8, 2],
+              "guide_reading": "whole fish and sliced fish on trays"
+            },
+            {
+              "id": "shelf-meat-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [16, 6],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [15, 7],
+              "guide_tile": [8, 3],
+              "guide_reading": "red meat packs"
+            },
+            {
+              "id": "shelf-snacks-3",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [16, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [15, 9],
+              "guide_tile": [8, 4],
+              "guide_reading": "tall striped boxes (uncertain)"
+            },
+            {
+              "id": "shelf-electronics-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [16, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [15, 11],
+              "guide_tile": [8, 5],
+              "guide_reading": "small blister packs (uncertain)"
+            },
+            {
+              "id": "shelf-cold-drink-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [18, 2],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [20, 3],
+              "guide_tile": [9, 1],
+              "guide_reading": "bottles and blue packs (uncertain)"
+            },
+            {
+              "id": "shelf-meat-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [18, 4],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [20, 5],
+              "guide_tile": [9, 2],
+              "guide_reading": "white trays with pink slices (uncertain)"
+            },
+            {
+              "id": "shelf-fish-2",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [18, 6],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [20, 7],
+              "guide_tile": [9, 3],
+              "guide_reading": "same picture as (8,2)"
+            },
+            {
+              "id": "shelf-stationery-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [18, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [20, 9],
+              "guide_tile": [9, 4],
+              "guide_reading": "blue/red small packages (uncertain)"
+            },
+            {
+              "id": "shelf-snacks-4",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [18, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [20, 11],
+              "guide_tile": [9, 5],
+              "guide_reading": "same picture as (8,4)"
+            },
+            {
+              "id": "shelf-bread-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [22, 2],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [21, 3],
+              "guide_tile": [11, 1],
+              "guide_reading": "bread loaves"
+            },
+            {
+              "id": "shelf-instant-food-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [22, 4],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [21, 5],
+              "guide_tile": [11, 2],
+              "guide_reading": "cup-shaped items (uncertain: cup noodles)"
+            },
+            {
+              "id": "shelf-books-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [22, 6],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [21, 7],
+              "guide_tile": [11, 3],
+              "guide_reading": "magazine-like covers (uncertain)"
+            },
+            {
+              "id": "shelf-bento-1",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [22, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [21, 9],
+              "guide_tile": [11, 4],
+              "guide_reading": "wrapped triangular rice balls"
+            },
+            {
+              "id": "shelf-cold-drink-3",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [22, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [21, 11],
+              "guide_tile": [11, 5],
+              "guide_reading": "tall bottles that look like liquor; see ALCOHOL_NOTE"
+            },
+            {
+              "id": "shelf-cold-drink-4",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [22, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [21, 13],
+              "guide_tile": [11, 6],
+              "guide_reading": "sake-like bottles; see ALCOHOL_NOTE"
+            },
+            {
+              "id": "shelf-cold-drink-5",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [22, 14],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [21, 15],
+              "guide_tile": [11, 7],
+              "guide_reading": "rows of cans"
+            },
+            {
+              "id": "shelf-vegetables-3",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [2, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 7],
+              "guide_tile": [1, 4],
+              "guide_reading": "oranges, pineapple and onions"
+            },
+            {
+              "id": "shelf-vegetables-4",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [5, 7],
+              "guide_tile": [2, 4],
+              "guide_reading": "white round items and potatoes (uncertain)"
+            },
+            {
+              "id": "shelf-bread-3",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 8],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [7, 7],
+              "guide_tile": [3, 4],
+              "guide_reading": "beige bagged loaves (uncertain)"
+            },
+            {
+              "id": "shelf-vegetables-5",
+              "kind": "shelf",
+              "catalog_id": "small_refrigerated_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [2, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [1, 11],
+              "guide_tile": [1, 5],
+              "guide_reading": "same picture as (2,2)"
+            },
+            {
+              "id": "shelf-daily-goods-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 10],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [8, 11],
+              "guide_tile": [3, 5],
+              "guide_reading": "white/blue boxes (uncertain)"
+            },
+            {
+              "id": "shelf-underwear-1",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [2, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [3, 14],
+              "guide_tile": [1, 6],
+              "guide_reading": "striped packs (uncertain: socks/stockings)"
+            },
+            {
+              "id": "shelf-daily-goods-3",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [4, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [5, 14],
+              "guide_tile": [2, 6],
+              "guide_reading": "same picture as (3,5)"
+            },
+            {
+              "id": "shelf-underwear-2",
+              "kind": "shelf",
+              "catalog_id": "small_ambient_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [6, 12],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [7, 14],
+              "guide_tile": [3, 6],
+              "guide_reading": "same picture as (1,6)"
+            },
+            {
+              "id": "shelf-frozen-food-1",
+              "kind": "shelf",
+              "catalog_id": "small_frozen_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [10, 7],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [11, 9],
+              "guide_tile": [5, 3.5],
+              "guide_reading": "white packs (uncertain)"
+            },
+            {
+              "id": "shelf-ice-cream-1",
+              "kind": "shelf",
+              "catalog_id": "small_frozen_shelf",
+              "rotation_quarter_turns": 0,
+              "origin_subcell": [12, 7],
+              "footprint_tiles": [1, 1],
+              "interaction_subcell": [13, 9],
+              "guide_tile": [6, 3.5],
+              "guide_reading": "purple/red packs (uncertain)"
+            }
+          ],
+          "products": [
+            {
+              "id": "product-bread-1",
+              "catalog_id": "bread",
+              "fixture_id": "shelf-bread-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 300,
+              "restock_unit_cost_yen": 150
+            },
+            {
+              "id": "product-snacks-1",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-snacks-2",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-instant-food-1",
+              "catalog_id": "instant_food",
+              "fixture_id": "shelf-instant-food-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 150,
+              "restock_unit_cost_yen": 90
+            },
+            {
+              "id": "product-daily-goods-1",
+              "catalog_id": "daily_goods",
+              "fixture_id": "shelf-daily-goods-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-vegetables-1",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-vegetables-2",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-cold-drink-1",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-fish-1",
+              "catalog_id": "fish",
+              "fixture_id": "shelf-fish-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-meat-1",
+              "catalog_id": "meat",
+              "fixture_id": "shelf-meat-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1200,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-snacks-3",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-3",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-electronics-1",
+              "catalog_id": "electronics",
+              "fixture_id": "shelf-electronics-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-cold-drink-2",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-meat-2",
+              "catalog_id": "meat",
+              "fixture_id": "shelf-meat-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1200,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-fish-2",
+              "catalog_id": "fish",
+              "fixture_id": "shelf-fish-2",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-stationery-1",
+              "catalog_id": "stationery",
+              "fixture_id": "shelf-stationery-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 150,
+              "restock_unit_cost_yen": 90
+            },
+            {
+              "id": "product-snacks-4",
+              "catalog_id": "snacks",
+              "fixture_id": "shelf-snacks-4",
+              "initial_stock_units": 40,
+              "sale_price_yen": 200,
+              "restock_unit_cost_yen": 120
+            },
+            {
+              "id": "product-bread-2",
+              "catalog_id": "bread",
+              "fixture_id": "shelf-bread-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 300,
+              "restock_unit_cost_yen": 150
+            },
+            {
+              "id": "product-instant-food-2",
+              "catalog_id": "instant_food",
+              "fixture_id": "shelf-instant-food-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 150,
+              "restock_unit_cost_yen": 90
+            },
+            {
+              "id": "product-books-1",
+              "catalog_id": "books",
+              "fixture_id": "shelf-books-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 400,
+              "restock_unit_cost_yen": 240
+            },
+            {
+              "id": "product-bento-1",
+              "catalog_id": "bento",
+              "fixture_id": "shelf-bento-1",
+              "initial_stock_units": 30,
+              "sale_price_yen": 400,
+              "restock_unit_cost_yen": 240
+            },
+            {
+              "id": "product-cold-drink-3",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-3",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-cold-drink-4",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-4",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-cold-drink-5",
+              "catalog_id": "cold_drink",
+              "fixture_id": "shelf-cold-drink-5",
+              "initial_stock_units": 30,
+              "sale_price_yen": 110,
+              "restock_unit_cost_yen": 55
+            },
+            {
+              "id": "product-vegetables-3",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-3",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-vegetables-4",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-4",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-bread-3",
+              "catalog_id": "bread",
+              "fixture_id": "shelf-bread-3",
+              "initial_stock_units": 40,
+              "sale_price_yen": 300,
+              "restock_unit_cost_yen": 150
+            },
+            {
+              "id": "product-vegetables-5",
+              "catalog_id": "vegetables",
+              "fixture_id": "shelf-vegetables-5",
+              "initial_stock_units": 30,
+              "sale_price_yen": 1500,
+              "restock_unit_cost_yen": 750
+            },
+            {
+              "id": "product-daily-goods-2",
+              "catalog_id": "daily_goods",
+              "fixture_id": "shelf-daily-goods-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-underwear-1",
+              "catalog_id": "underwear",
+              "fixture_id": "shelf-underwear-1",
+              "initial_stock_units": 40,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-daily-goods-3",
+              "catalog_id": "daily_goods",
+              "fixture_id": "shelf-daily-goods-3",
+              "initial_stock_units": 40,
+              "sale_price_yen": 800,
+              "restock_unit_cost_yen": 480
+            },
+            {
+              "id": "product-underwear-2",
+              "catalog_id": "underwear",
+              "fixture_id": "shelf-underwear-2",
+              "initial_stock_units": 40,
+              "sale_price_yen": 1000,
+              "restock_unit_cost_yen": 600
+            },
+            {
+              "id": "product-frozen-food-1",
+              "catalog_id": "frozen_food",
+              "fixture_id": "shelf-frozen-food-1",
+              "initial_stock_units": 25,
+              "sale_price_yen": 500,
+              "restock_unit_cost_yen": 300
+            },
+            {
+              "id": "product-ice-cream-1",
+              "catalog_id": "ice_cream",
+              "fixture_id": "shelf-ice-cream-1",
+              "initial_stock_units": 25,
+              "sale_price_yen": 100,
+              "restock_unit_cost_yen": 50
+            }
+          ],
+          "checkout_fixture_id": "checkout-1",
+          "staff_start_subcells": {
+            "staff-1": [12, 14],
+            "staff-2": [14, 10],
+            "staff-3": [8, 6]
+          },
+          "max_concurrent_customers": 8,
+          "provisional_restock_product_id": "product-bread-1",
+          "sample_layout_label": "Guide p.48 layout"
+        }
       }
     ]
   },

@@ -84,7 +84,12 @@ func _run() -> void:
             locked += 1
     if not _require(game._store_type_buttons.size() == 6 and locked == 4, "Six stores, four of them locked at the start"):
         return
-    if not _require(game._store_type_choice == "small_top" and "小型店（5×8）　¥6,000,000" in game.store_type_info_label.text, "The small store and its price are shown: " + game.store_type_info_label.text):
+    if not _require(game._store_type_choice == "small_top" and "小型店・縦長 5×8　¥6,000,000" in game.store_type_info_label.text, "The small store and its price are shown: " + game.store_type_info_label.text):
+        return
+    # Task #126: each store button says which way its floor runs.
+    var top_text: String = (game._store_type_buttons["small_top"] as Button).text
+    var bottom_text: String = (game._store_type_buttons["small_bottom"] as Button).text
+    if not _require("縦長 5×8" in top_text and "横長 8×5" in bottom_text, "The two small stores are shown as 縦長 and 横長: %s / %s" % [top_text, bottom_text]):
         return
     await _capture("preview-store-type")
     game.find_child("BuildStoreButton", true, false).pressed.emit()
@@ -375,6 +380,22 @@ func _run() -> void:
     phone.window_body.find_child("GoStore_0", true, false).pressed.emit()
     if not _require(game.simulation.viewed_store == 0 and game.simulation.store_name == "本店", "and back to 本店"):
         return
+    # Task #126: 内装 → 改装 turns 本店 into the wide (横長) small store.
+    phone.menu_buttons["interior"].pressed.emit()
+    game._refresh_ui()
+    var renovate_wide: Button = phone.window_body.find_child("Renovate_small_bottom", true, false)
+    var renovate_go: Button = phone.window_body.find_child("RenovateButton", true, false)
+    if not _require(renovate_wide != null and renovate_go != null and phone.window_body.find_child("Renovate_small_top", true, false) == null, "内装 offers the other stores to renovate into, not the current one"):
+        return
+    if not _require("横長" in renovate_wide.text and renovate_go.disabled, "A renovation is picked first, then confirmed: " + renovate_wide.text):
+        return
+    renovate_wide.pressed.emit()
+    renovate_go = phone.window_body.find_child("RenovateButton", true, false)
+    renovate_go.pressed.emit()
+    if not _require(game.simulation.store_type_id == "small_bottom" and game.simulation.layout.width_subcells == 16 and "改装" in game.layout_edit_label.text, "改装する turns the store around: " + game.layout_edit_label.text):
+        return
+    await _capture("preview-renovated")
+    phone.close_window()
     # システム → セーブ.
     phone.menu_buttons["system"].pressed.emit()
     for node in phone.window_body.find_children("*", "Button", true, false):

@@ -2181,6 +2181,19 @@ hours, and whether it is inside the store's area. The 買い物人口 is shown o
   are shared; own stores share customers (SS play). Switch from the status bar's store name or by tapping the
   store on the map. Save schema 10 ("branches"); schema 9 saves still load.
 
+**Tasks #124-#126 (2026-09-26, decisions 0195-0197)**: the owner's list after playing 0.1.16.
+- #124: each store has a 知名度 (0-100): 0 for a new store, 30 for a bought one; satisfied customers raise it,
+  unhappy ones lower it; visitors scale 0.4x-1.6x with it; 人気度 drifts daily toward 20 + 0.6 x 知名度 (an
+  advert's boost fades, p.36); 顧客独占率 is recomputed every day (CONFIRMED_COMMUNITY). Shapes and numbers are
+  REMAKE_BALANCED_DEFAULT (`store_rules.store_growth`). A new store now gets ~10-16 visits a day at first.
+- #125: moving/turning/buying/unstoring a fixture finds a free side for its front; refusals say why and outline the
+  shelf that would be cut off; fixtures can be put in storage (倉庫) for free; fixtures can be dragged. All edits go
+  through `_accept_layout_change()` (REMAKE_BALANCED_DEFAULT).
+- #126: all six store types have layouts (12x8 = the guide's p.48 store, CONFIRMED_VISUAL; medium and 8x12 are
+  REMAKE aisle grids). 内装 → 改装 turns an open store into another size/orientation for the new price less half the
+  current one; fixtures move with their goods, what does not fit goes to storage (REMAKE_BALANCED_DEFAULT). Store
+  buttons now read 縦長/横長 and the floor size (the two small icons look alike; small_bottom was already 8x5).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
