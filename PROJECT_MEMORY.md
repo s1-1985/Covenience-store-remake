@@ -2203,6 +2203,11 @@ decision 0197's "no source shows it" is corrected (the rules stay REMAKE_BALANCE
 labels, 42 building kinds, 53 fixture names (door freezers, 6 registers, parking), wage-raise demands, shoplifting,
 contests, magazines, festival, visitor announcements at 1000..100万, a 60x50 town per map and a 4th map 極上.
 Two staff names differ from the guide OCR (浜田裕子, 杉村真智子) and two extra staff exist (ウルトラ爺や/婆や).
+Task #127 first executable pass (docs/research/ps1-executable-formulas-2026-09-26.md): サービス/警備/清掃, the monthly
+★ rule, popularity drift and the promotion table are read from SLPS_007.82 (promotions match the project exactly).
+Found: the guide's 店舗規模別基準値 1.5/1.65/1.8 is a divisor in the program (清掃 = sum×100/150..180, 警備 =
+sum×100/250..300), all three values cap at 100 -- the project's StoreValue multiplies instead (not yet changed).
+Proposed evidence level CONFIRMED_BINARY for facts read from the original program.
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
