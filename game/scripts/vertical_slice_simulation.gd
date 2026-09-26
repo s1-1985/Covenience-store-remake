@@ -862,7 +862,7 @@ func _step_rivals_at_month_end() -> void:
     for waiting in reopening:
         var rival_id := str(waiting["id"])
         var site := NO_STORE_SITE
-        if player_store_count + _rival_stores.size() < int(ai["town_store_limit"]):
+        if not town_is_full():
             site = store_site.best_open_site(
                 _rival_positions() + _player_store_origins(), _bought_buildings, [waiting["left"]]
             )
@@ -1234,11 +1234,23 @@ func chain_expansion_cost_yen() -> int:
     ) * NEW_BRANCH_LAND_AREA_COUNT
 
 
+# Task #108: CONFIRMED_OFFICIAL (quick reference, 中級): 「ひとつのマップに
+# はライバル店を含めて10店舗までしか建設できない」 -- the player's stores
+# and the rivals' together (guide_town_map.rival_ai.town_store_limit).
+func town_store_count() -> int:
+    return player_store_count + _rival_stores.size()
+
+
+func town_is_full() -> bool:
+    var ai := _rival_ai()
+    return not ai.is_empty() and town_store_count() >= int(ai["town_store_limit"])
+
+
 func try_expand_chain() -> bool:
     # Task #100: allowed while customers are in the store -- this changes
     # no fixture, route or basket (during opening hours the store is almost
     # never empty, so waiting for it blocked the action for good).
-    if is_game_over:
+    if is_game_over or town_is_full():
         return false
     var expansion_cost_yen := chain_expansion_cost_yen()
     if economy.cash_yen < expansion_cost_yen:

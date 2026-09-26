@@ -950,3 +950,6 @@ msgstr "ライバル店が撤退した"
 
 msgid "rival opened"
 msgstr "ライバル店が新しく出店した"
+
+msgid "The town already has 10 stores, rivals included"
+msgstr "この町にはライバル店を含めてすでに10店舗あります"

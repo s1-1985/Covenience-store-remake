@@ -3120,6 +3120,8 @@ func _initialize() -> void:
         return
     if not _check_saved_staff_and_survey():
         return
+    if not _check_town_store_limit():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -3851,5 +3853,25 @@ func _check_saved_staff_and_survey() -> bool:
         or int(reloaded.last_survey["missing"]["alcohol"]) != 5
     ):
         _fail("load must keep this month's and last month's survey")
+        return false
+    return true
+
+
+# Task #108: at most 10 stores in town, rivals included (quick reference).
+func _check_town_store_limit() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    simulation.economy.cash_yen = 2_000_000_000
+    while simulation.try_expand_chain():
+        pass
+    if simulation.player_store_count != 8 or simulation.town_store_count() != 10 or not simulation.town_is_full():
+        _fail("with the two rivals the player can have 8 stores: %d" % simulation.player_store_count)
+        return false
+    # Buying a rival out keeps the count; a withdrawn branch cannot reopen
+    # while the town is full.
+    simulation.try_buy_out_rival("rival-02")
+    if simulation.town_store_count() != 10 or simulation.try_expand_chain():
+        _fail("a bought branch keeps the town at 10 stores")
         return false
     return true

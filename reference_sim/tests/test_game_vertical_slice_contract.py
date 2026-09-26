@@ -3827,6 +3827,16 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("load must keep the staff's grown skills and 体力", smoke)
         self.assertIn("load must keep this month's and last month's survey", smoke)
 
+    def test_town_holds_at_most_ten_stores_rivals_included(self):
+        # Task #108: quick reference 中級 「ひとつのマップにはライバル店を含めて
+        # 10店舗までしか建設できない」.
+        self.assertEqual(self.config["guide_town_map"]["rival_ai"]["town_store_limit"], 10)
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("    return player_store_count + _rival_stores.size()", simulation)
+        self.assertIn("    if is_game_over or town_is_full():", simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("with the two rivals the player can have 8 stores", smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])

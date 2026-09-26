@@ -675,6 +675,8 @@ func _on_buy_promotion_pressed() -> void:
 func _on_expand_chain_pressed() -> void:
     if simulation.try_expand_chain():
         layout_edit_label.text = tr("Expanded the chain to %d store(s)") % int(simulation.player_store_count)
+    elif simulation.town_is_full():
+        layout_edit_label.text = tr("The town already has 10 stores, rivals included")
     else:
         layout_edit_label.text = tr("Cannot expand the chain: unaffordable, or the scenario target is already reached")
     _refresh_ui()

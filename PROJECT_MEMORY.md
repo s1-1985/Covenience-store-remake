@@ -2099,6 +2099,10 @@ squares in the catchment, shared with rivals) and want up to 3 of that building'
 **Task #107 (2026-09-26, decision 0178)**: saves now keep each staff member's grown skills, 体力 and exhaustion,
 and this month's and last month's survey. A load used to reset them to their starting values.
 
+**Task #108 (2026-09-26, decision 0179)**: at most 10 stores in town, rivals included (CONFIRMED_OFFICIAL, quick
+reference 中級). Chain expansion and rival reopening both stop at that limit, so with two rivals left the player
+can have 8 stores.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
