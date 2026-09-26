@@ -2737,6 +2737,102 @@
       }
     ],
     "building_catalog": {
+      "police_box_building": {
+        "name": "交番",
+        "price": 100,
+        "wanted": [
+          "bento",
+          "tobacco",
+          "cold_drink"
+        ],
+        "overnight": false
+      },
+      "kindergarten_building": {
+        "name": "幼稚園",
+        "price": 200,
+        "wanted": [
+          "snacks",
+          "fish",
+          "meat",
+          "cold_drink",
+          "vegetables"
+        ],
+        "overnight": false
+      },
+      "elementary_school_building": {
+        "name": "小学校",
+        "price": 200,
+        "wanted": [
+          "stationery",
+          "snacks",
+          "meat",
+          "cold_drink"
+        ],
+        "overnight": false
+      },
+      "middle_school_building": {
+        "name": "中学校",
+        "price": 200,
+        "wanted": [
+          "cold_drink",
+          "event_goods",
+          "stationery",
+          "hot_drink"
+        ],
+        "overnight": false
+      },
+      "high_school_building": {
+        "name": "高校",
+        "price": 200,
+        "wanted": [
+          "cold_drink",
+          "event_goods",
+          "copy_paper",
+          "chinese_steamed_bun"
+        ],
+        "overnight": false
+      },
+      "amusement_park_building": {
+        "name": "遊園地",
+        "price": 200,
+        "wanted": [
+          "snacks",
+          "cold_drink",
+          "hot_drink",
+          "ice_cream"
+        ],
+        "overnight": false
+      },
+      "aquarium_building": {
+        "name": "水族館",
+        "price": 300,
+        "wanted": [
+          "snacks",
+          "cold_drink",
+          "ice_cream"
+        ],
+        "overnight": false
+      },
+      "zoo_building": {
+        "name": "動物園",
+        "price": 200,
+        "wanted": [
+          "snacks",
+          "cold_drink",
+          "ice_cream"
+        ],
+        "overnight": false
+      },
+      "large_park_building": {
+        "name": "公園(大)",
+        "price": 500,
+        "wanted": [
+          "snacks",
+          "cold_drink",
+          "hot_drink"
+        ],
+        "overnight": false
+      },
       "game_center": {
         "name": "ゲームセンター",
         "price": 2000,
@@ -2758,6 +2854,63 @@
           "vegetables",
           "daily_goods",
           "underwear"
+        ],
+        "overnight": false
+      },
+      "house_large_c": {
+        "name": "住宅(大C)",
+        "price": 700,
+        "wanted": [
+          "alcohol",
+          "ice_cream",
+          "fish",
+          "daily_goods",
+          "underwear",
+          "vegetables"
+        ],
+        "overnight": false
+      },
+      "gym_building": {
+        "name": "体育館",
+        "price": 700,
+        "wanted": [
+          "snacks",
+          "cold_drink",
+          "hot_drink"
+        ],
+        "overnight": false
+      },
+      "athletic_field_building": {
+        "name": "運動場",
+        "price": 100,
+        "wanted": [
+          "cold_drink",
+          "bento",
+          "medicine",
+          "snacks",
+          "ice_cream"
+        ],
+        "overnight": false
+      },
+      "pool_building": {
+        "name": "プール",
+        "price": 300,
+        "wanted": [
+          "cold_drink",
+          "bento",
+          "medicine",
+          "snacks"
+        ],
+        "overnight": false
+      },
+      "event_hall_building": {
+        "name": "イベント会場",
+        "price": 1500,
+        "wanted": [
+          "event_goods",
+          "snacks",
+          "cold_drink",
+          "chinese_steamed_bun"
         ],
         "overnight": false
       },
@@ -2837,6 +2990,40 @@
         ],
         "overnight": false
       },
+      "fire_station_building": {
+        "name": "消防署",
+        "price": 100,
+        "wanted": [
+          "bento",
+          "cold_drink"
+        ],
+        "overnight": true
+      },
+      "university_building": {
+        "name": "大学",
+        "price": 200,
+        "wanted": [
+          "bento",
+          "bread",
+          "instant_food",
+          "event_goods",
+          "retort_food",
+          "cold_drink"
+        ],
+        "overnight": true
+      },
+      "vocational_school_building": {
+        "name": "専門学校",
+        "price": 400,
+        "wanted": [
+          "bento",
+          "bread",
+          "event_goods",
+          "retort_food",
+          "cold_drink"
+        ],
+        "overnight": true
+      },
       "company_small_a": {
         "name": "会社(小A)",
         "price": 800,
@@ -2863,6 +3050,20 @@
       "company_small_c": {
         "name": "会社(小C)",
         "price": 1000,
+        "wanted": [
+          "bread",
+          "bento",
+          "alcohol",
+          "instant_food",
+          "daily_goods",
+          "books",
+          "medicine"
+        ],
+        "overnight": true
+      },
+      "company_large_a": {
+        "name": "会社(大A)",
+        "price": 500,
         "wanted": [
           "bread",
           "bento",
@@ -3060,6 +3261,195 @@
       "town_store_limit": 10,
       "reopen_after_month_ends": 1,
       "evidence_note": "Task #106. CONFIRMED_OFFICIAL: cutting the store's 商品利益率 15-20% near a rival branch makes it post losses several months in a row and withdraw (guide p.53); 赤字が半年も続けば、ライバルは撤退する (two map strategy pages); at most 10 stores on a map, rivals included (quick reference, 中級). CONFIRMED_COMMUNITY (PS/SS long-play records): a closed branch soon reopens elsewhere; 5% off did not topple a strong branch while 15% did; a cut far from the branch had no effect. PROVISIONAL: the 本店 does not withdraw while the rival has a branch. Reading the game's price policy (% from list price) as the guide's 商品利益率 cut is an inference. REMAKE_BALANCED_DEFAULT: a rival loses the month when (share of its catchment's building squares also in a player store's catchment) x min(1, price cut / 20%) >= 0.5; it withdraws after 6 losing months in a row; a withdrawn branch reopens at the next month end on the vacant site with the most customers left to it, at least 5 squares from where it was (the records say it opens somewhere else); a withdrawn 本店 never reopens."
+    },
+    "inducement": {
+      "build_days": 4,
+      "build_extra_days_max": 3,
+      "place_price_share_of_land": 0.1,
+      "place_price_step_yen": 100000,
+      "evidence_note": "Task #111. CONFIRMED_OFFICIAL (guide PDF1 p.45): the 18 facilities, their size, 1ヶ月(+0〜3日) to build and 援助額; one facility under 誘致 at a time; it takes in the buildings on its squares (p.88); a 交番 adds 10 セキュリティ per square inside the 16x16 area around the store (at most 40), a 消防署 5 (at most 30) (PDF3 p.10, PDF4 p.74). A month is 4 representative days (1月=4日間×8). CONFIRMED_VISUAL (videos V01/V03): the 援助額 is paid when the place is chosen, and a place price that depends on the place is paid on top (交番 2,000,000-4,000,000 at the start, a 3x2 プール 3,800,000). The building's squares, customers and wanted items are its DATA4 entry, in DATA4's orientation. CONFLICT/PROVISIONAL: 体育館 2x3 (誘致 table) vs 3x3 (DATA4), DATA4 used; マンション has no DATA4 entry and is drawn as 住宅(大C). REMAKE_BALANCED_DEFAULT: the place price is a tenth of the store land price for as many squares at that place (anchored to the video quotes), rounded to 100,000; the 0-3 extra days are random.",
+      "facilities": [
+        {
+          "id": "police_box",
+          "name": "交番",
+          "sprite": "police_box_building",
+          "size": [2, 2],
+          "table_size": [2, 2],
+          "aid_yen": 400000,
+          "security_per_square": 10,
+          "security_max": 40
+        },
+        {
+          "id": "fire_station",
+          "name": "消防署",
+          "sprite": "fire_station_building",
+          "size": [3, 2],
+          "table_size": [2, 3],
+          "aid_yen": 600000,
+          "security_per_square": 5,
+          "security_max": 30
+        },
+        {
+          "id": "apartment",
+          "name": "マンション",
+          "sprite": "house_large_c",
+          "size": [3, 2],
+          "table_size": [2, 3],
+          "aid_yen": 4200000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "company",
+          "name": "会社",
+          "sprite": "company_large_a",
+          "size": [3, 3],
+          "table_size": [3, 3],
+          "aid_yen": 5400000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "gym",
+          "name": "体育館",
+          "sprite": "gym_building",
+          "size": [3, 3],
+          "table_size": [2, 3],
+          "aid_yen": 4200000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "pool",
+          "name": "プール",
+          "sprite": "pool_building",
+          "size": [3, 2],
+          "table_size": [2, 3],
+          "aid_yen": 1800000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "athletic_field",
+          "name": "運動場",
+          "sprite": "athletic_field_building",
+          "size": [5, 4],
+          "table_size": [4, 5],
+          "aid_yen": 2000000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "event_hall",
+          "name": "イベント会場",
+          "sprite": "event_hall_building",
+          "size": [2, 2],
+          "table_size": [2, 2],
+          "aid_yen": 6000000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "kindergarten",
+          "name": "幼稚園",
+          "sprite": "kindergarten_building",
+          "size": [3, 2],
+          "table_size": [2, 3],
+          "aid_yen": 1200000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "elementary_school",
+          "name": "小学校",
+          "sprite": "elementary_school_building",
+          "size": [4, 4],
+          "table_size": [4, 4],
+          "aid_yen": 3200000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "middle_school",
+          "name": "中学校",
+          "sprite": "middle_school_building",
+          "size": [5, 5],
+          "table_size": [5, 5],
+          "aid_yen": 5000000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "high_school",
+          "name": "高校",
+          "sprite": "high_school_building",
+          "size": [6, 6],
+          "table_size": [6, 6],
+          "aid_yen": 7200000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "university",
+          "name": "大学",
+          "sprite": "university_building",
+          "size": [7, 7],
+          "table_size": [7, 7],
+          "aid_yen": 9800000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "vocational_school",
+          "name": "専門学校",
+          "sprite": "vocational_school_building",
+          "size": [4, 3],
+          "table_size": [3, 4],
+          "aid_yen": 4800000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "park",
+          "name": "公園",
+          "sprite": "large_park_building",
+          "size": [2, 2],
+          "table_size": [2, 2],
+          "aid_yen": 2000000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "aquarium",
+          "name": "水族館",
+          "sprite": "aquarium_building",
+          "size": [3, 3],
+          "table_size": [3, 3],
+          "aid_yen": 2700000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "zoo",
+          "name": "動物園",
+          "sprite": "zoo_building",
+          "size": [6, 6],
+          "table_size": [6, 6],
+          "aid_yen": 7200000,
+          "security_per_square": 0,
+          "security_max": 0
+        },
+        {
+          "id": "amusement_park",
+          "name": "遊園地",
+          "sprite": "amusement_park_building",
+          "size": [7, 7],
+          "table_size": [7, 7],
+          "aid_yen": 9800000,
+          "security_per_square": 0,
+          "security_max": 0
+        }
+      ]
     },
     "store_mark_sprite": "map_blue_hq",
     "width_tiles": 41,

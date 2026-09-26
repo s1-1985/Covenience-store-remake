@@ -63,7 +63,7 @@ const STAFF_STATE_TEXT := {
     "to_clean": "掃除へ", "cleaning": "掃除中",
 }
 const EVENT_NOTICES := [
-    "store_built", "rival_withdrew", "rival_opened", "rival_bought_out", "month_end_settlement",
+    "store_built", "facility_built", "inducement_started", "rival_withdrew", "rival_opened", "rival_bought_out", "month_end_settlement",
     "checkout_anger_triggered", "staff_exhausted", "promotion_fired", "chain_expanded",
 ]
 
@@ -90,6 +90,12 @@ var customer_card: PanelContainer
 var customer_card_label: Label
 var customer_eject_button: Button
 var customer_id := ""
+# Task #111: choosing where to induce a facility on the town map.
+var inducing_id := ""
+var inducing_origin := Vector2i(-1, -1)
+var induce_panel: PanelContainer
+var induce_label: Label
+var induce_button: Button
 var notice_label: Label
 var _notice_left := 0.0
 var _updaters: Array[Callable] = []
@@ -113,6 +119,8 @@ func setup(owner_main) -> void:
     _build_notice()
     _build_customer_card()
     main.store_view.customer_tapped.connect(show_customer)
+    _build_induce_panel()
+    main.town_view.site_tapped.connect(_on_induce_tapped)
     for panel in [main.site_panel, main.store_type_panel, main.rival_panel, main.fixture_info_panel]:
         if panel != null:
             panel.theme = theme
@@ -312,6 +320,8 @@ func _build_menu() -> void:
     town_button.name = "Menu_town"
     town_button.pressed.connect(func():
         close_window()
+        if not inducing_id.is_empty():
+            stop_inducing()
         main.store_view.selected_fixture_id = ""
         main._on_show_town_map_pressed()
         layout_screen()
@@ -520,6 +530,105 @@ func _process(delta: float) -> void:
             notice.visible = false
 
 
+# --- 誘致: choosing the place on the town map ---
+# The 援助額 and the place price are shown together and paid when the
+# player confirms (the videos show the 援助額 taken when place selection
+# starts and given back on cancel, so the total paid is the same).
+
+func _build_induce_panel() -> void:
+    induce_panel = PanelContainer.new()
+    induce_panel.name = "PhoneInducePanel"
+    induce_panel.theme = theme
+    induce_panel.visible = false
+    var column := VBoxContainer.new()
+    induce_panel.add_child(column)
+    induce_label = _label("", 22)
+    induce_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    induce_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    column.add_child(induce_label)
+    var row := HBoxContainer.new()
+    row.alignment = BoxContainer.ALIGNMENT_END
+    column.add_child(row)
+    induce_button = Button.new()
+    induce_button.name = "PhoneInduceConfirm"
+    induce_button.text = "誘致する"
+    induce_button.custom_minimum_size = Vector2(180, 60)
+    induce_button.pressed.connect(_confirm_inducing)
+    row.add_child(induce_button)
+    var cancel := Button.new()
+    cancel.name = "PhoneInduceCancel"
+    cancel.text = "やめる"
+    cancel.custom_minimum_size = Vector2(140, 60)
+    cancel.pressed.connect(stop_inducing)
+    row.add_child(cancel)
+    main.get_node("UI").add_child(induce_panel)
+
+
+func start_inducing(facility_id: String) -> void:
+    var facility: Dictionary = main.simulation._inducement_facility(facility_id)
+    close_window()
+    inducing_id = facility_id
+    inducing_origin = Vector2i(-1, -1)
+    if not main.town_view.visible:
+        main._on_show_town_map_pressed()
+    main.town_view.selecting_site = true
+    main.town_view.site_cursor_size = Vector2i(int(facility["size"][0]), int(facility["size"][1]))
+    main.town_view.show_site_cursor(Vector2i(-1, -1), false)
+    induce_label.text = "%s（%d×%dマス）を建てる場所を地図でタップ\n援助額 ¥%s" % [
+        facility["name"], int(facility["size"][0]), int(facility["size"][1]), main._format_integer(int(facility["aid_yen"])),
+    ]
+    induce_button.disabled = true
+    induce_panel.visible = true
+    induce_panel.position = Vector2(8, SCREEN.y - 150)
+    induce_panel.size = Vector2(PLAY_RIGHT - 16, 140)
+    layout_screen()
+    main._refresh_ui()
+
+
+func stop_inducing() -> void:
+    inducing_id = ""
+    induce_panel.visible = false
+    main.town_view.selecting_site = main.selecting_site
+    main.town_view.site_cursor_size = Vector2i(2, 2)
+    main.town_view.show_site_cursor(Vector2i(-1, -1), false)
+    main._refresh_ui()
+
+
+func _on_induce_tapped(origin: Vector2i) -> void:
+    if inducing_id.is_empty():
+        return
+    inducing_origin = origin
+    var facility: Dictionary = main.simulation._inducement_facility(inducing_id)
+    var quote: Dictionary = main.simulation.inducement_quote(inducing_id, origin)
+    var ok: bool = bool(quote["placeable"])
+    main.town_view.show_site_cursor(origin, ok)
+    if not ok:
+        induce_label.text = "%s　誘致不可能（%s）" % [facility["name"], {
+            "not_buildable_ground": "道路・線路・地図の外にかかる",
+            "store_in_the_way": "コンビニにかかる",
+            "one_at_a_time": "誘致中の施設がある",
+        }.get(str(quote["reason"]), str(quote["reason"]))]
+        induce_button.disabled = true
+        SoundManager.play_sfx(str(main.config["sound"]["refused_sfx"]))
+        return
+    var taken: Array = quote["taken_buildings"]
+    induce_label.text = "%s　誘致可能\n援助額 ¥%s ＋ 場所代 ¥%s ＝ ¥%s%s" % [
+        facility["name"], main._format_integer(int(quote["aid_yen"])), main._format_integer(int(quote["place_yen"])),
+        main._format_integer(int(quote["total_yen"])),
+        "　（建物%d軒を巻き込みます）" % taken.size() if not taken.is_empty() else "",
+    ]
+    induce_button.disabled = main.simulation.economy.cash_yen < int(quote["total_yen"])
+
+
+func _confirm_inducing() -> void:
+    if inducing_id.is_empty() or inducing_origin.x < 0:
+        return
+    if not main.simulation.try_induce(inducing_id, inducing_origin):
+        show_notice("ここには誘致できません")
+        return
+    stop_inducing()
+
+
 # --- a tapped customer: what they are buying, and つまみだす ---
 # CONFIRMED_COMMUNITY (SS play record, docs/research/menu-customer-screen-
 # and-source-conflicts-2026-09-05.md section 2): a customer can be selected
@@ -658,7 +767,15 @@ func _notice_text(event_type: String, details: Dictionary) -> String:
             return "レジが遅くてお客さんが怒った！"
         "staff_exhausted":
             return "%s が疲れて休憩に入った" % _staff_name(str(details.get("staff_id", "")))
+        "inducement_started":
+            return "%s の誘致を始めました（完成まで約1か月）" % _facility_name(str(details.get("facility_id", "")))
+        "facility_built":
+            return "%s が完成しました" % _facility_name(str(details.get("facility_id", "")))
     return main.tr(event_type.replace("_", " "))
+
+
+func _facility_name(facility_id: String) -> String:
+    return str(main.simulation._inducement_facility(facility_id).get("name", facility_id))
 
 
 func _rival_name(rival_id: String) -> String:
@@ -966,6 +1083,29 @@ func _fill_promotion() -> void:
             grid
         )
         _updaters.append(func(): button.disabled = main.simulation.economy.cash_yen < cost)
+    _section("誘致（町に施設を建ててもらう）")
+    var induce_state := _text("")
+    _updaters.append(func():
+        var pending: Dictionary = main.simulation.pending_inducement
+        induce_state.text = (
+            "%s を工事中。完成するまで次の誘致はできません" % _facility_name(str(pending["facility_id"]))
+            if not pending.is_empty() else "施設を選んで、町の地図で場所を決めます"
+        ))
+    var facilities := GridContainer.new()
+    facilities.columns = 3
+    window_body.add_child(facilities)
+    for facility in main.simulation.inducement_facilities():
+        var facility_id := str(facility["id"])
+        var aid := int(facility["aid_yen"])
+        var button := _picture_button(
+            _texture("res://assets/town/%s.png" % facility["sprite"]),
+            "%s\n援助¥%s" % [facility["name"], main._format_integer(aid)],
+            func(): start_inducing(facility_id),
+            facilities
+        )
+        button.name = "Induce_" + facility_id
+        _updaters.append(func():
+            button.disabled = not main.simulation.pending_inducement.is_empty() or main.simulation.economy.cash_yen < aid)
     _section("新しい店を出す")
     var expand := _button("", main._on_expand_chain_pressed)
     _updaters.append(func():

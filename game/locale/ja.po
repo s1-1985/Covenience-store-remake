@@ -953,3 +953,9 @@ msgstr "ライバル店が新しく出店した"
 
 msgid "The town already has 10 stores, rivals included"
 msgstr "この町にはライバル店を含めてすでに10店舗あります"
+
+msgid "inducement started"
+msgstr "誘致を始めた"
+
+msgid "facility built"
+msgstr "誘致した施設が完成した"

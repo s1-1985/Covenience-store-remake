@@ -2127,6 +2127,15 @@ open.
   - layout edits only inside 内装
 - The title screen uses the same look.
 
+**Task #111 (2026-09-26, decision 0182)**: 販促 → 誘致.
+- CONFIRMED_OFFICIAL facility table (18 facilities, 援助額, 1ヶ月+0〜3日), one facility at a time, and a facility takes in
+  the buildings under it.
+- セキュリティ: 交番 +10 per square in the store's 16x16 area (at most 40), 消防署 +5 (at most 30).
+- CONFIRMED_VISUAL two-step payment. The place price is REMAKE_BALANCED_DEFAULT: 1/10 of the land price, fitted to the
+  video quotes.
+- Finished facilities become town buildings with DATA4 customers. Save schema 9.
+- Phone: 販促 window → pick a facility → tap its place on the town map → 誘致する.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

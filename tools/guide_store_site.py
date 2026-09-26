@@ -245,6 +245,100 @@ RIVAL_AI = {
 }
 
 
+# Task #111: 販促 → 誘致, asking for a facility to be built where the player
+# chooses. CONFIRMED_OFFICIAL (guide PDF1 p.45 「誘致できる施設リスト」): the 18
+# facilities with their size, time to build (1ヶ月+0〜3日) and 援助額; only
+# one facility can be under 誘致 at a time; it may take in the buildings on
+# its squares ("誘致は、その空間すべての建築物を巻き込んでしまう", p.88).
+# CONFIRMED_OFFICIAL (PDF3 p.10, PDF4 p.74): 店舗のセキュリティ値 = 社員のセキュ
+# リティ値合計×店舗規模別基準値 + セキュリティ施設の効果; a 交番 adds 10 for each
+# of its squares inside the 16x16 area around the store (at most 40), a 消防署
+# 5 for each (at most 30). CONFIRMED_VISUAL (videos V01/V03,
+# docs/research/video-v01-opening-parameters-2026-09-08.md): the 援助額 is
+# paid when the place is chosen and a place price (場所代) that depends on
+# the place is paid on top (交番 2,000,000-4,000,000 at the start of a game,
+# a 3x2 プール 3,800,000). The building's squares, customers and wanted items
+# are its DATA4 entry (TOWN_BUILDINGS); where the table's size is the same
+# area turned round, DATA4's orientation is used (its sprite is drawn that
+# way). CONFLICT: 体育館 is 2x3 in the 誘致 table but 3x3 in DATA4 -- DATA4 is
+# used (PROVISIONAL); マンション has no DATA4 entry and is drawn as 住宅(大C)
+# (PROVISIONAL). REMAKE_BALANCED_DEFAULT: the place price is a tenth of the
+# store land price for the same number of squares at that place (anchored to
+# the two video quotes above), rounded to 100,000; the extra 0-3 days are
+# drawn at random.
+INDUCEMENT_FACILITIES = (
+    # (id, name, DATA4 sprite, 誘致 table size, 援助額, (security per square, most))
+    ("police_box", "交番", "police_box_building", (2, 2), 400_000, (10, 40)),
+    ("fire_station", "消防署", "fire_station_building", (2, 3), 600_000, (5, 30)),
+    ("apartment", "マンション", "house_large_c", (2, 3), 4_200_000, (0, 0)),
+    ("company", "会社", "company_large_a", (3, 3), 5_400_000, (0, 0)),
+    ("gym", "体育館", "gym_building", (2, 3), 4_200_000, (0, 0)),
+    ("pool", "プール", "pool_building", (2, 3), 1_800_000, (0, 0)),
+    ("athletic_field", "運動場", "athletic_field_building", (4, 5), 2_000_000, (0, 0)),
+    ("event_hall", "イベント会場", "event_hall_building", (2, 2), 6_000_000, (0, 0)),
+    ("kindergarten", "幼稚園", "kindergarten_building", (2, 3), 1_200_000, (0, 0)),
+    ("elementary_school", "小学校", "elementary_school_building", (4, 4), 3_200_000, (0, 0)),
+    ("middle_school", "中学校", "middle_school_building", (5, 5), 5_000_000, (0, 0)),
+    ("high_school", "高校", "high_school_building", (6, 6), 7_200_000, (0, 0)),
+    ("university", "大学", "university_building", (7, 7), 9_800_000, (0, 0)),
+    ("vocational_school", "専門学校", "vocational_school_building", (3, 4), 4_800_000, (0, 0)),
+    ("park", "公園", "large_park_building", (2, 2), 2_000_000, (0, 0)),
+    ("aquarium", "水族館", "aquarium_building", (3, 3), 2_700_000, (0, 0)),
+    ("zoo", "動物園", "zoo_building", (6, 6), 7_200_000, (0, 0)),
+    ("amusement_park", "遊園地", "amusement_park_building", (7, 7), 9_800_000, (0, 0)),
+)
+INDUCEMENT_RULES = {
+    "build_days": 4,
+    "build_extra_days_max": 3,
+    "place_price_share_of_land": 0.1,
+    "place_price_step_yen": 100_000,
+    "evidence_note": (
+        "Task #111. CONFIRMED_OFFICIAL (guide PDF1 p.45): the 18 facilities, their size, 1ヶ月(+0〜3日) to build "
+        "and 援助額; one facility under 誘致 at a time; it takes in the buildings on its squares (p.88); a 交番 adds "
+        "10 セキュリティ per square inside the 16x16 area around the store (at most 40), a 消防署 5 (at most 30) "
+        "(PDF3 p.10, PDF4 p.74). A month is 4 representative days "
+        "(1月=4日間×8). CONFIRMED_VISUAL (videos V01/V03): the 援助額 is paid when the place is chosen, and a "
+        "place price that depends on the place is paid on top (交番 2,000,000-4,000,000 at the start, a 3x2 "
+        "プール 3,800,000). The building's squares, customers and wanted items are its DATA4 entry, in DATA4's "
+        "orientation. CONFLICT/PROVISIONAL: 体育館 2x3 (誘致 table) vs 3x3 (DATA4), DATA4 used; マンション has no "
+        "DATA4 entry and is drawn as 住宅(大C). REMAKE_BALANCED_DEFAULT: the place price is a tenth of the store "
+        "land price for as many squares at that place (anchored to the video quotes), rounded to 100,000; the "
+        "0-3 extra days are random."
+    ),
+}
+
+
+def inducement_block():
+    from conveni_sim.baseline_data import TOWN_BUILDINGS
+
+    footprints = {profile.id: profile.footprint.value for profile in TOWN_BUILDINGS}
+    facilities = []
+    for facility_id, name, sprite, table_size, aid, (per_square, most) in INDUCEMENT_FACILITIES:
+        facilities.append({
+            "id": facility_id,
+            "name": name,
+            "sprite": sprite,
+            "size": list(footprints[sprite]),
+            "table_size": list(table_size),
+            "aid_yen": aid,
+            "security_per_square": per_square,
+            "security_max": most,
+        })
+    return dict(INDUCEMENT_RULES, facilities=facilities)
+
+
+def inducement_place_price(block, facility, origin, removed=()):
+    """REMAKE_BALANCED_DEFAULT place price (see INDUCEMENT_FACILITIES)."""
+    rules = block["inducement"]
+    quote = site_quote(block, origin, removed)
+    if quote is None:
+        return None
+    squares = facility["size"][0] * facility["size"][1]
+    price = quote["land_yen"] * squares / 4 * rules["place_price_share_of_land"]
+    step = rules["place_price_step_yen"]
+    return int((price + step / 2) // step * step)
+
+
 def rival_pressure(tiles, rival_origin, player_origins, price_change_pct, removed=()):
     """How hard the player's stores press a rival this month (REMAKE shape)."""
     mine = [t for t, index in tiles.items() if index not in removed and in_catchment(rival_origin, t)]

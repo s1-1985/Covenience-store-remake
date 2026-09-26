@@ -24,7 +24,8 @@ var _building_at: Dictionary = {}
 
 func _init(guide_town_map: Dictionary) -> void:
     rows = guide_town_map["tile_rows"]
-    buildings = guide_town_map["buildings"]
+    # A copy: buildings induced during a game (task #111) are added to it.
+    buildings = (guide_town_map["buildings"] as Array).duplicate(true)
     catalog = guide_town_map["building_catalog"]
     rules = guide_town_map["store_site"]
     width = int(guide_town_map["width_tiles"])
@@ -287,3 +288,38 @@ func best_open_site(stores: Array, removed: Array = [], avoid: Array = []) -> Ve
                 best_score = score
                 best = origin
     return best
+
+
+# Task #111: a building put up during the game (誘致). Returns its index;
+# the squares it covers now belong to it (the buildings that stood there
+# are the caller's to mark removed, see buildings_under()).
+func add_building(sprite: String, tile: Vector2i, size: Vector2i) -> int:
+    var index := buildings.size()
+    buildings.append({"sprite": sprite, "tile": [tile.x, tile.y], "size": [size.x, size.y]})
+    for y in range(tile.y, tile.y + size.y):
+        for x in range(tile.x, tile.x + size.x):
+            _building_at[Vector2i(x, y)] = index
+    return index
+
+
+# Indices of the buildings (not already removed) with a square inside the
+# rectangle.
+func buildings_under(tile: Vector2i, size: Vector2i, removed: Array = []) -> Array[int]:
+    var found: Array[int] = []
+    for y in range(tile.y, tile.y + size.y):
+        for x in range(tile.x, tile.x + size.x):
+            var at := Vector2i(x, y)
+            if _building_at.has(at) and not removed.has(_building_at[at]) and not found.has(_building_at[at]):
+                found.append(_building_at[at])
+    found.sort()
+    return found
+
+
+func rect_is_buildable(tile: Vector2i, size: Vector2i) -> bool:
+    var unbuildable: Array = rules["unbuildable_tiles"]
+    for y in range(tile.y, tile.y + size.y):
+        for x in range(tile.x, tile.x + size.x):
+            var kind := _kind(Vector2i(x, y))
+            if kind == "" or unbuildable.has(kind):
+                return false
+    return true

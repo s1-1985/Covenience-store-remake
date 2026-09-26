@@ -42,7 +42,7 @@ const MONTH_MULTIPLIER := 8
 const CAPITAL_EXPENSE_TYPES := [
     "store_site", "store_construction", "chain_expansion", "rival_buyout",
     "rival_investigation", "fixture_purchase", "fixture_sold", "permit_purchase",
-    "sample_layout_loaded",
+    "sample_layout_loaded", "inducement_aid", "inducement_place",
 ]
 
 # CONFIRMED, not a guess:
@@ -224,6 +224,12 @@ var _investigated_rivals: Dictionary = {}
 # Task #106: rival branches that withdrew and open again at the next month
 # end (guide_town_map.rival_ai): {"id", "left": the site it left}.
 var _rivals_to_reopen: Array[Dictionary] = []
+# Task #111: facilities built through 誘致 ({"facility_id", "origin"}, in
+# the order they were built) and the one under construction
+# ({"facility_id", "origin", "ready_day"}, or empty).
+var induced_facilities: Array[Dictionary] = []
+var pending_inducement: Dictionary = {}
+var _inducement_rng := RandomNumberGenerator.new()
 # FIFO order in which customers who have finished shopping are waiting for
 # the single checkout fixture's one staff-service slot (task #36, concurrent
 # customers). Serving strictly in arrival order is this project's own
@@ -330,6 +336,7 @@ func reset() -> void:
     survey_missing.clear()
     last_survey = {}
     _clear_store_site()
+    _reset_inducement()
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
     _expense_index_at_month_start = economy.expense_records.size()
@@ -826,6 +833,143 @@ func _rival_store(rival_id: String, position: Vector2i, deficit_months: int) -> 
         "permits_held": rival_permits_held,
         "deficit_months": deficit_months,
     }
+
+
+# Task #111: 販促 → 誘致 (evidence in guide_town_map.inducement.evidence_note).
+func inducement_facilities() -> Array:
+    if not config.has("guide_town_map"):
+        return []
+    return config["guide_town_map"].get("inducement", {}).get("facilities", [])
+
+
+func _inducement_facility(facility_id: String) -> Dictionary:
+    for facility in inducement_facilities():
+        if str(facility["id"]) == facility_id:
+            return facility
+    return {}
+
+
+func _reset_inducement() -> void:
+    induced_facilities.clear()
+    pending_inducement = {}
+    _inducement_rng.seed = int(config["demand"]["rng_seed"]) + 111
+    if store_site != null:
+        # The map as it was at the start: induced buildings go with it.
+        store_site = StoreSiteScript.new(config["guide_town_map"])
+
+
+func _store_rects() -> Array[Rect2i]:
+    var rects: Array[Rect2i] = []
+    if has_store_site():
+        rects.append(Rect2i(store_site_origin, Vector2i(2, 2)))
+    for branch in owned_branches:
+        rects.append(Rect2i(branch["position"], Vector2i(2, 2)))
+    for rival in _rival_stores:
+        rects.append(Rect2i(rival["position"], Vector2i(2, 2)))
+    return rects
+
+
+# What asking for `facility_id` at `origin` (its top-left square) costs
+# now, and whether it can be done there.
+func inducement_quote(facility_id: String, origin: Vector2i) -> Dictionary:
+    var result := {"placeable": false, "reason": "", "aid_yen": 0, "place_yen": 0, "total_yen": 0, "taken_buildings": []}
+    var facility := _inducement_facility(facility_id)
+    if facility.is_empty() or store_site == null or not has_store_site():
+        result["reason"] = "no_store"
+        return result
+    if not pending_inducement.is_empty():
+        result["reason"] = "one_at_a_time"
+        return result
+    var size := Vector2i(int(facility["size"][0]), int(facility["size"][1]))
+    if not store_site.rect_is_buildable(origin, size):
+        result["reason"] = "not_buildable_ground"
+        return result
+    var rect := Rect2i(origin, size)
+    for store_rect in _store_rects():
+        if rect.intersects(store_rect):
+            result["reason"] = "store_in_the_way"
+            return result
+    var rules: Dictionary = config["guide_town_map"]["inducement"]
+    # REMAKE_BALANCED_DEFAULT place price (tools/guide_store_site.py
+    # inducement_place_price(), the contract test runs both).
+    var land := float(store_site.start_land_price_yen(origin)) * land_price_growth_factor()
+    var price := land * float(size.x * size.y) / 4.0 * float(rules["place_price_share_of_land"])
+    var step := float(rules["place_price_step_yen"])
+    result["placeable"] = true
+    result["aid_yen"] = int(facility["aid_yen"])
+    result["place_yen"] = int(floor((price + step / 2.0) / step) * step)
+    result["total_yen"] = int(result["aid_yen"]) + int(result["place_yen"])
+    result["taken_buildings"] = store_site.buildings_under(origin, size, _bought_buildings)
+    return result
+
+
+func try_induce(facility_id: String, origin: Vector2i) -> bool:
+    if is_game_over:
+        return false
+    var quote := inducement_quote(facility_id, origin)
+    if not bool(quote["placeable"]) or economy.cash_yen < int(quote["total_yen"]):
+        return false
+    economy.record_explicit_expense("inducement_aid", minute_of_day, int(quote["aid_yen"]), {"facility_id": facility_id})
+    economy.record_explicit_expense(
+        "inducement_place", minute_of_day, int(quote["place_yen"]), {"facility_id": facility_id, "origin": [origin.x, origin.y]}
+    )
+    var rules: Dictionary = config["guide_town_map"]["inducement"]
+    # 1ヶ月(+0〜3日): a month is 4 representative days; the extra days are
+    # drawn at random (REMAKE_BALANCED_DEFAULT).
+    pending_inducement = {
+        "facility_id": facility_id,
+        "origin": origin,
+        "ready_day": day_count + int(rules["build_days"]) + _inducement_rng.randi_range(0, int(rules["build_extra_days_max"])),
+    }
+    _record_event("inducement_started", {
+        "facility_id": facility_id, "origin": [origin.x, origin.y], "cost_yen": int(quote["total_yen"]),
+    })
+    return true
+
+
+func _step_inducement_day() -> void:
+    if pending_inducement.is_empty() or day_count < int(pending_inducement["ready_day"]):
+        return
+    var facility_id := str(pending_inducement["facility_id"])
+    var origin: Vector2i = pending_inducement["origin"]
+    pending_inducement = {}
+    _put_up_facility(facility_id, origin, true)
+    _record_event("facility_built", {"facility_id": facility_id, "origin": [origin.x, origin.y]})
+
+
+# The facility takes in the buildings on its squares (their customers are
+# gone) and becomes a building with its DATA4 customers.
+func _put_up_facility(facility_id: String, origin: Vector2i, update_catchment: bool) -> void:
+    var facility := _inducement_facility(facility_id)
+    var size := Vector2i(int(facility["size"][0]), int(facility["size"][1]))
+    for index in store_site.buildings_under(origin, size, _bought_buildings):
+        _bought_buildings.append(index)
+    store_site.add_building(str(facility["sprite"]), origin, size)
+    induced_facilities.append({"facility_id": facility_id, "origin": origin})
+    if update_catchment and has_store_site():
+        _apply_store_site(store_site_origin, [])
+
+
+# CONFIRMED_OFFICIAL (PDF3 p.10, PDF4 p.74): each square of a 交番 inside
+# the 16x16 area around the store adds 10 to its セキュリティ (at most 40),
+# of a 消防署 5 (at most 30).
+func inducement_security_bonus() -> float:
+    if not has_store_site():
+        return 0.0
+    var total := 0
+    for built in induced_facilities:
+        var facility := _inducement_facility(str(built["facility_id"]))
+        var per_square := int(facility.get("security_per_square", 0))
+        if per_square <= 0:
+            continue
+        var squares := 0
+        var origin: Vector2i = built["origin"]
+        for y in range(origin.y, origin.y + int(facility["size"][1])):
+            for x in range(origin.x, origin.x + int(facility["size"][0])):
+                if store_site.in_catchment(store_site_origin, Vector2i(x, y)):
+                    squares += 1
+        total += mini(squares * per_square, int(facility["security_max"]))
+    return float(total)
 
 
 # Task #106: rivals losing money, withdrawing and opening again elsewhere
@@ -2135,6 +2279,17 @@ func save_state() -> Dictionary:
             "position": [rival["position"].x, rival["position"].y],
             "deficit_months": int(rival["deficit_months"]),
         }),
+        # Task #111 (schema 9): facilities built through 誘致, and the one
+        # under construction.
+        "induced_facilities": induced_facilities.map(func(built): return {
+            "facility_id": str(built["facility_id"]),
+            "origin": [built["origin"].x, built["origin"].y],
+        }),
+        "pending_inducement": {} if pending_inducement.is_empty() else {
+            "facility_id": str(pending_inducement["facility_id"]),
+            "origin": [pending_inducement["origin"].x, pending_inducement["origin"].y],
+            "ready_day": int(pending_inducement["ready_day"]),
+        },
         "rivals_to_reopen": _rivals_to_reopen.map(func(waiting): return {
             "id": str(waiting["id"]),
             "left": [waiting["left"].x, waiting["left"].y],
@@ -2283,6 +2438,16 @@ func load_state(data: Dictionary) -> bool:
     if not _business_hours.is_empty():
         _apply_business_hours(str(data["business_hours_id"]))
     _clear_store_site()
+    _reset_inducement()
+    for built in data["induced_facilities"]:
+        _put_up_facility(str(built["facility_id"]), _vec2i_from_array(built["origin"]), false)
+    var saved_pending: Dictionary = data["pending_inducement"]
+    if not saved_pending.is_empty():
+        pending_inducement = {
+            "facility_id": str(saved_pending["facility_id"]),
+            "origin": _vec2i_from_array(saved_pending["origin"]),
+            "ready_day": int(saved_pending["ready_day"]),
+        }
     var saved_site := _vec2i_from_array(data["store_site_origin"])
     if saved_site != NO_STORE_SITE and store_site != null:
         _apply_store_site(saved_site, data["bought_buildings"])
@@ -2462,6 +2627,7 @@ func _handle_day_boundary() -> void:
     _days_completed_this_month += 1
     _apply_daily_fixture_maintenance()
     _apply_daily_staff_wages()
+    _step_inducement_day()
     if _days_completed_this_month >= REPRESENTATIVE_DAYS_PER_MONTH:
         _settle_month_end()
     # After _settle_month_end() so a month rollover rolls from the new
@@ -2657,9 +2823,10 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
     var service_value: float = _store_value.compute_service_value(
         service_skills, fixture_service_bonuses
     )
+    # Task #111: + セキュリティ施設の効果 (PDF4 p.74's formula).
     var security_value: float = _store_value.compute_security_value(
         security_skills, _store_size_tier
-    )
+    ) + inducement_security_bonus()
     var cleaning_value: float = _store_value.compute_cleaning_value(
         cleaning_skills, _store_size_tier
     )
@@ -3147,6 +3314,8 @@ func _require_save_data(data: Dictionary) -> void:
         "investigated_rival_ids",
         "rival_stores",
         "rivals_to_reopen",
+        "induced_facilities",
+        "pending_inducement",
         "business_hours_id",
         "store_type_id",
         "weather_category_index",

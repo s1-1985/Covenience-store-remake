@@ -278,6 +278,27 @@ func _run() -> void:
     phone.customer_eject_button.pressed.emit()
     if not _require(game.simulation.customers.customer(tapped_id).phase == "leaving" and not phone.customer_card.visible, "つまみだす sends the customer out"):
         return
+    # 販促 → 誘致: pick the 交番, tap its place on the town map, confirm.
+    phone.menu_buttons["promotion"].pressed.emit()
+    phone.window_body.find_child("Induce_police_box", true, false).pressed.emit()
+    if not _require(game.town_view.visible and phone.induce_panel.visible and game.town_view.site_cursor_size == Vector2i(2, 2), "Choosing a facility opens the town map to place it"):
+        return
+    var town_now: Node2D = game.town_view
+    var lot_point: Vector2 = town_now.get_global_transform_with_canvas() * ((Vector2(Vector2i(16, 21) - town_now.view_origin_tile) + Vector2(0.5, 0.5)) * town_now.map_tile_pixels)
+    for pressed in [true, false]:
+        var lot_tap := InputEventMouseButton.new()
+        lot_tap.button_index = MOUSE_BUTTON_LEFT
+        lot_tap.pressed = pressed
+        lot_tap.position = lot_point
+        lot_tap.global_position = lot_point
+        game.get_viewport().push_input(lot_tap, true)
+    if not _require("誘致可能" in phone.induce_label.text and not phone.induce_button.disabled, "A free place shows the price and can be confirmed: " + phone.induce_label.text):
+        return
+    await _capture("preview-induce")
+    phone.induce_button.pressed.emit()
+    if not _require(str(game.simulation.pending_inducement.get("facility_id", "")) == "police_box" and not phone.induce_panel.visible, "誘致する starts building the 交番"):
+        return
+    phone.town_button.pressed.emit()
     # システム → セーブ.
     phone.menu_buttons["system"].pressed.emit()
     for node in phone.window_body.find_children("*", "Button", true, false):

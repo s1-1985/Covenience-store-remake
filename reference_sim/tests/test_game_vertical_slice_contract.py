@@ -2635,7 +2635,9 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # (guide_town_map); since task #93 every building drawn comes from
         # that data's buildings list (one per building tile or 2x2 block of
         # them), never a facility placed by this project's own guess.
-        self.assertIn('var building: Dictionary = guide["buildings"][index]', town_view)
+        # Task #111: drawn from the simulation's own building list (it grows
+        # with 誘致), which starts as guide_town_map.buildings.
+        self.assertIn('var building: Dictionary = map_buildings[index]', town_view)
         self.assertIn('return simulation.config.get("guide_town_map", {})', town_view)
         self.assertIn(
             "Inventing\n# a full facility layout would mean guessing an unconfirmed town spatial",
@@ -3068,7 +3070,11 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             self.assertIn(tag, rules["evidence_note"])
         # Every building's name and price is its DATA4 row.
         by_id = {b.id: b for b in TOWN_BUILDINGS}
-        self.assertEqual(set(town["building_catalog"]), {b["sprite"] for b in town["buildings"]})
+        # Task #111: plus the facilities that can be induced.
+        self.assertEqual(
+            set(town["building_catalog"]),
+            {b["sprite"] for b in town["buildings"]} | {f["sprite"] for f in town["inducement"]["facilities"]},
+        )
         for sprite, entry in town["building_catalog"].items():
             self.assertEqual(entry["name"], by_id[sprite].display_name_ja)
             self.assertEqual(entry["price"], by_id[sprite].building_price_yen.value)
@@ -3886,6 +3892,56 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "つまみだす sends the customer out",
         ):
             self.assertIn(text, preview)
+
+    def test_inducement_follows_the_guide_table(self):
+        # Task #111: 販促 → 誘致; the Python side of headless_smoke's
+        # _check_inducement.
+        import importlib.util
+        import sys
+
+        sys.path.insert(0, str(REPO_ROOT / "tools"))
+        spec = importlib.util.spec_from_file_location("guide_store_site", REPO_ROOT / "tools" / "guide_store_site.py")
+        site = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(site)
+        town = self.config["guide_town_map"]
+        block = town["inducement"]
+        self.assertEqual(block, site.inducement_block())
+        for tag in ("CONFIRMED_OFFICIAL", "CONFIRMED_VISUAL", "PROVISIONAL", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, block["evidence_note"])
+        facilities = {facility["id"]: facility for facility in block["facilities"]}
+        self.assertEqual(len(facilities), 18)
+        # 援助額 (guide PDF1 p.45) and the セキュリティ effect (PDF3 p.10, PDF4 p.74).
+        self.assertEqual(facilities["police_box"]["aid_yen"], 400_000)
+        self.assertEqual(facilities["university"]["aid_yen"], 9_800_000)
+        self.assertEqual((facilities["police_box"]["security_per_square"], facilities["police_box"]["security_max"]), (10, 40))
+        self.assertEqual((facilities["fire_station"]["security_per_square"], facilities["fire_station"]["security_max"]), (5, 30))
+        for facility in block["facilities"]:
+            self.assertIn(facility["sprite"], town["building_catalog"])
+            size = facility["size"]
+            self.assertEqual(sorted(size) == sorted(facility["table_size"]), facility["id"] not in ("gym",))
+            sprite = GAME_ROOT / "assets" / "town" / (facility["sprite"] + ".png")
+            self.assertTrue(sprite.is_file())
+            imported = (GAME_ROOT / "assets" / "town" / (facility["sprite"] + ".png.import")).read_text(encoding="utf-8")
+            self.assertIn("compress/mode=1", imported)
+        # The place price near the store at (13, 21), within the videos' 2-4 million.
+        self.assertEqual(site.inducement_place_price(town, facilities["police_box"], (16, 21)), 2_100_000)
+        self.assertEqual(site.inducement_place_price(town, facilities["pool"], (16, 24)), 3_900_000)
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn('"inducement_aid", "inducement_place"', simulation)
+        self.assertIn("    ) + inducement_security_bonus()", simulation)
+        place = simulation.split("func try_induce(")[0].split("func inducement_quote(")[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", place)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        for text in (
+            "the 誘致 place price must stay tagged REMAKE_BALANCED_DEFAULT",
+            "a 交番 next to the store costs 400,000 aid + 2,100,000 for the place",
+            "only one facility can be under 誘致 at a time",
+            "a 交番 inside the store's 16x16 area adds 40 セキュリティ",
+            "a facility takes in the building standing on its squares",
+        ):
+            self.assertIn(text, smoke)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("誘致する starts building the 交番", preview)
 
     @staticmethod
     def _reachable(start, goal, width, height, blocked):

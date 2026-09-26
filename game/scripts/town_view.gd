@@ -59,6 +59,9 @@ var _view_centered := false
 var selecting_site := false
 var site_cursor := Vector2i(-1, -1)
 var site_cursor_ok := false
+# Task #111: the cursor also marks a facility's squares while choosing where
+# to induce it.
+var site_cursor_size := Vector2i(2, 2)
 var _press_travel := 0.0
 
 
@@ -267,10 +270,12 @@ func _draw_guide_map(guide: Dictionary) -> void:
                 _draw_tile(str(tiles.get(kind, "map_grass_plain")), rect)
     var shown_rect := Rect2(Vector2(view_origin_tile), Vector2(shown))
     var bought: Array = simulation.bought_buildings()
-    for index in guide["buildings"].size():
+    # Task #111: the simulation's own list, which grows with 誘致.
+    var map_buildings: Array = simulation.store_site.buildings if simulation.store_site != null else guide["buildings"]
+    for index in map_buildings.size():
         if bought.has(index):
             continue
-        var building: Dictionary = guide["buildings"][index]
+        var building: Dictionary = map_buildings[index]
         var tile: Array = building["tile"]
         var size: Array = building["size"]
         var footprint := Rect2(Vector2(int(tile[0]), int(tile[1])), Vector2(int(size[0]), int(size[1])))
@@ -318,8 +323,19 @@ func _draw_guide_map(guide: Dictionary) -> void:
             for dx in 2:
                 _draw_tile("map_concrete", Rect2(branch_rect.position + Vector2(dx, dy) * t, Vector2(t, t)))
         _draw_tile("map_blue_02", branch_rect)
+    # Task #111: the lot of a facility under construction (誘致用地).
+    if not simulation.pending_inducement.is_empty():
+        var pending: Dictionary = simulation.pending_inducement
+        var facility: Dictionary = simulation._inducement_facility(str(pending["facility_id"]))
+        var lot := Rect2(
+            Vector2(pending["origin"]) * t - origin,
+            Vector2(int(facility["size"][0]), int(facility["size"][1])) * t
+        )
+        draw_rect(lot, Color(0.85, 0.7, 0.3, 0.55), true)
+        draw_rect(lot, Color("7a4b00"), false, 2.0)
+        draw_string(ThemeDB.fallback_font, lot.position + Vector2(4, 18), "工事中", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("3b2a10"))
     if selecting_site and site_cursor.x >= 0:
-        var cursor := Rect2(Vector2(site_cursor) * t - origin, Vector2(2 * t, 2 * t))
+        var cursor := Rect2(Vector2(site_cursor) * t - origin, Vector2(site_cursor_size) * t)
         var cursor_color := SITE_OK_COLOR if site_cursor_ok else SITE_BLOCKED_COLOR
         draw_rect(cursor, Color(cursor_color, 0.35), true)
         draw_rect(cursor, cursor_color, false, 3.0)

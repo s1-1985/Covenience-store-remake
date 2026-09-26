@@ -3124,6 +3124,8 @@ func _initialize() -> void:
         return
     if not _check_edits_while_open():
         return
+    if not _check_inducement():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -3960,4 +3962,77 @@ func _everyone_on_the_floor(simulation) -> bool:
     for member in simulation.staff.all_staff():
         if not simulation.layout.is_walkable(member.position):
             return false
+    return true
+
+
+# Task #111: 販促 → 誘致. Prices are the ones tools/guide_store_site.py
+# inducement_place_price() gives (the contract test runs that side).
+func _check_inducement() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    if "REMAKE_BALANCED_DEFAULT" not in str(fresh["guide_town_map"]["inducement"]["evidence_note"]):
+        _fail("the 誘致 place price must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    if simulation.inducement_facilities().size() != 18:
+        _fail("the guide lists 18 facilities that can be induced")
+        return false
+    var quote: Dictionary = simulation.inducement_quote("police_box", Vector2i(16, 21))
+    if not bool(quote["placeable"]) or int(quote["aid_yen"]) != 400_000 or int(quote["place_yen"]) != 2_100_000:
+        _fail("a 交番 next to the store costs 400,000 aid + 2,100,000 for the place: %s" % quote)
+        return false
+    if str(simulation.inducement_quote("police_box", Vector2i(13, 21))["reason"]) != "store_in_the_way":
+        _fail("a facility cannot be put on a store")
+        return false
+    if bool(simulation.inducement_quote("police_box", Vector2i(10, 18))["placeable"]):
+        _fail("a facility cannot be put on a road")
+        return false
+    var cash_before: int = simulation.economy.cash_yen
+    if not simulation.try_induce("police_box", Vector2i(16, 21)) or simulation.economy.cash_yen != cash_before - 2_500_000:
+        _fail("inducing pays the aid and the place price")
+        return false
+    var wait: int = int(simulation.pending_inducement["ready_day"]) - simulation.day_count
+    if wait < 4 or wait > 7:
+        _fail("a facility takes 1ヶ月(+0〜3日) = 4-7 days: %d" % wait)
+        return false
+    if str(simulation.inducement_quote("pool", Vector2i(16, 24))["reason"]) != "one_at_a_time":
+        _fail("only one facility can be under 誘致 at a time")
+        return false
+    if simulation.inducement_security_bonus() != 0.0:
+        _fail("a facility under construction adds no セキュリティ yet")
+        return false
+    var buildings_before: int = simulation.store_site.buildings.size()
+    var population_before: int = simulation.demand.nearby_population
+    for day in 8:
+        simulation._handle_day_boundary()
+    if not simulation.pending_inducement.is_empty() or simulation.induced_facilities.size() != 1:
+        _fail("the 交番 must be finished within 7 days")
+        return false
+    if simulation.store_site.buildings.size() != buildings_before + 1 or simulation.demand.nearby_population <= population_before:
+        _fail("the finished 交番 is a building that brings customers")
+        return false
+    if simulation.inducement_security_bonus() != 40.0:
+        _fail("a 交番 inside the store's 16x16 area adds 40 セキュリティ: %s" % simulation.inducement_security_bonus())
+        return false
+    # A pool on a house takes the house in.
+    if not simulation.try_induce("pool", Vector2i(16, 24)):
+        _fail("a pool can be induced once the 交番 is finished")
+        return false
+    for day in 8:
+        simulation._handle_day_boundary()
+    if not simulation.bought_buildings().has(113):
+        _fail("a facility takes in the building standing on its squares")
+        return false
+    simulation.try_induce("park", Vector2i(13, 24))
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))):
+        _fail("a save with induced facilities must load")
+        return false
+    if (
+        reloaded.induced_facilities.size() != 2 or reloaded.store_site.buildings.size() != simulation.store_site.buildings.size()
+        or reloaded.inducement_security_bonus() != 40.0 or str(reloaded.pending_inducement.get("facility_id", "")) != "park"
+        or not reloaded.bought_buildings().has(113)
+    ):
+        _fail("load must rebuild the induced facilities and the one under construction")
+        return false
     return true
