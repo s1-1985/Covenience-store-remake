@@ -147,7 +147,8 @@ class MonthlyRatingEvaluationTests(unittest.TestCase):
                 stars,
             )
 
-    def test_next_internal_value_does_not_go_below_zero(self):
+    def test_next_internal_value_does_not_go_below_the_floor(self):
+        # Task #129: the PS program keeps the score at 5 or more (CONFIRMED_BINARY).
         inputs = RatingMonthlyInputs(
             current_internal_value=2,
             price_change_pct=5,
@@ -157,7 +158,7 @@ class MonthlyRatingEvaluationTests(unittest.TestCase):
             monthly_sales_yen=0,
         )
         result = evaluate_monthly_rating_change(inputs)
-        self.assertEqual(result.next_internal_value, 0)
+        self.assertEqual(result.next_internal_value, 5)
 
     def test_event_point_constants_are_available_for_callers_to_apply_separately(self):
         self.assertEqual(ANGRY_CUSTOMER_DOWNGRADE_POINTS, -1)

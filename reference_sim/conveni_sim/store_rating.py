@@ -3,6 +3,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
+RATING_FLOOR = 5
+"""Task #129 (CONFIRMED_BINARY, PS program SLPS_007.82 0x80028A50): the
+monthly evaluation keeps the score at 5 or more; a new store starts at
+NEW_STORE_RATING (0x8001B120)."""
+NEW_STORE_RATING = 10
+
 STAR_RANK_VALUES = (0, 1, 2, 3, 4, 5)
 """Star display, 0 (☆☆☆☆☆) through 5 (★★★★★)."""
 
@@ -137,7 +143,8 @@ class RatingMonthlyEvaluation:
 
     @property
     def next_internal_value(self) -> int:
-        return max(0, min(100, self.inputs.current_internal_value + self.net_point_change))
+        # Task #129 (CONFIRMED_BINARY, the PS program's 0x80028A50): kept in 5..100.
+        return max(RATING_FLOOR, min(100, self.inputs.current_internal_value + self.net_point_change))
 
 
 def evaluate_monthly_rating_change(inputs: RatingMonthlyInputs) -> RatingMonthlyEvaluation:

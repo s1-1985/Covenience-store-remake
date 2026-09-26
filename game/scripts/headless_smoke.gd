@@ -196,10 +196,6 @@ func _initialize() -> void:
         _fail("GuideStartingStore.apply() must not modify the config it is given")
         return
     var guide_simulation = VerticalSliceSimulationScript.new(guide_config)
-    # Task #124: a new store starts unknown; this check is about a store
-    # that has been trading (half known, as an older save loads).
-    guide_simulation.recognition = 50.0
-    guide_simulation._apply_recognition()
     if guide_simulation.inventory.product_order.size() != 34:
         _fail("the guide starting store must stock one product per p.48 shelf")
         return
@@ -1464,12 +1460,15 @@ func _initialize() -> void:
 
     var promotion_simulation = VerticalSliceSimulationScript.new(config.duplicate(true))
     steps += _run_visit(promotion_simulation)
-    if promotion_simulation.popularity != 0:
-        _fail("a freshly reset simulation must start with zero popularity")
+    # Task #129: a new store opens at 人気 20 (CONFIRMED_BINARY).
+    if promotion_simulation.popularity != 20:
+        _fail("a freshly reset simulation must start with the new store's popularity")
         return
     if promotion_simulation.try_purchase_promotion("unknown_promotion"):
         _fail("an unknown promotion id must be rejected")
         return
+    # Task #129: an advert runs only with five times its cost in hand.
+    promotion_simulation.economy.cash_yen = 20_000_000
     var cash_before_scheduling: int = int(promotion_simulation.economy.cash_yen)
     if not promotion_simulation.try_purchase_promotion("direct_mail"):
         _fail("scheduling a promotion before its trigger moment this month must be accepted")
@@ -1486,13 +1485,15 @@ func _initialize() -> void:
 
     var day_count_before_promotion_wait: int = promotion_simulation.day_count
     var promotion_ticks := 0
-    while promotion_simulation.popularity == 0 and promotion_ticks < 5000:
+    var popularity_before_promotion: int = promotion_simulation.popularity
+    while promotion_simulation.event_log.count_type("promotion_fired") == 0 and promotion_ticks < 5000:
+        popularity_before_promotion = promotion_simulation.popularity
         promotion_simulation.tick_idle_for_demand()
         promotion_ticks += 1
     if promotion_ticks >= 5000:
         _fail("the scheduled direct_mail promotion did not fire within 5000 ticks")
         return
-    if promotion_simulation.popularity != 12:
+    if promotion_simulation.popularity != popularity_before_promotion + 12:
         _fail("a fired promotion must apply exactly its configured popularity_gain")
         return
     # Task #47/#50: reaching the promotion's trigger_day crosses at least
@@ -1596,8 +1597,9 @@ func _initialize() -> void:
     if int(upgrade_and_downgrade_evaluation["downgrade_points"]) != -2:
         _fail("downgrade points must equal -1 per failed downgrade criterion")
         return
-    if int(upgrade_and_downgrade_evaluation["next_internal_value"]) != 3:
-        _fail("next_internal_value must equal current + downgrade_points + UPGRADE_POINTS, clamped 0..100")
+    # Task #129: 0 + 5 - 2 = 3, raised to the program's floor of 5.
+    if int(upgrade_and_downgrade_evaluation["next_internal_value"]) != 5:
+        _fail("next_internal_value must equal current + downgrade_points + UPGRADE_POINTS, clamped 5..100")
         return
     var zero_star_row_evaluation: Dictionary = store_rating.evaluate_monthly_rating_change(
         10, -1, 50.0, 70.0, 80.0, 3000000
@@ -1837,8 +1839,9 @@ func _initialize() -> void:
         "rng_seed": 13,
     }
     var rating_simulation = VerticalSliceSimulationScript.new(rating_config)
-    if rating_simulation.internal_rating_value != 0 or rating_simulation.star_rating != 0:
-        _fail("a freshly reset simulation must start at internal_rating_value 0 / star_rating 0")
+    # Task #129: a new store starts at 評価 10 (CONFIRMED_BINARY), still ★0.
+    if rating_simulation.internal_rating_value != 10 or rating_simulation.star_rating != 0:
+        _fail("a freshly reset simulation must start at internal_rating_value 10 / star_rating 0")
         return
     steps += _run_visit(rating_simulation)
     var single_sale_revenue_yen: int = rating_simulation.economy.recorded_revenue_yen()
@@ -1903,14 +1906,19 @@ func _initialize() -> void:
     # CustomerShare class store_rating actually calls, rather than a
     # hand-derived literal that would go stale the moment checkout growth
     # changes service_value.
+    # Task #129: 人気 as it stood at the evaluation (it moves every day).
     var expected_customer_share_percent: int = customer_share.compute_customer_share_percent(
-        0, expected_service_value, expected_cleaning_value, expected_security_value, 2, 960
+        int(rating_event_details["popularity"]), expected_service_value, expected_cleaning_value, expected_security_value, 2, 960
     )
     if int(rating_event_details["customer_share_percent"]) != expected_customer_share_percent:
         _fail("customer_share_percent must be recomputed from CustomerShare.compute_customer_share_percent()")
         return
-    if abs(rating_simulation.demand.customer_share_percent - float(expected_customer_share_percent)) > 0.0000001:
-        _fail("demand.customer_share_percent must be overwritten by the monthly store rating evaluation")
+    # ... and again after the day's change in 人気 at the same 0:00.
+    var share_after_day: int = customer_share.compute_customer_share_percent(
+        rating_simulation.popularity, expected_service_value, expected_cleaning_value, expected_security_value, 2, 960
+    )
+    if abs(rating_simulation.demand.customer_share_percent - float(share_after_day)) > 0.0000001:
+        _fail("demand.customer_share_percent must be overwritten by the month's evaluation and the day's 人気")
         return
     if rating_simulation.star_rating != store_rating.star_rank_for_internal_value(
         rating_simulation.internal_rating_value
@@ -2005,7 +2013,8 @@ func _initialize() -> void:
     if save_setup_ticks >= 20000:
         _fail("advancing the save/load test's setup simulation took too long")
         return
-    if save_simulation.month_count != 1 or save_simulation.popularity != 12:
+    # Task #129: 人気 also moves every day, so the advert is checked by its event.
+    if save_simulation.month_count != 1 or save_simulation.event_log.count_type("promotion_fired") != 1:
         _fail("the save/load test's setup simulation must have settled one month and fired its promotion")
         return
 
@@ -2252,14 +2261,14 @@ func _initialize() -> void:
 
     var milestone_simulation = VerticalSliceSimulationScript.new(chain_config)
     steps += _run_visit(milestone_simulation)
-    if milestone_simulation.popularity != 0:
-        _fail("a freshly reset simulation must start with zero popularity (chain milestone test)")
+    if milestone_simulation.popularity != 20:
+        _fail("a freshly reset simulation must start with the new store's popularity (chain milestone test)")
         return
     milestone_simulation._chain_visitor_milestone.observe_total_visitors(
         10000, milestone_simulation.day_count + 1, milestone_simulation.minute_of_day / 60
     )
     var milestone_ticks := 0
-    while milestone_simulation.popularity == 0 and milestone_ticks < 20000:
+    while milestone_simulation.event_log.count_type("chain_visitor_milestone_fired") == 0 and milestone_ticks < 20000:
         milestone_simulation.tick_idle_for_demand()
         milestone_ticks += 1
     if milestone_ticks >= 20000:
@@ -3181,7 +3190,7 @@ func _initialize() -> void:
         return
     if not _check_customer_roster_stays_small():
         return
-    if not _check_store_growth():
+    if not _check_store_standing():
         return
     if not _check_layout_editing():
         return
@@ -3788,10 +3797,6 @@ func _check_store_types() -> bool:
         if not day.try_buy_store_site(Vector2i(13, 21), type_id):
             _fail("%s must be buildable" % type_id)
             return false
-        # Task #124: a new store starts unknown with few customers
-        # (_check_store_growth); this is a store that has been trading.
-        day.recognition = 50.0
-        day._apply_recognition()
         var most_inside := 0
         for minute in 24 * 60:
             day.tick()
@@ -4110,10 +4115,6 @@ func _check_shelves_stay_filled() -> bool:
     var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
     var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
     simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
-    # Task #124: a store that has been trading (a new one sells little at
-    # first, see _check_store_growth).
-    simulation.recognition = 50.0
-    simulation._apply_recognition()
     var full: int = simulation.inventory.total_stock_units()
     for day in 6:
         var refills_before: int = simulation.event_log.count_type("restock_started")
@@ -4451,9 +4452,6 @@ func _check_branch_stores() -> bool:
 # Task #121: the customers who have left are not kept for ever.
 func _check_customer_roster_stays_small() -> bool:
     var simulation = _real_game_simulation()
-    # Task #124: a store that has been trading, so six days bring plenty.
-    simulation.recognition = 50.0
-    simulation._apply_recognition()
     for minute in 1440 * 6:
         simulation.tick()
     var started: int = simulation.customers.started_count()
@@ -4469,49 +4467,67 @@ func _check_customer_roster_stays_small() -> bool:
     return true
 
 
-# Task #124: a new store starts unknown and becomes known and popular as it
-# serves its customers (REMAKE_BALANCED_DEFAULT shapes on CONFIRMED anchors).
-func _check_store_growth() -> bool:
+# Task #129: a store's 評価 and 人気 follow the PS program (CONFIRMED_BINARY):
+# a new store starts at 評価 10 / 人気 20, 人気 moves daily by ★, never below
+# the 評価 score; the score stays in 5..100; the manager may advise; an
+# advert needs five times its cost in hand.
+func _check_store_standing() -> bool:
     var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
     var rules: Dictionary = fresh["guide_starting_store"]["store_rules"]
-    if "Task #124" not in str(rules["evidence_note"]) or "REMAKE_BALANCED_DEFAULT" not in str(rules["evidence_note"]):
-        _fail("the store growth rules must stay tagged REMAKE_BALANCED_DEFAULT")
+    if "Task #129, REMAKE_BALANCED_DEFAULT" not in str(rules["evidence_note"]):
+        _fail("the advice chance and the bought store's standing must stay tagged REMAKE_BALANCED_DEFAULT")
         return false
-    var growth: Dictionary = rules["store_growth"]
+    var rating = StoreRatingScript.new()
+    if rating.next_day_popularity(20, 10) != 10 or rating.next_day_popularity(60, 45) != 55:
+        _fail("人気 moves -15 at ★0 and -5 at ★2, never below the 評価 score")
+        return false
+    if rating.next_day_popularity(50, 85) != 85 or rating.next_day_popularity(98, 100) != 100:
+        _fail("人気 is raised to the 評価 score and stops at 100")
+        return false
+    var weak: Dictionary = rating.evaluate_monthly_rating_change(5, 10, 0.0, 0.0, 0.0, 0)
+    if int(weak["next_internal_value"]) != 5 or (weak["not_good_items"] as Array).size() != 5:
+        _fail("the 評価 score never drops below 5, and every weak item is noted")
+        return false
+    var advice_rng := RandomNumberGenerator.new()
+    advice_rng.seed = 7
+    var advised := ""
+    for attempt in 20:
+        if not rating.manager_advice(weak, 0, advice_rng).is_empty():
+            _fail("a manager with no ability never advises")
+            return false
+        advised = rating.manager_advice(weak, 100, advice_rng)
+        if not advised.is_empty():
+            break
+    if not advised.ends_with("ランクが上がるでしょう") or not advised.contains("もっと"):
+        _fail("the manager's advice is the original's line: %s" % advised)
+        return false
     var simulation = _real_game_simulation()
-    if simulation.recognition != 0.0 or simulation.popularity != int(growth["start_popularity"]):
-        _fail("a new store opens unknown, with the starting popularity")
+    if simulation.popularity != 20 or simulation.internal_rating_value != 10 or simulation.star_rating != 0:
+        _fail("a new store opens at 評価 10 and 人気 20")
         return false
-    if not is_equal_approx(simulation.demand.recognition_factor, float(growth["demand_factor_at_zero"])):
-        _fail("an unknown store draws only part of its catchment")
-        return false
-    var first_day_visits := 0
     for minute in 1440:
         simulation.tick()
-    first_day_visits = simulation.customers.started_count()
-    for minute in 1440 * 9:
-        simulation.tick()
-    if simulation.recognition <= 1.0:
-        _fail("served customers make the store known: %.2f" % simulation.recognition)
-        return false
-    if simulation.demand.recognition_factor <= float(growth["demand_factor_at_zero"]):
-        _fail("a better known store draws more of its catchment")
-        return false
-    if simulation.popularity <= int(growth["start_popularity"]) and simulation.popularity_target() > int(growth["start_popularity"]):
-        _fail("popularity follows how known the store is")
-        return false
-    if simulation.customers.started_count() <= first_day_visits * 5:
-        _fail("ten days bring more visits as the store grows")
+    if simulation.popularity != 10:
+        _fail("after a day at ★0, 人気 falls 15 but not below the 評価 score: %d" % simulation.popularity)
         return false
     var copy = _real_game_simulation()
-    if not copy.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))):
-        _fail("a growing store's save must load")
+    if not copy.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))) or copy.popularity != 10:
+        _fail("人気 survives a load")
         return false
-    if not is_equal_approx(copy.recognition, simulation.recognition):
-        _fail("how known the store is survives a load")
+    var cost := int(simulation._promotion_catalog["direct_mail"]["cost_yen"])
+    simulation.economy.cash_yen = cost * 5 - 1
+    simulation._fire_promotion({"promotion_id": "direct_mail"})
+    if simulation.event_log.count_type("promotion_cancelled") != 1 or simulation.popularity != 10 or simulation.economy.cash_yen != cost * 5 - 1:
+        _fail("an advert without five times its cost in hand is called off, free")
         return false
-    if not simulation.try_buy_out_rival("rival-02") or simulation.store_field(1, "recognition") != float(growth["bought_store_recognition"]):
-        _fail("a bought store comes with its own customers already knowing it")
+    simulation.economy.cash_yen = cost * 5
+    simulation._fire_promotion({"promotion_id": "direct_mail"})
+    if simulation.event_log.count_type("promotion_fired") != 1 or simulation.popularity <= 10:
+        _fail("an advert with five times its cost in hand runs")
+        return false
+    simulation.economy.cash_yen = 500_000_000
+    if not simulation.try_buy_out_rival("rival-02") or int(simulation.store_field(1, "popularity")) != 20 or int(simulation.store_field(1, "internal_rating_value")) != 10:
+        _fail("a bought store starts with a new store's 評価 and 人気")
         return false
     return true
 

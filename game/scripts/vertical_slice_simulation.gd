@@ -271,7 +271,7 @@ const STORE_FIELDS := [
     "_scheduled_promotions", "popularity", "price_change_pct", "internal_rating_value", "star_rating",
     "_store_size_tier", "store_site_origin", "_player_store_position", "store_type_id",
     "_sample_layout_catalog", "store_name", "_store_sales_yen",
-    "_store_sales_at_month_start", "_store_sales_at_day_start", "recognition", "stored_fixtures",
+    "_store_sales_at_month_start", "_store_sales_at_day_start", "stored_fixtures",
 ]
 # The config keys a store has its own copy of; the rest (catalogs, town,
 # weather...) is shared.
@@ -287,10 +287,6 @@ var store_name := "本店"
 var _store_sales_yen := 0
 var _store_sales_at_month_start := 0
 var _store_sales_at_day_start := 0
-# Task #124: 知名度 -- how well the town knows this store (0-100).
-var recognition := 0.0
-var _store_growth_enabled := false
-var _growth_rules: Dictionary = {}
 # Customers who have finished a visit at any of the player's stores, ever
 # (the chain visitor milestone's count; kept, unlike the customer rosters,
 # across a save and load).
@@ -362,8 +358,6 @@ func _init(source_config: Dictionary) -> void:
     _building_demand_enabled = bool(simulation.get("building_demand_enabled", false))
     _edits_while_open = bool(simulation.get("edits_while_open", false))
     _checkout_rotation_enabled = bool(simulation.get("checkout_rotation_enabled", false))
-    _growth_rules = simulation.get("store_growth", {})
-    _store_growth_enabled = not _growth_rules.is_empty()
     _customer_types_enabled = bool(simulation.get("customer_types_enabled", false)) and config.has("guide_customer_types")
     if _customer_types_enabled:
         _visit_rows = config["guide_customer_types"]["visits"]
@@ -414,16 +408,8 @@ func reset() -> void:
     _permits_held.clear()
     _promotions_used_this_month.clear()
     _scheduled_promotions.clear()
-    popularity = 0
     price_change_pct = 0
-    _start_store_growth(float(_growth_rules.get("new_store_recognition", 0.0)))
-    # No confirmed starting evaluation for a brand-new store exists (the
-    # guide never states one; store_evaluation.py's own
-    # internal_rating_value likewise starts unknown until a caller sets
-    # it), so 0 (the lowest tier, 0-19 -> 0 stars) is used as the most
-    # natural REMAKE_BALANCED_DEFAULT starting point, matching the
-    # precedent already set for `popularity`.
-    internal_rating_value = 0
+    _start_new_store_standing()
     star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
     # This playable vertical slice is itself the player's first store, so
     # the chain always starts at 1, not 0.
@@ -495,7 +481,6 @@ func try_eject_customer(customer_id: String) -> bool:
     else:
         staff.checkout_staff().state = "idle"
     ejected_customer.phase = "leaving"
-    _note_visit_outcome(false)
     ejected_customer.route = layout.find_path(ejected_customer.position, layout.exit)
     _record_event("customer_ejected", {
         "customer_id": customer_id,
@@ -649,7 +634,7 @@ func _employed_candidate_ids() -> Dictionary:
 # furnished as store type `type_id` with its opening goods, and staffed
 # with candidates who do not work anywhere else yet. Returns its index.
 # The store being looked at stays the same.
-func _add_store(type_id: String, origin: Vector2i, name: String, start_recognition := 0.0) -> int:
+func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     var home := active_store
     var employed := _employed_candidate_ids()
     _stores[active_store] = _capture_store()
@@ -684,11 +669,8 @@ func _add_store(type_id: String, origin: Vector2i, name: String, start_recogniti
     _permits_held = {}
     _promotions_used_this_month = {}
     _scheduled_promotions = []
-    popularity = 0
     price_change_pct = 0
-    _start_store_growth(start_recognition)
-    internal_rating_value = 0
-    star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
+    _start_new_store_standing()
     _store_size_tier = str(config["store"]["size_tier"])
     _store_sales_yen = 0
     _store_sales_at_month_start = 0
@@ -1575,13 +1557,11 @@ func try_buy_out_rival(rival_id: String) -> bool:
     # Task #123: the bought store is now one of the player's own, run like
     # 本店 (see _add_store()). REMAKE_BALANCED_DEFAULT: it comes as the
     # opening small store (the rival's own floor was never recovered), with
-    # its goods and three staff members nobody else employs.
+    # its goods and three staff members nobody else employs; task #129: and
+    # with a new store's 評価 and 人気 (the rivals keep no rating here).
     var store_index := -1
     if not store_types().is_empty():
-        store_index = _add_store(
-            _branch_store_type(), bought["position"], _branch_name(),
-            float(_growth_rules.get("bought_store_recognition", 0.0))
-        )
+        store_index = _add_store(_branch_store_type(), bought["position"], _branch_name())
     owned_branches.append({"id": rival_id, "position": bought["position"], "store_index": store_index})
     if store_index < 0:
         _for_each_store(_refresh_store_catchment)
@@ -2705,7 +2685,6 @@ func _advance_customer(customer) -> void:
                 elif customer.basket.is_empty():
                     customer.phase = "leaving"
                     customer.route = layout.find_path(customer.position, layout.exit)
-                    _note_visit_outcome(false)
                     _record_event("customer_leaving_without_sale", {
                         "customer_id": customer.customer_id,
                     })
@@ -2763,10 +2742,12 @@ func _advance_customer(customer) -> void:
                         ) <= StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_NUMERATOR
                     )
                     if rating_penalty_applied:
-                        internal_rating_value = max(0, min(
-                            100,
-                            internal_rating_value + StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_POINTS
-                        ))
+                        # Task #129: never below 5 (the program only takes
+                        # the point from a score of 6 or more).
+                        internal_rating_value = clampi(
+                            internal_rating_value + StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_POINTS,
+                            StoreRatingScript.RATING_FLOOR, StoreRatingScript.RATING_CAP
+                        )
                         star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
                     _record_event("checkout_anger_triggered", {
                         "customer_id": customer.customer_id,
@@ -2795,7 +2776,6 @@ func _advance_customer(customer) -> void:
                             )
                 checkout_staff.state = "idle"
                 checkout_staff.checkouts_done += 1
-                _note_visit_outcome(not customer.checkout_anger_triggered and not customer.basket.is_empty())
                 _spend_stamina(checkout_staff)
                 customer.phase = "leaving"
                 customer.route = layout.find_path(customer.position, layout.exit)
@@ -3335,8 +3315,6 @@ func _store_save_block() -> Dictionary:
             "types": survey_types.duplicate(),
             "last": last_survey.duplicate(true),
         },
-        # Task #124: 知名度.
-        "recognition": recognition,
         # Task #125: fixtures put away.
         "stored_fixtures": stored_fixtures.duplicate(true),
         # Task #123 (schema 10): this store's own sales.
@@ -3504,9 +3482,6 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
         }
     store_name = str(block.get("store_name", store_name))
     stored_fixtures = (block.get("stored_fixtures", []) as Array).duplicate(true)
-    # Older saves: a store that has been trading, half known.
-    if _store_growth_enabled:
-        recognition = float(block.get("recognition", 50.0))
     popularity = int(block["popularity"])
     price_change_pct = int(block["price_change_pct"])
     internal_rating_value = int(block["internal_rating_value"])
@@ -3537,7 +3512,6 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
     _store_sales_yen = int(sales["total"])
     _store_sales_at_month_start = int(sales["month_start"])
     _store_sales_at_day_start = int(sales["day_start"])
-    _apply_recognition()
     _refresh_interactions()
 
 
@@ -3743,6 +3717,8 @@ func _handle_day_boundary() -> void:
     _step_inducement_day()
     if _days_completed_this_month >= REPRESENTATIVE_DAYS_PER_MONTH:
         _settle_month_end()
+    # Task #129: after the month's rating, as the program does at 0:00.
+    _for_each_store(_drift_popularity_day)
     # After _settle_month_end() so a month rollover rolls from the new
     # month's row.
     _roll_weather()
@@ -3934,69 +3910,31 @@ func _close_store_day() -> void:
     _apply_daily_fixture_maintenance()
     _apply_daily_staff_wages()
     _store_sales_at_day_start = _store_sales_yen
-    _grow_store_day()
 
 
-# --- Task #124: the store's own growth (the owner: a new store starts
-# unknown with few customers, and as its staff and town grow it becomes
-# known and popular, sells more and turns a profit) ---
+# --- Task #129: a store's 評価 and 人気 as the PS program keeps them ---
 #
-# Evidence: CONFIRMED_COMMUNITY (first-title wiki, docs/research/official-
-# screenshot-evidence-2026-09-05.md section 10) that a store starts at 人気度
-# 20; CONFIRMED_OFFICIAL, qualitative (guide book p.36): an advert's rise in
-# 人気度 fades from the next day ("翌日になると上がった人気度はドンドン下がって
-# しまう") and "価格を下げたりサービスをよくすれば、いままで別の店に行っていた
-# お客さんもだんだんこちらのお店を利用してくるようになる"; CONFIRMED_COMMUNITY
-# (docs/research/customer-share-recompute-triggers-2026-09-06.md) that 顧客独占率
-# is worked out again at every day change, from 人気, サービス, 清掃, 品揃え,
-# price, hours, weather and the nearby population. REMAKE_BALANCED_DEFAULT
-# (store_rules.store_growth): the 知名度 itself -- a new store starts at 0, a
-# bought one higher; each customer who leaves satisfied (bought something,
-# was not angered) adds per_happy x (1 - 知名度/100), one who leaves with
-# nothing or angry takes per_unhappy x 知名度/100; visitors are scaled from
-# demand_factor_at_zero (unknown) to demand_factor_at_full (fully known);
-# each day 人気度 moves popularity_daily_pull of the way to popularity_base +
-# popularity_per_recognition x 知名度 (so an advert's boost fades); and
-# 顧客独占率 is recomputed every day instead of monthly.
-func _start_store_growth(start_recognition: float) -> void:
-    if not _store_growth_enabled:
-        return
-    recognition = clampf(start_recognition, 0.0, 100.0)
-    popularity = int(_growth_rules["start_popularity"])
-    _apply_recognition()
+# CONFIRMED_BINARY (SLPS_007.82, docs/research/ps1-executable-formulas-
+# 2026-09-26.md): a new store starts with 評価 10 and 人気 20 (0x8001B120/
+# 0x8001B12C; 人気 20 is also CONFIRMED_COMMUNITY, docs/research/official-
+# screenshot-evidence-2026-09-05.md section 10); each day at 0:00 人気 moves
+# by -15/-10/-5/-3/0/+5 for ★0-5, never below the 評価 score and at most
+# 100 (StoreRating.next_day_popularity). This replaces task #124's 知名度
+# model (decision 0195), which was this project's own invention.
+const NEW_STORE_POPULARITY := 20
+const PROMOTION_CASH_MULTIPLE := 5
 
 
-func _apply_recognition() -> void:
-    if not _store_growth_enabled:
-        return
-    var low := float(_growth_rules["demand_factor_at_zero"])
-    var high := float(_growth_rules["demand_factor_at_full"])
-    demand.recognition_factor = low + (high - low) * recognition / 100.0
+func _start_new_store_standing() -> void:
+    popularity = NEW_STORE_POPULARITY
+    internal_rating_value = StoreRatingScript.NEW_STORE_RATING
+    star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
 
 
-func _note_visit_outcome(satisfied: bool) -> void:
-    if not _store_growth_enabled:
-        return
-    if satisfied:
-        recognition += float(_growth_rules["recognition_per_happy_visit"]) * (1.0 - recognition / 100.0)
-    else:
-        recognition -= float(_growth_rules["recognition_per_unhappy_visit"]) * recognition / 100.0
-    recognition = clampf(recognition, 0.0, 100.0)
-    _apply_recognition()
-
-
-func popularity_target() -> int:
-    return int(round(
-        float(_growth_rules.get("popularity_base", 0)) + float(_growth_rules.get("popularity_per_recognition", 0.0)) * recognition
-    ))
-
-
-func _grow_store_day() -> void:
-    if not _store_growth_enabled:
-        return
-    var pull := float(_growth_rules["popularity_daily_pull"])
-    var gap := popularity_target() - popularity
-    popularity = clampi(popularity + int(round(gap * pull)), 0, 100)
+func _drift_popularity_day() -> void:
+    popularity = _store_rating.next_day_popularity(popularity, internal_rating_value)
+    # 顧客独占率 is worked out again at every day change (CONFIRMED_COMMUNITY,
+    # docs/research/customer-share-recompute-triggers-2026-09-06.md).
     var values := _store_values()
     demand.customer_share_percent = float(_customer_share.compute_customer_share_percent(
         popularity, values["service"], values["cleaning"], values["security"],
@@ -4065,6 +4003,7 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
         monthly_sales_yen
     )
     internal_rating_value = int(evaluation["next_internal_value"])
+    var previous_stars := star_rating
     star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
     demand.customer_share_percent = float(_customer_share.compute_customer_share_percent(
         popularity,
@@ -4077,6 +4016,7 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
     _record_event("store_rating_evaluated", {
         "month_number": month_count + 1,
         "monthly_sales_yen": monthly_sales_yen,
+        "popularity": popularity,
         "service_value": service_value,
         "security_value": security_value,
         "cleaning_value": cleaning_value,
@@ -4087,6 +4027,24 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
         "star_rating": star_rating,
         "customer_share_percent": demand.customer_share_percent,
     })
+    # Task #129 (CONFIRMED_BINARY, msg 208/209): the rank change is told.
+    if star_rating != previous_stars:
+        _record_event("store_rank_changed", {"stars": star_rating, "raised": star_rating > previous_stars})
+    # The manager's advice (CONFIRMED_BINARY, msg 251-258).
+    # REMAKE_BALANCED_DEFAULT: the chance is the manager's 社交性 out of 100
+    # -- the program reads a byte of the manager's staff record (+0x15) that
+    # every magazine article raises; which of the candidate card's
+    # abilities that byte is was not established.
+    var advice: String = _store_rating.manager_advice(evaluation, _manager_sociability(), _demand_rng)
+    if not advice.is_empty():
+        _record_event("manager_advice", {"text": advice})
+
+
+func _manager_sociability() -> int:
+    var manager = staff.members.get(str(config["staff"].get("manager_staff_id", "")))
+    if manager == null:
+        return 0
+    return int(_staff_candidate_catalog.get(manager.candidate_id, {}).get("sociability", 0))
 
 
 func _evaluate_terminal_state() -> void:
@@ -4134,6 +4092,12 @@ func _fire_promotion(scheduled: Dictionary) -> void:
     var catalog_entry: Dictionary = _promotion_catalog[promotion_id]
     var cost_yen: int = int(catalog_entry["cost_yen"])
     var popularity_gain: int = int(catalog_entry["popularity_gain"])
+    # Task #129 (CONFIRMED_BINARY, 0x80027888 and msg 204): the advert only
+    # runs if the cash on hand is at least five times its cost; otherwise
+    # it is called off, costing nothing.
+    if economy.cash_yen < cost_yen * PROMOTION_CASH_MULTIPLE:
+        _record_event("promotion_cancelled", {"promotion_id": promotion_id, "cost_yen": cost_yen})
+        return
     var expense: Dictionary = economy.record_explicit_expense(
         "promotion_cost",
         minute_of_day,

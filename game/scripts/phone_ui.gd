@@ -65,6 +65,7 @@ const STAFF_STATE_TEXT := {
 const EVENT_NOTICES := [
     "store_built", "facility_built", "inducement_started", "town_building_built", "rival_withdrew", "rival_opened", "rival_bought_out", "month_end_settlement",
     "checkout_anger_triggered", "staff_exhausted", "promotion_fired", "chain_expanded", "store_opened",
+    "store_rank_changed", "manager_advice", "promotion_cancelled",
 ]
 
 var main
@@ -915,6 +916,14 @@ func _notice_text(event_type: String, details: Dictionary) -> String:
             return "%s の誘致を始めました（完成まで約1か月）" % _facility_name(str(details.get("facility_id", "")))
         "facility_built":
             return "%s が完成しました" % _facility_name(str(details.get("facility_id", "")))
+        # Task #129: the original's own lines (msg 208/209, 251-258, 204).
+        "store_rank_changed":
+            var stars := "★".repeat(int(details.get("stars", 0))) if int(details.get("stars", 0)) > 0 else "☆"
+            return ("店のランクが\n%sになりました" if bool(details.get("raised", false)) else "店のランクが\n%sに下がりました") % stars
+        "manager_advice":
+            return "店長より：\n%s" % str(details.get("text", ""))
+        "promotion_cancelled":
+            return "資金が乏しいので\n%sの宣伝活動を\n止めることにしました" % main.tr(str(details.get("promotion_id", "")))
     return main.tr(event_type.replace("_", " "))
 
 

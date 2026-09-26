@@ -3932,18 +3932,16 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("Six stores, four of them locked at the start", preview)
 
-    def test_store_growth_editing_and_renovation_are_tagged(self):
-        # Tasks #124-#126: REMAKE_BALANCED_DEFAULT in the code, the JSON and
-        # the smoke test (CLAUDE.md tagging discipline).
+    def test_store_standing_editing_and_renovation_are_tagged(self):
+        # Tasks #125, #126, #129: REMAKE_BALANCED_DEFAULT in the code, the
+        # JSON and the smoke test (CLAUDE.md tagging discipline).
         rules = self.config["guide_starting_store"]["store_rules"]
         note = rules["evidence_note"]
-        for task in ("Task #124", "Task #125"):
+        for task in ("Task #124", "Task #125", "Task #129, REMAKE_BALANCED_DEFAULT"):
             self.assertIn(task, note)
-        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
-        growth = rules["store_growth"]
-        self.assertEqual(growth["new_store_recognition"], 0.0)
-        self.assertLess(growth["demand_factor_at_zero"], 1.0)
-        self.assertGreater(growth["demand_factor_at_full"], 1.0)
+        # Task #129: task #124's 知名度 model is gone, replaced by the
+        # program's own 評価/人気 rules (CONFIRMED_BINARY).
+        self.assertNotIn("store_growth", rules)
         self.assertTrue(rules["edit_front_search"])
         types_note = self.config["guide_store_types"]["evidence_note"]
         self.assertIn("Task #126", types_note)
@@ -3952,11 +3950,20 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("REMAKE_BALANCED_DEFAULT (store_rules.edit_front_search)", simulation)
         self.assertIn("REMAKE_BALANCED_DEFAULT: what the original's 改築 does", simulation)
         self.assertIn("# --- Task #125: the store's storage (倉庫). REMAKE_BALANCED_DEFAULT", simulation)
-        growth_code = simulation.split("func _start_store_growth")[0]
-        self.assertIn("Task #124", growth_code)
+        self.assertNotIn("recognition", simulation)
+        self.assertIn("# --- Task #129: a store's 評価 and 人気 as the PS program keeps them", simulation)
+        self.assertIn("REMAKE_BALANCED_DEFAULT: the chance is the manager's 社交性", simulation)
+        self.assertIn("with a new store's 評価 and 人気", simulation)
+        self.assertIn("const PROMOTION_CASH_MULTIPLE := 5", simulation)
         self.assertIn('"store_renovation"', re.search(r"const CAPITAL_EXPENSE_TYPES := \[(.*?)\]", simulation, re.S).group(1))
+        rating = (GAME_ROOT / "scripts" / "domain" / "store_rating.gd").read_text(encoding="utf-8")
+        for text in ("CONFIRMED_BINARY", "const RATING_FLOOR := 5", "const NEW_STORE_RATING := 10",
+                     "const DAILY_POPULARITY_CHANGE_BY_STARS := [-15, -10, -5, -3, 0, 5]"):
+            self.assertIn(text, rating)
+        demand = (GAME_ROOT / "scripts" / "domain" / "demand_policy.gd").read_text(encoding="utf-8")
+        self.assertNotIn("recognition", demand)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
-        self.assertIn("the store growth rules must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("the advice chance and the bought store's standing must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
         self.assertIn("the front search must stay on and tagged (Task #125)", smoke)
         self.assertIn("the renovation rules must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
         self.assertIn("try_renovate_store() must stay tagged REMAKE_BALANCED_DEFAULT", smoke)

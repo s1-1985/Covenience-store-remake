@@ -40,9 +40,6 @@ static func apply(config: Dictionary) -> Dictionary:
     applied["simulation"]["customer_types_enabled"] = bool(rules.get("customer_types_enabled", false))
     applied["simulation"]["any_side_catalog_ids"] = (rules.get("any_side_catalog_ids", []) as Array).duplicate()
     applied["simulation"]["fixture_attention"] = (rules.get("fixture_attention", {}) as Dictionary).duplicate()
-    # Task #124 (REMAKE_BALANCED_DEFAULT on CONFIRMED anchors, store_rules):
-    # the store becomes known and popular as it serves its customers.
-    applied["simulation"]["store_growth"] = (rules.get("store_growth", {}) as Dictionary).duplicate()
     # Task #125 (REMAKE_BALANCED_DEFAULT): fixtures find a free side for
     # their front when moved, turned or set down.
     applied["simulation"]["edit_front_search"] = bool(rules.get("edit_front_search", false))

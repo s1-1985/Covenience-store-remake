@@ -1040,3 +1040,12 @@ msgstr "設備を倉庫へ"
 
 msgid "fixture unstored"
 msgstr "倉庫から設備を配置"
+
+msgid "store rank changed"
+msgstr "店のランクが変わりました"
+
+msgid "manager advice"
+msgstr "店長の助言"
+
+msgid "promotion cancelled"
+msgstr "宣伝を中止しました"
