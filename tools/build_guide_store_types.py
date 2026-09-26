@@ -345,8 +345,9 @@ def build(config):
             "Task #126: the medium and large stores (which a store can be renovated into) have layouts "
             "too: the 12x8 one is the guide's p.48 store itself (CONFIRMED_VISUAL); the others are this "
             "project's own aisle-grid plans (REMAKE_BALANCED_DEFAULT), with p.48's shelves per floor tile. "
-            "改装 (renovating an open store into another size or orientation) is REMAKE_BALANCED_DEFAULT too: "
-            "no source shows an open store changing size; it costs the new store's construction price less "
+            "改装 (renovating an open store into another size or orientation): the original's store menu has "
+            "改築 (CONFIRMED_OFFICIAL, PS disc MSG00.OBJ message 385, task #127), but what it does and costs is "
+            "not recovered, so the rules are REMAKE_BALANCED_DEFAULT: it costs the new store's construction price less "
             "half the current one's, customers inside go home, and the fixtures move onto the new floor's "
             "shelf spots with their goods (what does not fit goes to storage, its goods back at cost)."
         ),

@@ -1,0 +1,16 @@
+{
+  "input_size": 90166272,
+  "sector_size": 2352,
+  "sector_count": 38336,
+  "sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "sector_types": {
+    "mode2-form1": 35924,
+    "mode2-form2": 2412
+  },
+  "invalid_sync_sectors": [],
+  "subheader_mismatches": [],
+  "edc_ecc_checked": false,
+  "zero_padding_file": "3MIN.BIN",
+  "zero_padding_length": 31455687,
+  "zero_padding_verified": true
+}

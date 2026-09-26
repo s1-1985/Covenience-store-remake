@@ -3946,7 +3946,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("REMAKE_BALANCED_DEFAULT", types_note)
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         self.assertIn("REMAKE_BALANCED_DEFAULT (store_rules.edit_front_search)", simulation)
-        self.assertIn("REMAKE_BALANCED_DEFAULT: in the original the store is only", simulation)
+        self.assertIn("REMAKE_BALANCED_DEFAULT: what the original's 改築 does", simulation)
         self.assertIn("# --- Task #125: the store's storage (倉庫). REMAKE_BALANCED_DEFAULT", simulation)
         growth_code = simulation.split("func _start_store_growth")[0]
         self.assertIn("Task #124", growth_code)

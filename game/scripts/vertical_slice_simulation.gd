@@ -1830,9 +1830,12 @@ func _build_store_type(type_id: String) -> void:
 
 
 # --- Task #126: 改装 -- changing the size or the orientation of a store that
-# is already open. REMAKE_BALANCED_DEFAULT: in the original the store is only
-# picked once, at 「店舗を選んで下さい」 (guide_store_types), and no source shows
-# an open store changing size. The price is the new store's CONFIRMED_OFFICIAL
+# is already open. The original's store menu has 改築 next to 内装/方針/店員
+# (CONFIRMED_OFFICIAL: PS disc MSG00.OBJ message 385, task #127,
+# assets/raw/ps1_disc_analysis_v1/text/MSG00.txt).
+# REMAKE_BALANCED_DEFAULT: what the original's 改築 does and costs is not
+# recovered, so these rules are this project's own. The price is the new
+# store's CONFIRMED_OFFICIAL
 # construction price less RENOVATION_TRADE_IN_PERCENT of the current one's
 # (the same half as a sold fixture's refund). Customers inside go home, the
 # staff go to their posts in the new floor, and every fixture is set down on

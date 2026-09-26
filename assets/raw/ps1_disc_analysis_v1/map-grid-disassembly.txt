@@ -1,0 +1,30 @@
+RAM 8002C038  file+01C838  lw       $v0, 0xbf0($fp)
+RAM 8002C03C  file+01C83C  nop      
+RAM 8002C040  file+01C840  slti     $v1, $v0, 0x32
+RAM 8002C044  file+01C844  bnez     $v1, 0x8002c054
+RAM 8002C048  file+01C848  nop      
+RAM 8002C04C  file+01C84C  j        0x8002c89c
+RAM 8002C050  file+01C850  nop      
+RAM 8002C054  file+01C854  sw       $zero, 0xbec($fp)
+RAM 8002C058  file+01C858  lw       $v0, 0xbec($fp)
+RAM 8002C05C  file+01C85C  nop      
+RAM 8002C060  file+01C860  slti     $v1, $v0, 0x3c
+RAM 8002C064  file+01C864  bnez     $v1, 0x8002c074
+RAM 8002C068  file+01C868  nop      
+RAM 8002C06C  file+01C86C  j        0x8002c880
+RAM 8002C070  file+01C870  nop      
+RAM 8002C074  file+01C874  lw       $v0, 0xbf0($fp)
+RAM 8002C078  file+01C878  nop      
+RAM 8002C07C  file+01C87C  move     $a0, $v0
+RAM 8002C080  file+01C880  sll      $v1, $a0, 4
+RAM 8002C084  file+01C884  subu     $v1, $v1, $v0
+RAM 8002C088  file+01C888  sll      $v0, $v1, 5
+RAM 8002C08C  file+01C88C  lw       $v1, 0xbec($fp)
+RAM 8002C090  file+01C890  nop      
+RAM 8002C094  file+01C894  move     $a0, $v1
+RAM 8002C098  file+01C898  sll      $v1, $a0, 3
+RAM 8002C09C  file+01C89C  lui      $a0, 0x8014
+RAM 8002C0A0  file+01C8A0  addiu    $a0, $a0, -0x6710
+RAM 8002C0A4  file+01C8A4  addu     $v1, $v1, $a0
+RAM 8002C0A8  file+01C8A8  addu     $v0, $v0, $v1
+RAM 8002C0AC  file+01C8AC  sw       $v0, 0xbd4($fp)

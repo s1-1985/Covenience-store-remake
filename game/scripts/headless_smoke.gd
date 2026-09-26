@@ -4644,7 +4644,7 @@ func _check_renovation() -> bool:
         _fail("a renovated store's fixtures survive a load")
         return false
     var code := FileAccess.get_file_as_string("res://scripts/vertical_slice_simulation.gd")
-    if "REMAKE_BALANCED_DEFAULT: in the original the store is only" not in code:
+    if "REMAKE_BALANCED_DEFAULT: what the original's 改築 does" not in code:
         _fail("try_renovate_store() must stay tagged REMAKE_BALANCED_DEFAULT")
         return false
     return true

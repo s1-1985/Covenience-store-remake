@@ -2194,6 +2194,16 @@ hours, and whether it is inside the store's area. The 買い物人口 is shown o
   current one; fixtures move with their goods, what does not fit goes to storage (REMAKE_BALANCED_DEFAULT). Store
   buttons now read 縦長/横長 and the floor size (the two small icons look alike; small_bottom was already 8x5).
 
+**Task #127 (2026-09-26, docs/research/ps1-disc-analysis-crosscheck-2026-09-26.md)**: the owner had ChatGPT statically
+analyse the PS disc (SLPS_00782); the kit is kept as reference data in `assets/raw/ps1_disc_analysis_v1/` (not used for
+the game's look -- the phone UI stays). The font table (`tools/ps1/psmoji.py`) turns all 502 MSG00 messages into text.
+Cross-check: starting cash 2億/1.5億/1.5億 (TOWN header), scenario goals, the 7 business-hour presets, 26 product
+categories, the 7 staff stats and "敵の本店は買収できません" match; the original's store menu has 改築 (msg 385), so
+decision 0197's "no source shows it" is corrected (the rules stay REMAKE_BALANCED_DEFAULT). New facts: 9 weather
+labels, 42 building kinds, 53 fixture names (door freezers, 6 registers, parking), wage-raise demands, shoplifting,
+contests, magazines, festival, visitor announcements at 1000..100万, a 60x50 town per map and a 4th map 極上.
+Two staff names differ from the guide OCR (浜田裕子, 杉村真智子) and two extra staff exist (ウルトラ爺や/婆や).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
