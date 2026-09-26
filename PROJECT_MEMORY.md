@@ -2096,6 +2096,9 @@ squares in the catchment, shared with rivals) and want up to 3 of that building'
 - A withdrawn branch reopens at the next month end on the best other site.
 - The rival panel shows the losing months once the rival has been investigated.
 
+**Task #107 (2026-09-26, decision 0178)**: saves now keep each staff member's grown skills, 体力 and exhaustion,
+and this month's and last month's survey. A load used to reset them to their starting values.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

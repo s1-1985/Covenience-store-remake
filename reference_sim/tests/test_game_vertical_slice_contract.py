@@ -3813,6 +3813,20 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         ):
             self.assertIn(text, smoke)
 
+    def test_save_keeps_staff_growth_stamina_and_survey(self):
+        # Task #107: these used to go back to their starting values on load.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn('"staff_state": _staff_state_snapshot(),', simulation)
+        self.assertIn('    _restore_staff_state(data["staff_state"])', simulation)
+        fields = re.search(r"const SAVED_STAFF_FIELDS := \[(.*?)\]", simulation, re.S).group(1)
+        for field in ("register_skill", "service_skill", "cleaning_skill", "security_skill",
+                      "replenishment_skill", "stamina", "exhausted"):
+            self.assertIn('"%s"' % field, fields)
+        self.assertIn('    survey_missing = _counts(data["survey"]["missing"])', simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("load must keep the staff's grown skills and 体力", smoke)
+        self.assertIn("load must keep this month's and last month's survey", smoke)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])

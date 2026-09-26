@@ -2046,6 +2046,15 @@ func save_state() -> Dictionary:
         # persisted here so a load reapplies any hire the config-derived
         # staff.reset() below would otherwise silently revert.
         "staff_roster": _staff_roster_snapshot(),
+        # Task #107 (schema 9): each staff member's grown skills and 体力,
+        # and this month's and last month's survey, which a load used to
+        # put back to their starting values.
+        "staff_state": _staff_state_snapshot(),
+        "survey": {
+            "bought": survey_bought.duplicate(),
+            "missing": survey_missing.duplicate(),
+            "last": last_survey.duplicate(true),
+        },
         "fixtures": layout.fixture_snapshot(),
         "inventory": inventory.snapshot(),
         "economy": economy.snapshot(),
@@ -2120,6 +2129,15 @@ func load_state(data: Dictionary) -> bool:
             staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])
     event_log.reset()
     _reset_stamina()
+    _restore_staff_state(data["staff_state"])
+    survey_bought = _counts(data["survey"]["bought"])
+    survey_missing = _counts(data["survey"]["missing"])
+    last_survey = {}
+    if not (data["survey"]["last"] as Dictionary).is_empty():
+        last_survey = {
+            "bought": _counts(data["survey"]["last"]["bought"]),
+            "missing": _counts(data["survey"]["last"]["missing"]),
+        }
     minute_of_day = int(data["minute_of_day"])
     day_count = int(data["day_count"])
     month_count = int(data["month_count"])
@@ -2249,6 +2267,43 @@ func _inventory_snapshot() -> Array[Dictionary]:
             "sale_price_yen": product.sale_price_yen,
         })
     return rows
+
+
+const SAVED_STAFF_FIELDS := [
+    "service_skill", "security_skill", "cleaning_skill", "register_skill",
+    "replenishment_skill", "stamina", "exhausted",
+]
+
+
+# Survey counts come back from a JSON save as floats.
+func _counts(source: Dictionary) -> Dictionary:
+    var result := {}
+    for key in source:
+        result[str(key)] = int(source[key])
+    return result
+
+
+func _staff_state_snapshot() -> Array[Dictionary]:
+    var rows: Array[Dictionary] = []
+    for staff_member in staff.all_staff():
+        var row := {"staff_id": staff_member.staff_id}
+        for field in SAVED_STAFF_FIELDS:
+            row[field] = staff_member.get(field)
+        rows.append(row)
+    return rows
+
+
+func _restore_staff_state(rows: Array) -> void:
+    for row in rows:
+        var staff_id := str(row["staff_id"])
+        if not staff.members.has(staff_id):
+            continue
+        var staff_member = staff.members[staff_id]
+        for field in SAVED_STAFF_FIELDS:
+            if field == "exhausted":
+                staff_member.exhausted = bool(row[field])
+            else:
+                staff_member.set(field, int(row[field]))
 
 
 func _staff_roster_snapshot() -> Array[Dictionary]:
@@ -2988,6 +3043,8 @@ func _require_save_data(data: Dictionary) -> void:
         "promotions_used_this_month",
         "scheduled_promotions",
         "staff_roster",
+        "staff_state",
+        "survey",
         "fixtures",
         "inventory",
         "economy",

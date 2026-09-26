@@ -3118,6 +3118,8 @@ func _initialize() -> void:
         return
     if not _check_rival_withdrawal():
         return
+    if not _check_saved_staff_and_survey():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -3814,5 +3816,40 @@ func _check_rival_withdrawal() -> bool:
     head._step_rivals_at_month_end()
     if head.rival_at(Vector2i(8, 10)) != "" or not head._rival_stores.is_empty() or not head._rivals_to_reopen.is_empty():
         _fail("with no branch left the losing 本店 withdraws for good")
+        return false
+    return true
+
+
+# Task #107: a save keeps each staff member's grown skills and 体力 and the
+# month's survey (through a real JSON round trip, like the save file).
+func _check_saved_staff_and_survey() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    var clerk = simulation.staff.members["staff-2"]
+    clerk.register_skill += 7
+    clerk.cleaning_skill += 3
+    clerk.stamina = 2
+    clerk.exhausted = true
+    simulation.survey_bought = {"bread": 4}
+    simulation.survey_missing = {"tobacco": 9}
+    simulation.last_survey = {"bought": {"snacks": 2}, "missing": {"alcohol": 5}}
+    var text := JSON.stringify(simulation.save_state())
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(JSON.parse_string(text)):
+        _fail("the save must load")
+        return false
+    var back = reloaded.staff.members["staff-2"]
+    if (
+        back.register_skill != clerk.register_skill or back.cleaning_skill != clerk.cleaning_skill
+        or back.stamina != 2 or not back.exhausted
+    ):
+        _fail("load must keep the staff's grown skills and 体力")
+        return false
+    if (
+        int(reloaded.survey_bought["bread"]) != 4 or int(reloaded.survey_missing["tobacco"]) != 9
+        or int(reloaded.last_survey["missing"]["alcohol"]) != 5
+    ):
+        _fail("load must keep this month's and last month's survey")
         return false
     return true
