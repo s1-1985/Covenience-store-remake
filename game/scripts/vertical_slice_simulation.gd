@@ -1310,26 +1310,40 @@ func _put_up_facility(facility_id: String, origin: Vector2i, update_catchment: b
         _for_each_store(_refresh_store_catchment)
 
 
-# CONFIRMED_OFFICIAL (PDF3 p.10, PDF4 p.74): each square of a 交番 inside
-# the 16x16 area around the store adds 10 to its セキュリティ (at most 40),
-# of a 消防署 5 (at most 30).
+# CONFIRMED_OFFICIAL (PDF3 p.10, PDF4 p.74) and CONFIRMED_BINARY (task #128):
+# each square of a 交番 inside
+# the 16x16 area around the store adds 10 to its セキュリティ (one 2x2 交番: 40),
+# of a 消防署 5 (one 3x2 消防署: 30). See _security_facility_bonus().
 func inducement_security_bonus() -> float:
-    if not has_store_site():
-        return 0.0
+    return float(_security_facility_bonus())
+
+
+# Task #128 (CONFIRMED_BINARY, SLPS_007.82 0x800224E0): every town square of
+# a 交番 (+10) or 消防署 (+5) within 7 squares of the store's site adds to
+# 警備 -- town buildings and induced facilities (which join the town's
+# buildings) alike, square by square.
+func _security_facility_bonus() -> int:
+    if not has_store_site() or store_site == null:
+        return 0
+    var reach: int = _store_value.SECURITY_REACH_SQUARES
+    var area := Rect2i(store_site_origin - Vector2i(reach, reach), store_site.footprint + Vector2i(reach * 2, reach * 2))
     var total := 0
-    for built in induced_facilities:
-        var facility := _inducement_facility(str(built["facility_id"]))
-        var per_square := int(facility.get("security_per_square", 0))
-        if per_square <= 0:
+    var catalog: Dictionary = store_site.catalog
+    for index in store_site.buildings.size():
+        if _bought_buildings.has(index):
             continue
-        var squares := 0
-        var origin: Vector2i = built["origin"]
-        for y in range(origin.y, origin.y + int(facility["size"][1])):
-            for x in range(origin.x, origin.x + int(facility["size"][0])):
-                if store_site.in_catchment(store_site_origin, Vector2i(x, y)):
-                    squares += 1
-        total += mini(squares * per_square, int(facility["security_max"]))
-    return float(total)
+        var building: Dictionary = store_site.buildings[index]
+        var name := str(catalog.get(str(building["sprite"]), {}).get("name", ""))
+        if not _store_value.SECURITY_PER_SQUARE.has(name):
+            continue
+        var rect := Rect2i(Vector2i(building["tile"][0], building["tile"][1]), Vector2i(building["size"][0], building["size"][1]))
+        total += _squares_in(rect, area) * int(_store_value.SECURITY_PER_SQUARE[name])
+    return total
+
+
+func _squares_in(rect: Rect2i, area: Rect2i) -> int:
+    var overlap := rect.intersection(area)
+    return overlap.size.x * overlap.size.y if overlap.has_area() else 0
 
 
 # Task #114: the town grows (evidence in guide_town_map.town_growth.
@@ -4009,7 +4023,7 @@ func _store_values() -> Dictionary:
             fixture_service_bonuses.append(int(catalog_entry["service_bonus"]))
     return {
         "service": _store_value.compute_service_value(service_skills, fixture_service_bonuses),
-        "security": _store_value.compute_security_value(security_skills, _store_size_tier) + inducement_security_bonus(),
+        "security": _store_value.compute_security_value(security_skills, _store_size_tier, _security_facility_bonus()),
         "cleaning": _store_value.compute_cleaning_value(cleaning_skills, _store_size_tier),
     }
 
@@ -4035,8 +4049,8 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
     )
     # Task #111: + セキュリティ施設の効果 (PDF4 p.74's formula).
     var security_value: float = _store_value.compute_security_value(
-        security_skills, _store_size_tier
-    ) + inducement_security_bonus()
+        security_skills, _store_size_tier, _security_facility_bonus()
+    )
     var cleaning_value: float = _store_value.compute_cleaning_value(
         cleaning_skills, _store_size_tier
     )

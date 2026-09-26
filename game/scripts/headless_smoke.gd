@@ -1607,17 +1607,24 @@ func _initialize() -> void:
         return
 
     var store_value = StoreValueScript.new()
+    # Task #128: the PS program's formulas (CONFIRMED_BINARY).
     var service_value_check: float = store_value.compute_service_value([10, 30], [2, 4])
     if abs(service_value_check - 26.0) > 0.0000001:
         _fail("compute_service_value must equal the staff average plus the summed fixture bonuses")
         return
+    if store_value.compute_service_value([90, 90], [30, 30]) != 100.0:
+        _fail("サービス is capped at 100")
+        return
     var security_value_check: float = store_value.compute_security_value([10, 20], "small")
-    if abs(security_value_check - 45.0) > 0.0000001:
-        _fail("compute_security_value must equal the summed staff skill times the size-tier multiplier")
+    if abs(security_value_check - 12.0) > 0.0000001:
+        _fail("警備 = the summed staff skill x 100 / 250 for a small store: %s" % security_value_check)
+        return
+    if store_value.compute_security_value([10, 20], "small", 40) != 52.0 or store_value.compute_security_value([90, 90, 90], "large", 80) != 100.0:
+        _fail("警備 adds the security facilities' squares and is capped at 100")
         return
     var cleaning_value_check: float = store_value.compute_cleaning_value([5, 15], "large")
-    if abs(cleaning_value_check - 36.0) > 0.0000001:
-        _fail("compute_cleaning_value must equal the summed staff skill times the size-tier multiplier")
+    if abs(cleaning_value_check - 11.0) > 0.0000001:
+        _fail("清掃 = the summed staff skill x 100 / 180 for a large store: %s" % cleaning_value_check)
         return
 
     var checkout_timing = CheckoutTimingScript.new()
@@ -1864,27 +1871,30 @@ func _initialize() -> void:
     # by the time this month-end rating fires -- service_value is therefore
     # read from the staff roster's own current (post-growth) state rather
     # than the pre-task-#48 hardcoded 17.0 average.
-    var expected_service_value: float = 0.0
     var rating_staff: Array = rating_simulation.staff.all_staff()
+    var service_total := 0
     for rating_staff_member in rating_staff:
-        expected_service_value += float(rating_staff_member.service_skill)
-    expected_service_value /= rating_staff.size()
+        service_total += int(rating_staff_member.service_skill)
+    # Task #128: integer average, as the program's 0x800221D0 does.
+    var expected_service_value: float = float(service_total / rating_staff.size())
     if abs(float(rating_event_details["service_value"]) - expected_service_value) > 0.0000001:
         _fail("service_value must equal the average staff service_skill plus any fixture service bonuses")
         return
-    # Task #91: summed over the whole roster (3 since the manager slot was
-    # added) times the small store's 1.5 size-tier multiplier, instead of a
-    # literal worked out for the old 2-person roster.
-    var expected_security_value := 0.0
-    var expected_cleaning_value := 0.0
+    # Task #128: summed over the whole roster x 100 / 250 (警備) and / 150
+    # (清掃) for a small store, plus the 交番/消防署 squares nearby for 警備
+    # (the program's 0x800224E0 / 0x8002287C).
+    var security_total := 0
+    var cleaning_total := 0
     for rating_staff_member in rating_staff:
-        expected_security_value += float(rating_staff_member.security_skill) * 1.5
-        expected_cleaning_value += float(rating_staff_member.cleaning_skill) * 1.5
+        security_total += int(rating_staff_member.security_skill)
+        cleaning_total += int(rating_staff_member.cleaning_skill)
+    var expected_security_value := float(mini(100, security_total * 100 / 250 + rating_simulation._security_facility_bonus()))
+    var expected_cleaning_value := float(mini(100, cleaning_total * 100 / 150))
     if abs(float(rating_event_details["security_value"]) - expected_security_value) > 0.0000001:
-        _fail("security_value must equal total staff security_skill times the store's size-tier multiplier")
+        _fail("security_value must equal total staff security_skill x 100 / the store's size-tier divisor")
         return
     if abs(float(rating_event_details["cleaning_value"]) - expected_cleaning_value) > 0.0000001:
-        _fail("cleaning_value must equal total staff cleaning_skill times the store's size-tier multiplier")
+        _fail("cleaning_value must equal total staff cleaning_skill x 100 / the store's size-tier divisor")
         return
     # popularity=0, cleaning/security as computed above, 2 distinct stocked
     # products (assortment_score=10.0), opening_minutes_per_day=960

@@ -1043,7 +1043,11 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # store_rating.gd/store_value.gd are CONFIRMED_OFFICIAL ports of the
         # guide's own published table, not a REMAKE_BALANCED_DEFAULT guess.
         self.assertIn("CONFIRMED_OFFICIAL", store_rating)
-        self.assertIn("CONFIRMED_OFFICIAL", store_value)
+        # Task #128: store_value.gd now follows the PS program itself.
+        self.assertIn("CONFIRMED_BINARY", store_value)
+        self.assertIn('const CLEANING_DIVISOR := {"small": 150, "medium": 165, "large": 180}', store_value)
+        self.assertIn('const SECURITY_DIVISOR := {"small": 250, "medium": 275, "large": 300}', store_value)
+        self.assertIn("const VALUE_CAP := 100", store_value)
         self.assertIn("func star_rank_for_internal_value(internal_value: int) -> int:", store_rating)
         self.assertIn("func evaluate_monthly_rating_change(", store_rating)
         self.assertIn('"min_service": 60, "min_security": 75, "min_cleaning": 85, "min_sales_yen": 5000000', store_rating)
@@ -4130,7 +4134,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertEqual(site.inducement_place_price(town, facilities["pool"], (16, 24)), 3_900_000)
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         self.assertIn('"inducement_aid", "inducement_place"', simulation)
-        self.assertIn("    ) + inducement_security_bonus()", simulation)
+        # Task #128: the facility squares go into 警備 before the 100 cap.
+        self.assertIn("security_skills, _store_size_tier, _security_facility_bonus()", simulation)
         place = simulation.split("func try_induce(")[0].split("func inducement_quote(")[-1]
         self.assertIn("REMAKE_BALANCED_DEFAULT", place)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
