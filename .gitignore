@@ -9,6 +9,7 @@ game/*/.godot/
 # and can be multiple hundred MB; rebuild via `godot --export-*` instead of
 # committing binaries.
 game/build/
+build/
 
 # Python
 __pycache__/
