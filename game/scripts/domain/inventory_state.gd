@@ -34,9 +34,14 @@ func reset() -> void:
 
 
 func try_take_one() -> bool:
-    if stock_units <= 0:
+    return try_take(1)
+
+
+# Task #130: a group takes one unit per person, only when there are enough.
+func try_take(quantity: int) -> bool:
+    if quantity <= 0 or stock_units < quantity:
         return false
-    stock_units -= 1
+    stock_units -= quantity
     return true
 
 

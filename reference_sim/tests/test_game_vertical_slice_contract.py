@@ -136,7 +136,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         shapes = simulation.split("func _shopping_ticks_for(")[0].rsplit("# Task #120 (REMAKE_BALANCED_DEFAULT", 1)[-1]
         self.assertIn("CONFIRMED_OFFICIAL", shapes)
-        self.assertIn("REMAKE_BALANCED_DEFAULT", simulation.split("func _pick_visit_row(")[0].rsplit("# Task #120:", 1)[-1])
+        # Task #130: the guide's rows gave way to the program's own 144.
+        self.assertNotIn("func _pick_visit_row(", simulation)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("the customer types must stay tagged %s", smoke)
         self.assertIn("customers must buy extras on the way (ついで買い)", smoke)
@@ -953,7 +954,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "_land_value_policy.current_land_price_yen(\n        BASE_LAND_PRICE_YEN, town,",
             simulation,
         )
-        self.assertIn("func _observe_chain_visitor_milestone() -> void:", simulation)
+        self.assertIn("func _observe_chain_visitor_milestone(heads := 1) -> void:", simulation)
         self.assertIn("func _fire_due_chain_visitor_milestones() -> void:", simulation)
 
         self.assertIn(
@@ -3424,11 +3425,48 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         work = self.config["guide_starting_store"]["staff_work"]
         self.assertTrue(work["building_demand_enabled"])
         self.assertIn("Task #102, customers: CONFIRMED_OFFICIAL", work["evidence_note"])
+        # Task #130: who comes is now the PS program's own model
+        # (test_program_demand_follows_the_program); the DATA4 wants stay
+        # as data.
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
-        self.assertIn("# buildings around it. REMAKE_BALANCED_DEFAULT: which building a customer", simulation)
-        self.assertIn("var night := minute_of_day < 7 * 60", simulation)
+        self.assertNotIn("func _building_customer_plan(", simulation)
+
+    def test_program_demand_follows_the_program(self):
+        # Task #130: CONFIRMED_BINARY tables and rules, with the project's own
+        # choices tagged REMAKE_BALANCED_DEFAULT in code, JSON and smoke test.
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location(
+            "extract_program_tables", REPO_ROOT / "tools" / "ps1" / "extract_program_tables.py"
+        )
+        tool = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(tool)
+        tables = self.config["ps1_program_tables"]
+        self.assertEqual(tables, json.loads(json.dumps(tool.build_block(self.config))))
+        for tag in ("Task #130, CONFIRMED_BINARY", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, tables["evidence_note"])
+        self.assertEqual(len(tables["visit_rows"]), 144)
+        self.assertEqual(tables["max_customer_groups"], {"small": 10, "medium": 15, "large": 20})
+        self.assertEqual(tables["arrival_reach_squares"], {"徒歩": 20, "自転車": 40, "バイク": 60, "自動車": 70})
+        self.assertEqual(set(tables["building_types"]), set(self.config["guide_town_map"]["building_catalog"]))
+        rows = len(tables["visit_rows"])
+        for mix in tables["customer_mixes"]:
+            for row, heads in mix:
+                self.assertLess(row, rows)
+                self.assertGreater(heads, 0)
+        type_ids = {t["id"] for t in self.config["guide_customer_types"]["types"]}
+        for row in tables["visit_rows"]:
+            self.assertIn(row["type"], type_ids)
+        demand = (GAME_ROOT / "scripts" / "domain" / "program_demand.gd").read_text(encoding="utf-8")
+        self.assertIn("# --- CONFIRMED_BINARY house rule (task #130)", demand)
+        self.assertIn("# (REMAKE_BALANCED_DEFAULT: the program draws it when the map is made; here", demand)
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("# REMAKE_BALANCED_DEFAULT (ps1_program_tables.evidence_note): a rival store's", simulation)
+        self.assertIn("func _allocate_program_day() -> void:", simulation)
+        self.assertIn("inventory.try_take(product_id, customer.group_size)", simulation)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
-        self.assertIn("a 朝から夜だけ building sends no customer at 2:00", smoke)
+        self.assertIn("the program's customer tables must stay tagged %s", smoke)
+        self.assertIn("7 heads come as a group of 5 and a group of 2", smoke)
 
     def test_business_hours_presets(self):
         # Task #103: the guide's five fixed hours + 24h + 臨時休業.
@@ -3448,7 +3486,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("no customer comes in while the store is closed", smoke)
         # Task #105: nobody is inside when a game starts before opening time.
-        self.assertIn("func _start_opening_customer() -> void:\n    if is_open_now():", simulation)
+        self.assertIn("func _start_opening_customer() -> void:", simulation)
+        self.assertIn("    if is_open_now() and (_program_demand == null or not has_store_site()):", simulation)
         self.assertIn("nobody is inside a closed store at the 00:00 start", smoke)
 
     def test_every_store_has_a_manager_and_two_staff(self):

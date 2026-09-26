@@ -22,6 +22,7 @@ const CheckoutAngerScript := preload("res://scripts/domain/checkout_anger.gd")
 const TownSpatialScript := preload("res://scripts/domain/town_spatial.gd")
 const StoreSiteScript := preload("res://scripts/domain/store_site.gd")
 const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
+const ProgramDemandScript := preload("res://scripts/domain/program_demand.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
 # directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
@@ -141,10 +142,8 @@ var _building_demand_enabled := false
 var _edits_while_open := false
 var _checkout_rotation_enabled := false
 var _customer_types_enabled := false
-var _visit_rows: Array = []
 var _customer_type_rules: Dictionary = {}
 var _customer_types: Dictionary = {}
-var _pending_visit: Dictionary = {}
 # Task #103: business hours (guide_starting_store.business_hours). Empty in
 # the prototype scenarios, which stay open all day as before.
 var _business_hours: Array = []
@@ -272,6 +271,7 @@ const STORE_FIELDS := [
     "_store_size_tier", "store_site_origin", "_player_store_position", "store_type_id",
     "_sample_layout_catalog", "store_name", "_store_sales_yen",
     "_store_sales_at_month_start", "_store_sales_at_day_start", "stored_fixtures",
+    "_program_counts", "_parking_used",
 ]
 # The config keys a store has its own copy of; the rest (catalogs, town,
 # weather...) is shared.
@@ -287,6 +287,15 @@ var store_name := "本店"
 var _store_sales_yen := 0
 var _store_sales_at_month_start := 0
 var _store_sales_at_day_start := 0
+# Task #130: the PS program's customers (ProgramDemand), real game only.
+# _program_counts: this store's heads still to come today, by visit row;
+# _parking_used: heads of the car groups inside.
+var _program_demand = null
+var _program_counts: Dictionary = {}
+var _parking_used := 0
+var _program_holiday := false
+var _program_weather_value := 0
+var program_town_heads := 0
 # Customers who have finished a visit at any of the player's stores, ever
 # (the chain visitor milestone's count; kept, unlike the customer rosters,
 # across a save and load).
@@ -356,11 +365,12 @@ func _init(source_config: Dictionary) -> void:
     _cleaning_task_enabled = bool(simulation.get("cleaning_task_enabled", false))
     _stamina_enabled = bool(simulation.get("stamina_enabled", false))
     _building_demand_enabled = bool(simulation.get("building_demand_enabled", false))
+    if _building_demand_enabled and config.has("ps1_program_tables"):
+        _program_demand = ProgramDemandScript.new(config["ps1_program_tables"])
     _edits_while_open = bool(simulation.get("edits_while_open", false))
     _checkout_rotation_enabled = bool(simulation.get("checkout_rotation_enabled", false))
     _customer_types_enabled = bool(simulation.get("customer_types_enabled", false)) and config.has("guide_customer_types")
     if _customer_types_enabled:
-        _visit_rows = config["guide_customer_types"]["visits"]
         _customer_type_rules = config["guide_customer_types"]["rules"]
         for entry in config["guide_customer_types"]["types"]:
             _customer_types[str(entry["id"])] = entry
@@ -410,7 +420,8 @@ func reset() -> void:
     _scheduled_promotions.clear()
     price_change_pct = 0
     _start_new_store_standing()
-    star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
+    _program_counts = {}
+    _parking_used = 0
     # This playable vertical slice is itself the player's first store, so
     # the chain always starts at 1, not 0.
     player_store_count = 1
@@ -426,7 +437,8 @@ func reset() -> void:
 # while the store is closed (a new real game starts at 00:00, before its
 # AM7:00 opening) -- nobody is inside a closed store.
 func _start_opening_customer() -> void:
-    if is_open_now():
+    # Task #130: the program's customers come in groups as the day goes.
+    if is_open_now() and (_program_demand == null or not has_store_site()):
         _start_default_customer()
 
 
@@ -677,6 +689,8 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     _store_sales_at_day_start = 0
     _catchment_weights = {}
     stored_fixtures = []
+    _program_counts = {}
+    _parking_used = 0
     store_site_origin = origin
     _player_store_position = origin
     _stores.append({})
@@ -688,6 +702,7 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
         _apply_business_hours(str(config["simulation"]["business_hours_default_id"]))
     _switch_store(home)
     _for_each_store(_refresh_store_catchment)
+    _allocate_program_day()
     return index
 
 
@@ -723,8 +738,185 @@ func _competitor_positions() -> Array:
 
 
 func _admit_arrival() -> void:
+    # Task #130: on the town map; a store without a site (the p.48 check
+    # scenario) keeps the plain arrival rate.
+    if _program_demand != null and has_store_site():
+        _admit_program_group()
+        return
     if customers.can_admit_concurrent() and is_open_now() and demand.customer_arrives_this_minute():
         _start_default_customer()
+
+
+# --- Task #130: the PS program's customers (CONFIRMED_BINARY, see
+# ProgramDemand). Every 2 game minutes an open store with room lets in, 1 in
+# 4, the next group of today's customers. ---
+func _admit_program_group() -> void:
+    var tables: Dictionary = _program_demand.tables
+    if minute_of_day % int(tables["spawn_every_game_minutes"]) != 0 or not is_open_now():
+        return
+    if customers.active_customers().size() >= program_max_groups():
+        return
+    if _demand_rng.randi_range(1, int(tables["spawn_chance_one_in"])) != 1:
+        return
+    _admit_next_program_group()
+
+
+func _admit_next_program_group() -> void:
+    customers._max_concurrent_customers = program_max_groups()
+    if not customers.can_admit_concurrent():
+        return
+    var group: Array = _program_demand.next_group(_program_counts, minute_of_day / 60, _program_holiday, _demand_rng)
+    if group.is_empty():
+        return
+    var row: Dictionary = _program_demand.rows[int(group[0])]
+    var heads := int(group[1])
+    if str(row["arrival"]) == "自動車":
+        # Cars that find the car park full go home (0x80031C58).
+        var room := _parking_capacity() - _parking_used
+        if heads > room:
+            _record_event("cars_turned_away", {"heads": heads - maxi(0, room)})
+            heads = room
+        if heads <= 0:
+            return
+        _parking_used += heads
+    _start_program_customer(row, heads)
+
+
+# The most groups inside at once, by the store's size (0x80099DB8).
+func program_max_groups() -> int:
+    return int(_program_demand.tables["max_customer_groups"][_store_size_tier])
+
+
+func _start_program_customer(row: Dictionary, heads: int) -> void:
+    var plan: Array[String] = []
+    var primary := str(row["primary"])
+    var shelf := _shelf_for_category(primary, plan)
+    if shelf.is_empty():
+        survey_missing[primary] = int(survey_missing.get(primary, 0)) + heads
+        if str(row["arrival"]) == "自動車":
+            _parking_used -= heads
+        return
+    plan.append(shelf)
+    var customer = customers.admit_default(layout.entry, _route_to_product(layout.entry, plan[0]), plan)
+    customer.visit = row
+    customer.type_id = str(row["type"])
+    customer.budget_left = int(row["budget_yen"])
+    customer.group_size = heads
+    _record_customer_entered(customer)
+
+
+# Car park spaces (task #130: none until car parks can be built).
+func _parking_capacity() -> int:
+    var total := 0
+    for fixture in layout.fixtures:
+        var catalog_id := str(fixture.get("catalog_id", ""))
+        if _fixture_catalog.has(catalog_id):
+            total += int(_fixture_catalog[catalog_id].get("parking_capacity", 0))
+    return total
+
+
+# The day's customers for every store (0x8002619C): at 0:00 and whenever
+# the stores or the town change.
+func _allocate_program_day() -> void:
+    if _program_demand == null or store_site == null:
+        return
+    _program_weather_value = _program_demand.weather_value(weather_category_index, _demand_rng)
+    _program_holiday = _program_demand.is_holiday(month_count, _days_completed_this_month + 1)
+    var squares: Array = []
+    program_town_heads = 0
+    for index in store_site.buildings.size():
+        if _bought_buildings.has(index):
+            continue
+        var building: Dictionary = store_site.buildings[index]
+        var tile: Array = building["tile"]
+        var size: Array = building["size"]
+        for y in range(int(tile[1]), int(tile[1]) + int(size[1])):
+            for x in range(int(tile[0]), int(tile[0]) + int(size[0])):
+                var mix := int(_program_demand.square_mix(str(building["sprite"]), Vector2i(x, y)))
+                var heads := int(_program_demand.mix_heads(mix))
+                if heads > 0:
+                    squares.append([Vector2i(x, y), mix])
+                    program_town_heads += heads
+    var stores: Array = []
+    _for_each_store(func(): stores.append(_program_store_profile()))
+    var own := stores.size()
+    for rival in _rival_stores:
+        stores.append(_program_rival_profile(rival))
+    var counts: Array = _program_demand.allocate_day(
+        squares, stores, _program_weather_value, _program_holiday, month_count, _demand_rng
+    )
+    var next := [0]
+    _for_each_store(func():
+        _program_counts = counts[next[0]]
+        var today := 0
+        for heads in _program_counts.values():
+            today += int(heads)
+        # 顧客独占率: today's customers over the town's (0x80048AA4).
+        demand.customer_share_percent = 0.0 if program_town_heads <= 0 else minf(100.0, 100.0 * today / program_town_heads)
+        next[0] += 1
+    )
+    assert(next[0] == own)
+
+
+func program_customers_today() -> int:
+    var total := 0
+    for heads in _program_counts.values():
+        total += int(heads)
+    return total
+
+
+func _program_store_profile() -> Dictionary:
+    var stock: Dictionary = {}
+    for product_id in inventory.product_order:
+        var product = inventory.get_product(product_id)
+        if not product.catalog_id.is_empty() and product.stock_units > 0:
+            stock[product.catalog_id] = int(stock.get(product.catalog_id, 0)) + product.stock_units
+    var open_hours: Array = []
+    for hour in 24:
+        open_hours.append(has_store_site() and _open_at_minute(hour * 60))
+    return {
+        "site": Rect2i(store_site_origin, store_site.footprint),
+        "popularity": popularity,
+        "open_hours": open_hours,
+        "parking": _parking_capacity(),
+        "stock": stock,
+        # 値段: the average of each shelved item's price as a percent of its
+        # list price (0x80021F20); here one price policy covers every item.
+        "price_percent": 100 + price_change_pct,
+        "service": int(_store_values()["service"]),
+    }
+
+
+# REMAKE_BALANCED_DEFAULT (ps1_program_tables.evidence_note): a rival store's
+# figures come from its guide_data where the guide gives them.
+func _program_rival_profile(rival: Dictionary) -> Dictionary:
+    var defaults: Dictionary = _program_demand.tables["rival_store"]
+    var guide_data: Dictionary = _rival_guide_entry(str(rival["id"])).get("guide_data", {})
+    var hours_label := str(guide_data.get("hours", defaults["hours"]))
+    var open_hours: Array = []
+    var preset: Dictionary = {}
+    for entry in _business_hours:
+        if str(entry["label"]) == hours_label:
+            preset = entry
+    for hour in 24:
+        open_hours.append(preset.is_empty() or _preset_open_at(preset, hour * 60))
+    var permits: Array = rival.get("permits_held", [])
+    var stock: Dictionary = {}
+    for entry in config["product_catalog"]:
+        var catalog_id := str(entry["catalog_id"])
+        if _permit_catalog.has(catalog_id) and not permits.has(catalog_id):
+            continue
+        stock[catalog_id] = 1
+    var position: Vector2i = rival["position"]
+    return {
+        "site": Rect2i(position, store_site.footprint),
+        "popularity": int(guide_data.get("popularity", defaults["popularity"])),
+        "open_hours": open_hours,
+        "parking": int(defaults["parking"]),
+        "stock": stock,
+        "price_percent": int(defaults["price_percent"]),
+        "service": int(guide_data.get("service", defaults["service"])),
+    }
 
 
 # Task #80: CONFIRMED_OFFICIAL (docs/research/strategy-guide-third-companion-
@@ -1618,16 +1810,23 @@ static func open_minutes(preset: Dictionary) -> int:
 
 
 func is_open_now() -> bool:
+    return _open_at_minute(minute_of_day)
+
+
+func _open_at_minute(minute: int) -> bool:
     if _business_hours.is_empty():
         return true
-    var preset := _business_hours_preset(business_hours_id)
+    return _preset_open_at(_business_hours_preset(business_hours_id), minute)
+
+
+func _preset_open_at(preset: Dictionary, minute: int) -> bool:
     var open := int(preset["open"])
     var close := int(preset["close"])
     if open_minutes(preset) == 0:
         return false
     if close > open:
-        return minute_of_day >= open and minute_of_day < close
-    return minute_of_day >= open or minute_of_day < close
+        return minute >= open and minute < close
+    return minute >= open or minute < close
 
 
 func _apply_business_hours(preset_id: String) -> void:
@@ -1735,6 +1934,8 @@ func try_buy_store_site(origin: Vector2i, type_id := "") -> bool:
             "cost_yen": construction_yen,
             "expense_id": construction["expense_id"],
         })
+    # Task #130: the town's customers now have this store to choose.
+    _allocate_program_day()
     return true
 
 
@@ -2655,7 +2856,7 @@ func _advance_customer(customer) -> void:
             if customer.shopping_ticks_remaining <= 0:
                 var product_id: String = customer.current_product_id()
                 var skip_reason := _reason_to_skip(customer, product_id)
-                var line: Dictionary = {} if not skip_reason.is_empty() else inventory.try_take_one(product_id)
+                var line: Dictionary = {} if not skip_reason.is_empty() else inventory.try_take(product_id, customer.group_size)
                 if not skip_reason.is_empty():
                     _record_event("product_skipped", {
                         "customer_id": customer.customer_id,
@@ -2801,7 +3002,9 @@ func _advance_customer(customer) -> void:
         "leaving":
             if _try_move_along_route(customer, "done"):
                 _record_event("customer_exited", {"customer_id": customer.customer_id})
-                _observe_chain_visitor_milestone()
+                _observe_chain_visitor_milestone(customer.group_size)
+                if not customer.visit.is_empty() and str(customer.visit["arrival"]) == "自動車" and _program_demand != null:
+                    _parking_used = maxi(0, _parking_used - customer.group_size)
         _:
             push_error("Unknown customer phase: %s" % customer.phase)
 
@@ -2941,47 +3144,14 @@ const INCIDENTAL_WANT_PRODUCT_COUNT := 3
 
 
 func _start_default_customer() -> void:
+    # Task #130: in the real game the next group of today's customers.
+    if _program_demand != null and has_store_site():
+        _admit_next_program_group()
+        return
     var plan: Array[String] = customers.default_plan()
-    _pending_visit = {}
-    if _building_demand_enabled and has_store_site():
-        plan = _building_customer_plan()
-        if plan.is_empty():
-            return
-    else:
-        plan.append_array(_select_incidental_want_product_ids(plan))
+    plan.append_array(_select_incidental_want_product_ids(plan))
     var customer = customers.admit_default(layout.entry, _route_to_product(layout.entry, plan[0]), plan)
-    if not _pending_visit.is_empty():
-        customer.visit = _pending_visit
-        customer.type_id = str(_pending_visit["type"])
-        customer.budget_left = int(_pending_visit["budget_yen"])
     _record_customer_entered(customer)
-
-
-# Task #120: CONFIRMED_OFFICIAL visit rows (guide_customer_types). A
-# customer is one of the rows whose window holds this hour, picked in
-# proportion to its 平日来店割合 (REMAKE_BALANCED_DEFAULT, see
-# guide_customer_types.evidence_note).
-func _pick_visit_row() -> Dictionary:
-    var candidates: Array = []
-    var total := 0.0
-    for row in _visit_rows:
-        var start := int(row["start_minute"])
-        var into := (minute_of_day - start + 24 * 60) % (24 * 60)
-        if into >= int(row["duration_minutes"]):
-            continue
-        var weight := float(mini(100, int(row["weekday_share"])))
-        if weight <= 0.0:
-            continue
-        candidates.append([row, weight])
-        total += weight
-    if candidates.is_empty():
-        return {}
-    var roll := _demand_rng.randf() * total
-    for candidate in candidates:
-        roll -= float(candidate[1])
-        if roll <= 0.0:
-            return candidate[0]
-    return candidates[candidates.size() - 1][0]
 
 
 # Task #120 (REMAKE_BALANCED_DEFAULT shapes on CONFIRMED_OFFICIAL stats, see
@@ -3096,67 +3266,6 @@ func customer_type_sprite(customer) -> String:
     return str(_customer_types.get(customer.type_id, {}).get("sprite", ""))
 
 
-# Task #102. CONFIRMED_OFFICIAL (guide DATA4, p.92-95): each building has
-# its 主なほしい品物, and buildings in the 「朝から夜だけ客のいる建物」 list
-# send no customers late at night (朝=7-11時 ... 夜=20-23時, 深夜=24-3時,
-# 早朝=4-6時). Guide p.6: the store's customers are the residents of the
-# buildings around it. REMAKE_BALANCED_DEFAULT: which building a customer
-# comes from (chance in proportion to its squares in the store's catchment,
-# shared with rivals like the nearby population), that they want up to
-# INCIDENTAL_WANT_PRODUCT_COUNT of its wanted categories, that a category the
-# store does not carry (or has sold out on every shelf) is noted in the
-# month's survey instead, and that a customer who would find nothing does
-# not come in. Real game only (staff_work.building_demand_enabled).
-func _building_customer_plan() -> Array[String]:
-    var night := minute_of_day < 7 * 60
-    var candidates: Array = []
-    var total := 0.0
-    for index in _catchment_weights:
-        var profile: Dictionary = store_site.building_profile(int(index))
-        if night and not bool(profile.get("overnight", false)):
-            continue
-        candidates.append([int(index), float(_catchment_weights[index])])
-        total += float(_catchment_weights[index])
-    var plan: Array[String] = []
-    if candidates.is_empty() or total <= 0.0:
-        return plan
-    var roll := _demand_rng.randf() * total
-    var origin_index: int = int(candidates[candidates.size() - 1][0])
-    for candidate in candidates:
-        roll -= float(candidate[1])
-        if roll <= 0.0:
-            origin_index = int(candidate[0])
-            break
-    var wanted: Array = (store_site.building_profile(origin_index)["wanted"] as Array).duplicate()
-    var building_wants := INCIDENTAL_WANT_PRODUCT_COUNT
-    # Task #120: the customer's type comes for its own product first; the
-    # building adds `building_wants_per_visit` of its wanted categories.
-    if _customer_types_enabled:
-        _pending_visit = _pick_visit_row()
-    if not _pending_visit.is_empty():
-        var primary := str(_pending_visit["primary"])
-        wanted.erase(primary)
-        if not primary.is_empty():
-            var shelf := _shelf_for_category(primary, plan)
-            if shelf.is_empty():
-                survey_missing[primary] = int(survey_missing.get(primary, 0)) + 1
-            else:
-                plan.append(shelf)
-        building_wants = plan.size() + int(_customer_type_rules["building_wants_per_visit"])
-    while not wanted.is_empty() and plan.size() < building_wants:
-        var category := str(wanted.pop_at(_demand_rng.randi_range(0, wanted.size() - 1)))
-        var shelves: Array[String] = []
-        for product_id in inventory.product_order:
-            var product = inventory.get_product(product_id)
-            if product.catalog_id == category and product.stock_units > 0:
-                shelves.append(product_id)
-        if shelves.is_empty():
-            survey_missing[category] = int(survey_missing.get(category, 0)) + 1
-            continue
-        plan.append(shelves[_demand_rng.randi_range(0, shelves.size() - 1)])
-    return plan
-
-
 func _select_incidental_want_product_ids(exclude_product_ids: Array[String]) -> Array[String]:
     var candidates: Array[String] = []
     for product_id in inventory.product_order:
@@ -3172,7 +3281,7 @@ func _select_incidental_want_product_ids(exclude_product_ids: Array[String]) -> 
 
 func _record_customer_entered(customer) -> void:
     if not customer.type_id.is_empty():
-        survey_types[customer.type_id] = int(survey_types.get(customer.type_id, 0)) + 1
+        survey_types[customer.type_id] = int(survey_types.get(customer.type_id, 0)) + customer.group_size
     _record_event("customer_entered", {
         "customer_id": customer.customer_id,
         "planned_product_ids": customer.planned_product_ids.duplicate(),
@@ -3448,6 +3557,8 @@ func load_state(data: Dictionary) -> bool:
     _apply_weather(int(data["weather_category_index"]))
     _for_each_store(_refresh_store_catchment)
     _for_each_store(_refresh_interactions)
+    # Task #130: the program works the day's customers out again on a load.
+    _allocate_program_day()
     _for_each_store(_start_opening_customer)
     return true
 
@@ -3722,6 +3833,8 @@ func _handle_day_boundary() -> void:
     # After _settle_month_end() so a month rollover rolls from the new
     # month's row.
     _roll_weather()
+    # Task #130: the new day's customers (the program's 0:00).
+    _allocate_program_day()
 
 
 # Task #85: the per-month category weights are CONFIRMED_OFFICIAL (see
@@ -4113,10 +4226,11 @@ func _fire_promotion(scheduled: Dictionary) -> void:
     })
 
 
-func _observe_chain_visitor_milestone() -> void:
+func _observe_chain_visitor_milestone(heads := 1) -> void:
     # Task #123: the whole chain's visitors, counted as they leave (the
-    # rosters restart on a load and each store has its own).
-    _chain_visitors_total += 1
+    # rosters restart on a load and each store has its own). Task #130: a
+    # group counts each of its people (the program adds n).
+    _chain_visitors_total += heads
     _chain_visitor_milestone.observe_total_visitors(
         _chain_visitors_total, day_count + 1, minute_of_day / 60
     )

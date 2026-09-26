@@ -1049,3 +1049,6 @@ msgstr "店長の助言"
 
 msgid "promotion cancelled"
 msgstr "宣伝を中止しました"
+
+msgid "cars turned away"
+msgstr "車を駐車できないお客さんがいます"

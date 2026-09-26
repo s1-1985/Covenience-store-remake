@@ -5,6 +5,7 @@ const DemandPolicyScript := preload("res://scripts/domain/demand_policy.gd")
 const TownStateScript := preload("res://scripts/domain/town_state.gd")
 const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.gd")
 const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
+const ProgramDemandScript := preload("res://scripts/domain/program_demand.gd")
 const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
@@ -3156,7 +3157,7 @@ func _initialize() -> void:
         return
     if not _check_rival_buyout():
         return
-    if not _check_building_demand():
+    if not _check_program_demand():
         return
     if not _check_business_hours():
         return
@@ -3610,65 +3611,115 @@ func _check_rival_buyout() -> bool:
         return false
     return true
 
-# Task #102: customers come from the buildings around the store and want
-# what those buildings want (DATA4); what the store lacks goes to the survey.
-func _check_building_demand() -> bool:
+# Task #130: the PS program's customers (CONFIRMED_BINARY, ProgramDemand):
+# the town's squares send their visit rows to one store a day; groups of up
+# to 5 come in every 2 minutes (1 in 4) at their rows' hours.
+func _check_program_demand() -> bool:
     var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
-    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
-    simulation.economy.cash_yen = 200_000_000
-    simulation.try_buy_store_site(Vector2i(13, 21))
-    if simulation._catchment_weights.is_empty():
-        _fail("a store site must have buildings in its catchment")
-        return false
-    var day_building := -1
-    var night_building := -1
-    for index in simulation._catchment_weights:
-        if bool(simulation.store_site.building_profile(int(index))["overnight"]):
-            night_building = int(index)
-        else:
-            day_building = int(index)
-    if day_building < 0 or night_building < 0:
-        _fail("the test site needs both kinds of buildings nearby")
-        return false
-    # Late at night a daytime-only building sends nobody.
-    simulation._catchment_weights = {day_building: 1.0}
-    simulation.minute_of_day = 2 * 60
-    if not simulation._building_customer_plan().is_empty():
-        _fail("a 朝から夜だけ building sends no customer at 2:00")
-        return false
-    # A night building's customer wants only its DATA4 categories; a
-    # category the store lacks goes to the survey. (Task #120's customer
-    # types add their own purpose on top; _check_customer_types covers it.)
-    simulation._customer_types_enabled = false
-    simulation._catchment_weights = {night_building: 1.0}
-    var wanted: Array = simulation.store_site.building_profile(night_building)["wanted"]
-    for attempt in 20:
-        for product_id in simulation._building_customer_plan():
-            if not wanted.has(simulation.inventory.get_product(product_id).catalog_id):
-                _fail("a customer only wants what their building wants")
-                return false
-    var missing_total := 0
-    for category in simulation.survey_missing:
-        if not wanted.has(category):
-            _fail("the survey only lists categories the customers wanted")
+    var tables: Dictionary = fresh["ps1_program_tables"]
+    for tag in ["Task #130, CONFIRMED_BINARY", "REMAKE_BALANCED_DEFAULT"]:
+        if tag not in str(tables["evidence_note"]):
+            _fail("the program's customer tables must stay tagged %s" % tag)
             return false
-        missing_total += int(simulation.survey_missing[category])
-    var carried := {}
-    for product_id in simulation.inventory.product_order:
-        carried[simulation.inventory.get_product(product_id).catalog_id] = true
-    var lacks_something := false
-    for category in wanted:
-        if not carried.has(category):
-            lacks_something = true
-    if lacks_something and missing_total == 0:
-        _fail("categories the store does not carry must show up in the survey")
+    if (tables["visit_rows"] as Array).size() != 144 or int(tables["max_customer_groups"]["small"]) != 10 or int(tables["max_customer_groups"]["large"]) != 20:
+        _fail("144 visit rows; at most 10 groups in a small store, 20 in a large one")
         return false
-    # The prototype scenarios keep their old random wants.
+    var demand = ProgramDemandScript.new(tables)
+    var rng := RandomNumberGenerator.new()
+    rng.seed = 5
+    var cloudy: int = demand.weather_value(2, rng)
+    if demand.weather_value(0, rng) != 0 or cloudy < 20 or cloudy > 39:
+        _fail("快晴 is weather value 0, the third category 20-39")
+        return false
+    if not demand.is_holiday(0, 1) or demand.is_holiday(0, 2) or not demand.is_holiday(4, 2) or not demand.is_holiday(7, 4):
+        _fail("1月1日, 5月2日 and every 4th day are holidays; 1月2日 is not")
+        return false
+    var winter_stay := 0
+    for draw in 200:
+        if demand.out_of_season("cold_drink", 0, rng):
+            winter_stay += 1
+        if demand.out_of_season("cold_drink", 6, rng) or demand.out_of_season("bento", 0, rng):
+            _fail("summer goods sell in July; bento has no season")
+            return false
+    if winter_stay < 160 or winter_stay > 195:
+        _fail("9 in 10 customers for cold drinks stay home in January: %d/200" % winter_stay)
+        return false
+    var row := {
+        "primary": "bread", "arrival": "徒歩", "start_hour": 8, "price_sensitivity": 50,
+        "distance_sensitivity": 80, "service_sensitivity": 20,
+    }
+    var all_day: Array = []
+    for hour in 24:
+        all_day.append(true)
+    var near := {"site": Rect2i(10, 10, 2, 2), "popularity": 80, "open_hours": all_day, "parking": 0, "stock": {"bread": 3}, "price_percent": 100, "service": 30}
+    var far: Dictionary = near.duplicate(true)
+    far["site"] = Rect2i(40, 10, 2, 2)
+    var cheap: Dictionary = near.duplicate(true)
+    cheap["site"] = Rect2i(14, 10, 2, 2)
+    cheap["price_percent"] = 80
+    var stores: Array = [near, far, cheap]
+    demand.relative_values(stores)
+    if int(near["price_value"]) != 0 or int(cheap["price_value"]) != 100 or int(near["service_value"]) != 100:
+        _fail("値段の値 is 100 for the cheapest store, 0 for the dearest; equal service is 100")
+        return false
+    # From (9,10): near is 1 square away, cheap 5, far 31 (beyond a walk).
+    if demand.choose_store(row, Vector2i(9, 10), stores, rng) != 2:
+        _fail("the best 値段 x 価格重視度 + 近さ x 距離重視度 + サービス x サービス重視度 wins")
+        return false
+    near["stock"] = {}
+    cheap["stock"] = {}
+    if demand.choose_store(row, Vector2i(9, 10), stores, rng) != -1:
+        _fail("a walker does not go 31 squares, nor to a store without their goods")
+        return false
+    row["arrival"] = "自動車"
+    far["stock"] = {"bread": 1}
+    if demand.choose_store(row, Vector2i(9, 10), stores, rng) != -1:
+        _fail("a car customer needs a car park")
+        return false
+    var counts := {3: 7}
+    var start_hour := int(demand.rows[3]["start_hour"])
+    var first: Array = demand.next_group(counts, start_hour, false, rng)
+    var second: Array = demand.next_group(counts, start_hour, false, rng)
+    if first != [3, 5] or second != [3, 2] or not demand.next_group(counts, start_hour, false, rng).is_empty():
+        _fail("7 heads come as a group of 5 and a group of 2")
+        return false
+    if not demand.next_group({3: 1}, (start_hour + 12) % 24, false, rng).is_empty():
+        _fail("on a weekday a row only comes in its own hour")
+        return false
+    # The real game.
+    var simulation = _real_game_simulation()
+    if simulation.program_town_heads <= 0 or simulation.program_customers_today() <= 0:
+        _fail("the town's squares send customers to the new store")
+        return false
+    if not is_equal_approx(simulation.demand.customer_share_percent, 100.0 * simulation.program_customers_today() / simulation.program_town_heads):
+        _fail("顧客独占率 is today's customers over the town's")
+        return false
+    var most_inside := 0
+    for minute in 1440:
+        simulation.tick()
+        most_inside = maxi(most_inside, simulation.customers.active_customers().size())
+    if most_inside > 10:
+        _fail("at most 10 groups inside a small store")
+        return false
+    var grouped := false
+    for customer in simulation.customers.all_customers():
+        if customer.group_size < 1 or customer.group_size > 5 or customer.visit.is_empty():
+            _fail("every customer is a group of 1-5 from a visit row")
+            return false
+        grouped = grouped or customer.group_size > 1
+    for record in simulation.economy.sale_records:
+        for line in record["lines"]:
+            if int(line["quantity"]) > 5:
+                _fail("a group buys at most one of an item each")
+                return false
+    if simulation.event_log.count_type("customer_entered") == 0:
+        _fail("customers come in on the first day")
+        return false
     var prototype = VerticalSliceSimulationScript.new(fresh)
-    if prototype._building_demand_enabled:
-        _fail("building demand is off in the prototype scenarios")
+    if prototype._program_demand != null:
+        _fail("the prototype scenarios keep their plain arrival rate")
         return false
-    return true
+    return grouped or simulation.event_log.count_type("customer_entered") < 5
 
 # Task #103: business hours -- customers only while open, costs scale with
 # the hours, 臨時休業 costs nothing.
@@ -3805,7 +3856,9 @@ func _check_store_types() -> bool:
         for sale in day.economy.sale_records:
             for line in sale["lines"]:
                 sold[str(line["product_id"])] = true
-        if day.is_game_over or most_inside < 2 or int(day.snapshot()["completed_visits"]) < 10 or sold.size() < 8:
+        # Task #130: the program's first-day customers (a new store, 人気
+        # 20) come for their rows' goods, so fewer kinds sell than before.
+        if day.is_game_over or most_inside < 2 or int(day.snapshot()["completed_visits"]) < 10 or sold.size() < 5:
             _fail("%s must run a normal first day: inside %d, visits %d, products %d" % [
                 type_id, most_inside, int(day.snapshot()["completed_visits"]), sold.size(),
             ])
@@ -4200,6 +4253,11 @@ func _check_shelf_goods_change() -> bool:
     var simulation = _real_game_simulation()
     for minute in 600:
         simulation.tick()
+    # Task #130: groups come now and then; wait for one.
+    var waited := 0
+    while simulation.customers.all_settled() and waited < 1440:
+        simulation.tick()
+        waited += 1
     if simulation.customers.all_settled():
         _fail("the goods test wants customers in the store")
         return false
@@ -4334,11 +4392,6 @@ func _check_customer_types() -> bool:
             _fail("the guide never has oden etc. as a purpose, nor bento as an extra")
             return false
     var simulation = _real_game_simulation()
-    simulation.minute_of_day = 2 * 60
-    var row: Dictionary = simulation._pick_visit_row()
-    if row.is_empty() or (2 * 60 - int(row["start_minute"]) + 1440) % 1440 >= int(row["duration_minutes"]):
-        _fail("a 2:00 customer is one of the rows whose window holds 2:00")
-        return false
     for minute in 900:
         simulation.tick()
     var typed := 0

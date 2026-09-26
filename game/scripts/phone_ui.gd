@@ -787,6 +787,9 @@ func _refresh_customer_card() -> void:
     var type_name: String = main.simulation.customer_type_name(customer)
     if not type_name.is_empty():
         who = type_name
+    # Task #130: a group of people who came together.
+    if customer.group_size > 1:
+        who += "など%d人" % customer.group_size
     customer_card_label.text = "%s（%s）\nかご：%s　¥%s" % [
         who, main.tr(customer.phase), "、".join(items) if not items.is_empty() else "なし",
         main._format_integer(customer.basket_total_yen()),

@@ -62,12 +62,16 @@ func product_on_fixture(fixture_id: String) -> String:
 
 
 func try_take_one(product_id: String) -> Dictionary:
+    return try_take(product_id, 1)
+
+
+func try_take(product_id: String, quantity: int) -> Dictionary:
     var product = get_product(product_id)
-    if not product.try_take_one():
+    if not product.try_take(quantity):
         return {}
     return {
         "product_id": product.product_id,
-        "quantity": 1,
+        "quantity": quantity,
         "unit_price_yen": product.sale_price_yen,
     }
 
