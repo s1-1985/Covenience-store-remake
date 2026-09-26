@@ -2208,6 +2208,11 @@ Task #127 first executable pass (docs/research/ps1-executable-formulas-2026-09-2
 Found: the guide's 店舗規模別基準値 1.5/1.65/1.8 is a divisor in the program (清掃 = sum×100/150..180, 警備 =
 sum×100/250..300), all three values cap at 100 -- the project's StoreValue multiplies instead (not yet changed).
 Proposed evidence level CONFIRMED_BINARY for facts read from the original program.
+Second pass: the daily demand model (0x8002619C/0x80026A64) -- every building row decides daily whether to
+come (weather vs 買物重要度, weekday/holiday share, holiday calendar: day 4 of each month + 1/1, 5/1-2, 8/2,
+12/3) and which store (人気+20% chance to consider, open hours, parking, target product in stock, max distance
+20/40/60/70 by arrival, score = price×価格重視度 + closeness×距離重視度 + service×サービス重視度). The weather table
+matches the project exactly; 123/143 visit rows match the program exactly (平日700 is 70).
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
