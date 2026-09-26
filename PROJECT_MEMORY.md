@@ -2152,6 +2152,12 @@ hours, and whether it is inside the store's area. The 買い物人口 is shown o
 - The month-end notice shows 町人口 and its change.
 - Ordinary houses and shops do not appear on the map yet.
 
+**Task #115 (2026-09-26, decision 0186)**: the APK is shrunk from 29.86 MiB to 26.29 MiB (delivery limit 30 MiB).
+- The 280 staff and 168 customer sprites are imported lossy (WebP, quality 0.7): 4.37 MiB -> 0.79 MiB of textures.
+- Their `.import` files are now tracked in git (`.gitignore` exceptions), like the town sprites since #111.
+- Fixtures, products and UI icons stay lossless (0.6 MiB together). The engine library is 20.8 MiB of the APK.
+- No game data or mechanic changed.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

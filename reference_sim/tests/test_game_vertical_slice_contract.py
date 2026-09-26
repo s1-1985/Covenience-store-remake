@@ -15,6 +15,20 @@ class GameVerticalSliceContractTests(unittest.TestCase):
     def setUpClass(cls):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
+    def test_character_sprites_are_imported_lossy_to_fit_the_apk(self):
+        # Task #115: the 280 staff and 168 customer sprites were 4.4 MiB of
+        # lossless textures in a 29.9 MiB APK (delivery limit 30 MiB). They
+        # are imported lossy (WebP, quality 0.7) and the settings are tracked.
+        gitignore = (REPO_ROOT / ".gitignore").read_text(encoding="utf-8")
+        for folder, count in (("staff", 280), ("customers", 168)):
+            self.assertIn("!game/assets/%s/*.import" % folder, gitignore)
+            sprites = sorted((GAME_ROOT / "assets" / folder).glob("*.png"))
+            self.assertEqual(len(sprites), count)
+            for sprite in sprites:
+                imported = sprite.with_name(sprite.name + ".import").read_text(encoding="utf-8")
+                self.assertIn("compress/mode=1", imported)
+                self.assertIn("compress/lossy_quality=0.7", imported)
+
     def test_prototype_values_are_explicitly_marked_provisional(self):
         self.assertEqual(self.config["schema_version"], 15)
         self.assertIs(self.config["provisional"], True)
