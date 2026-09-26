@@ -199,6 +199,13 @@ func selected_fixture() -> String:
 func bind(source_config: Dictionary, source_simulation) -> void:
     config = source_config
     simulation = source_simulation
+    # Task #123: another store's people must not slide in from where this
+    # store's were.
+    _motion.clear()
+    _staff_last_position.clear()
+    _staff_last_direction.clear()
+    _customer_last_position.clear()
+    _customer_last_direction.clear()
     queue_redraw()
 
 
@@ -614,7 +621,11 @@ func _draw_customer() -> void:
         var stack_index: int = seen_positions.get(customer.position, 0)
         seen_positions[customer.position] = stack_index + 1
         center += Vector2(stack_index * 6.0, stack_index * 6.0)
-        var sprite_id := _customer_sprite_id_for_id(customer.customer_id)
+        # Task #120: a customer of one of the guide's types is drawn as that
+        # type (the sprites are drawn one per type, same order).
+        var sprite_id: String = simulation.customer_type_sprite(customer)
+        if sprite_id.is_empty():
+            sprite_id = _customer_sprite_id_for_id(customer.customer_id)
         var direction := _customer_facing_direction(customer.customer_id, customer.position)
         var texture := _customer_texture(sprite_id, direction, str(motion[1]))
         if texture != null:

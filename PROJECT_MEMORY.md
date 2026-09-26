@@ -2165,6 +2165,22 @@ hours, and whether it is inside the store's area. The 買い物人口 is shown o
 - The template lives in `build/templates/` (not in git); rebuild it with the script on a new machine.
 - Both smokes and screenshots were checked on a Linux build with the same configuration; not yet run on a phone.
 
+**Tasks #117-#123 (2026-09-26, decisions 0188-0194)**: the owner's list after playing 0.1.15.
+- #117: a stocked shelf is sold with its goods, and a shelf can be given another product from its card; the goods
+  go back at cost (REMAKE_BALANCED_DEFAULT). A new shelf's first goods and returns are one-off, out of the month's x8.
+- #118: register duty rotates -- whoever is nearest the register takes it when customers are in and the cashier is
+  away (CONFIRMED_COMMUNITY FAQ), and a tired cashier hands over (REMAKE_BALANCED_DEFAULT thresholds).
+- #119: goods are taken from a shelf's front only, from any free side of a wagon; 注目度 shelves 1.0, wagons 1.5,
+  2x2 wagons 2.0 (REMAKE_BALANCED_DEFAULT on CONFIRMED capacities and the community's 2x2 wagon attention).
+- #120: customers are the guide's 21 types (顧客データ pp.134-143, CONFIRMED_OFFICIAL, `guide_customer_types`):
+  purpose, 所持金, ついで買い (集中力 x 注目度), price sensitivity, 素早さ, ス as patience; drawn as their type.
+- #121: departed customers are forgotten after 64 (counts kept); the chain visitor milestone survives a load.
+- #122: 調査 is a list of screens -- 全店収支グラフ, 店舗成績, アンケート (ranked with pictures), 町と目標.
+- #123: a bought rival and a store opened on picked land are real stores (STORE_FIELDS, `_stores`): each has its
+  own floor, goods, staff, customers, prices, hours, permits, ads, rating and survey; money, time, town and rivals
+  are shared; own stores share customers (SS play). Switch from the status bar's store name or by tapping the
+  store on the map. Save schema 10 ("branches"); schema 9 saves still load.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

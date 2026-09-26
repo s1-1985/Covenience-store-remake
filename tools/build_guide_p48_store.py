@@ -245,6 +245,45 @@ def build(config):
                 "on it or after 6 ticks without moving (two cleaners once waited for each other for good)."
             ),
         },
+        # Tasks #117-#120: rules for the shop floor the owner asked for.
+        "store_rules": store_rules(config),
+    }
+
+
+def store_rules(config):
+    wagons = sorted(entry["catalog_id"] for entry in config["fixture_catalog"] if "wagon" in entry["catalog_id"])
+    attention = {}
+    for entry in config["fixture_catalog"]:
+        if entry.get("kind") != "shelf":
+            continue
+        catalog_id = entry["catalog_id"]
+        if catalog_id in wagons:
+            attention[catalog_id] = 2.0 if entry["footprint_tiles"] == [2, 2] else 1.5
+        else:
+            attention[catalog_id] = 1.0
+    return {
+        "checkout_rotation_enabled": True,
+        "customer_types_enabled": True,
+        "any_side_catalog_ids": wagons,
+        "fixture_attention": attention,
+        "evidence_note": (
+            "Task #117, selling a stocked shelf / changing its product (the owner's request): no source "
+            "says what happens to the goods; REMAKE_BALANCED_DEFAULT, they go back to the supplier at "
+            "their purchase cost. "
+            "Task #118, register duty: CONFIRMED_COMMUNITY (first-title FAQ, docs/research/staff-checkout-"
+            "task-arbitration-2026-09-06.md) that whoever reaches the register takes it and a tired "
+            "cashier leaves for the break room; REMAKE_BALANCED_DEFAULT, between customers a cashier who is "
+            "exhausted or under half 体力 hands over to the idle colleague with the most 体力 (for the "
+            "half-tired case at least a quarter gauge more), and the two swap posts. "
+            "Task #119, shelves and wagons: CONFIRMED_OFFICIAL capacities (a wagon holds less than the "
+            "shelf of its size, fixture_catalog) and CONFIRMED_COMMUNITY that the 2x2 large wagon draws "
+            "more 注目度 than a narrow one, which the wiki thinks raises ついで買い (docs/research/customer-"
+            "purchase-role-merchandising-2026-09-05.md). REMAKE_BALANCED_DEFAULT (the owner's request): "
+            "goods are taken from a shelf's front only but from any free side of a wagon (the fixtures "
+            "whose guide name is a ワゴン); 注目度 1.0 for shelves, 1.5 for wagons, 2.0 for the 2x2 wagons, "
+            "scaling the add-on chance. "
+            "Task #120: customer types, see guide_customer_types.evidence_note."
+        ),
     }
 
 

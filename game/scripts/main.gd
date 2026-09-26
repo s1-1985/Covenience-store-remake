@@ -10,9 +10,12 @@ var _android_panel: Control = null
 # (the original's order: site first, then the store, guide p.6-11 and the
 # PS review's opening flow); time stays stopped until a site is bought.
 var selecting_site := false
+# Task #123: picking the land for the next store (新規出店).
+var choosing_new_store := false
 var site_panel: PanelContainer = null
 var site_info_label: Label = null
 var site_buy_button: Button = null
+var site_cancel_button: Button = null
 var _site_origin := Vector2i(-1, -1)
 # Task #104: the 「店舗を選んで下さい」 panel shown after the land is chosen.
 var store_type_panel: PanelContainer = null
@@ -405,16 +408,23 @@ func _on_fixture_swap_requested(fixture_id_a: String, fixture_id_b: String) -> v
 
 func _on_sell_fixture_pressed() -> void:
     var fixture_id: String = store_view.selected_fixture()
+    # The name is read before the sale: afterwards the fixture is gone.
+    var label := _fixture_label(fixture_id)
     if fixture_id.is_empty():
         layout_edit_label.text = tr("Select a fixture before selling")
     elif simulation.try_sell_fixture(fixture_id):
-        layout_edit_label.text = tr("Sold %s") % _fixture_label(fixture_id)
+        # Task #117: a shelf is sold with its goods, which go back at cost.
+        var goods_refund := int(simulation.event_log.records[-1]["details"].get("goods_refund_yen", 0))
+        if goods_refund > 0:
+            layout_edit_label.text = tr("Sold %s (goods returned: ¥%s)") % [label, _format_integer(goods_refund)]
+        else:
+            layout_edit_label.text = tr("Sold %s") % label
         store_view.selected_fixture_id = ""
         _refresh_procure_fixture_option()
-    elif not simulation.customers.all_settled():
+    elif simulation._layout_edit_locked():
         layout_edit_label.text = tr("Finish the active visit before selling a fixture")
     else:
-        layout_edit_label.text = tr("Cannot sell that fixture: it's the checkout, holds stock, or has no catalog price")
+        layout_edit_label.text = tr("Cannot sell that fixture: it's the checkout or has no catalog price")
     _refresh_ui()
 
 
@@ -1095,6 +1105,12 @@ func _build_site_panel() -> void:
     site_buy_button.custom_minimum_size = Vector2(200, 56)
     site_buy_button.pressed.connect(_on_buy_site_pressed)
     row.add_child(site_buy_button)
+    site_cancel_button = Button.new()
+    site_cancel_button.name = "CancelSiteButton"
+    site_cancel_button.text = tr("Cancel")
+    site_cancel_button.custom_minimum_size = Vector2(120, 56)
+    site_cancel_button.pressed.connect(cancel_new_store)
+    row.add_child(site_cancel_button)
     $UI.add_child(site_panel)
     site_panel.position = Vector2(town_view.position.x, town_view.position.y + town_view.view_size.y - 130.0)
     site_panel.size = Vector2(town_view.view_size.x, 120.0)
@@ -1103,10 +1119,42 @@ func _build_site_panel() -> void:
 func _needs_store_site() -> bool:
     return (
         simulation.store_site != null
-        and not simulation.has_store_site()
+        and (not simulation.has_store_site() or choosing_new_store)
         and not simulation.is_game_over
         and not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META)
     )
+
+
+# Task #123: 新規出店 -- pick the land on the town map, then the store, as
+# for the first store; "やめる" goes back.
+func start_new_store() -> void:
+    if simulation.store_types().is_empty() or simulation.town_is_full() or simulation.is_game_over:
+        return
+    choosing_new_store = true
+    _sync_site_selection()
+    site_info_label.text = tr("Tap the map to pick a 2x2 site for the new store")
+    _refresh_ui()
+
+
+func cancel_new_store() -> void:
+    if not choosing_new_store:
+        return
+    choosing_new_store = false
+    _sync_site_selection()
+    _refresh_ui()
+
+
+# Task #123: look at (and run) store `index`: 本店 is 0.
+func select_store(index: int) -> void:
+    if not simulation.select_store(index):
+        return
+    _rival_id = ""
+    _store_layout_changed()
+    town_view.center_on_store()
+    if town_view.visible and not selecting_site:
+        _on_show_town_map_pressed()
+    layout_edit_label.text = tr("Now running %s") % simulation.store_name
+    _refresh_ui()
 
 
 # Enters or leaves site selection to match the simulation (new game, reset,
@@ -1115,6 +1163,7 @@ func _sync_site_selection() -> void:
     var was_selecting := selecting_site
     selecting_site = _needs_store_site()
     site_panel.visible = selecting_site
+    site_cancel_button.visible = choosing_new_store
     store_type_panel.visible = false
     _store_layout_changed()
     town_view.selecting_site = selecting_site
@@ -1209,6 +1258,14 @@ func _build_store(type_id: String) -> void:
         return
     store_type_panel.visible = false
     layout_edit_label.text = tr("Bought the land and opened the store")
+    if choosing_new_store:
+        # The new store is the last one; go and run it.
+        choosing_new_store = false
+        _sync_site_selection()
+        select_store(simulation.store_count() - 1)
+        paused = false
+        pause_button.text = tr("Pause")
+        return
     _sync_site_selection()
     paused = false
     pause_button.text = tr("Pause")
@@ -1511,6 +1568,11 @@ func _build_rival_panel() -> void:
 func _on_map_tapped(tile: Vector2i) -> void:
     if selecting_site:
         return
+    # Task #123: tapping one of the player's stores goes into it.
+    var store_index: int = simulation.store_at_tile(tile)
+    if store_index >= 0:
+        select_store(store_index)
+        return
     _show_rival(simulation.rival_at(tile))
 
 
@@ -1586,9 +1648,10 @@ func _refresh_fixture_info() -> void:
     if name_key.is_empty():
         name_key = "fixture_kind_" + str(fixture["kind"])
     fixture_info_icon.texture = _menu_icon("fixtures", str(fixture.get("catalog_id", "")))
-    fixture_stock_button.visible = (
-        product == null and phone_ui != null and str(fixture["kind"]) == "shelf" and not store_view.editing
-    )
+    # Task #117: a shelf that already holds something can be given another
+    # product from the same button.
+    fixture_stock_button.visible = phone_ui != null and str(fixture["kind"]) == "shelf" and not store_view.editing
+    fixture_stock_button.text = "商品を並べる" if product == null else "商品を変える"
     if product == null:
         fixture_info_label.text = tr(name_key)
         fixture_restock_button.visible = false

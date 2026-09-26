@@ -249,16 +249,45 @@ func _run() -> void:
             stocked = true
     if not _require(stocked and not phone.window.visible, "Tapping a product picture stocks the shelf"):
         return
+    # Task #117: the same card gives a stocked shelf another product.
+    var first_product: String = game.simulation.inventory.product_on_fixture("shelf-new-1")
+    game.store_view.selected_fixture_id = "shelf-new-1"
+    game._refresh_ui()
+    if not _require(game.fixture_stock_button.visible and game.fixture_stock_button.text == "商品を変える", "A stocked shelf offers 商品を変える"):
+        return
+    game.fixture_stock_button.pressed.emit()
+    if not _require(phone.window_id == "stock" and phone.window_title.text == "商品を変える", "商品を変える opens the product pictures"):
+        return
+    var other_picture: Button = null
+    for node in phone.window_body.find_children("*", "Button", true, false):
+        if other_picture == null and not (node as Button).disabled:
+            other_picture = node
+    other_picture.pressed.emit()
+    var changed_product: String = game.simulation.inventory.product_on_fixture("shelf-new-1")
+    if not _require(not changed_product.is_empty() and changed_product != first_product and not phone.window.visible, "Tapping another picture changes the shelf's product"):
+        return
     game.store_view.selected_fixture_id = ""
     game._refresh_ui()
     await _capture("preview-economy")
+    # Task #122: 調査 lists its screens; 収支 and アンケート open on their own.
+    phone.menu_buttons["research"].pressed.emit()
+    phone.window_body.find_child("Research_survey", true, false).pressed.emit()
+    if not _require(phone.window.visible and phone.window_id == "survey" and "アンケート" in phone.window_title.text, "調査 → アンケート opens its own screen"):
+        return
+    phone.window_body.find_child("ResearchBack", true, false).pressed.emit()
+    phone.window_body.find_child("Research_results", true, false).pressed.emit()
+    if not _require(phone.window_id == "results" and phone.window_body.find_child("ResultsGraph", true, false) != null, "調査 → 全店収支グラフ opens its own screen"):
+        return
+    phone.close_window()
     # A real tap on a customer shows what they are buying; one waiting at
     # the register can be thrown out (つまみだす).
     var queued = null
     for tick in 3000:
         game.simulation.tick()
         for customer in game.simulation.customers.active_customers():
-            if customer.phase == "waiting_checkout":
+            # Being served counts too (the guide's レジ前の混雑); since task
+            # #120 customers rarely overlap at the register.
+            if customer.phase == "waiting_checkout" or customer.phase == "checkout":
                 queued = customer
         if queued != null:
             break
@@ -314,6 +343,38 @@ func _run() -> void:
     if not _require(str(game.simulation.pending_inducement.get("facility_id", "")) == "police_box" and not phone.induce_panel.visible, "誘致する starts building the 交番"):
         return
     phone.town_button.pressed.emit()
+    # Task #123: a new store opened on land picked on the town map (販促 →
+    # 新しい店を出す) is a store to go into and run.
+    var stores_before: int = game.simulation.store_count()
+    phone.menu_buttons["promotion"].pressed.emit()
+    phone.window_body.find_child("NewStoreButton", true, false).pressed.emit()
+    if not _require(game.selecting_site and game.choosing_new_store and game.site_cancel_button.visible, "新しい店を出す opens the land choice, with やめる"):
+        return
+    var new_site := Vector2i(-1, -1)
+    for y in range(2, 40):
+        for x in range(2, 40):
+            if new_site.x < 0 and bool(game.simulation.store_site_quote(Vector2i(x, y))["buildable"]):
+                new_site = Vector2i(x, y)
+    game._on_site_tapped(new_site)
+    game._on_buy_site_pressed()
+    game._build_store("small_top")
+    if not _require(game.simulation.store_count() == stores_before + 1 and game.simulation.viewed_store == stores_before and not game.selecting_site and game.store_view.visible, "Building it opens the new store and shows it"):
+        return
+    game.select_store(0)
+    game._refresh_ui()
+    if not _require("▼" in phone.store_button.text, "The status bar's store name lists the stores once there are several"):
+        return
+    phone.store_button.pressed.emit()
+    if not _require(phone.window_id == "stores", "The store name opens the list of stores"):
+        return
+    phone.window_body.find_child("GoStore_1", true, false).pressed.emit()
+    if not _require(game.simulation.viewed_store == 1 and game.simulation.store_name == "2号店" and game.store_view.visible, "この店へ shows the 2号店: " + game.simulation.store_name):
+        return
+    await _capture("preview-branch")
+    phone.store_button.pressed.emit()
+    phone.window_body.find_child("GoStore_0", true, false).pressed.emit()
+    if not _require(game.simulation.viewed_store == 0 and game.simulation.store_name == "本店", "and back to 本店"):
+        return
     # システム → セーブ.
     phone.menu_buttons["system"].pressed.emit()
     for node in phone.window_body.find_children("*", "Button", true, false):
@@ -330,6 +391,8 @@ func _run() -> void:
     if not _require(game.simulation.economy.cash_yen == saved_cash, "Load must restore money"):
         return
     if not _require(game.simulation.store_site_origin == Vector2i(13, 21) and not game.selecting_site, "Load must restore the store's site"):
+        return
+    if not _require(game.simulation.store_count() == stores_before + 1 and game.simulation.viewed_store == 0, "Load must bring back every store"):
         return
     game.show_town_map_button.pressed.emit()
     if not _require(game.town_view.visible and not game.store_view.visible, "Town/store switch must work"):

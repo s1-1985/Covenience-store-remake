@@ -276,6 +276,12 @@ msgstr "お客さんの退店後に売却できる"
 msgid "Cannot sell that fixture: it's the checkout, holds stock, or has no catalog price"
 msgstr "レジ・在庫のある棚・価格不明の設備は売却できない"
 
+msgid "Cannot sell that fixture: it's the checkout or has no catalog price"
+msgstr "レジと価格不明の設備は売却できない"
+
+msgid "Sold %s (goods returned: ¥%s)"
+msgstr "%sを売却した（商品の返品 ¥%s）"
+
 msgid "Deselected"
 msgstr "選択を解除した"
 
@@ -962,3 +968,30 @@ msgstr "誘致した施設が完成した"
 
 msgid "town building built"
 msgstr "町に新しい建物が建った"
+
+msgid "Cancel"
+msgstr "やめる"
+
+msgid "Tap the map to pick a 2x2 site for the new store"
+msgstr "新しい店の土地（2×2）を地図でタップ"
+
+msgid "Now running %s"
+msgstr "%sを表示中"
+
+msgid "store selected"
+msgstr "店を切り替えた"
+
+msgid "store opened"
+msgstr "新しい店を開いた"
+
+msgid "checkout handover"
+msgstr "レジ係が交代した"
+
+msgid "customer add on"
+msgstr "お客さんがついで買いをした"
+
+msgid "product skipped"
+msgstr "お客さんが商品を棚に戻した"
+
+msgid "product returned"
+msgstr "商品を返品した"

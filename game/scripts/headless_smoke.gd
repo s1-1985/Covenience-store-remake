@@ -859,8 +859,26 @@ func _initialize() -> void:
     if not sell_simulation.try_procure_product("bread", "sell-product-1", "sell-shelf-1"):
         _fail("sell test: setup product procurement failed")
         return
-    if sell_simulation.try_sell_fixture("sell-shelf-1"):
-        _fail("selling a fixture that still holds procured stock must be rejected")
+    # Task #117: a shelf holding goods is sold with them; the goods go back
+    # at purchase cost (REMAKE_BALANCED_DEFAULT, _withdraw_product()).
+    var held_product = sell_simulation.inventory.get_product("sell-product-1")
+    var expected_goods_refund: int = held_product.stock_units * held_product.restock_unit_cost_yen
+    var cash_before_stocked_sale: int = int(sell_simulation.economy.cash_yen)
+    if not sell_simulation.try_sell_fixture("sell-shelf-1"):
+        _fail("a shelf still holding goods must be sold with them (task #117)")
+        return
+    var medium_shelf_refund := 0
+    for entry in config["fixture_catalog"]:
+        if str(entry["catalog_id"]) == "medium_ambient_shelf":
+            medium_shelf_refund = int(entry["purchase_price_yen"]) * sell_simulation.FIXTURE_SELL_REFUND_PERCENT / 100
+    if sell_simulation.economy.cash_yen != cash_before_stocked_sale + medium_shelf_refund + expected_goods_refund:
+        _fail("selling a stocked shelf must refund half the shelf and the goods at cost")
+        return
+    if sell_simulation.inventory.products.has("sell-product-1") or sell_simulation.event_log.count_type("product_returned") != 1:
+        _fail("the sold shelf's goods must leave the inventory and be recorded as returned")
+        return
+    if sell_simulation.event_log.count_type("fixture_sold") != 1:
+        _fail("the stocked sale must record its fixture_sold event")
         return
     if not sell_simulation.try_purchase_fixture(
         "potted_plant", "sell-amenity-1", Vector2i(6, 10), Vector2i(6, 9)
@@ -885,8 +903,8 @@ func _initialize() -> void:
     if sell_simulation.layout.fixtures_by_id.has("sell-amenity-1"):
         _fail("a sold fixture must actually be removed from the layout")
         return
-    if sell_simulation.event_log.count_type("fixture_sold") != 1:
-        _fail("a completed fixture sale must record exactly one fixture_sold event")
+    if sell_simulation.event_log.count_type("fixture_sold") != 2:
+        _fail("each completed fixture sale must record exactly one fixture_sold event")
         return
 
     # Task #78: try_swap_fixtures() -- CONFIRMED_OFFICIAL that "入れ替え"
@@ -2787,8 +2805,13 @@ func _initialize() -> void:
         _fail("the sell button must enable once a fixture is selected")
         return
     economy_ui_scene._on_sell_fixture_pressed()
-    if not economy_ui_scene.simulation.layout.fixtures_by_id.has("fixture-purchase-2"):
-        _fail("selling a fixture that still holds procured stock must be rejected, not silently removed")
+    # Task #117: sold together with its goods, and the notice says so by
+    # name (it used to show the raw id once the fixture was gone).
+    if economy_ui_scene.simulation.layout.fixtures_by_id.has("fixture-purchase-2"):
+        _fail("a fixture holding goods must be sold with them through the UI button too")
+        return
+    if "fixture-purchase-2" in economy_ui_scene.layout_edit_label.text:
+        _fail("the sale notice must name the sold fixture, not show its id")
         return
     economy_ui_scene.store_view.selected_fixture_id = "fixture-purchase-1"
     var cash_before_ui_sell: int = int(economy_ui_scene.simulation.economy.cash_yen)
@@ -3131,6 +3154,18 @@ func _initialize() -> void:
     if not _check_town_growth():
         return
     if not _check_actions_while_open(config):
+        return
+    if not _check_shelf_goods_change():
+        return
+    if not _check_checkout_rotation():
+        return
+    if not _check_wagon_sides():
+        return
+    if not _check_customer_types():
+        return
+    if not _check_branch_stores():
+        return
+    if not _check_customer_roster_stays_small():
         return
 
     print("Vertical-slice headless smoke passed in %d steps." % steps)
@@ -3573,7 +3608,9 @@ func _check_building_demand() -> bool:
         _fail("a 朝から夜だけ building sends no customer at 2:00")
         return false
     # A night building's customer wants only its DATA4 categories; a
-    # category the store lacks goes to the survey.
+    # category the store lacks goes to the survey. (Task #120's customer
+    # types add their own purpose on top; _check_customer_types covers it.)
+    simulation._customer_types_enabled = false
     simulation._catchment_weights = {night_building: 1.0}
     var wanted: Array = simulation.store_site.building_profile(night_building)["wanted"]
     for attempt in 20:
@@ -4112,5 +4149,290 @@ func _check_town_growth() -> bool:
         return false
     if reloaded.town.population != simulation.town.population or reloaded.town_milestones.size() != 4 or reloaded.store_site.buildings.size() != simulation.store_site.buildings.size():
         _fail("load must restore the town's population and buildings")
+        return false
+    return true
+
+
+func _real_game_simulation():
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    return simulation
+
+
+# Task #117: a stocked shelf is sold with its goods, and a shelf can be given
+# another product; the goods go back at cost (REMAKE_BALANCED_DEFAULT).
+func _check_shelf_goods_change() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var rules: Dictionary = fresh["guide_starting_store"]["store_rules"]
+    if "REMAKE_BALANCED_DEFAULT" not in str(rules["evidence_note"]) or "Task #117" not in str(rules["evidence_note"]):
+        _fail("the goods-return rule must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var simulation = _real_game_simulation()
+    for minute in 600:
+        simulation.tick()
+    if simulation.customers.all_settled():
+        _fail("the goods test wants customers in the store")
+        return false
+    var product_id: String = simulation.inventory.product_order[0]
+    var product = simulation.inventory.get_product(product_id)
+    var fixture_id: String = product.fixture_id
+    var fixture_entry: Dictionary = simulation._fixture_catalog[str(simulation.layout.fixtures_by_id[fixture_id]["catalog_id"])]
+    var other := ""
+    for category in fixture_entry["compatible_product_categories"]:
+        var entry: Dictionary = simulation._product_catalog[str(category)]
+        if str(category) != product.catalog_id and str(entry.get("required_permit_id", "")).is_empty():
+            other = str(category)
+            break
+    var units: int = mini(int(simulation._product_catalog[other]["initial_stock_units"]), int(fixture_entry["capacity"]))
+    var expected: int = int(simulation.economy.cash_yen) + product.stock_units * product.restock_unit_cost_yen - units * int(simulation._product_catalog[other]["restock_unit_cost_yen"])
+    if simulation.try_change_product(product.catalog_id, "changed-1", fixture_id):
+        _fail("giving a shelf the product it already has must be refused")
+        return false
+    if not simulation.try_change_product(other, "changed-1", fixture_id):
+        _fail("a stocked shelf must take another product (task #117)")
+        return false
+    if simulation.inventory.products.has(product_id) or simulation.inventory.product_on_fixture(fixture_id) != "changed-1":
+        _fail("the new product must replace the old one on the shelf")
+        return false
+    if simulation.economy.cash_yen != expected:
+        _fail("the old goods come back at cost and the new ones are paid: %d, not %d" % [simulation.economy.cash_yen, expected])
+        return false
+    var second: String = simulation.inventory.product_order[0]
+    if not simulation.try_sell_fixture(simulation.inventory.get_product(second).fixture_id):
+        _fail("a stocked shelf must be sold with its goods while customers shop")
+        return false
+    for minute in 900:
+        simulation.tick()
+    if not ("product_procurement" in simulation.CAPITAL_EXPENSE_TYPES and "product_returned" in simulation.CAPITAL_EXPENSE_TYPES):
+        _fail("goods bought for a new shelf or sent back are one-off, out of the month's x8")
+        return false
+    return true
+
+
+# Task #118: register duty moves between the staff (REMAKE_BALANCED_DEFAULT
+# rule on the CONFIRMED_COMMUNITY FAQ that whoever reaches the register
+# takes it).
+func _check_checkout_rotation() -> bool:
+    var simulation = _real_game_simulation()
+    for minute in 1440 * 2:
+        simulation.tick()
+    if simulation.event_log.count_type("checkout_handover") == 0:
+        _fail("register duty must pass between staff members over two days")
+        return false
+    for member in simulation.staff.all_staff():
+        if member.checkouts_done == 0:
+            _fail("every staff member must take a turn at the register: %s" % member.display_name)
+            return false
+    var register_post := Vector2i(-1, -1)
+    for member_config in simulation.config["staff"]["members"]:
+        if str(member_config["id"]) == str(simulation.config["staff"]["checkout_staff_id"]):
+            register_post = Vector2i(int(member_config["start_subcell"][0]), int(member_config["start_subcell"][1]))
+    if simulation.staff.checkout_staff().home_position() != register_post:
+        _fail("whoever has register duty takes the register's post")
+        return false
+    var copy = _real_game_simulation()
+    if not copy.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))):
+        _fail("the rotation test's save must load")
+        return false
+    if copy.staff.checkout_staff_id != simulation.staff.checkout_staff_id:
+        _fail("a load must keep who is on the register")
+        return false
+    return true
+
+
+# Task #119: goods are taken from a shelf's front only but from any free
+# side of a wagon; wagons draw more attention (REMAKE_BALANCED_DEFAULT on
+# CONFIRMED capacities and the CONFIRMED_COMMUNITY 2x2 wagon attention).
+func _check_wagon_sides() -> bool:
+    var simulation = _real_game_simulation()
+    if simulation.fixture_attention(simulation.inventory.get_product(simulation.inventory.product_order[0]).fixture_id) != 1.0:
+        _fail("a shelf's attention is 1.0")
+        return false
+    var attention: Dictionary = simulation.config["simulation"]["fixture_attention"]
+    if float(attention["small_ambient_wagon"]) != 1.5 or float(attention["large_ambient_wagon_2"]) != 2.0:
+        _fail("wagons draw 1.5, the 2x2 wagons 2.0")
+        return false
+    simulation.economy.cash_yen += 1_000_000
+    var placed := ""
+    for y in range(2, simulation.layout.height_subcells - 4):
+        for x in range(1, simulation.layout.width_subcells - 3):
+            if placed.is_empty() and simulation.try_purchase_fixture("small_ambient_wagon", "wagon-test", Vector2i(x, y), Vector2i(x, y + 2)):
+                placed = "wagon-test"
+    if placed.is_empty():
+        _fail("a small wagon must fit somewhere in the small store")
+        return false
+    if simulation.layout.access_cells("wagon-test").size() < 2:
+        _fail("a wagon must be reachable from more than one side")
+        return false
+    var shelf: String = simulation.inventory.get_product(simulation.inventory.product_order[0]).fixture_id
+    if simulation.layout.access_cells(shelf).size() != 1:
+        _fail("a shelf is reached from its front only")
+        return false
+    if not simulation.try_procure_product("snacks", "wagon-goods", "wagon-test"):
+        _fail("the wagon must take goods")
+        return false
+    var sides: Array = simulation.layout.access_cells("wagon-test")
+    var front: Vector2i = sides[0]
+    var used_other_side := false
+    for start in [Vector2i(0, 0), Vector2i(simulation.layout.width_subcells - 1, simulation.layout.height_subcells - 1)]:
+        if not simulation.layout.is_walkable(start):
+            continue
+        var route: Array = simulation._route_to_product(start, "wagon-goods")
+        if not route.is_empty() and route[route.size() - 1] != front and sides.has(route[route.size() - 1]):
+            used_other_side = true
+    if not used_other_side:
+        _fail("someone coming from elsewhere must use the wagon's nearest side")
+        return false
+    return true
+
+
+# Task #120: the guide's 21 customer types and 143 visit rows
+# (CONFIRMED_OFFICIAL) drive who comes, what for, their 所持金, ついで買い,
+# price sensitivity, speed and patience (REMAKE_BALANCED_DEFAULT shapes).
+func _check_customer_types() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var block: Dictionary = fresh["guide_customer_types"]
+    for tag in ["CONFIRMED_OFFICIAL", "REMAKE_BALANCED_DEFAULT"]:
+        if tag not in str(block["evidence_note"]):
+            _fail("the customer types must stay tagged %s" % tag)
+            return false
+    if (block["types"] as Array).size() != 21 or (block["visits"] as Array).size() != 143:
+        _fail("21 customer types and 143 visit rows")
+        return false
+    for row in block["visits"]:
+        if ["oden", "chinese_steamed_bun", "hot_drink", "frozen_food", "seasoning"].has(str(row["primary"])) or (row["extras"] as Array).has("bento"):
+            _fail("the guide never has oden etc. as a purpose, nor bento as an extra")
+            return false
+    var simulation = _real_game_simulation()
+    simulation.minute_of_day = 2 * 60
+    var row: Dictionary = simulation._pick_visit_row()
+    if row.is_empty() or (2 * 60 - int(row["start_minute"]) + 1440) % 1440 >= int(row["duration_minutes"]):
+        _fail("a 2:00 customer is one of the rows whose window holds 2:00")
+        return false
+    for minute in 900:
+        simulation.tick()
+    var typed := 0
+    for customer in simulation.customers.all_customers():
+        if not customer.type_id.is_empty():
+            typed += 1
+            if simulation.customer_type_sprite(customer) != str(simulation._customer_types[customer.type_id]["sprite"]):
+                _fail("a customer is drawn as their type")
+                return false
+    if typed == 0:
+        _fail("customers in the real game are the guide's types")
+        return false
+    if simulation.survey_types.is_empty():
+        _fail("the month's visitors are counted by type for 店舗成績")
+        return false
+    var customer = simulation.customers.all_customers()[-1]
+    var product_id: String = simulation.inventory.product_order[0]
+    var saved_visit: Dictionary = customer.visit
+    customer.visit = saved_visit.duplicate()
+    customer.budget_left = 0
+    if simulation._reason_to_skip(customer, product_id) != "budget":
+        _fail("所持金 is a hard limit")
+        return false
+    customer.budget_left = 100000
+    customer.visit["price_sensitivity"] = 100
+    simulation.price_change_pct = 50
+    if simulation._reason_to_skip(customer, product_id) != "price":
+        _fail("a fully price-sensitive customer puts goods back after a 50% raise")
+        return false
+    simulation.price_change_pct = 0
+    customer.visit["stamina"] = 10
+    if not is_equal_approx(simulation._patience(customer), 0.25):
+        _fail("ス 10 (the guide's おじいさん) is the least patient")
+        return false
+    customer.visit = saved_visit
+    for minute in 1440:
+        simulation.tick()
+    if simulation.event_log.count_type("customer_add_on") == 0:
+        _fail("customers must buy extras on the way (ついで買い)")
+        return false
+    return true
+
+
+# Task #123: a bought rival branch, and a store opened on chosen land, are
+# the player's own stores to look at and run; they share the town's
+# customers with 本店 and are saved.
+func _check_branch_stores() -> bool:
+    var simulation = _real_game_simulation()
+    for minute in 300:
+        simulation.tick()
+    var main_name: String = simulation.staff.checkout_staff().display_name
+    if not simulation.try_buy_out_rival("rival-02"):
+        _fail("rival-02 must be buyable")
+        return false
+    if simulation.store_count() != 2 or simulation.active_store != 0 or simulation.store_name != "本店":
+        _fail("buying a rival adds a second store and keeps showing 本店")
+        return false
+    if not simulation._competitor_positions().has(simulation.store_field(1, "store_site_origin")):
+        _fail("本店 shares its customers with the player's other stores")
+        return false
+    simulation.select_store(1)
+    if simulation.store_name != "2号店" or simulation.store_site_origin != Vector2i(simulation.owned_branches[0]["position"]):
+        _fail("selecting store 1 shows the 2号店 on the bought site")
+        return false
+    for member in simulation.staff.all_staff():
+        if member.display_name == main_name:
+            _fail("the 2号店 has its own staff, nobody from 本店")
+            return false
+    var main_candidate: String = simulation.store_field(0, "staff").all_staff()[0].candidate_id
+    if simulation.try_hire_candidate(simulation.staff.all_staff()[0].staff_id, main_candidate):
+        _fail("someone working at 本店 cannot also be hired at the 2号店")
+        return false
+    if not simulation.try_set_price_policy(-10) or simulation.store_field(0, "price_change_pct") != 0:
+        _fail("the 2号店's prices are its own")
+        return false
+    for minute in 1440:
+        simulation.tick()
+    if simulation.active_store != 1:
+        _fail("ticking keeps the store being looked at")
+        return false
+    if simulation.store_field(0, "_store_sales_yen") <= 0 or simulation.store_field(1, "_store_sales_yen") <= 0:
+        _fail("both stores must trade")
+        return false
+    if not simulation.try_buy_store_site(Vector2i(3, 3), "small_top") or simulation.store_count() != 3:
+        _fail("a new store can be opened on land picked on the map")
+        return false
+    var data: Dictionary = JSON.parse_string(JSON.stringify(simulation.save_state()))
+    if (data["branches"] as Array).size() != 2 or str(data["store_name"]) != "本店":
+        _fail("the save holds 本店 at the top and the two other stores")
+        return false
+    var copy = _real_game_simulation()
+    if not copy.load_state(data) or copy.store_count() != 3:
+        _fail("a load must bring back all three stores")
+        return false
+    if copy.store_field(1, "price_change_pct") != -10 or copy.store_field(2, "store_name") != "3号店":
+        _fail("each store keeps its own state through a load")
+        return false
+    for minute in 60:
+        copy.tick()
+    # A schema 9 save (bought branches only counted) opens them as stores.
+    var old: Dictionary = data.duplicate(true)
+    old["save_schema_version"] = 9
+    old.erase("branches")
+    var migrated = _real_game_simulation()
+    if not migrated.load_state(old) or migrated.store_count() != 2:
+        _fail("an older save's bought branch must open as a store")
+        return false
+    return true
+
+
+# Task #121: the customers who have left are not kept for ever.
+func _check_customer_roster_stays_small() -> bool:
+    var simulation = _real_game_simulation()
+    for minute in 1440 * 6:
+        simulation.tick()
+    var started: int = simulation.customers.started_count()
+    if started <= simulation.customers.KEPT_DONE_CUSTOMERS + 20:
+        _fail("six days bring more visits than are kept: %d" % started)
+        return false
+    if simulation.customers.customers.size() > simulation.customers.KEPT_DONE_CUSTOMERS + int(simulation.customers.active_customers().size()) + 1:
+        _fail("only the latest departed customers are kept")
+        return false
+    if simulation.customers.completed_count() + simulation.customers.active_customers().size() != started:
+        _fail("the visit totals must still count everyone")
         return false
     return true

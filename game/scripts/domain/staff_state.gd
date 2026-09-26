@@ -27,6 +27,9 @@ var rest_phase := ""
 var stamina := 0
 var stamina_max := 0
 var exhausted := false
+# Task #118: customers this staff member has rung up (for sharing out the
+# register).
+var checkouts_done := 0
 var service_skill: int
 var security_skill: int
 var cleaning_skill: int
@@ -188,6 +191,12 @@ func finish_restock() -> void:
 
 func home_position() -> Vector2i:
     return _start_position
+
+
+# Task #118: register duty moves between staff members, and with it the
+# post each one returns to (the register front for whoever has the duty).
+func set_home_position(cell: Vector2i) -> void:
+    _start_position = cell
 
 
 func move_along_route(next_state: String) -> bool:

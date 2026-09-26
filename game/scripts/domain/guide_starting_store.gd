@@ -32,6 +32,14 @@ static func apply(config: Dictionary) -> Dictionary:
     # Task #109 (REMAKE_BALANCED_DEFAULT, staff_work.evidence_note): edit
     # the layout, stock products and hire with customers inside.
     applied["simulation"]["edits_while_open"] = bool(work["edits_while_open"])
+    # Tasks #118-#120 (REMAKE_BALANCED_DEFAULT on CONFIRMED anchors, see
+    # store_rules.evidence_note): register duty rotates, wagons are reached
+    # from any side and draw more attention, customers are the guide's types.
+    var rules: Dictionary = guide.get("store_rules", {})
+    applied["simulation"]["checkout_rotation_enabled"] = bool(rules.get("checkout_rotation_enabled", false))
+    applied["simulation"]["customer_types_enabled"] = bool(rules.get("customer_types_enabled", false))
+    applied["simulation"]["any_side_catalog_ids"] = (rules.get("any_side_catalog_ids", []) as Array).duplicate()
+    applied["simulation"]["fixture_attention"] = (rules.get("fixture_attention", {}) as Dictionary).duplicate()
     # Task #114: the town grows and the beginner map is cleared by the 都庁
     # (guide_town_map.town_growth).
     applied["simulation"]["town_growth_enabled"] = config.get("guide_town_map", {}).has("town_growth")

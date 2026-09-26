@@ -64,7 +64,7 @@ const STAFF_STATE_TEXT := {
 }
 const EVENT_NOTICES := [
     "store_built", "facility_built", "inducement_started", "town_building_built", "rival_withdrew", "rival_opened", "rival_bought_out", "month_end_settlement",
-    "checkout_anger_triggered", "staff_exhausted", "promotion_fired", "chain_expanded",
+    "checkout_anger_triggered", "staff_exhausted", "promotion_fired", "chain_expanded", "store_opened",
 ]
 
 var main
@@ -74,6 +74,9 @@ var pause_button: Button
 var speed_button: Button
 var bottom_bar: PanelContainer
 var store_name_label: Label
+# Task #123: the store name in the status bar is a button to the list of
+# the player's stores.
+var store_button: Button
 var permit_marks: Dictionary = {}
 var sales_label: Label
 var ticker_label: Label
@@ -263,7 +266,14 @@ func _build_bottom_bar() -> void:
     var row := HBoxContainer.new()
     row.add_theme_constant_override("separation", 16)
     bottom_bar.add_child(row)
+    store_button = Button.new()
+    store_button.name = "PhoneStoreButton"
+    store_button.custom_minimum_size = Vector2(120, 44)
+    store_button.add_theme_font_size_override("font_size", 22)
+    store_button.pressed.connect(func(): toggle_window("stores"))
+    row.add_child(store_button)
     store_name_label = _label("本店", 24, BAND_TEXT)
+    store_name_label.visible = false
     row.add_child(store_name_label)
     for permit_id in ["tobacco", "alcohol", "medicine"]:
         var mark := TextureRect.new()
@@ -428,16 +438,31 @@ func open_window(id: String) -> void:
         "research":
             window_title.text = "調査"
             _fill_research()
+        "results", "shop", "survey", "town":
+            window_title.text = "調査：" + str(RESEARCH_TITLES[id])
+            match id:
+                "results":
+                    _fill_results()
+                "shop":
+                    _fill_shop()
+                "survey":
+                    _fill_survey()
+                "town":
+                    _fill_town()
         "system":
             window_title.text = "システム"
             _fill_system()
+        "stores":
+            window_title.text = "お店の一覧"
+            _fill_stores()
         "stock":
-            window_title.text = "商品を並べる"
+            window_title.text = "商品を並べる" if main.simulation.inventory.product_on_fixture(stock_fixture_id).is_empty() else "商品を変える"
             _fill_stock()
     window.visible = true
     window_scroll.scroll_vertical = 0
+    var command_id := "research" if RESEARCH_TITLES.has(id) else id
     for key in menu_buttons:
-        (menu_buttons[key] as Button).add_theme_stylebox_override("normal", _box(CHOSEN if key == id else BUTTON))
+        (menu_buttons[key] as Button).add_theme_stylebox_override("normal", _box(CHOSEN if key == command_id else BUTTON))
     # Only the 内装 window edits the layout (see the file header).
     main.store_view.editing = id == "interior"
     if id != "interior":
@@ -509,7 +534,10 @@ func refresh() -> void:
     if _day_seen != simulation.day_count or _day_seen < 0:
         _day_seen = simulation.day_count
         _revenue_at_day_start = simulation.economy.recorded_revenue_yen()
-    sales_label.text = "本日の売上 ¥%s" % main._format_integer(simulation.economy.recorded_revenue_yen() - _revenue_at_day_start)
+    # Task #123: the store being looked at.
+    sales_label.text = "本日の売上 ¥%s" % main._format_integer(simulation.store_sales_today_yen())
+    store_name_label.text = simulation.store_name
+    store_button.text = simulation.store_name + (" ▼" if simulation.store_count() > 1 else "")
     for permit_id in permit_marks:
         (permit_marks[permit_id] as TextureRect).modulate = Color.WHITE if simulation.has_permit(permit_id) else Color(1, 1, 1, 0.22)
     ticker_label.text = main.tr(str(simulation.last_event))
@@ -527,6 +555,8 @@ func refresh() -> void:
         updater.call()
     _refresh_customer_card()
     _show_event_notices()
+    if notice.visible:
+        _place_notice()
 
 
 func _process(delta: float) -> void:
@@ -709,6 +739,9 @@ func _build_customer_card() -> void:
     customer_card_label = _label("", 22)
     customer_card_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
     customer_card_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    # A wrapping label needs a width, or the card is measured at one
+    # character per line (seen once the card got its third line, task #120).
+    customer_card_label.custom_minimum_size = Vector2(280, 0)
     row.add_child(customer_card_label)
     customer_eject_button = Button.new()
     customer_eject_button.name = "PhoneEjectButton"
@@ -745,12 +778,23 @@ func _refresh_customer_card() -> void:
         return
     var items: Array[String] = []
     for line in customer.basket:
-        var product = main.simulation.inventory.get_product(str(line["product_id"]))
-        items.append(main.tr(product.catalog_id) if product != null else str(line["product_id"]))
-    customer_card_label.text = "お客さん（%s）\nかご：%s　¥%s" % [
-        main.tr(customer.phase), "、".join(items) if not items.is_empty() else "なし",
+        # The shelf may have been sold since (task #117).
+        var product = main.simulation.inventory.products.get(str(line["product_id"]))
+        items.append(main.tr(product.catalog_id) if product != null else "商品")
+    # Task #120: the customer's type, 所持金 left and what they came for.
+    var who := "お客さん"
+    var type_name: String = main.simulation.customer_type_name(customer)
+    if not type_name.is_empty():
+        who = type_name
+    customer_card_label.text = "%s（%s）\nかご：%s　¥%s" % [
+        who, main.tr(customer.phase), "、".join(items) if not items.is_empty() else "なし",
         main._format_integer(customer.basket_total_yen()),
     ]
+    if not customer.visit.is_empty():
+        var purpose := str(customer.visit["primary"])
+        customer_card_label.text += "\n目的：%s　所持金の残り ¥%s" % [
+            main.tr(purpose) if not purpose.is_empty() else "なし", main._format_integer(customer.budget_left),
+        ]
     customer_eject_button.disabled = not customer.phase in ["waiting_checkout", "checkout"]
     customer_card.visible = true
     customer_card.size = Vector2(560, 0)
@@ -788,11 +832,22 @@ func show_notice(text: String, seconds := 3.5) -> void:
     if main.store_view.visible:
         var store_width: float = main.simulation.layout.width_subcells * main.store_view.SUBCELL_PIXELS * main.store_view.scale.x
         middle = main.store_view.position.x + store_width / 2.0
-    notice.position = Vector2(
-        clampf(middle - notice.size.x / 2.0, 8.0, PLAY_RIGHT - notice.size.x - 8.0),
-        SCREEN.y - BOTTOM_HEIGHT - notice.size.y - 12
-    )
+    _notice_middle = middle
+    _place_notice()
     _notice_left = seconds
+
+
+var _notice_middle := 0.0
+
+
+# Just above the status bar, but never over the buttons of a card shown
+# along the bottom (re-placed while shown, as cards come and go).
+func _place_notice() -> void:
+    var top: float = SCREEN.y - BOTTOM_HEIGHT - notice.size.y - 12
+    for card in [main.fixture_info_panel, customer_card]:
+        if card != null and card.visible and card.position.y < top + notice.size.y:
+            top = minf(top, card.position.y - notice.size.y - 8)
+    notice.position = Vector2(clampf(_notice_middle - notice.size.x / 2.0, 8.0, PLAY_RIGHT - notice.size.x - 8.0), top)
 
 
 func _show_event_notices() -> void:
@@ -808,7 +863,11 @@ func _show_event_notices() -> void:
             continue
         var event_type := str(record["event_type"])
         if EVENT_NOTICES.has(event_type):
-            shown = _notice_text(event_type, record.get("details", {}))
+            var details: Dictionary = record.get("details", {})
+            shown = _notice_text(event_type, details)
+            # Task #123: say which store it happened in.
+            if details.has("store_index") and main.simulation.store_count() > 1 and not event_type in ["month_end_settlement", "rival_bought_out", "store_opened"]:
+                shown = "［%s］%s" % [main.simulation.store_field(int(details["store_index"]), "store_name"), shown]
     _heard_sequence = newest
     if not shown.is_empty():
         show_notice(shown)
@@ -846,7 +905,12 @@ func _notice_text(event_type: String, details: Dictionary) -> String:
         "checkout_anger_triggered":
             return "レジが遅くてお客さんが怒った！"
         "staff_exhausted":
-            return "%s が疲れて休憩に入った" % _staff_name(str(details.get("staff_id", "")))
+            return "%s が疲れて休憩に入った" % _staff_name(str(details.get("staff_id", "")), int(details.get("store_index", main.simulation.active_store)))
+        "rival_bought_out", "store_opened":
+            var new_index := int(details.get("new_store_index", -1))
+            if new_index < 0:
+                return main.tr(event_type.replace("_", " "))
+            return "%s ができました。下の店名から切り替えられます" % main.simulation.store_field(new_index, "store_name")
         "inducement_started":
             return "%s の誘致を始めました（完成まで約1か月）" % _facility_name(str(details.get("facility_id", "")))
         "facility_built":
@@ -862,7 +926,11 @@ func _rival_name(rival_id: String) -> String:
     return str(main.simulation._rival_guide_entry(rival_id).get("name", "ライバル店"))
 
 
-func _staff_name(staff_id: String) -> String:
+func _staff_name(staff_id: String, store_index := -1) -> String:
+    if store_index >= 0 and store_index != main.simulation.active_store and store_index < main.simulation.store_count():
+        var roster = main.simulation.store_field(store_index, "staff")
+        if roster.members.has(staff_id):
+            return str(roster.members[staff_id].display_name)
     var member = main.simulation.staff.members.get(staff_id)
     return staff_id if member == null else str(member.display_name)
 
@@ -928,7 +996,10 @@ func _gauge(value: int, maximum: int, width := 160.0) -> Control:
         var shown_max: int = maxi(1, int(gauge.get_meta("maximum")))
         var share := clampf(float(gauge.get_meta("value")) / shown_max, 0.0, 1.0)
         gauge.draw_rect(Rect2(Vector2.ZERO, gauge.size), GAUGE_BACK)
-        gauge.draw_rect(Rect2(Vector2.ZERO, Vector2(gauge.size.x * share, gauge.size.y)), GAUGE_GOOD if share > 0.3 else GAUGE_LOW))
+        var fill: Color = GAUGE_GOOD if share > 0.3 else GAUGE_LOW
+        if gauge.has_meta("color"):
+            fill = gauge.get_meta("color")
+        gauge.draw_rect(Rect2(Vector2.ZERO, Vector2(gauge.size.x * share, gauge.size.y)), fill))
     return gauge
 
 
@@ -1060,6 +1131,11 @@ func _fill_candidates(staff_id: String) -> void:
     for other in main.simulation.staff.all_staff():
         if other.staff_id != staff_id:
             employed.append(other.candidate_id)
+    # Task #123: people working at the player's other stores too.
+    for index in main.simulation.store_count():
+        if index != main.simulation.active_store:
+            for other in main.simulation.store_field(index, "staff").all_staff():
+                employed.append(other.candidate_id)
     for entry in main.config["staff_candidates"]:
         var candidate_id := str(entry["candidate_id"])
         if candidate_id in employed or candidate_id == member.candidate_id:
@@ -1187,17 +1263,176 @@ func _fill_promotion() -> void:
         _updaters.append(func():
             button.disabled = not main.simulation.pending_inducement.is_empty() or main.simulation.economy.cash_yen < aid)
     _section("新しい店を出す")
-    var expand := _button("", main._on_expand_chain_pressed)
-    _updaters.append(func():
-        expand.text = "チェーンを広げる ¥%s（今%d店）" % [
-            main._format_integer(main.simulation.chain_expansion_cost_yen()), main.simulation.player_store_count,
-        ]
-        expand.disabled = main.simulation.town_is_full() or main.simulation.economy.cash_yen < main.simulation.chain_expansion_cost_yen())
+    # Task #123: in the real game a new store is built on land picked on
+    # the town map, like the first one (新規出店); it can then be run.
+    if not main.simulation.store_types().is_empty():
+        var open_store := _button("土地を選んで新しい店を出す", func():
+            close_window()
+            main.start_new_store())
+        open_store.name = "NewStoreButton"
+        _updaters.append(func():
+            open_store.text = "土地を選んで新しい店を出す（今%d店）" % main.simulation.player_store_count
+            open_store.disabled = main.simulation.town_is_full())
+    else:
+        var expand := _button("", main._on_expand_chain_pressed)
+        _updaters.append(func():
+            expand.text = "チェーンを広げる ¥%s（今%d店）" % [
+                main._format_integer(main.simulation.chain_expansion_cost_yen()), main.simulation.player_store_count,
+            ]
+            expand.disabled = main.simulation.town_is_full() or main.simulation.economy.cash_yen < main.simulation.chain_expansion_cost_yen())
     var full := _text("")
     _updaters.append(func(): full.text = "町の店はライバル込みで10店まで" if main.simulation.town_is_full() else "")
 
 
+# Task #122 (the owner: 収支 and アンケート each on their own screen). 調査
+# opens a list of its screens, as in the original, whose 調査 holds
+# 全店収支グラフ (CONFIRMED_COMMUNITY name), each store's sales results and
+# the アンケート (CONFIRMED_COMMUNITY, SS play report; docs/research/menu-
+# hierarchy-evidence-2026-09-05.md sections 3 and 5). Their layout is this
+# project's own (REMAKE_BALANCED_DEFAULT).
+const RESEARCH_SCREENS := [
+    ["results", "全店収支グラフ", "res://assets/menu_icons/products/cash.png"],
+    ["shop", "店舗成績", "res://assets/menu_icons/store_types/store_type_01.png"],
+    ["survey", "アンケート", "res://assets/menu_icons/products/books.png"],
+    ["town", "町と目標", "res://assets/menu_icons/store_types/store_type_03.png"],
+]
+const RESEARCH_TITLES := {
+    "results": "全店収支グラフ", "shop": "店舗成績", "survey": "アンケート", "town": "町と目標",
+}
+
+
 func _fill_research() -> void:
+    for screen in RESEARCH_SCREENS:
+        var id := str(screen[0])
+        var button := _button(str(screen[1]), func(): open_window(id))
+        button.name = "Research_" + id
+        button.custom_minimum_size = Vector2(0, 72)
+        button.icon = _texture(str(screen[2]))
+        button.expand_icon = false
+        button.add_theme_constant_override("icon_max_width", 48)
+        button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+
+
+# The way back from one of 調査's screens.
+func _back_to_research() -> void:
+    var back := _button("← 調査にもどる", func(): open_window("research"))
+    back.name = "ResearchBack"
+
+
+func _fill_results() -> void:
+    _back_to_research()
+    # Task #113: the last 12 months' sales and 収支 as bars.
+    var graph := Control.new()
+    graph.name = "ResultsGraph"
+    graph.custom_minimum_size = Vector2(0, 220)
+    graph.draw.connect(func(): _draw_results_graph(graph))
+    window_body.add_child(graph)
+    _updaters.append(func(): graph.queue_redraw())
+    _section("月ごとの収支")
+    var table := _text("", 20)
+    _updaters.append(func():
+        var records: Array = main.simulation.economy.month_end_records
+        if records.is_empty():
+            table.text = "最初の月末に集計されます"
+            return
+        var lines: Array[String] = []
+        for record in records.slice(maxi(0, records.size() - 6)):
+            var details: Dictionary = record["details"]
+            lines.append("%d年目%d月　売上 ¥%s　収支 ¥%s" % [
+                (int(details.get("month_number", 1)) - 1) / 12 + 1, (int(details.get("month_number", 1)) - 1) % 12 + 1,
+                main._format_integer(int(details.get("month_sales_yen", 0))),
+                main._format_integer(int(details.get("month_result_yen", 0))),
+            ])
+        lines.reverse()
+        table.text = "\n".join(lines))
+
+
+func _fill_shop() -> void:
+    _back_to_research()
+    var results := _text("")
+    _updaters.append(func():
+        var simulation = main.simulation
+        var snapshot: Dictionary = simulation.snapshot()
+        # Task #123: this store's own sales.
+        var month_sales: int = simulation._store_sales_yen - simulation._store_sales_at_month_start
+        var lines: Array[String] = [
+            "%s　今月の売上　¥%s" % [simulation.store_name, main._format_integer(month_sales)],
+            "来店　%d人（会計まで %d人）" % [int(snapshot["started_visits"]), int(snapshot["completed_visits"])],
+            "評価　%s　人気度 %d" % [main._star_rank_text(int(snapshot["star_rating"])), int(snapshot["popularity"])],
+            "商品在庫　%d個" % int(snapshot["stock_units"]),
+        ]
+        if not simulation.economy.month_end_records.is_empty():
+            var last: Dictionary = simulation.economy.month_end_records[-1]["details"]
+            lines.append("先月の収支　¥%s" % main._format_integer(int(last.get("month_result_yen", 0))))
+        results.text = "\n".join(lines))
+    # Task #120: who came this month (the guide's customer types).
+    _section("今月来たお客さん")
+    var types := _text("", 20)
+    _updaters.append(func():
+        var counts: Dictionary = main.simulation.survey_types
+        if counts.is_empty():
+            types.text = "まだいません"
+            return
+        var keys: Array = counts.keys()
+        keys.sort_custom(func(a, b): return int(counts[a]) > int(counts[b]))
+        var parts: Array[String] = []
+        for key in keys.slice(0, 8):
+            parts.append("%s %d人" % [str(main.simulation._customer_types.get(key, {}).get("name", key)), int(counts[key])])
+        types.text = "、".join(parts))
+
+
+# The survey as two ranked lists with the products' pictures: what sold, and
+# what customers came for but did not find.
+func _fill_survey() -> void:
+    _back_to_research()
+    var month := _row()
+    var this_month := _button("今月", func():
+        survey_month = "this"
+        open_window("survey"), month)
+    var last_month := _button("先月", func():
+        survey_month = "last"
+        open_window("survey"), month)
+    this_month.add_theme_stylebox_override("normal", _box(CHOSEN if survey_month == "this" else BUTTON))
+    last_month.add_theme_stylebox_override("normal", _box(CHOSEN if survey_month == "last" else BUTTON))
+    var data: Dictionary = {"bought": main.simulation.survey_bought, "missing": main.simulation.survey_missing}
+    if survey_month == "last":
+        data = main.simulation.last_survey
+    _section("よく売れた商品")
+    _survey_list(data.get("bought", {}), GRAPH_SALES, "個")
+    _section("欲しかったのに無かった商品")
+    _survey_list(data.get("missing", {}), GRAPH_LOSS, "人")
+
+
+var survey_month := "this"
+
+
+func _survey_list(counts: Dictionary, color: Color, unit: String) -> void:
+    if counts.is_empty():
+        _text("まだありません", 20)
+        return
+    var keys: Array = counts.keys()
+    keys.sort_custom(func(a, b): return int(counts[a]) > int(counts[b]))
+    var biggest := float(maxi(1, int(counts[keys[0]])))
+    for key in keys.slice(0, 8):
+        var row := _row()
+        var icon := TextureRect.new()
+        icon.texture = main._menu_icon("products", str(key))
+        icon.custom_minimum_size = Vector2(40, 40)
+        icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+        icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+        row.add_child(icon)
+        var name_label := _label(main.tr(str(key)), 20, PAPER_TEXT)
+        name_label.custom_minimum_size = Vector2(150, 0)
+        name_label.clip_text = true
+        row.add_child(name_label)
+        var bar := _gauge(int(counts[key]), int(biggest), 180.0)
+        bar.set_meta("color", color)
+        row.add_child(bar)
+        row.add_child(_label("%d%s" % [int(counts[key]), unit], 20, PAPER_TEXT))
+
+
+func _fill_town() -> void:
+    _back_to_research()
     # Task #114: the beginner map's goal, 都庁を誘致する.
     if not main.simulation._town_growth().is_empty():
         _section("目標")
@@ -1212,35 +1447,6 @@ func _fill_research() -> void:
             ]
             if main.simulation.clear_condition_met:
                 goal.text += "　クリア！")
-    _section("店の成績")
-    var results := _text("")
-    _updaters.append(func():
-        var simulation = main.simulation
-        var snapshot: Dictionary = simulation.snapshot()
-        var month_sales: int = simulation.economy.recorded_revenue_yen() - simulation._revenue_at_month_start
-        var lines: Array[String] = [
-            "今月の売上　¥%s" % main._format_integer(month_sales),
-            "来店　%d人（会計まで %d人）" % [int(snapshot["started_visits"]), int(snapshot["completed_visits"])],
-            "評価　%s　人気度 %d" % [main._star_rank_text(int(snapshot["star_rating"])), int(snapshot["popularity"])],
-            "商品在庫　%d個" % int(snapshot["stock_units"]),
-        ]
-        if not simulation.economy.month_end_records.is_empty():
-            var last: Dictionary = simulation.economy.month_end_records[-1]["details"]
-            lines.append("先月の収支　¥%s" % main._format_integer(int(last.get("month_result_yen", 0))))
-        results.text = "\n".join(lines))
-    # Task #113: 調査 → 収支グラフ (the command exists, docs/research/menu-
-    # hierarchy-evidence-2026-09-05.md section 3; its drawing is this
-    # project's own): the last 12 months' sales and 収支 as bars.
-    _section("収支グラフ（月ごと・売上と収支）")
-    var graph := Control.new()
-    graph.name = "ResultsGraph"
-    graph.custom_minimum_size = Vector2(0, 170)
-    graph.draw.connect(func(): _draw_results_graph(graph))
-    window_body.add_child(graph)
-    _updaters.append(func(): graph.queue_redraw())
-    _section("アンケート")
-    var survey := _text("")
-    _updaters.append(func(): survey.text = main.survey_label.text)
     _section("町")
     var town := _text("")
     _updaters.append(func(): town.text = main.town_label.text)
@@ -1315,6 +1521,41 @@ func _fill_system() -> void:
     _button("タイトルへ", main._on_quit_to_menu_pressed)
 
 
+# Task #123: the player's stores, each with its rating and today's sales;
+# tapping one goes there (it can also be tapped on the town map).
+func _fill_stores() -> void:
+    var simulation = main.simulation
+    for index in simulation.store_count():
+        var store_index: int = index
+        var card := PanelContainer.new()
+        card.add_theme_stylebox_override("panel", _box(Color("f1ead4") if index != simulation.viewed_store else Color("f7d9e3"), Color("cbbf9f"), 10, 2))
+        window_body.add_child(card)
+        var row := HBoxContainer.new()
+        card.add_child(row)
+        var info := _label("", 22, PAPER_TEXT)
+        info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+        row.add_child(info)
+        var go := Button.new()
+        go.name = "GoStore_%d" % index
+        go.text = "この店へ" if index != simulation.viewed_store else "表示中"
+        go.disabled = index == simulation.viewed_store
+        go.custom_minimum_size = Vector2(130, 64)
+        go.pressed.connect(func():
+            close_window()
+            main.select_store(store_index))
+        row.add_child(go)
+        _updaters.append(func():
+            var sales: int = simulation.store_field(store_index, "_store_sales_yen") - simulation.store_field(store_index, "_store_sales_at_day_start")
+            info.text = "%s　%s\n本日の売上 ¥%s　お客さん %d人" % [
+                simulation.store_field(store_index, "store_name"),
+                main._star_rank_text(int(simulation.store_field(store_index, "star_rating"))),
+                main._format_integer(sales),
+                simulation.store_field(store_index, "customers").active_customers().size(),
+            ])
+    if simulation.store_count() == 1:
+        _text("店は本店だけです。ライバル店の買収か、販促の「新しい店を出す」で増やせます。", 20)
+
+
 # Stocking an empty shelf: the products it can hold, as pictures (the
 # original picks products from a grid of category icons,
 # docs/research/ui-menu-evidence-2026-09-05.md section 5).
@@ -1327,7 +1568,18 @@ func _fill_stock() -> void:
     for entry in main.config["fixture_catalog"]:
         if str(entry["catalog_id"]) == str(fixture.get("catalog_id", "")):
             catalog = entry
-    _text("%s に並べる商品" % main._fixture_label(stock_fixture_id))
+    var held_id: String = main.simulation.inventory.product_on_fixture(stock_fixture_id)
+    var held_catalog := ""
+    if held_id.is_empty():
+        _text("%s に並べる商品" % main._fixture_label(stock_fixture_id))
+    else:
+        # Task #117: the goods on the shelf now go back at cost.
+        var held = main.simulation.inventory.get_product(held_id)
+        held_catalog = str(held.catalog_id)
+        _text("今の商品：%s（残り%d個は仕入れ値 ¥%s で返品）" % [
+            main.tr(held_catalog), held.stock_units,
+            main._format_integer(held.stock_units * held.restock_unit_cost_yen),
+        ])
     var grid := GridContainer.new()
     grid.columns = 3
     window_body.add_child(grid)
@@ -1342,14 +1594,15 @@ func _fill_stock() -> void:
             func():
                 var instance_id := "product-purchase-%d" % main._next_product_purchase_sequence
                 main._next_product_purchase_sequence += 1
-                if main.simulation.try_procure_product(catalog_id, instance_id, stock_fixture_id):
+                if main.simulation.try_change_product(catalog_id, instance_id, stock_fixture_id):
                     show_notice("%s を並べました" % main.tr(catalog_id))
+                    main.store_view.queue_redraw()
                     close_window()
                 else:
                     show_notice("並べられません（許可かお金が足りません）"),
             grid
         )
-        _updaters.append(func(): button.disabled = not permit.is_empty() and not main.simulation.has_permit(permit))
+        _updaters.append(func(): button.disabled = catalog_id == held_catalog or (not permit.is_empty() and not main.simulation.has_permit(permit)))
 
 
 func open_stock_window(fixture_id: String) -> void:

@@ -17,9 +17,14 @@ var fixtures: Array = []
 var fixtures_by_id: Dictionary = {}
 var _subcells_per_tile: int
 var _initial_fixtures: Array
+# Task #119: catalog ids whose goods can be taken from any free side (the
+# wagons); every other fixture only from its front (interaction_subcell).
+var any_side_catalog_ids: Dictionary = {}
 
 
-func _init(store_config: Dictionary, fixture_configs: Array) -> void:
+func _init(store_config: Dictionary, fixture_configs: Array, any_side_ids: Array = []) -> void:
+    for catalog_id in any_side_ids:
+        any_side_catalog_ids[str(catalog_id)] = true
     var scale := int(store_config["subcells_per_tile"])
     _subcells_per_tile = scale
     width_subcells = int(store_config["width_tiles"]) * scale
@@ -27,6 +32,7 @@ func _init(store_config: Dictionary, fixture_configs: Array) -> void:
     entry = _vec2i(store_config["entry_subcell"])
     exit = _vec2i(store_config["exit_subcell"])
     _initial_fixtures = _normalize_fixture_configs(fixture_configs)
+    _settle_any_side_fronts(_initial_fixtures)
     fixtures = _initial_fixtures.duplicate(true)
     assert(width_subcells > 0 and height_subcells > 0 and scale > 0)
     assert(_inside(entry) and _inside(exit))
@@ -44,11 +50,13 @@ func fixture_snapshot() -> Array:
 
 
 func fixture_snapshot_is_valid(snapshot: Array) -> bool:
-    return _fixture_configs_are_valid(snapshot)
+    var candidate := _normalize_fixture_configs(snapshot)
+    _settle_any_side_fronts(candidate)
+    return _fixture_configs_are_valid(candidate)
 
 
 func restore_fixture_snapshot(snapshot: Array) -> void:
-    assert(_fixture_configs_are_valid(snapshot))
+    assert(fixture_snapshot_is_valid(snapshot))
     # Normalizes rather than a plain duplicate() so a snapshot that has been
     # through a JSON round-trip (e.g. save/load, where JSON.parse_string()
     # returns every number as float) still ends up with int-typed subcell
@@ -57,6 +65,7 @@ func restore_fixture_snapshot(snapshot: Array) -> void:
     # (the purchase/relocate/rotate rollback's own use of this method), so
     # this is a safe behavior change for every existing caller too.
     fixtures = _normalize_fixture_configs(snapshot)
+    _settle_any_side_fronts(fixtures)
     _build_blocked_cells(_subcells_per_tile)
 
 
@@ -127,6 +136,94 @@ func find_path_avoiding(start: Vector2i, goal: Vector2i, avoid: Dictionary) -> A
     return []
 
 
+# Task #119: the nearest of several goal cells (breadth-first, like
+# find_path()). Returns [] when start already is a goal, or none can be
+# reached -- callers tell the two apart with `goals.has(start)`.
+func find_path_to_any(start: Vector2i, goals: Dictionary) -> Array[Vector2i]:
+    if goals.has(start) or goals.is_empty():
+        return []
+    var frontier: Array[Vector2i] = [start]
+    var head := 0
+    var came_from: Dictionary = {start: start}
+    while head < frontier.size():
+        var current: Vector2i = frontier[head]
+        head += 1
+        for direction in CARDINAL_DIRECTIONS:
+            var candidate := current + direction
+            if not _inside(candidate) or came_from.has(candidate):
+                continue
+            if blocked.has(candidate) and not goals.has(candidate):
+                continue
+            came_from[candidate] = current
+            if goals.has(candidate):
+                return _reconstruct_path(came_from, start, candidate)
+            frontier.append(candidate)
+    return []
+
+
+func is_any_side(fixture: Dictionary) -> bool:
+    return any_side_catalog_ids.has(str(fixture.get("catalog_id", "")))
+
+
+# Where a person stands to take goods from `fixture_id`: its front only, or
+# for a wagon (Task #119) every free cell along any of its sides.
+func access_cells(fixture_id: String) -> Array[Vector2i]:
+    var cells: Array[Vector2i] = []
+    if not fixtures_by_id.has(fixture_id):
+        return cells
+    var fixture: Dictionary = fixtures_by_id[fixture_id]
+    var front := _vec2i(fixture["interaction_subcell"])
+    cells.append(front)
+    if not is_any_side(fixture):
+        return cells
+    for cell in _side_cells(fixture):
+        if cell != front and not blocked.has(cell):
+            cells.append(cell)
+    return cells
+
+
+func _side_cells(fixture: Dictionary) -> Array[Vector2i]:
+    var origin := _vec2i(fixture["origin_subcell"])
+    var footprint: Array = fixture["footprint_tiles"]
+    var size := Vector2i(int(footprint[0]), int(footprint[1])) * _subcells_per_tile
+    var cells: Array[Vector2i] = []
+    for x in range(origin.x, origin.x + size.x):
+        for cell in [Vector2i(x, origin.y - 1), Vector2i(x, origin.y + size.y)]:
+            if _inside(cell):
+                cells.append(cell)
+    for y in range(origin.y, origin.y + size.y):
+        for cell in [Vector2i(origin.x - 1, y), Vector2i(origin.x + size.x, y)]:
+            if _inside(cell):
+                cells.append(cell)
+    return cells
+
+
+# Task #119: a wagon can stand with its front against another fixture as
+# long as one of its sides is free; its front then moves to the first free
+# side cell (deterministic order), so every fixture keeps one reachable
+# front for the checks that use it.
+func _settle_any_side_fronts(candidate_fixtures: Array) -> void:
+    if any_side_catalog_ids.is_empty():
+        return
+    var occupied: Dictionary = {}
+    for fixture in candidate_fixtures:
+        var origin := _vec2i(fixture["origin_subcell"])
+        var footprint: Array = fixture["footprint_tiles"]
+        for y in range(origin.y, origin.y + int(footprint[1]) * _subcells_per_tile):
+            for x in range(origin.x, origin.x + int(footprint[0]) * _subcells_per_tile):
+                occupied[Vector2i(x, y)] = true
+    for fixture in candidate_fixtures:
+        if not is_any_side(fixture):
+            continue
+        var front := _vec2i(fixture["interaction_subcell"])
+        if _inside(front) and not occupied.has(front) and front != entry and front != exit:
+            continue
+        for cell in _side_cells(fixture):
+            if not occupied.has(cell):
+                fixture["interaction_subcell"] = [cell.x, cell.y]
+                break
+
+
 func has_path(start: Vector2i, goal: Vector2i) -> bool:
     return start == goal or not find_path(start, goal).is_empty()
 
@@ -147,6 +244,7 @@ func try_add_fixture(fixture_config: Dictionary) -> bool:
         return false
     var candidate_fixtures := fixtures.duplicate(true)
     candidate_fixtures.append_array(_normalize_fixture_configs([fixture_config]))
+    _settle_any_side_fronts(candidate_fixtures)
     if not _fixture_configs_are_valid(candidate_fixtures):
         return false
     fixtures = candidate_fixtures
@@ -168,6 +266,7 @@ func try_move_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
         var new_interaction := old_interaction + delta
         fixture["interaction_subcell"] = [new_interaction.x, new_interaction.y]
         break
+    _settle_any_side_fronts(candidate_fixtures)
     if not _fixture_configs_are_valid(candidate_fixtures):
         return false
     fixtures = candidate_fixtures
@@ -200,6 +299,7 @@ func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
             int(fixture.get("rotation_quarter_turns", 0)) + 1
         ) % 4
         break
+    _settle_any_side_fronts(candidate_fixtures)
     if not _fixture_configs_are_valid(candidate_fixtures):
         return false
     fixtures = candidate_fixtures
@@ -249,6 +349,7 @@ func try_swap_fixture_positions(fixture_id_a: String, fixture_id_b: String) -> b
         fixture["origin_subcell"] = [new_origin.x, new_origin.y]
         var new_interaction := old_interaction + delta
         fixture["interaction_subcell"] = [new_interaction.x, new_interaction.y]
+    _settle_any_side_fronts(candidate_fixtures)
     if not _fixture_configs_are_valid(candidate_fixtures):
         return false
     fixtures = candidate_fixtures

@@ -60,6 +60,116 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         for suffix in (".ogg", ".mp3", ".wav", ".jpg", ".jpeg", ".glb", ".gltf", ".svg", ".webp"):
             self.assertEqual(list(GAME_ROOT.joinpath("assets").rglob("*" + suffix)), [], suffix)
 
+    def test_stocked_shelves_sell_with_their_goods_and_change_product(self):
+        # Task #117 (the owner's request); REMAKE_BALANCED_DEFAULT goods return.
+        rules = self.config["guide_starting_store"]["store_rules"]
+        self.assertIn("Task #117", rules["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", rules["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        withdraw = simulation.split("func _withdraw_product(")[0].rsplit("# Task #117: takes a product", 1)[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", withdraw)
+        self.assertIn("func try_change_product(catalog_id: String, instance_id: String, fixture_id: String) -> bool:", simulation)
+        capital = re.search(r"const CAPITAL_EXPENSE_TYPES := \[(.*?)\]", simulation, re.S).group(1)
+        for expense_type in ("product_procurement", "product_returned"):
+            self.assertIn('"%s"' % expense_type, capital)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the goods-return rule must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("a stocked shelf must take another product (task #117)", smoke)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("A stocked shelf offers 商品を変える", preview)
+
+    def test_register_duty_rotates(self):
+        # Task #118: CONFIRMED_COMMUNITY FAQ + REMAKE_BALANCED_DEFAULT rule.
+        rules = self.config["guide_starting_store"]["store_rules"]
+        self.assertTrue(rules["checkout_rotation_enabled"])
+        self.assertIn("Task #118", rules["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        rotation = simulation.split("const CHECKOUT_HANDOVER_STAMINA_SHARE")[0].rsplit("# Task #118", 1)[-1]
+        self.assertIn("CONFIRMED_COMMUNITY", rotation)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", rotation)
+        roster = (GAME_ROOT / "scripts" / "domain" / "staff_roster.gd").read_text(encoding="utf-8")
+        self.assertIn("func hand_over_checkout(staff_id: String) -> bool:", roster)
+        self.assertIn('"checkout_staff_id": staff.checkout_staff_id,', simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("register duty must pass between staff members over two days", smoke)
+
+    def test_wagons_are_reached_from_any_side_and_draw_attention(self):
+        # Task #119: CONFIRMED capacities / community attention + REMAKE sides.
+        rules = self.config["guide_starting_store"]["store_rules"]
+        catalog = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        self.assertEqual(set(rules["any_side_catalog_ids"]), {c for c in catalog if "wagon" in c})
+        for catalog_id, attention in rules["fixture_attention"].items():
+            expected = 1.0 if "wagon" not in catalog_id else (2.0 if catalog[catalog_id]["footprint_tiles"] == [2, 2] else 1.5)
+            self.assertEqual(attention, expected, catalog_id)
+        # CONFIRMED_OFFICIAL: a wagon holds less than the shelf of its size.
+        self.assertLess(catalog["small_ambient_wagon"]["capacity"], catalog["small_ambient_shelf"]["capacity"])
+        self.assertIn("Task #119", rules["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        sides = simulation.split("func _product_access_goals(")[0].rsplit("# Task #119 (the owner's request)", 1)[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", sides)
+        attention = simulation.split("func fixture_attention(")[0].rsplit("# Task #119: a fixture's", 1)[-1]
+        self.assertIn("CONFIRMED_COMMUNITY", attention)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", attention)
+        layout = (GAME_ROOT / "scripts" / "domain" / "store_layout.gd").read_text(encoding="utf-8")
+        self.assertIn("func access_cells(fixture_id: String) -> Array[Vector2i]:", layout)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a wagon must be reachable from more than one side", smoke)
+
+    def test_customer_types_come_from_the_guide(self):
+        # Task #120: CONFIRMED_OFFICIAL rows, REMAKE_BALANCED_DEFAULT use.
+        import sys
+        sys.path.insert(0, str(REPO_ROOT / "reference_sim"))
+        from conveni_sim.baseline_data import CUSTOMER_ARCHETYPES, CUSTOMER_VISIT_SCHEDULE
+        block = self.config["guide_customer_types"]
+        for tag in ("CONFIRMED_OFFICIAL", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, block["evidence_note"])
+        self.assertEqual([t["id"] for t in block["types"]], [a.id for a in CUSTOMER_ARCHETYPES])
+        self.assertEqual([t["sprite"] for t in block["types"]], ["customer_%02d" % i for i in range(1, 22)])
+        self.assertEqual(len(block["visits"]), len(CUSTOMER_VISIT_SCHEDULE))
+        for row, source in zip(block["visits"], CUSTOMER_VISIT_SCHEDULE):
+            self.assertEqual(row["type"], source.archetype_id)
+            self.assertEqual(row["budget_yen"], source.budget_yen.value)
+            self.assertEqual(row["primary"], source.primary_wanted_product.value or "")
+            self.assertEqual(row["extras"], list(source.secondary_wanted_products.value))
+            self.assertEqual(row["focus"], source.behavior_stats_raw.value[3])
+        self.assertTrue(self.config["guide_starting_store"]["store_rules"]["customer_types_enabled"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        shapes = simulation.split("func _shopping_ticks_for(")[0].rsplit("# Task #120 (REMAKE_BALANCED_DEFAULT", 1)[-1]
+        self.assertIn("CONFIRMED_OFFICIAL", shapes)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", simulation.split("func _pick_visit_row(")[0].rsplit("# Task #120:", 1)[-1])
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the customer types must stay tagged %s", smoke)
+        self.assertIn("customers must buy extras on the way (ついで買い)", smoke)
+
+    def test_research_screens_stand_alone(self):
+        # Task #122: 調査 → 全店収支グラフ / 店舗成績 / アンケート / 町と目標.
+        phone = (GAME_ROOT / "scripts" / "phone_ui.gd").read_text(encoding="utf-8")
+        for screen in ("results", "shop", "survey", "town"):
+            self.assertIn("func _fill_%s() -> void:" % screen, phone)
+        self.assertIn('["results", "全店収支グラフ"', phone)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", phone.split("const RESEARCH_SCREENS")[0].rsplit("# Task #122", 1)[-1])
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("調査 → アンケート opens its own screen", preview)
+
+    def test_branches_are_stores_of_their_own(self):
+        # Task #123: bought or newly opened stores are run like 本店.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("const SAVE_SCHEMA_VERSION := 10", simulation)
+        self.assertIn('data["branches"] = branches', simulation)
+        self.assertIn("func select_store(index: int) -> bool:", simulation)
+        self.assertIn("func _try_open_branch_on_site(origin: Vector2i, type_id: String) -> bool:", simulation)
+        share = simulation.split("func _competitor_positions(")[0].rsplit("# Task #123: CONFIRMED", 1)[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", share)
+        buyout = simulation.split("func _branch_store_type(")[0].rsplit("func try_buy_out_rival(", 1)[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", buyout)
+        research = (REPO_ROOT / "docs" / "research" / "ss-layout-entrance-register-and-chain-cannibalization-2026-09-06.md").read_text(encoding="utf-8")
+        self.assertIn("Player-owned stores can cannibalize one another", research)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a load must bring back all three stores", smoke)
+        self.assertIn("an older save's bought branch must open as a store", smoke)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("この店へ shows the 2号店", preview)
+
     def test_prototype_values_are_explicitly_marked_provisional(self):
         self.assertEqual(self.config["schema_version"], 15)
         self.assertIs(self.config["provisional"], True)
@@ -2042,7 +2152,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # Persisted through save/load, like every other durable piece of
         # simulation state (task #28's own convention).
         self.assertIn('"price_change_pct": price_change_pct,', simulation)
-        self.assertIn('price_change_pct = int(data["price_change_pct"])', simulation)
+        self.assertIn('price_change_pct = int(block["price_change_pct"])', simulation)
         # SAVE_SCHEMA_VERSION itself is asserted by
         # test_staff_hiring_action_is_wired_and_confirmed_official (task
         # #56 bumped it again, 3 -> 4); this test only needs price_change_
@@ -2165,7 +2275,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # would otherwise silently revert a hire on load.
         self.assertIn("func _staff_roster_snapshot() -> Array[Dictionary]:", simulation)
         self.assertIn('"staff_roster": _staff_roster_snapshot(),', simulation)
-        self.assertIn("const SAVE_SCHEMA_VERSION := 9", simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 10", simulation)
         self.assertIn(
             'staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])',
             simulation,
@@ -3287,9 +3397,9 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertEqual(buyable, {"rival-hq": False, "rival-02": True})
         self.assertTrue((GAME_ROOT / "assets" / "town" / "map_blue_02.png").is_file())
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
-        self.assertIn("const SAVE_SCHEMA_VERSION := 9", simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 10", simulation)
         self.assertIn("# REMAKE_BALANCED_DEFAULT: the guide's start price grown by the land price's", simulation)
-        self.assertIn('"bought_rival_ids": owned_branches.map(', simulation)
+        self.assertIn('"bought_rival_ids": owned_branches.filter(', simulation)
         self.assertEqual(self.config["sound"]["event_sfx"]["rival_bought_out"], "purchase")
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("the 2号店 costs the guide's 46,721,490 at the start", smoke)
@@ -3871,12 +3981,12 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # Task #107: these used to go back to their starting values on load.
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         self.assertIn('"staff_state": _staff_state_snapshot(),', simulation)
-        self.assertIn('    _restore_staff_state(data["staff_state"])', simulation)
+        self.assertIn('    _restore_staff_state(block["staff_state"])', simulation)
         fields = re.search(r"const SAVED_STAFF_FIELDS := \[(.*?)\]", simulation, re.S).group(1)
         for field in ("register_skill", "service_skill", "cleaning_skill", "security_skill",
                       "replenishment_skill", "stamina", "exhausted"):
             self.assertIn('"%s"' % field, fields)
-        self.assertIn('    survey_missing = _counts(data["survey"]["missing"])', simulation)
+        self.assertIn('    survey_missing = _counts(block["survey"]["missing"])', simulation)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("load must keep the staff's grown skills and 体力", smoke)
         self.assertIn("load must keep this month's and last month's survey", smoke)

@@ -38,11 +38,15 @@ const MONTH_MULTIPLIER := 8
 # scaling a 20,000,000-yen land purchase to 160,000,000 would bankrupt every
 # new game at its first month end, which the guide's own play (start with
 # 200,000,000, buy land, keep going) rules out -- an inference, not a
-# stated rule. Promotions, stock and wages stay in the x8 as before.
+# stated rule. Promotions, restocking and wages stay in the x8 as before.
+# Task #117: a new shelf's first goods and goods sent back when a shelf is
+# sold or given another product are one-off too (the same inference; a
+# refund x8 would turn selling a stocked shelf into a month's profit).
 const CAPITAL_EXPENSE_TYPES := [
     "store_site", "store_construction", "chain_expansion", "rival_buyout",
     "rival_investigation", "fixture_purchase", "fixture_sold", "permit_purchase",
     "sample_layout_loaded", "inducement_aid", "inducement_place",
+    "product_procurement", "product_returned",
 ]
 
 # CONFIRMED, not a guess:
@@ -135,6 +139,12 @@ var _building_demand_enabled := false
 # staff hired while customers are inside (simulation.edits_while_open);
 # the prototype scenarios keep the old empty-store lock.
 var _edits_while_open := false
+var _checkout_rotation_enabled := false
+var _customer_types_enabled := false
+var _visit_rows: Array = []
+var _customer_type_rules: Dictionary = {}
+var _customer_types: Dictionary = {}
+var _pending_visit: Dictionary = {}
 # Task #103: business hours (guide_starting_store.business_hours). Empty in
 # the prototype scenarios, which stay open all day as before.
 var _business_hours: Array = []
@@ -142,6 +152,8 @@ var business_hours_id := ""
 var _catchment_weights: Dictionary = {}
 var survey_bought: Dictionary = {}
 var survey_missing: Dictionary = {}
+# Task #122: this month's visitors by customer type (for 調査 → 店舗成績).
+var survey_types: Dictionary = {}
 var last_survey: Dictionary = {}
 var _stamina_rng := RandomNumberGenerator.new()
 # Where customers have walked and nobody has cleaned since (oldest first).
@@ -246,6 +258,39 @@ var _building_log: Array[Dictionary] = []
 # customer can sometimes be served first, so this is not a claim about the
 # original game's tie-break rule.
 var _checkout_queue: Array[String] = []
+# Task #123 (the owner: a bought branch could not be looked at or run). The
+# player's stores, index 0 = 本店. Everything a store has of its own --
+# floor, shelves, staff, customers, prices, hours, permits, advertising,
+# rating, survey -- lives in the member variables listed in STORE_FIELDS
+# for the store being looked at or acted on (active_store); the others wait
+# in _stores. Money, the calendar, the town and the rivals are shared.
+const STORE_FIELDS := [
+    "config", "layout", "inventory", "customers", "staff", "demand", "_checkout_interaction",
+    "_checkout_queue", "_dirty_cells", "business_hours_id", "_catchment_weights", "survey_bought",
+    "survey_missing", "survey_types", "last_survey", "_permits_held", "_promotions_used_this_month",
+    "_scheduled_promotions", "popularity", "price_change_pct", "internal_rating_value", "star_rating",
+    "_store_size_tier", "store_site_origin", "_player_store_position", "store_type_id",
+    "_sample_layout_catalog", "store_name", "_store_sales_yen",
+    "_store_sales_at_month_start", "_store_sales_at_day_start",
+]
+# The config keys a store has its own copy of; the rest (catalogs, town,
+# weather...) is shared.
+const STORE_CONFIG_KEYS := [
+    "store", "fixtures", "products", "staff", "customer", "simulation", "provisional_restock",
+    "sample_layouts", "demand",
+]
+var _stores: Array[Dictionary] = [{}]
+var active_store := 0
+# The store the player is looking at (the others step in the background).
+var viewed_store := 0
+var store_name := "本店"
+var _store_sales_yen := 0
+var _store_sales_at_month_start := 0
+var _store_sales_at_day_start := 0
+# Customers who have finished a visit at any of the player's stores, ever
+# (the chain visitor milestone's count; kept, unlike the customer rosters,
+# across a save and load).
+var _chain_visitors_total := 0
 
 
 func _init(source_config: Dictionary) -> void:
@@ -263,7 +308,7 @@ func _init(source_config: Dictionary) -> void:
         _sample_layout_catalog[str(entry["sample_id"])] = entry
     for entry in config["staff_candidates"]:
         _staff_candidate_catalog[str(entry["candidate_id"])] = entry
-    layout = StoreLayoutScript.new(config["store"], config["fixtures"])
+    layout = StoreLayoutScript.new(config["store"], config["fixtures"], _any_side_catalog_ids())
     inventory = InventoryCatalogScript.new(config["products"])
     economy = EconomyStateScript.new(config["economy"])
     customers = CustomerRosterScript.new(config["customer"])
@@ -312,6 +357,13 @@ func _init(source_config: Dictionary) -> void:
     _stamina_enabled = bool(simulation.get("stamina_enabled", false))
     _building_demand_enabled = bool(simulation.get("building_demand_enabled", false))
     _edits_while_open = bool(simulation.get("edits_while_open", false))
+    _checkout_rotation_enabled = bool(simulation.get("checkout_rotation_enabled", false))
+    _customer_types_enabled = bool(simulation.get("customer_types_enabled", false)) and config.has("guide_customer_types")
+    if _customer_types_enabled:
+        _visit_rows = config["guide_customer_types"]["visits"]
+        _customer_type_rules = config["guide_customer_types"]["rules"]
+        for entry in config["guide_customer_types"]["types"]:
+            _customer_types[str(entry["id"])] = entry
     _business_hours = simulation.get("business_hours", [])
     assert(_shopping_ticks > 0 and _checkout_ticks > 0 and _step_game_minutes > 0)
     assert(_restock_ticks > 0 and _restock_trigger_stock_units_at_or_below >= 0)
@@ -323,6 +375,7 @@ func _init(source_config: Dictionary) -> void:
 
 
 func reset() -> void:
+    _drop_branches()
     minute_of_day = int(config["simulation"]["start_minute_of_day"])
     day_count = 0
     month_count = 0
@@ -341,6 +394,7 @@ func reset() -> void:
         _apply_business_hours(str(config["simulation"]["business_hours_default_id"]))
     survey_bought.clear()
     survey_missing.clear()
+    survey_types.clear()
     last_survey = {}
     _clear_store_site()
     _reset_inducement()
@@ -395,11 +449,10 @@ func start_explicit_customer(customer_id: String, product_ids: Array[String]) ->
         return false
     if customers.customers.has(customer_id) or not _product_plan_is_valid(product_ids):
         return false
-    var first_interaction := _product_interaction(product_ids[0])
     var customer = customers.admit_explicit(
         customer_id,
         layout.entry,
-        layout.find_path(layout.entry, first_interaction),
+        _route_to_product(layout.entry, product_ids[0]),
         product_ids
     )
     _record_customer_entered(customer)
@@ -473,6 +526,210 @@ func tick() -> void:
     if is_game_over:
         return
     step()
+    var viewed := active_store
+    _switch_store(0)
+    _for_each_store(_admit_arrival)
+    _switch_store(viewed)
+
+
+# --- Task #123: the player's stores ---
+
+# Back to 本店 alone (a new game, or before loading a save).
+func _drop_branches() -> void:
+    _switch_store(0)
+    _stores = [{}]
+    viewed_store = 0
+    store_name = "本店"
+    _store_sales_yen = 0
+    _store_sales_at_month_start = 0
+    _store_sales_at_day_start = 0
+    _chain_visitors_total = 0
+
+
+func store_count() -> int:
+    return _stores.size()
+
+
+func _capture_store() -> Dictionary:
+    var context := {}
+    for field in STORE_FIELDS:
+        context[field] = get(field)
+    return context
+
+
+func _apply_store(context: Dictionary) -> void:
+    for field in STORE_FIELDS:
+        set(field, context[field])
+
+
+# Puts store `index`'s fields into the member variables (keeping the
+# current store's in _stores). Cheap: only references move.
+func _switch_store(index: int) -> void:
+    if index == active_store or index < 0 or index >= _stores.size():
+        return
+    _stores[active_store] = _capture_store()
+    _apply_store(_stores[index])
+    active_store = index
+
+
+# Runs `action` once for every store, with that store's fields in place,
+# and puts the current store back afterwards.
+func _for_each_store(action: Callable) -> void:
+    if _stores.size() == 1:
+        action.call()
+        return
+    var home := active_store
+    for index in _stores.size():
+        _switch_store(index)
+        action.call()
+    _switch_store(home)
+
+
+# The player looks at (and acts on) store `index` from now on.
+func select_store(index: int) -> bool:
+    if index < 0 or index >= _stores.size():
+        return false
+    _switch_store(index)
+    viewed_store = index
+    last_event = "store selected"
+    return true
+
+
+func store_field(index: int, field: String):
+    return get(field) if index == active_store else _stores[index][field]
+
+
+func store_at_tile(tile: Vector2i) -> int:
+    for index in _stores.size():
+        var origin: Vector2i = store_field(index, "store_site_origin")
+        if origin != NO_STORE_SITE and Rect2i(origin, Vector2i(2, 2)).has_point(tile):
+            return index
+    return -1
+
+
+func store_sales_today_yen() -> int:
+    return _store_sales_yen - _store_sales_at_day_start
+
+
+# The config a new store starts from: the shared parts of 本店's, with its
+# own copy of the store-level keys, laid out as store type `type_id`.
+func _fresh_store_config(type_id: String) -> Dictionary:
+    var base: Dictionary = store_field(0, "config")
+    var fresh: Dictionary = base.duplicate(false)
+    for key in STORE_CONFIG_KEYS:
+        if base.has(key):
+            fresh[key] = (base[key] as Dictionary).duplicate(true) if base[key] is Dictionary else (base[key] as Array).duplicate(true)
+    GuideStartingStoreScript.apply_store_type(fresh, type_id)
+    fresh["customer"]["id_prefix"] = "%s-s%d" % [str(base["customer"]["id_prefix"]), _stores.size() + 1]
+    return fresh
+
+
+# Staff candidates working in any store.
+func _employed_candidate_ids() -> Dictionary:
+    var employed := {}
+    for index in _stores.size():
+        var roster = store_field(index, "staff")
+        if roster == null:
+            continue
+        for member in roster.all_staff():
+            employed[str(member.candidate_id)] = true
+    return employed
+
+
+# Opens store number _stores.size() + 1 on the 2x2 site at `origin`,
+# furnished as store type `type_id` with its opening goods, and staffed
+# with candidates who do not work anywhere else yet. Returns its index.
+# The store being looked at stays the same.
+func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
+    var home := active_store
+    var employed := _employed_candidate_ids()
+    _stores[active_store] = _capture_store()
+    config = _fresh_store_config(type_id)
+    store_type_id = type_id
+    store_name = name
+    _sample_layout_catalog = {}
+    for entry in config["sample_layouts"]:
+        _sample_layout_catalog[str(entry["sample_id"])] = entry
+    layout = StoreLayoutScript.new(config["store"], config["fixtures"], _any_side_catalog_ids())
+    inventory = InventoryCatalogScript.new(config["products"])
+    customers = CustomerRosterScript.new(config["customer"])
+    staff = StaffRosterScript.new(config["staff"])
+    for member in staff.all_staff():
+        if not employed.has(str(member.candidate_id)):
+            employed[str(member.candidate_id)] = true
+            continue
+        for entry in config["staff_candidates"]:
+            var candidate_id := str(entry["candidate_id"])
+            if not employed.has(candidate_id):
+                member.hire(entry)
+                employed[candidate_id] = true
+                break
+    demand = DemandPolicyScript.new(config["demand"], _demand_rng)
+    demand.is_bad_weather = config["weather"]["bad_weather_categories"].has(weather_category())
+    _checkout_queue = []
+    _dirty_cells = []
+    survey_bought = {}
+    survey_missing = {}
+    survey_types = {}
+    last_survey = {}
+    _permits_held = {}
+    _promotions_used_this_month = {}
+    _scheduled_promotions = []
+    popularity = 0
+    price_change_pct = 0
+    internal_rating_value = 0
+    star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
+    _store_size_tier = str(config["store"]["size_tier"])
+    _store_sales_yen = 0
+    _store_sales_at_month_start = 0
+    _store_sales_at_day_start = 0
+    _catchment_weights = {}
+    store_site_origin = origin
+    _player_store_position = origin
+    _stores.append({})
+    active_store = _stores.size() - 1
+    var index := active_store
+    _reset_stamina()
+    _refresh_interactions()
+    if not _business_hours.is_empty():
+        _apply_business_hours(str(config["simulation"]["business_hours_default_id"]))
+    _switch_store(home)
+    _for_each_store(_refresh_store_catchment)
+    return index
+
+
+func _refresh_store_catchment() -> void:
+    if has_store_site() and store_site != null:
+        _apply_store_site(store_site_origin, [])
+
+
+# Where the player's stores stand, 本店 first.
+func _player_store_origins() -> Array:
+    var origins: Array = []
+    for index in _stores.size():
+        var origin: Vector2i = store_field(index, "store_site_origin")
+        if origin != NO_STORE_SITE:
+            origins.append(origin)
+    for branch in owned_branches:
+        if not origins.has(branch["position"]):
+            origins.append(branch["position"])
+    return origins
+
+
+# Task #123: CONFIRMED (SS direct play, docs/research/ss-layout-entrance-
+# register-and-chain-cannibalization-2026-09-06.md section 4) that the
+# player's own stores take customers from each other: a store shares its
+# neighbourhood with the rivals and with the player's other stores alike
+# (the sharing itself is StoreSite's REMAKE_BALANCED_DEFAULT one).
+func _competitor_positions() -> Array:
+    var positions := _rival_positions()
+    for origin in _player_store_origins():
+        if origin != store_site_origin:
+            positions.append(origin)
+    return positions
+
+
+func _admit_arrival() -> void:
     if customers.can_admit_concurrent() and is_open_now() and demand.customer_arrives_this_minute():
         _start_default_customer()
 
@@ -811,6 +1068,12 @@ func _apply_hire(staff_id: String, candidate_id: String) -> bool:
     for existing_staff_member in staff.all_staff():
         if existing_staff_member.staff_id != staff_id and existing_staff_member.candidate_id == candidate_id:
             return false
+    # Task #123: nor someone working at another of the player's stores.
+    for index in _stores.size():
+        if index != active_store:
+            for other in store_field(index, "staff").all_staff():
+                if other.candidate_id == candidate_id:
+                    return false
     staff.members[staff_id].hire(_staff_candidate_catalog[candidate_id])
     # A newly hired member arrives rested (first-title wiki: fire and
     # re-hire gives a full 体力).
@@ -869,10 +1132,8 @@ func _reset_inducement() -> void:
 
 func _store_rects() -> Array[Rect2i]:
     var rects: Array[Rect2i] = []
-    if has_store_site():
-        rects.append(Rect2i(store_site_origin, Vector2i(2, 2)))
-    for branch in owned_branches:
-        rects.append(Rect2i(branch["position"], Vector2i(2, 2)))
+    for origin in _player_store_origins():
+        rects.append(Rect2i(origin, Vector2i(2, 2)))
     for rival in _rival_stores:
         rects.append(Rect2i(rival["position"], Vector2i(2, 2)))
     return rects
@@ -956,8 +1217,8 @@ func _put_up_facility(facility_id: String, origin: Vector2i, update_catchment: b
     store_site.add_building(str(facility["sprite"]), origin, size)
     induced_facilities.append({"facility_id": facility_id, "origin": origin})
     _building_log.append({"kind": "facility", "id": facility_id, "origin": origin})
-    if update_catchment and has_store_site():
-        _apply_store_site(store_site_origin, [])
+    if update_catchment:
+        _for_each_store(_refresh_store_catchment)
 
 
 # CONFIRMED_OFFICIAL (PDF3 p.10, PDF4 p.74): each square of a 交番 inside
@@ -1041,8 +1302,7 @@ func _grow_town_at_month_end() -> void:
             continue
         _put_up_town_building(milestone_id, site)
         _record_event("town_building_built", {"milestone_id": milestone_id, "origin": [site.x, site.y]})
-    if has_store_site():
-        _apply_store_site(store_site_origin, [])
+    _for_each_store(_refresh_store_catchment)
 
 
 func _put_up_town_building(milestone_id: String, origin: Vector2i) -> void:
@@ -1069,13 +1329,6 @@ func _rival_ai() -> Dictionary:
     if not config.has("guide_town_map"):
         return {}
     return config["guide_town_map"].get("rival_ai", {})
-
-
-func _player_store_origins() -> Array:
-    var origins: Array = [store_site_origin]
-    for branch in owned_branches:
-        origins.append(branch["position"])
-    return origins
 
 
 func _rival_is_head(rival_id: String) -> bool:
@@ -1143,7 +1396,7 @@ func _step_rivals_at_month_end() -> void:
         changed = true
         _record_event("rival_withdrew", {"rival_id": rival_id, "deficit_months": months})
     if changed:
-        _apply_store_site(store_site_origin, [])
+        _for_each_store(_refresh_store_catchment)
 
 
 # Task #101: investigating and buying out a rival (evidence in
@@ -1215,20 +1468,36 @@ func try_buy_out_rival(rival_id: String) -> bool:
     )
     var bought: Dictionary = _rival_stores[index]
     _rival_stores.remove_at(index)
-    owned_branches.append({"id": rival_id, "position": bought["position"]})
     player_store_count += 1
-    # The store is no longer a competitor: the player's own store keeps the
-    # customers it shared with it (REMAKE_BALANCED_DEFAULT: the branch's own
-    # sales are not simulated, like the chain-expansion action).
-    if has_store_site():
-        _apply_store_site(store_site_origin, [])
+    # Task #123: the bought store is now one of the player's own, run like
+    # 本店 (see _add_store()). REMAKE_BALANCED_DEFAULT: it comes as the
+    # opening small store (the rival's own floor was never recovered), with
+    # its goods and three staff members nobody else employs.
+    var store_index := -1
+    if not store_types().is_empty():
+        store_index = _add_store(_branch_store_type(), bought["position"], _branch_name())
+    owned_branches.append({"id": rival_id, "position": bought["position"], "store_index": store_index})
+    if store_index < 0:
+        _for_each_store(_refresh_store_catchment)
     _record_event("rival_bought_out", {
         "rival_id": rival_id,
         "cost_yen": price,
         "player_store_count": player_store_count,
+        "new_store_index": store_index,
         "expense_id": expense["expense_id"],
     })
     return true
+
+
+func _branch_store_type() -> String:
+    for entry in store_types():
+        if bool(entry.get("selectable_at_start", false)) and entry.has("layout"):
+            return str(entry["id"])
+    return store_type_id
+
+
+func _branch_name() -> String:
+    return "%d号店" % (_stores.size() + 1)
 
 
 func _rival_index(rival_id: String) -> int:
@@ -1317,8 +1586,7 @@ func store_site_quote(origin: Vector2i) -> Dictionary:
     var others: Array = []
     for rival in _rival_stores:
         others.append(rival["position"])
-    for branch in owned_branches:
-        others.append(branch["position"])
+    others.append_array(_player_store_origins())
     var result: Dictionary = store_site.quote(origin, land_price_growth_factor(), others, _bought_buildings)
     var permits := {}
     for permit_id in _permit_catalog:
@@ -1337,8 +1605,10 @@ func store_site_quote(origin: Vector2i) -> Dictionary:
 # from the site. Only once per game (a new store elsewhere is a separate,
 # not yet built flow).
 func try_buy_store_site(origin: Vector2i, type_id := "") -> bool:
-    if is_game_over or store_site == null or has_store_site():
+    if is_game_over or store_site == null:
         return false
+    if has_store_site():
+        return _try_open_branch_on_site(origin, type_id)
     var site_quote := store_site_quote(origin)
     if type_id.is_empty():
         type_id = store_type_id
@@ -1382,6 +1652,45 @@ func try_buy_store_site(origin: Vector2i, type_id := "") -> bool:
     return true
 
 
+# Task #123: 新規出店 -- the next store on a site the player picks, paid and
+# chosen like the first (land, then 「店舗を選んで下さい」), within the town's
+# 10-store limit. It opens as that store type's furnished opening layout,
+# like 本店 did.
+func _try_open_branch_on_site(origin: Vector2i, type_id: String) -> bool:
+    if town_is_full() or store_types().is_empty():
+        return false
+    if type_id.is_empty():
+        type_id = _branch_store_type()
+    if not store_type_is_selectable(type_id):
+        return false
+    var site_quote := store_site_quote(origin)
+    var construction_yen := store_type_price_yen(type_id)
+    if not bool(site_quote["buildable"]) or economy.cash_yen < int(site_quote["total_yen"]) + construction_yen:
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "store_site", minute_of_day, int(site_quote["total_yen"]),
+        {"origin": [origin.x, origin.y], "land_yen": int(site_quote["land_yen"]), "building_yen": int(site_quote["building_yen"])}
+    )
+    var construction: Dictionary = economy.record_explicit_expense(
+        "store_construction", minute_of_day, construction_yen, {"store_type_id": type_id}
+    )
+    for index in site_quote["bought_buildings"]:
+        if not _bought_buildings.has(int(index)):
+            _bought_buildings.append(int(index))
+    player_store_count += 1
+    var store_index := _add_store(type_id, origin, _branch_name())
+    owned_branches.append({"id": "", "position": origin, "store_index": store_index})
+    _record_event("store_opened", {
+        "origin": [origin.x, origin.y],
+        "store_type_id": type_id,
+        "new_store_index": store_index,
+        "cost_yen": int(site_quote["total_yen"]) + construction_yen,
+        "expense_id": expense["expense_id"],
+        "construction_expense_id": construction["expense_id"],
+    })
+    return true
+
+
 # Task #104: the six stores of 「店舗を選んで下さい」 (guide_store_types:
 # CONFIRMED_VISUAL that only the two small ones can be picked at the start,
 # CONFIRMED_OFFICIAL sizes and prices).
@@ -1410,7 +1719,7 @@ func _build_store_type(type_id: String) -> void:
     _sample_layout_catalog.clear()
     for entry in config["sample_layouts"]:
         _sample_layout_catalog[str(entry["sample_id"])] = entry
-    layout = StoreLayoutScript.new(config["store"], config["fixtures"])
+    layout = StoreLayoutScript.new(config["store"], config["fixtures"], _any_side_catalog_ids())
     inventory = InventoryCatalogScript.new(config["products"])
     customers = CustomerRosterScript.new(config["customer"])
     staff = StaffRosterScript.new(config["staff"])
@@ -1435,9 +1744,9 @@ func _apply_store_site(origin: Vector2i, bought: Array) -> void:
         if not _bought_buildings.has(int(index)):
             _bought_buildings.append(int(index))
     demand.nearby_population = store_site.nearby_population(
-        origin, _catchment_base_population(), _bought_buildings, _rival_positions()
+        origin, _catchment_base_population(), _bought_buildings, _competitor_positions()
     )
-    _catchment_weights = store_site.catchment_building_weights(origin, _rival_positions(), _bought_buildings)
+    _catchment_weights = store_site.catchment_building_weights(origin, _competitor_positions(), _bought_buildings)
     # Task #98: on the town map, rivals take customers where their
     # catchments overlap the store's (nearby_population above), so the flat
     # per-rival dilution is not applied on top.
@@ -1537,14 +1846,16 @@ func _reroute_after_layout_change(checkout_before: Vector2i) -> bool:
             return false
         var goal := NO_STORE_SITE
         var phase_after: String = customer.phase
+        if customer.phase == "to_shelf" or customer.phase == "shopping":
+            # Task #119: to the nearest side the goods can be taken from.
+            var product_id: String = customer.current_product_id()
+            if customer.phase == "shopping" and _at_product(customer.position, product_id):
+                continue
+            if not _can_reach_product(customer.position, product_id):
+                return false
+            plans.append([customer, _route_to_product(customer.position, product_id), "to_shelf"])
+            continue
         match customer.phase:
-            "to_shelf":
-                goal = _product_interaction(customer.current_product_id())
-            "shopping":
-                var spot := _product_interaction(customer.current_product_id())
-                if customer.position != spot:
-                    goal = spot
-                    phase_after = "to_shelf"
             "to_checkout":
                 goal = _checkout_interaction
             "waiting_checkout", "checkout":
@@ -1562,10 +1873,13 @@ func _reroute_after_layout_change(checkout_before: Vector2i) -> bool:
         var goal := NO_STORE_SITE
         var state_after: String = staff_member.state
         if staff_member.state == "to_restock" or staff_member.state == "restocking":
-            var shelf_front := _product_interaction(staff_member.restock_target_product_id)
-            if staff_member.state == "to_restock" or staff_member.position != shelf_front:
-                goal = shelf_front
-                state_after = "to_restock"
+            var target_id: String = staff_member.restock_target_product_id
+            if staff_member.state == "restocking" and _at_product(staff_member.position, target_id):
+                continue
+            if not _can_reach_product(staff_member.position, target_id):
+                return false
+            plans.append([staff_member, _route_to_product(staff_member.position, target_id), "to_restock"])
+            continue
         elif not staff_member.route.is_empty():
             goal = staff_member.route[staff_member.route.size() - 1]
             if staff_member.rest_phase == "to_break_room":
@@ -1673,10 +1987,10 @@ func try_swap_fixtures(fixture_id_a: String, fixture_id_b: String) -> bool:
 # scenario's pre-catalog checkout-1/shelf-1/shelf-2 are not sellable),
 # never the checkout fixture itself (this client's architecture assumes
 # exactly one, config["simulation"]["checkout_fixture_id"], with no
-# mechanic to reassign it), and never a fixture still holding procured
-# stock -- same "reject rather than silently discard inventory" precedent
-# try_load_sample_layout() already established, rather than inventing an
-# auto-clear rule the evidence does not describe.
+# mechanic to reassign it). Task #117 (the owner's request: refusing to sell
+# a shelf that still holds goods was too inconvenient): a shelf is sold
+# together with its goods, which go back to the supplier (see
+# _withdraw_product()). No source says what the original does with them.
 const FIXTURE_SELL_REFUND_PERCENT := 50
 
 
@@ -1692,9 +2006,13 @@ func try_sell_fixture(fixture_id: String) -> bool:
     var catalog_id := str(fixture.get("catalog_id", ""))
     if catalog_id.is_empty() or not _fixture_catalog.has(catalog_id):
         return false
-    for product in inventory.products.values():
-        if str(product.fixture_id) == fixture_id:
-            return false
+    # The prototype scenario's fixed visit plan must keep its shelves.
+    var held_product_id: String = inventory.product_on_fixture(fixture_id)
+    if not held_product_id.is_empty() and (config["customer"]["visit_plan_product_ids"] as Array).has(held_product_id):
+        return false
+    var goods_refund_yen := 0
+    if not held_product_id.is_empty():
+        goods_refund_yen = _withdraw_product(held_product_id)
     var previous: Array = layout.fixture_snapshot()
     if not layout.try_remove_fixture(fixture_id):
         return false
@@ -1714,9 +2032,97 @@ func try_sell_fixture(fixture_id: String) -> bool:
         "catalog_id": catalog_id,
         "instance_id": fixture_id,
         "refund_yen": refund_yen,
+        "goods_refund_yen": goods_refund_yen,
         "expense_id": expense["expense_id"],
     })
     return true
+
+
+# Task #117: takes a product off its shelf, returning its goods to the
+# supplier. REMAKE_BALANCED_DEFAULT (no source covers it): the goods come
+# back at their purchase cost (nothing gained or lost on them, unlike the
+# fixture's own half refund), customers who were going to pick it up go on
+# to the next item they want, and a staff member on the way to refill it
+# drops that task. Returns the yen given back.
+func _withdraw_product(product_id: String) -> int:
+    var product = inventory.get_product(product_id)
+    var refund_yen: int = product.stock_units * product.restock_unit_cost_yen
+    for customer in customers.active_customers():
+        for index in range(customer.planned_product_ids.size() - 1, customer.plan_index, -1):
+            if customer.planned_product_ids[index] == product_id:
+                customer.planned_product_ids.remove_at(index)
+        if customer.current_product_id() != product_id:
+            continue
+        customer.planned_product_ids.remove_at(customer.plan_index)
+        if customer.phase != "to_shelf" and customer.phase != "shopping":
+            continue
+        var next_product_id: String = customer.current_product_id()
+        if not next_product_id.is_empty():
+            customer.phase = "to_shelf"
+            customer.route = _route_to_product(customer.position, next_product_id)
+        elif customer.basket.is_empty():
+            customer.phase = "leaving"
+            customer.route = layout.find_path(customer.position, layout.exit)
+        else:
+            customer.phase = "to_checkout"
+            customer.route = layout.find_path(customer.position, _checkout_interaction)
+    for staff_member in staff.all_staff():
+        if staff_member.restock_target_product_id == product_id:
+            staff_member.finish_restock()
+            staff_member.route.clear()
+            staff_member.rest_phase = "stale"
+    inventory.remove_product(product_id)
+    if refund_yen > 0:
+        var expense: Dictionary = economy.record_explicit_expense(
+            "product_returned", minute_of_day, -refund_yen,
+            {"product_id": product_id, "catalog_id": product.catalog_id, "units": product.stock_units}
+        )
+        _record_event("product_returned", {
+            "product_id": product_id,
+            "catalog_id": product.catalog_id,
+            "units": product.stock_units,
+            "refund_yen": refund_yen,
+            "expense_id": expense["expense_id"],
+        })
+    return refund_yen
+
+
+# Task #117 (the owner's request): puts another product on a shelf that
+# already holds one. The old goods go back as in _withdraw_product(), then
+# the new ones are bought as in try_procure_product(). Refused, changing
+# nothing, when the new product does not fit the shelf, needs a permit the
+# store lacks, is the same product, or cannot be paid for even with the
+# old goods' refund.
+func try_change_product(catalog_id: String, instance_id: String, fixture_id: String) -> bool:
+    var held_product_id: String = inventory.product_on_fixture(fixture_id)
+    if held_product_id.is_empty():
+        return try_procure_product(catalog_id, instance_id, fixture_id)
+    if is_game_over or (not _edits_while_open and not customers.all_settled()):
+        return false
+    if not _product_catalog.has(catalog_id) or instance_id.is_empty() or inventory.products.has(instance_id):
+        return false
+    if (config["customer"]["visit_plan_product_ids"] as Array).has(held_product_id):
+        return false
+    var held = inventory.get_product(held_product_id)
+    if held.catalog_id == catalog_id:
+        return false
+    var fixture: Dictionary = layout.fixtures_by_id.get(fixture_id, {})
+    var fixture_entry: Dictionary = _fixture_catalog.get(str(fixture.get("catalog_id", "")), {})
+    if fixture_entry.has("compatible_product_categories") and not (fixture_entry["compatible_product_categories"] as Array).has(catalog_id):
+        return false
+    var permit := str(_product_catalog[catalog_id].get("required_permit_id", ""))
+    if not permit.is_empty() and not has_permit(permit):
+        return false
+    var units: int = int(_product_catalog[catalog_id]["initial_stock_units"])
+    if fixture_entry.has("capacity"):
+        units = mini(units, int(fixture_entry["capacity"]))
+    var cost_yen: int = units * int(_product_catalog[catalog_id]["restock_unit_cost_yen"])
+    if economy.cash_yen + held.stock_units * held.restock_unit_cost_yen < cost_yen:
+        return false
+    _withdraw_product(held_product_id)
+    var procured := try_procure_product(catalog_id, instance_id, fixture_id)
+    assert(procured)
+    return procured
 
 
 # Replaces the entire store layout with a pre-built sample from
@@ -1791,7 +2197,14 @@ func try_load_sample_layout(sample_id: String) -> bool:
 func step() -> void:
     if is_game_over:
         return
+    var viewed := active_store
+    _switch_store(0)
     _advance_minute_of_day()
+    _for_each_store(_step_store_floor)
+    _switch_store(viewed)
+
+
+func _step_store_floor() -> void:
     # Every customer still in progress (not just the single most-recently-
     # admitted one) advances its own phase machine this tick (task #36,
     # concurrent customers). The single checkout fixture/staff is still a
@@ -1801,6 +2214,7 @@ func step() -> void:
     # customer only once it is free.
     for customer in customers.active_customers():
         _advance_customer(customer)
+    _rotate_checkout_duty()
     _dispatch_checkout_queue()
     _step_restock_tasks()
     _note_dirty_cells()
@@ -1927,7 +2341,7 @@ func _advance_customer(customer) -> void:
     match customer.phase:
         "to_shelf":
             if _try_move_along_route(customer, "shopping"):
-                customer.shopping_ticks_remaining = _shopping_ticks
+                customer.shopping_ticks_remaining = _shopping_ticks_for(customer)
                 _record_event("customer_reached_product", {
                     "customer_id": customer.customer_id,
                     "product_id": customer.current_product_id(),
@@ -1936,14 +2350,24 @@ func _advance_customer(customer) -> void:
             customer.shopping_ticks_remaining -= 1
             if customer.shopping_ticks_remaining <= 0:
                 var product_id: String = customer.current_product_id()
-                var line: Dictionary = inventory.try_take_one(product_id)
-                if not line.is_empty():
+                var skip_reason := _reason_to_skip(customer, product_id)
+                var line: Dictionary = {} if not skip_reason.is_empty() else inventory.try_take_one(product_id)
+                if not skip_reason.is_empty():
+                    _record_event("product_skipped", {
+                        "customer_id": customer.customer_id,
+                        "product_id": product_id,
+                        "reason": skip_reason,
+                    })
+                elif not line.is_empty():
                     line["unit_price_yen"] = _apply_price_policy(int(line["unit_price_yen"]))
                     customer.add_basket_line(line)
+                    if not customer.visit.is_empty():
+                        customer.budget_left -= int(line["unit_price_yen"])
                     _record_event("product_picked", {
                         "customer_id": customer.customer_id,
                         "product_id": product_id,
                     })
+                    _maybe_add_on(customer)
                 else:
                     _record_event("product_unavailable", {
                         "customer_id": customer.customer_id,
@@ -1953,10 +2377,7 @@ func _advance_customer(customer) -> void:
                 var next_product_id: String = customer.current_product_id()
                 if not next_product_id.is_empty():
                     customer.phase = "to_shelf"
-                    customer.route = layout.find_path(
-                        customer.position,
-                        _product_interaction(next_product_id)
-                    )
+                    customer.route = _route_to_product(customer.position, next_product_id)
                 elif customer.basket.is_empty():
                     customer.phase = "leaving"
                     customer.route = layout.find_path(customer.position, layout.exit)
@@ -1992,7 +2413,7 @@ func _advance_customer(customer) -> void:
                 var elapsed_ticks: int = (
                     customer.checkout_assigned_ticks - customer.checkout_ticks_remaining
                 )
-                if elapsed_ticks > _checkout_anger.trigger_ticks(_checkout_ticks):
+                if elapsed_ticks > int(round(_checkout_anger.trigger_ticks(_checkout_ticks) * _patience(customer))):
                     customer.checkout_anger_triggered = true
                     var angry_checkout_staff = staff.checkout_staff()
                     var skills_by_staff: Dictionary = {}
@@ -2039,13 +2460,16 @@ func _advance_customer(customer) -> void:
                         customer.basket
                     )
                     customer.mark_settled(record)
+                    _store_sales_yen += int(record["total_yen"])
                     for line in customer.basket:
-                        var bought_product = inventory.get_product(str(line["product_id"]))
+                        # Task #117: the shelf may have been sold since.
+                        var bought_product = inventory.products.get(str(line["product_id"]))
                         if bought_product != null and not bought_product.catalog_id.is_empty():
                             survey_bought[bought_product.catalog_id] = (
                                 int(survey_bought.get(bought_product.catalog_id, 0)) + int(line["quantity"])
                             )
                 checkout_staff.state = "idle"
+                checkout_staff.checkouts_done += 1
                 _spend_stamina(checkout_staff)
                 customer.phase = "leaving"
                 customer.route = layout.find_path(customer.position, layout.exit)
@@ -2139,7 +2563,7 @@ func snapshot() -> Dictionary:
         "expenses_yen": economy.recorded_expenses_yen(),
         "event_count": event_log.records.size(),
         "completed_visits": customers.completed_count(),
-        "started_visits": customers.customers.size(),
+        "started_visits": customers.started_count(),
         "last_event": last_event,
         "expected_arrivals_per_minute": demand.expected_arrivals_per_minute(),
         "restock_staff_states": _restock_staff_snapshot(),
@@ -2212,21 +2636,158 @@ const INCIDENTAL_WANT_PRODUCT_COUNT := 3
 
 func _start_default_customer() -> void:
     var plan: Array[String] = customers.default_plan()
+    _pending_visit = {}
     if _building_demand_enabled and has_store_site():
         plan = _building_customer_plan()
         if plan.is_empty():
             return
     else:
         plan.append_array(_select_incidental_want_product_ids(plan))
-    var customer = customers.admit_default(
-        layout.entry,
-        layout.find_path(
-            layout.entry,
-            _product_interaction(plan[0])
-        ),
-        plan
-    )
+    var customer = customers.admit_default(layout.entry, _route_to_product(layout.entry, plan[0]), plan)
+    if not _pending_visit.is_empty():
+        customer.visit = _pending_visit
+        customer.type_id = str(_pending_visit["type"])
+        customer.budget_left = int(_pending_visit["budget_yen"])
     _record_customer_entered(customer)
+
+
+# Task #120: CONFIRMED_OFFICIAL visit rows (guide_customer_types). A
+# customer is one of the rows whose window holds this hour, picked in
+# proportion to its 平日来店割合 (REMAKE_BALANCED_DEFAULT, see
+# guide_customer_types.evidence_note).
+func _pick_visit_row() -> Dictionary:
+    var candidates: Array = []
+    var total := 0.0
+    for row in _visit_rows:
+        var start := int(row["start_minute"])
+        var into := (minute_of_day - start + 24 * 60) % (24 * 60)
+        if into >= int(row["duration_minutes"]):
+            continue
+        var weight := float(mini(100, int(row["weekday_share"])))
+        if weight <= 0.0:
+            continue
+        candidates.append([row, weight])
+        total += weight
+    if candidates.is_empty():
+        return {}
+    var roll := _demand_rng.randf() * total
+    for candidate in candidates:
+        roll -= float(candidate[1])
+        if roll <= 0.0:
+            return candidate[0]
+    return candidates[candidates.size() - 1][0]
+
+
+# Task #120 (REMAKE_BALANCED_DEFAULT shapes on CONFIRMED_OFFICIAL stats, see
+# guide_customer_types.evidence_note/rules). 素早さ: the time at a shelf.
+func _shopping_ticks_for(customer) -> int:
+    if customer.visit.is_empty():
+        return _shopping_ticks
+    var offset := float(_customer_type_rules["quickness_offset"])
+    return maxi(1, int(round(_shopping_ticks * 100.0 / (offset + float(customer.visit["quickness"])))))
+
+
+# ス: patience at the register (the guide, p.35: おじさん and おじいさん anger
+# most easily; their ス is the lowest in the table).
+func _patience(customer) -> float:
+    if customer.visit.is_empty():
+        return 1.0
+    return clampf(
+        float(customer.visit["stamina"]) / float(_customer_type_rules["patience_reference_stamina"]),
+        float(_customer_type_rules["patience_min"]), float(_customer_type_rules["patience_max"])
+    )
+
+
+# 所持金 is a hard limit; after a price raise, a price-sensitive customer
+# may put an item back. "" = buy it.
+func _reason_to_skip(customer, product_id: String) -> String:
+    if customer.visit.is_empty() or not inventory.products.has(product_id):
+        return ""
+    var price := _apply_price_policy(inventory.get_product(product_id).sale_price_yen)
+    if price > customer.budget_left:
+        return "budget"
+    if price_change_pct > 0:
+        var chance: float = (
+            float(customer.visit["price_sensitivity"]) / 100.0 * price_change_pct
+            * float(_customer_type_rules["price_skip_per_percent_at_full_sensitivity"])
+        )
+        if _demand_rng.randf() < chance:
+            return "price"
+    return ""
+
+
+# Task #119/#120: ついで買い. After an item, the customer may go for one more:
+# one of their row's extras anywhere in the store, or anything else on a
+# fixture close by (impulse). The chance grows with a lower 集中力, the
+# fixture's 注目度 and a price cut.
+func _maybe_add_on(customer) -> void:
+    if customer.visit.is_empty() or customer.add_ons >= int(_customer_type_rules["max_add_ons"]):
+        return
+    var extras: Array = customer.visit["extras"]
+    var radius := int(_customer_type_rules["impulse_radius_subcells"])
+    var candidates: Array = []
+    var total := 0.0
+    for product_id in inventory.product_order:
+        var product = inventory.get_product(product_id)
+        if product.stock_units <= 0 or customer.planned_product_ids.has(product_id):
+            continue
+        if _apply_price_policy(product.sale_price_yen) > customer.budget_left:
+            continue
+        var weight := 0.0
+        if extras.has(product.catalog_id):
+            weight = 1.0
+        else:
+            var front: Vector2i = _product_interaction(product_id)
+            if absi(front.x - customer.position.x) + absi(front.y - customer.position.y) > radius:
+                continue
+            weight = float(_customer_type_rules["impulse_weight"])
+        weight *= fixture_attention(product.fixture_id)
+        candidates.append([product_id, weight])
+        total += weight
+    if candidates.is_empty():
+        return
+    var roll := _demand_rng.randf() * total
+    var chosen: Array = candidates[candidates.size() - 1]
+    for candidate in candidates:
+        roll -= float(candidate[1])
+        if roll <= 0.0:
+            chosen = candidate
+            break
+    var chance: float = (
+        float(_customer_type_rules["add_on_base_chance"])
+        * (100.0 - float(customer.visit["focus"])) / 100.0
+        * minf(2.0, float(chosen[1]))
+    )
+    if price_change_pct < 0:
+        chance *= 1.0 + float(customer.visit["price_sensitivity"]) / 100.0 * -price_change_pct * float(
+            _customer_type_rules["price_skip_per_percent_at_full_sensitivity"]
+        )
+    if _demand_rng.randf() >= chance:
+        return
+    customer.planned_product_ids.insert(customer.plan_index + 1, str(chosen[0]))
+    customer.add_ons += 1
+    _record_event("customer_add_on", {"customer_id": customer.customer_id, "product_id": str(chosen[0])})
+
+
+# A shelf of `category` with goods on it, not yet in `plan`; "" when none
+# (the survey then notes the category as missing).
+func _shelf_for_category(category: String, plan: Array[String]) -> String:
+    var shelves: Array[String] = []
+    for product_id in inventory.product_order:
+        var product = inventory.get_product(product_id)
+        if product.catalog_id == category and product.stock_units > 0 and not plan.has(product_id):
+            shelves.append(product_id)
+    if shelves.is_empty():
+        return ""
+    return shelves[_demand_rng.randi_range(0, shelves.size() - 1)]
+
+
+func customer_type_name(customer) -> String:
+    return str(_customer_types.get(customer.type_id, {}).get("name", ""))
+
+
+func customer_type_sprite(customer) -> String:
+    return str(_customer_types.get(customer.type_id, {}).get("sprite", ""))
 
 
 # Task #102. CONFIRMED_OFFICIAL (guide DATA4, p.92-95): each building has
@@ -2261,7 +2822,22 @@ func _building_customer_plan() -> Array[String]:
             origin_index = int(candidate[0])
             break
     var wanted: Array = (store_site.building_profile(origin_index)["wanted"] as Array).duplicate()
-    while not wanted.is_empty() and plan.size() < INCIDENTAL_WANT_PRODUCT_COUNT:
+    var building_wants := INCIDENTAL_WANT_PRODUCT_COUNT
+    # Task #120: the customer's type comes for its own product first; the
+    # building adds `building_wants_per_visit` of its wanted categories.
+    if _customer_types_enabled:
+        _pending_visit = _pick_visit_row()
+    if not _pending_visit.is_empty():
+        var primary := str(_pending_visit["primary"])
+        wanted.erase(primary)
+        if not primary.is_empty():
+            var shelf := _shelf_for_category(primary, plan)
+            if shelf.is_empty():
+                survey_missing[primary] = int(survey_missing.get(primary, 0)) + 1
+            else:
+                plan.append(shelf)
+        building_wants = plan.size() + int(_customer_type_rules["building_wants_per_visit"])
+    while not wanted.is_empty() and plan.size() < building_wants:
         var category := str(wanted.pop_at(_demand_rng.randi_range(0, wanted.size() - 1)))
         var shelves: Array[String] = []
         for product_id in inventory.product_order:
@@ -2289,6 +2865,8 @@ func _select_incidental_want_product_ids(exclude_product_ids: Array[String]) -> 
 
 
 func _record_customer_entered(customer) -> void:
+    if not customer.type_id.is_empty():
+        survey_types[customer.type_id] = int(survey_types.get(customer.type_id, 0)) + 1
     _record_event("customer_entered", {
         "customer_id": customer.customer_id,
         "planned_product_ids": customer.planned_product_ids.duplicate(),
@@ -2307,7 +2885,7 @@ func observation_snapshot() -> Dictionary:
     }
 
 
-const SAVE_SCHEMA_VERSION := 9
+const SAVE_SCHEMA_VERSION := 10
 
 # Deliberately not saved/restored: the active customer's mid-visit walk
 # state (position along a route, basket-so-far, checkout progress) and
@@ -2330,7 +2908,9 @@ const SAVE_SCHEMA_VERSION := 9
 # Extending the save format to persist current skill values is explicitly
 # out of scope for task #48 (see decision 0117).
 func save_state() -> Dictionary:
-    return {
+    var viewed := active_store
+    _switch_store(0)
+    var data := {
         "save_schema_version": SAVE_SCHEMA_VERSION,
         "scenario_id": str(config["scenario_id"]),
         "config_schema_version": int(config["schema_version"]),
@@ -2344,16 +2924,12 @@ func save_state() -> Dictionary:
         "is_game_over": is_game_over,
         "game_over_reason": game_over_reason,
         "clear_condition_met": clear_condition_met,
-        "popularity": popularity,
-        "price_change_pct": price_change_pct,
-        "internal_rating_value": internal_rating_value,
-        "star_rating": star_rating,
         "player_store_count": player_store_count,
-        # Task #95 (schema 6): the bought site and the buildings cleared for it.
-        "store_site_origin": [store_site_origin.x, store_site_origin.y],
+        # Task #95 (schema 6): the buildings cleared for the store, and since
+        # tasks #111/#114 for facilities and town buildings too.
         "bought_buildings": _bought_buildings.duplicate(),
         # Task #101 (schema 7): rivals bought out and rivals investigated.
-        "bought_rival_ids": owned_branches.map(func(branch): return str(branch["id"])),
+        "bought_rival_ids": owned_branches.filter(func(branch): return not str(branch["id"]).is_empty()).map(func(branch): return str(branch["id"])),
         "investigated_rival_ids": _investigated_rivals.keys(),
         # Task #106 (schema 9): where each rival stands now, its losing
         # months, and the branches waiting to open again.
@@ -2380,38 +2956,67 @@ func save_state() -> Dictionary:
             "id": str(waiting["id"]),
             "left": [waiting["left"].x, waiting["left"].y],
         }),
-        # Task #103 (schema 8).
-        "business_hours_id": business_hours_id,
-        # Task #104 (schema 9): which store stands on the site.
-        "store_type_id": store_type_id,
         "weather_category_index": weather_category_index,
         "chain_visitor_milestone": {
             "last_observed_total": _chain_visitor_milestone.last_observed_total,
             "next_threshold": _chain_visitor_milestone.next_threshold,
             "events": _chain_visitor_milestone.events.duplicate(true),
         },
+        "chain_visitors_total": _chain_visitors_total,
+        "economy": economy.snapshot(),
+        "events": event_log.snapshot(),
+    }
+    # 本店's own state sits at the top level (as before schema 10); every
+    # other store's in "branches" (task #123, schema 10).
+    data.merge(_store_save_block())
+    var branches: Array = []
+    for index in range(1, _stores.size()):
+        _switch_store(index)
+        branches.append(_store_save_block())
+    _switch_store(0)
+    data["branches"] = branches
+    _switch_store(viewed)
+    return data
+
+
+# One store's own state (task #123 split it out of save_state()).
+func _store_save_block() -> Dictionary:
+    return {
+        "store_name": store_name,
+        "popularity": popularity,
+        "price_change_pct": price_change_pct,
+        "internal_rating_value": internal_rating_value,
+        "star_rating": star_rating,
+        "store_site_origin": [store_site_origin.x, store_site_origin.y],
+        # Task #103 (schema 8).
+        "business_hours_id": business_hours_id,
+        # Task #104 (schema 9): which store stands on the site.
+        "store_type_id": store_type_id,
         "permits_held": _permits_held.keys(),
         "promotions_used_this_month": _promotions_used_this_month.keys(),
         "scheduled_promotions": _scheduled_promotions.duplicate(true),
         # Task #56: which candidate currently occupies each roster slot is
-        # now player-changeable (try_hire_candidate()), so it can no longer
-        # be assumed to always match config's own static staff.members --
-        # persisted here so a load reapplies any hire the config-derived
-        # staff.reset() below would otherwise silently revert.
+        # player-changeable (try_hire_candidate()).
         "staff_roster": _staff_roster_snapshot(),
         # Task #107 (schema 9): each staff member's grown skills and 体力,
-        # and this month's and last month's survey, which a load used to
-        # put back to their starting values.
+        # and this month's and last month's survey.
         "staff_state": _staff_state_snapshot(),
+        # Task #118 (schema 10): who has register duty.
+        "checkout_staff_id": staff.checkout_staff_id,
         "survey": {
             "bought": survey_bought.duplicate(),
             "missing": survey_missing.duplicate(),
+            "types": survey_types.duplicate(),
             "last": last_survey.duplicate(true),
+        },
+        # Task #123 (schema 10): this store's own sales.
+        "store_sales": {
+            "total": _store_sales_yen,
+            "month_start": _store_sales_at_month_start,
+            "day_start": _store_sales_at_day_start,
         },
         "fixtures": layout.fixture_snapshot(),
         "inventory": inventory.snapshot(),
-        "economy": economy.snapshot(),
-        "events": event_log.snapshot(),
     }
 
 
@@ -2427,9 +3032,13 @@ func load_state(data: Dictionary) -> bool:
         return false
     if int(data.get("config_schema_version", -1)) != int(config["schema_version"]):
         return false
-    if int(data.get("save_schema_version", -1)) != SAVE_SCHEMA_VERSION:
+    # Task #123: a schema 9 save (one store; bought branches only counted)
+    # still loads -- its bought branches open as real stores.
+    var save_version := int(data.get("save_schema_version", -1))
+    if save_version != SAVE_SCHEMA_VERSION and save_version != 9:
         return false
     _require_save_data(data)
+    _drop_branches()
     # Task #104: the saved store may be another type than the one this
     # simulation stands in; build that one first (and put this one back if
     # the save does not fit it after all).
@@ -2455,42 +3064,12 @@ func load_state(data: Dictionary) -> bool:
     economy.reset()
     customers.reset()
     staff.reset()
-    # Task #74: reset() itself clears this right after the same five calls
-    # above, but load_state() had never done so -- a save taken while a
-    # second customer was queued at checkout (_checkout_queue non-empty)
-    # left that customer_id behind after customers.reset() had already
-    # discarded the actual customer record, so the next
-    # _dispatch_checkout_queue() call would null-dereference it. Found by
-    # directly auditing this function against reset()'s own gap-clearing.
+    # Task #74: a save taken while a customer was queued at checkout left
+    # that customer_id behind after customers.reset() had already discarded
+    # the actual customer record.
     _checkout_queue.clear()
-    # Task #56: staff.reset() above restores every slot to its config-
-    # derived DEFAULT candidate, undoing any try_hire_candidate() swap the
-    # player made since starting. Reapply the saved roster directly via
-    # StaffState.hire() (not the guarded _apply_hire()/try_hire_candidate()
-    # path): that path's cross-slot collision check compares against
-    # every OTHER slot's CURRENT candidate, which can spuriously reject a
-    # legitimate two-slot swap reload if applied one entry at a time right
-    # after a reset (e.g. slot A's saved candidate can momentarily still
-    # match slot B's not-yet-overwritten default). Saved data was only
-    # ever produced by a hire that already passed that check when it
-    # happened, so re-trusting it here (the same convention
-    # _require_save_data() already applies to every other field) is safe.
-    for roster_entry in data["staff_roster"]:
-        var roster_staff_id := str(roster_entry["staff_id"])
-        var roster_candidate_id := str(roster_entry["candidate_id"])
-        if staff.members.has(roster_staff_id) and _staff_candidate_catalog.has(roster_candidate_id):
-            staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])
     event_log.reset()
-    _reset_stamina()
-    _restore_staff_state(data["staff_state"])
-    survey_bought = _counts(data["survey"]["bought"])
-    survey_missing = _counts(data["survey"]["missing"])
-    last_survey = {}
-    if not (data["survey"]["last"] as Dictionary).is_empty():
-        last_survey = {
-            "bought": _counts(data["survey"]["last"]["bought"]),
-            "missing": _counts(data["survey"]["last"]["missing"]),
-        }
+    economy.restore_snapshot(data["economy"])
     minute_of_day = int(data["minute_of_day"])
     day_count = int(data["day_count"])
     month_count = int(data["month_count"])
@@ -2501,16 +3080,12 @@ func load_state(data: Dictionary) -> bool:
     is_game_over = bool(data["is_game_over"])
     game_over_reason = str(data["game_over_reason"])
     clear_condition_met = bool(data["clear_condition_met"])
-    popularity = int(data["popularity"])
-    price_change_pct = int(data["price_change_pct"])
-    internal_rating_value = int(data["internal_rating_value"])
-    star_rating = int(data["star_rating"])
     player_store_count = int(data["player_store_count"])
     _load_rivals()
     for rival_id in data["bought_rival_ids"]:
         var rival_index := _rival_index(str(rival_id))
         if rival_index >= 0:
-            owned_branches.append({"id": str(rival_id), "position": _rival_stores[rival_index]["position"]})
+            owned_branches.append({"id": str(rival_id), "position": _rival_stores[rival_index]["position"], "store_index": -1})
             _rival_stores.remove_at(rival_index)
     _rival_stores.clear()
     for rival_data in data["rival_stores"]:
@@ -2521,8 +3096,6 @@ func load_state(data: Dictionary) -> bool:
         _rivals_to_reopen.append({"id": str(waiting["id"]), "left": _vec2i_from_array(waiting["left"])})
     for rival_id in data["investigated_rival_ids"]:
         _investigated_rivals[str(rival_id)] = true
-    if not _business_hours.is_empty():
-        _apply_business_hours(str(data["business_hours_id"]))
     _clear_store_site()
     _reset_inducement()
     _reset_town_growth()
@@ -2539,36 +3112,107 @@ func load_state(data: Dictionary) -> bool:
             "origin": _vec2i_from_array(saved_pending["origin"]),
             "ready_day": int(saved_pending["ready_day"]),
         }
-    var saved_site := _vec2i_from_array(data["store_site_origin"])
-    if saved_site != NO_STORE_SITE and store_site != null:
-        _apply_store_site(saved_site, data["bought_buildings"])
-    _apply_weather(int(data["weather_category_index"]))
     var milestone_data: Dictionary = data["chain_visitor_milestone"]
     _chain_visitor_milestone = ChainVisitorMilestoneScript.new()
     _chain_visitor_milestone.last_observed_total = int(milestone_data["last_observed_total"])
     _chain_visitor_milestone.next_threshold = int(milestone_data["next_threshold"])
     _chain_visitor_milestone.events.assign(milestone_data["events"])
-    _permits_held.clear()
-    for permit_id in data["permits_held"]:
-        _permits_held[str(permit_id)] = true
-    _promotions_used_this_month.clear()
-    for key in data["promotions_used_this_month"]:
-        _promotions_used_this_month[str(key)] = true
-    _scheduled_promotions.clear()
-    for scheduled in data["scheduled_promotions"]:
-        _scheduled_promotions.append((scheduled as Dictionary).duplicate(true))
-    layout.restore_fixture_snapshot(data["fixtures"])
-    inventory.restore_snapshot(data["inventory"])
-    economy.restore_snapshot(data["economy"])
+    _chain_visitors_total = int(data.get("chain_visitors_total", _chain_visitor_milestone.last_observed_total))
+    _restore_store_block(data, data["bought_buildings"])
+    # Task #123: the other stores.
+    for block in data.get("branches", []):
+        var origin := _vec2i_from_array(block["store_site_origin"])
+        var index := _add_store(str(block["store_type_id"]), origin, str(block["store_name"]))
+        _switch_store(index)
+        _restore_store_block(block, [])
+        _switch_store(0)
+        var matched := false
+        for branch in owned_branches:
+            if branch["position"] == origin:
+                branch["store_index"] = index
+                matched = true
+        if not matched:
+            owned_branches.append({"id": "", "position": origin, "store_index": index})
+    for branch in owned_branches:
+        if int(branch["store_index"]) < 0 and not store_types().is_empty():
+            branch["store_index"] = _add_store(_branch_store_type(), branch["position"], _branch_name())
     event_log.restore_snapshot(data["events"])
-    _refresh_interactions()
-    _start_opening_customer()
+    _apply_weather(int(data["weather_category_index"]))
+    _for_each_store(_refresh_store_catchment)
+    _for_each_store(_refresh_interactions)
+    _for_each_store(_start_opening_customer)
     return true
 
 
+# One store's own state, from save_state()'s _store_save_block() (or, for
+# 本店, the top level of the save). `bought` = the town's cleared buildings
+# (given with 本店's site only).
+func _restore_store_block(block: Dictionary, bought: Array) -> void:
+    # Task #56: staff.reset() restored every slot to its config default;
+    # reapply the saved roster directly via StaffState.hire() (the saved
+    # data was only ever produced by a hire that already passed the
+    # cross-slot check).
+    for roster_entry in block["staff_roster"]:
+        var roster_staff_id := str(roster_entry["staff_id"])
+        var roster_candidate_id := str(roster_entry["candidate_id"])
+        if staff.members.has(roster_staff_id) and _staff_candidate_catalog.has(roster_candidate_id):
+            staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])
+    _reset_stamina()
+    _restore_staff_state(block["staff_state"])
+    var saved_cashier := str(block.get("checkout_staff_id", staff.checkout_staff_id))
+    if saved_cashier != staff.checkout_staff_id:
+        staff.hand_over_checkout(saved_cashier)
+    survey_bought = _counts(block["survey"]["bought"])
+    survey_missing = _counts(block["survey"]["missing"])
+    survey_types = _counts(block["survey"].get("types", {}))
+    last_survey = {}
+    if not (block["survey"]["last"] as Dictionary).is_empty():
+        last_survey = {
+            "bought": _counts(block["survey"]["last"]["bought"]),
+            "missing": _counts(block["survey"]["last"]["missing"]),
+            "types": _counts(block["survey"]["last"].get("types", {})),
+        }
+    store_name = str(block.get("store_name", store_name))
+    popularity = int(block["popularity"])
+    price_change_pct = int(block["price_change_pct"])
+    internal_rating_value = int(block["internal_rating_value"])
+    star_rating = int(block["star_rating"])
+    if not _business_hours.is_empty():
+        _apply_business_hours(str(block["business_hours_id"]))
+    var saved_site := _vec2i_from_array(block["store_site_origin"])
+    if saved_site != NO_STORE_SITE and store_site != null:
+        _apply_store_site(saved_site, bought)
+    _permits_held.clear()
+    for permit_id in block["permits_held"]:
+        _permits_held[str(permit_id)] = true
+    _promotions_used_this_month.clear()
+    for key in block["promotions_used_this_month"]:
+        _promotions_used_this_month[str(key)] = true
+    _scheduled_promotions.clear()
+    for scheduled in block["scheduled_promotions"]:
+        _scheduled_promotions.append((scheduled as Dictionary).duplicate(true))
+    if layout.fixture_snapshot_is_valid(block["fixtures"]):
+        layout.restore_fixture_snapshot(block["fixtures"])
+    inventory.restore_snapshot(block["inventory"])
+    # Before schema 10 there was one store: its sales were all the sales.
+    var sales: Dictionary = block.get("store_sales", {
+        "total": economy.recorded_revenue_yen(),
+        "month_start": _revenue_at_month_start,
+        "day_start": economy.recorded_revenue_yen(),
+    })
+    _store_sales_yen = int(sales["total"])
+    _store_sales_at_month_start = int(sales["month_start"])
+    _store_sales_at_day_start = int(sales["day_start"])
+    _refresh_interactions()
+
+
 func _record_event(event_type: String, details: Dictionary = {}) -> void:
+    if _stores.size() > 1:
+        details = details.duplicate()
+        details["store_index"] = active_store
     event_log.append(event_type, minute_of_day, details)
-    last_event = event_type.replace("_", " ")
+    if active_store == viewed_store:
+        last_event = event_type.replace("_", " ")
 
 
 func _refresh_interactions() -> void:
@@ -2581,16 +3225,15 @@ func _refresh_interactions() -> void:
 func _required_routes_are_reachable() -> bool:
     var cursor: Vector2i = layout.entry
     for product_id in config["customer"]["visit_plan_product_ids"]:
-        var interaction := _product_interaction(str(product_id))
-        if not layout.has_path(cursor, interaction):
+        if not _can_reach_product(cursor, str(product_id)):
             return false
-        cursor = interaction
+        cursor = _cell_at_product(cursor, str(product_id))
     # Task #89: with no fixed default plan (the guide starting store), any
     # stocked product can be a visit's want, so every shelf must stay
     # reachable from the entrance.
     if (config["customer"]["visit_plan_product_ids"] as Array).is_empty():
         for product_id in inventory.product_order:
-            if not layout.has_path(layout.entry, _product_interaction(product_id)):
+            if not _can_reach_product(layout.entry, product_id):
                 return false
     return layout.has_path(cursor, _checkout_interaction) and layout.has_path(
         _checkout_interaction,
@@ -2607,6 +3250,52 @@ func _product_interaction(product_id: String) -> Vector2i:
     return layout.interaction_for_fixture(product.fixture_id, "shelf")
 
 
+# Task #119 (the owner's request): CONFIRMED_OFFICIAL that a wagon holds
+# less than the shelf of the same size (fixture_catalog capacities, e.g.
+# 15/30/45 against 40/80/120). REMAKE_BALANCED_DEFAULT (no source says which
+# sides goods are taken from): a shelf only from its front, a wagon from any
+# free side -- a person walks to the nearest one (guide_starting_store.
+# store_rules). Routes to a product go through here.
+func _product_access_goals(product_id: String) -> Dictionary:
+    var goals := {}
+    for cell in layout.access_cells(inventory.get_product(product_id).fixture_id):
+        goals[cell] = true
+    return goals
+
+
+func _at_product(position: Vector2i, product_id: String) -> bool:
+    return _product_access_goals(product_id).has(position)
+
+
+func _route_to_product(from: Vector2i, product_id: String) -> Array[Vector2i]:
+    return layout.find_path_to_any(from, _product_access_goals(product_id))
+
+
+func _can_reach_product(from: Vector2i, product_id: String) -> bool:
+    return _at_product(from, product_id) or not _route_to_product(from, product_id).is_empty()
+
+
+func _cell_at_product(from: Vector2i, product_id: String) -> Vector2i:
+    var route := _route_to_product(from, product_id)
+    return from if route.is_empty() else route[route.size() - 1]
+
+
+func _any_side_catalog_ids() -> Array:
+    return config["simulation"].get("any_side_catalog_ids", [])
+
+
+# Task #119: a fixture's 注目度. CONFIRMED_COMMUNITY (first-title wiki,
+# docs/research/customer-purchase-role-merchandising-2026-09-05.md section
+# 1): the 2x2 large wagon draws slightly more attention than a one-wide
+# wagon, which the wiki thinks raises ついで買い. REMAKE_BALANCED_DEFAULT: the
+# values themselves (store_rules.fixture_attention: shelves 1.0, wagons
+# more, the 2x2 wagons most) and that they scale add-on buying.
+func fixture_attention(fixture_id: String) -> float:
+    var fixture: Dictionary = layout.fixtures_by_id.get(fixture_id, {})
+    var table: Dictionary = config["simulation"].get("fixture_attention", {})
+    return float(table.get(str(fixture.get("catalog_id", "")), 1.0))
+
+
 func _product_plan_is_valid(product_ids: Array[String]) -> bool:
     if product_ids.is_empty():
         return false
@@ -2617,10 +3306,9 @@ func _product_plan_is_valid(product_ids: Array[String]) -> bool:
         seen[product_id] = true
     var cursor: Vector2i = layout.entry
     for product_id in product_ids:
-        var interaction := _product_interaction(product_id)
-        if not layout.has_path(cursor, interaction):
+        if not _can_reach_product(cursor, product_id):
             return false
-        cursor = interaction
+        cursor = _cell_at_product(cursor, product_id)
     return layout.has_path(cursor, _checkout_interaction)
 
 
@@ -2706,7 +3394,7 @@ func _all_staff_are_walkable() -> bool:
 
 func _advance_minute_of_day() -> void:
     minute_of_day += _step_game_minutes
-    _fire_due_promotions()
+    _for_each_store(_fire_due_promotions)
     while minute_of_day >= 24 * 60:
         minute_of_day -= 24 * 60
         _handle_day_boundary()
@@ -2716,8 +3404,7 @@ func _advance_minute_of_day() -> void:
 func _handle_day_boundary() -> void:
     day_count += 1
     _days_completed_this_month += 1
-    _apply_daily_fixture_maintenance()
-    _apply_daily_staff_wages()
+    _for_each_store(_close_store_day)
     _step_inducement_day()
     if _days_completed_this_month >= REPRESENTATIVE_DAYS_PER_MONTH:
         _settle_month_end()
@@ -2745,7 +3432,7 @@ func _roll_weather() -> void:
 
 func _apply_weather(category_index: int) -> void:
     weather_category_index = category_index
-    demand.is_bad_weather = config["weather"]["bad_weather_categories"].has(weather_category())
+    _for_each_store(func(): demand.is_bad_weather = config["weather"]["bad_weather_categories"].has(weather_category()))
 
 
 func weather_category() -> String:
@@ -2884,21 +3571,34 @@ func _settle_month_end() -> void:
         "month_result_yen": month_result_yen,
         "settlement_id": record["settlement_id"],
     })
-    var four_day_revenue_yen: int = economy.recorded_revenue_yen() - _revenue_at_month_start
-    var monthly_sales_yen: int = four_day_revenue_yen * MONTH_MULTIPLIER
-    _evaluate_store_rating(monthly_sales_yen)
-    last_survey = {"bought": survey_bought.duplicate(), "missing": survey_missing.duplicate()}
-    survey_bought.clear()
-    survey_missing.clear()
+    _for_each_store(_close_store_month)
     month_count += 1
     _days_completed_this_month = 0
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
     _expense_index_at_month_start = economy.expense_records.size()
-    _promotions_used_this_month.clear()
     _step_rivals_at_month_end()
     _grow_town_at_month_end()
     _evaluate_terminal_state()
+
+
+# Task #123: each store's own month end -- its rating from its own sales,
+# its survey, its advertising for the month.
+func _close_store_month() -> void:
+    var monthly_sales_yen: int = (_store_sales_yen - _store_sales_at_month_start) * MONTH_MULTIPLIER
+    _evaluate_store_rating(monthly_sales_yen)
+    last_survey = {"bought": survey_bought.duplicate(), "missing": survey_missing.duplicate(), "types": survey_types.duplicate()}
+    survey_bought.clear()
+    survey_missing.clear()
+    survey_types.clear()
+    _promotions_used_this_month.clear()
+    _store_sales_at_month_start = _store_sales_yen
+
+
+func _close_store_day() -> void:
+    _apply_daily_fixture_maintenance()
+    _apply_daily_staff_wages()
+    _store_sales_at_day_start = _store_sales_yen
 
 
 func _evaluate_store_rating(monthly_sales_yen: int) -> void:
@@ -3023,8 +3723,11 @@ func _fire_promotion(scheduled: Dictionary) -> void:
 
 
 func _observe_chain_visitor_milestone() -> void:
+    # Task #123: the whole chain's visitors, counted as they leave (the
+    # rosters restart on a load and each store has its own).
+    _chain_visitors_total += 1
     _chain_visitor_milestone.observe_total_visitors(
-        customers.completed_count(), day_count + 1, minute_of_day / 60
+        _chain_visitors_total, day_count + 1, minute_of_day / 60
     )
 
 
@@ -3042,7 +3745,9 @@ func _fire_due_chain_visitor_milestones() -> void:
     )
     for milestone_event in due:
         var gain: int = int(milestone_event["popularity_gain"])
-        popularity = min(100, popularity + gain)
+        # Task #123: a chain-wide event raises every store's popularity
+        # (REMAKE_BALANCED_DEFAULT reading of "across the chain").
+        _for_each_store(func(): popularity = min(100, popularity + gain))
         _record_event("chain_visitor_milestone_fired", {
             "threshold_visitors": int(milestone_event["threshold_visitors"]),
             "popularity_gain": gain,
@@ -3100,6 +3805,87 @@ func _step_staff_rest() -> void:
 
 
 const NO_BREAK_ROOM_DOOR := Vector2i(-1, -1)
+
+# Task #118 (the owner: the same clerk was always on the register).
+# CONFIRMED_COMMUNITY (first-title FAQ, docs/research/staff-checkout-task-
+# arbitration-2026-09-06.md sections 2-3): register duty is not fixed to one
+# person -- whichever staff member gets to the register takes it, and a
+# cashier low on 体力 leaves for the break room, sometimes leaving the
+# register empty for a while. REMAKE_BALANCED_DEFAULT (how and when it
+# passes on): when customers are in and the cashier is away from the
+# register, the idle, rested staff member nearest to it takes it (more 体力
+# wins a tie -- staff resting together stand on the same break-room
+# square -- then whoever has rung up fewer customers); and between customers, a cashier who is exhausted, or down to
+# under half their 体力, hands the register to the idle, rested colleague
+# with the most 体力 left -- for the half-tired case only when that
+# colleague has at least a quarter of a full gauge more than the cashier
+# (so the duty does not bounce back and forth). The two swap posts. Only in
+# the real game (guide_starting_store.store_rules.checkout_rotation_enabled).
+const CHECKOUT_HANDOVER_STAMINA_SHARE := 0.5
+const CHECKOUT_HANDOVER_MARGIN := 0.25
+
+
+func _stamina_share(staff_member) -> float:
+    if staff_member.stamina_max <= 0:
+        return 1.0
+    return float(staff_member.stamina) / float(staff_member.stamina_max)
+
+
+# On a tie: more 体力 left first, then whoever has rung up fewer customers.
+func _takes_register_before(staff_member, other) -> bool:
+    var share := _stamina_share(staff_member)
+    var other_share := _stamina_share(other)
+    if not is_equal_approx(share, other_share):
+        return share > other_share
+    return staff_member.checkouts_done < other.checkouts_done
+
+
+func _rotate_checkout_duty() -> void:
+    if not _checkout_rotation_enabled or not _stamina_enabled:
+        return
+    var cashier = staff.checkout_staff()
+    if cashier.state == "checkout":
+        return
+    var best = null
+    var register_post: Vector2i = cashier.home_position()
+    if not customers.all_settled() and cashier.position != register_post:
+        # Customers are in and the cashier is away (resting, or on the way
+        # back): the first to get there takes the register -- the idle,
+        # rested staff member nearest to it, the one with more 体力 on a tie
+        # (staff coming out of the break room together).
+        var best_steps := -1
+        for staff_member in staff.all_staff():
+            if staff_member.state != "idle" or staff_member.exhausted:
+                continue
+            var steps: int = layout.find_path(staff_member.position, register_post).size()
+            if best == null or steps < best_steps or (steps == best_steps and _takes_register_before(staff_member, best)):
+                best = staff_member
+                best_steps = steps
+        if best == cashier:
+            return
+    if best == null:
+        var cashier_share := _stamina_share(cashier)
+        if not cashier.exhausted and cashier_share >= CHECKOUT_HANDOVER_STAMINA_SHARE:
+            return
+        var needed := 0.0 if cashier.exhausted else cashier_share + CHECKOUT_HANDOVER_MARGIN
+        var best_share := needed
+        for staff_member in staff.all_staff():
+            if staff_member == cashier or staff_member.state != "idle" or staff_member.exhausted:
+                continue
+            var share := _stamina_share(staff_member)
+            if share > best_share or (best == null and share >= needed and share > 0.0):
+                best = staff_member
+                best_share = share
+    if best == null:
+        return
+    var previous_id: String = cashier.staff_id
+    staff.hand_over_checkout(best.staff_id)
+    # Both walk to their new posts (_step_staff_rest), unless resting.
+    for member in [cashier, best]:
+        if member.rest_phase != "resting" and member.rest_phase != "to_break_room":
+            member.route.clear()
+            member.rest_phase = "stale"
+    _record_event("checkout_handover", {"from_staff_id": previous_id, "to_staff_id": best.staff_id})
 
 # Task #99: stamina. CONFIRMED_COMMUNITY (first-title staff wiki, docs/
 # research/behavior-rules-evidence-2026-09-05.md section 7): checkout,
@@ -3245,7 +4031,7 @@ func _assign_idle_restock_tasks() -> void:
         var idle_staff = _find_idle_restock_staff()
         if idle_staff == null:
             return
-        idle_staff.begin_restock(product_id, layout.find_path(idle_staff.position, _product_interaction(product_id)))
+        idle_staff.begin_restock(product_id, _route_to_product(idle_staff.position, product_id))
         claimed_product_ids[product_id] = true
 
 
@@ -3468,6 +4254,12 @@ func _require_save_data(data: Dictionary) -> void:
         if not data.has(key):
             push_error("save data missing required key: %s" % key)
             assert(false)
+    # Task #123 (schema 10): the other stores and who is on the register.
+    if int(data.get("save_schema_version", -1)) >= 10:
+        for key in ["branches", "checkout_staff_id", "store_sales", "store_name"]:
+            if not data.has(key):
+                push_error("save data missing required key: %s" % key)
+                assert(false)
     var economy_data: Dictionary = data["economy"]
     for key in ["cash_yen", "sale_records", "expense_records", "month_end_records", "next_sale_sequence"]:
         if not economy_data.has(key):

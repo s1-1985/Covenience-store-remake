@@ -285,8 +285,10 @@ func _draw_guide_map(guide: Dictionary) -> void:
     # The player's store: the flat 本店 mark seen on the original town map
     # (CONFIRMED_VISUAL, video crop) on the 2x2 site the player bought
     # (DATA4 コンビニ(自) 2×2), on paving.
-    if simulation.has_store_site():
-        var mark := Rect2(Vector2(simulation.store_site_origin), Vector2(2, 2))
+    # Task #123: 本店 is store 0 whichever store is being looked at.
+    var head_origin: Vector2i = simulation.store_field(0, "store_site_origin")
+    if head_origin != simulation.NO_STORE_SITE:
+        var mark := Rect2(Vector2(head_origin), Vector2(2, 2))
         if shown_rect.encloses(mark):
             var mark_rect := Rect2(mark.position * t - origin, mark.size * t)
             for dy in 2:

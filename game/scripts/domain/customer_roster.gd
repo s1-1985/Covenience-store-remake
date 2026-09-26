@@ -8,6 +8,11 @@ var active_customer_id := ""
 var _id_prefix: String
 var _visit_plan_product_ids: Array[String] = []
 var _next_sequence := 1
+# Task #121: customers who have left are kept only for a while (the latest
+# KEPT_DONE_CUSTOMERS), so the per-tick loops over the roster do not grow
+# with every visit of a long game; the totals are kept as counts.
+const KEPT_DONE_CUSTOMERS := 64
+var _forgotten_done := 0
 # REMAKE_BALANCED_DEFAULT (task #36): the strategy guide/wiki research never
 # states how many shoppers the original title allows in a store at once, so
 # this cap is this project's own scope decision (not a recovered original
@@ -32,6 +37,7 @@ func reset() -> void:
     customers.clear()
     active_customer_id = ""
     _next_sequence = 1
+    _forgotten_done = 0
 
 
 func can_admit() -> bool:
@@ -94,6 +100,7 @@ func admit_explicit(
     assert(can_admit_concurrent())
     assert(not customer_id.is_empty() and not customers.has(customer_id))
     assert(not visit_plan_product_ids.is_empty())
+    _forget_old_done_customers()
     var customer = CustomerStateScript.new({"id": customer_id})
     customer.begin(entry, initial_route, visit_plan_product_ids)
     customers[customer_id] = customer
@@ -122,8 +129,22 @@ func active_customers() -> Array:
     return result
 
 
+func _forget_old_done_customers() -> void:
+    var done_ids: Array = []
+    for customer_id in customers:
+        if customers[customer_id].phase == "done":
+            done_ids.append(customer_id)
+    for index in range(done_ids.size() - KEPT_DONE_CUSTOMERS):
+        customers.erase(done_ids[index])
+        _forgotten_done += 1
+
+
+func started_count() -> int:
+    return customers.size() + _forgotten_done
+
+
 func completed_count() -> int:
-    var total := 0
+    var total := _forgotten_done
     for customer in customers.values():
         if customer.phase == "done":
             total += 1
