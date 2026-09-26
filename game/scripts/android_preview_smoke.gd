@@ -278,6 +278,21 @@ func _run() -> void:
     phone.customer_eject_button.pressed.emit()
     if not _require(game.simulation.customers.customer(tapped_id).phase == "leaving" and not phone.customer_card.visible, "つまみだす sends the customer out"):
         return
+    # Task #112: a tap on a building on the town map names it and shows
+    # what its people want.
+    game.show_town_map_button.pressed.emit()
+    var house_index := -1
+    for index in game.simulation.store_site.buildings.size():
+        var candidate: Dictionary = game.simulation.store_site.buildings[index]
+        var candidate_tile := Vector2i(int(candidate["tile"][0]), int(candidate["tile"][1]))
+        if house_index < 0 and not game.simulation.bought_buildings().has(index) and game.simulation.store_site.in_catchment(game.simulation.store_site_origin, candidate_tile) and game.simulation.rival_at(candidate_tile).is_empty():
+            house_index = index
+    var house: Dictionary = game.simulation.store_site.buildings[house_index]
+    phone._on_map_building_tapped(Vector2i(int(house["tile"][0]), int(house["tile"][1])))
+    if not _require(phone.building_card.visible and "欲しい品物：" in phone.building_card_label.text and "お店の商圏内" in phone.building_card_label.text, "Tapping a building shows its name and wants: " + phone.building_card_label.text):
+        return
+    phone.building_card.find_child("PhoneBuildingClose", true, false).pressed.emit()
+    game.show_town_map_button.pressed.emit()
     # 販促 → 誘致: pick the 交番, tap its place on the town map, confirm.
     phone.menu_buttons["promotion"].pressed.emit()
     phone.window_body.find_child("Induce_police_box", true, false).pressed.emit()

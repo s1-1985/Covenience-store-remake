@@ -3277,7 +3277,8 @@
           "table_size": [2, 2],
           "aid_yen": 400000,
           "security_per_square": 10,
-          "security_max": 40
+          "security_max": 40,
+          "shopping_population": null
         },
         {
           "id": "fire_station",
@@ -3287,7 +3288,8 @@
           "table_size": [2, 3],
           "aid_yen": 600000,
           "security_per_square": 5,
-          "security_max": 30
+          "security_max": 30,
+          "shopping_population": 12
         },
         {
           "id": "apartment",
@@ -3297,7 +3299,8 @@
           "table_size": [2, 3],
           "aid_yen": 4200000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": null
         },
         {
           "id": "company",
@@ -3307,7 +3310,8 @@
           "table_size": [3, 3],
           "aid_yen": 5400000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": 90
         },
         {
           "id": "gym",
@@ -3317,7 +3321,8 @@
           "table_size": [2, 3],
           "aid_yen": 4200000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": 30
         },
         {
           "id": "pool",
@@ -3327,7 +3332,8 @@
           "table_size": [2, 3],
           "aid_yen": 1800000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": 40
         },
         {
           "id": "athletic_field",
@@ -3337,7 +3343,8 @@
           "table_size": [4, 5],
           "aid_yen": 2000000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": 30
         },
         {
           "id": "event_hall",
@@ -3347,7 +3354,8 @@
           "table_size": [2, 2],
           "aid_yen": 6000000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": 260
         },
         {
           "id": "kindergarten",
@@ -3357,7 +3365,8 @@
           "table_size": [2, 3],
           "aid_yen": 1200000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": null
         },
         {
           "id": "elementary_school",
@@ -3367,7 +3376,8 @@
           "table_size": [4, 4],
           "aid_yen": 3200000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": null
         },
         {
           "id": "middle_school",
@@ -3377,7 +3387,8 @@
           "table_size": [5, 5],
           "aid_yen": 5000000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": null
         },
         {
           "id": "high_school",
@@ -3387,7 +3398,8 @@
           "table_size": [6, 6],
           "aid_yen": 7200000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": null
         },
         {
           "id": "university",
@@ -3397,7 +3409,8 @@
           "table_size": [7, 7],
           "aid_yen": 9800000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": null
         },
         {
           "id": "vocational_school",
@@ -3407,7 +3420,8 @@
           "table_size": [3, 4],
           "aid_yen": 4800000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": null
         },
         {
           "id": "park",
@@ -3417,7 +3431,8 @@
           "table_size": [2, 2],
           "aid_yen": 2000000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": 24
         },
         {
           "id": "aquarium",
@@ -3427,7 +3442,8 @@
           "table_size": [3, 3],
           "aid_yen": 2700000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": 60
         },
         {
           "id": "zoo",
@@ -3437,7 +3453,8 @@
           "table_size": [6, 6],
           "aid_yen": 7200000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": 500
         },
         {
           "id": "amusement_park",
@@ -3447,7 +3464,8 @@
           "table_size": [7, 7],
           "aid_yen": 9800000,
           "security_per_square": 0,
-          "security_max": 0
+          "security_max": 0,
+          "shopping_population": 750
         }
       ]
     },

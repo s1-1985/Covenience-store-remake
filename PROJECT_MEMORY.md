@@ -2136,6 +2136,9 @@ open.
 - Finished facilities become town buildings with DATA4 customers. Save schema 9.
 - Phone: 販促 window → pick a facility → tap its place on the town map → 誘致する.
 
+**Task #112 (2026-09-26, decision 0183)**: tapping a building on the town map shows its name, its DATA4 wanted items and
+hours, and whether it is inside the store's area. The 買い物人口 is shown only where the guide gives it.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

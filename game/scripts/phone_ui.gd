@@ -96,6 +96,9 @@ var inducing_origin := Vector2i(-1, -1)
 var induce_panel: PanelContainer
 var induce_label: Label
 var induce_button: Button
+# Task #112: a tapped building on the town map.
+var building_card: PanelContainer
+var building_card_label: Label
 var notice_label: Label
 var _notice_left := 0.0
 var _updaters: Array[Callable] = []
@@ -121,6 +124,8 @@ func setup(owner_main) -> void:
     main.store_view.customer_tapped.connect(show_customer)
     _build_induce_panel()
     main.town_view.site_tapped.connect(_on_induce_tapped)
+    _build_building_card()
+    main.town_view.map_tapped.connect(_on_map_building_tapped)
     for panel in [main.site_panel, main.store_type_panel, main.rival_panel, main.fixture_info_panel]:
         if panel != null:
             panel.theme = theme
@@ -320,6 +325,7 @@ func _build_menu() -> void:
     town_button.name = "Menu_town"
     town_button.pressed.connect(func():
         close_window()
+        building_card.visible = false
         if not inducing_id.is_empty():
             stop_inducing()
         main.store_view.selected_fixture_id = ""
@@ -627,6 +633,63 @@ func _confirm_inducing() -> void:
         show_notice("ここには誘致できません")
         return
     stop_inducing()
+
+
+# --- a tapped building on the town map ---
+# CONFIRMED_COMMUNITY (docs/research/ui-menu-evidence-2026-09-05.md section
+# 6, a PS screenshot): the original shows a building's name and its 買い物
+# 人口 when the cursor is on it. Shown here: the name, its DATA4 wanted items
+# and hours (CONFIRMED_OFFICIAL), the 買い物人口 only where the guide gives it
+# (the 誘致 facilities), and whether it is in the store's 16x16 area.
+
+func _build_building_card() -> void:
+    building_card = PanelContainer.new()
+    building_card.name = "PhoneBuildingCard"
+    building_card.theme = theme
+    building_card.visible = false
+    var row := HBoxContainer.new()
+    building_card.add_child(row)
+    building_card_label = _label("", 22)
+    building_card_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    building_card_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    row.add_child(building_card_label)
+    var close := Button.new()
+    close.name = "PhoneBuildingClose"
+    close.text = "閉じる"
+    close.custom_minimum_size = Vector2(110, 60)
+    close.pressed.connect(func(): building_card.visible = false)
+    row.add_child(close)
+    main.get_node("UI").add_child(building_card)
+
+
+func _on_map_building_tapped(tile: Vector2i) -> void:
+    building_card.visible = false
+    var simulation = main.simulation
+    if simulation.store_site == null or not simulation.rival_at(tile).is_empty():
+        return
+    var index: int = simulation.store_site.building_at(tile, simulation.bought_buildings())
+    if index < 0:
+        return
+    var profile: Dictionary = simulation.store_site.building_profile(index)
+    var sprite := str(simulation.store_site.buildings[index]["sprite"])
+    var wanted: Array[String] = []
+    for category in profile.get("wanted", []):
+        wanted.append(main.tr(str(category)))
+    var lines: Array[String] = [str(profile.get("name", sprite))]
+    for facility in simulation.inducement_facilities():
+        if str(facility["sprite"]) == sprite and facility.get("shopping_population") != null:
+            lines[0] += "　買い物人口 %d人" % int(facility["shopping_population"])
+    lines.append("欲しい品物：" + ("、".join(wanted) if not wanted.is_empty() else "なし"))
+    var hours := "深夜も客がいる" if bool(profile.get("overnight", false)) else "朝から夜だけ客がいる"
+    if simulation.has_store_site():
+        hours += "　" + ("お店の商圏内" if simulation.store_site.in_catchment(simulation.store_site_origin, tile) else "お店の商圏外")
+    lines.append(hours)
+    building_card_label.text = "\n".join(lines)
+    building_card.visible = true
+    building_card.size = Vector2(PLAY_RIGHT - 16, 0)
+    building_card.reset_size()
+    building_card.size.x = PLAY_RIGHT - 16
+    building_card.position = Vector2(8, SCREEN.y - building_card.size.y - 8)
 
 
 # --- a tapped customer: what they are buying, and つまみだす ---

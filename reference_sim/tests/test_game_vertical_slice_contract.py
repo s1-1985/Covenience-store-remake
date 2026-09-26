@@ -3943,6 +3943,19 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("誘致する starts building the 交番", preview)
 
+    def test_town_building_card(self):
+        # Task #112: a tapped building shows its name, DATA4 wants and hours,
+        # and the 買い物人口 only where reference_sim's TOWN_FACILITIES has it.
+        facilities = {f["id"]: f for f in self.config["guide_town_map"]["inducement"]["facilities"]}
+        self.assertEqual(facilities["company"]["shopping_population"], 90)
+        self.assertEqual(facilities["amusement_park"]["shopping_population"], 750)
+        self.assertIsNone(facilities["police_box"]["shopping_population"])
+        phone = (GAME_ROOT / "scripts" / "phone_ui.gd").read_text(encoding="utf-8")
+        self.assertIn("func _on_map_building_tapped(tile: Vector2i) -> void:", phone)
+        self.assertIn('"　買い物人口 %d人"', phone)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("Tapping a building shows its name and wants", preview)
+
     @staticmethod
     def _reachable(start, goal, width, height, blocked):
         frontier = deque([start])

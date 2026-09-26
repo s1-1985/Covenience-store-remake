@@ -308,10 +308,20 @@ INDUCEMENT_RULES = {
 }
 
 
+# Task #112: the facility ids reference_sim's TOWN_FACILITIES uses where
+# they differ from this table's.
+TOWN_FACILITY_IDS = {"apartment": "mansion"}
+
+
 def inducement_block():
-    from conveni_sim.baseline_data import TOWN_BUILDINGS
+    from conveni_sim.baseline_data import TOWN_BUILDINGS, TOWN_FACILITIES
 
     footprints = {profile.id: profile.footprint.value for profile in TOWN_BUILDINGS}
+    shoppers = {
+        anchor.id: anchor.shopping_population.value
+        for anchor in TOWN_FACILITIES
+        if anchor.shopping_population is not None
+    }
     facilities = []
     for facility_id, name, sprite, table_size, aid, (per_square, most) in INDUCEMENT_FACILITIES:
         facilities.append({
@@ -323,6 +333,9 @@ def inducement_block():
             "aid_yen": aid,
             "security_per_square": per_square,
             "security_max": most,
+            # Task #112: 買い物人口 where reference_sim records it
+            # (CONFIRMED_OFFICIAL guide table), else null.
+            "shopping_population": shoppers.get(TOWN_FACILITY_IDS.get(facility_id, facility_id)),
         })
     return dict(INDUCEMENT_RULES, facilities=facilities)
 
