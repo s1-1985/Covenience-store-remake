@@ -217,6 +217,7 @@ def build(config):
             "cleaning_task_enabled": True,
             "stamina_enabled": True,
             "building_demand_enabled": True,
+            "edits_while_open": True,
             "evidence_note": (
                 "Task #97. CONFIRMED: staff notice shelves going down and refill them on their "
                 "own (docs/research/inventory-restock-boundary-2026-09-05.md section 2, exact "
@@ -234,7 +235,12 @@ def build(config):
                 "主なほしい品物 and that the 朝から夜だけ buildings send nobody late at night; "
                 "REMAKE_BALANCED_DEFAULT which building a customer comes from (in proportion to "
                 "its squares in the store's catchment), up to 3 wanted categories each, and that "
-                "a category the store lacks goes into the month's survey instead."
+                "a category the store lacks goes into the month's survey instead. "
+                "Task #109, edits while open: the first-title wiki's trick of opening 内装 outside opening "
+                "hours to clear the floor's dirt implies 内装 can also be opened while open (inference). "
+                "REMAKE_BALANCED_DEFAULT: fixtures can be placed, moved, swapped, rotated and sold, products "
+                "stocked and staff hired with customers inside; everyone re-routes, and an edit is refused only "
+                "when someone would be stranded."
             ),
         },
     }

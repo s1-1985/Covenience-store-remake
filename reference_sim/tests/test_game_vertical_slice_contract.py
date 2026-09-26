@@ -1406,7 +1406,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func try_add_fixture(fixture_config: Dictionary) -> bool:", layout)
         self.assertIn("func try_purchase_fixture(", simulation)
         self.assertIn("_fixture_catalog", simulation)
-        self.assertIn("_required_routes_are_reachable() or not _all_staff_are_walkable()", simulation)
+        self.assertIn("_required_routes_are_reachable() or not _reroute_after_layout_change(checkout_before)", simulation)
         self.assertIn("a valid, affordable fixture purchase must be accepted", smoke)
         self.assertIn("a duplicate fixture instance id must be rejected", smoke)
         self.assertIn("an unknown fixture catalog id must be rejected", smoke)
@@ -3217,7 +3217,9 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             body = simulation.split(fn)[1][:600]
             self.assertIn("# Task #100: allowed while customers are in the store", body)
             self.assertNotIn("customers.all_settled()", body.split("\n\n")[0])
-        self.assertIn("if is_game_over or not customers.all_settled() or _any_restock_task_active():", simulation)
+        # The prototype scenarios keep the empty-store lock (task #109 lifts it
+        # in the real game only).
+        self.assertIn("    return not customers.all_settled() or _any_restock_task_active()", simulation)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("a permit can be bought while customers are in the store", smoke)
         self.assertIn("moving a fixture still waits for customers to leave", smoke)
@@ -3836,6 +3838,54 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("    if is_game_over or town_is_full():", simulation)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("with the two rivals the player can have 8 stores", smoke)
+
+    def test_real_game_edits_with_customers_inside(self):
+        # Task #109: REMAKE_BALANCED_DEFAULT, tagged in the code, the JSON and
+        # the smoke test.
+        work = self.config["guide_starting_store"]["staff_work"]
+        self.assertTrue(work["edits_while_open"])
+        self.assertIn("Task #109", work["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", work["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        lock = simulation.split("func _layout_edit_locked() -> bool:")[0].split("# Task #109: whether a layout edit must wait.")[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", lock)
+        self.assertEqual(simulation.count("    if _layout_edit_locked():\n        return false\n"), 6)
+        self.assertEqual(simulation.count("not _reroute_after_layout_change(checkout_before)"), 6)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        for text in (
+            "editing while open must stay tagged REMAKE_BALANCED_DEFAULT",
+            "a customer heading for a moved shelf must walk to its new front",
+            "a fixture may never be put down on a customer or staff member",
+            "staff can be hired while customers are inside",
+        ):
+            self.assertIn(text, smoke)
+
+    def test_phone_screen_follows_the_original_layout(self):
+        # Task #110: the phone screen. What comes from the original and
+        # what is this project's own is listed in phone_ui.gd's header, the
+        # android_preview evidence note, and checked by the preview smoke.
+        phone = (GAME_ROOT / "scripts" / "phone_ui.gd").read_text(encoding="utf-8")
+        header = phone.split("const HUD_HEIGHT")[0]
+        for text in ("CONFIRMED_VISUAL", "REMAKE_BALANCED_DEFAULT", "video_900s.png", "menu-hierarchy-evidence"):
+            self.assertIn(text, header)
+        for command in ('"内装"', '"店員"', '"営業方針"', '"販促"', '"調査"'):
+            self.assertIn(command, phone)
+        for name in ("advertising_direct_mail", "advertising_newspaper", "advertising_airship",
+                     "advertising_radio", "advertising_television", "status_tobacco", "status_alcohol",
+                     "status_medicine"):
+            self.assertTrue((GAME_ROOT / "assets" / "ui" / (name + ".png")).is_file(), name)
+        note = self.config["android_preview"]["evidence_note"]
+        self.assertIn("Task #110", note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        for text in (
+            "Only the 内装 window edits the layout",
+            "Outside 内装 a tap on the floor deselects and moves nothing",
+            "The speed button speeds the game up",
+            "Tapping a product picture stocks the shelf",
+            "つまみだす sends the customer out",
+        ):
+            self.assertIn(text, preview)
 
     @staticmethod
     def _reachable(start, goal, width, height, blocked):

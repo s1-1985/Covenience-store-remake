@@ -161,27 +161,132 @@ func _run() -> void:
         return
     game.sound_toggle_button.pressed.emit()
     await _capture("preview-store")
-    # Task #94: the store is drawn at full size and the panel is a closed
-    # drawer until a shortcut opens it.
+    # Task #110: the phone screen -- the store at full size, the original's
+    # commands as a column on the right, each opening a window over the
+    # play area (the old drawer panel is never shown).
     if not _require(is_equal_approx(game.store_view.scale.x, 1.0), "The phone store must be drawn at full size"):
         return
-    var drawer: Control = game.get_node("UI/Panel")
-    if not _require(drawer.offset_left >= 1280.0, "The phone panel must start closed"):
+    var phone = game.phone_ui
+    if not _require(phone != null and not game.get_node("UI/Panel").visible, "The phone uses its own screen, not the desktop panel"):
         return
-    game.get_node("UI/AndroidShortcuts").get_child(2).pressed.emit()
-    await process_frame
-    await process_frame
-    if not _require(game.get_node("UI/Panel/Margin/Scroll").scroll_vertical > 0, "Economy shortcut must navigate"):
+    for command in ["interior", "staff", "policy", "promotion", "research", "system"]:
+        phone.menu_buttons[command].pressed.emit()
+        if not _require(phone.window.visible and phone.window_id == command, "The %s command must open its window" % command):
+            return
+        var window_rect: Rect2 = phone.window.get_global_rect()
+        if not _require(window_rect.end.x <= phone.MENU_LEFT and window_rect.end.y <= 720.0, "The %s window must stay beside the command column: %s" % [command, window_rect]):
+            return
+        if not _require(game.store_view.editing == (command == "interior"), "Only the 内装 window edits the layout"):
+            return
+    phone.window.find_child("PhoneWindowClose", true, false).pressed.emit()
+    if not _require(not phone.window.visible and not game.store_view.editing, "× closes the window"):
         return
-    if not _require(drawer.offset_left < 1280.0, "A shortcut must open the panel"):
+    # A tap on the floor outside 内装 only deselects; it never moves anything.
+    var bread_shelf: String = game.simulation.inventory.get_product("product-bread-1").fixture_id
+    var bread_origin: Vector2i = game.simulation.layout.fixture_origin(bread_shelf)
+    game.store_view.selected_fixture_id = bread_shelf
+    var floor_cell := Vector2i(4, 10)
+    var floor_point: Vector2 = game.store_view.get_global_transform_with_canvas() * ((Vector2(floor_cell) + Vector2(0.5, 0.5)) * game.store_view.SUBCELL_PIXELS)
+    for pressed in [true, false]:
+        var floor_tap := InputEventMouseButton.new()
+        floor_tap.button_index = MOUSE_BUTTON_LEFT
+        floor_tap.pressed = pressed
+        floor_tap.position = floor_point
+        floor_tap.global_position = floor_point
+        game.get_viewport().push_input(floor_tap, true)
+    if not _require(game.simulation.layout.is_walkable(floor_cell) and game.simulation.layout.fixture_origin(bread_shelf) == bread_origin and game.store_view.selected_fixture().is_empty(), "Outside 内装 a tap on the floor deselects and moves nothing"):
         return
-    game.get_node("UI/AndroidShortcuts/ClosePanel").pressed.emit()
-    if not _require(drawer.offset_left >= 1280.0, "閉じる must close the panel"):
+    game.store_view.selected_fixture_id = ""
+    # Pause and speed from the top band.
+    var was_paused: bool = game.paused
+    phone.pause_button.pressed.emit()
+    if not _require(game.paused != was_paused, "The top band's pause button pauses and resumes"):
         return
+    phone.pause_button.pressed.emit()
+    phone.speed_button.pressed.emit()
+    if not _require(game.speed == 2 and phone.speed_button.text == "×2", "The speed button speeds the game up"):
+        return
+    phone.speed_button.pressed.emit()
+    phone.speed_button.pressed.emit()
+    if not _require(game.speed == 1, "The speed button cycles back to ×1"):
+        return
+    game.paused = true
+    # 営業方針: the price is changed with big buttons, not a spin box.
+    phone.menu_buttons["policy"].pressed.emit()
+    var cheaper: Button = null
+    for node in phone.window_body.find_children("*", "Button", true, false):
+        if (node as Button).text == "－5%":
+            cheaper = node
+    cheaper.pressed.emit()
+    if not _require(game.simulation.price_change_pct == -5, "－5% lowers the prices"):
+        return
+    game.simulation.try_set_price_policy(0)
+    await _capture("preview-policy")
+    # A new, empty shelf bought and set down with customers inside, then
+    # stocked from its card with a picture of the product.
+    var free_origin := Vector2i(-1, -1)
+    for y in range(0, game.simulation.layout.height_subcells, 2):
+        for x in range(0, game.simulation.layout.width_subcells, 2):
+            if free_origin.x < 0 and game.simulation.try_purchase_fixture("small_ambient_shelf", "shelf-new-1", Vector2i(x, y), game._find_open_interaction_cell(Vector2i(x, y), 2, 2)):
+                free_origin = Vector2i(x, y)
+    if not _require(free_origin.x >= 0, "A shelf can be bought and placed in the running store"):
+        return
+    game.store_view.selected_fixture_id = "shelf-new-1"
+    game._refresh_ui()
+    if not _require(game.fixture_stock_button.visible, "An empty shelf offers 商品を並べる"):
+        return
+    game.fixture_stock_button.pressed.emit()
+    if not _require(phone.window.visible and phone.window_id == "stock", "商品を並べる opens the product pictures"):
+        return
+    var picture: Button = null
+    for node in phone.window_body.find_children("*", "Button", true, false):
+        if picture == null and not (node as Button).disabled:
+            picture = node
+    picture.pressed.emit()
+    var stocked := false
+    for stocked_product in game.simulation.inventory.products.values():
+        if stocked_product.fixture_id == "shelf-new-1":
+            stocked = true
+    if not _require(stocked and not phone.window.visible, "Tapping a product picture stocks the shelf"):
+        return
+    game.store_view.selected_fixture_id = ""
+    game._refresh_ui()
     await _capture("preview-economy")
-    game.get_node("UI/AndroidShortcuts").get_child(4).pressed.emit()
-    if not _require(game.layout_edit_label.text == "セーブ完了", "Quick save must succeed"):
+    # A real tap on a customer shows what they are buying; one waiting at
+    # the register can be thrown out (つまみだす).
+    var queued = null
+    for tick in 3000:
+        game.simulation.tick()
+        for customer in game.simulation.customers.active_customers():
+            if customer.phase == "waiting_checkout":
+                queued = customer
+        if queued != null:
+            break
+    if not _require(queued != null, "Someone must end up waiting at the register"):
         return
+    var customer_point: Vector2 = game.store_view.get_global_transform_with_canvas() * ((Vector2(queued.position) + Vector2(0.5, 0.2)) * game.store_view.SUBCELL_PIXELS)
+    for pressed in [true, false]:
+        var customer_tap := InputEventMouseButton.new()
+        customer_tap.button_index = MOUSE_BUTTON_LEFT
+        customer_tap.pressed = pressed
+        customer_tap.position = customer_point
+        customer_tap.global_position = customer_point
+        game.get_viewport().push_input(customer_tap, true)
+    if not _require(phone.customer_card.visible and "かご" in phone.customer_card_label.text and not phone.customer_eject_button.disabled, "Tapping a queued customer shows their basket and つまみだす: " + phone.customer_card_label.text):
+        return
+    var tapped_id: String = phone.customer_id
+    phone.customer_eject_button.pressed.emit()
+    if not _require(game.simulation.customers.customer(tapped_id).phase == "leaving" and not phone.customer_card.visible, "つまみだす sends the customer out"):
+        return
+    # システム → セーブ.
+    phone.menu_buttons["system"].pressed.emit()
+    for node in phone.window_body.find_children("*", "Button", true, false):
+        if (node as Button).text == "セーブ":
+            (node as Button).pressed.emit()
+            break
+    if not _require(game.layout_edit_label.text == "セーブ完了", "Saving from システム must succeed"):
+        return
+    phone.close_window()
     var saved_cash: int = game.simulation.economy.cash_yen
     game.simulation.economy.cash_yen = 123
     game.load_button.pressed.emit()

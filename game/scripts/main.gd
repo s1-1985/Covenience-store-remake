@@ -3,6 +3,7 @@ extends Node2D
 const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_simulation.gd")
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
+const PhoneUIScript := preload("res://scripts/phone_ui.gd")
 
 var _android_panel: Control = null
 # Task #95: a new game starts on the town map with 「出店場所を選んで下さい」
@@ -30,6 +31,12 @@ var sound_toggle_button: Button = null
 var fixture_info_panel: PanelContainer = null
 var fixture_info_label: Label = null
 var fixture_restock_button: Button = null
+var fixture_stock_button: Button = null
+var fixture_info_icon: TextureRect = null
+# Task #110: the phone screen (phone_ui.gd), and the game speed its
+# ×1/×2/×4 button sets (platform presentation).
+var phone_ui = null
+var speed := 1
 # Task #101: the rival store menu on the town map, like the original's
 # 「調査する / 買収する / 何もしない」 (guide p.53).
 var rival_panel: PanelContainer = null
@@ -217,6 +224,12 @@ func _ready() -> void:
     store_view.fixture_relocation_requested.connect(_on_fixture_relocation_requested)
     _build_sound_toggle()
     _build_business_hours_controls()
+    if _is_android_preview():
+        phone_ui = PhoneUIScript.new()
+        phone_ui.name = "PhoneUI"
+        add_child(phone_ui)
+        phone_ui.setup(self)
+        store_view.editing = false
     var button_sfx := str(config["sound"]["button_sfx"])
     for node in $UI.find_children("*", "BaseButton", true, false):
         (node as BaseButton).pressed.connect(func(): SoundManager.play_sfx(button_sfx))
@@ -230,7 +243,7 @@ func _process(delta: float) -> void:
     if simulation == null or paused or selecting_site:
         store_view.tick_progress = 1.0
         return
-    accumulator += delta
+    accumulator += delta * speed
     while accumulator >= tick_seconds:
         accumulator -= tick_seconds
         simulation.tick()
@@ -333,6 +346,10 @@ func _on_eject_customer_pressed() -> void:
 
 
 func _on_fixture_selected(fixture_id: String) -> void:
+    # Task #110: outside 内装 a tap only shows the fixture's card.
+    if fixture_id.is_empty() or not store_view.editing:
+        _refresh_ui()
+        return
     if store_view.edit_mode == "swap":
         layout_edit_label.text = tr("Selected: %s — tap another fixture to swap") % _fixture_label(fixture_id)
     else:
@@ -925,6 +942,8 @@ func _refresh_ui() -> void:
     if rival_panel != null:
         _refresh_rival_panel()
     _play_event_sounds()
+    if phone_ui != null:
+        phone_ui.refresh()
 
 
 func _load_config() -> Dictionary:
@@ -1023,6 +1042,9 @@ func _format_integer(value: int) -> String:
 # store used by the tests already fits and stays at scale 1. Taps still map
 # correctly because store_view converts them with to_local().
 func _fit_store_view() -> void:
+    if phone_ui != null:
+        phone_ui.layout_screen()
+        return
     var store: Dictionary = config["store"]
     var tile_pixels: float = store_view.SUBCELL_PIXELS * int(store["subcells_per_tile"])
     var natural := Vector2(int(store["width_tiles"]), int(store["height_tiles"])) * tile_pixels
@@ -1407,18 +1429,39 @@ func _build_fixture_info_panel() -> void:
     fixture_info_panel.name = "FixtureInfoPanel"
     fixture_info_panel.theme = ($UI/Panel as Control).theme
     fixture_info_panel.visible = false
+    var card := VBoxContainer.new()
+    fixture_info_panel.add_child(card)
+    var top_row := HBoxContainer.new()
+    card.add_child(top_row)
     var row := HBoxContainer.new()
-    fixture_info_panel.add_child(row)
+    row.alignment = BoxContainer.ALIGNMENT_END
+    card.add_child(row)
+    fixture_info_icon = TextureRect.new()
+    fixture_info_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+    fixture_info_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    fixture_info_icon.custom_minimum_size = Vector2(56, 56)
+    top_row.add_child(fixture_info_icon)
     fixture_info_label = Label.new()
     fixture_info_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    fixture_info_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
     fixture_info_label.clip_text = true
     fixture_info_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-    row.add_child(fixture_info_label)
+    top_row.add_child(fixture_info_label)
     fixture_restock_button = Button.new()
     fixture_restock_button.name = "FixtureRestockButton"
     fixture_restock_button.custom_minimum_size = Vector2(170, 52)
     fixture_restock_button.pressed.connect(_on_restock_pressed)
     row.add_child(fixture_restock_button)
+    # Task #110: an empty shelf is stocked from here on the phone.
+    fixture_stock_button = Button.new()
+    fixture_stock_button.name = "FixtureStockButton"
+    fixture_stock_button.text = "商品を並べる"
+    fixture_stock_button.custom_minimum_size = Vector2(170, 52)
+    fixture_stock_button.visible = false
+    fixture_stock_button.pressed.connect(func():
+        if phone_ui != null:
+            phone_ui.open_stock_window(store_view.selected_fixture()))
+    row.add_child(fixture_stock_button)
     var close := Button.new()
     close.name = "FixtureInfoClose"
     close.text = tr("Close")
@@ -1539,10 +1582,15 @@ func _refresh_fixture_info() -> void:
     var name_key := str(fixture.get("catalog_id", ""))
     if name_key.is_empty():
         name_key = "fixture_kind_" + str(fixture["kind"])
+    fixture_info_icon.texture = _menu_icon("fixtures", str(fixture.get("catalog_id", "")))
+    fixture_stock_button.visible = (
+        product == null and phone_ui != null and str(fixture["kind"]) == "shelf" and not store_view.editing
+    )
     if product == null:
         fixture_info_label.text = tr(name_key)
         fixture_restock_button.visible = false
     else:
+        fixture_info_icon.texture = _menu_icon("products", product.catalog_id)
         fixture_info_label.text = tr("%s: %s, stock %d / %d") % [
             tr(name_key), _product_label(product.product_id), product.stock_units, product.initial_stock_units,
         ]
@@ -1556,6 +1604,14 @@ func _refresh_fixture_info() -> void:
     var height: float = maxf(72.0, fixture_info_panel.get_combined_minimum_size().y)
     var origin_y := float(_vec2i_of(fixture["origin_subcell"]).y) / float(simulation.layout.height_subcells)
     var y: float = store_view.position.y + store_size.y - height if origin_y < 0.5 else store_view.position.y
+    if phone_ui != null:
+        # Task #110: a card over the store, wide enough for its buttons.
+        var width: float = maxf(store_size.x, 560.0)
+        fixture_info_panel.position = Vector2(
+            clampf(store_view.position.x + (store_size.x - width) / 2.0, 8.0, 1020.0 - width - 8.0), y
+        )
+        fixture_info_panel.size = Vector2(width, height)
+        return
     fixture_info_panel.position = Vector2(store_view.position.x, y)
     fixture_info_panel.size = Vector2(store_size.x, height)
 
@@ -1607,78 +1663,10 @@ func _is_android_preview() -> bool:
 func _prepare_android_ui() -> void:
     if not _is_android_preview():
         return
-    # Platform presentation only, not recovered original gameplay data.
-    var panel: PanelContainer = $UI/Panel
-    var mobile_theme := panel.theme.duplicate() as Theme
-    mobile_theme.default_font_size = 22
-    for type_name in ["Button", "OptionButton", "PopupMenu"]:
-        mobile_theme.set_font_size("font_size", type_name, 22)
-    panel.theme = mobile_theme
-    for node in panel.find_children("*", "BaseButton", true, false):
-        node.custom_minimum_size.y = 64
-        if node is Button:
-            node.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-        if node is OptionButton:
-            node.fit_to_longest_item = false
-    for node in panel.find_children("*", "Label", true, false):
-        node.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-    # Task #89: the side panel is narrower next to the 12x8 store, so the two
-    # three-button rows share their row width instead of 145 px each, and
-    # the column itself drops its 420 px desktop minimum.
-    ($UI/Panel/Margin/Scroll/VBox as Control).custom_minimum_size.x = 0
-    for row_name in ["Buttons", "MenuButtons"]:
-        for node in $UI/Panel/Margin/Scroll/VBox.get_node(row_name).get_children():
-            node.custom_minimum_size.x = 0
-            node.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-    var shortcuts := VBoxContainer.new()
-    shortcuts.name = "AndroidShortcuts"
-    # Task #94: the 12x8 store is drawn at full size (72px tiles, so the
-    # shelf/product sprites are legible) across the left of the screen, the
-    # shortcut column sits at the right edge, and the panel is a drawer that
-    # slides over the store when a shortcut is tapped (and closes with 閉じる).
-    # Platform presentation only, like the rest of this function.
-    shortcuts.position = Vector2(1090, 130)
-    shortcuts.size.x = 180
-    _android_panel = panel
-    _set_android_panel_open(false)
-    shortcuts.theme = mobile_theme
-    shortcuts.add_theme_constant_override("separation", 12)
-    $UI.add_child(shortcuts)
-    var targets := {"店舗情報": "Heading", "内装": "LayoutEditTitle", "仕入れ・経営": "EconomyTitle", "店員": "StaffHiringTitle"}
-    for caption in targets:
-        var button := Button.new()
-        button.text = caption
-        button.custom_minimum_size = Vector2(180, 64)
-        shortcuts.add_child(button)
-        var target: Control = $UI/Panel/Margin/Scroll/VBox.get_node(targets[caption])
-        button.pressed.connect(func():
-            _set_android_panel_open(true)
-            $UI/Panel/Margin/Scroll.scroll_vertical = int(target.position.y)
-        )
-    var quick_save := Button.new()
-    quick_save.text = "セーブ"
-    quick_save.custom_minimum_size = Vector2(180, 64)
-    shortcuts.add_child(quick_save)
-    quick_save.pressed.connect(func():
-        _on_save_pressed()
-        quick_save.text = "保存完了" if layout_edit_label.text == tr("Game saved") else "保存失敗"
-    )
-    # Task #90: the town map, one tap away like the other sections.
-    var town_toggle := Button.new()
-    town_toggle.name = "TownToggle"
-    town_toggle.text = "町／店内"
-    town_toggle.custom_minimum_size = Vector2(180, 64)
-    shortcuts.add_child(town_toggle)
-    town_toggle.pressed.connect(func():
-        _set_android_panel_open(false)
-        show_town_map_button.pressed.emit()
-    )
-    var close_panel := Button.new()
-    close_panel.name = "ClosePanel"
-    close_panel.text = "閉じる"
-    close_panel.custom_minimum_size = Vector2(180, 64)
-    shortcuts.add_child(close_panel)
-    close_panel.pressed.connect(func(): _set_android_panel_open(false))
+    # Task #110: the phone screen is phone_ui.gd, built in _ready(); the
+    # desktop side panel stays in the scene (its controls are what the
+    # phone windows call into) but is never shown on a phone.
+    ($UI/Panel as Control).visible = false
 
 
 # Task #94: the phone panel is parked off-screen rather than hidden, so its

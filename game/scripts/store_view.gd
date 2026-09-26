@@ -1,6 +1,9 @@
 extends Node2D
 
 signal fixture_selected(fixture_id: String)
+# Task #110: a tap on a customer outside 内装 (the phone shows what they
+# are buying and offers つまみだす).
+signal customer_tapped(customer_id: String)
 signal fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i)
 # Task #78: emitted instead of re-selecting when a second fixture is tapped
 # while edit_mode == "swap" (see edit_mode below).
@@ -147,6 +150,10 @@ var selected_fixture_id := ""
 # only mode in which tapping a second fixture emits fixture_swap_requested
 # instead. main.gd sets this from its own EditModeOption dropdown.
 var edit_mode := "move"
+# Task #110: whether taps edit the layout. The phone UI turns this off
+# outside its 内装 window, so a tap on a shelf only shows what it holds and
+# a stray tap on the floor can never move a fixture.
+var editing := true
 var _fixture_textures: Dictionary = {}
 var _product_textures: Dictionary = {}
 var _staff_textures: Dictionary = {}
@@ -344,6 +351,12 @@ func _unhandled_input(event: InputEvent) -> void:
         return
     var local_position := to_local(pointer_position)
     var cell := Vector2i(floori(local_position.x / SUBCELL_PIXELS), floori(local_position.y / SUBCELL_PIXELS))
+    if not editing:
+        var tapped := _customer_near(local_position)
+        if not tapped.is_empty():
+            customer_tapped.emit(tapped)
+            get_viewport().set_input_as_handled()
+            return
     if not simulation.layout.is_walkable(cell):
         var fixture_id: String = simulation.layout.fixture_at(cell)
         if not fixture_id.is_empty():
@@ -351,7 +364,7 @@ func _unhandled_input(event: InputEvent) -> void:
             # requests a swap instead of just changing the selection --
             # every other mode (including the default "move") keeps the
             # original re-select behavior unchanged.
-            if edit_mode == "swap" and not selected_fixture_id.is_empty() and fixture_id != selected_fixture_id:
+            if editing and edit_mode == "swap" and not selected_fixture_id.is_empty() and fixture_id != selected_fixture_id:
                 fixture_swap_requested.emit(selected_fixture_id, fixture_id)
                 get_viewport().set_input_as_handled()
                 return
@@ -361,8 +374,27 @@ func _unhandled_input(event: InputEvent) -> void:
             get_viewport().set_input_as_handled()
         return
     if not selected_fixture_id.is_empty():
-        fixture_relocation_requested.emit(selected_fixture_id, cell)
+        if editing:
+            fixture_relocation_requested.emit(selected_fixture_id, cell)
+        else:
+            selected_fixture_id = ""
+            fixture_selected.emit("")
+            queue_redraw()
         get_viewport().set_input_as_handled()
+
+
+# The customer drawn under a tap point (sprites are about a tile tall and
+# stand on their subcell), or "".
+func _customer_near(local_position: Vector2) -> String:
+    var best := ""
+    var best_distance := SUBCELL_PIXELS * 1.2
+    for customer in simulation.customers.active_customers():
+        var center := (Vector2(customer.position) + Vector2(0.5, 0.2)) * SUBCELL_PIXELS
+        var distance := center.distance_to(local_position)
+        if distance < best_distance:
+            best_distance = distance
+            best = str(customer.customer_id)
+    return best
 
 
 func _draw() -> void:

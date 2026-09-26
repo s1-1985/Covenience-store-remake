@@ -131,6 +131,10 @@ var _stamina_enabled := false
 # Task #102: customers come from the buildings around the store and want
 # what DATA4 says those buildings want; the month's survey (アンケート).
 var _building_demand_enabled := false
+# Task #109: in the real game the layout can be edited, products stocked and
+# staff hired while customers are inside (simulation.edits_while_open);
+# the prototype scenarios keep the old empty-store lock.
+var _edits_while_open := false
 # Task #103: business hours (guide_starting_store.business_hours). Empty in
 # the prototype scenarios, which stay open all day as before.
 var _business_hours: Array = []
@@ -294,6 +298,7 @@ func _init(source_config: Dictionary) -> void:
     _cleaning_task_enabled = bool(simulation.get("cleaning_task_enabled", false))
     _stamina_enabled = bool(simulation.get("stamina_enabled", false))
     _building_demand_enabled = bool(simulation.get("building_demand_enabled", false))
+    _edits_while_open = bool(simulation.get("edits_while_open", false))
     _business_hours = simulation.get("business_hours", [])
     assert(_shopping_ticks > 0 and _checkout_ticks > 0 and _step_game_minutes > 0)
     assert(_restock_ticks > 0 and _restock_trigger_stock_units_at_or_below >= 0)
@@ -504,8 +509,9 @@ func try_purchase_fixture(
     origin_subcell: Vector2i,
     interaction_subcell: Vector2i
 ) -> bool:
-    if is_game_over or not customers.all_settled() or _any_restock_task_active():
+    if _layout_edit_locked():
         return false
+    var checkout_before := _checkout_interaction
     if instance_id.is_empty() or layout.fixtures_by_id.has(instance_id):
         return false
     if not _fixture_catalog.has(catalog_id):
@@ -531,7 +537,7 @@ func try_purchase_fixture(
     if not layout.try_add_fixture(fixture_config):
         return false
     _refresh_interactions()
-    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+    if not _required_routes_are_reachable() or not _reroute_after_layout_change(checkout_before):
         layout.restore_fixture_snapshot(previous_fixtures)
         _refresh_interactions()
         return false
@@ -605,7 +611,9 @@ func _can_acquire_permit_at(permit_id: String, position: Vector2i) -> bool:
 
 
 func try_procure_product(catalog_id: String, instance_id: String, fixture_id: String) -> bool:
-    if is_game_over or not customers.all_settled():
+    # Task #109: a new product on a shelf touches no route, so in the real
+    # game it no longer waits for an empty store.
+    if is_game_over or (not _edits_while_open and not customers.all_settled()):
         return false
     if instance_id.is_empty() or inventory.products.has(instance_id):
         return false
@@ -762,7 +770,9 @@ func try_purchase_promotion(promotion_id: String) -> bool:
 # candidate_id. Any accumulated skill growth (task #48) the outgoing
 # occupant had is discarded -- see StaffState.hire()'s own comment.
 func try_hire_candidate(staff_id: String, candidate_id: String) -> bool:
-    if is_game_over or not customers.all_settled():
+    # Task #109: the new person takes over the post as it is (position and
+    # task), so in the real game hiring no longer waits for an empty store.
+    if is_game_over or (not _edits_while_open and not customers.all_settled()):
         return false
     var previous_candidate_id := ""
     if staff.members.has(staff_id):
@@ -1271,16 +1281,102 @@ func try_expand_chain() -> bool:
     return true
 
 
-func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
-    if is_game_over or not customers.all_settled() or _any_restock_task_active():
+# Task #109: whether a layout edit must wait. The first-title wiki's trick
+# of opening 内装 "outside opening hours or on a closed day" to clear the
+# floor's dirt (docs/research/interior-edit-dirt-reset-2026-09-06.md)
+# implies 内装 can be opened while the store is open -- an inference; the
+# original's handling of customers inside during an edit is not recorded.
+# REMAKE_BALANCED_DEFAULT: the edit goes ahead with customers and staff
+# inside, everyone re-routes to where they were going, and the edit is
+# refused only when someone would be stranded (_reroute_after_layout_change).
+func _layout_edit_locked() -> bool:
+    if is_game_over:
+        return true
+    if _edits_while_open:
         return false
+    return not customers.all_settled() or _any_restock_task_active()
+
+
+# After a layout change: gives every customer and staff member on the move
+# a new route to where they are going (a customer shopping at a shelf that
+# moved walks to its new front, a staff member refilling it likewise).
+# Returns false, changing no one, when anyone would be stranded: standing
+# where a fixture now is, unable to reach their goal, a staff post covered,
+# or customers queued at a checkout that moved.
+func _reroute_after_layout_change(checkout_before: Vector2i) -> bool:
+    var plans: Array = []
+    for customer in customers.active_customers():
+        if not layout.is_walkable(customer.position):
+            return false
+        var goal := NO_STORE_SITE
+        var phase_after: String = customer.phase
+        match customer.phase:
+            "to_shelf":
+                goal = _product_interaction(customer.current_product_id())
+            "shopping":
+                var spot := _product_interaction(customer.current_product_id())
+                if customer.position != spot:
+                    goal = spot
+                    phase_after = "to_shelf"
+            "to_checkout":
+                goal = _checkout_interaction
+            "waiting_checkout", "checkout":
+                if _checkout_interaction != checkout_before:
+                    return false
+            "leaving":
+                goal = layout.exit
+        if goal != NO_STORE_SITE:
+            if not layout.has_path(customer.position, goal):
+                return false
+            plans.append([customer, layout.find_path(customer.position, goal), phase_after])
+    for staff_member in staff.all_staff():
+        if not layout.is_walkable(staff_member.position) or not layout.is_walkable(staff_member.home_position()):
+            return false
+        var goal := NO_STORE_SITE
+        var state_after: String = staff_member.state
+        if staff_member.state == "to_restock" or staff_member.state == "restocking":
+            var shelf_front := _product_interaction(staff_member.restock_target_product_id)
+            if staff_member.state == "to_restock" or staff_member.position != shelf_front:
+                goal = shelf_front
+                state_after = "to_restock"
+        elif not staff_member.route.is_empty():
+            goal = staff_member.route[staff_member.route.size() - 1]
+            if staff_member.rest_phase == "to_break_room":
+                goal = _break_room_door()
+            elif staff_member.rest_phase == "to_post":
+                goal = staff_member.home_position()
+        if goal != NO_STORE_SITE:
+            var reachable: bool = layout.is_walkable(goal) and layout.has_path(staff_member.position, goal)
+            if not reachable and staff_member.state == "to_clean":
+                # The floor square it was going to clean is under a
+                # fixture now: drop that task, it picks another.
+                var empty_route: Array[Vector2i] = []
+                plans.append([staff_member, empty_route, "idle"])
+                continue
+            if not reachable:
+                return false
+            plans.append([staff_member, layout.find_path(staff_member.position, goal), state_after])
+    for plan in plans:
+        var mover = plan[0]
+        mover.route = plan[1]
+        if mover in staff.all_staff():
+            mover.state = plan[2]
+        else:
+            mover.phase = plan[2]
+    return true
+
+
+func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
+    if _layout_edit_locked():
+        return false
+    var checkout_before := _checkout_interaction
     if layout.fixture_origin(fixture_id) == Vector2i(-1, -1):
         return false
     var previous: Array = layout.fixture_snapshot()
     if not layout.try_move_fixture(fixture_id, new_origin):
         return false
     _refresh_interactions()
-    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+    if not _required_routes_are_reachable() or not _reroute_after_layout_change(checkout_before):
         layout.restore_fixture_snapshot(previous)
         _refresh_interactions()
         return false
@@ -1292,13 +1388,14 @@ func try_relocate_fixture(fixture_id: String, new_origin: Vector2i) -> bool:
 
 
 func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
-    if is_game_over or not customers.all_settled() or _any_restock_task_active():
+    if _layout_edit_locked():
         return false
+    var checkout_before := _checkout_interaction
     var previous: Array = layout.fixture_snapshot()
     if not layout.try_rotate_fixture_clockwise(fixture_id):
         return false
     _refresh_interactions()
-    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+    if not _required_routes_are_reachable() or not _reroute_after_layout_change(checkout_before):
         layout.restore_fixture_snapshot(previous)
         _refresh_interactions()
         return false
@@ -1322,13 +1419,14 @@ func try_rotate_fixture_clockwise(fixture_id: String) -> bool:
 # through), which is the only sense in which a distinct third command is
 # actually necessary alongside 配置/移動.
 func try_swap_fixtures(fixture_id_a: String, fixture_id_b: String) -> bool:
-    if is_game_over or not customers.all_settled() or _any_restock_task_active():
+    if _layout_edit_locked():
         return false
+    var checkout_before := _checkout_interaction
     var previous: Array = layout.fixture_snapshot()
     if not layout.try_swap_fixture_positions(fixture_id_a, fixture_id_b):
         return false
     _refresh_interactions()
-    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+    if not _required_routes_are_reachable() or not _reroute_after_layout_change(checkout_before):
         layout.restore_fixture_snapshot(previous)
         _refresh_interactions()
         return false
@@ -1356,8 +1454,9 @@ const FIXTURE_SELL_REFUND_PERCENT := 50
 
 
 func try_sell_fixture(fixture_id: String) -> bool:
-    if is_game_over or not customers.all_settled() or _any_restock_task_active():
+    if _layout_edit_locked():
         return false
+    var checkout_before := _checkout_interaction
     if not layout.fixtures_by_id.has(fixture_id):
         return false
     if fixture_id == str(config["simulation"]["checkout_fixture_id"]):
@@ -1373,7 +1472,7 @@ func try_sell_fixture(fixture_id: String) -> bool:
     if not layout.try_remove_fixture(fixture_id):
         return false
     _refresh_interactions()
-    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+    if not _required_routes_are_reachable() or not _reroute_after_layout_change(checkout_before):
         layout.restore_fixture_snapshot(previous)
         _refresh_interactions()
         return false
@@ -1407,8 +1506,9 @@ func try_sell_fixture(fixture_id: String) -> bool:
 # sample that would remove a fixture currently holding procured stock is
 # rejected outright rather than silently discarding that inventory.
 func try_load_sample_layout(sample_id: String) -> bool:
-    if is_game_over or not customers.all_settled() or _any_restock_task_active():
+    if _layout_edit_locked():
         return false
+    var checkout_before := _checkout_interaction
     if not _sample_layout_catalog.has(sample_id):
         return false
     var sample_fixtures: Array = _sample_layout_catalog[sample_id]["fixtures"]
@@ -1443,7 +1543,7 @@ func try_load_sample_layout(sample_id: String) -> bool:
     var previous_fixtures: Array = layout.fixture_snapshot()
     layout.restore_fixture_snapshot(candidate_fixtures)
     _refresh_interactions()
-    if not _required_routes_are_reachable() or not _all_staff_are_walkable():
+    if not _required_routes_are_reachable() or not _reroute_after_layout_change(checkout_before):
         layout.restore_fixture_snapshot(previous_fixtures)
         _refresh_interactions()
         return false

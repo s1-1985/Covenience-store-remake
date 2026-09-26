@@ -2103,6 +2103,30 @@ and this month's and last month's survey. A load used to reset them to their sta
 reference 中級). Chain expansion and rival reopening both stop at that limit, so with two rivals left the player
 can have 8 stores.
 
+**Task #109 (2026-09-26, decision 0180)**: in the real game the layout can be edited, products stocked and staff
+hired while customers are inside. Before this, these actions waited for an empty store, which never happens while
+open.
+- Everyone re-routes after a layout change (`_reroute_after_layout_change`). An edit is refused only when someone
+  would be stranded.
+- The trigger is REMAKE_BALANCED_DEFAULT. The inference that 内装 can be opened while open comes from the wiki's dirt
+  trick.
+
+**Task #110 (2026-09-26, decision 0181)**: the phone screen was rebuilt as `game/scripts/phone_ui.gd`.
+- Taken from the original:
+  - the store or town stays on screen with windows over it
+  - a top band and a bottom status bar with permit marks
+  - the green backdrop
+  - the command names 内装/店員/営業方針/販促/調査
+  - the 宣伝 picture row
+- Added for touch screens:
+  - a command column on the right
+  - pause and ×1/×2/×4 speed buttons
+  - picture grids
+  - shelf and customer cards (with つまみだす)
+  - event notices
+  - layout edits only inside 内装
+- The title screen uses the same look.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

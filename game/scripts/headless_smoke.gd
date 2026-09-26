@@ -3122,6 +3122,8 @@ func _initialize() -> void:
         return
     if not _check_town_store_limit():
         return
+    if not _check_edits_while_open():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -3874,4 +3876,88 @@ func _check_town_store_limit() -> bool:
     if simulation.town_store_count() != 10 or simulation.try_expand_chain():
         _fail("a bought branch keeps the town at 10 stores")
         return false
+    return true
+
+
+# Task #109: in the real game the layout can be changed, and staff hired,
+# with customers inside; everyone re-routes, nobody is ever left standing
+# inside a fixture, and the store keeps trading afterwards.
+func _check_edits_while_open() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    if "REMAKE_BALANCED_DEFAULT" not in str(fresh["guide_starting_store"]["staff_work"]["evidence_note"]):
+        _fail("editing while open must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    simulation.economy.cash_yen = 500_000_000
+    simulation.minute_of_day = 9 * 60
+    var walker = null
+    for minute in 600:
+        simulation.tick()
+        for customer in simulation.customers.active_customers():
+            if customer.phase == "to_shelf" and customer.route.size() > 2:
+                walker = customer
+        if walker != null and simulation.customers.active_customers().size() >= 2:
+            break
+    if walker == null:
+        _fail("customers must be walking to shelves after opening")
+        return false
+    var product = simulation.inventory.get_product(walker.current_product_id())
+    var moved := false
+    for y in range(0, simulation.layout.height_subcells, 2):
+        for x in range(0, simulation.layout.width_subcells, 2):
+            if simulation.try_relocate_fixture(product.fixture_id, Vector2i(x, y)):
+                moved = true
+                break
+            if not _everyone_on_the_floor(simulation):
+                _fail("a refused move must leave everyone where they were")
+                return false
+        if moved:
+            break
+    if not moved:
+        _fail("a shelf must be movable while customers are inside")
+        return false
+    var goal: Vector2i = simulation._product_interaction(product.product_id)
+    if walker.phase != "to_shelf" or walker.route.is_empty() or walker.route[walker.route.size() - 1] != goal:
+        _fail("a customer heading for a moved shelf must walk to its new front")
+        return false
+    # Moving a fixture onto someone is refused.
+    var someone: Vector2i = simulation.customers.active_customers()[0].position
+    var other_shelf := ""
+    for fixture in simulation.layout.fixtures:
+        if str(fixture["kind"]) == "shelf" and str(fixture["id"]) != product.fixture_id:
+            other_shelf = str(fixture["id"])
+    for offset in [Vector2i(0, 0), Vector2i(-1, 0), Vector2i(0, -1), Vector2i(-1, -1)]:
+        simulation.try_relocate_fixture(other_shelf, someone + offset)
+        if not _everyone_on_the_floor(simulation):
+            _fail("a fixture may never be put down on a customer or staff member")
+            return false
+    var free_candidate := ""
+    var employed: Array = simulation.staff.all_staff().map(func(member): return member.candidate_id)
+    for entry in fresh["staff_candidates"]:
+        if not employed.has(str(entry["candidate_id"])):
+            free_candidate = str(entry["candidate_id"])
+            break
+    if simulation.customers.all_settled() or not simulation.try_hire_candidate("staff-2", free_candidate):
+        _fail("staff can be hired while customers are inside")
+        return false
+    var visits_before: int = int(simulation.snapshot()["completed_visits"])
+    for minute in 600:
+        simulation.tick()
+        if not _everyone_on_the_floor(simulation):
+            _fail("after the edits everyone must keep walking on the floor")
+            return false
+    if int(simulation.snapshot()["completed_visits"]) <= visits_before:
+        _fail("the store must keep trading after the edits")
+        return false
+    return true
+
+
+func _everyone_on_the_floor(simulation) -> bool:
+    for customer in simulation.customers.active_customers():
+        if not simulation.layout.is_walkable(customer.position):
+            return false
+    for member in simulation.staff.all_staff():
+        if not simulation.layout.is_walkable(member.position):
+            return false
     return true

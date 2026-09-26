@@ -29,6 +29,9 @@ static func apply(config: Dictionary) -> Dictionary:
     applied["simulation"]["cleaning_task_enabled"] = bool(work["cleaning_task_enabled"])
     applied["simulation"]["stamina_enabled"] = bool(work["stamina_enabled"])
     applied["simulation"]["building_demand_enabled"] = bool(work["building_demand_enabled"])
+    # Task #109 (REMAKE_BALANCED_DEFAULT, staff_work.evidence_note): edit
+    # the layout, stock products and hire with customers inside.
+    applied["simulation"]["edits_while_open"] = bool(work["edits_while_open"])
     # Task #103: the game starts at 00:00 (CONFIRMED_OFFICIAL screenshots),
     # open AM7:00~PM11:00 as the guide advises for a new store.
     var hours: Dictionary = guide["business_hours"]
