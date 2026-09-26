@@ -63,7 +63,7 @@ const STAFF_STATE_TEXT := {
     "to_clean": "掃除へ", "cleaning": "掃除中",
 }
 const EVENT_NOTICES := [
-    "store_built", "facility_built", "inducement_started", "rival_withdrew", "rival_opened", "rival_bought_out", "month_end_settlement",
+    "store_built", "facility_built", "inducement_started", "town_building_built", "rival_withdrew", "rival_opened", "rival_bought_out", "month_end_settlement",
     "checkout_anger_triggered", "staff_exhausted", "promotion_fired", "chain_expanded",
 ]
 
@@ -817,10 +817,27 @@ func _show_event_notices() -> void:
 func _notice_text(event_type: String, details: Dictionary) -> String:
     match event_type:
         "month_end_settlement":
+            # Like the original's monthly report (収支, 町人口 and its change,
+            # CONFIRMED_VISUAL video V03).
             var result := int(details.get("month_result_yen", 0))
-            return "%d月の収支　%s¥%s" % [
+            var text := "%d月の収支　%s¥%s" % [
                 (int(details.get("month_number", 1)) - 1) % 12 + 1,
                 "+" if result >= 0 else "-", main._format_integer(absi(result)),
+            ]
+            var records: Array = main.simulation.economy.month_end_records
+            if details.has("town_population"):
+                var people := int(details["town_population"])
+                text += "\n町人口 %s人" % main._format_integer(people)
+                if records.size() >= 2 and (records[-2]["details"] as Dictionary).has("town_population"):
+                    var change := people - int(records[-2]["details"]["town_population"])
+                    text += "（%s%d人）" % ["+" if change >= 0 else "", change]
+            return text
+        "town_building_built":
+            var milestone: Dictionary = main.simulation._town_milestone(str(details.get("milestone_id", "")))
+            if str(details.get("milestone_id", "")) == "metropolitan_office":
+                return "人口が%s人を超え、都庁が建ちました！　初級マップクリア" % main._format_integer(int(milestone.get("population", 0)))
+            return "人口が%s人を超え、%sが建ちました" % [
+                main._format_integer(int(milestone.get("population", 0))), str(milestone.get("name", "")),
             ]
         "rival_withdrew":
             return "%s が撤退しました" % _rival_name(str(details.get("rival_id", "")))
@@ -1181,6 +1198,20 @@ func _fill_promotion() -> void:
 
 
 func _fill_research() -> void:
+    # Task #114: the beginner map's goal, 都庁を誘致する.
+    if not main.simulation._town_growth().is_empty():
+        _section("目標")
+        var goal := _text("")
+        _updaters.append(func():
+            var target := 0
+            for milestone in main.simulation._town_growth()["milestones"]:
+                if str(milestone["id"]) == str(main.simulation._town_growth()["clear_milestone"]):
+                    target = int(milestone["population"])
+            goal.text = "都庁を誘致する（町人口%s人で建つ）\n今の町人口 %s人" % [
+                main._format_integer(target), main._format_integer(main.simulation.town.population),
+            ]
+            if main.simulation.clear_condition_met:
+                goal.text += "　クリア！")
     _section("店の成績")
     var results := _text("")
     _updaters.append(func():

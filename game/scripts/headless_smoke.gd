@@ -3128,6 +3128,8 @@ func _initialize() -> void:
         return
     if not _check_shelves_stay_filled():
         return
+    if not _check_town_growth():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -4057,5 +4059,58 @@ func _check_shelves_stay_filled() -> bool:
             return false
     if simulation.inventory.total_stock_units() < full * 3 / 4:
         _fail("after six days the shelves must still be mostly full: %d of %d" % [simulation.inventory.total_stock_units(), full])
+        return false
+    return true
+
+
+# Task #114: the town grows from the beginner map's 2,179 people; at 5,000
+# the 市役所 and 駅, at 8,000 the 区役所 and at 20,000 the 都庁 go up, and
+# the 都庁 clears the beginner map. Sites are the ones
+# tools/guide_store_site.py best_town_building_site() gives.
+func _check_town_growth() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var growth: Dictionary = fresh["guide_town_map"]["town_growth"]
+    if "REMAKE_BALANCED_DEFAULT" not in str(growth["evidence_note"]):
+        _fail("the town growth shape must stay tagged REMAKE_BALANCED_DEFAULT")
+        return false
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    if simulation.town.population != 2179:
+        _fail("the beginner map starts with 2,179 people")
+        return false
+    var customers_before: int = simulation.demand.nearby_population
+    simulation._grow_town_at_month_end()
+    if simulation.town.population != 2179 + int(round(2179 * float(growth["monthly_growth_rate"]))):
+        _fail("the town grows by the monthly rate: %d" % simulation.town.population)
+        return false
+    if simulation.demand.nearby_population <= customers_before:
+        _fail("a bigger town brings the store more customers")
+        return false
+    # 96 months of growth reach 20,000 (the guide's 8 years).
+    var months := 1
+    while not simulation.town_milestone_built("metropolitan_office") and months < 200:
+        simulation._grow_town_at_month_end()
+        months += 1
+    if months < 90 or months > 100:
+        _fail("the 都庁 must go up after about 8 years: %d months" % months)
+        return false
+    var expected := {"city_office": Vector2i(19, 16), "station": Vector2i(19, 13), "ward_office": Vector2i(6, 15), "metropolitan_office": Vector2i(17, 27)}
+    for built in simulation.town_milestones:
+        if expected[str(built["id"])] != built["origin"]:
+            _fail("%s must go up at %s, not %s" % [built["id"], expected[str(built["id"])], built["origin"]])
+            return false
+    if simulation.town_milestones.size() != 4:
+        _fail("市役所, 駅, 区役所 and 都庁 all go up")
+        return false
+    simulation._evaluate_terminal_state()
+    if not simulation.clear_condition_met:
+        _fail("the 都庁 clears the beginner map")
+        return false
+    var reloaded = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    if not reloaded.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))):
+        _fail("a save of the grown town must load")
+        return false
+    if reloaded.town.population != simulation.town.population or reloaded.town_milestones.size() != 4 or reloaded.store_site.buildings.size() != simulation.store_site.buildings.size():
+        _fail("load must restore the town's population and buildings")
         return false
     return true

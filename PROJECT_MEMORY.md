@@ -2143,6 +2143,15 @@ hours, and whether it is inside the store's area. The 買い物人口 is shown o
 - Bug fix: two cleaners waited for each other for good, and the shelves emptied within two months.
 - A cleaner now gives a square up when it is occupied, or after 6 ticks blocked (REMAKE_BALANCED_DEFAULT).
 
+**Task #114 (2026-09-26, decision 0185)**: the town grows and the beginner map is cleared by 都庁を誘致する.
+- The town starts with 2,179 people (CONFIRMED_OFFICIAL).
+- It grows 2.34% a month. This is an analogy: the rate that reaches 20,000 in the guide's 8 years.
+- At 5,000 people the 市役所 and 駅 are built, at 8,000 the 区役所, and at 20,000 the 都庁, which clears the map
+  (CONFIRMED_OFFICIAL thresholds).
+- The store's customers grow with the town (REMAKE_BALANCED_DEFAULT).
+- The month-end notice shows 町人口 and its change.
+- Ordinary houses and shops do not appear on the map yet.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

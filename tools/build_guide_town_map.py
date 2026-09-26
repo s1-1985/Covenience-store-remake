@@ -34,7 +34,7 @@ SOURCE = ROOT / "assets" / "raw" / "conveni_guide_town_v1" / "beginner_map_start
 sys.path.insert(0, str(ROOT / "reference_sim"))
 sys.path.insert(0, str(ROOT / "tools"))
 from conveni_sim.baseline_data import TOWN_BUILDINGS  # noqa: E402
-from guide_store_site import RIVAL_ACTIONS, RIVAL_AI, inducement_block, place_rivals, store_site_rules  # noqa: E402
+from guide_store_site import RIVAL_ACTIONS, RIVAL_AI, TOWN_GROWTH, inducement_block, place_rivals, store_site_rules  # noqa: E402
 
 TILE_W, TILE_H = 9.875, 10.45
 X0, Y0 = 120.0 - 12.5 * TILE_W, 76.5 - 6.5 * TILE_H
@@ -198,7 +198,8 @@ def build():
     induced_sprites = {facility["sprite"] for facility in inducement["facilities"]}
     for profile in TOWN_BUILDINGS:
         # Task #111: the facilities that can be induced are in the catalog too.
-        if any(b["sprite"] == profile.id for b in buildings) or profile.id in induced_sprites:
+        town_sprites = {milestone["sprite"] for milestone in TOWN_GROWTH["milestones"]}
+        if any(b["sprite"] == profile.id for b in buildings) or profile.id in induced_sprites | town_sprites:
             catalog[profile.id] = {
                 "name": profile.display_name_ja,
                 "price": profile.building_price_yen.value,
@@ -251,6 +252,7 @@ def build():
         "rival_actions": RIVAL_ACTIONS,
         "rival_ai": RIVAL_AI,
         "inducement": inducement,
+        "town_growth": TOWN_GROWTH,
         "store_mark_sprite": "map_blue_hq",
         "width_tiles": COLS,
         "height_tiles": ROWS,

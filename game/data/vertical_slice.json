@@ -2747,6 +2747,42 @@
         ],
         "overnight": false
       },
+      "village_office": {
+        "name": "役場(村役場)",
+        "price": 700,
+        "wanted": [
+          "bento",
+          "instant_food",
+          "bread",
+          "vegetables",
+          "meat"
+        ],
+        "overnight": false
+      },
+      "prefectural_office": {
+        "name": "役所(県庁)",
+        "price": 200,
+        "wanted": [
+          "bento",
+          "bread",
+          "tobacco",
+          "instant_food",
+          "retort_food"
+        ],
+        "overnight": false
+      },
+      "metropolitan_government_office": {
+        "name": "都庁",
+        "price": 400,
+        "wanted": [
+          "bento",
+          "bread",
+          "tobacco",
+          "instant_food",
+          "retort_food"
+        ],
+        "overnight": false
+      },
       "kindergarten_building": {
         "name": "幼稚園",
         "price": 200,
@@ -2996,6 +3032,19 @@
         "wanted": [
           "bento",
           "cold_drink"
+        ],
+        "overnight": true
+      },
+      "station_small": {
+        "name": "駅(小)",
+        "price": 1000,
+        "wanted": [
+          "bread",
+          "bento",
+          "instant_food",
+          "hot_drink",
+          "cold_drink",
+          "retort_food"
         ],
         "overnight": true
       },
@@ -3468,6 +3517,46 @@
           "shopping_population": 750
         }
       ]
+    },
+    "town_growth": {
+      "start_population": 2179,
+      "monthly_growth_rate": 0.023361,
+      "milestones": [
+        {
+          "id": "city_office",
+          "name": "市役所",
+          "population": 5000,
+          "sprite": "village_office",
+          "size": [2, 2],
+          "near_railway": false
+        },
+        {
+          "id": "station",
+          "name": "駅",
+          "population": 5000,
+          "sprite": "station_small",
+          "size": [2, 1],
+          "near_railway": true
+        },
+        {
+          "id": "ward_office",
+          "name": "区役所",
+          "population": 8000,
+          "sprite": "prefectural_office",
+          "size": [5, 5],
+          "near_railway": false
+        },
+        {
+          "id": "metropolitan_office",
+          "name": "都庁",
+          "population": 20000,
+          "sprite": "metropolitan_government_office",
+          "size": [7, 7],
+          "near_railway": false
+        }
+      ],
+      "clear_milestone": "metropolitan_office",
+      "evidence_note": "Task #114. CONFIRMED_OFFICIAL: the beginner map starts with 2,179 住人 and is cleared by 都庁を誘致する, the 都庁 being built once the population is large enough (PDF2 p.86, p.11); 5,000 → 市役所 and 駅 (along the railway), 8,000 → 区役所, 20,000 → 都庁 (PDF3 p.10); about 8 years to reach it (PDF2 p.86). CONFIRMED_VISUAL (V03 monthly reports): 町人口 +63 to +156 a month early on. PROVISIONAL: 市役所 drawn as 役場(村役場) 2x2, 区役所 as 役所(県庁) 5x5, 駅 as 駅(小) 2x1. Analogy: monthly growth rate = the rate taking 2,179 to 20,000 in 96 months. REMAKE_BALANCED_DEFAULT: the same rate every month, the store's customers growing with the population, and where each building is put (fewest buildings taken in, then nearest the map's middle; the 駅 beside the railway)."
     },
     "store_mark_sprite": "map_blue_hq",
     "width_tiles": 41,

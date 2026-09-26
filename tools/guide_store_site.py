@@ -352,6 +352,92 @@ def inducement_place_price(block, facility, origin, removed=()):
     return int((price + step / 2) // step * step)
 
 
+# Task #114: the town grows, and at set populations the town builds its
+# own 市役所, 駅, 区役所 and 都庁 (the beginner map is cleared when the 都庁
+# stands). CONFIRMED_OFFICIAL: the beginner map starts with 2,179 住人 and
+# is cleared by 「都庁を誘致する」, which "人口を増やせば都庁は自然と建設される"
+# (guide PDF2 p.86, p.11); 人口5000人以上=市役所, 8000人以上=区役所,
+# 20000人以上=都庁, and 人口が5000人を超えると駅ができる (線路沿い) (PDF3 p.10);
+# "8年ほどの経営で都庁誘致できるはずだ" (PDF2 p.86). CONFIRMED_VISUAL (video
+# V03 monthly reports): 町人口 2,106 → 2,262 → 2,338 → ... → 2,401, i.e.
+# +63 to +156 a month. PROVISIONAL: which DATA4 building stands for each
+# (市役所 = 役場(村役場) 2x2, 区役所 = 役所(県庁) 5x5, 都庁 7x7, 駅 = 駅(小)
+# 2x1). Analogy: the monthly growth rate is the one that takes 2,179 to
+# 20,000 in the guide's 8 years (96 months). REMAKE_BALANCED_DEFAULT: that
+# the rate is the same every month, that the store's customers grow with
+# the town's population, and where each building goes (the buildable spot
+# taking in the fewest buildings, nearest the middle of the map; the 駅
+# beside the railway).
+TOWN_GROWTH = {
+    "start_population": 2_179,
+    "monthly_growth_rate": round((20_000 / 2_179) ** (1 / 96) - 1, 6),
+    "milestones": [
+        {"id": "city_office", "name": "市役所", "population": 5_000, "sprite": "village_office", "size": [2, 2], "near_railway": False},
+        {"id": "station", "name": "駅", "population": 5_000, "sprite": "station_small", "size": [2, 1], "near_railway": True},
+        {"id": "ward_office", "name": "区役所", "population": 8_000, "sprite": "prefectural_office", "size": [5, 5], "near_railway": False},
+        {"id": "metropolitan_office", "name": "都庁", "population": 20_000, "sprite": "metropolitan_government_office", "size": [7, 7], "near_railway": False},
+    ],
+    "clear_milestone": "metropolitan_office",
+    "evidence_note": (
+        "Task #114. CONFIRMED_OFFICIAL: the beginner map starts with 2,179 住人 and is cleared by 都庁を誘致する, the "
+        "都庁 being built once the population is large enough (PDF2 p.86, p.11); 5,000 → 市役所 and 駅 (along the "
+        "railway), 8,000 → 区役所, 20,000 → 都庁 (PDF3 p.10); about 8 years to reach it (PDF2 p.86). "
+        "CONFIRMED_VISUAL (V03 monthly reports): 町人口 +63 to +156 a month early on. PROVISIONAL: 市役所 drawn as "
+        "役場(村役場) 2x2, 区役所 as 役所(県庁) 5x5, 駅 as 駅(小) 2x1. Analogy: monthly growth rate = the rate taking "
+        "2,179 to 20,000 in 96 months. REMAKE_BALANCED_DEFAULT: the same rate every month, the store's customers "
+        "growing with the population, and where each building is put (fewest buildings taken in, then nearest "
+        "the map's middle; the 駅 beside the railway)."
+    ),
+}
+
+
+def best_town_building_site(rows, buildings, size, stores, removed=(), near_railway=False):
+    """Where the town puts a 役所 or 駅 (REMAKE_BALANCED_DEFAULT, see TOWN_GROWTH)."""
+    tiles = building_tiles(buildings)
+    height, width = len(rows), len(rows[0])
+    middle = ((width - size[0]) / 2, (height - size[1]) / 2)
+    best = None
+    for y in range(height - size[1] + 1):
+        for x in range(width - size[0] + 1):
+            cells = [(x + dx, y + dy) for dy in range(size[1]) for dx in range(size[0])]
+            if any(rows[cy][cx] in STORE_SITE_UNBUILDABLE for cx, cy in cells):
+                continue
+            if any(
+                sx < x + size[0] and x < sx + 2 and sy < y + size[1] and y < sy + 2 for sx, sy in stores
+            ):
+                continue
+            if near_railway and not any(
+                0 <= cy + d < height and rows[cy + d][cx] == "T" for cx, cy in cells for d in (-1, 1)
+            ):
+                continue
+            taken = len({tiles[c] for c in cells if c in tiles and tiles[c] not in removed})
+            key = (taken, (x - middle[0]) ** 2 + (y - middle[1]) ** 2, y, x)
+            if best is None or key < best[0]:
+                best = (key, (x, y))
+    return None if best is None else best[1]
+
+
+def place_town_buildings(block, stores):
+    """Every town building in turn on a map that has grown to 20,000 people,
+    each counting the ones put up before it (as the game does)."""
+    buildings = list(block["buildings"])
+    removed = set()
+    placed = {}
+    for milestone in block["town_growth"]["milestones"]:
+        site = best_town_building_site(
+            block["tile_rows"], buildings, milestone["size"], stores, removed, milestone["near_railway"]
+        )
+        tiles = building_tiles(buildings)
+        for dy in range(milestone["size"][1]):
+            for dx in range(milestone["size"][0]):
+                cell = (site[0] + dx, site[1] + dy)
+                if cell in tiles:
+                    removed.add(tiles[cell])
+        buildings.append({"sprite": milestone["sprite"], "tile": list(site), "size": milestone["size"]})
+        placed[milestone["id"]] = site
+    return placed
+
+
 def rival_pressure(tiles, rival_origin, player_origins, price_change_pct, removed=()):
     """How hard the player's stores press a rival this month (REMAKE shape)."""
     mine = [t for t, index in tiles.items() if index not in removed and in_catchment(rival_origin, t)]

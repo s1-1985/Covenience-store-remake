@@ -3073,7 +3073,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # Task #111: plus the facilities that can be induced.
         self.assertEqual(
             set(town["building_catalog"]),
-            {b["sprite"] for b in town["buildings"]} | {f["sprite"] for f in town["inducement"]["facilities"]},
+            {b["sprite"] for b in town["buildings"]} | {f["sprite"] for f in town["inducement"]["facilities"]}
+            | {m["sprite"] for m in town["town_growth"]["milestones"]},
         )
         for sprite, entry in town["building_catalog"].items():
             self.assertEqual(entry["name"], by_id[sprite].display_name_ja)
@@ -3808,7 +3809,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         body = simulation.split("func _rival_ai() -> Dictionary:")[0].split("# Task #106: rivals losing money")[-1]
         self.assertIn("REMAKE_BALANCED_DEFAULT", body)
-        self.assertIn("    _step_rivals_at_month_end()\n    _evaluate_terminal_state()", simulation)
+        self.assertIn("    _step_rivals_at_month_end()\n    _grow_town_at_month_end()\n    _evaluate_terminal_state()", simulation)
         store_site = (GAME_ROOT / "scripts" / "domain" / "store_site.gd").read_text(encoding="utf-8")
         self.assertIn("func rival_pressure(", store_site)
         self.assertIn("func best_open_site(stores: Array, removed: Array = [], avoid: Array = []) -> Vector2i:", store_site)
@@ -3956,6 +3957,50 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func _draw_results_graph(graph: Control) -> void:", phone)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("after six days the shelves must still be mostly full", smoke)
+
+    def test_town_grows_to_the_beginner_maps_clear(self):
+        # Task #114: the Python side of headless_smoke's _check_town_growth.
+        import importlib.util
+        import sys
+
+        sys.path.insert(0, str(REPO_ROOT / "tools"))
+        spec = importlib.util.spec_from_file_location("guide_store_site", REPO_ROOT / "tools" / "guide_store_site.py")
+        site = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(site)
+        town = self.config["guide_town_map"]
+        growth = town["town_growth"]
+        self.assertEqual(growth, site.TOWN_GROWTH)
+        for tag in ("CONFIRMED_OFFICIAL", "CONFIRMED_VISUAL", "PROVISIONAL", "REMAKE_BALANCED_DEFAULT", "Analogy"):
+            self.assertIn(tag, growth["evidence_note"])
+        self.assertEqual(growth["start_population"], 2_179)
+        self.assertEqual(
+            [(m["id"], m["population"]) for m in growth["milestones"]],
+            [("city_office", 5_000), ("station", 5_000), ("ward_office", 8_000), ("metropolitan_office", 20_000)],
+        )
+        # The rate reaches 20,000 in about the guide's 8 years.
+        population, months = 2_179, 0
+        while population < 20_000:
+            population += round(population * growth["monthly_growth_rate"])
+            months += 1
+        self.assertTrue(90 <= months <= 100, months)
+        self.assertEqual(
+            site.place_town_buildings(town, [(13, 21), (8, 10), (27, 9)]),
+            {"city_office": (19, 16), "station": (19, 13), "ward_office": (6, 15), "metropolitan_office": (17, 27)},
+        )
+        for milestone in growth["milestones"]:
+            self.assertIn(milestone["sprite"], town["building_catalog"])
+            self.assertTrue((GAME_ROOT / "assets" / "town" / (milestone["sprite"] + ".png")).is_file())
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        body = simulation.split("func _grow_town_at_month_end() -> void:")[1].split("func _put_up_town_building")[0]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", body)
+        self.assertIn('elif town_milestone_built(str(_town_growth()["clear_milestone"])):', simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        for text in (
+            "the town growth shape must stay tagged REMAKE_BALANCED_DEFAULT",
+            "the 都庁 must go up after about 8 years",
+            "the 都庁 clears the beginner map",
+        ):
+            self.assertIn(text, smoke)
 
     def test_town_building_card(self):
         # Task #112: a tapped building shows its name, DATA4 wants and hours,

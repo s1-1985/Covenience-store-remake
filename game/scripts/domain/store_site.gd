@@ -323,3 +323,50 @@ func rect_is_buildable(tile: Vector2i, size: Vector2i) -> bool:
             if kind == "" or unbuildable.has(kind):
                 return false
     return true
+
+
+# Task #114: where the town puts one of its own buildings (a 役所 or 駅):
+# the buildable spot of `size` clear of every store that takes in the
+# fewest buildings, then nearest the middle of the map (top-left first on
+# a tie); beside the railway for a 駅. REMAKE_BALANCED_DEFAULT, the same as
+# tools/guide_store_site.py best_town_building_site().
+func best_town_building_site(size: Vector2i, stores: Array, removed: Array, near_railway: bool) -> Vector2i:
+    var middle := Vector2((width - size.x) / 2.0, (height - size.y) / 2.0)
+    var best := Vector2i(-1, -1)
+    var best_key: Array = []
+    for y in range(height - size.y + 1):
+        for x in range(width - size.x + 1):
+            var origin := Vector2i(x, y)
+            if not rect_is_buildable(origin, size):
+                continue
+            var rect := Rect2i(origin, size)
+            var clear := true
+            for store in stores:
+                if rect.intersects(Rect2i(store, Vector2i(2, 2))):
+                    clear = false
+                    break
+            if not clear:
+                continue
+            if near_railway and not _beside_railway(origin, size):
+                continue
+            var taken := buildings_under(origin, size, removed).size()
+            var key: Array = [taken, (x - middle.x) * (x - middle.x) + (y - middle.y) * (y - middle.y), y, x]
+            if best_key.is_empty() or _key_less(key, best_key):
+                best_key = key
+                best = origin
+    return best
+
+
+func _beside_railway(origin: Vector2i, size: Vector2i) -> bool:
+    for y in range(origin.y, origin.y + size.y):
+        for x in range(origin.x, origin.x + size.x):
+            if _kind(Vector2i(x, y - 1)) == "T" or _kind(Vector2i(x, y + 1)) == "T":
+                return true
+    return false
+
+
+func _key_less(a: Array, b: Array) -> bool:
+    for i in a.size():
+        if a[i] != b[i]:
+            return a[i] < b[i]
+    return false

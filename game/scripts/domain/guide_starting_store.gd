@@ -32,6 +32,9 @@ static func apply(config: Dictionary) -> Dictionary:
     # Task #109 (REMAKE_BALANCED_DEFAULT, staff_work.evidence_note): edit
     # the layout, stock products and hire with customers inside.
     applied["simulation"]["edits_while_open"] = bool(work["edits_while_open"])
+    # Task #114: the town grows and the beginner map is cleared by the 都庁
+    # (guide_town_map.town_growth).
+    applied["simulation"]["town_growth_enabled"] = config.get("guide_town_map", {}).has("town_growth")
     # Task #103: the game starts at 00:00 (CONFIRMED_OFFICIAL screenshots),
     # open AM7:00~PM11:00 as the guide advises for a new store.
     var hours: Dictionary = guide["business_hours"]

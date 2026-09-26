@@ -887,7 +887,10 @@ func _refresh_ui() -> void:
     # not a one-time event -- the player keeps playing after clearing it
     # (see _evaluate_terminal_state()'s own comment), so this label just
     # stays on rather than needing separate "already shown once" state.
-    if bool(snapshot["clear_condition_met"]):
+    if bool(snapshot["clear_condition_met"]) and not simulation._town_growth().is_empty():
+        # Task #114: the beginner map's clear, 都庁を誘致する.
+        scenario_status_label.text = "都庁が建ちました。初級マップクリア（このまま続けられます）"
+    elif bool(snapshot["clear_condition_met"]):
         scenario_status_label.text = tr("Scenario cleared — reached %d stores (you can keep playing)") % [
             VerticalSliceSimulationScript.PLAYER_STORE_COUNT_SCENARIO_TARGET
         ]

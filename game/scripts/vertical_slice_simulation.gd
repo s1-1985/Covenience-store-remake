@@ -230,6 +230,13 @@ var _rivals_to_reopen: Array[Dictionary] = []
 var induced_facilities: Array[Dictionary] = []
 var pending_inducement: Dictionary = {}
 var _inducement_rng := RandomNumberGenerator.new()
+# Task #114: the town's own buildings put up as it grows
+# ({"id", "origin"}, in order).
+var town_milestones: Array[Dictionary] = []
+# Every building added to the map during the game, in order
+# ({"kind": "facility"/"town", "id", "origin"}): building indices depend on
+# the order, so a load puts them up again in exactly this order.
+var _building_log: Array[Dictionary] = []
 # FIFO order in which customers who have finished shopping are waiting for
 # the single checkout fixture's one staff-service slot (task #36, concurrent
 # customers). Serving strictly in arrival order is this project's own
@@ -337,6 +344,7 @@ func reset() -> void:
     last_survey = {}
     _clear_store_site()
     _reset_inducement()
+    _reset_town_growth()
     _cash_at_month_start = economy.cash_yen
     _revenue_at_month_start = economy.recorded_revenue_yen()
     _expense_index_at_month_start = economy.expense_records.size()
@@ -851,6 +859,7 @@ func _inducement_facility(facility_id: String) -> Dictionary:
 
 func _reset_inducement() -> void:
     induced_facilities.clear()
+    _building_log.clear()
     pending_inducement = {}
     _inducement_rng.seed = int(config["demand"]["rng_seed"]) + 111
     if store_site != null:
@@ -946,6 +955,7 @@ func _put_up_facility(facility_id: String, origin: Vector2i, update_catchment: b
         _bought_buildings.append(index)
     store_site.add_building(str(facility["sprite"]), origin, size)
     induced_facilities.append({"facility_id": facility_id, "origin": origin})
+    _building_log.append({"kind": "facility", "id": facility_id, "origin": origin})
     if update_catchment and has_store_site():
         _apply_store_site(store_site_origin, [])
 
@@ -970,6 +980,79 @@ func inducement_security_bonus() -> float:
                     squares += 1
         total += mini(squares * per_square, int(facility["security_max"]))
     return float(total)
+
+
+# Task #114: the town grows (evidence in guide_town_map.town_growth.
+# evidence_note). Configs without it keep the fixed town of before.
+func _town_growth() -> Dictionary:
+    if not config.has("guide_town_map") or not bool(config["simulation"].get("town_growth_enabled", false)):
+        return {}
+    return config["guide_town_map"].get("town_growth", {})
+
+
+func _reset_town_growth() -> void:
+    town_milestones.clear()
+    var growth := _town_growth()
+    if not growth.is_empty():
+        town.population = int(growth["start_population"])
+
+
+# REMAKE_BALANCED_DEFAULT: the store's customers grow with the town (the
+# scenario's nearby population at the start, scaled by how much the town
+# has grown since).
+func _catchment_base_population() -> int:
+    var base := int(config["demand"]["nearby_population"])
+    var growth := _town_growth()
+    if growth.is_empty():
+        return base
+    return int(round(float(base) * float(town.population) / float(growth["start_population"])))
+
+
+func town_milestone_built(milestone_id: String) -> bool:
+    for built in town_milestones:
+        if str(built["id"]) == milestone_id:
+            return true
+    return false
+
+
+func _town_milestone(milestone_id: String) -> Dictionary:
+    for milestone in _town_growth().get("milestones", []):
+        if str(milestone["id"]) == milestone_id:
+            return milestone
+    return {}
+
+
+func _grow_town_at_month_end() -> void:
+    var growth := _town_growth()
+    if growth.is_empty() or store_site == null:
+        return
+    # Analogy: the rate that takes the beginner map's 2,179 to 20,000 in the
+    # guide's 8 years; REMAKE_BALANCED_DEFAULT that it is the same each month.
+    town.population += int(round(float(town.population) * float(growth["monthly_growth_rate"])))
+    for milestone in growth["milestones"]:
+        var milestone_id := str(milestone["id"])
+        if town.population < int(milestone["population"]) or town_milestone_built(milestone_id):
+            continue
+        var stores: Array = _store_rects().map(func(rect): return rect.position)
+        var site: Vector2i = store_site.best_town_building_site(
+            Vector2i(int(milestone["size"][0]), int(milestone["size"][1])), stores, _bought_buildings, bool(milestone["near_railway"])
+        )
+        if site == NO_STORE_SITE:
+            continue
+        _put_up_town_building(milestone_id, site)
+        _record_event("town_building_built", {"milestone_id": milestone_id, "origin": [site.x, site.y]})
+    if has_store_site():
+        _apply_store_site(store_site_origin, [])
+
+
+func _put_up_town_building(milestone_id: String, origin: Vector2i) -> void:
+    var milestone := _town_milestone(milestone_id)
+    var size := Vector2i(int(milestone["size"][0]), int(milestone["size"][1]))
+    for index in store_site.buildings_under(origin, size, _bought_buildings):
+        _bought_buildings.append(index)
+    store_site.add_building(str(milestone["sprite"]), origin, size)
+    town_milestones.append({"id": milestone_id, "origin": origin})
+    _building_log.append({"kind": "town", "id": milestone_id, "origin": origin})
 
 
 # Task #106: rivals losing money, withdrawing and opening again elsewhere
@@ -1242,7 +1325,7 @@ func store_site_quote(origin: Vector2i) -> Dictionary:
         permits[permit_id] = _can_acquire_permit_at(str(permit_id), origin)
     result["permits_available"] = permits
     result["nearby_population"] = store_site.nearby_population(
-        origin, int(config["demand"]["nearby_population"]), _bought_buildings + result["bought_buildings"],
+        origin, _catchment_base_population(), _bought_buildings + result["bought_buildings"],
         _rival_positions()
     )
     return result
@@ -1352,7 +1435,7 @@ func _apply_store_site(origin: Vector2i, bought: Array) -> void:
         if not _bought_buildings.has(int(index)):
             _bought_buildings.append(int(index))
     demand.nearby_population = store_site.nearby_population(
-        origin, int(config["demand"]["nearby_population"]), _bought_buildings, _rival_positions()
+        origin, _catchment_base_population(), _bought_buildings, _rival_positions()
     )
     _catchment_weights = store_site.catchment_building_weights(origin, _rival_positions(), _bought_buildings)
     # Task #98: on the town map, rivals take customers where their
@@ -2281,8 +2364,11 @@ func save_state() -> Dictionary:
         }),
         # Task #111 (schema 9): facilities built through 誘致, and the one
         # under construction.
-        "induced_facilities": induced_facilities.map(func(built): return {
-            "facility_id": str(built["facility_id"]),
+        # Task #114 (schema 9): the town's population and its own buildings.
+        "town_population": town.population,
+        "added_buildings": _building_log.map(func(built): return {
+            "kind": str(built["kind"]),
+            "id": str(built["id"]),
             "origin": [built["origin"].x, built["origin"].y],
         }),
         "pending_inducement": {} if pending_inducement.is_empty() else {
@@ -2439,8 +2525,13 @@ func load_state(data: Dictionary) -> bool:
         _apply_business_hours(str(data["business_hours_id"]))
     _clear_store_site()
     _reset_inducement()
-    for built in data["induced_facilities"]:
-        _put_up_facility(str(built["facility_id"]), _vec2i_from_array(built["origin"]), false)
+    _reset_town_growth()
+    town.population = int(data["town_population"])
+    for built in data["added_buildings"]:
+        if str(built["kind"]) == "town":
+            _put_up_town_building(str(built["id"]), _vec2i_from_array(built["origin"]))
+        else:
+            _put_up_facility(str(built["id"]), _vec2i_from_array(built["origin"]), false)
     var saved_pending: Dictionary = data["pending_inducement"]
     if not saved_pending.is_empty():
         pending_inducement = {
@@ -2784,6 +2875,7 @@ func _settle_month_end() -> void:
             "month_result_yen": month_result_yen,
             "capital_yen": capital_yen,
             "month_sales_yen": month_sales_yen,
+            "town_population": town.population,
         }
     )
     _record_event("month_end_settlement", {
@@ -2805,6 +2897,7 @@ func _settle_month_end() -> void:
     _expense_index_at_month_start = economy.expense_records.size()
     _promotions_used_this_month.clear()
     _step_rivals_at_month_end()
+    _grow_town_at_month_end()
     _evaluate_terminal_state()
 
 
@@ -2873,7 +2966,12 @@ func _evaluate_terminal_state() -> void:
     if economy.cash_yen < 0:
         _trigger_game_over("bankrupt")
         return
-    if player_store_count >= PLAYER_STORE_COUNT_SCENARIO_TARGET:
+    if _town_growth().is_empty():
+        if player_store_count >= PLAYER_STORE_COUNT_SCENARIO_TARGET:
+            clear_condition_met = true
+    elif town_milestone_built(str(_town_growth()["clear_milestone"])):
+        # Task #114: the beginner map (guide_town_map) is cleared by
+        # 都庁を誘致する (CONFIRMED_OFFICIAL), not by the store count.
         clear_condition_met = true
     var current_year: int = (month_count / MONTHS_PER_YEAR) + 1
     if current_year > GAME_OVER_YEAR_LIMIT and not clear_condition_met:
@@ -3349,8 +3447,9 @@ func _require_save_data(data: Dictionary) -> void:
         "investigated_rival_ids",
         "rival_stores",
         "rivals_to_reopen",
-        "induced_facilities",
+        "added_buildings",
         "pending_inducement",
+        "town_population",
         "business_hours_id",
         "store_type_id",
         "weather_category_index",

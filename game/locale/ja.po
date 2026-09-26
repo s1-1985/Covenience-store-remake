@@ -959,3 +959,6 @@ msgstr "誘致を始めた"
 
 msgid "facility built"
 msgstr "誘致した施設が完成した"
+
+msgid "town building built"
+msgstr "町に新しい建物が建った"
