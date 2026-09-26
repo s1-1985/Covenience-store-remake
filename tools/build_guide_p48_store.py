@@ -188,6 +188,129 @@ def build(config):
         ),
         "provisional_restock_product_id": products[0]["id"],
         "sample_layout_label": "Guide p.48 layout",
+        # Task #103: the business-hours choices of the 営業方針 screen.
+        "business_hours": {
+            "presets": [
+                {"id": "10_18", "label": "AM10:00〜PM6:00", "open": 600, "close": 1080},
+                {"id": "7_23", "label": "AM7:00〜PM11:00", "open": 420, "close": 1380},
+                {"id": "10_2", "label": "AM10:00〜AM2:00", "open": 600, "close": 120},
+                {"id": "12_4", "label": "PM0:00〜AM4:00", "open": 720, "close": 240},
+                {"id": "19_11", "label": "PM7:00〜AM11:00", "open": 1140, "close": 660},
+                {"id": "24h", "label": "24時間営業", "open": 0, "close": 1440},
+                {"id": "closed", "label": "臨時休業", "open": 0, "close": 0},
+            ],
+            "default_id": "7_23",
+            "start_minute_of_day": 0,
+            "evidence_note": (
+                "Task #103. CONFIRMED_OFFICIAL (guide PDF3 p.2): five fixed hours -- AM10:00~PM6:00 "
+                "(8 hours), AM7:00~PM11:00, a 10/11 o'clock~AM2:00, PM0:00~AM4:00 and PM7:00~AM11:00 "
+                "(16 hours each) -- plus 24時間営業 and 臨時休業; longer hours sell more but cost more. "
+                "The third preset's start reads 11 or 10 in the scan; 10 matches its printed 16 hours "
+                "and the PS review's list (10:00~翌02:00). Guide p.23: start with AM7:00~PM11:00. "
+                "CONFIRMED_COMMUNITY (first-title FAQ): while closed, wages and upkeep stop. "
+                "CONFIRMED_OFFICIAL: a game starts at 1年目1月1日 00:00 (guide p.6, p.11 screenshots)."
+            ),
+        },
+        # Task #97: how the staff work in the real game.
+        "staff_work": {
+            "restock_trigger_share_of_full": round(8 / 9, 6),
+            "cleaning_task_enabled": True,
+            "stamina_enabled": True,
+            "building_demand_enabled": True,
+            "edits_while_open": True,
+            "evidence_note": (
+                "Task #97. CONFIRMED: staff notice shelves going down and refill them on their "
+                "own (docs/research/inventory-restock-boundary-2026-09-05.md section 2, exact "
+                "trigger unknown), and clean the store on their own, cleaning growing 清掃 and "
+                "セキュリティ (guide p.26). REMAKE_BALANCED_DEFAULT: a staff member goes to refill "
+                "a shelf once it is at or below 8/9 of full (the shelf picture shows 9 items per "
+                "tile, so: once it has visibly lost an item), and cleans the floor squares "
+                "customers have walked on, one at a time, when there is nothing to refill. "
+                "Task #99, stamina: CONFIRMED_COMMUNITY that checkout, restocking and cleaning use up "
+                "体力, that at 0 a staff member rests in the break room until full, and that 敏捷性 "
+                "raises the chance of recovering 2 instead of 1 (about 90% at 100); the maximum is "
+                "each candidate's CONFIRMED_OFFICIAL 体力. REMAKE_BALANCED_DEFAULT: 1 per finished "
+                "task, one recovery roll per game minute, +2 with chance 0.9 x 敏捷性/100. "
+                "Task #102, customers: CONFIRMED_OFFICIAL that each building wants its DATA4 "
+                "主なほしい品物 and that the 朝から夜だけ buildings send nobody late at night; "
+                "REMAKE_BALANCED_DEFAULT which building a customer comes from (in proportion to "
+                "its squares in the store's catchment), up to 3 wanted categories each, and that "
+                "a category the store lacks goes into the month's survey instead. "
+                "Task #109, edits while open: the first-title wiki's trick of opening 内装 outside opening "
+                "hours to clear the floor's dirt implies 内装 can also be opened while open (inference). "
+                "REMAKE_BALANCED_DEFAULT: fixtures can be placed, moved, swapped, rotated and sold, products "
+                "stocked and staff hired with customers inside; everyone re-routes, and an edit is refused only "
+                "when someone would be stranded. "
+                "Task #113: REMAKE_BALANCED_DEFAULT, a cleaner gives a floor square up when someone stands "
+                "on it or after 6 ticks without moving (two cleaners once waited for each other for good)."
+            ),
+        },
+        # Tasks #117-#120: rules for the shop floor the owner asked for.
+        "store_rules": store_rules(config),
+    }
+
+
+def store_rules(config):
+    wagons = sorted(entry["catalog_id"] for entry in config["fixture_catalog"] if "wagon" in entry["catalog_id"])
+    attention = {}
+    for entry in config["fixture_catalog"]:
+        if entry.get("kind") != "shelf":
+            continue
+        catalog_id = entry["catalog_id"]
+        if catalog_id in wagons:
+            attention[catalog_id] = 2.0 if entry["footprint_tiles"] == [2, 2] else 1.5
+        else:
+            attention[catalog_id] = 1.0
+    return {
+        "checkout_rotation_enabled": True,
+        "customer_types_enabled": True,
+        "any_side_catalog_ids": wagons,
+        # Task #125: a moved/turned/bought fixture tries every side for its front.
+        "edit_front_search": True,
+        "fixture_attention": attention,
+        # Task #124: the store's own growth (see evidence_note).
+        "store_growth": {
+            "start_popularity": 20,
+            "new_store_recognition": 0.0,
+            "bought_store_recognition": 30.0,
+            "recognition_per_happy_visit": 0.15,
+            "recognition_per_unhappy_visit": 0.4,
+            "demand_factor_at_zero": 0.4,
+            "demand_factor_at_full": 1.6,
+            "popularity_base": 20,
+            "popularity_per_recognition": 0.6,
+            "popularity_daily_pull": 0.3,
+        },
+        "evidence_note": (
+            "Task #117, selling a stocked shelf / changing its product (the owner's request): no source "
+            "says what happens to the goods; REMAKE_BALANCED_DEFAULT, they go back to the supplier at "
+            "their purchase cost. "
+            "Task #118, register duty: CONFIRMED_COMMUNITY (first-title FAQ, docs/research/staff-checkout-"
+            "task-arbitration-2026-09-06.md) that whoever reaches the register takes it and a tired "
+            "cashier leaves for the break room; REMAKE_BALANCED_DEFAULT, between customers a cashier who is "
+            "exhausted or under half 体力 hands over to the idle colleague with the most 体力 (for the "
+            "half-tired case at least a quarter gauge more), and the two swap posts. "
+            "Task #119, shelves and wagons: CONFIRMED_OFFICIAL capacities (a wagon holds less than the "
+            "shelf of its size, fixture_catalog) and CONFIRMED_COMMUNITY that the 2x2 large wagon draws "
+            "more 注目度 than a narrow one, which the wiki thinks raises ついで買い (docs/research/customer-"
+            "purchase-role-merchandising-2026-09-05.md). REMAKE_BALANCED_DEFAULT (the owner's request): "
+            "goods are taken from a shelf's front only but from any free side of a wagon (the fixtures "
+            "whose guide name is a ワゴン); 注目度 1.0 for shelves, 1.5 for wagons, 2.0 for the 2x2 wagons, "
+            "scaling the add-on chance. "
+            "Task #120: customer types, see guide_customer_types.evidence_note. "
+            "Task #124, the store's growth: CONFIRMED_COMMUNITY that a store starts at 人気度 20 and that "
+            "顧客独占率 is worked out again at every day change from 人気, service, cleaning, assortment, price, "
+            "hours, weather and nearby population; CONFIRMED_OFFICIAL (qualitative, guide p.36) that an advert's "
+            "人気度 fades from the next day and that lower prices and better service slowly bring other stores' "
+            "customers over. REMAKE_BALANCED_DEFAULT: 知名度 (0-100) -- a new store starts at 0, a bought one at "
+            "30; each satisfied customer adds 0.15 x (1 - 知名度/100), each one leaving with nothing or angry takes "
+            "0.4 x 知名度/100; visitors scale from 0.4 (unknown) to 1.6 (fully known); 人気度 moves 30% of the way "
+            "to 20 + 0.6 x 知名度 each day; 顧客独占率 is recomputed daily. "
+            "Task #125, editing the floor (the owner: rearranging a small store was too hard): "
+            "REMAKE_BALANCED_DEFAULT, a fixture whose front would be blocked gets another side as its front, a "
+            "refused edit says which shelf would be cut off, and fixtures can be put into storage for free and set "
+            "down again later (their goods go back at cost)."
+        ),
     }
 
 

@@ -3,21 +3,50 @@ extends Node2D
 const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_simulation.gd")
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
+const PhoneUIScript := preload("res://scripts/phone_ui.gd")
 
 var _android_panel: Control = null
 # Task #95: a new game starts on the town map with 「出店場所を選んで下さい」
 # (the original's order: site first, then the store, guide p.6-11 and the
 # PS review's opening flow); time stays stopped until a site is bought.
 var selecting_site := false
+# Task #123: picking the land for the next store (新規出店).
+var choosing_new_store := false
 var site_panel: PanelContainer = null
 var site_info_label: Label = null
 var site_buy_button: Button = null
+var site_cancel_button: Button = null
 var _site_origin := Vector2i(-1, -1)
+# Task #104: the 「店舗を選んで下さい」 panel shown after the land is chosen.
+var store_type_panel: PanelContainer = null
+var store_type_info_label: Label = null
+var store_type_build_button: Button = null
+var _store_type_buttons: Dictionary = {}
+var _store_type_choice := ""
+var _store_view_left := -1.0
 # Task #96: the newest event already turned into a sound, and whether the
 # clear fanfare has played.
 var _heard_event_sequence := 0
 var _heard_clear := false
 var sound_toggle_button: Button = null
+# Task #97: what the tapped fixture holds, with its restock button, shown
+# over the store (the side panel is a closed drawer on the phone).
+var fixture_info_panel: PanelContainer = null
+var fixture_info_label: Label = null
+var fixture_restock_button: Button = null
+var fixture_stock_button: Button = null
+var fixture_info_icon: TextureRect = null
+# Task #110: the phone screen (phone_ui.gd), and the game speed its
+# ×1/×2/×4 button sets (platform presentation).
+var phone_ui = null
+var speed := 1
+# Task #101: the rival store menu on the town map, like the original's
+# 「調査する / 買収する / 何もしない」 (guide p.53).
+var rival_panel: PanelContainer = null
+var rival_info_label: Label = null
+var rival_investigate_button: Button = null
+var rival_buyout_button: Button = null
+var _rival_id := ""
 
 # Test seam (task #89): see _load_config(). An Engine meta flag rather than a
 # static var because the --script smoke runner cannot preload this script
@@ -132,6 +161,9 @@ func _ready() -> void:
     if config.is_empty():
         return
     simulation = VerticalSliceSimulationScript.new(config)
+    # Task #104: the store (and so config["store"]/["fixtures"]/...) can
+    # change when it is built, so the UI reads the simulation's own config.
+    config = simulation.config
     tick_seconds = float(config["simulation"]["tick_seconds"])
     _save_service = SaveGameServiceScript.new()
     # GameLaunchState is an autoload (project.godot [autoload]); it is only
@@ -146,6 +178,10 @@ func _ready() -> void:
     town_view.bind(simulation)
     _fit_store_view()
     _build_site_panel()
+    _build_store_type_panel()
+    _build_fixture_info_panel()
+    _build_rival_panel()
+    town_view.map_tapped.connect(_on_map_tapped)
     town_view.site_tapped.connect(_on_site_tapped)
     _populate_sample_layout_option()
     _populate_fixture_catalog_option()
@@ -190,6 +226,13 @@ func _ready() -> void:
     store_view.fixture_selected.connect(_on_fixture_selected)
     store_view.fixture_relocation_requested.connect(_on_fixture_relocation_requested)
     _build_sound_toggle()
+    _build_business_hours_controls()
+    if _is_android_preview():
+        phone_ui = PhoneUIScript.new()
+        phone_ui.name = "PhoneUI"
+        add_child(phone_ui)
+        phone_ui.setup(self)
+        store_view.editing = false
     var button_sfx := str(config["sound"]["button_sfx"])
     for node in $UI.find_children("*", "BaseButton", true, false):
         (node as BaseButton).pressed.connect(func(): SoundManager.play_sfx(button_sfx))
@@ -201,12 +244,17 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
     if simulation == null or paused or selecting_site:
+        store_view.tick_progress = 1.0
         return
-    accumulator += delta
+    accumulator += delta * speed
     while accumulator >= tick_seconds:
         accumulator -= tick_seconds
         simulation.tick()
+        store_view.tick_serial += 1
         _refresh_ui()
+    # Task #97: how far through the current tick we are, for the smooth
+    # movement drawing (store_view.gd).
+    store_view.tick_progress = accumulator / tick_seconds
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -218,6 +266,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_show_town_map_pressed() -> void:
     if selecting_site:
         return
+    _rival_id = ""
     town_view.visible = not town_view.visible
     store_view.visible = not town_view.visible
     show_town_map_button.text = tr("Show store") if town_view.visible else tr("Show town map")
@@ -252,6 +301,7 @@ func _on_reset_pressed() -> void:
     simulation.reset()
     _heard_event_sequence = _latest_event_sequence()
     _heard_clear = simulation.clear_condition_met
+    _select_current_business_hours()
     layout_edit_label.text = tr("Layout reset to configured prototype")
     _refresh_procure_fixture_option()
     _refresh_hire_candidate_option()
@@ -299,6 +349,10 @@ func _on_eject_customer_pressed() -> void:
 
 
 func _on_fixture_selected(fixture_id: String) -> void:
+    # Task #110: outside 内装 a tap only shows the fixture's card.
+    if fixture_id.is_empty() or not store_view.editing:
+        _refresh_ui()
+        return
     if store_view.edit_mode == "swap":
         layout_edit_label.text = tr("Selected: %s — tap another fixture to swap") % _fixture_label(fixture_id)
     else:
@@ -309,16 +363,96 @@ func _on_fixture_relocation_requested(fixture_id: String, origin_subcell: Vector
     if fixture_id.begins_with(NEW_FIXTURE_SELECTION_PREFIX):
         _try_place_new_fixture(fixture_id.substr(NEW_FIXTURE_SELECTION_PREFIX.length()), origin_subcell)
         return
+    if fixture_id.begins_with(STORED_FIXTURE_SELECTION_PREFIX):
+        # Task #125: setting a fixture down out of storage.
+        var index := int(fixture_id.substr(STORED_FIXTURE_SELECTION_PREFIX.length()))
+        store_view.selected_fixture_id = ""
+        if simulation.try_place_stored_fixture(index, origin_subcell):
+            layout_edit_label.text = tr("Set the fixture down from storage")
+            _reopen_interior_window()
+        else:
+            _show_edit_refusal()
+        _refresh_ui()
+        return
     if simulation.try_relocate_fixture(fixture_id, origin_subcell):
         layout_edit_label.text = tr("Moved %s to (%d, %d)") % [
             _fixture_label(fixture_id),
             origin_subcell.x,
             origin_subcell.y,
         ]
-    elif not simulation.customers.all_settled():
+    elif not simulation.customers.all_settled() and not simulation._edits_while_open:
         layout_edit_label.text = tr("Finish the active visit before editing layout")
     else:
-        layout_edit_label.text = tr("Cannot move there: blocked, outside, or route would break")
+        _show_edit_refusal()
+    _refresh_ui()
+
+
+# Task #125: why an edit was refused, and the shelf it would cut off shown
+# in red for a moment.
+const STORED_FIXTURE_SELECTION_PREFIX := "__stored:"
+
+
+func _show_edit_refusal() -> void:
+    var reason: String = simulation.edit_refusal
+    if reason == "locked":
+        layout_edit_label.text = tr("Finish the active visit before editing layout")
+    elif reason == "route:checkout":
+        layout_edit_label.text = tr("That would cut off the register or the exit")
+    elif reason.begins_with("route:"):
+        var product_id := reason.substr(6)
+        layout_edit_label.text = tr("That would cut off the %s shelf") % _product_label(product_id)
+        if simulation.inventory.products.has(product_id):
+            store_view.warn_fixture(simulation.inventory.get_product(product_id).fixture_id)
+    elif reason == "people":
+        layout_edit_label.text = tr("Someone is standing in the way")
+    else:
+        layout_edit_label.text = tr("A wall or another fixture is in the way")
+
+
+# Task #126: 改装 -- the store becomes store type `type_id` (another size or
+# orientation), see VerticalSliceSimulation.try_renovate_store().
+func renovate_store(type_id: String) -> bool:
+    if not simulation.try_renovate_store(type_id):
+        layout_edit_label.text = tr("Not enough money to renovate") if simulation.edit_refusal == "cash" else tr("Cannot renovate into this store")
+        SoundManager.play_sfx(str(config["sound"]["refused_sfx"]))
+        return false
+    store_view.selected_fixture_id = ""
+    _store_layout_changed()
+    var moved: Dictionary = simulation.event_log.records[-1]["details"] if simulation.event_log.records[-1]["event_type"] == "store_renovated" else {}
+    layout_edit_label.text = tr("Renovated the store (%d fixtures put in storage)") % int(moved.get("fixtures_stored", 0))
+    _reopen_interior_window()
+    _refresh_ui()
+    return true
+
+
+# The size, orientation (縦長/横長) and floor of a store type, for the
+# store type buttons.
+func store_type_caption(entry: Dictionary) -> String:
+    var floor_tiles: Array = entry["floor_tiles"]
+    var shape := tr("tall") if int(floor_tiles[1]) > int(floor_tiles[0]) else tr("wide")
+    return "%s・%s %d×%d" % [tr("store_tier_" + str(entry["size_tier"])), shape, int(floor_tiles[0]), int(floor_tiles[1])]
+
+
+# The phone's 内装 window lists the storage; rebuild it after a change.
+func _reopen_interior_window() -> void:
+    if phone_ui != null and phone_ui.window_id == "interior":
+        phone_ui.open_window("interior")
+
+
+func _on_store_fixture_pressed() -> void:
+    var fixture_id: String = store_view.selected_fixture()
+    if fixture_id.is_empty() or fixture_id.begins_with("__"):
+        return
+    var label := _fixture_label(fixture_id)
+    if simulation.try_store_fixture(fixture_id):
+        store_view.selected_fixture_id = ""
+        layout_edit_label.text = tr("Put %s into storage") % label
+        _refresh_procure_fixture_option()
+        _reopen_interior_window()
+    elif simulation.edit_refusal == "locked":
+        _show_edit_refusal()
+    else:
+        layout_edit_label.text = tr("The register and the break room stay in place")
     _refresh_ui()
 
 
@@ -328,10 +462,10 @@ func _on_rotate_fixture_pressed() -> void:
         layout_edit_label.text = tr("Select a fixture before rotating")
     elif simulation.try_rotate_fixture_clockwise(fixture_id):
         layout_edit_label.text = tr("Rotated %s clockwise") % _fixture_label(fixture_id)
-    elif not simulation.customers.all_settled():
+    elif not simulation.customers.all_settled() and not simulation._edits_while_open:
         layout_edit_label.text = tr("Finish the active visit before editing layout")
     else:
-        layout_edit_label.text = tr("Cannot rotate there: blocked or route would break")
+        _show_edit_refusal()
     _refresh_ui()
 
 
@@ -354,16 +488,23 @@ func _on_fixture_swap_requested(fixture_id_a: String, fixture_id_b: String) -> v
 
 func _on_sell_fixture_pressed() -> void:
     var fixture_id: String = store_view.selected_fixture()
+    # The name is read before the sale: afterwards the fixture is gone.
+    var label := _fixture_label(fixture_id)
     if fixture_id.is_empty():
         layout_edit_label.text = tr("Select a fixture before selling")
     elif simulation.try_sell_fixture(fixture_id):
-        layout_edit_label.text = tr("Sold %s") % _fixture_label(fixture_id)
+        # Task #117: a shelf is sold with its goods, which go back at cost.
+        var goods_refund := int(simulation.event_log.records[-1]["details"].get("goods_refund_yen", 0))
+        if goods_refund > 0:
+            layout_edit_label.text = tr("Sold %s (goods returned: ¥%s)") % [label, _format_integer(goods_refund)]
+        else:
+            layout_edit_label.text = tr("Sold %s") % label
         store_view.selected_fixture_id = ""
         _refresh_procure_fixture_option()
-    elif not simulation.customers.all_settled():
+    elif simulation._layout_edit_locked():
         layout_edit_label.text = tr("Finish the active visit before selling a fixture")
     else:
-        layout_edit_label.text = tr("Cannot sell that fixture: it's the checkout, holds stock, or has no catalog price")
+        layout_edit_label.text = tr("Cannot sell that fixture: it's the checkout or has no catalog price")
     _refresh_ui()
 
 
@@ -445,6 +586,19 @@ func _try_place_new_fixture(catalog_id: String, origin_subcell: Vector2i) -> voi
     var subcells_per_tile: int = int(config["store"]["subcells_per_tile"])
     var width: int = int(footprint[0]) * subcells_per_tile
     var height: int = int(footprint[1]) * subcells_per_tile
+    if simulation._front_search_enabled():
+        # Task #125: the front goes on whichever side works.
+        var auto_id := "fixture-purchase-%d" % _next_fixture_purchase_sequence
+        _next_fixture_purchase_sequence += 1
+        if simulation.try_purchase_fixture_at(catalog_id, auto_id, origin_subcell):
+            layout_edit_label.text = tr("Purchased %s") % tr(catalog_id)
+            _refresh_procure_fixture_option()
+        elif simulation.economy.cash_yen < int(catalog_entry["purchase_price_yen"]):
+            layout_edit_label.text = tr("Cannot place %s there: blocked, unaffordable, or route would break") % tr(catalog_id)
+        else:
+            _show_edit_refusal()
+        _refresh_ui()
+        return
     var interaction := _find_open_interaction_cell(origin_subcell, width, height)
     if interaction == Vector2i(-1, -1):
         layout_edit_label.text = tr("Cannot place %s there: no open cell next to it for customers/staff to use") % tr(catalog_id)
@@ -502,8 +656,6 @@ func _on_buy_permit_pressed() -> void:
         layout_edit_label.text = tr("Already hold the %s permit") % tr(permit_id)
     elif simulation.try_purchase_permit(permit_id):
         layout_edit_label.text = tr("Purchased permit: %s") % tr(permit_id)
-    elif not simulation.customers.all_settled():
-        layout_edit_label.text = tr("Finish the active visit before buying a permit")
     else:
         layout_edit_label.text = tr("Cannot afford the %s permit") % tr(permit_id)
     _refresh_ui()
@@ -578,7 +730,10 @@ func _selected_fixture_restock_target():
     var product = store_view._product_on_fixture(fixture_id)
     if product == null:
         return null
-    if product.stock_units > simulation._restock_trigger_stock_units_at_or_below:
+    # Task #97: the owner's testimony (decision 0149) is 「中身が減っていると
+    # 補充のコマンドが出て」 -- available as soon as the shelf is not full,
+    # not only once it is empty (the old reading of the staff trigger level).
+    if product.stock_units >= product.initial_stock_units:
         return null
     return product
 
@@ -586,7 +741,7 @@ func _selected_fixture_restock_target():
 func _on_restock_pressed() -> void:
     var product = _selected_fixture_restock_target()
     if product == null:
-        layout_edit_label.text = tr("Select a shelf whose stock is running low to restock it")
+        layout_edit_label.text = tr("Select a shelf that is not full to restock it")
         _refresh_ui()
         return
     # REMAKE_BALANCED_DEFAULT (task #38): apply_explicit_restock() takes an
@@ -596,7 +751,9 @@ func _on_restock_pressed() -> void:
     # recovered original restock quantity. total_cost_yen is not invented,
     # though: it is quantity times the product's own CONFIRMED_OFFICIAL
     # restock_unit_cost_yen.
-    var quantity: int = maxi(1, product.initial_stock_units)
+    # Task #97: fills the shelf back up to its starting (full) stock, never
+    # beyond it.
+    var quantity: int = product.initial_stock_units - product.stock_units
     var total_cost_yen: int = quantity * product.restock_unit_cost_yen
     var staff_id: String = simulation.staff.checkout_staff().staff_id
     if simulation.apply_explicit_restock(product.product_id, staff_id, quantity, total_cost_yen):
@@ -606,7 +763,7 @@ func _on_restock_pressed() -> void:
             _format_integer(total_cost_yen),
         ]
     else:
-        layout_edit_label.text = tr("Finish the active visit before restocking")
+        layout_edit_label.text = tr("Cannot restock now")
     _refresh_ui()
 
 
@@ -630,8 +787,6 @@ func _on_buy_promotion_pressed() -> void:
     var promotion_id: String = _promotion_ids[promotion_option.selected]
     if simulation.try_purchase_promotion(promotion_id):
         layout_edit_label.text = tr("Scheduled promotion: %s") % tr(promotion_id)
-    elif not simulation.customers.all_settled():
-        layout_edit_label.text = tr("Finish the active visit before buying a promotion")
     else:
         layout_edit_label.text = tr("Cannot buy that promotion: unaffordable or already scheduled/used this month")
     _refresh_ui()
@@ -640,8 +795,8 @@ func _on_buy_promotion_pressed() -> void:
 func _on_expand_chain_pressed() -> void:
     if simulation.try_expand_chain():
         layout_edit_label.text = tr("Expanded the chain to %d store(s)") % int(simulation.player_store_count)
-    elif not simulation.customers.all_settled():
-        layout_edit_label.text = tr("Finish the active visit before expanding the chain")
+    elif simulation.town_is_full():
+        layout_edit_label.text = tr("The town already has 10 stores, rivals included")
     else:
         layout_edit_label.text = tr("Cannot expand the chain: unaffordable, or the scenario target is already reached")
     _refresh_ui()
@@ -651,8 +806,6 @@ func _on_set_price_policy_pressed() -> void:
     var new_price_change_pct: int = int(round(price_change_spin_box.value))
     if simulation.try_set_price_policy(new_price_change_pct):
         layout_edit_label.text = tr("Price policy set: %+d%% from list price") % new_price_change_pct
-    elif not simulation.customers.all_settled():
-        layout_edit_label.text = tr("Finish the active visit before changing the price policy")
     else:
         layout_edit_label.text = tr("Cannot set that price policy (must be -100% or above)")
     _refresh_ui()
@@ -749,6 +902,7 @@ func _on_load_pressed() -> void:
     if simulation == null:
         return
     if _save_service.load_from_path(simulation):
+        _select_current_business_hours()
         _heard_event_sequence = _latest_event_sequence()
         _heard_clear = simulation.clear_condition_met
         paused = false
@@ -773,6 +927,9 @@ func _refresh_ui() -> void:
         return
     var snapshot: Dictionary = simulation.snapshot()
     clock_label.text = str(snapshot["clock_text"])
+    # Task #103: whether the store is open right now.
+    if not simulation.is_open_now():
+        clock_label.text += "　" + tr("Closed")
     # Task #77: task #75's original "Month X · Day Y of Z (Day N overall)"
     # was invented without checking docs/research/official-screenshot-
     # evidence-2026-09-05.md section 1, which already had CONFIRMED_
@@ -833,7 +990,10 @@ func _refresh_ui() -> void:
     # not a one-time event -- the player keeps playing after clearing it
     # (see _evaluate_terminal_state()'s own comment), so this label just
     # stays on rather than needing separate "already shown once" state.
-    if bool(snapshot["clear_condition_met"]):
+    if bool(snapshot["clear_condition_met"]) and not simulation._town_growth().is_empty():
+        # Task #114: the beginner map's clear, 都庁を誘致する.
+        scenario_status_label.text = "都庁が建ちました。初級マップクリア（このまま続けられます）"
+    elif bool(snapshot["clear_condition_met"]):
         scenario_status_label.text = tr("Scenario cleared — reached %d stores (you can keep playing)") % [
             VerticalSliceSimulationScript.PLAYER_STORE_COUNT_SCENARIO_TARGET
         ]
@@ -846,6 +1006,7 @@ func _refresh_ui() -> void:
         "" if TranslationServer.get_locale().begins_with("ja") or rival_store_count == 1 else "s",
         _format_integer(int(snapshot["land_value_yen"])),
     ]
+    _refresh_survey_label()
     event_label.text = tr(str(snapshot["last_event"]))
     if paused:
         event_label.text += tr("  [PAUSED]")
@@ -883,7 +1044,12 @@ func _refresh_ui() -> void:
             paused = true
             pause_button.text = tr("Resume")
     store_view.queue_redraw()
+    _refresh_fixture_info()
+    if rival_panel != null:
+        _refresh_rival_panel()
     _play_event_sounds()
+    if phone_ui != null:
+        phone_ui.refresh()
 
 
 func _load_config() -> Dictionary:
@@ -899,8 +1065,9 @@ func _load_config() -> Dictionary:
     if loaded.get("provisional", false) != true:
         push_error("Vertical slice config must explicitly remain provisional")
         return {}
-    # Task #89: every new game starts in the strategy guide's p.48 store
-    # (GuideStartingStore). The automated UI scenarios set the
+    # Task #89/#104: every new game gets the guide town and, once the land
+    # and store are chosen, a furnished small store (GuideStartingStore).
+    # The automated UI scenarios set the
     # PROTOTYPE_STORE_FOR_TESTS_META Engine meta to keep the small
     # prototype store their scripted coordinates were written against.
     if not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META):
@@ -981,11 +1148,17 @@ func _format_integer(value: int) -> String:
 # store used by the tests already fits and stays at scale 1. Taps still map
 # correctly because store_view converts them with to_local().
 func _fit_store_view() -> void:
+    if phone_ui != null:
+        phone_ui.layout_screen()
+        return
     var store: Dictionary = config["store"]
     var tile_pixels: float = store_view.SUBCELL_PIXELS * int(store["subcells_per_tile"])
     var natural := Vector2(int(store["width_tiles"]), int(store["height_tiles"])) * tile_pixels
     var right_edge: float = ($UI/Panel as Control).offset_left - 20.0
     var shortcuts := $UI.get_node_or_null("AndroidShortcuts") as Control
+    if _store_view_left < 0.0:
+        _store_view_left = store_view.position.x
+    store_view.position.x = _store_view_left
     if shortcuts != null:
         store_view.position.x = 20.0
         right_edge = shortcuts.position.x - 10.0
@@ -995,6 +1168,9 @@ func _fit_store_view() -> void:
     # Task #90: the town map uses the same area.
     town_view.position = store_view.position
     town_view.view_size = available
+    # Task #104: a small store is centred in that area instead of hugging
+    # its left edge.
+    store_view.position.x += maxf(0.0, (available.x - natural.x * fit) / 2.0)
 
 
 # Task #95: the 「出店場所を選んで下さい」 bar along the bottom of the town
@@ -1022,6 +1198,12 @@ func _build_site_panel() -> void:
     site_buy_button.custom_minimum_size = Vector2(200, 56)
     site_buy_button.pressed.connect(_on_buy_site_pressed)
     row.add_child(site_buy_button)
+    site_cancel_button = Button.new()
+    site_cancel_button.name = "CancelSiteButton"
+    site_cancel_button.text = tr("Cancel")
+    site_cancel_button.custom_minimum_size = Vector2(120, 56)
+    site_cancel_button.pressed.connect(cancel_new_store)
+    row.add_child(site_cancel_button)
     $UI.add_child(site_panel)
     site_panel.position = Vector2(town_view.position.x, town_view.position.y + town_view.view_size.y - 130.0)
     site_panel.size = Vector2(town_view.view_size.x, 120.0)
@@ -1030,10 +1212,42 @@ func _build_site_panel() -> void:
 func _needs_store_site() -> bool:
     return (
         simulation.store_site != null
-        and not simulation.has_store_site()
+        and (not simulation.has_store_site() or choosing_new_store)
         and not simulation.is_game_over
         and not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META)
     )
+
+
+# Task #123: 新規出店 -- pick the land on the town map, then the store, as
+# for the first store; "やめる" goes back.
+func start_new_store() -> void:
+    if simulation.store_types().is_empty() or simulation.town_is_full() or simulation.is_game_over:
+        return
+    choosing_new_store = true
+    _sync_site_selection()
+    site_info_label.text = tr("Tap the map to pick a 2x2 site for the new store")
+    _refresh_ui()
+
+
+func cancel_new_store() -> void:
+    if not choosing_new_store:
+        return
+    choosing_new_store = false
+    _sync_site_selection()
+    _refresh_ui()
+
+
+# Task #123: look at (and run) store `index`: 本店 is 0.
+func select_store(index: int) -> void:
+    if not simulation.select_store(index):
+        return
+    _rival_id = ""
+    _store_layout_changed()
+    town_view.center_on_store()
+    if town_view.visible and not selecting_site:
+        _on_show_town_map_pressed()
+    layout_edit_label.text = tr("Now running %s") % simulation.store_name
+    _refresh_ui()
 
 
 # Enters or leaves site selection to match the simulation (new game, reset,
@@ -1042,6 +1256,9 @@ func _sync_site_selection() -> void:
     var was_selecting := selecting_site
     selecting_site = _needs_store_site()
     site_panel.visible = selecting_site
+    site_cancel_button.visible = choosing_new_store
+    store_type_panel.visible = false
+    _store_layout_changed()
     town_view.selecting_site = selecting_site
     town_view.show_site_cursor(Vector2i(-1, -1), false)
     _site_origin = Vector2i(-1, -1)
@@ -1062,7 +1279,7 @@ func _sync_site_selection() -> void:
 
 
 func _on_site_tapped(origin: Vector2i) -> void:
-    if not selecting_site:
+    if not selecting_site or store_type_panel.visible:
         return
     _site_origin = origin
     var quote: Dictionary = simulation.store_site_quote(origin)
@@ -1073,6 +1290,17 @@ func _on_site_tapped(origin: Vector2i) -> void:
     site_buy_button.disabled = (
         not bool(quote["buildable"]) or simulation.economy.cash_yen < int(quote["total_yen"])
     )
+
+
+# Task #104: the store just built (or loaded) may be another size than the
+# one drawn so far.
+func _store_layout_changed() -> void:
+    config = simulation.config
+    store_view.bind(config, simulation)
+    store_view.selected_fixture_id = ""
+    _fit_store_view()
+    _populate_sample_layout_option()
+    _refresh_procure_fixture_option()
 
 
 # Like the original's land popup 「空地 ¥20,000,000 🚬○🍺○💊○」 (guide p.10),
@@ -1101,16 +1329,135 @@ func _site_quote_text(quote: Dictionary) -> String:
 func _on_buy_site_pressed() -> void:
     if not selecting_site or _site_origin.x < 0:
         return
-    if not simulation.try_buy_store_site(_site_origin):
+    if simulation.store_types().is_empty():
+        _build_store(simulation.store_type_id)
+        return
+    # Task #104: like the original, the store is picked after the land.
+    _store_type_choice = ""
+    for entry in simulation.store_types():
+        if simulation.store_type_is_selectable(str(entry["id"])):
+            _store_type_choice = str(entry["id"])
+            break
+    store_type_panel.visible = true
+    _refresh_store_type_panel()
+
+
+func _build_store(type_id: String) -> void:
+    if not simulation.try_buy_store_site(_site_origin, type_id):
         site_info_label.text = tr("Cannot buy this land")
+        if store_type_panel.visible:
+            store_type_info_label.text = tr("Not enough money to buy the land and build this store")
         SoundManager.play_sfx(str(config["sound"]["refused_sfx"]))
         return
+    store_type_panel.visible = false
     layout_edit_label.text = tr("Bought the land and opened the store")
+    if choosing_new_store:
+        # The new store is the last one; go and run it.
+        choosing_new_store = false
+        _sync_site_selection()
+        select_store(simulation.store_count() - 1)
+        paused = false
+        pause_button.text = tr("Pause")
+        return
     _sync_site_selection()
     paused = false
     pause_button.text = tr("Pause")
     accumulator = 0.0
     _refresh_ui()
+
+
+# Task #104: 「店舗を選んで下さい」 -- the six stores in 2 rows x 3 columns
+# with the ones that cannot be built yet greyed out, and the chosen one's
+# price (CONFIRMED_VISUAL layout of the PS screen, see
+# guide_store_types.evidence_note). Platform presentation.
+func _build_store_type_panel() -> void:
+    store_type_panel = PanelContainer.new()
+    store_type_panel.name = "StoreTypePanel"
+    store_type_panel.theme = ($UI/Panel as Control).theme
+    store_type_panel.visible = false
+    var box := VBoxContainer.new()
+    store_type_panel.add_child(box)
+    var title := Label.new()
+    title.text = tr("Choose your store")
+    title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+    box.add_child(title)
+    var grid := GridContainer.new()
+    grid.columns = 3
+    box.add_child(grid)
+    var cells: Dictionary = {}
+    for entry in simulation.store_types():
+        var cell: Array = entry["grid_cell"]
+        cells[Vector2i(int(cell[0]), int(cell[1]))] = entry
+    for row in 2:
+        for column in 3:
+            var entry: Dictionary = cells.get(Vector2i(column, row), {})
+            var button := Button.new()
+            button.custom_minimum_size = Vector2(96, 96)
+            button.toggle_mode = true
+            button.expand_icon = true
+            if not entry.is_empty():
+                var type_id := str(entry["id"])
+                button.name = "StoreType_" + type_id
+                button.icon = _menu_icon("store_types", str(entry["icon"]))
+                # Task #126: which way the floor runs (縦長/横長) and its size.
+                button.text = store_type_caption(entry)
+                button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
+                button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
+                button.add_theme_font_size_override("font_size", 14)
+                button.custom_minimum_size = Vector2(132, 112)
+                button.disabled = not simulation.store_type_is_selectable(type_id)
+                if button.disabled:
+                    button.modulate = Color(0.4, 0.4, 0.4)
+                button.pressed.connect(func():
+                    _store_type_choice = type_id
+                    _refresh_store_type_panel())
+                _store_type_buttons[type_id] = button
+            else:
+                button.disabled = true
+            grid.add_child(button)
+    store_type_info_label = Label.new()
+    store_type_info_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    store_type_info_label.custom_minimum_size = Vector2(320, 0)
+    box.add_child(store_type_info_label)
+    var row_box := HBoxContainer.new()
+    box.add_child(row_box)
+    store_type_build_button = Button.new()
+    store_type_build_button.name = "BuildStoreButton"
+    store_type_build_button.text = tr("Build this store")
+    store_type_build_button.pressed.connect(func(): _build_store(_store_type_choice))
+    row_box.add_child(store_type_build_button)
+    var back := Button.new()
+    back.name = "StoreTypeBackButton"
+    back.text = tr("Back")
+    back.pressed.connect(func(): store_type_panel.visible = false)
+    row_box.add_child(back)
+    for button in [store_type_build_button, back]:
+        button.custom_minimum_size = Vector2(0, 56)
+        button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    $UI.add_child(store_type_panel)
+    var panel_size := store_type_panel.get_combined_minimum_size()
+    store_type_panel.size = panel_size
+    store_type_panel.position = town_view.position + (town_view.view_size - panel_size) / 2.0
+
+
+func _refresh_store_type_panel() -> void:
+    for type_id in _store_type_buttons:
+        (_store_type_buttons[type_id] as Button).set_pressed_no_signal(type_id == _store_type_choice)
+    var entry: Dictionary = GuideStartingStoreScript.store_type_entry(config, _store_type_choice)
+    if entry.is_empty():
+        store_type_info_label.text = ""
+        store_type_build_button.disabled = true
+        return
+    var price := int(entry["construction_price_yen"])
+    var land := int(simulation.store_site_quote(_site_origin).get("total_yen", 0))
+    store_type_info_label.text = "%s　¥%s\n%s" % [
+        store_type_caption(entry),
+        _format_integer(price),
+        tr("Land ¥%s + store ¥%s = ¥%s") % [
+            _format_integer(land), _format_integer(price), _format_integer(land + price),
+        ],
+    ]
+    store_type_build_button.disabled = simulation.economy.cash_yen < land + price
 
 
 # Task #96: sounds for what just happened -- each event type in
@@ -1143,6 +1490,79 @@ func _play_event_sounds() -> void:
     _heard_clear = simulation.clear_condition_met
 
 
+# Task #102: the monthly customer survey (アンケート: 買った商品 /
+# 欲しかった商品, guide p.70 screenshot), under the store information.
+var survey_label: Label = null
+
+
+func _refresh_survey_label() -> void:
+    if survey_label == null:
+        survey_label = Label.new()
+        survey_label.name = "SurveyValue"
+        survey_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+        var vbox := $UI/Panel/Margin/Scroll/VBox
+        vbox.add_child(survey_label)
+        vbox.move_child(survey_label, town_label.get_index() + 1)
+    var survey: Dictionary = simulation.last_survey
+    var title := tr("Survey (last month)")
+    if survey.is_empty():
+        survey = {"bought": simulation.survey_bought, "missing": simulation.survey_missing}
+        title = tr("Survey (this month so far)")
+    survey_label.text = "%s\n%s %s\n%s %s" % [
+        title,
+        tr("Bought:"), _survey_top(survey["bought"]),
+        tr("Wanted but not in the store:"), _survey_top(survey["missing"]),
+    ]
+
+
+func _survey_top(counts: Dictionary) -> String:
+    var keys: Array = counts.keys()
+    keys.sort_custom(func(a, b): return int(counts[a]) > int(counts[b]))
+    var parts: Array[String] = []
+    for key in keys.slice(0, 5):
+        parts.append("%s%d" % [tr(str(key)), int(counts[key])])
+    return "、".join(parts) if not parts.is_empty() else tr("none")
+
+
+# Task #103: 営業時間 (business hours), next to the price policy.
+var business_hours_option: OptionButton = null
+
+
+func _build_business_hours_controls() -> void:
+    var presets: Array = simulation.business_hours_presets()
+    if presets.is_empty():
+        return
+    var vbox := $UI/Panel/Margin/Scroll/VBox
+    var title := Label.new()
+    title.text = tr("Business hours")
+    vbox.add_child(title)
+    vbox.move_child(title, set_price_policy_button.get_index() + 1)
+    business_hours_option = OptionButton.new()
+    business_hours_option.name = "BusinessHoursOption"
+    for preset in presets:
+        business_hours_option.add_item(str(preset["label"]))
+    vbox.add_child(business_hours_option)
+    vbox.move_child(business_hours_option, title.get_index() + 1)
+    _select_current_business_hours()
+    business_hours_option.item_selected.connect(func(index: int):
+        var preset_id := str(presets[index]["id"])
+        if simulation.try_set_business_hours(preset_id):
+            layout_edit_label.text = tr("Business hours: %s") % str(presets[index]["label"])
+        _refresh_ui()
+    )
+    if _is_android_preview():
+        business_hours_option.custom_minimum_size.y = 64
+
+
+func _select_current_business_hours() -> void:
+    if business_hours_option == null:
+        return
+    var presets: Array = simulation.business_hours_presets()
+    for index in presets.size():
+        if str(presets[index]["id"]) == simulation.business_hours_id:
+            business_hours_option.select(index)
+
+
 func _build_sound_toggle() -> void:
     sound_toggle_button = Button.new()
     sound_toggle_button.name = "SoundToggleButton"
@@ -1160,6 +1580,208 @@ func _build_sound_toggle() -> void:
 
 func _refresh_sound_toggle() -> void:
     sound_toggle_button.text = tr("Sound: on") if SoundManager.enabled else tr("Sound: off")
+
+
+func _build_fixture_info_panel() -> void:
+    fixture_info_panel = PanelContainer.new()
+    fixture_info_panel.name = "FixtureInfoPanel"
+    fixture_info_panel.theme = ($UI/Panel as Control).theme
+    fixture_info_panel.visible = false
+    var card := VBoxContainer.new()
+    fixture_info_panel.add_child(card)
+    var top_row := HBoxContainer.new()
+    card.add_child(top_row)
+    var row := HBoxContainer.new()
+    row.alignment = BoxContainer.ALIGNMENT_END
+    card.add_child(row)
+    fixture_info_icon = TextureRect.new()
+    fixture_info_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+    fixture_info_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+    fixture_info_icon.custom_minimum_size = Vector2(56, 56)
+    top_row.add_child(fixture_info_icon)
+    fixture_info_label = Label.new()
+    fixture_info_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    fixture_info_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+    fixture_info_label.clip_text = true
+    fixture_info_label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+    top_row.add_child(fixture_info_label)
+    fixture_restock_button = Button.new()
+    fixture_restock_button.name = "FixtureRestockButton"
+    fixture_restock_button.custom_minimum_size = Vector2(170, 52)
+    fixture_restock_button.pressed.connect(_on_restock_pressed)
+    row.add_child(fixture_restock_button)
+    # Task #110: an empty shelf is stocked from here on the phone.
+    fixture_stock_button = Button.new()
+    fixture_stock_button.name = "FixtureStockButton"
+    fixture_stock_button.text = "商品を並べる"
+    fixture_stock_button.custom_minimum_size = Vector2(170, 52)
+    fixture_stock_button.visible = false
+    fixture_stock_button.pressed.connect(func():
+        if phone_ui != null:
+            phone_ui.open_stock_window(store_view.selected_fixture()))
+    row.add_child(fixture_stock_button)
+    var close := Button.new()
+    close.name = "FixtureInfoClose"
+    close.text = tr("Close")
+    close.custom_minimum_size = Vector2(90, 52)
+    close.pressed.connect(_on_deselect_fixture_pressed)
+    row.add_child(close)
+    $UI.add_child(fixture_info_panel)
+
+
+func _build_rival_panel() -> void:
+    rival_panel = PanelContainer.new()
+    rival_panel.name = "RivalPanel"
+    rival_panel.theme = ($UI/Panel as Control).theme
+    rival_panel.visible = false
+    var box := VBoxContainer.new()
+    rival_panel.add_child(box)
+    rival_info_label = Label.new()
+    rival_info_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+    rival_info_label.custom_minimum_size.x = town_view.view_size.x - 40.0
+    box.add_child(rival_info_label)
+    var row := HBoxContainer.new()
+    box.add_child(row)
+    rival_investigate_button = Button.new()
+    rival_investigate_button.name = "RivalInvestigateButton"
+    rival_investigate_button.pressed.connect(_on_investigate_rival_pressed)
+    row.add_child(rival_investigate_button)
+    rival_buyout_button = Button.new()
+    rival_buyout_button.name = "RivalBuyoutButton"
+    rival_buyout_button.pressed.connect(_on_buy_out_rival_pressed)
+    row.add_child(rival_buyout_button)
+    var leave := Button.new()
+    leave.name = "RivalLeaveButton"
+    leave.text = tr("Do nothing")
+    leave.pressed.connect(func(): _show_rival(""))
+    row.add_child(leave)
+    for button in [rival_investigate_button, rival_buyout_button, leave]:
+        button.custom_minimum_size = Vector2(0, 56)
+        button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+    $UI.add_child(rival_panel)
+    rival_panel.position = Vector2(town_view.position.x, town_view.position.y + town_view.view_size.y - 150.0)
+    rival_panel.size = Vector2(town_view.view_size.x, 140.0)
+
+
+func _on_map_tapped(tile: Vector2i) -> void:
+    if selecting_site:
+        return
+    # Task #123: tapping one of the player's stores goes into it.
+    var store_index: int = simulation.store_at_tile(tile)
+    if store_index >= 0:
+        select_store(store_index)
+        return
+    _show_rival(simulation.rival_at(tile))
+
+
+func _show_rival(rival_id: String) -> void:
+    _rival_id = rival_id
+    _refresh_rival_panel()
+
+
+func _refresh_rival_panel() -> void:
+    rival_panel.visible = not _rival_id.is_empty() and town_view.visible and not selecting_site
+    if not rival_panel.visible:
+        return
+    var entry: Dictionary = simulation._rival_guide_entry(_rival_id)
+    var text := str(entry.get("name", _rival_id))
+    if simulation.rival_investigated(_rival_id):
+        var data: Dictionary = entry.get("guide_data", {})
+        text += "　" + tr("Hours %s, popularity %d, security %d, cleaning %d, service %d") % [
+            str(data.get("hours", "")), int(data.get("popularity", 0)), int(data.get("security", 0)),
+            int(data.get("cleaning", 0)), int(data.get("service", 0)),
+        ]
+        # Task #106: what the investigation shows about its losses.
+        var losing: int = simulation.rival_deficit_months(_rival_id)
+        if losing > 0:
+            text += "　" + tr("Losing money for %d months in a row") % losing
+    rival_info_label.text = text
+    rival_investigate_button.text = tr("Investigate (¥%s)") % _format_integer(simulation.rival_investigation_cost_yen())
+    rival_investigate_button.disabled = (
+        simulation.rival_investigated(_rival_id)
+        or simulation.economy.cash_yen < simulation.rival_investigation_cost_yen()
+    )
+    if simulation.rival_is_buyable(_rival_id):
+        var price: int = simulation.rival_buyout_price_yen(_rival_id)
+        rival_buyout_button.text = tr("Buy out (¥%s)") % _format_integer(price)
+        rival_buyout_button.disabled = simulation.economy.cash_yen < price
+    else:
+        rival_buyout_button.text = tr("A main store cannot be bought")
+        rival_buyout_button.disabled = true
+
+
+func _on_investigate_rival_pressed() -> void:
+    if simulation.try_investigate_rival(_rival_id):
+        layout_edit_label.text = tr("Investigated the rival store")
+    _refresh_ui()
+
+
+func _on_buy_out_rival_pressed() -> void:
+    if simulation.try_buy_out_rival(_rival_id):
+        layout_edit_label.text = tr("Bought out the rival store: now %d stores") % simulation.player_store_count
+        _show_rival("")
+        town_view.queue_redraw()
+    else:
+        SoundManager.play_sfx(str(config["sound"]["refused_sfx"]))
+    _refresh_ui()
+
+
+# Name, product and stock of the selected fixture. The panel sits along
+# the bottom of the store, or along the top when the fixture is in the
+# lower half, so it never covers what it describes.
+func _refresh_fixture_info() -> void:
+    var fixture_id: String = store_view.selected_fixture()
+    var show: bool = (
+        not fixture_id.is_empty()
+        and store_view.visible
+        and not selecting_site
+        and simulation.layout.fixtures_by_id.has(fixture_id)
+    )
+    fixture_info_panel.visible = show
+    if not show:
+        return
+    var fixture: Dictionary = simulation.layout.fixtures_by_id[fixture_id]
+    var product = store_view._product_on_fixture(fixture_id)
+    var name_key := str(fixture.get("catalog_id", ""))
+    if name_key.is_empty():
+        name_key = "fixture_kind_" + str(fixture["kind"])
+    fixture_info_icon.texture = _menu_icon("fixtures", str(fixture.get("catalog_id", "")))
+    # Task #117: a shelf that already holds something can be given another
+    # product from the same button.
+    fixture_stock_button.visible = phone_ui != null and str(fixture["kind"]) == "shelf" and not store_view.editing
+    fixture_stock_button.text = "商品を並べる" if product == null else "商品を変える"
+    if product == null:
+        fixture_info_label.text = tr(name_key)
+        fixture_restock_button.visible = false
+    else:
+        fixture_info_icon.texture = _menu_icon("products", product.catalog_id)
+        fixture_info_label.text = tr("%s: %s, stock %d / %d") % [
+            tr(name_key), _product_label(product.product_id), product.stock_units, product.initial_stock_units,
+        ]
+        var missing: int = product.initial_stock_units - product.stock_units
+        fixture_restock_button.visible = true
+        fixture_restock_button.disabled = missing <= 0
+        fixture_restock_button.text = tr("Restock (¥%s)") % _format_integer(missing * product.restock_unit_cost_yen) if missing > 0 else tr("Full")
+    var store_size: Vector2 = Vector2(
+        simulation.layout.width_subcells, simulation.layout.height_subcells
+    ) * store_view.SUBCELL_PIXELS * store_view.scale
+    var height: float = maxf(72.0, fixture_info_panel.get_combined_minimum_size().y)
+    var origin_y := float(_vec2i_of(fixture["origin_subcell"]).y) / float(simulation.layout.height_subcells)
+    var y: float = store_view.position.y + store_size.y - height if origin_y < 0.5 else store_view.position.y
+    if phone_ui != null:
+        # Task #110: a card over the store, wide enough for its buttons.
+        var width: float = maxf(store_size.x, 560.0)
+        fixture_info_panel.position = Vector2(
+            clampf(store_view.position.x + (store_size.x - width) / 2.0, 8.0, 1020.0 - width - 8.0), y
+        )
+        fixture_info_panel.size = Vector2(width, height)
+        return
+    fixture_info_panel.position = Vector2(store_view.position.x, y)
+    fixture_info_panel.size = Vector2(store_size.x, height)
+
+
+func _vec2i_of(value: Array) -> Vector2i:
+    return Vector2i(int(value[0]), int(value[1]))
 
 
 # Task #92: player-facing names for internal ids, so no message shows a raw
@@ -1205,78 +1827,10 @@ func _is_android_preview() -> bool:
 func _prepare_android_ui() -> void:
     if not _is_android_preview():
         return
-    # Platform presentation only, not recovered original gameplay data.
-    var panel: PanelContainer = $UI/Panel
-    var mobile_theme := panel.theme.duplicate() as Theme
-    mobile_theme.default_font_size = 22
-    for type_name in ["Button", "OptionButton", "PopupMenu"]:
-        mobile_theme.set_font_size("font_size", type_name, 22)
-    panel.theme = mobile_theme
-    for node in panel.find_children("*", "BaseButton", true, false):
-        node.custom_minimum_size.y = 64
-        if node is Button:
-            node.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-        if node is OptionButton:
-            node.fit_to_longest_item = false
-    for node in panel.find_children("*", "Label", true, false):
-        node.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-    # Task #89: the side panel is narrower next to the 12x8 store, so the two
-    # three-button rows share their row width instead of 145 px each, and
-    # the column itself drops its 420 px desktop minimum.
-    ($UI/Panel/Margin/Scroll/VBox as Control).custom_minimum_size.x = 0
-    for row_name in ["Buttons", "MenuButtons"]:
-        for node in $UI/Panel/Margin/Scroll/VBox.get_node(row_name).get_children():
-            node.custom_minimum_size.x = 0
-            node.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-    var shortcuts := VBoxContainer.new()
-    shortcuts.name = "AndroidShortcuts"
-    # Task #94: the 12x8 store is drawn at full size (72px tiles, so the
-    # shelf/product sprites are legible) across the left of the screen, the
-    # shortcut column sits at the right edge, and the panel is a drawer that
-    # slides over the store when a shortcut is tapped (and closes with 閉じる).
-    # Platform presentation only, like the rest of this function.
-    shortcuts.position = Vector2(1090, 130)
-    shortcuts.size.x = 180
-    _android_panel = panel
-    _set_android_panel_open(false)
-    shortcuts.theme = mobile_theme
-    shortcuts.add_theme_constant_override("separation", 12)
-    $UI.add_child(shortcuts)
-    var targets := {"店舗情報": "Heading", "内装": "LayoutEditTitle", "仕入れ・経営": "EconomyTitle", "店員": "StaffHiringTitle"}
-    for caption in targets:
-        var button := Button.new()
-        button.text = caption
-        button.custom_minimum_size = Vector2(180, 64)
-        shortcuts.add_child(button)
-        var target: Control = $UI/Panel/Margin/Scroll/VBox.get_node(targets[caption])
-        button.pressed.connect(func():
-            _set_android_panel_open(true)
-            $UI/Panel/Margin/Scroll.scroll_vertical = int(target.position.y)
-        )
-    var quick_save := Button.new()
-    quick_save.text = "セーブ"
-    quick_save.custom_minimum_size = Vector2(180, 64)
-    shortcuts.add_child(quick_save)
-    quick_save.pressed.connect(func():
-        _on_save_pressed()
-        quick_save.text = "保存完了" if layout_edit_label.text == tr("Game saved") else "保存失敗"
-    )
-    # Task #90: the town map, one tap away like the other sections.
-    var town_toggle := Button.new()
-    town_toggle.name = "TownToggle"
-    town_toggle.text = "町／店内"
-    town_toggle.custom_minimum_size = Vector2(180, 64)
-    shortcuts.add_child(town_toggle)
-    town_toggle.pressed.connect(func():
-        _set_android_panel_open(false)
-        show_town_map_button.pressed.emit()
-    )
-    var close_panel := Button.new()
-    close_panel.name = "ClosePanel"
-    close_panel.text = "閉じる"
-    close_panel.custom_minimum_size = Vector2(180, 64)
-    shortcuts.add_child(close_panel)
-    close_panel.pressed.connect(func(): _set_android_panel_open(false))
+    # Task #110: the phone screen is phone_ui.gd, built in _ready(); the
+    # desktop side panel stays in the scene (its controls are what the
+    # phone windows call into) but is never shown on a phone.
+    ($UI/Panel as Control).visible = false
 
 
 # Task #94: the phone panel is parked off-screen rather than hidden, so its

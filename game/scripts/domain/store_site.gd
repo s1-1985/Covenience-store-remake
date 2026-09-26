@@ -24,7 +24,8 @@ var _building_at: Dictionary = {}
 
 func _init(guide_town_map: Dictionary) -> void:
     rows = guide_town_map["tile_rows"]
-    buildings = guide_town_map["buildings"]
+    # A copy: buildings induced during a game (task #111) are added to it.
+    buildings = (guide_town_map["buildings"] as Array).duplicate(true)
     catalog = guide_town_map["building_catalog"]
     rules = guide_town_map["store_site"]
     width = int(guide_town_map["width_tiles"])
@@ -119,6 +120,36 @@ func catchment_building_tiles(origin: Vector2i, removed: Array = []) -> int:
     return count
 
 
+# Task #98: is a map square inside a store's catchment (the same square
+# area catchment_building_tiles() counts)?
+func in_catchment(store_origin: Vector2i, tile: Vector2i) -> bool:
+    var reach := int(rules["catchment_tiles"])
+    return (
+        tile.x >= store_origin.x - reach and tile.x < store_origin.x + footprint.x + reach
+        and tile.y >= store_origin.y - reach and tile.y < store_origin.y + footprint.y + reach
+    )
+
+
+# Task #98: building squares in the site's catchment, each counted as 1/n
+# when n stores (this site included) have it in their catchment -- the
+# customers of a building near two stores are shared between them.
+# REMAKE_BALANCED_DEFAULT (tools/guide_store_site.py shared_catchment()).
+func shared_catchment(origin: Vector2i, others: Array, removed: Array = []) -> float:
+    var reach := int(rules["catchment_tiles"])
+    var total := 0.0
+    for y in range(origin.y - reach, origin.y + footprint.y + reach):
+        for x in range(origin.x - reach, origin.x + footprint.x + reach):
+            var tile := Vector2i(x, y)
+            if not _building_at.has(tile) or removed.has(_building_at[tile]):
+                continue
+            var stores := 1
+            for other in others:
+                if in_catchment(other, tile):
+                    stores += 1
+            total += 1.0 / stores
+    return total
+
+
 # REMAKE_BALANCED_DEFAULT price shape (see the file header), before any
 # growth over time.
 func start_land_price_yen(origin: Vector2i) -> int:
@@ -130,12 +161,36 @@ func start_land_price_yen(origin: Vector2i) -> int:
     return int(floor((price + step / 2.0) / step) * step)
 
 
+# Task #102: each building in the site's catchment and the share of its
+# squares that belong to this store (1/n per square when n stores reach it),
+# as {building index: weight}.
+func catchment_building_weights(origin: Vector2i, others: Array, removed: Array = []) -> Dictionary:
+    var reach := int(rules["catchment_tiles"])
+    var weights := {}
+    for y in range(origin.y - reach, origin.y + footprint.y + reach):
+        for x in range(origin.x - reach, origin.x + footprint.x + reach):
+            var tile := Vector2i(x, y)
+            if not _building_at.has(tile) or removed.has(_building_at[tile]):
+                continue
+            var stores := 1
+            for other in others:
+                if in_catchment(other, tile):
+                    stores += 1
+            var index: int = _building_at[tile]
+            weights[index] = float(weights.get(index, 0.0)) + 1.0 / stores
+    return weights
+
+
+func building_profile(index: int) -> Dictionary:
+    return catalog[str(buildings[index]["sprite"])]
+
+
 # Nearby population a store on this site draws: the scenario's
 # nearby_population scaled by this site's catchment against the mean site
 # (REMAKE_BALANCED_DEFAULT, see the file header).
-func nearby_population(origin: Vector2i, base_population: int, removed: Array = []) -> int:
+func nearby_population(origin: Vector2i, base_population: int, removed: Array = [], others: Array = []) -> int:
     var mean := float(rules["mean_catchment_building_tiles"])
-    return int(round(float(base_population) * float(catchment_building_tiles(origin, removed)) / mean))
+    return int(round(float(base_population) * shared_catchment(origin, others, removed) / mean))
 
 
 # Full quote for buying the site now. `growth` scales the land price for
@@ -175,3 +230,143 @@ func quote(origin: Vector2i, growth: float, other_stores: Array, removed: Array 
     result["bought_buildings"] = bought
     result["label"] = "・".join(names)
     return result
+
+
+# Task #106: how hard the player's stores press a rival this month --
+# the share of the rival's catchment building squares that are also in a
+# player store's catchment, times the price cut against the cut that has
+# full effect. REMAKE_BALANCED_DEFAULT shape (guide_town_map.rival_ai,
+# tools/guide_store_site.py rival_pressure()).
+func rival_pressure(
+    rival_origin: Vector2i, player_origins: Array, price_change_pct: int,
+    full_effect_cut_pct: int, removed: Array = []
+) -> float:
+    var reach := int(rules["catchment_tiles"])
+    var mine := 0
+    var shared := 0
+    for y in range(rival_origin.y - reach, rival_origin.y + footprint.y + reach):
+        for x in range(rival_origin.x - reach, rival_origin.x + footprint.x + reach):
+            var tile := Vector2i(x, y)
+            if not _building_at.has(tile) or removed.has(_building_at[tile]):
+                continue
+            mine += 1
+            for origin in player_origins:
+                if in_catchment(origin, tile):
+                    shared += 1
+                    break
+    if mine == 0:
+        return 0.0
+    var cut := minf(1.0, float(maxi(0, -price_change_pct)) / float(full_effect_cut_pct))
+    return float(shared) / float(mine) * cut
+
+
+# Task #106: the vacant 2x2 site a rival opens a store on -- the one whose
+# customers (shared with the other stores) are the most, at least
+# min_store_distance_tiles from every store and from the `avoid` sites
+# (where it just withdrew from), top-left-most on a tie; (-1, -1) when
+# there is none. Same rule as tools/guide_store_site.py
+# best_open_site() / place_rivals() (REMAKE_BALANCED_DEFAULT).
+func best_open_site(stores: Array, removed: Array = [], avoid: Array = []) -> Vector2i:
+    var min_distance := int(rules["min_store_distance_tiles"])
+    var best := Vector2i(-1, -1)
+    var best_score := -1.0
+    for y in height:
+        for x in width:
+            var origin := Vector2i(x, y)
+            if not is_buildable_ground(origin) or not buildings_on(origin, removed).is_empty():
+                continue
+            var too_close := false
+            for other in stores + avoid:
+                var other_origin: Vector2i = other
+                if maxi(absi(x - other_origin.x), absi(y - other_origin.y)) < min_distance:
+                    too_close = true
+                    break
+            if too_close:
+                continue
+            var score := shared_catchment(origin, stores, removed)
+            if score > best_score + 1e-9:
+                best_score = score
+                best = origin
+    return best
+
+
+# Task #111: a building put up during the game (誘致). Returns its index;
+# the squares it covers now belong to it (the buildings that stood there
+# are the caller's to mark removed, see buildings_under()).
+func add_building(sprite: String, tile: Vector2i, size: Vector2i) -> int:
+    var index := buildings.size()
+    buildings.append({"sprite": sprite, "tile": [tile.x, tile.y], "size": [size.x, size.y]})
+    for y in range(tile.y, tile.y + size.y):
+        for x in range(tile.x, tile.x + size.x):
+            _building_at[Vector2i(x, y)] = index
+    return index
+
+
+# Indices of the buildings (not already removed) with a square inside the
+# rectangle.
+func buildings_under(tile: Vector2i, size: Vector2i, removed: Array = []) -> Array[int]:
+    var found: Array[int] = []
+    for y in range(tile.y, tile.y + size.y):
+        for x in range(tile.x, tile.x + size.x):
+            var at := Vector2i(x, y)
+            if _building_at.has(at) and not removed.has(_building_at[at]) and not found.has(_building_at[at]):
+                found.append(_building_at[at])
+    found.sort()
+    return found
+
+
+func rect_is_buildable(tile: Vector2i, size: Vector2i) -> bool:
+    var unbuildable: Array = rules["unbuildable_tiles"]
+    for y in range(tile.y, tile.y + size.y):
+        for x in range(tile.x, tile.x + size.x):
+            var kind := _kind(Vector2i(x, y))
+            if kind == "" or unbuildable.has(kind):
+                return false
+    return true
+
+
+# Task #114: where the town puts one of its own buildings (a 役所 or 駅):
+# the buildable spot of `size` clear of every store that takes in the
+# fewest buildings, then nearest the middle of the map (top-left first on
+# a tie); beside the railway for a 駅. REMAKE_BALANCED_DEFAULT, the same as
+# tools/guide_store_site.py best_town_building_site().
+func best_town_building_site(size: Vector2i, stores: Array, removed: Array, near_railway: bool) -> Vector2i:
+    var middle := Vector2((width - size.x) / 2.0, (height - size.y) / 2.0)
+    var best := Vector2i(-1, -1)
+    var best_key: Array = []
+    for y in range(height - size.y + 1):
+        for x in range(width - size.x + 1):
+            var origin := Vector2i(x, y)
+            if not rect_is_buildable(origin, size):
+                continue
+            var rect := Rect2i(origin, size)
+            var clear := true
+            for store in stores:
+                if rect.intersects(Rect2i(store, Vector2i(2, 2))):
+                    clear = false
+                    break
+            if not clear:
+                continue
+            if near_railway and not _beside_railway(origin, size):
+                continue
+            var taken := buildings_under(origin, size, removed).size()
+            var key: Array = [taken, (x - middle.x) * (x - middle.x) + (y - middle.y) * (y - middle.y), y, x]
+            if best_key.is_empty() or _key_less(key, best_key):
+                best_key = key
+                best = origin
+    return best
+
+
+func _beside_railway(origin: Vector2i, size: Vector2i) -> bool:
+    for y in range(origin.y, origin.y + size.y):
+        for x in range(origin.x, origin.x + size.x):
+            if _kind(Vector2i(x, y - 1)) == "T" or _kind(Vector2i(x, y + 1)) == "T":
+                return true
+    return false
+
+
+func _key_less(a: Array, b: Array) -> bool:
+    for i in a.size():
+        if a[i] != b[i]:
+            return a[i] < b[i]
+    return false

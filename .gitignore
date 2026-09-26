@@ -4,11 +4,19 @@ game/.godot/
 game/*/.godot/
 *.translation
 *.import
+# Task #111: the town sprites' import settings are source -- the 誘致 and
+# town-growth sprites are imported lossy to keep the APK under 30 MiB.
+!game/assets/town/*.import
+# Task #115: the staff and customer sprites are imported lossy for the same
+# reason (they were 4.4 MiB of the APK's textures).
+!game/assets/staff/*.import
+!game/assets/customers/*.import
 
 # Local export build output (APKs, AABs, etc.) -- never a source artifact,
 # and can be multiple hundred MB; rebuild via `godot --export-*` instead of
 # committing binaries.
 game/build/
+build/
 
 # Python
 __pycache__/

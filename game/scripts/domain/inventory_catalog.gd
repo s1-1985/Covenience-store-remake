@@ -43,6 +43,24 @@ func add_product(product_config: Dictionary) -> bool:
     return true
 
 
+# Task #117: takes a product off its shelf for good (the shelf was sold, or
+# is being given another product). Returns false when there is no such
+# product.
+func remove_product(product_id: String) -> bool:
+    if not products.has(product_id):
+        return false
+    products.erase(product_id)
+    product_order.erase(product_id)
+    return true
+
+
+func product_on_fixture(fixture_id: String) -> String:
+    for product_id in product_order:
+        if products[product_id].fixture_id == fixture_id:
+            return product_id
+    return ""
+
+
 func try_take_one(product_id: String) -> Dictionary:
     var product = get_product(product_id)
     if not product.try_take_one():

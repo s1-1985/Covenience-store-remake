@@ -276,6 +276,12 @@ msgstr "お客さんの退店後に売却できる"
 msgid "Cannot sell that fixture: it's the checkout, holds stock, or has no catalog price"
 msgstr "レジ・在庫のある棚・価格不明の設備は売却できない"
 
+msgid "Cannot sell that fixture: it's the checkout or has no catalog price"
+msgstr "レジと価格不明の設備は売却できない"
+
+msgid "Sold %s (goods returned: ¥%s)"
+msgstr "%sを売却した（商品の返品 ¥%s）"
+
 msgid "Deselected"
 msgstr "選択を解除した"
 
@@ -833,3 +839,204 @@ msgstr "音：オン（押すと消音）"
 
 msgid "Sound: off"
 msgstr "音：オフ（押すと鳴らす）"
+
+msgid "Select a shelf that is not full to restock it"
+msgstr "補充する棚を選んで下さい（満杯の棚は補充できません）"
+
+msgid "Cannot restock now"
+msgstr "今は補充できません"
+
+msgid "Close"
+msgstr "閉じる"
+
+msgid "%s: %s, stock %d / %d"
+msgstr "%s：%s　在庫 %d／%d"
+
+msgid "Restock (¥%s)"
+msgstr "補充（¥%s）"
+
+msgid "Full"
+msgstr "満杯"
+
+msgid "staff cleaned"
+msgstr "店員が掃除した"
+
+msgid "to_clean"
+msgstr "掃除に向かっている"
+
+msgid "staff exhausted"
+msgstr "店員が疲れて休憩に入った"
+
+msgid "Do nothing"
+msgstr "何もしない"
+
+msgid "Hours %s, popularity %d, security %d, cleaning %d, service %d"
+msgstr "営業 %s　人気%d　警備%d　清掃%d　サービス%d"
+
+msgid "Investigate (¥%s)"
+msgstr "調査する（¥%s）"
+
+msgid "Buy out (¥%s)"
+msgstr "買収する（¥%s）"
+
+msgid "A main store cannot be bought"
+msgstr "本店は買収できません"
+
+msgid "Investigated the rival store"
+msgstr "ライバル店を調査した"
+
+msgid "Bought out the rival store: now %d stores"
+msgstr "ライバル店を買収した（%d店舗）"
+
+msgid "rival investigated"
+msgstr "ライバル店を調査した"
+
+msgid "rival bought out"
+msgstr "ライバル店を買収した"
+
+msgid "Survey (last month)"
+msgstr "アンケート（先月）"
+
+msgid "Survey (this month so far)"
+msgstr "アンケート（今月）"
+
+msgid "Bought:"
+msgstr "買った商品："
+
+msgid "Wanted but not in the store:"
+msgstr "欲しかった商品："
+
+msgid "none"
+msgstr "なし"
+
+msgid "Closed"
+msgstr "閉店中"
+
+msgid "Business hours"
+msgstr "営業時間"
+
+msgid "Business hours: %s"
+msgstr "営業時間：%s"
+
+msgid "business hours changed"
+msgstr "営業時間を変えた"
+
+msgid "Choose your store"
+msgstr "店舗を選んで下さい"
+
+msgid "Build this store"
+msgstr "この店舗を建てる"
+
+msgid "Back"
+msgstr "戻る"
+
+msgid "store_tier_small"
+msgstr "小型店"
+
+msgid "store_tier_medium"
+msgstr "中型店"
+
+msgid "store_tier_large"
+msgstr "大型店"
+
+msgid "Land ¥%s + store ¥%s = ¥%s"
+msgstr "土地 ¥%s + 店舗 ¥%s = ¥%s"
+
+msgid "Not enough money to buy the land and build this store"
+msgstr "土地と店舗を買うお金が足りません"
+
+msgid "store built"
+msgstr "店舗を建てた"
+
+msgid "Losing money for %d months in a row"
+msgstr "%dか月連続の赤字"
+
+msgid "rival withdrew"
+msgstr "ライバル店が撤退した"
+
+msgid "rival opened"
+msgstr "ライバル店が新しく出店した"
+
+msgid "The town already has 10 stores, rivals included"
+msgstr "この町にはライバル店を含めてすでに10店舗あります"
+
+msgid "inducement started"
+msgstr "誘致を始めた"
+
+msgid "facility built"
+msgstr "誘致した施設が完成した"
+
+msgid "town building built"
+msgstr "町に新しい建物が建った"
+
+msgid "Cancel"
+msgstr "やめる"
+
+msgid "Tap the map to pick a 2x2 site for the new store"
+msgstr "新しい店の土地（2×2）を地図でタップ"
+
+msgid "Now running %s"
+msgstr "%sを表示中"
+
+msgid "store selected"
+msgstr "店を切り替えた"
+
+msgid "store opened"
+msgstr "新しい店を開いた"
+
+msgid "checkout handover"
+msgstr "レジ係が交代した"
+
+msgid "customer add on"
+msgstr "お客さんがついで買いをした"
+
+msgid "product skipped"
+msgstr "お客さんが商品を棚に戻した"
+
+msgid "product returned"
+msgstr "商品を返品した"
+
+msgid "Set the fixture down from storage"
+msgstr "倉庫の設備を置いた"
+
+msgid "That would cut off the register or the exit"
+msgstr "そこだとレジか出口へ行けなくなります"
+
+msgid "That would cut off the %s shelf"
+msgstr "そこだと%sの棚へ行けなくなります（赤い枠の棚）"
+
+msgid "Someone is standing in the way"
+msgstr "人がいるので置けません"
+
+msgid "A wall or another fixture is in the way"
+msgstr "壁か他の設備に重なるので置けません"
+
+msgid "Put %s into storage"
+msgstr "%sを倉庫にしまった"
+
+msgid "The register and the break room stay in place"
+msgstr "レジと休憩室はしまえません"
+
+msgid "Not enough money to renovate"
+msgstr "改装する資金が足りません"
+
+msgid "Cannot renovate into this store"
+msgstr "この店舗には改装できません"
+
+msgid "Renovated the store (%d fixtures put in storage)"
+msgstr "店舗を改装しました（倉庫に入れた設備 %d 個）"
+
+msgid "tall"
+msgstr "縦長"
+
+msgid "wide"
+msgstr "横長"
+
+msgid "store renovated"
+msgstr "店舗を改装"
+
+msgid "fixture stored"
+msgstr "設備を倉庫へ"
+
+msgid "fixture unstored"
+msgstr "倉庫から設備を配置"

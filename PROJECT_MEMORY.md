@@ -2014,6 +2014,186 @@ The correct build was 30.01 MiB, over the 30 MiB delivery limit. Explicit small 
 (game/assets/app_icon/, nearest-neighbour upscales of the register menu icon; platform presentation only)
 replace Godot's auto-scaled ~150 KB ones. That brings the APK to 29.50 MiB.
 
+**Task #97 (2026-09-25, decision 0168)**: the user reported, after playing 0.1.6: staff never move; customers move
+choppily; the shelf picture never changes; a selected fixture shows nothing and cannot be refilled.
+Causes found by running the real game:
+- staff only restocked at stock 0 (shelves hold 40-120) and had no cleaning task;
+- people jumped one subcell per 0.25 s tick on one walk frame;
+- shelf pictures changed only at 66%/33% of stock;
+- manual restock required stock <= 0 and an empty store.
+Fixes:
+- staff refill a shelf at <= 8/9 full and clean the squares customers walked on (guide p.26:
+  clean -> cleaning + security growth);
+- movers slide between squares and alternate walk frames A/B;
+- shelves draw ceil(stock share x 9) items per tile;
+- tapping a fixture shows 「小型常温棚：パン　在庫 38／40　[補充(¥300)] [閉じる]」, and restock works whenever the
+  shelf is not full, fills to full, and is allowed with customers in the store (owner testimony
+  「中身が減っていると」).
+Thresholds, dirt and drawing are REMAKE.
+
+**Task #98 (2026-09-25, decision 0169)**: rival stores. The beginner map starts with the rival 本店 and 2号店
+(quick reference guide DATA block, CONFIRMED_OFFICIAL, with their figures), drawn as the red 本/02 marks. Their
+positions are not recorded; tools/guide_store_site.py place_rivals() puts each, in turn, on the vacant site with the
+most customers left to it, 5+ squares apart (REMAKE): (8,10) and (27,9). A building square in several stores'
+16x16 catchments is shared equally between them; this sets the player's nearby population, and the flat per-rival
+dilution is not applied on top. Not done: rival management AI, buyouts, rival permits.
+
+**Task #99 (2026-09-25, decision 0170)**: staff stamina (体力).
+- CONFIRMED_COMMUNITY (staff wiki): work uses it up; at 0 the staff member rests in the break room until full;
+  agility raises the chance of +2 instead of +1 recovery (about 90% at 100).
+- The maximum is each candidate's CONFIRMED_OFFICIAL 体力.
+- REMAKE: 1 per finished checkout / refill / cleaned spot; one recovery roll per game minute, +2 with chance
+  0.9 x agility / 100.
+- An exhausted cashier leaves the register unmanned while resting.
+- A small gauge is drawn under each staff member. Real game only (staff_work.stamina_enabled); not saved.
+
+**Task #100 (2026-09-25, decision 0171)**: permits, promotions, the price policy and chain expansion no longer wait for
+every customer to leave; the store is almost never empty while open, so they had been effectively unusable. Fixture
+edits, procurement and hiring still wait.
+
+**Task #101 (2026-09-25, decision 0172)**: rival investigation and buyout. Tapping a rival on the town map opens
+「調査する(¥600,000) / 買収する / 何もしない」.
+- CONFIRMED_OFFICIAL: the menu, the take-over of store, land and staff, and the 2号店's 46,721,490 start price.
+- CONFIRMED_COMMUNITY: 本店 cannot be bought.
+- PROVISIONAL: the fee (600,000 vs 500,000).
+- REMAKE: the price grows with the land rate; a bought branch counts as a player store (blue 02 mark) but its own
+  sales are not simulated.
+Save schema 7.
+
+**Task #102 (2026-09-25, decision 0173)**: customers come from the buildings around the store (weight = the building's
+squares in the catchment, shared with rivals) and want up to 3 of that building's DATA4 主なほしい品物.
+- Daytime-only buildings send nobody 0:00-6:59.
+- A wanted category the store does not have in stock goes into the monthly survey (アンケート 買った商品/欲しかった商品,
+  guide p.70), which is shown under the town information.
+- One simulated day at (13,21): tobacco 15, alcohol 9 wanted but missing.
+- Real game only; survey not saved.
+
+**Task #103 (2026-09-25, decision 0174)**: business hours.
+- The guide's 5 fixed presets + 24h + 臨時休業 are selectable in the panel (CONFIRMED_OFFICIAL, PDF3 p.2).
+- The real game starts at 00:00 (screenshots) on AM7:00~PM11:00 (guide p.23).
+- Customers arrive only while open; wages and upkeep follow the open minutes, so 臨時休業 costs none.
+- 「閉店中」 is shown by the clock. Save schema 8.
+
+**Task #104 (2026-09-25, decision 0175)**: the store is chosen after the land, and a new game starts in a small store.
+- 「店舗を選んで下さい」 shows the 6 stores in 2 rows × 3 columns. Only the two small ones can be built at the start;
+  the other four are greyed out (CONFIRMED_VISUAL).
+- Construction costs 6/12/18 million yen and is paid on top of the land (CONFIRMED_OFFICIAL).
+- The furnished 5×8 and 8×5 opening layouts are REMAKE_BALANCED_DEFAULT: 14 shelves and the category mix are taken
+  by analogy from the guide's p.48 store (`tools/build_guide_store_types.py`, block `guide_store_types`).
+- Fix: the month-end ×8 no longer multiplies one-off purchases (`CAPITAL_EXPENSE_TYPES`). Before this, the land
+  purchase was multiplied by 8, which bankrupted every new game at its first month end since task #95.
+- Save schema 9.
+
+**Task #105 (2026-09-25, decision 0176)**: nobody is inside the store at the 00:00 start.
+- The first customer at start, load or rebuild is admitted only while the store is open (`_start_opening_customer`).
+- This resolves the known point in decision 0174.
+
+**Task #106 (2026-09-26, decision 0177)**: rivals lose money, withdraw and reopen elsewhere.
+- Evidence: CONFIRMED_OFFICIAL that a 15-20% cut nearby causes several losing months and then withdrawal, and that
+  six months (半年) of losses make a rival withdraw; also the 10-store map limit. CONFIRMED_COMMUNITY that a branch
+  reopens elsewhere. PROVISIONAL that the 本店 holds on while a branch remains.
+- REMAKE_BALANCED_DEFAULT pressure: overlap share × min(1, cut/20%); a month is a loss at pressure 0.5 or more.
+- A withdrawn branch reopens at the next month end on the best other site.
+- The rival panel shows the losing months once the rival has been investigated.
+
+**Task #107 (2026-09-26, decision 0178)**: saves now keep each staff member's grown skills, 体力 and exhaustion,
+and this month's and last month's survey. A load used to reset them to their starting values.
+
+**Task #108 (2026-09-26, decision 0179)**: at most 10 stores in town, rivals included (CONFIRMED_OFFICIAL, quick
+reference 中級). Chain expansion and rival reopening both stop at that limit, so with two rivals left the player
+can have 8 stores.
+
+**Task #109 (2026-09-26, decision 0180)**: in the real game the layout can be edited, products stocked and staff
+hired while customers are inside. Before this, these actions waited for an empty store, which never happens while
+open.
+- Everyone re-routes after a layout change (`_reroute_after_layout_change`). An edit is refused only when someone
+  would be stranded.
+- The trigger is REMAKE_BALANCED_DEFAULT. The inference that 内装 can be opened while open comes from the wiki's dirt
+  trick.
+
+**Task #110 (2026-09-26, decision 0181)**: the phone screen was rebuilt as `game/scripts/phone_ui.gd`.
+- Taken from the original:
+  - the store or town stays on screen with windows over it
+  - a top band and a bottom status bar with permit marks
+  - the green backdrop
+  - the command names 内装/店員/営業方針/販促/調査
+  - the 宣伝 picture row
+- Added for touch screens:
+  - a command column on the right
+  - pause and ×1/×2/×4 speed buttons
+  - picture grids
+  - shelf and customer cards (with つまみだす)
+  - event notices
+  - layout edits only inside 内装
+- The title screen uses the same look.
+
+**Task #111 (2026-09-26, decision 0182)**: 販促 → 誘致.
+- CONFIRMED_OFFICIAL facility table (18 facilities, 援助額, 1ヶ月+0〜3日), one facility at a time, and a facility takes in
+  the buildings under it.
+- セキュリティ: 交番 +10 per square in the store's 16x16 area (at most 40), 消防署 +5 (at most 30).
+- CONFIRMED_VISUAL two-step payment. The place price is REMAKE_BALANCED_DEFAULT: 1/10 of the land price, fitted to the
+  video quotes.
+- Finished facilities become town buildings with DATA4 customers. Save schema 9.
+- Phone: 販促 window → pick a facility → tap its place on the town map → 誘致する.
+
+**Task #112 (2026-09-26, decision 0183)**: tapping a building on the town map shows its name, its DATA4 wanted items and
+hours, and whether it is inside the store's area. The 買い物人口 is shown only where the guide gives it.
+
+**Task #113 (2026-09-26, decision 0184)**: 調査 shows a 収支グラフ (the last 12 months' sales and 収支).
+- Bug fix: two cleaners waited for each other for good, and the shelves emptied within two months.
+- A cleaner now gives a square up when it is occupied, or after 6 ticks blocked (REMAKE_BALANCED_DEFAULT).
+
+**Task #114 (2026-09-26, decision 0185)**: the town grows and the beginner map is cleared by 都庁を誘致する.
+- The town starts with 2,179 people (CONFIRMED_OFFICIAL).
+- It grows 2.34% a month. This is an analogy: the rate that reaches 20,000 in the guide's 8 years.
+- At 5,000 people the 市役所 and 駅 are built, at 8,000 the 区役所, and at 20,000 the 都庁, which clears the map
+  (CONFIRMED_OFFICIAL thresholds).
+- The store's customers grow with the town (REMAKE_BALANCED_DEFAULT).
+- The month-end notice shows 町人口 and its change.
+- Ordinary houses and shops do not appear on the map yet.
+
+**Task #115 (2026-09-26, decision 0186)**: the APK is shrunk from 29.86 MiB to 26.29 MiB (delivery limit 30 MiB).
+- The 280 staff and 168 customer sprites are imported lossy (WebP, quality 0.7): 4.37 MiB -> 0.79 MiB of textures.
+- Their `.import` files are now tracked in git (`.gitignore` exceptions), like the town sprites since #111.
+- Fixtures, products and UI icons stay lossless (0.6 MiB together). The engine library is 20.8 MiB of the APK.
+- No game data or mechanic changed.
+
+**Task #116 (2026-09-26, decision 0187)**: the Android APK is built with this project's own slim Godot 4.3 engine.
+- `tools/build_godot_templates.sh` builds it without 3D, Vulkan and unused modules, and with the fallback text server.
+- The engine library drops from 22.1 MiB to 10.0 MiB in the APK; the APK from 26.29 MiB to 16.31 MiB (0.1.15-preview).
+- Exported with `--export-release`, signed with the same debug key as before so it installs over older builds.
+- The template lives in `build/templates/` (not in git); rebuild it with the script on a new machine.
+- Both smokes and screenshots were checked on a Linux build with the same configuration; not yet run on a phone.
+
+**Tasks #117-#123 (2026-09-26, decisions 0188-0194)**: the owner's list after playing 0.1.15.
+- #117: a stocked shelf is sold with its goods, and a shelf can be given another product from its card; the goods
+  go back at cost (REMAKE_BALANCED_DEFAULT). A new shelf's first goods and returns are one-off, out of the month's x8.
+- #118: register duty rotates -- whoever is nearest the register takes it when customers are in and the cashier is
+  away (CONFIRMED_COMMUNITY FAQ), and a tired cashier hands over (REMAKE_BALANCED_DEFAULT thresholds).
+- #119: goods are taken from a shelf's front only, from any free side of a wagon; 注目度 shelves 1.0, wagons 1.5,
+  2x2 wagons 2.0 (REMAKE_BALANCED_DEFAULT on CONFIRMED capacities and the community's 2x2 wagon attention).
+- #120: customers are the guide's 21 types (顧客データ pp.134-143, CONFIRMED_OFFICIAL, `guide_customer_types`):
+  purpose, 所持金, ついで買い (集中力 x 注目度), price sensitivity, 素早さ, ス as patience; drawn as their type.
+- #121: departed customers are forgotten after 64 (counts kept); the chain visitor milestone survives a load.
+- #122: 調査 is a list of screens -- 全店収支グラフ, 店舗成績, アンケート (ranked with pictures), 町と目標.
+- #123: a bought rival and a store opened on picked land are real stores (STORE_FIELDS, `_stores`): each has its
+  own floor, goods, staff, customers, prices, hours, permits, ads, rating and survey; money, time, town and rivals
+  are shared; own stores share customers (SS play). Switch from the status bar's store name or by tapping the
+  store on the map. Save schema 10 ("branches"); schema 9 saves still load.
+
+**Tasks #124-#126 (2026-09-26, decisions 0195-0197)**: the owner's list after playing 0.1.16.
+- #124: each store has a 知名度 (0-100): 0 for a new store, 30 for a bought one; satisfied customers raise it,
+  unhappy ones lower it; visitors scale 0.4x-1.6x with it; 人気度 drifts daily toward 20 + 0.6 x 知名度 (an
+  advert's boost fades, p.36); 顧客独占率 is recomputed every day (CONFIRMED_COMMUNITY). Shapes and numbers are
+  REMAKE_BALANCED_DEFAULT (`store_rules.store_growth`). A new store now gets ~10-16 visits a day at first.
+- #125: moving/turning/buying/unstoring a fixture finds a free side for its front; refusals say why and outline the
+  shelf that would be cut off; fixtures can be put in storage (倉庫) for free; fixtures can be dragged. All edits go
+  through `_accept_layout_change()` (REMAKE_BALANCED_DEFAULT).
+- #126: all six store types have layouts (12x8 = the guide's p.48 store, CONFIRMED_VISUAL; medium and 8x12 are
+  REMAKE aisle grids). 内装 → 改装 turns an open store into another size/orientation for the new price less half the
+  current one; fixtures move with their goods, what does not fit goes to storage (REMAKE_BALANCED_DEFAULT). Store
+  buttons now read 縦長/横長 and the floor size (the two small icons look alike; small_bottom was already 8x5).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

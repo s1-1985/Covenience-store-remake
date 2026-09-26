@@ -15,6 +15,161 @@ class GameVerticalSliceContractTests(unittest.TestCase):
     def setUpClass(cls):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
+    def test_character_sprites_are_imported_lossy_to_fit_the_apk(self):
+        # Task #115: the 280 staff and 168 customer sprites were 4.4 MiB of
+        # lossless textures in a 29.9 MiB APK (delivery limit 30 MiB). They
+        # are imported lossy (WebP, quality 0.7) and the settings are tracked.
+        gitignore = (REPO_ROOT / ".gitignore").read_text(encoding="utf-8")
+        for folder, count in (("staff", 280), ("customers", 168)):
+            self.assertIn("!game/assets/%s/*.import" % folder, gitignore)
+            sprites = sorted((GAME_ROOT / "assets" / folder).glob("*.png"))
+            self.assertEqual(len(sprites), count)
+            for sprite in sprites:
+                imported = sprite.with_name(sprite.name + ".import").read_text(encoding="utf-8")
+                self.assertIn("compress/mode=1", imported)
+                self.assertIn("compress/lossy_quality=0.7", imported)
+
+    def test_slim_engine_template_keeps_what_the_game_uses(self):
+        # Task #116: the Android release export uses this project's own
+        # Godot 4.3 template, built without 3D, Vulkan and unused modules.
+        script = (REPO_ROOT / "tools" / "build_godot_templates.sh").read_text(encoding="utf-8")
+        for flag in (
+            "disable_3d=yes",
+            "vulkan=no",
+            "opengl3=yes",
+            "modules_enabled_by_default=no",
+            "module_gdscript_enabled=yes",
+            "module_freetype_enabled=yes",
+            "module_text_server_fb_enabled=yes",
+            # The staff and customer sprites are lossy WebP textures (#115).
+            "module_webp_enabled=yes",
+            "module_svg_enabled=yes",
+        ):
+            self.assertIn(flag, script)
+        preset = (GAME_ROOT / "export_presets.cfg").read_text(encoding="utf-8")
+        self.assertIn('custom_template/release="../build/templates/android_release.apk"', preset)
+        self.assertIn('custom_template/debug=""', preset)
+        # Nothing the slim engine leaves out: no 3D nodes, navigation, RegEx,
+        # networking, or audio/image/model files needing a removed importer.
+        sources = [path for folder in ("scripts", "scenes", "themes") for path in (GAME_ROOT / folder).rglob("*.*")
+                   if path.suffix in (".gd", ".tscn", ".tres")]
+        sources.append(GAME_ROOT / "project.godot")
+        for path in sources:
+            text = path.read_text(encoding="utf-8")
+            self.assertIsNone(re.search(r"\b[A-Za-z]+3D\b|\bRegEx\b|HTTPRequest|\bNavigation[A-Z]", text), path.name)
+        for suffix in (".ogg", ".mp3", ".wav", ".jpg", ".jpeg", ".glb", ".gltf", ".svg", ".webp"):
+            self.assertEqual(list(GAME_ROOT.joinpath("assets").rglob("*" + suffix)), [], suffix)
+
+    def test_stocked_shelves_sell_with_their_goods_and_change_product(self):
+        # Task #117 (the owner's request); REMAKE_BALANCED_DEFAULT goods return.
+        rules = self.config["guide_starting_store"]["store_rules"]
+        self.assertIn("Task #117", rules["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", rules["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        withdraw = simulation.split("func _withdraw_product(")[0].rsplit("# Task #117: takes a product", 1)[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", withdraw)
+        self.assertIn("func try_change_product(catalog_id: String, instance_id: String, fixture_id: String) -> bool:", simulation)
+        capital = re.search(r"const CAPITAL_EXPENSE_TYPES := \[(.*?)\]", simulation, re.S).group(1)
+        for expense_type in ("product_procurement", "product_returned"):
+            self.assertIn('"%s"' % expense_type, capital)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the goods-return rule must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("a stocked shelf must take another product (task #117)", smoke)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("A stocked shelf offers 商品を変える", preview)
+
+    def test_register_duty_rotates(self):
+        # Task #118: CONFIRMED_COMMUNITY FAQ + REMAKE_BALANCED_DEFAULT rule.
+        rules = self.config["guide_starting_store"]["store_rules"]
+        self.assertTrue(rules["checkout_rotation_enabled"])
+        self.assertIn("Task #118", rules["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        rotation = simulation.split("const CHECKOUT_HANDOVER_STAMINA_SHARE")[0].rsplit("# Task #118", 1)[-1]
+        self.assertIn("CONFIRMED_COMMUNITY", rotation)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", rotation)
+        roster = (GAME_ROOT / "scripts" / "domain" / "staff_roster.gd").read_text(encoding="utf-8")
+        self.assertIn("func hand_over_checkout(staff_id: String) -> bool:", roster)
+        self.assertIn('"checkout_staff_id": staff.checkout_staff_id,', simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("register duty must pass between staff members over two days", smoke)
+
+    def test_wagons_are_reached_from_any_side_and_draw_attention(self):
+        # Task #119: CONFIRMED capacities / community attention + REMAKE sides.
+        rules = self.config["guide_starting_store"]["store_rules"]
+        catalog = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        self.assertEqual(set(rules["any_side_catalog_ids"]), {c for c in catalog if "wagon" in c})
+        for catalog_id, attention in rules["fixture_attention"].items():
+            expected = 1.0 if "wagon" not in catalog_id else (2.0 if catalog[catalog_id]["footprint_tiles"] == [2, 2] else 1.5)
+            self.assertEqual(attention, expected, catalog_id)
+        # CONFIRMED_OFFICIAL: a wagon holds less than the shelf of its size.
+        self.assertLess(catalog["small_ambient_wagon"]["capacity"], catalog["small_ambient_shelf"]["capacity"])
+        self.assertIn("Task #119", rules["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        sides = simulation.split("func _product_access_goals(")[0].rsplit("# Task #119 (the owner's request)", 1)[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", sides)
+        attention = simulation.split("func fixture_attention(")[0].rsplit("# Task #119: a fixture's", 1)[-1]
+        self.assertIn("CONFIRMED_COMMUNITY", attention)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", attention)
+        layout = (GAME_ROOT / "scripts" / "domain" / "store_layout.gd").read_text(encoding="utf-8")
+        self.assertIn("func access_cells(fixture_id: String) -> Array[Vector2i]:", layout)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a wagon must be reachable from more than one side", smoke)
+
+    def test_customer_types_come_from_the_guide(self):
+        # Task #120: CONFIRMED_OFFICIAL rows, REMAKE_BALANCED_DEFAULT use.
+        import sys
+        sys.path.insert(0, str(REPO_ROOT / "reference_sim"))
+        from conveni_sim.baseline_data import CUSTOMER_ARCHETYPES, CUSTOMER_VISIT_SCHEDULE
+        block = self.config["guide_customer_types"]
+        for tag in ("CONFIRMED_OFFICIAL", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, block["evidence_note"])
+        self.assertEqual([t["id"] for t in block["types"]], [a.id for a in CUSTOMER_ARCHETYPES])
+        self.assertEqual([t["sprite"] for t in block["types"]], ["customer_%02d" % i for i in range(1, 22)])
+        self.assertEqual(len(block["visits"]), len(CUSTOMER_VISIT_SCHEDULE))
+        for row, source in zip(block["visits"], CUSTOMER_VISIT_SCHEDULE):
+            self.assertEqual(row["type"], source.archetype_id)
+            self.assertEqual(row["budget_yen"], source.budget_yen.value)
+            self.assertEqual(row["primary"], source.primary_wanted_product.value or "")
+            self.assertEqual(row["extras"], list(source.secondary_wanted_products.value))
+            self.assertEqual(row["focus"], source.behavior_stats_raw.value[3])
+        self.assertTrue(self.config["guide_starting_store"]["store_rules"]["customer_types_enabled"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        shapes = simulation.split("func _shopping_ticks_for(")[0].rsplit("# Task #120 (REMAKE_BALANCED_DEFAULT", 1)[-1]
+        self.assertIn("CONFIRMED_OFFICIAL", shapes)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", simulation.split("func _pick_visit_row(")[0].rsplit("# Task #120:", 1)[-1])
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the customer types must stay tagged %s", smoke)
+        self.assertIn("customers must buy extras on the way (ついで買い)", smoke)
+
+    def test_research_screens_stand_alone(self):
+        # Task #122: 調査 → 全店収支グラフ / 店舗成績 / アンケート / 町と目標.
+        phone = (GAME_ROOT / "scripts" / "phone_ui.gd").read_text(encoding="utf-8")
+        for screen in ("results", "shop", "survey", "town"):
+            self.assertIn("func _fill_%s() -> void:" % screen, phone)
+        self.assertIn('["results", "全店収支グラフ"', phone)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", phone.split("const RESEARCH_SCREENS")[0].rsplit("# Task #122", 1)[-1])
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("調査 → アンケート opens its own screen", preview)
+
+    def test_branches_are_stores_of_their_own(self):
+        # Task #123: bought or newly opened stores are run like 本店.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("const SAVE_SCHEMA_VERSION := 10", simulation)
+        self.assertIn('data["branches"] = branches', simulation)
+        self.assertIn("func select_store(index: int) -> bool:", simulation)
+        self.assertIn("func _try_open_branch_on_site(origin: Vector2i, type_id: String) -> bool:", simulation)
+        share = simulation.split("func _competitor_positions(")[0].rsplit("# Task #123: CONFIRMED", 1)[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", share)
+        buyout = simulation.split("func _branch_store_type(")[0].rsplit("func try_buy_out_rival(", 1)[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", buyout)
+        research = (REPO_ROOT / "docs" / "research" / "ss-layout-entrance-register-and-chain-cannibalization-2026-09-06.md").read_text(encoding="utf-8")
+        self.assertIn("Player-owned stores can cannibalize one another", research)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a load must bring back all three stores", smoke)
+        self.assertIn("an older save's bought branch must open as a store", smoke)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("この店へ shows the 2号店", preview)
+
     def test_prototype_values_are_explicitly_marked_provisional(self):
         self.assertEqual(self.config["schema_version"], 15)
         self.assertIs(self.config["provisional"], True)
@@ -376,7 +531,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn('active().phase == "done"', roster)
         self.assertIn("customers[customer_id] = customer", roster)
         self.assertIn("func demand_admit_if_due() -> bool:", simulation)
-        self.assertIn("not customers.can_admit():\n        return false\n    if not demand", simulation)
+        # Task #103: admission also waits for opening hours.
+        self.assertIn("not customers.can_admit() or not is_open_now():\n        return false\n    if not demand", simulation)
         self.assertIn("each visit must retain a distinct customer state", smoke)
         self.assertIn("customer ids must remain unique", smoke)
         self.assertIn(
@@ -432,9 +588,11 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "func try_procure_product(",
             "func try_purchase_promotion(",
             "func try_expand_chain(",
-            "func apply_explicit_restock(",
         ):
             self.assertIn(guarded_function, simulation)
+        # Task #97: restocking a shelf is allowed while customers are in the
+        # store (it changes no route or basket).
+        self.assertIn("# Task #97: no longer waits for every customer to leave", simulation)
         self.assertIn("not customers.all_settled()", simulation)
 
         # The single checkout fixture/staff still serializes service: a
@@ -659,7 +817,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertNotIn("simulation.tick_idle_for_demand()", main)
         self.assertIn("func tick() -> void:", simulation)
         self.assertIn(
-            "if customers.can_admit_concurrent() and demand.customer_arrives_this_minute():",
+            "if customers.can_admit_concurrent() and is_open_now() and demand.customer_arrives_this_minute():",
             simulation,
         )
         self.assertIn(
@@ -1403,7 +1561,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func try_add_fixture(fixture_config: Dictionary) -> bool:", layout)
         self.assertIn("func try_purchase_fixture(", simulation)
         self.assertIn("_fixture_catalog", simulation)
-        self.assertIn("_required_routes_are_reachable() or not _all_staff_are_walkable()", simulation)
+        # Task #125: every layout edit is kept or undone by _accept_layout_change().
+        self.assertIn("if not _accept_layout_change(previous_fixtures, checkout_before):", simulation)
         self.assertIn("a valid, affordable fixture purchase must be accepted", smoke)
         self.assertIn("a duplicate fixture instance id must be rejected", smoke)
         self.assertIn("an unknown fixture catalog id must be rejected", smoke)
@@ -1994,7 +2153,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # Persisted through save/load, like every other durable piece of
         # simulation state (task #28's own convention).
         self.assertIn('"price_change_pct": price_change_pct,', simulation)
-        self.assertIn('price_change_pct = int(data["price_change_pct"])', simulation)
+        self.assertIn('price_change_pct = int(block["price_change_pct"])', simulation)
         # SAVE_SCHEMA_VERSION itself is asserted by
         # test_staff_hiring_action_is_wired_and_confirmed_official (task
         # #56 bumped it again, 3 -> 4); this test only needs price_change_
@@ -2117,7 +2276,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # would otherwise silently revert a hire on load.
         self.assertIn("func _staff_roster_snapshot() -> Array[Dictionary]:", simulation)
         self.assertIn('"staff_roster": _staff_roster_snapshot(),', simulation)
-        self.assertIn("const SAVE_SCHEMA_VERSION := 6", simulation)
+        self.assertIn("const SAVE_SCHEMA_VERSION := 10", simulation)
         self.assertIn(
             'staff.members[roster_staff_id].hire(_staff_candidate_catalog[roster_candidate_id])',
             simulation,
@@ -2632,7 +2791,9 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # (guide_town_map); since task #93 every building drawn comes from
         # that data's buildings list (one per building tile or 2x2 block of
         # them), never a facility placed by this project's own guess.
-        self.assertIn('var building: Dictionary = guide["buildings"][index]', town_view)
+        # Task #111: drawn from the simulation's own building list (it grows
+        # with 誘致), which starts as guide_town_map.buildings.
+        self.assertIn('var building: Dictionary = map_buildings[index]', town_view)
         self.assertIn('return simulation.config.get("guide_town_map", {})', town_view)
         self.assertIn(
             "Inventing\n# a full facility layout would mean guessing an unconfirmed town spatial",
@@ -3065,7 +3226,12 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             self.assertIn(tag, rules["evidence_note"])
         # Every building's name and price is its DATA4 row.
         by_id = {b.id: b for b in TOWN_BUILDINGS}
-        self.assertEqual(set(town["building_catalog"]), {b["sprite"] for b in town["buildings"]})
+        # Task #111: plus the facilities that can be induced.
+        self.assertEqual(
+            set(town["building_catalog"]),
+            {b["sprite"] for b in town["buildings"]} | {f["sprite"] for f in town["inducement"]["facilities"]}
+            | {m["sprite"] for m in town["town_growth"]["milestones"]},
+        )
         for sprite, entry in town["building_catalog"].items():
             self.assertEqual(entry["name"], by_id[sprite].display_name_ja)
             self.assertEqual(entry["price"], by_id[sprite].building_price_yen.value)
@@ -3135,6 +3301,151 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn('SoundManager.play_theme("town" if selecting_site else "store")', main)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("the sounds must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+
+    def test_staff_work_and_store_drawing_changes_are_tagged(self):
+        # Task #97: staff clean and refill as shelves go down; shelves show
+        # items by stock; people slide between squares.
+        work = self.config["guide_starting_store"]["staff_work"]
+        self.assertAlmostEqual(work["restock_trigger_share_of_full"], 8 / 9, places=5)
+        self.assertTrue(work["cleaning_task_enabled"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", work["evidence_note"])
+        self.assertIn("guide p.26", work["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("# Task #97: cleaning. CONFIRMED: staff clean the store on their own", simulation)
+        self.assertIn("# 2026-09-05.md section 2: exact trigger unknown). REMAKE_BALANCED_DEFAULT:", simulation)
+        growth = (GAME_ROOT / "scripts" / "domain" / "staff_growth.gd").read_text(encoding="utf-8")
+        self.assertIn("func apply_clean_growth(staff_member)", growth)
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        self.assertIn("# picture. REMAKE_BALANCED_DEFAULT: items shown = stock share of the full", store_view)
+        self.assertIn("# positions and timing are unchanged. REMAKE_BALANCED_DEFAULT: the linear", store_view)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the staff work rules must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("staff must clean where customers have walked", smoke)
+
+    def test_rival_stores_are_on_the_town_map(self):
+        # Task #98: the beginner map's rival 本店 and 2号店.
+        import importlib.util
+
+        town = self.config["guide_town_map"]
+        rivals = town["rival_stores"]
+        self.assertEqual([r["id"] for r in rivals], ["rival-hq", "rival-02"])
+        self.assertEqual(rivals[0]["guide_data"]["security"], 89)
+        self.assertEqual(rivals[1]["guide_data"]["buyout_yen"], 46_721_490)
+        for rival in rivals:
+            self.assertTrue((GAME_ROOT / "assets" / "town" / f"{rival['sprite']}.png").is_file())
+            self.assertTrue(
+                (REPO_ROOT / "assets" / "raw" / "conveni_remaining_assets_v1" / "extracted" / f"{rival['sprite']}.png").is_file()
+            )
+        spec = importlib.util.spec_from_file_location(
+            "guide_store_site", REPO_ROOT / "tools" / "guide_store_site.py"
+        )
+        site = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(site)
+        self.assertEqual(site.place_rivals(town["tile_rows"], town["buildings"]), rivals)
+        a, b = (tuple(r["position"]) for r in rivals)
+        self.assertGreaterEqual(max(abs(a[0] - b[0]), abs(a[1] - b[1])), town["store_site"]["min_store_distance_tiles"])
+        self.assertIn("rival_stores -- the beginner map starts with the rival's 本店 and 2号店", town["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT, each takes in turn", town["evidence_note"])
+        store_site = (GAME_ROOT / "scripts" / "domain" / "store_site.gd").read_text(encoding="utf-8")
+        self.assertIn("# REMAKE_BALANCED_DEFAULT (tools/guide_store_site.py shared_catchment()).", store_site)
+        helper = (GAME_ROOT / "scripts" / "domain" / "guide_starting_store.gd").read_text(encoding="utf-8")
+        self.assertIn('applied["town"]["rival_stores"] = rivals', helper)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a rival nearby must take part of a site's customers", smoke)
+
+    def test_staff_stamina_is_tagged_and_wired(self):
+        # Task #99: 体力 used up by work, rest until full.
+        work = self.config["guide_starting_store"]["staff_work"]
+        self.assertTrue(work["stamina_enabled"])
+        self.assertIn("Task #99, stamina: CONFIRMED_COMMUNITY", work["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT: 1 per finished", work["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("# printed 体力 (staff_candidates). REMAKE_BALANCED_DEFAULT: each finished", simulation)
+        self.assertIn("var wants_rest: bool = (store_is_empty or staff_member.exhausted)", simulation)
+        for candidate in self.config["staff_candidates"]:
+            self.assertGreater(candidate["stamina"], 0)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("an exhausted staff member rests in the break room, recovers and goes back to work", smoke)
+
+    def test_economy_actions_work_while_customers_are_in(self):
+        # Task #100: permits, promotions, price policy and chain expansion
+        # no longer wait for the store to empty.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        for fn in (
+            "func try_purchase_permit(",
+            "func try_set_price_policy(",
+            "func try_purchase_promotion(",
+            "func try_expand_chain(",
+        ):
+            body = simulation.split(fn)[1][:600]
+            self.assertIn("# Task #100: allowed while customers are in the store", body)
+            self.assertNotIn("customers.all_settled()", body.split("\n\n")[0])
+        # The prototype scenarios keep the empty-store lock (task #109 lifts it
+        # in the real game only).
+        self.assertIn("    return not customers.all_settled() or _any_restock_task_active()", simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a permit can be bought while customers are in the store", smoke)
+        self.assertIn("moving a fixture still waits for customers to leave", smoke)
+
+    def test_rival_branch_can_be_investigated_and_bought_out(self):
+        # Task #101: 調査する / 買収する / 何もしない on the town map.
+        town = self.config["guide_town_map"]
+        actions = town["rival_actions"]
+        self.assertEqual(actions["investigation_cost_yen"], 600_000)
+        for tag in ("CONFIRMED_OFFICIAL", "CONFIRMED_COMMUNITY", "PROVISIONAL", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, actions["evidence_note"])
+        buyable = {r["id"]: r["buyable"] for r in town["rival_stores"]}
+        self.assertEqual(buyable, {"rival-hq": False, "rival-02": True})
+        self.assertTrue((GAME_ROOT / "assets" / "town" / "map_blue_02.png").is_file())
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("const SAVE_SCHEMA_VERSION := 10", simulation)
+        self.assertIn("# REMAKE_BALANCED_DEFAULT: the guide's start price grown by the land price's", simulation)
+        self.assertIn('"bought_rival_ids": owned_branches.filter(', simulation)
+        self.assertEqual(self.config["sound"]["event_sfx"]["rival_bought_out"], "purchase")
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the 2号店 costs the guide's 46,721,490 at the start", smoke)
+        self.assertIn("the rival 本店 cannot be bought", smoke)
+
+    def test_customers_want_what_nearby_buildings_want(self):
+        # Task #102: DATA4 wants and day/night activity per building.
+        from conveni_sim.baseline_data import TOWN_BUILDINGS
+
+        by_id = {b.id: b for b in TOWN_BUILDINGS}
+        catalog = self.config["guide_town_map"]["building_catalog"]
+        product_ids = {c["catalog_id"] for c in self.config["product_catalog"]}
+        for sprite, entry in catalog.items():
+            self.assertEqual(entry["wanted"], list(by_id[sprite].wanted_products.value))
+            self.assertEqual(entry["overnight"], by_id[sprite].active_overnight.value)
+            self.assertLessEqual(set(entry["wanted"]), product_ids)
+        work = self.config["guide_starting_store"]["staff_work"]
+        self.assertTrue(work["building_demand_enabled"])
+        self.assertIn("Task #102, customers: CONFIRMED_OFFICIAL", work["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("# buildings around it. REMAKE_BALANCED_DEFAULT: which building a customer", simulation)
+        self.assertIn("var night := minute_of_day < 7 * 60", simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("a 朝から夜だけ building sends no customer at 2:00", smoke)
+
+    def test_business_hours_presets(self):
+        # Task #103: the guide's five fixed hours + 24h + 臨時休業.
+        hours = self.config["guide_starting_store"]["business_hours"]
+        labels = [p["label"] for p in hours["presets"]]
+        self.assertEqual(
+            labels,
+            ["AM10:00〜PM6:00", "AM7:00〜PM11:00", "AM10:00〜AM2:00", "PM0:00〜AM4:00",
+             "PM7:00〜AM11:00", "24時間営業", "臨時休業"],
+        )
+        self.assertEqual(hours["default_id"], "7_23")
+        self.assertEqual(hours["start_minute_of_day"], 0)
+        for tag in ("CONFIRMED_OFFICIAL (guide PDF3 p.2)", "CONFIRMED_COMMUNITY"):
+            self.assertIn(tag, hours["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("if customers.can_admit_concurrent() and is_open_now() and demand.customer_arrives_this_minute():", simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("no customer comes in while the store is closed", smoke)
+        # Task #105: nobody is inside when a game starts before opening time.
+        self.assertIn("func _start_opening_customer() -> void:\n    if is_open_now():", simulation)
+        self.assertIn("nobody is inside a closed store at the 00:00 start", smoke)
 
     def test_every_store_has_a_manager_and_two_staff(self):
         # Task #91: クイックリファレンス p.6 「各店舗に店長が必ず必要。店員は
@@ -3404,10 +3715,13 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertNotIn("_refresh_restock_product_option", main)
         self.assertIn("func _selected_fixture_restock_target():", main)
         self.assertIn("store_view.selected_fixture()", main.split("func _selected_fixture_restock_target()")[1][:400])
+        # Task #97: available as soon as the shelf is not full (the owner's
+        # 「中身が減っていると」), filled back to full.
         self.assertIn(
-            "simulation._restock_trigger_stock_units_at_or_below",
-            main.split("func _selected_fixture_restock_target()")[1][:600],
+            "if product.stock_units >= product.initial_stock_units:",
+            main.split("func _selected_fixture_restock_target()")[1][:900],
         )
+        self.assertIn("var quantity: int = product.initial_stock_units - product.stock_units", main)
         restock_target_comment = main.split("func _selected_fixture_restock_target()")[0].split(
             "func _on_procure_product_pressed"
         )[-1]
@@ -3418,14 +3732,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("economy_ui_scene.store_view.selected_fixture_id = \"shelf-1\"", smoke)
         self.assertIn("economy_ui_scene._selected_fixture_restock_target()", smoke)
-        self.assertIn(
-            "restock target must stay null while the selected fixture's stock is not low",
-            smoke,
-        )
-        self.assertIn(
-            "pressing Restock while ungated (no low-stock target) must not charge cash",
-            smoke,
-        )
+        self.assertIn("economy UI: a full shelf has nothing to restock", smoke)
+        self.assertIn("pressing Restock on a full shelf must not charge cash", smoke)
 
     def test_manual_restock_evidence_is_upgraded_by_the_strategy_guide_qa(self):
         # Task #80: immediately after task #79 shipped the contextual restock
@@ -3517,6 +3825,396 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("themed_panel.theme.default_font_size", smoke)
         self.assertIn('themed_panel.theme.has_stylebox("panel", "PanelContainer")', smoke)
         self.assertIn('themed_panel.theme.has_stylebox("normal", "Button")', smoke)
+
+    def test_store_selection_offers_six_stores_with_only_the_small_ones_at_start(self):
+        # Task #104: 「店舗を選んで下さい」 after the land.
+        import importlib.util
+
+        block = self.config["guide_store_types"]
+        for tag in ("CONFIRMED_VISUAL", "CONFIRMED_OFFICIAL", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, block["evidence_note"])
+        types = {entry["id"]: entry for entry in block["types"]}
+        self.assertEqual(
+            {k: (v["construction_price_yen"], v["selectable_at_start"], tuple(v["floor_tiles"]), tuple(v["grid_cell"]))
+             for k, v in types.items()},
+            {
+                "small_top": (6_000_000, True, (5, 8), (0, 0)),
+                "small_bottom": (6_000_000, True, (8, 5), (0, 1)),
+                "medium_top": (12_000_000, False, (7, 10), (1, 0)),
+                "medium_bottom": (12_000_000, False, (10, 7), (1, 1)),
+                "large_top": (18_000_000, False, (8, 12), (2, 0)),
+                "large_bottom": (18_000_000, False, (12, 8), (2, 1)),
+            },
+        )
+        # Sizes and prices agree with the reference sim's STORE_VARIANTS.
+        from conveni_sim.baseline_data import STORE_VARIANTS
+
+        for variant in STORE_VARIANTS:
+            self.assertEqual(types[variant.id]["construction_price_yen"], variant.construction_price_yen.value)
+            self.assertEqual(tuple(types[variant.id]["floor_tiles"]), tuple(variant.editable_floor.value))
+        for entry in block["types"]:
+            icon = GAME_ROOT / "assets" / "menu_icons" / "store_types" / (entry["icon"] + ".png")
+            self.assertTrue(icon.is_file(), icon)
+            # Task #126: every store has a layout, for renovating into.
+            self.assertIn("layout", entry)
+
+        # The JSON block is exactly what the documented tool generates.
+        spec = importlib.util.spec_from_file_location(
+            "build_guide_store_types", REPO_ROOT / "tools" / "build_guide_store_types.py"
+        )
+        builder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(builder)
+        base = {k: v for k, v in self.config.items() if k != "guide_store_types"}
+        self.assertEqual(builder.build(base), block)
+        # Analogy with the guide's p.48 store: 34 shelves per 96 tiles -> 14
+        # on 40 tiles, each category's shelf share scaled to 14.
+        self.assertEqual(builder.shelf_count(40), 14)
+        self.assertEqual(
+            builder.assortment(base, 14),
+            {"vegetables": 2, "cold_drink": 2, "snacks": 2, "bread": 1, "daily_goods": 1,
+             "instant_food": 1, "fish": 1, "meat": 1, "underwear": 1, "bento": 1, "ice_cream": 1},
+        )
+
+        catalog = {entry["catalog_id"]: entry for entry in self.config["fixture_catalog"]}
+        for type_id in types:
+            layout = types[type_id]["layout"]
+            store = layout["store"]
+            width, height = store["width_tiles"] * 2, store["height_tiles"] * 2
+            self.assertEqual((store["width_tiles"], store["height_tiles"]), tuple(types[type_id]["floor_tiles"]))
+            self.assertEqual(store["size_tier"], types[type_id]["size_tier"])
+            blocked = set()
+            for fixture in layout["fixtures"]:
+                ox, oy = fixture["origin_subcell"]
+                fw, fh = fixture["footprint_tiles"]
+                cells = {(x, y) for x in range(ox, ox + fw * 2) for y in range(oy, oy + fh * 2)}
+                self.assertFalse(cells & blocked, fixture["id"])
+                blocked |= cells
+                self.assertTrue(all(0 <= x < width and 0 <= y < height for x, y in cells))
+            entry = tuple(store["entry_subcell"])
+            goals = [tuple(f["interaction_subcell"]) for f in layout["fixtures"]]
+            goals += [tuple(cell) for cell in layout["staff_start_subcells"].values()]
+            goals.append(tuple(store["exit_subcell"]))
+            for goal in goals:
+                self.assertNotIn(goal, blocked)
+                self.assertTrue(self._reachable(entry, goal, width, height, blocked), (type_id, goal))
+            shelves = {f["id"]: f for f in layout["fixtures"] if f["kind"] == "shelf"}
+            if type_id == builder.P48_TYPE:
+                # The guide's p.48 store itself (CONFIRMED_VISUAL).
+                self.assertEqual(layout["fixtures"], self.config["guide_starting_store"]["fixtures"])
+                self.assertEqual(layout["max_concurrent_customers"], 8)
+                continue
+            floor = store["width_tiles"] * store["height_tiles"]
+            if store["size_tier"] == "small":
+                self.assertEqual(len(shelves), 14)
+            else:
+                # p.48's shelves per tile, or as many spots as the plan has.
+                self.assertTrue(10 <= len(shelves) <= builder.shelf_count(floor), (type_id, len(shelves)))
+            for product in layout["products"]:
+                shelf = shelves[product["fixture_id"]]
+                self.assertIn(product["catalog_id"], catalog[shelf["catalog_id"]]["compatible_product_categories"])
+                self.assertEqual(product["initial_stock_units"], catalog[shelf["catalog_id"]]["capacity"])
+            self.assertEqual(layout["max_concurrent_customers"], max(1, round(8 * floor / 96)))
+
+        # Code comment + test assertion for the REMAKE layouts, and the
+        # construction price paid on top of the land.
+        starting = (GAME_ROOT / "scripts" / "domain" / "guide_starting_store.gd").read_text(encoding="utf-8")
+        self.assertIn("REMAKE_BALANCED_DEFAULT", starting.split("static func apply_store_type")[0].split("Task #104")[-1])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn('"store_construction", minute_of_day, construction_yen', simulation)
+        self.assertIn('"store_type_id": store_type_id,', simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the small opening layouts must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("building pays the land and the store's 6,000,000 yen", smoke)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("Six stores, four of them locked at the start", preview)
+
+    def test_store_growth_editing_and_renovation_are_tagged(self):
+        # Tasks #124-#126: REMAKE_BALANCED_DEFAULT in the code, the JSON and
+        # the smoke test (CLAUDE.md tagging discipline).
+        rules = self.config["guide_starting_store"]["store_rules"]
+        note = rules["evidence_note"]
+        for task in ("Task #124", "Task #125"):
+            self.assertIn(task, note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
+        growth = rules["store_growth"]
+        self.assertEqual(growth["new_store_recognition"], 0.0)
+        self.assertLess(growth["demand_factor_at_zero"], 1.0)
+        self.assertGreater(growth["demand_factor_at_full"], 1.0)
+        self.assertTrue(rules["edit_front_search"])
+        types_note = self.config["guide_store_types"]["evidence_note"]
+        self.assertIn("Task #126", types_note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", types_note)
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("REMAKE_BALANCED_DEFAULT (store_rules.edit_front_search)", simulation)
+        self.assertIn("REMAKE_BALANCED_DEFAULT: in the original the store is only", simulation)
+        self.assertIn("# --- Task #125: the store's storage (倉庫). REMAKE_BALANCED_DEFAULT", simulation)
+        growth_code = simulation.split("func _start_store_growth")[0]
+        self.assertIn("Task #124", growth_code)
+        self.assertIn('"store_renovation"', re.search(r"const CAPITAL_EXPENSE_TYPES := \[(.*?)\]", simulation, re.S).group(1))
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the store growth rules must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("the front search must stay on and tagged (Task #125)", smoke)
+        self.assertIn("the renovation rules must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+        self.assertIn("try_renovate_store() must stay tagged REMAKE_BALANCED_DEFAULT", smoke)
+
+    def test_month_end_x8_leaves_one_off_purchases_out(self):
+        # Task #104: the land, the store building, buyouts, fixtures and
+        # permits are paid once; only the four days' running result is x8.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        capital = re.search(r"const CAPITAL_EXPENSE_TYPES := \[(.*?)\]", simulation, re.S).group(1)
+        for expense_type in ("store_site", "store_construction", "rival_buyout", "fixture_purchase", "permit_purchase"):
+            self.assertIn('"%s"' % expense_type, capital)
+        for expense_type in ("staff_wages", "fixture_maintenance", "inventory_restock", "promotion_cost"):
+            self.assertNotIn('"%s"' % expense_type, capital)
+        self.assertIn(
+            "var four_day_net_result_yen: int = economy.cash_yen - _cash_at_month_start + capital_yen",
+            simulation,
+        )
+        self.assertIn('"expense_index_at_month_start": _expense_index_at_month_start,', simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("the month end must leave the land and store out of the x8", smoke)
+
+    def test_rivals_lose_withdraw_and_reopen_elsewhere(self):
+        # Task #106: the Python side of headless_smoke's _check_rival_withdrawal.
+        import importlib.util
+        import sys
+
+        sys.path.insert(0, str(REPO_ROOT / "tools"))
+        spec = importlib.util.spec_from_file_location("guide_store_site", REPO_ROOT / "tools" / "guide_store_site.py")
+        site = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(site)
+        town = self.config["guide_town_map"]
+        ai = town["rival_ai"]
+        self.assertEqual(ai, site.RIVAL_AI)
+        for tag in ("CONFIRMED_OFFICIAL", "CONFIRMED_COMMUNITY", "PROVISIONAL", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, ai["evidence_note"])
+        self.assertEqual(ai["withdraw_after_deficit_months"], 6)
+        self.assertEqual(ai["town_store_limit"], 10)
+        self.assertEqual({r["id"]: r["role"] for r in town["rival_stores"]}, {"rival-hq": "head", "rival-02": "branch"})
+        tiles = site.building_tiles(town["buildings"])
+        self.assertAlmostEqual(site.rival_pressure(tiles, (27, 9), [(32, 9)], -20), 15 / 17)
+        self.assertLess(site.rival_pressure(tiles, (27, 9), [(32, 9)], -5), ai["deficit_pressure_threshold"])
+        self.assertEqual(site.rival_pressure(tiles, (8, 10), [(32, 9)], -20), 0.0)
+        self.assertGreaterEqual(site.rival_pressure(tiles, (8, 10), [(8, 4)], -20), ai["deficit_pressure_threshold"])
+        removed = sorted({tiles[t] for t in site.site_footprint((32, 9)) if t in tiles})
+        self.assertEqual(removed, [8, 73])
+        self.assertEqual(
+            site.best_open_site(town["tile_rows"], town["buildings"], [(8, 10), (32, 9)], removed, avoid=[(27, 9)]),
+            (13, 9),
+        )
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        body = simulation.split("func _rival_ai() -> Dictionary:")[0].split("# Task #106: rivals losing money")[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", body)
+        self.assertIn("    _step_rivals_at_month_end()\n    _grow_town_at_month_end()\n    _evaluate_terminal_state()", simulation)
+        store_site = (GAME_ROOT / "scripts" / "domain" / "store_site.gd").read_text(encoding="utf-8")
+        self.assertIn("func rival_pressure(", store_site)
+        self.assertIn("func best_open_site(stores: Array, removed: Array = [], avoid: Array = []) -> Vector2i:", store_site)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        for text in (
+            "the rival withdrawal shape must stay tagged REMAKE_BALANCED_DEFAULT",
+            "rival pressure at 20%% off must be 15/17",
+            "the withdrawn branch must reopen on the best other site (13, 9)",
+            "the 本店 must hold on while the rival has a branch",
+        ):
+            self.assertIn(text, smoke)
+
+    def test_save_keeps_staff_growth_stamina_and_survey(self):
+        # Task #107: these used to go back to their starting values on load.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn('"staff_state": _staff_state_snapshot(),', simulation)
+        self.assertIn('    _restore_staff_state(block["staff_state"])', simulation)
+        fields = re.search(r"const SAVED_STAFF_FIELDS := \[(.*?)\]", simulation, re.S).group(1)
+        for field in ("register_skill", "service_skill", "cleaning_skill", "security_skill",
+                      "replenishment_skill", "stamina", "exhausted"):
+            self.assertIn('"%s"' % field, fields)
+        self.assertIn('    survey_missing = _counts(block["survey"]["missing"])', simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("load must keep the staff's grown skills and 体力", smoke)
+        self.assertIn("load must keep this month's and last month's survey", smoke)
+
+    def test_town_holds_at_most_ten_stores_rivals_included(self):
+        # Task #108: quick reference 中級 「ひとつのマップにはライバル店を含めて
+        # 10店舗までしか建設できない」.
+        self.assertEqual(self.config["guide_town_map"]["rival_ai"]["town_store_limit"], 10)
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn("    return player_store_count + _rival_stores.size()", simulation)
+        self.assertIn("    if is_game_over or town_is_full():", simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("with the two rivals the player can have 8 stores", smoke)
+
+    def test_real_game_edits_with_customers_inside(self):
+        # Task #109: REMAKE_BALANCED_DEFAULT, tagged in the code, the JSON and
+        # the smoke test.
+        work = self.config["guide_starting_store"]["staff_work"]
+        self.assertTrue(work["edits_while_open"])
+        self.assertIn("Task #109", work["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT", work["evidence_note"])
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        lock = simulation.split("func _layout_edit_locked() -> bool:")[0].split("# Task #109: whether a layout edit must wait.")[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", lock)
+        # Task #125: the six edits plus storing and unstoring a fixture; each
+        # keeps or undoes its change through _accept_layout_change(), which
+        # reroutes everyone on the move.
+        self.assertEqual(simulation.count("    if _layout_edit_locked():\n"), 8)
+        accept = simulation.split("func _accept_layout_change(")[1].split("\nfunc ")[0]
+        self.assertIn("_reroute_after_layout_change(checkout_before)", accept)
+        self.assertGreaterEqual(simulation.count("_accept_layout_change(previous"), 8)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        for text in (
+            "editing while open must stay tagged REMAKE_BALANCED_DEFAULT",
+            "a customer heading for a moved shelf must walk to its new front",
+            "a fixture may never be put down on a customer or staff member",
+            "staff can be hired while customers are inside",
+        ):
+            self.assertIn(text, smoke)
+
+    def test_phone_screen_follows_the_original_layout(self):
+        # Task #110: the phone screen. What comes from the original and
+        # what is this project's own is listed in phone_ui.gd's header, the
+        # android_preview evidence note, and checked by the preview smoke.
+        phone = (GAME_ROOT / "scripts" / "phone_ui.gd").read_text(encoding="utf-8")
+        header = phone.split("const HUD_HEIGHT")[0]
+        for text in ("CONFIRMED_VISUAL", "REMAKE_BALANCED_DEFAULT", "video_900s.png", "menu-hierarchy-evidence"):
+            self.assertIn(text, header)
+        for command in ('"内装"', '"店員"', '"営業方針"', '"販促"', '"調査"'):
+            self.assertIn(command, phone)
+        for name in ("advertising_direct_mail", "advertising_newspaper", "advertising_airship",
+                     "advertising_radio", "advertising_television", "status_tobacco", "status_alcohol",
+                     "status_medicine"):
+            self.assertTrue((GAME_ROOT / "assets" / "ui" / (name + ".png")).is_file(), name)
+        note = self.config["android_preview"]["evidence_note"]
+        self.assertIn("Task #110", note)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        for text in (
+            "Only the 内装 window edits the layout",
+            "Outside 内装 a tap on the floor deselects and moves nothing",
+            "The speed button speeds the game up",
+            "Tapping a product picture stocks the shelf",
+            "つまみだす sends the customer out",
+        ):
+            self.assertIn(text, preview)
+
+    def test_inducement_follows_the_guide_table(self):
+        # Task #111: 販促 → 誘致; the Python side of headless_smoke's
+        # _check_inducement.
+        import importlib.util
+        import sys
+
+        sys.path.insert(0, str(REPO_ROOT / "tools"))
+        spec = importlib.util.spec_from_file_location("guide_store_site", REPO_ROOT / "tools" / "guide_store_site.py")
+        site = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(site)
+        town = self.config["guide_town_map"]
+        block = town["inducement"]
+        self.assertEqual(block, site.inducement_block())
+        for tag in ("CONFIRMED_OFFICIAL", "CONFIRMED_VISUAL", "PROVISIONAL", "REMAKE_BALANCED_DEFAULT"):
+            self.assertIn(tag, block["evidence_note"])
+        facilities = {facility["id"]: facility for facility in block["facilities"]}
+        self.assertEqual(len(facilities), 18)
+        # 援助額 (guide PDF1 p.45) and the セキュリティ effect (PDF3 p.10, PDF4 p.74).
+        self.assertEqual(facilities["police_box"]["aid_yen"], 400_000)
+        self.assertEqual(facilities["university"]["aid_yen"], 9_800_000)
+        self.assertEqual((facilities["police_box"]["security_per_square"], facilities["police_box"]["security_max"]), (10, 40))
+        self.assertEqual((facilities["fire_station"]["security_per_square"], facilities["fire_station"]["security_max"]), (5, 30))
+        for facility in block["facilities"]:
+            self.assertIn(facility["sprite"], town["building_catalog"])
+            size = facility["size"]
+            self.assertEqual(sorted(size) == sorted(facility["table_size"]), facility["id"] not in ("gym",))
+            sprite = GAME_ROOT / "assets" / "town" / (facility["sprite"] + ".png")
+            self.assertTrue(sprite.is_file())
+            imported = (GAME_ROOT / "assets" / "town" / (facility["sprite"] + ".png.import")).read_text(encoding="utf-8")
+            self.assertIn("compress/mode=1", imported)
+        # The place price near the store at (13, 21), within the videos' 2-4 million.
+        self.assertEqual(site.inducement_place_price(town, facilities["police_box"], (16, 21)), 2_100_000)
+        self.assertEqual(site.inducement_place_price(town, facilities["pool"], (16, 24)), 3_900_000)
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn('"inducement_aid", "inducement_place"', simulation)
+        self.assertIn("    ) + inducement_security_bonus()", simulation)
+        place = simulation.split("func try_induce(")[0].split("func inducement_quote(")[-1]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", place)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        for text in (
+            "the 誘致 place price must stay tagged REMAKE_BALANCED_DEFAULT",
+            "a 交番 next to the store costs 400,000 aid + 2,100,000 for the place",
+            "only one facility can be under 誘致 at a time",
+            "a 交番 inside the store's 16x16 area adds 40 セキュリティ",
+            "a facility takes in the building standing on its squares",
+        ):
+            self.assertIn(text, smoke)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("誘致する starts building the 交番", preview)
+
+    def test_results_graph_and_cleaners_do_not_block_each_other(self):
+        # Task #113: 調査 → 収支グラフ; and the cleaning deadlock fix.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn('"month_sales_yen": month_sales_yen,', simulation)
+        self.assertIn("func _clean_target_taken(cleaner) -> bool:", simulation)
+        self.assertIn("const CLEANER_GIVE_UP_TICKS := 6", simulation)
+        self.assertIn("(REMAKE_BALANCED_DEFAULT, staff_work.evidence_note).", simulation)
+        work_note = self.config["guide_starting_store"]["staff_work"]["evidence_note"]
+        self.assertIn("Task #113: REMAKE_BALANCED_DEFAULT, a cleaner gives a floor square up", work_note)
+        phone = (GAME_ROOT / "scripts" / "phone_ui.gd").read_text(encoding="utf-8")
+        self.assertIn("func _draw_results_graph(graph: Control) -> void:", phone)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("after six days the shelves must still be mostly full", smoke)
+
+    def test_town_grows_to_the_beginner_maps_clear(self):
+        # Task #114: the Python side of headless_smoke's _check_town_growth.
+        import importlib.util
+        import sys
+
+        sys.path.insert(0, str(REPO_ROOT / "tools"))
+        spec = importlib.util.spec_from_file_location("guide_store_site", REPO_ROOT / "tools" / "guide_store_site.py")
+        site = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(site)
+        town = self.config["guide_town_map"]
+        growth = town["town_growth"]
+        self.assertEqual(growth, site.TOWN_GROWTH)
+        for tag in ("CONFIRMED_OFFICIAL", "CONFIRMED_VISUAL", "PROVISIONAL", "REMAKE_BALANCED_DEFAULT", "Analogy"):
+            self.assertIn(tag, growth["evidence_note"])
+        self.assertEqual(growth["start_population"], 2_179)
+        self.assertEqual(
+            [(m["id"], m["population"]) for m in growth["milestones"]],
+            [("city_office", 5_000), ("station", 5_000), ("ward_office", 8_000), ("metropolitan_office", 20_000)],
+        )
+        # The rate reaches 20,000 in about the guide's 8 years.
+        population, months = 2_179, 0
+        while population < 20_000:
+            population += round(population * growth["monthly_growth_rate"])
+            months += 1
+        self.assertTrue(90 <= months <= 100, months)
+        self.assertEqual(
+            site.place_town_buildings(town, [(13, 21), (8, 10), (27, 9)]),
+            {"city_office": (19, 16), "station": (19, 13), "ward_office": (6, 15), "metropolitan_office": (17, 27)},
+        )
+        for milestone in growth["milestones"]:
+            self.assertIn(milestone["sprite"], town["building_catalog"])
+            self.assertTrue((GAME_ROOT / "assets" / "town" / (milestone["sprite"] + ".png")).is_file())
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        body = simulation.split("func _grow_town_at_month_end() -> void:")[1].split("func _put_up_town_building")[0]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", body)
+        self.assertIn('elif town_milestone_built(str(_town_growth()["clear_milestone"])):', simulation)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        for text in (
+            "the town growth shape must stay tagged REMAKE_BALANCED_DEFAULT",
+            "the 都庁 must go up after about 8 years",
+            "the 都庁 clears the beginner map",
+        ):
+            self.assertIn(text, smoke)
+
+    def test_town_building_card(self):
+        # Task #112: a tapped building shows its name, DATA4 wants and hours,
+        # and the 買い物人口 only where reference_sim's TOWN_FACILITIES has it.
+        facilities = {f["id"]: f for f in self.config["guide_town_map"]["inducement"]["facilities"]}
+        self.assertEqual(facilities["company"]["shopping_population"], 90)
+        self.assertEqual(facilities["amusement_park"]["shopping_population"], 750)
+        self.assertIsNone(facilities["police_box"]["shopping_population"])
+        phone = (GAME_ROOT / "scripts" / "phone_ui.gd").read_text(encoding="utf-8")
+        self.assertIn("func _on_map_building_tapped(tile: Vector2i) -> void:", phone)
+        self.assertIn('"　買い物人口 %d人"', phone)
+        preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("Tapping a building shows its name and wants", preview)
 
     @staticmethod
     def _reachable(start, goal, width, height, blocked):

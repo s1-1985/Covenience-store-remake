@@ -1,6 +1,9 @@
 extends Node2D
 
 signal fixture_selected(fixture_id: String)
+# Task #110: a tap on a customer outside 内装 (the phone shows what they
+# are buying and offers つまみだす).
+signal customer_tapped(customer_id: String)
 signal fixture_relocation_requested(fixture_id: String, origin_subcell: Vector2i)
 # Task #78: emitted instead of re-selecting when a second fixture is tapped
 # while edit_mode == "swap" (see edit_mode below).
@@ -147,6 +150,10 @@ var selected_fixture_id := ""
 # only mode in which tapping a second fixture emits fixture_swap_requested
 # instead. main.gd sets this from its own EditModeOption dropdown.
 var edit_mode := "move"
+# Task #110: whether taps edit the layout. The phone UI turns this off
+# outside its 内装 window, so a tap on a shelf only shows what it holds and
+# a stray tap on the floor can never move a fixture.
+var editing := true
 var _fixture_textures: Dictionary = {}
 var _product_textures: Dictionary = {}
 var _staff_textures: Dictionary = {}
@@ -159,6 +166,29 @@ var _customer_last_direction: Dictionary = {}
 # product/staff/customer texture caches above), so these are loaded once
 # by exact filename rather than looked up dynamically.
 var _floor_textures: Dictionary = {}
+# Task #97: smooth movement. The simulation moves people one subcell per
+# tick (0.25 s), which looked like jumping; they are now drawn sliding from
+# the previous subcell to the current one over the tick, alternating the
+# two walk-cycle frames (A/B) that every sprite already ships. main.gd sets
+# tick_progress (0..1 through the current tick) every frame and bumps
+# tick_serial on every simulation tick. Presentation only: the simulation's
+# positions and timing are unchanged. REMAKE_BALANCED_DEFAULT: the linear
+# slide and switching A->B halfway through each step are this renderer's own.
+# Task #125: a fixture shown in red for a moment (the shelf an edit would
+# have cut off).
+var _warn_fixture_id := ""
+var _warn_until_msec := 0
+
+
+func warn_fixture(fixture_id: String) -> void:
+    _warn_fixture_id = fixture_id
+    _warn_until_msec = Time.get_ticks_msec() + 2500
+    queue_redraw()
+
+
+var tick_progress := 1.0
+var tick_serial := 0
+var _motion: Dictionary = {}
 
 
 func _ready() -> void:
@@ -181,6 +211,13 @@ func selected_fixture() -> String:
 func bind(source_config: Dictionary, source_simulation) -> void:
     config = source_config
     simulation = source_simulation
+    # Task #123: another store's people must not slide in from where this
+    # store's were.
+    _motion.clear()
+    _staff_last_position.clear()
+    _staff_last_direction.clear()
+    _customer_last_position.clear()
+    _customer_last_direction.clear()
     queue_redraw()
 
 
@@ -315,12 +352,39 @@ func _process(_delta: float) -> void:
         queue_redraw()
 
 
+# Task #125: in 内装, a fixture can be dragged to its new place (a tap on the
+# floor still works); a ghost shows where it would go.
+var _drag_fixture := ""
+var _drag_offset := Vector2i.ZERO
+var _drag_cell := Vector2i.ZERO
+var _drag_start_cell := Vector2i.ZERO
+
+
 func _unhandled_input(event: InputEvent) -> void:
     # Task #72: while the town map (TownView) is shown in this store view's
     # place, this node is hidden but would otherwise still process taps
     # against its own (stale) coordinates -- guard on visibility.
     if not visible:
         return
+    if not _drag_fixture.is_empty():
+        if event is InputEventMouseMotion or event is InputEventScreenDrag:
+            var moved_to := to_local(event.position)
+            _drag_cell = Vector2i(floori(moved_to.x / SUBCELL_PIXELS), floori(moved_to.y / SUBCELL_PIXELS))
+            queue_redraw()
+            get_viewport().set_input_as_handled()
+            return
+        var released: bool = (
+            (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed)
+            or (event is InputEventScreenTouch and not event.pressed)
+        )
+        if released:
+            var dragged := _drag_fixture
+            _drag_fixture = ""
+            queue_redraw()
+            if _drag_cell != _drag_start_cell:
+                fixture_relocation_requested.emit(dragged, _drag_cell - _drag_offset)
+            get_viewport().set_input_as_handled()
+            return
     var pointer_position := Vector2.ZERO
     var pressed := false
     if event is InputEventMouseButton:
@@ -333,6 +397,12 @@ func _unhandled_input(event: InputEvent) -> void:
         return
     var local_position := to_local(pointer_position)
     var cell := Vector2i(floori(local_position.x / SUBCELL_PIXELS), floori(local_position.y / SUBCELL_PIXELS))
+    if not editing:
+        var tapped := _customer_near(local_position)
+        if not tapped.is_empty():
+            customer_tapped.emit(tapped)
+            get_viewport().set_input_as_handled()
+            return
     if not simulation.layout.is_walkable(cell):
         var fixture_id: String = simulation.layout.fixture_at(cell)
         if not fixture_id.is_empty():
@@ -340,18 +410,60 @@ func _unhandled_input(event: InputEvent) -> void:
             # requests a swap instead of just changing the selection --
             # every other mode (including the default "move") keeps the
             # original re-select behavior unchanged.
-            if edit_mode == "swap" and not selected_fixture_id.is_empty() and fixture_id != selected_fixture_id:
+            if editing and edit_mode == "swap" and not selected_fixture_id.is_empty() and fixture_id != selected_fixture_id:
                 fixture_swap_requested.emit(selected_fixture_id, fixture_id)
                 get_viewport().set_input_as_handled()
                 return
             selected_fixture_id = fixture_id
             fixture_selected.emit(fixture_id)
+            if editing and edit_mode == "move":
+                _drag_fixture = fixture_id
+                _drag_offset = cell - simulation.layout.fixture_origin(fixture_id)
+                _drag_cell = cell
+                _drag_start_cell = cell
             queue_redraw()
             get_viewport().set_input_as_handled()
         return
     if not selected_fixture_id.is_empty():
-        fixture_relocation_requested.emit(selected_fixture_id, cell)
+        if editing:
+            fixture_relocation_requested.emit(selected_fixture_id, cell)
+        else:
+            selected_fixture_id = ""
+            fixture_selected.emit("")
+            queue_redraw()
         get_viewport().set_input_as_handled()
+
+
+# The customer drawn under a tap point (sprites are about a tile tall and
+# stand on their subcell), or "".
+func _customer_near(local_position: Vector2) -> String:
+    var best := ""
+    var best_distance := SUBCELL_PIXELS * 1.2
+    for customer in simulation.customers.active_customers():
+        var center := (Vector2(customer.position) + Vector2(0.5, 0.2)) * SUBCELL_PIXELS
+        var distance := center.distance_to(local_position)
+        if distance < best_distance:
+            best_distance = distance
+            best = str(customer.customer_id)
+    return best
+
+
+# Task #125: where a dragged fixture would land.
+func _draw_drag_ghost() -> void:
+    if _drag_fixture.is_empty() or _drag_cell == _drag_start_cell:
+        return
+    if not simulation.layout.fixtures_by_id.has(_drag_fixture):
+        return
+    var fixture: Dictionary = simulation.layout.fixtures_by_id[_drag_fixture]
+    var footprint: Array = fixture["footprint_tiles"]
+    var scale_cells := int(config["store"]["subcells_per_tile"])
+    var origin := _drag_cell - _drag_offset
+    var rect := Rect2(
+        Vector2(origin) * SUBCELL_PIXELS,
+        Vector2(int(footprint[0]) * scale_cells, int(footprint[1]) * scale_cells) * SUBCELL_PIXELS
+    )
+    draw_rect(rect, Color(0.96, 0.83, 0.37, 0.35), true)
+    draw_rect(rect, Color("f4d35e"), false, 4.0)
 
 
 func _draw() -> void:
@@ -366,6 +478,7 @@ func _draw() -> void:
     _draw_grid(width, height)
     _draw_entry_exit()
     _draw_fixtures()
+    _draw_drag_ghost()
     _draw_staff()
     _draw_customer()
 
@@ -486,20 +599,62 @@ func _draw_fixtures() -> void:
         var product = _product_on_fixture(str(fixture["id"]))
         if product != null:
             var product_catalog_id := _product_display_catalog_id(product)
-            var stock_display_state := _product_stock_display_state(
-                product.stock_units, product.initial_stock_units
-            )
-            var product_texture := _product_texture(product_catalog_id, stock_display_state)
-            if product_texture != null:
-                _draw_product_overlay(product_texture, origin, footprint, scale)
+            var tiles := int(footprint[0]) * int(footprint[1])
+            var items := visible_item_count(product.stock_units, product.initial_stock_units, tiles)
+            var product_texture := _product_texture(product_catalog_id, "high")
+            if product_texture != null and items > 0:
+                _draw_product_items(product_texture, origin, footprint, scale, items)
         var outline := Color("f4d35e") if fixture["id"] == selected_fixture_id else Color("363636")
         var outline_width := 5.0 if fixture["id"] == selected_fixture_id else 2.0
+        if fixture["id"] == _warn_fixture_id and Time.get_ticks_msec() < _warn_until_msec:
+            outline = Color("e04848")
+            outline_width = 6.0
         draw_rect(rect, outline, false, outline_width)
         # Task #94: the original shows no interaction markers; they only
         # appear while a fixture is selected for layout editing.
         if not selected_fixture_id.is_empty():
             var interaction := _vec2i(fixture["interaction_subcell"])
             draw_circle(_cell_center(interaction), 7.0, Color("f4d35e"))
+
+
+# Task #97: the shelf picture now shows as many of the full sprite's 3x3
+# items as the stock allows (per tile, in reading order), so every few sales
+# visibly take an item away. The three pre-drawn states only changed at
+# 66%/33% of a 40-120 unit shelf, so a sale almost never changed the
+# picture. REMAKE_BALANCED_DEFAULT: items shown = stock share of the full
+# 9 per tile, rounded up (a shelf with any stock shows at least one item).
+const ITEMS_PER_TILE := 9
+
+
+static func visible_item_count(stock_units: int, initial_stock_units: int, tiles: int) -> int:
+    if stock_units <= 0 or initial_stock_units <= 0:
+        return 0
+    var ratio := minf(1.0, float(stock_units) / float(initial_stock_units))
+    return clampi(ceili(ratio * ITEMS_PER_TILE * tiles), 1, ITEMS_PER_TILE * tiles)
+
+
+# The item cells of the 64x64 product sprites: a 3x3 grid inside x 8-56,
+# y 9-55 (measured on assets/products/*_high.png).
+func _draw_product_items(texture: Texture2D, origin: Vector2i, footprint: Array, scale: int, items: int) -> void:
+    var tile_pixels := SUBCELL_PIXELS * scale
+    var unit := texture.get_size() / 64.0
+    var grid_origin := Vector2(8, 9) * unit
+    var cell := Vector2(16, 46.0 / 3.0) * unit
+    var index := 0
+    for tile_y in range(int(footprint[1])):
+        for tile_x in range(int(footprint[0])):
+            var tile_rect := Rect2(
+                Vector2((origin.x + tile_x * scale) * SUBCELL_PIXELS, (origin.y + tile_y * scale) * SUBCELL_PIXELS),
+                Vector2(tile_pixels, tile_pixels)
+            ).grow(-6)
+            var to_tile := tile_rect.size / texture.get_size()
+            for item in ITEMS_PER_TILE:
+                if index >= items:
+                    return
+                var source := Rect2(grid_origin + Vector2(item % 3, item / 3) * cell, cell)
+                var target := Rect2(tile_rect.position + source.position * to_tile, source.size * to_tile)
+                draw_texture_rect_region(texture, target, source)
+                index += 1
 
 
 func _draw_product_overlay(texture: Texture2D, origin: Vector2i, footprint: Array, scale: int) -> void:
@@ -527,13 +682,18 @@ func _draw_customer() -> void:
     # original game's queue positions.
     var seen_positions: Dictionary = {}
     for customer in simulation.customers.active_customers():
-        var center: Vector2 = _cell_center(customer.position)
+        var motion := _moving_center("c:" + customer.customer_id, customer.position)
+        var center: Vector2 = motion[0]
         var stack_index: int = seen_positions.get(customer.position, 0)
         seen_positions[customer.position] = stack_index + 1
         center += Vector2(stack_index * 6.0, stack_index * 6.0)
-        var sprite_id := _customer_sprite_id_for_id(customer.customer_id)
+        # Task #120: a customer of one of the guide's types is drawn as that
+        # type (the sprites are drawn one per type, same order).
+        var sprite_id: String = simulation.customer_type_sprite(customer)
+        if sprite_id.is_empty():
+            sprite_id = _customer_sprite_id_for_id(customer.customer_id)
         var direction := _customer_facing_direction(customer.customer_id, customer.position)
-        var texture := _customer_texture(sprite_id, direction, CUSTOMER_SPRITE_STATIC_PHASE)
+        var texture := _customer_texture(sprite_id, direction, str(motion[1]))
         if texture != null:
             var draw_size := Vector2(CUSTOMER_SPRITE_SIZE_PX, CUSTOMER_SPRITE_SIZE_PX)
             var anchor_offset := Vector2(
@@ -549,7 +709,9 @@ func _draw_customer() -> void:
 func _draw_staff() -> void:
     var resting_index := 0
     for staff_member in simulation.staff.all_staff():
-        var center: Vector2 = _cell_center(staff_member.position)
+        var motion := _moving_center("s:" + staff_member.staff_id, staff_member.position)
+        var center: Vector2 = motion[0]
+        var phase := str(motion[1])
         # Task #88: a resting staff member's logical position is the break
         # room's door (its interaction cell); they are drawn inside the room
         # itself. CONFIRMED_VISUAL: the gameplay-video frame
@@ -561,10 +723,11 @@ func _draw_staff() -> void:
             var rest_spot = _break_room_rest_spot(resting_index)
             if rest_spot != null:
                 center = rest_spot
+                phase = STAFF_SPRITE_STATIC_PHASE
                 resting_index += 1
         var sprite_id := _staff_sprite_id_for_candidate(staff_member.candidate_id)
         var direction := _staff_facing_direction(staff_member.staff_id, staff_member.position)
-        var texture := _staff_texture(sprite_id, direction, STAFF_SPRITE_STATIC_PHASE)
+        var texture := _staff_texture(sprite_id, direction, phase)
         if texture != null:
             var draw_size := Vector2(STAFF_SPRITE_SIZE_PX, STAFF_SPRITE_SIZE_PX)
             var anchor_offset := Vector2(
@@ -576,6 +739,14 @@ func _draw_staff() -> void:
             var rect := Rect2(center - Vector2(12, 12), Vector2(24, 24))
             draw_rect(rect, Color("118ab2"), true)
             draw_rect(rect, Color("17324d"), false, 2.0)
+        # Task #99: a small 体力 gauge under each staff member (presentation
+        # only; the original shows 体力 on its staff screen, not here).
+        if simulation._stamina_enabled and staff_member.stamina_max > 0:
+            var share := float(staff_member.stamina) / float(staff_member.stamina_max)
+            var bar := Rect2(center + Vector2(-16, 6), Vector2(32, 5))
+            draw_rect(bar, Color("202020"), true)
+            var fill := Color("4caf50") if share > 0.5 else (Color("f4d35e") if share > 0.2 else Color("ef476f"))
+            draw_rect(Rect2(bar.position, Vector2(bar.size.x * share, bar.size.y)), fill, true)
 
 
 func _break_room_rest_spot(index: int):
@@ -615,6 +786,24 @@ func _cell_rect(cell: Vector2i) -> Rect2:
 
 func _cell_center(cell: Vector2i) -> Vector2:
     return Vector2(cell.x + 0.5, cell.y + 0.5) * SUBCELL_PIXELS
+
+
+# Where to draw a mover now, and which walk frame: [center, phase].
+func _moving_center(key: String, cell: Vector2i) -> Array:
+    var entry: Array = _motion.get(key, [])
+    if entry.is_empty() or entry[1] != cell:
+        var from: Vector2i = cell if entry.is_empty() else entry[1]
+        if maxi(absi(from.x - cell.x), absi(from.y - cell.y)) > 1:
+            from = cell
+        entry = [from, cell, tick_serial]
+    elif entry[2] != tick_serial:
+        entry = [cell, cell, tick_serial]
+    _motion[key] = entry
+    var t := clampf(tick_progress, 0.0, 1.0)
+    var from_cell: Vector2i = entry[0]
+    if from_cell == cell or t >= 1.0:
+        return [_cell_center(cell), "A"]
+    return [_cell_center(from_cell).lerp(_cell_center(cell), t), "A" if t < 0.5 else "B"]
 
 
 func _vec2i(value: Array) -> Vector2i:
