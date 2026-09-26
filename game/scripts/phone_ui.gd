@@ -1197,6 +1197,16 @@ func _fill_research() -> void:
             var last: Dictionary = simulation.economy.month_end_records[-1]["details"]
             lines.append("先月の収支　¥%s" % main._format_integer(int(last.get("month_result_yen", 0))))
         results.text = "\n".join(lines))
+    # Task #113: 調査 → 収支グラフ (the command exists, docs/research/menu-
+    # hierarchy-evidence-2026-09-05.md section 3; its drawing is this
+    # project's own): the last 12 months' sales and 収支 as bars.
+    _section("収支グラフ（月ごと・売上と収支）")
+    var graph := Control.new()
+    graph.name = "ResultsGraph"
+    graph.custom_minimum_size = Vector2(0, 170)
+    graph.draw.connect(func(): _draw_results_graph(graph))
+    window_body.add_child(graph)
+    _updaters.append(func(): graph.queue_redraw())
     _section("アンケート")
     var survey := _text("")
     _updaters.append(func(): survey.text = main.survey_label.text)
@@ -1219,6 +1229,46 @@ func _fill_research() -> void:
                 ])
             index -= 1
         events.text = "\n".join(shown))
+
+
+const GRAPH_SALES := Color("3a7fc1")
+const GRAPH_PROFIT := Color("3aa56b")
+const GRAPH_LOSS := Color("d9534f")
+
+
+func _draw_results_graph(graph: Control) -> void:
+    var records: Array = main.simulation.economy.month_end_records
+    var font: Font = ThemeDB.fallback_font
+    var area := Rect2(Vector2(8, 8), graph.size - Vector2(16, 34))
+    graph.draw_rect(Rect2(Vector2.ZERO, graph.size), Color("f1ead4"))
+    if records.is_empty():
+        graph.draw_string(font, Vector2(16, graph.size.y / 2.0), "最初の月末から表示されます", HORIZONTAL_ALIGNMENT_LEFT, -1, 20, INK_SOFT)
+        return
+    var shown: Array = records.slice(maxi(0, records.size() - 12))
+    var biggest := 1.0
+    for record in shown:
+        var details: Dictionary = record["details"]
+        biggest = maxf(biggest, absf(float(details.get("month_sales_yen", 0))))
+        biggest = maxf(biggest, absf(float(details.get("month_result_yen", 0))))
+    var zero_y := area.position.y + area.size.y * 0.7
+    var up := area.size.y * 0.7
+    var down := area.size.y * 0.3
+    graph.draw_line(Vector2(area.position.x, zero_y), Vector2(area.end.x, zero_y), INK_SOFT, 1.0)
+    var slot := area.size.x / 12.0
+    for i in shown.size():
+        var details: Dictionary = shown[i]["details"]
+        var x := area.position.x + slot * i + 4
+        var sales := float(details.get("month_sales_yen", 0))
+        var result := float(details.get("month_result_yen", 0))
+        var sales_height := up * sales / biggest
+        graph.draw_rect(Rect2(x, zero_y - sales_height, slot * 0.4, sales_height), GRAPH_SALES)
+        var result_height := (up if result >= 0 else down) * absf(result) / biggest
+        var result_top := zero_y - result_height if result >= 0 else zero_y
+        graph.draw_rect(Rect2(x + slot * 0.42, result_top, slot * 0.4, result_height), GRAPH_PROFIT if result >= 0 else GRAPH_LOSS)
+        var month := (int(details.get("month_number", i + 1)) - 1) % 12 + 1
+        graph.draw_string(font, Vector2(x, graph.size.y - 6), "%d月" % month, HORIZONTAL_ALIGNMENT_LEFT, -1, 14, PAPER_TEXT)
+    graph.draw_string(font, Vector2(area.end.x - 150, 22), "■売上", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, GRAPH_SALES)
+    graph.draw_string(font, Vector2(area.end.x - 80, 22), "■収支", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, GRAPH_PROFIT)
 
 
 func _fill_system() -> void:

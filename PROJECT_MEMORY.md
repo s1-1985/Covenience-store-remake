@@ -2139,6 +2139,10 @@ open.
 **Task #112 (2026-09-26, decision 0183)**: tapping a building on the town map shows its name, its DATA4 wanted items and
 hours, and whether it is inside the store's area. The 買い物人口 is shown only where the guide gives it.
 
+**Task #113 (2026-09-26, decision 0184)**: 調査 shows a 収支グラフ (the last 12 months' sales and 収支).
+- Bug fix: two cleaners waited for each other for good, and the shelves emptied within two months.
+- A cleaner now gives a square up when it is occupied, or after 6 ticks blocked (REMAKE_BALANCED_DEFAULT).
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;

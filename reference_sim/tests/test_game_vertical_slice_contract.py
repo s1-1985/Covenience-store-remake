@@ -3943,6 +3943,20 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         preview = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("誘致する starts building the 交番", preview)
 
+    def test_results_graph_and_cleaners_do_not_block_each_other(self):
+        # Task #113: 調査 → 収支グラフ; and the cleaning deadlock fix.
+        simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
+        self.assertIn('"month_sales_yen": month_sales_yen,', simulation)
+        self.assertIn("func _clean_target_taken(cleaner) -> bool:", simulation)
+        self.assertIn("const CLEANER_GIVE_UP_TICKS := 6", simulation)
+        self.assertIn("(REMAKE_BALANCED_DEFAULT, staff_work.evidence_note).", simulation)
+        work_note = self.config["guide_starting_store"]["staff_work"]["evidence_note"]
+        self.assertIn("Task #113: REMAKE_BALANCED_DEFAULT, a cleaner gives a floor square up", work_note)
+        phone = (GAME_ROOT / "scripts" / "phone_ui.gd").read_text(encoding="utf-8")
+        self.assertIn("func _draw_results_graph(graph: Control) -> void:", phone)
+        smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
+        self.assertIn("after six days the shelves must still be mostly full", smoke)
+
     def test_town_building_card(self):
         # Task #112: a tapped building shows its name, DATA4 wants and hours,
         # and the 買い物人口 only where reference_sim's TOWN_FACILITIES has it.

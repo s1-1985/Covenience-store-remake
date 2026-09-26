@@ -2769,6 +2769,9 @@ func _capital_spent_this_month_yen() -> int:
 
 func _settle_month_end() -> void:
     var capital_yen := _capital_spent_this_month_yen()
+    # Task #113: the month's sales, kept with the settlement for 調査's
+    # 収支グラフ.
+    var month_sales_yen: int = (economy.recorded_revenue_yen() - _revenue_at_month_start) * MONTH_MULTIPLIER
     var four_day_net_result_yen: int = economy.cash_yen - _cash_at_month_start + capital_yen
     var month_result_yen: int = four_day_net_result_yen * MONTH_MULTIPLIER
     var adjustment_yen: int = month_result_yen - four_day_net_result_yen
@@ -2780,6 +2783,7 @@ func _settle_month_end() -> void:
             "four_day_net_result_yen": four_day_net_result_yen,
             "month_result_yen": month_result_yen,
             "capital_yen": capital_yen,
+            "month_sales_yen": month_sales_yen,
         }
     )
     _record_event("month_end_settlement", {
@@ -3193,7 +3197,22 @@ func _step_cleaning_tasks() -> void:
             continue
         match staff_member.state:
             "to_clean":
-                if _step_staff_walk(staff_member):
+                # Task #113 fix: two cleaners each heading for the square the
+                # other stands on waited for each other for ever (seen after
+                # a day of play), and nobody refilled the shelves. A cleaner
+                # gives the square up when someone stands on it or when it
+                # has not been able to move for CLEANER_GIVE_UP_TICKS
+                # (REMAKE_BALANCED_DEFAULT, staff_work.evidence_note).
+                if _clean_target_taken(staff_member) or int(staff_member.get_meta("blocked_ticks", 0)) >= CLEANER_GIVE_UP_TICKS:
+                    staff_member.set_meta("blocked_ticks", 0)
+                    staff_member.route.clear()
+                    staff_member.state = "idle"
+                    staff_member.rest_phase = "stale"
+                    continue
+                var before: Vector2i = staff_member.position
+                var arrived := _step_staff_walk(staff_member)
+                staff_member.set_meta("blocked_ticks", 0 if staff_member.position != before or arrived else int(staff_member.get_meta("blocked_ticks", 0)) + 1)
+                if arrived:
                     if staff_member.rest_phase == "stale":
                         staff_member.state = "idle"
                         continue
@@ -3233,6 +3252,22 @@ func _step_cleaning_tasks() -> void:
         staff_member.route = layout.find_path(staff_member.position, target)
         staff_member.rest_phase = ""
         staff_member.state = "to_clean"
+
+
+const CLEANER_GIVE_UP_TICKS := 6
+
+
+func _clean_target_taken(cleaner) -> bool:
+    if cleaner.route.is_empty():
+        return false
+    var goal: Vector2i = cleaner.route[cleaner.route.size() - 1]
+    for other in staff.all_staff():
+        if other != cleaner and other.position == goal:
+            return true
+    for customer in customers.active_customers():
+        if customer.position == goal:
+            return true
+    return false
 
 
 func _shelf_waiting_for_restock() -> bool:

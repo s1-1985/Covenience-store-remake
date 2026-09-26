@@ -240,7 +240,9 @@ def build(config):
                 "hours to clear the floor's dirt implies 内装 can also be opened while open (inference). "
                 "REMAKE_BALANCED_DEFAULT: fixtures can be placed, moved, swapped, rotated and sold, products "
                 "stocked and staff hired with customers inside; everyone re-routes, and an edit is refused only "
-                "when someone would be stranded."
+                "when someone would be stranded. "
+                "Task #113: REMAKE_BALANCED_DEFAULT, a cleaner gives a floor square up when someone stands "
+                "on it or after 6 ticks without moving (two cleaners once waited for each other for good)."
             ),
         },
     }

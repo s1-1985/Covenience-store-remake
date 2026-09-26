@@ -3126,6 +3126,8 @@ func _initialize() -> void:
         return
     if not _check_inducement():
         return
+    if not _check_shelves_stay_filled():
+        return
     if not _check_actions_while_open(config):
         return
 
@@ -4034,5 +4036,26 @@ func _check_inducement() -> bool:
         or not reloaded.bought_buildings().has(113)
     ):
         _fail("load must rebuild the induced facilities and the one under construction")
+        return false
+    return true
+
+
+# Task #113 fix: over several business days the staff keep the shelves
+# filled (two cleaners once blocked each other for good and nobody refilled
+# anything, so the shelves emptied within two months).
+func _check_shelves_stay_filled() -> bool:
+    var fresh: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(CONFIG_PATH))
+    var simulation = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    simulation.try_buy_store_site(Vector2i(13, 21), "small_top")
+    var full: int = simulation.inventory.total_stock_units()
+    for day in 6:
+        var refills_before: int = simulation.event_log.count_type("restock_started")
+        for minute in 1440:
+            simulation.tick()
+        if simulation.event_log.count_type("restock_started") <= refills_before:
+            _fail("staff must go on refilling shelves every day (day %d)" % day)
+            return false
+    if simulation.inventory.total_stock_units() < full * 3 / 4:
+        _fail("after six days the shelves must still be mostly full: %d of %d" % [simulation.inventory.total_stock_units(), full])
         return false
     return true
