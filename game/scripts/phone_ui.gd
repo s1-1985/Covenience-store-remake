@@ -1197,7 +1197,11 @@ func _fill_staff() -> void:
             skills.text = "レジ%d 接客%d 補充%d 清掃%d 警備%d" % [
                 member.register_skill, member.service_skill, member.replenishment_skill,
                 member.cleaning_skill, member.security_skill,
-            ])
+            ]
+            # Task #133: the original's staff screen also shows 教育.
+            var figures: Dictionary = main.simulation._staff_candidate_catalog.get(member.candidate_id, {})
+            if main.simulation._program_demand != null and figures.has("education"):
+                skills.text = "教育%d " % int(figures["education"]) + skills.text)
 
 
 # Hiring into one post: every candidate not already working elsewhere,

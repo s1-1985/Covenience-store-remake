@@ -122,6 +122,35 @@ def build_block(config):
         if season:
             seasons[product] = season
 
+    # The staff candidates (CONFIRMED_BINARY): DAT/TOWN0001.BIN after the
+    # 17-byte header and the 60x50 town (8 bytes a square) holds 35 records of
+    # 54 bytes (the same in all four towns). +2 name (msg 150+), +3 age, +4
+    # female, +9 hourly wage (u16); +21.. the program's staff bytes +0x10..:
+    # 体力 max/now, 教育, 機敏さ, 社交性, 学歴, then レジ/補充/接客/清掃/警備 and
+    # their growth ceilings in the same order. The hire screen shows 体力, 学歴
+    # (+0x15), 機敏さ, 社交性 (0x800703E4); the staff screen 教育 (+0x12) with
+    # the five skills (0x8004A494).
+    names = {int(line[:3]): line[4:].strip() for line in (ROOT / "assets" / "raw" / "ps1_disc_analysis_v1" / "text" / "MSG00.txt").read_text(encoding="utf-8").splitlines() if line[:3].isdigit()}
+    by_name = {c["display_name"]: c["candidate_id"] for c in config["staff_candidates"]}
+    # The guide transcription's two misread names (docs/research/ps1-disc-
+    # analysis-crosscheck-2026-09-26.md).
+    by_name["浜田裕子"] = by_name["浜田夕子"]
+    by_name["杉村真智子"] = by_name["杉村真知子"]
+    town = (ROOT / "assets" / "raw" / "ps1_disc_analysis_v1" / "files" / "DAT" / "TOWN0001.BIN").read_bytes()
+    staff = {}
+    for index in range(35):
+        raw = town[17 + 24000 + 54 * index:17 + 24000 + 54 * (index + 1)]
+        v = list(raw[21:37])
+        name = names[150 + raw[2]]
+        staff[by_name[name]] = {
+            "display_name": name, "age_years": raw[3], "salary_yen_per_day_24h": (raw[9] | raw[10] << 8) * 24,
+            "stamina": v[0], "education": v[2], "agility": v[3], "sociability": v[4], "academic_background": v[5],
+            "register_skill": v[6], "replenishment_skill": v[7], "service_skill": v[8], "cleaning_skill": v[9],
+            "security_skill": v[10], "register_skill_growth_ceiling": v[11],
+            "replenishment_skill_growth_ceiling": v[12], "service_skill_growth_ceiling": v[13],
+            "cleaning_skill_growth_ceiling": v[14], "security_skill_growth_ceiling": v[15],
+        }
+
     block = {
         "evidence_note": (
             "Task #130, CONFIRMED_BINARY (PS program SLPS_007.82, docs/research/ps1-executable-formulas-"
@@ -138,7 +167,10 @@ def build_block(config):
             "for one opened during the game, the guide's rival figures below, sells at the list price, has "
             "every category it may sell (tobacco, alcohol and medicine only with the permit) and no parking; "
             "a group of n takes n units of an item only when the shelf still holds n; mix 136's pair for row 144 "
-            "(past the table's end) is left out."
+            "(past the table's end) is left out. Task #133, CONFIRMED_BINARY: the staff candidates' figures (DAT/TOWN0001.BIN) "
+            "including 教育 (the staff screen's, not on the guide's cards), and staff growth (0x8003AA58): a "
+            "task raises a skill by 1 with a chance of the manager's 学歴 out of 100, never past the staff "
+            "member's own 教育/社交性/機敏さ, and past the skill's growth ceiling only 1 time in 16."
         ),
         "visit_rows": rows,
         "customer_mixes": mixes,
@@ -157,6 +189,12 @@ def build_block(config):
         "popularity_bonus": 20,
         "weather_importance_bonus": 20,
         "rival_store": {"price_percent": 100, "service": 30, "popularity": 20, "parking": 0, "hours": "AM7:00〜PM11:00"},
+        "staff_candidates": staff,
+        "staff_growth": {"skill_caps": {
+            "register_skill": "education", "service_skill": "sociability", "replenishment_skill": "agility",
+            "cleaning_skill": "sociability", "security_skill": "education",
+        }, "over_ceiling_chance_one_in": 16, "cleaning_while_restocking_below": 100,
+            "anger_decline_chance_one_in": 3, "anger_rating_chance_one_in": 10},
     }
     assert thresholds == [
         [sum(month[:k + 1]) for k in range(4)] for month in config["weather"]["monthly_percentages"]

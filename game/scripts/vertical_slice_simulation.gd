@@ -309,6 +309,9 @@ var _chain_visitors_total := 0
 func _init(source_config: Dictionary) -> void:
     config = source_config.duplicate(true)
     _require_config()
+    # Task #133: the real game's staff are the program's own figures.
+    if bool(config["simulation"].get("building_demand_enabled", false)) and config.has("ps1_program_tables"):
+        _apply_program_staff_figures()
     for entry in config["fixture_catalog"]:
         _fixture_catalog[str(entry["catalog_id"])] = entry
     for entry in config["permits"]:
@@ -3096,10 +3099,20 @@ func _advance_customer(customer) -> void:
                     # random stream, not a new one per mechanic" convention
                     # task #55's incidental-want-product draw already
                     # established for this client.
+                    # Task #133: in the real game the program's odds
+                    # (0x80035D58, CONFIRMED_BINARY): 評価 -1 one time in 10,
+                    # and one time in 3 every staff member loses a point.
+                    var penalty_one_in: int = StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_DENOMINATOR
+                    if _program_demand != null:
+                        var growth_rules: Dictionary = _program_demand.tables["staff_growth"]
+                        penalty_one_in = int(growth_rules["anger_rating_chance_one_in"])
+                        if _demand_rng.randi_range(1, int(growth_rules["anger_decline_chance_one_in"])) == 1:
+                            for declining in staff.all_staff():
+                                _staff_growth.apply_program_decline(declining)
+                            _record_event("staff_skill_decline", {"customer_id": customer.customer_id})
                     var rating_penalty_applied := (
-                        _demand_rng.randi_range(
-                            1, StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_DENOMINATOR
-                        ) <= StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_NUMERATOR
+                        _demand_rng.randi_range(1, penalty_one_in)
+                        <= StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_NUMERATOR
                     )
                     if rating_penalty_applied:
                         # Task #129: never below 5 (the program only takes
@@ -3149,9 +3162,7 @@ func _advance_customer(customer) -> void:
                 # whether or not the customer actually bought anything --
                 # the guide's growth model is about performing the work
                 # task, not the resulting transaction.
-                var checkout_growth: Array[Dictionary] = _staff_growth.apply_checkout_growth(
-                    checkout_staff
-                )
+                var checkout_growth: Array[Dictionary] = _grow_staff(checkout_staff, "checkout")
                 if not checkout_growth.is_empty():
                     _record_event("staff_skill_growth", {
                         "staff_id": checkout_staff.staff_id,
@@ -4309,21 +4320,53 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
     # Task #129 (CONFIRMED_BINARY, msg 208/209): the rank change is told.
     if star_rating != previous_stars:
         _record_event("store_rank_changed", {"stars": star_rating, "raised": star_rating > previous_stars})
-    # The manager's advice (CONFIRMED_BINARY, msg 251-258).
-    # REMAKE_BALANCED_DEFAULT: the chance is the manager's 社交性 out of 100
-    # -- the program reads a byte of the manager's staff record (+0x15) that
-    # every magazine article raises; which of the candidate card's
-    # abilities that byte is was not established.
-    var advice: String = _store_rating.manager_advice(evaluation, _manager_sociability(), _demand_rng)
+    # The manager's advice (CONFIRMED_BINARY, msg 251-258): with a chance of
+    # the manager's 学歴 out of 100 (the staff byte +0x15, which the hire
+    # screen shows as 学歴 and every magazine article raises; task #133).
+    var advice: String = _store_rating.manager_advice(evaluation, _manager_academic(), _demand_rng)
     if not advice.is_empty():
         _record_event("manager_advice", {"text": advice})
 
 
-func _manager_sociability() -> int:
+# The manager's 学歴 (the program's staff byte +0x15, task #133): the chance
+# of the manager's advice and of the staff's growth.
+func _manager_academic() -> int:
     var manager = staff.members.get(str(config["staff"].get("manager_staff_id", "")))
     if manager == null:
         return 0
-    return int(_staff_candidate_catalog.get(manager.candidate_id, {}).get("sociability", 0))
+    return int(_staff_candidate_catalog.get(manager.candidate_id, {}).get("academic_background", 0))
+
+
+# Task #133: the candidates' and the opening staff's figures from the PS
+# program's staff table (ps1_program_tables.staff_candidates, CONFIRMED_BINARY)
+# over the guide transcription (12 of 35 differ slightly; 教育 is new).
+func _apply_program_staff_figures() -> void:
+    var program: Dictionary = config["ps1_program_tables"]["staff_candidates"]
+    for entry in config["staff_candidates"]:
+        var figures: Dictionary = program.get(str(entry["candidate_id"]), {})
+        for key in figures:
+            entry[key] = figures[key]
+    for member in config["staff"]["members"]:
+        var figures: Dictionary = program.get(str(member.get("candidate_id", "")), {})
+        for key in figures:
+            if member.has(key) or key.ends_with("_skill") or key.ends_with("_ceiling") or key == "display_name":
+                member[key] = figures[key]
+
+
+# Task #133: a task's growth -- the program's rule in the real game, the
+# guide-based +1 in the prototype scenarios.
+func _grow_staff(staff_member, task: String) -> Array[Dictionary]:
+    if _program_demand == null:
+        match task:
+            "checkout":
+                return _staff_growth.apply_checkout_growth(staff_member)
+            "restock":
+                return _staff_growth.apply_replenish_growth(staff_member)
+        return _staff_growth.apply_clean_growth(staff_member)
+    return _staff_growth.apply_program_growth(
+        staff_member, task, _manager_academic(), _staff_candidate_catalog.get(staff_member.candidate_id, {}),
+        _program_demand.tables["staff_growth"], float(_store_values()["cleaning"]), _demand_rng
+    )
 
 
 func _evaluate_terminal_state() -> void:
@@ -4676,7 +4719,7 @@ func _complete_restock(staff_member) -> void:
     # applied whether or not any units actually needed restocking (the
     # guide's growth model is about performing the work task, not its
     # economic result) -- same rationale as checkout growth above.
-    var restock_growth: Array[Dictionary] = _staff_growth.apply_replenish_growth(staff_member)
+    var restock_growth: Array[Dictionary] = _grow_staff(staff_member, "restock")
     if not restock_growth.is_empty():
         _record_event("staff_skill_growth", {
             "staff_id": staff_member.staff_id,
@@ -4779,7 +4822,7 @@ func _step_cleaning_tasks() -> void:
                 staff_member.restock_ticks_remaining -= 1
                 if staff_member.restock_ticks_remaining <= 0:
                     _dirty_cells.erase(staff_member.position)
-                    var growth: Array[Dictionary] = _staff_growth.apply_clean_growth(staff_member)
+                    var growth: Array[Dictionary] = _grow_staff(staff_member, "clean")
                     _record_event("staff_cleaned", {
                         "staff_id": staff_member.staff_id,
                         "cell": [staff_member.position.x, staff_member.position.y],

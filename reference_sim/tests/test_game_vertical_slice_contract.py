@@ -4005,7 +4005,10 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("# --- Task #125: the store's storage (倉庫). REMAKE_BALANCED_DEFAULT", simulation)
         self.assertNotIn("recognition", simulation)
         self.assertIn("# --- Task #129: a store's 評価 and 人気 as the PS program keeps them", simulation)
-        self.assertIn("REMAKE_BALANCED_DEFAULT: the chance is the manager's 社交性", simulation)
+        # Task #133: the advice chance is the manager's 学歴 (CONFIRMED_BINARY).
+        self.assertIn("the manager's 学歴 out of 100 (the staff byte +0x15", simulation)
+        self.assertIn("func apply_program_growth(", (GAME_ROOT / "scripts" / "domain" / "staff_growth.gd").read_text(encoding="utf-8"))
+        self.assertEqual(len(self.config["ps1_program_tables"]["staff_candidates"]), 35)
         self.assertIn("with a new store's 評価 and 人気", simulation)
         self.assertIn("const PROMOTION_CASH_MULTIPLE := 5", simulation)
         self.assertIn('"store_renovation"', re.search(r"const CAPITAL_EXPENSE_TYPES := \[(.*?)\]", simulation, re.S).group(1))

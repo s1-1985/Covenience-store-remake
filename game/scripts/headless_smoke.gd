@@ -3676,6 +3676,44 @@ func _check_program_demand() -> bool:
     if demand.choose_store(row, Vector2i(9, 10), stores, rng) != -1:
         _fail("a car customer needs a car park")
         return false
+    # Task #133: staff growth as the program does it (0x8003AA58).
+    var growth = StaffGrowthScript.new()
+    var rules: Dictionary = tables["staff_growth"]
+    var learner = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh)).staff.all_staff()[1]
+    var candidate := {"education": learner.register_skill + 1, "sociability": 100, "agility": 100}
+    learner.register_skill_growth_ceiling = 100
+    var grown: int = learner.register_skill
+    for attempt in 5:
+        growth.apply_program_growth(learner, "checkout", 100, candidate, rules, 100.0, rng)
+    if learner.register_skill != grown + 1:
+        _fail("レジ grows with a 学歴 100 manager but never past the staff member's own 教育: %d" % learner.register_skill)
+        return false
+    var service_before: int = learner.service_skill
+    for attempt in 5:
+        growth.apply_program_growth(learner, "checkout", 0, candidate, rules, 100.0, rng)
+    if learner.service_skill != service_before:
+        _fail("a manager with 学歴 0 never makes the staff grow")
+        return false
+    learner.service_skill_growth_ceiling = learner.service_skill
+    var past_ceiling := 0
+    for attempt in 320:
+        var before_try: int = learner.service_skill
+        growth.apply_program_growth(learner, "checkout", 100, candidate, rules, 100.0, rng)
+        if learner.service_skill > before_try:
+            past_ceiling += 1
+        learner.service_skill = before_try
+    if past_ceiling < 8 or past_ceiling > 36:
+        _fail("past its growth ceiling a skill grows 1 time in 16: %d/320" % past_ceiling)
+        return false
+    growth.apply_program_decline(learner)
+    if learner.register_skill != grown:
+        _fail("an angry customer can cost the staff a point")
+        return false
+    var real = VerticalSliceSimulationScript.new(GuideStartingStoreScript.apply(fresh))
+    var manager_figures: Dictionary = tables["staff_candidates"][str(real.staff.members[str(real.config["staff"]["manager_staff_id"])].candidate_id)]
+    if real._manager_academic() != int(manager_figures["academic_background"]) or not real._staff_candidate_catalog.values()[0].has("education"):
+        _fail("the real game's staff carry the program's figures, 学歴 and 教育 included")
+        return false
     # Task #131: extras -- in season always, out of season 1 in 10, else
     # skipped at or under 集中力.
     var extra_kept := 0

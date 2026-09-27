@@ -1052,3 +1052,6 @@ msgstr "宣伝を中止しました"
 
 msgid "cars turned away"
 msgstr "車を駐車できないお客さんがいます"
+
+msgid "staff skill decline"
+msgstr "店員の能力が下がった"
