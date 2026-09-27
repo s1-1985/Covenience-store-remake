@@ -41,6 +41,8 @@ const SITE_BLOCKED_COLOR := Color("ef476f")
 const TAP_SLOP_PIXELS := 12.0
 
 signal site_tapped(origin: Vector2i)
+# Task #101: a tap on the map outside site selection (e.g. on a rival store).
+signal map_tapped(tile: Vector2i)
 
 var simulation
 var map_tile_pixels := 24.0
@@ -57,6 +59,9 @@ var _view_centered := false
 var selecting_site := false
 var site_cursor := Vector2i(-1, -1)
 var site_cursor_ok := false
+# Task #111: the cursor also marks a facility's squares while choosing where
+# to induce it.
+var site_cursor_size := Vector2i(2, 2)
 var _press_travel := 0.0
 
 
@@ -132,7 +137,7 @@ func show_site_cursor(origin: Vector2i, ok: bool) -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if not visible or guide_map().is_empty():
         return
-    if selecting_site and (event is InputEventScreenTouch or event is InputEventMouseButton):
+    if event is InputEventScreenTouch or event is InputEventMouseButton:
         if event is InputEventMouseButton and event.button_index != MOUSE_BUTTON_LEFT:
             return
         if event.pressed:
@@ -144,7 +149,10 @@ func _unhandled_input(event: InputEvent) -> void:
         var shown := view_tiles()
         if local_point.x < 0 or local_point.y < 0 or local_point.x >= shown.x * map_tile_pixels or local_point.y >= shown.y * map_tile_pixels:
             return
-        site_tapped.emit(tile_at_local(local_point))
+        if selecting_site:
+            site_tapped.emit(tile_at_local(local_point))
+        else:
+            map_tapped.emit(tile_at_local(local_point))
         get_viewport().set_input_as_handled()
         return
     var relative := Vector2.ZERO
@@ -262,10 +270,12 @@ func _draw_guide_map(guide: Dictionary) -> void:
                 _draw_tile(str(tiles.get(kind, "map_grass_plain")), rect)
     var shown_rect := Rect2(Vector2(view_origin_tile), Vector2(shown))
     var bought: Array = simulation.bought_buildings()
-    for index in guide["buildings"].size():
+    # Task #111: the simulation's own list, which grows with 誘致.
+    var map_buildings: Array = simulation.store_site.buildings if simulation.store_site != null else guide["buildings"]
+    for index in map_buildings.size():
         if bought.has(index):
             continue
-        var building: Dictionary = guide["buildings"][index]
+        var building: Dictionary = map_buildings[index]
         var tile: Array = building["tile"]
         var size: Array = building["size"]
         var footprint := Rect2(Vector2(int(tile[0]), int(tile[1])), Vector2(int(size[0]), int(size[1])))
@@ -275,8 +285,10 @@ func _draw_guide_map(guide: Dictionary) -> void:
     # The player's store: the flat 本店 mark seen on the original town map
     # (CONFIRMED_VISUAL, video crop) on the 2x2 site the player bought
     # (DATA4 コンビニ(自) 2×2), on paving.
-    if simulation.has_store_site():
-        var mark := Rect2(Vector2(simulation.store_site_origin), Vector2(2, 2))
+    # Task #123: 本店 is store 0 whichever store is being looked at.
+    var head_origin: Vector2i = simulation.store_field(0, "store_site_origin")
+    if head_origin != simulation.NO_STORE_SITE:
+        var mark := Rect2(Vector2(head_origin), Vector2(2, 2))
         if shown_rect.encloses(mark):
             var mark_rect := Rect2(mark.position * t - origin, mark.size * t)
             for dy in 2:
@@ -284,16 +296,48 @@ func _draw_guide_map(guide: Dictionary) -> void:
                     _draw_tile("map_concrete", Rect2(mark_rect.position + Vector2(dx, dy) * t, Vector2(t, t)))
             _draw_tile(str(guide["store_mark_sprite"]), mark_rect)
     # Rival stores: with the guide map their positions are map squares
-    # (task #95), each a 2x2 store.
+    # (task #95), each a 2x2 store, drawn as the red 本/02 marks cut from
+    # the gameplay video (task #98, guide_town_map.rival_stores).
+    var rival_sprites := {}
+    for entry in guide.get("rival_stores", []):
+        rival_sprites[str(entry["id"])] = str(entry["sprite"])
     for rival in simulation._rival_stores:
         var cell := Vector2(rival["position"])
         if not shown_rect.encloses(Rect2(cell, Vector2(2, 2))):
             continue
-        var marker := Rect2(cell * t - origin, Vector2(2 * t, 2 * t)).grow(-1)
-        draw_rect(marker, RIVAL_MARKER_COLOR, true)
-        draw_rect(marker, MARKER_OUTLINE_COLOR, false, 1.0)
+        var marker := Rect2(cell * t - origin, Vector2(2 * t, 2 * t))
+        if rival_sprites.has(str(rival["id"])):
+            for dy in 2:
+                for dx in 2:
+                    _draw_tile("map_concrete", Rect2(marker.position + Vector2(dx, dy) * t, Vector2(t, t)))
+            _draw_tile(rival_sprites[str(rival["id"])], marker)
+        else:
+            draw_rect(marker.grow(-1), RIVAL_MARKER_COLOR, true)
+            draw_rect(marker.grow(-1), MARKER_OUTLINE_COLOR, false, 1.0)
+    # Task #101: rival branches the player bought, as the blue 02 mark
+    # (gameplay video crop, map_blue_02).
+    for branch in simulation.owned_branches:
+        var branch_cell := Vector2(branch["position"])
+        if not shown_rect.encloses(Rect2(branch_cell, Vector2(2, 2))):
+            continue
+        var branch_rect := Rect2(branch_cell * t - origin, Vector2(2 * t, 2 * t))
+        for dy in 2:
+            for dx in 2:
+                _draw_tile("map_concrete", Rect2(branch_rect.position + Vector2(dx, dy) * t, Vector2(t, t)))
+        _draw_tile("map_blue_02", branch_rect)
+    # Task #111: the lot of a facility under construction (誘致用地).
+    if not simulation.pending_inducement.is_empty():
+        var pending: Dictionary = simulation.pending_inducement
+        var facility: Dictionary = simulation._inducement_facility(str(pending["facility_id"]))
+        var lot := Rect2(
+            Vector2(pending["origin"]) * t - origin,
+            Vector2(int(facility["size"][0]), int(facility["size"][1])) * t
+        )
+        draw_rect(lot, Color(0.85, 0.7, 0.3, 0.55), true)
+        draw_rect(lot, Color("7a4b00"), false, 2.0)
+        draw_string(ThemeDB.fallback_font, lot.position + Vector2(4, 18), "工事中", HORIZONTAL_ALIGNMENT_LEFT, -1, 16, Color("3b2a10"))
     if selecting_site and site_cursor.x >= 0:
-        var cursor := Rect2(Vector2(site_cursor) * t - origin, Vector2(2 * t, 2 * t))
+        var cursor := Rect2(Vector2(site_cursor) * t - origin, Vector2(site_cursor_size) * t)
         var cursor_color := SITE_OK_COLOR if site_cursor_ok else SITE_BLOCKED_COLOR
         draw_rect(cursor, Color(cursor_color, 0.35), true)
         draw_rect(cursor, cursor_color, false, 3.0)

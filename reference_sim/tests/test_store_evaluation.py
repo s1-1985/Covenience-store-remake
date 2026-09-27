@@ -40,10 +40,11 @@ class StoreEvaluationSecurityAndCleaningValueTests(unittest.TestCase):
         grid = StoreGrid(5, 5, size_tier="medium")
         runtime = StoreEvaluationRuntime(roster, grid)
 
-        self.assertEqual(runtime.cleaning_value(), (10 + 20) * 1.65)
-        self.assertEqual(runtime.security_value(), (10 + 20) * 1.65)
+        # Task #128: the program divides by the size-tier base value.
+        self.assertEqual(runtime.cleaning_value(), (10 + 20) * 100 // 165)
+        self.assertEqual(runtime.security_value(), (10 + 20) * 100 // 275)
         coverage = SecurityFacilityCoverage(police_box_area_tiles=2)
-        self.assertEqual(runtime.security_value(coverage), (10 + 20) * 1.65 + 20)
+        self.assertEqual(runtime.security_value(coverage), (10 + 20) * 100 // 275 + 20)
 
     def test_size_tier_is_carried_from_store_variant(self):
         from conveni_sim.baseline_data import STORE_VARIANTS
@@ -94,7 +95,9 @@ class StoreEvaluationMonthEndTests(unittest.TestCase):
 
         self.assertTrue(evaluation.upgrade_applies)
         self.assertEqual(runtime.internal_rating_value, evaluation.next_internal_value)
-        self.assertEqual(runtime.internal_rating_value, 55)
+        # Task #128: with the program's (smaller) 警備/清掃 the upgrade's +5
+        # comes with a -1 for each value below the store's lower line.
+        self.assertEqual(runtime.internal_rating_value, 55 + evaluation.downgrade_points)
 
     def test_set_internal_rating_value_rejects_out_of_range(self):
         runtime = self.make_runtime()

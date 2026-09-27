@@ -1,6 +1,7 @@
 extends Control
 
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
+const PhoneUIScript := preload("res://scripts/phone_ui.gd")
 const GAMEPLAY_SCENE_PATH := "res://scenes/main.tscn"
 
 @onready var new_game_button: Button = $Panel/Margin/VBox/NewGameButton
@@ -18,16 +19,21 @@ func _ready() -> void:
     # Task #96: the calm town tune (this project's own, see sound_synth.gd).
     SoundManager.play_theme("town")
     if OS.has_feature("android") or "--android-preview" in OS.get_cmdline_user_args():
+        # Task #110: the same look as the phone game screen (phone_ui.gd).
+        PhoneUIScript.add_field($Background)
         $Panel.offset_left = 340
         $Panel.offset_right = 940
-        $Panel.offset_top = 140
-        $Panel.offset_bottom = 580
-        var mobile_theme := $Panel.theme.duplicate() as Theme
-        mobile_theme.default_font_size = 22
-        mobile_theme.set_font_size("font_size", "Button", 26)
-        $Panel.theme = mobile_theme
+        $Panel.offset_top = 120
+        $Panel.offset_bottom = 600
+        $Panel.theme = PhoneUIScript.make_theme()
+        $Panel/Margin/VBox/Title.text = "ザ・コンビニ\n～あの町を独占せよ～"
+        $Panel/Margin/VBox/Title.add_theme_font_size_override("font_size", 40)
+        $Panel/Margin/VBox/Title.add_theme_color_override("font_color", Color("2f7d68"))
+        $Panel/Margin/VBox/Subtitle.text = "再現試作（開発途中のプレイ確認版）"
+        $Panel/Margin/VBox/Subtitle.add_theme_color_override("font_color", Color("6b6152"))
         for button in [new_game_button, continue_button, quit_button]:
-            button.custom_minimum_size.y = 72
+            button.custom_minimum_size.y = 80
+            button.add_theme_font_size_override("font_size", 30)
     _save_service = SaveGameServiceScript.new()
     continue_button.disabled = not _save_service.save_exists()
     new_game_button.pressed.connect(_on_new_game_pressed)

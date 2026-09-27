@@ -1,0 +1,940 @@
+{
+  "banks": [
+    {
+      "bank": "BGM/BGM01.VH",
+      "program_field": 9,
+      "tone_field": 23,
+      "sample_field": 15,
+      "header_size": 7200,
+      "body_size": 282512,
+      "header_program_layout_matches": true,
+      "sample_size_sum": 282512,
+      "sample_size_sum_matches_body": true,
+      "samples": [
+        {
+          "index": 1,
+          "length_units8": 2422,
+          "length_bytes": 19376
+        },
+        {
+          "index": 2,
+          "length_units8": 1642,
+          "length_bytes": 13136
+        },
+        {
+          "index": 3,
+          "length_units8": 3104,
+          "length_bytes": 24832
+        },
+        {
+          "index": 4,
+          "length_units8": 3488,
+          "length_bytes": 27904
+        },
+        {
+          "index": 5,
+          "length_units8": 2684,
+          "length_bytes": 21472
+        },
+        {
+          "index": 6,
+          "length_units8": 1682,
+          "length_bytes": 13456
+        },
+        {
+          "index": 7,
+          "length_units8": 2198,
+          "length_bytes": 17584
+        },
+        {
+          "index": 8,
+          "length_units8": 2070,
+          "length_bytes": 16560
+        },
+        {
+          "index": 9,
+          "length_units8": 5040,
+          "length_bytes": 40320
+        },
+        {
+          "index": 10,
+          "length_units8": 4902,
+          "length_bytes": 39216
+        },
+        {
+          "index": 11,
+          "length_units8": 340,
+          "length_bytes": 2720
+        },
+        {
+          "index": 12,
+          "length_units8": 1248,
+          "length_bytes": 9984
+        },
+        {
+          "index": 13,
+          "length_units8": 882,
+          "length_bytes": 7056
+        },
+        {
+          "index": 14,
+          "length_units8": 3018,
+          "length_bytes": 24144
+        },
+        {
+          "index": 15,
+          "length_units8": 594,
+          "length_bytes": 4752
+        }
+      ]
+    },
+    {
+      "bank": "BGM/BGM02.VH",
+      "program_field": 10,
+      "tone_field": 19,
+      "sample_field": 14,
+      "header_size": 7712,
+      "body_size": 294880,
+      "header_program_layout_matches": true,
+      "sample_size_sum": 294880,
+      "sample_size_sum_matches_body": true,
+      "samples": [
+        {
+          "index": 1,
+          "length_units8": 882,
+          "length_bytes": 7056
+        },
+        {
+          "index": 2,
+          "length_units8": 340,
+          "length_bytes": 2720
+        },
+        {
+          "index": 3,
+          "length_units8": 456,
+          "length_bytes": 3648
+        },
+        {
+          "index": 4,
+          "length_units8": 2526,
+          "length_bytes": 20208
+        },
+        {
+          "index": 5,
+          "length_units8": 1248,
+          "length_bytes": 9984
+        },
+        {
+          "index": 6,
+          "length_units8": 2238,
+          "length_bytes": 17904
+        },
+        {
+          "index": 7,
+          "length_units8": 1710,
+          "length_bytes": 13680
+        },
+        {
+          "index": 8,
+          "length_units8": 5196,
+          "length_bytes": 41568
+        },
+        {
+          "index": 9,
+          "length_units8": 5172,
+          "length_bytes": 41376
+        },
+        {
+          "index": 10,
+          "length_units8": 978,
+          "length_bytes": 7824
+        },
+        {
+          "index": 11,
+          "length_units8": 1654,
+          "length_bytes": 13232
+        },
+        {
+          "index": 12,
+          "length_units8": 4046,
+          "length_bytes": 32368
+        },
+        {
+          "index": 13,
+          "length_units8": 5042,
+          "length_bytes": 40336
+        },
+        {
+          "index": 14,
+          "length_units8": 5372,
+          "length_bytes": 42976
+        }
+      ]
+    },
+    {
+      "bank": "BGM/BGM03.VH",
+      "program_field": 10,
+      "tone_field": 25,
+      "sample_field": 19,
+      "header_size": 7712,
+      "body_size": 295024,
+      "header_program_layout_matches": true,
+      "sample_size_sum": 295024,
+      "sample_size_sum_matches_body": true,
+      "samples": [
+        {
+          "index": 1,
+          "length_units8": 1122,
+          "length_bytes": 8976
+        },
+        {
+          "index": 2,
+          "length_units8": 882,
+          "length_bytes": 7056
+        },
+        {
+          "index": 3,
+          "length_units8": 530,
+          "length_bytes": 4240
+        },
+        {
+          "index": 4,
+          "length_units8": 686,
+          "length_bytes": 5488
+        },
+        {
+          "index": 5,
+          "length_units8": 3504,
+          "length_bytes": 28032
+        },
+        {
+          "index": 6,
+          "length_units8": 3282,
+          "length_bytes": 26256
+        },
+        {
+          "index": 7,
+          "length_units8": 340,
+          "length_bytes": 2720
+        },
+        {
+          "index": 8,
+          "length_units8": 10,
+          "length_bytes": 80
+        },
+        {
+          "index": 9,
+          "length_units8": 456,
+          "length_bytes": 3648
+        },
+        {
+          "index": 10,
+          "length_units8": 2526,
+          "length_bytes": 20208
+        },
+        {
+          "index": 11,
+          "length_units8": 1248,
+          "length_bytes": 9984
+        },
+        {
+          "index": 12,
+          "length_units8": 2238,
+          "length_bytes": 17904
+        },
+        {
+          "index": 13,
+          "length_units8": 1710,
+          "length_bytes": 13680
+        },
+        {
+          "index": 14,
+          "length_units8": 5196,
+          "length_bytes": 41568
+        },
+        {
+          "index": 15,
+          "length_units8": 5172,
+          "length_bytes": 41376
+        },
+        {
+          "index": 16,
+          "length_units8": 1108,
+          "length_bytes": 8864
+        },
+        {
+          "index": 17,
+          "length_units8": 5602,
+          "length_bytes": 44816
+        },
+        {
+          "index": 18,
+          "length_units8": 288,
+          "length_bytes": 2304
+        },
+        {
+          "index": 19,
+          "length_units8": 978,
+          "length_bytes": 7824
+        }
+      ]
+    },
+    {
+      "bank": "BGM/BGM04.VH",
+      "program_field": 5,
+      "tone_field": 23,
+      "sample_field": 16,
+      "header_size": 5152,
+      "body_size": 293136,
+      "header_program_layout_matches": true,
+      "sample_size_sum": 293136,
+      "sample_size_sum_matches_body": true,
+      "samples": [
+        {
+          "index": 1,
+          "length_units8": 1000,
+          "length_bytes": 8000
+        },
+        {
+          "index": 2,
+          "length_units8": 594,
+          "length_bytes": 4752
+        },
+        {
+          "index": 3,
+          "length_units8": 4280,
+          "length_bytes": 34240
+        },
+        {
+          "index": 4,
+          "length_units8": 416,
+          "length_bytes": 3328
+        },
+        {
+          "index": 5,
+          "length_units8": 850,
+          "length_bytes": 6800
+        },
+        {
+          "index": 6,
+          "length_units8": 1242,
+          "length_bytes": 9936
+        },
+        {
+          "index": 7,
+          "length_units8": 1202,
+          "length_bytes": 9616
+        },
+        {
+          "index": 8,
+          "length_units8": 2062,
+          "length_bytes": 16496
+        },
+        {
+          "index": 9,
+          "length_units8": 1514,
+          "length_bytes": 12112
+        },
+        {
+          "index": 10,
+          "length_units8": 1548,
+          "length_bytes": 12384
+        },
+        {
+          "index": 11,
+          "length_units8": 1562,
+          "length_bytes": 12496
+        },
+        {
+          "index": 12,
+          "length_units8": 1552,
+          "length_bytes": 12416
+        },
+        {
+          "index": 13,
+          "length_units8": 6782,
+          "length_bytes": 54256
+        },
+        {
+          "index": 14,
+          "length_units8": 4656,
+          "length_bytes": 37248
+        },
+        {
+          "index": 15,
+          "length_units8": 5390,
+          "length_bytes": 43120
+        },
+        {
+          "index": 16,
+          "length_units8": 1992,
+          "length_bytes": 15936
+        }
+      ]
+    },
+    {
+      "bank": "BGM/BGM05.VH",
+      "program_field": 12,
+      "tone_field": 28,
+      "sample_field": 21,
+      "header_size": 8736,
+      "body_size": 262112,
+      "header_program_layout_matches": true,
+      "sample_size_sum": 262112,
+      "sample_size_sum_matches_body": true,
+      "samples": [
+        {
+          "index": 1,
+          "length_units8": 1702,
+          "length_bytes": 13616
+        },
+        {
+          "index": 2,
+          "length_units8": 562,
+          "length_bytes": 4496
+        },
+        {
+          "index": 3,
+          "length_units8": 1186,
+          "length_bytes": 9488
+        },
+        {
+          "index": 4,
+          "length_units8": 362,
+          "length_bytes": 2896
+        },
+        {
+          "index": 5,
+          "length_units8": 2464,
+          "length_bytes": 19712
+        },
+        {
+          "index": 6,
+          "length_units8": 3148,
+          "length_bytes": 25184
+        },
+        {
+          "index": 7,
+          "length_units8": 1476,
+          "length_bytes": 11808
+        },
+        {
+          "index": 8,
+          "length_units8": 1714,
+          "length_bytes": 13712
+        },
+        {
+          "index": 9,
+          "length_units8": 2644,
+          "length_bytes": 21152
+        },
+        {
+          "index": 10,
+          "length_units8": 2970,
+          "length_bytes": 23760
+        },
+        {
+          "index": 11,
+          "length_units8": 3024,
+          "length_bytes": 24192
+        },
+        {
+          "index": 12,
+          "length_units8": 2326,
+          "length_bytes": 18608
+        },
+        {
+          "index": 13,
+          "length_units8": 1468,
+          "length_bytes": 11744
+        },
+        {
+          "index": 14,
+          "length_units8": 210,
+          "length_bytes": 1680
+        },
+        {
+          "index": 15,
+          "length_units8": 480,
+          "length_bytes": 3840
+        },
+        {
+          "index": 16,
+          "length_units8": 500,
+          "length_bytes": 4000
+        },
+        {
+          "index": 17,
+          "length_units8": 2752,
+          "length_bytes": 22016
+        },
+        {
+          "index": 18,
+          "length_units8": 616,
+          "length_bytes": 4928
+        },
+        {
+          "index": 19,
+          "length_units8": 1364,
+          "length_bytes": 10912
+        },
+        {
+          "index": 20,
+          "length_units8": 932,
+          "length_bytes": 7456
+        },
+        {
+          "index": 21,
+          "length_units8": 864,
+          "length_bytes": 6912
+        }
+      ]
+    },
+    {
+      "bank": "BGM/BGM06.VH",
+      "program_field": 13,
+      "tone_field": 25,
+      "sample_field": 19,
+      "header_size": 9248,
+      "body_size": 226400,
+      "header_program_layout_matches": true,
+      "sample_size_sum": 226400,
+      "sample_size_sum_matches_body": true,
+      "samples": [
+        {
+          "index": 1,
+          "length_units8": 332,
+          "length_bytes": 2656
+        },
+        {
+          "index": 2,
+          "length_units8": 514,
+          "length_bytes": 4112
+        },
+        {
+          "index": 3,
+          "length_units8": 362,
+          "length_bytes": 2896
+        },
+        {
+          "index": 4,
+          "length_units8": 2464,
+          "length_bytes": 19712
+        },
+        {
+          "index": 5,
+          "length_units8": 3148,
+          "length_bytes": 25184
+        },
+        {
+          "index": 6,
+          "length_units8": 1296,
+          "length_bytes": 10368
+        },
+        {
+          "index": 7,
+          "length_units8": 362,
+          "length_bytes": 2896
+        },
+        {
+          "index": 8,
+          "length_units8": 890,
+          "length_bytes": 7120
+        },
+        {
+          "index": 9,
+          "length_units8": 1730,
+          "length_bytes": 13840
+        },
+        {
+          "index": 10,
+          "length_units8": 1532,
+          "length_bytes": 12256
+        },
+        {
+          "index": 11,
+          "length_units8": 644,
+          "length_bytes": 5152
+        },
+        {
+          "index": 12,
+          "length_units8": 590,
+          "length_bytes": 4720
+        },
+        {
+          "index": 13,
+          "length_units8": 530,
+          "length_bytes": 4240
+        },
+        {
+          "index": 14,
+          "length_units8": 2048,
+          "length_bytes": 16384
+        },
+        {
+          "index": 15,
+          "length_units8": 3092,
+          "length_bytes": 24736
+        },
+        {
+          "index": 16,
+          "length_units8": 3054,
+          "length_bytes": 24432
+        },
+        {
+          "index": 17,
+          "length_units8": 2384,
+          "length_bytes": 19072
+        },
+        {
+          "index": 18,
+          "length_units8": 1502,
+          "length_bytes": 12016
+        },
+        {
+          "index": 19,
+          "length_units8": 1826,
+          "length_bytes": 14608
+        }
+      ]
+    },
+    {
+      "bank": "BGM/BGM07.VH",
+      "program_field": 15,
+      "tone_field": 56,
+      "sample_field": 25,
+      "header_size": 10272,
+      "body_size": 412784,
+      "header_program_layout_matches": true,
+      "sample_size_sum": 412784,
+      "sample_size_sum_matches_body": true,
+      "samples": [
+        {
+          "index": 1,
+          "length_units8": 3092,
+          "length_bytes": 24736
+        },
+        {
+          "index": 2,
+          "length_units8": 3750,
+          "length_bytes": 30000
+        },
+        {
+          "index": 3,
+          "length_units8": 4682,
+          "length_bytes": 37456
+        },
+        {
+          "index": 4,
+          "length_units8": 3386,
+          "length_bytes": 27088
+        },
+        {
+          "index": 5,
+          "length_units8": 2498,
+          "length_bytes": 19984
+        },
+        {
+          "index": 6,
+          "length_units8": 2098,
+          "length_bytes": 16784
+        },
+        {
+          "index": 7,
+          "length_units8": 362,
+          "length_bytes": 2896
+        },
+        {
+          "index": 8,
+          "length_units8": 136,
+          "length_bytes": 1088
+        },
+        {
+          "index": 9,
+          "length_units8": 150,
+          "length_bytes": 1200
+        },
+        {
+          "index": 10,
+          "length_units8": 538,
+          "length_bytes": 4304
+        },
+        {
+          "index": 11,
+          "length_units8": 3772,
+          "length_bytes": 30176
+        },
+        {
+          "index": 12,
+          "length_units8": 774,
+          "length_bytes": 6192
+        },
+        {
+          "index": 13,
+          "length_units8": 2294,
+          "length_bytes": 18352
+        },
+        {
+          "index": 14,
+          "length_units8": 2464,
+          "length_bytes": 19712
+        },
+        {
+          "index": 15,
+          "length_units8": 280,
+          "length_bytes": 2240
+        },
+        {
+          "index": 16,
+          "length_units8": 498,
+          "length_bytes": 3984
+        },
+        {
+          "index": 17,
+          "length_units8": 3374,
+          "length_bytes": 26992
+        },
+        {
+          "index": 18,
+          "length_units8": 1790,
+          "length_bytes": 14320
+        },
+        {
+          "index": 19,
+          "length_units8": 2422,
+          "length_bytes": 19376
+        },
+        {
+          "index": 20,
+          "length_units8": 1642,
+          "length_bytes": 13136
+        },
+        {
+          "index": 21,
+          "length_units8": 3104,
+          "length_bytes": 24832
+        },
+        {
+          "index": 22,
+          "length_units8": 3488,
+          "length_bytes": 27904
+        },
+        {
+          "index": 23,
+          "length_units8": 2684,
+          "length_bytes": 21472
+        },
+        {
+          "index": 24,
+          "length_units8": 1790,
+          "length_bytes": 14320
+        },
+        {
+          "index": 25,
+          "length_units8": 530,
+          "length_bytes": 4240
+        }
+      ]
+    },
+    {
+      "bank": "SE/CON_KOE.VH",
+      "program_field": 12,
+      "tone_field": 12,
+      "sample_field": 12,
+      "header_size": 8736,
+      "body_size": 63088,
+      "header_program_layout_matches": true,
+      "sample_size_sum": 63088,
+      "sample_size_sum_matches_body": true,
+      "samples": [
+        {
+          "index": 1,
+          "length_units8": 534,
+          "length_bytes": 4272
+        },
+        {
+          "index": 2,
+          "length_units8": 800,
+          "length_bytes": 6400
+        },
+        {
+          "index": 3,
+          "length_units8": 694,
+          "length_bytes": 5552
+        },
+        {
+          "index": 4,
+          "length_units8": 678,
+          "length_bytes": 5424
+        },
+        {
+          "index": 5,
+          "length_units8": 530,
+          "length_bytes": 4240
+        },
+        {
+          "index": 6,
+          "length_units8": 934,
+          "length_bytes": 7472
+        },
+        {
+          "index": 7,
+          "length_units8": 616,
+          "length_bytes": 4928
+        },
+        {
+          "index": 8,
+          "length_units8": 802,
+          "length_bytes": 6416
+        },
+        {
+          "index": 9,
+          "length_units8": 530,
+          "length_bytes": 4240
+        },
+        {
+          "index": 10,
+          "length_units8": 768,
+          "length_bytes": 6144
+        },
+        {
+          "index": 11,
+          "length_units8": 648,
+          "length_bytes": 5184
+        },
+        {
+          "index": 12,
+          "length_units8": 352,
+          "length_bytes": 2816
+        }
+      ]
+    },
+    {
+      "bank": "SE/CON_SE.VH",
+      "program_field": 19,
+      "tone_field": 19,
+      "sample_field": 14,
+      "header_size": 12320,
+      "body_size": 120048,
+      "header_program_layout_matches": true,
+      "sample_size_sum": 120048,
+      "sample_size_sum_matches_body": true,
+      "samples": [
+        {
+          "index": 1,
+          "length_units8": 22,
+          "length_bytes": 176
+        },
+        {
+          "index": 2,
+          "length_units8": 14,
+          "length_bytes": 112
+        },
+        {
+          "index": 3,
+          "length_units8": 18,
+          "length_bytes": 144
+        },
+        {
+          "index": 4,
+          "length_units8": 792,
+          "length_bytes": 6336
+        },
+        {
+          "index": 5,
+          "length_units8": 624,
+          "length_bytes": 4992
+        },
+        {
+          "index": 6,
+          "length_units8": 4726,
+          "length_bytes": 37808
+        },
+        {
+          "index": 7,
+          "length_units8": 3726,
+          "length_bytes": 29808
+        },
+        {
+          "index": 8,
+          "length_units8": 234,
+          "length_bytes": 1872
+        },
+        {
+          "index": 9,
+          "length_units8": 660,
+          "length_bytes": 5280
+        },
+        {
+          "index": 10,
+          "length_units8": 46,
+          "length_bytes": 368
+        },
+        {
+          "index": 11,
+          "length_units8": 170,
+          "length_bytes": 1360
+        },
+        {
+          "index": 12,
+          "length_units8": 502,
+          "length_bytes": 4016
+        },
+        {
+          "index": 13,
+          "length_units8": 448,
+          "length_bytes": 3584
+        },
+        {
+          "index": 14,
+          "length_units8": 3024,
+          "length_bytes": 24192
+        }
+      ]
+    }
+  ],
+  "sequences": [
+    {
+      "file": "BGM/BGM01.SEQ",
+      "ppqn": 480,
+      "initial_tempo_microseconds": 500000,
+      "initial_bpm": 120.0
+    },
+    {
+      "file": "BGM/BGM02.SEQ",
+      "ppqn": 480,
+      "initial_tempo_microseconds": 480000,
+      "initial_bpm": 125.0
+    },
+    {
+      "file": "BGM/BGM03.SEQ",
+      "ppqn": 480,
+      "initial_tempo_microseconds": 483871,
+      "initial_bpm": 123.99999173333389
+    },
+    {
+      "file": "BGM/BGM04.SEQ",
+      "ppqn": 480,
+      "initial_tempo_microseconds": 526315,
+      "initial_bpm": 114.0001710002565
+    },
+    {
+      "file": "BGM/BGM05.SEQ",
+      "ppqn": 480,
+      "initial_tempo_microseconds": 495867,
+      "initial_bpm": 121.0001875502907
+    },
+    {
+      "file": "BGM/BGM06.SEQ",
+      "ppqn": 480,
+      "initial_tempo_microseconds": 461538,
+      "initial_bpm": 130.00013000013
+    },
+    {
+      "file": "BGM/BGM07.SEQ",
+      "ppqn": 480,
+      "initial_tempo_microseconds": 428571,
+      "initial_bpm": 140.00014000014
+    }
+  ]
+}

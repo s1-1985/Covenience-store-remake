@@ -17,7 +17,16 @@ own "14×14" label for the large tier is itself one of several conflicting
 size notations for "large" recorded in the crosscheck note; the key is
 mapped here onto `StoreVariant.size_tier`'s existing "small"/"medium"/
 "large" values rather than the guide's raw dimension text.
+
+Task #128 (CONFIRMED_BINARY, PS program SLPS_007.82 0x8002287C/0x800224E0,
+docs/research/ps1-executable-formulas-2026-09-26.md): the program divides by
+these base values instead of multiplying (清掃 = sum x 100 / 150..180) and
+uses 250/275/300 for 警備; all three store values are capped at 100.
 """
+
+CLEANING_DIVISOR = {"small": 150, "medium": 165, "large": 180}
+SECURITY_DIVISOR = {"small": 250, "medium": 275, "large": 300}
+VALUE_CAP = 100
 
 POLICE_BOX_BONUS_PER_AREA_TILE = 10
 POLICE_BOX_MAX_BONUS = 40
@@ -56,11 +65,13 @@ class SecurityFacilityCoverage:
 
     @property
     def police_box_bonus(self) -> int:
-        return min(POLICE_BOX_MAX_BONUS, self.police_box_area_tiles * POLICE_BOX_BONUS_PER_AREA_TILE)
+        # Task #128: the program counts squares with no per-type cap (one
+        # 2x2 交番 gives the guide's +40, two give +80).
+        return self.police_box_area_tiles * POLICE_BOX_BONUS_PER_AREA_TILE
 
     @property
     def fire_station_bonus(self) -> int:
-        return min(FIRE_STATION_MAX_BONUS, self.fire_station_area_tiles * FIRE_STATION_BONUS_PER_AREA_TILE)
+        return self.fire_station_area_tiles * FIRE_STATION_BONUS_PER_AREA_TILE
 
     @property
     def total_security_bonus(self) -> int:
@@ -104,8 +115,8 @@ def compute_service_value(
         raise ValueError("staff service_skill values must be >= 0")
     if any(value < 0 for value in fixture_service_bonuses):
         raise ValueError("fixture service_bonus values must be >= 0")
-    average = sum(staff_service_skills) / len(staff_service_skills)
-    return average + sum(fixture_service_bonuses)
+    average = sum(staff_service_skills) // len(staff_service_skills)
+    return min(VALUE_CAP, average + sum(fixture_service_bonuses))
 
 
 def compute_security_value(
@@ -113,9 +124,10 @@ def compute_security_value(
     size_tier: str,
     facility_coverage: Optional[SecurityFacilityCoverage] = None,
 ) -> float:
-    """店舗のセキュリティ値 = 社員のセキュリティ値合計 × 店舗規模別基準値 + セキュリティ施設の効果.
+    """店舗のセキュリティ値 = 社員のセキュリティ値合計 × 100 ÷ (250/275/300) + セキュリティ施設の効果, at most 100.
 
-    Source: strategy guide "オールテクニックガイド" 誘致関連 page. Empty
+    Source: the PS program's 0x800224E0 (task #128, CONFIRMED_BINARY); the
+    strategy guide's 誘致関連 page prints a multiplier instead. Empty
     `staff_security_skills` is allowed (sums to 0), since an unstaffed store
     still has a defined (zero) staff contribution, unlike the service-value
     average above which is undefined with zero staff.
@@ -124,20 +136,20 @@ def compute_security_value(
         raise ValueError(f"unknown size_tier: {size_tier!r}")
     if any(value < 0 for value in staff_security_skills):
         raise ValueError("staff security_skill values must be >= 0")
-    base = sum(staff_security_skills) * STORE_SIZE_VALUE_MULTIPLIER[size_tier]
+    base = sum(staff_security_skills) * 100 // SECURITY_DIVISOR[size_tier]
     bonus = facility_coverage.total_security_bonus if facility_coverage is not None else 0
-    return base + bonus
+    return min(VALUE_CAP, base + bonus)
 
 
 def compute_cleaning_value(staff_cleaning_skills: Sequence[int], size_tier: str) -> float:
-    """店舗の清掃値 = 社員の清掃値合計 × 店舗規模別基準値.
+    """店舗の清掃値 = 社員の清掃値合計 × 100 ÷ (150/165/180), at most 100.
 
-    Source: strategy guide "オールテクニックガイド" 誘致関連 page (same
-    page as compute_security_value; the guide states the identical
-    size-tier multiplier applies to both).
+    Source: the PS program's 0x8002287C (task #128, CONFIRMED_BINARY). The
+    strategy guide's 誘致関連 page prints the same base values as a
+    multiplier; the program divides by them.
     """
     if size_tier not in STORE_SIZE_VALUE_MULTIPLIER:
         raise ValueError(f"unknown size_tier: {size_tier!r}")
     if any(value < 0 for value in staff_cleaning_skills):
         raise ValueError("staff cleaning_skill values must be >= 0")
-    return sum(staff_cleaning_skills) * STORE_SIZE_VALUE_MULTIPLIER[size_tier]
+    return min(VALUE_CAP, sum(staff_cleaning_skills) * 100 // CLEANING_DIVISOR[size_tier])

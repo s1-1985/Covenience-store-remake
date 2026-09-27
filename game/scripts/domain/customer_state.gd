@@ -14,6 +14,17 @@ var checkout_anger_triggered := false
 var route: Array[Vector2i] = []
 var settled_transaction_id := ""
 var settled_total_yen := 0
+# Task #120: which of the guide's 21 customer types this is, and the visit
+# row it came with (guide_customer_types.visits); empty in the prototype
+# scenarios. budget_left is what is left of the row's 所持金.
+var type_id := ""
+var visit: Dictionary = {}
+var budget_left := 0
+var add_ons := 0
+# Task #130 (CONFIRMED_BINARY): one customer on the floor is a group of up
+# to 5 people who came together; each item is taken and paid for once per
+# person (the program's stock change is -n, the sale n x the price).
+var group_size := 1
 
 
 func _init(customer_config: Dictionary) -> void:
@@ -38,6 +49,7 @@ func begin(
     route = initial_route
     settled_transaction_id = ""
     settled_total_yen = 0
+    group_size = 1
 
 
 func current_product_id() -> String:

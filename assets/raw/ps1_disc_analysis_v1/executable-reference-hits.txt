@@ -1,0 +1,92 @@
+
+CANDIDATE constant 3000; semantics unconfirmed
+8001e1b0 file+00e9b0 sw       $fp, 0x38($sp)
+8001e1b4 file+00e9b4 move     $fp, $sp
+8001e1b8 file+00e9b8 sw       $a0, 0x40($fp)
+8001e1bc file+00e9bc sw       $a1, 0x44($fp)
+8001e1c0 file+00e9c0 sw       $a2, 0x48($fp)
+8001e1c4 file+00e9c4 sw       $a3, 0x4c($fp)
+8001e1c8 file+00e9c8 sw       $zero, 0x18($fp)
+8001e1cc file+00e9cc lui      $a0, 0x800d
+8001e1d0 file+00e9d0 addiu    $a0, $a0, -0x25b0
+8001e1d4 file+00e9d4 move     $a1, $zero
+8001e1d8 file+00e9d8 addiu    $a2, $zero, 0xbb8
+8001e1dc file+00e9dc jal      0x8007e61c
+8001e1e0 file+00e9e0 nop      
+8001e1e4 file+00e9e4 lw       $a0, 0x40($fp)
+8001e1e8 file+00e9e8 lw       $a1, 0x44($fp)
+8001e1ec file+00e9ec lw       $a2, 0x48($fp)
+8001e1f0 file+00e9f0 lw       $a3, 0x4c($fp)
+8001e1f4 file+00e9f4 jal      0x80041290
+8001e1f8 file+00e9f8 nop      
+8001e1fc file+00e9fc beqz     $v0, 0x8001e210
+8001e200 file+00ea00 nop      
+
+CANDIDATE constant 3000; semantics unconfirmed
+8002c000 file+01c800 nop      
+8002c004 file+01c804 break    6
+8002c008 file+01c808 mflo     $v0
+8002c00c file+01c80c nop      
+8002c010 file+01c810 move     $v1, $v0
+8002c014 file+01c814 negu     $v0, $v1
+8002c018 file+01c818 sb       $v0, 0xbd0($fp)
+8002c01c file+01c81c lb       $v0, 0xbd0($fp)
+8002c020 file+01c820 addiu    $a0, $fp, 0x18
+8002c024 file+01c824 move     $a1, $v0
+8002c028 file+01c828 addiu    $a2, $zero, 0xbb8
+8002c02c file+01c82c jal      0x8007e61c
+8002c030 file+01c830 nop      
+8002c034 file+01c834 sw       $zero, 0xbf0($fp)
+8002c038 file+01c838 lw       $v0, 0xbf0($fp)
+8002c03c file+01c83c nop      
+8002c040 file+01c840 slti     $v1, $v0, 0x32
+8002c044 file+01c844 bnez     $v1, 0x8002c054
+8002c048 file+01c848 nop      
+8002c04c file+01c84c j        0x8002c89c
+8002c050 file+01c850 nop      
+
+CANDIDATE constant 3000; semantics unconfirmed
+8003fbac file+0303ac j        0x8003fbc0
+8003fbb0 file+0303b0 nop      
+8003fbb4 file+0303b4 addiu    $v0, $zero, 0x14
+8003fbb8 file+0303b8 lui      $at, 0x800e
+8003fbbc file+0303bc sw       $v0, 0x3bc8($at)
+8003fbc0 file+0303c0 lw       $v0, 0x2c($fp)
+8003fbc4 file+0303c4 lui      $at, 0x800e
+8003fbc8 file+0303c8 sw       $v0, 0x3bb4($at)
+8003fbcc file+0303cc lw       $v0, 0x2c($fp)
+8003fbd0 file+0303d0 nop      
+8003fbd4 file+0303d4 slti     $v1, $v0, 0xbb8
+8003fbd8 file+0303d8 beqz     $v1, 0x8003fbf0
+8003fbdc file+0303dc nop      
+8003fbe0 file+0303e0 lui      $at, 0x800e
+8003fbe4 file+0303e4 sw       $zero, 0x3bcc($at)
+8003fbe8 file+0303e8 j        0x8003fc9c
+8003fbec file+0303ec nop      
+8003fbf0 file+0303f0 lw       $v0, 0x2c($fp)
+8003fbf4 file+0303f4 nop      
+8003fbf8 file+0303f8 slti     $v1, $v0, 0x1f40
+8003fbfc file+0303fc beqz     $v1, 0x8003fc18
+
+CANDIDATE constant 3000; semantics unconfirmed
+8006a440 file+05ac40 addiu    $sp, $sp, 0x68
+8006a444 file+05ac44 jr       $ra
+8006a448 file+05ac48 nop      
+8006a44c file+05ac4c addiu    $sp, $sp, -0xb0
+8006a450 file+05ac50 sw       $ra, 0xac($sp)
+8006a454 file+05ac54 sw       $fp, 0xa8($sp)
+8006a458 file+05ac58 move     $fp, $sp
+8006a45c file+05ac5c addiu    $v0, $fp, 0x18
+8006a460 file+05ac60 addiu    $v0, $fp, 0x18
+8006a464 file+05ac64 lui      $v1, 0x8001
+8006a468 file+05ac68 addiu    $v1, $v1, 0xbb8
+8006a46c file+05ac6c move     $a0, $v0
+8006a470 file+05ac70 move     $a1, $v1
+8006a474 file+05ac74 addiu    $a2, $zero, 0x48
+8006a478 file+05ac78 jal      0x8007e57c
+8006a47c file+05ac7c nop      
+8006a480 file+05ac80 addiu    $v0, $fp, 0x60
+8006a484 file+05ac84 lui      $v1, 0x8001
+8006a488 file+05ac88 addiu    $v1, $v1, 0xc00
+8006a48c file+05ac8c lwl      $t1, 3($v1)
+8006a490 file+05ac90 lwr      $t1, ($v1)
