@@ -181,7 +181,16 @@ def build_block(config):
             "サービス, 100 - 値段%; the cheap one only when someone sells under the list price), ties drawn "
             "at random; the magazine raises the winner's manager's 学歴 and one more figure by 2 (never past "
             "100). The rival's 清掃 30 is the guide's figure for both its rival stores. REMAKE_BALANCED_DEFAULT: "
-            "a rival store's 評価 stays at the new-store figure (its monthly rating is not simulated)."
+            "a rival store's 評価 stays at the new-store figure (its monthly rating is not simulated). Task #135, "
+            "CONFIRMED_BINARY: robbery and fire (0x8003BF28, incidents), every 2 minutes for each of the "
+            "player's stores whose 人気 is above its 警備, with 2000 or more visitors so far, last month's sales "
+            "over 999999 yen, today's over 99999 yen, fixtures and goods worth over 99999 yen and a customer "
+            "of マナー 30 or less inside: robbery when a roll mod 128 is 100 and no 交番 is within 7 squares "
+            "(today's takings x 8 are taken and today's takings are wiped), fire when a roll mod 256 is 100 "
+            "and no 消防署 is within 7 squares (every fixture but the register and the break room burns with "
+            "its goods, the customers leave, every staff member's 体力 drops to 0, 人気 becomes 5; the "
+            "damage shown is today's takings x 8). REMAKE_BALANCED_DEFAULT: the fire leaves this project's "
+            "dirt at its cap (the program makes every empty floor tile dirty)."
         ),
         "visit_rows": rows,
         "customer_mixes": mixes,
@@ -210,6 +219,13 @@ def build_block(config):
             "count_reset_every_hours": 4, "angry_divisor": 5, "angry_add": 1, "missed_divisor": 4,
             "missed_add": 5, "detailed_from_academic": 70, "dirty_hours": 4, "dirty_below_clean_percent": 70,
             "sales_report_one_in": 8192, "selling_well_at_least": 200, "selling_badly_under": 6,
+        },
+        "incidents": {
+            "robbery_roll": [128, 100], "fire_roll": [256, 100], "min_visitor_heads": 2000,
+            "min_last_month_sales_yen": 1_000_000, "min_today_sales_yen": 100_000, "min_assets_yen": 100_000,
+            "max_manners": 30, "blocked_within_squares": 7, "robbery_blocked_by": "交番",
+            "fire_blocked_by": "消防署", "loss_day_multiple": 8, "popularity_after_fire": 5,
+            "fire_spares": ["checkout", "break_room"],
         },
         "town_press": {
             "chance_one_in": 16384, "min_town_heads": 10000, "min_stores": 5, "prize_yen_per_store": 10_000_000,

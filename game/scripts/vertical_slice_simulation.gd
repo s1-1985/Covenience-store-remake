@@ -277,6 +277,7 @@ const STORE_FIELDS := [
     "_sample_layout_catalog", "store_name", "_store_sales_yen",
     "_store_sales_at_month_start", "_store_sales_at_day_start", "stored_fixtures",
     "_program_counts", "_parking_used", "outdoor_fixtures", "_notice_counts", "_sold_counts",
+    "_store_visitor_heads", "_store_sales_last_month",
 ]
 # The config keys a store has its own copy of; the rest (catalogs, town,
 # weather...) is shared.
@@ -311,6 +312,10 @@ var outdoor_fixtures: Array = []
 # category since the last sales report.
 var _notice_counts := {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
 var _sold_counts: Dictionary = {}
+# Task #135: everyone who has come in (the program's +0x1188) and last
+# month's sales (+0xD5C), for the robbery and fire checks.
+var _store_visitor_heads := 0
+var _store_sales_last_month := 0
 # Customers who have finished a visit at any of the player's stores, ever
 # (the chain visitor milestone's count; kept, unlike the customer rosters,
 # across a save and load).
@@ -573,6 +578,10 @@ func _drop_branches() -> void:
     _store_sales_yen = 0
     _store_sales_at_month_start = 0
     _store_sales_at_day_start = 0
+    _store_visitor_heads = 0
+    _store_sales_last_month = 0
+    _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
+    _sold_counts = {}
     _chain_visitors_total = 0
     stored_fixtures = []
 
@@ -712,6 +721,8 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     _store_sales_yen = 0
     _store_sales_at_month_start = 0
     _store_sales_at_day_start = 0
+    _store_visitor_heads = 0
+    _store_sales_last_month = 0
     _catchment_weights = {}
     stored_fixtures = []
     _program_counts = {}
@@ -783,6 +794,7 @@ func _admit_program_group() -> void:
     if minute_of_day % int(tables["spawn_every_game_minutes"]) != 0:
         return
     _step_manager_reports()
+    _step_incidents()
     if not is_open_now():
         return
     if customers.active_customers().size() >= program_max_groups():
@@ -811,6 +823,7 @@ func _admit_next_program_group() -> void:
         if heads <= 0:
             return
         _parking_used += heads
+    _store_visitor_heads += heads
     _start_program_customer(row, heads)
 
 
@@ -961,6 +974,123 @@ func _raise_manager(figures: Array, points: int) -> void:
     _candidate_raises[manager.candidate_id] = raises
     manager.stamina_max = int(_candidate_figures(manager.candidate_id).get("stamina", 0))
     manager.stamina = mini(manager.stamina, manager.stamina_max)
+
+
+# --- Task #135: robbery and fire (CONFIRMED_BINARY, 0x8003BF28;
+# ps1_program_tables.incidents). Every 2 minutes, for each of the player's
+# stores whose 人気 is above its 警備, that has let in 2000 people or more,
+# sold over 999999 yen last month, over 99999 yen today, holds fixtures and
+# goods worth over 99999 yen and has a customer of マナー 30 or less inside:
+# a roll mod 128 of 100 is a robbery, a roll mod 256 of 100 a fire (the fire
+# wins when both hit) -- unless a 交番 (robbery) or 消防署 (fire) stands
+# within 7 squares of the store. ---
+func _step_incidents() -> void:
+    var rules: Dictionary = _program_demand.tables["incidents"]
+    var robbery := _report_rng.randi_range(0, int(rules["robbery_roll"][0]) - 1) == int(rules["robbery_roll"][1])
+    var fire := _report_rng.randi_range(0, int(rules["fire_roll"][0]) - 1) == int(rules["fire_roll"][1])
+    if not (robbery or fire) or not incident_possible():
+        return
+    if fire:
+        if _facility_squares_near(str(rules["fire_blocked_by"])) == 0:
+            _run_fire()
+    elif _facility_squares_near(str(rules["robbery_blocked_by"])) == 0:
+        _run_robbery()
+
+
+func incident_possible() -> bool:
+    var rules: Dictionary = _program_demand.tables["incidents"]
+    if popularity <= int(_store_values()["security"]):
+        return false
+    if _store_visitor_heads < int(rules["min_visitor_heads"]) or _store_sales_last_month < int(rules["min_last_month_sales_yen"]):
+        return false
+    if _store_sales_yen - _store_sales_at_day_start < int(rules["min_today_sales_yen"]) or _store_assets_yen() < int(rules["min_assets_yen"]):
+        return false
+    for customer in customers.active_customers():
+        if int(customer.visit.get("manners", 100)) <= int(rules["max_manners"]):
+            return true
+    return false
+
+
+# What the program adds up as the store's worth (0x8001D018 + 0x8001D618):
+# its fixtures' prices and its goods at cost.
+func _store_assets_yen() -> int:
+    var total := 0
+    for fixture in layout.fixtures:
+        total += int(_fixture_catalog.get(str(fixture.get("catalog_id", "")), {}).get("purchase_price_yen", 0))
+    for product_id in inventory.product_order:
+        var product = inventory.get_product(product_id)
+        total += product.stock_units * product.restock_unit_cost_yen
+    return total
+
+
+# Squares of the named town facility within 7 of the store's site.
+func _facility_squares_near(facility_name: String) -> int:
+    var reach := int(_program_demand.tables["incidents"]["blocked_within_squares"])
+    var area := Rect2i(store_site_origin - Vector2i(reach, reach), store_site.footprint + Vector2i(reach * 2, reach * 2))
+    var total := 0
+    for index in store_site.buildings.size():
+        if _bought_buildings.has(index):
+            continue
+        var building: Dictionary = store_site.buildings[index]
+        if str(store_site.catalog.get(str(building["sprite"]), {}).get("name", "")) != facility_name:
+            continue
+        total += _squares_in(Rect2i(Vector2i(building["tile"][0], building["tile"][1]), Vector2i(building["size"][0], building["size"][1])), area)
+    return total
+
+
+# Today's takings x 8 go (the program's day stands for 8, as the guide's
+# month of 4 days x 8), and today's takings are wiped from the books.
+func _run_robbery() -> void:
+    var today := _store_sales_yen - _store_sales_at_day_start
+    var loss := today * int(_program_demand.tables["incidents"]["loss_day_multiple"])
+    economy.record_explicit_expense("robbery", minute_of_day, loss, {"store_index": active_store})
+    _store_sales_at_day_start += today
+    _store_sales_at_month_start += today
+    _record_event("robbery", {"store_index": active_store, "loss_yen": loss})
+
+
+# Every fixture but the register and the break room burns with its goods
+# (the car parks too: the program keeps them on the same floor grid), the
+# customers leave, every staff member's 体力 drops to 0 and 人気 becomes 5.
+# The damage shown is today's takings x 8; no money changes hands.
+# REMAKE_BALANCED_DEFAULT: the floor is left dirty up to this project's dirt
+# cap (the program makes every empty floor tile dirty).
+func _run_fire() -> void:
+    var rules: Dictionary = _program_demand.tables["incidents"]
+    var checkout_before := _checkout_interaction
+    for customer_state in customers.active_customers():
+        customer_state.phase = "done"
+        customer_state.route.clear()
+    _checkout_queue.clear()
+    var burned: Array[String] = []
+    for fixture in layout.fixtures.duplicate():
+        var fixture_id := str(fixture["id"])
+        if fixture_id == str(config["simulation"]["checkout_fixture_id"]) or (rules["fire_spares"] as Array).has(str(fixture.get("kind", ""))):
+            continue
+        var held_product_id: String = inventory.product_on_fixture(fixture_id)
+        if not held_product_id.is_empty():
+            _withdraw_product(held_product_id, false)
+        if layout.try_remove_fixture(fixture_id):
+            burned.append(fixture_id)
+    for entry in outdoor_fixtures:
+        burned.append(str(entry["id"]))
+    outdoor_fixtures = []
+    _refresh_interactions()
+    _reroute_after_layout_change(checkout_before)
+    var floor: Array[Vector2i] = []
+    for y in layout.height_subcells:
+        for x in layout.width_subcells:
+            if layout.is_walkable(Vector2i(x, y)):
+                floor.append(Vector2i(x, y))
+    _dirty_cells.clear()
+    while not floor.is_empty() and _dirty_cells.size() < MAX_DIRTY_CELLS:
+        _dirty_cells.append(floor.pop_at(_report_rng.randi_range(0, floor.size() - 1)))
+    for staff_member in staff.all_staff():
+        staff_member.stamina = 0
+        staff_member.exhausted = staff_member.stamina_max > 0
+    popularity = int(rules["popularity_after_fire"])
+    var damage := (_store_sales_yen - _store_sales_at_day_start) * int(rules["loss_day_multiple"])
+    _record_event("fire", {"store_index": active_store, "damage_yen": damage, "burned": burned})
 
 
 func _stocked_categories() -> Array[String]:
@@ -2896,9 +3026,9 @@ func try_sell_fixture(fixture_id: String) -> bool:
 # fixture's own half refund), customers who were going to pick it up go on
 # to the next item they want, and a staff member on the way to refill it
 # drops that task. Returns the yen given back.
-func _withdraw_product(product_id: String) -> int:
+func _withdraw_product(product_id: String, refund := true) -> int:
     var product = inventory.get_product(product_id)
-    var refund_yen: int = product.stock_units * product.restock_unit_cost_yen
+    var refund_yen: int = product.stock_units * product.restock_unit_cost_yen if refund else 0
     for customer in customers.active_customers():
         for index in range(customer.planned_product_ids.size() - 1, customer.plan_index, -1):
             if customer.planned_product_ids[index] == product_id:
@@ -3795,6 +3925,8 @@ func _store_save_block() -> Dictionary:
             "total": _store_sales_yen,
             "month_start": _store_sales_at_month_start,
             "day_start": _store_sales_at_day_start,
+            "last_month": _store_sales_last_month,
+            "visitor_heads": _store_visitor_heads,
         },
         "fixtures": layout.fixture_snapshot(),
         "inventory": inventory.snapshot(),
@@ -3989,6 +4121,8 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
     _store_sales_yen = int(sales["total"])
     _store_sales_at_month_start = int(sales["month_start"])
     _store_sales_at_day_start = int(sales["day_start"])
+    _store_sales_last_month = int(sales.get("last_month", 0))
+    _store_visitor_heads = int(sales.get("visitor_heads", 0))
     _refresh_interactions()
 
 
@@ -4382,6 +4516,7 @@ func _close_store_month() -> void:
     survey_missing.clear()
     survey_types.clear()
     _promotions_used_this_month.clear()
+    _store_sales_last_month = _store_sales_yen - _store_sales_at_month_start
     _store_sales_at_month_start = _store_sales_yen
 
 

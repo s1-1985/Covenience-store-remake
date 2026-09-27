@@ -39,13 +39,13 @@ CONFIRMED_BINARY(SLPS_007.82)。文言はすべてプログラム内の文字列
 ### 強盗・火災・賃上げ要求の文字列について(調査の記録)
 
 - 0x800990BC〜0x80099128 の文字列(「〇〇さんが〇〇の賃金UPを要求してきました」「強盗に入られて」「火災が発生して」)は、プログラムのどこからも参照されていない。
-- 同じ文言は MSG00 の235・237・238番にもある。強盗・火災の場面(MSG 467・468)は 0x80052270 から呼ばれ、その呼び出し元は 0x8003BF28。この関数の読み取りは次のタスクで行う。
+- 同じ文言は MSG00 の235・237・238番にもある。強盗・火災の場面(MSG 467・468)は 0x80052270 から呼ばれ、その呼び出し元は 0x8003BF28。この関数はタスク#135(決定0205)で読んだ。
 
 ## 決定
 
 - 数値は `ps1_program_tables.manager_reports` と `town_press` に置いた(`tools/ps1/extract_program_tables.py`)。
 - `VerticalSliceSimulation`(本番のゲームのみ):
-  - 店ごとに `_notice_counts`(怒り・品切れ・駐車場・汚れ)と `_sold_counts`(品目ごとの売れた数)を持つ。セーブされる。
+  - 店ごとに `_notice_counts`(怒り・品切れ・駐車場・汚れ)と `_sold_counts`(品目ごとの売れた数)を持つ。セーブには入れない(ロードすると0から数える。4時間ごとに数え直す数のため)。
   - `_step_manager_reports()` を2分ごとに店ごとに呼ぶ(`_admit_program_group` の中)。事件 `manager_report` / `sales_report`。
   - `_step_town_press()` を2分ごとに町全体で1回呼ぶ(`tick()` の中)。事件 `town_press`。
   - 雑誌で上がった店長の値は `_candidate_raises` に持ち、セーブの `candidate_figure_raises` に入れる。店長の学歴(成長・助言・お知らせ)、成長の上限、体力の最大値は、上がった値で読む(`_candidate_figures`)。

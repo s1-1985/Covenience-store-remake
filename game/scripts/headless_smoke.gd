@@ -3885,6 +3885,67 @@ func _check_program_demand() -> bool:
     if press._manager_academic() != 100:
         _fail("a magazine never takes a figure past 100")
         return false
+    # Task #135: robbery and fire (CONFIRMED_BINARY, 0x8003BF28).
+    var incident = _real_game_simulation()
+    incident.minute_of_day = 10 * 60
+    for wait in 600:
+        if not incident.customers.active_customers().is_empty():
+            break
+        incident.tick()
+    if incident.customers.active_customers().is_empty():
+        _fail("customers come in before the incident checks")
+        return false
+    var rough: Dictionary = incident.customers.active_customers()[0].visit.duplicate()
+    rough["manners"] = 30
+    incident.customers.active_customers()[0].visit = rough
+    incident.popularity = 100
+    incident._store_visitor_heads = 2000
+    incident._store_sales_last_month = 1_000_000
+    incident._store_sales_yen = incident._store_sales_at_day_start + 100_000
+    if incident._store_assets_yen() < 100_000 or not incident.incident_possible():
+        _fail("a popular, busy, well-selling store with a rough customer inside can be robbed or burn")
+        return false
+    incident.popularity = int(incident._store_values()["security"])
+    if incident.incident_possible():
+        _fail("no robbery or fire while 人気 is not above 警備")
+        return false
+    incident.popularity = 100
+    incident._store_visitor_heads = 1999
+    if incident.incident_possible():
+        _fail("no robbery or fire before 2000 people have come in")
+        return false
+    incident._store_visitor_heads = 2000
+    var incident_catalog_names: Array = incident.store_site.catalog.values().map(func(entry): return str(entry.get("name", "")))
+    if not incident_catalog_names.has("交番") or not incident_catalog_names.has("消防署"):
+        _fail("the town has the 交番 and 消防署 that keep robbery and fire away")
+        return false
+    var robbed_cash: int = incident.economy.cash_yen
+    incident._run_robbery()
+    if incident.economy.cash_yen != robbed_cash - 800_000 or incident._store_sales_yen != incident._store_sales_at_day_start:
+        _fail("a robbery takes today's takings x 8 and wipes today's takings")
+        return false
+    incident._store_sales_yen = incident._store_sales_at_day_start + 100_000
+    incident.economy.cash_yen = 50_000_000
+    incident.try_place_outdoor_fixture("parking_ground", "parking-fire", incident.outdoor_lot_rect().position)
+    var fire_cash: int = incident.economy.cash_yen
+    incident._run_fire()
+    for fixture in incident.layout.fixtures:
+        if str(fixture["id"]) != str(incident.config["simulation"]["checkout_fixture_id"]) and str(fixture.get("kind", "")) != "break_room":
+            _fail("a fire burns every fixture but the register and the break room")
+            return false
+    if not incident.outdoor_fixtures.is_empty() or not incident.customers.active_customers().is_empty() or incident.popularity != 5 or incident.economy.cash_yen != fire_cash:
+        _fail("a fire burns the car parks, sends the customers out and sets 人気 to 5; no money changes hands")
+        return false
+    for staff_member in incident.staff.all_staff():
+        if staff_member.stamina != 0:
+            _fail("a fire drops every staff member's 体力 to 0")
+            return false
+    if incident._dirty_cells.size() != incident.MAX_DIRTY_CELLS:
+        _fail("REMAKE_BALANCED_DEFAULT: a fire leaves the dirt at its cap")
+        return false
+    if not incident.inventory.product_order.is_empty():
+        _fail("the burned shelves' goods are gone")
+        return false
     var prototype = VerticalSliceSimulationScript.new(fresh)
     if prototype._program_demand != null:
         _fail("the prototype scenarios keep their plain arrival rate")

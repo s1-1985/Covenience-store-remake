@@ -3500,6 +3500,17 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("REMAKE_BALANCED_DEFAULT: a rival's 評価 stays at the new-store figure; its 清掃 is the guide's", smoke)
         self.assertIn("the contest winner gets 1000万円 per store in the town (5 stores: 5000万円)", smoke)
         self.assertIn('"town_press":', phone)
+        # Task #135: robbery and fire (0x8003BF28, CONFIRMED_BINARY).
+        incidents = tables["incidents"]
+        self.assertEqual((incidents["robbery_roll"], incidents["fire_roll"]), ([128, 100], [256, 100]))
+        self.assertEqual((incidents["robbery_blocked_by"], incidents["fire_blocked_by"]), ("交番", "消防署"))
+        self.assertEqual(incidents["loss_day_multiple"], 8)
+        self.assertIn("REMAKE_BALANCED_DEFAULT: the fire leaves this project's dirt at its cap", tables["evidence_note"])
+        self.assertIn("# REMAKE_BALANCED_DEFAULT: the floor is left dirty up to this project's dirt", simulation)
+        self.assertIn("REMAKE_BALANCED_DEFAULT: a fire leaves the dirt at its cap", smoke)
+        self.assertIn("a robbery takes today's takings x 8 and wipes today's takings", smoke)
+        self.assertIn('"robbery":', phone)
+        self.assertIn('"fire":', phone)
 
     def test_business_hours_presets(self):
         # Task #103: the guide's five fixed hours + 24h + 臨時休業.

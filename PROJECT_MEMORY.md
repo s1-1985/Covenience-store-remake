@@ -2233,6 +2233,20 @@ matches the project exactly; 123/143 visit rows match the program exactly (平�
 - Not yet read: shoplifting/robbery/fire/wage demands (the event function 0x8003BF28 also builds town
   facilities and is not understood yet), rival finances, staff growth.
 
+**Tasks #132-#135 (2026-09-27, decisions 0202-0205): the lot, staff growth and the program's events.**
+- #132: each store has an outdoor lot (3 tiles deep, as wide as the store, in front of the entrance wall;
+  `DAT/SHOP0302.BIN`) where car parks go.
+- #133: staff grow by the manager's 学歴 (+0x15; the user's correction -- not 社交性), capped by their own
+  教育/社交性/機敏さ; past a growth ceiling 1 in 16; the 35 candidates' figures come from `DAT/TOWN0001.BIN`.
+- #134: the manager's reports (0x8003B570: angry / missed / cars / dirty counts against 学歴, detailed from
+  学歴 70; rare sales reports) and the town's press (0x8003CEAC: magazines raise the manager's figures, the
+  コンビニ・コンテスト pays 1000万円 per store; needs 10000 people and 5 stores). Per-arrival notices for cars
+  turned away are no longer shown.
+- #135: robbery and fire (0x8003BF28) with the program's conditions (人気 > 警備, 2000 visitors, sales and
+  worth floors, a customer of マナー 30 or less, no 交番 / 消防署 within 7 squares). The robbery takes today's
+  takings x 8; the fire burns every fixture but the register and break room.
+- Shoplifting (msg 207) and wage demands (msg 235) have no code reference found in the executable; not built.
+
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
 - connect actor rosters and explicit product plans to evidence-backed observation replay;
