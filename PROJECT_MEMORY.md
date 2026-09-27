@@ -263,6 +263,9 @@ Use evidence labels going forward:
 - **CONFIRMED-COMMUNITY**: multiple reproducible community observations or detailed data table.
 - **PROVISIONAL**: plausible but not independently verified.
 - **HYPOTHESIS**: inferred behavior/formula that must not be hard-coded yet.
+- **CONFIRMED-BINARY** (added 2026-09-26, task #128): read directly from the original PS program
+  (`SLPS_007.82`, instructions or data tables). Always cite the address; note where a guide or wiki value
+  was cross-checked. Where it and a guide disagree, the program decides what the original did.
 
 Do not silently promote a community guess into a game rule.
 
@@ -2213,6 +2216,22 @@ come (weather vs 買物重要度, weekday/holiday share, holiday calendar: day 4
 12/3) and which store (人気+20% chance to consider, open hours, parking, target product in stock, max distance
 20/40/60/70 by arrival, score = price×価格重視度 + closeness×距離重視度 + service×サービス重視度). The weather table
 matches the project exactly; 123/143 visit rows match the program exactly (平日700 is 70).
+
+**Tasks #128-#131 (2026-09-26/27, decisions 0198-0201): the program's own rules replace guessed ones.**
+- #128: サービス/警備/清掃 as the program computes them (divide by 1.5/1.65/1.8 and 2.5/2.75/3.0, cap 100,
+  交番 +10 / 消防署 +5 per square within 7).
+- #129: a new store starts at 評価 10 / 人気 20; 評価 stays 5..100; 人気 moves daily by ★ (-15/-10/-5/-3/0/+5),
+  never below the 評価 score (this also settles the guides' promotion-decay conflict in section 21: ★4 keeps the
+  boost, ★5 grows); the manager's advice (msg 251-258; its chance uses 社交性, REMAKE_BALANCED_DEFAULT); an advert
+  needs 5x its cost in hand. Task #124's 知名度 model is removed.
+- #130: customers come by the program's daily allocation (`ProgramDemand`, tables in `ps1_program_tables` from
+  `tools/ps1/extract_program_tables.py`): 144 visit rows, per-square customer mixes, holidays, weather value,
+  seasons, store choice score, groups of up to 5 every 2 minutes (1 in 4), at most 10/15/20 groups inside.
+  A month has 4 days in the program's clock too.
+- #131: car parks can be bought and set on the store floor (the program counts them there); extras are
+  planned by season and 集中力.
+- Not yet read: shoplifting/robbery/fire/wage demands (the event function 0x8003BF28 also builds town
+  facilities and is not understood yet), rival finances, staff growth.
 
 The next large milestone is **turning the single scripted vertical slice into reusable gameplay**:
 
