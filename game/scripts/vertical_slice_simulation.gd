@@ -114,6 +114,11 @@ var _demand_rng: RandomNumberGenerator
 # Task #85: separate from _demand_rng so adding weather rolls does not shift
 # the existing seeded arrival/product-choice sequence.
 var _weather_rng: RandomNumberGenerator
+# Task #134: the manager's report rolls, apart for the same reason.
+var _report_rng := RandomNumberGenerator.new()
+# Task #134: what the magazines have added to each candidate's figures
+# ({candidate_id: {figure: points}}), saved as "candidate_figure_raises".
+var _candidate_raises: Dictionary = {}
 # Index into config["weather"]["categories"] (快晴/晴れ/曇り/雨・雪/荒天).
 var weather_category_index := 0
 
@@ -271,7 +276,7 @@ const STORE_FIELDS := [
     "_store_size_tier", "store_site_origin", "_player_store_position", "store_type_id",
     "_sample_layout_catalog", "store_name", "_store_sales_yen",
     "_store_sales_at_month_start", "_store_sales_at_day_start", "stored_fixtures",
-    "_program_counts", "_parking_used", "outdoor_fixtures",
+    "_program_counts", "_parking_used", "outdoor_fixtures", "_notice_counts", "_sold_counts",
 ]
 # The config keys a store has its own copy of; the rest (catalogs, town,
 # weather...) is shared.
@@ -300,6 +305,12 @@ var program_town_heads := 0
 # {"id", "catalog_id", "origin": [x, y]} in store subcells (the lot lies
 # above the entrance wall, so its y is negative).
 var outdoor_fixtures: Array = []
+# Task #134: what the manager keeps count of for their reports -- angry
+# customers, customers who found a shelf empty, cars turned away and dirty
+# hours since the last report or the last 4-hour mark; units sold per
+# category since the last sales report.
+var _notice_counts := {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
+var _sold_counts: Dictionary = {}
 # Customers who have finished a visit at any of the player's stores, ever
 # (the chain visitor milestone's count; kept, unlike the customer rosters,
 # across a save and load).
@@ -405,6 +416,7 @@ func reset() -> void:
     event_log.reset()
     _checkout_queue.clear()
     _dirty_cells.clear()
+    _candidate_raises = {}
     _reset_stamina()
     _load_rivals()
     if not _business_hours.is_empty():
@@ -430,12 +442,15 @@ func reset() -> void:
     _program_counts = {}
     _parking_used = 0
     outdoor_fixtures = []
+    _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
+    _sold_counts = {}
     # This playable vertical slice is itself the player's first store, so
     # the chain always starts at 1, not 0.
     player_store_count = 1
     _chain_visitor_milestone = ChainVisitorMilestoneScript.new()
     _demand_rng.seed = int(config["demand"]["rng_seed"])
     _weather_rng.seed = int(config["weather"]["rng_seed"])
+    _report_rng.seed = int(config["demand"]["rng_seed"]) + 134
     _roll_weather()
     _refresh_interactions()
     _start_opening_customer()
@@ -543,6 +558,8 @@ func tick() -> void:
     _switch_store(0)
     _for_each_store(_admit_arrival)
     _switch_store(viewed)
+    if _program_demand != null and store_site != null and minute_of_day % int(_program_demand.tables["spawn_every_game_minutes"]) == 0:
+        _step_town_press()
 
 
 # --- Task #123: the player's stores ---
@@ -700,6 +717,8 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     _program_counts = {}
     _parking_used = 0
     outdoor_fixtures = []
+    _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
+    _sold_counts = {}
     store_site_origin = origin
     _player_store_position = origin
     _stores.append({})
@@ -761,7 +780,10 @@ func _admit_arrival() -> void:
 # 4, the next group of today's customers. ---
 func _admit_program_group() -> void:
     var tables: Dictionary = _program_demand.tables
-    if minute_of_day % int(tables["spawn_every_game_minutes"]) != 0 or not is_open_now():
+    if minute_of_day % int(tables["spawn_every_game_minutes"]) != 0:
+        return
+    _step_manager_reports()
+    if not is_open_now():
         return
     if customers.active_customers().size() >= program_max_groups():
         return
@@ -784,11 +806,171 @@ func _admit_next_program_group() -> void:
         var room := _parking_capacity() - _parking_used
         if heads > room:
             _record_event("cars_turned_away", {"heads": heads - maxi(0, room)})
+            _notice_counts["cars"] = int(_notice_counts["cars"]) + 1
             heads = room
         if heads <= 0:
             return
         _parking_used += heads
     _start_program_customer(row, heads)
+
+
+# --- Task #134: the manager's reports (CONFIRMED_BINARY, 0x8003B570; the
+# lines are the program's own strings). Every 2 minutes: at each 4-hour mark
+# the counts start again; a report goes out when there have been more angry
+# customers than (100 - 学歴) / 5 + 1, or more empty-shelf misses or cars
+# turned away than (100 - 学歴) / 4 + 5, or (with a chance of 学歴 out of
+# 100) 4 dirty hours -- a manager with 学歴 70 or more gives the numbers.
+# Rarely (1 in 8192, then 学歴 out of 100), when the best seller since the
+# last such roll has sold 200 or more, a coin flip reports either it or the
+# stocked item that sold least (if under 6). The numbers are in
+# ps1_program_tables.manager_reports. REMAKE_BALANCED_DEFAULT: an hour is dirty when the
+# floor has at least 30% of this project's dirt cap in walked-on squares
+# (the program counts hours its floor is under 70% clean). ---
+const DIRTY_HOUR_SHARE := 0.3
+
+
+func _step_manager_reports() -> void:
+    var rules: Dictionary = _program_demand.tables["manager_reports"]
+    if minute_of_day % 60 == 0:
+        if (minute_of_day / 60) % int(rules["count_reset_every_hours"]) == 0:
+            _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
+        if float(_dirty_cells.size()) >= DIRTY_HOUR_SHARE * MAX_DIRTY_CELLS:
+            _notice_counts["dirty"] = int(_notice_counts["dirty"]) + 1
+    var academic := _manager_academic()
+    var detailed := academic >= int(rules["detailed_from_academic"])
+    var lines: Array[String] = []
+    if int(_notice_counts["angry"]) > (100 - academic) / int(rules["angry_divisor"]) + int(rules["angry_add"]):
+        lines.append("レジが混雑して\n%d人のお客さんに\n怒られてしまいました" % int(_notice_counts["angry"]) if detailed else "レジの混雑が解消されません")
+    if int(_notice_counts["sold_out"]) > (100 - academic) / int(rules["missed_divisor"]) + int(rules["missed_add"]):
+        lines.append("商品が品切れになり\n%d人のお客さんが\n買えませんでした" % int(_notice_counts["sold_out"]) if detailed else "商品の補充が間に合いません")
+    if int(_notice_counts["cars"]) > (100 - academic) / int(rules["missed_divisor"]) + int(rules["missed_add"]):
+        lines.append("駐車スペースが無くて\n%d人のお客さんが\n入れませんでした" % int(_notice_counts["cars"]) if detailed else "車を駐車できない\nお客さんがいます")
+    if int(_notice_counts["dirty"]) >= int(rules["dirty_hours"]) and _report_rng.randi_range(1, 100) <= academic:
+        lines.append("清掃が行き届きません")
+    if not lines.is_empty():
+        _record_event("manager_report", {"text": "\n".join(lines)})
+        _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
+    if _report_rng.randi_range(1, int(rules["sales_report_one_in"])) != 1:
+        return
+    if _report_rng.randi_range(1, 100) <= academic:
+        var best := ""
+        var worst := ""
+        for category in _stocked_categories():
+            var sold := int(_sold_counts.get(category, 0))
+            if best.is_empty() or sold > int(_sold_counts.get(best, 0)):
+                best = category
+            if worst.is_empty() or sold < int(_sold_counts.get(worst, 0)):
+                worst = category
+        for category in _sold_counts:
+            if int(_sold_counts[category]) > int(_sold_counts.get(best, 0)):
+                best = str(category)
+        if not best.is_empty() and int(_sold_counts.get(best, 0)) >= int(rules["selling_well_at_least"]):
+            if _report_rng.randi_range(0, 1) == 0:
+                _record_event("sales_report", {"product": best, "selling_well": true})
+            elif not worst.is_empty() and int(_sold_counts.get(worst, 0)) < int(rules["selling_badly_under"]):
+                _record_event("sales_report", {"product": worst, "selling_well": false})
+    _sold_counts = {}
+    _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
+
+
+# --- Task #134: the town's press (CONFIRMED_BINARY, 0x8003CEAC; the lines
+# are the program's own strings, ps1_program_tables.town_press). Every 2
+# minutes, 1 in 16384, when the town holds 10000 people or more and 5 stores
+# or more: one of five, drawn at random -- the コンビニ・コンテスト (highest
+# 評価; the winner gets 1000万円 per store in the town) or the magazine's
+# 人気のある / 清潔な / サービスの良い / 安い お店 (highest 人気, 清掃,
+# サービス, 100 - 値段%; the cheap one only when someone sells under the list
+# price). Ties are drawn at random. The magazine raises the winning store's
+# manager's 学歴 and one more figure by 2 (never past 100). A rival's 清掃 is
+# its guide figure; REMAKE_BALANCED_DEFAULT: a rival's 評価 stays at the
+# new-store figure, its monthly rating not being simulated. ---
+func _step_town_press() -> void:
+    var rules: Dictionary = _program_demand.tables["town_press"]
+    if _report_rng.randi_range(1, int(rules["chance_one_in"])) != 1 or program_town_heads < int(rules["min_town_heads"]):
+        return
+    _run_town_press(str(rules["kinds"][_report_rng.randi_range(0, 4)]))
+
+
+# One contest or magazine feature of `kind`; false when there is none.
+func _run_town_press(kind: String) -> bool:
+    var rules: Dictionary = _program_demand.tables["town_press"]
+    var entries: Array = []
+    _for_each_store(func(): entries.append({"store_index": active_store, "value": _press_value(kind)}))
+    for rival in _rival_stores:
+        entries.append({"rival_id": str(rival["id"]), "value": _press_rival_value(kind, rival)})
+    if entries.size() < int(rules["min_stores"]):
+        return false
+    var best := -1000
+    for entry in entries:
+        best = maxi(best, int(entry["value"]))
+    if kind == "cheap" and best <= 0:
+        return false
+    var winners: Array = entries.filter(func(entry): return int(entry["value"]) == best)
+    var winner: Dictionary = winners[_report_rng.randi_range(0, winners.size() - 1)]
+    var details := {"kind": kind, "store_index": int(winner.get("store_index", -1)), "rival_id": str(winner.get("rival_id", ""))}
+    if kind == "contest":
+        details["prize_yen"] = entries.size() * int(rules["prize_yen_per_store"])
+    if winner.has("store_index"):
+        var home := active_store
+        _switch_store(int(winner["store_index"]))
+        if kind == "contest":
+            economy.record_explicit_expense("contest_prize", minute_of_day, -int(details["prize_yen"]), {"store_index": active_store})
+        else:
+            _raise_manager(rules["raises"][kind], int(rules["manager_raise"]))
+        _switch_store(home)
+    _record_event("town_press", details)
+    return true
+
+
+func _press_value(kind: String) -> int:
+    match kind:
+        "contest":
+            return internal_rating_value
+        "popular":
+            return popularity
+        "clean":
+            return int(_store_values()["cleaning"])
+        "service":
+            return int(_store_values()["service"])
+    return -price_change_pct
+
+
+func _press_rival_value(kind: String, rival: Dictionary) -> int:
+    var profile := _program_rival_profile(rival)
+    match kind:
+        "contest":
+            return StoreRatingScript.NEW_STORE_RATING
+        "popular":
+            return int(profile["popularity"])
+        "clean":
+            var guide_data: Dictionary = _rival_guide_entry(str(rival["id"])).get("guide_data", {})
+            return int(guide_data.get("cleaning", _program_demand.tables["rival_store"]["cleaning"]))
+        "service":
+            return int(profile["service"])
+    return 100 - int(profile["price_percent"])
+
+
+func _raise_manager(figures: Array, points: int) -> void:
+    var manager = staff.members.get(str(config["staff"].get("manager_staff_id", "")))
+    if manager == null:
+        return
+    var raises: Dictionary = _candidate_raises.get(manager.candidate_id, {})
+    for figure in figures:
+        var key := str(figure)
+        raises[key] = mini(100 - int(_staff_candidate_catalog.get(manager.candidate_id, {}).get(key, 0)), int(raises.get(key, 0)) + points)
+    _candidate_raises[manager.candidate_id] = raises
+    manager.stamina_max = int(_candidate_figures(manager.candidate_id).get("stamina", 0))
+    manager.stamina = mini(manager.stamina, manager.stamina_max)
+
+
+func _stocked_categories() -> Array[String]:
+    var categories: Array[String] = []
+    for product_id in inventory.product_order:
+        var product = inventory.get_product(product_id)
+        var category := str(product.catalog_id)
+        if not category.is_empty() and product.stock_units > 0 and not categories.has(category):
+            categories.append(category)
+    return categories
 
 
 # The most groups inside at once, by the store's size (0x80099DB8).
@@ -1380,7 +1562,7 @@ func _apply_hire(staff_id: String, candidate_id: String) -> bool:
     # A newly hired member arrives rested (first-title wiki: fire and
     # re-hire gives a full 体力).
     var hired = staff.members[staff_id]
-    hired.stamina_max = int(_staff_candidate_catalog[candidate_id].get("stamina", 0))
+    hired.stamina_max = int(_candidate_figures(candidate_id).get("stamina", 0))
     hired.stamina = hired.stamina_max
     hired.exhausted = false
     return true
@@ -3036,6 +3218,7 @@ func _advance_customer(customer) -> void:
                     })
                     _maybe_add_on(customer)
                 else:
+                    _notice_counts["sold_out"] = int(_notice_counts["sold_out"]) + 1
                     _record_event("product_unavailable", {
                         "customer_id": customer.customer_id,
                         "product_id": product_id,
@@ -3082,6 +3265,7 @@ func _advance_customer(customer) -> void:
                 )
                 if elapsed_ticks > int(round(_checkout_anger.trigger_ticks(_checkout_ticks) * _patience(customer))):
                     customer.checkout_anger_triggered = true
+                    _notice_counts["angry"] = int(_notice_counts["angry"]) + 1
                     var angry_checkout_staff = staff.checkout_staff()
                     var skills_by_staff: Dictionary = {}
                     for angered_staff_member in staff.all_staff():
@@ -3146,6 +3330,9 @@ func _advance_customer(customer) -> void:
                         if bought_product != null and not bought_product.catalog_id.is_empty():
                             survey_bought[bought_product.catalog_id] = (
                                 int(survey_bought.get(bought_product.catalog_id, 0)) + int(line["quantity"])
+                            )
+                            _sold_counts[bought_product.catalog_id] = (
+                                int(_sold_counts.get(bought_product.catalog_id, 0)) + int(line["quantity"])
                             )
                 checkout_staff.state = "idle"
                 checkout_staff.checkouts_done += 1
@@ -3546,6 +3733,7 @@ func save_state() -> Dictionary:
             "left": [waiting["left"].x, waiting["left"].y],
         }),
         "weather_category_index": weather_category_index,
+        "candidate_figure_raises": _candidate_raises.duplicate(true),
         "chain_visitor_milestone": {
             "last_observed_total": _chain_visitor_milestone.last_observed_total,
             "next_threshold": _chain_visitor_milestone.next_threshold,
@@ -3662,6 +3850,7 @@ func load_state(data: Dictionary) -> bool:
     # the actual customer record.
     _checkout_queue.clear()
     event_log.reset()
+    _candidate_raises = (data.get("candidate_figure_raises", {}) as Dictionary).duplicate(true)
     economy.restore_snapshot(data["economy"])
     minute_of_day = int(data["minute_of_day"])
     day_count = int(data["day_count"])
@@ -4334,7 +4523,19 @@ func _manager_academic() -> int:
     var manager = staff.members.get(str(config["staff"].get("manager_staff_id", "")))
     if manager == null:
         return 0
-    return int(_staff_candidate_catalog.get(manager.candidate_id, {}).get("academic_background", 0))
+    return int(_candidate_figures(manager.candidate_id).get("academic_background", 0))
+
+
+# A candidate's figures with what the magazines have added (never past 100).
+func _candidate_figures(candidate_id: String) -> Dictionary:
+    var base: Dictionary = _staff_candidate_catalog.get(candidate_id, {})
+    var raises: Dictionary = _candidate_raises.get(candidate_id, {})
+    if raises.is_empty():
+        return base
+    var figures := base.duplicate()
+    for key in raises:
+        figures[key] = mini(100, int(base.get(key, 0)) + int(raises[key]))
+    return figures
 
 
 # Task #133: the candidates' and the opening staff's figures from the PS
@@ -4364,7 +4565,7 @@ func _grow_staff(staff_member, task: String) -> Array[Dictionary]:
                 return _staff_growth.apply_replenish_growth(staff_member)
         return _staff_growth.apply_clean_growth(staff_member)
     return _staff_growth.apply_program_growth(
-        staff_member, task, _manager_academic(), _staff_candidate_catalog.get(staff_member.candidate_id, {}),
+        staff_member, task, _manager_academic(), _candidate_figures(staff_member.candidate_id),
         _program_demand.tables["staff_growth"], float(_store_values()["cleaning"]), _demand_rng
     )
 
@@ -4616,7 +4817,7 @@ func _rotate_checkout_duty() -> void:
 func _reset_stamina() -> void:
     _stamina_rng.seed = int(config["demand"]["rng_seed"]) + 99
     for staff_member in staff.all_staff():
-        var candidate: Dictionary = _staff_candidate_catalog.get(staff_member.candidate_id, {})
+        var candidate: Dictionary = _candidate_figures(staff_member.candidate_id)
         staff_member.stamina_max = int(candidate.get("stamina", 0))
         staff_member.stamina = staff_member.stamina_max
         staff_member.exhausted = false

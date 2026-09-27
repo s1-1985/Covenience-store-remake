@@ -1055,3 +1055,12 @@ msgstr "車を駐車できないお客さんがいます"
 
 msgid "staff skill decline"
 msgstr "店員の能力が下がった"
+
+msgid "manager report"
+msgstr "店長からの報告"
+
+msgid "sales report"
+msgstr "店長からの売れ行きの報告"
+
+msgid "town press"
+msgstr "町の話題"

@@ -65,7 +65,7 @@ const STAFF_STATE_TEXT := {
 const EVENT_NOTICES := [
     "store_built", "facility_built", "inducement_started", "town_building_built", "rival_withdrew", "rival_opened", "rival_bought_out", "month_end_settlement",
     "checkout_anger_triggered", "staff_exhausted", "promotion_fired", "chain_expanded", "store_opened",
-    "store_rank_changed", "manager_advice", "promotion_cancelled", "cars_turned_away",
+    "store_rank_changed", "manager_advice", "promotion_cancelled", "manager_report", "sales_report", "town_press",
 ]
 
 var main
@@ -928,12 +928,39 @@ func _notice_text(event_type: String, details: Dictionary) -> String:
             return ("店のランクが\n%sになりました" if bool(details.get("raised", false)) else "店のランクが\n%sに下がりました") % stars
         "manager_advice":
             return "店長より：\n%s" % str(details.get("text", ""))
-        "cars_turned_away":
-            # Task #131: the original's msg 230.
-            return "車を駐車できない\nお客さんがいます"
+        # Task #134: the manager's reports (0x8003B570); cars turned away
+        # are no longer shown one by one -- the program only tells the
+        # player through these reports.
+        "manager_report":
+            return "店長より：\n%s" % str(details.get("text", ""))
+        "town_press":
+            var winner := _rival_name(str(details["rival_id"])) if str(details.get("rival_id", "")) != "" else str(main.simulation.store_field(int(details.get("store_index", 0)), "store_name"))
+            match str(details.get("kind", "")):
+                "contest":
+                    return "町でコンビニ・コンテストが行われ\n%sが\n選ばれました(賞金%s)" % [winner, _prize_text(int(details.get("prize_yen", 0)))]
+                "popular":
+                    return "雑誌「人気のあるお店」で\n%sが\n取り上げられました\n(店長の能力UP)" % winner
+                "clean":
+                    return "雑誌「清潔なお店」で\n%sが\n取り上げられました\n(店長の能力UP)" % winner
+                "service":
+                    return "雑誌「サービスの良いお店」で\n%sが\n取り上げられました\n(店長の能力UP)" % winner
+            return "雑誌「安いお店」で\n%sが\n取り上げられました\n(店長の能力UP)" % winner
+        "sales_report":
+            return ("店長より：\n最近、%sが\nとってもよく売れています" if bool(details.get("selling_well", false)) else "店長より：\n最近、%sが\nあまり売れていません") % main.tr(str(details.get("product", "")))
         "promotion_cancelled":
             return "資金が乏しいので\n%sの宣伝活動を\n止めることにしました" % main.tr(str(details.get("promotion_id", "")))
     return main.tr(event_type.replace("_", " "))
+
+
+# The prize as the program writes it (0x8003D5C8): "1億2000万円".
+func _prize_text(yen: int) -> String:
+    var tens_of_millions := yen / 10_000_000
+    var text := ""
+    if tens_of_millions >= 10:
+        text += "%d億" % (tens_of_millions / 10)
+    if tens_of_millions % 10 != 0:
+        text += "%d000万" % (tens_of_millions % 10)
+    return text + "円"
 
 
 func _facility_name(facility_id: String) -> String:
@@ -1199,7 +1226,7 @@ func _fill_staff() -> void:
                 member.cleaning_skill, member.security_skill,
             ]
             # Task #133: the original's staff screen also shows 教育.
-            var figures: Dictionary = main.simulation._staff_candidate_catalog.get(member.candidate_id, {})
+            var figures: Dictionary = main.simulation._candidate_figures(member.candidate_id)
             if main.simulation._program_demand != null and figures.has("education"):
                 skills.text = "教育%d " % int(figures["education"]) + skills.text)
 

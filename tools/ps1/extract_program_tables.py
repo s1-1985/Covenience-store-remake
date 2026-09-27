@@ -170,7 +170,18 @@ def build_block(config):
             "(past the table's end) is left out. Task #133, CONFIRMED_BINARY: the staff candidates' figures (DAT/TOWN0001.BIN) "
             "including 教育 (the staff screen's, not on the guide's cards), and staff growth (0x8003AA58): a "
             "task raises a skill by 1 with a chance of the manager's 学歴 out of 100, never past the staff "
-            "member's own 教育/社交性/機敏さ, and past the skill's growth ceiling only 1 time in 16."
+            "member's own 教育/社交性/機敏さ, and past the skill's growth ceiling only 1 time in 16. Task #134, "
+            "CONFIRMED_BINARY: the manager's reports (0x8003B570, the constants in manager_reports; the lines "
+            "are the program's own strings at 0x80098F4C-0x800990A0). REMAKE_BALANCED_DEFAULT: an hour counts "
+            "as dirty when the floor holds at least 30% of this project's dirt cap in walked-on squares (the "
+            "program counts hours its floor is under 70% clean). Task #134, CONFIRMED_BINARY: the town's press "
+            "(0x8003CEAC, town_press): every 2 minutes, 1 in 16384, when the town holds 10000 people or more "
+            "and 5 stores or more, one of five: the コンビニ・コンテスト (highest 評価; prize 1000万円 per store "
+            "in the town) or the magazine's 人気のある / 清潔な / サービスの良い / 安い お店 (highest 人気, 清掃, "
+            "サービス, 100 - 値段%; the cheap one only when someone sells under the list price), ties drawn "
+            "at random; the magazine raises the winner's manager's 学歴 and one more figure by 2 (never past "
+            "100). The rival's 清掃 30 is the guide's figure for both its rival stores. REMAKE_BALANCED_DEFAULT: "
+            "a rival store's 評価 stays at the new-store figure (its monthly rating is not simulated)."
         ),
         "visit_rows": rows,
         "customer_mixes": mixes,
@@ -188,13 +199,26 @@ def build_block(config):
         "max_group_size": 5,
         "popularity_bonus": 20,
         "weather_importance_bonus": 20,
-        "rival_store": {"price_percent": 100, "service": 30, "popularity": 20, "parking": 0, "hours": "AM7:00〜PM11:00"},
+        "rival_store": {"price_percent": 100, "service": 30, "popularity": 20, "cleaning": 30, "parking": 0, "hours": "AM7:00〜PM11:00"},
         "staff_candidates": staff,
         "staff_growth": {"skill_caps": {
             "register_skill": "education", "service_skill": "sociability", "replenishment_skill": "agility",
             "cleaning_skill": "sociability", "security_skill": "education",
         }, "over_ceiling_chance_one_in": 16, "cleaning_while_restocking_below": 100,
             "anger_decline_chance_one_in": 3, "anger_rating_chance_one_in": 10},
+        "manager_reports": {
+            "count_reset_every_hours": 4, "angry_divisor": 5, "angry_add": 1, "missed_divisor": 4,
+            "missed_add": 5, "detailed_from_academic": 70, "dirty_hours": 4, "dirty_below_clean_percent": 70,
+            "sales_report_one_in": 8192, "selling_well_at_least": 200, "selling_badly_under": 6,
+        },
+        "town_press": {
+            "chance_one_in": 16384, "min_town_heads": 10000, "min_stores": 5, "prize_yen_per_store": 10_000_000,
+            "manager_raise": 2, "kinds": ["contest", "popular", "clean", "service", "cheap"],
+            "raises": {
+                "popular": ["academic_background", "education"], "clean": ["academic_background", "agility"],
+                "service": ["academic_background", "sociability"], "cheap": ["academic_background", "stamina"],
+            },
+        },
     }
     assert thresholds == [
         [sum(month[:k + 1]) for k in range(4)] for month in config["weather"]["monthly_percentages"]

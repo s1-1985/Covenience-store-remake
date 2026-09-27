@@ -7404,7 +7404,7 @@
     ]
   },
   "ps1_program_tables": {
-    "evidence_note": "Task #130, CONFIRMED_BINARY (PS program SLPS_007.82, docs/research/ps1-executable-formulas-2026-09-26.md): the 144 visit rows (0x800A09D0), the customer mixes each town square carries (0x8009FF1C: visit row and head count), each building type's five candidate mixes (0x8009DA10), which visit rows may come at each hour on a weekday and on a holiday (0x800A1BF4, [hour][row start hour]), the holidays (0x80099D84, month x day of 4), the weather thresholds (0x800994B0, the same as weather.monthly_percentages), how far each arrival reaches (0x80099570), the most customer groups inside by store size (0x80099DB8) and the summer/winter goods (0x8009CE0C+0x38). REMAKE_BALANCED_DEFAULT: the program's squares each carry one of their building type's five candidate mixes (drawn when the map is made); this project's town (drawn from the guide's map) picks it from the square's position; ベビーカーの女性 rows count as 子供連れのおばさん; a rival store takes its hours, 人気 and サービス from its guide_data (CONFIRMED_OFFICIAL) or, for one opened during the game, the guide's rival figures below, sells at the list price, has every category it may sell (tobacco, alcohol and medicine only with the permit) and no parking; a group of n takes n units of an item only when the shelf still holds n; mix 136's pair for row 144 (past the table's end) is left out. Task #133, CONFIRMED_BINARY: the staff candidates' figures (DAT/TOWN0001.BIN) including 教育 (the staff screen's, not on the guide's cards), and staff growth (0x8003AA58): a task raises a skill by 1 with a chance of the manager's 学歴 out of 100, never past the staff member's own 教育/社交性/機敏さ, and past the skill's growth ceiling only 1 time in 16.",
+    "evidence_note": "Task #130, CONFIRMED_BINARY (PS program SLPS_007.82, docs/research/ps1-executable-formulas-2026-09-26.md): the 144 visit rows (0x800A09D0), the customer mixes each town square carries (0x8009FF1C: visit row and head count), each building type's five candidate mixes (0x8009DA10), which visit rows may come at each hour on a weekday and on a holiday (0x800A1BF4, [hour][row start hour]), the holidays (0x80099D84, month x day of 4), the weather thresholds (0x800994B0, the same as weather.monthly_percentages), how far each arrival reaches (0x80099570), the most customer groups inside by store size (0x80099DB8) and the summer/winter goods (0x8009CE0C+0x38). REMAKE_BALANCED_DEFAULT: the program's squares each carry one of their building type's five candidate mixes (drawn when the map is made); this project's town (drawn from the guide's map) picks it from the square's position; ベビーカーの女性 rows count as 子供連れのおばさん; a rival store takes its hours, 人気 and サービス from its guide_data (CONFIRMED_OFFICIAL) or, for one opened during the game, the guide's rival figures below, sells at the list price, has every category it may sell (tobacco, alcohol and medicine only with the permit) and no parking; a group of n takes n units of an item only when the shelf still holds n; mix 136's pair for row 144 (past the table's end) is left out. Task #133, CONFIRMED_BINARY: the staff candidates' figures (DAT/TOWN0001.BIN) including 教育 (the staff screen's, not on the guide's cards), and staff growth (0x8003AA58): a task raises a skill by 1 with a chance of the manager's 学歴 out of 100, never past the staff member's own 教育/社交性/機敏さ, and past the skill's growth ceiling only 1 time in 16. Task #134, CONFIRMED_BINARY: the manager's reports (0x8003B570, the constants in manager_reports; the lines are the program's own strings at 0x80098F4C-0x800990A0). REMAKE_BALANCED_DEFAULT: an hour counts as dirty when the floor holds at least 30% of this project's dirt cap in walked-on squares (the program counts hours its floor is under 70% clean). Task #134, CONFIRMED_BINARY: the town's press (0x8003CEAC, town_press): every 2 minutes, 1 in 16384, when the town holds 10000 people or more and 5 stores or more, one of five: the コンビニ・コンテスト (highest 評価; prize 1000万円 per store in the town) or the magazine's 人気のある / 清潔な / サービスの良い / 安い お店 (highest 人気, 清掃, サービス, 100 - 値段%; the cheap one only when someone sells under the list price), ties drawn at random; the magazine raises the winner's manager's 学歴 and one more figure by 2 (never past 100). The rival's 清掃 30 is the guide's figure for both its rival stores. REMAKE_BALANCED_DEFAULT: a rival store's 評価 stays at the new-store figure (its monthly rating is not simulated).",
     "visit_rows": [
       {
         "type": "female_college_student",
@@ -12160,6 +12160,7 @@
       "price_percent": 100,
       "service": 30,
       "popularity": 20,
+      "cleaning": 30,
       "parking": 0,
       "hours": "AM7:00〜PM11:00"
     },
@@ -12877,6 +12878,51 @@
       "cleaning_while_restocking_below": 100,
       "anger_decline_chance_one_in": 3,
       "anger_rating_chance_one_in": 10
+    },
+    "manager_reports": {
+      "count_reset_every_hours": 4,
+      "angry_divisor": 5,
+      "angry_add": 1,
+      "missed_divisor": 4,
+      "missed_add": 5,
+      "detailed_from_academic": 70,
+      "dirty_hours": 4,
+      "dirty_below_clean_percent": 70,
+      "sales_report_one_in": 8192,
+      "selling_well_at_least": 200,
+      "selling_badly_under": 6
+    },
+    "town_press": {
+      "chance_one_in": 16384,
+      "min_town_heads": 10000,
+      "min_stores": 5,
+      "prize_yen_per_store": 10000000,
+      "manager_raise": 2,
+      "kinds": [
+        "contest",
+        "popular",
+        "clean",
+        "service",
+        "cheap"
+      ],
+      "raises": {
+        "popular": [
+          "academic_background",
+          "education"
+        ],
+        "clean": [
+          "academic_background",
+          "agility"
+        ],
+        "service": [
+          "academic_background",
+          "sociability"
+        ],
+        "cheap": [
+          "academic_background",
+          "stamina"
+        ]
+      }
     }
   }
 }

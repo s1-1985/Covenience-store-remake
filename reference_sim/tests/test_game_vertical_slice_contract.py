@@ -3481,6 +3481,25 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("a car park does not go inside the store", smoke)
         store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
         self.assertIn("func _draw_outdoor_lot(", store_view)
+        # Task #134: the manager's reports (0x8003B570, CONFIRMED_BINARY).
+        self.assertEqual(tables["manager_reports"]["sales_report_one_in"], 8192)
+        self.assertIn("Task #134", tables["evidence_note"])
+        self.assertIn("REMAKE_BALANCED_DEFAULT: an hour counts as dirty", tables["evidence_note"])
+        self.assertIn("# ps1_program_tables.manager_reports. REMAKE_BALANCED_DEFAULT: an hour is dirty", simulation)
+        self.assertIn("const DIRTY_HOUR_SHARE := 0.3", simulation)
+        self.assertIn("REMAKE_BALANCED_DEFAULT: a dirty hour is 30% of the dirt cap", smoke)
+        self.assertIn("a manager with 学歴 70 or more gives the numbers, then starts counting again", smoke)
+        self.assertIn('"manager_report":', phone)
+        self.assertNotIn('"cars_turned_away":', phone)
+        # Task #134: the town's press (0x8003CEAC, CONFIRMED_BINARY).
+        press = tables["town_press"]
+        self.assertEqual((press["chance_one_in"], press["min_town_heads"], press["min_stores"]), (16384, 10000, 5))
+        self.assertEqual(press["prize_yen_per_store"], 10_000_000)
+        self.assertIn("REMAKE_BALANCED_DEFAULT: a rival store's 評価 stays at the new-store figure", tables["evidence_note"])
+        self.assertIn("# its guide figure; REMAKE_BALANCED_DEFAULT: a rival's 評価 stays at the", simulation)
+        self.assertIn("REMAKE_BALANCED_DEFAULT: a rival's 評価 stays at the new-store figure; its 清掃 is the guide's", smoke)
+        self.assertIn("the contest winner gets 1000万円 per store in the town (5 stores: 5000万円)", smoke)
+        self.assertIn('"town_press":', phone)
 
     def test_business_hours_presets(self):
         # Task #103: the guide's five fixed hours + 24h + 臨時休業.

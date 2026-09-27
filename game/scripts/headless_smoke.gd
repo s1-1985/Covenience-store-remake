@@ -3802,6 +3802,89 @@ func _check_program_demand() -> bool:
     if not simulation.try_sell_fixture("parking-test-1") or simulation._parking_capacity() != spaces_before:
         _fail("a car park on the lot can be sold")
         return false
+    # Task #134: the manager's reports (CONFIRMED_BINARY, 0x8003B570).
+    var reporter = _real_game_simulation()
+    var manager_candidate := str(reporter.staff.members[str(reporter.config["staff"]["manager_staff_id"])].candidate_id)
+    reporter._staff_candidate_catalog[manager_candidate]["academic_background"] = 80
+    reporter.minute_of_day = 10 * 60 + 2
+    reporter._notice_counts = {"angry": 5, "sold_out": 10, "cars": 10, "dirty": 0}
+    var reports_before: int = reporter.event_log.count_type("manager_report")
+    reporter._step_manager_reports()
+    if reporter.event_log.count_type("manager_report") != reports_before:
+        _fail("with 学歴 80 the manager waits for more than 5 angry and 10 missed customers")
+        return false
+    reporter._notice_counts["angry"] = 6
+    reporter._notice_counts["cars"] = 16
+    reporter._step_manager_reports()
+    var report_text := ""
+    for event in reporter.event_log.records:
+        if str(event["event_type"]) == "manager_report":
+            report_text = str(event["details"]["text"])
+    if report_text != "レジが混雑して\n6人のお客さんに\n怒られてしまいました\n駐車スペースが無くて\n16人のお客さんが\n入れませんでした" or int(reporter._notice_counts["angry"]) != 0:
+        _fail("a manager with 学歴 70 or more gives the numbers, then starts counting again: %s" % report_text)
+        return false
+    reporter._staff_candidate_catalog[manager_candidate]["academic_background"] = 20
+    reporter._notice_counts["sold_out"] = 26
+    reporter._step_manager_reports()
+    report_text = str(reporter.event_log.records[reporter.event_log.records.size() - 1]["details"].get("text", ""))
+    if report_text != "商品の補充が間に合いません":
+        _fail("a manager under 学歴 70 says it plainly: %s" % report_text)
+        return false
+    reporter.minute_of_day = 12 * 60
+    reporter._notice_counts["angry"] = 9
+    reporter._step_manager_reports()
+    if int(reporter._notice_counts["angry"]) != 0:
+        _fail("the counts start again every 4 hours")
+        return false
+    reporter._staff_candidate_catalog[manager_candidate]["academic_background"] = 100
+    reporter.minute_of_day = 13 * 60
+    reporter._notice_counts["dirty"] = 3
+    for cell in 8:
+        reporter._dirty_cells.append(Vector2i(cell, 1))
+    reporter._step_manager_reports()
+    report_text = str(reporter.event_log.records[reporter.event_log.records.size() - 1]["details"].get("text", ""))
+    if report_text != "清掃が行き届きません":
+        _fail("4 dirty hours make a manager with 学歴 100 say so: %s" % report_text)
+        return false
+    if VerticalSliceSimulationScript.DIRTY_HOUR_SHARE != 0.3:
+        _fail("REMAKE_BALANCED_DEFAULT: a dirty hour is 30% of the dirt cap")
+        return false
+    # Task #134: the town's press (CONFIRMED_BINARY, 0x8003CEAC).
+    var press = _real_game_simulation()
+    if press._run_town_press("popular"):
+        _fail("no contest or magazine feature with fewer than 5 stores in the town")
+        return false
+    while press._rival_stores.size() < 4:
+        var copied: Dictionary = press._rival_stores[0].duplicate(true)
+        copied["id"] = "press-test-%d" % press._rival_stores.size()
+        press._rival_stores.append(copied)
+    if press._run_town_press("cheap"):
+        _fail("nobody is featured as cheap while every store sells at the list price")
+        return false
+    press.price_change_pct = -10
+    var press_manager := str(press.staff.members[str(press.config["staff"]["manager_staff_id"])].candidate_id)
+    var academic_before: int = press._manager_academic()
+    var stamina_before: int = int(press._candidate_figures(press_manager)["stamina"])
+    if not press._run_town_press("cheap") or press._manager_academic() != mini(100, academic_before + 2) or int(press._candidate_figures(press_manager)["stamina"]) != mini(100, stamina_before + 2):
+        _fail("the cheapest store is featured and its manager's 学歴 and 体力 rise by 2")
+        return false
+    var press_reload = _real_game_simulation()
+    if not press_reload.load_state(JSON.parse_string(JSON.stringify(press.save_state()))) or press_reload._manager_academic() != press._manager_academic():
+        _fail("what the magazines added to the manager survives a save and load")
+        return false
+    if press._press_rival_value("contest", press._rival_stores[0]) != StoreRatingScript.NEW_STORE_RATING or press._press_rival_value("clean", press._rival_stores[0]) != 30:
+        _fail("REMAKE_BALANCED_DEFAULT: a rival's 評価 stays at the new-store figure; its 清掃 is the guide's")
+        return false
+    press.internal_rating_value = StoreRatingScript.NEW_STORE_RATING + 5
+    var cash_before: int = press.economy.cash_yen
+    if not press._run_town_press("contest") or press.economy.cash_yen != cash_before + 50_000_000:
+        _fail("the contest winner gets 1000万円 per store in the town (5 stores: 5000万円)")
+        return false
+    for raise_step in 60:
+        press._raise_manager(["academic_background"], 2)
+    if press._manager_academic() != 100:
+        _fail("a magazine never takes a figure past 100")
+        return false
     var prototype = VerticalSliceSimulationScript.new(fresh)
     if prototype._program_demand != null:
         _fail("the prototype scenarios keep their plain arrival rate")
