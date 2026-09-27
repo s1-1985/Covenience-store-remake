@@ -65,6 +65,21 @@ func out_of_season(product: String, month_index: int, rng: RandomNumberGenerator
     return off_months.has(month) and rng.randi_range(1, 100) <= 90
 
 
+# Whether a customer goes for one of their row's extra goods (0x800342AC):
+# a seasonal item always in its season and 9 in 10 times not out of it;
+# otherwise skipped when a 1-100 roll is at or under the row's 集中力.
+func wants_extra(product: String, month_index: int, focus: int, rng: RandomNumberGenerator) -> bool:
+    var season := str(tables["product_seasons"].get(product, ""))
+    var month := month_index % 12 + 1
+    if not season.is_empty():
+        var in_months := [6, 7, 8] if season == "summer" else [12, 1, 2]
+        if in_months.has(month):
+            return true
+        if out_of_season(product, month_index, rng):
+            return false
+    return rng.randi_range(1, 100) > focus
+
+
 # One of the building type's five candidate mixes for a town square
 # (REMAKE_BALANCED_DEFAULT: the program draws it when the map is made; here
 # it follows from the square's position so it needs no saving).

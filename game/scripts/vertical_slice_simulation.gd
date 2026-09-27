@@ -797,6 +797,15 @@ func _start_program_customer(row: Dictionary, heads: int) -> void:
             _parking_used -= heads
         return
     plan.append(shelf)
+    # The row's extra goods, each kept or skipped as the program does.
+    for extra in row["extras"]:
+        if not _program_demand.wants_extra(str(extra), month_count, int(row["focus"]), _demand_rng):
+            continue
+        var extra_shelf := _shelf_for_category(str(extra), plan)
+        if extra_shelf.is_empty():
+            survey_missing[str(extra)] = int(survey_missing.get(str(extra), 0)) + heads
+        else:
+            plan.append(extra_shelf)
     var customer = customers.admit_default(layout.entry, _route_to_product(layout.entry, plan[0]), plan)
     customer.visit = row
     customer.type_id = str(row["type"])
@@ -3210,6 +3219,10 @@ func _maybe_add_on(customer) -> void:
         if _apply_price_policy(product.sale_price_yen) > customer.budget_left:
             continue
         var weight := 0.0
+        # Task #131: the program's customers plan their extras on the way in
+        # (_start_program_customer); only impulse buys are added here.
+        if extras.has(product.catalog_id) and _program_demand != null:
+            continue
         if extras.has(product.catalog_id):
             weight = 1.0
         else:

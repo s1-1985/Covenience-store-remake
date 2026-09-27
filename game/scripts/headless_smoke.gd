@@ -3676,6 +3676,24 @@ func _check_program_demand() -> bool:
     if demand.choose_store(row, Vector2i(9, 10), stores, rng) != -1:
         _fail("a car customer needs a car park")
         return false
+    # Task #131: extras -- in season always, out of season 1 in 10, else
+    # skipped at or under 集中力.
+    var extra_kept := 0
+    for draw in 200:
+        if not demand.wants_extra("cold_drink", 6, 100, rng) or demand.wants_extra("bento", 0, 100, rng):
+            _fail("a summer extra is always bought in July; 集中力 100 skips any other extra")
+            return false
+        if demand.wants_extra("bento", 0, 0, rng):
+            extra_kept += 1
+    if extra_kept != 200:
+        _fail("集中力 0 never skips an extra")
+        return false
+    # With a car park, a car customer may come.
+    near["stock"] = {"bread": 3}
+    near["parking"] = 2
+    if demand.choose_store(row, Vector2i(9, 10), stores, rng) != 0:
+        _fail("a car customer comes to a store with a car park")
+        return false
     var counts := {3: 7}
     var start_hour := int(demand.rows[3]["start_hour"])
     var first: Array = demand.next_group(counts, start_hour, false, rng)
@@ -3714,6 +3732,26 @@ func _check_program_demand() -> bool:
                 return false
     if simulation.event_log.count_type("customer_entered") == 0:
         _fail("customers come in on the first day")
+        return false
+    # Task #131: a car park bought and set down counts its spaces.
+    simulation.economy.cash_yen = 50_000_000
+    var spaces_before: int = simulation._parking_capacity()
+    var parked := false
+    # The opening small store is full; make room by putting shelves away.
+    var shelves: Array = []
+    for fixture in simulation.layout.fixtures:
+        if str(fixture["kind"]) == "shelf" and str(fixture["id"]) != str(simulation.config["simulation"]["checkout_fixture_id"]):
+            shelves.append(str(fixture["id"]))
+    for shelf_id in shelves:
+        if parked:
+            break
+        simulation.try_store_fixture(shelf_id)
+        for y in range(simulation.layout.height_subcells):
+            for x in range(simulation.layout.width_subcells):
+                if not parked and simulation.try_purchase_fixture_at("parking_ground", "parking-test-1", Vector2i(x, y)):
+                    parked = true
+    if not parked or simulation._parking_capacity() != spaces_before + 2:
+        _fail("a bought 駐車場 adds its 2 spaces to the store's car park")
         return false
     var prototype = VerticalSliceSimulationScript.new(fresh)
     if prototype._program_demand != null:

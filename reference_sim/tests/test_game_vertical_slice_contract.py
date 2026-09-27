@@ -3467,6 +3467,13 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("the program's customer tables must stay tagged %s", smoke)
         self.assertIn("7 heads come as a group of 5 and a group of 2", smoke)
+        # Task #131: car parks on the floor, extras by 集中力 and season.
+        self.assertIn("func wants_extra(", demand)
+        self.assertIn("if not _program_demand.wants_extra(", simulation)
+        phone = (GAME_ROOT / "scripts" / "phone_ui.gd").read_text(encoding="utf-8")
+        self.assertNotIn('entry.get("placement", "")) == "outdoor"', phone)
+        self.assertIn("parking_capacity is consumed as of task #131", json.dumps(self.config["fixture_catalog"], ensure_ascii=False))
+        self.assertIn("a bought 駐車場 adds its 2 spaces to the store's car park", smoke)
 
     def test_business_hours_presets(self):
         # Task #103: the guide's five fixed hours + 24h + 臨時休業.
