@@ -494,10 +494,13 @@ func layout_screen() -> void:
     var store: Dictionary = main.config["store"]
     var tile_pixels: float = main.store_view.SUBCELL_PIXELS * int(store["subcells_per_tile"])
     var natural := Vector2(int(store["width_tiles"]), int(store["height_tiles"])) * tile_pixels
+    # Task #132: the outdoor lot sits above the store.
+    var lot: float = main.store_view.lot_pixel_height()
+    natural.y += lot
     var fit := minf(1.0, minf((area.size.x - 32) / natural.x, (area.size.y - 16) / natural.y))
     main.store_view.scale = Vector2(fit, fit)
     var shown := natural * fit
-    var top := area.position.y + (area.size.y - shown.y) / 2.0
+    var top := area.position.y + (area.size.y - shown.y) / 2.0 + lot * fit
     if window.visible and main.store_view.visible:
         main.store_view.position = Vector2(16, top)
     else:

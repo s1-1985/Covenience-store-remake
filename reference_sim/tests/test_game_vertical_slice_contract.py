@@ -3474,6 +3474,13 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertNotIn('entry.get("placement", "")) == "outdoor"', phone)
         self.assertIn("parking_capacity is consumed as of task #131", json.dumps(self.config["fixture_catalog"], ensure_ascii=False))
         self.assertIn("a bought 駐車場 adds its 2 spaces to the store's car park", smoke)
+        # Task #132: the outdoor lot (SHOP0302.BIN, CONFIRMED_BINARY).
+        self.assertIn("const OUTDOOR_LOT_TILES := 3", simulation)
+        self.assertIn("SHOP0302.BIN", simulation)
+        self.assertIn("the outdoor lot is 3 tiles deep, as wide as the store, in front of the entrance wall", smoke)
+        self.assertIn("a car park does not go inside the store", smoke)
+        store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
+        self.assertIn("func _draw_outdoor_lot(", store_view)
 
     def test_business_hours_presets(self):
         # Task #103: the guide's five fixed hours + 24h + 臨時休業.

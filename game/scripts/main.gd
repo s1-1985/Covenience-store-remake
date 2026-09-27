@@ -374,6 +374,14 @@ func _on_fixture_relocation_requested(fixture_id: String, origin_subcell: Vector
             _show_edit_refusal()
         _refresh_ui()
         return
+    if simulation._outdoor_index(fixture_id) >= 0:
+        # Task #132: moving a car park on the lot.
+        if simulation.try_move_outdoor_fixture(fixture_id, origin_subcell):
+            store_view.selected_fixture_id = ""
+        else:
+            _show_edit_refusal()
+        _refresh_ui()
+        return
     if simulation.try_relocate_fixture(fixture_id, origin_subcell):
         layout_edit_label.text = tr("Moved %s to (%d, %d)") % [
             _fixture_label(fixture_id),
@@ -580,6 +588,16 @@ func _try_place_new_fixture(catalog_id: String, origin_subcell: Vector2i) -> voi
             catalog_entry = entry
             break
     if catalog_entry.is_empty():
+        _refresh_ui()
+        return
+    # Task #132: a car park goes on the outdoor lot.
+    if simulation.has_outdoor_lot() and simulation.is_outdoor_catalog(catalog_id):
+        var lot_id := "fixture-purchase-%d" % _next_fixture_purchase_sequence
+        _next_fixture_purchase_sequence += 1
+        if simulation.try_place_outdoor_fixture(catalog_id, lot_id, origin_subcell):
+            layout_edit_label.text = tr("Purchased %s") % tr(catalog_id)
+        else:
+            _show_edit_refusal()
         _refresh_ui()
         return
     var footprint: Array = catalog_entry["footprint_tiles"]
@@ -1787,6 +1805,9 @@ func _vec2i_of(value: Array) -> Vector2i:
 # Task #92: player-facing names for internal ids, so no message shows a raw
 # id such as "shelf-bread-1" or "customer-12".
 func _fixture_label(fixture_id: String) -> String:
+    var outdoor_index: int = simulation._outdoor_index(fixture_id)
+    if outdoor_index >= 0:
+        return tr(str(simulation.outdoor_fixtures[outdoor_index]["catalog_id"]))
     if not simulation.layout.fixtures_by_id.has(fixture_id):
         return fixture_id
     var fixture: Dictionary = simulation.layout.fixtures_by_id[fixture_id]

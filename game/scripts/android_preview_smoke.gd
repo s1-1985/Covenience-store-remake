@@ -169,9 +169,12 @@ func _run() -> void:
     # Task #110: the phone screen -- the store at full size, the original's
     # commands as a column on the right, each opening a window over the
     # play area (the old drawer panel is never shown).
-    if not _require(is_equal_approx(game.store_view.scale.x, 1.0), "The phone store must be drawn at full size"):
-        return
+    # Task #132: with the outdoor lot above it the store is drawn as large as
+    # the play area allows, lot included.
     var phone = game.phone_ui
+    var lot_top: float = game.store_view.position.y - game.store_view.lot_pixel_height() * game.store_view.scale.y
+    if not _require(game.store_view.scale.x > 0.6 and game.store_view.scale.x <= 1.0 and lot_top >= phone.HUD_HEIGHT - 1.0, "The phone store and its outdoor lot must fit the play area"):
+        return
     if not _require(phone != null and not game.get_node("UI/Panel").visible, "The phone uses its own screen, not the desktop panel"):
         return
     for command in ["interior", "staff", "policy", "promotion", "research", "system"]:

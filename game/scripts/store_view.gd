@@ -397,6 +397,19 @@ func _unhandled_input(event: InputEvent) -> void:
         return
     var local_position := to_local(pointer_position)
     var cell := Vector2i(floori(local_position.x / SUBCELL_PIXELS), floori(local_position.y / SUBCELL_PIXELS))
+    # Task #132: the outdoor lot above the entrance wall.
+    if _lot_shown() and local_position.y < -_wall_height():
+        var lot_cell := Vector2i(cell.x, floori((local_position.y + _wall_height()) / SUBCELL_PIXELS))
+        if simulation.outdoor_lot_rect().has_point(lot_cell):
+            var outdoor_id: String = simulation.outdoor_fixture_at(lot_cell)
+            if not outdoor_id.is_empty() and (not editing or selected_fixture_id != outdoor_id):
+                selected_fixture_id = outdoor_id
+                fixture_selected.emit(outdoor_id)
+            elif editing and not selected_fixture_id.is_empty():
+                fixture_relocation_requested.emit(selected_fixture_id, lot_cell)
+            queue_redraw()
+            get_viewport().set_input_as_handled()
+        return
     if not editing:
         var tapped := _customer_near(local_position)
         if not tapped.is_empty():
@@ -472,6 +485,7 @@ func _draw() -> void:
 
     var width: float = simulation.layout.width_subcells * SUBCELL_PIXELS
     var height: float = simulation.layout.height_subcells * SUBCELL_PIXELS
+    _draw_outdoor_lot(width)
     _draw_floor(width, height)
     _draw_walls(width, height)
 
@@ -481,6 +495,59 @@ func _draw() -> void:
     _draw_drag_ghost()
     _draw_staff()
     _draw_customer()
+
+
+# --- Task #132: the outdoor lot (car parks), drawn above the entrance wall
+# as asphalt with its car parks on it. ---
+const LOT_COLOR := Color("8e8f8a")
+const LOT_LINE := Color(1, 1, 1, 0.35)
+
+
+func _lot_shown() -> bool:
+    return simulation != null and simulation.has_outdoor_lot()
+
+
+func _wall_height() -> float:
+    var north: Texture2D = _floor_textures.get("wall_north")
+    return 0.0 if north == null else float(north.get_height())
+
+
+func lot_pixel_height() -> float:
+    if not _lot_shown():
+        return 0.0
+    return simulation.outdoor_lot_rect().size.y * SUBCELL_PIXELS + _wall_height()
+
+
+func _lot_cell_rect(cell: Vector2i, size := Vector2i.ONE) -> Rect2:
+    return Rect2(Vector2(cell.x * SUBCELL_PIXELS, cell.y * SUBCELL_PIXELS - _wall_height()), Vector2(size) * SUBCELL_PIXELS)
+
+
+func _draw_outdoor_lot(width: float) -> void:
+    if not _lot_shown():
+        return
+    var lot: Rect2i = simulation.outdoor_lot_rect()
+    var area := _lot_cell_rect(lot.position, lot.size)
+    draw_rect(area, LOT_COLOR, true)
+    var per_tile := int(config["store"]["subcells_per_tile"])
+    for x in range(0, lot.size.x + 1, per_tile):
+        draw_line(Vector2(x * SUBCELL_PIXELS, area.position.y), Vector2(x * SUBCELL_PIXELS, area.end.y), LOT_LINE, 1.5)
+    for y in range(0, lot.size.y + 1, per_tile):
+        var py := area.position.y + y * SUBCELL_PIXELS
+        draw_line(Vector2(0, py), Vector2(width, py), LOT_LINE, 1.5)
+    for fixture in simulation.outdoor_fixtures:
+        var catalog_id := str(fixture["catalog_id"])
+        var footprint: Array = simulation._fixture_catalog[catalog_id]["footprint_tiles"]
+        var rect := _lot_cell_rect(
+            Vector2i(int(fixture["origin"][0]), int(fixture["origin"][1])),
+            Vector2i(int(footprint[0]), int(footprint[1])) * per_tile
+        )
+        var texture := _fixture_texture(catalog_id)
+        if texture != null:
+            draw_texture_rect(texture, rect, false)
+        else:
+            draw_rect(rect.grow(-3), Color("d8d8d0"), true)
+        if str(fixture["id"]) == selected_fixture_id:
+            draw_rect(rect, Color("ffd24a"), false, 4.0)
 
 
 # Task #83: tiles the CONFIRMED_VISUAL floor crop (see _floor_textures'

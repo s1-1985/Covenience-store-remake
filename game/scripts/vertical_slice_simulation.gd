@@ -271,7 +271,7 @@ const STORE_FIELDS := [
     "_store_size_tier", "store_site_origin", "_player_store_position", "store_type_id",
     "_sample_layout_catalog", "store_name", "_store_sales_yen",
     "_store_sales_at_month_start", "_store_sales_at_day_start", "stored_fixtures",
-    "_program_counts", "_parking_used",
+    "_program_counts", "_parking_used", "outdoor_fixtures",
 ]
 # The config keys a store has its own copy of; the rest (catalogs, town,
 # weather...) is shared.
@@ -296,6 +296,10 @@ var _parking_used := 0
 var _program_holiday := false
 var _program_weather_value := 0
 var program_town_heads := 0
+# Task #132: the fixtures on the store's outdoor lot (car parks), each
+# {"id", "catalog_id", "origin": [x, y]} in store subcells (the lot lies
+# above the entrance wall, so its y is negative).
+var outdoor_fixtures: Array = []
 # Customers who have finished a visit at any of the player's stores, ever
 # (the chain visitor milestone's count; kept, unlike the customer rosters,
 # across a save and load).
@@ -422,6 +426,7 @@ func reset() -> void:
     _start_new_store_standing()
     _program_counts = {}
     _parking_used = 0
+    outdoor_fixtures = []
     # This playable vertical slice is itself the player's first store, so
     # the chain always starts at 1, not 0.
     player_store_count = 1
@@ -691,6 +696,7 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     stored_fixtures = []
     _program_counts = {}
     _parking_used = 0
+    outdoor_fixtures = []
     store_site_origin = origin
     _player_store_position = origin
     _stores.append({})
@@ -817,6 +823,8 @@ func _start_program_customer(row: Dictionary, heads: int) -> void:
 # Car park spaces (task #130: none until car parks can be built).
 func _parking_capacity() -> int:
     var total := 0
+    for fixture in outdoor_fixtures:
+        total += int(_fixture_catalog[str(fixture["catalog_id"])].get("parking_capacity", 0))
     for fixture in layout.fixtures:
         var catalog_id := str(fixture.get("catalog_id", ""))
         if _fixture_catalog.has(catalog_id):
@@ -985,6 +993,9 @@ func try_purchase_fixture(
     if not _fixture_catalog.has(catalog_id):
         return false
     var catalog_entry: Dictionary = _fixture_catalog[catalog_id]
+    # Task #132: car parks go on the outdoor lot.
+    if has_outdoor_lot() and is_outdoor_catalog(catalog_id):
+        return false
     var required_permit_id := str(catalog_entry.get("required_permit_id", ""))
     if not required_permit_id.is_empty() and not has_permit(required_permit_id):
         return false
@@ -1046,6 +1057,14 @@ var stored_fixtures: Array = []
 
 
 func try_store_fixture(fixture_id: String) -> bool:
+    # Task #132: a car park off the lot.
+    var outdoor := _outdoor_index(fixture_id)
+    if outdoor >= 0:
+        var parked: Dictionary = outdoor_fixtures[outdoor]
+        outdoor_fixtures.remove_at(outdoor)
+        stored_fixtures.append({"id": fixture_id, "catalog_id": str(parked["catalog_id"])})
+        _record_event("fixture_stored", {"fixture_id": fixture_id, "catalog_id": str(parked["catalog_id"])})
+        return true
     if _layout_edit_locked():
         edit_refusal = "locked"
         return false
@@ -1078,6 +1097,14 @@ func try_place_stored_fixture(index: int, origin: Vector2i) -> bool:
         return false
     var stored: Dictionary = stored_fixtures[index]
     var catalog_entry: Dictionary = _fixture_catalog[str(stored["catalog_id"])]
+    if has_outdoor_lot() and is_outdoor_catalog(str(stored["catalog_id"])):
+        edit_refusal = "occupied"
+        if not _outdoor_spot_free(str(stored["catalog_id"]), origin):
+            return false
+        outdoor_fixtures.append({"id": str(stored["id"]), "catalog_id": str(stored["catalog_id"]), "origin": [origin.x, origin.y]})
+        stored_fixtures.remove_at(index)
+        _record_event("fixture_unstored", {"fixture_id": str(stored["id"]), "origin_subcell": [origin.x, origin.y]})
+        return true
     var checkout_before := _checkout_interaction
     var previous: Array = layout.fixture_snapshot()
     edit_refusal = "occupied"
@@ -2107,6 +2134,8 @@ func try_renovate_store(type_id: String) -> bool:
     _store_size_tier = str(config["store"]["size_tier"])
     assert(_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
     _refresh_interactions()
+    # Task #132: the lot is as wide as the new store.
+    _fit_outdoor_fixtures()
     # The old fixtures, stocked ones first, onto the new shelf spots.
     var movable: Array = []
     for fixture in old_fixtures:
@@ -2513,8 +2542,129 @@ func try_swap_fixtures(fixture_id_a: String, fixture_id_b: String) -> bool:
 # _withdraw_product()). No source says what the original does with them.
 const FIXTURE_SELL_REFUND_PERCENT := 50
 
+# --- Task #132: the store's outdoor lot. CONFIRMED_BINARY (the PS disc's
+# SHOP0302.BIN, a medium store's floor): the store's grid has 3 rows of
+# outside ground in front of the entrance wall, as wide as the building --
+# the guide's 10x10 / 12x12 / 14x14 store sizes count them -- and the car
+# parks are fixtures on that grid (the program counts their spaces there).
+# Only car parks (fixture_catalog placement "outdoor") go on the lot; in the
+# prototype scenarios, which have no lot, they still go on the floor. ---
+const OUTDOOR_LOT_TILES := 3
+
+
+func has_outdoor_lot() -> bool:
+    return _program_demand != null
+
+
+# The lot in store subcells: above the entrance wall (every store's entrance
+# is in its top wall), as wide as the store.
+func outdoor_lot_rect() -> Rect2i:
+    var per_tile := int(config["store"]["subcells_per_tile"])
+    return Rect2i(0, -OUTDOOR_LOT_TILES * per_tile, layout.width_subcells, OUTDOOR_LOT_TILES * per_tile)
+
+
+func is_outdoor_catalog(catalog_id: String) -> bool:
+    return str(_fixture_catalog.get(catalog_id, {}).get("placement", "")) == "outdoor"
+
+
+func _outdoor_rect(catalog_id: String, origin: Vector2i) -> Rect2i:
+    var per_tile := int(config["store"]["subcells_per_tile"])
+    var footprint: Array = _fixture_catalog[catalog_id]["footprint_tiles"]
+    return Rect2i(origin, Vector2i(int(footprint[0]), int(footprint[1])) * per_tile)
+
+
+func outdoor_fixture_at(cell: Vector2i) -> String:
+    for fixture in outdoor_fixtures:
+        if _outdoor_rect(str(fixture["catalog_id"]), _vec2i_from_array(fixture["origin"])).has_point(cell):
+            return str(fixture["id"])
+    return ""
+
+
+func _outdoor_index(fixture_id: String) -> int:
+    for index in outdoor_fixtures.size():
+        if str(outdoor_fixtures[index]["id"]) == fixture_id:
+            return index
+    return -1
+
+
+func _outdoor_spot_free(catalog_id: String, origin: Vector2i, ignore_id := "") -> bool:
+    var rect := _outdoor_rect(catalog_id, origin)
+    if not outdoor_lot_rect().encloses(rect):
+        return false
+    for fixture in outdoor_fixtures:
+        if str(fixture["id"]) == ignore_id:
+            continue
+        if _outdoor_rect(str(fixture["catalog_id"]), _vec2i_from_array(fixture["origin"])).intersects(rect):
+            return false
+    return true
+
+
+func try_place_outdoor_fixture(catalog_id: String, instance_id: String, origin: Vector2i) -> bool:
+    edit_refusal = "occupied"
+    if is_game_over or not has_outdoor_lot() or not is_outdoor_catalog(catalog_id):
+        return false
+    if instance_id.is_empty() or _outdoor_index(instance_id) >= 0 or layout.fixtures_by_id.has(instance_id):
+        return false
+    var price_yen := int(_fixture_catalog[catalog_id]["purchase_price_yen"])
+    if economy.cash_yen < price_yen or not _outdoor_spot_free(catalog_id, origin):
+        return false
+    var expense: Dictionary = economy.record_explicit_expense(
+        "fixture_purchase", minute_of_day, price_yen, {"catalog_id": catalog_id, "instance_id": instance_id}
+    )
+    outdoor_fixtures.append({"id": instance_id, "catalog_id": catalog_id, "origin": [origin.x, origin.y]})
+    _record_event("fixture_purchased", {
+        "catalog_id": catalog_id, "instance_id": instance_id, "origin_subcell": [origin.x, origin.y],
+        "outdoor": true, "expense_id": expense["expense_id"],
+    })
+    return true
+
+
+func try_move_outdoor_fixture(fixture_id: String, origin: Vector2i) -> bool:
+    edit_refusal = "occupied"
+    var index := _outdoor_index(fixture_id)
+    if index < 0:
+        return false
+    var catalog_id := str(outdoor_fixtures[index]["catalog_id"])
+    if not _outdoor_spot_free(catalog_id, origin, fixture_id):
+        return false
+    outdoor_fixtures[index]["origin"] = [origin.x, origin.y]
+    _record_event("fixture_relocated", {"fixture_id": fixture_id, "origin_subcell": [origin.x, origin.y], "outdoor": true})
+    return true
+
+
+func _sell_outdoor_fixture(fixture_id: String) -> bool:
+    var index := _outdoor_index(fixture_id)
+    if index < 0:
+        return false
+    var catalog_id := str(outdoor_fixtures[index]["catalog_id"])
+    outdoor_fixtures.remove_at(index)
+    var refund_yen: int = int(_fixture_catalog[catalog_id]["purchase_price_yen"]) * FIXTURE_SELL_REFUND_PERCENT / 100
+    var expense: Dictionary = economy.record_explicit_expense(
+        "fixture_sold", minute_of_day, -refund_yen, {"catalog_id": catalog_id, "instance_id": fixture_id}
+    )
+    _record_event("fixture_sold", {
+        "catalog_id": catalog_id, "instance_id": fixture_id, "refund_yen": refund_yen,
+        "goods_refund_yen": 0, "expense_id": expense["expense_id"],
+    })
+    return true
+
+
+# After a renovation the lot may be narrower: what no longer fits goes to
+# storage (set down again on the lot from there).
+func _fit_outdoor_fixtures() -> void:
+    var kept: Array = []
+    for fixture in outdoor_fixtures:
+        var rect := _outdoor_rect(str(fixture["catalog_id"]), _vec2i_from_array(fixture["origin"]))
+        if outdoor_lot_rect().encloses(rect):
+            kept.append(fixture)
+        else:
+            stored_fixtures.append({"id": str(fixture["id"]), "catalog_id": str(fixture["catalog_id"])})
+    outdoor_fixtures = kept
+
 
 func try_sell_fixture(fixture_id: String) -> bool:
+    if _outdoor_index(fixture_id) >= 0:
+        return _sell_outdoor_fixture(fixture_id)
     if _layout_edit_locked():
         return false
     var checkout_before := _checkout_interaction
@@ -3439,6 +3589,8 @@ func _store_save_block() -> Dictionary:
         },
         # Task #125: fixtures put away.
         "stored_fixtures": stored_fixtures.duplicate(true),
+        # Task #132: the outdoor lot.
+        "outdoor_fixtures": outdoor_fixtures.duplicate(true),
         # Task #123 (schema 10): this store's own sales.
         "store_sales": {
             "total": _store_sales_yen,
@@ -3606,6 +3758,7 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
         }
     store_name = str(block.get("store_name", store_name))
     stored_fixtures = (block.get("stored_fixtures", []) as Array).duplicate(true)
+    outdoor_fixtures = (block.get("outdoor_fixtures", []) as Array).duplicate(true)
     popularity = int(block["popularity"])
     price_change_pct = int(block["price_change_pct"])
     internal_rating_value = int(block["internal_rating_value"])
@@ -3920,7 +4073,7 @@ func _scale_yen_to_configured_business_hours(value_at_24h_basis: int) -> int:
 # entry every single day.
 func _apply_daily_fixture_maintenance() -> void:
     var total_maintenance_yen := 0
-    for fixture in layout.fixtures:
+    for fixture in layout.fixtures + outdoor_fixtures:
         var catalog_id := str(fixture.get("catalog_id", ""))
         if catalog_id.is_empty() or not _fixture_catalog.has(catalog_id):
             continue

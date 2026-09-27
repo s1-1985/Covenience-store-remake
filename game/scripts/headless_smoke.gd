@@ -3733,25 +3733,36 @@ func _check_program_demand() -> bool:
     if simulation.event_log.count_type("customer_entered") == 0:
         _fail("customers come in on the first day")
         return false
-    # Task #131: a car park bought and set down counts its spaces.
+    # Task #131/#132: car parks go on the outdoor lot above the entrance wall
+    # (CONFIRMED_BINARY, SHOP0302.BIN: 3 rows of outside ground) and count
+    # their spaces.
     simulation.economy.cash_yen = 50_000_000
+    var lot: Rect2i = simulation.outdoor_lot_rect()
+    if lot.size.y != 6 or lot.size.x != simulation.layout.width_subcells or lot.end.y != 0:
+        _fail("the outdoor lot is 3 tiles deep, as wide as the store, in front of the entrance wall")
+        return false
+    if simulation.try_purchase_fixture_at("parking_ground", "parking-indoor", Vector2i(0, 0)):
+        _fail("a car park does not go inside the store")
+        return false
     var spaces_before: int = simulation._parking_capacity()
-    var parked := false
-    # The opening small store is full; make room by putting shelves away.
-    var shelves: Array = []
-    for fixture in simulation.layout.fixtures:
-        if str(fixture["kind"]) == "shelf" and str(fixture["id"]) != str(simulation.config["simulation"]["checkout_fixture_id"]):
-            shelves.append(str(fixture["id"]))
-    for shelf_id in shelves:
-        if parked:
-            break
-        simulation.try_store_fixture(shelf_id)
-        for y in range(simulation.layout.height_subcells):
-            for x in range(simulation.layout.width_subcells):
-                if not parked and simulation.try_purchase_fixture_at("parking_ground", "parking-test-1", Vector2i(x, y)):
-                    parked = true
-    if not parked or simulation._parking_capacity() != spaces_before + 2:
+    if not simulation.try_place_outdoor_fixture("parking_ground", "parking-test-1", lot.position):
+        _fail("a 駐車場 can be bought onto the lot")
+        return false
+    if simulation._parking_capacity() != spaces_before + 2:
         _fail("a bought 駐車場 adds its 2 spaces to the store's car park")
+        return false
+    if simulation.try_place_outdoor_fixture("parking_ground", "parking-test-2", lot.position) or simulation.try_place_outdoor_fixture("parking_tower", "parking-test-3", Vector2i(lot.end.x - 2, lot.position.y)):
+        _fail("car parks do not overlap or stick out of the lot")
+        return false
+    if not simulation.try_move_outdoor_fixture("parking-test-1", lot.position + Vector2i(2, 0)) or simulation.outdoor_fixture_at(lot.position + Vector2i(2, 0)) != "parking-test-1":
+        _fail("a car park moves about the lot")
+        return false
+    var lot_reload = _real_game_simulation()
+    if not lot_reload.load_state(JSON.parse_string(JSON.stringify(simulation.save_state()))) or lot_reload._parking_capacity() != spaces_before + 2:
+        _fail("the lot's car parks survive a save and load")
+        return false
+    if not simulation.try_sell_fixture("parking-test-1") or simulation._parking_capacity() != spaces_before:
+        _fail("a car park on the lot can be sold")
         return false
     var prototype = VerticalSliceSimulationScript.new(fresh)
     if prototype._program_demand != null:
