@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "generated_from_readonly_sources": [
+    {
+      "path": "assets/raw/conveni_map_assets_v2/map_assets_manifest.json",
+      "blob_sha": "183bb3c502df2eb7c1ce7f3e53fbba819f96c6aa"
+    },
+    {
+      "path": "assets/raw/conveni_map_assets_v2/validation_v2.json",
+      "blob_sha": "5df1b996e93523fc36a89997dbe76aa9450fa7af"
+    }
+  ],
+  "audit_date": "2026-09-28",
+  "scope": "Read-only audit of existing main assets. This file does not accept visual fidelity or seam/connectivity.",
+  "findings": {
+    "building_png_count": 52,
+    "terrain_asset_count": 121,
+    "total_manifest_assets": 173,
+    "existing_validation": {
+      "source_crops_pixel_exact": true,
+      "atlas_frames_match_individual_files": true,
+      "seamless_and_connections_verified": false,
+      "original_terrain_footprints_known": false
+    },
+    "issue232_task_assessment": {
+      "task1": "PARTIAL: main contains concrete source/provenance inventory for terrain and 52 building files, but historical chat source IDs/previous housing variants are not fully reconciled in ChatGPT isolated inventory.",
+      "task2": "PARTIAL: 52 building IDs/footprints exist; native town tile pixel size remains unproven and 64px is explicitly provisional.",
+      "task3": "PARTIAL: 52 independent PNGs exist on main; strict top-down visual acceptance remains unverified/known incomplete.",
+      "task4": "PARTIAL: terrain PNGs exist; seam verification is explicitly false.",
+      "task5": "PARTIAL: road/rail/path assets exist; direction-mask/connectivity completeness is not proven.",
+      "task6": "PARTIAL: structures exist among terrain assets; crossing/bridge/estuary functional coverage not proven.",
+      "task7": "PARTIAL: manifest exists, but renderer-fit/direction-mask acceptance is not complete.",
+      "task8": "NOT_COMPLETE: existing validation explicitly reports seamless_and_connections_verified=false.",
+      "task9": "NOT_COMPLETE: unverified visual/connectivity items remain."
+    }
+  },
+  "safety": {
+    "wrote_to_main": false,
+    "modified_existing_files": false,
+    "output_location": "chatgpt_map_assets/audits/issue232_existing_asset_audit_2026-09-28.json"
+  }
+}
