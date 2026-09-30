@@ -1,0 +1,459 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-30",
+  "source_manifest": "assets/raw/conveni_map_assets_v2/map_assets_manifest.json",
+  "source_manifest_blob_sha": "183bb3c502df2eb7c1ce7f3e53fbba819f96c6aa",
+  "status": "STRUCTURAL_ONLY_NOT_VISUALLY_VERIFIED",
+  "audited_asset_count": 52,
+  "warning": "Masks are inferred from filenames only. Pixel seams, actual openings, bridge/crossing semantics and renderer behavior remain unverified.",
+  "coverage": {
+    "road": [
+      "ESW",
+      "EW",
+      "NE",
+      "NESW",
+      "NEW",
+      "NS",
+      "S",
+      "SW",
+      "W"
+    ],
+    "rail": [
+      "E",
+      "EW",
+      "NE",
+      "NESW",
+      "NS",
+      "NW",
+      "S",
+      "W"
+    ],
+    "sidewalk": [
+      "ES",
+      "EW",
+      "NE",
+      "NESW",
+      "NS",
+      "NW"
+    ]
+  },
+  "canonical_gaps": {
+    "road": {
+      "curve": [
+        "NW",
+        "ES"
+      ],
+      "t": [
+        "NES",
+        "NSW"
+      ],
+      "end": [
+        "N",
+        "E"
+      ]
+    },
+    "rail": {
+      "curve": [
+        "ES",
+        "SW"
+      ],
+      "t": [
+        "NES",
+        "NEW",
+        "NSW",
+        "ESW"
+      ],
+      "end": [
+        "N"
+      ]
+    },
+    "sidewalk": {
+      "curve": [
+        "SW"
+      ],
+      "t": [
+        "NES",
+        "NEW",
+        "NSW",
+        "ESW"
+      ],
+      "end": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ]
+    }
+  },
+  "assets": [
+    {
+      "asset_id": "map_sidewalk_cross",
+      "family": "sidewalk",
+      "candidate_mask": "NESW",
+      "derived_from_token": "cross",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_sidewalk_es",
+      "family": "sidewalk",
+      "candidate_mask": "ES",
+      "derived_from_token": "es",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_sidewalk_ew",
+      "family": "sidewalk",
+      "candidate_mask": "EW",
+      "derived_from_token": "ew",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_sidewalk_ne",
+      "family": "sidewalk",
+      "candidate_mask": "NE",
+      "derived_from_token": "ne",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_sidewalk_ns",
+      "family": "sidewalk",
+      "candidate_mask": "NS",
+      "derived_from_token": "ns",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_sidewalk_nw",
+      "family": "sidewalk",
+      "candidate_mask": "NW",
+      "derived_from_token": "nw",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_branch_e",
+      "family": "rail",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_branch_w",
+      "family": "rail",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_cross",
+      "family": "rail",
+      "candidate_mask": "NESW",
+      "derived_from_token": "cross",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_ew",
+      "family": "rail",
+      "candidate_mask": "EW",
+      "derived_from_token": "ew",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_ne",
+      "family": "rail",
+      "candidate_mask": "NE",
+      "derived_from_token": "ne",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_ns",
+      "family": "rail",
+      "candidate_mask": "NS",
+      "derived_from_token": "ns",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_nw",
+      "family": "rail",
+      "candidate_mask": "NW",
+      "derived_from_token": "nw",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_overgrown",
+      "family": "rail",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_platform_e",
+      "family": "rail",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_platform_w",
+      "family": "rail",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_stop_e",
+      "family": "rail",
+      "candidate_mask": "E",
+      "derived_from_token": "stop_e",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_stop_s",
+      "family": "rail",
+      "candidate_mask": "S",
+      "derived_from_token": "stop_s",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_stop_w",
+      "family": "rail",
+      "candidate_mask": "W",
+      "derived_from_token": "stop_w",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_y",
+      "family": "rail",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_cross",
+      "family": "road",
+      "candidate_mask": "NESW",
+      "derived_from_token": "cross",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_cross_zebra",
+      "family": "road",
+      "candidate_mask": "NESW",
+      "derived_from_token": "cross",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_end_s",
+      "family": "road",
+      "candidate_mask": "S",
+      "derived_from_token": "end_s",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_end_w",
+      "family": "road",
+      "candidate_mask": "W",
+      "derived_from_token": "end_w",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_ew",
+      "family": "road",
+      "candidate_mask": "EW",
+      "derived_from_token": "ew",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_median_long",
+      "family": "road",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_median_round",
+      "family": "road",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_ne",
+      "family": "road",
+      "candidate_mask": "NE",
+      "derived_from_token": "ne",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_ns",
+      "family": "road",
+      "candidate_mask": "NS",
+      "derived_from_token": "ns",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_round_end_s",
+      "family": "road",
+      "candidate_mask": "S",
+      "derived_from_token": "end_s",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_t_new",
+      "family": "road",
+      "candidate_mask": "NEW",
+      "derived_from_token": "t_new",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_t_wes",
+      "family": "road",
+      "candidate_mask": "ESW",
+      "derived_from_token": "t_wes",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_turnaround_s",
+      "family": "road",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_wide_cross",
+      "family": "road",
+      "candidate_mask": "NESW",
+      "derived_from_token": "cross",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_wide_end_w",
+      "family": "road",
+      "candidate_mask": "W",
+      "derived_from_token": "end_w",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_wide_ew",
+      "family": "road",
+      "candidate_mask": "EW",
+      "derived_from_token": "ew",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_wide_t_new",
+      "family": "road",
+      "candidate_mask": "NEW",
+      "derived_from_token": "t_new",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_wide_t_sew",
+      "family": "road",
+      "candidate_mask": "ESW",
+      "derived_from_token": "t_sew",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_wide_zebra",
+      "family": "road",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_ws",
+      "family": "road",
+      "candidate_mask": "SW",
+      "derived_from_token": "ws",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_yellow_curve",
+      "family": "road",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_zebra_ns",
+      "family": "road",
+      "candidate_mask": "NS",
+      "derived_from_token": "ns",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_bridge_ew",
+      "family": "rail",
+      "candidate_mask": "EW",
+      "derived_from_token": "ew",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_bridge_ns",
+      "family": "rail",
+      "candidate_mask": "NS",
+      "derived_from_token": "ns",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_elevated_ew",
+      "family": "rail",
+      "candidate_mask": "EW",
+      "derived_from_token": "ew",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_truss_ew",
+      "family": "rail",
+      "candidate_mask": "EW",
+      "derived_from_token": "ew",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_truss_ns",
+      "family": "rail",
+      "candidate_mask": "NS",
+      "derived_from_token": "ns",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_rail_tunnel_s",
+      "family": "rail",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_bridge_ew",
+      "family": "road",
+      "candidate_mask": "EW",
+      "derived_from_token": "ew",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_bridge_ns",
+      "family": "road",
+      "candidate_mask": "NS",
+      "derived_from_token": "ns",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_elevated_ew",
+      "family": "road",
+      "candidate_mask": "EW",
+      "derived_from_token": "ew",
+      "visual_verified": false
+    },
+    {
+      "asset_id": "map_road_tunnel_s",
+      "family": "road",
+      "candidate_mask": null,
+      "derived_from_token": null,
+      "visual_verified": false
+    }
+  ],
+  "issue232": {
+    "task5_complete": false,
+    "task6_complete": false,
+    "task8_complete": false
+  }
+}
