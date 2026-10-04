@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-10-05",
+  "source_manifest": "assets/raw/conveni_map_assets_v2/map_assets_manifest.json",
+  "source_manifest_ref": "main",
+  "scope": "Read-only structural audit of river/water connection coverage. No visual or pixel-seam acceptance is claimed.",
+  "river_explicit_masks": ["NS","EW","NE","ES","NESW"],
+  "river_special_assets": ["map_river_basin_s","map_river_meander","map_river_mouth_s","map_river_mouth_s_square"],
+  "canonical_gaps": {
+    "curve": ["NW","SW"],
+    "t": ["NES","NEW","NSW","ESW"],
+    "end": ["N","E","S","W"]
+  },
+  "notes": [
+    "map_river_cross is treated as NESW, map_river_ne as NE, map_river_es as ES, map_river_ns as NS, map_river_ew as EW.",
+    "Special river/pond/coast assets are not reclassified as canonical endpoints without visual verification.",
+    "Existing manifest marks connections_verified=false and seamless_verified=false for terrain assets; this audit does not override those fields.",
+    "Task 5/6/8 of issue #232 remain incomplete until image bytes are visually/pixel-verified and renderer/sample-map connectivity is tested."
+  ],
+  "safety": {
+    "wrote_to_main": false,
+    "modified_existing_files": false,
+    "output_location": "chatgpt_map_assets/audits/river_directional_coverage_2026-10-05.json"
+  }
+}
