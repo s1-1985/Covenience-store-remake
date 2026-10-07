@@ -1,0 +1,138 @@
+{
+  "generated_from": "main read-only tree + assets/raw/conveni_map_assets_v2/validation_v2.json",
+  "date": "2026-10-07",
+  "scope": "issue #232 task 5/6 structural filename coverage; image seam verification remains unverified",
+  "verified_existing": {
+    "road": {
+      "straight": [
+        "NS",
+        "EW"
+      ],
+      "curves": [
+        "NE",
+        "WS"
+      ],
+      "t": [
+        "NEW",
+        "WES"
+      ],
+      "cross": [
+        "NESW"
+      ],
+      "ends": [
+        "S",
+        "W"
+      ],
+      "bridges": [
+        "NS",
+        "EW"
+      ]
+    },
+    "rail": {
+      "straight": [
+        "NS",
+        "EW"
+      ],
+      "curves": [
+        "NE",
+        "NW"
+      ],
+      "cross": [
+        "NESW"
+      ],
+      "branches": [
+        "E",
+        "W"
+      ],
+      "stops": [
+        "E",
+        "S",
+        "W"
+      ],
+      "bridges": [
+        "NS",
+        "EW"
+      ],
+      "crossing": [
+        "basic",
+        "closed"
+      ]
+    },
+    "river": {
+      "straight": [
+        "NS",
+        "EW"
+      ],
+      "curves": [
+        "NE",
+        "ES"
+      ],
+      "cross": [
+        "NESW"
+      ],
+      "special": [
+        "basin_s",
+        "meander",
+        "mouth_s",
+        "mouth_s_square"
+      ]
+    }
+  },
+  "structurally_missing_or_unconfirmed": {
+    "road": {
+      "curves": [
+        "NW",
+        "ES"
+      ],
+      "t": [
+        "NES",
+        "NSW"
+      ],
+      "ends": [
+        "N",
+        "E"
+      ]
+    },
+    "rail": {
+      "curves": [
+        "ES",
+        "SW"
+      ],
+      "t": [
+        "NEW",
+        "NES",
+        "ESW",
+        "NSW"
+      ],
+      "ends": [
+        "N"
+      ],
+      "note": "stop_* is not assumed equivalent to a plain endpoint"
+    },
+    "river": {
+      "curves": [
+        "NW",
+        "SW"
+      ],
+      "t": [
+        "NEW",
+        "NES",
+        "ESW",
+        "NSW"
+      ],
+      "ends": [
+        "N",
+        "E",
+        "S",
+        "W"
+      ]
+    }
+  },
+  "validation_v2": {
+    "source_crops_pixel_exact": true,
+    "atlas_frames_match_individual_files": true,
+    "seamless_and_connections_verified": false,
+    "original_terrain_footprints_known": false
+  },
+  "completion_effect": "No issue checkbox changed. Task 5/6/8 remain incomplete until actual pixel seam/connection tests and original-reference confirmation pass."
+}
