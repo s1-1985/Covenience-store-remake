@@ -1,0 +1,220 @@
+{
+  "date": "2026-10-12",
+  "source": "GitHub main via read-only fetch_file base64",
+  "method": "Fetched actual 16 PNG streams; verified PNG signature, IHDR CRC32, dimensions 64x64, 8-bit RGBA. Did not inflate IDAT or verify full-file SHA256 this run.",
+  "total": 16,
+  "headers_passed": 16,
+  "entries": [
+    {
+      "asset_id": "map_road_ws",
+      "github_blob_sha": "eb8320cf39cc7ff4f2fb3843663dcd16d8cd3590",
+      "base64_chars": 12236,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_road_ns",
+      "github_blob_sha": "360c16bfe0c0a874af1ffac34e42eee51ce0e7c1",
+      "base64_chars": 11496,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_road_ew",
+      "github_blob_sha": "96dc9c5f90d134db6096295d649ee88d45b18f3a",
+      "base64_chars": 11908,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_road_t_wes",
+      "github_blob_sha": "4e7cb7705f7e4f41f5a031c41b2f5ee8c7b444cb",
+      "base64_chars": 11156,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_road_cross",
+      "github_blob_sha": "3fc93b6e966feb2149d2bbbceb543982a2325aa8",
+      "base64_chars": 10388,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_road_end_s",
+      "github_blob_sha": "cbc28b9fba5e7c8b2cfe94f530ba8531cfdf5f9e",
+      "base64_chars": 12608,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_rail_ns",
+      "github_blob_sha": "3ecc57989beab8f74b97a5079d14fc557de15e5b",
+      "base64_chars": 14820,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_rail_ew",
+      "github_blob_sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "base64_chars": 14592,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_rail_ne",
+      "github_blob_sha": "18a822527ccb5772945a5f22169566442f8238a9",
+      "base64_chars": 15244,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_rail_nw",
+      "github_blob_sha": "977d79be5510f94511d793fe03de1f483cc7b8ca",
+      "base64_chars": 15268,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_rail_cross",
+      "github_blob_sha": "02b9b115c70082cd80fb3378a221a9c17a0b3658",
+      "base64_chars": 14948,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_river_ns",
+      "github_blob_sha": "a5c0b606ce3f2653e3f0c3532eaa52211af59a53",
+      "base64_chars": 11884,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_river_ew",
+      "github_blob_sha": "e983dec2d4a21efaba521f490d9ad87bf750ba3a",
+      "base64_chars": 12304,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_river_ne",
+      "github_blob_sha": "6d8f54d38e461c48e940d8ac9de04b8d608b828f",
+      "base64_chars": 12208,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_river_es",
+      "github_blob_sha": "f7cca6d651fba2fba2af612aec543519a6214924",
+      "base64_chars": 12276,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    },
+    {
+      "asset_id": "map_river_cross",
+      "github_blob_sha": "5b9f407898f91c3412fee847aa74f798a4ce1ae5",
+      "base64_chars": 12264,
+      "size_px": [
+        64,
+        64
+      ],
+      "png_signature_valid": true,
+      "ihdr_crc32_valid": true,
+      "bit_depth": 8,
+      "color_type": 6
+    }
+  ],
+  "pixel_content_verified_this_run": false,
+  "seams_verified_this_run": false,
+  "issue232_complete": false
+}
