@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-13",
+  "status": "PARTIAL_PIXEL_DIAGNOSTIC_NOT_ACCEPTED",
+  "supersedes": "chatgpt_map_assets/audits/real_29_direction_seam_probe_2026-10-13.json",
+  "supersession_reason": "First audit incorrectly reported only 5/16 decoded PNGs because of a decoder bug; those partial statistics are invalid. This correction uses a validated decoder with all 16 source PNGs successfully decoded.",
+  "source_repo": "s1-1985/Covenience-store-remake",
+  "source_branch": "main",
+  "source_manifest_blob_sha": "33dbf67d425c98181da2540fa9606f2b3ab1674e",
+  "method": "16 real 64x64 RGBA8 source PNGs fetched read-only via GitHub connector; zlib/DEFLATE inflated and PNG filters reversed; 29 candidates rotated in memory; 192 valid connection pairs tested for E/W and S/N edge RGBA MAE, including center 20..43px band.",
+  "source_pngs_decoded": 16,
+  "source_pngs_expected": 16,
+  "generated_directional_candidates_in_memory": 29,
+  "pairs_tested": 192,
+  "results": {
+    "road": {
+      "candidates": 15,
+      "pairs": 128,
+      "straight_baseline_east": 8.211,
+      "straight_baseline_south": 8.723,
+      "median_mae": 12.941,
+      "max_mae": 22.063,
+      "median_center_mae": 6.625,
+      "max_center_mae": 10.219,
+      "pairs_mae_gt25": 0,
+      "worst_pair": {
+        "a": "NSW",
+        "b": "NESW",
+        "direction": "S",
+        "mae": 22.063
+      }
+    },
+    "rail": {
+      "candidates": 7,
+      "pairs": 32,
+      "straight_baseline_east": 14,
+      "straight_baseline_south": 17.426,
+      "median_mae": 26.121,
+      "max_mae": 35.953,
+      "median_center_mae": 30.302,
+      "max_center_mae": 39.542,
+      "pairs_mae_gt25": 18,
+      "worst_pair": {
+        "a": "NE",
+        "b": "EW",
+        "direction": "E",
+        "mae": 35.953
+      }
+    },
+    "river": {
+      "candidates": 7,
+      "pairs": 32,
+      "straight_baseline_east": 3.914,
+      "straight_baseline_south": 4.117,
+      "median_mae": 29.176,
+      "max_mae": 46.945,
+      "median_center_mae": 47.344,
+      "max_center_mae": 60.917,
+      "pairs_mae_gt25": 18,
+      "worst_pair": {
+        "a": "NE",
+        "b": "SW",
+        "direction": "E",
+        "mae": 46.945
+      }
+    }
+  },
+  "limitations": [
+    "No physical directional PNG was created or committed by this in-memory audit.",
+    "Numeric RGBA differences are diagnostic; neither visual seam acceptance nor original-game correspondence was established.",
+    "Rail and river T-junctions and endpoints remain missing/unverified.",
+    "Godot runtime integration and 52-building footprint comparison remain unverified.",
+    "No issue #232 checkbox can be marked complete."
+  ],
+  "issue232_completed_tasks": [],
+  "visual_seam_verified": false,
+  "original_game_verified": false,
+  "actual_png_generated": false
+}
