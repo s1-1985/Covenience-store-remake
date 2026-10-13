@@ -1,0 +1,262 @@
+{
+  "date": "2026-10-13",
+  "source": "GitHub main actual PNG bytes fetched through connector; in-memory zlib inflate, PNG unfilter, RGBA rotations and adjacency comparison",
+  "source_manifest_blob_sha": "33dbf67d425c98181da2540fa9606f2b3ab1674e",
+  "scope": "16 source PNGs, 29 directional in-memory candidates, every E-W and S-N compatible pair",
+  "source_pngs": [
+    {
+      "id": "map_road_ns",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_road_ew",
+      "github_blob_sha": "96dc9c5f90d134db6096295d649ee88d45b18f3a",
+      "bytes": 8931,
+      "decoded_rgba_64x64": true
+    },
+    {
+      "id": "map_road_ws",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_road_t_wes",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_road_cross",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_road_end_s",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_rail_ns",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_rail_ew",
+      "github_blob_sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "bytes": 10943,
+      "decoded_rgba_64x64": true
+    },
+    {
+      "id": "map_rail_ne",
+      "github_blob_sha": "18a822527ccb5772945a5f22169566442f8238a9",
+      "bytes": 11433,
+      "decoded_rgba_64x64": true
+    },
+    {
+      "id": "map_rail_nw",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_rail_cross",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_river_ns",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_river_ew",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_river_ne",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_river_es",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_river_cross",
+      "decoded_rgba_64x64": false,
+      "error": "Error: distance before start"
+    }
+  ],
+  "failures": [
+    {
+      "id": "map_road_ns",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_road_ws",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_road_t_wes",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_road_cross",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_road_end_s",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_rail_ns",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_rail_nw",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_rail_cross",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_river_ns",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_river_ew",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_river_ne",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_river_es",
+      "error": "Error: distance before start"
+    },
+    {
+      "id": "map_river_cross",
+      "error": "Error: distance before start"
+    }
+  ],
+  "summary": {
+    "road": {
+      "source_pngs": 6,
+      "candidates": 1,
+      "pair_count": 1,
+      "baseline_straight": {
+        "E": 8.211,
+        "S": null
+      },
+      "rgba_mae_median": 8.211,
+      "rgba_mae_max": 8.211,
+      "center_mae_median": 3.51,
+      "center_mae_max": 3.51,
+      "pairs_exceed_25": 0,
+      "worst_5": [
+        {
+          "family": "road",
+          "a": "EW",
+          "b": "EW",
+          "dir": "E",
+          "rgba_mae": 8.211,
+          "center_mae": 3.51,
+          "max_delta": 67,
+          "exact_channel_fraction": 0.273
+        }
+      ]
+    },
+    "rail": {
+      "source_pngs": 5,
+      "candidates": 4,
+      "pair_count": 8,
+      "baseline_straight": {
+        "E": 14,
+        "S": null
+      },
+      "rgba_mae_median": 30.129,
+      "rgba_mae_max": 35.953,
+      "center_mae_median": 30.958,
+      "center_mae_max": 35.354,
+      "pairs_exceed_25": 4,
+      "worst_5": [
+        {
+          "family": "rail",
+          "a": "NE",
+          "b": "EW",
+          "dir": "E",
+          "rgba_mae": 35.953,
+          "center_mae": 35.354,
+          "max_delta": 190,
+          "exact_channel_fraction": 0.254
+        },
+        {
+          "family": "rail",
+          "a": "EW",
+          "b": "SW",
+          "dir": "E",
+          "rgba_mae": 34.672,
+          "center_mae": 30.958,
+          "max_delta": 195,
+          "exact_channel_fraction": 0.254
+        },
+        {
+          "family": "rail",
+          "a": "ES",
+          "b": "NE",
+          "dir": "S",
+          "rgba_mae": 30.129,
+          "center_mae": 34.625,
+          "max_delta": 189,
+          "exact_channel_fraction": 0.262
+        },
+        {
+          "family": "rail",
+          "a": "ES",
+          "b": "SW",
+          "dir": "E",
+          "rgba_mae": 30.129,
+          "center_mae": 34.625,
+          "max_delta": 189,
+          "exact_channel_fraction": 0.262
+        },
+        {
+          "family": "rail",
+          "a": "NE",
+          "b": "SW",
+          "dir": "E",
+          "rgba_mae": 24.445,
+          "center_mae": 17.646,
+          "max_delta": 124,
+          "exact_channel_fraction": 0.258
+        }
+      ]
+    },
+    "river": {
+      "source_pngs": 5,
+      "candidates": 0,
+      "pair_count": 0,
+      "baseline_straight": {
+        "E": null,
+        "S": null
+      },
+      "pairs_exceed_25": 0,
+      "worst_5": []
+    }
+  },
+  "pairs_tested": 9,
+  "all_source_pngs_decoded": false,
+  "generated_files_committed": 0,
+  "visual_seams_accepted": false,
+  "original_game_verified": false,
+  "issue232_tasks_completed": [],
+  "notes": [
+    "Numeric edge MAE is diagnostic only, not a visual seam certificate.",
+    "Rotations are in-memory candidates only; no PNG was written by this audit.",
+    "Rail and river missing T-junction and endpoints remain unverified.",
+    "Road original map_road_ne is not used for corners because previous pixel topology audit found an SW port mask."
+  ]
+}
