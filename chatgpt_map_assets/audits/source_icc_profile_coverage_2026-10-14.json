@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-14",
+  "source_commit": "688876a4763c5dd006da8cfc36c7e7960d862e28",
+  "verified_pngs": 16,
+  "road": 6,
+  "rail": 5,
+  "river": 5,
+  "all_contain_iccp": true,
+  "all_chunk_sequences": "IHDR,iCCP,IDAT,IEND",
+  "risk": "Prior PIL materializer did not explicitly pass icc_profile when saving rotated PNGs. Source color management may be lost.",
+  "mitigation": "Save with icc_profile=original.info.get('icc_profile') and verify reloaded ICC bytes.",
+  "real_directional_pngs_generated_in_this_run": 0,
+  "visual_seam_verified": false,
+  "completed_issue_tasks": []
+}
