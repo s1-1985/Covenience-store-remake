@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-14",
+  "issue": 232,
+  "status": "UNFINISHED",
+  "source_ref": "688876a4763c5dd006da8cfc36c7e7960d862e28",
+  "attempt": "Fetch 16 real source PNGs and encode 29 rotated PNGs",
+  "result": "GitHub connector call-count limit prevented completion of one-shot binary generation; no generated PNG paths committed.",
+  "main_changed": false,
+  "claude_branch_changed": false,
+  "existing_files_overwritten": false,
+  "issue_checkboxes_changed": false
+}
