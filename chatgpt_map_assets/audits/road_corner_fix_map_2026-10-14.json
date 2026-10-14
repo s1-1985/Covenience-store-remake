@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-14",
+  "issue": 232,
+  "source": "game/scripts/town_view.gd@74388f9190d9e039fd0a1567a9cdf02d503249d1",
+  "road_corner_fix": {
+    "NE": [
+      "map_road_ws",
+      2
+    ],
+    "ES": [
+      "map_road_ws",
+      3
+    ],
+    "SW": [
+      "map_road_ws",
+      0
+    ],
+    "NW": [
+      "map_road_ws",
+      1
+    ]
+  },
+  "current_incorrect": [
+    "NE",
+    "ES",
+    "SW",
+    "NW"
+  ],
+  "runtime_display_tile_px_default": 24,
+  "source_tile_px": 64,
+  "source_shape_verified": true,
+  "visual_seam_verified": false,
+  "game_runtime_verified": false,
+  "completed_tasks": []
+}
