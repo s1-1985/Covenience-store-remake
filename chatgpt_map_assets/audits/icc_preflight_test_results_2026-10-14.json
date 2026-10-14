@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-14",
+  "status": "LOCAL_TESTS_PASSED_SYNTHETIC_ONLY",
+  "tests_total": 19,
+  "tests_passed": 19,
+  "source_pngs_read_only_icc_checked": 16,
+  "all_source_icc_present": true,
+  "actual_directional_pngs_generated": 0,
+  "planned_directional_pngs": 29,
+  "icc_preservation_tested_on_synthetic_pngs": true,
+  "source_preflight_all_or_nothing_tested": true,
+  "visual_seam_verified": false,
+  "godot_verified": false,
+  "issue232_completed_tasks": [],
+  "artifact": "map_assets_color_profile_preflight_2026-10-14.zip"
+}
