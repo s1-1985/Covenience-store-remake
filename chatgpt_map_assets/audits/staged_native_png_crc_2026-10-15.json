@@ -1,0 +1,131 @@
+{
+  "date": "2026-10-15",
+  "method": "Read-only GitHub fetch_file(base64) of all 16 newly staged PNGs; JavaScript PNG signature, chunk CRC32, IHDR 64x64 RGBA8, iCCP, blob SHA compared against immutable source",
+  "staged_real_png_checked": 16,
+  "passed": 16,
+  "failed": 0,
+  "total_bytes": 154187,
+  "all_png_chunks_crc_valid": true,
+  "all_have_iccp": true,
+  "all_have_64x64_rgba8": true,
+  "source_blob_sha_equal": true,
+  "files": [
+    {
+      "id": "map_road_end_s",
+      "bytes": 9454,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_road_ns",
+      "bytes": 8620,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_road_ew",
+      "bytes": 8931,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_road_ws",
+      "bytes": 9177,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_road_t_wes",
+      "bytes": 8366,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_road_cross",
+      "bytes": 7791,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_rail_ns",
+      "bytes": 11115,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_rail_ew",
+      "bytes": 10943,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_rail_ne",
+      "bytes": 11433,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_rail_nw",
+      "bytes": 11451,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_rail_cross",
+      "bytes": 11209,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_river_ns",
+      "bytes": 8912,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_river_ew",
+      "bytes": 9227,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_river_ne",
+      "bytes": 9154,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_river_es",
+      "bytes": 9207,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    },
+    {
+      "id": "map_river_cross",
+      "bytes": 9197,
+      "crc32_passed": true,
+      "icc_present": true,
+      "source_blob_equal": true
+    }
+  ],
+  "visual_seams_verified": false,
+  "original_game_verified": false,
+  "rotated_pngs_generated": 0,
+  "godot_verified": false,
+  "issue232_completed_tasks": []
+}
