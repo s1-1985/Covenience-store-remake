@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-16",
+  "method": "Pixel-by-pixel mean absolute RGBA channel difference across 64-pixel facing borders; 256 channels per comparison",
+  "source": "real PNG bytes re-fetched from isolated branch after commit",
+  "scope": "four new rotated road PNGs against existing straight road PNGs",
+  "rows": [
+    {
+      "edge_a": "ns:S",
+      "edge_b": "ns:N",
+      "mean_rgba_abs": 8.72
+    },
+    {
+      "edge_a": "ew:E",
+      "edge_b": "ew:W",
+      "mean_rgba_abs": 8.21
+    },
+    {
+      "edge_a": "ne:N",
+      "edge_b": "ns:S",
+      "mean_rgba_abs": 11.88
+    },
+    {
+      "edge_a": "ne:E",
+      "edge_b": "ew:W",
+      "mean_rgba_abs": 16.13
+    },
+    {
+      "edge_a": "es:E",
+      "edge_b": "ew:W",
+      "mean_rgba_abs": 12.5
+    },
+    {
+      "edge_a": "es:S",
+      "edge_b": "ns:N",
+      "mean_rgba_abs": 15.3
+    },
+    {
+      "edge_a": "nw:N",
+      "edge_b": "ns:S",
+      "mean_rgba_abs": 15.67
+    },
+    {
+      "edge_a": "nw:W",
+      "edge_b": "ew:E",
+      "mean_rgba_abs": 13.65
+    },
+    {
+      "edge_a": "n:N",
+      "edge_b": "ns:S",
+      "mean_rgba_abs": 11.09
+    }
+  ],
+  "straight_baseline_mean_rgba_abs": {
+    "NS": 8.72,
+    "EW": 8.21
+  },
+  "maximum_candidate_mean_rgba_abs": 16.13,
+  "interpretation": "Numeric edge mismatch observed; not a visual seam acceptance test. Differences may be artistic and cannot alone establish visible failure.",
+  "seam_visual_accepted": false,
+  "issue232_completed_tasks": []
+}
