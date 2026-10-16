@@ -1,0 +1,43 @@
+# ISOLATED PROPOSAL ONLY. DO NOT APPLY TO main OR CLAUDE BRANCHES.
+# Source examined: game/scripts/town_view.gd, main blob 74388f9190d9e039fd0a1567a9cdf02d503249d1
+# Fixes 2-link corners incorrectly falling back to map_road_ew.
+# Uses the already-existing map_road_ws source; quarter-turns are clockwise.
+# Pixel orientation is structurally checked, but visual seams/original fidelity are NOT approved.
+func _road_tile(links: Dictionary) -> Array:
+    var n := links.has(Vector2i(0, -1))
+    var e := links.has(Vector2i(1, 0))
+    var s := links.has(Vector2i(0, 1))
+    var w := links.has(Vector2i(-1, 0))
+    match links.size():
+        4:
+            return ["map_road_cross", 0]
+        3:
+            if not n:
+                return ["map_road_t_wes", 0] # ESW
+            if not e:
+                return ["map_road_t_wes", 1] # NSW
+            if not s:
+                return ["map_road_t_wes", 2] # NEW
+            return ["map_road_t_wes", 3] # NES
+        2:
+            if n and s:
+                return ["map_road_ns", 0]
+            if e and w:
+                return ["map_road_ew", 0]
+            if s and w:
+                return ["map_road_ws", 0] # SW
+            if n and w:
+                return ["map_road_ws", 1] # NW
+            if n and e:
+                return ["map_road_ws", 2] # NE
+            if e and s:
+                return ["map_road_ws", 3] # ES
+        1:
+            if s:
+                return ["map_road_end_s", 0]
+            if w:
+                return ["map_road_end_s", 1]
+            if n:
+                return ["map_road_end_s", 2]
+            return ["map_road_end_s", 3]
+    return ["map_road_ew", 0]
