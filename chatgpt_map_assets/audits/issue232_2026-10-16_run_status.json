@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-16",
+  "issue": 232,
+  "status": "IN_PROGRESS",
+  "real_directional_png_count": 0,
+  "real_native_source_copies": 16,
+  "issue_checkbox_changes": 0,
+  "unverified": [
+    "rotated_png",
+    "visual_seams",
+    "original_game",
+    "Godot_rendering"
+  ]
+}
