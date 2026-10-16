@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-16",
+  "actual_new_png_files": 4,
+  "verified": "RGBA8 decode, rotation, encode, PNG CRC and pixel-exact roundtrip; ICC retained",
+  "unverified": [
+    "adjacent visual seams",
+    "original-game visual match",
+    "Godot renderer",
+    "rail and river missing masks",
+    "full 29 tile materialization"
+  ],
+  "issue232_checkbox_changes": 0,
+  "existing_files_modified": 0
+}
