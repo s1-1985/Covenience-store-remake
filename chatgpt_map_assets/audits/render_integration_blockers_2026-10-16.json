@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-16",
+  "status": "RENDERER_INTEGRATION_BLOCKED_NOT_APPLIED",
+  "source_main_script": "game/scripts/town_view.gd",
+  "source_main_blob_sha": "74388f9190d9e039fd0a1567a9cdf02d503249d1",
+  "renderer_texture_dir": "res://assets/town/",
+  "actual_repo_dir": "game/assets/town/",
+  "main_town_sprite_count": 32,
+  "main_map_road_ws_present": false,
+  "main_map_road_ew_present": true,
+  "main_map_road_ns_present": true,
+  "renderer_map_tile_pixels_default": 24,
+  "renderer_fallback_TILE_PIXELS": 48,
+  "source_png_pixels": 64,
+  "main_road_two_link_behavior": "n+s uses NS; all other two-link combinations use EW without corner discrimination",
+  "isolated_proposal": "chatgpt_map_assets/patches/town_view_road_tile_15_masks_2026_10_16.gd.txt",
+  "isolated_native_source": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_ws.png",
+  "isolated_rotated_png_count": 4,
+  "blockers": [
+    "Proposed road corner resolver is not applied to town_view.gd by design.",
+    "map_road_ws.png is not present under game/assets/town on main; using its sprite ID without import will draw fallback green rectangle.",
+    "Generated isolated PNGs are outside the Godot project res:// tree and cannot be loaded through existing TOWN_SPRITE_DIR.",
+    "No Godot runtime test was performed.",
+    "No original-game visual acceptance or seam visual review was performed."
+  ],
+  "issue232_completed_tasks": [],
+  "existing_game_files_modified": false
+}
