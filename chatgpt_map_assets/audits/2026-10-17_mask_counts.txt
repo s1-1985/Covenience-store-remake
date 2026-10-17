@@ -1,0 +1,1 @@
+Structural check: 29 recipes, 16 native PNGs, 4 rotated PNGs, 9 missing. No seam or Godot acceptance. Issue #232 remains open.
