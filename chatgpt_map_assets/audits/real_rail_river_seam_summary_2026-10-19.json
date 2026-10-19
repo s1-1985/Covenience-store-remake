@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-19",
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "source_real_png_files": 10,
+  "in_memory_rotated_candidates": 4,
+  "results": {
+    "rail": {
+      "sources": 5,
+      "in_memory_rotations": 2,
+      "comparisons": 32,
+      "mae_min": 14,
+      "mae_median": 26.121,
+      "mae_mean": 25.525,
+      "mae_p90": 31.891,
+      "mae_max": 35.953,
+      "worst": [
+        {
+          "a": "rail_ne",
+          "b": "rail_ew",
+          "axis": "horizontal",
+          "mae": 35.953,
+          "alpha_mae": 0
+        },
+        {
+          "a": "rail_ew",
+          "b": "rail_sw",
+          "axis": "horizontal",
+          "mae": 34.672,
+          "alpha_mae": 0
+        },
+        {
+          "a": "rail_es",
+          "b": "rail_ns",
+          "axis": "vertical",
+          "mae": 31.926,
+          "alpha_mae": 0
+        }
+      ]
+    },
+    "river": {
+      "sources": 5,
+      "in_memory_rotations": 2,
+      "comparisons": 32,
+      "mae_min": 3.914,
+      "mae_median": 29.176,
+      "mae_mean": 24.27,
+      "mae_p90": 38.258,
+      "mae_max": 46.945,
+      "worst": [
+        {
+          "a": "river_ne",
+          "b": "river_sw",
+          "axis": "horizontal",
+          "mae": 46.945,
+          "alpha_mae": 0
+        },
+        {
+          "a": "river_ne",
+          "b": "river_ew",
+          "axis": "horizontal",
+          "mae": 40.555,
+          "alpha_mae": 0
+        },
+        {
+          "a": "river_es",
+          "b": "river_nw",
+          "axis": "vertical",
+          "mae": 39.672,
+          "alpha_mae": 0
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Numerical border differences do not prove visual discontinuity.",
+    "Rotated candidate PNGs were not committed.",
+    "Endpoint and T-junction topology still missing for rail and river.",
+    "No original-game comparison or Godot runtime test."
+  ],
+  "issue232_checked_tasks": []
+}
