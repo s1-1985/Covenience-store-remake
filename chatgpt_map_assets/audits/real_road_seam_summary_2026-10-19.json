@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-19",
+  "kind": "road",
+  "real_png_files_decoded": 10,
+  "in_memory_rotated_candidates": 5,
+  "directed_adjacency_pairs": 128,
+  "mae_rgba": {
+    "min": 7.871,
+    "median": 12.941,
+    "mean": 13.695,
+    "p90": 18.109,
+    "max": 22.063
+  },
+  "worst_pairs": [
+    [
+      "road_nsw",
+      "road_nesw",
+      "S-N",
+      22.063
+    ],
+    [
+      "road_es",
+      "road_nesw",
+      "S-N",
+      21.832
+    ],
+    [
+      "road_ne",
+      "road_sw",
+      "E-W",
+      21.586
+    ]
+  ],
+  "notes": [
+    "Numbers are edge pixel diagnostics, not visual approval.",
+    "Nine candidate directional PNGs not yet saved.",
+    "No original game comparison or Godot runtime verification."
+  ],
+  "issue232_checked_tasks": []
+}
