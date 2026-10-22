@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-22",
+  "issue": 232,
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "previous_head": "7fb3b365f3d63a44d80c05cd6d6290a294731811",
+  "status": "PARTIAL_NOT_ACCEPTED",
+  "source": {
+    "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_t_wes.png",
+    "git_blob_sha": "4e7cb7705f7e4f41f5a031c41b2f5ee8c7b444cb",
+    "read_only": true
+  },
+  "new_pngs": [
+    {
+      "id": "road_nes",
+      "turns_clockwise": 3,
+      "blob_sha": "d5aa2255f7834e5279ccea851c79d63aa8a4041d",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-22/road/road_nes.png",
+      "size_bytes": 16792,
+      "verified": {
+        "git_blob_sha": true,
+        "crc": true,
+        "rgba8_64x64": true,
+        "decoded_pixels_match_clockwise_rotation": true,
+        "icc_chunk_identical": true
+      }
+    },
+    {
+      "id": "road_nsw",
+      "turns_clockwise": 1,
+      "blob_sha": "50ddfc47d87779f983f1a52c324abb1daf62cccb",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-22/road/road_nsw.png",
+      "size_bytes": 16792,
+      "verified": {
+        "git_blob_sha": true,
+        "crc": true,
+        "rgba8_64x64": true,
+        "decoded_pixels_match_clockwise_rotation": true,
+        "icc_chunk_identical": true
+      }
+    },
+    {
+      "id": "road_new",
+      "turns_clockwise": 2,
+      "blob_sha": "c85473a93a0a273f17f657d1b12644449919aa02",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-22/road/road_new.png",
+      "size_bytes": 16792,
+      "verified": {
+        "git_blob_sha": true,
+        "crc": true,
+        "rgba8_64x64": true,
+        "decoded_pixels_match_clockwise_rotation": true,
+        "icc_chunk_identical": true
+      }
+    }
+  ],
+  "coverage": {
+    "previous_png_paths": 20,
+    "now_png_paths": 23,
+    "target_for_existing_directional_plan": 29,
+    "remaining": [
+      "road_e",
+      "road_w",
+      "rail_es",
+      "rail_sw",
+      "river_sw",
+      "river_nw"
+    ],
+    "rail_full_masks_pending": 8,
+    "river_full_masks_pending": 8
+  },
+  "limitations": {
+    "six_other_png_blobs": "Not committed: remote binary write attempts rejected by safety checks.",
+    "visual_seam_inspection": "NOT_DONE",
+    "original_reference_comparison": "NOT_DONE",
+    "renderer_code_pixel_size": "NOT_CONFIRMED",
+    "godot_runtime_test": "NOT_DONE",
+    "building_52_validation": "NOT_DONE",
+    "issue_checkboxes": "UNCHANGED"
+  },
+  "scope": "Only new files under chatgpt_map_assets; no writes to main, Claude branches, or existing files."
+}
