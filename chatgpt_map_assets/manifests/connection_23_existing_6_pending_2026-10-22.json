@@ -1,0 +1,478 @@
+{
+  "schema_version": 2,
+  "date": "2026-10-22",
+  "status": "23_PNG_PATHS_VERIFIED_6_MISSING_SEAM_AND_RENDERER_NOT_ACCEPTED",
+  "source_png_pixels": 64,
+  "assets": [
+    {
+      "asset_id": "road_n",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-16/road/road_n.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N",
+      "layer": "transport",
+      "source_status": "generated",
+      "original_verified": false,
+      "source_id": "map_road_end_s",
+      "source_sha256": "0409807caea45c0fb3687f9ddfca9f149a7520c40adc2190cdfd9fa5b71de92c"
+    },
+    {
+      "asset_id": "road_s",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_end_s.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "S",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_road_end_s",
+      "source_sha256": "0409807caea45c0fb3687f9ddfca9f149a7520c40adc2190cdfd9fa5b71de92c"
+    },
+    {
+      "asset_id": "road_ns",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_ns.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|S",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_road_ns",
+      "source_sha256": "84697460fa391207e7e6d6755d9d8690ee409a8691e2b105c589ac3b47f5b4f6"
+    },
+    {
+      "asset_id": "road_ew",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_ew.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "E|W",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_road_ew",
+      "source_sha256": "373108a0cc147f94ff5e378aef56e56f3706345aad2a5aea20e1f613a10c450f"
+    },
+    {
+      "asset_id": "road_ne",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-16/road/road_ne.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|E",
+      "layer": "transport",
+      "source_status": "generated",
+      "original_verified": false,
+      "source_id": "map_road_ws",
+      "source_sha256": "be34a1db989ab224dcd647dc4698652e06b1f657df3d287f92490b49404e6c35"
+    },
+    {
+      "asset_id": "road_es",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-16/road/road_es.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "E|S",
+      "layer": "transport",
+      "source_status": "generated",
+      "original_verified": false,
+      "source_id": "map_road_ws",
+      "source_sha256": "be34a1db989ab224dcd647dc4698652e06b1f657df3d287f92490b49404e6c35"
+    },
+    {
+      "asset_id": "road_sw",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_ws.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "S|W",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_road_ws",
+      "source_sha256": "be34a1db989ab224dcd647dc4698652e06b1f657df3d287f92490b49404e6c35"
+    },
+    {
+      "asset_id": "road_nw",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-16/road/road_nw.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|W",
+      "layer": "transport",
+      "source_status": "generated",
+      "original_verified": false,
+      "source_id": "map_road_ws",
+      "source_sha256": "be34a1db989ab224dcd647dc4698652e06b1f657df3d287f92490b49404e6c35"
+    },
+    {
+      "asset_id": "road_esw",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_t_wes.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "E|S|W",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_road_t_wes",
+      "source_sha256": "ecb1202ec79d1aeaa82a7b2057d00d6f5ee4365efee4d14de47c85de9dfbef50"
+    },
+    {
+      "asset_id": "road_nesw",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_cross.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|E|S|W",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_road_cross",
+      "source_sha256": "1a8f593ca75d2ea8142e6651e3b0fb5dc70e530862c9d94bb4c3b14fac5be8e3"
+    },
+    {
+      "asset_id": "rail_ns",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/rail/map_rail_ns.png",
+      "kind": "rail",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|S",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_rail_ns",
+      "source_sha256": "37120da5a4bf4145e8153d6d05a2b2141ffb6d89952aec5d3917b666ccb3cdd6"
+    },
+    {
+      "asset_id": "rail_ew",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/rail/map_rail_ew.png",
+      "kind": "rail",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "E|W",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_rail_ew",
+      "source_sha256": "33cec6e0429a70418fc5adf5f58ee61214dabdfc6469259fa61730c80813fd65"
+    },
+    {
+      "asset_id": "rail_ne",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/rail/map_rail_ne.png",
+      "kind": "rail",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|E",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_rail_ne",
+      "source_sha256": "a67f9d0051a2d6c1247b3caefece79454c39849cb5c47a79e2bc19598cc022f4"
+    },
+    {
+      "asset_id": "rail_nw",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/rail/map_rail_nw.png",
+      "kind": "rail",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|W",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_rail_nw",
+      "source_sha256": "34654c27bbe75722b7277c8457290c3b82c43a76f652883694ffc0134b2e0b29"
+    },
+    {
+      "asset_id": "rail_nesw",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/rail/map_rail_cross.png",
+      "kind": "rail",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|E|S|W",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_rail_cross",
+      "source_sha256": "3cd8bca90cf03202272c038ebfe4c62bf6e110bcfeea98f79ee1ba5ecce57414"
+    },
+    {
+      "asset_id": "river_ns",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ns.png",
+      "kind": "river",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|S",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_river_ns",
+      "source_sha256": "48f389ccbc5a5046ad4d252c0a13b702fc32ed1a32826d831392f94e0a161d1c"
+    },
+    {
+      "asset_id": "river_ew",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ew.png",
+      "kind": "river",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "E|W",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_river_ew",
+      "source_sha256": "959c8d0eaf7180c372c9067ca2c99be91d7410f28e5ed17a5f8078ca987e50b9"
+    },
+    {
+      "asset_id": "river_ne",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ne.png",
+      "kind": "river",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|E",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_river_ne",
+      "source_sha256": "aa6c31b6dc74484d0fea0c6f73fe8b24aea3bc8b50b8f43d9fd2e8c80c47ea45"
+    },
+    {
+      "asset_id": "river_es",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_es.png",
+      "kind": "river",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "E|S",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_river_es",
+      "source_sha256": "486ce195a4f98bb1852f1c1ca1a4396c62b342f65ba8af29a451ed5f52546ef7"
+    },
+    {
+      "asset_id": "river_nesw",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_cross.png",
+      "kind": "river",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|E|S|W",
+      "layer": "transport",
+      "source_status": "candidate",
+      "original_verified": false,
+      "source_id": "map_river_cross",
+      "source_sha256": "7c5ed718333a93a08958ca583f9767734192cb3ba899cfc1bbaa64e8ffd7d03c"
+    },
+    {
+      "asset_id": "road_nes",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-22/road/road_nes.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|E|S",
+      "layer": "transport",
+      "source_status": "generated",
+      "original_verified": false,
+      "source_id": "map_road_t_wes",
+      "source_blob_sha": "4e7cb7705f7e4f41f5a031c41b2f5ee8c7b444cb",
+      "rotation_cw_quarter_turns": 3,
+      "git_blob_sha": "d5aa2255f7834e5279ccea851c79d63aa8a4041d",
+      "byte_size": 16792,
+      "decode_verified": true,
+      "pixel_rotation_verified": true,
+      "icc_preserved": true
+    },
+    {
+      "asset_id": "road_nsw",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-22/road/road_nsw.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|S|W",
+      "layer": "transport",
+      "source_status": "generated",
+      "original_verified": false,
+      "source_id": "map_road_t_wes",
+      "source_blob_sha": "4e7cb7705f7e4f41f5a031c41b2f5ee8c7b444cb",
+      "rotation_cw_quarter_turns": 1,
+      "git_blob_sha": "50ddfc47d87779f983f1a52c324abb1daf62cccb",
+      "byte_size": 16792,
+      "decode_verified": true,
+      "pixel_rotation_verified": true,
+      "icc_preserved": true
+    },
+    {
+      "asset_id": "road_new",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-22/road/road_new.png",
+      "kind": "road",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "direction_mask": "N|E|W",
+      "layer": "transport",
+      "source_status": "generated",
+      "original_verified": false,
+      "source_id": "map_road_t_wes",
+      "source_blob_sha": "4e7cb7705f7e4f41f5a031c41b2f5ee8c7b444cb",
+      "rotation_cw_quarter_turns": 2,
+      "git_blob_sha": "c85473a93a0a273f17f657d1b12644449919aa02",
+      "byte_size": 16792,
+      "decode_verified": true,
+      "pixel_rotation_verified": true,
+      "icc_preserved": true
+    }
+  ],
+  "pending": [
+    {
+      "asset_id": "road_e",
+      "source_id": "map_road_end_s",
+      "turns": 3
+    },
+    {
+      "asset_id": "road_w",
+      "source_id": "map_road_end_s",
+      "turns": 1
+    },
+    {
+      "asset_id": "road_nes",
+      "source_id": "map_road_t_wes",
+      "turns": 3
+    },
+    {
+      "asset_id": "road_nsw",
+      "source_id": "map_road_t_wes",
+      "turns": 1
+    },
+    {
+      "asset_id": "road_new",
+      "source_id": "map_road_t_wes",
+      "turns": 2
+    },
+    {
+      "asset_id": "rail_es",
+      "source_id": "map_rail_ne",
+      "turns": 1
+    },
+    {
+      "asset_id": "rail_sw",
+      "source_id": "map_rail_ne",
+      "turns": 2
+    },
+    {
+      "asset_id": "river_sw",
+      "source_id": "map_river_es",
+      "turns": 1
+    },
+    {
+      "asset_id": "river_nw",
+      "source_id": "map_river_es",
+      "turns": 2
+    }
+  ],
+  "issue232_checked_tasks": [],
+  "renderer_tile_pixels_verified": false,
+  "pending_6": [
+    "road_e",
+    "road_w",
+    "rail_es",
+    "rail_sw",
+    "river_sw",
+    "river_nw"
+  ],
+  "original_game_visual_acceptance": false,
+  "seam_visual_acceptance": false,
+  "godot_integration_tested": false,
+  "note": "20 existing assets unchanged; 3 new real rotated PNGs validated. Do not mark issue #232 complete."
+}
