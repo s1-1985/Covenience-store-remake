@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-24",
+  "repo": "s1-1985/Covenience-store-remake",
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "parent_commit": "aa9bd41659ad72affaf27b11fc8ed9f679a00c2b",
+  "base_tree": "1c35fe965261a14ccf98f88ff8a2d820ee4dca6c",
+  "method": "Read-only fetch of three real source PNGs; RFC1951 DEFLATE decode, PNG filter reconstruction, lossless 90-degree pixel rotation, PNG encode with stored DEFLATE, re-decode, pixel-by-pixel comparison, CRC32/Adler32 verification, ICC profile byte equality.",
+  "source_read_only": true,
+  "main_or_claude_branch_writes": false,
+  "outputs": [
+    {
+      "asset_id": "road_e",
+      "kind": "road",
+      "source": "road/map_road_end_s.png",
+      "source_id": "map_road_end_s",
+      "source_blob_sha": "cbc28b9fba5e7c8b2cfe94f530ba8531cfdf5f9e",
+      "rotation_cw_quarter_turns": 3,
+      "direction_mask": "E",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-24/road/road_e.png",
+      "git_blob_sha": "f4eda92fda2f7533b2f3ec8620e171f14b990f5d",
+      "byte_size": 16792,
+      "validated": true
+    },
+    {
+      "asset_id": "road_w",
+      "kind": "road",
+      "source": "road/map_road_end_s.png",
+      "source_id": "map_road_end_s",
+      "source_blob_sha": "cbc28b9fba5e7c8b2cfe94f530ba8531cfdf5f9e",
+      "rotation_cw_quarter_turns": 1,
+      "direction_mask": "W",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-24/road/road_w.png",
+      "git_blob_sha": "0e2c4afdf12167ec2be2c7ef0092ad88f469720c",
+      "byte_size": 16792,
+      "validated": true
+    },
+    {
+      "asset_id": "rail_es",
+      "kind": "rail",
+      "source": "rail/map_rail_ne.png",
+      "source_id": "map_rail_ne",
+      "source_blob_sha": "18a822527ccb5772945a5f22169566442f8238a9",
+      "rotation_cw_quarter_turns": 1,
+      "direction_mask": "E|S",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-24/rail/rail_es.png",
+      "git_blob_sha": "2e4b9953a5c356c16826831f3f612089a15df7f8",
+      "byte_size": 16792,
+      "validated": true
+    },
+    {
+      "asset_id": "rail_sw",
+      "kind": "rail",
+      "source": "rail/map_rail_ne.png",
+      "source_id": "map_rail_ne",
+      "source_blob_sha": "18a822527ccb5772945a5f22169566442f8238a9",
+      "rotation_cw_quarter_turns": 2,
+      "direction_mask": "S|W",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-24/rail/rail_sw.png",
+      "git_blob_sha": "f1a3c162daf6a55068e64b0dbd00ca1cece63a2d",
+      "byte_size": 16792,
+      "validated": true
+    },
+    {
+      "asset_id": "river_sw",
+      "kind": "river",
+      "source": "river/map_river_es.png",
+      "source_id": "map_river_es",
+      "source_blob_sha": "f7cca6d651fba2fba2af612aec543519a6214924",
+      "rotation_cw_quarter_turns": 1,
+      "direction_mask": "S|W",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-24/river/river_sw.png",
+      "git_blob_sha": "fe04e0bdb56a39bc2fc6d18e699e8b1eb30f1b41",
+      "byte_size": 16792,
+      "validated": true
+    },
+    {
+      "asset_id": "river_nw",
+      "kind": "river",
+      "source": "river/map_river_es.png",
+      "source_id": "map_river_es",
+      "source_blob_sha": "f7cca6d651fba2fba2af612aec543519a6214924",
+      "rotation_cw_quarter_turns": 2,
+      "direction_mask": "N|W",
+      "path": "chatgpt_map_assets/generated/directional_2026-10-24/river/river_nw.png",
+      "git_blob_sha": "289838b50841c81e3481324e58f7368a5555f4b2",
+      "byte_size": 16792,
+      "validated": true
+    }
+  ],
+  "checks": {
+    "created_pngs": 6,
+    "decoded_pngs": 6,
+    "pixel_exact_rotations": 6,
+    "icc_preserved": 6,
+    "manifest_asset_count": 29,
+    "visual_seam_accepted": false,
+    "godot_integration_accepted": false,
+    "issue_232_checked": 0
+  },
+  "known_gaps": [
+    "rail/river 16 missing topology shapes",
+    "seam visual QA",
+    "terrain and heterogeneous connections",
+    "52 buildings and original comparison",
+    "Godot renderer integration and sample map"
+  ]
+}
