@@ -1,0 +1,1202 @@
+{
+  "date": "2026-10-25",
+  "repo": "s1-1985/Covenience-store-remake",
+  "read_only_sources": {
+    "main_commit": "688876a4763c5dd006da8cfc36c7e7960d862e28",
+    "isolated_commit_before_write": "3e189e266221e0ac19439d269e930c4421a9c3d6"
+  },
+  "write_scope": "chatgpt/map-assets-isolated-20260922:chatgpt_map_assets/",
+  "main_or_claude_files_modified": false,
+  "visual_inspection_this_run": false,
+  "decoded_png_this_run": false,
+  "kind": "building_52_guide_source_crosscheck",
+  "guide_town_buildings_total": 59,
+  "guide_excluded_non_facility_ids": [
+    "own_conveni_lot",
+    "rival_conveni_lot",
+    "vacant_lot",
+    "road",
+    "railway",
+    "town_hall_lot",
+    "inducement_lot"
+  ],
+  "expected_categories": {
+    "学校": 6,
+    "役場": 3,
+    "アミューズメント": 5,
+    "店": 18,
+    "住宅": 7,
+    "会社": 5,
+    "その他施設": 6,
+    "駅": 2
+  },
+  "actual_categories": {
+    "学校": 6,
+    "役場": 3,
+    "アミューズメント": 5,
+    "店": 18,
+    "住宅": 7,
+    "会社": 5,
+    "その他施設": 6,
+    "駅": 2
+  },
+  "verified_52_names_footprints_file_paths_and_dimensions": true,
+  "source_file_existence_checks_passed": 52,
+  "source_images_accepted_for_game": 0,
+  "source_manifest": "assets/raw/conveni_map_assets_v2/manifest.json",
+  "guide_source": "reference_sim/conveni_sim/baseline_data.py",
+  "native_png_pixels_per_tile": 64,
+  "main_town_view_default_map_tile_pixels": 24,
+  "main_town_view_fallback_tile_pixels": 48,
+  "notes": [
+    "Guide and image manifest footprints agree for all 52; this does NOT establish visual match to original gameplay.",
+    "Source sprites remain only on main, not integrated into isolated Godot project.",
+    "Footprint tuple is recorded in source order; no row/column reinterpretation is performed."
+  ],
+  "assets": [
+    {
+      "asset_id": "kindergarten_building",
+      "name_ja": "幼稚園",
+      "category": "学校",
+      "footprint_xy_tiles": [
+        3,
+        2
+      ],
+      "pixel_dimensions": [
+        192,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/kindergarten_building.png",
+      "source_git_blob_sha": "8b6b5af3e6ff93085626143bc61fb8e1a41e954a",
+      "source_sha256_manifest": "f164af917a80b251bb504f15133b020d21ae58e1414664776b5b482647569ee0",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "elementary_school_building",
+      "name_ja": "小学校",
+      "category": "学校",
+      "footprint_xy_tiles": [
+        4,
+        4
+      ],
+      "pixel_dimensions": [
+        256,
+        256
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/elementary_school_building.png",
+      "source_git_blob_sha": "f2acfc710fe0de2623dfa5bd878be2e4b8c02ea7",
+      "source_sha256_manifest": "c23a4e27648b4764f321b4433e2eed16965d13e46dd6c728a6e790648c2bc323",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "middle_school_building",
+      "name_ja": "中学校",
+      "category": "学校",
+      "footprint_xy_tiles": [
+        5,
+        5
+      ],
+      "pixel_dimensions": [
+        320,
+        320
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/middle_school_building.png",
+      "source_git_blob_sha": "3ed8925a12855d6e06fe8f4e0492c5d0e7bf80e5",
+      "source_sha256_manifest": "6a740e6175e83c25c3ca2498e96ec3cfca826a433954c4670e53f26bba7d4a4e",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "high_school_building",
+      "name_ja": "高校",
+      "category": "学校",
+      "footprint_xy_tiles": [
+        6,
+        6
+      ],
+      "pixel_dimensions": [
+        384,
+        384
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/high_school_building.png",
+      "source_git_blob_sha": "f732a81176925055ffd78a4e835312e3ea3cfc67",
+      "source_sha256_manifest": "4e3d0a5d032f86857b456e4bfc3ea383a72977cf5a72bef8dea8ac3ef257d328",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "vocational_school_building",
+      "name_ja": "専門学校",
+      "category": "学校",
+      "footprint_xy_tiles": [
+        4,
+        3
+      ],
+      "pixel_dimensions": [
+        256,
+        192
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/vocational_school_building.png",
+      "source_git_blob_sha": "a47f6f18a176cef9b4717c0efb95cecaa492bbff",
+      "source_sha256_manifest": "2ef8093f75498b7fa8188e3778acef8b61f81b9bc4814340621afd24b9688281",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "university_building",
+      "name_ja": "大学",
+      "category": "学校",
+      "footprint_xy_tiles": [
+        7,
+        7
+      ],
+      "pixel_dimensions": [
+        448,
+        448
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/university_building.png",
+      "source_git_blob_sha": "06c6d2e9b5b9cefe65ba2fb78deea71fdab8fca8",
+      "source_sha256_manifest": "4b6de4780c8177272c684f87183a8c75ca5a5547cbe58ae7ad18d7108c88557a",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "village_office",
+      "name_ja": "役場(村役場)",
+      "category": "役場",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/village_office.png",
+      "source_git_blob_sha": "cb0793c20d206d1c9cc9fe0bc2d267a5b0fccd83",
+      "source_sha256_manifest": "998765d96aaa8ff3e0f7a872b45404eba5aa14302dedb2bda109609fbf5c67f2",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "prefectural_office",
+      "name_ja": "役所(県庁)",
+      "category": "役場",
+      "footprint_xy_tiles": [
+        5,
+        5
+      ],
+      "pixel_dimensions": [
+        320,
+        320
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/prefectural_office.png",
+      "source_git_blob_sha": "cc1706dbebd4fccfa63695481e7f0e39d803dfce",
+      "source_sha256_manifest": "b74db399ac6d22a0532e2684a3f1dcf975f8de34d8d4e44ccb540417924a714f",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "metropolitan_government_office",
+      "name_ja": "都庁",
+      "category": "役場",
+      "footprint_xy_tiles": [
+        7,
+        7
+      ],
+      "pixel_dimensions": [
+        448,
+        448
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/metropolitan_government_office.png",
+      "source_git_blob_sha": "4539a84f2e59debb2813fffc8b229adc3a1f4a46",
+      "source_sha256_manifest": "4861826c1e129e45c01eb3060391b01e1da762016f4f93d13d89e8e93345f3b3",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "amusement_park_building",
+      "name_ja": "遊園地",
+      "category": "アミューズメント",
+      "footprint_xy_tiles": [
+        7,
+        7
+      ],
+      "pixel_dimensions": [
+        448,
+        448
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/amusement_park_building.png",
+      "source_git_blob_sha": "5097af414785596758899b6f66a1db9bcf56337d",
+      "source_sha256_manifest": "bcc4c7247227ea8c0c6c55647b56f6ec14ed36af4b8abc76b9e9229ef043e59d",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "aquarium_building",
+      "name_ja": "水族館",
+      "category": "アミューズメント",
+      "footprint_xy_tiles": [
+        3,
+        3
+      ],
+      "pixel_dimensions": [
+        192,
+        192
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/aquarium_building.png",
+      "source_git_blob_sha": "ed3ba3ae69c4ca68e1ba14ac5639eb16ebf4c5b6",
+      "source_sha256_manifest": "fb7a1578fc9130fa33400ee4b33a437f34a793d1080a7253534690e24ca40501",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "zoo_building",
+      "name_ja": "動物園",
+      "category": "アミューズメント",
+      "footprint_xy_tiles": [
+        6,
+        6
+      ],
+      "pixel_dimensions": [
+        384,
+        384
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/zoo_building.png",
+      "source_git_blob_sha": "72de9cc10206d6209f4a7e916ddef1b7020daa05",
+      "source_sha256_manifest": "f3b0723ce01685ca824afe4779ca399fd338d9399055cc1771fa374dfcd3e85a",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "small_park_building",
+      "name_ja": "公園(小)",
+      "category": "アミューズメント",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/small_park_building.png",
+      "source_git_blob_sha": "f22eefde95f86a4fa162611120b3dda0f915c6da",
+      "source_sha256_manifest": "f0daf2219e60dfee01a74cbef78552f65dd796a78f21d9e54b47be763aa3450b",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "large_park_building",
+      "name_ja": "公園(大)",
+      "category": "アミューズメント",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/large_park_building.png",
+      "source_git_blob_sha": "afc4a25483abab7c361d734de5d110d9cb3abd53",
+      "source_sha256_manifest": "44d103f683230da5d2686d4e9eacb7a2723cb872126389d72125e9b07aae1b37",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "game_center",
+      "name_ja": "ゲームセンター",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/game_center.png",
+      "source_git_blob_sha": "f7721facd2eb11eb4040c32900f27cac23cb9897",
+      "source_sha256_manifest": "1cca8494483d8547aa2f7362f2bc7d247c3cd09abea2286405a57afc91a6db32",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "pachinko_parlor",
+      "name_ja": "パチンコ屋",
+      "category": "店",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/pachinko_parlor.png",
+      "source_git_blob_sha": "afe341cb48588a68aed36b356f2b874b88d22013",
+      "source_sha256_manifest": "42b91dd2b3268a3e9ba4244c2a7c13536853276446ac35e63e4d593cd722fe8e",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "bathhouse",
+      "name_ja": "銭湯",
+      "category": "店",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/bathhouse.png",
+      "source_git_blob_sha": "c5b90f6bb39ce6fb6745417a58157f3f4bcedb7e",
+      "source_sha256_manifest": "e7fd7359890b008c89925a52c57d0e70e5c6fc7b8706022fca21b0b8bb5a79db",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "family_restaurant",
+      "name_ja": "ファミリーレストラン",
+      "category": "店",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/family_restaurant.png",
+      "source_git_blob_sha": "92ceec66b59b72aa3bb44cb87bbacc6ad26f7bf4",
+      "source_sha256_manifest": "a1ffd0b6cfb67d54f305f4c85471946bc541fbb417511445693cbeb1557b87a6",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "family_restaurant_a",
+      "name_ja": "ファミリーレストランA",
+      "category": "店",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/family_restaurant_a.png",
+      "source_git_blob_sha": "ec92faa9094057472daf8a8dd96b5025c304383e",
+      "source_sha256_manifest": "a5e28195e53921bbddd206f5f66f7f9aca93dcd742ddbfb18497771e985e1b38",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "family_restaurant_b",
+      "name_ja": "ファミリーレストランB",
+      "category": "店",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/family_restaurant_b.png",
+      "source_git_blob_sha": "e2616a952a4919c887c37be7edc30c82d4f37a40",
+      "source_sha256_manifest": "35e80bf719e2a3395d45bb508c5e4c0f743ff4dc999f821c7b064110cf56b5d5",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "restaurant",
+      "name_ja": "レストラン",
+      "category": "店",
+      "footprint_xy_tiles": [
+        2,
+        1
+      ],
+      "pixel_dimensions": [
+        128,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/restaurant.png",
+      "source_git_blob_sha": "81579e01bfb9926ec5dc189169bf2b2554234b78",
+      "source_sha256_manifest": "af037c9b17060d6eb3641c535c9d85da85d09878833cc5b39c2bbba495339f28",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "fast_food_a",
+      "name_ja": "ファーストフードA",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/fast_food_a.png",
+      "source_git_blob_sha": "96a056d388104e9b80c72aa23089a0968b2b83ca",
+      "source_sha256_manifest": "61f60fc9c53a8d7d1ca2641063ee73a3f0c8fa39d5366021547aa48c776b3530",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "fast_food_b",
+      "name_ja": "ファーストフードB",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/fast_food_b.png",
+      "source_git_blob_sha": "e7f01676f8be33c965341712605c071d06761cc7",
+      "source_sha256_manifest": "821e02517a54103d68004dda886f5e3f94d8b2284e24b0deda0ee1abc482ea16",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "soba_shop",
+      "name_ja": "そば屋",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/soba_shop.png",
+      "source_git_blob_sha": "0751959adeb0ddcfcc108a294234c34756fb0edb",
+      "source_sha256_manifest": "10bb7f84cd6c2767fbb24b5514723ae8c9a4257dea5b52031a2b04f9015bc32b",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "ramen_shop",
+      "name_ja": "ラーメン屋",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/ramen_shop.png",
+      "source_git_blob_sha": "5274f680cc565ac492c7eacb8648ffe7973494ae",
+      "source_sha256_manifest": "ad71aea0886793e4f14ef2c6ef0a80af0018d719b48482c2086b6b047e6edf92",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "izakaya_a",
+      "name_ja": "飲み屋A",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/izakaya_a.png",
+      "source_git_blob_sha": "5e0364600575fc808d7e51b1bff27763dfd887b1",
+      "source_sha256_manifest": "cc452e58dcad6bbfa7263351523033f3a42b5d26a5e38a602e4d7574a398aa25",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "izakaya_b",
+      "name_ja": "飲み屋B",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/izakaya_b.png",
+      "source_git_blob_sha": "7001f7cab1465f73e66350b01736eadf4c7c6979",
+      "source_sha256_manifest": "15c74bae283a364c21761ad785c040e2a60ced9c8e52957350b0d645a3c37fe4",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "izakaya_c",
+      "name_ja": "飲み屋C",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/izakaya_c.png",
+      "source_git_blob_sha": "7990e715fce86245261d19e5519202c7e9051d20",
+      "source_sha256_manifest": "c1bf75d2040caf94f12548ac0acc83b8057698b060c9e9b8dec0fcaa9f6ec65f",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "toy_store",
+      "name_ja": "おもちゃ屋",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/toy_store.png",
+      "source_git_blob_sha": "2d5815fd7d26b3bc7945082c36a1232b9771b5a0",
+      "source_sha256_manifest": "99004fe49592510bc078c7a445e644526dadd534969f484e50888aebe88b7b10",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "clothing_store",
+      "name_ja": "洋品店",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/clothing_store.png",
+      "source_git_blob_sha": "268c9bcfb38303d64c66a427592630fb2ff31ee1",
+      "source_sha256_manifest": "7235833c811f0a60a1ae2350877ba89f2e17318069dfb75213c44065568d5a38",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "electronics_store",
+      "name_ja": "電気屋",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/electronics_store.png",
+      "source_git_blob_sha": "4e37fff2e9d078c0fa1c2fa209c28fb3036b5e23",
+      "source_sha256_manifest": "369c2769f84cd51fca97e2575c3cffa71431e8c0213f02a7ada8ef01045d77a5",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "bookstore",
+      "name_ja": "本屋",
+      "category": "店",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/bookstore.png",
+      "source_git_blob_sha": "8d9c0b2496e79f8a132498a83fc7dba1641e607a",
+      "source_sha256_manifest": "3f3a17474b2fdc48b0dd9f88b76b60548f4afd40e9f7619875abb75b50a50af2",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "house_small_a",
+      "name_ja": "住宅(小A)",
+      "category": "住宅",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/house_small_a.png",
+      "source_git_blob_sha": "500724f2f21bd90e793a55524aab4662c5e96cf4",
+      "source_sha256_manifest": "60b214909d0152ca6519f10a7df6b785294f72351897a474e94e7c84c340087b",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "house_small_b",
+      "name_ja": "住宅(小B)",
+      "category": "住宅",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/house_small_b.png",
+      "source_git_blob_sha": "2d570a54d343f76745b569f41938d4d7122b3903",
+      "source_sha256_manifest": "47f6a563bab67df4ecd765f16d0b5b9097a2214924c57021f57ea98d33f79f43",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "house_small_c",
+      "name_ja": "住宅(小C)",
+      "category": "住宅",
+      "footprint_xy_tiles": [
+        1,
+        1
+      ],
+      "pixel_dimensions": [
+        64,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/house_small_c.png",
+      "source_git_blob_sha": "72efaf0f4aa0032f9ec1c64e620c957fa72d65dc",
+      "source_sha256_manifest": "8e2c6017d534088c04562caac878c7ecc14f932d299421baba1c951bbcdbb7d8",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "house_small_d",
+      "name_ja": "住宅(小D)",
+      "category": "住宅",
+      "footprint_xy_tiles": [
+        1,
+        2
+      ],
+      "pixel_dimensions": [
+        64,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/house_small_d.png",
+      "source_git_blob_sha": "ae582d1f88c2f746ea436b8abfb3dd706afea727",
+      "source_sha256_manifest": "4d3e76647075f3880014512d7c11f691b5cbb7b2aaca699090153156c69367cb",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "house_medium_a",
+      "name_ja": "住宅(中A)",
+      "category": "住宅",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/house_medium_a.png",
+      "source_git_blob_sha": "fb90b4c53fa19a817caa850bbf7ed64b62f7e408",
+      "source_sha256_manifest": "cd6d62ddbeee7dcf1fc8d51cb6f65d566c1016d7e1409bf8e797540bb0662509",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "house_medium_b",
+      "name_ja": "住宅(中B)",
+      "category": "住宅",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/house_medium_b.png",
+      "source_git_blob_sha": "49f3ccfc1708b30cc150186657d49213a7312f04",
+      "source_sha256_manifest": "d416272aaba96097e475d68391c55356b5ecb9df2bc8b01f4ee5a0c22a97031c",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "house_large_c",
+      "name_ja": "住宅(大C)",
+      "category": "住宅",
+      "footprint_xy_tiles": [
+        3,
+        2
+      ],
+      "pixel_dimensions": [
+        192,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/house_large_c.png",
+      "source_git_blob_sha": "89fbf3664c953b99019b848dcf4bb555fe16aade",
+      "source_sha256_manifest": "a069c12a4467dcb559cd9e449478126823702320263b7a25c559fb001dc0fa27",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "company_small_a",
+      "name_ja": "会社(小A)",
+      "category": "会社",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/company_small_a.png",
+      "source_git_blob_sha": "a6843f57c070e43de06f5f579db6b6325d6e6e95",
+      "source_sha256_manifest": "b7ab659f3e8a72b565554af008ee253ad0a76ceba7db5a189f5d4c5b7335f8b3",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "company_small_b",
+      "name_ja": "会社(小B)",
+      "category": "会社",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/company_small_b.png",
+      "source_git_blob_sha": "a95a55bf105d0e934c7ddf8c6dfb476b11ec271d",
+      "source_sha256_manifest": "a3b637d65a0a59bb4abbdaeaa60ba5bfd5fcc0ff5872ba4387fc89482861fbc2",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "company_small_c",
+      "name_ja": "会社(小C)",
+      "category": "会社",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/company_small_c.png",
+      "source_git_blob_sha": "cc4251889e0d3476db5f18deb4d8768b48b4c00c",
+      "source_sha256_manifest": "d21a1fc813b8567d7666bc1166732ce9713a257ce6befd0a6e1e74da049fafef",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "company_large_a",
+      "name_ja": "会社(大A)",
+      "category": "会社",
+      "footprint_xy_tiles": [
+        3,
+        3
+      ],
+      "pixel_dimensions": [
+        192,
+        192
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/company_large_a.png",
+      "source_git_blob_sha": "6b6d36491f147700533147852b90dd281342ff08",
+      "source_sha256_manifest": "e7be830e12545b38a412a43ae88f86ffe9e0b52100ac1fd40895c44d941de04d",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "company_large_b",
+      "name_ja": "会社(大B)",
+      "category": "会社",
+      "footprint_xy_tiles": [
+        3,
+        3
+      ],
+      "pixel_dimensions": [
+        192,
+        192
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/company_large_b.png",
+      "source_git_blob_sha": "6714cd28e57aa0e8afa955a709d9d8ed8c994391",
+      "source_sha256_manifest": "a6f67cd84e67394714881298c9d6d6c4a1596b75fb25289ddce37c36dcf9295d",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "police_box_building",
+      "name_ja": "交番",
+      "category": "その他施設",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/police_box_building.png",
+      "source_git_blob_sha": "25aaf359776e81a0b29966219fd5e0e760137c92",
+      "source_sha256_manifest": "00ce2fa7cd01d85b2225683e17d108e1ff8708bbb9ab2e25f4b92ec4b62353cd",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "fire_station_building",
+      "name_ja": "消防署",
+      "category": "その他施設",
+      "footprint_xy_tiles": [
+        3,
+        2
+      ],
+      "pixel_dimensions": [
+        192,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/fire_station_building.png",
+      "source_git_blob_sha": "3596eb4dbf1b7b81aacb391f50daa6297f40e16e",
+      "source_sha256_manifest": "468670dde5aee3e56a5066a7ca16e31544ac3a94bef5a909a7de3e56c106b87d",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "gym_building",
+      "name_ja": "体育館",
+      "category": "その他施設",
+      "footprint_xy_tiles": [
+        3,
+        3
+      ],
+      "pixel_dimensions": [
+        192,
+        192
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/gym_building.png",
+      "source_git_blob_sha": "c4ba578b59f910381265b90f03707effd5c80e04",
+      "source_sha256_manifest": "0a0d40ae5cae4516f3cb891696fa74dd2027a8768357d4a7922d3a9b42424cd2",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "athletic_field_building",
+      "name_ja": "運動場",
+      "category": "その他施設",
+      "footprint_xy_tiles": [
+        5,
+        4
+      ],
+      "pixel_dimensions": [
+        320,
+        256
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/athletic_field_building.png",
+      "source_git_blob_sha": "6ca017a644c1f5946172f5c26a4e9081328b0272",
+      "source_sha256_manifest": "6fbe1768a9426f31bb3c833d6c7e157f860e53bbd45102c7d3bb318b6ef64428",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "pool_building",
+      "name_ja": "プール",
+      "category": "その他施設",
+      "footprint_xy_tiles": [
+        3,
+        2
+      ],
+      "pixel_dimensions": [
+        192,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/pool_building.png",
+      "source_git_blob_sha": "9d3ac122849d2f8ed0e83e099a04c453722580ea",
+      "source_sha256_manifest": "b13b0f5449698a8dfaea2642e1f444a704b38583c3f495bf04a98ed56da0a5bc",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "event_hall_building",
+      "name_ja": "イベント会場",
+      "category": "その他施設",
+      "footprint_xy_tiles": [
+        2,
+        2
+      ],
+      "pixel_dimensions": [
+        128,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/event_hall_building.png",
+      "source_git_blob_sha": "2e8d5d1142510f08a56c313d1571aa1b3b994727",
+      "source_sha256_manifest": "9be37962719150c781228fc31a2c8d72be5f219ef7e38b829c2979e4826f5dc9",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "station_small",
+      "name_ja": "駅(小)",
+      "category": "駅",
+      "footprint_xy_tiles": [
+        2,
+        1
+      ],
+      "pixel_dimensions": [
+        128,
+        64
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/station_small.png",
+      "source_git_blob_sha": "3eed74de25fd2f2ac25b6e19da4dc40768a45112",
+      "source_sha256_manifest": "bd5f4b140d3a8d4454b3f2e9216a0876ea5a755f2737c6a5ae1cb87d6fee3060",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    },
+    {
+      "asset_id": "station_large",
+      "name_ja": "駅(大)",
+      "category": "駅",
+      "footprint_xy_tiles": [
+        4,
+        2
+      ],
+      "pixel_dimensions": [
+        256,
+        128
+      ],
+      "source_path_main": "assets/raw/conveni_map_assets_v2/sprites/station_large.png",
+      "source_git_blob_sha": "fbb38e035d0bbfb619c860c98f36cd056ecdc59c",
+      "source_sha256_manifest": "0cc1c3fa460b43082409123faa3f54ee290784f81558270080466b3acc3e5e2c",
+      "guide_name_match": true,
+      "guide_footprint_match": true,
+      "pixel_footprint_match": true,
+      "source_file_exists_on_main": true,
+      "source_file_copied_to_isolated": false,
+      "original_visual_verified": false
+    }
+  ]
+}
