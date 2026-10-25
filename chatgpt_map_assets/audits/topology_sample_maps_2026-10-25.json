@@ -1,0 +1,509 @@
+{
+  "date": "2026-10-25",
+  "source_manifest": "chatgpt_map_assets/manifests/connection_29_files_2026-10-24.json",
+  "source_ref": "chatgpt/map-assets-isolated-20260922",
+  "validation_kind": "metadata_direction_mask_topology_only",
+  "assertions_run": 9,
+  "assertions_expected_outcomes_matched": 9,
+  "tiles_checked": 39,
+  "missing_tile_placements": 16,
+  "passed_sample_maps": 5,
+  "failed_sample_maps": 4,
+  "all_expected_outcomes_matched": true,
+  "actual_png_pixels_read": false,
+  "pixel_seams_checked": false,
+  "godot_executed": false,
+  "original_game_acceptance": false,
+  "issue_232_completed_tasks": [],
+  "results": [
+    {
+      "id": "road_cross_3x3",
+      "kind": "road",
+      "rows": [
+        ".R.",
+        "RRR",
+        ".R."
+      ],
+      "expected": "PASS",
+      "actual": "PASS",
+      "tiles_checked": 5,
+      "missing_assets": [],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "direction_mask": "S",
+          "asset_id": "road_s",
+          "status": "EXISTS"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "direction_mask": "E",
+          "asset_id": "road_e",
+          "status": "EXISTS"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "direction_mask": "N|E|S|W",
+          "asset_id": "road_nesw",
+          "status": "EXISTS"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "direction_mask": "W",
+          "asset_id": "road_w",
+          "status": "EXISTS"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "direction_mask": "N",
+          "asset_id": "road_n",
+          "status": "EXISTS"
+        }
+      ]
+    },
+    {
+      "id": "road_t_new_3x3",
+      "kind": "road",
+      "rows": [
+        ".R.",
+        "RRR",
+        "..."
+      ],
+      "expected": "PASS",
+      "actual": "PASS",
+      "tiles_checked": 4,
+      "missing_assets": [],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "direction_mask": "S",
+          "asset_id": "road_s",
+          "status": "EXISTS"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "direction_mask": "E",
+          "asset_id": "road_e",
+          "status": "EXISTS"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "direction_mask": "N|E|W",
+          "asset_id": "road_new",
+          "status": "EXISTS"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "direction_mask": "W",
+          "asset_id": "road_w",
+          "status": "EXISTS"
+        }
+      ]
+    },
+    {
+      "id": "road_loop_2x2",
+      "kind": "road",
+      "rows": [
+        "RR",
+        "RR"
+      ],
+      "expected": "PASS",
+      "actual": "PASS",
+      "tiles_checked": 4,
+      "missing_assets": [],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "direction_mask": "E|S",
+          "asset_id": "road_es",
+          "status": "EXISTS"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "direction_mask": "S|W",
+          "asset_id": "road_sw",
+          "status": "EXISTS"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "direction_mask": "N|E",
+          "asset_id": "road_ne",
+          "status": "EXISTS"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "direction_mask": "N|W",
+          "asset_id": "road_nw",
+          "status": "EXISTS"
+        }
+      ]
+    },
+    {
+      "id": "rail_loop_2x2",
+      "kind": "rail",
+      "rows": [
+        "RR",
+        "RR"
+      ],
+      "expected": "PASS",
+      "actual": "PASS",
+      "tiles_checked": 4,
+      "missing_assets": [],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "direction_mask": "E|S",
+          "asset_id": "rail_es",
+          "status": "EXISTS"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "direction_mask": "S|W",
+          "asset_id": "rail_sw",
+          "status": "EXISTS"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "direction_mask": "N|E",
+          "asset_id": "rail_ne",
+          "status": "EXISTS"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "direction_mask": "N|W",
+          "asset_id": "rail_nw",
+          "status": "EXISTS"
+        }
+      ]
+    },
+    {
+      "id": "river_loop_2x2",
+      "kind": "river",
+      "rows": [
+        "RR",
+        "RR"
+      ],
+      "expected": "PASS",
+      "actual": "PASS",
+      "tiles_checked": 4,
+      "missing_assets": [],
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "direction_mask": "E|S",
+          "asset_id": "river_es",
+          "status": "EXISTS"
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "direction_mask": "S|W",
+          "asset_id": "river_sw",
+          "status": "EXISTS"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "direction_mask": "N|E",
+          "asset_id": "river_ne",
+          "status": "EXISTS"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "direction_mask": "N|W",
+          "asset_id": "river_nw",
+          "status": "EXISTS"
+        }
+      ]
+    },
+    {
+      "id": "rail_cross_3x3",
+      "kind": "rail",
+      "rows": [
+        ".R.",
+        "RRR",
+        ".R."
+      ],
+      "expected": "FAIL_MISSING_TILES",
+      "actual": "FAIL_MISSING_TILES",
+      "tiles_checked": 5,
+      "missing_assets": [
+        {
+          "x": 1,
+          "y": 0,
+          "mask": "S"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "mask": "E"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "mask": "W"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "mask": "N"
+        }
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "direction_mask": "S",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "direction_mask": "E",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "direction_mask": "N|E|S|W",
+          "asset_id": "rail_nesw",
+          "status": "EXISTS"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "direction_mask": "W",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "direction_mask": "N",
+          "asset_id": null,
+          "status": "MISSING"
+        }
+      ]
+    },
+    {
+      "id": "river_cross_3x3",
+      "kind": "river",
+      "rows": [
+        ".R.",
+        "RRR",
+        ".R."
+      ],
+      "expected": "FAIL_MISSING_TILES",
+      "actual": "FAIL_MISSING_TILES",
+      "tiles_checked": 5,
+      "missing_assets": [
+        {
+          "x": 1,
+          "y": 0,
+          "mask": "S"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "mask": "E"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "mask": "W"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "mask": "N"
+        }
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "direction_mask": "S",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "direction_mask": "E",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "direction_mask": "N|E|S|W",
+          "asset_id": "river_nesw",
+          "status": "EXISTS"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "direction_mask": "W",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "direction_mask": "N",
+          "asset_id": null,
+          "status": "MISSING"
+        }
+      ]
+    },
+    {
+      "id": "rail_t_new_3x3",
+      "kind": "rail",
+      "rows": [
+        ".R.",
+        "RRR",
+        "..."
+      ],
+      "expected": "FAIL_MISSING_TILES",
+      "actual": "FAIL_MISSING_TILES",
+      "tiles_checked": 4,
+      "missing_assets": [
+        {
+          "x": 1,
+          "y": 0,
+          "mask": "S"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "mask": "E"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "mask": "N|E|W"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "mask": "W"
+        }
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "direction_mask": "S",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "direction_mask": "E",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "direction_mask": "N|E|W",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "direction_mask": "W",
+          "asset_id": null,
+          "status": "MISSING"
+        }
+      ]
+    },
+    {
+      "id": "river_t_new_3x3",
+      "kind": "river",
+      "rows": [
+        ".R.",
+        "RRR",
+        "..."
+      ],
+      "expected": "FAIL_MISSING_TILES",
+      "actual": "FAIL_MISSING_TILES",
+      "tiles_checked": 4,
+      "missing_assets": [
+        {
+          "x": 1,
+          "y": 0,
+          "mask": "S"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "mask": "E"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "mask": "N|E|W"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "mask": "W"
+        }
+      ],
+      "tiles": [
+        {
+          "x": 1,
+          "y": 0,
+          "direction_mask": "S",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "direction_mask": "E",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "direction_mask": "N|E|W",
+          "asset_id": null,
+          "status": "MISSING"
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "direction_mask": "W",
+          "asset_id": null,
+          "status": "MISSING"
+        }
+      ]
+    }
+  ]
+}
