@@ -1,0 +1,539 @@
+{
+  "date": "2026-10-25",
+  "repo": "s1-1985/Covenience-store-remake",
+  "read_only_sources": {
+    "main_commit": "688876a4763c5dd006da8cfc36c7e7960d862e28",
+    "isolated_commit_before_write": "3e189e266221e0ac19439d269e930c4421a9c3d6"
+  },
+  "write_scope": "chatgpt/map-assets-isolated-20260922:chatgpt_map_assets/",
+  "main_or_claude_files_modified": false,
+  "visual_inspection_this_run": false,
+  "decoded_png_this_run": false,
+  "kind": "connection_45_mask_gap",
+  "source_manifest": "chatgpt_map_assets/manifests/connection_29_files_2026-10-24.json",
+  "expected_masks_per_kind": 15,
+  "existing_count": 29,
+  "missing_count": 16,
+  "missing_by_kind": {
+    "road": 0,
+    "rail": 8,
+    "river": 8
+  },
+  "main_candidate_not_equivalent": {
+    "rail_end": [
+      "map_rail_stop_e",
+      "map_rail_stop_s",
+      "map_rail_stop_w"
+    ],
+    "rail_t": [
+      "map_rail_branch_e",
+      "map_rail_branch_w",
+      "map_rail_y"
+    ],
+    "river_end": [
+      "map_river_basin_s",
+      "map_river_mouth_s"
+    ],
+    "river_t": [
+      "map_river_cross"
+    ]
+  },
+  "caution": "These named candidates are NOT verified substitutes for plain endpoint or T-junction tiles. Never label them as completed without inspection and actual PNG tests.",
+  "all_45_slots": [
+    {
+      "asset_id": "road_n",
+      "kind": "road",
+      "direction_mask": "N",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-16/road/road_n.png",
+      "isolated_git_blob_sha": "e62acf4fba8f32c17b69853a0bf83006e5abecb3",
+      "source_id": "map_road_end_s",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_e",
+      "kind": "road",
+      "direction_mask": "E",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-24/road/road_e.png",
+      "isolated_git_blob_sha": "f4eda92fda2f7533b2f3ec8620e171f14b990f5d",
+      "source_id": "map_road_end_s",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_ne",
+      "kind": "road",
+      "direction_mask": "N|E",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-16/road/road_ne.png",
+      "isolated_git_blob_sha": "718801681f045309b2f282d5b7750bfa92c0c6c9",
+      "source_id": "map_road_ws",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_s",
+      "kind": "road",
+      "direction_mask": "S",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_end_s.png",
+      "isolated_git_blob_sha": "cbc28b9fba5e7c8b2cfe94f530ba8531cfdf5f9e",
+      "source_id": "map_road_end_s",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_ns",
+      "kind": "road",
+      "direction_mask": "N|S",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_ns.png",
+      "isolated_git_blob_sha": "360c16bfe0c0a874af1ffac34e42eee51ce0e7c1",
+      "source_id": "map_road_ns",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_es",
+      "kind": "road",
+      "direction_mask": "E|S",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-16/road/road_es.png",
+      "isolated_git_blob_sha": "666326c4b7915f224aacefa6bd46e4e8b5a7d691",
+      "source_id": "map_road_ws",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_nes",
+      "kind": "road",
+      "direction_mask": "N|E|S",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-22/road/road_nes.png",
+      "isolated_git_blob_sha": "d5aa2255f7834e5279ccea851c79d63aa8a4041d",
+      "source_id": "map_road_t_wes",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_w",
+      "kind": "road",
+      "direction_mask": "W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-24/road/road_w.png",
+      "isolated_git_blob_sha": "0e2c4afdf12167ec2be2c7ef0092ad88f469720c",
+      "source_id": "map_road_end_s",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_nw",
+      "kind": "road",
+      "direction_mask": "N|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-16/road/road_nw.png",
+      "isolated_git_blob_sha": "aecc97252f082c39ded8ba675b2cfc1740f74a6f",
+      "source_id": "map_road_ws",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_ew",
+      "kind": "road",
+      "direction_mask": "E|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_ew.png",
+      "isolated_git_blob_sha": "96dc9c5f90d134db6096295d649ee88d45b18f3a",
+      "source_id": "map_road_ew",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_new",
+      "kind": "road",
+      "direction_mask": "N|E|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-22/road/road_new.png",
+      "isolated_git_blob_sha": "c85473a93a0a273f17f657d1b12644449919aa02",
+      "source_id": "map_road_t_wes",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_sw",
+      "kind": "road",
+      "direction_mask": "S|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_ws.png",
+      "isolated_git_blob_sha": "eb8320cf39cc7ff4f2fb3843663dcd16d8cd3590",
+      "source_id": "map_road_ws",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_nsw",
+      "kind": "road",
+      "direction_mask": "N|S|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-22/road/road_nsw.png",
+      "isolated_git_blob_sha": "50ddfc47d87779f983f1a52c324abb1daf62cccb",
+      "source_id": "map_road_t_wes",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_esw",
+      "kind": "road",
+      "direction_mask": "E|S|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_t_wes.png",
+      "isolated_git_blob_sha": "4e7cb7705f7e4f41f5a031c41b2f5ee8c7b444cb",
+      "source_id": "map_road_t_wes",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "road_nesw",
+      "kind": "road",
+      "direction_mask": "N|E|S|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/road/map_road_cross.png",
+      "isolated_git_blob_sha": "3fc93b6e966feb2149d2bbbceb543982a2325aa8",
+      "source_id": "map_road_cross",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_n",
+      "kind": "rail",
+      "direction_mask": "N",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_e",
+      "kind": "rail",
+      "direction_mask": "E",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_ne",
+      "kind": "rail",
+      "direction_mask": "N|E",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/rail/map_rail_ne.png",
+      "isolated_git_blob_sha": "18a822527ccb5772945a5f22169566442f8238a9",
+      "source_id": "map_rail_ne",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_s",
+      "kind": "rail",
+      "direction_mask": "S",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_ns",
+      "kind": "rail",
+      "direction_mask": "N|S",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/rail/map_rail_ns.png",
+      "isolated_git_blob_sha": "3ecc57989beab8f74b97a5079d14fc557de15e5b",
+      "source_id": "map_rail_ns",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_es",
+      "kind": "rail",
+      "direction_mask": "E|S",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-24/rail/rail_es.png",
+      "isolated_git_blob_sha": "2e4b9953a5c356c16826831f3f612089a15df7f8",
+      "source_id": "map_rail_ne",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_nes",
+      "kind": "rail",
+      "direction_mask": "N|E|S",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_w",
+      "kind": "rail",
+      "direction_mask": "W",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_nw",
+      "kind": "rail",
+      "direction_mask": "N|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/rail/map_rail_nw.png",
+      "isolated_git_blob_sha": "977d79be5510f94511d793fe03de1f483cc7b8ca",
+      "source_id": "map_rail_nw",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_ew",
+      "kind": "rail",
+      "direction_mask": "E|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/rail/map_rail_ew.png",
+      "isolated_git_blob_sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "source_id": "map_rail_ew",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_new",
+      "kind": "rail",
+      "direction_mask": "N|E|W",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_sw",
+      "kind": "rail",
+      "direction_mask": "S|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-24/rail/rail_sw.png",
+      "isolated_git_blob_sha": "f1a3c162daf6a55068e64b0dbd00ca1cece63a2d",
+      "source_id": "map_rail_ne",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_nsw",
+      "kind": "rail",
+      "direction_mask": "N|S|W",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_esw",
+      "kind": "rail",
+      "direction_mask": "E|S|W",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "rail_nesw",
+      "kind": "rail",
+      "direction_mask": "N|E|S|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/rail/map_rail_cross.png",
+      "isolated_git_blob_sha": "02b9b115c70082cd80fb3378a221a9c17a0b3658",
+      "source_id": "map_rail_cross",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_n",
+      "kind": "river",
+      "direction_mask": "N",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_e",
+      "kind": "river",
+      "direction_mask": "E",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_ne",
+      "kind": "river",
+      "direction_mask": "N|E",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ne.png",
+      "isolated_git_blob_sha": "6d8f54d38e461c48e940d8ac9de04b8d608b828f",
+      "source_id": "map_river_ne",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_s",
+      "kind": "river",
+      "direction_mask": "S",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_ns",
+      "kind": "river",
+      "direction_mask": "N|S",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ns.png",
+      "isolated_git_blob_sha": "a5c0b606ce3f2653e3f0c3532eaa52211af59a53",
+      "source_id": "map_river_ns",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_es",
+      "kind": "river",
+      "direction_mask": "E|S",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_es.png",
+      "isolated_git_blob_sha": "f7cca6d651fba2fba2af612aec543519a6214924",
+      "source_id": "map_river_es",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_nes",
+      "kind": "river",
+      "direction_mask": "N|E|S",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_w",
+      "kind": "river",
+      "direction_mask": "W",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_nw",
+      "kind": "river",
+      "direction_mask": "N|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-24/river/river_nw.png",
+      "isolated_git_blob_sha": "289838b50841c81e3481324e58f7368a5555f4b2",
+      "source_id": "map_river_es",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_ew",
+      "kind": "river",
+      "direction_mask": "E|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ew.png",
+      "isolated_git_blob_sha": "e983dec2d4a21efaba521f490d9ad87bf750ba3a",
+      "source_id": "map_river_ew",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_new",
+      "kind": "river",
+      "direction_mask": "N|E|W",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_sw",
+      "kind": "river",
+      "direction_mask": "S|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/directional_2026-10-24/river/river_sw.png",
+      "isolated_git_blob_sha": "fe04e0bdb56a39bc2fc6d18e699e8b1eb30f1b41",
+      "source_id": "map_river_es",
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_nsw",
+      "kind": "river",
+      "direction_mask": "N|S|W",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_esw",
+      "kind": "river",
+      "direction_mask": "E|S|W",
+      "status": "MISSING_NOT_GENERATED",
+      "isolated_path": null,
+      "isolated_git_blob_sha": null,
+      "source_id": null,
+      "original_verified": false,
+      "seam_visual_verified": false
+    },
+    {
+      "asset_id": "river_nesw",
+      "kind": "river",
+      "direction_mask": "N|E|S|W",
+      "status": "EXISTS_IN_ISOLATED_BRANCH_NOT_VISUALLY_ACCEPTED",
+      "isolated_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_cross.png",
+      "isolated_git_blob_sha": "5b9f407898f91c3412fee847aa74f798a4ce1ae5",
+      "source_id": "map_river_cross",
+      "original_verified": false,
+      "seam_visual_verified": false
+    }
+  ]
+}
