@@ -1,0 +1,3288 @@
+{
+  "date": "2026-10-25",
+  "repo": "s1-1985/Covenience-store-remake",
+  "read_only_sources": {
+    "main_commit": "688876a4763c5dd006da8cfc36c7e7960d862e28",
+    "isolated_commit_before_write": "3e189e266221e0ac19439d269e930c4421a9c3d6"
+  },
+  "write_scope": "chatgpt/map-assets-isolated-20260922:chatgpt_map_assets/",
+  "main_or_claude_files_modified": false,
+  "visual_inspection_this_run": false,
+  "decoded_png_this_run": false,
+  "kind": "terrain_121_source_inventory",
+  "source_manifest": "assets/raw/conveni_map_assets_v2/terrain/manifest.json",
+  "terrain_assets": 121,
+  "main_native_crop_exists": 121,
+  "main_runtime_tile_exists": 121,
+  "source_crop_and_runtime_paths_checked": 242,
+  "connection_or_seam_acceptance": false,
+  "assets": [
+    {
+      "asset_id": "map_dirt_sparse",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 1,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        80,
+        56,
+        281,
+        249
+      ],
+      "native_size": [
+        201,
+        193
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_dirt_sparse.png",
+      "main_native_git_blob_sha": "85e50beafc8cfbfafaea3d97d16ca2331fa503ce",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_dirt_sparse.png",
+      "main_runtime_git_blob_sha": "d7f0abbc0c966d0f357b431293791a39b7e97f56",
+      "main_native_sha256_manifest": "77ec57433c9da86a46ae1930a55f0a99259c2fe3ebe652092a456af967e3a44c",
+      "main_runtime_sha256_manifest": "5782a44cb999d59ccd1e22313bd662faf271b0fad77e4eee47060676e2a9dd81",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_dirt_stones",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 1,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        961,
+        56,
+        1162,
+        249
+      ],
+      "native_size": [
+        201,
+        193
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_dirt_stones.png",
+      "main_native_git_blob_sha": "e8c9d172a42899a6569a0a46f1fbe8a05ab14344",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_dirt_stones.png",
+      "main_runtime_git_blob_sha": "c5328cfc591cdb9381a81af4c6ea17d5fd79f1a3",
+      "main_native_sha256_manifest": "64651d137c317a9200dc6cc21ccd1f19f285326d9a5bdd456c1da3737af046f3",
+      "main_runtime_sha256_manifest": "8424df71a0645ff7a022ad2f99bc6ec929b5f61e71f4b663f20814bd5bf8427e",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_dirt_weeds",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 1,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        373,
+        56,
+        574,
+        249
+      ],
+      "native_size": [
+        201,
+        193
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_dirt_weeds.png",
+      "main_native_git_blob_sha": "62e7aff5789ad2842f5e73561e47d62acf41b686",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_dirt_weeds.png",
+      "main_runtime_git_blob_sha": "ac1b3d858ace3ca1108cbb0dc35a597fc63092ec",
+      "main_native_sha256_manifest": "e92499499e6123f2c9331ae6c8a862c8f6c853b233d827d1fb37c39fcefb95a6",
+      "main_runtime_sha256_manifest": "d3f6e7cde861f068eaeb7bda59d05fa0d3240427e57436c967b7ae3c876e2e39",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_forest_clearing",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 5,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        372,
+        906,
+        574,
+        1098
+      ],
+      "native_size": [
+        202,
+        192
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_forest_clearing.png",
+      "main_native_git_blob_sha": "31e9bc3d4fb22d3f8d6731241125d18c14456dad",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_forest_clearing.png",
+      "main_runtime_git_blob_sha": "54a40825fffe3d8d7f6549d284752d40b9818b6e",
+      "main_native_sha256_manifest": "975f51f00c5ba132d25c317891ff5b454f0b87220e6ac32feef377fc1f8c3a44",
+      "main_runtime_sha256_manifest": "578e0f2b759d6ee0b560e2b95a6805df9b1862bdf24de37e2942c1ebbbaa6ca4",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_forest_dense",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 5,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        80,
+        906,
+        281,
+        1098
+      ],
+      "native_size": [
+        201,
+        192
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_forest_dense.png",
+      "main_native_git_blob_sha": "a786ac2b04fd596b40947d5d188f0751962271aa",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_forest_dense.png",
+      "main_runtime_git_blob_sha": "215e1e32d008ae7bd4cee9c943321ac925d4d303",
+      "main_native_sha256_manifest": "a581f686851615207b5cf50efbf8cbd03a4984fd8e873e4c86fc33f7716dab26",
+      "main_runtime_sha256_manifest": "36e598cf93d69a1fd7968317c16a4077be5bf79fb3ff6626e449fc52e5411035",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_grass_dirt",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 2,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        1255,
+        271,
+        1457,
+        463
+      ],
+      "native_size": [
+        202,
+        192
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_grass_dirt.png",
+      "main_native_git_blob_sha": "dd95f7d6a87afd5dae6c05157e0108369de72378",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_grass_dirt.png",
+      "main_runtime_git_blob_sha": "9f283ad781d1c8b4c3202db5f2f1e055bb6e039e",
+      "main_native_sha256_manifest": "198618f7689f23fbf66bde20820eeee2ab45904875695b14e1c37196b49d327e",
+      "main_runtime_sha256_manifest": "cae16939a49c0cca0f6908be892f3dba74af59e4b3cd73a1db477f39252d548e",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_grass_flowers",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 2,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        668,
+        271,
+        868,
+        463
+      ],
+      "native_size": [
+        200,
+        192
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_grass_flowers.png",
+      "main_native_git_blob_sha": "390db9f22496416c5e3508639dc3f2bd4b730b75",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_grass_flowers.png",
+      "main_runtime_git_blob_sha": "201aee8233da34b008217c035aa0276d4794e042",
+      "main_native_sha256_manifest": "6c768c9c70dfe2b21d85c47ba02ace2ae1c1d2ed4666903babb3f9ea4e7de5b4",
+      "main_runtime_sha256_manifest": "2191b747dd51bde5cc7f754ff80d3fdd7b23f84c5f25f7733fc9846347446934",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_grass_plain",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 2,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        80,
+        271,
+        281,
+        463
+      ],
+      "native_size": [
+        201,
+        192
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_grass_plain.png",
+      "main_native_git_blob_sha": "4bde820f1107af36f4b89afe557ac952019c1f40",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_grass_plain.png",
+      "main_runtime_git_blob_sha": "64c5e59094dceb7911f9d9faa1466070ae66a09d",
+      "main_native_sha256_manifest": "68aebb855c954946ba32a243bd90f5429f3df8de3e3c1384a75a8a1fe00ebed0",
+      "main_runtime_sha256_manifest": "3e50c821e52978552dbd38b556829758028a94ad88e483373f64b543e8d74259",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_grass_tall",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 2,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        961,
+        271,
+        1163,
+        463
+      ],
+      "native_size": [
+        202,
+        192
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_grass_tall.png",
+      "main_native_git_blob_sha": "fa3ef0edc596a0a4bea312c884bba3fcdd32f461",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_grass_tall.png",
+      "main_runtime_git_blob_sha": "63c6d58a10382626b6b1833826e68f60d9f4ce15",
+      "main_native_sha256_manifest": "f02ec90e549913d912936a20f94764e915b8030d325228c77b082f310e3a76ad",
+      "main_runtime_sha256_manifest": "8069ef7fb38bf0061b7c8ef395d4324973752b659544239f36e77718acac67be",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_shrubs_dirt",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 3,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        961,
+        486,
+        1162,
+        673
+      ],
+      "native_size": [
+        201,
+        187
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_shrubs_dirt.png",
+      "main_native_git_blob_sha": "c755f9b8c10567dd6677948cf6223e8efb0cff40",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_shrubs_dirt.png",
+      "main_runtime_git_blob_sha": "4f4c5b0513fed2cce8d6e93b28b59b654310ddb4",
+      "main_native_sha256_manifest": "c0cdf0213eaf1044a606273515fd1061e1319051547ff5d104d887b3ec405d65",
+      "main_runtime_sha256_manifest": "0d872df190cddedbf7bd129bbd8c1ece1374cba518d5b3f93e4ff8581a15853d",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_shrubs_flowers",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 3,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        667,
+        486,
+        868,
+        673
+      ],
+      "native_size": [
+        201,
+        187
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_shrubs_flowers.png",
+      "main_native_git_blob_sha": "c19d6399f6e2a8de8d941a3d55548f323407bc86",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_shrubs_flowers.png",
+      "main_runtime_git_blob_sha": "bc130a539d84648646d53048d91920d829f74e20",
+      "main_native_sha256_manifest": "4f04b6e1b9c2c698dfcc2feb230c619d3f4e6abbfd048f00a63d0eeeaddf736a",
+      "main_runtime_sha256_manifest": "04b5b90f85dcfa9c4f0aa80d2208778f0ab69d3a90dcfd2d389c16138502001a",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_shrubs_large",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 3,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        372,
+        486,
+        574,
+        673
+      ],
+      "native_size": [
+        202,
+        187
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_shrubs_large.png",
+      "main_native_git_blob_sha": "95221d6c95fac1dfd2035480a92556d191e81959",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_shrubs_large.png",
+      "main_runtime_git_blob_sha": "d0754b76c890895c9b0a6675dec5b8c52814ef14",
+      "main_native_sha256_manifest": "6ec78beb583b0dc2df97b0b2fac92aece37b837067fca619bee0e2e21825905e",
+      "main_runtime_sha256_manifest": "30d079bb0f6e764519920326f0571b07d5072e81ef7c2b0b13fca352e7b756b7",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_shrubs_sparse",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 3,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        80,
+        486,
+        281,
+        673
+      ],
+      "native_size": [
+        201,
+        187
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_shrubs_sparse.png",
+      "main_native_git_blob_sha": "5897907e4e8ea629a4a7b1deedfe8d6636842c6a",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_shrubs_sparse.png",
+      "main_runtime_git_blob_sha": "14049c70fd6ac423c1639a473e217817450ecaed",
+      "main_native_sha256_manifest": "21a2ebd84e3c94d6ad46877efa634f5b4d03dd58d6f2aaab3a3c5bde71469d5f",
+      "main_runtime_sha256_manifest": "53101b197435828946237856757d649cf26378b7094f3cf83812f696a4a88c89",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_trees_clearing",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 4,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        372,
+        695,
+        574,
+        886
+      ],
+      "native_size": [
+        202,
+        191
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_trees_clearing.png",
+      "main_native_git_blob_sha": "0b98c512c54cf3c4d911ce122583f4e7031ba54f",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_trees_clearing.png",
+      "main_runtime_git_blob_sha": "08a2cd5cb6be74b4d20a1a1dc73c0a0e7ec54596",
+      "main_native_sha256_manifest": "df48ac726572dd0e1ccb4f63163b4d87ac8adccfb78e68bfa4a2f1d807b12d21",
+      "main_runtime_sha256_manifest": "30a35bf43dcf2bf9ef13b30dda5e13b7e049b0a416bfd5ff31c2fbd9b98c713a",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_trees_medium",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 4,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        962,
+        695,
+        1163,
+        886
+      ],
+      "native_size": [
+        201,
+        191
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_trees_medium.png",
+      "main_native_git_blob_sha": "e4d8384029ae0e9b3a0a2abe264f80f2510e91c0",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_trees_medium.png",
+      "main_runtime_git_blob_sha": "805e9e2a5ddef6f6cd5a936559cf3dcbd12016c0",
+      "main_native_sha256_manifest": "9fa4fb79af36b3d7a759422532520e90296b1a8ad7f1882ee951db6fff9075a3",
+      "main_runtime_sha256_manifest": "db7b81ec645227104b547780f765dc3e8bbd39a333d0f8ff8e6c2a4e23bceb45",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_trees_sparse",
+      "category": "land",
+      "source_sheet": "01-1000263623.png",
+      "source_row": 4,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        80,
+        695,
+        281,
+        886
+      ],
+      "native_size": [
+        201,
+        191
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_trees_sparse.png",
+      "main_native_git_blob_sha": "b50db97b4660cfc09ff11d18d91ad37f3329c315",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_trees_sparse.png",
+      "main_runtime_git_blob_sha": "223177c2e19160086747676e9065444aea98c4b1",
+      "main_native_sha256_manifest": "2fba46edd879506863bb0c2795f97e0693586d091770e5eb356c566ec6a2c605",
+      "main_runtime_sha256_manifest": "fe415a5161e695551cdcf94d17be474414b8f8b001c43adcc9629ff6d67dd136",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_concrete",
+      "category": "material",
+      "source_sheet": "05-1000263627.png",
+      "source_row": 10,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        355,
+        1353,
+        450,
+        1472
+      ],
+      "native_size": [
+        95,
+        119
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_concrete.png",
+      "main_native_git_blob_sha": "f35d78e05cb3e79d7f1f29fb47c03a015515b4dd",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_concrete.png",
+      "main_runtime_git_blob_sha": "307fdbebccadfb270f6459e768fa7fc9791a79a1",
+      "main_native_sha256_manifest": "df52f90037814cfad52b11df3e1b716c2007caa6f33a9a37d137a8a28c26aa54",
+      "main_runtime_sha256_manifest": "54cffd0028067506ec6e8e433fd4f23e56b878f8b751fde280fd1bc4df2461df",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_gravel",
+      "category": "material",
+      "source_sheet": "05-1000263627.png",
+      "source_row": 10,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        466,
+        1353,
+        561,
+        1472
+      ],
+      "native_size": [
+        95,
+        119
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_gravel.png",
+      "main_native_git_blob_sha": "deef63d525ceb3c7ca77f8bf93ca69a5c5b84957",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_gravel.png",
+      "main_runtime_git_blob_sha": "65a2a52f66a7e858aad2fbc75cbb749523b1c196",
+      "main_native_sha256_manifest": "9ee142f332e07e0469426845c010fdc3aac7c28d9300c4405f9af872625183f8",
+      "main_runtime_sha256_manifest": "c616a12b1aeb1f973c18c2a16d691a626ad0eb5efb064fa1e26a6453c1612c82",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_paving_weeds",
+      "category": "material",
+      "source_sheet": "05-1000263627.png",
+      "source_row": 10,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        577,
+        1353,
+        672,
+        1473
+      ],
+      "native_size": [
+        95,
+        120
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_paving_weeds.png",
+      "main_native_git_blob_sha": "e7fd166b922947757c7d813b87b7e940e4d88bf3",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_paving_weeds.png",
+      "main_runtime_git_blob_sha": "e4ecef93643cd804454492d32e615e968bac1684",
+      "main_native_sha256_manifest": "f6cea718e22a0a9413bb2388842c7baedfdb8eb591f42294853c943fdb1d7ebb",
+      "main_runtime_sha256_manifest": "2615d4ef5bff10ebb5ec5d82b32ebda335d4e79498247a643dbd0cf4bb8810a1",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_sand",
+      "category": "material",
+      "source_sheet": "05-1000263627.png",
+      "source_row": 10,
+      "source_column": 9,
+      "source_crop_xyxy": [
+        908,
+        1353,
+        1003,
+        1473
+      ],
+      "native_size": [
+        95,
+        120
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_sand.png",
+      "main_native_git_blob_sha": "744cfb55e5af91635a5ab3fee5b581c074fb458c",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_sand.png",
+      "main_runtime_git_blob_sha": "8b850ad5eb930950bd80f0ab51b8a466cfcfa230",
+      "main_native_sha256_manifest": "ec4f91413fd9eec16ff0b95b0640692146a7240540dba0e9c609c73d638c5d4b",
+      "main_runtime_sha256_manifest": "80043cfc2e74926fe4e8300769c2582b6c3b60881329e3ca704b921305be65a1",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_soil_dark",
+      "category": "material",
+      "source_sheet": "05-1000263627.png",
+      "source_row": 10,
+      "source_column": 10,
+      "source_crop_xyxy": [
+        1019,
+        1353,
+        1115,
+        1472
+      ],
+      "native_size": [
+        96,
+        119
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_soil_dark.png",
+      "main_native_git_blob_sha": "5cef4c715d82376624e83d9e449ec7a2eaaf37a1",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_soil_dark.png",
+      "main_runtime_git_blob_sha": "6525430b8b22d64cf065f37068975208b84e4af0",
+      "main_native_sha256_manifest": "0e84831f04023b67798c3054d94925d003335d976e00d58fef21b9fab8d3a277",
+      "main_runtime_sha256_manifest": "a57cf5217dfd9edff2adc33b66fcae1b0a1e92ce51e7d7dbc4b363a4c1241cbe",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_wood_dark",
+      "category": "material",
+      "source_sheet": "05-1000263627.png",
+      "source_row": 10,
+      "source_column": 7,
+      "source_crop_xyxy": [
+        687,
+        1353,
+        782,
+        1473
+      ],
+      "native_size": [
+        95,
+        120
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_wood_dark.png",
+      "main_native_git_blob_sha": "2acb08d7debe853d031e3403e95973bd819cac18",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_wood_dark.png",
+      "main_runtime_git_blob_sha": "8da30f99f31310563579e89e4c4e5d54255527d8",
+      "main_native_sha256_manifest": "a43f1e9117f3797f61f0e2ff510ade9c6ea367708ba447f4ceeae9d41b6f6de8",
+      "main_runtime_sha256_manifest": "b5a5f7e0e0980072ca7ad29974140f7a8a01f4e1be8e85afb3257fc37d7a2fd0",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_wood_light",
+      "category": "material",
+      "source_sheet": "05-1000263627.png",
+      "source_row": 10,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        798,
+        1353,
+        892,
+        1472
+      ],
+      "native_size": [
+        94,
+        119
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_wood_light.png",
+      "main_native_git_blob_sha": "e2ae6f00d185f7895c1318d154d459a50805b700",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_wood_light.png",
+      "main_runtime_git_blob_sha": "79ef4621bfd7eae88b6b8e6996f87d35292666af",
+      "main_native_sha256_manifest": "82841ecc705e3c1bdcb3191f860d35b161046ea4629343b4ae7d05da15a1ffaf",
+      "main_runtime_sha256_manifest": "d3f6115ba7abcf943ca0a9e84e0cfcc544b67e0ed93561ed0a80ca37e34cf12d",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_sidewalk_cross",
+      "category": "path",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 7,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        626,
+        1189,
+        759,
+        1379
+      ],
+      "native_size": [
+        133,
+        190
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_sidewalk_cross.png",
+      "main_native_git_blob_sha": "62671a81218f000f471b71f879ee3eb99a709c32",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_sidewalk_cross.png",
+      "main_runtime_git_blob_sha": "4418c2c49f06a55dc111fa36fe648c8988173408",
+      "main_native_sha256_manifest": "7c1d0024a3985c49d7b9ae437a4b0ea21d91b435eeca93cbf732aa817c5dd67d",
+      "main_runtime_sha256_manifest": "6141d445a7d82ef42a063379cc8eddda3ff9da289d3fc33995e8531bda9d33e8",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_sidewalk_es",
+      "category": "path",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 6,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        1082,
+        966,
+        1215,
+        1168
+      ],
+      "native_size": [
+        133,
+        202
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_sidewalk_es.png",
+      "main_native_git_blob_sha": "46ba3db592323e2250d0297556b78885e91d6ae3",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_sidewalk_es.png",
+      "main_runtime_git_blob_sha": "d53ee79e4590914859f5b39224a6da104dfadc5f",
+      "main_native_sha256_manifest": "15f19446c575de99971f1849c81d80b78645e37a991db578e27ef7b0531a7c67",
+      "main_runtime_sha256_manifest": "3f41c46ff91bc0b96ceedbc767016f196276e9ef7c1d3f43b2fdc7d888336c6d",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_sidewalk_ew",
+      "category": "path",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 7,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        321,
+        1189,
+        454,
+        1379
+      ],
+      "native_size": [
+        133,
+        190
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_sidewalk_ew.png",
+      "main_native_git_blob_sha": "50ee16880a7f04b6f23161c801424f05e61b064c",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_sidewalk_ew.png",
+      "main_runtime_git_blob_sha": "d552d8c56936e2f407d5bf16210f335fd7c73aff",
+      "main_native_sha256_manifest": "36b824b788f1ff49f16e9ac2ffa10b4aff3aafa7f4354982731082757aca7afc",
+      "main_runtime_sha256_manifest": "7f8c69e7136ea61602013d8c0e82a8d448522fe1c5bac5307d59aaf2f87958ac",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_sidewalk_ne",
+      "category": "path",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 6,
+      "source_column": 10,
+      "source_crop_xyxy": [
+        1382,
+        966,
+        1514,
+        1168
+      ],
+      "native_size": [
+        132,
+        202
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_sidewalk_ne.png",
+      "main_native_git_blob_sha": "4693fa198541e7249f3b821172817e8ba0679f91",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_sidewalk_ne.png",
+      "main_runtime_git_blob_sha": "bf71c2b100bff7ca87bca950acede05e85313d73",
+      "main_native_sha256_manifest": "602ee480a7664634e849115cdf5aec7090d9f73d025c88ba8e1f693ca085ac33",
+      "main_runtime_sha256_manifest": "355d4293044b3c85a356fd58f4a7e53a83be258cf176b4c60e4398c954749c0c",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_sidewalk_ns",
+      "category": "path",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 6,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        777,
+        966,
+        910,
+        1168
+      ],
+      "native_size": [
+        133,
+        202
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_sidewalk_ns.png",
+      "main_native_git_blob_sha": "34626d0850f80093df8a05c98a33fa672df77503",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_sidewalk_ns.png",
+      "main_runtime_git_blob_sha": "82066fb8ceda56d0f753c279ad0eb5f7ee83b1ab",
+      "main_native_sha256_manifest": "de62696fce750fe698cb3813ffaed8c8809964a5b21ec7a0b880f4d02055494d",
+      "main_runtime_sha256_manifest": "d81554b87d81b2081fb7cbe0d1a2b2885e47f09617531199980f8c143770a56a",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_sidewalk_nw",
+      "category": "path",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 6,
+      "source_column": 9,
+      "source_crop_xyxy": [
+        1234,
+        966,
+        1364,
+        1168
+      ],
+      "native_size": [
+        130,
+        202
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_sidewalk_nw.png",
+      "main_native_git_blob_sha": "c84f64e392088d791e389b1591055ec0949559fc",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_sidewalk_nw.png",
+      "main_runtime_git_blob_sha": "000288fb1d7bf35f4e6ec90f26ead15eab3a57c9",
+      "main_native_sha256_manifest": "df2440a91e1e0a00c1639f55efd334889b26aa043d1106e49d3fb07ae0c57d0b",
+      "main_runtime_sha256_manifest": "24dd8c9fe358cdfbc19e3d7ecaa79d4a3038e0fcda9a1845c7101a648b2e6bc3",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_bench_flowers",
+      "category": "plaza",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 9,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        322,
+        1296,
+        455,
+        1431
+      ],
+      "native_size": [
+        133,
+        135
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_bench_flowers.png",
+      "main_native_git_blob_sha": "ef64167dc0b9f5a5e97eeb4cbe371a057f14a5f8",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_bench_flowers.png",
+      "main_runtime_git_blob_sha": "9b0d7c0b6d17e3fcfdd899c3a00f72254cc30cc3",
+      "main_native_sha256_manifest": "9c947c9ffc9f3dfb4a925a39c4389a9fbbf70212d9c440667415a725fc775679",
+      "main_runtime_sha256_manifest": "d52b6dba1ae3e50bad1ba8bfef028af9c0e3a5e71bb582f18ac5f9b4bf6d4116",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_flowerbed",
+      "category": "plaza",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 9,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        20,
+        1296,
+        152,
+        1431
+      ],
+      "native_size": [
+        132,
+        135
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_flowerbed.png",
+      "main_native_git_blob_sha": "745d8fbb1fad0f35f780fc48fd2efc28a6fd95c7",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_flowerbed.png",
+      "main_runtime_git_blob_sha": "1cc8493d90d3ebdf702b3787353659ff7a3af152",
+      "main_native_sha256_manifest": "b505023d6d7684576c914cc83be029c62b63e5aba49cdc55af53e7ef3f4e8324",
+      "main_runtime_sha256_manifest": "d32187a9a6d4b98dab98733345ca47b438c9c0de2900108ae1ed86fbda10938d",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_hedges",
+      "category": "plaza",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 9,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        777,
+        1296,
+        909,
+        1431
+      ],
+      "native_size": [
+        132,
+        135
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_hedges.png",
+      "main_native_git_blob_sha": "9e2acce1c21af857fc666fb84c9667c604654a6f",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_hedges.png",
+      "main_runtime_git_blob_sha": "68ec30009843019436459b4eb4929731c23fcb7c",
+      "main_native_sha256_manifest": "6f009891feaa54813efa8601adad3a05e9011140cf70a76ac558f261d803ca32",
+      "main_runtime_sha256_manifest": "c7bfb50139c3c40e17c856b3dfaf801d653b6738c29c036234c9ce77daf790f0",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_lamps",
+      "category": "plaza",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 9,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        626,
+        1296,
+        758,
+        1431
+      ],
+      "native_size": [
+        132,
+        135
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_lamps.png",
+      "main_native_git_blob_sha": "c7bd67ffb0dfdc8c8cf6ed001030f96c529a162c",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_lamps.png",
+      "main_runtime_git_blob_sha": "e11297ceaa2cf4883efa7dd3361f945ead1b010c",
+      "main_native_sha256_manifest": "c75fa84f55ced4df1e99b0d421ad632ffa88cc2fd69415e80e5d9163df60f45f",
+      "main_runtime_sha256_manifest": "026f51d40cb4031c7f457821975029d32c788f919569379ec8d8221825fb183c",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_paving_edge",
+      "category": "plaza",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 9,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        1081,
+        1296,
+        1213,
+        1431
+      ],
+      "native_size": [
+        132,
+        135
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_paving_edge.png",
+      "main_native_git_blob_sha": "f3ecf92146ae1410ec29351ac9fe96ef55fd2df6",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_paving_edge.png",
+      "main_runtime_git_blob_sha": "8e13250e8e0d4dbb0e9ab16c1a3621aae6133b62",
+      "main_native_sha256_manifest": "f67ba3ece44cd879c1650dfd2499ce0f78af1f8b050a86e7cd073a69de0ca94d",
+      "main_runtime_sha256_manifest": "2917c587204d2afa46b68069c51f356cef810583a683c0813de111de5afcc49f",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_paving_t",
+      "category": "plaza",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 9,
+      "source_column": 7,
+      "source_crop_xyxy": [
+        929,
+        1296,
+        1061,
+        1431
+      ],
+      "native_size": [
+        132,
+        135
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_paving_t.png",
+      "main_native_git_blob_sha": "68650467ff819f0d45c9db87c7ca41f7a330ec26",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_paving_t.png",
+      "main_runtime_git_blob_sha": "963f90c8b8c93c23a41b963f44f261c81835c96c",
+      "main_native_sha256_manifest": "fc8bdc5c0c4ef2407c2014dce6c259d4694849d6a3eb1fab9e01e69fcf846e6f",
+      "main_runtime_sha256_manifest": "b016de585397cb5110fc626b975f4fb4103ec1a4e06cc239370737960bfbe567",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_tree_planter",
+      "category": "plaza",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 9,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        475,
+        1296,
+        606,
+        1431
+      ],
+      "native_size": [
+        131,
+        135
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_tree_planter.png",
+      "main_native_git_blob_sha": "120d96892005df85b39155c8ad4baf047fefb4b4",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_tree_planter.png",
+      "main_runtime_git_blob_sha": "bc8e6a1c6ad108dff842dd23e5f591e3ce870519",
+      "main_native_sha256_manifest": "32d6d941bff8cdff19d1e7ff7918d6599e553ad8e3c4b22609401e06a15c5b4b",
+      "main_runtime_sha256_manifest": "5394cd2771efd0a2c621f55db9ae9fab3469a92c694cd10e4e6c3b98d7d25cfe",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_branch_e",
+      "category": "rail",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 4,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        884,
+        735,
+        1047,
+        879
+      ],
+      "native_size": [
+        163,
+        144
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_branch_e.png",
+      "main_native_git_blob_sha": "d3aa18c5dee3a51953fd87362d2700c1fe10e550",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_branch_e.png",
+      "main_runtime_git_blob_sha": "13f217dd036e53b07bf64ee25262e6ddee4462e0",
+      "main_native_sha256_manifest": "4949117bd54113b50cbd9485d6d7721bb4914385c6fc2150ce850bcaaee8f4e9",
+      "main_runtime_sha256_manifest": "bcda413d12e4b18550bb18928045c531d23403ff8379d63e894740c6e73995e9",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_branch_w",
+      "category": "rail",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 4,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        1096,
+        735,
+        1261,
+        878
+      ],
+      "native_size": [
+        165,
+        143
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_branch_w.png",
+      "main_native_git_blob_sha": "0632b1402dc1aec362f65af9010b2a9ced78d870",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_branch_w.png",
+      "main_runtime_git_blob_sha": "a89f4a5e05f9cf30aef0843a03718c29bedd2f9a",
+      "main_native_sha256_manifest": "85e87c9375ace6e6bd3704cd1df549155b0b7cddfc57bd879981870df9a70c36",
+      "main_runtime_sha256_manifest": "60d6ab9112d2b2ecc0061ae3ece122742a64759247c321c8bafacf6ea01984ed",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_cross",
+      "category": "rail",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 3,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        884,
+        535,
+        1044,
+        687
+      ],
+      "native_size": [
+        160,
+        152
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_cross.png",
+      "main_native_git_blob_sha": "86abe7d347e857218cb871b5405609e4b73b3750",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_cross.png",
+      "main_runtime_git_blob_sha": "02b9b115c70082cd80fb3378a221a9c17a0b3658",
+      "main_native_sha256_manifest": "5598ea55abdbe927e5cdc7a5671aec83a79c0084784870b81ecbc0de67c5e2e3",
+      "main_runtime_sha256_manifest": "3cd8bca90cf03202272c038ebfe4c62bf6e110bcfeea98f79ee1ba5ecce57414",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_ew",
+      "category": "rail",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 3,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        259,
+        537,
+        420,
+        689
+      ],
+      "native_size": [
+        161,
+        152
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_ew.png",
+      "main_native_git_blob_sha": "1c1d775af7fcb96ac11cf4dcaee0e68ea86349c5",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_ew.png",
+      "main_runtime_git_blob_sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "main_native_sha256_manifest": "589a8aac2dbad34b091b367f9263b7f20e36cbc5d3eec291c34cd553ba2ff9c6",
+      "main_runtime_sha256_manifest": "33cec6e0429a70418fc5adf5f58ee61214dabdfc6469259fa61730c80813fd65",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_ne",
+      "category": "rail",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 3,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        678,
+        536,
+        836,
+        687
+      ],
+      "native_size": [
+        158,
+        151
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_ne.png",
+      "main_native_git_blob_sha": "1fcc1047c4a8e36f102bdd8ba64b1500aefce65a",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_ne.png",
+      "main_runtime_git_blob_sha": "18a822527ccb5772945a5f22169566442f8238a9",
+      "main_native_sha256_manifest": "c74b4e9b12cc04ab84aa62d46386937d92cc2aa99c0116364a00e821534cf46b",
+      "main_runtime_sha256_manifest": "a67f9d0051a2d6c1247b3caefece79454c39849cb5c47a79e2bc19598cc022f4",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_ns",
+      "category": "rail",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 3,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        58,
+        536,
+        214,
+        689
+      ],
+      "native_size": [
+        156,
+        153
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_ns.png",
+      "main_native_git_blob_sha": "84b6ef97342783f96dcc186afbb7d88b05a72b62",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_ns.png",
+      "main_runtime_git_blob_sha": "3ecc57989beab8f74b97a5079d14fc557de15e5b",
+      "main_native_sha256_manifest": "32cbc5e5783d59ecd7e70c9b844c267e585c05ec34205089af2d4252cddf3333",
+      "main_runtime_sha256_manifest": "37120da5a4bf4145e8153d6d05a2b2141ffb6d89952aec5d3917b666ccb3cdd6",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_nw",
+      "category": "rail",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 3,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        469,
+        536,
+        628,
+        689
+      ],
+      "native_size": [
+        159,
+        153
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_nw.png",
+      "main_native_git_blob_sha": "0b0914acdfb850087c67640c0a96ea7b4f6bb0b4",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_nw.png",
+      "main_runtime_git_blob_sha": "977d79be5510f94511d793fe03de1f483cc7b8ca",
+      "main_native_sha256_manifest": "df6f6ef9f8b4090fe8d3191e22f64d96e40e75f92bbe5ff799afa1059d01d898",
+      "main_runtime_sha256_manifest": "34654c27bbe75722b7277c8457290c3b82c43a76f652883694ffc0134b2e0b29",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_overgrown",
+      "category": "rail",
+      "source_sheet": "07-1000263633.png",
+      "source_row": 3,
+      "source_column": 7,
+      "source_crop_xyxy": [
+        929,
+        381,
+        1063,
+        549
+      ],
+      "native_size": [
+        134,
+        168
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_overgrown.png",
+      "main_native_git_blob_sha": "1d8e139ba4a8244ecfe2a3cbcea62a1e5d598a2d",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_overgrown.png",
+      "main_runtime_git_blob_sha": "feeedec3c9abb57dad42a26c6b7856785449da62",
+      "main_native_sha256_manifest": "8538173ee9920cb927e4e2096cb9ad780020bb6eb2dc0f75624ff8c784be96f3",
+      "main_runtime_sha256_manifest": "7e58a204755c6763ba1c0063f6d50de8e2cfcb060ff7a73f2293cee2b12de880",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_platform_e",
+      "category": "rail",
+      "source_sheet": "07-1000263633.png",
+      "source_row": 4,
+      "source_column": 7,
+      "source_crop_xyxy": [
+        928,
+        570,
+        1062,
+        745
+      ],
+      "native_size": [
+        134,
+        175
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_platform_e.png",
+      "main_native_git_blob_sha": "4a3d115d209b69ea5d12d46e23556bd86e3a65d8",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_platform_e.png",
+      "main_runtime_git_blob_sha": "26fb8991a66704e06236af5464a956da1bed3f30",
+      "main_native_sha256_manifest": "ddaad86466dfe52a94401ebf676a224f79ee85a5c88d405daa18b1b25b0ed81c",
+      "main_runtime_sha256_manifest": "8f0416c7b8f65a92b11fea31b9dcd4fea63edb930ccf6fa211ee8c4cbbf31e8f",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_platform_w",
+      "category": "rail",
+      "source_sheet": "07-1000263633.png",
+      "source_row": 4,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        1081,
+        570,
+        1214,
+        745
+      ],
+      "native_size": [
+        133,
+        175
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_platform_w.png",
+      "main_native_git_blob_sha": "3a855a6860ed79be85c7665a6b3414f301cc4aa1",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_platform_w.png",
+      "main_runtime_git_blob_sha": "31dbd1becf1d89a3cc8fd947490be668d7207fd3",
+      "main_native_sha256_manifest": "77616ee54ac03a6d3615d44c201fbb64d7c5988e8e3bf2534f7f64304e3d1469",
+      "main_runtime_sha256_manifest": "073f7d2fc04a0b2595dc454131694e8cafc38dfff5ef7745447c4b2d2c2e8fa4",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_stop_e",
+      "category": "rail",
+      "source_sheet": "07-1000263633.png",
+      "source_row": 3,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        20,
+        382,
+        154,
+        549
+      ],
+      "native_size": [
+        134,
+        167
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_stop_e.png",
+      "main_native_git_blob_sha": "3e65936a8e7ab0ea1f40dec95189afc1db6d9468",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_stop_e.png",
+      "main_runtime_git_blob_sha": "87cbd49f9bdf7b80704a0307d3a8a8692b3f450b",
+      "main_native_sha256_manifest": "3b90d77a73f8f49a0a500b315f325b9018467e379ebb97dad57d625d7de5e816",
+      "main_runtime_sha256_manifest": "06874cb7a639777ffa5ff0ba06e13cf6d1ac4c6951252d2c1addd98bc85ab626",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_stop_s",
+      "category": "rail",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 4,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        55,
+        735,
+        214,
+        879
+      ],
+      "native_size": [
+        159,
+        144
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_stop_s.png",
+      "main_native_git_blob_sha": "8c8140ee8809621d6b08c01ae326b32eda2b0e1b",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_stop_s.png",
+      "main_runtime_git_blob_sha": "c4c1c2db6a7af58b5c1a1c9f0484a5f8ccfb84ba",
+      "main_native_sha256_manifest": "a6154ecde6b70434a285630d0aaba52803090b1093e6848fe04e1fd587bcd5b4",
+      "main_runtime_sha256_manifest": "fcafbffd9323d00da30c7af0d9909a26d05349f7da45fe41ad737103d5189e44",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_stop_w",
+      "category": "rail",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 4,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        258,
+        738,
+        420,
+        881
+      ],
+      "native_size": [
+        162,
+        143
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_stop_w.png",
+      "main_native_git_blob_sha": "7daa69a5d84f14039391ea3c5348908913174add",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_stop_w.png",
+      "main_runtime_git_blob_sha": "594bf4c24436e7c730ffa203968be84ee8d9029d",
+      "main_native_sha256_manifest": "8c19556baf587cedb1610f5e8567bff2398632ab3fae5ac58e8c66e8bbe1dfed",
+      "main_runtime_sha256_manifest": "8aa89a6ea15eacdfbba6186fd18aee9eaa3b68c3ca5c43ea14737734ace70dbe",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_y",
+      "category": "rail",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 4,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        677,
+        734,
+        837,
+        879
+      ],
+      "native_size": [
+        160,
+        145
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_y.png",
+      "main_native_git_blob_sha": "d0581354d0c873dcec16487008b22839967e74f4",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_y.png",
+      "main_runtime_git_blob_sha": "8a98a791015cc7a336defccf89cdb534e927513d",
+      "main_native_sha256_manifest": "d882874f59c4e5ac4ee8c6eb913f4ab59c5cce5293c7c71fbd89883d24c2fcc9",
+      "main_runtime_sha256_manifest": "5a073f698b46e90289f871a346eb42560308edcc61ed3a8a77e2eee016d6c9b8",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_crossing_basic",
+      "category": "road",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 2,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        881,
+        302,
+        1049,
+        468
+      ],
+      "native_size": [
+        168,
+        166
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_crossing_basic.png",
+      "main_native_git_blob_sha": "ba2cb9e2c8146aca57ff031d98889dcd2b48e99b",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_crossing_basic.png",
+      "main_runtime_git_blob_sha": "82488f0555d8888e3daf7024055aedc922456ecb",
+      "main_native_sha256_manifest": "d8f5175dfb2d9fb026639e8d37264d6c7ac3d1c62ebbcfa4f96a34a300acb21a",
+      "main_runtime_sha256_manifest": "40606df794ac25275666a4d11aac157e7b1d2ac5b3ad00202323b02c6e198a13",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_crossing_closed",
+      "category": "road",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 4,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        474,
+        519,
+        606,
+        659
+      ],
+      "native_size": [
+        132,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_crossing_closed.png",
+      "main_native_git_blob_sha": "0b415b24f5befcea7243fdd7433e84b91bf0e9ca",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_crossing_closed.png",
+      "main_runtime_git_blob_sha": "14f1ee025ec2d7eebbb8bb5ec96a5ef9b15ecec3",
+      "main_native_sha256_manifest": "b2371d1b36b8bc0d6fa36239f8d7c0276d160643ce61d18f7efe396c2665f5da",
+      "main_runtime_sha256_manifest": "8bac29d1ac5d926b374fd74b93f35e9279d485137731a2dd2a67acb9fd781457",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_parking_bay_ew",
+      "category": "road",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 6,
+      "source_column": 7,
+      "source_crop_xyxy": [
+        929,
+        836,
+        1062,
+        967
+      ],
+      "native_size": [
+        133,
+        131
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_parking_bay_ew.png",
+      "main_native_git_blob_sha": "2dd404461dcd89e42e0a7738862dc492beda58d6",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_parking_bay_ew.png",
+      "main_runtime_git_blob_sha": "78438ee32af59d9b7d1a3725a845c0d1bfd09fbd",
+      "main_native_sha256_manifest": "477cbdf7236f613ccf94140d469eb5d6a4cae486af06f4763a7ca24a5918ec9d",
+      "main_runtime_sha256_manifest": "2a9e0870518b7f932c3d8a1cc29211227560bfc52534af6107d0bd822fa76f31",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_parking_bay_s",
+      "category": "road",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 6,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        474,
+        836,
+        607,
+        967
+      ],
+      "native_size": [
+        133,
+        131
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_parking_bay_s.png",
+      "main_native_git_blob_sha": "b1360ee385b22ab08b575b99b745308003eba955",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_parking_bay_s.png",
+      "main_runtime_git_blob_sha": "66f75342cc662094389d66d50bb68ceace7811c4",
+      "main_native_sha256_manifest": "365418d076631abee9761adb13ac8fb0b07cca37e127aa8ad2882539d01c5cac",
+      "main_runtime_sha256_manifest": "935d7640307e5a399f00eae8324c3f1163914d36aab315b3bdac07dbbafc2dfe",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_cross",
+      "category": "road",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 1,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        881,
+        92,
+        1049,
+        257
+      ],
+      "native_size": [
+        168,
+        165
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_cross.png",
+      "main_native_git_blob_sha": "c3359ac2038d975dff0f3656124289158a4dfeee",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_cross.png",
+      "main_runtime_git_blob_sha": "3fc93b6e966feb2149d2bbbceb543982a2325aa8",
+      "main_native_sha256_manifest": "9a92b0057f2970f1ee82af87c433d3ff56d8f7b19d572a2c2748cadaad9cd66a",
+      "main_runtime_sha256_manifest": "1a8f593ca75d2ea8142e6651e3b0fb5dc70e530862c9d94bb4c3b14fac5be8e3",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_cross_zebra",
+      "category": "road",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 5,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        777,
+        678,
+        909,
+        817
+      ],
+      "native_size": [
+        132,
+        139
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_cross_zebra.png",
+      "main_native_git_blob_sha": "918f435e924698a9943316d3b8b3ca5ddb285778",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_cross_zebra.png",
+      "main_runtime_git_blob_sha": "3da89e1d92011fcac9839560085330bfccbd95bd",
+      "main_native_sha256_manifest": "885bed7d5be498de2325bcc9a17353bad359ef6dd8149dd3086635eef573ad18",
+      "main_runtime_sha256_manifest": "1f417a03b5fbc265cba50009509210445480c0dc317d98659eb61299be267650",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_end_s",
+      "category": "road",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 2,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        54,
+        303,
+        219,
+        469
+      ],
+      "native_size": [
+        165,
+        166
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_end_s.png",
+      "main_native_git_blob_sha": "baa996b1de35534ca68ee67bd81acd7c815deaec",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_end_s.png",
+      "main_runtime_git_blob_sha": "cbc28b9fba5e7c8b2cfe94f530ba8531cfdf5f9e",
+      "main_native_sha256_manifest": "b943fca59ca442fcfd4f1ad1c295043a9aae4bb7b41146c4c60c6f29bc15141c",
+      "main_runtime_sha256_manifest": "0409807caea45c0fb3687f9ddfca9f149a7520c40adc2190cdfd9fa5b71de92c",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_end_w",
+      "category": "road",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 2,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        468,
+        303,
+        633,
+        469
+      ],
+      "native_size": [
+        165,
+        166
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_end_w.png",
+      "main_native_git_blob_sha": "4f5878c829642d094547399fce84c84feaf40152",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_end_w.png",
+      "main_runtime_git_blob_sha": "f32b913d729c5cf0ca80e616500fc6572fe3fdd1",
+      "main_native_sha256_manifest": "a1c4b2640cd88f30c26c18287c6ca2b99d387f77262b2b9ad0f361d311a5b315",
+      "main_runtime_sha256_manifest": "9c1441bf0767e0b94796b477de8f1425a79ab4a5eee004cbadb59fdde2d4fd34",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_ew",
+      "category": "road",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 1,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        258,
+        92,
+        422,
+        256
+      ],
+      "native_size": [
+        164,
+        164
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_ew.png",
+      "main_native_git_blob_sha": "c1a74ee93ac385384f92bf06ee1f973e71a332de",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_ew.png",
+      "main_runtime_git_blob_sha": "96dc9c5f90d134db6096295d649ee88d45b18f3a",
+      "main_native_sha256_manifest": "5f6905b7a74f01125a0995bd6cdb397c091ebd84a35b8bd3aaadf4fb60e46cba",
+      "main_runtime_sha256_manifest": "373108a0cc147f94ff5e378aef56e56f3706345aad2a5aea20e1f613a10c450f",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_median_long",
+      "category": "road",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 7,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        171,
+        986,
+        302,
+        1124
+      ],
+      "native_size": [
+        131,
+        138
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_median_long.png",
+      "main_native_git_blob_sha": "c872991bf2873661976165e36c0b441501ddb38d",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_median_long.png",
+      "main_runtime_git_blob_sha": "39d5c76a1e0e044e4fa235f7a2207a7866482ec4",
+      "main_native_sha256_manifest": "aa4211eb65730b173203ea8c9a66ada74da90eebd3a65e63ca2260deb820d783",
+      "main_runtime_sha256_manifest": "6824dc021ffb514c6484068867e26484379fd0fe7bc9a035e78bbe7821d688b4",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_median_round",
+      "category": "road",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 7,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        777,
+        986,
+        909,
+        1124
+      ],
+      "native_size": [
+        132,
+        138
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_median_round.png",
+      "main_native_git_blob_sha": "2363f9a8d9f8ef6b05955137d031b99188064746",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_median_round.png",
+      "main_runtime_git_blob_sha": "0615693fd26e252dcc32d5402be30d1b2d88b041",
+      "main_native_sha256_manifest": "ea0c7d8ab0f9119c760a4a65d4ef0d46bb1fa4bc618d69a497ea09c71cf4c576",
+      "main_runtime_sha256_manifest": "afef2e94f96fe998862023e665ae9c8607a511158e70a889695e448560bdc959",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_ne",
+      "category": "road",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 1,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        676,
+        92,
+        837,
+        256
+      ],
+      "native_size": [
+        161,
+        164
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_ne.png",
+      "main_native_git_blob_sha": "90594e989a505cb04aaedbfd8a1e2cb512a9f9ac",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_ne.png",
+      "main_runtime_git_blob_sha": "3682cac18c22e6655a652a7f8aa704e282e3f014",
+      "main_native_sha256_manifest": "2db9aef35d65692fb3dbbe6372d61bb67a81e01730d98a17bbb712e97c9f0fba",
+      "main_runtime_sha256_manifest": "41c52be22735a8e5ed83f78ea79a2657c0c67780a935ff33af1668f181987e7e",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_ns",
+      "category": "road",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 1,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        54,
+        92,
+        218,
+        257
+      ],
+      "native_size": [
+        164,
+        165
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_ns.png",
+      "main_native_git_blob_sha": "31cb97824a39aec6c1e23600e5cbe10ed5a7f5a8",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_ns.png",
+      "main_runtime_git_blob_sha": "360c16bfe0c0a874af1ffac34e42eee51ce0e7c1",
+      "main_native_sha256_manifest": "6062bf54d9f32a18c356435b419f9a66f62a7f2c2188318545cdd56af93cbd0b",
+      "main_runtime_sha256_manifest": "84697460fa391207e7e6d6755d9d8690ee409a8691e2b105c589ac3b47f5b4f6",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_round_end_s",
+      "category": "road",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 5,
+      "source_column": 9,
+      "source_crop_xyxy": [
+        1234,
+        678,
+        1365,
+        817
+      ],
+      "native_size": [
+        131,
+        139
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_round_end_s.png",
+      "main_native_git_blob_sha": "46425d1680be8a244fa6facaf9b57a609e06c4ac",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_round_end_s.png",
+      "main_runtime_git_blob_sha": "02eb7281c0ffeea0c835256c0026f139a17bfbee",
+      "main_native_sha256_manifest": "d9440bb0229da5b72d0947984043398e074b94315c00dc0153f00aa5be68132b",
+      "main_runtime_sha256_manifest": "36bfc26c44d6055c28bc9faf5509dede6ac9070394ab757f22764dedd0c8f567",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_t_new",
+      "category": "road",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 2,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        170,
+        192,
+        302,
+        336
+      ],
+      "native_size": [
+        132,
+        144
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_t_new.png",
+      "main_native_git_blob_sha": "504a1ea94389e3856a619b4f36608e86fabd39cb",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_t_new.png",
+      "main_runtime_git_blob_sha": "782ffa53c9432431440d021c21674d156e74dc64",
+      "main_native_sha256_manifest": "e3c4a9d8bd39878f16776c55faca23e623ce28b656a2f7ee481e05437fd45303",
+      "main_runtime_sha256_manifest": "a2a5d1279c90d0c41f6e15b6af8b7c544f83d942aa63a8891031d32a7db7e9e9",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_t_wes",
+      "category": "road",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 1,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        1093,
+        92,
+        1269,
+        257
+      ],
+      "native_size": [
+        176,
+        165
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_t_wes.png",
+      "main_native_git_blob_sha": "67a9d17985c734ced30d2b5a4c479f7bbe643fbf",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_t_wes.png",
+      "main_runtime_git_blob_sha": "4e7cb7705f7e4f41f5a031c41b2f5ee8c7b444cb",
+      "main_native_sha256_manifest": "9b622119eb7f1eaab23df2892f8fc01642799c29edef57f936f34bf9894bfd65",
+      "main_runtime_sha256_manifest": "ecb1202ec79d1aeaa82a7b2057d00d6f5ee4365efee4d14de47c85de9dfbef50",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_turnaround_s",
+      "category": "road",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 2,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        676,
+        303,
+        836,
+        469
+      ],
+      "native_size": [
+        160,
+        166
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_turnaround_s.png",
+      "main_native_git_blob_sha": "ea561527b367915c6791aa739a4d8202bc2dbfba",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_turnaround_s.png",
+      "main_runtime_git_blob_sha": "ef24ce7441b02889c11e399096b9312709cce27a",
+      "main_native_sha256_manifest": "70b3af8eb62b3dea7908e92bc9f53f98ea421c69a708ca05544f7ea965ed631e",
+      "main_runtime_sha256_manifest": "83c2ba4ea0eeb71d793f4be87b9f08a1ba6771ec637967877b6e9b45ef8f53cd",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_wide_cross",
+      "category": "road",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 4,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        1082,
+        560,
+        1215,
+        742
+      ],
+      "native_size": [
+        133,
+        182
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_wide_cross.png",
+      "main_native_git_blob_sha": "6bdbf9f4288e2fe8028ddd09010b66c88f48a854",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_wide_cross.png",
+      "main_runtime_git_blob_sha": "28207af17b3d274109659ea03c22c8bf9041ff5f",
+      "main_native_sha256_manifest": "52b003aacb8203235d9e4b5aaad9af49de89976776a1fc00dece8a3556594882",
+      "main_runtime_sha256_manifest": "f573176755afb4336655dfe3e50ff5c2b628ba99c7aa4cdbe91ce089a5eafac9",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_wide_end_w",
+      "category": "road",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 5,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        625,
+        762,
+        759,
+        946
+      ],
+      "native_size": [
+        134,
+        184
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_wide_end_w.png",
+      "main_native_git_blob_sha": "85f7909f0e817ba23c92e1ec8584bec93b6271ba",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_wide_end_w.png",
+      "main_runtime_git_blob_sha": "ea7aa599381505db550ed3be7213e0b8072a0125",
+      "main_native_sha256_manifest": "ca965848c6b4fbe551951f8ce355400c0e02910f8acf3c9ca89a00005197bff5",
+      "main_runtime_sha256_manifest": "b0fa69be134f319085b00106bf6c5a58dc8635f7b878ba4a7a5178c0a0cb2072",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_wide_ew",
+      "category": "road",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 4,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        170,
+        560,
+        302,
+        742
+      ],
+      "native_size": [
+        132,
+        182
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_wide_ew.png",
+      "main_native_git_blob_sha": "83fbd729bb8573baea38d5a190319936d9134877",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_wide_ew.png",
+      "main_runtime_git_blob_sha": "f5b749a5962e9547f5244463cf9fc4c0e38dbd47",
+      "main_native_sha256_manifest": "34597585cea96b77ce2f6122e8440cf9c26d1413865e8fdf117388f386697ceb",
+      "main_runtime_sha256_manifest": "93d100acd76acdc2d1ed0ce50fb05d04902c10622ff80c2e3d28808384df72cd",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_wide_t_new",
+      "category": "road",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 4,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        777,
+        560,
+        910,
+        741
+      ],
+      "native_size": [
+        133,
+        181
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_wide_t_new.png",
+      "main_native_git_blob_sha": "21d3ff231f68a1ab1d0c3eab3b2a634a5ec56f68",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_wide_t_new.png",
+      "main_runtime_git_blob_sha": "1bef32ef5e1d533d4ec1f488d99af7549ffdd112",
+      "main_native_sha256_manifest": "806aeca6426ac116f426ec962ae6c3b9d3995f9a5de8fab6acee1518df03397b",
+      "main_runtime_sha256_manifest": "9d08864cc5b09156222255cdea37826238eac090d890ddd2a32b99b56e7411e6",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_wide_t_sew",
+      "category": "road",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 4,
+      "source_column": 7,
+      "source_crop_xyxy": [
+        929,
+        560,
+        1063,
+        741
+      ],
+      "native_size": [
+        134,
+        181
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_wide_t_sew.png",
+      "main_native_git_blob_sha": "534ebe62ca0a16747afffeaf34912da003347bf0",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_wide_t_sew.png",
+      "main_runtime_git_blob_sha": "31202e7981492145477cc2b2d8f791705a94d678",
+      "main_native_sha256_manifest": "8c974d24b0428f7a518345e053bf37a04f11be9209d959635dc9cd07dfde1506",
+      "main_runtime_sha256_manifest": "3c653684869f901e2fbf6d3991c0cfce3de71861329786dedcce3727d8482ea6",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_wide_zebra",
+      "category": "road",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 5,
+      "source_column": 10,
+      "source_crop_xyxy": [
+        1382,
+        762,
+        1514,
+        945
+      ],
+      "native_size": [
+        132,
+        183
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_wide_zebra.png",
+      "main_native_git_blob_sha": "c1567ff8ff8a786441587c2762d19dfa54be97e7",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_wide_zebra.png",
+      "main_runtime_git_blob_sha": "7c94c5fd072aecfb16ed91ada37fcb34d51e45ba",
+      "main_native_sha256_manifest": "04c64dbd908ce225928c0d4daff17a60c2a7a49f0ae612ee17791557efd3f591",
+      "main_runtime_sha256_manifest": "b4a33a04ac4508dcd0376e03648c1d5672740bd716ce0caa335b1b18ece0e129",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_ws",
+      "category": "road",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 1,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        463,
+        92,
+        629,
+        257
+      ],
+      "native_size": [
+        166,
+        165
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_ws.png",
+      "main_native_git_blob_sha": "1db8d5d933cf918dc66a8be746eb8ee9ad6fd7c4",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_ws.png",
+      "main_runtime_git_blob_sha": "eb8320cf39cc7ff4f2fb3843663dcd16d8cd3590",
+      "main_native_sha256_manifest": "758858a9263a6dab7768d50a04f32339577aec93d019619021f6f678b5eb9887",
+      "main_runtime_sha256_manifest": "be34a1db989ab224dcd647dc4698652e06b1f657df3d287f92490b49404e6c35",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_yellow_curve",
+      "category": "road",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 4,
+      "source_column": 10,
+      "source_crop_xyxy": [
+        1382,
+        560,
+        1515,
+        742
+      ],
+      "native_size": [
+        133,
+        182
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_yellow_curve.png",
+      "main_native_git_blob_sha": "2c24190be9092f63de5d1aebb2b9961369863e0f",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_yellow_curve.png",
+      "main_runtime_git_blob_sha": "8e41016994cfd3de83d721d1b1da0631bce7ca4e",
+      "main_native_sha256_manifest": "129787f32f76f776d7f9e49b7c386faaa081b93662ece1b0fca7ae6b5cedbb00",
+      "main_runtime_sha256_manifest": "599dc6f288166d5e1626eef5e3b58b26b6d0159c0b49e2a39e385a75f8df09c7",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_zebra_ns",
+      "category": "road",
+      "source_sheet": "10-1000263629.png",
+      "source_row": 3,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        777,
+        357,
+        910,
+        539
+      ],
+      "native_size": [
+        133,
+        182
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_zebra_ns.png",
+      "main_native_git_blob_sha": "8021a52da1b7bdd12df9dd62b4ba5af4914efc65",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_zebra_ns.png",
+      "main_runtime_git_blob_sha": "5aafe2562545d4934e76e23f781b310d569100a0",
+      "main_native_sha256_manifest": "110adfbdb5a25e3ecd0f78a36a473f8b7c73291113ef42332a96f58ed1748730",
+      "main_runtime_sha256_manifest": "1d7c93e3329e49ea2623a4f25614743ab7fb51535a24986cf105dc3f1198cab2",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_grade_separation_cross",
+      "category": "structure",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 5,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        814,
+        942,
+        955,
+        1081
+      ],
+      "native_size": [
+        141,
+        139
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_grade_separation_cross.png",
+      "main_native_git_blob_sha": "cf451e379f4631f8b0931f83f92a69878acf78ee",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_grade_separation_cross.png",
+      "main_runtime_git_blob_sha": "1e608afb8b66c0c28648059de99b760dc7c43b1d",
+      "main_native_sha256_manifest": "4a3322434dd3207661c5e7093ca515c92c8721b56c1c2bd07ff1e0967c00d414",
+      "main_runtime_sha256_manifest": "e0f24ac036b15181f96b58201ce8aab0a95edc1bb2236b21ed42cc053ad053f3",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_bridge_ew",
+      "category": "structure",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 3,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        777,
+        356,
+        909,
+        500
+      ],
+      "native_size": [
+        132,
+        144
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_bridge_ew.png",
+      "main_native_git_blob_sha": "8720162e2e2fd5f94334b4e8b8f8635f03dd8ebe",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_bridge_ew.png",
+      "main_runtime_git_blob_sha": "cc9e9cfc4d579d141d866cd1dac6858dfee4bf30",
+      "main_native_sha256_manifest": "9dd21a11814e2538a9bb213140cbdec6423671cf21d3b211654f44f2932aef22",
+      "main_runtime_sha256_manifest": "0b507afdf094d5631dc29019cdad0711b84a8f160427ec2a4251535ed0051620",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_bridge_ns",
+      "category": "structure",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 5,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        259,
+        941,
+        422,
+        1081
+      ],
+      "native_size": [
+        163,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_bridge_ns.png",
+      "main_native_git_blob_sha": "e252b4f0fd51209fd3298df80d419c8fedfd08e7",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_bridge_ns.png",
+      "main_runtime_git_blob_sha": "8568e2684b4ccb980ca45588f75a1e9c708c76f4",
+      "main_native_sha256_manifest": "944e1fadeb2dbe3f3057862b9d086fe1e79a2d3af4fb5189f7c0207a60807989",
+      "main_runtime_sha256_manifest": "2b0f502358a01174562452e14f31fe25c30e48d1077c8f7c0f5ae51161383d49",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_elevated_ew",
+      "category": "structure",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 5,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        1345,
+        942,
+        1483,
+        1080
+      ],
+      "native_size": [
+        138,
+        138
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_elevated_ew.png",
+      "main_native_git_blob_sha": "19dfcd7d11bfe7f4bb63059734d734387232a666",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_elevated_ew.png",
+      "main_runtime_git_blob_sha": "6b2f8e495ff1d9e1737afaaf56e224123b881411",
+      "main_native_sha256_manifest": "807ad9ac6448a471f693ca3e46c25ee6f159f88418ad95c1c52983b225c1ac6c",
+      "main_runtime_sha256_manifest": "8b7be709b6a0dedf35961d2cd3eebc521b07798d2539c171dfa9b859dcf5890b",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_truss_ew",
+      "category": "structure",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 3,
+      "source_column": 7,
+      "source_crop_xyxy": [
+        929,
+        355,
+        1062,
+        500
+      ],
+      "native_size": [
+        133,
+        145
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_truss_ew.png",
+      "main_native_git_blob_sha": "dd7dd35f3e1df8793b72a0c1b9b5360cadc709c8",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_truss_ew.png",
+      "main_runtime_git_blob_sha": "537ef0096af29867f2e365941c23c5d667679c78",
+      "main_native_sha256_manifest": "e8177973b5212d3dfe53c6384301440b3a0c3d704568d5bc0587937b4e581128",
+      "main_runtime_sha256_manifest": "f863debb76b1ed39ad09a46c15b52543c96a94413eedd0d2565e01585f1a715c",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_truss_ns",
+      "category": "structure",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 3,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        321,
+        356,
+        455,
+        500
+      ],
+      "native_size": [
+        134,
+        144
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_truss_ns.png",
+      "main_native_git_blob_sha": "12d2d8ffff77d6b1150305714539ae27d0cb318f",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_truss_ns.png",
+      "main_runtime_git_blob_sha": "baf6aaf8418dfb3c1fbb28585b2a8afb94702690",
+      "main_native_sha256_manifest": "fe91f88253dff9465f4401614e7e77b6cad5c42920aab146a991071f41a6d36b",
+      "main_runtime_sha256_manifest": "58233136a66b9ba1483bc6d9396dfe4f4ee2abf7995a19f3fc9ff7021a8a540e",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_rail_tunnel_s",
+      "category": "structure",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 5,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        643,
+        941,
+        782,
+        1081
+      ],
+      "native_size": [
+        139,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_rail_tunnel_s.png",
+      "main_native_git_blob_sha": "ab88db76f1b4afa8091f5d84b2206e5efcfba95c",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_tunnel_s.png",
+      "main_runtime_git_blob_sha": "dbe2744d8ab58845a48aea840a63eae803ec7a26",
+      "main_native_sha256_manifest": "558b71c36abc31aa79e2e9a75cafffbf16957cfaac72d62678d3d4f11a1d1278",
+      "main_runtime_sha256_manifest": "6578565636bbfa0e8dbfbc39b07dbc1e540374be9aeed3106690374e587fe23a",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_retaining_stairs",
+      "category": "structure",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 8,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        171,
+        1142,
+        302,
+        1278
+      ],
+      "native_size": [
+        131,
+        136
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_retaining_stairs.png",
+      "main_native_git_blob_sha": "4d401704c0d4c0475399130066a0626e5922fbe2",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_retaining_stairs.png",
+      "main_runtime_git_blob_sha": "9a9c705957e93b92a8e51cf4a49a59eab9645bd0",
+      "main_native_sha256_manifest": "adb2cf2ec0960c778d3f29b3f988b6c4c2d8d39bc46f05cba54c2b47234c5304",
+      "main_runtime_sha256_manifest": "1d41b0d304dc44fff213e5f20a4145626e49f42db877b7d0e38f450418250ee3",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_retaining_wall",
+      "category": "structure",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 8,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        20,
+        1143,
+        153,
+        1278
+      ],
+      "native_size": [
+        133,
+        135
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_retaining_wall.png",
+      "main_native_git_blob_sha": "f2563c115b3079603c676f4cec0bfd169c3dd773",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_retaining_wall.png",
+      "main_runtime_git_blob_sha": "5ca13d5497066dd9a93fd04584e2f7eac1db3bc1",
+      "main_native_sha256_manifest": "88e56bbb3cf5fd03cad0b89f771b1c3dd088f6ecb50e390738885e845923c57d",
+      "main_runtime_sha256_manifest": "a25cead5a7037691d0220f2bf11b019f5f52be0df62db74f892d2d565a262d98",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_bridge_ew",
+      "category": "structure",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 2,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        322,
+        191,
+        455,
+        335
+      ],
+      "native_size": [
+        133,
+        144
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_bridge_ew.png",
+      "main_native_git_blob_sha": "49cf61fcaa5f18d1aacc1335e28c96d25900fd71",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_bridge_ew.png",
+      "main_runtime_git_blob_sha": "e3d8830a407a0191d401360e3f9f497d3afca398",
+      "main_native_sha256_manifest": "2410cc77e3640ba39990c0eceb305fa0050f8d9e12d98afbed3187d58defbf62",
+      "main_runtime_sha256_manifest": "326ac80fbeda86522aa12a4e1915c992c2580cc46d7a24d1bb7fe22b48965b3d",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_bridge_ns",
+      "category": "structure",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 5,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        53,
+        941,
+        215,
+        1081
+      ],
+      "native_size": [
+        162,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_bridge_ns.png",
+      "main_native_git_blob_sha": "ce192b3c3f32377646230d83a7ac94e585644e9d",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_bridge_ns.png",
+      "main_runtime_git_blob_sha": "f6b790cef82d6e9a5c69de1409b874d06a13ff17",
+      "main_native_sha256_manifest": "deb2ef9b75d1573a5102ecdd172ba95fd62cf27aa68d60b5f1b635c5ede6859e",
+      "main_runtime_sha256_manifest": "8be6851218333d17924af609a2459dc9f6b1f25daa903343435cd743ab590705",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_elevated_ew",
+      "category": "structure",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 5,
+      "source_column": 7,
+      "source_crop_xyxy": [
+        1167,
+        942,
+        1307,
+        1080
+      ],
+      "native_size": [
+        140,
+        138
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_elevated_ew.png",
+      "main_native_git_blob_sha": "0ebc47586f5c340152c7bd4b69228bacba09b5b4",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_elevated_ew.png",
+      "main_runtime_git_blob_sha": "f586eebd517390902468de99bb61f0efe713be7e",
+      "main_native_sha256_manifest": "ab7741235d9d05430aa754348e1c23455054b56bb0b9f20b36212d912d2f0f48",
+      "main_runtime_sha256_manifest": "667bb53a5a021f58dd6734a45f0cba9ff8f7f2e63b163f206a29a7feab239c12",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_road_tunnel_s",
+      "category": "structure",
+      "source_sheet": "03-1000263625.png",
+      "source_row": 5,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        463,
+        941,
+        609,
+        1081
+      ],
+      "native_size": [
+        146,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_road_tunnel_s.png",
+      "main_native_git_blob_sha": "23c27792e9dc01596dab2457e192f8b70a93e545",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_tunnel_s.png",
+      "main_runtime_git_blob_sha": "35b90ec8b12f35c85ca57aa78af7e6f57859beb5",
+      "main_native_sha256_manifest": "6d49047796c829366e54c33b6757905fddff5de327366f6cf4aa8d5a44ecc350",
+      "main_runtime_sha256_manifest": "99006354f4db6d3653d5b76782d04c4b35bf11b99ef826ca273cc66cb87ecc08",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_waterfront_stairs",
+      "category": "structure",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 8,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        777,
+        1143,
+        909,
+        1278
+      ],
+      "native_size": [
+        132,
+        135
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_waterfront_stairs.png",
+      "main_native_git_blob_sha": "b69c08d6298f4a63ed6f8642a444a4a4d583dff6",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_waterfront_stairs.png",
+      "main_runtime_git_blob_sha": "27fce7f16d0b8971da95aed853eea038a00b9b31",
+      "main_native_sha256_manifest": "859b6917cb523220abdfc3d0532b5ae8b513541b796329926fd362030942879d",
+      "main_runtime_sha256_manifest": "801d5695e7d97dec248bce08cacd97cceea2480795d51fafed30d17429225525",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_waterfront_wall",
+      "category": "structure",
+      "source_sheet": "06-1000263628.png",
+      "source_row": 8,
+      "source_column": 9,
+      "source_crop_xyxy": [
+        1234,
+        1143,
+        1364,
+        1278
+      ],
+      "native_size": [
+        130,
+        135
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_waterfront_wall.png",
+      "main_native_git_blob_sha": "3392dd8f4ff19b4adce43e167a78250a41907d03",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_waterfront_wall.png",
+      "main_runtime_git_blob_sha": "ed0b77df29104bb1aa3879fc67e76c9c590dfd88",
+      "main_native_sha256_manifest": "66fe5ed3a2fee67510d860680acd2acd61ce097323809af8a89d860b54f407f5",
+      "main_runtime_sha256_manifest": "2a13fa0a8ab892a428f273ba4b88a67fcab62635c4d12da54dba85d985682e57",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_channel_diagonal",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 4,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        925,
+        554,
+        1070,
+        694
+      ],
+      "native_size": [
+        145,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_channel_diagonal.png",
+      "main_native_git_blob_sha": "ef693fc4bcf439e2555f9a9d19cd218c419f2b6b",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_channel_diagonal.png",
+      "main_runtime_git_blob_sha": "496f3647b8b51872a830096d39545c9d6ccc1d31",
+      "main_native_sha256_manifest": "c053f0deb7c1ef6e78b2061ca067f7d680f4fdd53ff84215a3a3f2e66a9e77b5",
+      "main_runtime_sha256_manifest": "4d563fa58ceffafc588b54c50e7cd552ce813ea64b0504b49ee899fad0fcc19e",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_headland",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 6,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        1347,
+        909,
+        1506,
+        1072
+      ],
+      "native_size": [
+        159,
+        163
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_headland.png",
+      "main_native_git_blob_sha": "a21a5b775d0ded509626e024f537b72369e7cd46",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_headland.png",
+      "main_runtime_git_blob_sha": "1571e9d78410c53e490c276f12a35eb67af6320c",
+      "main_native_sha256_manifest": "b7287e2c82b96b11a85dbabec52dbdb02a8a00de4426a8ac8430292a9c9f9e27",
+      "main_runtime_sha256_manifest": "5975528e39ce0d21836ee7b0aa78e76cba51d9bb6e1f49834108428666e4e95f",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_land_e",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 2,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        754,
+        231,
+        875,
+        358
+      ],
+      "native_size": [
+        121,
+        127
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_land_e.png",
+      "main_native_git_blob_sha": "2ce3abdab1f33c278439c4510d9b9aa263b825f3",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_land_e.png",
+      "main_runtime_git_blob_sha": "fd7d84416217590dc0c3f6618178ff5a587eac8d",
+      "main_native_sha256_manifest": "e73322ce05b4d41522911936b1743eb951a7f0a63f5c8992b0e310212a531d03",
+      "main_runtime_sha256_manifest": "9a6f87395be4148ef50addd5c9143380e5ee37dcf0add91bad2a6022e21438df",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_land_e_bulge",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 3,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        748,
+        395,
+        872,
+        518
+      ],
+      "native_size": [
+        124,
+        123
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_land_e_bulge.png",
+      "main_native_git_blob_sha": "a6a0663cb2cdeb9620859e711e5c73efc5cc86ac",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_land_e_bulge.png",
+      "main_runtime_git_blob_sha": "734c0cc891ac09a6ea6a1f055d2f129ebe1ab162",
+      "main_native_sha256_manifest": "999dddc99e0d03341a9507bf98f32e41d58d9a4093c3d345e8edcca881c4341d",
+      "main_runtime_sha256_manifest": "964869276904d6c7767bd31fff4daa8b47b051b084f5fd703a32ab0431f0159e",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_land_e_step",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 2,
+      "source_column": 7,
+      "source_crop_xyxy": [
+        899,
+        231,
+        1034,
+        358
+      ],
+      "native_size": [
+        135,
+        127
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_land_e_step.png",
+      "main_native_git_blob_sha": "0f162555bee10e7d5675f919b1c9e50294ff120e",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_land_e_step.png",
+      "main_runtime_git_blob_sha": "8db3c9de2869fc1fa0bbc92e1f93e6cf62ebeb29",
+      "main_native_sha256_manifest": "cf6fbe53a6a7e1bfa6ebc4609b4bb57985da7c4e7d2f3b694fe4b77c95e4b40f",
+      "main_runtime_sha256_manifest": "119318bd4df1a9659df7ff8e59e52d03fca503748fc190f5db9aa0ff9012f276",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_land_s",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 2,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        29,
+        231,
+        152,
+        358
+      ],
+      "native_size": [
+        123,
+        127
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_land_s.png",
+      "main_native_git_blob_sha": "1b223c55436c29050b96b9aa8eee7f5cd9a05958",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_land_s.png",
+      "main_runtime_git_blob_sha": "71f9daaf1638578eed7391ffb9db6b1a9efb7402",
+      "main_native_sha256_manifest": "04c86bb38a3cae7d50d5490ee0ea7d05625d46e356f28013baf5bdc0becc1ca3",
+      "main_runtime_sha256_manifest": "b9eb595ce0f917e9dca4f61ead6e2b2ed7f4547cc29ef59aa7215fa8434317b4",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_land_s_inlet",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 3,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        901,
+        395,
+        1025,
+        518
+      ],
+      "native_size": [
+        124,
+        123
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_land_s_inlet.png",
+      "main_native_git_blob_sha": "a35064844a8cc49120ce62794be5b2866df9fe2f",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_land_s_inlet.png",
+      "main_runtime_git_blob_sha": "e852eaf98ad8042619d7cd0647fd157a956b50a9",
+      "main_native_sha256_manifest": "a57997a488d452b7cdbc34c4fce59d0cbb86689dd46a36d43dc24b778d78805b",
+      "main_runtime_sha256_manifest": "8259109b7cff31ebd2134049753c010a4c462c5de199815525c05200adfdd212",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_land_s_wavy",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 2,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        170,
+        231,
+        290,
+        358
+      ],
+      "native_size": [
+        120,
+        127
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_land_s_wavy.png",
+      "main_native_git_blob_sha": "6cc5ee86d5c14eb84295b7e9b0ed7784bca48f07",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_land_s_wavy.png",
+      "main_runtime_git_blob_sha": "16d96a9857feb13614a20a22e4c0139a485777f4",
+      "main_native_sha256_manifest": "b1cb9a8d3e1a955b7fd12952387cb30a0f058791e88eeb72a00ecfb204cb09bb",
+      "main_runtime_sha256_manifest": "4ef1f365bd47929a0f6df946be6e7c7b329e371ba4932d2ff6a7fdb04f9ef9fb",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_land_se",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 3,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        1216,
+        395,
+        1344,
+        519
+      ],
+      "native_size": [
+        128,
+        124
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_land_se.png",
+      "main_native_git_blob_sha": "e239bcca5615b3c39f55f07a69b1edef4b95eb46",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_land_se.png",
+      "main_runtime_git_blob_sha": "5f9a5d804f5a786f6e5678114c533526b9012bba",
+      "main_native_sha256_manifest": "1bf3389514581526ee037de395095825d7e72f09cadf4fcc387d7aafe335e41f",
+      "main_runtime_sha256_manifest": "4bf67ad3bab38d5e2a2f0390b03cce642382a69d72fbcdf67cad444bed261d2d",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_land_sw",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 2,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        601,
+        231,
+        726,
+        358
+      ],
+      "native_size": [
+        125,
+        127
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_land_sw.png",
+      "main_native_git_blob_sha": "739f50127ff4627ad1f9adcf2ba51404b498b5e6",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_land_sw.png",
+      "main_runtime_git_blob_sha": "753cb22bf93940e5510a12a947180c1ef6545f94",
+      "main_native_sha256_manifest": "dfc89a42aa82582b1b22ca1ff3087b90dbca624f6d9fa12562fcc92567eebfdf",
+      "main_runtime_sha256_manifest": "028151d7a1e7c7638e278408843865d7b0f6a56a4ecd545e390ab32267bcb025",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_land_sw_square",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 2,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        1063,
+        231,
+        1190,
+        358
+      ],
+      "native_size": [
+        127,
+        127
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_land_sw_square.png",
+      "main_native_git_blob_sha": "6043b2331df6b0ed5837df325604b7e3a0ad854e",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_land_sw_square.png",
+      "main_runtime_git_blob_sha": "36fa441565dde67c8702b5d025d9653c238f4e1f",
+      "main_native_sha256_manifest": "9eb6e2f74ab2d30cede3f65a7bfbeef7545f49c0b51f06760c6e7b7a530ebf06",
+      "main_runtime_sha256_manifest": "0c4ec1daf432e8835cd452cfc0a9b6ccef85b7f2172ebd5a7ac9c3eb1fa22233",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_land_w_bulge",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 3,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        602,
+        395,
+        719,
+        519
+      ],
+      "native_size": [
+        117,
+        124
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_land_w_bulge.png",
+      "main_native_git_blob_sha": "b3b503c1db48d34b9763a3a0c45cde49ccc0fadc",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_land_w_bulge.png",
+      "main_runtime_git_blob_sha": "59d1409de74e607c5d6bcbc23f824e5291c1fa1a",
+      "main_native_sha256_manifest": "36bc94ff39dd8d9e7f2d88c54d9abd4b9133677318e76f289b234be973bbfa21",
+      "main_runtime_sha256_manifest": "0ccfe80d03d7e9be68d5380c83826bb016a2af75e2477ad72cf95353b27fe7f3",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_water_ne",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 3,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        30,
+        395,
+        152,
+        518
+      ],
+      "native_size": [
+        122,
+        123
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_water_ne.png",
+      "main_native_git_blob_sha": "27905f75aa856b32396aa1586b6556123eab67ff",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_water_ne.png",
+      "main_runtime_git_blob_sha": "1d67e4b0f0322702c0f39e979d53584cc728e7aa",
+      "main_native_sha256_manifest": "e0f2cf3daf2461dda5341a64c71ec7e990632e8c7ff43aacf7dedc440b89d2a7",
+      "main_runtime_sha256_manifest": "a51ef0f13ec54263136fb33836258d2068b98d11e7962fa608c7897072e676b6",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_coast_water_nw",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 3,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        178,
+        395,
+        302,
+        518
+      ],
+      "native_size": [
+        124,
+        123
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_coast_water_nw.png",
+      "main_native_git_blob_sha": "a925cafd5d63908927283d3060f83d33bfeb2f01",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_coast_water_nw.png",
+      "main_runtime_git_blob_sha": "9f50536f6c290b020f4fe37293149b18c7801e85",
+      "main_native_sha256_manifest": "a34cca11bb80242984a9fa541d82032ceca521d6e41c813a98e3a82086c0b9d1",
+      "main_runtime_sha256_manifest": "e2b2dcabb5992983f85df6bf197a4add1aad89b3396c58b049e9744ebbb43308",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_inlet_w",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 4,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        589,
+        554,
+        722,
+        694
+      ],
+      "native_size": [
+        133,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_inlet_w.png",
+      "main_native_git_blob_sha": "e0ce0cd8bc875b44133cd9e26b7f928e30671e0a",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_inlet_w.png",
+      "main_runtime_git_blob_sha": "0313cc140595aafcb898f3363586fc23a75e7644",
+      "main_native_sha256_manifest": "0c63a4e2edb040b39fdb0b96d60f9fdf82080008cd0357367047b1538a0b50c0",
+      "main_runtime_sha256_manifest": "f3db11f6c1047059b7087cd1083eb392ed2a3c19f83d01a8b6ed81ae3626f81e",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_pond_channel_s",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 4,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        1315,
+        554,
+        1502,
+        694
+      ],
+      "native_size": [
+        187,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_pond_channel_s.png",
+      "main_native_git_blob_sha": "d3e55b18539124f18e0e007f476ea63f75ddad00",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_pond_channel_s.png",
+      "main_runtime_git_blob_sha": "284338cab1de51626306a250e26e42f3ad7ea4f5",
+      "main_native_sha256_manifest": "cf2f1b456450fbd64f312bafe7c40b8361354fd260d24443a7d28606b674e4b7",
+      "main_runtime_sha256_manifest": "62167d1f66b51249e3a38943971ccf92ee77004e7a16098419d0a81021919994",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_pond_irregular",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 4,
+      "source_column": 2,
+      "source_crop_xyxy": [
+        234,
+        554,
+        383,
+        694
+      ],
+      "native_size": [
+        149,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_pond_irregular.png",
+      "main_native_git_blob_sha": "a7c39ed3eb37cdabd009956c2c6c5196401efb1c",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_pond_irregular.png",
+      "main_runtime_git_blob_sha": "f0cd23e9512ab0ee0cb0188ba08e3bf6f6948936",
+      "main_native_sha256_manifest": "2ae6fb8d564e3cd0269bac27953757bc3f5bc7b76a586aa6934e6665fbc33ff2",
+      "main_runtime_sha256_manifest": "8316beec724d814969062e603a98761e17210a658ad327e53b08f33eeb8bc5b1",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_pond_round",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 4,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        35,
+        554,
+        205,
+        694
+      ],
+      "native_size": [
+        170,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_pond_round.png",
+      "main_native_git_blob_sha": "6e3849735ce5396439759c37979a1ce46d401793",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_pond_round.png",
+      "main_runtime_git_blob_sha": "17f88a67310ff1771a370d904df1d3751cd9f582",
+      "main_native_sha256_manifest": "3a81736f4eb68ccad558ecdc8e5272c08c72680008213793fb983037af2b07c8",
+      "main_runtime_sha256_manifest": "42171b010700ecd002dc272d2f965d433e957954490f08b5caab51aa8b6505a7",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_pond_small",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 4,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        414,
+        554,
+        560,
+        694
+      ],
+      "native_size": [
+        146,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_pond_small.png",
+      "main_native_git_blob_sha": "cfd0d21646a576b86f3ffa4e0f6dcc79e648307f",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_pond_small.png",
+      "main_runtime_git_blob_sha": "2719b0b51ece024a1b26453e73fc415e85c3147a",
+      "main_native_sha256_manifest": "47e31578703e91de67c5fb1b9f275944498388f8005e6528f4efdf3f72772f68",
+      "main_runtime_sha256_manifest": "25c52357a0a4b84ebc169111e0b6a77cad18ff538e5b297a68ee13868d94a2f3",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_river_basin_s",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 6,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        991,
+        908,
+        1138,
+        1072
+      ],
+      "native_size": [
+        147,
+        164
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_river_basin_s.png",
+      "main_native_git_blob_sha": "6d32abb7588db4aa804c7e80b9d4dc7cecf84edd",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_basin_s.png",
+      "main_runtime_git_blob_sha": "32b1c42a4ee099c2430bb249d04099357bada234",
+      "main_native_sha256_manifest": "d7ef3b7fa2b9c9ebcfe10216330ac0e94ec074267d85c5edd38413c9a026b2b2",
+      "main_runtime_sha256_manifest": "f0ed274019a24b26fc8f19b84b398461900424bae070564f8869d84ffd27fa78",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_river_cross",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 5,
+      "source_column": 8,
+      "source_crop_xyxy": [
+        1219,
+        732,
+        1350,
+        871
+      ],
+      "native_size": [
+        131,
+        139
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_river_cross.png",
+      "main_native_git_blob_sha": "ab4f1b2f222eda6cd89fc2f14254617dd7088fb8",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_cross.png",
+      "main_runtime_git_blob_sha": "5b9f407898f91c3412fee847aa74f798a4ce1ae5",
+      "main_native_sha256_manifest": "ad2b1b31ad359bbb4a43b787e9c4119eff86cfd4a23f81fbe36aaf49280879a2",
+      "main_runtime_sha256_manifest": "7c5ed718333a93a08958ca583f9767734192cb3ba899cfc1bbaa64e8ffd7d03c",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_river_es",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 5,
+      "source_column": 4,
+      "source_crop_xyxy": [
+        523,
+        732,
+        670,
+        871
+      ],
+      "native_size": [
+        147,
+        139
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_river_es.png",
+      "main_native_git_blob_sha": "e652cb3e0b6d17554dd46f3e9c5943c0c494b30b",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_es.png",
+      "main_runtime_git_blob_sha": "f7cca6d651fba2fba2af612aec543519a6214924",
+      "main_native_sha256_manifest": "450fb1fd5e98fd8845813953e390f5e911144cff0ded2d91ae20b0dab2307026",
+      "main_runtime_sha256_manifest": "486ce195a4f98bb1852f1c1ca1a4396c62b342f65ba8af29a451ed5f52546ef7",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_river_ew",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 5,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        348,
+        732,
+        496,
+        871
+      ],
+      "native_size": [
+        148,
+        139
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_river_ew.png",
+      "main_native_git_blob_sha": "4684e3d03d6b0dcfb594cefdff3e5d8da9adf205",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_ew.png",
+      "main_runtime_git_blob_sha": "e983dec2d4a21efaba521f490d9ad87bf750ba3a",
+      "main_native_sha256_manifest": "e4150d394ccfcd3aee0c09d1fff46a82d21c2917614f64969785fdb75af0cbc9",
+      "main_runtime_sha256_manifest": "959c8d0eaf7180c372c9067ca2c99be91d7410f28e5ed17a5f8078ca987e50b9",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_river_meander",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 4,
+      "source_column": 7,
+      "source_crop_xyxy": [
+        1099,
+        553,
+        1284,
+        694
+      ],
+      "native_size": [
+        185,
+        141
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_river_meander.png",
+      "main_native_git_blob_sha": "de73fbdf777c5ba2c0464714eb112108c7949ecc",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_meander.png",
+      "main_runtime_git_blob_sha": "77ad5b328c3ed1868deb62d17d7e84b70ee17cd6",
+      "main_native_sha256_manifest": "1dc5df9c329ed94538ecf1da59ccf7ade42c1f7dc263a383ac019ac53e12de68",
+      "main_runtime_sha256_manifest": "30af81075c897f7d2b400a1275a44de8ef4a4dcc2c50e5df1cc664a3316bb8cf",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_river_mouth_s",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 6,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        30,
+        909,
+        193,
+        1075
+      ],
+      "native_size": [
+        163,
+        166
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_river_mouth_s.png",
+      "main_native_git_blob_sha": "0d33d99856c158f1a49902e612ca3ff719b7c282",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_mouth_s.png",
+      "main_runtime_git_blob_sha": "2d4d320668dba58a7f38a892bfdf86a0a93a1430",
+      "main_native_sha256_manifest": "8369f452e452d20cace575eb4a34b58f09ba3726a708a50f7e861b4d9bd955ca",
+      "main_runtime_sha256_manifest": "a48b8da31bd9f8fea4768cfe431ff578dfad98cbd1189e8b7a3fd97f8df738a0",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_river_mouth_s_square",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 6,
+      "source_column": 3,
+      "source_crop_xyxy": [
+        413,
+        909,
+        580,
+        1074
+      ],
+      "native_size": [
+        167,
+        165
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_river_mouth_s_square.png",
+      "main_native_git_blob_sha": "73ed277234c4d911d50f4d14db8e7aaeeda6249e",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_mouth_s_square.png",
+      "main_runtime_git_blob_sha": "53e4639bdef1396268828bc7c7855605d1df452d",
+      "main_native_sha256_manifest": "2a19dd88db4b276510d222bd05506cd1d0dc3dc04b51cc55070ef21c72d63a71",
+      "main_runtime_sha256_manifest": "8deb133ba14c7b4b38e5b11d890316e5ccc72c2870c07388123aa39f335d29ff",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_river_ne",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 5,
+      "source_column": 6,
+      "source_crop_xyxy": [
+        890,
+        732,
+        1021,
+        872
+      ],
+      "native_size": [
+        131,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_river_ne.png",
+      "main_native_git_blob_sha": "5ec96031fe44a7dc41ed6e3d89a414512d9969e7",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_ne.png",
+      "main_runtime_git_blob_sha": "6d8f54d38e461c48e940d8ac9de04b8d608b828f",
+      "main_native_sha256_manifest": "099ee632160081995f03996a82db3b54b04f9f6e44a1fc63144292cc5345e5ba",
+      "main_runtime_sha256_manifest": "aa6c31b6dc74484d0fea0c6f73fe8b24aea3bc8b50b8f43d9fd2e8c80c47ea45",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_river_ns",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 5,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        32,
+        731,
+        158,
+        871
+      ],
+      "native_size": [
+        126,
+        140
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_river_ns.png",
+      "main_native_git_blob_sha": "8cab04544d256a089a16fccd25fea3fa2daa1965",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_ns.png",
+      "main_runtime_git_blob_sha": "a5c0b606ce3f2653e3f0c3532eaa52211af59a53",
+      "main_native_sha256_manifest": "95592a390270172292814934a69089e8e507e90279629681da5e2477a726d8bf",
+      "main_runtime_sha256_manifest": "48f389ccbc5a5046ad4d252c0a13b702fc32ed1a32826d831392f94e0a161d1c",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_sea_waves",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 1,
+      "source_column": 1,
+      "source_crop_xyxy": [
+        30,
+        47,
+        183,
+        197
+      ],
+      "native_size": [
+        153,
+        150
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_sea_waves.png",
+      "main_native_git_blob_sha": "4b7dc7348348c86aa316d43f9e918e07f118429e",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_sea_waves.png",
+      "main_runtime_git_blob_sha": "b49adc261a87c0bc2bdbd3ac01b8c62a360da80f",
+      "main_native_sha256_manifest": "d2291fc30d3a166e5a98cd340ca0146b6d32ddf4d647d09e2f2d614cd533329d",
+      "main_runtime_sha256_manifest": "fdcde96ab5adfbb6177bd705c075e1eb024c575ad4cba227279e115abcfb04a2",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    },
+    {
+      "asset_id": "map_water_calm",
+      "category": "water",
+      "source_sheet": "02-1000263624.png",
+      "source_row": 1,
+      "source_column": 5,
+      "source_crop_xyxy": [
+        787,
+        46,
+        944,
+        197
+      ],
+      "native_size": [
+        157,
+        151
+      ],
+      "main_native_path": "assets/raw/conveni_map_assets_v2/terrain/source_crops/map_water_calm.png",
+      "main_native_git_blob_sha": "a64ea353c5a91a4b584b404f7ed9d86ae9e79b49",
+      "main_runtime_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_water_calm.png",
+      "main_runtime_git_blob_sha": "7f38c2b355344499172bd89def7b8addc48c34b5",
+      "main_native_sha256_manifest": "a7b995a8fe094cde16760a5609afdd10310eadd44ad6565b6c481fd60a34b99a",
+      "main_runtime_sha256_manifest": "fed85913287af37b5acd00874a29fe321644035439e8039a4ae39cad291871cf",
+      "connections_verified": false,
+      "seamless_verified": false,
+      "original_footprint_known": false,
+      "visual_verified_this_run": false
+    }
+  ]
+}
