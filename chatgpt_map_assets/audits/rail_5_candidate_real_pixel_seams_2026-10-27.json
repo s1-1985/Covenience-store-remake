@@ -1,0 +1,206 @@
+{
+  "date": "2026-10-27",
+  "scope": "rail 5 candidates vs 2 straight reference PNGs",
+  "method": "Actual GitHub PNG bytes fetched; chunk CRC32, zlib/DEFLATE, PNG scanline filter decode; 64-pixel adjacent edge RGB MAE, 20-pixel central ROI MAE, non-green heuristic; no background normalization",
+  "decoded_pngs": [
+    {
+      "name": "rail_s",
+      "git_blob_sha": "c4c1c2db6a7af58b5c1a1c9f0484a5f8ccfb84ba",
+      "bytes": 10969,
+      "chunks_crc_verified": 4,
+      "rgba_pixels": 4096
+    },
+    {
+      "name": "rail_e",
+      "git_blob_sha": "594bf4c24436e7c730ffa203968be84ee8d9029d",
+      "bytes": 11043,
+      "chunks_crc_verified": 4,
+      "rgba_pixels": 4096
+    },
+    {
+      "name": "rail_w",
+      "git_blob_sha": "87cbd49f9bdf7b80704a0307d3a8a8692b3f450b",
+      "bytes": 11364,
+      "chunks_crc_verified": 4,
+      "rgba_pixels": 4096
+    },
+    {
+      "name": "rail_nes",
+      "git_blob_sha": "13f217dd036e53b07bf64ee25262e6ddee4462e0",
+      "bytes": 11403,
+      "chunks_crc_verified": 4,
+      "rgba_pixels": 4096
+    },
+    {
+      "name": "rail_nsw",
+      "git_blob_sha": "a89f4a5e05f9cf30aef0843a03718c29bedd2f9a",
+      "bytes": 11496,
+      "chunks_crc_verified": 4,
+      "rgba_pixels": 4096
+    },
+    {
+      "name": "map_rail_ns",
+      "git_blob_sha": "3ecc57989beab8f74b97a5079d14fc557de15e5b",
+      "bytes": 11115,
+      "chunks_crc_verified": 4,
+      "rgba_pixels": 4096
+    },
+    {
+      "name": "map_rail_ew",
+      "git_blob_sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "bytes": 10943,
+      "chunks_crc_verified": 4,
+      "rgba_pixels": 4096
+    }
+  ],
+  "comparisons": [
+    {
+      "candidate": "rail_s",
+      "candidate_edge": "S",
+      "reference": "map_rail_ns",
+      "reference_edge": "N",
+      "full_edge_rgb_mae": 23.865,
+      "center20_rgb_mae": 27.05,
+      "non_green_heuristic_all": [
+        29,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "candidate": "rail_e",
+      "candidate_edge": "E",
+      "reference": "map_rail_ew",
+      "reference_edge": "W",
+      "full_edge_rgb_mae": 37.609,
+      "center20_rgb_mae": 38.85,
+      "non_green_heuristic_all": [
+        52,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "candidate": "rail_w",
+      "candidate_edge": "W",
+      "reference": "map_rail_ew",
+      "reference_edge": "E",
+      "full_edge_rgb_mae": 52.995,
+      "center20_rgb_mae": 48.517,
+      "non_green_heuristic_all": [
+        0,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        0,
+        20
+      ]
+    },
+    {
+      "candidate": "rail_nes",
+      "candidate_edge": "N",
+      "reference": "map_rail_ns",
+      "reference_edge": "S",
+      "full_edge_rgb_mae": 24.443,
+      "center20_rgb_mae": 30.183,
+      "non_green_heuristic_all": [
+        34,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "candidate": "rail_nes",
+      "candidate_edge": "S",
+      "reference": "map_rail_ns",
+      "reference_edge": "N",
+      "full_edge_rgb_mae": 43.875,
+      "center20_rgb_mae": 58.9,
+      "non_green_heuristic_all": [
+        23,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        17,
+        20
+      ]
+    },
+    {
+      "candidate": "rail_nes",
+      "candidate_edge": "E",
+      "reference": "map_rail_ew",
+      "reference_edge": "W",
+      "full_edge_rgb_mae": 35.182,
+      "center20_rgb_mae": 52.733,
+      "non_green_heuristic_all": [
+        41,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "candidate": "rail_nsw",
+      "candidate_edge": "N",
+      "reference": "map_rail_ns",
+      "reference_edge": "S",
+      "full_edge_rgb_mae": 31.271,
+      "center20_rgb_mae": 56.067,
+      "non_green_heuristic_all": [
+        33,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "candidate": "rail_nsw",
+      "candidate_edge": "S",
+      "reference": "map_rail_ns",
+      "reference_edge": "N",
+      "full_edge_rgb_mae": 46.177,
+      "center20_rgb_mae": 59.45,
+      "non_green_heuristic_all": [
+        23,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        17,
+        20
+      ]
+    },
+    {
+      "candidate": "rail_nsw",
+      "candidate_edge": "W",
+      "reference": "map_rail_ew",
+      "reference_edge": "E",
+      "full_edge_rgb_mae": 39.401,
+      "center20_rgb_mae": 50.667,
+      "non_green_heuristic_all": [
+        47,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    }
+  ],
+  "interpretation": "Pixel seam MAE is diagnostic, not pass/fail. Different background texture can raise MAE; track geometry/original footage/Godot must be verified before candidate acceptance.",
+  "approved_candidate_ids": [],
+  "issue_232_checkboxes_changed": [],
+  "main_and_claude_files_modified": false
+}
