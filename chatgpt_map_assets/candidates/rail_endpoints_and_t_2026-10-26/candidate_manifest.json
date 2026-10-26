@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-26",
+  "kind": "source_blob_copied_candidate_pngs",
+  "repo": "s1-1985/Covenience-store-remake",
+  "isolated_branch": "chatgpt/map-assets-isolated-20260922",
+  "read_only_source_ref": "main",
+  "source_directory": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/",
+  "write_directory": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26",
+  "provenance": "Git blob SHA reused without image recompression or modification; existing main and isolated assets not modified.",
+  "status": "CANDIDATE_ONLY_NOT_ISSUE_COMPLETION",
+  "png_validation": {
+    "signature": true,
+    "all_chunk_crc": true,
+    "ihdr_width": 64,
+    "ihdr_height": 64,
+    "bit_depth": 8,
+    "color_type": 6,
+    "icc_chunk_present": true,
+    "full_idat_pixel_decode": false
+  },
+  "visual_preview_inspected": true,
+  "visual_original_game_comparison": false,
+  "seam_pixel_test": false,
+  "godot_runtime_test": false,
+  "candidates": [
+    {
+      "asset_id": "rail_s",
+      "provisional_direction_mask": "S",
+      "candidate_path": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/rail_s.png",
+      "source_id": "map_rail_stop_s",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_stop_s.png",
+      "git_blob_sha": "c4c1c2db6a7af58b5c1a1c9f0484a5f8ccfb84ba",
+      "source_and_candidate_identical": true,
+      "bytes": 10969,
+      "acceptance_status": "NOT_ACCEPTED_PENDING_SEAM_ORIGINAL_GODOT",
+      "note": "Track continues to bottom edge; buffer stop at opposite end."
+    },
+    {
+      "asset_id": "rail_w",
+      "provisional_direction_mask": "W",
+      "candidate_path": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/rail_w.png",
+      "source_id": "map_rail_stop_e",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_stop_e.png",
+      "git_blob_sha": "87cbd49f9bdf7b80704a0307d3a8a8692b3f450b",
+      "source_and_candidate_identical": true,
+      "bytes": 11364,
+      "acceptance_status": "NOT_ACCEPTED_PENDING_SEAM_ORIGINAL_GODOT",
+      "note": "Track continues to left edge; suffix stop_e denotes stop-facing orientation, not connection side."
+    },
+    {
+      "asset_id": "rail_e",
+      "provisional_direction_mask": "E",
+      "candidate_path": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/rail_e.png",
+      "source_id": "map_rail_stop_w",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_stop_w.png",
+      "git_blob_sha": "594bf4c24436e7c730ffa203968be84ee8d9029d",
+      "source_and_candidate_identical": true,
+      "bytes": 11043,
+      "acceptance_status": "NOT_ACCEPTED_PENDING_SEAM_ORIGINAL_GODOT",
+      "note": "Track continues to right edge; suffix stop_w denotes stop-facing orientation, not connection side."
+    },
+    {
+      "asset_id": "rail_nes",
+      "provisional_direction_mask": "N|E|S",
+      "candidate_path": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/rail_nes.png",
+      "source_id": "map_rail_branch_e",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_branch_e.png",
+      "git_blob_sha": "13f217dd036e53b07bf64ee25262e6ddee4462e0",
+      "source_and_candidate_identical": true,
+      "bytes": 11403,
+      "acceptance_status": "NOT_ACCEPTED_PENDING_SEAM_ORIGINAL_GODOT",
+      "note": "Branch appears to join vertical rail to east; needs edge-seam and Godot test."
+    },
+    {
+      "asset_id": "rail_nsw",
+      "provisional_direction_mask": "N|S|W",
+      "candidate_path": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/rail_nsw.png",
+      "source_id": "map_rail_branch_w",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_branch_w.png",
+      "git_blob_sha": "a89f4a5e05f9cf30aef0843a03718c29bedd2f9a",
+      "source_and_candidate_identical": true,
+      "bytes": 11496,
+      "acceptance_status": "NOT_ACCEPTED_PENDING_SEAM_ORIGINAL_GODOT",
+      "note": "Branch appears to join vertical rail to west; needs edge-seam and Godot test."
+    }
+  ],
+  "not_generated": [
+    "rail_n",
+    "rail_new",
+    "rail_esw",
+    "river_n",
+    "river_e",
+    "river_s",
+    "river_w",
+    "river_nes",
+    "river_new",
+    "river_nsw",
+    "river_esw"
+  ],
+  "non_equivalent_sources": [
+    "map_river_basin_s",
+    "map_river_mouth_s",
+    "map_river_cross"
+  ],
+  "issue_232_checked_tasks": [],
+  "caution": "Source names may denote stopper direction rather than connectivity. These are visually inspected candidates, not validated final direction-mask assets. Do not add to approved 29/45 manifest yet."
+}
