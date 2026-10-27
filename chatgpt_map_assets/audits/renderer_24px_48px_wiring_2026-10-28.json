@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-28",
+  "status": "READ_ONLY_RUNTIME_SOURCE_AUDIT",
+  "repo": "s1-1985/Covenience-store-remake",
+  "source_ref": "main",
+  "source_commit": "688876a4763c5dd006da8cfc36c7e7960d862e28",
+  "source_files": [
+    {
+      "path": "game/scripts/town_view.gd",
+      "blob_sha": "74388f9190d9e039fd0a1567a9cdf02d503249d1"
+    },
+    {
+      "path": "game/scripts/main.gd",
+      "blob_sha": "72b80107c97059021ceff97d0bd6e64ba033b281"
+    }
+  ],
+  "confirmed_runtime_facts": [
+    {
+      "name": "guide_map_tile_display_size",
+      "value": 24,
+      "unit": "px per map tile",
+      "source": "game/scripts/town_view.gd:46,243-255",
+      "detail": "map_tile_pixels := 24.0 and guide renderer t := map_tile_pixels; source PNGs at 64x64 are scaled to Rect2(t,t) for 1x1 terrain"
+    },
+    {
+      "name": "fallback_marker_tile_size",
+      "value": 48,
+      "unit": "px per marker tile",
+      "source": "game/scripts/town_view.gd:32,344-371",
+      "detail": "TILE_PIXELS := 48.0 is only for fallback abstract marker view when guide_town_map is absent; it is not guide map tile display size"
+    },
+    {
+      "name": "guide_building_footprint_rendering",
+      "source": "game/scripts/town_view.gd:263-274",
+      "detail": "building sprite is drawn in footprint.size * map_tile_pixels; 52 source images are not rendered at native PNG pixels"
+    },
+    {
+      "name": "town_view_size_assignment",
+      "source": "game/scripts/main.gd:996-997",
+      "detail": "town_view.view_size = available; no assignment to town_view.map_tile_pixels found in main.gd"
+    },
+    {
+      "name": "existing_road_corner_rendering_gap",
+      "source": "game/scripts/town_view.gd:195-227",
+      "detail": "two-link non-NS cases return map_road_ew; corner connections are not drawn with map_road_ws. Existing isolated proposal already recorded at chatgpt_map_assets/patches/town_view_road_tile_15_masks_2026_10_16.gd.txt; not applied."
+    },
+    {
+      "name": "guide_crossing_case",
+      "source": "game/scripts/town_view.gd:259-260",
+      "detail": "map_crossing_basic is used for kind T with R above and below; no tested mapping to the isolated bridge/mouth candidates."
+    }
+  ],
+  "not_established": [
+    "original PlayStation town tile native pixel size",
+    "actual Godot rendered output of new candidates",
+    "cross-layer bridge composition",
+    "real visual seams and orientation",
+    "whether guide_town_map uses the full 45 mask set"
+  ],
+  "changes_to_main_or_claude": false,
+  "issue_232_completed_tasks": [],
+  "recommended_next_step": "Run seam audit on a checked-out isolated branch with Pillow, inspect flagged bridge/rail/river joins, then test in a separate Godot test scene without touching main."
+}
