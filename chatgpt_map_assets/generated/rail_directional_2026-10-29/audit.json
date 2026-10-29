@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-29",
+  "issue": 232,
+  "source_pngs_full_decoded": 5,
+  "new_pngs_created": 5,
+  "generated_rotations": 3,
+  "corrected_endpoint_copies": 2,
+  "png_crc_decode_pixel_roundtrip_pass": 5,
+  "icc_preserved": 5,
+  "orientation_finding": "Previous rail_e and rail_w candidates are reversed according to stopper placement and track-border geometry; corrected copies created without modifying originals",
+  "rail_directional_candidates": "15/15",
+  "river_missing": 8,
+  "acceptance": "NOT_FINAL",
+  "godot_test": "NOT_RUN",
+  "original_game_comparison": "NOT_RUN",
+  "seam_visual_inspection": "NOT_COMPLETE",
+  "issue_checkboxes_changed": []
+}

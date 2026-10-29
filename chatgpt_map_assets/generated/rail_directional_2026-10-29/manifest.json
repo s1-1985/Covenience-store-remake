@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "source_read_only": true,
+  "scope": "issue232_rail_orientation_correction_and_missing_directions",
+  "status": "CANDIDATE_ONLY_NOT_FINAL",
+  "items": [
+    {
+      "asset_id": "rail_n",
+      "path": "chatgpt_map_assets/generated/rail_directional_2026-10-29/rail_n.png",
+      "direction_mask": "N",
+      "source_path": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/rail_s.png",
+      "source_git_blob_sha": "c4c1c2db6a7af58b5c1a1c9f0484a5f8ccfb84ba",
+      "rotation_clockwise_quarter_turns": 2,
+      "output_git_blob_sha": "f0706b6b8c269a7621631ffe2e533a7a0a93e93d",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "bytes": 16792,
+      "pixel_rotation_verified": true,
+      "png_crc_and_decode_verified": true,
+      "icc_preserved": true,
+      "original_verified": false,
+      "seam_visual_verified": false,
+      "godot_verified": false,
+      "acceptance": "CANDIDATE_ONLY",
+      "reason": "Rotate existing south-connected stopper tile 180 degrees to north"
+    },
+    {
+      "asset_id": "rail_e",
+      "path": "chatgpt_map_assets/generated/rail_directional_2026-10-29/rail_e.png",
+      "direction_mask": "E",
+      "source_path": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/rail_w.png",
+      "source_git_blob_sha": "87cbd49f9bdf7b80704a0307d3a8a8692b3f450b",
+      "rotation_clockwise_quarter_turns": 0,
+      "output_git_blob_sha": "08c4c3cc5794c5d401061246c688b75e3154d786",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "bytes": 16792,
+      "pixel_rotation_verified": true,
+      "png_crc_and_decode_verified": true,
+      "icc_preserved": true,
+      "original_verified": false,
+      "seam_visual_verified": false,
+      "godot_verified": false,
+      "acceptance": "CANDIDATE_ONLY",
+      "reason": "Previous rail_w label is inverted: track reaches east border; west border has no non-green central pixels"
+    },
+    {
+      "asset_id": "rail_w",
+      "path": "chatgpt_map_assets/generated/rail_directional_2026-10-29/rail_w.png",
+      "direction_mask": "W",
+      "source_path": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/rail_e.png",
+      "source_git_blob_sha": "594bf4c24436e7c730ffa203968be84ee8d9029d",
+      "rotation_clockwise_quarter_turns": 0,
+      "output_git_blob_sha": "f1200d135b61e320daf77136b3992a26752a33a9",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "bytes": 16792,
+      "pixel_rotation_verified": true,
+      "png_crc_and_decode_verified": true,
+      "icc_preserved": true,
+      "original_verified": false,
+      "seam_visual_verified": false,
+      "godot_verified": false,
+      "acceptance": "CANDIDATE_ONLY",
+      "reason": "Previous rail_e label is inverted: west border is the open track; east is stopper"
+    },
+    {
+      "asset_id": "rail_new",
+      "path": "chatgpt_map_assets/generated/rail_directional_2026-10-29/rail_new.png",
+      "direction_mask": "N|E|W",
+      "source_path": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/rail_nsw.png",
+      "source_git_blob_sha": "a89f4a5e05f9cf30aef0843a03718c29bedd2f9a",
+      "rotation_clockwise_quarter_turns": 1,
+      "output_git_blob_sha": "0b7269db6ab4219c0ab54e15f411d30dbffce321",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "bytes": 16792,
+      "pixel_rotation_verified": true,
+      "png_crc_and_decode_verified": true,
+      "icc_preserved": true,
+      "original_verified": false,
+      "seam_visual_verified": false,
+      "godot_verified": false,
+      "acceptance": "CANDIDATE_ONLY",
+      "reason": "Rotate N|S|W branch clockwise to N|E|W"
+    },
+    {
+      "asset_id": "rail_esw",
+      "path": "chatgpt_map_assets/generated/rail_directional_2026-10-29/rail_esw.png",
+      "direction_mask": "E|S|W",
+      "source_path": "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/rail_nes.png",
+      "source_git_blob_sha": "13f217dd036e53b07bf64ee25262e6ddee4462e0",
+      "rotation_clockwise_quarter_turns": 1,
+      "output_git_blob_sha": "f2c8c34f1316177f8d954da32135e45b953373e3",
+      "width_px": 64,
+      "height_px": 64,
+      "footprint": [
+        1,
+        1
+      ],
+      "bytes": 16792,
+      "pixel_rotation_verified": true,
+      "png_crc_and_decode_verified": true,
+      "icc_preserved": true,
+      "original_verified": false,
+      "seam_visual_verified": false,
+      "godot_verified": false,
+      "acceptance": "CANDIDATE_ONLY",
+      "reason": "Rotate N|E|S branch clockwise to E|S|W"
+    }
+  ],
+  "notes": [
+    "Previous rail_e/rail_w candidate filenames remain unchanged; corrected copies are new isolated paths.",
+    "Rail 15/15 masks now have at least one candidate PNG when combined with the previous 29-direction manifest and October 26 candidates; this is NOT a visual/original/Godot acceptance.",
+    "River still lacks 8 masks; all issue #232 checklist items remain open."
+  ]
+}
