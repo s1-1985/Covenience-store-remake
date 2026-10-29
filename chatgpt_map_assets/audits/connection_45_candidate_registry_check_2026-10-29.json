@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-29",
+  "source_files": [
+    "chatgpt_map_assets/manifests/connection_29_files_2026-10-24.json",
+    "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26/candidate_manifest.json",
+    "chatgpt_map_assets/generated/rail_directional_2026-10-29/manifest.json"
+  ],
+  "branch_head_before_write": "bef81ed40f4b1cb8cef566807e78003fdf138a7d",
+  "verified_git_tree_entries": 37,
+  "unique_candidate_paths": 37,
+  "counts": {
+    "road": {
+      "present": 15,
+      "missing": 0
+    },
+    "rail": {
+      "present": 15,
+      "missing": 0
+    },
+    "river": {
+      "present": 7,
+      "missing": 8
+    }
+  },
+  "missing": [
+    "river_n",
+    "river_e",
+    "river_s",
+    "river_nes",
+    "river_w",
+    "river_new",
+    "river_nsw",
+    "river_esw"
+  ],
+  "registry_schema_check": "PASS",
+  "path_exists_check": "PASS",
+  "blob_sha_where_provided": "PASS",
+  "image_decode_all_37": "NOT_RUN",
+  "seam_visual_all_37": "NOT_RUN",
+  "godot_test": "NOT_RUN",
+  "original_comparison": "NOT_RUN",
+  "issue_checkboxes_changed": []
+}
