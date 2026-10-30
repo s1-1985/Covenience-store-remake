@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-30",
+  "status": "TOPOLOGY_PASS_RENDER_NOT_RUN",
+  "samples": [
+    {
+      "name": "river_t_nes_3x3",
+      "width": 3,
+      "height": 3,
+      "tiles": [
+        {
+          "x": 1,
+          "y": 1,
+          "asset_id": "river_nes",
+          "mask": 7
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "asset_id": "river_s",
+          "mask": 4
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "asset_id": "river_w",
+          "mask": 8
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "asset_id": "river_n",
+          "mask": 1
+        }
+      ],
+      "topology": "PASS",
+      "rendered": false
+    },
+    {
+      "name": "river_t_new_3x3",
+      "width": 3,
+      "height": 3,
+      "tiles": [
+        {
+          "x": 1,
+          "y": 1,
+          "asset_id": "river_new",
+          "mask": 11
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "asset_id": "river_s",
+          "mask": 4
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "asset_id": "river_w",
+          "mask": 8
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "asset_id": "river_e",
+          "mask": 2
+        }
+      ],
+      "topology": "PASS",
+      "rendered": false
+    },
+    {
+      "name": "river_t_nsw_3x3",
+      "width": 3,
+      "height": 3,
+      "tiles": [
+        {
+          "x": 1,
+          "y": 1,
+          "asset_id": "river_nsw",
+          "mask": 13
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "asset_id": "river_s",
+          "mask": 4
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "asset_id": "river_n",
+          "mask": 1
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "asset_id": "river_e",
+          "mask": 2
+        }
+      ],
+      "topology": "PASS",
+      "rendered": false
+    },
+    {
+      "name": "river_t_esw_3x3",
+      "width": 3,
+      "height": 3,
+      "tiles": [
+        {
+          "x": 1,
+          "y": 1,
+          "asset_id": "river_esw",
+          "mask": 14
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "asset_id": "river_w",
+          "mask": 8
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "asset_id": "river_n",
+          "mask": 1
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "asset_id": "river_e",
+          "mask": 2
+        }
+      ],
+      "topology": "PASS",
+      "rendered": false
+    }
+  ]
+}

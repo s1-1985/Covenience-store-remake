@@ -1,0 +1,183 @@
+{
+  "date": "2026-10-30",
+  "issue": 232,
+  "source_ref": "chatgpt/map-assets-isolated-20260922",
+  "source_head_before_commit": "0a0e701540c8e766e852ab5ca5bcca2cef8294f6",
+  "source_blobs": {
+    "cross": "5b9f407898f91c3412fee847aa74f798a4ce1ae5",
+    "ns": "a5c0b606ce3f2653e3f0c3532eaa52211af59a53",
+    "ew": "e983dec2d4a21efaba521f490d9ad87bf750ba3a",
+    "pond": "284338cab1de51626306a250e26e42f3ad7ea4f5"
+  },
+  "method": "RGBA exact 64px cross/straight half-tile splice for T; 90-degree rotation for pond-headwater endpoints",
+  "tests": {
+    "synthetic_python_unit_tests": "2/2 PASS",
+    "real_png_full_decode_crc_roundtrip": "8/8 PASS",
+    "icc_preserved": "8/8 PASS",
+    "water_edge_direction_heuristic": "8/8 match",
+    "sample_topology": "4/4 PASS (not rendered)",
+    "visual_seam_acceptance": "NOT_DONE",
+    "original_playstation_comparison": "NOT_DONE",
+    "godot_render": "NOT_DONE"
+  },
+  "records": [
+    {
+      "asset_id": "river_n",
+      "git_blob_sha": "e3eb66a725e910f5bbae864af06f60f1cc8ce24c",
+      "expected_mask": 1,
+      "water_edge_pixel_counts": {
+        "n": 11,
+        "e": 0,
+        "s": 0,
+        "w": 0
+      },
+      "straight_edge_rgb_mae": {
+        "n": 24.495,
+        "e": 35.542,
+        "s": 36.802,
+        "w": 33.87
+      },
+      "splice_cut_rgb_mae": null,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "asset_id": "river_e",
+      "git_blob_sha": "96f4d449cf88cc400486ca8fdf0fca2ad1b6d2d2",
+      "expected_mask": 2,
+      "water_edge_pixel_counts": {
+        "n": 0,
+        "e": 11,
+        "s": 0,
+        "w": 0
+      },
+      "straight_edge_rgb_mae": {
+        "n": 36.557,
+        "e": 22.755,
+        "s": 36.281,
+        "w": 35.667
+      },
+      "splice_cut_rgb_mae": null,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "asset_id": "river_s",
+      "git_blob_sha": "a9b3bb9b91338b9c63619b6cd749b2773af177f6",
+      "expected_mask": 4,
+      "water_edge_pixel_counts": {
+        "n": 0,
+        "e": 0,
+        "s": 11,
+        "w": 0
+      },
+      "straight_edge_rgb_mae": {
+        "n": 39.073,
+        "e": 34.734,
+        "s": 25.297,
+        "w": 34.323
+      },
+      "splice_cut_rgb_mae": null,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "asset_id": "river_w",
+      "git_blob_sha": "6536bae1e9174a5979cef74e92ec5504c9228fa5",
+      "expected_mask": 8,
+      "water_edge_pixel_counts": {
+        "n": 0,
+        "e": 0,
+        "s": 0,
+        "w": 11
+      },
+      "straight_edge_rgb_mae": {
+        "n": 37.948,
+        "e": 36.323,
+        "s": 34.37,
+        "w": 20.005
+      },
+      "splice_cut_rgb_mae": null,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "asset_id": "river_nes",
+      "git_blob_sha": "9ac793f2d6aab8299e2defd37c40295e1a911c65",
+      "expected_mask": 7,
+      "water_edge_pixel_counts": {
+        "n": 17,
+        "e": 15,
+        "s": 16,
+        "w": 0
+      },
+      "straight_edge_rgb_mae": {
+        "n": 10.693,
+        "e": 19.563,
+        "s": 11.714,
+        "w": 35.865
+      },
+      "splice_cut_rgb_mae": 4.578,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "asset_id": "river_new",
+      "git_blob_sha": "44b8ccfb39b5918d9e31a757879166e8211b8e27",
+      "expected_mask": 11,
+      "water_edge_pixel_counts": {
+        "n": 17,
+        "e": 19,
+        "s": 0,
+        "w": 18
+      },
+      "straight_edge_rgb_mae": {
+        "n": 12.641,
+        "e": 8.609,
+        "s": 35.333,
+        "w": 9.536
+      },
+      "splice_cut_rgb_mae": 4.802,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "asset_id": "river_nsw",
+      "git_blob_sha": "c2a8fc39b47814a01a0d87ce8b204afc35f034d0",
+      "expected_mask": 13,
+      "water_edge_pixel_counts": {
+        "n": 18,
+        "e": 0,
+        "s": 17,
+        "w": 15
+      },
+      "straight_edge_rgb_mae": {
+        "n": 7.438,
+        "e": 36.031,
+        "s": 7.224,
+        "w": 19.563
+      },
+      "splice_cut_rgb_mae": 4.01,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "asset_id": "river_esw",
+      "git_blob_sha": "1ee87978f16f1ef927a27d4d361c4599c095ff9f",
+      "expected_mask": 14,
+      "water_edge_pixel_counts": {
+        "n": 0,
+        "e": 14,
+        "s": 15,
+        "w": 14
+      },
+      "straight_edge_rgb_mae": {
+        "n": 36.604,
+        "e": 16.172,
+        "s": 13.448,
+        "w": 15.245
+      },
+      "splice_cut_rgb_mae": 4.104,
+      "status": "CANDIDATE_ONLY"
+    }
+  ],
+  "notes": [
+    "Blue water edge pixel count is heuristic; no assertion of visual seam acceptance.",
+    "Cross/straight splice cut RGB MAE approximately 4.0-4.8; neighboring tile edge MAE varies and needs visual review.",
+    "Pond-headwater single-edge tiles are not equivalent to verified plain dead-ends.",
+    "No original image modified."
+  ]
+}

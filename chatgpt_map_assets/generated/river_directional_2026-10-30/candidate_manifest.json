@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-30",
+  "status": "CANDIDATE_ONLY_NOT_ACCEPTED",
+  "assets": [
+    {
+      "asset_id": "river_n",
+      "git_blob_sha": "e3eb66a725e910f5bbae864af06f60f1cc8ce24c",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_n.png",
+      "direction_bits_nesw": 1,
+      "candidate_role": "pond_headwater"
+    },
+    {
+      "asset_id": "river_e",
+      "git_blob_sha": "96f4d449cf88cc400486ca8fdf0fca2ad1b6d2d2",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_e.png",
+      "direction_bits_nesw": 2,
+      "candidate_role": "pond_headwater"
+    },
+    {
+      "asset_id": "river_s",
+      "git_blob_sha": "a9b3bb9b91338b9c63619b6cd749b2773af177f6",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_s.png",
+      "direction_bits_nesw": 4,
+      "candidate_role": "pond_headwater"
+    },
+    {
+      "asset_id": "river_w",
+      "git_blob_sha": "6536bae1e9174a5979cef74e92ec5504c9228fa5",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_w.png",
+      "direction_bits_nesw": 8,
+      "candidate_role": "pond_headwater"
+    },
+    {
+      "asset_id": "river_nes",
+      "git_blob_sha": "9ac793f2d6aab8299e2defd37c40295e1a911c65",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_nes.png",
+      "direction_bits_nesw": 7,
+      "candidate_role": "composited_T"
+    },
+    {
+      "asset_id": "river_new",
+      "git_blob_sha": "44b8ccfb39b5918d9e31a757879166e8211b8e27",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_new.png",
+      "direction_bits_nesw": 11,
+      "candidate_role": "composited_T"
+    },
+    {
+      "asset_id": "river_nsw",
+      "git_blob_sha": "c2a8fc39b47814a01a0d87ce8b204afc35f034d0",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_nsw.png",
+      "direction_bits_nesw": 13,
+      "candidate_role": "composited_T"
+    },
+    {
+      "asset_id": "river_esw",
+      "git_blob_sha": "1ee87978f16f1ef927a27d4d361c4599c095ff9f",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_esw.png",
+      "direction_bits_nesw": 14,
+      "candidate_role": "composited_T"
+    }
+  ]
+}
