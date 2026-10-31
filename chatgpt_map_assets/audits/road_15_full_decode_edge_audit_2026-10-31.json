@@ -1,0 +1,816 @@
+{
+  "date": "2026-10-31",
+  "kind": "road",
+  "source_branch": "chatgpt/map-assets-isolated-20260922",
+  "source_head": "8778e60b4915e0049770a02c4e116c5a0a0d49c8",
+  "decoder_script": "chatgpt_map_assets/tools/rail_candidate_seam_audit_2026_10_27.js (pure functions only)",
+  "method": "GitHub real PNG base64; SHA match; all PNG CRCs; full RGBA decode; active-side RGB MAE to straight-tile opposite edge",
+  "candidate_count": 15,
+  "decode_pass": 15,
+  "errors": [],
+  "measured_connected_edges": 32,
+  "entries": [
+    {
+      "id": "road_n",
+      "mask": 1,
+      "blob_sha": "e62acf4fba8f32c17b69853a0bf83006e5abecb3",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_e",
+      "mask": 2,
+      "blob_sha": "f4eda92fda2f7533b2f3ec8620e171f14b990f5d",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_ne",
+      "mask": 3,
+      "blob_sha": "718801681f045309b2f282d5b7750bfa92c0c6c9",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_s",
+      "mask": 4,
+      "blob_sha": "cbc28b9fba5e7c8b2cfe94f530ba8531cfdf5f9e",
+      "bytes": 9454,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_ns",
+      "mask": 5,
+      "blob_sha": "360c16bfe0c0a874af1ffac34e42eee51ce0e7c1",
+      "bytes": 8620,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_es",
+      "mask": 6,
+      "blob_sha": "666326c4b7915f224aacefa6bd46e4e8b5a7d691",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_nes",
+      "mask": 7,
+      "blob_sha": "d5aa2255f7834e5279ccea851c79d63aa8a4041d",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_w",
+      "mask": 8,
+      "blob_sha": "0e2c4afdf12167ec2be2c7ef0092ad88f469720c",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_nw",
+      "mask": 9,
+      "blob_sha": "aecc97252f082c39ded8ba675b2cfc1740f74a6f",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_ew",
+      "mask": 10,
+      "blob_sha": "96dc9c5f90d134db6096295d649ee88d45b18f3a",
+      "bytes": 8931,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_new",
+      "mask": 11,
+      "blob_sha": "c85473a93a0a273f17f657d1b12644449919aa02",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_sw",
+      "mask": 12,
+      "blob_sha": "eb8320cf39cc7ff4f2fb3843663dcd16d8cd3590",
+      "bytes": 9177,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_nsw",
+      "mask": 13,
+      "blob_sha": "50ddfc47d87779f983f1a52c324abb1daf62cccb",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_esw",
+      "mask": 14,
+      "blob_sha": "4e7cb7705f7e4f41f5a031c41b2f5ee8c7b444cb",
+      "bytes": 8366,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "road_nesw",
+      "mask": 15,
+      "blob_sha": "3fc93b6e966feb2149d2bbbceb543982a2325aa8",
+      "bytes": 7791,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    }
+  ],
+  "edge_comparisons": [
+    {
+      "id": "road_n",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 14.792,
+      "center20_rgb_mae": 2.917,
+      "non_green_heuristic_all": [
+        29,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_e",
+      "side": "E",
+      "reference": "road_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 14.917,
+      "center20_rgb_mae": 2.3,
+      "non_green_heuristic_all": [
+        29,
+        29
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_ne",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 15.844,
+      "center20_rgb_mae": 2.683,
+      "non_green_heuristic_all": [
+        42,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_ne",
+      "side": "E",
+      "reference": "road_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 21.505,
+      "center20_rgb_mae": 1.6,
+      "non_green_heuristic_all": [
+        45,
+        29
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_s",
+      "side": "S",
+      "reference": "road_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 10.495,
+      "center20_rgb_mae": 2.15,
+      "non_green_heuristic_all": [
+        29,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_ns",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 11.63,
+      "center20_rgb_mae": 2.233,
+      "non_green_heuristic_all": [
+        30,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_ns",
+      "side": "S",
+      "reference": "road_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 11.63,
+      "center20_rgb_mae": 2.233,
+      "non_green_heuristic_all": [
+        30,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_es",
+      "side": "E",
+      "reference": "road_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 16.667,
+      "center20_rgb_mae": 3.667,
+      "non_green_heuristic_all": [
+        42,
+        29
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_es",
+      "side": "S",
+      "reference": "road_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 20.396,
+      "center20_rgb_mae": 1.85,
+      "non_green_heuristic_all": [
+        45,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nes",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 16.729,
+      "center20_rgb_mae": 4.067,
+      "non_green_heuristic_all": [
+        33,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nes",
+      "side": "E",
+      "reference": "road_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 15.135,
+      "center20_rgb_mae": 3.45,
+      "non_green_heuristic_all": [
+        29,
+        29
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nes",
+      "side": "S",
+      "reference": "road_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 15.828,
+      "center20_rgb_mae": 4.033,
+      "non_green_heuristic_all": [
+        29,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_w",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 14.635,
+      "center20_rgb_mae": 4.35,
+      "non_green_heuristic_all": [
+        29,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nw",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 20.891,
+      "center20_rgb_mae": 2.083,
+      "non_green_heuristic_all": [
+        45,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nw",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 18.198,
+      "center20_rgb_mae": 2.85,
+      "non_green_heuristic_all": [
+        42,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_ew",
+      "side": "E",
+      "reference": "road_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 10.948,
+      "center20_rgb_mae": 3.917,
+      "non_green_heuristic_all": [
+        28,
+        29
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_ew",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 10.948,
+      "center20_rgb_mae": 3.917,
+      "non_green_heuristic_all": [
+        29,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_new",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 16.344,
+      "center20_rgb_mae": 4,
+      "non_green_heuristic_all": [
+        29,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_new",
+      "side": "E",
+      "reference": "road_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 14.823,
+      "center20_rgb_mae": 3.917,
+      "non_green_heuristic_all": [
+        29,
+        29
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_new",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 20.646,
+      "center20_rgb_mae": 6.5,
+      "non_green_heuristic_all": [
+        33,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_sw",
+      "side": "S",
+      "reference": "road_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 20.255,
+      "center20_rgb_mae": 3.35,
+      "non_green_heuristic_all": [
+        42,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_sw",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 20.13,
+      "center20_rgb_mae": 3.783,
+      "non_green_heuristic_all": [
+        45,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nsw",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 14.729,
+      "center20_rgb_mae": 5.167,
+      "non_green_heuristic_all": [
+        29,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nsw",
+      "side": "S",
+      "reference": "road_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 18.401,
+      "center20_rgb_mae": 3.467,
+      "non_green_heuristic_all": [
+        33,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nsw",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 16.229,
+      "center20_rgb_mae": 6.333,
+      "non_green_heuristic_all": [
+        29,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_esw",
+      "side": "E",
+      "reference": "road_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 15.198,
+      "center20_rgb_mae": 2.717,
+      "non_green_heuristic_all": [
+        33,
+        29
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_esw",
+      "side": "S",
+      "reference": "road_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 17.255,
+      "center20_rgb_mae": 3.833,
+      "non_green_heuristic_all": [
+        29,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_esw",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 13.281,
+      "center20_rgb_mae": 6.567,
+      "non_green_heuristic_all": [
+        29,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nesw",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 25.75,
+      "center20_rgb_mae": 2.25,
+      "non_green_heuristic_all": [
+        46,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nesw",
+      "side": "E",
+      "reference": "road_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 16.01,
+      "center20_rgb_mae": 2.95,
+      "non_green_heuristic_all": [
+        34,
+        29
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nesw",
+      "side": "S",
+      "reference": "road_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 18.672,
+      "center20_rgb_mae": 2.35,
+      "non_green_heuristic_all": [
+        28,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nesw",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 23.776,
+      "center20_rgb_mae": 6.717,
+      "non_green_heuristic_all": [
+        45,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    }
+  ],
+  "top_center20_differences": [
+    {
+      "id": "road_nesw",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 23.776,
+      "center20_rgb_mae": 6.717,
+      "non_green_heuristic_all": [
+        45,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_esw",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 13.281,
+      "center20_rgb_mae": 6.567,
+      "non_green_heuristic_all": [
+        29,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_new",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 20.646,
+      "center20_rgb_mae": 6.5,
+      "non_green_heuristic_all": [
+        33,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nsw",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 16.229,
+      "center20_rgb_mae": 6.333,
+      "non_green_heuristic_all": [
+        29,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nsw",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 14.729,
+      "center20_rgb_mae": 5.167,
+      "non_green_heuristic_all": [
+        29,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_w",
+      "side": "W",
+      "reference": "road_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 14.635,
+      "center20_rgb_mae": 4.35,
+      "non_green_heuristic_all": [
+        29,
+        28
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nes",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 16.729,
+      "center20_rgb_mae": 4.067,
+      "non_green_heuristic_all": [
+        33,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_nes",
+      "side": "S",
+      "reference": "road_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 15.828,
+      "center20_rgb_mae": 4.033,
+      "non_green_heuristic_all": [
+        29,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_new",
+      "side": "N",
+      "reference": "road_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 16.344,
+      "center20_rgb_mae": 4,
+      "non_green_heuristic_all": [
+        29,
+        30
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "road_ew",
+      "side": "E",
+      "reference": "road_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 10.948,
+      "center20_rgb_mae": 3.917,
+      "non_green_heuristic_all": [
+        28,
+        29
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    }
+  ],
+  "acceptance": "NOT_ACCEPTED",
+  "notes": [
+    "RGB MAE includes background and is diagnostic, not pass/fail.",
+    "No original-game comparison, human visual acceptance, or Godot rendering.",
+    "No existing source files modified."
+  ]
+}
