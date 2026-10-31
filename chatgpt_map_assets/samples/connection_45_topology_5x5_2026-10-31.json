@@ -1,0 +1,483 @@
+{
+  "date": "2026-10-31",
+  "issue": 232,
+  "purpose": "Minimal connected 5x5 topology fixture exercising all 15 NESW masks for each of road/rail/river; no fake visual acceptance",
+  "source_manifest": "chatgpt_map_assets/manifests/connection_45_candidate_registry_2026-10-30.json",
+  "mask_bits": "N=1 E=2 S=4 W=8",
+  "source_png_px": 64,
+  "guide_map_draw_px": 24,
+  "seed_and_generation": "5x5 undirected grid edge sampling; fixed verified topology",
+  "validation": {
+    "unique_masks_per_kind": 15,
+    "reciprocal_connections_per_map": 24,
+    "connected_nonempty_component": true,
+    "all_directions_covered": true,
+    "topology_test": "PASS",
+    "png_render_test": "NOT_RUN",
+    "godot_render_test": "NOT_RUN"
+  },
+  "maps": [
+    {
+      "id": "road_all_15_masks",
+      "kind": "road",
+      "width": 5,
+      "height": 5,
+      "occupied_tiles": 24,
+      "undirected_connections": 24,
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "asset_id": "road_es",
+          "direction_bits_nesw": 6
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "asset_id": "road_esw",
+          "direction_bits_nesw": 14
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "asset_id": "road_w",
+          "direction_bits_nesw": 8
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "asset_id": "road_e",
+          "direction_bits_nesw": 2
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "asset_id": "road_sw",
+          "direction_bits_nesw": 12
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "asset_id": "road_n",
+          "direction_bits_nesw": 1
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "asset_id": "road_ns",
+          "direction_bits_nesw": 5
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "asset_id": "road_e",
+          "direction_bits_nesw": 2
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "asset_id": "road_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "asset_id": "road_nsw",
+          "direction_bits_nesw": 13
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "asset_id": "road_s",
+          "direction_bits_nesw": 4
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "asset_id": "road_ne",
+          "direction_bits_nesw": 3
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "asset_id": "road_sw",
+          "direction_bits_nesw": 12
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "asset_id": "road_es",
+          "direction_bits_nesw": 6
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "asset_id": "road_nw",
+          "direction_bits_nesw": 9
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "asset_id": "road_nes",
+          "direction_bits_nesw": 7
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "asset_id": "road_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "asset_id": "road_nesw",
+          "direction_bits_nesw": 15
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "asset_id": "road_nw",
+          "direction_bits_nesw": 9
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "asset_id": "road_ne",
+          "direction_bits_nesw": 3
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "asset_id": "road_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "asset_id": "road_new",
+          "direction_bits_nesw": 11
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "asset_id": "road_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "asset_id": "road_w",
+          "direction_bits_nesw": 8
+        }
+      ]
+    },
+    {
+      "id": "rail_all_15_masks",
+      "kind": "rail",
+      "width": 5,
+      "height": 5,
+      "occupied_tiles": 24,
+      "undirected_connections": 24,
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "asset_id": "rail_es",
+          "direction_bits_nesw": 6
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "asset_id": "rail_esw",
+          "direction_bits_nesw": 14
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "asset_id": "rail_w",
+          "direction_bits_nesw": 8
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "asset_id": "rail_e",
+          "direction_bits_nesw": 2
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "asset_id": "rail_sw",
+          "direction_bits_nesw": 12
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "asset_id": "rail_n",
+          "direction_bits_nesw": 1
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "asset_id": "rail_ns",
+          "direction_bits_nesw": 5
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "asset_id": "rail_e",
+          "direction_bits_nesw": 2
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "asset_id": "rail_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "asset_id": "rail_nsw",
+          "direction_bits_nesw": 13
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "asset_id": "rail_s",
+          "direction_bits_nesw": 4
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "asset_id": "rail_ne",
+          "direction_bits_nesw": 3
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "asset_id": "rail_sw",
+          "direction_bits_nesw": 12
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "asset_id": "rail_es",
+          "direction_bits_nesw": 6
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "asset_id": "rail_nw",
+          "direction_bits_nesw": 9
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "asset_id": "rail_nes",
+          "direction_bits_nesw": 7
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "asset_id": "rail_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "asset_id": "rail_nesw",
+          "direction_bits_nesw": 15
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "asset_id": "rail_nw",
+          "direction_bits_nesw": 9
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "asset_id": "rail_ne",
+          "direction_bits_nesw": 3
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "asset_id": "rail_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "asset_id": "rail_new",
+          "direction_bits_nesw": 11
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "asset_id": "rail_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "asset_id": "rail_w",
+          "direction_bits_nesw": 8
+        }
+      ]
+    },
+    {
+      "id": "river_all_15_masks",
+      "kind": "river",
+      "width": 5,
+      "height": 5,
+      "occupied_tiles": 24,
+      "undirected_connections": 24,
+      "tiles": [
+        {
+          "x": 0,
+          "y": 0,
+          "asset_id": "river_es",
+          "direction_bits_nesw": 6
+        },
+        {
+          "x": 1,
+          "y": 0,
+          "asset_id": "river_esw",
+          "direction_bits_nesw": 14
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "asset_id": "river_w",
+          "direction_bits_nesw": 8
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "asset_id": "river_e",
+          "direction_bits_nesw": 2
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "asset_id": "river_sw",
+          "direction_bits_nesw": 12
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "asset_id": "river_n",
+          "direction_bits_nesw": 1
+        },
+        {
+          "x": 1,
+          "y": 1,
+          "asset_id": "river_ns",
+          "direction_bits_nesw": 5
+        },
+        {
+          "x": 2,
+          "y": 1,
+          "asset_id": "river_e",
+          "direction_bits_nesw": 2
+        },
+        {
+          "x": 3,
+          "y": 1,
+          "asset_id": "river_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 4,
+          "y": 1,
+          "asset_id": "river_nsw",
+          "direction_bits_nesw": 13
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "asset_id": "river_s",
+          "direction_bits_nesw": 4
+        },
+        {
+          "x": 1,
+          "y": 2,
+          "asset_id": "river_ne",
+          "direction_bits_nesw": 3
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "asset_id": "river_sw",
+          "direction_bits_nesw": 12
+        },
+        {
+          "x": 3,
+          "y": 2,
+          "asset_id": "river_es",
+          "direction_bits_nesw": 6
+        },
+        {
+          "x": 4,
+          "y": 2,
+          "asset_id": "river_nw",
+          "direction_bits_nesw": 9
+        },
+        {
+          "x": 0,
+          "y": 3,
+          "asset_id": "river_nes",
+          "direction_bits_nesw": 7
+        },
+        {
+          "x": 1,
+          "y": 3,
+          "asset_id": "river_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 2,
+          "y": 3,
+          "asset_id": "river_nesw",
+          "direction_bits_nesw": 15
+        },
+        {
+          "x": 3,
+          "y": 3,
+          "asset_id": "river_nw",
+          "direction_bits_nesw": 9
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "asset_id": "river_ne",
+          "direction_bits_nesw": 3
+        },
+        {
+          "x": 1,
+          "y": 4,
+          "asset_id": "river_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "asset_id": "river_new",
+          "direction_bits_nesw": 11
+        },
+        {
+          "x": 3,
+          "y": 4,
+          "asset_id": "river_ew",
+          "direction_bits_nesw": 10
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "asset_id": "river_w",
+          "direction_bits_nesw": 8
+        }
+      ]
+    }
+  ]
+}
