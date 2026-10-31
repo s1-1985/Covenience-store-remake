@@ -1,0 +1,816 @@
+{
+  "date": "2026-10-31",
+  "kind": "rail",
+  "source_branch": "chatgpt/map-assets-isolated-20260922",
+  "source_head": "8778e60b4915e0049770a02c4e116c5a0a0d49c8",
+  "decoder_script": "chatgpt_map_assets/tools/rail_candidate_seam_audit_2026_10_27.js (pure functions only)",
+  "method": "GitHub real PNG base64; SHA match; all PNG CRCs; full RGBA decode; active-side RGB MAE to straight-tile opposite edge",
+  "candidate_count": 15,
+  "decode_pass": 15,
+  "errors": [],
+  "measured_connected_edges": 32,
+  "entries": [
+    {
+      "id": "rail_n",
+      "mask": 1,
+      "blob_sha": "f0706b6b8c269a7621631ffe2e533a7a0a93e93d",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_e",
+      "mask": 2,
+      "blob_sha": "08c4c3cc5794c5d401061246c688b75e3154d786",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_ne",
+      "mask": 3,
+      "blob_sha": "18a822527ccb5772945a5f22169566442f8238a9",
+      "bytes": 11433,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_s",
+      "mask": 4,
+      "blob_sha": "c4c1c2db6a7af58b5c1a1c9f0484a5f8ccfb84ba",
+      "bytes": 10969,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_ns",
+      "mask": 5,
+      "blob_sha": "3ecc57989beab8f74b97a5079d14fc557de15e5b",
+      "bytes": 11115,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_es",
+      "mask": 6,
+      "blob_sha": "2e4b9953a5c356c16826831f3f612089a15df7f8",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_nes",
+      "mask": 7,
+      "blob_sha": "13f217dd036e53b07bf64ee25262e6ddee4462e0",
+      "bytes": 11403,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_w",
+      "mask": 8,
+      "blob_sha": "f1200d135b61e320daf77136b3992a26752a33a9",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_nw",
+      "mask": 9,
+      "blob_sha": "977d79be5510f94511d793fe03de1f483cc7b8ca",
+      "bytes": 11451,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_ew",
+      "mask": 10,
+      "blob_sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "bytes": 10943,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_new",
+      "mask": 11,
+      "blob_sha": "0b7269db6ab4219c0ab54e15f411d30dbffce321",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_sw",
+      "mask": 12,
+      "blob_sha": "f1a3c162daf6a55068e64b0dbd00ca1cece63a2d",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_nsw",
+      "mask": 13,
+      "blob_sha": "a89f4a5e05f9cf30aef0843a03718c29bedd2f9a",
+      "bytes": 11496,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_esw",
+      "mask": 14,
+      "blob_sha": "f2c8c34f1316177f8d954da32135e45b953373e3",
+      "bytes": 16792,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    },
+    {
+      "id": "rail_nesw",
+      "mask": 15,
+      "blob_sha": "02b9b115c70082cd80fb3378a221a9c17a0b3658",
+      "bytes": 11209,
+      "crc_rgba_decode": "PASS",
+      "chunks_crc_verified": 4
+    }
+  ],
+  "edge_comparisons": [
+    {
+      "id": "rail_n",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 34.214,
+      "center20_rgb_mae": 64.9,
+      "non_green_heuristic_all": [
+        29,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_e",
+      "side": "E",
+      "reference": "rail_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 47.141,
+      "center20_rgb_mae": 55.433,
+      "non_green_heuristic_all": [
+        25,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_ne",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 27.661,
+      "center20_rgb_mae": 34.267,
+      "non_green_heuristic_all": [
+        39,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_ne",
+      "side": "E",
+      "reference": "rail_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 47.938,
+      "center20_rgb_mae": 49.217,
+      "non_green_heuristic_all": [
+        46,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        5,
+        20
+      ]
+    },
+    {
+      "id": "rail_s",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 23.865,
+      "center20_rgb_mae": 27.05,
+      "non_green_heuristic_all": [
+        29,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_ns",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 23.234,
+      "center20_rgb_mae": 20.217,
+      "non_green_heuristic_all": [
+        36,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_ns",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 23.234,
+      "center20_rgb_mae": 20.217,
+      "non_green_heuristic_all": [
+        24,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        19,
+        20
+      ]
+    },
+    {
+      "id": "rail_es",
+      "side": "E",
+      "reference": "rail_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 23.776,
+      "center20_rgb_mae": 23.517,
+      "non_green_heuristic_all": [
+        39,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_es",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 42.568,
+      "center20_rgb_mae": 51.817,
+      "non_green_heuristic_all": [
+        46,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        5,
+        20
+      ]
+    },
+    {
+      "id": "rail_nes",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 24.443,
+      "center20_rgb_mae": 30.183,
+      "non_green_heuristic_all": [
+        34,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_nes",
+      "side": "E",
+      "reference": "rail_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 35.182,
+      "center20_rgb_mae": 52.733,
+      "non_green_heuristic_all": [
+        41,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_nes",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 43.875,
+      "center20_rgb_mae": 58.9,
+      "non_green_heuristic_all": [
+        23,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        17,
+        20
+      ]
+    },
+    {
+      "id": "rail_w",
+      "side": "W",
+      "reference": "rail_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 19.771,
+      "center20_rgb_mae": 16.633,
+      "non_green_heuristic_all": [
+        24,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_nw",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 32.297,
+      "center20_rgb_mae": 46.717,
+      "non_green_heuristic_all": [
+        41,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_nw",
+      "side": "W",
+      "reference": "rail_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 42.521,
+      "center20_rgb_mae": 49.6,
+      "non_green_heuristic_all": [
+        27,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        5,
+        20
+      ]
+    },
+    {
+      "id": "rail_ew",
+      "side": "E",
+      "reference": "rail_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 18.667,
+      "center20_rgb_mae": 11.15,
+      "non_green_heuristic_all": [
+        24,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_ew",
+      "side": "W",
+      "reference": "rail_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 18.667,
+      "center20_rgb_mae": 11.15,
+      "non_green_heuristic_all": [
+        24,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_new",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 39.839,
+      "center20_rgb_mae": 56.967,
+      "non_green_heuristic_all": [
+        47,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_new",
+      "side": "E",
+      "reference": "rail_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 24.333,
+      "center20_rgb_mae": 37.917,
+      "non_green_heuristic_all": [
+        33,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_new",
+      "side": "W",
+      "reference": "rail_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 34.651,
+      "center20_rgb_mae": 45.333,
+      "non_green_heuristic_all": [
+        23,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        17,
+        20
+      ]
+    },
+    {
+      "id": "rail_sw",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 37.969,
+      "center20_rgb_mae": 53.75,
+      "non_green_heuristic_all": [
+        39,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_sw",
+      "side": "W",
+      "reference": "rail_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 46.229,
+      "center20_rgb_mae": 42.067,
+      "non_green_heuristic_all": [
+        46,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        5,
+        20
+      ]
+    },
+    {
+      "id": "rail_nsw",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 31.271,
+      "center20_rgb_mae": 56.067,
+      "non_green_heuristic_all": [
+        33,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_nsw",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 46.177,
+      "center20_rgb_mae": 59.45,
+      "non_green_heuristic_all": [
+        23,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        17,
+        20
+      ]
+    },
+    {
+      "id": "rail_nsw",
+      "side": "W",
+      "reference": "rail_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 39.401,
+      "center20_rgb_mae": 50.667,
+      "non_green_heuristic_all": [
+        47,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_esw",
+      "side": "E",
+      "reference": "rail_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 22.807,
+      "center20_rgb_mae": 23.6,
+      "non_green_heuristic_all": [
+        34,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_esw",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 32.521,
+      "center20_rgb_mae": 58.033,
+      "non_green_heuristic_all": [
+        41,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_esw",
+      "side": "W",
+      "reference": "rail_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 38.411,
+      "center20_rgb_mae": 50.05,
+      "non_green_heuristic_all": [
+        23,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        17,
+        20
+      ]
+    },
+    {
+      "id": "rail_nesw",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 39.286,
+      "center20_rgb_mae": 49.35,
+      "non_green_heuristic_all": [
+        51,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_nesw",
+      "side": "E",
+      "reference": "rail_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 29.911,
+      "center20_rgb_mae": 42.45,
+      "non_green_heuristic_all": [
+        37,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_nesw",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 37.969,
+      "center20_rgb_mae": 51.033,
+      "non_green_heuristic_all": [
+        34,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_nesw",
+      "side": "W",
+      "reference": "rail_ew",
+      "reference_side": "E",
+      "full_edge_rgb_mae": 35.781,
+      "center20_rgb_mae": 44.333,
+      "non_green_heuristic_all": [
+        46,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    }
+  ],
+  "top_center20_differences": [
+    {
+      "id": "rail_n",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 34.214,
+      "center20_rgb_mae": 64.9,
+      "non_green_heuristic_all": [
+        29,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_nsw",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 46.177,
+      "center20_rgb_mae": 59.45,
+      "non_green_heuristic_all": [
+        23,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        17,
+        20
+      ]
+    },
+    {
+      "id": "rail_nes",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 43.875,
+      "center20_rgb_mae": 58.9,
+      "non_green_heuristic_all": [
+        23,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        17,
+        20
+      ]
+    },
+    {
+      "id": "rail_esw",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 32.521,
+      "center20_rgb_mae": 58.033,
+      "non_green_heuristic_all": [
+        41,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_new",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 39.839,
+      "center20_rgb_mae": 56.967,
+      "non_green_heuristic_all": [
+        47,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_nsw",
+      "side": "N",
+      "reference": "rail_ns",
+      "reference_side": "S",
+      "full_edge_rgb_mae": 31.271,
+      "center20_rgb_mae": 56.067,
+      "non_green_heuristic_all": [
+        33,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        19
+      ]
+    },
+    {
+      "id": "rail_e",
+      "side": "E",
+      "reference": "rail_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 47.141,
+      "center20_rgb_mae": 55.433,
+      "non_green_heuristic_all": [
+        25,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_sw",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 37.969,
+      "center20_rgb_mae": 53.75,
+      "non_green_heuristic_all": [
+        39,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_nes",
+      "side": "E",
+      "reference": "rail_ew",
+      "reference_side": "W",
+      "full_edge_rgb_mae": 35.182,
+      "center20_rgb_mae": 52.733,
+      "non_green_heuristic_all": [
+        41,
+        24
+      ],
+      "non_green_heuristic_center20": [
+        20,
+        20
+      ]
+    },
+    {
+      "id": "rail_es",
+      "side": "S",
+      "reference": "rail_ns",
+      "reference_side": "N",
+      "full_edge_rgb_mae": 42.568,
+      "center20_rgb_mae": 51.817,
+      "non_green_heuristic_all": [
+        46,
+        36
+      ],
+      "non_green_heuristic_center20": [
+        5,
+        20
+      ]
+    }
+  ],
+  "acceptance": "NOT_ACCEPTED",
+  "notes": [
+    "RGB MAE includes background and is diagnostic, not pass/fail.",
+    "No original-game comparison, human visual acceptance, or Godot rendering.",
+    "No existing source files modified."
+  ]
+}
