@@ -1,0 +1,758 @@
+{
+  "date": "2026-10-31",
+  "scope": "River 15 actual candidate PNG edge water-channel centroids vs straight references",
+  "source_head": "8778e60b4915e0049770a02c4e116c5a0a0d49c8",
+  "water_heuristic": "B>=180 && B>R+25 && B>G+8; blue pixels only, may omit shoreline",
+  "source_manifest": "chatgpt_map_assets/manifests/connection_45_candidate_registry_2026-10-30.json",
+  "connected_edges": 32,
+  "decode_errors": [],
+  "large_offsets_8px_or_more": 4,
+  "no_detected_water_on_connected_edge": [],
+  "inactive_edge_water_leaks": [],
+  "high_priority_review": [
+    {
+      "id": "river_ne",
+      "side": "E",
+      "active": true,
+      "count": 17,
+      "min": 42,
+      "max": 58,
+      "center": 50,
+      "reference": "river_ew",
+      "reference_center": 32.5,
+      "center_offset_px": 17.5
+    },
+    {
+      "id": "river_sw",
+      "side": "W",
+      "active": true,
+      "count": 16,
+      "min": 15,
+      "max": 30,
+      "center": 22.5,
+      "reference": "river_ew",
+      "reference_center": 32.5,
+      "center_offset_px": -10
+    },
+    {
+      "id": "river_nw",
+      "side": "N",
+      "active": true,
+      "count": 16,
+      "min": 33,
+      "max": 48,
+      "center": 40.5,
+      "reference": "river_ns",
+      "reference_center": 31,
+      "center_offset_px": 9.5
+    },
+    {
+      "id": "river_es",
+      "side": "S",
+      "active": true,
+      "count": 16,
+      "min": 15,
+      "max": 30,
+      "center": 22.5,
+      "reference": "river_ns",
+      "reference_center": 31,
+      "center_offset_px": -8.5
+    }
+  ],
+  "records": [
+    {
+      "id": "river_n",
+      "mask": 1,
+      "sides": {
+        "N": {
+          "active": true,
+          "count": 12,
+          "min": 28,
+          "max": 39,
+          "center": 33.5,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 2.5
+        },
+        "E": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        },
+        "S": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "W": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        }
+      }
+    },
+    {
+      "id": "river_e",
+      "mask": 2,
+      "sides": {
+        "N": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "E": {
+          "active": true,
+          "count": 12,
+          "min": 28,
+          "max": 39,
+          "center": 33.5,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": 1
+        },
+        "S": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "W": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        }
+      }
+    },
+    {
+      "id": "river_ne",
+      "mask": 3,
+      "sides": {
+        "N": {
+          "active": true,
+          "count": 18,
+          "min": 21,
+          "max": 38,
+          "center": 29.5,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": -1.5
+        },
+        "E": {
+          "active": true,
+          "count": 17,
+          "min": 42,
+          "max": 58,
+          "center": 50,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": 17.5
+        },
+        "S": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "W": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        }
+      }
+    },
+    {
+      "id": "river_s",
+      "mask": 4,
+      "sides": {
+        "N": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "E": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        },
+        "S": {
+          "active": true,
+          "count": 12,
+          "min": 24,
+          "max": 35,
+          "center": 29.5,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": -1.5
+        },
+        "W": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        }
+      }
+    },
+    {
+      "id": "river_ns",
+      "mask": 5,
+      "sides": {
+        "N": {
+          "active": true,
+          "count": 19,
+          "min": 22,
+          "max": 40,
+          "center": 31,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 0
+        },
+        "E": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        },
+        "S": {
+          "active": true,
+          "count": 19,
+          "min": 22,
+          "max": 40,
+          "center": 31,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 0
+        },
+        "W": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        }
+      }
+    },
+    {
+      "id": "river_es",
+      "mask": 6,
+      "sides": {
+        "N": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "E": {
+          "active": true,
+          "count": 18,
+          "min": 17,
+          "max": 34,
+          "center": 25.5,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -7
+        },
+        "S": {
+          "active": true,
+          "count": 16,
+          "min": 15,
+          "max": 30,
+          "center": 22.5,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": -8.5
+        },
+        "W": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        }
+      }
+    },
+    {
+      "id": "river_nes",
+      "mask": 7,
+      "sides": {
+        "N": {
+          "active": true,
+          "count": 18,
+          "min": 22,
+          "max": 39,
+          "center": 30.5,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": -0.5
+        },
+        "E": {
+          "active": true,
+          "count": 16,
+          "min": 23,
+          "max": 38,
+          "center": 30.5,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -2
+        },
+        "S": {
+          "active": true,
+          "count": 18,
+          "min": 22,
+          "max": 39,
+          "center": 30.5,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": -0.5
+        },
+        "W": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        }
+      }
+    },
+    {
+      "id": "river_w",
+      "mask": 8,
+      "sides": {
+        "N": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "E": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        },
+        "S": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "W": {
+          "active": true,
+          "count": 12,
+          "min": 24,
+          "max": 35,
+          "center": 29.5,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -3
+        }
+      }
+    },
+    {
+      "id": "river_nw",
+      "mask": 9,
+      "sides": {
+        "N": {
+          "active": true,
+          "count": 16,
+          "min": 33,
+          "max": 48,
+          "center": 40.5,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 9.5
+        },
+        "E": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        },
+        "S": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "W": {
+          "active": true,
+          "count": 18,
+          "min": 29,
+          "max": 46,
+          "center": 37.5,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": 5
+        }
+      }
+    },
+    {
+      "id": "river_ew",
+      "mask": 10,
+      "sides": {
+        "N": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "E": {
+          "active": true,
+          "count": 18,
+          "min": 24,
+          "max": 41,
+          "center": 32.5,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": 0
+        },
+        "S": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "W": {
+          "active": true,
+          "count": 18,
+          "min": 24,
+          "max": 41,
+          "center": 32.5,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": 0
+        }
+      }
+    },
+    {
+      "id": "river_new",
+      "mask": 11,
+      "sides": {
+        "N": {
+          "active": true,
+          "count": 17,
+          "min": 23,
+          "max": 39,
+          "center": 31,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 0
+        },
+        "E": {
+          "active": true,
+          "count": 19,
+          "min": 23,
+          "max": 41,
+          "center": 32,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -0.5
+        },
+        "S": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "W": {
+          "active": true,
+          "count": 19,
+          "min": 23,
+          "max": 41,
+          "center": 32,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -0.5
+        }
+      }
+    },
+    {
+      "id": "river_sw",
+      "mask": 12,
+      "sides": {
+        "N": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "E": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        },
+        "S": {
+          "active": true,
+          "count": 18,
+          "min": 29,
+          "max": 46,
+          "center": 37.5,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 6.5
+        },
+        "W": {
+          "active": true,
+          "count": 16,
+          "min": 15,
+          "max": 30,
+          "center": 22.5,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -10
+        }
+      }
+    },
+    {
+      "id": "river_nsw",
+      "mask": 13,
+      "sides": {
+        "N": {
+          "active": true,
+          "count": 18,
+          "min": 23,
+          "max": 40,
+          "center": 31.5,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 0.5
+        },
+        "E": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": null
+        },
+        "S": {
+          "active": true,
+          "count": 18,
+          "min": 23,
+          "max": 40,
+          "center": 31.5,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 0.5
+        },
+        "W": {
+          "active": true,
+          "count": 15,
+          "min": 23,
+          "max": 37,
+          "center": 30,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -2.5
+        }
+      }
+    },
+    {
+      "id": "river_esw",
+      "mask": 14,
+      "sides": {
+        "N": {
+          "active": false,
+          "count": 0,
+          "min": null,
+          "max": null,
+          "center": null,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": null
+        },
+        "E": {
+          "active": true,
+          "count": 15,
+          "min": 24,
+          "max": 38,
+          "center": 31,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -1.5
+        },
+        "S": {
+          "active": true,
+          "count": 17,
+          "min": 23,
+          "max": 39,
+          "center": 31,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 0
+        },
+        "W": {
+          "active": true,
+          "count": 14,
+          "min": 24,
+          "max": 37,
+          "center": 30.5,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -2
+        }
+      }
+    },
+    {
+      "id": "river_nesw",
+      "mask": 15,
+      "sides": {
+        "N": {
+          "active": true,
+          "count": 17,
+          "min": 23,
+          "max": 39,
+          "center": 31,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 0
+        },
+        "E": {
+          "active": true,
+          "count": 16,
+          "min": 23,
+          "max": 38,
+          "center": 30.5,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -2
+        },
+        "S": {
+          "active": true,
+          "count": 17,
+          "min": 23,
+          "max": 39,
+          "center": 31,
+          "reference": "river_ns",
+          "reference_center": 31,
+          "center_offset_px": 0
+        },
+        "W": {
+          "active": true,
+          "count": 15,
+          "min": 23,
+          "max": 37,
+          "center": 30,
+          "reference": "river_ew",
+          "reference_center": 32.5,
+          "center_offset_px": -2.5
+        }
+      }
+    }
+  ],
+  "interpretation": "Water-channel centroid offset is a stronger topology signal than RGB MAE. This remains a heuristic, not visual acceptance or canonical original-game proof. Large offsets may cause visible discontinuity between adjacent tiles.",
+  "godot_render": "NOT_RUN",
+  "original_comparison": "NOT_RUN",
+  "issue_checkboxes_changed": []
+}
