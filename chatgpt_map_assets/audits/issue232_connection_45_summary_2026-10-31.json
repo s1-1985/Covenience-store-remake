@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-31",
+  "issue": 232,
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "source_head_at_start": "8778e60b4915e0049770a02c4e116c5a0a0d49c8",
+  "scope": "all 45 directional PNG candidates (road/rail/river) and 96 active edge comparisons",
+  "full_png_decode": {
+    "verified": 45,
+    "failed": 0,
+    "dimensions": "64x64 RGBA",
+    "crc": "all chunks verified",
+    "git_blob_sha": "all 45 matched manifest"
+  },
+  "edge_metrics": {
+    "total": 96,
+    "by_kind": {
+      "road": {
+        "edges": 32,
+        "mean_full_rgb_mae": 16.646,
+        "mean_center20_rgb_mae": 3.569,
+        "max_center20_rgb_mae": 6.717,
+        "center20_over_50": 0
+      },
+      "rail": {
+        "edges": 32,
+        "mean_full_rgb_mae": 33.3,
+        "mean_center20_rgb_mae": 42.024,
+        "max_center20_rgb_mae": 64.9,
+        "center20_over_50": 13
+      },
+      "river": {
+        "edges": 32,
+        "mean_full_rgb_mae": 20.015,
+        "mean_center20_rgb_mae": 29.796,
+        "max_center20_rgb_mae": 79.167,
+        "center20_over_50": 6
+      }
+    }
+  },
+  "river_water_geometry": {
+    "connected_edges": 32,
+    "water_center_offsets_8px_or_more": [
+      {
+        "asset_id": "river_ne",
+        "side": "E",
+        "offset_px": 17.5
+      },
+      {
+        "asset_id": "river_sw",
+        "side": "W",
+        "offset_px": -10
+      },
+      {
+        "asset_id": "river_nw",
+        "side": "N",
+        "offset_px": 9.5
+      },
+      {
+        "asset_id": "river_es",
+        "side": "S",
+        "offset_px": -8.5
+      }
+    ],
+    "no_water_on_connected_edges": 0
+  },
+  "topology_sample": {
+    "file": "chatgpt_map_assets/samples/connection_45_topology_5x5_2026-10-31.json",
+    "maps": 3,
+    "tiles_per_map": 24,
+    "connected_edges_per_map": 24,
+    "all_15_masks_per_kind": true,
+    "reciprocity_check": "PASS",
+    "real_png_render": "NOT_RUN"
+  },
+  "new_tools": {
+    "verify": "chatgpt_map_assets/tools/verify_45_edge_geometry_2026_10_31.py",
+    "render": "chatgpt_map_assets/tools/render_connection_45_samples_2026_10_31.py",
+    "local_synthetic_test": "PASS (45 fixture PNGs, 96 comparisons, 3 generated 120x120 PNGs, existing output protection)",
+    "actual_clone_execution": "NOT_RUN (repo PNG bytes inaccessible in local container; connector-only audit performed)"
+  },
+  "acceptance": {
+    "original_game_visual": "NOT_RUN",
+    "human_seam_review": "NOT_RUN",
+    "godot_render": "NOT_RUN (Godot not installed)",
+    "game_functional_regression": "NOT_RUN",
+    "issue_checkbox_changes": [],
+    "overall": "INCOMPLETE"
+  },
+  "safety": {
+    "writes_only_new_files_under": "chatgpt_map_assets/",
+    "no_existing_files_modified": true,
+    "main_or_claude_branches_not_written": true
+  },
+  "notes": [
+    "RGB MAE is diagnostic and affected by scenery; high values do not automatically imply seam failure.",
+    "Water-channel centroid offsets >8px on four curve edges are concrete geometry mismatches to prioritize for visual correction.",
+    "All 45 candidate files are present, but none is newly accepted as original-faithful."
+  ]
+}
