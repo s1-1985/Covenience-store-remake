@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-31",
+  "issue": 232,
+  "scope": "Real PNG QA sample rendering after 45/45 full decode audit",
+  "source_manifest": "chatgpt_map_assets/manifests/connection_45_candidate_registry_2026-10-30.json",
+  "source_head_at_start": "8778e60b4915e0049770a02c4e116c5a0a0d49c8",
+  "method": "Decode 15 real 64x64 RGBA PNGs per kind; nearest-neighbor 64-to-24 per tile; assemble 5x5 connected topology (24 occupied tiles per map); encode independent 120x120 PNG; CRC and pixel-perfect roundtrip; upload as new Git blobs and verify",
+  "rendered_maps": [
+    {
+      "kind": "road",
+      "path": "chatgpt_map_assets/samples/rendered_2026-10-31/road_all_15_masks_24px.png",
+      "git_blob_sha": "e765ce8ebf6c2f0a745ad3f208e54c97c9ef5520",
+      "size": [
+        120,
+        120
+      ],
+      "status": "PNG_VERIFIED_NOT_VISUALLY_ACCEPTED"
+    },
+    {
+      "kind": "rail",
+      "path": "chatgpt_map_assets/samples/rendered_2026-10-31/rail_all_15_masks_24px.png",
+      "git_blob_sha": "6220b2c0030e6f3280e0077728cd832b495f775d",
+      "size": [
+        120,
+        120
+      ],
+      "status": "PNG_VERIFIED_NOT_VISUALLY_ACCEPTED"
+    },
+    {
+      "kind": "river",
+      "path": "chatgpt_map_assets/samples/rendered_2026-10-31/river_all_15_masks_24px.png",
+      "git_blob_sha": "e7a3080a9d1b221f7b3b02935ccd54983321055d",
+      "size": [
+        120,
+        120
+      ],
+      "status": "PNG_VERIFIED_NOT_VISUALLY_ACCEPTED"
+    }
+  ],
+  "focused_seam_witness": {
+    "path": "chatgpt_map_assets/samples/rendered_2026-10-31/river_ne_e_to_river_ew_w_64px.png",
+    "git_blob_sha": "11173fd37f81cfe14c23c1a2b60946a508123ef2",
+    "size": [
+      128,
+      64
+    ],
+    "left": "river_ne E",
+    "right": "river_ew W",
+    "water_channel_centroid_offset_px": 17.5,
+    "observation": "Visible discontinuity: water exits river_ne at lower position than it enters river_ew. This seam is NOT ACCEPTED; repair or substitute source is required.",
+    "pixels_modified": "NONE (source tiles pasted side by side)"
+  },
+  "validation": {
+    "source_pngs_read": 45,
+    "source_png_crc_and_decode": "PASS",
+    "rendered_png_crc_decode_and_blob_sha": "3/3 PASS",
+    "witness_png_crc_pixel_roundtrip": "PASS",
+    "topology_masks": "15/15 each kind",
+    "connected_undirected_edges_per_map": 24,
+    "godot_runtime": "NOT_RUN",
+    "original_game_match": "NOT_RUN",
+    "all_seams_visual": "NOT_RUN"
+  },
+  "safety": "Only new files in chatgpt_map_assets; no original source PNG, renderer or other branch modified.",
+  "issue_checkboxes_changed": []
+}
