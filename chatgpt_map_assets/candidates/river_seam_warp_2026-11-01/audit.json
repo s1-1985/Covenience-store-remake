@@ -1,0 +1,235 @@
+{
+  "date": "2026-11-01",
+  "issue": 232,
+  "source_branch": "chatgpt/map-assets-isolated-20260922",
+  "source_head": "3dfe8fc6c09ff7832e806eb13ccb5ed93aa05f32",
+  "method": "Pixel-preserving nearest-neighbor inverse warp with smooth edge-local displacement (36px taper; 18px corner protection); water heuristic B>=180 && B>R+25 && B>G+8; PNG CRC/64x64 RGBA/iCCP and full-pixel encode/decode roundtrip.",
+  "reference_paths": {
+    "N_S": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ns.png",
+    "E_W": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ew.png"
+  },
+  "results": [
+    {
+      "asset_id": "river_ne",
+      "source_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ne.png",
+      "source_git_blob_sha": "6d8f54d38e461c48e940d8ac9de04b8d608b828f",
+      "output_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_ne.png",
+      "shift_x_px": 1.5,
+      "shift_y_px": -17.5,
+      "before": {
+        "N": {
+          "count": 18,
+          "min": 21,
+          "max": 38,
+          "center": 29.5
+        },
+        "E": {
+          "count": 17,
+          "min": 42,
+          "max": 58,
+          "center": 50
+        }
+      },
+      "after": {
+        "N": {
+          "count": 18,
+          "min": 22,
+          "max": 39,
+          "center": 30.5
+        },
+        "E": {
+          "count": 17,
+          "min": 24,
+          "max": 40,
+          "center": 32
+        }
+      },
+      "reference_centers": {
+        "N": 31,
+        "E": 32.5
+      },
+      "inactive_water_counts": [
+        {
+          "side": "S",
+          "count": 0
+        },
+        {
+          "side": "W",
+          "count": 0
+        }
+      ],
+      "changed_sample_positions": 2755,
+      "png_size_bytes": 16792,
+      "png_roundtrip": "PASS"
+    },
+    {
+      "asset_id": "river_sw",
+      "source_path": "chatgpt_map_assets/generated/directional_2026-10-24/river/river_sw.png",
+      "source_git_blob_sha": "fe04e0bdb56a39bc2fc6d18e699e8b1eb30f1b41",
+      "output_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_sw.png",
+      "shift_x_px": -6.5,
+      "shift_y_px": 10,
+      "before": {
+        "S": {
+          "count": 18,
+          "min": 29,
+          "max": 46,
+          "center": 37.5
+        },
+        "W": {
+          "count": 16,
+          "min": 15,
+          "max": 30,
+          "center": 22.5
+        }
+      },
+      "after": {
+        "S": {
+          "count": 18,
+          "min": 22,
+          "max": 39,
+          "center": 30.5
+        },
+        "W": {
+          "count": 16,
+          "min": 25,
+          "max": 40,
+          "center": 32.5
+        }
+      },
+      "reference_centers": {
+        "S": 31,
+        "W": 32.5
+      },
+      "inactive_water_counts": [
+        {
+          "side": "N",
+          "count": 0
+        },
+        {
+          "side": "E",
+          "count": 0
+        }
+      ],
+      "changed_sample_positions": 2934,
+      "png_size_bytes": 16792,
+      "png_roundtrip": "PASS"
+    },
+    {
+      "asset_id": "river_nw",
+      "source_path": "chatgpt_map_assets/generated/directional_2026-10-24/river/river_nw.png",
+      "source_git_blob_sha": "289838b50841c81e3481324e58f7368a5555f4b2",
+      "output_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_nw.png",
+      "shift_x_px": -9.5,
+      "shift_y_px": -5,
+      "before": {
+        "N": {
+          "count": 16,
+          "min": 33,
+          "max": 48,
+          "center": 40.5
+        },
+        "W": {
+          "count": 18,
+          "min": 29,
+          "max": 46,
+          "center": 37.5
+        }
+      },
+      "after": {
+        "N": {
+          "count": 16,
+          "min": 23,
+          "max": 38,
+          "center": 30.5
+        },
+        "W": {
+          "count": 18,
+          "min": 24,
+          "max": 41,
+          "center": 32.5
+        }
+      },
+      "reference_centers": {
+        "N": 31,
+        "W": 32.5
+      },
+      "inactive_water_counts": [
+        {
+          "side": "E",
+          "count": 0
+        },
+        {
+          "side": "S",
+          "count": 0
+        }
+      ],
+      "changed_sample_positions": 2869,
+      "png_size_bytes": 16792,
+      "png_roundtrip": "PASS"
+    },
+    {
+      "asset_id": "river_es",
+      "source_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_es.png",
+      "source_git_blob_sha": "f7cca6d651fba2fba2af612aec543519a6214924",
+      "output_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_es.png",
+      "shift_x_px": 8.5,
+      "shift_y_px": 7,
+      "before": {
+        "S": {
+          "count": 16,
+          "min": 15,
+          "max": 30,
+          "center": 22.5
+        },
+        "E": {
+          "count": 18,
+          "min": 17,
+          "max": 34,
+          "center": 25.5
+        }
+      },
+      "after": {
+        "S": {
+          "count": 16,
+          "min": 23,
+          "max": 38,
+          "center": 30.5
+        },
+        "E": {
+          "count": 18,
+          "min": 24,
+          "max": 41,
+          "center": 32.5
+        }
+      },
+      "reference_centers": {
+        "S": 31,
+        "E": 32.5
+      },
+      "inactive_water_counts": [
+        {
+          "side": "N",
+          "count": 0
+        },
+        {
+          "side": "W",
+          "count": 0
+        }
+      ],
+      "changed_sample_positions": 2936,
+      "png_size_bytes": 16792,
+      "png_roundtrip": "PASS"
+    }
+  ],
+  "acceptance": {
+    "water_centroid_geometry": "PASS 8/8 active sides <=1.5px from straight reference",
+    "inactive_edge_water": "PASS 8/8 inactive sides dry",
+    "full_seam_visual": "NOT_RUN",
+    "original_game_match": "NOT_RUN",
+    "godot_24px": "NOT_RUN",
+    "game_regression": "NOT_RUN",
+    "issue_checkboxes_changed": []
+  },
+  "safety": "New files only under chatgpt_map_assets/candidates/river_seam_warp_2026-11-01; original assets untouched."
+}
