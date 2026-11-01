@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-02",
+  "issue": 232,
+  "source_audit": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/audit.json",
+  "source_audit_kind": "2026-11-01 reported inverse-warp sampling geometry",
+  "status": "CANDIDATES_UNACCEPTED",
+  "critical_distinction": "changed_sample_positions counts output positions whose inverse-warp source sampling coordinate changed. It does NOT prove the RGBA pixel value changed at each such position.",
+  "assets": [
+    {
+      "asset_id": "river_ne",
+      "source_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ne.png",
+      "candidate_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_ne.png",
+      "source_blob_sha": "6d8f54d38e461c48e940d8ac9de04b8d608b828f",
+      "remapped_sample_positions": 2755,
+      "total_sample_positions": 4096,
+      "remapped_sample_fraction": 0.67261,
+      "active_edge_centers_after": {
+        "N": 30.5,
+        "E": 32
+      },
+      "active_edge_reference_centers": {
+        "N": 31,
+        "E": 32.5
+      },
+      "geometry_only_pass": true,
+      "true_rgba_pixel_change_count": "NOT_MEASURED",
+      "water_mask_iou": "NOT_MEASURED",
+      "water_continuity": "NOT_MEASURED",
+      "art_acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "asset_id": "river_sw",
+      "source_path": "chatgpt_map_assets/generated/directional_2026-10-24/river/river_sw.png",
+      "candidate_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_sw.png",
+      "source_blob_sha": "fe04e0bdb56a39bc2fc6d18e699e8b1eb30f1b41",
+      "remapped_sample_positions": 2934,
+      "total_sample_positions": 4096,
+      "remapped_sample_fraction": 0.71631,
+      "active_edge_centers_after": {
+        "S": 30.5,
+        "W": 32.5
+      },
+      "active_edge_reference_centers": {
+        "S": 31,
+        "W": 32.5
+      },
+      "geometry_only_pass": true,
+      "true_rgba_pixel_change_count": "NOT_MEASURED",
+      "water_mask_iou": "NOT_MEASURED",
+      "water_continuity": "NOT_MEASURED",
+      "art_acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "asset_id": "river_nw",
+      "source_path": "chatgpt_map_assets/generated/directional_2026-10-24/river/river_nw.png",
+      "candidate_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_nw.png",
+      "source_blob_sha": "289838b50841c81e3481324e58f7368a5555f4b2",
+      "remapped_sample_positions": 2869,
+      "total_sample_positions": 4096,
+      "remapped_sample_fraction": 0.70044,
+      "active_edge_centers_after": {
+        "N": 30.5,
+        "W": 32.5
+      },
+      "active_edge_reference_centers": {
+        "N": 31,
+        "W": 32.5
+      },
+      "geometry_only_pass": true,
+      "true_rgba_pixel_change_count": "NOT_MEASURED",
+      "water_mask_iou": "NOT_MEASURED",
+      "water_continuity": "NOT_MEASURED",
+      "art_acceptance": "NOT_ACCEPTED"
+    },
+    {
+      "asset_id": "river_es",
+      "source_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_es.png",
+      "candidate_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_es.png",
+      "source_blob_sha": "f7cca6d651fba2fba2af612aec543519a6214924",
+      "remapped_sample_positions": 2936,
+      "total_sample_positions": 4096,
+      "remapped_sample_fraction": 0.7168,
+      "active_edge_centers_after": {
+        "S": 30.5,
+        "E": 32.5
+      },
+      "active_edge_reference_centers": {
+        "S": 31,
+        "E": 32.5
+      },
+      "geometry_only_pass": true,
+      "true_rgba_pixel_change_count": "NOT_MEASURED",
+      "water_mask_iou": "NOT_MEASURED",
+      "water_continuity": "NOT_MEASURED",
+      "art_acceptance": "NOT_ACCEPTED"
+    }
+  ],
+  "range_remapped_sample_fraction": [
+    0.67261,
+    0.7168
+  ],
+  "mean_remapped_sample_fraction": 0.70154,
+  "finding": "Four curve candidates remap approximately 67-72% of source sampling coordinates despite near-centered water exits. This makes visual distortion review high priority; centerline geometry alone is insufficient.",
+  "new_tool": "chatgpt_map_assets/tools/river_curve_quality_gate_2026_11_02.py",
+  "tool_synthetic_selftest": "PASS: unchanged curve and >25% true-pixel-change flag, run locally with Pillow 12.3.0",
+  "tool_actual_repo_png_run": "NOT_RUN: repository PNG files were not locally available in this execution environment",
+  "remaining": [
+    "Run tool against actual four source/candidate PNG pairs",
+    "Review true pixel-change ratio and connected water masks",
+    "Inspect 24px display seams in Godot",
+    "Compare to original game",
+    "Run non-destructive regression checks"
+  ],
+  "checkboxes_changed": []
+}
