@@ -1,17 +1,1307 @@
 {
-  "date_jst": "2026-11-03",
-  "status": "static_model_execution_pending",
-  "reason": "Execution environment reconnect interrupted additional testing",
-  "verified_prior_checkpoints": [
-    "20261103-rival-monthly",
-    "20261103-town-full-flow"
+  "status": "native_validation_passed",
+  "tested_commit": "7b557dcae8d6799dc2c3be85a4c5e0a042dfbeb0",
+  "model_sha256": "6e90fa438a6989441da83bc5fbef8a6eec5bd2b024c99ffa945df6088c2a56d8",
+  "source_zip_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "total_cases": 33,
+  "passed_cases": 33,
+  "failed_cases": 0,
+  "fatal_error": false,
+  "results_saved": true,
+  "cases": [
+    {
+      "case": "company_remove_2",
+      "seed": 0,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 2068283,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": -423,
+          "action": "demolish",
+          "kind": 39,
+          "x": 46,
+          "y": 5,
+          "start": [
+            0,
+            18
+          ],
+          "cells_considered": 2267,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -524,
+          "action": "demolish",
+          "kind": 67,
+          "x": 44,
+          "y": 42,
+          "start": [
+            25,
+            41
+          ],
+          "cells_considered": 80,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_remove_2-seed-0.json",
+      "result_sha256": "89ba4c15fc37c3be99ade683ffd475a6b32bafd8b2f44dd2a7655e3d3d685b4b"
+    },
+    {
+      "case": "company_remove_2",
+      "seed": 1,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 386738,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": -423,
+          "action": "demolish",
+          "kind": 38,
+          "x": 47,
+          "y": 8,
+          "start": [
+            38,
+            8
+          ],
+          "cells_considered": 10,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -524,
+          "action": "demolish",
+          "kind": 63,
+          "x": 44,
+          "y": 19,
+          "start": [
+            30,
+            19
+          ],
+          "cells_considered": 15,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_remove_2-seed-1.json",
+      "result_sha256": "7641dbf96028833824b6a9e3fd78584861e9a30fd35504867f48006bea9b48be"
+    },
+    {
+      "case": "company_remove_2",
+      "seed": 7,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 508176,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": -423,
+          "action": "demolish",
+          "kind": 39,
+          "x": 46,
+          "y": 6,
+          "start": [
+            4,
+            6
+          ],
+          "cells_considered": 43,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -524,
+          "action": "demolish",
+          "kind": 67,
+          "x": 44,
+          "y": 42,
+          "start": [
+            54,
+            40
+          ],
+          "cells_considered": 171,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_remove_2-seed-7.json",
+      "result_sha256": "3463b265a9c26d53d9763df28b40386102f16a5bcbd4fb80dd29ccb84f3179f5"
+    },
+    {
+      "case": "company_keep_3",
+      "seed": 0,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 624858,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": -423,
+          "action": "none",
+          "start": [
+            0,
+            18
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -524,
+          "action": "none",
+          "start": [
+            28,
+            17
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_keep_3-seed-0.json",
+      "result_sha256": "96854c275363df28bdb23e3feb4fbdd4d7e4eb15f521ec8408c2966d41c20f4a"
+    },
+    {
+      "case": "company_keep_3",
+      "seed": 1,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 624858,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": -423,
+          "action": "none",
+          "start": [
+            38,
+            8
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -524,
+          "action": "none",
+          "start": [
+            33,
+            15
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_keep_3-seed-1.json",
+      "result_sha256": "74f5cc3ffc7762f5d67f6b02754edb8c04505a48a3b3cd43d44db5c173241cc3"
+    },
+    {
+      "case": "company_keep_3",
+      "seed": 7,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 624858,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": -423,
+          "action": "none",
+          "start": [
+            4,
+            6
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -524,
+          "action": "none",
+          "start": [
+            8,
+            24
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_keep_3-seed-7.json",
+      "result_sha256": "78312553855266a7c12bc971f648f7d082b38b5e9f3a5d2f3f8304ca68dcfe45"
+    },
+    {
+      "case": "company_noadd_8",
+      "seed": 0,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 681302,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            0,
+            18
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "none",
+          "start": [
+            28,
+            17
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_noadd_8-seed-0.json",
+      "result_sha256": "155a00a6661954cff808cdb03539f061871aebfce20c7facd1ce088deabe9c35"
+    },
+    {
+      "case": "company_noadd_8",
+      "seed": 1,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 681302,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            38,
+            8
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "none",
+          "start": [
+            33,
+            15
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_noadd_8-seed-1.json",
+      "result_sha256": "353a48a75a919705f80c05d7e433de076f114f9ec43fc8653715021a9d5ec742"
+    },
+    {
+      "case": "company_noadd_8",
+      "seed": 7,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 681302,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            4,
+            6
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "none",
+          "start": [
+            8,
+            24
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_noadd_8-seed-7.json",
+      "result_sha256": "d4f06d293503099f78f75e53bfff76ff6af11749f548f30d2640dacc14e9242e"
+    },
+    {
+      "case": "company_add_9",
+      "seed": 0,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 675272,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "place",
+          "kind": 42,
+          "x": 0,
+          "y": 19,
+          "start": [
+            0,
+            18
+          ],
+          "cells_considered": 61,
+          "parent_rng_draws": 63
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "none",
+          "start": [
+            59,
+            28
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_add_9-seed-0.json",
+      "result_sha256": "027b116bd2a83da3304111d808651c5e254a3c7dd475c712cbbfc6a3efdb951c"
+    },
+    {
+      "case": "company_add_9",
+      "seed": 1,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 853764,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "place",
+          "kind": 40,
+          "x": 3,
+          "y": 10,
+          "start": [
+            38,
+            8
+          ],
+          "cells_considered": 146,
+          "parent_rng_draws": 148
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "none",
+          "start": [
+            3,
+            49
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_add_9-seed-1.json",
+      "result_sha256": "d8d6cbb4e49cfb4c72405377dfb0f95683e8838828fda383e37bf5549542e61b"
+    },
+    {
+      "case": "company_add_9",
+      "seed": 7,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 553084,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "place",
+          "kind": 39,
+          "x": 6,
+          "y": 6,
+          "start": [
+            4,
+            6
+          ],
+          "cells_considered": 3,
+          "parent_rng_draws": 5
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "none",
+          "start": [
+            53,
+            13
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/company_add_9-seed-7.json",
+      "result_sha256": "6ef32ebdaf18713108b14ed5ea50003f1f44b004e46ca26f5a5ea71b9fc91faf"
+    },
+    {
+      "case": "all_balance_zero",
+      "seed": 0,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 550252,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 0,
+        "commercial_population": 0,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": 0,
+          "action": "none",
+          "start": [
+            0,
+            18
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 0,
+          "action": "none",
+          "start": [
+            28,
+            17
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/all_balance_zero-seed-0.json",
+      "result_sha256": "b25a74f7c7b84a5e6da922b3663f110432ab1c144ab96301653ddc239806ee8c"
+    },
+    {
+      "case": "all_balance_zero",
+      "seed": 1,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 550252,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 0,
+        "commercial_population": 0,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": 0,
+          "action": "none",
+          "start": [
+            38,
+            8
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 0,
+          "action": "none",
+          "start": [
+            33,
+            15
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/all_balance_zero-seed-1.json",
+      "result_sha256": "5935121ab96e5f13683be00c8f08d0cd1a1c5eec22100b57bba96c9a7a336f5d"
+    },
+    {
+      "case": "all_balance_zero",
+      "seed": 7,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 550252,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 0,
+        "commercial_population": 0,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": 0,
+          "action": "none",
+          "start": [
+            4,
+            6
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 0,
+          "action": "none",
+          "start": [
+            8,
+            24
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/all_balance_zero-seed-7.json",
+      "result_sha256": "a98f45d9f5f36e1dd34e71b60995b013b32f4c9092f7a58e9f305524fbe7001f"
+    },
+    {
+      "case": "commercial_add_9",
+      "seed": 0,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 520731,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 0,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "place",
+          "kind": 42,
+          "x": 0,
+          "y": 19,
+          "start": [
+            0,
+            18
+          ],
+          "cells_considered": 61,
+          "parent_rng_draws": 63
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 206,
+          "action": "place",
+          "kind": 64,
+          "x": 59,
+          "y": 28,
+          "start": [
+            59,
+            28
+          ],
+          "cells_considered": 1,
+          "parent_rng_draws": 3
+        }
+      },
+      "result": "results/commercial_add_9-seed-0.json",
+      "result_sha256": "8d4b56c48772bececb327439bf2884ee37433c61b7d5d1a6fe8d50b73fd00994"
+    },
+    {
+      "case": "commercial_add_9",
+      "seed": 1,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 699223,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 0,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "place",
+          "kind": 40,
+          "x": 3,
+          "y": 10,
+          "start": [
+            38,
+            8
+          ],
+          "cells_considered": 146,
+          "parent_rng_draws": 148
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 206,
+          "action": "place",
+          "kind": 63,
+          "x": 3,
+          "y": 49,
+          "start": [
+            3,
+            49
+          ],
+          "cells_considered": 1,
+          "parent_rng_draws": 3
+        }
+      },
+      "result": "results/commercial_add_9-seed-1.json",
+      "result_sha256": "d2c6b5a65129fdbc2602a13432d5ef0d1b0919d31b76d290a1492a4947fdd9db"
+    },
+    {
+      "case": "commercial_add_9",
+      "seed": 7,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 401433,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 0,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "place",
+          "kind": 39,
+          "x": 6,
+          "y": 6,
+          "start": [
+            4,
+            6
+          ],
+          "cells_considered": 3,
+          "parent_rng_draws": 5
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 206,
+          "action": "place",
+          "kind": 50,
+          "x": 54,
+          "y": 13,
+          "start": [
+            53,
+            13
+          ],
+          "cells_considered": 2,
+          "parent_rng_draws": 4
+        }
+      },
+      "result": "results/commercial_add_9-seed-7.json",
+      "result_sha256": "2edd4474895ec88ae423d01ea5fd6b06315026518b80760d9d4f54693266c06a"
+    },
+    {
+      "case": "commercial_noadd_8",
+      "seed": 0,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 660204,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 0,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            0,
+            18
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 206,
+          "action": "none",
+          "start": [
+            28,
+            17
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/commercial_noadd_8-seed-0.json",
+      "result_sha256": "3b9160b66a7bb6b96a93e5d9d97614ccb6e4e7aaa8293f31c844ea6aa00e9429"
+    },
+    {
+      "case": "commercial_noadd_8",
+      "seed": 1,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 660204,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 0,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            38,
+            8
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 206,
+          "action": "none",
+          "start": [
+            33,
+            15
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/commercial_noadd_8-seed-1.json",
+      "result_sha256": "ac9b5284098af81b73a94db15ccfdb1e3eeddef6c1029ab733727bb14eef33b7"
+    },
+    {
+      "case": "commercial_noadd_8",
+      "seed": 7,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 660204,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 0,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            4,
+            6
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 206,
+          "action": "none",
+          "start": [
+            8,
+            24
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/commercial_noadd_8-seed-7.json",
+      "result_sha256": "3b8159e267c67b7e0e51b27aff920300544c1ac4a9a8049fb7d0386c1d4f6fd3"
+    },
+    {
+      "case": "commercial_remove_2",
+      "seed": 0,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 560663,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            0,
+            18
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "demolish",
+          "kind": 59,
+          "x": 44,
+          "y": 17,
+          "start": [
+            28,
+            17
+          ],
+          "cells_considered": 17,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/commercial_remove_2-seed-0.json",
+      "result_sha256": "54c55e2d96a85cdfdee65d4038052574eca9b0dfe2ba2fbaeca126ca4be4691c"
+    },
+    {
+      "case": "commercial_remove_2",
+      "seed": 1,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 557568,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            38,
+            8
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "demolish",
+          "kind": 66,
+          "x": 44,
+          "y": 15,
+          "start": [
+            33,
+            15
+          ],
+          "cells_considered": 12,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/commercial_remove_2-seed-1.json",
+      "result_sha256": "e6fbd3a5c5d8301d7bab7a20a7da6c23275d3b02ef1f017708d801c34c1f1ec1"
+    },
+    {
+      "case": "commercial_remove_2",
+      "seed": 7,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 570533,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            4,
+            6
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "demolish",
+          "kind": 50,
+          "x": 43,
+          "y": 24,
+          "start": [
+            8,
+            24
+          ],
+          "cells_considered": 36,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/commercial_remove_2-seed-7.json",
+      "result_sha256": "3edde410c198de437225341a9156a3022501210213f37b563ea3ff43a1103ac8"
+    },
+    {
+      "case": "commercial_keep_3",
+      "seed": 0,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 681302,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            0,
+            18
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "none",
+          "start": [
+            28,
+            17
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/commercial_keep_3-seed-0.json",
+      "result_sha256": "947237f96e87723b30c0d4ad63d8fc807e3c7c3799487fe91ebe05d62b1c2e43"
+    },
+    {
+      "case": "commercial_keep_3",
+      "seed": 1,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 681302,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            38,
+            8
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "none",
+          "start": [
+            33,
+            15
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/commercial_keep_3-seed-1.json",
+      "result_sha256": "5b481f300690561f5101ecf05384514f411045da47e6545f8ab5317196f81a31"
+    },
+    {
+      "case": "commercial_keep_3",
+      "seed": 7,
+      "passed": true,
+      "mode": "controlled_parent_slice",
+      "steps": 681302,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            4,
+            6
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "none",
+          "start": [
+            8,
+            24
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/commercial_keep_3-seed-7.json",
+      "result_sha256": "0c727d7ebb427377b434959b8ece6420cae3a231d1fed75f5474d996faf98712"
+    },
+    {
+      "case": "whole_base",
+      "seed": 1,
+      "passed": true,
+      "mode": "whole_function_arrival",
+      "steps": 2546745,
+      "details": {
+        "home_population_cached": 824,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 206,
+        "office": {
+          "category": 4,
+          "difference": 401,
+          "action": "none",
+          "start": [
+            7,
+            3
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -318,
+          "action": "none",
+          "start": [
+            26,
+            4
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/whole_base-seed-1.json",
+      "result_sha256": "9564d3fcb48d1b1028c9dabf051b2459fed9d24b40dbc165ea077979c7823c7c"
+    },
+    {
+      "case": "whole_level0",
+      "seed": 1,
+      "passed": true,
+      "mode": "whole_function_arrival",
+      "steps": 2575640,
+      "details": {
+        "home_population_cached": 796,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 199,
+        "office": {
+          "category": 4,
+          "difference": 373,
+          "action": "none",
+          "start": [
+            25,
+            10
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -325,
+          "action": "demolish",
+          "kind": 50,
+          "x": 43,
+          "y": 23,
+          "start": [
+            15,
+            23
+          ],
+          "cells_considered": 29,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/whole_level0-seed-1.json",
+      "result_sha256": "852b1894193931d53bdf7b2cae13852b21cba79f4659f30a25bf9f0c5ce68d16"
+    },
+    {
+      "case": "whole_level15",
+      "seed": 1,
+      "passed": true,
+      "mode": "whole_function_arrival",
+      "steps": 2877491,
+      "details": {
+        "home_population_cached": 1232,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 308,
+        "office": {
+          "category": 4,
+          "difference": 809,
+          "action": "place",
+          "kind": 40,
+          "x": 54,
+          "y": 5,
+          "start": [
+            53,
+            5
+          ],
+          "cells_considered": 2,
+          "parent_rng_draws": 4
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -216,
+          "action": "none",
+          "start": [
+            2,
+            49
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/whole_level15-seed-1.json",
+      "result_sha256": "9bd254db9d94c48b7f200c7d33d06d08b52ff7208490f6366dc3d373de125753"
+    },
+    {
+      "case": "whole_company_surplus",
+      "seed": 1,
+      "passed": true,
+      "mode": "whole_function_arrival",
+      "steps": 2194569,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 423,
+        "commercial_population": 524,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": -423,
+          "action": "demolish",
+          "kind": 40,
+          "x": 34,
+          "y": 10,
+          "start": [
+            25,
+            10
+          ],
+          "cells_considered": 10,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": -524,
+          "action": "demolish",
+          "kind": 56,
+          "x": 41,
+          "y": 7,
+          "start": [
+            28,
+            7
+          ],
+          "cells_considered": 14,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/whole_company_surplus-seed-1.json",
+      "result_sha256": "d82e7211b60b11ce31e0b752565c70fe7a09f4d1859cdc1d62dbfef332d247e6"
+    },
+    {
+      "case": "whole_commercial_shortage",
+      "seed": 1,
+      "passed": true,
+      "mode": "whole_function_arrival",
+      "steps": 2666263,
+      "details": {
+        "home_population_cached": 1232,
+        "office_population": 423,
+        "commercial_population": 0,
+        "home_quarter_truncated": 308,
+        "office": {
+          "category": 4,
+          "difference": 809,
+          "action": "place",
+          "kind": 40,
+          "x": 54,
+          "y": 5,
+          "start": [
+            53,
+            5
+          ],
+          "cells_considered": 2,
+          "parent_rng_draws": 4
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 308,
+          "action": "place",
+          "kind": 65,
+          "x": 2,
+          "y": 49,
+          "start": [
+            2,
+            49
+          ],
+          "cells_considered": 1,
+          "parent_rng_draws": 3
+        }
+      },
+      "result": "results/whole_commercial_shortage-seed-1.json",
+      "result_sha256": "0db202f0745b8aa72c89ff86f73db011ba50d3c9f54c779ef82e2656a0e7ec98"
+    },
+    {
+      "case": "whole_zero",
+      "seed": 1,
+      "passed": true,
+      "mode": "whole_function_arrival",
+      "steps": 2125049,
+      "details": {
+        "home_population_cached": 0,
+        "office_population": 0,
+        "commercial_population": 0,
+        "home_quarter_truncated": 0,
+        "office": {
+          "category": 4,
+          "difference": 0,
+          "action": "none",
+          "start": [
+            31,
+            7
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        },
+        "commercial": {
+          "category": 5,
+          "difference": 0,
+          "action": "none",
+          "start": [
+            56,
+            30
+          ],
+          "cells_considered": 3000,
+          "parent_rng_draws": 2
+        }
+      },
+      "result": "results/whole_zero-seed-1.json",
+      "result_sha256": "a7ca88c1f948b53a7eab60d7e7fc556b3ce6cfadb306937a4bad7a8a36130b72"
+    }
   ],
-  "planned_slice_cases": 9,
-  "planned_seeds": [
-    0,
-    1,
-    7
-  ],
-  "planned_whole_cases": 6,
-  "results_saved": false
+  "scope": "27 controlled parent-slice cases plus 6 original whole-function arrival cases; no full-game or physical PS1 claim"
 }
