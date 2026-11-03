@@ -7,9 +7,11 @@
 
 今回、保存元の現行ファイルから解析関係11件（ZIP5件）を確認した。
 この台帳・元ファイルへのリンク・版・サイズをGitで管理する。
-**ZIP本体のGit保存は未完了であり、リンク登録を本体バックアップとは扱わない。**
-現在の読取り専用実行環境では、必要なファイル転送を実行できない。
-転送できる環境になった時点で、本体を検査して保存する必要がある。
+**最新r2の再添付ZIPは、全バイトを209分割でGitへ保存し、全件を読み戻して添付原本と一致確認した。**
+[保存先と復元手順](../archives/20261103-r2/README.md)
+ZIPサイズ153696391バイト、SHA-256はafd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd。
+ほかのZIP4件と未取得ファイルは引き続き転送待ちである。リンク登録だけを本体バックアップとは扱わない。
+元Library項目を別途取得して再添付ファイルと比較したわけではなく、添付原本の完全保存を確認した。
 
 既存のセッション復旧記録と再構成コードは
 [2026-11-03-session-recovery](../2026-11-03-session-recovery/README.md) に保存済み。
@@ -33,7 +35,7 @@
 
 | 保存元ファイル | 元サイズ（バイト） | 現行版 | Gitの状態 |
 |---|---:|---|---|
-| [Conveni-PS1-Analysis-Checkpoint-20261103-r2.zip](https://chatgpt.com/library?file_id=libfile_dd7eacb0b7348191ba76a0d9186ec777&account_id=personal) | 153,696,391 | 25 | 本体転送待ち |
+| [Conveni-PS1-Analysis-Checkpoint-20261103-r2.zip](https://chatgpt.com/library?file_id=libfile_dd7eacb0b7348191ba76a0d9186ec777&account_id=personal) | 153,696,391 | 25 | 再添付ZIPを分割保存・全バイト読戻し済み |
 | [Conveni-PS1-Analysis-Checkpoint-20261013(1).zip](https://chatgpt.com/library?file_id=libfile_e29b8fbed5e081919c4f8b1d38ea7990&account_id=personal) | 13,833,932 | 未提示 | 本体転送待ち |
 | [Conveni-PS1-Analysis-Checkpoint-20261013.zip](https://chatgpt.com/library?file_id=libfile_955a9402ab308191bd53c589df824a1b&account_id=personal) | 13,833,932 | 9 | 本体転送待ち |
 | [Conveni-PS1-Claude-Handoff.md](https://chatgpt.com/library?file_id=libfile_3ea8d6967664819196d29a0bb72e951c&account_id=personal) | 29,526,568 | 103 | 本体転送待ち |
@@ -65,6 +67,7 @@
 
 - read_text_copy_saved：取得した全文読取テキストをGitへ保存。原ファイルの完全コピーではない。
 - binary_transfer_pending：メタデータ・所在を登録したのみ。本体未取得・未保存。
+- attachment_copy_saved_split_verified：再添付されたZIPの全バイトを分割保存し、全分割データの読戻しで一致を確認。元Library項目との別途バイト比較は未実施。
 
 inventory.json内のgit_statusはこの保存コミットの内容を表す。
 これは移行作業の途中記録であり、全成果物のGit移行完了報告ではない。

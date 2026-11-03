@@ -16,7 +16,11 @@
   },
   "verification": {
     "uploaded_git_blob_sha1_matched": 209,
-    "remote_byte_readback": false
+    "remote_byte_readback": true,
+    "remote_parts_verified": 209,
+    "remote_verified_bytes": 153696391,
+    "readback_commit": "564fa120c34b34c1005ee8df669a52b0296b60d6",
+    "method": "Each part fetched from the immutable Git commit as base64 and compared byte-for-byte with the corresponding attached ZIP range; all 209 Git blob SHA-1 values also match."
   },
   "parts": [
     {

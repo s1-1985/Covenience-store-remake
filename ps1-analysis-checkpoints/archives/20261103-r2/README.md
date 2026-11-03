@@ -41,5 +41,7 @@ ZIPを展開して利用する場合は十分な空き容量を確保する。
 
 アップロード時に全209部品について、添付ZIPから計算したGit blob SHA-1とGitHubの応答が一致した。
 復元スクリプトも添付ZIPの分割読取りを用いて実行し、全体サイズ・SHA-256が一致した。
-保存先からの全バイト読戻し結果はmanifest.jsonのverification.remote_byte_readbackに記録する。
+保存確定後、全209部品をGitHubからbase64形式で読み戻し、添付ZIPの各対応範囲と全バイト一致を確認した。
+読戻し対象コミット：564fa120c34b34c1005ee8df669a52b0296b60d6。
+manifest.jsonのverification.remote_byte_readback=true、remote_parts_verified=209に記録した。
 この記録では、元のLibrary項目と再添付ZIPを別々にダウンロードして比較してはいない。

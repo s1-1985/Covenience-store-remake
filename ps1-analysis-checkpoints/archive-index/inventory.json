@@ -1,7 +1,7 @@
 {
   "recorded_date_jst": "2026-11-03",
   "scope": "Current Library items matching Conveni-PS1 titles; not enumeration of all historical versions",
-  "binary_files_copied": 0,
+  "binary_files_copied": 1,
   "text_read_copies": 2,
   "original_source_sha256_verified": false,
   "records": [
@@ -13,9 +13,15 @@
       "source_size_bytes": 153696391,
       "source_modified_at": "2026-11-03T01:04:15.970159Z",
       "source_url": "https://chatgpt.com/library?file_id=libfile_dd7eacb0b7348191ba76a0d9186ec777&account_id=personal",
-      "git_status": "binary_transfer_pending",
-      "git_path": null,
-      "original_bytes_copied": false
+      "git_status": "attachment_copy_saved_split_verified",
+      "git_path": "ps1-analysis-checkpoints/archives/20261103-r2/manifest.json",
+      "original_bytes_copied": false,
+      "attached_zip_bytes_copied": true,
+      "attached_zip_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+      "attached_library_file_id": "libfile_eb287b91c66881918df0c7270ebfe3b7",
+      "readback_parts_verified": 209,
+      "source_library_bytes_compared": false,
+      "source_match_note": "User reattached the intended r2 ZIP; filename, size and contained README match. Source Library item was not separately downloaded for a byte comparison."
     },
     {
       "name": "Conveni-PS1-Analysis-Checkpoint-20261013(1).zip",
