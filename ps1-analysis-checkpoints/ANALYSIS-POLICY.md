@@ -25,6 +25,8 @@
 
 - [町成長の全体実行と到達部分照合](analysis/20261103-town-full-flow/README.md)
 
-- [会社・商業施設の増減モデル（実行照合待ち）](analysis/20261103-town-balance/README.md)
+- [会社・商業施設の増減モデル（原処理33条件一致）](analysis/20261103-town-balance/README.md)
+
+- [営業継続コードと開始状態の確認](analysis/20261103-operating-continuation/README.md)
 
 解析継続時は最新コミットと各README・results.jsonを読んで再開地点を確認する。

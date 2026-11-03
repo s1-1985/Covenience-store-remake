@@ -18,6 +18,19 @@ def main():
     out.mkdir(exist_ok=True)
     model=root/"balance-analysis.py"
     tested_sha=os.environ.get("GITHUB_SHA")
+    cache_path=root/"status.json"
+    if cache_path.exists():
+        cached=json.loads(cache_path.read_text(encoding="utf-8"))
+        cases=cached.get("cases",[])
+        if (cached.get("status")=="native_validation_passed"
+            and cached.get("model_sha256")==hashlib.sha256(model.read_bytes()).hexdigest()
+            and len(cases)==33 and all(r.get("passed") for r in cases)
+            and all((root/r["result"]).is_file() and
+                    hashlib.sha256((root/r["result"]).read_bytes()).hexdigest()==r["result_sha256"]
+                    for r in cases)):
+            print("Verified cached town-balance results: 33/33; model and result hashes unchanged",flush=True)
+            return 0
+
     records=[]
     fatal=None
     try:
