@@ -25,4 +25,6 @@
 
 - [町成長の全体実行と到達部分照合](analysis/20261103-town-full-flow/README.md)
 
+- [会社・商業施設の増減モデル（実行照合待ち）](analysis/20261103-town-balance/README.md)
+
 解析継続時は最新コミットと各README・results.jsonを読んで再開地点を確認する。

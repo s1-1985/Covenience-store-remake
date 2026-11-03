@@ -1,0 +1,17 @@
+{
+  "date_jst": "2026-11-03",
+  "status": "static_model_execution_pending",
+  "reason": "Execution environment reconnect interrupted additional testing",
+  "verified_prior_checkpoints": [
+    "20261103-rival-monthly",
+    "20261103-town-full-flow"
+  ],
+  "planned_slice_cases": 9,
+  "planned_seeds": [
+    0,
+    1,
+    7
+  ],
+  "planned_whole_cases": 6,
+  "results_saved": false
+}
