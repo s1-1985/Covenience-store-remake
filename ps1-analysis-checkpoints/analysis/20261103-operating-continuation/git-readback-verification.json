@@ -1,0 +1,57 @@
+{
+  "all_passed": true,
+  "binary_files_verified": 6,
+  "results": [
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-03-single.card-file.bin",
+      "bytes": 114688,
+      "sha256": "204d218b9f7e462a1d2d9c4d5e82c0554f36d71b443763ece142462364d03fc4",
+      "matched": true
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-03-single.payload.bin",
+      "bytes": 104364,
+      "sha256": "caa3b9636beec7a0a9d27920b88a9abeb11e5807462eee6774a72261b635f348",
+      "matched": true
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-04-single.card-file.bin",
+      "bytes": 114688,
+      "sha256": "1e00dff1ca3bf88e1350238c4d346223caa899d747e7d65c06893ac3f1234787",
+      "matched": true
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-04-single.payload.bin",
+      "bytes": 104364,
+      "sha256": "756641bbcd4cf7a7b6be6ae658c82a443bb586e67e7617c440c79960a4c03f9f",
+      "matched": true
+    },
+    {
+      "path": "runs/batch-03/generated/source/opened-snapshots-20261028/TOWN0001-ci-main-03-single.ram.zlib",
+      "bytes": 507880,
+      "sha256": "912de9143a32886eeafcaf57dbde80e5c4bde3beaebcba91c0db57a0b7501e29",
+      "matched": true,
+      "ram_sha256": "4ca6d0a23ecc0d7a82f462b4d0e416d57e790231a35979e954fc2c079454a1fd",
+      "clock": 13998,
+      "cash": [
+        98750013,
+        153780927
+      ]
+    },
+    {
+      "path": "runs/batch-03/generated/source/opened-snapshots-20261028/TOWN0001-ci-main-04-single.ram.zlib",
+      "bytes": 507904,
+      "sha256": "291781c41e6ef43284cef772a5cbf41214c120077f1d2e57370a831d60a317b9",
+      "matched": true,
+      "ram_sha256": "9e100c22611f47a46048eef4e399b09b84cd16b4716fb4776613c4102ddb41bf",
+      "clock": 14400,
+      "cash": [
+        98786741,
+        153764941
+      ]
+    }
+  ],
+  "logical_file_payloads_and_checksums_match": true,
+  "source_commit": "8a56b9ff0b03f932680b6248bd6de9bc1f21b930",
+  "final_text_files_compared": 14
+}
