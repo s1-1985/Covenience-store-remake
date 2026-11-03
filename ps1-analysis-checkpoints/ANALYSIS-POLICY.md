@@ -21,4 +21,6 @@
 - [原保存ペイロード処理の再実行](analysis/20261103-native-payload-recovery/README.md)
 - [原カードファイル処理の再接続](analysis/20261103-native-file-recovery/README.md)
 
+- [ライバル月次処理の再照合](analysis/20261103-rival-monthly/README.md)
+
 解析継続時は最新コミットと各README・results.jsonを読んで再開地点を確認する。
