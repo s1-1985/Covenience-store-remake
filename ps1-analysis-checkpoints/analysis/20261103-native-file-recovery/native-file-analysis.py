@@ -296,6 +296,8 @@ def sha(data):
 
 def file_suite(exe,payloads):
     assert sha(exe)==EXE_SOURCE_SHA
+    if len(payloads)!=2 or any(len(p)!=104364 for _,p in payloads):
+        raise ValueError('expected the two complete r2 payloads')
     records=[]
     for case_index,(source,payload) in enumerate(payloads):
         cpu=Cpu(exe)
@@ -370,6 +372,11 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("zip")
     args=parser.parse_args()
+    digest=hashlib.sha256()
+    with open(args.zip,'rb') as source:
+        for block in iter(lambda:source.read(1048576),b''):digest.update(block)
+    if digest.hexdigest()!=ZIP_SOURCE_SHA:
+        raise ValueError('r2 ZIP SHA-256 mismatch')
     with zipfile.ZipFile(args.zip) as z:
         exe=z.read("algorithm-analysis/source/SLPS_007.82")
         names=sorted(n for n in z.namelist() if n.startswith("algorithm-analysis/source/operating-save-payloads-20261103/") and n.endswith(".payload.bin"))
