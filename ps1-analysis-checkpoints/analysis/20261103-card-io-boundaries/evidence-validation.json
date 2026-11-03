@@ -1,0 +1,11 @@
+{
+  "all_evidence_consistent": true,
+  "diagnostic_inputs": 72,
+  "full_io_traces_verified": 64,
+  "data_patch_bytes_verified": 213,
+  "whole_files_reconstructed": 16,
+  "original_retry_loops_verified": 4,
+  "source_payload": "algorithm-analysis/source/operating-save-payloads-20261103/TOWN0001-nov3-r2-24h-07-single.payload.bin",
+  "source_payload_sha256": "e6a7a7a16b914d65598fd252e7c65ff5bc0658d80ba8e6c4d0564d01b7e6bd7a",
+  "scope": "Evidence integrity and exact reconstruction, not a claim that all native I/O requests succeeded or that physical card behavior was reproduced."
+}

@@ -1,0 +1,130 @@
+[
+  {
+    "operation": "read",
+    "mode": 0,
+    "persistent_result": -1,
+    "state": "instruction_budget_exhausted",
+    "return_value": null,
+    "steps": 200000,
+    "stopped_pc": "0x8007ac50",
+    "io_calls": 9479,
+    "wait_calls": 9482,
+    "wait_arguments": [
+      2,
+      2,
+      2
+    ]
+  },
+  {
+    "operation": "read",
+    "mode": 0,
+    "persistent_result": 0,
+    "state": "instruction_budget_exhausted",
+    "return_value": null,
+    "steps": 200000,
+    "stopped_pc": "0x8007ac50",
+    "io_calls": 9479,
+    "wait_calls": 9482,
+    "wait_arguments": [
+      2,
+      2,
+      2
+    ]
+  },
+  {
+    "operation": "read",
+    "mode": 1,
+    "persistent_result": -1,
+    "state": "instruction_budget_exhausted",
+    "return_value": null,
+    "steps": 200000,
+    "stopped_pc": "0x8007ad98",
+    "io_calls": 9479,
+    "wait_calls": 9482,
+    "wait_arguments": [
+      2,
+      2,
+      2
+    ]
+  },
+  {
+    "operation": "read",
+    "mode": 1,
+    "persistent_result": 0,
+    "state": "instruction_budget_exhausted",
+    "return_value": null,
+    "steps": 200000,
+    "stopped_pc": "0x8007ad98",
+    "io_calls": 9479,
+    "wait_calls": 9482,
+    "wait_arguments": [
+      2,
+      2,
+      2
+    ]
+  },
+  {
+    "operation": "write",
+    "mode": 0,
+    "persistent_result": -1,
+    "state": "instruction_budget_exhausted",
+    "return_value": null,
+    "steps": 200000,
+    "stopped_pc": "0x8007af5c",
+    "io_calls": 9478,
+    "wait_calls": 9481,
+    "wait_arguments": [
+      2,
+      2,
+      2
+    ]
+  },
+  {
+    "operation": "write",
+    "mode": 0,
+    "persistent_result": 0,
+    "state": "instruction_budget_exhausted",
+    "return_value": null,
+    "steps": 200000,
+    "stopped_pc": "0x8007af5c",
+    "io_calls": 9478,
+    "wait_calls": 9481,
+    "wait_arguments": [
+      2,
+      2,
+      2
+    ]
+  },
+  {
+    "operation": "write",
+    "mode": 1,
+    "persistent_result": -1,
+    "state": "instruction_budget_exhausted",
+    "return_value": null,
+    "steps": 200000,
+    "stopped_pc": "0x80089ca4",
+    "io_calls": 9478,
+    "wait_calls": 9480,
+    "wait_arguments": [
+      2,
+      2,
+      2
+    ]
+  },
+  {
+    "operation": "write",
+    "mode": 1,
+    "persistent_result": 0,
+    "state": "instruction_budget_exhausted",
+    "return_value": null,
+    "steps": 200000,
+    "stopped_pc": "0x80089ca4",
+    "io_calls": 9478,
+    "wait_calls": 9480,
+    "wait_arguments": [
+      2,
+      2,
+      2
+    ]
+  }
+]

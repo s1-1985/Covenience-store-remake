@@ -1,6 +1,5 @@
 {
-  "total_inputs": 24,
-  "successful_return_with_data_mismatch": 5,
+  "total_diagnostic_inputs": 72,
   "source_cases": [
     {
       "operation": "read",
@@ -261,5 +260,671 @@
       "first_differences": []
     }
   ],
-  "scope": "Controlled synchronous logical BIOS boundary; one short/error transfer followed by normal transfers. Not a physical card claim."
+  "last_chunk_cases": [
+    {
+      "operation": "read",
+      "mode": 0,
+      "injected_result": -1,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "injected_result": -1,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 387,
+      "first_differences": []
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "injected_result": 0,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "injected_result": 0,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 387,
+      "first_differences": []
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "injected_result": 127,
+      "return_value": 0,
+      "matches_requested_data": false,
+      "io_count": 1403,
+      "first_differences": [
+        {
+          "offset": 89472,
+          "actual": 0,
+          "expected": 63
+        },
+        {
+          "offset": 89473,
+          "actual": 124,
+          "expected": 225
+        }
+      ]
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "injected_result": 127,
+      "return_value": null,
+      "matches_requested_data": false,
+      "io_count": 9354,
+      "first_differences": [
+        {
+          "offset": 114175,
+          "actual": 204,
+          "expected": 165
+        }
+      ]
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "injected_result": 128,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1402,
+      "first_differences": []
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "injected_result": 128,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 386,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": -1,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": -1,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 387,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": 0,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": 0,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 387,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": 127,
+      "return_value": 0,
+      "matches_requested_data": false,
+      "io_count": 1403,
+      "first_differences": [
+        {
+          "offset": 89599,
+          "actual": 147,
+          "expected": 202
+        }
+      ]
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": 127,
+      "return_value": null,
+      "matches_requested_data": false,
+      "io_count": 9352,
+      "first_differences": [
+        {
+          "offset": 114175,
+          "actual": 165,
+          "expected": 202
+        }
+      ]
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": 128,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1402,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": 128,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 386,
+      "first_differences": []
+    }
+  ],
+  "persistent_cases": [
+    {
+      "operation": "read",
+      "mode": 0,
+      "persistent_result": -1,
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "steps": 200000,
+      "stopped_pc": "0x8007ac50",
+      "io_calls": 9479,
+      "wait_calls": 9482,
+      "wait_arguments": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "persistent_result": 0,
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "steps": 200000,
+      "stopped_pc": "0x8007ac50",
+      "io_calls": 9479,
+      "wait_calls": 9482,
+      "wait_arguments": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "persistent_result": -1,
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "steps": 200000,
+      "stopped_pc": "0x8007ad98",
+      "io_calls": 9479,
+      "wait_calls": 9482,
+      "wait_arguments": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "persistent_result": 0,
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "steps": 200000,
+      "stopped_pc": "0x8007ad98",
+      "io_calls": 9479,
+      "wait_calls": 9482,
+      "wait_arguments": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "persistent_result": -1,
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "steps": 200000,
+      "stopped_pc": "0x8007af5c",
+      "io_calls": 9478,
+      "wait_calls": 9481,
+      "wait_arguments": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "persistent_result": 0,
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "steps": 200000,
+      "stopped_pc": "0x8007af5c",
+      "io_calls": 9478,
+      "wait_calls": 9481,
+      "wait_arguments": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "persistent_result": -1,
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "steps": 200000,
+      "stopped_pc": "0x80089ca4",
+      "io_calls": 9478,
+      "wait_calls": 9480,
+      "wait_arguments": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "persistent_result": 0,
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "steps": 200000,
+      "stopped_pc": "0x80089ca4",
+      "io_calls": 9478,
+      "wait_calls": 9480,
+      "wait_arguments": [
+        2,
+        2,
+        2
+      ]
+    }
+  ],
+  "endpoint_cases": [
+    {
+      "operation": "read",
+      "mode": 0,
+      "endpoint": "open",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 2,
+      "steps": 40155,
+      "open_handles": {},
+      "trace_sha256": "fd1532f0f5265fd049216ca877b6ea0817047bd3662f88c78508f0e868ea9dd1"
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "endpoint": "open",
+      "frequency": "persistent",
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "calls": 11713,
+      "steps": 200000,
+      "open_handles": {},
+      "trace_sha256": "240b644c3a18389bf3a99ad9cbff05c1405dcc7b0a8e44d2f9c6df6aabf3f5a3"
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "endpoint": "seek",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 701,
+      "steps": 40161,
+      "open_handles": {},
+      "trace_sha256": "99fe8e8aff9751c344f5f0aa21ed1cf31887d5089774859dbdee9821f32ea633"
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "endpoint": "seek",
+      "frequency": "persistent",
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "calls": 8656,
+      "steps": 200000,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 0
+        }
+      },
+      "trace_sha256": "30a9b9ba63ff1287c46ea20ee10c79e5ffdc9382ad1ff4d3cb1e1fd21e58263c"
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "endpoint": "close",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 1,
+      "steps": 40138,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 90112
+        }
+      },
+      "trace_sha256": "2d6d139c4972b8688f005e91c7ddaea1064c36e0bdae96e1d168099d18f97757"
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "endpoint": "close",
+      "frequency": "persistent",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 1,
+      "steps": 40138,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 90112
+        }
+      },
+      "trace_sha256": "2d6d139c4972b8688f005e91c7ddaea1064c36e0bdae96e1d168099d18f97757"
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "endpoint": "open",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 2,
+      "steps": 11707,
+      "open_handles": {},
+      "trace_sha256": "e9c6ec510f9d3c2e90ee285f8180d0812bc0518087d444e812fad581f0ba1232"
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "endpoint": "open",
+      "frequency": "persistent",
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "calls": 11713,
+      "steps": 200000,
+      "open_handles": {},
+      "trace_sha256": "240b644c3a18389bf3a99ad9cbff05c1405dcc7b0a8e44d2f9c6df6aabf3f5a3"
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "endpoint": "seek",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 193,
+      "steps": 11713,
+      "open_handles": {},
+      "trace_sha256": "f923fe919e9a90c015a80d4539f8fbb453caf2919966533a1d2001c3d3d32595"
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "endpoint": "seek",
+      "frequency": "persistent",
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "calls": 8656,
+      "steps": 200000,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 0
+        }
+      },
+      "trace_sha256": "1f70ce89e0fe999381680f8237f5b1f0fd1f4718ee0a0d477a64e22a50d2a6df"
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "endpoint": "close",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 1,
+      "steps": 11690,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 114688
+        }
+      },
+      "trace_sha256": "9b4e815930605435922ec771292da1f96541d2060f6fe358881e102e6fb4ae61"
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "endpoint": "close",
+      "frequency": "persistent",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 1,
+      "steps": 11690,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 114688
+        }
+      },
+      "trace_sha256": "9b4e815930605435922ec771292da1f96541d2060f6fe358881e102e6fb4ae61"
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "endpoint": "open",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 2,
+      "steps": 40182,
+      "open_handles": {},
+      "trace_sha256": "debd96ff1d3f7de1ae258bc575877f899ad618ee05565a791d8112a6824f28e9"
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "endpoint": "open",
+      "frequency": "persistent",
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "calls": 11711,
+      "steps": 200000,
+      "open_handles": {},
+      "trace_sha256": "001f9f2a5d83e8c50e1a6eac74b306ac8d0b21815e18ed312f03c5a06f90d50a"
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "endpoint": "seek",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 701,
+      "steps": 40188,
+      "open_handles": {},
+      "trace_sha256": "6988be09c428076b35bab1725ac3826318803d96fb85b9b8bef4f45642887c60"
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "endpoint": "seek",
+      "frequency": "persistent",
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "calls": 8655,
+      "steps": 200000,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 0
+        }
+      },
+      "trace_sha256": "27becc62fe7cced4df15b88ae4f75a053eb18b7125400990bfa5c4d62121c83d"
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "endpoint": "close",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 1,
+      "steps": 40165,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 90112
+        }
+      },
+      "trace_sha256": "20d33e96da06623ee464c5ba3c4b2eed5f26f7ca37c2bcfae5e006e700b1b9f3"
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "endpoint": "close",
+      "frequency": "persistent",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 1,
+      "steps": 40165,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 90112
+        }
+      },
+      "trace_sha256": "20d33e96da06623ee464c5ba3c4b2eed5f26f7ca37c2bcfae5e006e700b1b9f3"
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "endpoint": "open",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 2,
+      "steps": 11734,
+      "open_handles": {},
+      "trace_sha256": "1870cf75a723a781300a9b530e0aae55f5e8848bf64de615105f5bc48fa95e55"
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "endpoint": "open",
+      "frequency": "persistent",
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "calls": 11711,
+      "steps": 200000,
+      "open_handles": {},
+      "trace_sha256": "001f9f2a5d83e8c50e1a6eac74b306ac8d0b21815e18ed312f03c5a06f90d50a"
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "endpoint": "seek",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 193,
+      "steps": 11740,
+      "open_handles": {},
+      "trace_sha256": "62ad57b08672dcbf75855a34307b0b26b109d0b8bc3e2f476a9192c587a243bf"
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "endpoint": "seek",
+      "frequency": "persistent",
+      "state": "instruction_budget_exhausted",
+      "return_value": null,
+      "calls": 8655,
+      "steps": 200000,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 0
+        }
+      },
+      "trace_sha256": "3bbae7b8da0976dc5deb4c067ce027c32e3f5eebc9464035fc3f39aeafb5dfed"
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "endpoint": "close",
+      "frequency": "once",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 1,
+      "steps": 11717,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 114688
+        }
+      },
+      "trace_sha256": "9092065c6ef4754d130fc83a0143c6640efbba952fc1a2bfafe31b646d51b828"
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "endpoint": "close",
+      "frequency": "persistent",
+      "state": "returned",
+      "return_value": 0,
+      "calls": 1,
+      "steps": 11717,
+      "open_handles": {
+        "3": {
+          "name": "bu00:BISLPS-00782CONV",
+          "position": 114688
+        }
+      },
+      "trace_sha256": "9092065c6ef4754d130fc83a0143c6640efbba952fc1a2bfafe31b646d51b828"
+    }
+  ],
+  "validation": {
+    "all_evidence_consistent": true,
+    "diagnostic_inputs": 72,
+    "full_io_traces_verified": 64,
+    "data_patch_bytes_verified": 213,
+    "whole_files_reconstructed": 16,
+    "original_retry_loops_verified": 4,
+    "source_payload": "algorithm-analysis/source/operating-save-payloads-20261103/TOWN0001-nov3-r2-24h-07-single.payload.bin",
+    "source_payload_sha256": "e6a7a7a16b914d65598fd252e7c65ff5bc0658d80ba8e6c4d0564d01b7e6bd7a",
+    "scope": "Evidence integrity and exact reconstruction, not a claim that all native I/O requests succeeded or that physical card behavior was reproduced."
+  },
+  "scope": "Controlled logical BIOS boundaries; test instruction budgets are not native timeouts. No added natural gameplay cases."
 }

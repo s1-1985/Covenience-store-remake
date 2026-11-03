@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "scope": "Earlier unchanged r2 states; logical card and decode diagnostic before new checkpoint chain, not new gameplay updates.",
+  "cases": [
+    {
+      "source": "TOWN0001-nov3-two-own-nextday-single",
+      "passed": true,
+      "body_sha256": "323e15834389adbc15f6598055b5f8ac9044dac559332f6fb5a17affb034ad60",
+      "decoded_fields": 37,
+      "tail_sha256": "bacc14e063a45186cbc0ed6f041570aae3a02f7173a93061968ae42b2966b536"
+    },
+    {
+      "source": "TOWN0001-nov3-r2-24h-07-single",
+      "passed": true,
+      "body_sha256": "3c64565d302e8cabb5e1b92563306cf4d76efd9aebf0f91454f1871e2a1885e7",
+      "decoded_fields": 37,
+      "tail_sha256": "bacc14e063a45186cbc0ed6f041570aae3a02f7173a93061968ae42b2966b536"
+    }
+  ]
+}
