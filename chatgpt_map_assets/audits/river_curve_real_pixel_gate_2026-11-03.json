@@ -1,0 +1,254 @@
+{
+  "date": "2026-11-03",
+  "issue": 232,
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "scope": "Four 2026-11-01 river curve repair candidates compared with actual source PNG blobs",
+  "execution": "ACTUAL_REPOSITORY_PNGS_DECODED_AND_COMPARED_IN_ISOLATED_TOOL_RUNTIME",
+  "decoder": "pure JS RFC1951 zlib/PNG 64x64 RGBA8 noninterlaced; PNG filters 0..4",
+  "source_manifest": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/candidate_manifest.json",
+  "all_pngs_fetched": 10,
+  "all_pngs_decoded": 10,
+  "all_manifest_source_blob_sha_match": true,
+  "status": "TRIAGE_COMPLETE_ART_NOT_ACCEPTED",
+  "records": [
+    {
+      "asset_id": "river_ne",
+      "source_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ne.png",
+      "candidate_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_ne.png",
+      "source_git_blob_sha": "6d8f54d38e461c48e940d8ac9de04b8d608b828f",
+      "candidate_git_blob_sha": "569e2f577eeb90c4f7e77281ebcf5dc33a6a7414",
+      "source_sha_match_manifest": true,
+      "decoded_rgba_pixels": 4096,
+      "changed_pixels": 2728,
+      "changed_fraction": 0.66602,
+      "source_water_pixels": 1471,
+      "candidate_water_pixels": 1453,
+      "water_mask_iou": 0.62535,
+      "water_components": 1,
+      "largest_water_component": 1453,
+      "edges": {
+        "N": {
+          "active": true,
+          "water_count": 18,
+          "water_center": 30.5,
+          "reference_water_count": 19,
+          "reference_water_center": 31,
+          "center_offset_px": -0.5,
+          "width_delta_px": -1
+        },
+        "E": {
+          "active": true,
+          "water_count": 17,
+          "water_center": 32,
+          "reference_water_count": 18,
+          "reference_water_center": 32.5,
+          "center_offset_px": -0.5,
+          "width_delta_px": -1
+        },
+        "S": {
+          "active": false,
+          "water_count": 0,
+          "water_center": null,
+          "reference_water_count": null,
+          "reference_water_center": null,
+          "center_offset_px": null,
+          "width_delta_px": null
+        },
+        "W": {
+          "active": false,
+          "water_count": 0,
+          "water_center": null,
+          "reference_water_count": null,
+          "reference_water_center": null,
+          "center_offset_px": null,
+          "width_delta_px": null
+        }
+      },
+      "review_flags": [
+        "OVER_25_PERCENT_TRUE_PIXEL_CHANGE_REVIEW"
+      ],
+      "accepted": false
+    },
+    {
+      "asset_id": "river_sw",
+      "source_path": "chatgpt_map_assets/generated/directional_2026-10-24/river/river_sw.png",
+      "candidate_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_sw.png",
+      "source_git_blob_sha": "fe04e0bdb56a39bc2fc6d18e699e8b1eb30f1b41",
+      "candidate_git_blob_sha": "499be52fcc72ab4595e556680f39b8188f825345",
+      "source_sha_match_manifest": true,
+      "decoded_rgba_pixels": 4096,
+      "changed_pixels": 2925,
+      "changed_fraction": 0.71411,
+      "source_water_pixels": 1322,
+      "candidate_water_pixels": 1322,
+      "water_mask_iou": 0.62708,
+      "water_components": 1,
+      "largest_water_component": 1322,
+      "edges": {
+        "N": {
+          "active": false,
+          "water_count": 0,
+          "water_center": null,
+          "reference_water_count": null,
+          "reference_water_center": null,
+          "center_offset_px": null,
+          "width_delta_px": null
+        },
+        "E": {
+          "active": false,
+          "water_count": 0,
+          "water_center": null,
+          "reference_water_count": null,
+          "reference_water_center": null,
+          "center_offset_px": null,
+          "width_delta_px": null
+        },
+        "S": {
+          "active": true,
+          "water_count": 18,
+          "water_center": 30.5,
+          "reference_water_count": 19,
+          "reference_water_center": 31,
+          "center_offset_px": -0.5,
+          "width_delta_px": -1
+        },
+        "W": {
+          "active": true,
+          "water_count": 16,
+          "water_center": 32.5,
+          "reference_water_count": 18,
+          "reference_water_center": 32.5,
+          "center_offset_px": 0,
+          "width_delta_px": -2
+        }
+      },
+      "review_flags": [
+        "OVER_25_PERCENT_TRUE_PIXEL_CHANGE_REVIEW"
+      ],
+      "accepted": false
+    },
+    {
+      "asset_id": "river_nw",
+      "source_path": "chatgpt_map_assets/generated/directional_2026-10-24/river/river_nw.png",
+      "candidate_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_nw.png",
+      "source_git_blob_sha": "289838b50841c81e3481324e58f7368a5555f4b2",
+      "candidate_git_blob_sha": "564949aec451006262a3b68fc9dffed43337442e",
+      "source_sha_match_manifest": true,
+      "decoded_rgba_pixels": 4096,
+      "changed_pixels": 2859,
+      "changed_fraction": 0.698,
+      "source_water_pixels": 1322,
+      "candidate_water_pixels": 1321,
+      "water_mask_iou": 0.66436,
+      "water_components": 1,
+      "largest_water_component": 1321,
+      "edges": {
+        "N": {
+          "active": true,
+          "water_count": 16,
+          "water_center": 30.5,
+          "reference_water_count": 19,
+          "reference_water_center": 31,
+          "center_offset_px": -0.5,
+          "width_delta_px": -3
+        },
+        "E": {
+          "active": false,
+          "water_count": 0,
+          "water_center": null,
+          "reference_water_count": null,
+          "reference_water_center": null,
+          "center_offset_px": null,
+          "width_delta_px": null
+        },
+        "S": {
+          "active": false,
+          "water_count": 0,
+          "water_center": null,
+          "reference_water_count": null,
+          "reference_water_center": null,
+          "center_offset_px": null,
+          "width_delta_px": null
+        },
+        "W": {
+          "active": true,
+          "water_count": 18,
+          "water_center": 32.5,
+          "reference_water_count": 18,
+          "reference_water_center": 32.5,
+          "center_offset_px": 0,
+          "width_delta_px": 0
+        }
+      },
+      "review_flags": [
+        "OVER_25_PERCENT_TRUE_PIXEL_CHANGE_REVIEW"
+      ],
+      "accepted": false
+    },
+    {
+      "asset_id": "river_es",
+      "source_path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_es.png",
+      "candidate_path": "chatgpt_map_assets/candidates/river_seam_warp_2026-11-01/river_es.png",
+      "source_git_blob_sha": "f7cca6d651fba2fba2af612aec543519a6214924",
+      "candidate_git_blob_sha": "7c4395e8ab3bd84e9189b66be8d48afe5d78b738",
+      "source_sha_match_manifest": true,
+      "decoded_rgba_pixels": 4096,
+      "changed_pixels": 2926,
+      "changed_fraction": 0.71436,
+      "source_water_pixels": 1322,
+      "candidate_water_pixels": 1323,
+      "water_mask_iou": 0.6449,
+      "water_components": 1,
+      "largest_water_component": 1323,
+      "edges": {
+        "N": {
+          "active": false,
+          "water_count": 0,
+          "water_center": null,
+          "reference_water_count": null,
+          "reference_water_center": null,
+          "center_offset_px": null,
+          "width_delta_px": null
+        },
+        "E": {
+          "active": true,
+          "water_count": 18,
+          "water_center": 32.5,
+          "reference_water_count": 18,
+          "reference_water_center": 32.5,
+          "center_offset_px": 0,
+          "width_delta_px": 0
+        },
+        "S": {
+          "active": true,
+          "water_count": 16,
+          "water_center": 30.5,
+          "reference_water_count": 19,
+          "reference_water_center": 31,
+          "center_offset_px": -0.5,
+          "width_delta_px": -3
+        },
+        "W": {
+          "active": false,
+          "water_count": 0,
+          "water_center": null,
+          "reference_water_count": null,
+          "reference_water_center": null,
+          "center_offset_px": null,
+          "width_delta_px": null
+        }
+      },
+      "review_flags": [
+        "OVER_25_PERCENT_TRUE_PIXEL_CHANGE_REVIEW"
+      ],
+      "accepted": false
+    }
+  ],
+  "limitations": [
+    "Heuristic blue-water mask can misclassify artwork",
+    "Visual art acceptance requires human review and original-game reference",
+    "No Godot renderer executed",
+    "No existing production asset or renderer modified"
+  ],
+  "issue_checkboxes_changed": []
+}
