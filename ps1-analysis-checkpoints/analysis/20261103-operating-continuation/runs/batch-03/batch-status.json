@@ -1,0 +1,331 @@
+{
+  "status": "passed",
+  "fingerprint": {
+    "plan_sha256": "c88a0a77ddf15114c24ce1a90b0671da0dd959b8826275d3ddf40107d0571893",
+    "driver_sha256": "f185d3491b3292228eb5e5ac7ebee898f8153e8e3f741df4a0693831b5e6fa93"
+  },
+  "tested_commit": "a349423f248802f63de413851ff810ee7790b9ef",
+  "batch": "batch-03",
+  "results": [
+    {
+      "source": "TOWN0001-ci-main-02-single",
+      "output": "TOWN0001-ci-main-03-single",
+      "requested_updates": 201,
+      "opening_clock": 13596,
+      "opening_completed_iterations": 6806,
+      "opening_ram_sha256": "54f1ab114371426a635875bc4b4437f9e5b0ac7d1af2644890afe14257ef1345",
+      "command": [
+        "verify_operating_branch_segment_20261103.py",
+        "TOWN0001-ci-main-02-single",
+        "201",
+        "TOWN0001-ci-main-03-single"
+      ],
+      "passed": true,
+      "returncode": 0,
+      "final_clock": 13998,
+      "final_cash": 98750013,
+      "final_completed_iterations": 7007,
+      "final_ram_sha256": "4ca6d0a23ecc0d7a82f462b4d0e416d57e790231a35979e954fc2c079454a1fd",
+      "frames": 402,
+      "checks": {
+        "midnight_finance_checks": 0,
+        "finance_early_ui_checks": 0,
+        "customer_loop_checks": 603,
+        "restock_checks": 69,
+        "stock_posting_checks": 40,
+        "event_reservation_checks": 0,
+        "event_consumer_checks": 201,
+        "monthly_screen_checks": 0,
+        "notification_display_checks": 201,
+        "placement_checks": 2,
+        "lifecycle_checks": 2,
+        "whole_staff_loop_checks": 603,
+        "whole_monthly_town_checks": 201,
+        "source_spawn_checks": 603
+      },
+      "single_conversion": "single_conversion",
+      "appearance_verified": true
+    },
+    {
+      "source": "TOWN0001-ci-main-03-single",
+      "output": "TOWN0001-ci-main-04-single",
+      "requested_updates": 201,
+      "opening_clock": 13998,
+      "opening_completed_iterations": 7007,
+      "opening_ram_sha256": "4ca6d0a23ecc0d7a82f462b4d0e416d57e790231a35979e954fc2c079454a1fd",
+      "command": [
+        "verify_operating_branch_segment_20261103.py",
+        "TOWN0001-ci-main-03-single",
+        "201",
+        "TOWN0001-ci-main-04-single"
+      ],
+      "passed": true,
+      "returncode": 0,
+      "final_clock": 14400,
+      "final_cash": 98786741,
+      "final_completed_iterations": 7208,
+      "final_ram_sha256": "9e100c22611f47a46048eef4e399b09b84cd16b4716fb4776613c4102ddb41bf",
+      "frames": 402,
+      "checks": {
+        "midnight_finance_checks": 1,
+        "finance_early_ui_checks": 0,
+        "customer_loop_checks": 603,
+        "restock_checks": 88,
+        "stock_posting_checks": 35,
+        "event_reservation_checks": 0,
+        "event_consumer_checks": 201,
+        "monthly_screen_checks": 0,
+        "notification_display_checks": 201,
+        "placement_checks": 2,
+        "lifecycle_checks": 2,
+        "whole_staff_loop_checks": 603,
+        "whole_monthly_town_checks": 201,
+        "source_spawn_checks": 603
+      },
+      "single_conversion": "single_conversion",
+      "appearance_verified": true
+    }
+  ],
+  "source_zip_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "roundtrips": [
+    {
+      "snapshot": "TOWN0001-ci-main-04-single",
+      "passed": true,
+      "payload_sha256": "756641bbcd4cf7a7b6be6ae658c82a443bb586e67e7617c440c79960a4c03f9f",
+      "frames": 214,
+      "runtime_tables": {
+        "products27x12_sha256": "7f0c9bbcedba4f3b5f2451fd4155442a6d37486a8e7ae028d48432ccd99d9609",
+        "appearance101x4_sha256": "37e3e1274d03e111b34ee12379e30b5c7ee9ca0b5f43d5944e196c4a3023a89d",
+        "both_cpus": true
+      }
+    }
+  ],
+  "card_chain": {
+    "total": 2,
+    "passed": true,
+    "cases": [
+      {
+        "snapshot": "TOWN0001-ci-main-03-single",
+        "source_ram_sha256": "4ca6d0a23ecc0d7a82f462b4d0e416d57e790231a35979e954fc2c079454a1fd",
+        "clock": 13998,
+        "passed": true,
+        "operation": "create",
+        "calls": [
+          {
+            "function": "0x8007adf8",
+            "mode": 0,
+            "return_value": 0,
+            "steps": 39997
+          },
+          {
+            "function": "0x8007adf8",
+            "mode": 1,
+            "return_value": 0,
+            "steps": 11717
+          },
+          {
+            "function": "0x8007ab2c",
+            "mode": 0,
+            "return_value": 0,
+            "steps": 40138
+          },
+          {
+            "function": "0x8007ab2c",
+            "mode": 1,
+            "return_value": 0,
+            "steps": 11690
+          }
+        ],
+        "native_file": "TOWN0001-ci-main-03-single.card-file.bin",
+        "file_sha256": "204d218b9f7e462a1d2d9c4d5e82c0554f36d71b443763ece142462364d03fc4",
+        "payload_file": "TOWN0001-ci-main-03-single.payload.bin",
+        "payload_sha256": "caa3b9636beec7a0a9d27920b88a9abeb11e5807462eee6774a72261b635f348",
+        "body_sha256": "62ce9d252827a484f5cc0cc8472b3020d312ac3c4786f4b0fe74c4174a1867fa",
+        "tail_sha256": "bacc14e063a45186cbc0ed6f041570aae3a02f7173a93061968ae42b2966b536",
+        "tail_origin": "original encoder CPU RAM; no synthetic tail pattern",
+        "header_sha256": "c4d9ae77e486eab620f49a0c1e966a8dc254eeb396cee1f8b83f7e71c172e31e",
+        "body_writes": 892,
+        "body_reads": 892,
+        "decoded_regions": 37,
+        "rng_preserved": true,
+        "title_frames": 214,
+        "title_proof": "TOWN0001-ci-main-03-single.title.json",
+        "runtime_tables": {
+          "products27x12_sha256": "7f0c9bbcedba4f3b5f2451fd4155442a6d37486a8e7ae028d48432ccd99d9609",
+          "appearance101x4_sha256": "37e3e1274d03e111b34ee12379e30b5c7ee9ca0b5f43d5944e196c4a3023a89d",
+          "both_cpus": true
+        }
+      },
+      {
+        "snapshot": "TOWN0001-ci-main-04-single",
+        "source_ram_sha256": "9e100c22611f47a46048eef4e399b09b84cd16b4716fb4776613c4102ddb41bf",
+        "clock": 14400,
+        "passed": true,
+        "operation": "overwrite",
+        "calls": [
+          {
+            "function": "0x8007adf8",
+            "mode": 0,
+            "return_value": 0,
+            "steps": 40165
+          },
+          {
+            "function": "0x8007adf8",
+            "mode": 1,
+            "return_value": 0,
+            "steps": 11717
+          },
+          {
+            "function": "0x8007ab2c",
+            "mode": 0,
+            "return_value": 0,
+            "steps": 40138
+          },
+          {
+            "function": "0x8007ab2c",
+            "mode": 1,
+            "return_value": 0,
+            "steps": 11690
+          }
+        ],
+        "native_file": "TOWN0001-ci-main-04-single.card-file.bin",
+        "file_sha256": "1e00dff1ca3bf88e1350238c4d346223caa899d747e7d65c06893ac3f1234787",
+        "payload_file": "TOWN0001-ci-main-04-single.payload.bin",
+        "payload_sha256": "756641bbcd4cf7a7b6be6ae658c82a443bb586e67e7617c440c79960a4c03f9f",
+        "body_sha256": "673e85acd1024be5aa1f3383171888af61d9162149dc2aedc063da15f0fd5159",
+        "tail_sha256": "bacc14e063a45186cbc0ed6f041570aae3a02f7173a93061968ae42b2966b536",
+        "tail_origin": "original encoder CPU RAM; no synthetic tail pattern",
+        "header_sha256": "c4d9ae77e486eab620f49a0c1e966a8dc254eeb396cee1f8b83f7e71c172e31e",
+        "body_writes": 892,
+        "body_reads": 892,
+        "decoded_regions": 37,
+        "rng_preserved": true,
+        "title_frames": 214,
+        "title_proof": "TOWN0001-ci-main-04-single.title.json",
+        "runtime_tables": {
+          "products27x12_sha256": "7f0c9bbcedba4f3b5f2451fd4155442a6d37486a8e7ae028d48432ccd99d9609",
+          "appearance101x4_sha256": "37e3e1274d03e111b34ee12379e30b5c7ee9ca0b5f43d5944e196c4a3023a89d",
+          "both_cpus": true
+        }
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "runs/batch-03/TOWN0001-ci-main-03-single.log",
+      "bytes": 598,
+      "sha256": "22179a067ceb9ed2a2b858c52f890d9ae5e3b8f30fe09c16b8beaf9b5522b9ca"
+    },
+    {
+      "path": "runs/batch-03/TOWN0001-ci-main-04-single.log",
+      "bytes": 598,
+      "sha256": "4b4ff55bbec7459d3874b4c0c1598c28d35aa1acb9773f3ea4211fbddc385423"
+    },
+    {
+      "path": "runs/batch-03/TOWN0001-ci-main-04-single.roundtrip.log",
+      "bytes": 254,
+      "sha256": "8757149808b4b5b06665884a35b12d7468fe7f1dacb59d2c76d9dab208396fb3"
+    },
+    {
+      "path": "runs/batch-03/card-chain.log",
+      "bytes": 520,
+      "sha256": "b9eede79c9fc97d7c2dab08bf8571edf5e2d5d838bac359494aecf2262f4deb6"
+    },
+    {
+      "path": "runs/batch-03/generated/TOWN0001-ci-main-03-single-progress.json",
+      "bytes": 234804,
+      "sha256": "ccc9df534bb5c43cd63d9d743a3e99cbf716c3f91555469a5800a29c706180f8"
+    },
+    {
+      "path": "runs/batch-03/generated/TOWN0001-ci-main-04-single-progress.json",
+      "bytes": 234804,
+      "sha256": "94c4977a063e554577ce31a3a9214efb57ff02173831d2a4ae1f0d331ea29850"
+    },
+    {
+      "path": "runs/batch-03/generated/opened-snapshot-TOWN0001-ci-main-03-single-verification-20261103.json",
+      "bytes": 2164404,
+      "sha256": "a701de210260ef17970cb8a873fe5b3041a646f21d1b2097d6b57572455010bd"
+    },
+    {
+      "path": "runs/batch-03/generated/opened-snapshot-TOWN0001-ci-main-04-single-verification-20261103.json",
+      "bytes": 2166642,
+      "sha256": "a27fa776a82ac77086ca188e23cefd1506bfc6b7a092a65125ef12b8e46318d8"
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-03-single.card-file.bin",
+      "bytes": 114688,
+      "sha256": "204d218b9f7e462a1d2d9c4d5e82c0554f36d71b443763ece142462364d03fc4"
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-03-single.io.json",
+      "bytes": 267637,
+      "sha256": "310c5b8ec49a9042a15fa5a5a53f320bdb45bba1e27918b02bde9eb16bbb1bec"
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-03-single.payload.bin",
+      "bytes": 104364,
+      "sha256": "caa3b9636beec7a0a9d27920b88a9abeb11e5807462eee6774a72261b635f348"
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-03-single.title.json",
+      "bytes": 187565,
+      "sha256": "25f24bbc1079963bb92860cdce4c190763f6529d3b1809f48cb9e3607321c824"
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-04-single.card-file.bin",
+      "bytes": 114688,
+      "sha256": "1e00dff1ca3bf88e1350238c4d346223caa899d747e7d65c06893ac3f1234787"
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-04-single.io.json",
+      "bytes": 267228,
+      "sha256": "f4df9963b03c1f4a94679d47a4bc2b491120b7da813a62046209ced3c88627db"
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-04-single.payload.bin",
+      "bytes": 104364,
+      "sha256": "756641bbcd4cf7a7b6be6ae658c82a443bb586e67e7617c440c79960a4c03f9f"
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/TOWN0001-ci-main-04-single.title.json",
+      "bytes": 186406,
+      "sha256": "e9df1bdaf84a61da584304341a45af6f57da7e92781845ea302e9fb37ad7e0c7"
+    },
+    {
+      "path": "runs/batch-03/generated/source/card-file-chain-20261103-ci/summary.json",
+      "bytes": 4646,
+      "sha256": "4dcb6a93fec9cc54eb74b83a0fe849b63345fe0585600c4abc0407ec77523179"
+    },
+    {
+      "path": "runs/batch-03/generated/source/opened-snapshots-20261028/TOWN0001-ci-main-03-single.json",
+      "bytes": 1035347,
+      "sha256": "95bbf06bd27c09be13e7b9baf8d5095029f4fac88a7998b57b103d393bcf4fd9"
+    },
+    {
+      "path": "runs/batch-03/generated/source/opened-snapshots-20261028/TOWN0001-ci-main-03-single.ram.zlib",
+      "bytes": 507880,
+      "sha256": "912de9143a32886eeafcaf57dbde80e5c4bde3beaebcba91c0db57a0b7501e29"
+    },
+    {
+      "path": "runs/batch-03/generated/source/opened-snapshots-20261028/TOWN0001-ci-main-04-single.json",
+      "bytes": 1035327,
+      "sha256": "b6403a5a547658152742c49c9ac1e3499647643ed12580a5135a9543049b6e61"
+    },
+    {
+      "path": "runs/batch-03/generated/source/opened-snapshots-20261028/TOWN0001-ci-main-04-single.ram.zlib",
+      "bytes": 507904,
+      "sha256": "291781c41e6ef43284cef772a5cbf41214c120077f1d2e57370a831d60a317b9"
+    },
+    {
+      "path": "runs/batch-03/generated/title-native-load-roundtrip-TOWN0001-ci-main-04-single-verification-20261030.json",
+      "bytes": 187132,
+      "sha256": "d6181533377cb3f552573b747fc501f55796da85780376d99f23e1371f76eb31"
+    }
+  ],
+  "limits": [
+    "CPU snapshots and controlled SDK adapters; no physical GPU/SPU/IRQ restoration.",
+    "Independent parent and reached monitor checks with original native children; not a whole-game independent reimplementation.",
+    "No clock, roster, cash or RNG injection after restoring each source state.",
+    "Branches have different UI/RNG histories; revenue differences are not causal estimates."
+  ]
+}

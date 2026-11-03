@@ -1,8 +1,8 @@
 {
   "all_passed": true,
-  "total_segments": 4,
-  "total_updates": 381,
-  "whole_staff_checks": 1143,
+  "total_segments": 6,
+  "total_updates": 783,
+  "whole_staff_checks": 2349,
   "cases": [
     {
       "snapshot": "TOWN0001-ci-24h-01-single",
@@ -586,6 +586,306 @@
       "customer_checks": 603,
       "restock_checks": 203,
       "stock_postings": 32,
+      "single_conversion": true,
+      "appearance_verified": true
+    },
+    {
+      "snapshot": "TOWN0001-ci-main-03-single",
+      "source": "TOWN0001-ci-main-02-single",
+      "source_ram_sha256": "54f1ab114371426a635875bc4b4437f9e5b0ac7d1af2644890afe14257ef1345",
+      "final_ram_sha256": "4ca6d0a23ecc0d7a82f462b4d0e416d57e790231a35979e954fc2c079454a1fd",
+      "proof": "runs/batch-03/generated/opened-snapshot-TOWN0001-ci-main-03-single-verification-20261103.json",
+      "proof_sha256": "a701de210260ef17970cb8a873fe5b3041a646f21d1b2097d6b57572455010bd",
+      "updates": 201,
+      "clock_before": 13596,
+      "clock_after": 13998,
+      "cash_before": [
+        98696093,
+        153774167
+      ],
+      "cash_after": [
+        98750013,
+        153780927
+      ],
+      "cash_from_ledgers": [
+        98750013,
+        153780927
+      ],
+      "cash_write_count": 40,
+      "cash_delta_by_pc": {
+        "0x8001cbac": [
+          54910,
+          6760
+        ],
+        "0x8001cb30": [
+          -990,
+          0
+        ]
+      },
+      "stores": [
+        {
+          "slot": 0,
+          "company": 0,
+          "opening_ledger": [
+            0,
+            0,
+            0,
+            1800,
+            6600
+          ],
+          "current_ledger": [
+            0,
+            0,
+            0,
+            1800,
+            10850
+          ],
+          "closed_ledger": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "additional_sales": 4250,
+          "additional_goods": 0,
+          "expense": 0,
+          "cash_delta": 4250
+        },
+        {
+          "slot": 1,
+          "company": 1,
+          "opening_ledger": [
+            0,
+            0,
+            0,
+            61080,
+            5150
+          ],
+          "current_ledger": [
+            0,
+            0,
+            0,
+            61080,
+            11910
+          ],
+          "closed_ledger": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "additional_sales": 6760,
+          "additional_goods": 0,
+          "expense": 0,
+          "cash_delta": 6760
+        },
+        {
+          "slot": 2,
+          "company": 0,
+          "opening_ledger": [
+            0,
+            0,
+            0,
+            55980,
+            11850
+          ],
+          "current_ledger": [
+            0,
+            0,
+            0,
+            56970,
+            62510
+          ],
+          "closed_ledger": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "additional_sales": 50660,
+          "additional_goods": 990,
+          "expense": 0,
+          "cash_delta": 49670
+        }
+      ],
+      "midnight_count": 0,
+      "whole_staff_checks": 603,
+      "staff_calls_by_store": {
+        "0": 201,
+        "2": 201,
+        "1": 201
+      },
+      "staff_effects": {
+        "service_arrival": 440,
+        "clean_0": 210,
+        "walk": 286,
+        "rest_recovery": 190,
+        "rest_departure_choice": 56,
+        "turn": 7,
+        "clean_1": 11,
+        "active_target_choice": 30,
+        "rest_arrival_0": 8,
+        "refill_1": 68,
+        "refill_0": 1
+      },
+      "customer_checks": 603,
+      "restock_checks": 69,
+      "stock_postings": 40,
+      "single_conversion": true,
+      "appearance_verified": true
+    },
+    {
+      "snapshot": "TOWN0001-ci-main-04-single",
+      "source": "TOWN0001-ci-main-03-single",
+      "source_ram_sha256": "4ca6d0a23ecc0d7a82f462b4d0e416d57e790231a35979e954fc2c079454a1fd",
+      "final_ram_sha256": "9e100c22611f47a46048eef4e399b09b84cd16b4716fb4776613c4102ddb41bf",
+      "proof": "runs/batch-03/generated/opened-snapshot-TOWN0001-ci-main-04-single-verification-20261103.json",
+      "proof_sha256": "a27fa776a82ac77086ca188e23cefd1506bfc6b7a092a65125ef12b8e46318d8",
+      "updates": 201,
+      "clock_before": 13998,
+      "clock_after": 14400,
+      "cash_before": [
+        98750013,
+        153780927
+      ],
+      "cash_after": [
+        98786741,
+        153764941
+      ],
+      "cash_from_ledgers": [
+        98786741,
+        153764941
+      ],
+      "cash_write_count": 38,
+      "cash_delta_by_pc": {
+        "0x8001cbac": [
+          87160,
+          10990
+        ],
+        "0x8001cb30": [
+          -6960,
+          0
+        ],
+        "0x800297a0": [
+          -43472,
+          -26976
+        ]
+      },
+      "stores": [
+        {
+          "slot": 0,
+          "company": 0,
+          "opening_ledger": [
+            0,
+            0,
+            0,
+            1800,
+            10850
+          ],
+          "current_ledger": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "closed_ledger": [
+            10784,
+            5616,
+            0,
+            1800,
+            17050
+          ],
+          "additional_sales": 6200,
+          "additional_goods": 0,
+          "expense": 16400,
+          "cash_delta": -10200
+        },
+        {
+          "slot": 1,
+          "company": 1,
+          "opening_ledger": [
+            0,
+            0,
+            0,
+            61080,
+            11910
+          ],
+          "current_ledger": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "closed_ledger": [
+            10976,
+            16000,
+            0,
+            61080,
+            22900
+          ],
+          "additional_sales": 10990,
+          "additional_goods": 0,
+          "expense": 26976,
+          "cash_delta": -15986
+        },
+        {
+          "slot": 2,
+          "company": 0,
+          "opening_ledger": [
+            0,
+            0,
+            0,
+            56970,
+            62510
+          ],
+          "current_ledger": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "closed_ledger": [
+            10976,
+            16096,
+            0,
+            63930,
+            143470
+          ],
+          "additional_sales": 80960,
+          "additional_goods": 6960,
+          "expense": 27072,
+          "cash_delta": 46928
+        }
+      ],
+      "midnight_count": 1,
+      "whole_staff_checks": 603,
+      "staff_calls_by_store": {
+        "0": 201,
+        "2": 201,
+        "1": 201
+      },
+      "staff_effects": {
+        "service_arrival": 422,
+        "clean_0": 227,
+        "walk": 309,
+        "active_target_choice": 32,
+        "clean_1": 10,
+        "rest_arrival_0": 13,
+        "rest_recovery": 237,
+        "rest_departure_choice": 25,
+        "turn": 5,
+        "refill_1": 87,
+        "refill_0": 1
+      },
+      "customer_checks": 603,
+      "restock_checks": 88,
+      "stock_postings": 35,
       "single_conversion": true,
       "appearance_verified": true
     }

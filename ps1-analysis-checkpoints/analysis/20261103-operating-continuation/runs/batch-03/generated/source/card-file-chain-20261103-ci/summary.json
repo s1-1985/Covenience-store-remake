@@ -1,0 +1,118 @@
+{
+  "all_passed": true,
+  "total": 2,
+  "cases": [
+    {
+      "snapshot": "TOWN0001-ci-main-03-single",
+      "source_ram_sha256": "4ca6d0a23ecc0d7a82f462b4d0e416d57e790231a35979e954fc2c079454a1fd",
+      "clock": 13998,
+      "passed": true,
+      "operation": "create",
+      "calls": [
+        {
+          "function": "0x8007adf8",
+          "mode": 0,
+          "return_value": 0,
+          "steps": 39997
+        },
+        {
+          "function": "0x8007adf8",
+          "mode": 1,
+          "return_value": 0,
+          "steps": 11717
+        },
+        {
+          "function": "0x8007ab2c",
+          "mode": 0,
+          "return_value": 0,
+          "steps": 40138
+        },
+        {
+          "function": "0x8007ab2c",
+          "mode": 1,
+          "return_value": 0,
+          "steps": 11690
+        }
+      ],
+      "native_file": "TOWN0001-ci-main-03-single.card-file.bin",
+      "file_sha256": "204d218b9f7e462a1d2d9c4d5e82c0554f36d71b443763ece142462364d03fc4",
+      "payload_file": "TOWN0001-ci-main-03-single.payload.bin",
+      "payload_sha256": "caa3b9636beec7a0a9d27920b88a9abeb11e5807462eee6774a72261b635f348",
+      "body_sha256": "62ce9d252827a484f5cc0cc8472b3020d312ac3c4786f4b0fe74c4174a1867fa",
+      "tail_sha256": "bacc14e063a45186cbc0ed6f041570aae3a02f7173a93061968ae42b2966b536",
+      "tail_origin": "original encoder CPU RAM; no synthetic tail pattern",
+      "header_sha256": "c4d9ae77e486eab620f49a0c1e966a8dc254eeb396cee1f8b83f7e71c172e31e",
+      "body_writes": 892,
+      "body_reads": 892,
+      "decoded_regions": 37,
+      "rng_preserved": true,
+      "title_frames": 214,
+      "title_proof": "TOWN0001-ci-main-03-single.title.json",
+      "runtime_tables": {
+        "products27x12_sha256": "7f0c9bbcedba4f3b5f2451fd4155442a6d37486a8e7ae028d48432ccd99d9609",
+        "appearance101x4_sha256": "37e3e1274d03e111b34ee12379e30b5c7ee9ca0b5f43d5944e196c4a3023a89d",
+        "both_cpus": true
+      }
+    },
+    {
+      "snapshot": "TOWN0001-ci-main-04-single",
+      "source_ram_sha256": "9e100c22611f47a46048eef4e399b09b84cd16b4716fb4776613c4102ddb41bf",
+      "clock": 14400,
+      "passed": true,
+      "operation": "overwrite",
+      "calls": [
+        {
+          "function": "0x8007adf8",
+          "mode": 0,
+          "return_value": 0,
+          "steps": 40165
+        },
+        {
+          "function": "0x8007adf8",
+          "mode": 1,
+          "return_value": 0,
+          "steps": 11717
+        },
+        {
+          "function": "0x8007ab2c",
+          "mode": 0,
+          "return_value": 0,
+          "steps": 40138
+        },
+        {
+          "function": "0x8007ab2c",
+          "mode": 1,
+          "return_value": 0,
+          "steps": 11690
+        }
+      ],
+      "native_file": "TOWN0001-ci-main-04-single.card-file.bin",
+      "file_sha256": "1e00dff1ca3bf88e1350238c4d346223caa899d747e7d65c06893ac3f1234787",
+      "payload_file": "TOWN0001-ci-main-04-single.payload.bin",
+      "payload_sha256": "756641bbcd4cf7a7b6be6ae658c82a443bb586e67e7617c440c79960a4c03f9f",
+      "body_sha256": "673e85acd1024be5aa1f3383171888af61d9162149dc2aedc063da15f0fd5159",
+      "tail_sha256": "bacc14e063a45186cbc0ed6f041570aae3a02f7173a93061968ae42b2966b536",
+      "tail_origin": "original encoder CPU RAM; no synthetic tail pattern",
+      "header_sha256": "c4d9ae77e486eab620f49a0c1e966a8dc254eeb396cee1f8b83f7e71c172e31e",
+      "body_writes": 892,
+      "body_reads": 892,
+      "decoded_regions": 37,
+      "rng_preserved": true,
+      "title_frames": 214,
+      "title_proof": "TOWN0001-ci-main-04-single.title.json",
+      "runtime_tables": {
+        "products27x12_sha256": "7f0c9bbcedba4f3b5f2451fd4155442a6d37486a8e7ae028d48432ccd99d9609",
+        "appearance101x4_sha256": "37e3e1274d03e111b34ee12379e30b5c7ee9ca0b5f43d5944e196c4a3023a89d",
+        "both_cpus": true
+      }
+    }
+  ],
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "limits": [
+    "CPU snapshot -> original encoder -> original logical file writer/reader -> original decoder; original game fields are not synthesized.",
+    "BIOS file/event boundaries are a logical model. Physical allocation and serial card transport are outside proof.",
+    "Decoded destinations are deliberately corrupted in this diagnostic before original decode; this is not part of the natural gameplay trajectory.",
+    "The exact file-read payload is handed to the pre-existing title read boundary. This does not prove a continuous title-to-card-driver native call stack.",
+    "Original title/load/play resources and runtime table audit execute as in the unchanged archived harness."
+  ]
+}
