@@ -1,0 +1,33 @@
+{
+  "recorded_date_jst": "2026-11-03",
+  "scope": "reconstructed synthetic models; no original game execution",
+  "format_checks": {
+    "valid_chains": 180,
+    "size_roundtrips": 13,
+    "corruptions_rejected": 7,
+    "total": 200
+  },
+  "mapping": {
+    "layouts": 210,
+    "sectors": 188160
+  },
+  "sizes": {
+    "card": 131072,
+    "logical_file": 114688,
+    "mcs": 114816,
+    "payload_with_checksum": 104364,
+    "retained_tail": 9812
+  },
+  "checksum_coverage_accepts_mutation": {
+    "header": true,
+    "payload_first": false,
+    "payload_last": false,
+    "checksum": false,
+    "tail": true
+  },
+  "same_sector_swap_passes_sum_and_xor": true,
+  "event_priority_masks_checked": 15,
+  "duplicate_event_deliveries_coalesce": true,
+  "synthetic_file_sha256": "6dc34f5d9e0606cdbdacf05e75da20efd134172f9946c9b864d2790a8ba87f69",
+  "all_checks_passed": true
+}
