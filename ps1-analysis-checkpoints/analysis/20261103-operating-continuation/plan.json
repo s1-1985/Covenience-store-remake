@@ -1,15 +1,22 @@
 {
-  "batch": "batch-02",
+  "batch": "batch-03",
   "segments": [
     {
-      "source": "TOWN0001-ci-main-01-single",
+      "source": "TOWN0001-ci-main-02-single",
       "updates": 201,
-      "output": "TOWN0001-ci-main-02-single"
+      "output": "TOWN0001-ci-main-03-single"
+    },
+    {
+      "source": "TOWN0001-ci-main-03-single",
+      "updates": 201,
+      "output": "TOWN0001-ci-main-04-single"
     }
   ],
   "roundtrips": [
-    "TOWN0001-ci-main-02-single",
-    "TOWN0001-ci-24h-01-single",
-    "TOWN0001-ci-swap-01-single"
+    "TOWN0001-ci-main-04-single"
+  ],
+  "card_chain": [
+    "TOWN0001-ci-main-03-single",
+    "TOWN0001-ci-main-04-single"
   ]
 }

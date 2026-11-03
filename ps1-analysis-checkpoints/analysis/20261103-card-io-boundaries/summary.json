@@ -1,0 +1,265 @@
+{
+  "total_inputs": 24,
+  "successful_return_with_data_mismatch": 5,
+  "source_cases": [
+    {
+      "operation": "read",
+      "mode": 0,
+      "injected_result": -1,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "injected_result": -1,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 387,
+      "first_differences": []
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "injected_result": 0,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "injected_result": 0,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 387,
+      "first_differences": []
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "injected_result": 127,
+      "return_value": 0,
+      "matches_requested_data": false,
+      "io_count": 1403,
+      "first_differences": [
+        {
+          "offset": 1,
+          "actual": 0,
+          "expected": 7
+        },
+        {
+          "offset": 4,
+          "actual": 0,
+          "expected": 17
+        }
+      ]
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "injected_result": 127,
+      "return_value": 0,
+      "matches_requested_data": false,
+      "io_count": 387,
+      "first_differences": [
+        {
+          "offset": 89600,
+          "actual": 0,
+          "expected": 124
+        },
+        {
+          "offset": 89601,
+          "actual": 0,
+          "expected": 136
+        }
+      ]
+    },
+    {
+      "operation": "read",
+      "mode": 0,
+      "injected_result": 128,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1402,
+      "first_differences": []
+    },
+    {
+      "operation": "read",
+      "mode": 1,
+      "injected_result": 128,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 386,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": -1,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": -1,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 387,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": 0,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": 0,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 387,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": 127,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": 127,
+      "return_value": 0,
+      "matches_requested_data": false,
+      "io_count": 387,
+      "first_differences": [
+        {
+          "offset": 89727,
+          "actual": 131,
+          "expected": 255
+        }
+      ]
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": 128,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1402,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": 128,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 386,
+      "first_differences": []
+    }
+  ],
+  "pattern_cases": [
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": -1,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": -1,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 387,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": 0,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1403,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": 0,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 387,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": 127,
+      "return_value": 0,
+      "matches_requested_data": false,
+      "io_count": 1403,
+      "first_differences": [
+        {
+          "offset": 127,
+          "actual": 19,
+          "expected": 74
+        }
+      ]
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": 127,
+      "return_value": 0,
+      "matches_requested_data": false,
+      "io_count": 387,
+      "first_differences": [
+        {
+          "offset": 89727,
+          "actual": 19,
+          "expected": 74
+        }
+      ]
+    },
+    {
+      "operation": "write",
+      "mode": 0,
+      "injected_result": 128,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 1402,
+      "first_differences": []
+    },
+    {
+      "operation": "write",
+      "mode": 1,
+      "injected_result": 128,
+      "return_value": 0,
+      "matches_requested_data": true,
+      "io_count": 386,
+      "first_differences": []
+    }
+  ],
+  "scope": "Controlled synchronous logical BIOS boundary; one short/error transfer followed by normal transfers. Not a physical card claim."
+}

@@ -29,4 +29,6 @@
 
 - [営業継続コードと開始状態の確認](analysis/20261103-operating-continuation/README.md)
 
+- [原カード読書きの短いI/O境界試験](analysis/20261103-card-io-boundaries/README.md)
+
 解析継続時は最新コミットと各README・results.jsonを読んで再開地点を確認する。

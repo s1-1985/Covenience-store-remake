@@ -81,6 +81,15 @@ def main():
                 status.setdefault("roundtrips",[]).append(dict(snapshot=name,passed=True,payload_sha256=row["payload_sha256"],
                          frames=data["frames_verified"],runtime_tables=row["runtime_tables_preserved_after_resume"]))
                 print("Native save/load passed "+name,flush=True)
+            if plan.get("card_chain"):
+                print("Starting original card file chain diagnostics",flush=True)
+                with (dest/"card-chain.log").open("w") as log:
+                    proc=subprocess.run([sys.executable,str(root/"audit-card-file-chain.py"),str(algo),*plan["card_chain"]],
+                                        cwd=algo,stdout=log,stderr=subprocess.STDOUT,timeout=900)
+                if proc.returncode:raise RuntimeError("original card-file chain failed; see card-chain.log")
+                chain=json.loads((algo/"source/card-file-chain-20261103-ci/summary.json").read_text())
+                assert chain["all_passed"]
+                status["card_chain"]=dict(total=chain["total"],passed=True,cases=chain["cases"])
         except Exception:
             status["error"]=traceback.format_exc();(dest/"failure.txt").write_text(status["error"])
         finally:
