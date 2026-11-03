@@ -23,4 +23,6 @@
 
 - [ライバル月次処理の再照合](analysis/20261103-rival-monthly/README.md)
 
+- [町成長の全体実行と到達部分照合](analysis/20261103-town-full-flow/README.md)
+
 解析継続時は最新コミットと各README・results.jsonを読んで再開地点を確認する。
