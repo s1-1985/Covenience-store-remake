@@ -57,7 +57,8 @@ def main():
             snapshots.append(dict(path=path,bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest(),schema=schema))
     report=dict(status="source_inspection_only",source_zip_sha256="afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",files=records,snapshots=snapshots)
     (target/"inspection.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    (target/"README.md").write_text("# 営業継続解析\n\n原ZIP内の継続実行コードを同一バイトで取り出し、依存関係と開始スナップショットの構造を保存した。\n現段階はコードの確認用であり、新しい営業更新の実行結果ではない。\n各参照ファイルの原パス・SHA256はinspection.jsonに記録する。\n",encoding="utf-8")
+    if not (target/"operating-status.json").exists():
+        (target/"README.md").write_text("# 営業継続解析\n\n原ZIP内の継続実行コードを同一バイトで取り出し、依存関係と開始スナップショットの構造を保存した。\n現段階はコードの確認用であり、新しい営業更新の実行結果ではない。\n各参照ファイルの原パス・SHA256はinspection.jsonに記録する。\n",encoding="utf-8")
     print(json.dumps(dict(source_files=len(records),snapshots=len(snapshots)),ensure_ascii=False))
 
 if __name__=="__main__":main()

@@ -11,6 +11,8 @@ on:
       - ps1-analysis-checkpoints/analysis/20261103-operating-continuation/inspect-source.py
       - ps1-analysis-checkpoints/analysis/20261103-operating-continuation/run-operating.py
       - ps1-analysis-checkpoints/analysis/20261103-operating-continuation/plan.json
+      - ps1-analysis-checkpoints/analysis/20261103-operating-continuation/audit-cash-lineage.py
+      - ps1-analysis-checkpoints/analysis/20261103-operating-continuation/crosscheck-engines.py
   workflow_dispatch:
 
 permissions:
@@ -43,6 +45,10 @@ jobs:
         run: python3 -m pip install -r ps1-analysis-checkpoints/analysis/20261103-operating-continuation/source-reference/requirements-verified.txt
       - name: Continue original operating states
         run: python3 ps1-analysis-checkpoints/analysis/20261103-operating-continuation/run-operating.py "$RUNNER_TEMP/ps1-r2.zip"
+      - name: Audit cash and checkpoint ancestry independently
+        run: python3 ps1-analysis-checkpoints/analysis/20261103-operating-continuation/audit-cash-lineage.py "$RUNNER_TEMP/ps1-r2.zip"
+      - name: Cross-check both MIPS engines on 33 controlled inputs
+        run: python3 ps1-analysis-checkpoints/analysis/20261103-operating-continuation/crosscheck-engines.py "$RUNNER_TEMP/ps1-r2.zip"
       - name: Commit verification outputs to analysis branch
         if: always()
         run: |

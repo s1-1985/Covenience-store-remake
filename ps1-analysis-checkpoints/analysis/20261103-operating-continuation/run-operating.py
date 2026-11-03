@@ -67,6 +67,20 @@ def main():
                            frames=data["frames_verified"],checks={k:len(v) for k,v in row.items() if k.endswith("_checks") and isinstance(v,list)},
                            single_conversion=row["runtime_table_provenance"],appearance_verified=row["single_conversion_appearance_verified"])
                 print("Completed "+json.dumps(rec),flush=True)
+            for name in plan.get("roundtrips",[]):
+                print("Starting native save/title-load/play roundtrip "+name,flush=True)
+                with (dest/(name+".roundtrip.log")).open("w") as log:
+                    proc=subprocess.run([sys.executable,"verify_single_roundtrip_20261030.py",name],cwd=algo,
+                                        stdout=log,stderr=subprocess.STDOUT,timeout=900)
+                if proc.returncode:raise RuntimeError("native roundtrip failed: "+name)
+                data=json.loads((algo/("title-native-load-roundtrip-"+name+"-verification-20261030.json")).read_text())
+                assert data["all_passed"]
+                row=data["cases"][0]
+                assert row["payload_valid"] and row["runtime_table_provenance"]=="single_conversion"
+                assert row["runtime_tables_preserved_after_resume"]["both_cpus"]
+                status.setdefault("roundtrips",[]).append(dict(snapshot=name,passed=True,payload_sha256=row["payload_sha256"],
+                         frames=data["frames_verified"],runtime_tables=row["runtime_tables_preserved_after_resume"]))
+                print("Native save/load passed "+name,flush=True)
         except Exception:
             status["error"]=traceback.format_exc();(dest/"failure.txt").write_text(status["error"])
         finally:

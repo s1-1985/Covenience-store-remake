@@ -1,20 +1,15 @@
 {
-  "batch": "batch-01",
+  "batch": "batch-02",
   "segments": [
     {
-      "source": "TOWN0001-nov3-two-own-nextday-single",
-      "updates": 60,
-      "output": "TOWN0001-ci-main-01-single"
-    },
-    {
-      "source": "TOWN0001-nov3-r2-24h-07-single",
-      "updates": 60,
-      "output": "TOWN0001-ci-24h-01-single"
-    },
-    {
-      "source": "TOWN0001-nov3-r2-swap-07-single",
-      "updates": 60,
-      "output": "TOWN0001-ci-swap-01-single"
+      "source": "TOWN0001-ci-main-01-single",
+      "updates": 201,
+      "output": "TOWN0001-ci-main-02-single"
     }
+  ],
+  "roundtrips": [
+    "TOWN0001-ci-main-02-single",
+    "TOWN0001-ci-24h-01-single",
+    "TOWN0001-ci-swap-01-single"
   ]
 }
