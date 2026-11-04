@@ -1,0 +1,236 @@
+{
+  "all_passed": true,
+  "commit": "9dbc23e1a362001ae09f825fc797bb21ca422cd1",
+  "total": 32,
+  "files": [
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "bytes": 2616,
+      "git_blob_sha1": "d2e977a4a568428bf25cbf2bcabc5ec0cb5729cb",
+      "sha256": "64951dcecdc4edb5418e20fc50e08439d0e6c41e33df08dead2ecafb7b578254",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-ANALYSIS.json",
+      "bytes": 760,
+      "git_blob_sha1": "2fe05d27a1bc698cdf79ba0936c9f2b8ca8b373a",
+      "sha256": "14c0ab64c6acc2cda049a24811603b078e097b73fe5703de037aa70fd48a667f",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/README.md",
+      "bytes": 6110,
+      "git_blob_sha1": "9886eeaf2faafe4d24e6794775f1953d9382c76b",
+      "sha256": "ffec5cd00d15104b57ff146e01fb9992db67abf83eb4b37721d6102def8fc6db",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/development-load-ack.json",
+      "bytes": 260594,
+      "git_blob_sha1": "15ee415eb8cf267d2f771f21914ae295d824c0d0",
+      "sha256": "75abbf9b37586f0b34c2a48a2c11463bab6dba6ee8503ce04dde0740e1426d21",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/development-load-ack.log",
+      "bytes": 2170,
+      "git_blob_sha1": "8c0d12b97a5ca53ecfa17eb70f33d0830c9ef144",
+      "sha256": "7e43ea2a9cc4a5815cbfb202391659987f9633e9a12316c46aa050a4ff41b745",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/development-wrapper-caller.json",
+      "bytes": 522497,
+      "git_blob_sha1": "30649347980386b4a3bc90dad8883fee4a5cc0ed",
+      "sha256": "e8ccfc3358db70d562ee0b900ec715ea8eb18ef9f9991f37f8b37fe8cd16d4d5",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/development-wrapper-caller.log",
+      "bytes": 629,
+      "git_blob_sha1": "f819b30771819262a70e5a0d6d56886496128ed1",
+      "sha256": "fc045f0baa643eaca1cf2173e2787b1eb8a978494c0a08675e5097f3100195e7",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/evidence/opened-snapshot-TOWN0001-ci-main-09-single-verification-20261103.json",
+      "bytes": 628988,
+      "git_blob_sha1": "2ebc2be8469dc5ce664357f1d67d807da94c8a0b",
+      "sha256": "5a0e482210fca88564d64c56bf650088acd0e84453ffc680cd2ef1de96efb594",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-09-single.json",
+      "bytes": 870678,
+      "git_blob_sha1": "44eb310bc5b9d5ac28223cf2b88f4f4947539112",
+      "sha256": "a7d431c811d3f0df952baadcdcff9832570512678564f21fdec8e39be61b251d",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-09-single.ram.zlib",
+      "bytes": 507775,
+      "git_blob_sha1": "8b2fbb3a829a33178d0aa8f2af4afba293da6ef0",
+      "sha256": "6b9b86f94c63923ee9c7184d4e226a283835e1c2299d34d4abe3273e6c09741c",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/evidence/source/opened-snapshots-20261028/TOWN0001-menu-load-20261105-single.json",
+      "bytes": 805414,
+      "git_blob_sha1": "72a48822631fdddb307df48fc876598c5403aa26",
+      "sha256": "96225b50e2067c1576375ff837b750f202ad49e3038c3ad34645daab1bc22352",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/evidence/source/opened-snapshots-20261028/TOWN0001-menu-load-20261105-single.ram.zlib",
+      "bytes": 508210,
+      "git_blob_sha1": "ea47359db896b8b7e64d16279462dc5fa894bcf5",
+      "sha256": "085c6b8d272d984fd2f2e9c2e6d16f1230e4eb89ed5cec3acc63606e78b97da8",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/evidence/source/opened-snapshots-20261028/TOWN0001-menu-save-20261105-single.json",
+      "bytes": 805412,
+      "git_blob_sha1": "b1803cf4b802d3515380069dc6aa4192e6a4b6ff",
+      "sha256": "65d4248ff2ee9305f6b0e15769ccc3f6a8d3912304749dc7c6fce674dbdf1ae3",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/evidence/source/opened-snapshots-20261028/TOWN0001-menu-save-20261105-single.ram.zlib",
+      "bytes": 508195,
+      "git_blob_sha1": "fb0880cf7bedbfc1d76afd61d2946ab2da791f72",
+      "sha256": "edcbcaa32cb34a87b2a9f32abce666691408eda6fdc062572e91361e0ba9c4a5",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/finalize.log",
+      "bytes": 95,
+      "git_blob_sha1": "f0b05a8b4e13bc26660b5257c4dcd75e5e84127c",
+      "sha256": "d703ce92dbefb65b2790ed44bc936315affe5b5fe6da5e49c522023664132936",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/finalize.py",
+      "bytes": 6514,
+      "git_blob_sha1": "4d060c30b57c019901bcf2d0ae09df5e56e40363",
+      "sha256": "3192081e2b9820865a84f193fb5011259485cd0b1189886c5dbec3e462cde1aa",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/load.log",
+      "bytes": 391,
+      "git_blob_sha1": "635d17dfb0c5a486e67d2daa29d85db8dcf0f597",
+      "sha256": "b5e1f97f691c13f530cb034a71e2f26b546bea4e81ef7a26b55fccf08e12241e",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/loaded-runtime-tables.json",
+      "bytes": 425,
+      "git_blob_sha1": "ba57d879f1794c1a8892e8a010f763dc4be0c552",
+      "sha256": "cc38b80d50c8459aad0c1fd9cae346a3dede3f4a03c40761db1bc9b37c8ec6f3",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/menu-load-progress.json",
+      "bytes": 4853,
+      "git_blob_sha1": "e6fc831e6fd34b930a2fa2fd56424f014cb92311",
+      "sha256": "38a8f006770a042a6d556a211ec987d9103e7daa228c8772a94210ad17c36ebb",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/menu-load-reach-trace.json",
+      "bytes": 520891,
+      "git_blob_sha1": "840aa5e03615d8b97f52bd708b981f27534fdfc5",
+      "sha256": "15d8fd1bc3bfccc3f4930e64d8e3ef76cf4deb2f01bc4c1eea86d0461766fb03",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/menu-progress.json",
+      "bytes": 4853,
+      "git_blob_sha1": "7c2002785f8a1a26d16129206f3f86bdf6a84f54",
+      "sha256": "78180402fef00fc525304c56eb0b166114fcd3dcebe07ded55761f6f74121a17",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/menu-reach-trace.json",
+      "bytes": 522497,
+      "git_blob_sha1": "30649347980386b4a3bc90dad8883fee4a5cc0ed",
+      "sha256": "e8ccfc3358db70d562ee0b900ec715ea8eb18ef9f9991f37f8b37fe8cd16d4d5",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/menu.log",
+      "bytes": 391,
+      "git_blob_sha1": "37c2c1204bca5a04b180d266842e65e3efb627fc",
+      "sha256": "719c33d5577671c58e490a37b1657eef4281ec9910574f13de33aa900d7a49dc",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/natural-audit.json",
+      "bytes": 901,
+      "git_blob_sha1": "db646d4b9396da13d77fa7639fbb3787cbb29731",
+      "sha256": "d73af437b8f7650e2c62ba928c43efb9635f27767c89f18c580e3793c7026937",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/operating-menu-save.card-file.bin",
+      "bytes": 114688,
+      "git_blob_sha1": "5709653371d2133347e689176f0fb1b1947d2cc6",
+      "sha256": "e874af1318f03ef5ed2f4f2d0800bde74bacf45a5e34350fed875fc1b9f2383b",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/operating.log",
+      "bytes": 259,
+      "git_blob_sha1": "a25f697064960ae26735d2395bb6901ffb99b7de",
+      "sha256": "cb1a73a50181461d0d1fdb29d2840455e0326584f6bb3d1c208b4f8ec1a22514",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/play-load.json",
+      "bytes": 930819,
+      "git_blob_sha1": "8de56a8e6ccf0aef628fa1a50d48f61f7201aa91",
+      "sha256": "be7e37336dea24e99ce587169d24eb11724509ed65f75bba754ba8003585510e",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/play-save.json",
+      "bytes": 933354,
+      "git_blob_sha1": "be6c0b6c63bea9f6a5454379fa4d65a1e5b3c2a2",
+      "sha256": "ed52117436167253f0643ce7046780e417a1313524c3788699c3775b0e2eb9ba",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/play-save.py",
+      "bytes": 7384,
+      "git_blob_sha1": "47fd44e7c556c454b5ff38b970df1bc47498072e",
+      "sha256": "68af955091fcf3f2f68176f85f9f1757344905be3b5cc85e40a01230d092a22e",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/read-decode-io.json",
+      "bytes": 133169,
+      "git_blob_sha1": "036d9ac0f11a9e5103ee18b1439bd21b5894a344",
+      "sha256": "4f2bbd3048d73fa92d854aa66aafa6a79819a5a61fd4b13043dd7a99537f2517",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/read-decode.json",
+      "bytes": 981,
+      "git_blob_sha1": "230e41e27792fef7c9d5da53aaa30e635bd4333e",
+      "sha256": "32eff1b87c728e79b220517cdb7b3f4528216c690dc6324161c4055f75190330",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-play-save/save-monitor.patch",
+      "bytes": 651,
+      "git_blob_sha1": "e330f8bef5ac09e4b24a0b641f69af21632c1daf",
+      "sha256": "a2fee55a91ac617848648f9910e991bc01bca4bd0408cb0698f52880e7d66b43",
+      "full_byte_readback": true
+    }
+  ],
+  "limits": [
+    "Expected checksums come from frozen pre-upload local bytes.",
+    "Reads fetched Git blob contents; not just GitHub API metadata.",
+    "This verification certifies the named checkpoint, not the later commit that stores the verification itself."
+  ]
+}
