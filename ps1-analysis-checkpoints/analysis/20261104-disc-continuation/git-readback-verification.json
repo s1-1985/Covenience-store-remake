@@ -1,0 +1,98 @@
+{
+  "all_passed": true,
+  "verified_commit": "cc8b65fe35c0fa812cf944180235edfa810a2bf0",
+  "total": 15,
+  "files": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/README.md",
+      "bytes": 6560,
+      "sha256": "1015fcbda1013b80420fd58b510b0205c18da258239f5c8dc6e0fbc3bb4f9928",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/continuation-audit.json",
+      "bytes": 4442,
+      "sha256": "a32251bd95fd37a65587e515b29379272e12f984e41f91ee64b9c5708fc19ec9",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/continue-and-audit.py",
+      "bytes": 7636,
+      "sha256": "05da447aa4f849c14d7c9de12848f64f80bb72b387d7ebe124633e4a56e9f842",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/disc-verification.json",
+      "bytes": 47517,
+      "sha256": "1aa0a14aff53e4f65262ebda10be44d6220be65667fccc45060616255cfadeb4",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/evidence/TOWN0001-ci-main-05-single-progress.json",
+      "bytes": 140196,
+      "sha256": "ac974a8f07ae533dcabfca89ba7bad0782b33700bec96b9665c775cec4b0183a",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/evidence/opened-snapshot-TOWN0001-ci-main-05-single-verification-20261103.json",
+      "bytes": 1351729,
+      "sha256": "9b259917dbb987be2b39dd1e39527cacb2abaaf8be2d28279411154905058b26",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-05-single.json",
+      "bytes": 940720,
+      "sha256": "55b183a996ddbbd2b4e48e02567d0bd492f67c23380a935146870da48aff9c70",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-05-single.ram.zlib",
+      "bytes": 507645,
+      "sha256": "d3fac7c213c06c2b18eeb5fb31cb89a0d6f3993d24cc09f41181ca0f2235c09f",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/evidence/title-native-load-roundtrip-TOWN0001-ci-main-05-single-verification-20261030.json",
+      "bytes": 187132,
+      "sha256": "f69cfe001693f7bbb42be59a96ddcd7cf37b40e8df1bd02f4f1ecabc32b53ef1",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/finance-boundaries.json",
+      "bytes": 22703,
+      "sha256": "d71b6107ea0facfe088d7a3eb1b03f4ea16076a3a67819b36eb36d6183e37124",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/operating.log",
+      "bytes": 394,
+      "sha256": "ce599ad2222171161e12e73a693352f5214dcb92caa4c6d6c341e8987f3f74f1",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/original-code-verification.json",
+      "bytes": 148340,
+      "sha256": "4e83d3f2c32ed15d2a9855d35eec633264f8f76e49b6097cace9e053e01d7c0c",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/probe-finance-boundaries.py",
+      "bytes": 5365,
+      "sha256": "3a653f560b553a497375e090088c6f677546a30b1ef41fe49b8ba68ac8502e51",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/roundtrip.log",
+      "bytes": 254,
+      "sha256": "70bbcad7a4da4b69f86e1e121438ac2be503eb839b182aa99e5108531738be81",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261104-disc-continuation/verify-disc.py",
+      "bytes": 7329,
+      "sha256": "eaa35be9b89d2cfb1c433810a45ec9423548902e78ba2d3d7bdde2d6449fba38",
+      "full_byte_readback": true
+    }
+  ],
+  "note": "Full saved bytes read through Git objects and compared with local bytes. This record does not certify its own later commit."
+}
