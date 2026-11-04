@@ -14,6 +14,8 @@
 
 ## 保存済み
 
+- [2026-11-05：営業入力から原保存/読込UIと原カード処理へ接続、最新時計15960](analysis/20261105-play-save/README.md)
+
 - [2026-11-04の最新再開点：時計15840・累積7928更新](analysis/20261104-long-continuation/README.md)
 - [添付ディスク一致・決算終了判定17条件・決算後120更新](analysis/20261104-disc-continuation/README.md)
 

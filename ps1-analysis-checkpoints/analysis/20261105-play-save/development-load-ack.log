@@ -1,0 +1,28 @@
+connected actual opened store -> play 15840 98755419
+connected play verified 1 clock 15840 view 0 pause 0 next input 128
+Traceback (most recent call last):
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261105-play-save/play-save.py", line 64, in <module>
+    result=play.compare('TOWN0001-ci-main-08-single',4,actions={0:128},native_music=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6b75476ce435/restored/algorithm-analysis/verify_opened_snapshot_play_20261028.py", line 108, in compare
+    result=c.after_opening(units,runners,resources,voices)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6b75476ce435/restored/algorithm-analysis/title_opening_play_connection_20261028.py", line 140, in after_opening
+    u.emu_start(pc,0x80001000,count=100000000)
+  File "/root/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 769, in emu_start
+    raise self._hook_exception
+  File "/root/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 363, in wrapper
+    return func(uc, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 1063, in __hook_code_cb
+    callback(uc, address, size, user_data)
+  File "/workspace/scratch/6b75476ce435/restored/algorithm-analysis/load_confirmation_20261029.py", line 28, in observe
+    (struct.unpack('<H',z.mem_read(0xcd7d0,2))[0],struct.unpack('<H',z.mem_read(0xcd8e4,2))[0]));iw.poll()
+                                                                                                 ^^^^^^^^^
+  File "/workspace/scratch/6b75476ce435/restored/algorithm-analysis/input_wait.py", line 17, in poll
+    if self.wait(self.delay):self.directions=self.edge;return 0
+       ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6b75476ce435/restored/algorithm-analysis/input_wait.py", line 9, in wait
+    raw=self.raws[self.ticks];self.ticks+=1;self.edge=((raw^self.held)&raw)&0xffffffff;self.held=raw
+        ~~~~~~~~~^^^^^^^^^^^^
+IndexError: list index out of range

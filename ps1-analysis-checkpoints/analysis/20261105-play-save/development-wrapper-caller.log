@@ -1,0 +1,10 @@
+connected actual opened store -> play 15840 98755419
+connected play verified 1 clock 15840 view 0 pause 0 next input 128
+connected play verified 2 clock 15842 view 0 pause 0 next input 0
+connected play verified 3 clock 15844 view 0 pause 0 next input 0
+connected play verified 4 clock 15846 view 0 pause 0 next input 0
+Traceback (most recent call last):
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261105-play-save/play-save.py", line 53, in <module>
+    assert reached[0]==reached[1] and encoders[0]==encoders[1]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
