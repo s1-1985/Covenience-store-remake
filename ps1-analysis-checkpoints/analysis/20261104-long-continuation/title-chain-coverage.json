@@ -1,0 +1,202 @@
+{
+  "all_passed": true,
+  "total": 10,
+  "cases": [
+    {
+      "case": "success",
+      "passed": true,
+      "init_status": 0,
+      "commands": {
+        "info": 3,
+        "load": 3,
+        "post": 3
+      },
+      "branch": "resume",
+      "message": "0x1e9",
+      "file_reads": 892,
+      "native_calls": 3,
+      "frames": 214,
+      "sha256": "896c2eed0205d6d7c7bdc0c8021c986621af6bb9e71a5a844215eb5c5f9df462",
+      "resumed_clocks": [
+        14642,
+        14644,
+        14646,
+        14648
+      ]
+    },
+    {
+      "case": "bad_checksum",
+      "passed": true,
+      "init_status": 0,
+      "commands": {
+        "info": 3,
+        "load": 3,
+        "post": 3
+      },
+      "branch": "load_nonzero",
+      "message": "0x1f2",
+      "file_reads": 892,
+      "native_calls": 3,
+      "frames": 205,
+      "sha256": "85d6ff217ba2baaab5aa830ae17e6fd47cd862d0e0c5a13f94818e14b12056ed",
+      "resumed_clocks": []
+    },
+    {
+      "case": "init_error_2",
+      "passed": true,
+      "init_status": 2,
+      "commands": {
+        "info": 1,
+        "load": 1,
+        "post": 1
+      },
+      "branch": "load_nonzero",
+      "message": "0x1e1",
+      "file_reads": 0,
+      "native_calls": 1,
+      "frames": 195,
+      "sha256": "09b66ca7e5d400aff2d5f23b92c40e2e1b5c3f6a58f20ae4890b66c01b6fc8b1",
+      "resumed_clocks": []
+    },
+    {
+      "case": "init_error_3",
+      "passed": true,
+      "init_status": 3,
+      "commands": {
+        "info": 1,
+        "load": 1,
+        "post": 1
+      },
+      "branch": "load_nonzero",
+      "message": "0x1f5",
+      "file_reads": 0,
+      "native_calls": 1,
+      "frames": 195,
+      "sha256": "04853d07f598c87782d5d3c1a12b9e52d4fa790e9596bd273128991ae837be90",
+      "resumed_clocks": []
+    },
+    {
+      "case": "init_error_4",
+      "passed": true,
+      "init_status": 4,
+      "commands": {
+        "info": 30
+      },
+      "branch": "load_nonzero",
+      "message": "0x1dd",
+      "file_reads": 0,
+      "native_calls": 1,
+      "frames": 195,
+      "sha256": "b01bcb76c69e3c55b97686d78a2fa1981e5cf6e79010dbd711ea10718ceba0dd",
+      "resumed_clocks": []
+    },
+    {
+      "case": "init_error_5",
+      "passed": true,
+      "init_status": 5,
+      "commands": {
+        "info": 3
+      },
+      "branch": "load_nonzero",
+      "message": "0x1df",
+      "file_reads": 0,
+      "native_calls": 1,
+      "frames": 195,
+      "sha256": "2d61704346b220e57d621a9d98f8e71e34c5db24c4c4b52be1f08db030fc71e4",
+      "resumed_clocks": []
+    },
+    {
+      "case": "info_busy_twice",
+      "passed": true,
+      "init_status": 0,
+      "commands": {
+        "info": 5,
+        "load": 3,
+        "post": 3
+      },
+      "branch": "resume",
+      "message": "0x1e9",
+      "file_reads": 892,
+      "native_calls": 3,
+      "frames": 214,
+      "sha256": "f8a43b1ddbb96180e8c11ee335c7c5740eb65b4722cafd7aac3bdb5b00d587d8",
+      "resumed_clocks": [
+        14642,
+        14644,
+        14646,
+        14648
+      ]
+    },
+    {
+      "case": "post_busy_twice",
+      "passed": true,
+      "init_status": 0,
+      "commands": {
+        "info": 3,
+        "load": 3,
+        "post": 5
+      },
+      "branch": "resume",
+      "message": "0x1e9",
+      "file_reads": 892,
+      "native_calls": 3,
+      "frames": 214,
+      "sha256": "e83fdce02d8e2c153ce7bcfae8095d96100ab4d40d2cf24ad5d9084f26df008e",
+      "resumed_clocks": [
+        14642,
+        14644,
+        14646,
+        14648
+      ]
+    },
+    {
+      "case": "header_mutation",
+      "passed": true,
+      "init_status": 0,
+      "commands": {
+        "info": 3,
+        "load": 3,
+        "post": 3
+      },
+      "branch": "resume",
+      "message": "0x1e9",
+      "file_reads": 892,
+      "native_calls": 3,
+      "frames": 214,
+      "sha256": "a021d3609e2ce4ef360ddb28631d0bcd7fc9281a57d43f0bc164362ddfdc20c1",
+      "resumed_clocks": [
+        14642,
+        14644,
+        14646,
+        14648
+      ]
+    },
+    {
+      "case": "tail_mutation",
+      "passed": true,
+      "init_status": 0,
+      "commands": {
+        "info": 3,
+        "load": 3,
+        "post": 3
+      },
+      "branch": "resume",
+      "message": "0x1e9",
+      "file_reads": 892,
+      "native_calls": 3,
+      "frames": 214,
+      "sha256": "29a63b9a3b407cc6841c877b57b62706f0410b478b54b0a216b1c298293cd6f9",
+      "resumed_clocks": [
+        14642,
+        14644,
+        14646,
+        14648
+      ]
+    }
+  ],
+  "native_calls": 22,
+  "file_reads": 5352,
+  "paired_processors_per_case": 2,
+  "header_and_tail_scope": "Header/tail mutations are accepted under the named logical BIOS model; this does not establish physical-card header acceptance.",
+  "development_failure": "The first adapter replaced 7E57C globally and compared 120 unrelated stack-destination copies. That failed diagnostic is preserved. The final adapter leaves 7E57C executing natively; no mismatches are normalized away."
+}

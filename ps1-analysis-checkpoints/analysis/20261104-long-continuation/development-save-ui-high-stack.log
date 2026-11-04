@@ -1,0 +1,30 @@
+original save UI -> native card file passed overwrite
+Traceback (most recent call last):
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261104-long-continuation/native-title-card-chain.py", line 48, in read
+    return bytes(self.u.mem_read(address & 0x1fffffff, size))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 980, in mem_read
+    raise UcError(status, address, size)
+unicorn.unicorn_py3.unicorn.UcError: Invalid memory read (UC_ERR_READ_UNMAPPED)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261104-long-continuation/native-save-ui-chain.py", line 97, in <module>
+    u.emu_start(0x800501fc, 0x80001000, count=100000000)
+  File "/root/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 769, in emu_start
+    raise self._hook_exception
+  File "/root/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 363, in wrapper
+    return func(uc, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 1063, in __hook_code_cb
+    callback(uc, address, size, user_data)
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261104-long-continuation/native-title-card-chain.py", line 78, in endpoint
+    result = function(self.cpu)
+             ^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261103-native-file-recovery/native-file-analysis.py", line 267, in write_file
+    data=c.read(address,size)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261104-long-continuation/native-title-card-chain.py", line 50, in read
+    raise RuntimeError('card BIOS read address=' + hex(address) + ' size=' + str(size)) from error
+RuntimeError: card BIOS read address=0x801f7a20 size=114688

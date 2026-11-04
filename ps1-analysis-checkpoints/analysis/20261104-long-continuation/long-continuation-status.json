@@ -1,0 +1,160 @@
+{
+  "all_passed": false,
+  "completed_segments": 1,
+  "planned_segments": 3,
+  "total_updates": 200,
+  "cases": [
+    {
+      "output": "TOWN0001-ci-main-06-single",
+      "source": "TOWN0001-ci-main-05-single",
+      "passed": true,
+      "updates": 200,
+      "clock_before": 14640,
+      "clock_after": 15040,
+      "completed_iterations": 7528,
+      "source_ram_sha256": "cdeaad5dd60669a2c5632915a918ab7953795ab0a40565f76ebb894230cecec2",
+      "final_ram_sha256": "11676d58db0d63b9645ec9c84f3f156a062b702663b0866d59432900162844f7",
+      "cash_before": [
+        98712826,
+        153768791
+      ],
+      "cash_after": [
+        98716741,
+        153777641
+      ],
+      "cash_from_ledgers": [
+        98716741,
+        153777641
+      ],
+      "cash_write_count": 21,
+      "cash_delta_by_pc": {
+        "0x8001cb30": [
+          -1585,
+          0
+        ],
+        "0x8001cbac": [
+          5500,
+          8850
+        ]
+      },
+      "stores": [
+        {
+          "slot": 0,
+          "company": 0,
+          "opening_ledger": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "closing_ledger": [
+            0,
+            0,
+            0,
+            0,
+            1200
+          ],
+          "previous_day_ledger": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "additional_sales": 1200,
+          "additional_goods": 0,
+          "daily_expense": 0
+        },
+        {
+          "slot": 1,
+          "company": 1,
+          "opening_ledger": [
+            0,
+            0,
+            0,
+            0,
+            3850
+          ],
+          "closing_ledger": [
+            0,
+            0,
+            0,
+            0,
+            12700
+          ],
+          "previous_day_ledger": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "additional_sales": 8850,
+          "additional_goods": 0,
+          "daily_expense": 0
+        },
+        {
+          "slot": 2,
+          "company": 0,
+          "opening_ledger": [
+            0,
+            0,
+            0,
+            78865,
+            4950
+          ],
+          "closing_ledger": [
+            0,
+            0,
+            0,
+            80450,
+            9250
+          ],
+          "previous_day_ledger": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "additional_sales": 4300,
+          "additional_goods": 1585,
+          "daily_expense": 0
+        }
+      ],
+      "daily_close_checks": [],
+      "staff_checks": 600,
+      "customer_checks": 600,
+      "frames": 400,
+      "files": [
+        {
+          "path": "evidence/opened-snapshot-TOWN0001-ci-main-06-single-verification-20261103.json",
+          "bytes": 2120088,
+          "sha256": "f7a6814e6cc1605c0c351685676a7292f67298bc1070c56dc5c57e270e9d55db"
+        },
+        {
+          "path": "evidence/TOWN0001-ci-main-06-single-progress.json",
+          "bytes": 233636,
+          "sha256": "445050be2b58a3e55e389977cd73eed3e36d81a770b17c1a8168cd0d644602fc"
+        },
+        {
+          "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-06-single.json",
+          "bytes": 1034175,
+          "sha256": "61a83c47e7bd5b4587addb052a8736742be23def4b5060466051ba9bdd307db3"
+        },
+        {
+          "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-06-single.ram.zlib",
+          "bytes": 508056,
+          "sha256": "fc630fb1cb696025f3ee8702a2f3b729b5cfd7eed3e7be885c6083a3def6681b"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Natural single-conversion main trajectory, no cash/clock/roster/RNG edits.",
+    "Independent parent and reached monitors with original shared child routines.",
+    "SDK/GPU/SPU/IRQ boundaries are modeled as in the archived runner.",
+    "All commits should preserve each final proof and its CPU restart; partial progress is not a completed segment."
+  ]
+}

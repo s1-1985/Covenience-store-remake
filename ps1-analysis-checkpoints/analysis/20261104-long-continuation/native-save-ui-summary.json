@@ -1,0 +1,104 @@
+{
+  "all_passed": true,
+  "total": 2,
+  "snapshot": "TOWN0001-ci-main-05-single",
+  "cases": [
+    {
+      "mode": "overwrite",
+      "all_passed": true,
+      "frames": 16,
+      "body_writes": 892,
+      "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297",
+      "card_sha256": "05003b0a1b10706cd548e6809288b6a85dad9f0aa7f126cb73948f0b8c827d0a",
+      "native_calls": [
+        {
+          "function": "0x8007b1f8",
+          "argument": 0,
+          "caller": "0x8005064c",
+          "bios_before": 0,
+          "result": 0,
+          "status": 0,
+          "bios_after": 20,
+          "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297",
+          "body_sha256": "2c7d7d6a1e78230c6d64200acab31e861a781b2b17adecbdfcbff819964b4e6c"
+        },
+        {
+          "function": "0x8007adf8",
+          "argument": 0,
+          "caller": "0x800506f4",
+          "bios_before": 20,
+          "result": 0,
+          "status": 0,
+          "bios_after": 1442,
+          "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297",
+          "body_sha256": "2c7d7d6a1e78230c6d64200acab31e861a781b2b17adecbdfcbff819964b4e6c"
+        },
+        {
+          "function": "0x8007adf8",
+          "argument": 1,
+          "caller": "0x8005070c",
+          "bios_before": 1442,
+          "result": 0,
+          "status": 0,
+          "bios_after": 1848,
+          "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297",
+          "body_sha256": "2c7d7d6a1e78230c6d64200acab31e861a781b2b17adecbdfcbff819964b4e6c"
+        }
+      ]
+    },
+    {
+      "mode": "create",
+      "all_passed": true,
+      "frames": 16,
+      "body_writes": 892,
+      "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297",
+      "card_sha256": "6132a96756479b8201031134053cfeb67518e5f29e478086c58671c1f65d641b",
+      "native_calls": [
+        {
+          "function": "0x8007b1f8",
+          "argument": 0,
+          "caller": "0x8005064c",
+          "bios_before": 0,
+          "result": 2,
+          "status": 2,
+          "bios_after": 19,
+          "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297",
+          "body_sha256": "2c7d7d6a1e78230c6d64200acab31e861a781b2b17adecbdfcbff819964b4e6c"
+        },
+        {
+          "function": "0x8007adf8",
+          "argument": 0,
+          "caller": "0x800506f4",
+          "bios_before": 27,
+          "result": 0,
+          "status": 0,
+          "bios_after": 1449,
+          "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297",
+          "body_sha256": "2c7d7d6a1e78230c6d64200acab31e861a781b2b17adecbdfcbff819964b4e6c"
+        },
+        {
+          "function": "0x8007adf8",
+          "argument": 1,
+          "caller": "0x8005070c",
+          "bios_before": 1449,
+          "result": 0,
+          "status": 0,
+          "bios_after": 1855,
+          "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297",
+          "body_sha256": "2c7d7d6a1e78230c6d64200acab31e861a781b2b17adecbdfcbff819964b4e6c"
+        }
+      ]
+    }
+  ],
+  "original_monitor_sha256": "e2267c3760dc8f3b42c684c7143326f62ae32a7214b45aca9a98a952e021373c",
+  "patched_monitor_sha256": "c6681eaf109e08cfaa894fdd6fc13f4758fd520d239144e7f11e051b98689bbc",
+  "adapter_sha256": "39c1d129eb6f389a5f407f4d205dd1d417700792222d6a739164104ecb72295d",
+  "limits": [
+    "501FC is an explicit direct UI entry after native encoder; no gameplay menu-navigation claim.",
+    "Diagnostic SP/FP=801D0000. The earlier 801FFEE0 new-file path reads across the mapped 2MB boundary and is not certified here.",
+    "Source 505A0 call policy, rendering/resources, card status and file writes execute; only BIOS/file/event and prior SDK boundaries modeled.",
+    "Independent monitor predicts write success; exact saved file and all writes separately assert actual success.",
+    "Two identical native CPU runs establish determinism and model checks, not two independent CPU implementations.",
+    "Physical card allocation/serial transport, BIOS instructions and physical GPU/SPU/IRQ remain outside scope."
+  ]
+}

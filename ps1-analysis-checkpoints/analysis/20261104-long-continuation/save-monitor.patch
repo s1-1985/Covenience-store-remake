@@ -1,0 +1,24 @@
+--- source_save_write_monitor_20261031.py
++++ observational_save_monitor.py
+@@ -21,7 +21,7 @@
+ class SourceSaveWriteMonitor:
+  def __init__(self,u,runner,payload,write_status=0):
+   self.u=u;self.checks=[];self.cards=[];self.active=None;self.committed=None;m=Memory(u)
+-  counts={0x80089ca4:1,0x80064e4c:1,0x80018940:2,0x800157b4:0,0x8004ea68:0,0x8004e494:3,0x80018a5c:0,0x8007b1f8:1,0x8007adf8:1}
++  counts={0x80089ca4:1,0x80064e4c:1,0x80018940:2,0x800157b4:0,0x8004ea68:0,0x8004e494:3,0x80018a5c:0,0x8007b1f8:1,0x8007adf8:1,0x8007b8a4:0}
+   sites={};data=EXE.read_bytes()
+   for a in range(0x800505a0,0x80050818,4):
+    word=struct.unpack_from('<I',data,a-0x80010000+2048)[0]
+@@ -32,10 +32,10 @@
+    if a in (0x8007b1f8,0x8007adf8):
+     arg=z.reg_read(UC_MIPS_REG_A0);assert arg in (0,1)
+     expected=payload();assert m.read(BASE,SIZE)==expected
+-    status=0 if a==0x8007b1f8 else write_status
++    status=expected_init_status if a==0x8007b1f8 else write_status
+     if a==0x8007adf8 and arg==1 and not status:self.committed=expected
+     self.cards.append(dict(address=hex(a),arg=arg,status=status,payload_sha256=hashlib.sha256(expected).hexdigest()))
+-    m.byteset(0x800cd820,status);z.reg_write(UC_MIPS_REG_V0,0);z.reg_write(UC_MIPS_REG_PC,z.reg_read(UC_MIPS_REG_RA));return
++    return # Native card status/write execute; no completion injection.
+    if a==0x800505a0:
+     assert self.active is None;self.active=[];frames0=len(runner.frames)
+     def check():

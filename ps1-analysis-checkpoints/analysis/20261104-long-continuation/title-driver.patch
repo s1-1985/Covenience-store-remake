@@ -1,0 +1,15 @@
+--- verify_title_native_load_20261029.py
++++ title_native_file_chain.py
+@@ -65,9 +65,9 @@
+             if a==0x80051524:
+                 attempt_count[0]+=1;return
+             if a in (0x8007b1f8,0x8007ab2c):
+-                arg=z.reg_read(UC_MIPS_REG_A0);cards[which].append([a,arg]);m.byteset(0x800cd820,(0 if scenario=='init_retry' and attempt_count[0]>1 else init_status) if a==0x8007b1f8 else read_status)
+-                if a==0x8007ab2c and arg==1 and not read_status:m.write(BASE,supplied)
+-                z.reg_write(UC_MIPS_REG_V0,0);z.reg_write(UC_MIPS_REG_PC,z.reg_read(UC_MIPS_REG_RA));return
++                arg=z.reg_read(UC_MIPS_REG_A0);cards[which].append([a,arg])
++                # Native 7B1F8 / 7AB2C execute unchanged to named BIOS boundaries.
++                return
+             if a==0x8005188c:
+                 assert m.read(BASE,SIZE)==supplied
+                 r.onreturn(z.reg_read(UC_MIPS_REG_RA),lambda: cards[which].append(['checksum',z.reg_read(UC_MIPS_REG_V0)]));return

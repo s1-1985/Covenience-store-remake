@@ -1,0 +1,166 @@
+{
+  "all_passed": true,
+  "total": 3,
+  "producer": {
+    "snapshot": "TOWN0001-ci-main-05-single",
+    "source_ram_sha256": "cdeaad5dd60669a2c5632915a918ab7953795ab0a40565f76ebb894230cecec2",
+    "source_executable_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+    "card_sha256": "05003b0a1b10706cd548e6809288b6a85dad9f0aa7f126cb73948f0b8c827d0a",
+    "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297",
+    "tail_sha256": "bacc14e063a45186cbc0ed6f041570aae3a02f7173a93061968ae42b2966b536",
+    "tail_origin": "original encoder CPU RAM",
+    "writer": "original 7ADF8 modes0/1 in strict MIPS interpreter",
+    "code_reference_sha256": "6ff050b62b7f2e6aee880769c750878b4190263b5fd809ef41711fbe2bafb8d0"
+  },
+  "cases": [
+    {
+      "scenario": "success",
+      "all_passed": true,
+      "branch": "resume",
+      "title_states": [
+        1,
+        2,
+        6,
+        7
+      ],
+      "frames": 214,
+      "card_calls": [
+        {
+          "function": "0x8007b1f8",
+          "argument": 1,
+          "caller": "0x800515d0",
+          "bios_before": 0,
+          "result": 0,
+          "status": 0,
+          "bios_after": 20,
+          "payload_sha256": "bc34c39023f54fb2c58da0c9b1a9b856ac294437803b77ce024a698b13150e98"
+        },
+        {
+          "function": "0x8007ab2c",
+          "argument": 0,
+          "caller": "0x8005163c",
+          "bios_before": 20,
+          "result": 0,
+          "status": 0,
+          "bios_after": 1442,
+          "payload_sha256": "3c57a21a9d65579170bf32af238b07f5228ae9be0e90e2ecc727e59b1711efce"
+        },
+        {
+          "function": "0x8007ab2c",
+          "argument": 1,
+          "caller": "0x80051654",
+          "bios_before": 1442,
+          "result": 0,
+          "status": 0,
+          "bios_after": 1848,
+          "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297"
+        }
+      ],
+      "bios_calls": 1848,
+      "file_read_count": 892,
+      "message_ids": [
+        456,
+        486,
+        482,
+        484,
+        489
+      ]
+    },
+    {
+      "scenario": "bad_checksum",
+      "all_passed": true,
+      "branch": "load_nonzero",
+      "title_states": [
+        1,
+        2,
+        6,
+        2
+      ],
+      "frames": 205,
+      "card_calls": [
+        {
+          "function": "0x8007b1f8",
+          "argument": 1,
+          "caller": "0x800515d0",
+          "bios_before": 0,
+          "result": 0,
+          "status": 0,
+          "bios_after": 20,
+          "payload_sha256": "bc34c39023f54fb2c58da0c9b1a9b856ac294437803b77ce024a698b13150e98"
+        },
+        {
+          "function": "0x8007ab2c",
+          "argument": 0,
+          "caller": "0x8005163c",
+          "bios_before": 20,
+          "result": 0,
+          "status": 0,
+          "bios_after": 1442,
+          "payload_sha256": "a1a6f69a59bf8cb9005e4affe09f23d70fc1156fe03ac32109830102e3078d2e"
+        },
+        {
+          "function": "0x8007ab2c",
+          "argument": 1,
+          "caller": "0x80051654",
+          "bios_before": 1442,
+          "result": 0,
+          "status": 0,
+          "bios_after": 1848,
+          "payload_sha256": "7d425897fe1270737ae6b88cb14c2b3e9c4c70e53e57e0b75c534b0036b0c1e0"
+        }
+      ],
+      "bios_calls": 1848,
+      "file_read_count": 892,
+      "message_ids": [
+        456,
+        486,
+        482,
+        484,
+        498,
+        456
+      ]
+    },
+    {
+      "scenario": "init_error_2",
+      "all_passed": true,
+      "branch": "load_nonzero",
+      "title_states": [
+        1,
+        2,
+        6,
+        2
+      ],
+      "frames": 195,
+      "card_calls": [
+        {
+          "function": "0x8007b1f8",
+          "argument": 1,
+          "caller": "0x800515d0",
+          "bios_before": 0,
+          "result": 2,
+          "status": 2,
+          "bios_after": 19,
+          "payload_sha256": "bc34c39023f54fb2c58da0c9b1a9b856ac294437803b77ce024a698b13150e98"
+        }
+      ],
+      "bios_calls": 19,
+      "file_read_count": 0,
+      "message_ids": [
+        456,
+        486,
+        482,
+        481,
+        456
+      ]
+    }
+  ],
+  "original_title_driver_sha256": "0adefd77178581fd5fa686fe811cfbaa8436c7c524afce0c6631fb9dfaa2058b",
+  "patched_title_driver_sha256": "e69e90a2076a2d08f6939928a40e64cdee61899b3834127f32aff64eb4e3378e",
+  "limits": [
+    "Title state1 is an explicit CPU fixture; no game-exit-to-title claim.",
+    "Original file writer creates the input; original title calls status, read, checksum, decode and resumes.",
+    "Existing paired parent/frame/resource models share original children, logical BIOS semantics, and Unicorn.",
+    "Physical card allocation/serial protocol, BIOS execution and physical GPU/SPU/IRQ remain outside scope.",
+    "Corrupted checksum and empty card are controlled diagnostics, not natural game histories."
+  ]
+}

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261104-long-continuation/native-save-ui-chain.py", line 100, in <module>
+    assert all(memory.read(address, len(data)) == data for address, data in frozen)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
