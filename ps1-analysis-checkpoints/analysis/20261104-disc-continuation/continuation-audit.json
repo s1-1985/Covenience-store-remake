@@ -1,0 +1,179 @@
+{
+  "all_passed": true,
+  "source": "TOWN0001-ci-main-04-single",
+  "output": "TOWN0001-ci-main-05-single",
+  "updates": 120,
+  "source_ram_sha256": "9e100c22611f47a46048eef4e399b09b84cd16b4716fb4776613c4102ddb41bf",
+  "final_ram_sha256": "cdeaad5dd60669a2c5632915a918ab7953795ab0a40565f76ebb894230cecec2",
+  "completed_iterations": 7328,
+  "clock_before": 14400,
+  "clock_after": 14640,
+  "cash_before": [
+    98786741,
+    153764941
+  ],
+  "cash_after": [
+    98712826,
+    153768791
+  ],
+  "cash_from_ledgers": [
+    98712826,
+    153768791
+  ],
+  "cash_write_count": {
+    "0x8001cbac": 6,
+    "0x8001cb30": 51
+  },
+  "cash_delta_by_pc": {
+    "0x8001cbac": [
+      4950,
+      3850
+    ],
+    "0x8001cb30": [
+      -78865,
+      0
+    ]
+  },
+  "stores": [
+    {
+      "slot": 0,
+      "company": 0,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "additional_sales": 0,
+      "additional_goods": 0,
+      "daily_cost_reposted": false,
+      "prior_day_history_preserved": true
+    },
+    {
+      "slot": 1,
+      "company": 1,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        0,
+        3850
+      ],
+      "additional_sales": 3850,
+      "additional_goods": 0,
+      "daily_cost_reposted": false,
+      "prior_day_history_preserved": true
+    },
+    {
+      "slot": 2,
+      "company": 0,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        78865,
+        4950
+      ],
+      "additional_sales": 4950,
+      "additional_goods": 78865,
+      "daily_cost_reposted": false,
+      "prior_day_history_preserved": true
+    }
+  ],
+  "daily_close_count": 0,
+  "staff_checks": 360,
+  "customer_checks": 360,
+  "staff_effects": {
+    "refill_1": 224,
+    "rest_recovery": 148,
+    "service_arrival": 153,
+    "active_target_choice": 34,
+    "walk": 164,
+    "rest_arrival_0": 5,
+    "rest_departure_choice": 13,
+    "turn": 13,
+    "clean_0": 48,
+    "clean_1": 3,
+    "refill_0": 17
+  },
+  "restock_checks": 241,
+  "stock_postings": 57,
+  "frames_verified": 240,
+  "roundtrip": {
+    "all_passed": true,
+    "payload_sha256": "4caecf98fd0fb7410b9d150529cc30334c1467ff502db51e379a8ff00cc46297",
+    "resumed_clocks": [
+      14642,
+      14644,
+      14646,
+      14648
+    ],
+    "runtime_tables": {
+      "products27x12_sha256": "7f0c9bbcedba4f3b5f2451fd4155442a6d37486a8e7ae028d48432ccd99d9609",
+      "appearance101x4_sha256": "37e3e1274d03e111b34ee12379e30b5c7ee9ca0b5f43d5944e196c4a3023a89d",
+      "both_cpus": true
+    }
+  },
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "unicorn": "2.1.4",
+    "capstone": "5.0.7",
+    "pillow": "13.0.0"
+  },
+  "files": [
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-05-single-verification-20261103.json",
+      "bytes": 1351729,
+      "sha256": "9b259917dbb987be2b39dd1e39527cacb2abaaf8be2d28279411154905058b26"
+    },
+    {
+      "path": "evidence/TOWN0001-ci-main-05-single-progress.json",
+      "bytes": 140196,
+      "sha256": "ac974a8f07ae533dcabfca89ba7bad0782b33700bec96b9665c775cec4b0183a"
+    },
+    {
+      "path": "evidence/title-native-load-roundtrip-TOWN0001-ci-main-05-single-verification-20261030.json",
+      "bytes": 187132,
+      "sha256": "f69cfe001693f7bbb42be59a96ddcd7cf37b40e8df1bd02f4f1ecabc32b53ef1"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-05-single.json",
+      "bytes": 940720,
+      "sha256": "55b183a996ddbbd2b4e48e02567d0bd492f67c23380a935146870da48aff9c70"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-05-single.ram.zlib",
+      "bytes": 507645,
+      "sha256": "d3fac7c213c06c2b18eeb5fb31cb89a0d6f3993d24cc09f41181ca0f2235c09f"
+    }
+  ],
+  "limits": [
+    "120 new natural updates; threshold probes and load-resume steps counted separately.",
+    "No clock, cash, roster or RNG edits in this natural continuation.",
+    "Native and independent parent/control models share original child routines and Unicorn.",
+    "Title load uses the previously documented card-completion adapter; not physical card I/O.",
+    "Past physical VRAM/SPU/IRQ state is not restored."
+  ]
+}

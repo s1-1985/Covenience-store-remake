@@ -1,0 +1,3667 @@
+{
+  "all_passed": true,
+  "original_zip_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "original_python_files": 915,
+  "files": [
+    {
+      "path": "algorithm-analysis/active_main_fixture.py",
+      "sha256": "c0ae66668a094cd91ff8b40bb147bb0fb1ada498e9ef0ef4addee611b65afc05"
+    },
+    {
+      "path": "algorithm-analysis/async_initial_voice_bridge.py",
+      "sha256": "665f680c76f3d54b80c1cc6827470f4563741a98cd4bf52e092c40fbe203fa86"
+    },
+    {
+      "path": "algorithm-analysis/audio_dispatch.py",
+      "sha256": "b403446d98c7b4b4450d9483112c6e86ad8cfe83537d584289eac087bb853588"
+    },
+    {
+      "path": "algorithm-analysis/audio_resource_harness.py",
+      "sha256": "2dca30235cea1f8ad49e6ed23cd18076d6ddf408add8ea0107dc0afa8f0975d6"
+    },
+    {
+      "path": "algorithm-analysis/audio_resources.py",
+      "sha256": "701a896ddccc0d6a53bb9c23311799655c9c309e17d5cf379dccb18103d55bed"
+    },
+    {
+      "path": "algorithm-analysis/audit_acquisition_resource_precondition_20261102.py",
+      "sha256": "bb827538437b557d928b22e5fd20823b40908bfa996e88752ee83d328239fe64"
+    },
+    {
+      "path": "algorithm-analysis/audit_bootstrap_provenance_20261030.py",
+      "sha256": "76ff1bdbc3520f0661f780f068a0b71296a94448bb7637d886af5b1c9a5a4947"
+    },
+    {
+      "path": "algorithm-analysis/audit_connected_checkpoint_20261030.py",
+      "sha256": "dffb226e62c087ef38161d76c395a7aa238e8a73e955782a41028a5058f2e87b"
+    },
+    {
+      "path": "algorithm-analysis/audit_disc_resume_20261028.py",
+      "sha256": "39ca9014788ce58ff0506dd0aa0fb9b834d8302f64e129d33b83ea8fa4bc29de"
+    },
+    {
+      "path": "algorithm-analysis/audit_interrupted_replay_20261103.py",
+      "sha256": "137c19acf1d97c7a604f4ea825c0b283f9b2a544c16c540943e0a84a334cc676"
+    },
+    {
+      "path": "algorithm-analysis/audit_natural_acquisition_cash_20261102.py",
+      "sha256": "d26bb7be4201506439b4298bc09a0df056ae449ba3ebc90846496233561a2831"
+    },
+    {
+      "path": "algorithm-analysis/audit_notifications_checkpoint_20261031.py",
+      "sha256": "93d6410b9aae77443fbf2ddb20714afc3a383eb254b8bee80adbb990efa68efe"
+    },
+    {
+      "path": "algorithm-analysis/audit_nov2_daily_cash_20261102.py",
+      "sha256": "dfa0718fd470beddddd05a20c52a7535d3d50f2730b20db0e065f5cac19e7d65"
+    },
+    {
+      "path": "algorithm-analysis/audit_operating_branches_day_20261103.py",
+      "sha256": "6ad6435b4cae4556216ab328049010810222a569289ed2578343596932ba303f"
+    },
+    {
+      "path": "algorithm-analysis/audit_operating_save_fields_20261103.py",
+      "sha256": "fb83fc3c331a3e500c6a04ced69bc3e0094c48e2001621c42b42be2a611ad32b"
+    },
+    {
+      "path": "algorithm-analysis/audit_populated_town_observations.py",
+      "sha256": "6d9e07b0e7c638c98af35e7ec6ae39c717be139c26304e0e70edcf1b1ef8c2be"
+    },
+    {
+      "path": "algorithm-analysis/audit_r2_daily_cash_20261102.py",
+      "sha256": "cd9c749863f08e744f7cbf2944e1ddc22997df45a57d6e6f8bfe437b2abb3b58"
+    },
+    {
+      "path": "algorithm-analysis/audit_r3_month_cash_20261102.py",
+      "sha256": "11d675a7b02d4651ae542e705ffc5e1d4a2d0fb4ef9b50b7c4d45640545cd9e5"
+    },
+    {
+      "path": "algorithm-analysis/audit_rng_writes.py",
+      "sha256": "394411e41b6b565fd792f8b8def9775ee927b914efccecdaa0807059251ff5b4"
+    },
+    {
+      "path": "algorithm-analysis/audit_single_ancestry_20261030.py",
+      "sha256": "b5a7463cdd19ceacccdb6b9d3233d8108422325397f367c06d506933f76e67b6"
+    },
+    {
+      "path": "algorithm-analysis/audit_single_day_20261030.py",
+      "sha256": "5c0144a1006e2ef6ba1eaf5a3a9249daf3dca1bec516fa2ca4707d7db2eebcfe"
+    },
+    {
+      "path": "algorithm-analysis/audit_single_initial_demand_20261030.py",
+      "sha256": "e32572b7a562df145fdc307ae0be4b8baad6b507ff6bedfd344f93392591770a"
+    },
+    {
+      "path": "algorithm-analysis/audit_single_month_20261030.py",
+      "sha256": "85017baaa91d1a5b1296a629caa619f9d88cef5ef1b1397f14454408a8363283"
+    },
+    {
+      "path": "algorithm-analysis/audit_source_interior_20261030.py",
+      "sha256": "be6b3f98f93fcff25728b1228d68b1dd5a1f21b7d84b86e939b37433f6b49124"
+    },
+    {
+      "path": "algorithm-analysis/audit_source_schedules_20261030.py",
+      "sha256": "dd84bdf2973768fc0d806624cde34475a26ae6e3a185b61be7223b31a9c5754e"
+    },
+    {
+      "path": "algorithm-analysis/audit_transfer_roles_20261030.py",
+      "sha256": "257ddbd7ca6ee75ebed92db27f6ed5ddfbf070811338bef6f0db2de64635d293"
+    },
+    {
+      "path": "algorithm-analysis/audit_transfer_wage_display_20261103.py",
+      "sha256": "5613880cbe18c40501d51bde67434f2d7b097c0d7244ec7b96955fda50dac96f"
+    },
+    {
+      "path": "algorithm-analysis/audit_two_store_day_20261103.py",
+      "sha256": "94dfa5e3abb76d7b8c12560c8b82d0967e6d0e255eb714b469f6f41e03ee2b8f"
+    },
+    {
+      "path": "algorithm-analysis/audit_weather_writes.py",
+      "sha256": "98dcfd48bc9c451ee903cd194d17d0244ffc4daefd7e488c37ff18cf7a0fd0d9"
+    },
+    {
+      "path": "algorithm-analysis/background_init.py",
+      "sha256": "f9a0e06ccd55972ccee5750166fcbec032d04c2d4f33dc81c06e6c34bc64136e"
+    },
+    {
+      "path": "algorithm-analysis/basic_fixture_choices.py",
+      "sha256": "4dede36eba2a8817e4a944b002cd7db6d0cc877bc21b6610b52590ce2e9e3d1f"
+    },
+    {
+      "path": "algorithm-analysis/bgm_resource_bridge_20261029.py",
+      "sha256": "bcc27125a0d8fc8e194d53df2d3ef07321fa31cf3c5646c038692eac4edb90ca"
+    },
+    {
+      "path": "algorithm-analysis/build_caller_continuation.py",
+      "sha256": "dc9391f9676a96fc09732c1178f87032bdf7adc8639348898cb59f1d9f667f0b"
+    },
+    {
+      "path": "algorithm-analysis/build_category_continuation.py",
+      "sha256": "604bfb1b852f1de02db91e3f0ae05d9078a842d06a482caa2305f2fdd6c62341"
+    },
+    {
+      "path": "algorithm-analysis/build_category_evidence.py",
+      "sha256": "01d837c2630d34ae7a878bc3d535a3497898d95249f662ed6977edb800306e55"
+    },
+    {
+      "path": "algorithm-analysis/build_checkpoint_20261029.py",
+      "sha256": "423ca81131c835d56728f5684615ef67d99ab32276802210547609ecb411d8d5"
+    },
+    {
+      "path": "algorithm-analysis/build_claude.py",
+      "sha256": "e53526ea12d5fe9f7e41f0b90309f159477e342892b4e7b6c5a095c279c400ee"
+    },
+    {
+      "path": "algorithm-analysis/build_connected_continuation.py",
+      "sha256": "e2e47166a3ce4a9f7852df594811896718165169516bb048f85c7e7a8b9b0d14"
+    },
+    {
+      "path": "algorithm-analysis/build_dialog_continuation.py",
+      "sha256": "45d23a442ef9f89242d448a176d4b8404b639aa58a853605acb97b897fc5b863"
+    },
+    {
+      "path": "algorithm-analysis/build_display_continuation.py",
+      "sha256": "7e9ef6db351587ea9cf76ba4bd076f9a157c32bae0a3bf2e701885445c48b052"
+    },
+    {
+      "path": "algorithm-analysis/build_menu_continuation.py",
+      "sha256": "a8d765039a570d8f40e43087ddd54f021eef9a024289f6501a6c9f6dcb297364"
+    },
+    {
+      "path": "algorithm-analysis/build_opening_checkpoint.py",
+      "sha256": "bfdd4ec6253db634def52fcbfeec10007cabced487ecc7097f7f762d877576d1"
+    },
+    {
+      "path": "algorithm-analysis/build_operation_continuation.py",
+      "sha256": "918863870ab288ff4ce181573e21e65e2bd90ae580d09101fbc27ca86e66bf42"
+    },
+    {
+      "path": "algorithm-analysis/build_panel_continuation.py",
+      "sha256": "8cb164b5f7ad8ea32161b19af243f1092a5f1cf749d2e06e19f008c78813832c"
+    },
+    {
+      "path": "algorithm-analysis/build_premises_input_continuation.py",
+      "sha256": "2092d7365e330a6e5db96e65985f10eb3491c077f25cb45dbd748072c3ec3a8f"
+    },
+    {
+      "path": "algorithm-analysis/build_premises_land_continuation.py",
+      "sha256": "5c59aa117003296519d98f2801c073c3ed8b82353f980bd05db4dda93afbdbc5"
+    },
+    {
+      "path": "algorithm-analysis/build_repair_setup_continuation.py",
+      "sha256": "652e1cda433c21b813a3afa816cf35405436026b6cc66b76ceb0449b6cb859b9"
+    },
+    {
+      "path": "algorithm-analysis/build_settings_continuation.py",
+      "sha256": "fd841f9d0d23465b3ccf73754fd24dbd2f0ad7c4ac90e19012d82baa52c65b03"
+    },
+    {
+      "path": "algorithm-analysis/build_validation_continuation.py",
+      "sha256": "e06ae9a152ca1d39d36e363b5cd8b64000c82beaf966b1614ddeca3fa141b13a"
+    },
+    {
+      "path": "algorithm-analysis/caller_connection_harness.py",
+      "sha256": "8acdcaeacc92276fa656b004bf15c461dc17cd37083dc791b17b9e3fc8bfbd22"
+    },
+    {
+      "path": "algorithm-analysis/capture_bgm_sectors_20261029.py",
+      "sha256": "141fb004b7f89c0f4997504d15478bb9848e92b7fb3e9d820e9e69971e993e8e"
+    },
+    {
+      "path": "algorithm-analysis/capture_movie_source.py",
+      "sha256": "a892b4c0597b7c16cafc1cb70aab29c52ec32a7cee5430ddfae266158976b5c6"
+    },
+    {
+      "path": "algorithm-analysis/capture_newgame_sectors.py",
+      "sha256": "a804c5d1a6d88f20a5b8b55b26e4421ce1a7119d2ecd987eab595da39b625bbc"
+    },
+    {
+      "path": "algorithm-analysis/capture_scenario_assets_20261031.py",
+      "sha256": "7725a85856684ebe7bc5f895fcfd3f91c373d5b8b093ca44d9f286fcab91a7d9"
+    },
+    {
+      "path": "algorithm-analysis/capture_startup_sound_sectors.py",
+      "sha256": "5b23bec6ae4bfe44de52d340635d8908e34f4e2e779860b46011e2e361693811"
+    },
+    {
+      "path": "algorithm-analysis/cashier.py",
+      "sha256": "cb842596360492e90172a68b988319787439b5cf54e9f5fc44ddfd00dd749a92"
+    },
+    {
+      "path": "algorithm-analysis/category_background_frame_harness.py",
+      "sha256": "729f344e41a535183f6e8acb8eaed5fcac0bf6a47f4a4b755af77dd03eac6f52"
+    },
+    {
+      "path": "algorithm-analysis/category_call_contract.py",
+      "sha256": "9b995a5cc70bf4513b5baa6049f5aa756c92cbd8a67c00c0702d2da8aff5627f"
+    },
+    {
+      "path": "algorithm-analysis/category_frame_harness.py",
+      "sha256": "f77233cf17b43adc94bba67e6e82e1211822270ca09f707eb688977d71f9e5b1"
+    },
+    {
+      "path": "algorithm-analysis/category_parent_control.py",
+      "sha256": "ee7887e3d0070aa48420728b4db571377f38a273180acf68d3fe81f0e1922925"
+    },
+    {
+      "path": "algorithm-analysis/cd_audio_control.py",
+      "sha256": "888b3845dd9b97801627b70143461077f574346a214c848c41437716e4866ab4"
+    },
+    {
+      "path": "algorithm-analysis/cd_audio_initialization.py",
+      "sha256": "20af58dcb33114cab03e6cedf75fcca23fd68f951ae8e0a30344c4db673182d6"
+    },
+    {
+      "path": "algorithm-analysis/cd_audio_seek.py",
+      "sha256": "5676f65962bd709e77c7c82190f35737f5c69bd5160734a9811ac948fd21b6ee"
+    },
+    {
+      "path": "algorithm-analysis/cd_audio_start.py",
+      "sha256": "63552ea0e9c3e3bdeb36da941ff45609880c3ca2d56277673d1d616d84fff3a9"
+    },
+    {
+      "path": "algorithm-analysis/cd_position.py",
+      "sha256": "ff7c6916db745986238f44bdc444a5b887d8a593d405224af5851a462ea8abd5"
+    },
+    {
+      "path": "algorithm-analysis/cd_voice_session_harness.py",
+      "sha256": "cc6802a69cadea8c1a4ce24e181953e587f3d2692b67cffb27618ae2c9d15872"
+    },
+    {
+      "path": "algorithm-analysis/check_machine.py",
+      "sha256": "5c953cba8a6b3dbcd6bdfb483d681e667e65a30be0a5fe740c54c3870c46c8ce"
+    },
+    {
+      "path": "algorithm-analysis/checkout.py",
+      "sha256": "38bf33810b8fe8999801df92a4865ff8432e96ba62b9b5d18077fc2fa58ebd29"
+    },
+    {
+      "path": "algorithm-analysis/city_goal_fixture_20261102.py",
+      "sha256": "a487858d1194c2445755ed227d4ad3fb157c8fdf3f88bfc8397d042a59b9ad64"
+    },
+    {
+      "path": "algorithm-analysis/confirmation_dialog.py",
+      "sha256": "f474bbc3b90c37fce83333563d8f528b1e08676b411266a58fbade7b14e9598d"
+    },
+    {
+      "path": "algorithm-analysis/confirmation_dialog_audio_harness.py",
+      "sha256": "6c39480d5a1b5d3cfe71cbd159d512d39c44057c6e0ff852d99b777bdf196a7a"
+    },
+    {
+      "path": "algorithm-analysis/confirmation_dialog_callers.py",
+      "sha256": "a7f20b717226e2e606487dc92ac70367c66e014123a57ca8ac84c45c668ddece"
+    },
+    {
+      "path": "algorithm-analysis/confirmation_dialog_frame_harness.py",
+      "sha256": "503a5f688070fcfd5d67749920d5da44f6654952bc7dc8849f9cd67d3d8f6206"
+    },
+    {
+      "path": "algorithm-analysis/confirmation_dialog_glyph_harness.py",
+      "sha256": "e7db54f4434599146973ffcce1d71e5e336dbe34dda6b9a21420533d7dfdae49"
+    },
+    {
+      "path": "algorithm-analysis/confirmation_dialog_harness.py",
+      "sha256": "34ff60560063fc88dfbab72a725dcb4e6525e7a480c8c118e7d16490c19be4f3"
+    },
+    {
+      "path": "algorithm-analysis/confirmation_dialog_input_harness.py",
+      "sha256": "7b67e78e7f63cc81120a4188a5e3f085c737d5b9e3bfb4a2a06e61e8a1e39656"
+    },
+    {
+      "path": "algorithm-analysis/confirmation_object_panel.py",
+      "sha256": "cb32ba7921ee680102f237dcb3ba5d559d455bae3e7e20b3905d69692c68492b"
+    },
+    {
+      "path": "algorithm-analysis/confirmation_panel_frame_harness.py",
+      "sha256": "d3f275c4ff58ac1d2301f8c4feeec29135098d3ece4eba25015b366d41d860c7"
+    },
+    {
+      "path": "algorithm-analysis/continue_returned_title_20261102.py",
+      "sha256": "04cf545fd7c113b35a6bdac932480ac32ab2001bad69b5a97afdd4eea55c3fb0"
+    },
+    {
+      "path": "algorithm-analysis/cursor_control.py",
+      "sha256": "4f1e95f1058ae6ad5c06c1395bbb020b87b47ba211cc7ef79b93f00b839b994f"
+    },
+    {
+      "path": "algorithm-analysis/customer_capacity.py",
+      "sha256": "1b042c902368fcffeeb0cc57d0ecdd138fe27843477993664fa93c523f48730f"
+    },
+    {
+      "path": "algorithm-analysis/customer_child_chain.py",
+      "sha256": "8f1b66a3194198cd6037497ad74ea628ba3c767e142f56a3eaa76ca850e3ffa6"
+    },
+    {
+      "path": "algorithm-analysis/customer_dispatch.py",
+      "sha256": "3d08ae0d8744a4c05a24d8a874e487d692403eb3f3186d02b4085252cda92ba2"
+    },
+    {
+      "path": "algorithm-analysis/customer_entry.py",
+      "sha256": "e23c0c9312cd3514bbf05239123c2483057520fdc24cf105028f0fdbb8d2da8d"
+    },
+    {
+      "path": "algorithm-analysis/customer_entry_init.py",
+      "sha256": "4435f605a7b9c83ef70b3c393d0a8d44ce204d8ace07617f6415baca16a53aa0"
+    },
+    {
+      "path": "algorithm-analysis/customer_loop.py",
+      "sha256": "6048b753434bdfae3b777fd6abc89afdf6554b98fa64f969081c38ccba92d87c"
+    },
+    {
+      "path": "algorithm-analysis/customer_milestones.py",
+      "sha256": "de44ce94bcae5a8f93c71ca86ee370641b00e280892927035fbaebe6f654e63b"
+    },
+    {
+      "path": "algorithm-analysis/customer_position.py",
+      "sha256": "065ab5d3006d1f7019dc80cee82cfa6086b517e645a84926f06561a4fb79576e"
+    },
+    {
+      "path": "algorithm-analysis/customer_queue_state.py",
+      "sha256": "fefdd0b288b7e081d3803a3bf2afc92e111060572d741d82ab345c8fd2faeef3"
+    },
+    {
+      "path": "algorithm-analysis/customer_spawn_core.py",
+      "sha256": "c395af9ecbd815b60429b53c0d96965e52fbd004f0b0e868ac5dc69f4921229f"
+    },
+    {
+      "path": "algorithm-analysis/demand.py",
+      "sha256": "73104c807fad13fc934347c5b00863689d344ce1e4d4c6fa8500c9af2032af61"
+    },
+    {
+      "path": "algorithm-analysis/destination.py",
+      "sha256": "d7eb4d03fe1de8b20f62ba8e2429d57f082509fb70af4bfdd363db11a3518539"
+    },
+    {
+      "path": "algorithm-analysis/destination_full.py",
+      "sha256": "d224b36818f757ac10b18ad811e26d1b14c191a206f5ec36031a819ff9092974"
+    },
+    {
+      "path": "algorithm-analysis/diagnose_source_demand_20261030.py",
+      "sha256": "277a06d48a4bb6afcdaa29fa648f09374243b9e7b7d813c7db153f81d6f92241"
+    },
+    {
+      "path": "algorithm-analysis/disasm.py",
+      "sha256": "8bdb6e7d525c2ba08db22c57d63d8989d470fd56403054f5fe064bdb9eb90159"
+    },
+    {
+      "path": "algorithm-analysis/display_registers.py",
+      "sha256": "4bc77a202620c3add82bbab7d51c169a67b5e254b8a0a7ccd9530f09ca1ac784"
+    },
+    {
+      "path": "algorithm-analysis/display_state.py",
+      "sha256": "fd764812d2ccdd5bc493aeffbcf7908bf51b16adb7aa56eb7525cd150fc62bf3"
+    },
+    {
+      "path": "algorithm-analysis/draw_env_packet.py",
+      "sha256": "024f26699ed51dca103a01aec2c9e482757bb05a23b44a0d4c23ff044f25d8d0"
+    },
+    {
+      "path": "algorithm-analysis/equipment_choice.py",
+      "sha256": "0bc86c4eb27c470103759b27f018fa163896b65f82e9b7cda7b231508d776376"
+    },
+    {
+      "path": "algorithm-analysis/event_queue.py",
+      "sha256": "33ea0493c2a173e1009c8f5d55dd09b03876679072a23d6fc67d1875a5c93e12"
+    },
+    {
+      "path": "algorithm-analysis/extended.py",
+      "sha256": "94a3a85ced5b28c6f3872acfbc3c1ddf0b0eec7cb1fb1f4a1dc0c5f149c06fa7"
+    },
+    {
+      "path": "algorithm-analysis/extract_embedded_font_assets.py",
+      "sha256": "3b75ae7f0626f031212f95db2f0d8cb76a94b75846539de9d0e918dd4bb801c6"
+    },
+    {
+      "path": "algorithm-analysis/finance_close.py",
+      "sha256": "78e5201b97bd9840b4adb434c0af75b92a2f8327ad436e8655940ec57cdbfd1c"
+    },
+    {
+      "path": "algorithm-analysis/finance_notification_text_20261030.py",
+      "sha256": "a1e2c3d679fdc132c02c1746abfa130c01041dfb22953f40998804d03fabdb48"
+    },
+    {
+      "path": "algorithm-analysis/first_store_opening_control.py",
+      "sha256": "02251ecd908c85302d3fab2e6e6aba6e7b29f9e584209dad05d9a64bab16a212"
+    },
+    {
+      "path": "algorithm-analysis/floor_choice.py",
+      "sha256": "1c20fb9f46869ca796df73e88eddbae54c33b11e7d91d2c4c672372a3c90e78a"
+    },
+    {
+      "path": "algorithm-analysis/floor_frame_harness.py",
+      "sha256": "25bb5cbe25c7600108d08bf0b3d5e26309d6686b2c9d82f2e0f97cd2cf89ea01"
+    },
+    {
+      "path": "algorithm-analysis/floor_wear.py",
+      "sha256": "667b0d43d8c25da2383b3b30e109859a4c411979bff1b9e1cbd6bb41b84341e6"
+    },
+    {
+      "path": "algorithm-analysis/font_pixels.py",
+      "sha256": "cc679e2f36e865bc06555a75c3d7627468393656455a9843d73de549ab2e2f2c"
+    },
+    {
+      "path": "algorithm-analysis/fork_cpu_snapshot_20261030.py",
+      "sha256": "19d3570ce2928b3433c8ca4b30a299c0955a7648b5c693d8e5be084efc317607"
+    },
+    {
+      "path": "algorithm-analysis/gpu_upload.py",
+      "sha256": "ecff6b625d2f3100329ec7e524809237d86eef25f25b9354948c1c1c582af03f"
+    },
+    {
+      "path": "algorithm-analysis/gte_subset.py",
+      "sha256": "1f8908424764b59c18e6819cb0c5aa86ee14c35b06d8c5180c78019d398e7af5"
+    },
+    {
+      "path": "algorithm-analysis/handoff_archive.py",
+      "sha256": "9d3b2c9676f9f200df88d4fd812ce86c5407613e87bdeb10af09b0016a080e33"
+    },
+    {
+      "path": "algorithm-analysis/handoff_case_tables.py",
+      "sha256": "29be3ed4b2527c7d6f4bef9bfe5c4403f2d4efc4e49a6ffaf4b638782c9ad426"
+    },
+    {
+      "path": "algorithm-analysis/handoff_source_blocks.py",
+      "sha256": "bd48416ac7920e5d3f112df453537256c9c93db72c4cb40b852af426ce0d2583"
+    },
+    {
+      "path": "algorithm-analysis/hud_display.py",
+      "sha256": "acefebd6f0cff61704e5e8d85b906362ad27660cb2ac89324ff0eb7fac385a28"
+    },
+    {
+      "path": "algorithm-analysis/icon_layout.py",
+      "sha256": "d69d9e39502e2780c054d96d02785b90e93fca0b348715d0284ea15b36637be7"
+    },
+    {
+      "path": "algorithm-analysis/individual_price_control.py",
+      "sha256": "9192d982b8a6d07db1b46912cddd42e7a37f09853f08af70fd21f3e67d580f8e"
+    },
+    {
+      "path": "algorithm-analysis/input_control.py",
+      "sha256": "b5807d3205b2deaaed92b513f83cab5b9cb28f80dc8c33ff3950c110f6578156"
+    },
+    {
+      "path": "algorithm-analysis/input_wait.py",
+      "sha256": "aa4b1a363e24b11b4c64f73e7dbdd9ce86b1e036d842c9dfb1b894f450861de3"
+    },
+    {
+      "path": "algorithm-analysis/input_wait_harness.py",
+      "sha256": "0bff780fd31fb0bd14d78ccea370290591b1d2b076bf50976c687479cd018f05"
+    },
+    {
+      "path": "algorithm-analysis/inspect_message_controls.py",
+      "sha256": "f70508964388f8e71551d10ddb828c63b33a4e1ccad345723c09c91e4613dcbf"
+    },
+    {
+      "path": "algorithm-analysis/interior_catalog.py",
+      "sha256": "8d2dd79f9a54a94fcdd3d062032ede483c7881cb34d9d0fbd03ce70ed424379d"
+    },
+    {
+      "path": "algorithm-analysis/interior_display.py",
+      "sha256": "acc3aba16413334548d83b4f591efb7afa61212bcd2dc95381d0ed2325b0cde8"
+    },
+    {
+      "path": "algorithm-analysis/interior_floor_display.py",
+      "sha256": "512301b7ddb48fa448bffd21e0238bdfcd05eb36203c5a97217ceec8423abad6"
+    },
+    {
+      "path": "algorithm-analysis/interior_frame_harness.py",
+      "sha256": "c54d98c52bf67309a64f174c185e2e8b9afd5ca406d7f9c060709bc57d13cc52"
+    },
+    {
+      "path": "algorithm-analysis/interior_placement.py",
+      "sha256": "8692e7bbcc43e5e3388c92eef4731f7c665e3db274badcb1dd9ea1438c7c7a9a"
+    },
+    {
+      "path": "algorithm-analysis/interior_record_init.py",
+      "sha256": "7ff73a1a8597a7214d4968d3de1442520721a26798988f3b06622dfbf74bbce6"
+    },
+    {
+      "path": "algorithm-analysis/interior_submenu.py",
+      "sha256": "da4f352034adf800c2e78b987bff494b4d480c890be9470052edf9ebc59662eb"
+    },
+    {
+      "path": "algorithm-analysis/interior_transition.py",
+      "sha256": "feff4e39a6ed43558235fd971e4cd44602cfced3da28a9ba038b6c7aeb79d59a"
+    },
+    {
+      "path": "algorithm-analysis/inventory_callers.py",
+      "sha256": "e4697c46616e546b5e6be9e696dc09e0ff13605465c0c6e598ac3df2df0cab44"
+    },
+    {
+      "path": "algorithm-analysis/inventory_full.py",
+      "sha256": "726c5d68ddde2cc6b571ad627e61a6504f50a6fe363b077441e6e26730b8be69"
+    },
+    {
+      "path": "algorithm-analysis/iso9660_source_20261031.py",
+      "sha256": "90399c4684fe6871a094e2f65f669425930de2613466edfbd9c175eda60590c4"
+    },
+    {
+      "path": "algorithm-analysis/land_panel_monitor.py",
+      "sha256": "f22de2e9d5f00a404f6e240f0c0a697df96dde8d0adf585f3de90543b808df20"
+    },
+    {
+      "path": "algorithm-analysis/land_town_monitor.py",
+      "sha256": "9ea6eb7d0a4dbfdbd19675ab25be3997de2e177521e4d139c996a77e0bc14735"
+    },
+    {
+      "path": "algorithm-analysis/layout_preview.py",
+      "sha256": "b54941ed2c69e6d2d7b13612f91be121c1b6af0926c44189bc1ec17dec050b21"
+    },
+    {
+      "path": "algorithm-analysis/live_master_oracle_20261028.py",
+      "sha256": "24faa3f8bef409fc00bd2c42741cf2dc6d8d5238eea3455f0056ece73fa468d2"
+    },
+    {
+      "path": "algorithm-analysis/load_confirmation_20261029.py",
+      "sha256": "2d078c323f29cd2859a9ad77e0e55a3cdc972567734dd5521716b3429e9adb33"
+    },
+    {
+      "path": "algorithm-analysis/load_read_control_20261030.py",
+      "sha256": "50c86004820c96f7ef9d8add74e1e6700cc803dd14defd8a8c770cf56cb90142"
+    },
+    {
+      "path": "algorithm-analysis/main_update_control.py",
+      "sha256": "40e866e75df91ac511a6fc646b552d66ca11c568b7c0f944488516b3bbd303c8"
+    },
+    {
+      "path": "algorithm-analysis/main_update_native_oracle.py",
+      "sha256": "2bb309332bf11bc1be6ca5b1d2557a1dee28718074261d7faf8058f885ab589e"
+    },
+    {
+      "path": "algorithm-analysis/mainplay_entry.py",
+      "sha256": "3b55708ab1bbc356384cd1f8eb791fb1b6139760de2b36ec401ffcc484c93ffc"
+    },
+    {
+      "path": "algorithm-analysis/mainplay_iteration.py",
+      "sha256": "96b50d985a7b39d6d0776fdbaf147dd293feeb296274872713b06aa164347ac7"
+    },
+    {
+      "path": "algorithm-analysis/matrix_scale.py",
+      "sha256": "ca8d6a39c29ba28f62648a6ee02a875ab52e6ca3d99847bef1b5918febd13c48"
+    },
+    {
+      "path": "algorithm-analysis/menu_frame_harness.py",
+      "sha256": "eea67f73fe9bf1702242550b0f2be2b30e8584eb8bb199c7bb8857177f3072f2"
+    },
+    {
+      "path": "algorithm-analysis/menu_generator_monitor.py",
+      "sha256": "0088f71beda7681e66a72bca23244fa843d9c6bd92d3dd8b670c662334f0c5da"
+    },
+    {
+      "path": "algorithm-analysis/message_banks_20261031.py",
+      "sha256": "c272a194ea1d5595a2b22a9c70e328978759ca0385625fc0039de8cb258c0572"
+    },
+    {
+      "path": "algorithm-analysis/monthly_results_screen_20261031.py",
+      "sha256": "b9afaefc0a31846835b5e45643687d657af9eb92261936e2d3eedf7eef728b09"
+    },
+    {
+      "path": "algorithm-analysis/movement.py",
+      "sha256": "ee094fa7d006ca0e83fa69c292b2bd69b9509b071d29be4e8cd454dc1648d810"
+    },
+    {
+      "path": "algorithm-analysis/movie_environments.py",
+      "sha256": "649a97341588b7dd034b8cc1b57d625b2e832a0b0d96d691db03077d16891fbf"
+    },
+    {
+      "path": "algorithm-analysis/movie_playback_control.py",
+      "sha256": "805cd04f4b50d825bd1485dfc9269c31c2fe9d28c397f78f18893b38e370157f"
+    },
+    {
+      "path": "algorithm-analysis/movie_state.py",
+      "sha256": "cd24e2c8e6e05af8ce0959f24e4acfbca10e03cfe62df90374cb78de81b43e7f"
+    },
+    {
+      "path": "algorithm-analysis/movie_step.py",
+      "sha256": "7954685a5a7031819f76d99fbe2b9d798b1d4ae21ec1a3e28d4f59ccd03dc6bb"
+    },
+    {
+      "path": "algorithm-analysis/movie_stream.py",
+      "sha256": "9824b2514feb7e034d7a97d1eed0bf008a08d2ec23a1f16d53e81060dca2c68c"
+    },
+    {
+      "path": "algorithm-analysis/movie_transport.py",
+      "sha256": "2a4eda2d92bacb740e27dcd9a8088367c341bb10dba0673039a64c568b5b13d4"
+    },
+    {
+      "path": "algorithm-analysis/movie_vlc.py",
+      "sha256": "12529b55151e5b5e29dcf6710b8f6ba96a5d7a7b692b947e9fea8bb63a7257a4"
+    },
+    {
+      "path": "algorithm-analysis/music_control.py",
+      "sha256": "5125ecc979d767b17a56c52fb7dfa10cc1e816f767845eeda167257e890c045f"
+    },
+    {
+      "path": "algorithm-analysis/native_cd_audio_init.py",
+      "sha256": "2676b0215faf8dc6dcb99fb89797879eca1cb7369454c5313fb3f5c7299ef0a0"
+    },
+    {
+      "path": "algorithm-analysis/native_movie_harness.py",
+      "sha256": "4147f46aab199970fa0a3443a4ed502887f2ec310899bfe35f6e0972f7804f29"
+    },
+    {
+      "path": "algorithm-analysis/native_music_bridge_20261029.py",
+      "sha256": "ffe5426eb3ec403780ed3adc0e20c683b22057db9b5395ab74c175a6b41bc89e"
+    },
+    {
+      "path": "algorithm-analysis/native_startup_audio.py",
+      "sha256": "7a23cd2df705f83b67aff17f97ae2795138d010c7d1deded02c2dd499f5a8091"
+    },
+    {
+      "path": "algorithm-analysis/native_startup_parent.py",
+      "sha256": "a8ec1cb9f34e6fe52aa262d869b73de762f0b85b2decd7d9f0030df68161ca52"
+    },
+    {
+      "path": "algorithm-analysis/native_startup_system.py",
+      "sha256": "941fa743a1846b72a0423a01b65dcfbaaca9f20587889e940208a5e14d11945e"
+    },
+    {
+      "path": "algorithm-analysis/native_upload_probe.py",
+      "sha256": "deed536484355bc2f1c6dfbd4861a9f412f7ef0cb416a8de1f8ecf6441c14d67"
+    },
+    {
+      "path": "algorithm-analysis/new_store_upper_control.py",
+      "sha256": "fb93ae5e0cd084f36f3ad66f37de74bfda2201bf35f016a17fd748f0e72d9f8c"
+    },
+    {
+      "path": "algorithm-analysis/newgame_navigation.py",
+      "sha256": "80aa900447140d0a051befefc1cd2a8cc94df0a1eb27e7ae398cff2ee9629d5e"
+    },
+    {
+      "path": "algorithm-analysis/newgame_prefix_control.py",
+      "sha256": "b136c24464f591561fc320055d12fec81658101db3f101d81dae4e02cad1e340"
+    },
+    {
+      "path": "algorithm-analysis/newgame_prefix_monitor.py",
+      "sha256": "a4b467d97f9ac089b79fcdf86c13c9997febf64ae47619053c7128b2e1446baa"
+    },
+    {
+      "path": "algorithm-analysis/newgame_resource_bridge.py",
+      "sha256": "97f18d823454145904eb8b9e6d9fa70222e569fc199209c320135dcda26e4d5f"
+    },
+    {
+      "path": "algorithm-analysis/newgame_voice_bridge.py",
+      "sha256": "1c05776598c0e2c4f92f228f7188e26f9481ac83168e5bbacef9cb6dbfba0511"
+    },
+    {
+      "path": "algorithm-analysis/notification_display.py",
+      "sha256": "96cbf1e579bddcbb37d65fe981670e7a4e29fad0c06134ff7aadaa0921b0797a"
+    },
+    {
+      "path": "algorithm-analysis/numeric_alignment_fragments.py",
+      "sha256": "e5d257a08646063343e4a9df1c6d8a029c494dbb5c7febc4bc0ee1593beb968c"
+    },
+    {
+      "path": "algorithm-analysis/numeric_display_width.py",
+      "sha256": "7de2fe09ce9b0f1f6a2d3a4a319407760b4722e354c66068fa9017fabbd229d7"
+    },
+    {
+      "path": "algorithm-analysis/opened_snapshot_harness_20261029.py",
+      "sha256": "db9e8946be74521b22f474338e13f925e34bb5e02acdfb82ea8d5a4240b0ead3"
+    },
+    {
+      "path": "algorithm-analysis/opening_lifecycle_monitor.py",
+      "sha256": "00f80822a9b4e815590291be150d0b59e86e3f2e101787176c26ed184924cbc2"
+    },
+    {
+      "path": "algorithm-analysis/opening_price_averages.py",
+      "sha256": "50e06332d0d4ecf741785eb9dda232ee04f77a79b83b3f515b236fd716bcf996"
+    },
+    {
+      "path": "algorithm-analysis/opening_price_step.py",
+      "sha256": "e50d6513b3d8420a813ce5225c9c5c5a7b9e2a9a3a211e2dcb26f25bd603a119"
+    },
+    {
+      "path": "algorithm-analysis/opening_setup_control.py",
+      "sha256": "1369fd80d7fc1ca68be0cf7dfffb69f87bcf631eee246945cbf08b2ebbcc7804"
+    },
+    {
+      "path": "algorithm-analysis/opening_staff_binding.py",
+      "sha256": "d23d48231671fbaa2a0b235eb33445fd6c5fb0684ce40cfd074924169405007f"
+    },
+    {
+      "path": "algorithm-analysis/opening_staff_control.py",
+      "sha256": "e524cfcaf8a07e3d714e8a568d8d9019244c6b94f2ca2112759476fe6295e582"
+    },
+    {
+      "path": "algorithm-analysis/opening_staff_display.py",
+      "sha256": "70d5d36f24c73cea414baf37c383019e0b1f0593f9eaaac47a9cd738e4f19958"
+    },
+    {
+      "path": "algorithm-analysis/operating_costs.py",
+      "sha256": "34b7ecc805c6cea6bd709dd9f690ca09da975564be433a73d924ff3d12fbcdb9"
+    },
+    {
+      "path": "algorithm-analysis/operation_runtime.py",
+      "sha256": "b3341d06d5b7d0361b4bcdfac2c3335f93100c76ff7a9a9a8810f3eb71957a82"
+    },
+    {
+      "path": "algorithm-analysis/operation_templates.py",
+      "sha256": "c38a59e83cdb6265fdb8a3b14724e61433902008ba274490ff296aa36deedb80"
+    },
+    {
+      "path": "algorithm-analysis/operation_validation.py",
+      "sha256": "b1a172941c16a69d61d7547990abdde47c8547413b32a91e1ee935b3e4594c14"
+    },
+    {
+      "path": "algorithm-analysis/owner_results_screen_20261031.py",
+      "sha256": "2022123cf5615b0c43c0b3680d430421b47ba040850105382a4f80a8497c288b"
+    },
+    {
+      "path": "algorithm-analysis/pack_premises_input_corpus.py",
+      "sha256": "cfed23e7fddd4e6a8e864fd7a38fc55894739b6f6342de28dd0b87702f2e007b"
+    },
+    {
+      "path": "algorithm-analysis/pack_premises_land_corpus.py",
+      "sha256": "7552c71566ef246a39e81abcc1d290660b0b6bc8dd6867028035fb0c6fe63d64"
+    },
+    {
+      "path": "algorithm-analysis/pack_repair_corpus.py",
+      "sha256": "e5f5afddb6ef2537cd1d624fa6299abc1b99becdb8e2304bc97ae5a464c98e4c"
+    },
+    {
+      "path": "algorithm-analysis/package.py",
+      "sha256": "8e166af41fecada34178316cb0c5ca234d7a35160924d2f2ad97a865036dc616"
+    },
+    {
+      "path": "algorithm-analysis/placement_controls.py",
+      "sha256": "fad6eed45a6a55f5e17901edafa654f8e29f10556d64e37cdb5ac95362202172"
+    },
+    {
+      "path": "algorithm-analysis/placement_menu_helpers.py",
+      "sha256": "fb75e2668c8690515b7276b38e85981712b79641f6087b871d65dd3d0f951147"
+    },
+    {
+      "path": "algorithm-analysis/placement_menu_native_harness.py",
+      "sha256": "279be03332cc767a7e6e4d717d997a078e268f69eeff11b485a5222274be8447"
+    },
+    {
+      "path": "algorithm-analysis/popup_message.py",
+      "sha256": "a6cd135395ff734c5ce3d7c1b2429e68595cd522a59574dbdb4a4cd35c184df4"
+    },
+    {
+      "path": "algorithm-analysis/premises_all_control.py",
+      "sha256": "4b1d8ed5b6065e5e3caeb37972df2dd55cb928c85507a45548b4df2d9dd455a2"
+    },
+    {
+      "path": "algorithm-analysis/premises_connected_harness.py",
+      "sha256": "a3d76fa597dcf695309e58598de69ebe07a3a1825865ab315be1e252419c8b0e"
+    },
+    {
+      "path": "algorithm-analysis/premises_existing_control.py",
+      "sha256": "03be6f545ac0205f2e3fd2e38083b797115833df0c537a2847e5085bb599de12"
+    },
+    {
+      "path": "algorithm-analysis/premises_input.py",
+      "sha256": "d34e2df9becbcde468a144cece4eef71fb495c431ce1e951911374d8e232abfb"
+    },
+    {
+      "path": "algorithm-analysis/premises_input_harness.py",
+      "sha256": "4603e5952e01e79467d82736618971e8aebb5132f24c5ee1290321c19cec8987"
+    },
+    {
+      "path": "algorithm-analysis/premises_intro_monitor.py",
+      "sha256": "88909c3858d4f6aa6fbc086447c924d37f6c2feccf78fbb320c4565b0ed5df37"
+    },
+    {
+      "path": "algorithm-analysis/premises_land_connected.py",
+      "sha256": "0aea7b7e7aa41ee1357bddd42953aeab835744fb02a99ff48fc6e2c889d866d3"
+    },
+    {
+      "path": "algorithm-analysis/premises_land_panel.py",
+      "sha256": "dc35971aa3529dffad7ef88f2ff0f5540de7ede86d972c8d862ba351ed655f29"
+    },
+    {
+      "path": "algorithm-analysis/premises_land_prefix.py",
+      "sha256": "636cac6e3e7e04a2ad2c486fd376b8866e46c33c80556242b387e4168455ae7a"
+    },
+    {
+      "path": "algorithm-analysis/premises_land_upper.py",
+      "sha256": "fcb683da084fbae4b311a252e8817df6268afba2ccf77d8dd90e21cd9c2804dc"
+    },
+    {
+      "path": "algorithm-analysis/premises_new_call_contract.py",
+      "sha256": "b8dad2b21f0412c523672bc20ff02ec79de99ca94986cae30a962ff492b07897"
+    },
+    {
+      "path": "algorithm-analysis/premises_numbered_intro_monitor.py",
+      "sha256": "2e38489f3d37b4b3df5e947bf46c2d1973568716d520d4b68cb808d2f558ba57"
+    },
+    {
+      "path": "algorithm-analysis/premises_size_visuals.py",
+      "sha256": "27d77b9f298691197d0b953fc87d4df90da0db647e4867c0f8a17973c1ebaa26"
+    },
+    {
+      "path": "algorithm-analysis/premises_upper_connection.py",
+      "sha256": "e0facb11a6693d0e7fe2ce9772529f8b175ad9f374880fcd994b4ccd4f6cf1f3"
+    },
+    {
+      "path": "algorithm-analysis/presentation_save_payload_20261030.py",
+      "sha256": "9f42a8d9de1e3eb430af9e58d81f9692e4eb4ad05eaadc448de47e665be8fa80"
+    },
+    {
+      "path": "algorithm-analysis/preview_producer.py",
+      "sha256": "d724843a2a897b2b0346fccdaa40c3ea4d16d19ed193eca3c3a9827fc098aae4"
+    },
+    {
+      "path": "algorithm-analysis/probe_acquisition_20261102.py",
+      "sha256": "7abcbe50ea2967e53be11e646a1206424c82a35992164577d2f749bff9301665"
+    },
+    {
+      "path": "algorithm-analysis/probe_archive_capacity.py",
+      "sha256": "da6e40c439ebdc97d49f3f8b1225905688cde2643675a30e678230849c884d4c"
+    },
+    {
+      "path": "algorithm-analysis/probe_city_goal_20261102.py",
+      "sha256": "d82471f4222d00ba85037e887b37fe391b6d7c86ba222d47008437a03a100ea2"
+    },
+    {
+      "path": "algorithm-analysis/probe_graph_pool_capacity.py",
+      "sha256": "ae27f5a5e7adc6386c423ce897479f5ce8b452ddb7a31dd386d0bc51e43cb0c7"
+    },
+    {
+      "path": "algorithm-analysis/probe_lossless_capacity.py",
+      "sha256": "50751fdf0a65ecbef14dd1e12b9f14347ed8ade2ccb74119ca8670e61138643a"
+    },
+    {
+      "path": "algorithm-analysis/probe_other_scenes_20261102.py",
+      "sha256": "8408da02202f4a691e676700b112923453d7bd37c1572adea20a56feebfb6aee"
+    },
+    {
+      "path": "algorithm-analysis/probe_scenario_exit_20261031.py",
+      "sha256": "125a2037f895657896f1310c659d80af850b0a1f41b55c8ee2dd8b3353b316c4"
+    },
+    {
+      "path": "algorithm-analysis/probe_special_period_screen_20261031.py",
+      "sha256": "4062d104e21b23235c4f2a662609465093fdf69b050f2e91ed18249175a8c533"
+    },
+    {
+      "path": "algorithm-analysis/probe_v102_archive_refolding.py",
+      "sha256": "3d61097b17a8cde9ea8ce54c512377c1446d72164a6a93bde29197bee3de9b81"
+    },
+    {
+      "path": "algorithm-analysis/progression.py",
+      "sha256": "99125ec804d3c8d633ef9e7caf69fb8b1202230f467dc62b2212edb48b0936a2"
+    },
+    {
+      "path": "algorithm-analysis/project_ui.py",
+      "sha256": "741deb7580447db224f47609648345d3de1739edb304142f54c4a8056792776e"
+    },
+    {
+      "path": "algorithm-analysis/prompt_layout.py",
+      "sha256": "fa2390a83b5d585d8f5529e4d7772184137147441e39334b2b7c7c4fd738baa9"
+    },
+    {
+      "path": "algorithm-analysis/purchase_full.py",
+      "sha256": "8470d9a1786f294adf30a5d4e8112ab51c0cfb691b5e38644774e60b9f6a7fc8"
+    },
+    {
+      "path": "algorithm-analysis/quad_packet.py",
+      "sha256": "8fc0cdfe50fd483401a24018e4ac9b829fa6781b93cf97479c9e3f8eb8f8354a"
+    },
+    {
+      "path": "algorithm-analysis/rare_store_event.py",
+      "sha256": "93d554ff6763e6225e228e0f312311731fd3bac001259a90d91b9d8ff99c2818"
+    },
+    {
+      "path": "algorithm-analysis/read_handoff_sources.py",
+      "sha256": "33252787ef4e50aad1d5500f63bd72af2ba4544c52f36fa2ad6ba253e89c07ff"
+    },
+    {
+      "path": "algorithm-analysis/record_connected_checkpoint_20261029.py",
+      "sha256": "f6811d459065043ffef2212e02172172f2803bbf3dbb9beff565b55d5d69de79"
+    },
+    {
+      "path": "algorithm-analysis/record_entry_chain_checkpoint.py",
+      "sha256": "a6a7bbca88b3099fab57fde9766d7ccad9d448d23d6c9891e0cfaef80c4bb2f8"
+    },
+    {
+      "path": "algorithm-analysis/record_full_chain_checkpoint.py",
+      "sha256": "75b76edd9e87249b659274812ee1f7cd2f3998be35e1d994fc23dae4091eec3b"
+    },
+    {
+      "path": "algorithm-analysis/record_movie_startup_checkpoint.py",
+      "sha256": "5600c543102c3c77e0f6499bae9918184be59873f5b72df4259ec0725449a9a3"
+    },
+    {
+      "path": "algorithm-analysis/record_price_checkpoint_20261030.py",
+      "sha256": "1d71cd6c66f46a58b1c0b6b250161a50474aca7049a8563b512f356a00029b18"
+    },
+    {
+      "path": "algorithm-analysis/record_resource_chain_checkpoint.py",
+      "sha256": "ab673b62207490d7eccc8059693e9d1b586d4cb23ea47df5d0d1a0f55d9852d8"
+    },
+    {
+      "path": "algorithm-analysis/record_staff_checkpoint_20261030.py",
+      "sha256": "472d6bf970a9ceb9ec0b594902cd95ed29ed1fd911d642e73f5ff12bcdf2c9de"
+    },
+    {
+      "path": "algorithm-analysis/record_title_checkpoint_20261028.py",
+      "sha256": "f5a493b22eb099ef1e9519eac5c1b9f838a98172a1686eb9be951291e846213d"
+    },
+    {
+      "path": "algorithm-analysis/record_voice_lifecycle_checkpoint.py",
+      "sha256": "ab074f20313c45c42126bc95c7f67e74eeef971b8b9cbaa1fb2beec778598c31"
+    },
+    {
+      "path": "algorithm-analysis/recovered.py",
+      "sha256": "278868373e593f676e00fead378468eebc396e9aee505fc344704e04890a8c02"
+    },
+    {
+      "path": "algorithm-analysis/render_control.py",
+      "sha256": "7d144a04b2bf157a2874b0382ad76170ff0dd106a4657c90a990b90faf696c3d"
+    },
+    {
+      "path": "algorithm-analysis/render_labels.py",
+      "sha256": "91a51c680cedab34c8ff83062c4c2313bbbe659b689595b5fb31da8b24a2aa0e"
+    },
+    {
+      "path": "algorithm-analysis/render_natural_monthly_text_20261031.py",
+      "sha256": "9e6af12dee5029fbf5c21de3125a4c2c55d4e55511597088b2d956d6368bd612"
+    },
+    {
+      "path": "algorithm-analysis/render_night_notification_20261031.py",
+      "sha256": "5dd8c3842570d25099cc90bc0b99a2cccb255012e5858dd6f9ff800aaafb0ded"
+    },
+    {
+      "path": "algorithm-analysis/render_other_ending_text_20261102.py",
+      "sha256": "fc9056b329ae000dbb531b5e049fcf07fcf64e922fc71203d85ce9339a527b47"
+    },
+    {
+      "path": "algorithm-analysis/render_staff_wage_label_20261103.py",
+      "sha256": "31be2b3b86c907eb74343557a7de4c334e102736607ea269d67be832ba4f6453"
+    },
+    {
+      "path": "algorithm-analysis/report_acquisition_month3_20261102.py",
+      "sha256": "6247b6f61d9f9306e06176b74d3915b8cf2fca695c54404296584f3e47edfe35"
+    },
+    {
+      "path": "algorithm-analysis/report_multiday_20261030.py",
+      "sha256": "98f8cec88defc905559596fd93db6ae87b7d417e0f694a778e55084ed398c12d"
+    },
+    {
+      "path": "algorithm-analysis/report_notifications_incidents_20261031.py",
+      "sha256": "75989d2d28b14a36bcd3a61fdee44ac1c876d111231ac1e8160e489c2e9f7d31"
+    },
+    {
+      "path": "algorithm-analysis/report_operating_branches_20261103.py",
+      "sha256": "56a1b397b42a0fbc7edc42c1e309c95b685bf97a24561b59d1edd85b5ed913bf"
+    },
+    {
+      "path": "algorithm-analysis/report_other_endings_20261102.py",
+      "sha256": "8df9cc9d8a83ca6a6e4a4cee02a2bd5601d4227e56d209a9b7507f689ce530c3"
+    },
+    {
+      "path": "algorithm-analysis/report_play_return_20261102.py",
+      "sha256": "d7e47f6240abf8337b0d575e47531a0396a0ae2d536dc0889a896f12e8ece7b2"
+    },
+    {
+      "path": "algorithm-analysis/report_scenario_exit_20261031.py",
+      "sha256": "7633b444e160f64c064d6740f35fce0fc958656b166ac59d7b33af6c1ac3d403"
+    },
+    {
+      "path": "algorithm-analysis/report_single_rebuild_20261030.py",
+      "sha256": "aac63f994d99e4b26e020bd36fd9dab5cd109bca21a9e16bc5baaf7a0151ec16"
+    },
+    {
+      "path": "algorithm-analysis/report_two_store_operations_20261103.py",
+      "sha256": "c60b2d76949f77fb5a00a589618893592dfe2c6b1dbd383caa2424e18c5f9fbe"
+    },
+    {
+      "path": "algorithm-analysis/resume_view.py",
+      "sha256": "327fd2bbf8337d06dc64f3bfcd7a86cfe48e12f1d64f8d90273a76e33a93915e"
+    },
+    {
+      "path": "algorithm-analysis/rival_helpers.py",
+      "sha256": "49eeb985f2c539e56f8b1e0d35c45a3c30898e6971deb9f14517c839d8bb6159"
+    },
+    {
+      "path": "algorithm-analysis/rival_management.py",
+      "sha256": "4e36634d5cfc3fbfbb4e7e51aa1d05f6b1d11bdebd150c85b9cd65a8fd504b0f"
+    },
+    {
+      "path": "algorithm-analysis/rotation_trig.py",
+      "sha256": "04ef0f88b2ec2c0721a82e4143b9bdbb2b4722e7c61a304e8ee6d3bcf47e8d3e"
+    },
+    {
+      "path": "algorithm-analysis/route_codec.py",
+      "sha256": "93349f85b9ee7cfe1372ae3c187adc1f6691b279bd69ae459c608412ad05f53c"
+    },
+    {
+      "path": "algorithm-analysis/runtime_tables.py",
+      "sha256": "1f60142ef0fff208422a7adc9dba0d013559c0fd216198925b43c02ea6f23832"
+    },
+    {
+      "path": "algorithm-analysis/save_codec.py",
+      "sha256": "ac5b6fe7dc27b0a9c2885f24f60cece12afdecafa62d56265b3e7edc8ad5525e"
+    },
+    {
+      "path": "algorithm-analysis/save_load_control.py",
+      "sha256": "89767d25854e7290bcee7336b29c32ceecd6ea61d2c61ee13234b593bf2810bc"
+    },
+    {
+      "path": "algorithm-analysis/scaled_background.py",
+      "sha256": "ee06a8d6c5943e40211e15a54269f556901478e248c171a88b9978907f77f552"
+    },
+    {
+      "path": "algorithm-analysis/scenario_exit_policy_20261031.py",
+      "sha256": "76aae56a5cb8ffaeb7aa86b9a2400f73aece33fc390f0bc6bd3f6104633f72aa"
+    },
+    {
+      "path": "algorithm-analysis/scenario_owner_fixture_20261031.py",
+      "sha256": "595fbb85bbf27cd02d4dc158ae02a71e2030706a568dd577fb06fd975bc63f33"
+    },
+    {
+      "path": "algorithm-analysis/scene_color.py",
+      "sha256": "6453cd47a0226c9f08faa4d757df8693b45defab3ba6df122dbc9fc2238e5dea"
+    },
+    {
+      "path": "algorithm-analysis/scene_indicator.py",
+      "sha256": "dcded4be2838724c27e4af0ed68e6ad384579f9e1d547000ed9de649791bb034"
+    },
+    {
+      "path": "algorithm-analysis/schedule_parent_control.py",
+      "sha256": "dcf1cf39b010656c81564a0e1bbfeccfac25cb9d766fb48036b938619a75d549"
+    },
+    {
+      "path": "algorithm-analysis/schedule_selector_control.py",
+      "sha256": "9972e137ff9feca67d75ca1fd8bae57f15194febfeffbc8dee50f281415f903c"
+    },
+    {
+      "path": "algorithm-analysis/se_initialization.py",
+      "sha256": "afd4554d51ee785c134be7fbd8ddec0cb7773effb703d9925eae747e33abd528"
+    },
+    {
+      "path": "algorithm-analysis/settings_menu.py",
+      "sha256": "e8e99b972a5c13527ee2ea3bebcecadccbdf67fe9a1bc91bcc0e0250be549612"
+    },
+    {
+      "path": "algorithm-analysis/settings_menu_harness.py",
+      "sha256": "e071cf896157af1240c62e1034f03b8806b74135082dbacea011d9c5a45d08ed"
+    },
+    {
+      "path": "algorithm-analysis/settings_rectangles.py",
+      "sha256": "781565cae3d01e965daabfac378b11aa394b1c4a6b3e64459ac0a9965a8753ec"
+    },
+    {
+      "path": "algorithm-analysis/settings_visuals.py",
+      "sha256": "c8abcc20be607b898efef513b4f123382ca48aa6f3edf7b97df8ce470e834a71"
+    },
+    {
+      "path": "algorithm-analysis/source/monitor-baselines/opening_lifecycle_r11.py",
+      "sha256": "b5a79f6bcd37c3914fe5b82416684c8afba06e4c33ccce81a61e8abd640fcb46"
+    },
+    {
+      "path": "algorithm-analysis/source_acquisition_monitor_20261102.py",
+      "sha256": "719060e527ff444439065a780cb1649edceb792d47b2925c55cf0e92f26779de"
+    },
+    {
+      "path": "algorithm-analysis/source_clear_scene_monitor_20261031.py",
+      "sha256": "73671e9a35ca8299c63ffac76ae1969be2d9006a4459e5bdc714e898b830540b"
+    },
+    {
+      "path": "algorithm-analysis/source_credits_monitor_20261031.py",
+      "sha256": "58d9ca0aeab34c0ba1df5c056cd284cb92939928c24bab40c1e813341de86b02"
+    },
+    {
+      "path": "algorithm-analysis/source_customer_loop_monitor_20261030.py",
+      "sha256": "8750b3064d333636f11ec46dd8ee51502889d1b88efee88e19e14fbb4d8c6471"
+    },
+    {
+      "path": "algorithm-analysis/source_event_consumer_monitor_20261031.py",
+      "sha256": "350274ced88559f69534d497b170de6f1e33c3488d79ad53dd45f17c626f31bc"
+    },
+    {
+      "path": "algorithm-analysis/source_event_reservation_monitor_20261031.py",
+      "sha256": "00697c2c8e6eb2b470a711821a63d39aba8d1f3c532fe68fe9ef2f873cde6162"
+    },
+    {
+      "path": "algorithm-analysis/source_finance_monitor_20261029.py",
+      "sha256": "453cbe58f0aa213910d31acff44566bef01e965391659a61b7b58c87da850aa8"
+    },
+    {
+      "path": "algorithm-analysis/source_full_transfer_monitor_20261103.py",
+      "sha256": "1154a760d91044a711dfa4e0cf76455e9e6a320687181e1dbeb2c342c29f8a60"
+    },
+    {
+      "path": "algorithm-analysis/source_incident_screen_monitor_20261031.py",
+      "sha256": "80981d414d7ded1a4f71c3ae317d4cddf88e760a27730f8b86661be72bac2849"
+    },
+    {
+      "path": "algorithm-analysis/source_interior_selection_monitor_20261030.py",
+      "sha256": "d117c6b8b38c547da558f5f65ca33f79fa5821651ef97744bfbc77d1aad077b5"
+    },
+    {
+      "path": "algorithm-analysis/source_master_return_monitor_20261102.py",
+      "sha256": "a93fd3c33541746eb0c083a1acd836eb9f5912f50ddedd342e025ba6716fc084"
+    },
+    {
+      "path": "algorithm-analysis/source_monthly_screen_monitor_20261031.py",
+      "sha256": "f46da1f851293539bdca6051c68505a18ac889406fc6a55a3527b4b8e226cc65"
+    },
+    {
+      "path": "algorithm-analysis/source_notification_display_monitor_20261031.py",
+      "sha256": "f0de1578f3f590e96548a7186dace05c0baeb46cd8f5a271627fac77f31845e0"
+    },
+    {
+      "path": "algorithm-analysis/source_operation_parent_monitor_20261103.py",
+      "sha256": "ed575d51d00141712ae0980baca68d1091265a00792bcd922f974b142e8163cc"
+    },
+    {
+      "path": "algorithm-analysis/source_other_scene_monitor_20261102.py",
+      "sha256": "01e327e51cc14f378d3b194c895a3c11d61b1be857a3f3665476f0e51eb98898"
+    },
+    {
+      "path": "algorithm-analysis/source_play_return_monitor_20261102.py",
+      "sha256": "8c651a2a9d257a21d29758e7e4c13c3f01301ce39efa44f570c799fd6e8f2a40"
+    },
+    {
+      "path": "algorithm-analysis/source_refill_monitor_20261030.py",
+      "sha256": "bfa7b1914d76d51fefa977bb131e2f94f4a4d38c73ed1b687cbf6c3da9e4d024"
+    },
+    {
+      "path": "algorithm-analysis/source_save_write_monitor_20261031.py",
+      "sha256": "e2267c3760dc8f3b42c684c7143326f62ae32a7214b45aca9a98a952e021373c"
+    },
+    {
+      "path": "algorithm-analysis/source_spawn_monitor_20261028.py",
+      "sha256": "0913b64da8bb190dfece5afa4f694f1f6a3047a4410a168d1b09065de4f588e1"
+    },
+    {
+      "path": "algorithm-analysis/source_special_period_monitor_20261031.py",
+      "sha256": "5b08f02e43414f77a0234e8cf588a1218f5227d8923e60bacea761e88fc02ca0"
+    },
+    {
+      "path": "algorithm-analysis/source_sprite_monitor_20261031.py",
+      "sha256": "69f729b6b060769c32e64fc9f3bfed6620864a0452d29bf343e6cb6af388b2ce"
+    },
+    {
+      "path": "algorithm-analysis/source_staff_loop_monitor_20261103.py",
+      "sha256": "16defdb0ca816bda18f85872225d5e249d13f5f0d546d3fa1e0fda4536524a0e"
+    },
+    {
+      "path": "algorithm-analysis/source_store_milestone_monitor_20261102.py",
+      "sha256": "176077590a36f4a1150d46af4906c85c8e8b1a6c221ea397c562b10057b5c158"
+    },
+    {
+      "path": "algorithm-analysis/source_town_monthly_monitor_20261102.py",
+      "sha256": "2d17dd053f625241cc736676584f504f00eed90b62cf9760463452e24b0ee1f1"
+    },
+    {
+      "path": "algorithm-analysis/source_town_place_monitor_20261102.py",
+      "sha256": "45cfff7f79591bf2a5e203287395f999e161551fd4e8497a64c8c999628e4d8a"
+    },
+    {
+      "path": "algorithm-analysis/source_transfer_monitor_20261030.py",
+      "sha256": "3e6376bc030056f4f34265dc97b66e6778d46e9fe58e92a91b19cc9cc7e35f6f"
+    },
+    {
+      "path": "algorithm-analysis/source_transfer_wage_monitor_20261103.py",
+      "sha256": "06480603096091f8f6130edc92af476efdada3a732034c979a46e2455fb7a67a"
+    },
+    {
+      "path": "algorithm-analysis/sprite_frame_harness.py",
+      "sha256": "776bf425679b987c8bed8afc2d1fad5e0b7e305ce8d053ed309bdfd98791a5d2"
+    },
+    {
+      "path": "algorithm-analysis/sprite_record.py",
+      "sha256": "c648460862856a0cca3b413786f13b9bd87a1de7f1d83794b8a039d5b8f4a146"
+    },
+    {
+      "path": "algorithm-analysis/staff_candidate_pool.py",
+      "sha256": "cba54dbc5aeecfa4166fcfa9982070d8cb37691d0140f82405aa84e1514c3e2d"
+    },
+    {
+      "path": "algorithm-analysis/staff_energy.py",
+      "sha256": "7e959f7832bec3143b008ea6117932e1d71d5587bbacc93f800bdf55049e121f"
+    },
+    {
+      "path": "algorithm-analysis/staff_loop_selected.py",
+      "sha256": "3d842f229c40ceb25c10e4ac64e56b35931ae58acf76cafbfecd4e01813c125b"
+    },
+    {
+      "path": "algorithm-analysis/staff_management_control.py",
+      "sha256": "b12dd5465bdff32d88b46c3ab6d721c7cf027f95a957752819bad01c8979f89c"
+    },
+    {
+      "path": "algorithm-analysis/staff_refill_finish.py",
+      "sha256": "d81f3c59e285f57ed71b1bcf4302cdf6a26ccfdbba0948fc5b89107350398375"
+    },
+    {
+      "path": "algorithm-analysis/staff_removal_control.py",
+      "sha256": "0b35372077334a19f40e5fdcc7813d662b575eb376bda72caaa3a5bd968eec94"
+    },
+    {
+      "path": "algorithm-analysis/staff_rest.py",
+      "sha256": "5f2db00b2510bfb282049b327aeff6c6f4efdb084e12fa27f3befd12997ae874"
+    },
+    {
+      "path": "algorithm-analysis/staff_route.py",
+      "sha256": "adf399bb396cc8c3628fe5be6ddd56fe7373808b7c6bf663db9a100617951d87"
+    },
+    {
+      "path": "algorithm-analysis/staff_selection_gate.py",
+      "sha256": "4e8b36b68235d0b27f5a4dcb76c642d92e8a9abb2925b8904f5dafa2d13dc7b0"
+    },
+    {
+      "path": "algorithm-analysis/staff_selection_navigation.py",
+      "sha256": "0bb2033986f4cd92e4e84c98d973100f2ee0f9cdc1123aaa8697c557a943ba53"
+    },
+    {
+      "path": "algorithm-analysis/staff_target_chain.py",
+      "sha256": "26e04be4102ad63374805ed199f2b7718ceb7a66a4da2925c7bbd35e5f7b3ecd"
+    },
+    {
+      "path": "algorithm-analysis/staff_targets.py",
+      "sha256": "1fa1b4db041cb66433c35f73160ba27f892dbb15c87d37e15cb0e52a57408d41"
+    },
+    {
+      "path": "algorithm-analysis/staff_transfer_binding.py",
+      "sha256": "b606e674d09775e64e040b5ea787fbfebcb083bba0c7846ce12fd60b8c818da6"
+    },
+    {
+      "path": "algorithm-analysis/staff_transfer_control.py",
+      "sha256": "db0c0a5bce67f59cdc665395116e9af377747de41cab1705c43456079017558c"
+    },
+    {
+      "path": "algorithm-analysis/staff_transfer_profile.py",
+      "sha256": "6581143cd3af33b3ef875dbe75b17c6c6a03d3533fa6e6f42b072bf97b5f7adf"
+    },
+    {
+      "path": "algorithm-analysis/staff_visual_monitor.py",
+      "sha256": "743225da1f2cd634f4c15aadf5ccd4985d40cd1b4fbdbdaf3495f26397e7a538"
+    },
+    {
+      "path": "algorithm-analysis/staff_walk.py",
+      "sha256": "1b36231597f135b9bf30e27fd1e6efc793859c5d3ca437df7b8c0171826c64de"
+    },
+    {
+      "path": "algorithm-analysis/staff_work.py",
+      "sha256": "c99a9c3aa2ebf8702fe13173eb9b8f1dd6c6573b0e6c2068643a37cc4b0bb8a5"
+    },
+    {
+      "path": "algorithm-analysis/startup_audio_control.py",
+      "sha256": "590fca4cfc7d95f5f771d1ce718eeaf01fc8aa87467a9ea0b6c19cabb811447e"
+    },
+    {
+      "path": "algorithm-analysis/startup_graphics_control.py",
+      "sha256": "3ffc2bac6cddf5bbf5f041f171144f693984271de05aef6108874b8109329cb7"
+    },
+    {
+      "path": "algorithm-analysis/startup_logo_control.py",
+      "sha256": "e791861c8306592dc71574e25f2ddca88ba97cb24d8214c01d5c5c78da0aa653"
+    },
+    {
+      "path": "algorithm-analysis/startup_sound_resources.py",
+      "sha256": "ef3be5afea912d6ba7207b011f47032d0ac01bf38fd43f3b9716a5f01f87112e"
+    },
+    {
+      "path": "algorithm-analysis/startup_system_control.py",
+      "sha256": "e3c2baed3285a48aca8a13b745c84278ae060d2948a9cacf6da0bb56d414198d"
+    },
+    {
+      "path": "algorithm-analysis/store_advice.py",
+      "sha256": "9389fa59bbf0d8771bcc44f4a3a8eccbbe26efa751d0381a352a2c789e18d738"
+    },
+    {
+      "path": "algorithm-analysis/store_grid_rewrite.py",
+      "sha256": "19eda83ea1b4d2881c478b1861ec72c1f6b9a0e9e24870759b663aa8f6d78254"
+    },
+    {
+      "path": "algorithm-analysis/store_incident.py",
+      "sha256": "b8d345482ddb5f6e670269f5020ddfc2666b4a9d3d789ad57f5db3016ac738f9"
+    },
+    {
+      "path": "algorithm-analysis/store_lifecycle.py",
+      "sha256": "7f3976fb2f46bcf66f9c656dc782b7e187ee69b63b11ee8e4a7e3f105462e02c"
+    },
+    {
+      "path": "algorithm-analysis/store_map.py",
+      "sha256": "2bfda97d50e28063a88a3df12d7d145c7a7044bbeddb58bee757d71f4ef9f991"
+    },
+    {
+      "path": "algorithm-analysis/store_operation_control.py",
+      "sha256": "5c9255543788e56a3d7494777df4cb1992beebf4a4044c7b532684804e2cffc5"
+    },
+    {
+      "path": "algorithm-analysis/store_order.py",
+      "sha256": "6a89412e23c1d5ca4b5382f1fec4c8f332db3ab8347d6cad47767a1797215134"
+    },
+    {
+      "path": "algorithm-analysis/store_reconfigure_control.py",
+      "sha256": "e141cbb3e45e3b87db7b9f67bef460ae97e46e48a26522e953a6705fce57d2e1"
+    },
+    {
+      "path": "algorithm-analysis/store_scores.py",
+      "sha256": "54000d499dbab989647011465cf6c242e5fab57108e5fc9d7b6ffbcf028d17a1"
+    },
+    {
+      "path": "algorithm-analysis/store_shift.py",
+      "sha256": "ac3f182fced2cae6963988d9738e24106edf04ec89422b5852b93cfc6f7f6746"
+    },
+    {
+      "path": "algorithm-analysis/store_summary.py",
+      "sha256": "59175ecae8960d2429cff5fcb0add8e10e2f8bf71a07a981df96db07bb35854f"
+    },
+    {
+      "path": "algorithm-analysis/terminal_counters.py",
+      "sha256": "474f0a4d8ecca8504a5b3a0896f25ef28f7712292599930c2ffb2e91dcd9224e"
+    },
+    {
+      "path": "algorithm-analysis/text_buffer.py",
+      "sha256": "28c8293c0740b17de87ea55a9deff66a8a319f481f1e57212d1092a1e8a46fd0"
+    },
+    {
+      "path": "algorithm-analysis/text_controls.py",
+      "sha256": "402250d3cc34fc730203d029b7c08152c6cc1a4ab6614c8ea32e0814c13a9a28"
+    },
+    {
+      "path": "algorithm-analysis/text_render.py",
+      "sha256": "da103ab0123dbc9f5d0c2ce9e7559b4dedc57a954c19d6083452d7706f167b0b"
+    },
+    {
+      "path": "algorithm-analysis/tiled_render.py",
+      "sha256": "2ede5a0ae65199b54a0732e2098327f47735ec240a79eafc6ccd24eaf4e8585e"
+    },
+    {
+      "path": "algorithm-analysis/tiled_render_general.py",
+      "sha256": "ce4720d9f8e9b6c5c4fb2d96aa32c56a45259bb5cd12216e0c7f2002bf9b3937"
+    },
+    {
+      "path": "algorithm-analysis/tim_transfer.py",
+      "sha256": "c4e4619dac30ac84399ce2133743d3ed02db96186f263d86ba5d73183c8addd9"
+    },
+    {
+      "path": "algorithm-analysis/title_flow_20261028.py",
+      "sha256": "a92f998f25420f6d7824df2b71774a4480bbb7e00e0b00545c4303afc3978082"
+    },
+    {
+      "path": "algorithm-analysis/title_intro_monitor_20261028.py",
+      "sha256": "d5025ff5fc6085ee402d246479ba2b5fef725465a1bdffce3a4f8609b2d2e38d"
+    },
+    {
+      "path": "algorithm-analysis/title_load_control.py",
+      "sha256": "ebbd7e840c4a10b8c33e517384ceff6d8c2c0e89fdd9f2d5fd1dfa3b265ec28c"
+    },
+    {
+      "path": "algorithm-analysis/title_opening_play_connection_20261028.py",
+      "sha256": "94b1fea263d34d45e812c58d873979d456c1997e5034532efdca672d588d772e"
+    },
+    {
+      "path": "algorithm-analysis/title_resources_20261028.py",
+      "sha256": "1c948991f78c5b21e452db431466b6ff94043ff237bd127dbc40fe8446453070"
+    },
+    {
+      "path": "algorithm-analysis/town_daylight.py",
+      "sha256": "88c1663895c278418ea83fb35bdd9255021a9ab1a34fef4225e6502faa160995"
+    },
+    {
+      "path": "algorithm-analysis/town_growth.py",
+      "sha256": "ea5a3678a0c0b72676e10b61bdd5a65e0e80c63e61f6f0d4c5b43d2afb453b4e"
+    },
+    {
+      "path": "algorithm-analysis/town_loader.py",
+      "sha256": "a566cc377bd578ec5155f04d84e4a34d0ed3d144a31187c637af4c25846b8d2d"
+    },
+    {
+      "path": "algorithm-analysis/town_monthly.py",
+      "sha256": "41dabfeb88c81c87fe679745b83b2e78fc396426578293ba7f94f7175713a86e"
+    },
+    {
+      "path": "algorithm-analysis/town_mutation.py",
+      "sha256": "d88fd90dec79b3b674163685c6e5c2f5788958ed0706fe266f4ec43b4783602d"
+    },
+    {
+      "path": "algorithm-analysis/town_project_completion.py",
+      "sha256": "efa571217e27686f8c3fd2dbf5a4d369061f5e8a00c565cbe20ca2545ccbf8eb"
+    },
+    {
+      "path": "algorithm-analysis/town_project_start.py",
+      "sha256": "f812b447dd952e4abd36673b0eb54668e7971f728a81c0f0996270dff752ed0e"
+    },
+    {
+      "path": "algorithm-analysis/town_tile_image.py",
+      "sha256": "ec02cebd6a4730461fa37c1feb9a0865a55bc0d944ed29ae1afbbac4a4c36a2d"
+    },
+    {
+      "path": "algorithm-analysis/transfer_profile_monitor.py",
+      "sha256": "8081e14eb27b465c13a84bdb143d324fd45478324a7f3b7b7c67c0c5fb649fb6"
+    },
+    {
+      "path": "algorithm-analysis/use_sides.py",
+      "sha256": "abac1fc8380ed0964f5ff5e762f33aab76e3ac315a74b4f9b218a1aa1c2feff5"
+    },
+    {
+      "path": "algorithm-analysis/validation_repair_harness.py",
+      "sha256": "e9e65733eafd9d80ad16e8c5ee5d3ff9c6ac6c9ae3bf87e138509b04231c88ce"
+    },
+    {
+      "path": "algorithm-analysis/verify.py",
+      "sha256": "468171c0e9062d9da2a2d4c2be04747035ef5581284ddd49203c454d8c131a14"
+    },
+    {
+      "path": "algorithm-analysis/verify_acquired_schedule_20261103.py",
+      "sha256": "d12e8563b0cadfab9d6727f4efe6a30ec9308f8a36109d0e9f95029436cbe231"
+    },
+    {
+      "path": "algorithm-analysis/verify_acquisition_boundaries_20261102.py",
+      "sha256": "9d80aaa969812f7bb209075fabb1e3093ac5aeea93e192d7532d86ac656e669a"
+    },
+    {
+      "path": "algorithm-analysis/verify_acquisition_dispatcher_20261102.py",
+      "sha256": "c5125c5ecbfa9a3556bb0093338092b98ceee6508cf7cfe53d3d1ef789d55e15"
+    },
+    {
+      "path": "algorithm-analysis/verify_active_main_chain.py",
+      "sha256": "6fd5474e94cf9c7306d7c77db00bdd4669a38063d026f2c78f06f0e8814f98a6"
+    },
+    {
+      "path": "algorithm-analysis/verify_active_save_main.py",
+      "sha256": "0a07484ac8fc4a1956ed7a00f4a0a9c236c583da1f2572fc6e5a7e0e6cd89231"
+    },
+    {
+      "path": "algorithm-analysis/verify_actors_paired_native.py",
+      "sha256": "bec9d917f8347588722d6b66675f3db1d2fa983b8f6a85de78bc84c67b3ba47c"
+    },
+    {
+      "path": "algorithm-analysis/verify_actors_spawn_native.py",
+      "sha256": "0b47bc561f6bcac737b85cb6638bc1e4666d136b383b2502a4fa6d62c2235819"
+    },
+    {
+      "path": "algorithm-analysis/verify_async_voice_opening.py",
+      "sha256": "1dcca47751c3e8f603e8ca736279c879c58d52437118299aa98ca1b8b96e9662"
+    },
+    {
+      "path": "algorithm-analysis/verify_audio_dispatch.py",
+      "sha256": "7e04cf26f513c9ee6cba7c08019ccb198d568e30894fcfa52513f063f3f8415f"
+    },
+    {
+      "path": "algorithm-analysis/verify_audio_gpu_separation_20261031.py",
+      "sha256": "06a011060c6d0b1cfd5cc57bee72bb72caac64d832415f0b4cd0e2c95af14b4b"
+    },
+    {
+      "path": "algorithm-analysis/verify_audio_graphics_startup_opening.py",
+      "sha256": "afdb3dd6aba92cc38ef3f7c886835756cb5d6268f4096464019ee6284723ec59"
+    },
+    {
+      "path": "algorithm-analysis/verify_audio_resources.py",
+      "sha256": "6ad0ad5ac5dacabf8c50190e01cec0936d7d1dc87c9b4b2321e2a4f3b7149e58"
+    },
+    {
+      "path": "algorithm-analysis/verify_audio_wrappers.py",
+      "sha256": "70e50cfc265e8287e3f4dbe36cf7346474bcb505ca6e381486d9310a676a9b96"
+    },
+    {
+      "path": "algorithm-analysis/verify_background_init.py",
+      "sha256": "c2a2a987ff09aa9fb7a7fbe023109f58fccc19f99917ee068da431be8f20ed4b"
+    },
+    {
+      "path": "algorithm-analysis/verify_background_render_chain.py",
+      "sha256": "83904c4503ca652c83b6fe54f6a52b45f2718baf29a04272c0fffa2585c6442a"
+    },
+    {
+      "path": "algorithm-analysis/verify_basic_fixture_choices.py",
+      "sha256": "26f321e6e0d39a832ee53784b1b9b00fb88fe15f3e10114a224891e9c5a2cd9f"
+    },
+    {
+      "path": "algorithm-analysis/verify_calendar.py",
+      "sha256": "4f3ced2b6c234de78f37a367e357e407b1730e56c100ac51a623b19f32dc3406"
+    },
+    {
+      "path": "algorithm-analysis/verify_caller_category_connection.py",
+      "sha256": "ebf801c4fdd66991b5ba7592771d41d292fd8b42e5888b6e8befa5aaad3fef91"
+    },
+    {
+      "path": "algorithm-analysis/verify_cashier.py",
+      "sha256": "45719b3dac3ddf6f61fd9aaea3bdd4e321a1cec5b26f10eeac318110da37c2ea"
+    },
+    {
+      "path": "algorithm-analysis/verify_catalog_followup_single_20261030.py",
+      "sha256": "e353deea4cfe60e937724dda36ff4195595258dbfc9e9f233fb1d904c109b6c8"
+    },
+    {
+      "path": "algorithm-analysis/verify_catalog_save_single_20261030.py",
+      "sha256": "366067e15a44707c3f4a64c9e58f8d0d261f30988b095c8a3276dce5d5b92e9b"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_caller_contract.py",
+      "sha256": "da7dd26372e38b92f0d57acc968182071e9f36d0015b9063c2c3f5afb61c4cb0"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_charge_guard.py",
+      "sha256": "f8561ef67868732bba75f638dc8a33ab54f627ff4a314586904bf70854095bbf"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_connected.py",
+      "sha256": "1b7a34413f432efbbeb66607d23e7fbe816cae5508414842889aa50906400971"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_connected_catalog.py",
+      "sha256": "4ab45c77a29a8ddb7414b36cba050f64c6ce586b1316c94d4eaa40ba9860851f"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_connected_commit.py",
+      "sha256": "8a9d54d66cca129e538376b2db3c3889b1f9092b67a84dcfe4e8a8162ad4f05f"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_connected_floor.py",
+      "sha256": "82c5086c8aa4311c7a591709933cfb62e84d1f798110cd9e0932b3af263632dd"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_connected_layout.py",
+      "sha256": "75526dce33db4b360d5e53ba2cf9a946aa2e4f07b2505360647696fa2ab8f141"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_connected_layout_cancel.py",
+      "sha256": "c2b6d5dbcc4d64fda84a28d6310bedea079a5d5b7c0d6a079d7badfaf5cc20eb"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_connected_move.py",
+      "sha256": "051a5e1d76d85d5404affacc60fbad2a8de1527995403e887a2d372967de4628"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_layout_charge.py",
+      "sha256": "cd259f2072bcd02c2d35efb5bb8113eb27630310f417a5cca90d92e718718ef6"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_parent_control.py",
+      "sha256": "bd469504727fb1f1c0b86b8edeab94077ebd3794842fa7f835ba7c7e3534bfb3"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_selector.py",
+      "sha256": "c5b02225e569f102d56e4174c8304340b888467a871a0d012b1c1296f17b090d"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_selector_parent.py",
+      "sha256": "4c6d34b017601b1c4e30e5c91b4fba5348270577ea45ee8f3ec44dacdf087945"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_state2.py",
+      "sha256": "bfd923175cbfa38c483370452083bd7152689bcadd2ca87b581c51fd199df74b"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_state2_dialog.py",
+      "sha256": "f994e207da79c537748a7d6a37bf640f9b53adfe09b7e9295aecbadcc801f455"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_state6.py",
+      "sha256": "e0f5a3873cb011e873c42831e140f261f168ee2c19bb670dcf72ed5f5cec8a9a"
+    },
+    {
+      "path": "algorithm-analysis/verify_category_state_dispatch.py",
+      "sha256": "32adad63f7998f78b52e46b088449ba1553c9f8ee61befe1cd9beeee822f209d"
+    },
+    {
+      "path": "algorithm-analysis/verify_cd_audio_control.py",
+      "sha256": "e0daf196a61e93560fa7e521025499c84cf07264c1a368d9dc67ca63ef4ac0bf"
+    },
+    {
+      "path": "algorithm-analysis/verify_cd_audio_init.py",
+      "sha256": "e3e250f0761d23a15329c1a013b56e9aeed286abe51a28e3a1a7c44d3c1d27ba"
+    },
+    {
+      "path": "algorithm-analysis/verify_cd_audio_notification_chain.py",
+      "sha256": "690886b167dbcc0f09f97f646e71a7434a192d55d56068474d3666b087b565c5"
+    },
+    {
+      "path": "algorithm-analysis/verify_cd_audio_seek.py",
+      "sha256": "74ee990ba54fc0f3a411256f1d0cecbdd8b063315ed75450dc5485e6e6e267cb"
+    },
+    {
+      "path": "algorithm-analysis/verify_cd_audio_start_chain.py",
+      "sha256": "97f69b46dba37873593727cfd0ce57f4cf47f473425c81b358bb50bf5fb97925"
+    },
+    {
+      "path": "algorithm-analysis/verify_cd_position.py",
+      "sha256": "fe3bae5ee46f4bdfa11b69d569cac70f1bf22ba9cbf308d34e68edce5c922249"
+    },
+    {
+      "path": "algorithm-analysis/verify_cel_loader.py",
+      "sha256": "c544c53c3ce3bb8a946eaba11e6ffa293adffc8e1d46be3a2af5fde43006c911"
+    },
+    {
+      "path": "algorithm-analysis/verify_checkout.py",
+      "sha256": "109259a4f4eb25f2c400fa33a2125fd0736114cf893920d41fc607fdc39e4ead"
+    },
+    {
+      "path": "algorithm-analysis/verify_city_continuous_title_20261102.py",
+      "sha256": "416f0e4e62fe136a4336095a92b008bdd8014bcf5b4395334312012539851f71"
+    },
+    {
+      "path": "algorithm-analysis/verify_city_dispatcher_20261102.py",
+      "sha256": "38892e251adde78fed5465103756120bb4222324e2dda4c961a7f970c8bc3303"
+    },
+    {
+      "path": "algorithm-analysis/verify_closed_schedule_roundtrip_20261030.py",
+      "sha256": "9bd8e7d0de6420f40db52042555a39dd5065f161bf81593befc220560cedc835"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_dialog.py",
+      "sha256": "add953201f946f04ab3ab77e669813aa2a308741b8eeb4787a5d00f8d0568484"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_dialog_caller_fragments.py",
+      "sha256": "c6c41a24bbbcde126afb6373225cced957d8f3fb9275ad7f6de8bedf4437660d"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_dialog_glyph_chain.py",
+      "sha256": "004017f12685dc3a36ca1b2447228128f74211797767248cd979da922e45e31f"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_dialog_native_audio.py",
+      "sha256": "2d8a735f7210e5927b21cf4306d6589bbcf70ef5512b1ecd6ab1ddf48582f61a"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_dialog_native_frames.py",
+      "sha256": "54dd0e5bcf5000fa4ffd151da79611721ae60cfa211cbca32bd7f8075b375014"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_dialog_native_input.py",
+      "sha256": "e79684586d98fcd8fa6d7e93a80becaf4d1910f200152844c3e7b382448547cc"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_number_caller_cleanup.py",
+      "sha256": "1e976fe87bf58591098008978de3042595d5fedf835fce5d15d336dc54e893e4"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_number_panel.py",
+      "sha256": "27c916982e9ba5e7206b05ffb05042b568848eb202f9de7e8412f37bf6e02d57"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_number_panel_native_frames.py",
+      "sha256": "cee93c9b8cb8a29e766c913eafc07234901f83bbe5a2862fd3f9b01a58b450db"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_object_caller.py",
+      "sha256": "42bc20cbe6b784745b51d23a7c60c60186c0a1fbb6c006ccdfeb5aad5d6c5b35"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_object_panel.py",
+      "sha256": "cdfa302feddebc0deee0f36a083e514e0ab4035c68a2699395af9ddd0c5a81cf"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_panel_native_frames.py",
+      "sha256": "036e4ba2f0ce31b1d4ff4fdb6213afacca779d904ea81729b5de3025ea062b44"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_parent_dialogs.py",
+      "sha256": "71a4e7b6bb2118b638e6ff947c0a22aeb18448f3ccece811135059cda9225302"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_parent_native_frames.py",
+      "sha256": "50dab8a1e5d9c1cf1bd992feab9ff9bca4ee4716d964504c5875e6ce2d74c449"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_wait.py",
+      "sha256": "62c622429e35b25615daf45075ed087a27780802f287ed2ef0d048c788d25916"
+    },
+    {
+      "path": "algorithm-analysis/verify_confirmation_window_parents.py",
+      "sha256": "d3d96742faebfcc91f212cb340accfd40564aabb4c4bb3d3b046a5d64c6d5333"
+    },
+    {
+      "path": "algorithm-analysis/verify_connected_release_20261030.py",
+      "sha256": "0ec96307552404b3fcd41ceb43b361a2ede9213f57e0af05f7ca5ab5fe173341"
+    },
+    {
+      "path": "algorithm-analysis/verify_continuous_day_20261029.py",
+      "sha256": "da245eabf6fdf513ee3e28fdf5ceb60f5d85ef0b98473df00759b38c243fb21d"
+    },
+    {
+      "path": "algorithm-analysis/verify_continuous_ending_title_20261102.py",
+      "sha256": "9c361b354469470497cec74402ab98eef30e9b95ba4707a8bfa61429bea1b416"
+    },
+    {
+      "path": "algorithm-analysis/verify_cursor_control.py",
+      "sha256": "14e3695936e5f5380234f5b65d1d631c97c843eb8ba6ec889a9bb755381f2fa3"
+    },
+    {
+      "path": "algorithm-analysis/verify_cursor_input_chain.py",
+      "sha256": "5f54e4e77f10ab260eca07a735a8c1c01df99d462afd6c3f2fad1fd657729af3"
+    },
+    {
+      "path": "algorithm-analysis/verify_cursor_render_chain.py",
+      "sha256": "72b88c159d9862f3b78a2da81dd276779ee926dee2e447cfe64c955560259b1c"
+    },
+    {
+      "path": "algorithm-analysis/verify_cursor_repeat_sequence.py",
+      "sha256": "4cd56295297eae7433f137cd6c8f42644c22b9bb49d41a1259960cdb33d34c31"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_capacity.py",
+      "sha256": "880daa2dca6d19aaa20b96ea389e068e246dcea352bd289f5b14406e47bdd027"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_chain_native.py",
+      "sha256": "ddf6e0d1bb553fe212be2ddb5352fbce793c64a4aae182cdbc117a031093ae7f"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_dispatch.py",
+      "sha256": "37e3373d60ec4f983dce32ae77eaff3fc0453c5825393ec88a5dab2c693e5bff"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_entry.py",
+      "sha256": "4cfa7e6421f6e0856200c43a8051419011316ee34ec08af6fb26b7aab7b5a220"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_entry_init.py",
+      "sha256": "cf58a596684f3b9457a24e3ef6a2045986ca1720158c83fb1442a1d1473f81fb"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_full_native.py",
+      "sha256": "431259824913ff91733911ddacd1acf7805781f4a05123f0d7c4e06f2bd43110"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_loop.py",
+      "sha256": "b348c4951998b1a070062f65d2a575ac6f87cc8043794fa3250483bf37a6d91f"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_loop_unhooked.py",
+      "sha256": "fb0f425c19c707e9cd31bbc251e015df2e0787364df09a35d1234da38640b17c"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_milestones.py",
+      "sha256": "aacfb52e0412398d45b9a91f2ea99177660700e217bec12eaab675e2f013ff20"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_milestones_native.py",
+      "sha256": "69a7b7fd193f2e863334dccf8524fad39fc3c3655d1a788a1ed5b57be5ed80c4"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_position.py",
+      "sha256": "e03b4669dbcb17cf735861762a3c54bbaf6f094c902dea155656f5986f93b1d8"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_presence_capacity.py",
+      "sha256": "1d413fd6731eb6b646534031c457ebc8c79204ec1ab25e1a887639feec5934af"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_queue_state.py",
+      "sha256": "f71441da2707a5c371f41342e767b74efd2d9d395f6bae4bf1f551cc5bd095b3"
+    },
+    {
+      "path": "algorithm-analysis/verify_customer_spawn_core.py",
+      "sha256": "996a6642c9cf5129e54141812a3fb638071cbd34c4af8745ba3fe9bb54e7f3cc"
+    },
+    {
+      "path": "algorithm-analysis/verify_demand.py",
+      "sha256": "b9df9322ae529c926de2e6d208451c377d5b0589bea10625dd2b063793621f1c"
+    },
+    {
+      "path": "algorithm-analysis/verify_demand_hud_chain.py",
+      "sha256": "1f4356ff413badea530dd40d57be55dfe1ccdb975a97de8c2a3c04574047ae11"
+    },
+    {
+      "path": "algorithm-analysis/verify_destination.py",
+      "sha256": "df858836856a2e069be52a5d69897986e4f1e2635a0a8bb943f0d2d3835fd7cb"
+    },
+    {
+      "path": "algorithm-analysis/verify_destination_full.py",
+      "sha256": "21d362e23aae284c83a01792514943f15c40349c0581a630d413fa1eb59f834a"
+    },
+    {
+      "path": "algorithm-analysis/verify_disc_background_chain.py",
+      "sha256": "0adb820baf6fe8d0d62eed037bece016c1a19e7e4cd4e24e05524dd8b7ba5610"
+    },
+    {
+      "path": "algorithm-analysis/verify_display_buffers.py",
+      "sha256": "d9a9fdf074e0e9d1bf9dff61d2b92fa93321451cc9691a63af5616f72f2a0ab7"
+    },
+    {
+      "path": "algorithm-analysis/verify_display_cache_helpers.py",
+      "sha256": "7624d6edb9c60a465c8ec0d11fc1cad7baf9a11afbdb9614a7fe33fd35618b9b"
+    },
+    {
+      "path": "algorithm-analysis/verify_display_cleanup.py",
+      "sha256": "9dc607822c5af763b7e13f800996cb19be95c01668bfb16c31a7d1c0b948a18d"
+    },
+    {
+      "path": "algorithm-analysis/verify_display_clear.py",
+      "sha256": "20b0d6c18dee527ce85a03d51d320e640e3afde8ace41ac07176c03191f25359"
+    },
+    {
+      "path": "algorithm-analysis/verify_display_frame_sequence.py",
+      "sha256": "874e66cc8efce293fb86cb860ed8ead2f974a2032245f9db3ba6bc09645ec5d7"
+    },
+    {
+      "path": "algorithm-analysis/verify_display_init.py",
+      "sha256": "3b8d225c9e68b3197ffccc6eab8b56d4f05c40be14b2c4d12647421a90a2be9f"
+    },
+    {
+      "path": "algorithm-analysis/verify_display_registers.py",
+      "sha256": "ba01b9fa1aa7060d110f77b1363b7933f6aeb30d1f1ec8bb8cb4e12b1a668d6d"
+    },
+    {
+      "path": "algorithm-analysis/verify_display_startup.py",
+      "sha256": "ba48395b3b1822dba147f2e33456ad9eec3b486f700cde8a44c6147819a095fb"
+    },
+    {
+      "path": "algorithm-analysis/verify_display_startup_commands.py",
+      "sha256": "da2c29e5459708457912fe26865c9040c0bbb6eb5bd5bfd0983fc8d5ed6f21bd"
+    },
+    {
+      "path": "algorithm-analysis/verify_draw_env_packet.py",
+      "sha256": "78b1136d5ca5ea9e60d9e33ea760ff5a9e4e6b6754d3814daf33142768d333e7"
+    },
+    {
+      "path": "algorithm-analysis/verify_draw_env_submit.py",
+      "sha256": "76434eb3eac195e62ffab65d95a2f9848df98daeca9a2a0a92c12bc77dccbaf7"
+    },
+    {
+      "path": "algorithm-analysis/verify_entry_chain_restore.py",
+      "sha256": "7d53ad395dedbab6af16ad1b163a9065e5e0332c8b9a62fb856bbec12dce6999"
+    },
+    {
+      "path": "algorithm-analysis/verify_environment_prefix.py",
+      "sha256": "b3c243a066560342044c86023bddc420dbb829ad782466a747193a17b786f7be"
+    },
+    {
+      "path": "algorithm-analysis/verify_equipment_choice.py",
+      "sha256": "388afa50b5c3bf6f181c7dc2c16a601e7bf79a28e6e915693c6de2dc71e7d555"
+    },
+    {
+      "path": "algorithm-analysis/verify_equipment_choice_frame.py",
+      "sha256": "5fd5afb25ae5863d66b3233913bbedce86b839a3947c4ab2a0bd011b7de3d919"
+    },
+    {
+      "path": "algorithm-analysis/verify_event_owner.py",
+      "sha256": "c083903b481bc9c3a6bc8d1a65cd2a8abb7f13f817dc66775ec26cb41dcf8330"
+    },
+    {
+      "path": "algorithm-analysis/verify_event_queue.py",
+      "sha256": "7063054b1025fd972e21ab70999904140a55cdd6ba2b47aaca01d79b5eab19f4"
+    },
+    {
+      "path": "algorithm-analysis/verify_existing_caller_category_connection.py",
+      "sha256": "12d3e81964e83ff8677b452ed2746d51c7d8e1123fe3c4f8f704ac1cf5f924b4"
+    },
+    {
+      "path": "algorithm-analysis/verify_existing_selection_pickup.py",
+      "sha256": "83c004483ea9d6b343a758959dfbcddab6cc40bc34c08d092311bebd635478df"
+    },
+    {
+      "path": "algorithm-analysis/verify_existing_selection_prefix.py",
+      "sha256": "15c2edff5d408334df14662c0dcb3bc4f5ffe6a04acd60ddf2da76950469eb05"
+    },
+    {
+      "path": "algorithm-analysis/verify_existing_selection_removal.py",
+      "sha256": "f227f65d125dba2eb5e455afeee062c04209ba1126f8cb31c0efa1f63bea36b5"
+    },
+    {
+      "path": "algorithm-analysis/verify_existing_selection_special.py",
+      "sha256": "c48828c928114e305934d38d54ba0775c733fbcdd1200f48a8e0a15ffc09d013"
+    },
+    {
+      "path": "algorithm-analysis/verify_extended.py",
+      "sha256": "d0d21b201f7dc22e9e1cc74c1f51bb14abc77f58088a554e12d5d2053f28811d"
+    },
+    {
+      "path": "algorithm-analysis/verify_finance.py",
+      "sha256": "daf4e2d2f54a805b939d084c252cc9ee1ddaa266988b0039d02b010d87b3880a"
+    },
+    {
+      "path": "algorithm-analysis/verify_finance_close.py",
+      "sha256": "e5ee366e2442311af8dd0d11adb5efcd18ed077f9f7905cb4b4dd91c4b7429db"
+    },
+    {
+      "path": "algorithm-analysis/verify_finance_notification_text_20261030.py",
+      "sha256": "f3b784658d2f1b8837bd584034341faa7eb331e4dea379180f34f55e284bb670"
+    },
+    {
+      "path": "algorithm-analysis/verify_finance_pending_display_20261030.py",
+      "sha256": "b3de641076d7e52a64427f6185bede405f85dfe560ae4356c3035e0cd9f88242"
+    },
+    {
+      "path": "algorithm-analysis/verify_finance_pending_early_20261030.py",
+      "sha256": "5e63d12cd7e99faf2901b8ce660009f331676a5703fa663c085a88419784288f"
+    },
+    {
+      "path": "algorithm-analysis/verify_finance_pending_full_20261031.py",
+      "sha256": "e2b9486f4a6f9db14bd39cdee33b5018f480f594e3ba41bec7e205cf911c39a8"
+    },
+    {
+      "path": "algorithm-analysis/verify_finance_special_full_20261031.py",
+      "sha256": "eb800d6e6b9cc0bb61e62789b57a37edcee285b9fa51c36dd6f5281e2e3800a1"
+    },
+    {
+      "path": "algorithm-analysis/verify_finance_visitor_quotient_20261030.py",
+      "sha256": "87917e44323419e5dab36bbf954b929369de65ef531d5583132ca6708b594fe5"
+    },
+    {
+      "path": "algorithm-analysis/verify_first_store_opening_control.py",
+      "sha256": "756b96353581d84d02c9f4316f24bc5c81e5656d249b72dd7fe6b116323a77e5"
+    },
+    {
+      "path": "algorithm-analysis/verify_first_store_opening_live.py",
+      "sha256": "9a1efceedc781cb42184e3dc4d9f9398aedd4226c59c40297f9ed217851e5676"
+    },
+    {
+      "path": "algorithm-analysis/verify_first_store_opening_paths.py",
+      "sha256": "c39a1827655cfce8d8d6d31e18a4f875cedd246cacf20c0ca30e5b3334e0eba9"
+    },
+    {
+      "path": "algorithm-analysis/verify_first_store_opening_sizes.py",
+      "sha256": "38a725a7a0b942f48e75482a11b1cdbfaf6add982f772c946b73fc7a17c577e2"
+    },
+    {
+      "path": "algorithm-analysis/verify_floor_choice.py",
+      "sha256": "df2c299465c0d9d6e89244831caf294204cda45ceb21c3aa8ba05f9752de15fa"
+    },
+    {
+      "path": "algorithm-analysis/verify_floor_wear.py",
+      "sha256": "4f660320bad40c7e7bbacb6e1139bfc6881b6550e03571b2fc002bb6a9b80b23"
+    },
+    {
+      "path": "algorithm-analysis/verify_font_atlas.py",
+      "sha256": "e0ea4315dcb21fa2fd1f861b5bb695871e637a4d97c118208abdc286e3865381"
+    },
+    {
+      "path": "algorithm-analysis/verify_font_pixels_and_labels.py",
+      "sha256": "6d85d8a72b2ad9d9b3e8074d92e5ed1cc71711af91032f8d332a80d3ee7899a6"
+    },
+    {
+      "path": "algorithm-analysis/verify_frame_buffer_chain.py",
+      "sha256": "0f129b1a7445ca0698733369b89d6c89b6d40d78e911b698c0fedcea5ce0dd49"
+    },
+    {
+      "path": "algorithm-analysis/verify_frame_display_commands.py",
+      "sha256": "b00942316cec0bcf858dd9af63be528ab78183185a74abd691fd1a2219c88e1a"
+    },
+    {
+      "path": "algorithm-analysis/verify_full_chain_restore.py",
+      "sha256": "a8fa7392b7203c5c9b88935ac739e52ad86a86831ba9eb4841cb87bdbd01188b"
+    },
+    {
+      "path": "algorithm-analysis/verify_gpu_consumer.py",
+      "sha256": "99aa6f18a3567982b896854309a56bbf1f22bb5b33ac2efceeb8c09ccca396af"
+    },
+    {
+      "path": "algorithm-analysis/verify_gpu_dispatch.py",
+      "sha256": "6fa02bed4b5b9ac82970468afb1ad401662244f402a7263910c358f5a3ec6403"
+    },
+    {
+      "path": "algorithm-analysis/verify_gpu_reset.py",
+      "sha256": "68bba19ca186aa2add0f26bc942ee6bb2e76b636a605347b3f25d33fb343bc92"
+    },
+    {
+      "path": "algorithm-analysis/verify_gpu_sync.py",
+      "sha256": "cf09317e11f788eff2d6f2225906ff530c419fc9c15ff67129268489d9cc4e89"
+    },
+    {
+      "path": "algorithm-analysis/verify_gpu_timeout.py",
+      "sha256": "11831a0a64ce575eadc178aef75e4082d57327a41b117274f4b156e69f5e4503"
+    },
+    {
+      "path": "algorithm-analysis/verify_gpu_upload.py",
+      "sha256": "5c203ad10fe82631811123ba34764de523c818a519a6d099bad6caa6c54ad076"
+    },
+    {
+      "path": "algorithm-analysis/verify_graphic_startup_opening.py",
+      "sha256": "68af98c07e338ceefda83ad00ee4b024e898d2fc2d3e9d569b8139695dc3b110"
+    },
+    {
+      "path": "algorithm-analysis/verify_gte_helpers.py",
+      "sha256": "372053f83f947771d1478c8df13ae630c5428e631360e10742d275550b24dfe9"
+    },
+    {
+      "path": "algorithm-analysis/verify_handoff_shared_values.py",
+      "sha256": "98d048f30c28fbd1cf6fbead51a95ff9e4adc6ae2ed456978c9a3aa554266fdc"
+    },
+    {
+      "path": "algorithm-analysis/verify_hud_display.py",
+      "sha256": "530e7b7fa8b549e1addae2935257058b0ea17543075af73315ef800d8747c42b"
+    },
+    {
+      "path": "algorithm-analysis/verify_hud_frame_chain.py",
+      "sha256": "35cbae7cb73e8d508ac8b77abe1613d4849c307c1b0a00c0446861a0a6b72d98"
+    },
+    {
+      "path": "algorithm-analysis/verify_individual_price_control.py",
+      "sha256": "d44807078c73ca3e3229badbba01820c340bb09911b216883c979ac6a04c4d59"
+    },
+    {
+      "path": "algorithm-analysis/verify_initial_voice_dispatch.py",
+      "sha256": "90813b73a13e6e0ccd1011463feec6d84550df7cb3c252ebfe124cc4eea90487"
+    },
+    {
+      "path": "algorithm-analysis/verify_initial_voice_lifecycle.py",
+      "sha256": "50c1508021a201ce725ed6142878dabe449d04638ec579caf8fcd9c21ae60827"
+    },
+    {
+      "path": "algorithm-analysis/verify_input_chain.py",
+      "sha256": "3c94d4b34de4e0fa93ed3dffaeb6821ca7e64e0918e202d23563d2db385d386a"
+    },
+    {
+      "path": "algorithm-analysis/verify_input_control.py",
+      "sha256": "bdb2f913bf833b5eb83fd6f7451a32c2c3cfe9b21203dae4c8f1505c09368f47"
+    },
+    {
+      "path": "algorithm-analysis/verify_input_release_wait.py",
+      "sha256": "9ac6bfbd50faaa2d13f080e308fa581b18f57a332c7aa53d4afe0f2aa1785c4d"
+    },
+    {
+      "path": "algorithm-analysis/verify_input_wait.py",
+      "sha256": "d0dedea316c5c805a07ae7de600d2b0fa5dc4ecfbaa9ee9d16a5be5278860202"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_equipment_product.py",
+      "sha256": "14c49ecba3fdc37e6715622f2f47a96c5bca6c3c1dd1ff358ae83d015b72413d"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_floor_display.py",
+      "sha256": "0465f523748f2d3b8cac09aea4cf6b238673207a66aafc9ca6e4fd6756b3e2c7"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_floor_native_frame.py",
+      "sha256": "78db4df9d950f3a33f23f3a28c35705d9ea978cfc177ee13aa82abfc9c7ad55e"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_grid.py",
+      "sha256": "a2b5d43dc46dcde2a6a2e8cf4a9fdbcd49fa6a243b5c12bd74a92e63962d7696"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_initialized_placement.py",
+      "sha256": "e40800341b4d1c71415e8d739ac57ce16a87343cb93fa928ec608ec083a1ecc1"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_initialized_refresh.py",
+      "sha256": "cb8fc3b7f1d70729c0b73c90a49a2d6caef6947f31d551375ca986714a7f5074"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_overlay_staff.py",
+      "sha256": "bd4cab61a44c8f4c2451f1b60821e2af1e6558c4270fff33d2939b37685cc76f"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_placement_display_chain.py",
+      "sha256": "27bda78d073ce2f2ca531812c271517c1a04eedb48ad16758550d4a8fd4a60e6"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_placement_full_chain.py",
+      "sha256": "2bbbdb61e58eb3ab012891454faf0d27deccbdb4121f60fdaf91ee02d335eab3"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_placement_gate.py",
+      "sha256": "7c9dbd2db4e8f7228f9bbd7a8d30376d50c964e6b05f0d792a2b7c749a2d6773"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_record_init.py",
+      "sha256": "33e2e349448359108f81e5a25189a8b8ed3175c3db4fbc54b220c410efa9c90b"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_refresh.py",
+      "sha256": "a3f3582b185702ed38a572763a36c2008dfaf90a60b7fb76181c61aa3abe2071"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_save_roundtrip_20261030.py",
+      "sha256": "cb81b74bfeefce334632d93d10294e2298cdee02615e20ebc06dd4d3c90796b6"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_strip_bounce.py",
+      "sha256": "307f4eb6477a3c0a29261849b2c9fc573667e3269f7f4eb4536039fd583cbb2e"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_strips.py",
+      "sha256": "1eab59a1196f7b4b322eb37fb5ba89fffa47c2f921056789735e85850ca4dd4a"
+    },
+    {
+      "path": "algorithm-analysis/verify_interior_tile_record.py",
+      "sha256": "5b37178c2dbc4bb91de2be3cf33f6ba3c454e2d27151667fe93eb7bd075e129c"
+    },
+    {
+      "path": "algorithm-analysis/verify_inventory_callers.py",
+      "sha256": "cfbcf2016acf79cd5917f9b0522887cb57a633a4ef30fe77d67a040d7c10b3cf"
+    },
+    {
+      "path": "algorithm-analysis/verify_inventory_full.py",
+      "sha256": "a86509ea34aec8156109850d4a0dfa9d573823ef39c651fc872d9606bca350f1"
+    },
+    {
+      "path": "algorithm-analysis/verify_land_original_town_connected.py",
+      "sha256": "23d6db360598ef506679dd677bb377b968fbe2bb1fce98b0181018c652cb6623"
+    },
+    {
+      "path": "algorithm-analysis/verify_land_panel_connected.py",
+      "sha256": "37eabe60a0f9f72eb51be005034bd523708ff5144a1070b9ee61e1a92b5fcf72"
+    },
+    {
+      "path": "algorithm-analysis/verify_land_panel_visual.py",
+      "sha256": "6961b3104accef4cb4c110091cdf3b03fa6e2bc001999e8af5df15302b44efda"
+    },
+    {
+      "path": "algorithm-analysis/verify_layout_choice.py",
+      "sha256": "14f8aaab7e05d56e8c08da9f03b58be0e30f0764e794fa0db5ff929dbe47a69e"
+    },
+    {
+      "path": "algorithm-analysis/verify_layout_input_charge.py",
+      "sha256": "00fdae3d57cf7b8dbf2903d08911bf52a0d11c72f2242b10fd6c9bb4bd123a09"
+    },
+    {
+      "path": "algorithm-analysis/verify_layout_preview.py",
+      "sha256": "262d10c44e0a55214690d0befba0f24fc917cf542a94d093590f578b9814a52b"
+    },
+    {
+      "path": "algorithm-analysis/verify_layout_preview_native_frame.py",
+      "sha256": "4be9d4f405e57a031e46c907b5676bc7996d4e79dee5f6d8f8eb22511316a645"
+    },
+    {
+      "path": "algorithm-analysis/verify_live_tim_skip_20261102.py",
+      "sha256": "10f5bc503b9e9c690ab76f060b0026bb9ce0356fd57c808e3c3673bd899bbfba"
+    },
+    {
+      "path": "algorithm-analysis/verify_load_attempt_gate.py",
+      "sha256": "72edbcf6ef258d26d27ff7b68c5ca3d7f2929bf238f3ef67b613bf908d55d5a7"
+    },
+    {
+      "path": "algorithm-analysis/verify_load_wrapper_chain.py",
+      "sha256": "56712d41cc00b38dc15fad8118eda078c3fc87a88d578e92824509f0ef457f1a"
+    },
+    {
+      "path": "algorithm-analysis/verify_main_audio_selection.py",
+      "sha256": "fc4e5e39454c4f8bc3ecec00d7927bd297bd32429f2f39fd6dd196c82967d4ab"
+    },
+    {
+      "path": "algorithm-analysis/verify_main_finance_chain.py",
+      "sha256": "5b7600215c4cf90c5bd0618068922f48c1886e47ad4aef70dbe69adbd476d103"
+    },
+    {
+      "path": "algorithm-analysis/verify_main_hud_order.py",
+      "sha256": "de86c5b1b087b229fe3dd36af155308e0bf19f2186b1c55bb6670cd3c679259a"
+    },
+    {
+      "path": "algorithm-analysis/verify_main_modal_chain.py",
+      "sha256": "f7234556c9084b4ec7ccffe36cf8729927b5ee4cd9a72e733008f8fe55515848"
+    },
+    {
+      "path": "algorithm-analysis/verify_main_update_control.py",
+      "sha256": "9a9e9a0e16fee9f17e6bc0fea0c7c176fe5e6fc8e221afd2c0b9c753964c4b10"
+    },
+    {
+      "path": "algorithm-analysis/verify_main_weather_unhooked.py",
+      "sha256": "cd6d94c762997e00ba65cbd8d540e758e680ca9d940072a2ec14da8a8d84e89e"
+    },
+    {
+      "path": "algorithm-analysis/verify_mainplay_entry_live.py",
+      "sha256": "87c4e03cd159d2da125373264bd9ac16750c23a98005adccfd2a10fc436953dc"
+    },
+    {
+      "path": "algorithm-analysis/verify_mainplay_input_operation_chain.py",
+      "sha256": "32e49a0c49ffec760fa205b791a7736b7874554df72bd80c7abe3f7a7845d307"
+    },
+    {
+      "path": "algorithm-analysis/verify_mainplay_iteration.py",
+      "sha256": "6f348f1fe7eaf30671ab192c360e35736a6317b47325442873484368bcd00e81"
+    },
+    {
+      "path": "algorithm-analysis/verify_mainplay_live_iteration.py",
+      "sha256": "dc73b862b36bb8ba5f18879ce3410082c78f0489d456ce4659d974a7f9c6745f"
+    },
+    {
+      "path": "algorithm-analysis/verify_mainplay_operation_live.py",
+      "sha256": "97f592cd15235159569f454df8d6a493d32139a7bafaef89861a3edde700797f"
+    },
+    {
+      "path": "algorithm-analysis/verify_mainplay_town_operation_live.py",
+      "sha256": "e41ab643b3679df1b46e1d5a0976cc52fb638eb065b141ad9e26f844c87bfac0"
+    },
+    {
+      "path": "algorithm-analysis/verify_manual_layout_caller_connection.py",
+      "sha256": "abc3d9a25623edfe1baeb0575f8ba6e5801c1ceb0079e9f0dd900999b45cae41"
+    },
+    {
+      "path": "algorithm-analysis/verify_manual_rejection_caller_connection.py",
+      "sha256": "148ee81a1f204945466982bb3a98267d662115546c16a794ad25500eec2932d6"
+    },
+    {
+      "path": "algorithm-analysis/verify_manual_retry_caller_connection.py",
+      "sha256": "041e82a8dfb16e6ddffe7587e1d28633bf71fa7f458c0d2f63fbbdf6da0e6c36"
+    },
+    {
+      "path": "algorithm-analysis/verify_master_return_monitor_20261102.py",
+      "sha256": "d5c7e23f72c8efef49ceda5e8692ba1326ece21e8f4266a0ad6de20403804165"
+    },
+    {
+      "path": "algorithm-analysis/verify_matrix_scale.py",
+      "sha256": "2edaa10f30f8045f1639f963e4c4bf8199903a265886cd00a82ef26932c74fad"
+    },
+    {
+      "path": "algorithm-analysis/verify_milestone_ending_20261102.py",
+      "sha256": "9cb0f23590b40cd770c020d5fe408134b29e8c541aa82b0def947dbd5654457e"
+    },
+    {
+      "path": "algorithm-analysis/verify_month_event_reservations_20261031.py",
+      "sha256": "2e193e36db778246101622782351fa2120af305e7799dbe52c9e418c3781afde"
+    },
+    {
+      "path": "algorithm-analysis/verify_month_final_20261031.py",
+      "sha256": "725ebb4e0e2fb8bbb84d12747daddc36f41a96ca1adae134c71a7436d9a7f31f"
+    },
+    {
+      "path": "algorithm-analysis/verify_month_notification_tail_20261031.py",
+      "sha256": "6cc4e70c984eb1fda023c6e0795a121d03174c285c32b74b4289816b7e9e184f"
+    },
+    {
+      "path": "algorithm-analysis/verify_month_resume_20261031.py",
+      "sha256": "583552eade4b1d474ca6dd23513d7a603be54a3f18ff507cbb41f8add5f5b9b8"
+    },
+    {
+      "path": "algorithm-analysis/verify_monthly_results_glyphs_20261031.py",
+      "sha256": "4d1761169c89d47c8a9623fbd8bd44c20e38245fcdafcc4fd61af8b3d9af8b00"
+    },
+    {
+      "path": "algorithm-analysis/verify_monthly_results_screen_20261031.py",
+      "sha256": "e5b5a0deec3db6777cbf0008d9d7bbe30a5af87a1f22f411171b04d779ab8ec7"
+    },
+    {
+      "path": "algorithm-analysis/verify_monthly_screen_natural_20261031.py",
+      "sha256": "681062e8d503a1c869299ddce503f21cf4a9ae3a6cfbef25818c2e23404dc3d3"
+    },
+    {
+      "path": "algorithm-analysis/verify_move_cancel_restore.py",
+      "sha256": "7315ce0bdf8236ee9dfa02f7a427d5e0c3803bde1259d2be4bcd9eafa1c9d7f2"
+    },
+    {
+      "path": "algorithm-analysis/verify_move_parent_cancel.py",
+      "sha256": "52a34e56158b57f5194f841fa769befe98c274070dc092dd0cc8a52c8ebba5fb"
+    },
+    {
+      "path": "algorithm-analysis/verify_move_parent_commit.py",
+      "sha256": "58464dc2b1a47386c43612f9b4b080dc64d15be69393334e657d48f319edec65"
+    },
+    {
+      "path": "algorithm-analysis/verify_move_upper_cancel_chain.py",
+      "sha256": "71708b56c03620be177e5142d48efcc0a1cec3ec0dc21126197440e93d02c012"
+    },
+    {
+      "path": "algorithm-analysis/verify_movement.py",
+      "sha256": "abf12c83011fae65a1919d4e00c5ad177630266c6c67db04a83d4565afbc95ae"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_geometry.py",
+      "sha256": "926acaef2a4134dd33841d6a4602560557d31505a2c98898ca17a1b9640ee34e"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_initialization.py",
+      "sha256": "733d4e8d162d986de82ef3877bf701446a442e0e9a124247f57c4954ec7b4d95"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_native_chain.py",
+      "sha256": "d857dc75810da9cba35776fab540d1750f75da0298c341e0c61fb196e2c7f71e"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_output_callback.py",
+      "sha256": "615165ef7fd90f161b2dbdc6cfc2a7da5f56ffa14d9aa67fd7bc3682ef710d5f"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_playback_control.py",
+      "sha256": "42a36cd89d53a005b98c5997b501cd0dd7bf0385d2e33058df38b102a3b2a690"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_source_chain.py",
+      "sha256": "4a8bc67794de979fa363ce8fab0a1d65bf370b3c0b1782d7d723c10f08da8452"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_startup_restore.py",
+      "sha256": "af3cdd59d42a92dd6d4f1dcc82650ca0a5c6b5d9789f36bc4c24a945b69d7a8d"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_stream_header.py",
+      "sha256": "0e8d457acb3d33cbf7590afe5505531d6047dc38b7099b96f0153396b6e73789"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_transport.py",
+      "sha256": "e9d58369573f5c465398a98d163efc9211ea4be495bb56a5509c06035b9daf09"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_transport_timeouts.py",
+      "sha256": "d8fbcab05ec6f2a0d1cfb1dfa735fbb3b4af1b3309dbf4a6c19b36c431d2d057"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_vlc.py",
+      "sha256": "c9e69c6c3294d1429595e8ca165f8f84a642d1c799155bd328c11f9e6fe51b3c"
+    },
+    {
+      "path": "algorithm-analysis/verify_movie_wait_fallback.py",
+      "sha256": "65e5d7067a03e4f8d94c33f4370279157cb4016509624a79581def02d0a2e542"
+    },
+    {
+      "path": "algorithm-analysis/verify_multi_active_main.py",
+      "sha256": "22cbd7869557bc591047f7f8dab9f2bb4e1041c997f044c0c8eaebc709fdcb3c"
+    },
+    {
+      "path": "algorithm-analysis/verify_multi_group_frame.py",
+      "sha256": "f6dbb71324be714e2e02537c4014922e855342bcf98fdf99308dfab25a6ad7c7"
+    },
+    {
+      "path": "algorithm-analysis/verify_multi_store_midnight_main.py",
+      "sha256": "f309529d56ef3624933c15fa4a87e1d54bea82d6c9e3523d34088db82551336b"
+    },
+    {
+      "path": "algorithm-analysis/verify_multi_store_shift_main.py",
+      "sha256": "48e5f69f6b6111da357839f22ab4e6460a691b8489ee6dc9305d7d78e2858655"
+    },
+    {
+      "path": "algorithm-analysis/verify_music_control.py",
+      "sha256": "417cfc0744a8ae1282c7415aff81f1d2042dfdc118c65a9ea588a3053d43e82c"
+    },
+    {
+      "path": "algorithm-analysis/verify_music_resource_chain.py",
+      "sha256": "238c8c807d3fc67b5f8e206fe44a9453a37890c289421a3b25bc03a7eb985057"
+    },
+    {
+      "path": "algorithm-analysis/verify_native_audio_init_opening.py",
+      "sha256": "5a405c1b895200693dbaeba3dd17ff0df136385940609079a45e05c8136e7579"
+    },
+    {
+      "path": "algorithm-analysis/verify_native_music_20261029.py",
+      "sha256": "f2326fc0f0fb8355aef42113c6d2a970668bc0bcb68c7dc7c050e54412bfd2e2"
+    },
+    {
+      "path": "algorithm-analysis/verify_native_resource_opening_retry.py",
+      "sha256": "e724116c9a8171d7d8eb36283994092c7b73ba3d4871a20ea83094ee8391cfd5"
+    },
+    {
+      "path": "algorithm-analysis/verify_native_town_save_gate.py",
+      "sha256": "2bd4f1c6ff4e2ca311c2d0d296ffa708fd34b517920ec8be2a018b09c8b984ac"
+    },
+    {
+      "path": "algorithm-analysis/verify_native_voice_opening.py",
+      "sha256": "5141f4b993fe411e29412ad0c3996e9654c376dc5d3bcd235b71d98cbde64251"
+    },
+    {
+      "path": "algorithm-analysis/verify_natural_acquisition_20261102.py",
+      "sha256": "5c4149f1d617f2b5e69cd116acf0a7aaefed7a3b57bf239f73f2d3a43ff95dc6"
+    },
+    {
+      "path": "algorithm-analysis/verify_natural_segment_20261102.py",
+      "sha256": "6b8668e3a216da9d177f78f93968c8051e733b9f8c1715bc9e2815ab8c9f0a8d"
+    },
+    {
+      "path": "algorithm-analysis/verify_new_store_full_chain.py",
+      "sha256": "2601d51ca3fbf0f9add375886c5f4cc7912ea2174d9296f66d21446f917c6543"
+    },
+    {
+      "path": "algorithm-analysis/verify_new_store_full_chain_paths.py",
+      "sha256": "e55c4d0ac7b041c41e9687cb382857cebe85d7e312df5722398f42bd24ace734"
+    },
+    {
+      "path": "algorithm-analysis/verify_new_store_full_chain_sizes.py",
+      "sha256": "3a44ade2541d968d86f8bf08074850941c6fd82b64ecff5941e2c504bb733500"
+    },
+    {
+      "path": "algorithm-analysis/verify_new_store_live_opening.py",
+      "sha256": "d6b503bd78f2d6262a0391f04a45797fed36c27ad19636e6a9d92648f169e577"
+    },
+    {
+      "path": "algorithm-analysis/verify_new_store_live_settings.py",
+      "sha256": "1e54d729deb4571fafab12496e51c8141f08207751a3cab31934bece4c498da9"
+    },
+    {
+      "path": "algorithm-analysis/verify_new_store_upper_control.py",
+      "sha256": "296e3a3b8555b5a7ffa60ef8aab69ff346aad08a0cf9939705038b60578d42ec"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_menu_live.py",
+      "sha256": "60acb0bd02e4fcc8f7d82dacd327598e2cf35a7fba29bcc7be5865802503053f"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_native_gpu_opening.py",
+      "sha256": "72b654613868413352ab1562857b2e4841719db08f5264d52e338c530c0bedac"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_native_gpu_ports.py",
+      "sha256": "6636a721cfcfb782a4cd149c0a7acf25d3542b4754e6ed9af144557e2780f90a"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_native_resource_opening.py",
+      "sha256": "5f23621047424ad535cd981e92260223a317caa3ad63dc08dc0e92a92a1a89f3"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_navigation.py",
+      "sha256": "69d02d86c35fda140065301ffe765d06bdcc767b8a280466f8379be6f5bb2a58"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_opening_live.py",
+      "sha256": "de6489b4defe82f01fd1d29ae9535ed1e0f0e67a9cdc903611b8fc486de427f9"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_opening_retry.py",
+      "sha256": "3de51e2279de446fe287bfba22d5eb76680d232dc8e45beca0ba355fc3b9bef9"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_palette.py",
+      "sha256": "fbbf02d0dae77075668dd2f92faf5e288d58e4f50bca7335575f8c4de79f7315"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_prefix_control.py",
+      "sha256": "3d95e68f1b875471f98cad545154256c3db5ec6b4e102c263cc5abe6cba0c1c0"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_prefix_live.py",
+      "sha256": "8c5dd282148097e199169742930037dbfda45828d13fdb543b8645df7c4765d4"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_resource_assets.py",
+      "sha256": "642cb1dca4e9abcd996642501c9aefb3da2a2a2a0b98243f9291956f147e8cb4"
+    },
+    {
+      "path": "algorithm-analysis/verify_newgame_resource_chain.py",
+      "sha256": "7ded2a1a8581205cc6630a650d33e54a3de8cdf75302a0e7eded68d56a4de740"
+    },
+    {
+      "path": "algorithm-analysis/verify_next_morning_20261030.py",
+      "sha256": "18ecdf64431a1c7658277b663eb0507387ce395bf1a5f746668c0dbcff94c25b"
+    },
+    {
+      "path": "algorithm-analysis/verify_notice_modes_main_gate.py",
+      "sha256": "78458fa1591270c4c681b0b0a8534d3d398b9421c2794fd2e5d357ab66da1c87"
+    },
+    {
+      "path": "algorithm-analysis/verify_notification_active_main_chain.py",
+      "sha256": "8bf83595ce57925c598a7f176b2f013c8d8b5629dbbe5bf3ff759886fe424e8b"
+    },
+    {
+      "path": "algorithm-analysis/verify_notification_callback_continuation_20261031.py",
+      "sha256": "89d9d4e1f7dafd5433e3b02bfe5064adc917cf77a3fdeee60ece978fb6c26f78"
+    },
+    {
+      "path": "algorithm-analysis/verify_notification_display.py",
+      "sha256": "2022685f309644b733abecaac173f053183b36c6b628fe53d2320ac38bd0c353"
+    },
+    {
+      "path": "algorithm-analysis/verify_notification_display_natural_20261031.py",
+      "sha256": "967ab81c4ee51dabf5b1bc4bf3a453e8290f0834e802f9c7f96b34dbb527edff"
+    },
+    {
+      "path": "algorithm-analysis/verify_notification_lifecycle.py",
+      "sha256": "ea629558891bd9dc549164645db6be9aba164693af611c8b57391c0f09eb12b5"
+    },
+    {
+      "path": "algorithm-analysis/verify_notification_timer_stop_chain.py",
+      "sha256": "717e37a30f41ffd06297cdf1f4a3b121660a81e1d0ef3f2615bf8093aa24d55b"
+    },
+    {
+      "path": "algorithm-analysis/verify_numeric_alignment_fragments.py",
+      "sha256": "7a0b614c8d33288e15d217b457d293e8cc031c453769de3d43fd0e4c1fa8cea7"
+    },
+    {
+      "path": "algorithm-analysis/verify_numeric_display_width.py",
+      "sha256": "3298533c51793cc6d8a35c79a115f4543ec1bedfa3fcba42b7c44f95c41526ac"
+    },
+    {
+      "path": "algorithm-analysis/verify_numeric_sign_glyph_chain.py",
+      "sha256": "f8750dd16bda34b651cd37118862650434059dc088e806b76f4d10f7ea3b494b"
+    },
+    {
+      "path": "algorithm-analysis/verify_numeric_wrapper_glyph_chain.py",
+      "sha256": "b7063050920ffedd8721d67cf06238239f56e6d99eebadfbcedbb535eeac9d4b"
+    },
+    {
+      "path": "algorithm-analysis/verify_odd_background_frame.py",
+      "sha256": "c2536b83f8e0a941a8adb501799ab7adfc43f7016c18cdb8c6bedd656ab7f67a"
+    },
+    {
+      "path": "algorithm-analysis/verify_opened_snapshot_play_20261028.py",
+      "sha256": "4c1baca9bff2945b5a0e8890d5d046d39c98448e6585dd7d81a1ac173e47c909"
+    },
+    {
+      "path": "algorithm-analysis/verify_opening_price_averages.py",
+      "sha256": "2e3bd785714370568bc0b0124cbc7b83edbd443aac915f63b97f5b3379fc1fc2"
+    },
+    {
+      "path": "algorithm-analysis/verify_opening_price_step.py",
+      "sha256": "5421915dd589473d6fd5bbfd2485e860c4616eeb0108f0b0cadb95d7d7f734d4"
+    },
+    {
+      "path": "algorithm-analysis/verify_opening_settings_live.py",
+      "sha256": "0e224596f9edc09cc2a55008758417ce5479dd95181727a44e67dd589d54f769"
+    },
+    {
+      "path": "algorithm-analysis/verify_opening_setup_control.py",
+      "sha256": "2ab112080a21f50eb9a70cd50d99bbcea457cff4c1d23fc84de53ee8cdd130fe"
+    },
+    {
+      "path": "algorithm-analysis/verify_opening_staff_binding.py",
+      "sha256": "3fd15d998d8d030b76bc8834b2a3631abacfc23cc9df91ffb40772e7f67baaea"
+    },
+    {
+      "path": "algorithm-analysis/verify_opening_staff_bound_control.py",
+      "sha256": "b66139bc861999ca8412f376e691ae5b2fb65124f47607963b19bfb5a1a68aac"
+    },
+    {
+      "path": "algorithm-analysis/verify_opening_staff_control.py",
+      "sha256": "c0c5afa2bd17cb2df5c72d5923350cdf2f6662525c991813a1c360aaad8cd2a4"
+    },
+    {
+      "path": "algorithm-analysis/verify_opening_staff_display.py",
+      "sha256": "19250919febdd490178779ca8f0bc2b44104e54e4126ecef29b24d98099b21a8"
+    },
+    {
+      "path": "algorithm-analysis/verify_opening_staff_live.py",
+      "sha256": "a01e9b609b98e291a4c1a2a9605b4c6532ff931460c8d8abd634b10c3fba9adf"
+    },
+    {
+      "path": "algorithm-analysis/verify_opening_staff_prefix.py",
+      "sha256": "0ea6a3cd33e4aac5ee21b82d74f2fc44786b7a329829078396e97ca3e93ece9c"
+    },
+    {
+      "path": "algorithm-analysis/verify_operating_branch_segment_20261103.py",
+      "sha256": "305571ec157137c985aff465f7ab1d76f2a3c27eb1ef940c0aa0a62c19a7c315"
+    },
+    {
+      "path": "algorithm-analysis/verify_operating_costs.py",
+      "sha256": "5ec04edb92a3f08064544dcf5bbc24761831852b4bd99783dd23ee573878f9d8"
+    },
+    {
+      "path": "algorithm-analysis/verify_operating_inventory_20261103.py",
+      "sha256": "5089ea60ba0af82e35620990de8ac9731683492c66456d8454a7279470e92bf7"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_adjacency.py",
+      "sha256": "5b2d6c778dc070fc4d50d8e137d1ce316bd3f8335269025b3fe2b07f324d38ee"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_backup_exit_chain.py",
+      "sha256": "9268cf841a952483e09377f664fe1d78c4bf382c75e0ca3a1d185d0d5b84b0c9"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_check_confirmation_chain.py",
+      "sha256": "9410585d30172dcdd332516dc8b738fdb64f9214aa7aed55b966638ec60741fa"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_customer_detach.py",
+      "sha256": "89a753ddb1962aa967d68cf479ab8da23c20f154bb90c6b1d30835a0733892a0"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_error_caller.py",
+      "sha256": "5975b51c6544fdc1842070527dec38adbd90579c5fdc3a6510baa746b3e0cce2"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_exit_cleanup.py",
+      "sha256": "71cdf3fe7380a2c3c0571ce56de4f5e763813cf6c561a7ea9c91c0be18ec4e78"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_perimeter.py",
+      "sha256": "cbe499caa8d3940b046715924c5224541d4d1bce8c4f9b2a81f35d2ddbe70157"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_preflight.py",
+      "sha256": "db4b6120c7677dafdc0a81ac2ee4fdbac41c4c8476ee86918801d0a374fa5328"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_template_confirmation.py",
+      "sha256": "862e9ba0bd832f87c0e11f4ed6c25e575592c6eadffbfe07caeb7aa92664e727"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_template_save.py",
+      "sha256": "e61345762330c0f1fecf5e243c95c4f3e74189c5479943d64dcd826aa204554e"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_upper_whole.py",
+      "sha256": "797d792b3993d7852d428f1e24ae2bd9d8042cbb06d90a18c7608cca046364f4"
+    },
+    {
+      "path": "algorithm-analysis/verify_operation_whole.py",
+      "sha256": "36c503c8417d26440b90269b7b0e87ad1423f3cfd56b94d63badb04100a14406"
+    },
+    {
+      "path": "algorithm-analysis/verify_ordering_init.py",
+      "sha256": "40bd7bdd622a2f519169e4a019951e978cd6dc4e9f131d327a795a3b311a183f"
+    },
+    {
+      "path": "algorithm-analysis/verify_original_message_parser.py",
+      "sha256": "c0d40527d60518cd1f95289e4ccb2a8a7f2299e31b9134ab68286ca1692ec526"
+    },
+    {
+      "path": "algorithm-analysis/verify_other_ending_scenes_20261102.py",
+      "sha256": "6d8fd2ae22511798dfcc6544596b66e80130bdc723af1d7ecd0f0fef995ce15e"
+    },
+    {
+      "path": "algorithm-analysis/verify_other_saved_titles_20261102.py",
+      "sha256": "a03f5a7d32a64c83dbe359b96857da2ba53a40e4a3c2335bbdd732f21a1082ac"
+    },
+    {
+      "path": "algorithm-analysis/verify_owner_event_screen_chain_20261031.py",
+      "sha256": "bcf916cb72de46ecee6725e19eaf207ad0db2540870a609b29f6a388e5eafc52"
+    },
+    {
+      "path": "algorithm-analysis/verify_owner_results_glyphs_20261031.py",
+      "sha256": "de4842d73608b33af27d6665e25d2ee2ebd85392509a6b1c51cbcc5f83878e31"
+    },
+    {
+      "path": "algorithm-analysis/verify_parent_regression_20261103.py",
+      "sha256": "dea0499f08c240510248d0b2ed2ba946246f98f710bbc0493ce1913f6f227962"
+    },
+    {
+      "path": "algorithm-analysis/verify_permission_mask_bytes.py",
+      "sha256": "4d57529a70d880b9258283370a3a456fec3d002542a125fd56a6cc2abf758f66"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_caller_prefix.py",
+      "sha256": "b430970cd318683db5f7767660ef0ec978402ecd166ca57a8053cc68861b2b61"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_confirm_cancel.py",
+      "sha256": "8d3987cafa6e56b2bf3ec3802fe3bd25d3d52ff7e9208a1ecfe671399363afc8"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_controls.py",
+      "sha256": "43086a4f98a759f9037a4f6dff0af928b2b37dcc13f4a2765570530900d59717"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_controls_preview_frame.py",
+      "sha256": "d9fec1e3b050d92c2a4bdbb9710fa76db9210e1ce4aa1ad314c0ba141fea9382"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_focus_init.py",
+      "sha256": "ef6defd8d6591544938e012294d053925fe13785b23051bd5efd4cef2197e855"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_focus_move.py",
+      "sha256": "296d8ca00e1dc161d6134f773fa2565d7c347816a1d217bd3cf229a34622d04e"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_marker.py",
+      "sha256": "aabc793f0dfa81008bcdd08f4cbfe6dea4eb8228003de927d015095a59820715"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_marker_mask.py",
+      "sha256": "7527df2e4e0998f29ba2ba6653a95623eb471a29cc7fb308fefaafd927af5a8b"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_menu_cancel.py",
+      "sha256": "a446ee9f07c3aa2b868c47eb050171f1868174333be4c25fd6a9390ccc30cc32"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_menu_commit.py",
+      "sha256": "c27004b9ae2ba15c3d8f68e5900c15a91e1cb54dce63f00ab5cbfb8c1d211245"
+    },
+    {
+      "path": "algorithm-analysis/verify_placement_menu_reset.py",
+      "sha256": "b6f46c5a085b32252e7a88aef1294c301509e3cf3c1a0c92a8a9f6350d816ac3"
+    },
+    {
+      "path": "algorithm-analysis/verify_play_update_gate.py",
+      "sha256": "2b9fe6f1619f899177122f8ee7c979558377206731b23b44181b6987377e0c8f"
+    },
+    {
+      "path": "algorithm-analysis/verify_populated_town_main.py",
+      "sha256": "f408c8b54ec8c7d217c1c9fe0c526db8e695e532b5861e11dc1a10ed0a4d6a75"
+    },
+    {
+      "path": "algorithm-analysis/verify_popup_acknowledgement.py",
+      "sha256": "5efd205e56de4d15b3b4eda2343d98aaf07af51b6a7e35f41e206cfd792464ae"
+    },
+    {
+      "path": "algorithm-analysis/verify_popup_message.py",
+      "sha256": "dd892beb77b4591970aedb57c0e75d0e409b7602def45bc107c279f712f7b8bc"
+    },
+    {
+      "path": "algorithm-analysis/verify_portrait_icon_native_frame.py",
+      "sha256": "1bf55e06792002efacaf462af285b1ed4b385ddd14c1640f76cf3952871da69a"
+    },
+    {
+      "path": "algorithm-analysis/verify_portrait_icon_wrapper.py",
+      "sha256": "414fc74268bbada14e1741e2722ab9ac7cc5542326cd7b6c8e21f49fadfcb002"
+    },
+    {
+      "path": "algorithm-analysis/verify_post_exit_adapters_morning_20261031.py",
+      "sha256": "0f56d6ef8d8abe9e2c27fe355a1a0bc150c98bf9ad5873e44b34df6c96087885"
+    },
+    {
+      "path": "algorithm-analysis/verify_post_month_day_20261031.py",
+      "sha256": "7d72ba59cb39a199bed4e0d932042d86514908a1e8498cfbcc06b692b071ab00"
+    },
+    {
+      "path": "algorithm-analysis/verify_post_month_day_final_20261031.py",
+      "sha256": "1e74bdab2a3ad5be90de6670ab00c807b7b35ae4ae96e562e3dc619dfe74c120"
+    },
+    {
+      "path": "algorithm-analysis/verify_post_month_day_resume_20261031.py",
+      "sha256": "71445032bc0d3e816b8e6b59e23490d0449195c203829e482f057c0f84bd98e7"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_all_control.py",
+      "sha256": "ab57a6ff6385d9f18436c22b629564f1a6fd716f5e7d44f854779812f68e71c1"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_connected.py",
+      "sha256": "780676890b5926fe880f8ae84558e325f507dcaef02cd64c1f26de1d9884f68a"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_existing_control.py",
+      "sha256": "972288beec864c4e9b179813941f6eb3ea9834370d8e7f3263bedd9e604e3322"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_first_intro.py",
+      "sha256": "f5a85ef3a873e42abaf1f5b739701ee9daea59821f4f96051fa0a86161427e45"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_helpers.py",
+      "sha256": "783617d71bf3526fa434d5c2cfd6dbc3aef7c74c444481647bea042e42bd9633"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_intro_connected.py",
+      "sha256": "6b56cd95104a920c4dcbaed9101138488ba7cbbbce0c5ba4b30bc7f6816057ec"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_land_connected.py",
+      "sha256": "e27598fb59b4b9e698e319429d116c271db5364e86ffef890e6086b483aa73ce"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_land_input.py",
+      "sha256": "7904fc50500762253f79a449f0a635d204c10a107fac5465253522bab79228ab"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_land_panel.py",
+      "sha256": "5fce28b2f11f415de6924758674af1d1ee9c40e42fec0cf5796147600c274118"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_land_prefix.py",
+      "sha256": "bfec92471e25d395ee5eb07fafccdde647de2b57a3f03012bc603c28e99329ce"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_land_upper.py",
+      "sha256": "c4ec7c51a751cc438a116f1a3da682de9eae8f1b8378d8cc2ef32228f6f3025d"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_numbered_intro.py",
+      "sha256": "87889dda555278fecdbd2eab478559c09ed8f2eb983c7338eb58a81ec9fc55e1"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_numbered_parent.py",
+      "sha256": "1c3eeabb456621865e1e9d90730d299c9980656fb4abf1ea90723fa1db9f7df1"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_original_town_parent.py",
+      "sha256": "236a226becfb9b9cbef688a10b0a12d6cef47163f3d6ee5267f227c5422bb4c5"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_panel_parent.py",
+      "sha256": "d97ef4b137a2061cfa8caa467c2a609b8d447dcea667910b0f546142bb966787"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_size_visuals.py",
+      "sha256": "44d6f05a16545149a0f58ef0c685682561e6e54b5aa27e1601d4eb51408cc998"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_ui.py",
+      "sha256": "675c19a1398549fc38d17a47e4de6dd2506ec9bec26331e1944e0951d104df1b"
+    },
+    {
+      "path": "algorithm-analysis/verify_premises_upper_connection.py",
+      "sha256": "8057fdcbc28d97a2a7d3b025ab5a11cbbb2e2ebd3fb501ca1e5302eccc4d39b0"
+    },
+    {
+      "path": "algorithm-analysis/verify_preview_original_catalog_chain.py",
+      "sha256": "fcb5637a4de9753e01b8e844cc22647d7b15835ae37b1f725b503ac8828f7a20"
+    },
+    {
+      "path": "algorithm-analysis/verify_preview_placement_copy_chain.py",
+      "sha256": "0bf89da4bf7c4917423304279cdc3cac5a88b137dea00e553677946c6f7b524e"
+    },
+    {
+      "path": "algorithm-analysis/verify_preview_producer.py",
+      "sha256": "fb221ec2a71197dc755aca5053c27a20310d5e277c08f4ceb048a844386fb063"
+    },
+    {
+      "path": "algorithm-analysis/verify_preview_producer_native_frame_chain.py",
+      "sha256": "32a2c66c6f1ba2e1e981eae48f2d3ae943b118a6ae3c8f033fd9df0c26c71f1a"
+    },
+    {
+      "path": "algorithm-analysis/verify_preview_tile.py",
+      "sha256": "3ab05fb2c62bda3096a4d211db235c8c317cf4ed67a4d80b63e31c60e1920b2f"
+    },
+    {
+      "path": "algorithm-analysis/verify_price_controlled_demand_20261030.py",
+      "sha256": "e401152f3c2a494b896c29d4852cbbd93ffd91ea184ce8263431bc3f05454381"
+    },
+    {
+      "path": "algorithm-analysis/verify_price_next_midnight_20261030.py",
+      "sha256": "939acf87d06b1d6a67a8c7c6a9681b0020e2c392842409a04ec0031b1e2709f1"
+    },
+    {
+      "path": "algorithm-analysis/verify_price_save_roundtrip_20261030.py",
+      "sha256": "c987bb1aabcf3c87adcd525b34233aa4fb9dafba9002c018f47f8d033d389d5a"
+    },
+    {
+      "path": "algorithm-analysis/verify_progression.py",
+      "sha256": "4841800c95d80f52d2ceb39c06ebd5f27c470e4f265e5a8b95a898e188613188"
+    },
+    {
+      "path": "algorithm-analysis/verify_project_main_prefix.py",
+      "sha256": "83c84b95d17be5e6e251f6ca6e4cc4485e3d0474ba99c5a8769c64b21138169f"
+    },
+    {
+      "path": "algorithm-analysis/verify_project_menu_full.py",
+      "sha256": "7f2d29697f5cb0005dbc358cf8d3487ebf6a7259f1f480ff151905bd0689b31e"
+    },
+    {
+      "path": "algorithm-analysis/verify_project_navigation.py",
+      "sha256": "38d3b035844cb21e56d7a512c4d73200f12c43bafb65a43843a028fb449c596b"
+    },
+    {
+      "path": "algorithm-analysis/verify_project_site_ui.py",
+      "sha256": "6d404f99ec29863003852afd1a30a83a2b21aec74df7c2fac450aa71b80d3479"
+    },
+    {
+      "path": "algorithm-analysis/verify_project_stack_chain.py",
+      "sha256": "40cb43b10a504e379efbc6a2fafd807d6697d8cb58d8359019b6db79c23765a0"
+    },
+    {
+      "path": "algorithm-analysis/verify_prompt_layout_native_dialog.py",
+      "sha256": "6d090f6bbf11b8861d249f26a0481a1fd6d0f21fbeb5c04ad150e65a42b0b8b0"
+    },
+    {
+      "path": "algorithm-analysis/verify_prompt_original_caller_continuations.py",
+      "sha256": "1553776ce38eee1f1fdbbb2a52aeaa4c3bbbbb3c1cb677d9513eb33ccecab722"
+    },
+    {
+      "path": "algorithm-analysis/verify_prompt_original_native_dialog.py",
+      "sha256": "cf1f4b0ac461bd38db7f59411af16f86951054d1bcd9f08635ee5d2901ef89ac"
+    },
+    {
+      "path": "algorithm-analysis/verify_purchase.py",
+      "sha256": "f033c60cfc1399f733934c73e1c93ead574e8da868f234ac0a940c66da032ed9"
+    },
+    {
+      "path": "algorithm-analysis/verify_purchase_full.py",
+      "sha256": "7eb77a8e0fb02e55781b020106466bce513c1b1a1857dd9b0c2355197473e008"
+    },
+    {
+      "path": "algorithm-analysis/verify_quad_packet.py",
+      "sha256": "6391491bc8eab307b46ec16efae41ff68112c27bc2098d892d3e3fd90813e00f"
+    },
+    {
+      "path": "algorithm-analysis/verify_rare_store_event.py",
+      "sha256": "0ca892f8c19528022813677f558f4d21e5a61d5420e781d7f10f8fe1af8c4832"
+    },
+    {
+      "path": "algorithm-analysis/verify_raw_text_wrapper.py",
+      "sha256": "93add2deec8634420cd2e3c6c983d1aba97a20718e0a31cfc4d8cd930e57c755"
+    },
+    {
+      "path": "algorithm-analysis/verify_rectangle_predicate.py",
+      "sha256": "2457f8da56e9f646afba55d9fc163a4ab90142e00c803adecc8dc43e72149042"
+    },
+    {
+      "path": "algorithm-analysis/verify_refill_monitor_controlled_20261030.py",
+      "sha256": "7e90bdfddbe98cb413a746ca7761949a37c877cb131f60ab1ed14708827de706"
+    },
+    {
+      "path": "algorithm-analysis/verify_render_control.py",
+      "sha256": "73d164bd3a08423c02ec264ee8f923a66371340bef58d96af2fea6ca953f10cb"
+    },
+    {
+      "path": "algorithm-analysis/verify_resident_ot_guard.py",
+      "sha256": "ff5763265fd1e57c5be324ea573f7d53af5bb2c8c10457abb486d88e27c6be11"
+    },
+    {
+      "path": "algorithm-analysis/verify_resource_chain_restore.py",
+      "sha256": "17b50f2ee9721fc45e9e5d762c36b7d6fd41ae1fbbea0474a5a0df85c8645de5"
+    },
+    {
+      "path": "algorithm-analysis/verify_resume_settings.py",
+      "sha256": "2dbe4f17d18a6ab8cde7a6a8640e8589d7ae8744e26ea6c97c8c8ffcb44c09de"
+    },
+    {
+      "path": "algorithm-analysis/verify_returned_payload_title_20261102.py",
+      "sha256": "24c5bf6ee52f87f49175a5238a4ec5550424066a6a9a1bf4a70477449c172d85"
+    },
+    {
+      "path": "algorithm-analysis/verify_rival_helpers.py",
+      "sha256": "5730e5b9d77862280268f2abe5120401ccb6c0e09125b3bdef887759e07a401d"
+    },
+    {
+      "path": "algorithm-analysis/verify_rival_management.py",
+      "sha256": "f1dcf8cccc4ef96255741213eac85445f6275db5bc0120c11a66980f04ce5bca"
+    },
+    {
+      "path": "algorithm-analysis/verify_rng_setter_chain.py",
+      "sha256": "109647f1a42d1372ce028d9a76e3b1bae9895239a3cb944ff1f59e7e1d690f3a"
+    },
+    {
+      "path": "algorithm-analysis/verify_rotation_trig.py",
+      "sha256": "f28b001ee7d5757ea2be168333943b507a6d1a4fd6d8e0254b6649da98ccac93"
+    },
+    {
+      "path": "algorithm-analysis/verify_route_codec.py",
+      "sha256": "d9fa8db34b172c6563e62cc161f0e6cc6d32c6c8a88b0ed750e87c3cf4819f57"
+    },
+    {
+      "path": "algorithm-analysis/verify_runtime_operation_preflight.py",
+      "sha256": "867ec31b74f0ddaab9a7bd435927513af6d1c968f3b52ad6b98315dd77ed9bc2"
+    },
+    {
+      "path": "algorithm-analysis/verify_runtime_operation_whole.py",
+      "sha256": "d9e33278e8cb964bfb8c3e1da39ea75bfdb8d6c0bc510b0a234745369def5bde"
+    },
+    {
+      "path": "algorithm-analysis/verify_runtime_selection_submenu.py",
+      "sha256": "4d81ca26a12e54a6457e6e1ead5c4088cebd5bf7df1ea2acebda89a4152db5ea"
+    },
+    {
+      "path": "algorithm-analysis/verify_runtime_submenu_icon.py",
+      "sha256": "39120e940c13d970476a2dd87c9e4aca71e81004ab358cefbd291bccbe682a2b"
+    },
+    {
+      "path": "algorithm-analysis/verify_runtime_submenu_whole.py",
+      "sha256": "5260cd606b1ecb8b88759eb3fc5d52433d6b29760b08e279793bc3691b168990"
+    },
+    {
+      "path": "algorithm-analysis/verify_runtime_tables.py",
+      "sha256": "c1aa4d091b15148549f1c59d0481ba4a99a8c809703f1cb9088c498e02ea8fd2"
+    },
+    {
+      "path": "algorithm-analysis/verify_save_codec.py",
+      "sha256": "135b2db900ce48763fa938b8e44ad124e45df1a808ccf63b3937f84e0949abd1"
+    },
+    {
+      "path": "algorithm-analysis/verify_save_load_menu.py",
+      "sha256": "18f946fbd87ea0982573a7e52e5496438d39e2d40e603babdc6f9fe94276a7d3"
+    },
+    {
+      "path": "algorithm-analysis/verify_save_menu_reachability.py",
+      "sha256": "dfa14306f6cc2b01f241c38c1cb294f6160226d86990721f86c1569df21052e2"
+    },
+    {
+      "path": "algorithm-analysis/verify_save_weather_chain.py",
+      "sha256": "4624be59abd8107dff52c985672f9b68e9c208c1020b8e51ff297ba4b43ad176"
+    },
+    {
+      "path": "algorithm-analysis/verify_scaled_background.py",
+      "sha256": "c9b2cb25b329b58239819ea97f449b3086103d254aeade0f57d80f9b69e790b7"
+    },
+    {
+      "path": "algorithm-analysis/verify_scaled_gte_chain.py",
+      "sha256": "4a1c804f18181d21cb578a5bd9bb22553f5c3b42f1832d376b6508e4e0c4b8b1"
+    },
+    {
+      "path": "algorithm-analysis/verify_scaled_matrix_chain.py",
+      "sha256": "56fb7629868e43f0bec5771aec0688a767abefbab93f3afe32c46f4076ad7bc5"
+    },
+    {
+      "path": "algorithm-analysis/verify_scaled_multi_group_frame.py",
+      "sha256": "d0e44559d005635dbadec8769cf2af8d6d463d4d14b9016cdbb34870ba28bc14"
+    },
+    {
+      "path": "algorithm-analysis/verify_scaled_render_prefix.py",
+      "sha256": "7f1810d30ab3a9c34c6dae7504f073a89f02e8c67b24eaa004d633b2463c9d04"
+    },
+    {
+      "path": "algorithm-analysis/verify_scenario_card_save_20261031.py",
+      "sha256": "f3638a663027bf39bde47c0dcdf6ffc49d9821bcdec1b3bcbf233378cdb5c31d"
+    },
+    {
+      "path": "algorithm-analysis/verify_scenario_exit_full_20261031.py",
+      "sha256": "8f9396f1aa9b2be9cef560bc1da96d63739ed82b0ae1d0c7db7f3eb9f3dd1c85"
+    },
+    {
+      "path": "algorithm-analysis/verify_scenario_title_saved_20261031.py",
+      "sha256": "921006a674dc657f12e463bd871e62d5e291ff48903a303fbdd480d3acda104e"
+    },
+    {
+      "path": "algorithm-analysis/verify_scenario_wrapper_20261102.py",
+      "sha256": "568b93e52e7099e4033e57adc39b0bf93fd6a3abf0a2831fafab71dd14eb8a8d"
+    },
+    {
+      "path": "algorithm-analysis/verify_scene_color_oscillator.py",
+      "sha256": "80c9c59bbee915099587a8c7ec13c3a39c23bf2cb072894756af2a87580ad259"
+    },
+    {
+      "path": "algorithm-analysis/verify_scene_color_parent.py",
+      "sha256": "c1e828e4a084dc2e4284f57e21fde85c1fe3e3562bf59f43621522b045b3acaa"
+    },
+    {
+      "path": "algorithm-analysis/verify_scene_color_transfer.py",
+      "sha256": "e853e3c9071e512b9817f8d571ccbfa49bc188eb123eb19c954376459fadf9bc"
+    },
+    {
+      "path": "algorithm-analysis/verify_scene_indicator.py",
+      "sha256": "bb1efdb96a6f214766befe63a29baa7b4e558e335800071afaa75851c331cd90"
+    },
+    {
+      "path": "algorithm-analysis/verify_scene_strip_reveal.py",
+      "sha256": "519018c53e2cba9976a037ce43a1c8fa659db1b4797086defe91fe84d9100a03"
+    },
+    {
+      "path": "algorithm-analysis/verify_schedule_parent_frames.py",
+      "sha256": "84aada636c6173218e9fa0fe685b4e07814d78d7e9ef09ab87adf46201aea1f4"
+    },
+    {
+      "path": "algorithm-analysis/verify_schedule_selector_frames.py",
+      "sha256": "1f145780b051d1772cd4ecedd89f7440c031aaf93923f5860f2f5432cb13e254"
+    },
+    {
+      "path": "algorithm-analysis/verify_schedule_time_boundary_20261030.py",
+      "sha256": "a8e04dc48f06d260b9f72d038e446e58986c9e293c85faf337d4fcfce9665b6c"
+    },
+    {
+      "path": "algorithm-analysis/verify_se_initialization_chain.py",
+      "sha256": "eae7a1be579720e95d7ba88e98fc6c655b5da7ba48a231d24cec00ce24046d10"
+    },
+    {
+      "path": "algorithm-analysis/verify_selection_submenu_chain.py",
+      "sha256": "3b80eeee774d7284c528b6e50a3945e45eba2653c2bca6b87a47b9d05f9631d4"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_apply_outer_chain.py",
+      "sha256": "af8ecdd7c2ea46241c7c26373041aefe60772f4aaf59ebeee072560ecb78f45b"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_menu_music_chain.py",
+      "sha256": "5c6e18147be4365622afec1729edddedf2bfb12567a9cb860b0056dd0ae5d96a"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_menus.py",
+      "sha256": "b67b29678967ac4a686f8316d1ccfa96335ca4ca36f8435b9e3664ada2d5fefa"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_music_resource_chain.py",
+      "sha256": "399eda6627db60cbae8d48e5bd65b112449440ae975e0bcc3ce571d996079ec7"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_native_frame_chain.py",
+      "sha256": "fcb201e4b1c4e34637bb7801d0bb0a142d350cf418cbc9e204518ce5fe259e51"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_native_input_chain.py",
+      "sha256": "41eec3854fbeaab32999471d1f308e2797e3302a31cc9c6dc89049b185ec9d3e"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_outer_menu.py",
+      "sha256": "2378c5521d80487f8e35cb246001e2ea1f7b5012af5517544a85365bad373098"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_records_input_chain.py",
+      "sha256": "018f59c32b852592598a8fdba66c7da983fe49307dcfaa5c21a5a66ecb597c93"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_rectangles.py",
+      "sha256": "29fa225b106c82412fdb2268eff17509ff8ecb236281085165a0f5d86a157239"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_visual_menu_chain.py",
+      "sha256": "7510ceef6398f1b2c292a5ba2076221afb2cbee5b7e38a86332c41221e80ffc0"
+    },
+    {
+      "path": "algorithm-analysis/verify_settings_visuals.py",
+      "sha256": "5569b8ba4de3ec5aac0c93200f0eeaa1bca320b8cf678a7e57d7bfe7c5033d1a"
+    },
+    {
+      "path": "algorithm-analysis/verify_shortage_caller_connection.py",
+      "sha256": "27f2f105481b45ffd46403462ced2791e64be8d99d7e1c48cca7d6a8fec00c68"
+    },
+    {
+      "path": "algorithm-analysis/verify_single_bootstrap_20261030.py",
+      "sha256": "61a68c37fccc1d0be3f5b5b8a5cd6f73e15f93238aa51092719cb1c3ef096a51"
+    },
+    {
+      "path": "algorithm-analysis/verify_single_day_20261030.py",
+      "sha256": "7c6c9d7c4d4ac2dea6f427041fb8d61eb4d51ded67b391b2d26d01c03def5a82"
+    },
+    {
+      "path": "algorithm-analysis/verify_single_multiday_20261030.py",
+      "sha256": "5e80b5a00ea0cf2b0add99849e77b2dad964a400c5b535170b7d7d36a2b89b54"
+    },
+    {
+      "path": "algorithm-analysis/verify_single_roundtrip_20261030.py",
+      "sha256": "98a9872eca736492aa27e7c751cfa8ab27f468fed5e38771f44fe33a3ec7ae1e"
+    },
+    {
+      "path": "algorithm-analysis/verify_single_ui_batch_20261030.py",
+      "sha256": "e549ffed1191da573ec14f947f6dff2ef9aef940bef721aaf5a6f613e0a2205e"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_catalog_20261030.py",
+      "sha256": "bab2da79e05cfbe5552c8bc5eaf59a4cd8f7bc611e49243022afbcab1aeb2363"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_customer_single_20261030.py",
+      "sha256": "52dab9e3946fe6ba1317373952f9b0abe8637836b6fb002053bd75b28fd8e643"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_equipment_single_20261030.py",
+      "sha256": "860a48bf95efdd8d031e99fd8448476deb9e6546256b57186a4b0881509113b0"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_interior_20261030.py",
+      "sha256": "4ff1bc837edab7f16842b790c0c56269cc5b89fe0c6e1eb5915820db018610d6"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_price_operation_20261030.py",
+      "sha256": "6b73ce03c39f3710074b7d85ffa27bcc1040fc12fc19969b13367c5439798c90"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_refill_single_20261030.py",
+      "sha256": "f99a36c9dce7e93bfde094bb8511d24e9cc3bdeb531c1df75768b4c309c6e6e9"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_schedule_20261030.py",
+      "sha256": "56694a9cc69bd6301719ec1c055b0443eb688d89f2d42023b69b85f79991ec33"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_schedule_costs_20261030.py",
+      "sha256": "b5e81d018e5e8079b5363febc1ec500239cae6127de7b9ad6c27d8901bf40084"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_schedule_retry_20261030.py",
+      "sha256": "7e4a134022a1197aa68e8c82791a2a5c6f4714a69ed06c1f40634d19180c11cb"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_staff_costs_20261030.py",
+      "sha256": "1788063f724cf647345d68b2bc49a751aa473ebc8fd1173ad9508961e1bc7e1f"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_staff_operation_20261030.py",
+      "sha256": "c7c15a0437078d24ddf1ecd9fd2b5397b570294d7d616b0c2b010f383684c29b"
+    },
+    {
+      "path": "algorithm-analysis/verify_source_staff_transfer_20261030.py",
+      "sha256": "ce79560a06989ebd62c9be8f120ddba6000c7a44002d8c8e4c9ca358a7401723"
+    },
+    {
+      "path": "algorithm-analysis/verify_special_incident_screens_20261031.py",
+      "sha256": "62d5f1bf8972737425c320ac38e820eee5393c72751e29b25185ff617029ad1f"
+    },
+    {
+      "path": "algorithm-analysis/verify_special_period_screen_20261031.py",
+      "sha256": "ac93eaea4fda08af67f48bfe9006c49c27a37bb381a72d5ba4205ecfb0926f3e"
+    },
+    {
+      "path": "algorithm-analysis/verify_sprite_record.py",
+      "sha256": "0ed22de08cd1e510978d8fe1c734ae7f01ef617fe65e0bb8eedc6fb9386c5ddb"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_candidate_pool.py",
+      "sha256": "decd486d560d9767808108d24136c837f858141db5123804ff4bbe69f6080830"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_energy.py",
+      "sha256": "e4bce4222299c54cb8cc04451121feed902dd18878679ca1beb87ab7f434ecb2"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_followup_20261030.py",
+      "sha256": "1c5a95ad83aba9641a7832bc9a0c873103c6df678666628780be188e37356504"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_full_native.py",
+      "sha256": "c0446f87be1ec1939397d3b74ee62b6e0175a0166d9fda899daba1db17835ace"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_loop_selected.py",
+      "sha256": "ffec4b89bc6bf0b3ebc2e7b205b1356ee18e229a1f10fc6434aaf988198b1948"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_management_control.py",
+      "sha256": "987c2e380abd89da2943f04bdbd5207caaeb67c7d0172aaa5913a85479c13654"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_management_live.py",
+      "sha256": "2208efd2213e110b0c381a2d0d7713afa5ac0f73ede0ccffa295206fdbf10378"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_message_bank_20261031.py",
+      "sha256": "e73ac52cbd871da7d2f6ff9c4a5eab5d60c34512e661a8632bd74f468939913a"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_refill_finish.py",
+      "sha256": "216d065363277b3cbbf51bbe1d2e0cd2228566099d9783cd11da2f9dc02188e7"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_removal_live.py",
+      "sha256": "b1b6357acee3b04bd8e937eee897980fba1ca094c1c8a6934065665da8e87c1d"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_rest.py",
+      "sha256": "085acdb655bd5fddb1241b318ec63d80d6c7acd3cde03036e97279e128ebca5d"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_route.py",
+      "sha256": "83d4ec136e2eecc1091160dd90e930cea7941f564bbad015ea58a2a532b0f010"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_save_roundtrip_20261030.py",
+      "sha256": "f685068d1d20ffbddb02d234effbf3789e2eb9cdea31cadc8b1ed963d38f1615"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_scheduler.py",
+      "sha256": "d9ff9149e91bac5758e2478fae36d3a1d49d2b6de874439a1fecaa5572720ecd"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_selection_gate.py",
+      "sha256": "a0f1790fbeae635c175a47cd66b1e30d5af261612be91687b02ebc2a17694342"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_selection_navigation.py",
+      "sha256": "47780009bdf776a4677e0c1c3b63de83ca02b8763a7bbac014fc9ebae9b1b6bf"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_targets.py",
+      "sha256": "acb657250735c3e58af90ecd38b0f6e2b1b4b24f48c17fb649e0d203bd251f2d"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_transfer_binding.py",
+      "sha256": "024b9c5aba5eef5076a0d559ca96d18dc36257b980dfb3e6cbb031d74412e0e2"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_transfer_control.py",
+      "sha256": "7c80867f1661b5b961884994b00f09ae662dea6c2223852f7146606f536f9c8f"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_transfer_live.py",
+      "sha256": "ee466955f40b001728c7a81c067437480893139ede11b964cef7d2e753388131"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_transfer_navigation.py",
+      "sha256": "d9ff38b84d7996df0bd0e6dd523cb7eaf3705908be8e444944921e2939978bf7"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_transfer_profile.py",
+      "sha256": "0d82d8c526d622e945c93d6840607c62f350dfe228fc8a6c656ad3d0e45dac8d"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_transfer_profile_live.py",
+      "sha256": "c657f98fb1857d761dd1cd096521199a9d88d16a13b12c19cd75cc01d89fc2b1"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_walk.py",
+      "sha256": "15d7bc6c0aad8d13d6a9b1b7969056f37d191d2ba5cf778761a8717e9f32c8fd"
+    },
+    {
+      "path": "algorithm-analysis/verify_staff_work.py",
+      "sha256": "fb9bc9a13ee2b89fa07041e64774f66b994456e689fec9c9abdc8b68756cb6e8"
+    },
+    {
+      "path": "algorithm-analysis/verify_startup_audio_control.py",
+      "sha256": "2d967bcafec1251889bc07d4e5b5e82dd724b671e8384ac739cbb855d9f62b18"
+    },
+    {
+      "path": "algorithm-analysis/verify_startup_graphics_control.py",
+      "sha256": "77a7431e06863f78b8bc547cd9730fdf6b3cbdfcdf8c817f349ce9eef0dd1b33"
+    },
+    {
+      "path": "algorithm-analysis/verify_startup_logo_control.py",
+      "sha256": "949b14f13589ae1c3c39f9f2a896ffb974fb081586e32f0a4ab6407ed08b6c7b"
+    },
+    {
+      "path": "algorithm-analysis/verify_startup_logo_movie_chain.py",
+      "sha256": "7219af4acacb3669fa87c4de5291dfada1c580de290cb6d822ca65ff3f6f03ff"
+    },
+    {
+      "path": "algorithm-analysis/verify_startup_matrix_town_frame.py",
+      "sha256": "92e95b6c0ffe510d4fdfec5212594ab61893a7d2af4441b32baa03494f86e18b"
+    },
+    {
+      "path": "algorithm-analysis/verify_startup_parent_chain.py",
+      "sha256": "d67a7289552715c8482acf0feb7015aacda1601511af61bbb53708a290bb4e7a"
+    },
+    {
+      "path": "algorithm-analysis/verify_startup_parent_opening.py",
+      "sha256": "c422850f1bfefecb474a58bd56916301cda780de2102132af881e406e6c9d8e5"
+    },
+    {
+      "path": "algorithm-analysis/verify_startup_system_control.py",
+      "sha256": "8d8ce47c12e80e4e68b7839021070f7ec7a24c9751c325c6c6c0352c59ee69d5"
+    },
+    {
+      "path": "algorithm-analysis/verify_startup_title_20261028.py",
+      "sha256": "8f0e82590c130f044fb79e97a752c1a888211398e837ef7a0bddf33763e92cc3"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_activation.py",
+      "sha256": "334d3d775128db8702111e4db0600ccd5cb164c90b5c2573406c9a348b666153"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_advice.py",
+      "sha256": "211d97910d14cfc63f820c22fa2288d6897e1f9c81528155b3c131356c15535d"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_grid_rewrite.py",
+      "sha256": "3b790a84c630e7ee02a42fd0d0300aa86db14f28d4b0a4d991da06e39c71de79"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_incident.py",
+      "sha256": "74ad27f25b7b4274c636b31833d0d89d92800d9fd2b6ac90f9a56dd5e075d37c"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_incident_full_ui_20261031.py",
+      "sha256": "318f7aa4add4d482680268eceb9b162a11c3fbac6e9e04e22fb36a9afc910747"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_lifecycle.py",
+      "sha256": "738f1758f9b4d678d456ad652b8ae4c9220eeaf739cbace62a090909ceb2c4b8"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_map.py",
+      "sha256": "651ff6c6bee27edc2a25bd7af358f3091830fcd0f3220c89a31577cdc418aa58"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_milestone_text_20261102.py",
+      "sha256": "8e97a20a7714023717895abca896768276502c30c57357a6919931a2cc00de5a"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_operation_control.py",
+      "sha256": "c381cf2fb2004e2acff46e5d8b776da1a8874f752b51b2968a977fbc6fcdf744"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_operation_options_live.py",
+      "sha256": "4493e5299643be9a99388aad37d48454852d4623918eaa43ab171e401bc0b22f"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_operation_panel.py",
+      "sha256": "642209ca7417282ee198157aa3f16f0bdc445e85f5eb9d54efb7bd7eaa60cf1a"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_operation_reconfigure_live.py",
+      "sha256": "cc8a2eda83c2ec4ebdf5ab5885fd1545449da4048412a6951603e2c311e34807"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_operation_staff_live.py",
+      "sha256": "90c05f178c5c4bb47aa6cb14e5f0b8307758ad0d15bd4d8e3331574d2daf6ca6"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_order.py",
+      "sha256": "b92fb972c7b122bdac51cefd5156d96346ff0937f41a10031268664730c6505f"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_reconfigure_control.py",
+      "sha256": "30d287cfd782222e2beb4e5e8d077c5f237eb6b3643b17bf1c33db27add359b1"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_reconfigure_live.py",
+      "sha256": "eb20a7b22aa0f6ccbecfaae3d5c9df239f61151d605a242347c3314b5d66860b"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_scores.py",
+      "sha256": "665b57a32ed921791e1ea131589e8a2753fc4af489946ff07a9a6461c749c08a"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_shift.py",
+      "sha256": "43070e7226cb73abf33f29fb83cab1f56a678e032ebb561cdb9f4fb0bc3b54a0"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_summary.py",
+      "sha256": "fdb834d55728701880e544a145a686df11440f4a40bd7b3904d4314ab45ee324"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_summary_native.py",
+      "sha256": "d564627a328ad0b866433a044f0d5c4eb9d48fb260146f7f90fb6cafbc779029"
+    },
+    {
+      "path": "algorithm-analysis/verify_store_summary_runtime.py",
+      "sha256": "2ad5797e46e164ad57c545fb7bd0a71bcc8045c3bee6860bd71500b755d4aef8"
+    },
+    {
+      "path": "algorithm-analysis/verify_submenu_gate.py",
+      "sha256": "e71941b22fdf14fc382b1e5f55f7f3517696ddc4f92cabb9ec469d6399a4d1bc"
+    },
+    {
+      "path": "algorithm-analysis/verify_submenu_icon.py",
+      "sha256": "6bea45518220ef5762e4ef79e37b17c68d5512ba66cc492d7c42295892fb694e"
+    },
+    {
+      "path": "algorithm-analysis/verify_submenu_navigation.py",
+      "sha256": "92e306b955f62dbac2cb87a965c3757df6e5713e89ec325892c159bdba433a5b"
+    },
+    {
+      "path": "algorithm-analysis/verify_submenu_whole_control.py",
+      "sha256": "3098def62a16afacb66a043ec3b2fbd1eb9101f5922d8f7d19a64f70009ab599"
+    },
+    {
+      "path": "algorithm-analysis/verify_summary_bulk_equivalence_20261030.py",
+      "sha256": "80e4e1aa13cc543bdb40d4639c8efdb52c9636495c8d7945e40aee14ff2ae29c"
+    },
+    {
+      "path": "algorithm-analysis/verify_terminal_calendar_gate_20261102.py",
+      "sha256": "0a49bdbcc56253992bad882acb337d21887126106e5b8243da20c8023bba3c19"
+    },
+    {
+      "path": "algorithm-analysis/verify_terminal_counters.py",
+      "sha256": "58a036d64f6f652b3286bb2e441ea448f91d163f90f39c94f79207554eb5c0fc"
+    },
+    {
+      "path": "algorithm-analysis/verify_terminal_dispatcher_20261102.py",
+      "sha256": "6ad7773cf5ad17904334fc52e4b16280af6316e73cdfb27f979359c509ae8b8e"
+    },
+    {
+      "path": "algorithm-analysis/verify_text_buffer.py",
+      "sha256": "9a8b6434371a16bfa81dfbb059d944b7961f5c7a7ee766ae1344283882608e9a"
+    },
+    {
+      "path": "algorithm-analysis/verify_text_control_dispatch.py",
+      "sha256": "ab280eb437d0686c186f7afa7ac88f28738761173bcb98b58015750421f3f299"
+    },
+    {
+      "path": "algorithm-analysis/verify_text_control_render_chain.py",
+      "sha256": "c501be059042a8456d95dada6db2e211dc5c7f822246e72dd77d201e6b1b0e71"
+    },
+    {
+      "path": "algorithm-analysis/verify_text_frame_chain.py",
+      "sha256": "0fb38bb2d3a107d78ae7379584ae65507fcc4664d03a04a7f02abf55913a6dcf"
+    },
+    {
+      "path": "algorithm-analysis/verify_text_numeric_controls.py",
+      "sha256": "dc2b594d7f0ad32dd8eec0a4febc52d230b8d148885be7e47c21724e2ec43ead"
+    },
+    {
+      "path": "algorithm-analysis/verify_text_render.py",
+      "sha256": "6238dfc585ad1276f555a99009a3f5fb7e098d3050bf84e2884fe3e6398b42ad"
+    },
+    {
+      "path": "algorithm-analysis/verify_tiled_render.py",
+      "sha256": "3d8c101f995c0bcfbd0591518903ff66b29611f1e18da2e3169d80a6ff1a15c8"
+    },
+    {
+      "path": "algorithm-analysis/verify_tiled_render_general.py",
+      "sha256": "2b3b7c1f7a5bb812198887278d352f26ded5b5034cf28080038f047ebcfcd305"
+    },
+    {
+      "path": "algorithm-analysis/verify_tim_gpu_chain.py",
+      "sha256": "73f27dd1e6b6598f00ef5286a31a1aca1fc0eab1c0b42137ee487f99f3c2b45e"
+    },
+    {
+      "path": "algorithm-analysis/verify_tim_source_chain.py",
+      "sha256": "c061e67a8558c105dd7cd0011233265d2dc41578c3d2445ffce88eec018a733d"
+    },
+    {
+      "path": "algorithm-analysis/verify_tim_transfer.py",
+      "sha256": "1a6c2a258f5405eed1906eba6ed925aead8c2bac31e22858485ac0ae9f7f49d0"
+    },
+    {
+      "path": "algorithm-analysis/verify_tinted_icon_wrapper.py",
+      "sha256": "fff9394374c58587147e8e13fbe1c8a81c06f20fb9e9918f2ab15fb23f85014e"
+    },
+    {
+      "path": "algorithm-analysis/verify_title_load_chain.py",
+      "sha256": "93c1dcd29f284f053d9ca783148a70d1831916f60d36cbebf07a29e43f5d3ea3"
+    },
+    {
+      "path": "algorithm-analysis/verify_title_menu_20261028.py",
+      "sha256": "f4c4fb0c1a1ab99cbda52560ab7d780f64c4199d1268e9977b7e334fbac4718d"
+    },
+    {
+      "path": "algorithm-analysis/verify_title_native_load_20261029.py",
+      "sha256": "0adefd77178581fd5fa686fe811cfbaa8436c7c524afce0c6631fb9dfaa2058b"
+    },
+    {
+      "path": "algorithm-analysis/verify_title_notification_replay.py",
+      "sha256": "5837514c1bc74e69177497ded6390a9f3d339e661c393846e9e3d0d58f603f91"
+    },
+    {
+      "path": "algorithm-analysis/verify_title_opening_play_20261028.py",
+      "sha256": "e99cf1b610213c8cc92e2505fe7a4b539ad11f670e292863a24c2721affb47e5"
+    },
+    {
+      "path": "algorithm-analysis/verify_title_parent_20261028.py",
+      "sha256": "2d3b35009165310084d678840582b5e33d4fe8e79df2993cef95cb9602f21859"
+    },
+    {
+      "path": "algorithm-analysis/verify_title_restore_20261028.py",
+      "sha256": "0e0654aa3745edcec232a280e5071710fe1d35f87dcb3c7c5a18054e1bf76cb1"
+    },
+    {
+      "path": "algorithm-analysis/verify_title_retained_transfer_20261028.py",
+      "sha256": "dcc0515da528e1aee574cd465df782b78ff4023ec993c74c75d435d8f7c1779d"
+    },
+    {
+      "path": "algorithm-analysis/verify_title_view_chain.py",
+      "sha256": "e50d18fe4ba4d2363c1727326efb0002d1da85b81d342ae119aed066b74f1dba"
+    },
+    {
+      "path": "algorithm-analysis/verify_top_dispatch_20261028.py",
+      "sha256": "b488af3efbe55213333231267fab32d645acbdac4916c195dbc9d0f909ba8fcb"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_daylight.py",
+      "sha256": "f8c90068d3f868bcbab5acc682ea66b647c84edc8cc76d97618ff65dfe7940c9"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_daylight_frame.py",
+      "sha256": "8189233980c5c2a6eb7687fbf1db3d3aef4de5bc9b5212e89da493599e3757d1"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_daylight_scaled_frame.py",
+      "sha256": "19a761a180b24d6de8fb47809d78230b3a6b8b7467426df2f2dacbcff4595178"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_event_chain.py",
+      "sha256": "408eaaa9e6075b8967c8cb90de8c318cbbdca9b574d693823b6e18cfe8b2a04d"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_focus_init.py",
+      "sha256": "092b2eba8fca1fa4ba3f7203676e03ca206b7704b36975b4d472a0fda0a26e39"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_focus_move.py",
+      "sha256": "5967c477c166738bd5e2d4748bd67aa82e04c12dc5c729993e5d15eb99550650"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_growth.py",
+      "sha256": "0981a15a9403bc8c45c8b957a0a932960f29172ca7feb32db4268a27ed143033"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_input_operation_chain.py",
+      "sha256": "85c4359a316eab0960c622922d7d297773a09a829ac31c2974319ab27c6360ab"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_loader.py",
+      "sha256": "4941c748187b0789e29175459ceeaefa37c92d087036231a7186c491563a5464"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_monthly.py",
+      "sha256": "17fa69bf2094daf5448fb4397fbf8c3649299a49f187113952e1462f056ab9dc"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_monthly_live_text_20261102.py",
+      "sha256": "4677113281b86031d1c678c2a3c8bd12f0a5ccbcb3e60f0c1b86d1c6f247619a"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_mutation.py",
+      "sha256": "7677dbeb865ae2475b7d5caa00097d4282616445560589248ffabbda7f168761"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_project_chain.py",
+      "sha256": "48cb4af1b74bb67490143fde647875353db969e79b7861c9d402ce351068097a"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_project_completion.py",
+      "sha256": "9e184da00ea054bb4bdf288113e5a25e40e7c9867e8f93a22267e734366fa7a9"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_project_quote.py",
+      "sha256": "66c943aaa5011ea61b1d1b28320ad927999414ecf3a2a0f756d0c8e161b8aee0"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_project_start.py",
+      "sha256": "c58198d46922139949935ae23cef389cce005cc3ee2a3559bf717eea80378781"
+    },
+    {
+      "path": "algorithm-analysis/verify_town_tile_image.py",
+      "sha256": "290cc671e3558843034693b0282c44402079c0356b021f8463239c8e22e08f70"
+    },
+    {
+      "path": "algorithm-analysis/verify_transfer_followup_20261030.py",
+      "sha256": "88c8e12185584bd2997e62946d18d5afd2111972f9738d9609e1ab4285dc5858"
+    },
+    {
+      "path": "algorithm-analysis/verify_transfer_save_roundtrip_20261030.py",
+      "sha256": "449564dc2307030d71e5036f56ee7373ce3c36385e0fbbc5d90a60e6a98ffe7f"
+    },
+    {
+      "path": "algorithm-analysis/verify_two_store_costs_20261103.py",
+      "sha256": "0e20517c1c49f4027ef81a784be962d11359c12e5b438b5c49d755adcff7585b"
+    },
+    {
+      "path": "algorithm-analysis/verify_two_store_managers_20261103.py",
+      "sha256": "62980b26a792d8a499d4b08a493362889f54c0e61576c79434d1e24f544e8c0b"
+    },
+    {
+      "path": "algorithm-analysis/verify_two_store_rollovers_20261103.py",
+      "sha256": "7b3b10c24a0062bb21253654e106e15ef1189f98eca11756a4bbe8e74c71f885"
+    },
+    {
+      "path": "algorithm-analysis/verify_two_store_segment_20261103.py",
+      "sha256": "8cead114f6d56940435d53871197c958a06e595047e6933751eab1a8ddbcbb49"
+    },
+    {
+      "path": "algorithm-analysis/verify_use_sides.py",
+      "sha256": "63f4054aceb618c0669d6cd08dd5a70bd751fe3b9efdc7901f0ad29034a6730e"
+    },
+    {
+      "path": "algorithm-analysis/verify_validation_product_cancel_retry.py",
+      "sha256": "35c9fed8d7bcd181b0e8b3d675018f2341cb12d1db02208f9cbe6e9a9b68e46a"
+    },
+    {
+      "path": "algorithm-analysis/verify_validation_product_repair.py",
+      "sha256": "bb029358068706f83e899f637cb592206dd6f6c25b8340b61599522f0938a57c"
+    },
+    {
+      "path": "algorithm-analysis/verify_validation_repair_caller_connection.py",
+      "sha256": "d03ee29b1d9f33e9760ea28369bad15362c5e0dd2ba9396efadb548132c8f920"
+    },
+    {
+      "path": "algorithm-analysis/verify_vertical_choice.py",
+      "sha256": "7b5dc95224435a1f1df3c542f0c0064d023690a976598a692903ec77ff53b8ba"
+    },
+    {
+      "path": "algorithm-analysis/verify_view_input_notification_chain.py",
+      "sha256": "1138f4a87e181adcf5c22ec3abfc8e45072f4e65337f365f733f9ceb2d7c8be3"
+    },
+    {
+      "path": "algorithm-analysis/verify_view_transition.py",
+      "sha256": "2c4b059884641e58a9c0e3cc41fa20cf1c7801c54578a7ec4bbbfe2c6fc3d5b7"
+    },
+    {
+      "path": "algorithm-analysis/verify_voice_interrupt_restart.py",
+      "sha256": "5bb8c7222afdbd101348a4e6f36f72fd3bece7d8953ffa3f290fce996e84722f"
+    },
+    {
+      "path": "algorithm-analysis/verify_voice_lifecycle_restore.py",
+      "sha256": "ca99b13b10d507bb5017add00089415f1a4ffb9ceee3334eaf51b7c31a790b29"
+    },
+    {
+      "path": "algorithm-analysis/verify_window_tiles.py",
+      "sha256": "bdbdecc333e986fe966e7aac46fbe867c848df1e1f1931e60be90b893a0b7a33"
+    },
+    {
+      "path": "algorithm-analysis/vertical_choice.py",
+      "sha256": "e5c42f8669350f0b763a7ab47c501939995a0b667b988ca3f6da06ab1497c22d"
+    },
+    {
+      "path": "algorithm-analysis/window_tiles.py",
+      "sha256": "81255bc474755f5ce00f528870195a950122725d1bcaf6758f7e65b0ed43b29e"
+    },
+    {
+      "path": "algorithm-analysis/write_other_endings_readme_20261102.py",
+      "sha256": "b2721f28ee3a03c7008f3848f3568e05b99c071ea917b557d84676cf1bcabb6a"
+    },
+    {
+      "path": "algorithm-analysis/write_resume_readme_20261031.py",
+      "sha256": "99d9df9d35fa9b687467e688f989290744bc823da753b1a0b80b2031ab6900f8"
+    },
+    {
+      "path": "algorithm-analysis/write_resume_readme_20261102.py",
+      "sha256": "f3bf05aa9b1376faef2c98fcbcece84c5f2cda31a78639eb7cc73738d4bf8100"
+    }
+  ]
+}
