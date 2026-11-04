@@ -1,0 +1,13 @@
+; Godot 4 isolated smoke-test project for issue #232.
+; No game source is copied or changed.
+config_version=5
+
+[application]
+config/name="Issue232 Map Assets Isolated Smoke Test"
+run/main_scene=""
+config/features=PackedStringArray("4.0")
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
