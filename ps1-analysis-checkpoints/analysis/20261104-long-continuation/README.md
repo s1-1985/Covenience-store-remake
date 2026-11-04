@@ -80,3 +80,42 @@ development-memcpy-scope.failure.jsonとログを保存し、最終版では7E57
 development-save-ui-frozen.logを保持する。以後、店舗・従業員・資金・時計の保存を確認し、
 UI中の乱数は変更前後を別記録する。自然営業の継続処理では乱数の注入を行わない。
 保存UIの検証結果は完了時のnative-save-ui-summary.jsonに別記する。
+
+## 保存画面から原ファイルの作成・上書きまで
+
+原6B81Cでエンコード後、原501FCへ明示的に入る試験を追加した。
+原505A0→原カード状態判定→原7ADF8(mode0/1)→BIOSファイル端点を接続し、
+従来のSourceSaveWriteMonitorは完了値の注入を外して独立した呼出し方針の監視として使う。
+上書きと新規作成の両方で、本文128バイト×892回、全114,176バイト、開放後のハンドル数を照合した。
+新規作成時の原7B8A4/7BC14のヘッダ生成とファイル作成も省略しない。
+この入口は営業中の保存メニュー操作の自然到達を証明するものではない。
+
+厳密な2MBメモリ境界の試験はSP=801D0000で通過した。
+SP=801FFEE0では原7BC14が801F7A20から114,688バイトをBIOSへ渡すため、
+初期の2MBのみのアダプタでは読取り範囲外になった。失敗ログを残したうえで、
+[psx-spxのMemory Mirrors](https://psx-spx.consoledev.net/memorymap/#memory-mirrors)に記載された
+標準構成を明示して、BIOS転送の読取りだけに2MBのRAMミラーを適用した。
+34,272バイトを1F7A20から、残り80,416バイトをRAM先頭から取得する。
+この条件でも新規作成・上書きが通過した。ハードウェアのメモリ制御レジスタは復元・実測しておらず、
+標準構成を仮定した試験である。CPU命令マップを8MBへ広げたものではない。
+根拠・仮定はmemory-boundary-sources.jsonへ分離した。
+
+2つのスタック条件では、新規作成ファイルの先頭13〜95バイトだけが83バイト異なった。
+原7BC14の入口でヘッダ用スタック領域を先に記録し、これら83バイトが原実行後も残ることを確認した。
+先頭SC/フラグ/ブロック数/終端付きタイトルは原コードが設定し、パレット・アイコンも原コピーを使う。
+この範囲をゼロ化・統一して保存結果を一致させてはいない。
+本文114,176バイトは両条件で一致し、上書きではファイル全体が一致した。
+83は今回の2条件間の差分数であり、すべての保存に共通する変更数ではない。
+
+さらに、高いスタック条件の原保存画面で作成した実ファイルを、原タイトル読込みの入力に渡した。
+元ファイル・カードI/Oから得たペイロード・エンコーダの比較値が一致し、読込後4更新へ復帰した。
+save_ui_created.jsonとtitle-save-ui-created-summary.jsonが証拠、save-ui-coverage.jsonが結合監査である。
+これは同じファイルデータの引渡しであり、保存画面終了からタイトル遷移までの連続した操作経路ではない。
+
+```sh
+python native-save-ui-chain.py /path/to/algorithm-analysis TOWN0001-ci-main-05-single low
+python native-save-ui-chain.py /path/to/algorithm-analysis TOWN0001-ci-main-05-single high-mirror
+python native-title-card-chain.py /path/to/algorithm-analysis TOWN0001-ci-main-05-single save_ui_created --card-input=/path/to/save-ui-high-mirror-create.card-file.bin
+# 上記タイトル実行のsummaryはtitle-save-ui-created-summary.jsonとして保存してから実行する。
+python summarize-save-ui.py
+```

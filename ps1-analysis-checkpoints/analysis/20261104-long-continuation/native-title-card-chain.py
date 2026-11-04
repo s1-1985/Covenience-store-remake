@@ -19,7 +19,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 algo = Path(sys.argv[1]).resolve()
 snapshot = sys.argv[2]
-scenarios = sys.argv[3:] or ['success', 'bad_checksum', 'init_error_2']
+extra = sys.argv[3:]
+input_options = [arg for arg in extra if arg.startswith('--card-input=')]
+assert len(input_options) <= 1
+input_card = Path(input_options[0].split('=', 1)[1]).resolve() if input_options else None
+scenarios = [arg for arg in extra if not arg.startswith('--card-input=')] or ['success', 'bad_checksum', 'init_error_2']
 sys.path.insert(0, str(algo))
 from check_machine import *
 from caller_connection_harness import Memory
@@ -38,12 +42,28 @@ def sha(data):
 class Facade:
     def __init__(self, u):
         self.u, self.hooks = u, {}
+        self.allow_ram_mirror = False
+        self.mirror_reads = []
 
     @property
     def r(self):
         return [self.u.reg_read(k) for k in range(UC_MIPS_REG_0, UC_MIPS_REG_31 + 1)]
 
     def read(self, address, size):
+        physical = address & 0x1fffffff
+        if self.allow_ram_mirror and physical < 0x800000 and physical + size <= 0x800000:
+            parts, chunks, left, current = [], [], size, physical
+            while left:
+                offset = current % 0x200000
+                length = min(left, 0x200000 - offset)
+                parts.append(bytes(self.u.mem_read(offset, length)))
+                chunks.append(dict(physical_ram=hex(offset), bytes=length))
+                current += length
+                left -= length
+            data = b''.join(parts)
+            if physical >= 0x200000 or physical + size > 0x200000:
+                self.mirror_reads.append(dict(address=hex(address), bytes=size, chunks=chunks, sha256=sha(data)))
+            return data
         try:
             return bytes(self.u.mem_read(address & 0x1fffffff, size))
         except Exception as error:
@@ -100,7 +120,8 @@ class NativeCardBridge:
     def proof(self):
         return dict(native_calls=self.native_calls, bios_calls=self.bios_calls,
                     io=self.env.io, commands=self.env.commands, patterns=self.env.patterns,
-                    open_handles=len(self.env.fds), files={k.decode(): sha(v) for k, v in self.env.files.items()})
+                    open_handles=len(self.env.fds), files={k.decode(): sha(v) for k, v in self.env.files.items()},
+                    ram_mirror_reads=self.cpu.mirror_reads)
 
 
 def produce():
@@ -154,13 +175,24 @@ module.__file__ = str(source_path)
 exec(compile(patched, str(source_path), 'exec'), module.__dict__)
 base_restore = module.restore
 card, producer = produce()
+if input_card is not None:
+    external = input_card.read_bytes()
+    assert len(external) == 114688
+    assert external[512:512 + SIZE] == card[512:512 + SIZE]
+    assert valid(external[512:512 + SIZE])
+    card = external
+    producer['external_card_source'] = input_card.name
+    producer['external_card_sha256'] = sha(card)
+    producer['external_payload_verified_against_original_encoder'] = True
 rows = []
 for scenario in scenarios:
     assert scenario in ('success', 'bad_checksum', 'init_error_2', 'init_error_3',
                         'init_error_4', 'init_error_5', 'info_busy_twice', 'post_busy_twice',
-                        'header_mutation', 'tail_mutation')
+                        'header_mutation', 'tail_mutation', 'save_ui_created', 'final_day_saved')
+    if scenario == 'save_ui_created':
+        assert input_card is not None
     title_scenario = 'success' if scenario in ('info_busy_twice', 'post_busy_twice',
-                                               'header_mutation', 'tail_mutation') else scenario
+                                               'header_mutation', 'tail_mutation', 'save_ui_created', 'final_day_saved') else scenario
     responses = {'init_error_3': {'post': [3]}, 'init_error_4': {'info': [2]},
                  'init_error_5': {'info': [1]}, 'info_busy_twice': {'info': [2, 2, 0]},
                  'post_busy_twice': {'post': [2, 2, 0]}}.get(scenario, {})

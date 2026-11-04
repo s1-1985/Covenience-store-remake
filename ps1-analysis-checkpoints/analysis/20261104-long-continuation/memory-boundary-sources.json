@@ -1,0 +1,27 @@
+{
+  "retrieved_date_jst": "2026-11-04",
+  "sources": [
+    {
+      "url": "https://psx-spx.consoledev.net/memorymap/#memory-mirrors",
+      "title": "PlayStation Specifications: Memory Map / Memory Mirrors",
+      "author_context": "nocash/psx-spx hardware research documentation, community maintained",
+      "supported_claim": "In the documented default configuration, the 2MB main RAM is mirrored within the first 8MB. KUSEG/KSEG0/KSEG1 address aliases are separately described.",
+      "application": "The optional high-mirror BIOS-transfer facade splits requests at 2MB and reads subsequent bytes from the same underlying 2MB RAM. It does not extend CPU instruction mappings or invent an 8MB RAM image."
+    }
+  ],
+  "observed_game_request": {
+    "original_function": "0x8007bc14",
+    "bios_write_site": "0x8007bfd0",
+    "high_stack_source": "0x801f7a20",
+    "bytes": 114688,
+    "chunks": [
+      {"physical_ram": "0x1f7a20", "bytes": 34272},
+      {"physical_ram": "0x0", "bytes": 80416}
+    ]
+  },
+  "limits": [
+    "The memory-controller register/BIOS startup configuration is not included in the saved CPU RAM snapshot and is not independently measured.",
+    "This is an explicit documented standard-configuration assumption for the BIOS file transfer boundary, not physical-card or complete-memory-controller emulation.",
+    "The earlier strict 2MB-boundary failure is retained; the separate low-stack profile requires no mirror behavior."
+  ]
+}
