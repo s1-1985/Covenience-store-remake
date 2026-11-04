@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-04",
+  "issue": 232,
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "source_registry": "chatgpt_map_assets/manifests/connection_45_candidate_registry_2026-10-30.json",
+  "source_fixture": "chatgpt_map_assets/samples/connection_45_topology_5x5_2026-10-31.json",
+  "scope": "Read-only actual GitHub JSON preflight plus new isolated Godot 4 smoke test source",
+  "verified_against_actual_repository_json": {
+    "unique_ids": true,
+    "unique_paths": true,
+    "unique_sha": true,
+    "mask_sets": {
+      "road": true,
+      "rail": true,
+      "river": true
+    },
+    "topology": [
+      {
+        "kind": "road",
+        "tiles": 24,
+        "directed_edges": 48,
+        "undirected_edges": 24,
+        "unique_masks": 15,
+        "errors": []
+      },
+      {
+        "kind": "rail",
+        "tiles": 24,
+        "directed_edges": 48,
+        "undirected_edges": 24,
+        "unique_masks": 15,
+        "errors": []
+      },
+      {
+        "kind": "river",
+        "tiles": 24,
+        "directed_edges": 48,
+        "undirected_edges": 24,
+        "unique_masks": 15,
+        "errors": []
+      }
+    ]
+  },
+  "added_project_files": [
+    "chatgpt_map_assets/godot_smoke_2026-11-04/project.godot",
+    "chatgpt_map_assets/godot_smoke_2026-11-04/smoke.gd",
+    "chatgpt_map_assets/godot_smoke_2026-11-04/README.md"
+  ],
+  "runtime": {
+    "godot_installed_in_this_environment": false,
+    "gdscript_parser_execution": "NOT_RUN",
+    "actual_godot_viewport_render": "NOT_RUN",
+    "actual_png_decode_in_godot": "NOT_RUN",
+    "expected_output_if_run": "3 separate 120x120 PNGs plus report.json in exclusive-create output_<identifier> directory"
+  },
+  "acceptance": {
+    "original_fidelity": "NOT_VERIFIED",
+    "visual_seams": "NOT_VERIFIED",
+    "game_regression": "NOT_RUN",
+    "production_integration": "NOT_RUN",
+    "checkboxes_changed": [],
+    "overall": "INCOMPLETE"
+  },
+  "safety": {
+    "prior_head": "673731ca83806790139a06c1d072773930cba0ec",
+    "new_project_head": "af9f515f8d068b843fa5aa5180aa469fab8d47d5",
+    "compare": "3 added files, 0 modified/deleted, all under chatgpt_map_assets/",
+    "main_or_claude_modified": false,
+    "existing_files_overwritten": false
+  }
+}
