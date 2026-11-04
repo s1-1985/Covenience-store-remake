@@ -1,0 +1,928 @@
+{
+  "all_passed": true,
+  "total": 17,
+  "snapshot": "TOWN0001-ci-main-04-single",
+  "source_ram_sha256": "9e100c22611f47a46048eef4e399b09b84cd16b4716fb4776613c4102ddb41bf",
+  "source_executable_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "cases": [
+    {
+      "name": "baseline",
+      "controlled_changes": {},
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "e755cd5b9ad5067d3fb204249d64460418639dbe8881f641d3fd33a756f6e7e2"
+    },
+    {
+      "name": "cash_below_debit",
+      "controlled_changes": {
+        "0xcd9f8": 43471
+      },
+      "cash_before": [
+        43471,
+        153764941
+      ],
+      "cash_after": [
+        -1,
+        153737965
+      ],
+      "ending": true,
+      "state_after": 4,
+      "scenario_after": 255,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            43471,
+            153764941
+          ],
+          "cash_after": [
+            4294967295,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "6ddf47e1a4647cc2aaf5c6e0b4240bc8db7f41ac32d08e9e130741651b3c6e9c"
+    },
+    {
+      "name": "cash_equals_debit",
+      "controlled_changes": {
+        "0xcd9f8": 43472
+      },
+      "cash_before": [
+        43472,
+        153764941
+      ],
+      "cash_after": [
+        0,
+        153737965
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            43472,
+            153764941
+          ],
+          "cash_after": [
+            0,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "327ac92b7182a9278832a726dc7912f1e58b900bd5e3cd10da42dcaf8b2ae653"
+    },
+    {
+      "name": "cash_above_debit",
+      "controlled_changes": {
+        "0xcd9f8": 43473
+      },
+      "cash_before": [
+        43473,
+        153764941
+      ],
+      "cash_after": [
+        1,
+        153737965
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            43473,
+            153764941
+          ],
+          "cash_after": [
+            1,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "b50f112ddcb444cb763d09b34f0b49f9e5c9dfadfa07cf2925d35fe13bee63e4"
+    },
+    {
+      "name": "rival_negative_cash",
+      "controlled_changes": {
+        "0xcd9fc": 0
+      },
+      "cash_before": [
+        98786741,
+        0
+      ],
+      "cash_after": [
+        98743269,
+        -26976
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            0
+          ],
+          "cash_after": [
+            98743269,
+            4294940320
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "e0e1678ff07410b15b43ab3afca89c8e3a5aa31338a347a614e0eae6b771da57"
+    },
+    {
+      "name": "year_98",
+      "controlled_changes": {
+        "0xce608": 98
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            98,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "91f3dde85c636ea24918d2e4a684196231e83dd39c49f818a95806b82b437263"
+    },
+    {
+      "name": "year_99",
+      "controlled_changes": {
+        "0xce608": 99
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": true,
+      "state_after": 4,
+      "scenario_after": 255,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            99,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "26446562a7f42fb5f4d34ad3fdeba4f8d558835edf4f385b6c73048ed5b462e7"
+    },
+    {
+      "name": "year_100",
+      "controlled_changes": {
+        "0xce608": 100
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": true,
+      "state_after": 4,
+      "scenario_after": 255,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            100,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "70bd91b18ecc66a559b469e57c379b49489f5104deb391e29913cb042df3309d"
+    },
+    {
+      "name": "year_signed_negative",
+      "controlled_changes": {
+        "0xce608": 4294967295
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            4294967295,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "9279339283b6b40619fa289f59621c301cd803829fb5462669287c314fb957a6"
+    },
+    {
+      "name": "serial_98",
+      "controlled_changes": {
+        "0xcd9e0": 98
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "084c34680bbc6e7a990fc3588b79d01919a098dea3c96aaf6b46f20296746b0b"
+    },
+    {
+      "name": "serial_99",
+      "controlled_changes": {
+        "0xcd9e0": 99
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": true,
+      "state_after": 4,
+      "scenario_after": 255,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "34e0896e10d5adcbea02db7cfbfb68b8b88348384ce38fe05ff46bd563e0613f"
+    },
+    {
+      "name": "serial_100",
+      "controlled_changes": {
+        "0xcd9e0": 100
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": true,
+      "state_after": 4,
+      "scenario_after": 255,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "ef3693593db0f9964f85c32986fcae91dce34b6296d05faf23f36f1994aa7b03"
+    },
+    {
+      "name": "serial_signed_32767",
+      "controlled_changes": {
+        "0xcd9e0": 32767
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": true,
+      "state_after": 4,
+      "scenario_after": 255,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "2403e9bcfcf4d4000da62805857098bea89701d4eac4d009b1f3932c7d622dcb"
+    },
+    {
+      "name": "serial_signed_32768",
+      "controlled_changes": {
+        "0xcd9e0": 32768
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "13e9b992c893739158274968fa526ce16ac2c86b02a39a251201d4d1169bf26d"
+    },
+    {
+      "name": "serial_signed_65535",
+      "controlled_changes": {
+        "0xcd9e0": 65535
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98743269,
+        153737965
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": false,
+      "finance_checks": [
+        {
+          "clock": 14400,
+          "calendar": [
+            1,
+            3,
+            3,
+            0,
+            0
+          ],
+          "store_order": [
+            0,
+            2,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "cash_before": [
+            98786741,
+            153764941
+          ],
+          "cash_after": [
+            98743269,
+            153737965
+          ],
+          "stores_sha256": "bb54aca9abe85ea99266de13ef54e197a86c499d3c653c218bc67ce582d5b30a",
+          "staff_sha256": "32d1c35cc6d9a20b0de5b399cffb50c1399a63017af9ae5fd9abfdf64a78156f",
+          "events": [],
+          "UI": [],
+          "notification_text_calls": [],
+          "notification_text_sha256": "ade00c1e06adf2639c4bf19800a99849394c1f1cbf7324ee2dce3aea511a35bd"
+        }
+      ],
+      "external_calls": [],
+      "final_ram_sha256": "853764dab748517d3554732950c533e260d18ad1a7dbe5d02f36ab180cd5f5d6"
+    },
+    {
+      "name": "gate_a_skips_negative_cash",
+      "controlled_changes": {
+        "0xcd9f8": 4294967295,
+        "0xce614": 1
+      },
+      "cash_before": [
+        -1,
+        153764941
+      ],
+      "cash_after": [
+        -1,
+        153764941
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": true,
+      "finance_checks": [],
+      "external_calls": [],
+      "final_ram_sha256": "1ca81a8118a36b9ae591d2b735480e6aaf060a4d125a6e93b461c26d6f2642ab"
+    },
+    {
+      "name": "gate_b_skips_year_limit",
+      "controlled_changes": {
+        "0xce608": 99,
+        "0xce618": 1
+      },
+      "cash_before": [
+        98786741,
+        153764941
+      ],
+      "cash_after": [
+        98786741,
+        153764941
+      ],
+      "ending": false,
+      "state_after": 7,
+      "scenario_after": 0,
+      "time_gated": true,
+      "finance_checks": [],
+      "external_calls": [],
+      "final_ram_sha256": "60687560d0b2432dad1ca21b9c7ec811edffdcd552f17f870a67da567338e878"
+    }
+  ],
+  "limits": [
+    "Synthetic isolated re-invocations on copied post-close RAM; not natural new days.",
+    "Original finance code and game children with existing independent finance monitor.",
+    "Six named UI/audio/text endpoints are nonmutating zero-return hooks if reached.",
+    "Both branches use the shared Unicorn execution engine; no independent CPU claim.",
+    "Signed negative year/serial inputs are type-boundary diagnostics, not reachable player actions."
+  ]
+}
