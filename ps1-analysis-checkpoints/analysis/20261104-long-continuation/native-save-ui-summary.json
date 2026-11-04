@@ -93,7 +93,7 @@
   ],
   "original_monitor_sha256": "e2267c3760dc8f3b42c684c7143326f62ae32a7214b45aca9a98a952e021373c",
   "patched_monitor_sha256": "c6681eaf109e08cfaa894fdd6fc13f4758fd520d239144e7f11e051b98689bbc",
-  "adapter_sha256": "36cb37ca29cd8b023f067f71962270db6a428975963b1e94a46956389f9f41a1",
+  "adapter_sha256": "6ff10141072004d60a1fb183917f0e3aec9d1fb7bab3a94c7740f4e461ab1487",
   "limits": [
     "501FC is an explicit direct UI entry after native encoder; no gameplay menu-navigation claim.",
     "Low profile uses SP/FP=801D0000. High-mirror profile uses 801FFEE0 and explicit 2MB RAM mirrors within the first 8MB only at BIOS transfer reads.",

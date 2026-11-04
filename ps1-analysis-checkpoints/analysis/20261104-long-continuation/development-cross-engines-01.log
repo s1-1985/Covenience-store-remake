@@ -1,0 +1,21 @@
+original save UI -> native card file passed overwrite
+Traceback (most recent call last):
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261104-long-continuation/native-save-ui-chain.py", line 121, in <module>
+    u.emu_start(0x800501fc, 0x80001000, count=100000000)
+  File "/root/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 769, in emu_start
+    raise self._hook_exception
+  File "/root/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 363, in wrapper
+    return func(uc, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 1063, in __hook_code_cb
+    callback(uc, address, size, user_data)
+  File "/workspace/scratch/6b75476ce435/restored/algorithm-analysis/category_frame_harness.py", line 23, in <lambda>
+    if address not in self.returnhooks:self.returnhooks[address]=self.u.hook_add(UC_HOOK_CODE,lambda u,a,n,d:self.flush(a),begin=address,end=address)
+                                                                                                             ^^^^^^^^^^^^^
+  File "/workspace/scratch/6b75476ce435/restored/algorithm-analysis/category_frame_harness.py", line 26, in flush
+    while self.callbacks.get(address):self.callbacks[address].pop()()
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261104-long-continuation/compare-card-create-engines.py", line 43, in finish
+    assert actual == bytes(cpu.mem), 'whole create RAM mismatch'
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: whole create RAM mismatch

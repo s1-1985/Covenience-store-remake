@@ -99,6 +99,16 @@ for mode in ('overwrite', 'create'):
         files = {CARD_PATH: existing} if mode == 'overwrite' else {}
         bridge = NativeCardBridge(u, runner, files)
         bridge.cpu.allow_ram_mirror = profile == 'high-mirror'
+        engine_checks = []
+        engine_hook = None
+        if profile == 'low':
+            assert unit[3].registered == 0x8001310c
+            sys.path.insert(0, str(ROOT))
+            import importlib.util
+            spec = importlib.util.spec_from_file_location('card_create_engines', ROOT / 'compare-card-create-engines.py')
+            engine_module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(engine_module)
+            engine_hook = engine_module.attach(u, runner, bridge, EXE.read_bytes(), engine_checks)
         header_observations = []
         def capture_header(z, pc, size, data):
             # 7BC14 allocates 8438 bytes and stages its header at FP+8228:
@@ -142,9 +152,13 @@ for mode in ('overwrite', 'create'):
         out['rng_before'] = rng_before
         out['rng_after'] = memory.word(0x800d6270)
         out['header_observations'] = header_observations
+        out['create_engine_checks'] = engine_checks
+        assert len(engine_checks) == int(profile == 'low' and mode == 'create')
         pair.append(out)
         monitor.dispose()
         u.hook_del(capture_hook)
+        if engine_hook is not None:
+            u.hook_del(engine_hook)
         for item in unit[2:6]:
             item.dispose()
         runner.dispose()

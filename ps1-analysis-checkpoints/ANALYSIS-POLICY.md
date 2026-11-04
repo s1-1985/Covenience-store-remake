@@ -14,6 +14,9 @@
 
 ## 保存済み
 
+- [2026-11-04の最新再開点：時計15840・累積7928更新](analysis/20261104-long-continuation/README.md)
+- [添付ディスク一致・決算終了判定17条件・決算後120更新](analysis/20261104-disc-continuation/README.md)
+
 - [r2原ZIPの全バイト](archives/20261103-r2/README.md)
 - [旧成果物の台帳](archive-index/README.md)
 - [会話から復旧した補助記録](2026-11-03-session-recovery/README.md)
