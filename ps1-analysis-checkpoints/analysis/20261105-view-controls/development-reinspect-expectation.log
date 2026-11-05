@@ -1,0 +1,12 @@
+connected actual opened store -> play 17598 98506241
+connected play verified 1 clock 17598 view 0 pause 0 next input 32
+connected play verified 2 clock 17600 view 0 pause 0 next input 0
+connected play verified 3 clock 17602 view 0 pause 0 next input 0
+connected play verified 4 clock 17604 view 0 pause 0 next input 0
+connected play verified 5 clock 17606 view 0 pause 0 next input 0
+connected play verified 6 clock 17608 view 0 pause 0 next input 0
+Traceback (most recent call last):
+  File "/workspace/scratch/0f4cb99c775b/repo/ps1-analysis-checkpoints/analysis/20261105-view-controls/rival-actions.py", line 39, in <module>
+    assert check['result']==('first_store_guard' if mode=='guard' else 'lease')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

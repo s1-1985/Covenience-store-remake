@@ -1,0 +1,8 @@
+connected actual opened store -> play 17598 98506241
+connected play verified 1 clock 17598 view 0 pause 0 next input 32
+connected play verified 2 clock 17600 view 0 pause 0 next input 0
+connected play verified 3 clock 17602 view 0 pause 0 next input 0
+connected play verified 4 clock 17604 view 0 pause 0 next input 0
+connected play verified 5 clock 17606 view 0 pause 0 next input 0
+connected play verified 6 clock 17608 view 0 pause 0 next input 0
+{"all_passed": true, "mode": "info-only-confirm", "fee": 0, "result": "cancel", "price": 52704360}

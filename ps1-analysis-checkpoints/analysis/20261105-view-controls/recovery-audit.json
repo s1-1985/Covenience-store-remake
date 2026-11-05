@@ -1,0 +1,16 @@
+{
+  "all_passed": true,
+  "source_commit": "dbfaa0afc506edd8f7a17ab788d1ecc8614fd172",
+  "archive_parts_verified": 209,
+  "archive_bytes": 153696391,
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "source_snapshot": "TOWN0001-ci-main-15-single",
+  "source_ram_sha256": "0540f0faf05c3a9b5d4f96f6bcac94e22bea4003ccbc2e38efcf54de5a5a04ff",
+  "source_clock": 17520,
+  "source_cash": [
+    99006241,
+    153125796
+  ],
+  "source_executable_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "scope": "Fresh Git clone and restore-latest.py after workspace maintenance; recovery is not additional native play."
+}

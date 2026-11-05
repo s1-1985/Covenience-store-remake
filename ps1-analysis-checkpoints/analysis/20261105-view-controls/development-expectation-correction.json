@@ -1,0 +1,8 @@
+{
+  "reason": "The initial verifier assumed the already-investigated UI retained its choice menu. Original 4D6EC instead draws information, accepts confirm/cancel and returns 2; the parent records cancel. Native/model play comparison passed before the auxiliary expected-result assertion failed.",
+  "initial_reinspect_expected": "lease",
+  "initial_guard_from_investigated_expected": "first_store_guard",
+  "corrected_information_result": "cancel",
+  "proper_guard_source": "Unmodified rival-map snapshot before investigation",
+  "evidence_policy": "Initial verifier and failure logs retained. Same investigated inputs are rerun as reinspect/info-only-confirm with complete comparison records; no game flags are changed."
+}

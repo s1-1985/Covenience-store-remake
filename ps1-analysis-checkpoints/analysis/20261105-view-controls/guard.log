@@ -1,0 +1,8 @@
+connected actual opened store -> play 17588 99006241
+connected play verified 1 clock 17588 view 0 pause 0 next input 32
+connected play verified 2 clock 17590 view 0 pause 0 next input 0
+connected play verified 3 clock 17592 view 0 pause 0 next input 0
+connected play verified 4 clock 17594 view 0 pause 0 next input 0
+connected play verified 5 clock 17596 view 0 pause 0 next input 0
+connected play verified 6 clock 17598 view 0 pause 0 next input 0
+{"all_passed": true, "mode": "guard", "fee": 500000, "result": "first_store_guard", "price": 52704360}
