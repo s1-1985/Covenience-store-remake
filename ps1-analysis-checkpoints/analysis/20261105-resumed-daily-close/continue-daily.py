@@ -87,10 +87,22 @@ for index in (11, 12, 13):
         closed = list(struct.unpack_from('<5i', after, offset + 0xd9c)) if closes else [0] * 5
         sales, goods = closed[4] + current[4] - opening[4], closed[3] + current[3] - opening[3]
         expense = sum(closed[:3])
-        ledger_cash[side] = signed(ledger_cash[side] + sales - goods - expense)
+        # Calendar stage 1 also posts seven additional copies of the completed
+        # four-day operating ledger. Derive it from the entry ledger and closed
+        # day, then separately check the source's eightfold month history.
+        monthly_adjustment = 0
+        monthly_source = None
+        if closes and closes[0]['calendar'][2] == 1:
+            monthly_open = struct.unpack_from('<5i', before, offset + 0xd38)
+            monthly_source = [signed(a + b) for a, b in zip(monthly_open, closed)]
+            monthly_adjustment = signed(7 * signed(monthly_source[4] - sum(monthly_source[:4])))
+            assert list(struct.unpack_from('<5i', after, offset + 0xd4c)) == [signed(v * 8) for v in monthly_source]
+            assert list(struct.unpack_from('<5i', after, offset + 0xd38)) == [0] * 5
+        ledger_cash[side] = signed(ledger_cash[side] + sales - goods - expense + monthly_adjustment)
         stores.append(dict(slot=slot, company=side, opening_ledger=opening, closing_ledger=current,
                            previous_day_ledger=closed, additional_sales=sales, additional_goods=goods,
-                           daily_expense=expense))
+                           daily_expense=expense, monthly_source_ledger=monthly_source,
+                           monthly_adjustment=monthly_adjustment))
     assert ledger_cash == cash
     assert len(row['whole_staff_loop_checks']) == count * len(stores)
     assert len(row['customer_loop_checks']) == count * len(stores)

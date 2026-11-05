@@ -1,0 +1,16 @@
+{
+  "stage": "post-run independent ledger audit",
+  "snapshot": "TOWN0001-ci-main-13-single",
+  "native_comparison_passed": true,
+  "failed_assertion": "ledger_cash == cash",
+  "daily_only_reconstruction": [
+    98755817,
+    153727599
+  ],
+  "actual_cash": [
+    99041046,
+    153122596
+  ],
+  "reason": "Calendar [1,4,1,0,0] also posts a monthly seven-times-profit adjustment. Original native/model comparison passed; the auxiliary daily-only ledger reconstruction omitted it.",
+  "preserved_driver": "development-daily-only-driver.py"
+}

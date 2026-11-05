@@ -58,7 +58,9 @@
       ],
       "additional_sales": 0,
       "additional_goods": 1200,
-      "daily_expense": 0
+      "daily_expense": 0,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
     },
     {
       "slot": 1,
@@ -86,7 +88,9 @@
       ],
       "additional_sales": 2440,
       "additional_goods": 30980,
-      "daily_expense": 0
+      "daily_expense": 0,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
     },
     {
       "slot": 2,
@@ -114,7 +118,9 @@
       ],
       "additional_sales": 16150,
       "additional_goods": 5550,
-      "daily_expense": 0
+      "daily_expense": 0,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
     }
   ],
   "daily_close_checks": [],

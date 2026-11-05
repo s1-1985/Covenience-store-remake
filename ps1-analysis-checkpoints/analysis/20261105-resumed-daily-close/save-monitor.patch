@@ -1,0 +1,11 @@
+--- source_save_write_monitor_20261031.py
++++ observed_save_monitor.py
+@@ -35,7 +35,7 @@
+     status=0 if a==0x8007b1f8 else write_status
+     if a==0x8007adf8 and arg==1 and not status:self.committed=expected
+     self.cards.append(dict(address=hex(a),arg=arg,status=status,payload_sha256=hashlib.sha256(expected).hexdigest()))
+-    m.byteset(0x800cd820,status);z.reg_write(UC_MIPS_REG_V0,0);z.reg_write(UC_MIPS_REG_PC,z.reg_read(UC_MIPS_REG_RA));return
++    return # Original card routines execute; no completion or payload injection.
+    if a==0x800505a0:
+     assert self.active is None;self.active=[];frames0=len(runner.frames)
+     def check():

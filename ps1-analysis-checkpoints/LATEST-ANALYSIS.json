@@ -1,17 +1,17 @@
 {
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
   "date_jst": "2026-11-05",
-  "snapshot": "TOWN0001-ci-main-10-single",
+  "snapshot": "TOWN0001-ci-main-13-single",
   "phase": "play_iteration_end",
-  "clock": 16080,
-  "completed_iterations": 8048,
+  "clock": 17280,
+  "completed_iterations": 8648,
   "cash": [
-    98724409,
-    153780885
+    99041046,
+    153122596
   ],
-  "ram_sha256": "6b5eda41f932569a9489bd6bf79206c2daa8ffdfbc89f3a1b203a01e82418dba",
-  "metadata": "analysis/20261105-card-recovery/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-10-single.json",
-  "compressed_ram": "analysis/20261105-card-recovery/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-10-single.ram.zlib",
-  "report": "analysis/20261105-card-recovery/README.md",
+  "ram_sha256": "7ff817ecc751328d5444024450617a01c51d7b539e9d4c2921aa037fa0be8314",
+  "metadata": "analysis/20261105-resumed-daily-close/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-13-single.json",
+  "compressed_ram": "analysis/20261105-resumed-daily-close/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-13-single.ram.zlib",
+  "report": "analysis/20261105-resumed-daily-close/README.md",
   "limits": "Natural main trajectory. Save/load UI branches are preserved separately and do not replace this state."
 }

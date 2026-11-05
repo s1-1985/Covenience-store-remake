@@ -1,0 +1,31 @@
+{
+  "all_passed": true,
+  "input_card_sha256": "b90d35136d82fa426efb2f0b3bbeffa1ae52dcdb96d92b7e6768dec9be39a93f",
+  "payload_sha256": "bf94741a4738d4efa937461126facbae1d1deb30c7d6a22c5cdb555589b28015",
+  "decoded_regions": 37,
+  "saved_clock": 17280,
+  "saved_cash": [
+    99041046,
+    153122596
+  ],
+  "original_calls": [
+    {
+      "function": "7AB2C",
+      "mode": 0,
+      "instructions": 40138
+    },
+    {
+      "function": "7AB2C",
+      "mode": 1,
+      "instructions": 11690
+    }
+  ],
+  "decode_return": -2146175296,
+  "file_reads": 892,
+  "source_executable_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "limits": [
+    "Exact file written from original operating menus; separate strict-MIPS native read/checksum/decode diagnostic.",
+    "Decode destinations deliberately corrupted only in this diagnostic; natural operating state remains untouched.",
+    "Logical BIOS file/event boundaries, not physical card communication."
+  ]
+}

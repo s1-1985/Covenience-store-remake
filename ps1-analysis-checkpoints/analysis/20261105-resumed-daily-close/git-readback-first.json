@@ -1,0 +1,61 @@
+{
+  "all_passed": true,
+  "commit": "df9c901e70af072c1a0aa3c8f17f8c5e8a93a8b5",
+  "files": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-resumed-daily-close/TOWN0001-ci-main-11-single.audit.json",
+      "size": 2928,
+      "git_blob": "437a91b87a902aedb73c74fed1a355daa19b3846",
+      "sha256": "69d01ea7770aeab8c0eb209f184f9c404400ad047a5b23a132d22e5678745654"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-resumed-daily-close/TOWN0001-ci-main-11-single.log",
+      "size": 598,
+      "git_blob": "bac20161705b03276961cd76f4fefb02e7017205",
+      "sha256": "ddff26f167918fa11774dc2814fc97224bf2b42f040a382f990e865d53a1b3f3"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-resumed-daily-close/audit-save.py",
+      "size": 4230,
+      "git_blob": "81032e05bd81d34d1068593b6ce94b6e894e4ec9",
+      "sha256": "f203441472933168501056b7655fe6acd330d20984503b68aee9232f02027828"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-resumed-daily-close/continue-daily.py",
+      "size": 6487,
+      "git_blob": "f98e4498b456f136a4990d8b473714cba4794f2c",
+      "sha256": "19d1d24e426554573d76b79f6cfea2ad2e515a2335d6fbd873e06cc79b3fa6a0"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-resumed-daily-close/evidence/TOWN0001-ci-main-11-single-progress.json",
+      "size": 233636,
+      "git_blob": "c1cebda10da0c496253bfc6409ddee3802e901cb",
+      "sha256": "ecf140d79275d2b1c5bce23082f5e89005ea706e2292861abc6cad85ebba2c24"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-resumed-daily-close/evidence/opened-snapshot-TOWN0001-ci-main-11-single-verification-20261103.json",
+      "size": 2159779,
+      "git_blob": "c42b464666f183e05544b6a7e96c22b371d249f4",
+      "sha256": "52f1f616a90e60421213cfe8a021f0b81b2eadacb81b2cd0b3d96e1a145b5d3f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-resumed-daily-close/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-11-single.json",
+      "size": 1034176,
+      "git_blob": "a9d867adf32a009219c65e1ef09ef77e116b4735",
+      "sha256": "c2f4128b39527f353e4e72f9eaa33c9412eadd40b2236a1b953a7f2f61922239"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-resumed-daily-close/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-11-single.ram.zlib",
+      "size": 507906,
+      "git_blob": "ae2ed0585b66710e53bcb98933b277a9758577b5",
+      "sha256": "4ad5836942ea2ebc51d129394e4efea3ce09d96c4f025b269c01a0d94c817df8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-resumed-daily-close/play-save.py",
+      "size": 7390,
+      "git_blob": "1757d6a003cc703ef64f0438aed6f138b9878bba",
+      "sha256": "53f8134906896600c6b391caab69f45f533d125c83675eec0c1b1642a82f696b"
+    }
+  ],
+  "verification": "Full bytes fetched from GitHub through git fetch and compared against local originals."
+}

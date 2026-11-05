@@ -1,0 +1,14 @@
+{
+  "all_passed": true,
+  "restored_snapshot": "TOWN0001-ci-main-10-single",
+  "restored_clock": 16080,
+  "completed_iterations": 8048,
+  "ram_sha256": "6b5eda41f932569a9489bd6bf79206c2daa8ffdfbc89f3a1b203a01e82418dba",
+  "source_executable_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "script_sha256": "0ff12db8e858576b7b52e8b3f3cb28fd11bd3f2090b899452c33d7c039446d59",
+  "scope": "Empty-destination full archive reconstruction and latest CPU checkpoint overlay; no native operating updates counted.",
+  "native_restart_passed": true,
+  "native_restart_updates": 2,
+  "native_restart_final_clock": 16084,
+  "not_added_to_natural_main_total": true
+}

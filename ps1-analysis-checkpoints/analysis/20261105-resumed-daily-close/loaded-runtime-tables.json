@@ -1,0 +1,7 @@
+{
+  "all_passed": true,
+  "loaded_ram_sha256": "2046738012bac7356e6511c3216e1658d6ae87f4a9b5e70b1eec20a95f7034d3",
+  "products27x12_sha256": "7f0c9bbcedba4f3b5f2451fd4155442a6d37486a8e7ae028d48432ccd99d9609",
+  "appearance101x4_sha256": "37e3e1274d03e111b34ee12379e30b5c7ee9ca0b5f43d5944e196c4a3023a89d",
+  "scope": "All native post-load product/appearance references match the certified single-conversion entry snapshot."
+}
