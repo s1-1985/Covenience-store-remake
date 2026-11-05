@@ -1,0 +1,594 @@
+{
+  "all_passed": true,
+  "commit": "5a4aabffc72c3950cd016304300f84a2368a82da",
+  "files_verified": 96,
+  "bytes_verified": 20436736,
+  "files": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/README.md",
+      "size": 8089,
+      "git_blob": "c286373cfc9635128df999d5fe9b0d3335623ad5",
+      "sha256": "47bdd9585c81cd79b19fb5420629ec1ff515bd7bb8722fc267a021c799bdb345"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/TOWN0001-ci-main-16-single.audit.json",
+      "size": 3099,
+      "git_blob": "d5ed39f6c88e75a02c05aab1d11ccef59990773f",
+      "sha256": "ddb078cbb66945326394cee2e8455a2fa9405417994f41e9913efda50a4f98fa"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/TOWN0001-ci-main-16-single.log",
+      "size": 259,
+      "git_blob": "746622f3153082a0ec856e40bca32cab61587cd6",
+      "sha256": "cd987f5953120b2f88f642adf6d76134e573e3075eba7819552464e2be97024e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/audit-controls.log",
+      "size": 130,
+      "git_blob": "70dbba251786f9e31cf5ed7f8083871d369cc2cb",
+      "sha256": "b9580d55d594f7e266c60de2aedbfe0a12a495a8b15d6215657e0f4ac04ee750"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/audit-controls.py",
+      "size": 6223,
+      "git_blob": "28a2d817d7a104ce85e80f0c16cde088bf0a7e95",
+      "sha256": "2a4d081b7caf839c11563b33ddf3a60ef384d00835f88c50be62efeaea0c1b06"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/audit-save.log",
+      "size": 94,
+      "git_blob": "9fe447db21046fbc936fdada1052dc34aae685a3",
+      "sha256": "f6cdf0b0ffa47d34ed2fc4e6916d5e596885ed7a7ef05217365293ac860bc9ab"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/audit-save.py",
+      "size": 4282,
+      "git_blob": "558f34e47afc78c23776b388530532438a238550",
+      "sha256": "011cb4a23e4e7c44e1469c27b7ff0fd79da31e67bde4a508c457ae92a05979d8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/continue-main.py",
+      "size": 7461,
+      "git_blob": "e9ef7aa1ee038af83eeb5d537aaf121155de51af",
+      "sha256": "fcaf658f5054ba484b6f2c801f2cab5b7a2269f05432f1b941d44875b9956da7"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/controls-audit.json",
+      "size": 1737,
+      "git_blob": "0c8f48d65d157edbb0a00232e85a0297ebe2f592",
+      "sha256": "2ed8c75b74161e07ac152a88c0f1da8605b9aa8cf293d8fd81f5d7248727ba0f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-expectation-correction.json",
+      "size": 725,
+      "git_blob": "0ea28e8126e3b6c9cc6d25b93a52ac2e7d98c737",
+      "sha256": "70bb15ad8e7a1f367fbff61eefadc698c5d7bfa4ace4dbaa2835eeda7009da19"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-guard-expectation.log",
+      "size": 802,
+      "git_blob": "91e78e6a46c7a4dfbc4b85dc481d9afff7322bf5",
+      "sha256": "bf4304b2710dc5f5df2bd617d96daa967e10772e7b5eeaa73ae75d34935fcf06"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-navigate-own-list.py",
+      "size": 3788,
+      "git_blob": "eb2dbdd2c7c8abfe2c9ffa6adea2a839097e26c1",
+      "sha256": "04ed6e3d873ff6dedc9c6f455336eb5907e6845e3625d3477b14734d94f9daac"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-own-before-list-monitor.json",
+      "size": 152705,
+      "git_blob": "34eae20e5d6c0cdfc2d04ce431811d0749cb3ca7",
+      "sha256": "8893a2b4ab4c9a5f9a44d32f3aa9361b8e80d9eb8823a6b69087988d05960e06"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-own-list-wrap/call-trace.json",
+      "size": 3159,
+      "git_blob": "fbb92cad56d4fcb91e5f7108dd2353941ea23643",
+      "sha256": "2b55d9260b0e78f5d4c7abb0d46bfc207ea37f953d092f5da619470b70626505"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-own-list-wrap/evidence/source/opened-snapshots-20261028/TOWN0001-view-rival-20261105-single.json",
+      "size": 814691,
+      "git_blob": "5530eac52aa4d60eaa3189b469286d831a0e5286",
+      "sha256": "28a33449c165f441e4fced7674599d008c6908ff68962af095ad71d12537af90"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-own-list-wrap/evidence/source/opened-snapshots-20261028/TOWN0001-view-rival-20261105-single.ram.zlib",
+      "size": 491136,
+      "git_blob": "442e3ccbc29549d0a2c6fa5006d7b6256a43a021",
+      "sha256": "6af0585c5a5a7031aacc54f0d09d258a33c3e0c3932d1f91e9eaa84db58d66b8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-own-list-wrap/progress.json",
+      "size": 14140,
+      "git_blob": "28a8bfa3e9a2340272bf65e3bf959b06aff7cff0",
+      "sha256": "f6b38c3635572375f7cc468c511323c250792cd813546affe59a08d3ba9d63aa"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-own-list-wrap/result.json",
+      "size": 168439,
+      "git_blob": "8e1f3d1f2527c8e68f46dcb0f68444e8e33eef29",
+      "sha256": "fc4ea544c45f8f3b3430bb05945e80203f50a13e1deefa726273d7867e0d6ace"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-own-list-wrap.log",
+      "size": 942,
+      "git_blob": "86bcc1e67a429e4586fde43df3311d1ddb1fbad3",
+      "sha256": "f7561d00ce3ab330532029b4cbc13b108fc5378aa1d9aace761b7c4df6c4a3fd"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-reinspect-expectation.log",
+      "size": 802,
+      "git_blob": "91e78e6a46c7a4dfbc4b85dc481d9afff7322bf5",
+      "sha256": "bf4304b2710dc5f5df2bd617d96daa967e10772e7b5eeaa73ae75d34935fcf06"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/development-rival-actions-expectations.py",
+      "size": 3585,
+      "git_blob": "f8897fad96ff448e7d259f3eb48e59e142727539",
+      "sha256": "a0b010b12d362d61595de149d656d44b2f4d1198fa1dae7247642fdf48f4c8a5"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/evidence/TOWN0001-ci-main-16-single-progress.json",
+      "size": 70154,
+      "git_blob": "19175d54702430022310cf5b6dcb1ae483b54d46",
+      "sha256": "2d67906b13eb044b96296130a1e1947693afe18a53bee8ea226419d29065198a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/evidence/opened-snapshot-TOWN0001-ci-main-16-single-verification-20261103.json",
+      "size": 634223,
+      "git_blob": "ebf8712ce245a3532c1713d6cdf858b6d368575b",
+      "sha256": "4664b263a3c0a5d2ea73e05436e683ec0be419932a2ce38be760d0ff2c75492f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-16-single.json",
+      "size": 870681,
+      "git_blob": "84d294b1960c71347ffbbbab2e19a3371da17389",
+      "sha256": "f52bcfe1f26eac23cd4f63635472aa227a5fc0b7e2d647bbd01a7d600d69463c"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-16-single.ram.zlib",
+      "size": 507835,
+      "git_blob": "7b9e2c1712b6c5a33afa17d51f726a81c48a8976",
+      "sha256": "71aa923c3e8de6b1ede883a7b90cad96418b34bd1c354c59ef23c371d4f14ecb"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/evidence/source/opened-snapshots-20261028/TOWN0001-menu-from-own-load-20261105-single.json",
+      "size": 807735,
+      "git_blob": "aad60dc8b32e8ad18907e9279eaff0829168dd9a",
+      "sha256": "dc64ad13f1156bd30484b66a75ed1c540b52709c77b34feeda83591b5ea0d3ae"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/evidence/source/opened-snapshots-20261028/TOWN0001-menu-from-own-load-20261105-single.ram.zlib",
+      "size": 508227,
+      "git_blob": "b1cf262cc13f2137c709c9007555f5e81792073a",
+      "sha256": "9cbfb78adee20dc21524665bb7bb13cd6816ba84ce7aa1404134bbdb0cc70f32"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/evidence/source/opened-snapshots-20261028/TOWN0001-menu-from-own-save-20261105-single.json",
+      "size": 807736,
+      "git_blob": "0b0fcf07237098417a5d4ae4ed53e5d5d793a3dc",
+      "sha256": "a0804e77e327990d9e98eba260ba149f5b73a48388f57242456a63f102463430"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/evidence/source/opened-snapshots-20261028/TOWN0001-menu-from-own-save-20261105-single.ram.zlib",
+      "size": 508198,
+      "git_blob": "cfb2b872e3d45ec82bd445fc726cd563412537a2",
+      "sha256": "2c896a848f61c6423d47471e9bec5a66f7c43043e65942e25cc81e13b6a5871a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/guard/comparison.json",
+      "size": 82612,
+      "git_blob": "badbc404d99957cd876e68c8c1e284f307f3a885",
+      "sha256": "4957fd7e64417348b27a7e1d40c76e758dafb7d0ea45c0662b1e2b2e14099ebb"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/guard/evidence/source/opened-snapshots-20261028/TOWN0001-rival-guard-20261105-single.json",
+      "size": 807750,
+      "git_blob": "5726ff54f2b0785f0d803f2901d1aa3b89da77a7",
+      "sha256": "a1801952a4872ef97694d291dfcd0d6f960f3e475ec87e382f87bce2b30ffd53"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/guard/evidence/source/opened-snapshots-20261028/TOWN0001-rival-guard-20261105-single.ram.zlib",
+      "size": 508028,
+      "git_blob": "8609819593848e4024cf4821c657d897a4dd69c5",
+      "sha256": "a5699cb863c24d946d0229a22f4a14f5e9bacd3cad096ee4ebcd28373a713a0d"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/guard/progress.json",
+      "size": 7181,
+      "git_blob": "e45f465af32d6c07de92b1126062115c5340bef9",
+      "sha256": "e3f521445d3c34cff57611249034ad54b8ae3186c25d76dcf1cf609e5990b909"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/guard/result.json",
+      "size": 84857,
+      "git_blob": "b9b741c242878b8dcd5f46a23d3943986ff9ed5b",
+      "sha256": "7a40c1a3f7bb56e8db8c13b2d1231da42e205c4cb35b05317d816755718fde97"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/guard.log",
+      "size": 553,
+      "git_blob": "19fe9dc35cdad5cfe09e2c40f1165d2085c5c70b",
+      "sha256": "d30654c65f7775e539ffde7661fb75ef1eeadd6e34b53b48c6caefcfe2e0a9cc"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/info-only-confirm/comparison.json",
+      "size": 83535,
+      "git_blob": "647e2af5b68c00199dd481f8367ef8923b9295c2",
+      "sha256": "2821583b1bb79343b46d4e46da13373075f626090b4c707f3e1d262847bcf3d9"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/info-only-confirm/evidence/source/opened-snapshots-20261028/TOWN0001-rival-info-only-confirm-20261105-single.json",
+      "size": 807761,
+      "git_blob": "55bd30a539f25f2451f43edca97acbb449a5d391",
+      "sha256": "8df9717973170a290ae0f4509a43b4329753b681081e65e13f54cc175cf0dec8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/info-only-confirm/evidence/source/opened-snapshots-20261028/TOWN0001-rival-info-only-confirm-20261105-single.ram.zlib",
+      "size": 508121,
+      "git_blob": "b965200df9d54b2b20cfaa74bda6fb586eb97f8a",
+      "sha256": "463fb3f57ef334d90d1ecc05fcc59172c7ed530895cbcd18bf19b7c7d7a50b51"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/info-only-confirm/progress.json",
+      "size": 7181,
+      "git_blob": "17c0457f2c861d3ef9be46d4731f976831b01ca1",
+      "sha256": "12c4ed3b76e2ae394419ec900c17bafff32c35fd698826f1b7959e3a07d95c7b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/info-only-confirm/result.json",
+      "size": 85759,
+      "git_blob": "03f3deee407f69de27196f657783ee4ba8fd5c60",
+      "sha256": "aa14d1b0dde096388b1b577b265fbfa5eb5936886bb51393b061d5e9e5939e6a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/info-only-confirm.log",
+      "size": 549,
+      "git_blob": "c9442bd0b8719e7ea6e30da1e556acbebfed1445",
+      "sha256": "be5c92b82e37c3aa8fb408286811687c137c0b635812e00651c1cf2032e1f6aa"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/investigate/evidence/source/opened-snapshots-20261028/TOWN0001-rival-investigate-20261105-single.json",
+      "size": 807756,
+      "git_blob": "5a3d3320daddc4fc04ff20b73226d59eb9519199",
+      "sha256": "d267c5602379ed0ef75ca7f248033de9696baaa9a5345a2acc55cdd742cf1b8e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/investigate/evidence/source/opened-snapshots-20261028/TOWN0001-rival-investigate-20261105-single.ram.zlib",
+      "size": 508003,
+      "git_blob": "f2c1e511686d72f4da8149fb1ed2441b52ced7d8",
+      "sha256": "2db78f0a013d5b9ca39a363b2c60828c5c8372d97ce63296d5d9a967c00ca187"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/investigate/progress.json",
+      "size": 7181,
+      "git_blob": "053aa509892d724f7af4d496843485e95c8454c8",
+      "sha256": "956917c81a76f9acf306b70213602eb5ff84c469dc9371a9e6109632ddaf65fd"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/investigate/result.json",
+      "size": 86471,
+      "git_blob": "745f957e45ee15b9d6c8d2cc236d3fbcae764823",
+      "sha256": "7c1425aa2245fdaecb513d8fe8cf47bee93135e6fe0b3a36445fbf3d64990c37"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/investigate.log",
+      "size": 547,
+      "git_blob": "191df543e9410d6433ecc19f09f064eaa5d53517",
+      "sha256": "53723393671547d1373cdc6955dc376025ed5f01095ce381b2e59e60fcb12fb2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/list-and-following-source.asm",
+      "size": 14197,
+      "git_blob": "5f2ff0f38892612c1905c841771318a6508809a4",
+      "sha256": "1bad92447ad79918bc46d85c9761cc2eb207d095d61bb05642b1e9c797d8c2f6"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/list-parent-monitor.py",
+      "size": 4522,
+      "git_blob": "7d142cbf5bb6c0c1a3add4269dc6b711a5c6d246",
+      "sha256": "b732ab9c71f766dc12bf39a0375aba2487461d155d7ad521010a4d44c097e513"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/list-parent-source.json",
+      "size": 3236,
+      "git_blob": "6689b18400c3976074e7c714c6144a0b0177f72e",
+      "sha256": "f19e0dc09a241366a72d89f222b9d29cd60ac668e34e50e21f8da50b8ab4555f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/list-wrap/call-trace.json",
+      "size": 2847,
+      "git_blob": "8125ccf7e68b228ccbe8b55545410b330f791cbe",
+      "sha256": "908309a8be57494aa291ee100cd6a69d4fcf4d0e60ce5cc95c699af417040552"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/list-wrap/evidence/source/opened-snapshots-20261028/TOWN0001-view-list-wrap-20261105-single.json",
+      "size": 812406,
+      "git_blob": "6d16f786ef4d545c806c1ca678b745a6b73f8cc8",
+      "sha256": "b0417f079b3d197e27d0ef045e39d3e0167f6043b77452843741ea8b89503a92"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/list-wrap/evidence/source/opened-snapshots-20261028/TOWN0001-view-list-wrap-20261105-single.ram.zlib",
+      "size": 507933,
+      "git_blob": "3118d8c1fbc3eae32c9b51ba79b8b85b2094c5de",
+      "sha256": "36e9fd724b68aa9f5f522a23547f3e7fa37d272632e65f6887f0696b592cde62"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/list-wrap/progress.json",
+      "size": 11850,
+      "git_blob": "58e00193d69f9eac488161e81689d75dee0fd26b",
+      "sha256": "7da40e87cf26ee72ee5d41e3dcb4b6995d7baa75ae5b3c9a02c13a3781d5c8f9"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/list-wrap/result.json",
+      "size": 99855,
+      "git_blob": "795f762722a57bce7a469d45f3c217672f7cf0fd",
+      "sha256": "2cdf17c8ac6a343a711a896e668f90f972c4a47a1da759886650ec5ce0c28e33"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/list-wrap.log",
+      "size": 821,
+      "git_blob": "8c77564803930cb68f0383b2adb150800d743af4",
+      "sha256": "57550c345ed6740c6755d965a57ac07fff9312bf7a344bc8190619d1a43403d5"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/loaded-runtime-tables.json",
+      "size": 425,
+      "git_blob": "565baf6d4f9fa3e6379a3927905132f457a05a27",
+      "sha256": "3e1ca4e312a3e43b49e54e4b44801804e47b67171cf186e595dee0ce3bb8538b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/long-continuation-status.json",
+      "size": 4200,
+      "git_blob": "5aa75da87dd2e63268ae697cdb488919f433f07f",
+      "sha256": "123c361d8b97f7718079b6e8082a41d9c0cd513e4659e722f59455492ae517dd"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/menu-load-progress.json",
+      "size": 7174,
+      "git_blob": "29a5176eb2d99974aae7368372d8f91f743886be",
+      "sha256": "8cee85ffa9f42eda8d68dffb13222950fe6f5daad0bcebe08c3ae181c4b6dbb7"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/menu-load-reach-trace.json",
+      "size": 520891,
+      "git_blob": "c279ea776af1188426b9e28a132c172ef6e0c92e",
+      "sha256": "dcac66c7f31bd173968e056deea93a4dc4f802d81a36ca925861184c7718a908"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/menu-load.log",
+      "size": 524,
+      "git_blob": "80de7129c04a9ec0ae72f6bb79923d01778e0da1",
+      "sha256": "ab262929f3c6c0223a1d62de578908eaa155d27b1076c9bc5a6da0839b7dee21"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/menu-save-progress.json",
+      "size": 7174,
+      "git_blob": "9d9979bfbe2d75959fadf62408255b26af5940d3",
+      "sha256": "b661b8daa84ec9276e51ac84347ef2a2789764fdf91b088029e9a9d9af1e1886"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/menu-save-reach-trace.json",
+      "size": 522497,
+      "git_blob": "9867952df37b61b176b390a73593af30fdae50ad",
+      "sha256": "630b3eee804cde75b488a5ffecacc586338cb0c49ee0005ec7e1e4f6302823df"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/menu-save.log",
+      "size": 524,
+      "git_blob": "7d45ba941b4059901d4690c410600317a453d340",
+      "sha256": "1e84186445e0a7f8b450d9c16af82a322693f9d074eac956fe47d024bed54065"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/navigate.py",
+      "size": 4408,
+      "git_blob": "731c222a4274165d58a7e769ceb432e3ed5f91aa",
+      "sha256": "69d5aeaaef1773ee074b3be9dd954a8ee684c4f985ee8677c0a88cc040c72c22"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/operating-menu-save.card-file.bin",
+      "size": 114688,
+      "git_blob": "29f0ba1ced9572e84304928a30c8aadef8e9b1fe",
+      "sha256": "db3e361f7171f297bd84d56008836f49aa7e7686e68a3860c74080ccc0f69aea"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/own/call-trace.json",
+      "size": 2503,
+      "git_blob": "9011f09a75df1d8e32873b1a2bb48b9e6c1cd2fe",
+      "sha256": "70a8d43cea3682a959f7687faa2c7def0e1835e424dbc637fdea85c5ddcc7b76"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/own/evidence/source/opened-snapshots-20261028/TOWN0001-view-own-20261105-single.json",
+      "size": 812355,
+      "git_blob": "1f094077ce71d9d82c1c7e2193423032dd3e5eec",
+      "sha256": "0b660cfa5245d7f936a4ee1e5227e19e1aae4bed0ecd0cbeda5a4a1254573fc4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/own/evidence/source/opened-snapshots-20261028/TOWN0001-view-own-20261105-single.ram.zlib",
+      "size": 491308,
+      "git_blob": "6f70249bedbece34ca8adfb12045c84a41e7e25d",
+      "sha256": "884e4f67fb397165ec01399883f9d21ea308bf44f5ad6d019eef380a4f75abcf"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/own/progress.json",
+      "size": 11805,
+      "git_blob": "7f7b83f4464516f821515122c48d345a6c284183",
+      "sha256": "dfdf1294a1f2f315e00a2a3f04cf70f1c06f03b83659a488db0c116f95dd4d5b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/own/result.json",
+      "size": 155518,
+      "git_blob": "796b59d392a0d57b4e424f9f106556bf494d50a5",
+      "sha256": "89603ffac53c11ec7a8f014a05e7022415a3f1aff56fece1190ec4370113e6b8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/own-monitored.log",
+      "size": 802,
+      "git_blob": "db408b9a8bcde28af311d3044577ffa1622fc3c7",
+      "sha256": "022718832ba0f0530c3ad4a6c19bc9873c33d76989b4716708239a3095a5f44a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/own.log",
+      "size": 802,
+      "git_blob": "db408b9a8bcde28af311d3044577ffa1622fc3c7",
+      "sha256": "022718832ba0f0530c3ad4a6c19bc9873c33d76989b4716708239a3095a5f44a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/play-load.json",
+      "size": 961277,
+      "git_blob": "f2cdc29d6b16e2c1f52e083d5c2e1e6995f075f4",
+      "sha256": "92d66669e7e90ddf1a52c2cb4fb624218891ae79261f7e6c26196c8fc61d454b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/play-save.json",
+      "size": 964336,
+      "git_blob": "593c741f067d8f92386462835ed976170f4e7ab8",
+      "sha256": "8e389246b9e9dd7afc813811b13af3fef957b10c0dc5727bd20da853a004bd64"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/play-save.py",
+      "size": 7405,
+      "git_blob": "cfa8151521d2f92c1b3a31f9ebe3bddb1ed56e8a",
+      "sha256": "5d12a168332e6387f6b6a14be4e8042aff56b601768934a15b3a56c4f4be1a34"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/read-decode-io.json",
+      "size": 133169,
+      "git_blob": "036d9ac0f11a9e5103ee18b1439bd21b5894a344",
+      "sha256": "4f2bbd3048d73fa92d854aa66aafa6a79819a5a61fd4b13043dd7a99537f2517"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/read-decode.json",
+      "size": 981,
+      "git_blob": "b2705e64a535e77912d7cff642835d9739482a6a",
+      "sha256": "13dbabcc3050032691a3d58aa02d587b67c24a72c45b5dc13b013223e627bf5f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/recovery-audit.json",
+      "size": 677,
+      "git_blob": "98ab92dc34191a411b560e82a114b1bdce2b772c",
+      "sha256": "965b080f850c24de2e1f5806eaaa55b0e9b4dfa3182aaff96e2501339ddc6d29"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/reinspect/comparison.json",
+      "size": 72926,
+      "git_blob": "0f534afead61f372a97c5a6315080580f088673a",
+      "sha256": "3d6f40ac941eb628ff0f6370d10a65d6f9f2bc90c02b8797ea989d4f48d21bb8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/reinspect/evidence/source/opened-snapshots-20261028/TOWN0001-rival-reinspect-20261105-single.json",
+      "size": 807753,
+      "git_blob": "94bd7a8b281bb696eacdc19a4e1bea431ae1a499",
+      "sha256": "0b9069818398002b8c47446c6765cb0713a9378fe12f05f5637f53ffc78622ed"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/reinspect/evidence/source/opened-snapshots-20261028/TOWN0001-rival-reinspect-20261105-single.ram.zlib",
+      "size": 508120,
+      "git_blob": "35053b5dbe38b5199fba97b95b67b22514e0abfd",
+      "sha256": "3b61d64c0f60f0b53af4dc22133f8f9c72ca6c1568cb78e755020c53da8a24cf"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/reinspect/progress.json",
+      "size": 7181,
+      "git_blob": "14baed4057025de9cfbd1b43da229136615259ab",
+      "sha256": "22649beffe084f9068e06a3bef9d5a85d5fd8937f8761a353b9b3de9dba57425"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/reinspect/result.json",
+      "size": 75142,
+      "git_blob": "ac2f7eed7ef354b850cb59dd3fd5a353258e2a42",
+      "sha256": "20048bbaca90a6da7a6778bac3a8d7698e7eda9c5ceffb6da92d529c4cccdd3d"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/reinspect.log",
+      "size": 541,
+      "git_blob": "063fa5b6d6c6741424097cb215b4496e4fa0ab6c",
+      "sha256": "8dc203f55a5279cc11da524d7aa7cefbf809b45bfcfb97cf39e03f22b1c07f32"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/rival/call-trace.json",
+      "size": 671,
+      "git_blob": "97d098ad3d3bab615486a86c29c5af549db175a1",
+      "sha256": "9996016771f4d63ec95fa6e271de3b8eba13c40e96c5719018acf0f77f75dd3d"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/rival/evidence/source/opened-snapshots-20261028/TOWN0001-view-rival-map-20261105-single.json",
+      "size": 877788,
+      "git_blob": "51b4fa8354c75b30e04645f7f5fcf6f5d110de6c",
+      "sha256": "344190005b30b179b8e7bd16df8e2f69682de63cad00779af9e4bc6d7a2d77d8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/rival/evidence/source/opened-snapshots-20261028/TOWN0001-view-rival-map-20261105-single.ram.zlib",
+      "size": 508046,
+      "git_blob": "ff0d298cb6a5cdd26e1d0acc5a7957fac96b3a73",
+      "sha256": "1f18b79cb2018ab31ad1e2fc202869e880a4b24d992ef3774d1b6256fd833fa4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/rival/progress.json",
+      "size": 77234,
+      "git_blob": "5dfda2863263a6e90675dc136868661b7e06054a",
+      "sha256": "792b0f7b53c65e082adc789fc57caf56019ecee37480a87511cf61f2da551ca7"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/rival/result.json",
+      "size": 475568,
+      "git_blob": "2939850638dbb12dc90ee509699050900b603b5f",
+      "sha256": "6678186a48ce2eddf7e1212763d16d68b40919f3032e3ab79ae3da34c9419497"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/rival-actions.py",
+      "size": 3830,
+      "git_blob": "1517d51418cf1f4613b317a16f5429254c43932b",
+      "sha256": "abc9726e6af535efd8a0490de419a2f0091c03ef67849fae7e9344a1aa819fac"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/rival-dialog-source.asm",
+      "size": 6530,
+      "git_blob": "880b6ab77eaa5a51914d7c86576e8a1214c874c5",
+      "sha256": "a1a3d06154d6a7809a8684268aa44c7e1573274e105406db36abd30fd9d2118e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/rival.log",
+      "size": 4656,
+      "git_blob": "e542d1a87e574af628e1e66473cac64d1d675981",
+      "sha256": "83417821504d87004f2ac14406bac68f609634dbf7e441865f8509ecf11343d2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/save-monitor.patch",
+      "size": 651,
+      "git_blob": "e330f8bef5ac09e4b24a0b641f69af21632c1daf",
+      "sha256": "a2fee55a91ac617848648f9910e991bc01bca4bd0408cb0698f52880e7d66b43"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-ANALYSIS.json",
+      "size": 772,
+      "git_blob": "16a9540d85fbc10485943c22da99b65a121297cc",
+      "sha256": "c11da476f02f083bd7eb1ba89d6efd3767000e5035835c5bc546a04c964f9f69"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "size": 3218,
+      "git_blob": "86cb4bf41f5621d2b61dc679a27cc53b463b6685",
+      "sha256": "0d17c8c33a143350c6979418929cf7d2e76c95707ea74d36657565ea8274abef"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-view-controls/upload-manifest.json",
+      "size": 28077,
+      "git_blob": "e179b10e6824685934589b99e5608c97f917655e",
+      "sha256": "17e62a28f2d2dd4cf20338617061d2ca25650860ca2017ea1915670f07c9699a"
+    }
+  ],
+  "snapshot": "TOWN0001-ci-main-16-single",
+  "clock": 17640,
+  "completed_iterations": 8828,
+  "cash": [
+    99005641,
+    153132096
+  ],
+  "ram_sha256": "d5edcf5c0adf1e3f53c66e71be32a56af16dcb6be301482e29988f8244dd8cfb",
+  "verification": "Full git-fetch/git-show bytes equal local completed artifacts, with byte counts, Git blob SHA-1 and SHA-256. Latest compressed CPU RAM independently decompressed and clock/cash decoded. Fourteen final audit/case outputs remain passed.",
+  "limits": "Includes deliberately retained development expectation failures and intermediate progress records; all_passed means byte-readback and final audits, not that each development attempt passed. This record is stored in a following commit and does not recursively verify itself."
+}
