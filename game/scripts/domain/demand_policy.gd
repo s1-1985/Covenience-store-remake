@@ -43,13 +43,13 @@ var opening_minutes_per_day: int
 var bad_weather_visit_multiplier: float
 var is_bad_weather: bool
 var rival_store_count: int
-var rng: RandomNumberGenerator
+var rng
 
 const RIVAL_DILUTION_PER_COMPETITOR := 0.08
 const MAX_RIVAL_DILUTION := 0.6
 
 
-func _init(demand_config: Dictionary, source_rng: RandomNumberGenerator) -> void:
+func _init(demand_config: Dictionary, source_rng) -> void:
     nearby_population = int(demand_config["nearby_population"])
     customer_share_percent = float(demand_config["customer_share_percent"])
     daily_visit_rate_per_population = float(demand_config["daily_visit_rate_per_population"])
@@ -67,7 +67,7 @@ func _init(demand_config: Dictionary, source_rng: RandomNumberGenerator) -> void
 
 
 func expected_arrivals_per_minute() -> float:
-    var expected_daily_visitors := (
+    var expected_daily_visitors = (
         nearby_population * (customer_share_percent / 100.0) * daily_visit_rate_per_population
     )
     if is_bad_weather:
@@ -84,7 +84,7 @@ func expected_arrivals_per_minute() -> float:
 
 
 func customer_arrives_this_minute() -> bool:
-    var rate := expected_arrivals_per_minute()
+    var rate = expected_arrivals_per_minute()
     if rate <= 0.0:
         return false
     return rng.randf() < min(1.0, rate)

@@ -155,6 +155,7 @@ var edit_mode := "move"
 # a stray tap on the floor can never move a fixture.
 var editing := true
 var _fixture_textures: Dictionary = {}
+var _program_textures: Dictionary = {}
 var _product_textures: Dictionary = {}
 var _staff_textures: Dictionary = {}
 var _staff_last_position: Dictionary = {}
@@ -555,6 +556,26 @@ func _draw_outdoor_lot(width: float) -> void:
 # replacing the previous flat fill color. draw_texture_rect's own tile
 # behavior (not a manual loop) handles the repeat.
 func _draw_floor(width: float, height: float) -> void:
+    if simulation.config["store"].has("source_floor"):
+        var floor_rows: Array = simulation.config["store"]["source_floor"]
+        var unit := SUBCELL_PIXELS * 2
+        if not _program_textures.has("floor_atlas"):
+            _program_textures["floor_atlas"] = load("res://assets/ps1/floor_atlas.png")
+        for y in floor_rows.size():
+            for x in floor_rows[y].size():
+                var code := int(floor_rows[y][x])
+                if code < 36:
+                    draw_texture_rect_region(_program_textures["floor_atlas"], Rect2(x * unit, y * unit, unit, unit), Rect2((code % 16) * 16, (code / 16) * 16, 16, 16))
+        return
+    if simulation.program_town != null:
+        if not _program_textures.has("floor"):
+            _program_textures["floor"] = load("res://assets/ps1/floor.png")
+        var original: Texture2D = _program_textures["floor"]
+        var unit := SUBCELL_PIXELS * 2
+        for y in int(ceil(height / unit)):
+            for x in int(ceil(width / unit)):
+                draw_texture_rect(original, Rect2(x * unit, y * unit, unit, unit), false)
+        return
     var floor_texture: Texture2D = _floor_textures["floor_blue_repeat"]
     if floor_texture == null:
         draw_rect(Rect2(Vector2.ZERO, Vector2(width, height)), Color("f5f1e8"), true)
@@ -567,6 +588,8 @@ func _draw_floor(width: float, height: float) -> void:
 # corners at native size unstretched, per the source asset package's own
 # usage notes (see _floor_textures' declaration above).
 func _draw_walls(width: float, height: float) -> void:
+    if simulation.config["store"].has("source_floor"):
+        return
     var north: Texture2D = _floor_textures["wall_north"]
     var south: Texture2D = _floor_textures["wall_south"]
     var east: Texture2D = _floor_textures["wall_east"]
@@ -590,6 +613,8 @@ func _draw_walls(width: float, height: float) -> void:
 
 
 func _draw_grid(width: float, height: float) -> void:
+    if simulation.config["store"].has("source_floor") and selected_fixture_id.is_empty():
+        return
     var subcells_per_tile := int(config["store"]["subcells_per_tile"])
     for x in range(simulation.layout.width_subcells + 1):
         var thickness := 1.5 if x % subcells_per_tile == 0 else 1.0
@@ -609,6 +634,8 @@ func _draw_grid(width: float, height: float) -> void:
 # only the arrow-and-mat artwork itself, so this drops the synthetic text
 # rather than layering it over the real sprite.
 func _draw_entry_exit() -> void:
+    if simulation.config["store"].has("source_floor"):
+        return
     var entry := _vec2i(config["store"]["entry_subcell"])
     var exit := _vec2i(config["store"]["exit_subcell"])
     var entry_texture: Texture2D = _floor_textures["entrance_in"]
@@ -638,6 +665,8 @@ func _draw_fixtures() -> void:
         var catalog_id := str(fixture.get("catalog_id", ""))
         if catalog_id.is_empty():
             catalog_id = str(FALLBACK_VISUAL_CATALOG_ID_BY_KIND.get(fixture["kind"], ""))
+        if simulation.program_town != null and _draw_program_fixture(fixture, rect.grow(3)):
+            continue
         var texture := _fixture_texture(catalog_id)
         var fill := Color("84a9d8")
         var label := "SHELF"
@@ -761,6 +790,8 @@ func _draw_customer() -> void:
             sprite_id = _customer_sprite_id_for_id(customer.customer_id)
         var direction := _customer_facing_direction(customer.customer_id, customer.position)
         var texture := _customer_texture(sprite_id, direction, str(motion[1]))
+        if simulation.program_town != null:
+            texture = _program_person_texture(int(customer.visit.get("sprite_index", 0)), direction)
         if texture != null:
             var draw_size := Vector2(CUSTOMER_SPRITE_SIZE_PX, CUSTOMER_SPRITE_SIZE_PX)
             var anchor_offset := Vector2(
@@ -795,6 +826,10 @@ func _draw_staff() -> void:
         var sprite_id := _staff_sprite_id_for_candidate(staff_member.candidate_id)
         var direction := _staff_facing_direction(staff_member.staff_id, staff_member.position)
         var texture := _staff_texture(sprite_id, direction, phase)
+        if simulation.program_town != null:
+            var slot: int = simulation.staff.all_staff().find(staff_member)
+            var candidate: Dictionary = simulation._staff_candidate_catalog.get(staff_member.candidate_id, {})
+            texture = _program_person_texture(38 + slot * 2 + int(candidate.get("female", false)), direction)
         if texture != null:
             var draw_size := Vector2(STAFF_SPRITE_SIZE_PX, STAFF_SPRITE_SIZE_PX)
             var anchor_offset := Vector2(
@@ -875,3 +910,52 @@ func _moving_center(key: String, cell: Vector2i) -> Array:
 
 func _vec2i(value: Array) -> Vector2i:
     return Vector2i(int(value[0]), int(value[1]))
+
+
+func _program_texture(key: String) -> Texture2D:
+    if not _program_textures.has(key):
+        var regions: Dictionary = simulation._recovery["sprite_regions"]
+        if not regions.has(key):
+            return null
+        var values: Array = regions[key]
+        var texture := AtlasTexture.new()
+        texture.atlas = load("res://assets/ps1/interior_atlas.png")
+        texture.region = Rect2(int(values[0]), int(values[1]), int(values[2]), int(values[3]))
+        _program_textures[key] = texture
+    return _program_textures[key]
+
+
+func _program_person_texture(appearance: int, direction: String) -> Texture2D:
+    var key := "person_%d_%s" % [appearance, direction]
+    if not _program_textures.has(key):
+        var directions := {"down": 0, "left": 1, "up": 2, "right": 3}
+        var code := clampi(appearance, 0, 43) * 4 + int(directions.get(direction, 0))
+        var texture := AtlasTexture.new()
+        texture.atlas = load("res://assets/ps1/people.png")
+        texture.region = Rect2((code % 16) * 16, (code / 16) * 16, 16, 16)
+        _program_textures[key] = texture
+    return _program_textures[key]
+
+
+func _draw_program_fixture(fixture: Dictionary, rect: Rect2) -> bool:
+    var kind: int = simulation.program_fixture_kind(fixture)
+    if kind < 0:
+        return false
+    var rotation := int(fixture.get("rotation_quarter_turns", 0)) % 4
+    var texture := _program_texture("fixture_%d_%d" % [kind, rotation])
+    if texture == null:
+        return false
+    draw_texture_rect(texture, rect, false)
+    var product = _product_on_fixture(str(fixture["id"]))
+    if product != null and product.stock_units > 0:
+        var third := int(product.initial_stock_units) / 3
+        var level := 2 if int(product.stock_units) <= third else (1 if int(product.stock_units) <= third * 2 else 0)
+        var goods := _program_texture("product_%s_%d" % [product.catalog_id, level])
+        if goods != null:
+            var tile := SUBCELL_PIXELS * 2
+            for y in int(round(rect.size.y / tile)):
+                for x in int(round(rect.size.x / tile)):
+                    draw_texture_rect(goods, Rect2(rect.position + Vector2(x, y) * tile, Vector2(tile, tile)), false)
+    if fixture["id"] == selected_fixture_id:
+        draw_rect(rect, Color("f4d35e"), false, 3)
+    return true

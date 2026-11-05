@@ -2262,6 +2262,10 @@ The next large milestone is **turning the single scripted vertical slice into re
 
 ユーザーから、解析検証に偏った進め方を修正し、エミュレータに依存しないAndroid版を作ることへ徹底するよう指示された。ルートAGENTS.mdに優先順位と成果物の扱いを固定した。未マージPR #270の更新版0c15eebを基点に、原作の月末台帳集計をGDScriptへ移植。現金差から算出していたため賞金・強盗損失が繰り返し計上される問題を修正し、スマホの調査画面へ営業内訳を追加した。0.1.20-preview、Android arm64 APKをビルド・署名検証。実機動作は未確認。mainやPR #270は未マージ。最新引継ぎはdocs/handoff/2026-11-05-android-implementation-first.md。
 
+### 2026-11-05：原作マップ・画像・営業処理を実ゲームへ接続（decision 0207）
+
+45851caから本体を継続。TOWN0001の60×50／72定義／人口2179・ライバル1店、原作タイル／方向別什器／商品／人物画像、LCG、町の月末変化、作業判定・忍耐・体力・賃金・維持費、ライバル実営業／赤字撤退／候補地走査／買収費と在庫引継ぎをGodotへ接続。新規ゲームとスマホ画面で使う。保存に町とライバルの実状態を追加。原作全レイアウト・シナリオ・UI・音源、原作同一の経路／出店時採用は未完了。境界はdecision 0207とps1_recovered.json。APK0.2.0-recoveredはcom.conveniremake.recoveredとして旧版と共存、実機未確認。再開は最新handoffを読む。解析アーカイブをAPKへ入れず、本体に必要な小データのみ同梱。
+
 ## 20. Execution cadence and user-directed work
 
 Scheduled runs are a background cadence, not an exclusive gate for progress.
@@ -2510,3 +2514,7 @@ The customer-archetype visit-schedule table (21 archetypes, 143 rows) and the DA
 were both independently re-transcribed in full and matched the already-ported
 `CUSTOMER_ARCHETYPES`/`CUSTOMER_VISIT_SCHEDULE`/`TOWN_BUILDINGS` field-for-field (including
 reproducing an existing known misprint) -- no changes needed, not re-listed as findings above.
+
+### 2026-11-05 — 原作の敷地と24内装サンプル（decision 0208）
+
+前回0.2.0の実装を復元し、エミュレータ非依存のAndroid本体へ原作の30レイアウトを抽出、24家具入りサンプルを開店選択へ接続。敷地全体・左/上入口・原作床と壁・什器位置/方向・初期在庫を使用し、初期什器と商品の代金も支払う。固定壁は歩行と編集と保存/再開へ接続。詳細と残る仮仕様はdecision0208、最新引継ぎはdocs/handoff/2026-11-05-source-interior.md。APK0.2.1、versionCode23、前回0.2.0と同じ署名/パッケージ。実機未確認。全解析完了・全移植完了とは呼ばない。

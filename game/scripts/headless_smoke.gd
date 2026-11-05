@@ -37,6 +37,7 @@ class _FakeTownSimulation:
 
 
 func _initialize() -> void:
+    Engine.set_meta("legacy_guide_fixture", true)
     # Task #89: the UI scenarios below script coordinates in the small
     # prototype store; the guide starting store gets its own scenario.
     Engine.set_meta("use_prototype_store_for_tests", true)

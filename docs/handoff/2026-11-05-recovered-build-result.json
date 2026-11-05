@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0-recovered",
+  "package": "com.conveniremake.recovered",
+  "base_commit": "45851ca63ba8bc4cc6321bb3323c1dad40d97e7e",
+  "analysis_commit": "2c00ba53ed5d469b406d498f3d1f9191074679a0",
+  "godot": "4.3.stable.official.77dcf97d8",
+  "abi": "arm64-v8a",
+  "apk_bytes": 27865046,
+  "apk_sha256": "5d986c3fe84dcbe1967586aa72520e51e22189ddf13403ee7b6f86263d0e775f",
+  "tests": {
+    "python_tests": 786,
+    "python_expected_failures": 1,
+    "godot_smoke_scripts": 6,
+    "town_full_byte_cases": 4,
+    "native_sales_10_days": 375,
+    "rival_cash_after_10_days": 102108655,
+    "renderer": "Godot OpenGL llvmpipe via Xvfb; Android preview UI",
+    "physical_android_tested": false
+  },
+  "runtime_original_exe_or_bios": false
+}

@@ -108,15 +108,15 @@ func evaluate_monthly_rating_change(
 ) -> Dictionary:
     assert(current_internal_value >= 0 and current_internal_value <= 100)
     assert(monthly_sales_yen >= 0)
-    var current_stars := star_rank_for_internal_value(current_internal_value)
+    var current_stars = star_rank_for_internal_value(current_internal_value)
     var upgrade: Dictionary = UPGRADE_THRESHOLDS_BY_CURRENT_STARS[current_stars]
     var downgrade: Dictionary = DOWNGRADE_THRESHOLDS_BY_CURRENT_STARS[current_stars]
 
-    var criteria_met := 0
+    var criteria_met = 0
     # Task #129: which items were not good, in ADVICE_ITEMS order (the
     # program's bit mask for the manager's advice).
     var not_good: Array[String] = []
-    var good_flags := [
+    var good_flags = [
         price_change_pct <= int(upgrade["max_price_change_pct"]),
         service_value >= float(upgrade["min_service"]),
         security_value >= float(upgrade["min_security"]),
@@ -130,7 +130,7 @@ func evaluate_monthly_rating_change(
             not_good.append(ADVICE_ITEMS[index])
     var upgrade_applies: bool = criteria_met >= UPGRADE_MIN_CRITERIA_MET
 
-    var criteria_failed := 0
+    var criteria_failed = 0
     if price_change_pct >= int(downgrade["min_price_change_pct"]):
         criteria_failed += 1
     if service_value < float(downgrade["below_service"]):
@@ -143,7 +143,7 @@ func evaluate_monthly_rating_change(
         criteria_failed += 1
     var downgrade_points: int = criteria_failed * DOWNGRADE_POINTS_PER_CRITERION
 
-    var net_point_change := downgrade_points
+    var net_point_change = downgrade_points
     if upgrade_applies:
         net_point_change += UPGRADE_POINTS
     var next_internal_value: int = clampi(current_internal_value + net_point_change, RATING_FLOOR, RATING_CAP)
@@ -162,7 +162,7 @@ func evaluate_monthly_rating_change(
 # Task #129: the day's change in 人気 (CONFIRMED_BINARY, see
 # DAILY_POPULARITY_CHANGE_BY_STARS).
 func next_day_popularity(popularity: int, internal_value: int) -> int:
-    var stars := star_rank_for_internal_value(internal_value)
+    var stars = star_rank_for_internal_value(internal_value)
     var next: int = popularity + int(DAILY_POPULARITY_CHANGE_BY_STARS[stars])
     return mini(RATING_CAP, maxi(next, internal_value))
 
@@ -172,7 +172,7 @@ func next_day_popularity(popularity: int, internal_value: int) -> int:
 # ability out of 100, one of the five items is drawn at random; if that
 # item was not good, the advice for it is given (else nothing). Returns ""
 # when no advice is given.
-func manager_advice(evaluation: Dictionary, manager_ability: int, rng: RandomNumberGenerator) -> String:
+func manager_advice(evaluation: Dictionary, manager_ability: int, rng) -> String:
     if bool(evaluation["upgrade_applies"]):
         return ""
     if rng.randi_range(1, 100) > manager_ability:
@@ -180,7 +180,7 @@ func manager_advice(evaluation: Dictionary, manager_ability: int, rng: RandomNum
     var item: String = ADVICE_ITEMS[rng.randi_range(0, ADVICE_ITEMS.size() - 1)]
     if not (evaluation["not_good_items"] as Array).has(item):
         return ""
-    var text := ""
+    var text = ""
     if item == "service" and rng.randi_range(0, 1) == 0:
         text = "%sなどを置いて\n" % ADVICE_SERVICE_FIXTURES[rng.randi_range(0, ADVICE_SERVICE_FIXTURES.size() - 1)]
     elif item == "security" and rng.randi_range(0, 1) == 0:

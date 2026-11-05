@@ -1,6 +1,7 @@
 extends SceneTree
 
 func _initialize() -> void:
+    Engine.set_meta("legacy_guide_fixture", true)
     call_deferred("_run")
 
 func _require(condition: bool, message: String) -> bool:
