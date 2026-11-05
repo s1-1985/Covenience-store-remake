@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/0f4cb99c775b/restored/algorithm-analysis/verify_operating_branch_segment_20261103.py", line 2, in <module>
+    from verify_opened_snapshot_play_20261028 import compare,R
+  File "/workspace/scratch/0f4cb99c775b/restored/algorithm-analysis/verify_opened_snapshot_play_20261028.py", line 2, in <module>
+    from check_machine import *
+  File "/workspace/scratch/0f4cb99c775b/restored/algorithm-analysis/check_machine.py", line 1, in <module>
+    from unicorn import Uc,UC_ARCH_MIPS,UC_MODE_MIPS32,UC_MODE_LITTLE_ENDIAN
+ModuleNotFoundError: No module named 'unicorn'
