@@ -248,6 +248,7 @@ var _store_visitor_heads := 0
 var _store_sales_last_month := 0
 
 
+var source_actor_tables: Dictionary = {}
 var _chain_visitors_total := 0
 
 
@@ -680,6 +681,8 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     outdoor_fixtures = []
     _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
     _sold_counts = {}
+    if not has_store_site() and bool(config["simulation"].get("source_full_people", false)):
+        customers.reset()
     store_site_origin = origin
     _player_store_position = origin
     _stores.append({})
@@ -727,6 +730,8 @@ func _competitor_positions() -> Array:
 
 
 func _admit_arrival() -> void:
+    if _native_source_people():
+        return
     # Task #130: on the town map; a store without a site (the p.48 check
     # scenario) keeps the plain arrival rate.
     if _program_demand != null and has_store_site():
@@ -743,8 +748,9 @@ func _admit_program_group() -> void:
     var tables: Dictionary = _program_demand.tables
     if minute_of_day % int(tables["spawn_every_game_minutes"]) != 0:
         return
-    _step_manager_reports()
-    _step_incidents()
+    if not _native_source_people():
+        _step_manager_reports()
+        _step_incidents()
     if not is_open_now():
         return
     if customers.active_customers().size() >= program_max_groups():
@@ -1059,6 +1065,9 @@ func program_max_groups() -> int:
 
 
 func _start_program_customer(row: Dictionary, heads: int) -> void:
+    if _native_source_people():
+        preload("res://scripts/domain/program_people.gd").admit(self, row, heads)
+        return
     var plan: Array[String] = []
     var primary := str(row["primary"])
     var shelf := _shelf_for_category(primary, plan)
@@ -3234,7 +3243,16 @@ func step() -> void:
     _switch_store(viewed)
 
 
+func _native_source_people() -> bool:
+    if source_actor_tables.is_empty() and FileAccess.file_exists("res://data/source_actor_tables.json"):
+        source_actor_tables = JSON.parse_string(FileAccess.get_file_as_string("res://data/source_actor_tables.json"))
+    return program_town != null and has_store_site() and bool(config["simulation"].get("source_full_people", false))
+
+
 func _step_store_floor() -> void:
+    if _native_source_people():
+        preload("res://scripts/domain/program_people.gd").step(self)
+        return
     # Every customer still in progress (not just the single most-recently-
     # admitted one) advances its own phase machine this tick (task #36,
     # concurrent customers). The single checkout fixture/staff is still a
@@ -4128,11 +4146,11 @@ func load_state(data: Dictionary) -> bool:
             if data.get("program_rivals", {}).has(id):
                 _program_rival_simulation(rival).load_state(data["program_rivals"][id])
         _program_rng.seed = int(data.get("program_rng", program_town.seed))
-        _for_each_store( func():
-            if not _source_runtime_to_restore.is_empty():
-                _restore_source_runtime(_source_runtime_to_restore)
-                _source_runtime_to_restore = {})
         _sync_program_town()
+    _for_each_store( func():
+        if not _source_runtime_to_restore.is_empty():
+            _restore_source_runtime(_source_runtime_to_restore)
+            _source_runtime_to_restore = {})
     return true
 
 
@@ -5237,7 +5255,8 @@ func _complete_restock(staff_member) -> void:
             "skills": restock_growth,
         })
     staff_member.finish_restock()
-    _spend_stamina(staff_member)
+    if not _native_source_people():
+        _spend_stamina(staff_member)
 
 
 func _assign_idle_restock_tasks() -> void:
@@ -5936,19 +5955,21 @@ func source_shelf_price_percent() -> int:
     return total / count if count > 0 else 0
 
 
-const CUSTOMER_SAVE_FIELDS := ["phase", "plan_index", "shopping_ticks_remaining", "checkout_ticks_remaining", "checkout_assigned_ticks", "checkout_anger_triggered", "settled_transaction_id", "settled_total_yen", "type_id", "budget_left", "add_ons", "group_size", "source_deadline", "source_candidate_index"]
-const STAFF_RUNTIME_FIELDS := ["state", "rest_phase", "restock_target_product_id", "restock_ticks_remaining", "stamina_max", "checkouts_done"]
+const CUSTOMER_SAVE_FIELDS := ["phase", "plan_index", "shopping_ticks_remaining", "checkout_ticks_remaining", "checkout_assigned_ticks", "checkout_anger_triggered", "settled_transaction_id", "settled_total_yen", "type_id", "budget_left", "add_ons", "group_size", "source_deadline", "source_candidate_index", "source_native", "source_state", "source_direction", "source_goal_direction", "source_wanted", "source_image"]
+const STAFF_RUNTIME_FIELDS := ["state", "rest_phase", "restock_target_product_id", "restock_ticks_remaining", "stamina_max", "checkouts_done", "source_state", "source_direction", "source_goal_direction", "source_served"]
 
 func _source_runtime_snapshot() -> Dictionary:
     var people: Array = []
     for customer in customers.active_customers():
         var row := {"id": customer.customer_id, "position": [customer.position.x, customer.position.y], "route": customer.route.map( func(p): return [p.x, p.y]), "source_candidates": customer.source_candidates.duplicate(), "basket": customer.basket.duplicate(true), "plan": customer.planned_product_ids.duplicate(), "visit": customer.visit.duplicate(true), "patience": int(customer.get_meta("checkout_patience", 100))}
+        row["source_goal"] = [customer.source_goal.x, customer.source_goal.y]
         for field in CUSTOMER_SAVE_FIELDS:
             row[field] = customer.get(field)
         people.append(row)
     var employees: Array = []
     for person in staff.all_staff():
         var row := {"id": person.staff_id, "position": [person.position.x, person.position.y], "route": person.route.map( func(p): return [p.x, p.y]), "home": [person.home_position().x, person.home_position().y]}
+        row["source_goal"] = [person.source_goal.x, person.source_goal.y]
         for field in STAFF_RUNTIME_FIELDS:
             row[field] = person.get(field)
         employees.append(row)
@@ -5970,6 +5991,7 @@ func _restore_source_runtime(data: Dictionary) -> void:
             if typeof(person.get(field)) == TYPE_INT:
                 value = int(value)
             person.set(field, value)
+        person.source_goal = _vec2i_from_array(row.get("source_goal", [-1, -1]))
         person.position = _vec2i_from_array(row["position"])
         person.route.clear()
         for point in row["route"]:
@@ -5987,7 +6009,9 @@ func _restore_source_runtime(data: Dictionary) -> void:
             continue
         var person = staff.members[str(row["id"])]
         for field in STAFF_RUNTIME_FIELDS:
-            person.set(field, int(row[field]) if typeof(person.get(field)) == TYPE_INT else row[field])
+            if row.has(field):
+                person.set(field, int(row[field]) if typeof(person.get(field)) == TYPE_INT else row[field])
+        person.source_goal = _vec2i_from_array(row.get("source_goal", [-1, -1]))
         person.position = _vec2i_from_array(row["position"])
         person.set_home_position(_vec2i_from_array(row["home"]))
         person.route.clear()

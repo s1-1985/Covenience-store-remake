@@ -27,6 +27,13 @@ var add_ons := 0
 var source_deadline := 0
 var source_candidates: Array = []
 var source_candidate_index := 0
+var source_native := false
+var source_state := 1
+var source_direction := 0
+var source_goal := Vector2i(-1, -1)
+var source_goal_direction := -1
+var source_wanted := ""
+var source_image := 0
 var group_size := 1
 
 

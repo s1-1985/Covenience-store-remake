@@ -1,6 +1,11 @@
 class_name StaffState
 extends RefCounted
 
+var source_state := -1
+var source_direction := 1
+var source_goal := Vector2i(-1, -1)
+var source_goal_direction := -1
+var source_served := false
 var staff_id: String
 # Task #56: identity fields the 35-candidate staff_candidates pool already
 # carries per entry (CONFIRMED_OFFICIAL, task #32) but this class never
@@ -122,6 +127,8 @@ func _init(staff_config: Dictionary) -> void:
 # (see save_state()'s own note on what stays unsaved), so a save/load round
 # trip currently reverts any accumulated growth rather than preserving it.
 func reset() -> void:
+    source_state = -1
+    source_goal = Vector2i(-1, -1)
     position = _start_position
     state = "idle"
     route = []
@@ -147,6 +154,8 @@ func reset() -> void:
 # register-front role doesn't carry their learned proficiency to whoever
 # replaces them.
 func hire(new_candidate_config: Dictionary) -> void:
+    source_state = -1
+    source_goal = Vector2i(-1, -1)
     candidate_id = str(new_candidate_config.get("candidate_id", ""))
     display_name = str(new_candidate_config.get("display_name", ""))
     service_skill = int(new_candidate_config.get("service_skill", 0))

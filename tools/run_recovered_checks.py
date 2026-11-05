@@ -6,6 +6,7 @@ godot = str(Path(sys.argv[1]).resolve())
 for script, args in [
     ('headless_smoke.gd', []),
     ('source_geometry_smoke.gd', []),
+    ('source_people_smoke.gd', []),
     ('operating_statement_smoke.gd', []),
     ('android_preview_smoke.gd', ['--', '--android-preview']),
     ('recovered_runtime_smoke.gd', []),

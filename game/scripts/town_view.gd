@@ -399,6 +399,8 @@ func _bounding_box(points: Array) -> Dictionary:
 func _draw() -> void:
     if simulation == null:
         return
+    if simulation.program_town != null:
+        self_modulate = preload("res://scripts/domain/program_daylight.gd").color(simulation.minute_of_day)
     var guide := guide_map()
     if not guide.is_empty():
         _draw_guide_map(guide)

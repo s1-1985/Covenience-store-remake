@@ -9,6 +9,7 @@ const CARDINAL_DIRECTIONS: Array[Vector2i] = [
 ]
 
 var source_routes := false
+var source_work_grid := {}
 var width_subcells: int
 var height_subcells: int
 var entry: Vector2i
@@ -399,6 +400,7 @@ func try_swap_fixture_positions(fixture_id_a: String, fixture_id_b: String) -> b
 
 
 func _build_blocked_cells(scale: int) -> void:
+    source_work_grid.clear()
     blocked = _fixed_blocked.duplicate()
     fixtures_by_id.clear()
     for fixture in fixtures:

@@ -454,6 +454,8 @@ func _customer_near(local_position: Vector2) -> String:
     var best := ""
     var best_distance := SUBCELL_PIXELS * 1.2
     for customer in simulation.customers.active_customers():
+        if customer.position.x < 0:
+            continue
         var center := (Vector2(customer.position) + Vector2(0.5, 0.2)) * SUBCELL_PIXELS
         var distance := center.distance_to(local_position)
         if distance < best_distance:
@@ -788,10 +790,10 @@ func _draw_customer() -> void:
         var sprite_id: String = simulation.customer_type_sprite(customer)
         if sprite_id.is_empty():
             sprite_id = _customer_sprite_id_for_id(customer.customer_id)
-        var direction := _customer_facing_direction(customer.customer_id, customer.position)
+        var direction: String = ["up", "down", "left", "right"][customer.source_direction] if customer.source_native else _customer_facing_direction(customer.customer_id, customer.position)
         var texture := _customer_texture(sprite_id, direction, str(motion[1]))
         if simulation.program_town != null:
-            texture = _program_person_texture(int(customer.visit.get("sprite_index", 0)), direction)
+            texture = _program_person_texture(customer.source_image if customer.source_native else int(customer.visit.get("sprite_index", 0)), direction)
         if texture != null:
             var draw_size := Vector2(CUSTOMER_SPRITE_SIZE_PX, CUSTOMER_SPRITE_SIZE_PX)
             var anchor_offset := Vector2(
@@ -807,6 +809,8 @@ func _draw_customer() -> void:
 func _draw_staff() -> void:
     var resting_index := 0
     for staff_member in simulation.staff.all_staff():
+        if staff_member.source_state == 0 or staff_member.position.x < 0:
+            continue
         var motion := _moving_center("s:" + staff_member.staff_id, staff_member.position)
         var center: Vector2 = motion[0]
         var phase := str(motion[1])
@@ -819,13 +823,14 @@ func _draw_staff() -> void:
                 phase = STAFF_SPRITE_STATIC_PHASE
                 resting_index += 1
         var sprite_id := _staff_sprite_id_for_candidate(staff_member.candidate_id)
-        var direction := _staff_facing_direction(staff_member.staff_id, staff_member.position)
+        var direction: String = ["up", "down", "left", "right"][staff_member.source_direction] if staff_member.source_state >= 0 else _staff_facing_direction(staff_member.staff_id, staff_member.position)
         var texture := _staff_texture(sprite_id, direction, phase)
         if simulation.program_town != null:
             var slot: int = simulation.staff.all_staff().find(staff_member)
             var candidate: Dictionary = simulation._staff_candidate_catalog.get(staff_member.candidate_id, {})
             var role_image := 42 if staff_member.staff_id == str(simulation.config["staff"]["manager_staff_id"]) else (38 if staff_member.staff_id == "staff-2" else 40)
-            texture = _program_person_texture(role_image + int(candidate.get("female", false)), direction)
+            var role: int = [42, 43, 38, 40, 39, 41][(0 if staff_member.staff_id == str(simulation.config["staff"]["manager_staff_id"]) else (2 if staff_member.staff_id == "staff-2" else 4)) + int(candidate.get("female", false))]
+            texture = _program_person_texture(role, direction)
         if texture != null:
             var draw_size := Vector2(STAFF_SPRITE_SIZE_PX, STAFF_SPRITE_SIZE_PX)
             var anchor_offset := Vector2(

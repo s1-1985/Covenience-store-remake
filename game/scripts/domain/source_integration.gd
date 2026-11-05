@@ -3,6 +3,7 @@ extends RefCounted
 
 
 static func apply(config: Dictionary, index: int) -> void:
+    config["simulation"]["source_full_people"] = true
     var tables: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/ps1_integration.json"))
     config["source_catalog"] = {"product_ids": tables["product_ids"], "product_images": tables["product_images"]}
     var source: Dictionary = tables["scenarios"][clampi(index, 0, 3)]
