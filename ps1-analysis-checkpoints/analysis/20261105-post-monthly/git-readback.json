@@ -1,0 +1,348 @@
+{
+  "all_passed": true,
+  "commit": "23c0613ca98fdf851ad51884af1032b65fcaad99",
+  "files_verified": 55,
+  "bytes_verified": 14064478,
+  "files": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/README.md",
+      "size": 6542,
+      "git_blob": "8bf6e41ed4130f629496b597a24aef41e21e4f5c",
+      "sha256": "3db8e110f90699628c5c238d137b24eb5ab56ea227ff1161fe9783014e4f215e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/TOWN0001-ci-main-14-single.audit.json",
+      "size": 3087,
+      "git_blob": "5612e2f206ea9e96d2b81c3060e936348dd89a24",
+      "sha256": "df646e8ddf643f343a2d82be9d1e6ec1381c47ecf506ec0f91cc1aa5b0a7ee65"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/TOWN0001-ci-main-14-single.log",
+      "size": 259,
+      "git_blob": "13ec5d4c79dac45a5204ac68c4bcf24dea2c2518",
+      "sha256": "d32fc968df84139342763f267d9a4579e3f0fa1a126e5250d0d7153dbba7e1de"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/TOWN0001-ci-main-15-single.audit.json",
+      "size": 3094,
+      "git_blob": "f5838f2f5afe7072a67b87c143ac70ae7ad7e0e1",
+      "sha256": "9a06334fd7c0944ed9e0aa8ded490190931b62a29df3a923e45381831fcdc76b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/TOWN0001-ci-main-15-single.log",
+      "size": 259,
+      "git_blob": "171d1a3e5553545247d3b3801d837dd6c065d49d",
+      "sha256": "a5a2d03b60c7151698caaaafe298196ddbeb5f45ad3e8554ee9b435511c7c013"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/audit-notifications.py",
+      "size": 4023,
+      "git_blob": "fbbee6bc2c128c794409fb8a427b507928084312",
+      "sha256": "cbae5876d3fa503e6900a5f97253d71debb730a6723011fea76fe5db4fdacd97"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/audit-rival.py",
+      "size": 4549,
+      "git_blob": "dfe05c9227d32e451f745b7ac650b1d5e78806d5",
+      "sha256": "50470c00681c4cbbdf72d8d7b640cb08f50e688ebdc93388ddda2ce111ae9341"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/audit-town-engines.py",
+      "size": 5128,
+      "git_blob": "149a3919193a6e5cf1e61ff1c1c4cd2b4f78b218",
+      "sha256": "442352d2fe0db11b3ead8c960ed5f660b08d1a61999f9a98d0d33e11d67a1457"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/audit-world.py",
+      "size": 4738,
+      "git_blob": "5f00815efd1a572f284a33b004e6208d81a994a2",
+      "sha256": "1e2d2e4272594f64db757073c0b403756027a943910ad542eeaf01b6263d9eaa"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/capture-monthly.py",
+      "size": 3994,
+      "git_blob": "b742b9ef7fdacfd725f221911b2f3b0e0c28691d",
+      "sha256": "a1d52504b11c71e323cc9bd25baf9ae8df72132f87a39d841fdf2110721a2bdf"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/continue-post-month.py",
+      "size": 7464,
+      "git_blob": "417758c49ab291947ccf134ee7c014500b7d379c",
+      "sha256": "c6533234102e4fc8365a6be5d92a7134a0d6f0a91dbdefca7dcb24a30a4bcc1d"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/development-dependency.log",
+      "size": 625,
+      "git_blob": "e57a1004fbb88f7bb17a5b5563ad21f1830fd3e9",
+      "sha256": "e4295ae8108fd243b0f3954f8f427ede8214bea13c62c9fd6f67a95f0a54aa85"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/TOWN0001-ci-main-14-single-progress.json",
+      "size": 70155,
+      "git_blob": "26d751e1df849550a3250173f8e362e4bd47f056",
+      "sha256": "f1b209ac2c6df34d1df13fc9f3fc61852940fc0eb8d4c61c8629ba843789a2da"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/TOWN0001-ci-main-15-single-progress.json",
+      "size": 70154,
+      "git_blob": "17fd7ff72e740e3dfbb82600827f57da94a55b55",
+      "sha256": "5825d3b1c4cc7d697b1487b6f1178af36cdf1fdc58e9b8390b46b2357f0d8f38"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/opened-snapshot-TOWN0001-ci-main-14-single-verification-20261103.json",
+      "size": 926322,
+      "git_blob": "01ca38b2253cae3a978d445b9001f163b41f7f19",
+      "sha256": "8cd7e1c11be77affc44aa76c7bd71362feaf1dc5edebd1e6024462fa923fe7f4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/opened-snapshot-TOWN0001-ci-main-15-single-verification-20261103.json",
+      "size": 652853,
+      "git_blob": "94ce0c9d9331400d6bd1c31717c4e558bab6c762",
+      "sha256": "841f4d4326392f1724ffa604ce958732227c7ac08b11a8839a7528a192c0a354"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-14-single.json",
+      "size": 870679,
+      "git_blob": "ce66d19e59ed9c38aec0398fe01311c138461f2e",
+      "sha256": "9bdaa98956040d77897ae1388b00201e6145011b769c3dea1baed3fdf727c77c"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-14-single.ram.zlib",
+      "size": 507925,
+      "git_blob": "2ff38bf2bb4e7c11a92db08e0772858a9c07e9f9",
+      "sha256": "821cbd87326e7cb9c2a0ddf9516889d3eca4f1fa4c33688dc632b35b64ed902a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-15-single.json",
+      "size": 870679,
+      "git_blob": "bfe50d9287b711890409e92e16d7d58746b4f908",
+      "sha256": "b7f84ef67a26479990c30a1db106ddd7b3ca25f34e510fa5abf45185eb33abf1"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-15-single.ram.zlib",
+      "size": 507980,
+      "git_blob": "a3418c6a71904a22ad21e84b322c2ea210eb5499",
+      "sha256": "8aa7612cc7b47d07882b3f4a82cb4cb4536dc63b517dc4d93970dd1f20e21ecb"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/git-readback-first.json",
+      "size": 10224,
+      "git_blob": "f554b51b9d5b99aa259fdfc162da74db1e6e27b2",
+      "sha256": "5aea1e2598f2e47fad49616e78a1f327a9f7eac50c08b0f4a4d0cd25adbbe68b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/long-continuation-status.json",
+      "size": 7892,
+      "git_blob": "d59b1887ded921fa8e92d4abbebba93716acfd20",
+      "sha256": "e4e0026bce1a2ba0722e5e24a62c494adbc6aa413ae3aff21a59f49cf3505930"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/monthly-capture-status.json",
+      "size": 4181,
+      "git_blob": "2edeae29cadae879ebe2c39dae096bde9689156d",
+      "sha256": "5420501e51131ee1c2351d6118f2a0f3d1919b0be6ce9cc3428892717299e3fd"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/monthly-replay.json",
+      "size": 2210395,
+      "git_blob": "6253393d8911c3ef5be1f39d47dda80a813a5138",
+      "sha256": "1966ddfc85c17678df395231c27da0897e0d3b46d386ffdebdbce25c23064232"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-entry-progress.json",
+      "size": 1359,
+      "git_blob": "85faadd8c6bb38cbefbd6c1792c33f2e073e209b",
+      "sha256": "011619f30bbcdcf06fa2c52452e11da63463b3cd60e53c6232ecb80c7949eb09"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-evidence/source/opened-snapshots-20261028/TOWN0001-notice-active-20261105-single.json",
+      "size": 801909,
+      "git_blob": "95c8f43cfb7e0938f7b986e73264ab5ad865f85d",
+      "sha256": "f56ae0c1eeaf3f4a761a8dab5cfb3ec17b6d4c368a393f1af27b59d1d53bd6b2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-evidence/source/opened-snapshots-20261028/TOWN0001-notice-active-20261105-single.ram.zlib",
+      "size": 507937,
+      "git_blob": "59e34947eaa250ff5e59e774a112631964bbee48",
+      "sha256": "1f46e79f03d7c60e8e52afb9ff95a762255268e2b2900f048e9964acc084cf14"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-evidence/source/opened-snapshots-20261028/TOWN0001-notice-menu-20261105-single.json",
+      "size": 805399,
+      "git_blob": "2bd93f0c6a7fd293bd8eb3880d57246a3d0d3a5f",
+      "sha256": "22775d1113e7fabb06f3b81dc54efefd3b4fa2408fdce24316966687750e7cfb"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-evidence/source/opened-snapshots-20261028/TOWN0001-notice-menu-20261105-single.ram.zlib",
+      "size": 508995,
+      "git_blob": "ec2d36773122ed4d30a16852183061c09c6ee071",
+      "sha256": "3d978833a3facf67201b86336849b98194f0f4c91b5995bbdc1d9a81d6c632ad"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-menu-progress.json",
+      "size": 4851,
+      "git_blob": "9285128b6d465c502301a582f84662b93262e4ed",
+      "sha256": "f3e5f567068507278f43052e5ef720ce62ff9c92f10fa953ed73d92d0eec6848"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-menu.json",
+      "size": 79597,
+      "git_blob": "4b0ff571fe932668e91dbd25f146824a1931c3da",
+      "sha256": "3b1c8f97e856ffb9ad266e0aebfbb8ac8c23905e08bec5048a02442741977be1"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-menu.log",
+      "size": 493,
+      "git_blob": "bb752de318b26c7a2f5e725c72b75a6d8767c6b8",
+      "sha256": "6cb258f71594c219fcceb5e9fb225f2f29d98a098fbb54f2e14f375d6f385041"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-menu.py",
+      "size": 3928,
+      "git_blob": "34ca2d9e206943de1b7c32d5602d916a367e42fb",
+      "sha256": "f234e48a740864f9f6c4b27327f1c28487fd2b55da1e8378a19d2032808eb11b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notification-audit.json",
+      "size": 2127,
+      "git_blob": "e7adf937be441456ca36582c2320716ed695edd4",
+      "sha256": "b3f2e84e799341b877cf5a48505b571e8c6c1115e41eef7b8d2dd8f05b259d61"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/replay-evidence/source/opened-snapshots-20261028/TOWN0001-monthly-rival-replay-20261105-single.json",
+      "size": 1034180,
+      "git_blob": "f2cb58bea838d730b6749fdcaac51d10e492c6b8",
+      "sha256": "c5d7c645cd648f03b558b138f3efded757dd5bc0601dd0687270fa447239b32f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/replay-evidence/source/opened-snapshots-20261028/TOWN0001-monthly-rival-replay-20261105-single.ram.zlib",
+      "size": 508032,
+      "git_blob": "121943e886cef4770deacc42a0d9609bf37cda57",
+      "sha256": "73bd900c65e385f8330dcd6417811fa80b90fd80b213aa5a8e695ac8a0f7bc6e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/replay-progress.json",
+      "size": 233636,
+      "git_blob": "21561dff5605fdd8368ef79f91d00e5e5c4ec4e5",
+      "sha256": "fc3d86d032440cd9dd72cf73cdfcc31229182599332091270739d59e2bd0336e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/replay.log",
+      "size": 593,
+      "git_blob": "0837aa7cc9fb60d32088ac8ef27df71591481ce8",
+      "sha256": "ec272529c896e8def788121c0e6cbd9958f13a9eea18528e0aed4ccbe25599cc"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-audit.json",
+      "size": 59304,
+      "git_blob": "43be907a8f32c8f34963ed2bb4d132421b07466a",
+      "sha256": "2d6fcc5a49afc9299e75e29f349090d67e3ed782f4ba071766b3cdbab68fcb69"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-audit.log",
+      "size": 259,
+      "git_blob": "5056f2bf0fffe083bbba58c57b1315b41bc81a32",
+      "sha256": "2cab6c46416d9bef7326d4f65d1a9ab675b21791bf53ba9412f9452c254d8da4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-native-entry.json",
+      "size": 811,
+      "git_blob": "57555b36b098decf549dec352c81136f4bed1e95",
+      "sha256": "76090a4e34e28fcc86a7be91c5b29aeadaa12d96875073c0914538bddb184ede"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-native-entry.ram.zlib",
+      "size": 507848,
+      "git_blob": "b4634ec38d8c551200d462ae86032bdbb62a476c",
+      "sha256": "d88497ffb131d119e26bd190668ac9a13a1246b55c210de502b1b876841ff6a4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-native-exit.json",
+      "size": 819,
+      "git_blob": "0da3df22c4105d03ebe5a3559453b3b9beec51a3",
+      "sha256": "b67b17349e8249eca01d9c35b33c76c24e3c7b5cb1307b3a4c44f7b9ac8527b6"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-native-exit.ram.zlib",
+      "size": 507848,
+      "git_blob": "dba76302a2b7df3b44cfbace2d18bca305da5813",
+      "sha256": "4b7bc28d0ade21d86e00e6eb66caa9fdf7daafc9d268c3fad78b651661af6136"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-reference-entry.json",
+      "size": 814,
+      "git_blob": "a5ced3b1fa2fbcc6374df9183d394395bd3dba88",
+      "sha256": "79c21cfeb15e02d8db074e26eed78f1e306c35eb2db072d908f8ca54b480ed2f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-reference-entry.ram.zlib",
+      "size": 507853,
+      "git_blob": "090b0c64426b462282c01e950119b20e4b287dd7",
+      "sha256": "199532240192258ceb8f22bfe4cc158af744c74d146c1dfe3b379be8c56946cf"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-reference-exit.json",
+      "size": 822,
+      "git_blob": "9dca6fd0225c6963a329bb6ae677676fed3bd1e8",
+      "sha256": "215a301adb3306e170c96e53aa07b1997f65fd58ed35cf62a353c16fd4ecd083"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-reference-exit.ram.zlib",
+      "size": 507848,
+      "git_blob": "629db4660347aad8ba65f7b03da83fa560fd1468",
+      "sha256": "ca6b1c9777c51a210944ac42a9fdcbb6a6a93da16f492aaecc3682749f333f2c"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/strict-town-output.ram.zlib",
+      "size": 506891,
+      "git_blob": "c1e476ec394cb45dd0231808cc04736e2e1b54ff",
+      "sha256": "094363bc76a13a8379bb072e06437fc06ed1eed60a527fca5d145e4607675e1b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/town-engine-audit.json",
+      "size": 139668,
+      "git_blob": "49b43f287dad0d85c5b6c52e294f2dc62a37d5b9",
+      "sha256": "2db6d80f5db0ec5aceba5d47fab855f5e2d8f8a6ffb3f06e028e5fa214d80c89"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/town-engine-audit.log",
+      "size": 107,
+      "git_blob": "fe5c83e98b6af2e85a962a9f30dab8deb3cdad1c",
+      "sha256": "73565d6fe7c2f83c6bb3a5e13889f0f66cb54d56c86eee29945211d9cb84a800"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/world-audit.json",
+      "size": 57704,
+      "git_blob": "1629564afa4017a7e715ef34ee17a809970fd2ca",
+      "sha256": "cb3fe8536bdbe126fac124551d51fbdea796e972268be52659a31b93fb9a2190"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-ANALYSIS.json",
+      "size": 769,
+      "git_blob": "7f62c6589bc171bcd4b47c40d78e443af5cd8a39",
+      "sha256": "aff1f8529406d0f52e3d62a58e542d622cec8ce334e591829b64867e92f52df4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "size": 3048,
+      "git_blob": "2bbbf9eaf83b26782c210986042767dfaa4c719e",
+      "sha256": "75304aeff3e445d42b8480fd8f059f1fd7f172d1de79f278255375af8469eff2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/upload-manifest.json",
+      "size": 15828,
+      "git_blob": "e3363a9bc82c24514352f42c8778ea9a5f467c1b",
+      "sha256": "d66aae5bafd438432984d1db3bce19ccfc134155b621c6afce2700924036a946"
+    }
+  ],
+  "snapshot": "TOWN0001-ci-main-15-single",
+  "clock": 17520,
+  "completed_iterations": 8768,
+  "cash": [
+    99006241,
+    153125796
+  ],
+  "ram_sha256": "0540f0faf05c3a9b5d4f96f6bcac94e22bea4003ccbc2e38efcf54de5a5a04ff",
+  "verification": "Complete git-fetch/git-show bytes, byte counts, Git blob SHA-1 and SHA-256 equal current local artifacts. Natural final RAM decompressed and clock/cash separately decoded; all seven audit outputs remain passed.",
+  "limits": "This readback record is committed after the verified commit and does not recursively verify itself."
+}
