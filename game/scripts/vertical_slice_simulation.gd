@@ -1,6 +1,7 @@
 class_name VerticalSliceSimulation
 extends RefCounted
 
+const ProgramOperationsScript := preload("res://scripts/domain/program_operations.gd")
 const StoreLayoutScript := preload("res://scripts/domain/store_layout.gd")
 const InventoryCatalogScript := preload("res://scripts/domain/inventory_catalog.gd")
 const EconomyStateScript := preload("res://scripts/domain/economy_state.gd")
@@ -501,7 +502,7 @@ func tick_idle_for_demand() -> bool:
 # tick_idle_for_demand() keep their narrower semantics for the existing
 # scripted smoke scenarios.
 func tick() -> void:
-    if is_game_over:
+    if is_game_over or (program_town != null and source_management_has_vacancy()):
         return
     step()
     var viewed := active_store
@@ -796,7 +797,7 @@ func _step_manager_reports() -> void:
     if minute_of_day % 60 == 0:
         if (minute_of_day / 60) % int(rules["count_reset_every_hours"]) == 0:
             _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
-        if float(_dirty_cells.size()) >= DIRTY_HOUR_SHARE * MAX_DIRTY_CELLS:
+        if (source_cleanliness() < 70 if program_town != null else float(_dirty_cells.size()) >= DIRTY_HOUR_SHARE * MAX_DIRTY_CELLS):
             _notice_counts["dirty"] = int(_notice_counts["dirty"]) + 1
     var academic := _manager_academic()
     var detailed := academic >= int(rules["detailed_from_academic"])
@@ -1067,8 +1068,9 @@ func _start_program_customer(row: Dictionary, heads: int) -> void:
             _parking_used -= heads
         return
     plan.append(shelf)
-    # The row's extra goods, each kept or skipped as the program does.
-    for extra in row["extras"]:
+    # Kept lazy in the source path: each extra is tested only after the prior
+    # candidate has been attempted, not at the moment the group enters.
+    for extra in ([] if program_town != null else row["extras"]):
         if not _program_demand.wants_extra(str(extra), month_count, int(row["focus"]), _demand_rng):
             continue
         var extra_shelf := _shelf_for_category(str(extra), plan)
@@ -1078,6 +1080,9 @@ func _start_program_customer(row: Dictionary, heads: int) -> void:
             plan.append(extra_shelf)
     var customer = customers.admit_default(layout.entry, _route_to_product(layout.entry, plan[0]), plan)
     customer.visit = row
+    customer.source_deadline = (day_count - 1) * 1440 + minute_of_day + int(row.get("duration_minutes", 120))
+    customer.source_candidates = row["extras"].slice(0, 3).duplicate()
+    customer.source_candidate_index = 0
     customer.set_meta("checkout_patience", int(row.get("stamina", 100)))
     customer.type_id = str(row["type"])
     customer.budget_left = int(row["budget_yen"])
@@ -1611,6 +1616,12 @@ func try_hire_candidate(staff_id: String, candidate_id: String) -> bool:
     var previous_candidate_id := ""
     if staff.members.has(staff_id):
         previous_candidate_id = staff.members[staff_id].candidate_id
+    if program_town != null and staff.members.has(staff_id):
+        return false
+    if program_town != null:
+        if not source_free_candidates().has(candidate_id) or not staff_id in ["staff-1", "staff-2", "staff-3"]:
+            return false
+        _ensure_source_staff_slot(staff_id)
     if not _apply_hire(staff_id, candidate_id):
         return false
     _record_event("staff_hired", {
@@ -3214,7 +3225,7 @@ func try_load_sample_layout(sample_id: String) -> bool:
 
 
 func step() -> void:
-    if is_game_over:
+    if is_game_over or (program_town != null and source_management_has_vacancy()):
         return
     var viewed := active_store
     _switch_store(0)
@@ -3357,6 +3368,12 @@ func _try_detour(mover) -> bool:
 
 
 func _advance_customer(customer) -> void:
+    if program_town != null and customer.phase in ["to_shelf", "shopping"] and customer.source_deadline > 0 and (day_count - 1) * 1440 + minute_of_day > customer.source_deadline:
+        customer.planned_product_ids.resize(customer.plan_index + 1)
+        customer.source_candidates.clear()
+        customer.phase = "to_checkout" if not customer.basket.is_empty() else "leaving"
+        customer.route = layout.find_path(customer.position, _checkout_interaction if not customer.basket.is_empty() else layout.exit)
+        return
     match customer.phase:
         "to_shelf":
             if _try_move_along_route(customer, "shopping"):
@@ -3373,6 +3390,8 @@ func _advance_customer(customer) -> void:
             if customer.shopping_ticks_remaining <= 0:
                 var product_id: String = customer.current_product_id()
                 var skip_reason := _reason_to_skip(customer, product_id)
+                if program_town != null and skip_reason == "budget" and _source_try_theft(customer, product_id):
+                    return
                 var line: Dictionary = {} if not skip_reason.is_empty() else inventory.try_take(product_id, customer.group_size)
                 if not skip_reason.is_empty():
                     _record_event("product_skipped", {
@@ -3382,7 +3401,10 @@ func _advance_customer(customer) -> void:
                     })
                 elif not line.is_empty():
                     line["unit_price_yen"] = _apply_price_policy(int(line["unit_price_yen"]), inventory.get_product(product_id).catalog_id)
-                    customer.add_basket_line(line)
+                    if program_town != null and _source_immediate_sale(product_id):
+                        _settle_source_immediate(customer, line)
+                    else:
+                        customer.add_basket_line(line)
                     if not customer.visit.is_empty():
                         customer.budget_left -= int(line["unit_price_yen"])
                     _record_event("product_picked", {
@@ -3397,6 +3419,8 @@ func _advance_customer(customer) -> void:
                         "product_id": product_id,
                     })
                 customer.advance_plan()
+                if program_town != null and customer.current_product_id().is_empty():
+                    _next_source_candidate(customer)
                 var next_product_id: String = customer.current_product_id()
                 if not next_product_id.is_empty():
                     customer.phase = "to_shelf"
@@ -3670,6 +3694,8 @@ func _shopping_ticks_for(customer) -> int:
         return 1
     if customer.visit.is_empty():
         return _shopping_ticks
+    if program_town != null:
+        return 1
     var offset := float(_customer_type_rules["quickness_offset"])
     return maxi(1, int(round(_shopping_ticks * 100.0 / (offset + float(customer.visit["quickness"])))))
 
@@ -3704,6 +3730,8 @@ func _reason_to_skip(customer, product_id: String) -> String:
 
 
 func _maybe_add_on(customer) -> void:
+    if program_town != null:
+        return
     if customer.visit.is_empty() or customer.add_ons >= int(_customer_type_rules["max_add_ons"]):
         return
     var extras: Array = customer.visit["extras"]
@@ -4112,6 +4140,10 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
     _source_runtime_to_restore = block.get("source_runtime", {}).duplicate(true)
 
 
+    if program_town != null:
+        staff.members.clear()
+        for saved_member in block["staff_roster"]:
+            _ensure_source_staff_slot(str(saved_member["staff_id"]))
     for roster_entry in block["staff_roster"]:
         var roster_staff_id := str(roster_entry["staff_id"])
         var roster_candidate_id := str(roster_entry["candidate_id"])
@@ -4508,7 +4540,7 @@ func _apply_daily_staff_wages() -> void:
         var roster: Array = staff.all_staff()
         for index in roster.size():
             var hourly: int = int(roster[index].salary_yen_per_day_24h) / 24
-            if index == 0:
+            if roster[index].staff_id == "staff-1":
                 hourly = hourly * 130 / 100
             total += hourly * (demand.opening_minutes_per_day / 60)
         if total > 0:
@@ -4802,6 +4834,10 @@ func _grow_staff(staff_member, task: String) -> Array[Dictionary]:
 
 
 func _evaluate_terminal_state() -> void:
+    if program_town != null and int(config.get("source_scenario_index", 0)) == 1 and player_store_count >= 10:
+        clear_condition_met = true
+    if program_town != null and minute_of_day != 0:
+        return
     if bool(config["simulation"].get("rival_child", false)):
         return
     if economy.cash_yen < 0:
@@ -4929,6 +4965,15 @@ func _step_staff_rest() -> void:
                 working.stamina = ProgramRulesScript.working_energy(working.stamina, _program_rng)
                 if working.stamina <= 0:
                     working.exhausted = true
+                    if working.state == "checkout":
+                        for waiting in customers.active_customers():
+                            if waiting.phase == "checkout":
+                                waiting.phase = "waiting_checkout"
+                                if not _checkout_queue.has(waiting.customer_id):
+                                    _checkout_queue.push_front(waiting.customer_id)
+                    working.state = "idle"
+                    working.route.clear()
+                    working.rest_phase = "stale"
     var door := _break_room_door()
     var store_is_empty: bool = customers.all_settled()
     for staff_member in staff.all_staff():
@@ -5222,6 +5267,8 @@ func _assign_idle_restock_tasks() -> void:
 # goes once the shelf picture has lost an item (store_view.gd shows 9 items
 # per tile); the prototype scenarios keep the fixed unit threshold.
 func restock_trigger_units(product) -> int:
+    if program_town != null:
+        return int(product.initial_stock_units) * 99 / 100
     return maxi(
         _restock_trigger_stock_units_at_or_below,
         int(floor(float(product.initial_stock_units) * _restock_trigger_share_of_full))
@@ -5237,6 +5284,9 @@ func restock_trigger_units(product) -> int:
 # the cleaner's own cleaning_skill, same shape as RestockTiming), and that
 # restocking and resting come first.
 func _note_dirty_cells() -> void:
+    if program_town != null and config["store"].has("source_floor"):
+        _step_source_floor_wear()
+        return
     if not _cleaning_task_enabled:
         return
     for customer in customers.active_customers():
@@ -5292,6 +5342,8 @@ func _step_cleaning_tasks() -> void:
                     staff_member.restock_ticks_remaining -= 1
                 if staff_member.restock_ticks_remaining <= 0:
                     _dirty_cells.erase(staff_member.position)
+                    if program_town != null:
+                        _clean_source_tile(staff_member.position)
                     var growth: Array[Dictionary] = _grow_staff(staff_member, "clean")
                     _record_event("staff_cleaned", {
                         "staff_id": staff_member.staff_id,
@@ -5884,13 +5936,13 @@ func source_shelf_price_percent() -> int:
     return total / count if count > 0 else 0
 
 
-const CUSTOMER_SAVE_FIELDS := ["phase", "plan_index", "shopping_ticks_remaining", "checkout_ticks_remaining", "checkout_assigned_ticks", "checkout_anger_triggered", "settled_transaction_id", "settled_total_yen", "type_id", "budget_left", "add_ons", "group_size"]
+const CUSTOMER_SAVE_FIELDS := ["phase", "plan_index", "shopping_ticks_remaining", "checkout_ticks_remaining", "checkout_assigned_ticks", "checkout_anger_triggered", "settled_transaction_id", "settled_total_yen", "type_id", "budget_left", "add_ons", "group_size", "source_deadline", "source_candidate_index"]
 const STAFF_RUNTIME_FIELDS := ["state", "rest_phase", "restock_target_product_id", "restock_ticks_remaining", "stamina_max", "checkouts_done"]
 
 func _source_runtime_snapshot() -> Dictionary:
     var people: Array = []
     for customer in customers.active_customers():
-        var row := {"id": customer.customer_id, "position": [customer.position.x, customer.position.y], "route": customer.route.map( func(p): return [p.x, p.y]), "basket": customer.basket.duplicate(true), "plan": customer.planned_product_ids.duplicate(), "visit": customer.visit.duplicate(true), "patience": int(customer.get_meta("checkout_patience", 100))}
+        var row := {"id": customer.customer_id, "position": [customer.position.x, customer.position.y], "route": customer.route.map( func(p): return [p.x, p.y]), "source_candidates": customer.source_candidates.duplicate(), "basket": customer.basket.duplicate(true), "plan": customer.planned_product_ids.duplicate(), "visit": customer.visit.duplicate(true), "patience": int(customer.get_meta("checkout_patience", 100))}
         for field in CUSTOMER_SAVE_FIELDS:
             row[field] = customer.get(field)
         people.append(row)
@@ -5900,16 +5952,20 @@ func _source_runtime_snapshot() -> Dictionary:
         for field in STAFF_RUNTIME_FIELDS:
             row[field] = person.get(field)
         employees.append(row)
-    return {"customers": people, "staff": employees, "next_customer": customers._next_sequence, "done_customers": customers.completed_count(), "active_customer_id": customers.active_customer_id, "queue": _checkout_queue.duplicate(), "daily_counts": _program_counts.duplicate(), "parking_used": _parking_used, "dirty": _dirty_cells.map( func(p): return [p.x, p.y]), "notices": _notice_counts.duplicate(), "sold": _sold_counts.duplicate(), "holiday": _program_holiday, "weather_value": _program_weather_value}
+    return {"floor_previous": int(config["store"].get("source_previous_cleanliness", 0)), "floor_clock": int(config["store"].get("source_floor_clock", -1)), "customers": people, "staff": employees, "next_customer": customers._next_sequence, "done_customers": customers.completed_count(), "active_customer_id": customers.active_customer_id, "queue": _checkout_queue.duplicate(), "daily_counts": _program_counts.duplicate(), "parking_used": _parking_used, "dirty": _dirty_cells.map( func(p): return [p.x, p.y]), "notices": _notice_counts.duplicate(), "sold": _sold_counts.duplicate(), "holiday": _program_holiday, "weather_value": _program_weather_value}
 
 
 func _restore_source_runtime(data: Dictionary) -> void:
+    config["store"]["source_previous_cleanliness"] = int(data.get("floor_previous", 0))
+    config["store"]["source_floor_clock"] = int(data.get("floor_clock", -1))
     customers.reset()
     customers._next_sequence = int(data["next_customer"])
     customers._forgotten_done = int(data["done_customers"])
     for row in data["customers"]:
         var person = preload("res://scripts/domain/customer_state.gd").new({"id": str(row["id"])})
         for field in CUSTOMER_SAVE_FIELDS:
+            if not row.has(field):
+                continue
             var value = row[field]
             if typeof(person.get(field)) == TYPE_INT:
                 value = int(value)
@@ -5918,6 +5974,7 @@ func _restore_source_runtime(data: Dictionary) -> void:
         person.route.clear()
         for point in row["route"]:
             person.route.append(_vec2i_from_array(point))
+        person.source_candidates.assign(row.get("source_candidates", []))
         person.basket.assign(row["basket"])
         person.planned_product_ids.assign(row["plan"])
         person.visit = row["visit"].duplicate(true)
@@ -5976,3 +6033,172 @@ func _annual_review() -> void:
             for field in ["stamina", "education", "agility", "sociability", "academic_background"]:
                 raises[field] = 100 - int(_staff_candidate_catalog[id].get(field, 0))
         _candidate_raises[id] = raises
+
+
+# 80031498: hourly percentage is sampled before at most one stain. Only
+# 0..15 are counted; exterior/walls never contribute and never get painted.
+func source_cleanliness() -> int:
+    return ProgramOperationsScript.cleanliness(config["store"].get("source_floor", []))
+
+func _step_source_floor_wear() -> void:
+    var clock := (day_count - 1) * 1440 + minute_of_day
+    if minute_of_day % 60 == 0 and int(config["store"].get("source_floor_clock", -1)) != clock:
+        var positions: Array = []
+        for customer in customers.active_customers():
+            positions.append(customer.position)
+        var previous := int(config["store"].get("source_previous_cleanliness", 0))
+        config["store"]["source_previous_cleanliness"] = ProgramOperationsScript.wear(config["store"]["source_floor"], previous, positions, _program_rng)
+        config["store"]["source_floor_clock"] = clock
+    _dirty_cells.clear()
+    var rows: Array = config["store"]["source_floor"]
+    for y in rows.size():
+        for x in rows[y].size():
+            var code := int(rows[y][x])
+            if code >= 0 and code < 15 and code % 5:
+                for dy in 2:
+                    for dx in 2:
+                        var point := Vector2i(x * 2 + dx, y * 2 + dy)
+                        if layout.is_walkable(point):
+                            _dirty_cells.append(point)
+
+func _clean_source_tile(position: Vector2i) -> void:
+    var rows: Array = config["store"]["source_floor"]
+    var x: int = position.x / 2
+    var y: int = position.y / 2
+    if y >= 0 and y < rows.size() and x >= 0 and x < rows[y].size() and int(rows[y][x]) < 15:
+        rows[y][x] = int(rows[y][x]) / 5 * 5
+    _dirty_cells = _dirty_cells.filter(func(point): return point / 2 != position / 2)
+
+func _ensure_source_staff_slot(staff_id: String) -> void:
+    if staff.members.has(staff_id) or not staff_id in ["staff-1", "staff-2", "staff-3"]:
+        return
+    var template: Dictionary = config["staff"]["members"][0].duplicate(true)
+    template["id"] = staff_id
+    template["start_subcell"] = [layout.entry.x, layout.entry.y]
+    var person = preload("res://scripts/domain/staff_state.gd").new(template)
+    person.set_home_position(_staff_register_post())
+    person.position = layout.entry
+    staff.members[staff_id] = person
+
+func _staff_register_post() -> Vector2i:
+    if staff.members.has(staff.checkout_staff_id):
+        return staff.checkout_staff().home_position()
+    return layout.entry
+
+func source_management_has_vacancy() -> bool:
+    var missing := [false]
+    _for_each_store(func():
+        if has_store_site() and not staff.members.has("staff-1"):
+            missing[0] = true)
+    return missing[0]
+
+func source_free_candidates() -> Array[String]:
+    var employed := {}
+    _for_each_store(func():
+        for person in staff.all_staff():
+            employed[person.candidate_id] = true)
+    for rival in _rival_stores:
+        for index in rival.get("staff_indices", []):
+            if int(index) >= 0:
+                employed[str(config["source_scenario"]["staff_order"][int(index)])] = true
+    for rival_sim in _rival_simulations.values():
+        for person in rival_sim.staff.all_staff():
+            employed[person.candidate_id] = true
+    var free: Array[String] = []
+    for id in config["source_scenario"]["staff_order"]:
+        if not employed.has(str(id)):
+            free.append(str(id))
+    return free
+
+func source_hiring_candidates() -> Array[String]:
+    return ProgramOperationsScript.sample_candidates(source_free_candidates(), _program_rng)
+
+func try_dismiss_source_staff(staff_id: String) -> bool:
+    if is_game_over or program_town == null or not staff.members.has(staff_id):
+        return false
+    # Source commits removal before warning about an empty first slot.
+    var id: String = staff.members[staff_id].candidate_id
+    staff.members.erase(staff_id)
+    if staff.checkout_staff_id == staff_id and not staff.members.is_empty():
+        staff.checkout_staff_id = str(staff.members.keys()[0])
+    _record_event("staff_dismissed", {"staff_id": staff_id, "candidate_id": id})
+    return true
+
+func try_transfer_source_staff(from_store: int, from_slot: String, to_store: int, to_slot: String) -> bool:
+    if program_town == null or is_game_over or from_store < 0 or to_store < 0 or from_store >= store_count() or to_store >= store_count():
+        return false
+    if not from_slot in ["staff-1", "staff-2", "staff-3"] or not to_slot in ["staff-1", "staff-2", "staff-3"] or (from_store == to_store and from_slot == to_slot):
+        return false
+    var left = store_field(from_store, "staff")
+    var right = store_field(to_store, "staff")
+    var a = left.members.get(from_slot)
+    var b = right.members.get(to_slot)
+    left.members.erase(from_slot)
+    right.members.erase(to_slot)
+    if a != null:
+        a.staff_id = to_slot
+        a.state = "idle"
+        a.route.clear()
+        a.rest_phase = "stale"
+        right.members[to_slot] = a
+        if from_store != to_store:
+            var destination_layout = store_field(to_store, "layout")
+            a.position = destination_layout.entry
+            a.set_home_position(destination_layout.entry)
+    if b != null:
+        b.staff_id = from_slot
+        b.state = "idle"
+        b.route.clear()
+        b.rest_phase = "stale"
+        left.members[from_slot] = b
+        if from_store != to_store:
+            var destination_layout = store_field(from_store, "layout")
+            b.position = destination_layout.entry
+            b.set_home_position(destination_layout.entry)
+    for index in [from_store, to_store]:
+        var roster = store_field(index, "staff")
+        if not roster.members.has(roster.checkout_staff_id) and not roster.members.is_empty():
+            roster.checkout_staff_id = str(roster.members.keys()[0])
+    _record_event("staff_transferred", {"from_store": from_store, "from_slot": from_slot, "to_store": to_store, "to_slot": to_slot})
+    return true
+
+
+func _next_source_candidate(customer) -> void:
+    while customer.source_candidate_index < customer.source_candidates.size():
+        var category := str(customer.source_candidates[customer.source_candidate_index])
+        customer.source_candidate_index += 1
+        if not _program_demand.wants_extra(category, month_count - 1, int(customer.visit.get("focus", 0)), _program_rng):
+            continue
+        var product_id := _shelf_for_category(category, [])
+        if product_id.is_empty():
+            survey_missing[category] = int(survey_missing.get(category, 0)) + customer.group_size
+            continue
+        customer.planned_product_ids.append(product_id)
+        return
+
+func _source_immediate_sale(product_id: String) -> bool:
+    var product = inventory.get_product(product_id)
+    var kind := program_fixture_kind(layout.fixtures_by_id[product.fixture_id])
+    return kind >= 0 and int(_recovery["fixture_records"][kind][0]) & 255 in [2, 3, 5]
+
+func _settle_source_immediate(customer, line: Dictionary) -> void:
+    var lines: Array[Dictionary] = [line]
+    var record: Dictionary = economy.settle_basket(customer.customer_id + ":direct:" + str(economy.sale_records.size()), minute_of_day, lines)
+    _store_sales_yen += int(record["total_yen"])
+    var product = inventory.get_product(str(line["product_id"]))
+    survey_bought[product.catalog_id] = int(survey_bought.get(product.catalog_id, 0)) + int(line["quantity"])
+    _sold_counts[product.catalog_id] = int(_sold_counts.get(product.catalog_id, 0)) + int(line["quantity"])
+    _record_event("self_service_sale", {"customer_id": customer.customer_id, "product_id": product.product_id, "total_yen": record["total_yen"]})
+
+func _source_try_theft(customer, product_id: String) -> bool:
+    if _source_immediate_sale(product_id):
+        return false
+    if int(_store_values()["security"]) >= 100 - int(customer.visit.get("manners", 100)):
+        return false
+    var line: Dictionary = inventory.try_take(product_id, customer.group_size)
+    if line.is_empty():
+        return false
+    _record_event("shoplifting", {"customer_id": customer.customer_id, "product_id": product_id, "quantity": customer.group_size})
+    customer.phase = "leaving"
+    customer.route = layout.find_path(customer.position, layout.exit)
+    return true

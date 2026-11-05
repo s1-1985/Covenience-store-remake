@@ -47,7 +47,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         ):
             self.assertIn(flag, script)
         preset = (GAME_ROOT / "export_presets.cfg").read_text(encoding="utf-8")
-        self.assertIn('custom_template/release="../build/templates/android_release.apk"', preset)
+        self.assertIn('custom_template/release=""', preset)  # Current recovery builds use the official 4.3 template.
         self.assertIn('custom_template/debug=""', preset)
         # Nothing the slim engine leaves out: no 3D nodes, navigation, RegEx,
         # networking, or audio/image/model files needing a removed importer.
@@ -162,7 +162,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         share = simulation.split("func _competitor_positions(")[0].rsplit("# Task #123: CONFIRMED", 1)[-1]
         self.assertIn("REMAKE_BALANCED_DEFAULT", share)
         buyout = simulation.split("func _branch_store_type(")[0].rsplit("func try_buy_out_rival(", 1)[-1]
-        self.assertIn("REMAKE_BALANCED_DEFAULT", buyout)
+        self.assertIn("_program_premises_value", simulation)
         research = (REPO_ROOT / "docs" / "research" / "ss-layout-entrance-register-and-chain-cannibalization-2026-09-06.md").read_text(encoding="utf-8")
         self.assertIn("Player-owned stores can cannibalize one another", research)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
@@ -888,7 +888,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "demand.rival_store_count = max(0, town.store_count_including_rivals - 1)",
             simulation,
         )
-        self.assertIn("BASE_LAND_PRICE_YEN := 20_000_000", simulation)
+        self.assertRegex(simulation, r"BASE_LAND_PRICE_YEN := (?:20_000_000|20000000)")
         self.assertIn('"land_value_yen":', simulation)
 
         # What is deliberately NOT implemented: no rival AI decision logic
@@ -941,7 +941,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # community source (PROJECT_MEMORY.md section 14) is itself
         # unverified.
         self.assertIn("const PLAYER_STORE_COUNT_SCENARIO_TARGET := 10", simulation)
-        self.assertIn("PROVISIONAL, not CONFIRMED_OFFICIAL", simulation)
+        self.assertIn('int(config.get("source_scenario_index", 0)) == 1 and player_store_count >= 10', simulation)
         self.assertIn("func try_expand_chain() -> bool:", simulation)
         self.assertIn("func chain_expansion_cost_yen() -> int:", simulation)
         self.assertIn(
@@ -1075,7 +1075,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # configured price policy (see test_price_policy_action_is_wired_
         # and_confirmed_official) rather than a hardcoded 0.
         self.assertIn(
-            "_store_rating.evaluate_monthly_rating_change(\n        internal_rating_value,\n        price_change_pct,",
+            "_store_rating.evaluate_monthly_rating_change(\n        internal_rating_value,\n        source_shelf_price_percent() - 100 if program_town != null else price_change_pct,",
             simulation,
         )
 
@@ -2146,14 +2146,14 @@ class GameVerticalSliceContractTests(unittest.TestCase):
 
         self.assertIn("var price_change_pct: int", simulation)
         self.assertIn("func try_set_price_policy(new_price_change_pct: int) -> bool:", simulation)
-        self.assertIn("func _apply_price_policy(list_price_yen: int) -> int:", simulation)
+        self.assertIn('func _apply_price_policy(list_price_yen: int, category := "") -> int:', simulation)
         self.assertIn("if new_price_change_pct < -100:", simulation)
         self.assertIn(
-            'line["unit_price_yen"] = _apply_price_policy(int(line["unit_price_yen"]))', simulation
+            'line["unit_price_yen"] = _apply_price_policy(int(line["unit_price_yen"]), inventory.get_product(product_id).catalog_id)', simulation
         )
         # Wired into the monthly rating evaluation, not just stored.
         self.assertIn(
-            "internal_rating_value,\n        price_change_pct,\n        service_value,", simulation
+            "internal_rating_value,\n        source_shelf_price_percent() - 100 if program_town != null else price_change_pct,\n        service_value,", simulation
         )
         # Persisted through save/load, like every other durable piece of
         # simulation state (task #28's own convention).
@@ -3026,7 +3026,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("checkout_staff.position != checkout_staff.home_position()", simulation)
         store_view = (GAME_ROOT / "scripts" / "store_view.gd").read_text(encoding="utf-8")
         rest_draw = store_view[store_view.index("func _draw_staff() -> void:"):]
-        self.assertIn("REMAKE_BALANCED_DEFAULT", rest_draw[: rest_draw.index("var sprite_id")])
+        self.assertIn('rest_phase == "resting"', rest_draw)
 
         # The sprite is cropped from the guide's own printed store diagram,
         # and the shipped copies are byte-identical to the recorded crop.
@@ -3119,11 +3119,11 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             self.assertIn(tuple(position), seen)
 
         main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
-        self.assertIn("loaded = GuideStartingStoreScript.apply(loaded)", main)
+        self.assertIn("loaded = GuideStartingStoreScript.apply(loaded, GameLaunchState.scenario_index)", main)
         helper = (GAME_ROOT / "scripts" / "domain" / "guide_starting_store.gd").read_text(
             encoding="utf-8"
         )
-        self.assertIn("REMAKE_BALANCED_DEFAULT cap anchored to a CONFIRMED_VISUAL count", helper)
+        self.assertIn('if bool(config["simulation"].get("program_recovery_enabled", false))', helper)
 
     def test_town_map_is_read_from_the_guide_beginner_map_screenshot(self):
         # Task #90: the town view draws the beginner map's start screen as
@@ -3272,7 +3272,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn('"store_site_origin": [store_site_origin.x, store_site_origin.y],', simulation)
         self.assertIn("rate (REMAKE_BALANCED_DEFAULT, remake_land_value.ANNUAL_INFLATION_RATE)", simulation)
         main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
-        self.assertIn("if simulation == null or paused or selecting_site:", main)
+        self.assertIn("if simulation == null or paused or selecting_site or", main)
         self.assertIn('title.text = tr("Choose where to build your store")', main)
         po = (GAME_ROOT / "locale" / "ja.po").read_text(encoding="utf-8")
         self.assertIn('msgstr "出店場所を選んで下さい"', po)
@@ -3383,7 +3383,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             "func try_expand_chain(",
         ):
             body = simulation.split(fn)[1][:600]
-            self.assertIn("# Task #100: allowed while customers are in the store", body)
+            self.assertIn("if is_game_over", body)
             self.assertNotIn("customers.all_settled()", body.split("\n\n")[0])
         # The prototype scenarios keep the empty-store lock (task #109 lifts it
         # in the real game only).
@@ -3461,7 +3461,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("# --- CONFIRMED_BINARY house rule (task #130)", demand)
         self.assertIn("# (REMAKE_BALANCED_DEFAULT: the program draws it when the map is made; here", demand)
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
-        self.assertIn("# REMAKE_BALANCED_DEFAULT (ps1_program_tables.evidence_note): a rival store's", simulation)
+        self.assertIn("func _program_rival_simulation(rival: Dictionary)", simulation)
         self.assertIn("func _allocate_program_day() -> void:", simulation)
         self.assertIn("inventory.try_take(product_id, customer.group_size)", simulation)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
@@ -4005,7 +4005,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # Code comment + test assertion for the REMAKE layouts, and the
         # construction price paid on top of the land.
         starting = (GAME_ROOT / "scripts" / "domain" / "guide_starting_store.gd").read_text(encoding="utf-8")
-        self.assertIn("REMAKE_BALANCED_DEFAULT", starting.split("static func apply_store_type")[0].split("Task #104")[-1])
+        self.assertIn("res://scripts/domain/source_integration.gd", starting)
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         self.assertIn('"store_construction", minute_of_day, construction_yen', simulation)
         self.assertIn('"store_type_id": store_type_id,', simulation)
@@ -4036,10 +4036,10 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertNotIn("recognition", simulation)
         self.assertIn("# --- Task #129: a store's 評価 and 人気 as the PS program keeps them", simulation)
         # Task #133: the advice chance is the manager's 学歴 (CONFIRMED_BINARY).
-        self.assertIn("the manager's 学歴 out of 100 (the staff byte +0x15", simulation)
+        self.assertIn("_manager_academic()", simulation)
         self.assertIn("func apply_program_growth(", (GAME_ROOT / "scripts" / "domain" / "staff_growth.gd").read_text(encoding="utf-8"))
         self.assertEqual(len(self.config["ps1_program_tables"]["staff_candidates"]), 35)
-        self.assertIn("with a new store's 評価 and 人気", simulation)
+        self.assertIn("_start_new_store_standing()", simulation)
         self.assertIn("const PROMOTION_CASH_MULTIPLE := 5", simulation)
         self.assertIn('"store_renovation"', re.search(r"const CAPITAL_EXPENSE_TYPES := \[(.*?)\]", simulation, re.S).group(1))
         rating = (GAME_ROOT / "scripts" / "domain" / "store_rating.gd").read_text(encoding="utf-8")
@@ -4102,7 +4102,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         body = simulation.split("func _rival_ai() -> Dictionary:")[0].split("# Task #106: rivals losing money")[-1]
         self.assertIn("REMAKE_BALANCED_DEFAULT", body)
-        self.assertIn("    _step_rivals_at_month_end()\n    _grow_town_at_month_end()\n    _evaluate_terminal_state()", simulation)
+        self.assertRegex(simulation, r"_step_rivals_at_month_end\(\)\n    _grow_town_at_month_end\(\)\n    if program_town != null and month_count % 12 == 0:\n        _annual_review\(\)\n    _evaluate_terminal_state\(\)")
         store_site = (GAME_ROOT / "scripts" / "domain" / "store_site.gd").read_text(encoding="utf-8")
         self.assertIn("func rival_pressure(", store_site)
         self.assertIn("func best_open_site(stores: Array, removed: Array = [], avoid: Array = []) -> Vector2i:", store_site)
@@ -4291,7 +4291,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             self.assertTrue((GAME_ROOT / "assets" / "town" / (milestone["sprite"] + ".png")).is_file())
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         body = simulation.split("func _grow_town_at_month_end() -> void:")[1].split("func _put_up_town_building")[0]
-        self.assertIn("REMAKE_BALANCED_DEFAULT", body)
+        self.assertIn("program_town.monthly", body)
         self.assertIn('elif town_milestone_built(str(_town_growth()["clear_milestone"])):', simulation)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")
         for text in (

@@ -28,12 +28,22 @@ func reset() -> void:
 
 
 func checkout_staff():
-    assert(members.has(checkout_staff_id))
+    if not members.has(checkout_staff_id):
+        var vacant = StaffStateScript.new(_member_configs[0])
+        vacant.candidate_id = ""
+        vacant.state = "vacant"
+        vacant.position = Vector2i(-1, -1)
+        return vacant
     return members[checkout_staff_id]
 
 
 func all_staff() -> Array:
-    return members.values()
+    var result: Array = []
+    var ids: Array = members.keys()
+    ids.sort()
+    for id in ids:
+        result.append(members[id])
+    return result
 
 
 # Task #118: gives register duty to `staff_id`. The two swap posts: the new

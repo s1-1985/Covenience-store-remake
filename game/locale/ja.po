@@ -1130,3 +1130,16 @@ msgstr "特殊商品"
 
 msgid "owner review"
 msgstr "オーナー評価"
+
+
+msgid "staff dismissed"
+msgstr "従業員を解雇した"
+
+msgid "staff transferred"
+msgstr "従業員の配置を変更した"
+
+msgid "shoplifting"
+msgstr "万引きが発生した"
+
+msgid "self service sale"
+msgstr "自動販売・サービスの売上"

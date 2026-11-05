@@ -1,0 +1,17 @@
+{
+  "version": "0.4.0-source-operations",
+  "version_code": 25,
+  "package": "com.conveniremake.recovered",
+  "apk_bytes": 28017986,
+  "apk_sha256": "1b7e5ecf044bf374d4803e210bd94bedbb3b032c3914092b090c86b75a203087",
+  "signer_sha256": "de11d5d2c197d2081f502b6a5280307306b648c5762465fa4aecbc256738f406",
+  "analysis_commit": "2c00ba53ed5d469b406d498f3d1f9191074679a0",
+  "python_tests": 786,
+  "python_failures": 0,
+  "python_expected_failures": 1,
+  "operations_reference_cases": 60,
+  "godot_checks": 10,
+  "linux_ui_render_verified": true,
+  "android_device_tested": false,
+  "all_analysis_implemented": false
+}

@@ -24,6 +24,9 @@ var add_ons := 0
 # Task #130 (CONFIRMED_BINARY): one customer on the floor is a group of up
 # to 5 people who came together; each item is taken and paid for once per
 # person (the program's stock change is -n, the sale n x the price).
+var source_deadline := 0
+var source_candidates: Array = []
+var source_candidate_index := 0
 var group_size := 1
 
 

@@ -473,6 +473,9 @@ func open_window(id: String) -> void:
 
 
 func close_window() -> void:
+    if window_id == "staff" and main.simulation.program_town != null and main.simulation.source_management_has_vacancy():
+        show_notice("店長がいない店舗があります。先頭の枠へ採用・配置してください")
+        return
     if window_id.is_empty():
         return
     if window_id == "interior":
@@ -1182,6 +1185,8 @@ func _fill_renovation() -> void:
 
 func _fill_staff() -> void:
     var simulation = main.simulation
+    if simulation.program_town != null:
+        _fill_source_staff_actions()
     for staff_member in simulation.staff.all_staff():
         var staff_id := str(staff_member.staff_id)
         var card := PanelContainer.new()
@@ -1213,9 +1218,13 @@ func _fill_staff() -> void:
         skills.clip_text = true
         info.add_child(skills)
         var replace := Button.new()
-        replace.text = "交代"
+        replace.text = "解雇" if simulation.program_town != null else "交代"
         replace.custom_minimum_size = Vector2(96, 64)
-        replace.pressed.connect(func(): _fill_candidates(staff_id))
+        replace.pressed.connect(func():
+            if main.simulation.program_town != null:
+                _confirm_dismiss(staff_id)
+            else:
+                _fill_candidates(staff_id))
         row.add_child(replace)
         _updaters.append(func():
             var member = main.simulation.staff.members[staff_id]
@@ -1247,6 +1256,9 @@ func _fill_staff() -> void:
 # with the résumé bands the original shows before hiring (体力/学歴/敏捷性/
 # 社交性 as 普通/高い, task #56) and the daily wage.
 func _fill_candidates(staff_id: String) -> void:
+    if main.simulation.program_town != null:
+        _fill_source_candidates(staff_id)
+        return
     _updaters.clear()
     _clear_body()
     var member = main.simulation.staff.members[staff_id]
@@ -1777,3 +1789,90 @@ func _fill_stock() -> void:
 func open_stock_window(fixture_id: String) -> void:
     stock_fixture_id = fixture_id
     open_window("stock")
+
+
+func _fill_source_staff_actions() -> void:
+    _section("従業員管理")
+    for slot in ["staff-1", "staff-2", "staff-3"]:
+        if not main.simulation.staff.members.has(slot):
+            var selected: String = slot
+            _button("%sに採用" % ("店長枠" if slot == "staff-1" else "空き枠 " + slot.right(1)), func(): _fill_source_candidates(selected))
+    _button("配置変更", _fill_source_transfers)
+    if main.simulation.source_management_has_vacancy():
+        window_body.add_child(_label("先頭枠の欠員を補充するまで営業へ戻れません", 18))
+
+func _confirm_dismiss(slot: String) -> void:
+    var person = main.simulation.staff.members[slot]
+    var confirm := ConfirmationDialog.new()
+    confirm.dialog_text = "%s を解雇しますか？" % person.display_name
+    confirm.ok_button_text = "解雇する"
+    confirm.cancel_button_text = "やめる"
+    main.add_child(confirm)
+    confirm.confirmed.connect(func():
+        main.simulation.try_dismiss_source_staff(slot)
+        _updaters.clear()
+        _clear_body()
+        _fill_staff()
+        confirm.queue_free())
+    confirm.canceled.connect(confirm.queue_free)
+    confirm.popup_centered(Vector2i(440, 180))
+
+func _fill_source_candidates(slot: String) -> void:
+    _updaters.clear()
+    _clear_body()
+    window_title.text = "従業員の採用"
+    _button("もどる", func():
+        _clear_body()
+        _fill_staff())
+    var available: Array[String] = main.simulation.source_hiring_candidates()
+    if available.is_empty():
+        window_body.add_child(_label("採用できる人がいません", 22))
+    for id in available:
+        var candidate_id: String = id
+        var entry: Dictionary = main.simulation._candidate_figures(id)
+        var row := _row()
+        var text := _label("%s　時給¥%s\n体力%s 学歴%s 敏捷性%s 社交性%s" % [entry["display_name"], main._format_integer(int(entry["salary_yen_per_day_24h"]) / 24), main._resume_stat_band(int(entry["stamina"])), main._resume_stat_band(int(entry["academic_background"])), main._resume_stat_band(int(entry["agility"])), main._resume_stat_band(int(entry["sociability"]))], 18)
+        text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+        row.add_child(text)
+        _button("雇う", func():
+            if main.simulation.try_hire_candidate(slot, candidate_id):
+                _clear_body()
+                _fill_staff()
+                main._refresh_hire_candidate_option()
+            else:
+                show_notice("採用できません"), row)
+
+func _fill_source_transfers() -> void:
+    _updaters.clear()
+    _clear_body()
+    window_title.text = "従業員の配置変更"
+    var original: Array = []
+    var draft: Array = []
+    for index in main.simulation.store_count():
+        var slots: Array = []
+        var roster = main.simulation.store_field(index, "staff")
+        for slot in ["staff-1", "staff-2", "staff-3"]:
+            slots.append(roster.members[slot].candidate_id if roster.members.has(slot) else "")
+        original.append(slots)
+        draft.append(slots.duplicate())
+    var selectors: Array = []
+    for heading in ["移動元", "移動先"]:
+        _section(heading)
+        var select := OptionButton.new()
+        for index in original.size():
+            for slot in 3:
+                var id: String = draft[index][slot]
+                select.add_item("%d号店・%s：%s" % [index + 1, "店長" if slot == 0 else "店員%d" % slot, "空き" if id.is_empty() else main.simulation._candidate_figures(id)["display_name"]])
+        window_body.add_child(select)
+        selectors.append(select)
+    _button("交換して確定", func():
+        var a: int = selectors[0].selected
+        var b: int = selectors[1].selected
+        if main.simulation.try_transfer_source_staff(a / 3, "staff-%d" % (a % 3 + 1), b / 3, "staff-%d" % (b % 3 + 1)):
+            _clear_body()
+            _fill_staff()
+            if main.simulation.source_management_has_vacancy():
+                show_notice("変更は確定しました。店長枠の欠員を補充してください"))
+    _button("やめる", func():
+        _clear_body()
+        _fill_staff())

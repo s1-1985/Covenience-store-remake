@@ -243,7 +243,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-    if simulation == null or paused or selecting_site:
+    if simulation == null or paused or selecting_site or (simulation.program_town != null and phone_ui != null and not phone_ui.window_id.is_empty()):
         store_view.tick_progress = 1.0
         return
     accumulator += delta * speed
@@ -1010,7 +1010,10 @@ func _refresh_ui() -> void:
     # not a one-time event -- the player keeps playing after clearing it
     # (see _evaluate_terminal_state()'s own comment), so this label just
     # stays on rather than needing separate "already shown once" state.
-    if bool(snapshot["clear_condition_met"]) and not simulation._town_growth().is_empty():
+    if bool(snapshot["clear_condition_met"]) and simulation.program_town != null:
+        var mode := int(simulation.config.get("source_scenario_index", 0))
+        scenario_status_label.text = ["初級クリア：都庁が建ちました", "中級クリア：10店舗を達成しました", "上級クリア：経営者評価100点", "極上クリア：経営者評価100点"][mode]
+    elif bool(snapshot["clear_condition_met"]) and not simulation._town_growth().is_empty():
         # Task #114: the beginner map's clear, 都庁を誘致する.
         scenario_status_label.text = "都庁が建ちました。初級マップクリア（このまま続けられます）"
     elif bool(snapshot["clear_condition_met"]):

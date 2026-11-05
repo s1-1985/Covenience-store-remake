@@ -24,7 +24,7 @@ from fontTools.varLib import instancer
 REPO_ROOT = Path(__file__).resolve().parent.parent
 OUTPUT = REPO_ROOT / "game" / "fonts" / "ConveniJP.ttf"
 TEXT_SOURCES = (
-    [REPO_ROOT / "game" / "locale" / "ja.po", REPO_ROOT / "game" / "data" / "vertical_slice.json", REPO_ROOT / "game" / "data" / "ps1_recovered.json"]
+    [REPO_ROOT / "game" / "locale" / "ja.po", REPO_ROOT / "game" / "data" / "vertical_slice.json", REPO_ROOT / "game" / "data" / "ps1_recovered.json", REPO_ROOT / "game" / "data" / "ps1_integration.json"]
     + sorted((REPO_ROOT / "game" / "scripts").rglob("*.gd"))
     + sorted((REPO_ROOT / "game" / "scenes").glob("*.tscn"))
 )
