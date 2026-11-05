@@ -93,7 +93,7 @@ func is_walkable(cell: Vector2i) -> bool:
 
 func find_path(start: Vector2i, goal: Vector2i) -> Array[Vector2i]:
     if source_routes:
-        return preload("res://scripts/domain/program_operations.gd").route(start, {goal: true}, width_subcells, height_subcells, is_walkable)
+        return preload("res://scripts/domain/program_geometry.gd").route(start, {goal: true}, width_subcells, height_subcells, is_walkable)
     if start == goal:
         return []
     var frontier: Array[Vector2i] = [start]
@@ -120,6 +120,8 @@ func find_path(start: Vector2i, goal: Vector2i) -> Array[Vector2i]:
 # Same breadth-first search as find_path(), additionally treating the keys of
 # `avoid` (cells currently occupied by other people) as impassable.
 func find_path_avoiding(start: Vector2i, goal: Vector2i, avoid: Dictionary) -> Array[Vector2i]:
+    if source_routes:
+        return preload("res://scripts/domain/program_geometry.gd").route(start, {goal: true}, width_subcells, height_subcells, func(p): return is_walkable(p) and not avoid.has(p))
     if start == goal:
         return []
     var frontier: Array[Vector2i] = [start]
@@ -148,7 +150,7 @@ func find_path_avoiding(start: Vector2i, goal: Vector2i, avoid: Dictionary) -> A
 # reached -- callers tell the two apart with `goals.has(start)`.
 func find_path_to_any(start: Vector2i, goals: Dictionary) -> Array[Vector2i]:
     if source_routes:
-        return preload("res://scripts/domain/program_operations.gd").route(start, goals, width_subcells, height_subcells, is_walkable)
+        return preload("res://scripts/domain/program_geometry.gd").route(start, goals, width_subcells, height_subcells, is_walkable)
     if goals.has(start) or goals.is_empty():
         return []
     var frontier: Array[Vector2i] = [start]
