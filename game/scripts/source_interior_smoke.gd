@@ -4,7 +4,7 @@ const Sim := preload("res://scripts/vertical_slice_simulation.gd")
 
 func _initialize() -> void:
     var base: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/vertical_slice.json"))
-    var source: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/ps1_interiors.json"))
+    var source: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/ps1_integration.json"))
     assert(source["layouts"].size() == 30)
     assert("REMAKE_BALANCED_DEFAULT" in str(source["evidence_note"]))
     var checked := 0

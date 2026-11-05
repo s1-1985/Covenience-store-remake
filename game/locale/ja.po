@@ -1121,3 +1121,12 @@ msgstr "特殊商品棚1"
 
 msgid "source_fixture_44"
 msgstr "特殊商品棚2"
+
+msgid "floor changed"
+msgstr "床の模様を変更"
+
+msgid "source_special"
+msgstr "特殊商品"
+
+msgid "owner review"
+msgstr "オーナー評価"

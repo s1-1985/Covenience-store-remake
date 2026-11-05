@@ -1057,7 +1057,7 @@ func _gauge(value: int, maximum: int, width := 160.0) -> Control:
 # plus 回転 and restoring the opening layout.
 func _fill_interior() -> void:
     var help := _text("")
-    _updaters.append(func():
+    _updaters.append( func():
         var selected: String = main.store_view.selected_fixture()
         if selected.begins_with(main.NEW_FIXTURE_SELECTION_PREFIX) or selected.begins_with(main.STORED_FIXTURE_SELECTION_PREFIX):
             help.text = "空いているマスをタップして置く"
@@ -1074,22 +1074,22 @@ func _fill_interior() -> void:
     var swap := _button("入れ替え", func():
         main.store_view.edit_mode = "swap"
         main.store_view.selected_fixture_id = "", modes)
-    _updaters.append(func():
+    _updaters.append( func():
         move.add_theme_stylebox_override("normal", _box(CHOSEN if main.store_view.edit_mode == "move" else BUTTON))
         swap.add_theme_stylebox_override("normal", _box(CHOSEN if main.store_view.edit_mode == "swap" else BUTTON)))
     var actions := _row()
     var rotate := _button("回転", main._on_rotate_fixture_pressed, actions)
-    # Task #125: put away for free, to set down again later.
+
     var store := _button("しまう", main._on_store_fixture_pressed, actions)
     store.name = "StoreFixtureButton"
     var sell := _button("売却", main._on_sell_fixture_pressed, actions)
-    _updaters.append(func():
+    _updaters.append( func():
         var selected: String = main.store_view.selected_fixture()
         var has_fixture: bool = not selected.is_empty() and not selected.begins_with("__")
         rotate.disabled = not has_fixture
         store.disabled = not has_fixture
         sell.disabled = not has_fixture)
-    # Task #125: the fixtures in storage, tap one then a free square.
+
     if not main.simulation.stored_fixtures.is_empty():
         _section("倉庫（タップして置く・無料）")
         var stored_grid := GridContainer.new()
@@ -1111,8 +1111,8 @@ func _fill_interior() -> void:
     var grid := GridContainer.new()
     grid.columns = 3
     window_body.add_child(grid)
-    # Task #131: car parks too -- the PS program keeps them on the store's
-    # floor grid with the other fixtures (CONFIRMED_BINARY).
+
+
     for entry in main.config["fixture_catalog"]:
         var catalog_id := str(entry["catalog_id"])
         var price := int(entry["purchase_price_yen"])
@@ -1125,16 +1125,23 @@ func _fill_interior() -> void:
             grid
         )
         var permit := str(entry.get("required_permit_id", ""))
-        _updaters.append(func():
-            button.disabled = main.simulation.economy.cash_yen < price or (not permit.is_empty() and not main.simulation.has_permit(permit)))
+        _updaters.append( func():
+            button.disabled = main.simulation.economy.cash_yen < price or ( not permit.is_empty() and not main.simulation.has_permit(permit)))
+    if main.simulation.config["store"].has("source_floor"):
+        _section("床の模様")
+        var floors := GridContainer.new()
+        floors.columns = 8
+        window_body.add_child(floors)
+        for floor_id in 16:
+            var selected := floor_id
+            _button(str(floor_id + 1), func():
+                main.simulation.try_set_source_floor(selected)
+                main.store_view.queue_redraw(), floors)
     _section("見本")
     _button("開店時の配置に戻す", main._on_load_sample_layout_pressed)
     _fill_renovation()
 
 
-# Task #126: 改装 -- another size or orientation for this store. Tap a store,
-# then 改装する. The fixtures move onto the new floor's shelf spots; what
-# does not fit goes to storage.
 var _renovation_choice := ""
 
 
@@ -1296,7 +1303,30 @@ func _fill_policy() -> void:
     price_row.add_child(price_label)
     _button("＋5%", func(): main.simulation.try_set_price_policy(main.simulation.price_change_pct + 5), price_row)
     _button("定価", func(): main.simulation.try_set_price_policy(0), price_row)
-    _updaters.append(func():
+    if simulation.program_town != null:
+        _section("商品別の価格")
+        var categories := OptionButton.new()
+        categories.custom_minimum_size.y = 48
+        for entry in main.config["product_catalog"]:
+            if str(entry["catalog_id"]) == "source_special":
+                continue
+            categories.add_item(main.tr(str(entry["catalog_id"])))
+            categories.set_item_metadata(categories.item_count - 1, str(entry["catalog_id"]))
+        window_body.add_child(categories)
+        var individual := _row()
+        var setting := _label("", 22)
+        _button("－1", func():
+            var id := str(categories.get_selected_metadata())
+            simulation.try_set_product_price(id, simulation.source_price_setting(id) - 1), individual)
+        individual.add_child(setting)
+        _button("＋1", func():
+            var id := str(categories.get_selected_metadata())
+            simulation.try_set_product_price(id, simulation.source_price_setting(id) + 1), individual)
+        _updaters.append( func():
+            var id := str(categories.get_selected_metadata())
+            var entry: Dictionary = simulation._product_catalog.get(id, {})
+            setting.text = "設定%d　¥%s" % [simulation.source_price_setting(id), main._format_integer(simulation._apply_price_policy(int(entry.get("sale_price_yen", 0)), id))])
+    _updaters.append( func():
         var pct: int = main.simulation.price_change_pct
         price_label.text = "定価" if pct == 0 else "%+d%%" % pct)
     _section("営業時間")
@@ -1309,7 +1339,7 @@ func _fill_policy() -> void:
             main.simulation.try_set_business_hours(preset_id)
             main._select_current_business_hours(), hours)
         button.add_theme_font_size_override("font_size", 20)
-        _updaters.append(func():
+        _updaters.append( func():
             button.add_theme_stylebox_override("normal", _box(CHOSEN if main.simulation.business_hours_id == preset_id else BUTTON)))
     _section("販売許可")
     for entry in main.config["permits"]:
@@ -1327,12 +1357,12 @@ func _fill_policy() -> void:
         row.add_child(text)
         var button := Button.new()
         button.custom_minimum_size = Vector2(150, 60)
-        button.pressed.connect(func():
+        button.pressed.connect( func():
             if not main.simulation.try_purchase_permit(permit_id):
                 show_notice("この場所では取れないか、お金が足りません")
             main._refresh_ui())
         row.add_child(button)
-        _updaters.append(func():
+        _updaters.append( func():
             var held: bool = main.simulation.has_permit(permit_id)
             button.text = "取得済み" if held else "申請"
             button.disabled = held or main.simulation.economy.cash_yen < fee)
@@ -1576,26 +1606,22 @@ func _survey_list(counts: Dictionary, color: Color, unit: String) -> void:
 
 func _fill_town() -> void:
     _back_to_research()
-    # Task #114: the beginner map's goal, 都庁を誘致する.
-    if not main.simulation._town_growth().is_empty():
+    if main.simulation.program_town != null:
         _section("目標")
-        var goal := _text("")
-        _updaters.append(func():
-            var target := 0
-            for milestone in main.simulation._town_growth()["milestones"]:
-                if str(milestone["id"]) == str(main.simulation._town_growth()["clear_milestone"]):
-                    target = int(milestone["population"])
-            goal.text = "都庁を誘致する（町人口%s人で建つ）\n今の町人口 %s人" % [
-                main._format_integer(target), main._format_integer(main.simulation.town.population),
-            ]
-            if main.simulation.clear_condition_met:
-                goal.text += "　クリア！")
+        var mode := int(main.simulation.config.get("source_scenario_index", 0))
+        _text(["都庁が建つ町に発展させる", "自社10店舗を達成する", "オーナー評価100点を達成する", "オーナー評価100点を達成する"][mode])
+        var review := _text("")
+        _updaters.append( func():
+            var result: Dictionary = main.simulation.last_owner_review
+            review.text = "オーナー評価は毎年1月に集計されます" if result.is_empty() else "オーナー評価 %d / 100点\n店舗%d・来店客%d・売上%d・人口%d・店舗評価%d" % [int(result["total"]), int(result["parts"][0]), int(result["parts"][1]), int(result["parts"][2]), int(result["parts"][3]), int(result["parts"][4])])
+    else:
+        _text("町を発展させる")
     _section("町")
     var town := _text("")
-    _updaters.append(func(): town.text = main.town_label.text)
+    _updaters.append( func(): town.text = main.town_label.text)
     _section("最近の出来事")
     var events := _text("", 20)
-    _updaters.append(func():
+    _updaters.append( func():
         var records: Array = main.simulation.event_log.records
         var shown: Array[String] = []
         var index := records.size() - 1

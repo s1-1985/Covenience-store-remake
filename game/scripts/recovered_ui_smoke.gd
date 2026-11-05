@@ -17,12 +17,12 @@ func _run() -> void:
     var game = current_scene
     game.paused = true
     assert(game.simulation.program_town != null)
-    assert(game.simulation._rival_stores.size() == 1)
+    assert(game.simulation._rival_stores.size() == 2)
     await _capture("recovered-town")
     game._on_site_tapped(Vector2i(26,12))
     game.site_buy_button.pressed.emit()
     var choices = game.find_child("SourceLayoutChoice", true, false)
-    assert(choices != null and choices.item_count == 4)
+    assert(choices != null and choices.item_count == 5)
     choices.select(1)
     choices.item_selected.emit(1)
     game.find_child("BuildStoreButton",true,false).pressed.emit()

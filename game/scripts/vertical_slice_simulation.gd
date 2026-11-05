@@ -30,25 +30,11 @@ const ProgramRulesScript := preload("res://scripts/domain/program_rules.gd")
 
 const ProgramDemandScript := preload("res://scripts/domain/program_demand.gd")
 
-# CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
-# directly ("1月=4日間×8"; reference_sim/conveni_sim/month_aggregation.py
-# mirrors the same citation). What the guide does not state is how each
-# representative day's own net result is computed internally; this client,
-# like month_aggregation.py, only turns the already-tracked cash change
-# across REPRESENTATIVE_DAYS_PER_MONTH days into the displayed monthly figure.
+
 const REPRESENTATIVE_DAYS_PER_MONTH := 4
 const MONTH_MULTIPLIER := 8
-# Task #104: one-off purchases (land, the store building, buying out a
-# rival, fixtures, permits...) are paid once, not part of the four days'
-# running 収支 that the guide multiplies by 8. The guide's wording ("4日間の
-# 収支を8倍することで、1月の収支が決定する") is about running the store;
-# scaling a 20,000,000-yen land purchase to 160,000,000 would bankrupt every
-# new game at its first month end, which the guide's own play (start with
-# 200,000,000, buy land, keep going) rules out -- an inference, not a
-# stated rule. Promotions, restocking and wages stay in the x8 as before.
-# Task #117: a new shelf's first goods and goods sent back when a shelf is
-# sold or given another product are one-off too (the same inference; a
-# refund x8 would turn selling a stocked shelf into a month's profit).
+
+
 const CAPITAL_EXPENSE_TYPES := [
     "store_site", "store_construction", "store_renovation", "chain_expansion", "rival_buyout",
     "rival_investigation", "fixture_purchase", "fixture_sold", "permit_purchase",
@@ -56,56 +42,17 @@ const CAPITAL_EXPENSE_TYPES := [
     "product_procurement", "product_returned",
 ]
 
-# CONFIRMED, not a guess:
-# - bankruptcy: PS footage and an SS play record support game over when cash
-#   is negative at a day/month boundary
-#   (reference_sim/conveni_sim/month_boundary.py's
-#   MonthBoundaryBankruptcyPolicy.bankrupt_when_negative=True). No zero-cash
-#   sample is known, so cash == 0 is explicitly left unresolved there
-#   (bankrupt_when_zero=None) -- this client leaves it unresolved too, and
-#   does NOT treat it as bankruptcy.
-# - time limit: the guide's own second game-over path, 100 years without
-#   meeting the scenario's clear condition
-#   (reference_sim/conveni_sim/store_events.scenario_time_limit_exceeded /
-#   GAME_OVER_YEAR_LIMIT). `clear_condition_met` defaults to false and is
-#   set true once `player_store_count` reaches
-#   PLAYER_STORE_COUNT_SCENARIO_TARGET (see that constant below);
-#   MONTHS_PER_YEAR mirrors reference_sim/conveni_sim/observations.py.
+
 const GAME_OVER_YEAR_LIMIT := 100
 const MONTHS_PER_YEAR := 12
 
-# CONFIRMED_COMMUNITY floor, not a guess: the original game's Wiki records a
-# minimum land price of 20,000,000 yen
-# (docs/research/store-unlock-and-daily-pricing-delta-2026-09-05.md section
-# 5). reference_sim/conveni_sim/remake_land_value.py takes
-# base_land_price_yen as a caller-supplied parameter rather than hardcoding
-# it, so this constant -- picking the confirmed floor as the base for the
-# player's own store's land -- is this client's own choice, not a ported
-# value.
-const BASE_LAND_PRICE_YEN := 20_000_000
 
-# Task #65: CONFIRMED_OFFICIAL, re-verified 2026-09-24 directly against a
-# 400dpi rescan of the strategy guide's third companion book ("攻略&データ
-# ブック", オールテクニックガイド ライバル対策, print page 79): "新規出店時
-# の土地代 = 地価（4エリア分）+建物評価額／2". `chain_expansion_cost_yen()`
-# previously charged the bare per-area land price with no area multiplier at
-# all (an unstated implicit ×1) -- this constant supplies the guide's own
-# exact ×4 multiplier for opening a new branch. The "+建物評価額／2" existing-
-# building-removal term is not applied here: try_expand_chain() is (per
-# decision 0099) a purely abstract economic action with no specific plot or
-# existing structure to appraise.
+const BASE_LAND_PRICE_YEN := 20000000
+
+
 const NEW_BRANCH_LAND_AREA_COUNT := 4
 
-# PROVISIONAL, not CONFIRMED_OFFICIAL: PROJECT_MEMORY.md section 14 records
-# "intermediate: reach 10 company stores" as a scenario clear condition
-# from community sources, explicitly flagged there as unverified
-# ("must be verified against manual/gameplay before implementation"). This
-# is the only concrete numeric scenario-clear target this project has
-# found for chain expansion, so it is used as a playable placeholder --
-# expected to be retuned or replaced if better evidence surfaces, exactly
-# like this client's other REMAKE_BALANCED_DEFAULT placeholders, but kept
-# under its own weaker PROVISIONAL tag since even the community source
-# itself is unconfirmed here.
+
 const PLAYER_STORE_COUNT_SCENARIO_TARGET := 10
 
 var config: Dictionary
@@ -117,15 +64,15 @@ var staff
 var event_log
 var demand
 var _demand_rng
-# Task #85: separate from _demand_rng so adding weather rolls does not shift
-# the existing seeded arrival/product-choice sequence.
+
+
 var _weather_rng
-# Task #134: the manager's report rolls, apart for the same reason.
+
 var _report_rng = RandomNumberGenerator.new()
-# Task #134: what the magazines have added to each candidate's figures
-# ({candidate_id: {figure: points}}), saved as "candidate_figure_raises".
+
+
 var _candidate_raises: Dictionary = {}
-# Index into config["weather"]["categories"] (快晴/晴れ/曇り/雨・雪/荒天).
+
 var weather_category_index := 0
 
 var minute_of_day: int
@@ -139,41 +86,39 @@ var _step_game_minutes: int
 var _restock_ticks: int
 var _restock_trigger_stock_units_at_or_below: int
 var _restock_task_enabled: bool
-# Task #97: staff work in the real game (guide_starting_store.staff_work).
-# 0.0 / false keep the prototype scenarios' old behavior.
+
+
 var _restock_trigger_share_of_full := 0.0
 var _cleaning_task_enabled := false
 var _stamina_enabled := false
-# Task #102: customers come from the buildings around the store and want
-# what DATA4 says those buildings want; the month's survey (アンケート).
+
+
 var _building_demand_enabled := false
-# Task #109: in the real game the layout can be edited, products stocked and
-# staff hired while customers are inside (simulation.edits_while_open);
-# the prototype scenarios keep the old empty-store lock.
+
+
 var _edits_while_open := false
 var _checkout_rotation_enabled := false
 var _customer_types_enabled := false
 var _customer_type_rules: Dictionary = {}
 var _customer_types: Dictionary = {}
-# Task #103: business hours (guide_starting_store.business_hours). Empty in
-# the prototype scenarios, which stay open all day as before.
+
+
 var _business_hours: Array = []
 var business_hours_id := ""
 var _catchment_weights: Dictionary = {}
 var survey_bought: Dictionary = {}
 var survey_missing: Dictionary = {}
-# Task #122: this month's visitors by customer type (for 調査 → 店舗成績).
+
 var survey_types: Dictionary = {}
 var last_survey: Dictionary = {}
 var _stamina_rng = RandomNumberGenerator.new()
-# Where customers have walked and nobody has cleaned since (oldest first).
+
 var _dirty_cells: Array[Vector2i] = []
 const MAX_DIRTY_CELLS := 24
 var _days_completed_this_month: int
 var _cash_at_month_start: int
-# Task #104: expense_records index where this month began, so the month-end
-# settlement can leave one-off purchases out of the x8 (see
-# CAPITAL_EXPENSE_TYPES).
+
+
 var _expense_index_at_month_start := 0
 var _revenue_at_month_start: int
 var is_game_over: bool
@@ -189,13 +134,13 @@ var _promotion_catalog: Dictionary = {}
 var _promotions_used_this_month: Dictionary = {}
 var _scheduled_promotions: Array[Dictionary] = []
 var popularity: int
-# Task #53: CONFIRMED_OFFICIAL that a price-setting/margin mechanic exists
-# (see try_set_price_policy below for the citation); 0 means "no change
-# from the catalog's own list price," matching the guide's own baseline
-# framing ("通常は全て40%に設定されており、これが定価と考えられる" --
-# the catalog's sale_price_yen values already assume that baseline margin,
-# so this client does not re-derive prices from a separate margin input).
+
+
 var price_change_pct: int
+var product_price_settings: Dictionary = {}
+var _annual_sales_yen := 0
+var last_owner_review: Dictionary = {}
+var _source_runtime_to_restore: Dictionary = {}
 var town
 var _land_value_policy
 var internal_rating_value: int
@@ -212,96 +157,71 @@ var _restock_timing
 var _staff_growth
 var _checkout_anger
 var _town_spatial
-# Task #59: the player's own store's position on the same abstract distance
-# scale as `_rival_stores` below, so `TownSpatial.can_acquire_permit_at()`
-# has something to measure a permit-exclusion distance from. This client
-# has no real town/map spatial simulation (decision 0095/0127), so this is
-# just a fixed reference point, not a placed position on an actual map.
+
+
 var _player_store_position: Vector2i
-# Task #95: the 2x2 site the player bought on the guide town map
-# (NO_STORE_SITE until then), and the buildings bought and cleared with it.
-# store_site is null for configs without guide_town_map.
+
+
 const NO_STORE_SITE := Vector2i(-1, -1)
 var store_site
 var store_site_origin := NO_STORE_SITE
 var _bought_buildings: Array[int] = []
-# Task #104: which of the 「店舗を選んで下さい」 stores stands on the site
-# (config["store_types"], guide_store_types); "" for configs without them.
+
+
 var store_type_id := ""
-# Task #59: REMAKE_BALANCED_DEFAULT rival-store roster -- position and
-# held permits for each configured rival, used only to enforce the
-# CONFIRMED_OFFICIAL permit-exclusion distance rule
-# (TownSpatial.can_acquire_permit_at()) against try_purchase_permit().
-# Defaults to empty in the default scenario config (a no-op, same
-# convention as demand.rival_store_count's own default), since no source
-# states how many rivals exist, where they are, or which permits they
-# hold -- this array only ever reflects config a caller supplied, never a
-# value this client invents on its own. Static for this vertical slice's
-# lifetime: no rival AI/spawn loop exists to change it after _init().
+
+
 var _rival_stores: Array[Dictionary] = []
-# Task #101: rival branches the player bought out, now the player's own
-# stores ({"id", "position"}), and rivals already investigated.
+
+
 var owned_branches: Array[Dictionary] = []
 var _investigated_rivals: Dictionary = {}
-# Task #106: rival branches that withdrew and open again at the next month
-# end (guide_town_map.rival_ai): {"id", "left": the site it left}.
+
+
 var _rivals_to_reopen: Array[Dictionary] = []
-# Task #111: facilities built through 誘致 ({"facility_id", "origin"}, in
-# the order they were built) and the one under construction
-# ({"facility_id", "origin", "ready_day"}, or empty).
+
+
 var induced_facilities: Array[Dictionary] = []
 var pending_inducement: Dictionary = {}
 var _inducement_rng = RandomNumberGenerator.new()
-# Task #114: the town's own buildings put up as it grows
-# ({"id", "origin"}, in order).
+
+
 var town_milestones: Array[Dictionary] = []
-# Every building added to the map during the game, in order
-# ({"kind": "facility"/"town", "id", "origin"}): building indices depend on
-# the order, so a load puts them up again in exactly this order.
+
+
 var _building_log: Array[Dictionary] = []
-# FIFO order in which customers who have finished shopping are waiting for
-# the single checkout fixture's one staff-service slot (task #36, concurrent
-# customers). Serving strictly in arrival order is this project's own
-# REMAKE_BALANCED_DEFAULT choice: reference_sim's CheckoutStationRuntime
-# deliberately leaves service order to an explicit policy rather than
-# forcing FIFO, citing first-title FAQ evidence that a later-arriving
-# customer can sometimes be served first, so this is not a claim about the
-# original game's tie-break rule.
+
+
 var _checkout_queue: Array[String] = []
-# Task #123 (the owner: a bought branch could not be looked at or run). The
-# player's stores, index 0 = 本店. Everything a store has of its own --
-# floor, shelves, staff, customers, prices, hours, permits, advertising,
-# rating, survey -- lives in the member variables listed in STORE_FIELDS
-# for the store being looked at or acted on (active_store); the others wait
-# in _stores. Money, the calendar, the town and the rivals are shared.
+
+
 const STORE_FIELDS := [
     "config", "layout", "inventory", "customers", "staff", "demand", "_checkout_interaction",
     "_checkout_queue", "_dirty_cells", "business_hours_id", "_catchment_weights", "survey_bought",
     "survey_missing", "survey_types", "last_survey", "_permits_held", "_promotions_used_this_month",
-    "_scheduled_promotions", "popularity", "price_change_pct", "internal_rating_value", "star_rating",
+    "_scheduled_promotions", "popularity", "price_change_pct", "product_price_settings", "internal_rating_value", "star_rating",
     "_store_size_tier", "store_site_origin", "_player_store_position", "store_type_id",
     "_sample_layout_catalog", "store_name", "_store_sales_yen",
     "_store_sales_at_month_start", "_store_sales_at_day_start", "stored_fixtures",
     "_program_counts", "_parking_used", "outdoor_fixtures", "_notice_counts", "_sold_counts",
-    "_store_visitor_heads", "_store_sales_last_month",
+    "_store_visitor_heads", "_store_sales_last_month", "_annual_sales_yen", "_source_runtime_to_restore",
 ]
-# The config keys a store has its own copy of; the rest (catalogs, town,
-# weather...) is shared.
+
+
 const STORE_CONFIG_KEYS := [
     "store", "fixtures", "products", "staff", "customer", "simulation", "provisional_restock",
     "sample_layouts", "demand",
 ]
 var _stores: Array[Dictionary] = [{}]
 var active_store := 0
-# The store the player is looking at (the others step in the background).
+
 var viewed_store := 0
 var store_name := "本店"
 var _store_sales_yen := 0
 var _store_sales_at_month_start := 0
 var _store_sales_at_day_start := 0
-# Task #130: the PS program's customers (ProgramDemand), real game only.
-# _program_counts: this store's heads still to come today, by visit row;
-# _parking_used: heads of the car groups inside.
+
+
 var _rival_simulations: Dictionary = {}
 var _rival_cash_yen := 100000000
 var _rival_serial := 2
@@ -314,23 +234,19 @@ var _parking_used := 0
 var _program_holiday := false
 var _program_weather_value := 0
 var program_town_heads := 0
-# Task #132: the fixtures on the store's outdoor lot (car parks), each
-# {"id", "catalog_id", "origin": [x, y]} in store subcells (the lot lies
-# above the entrance wall, so its y is negative).
+
+
 var outdoor_fixtures: Array = []
-# Task #134: what the manager keeps count of for their reports -- angry
-# customers, customers who found a shelf empty, cars turned away and dirty
-# hours since the last report or the last 4-hour mark; units sold per
-# category since the last sales report.
+
+
 var _notice_counts := {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
 var _sold_counts: Dictionary = {}
-# Task #135: everyone who has come in (the program's +0x1188) and last
-# month's sales (+0xD5C), for the robbery and fire checks.
+
+
 var _store_visitor_heads := 0
 var _store_sales_last_month := 0
-# Customers who have finished a visit at any of the player's stores, ever
-# (the chain visitor milestone's count; kept, unlike the customer rosters,
-# across a save and load).
+
+
 var _chain_visitors_total := 0
 
 
@@ -339,8 +255,14 @@ func _init(source_config: Dictionary) -> void:
     _require_config()
     if bool(config["simulation"].get("program_recovery_enabled", false)):
         _recovery = JSON.parse_string(FileAccess.get_file_as_string("res://data/ps1_recovered.json"))
+        if config.has("source_catalog"):
+            _recovery.merge(config["source_catalog"], true)
+        if config.has("source_scenario"):
+            _recovery["town_cells"] = config["source_scenario"]["town_cells"]
+            _recovery["initial_cash"] = config["source_scenario"]["initial_cash"]
+            _recovery["initial_population"] = config["source_scenario"]["population"]
         _program_rng = ProgramRandomScript.new()
-    # Task #133: the real game's staff are the program's own figures.
+
     if bool(config["simulation"].get("building_demand_enabled", false)) and config.has("ps1_program_tables"):
         _apply_program_staff_figures()
     for entry in config["fixture_catalog"]:
@@ -372,15 +294,14 @@ func _init(source_config: Dictionary) -> void:
     demand = DemandPolicyScript.new(config["demand"], _demand_rng)
     town = TownStateScript.new(config["town"])
     _land_value_policy = LandValuePolicyScript.new()
-    # The dilution formula counts competing/rival stores, not the player's
-    # own store, so store_count_including_rivals is reduced by one (never
-    # below zero) before being applied.
+
+
     demand.rival_store_count = max(0, town.store_count_including_rivals - 1)
     _store_rating = StoreRatingScript.new()
     _store_value = StoreValueScript.new()
     _customer_share = CustomerShareScript.new()
     _store_size_tier = str(config["store"]["size_tier"])
-    assert(_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
+    assert (_store_value.STORE_SIZE_VALUE_MULTIPLIER.has(_store_size_tier))
     store_type_id = str(config.get("store_type_id", ""))
     _store_events = StoreEventsScript.new()
     _checkout_timing = CheckoutTimingScript.new()
@@ -393,10 +314,7 @@ func _init(source_config: Dictionary) -> void:
         store_site = StoreSiteScript.new(config["guide_town_map"])
     _load_rivals()
     var simulation: Dictionary = config["simulation"]
-    _checkout_interaction = layout.interaction_for_fixture(
-        str(simulation["checkout_fixture_id"]),
-        "checkout"
-    )
+    _refresh_interactions()
     _shopping_ticks = int(simulation["shopping_ticks"])
     _checkout_ticks = int(simulation["checkout_ticks"])
     _step_game_minutes = int(simulation["step_game_minutes"])
@@ -419,19 +337,21 @@ func _init(source_config: Dictionary) -> void:
         for entry in config["guide_customer_types"]["types"]:
             _customer_types[str(entry["id"])] = entry
     _business_hours = simulation.get("business_hours", [])
-    assert(_shopping_ticks > 0 and _checkout_ticks > 0 and _step_game_minutes > 0)
-    assert(_restock_ticks > 0 and _restock_trigger_stock_units_at_or_below >= 0)
-    assert(float(simulation["tick_seconds"]) > 0.0)
+    assert (_shopping_ticks > 0 and _checkout_ticks > 0 and _step_game_minutes > 0)
+    assert (_restock_ticks > 0 and _restock_trigger_stock_units_at_or_below >= 0)
+    assert (float(simulation["tick_seconds"]) > 0.0)
     for staff_member in staff.all_staff():
-        assert(layout.is_walkable(staff_member.position))
-    assert(_required_routes_are_reachable())
+        assert (layout.is_walkable(staff_member.position))
+    assert (_required_routes_are_reachable())
     reset()
 
 
 func reset() -> void:
     _rival_simulations.clear()
-    _rival_cash_yen = 100000000
-    _rival_serial = 2
+    _rival_cash_yen = int(_recovery.get("initial_cash", [0, 100000000])[1])
+    _rival_serial = 1
+    for entry in config["town"].get("rival_stores", []):
+        _rival_serial = maxi(_rival_serial, int(entry.get("serial", 1)) + 1)
     _drop_branches()
     minute_of_day = int(config["simulation"]["start_minute_of_day"])
     day_count = 0
@@ -467,14 +387,15 @@ func reset() -> void:
     _promotions_used_this_month.clear()
     _scheduled_promotions.clear()
     price_change_pct = 0
+    product_price_settings = {}
     _start_new_store_standing()
     _program_counts = {}
     _parking_used = 0
     outdoor_fixtures = []
     _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
     _sold_counts = {}
-    # This playable vertical slice is itself the player's first store, so
-    # the chain always starts at 1, not 0.
+
+
     player_store_count = 1
     _chain_visitor_milestone = ChainVisitorMilestoneScript.new()
     _demand_rng.seed = int(config["demand"]["rng_seed"])
@@ -488,9 +409,6 @@ func reset() -> void:
     _start_opening_customer()
 
 
-# The customer already inside when a game starts or loads. Task #105: not
-# while the store is closed (a new real game starts at 00:00, before its
-# AM7:00 opening) -- nobody is inside a closed store.
 func _start_opening_customer() -> void:
     # Task #130: the program's customers come in groups as the day goes.
     if is_open_now() and (_program_demand == null or not has_store_site()):
@@ -608,6 +526,7 @@ func _drop_branches() -> void:
     _store_sales_at_day_start = 0
     _store_visitor_heads = 0
     _store_sales_last_month = 0
+    _annual_sales_yen = 0
     _notice_counts = {"angry": 0, "sold_out": 0, "cars": 0, "dirty": 0}
     _sold_counts = {}
     _chain_visitors_total = 0
@@ -744,6 +663,7 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     _promotions_used_this_month = {}
     _scheduled_promotions = []
     price_change_pct = 0
+    product_price_settings = {}
     _start_new_store_standing()
     _store_size_tier = str(config["store"]["size_tier"])
     _store_sales_yen = 0
@@ -751,6 +671,7 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     _store_sales_at_day_start = 0
     _store_visitor_heads = 0
     _store_sales_last_month = 0
+    _annual_sales_yen = 0
     _catchment_weights = {}
     stored_fixtures = []
     _program_counts = {}
@@ -1248,22 +1169,20 @@ func _program_store_profile() -> Dictionary:
             stock[product.catalog_id] = int(stock.get(product.catalog_id, 0)) + product.stock_units
     var open_hours: Array = []
     for hour in 24:
-        open_hours.append(has_store_site() and _open_at_minute(hour * 60))
+        open_hours.append(has_store_site() and (program_town == null or source_store_ready()) and _open_at_minute(hour * 60))
     return {
         "site": Rect2i(store_site_origin, store_site.footprint),
         "popularity": popularity,
         "open_hours": open_hours,
         "parking": _parking_capacity(),
         "stock": stock,
-        # 値段: the average of each shelved item's price as a percent of its
-        # list price (0x80021F20); here one price policy covers every item.
-        "price_percent": 100 + price_change_pct,
+
+
+        "price_percent": source_shelf_price_percent() if program_town != null else 100 + price_change_pct,
         "service": int(_store_values()["service"]),
     }
 
 
-# REMAKE_BALANCED_DEFAULT (ps1_program_tables.evidence_note): a rival store's
-# figures come from its guide_data where the guide gives them.
 func _program_rival_profile(rival: Dictionary) -> Dictionary:
     if program_town != null:
         return _program_rival_simulation(rival)._program_store_profile()
@@ -1353,7 +1272,7 @@ func try_purchase_fixture(
     if not _fixture_catalog.has(catalog_id):
         return false
     var catalog_entry: Dictionary = _fixture_catalog[catalog_id]
-    # Task #132: car parks go on the outdoor lot.
+
     if has_outdoor_lot() and is_outdoor_catalog(catalog_id):
         return false
     var required_permit_id := str(catalog_entry.get("required_permit_id", ""))
@@ -1362,6 +1281,11 @@ func try_purchase_fixture(
     var price_yen: int = int(catalog_entry["purchase_price_yen"])
     if economy.cash_yen < price_yen:
         return false
+    if str(catalog_entry["kind"]) in ["checkout", "break_room"]:
+        for fixture in layout.fixtures:
+            if str(fixture["kind"]) == str(catalog_entry["kind"]):
+                edit_refusal = "duplicate"
+                return false
     var catalog_footprint_tiles: Array = catalog_entry["footprint_tiles"]
     var fixture_config := {
         "id": instance_id,
@@ -1392,8 +1316,6 @@ func try_purchase_fixture(
     return true
 
 
-# Task #125: buying a fixture and setting it down at `origin` with its front
-# on the first side that works (REMAKE_BALANCED_DEFAULT, like moving).
 func try_purchase_fixture_at(catalog_id: String, instance_id: String, origin: Vector2i) -> bool:
     if not _fixture_catalog.has(catalog_id):
         return false
@@ -1542,9 +1464,9 @@ func _can_acquire_permit_at(permit_id: String, position: Vector2i) -> bool:
 
 
 func try_procure_product(catalog_id: String, instance_id: String, fixture_id: String) -> bool:
-    # Task #109: a new product on a shelf touches no route, so in the real
-    # game it no longer waits for an empty store.
-    if is_game_over or (not _edits_while_open and not customers.all_settled()):
+
+
+    if is_game_over or ( not _edits_while_open and not customers.all_settled()):
         return false
     if instance_id.is_empty() or inventory.products.has(instance_id):
         return false
@@ -1556,14 +1478,8 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
     var required_permit_id := str(catalog_entry.get("required_permit_id", ""))
     if not required_permit_id.is_empty() and not has_permit(required_permit_id):
         return false
-    # Task #45: a fixture only carries compatible_product_categories/capacity
-    # when it was purchased from fixture_catalog (has its own catalog_id) and
-    # that catalog entry actually defines them (every shelf-kind entry does;
-    # amenity/parking/checkout entries never hold products and don't). A
-    # fixture with neither -- e.g. shelf-1/shelf-2, the prototype scenario's
-    # two starting shelves from before the catalog system existed -- has no
-    # confirmed data to check against, so it stays unrestricted rather than
-    # inventing a rule for it.
+
+
     var fixture: Dictionary = layout.fixtures_by_id[fixture_id]
     var fixture_catalog_entry: Dictionary = _fixture_catalog.get(str(fixture.get("catalog_id", "")), {})
     if fixture_catalog_entry.has("compatible_product_categories"):
@@ -1573,6 +1489,8 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
     var initial_stock_units: int = int(catalog_entry["initial_stock_units"])
     if fixture_catalog_entry.has("capacity"):
         initial_stock_units = min(initial_stock_units, int(fixture_catalog_entry["capacity"]))
+        if program_town != null:
+            initial_stock_units = int(fixture_catalog_entry["capacity"])
     var restock_unit_cost_yen: int = int(catalog_entry["restock_unit_cost_yen"])
     var procurement_cost_yen: int = initial_stock_units * restock_unit_cost_yen
     if economy.cash_yen < procurement_cost_yen:
@@ -1583,9 +1501,8 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
         "initial_stock_units": initial_stock_units,
         "sale_price_yen": int(catalog_entry["sale_price_yen"]),
         "restock_unit_cost_yen": restock_unit_cost_yen,
-        # Task #68: this is the exact catalog_id this call already looked up
-        # catalog_entry with, not a guess -- store_view.gd uses it to pick
-        # the matching product overlay sprite.
+
+
         "catalog_id": catalog_id,
     }
     if not inventory.add_product(product_config):
@@ -1605,32 +1522,20 @@ func try_procure_product(catalog_id: String, instance_id: String, fixture_id: St
     return true
 
 
-# Task #53: a price-setting/margin mechanic is CONFIRMED_OFFICIAL, directly
-# re-read from the strategy guide (クイックリファレンス book pages 5-6):
-# "商品価格を決定して下さい。利益率の割合。通常は全て40%に設定されており、
-# これが定価と考えられる。個別に設定" (a global profit-margin percentage,
-# defaulting to 40% -- this client's product_catalog sale_price_yen values
-# already assume that baseline) and a screenshot showing "全商品平均利益率
-# 20% / 全体に設定 <20%OFFに> / 個別に設定" (a global "all items X% off"
-# slider, plus a per-item override). This client only ports the GLOBAL
-# slider, not the per-item override -- REMAKE_BALANCED_DEFAULT scope choice,
-# not a claim that per-item pricing doesn't exist in the original. The
-# confirmed section-8 fact that merchandise price is one factor in customer
-# monopoly/footfall is deliberately NOT wired here: no source states a
-# price-to-demand formula, so demand_policy.gd's arrival rate stays
-# unaffected by price_change_pct (inventing that link would be a much
-# larger, unconfirmed addition, not this task's narrow scope of finally
-# consuming the price_change_pct field store_rating.gd has awaited since
-# task #27). The lower bound of -100 (a 100% markdown, i.e. free) is this
-# project's own REMAKE_BALANCED_DEFAULT sanity floor -- no source states a
-# minimum, but a price below 0% of list price is not a meaningful discount.
 func try_set_price_policy(new_price_change_pct: int) -> bool:
-    # Task #100: allowed while customers are in the store -- this changes
-    # no fixture, route or basket (during opening hours the store is almost
-    # never empty, so waiting for it blocked the action for good).
+
+
     if is_game_over:
         return false
-    if new_price_change_pct < -100:
+    if program_town != null:
+        var delta := new_price_change_pct - price_change_pct
+        for category in _recovery["product_ids"].slice(0, 26):
+            var value := source_price_setting(str(category)) + delta
+            if value < 0 or value > 100:
+                return false
+        for category in _recovery["product_ids"].slice(0, 26):
+            product_price_settings[str(category)] = source_price_setting(str(category)) + delta
+    elif new_price_change_pct < -100:
         return false
     var previous_price_change_pct := price_change_pct
     price_change_pct = new_price_change_pct
@@ -1641,14 +1546,12 @@ func try_set_price_policy(new_price_change_pct: int) -> bool:
     return true
 
 
-# Scales a product's own list price (product_catalog's confirmed
-# sale_price_yen) by the currently configured price_change_pct, floored to
-# a whole yen and never negative. Called once per unit at the moment a
-# customer picks it up (inventory.try_take_one()'s own CONFIRMED_OFFICIAL
-# unit_price_yen is the pre-discount list price), so the price actually
-# charged reflects whatever price_change_pct was in effect at pickup time,
-# not at checkout time.
-func _apply_price_policy(list_price_yen: int) -> int:
+func _apply_price_policy(list_price_yen: int, category := "") -> int:
+    if program_town != null and not category.is_empty():
+        var index: int = _recovery["product_ids"].find(category)
+        if index >= 0:
+            var row: Array = _recovery["products"][index]
+            return int(row[0]) * (int(row[1]) + source_price_setting(category)) / 100
     return max(0, int(floor(float(list_price_yen) * (100 + price_change_pct) / 100.0)))
 
 
@@ -1727,15 +1630,24 @@ func _apply_hire(staff_id: String, candidate_id: String) -> bool:
     for existing_staff_member in staff.all_staff():
         if existing_staff_member.staff_id != staff_id and existing_staff_member.candidate_id == candidate_id:
             return false
-    # Task #123: nor someone working at another of the player's stores.
+
     for index in _stores.size():
         if index != active_store:
             for other in store_field(index, "staff").all_staff():
                 if other.candidate_id == candidate_id:
                     return false
+    if program_town != null and not bool(config["simulation"].get("rival_child", false)):
+        for rival in _rival_stores:
+            for index in rival.get("staff_indices", []):
+                if int(index) >= 0 and str(config["source_scenario"]["staff_order"][int(index)]) == candidate_id:
+                    return false
+            if _rival_simulations.has(str(rival["id"])):
+                for person in _rival_simulations[str(rival["id"])].staff.all_staff():
+                    if person.candidate_id == candidate_id:
+                        return false
     staff.members[staff_id].hire(_staff_candidate_catalog[candidate_id])
-    # A newly hired member arrives rested (first-title wiki: fire and
-    # re-hire gives a full 体力).
+
+
     var hired = staff.members[staff_id]
     hired.stamina_max = int(_candidate_figures(candidate_id).get("stamina", 0))
     hired.stamina = hired.stamina_max
@@ -1749,7 +1661,11 @@ func _load_rivals() -> void:
     _investigated_rivals.clear()
     _rivals_to_reopen.clear()
     for rival_entry in config["town"].get("rival_stores", []):
-        _rival_stores.append(_rival_store(str(rival_entry["id"]), _vec2i_from_array(rival_entry["position"]), 0))
+        var rival := _rival_store(str(rival_entry["id"]), _vec2i_from_array(rival_entry["position"]), 0)
+        for key in ["serial", "layout", "type_index", "schedule_index", "staff_indices", "price_settings"]:
+            if rival_entry.has(key):
+                rival[key] = rival_entry[key]
+        _rival_stores.append(rival)
 
 
 func _rival_store(rival_id: String, position: Vector2i, deficit_months: int) -> Dictionary:
@@ -1974,7 +1890,7 @@ func _grow_town_at_month_end() -> void:
         var changes: Array = program_town.monthly(_program_store_descriptors())
         _program_rng.seed = program_town.seed
         _sync_program_town()
-        if program_town.tier >= 4:
+        if program_town.tier >= 4 and int(config.get("source_scenario_index", 0)) == 0:
             clear_condition_met = true
         for change in changes:
             _record_event("program_town_changed", {"action": change})
@@ -1983,14 +1899,14 @@ func _grow_town_at_month_end() -> void:
     var growth := _town_growth()
     if growth.is_empty() or store_site == null:
         return
-    # Analogy: the rate that takes the beginner map's 2,179 to 20,000 in the
-    # guide's 8 years; REMAKE_BALANCED_DEFAULT that it is the same each month.
+
+
     town.population += int(round(float(town.population) * float(growth["monthly_growth_rate"])))
     for milestone in growth["milestones"]:
         var milestone_id := str(milestone["id"])
         if town.population < int(milestone["population"]) or town_milestone_built(milestone_id):
             continue
-        var stores: Array = _store_rects().map(func(rect): return rect.position)
+        var stores: Array = _store_rects().map( func(rect): return rect.position)
         var site: Vector2i = store_site.best_town_building_site(
             Vector2i(int(milestone["size"][0]), int(milestone["size"][1])), stores, _bought_buildings, bool(milestone["near_railway"])
         )
@@ -2189,11 +2105,8 @@ func try_buy_out_rival(rival_id: String) -> bool:
         _rival_cash_yen += price
     _rival_stores.remove_at(index)
     player_store_count += 1
-    # Task #123: the bought store is now one of the player's own, run like
-    # 本店 (see _add_store()). REMAKE_BALANCED_DEFAULT: it comes as the
-    # opening small store (the rival's own floor was never recovered), with
-    # its goods and three staff members nobody else employs; task #129: and
-    # with a new store's 評価 and 人気 (the rivals keep no rating here).
+
+
     var store_index := -1
     if not store_types().is_empty():
         store_index = _add_store(_branch_store_type(), bought["position"], _branch_name())
@@ -2201,8 +2114,24 @@ func try_buy_out_rival(rival_id: String) -> bool:
     if acquired != null and store_index >= 0:
         var home := active_store
         _switch_store(store_index)
-        # The buyer keeps the acquired fixtures and stock; the roster is
-        # rebound by _add_store rather than duplicating the rival's staff.
+
+
+        config["store"] = acquired.config["store"].duplicate(true)
+        config["staff"] = acquired.config["staff"].duplicate(true)
+        config["simulation"]["checkout_fixture_id"] = acquired.config["simulation"]["checkout_fixture_id"]
+        store_type_id = acquired.store_type_id
+        _store_size_tier = acquired._store_size_tier
+        product_price_settings = acquired.product_price_settings.duplicate()
+        _permits_held = acquired._permits_held.duplicate()
+        staff = acquired.staff
+        customers = acquired.customers
+        _checkout_queue = acquired._checkout_queue.duplicate()
+        _program_counts = acquired._program_counts.duplicate()
+        _parking_used = acquired._parking_used
+        popularity = acquired.popularity
+        internal_rating_value = acquired.internal_rating_value
+        star_rating = acquired.star_rating
+        _apply_business_hours(acquired.business_hours_id)
         layout = acquired.layout
         inventory = acquired.inventory
         stored_fixtures = acquired.stored_fixtures
@@ -2267,6 +2196,8 @@ static func open_minutes(preset: Dictionary) -> int:
 
 
 func is_open_now() -> bool:
+    if program_town != null and not source_store_ready():
+        return false
     return _open_at_minute(minute_of_day)
 
 
@@ -2861,6 +2792,11 @@ func _front_search_enabled() -> bool:
 # still be reached and nobody is stranded; otherwise puts `previous` back.
 func _accept_layout_change(previous: Array, checkout_before: Vector2i) -> bool:
     _refresh_interactions()
+    if not _source_placements_valid():
+        edit_refusal = "floor"
+        layout.restore_fixture_snapshot(previous)
+        _refresh_interactions()
+        return false
     var unreachable := _unreachable_goal()
     if unreachable.is_empty() and _reroute_after_layout_change(checkout_before):
         return true
@@ -2873,8 +2809,6 @@ func _accept_layout_change(previous: Array, checkout_before: Vector2i) -> bool:
     return false
 
 
-# What _required_routes_are_reachable() finds cut off: a product id,
-# "checkout", or "" when all is well.
 func _unreachable_goal() -> String:
     var cursor: Vector2i = layout.entry
     for product_id in config["customer"]["visit_plan_product_ids"]:
@@ -3198,7 +3132,7 @@ func try_change_product(catalog_id: String, instance_id: String, fixture_id: Str
     var held_product_id: String = inventory.product_on_fixture(fixture_id)
     if held_product_id.is_empty():
         return try_procure_product(catalog_id, instance_id, fixture_id)
-    if is_game_over or (not _edits_while_open and not customers.all_settled()):
+    if is_game_over or ( not _edits_while_open and not customers.all_settled()):
         return false
     if not _product_catalog.has(catalog_id) or instance_id.is_empty() or inventory.products.has(instance_id):
         return false
@@ -3216,29 +3150,16 @@ func try_change_product(catalog_id: String, instance_id: String, fixture_id: Str
         return false
     var units: int = int(_product_catalog[catalog_id]["initial_stock_units"])
     if fixture_entry.has("capacity"):
-        units = mini(units, int(fixture_entry["capacity"]))
+        units = int(fixture_entry["capacity"]) if program_town != null else mini(units, int(fixture_entry["capacity"]))
     var cost_yen: int = units * int(_product_catalog[catalog_id]["restock_unit_cost_yen"])
     if economy.cash_yen + held.stock_units * held.restock_unit_cost_yen < cost_yen:
         return false
     _withdraw_product(held_product_id)
     var procured := try_procure_product(catalog_id, instance_id, fixture_id)
-    assert(procured)
+    assert (procured)
     return procured
 
 
-# Replaces the entire store layout with a pre-built sample from
-# sample_layouts (task #37). Confirmed first-title evidence: a sample-layout
-# loading path exists in the original UI, and loading one is not trivially
-# reversible (docs/research/ss-layout-entrance-register-and-chain-
-# cannibalization-2026-09-06.md section 3) -- there is no confirmed undo, so
-# this client does not add one either. Any fixture id the sample reuses from
-# the current layout keeps its existing ownership at no extra cost (this is
-# a rearrangement, not a repurchase); any id the sample introduces that the
-# current layout does not already have is charged at that catalog entry's
-# normal purchase price, same as try_purchase_fixture. To avoid inventing an
-# "auto-clear inventory" rule the evidence does not describe, loading a
-# sample that would remove a fixture currently holding procured stock is
-# rejected outright rather than silently discarding that inventory.
 func try_load_sample_layout(sample_id: String) -> bool:
     if _layout_edit_locked():
         return false
@@ -3460,7 +3381,7 @@ func _advance_customer(customer) -> void:
                         "reason": skip_reason,
                     })
                 elif not line.is_empty():
-                    line["unit_price_yen"] = _apply_price_policy(int(line["unit_price_yen"]))
+                    line["unit_price_yen"] = _apply_price_policy(int(line["unit_price_yen"]), inventory.get_product(product_id).catalog_id)
                     customer.add_basket_line(line)
                     if not customer.visit.is_empty():
                         customer.budget_left -= int(line["unit_price_yen"])
@@ -3499,7 +3420,7 @@ func _advance_customer(customer) -> void:
         "waiting_checkout":
             if program_town != null:
                 _program_wait_at_checkout(customer, false)
-            pass  # Dequeued by _dispatch_checkout_queue() once the checkout is free.
+            pass
         "checkout":
             if program_town != null:
                 var ready := ProgramRulesScript.checkout_ready(staff.checkout_staff().register_skill, int(customer.visit.get("quickness", 100)), _program_rng)
@@ -3508,17 +3429,8 @@ func _advance_customer(customer) -> void:
                     return
             else:
                 customer.checkout_ticks_remaining -= 1
-            # Task #49/#51: a checkout service running unusually long
-            # (relative to the confirmed CheckoutTiming reference duration)
-            # angers the customer exactly once per checkout, applying the
-            # confirmed -2 penalty. Task #51 corrected the penalty's scope:
-            # the strategy guide, directly re-read (book pp.34-35,
-            # "お客さんに怒られると店員全員の能力が下がってしまう"),
-            # states CONFIRMED_OFFICIAL that an angry customer lowers EVERY
-            # active staff member's ability, not only the one who served
-            # them -- task #49 had scoped this down to the serving staff
-            # member alone, a REMAKE_BALANCED_DEFAULT simplification this
-            # stronger, officially-tier evidence now supersedes.
+
+
             if program_town == null and not customer.checkout_anger_triggered:
                 var elapsed_ticks: int = (
                     customer.checkout_assigned_ticks - customer.checkout_ticks_remaining
@@ -3532,20 +3444,8 @@ func _advance_customer(customer) -> void:
                         skills_by_staff[angered_staff_member.staff_id] = (
                             _checkout_anger.apply_penalty(angered_staff_member)
                         )
-                    # Task #65: the guide's own confirmed per-event rating
-                    # modifier ("お客に怒られる=1/6の確率で-1", store_rating.gd's
-                    # ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_*/DOWNGRADE_POINTS)
-                    # was defined but never rolled anywhere, since no angry-
-                    # customer trigger existed in this client when it was
-                    # first ported (decision 0096). checkout_anger_triggered
-                    # (task #49) is that trigger now, so this reuses the
-                    # shared demand RNG for the roll -- the same "one shared
-                    # random stream, not a new one per mechanic" convention
-                    # task #55's incidental-want-product draw already
-                    # established for this client.
-                    # Task #133: in the real game the program's odds
-                    # (0x80035D58, CONFIRMED_BINARY): 評価 -1 one time in 10,
-                    # and one time in 3 every staff member loses a point.
+
+
                     var penalty_one_in: int = StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_DENOMINATOR
                     if _program_demand != null:
                         var growth_rules: Dictionary = _program_demand.tables["staff_growth"]
@@ -3559,8 +3459,8 @@ func _advance_customer(customer) -> void:
                         <= StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_NUMERATOR
                     )
                     if rating_penalty_applied:
-                        # Task #129: never below 5 (the program only takes
-                        # the point from a score of 6 or more).
+
+
                         internal_rating_value = clampi(
                             internal_rating_value + StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_POINTS,
                             StoreRatingScript.RATING_FLOOR, StoreRatingScript.RATING_CAP
@@ -3585,7 +3485,7 @@ func _advance_customer(customer) -> void:
                     customer.mark_settled(record)
                     _store_sales_yen += int(record["total_yen"])
                     for line in customer.basket:
-                        # Task #117: the shelf may have been sold since.
+
                         var bought_product = inventory.products.get(str(line["product_id"]))
                         if bought_product != null and not bought_product.catalog_id.is_empty():
                             survey_bought[bought_product.catalog_id] = (
@@ -3604,11 +3504,8 @@ func _advance_customer(customer) -> void:
                     "staff_id": checkout_staff.staff_id,
                     "transaction_id": customer.settled_transaction_id,
                 })
-                # Task #48: a completed checkout task is a confirmed work-
-                # growth trigger (register_skill/service_skill), applied
-                # whether or not the customer actually bought anything --
-                # the guide's growth model is about performing the work
-                # task, not the resulting transaction.
+
+
                 var checkout_growth: Array[Dictionary] = _grow_staff(checkout_staff, "checkout")
                 if not checkout_growth.is_empty():
                     _record_event("staff_skill_growth", {
@@ -3626,13 +3523,6 @@ func _advance_customer(customer) -> void:
             push_error("Unknown customer phase: %s" % customer.phase)
 
 
-# Hands the single checkout fixture's one service slot to the
-# longest-waiting queued customer once the currently-serving staff member is
-# free. Runs after every customer has taken its own turn this tick, so a
-# customer that just joined the queue this same tick can be dispatched
-# immediately if the checkout was already idle -- matching this client's
-# pre-task-#36 behavior of starting service in the same tick a lone customer
-# arrives.
 func _dispatch_checkout_queue() -> void:
     var checkout_staff = staff.checkout_staff()
     if checkout_staff.state != "idle" or _checkout_queue.is_empty():
@@ -3800,7 +3690,7 @@ func _patience(customer) -> float:
 func _reason_to_skip(customer, product_id: String) -> String:
     if customer.visit.is_empty() or not inventory.products.has(product_id):
         return ""
-    var price := _apply_price_policy(inventory.get_product(product_id).sale_price_yen)
+    var price := _apply_price_policy(inventory.get_product(product_id).sale_price_yen, inventory.get_product(product_id).catalog_id)
     if price > customer.budget_left:
         return "budget"
     if program_town == null and price_change_pct > 0:
@@ -3813,10 +3703,6 @@ func _reason_to_skip(customer, product_id: String) -> String:
     return ""
 
 
-# Task #119/#120: ついで買い. After an item, the customer may go for one more:
-# one of their row's extras anywhere in the store, or anything else on a
-# fixture close by (impulse). The chance grows with a lower 集中力, the
-# fixture's 注目度 and a price cut.
 func _maybe_add_on(customer) -> void:
     if customer.visit.is_empty() or customer.add_ons >= int(_customer_type_rules["max_add_ons"]):
         return
@@ -3828,11 +3714,11 @@ func _maybe_add_on(customer) -> void:
         var product = inventory.get_product(product_id)
         if product.stock_units <= 0 or customer.planned_product_ids.has(product_id):
             continue
-        if _apply_price_policy(product.sale_price_yen) > customer.budget_left:
+        if _apply_price_policy(product.sale_price_yen, product.catalog_id) > customer.budget_left:
             continue
         var weight := 0.0
-        # Task #131: the program's customers plan their extras on the way in
-        # (_start_program_customer); only impulse buys are added here.
+
+
         if extras.has(product.catalog_id) and _program_demand != null:
             continue
         if extras.has(product.catalog_id):
@@ -3860,7 +3746,7 @@ func _maybe_add_on(customer) -> void:
         * minf(2.0, float(chosen[1]))
     )
     if price_change_pct < 0:
-        chance *= 1.0 + float(customer.visit["price_sensitivity"]) / 100.0 * -price_change_pct * float(
+        chance *= 1.0 + float(customer.visit["price_sensitivity"]) / 100.0 * - price_change_pct * float(
             _customer_type_rules["price_skip_per_percent_at_full_sensitivity"]
         )
     if _demand_rng.randf() >= chance:
@@ -3870,8 +3756,6 @@ func _maybe_add_on(customer) -> void:
     _record_event("customer_add_on", {"customer_id": customer.customer_id, "product_id": str(chosen[0])})
 
 
-# A shelf of `category` with goods on it, not yet in `plan`; "" when none
-# (the survey then notes the category as missing).
 func _shelf_for_category(category: String, plan: Array[String]) -> String:
     var shelves: Array[String] = []
     for product_id in inventory.product_order:
@@ -3965,15 +3849,15 @@ func save_state() -> Dictionary:
         "game_over_reason": game_over_reason,
         "clear_condition_met": clear_condition_met,
         "player_store_count": player_store_count,
-        # Task #95 (schema 6): the buildings cleared for the store, and since
-        # tasks #111/#114 for facilities and town buildings too.
+
+
         "bought_buildings": _bought_buildings.duplicate(),
-        # Task #101 (schema 7): rivals bought out and rivals investigated.
-        "bought_rival_ids": owned_branches.filter(func(branch): return not str(branch["id"]).is_empty()).map(func(branch): return str(branch["id"])),
+
+        "bought_rival_ids": owned_branches.filter( func(branch): return not str(branch["id"]).is_empty()).map( func(branch): return str(branch["id"])),
         "investigated_rival_ids": _investigated_rivals.keys(),
-        # Task #106 (schema 9): where each rival stands now, its losing
-        # months, and the branches waiting to open again.
-        "rival_stores": _rival_stores.map(func(rival): return {
+
+
+        "rival_stores": _rival_stores.map( func(rival): return {
             "id": str(rival["id"]),
             "position": [rival["position"].x, rival["position"].y],
             "deficit_months": int(rival["deficit_months"]),
@@ -3981,12 +3865,16 @@ func save_state() -> Dictionary:
             "monthly_profit_yen": int(rival.get("monthly_profit_yen", 0)),
             "last_sales_yen": int(rival.get("last_sales_yen", 0)),
             "permits_held": rival.get("permits_held", []),
+            "layout": rival.get("layout", {}),
+            "type_index": int(rival.get("type_index", 0)),
+            "schedule_index": int(rival.get("schedule_index", 0)),
+            "staff_indices": rival.get("staff_indices", []),
+            "price_settings": rival.get("price_settings", []),
         }),
-        # Task #111 (schema 9): facilities built through 誘致, and the one
-        # under construction.
-        # Task #114 (schema 9): the town's population and its own buildings.
+
+
         "town_population": town.population,
-        "added_buildings": _building_log.map(func(built): return {
+        "added_buildings": _building_log.map( func(built): return {
             "kind": str(built["kind"]),
             "id": str(built["id"]),
             "origin": [built["origin"].x, built["origin"].y],
@@ -3996,7 +3884,7 @@ func save_state() -> Dictionary:
             "origin": [pending_inducement["origin"].x, pending_inducement["origin"].y],
             "ready_day": int(pending_inducement["ready_day"]),
         },
-        "rivals_to_reopen": _rivals_to_reopen.map(func(waiting): return {
+        "rivals_to_reopen": _rivals_to_reopen.map( func(waiting): return {
             "id": str(waiting["id"]),
             "left": [waiting["left"].x, waiting["left"].y],
         }),
@@ -4008,11 +3896,12 @@ func save_state() -> Dictionary:
             "events": _chain_visitor_milestone.events.duplicate(true),
         },
         "chain_visitors_total": _chain_visitors_total,
+        "last_owner_review": last_owner_review.duplicate(true),
         "economy": economy.snapshot(),
         "events": event_log.snapshot(),
     }
-    # 本店's own state sits at the top level (as before schema 10); every
-    # other store's in "branches" (task #123, schema 10).
+
+
     data.merge(_store_save_block())
     var branches: Array = []
     for index in range(1, _stores.size()):
@@ -4034,29 +3923,29 @@ func save_state() -> Dictionary:
     return data
 
 
-# One store's own state (task #123 split it out of save_state()).
 func _store_save_block() -> Dictionary:
     return {
         "store_name": store_name,
         "popularity": popularity,
         "price_change_pct": price_change_pct,
+        "product_price_settings": product_price_settings.duplicate(),
         "internal_rating_value": internal_rating_value,
         "star_rating": star_rating,
         "store_site_origin": [store_site_origin.x, store_site_origin.y],
-        # Task #103 (schema 8).
+
         "business_hours_id": business_hours_id,
-        # Task #104 (schema 9): which store stands on the site.
+
         "store_type_id": store_type_id,
         "permits_held": _permits_held.keys(),
         "promotions_used_this_month": _promotions_used_this_month.keys(),
         "scheduled_promotions": _scheduled_promotions.duplicate(true),
-        # Task #56: which candidate currently occupies each roster slot is
-        # player-changeable (try_hire_candidate()).
+
+
         "staff_roster": _staff_roster_snapshot(),
-        # Task #107 (schema 9): each staff member's grown skills and 体力,
-        # and this month's and last month's survey.
+
+
         "staff_state": _staff_state_snapshot(),
-        # Task #118 (schema 10): who has register duty.
+
         "checkout_staff_id": staff.checkout_staff_id,
         "survey": {
             "bought": survey_bought.duplicate(),
@@ -4064,45 +3953,40 @@ func _store_save_block() -> Dictionary:
             "types": survey_types.duplicate(),
             "last": last_survey.duplicate(true),
         },
-        # Task #125: fixtures put away.
+
         "stored_fixtures": stored_fixtures.duplicate(true),
-        # Task #132: the outdoor lot.
+
         "outdoor_fixtures": outdoor_fixtures.duplicate(true),
-        # Task #123 (schema 10): this store's own sales.
+
         "store_sales": {
             "total": _store_sales_yen,
             "month_start": _store_sales_at_month_start,
             "day_start": _store_sales_at_day_start,
             "last_month": _store_sales_last_month,
+            "annual_sales": _annual_sales_yen,
             "visitor_heads": _store_visitor_heads,
         },
+        "source_store_config": config["store"].duplicate(true),
+        "source_runtime": _source_runtime_snapshot() if program_town != null else {},
         "fixtures": layout.fixture_snapshot(),
         "inventory": inventory.snapshot(),
     }
 
 
-# Returns false, without mutating this simulation, when the save data does
-# not belong to the currently-loaded config (different scenario_id, or a
-# schema_version the running config no longer matches) -- an expected,
-# recoverable condition, the same as this client's other try_* actions.
-# A structurally corrupted save (missing keys entirely) is not treated as
-# this same recoverable case; it asserts, matching _require_config()'s own
-# convention for malformed input this client did not itself produce.
 func load_state(data: Dictionary) -> bool:
     if str(data.get("scenario_id", "")) != str(config["scenario_id"]):
         return false
     if int(data.get("config_schema_version", -1)) != int(config["schema_version"]):
         return false
-    # Task #123: a schema 9 save (one store; bought branches only counted)
-    # still loads -- its bought branches open as real stores.
+
+
     var save_version := int(data.get("save_schema_version", -1))
     if save_version != SAVE_SCHEMA_VERSION and save_version != 9:
         return false
     _require_save_data(data)
     _drop_branches()
-    # Task #104: the saved store may be another type than the one this
-    # simulation stands in; build that one first (and put this one back if
-    # the save does not fit it after all).
+
+
     var saved_type := str(data["store_type_id"])
     var previous_type := store_type_id
     if saved_type != store_type_id:
@@ -4113,21 +3997,15 @@ func load_state(data: Dictionary) -> bool:
         if previous_type != store_type_id:
             _build_store_type(previous_type)
         return false
-    # Clears every subsystem back to its config-derived starting point
-    # first (the same subsystems reset() touches, minus admitting a
-    # customer) so load_state() is safe to call on a simulation that has
-    # already been running, not only a freshly-constructed one, and so a
-    # customer is only admitted below once the layout is in its final,
-    # loaded state -- admitting one before restoring fixtures could leave
-    # its cached route stale against a layout that is about to change.
+
+
     layout.reset()
     inventory.reset()
     economy.reset()
     customers.reset()
     staff.reset()
-    # Task #74: a save taken while a customer was queued at checkout left
-    # that customer_id behind after customers.reset() had already discarded
-    # the actual customer record.
+
+
     _checkout_queue.clear()
     event_log.reset()
     _candidate_raises = (data.get("candidate_figure_raises", {}) as Dictionary).duplicate(true)
@@ -4155,8 +4033,9 @@ func load_state(data: Dictionary) -> bool:
             str(rival_data["id"]), _vec2i_from_array(rival_data["position"]), int(rival_data["deficit_months"])
         ))
         if program_town != null:
-            for field in ["serial", "monthly_profit_yen", "last_sales_yen", "permits_held"]:
-                _rival_stores.back()[field] = rival_data.get(field, [] if field == "permits_held" else (1 if field == "serial" else 0))
+            for field in ["serial", "monthly_profit_yen", "last_sales_yen", "permits_held", "layout", "type_index", "schedule_index", "staff_indices", "price_settings"]:
+                if rival_data.has(field):
+                    _rival_stores.back()[field] = rival_data[field]
     for waiting in data["rivals_to_reopen"]:
         _rivals_to_reopen.append({"id": str(waiting["id"]), "left": _vec2i_from_array(waiting["left"])})
     for rival_id in data["investigated_rival_ids"]:
@@ -4183,8 +4062,9 @@ func load_state(data: Dictionary) -> bool:
     _chain_visitor_milestone.next_threshold = int(milestone_data["next_threshold"])
     _chain_visitor_milestone.events.assign(milestone_data["events"])
     _chain_visitors_total = int(data.get("chain_visitors_total", _chain_visitor_milestone.last_observed_total))
+    last_owner_review = data.get("last_owner_review", {}).duplicate(true)
     _restore_store_block(data, data["bought_buildings"])
-    # Task #123: the other stores.
+
     for block in data.get("branches", []):
         var origin := _vec2i_from_array(block["store_site_origin"])
         var index := _add_store(str(block["store_type_id"]), origin, str(block["store_name"]))
@@ -4205,9 +4085,11 @@ func load_state(data: Dictionary) -> bool:
     _apply_weather(int(data["weather_category_index"]))
     _for_each_store(_refresh_store_catchment)
     _for_each_store(_refresh_interactions)
-    # Task #130: the program works the day's customers out again on a load.
+
     _allocate_program_day()
-    _for_each_store(_start_opening_customer)
+    _for_each_store( func():
+        if _source_runtime_to_restore.is_empty():
+            _start_opening_customer())
     if program_town != null and data.has("program_town"):
         program_town.restore(data["program_town"])
         _rival_cash_yen = int(data.get("program_rival_cash", 100000000))
@@ -4218,18 +4100,18 @@ func load_state(data: Dictionary) -> bool:
             if data.get("program_rivals", {}).has(id):
                 _program_rival_simulation(rival).load_state(data["program_rivals"][id])
         _program_rng.seed = int(data.get("program_rng", program_town.seed))
+        _for_each_store( func():
+            if not _source_runtime_to_restore.is_empty():
+                _restore_source_runtime(_source_runtime_to_restore)
+                _source_runtime_to_restore = {})
         _sync_program_town()
     return true
 
 
-# One store's own state, from save_state()'s _store_save_block() (or, for
-# 本店, the top level of the save). `bought` = the town's cleared buildings
-# (given with 本店's site only).
 func _restore_store_block(block: Dictionary, bought: Array) -> void:
-    # Task #56: staff.reset() restored every slot to its config default;
-    # reapply the saved roster directly via StaffState.hire() (the saved
-    # data was only ever produced by a hire that already passed the
-    # cross-slot check).
+    _source_runtime_to_restore = block.get("source_runtime", {}).duplicate(true)
+
+
     for roster_entry in block["staff_roster"]:
         var roster_staff_id := str(roster_entry["staff_id"])
         var roster_candidate_id := str(roster_entry["candidate_id"])
@@ -4255,6 +4137,7 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
     outdoor_fixtures = (block.get("outdoor_fixtures", []) as Array).duplicate(true)
     popularity = int(block["popularity"])
     price_change_pct = int(block["price_change_pct"])
+    product_price_settings = block.get("product_price_settings", {}).duplicate()
     internal_rating_value = int(block["internal_rating_value"])
     star_rating = int(block["star_rating"])
     if not _business_hours.is_empty():
@@ -4271,10 +4154,13 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
     _scheduled_promotions.clear()
     for scheduled in block["scheduled_promotions"]:
         _scheduled_promotions.append((scheduled as Dictionary).duplicate(true))
+    if block.get("source_store_config", {}).has("source_floor"):
+        config["store"] = block["source_store_config"].duplicate(true)
+        layout = StoreLayoutScript.new(config["store"], [], _any_side_catalog_ids())
     if layout.fixture_snapshot_is_valid(block["fixtures"]):
         layout.restore_fixture_snapshot(block["fixtures"])
     inventory.restore_snapshot(block["inventory"])
-    # Before schema 10 there was one store: its sales were all the sales.
+
     var sales: Dictionary = block.get("store_sales", {
         "total": economy.recorded_revenue_yen(),
         "month_start": _revenue_at_month_start,
@@ -4284,6 +4170,7 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
     _store_sales_at_month_start = int(sales["month_start"])
     _store_sales_at_day_start = int(sales["day_start"])
     _store_sales_last_month = int(sales.get("last_month", 0))
+    _annual_sales_yen = int(sales.get("annual_sales", 0))
     _store_visitor_heads = int(sales.get("visitor_heads", 0))
     _refresh_interactions()
 
@@ -4298,10 +4185,15 @@ func _record_event(event_type: String, details: Dictionary = {}) -> void:
 
 
 func _refresh_interactions() -> void:
-    _checkout_interaction = layout.interaction_for_fixture(
-        str(config["simulation"]["checkout_fixture_id"]),
-        "checkout"
-    )
+    var id := str(config["simulation"]["checkout_fixture_id"])
+    if not layout.fixtures_by_id.has(id):
+        id = ""
+        for fixture in layout.fixtures:
+            if str(fixture["kind"]) == "checkout":
+                id = str(fixture["id"])
+                break
+        config["simulation"]["checkout_fixture_id"] = id
+    _checkout_interaction = layout.entry if id.is_empty() else layout.interaction_for_fixture(id, "checkout")
 
 
 func _required_routes_are_reachable() -> bool:
@@ -4329,15 +4221,9 @@ func _vec2i_from_array(value: Array) -> Vector2i:
 
 func _product_interaction(product_id: String) -> Vector2i:
     var product = inventory.get_product(product_id)
-    return layout.interaction_for_fixture(product.fixture_id, "shelf")
+    return _vec2i_from_array(layout.fixtures_by_id[product.fixture_id]["interaction_subcell"])
 
 
-# Task #119 (the owner's request): CONFIRMED_OFFICIAL that a wagon holds
-# less than the shelf of the same size (fixture_catalog capacities, e.g.
-# 15/30/45 against 40/80/120). REMAKE_BALANCED_DEFAULT (no source says which
-# sides goods are taken from): a shelf only from its front, a wagon from any
-# free side -- a person walks to the nearest one (guide_starting_store.
-# store_rules). Routes to a product go through here.
 func _product_access_goals(product_id: String) -> Dictionary:
     var goals := {}
     for cell in layout.access_cells(inventory.get_product(product_id).fixture_id):
@@ -4409,11 +4295,10 @@ func _inventory_snapshot() -> Array[Dictionary]:
 
 const SAVED_STAFF_FIELDS := [
     "service_skill", "security_skill", "cleaning_skill", "register_skill",
-    "replenishment_skill", "stamina", "exhausted",
+    "replenishment_skill", "stamina", "exhausted", "salary_yen_per_day_24h",
 ]
 
 
-# Survey counts come back from a JSON save as floats.
 func _counts(source: Dictionary) -> Dictionary:
     var result := {}
     for key in source:
@@ -4438,6 +4323,8 @@ func _restore_staff_state(rows: Array) -> void:
             continue
         var staff_member = staff.members[staff_id]
         for field in SAVED_STAFF_FIELDS:
+            if not row.has(field):
+                continue
             if field == "exhausted":
                 staff_member.exhausted = bool(row[field])
             else:
@@ -4717,13 +4604,14 @@ func _settle_month_end() -> void:
     _expense_index_at_month_start = economy.expense_records.size()
     _step_rivals_at_month_end()
     _grow_town_at_month_end()
+    if program_town != null and month_count % 12 == 0:
+        _annual_review()
     _evaluate_terminal_state()
 
 
-# Task #123: each store's own month end -- its rating from its own sales,
-# its survey, its advertising for the month.
 func _close_store_month() -> void:
     var monthly_sales_yen: int = (_store_sales_yen - _store_sales_at_month_start) * MONTH_MULTIPLIER
+    _annual_sales_yen += monthly_sales_yen
     _evaluate_store_rating(monthly_sales_yen)
     last_survey = {"bought": survey_bought.duplicate(), "missing": survey_missing.duplicate(), "types": survey_types.duplicate()}
     survey_bought.clear()
@@ -4813,18 +4701,18 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
     var service_value: float = _store_value.compute_service_value(
         service_skills, fixture_service_bonuses
     )
-    # Task #111: + セキュリティ施設の効果 (PDF4 p.74's formula).
+
     var security_value: float = _store_value.compute_security_value(
         security_skills, _store_size_tier, _security_facility_bonus()
     )
     var cleaning_value: float = _store_value.compute_cleaning_value(
         cleaning_skills, _store_size_tier
     )
-    # Task #53: price_change_pct now reflects the player's own configured
-    # price policy (try_set_price_policy()) instead of always being 0.
+
+
     var evaluation: Dictionary = _store_rating.evaluate_monthly_rating_change(
         internal_rating_value,
-        price_change_pct,
+        source_shelf_price_percent() - 100 if program_town != null else price_change_pct,
         service_value,
         security_value,
         cleaning_value,
@@ -4855,19 +4743,16 @@ func _evaluate_store_rating(monthly_sales_yen: int) -> void:
         "star_rating": star_rating,
         "customer_share_percent": demand.customer_share_percent,
     })
-    # Task #129 (CONFIRMED_BINARY, msg 208/209): the rank change is told.
+
     if star_rating != previous_stars:
         _record_event("store_rank_changed", {"stars": star_rating, "raised": star_rating > previous_stars})
-    # The manager's advice (CONFIRMED_BINARY, msg 251-258): with a chance of
-    # the manager's 学歴 out of 100 (the staff byte +0x15, which the hire
-    # screen shows as 学歴 and every magazine article raises; task #133).
+
+
     var advice: String = _store_rating.manager_advice(evaluation, _manager_academic(), _demand_rng)
     if not advice.is_empty():
         _record_event("manager_advice", {"text": advice})
 
 
-# The manager's 学歴 (the program's staff byte +0x15, task #133): the chance
-# of the manager's advice and of the staff's growth.
 func _manager_academic() -> int:
     var manager = staff.members.get(str(config["staff"].get("manager_staff_id", "")))
     if manager == null:
@@ -4883,13 +4768,10 @@ func _candidate_figures(candidate_id: String) -> Dictionary:
         return base
     var figures := base.duplicate()
     for key in raises:
-        figures[key] = mini(100, int(base.get(key, 0)) + int(raises[key]))
+        figures[key] = mini(127 if key == "age_years" else 100, int(base.get(key, 0)) + int(raises[key]))
     return figures
 
 
-# Task #133: the candidates' and the opening staff's figures from the PS
-# program's staff table (ps1_program_tables.staff_candidates, CONFIRMED_BINARY)
-# over the guide transcription (12 of 35 differ slightly; 教育 is new).
 func _apply_program_staff_figures() -> void:
     var program: Dictionary = config["ps1_program_tables"]["staff_candidates"]
     for entry in config["staff_candidates"]:
@@ -4925,12 +4807,18 @@ func _evaluate_terminal_state() -> void:
     if economy.cash_yen < 0:
         _trigger_game_over("bankrupt")
         return
+    if program_town != null:
+        if int(config.get("source_scenario_index", 0)) == 1 and player_store_count >= 10:
+            clear_condition_met = true
+        if month_count / 12 + 1 >= 99:
+            _trigger_game_over("time_limit_exceeded")
+        return
     if _town_growth().is_empty():
         if player_store_count >= PLAYER_STORE_COUNT_SCENARIO_TARGET:
             clear_condition_met = true
     elif town_milestone_built(str(_town_growth()["clear_milestone"])):
-        # Task #114: the beginner map (guide_town_map) is cleared by
-        # 都庁を誘致する (CONFIRMED_OFFICIAL), not by the store count.
+
+
         clear_condition_met = true
     var current_year: int = (month_count / MONTHS_PER_YEAR) + 1
     if current_year > GAME_OVER_YEAR_LIMIT and not clear_condition_met:
@@ -5705,25 +5593,53 @@ func _program_rival_simulation(rival: Dictionary):
     if not _rival_simulations.has(id):
         var child_config := config.duplicate(true)
         child_config["simulation"]["rival_child"] = true
+        child_config["customer"]["id_prefix"] = str(config["customer"]["id_prefix"]) + "-" + id
         child_config["town"]["rival_stores"] = []
         child_config["guide_town_map"]["rival_stores"] = []
         child_config["economy"]["initial_cash_yen"] = maxi(0, _rival_cash_yen)
+        if not rival.get("layout", {}).is_empty():
+            var type_index := int(rival["type_index"])
+            child_config["store_types"][type_index]["layout"] = rival["layout"].duplicate(true)
+            GuideStartingStoreScript.apply_store_type(child_config, str(child_config["store_types"][type_index]["id"]))
         var child = get_script().new(child_config)
         child._apply_store_site(rival["position"], [])
         child.store_name = "ライバル本店" if int(rival.get("serial", 1)) == 1 else "ライバル%d号店" % int(rival["serial"])
         var reserved: Array = []
-        _for_each_store(func():
+        _for_each_store( func():
             for person in staff.all_staff():
                 reserved.append(person.candidate_id))
         for existing in _rival_simulations.values():
             for person in existing.staff.all_staff():
                 reserved.append(person.candidate_id)
+        var slot := 0
         for person in child.staff.all_staff():
-            for candidate_id in _staff_candidate_catalog:
-                if not reserved.has(candidate_id):
+            var indices: Array = rival.get("staff_indices", [])
+            if slot < indices.size():
+                var index := int(indices[slot])
+                if index >= 0:
+                    var candidate_id := str(config["source_scenario"]["staff_order"][index])
                     person.hire(_staff_candidate_catalog[candidate_id])
-                    reserved.append(candidate_id)
-                    break
+                else:
+                    child.staff.members.erase(person.staff_id)
+            else:
+                for candidate_id in _staff_candidate_catalog:
+                    if not reserved.has(candidate_id):
+                        person.hire(_staff_candidate_catalog[candidate_id])
+                        reserved.append(candidate_id)
+                        break
+            slot += 1
+        child.config["staff"]["manager_staff_id"] = "staff-1"
+        child._reset_stamina()
+        if rival.has("schedule_index"):
+            var schedule := int(rival["schedule_index"])
+            if schedule < child._business_hours.size():
+                child._apply_business_hours(str(child._business_hours[schedule]["id"]))
+        child._permits_held.clear()
+        for permit in rival.get("permits_held", []):
+            child._permits_held[str(permit)] = true
+        if rival.has("price_settings"):
+            for i in rival["price_settings"].size():
+                child.product_price_settings[str(_recovery["product_ids"][i])] = int(rival["price_settings"][i])
         _rival_simulations[id] = child
     var sim = _rival_simulations[id]
     sim.program_town = program_town
@@ -5764,14 +5680,7 @@ func _program_rival_monthly() -> void:
         var index := _rival_index(closed)
         var origin: Vector2i = _rival_stores[index]["position"]
         var sim = _program_rival_simulation(_rival_stores[index])
-        var refund: int = store_site.start_land_price_yen(origin) + 3000000
-        for fixture in sim.layout.fixtures + sim.outdoor_fixtures:
-            var kind: int = sim.program_fixture_kind(fixture)
-            if kind >= 0:
-                refund += int(_recovery["fixture_records"][kind][1])
-        for product_id in sim.inventory.product_order:
-            var product = sim.inventory.get_product(product_id)
-            refund += int(product.stock_units) * int(product.restock_unit_cost_yen)
+        var refund: int = store_site.start_land_price_yen(origin) + _program_premises_value(sim)
         _rival_cash_yen += refund
         _rival_stores.remove_at(index)
         _rival_simulations.erase(closed)
@@ -5790,42 +5699,77 @@ func _program_rival_monthly() -> void:
         return
     if town_is_full():
         return
-    # REMAKE_BALANCED_DEFAULT: this bridge uses the current small-store configuration; original random
-    # size/layout selection is recorded as a remaining compatibility boundary.
-    var origin := ProgramRivalsScript.find_site(program_town, [], _program_rng)
+
+
+    var order: Array = config["source_scenario"]["staff_order"]
+    var employed := _employed_candidate_ids()
+    for existing in _rival_stores:
+        for index in existing.get("staff_indices", []):
+            if int(index) >= 0:
+                employed[str(order[int(index)])] = true
+        if _rival_simulations.has(str(existing["id"])):
+            for person in _rival_simulations[str(existing["id"])].staff.all_staff():
+                employed[person.candidate_id] = true
+    var staff_count: int = _program_rng.randi() % 3 + 1
+    var selected: Array = []
+    for slot in staff_count:
+        var from: int = _program_rng.randi() % 35
+        var chosen := -1
+        for offset in 35:
+            var index := (from + offset) % 35
+            if not employed.has(str(order[index])):
+                chosen = index
+                employed[str(order[index])] = true
+                break
+        if chosen < 0:
+            return
+        selected.append(chosen)
+    while selected.size() < 3:
+        selected.append(-1)
+    var count := town_store_count()
+    var size_limit := 2 if count < 3 else (4 if count < 6 else 6)
+    var type_index: int = _program_rng.randi() % size_limit
+    var sample_index := clampi(int(config["source_scenario"].get("layout_control", 0)), 0, 2) + 1
+    var opening: Dictionary = config["store_types"][type_index]["source_layouts"][sample_index].duplicate(true)
+    var permits: Array = []
+    for product in opening["products"]:
+        var category := str(product["catalog_id"])
+        if category in ["tobacco", "alcohol", "medicine"] and not permits.has(category):
+            permits.append(category)
+    var origin := ProgramRivalsScript.find_site(program_town, permits, _program_rng)
     if origin.x < 0:
         return
-    var cost: int = store_site.start_land_price_yen(origin) + 6000000
+    var quote := store_site_quote(origin)
+    var permit_cost := 0
+    for permit in permits:
+        permit_cost += int({"tobacco": 3000000, "alcohol": 7000000, "medicine": 10000000}[permit])
+    var cost: int = store_site.start_land_price_yen(origin) + int(quote.get("building_yen", 0)) + (type_index / 2 + 1) * 6000000 + int(opening["source_equipment_yen"]) + int(opening["source_goods_yen"]) + permit_cost
     if cost > _rival_cash_yen:
         return
+    var schedule: int = _program_rng.randi() % 6
+    var settings: Array = []
+    for index in 27:
+        var current := 100 - int(_recovery["products"][index][1])
+        if _program_rng.randi() & 15 == 0:
+            var delta: int = _program_rng.randi() % 7 * 5
+            if delta < current:
+                current -= delta
+        settings.append(current)
     var id := "program-rival-%d" % _rival_serial
     var rival := _rival_store(id, origin, 0)
-    rival["serial"] = _rival_serial
+    rival.merge({"serial": _rival_serial, "type_index": type_index, "schedule_index": schedule, "layout": opening, "staff_indices": selected, "permits_held": permits, "price_settings": settings}, true)
     _rival_serial += 1
     _rival_stores.append(rival)
     var sim = _program_rival_simulation(rival)
-    for fixture in sim.layout.fixtures + sim.outdoor_fixtures:
-        var kind: int = sim.program_fixture_kind(fixture)
-        if kind >= 0:
-            cost += int(_recovery["fixture_records"][kind][1])
-    for product_id in sim.inventory.product_order:
-        var product = sim.inventory.get_product(product_id)
-        cost += int(product.stock_units) * int(product.restock_unit_cost_yen)
-    if cost > _rival_cash_yen:
-        _rival_stores.pop_back()
-        _rival_simulations.erase(id)
-        return
     _rival_cash_yen -= cost
     sim.day_count = day_count
     sim.month_count = month_count
     sim._days_completed_this_month = _days_completed_this_month
     sim.minute_of_day = minute_of_day
-    _program_place(origin, 3)
+    _program_place(origin, 4)
     _record_event("rival_opened", {"rival_id": id, "position": [origin.x, origin.y]})
 
 
-# CONFIRMED_BINARY checkout.wait_resolution (80035D58): waiting spends
-# patience on a 1/4 draw. At zero the held basket is paid and the group leaves.
 func _program_wait_at_checkout(customer, being_served: bool) -> bool:
     var roll: int = _program_rng.randi_range(1, 100)
     var patience: int = int(customer.get_meta("checkout_patience", customer.visit.get("stamina", 100)))
@@ -5869,3 +5813,166 @@ func _program_premises_value(sim) -> int:
         var product = sim.inventory.get_product(product_id)
         total += int(product.stock_units) * int(product.restock_unit_cost_yen)
     return total
+func _source_placements_valid() -> bool:
+    if not config["store"].has("source_floor"):
+        return true
+    var rows: Array = config["store"]["source_floor"]
+    for fixture in layout.fixtures:
+        var kind := program_fixture_kind(fixture)
+        if kind < 0:
+            continue
+        var origin := _vec2i_from_array(fixture["origin_subcell"])
+        var floor_id := int(rows[origin.y / 2][origin.x / 2])
+        if int(_recovery["fixture_records"][kind][0]) & (512 if floor_id == 16 else 256) == 0:
+            return false
+    return true
+
+
+func source_store_ready() -> bool:
+    var registers := 0
+    var rooms := 0
+    for fixture in layout.fixtures:
+        registers += int(str(fixture["kind"]) == "checkout")
+        rooms += int(str(fixture["kind"]) == "break_room")
+    return registers == 1 and rooms == 1
+
+
+func try_set_source_floor(floor_id: int) -> bool:
+    if is_game_over or floor_id < 0 or floor_id > 15 or not config["store"].has("source_floor"):
+        return false
+    for row in config["store"]["source_floor"]:
+        for x in row.size():
+            if int(row[x]) <= 15:
+                row[x] = floor_id
+    _record_event("floor_changed", {"floor_id": floor_id})
+    return true
+
+
+func source_price_setting(category: String) -> int:
+    if product_price_settings.has(category):
+        return int(product_price_settings[category])
+    var index: int = _recovery.get("product_ids", []).find(category)
+    return 100 - int(_recovery["products"][index][1]) if index >= 0 else 0
+
+
+func try_set_product_price(category: String, setting: int) -> bool:
+    if is_game_over or program_town == null or setting < 0 or setting > 100:
+        return false
+    var index: int = _recovery["product_ids"].find(category)
+    if index < 0 or index >= 26:
+        return false
+    product_price_settings[category] = setting
+    var delta := 0
+    for id in _recovery["product_ids"].slice(0, 26):
+        var j: int = _recovery["product_ids"].find(id)
+        delta += source_price_setting(str(id)) - (100 - int(_recovery["products"][j][1]))
+    price_change_pct = delta / 26
+    _record_event("price_policy_changed", {"category": category, "setting": setting})
+    return true
+
+
+func source_shelf_price_percent() -> int:
+    var total := 0
+    var count := 0
+    for id in inventory.product_order:
+        var category: String = inventory.get_product(id).catalog_id
+        var index: int = _recovery["product_ids"].find(category)
+        if index < 0 or index == 26:
+            continue
+        total += int(_recovery["products"][index][1]) + source_price_setting(category)
+        count += 1
+    return total / count if count > 0 else 0
+
+
+const CUSTOMER_SAVE_FIELDS := ["phase", "plan_index", "shopping_ticks_remaining", "checkout_ticks_remaining", "checkout_assigned_ticks", "checkout_anger_triggered", "settled_transaction_id", "settled_total_yen", "type_id", "budget_left", "add_ons", "group_size"]
+const STAFF_RUNTIME_FIELDS := ["state", "rest_phase", "restock_target_product_id", "restock_ticks_remaining", "stamina_max", "checkouts_done"]
+
+func _source_runtime_snapshot() -> Dictionary:
+    var people: Array = []
+    for customer in customers.active_customers():
+        var row := {"id": customer.customer_id, "position": [customer.position.x, customer.position.y], "route": customer.route.map( func(p): return [p.x, p.y]), "basket": customer.basket.duplicate(true), "plan": customer.planned_product_ids.duplicate(), "visit": customer.visit.duplicate(true), "patience": int(customer.get_meta("checkout_patience", 100))}
+        for field in CUSTOMER_SAVE_FIELDS:
+            row[field] = customer.get(field)
+        people.append(row)
+    var employees: Array = []
+    for person in staff.all_staff():
+        var row := {"id": person.staff_id, "position": [person.position.x, person.position.y], "route": person.route.map( func(p): return [p.x, p.y]), "home": [person.home_position().x, person.home_position().y]}
+        for field in STAFF_RUNTIME_FIELDS:
+            row[field] = person.get(field)
+        employees.append(row)
+    return {"customers": people, "staff": employees, "next_customer": customers._next_sequence, "done_customers": customers.completed_count(), "active_customer_id": customers.active_customer_id, "queue": _checkout_queue.duplicate(), "daily_counts": _program_counts.duplicate(), "parking_used": _parking_used, "dirty": _dirty_cells.map( func(p): return [p.x, p.y]), "notices": _notice_counts.duplicate(), "sold": _sold_counts.duplicate(), "holiday": _program_holiday, "weather_value": _program_weather_value}
+
+
+func _restore_source_runtime(data: Dictionary) -> void:
+    customers.reset()
+    customers._next_sequence = int(data["next_customer"])
+    customers._forgotten_done = int(data["done_customers"])
+    for row in data["customers"]:
+        var person = preload("res://scripts/domain/customer_state.gd").new({"id": str(row["id"])})
+        for field in CUSTOMER_SAVE_FIELDS:
+            var value = row[field]
+            if typeof(person.get(field)) == TYPE_INT:
+                value = int(value)
+            person.set(field, value)
+        person.position = _vec2i_from_array(row["position"])
+        person.route.clear()
+        for point in row["route"]:
+            person.route.append(_vec2i_from_array(point))
+        person.basket.assign(row["basket"])
+        person.planned_product_ids.assign(row["plan"])
+        person.visit = row["visit"].duplicate(true)
+        person.set_meta("checkout_patience", int(row["patience"]))
+        customers.customers[person.customer_id] = person
+    var active := str(data["active_customer_id"])
+    customers.active_customer_id = active if customers.customers.has(active) else ""
+    for row in data["staff"]:
+        if not staff.members.has(str(row["id"])):
+            continue
+        var person = staff.members[str(row["id"])]
+        for field in STAFF_RUNTIME_FIELDS:
+            person.set(field, int(row[field]) if typeof(person.get(field)) == TYPE_INT else row[field])
+        person.position = _vec2i_from_array(row["position"])
+        person.set_home_position(_vec2i_from_array(row["home"]))
+        person.route.clear()
+        for point in row["route"]:
+            person.route.append(_vec2i_from_array(point))
+    _checkout_queue.assign(data["queue"])
+    _program_counts.clear()
+    for key in data["daily_counts"]:
+        _program_counts[int(key)] = int(data["daily_counts"][key])
+    _parking_used = int(data["parking_used"])
+    _dirty_cells.clear()
+    for point in data["dirty"]:
+        _dirty_cells.append(_vec2i_from_array(point))
+    _notice_counts = _counts(data["notices"])
+    _sold_counts = _counts(data["sold"])
+    _program_holiday = bool(data.get("holiday", false))
+    _program_weather_value = int(data.get("weather_value", 0))
+
+
+func _annual_review() -> void:
+    var entries: Array = []
+    _for_each_store( func():
+        if has_store_site():
+            entries.append({"annual_sales": _annual_sales_yen, "rating": internal_rating_value}))
+    last_owner_review = preload("res://scripts/domain/program_progression.gd").owner_rating(entries, _chain_visitors_total, town.population)
+    last_owner_review["year"] = month_count / 12
+    if int(config.get("source_scenario_index", 0)) in [2, 3] and int(last_owner_review["total"]) == 100:
+        clear_condition_met = true
+    _record_event("owner_review", last_owner_review.duplicate(true))
+    _for_each_store( func():
+        _annual_sales_yen = 0
+        for person in staff.all_staff():
+            var hourly: int = person.salary_yen_per_day_24h / 24
+            person.salary_yen_per_day_24h = (hourly * 103 / 100) * 24)
+
+
+    for id in _staff_candidate_catalog:
+        var figures := _candidate_figures(str(id))
+        var age := mini(127, int(figures.get("age_years", 0)) + 1)
+        var raises: Dictionary = _candidate_raises.get(id, {})
+        raises["age_years"] = age - int(_staff_candidate_catalog[id].get("age_years", 0))
+        if age >= 127 or (age >= 80 and _program_rng.randi() % 5 == 0):
+            for field in ["stamina", "education", "agility", "sociability", "academic_background"]:
+                raises[field] = 100 - int(_staff_candidate_catalog[id].get(field, 0))
+        _candidate_raises[id] = raises

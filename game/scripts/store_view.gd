@@ -810,13 +810,8 @@ func _draw_staff() -> void:
         var motion := _moving_center("s:" + staff_member.staff_id, staff_member.position)
         var center: Vector2 = motion[0]
         var phase := str(motion[1])
-        # Task #88: a resting staff member's logical position is the break
-        # room's door (its interaction cell); they are drawn inside the room
-        # itself. CONFIRMED_VISUAL: the gameplay-video frame
-        # assets/raw/conveni_additional_assets_v1/reference/video_900s.png
-        # shows a staff member drawn inside the break room.
-        # REMAKE_BALANCED_DEFAULT: the exact in-room spot and the fan-out
-        # offsets in _break_room_rest_spot() are this project's own.
+
+
         if staff_member.rest_phase == "resting":
             var rest_spot = _break_room_rest_spot(resting_index)
             if rest_spot != null:
@@ -829,7 +824,8 @@ func _draw_staff() -> void:
         if simulation.program_town != null:
             var slot: int = simulation.staff.all_staff().find(staff_member)
             var candidate: Dictionary = simulation._staff_candidate_catalog.get(staff_member.candidate_id, {})
-            texture = _program_person_texture(38 + slot * 2 + int(candidate.get("female", false)), direction)
+            var role_image := 42 if staff_member.staff_id == str(simulation.config["staff"]["manager_staff_id"]) else (38 if staff_member.staff_id == "staff-2" else 40)
+            texture = _program_person_texture(role_image + int(candidate.get("female", false)), direction)
         if texture != null:
             var draw_size := Vector2(STAFF_SPRITE_SIZE_PX, STAFF_SPRITE_SIZE_PX)
             var anchor_offset := Vector2(
@@ -841,8 +837,8 @@ func _draw_staff() -> void:
             var rect := Rect2(center - Vector2(12, 12), Vector2(24, 24))
             draw_rect(rect, Color("118ab2"), true)
             draw_rect(rect, Color("17324d"), false, 2.0)
-        # Task #99: a small 体力 gauge under each staff member (presentation
-        # only; the original shows 体力 on its staff screen, not here).
+
+
         if simulation._stamina_enabled and staff_member.stamina_max > 0:
             var share := float(staff_member.stamina) / float(staff_member.stamina_max)
             var bar := Rect2(center + Vector2(-16, 6), Vector2(32, 5))
@@ -928,7 +924,7 @@ func _program_texture(key: String) -> Texture2D:
 func _program_person_texture(appearance: int, direction: String) -> Texture2D:
     var key := "person_%d_%s" % [appearance, direction]
     if not _program_textures.has(key):
-        var directions := {"down": 0, "left": 1, "up": 2, "right": 3}
+        var directions := {"down": 0, "left": 2, "up": 1, "right": 3}
         var code := clampi(appearance, 0, 43) * 4 + int(directions.get(direction, 0))
         var texture := AtlasTexture.new()
         texture.atlas = load("res://assets/ps1/people.png")
@@ -948,14 +944,45 @@ func _draw_program_fixture(fixture: Dictionary, rect: Rect2) -> bool:
     draw_texture_rect(texture, rect, false)
     var product = _product_on_fixture(str(fixture["id"]))
     if product != null and product.stock_units > 0:
-        var third := int(product.initial_stock_units) / 3
+        var capacity: int = int(simulation._recovery["fixture_records"][kind][3])
+        var third := capacity / 3
         var level := 2 if int(product.stock_units) <= third else (1 if int(product.stock_units) <= third * 2 else 0)
-        var goods := _program_texture("product_%s_%d" % [product.catalog_id, level])
-        if goods != null:
+        var category: int = simulation._recovery["product_ids"].find(product.catalog_id)
+        if category >= 0:
+            var images: Array = simulation._recovery["product_images"][category]
+            var valid: Array = images.filter( func(code): return int(code) >= 0)
             var tile := SUBCELL_PIXELS * 2
-            for y in int(round(rect.size.y / tile)):
-                for x in int(round(rect.size.x / tile)):
+            var width := int(round(rect.size.x / tile))
+            var height := int(round(rect.size.y / tile))
+            var direction: int = [0, 3, 1, 2][rotation]
+            for y in height:
+                for x in width:
+                    var image := int(valid[(simulation.month_count % 12 + y * width + x) % valid.size()])
+                    if category == 24:
+                        image = int(images[simulation.month_count % 12])
+                    elif category == 26:
+                        image = int(images[direction])
+                    elif category == 21:
+                        var edge := x == 0 if direction == 0 else (x == width - 1 if direction == 1 else (y == height - 1 if direction == 2 else y == 0))
+                        image = int(images[direction if edge else 4])
+                    elif category == 20:
+                        var part := 2 if x == width - 1 else 3
+                        if direction >= 2:
+                            part = 1 if y == height - 1 else 3
+                        image = int(images[part if kind == 36 else 0])
+                    var goods := _program_image_texture(image * 3 + 360 + level)
                     draw_texture_rect(goods, Rect2(rect.position + Vector2(x, y) * tile, Vector2(tile, tile)), false)
     if fixture["id"] == selected_fixture_id:
         draw_rect(rect, Color("f4d35e"), false, 3)
     return true
+
+
+func _program_image_texture(code: int) -> Texture2D:
+    var key := "source_tile_%d" % code
+    if not _program_textures.has(key):
+        var page := 0 if code <= 256 else (1 if code <= 512 else 2)
+        var texture := AtlasTexture.new()
+        texture.atlas = load("res://assets/ps1/shop_page_%d.png" % page)
+        texture.region = Rect2((code & 15) * 16, code & 240, 16, 16)
+        _program_textures[key] = texture
+    return _program_textures[key]

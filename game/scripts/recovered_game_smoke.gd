@@ -11,7 +11,7 @@ func _initialize() -> void:
     for i in 7200:
         sim.tick()
     print("NATIVE day=",sim.day_count," sales=",sim.snapshot()["completed_sales"]," rival_cash=",sim._rival_cash_yen)
-    print("NATIVE rivals=",sim._rival_stores)
+    print("NATIVE rivals=",sim._rival_stores.size())
     assert(sim.snapshot()["completed_sales"] > 0, "native store sells")
     assert(sim.month_count >= 2, "native monthly town + rival review")
     var rival = sim._rival_simulations["rival-hq"]
@@ -35,7 +35,7 @@ func _initialize() -> void:
     var fee: int = clone.rival_buyout_price_yen("rival-hq")
     assert(fee > 40000000)
     assert(clone.try_buy_out_rival("rival-hq"))
-    assert(clone.player_store_count == 2 and clone._rival_stores.is_empty())
+    assert(clone.player_store_count == 2 and clone._rival_index("rival-hq") < 0)
     clone.select_store(1)
     assert(clone.inventory.total_stock_units() == rival_stock, "acquired stock is preserved")
     clone.tick()

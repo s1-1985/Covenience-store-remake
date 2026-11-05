@@ -11,6 +11,7 @@ for script, args in [
     ('recovered_game_smoke.gd', []),
     ('recovered_ui_smoke.gd', ['--', '--android-preview']),
     ('source_interior_smoke.gd', []),
+    ('analysis_integration_smoke.gd', []),
 ]:
     result = subprocess.run([godot, '--headless', '--path', str(root / 'game'), '--script', 'res://scripts/' + script, *args], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
     output = result.stdout

@@ -10,7 +10,6 @@ var _product_configs: Array
 
 func _init(product_configs: Array) -> void:
     _product_configs = product_configs.duplicate(true)
-    assert(not _product_configs.is_empty())
     reset()
 
 

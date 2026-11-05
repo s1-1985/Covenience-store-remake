@@ -411,14 +411,16 @@ func _show_edit_refusal() -> void:
         layout_edit_label.text = tr("That would cut off the %s shelf") % _product_label(product_id)
         if simulation.inventory.products.has(product_id):
             store_view.warn_fixture(simulation.inventory.get_product(product_id).fixture_id)
+    elif reason == "floor":
+        layout_edit_label.text = "この設備はその床（屋内・屋外）には置けません"
+    elif reason == "duplicate":
+        layout_edit_label.text = "レジと休憩室はそれぞれ1つだけ配置できます"
     elif reason == "people":
         layout_edit_label.text = tr("Someone is standing in the way")
     else:
         layout_edit_label.text = tr("A wall or another fixture is in the way")
 
 
-# Task #126: 改装 -- the store becomes store type `type_id` (another size or
-# orientation), see VerticalSliceSimulation.try_renovate_store().
 func renovate_store(type_id: String) -> bool:
     if not simulation.try_renovate_store(type_id):
         layout_edit_label.text = tr("Not enough money to renovate") if simulation.edit_refusal == "cash" else tr("Cannot renovate into this store")
@@ -1083,19 +1085,13 @@ func _load_config() -> Dictionary:
     if loaded.get("provisional", false) != true:
         push_error("Vertical slice config must explicitly remain provisional")
         return {}
-    # Task #89/#104: every new game gets the guide town and, once the land
-    # and store are chosen, a furnished small store (GuideStartingStore).
-    # The automated UI scenarios set the
-    # PROTOTYPE_STORE_FOR_TESTS_META Engine meta to keep the small
-    # prototype store their scripted coordinates were written against.
+
+
     if not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META):
-        loaded = GuideStartingStoreScript.apply(loaded)
-    # The researched beginner cash anchor (¥200,000,000, also on the guide
-    # p.11 start screen the town map is read from). Task #95: every real new
-    # game now starts with it, since the land is bought out of it; the
-    # furnished store itself is still granted (REMAKE_BALANCED_DEFAULT, see
-    # android_preview.evidence_note).
-    if _is_android_preview() or not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META):
+        loaded = GuideStartingStoreScript.apply(loaded, GameLaunchState.scenario_index)
+
+
+    if not loaded.has("source_scenario") and (_is_android_preview() or not Engine.has_meta(PROTOTYPE_STORE_FOR_TESTS_META)):
         loaded["economy"]["initial_cash_yen"] = int(loaded["android_preview"]["starting_cash_yen"])
     return loaded
 
@@ -1391,7 +1387,7 @@ func _build_store(type_id: String) -> void:
 func _build_store_type_panel() -> void:
     store_type_panel = PanelContainer.new()
     store_type_panel.name = "StoreTypePanel"
-    store_type_panel.theme = ($UI/Panel as Control).theme
+    store_type_panel.theme = ($UI / Panel as Control).theme
     store_type_panel.visible = false
     var box := VBoxContainer.new()
     store_type_panel.add_child(box)
@@ -1417,7 +1413,7 @@ func _build_store_type_panel() -> void:
                 var type_id := str(entry["id"])
                 button.name = "StoreType_" + type_id
                 button.icon = _menu_icon("store_types", str(entry["icon"]))
-                # Task #126: which way the floor runs (縦長/横長) and its size.
+
                 button.text = store_type_caption(entry)
                 button.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
                 button.vertical_icon_alignment = VERTICAL_ALIGNMENT_TOP
@@ -1426,7 +1422,7 @@ func _build_store_type_panel() -> void:
                 button.disabled = not simulation.store_type_is_selectable(type_id)
                 if button.disabled:
                     button.modulate = Color(0.4, 0.4, 0.4)
-                button.pressed.connect(func():
+                button.pressed.connect( func():
                     _store_type_choice = type_id
                     _refresh_store_type_panel())
                 _store_type_buttons[type_id] = button
@@ -1443,9 +1439,10 @@ func _build_store_type_panel() -> void:
         source_layout_choice.custom_minimum_size = Vector2(0, 48)
         for index in 4:
             source_layout_choice.add_item("原作サンプル %d" % (index + 1))
-        source_layout_choice.item_selected.connect(func(index: int):
+        source_layout_choice.add_item("空の店舗（手動で配置）")
+        source_layout_choice.item_selected.connect( func(index: int):
             for entry in simulation.store_types():
-                entry["layout"] = (entry["source_layouts"][index] as Dictionary).duplicate(true)
+                entry["layout"] = ((entry["source_empty_layout"] if index == 4 else entry["source_layouts"][index]) as Dictionary).duplicate(true)
             _refresh_store_type_panel())
         box.add_child(source_layout_choice)
     var row_box := HBoxContainer.new()
@@ -1453,12 +1450,12 @@ func _build_store_type_panel() -> void:
     store_type_build_button = Button.new()
     store_type_build_button.name = "BuildStoreButton"
     store_type_build_button.text = tr("Build this store")
-    store_type_build_button.pressed.connect(func(): _build_store(_store_type_choice))
+    store_type_build_button.pressed.connect( func(): _build_store(_store_type_choice))
     row_box.add_child(store_type_build_button)
     var back := Button.new()
     back.name = "StoreTypeBackButton"
     back.text = tr("Back")
-    back.pressed.connect(func(): store_type_panel.visible = false)
+    back.pressed.connect( func(): store_type_panel.visible = false)
     row_box.add_child(back)
     for button in [store_type_build_button, back]:
         button.custom_minimum_size = Vector2(0, 56)
