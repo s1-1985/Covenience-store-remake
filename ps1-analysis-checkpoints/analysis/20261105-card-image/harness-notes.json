@@ -1,0 +1,5 @@
+{
+  "initial_probe": "Encoder instruction budget 2000000 exhausted at 0x8006dbb8 before completion.",
+  "correction": "Use 15000000 budget matching prior native-payload diagnostics; no instruction hooks or payload patches added.",
+  "classification": "Diagnostic budget setup; not evidence of game failure."
+}

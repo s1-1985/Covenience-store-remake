@@ -1,17 +1,17 @@
 {
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
   "date_jst": "2026-11-05",
-  "snapshot": "TOWN0001-ci-main-16-single",
+  "snapshot": "TOWN0001-ci-main-17-single",
   "phase": "play_iteration_end",
-  "clock": 17640,
-  "completed_iterations": 8828,
+  "clock": 17760,
+  "completed_iterations": 8888,
   "cash": [
     99005641,
-    153132096
+    153127491
   ],
-  "ram_sha256": "d5edcf5c0adf1e3f53c66e71be32a56af16dcb6be301482e29988f8244dd8cfb",
-  "metadata": "analysis/20261105-view-controls/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-16-single.json",
-  "compressed_ram": "analysis/20261105-view-controls/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-16-single.ram.zlib",
-  "report": "analysis/20261105-view-controls/README.md",
-  "limits": "Natural main trajectory. Save/load UI branches are preserved separately and do not replace this state."
+  "ram_sha256": "8ba3ea71a158260e5015cc6fe70011d14a5169d16e53020874908041f2ef2fa2",
+  "metadata": "analysis/20261105-card-image/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-17-single.json",
+  "compressed_ram": "analysis/20261105-card-image/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-17-single.ram.zlib",
+  "report": "analysis/20261105-card-image/README.md",
+  "limits": "Natural main trajectory. Raw-card direct diagnostics and save/load UI branches are preserved separately and do not replace this state."
 }

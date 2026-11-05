@@ -1,0 +1,41 @@
+gcc -g -O3 -W -I./include -I. -D_GNU_SOURCE -DECB=1 -MMD -MP -c -o src/ps1main.o src/ps1main.c
+gcc -g -O3 -W -I./include -I. -D_GNU_SOURCE -DECB=1 -MMD -MP -c -o src/ps1card.o src/ps1card.c
+gcc -g -O3 -W -I./include -I. -D_GNU_SOURCE -DECB=1 -MMD -MP -c -o src/sha256.o src/sha256.c
+gcc -g -O3 -W -I./include -I. -D_GNU_SOURCE -DECB=1 -MMD -MP -c -o src/util.o src/util.c
+gcc -g -O3 -W -I./include -I. -D_GNU_SOURCE -DECB=1 -MMD -MP -c -o src/aes.o src/aes.c
+gcc -g -O3 -W -I./include -I. -D_GNU_SOURCE -DECB=1 -MMD -MP -c -o src/sha1.o src/sha1.c
+gcc -g -O3 -W -I./include -I. -D_GNU_SOURCE -DECB=1 -MMD -MP -c -o src/hmac.o src/hmac.c
+gcc -g -O3 -W -I./include -I. -D_GNU_SOURCE -DECB=1 -MMD -MP -c -o src/psv_resign.o src/psv_resign.c
+gcc -g -O3 -W -I./include -I. -D_GNU_SOURCE -DECB=1 -MMD -MP -c -o src/ps2png.o src/ps2png.c
+gcc -g -O3 -W -I./include -I. -D_GNU_SOURCE -DECB=1 -o ps1vmc-tool src/ps1main.o src/ps1card.o src/sha256.o src/util.o src/aes.o src/sha1.o src/hmac.o src/psv_resign.o src/ps2png.o  -lz -lm
+src/util.c: In function ‘read_buffer’:
+src/util.c:136:9: warning: ignoring return value of ‘fread’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  136 |         fread(file_buf, 1, file_size, fp);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In function ‘SHA1Update’,
+    inlined from ‘SHA1Final’ at src/sha1.c:265:5:
+src/sha1.c:219:13: warning: ‘SHA1Transform’ reading 64 bytes from a region of size 0 [-Wstringop-overread]
+  219 |             SHA1Transform(context->state, &data[i]);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/sha1.c:219:13: note: referencing argument 2 of type ‘const unsigned char[64]’
+src/sha1.c: In function ‘SHA1Final’:
+src/sha1.c:54:6: note: in a call to function ‘SHA1Transform’
+   54 | void SHA1Transform(
+      |      ^~~~~~~~~~~~~
+In function ‘SHA1Update’,
+    inlined from ‘SHA1Final’ at src/sha1.c:269:9:
+src/sha1.c:219:13: warning: ‘SHA1Transform’ reading 64 bytes from a region of size 0 [-Wstringop-overread]
+  219 |             SHA1Transform(context->state, &data[i]);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/sha1.c:219:13: note: referencing argument 2 of type ‘const unsigned char[64]’
+src/sha1.c: In function ‘SHA1Final’:
+src/sha1.c:54:6: note: in a call to function ‘SHA1Transform’
+   54 | void SHA1Transform(
+      |      ^~~~~~~~~~~~~
+src/ps2png.c: In function ‘png_write_rgba’:
+src/ps2png.c:138:59: warning: ‘best’ may be used uninitialized [-Wmaybe-uninitialized]
+  138 |                 memcpy(&raw[y * (stride + 1) + 1], cand + (size_t)best * stride, stride);
+      |                                                           ^~~~~~~~~~~~
+src/ps2png.c:94:25: note: ‘best’ was declared here
+   94 |         int rc = -1, t, best;
+      |                         ^~~~

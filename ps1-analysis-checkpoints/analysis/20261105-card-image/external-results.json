@@ -1,0 +1,232 @@
+{
+  "all_passed": true,
+  "upstream": "https://github.com/bucanero/ps2vmc-tool",
+  "upstream_commit": "32a024518586a47d685d8c4ea58b67dc4e4472ce",
+  "source_archive": "ps1vmc-source-32a0245.tar.gz",
+  "source_archive_sha256": "d77a57daffe42f5fb89191302f29dfe77dcad3825ba2aa7508a9f142134e4129",
+  "built_tool_sha256": "60eeb45acc13d89c478a6d4adc93f1880dc00c046657f1bdb5d547ed069c6283",
+  "original_images": [
+    {
+      "image": "contiguous-0.mcr",
+      "slot": 0,
+      "bytes": 114688,
+      "sha256": "8f6db15c11311fc273f9f7e6da586cf78404b03c080326f098470e557aaaa72f",
+      "extracted_equal": true,
+      "input_image_unchanged": true
+    },
+    {
+      "image": "contiguous-1.mcr",
+      "slot": 0,
+      "bytes": 114688,
+      "sha256": "a1f6dcd7c0f8c8da7592f133614ce9aacff55bbd8b4b7151ba1524c9678129aa",
+      "extracted_equal": true,
+      "input_image_unchanged": true
+    },
+    {
+      "image": "contiguous/operating-menu-save.mcr",
+      "slot": 0,
+      "bytes": 114688,
+      "sha256": "2d27072eac1b0279ac4df087cedc03afa4e774f40a3b6dcf577012ca1cfc4288",
+      "extracted_equal": true,
+      "input_image_unchanged": true,
+      "origin": "original play UI"
+    },
+    {
+      "image": "fragmented-0.mcr",
+      "slot": 14,
+      "bytes": 114688,
+      "sha256": "8f6db15c11311fc273f9f7e6da586cf78404b03c080326f098470e557aaaa72f",
+      "extracted_equal": true,
+      "input_image_unchanged": true
+    },
+    {
+      "image": "fragmented-1.mcr",
+      "slot": 14,
+      "bytes": 114688,
+      "sha256": "a1f6dcd7c0f8c8da7592f133614ce9aacff55bbd8b4b7151ba1524c9678129aa",
+      "extracted_equal": true,
+      "input_image_unchanged": true
+    },
+    {
+      "image": "fragmented/operating-menu-save.mcr",
+      "slot": 14,
+      "bytes": 114688,
+      "sha256": "2d27072eac1b0279ac4df087cedc03afa4e774f40a3b6dcf577012ca1cfc4288",
+      "extracted_equal": true,
+      "input_image_unchanged": true,
+      "origin": "original play UI"
+    }
+  ],
+  "external_created_directory": {
+    "bu00:BISLPS-00782CONV": {
+      "size": 114688,
+      "blocks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    }
+  },
+  "external_created_file_sha256": "a1f6dcd7c0f8c8da7592f133614ce9aacff55bbd8b4b7151ba1524c9678129aa",
+  "invocations": [
+    {
+      "image": "contiguous-0.mcr",
+      "arguments": [
+        "--list"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nSlot | ---------- Filename ----------- |    Type    |   Size   | Prod. Code | Region\n  0  | BISLPS-00782CONV                | <save>     |   114688 | SLPS-00782 | BI\n  1  |                                 | <link>     |        0 |            | \u0000\u0000\n  2  |                                 | <link>     |        0 |            | \u0000\u0000\n  3  |                                 | <link>     |        0 |            | \u0000\u0000\n  4  |                                 | <link>     |        0 |            | \u0000\u0000\n  5  |                                 | <link>     |        0 |            | \u0000\u0000\n  6  |                                 | <link>     |        0 |            | \u0000\u0000\n  7  |                                 | <link>     |        0 |            | \u0000\u0000\n  8  |                                 | <link>     |        0 |            | \u0000\u0000\n  9  |                                 | <link>     |        0 |            | \u0000\u0000\n 10  |                                 | <link>     |        0 |            | \u0000\u0000\n 11  |                                 | <link>     |        0 |            | \u0000\u0000\n 12  |                                 | <link>     |        0 |            | \u0000\u0000\n 13  |                                 | <link>     |        0 |            | \u0000\u0000\n",
+      "stderr": ""
+    },
+    {
+      "image": "contiguous-0.mcr",
+      "arguments": [
+        "--extract-save",
+        "0",
+        "contiguous-0.external.raw"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nExporting save slot 0: 'BISLPS-00782CONV'...\nSave exported to: '/workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/contiguous-0.external.raw'\n",
+      "stderr": ""
+    },
+    {
+      "image": "contiguous-1.mcr",
+      "arguments": [
+        "--list"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nSlot | ---------- Filename ----------- |    Type    |   Size   | Prod. Code | Region\n  0  | BISLPS-00782CONV                | <save>     |   114688 | SLPS-00782 | BI\n  1  |                                 | <link>     |        0 |            | \u0000\u0000\n  2  |                                 | <link>     |        0 |            | \u0000\u0000\n  3  |                                 | <link>     |        0 |            | \u0000\u0000\n  4  |                                 | <link>     |        0 |            | \u0000\u0000\n  5  |                                 | <link>     |        0 |            | \u0000\u0000\n  6  |                                 | <link>     |        0 |            | \u0000\u0000\n  7  |                                 | <link>     |        0 |            | \u0000\u0000\n  8  |                                 | <link>     |        0 |            | \u0000\u0000\n  9  |                                 | <link>     |        0 |            | \u0000\u0000\n 10  |                                 | <link>     |        0 |            | \u0000\u0000\n 11  |                                 | <link>     |        0 |            | \u0000\u0000\n 12  |                                 | <link>     |        0 |            | \u0000\u0000\n 13  |                                 | <link>     |        0 |            | \u0000\u0000\n",
+      "stderr": ""
+    },
+    {
+      "image": "contiguous-1.mcr",
+      "arguments": [
+        "--extract-save",
+        "0",
+        "contiguous-1.external.raw"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nExporting save slot 0: 'BISLPS-00782CONV'...\nSave exported to: '/workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/contiguous-1.external.raw'\n",
+      "stderr": ""
+    },
+    {
+      "image": "operating-menu-save.mcr",
+      "arguments": [
+        "--extract-save",
+        "0",
+        "operating-menu-save.external.raw"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nExporting save slot 0: 'BISLPS-00782CONV'...\nSave exported to: '/workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/contiguous/operating-menu-save.external.raw'\n",
+      "stderr": ""
+    },
+    {
+      "image": "fragmented-0.mcr",
+      "arguments": [
+        "--list"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nSlot | ---------- Filename ----------- |    Type    |   Size   | Prod. Code | Region\n  0  |                                 | <link>     |        0 |            | \u0000\u0000\n  1  |                                 | <link>     |        0 |            | \u0000\u0000\n  2  |                                 | <link>     |        0 |            | \u0000\u0000\n  3  |                                 | <link>     |        0 |            | \u0000\u0000\n  4  |                                 | <link>     |        0 |            | \u0000\u0000\n  5  |                                 | <link>     |        0 |            | \u0000\u0000\n  6  |                                 | <link>     |        0 |            | \u0000\u0000\n  8  |                                 | <link>     |        0 |            | \u0000\u0000\n  9  |                                 | <link>     |        0 |            | \u0000\u0000\n 10  |                                 | <link>     |        0 |            | \u0000\u0000\n 11  |                                 | <link>     |        0 |            | \u0000\u0000\n 12  |                                 | <link>     |        0 |            | \u0000\u0000\n 13  |                                 | <link>     |        0 |            | \u0000\u0000\n 14  | BISLPS-00782CONV                | <save>     |   114688 | SLPS-00782 | BI\n",
+      "stderr": ""
+    },
+    {
+      "image": "fragmented-0.mcr",
+      "arguments": [
+        "--extract-save",
+        "14",
+        "fragmented-0.external.raw"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nExporting save slot 14: 'BISLPS-00782CONV'...\nSave exported to: '/workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/fragmented-0.external.raw'\n",
+      "stderr": ""
+    },
+    {
+      "image": "fragmented-1.mcr",
+      "arguments": [
+        "--list"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nSlot | ---------- Filename ----------- |    Type    |   Size   | Prod. Code | Region\n  0  |                                 | <link>     |        0 |            | \u0000\u0000\n  1  |                                 | <link>     |        0 |            | \u0000\u0000\n  2  |                                 | <link>     |        0 |            | \u0000\u0000\n  3  |                                 | <link>     |        0 |            | \u0000\u0000\n  4  |                                 | <link>     |        0 |            | \u0000\u0000\n  5  |                                 | <link>     |        0 |            | \u0000\u0000\n  6  |                                 | <link>     |        0 |            | \u0000\u0000\n  8  |                                 | <link>     |        0 |            | \u0000\u0000\n  9  |                                 | <link>     |        0 |            | \u0000\u0000\n 10  |                                 | <link>     |        0 |            | \u0000\u0000\n 11  |                                 | <link>     |        0 |            | \u0000\u0000\n 12  |                                 | <link>     |        0 |            | \u0000\u0000\n 13  |                                 | <link>     |        0 |            | \u0000\u0000\n 14  | BISLPS-00782CONV                | <save>     |   114688 | SLPS-00782 | BI\n",
+      "stderr": ""
+    },
+    {
+      "image": "fragmented-1.mcr",
+      "arguments": [
+        "--extract-save",
+        "14",
+        "fragmented-1.external.raw"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nExporting save slot 14: 'BISLPS-00782CONV'...\nSave exported to: '/workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/fragmented-1.external.raw'\n",
+      "stderr": ""
+    },
+    {
+      "image": "operating-menu-save.mcr",
+      "arguments": [
+        "--extract-save",
+        "14",
+        "operating-menu-save.external.raw"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nExporting save slot 14: 'BISLPS-00782CONV'...\nSave exported to: '/workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/fragmented/operating-menu-save.external.raw'\n",
+      "stderr": ""
+    },
+    {
+      "image": "fragmented-1.mcr",
+      "arguments": [
+        "--mcs-export",
+        "14",
+        "external-export.mcs"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nExporting save slot 14: 'BISLPS-00782CONV'...\nSave exported to: '/workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/external-export.mcs'\n",
+      "stderr": ""
+    },
+    {
+      "image": "external-created.mcr",
+      "arguments": [
+        "--mc-create"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nCreating a new 128 KB memory card...\nMemory card saved: /workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/external-created.mcr\n",
+      "stderr": ""
+    },
+    {
+      "image": "external-created.mcr",
+      "arguments": [
+        "--inject-save",
+        "external-export.mcs"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nSave '/workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/external-export.mcs' (14 blocks) imported to memory card.\nVMC file saved: /workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/external-created.mcr\n",
+      "stderr": ""
+    },
+    {
+      "image": "external-created.mcr",
+      "arguments": [
+        "--extract-save",
+        "0",
+        "external-created.raw"
+      ],
+      "returncode": 0,
+      "stdout": "PS1VMC-TOOL v2.0.0\nExporting save slot 0: 'BISLPS-00782CONV'...\nSave exported to: '/workspace/scratch/0f4cb99c775b/cardwork/ps1-analysis-checkpoints/analysis/20261105-card-image/external-created.raw'\n",
+      "stderr": ""
+    }
+  ],
+  "limits": [
+    "Independent filesystem reader/writer, not BIOS or physical SIO/hardware.",
+    "Third-party native CLI is not linked into the game or the raw-card Python model.",
+    "Compiler warnings retained in external-build.log; build exits zero."
+  ]
+}

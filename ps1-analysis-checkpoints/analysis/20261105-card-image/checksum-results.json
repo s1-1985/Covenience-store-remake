@@ -1,0 +1,76 @@
+{
+  "all_passed": true,
+  "cases": [
+    {
+      "case": "valid",
+      "patches": [],
+      "filesystem_directory_valid": true,
+      "native_checksum_return": 0,
+      "expected": 0,
+      "checksum_instructions": 2400337,
+      "rng_preserved": true,
+      "image_sha256": "95362794d02117bfa0f0fe36db3c06cf24c9e9a40164df3a3603519bdc6f30bd",
+      "file_sha256": "8f6db15c11311fc273f9f7e6da586cf78404b03c080326f098470e557aaaa72f"
+    },
+    {
+      "case": "payload-bit-flip",
+      "patches": [
+        {
+          "file_offset": 572,
+          "before": 201,
+          "after": 200
+        }
+      ],
+      "filesystem_directory_valid": true,
+      "native_checksum_return": -1,
+      "expected": -1,
+      "checksum_instructions": 2400336,
+      "rng_preserved": true,
+      "image_sha256": "ec1abcc495cc9115791e6c7451c6bceeaf26c9d3e7f1f839109c1e92183d6a90",
+      "file_sha256": "1209fc29a75843b46762638b44ba25c21b9aa0472cfd3d2d83a0b369b35c540f"
+    },
+    {
+      "case": "checksum-bit-flip",
+      "patches": [
+        {
+          "file_offset": 104872,
+          "before": 230,
+          "after": 231
+        }
+      ],
+      "filesystem_directory_valid": true,
+      "native_checksum_return": -1,
+      "expected": -1,
+      "checksum_instructions": 2400336,
+      "rng_preserved": true,
+      "image_sha256": "c08d8c2f31f64afe290e9ab76fbce9c2e9b8c0bac0d97e909a7ac6451a9f4bab",
+      "file_sha256": "bfa5683f50b897a041284419f053b5037393257174350e38d9da4da270a21234"
+    },
+    {
+      "case": "byte-swap-preserving-sum",
+      "patches": [
+        {
+          "file_offset": 572,
+          "before": 201,
+          "after": 0
+        },
+        {
+          "file_offset": 512,
+          "before": 0,
+          "after": 201
+        }
+      ],
+      "filesystem_directory_valid": true,
+      "native_checksum_return": 0,
+      "expected": 0,
+      "checksum_instructions": 2400337,
+      "rng_preserved": true,
+      "image_sha256": "e47ae5925f37e25c014859e0d25f186707c08b87a4fa1a3d7d9f77e38bf1c847",
+      "file_sha256": "016e361316d7364283bb72611a0f8489c88902aaa05b21fe90ea82daa0a41020"
+    }
+  ],
+  "limits": [
+    "Controlled mutations and direct checksum-gate calls; not UI error behavior.",
+    "Directory XOR validates metadata, not save body; additive checksum collisions remain possible."
+  ]
+}

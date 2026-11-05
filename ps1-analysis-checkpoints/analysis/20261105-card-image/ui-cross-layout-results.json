@@ -1,0 +1,42 @@
+{
+  "all_passed": true,
+  "cases": [
+    {
+      "operation": "save",
+      "all_passed": true,
+      "logical_bios_traces_equal": true,
+      "final_ram_sha256": "648006cee6a0cea3a4b3067af0f588c0d4a54749f72e81c640fbe4d0735afc69",
+      "final_clock": 17646,
+      "decoded_regions": [],
+      "encoders": [
+        {
+          "payload_sha256": "623b90bfa0ce47fd6466835240f7c90aca11c9df63040b98578db6865347b663",
+          "clock": 17640,
+          "cash": 99005641
+        }
+      ]
+    },
+    {
+      "operation": "load",
+      "all_passed": true,
+      "logical_bios_traces_equal": true,
+      "final_ram_sha256": "d65b8d44e158b27e11e10c90460c78db4c5c14321dd3d892ee90f21aa1155ac4",
+      "final_clock": 17646,
+      "decoded_regions": [
+        {
+          "payload_sha256": "623b90bfa0ce47fd6466835240f7c90aca11c9df63040b98578db6865347b663",
+          "regions": 37
+        }
+      ],
+      "encoders": [
+        {
+          "payload_sha256": "623b90bfa0ce47fd6466835240f7c90aca11c9df63040b98578db6865347b663",
+          "clock": 17640,
+          "cash": 99005641
+        }
+      ]
+    }
+  ],
+  "logical_files_equal": true,
+  "physical_images_differ": true
+}

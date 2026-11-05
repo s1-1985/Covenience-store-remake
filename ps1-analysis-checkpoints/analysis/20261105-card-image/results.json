@@ -1,0 +1,344 @@
+{
+  "all_passed": true,
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "source_snapshot": "TOWN0001-ci-main-16-single",
+  "source_ram_sha256": "d5edcf5c0adf1e3f53c66e71be32a56af16dcb6be301482e29988f8244dd8cfb",
+  "native_encoder_return": 2494438,
+  "model_checks": {
+    "all_passed": true,
+    "rejection_cases": [
+      {
+        "case": "full card",
+        "rejected": true,
+        "reason": "insufficient free blocks"
+      },
+      {
+        "case": "duplicate name",
+        "rejected": true,
+        "reason": "file already exists"
+      },
+      {
+        "case": "unaligned size",
+        "rejected": true,
+        "reason": "file size must be a positive block multiple"
+      },
+      {
+        "case": "long filename",
+        "rejected": true,
+        "reason": "invalid filename"
+      },
+      {
+        "case": "short image",
+        "rejected": true,
+        "reason": "invalid card size or header"
+      },
+      {
+        "case": "header XOR",
+        "rejected": true,
+        "reason": "system frame checksum mismatch"
+      },
+      {
+        "case": "directory XOR",
+        "rejected": true,
+        "reason": "system frame checksum mismatch"
+      },
+      {
+        "case": "cycle with valid XOR",
+        "rejected": true,
+        "reason": "invalid or cyclic chain"
+      },
+      {
+        "case": "out-of-range link with valid XOR",
+        "rejected": true,
+        "reason": "invalid or cyclic chain"
+      },
+      {
+        "case": "size mismatch with valid XOR",
+        "rejected": true,
+        "reason": "size does not match block chain"
+      },
+      {
+        "case": "wrong continuation state",
+        "rejected": true,
+        "reason": "allocation state does not match chain"
+      },
+      {
+        "case": "orphan active block",
+        "rejected": true,
+        "reason": "orphan, deleted, or unsupported block state"
+      },
+      {
+        "case": "deleted block unsupported",
+        "rejected": true,
+        "reason": "orphan, deleted, or unsupported block state"
+      },
+      {
+        "case": "bad sector remap unsupported",
+        "rejected": true,
+        "reason": "bad-sector remapping is not modeled"
+      }
+    ],
+    "full_capacity_files": 2,
+    "crossing_segments": [
+      {
+        "logical": 8189,
+        "physical": 131069,
+        "block": 15,
+        "size": 3
+      },
+      {
+        "logical": 8192,
+        "physical": 8192,
+        "block": 1,
+        "size": 4
+      }
+    ]
+  },
+  "records": [
+    {
+      "layout": "contiguous",
+      "phases": [
+        {
+          "kind": "create",
+          "source": "main-16",
+          "calls": [
+            {
+              "function": "0x8007adf8",
+              "mode": 0,
+              "return_value": 0,
+              "instructions": 39997
+            },
+            {
+              "function": "0x8007adf8",
+              "mode": 1,
+              "return_value": 0,
+              "instructions": 11717
+            },
+            {
+              "function": "0x8007ab2c",
+              "mode": 0,
+              "return_value": 0,
+              "instructions": 40138
+            },
+            {
+              "function": "0x8007ab2c",
+              "mode": 1,
+              "return_value": 0,
+              "instructions": 11690
+            }
+          ],
+          "blocks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "free_block": 15,
+          "body_bytes": 114176,
+          "body_sha256": "aafaf70966fe9667cf06972221aeff235a005c2c4ad924f7f07a70eb89792e57",
+          "file_sha256": "8f6db15c11311fc273f9f7e6da586cf78404b03c080326f098470e557aaaa72f",
+          "image_sha256": "55188768bc86ab580dab23b3954a130b48a0c47775562f146bcf571c0b7702b8",
+          "write_transfers": 892,
+          "read_transfers": 892,
+          "decoded_regions": 37,
+          "logical_baseline_equal": true,
+          "directory_unchanged_on_overwrite": false,
+          "trace": "contiguous-0.trace.json.zlib"
+        },
+        {
+          "kind": "overwrite",
+          "source": "operating-menu-previous",
+          "calls": [
+            {
+              "function": "0x8007adf8",
+              "mode": 0,
+              "return_value": 0,
+              "instructions": 40165
+            },
+            {
+              "function": "0x8007adf8",
+              "mode": 1,
+              "return_value": 0,
+              "instructions": 11717
+            },
+            {
+              "function": "0x8007ab2c",
+              "mode": 0,
+              "return_value": 0,
+              "instructions": 40138
+            },
+            {
+              "function": "0x8007ab2c",
+              "mode": 1,
+              "return_value": 0,
+              "instructions": 11690
+            }
+          ],
+          "blocks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "free_block": 15,
+          "body_bytes": 114176,
+          "body_sha256": "89eee8fc0190ec2c4503122ad2bd160870b3c76110adcd25881d517599f09b8f",
+          "file_sha256": "a1f6dcd7c0f8c8da7592f133614ce9aacff55bbd8b4b7151ba1524c9678129aa",
+          "image_sha256": "6c43154871e9af562e7a614b28c63972278a4ff9045b51e1161eb196050f950e",
+          "write_transfers": 892,
+          "read_transfers": 892,
+          "decoded_regions": 37,
+          "logical_baseline_equal": true,
+          "directory_unchanged_on_overwrite": true,
+          "trace": "contiguous-1.trace.json.zlib"
+        }
+      ]
+    },
+    {
+      "layout": "fragmented",
+      "phases": [
+        {
+          "kind": "create",
+          "source": "main-16",
+          "calls": [
+            {
+              "function": "0x8007adf8",
+              "mode": 0,
+              "return_value": 0,
+              "instructions": 39997
+            },
+            {
+              "function": "0x8007adf8",
+              "mode": 1,
+              "return_value": 0,
+              "instructions": 11717
+            },
+            {
+              "function": "0x8007ab2c",
+              "mode": 0,
+              "return_value": 0,
+              "instructions": 40138
+            },
+            {
+              "function": "0x8007ab2c",
+              "mode": 1,
+              "return_value": 0,
+              "instructions": 11690
+            }
+          ],
+          "blocks": [
+            15,
+            1,
+            14,
+            2,
+            13,
+            3,
+            12,
+            4,
+            11,
+            5,
+            10,
+            6,
+            9,
+            7
+          ],
+          "free_block": 8,
+          "body_bytes": 114176,
+          "body_sha256": "aafaf70966fe9667cf06972221aeff235a005c2c4ad924f7f07a70eb89792e57",
+          "file_sha256": "8f6db15c11311fc273f9f7e6da586cf78404b03c080326f098470e557aaaa72f",
+          "image_sha256": "95362794d02117bfa0f0fe36db3c06cf24c9e9a40164df3a3603519bdc6f30bd",
+          "write_transfers": 892,
+          "read_transfers": 892,
+          "decoded_regions": 37,
+          "logical_baseline_equal": true,
+          "directory_unchanged_on_overwrite": false,
+          "trace": "fragmented-0.trace.json.zlib"
+        },
+        {
+          "kind": "overwrite",
+          "source": "operating-menu-previous",
+          "calls": [
+            {
+              "function": "0x8007adf8",
+              "mode": 0,
+              "return_value": 0,
+              "instructions": 40165
+            },
+            {
+              "function": "0x8007adf8",
+              "mode": 1,
+              "return_value": 0,
+              "instructions": 11717
+            },
+            {
+              "function": "0x8007ab2c",
+              "mode": 0,
+              "return_value": 0,
+              "instructions": 40138
+            },
+            {
+              "function": "0x8007ab2c",
+              "mode": 1,
+              "return_value": 0,
+              "instructions": 11690
+            }
+          ],
+          "blocks": [
+            15,
+            1,
+            14,
+            2,
+            13,
+            3,
+            12,
+            4,
+            11,
+            5,
+            10,
+            6,
+            9,
+            7
+          ],
+          "free_block": 8,
+          "body_bytes": 114176,
+          "body_sha256": "89eee8fc0190ec2c4503122ad2bd160870b3c76110adcd25881d517599f09b8f",
+          "file_sha256": "a1f6dcd7c0f8c8da7592f133614ce9aacff55bbd8b4b7151ba1524c9678129aa",
+          "image_sha256": "aa20f77c694ec002bbe145b94b3399afa3fc101ac02b7719d9066dad58f9ec2e",
+          "write_transfers": 892,
+          "read_transfers": 892,
+          "decoded_regions": 37,
+          "logical_baseline_equal": true,
+          "directory_unchanged_on_overwrite": true,
+          "trace": "fragmented-1.trace.json.zlib"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Direct native function diagnostics with controlled BIOS events/file hooks.",
+    "Filesystem mapping is a documented model, not independent BIOS or SIO execution.",
+    "Model rejection tests do not establish original BIOS recovery/error behavior.",
+    "Deleted-file recovery, bad-sector remaps, physical timing and hardware remain unverified.",
+    "Experimental direct calls do not advance or replace natural main-16."
+  ]
+}
