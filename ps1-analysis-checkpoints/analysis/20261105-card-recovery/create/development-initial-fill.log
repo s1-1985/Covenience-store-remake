@@ -1,0 +1,10 @@
+connected actual opened store -> play 15960 98754969
+connected play verified 1 clock 15960 view 0 pause 0 next input 128
+connected play verified 2 clock 15962 view 0 pause 0 next input 0
+connected play verified 3 clock 15964 view 0 pause 0 next input 0
+connected play verified 4 clock 15966 view 0 pause 0 next input 0
+Traceback (most recent call last):
+  File "/workspace/scratch/6b75476ce435/repo/ps1-analysis-checkpoints/analysis/20261105-card-recovery/recovery.py", line 107, in <module>
+    proofs=[b.proof() for b in bridges];assert proofs[0]==proofs[1]
+                                               ^^^^^^^^^^^^^^^^^^^^
+AssertionError

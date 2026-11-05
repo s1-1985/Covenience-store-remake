@@ -14,6 +14,8 @@
 
 ## 保存済み
 
+- [2026-11-05：空カード新規保存・エラー再試行・取消しと最新時計16080](analysis/20261105-card-recovery/README.md)
+
 - [2026-11-05：営業入力から原保存/読込UIと原カード処理へ接続、最新時計15960](analysis/20261105-play-save/README.md)
 
 - [2026-11-04の最新再開点：時計15840・累積7928更新](analysis/20261104-long-continuation/README.md)

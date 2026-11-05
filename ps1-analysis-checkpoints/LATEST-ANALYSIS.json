@@ -1,17 +1,17 @@
 {
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
   "date_jst": "2026-11-05",
-  "snapshot": "TOWN0001-ci-main-09-single",
+  "snapshot": "TOWN0001-ci-main-10-single",
   "phase": "play_iteration_end",
-  "clock": 15960,
-  "completed_iterations": 7988,
+  "clock": 16080,
+  "completed_iterations": 8048,
   "cash": [
-    98754969,
-    153777535
+    98724409,
+    153780885
   ],
-  "ram_sha256": "54670ac1a2e820c1e2b61b2890ad8c6947987a2c86241fa2bb81b5304a680661",
-  "metadata": "analysis/20261105-play-save/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-09-single.json",
-  "compressed_ram": "analysis/20261105-play-save/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-09-single.ram.zlib",
-  "report": "analysis/20261105-play-save/README.md",
+  "ram_sha256": "6b5eda41f932569a9489bd6bf79206c2daa8ffdfbc89f3a1b203a01e82418dba",
+  "metadata": "analysis/20261105-card-recovery/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-10-single.json",
+  "compressed_ram": "analysis/20261105-card-recovery/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-10-single.ram.zlib",
+  "report": "analysis/20261105-card-recovery/README.md",
   "limits": "Natural main trajectory. Save/load UI branches are preserved separately and do not replace this state."
 }

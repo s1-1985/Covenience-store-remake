@@ -1,0 +1,44 @@
+{
+  "all_passed": true,
+  "updates": 60,
+  "clock_before": 15960,
+  "clock_after": 16080,
+  "completed_iterations": 8048,
+  "cash_before": [
+    98754969,
+    153777535
+  ],
+  "cash_after": [
+    98724409,
+    153780885
+  ],
+  "cash_from_ledgers": [
+    98724409,
+    153780885
+  ],
+  "cash_writes": 32,
+  "stores": [
+    {
+      "slot": 0,
+      "owner": 0,
+      "sales": 0,
+      "goods": 2400
+    },
+    {
+      "slot": 1,
+      "owner": 1,
+      "sales": 4050,
+      "goods": 700
+    },
+    {
+      "slot": 2,
+      "owner": 0,
+      "sales": 0,
+      "goods": 28160
+    }
+  ],
+  "staff_checks": 180,
+  "customer_checks": 180,
+  "source_ram_sha256": "54670ac1a2e820c1e2b61b2890ad8c6947987a2c86241fa2bb81b5304a680661",
+  "final_ram_sha256": "6b5eda41f932569a9489bd6bf79206c2daa8ffdfbc89f3a1b203a01e82418dba"
+}

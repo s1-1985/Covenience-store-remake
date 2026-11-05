@@ -1,0 +1,101 @@
+{
+  "all_passed": true,
+  "total": 3,
+  "cases": [
+    {
+      "scenario": "create",
+      "all_passed": true,
+      "attempt_statuses": [
+        2
+      ],
+      "attempt_results": [
+        0
+      ],
+      "card_sha256": "44d4ee76013122f01ed9835a184237b3a58734b0497aceb5c72588679fc4f179",
+      "payload_sha256": "b6ed1814f0a4cd6e08496edb20f5dcefa4be08d9ceb372da9124d3585d3384e3",
+      "saved_clock": 15960,
+      "saved_cash": [
+        98754969,
+        153777535
+      ],
+      "decoded_regions": 37,
+      "reads": 892,
+      "decode_return": -2146175296,
+      "initial_transfer_differences": [
+        {
+          "header512_equal": true,
+          "differences": [
+            {
+              "file_offset": 34116,
+              "native": 108,
+              "reference": 0
+            },
+            {
+              "file_offset": 34117,
+              "native": 208,
+              "reference": 16
+            },
+            {
+              "file_offset": 34118,
+              "native": 5,
+              "reference": 0
+            }
+          ],
+          "native_sha256": "ff01e3fb906cd0927d5451b5d5193e8a05f7710968950924c7a87a817df35d6f",
+          "reference_sha256": "5afa17227c509084a43b4ed4de1fbb0d12a6362dddd70c6ce4a423e343d5eb12",
+          "scope": "Temporary initial file fill differs only in body bytes later fully overwritten by the 892 checked writes. Final entire file and all I/O are compared without normalization."
+        }
+      ],
+      "temporary_return_address": {
+        "file_offset": 34116,
+        "native": "0x8005d06c",
+        "reference": "0x80001000",
+        "overwritten_by_final_body": true,
+        "final_entire_file_equal": true
+      }
+    },
+    {
+      "scenario": "retry",
+      "all_passed": true,
+      "attempt_statuses": [
+        5,
+        0
+      ],
+      "attempt_results": [
+        5,
+        0
+      ],
+      "card_sha256": "cce10c28cf623ddee517854935dca452eb8730b3d687c589e54790ad3820b6ac",
+      "payload_sha256": "b6ed1814f0a4cd6e08496edb20f5dcefa4be08d9ceb372da9124d3585d3384e3",
+      "saved_clock": 15960,
+      "saved_cash": [
+        98754969,
+        153777535
+      ],
+      "decoded_regions": 37,
+      "reads": 892,
+      "decode_return": -2146175296,
+      "initial_transfer_differences": [],
+      "temporary_return_address": null
+    },
+    {
+      "scenario": "cancel",
+      "all_passed": true,
+      "attempt_statuses": [
+        5
+      ],
+      "attempt_results": [
+        5
+      ],
+      "writes": 0,
+      "unchanged_card_sha256": "e874af1318f03ef5ed2f4f2d0800bde74bacf45a5e34350fed875fc1b9f2383b",
+      "scope": "User acknowledges error, cancels save and exits settings; original existing file remains byte-identical."
+    }
+  ],
+  "limits": [
+    "Existing BIOS/file/event adapters, not physical card communication.",
+    "Init5 is reached by controlled BIOS info responses [1,1,1,0]; original game code derives error and retries after raw UI input.",
+    "Read/checksum/decode is a separate strict-MIPS diagnostic of actual UI-written files; original fields are corrupted only in that diagnostic.",
+    "All three menu cases start from the same main09 state; none replaces natural main10."
+  ]
+}
