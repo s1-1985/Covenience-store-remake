@@ -85,7 +85,7 @@ out=dict(all_passed=True,own_list_order=[0,2],list_input_branches=sorted(branche
          saved_clock=17534,saved_selected=0xffffffff,decoded_regions=37,read_blocks=892,
          runtime_image_tables_verified=True,load_restored_view=0,
          natural_updates_added=60,natural_completed_iterations=8828,natural_clock=17640,
-         cases_not_added_to_natural_count=['own','list-wrap','rival-map','investigate','reinspect','guard','menu-save','menu-load','own-list-wrap diagnostic'],
+         cases_not_added_to_natural_count=['own','list-wrap','rival-map','investigate','reinspect','info-only-confirm','guard','menu-save','menu-load','own-list-wrap diagnostic'],
          limits=['List parent/control policy is independent; observed native child results and the previous child monitors remain shared.',
                  'Only reached valid list states with two own stores; no-own-store and invalid-row entry behavior not covered.',
                  'First list attempt named rival actually wrapped to own slot 0; retained under development-own-list-wrap rather than called rival coverage.',
