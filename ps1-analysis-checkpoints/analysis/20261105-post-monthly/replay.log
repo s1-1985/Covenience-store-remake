@@ -1,0 +1,9 @@
+connected actual opened store -> play 16880 98777459
+connected play verified 1 clock 16882 view 0 pause 0 next input 0
+connected play verified 31 clock 16942 view 0 pause 0 next input 0
+connected play verified 61 clock 17002 view 0 pause 0 next input 0
+connected play verified 91 clock 17062 view 0 pause 0 next input 0
+connected play verified 121 clock 17122 view 0 pause 0 next input 0
+connected play verified 151 clock 17182 view 0 pause 0 next input 0
+connected play verified 181 clock 17242 view 0 pause 0 next input 0
+{"all_passed": true, "captures": 2, "final_ram_equals_main13": true}

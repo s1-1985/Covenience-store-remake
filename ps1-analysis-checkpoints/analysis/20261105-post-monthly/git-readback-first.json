@@ -1,0 +1,213 @@
+{
+  "all_passed": true,
+  "commit": "ca50724cc48d67bd9b5d840fe0c32f41a7af841e",
+  "files": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/README.md",
+      "size": 4810,
+      "git_blob": "2d10c85b24d43851454360dcf2726b812fbdfcc6",
+      "sha256": "bbaf2b0bd7ba0a9ec5b0d9ff44f50db1e14b5b10b5102d95b52716208434be0a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/TOWN0001-ci-main-14-single.audit.json",
+      "size": 3087,
+      "git_blob": "5612e2f206ea9e96d2b81c3060e936348dd89a24",
+      "sha256": "df646e8ddf643f343a2d82be9d1e6ec1381c47ecf506ec0f91cc1aa5b0a7ee65"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/TOWN0001-ci-main-14-single.log",
+      "size": 259,
+      "git_blob": "13ec5d4c79dac45a5204ac68c4bcf24dea2c2518",
+      "sha256": "d32fc968df84139342763f267d9a4579e3f0fa1a126e5250d0d7153dbba7e1de"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/TOWN0001-ci-main-15-single.audit.json",
+      "size": 3094,
+      "git_blob": "f5838f2f5afe7072a67b87c143ac70ae7ad7e0e1",
+      "sha256": "9a06334fd7c0944ed9e0aa8ded490190931b62a29df3a923e45381831fcdc76b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/TOWN0001-ci-main-15-single.log",
+      "size": 259,
+      "git_blob": "171d1a3e5553545247d3b3801d837dd6c065d49d",
+      "sha256": "a5a2d03b60c7151698caaaafe298196ddbeb5f45ad3e8554ee9b435511c7c013"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/audit-notifications.py",
+      "size": 4023,
+      "git_blob": "fbbee6bc2c128c794409fb8a427b507928084312",
+      "sha256": "cbae5876d3fa503e6900a5f97253d71debb730a6723011fea76fe5db4fdacd97"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/audit-rival.py",
+      "size": 4549,
+      "git_blob": "dfe05c9227d32e451f745b7ac650b1d5e78806d5",
+      "sha256": "50470c00681c4cbbdf72d8d7b640cb08f50e688ebdc93388ddda2ce111ae9341"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/audit-town-engines.py",
+      "size": 5128,
+      "git_blob": "149a3919193a6e5cf1e61ff1c1c4cd2b4f78b218",
+      "sha256": "442352d2fe0db11b3ead8c960ed5f660b08d1a61999f9a98d0d33e11d67a1457"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/audit-world.py",
+      "size": 4738,
+      "git_blob": "5f00815efd1a572f284a33b004e6208d81a994a2",
+      "sha256": "1e2d2e4272594f64db757073c0b403756027a943910ad542eeaf01b6263d9eaa"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/capture-monthly.py",
+      "size": 3994,
+      "git_blob": "b742b9ef7fdacfd725f221911b2f3b0e0c28691d",
+      "sha256": "a1d52504b11c71e323cc9bd25baf9ae8df72132f87a39d841fdf2110721a2bdf"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/continue-post-month.py",
+      "size": 7464,
+      "git_blob": "417758c49ab291947ccf134ee7c014500b7d379c",
+      "sha256": "c6533234102e4fc8365a6be5d92a7134a0d6f0a91dbdefca7dcb24a30a4bcc1d"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/development-dependency.log",
+      "size": 625,
+      "git_blob": "e57a1004fbb88f7bb17a5b5563ad21f1830fd3e9",
+      "sha256": "e4295ae8108fd243b0f3954f8f427ede8214bea13c62c9fd6f67a95f0a54aa85"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/TOWN0001-ci-main-14-single-progress.json",
+      "size": 70155,
+      "git_blob": "26d751e1df849550a3250173f8e362e4bd47f056",
+      "sha256": "f1b209ac2c6df34d1df13fc9f3fc61852940fc0eb8d4c61c8629ba843789a2da"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/TOWN0001-ci-main-15-single-progress.json",
+      "size": 70154,
+      "git_blob": "17fd7ff72e740e3dfbb82600827f57da94a55b55",
+      "sha256": "5825d3b1c4cc7d697b1487b6f1178af36cdf1fdc58e9b8390b46b2357f0d8f38"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/opened-snapshot-TOWN0001-ci-main-14-single-verification-20261103.json",
+      "size": 926322,
+      "git_blob": "01ca38b2253cae3a978d445b9001f163b41f7f19",
+      "sha256": "8cd7e1c11be77affc44aa76c7bd71362feaf1dc5edebd1e6024462fa923fe7f4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/opened-snapshot-TOWN0001-ci-main-15-single-verification-20261103.json",
+      "size": 652853,
+      "git_blob": "94ce0c9d9331400d6bd1c31717c4e558bab6c762",
+      "sha256": "841f4d4326392f1724ffa604ce958732227c7ac08b11a8839a7528a192c0a354"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-14-single.json",
+      "size": 870679,
+      "git_blob": "ce66d19e59ed9c38aec0398fe01311c138461f2e",
+      "sha256": "9bdaa98956040d77897ae1388b00201e6145011b769c3dea1baed3fdf727c77c"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-14-single.ram.zlib",
+      "size": 507925,
+      "git_blob": "2ff38bf2bb4e7c11a92db08e0772858a9c07e9f9",
+      "sha256": "821cbd87326e7cb9c2a0ddf9516889d3eca4f1fa4c33688dc632b35b64ed902a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-15-single.json",
+      "size": 870679,
+      "git_blob": "bfe50d9287b711890409e92e16d7d58746b4f908",
+      "sha256": "b7f84ef67a26479990c30a1db106ddd7b3ca25f34e510fa5abf45185eb33abf1"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-15-single.ram.zlib",
+      "size": 507980,
+      "git_blob": "a3418c6a71904a22ad21e84b322c2ea210eb5499",
+      "sha256": "8aa7612cc7b47d07882b3f4a82cb4cb4536dc63b517dc4d93970dd1f20e21ecb"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/long-continuation-status.json",
+      "size": 7892,
+      "git_blob": "d59b1887ded921fa8e92d4abbebba93716acfd20",
+      "sha256": "e4e0026bce1a2ba0722e5e24a62c494adbc6aa413ae3aff21a59f49cf3505930"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-entry-progress.json",
+      "size": 1359,
+      "git_blob": "85faadd8c6bb38cbefbd6c1792c33f2e073e209b",
+      "sha256": "011619f30bbcdcf06fa2c52452e11da63463b3cd60e53c6232ecb80c7949eb09"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-evidence/source/opened-snapshots-20261028/TOWN0001-notice-active-20261105-single.json",
+      "size": 801909,
+      "git_blob": "95c8f43cfb7e0938f7b986e73264ab5ad865f85d",
+      "sha256": "f56ae0c1eeaf3f4a761a8dab5cfb3ec17b6d4c368a393f1af27b59d1d53bd6b2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-evidence/source/opened-snapshots-20261028/TOWN0001-notice-active-20261105-single.ram.zlib",
+      "size": 507937,
+      "git_blob": "59e34947eaa250ff5e59e774a112631964bbee48",
+      "sha256": "1f46e79f03d7c60e8e52afb9ff95a762255268e2b2900f048e9964acc084cf14"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-evidence/source/opened-snapshots-20261028/TOWN0001-notice-menu-20261105-single.json",
+      "size": 805399,
+      "git_blob": "2bd93f0c6a7fd293bd8eb3880d57246a3d0d3a5f",
+      "sha256": "22775d1113e7fabb06f3b81dc54efefd3b4fa2408fdce24316966687750e7cfb"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-evidence/source/opened-snapshots-20261028/TOWN0001-notice-menu-20261105-single.ram.zlib",
+      "size": 508995,
+      "git_blob": "ec2d36773122ed4d30a16852183061c09c6ee071",
+      "sha256": "3d978833a3facf67201b86336849b98194f0f4c91b5995bbdc1d9a81d6c632ad"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-menu-progress.json",
+      "size": 4851,
+      "git_blob": "9285128b6d465c502301a582f84662b93262e4ed",
+      "sha256": "f3e5f567068507278f43052e5ef720ce62ff9c92f10fa953ed73d92d0eec6848"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-menu.json",
+      "size": 79597,
+      "git_blob": "4b0ff571fe932668e91dbd25f146824a1931c3da",
+      "sha256": "3b1c8f97e856ffb9ad266e0aebfbb8ac8c23905e08bec5048a02442741977be1"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-menu.log",
+      "size": 493,
+      "git_blob": "bb752de318b26c7a2f5e725c72b75a6d8767c6b8",
+      "sha256": "6cb258f71594c219fcceb5e9fb225f2f29d98a098fbb54f2e14f375d6f385041"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notice-menu.py",
+      "size": 3928,
+      "git_blob": "34ca2d9e206943de1b7c32d5602d916a367e42fb",
+      "sha256": "f234e48a740864f9f6c4b27327f1c28487fd2b55da1e8378a19d2032808eb11b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/notification-audit.json",
+      "size": 2127,
+      "git_blob": "e7adf937be441456ca36582c2320716ed695edd4",
+      "sha256": "b3f2e84e799341b877cf5a48505b571e8c6c1115e41eef7b8d2dd8f05b259d61"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/world-audit.json",
+      "size": 57704,
+      "git_blob": "1629564afa4017a7e715ef34ee17a809970fd2ca",
+      "sha256": "cb3fe8536bdbe126fac124551d51fbdea796e972268be52659a31b93fb9a2190"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-ANALYSIS.json",
+      "size": 769,
+      "git_blob": "7f62c6589bc171bcd4b47c40d78e443af5cd8a39",
+      "sha256": "aff1f8529406d0f52e3d62a58e542d622cec8ce334e591829b64867e92f52df4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "size": 3048,
+      "git_blob": "2bbbf9eaf83b26782c210986042767dfaa4c719e",
+      "sha256": "75304aeff3e445d42b8480fd8f059f1fd7f172d1de79f278255375af8469eff2"
+    }
+  ],
+  "files_verified": 34,
+  "bytes_verified": 7304785,
+  "verification": "Complete bytes fetched from GitHub and compared with the local originals; this record is stored in a following commit."
+}
