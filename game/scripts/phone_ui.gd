@@ -1439,6 +1439,21 @@ func _back_to_research() -> void:
 
 func _fill_results() -> void:
     _back_to_research()
+    _section("今月の営業収支")
+    var current := _text("", 20)
+    current.name = "OperatingStatement"
+    _updaters.append(func():
+        var statement: Dictionary = main.simulation.month_operating_statement()
+        var period: Dictionary = statement["representative"]
+        current.text = "売上 ¥%s\n仕入 ¥%s　人件費 ¥%s\n維持費 ¥%s　宣伝費 ¥%s\n営業収支 ¥%s\n設備・出店・臨時収支 ¥%s" % [
+            main._format_integer(int(period["sales_yen"])),
+            main._format_integer(int(period["goods_yen"])),
+            main._format_integer(int(period["wages_yen"])),
+            main._format_integer(int(period["maintenance_yen"])),
+            main._format_integer(int(period["promotion_yen"])),
+            main._format_integer(int(statement["four_day_net_result_yen"])),
+            main._format_integer(-int(statement["one_off_yen"])),
+        ])
     # Task #113: the last 12 months' sales and 収支 as bars.
     var graph := Control.new()
     graph.name = "ResultsGraph"
@@ -1462,6 +1477,16 @@ func _fill_results() -> void:
                 main._format_integer(int(details.get("month_result_yen", 0))),
             ])
         lines.reverse()
+        var last: Dictionary = records.back()["details"]
+        if last.has("operating_statement"):
+            var monthly: Dictionary = last["operating_statement"]["monthly"]
+            lines.insert(0, "先月の内訳\n仕入 ¥%s　人件費 ¥%s\n維持費 ¥%s　宣伝費 ¥%s\n設備・出店・臨時収支 ¥%s" % [
+                main._format_integer(int(monthly["goods_yen"])),
+                main._format_integer(int(monthly["wages_yen"])),
+                main._format_integer(int(monthly["maintenance_yen"])),
+                main._format_integer(int(monthly["promotion_yen"])),
+                main._format_integer(-int(last.get("one_off_yen", 0))),
+            ])
         table.text = "\n".join(lines))
 
 

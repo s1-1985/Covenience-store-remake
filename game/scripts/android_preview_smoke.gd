@@ -186,6 +186,14 @@ func _run() -> void:
             return
         if not _require(game.store_view.editing == (command == "interior"), "Only the 内装 window edits the layout"):
             return
+    phone.open_window("results")
+    phone.refresh()
+    await process_frame
+    await process_frame
+    var statement_label := phone.window.find_child("OperatingStatement", true, false) as Label
+    if not _require(statement_label != null and "仕入" in statement_label.text and "臨時収支" in statement_label.text, "The phone results show operating costs and one-off cash separately"):
+        return
+    await _capture("preview-operating-statement")
     phone.window.find_child("PhoneWindowClose", true, false).pressed.emit()
     if not _require(not phone.window.visible and not game.store_view.editing, "× closes the window"):
         return

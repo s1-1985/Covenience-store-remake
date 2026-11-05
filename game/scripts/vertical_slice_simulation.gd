@@ -4,6 +4,7 @@ extends RefCounted
 const StoreLayoutScript := preload("res://scripts/domain/store_layout.gd")
 const InventoryCatalogScript := preload("res://scripts/domain/inventory_catalog.gd")
 const EconomyStateScript := preload("res://scripts/domain/economy_state.gd")
+const OperatingStatementScript := preload("res://scripts/domain/operating_statement.gd")
 const CustomerRosterScript := preload("res://scripts/domain/customer_roster.gd")
 const StaffRosterScript := preload("res://scripts/domain/staff_roster.gd")
 const RuntimeEventLogScript := preload("res://scripts/domain/runtime_event_log.gd")
@@ -4469,14 +4470,40 @@ func _capital_spent_this_month_yen() -> int:
     return total
 
 
+# Runtime mapping of the existing client's costs onto the recovered five-column
+# ledger. Goods' initial placement/refunds remain one-off, as in task #117.
+# The source's third cost is not fully classified; promotion_cost keeps this
+# client's existing treatment. This is a compatibility mapping, not a newly
+# established interpretation of every original cost-writing call site.
+func month_operating_statement() -> Dictionary:
+    var period := {"sales_yen": 0, "maintenance_yen": 0, "wages_yen": 0, "promotion_yen": 0, "goods_yen": 0}
+    _for_each_store(func():
+        period["sales_yen"] += _store_sales_yen - _store_sales_at_month_start)
+    var expense_fields := {
+        "fixture_maintenance": "maintenance_yen", "staff_wages": "wages_yen",
+        "promotion_cost": "promotion_yen", "inventory_restock": "goods_yen",
+    }
+    var one_off_yen := 0
+    for index in range(_expense_index_at_month_start, economy.expense_records.size()):
+        var expense: Dictionary = economy.expense_records[index]
+        var field: String = str(expense_fields.get(str(expense["expense_type"]), ""))
+        if field.is_empty():
+            one_off_yen += int(expense["amount_yen"])
+        else:
+            period[field] += int(expense["amount_yen"])
+    var statement := OperatingStatementScript.project(period)
+    statement["one_off_yen"] = one_off_yen
+    return statement
+
+
 func _settle_month_end() -> void:
     var capital_yen := _capital_spent_this_month_yen()
-    # Task #113: the month's sales, kept with the settlement for 調査's
-    # 収支グラフ.
-    var month_sales_yen: int = (economy.recorded_revenue_yen() - _revenue_at_month_start) * MONTH_MULTIPLIER
-    var four_day_net_result_yen: int = economy.cash_yen - _cash_at_month_start + capital_yen
-    var month_result_yen: int = four_day_net_result_yen * MONTH_MULTIPLIER
-    var adjustment_yen: int = month_result_yen - four_day_net_result_yen
+    var statement := month_operating_statement()
+    var month_sales_yen: int = int(statement["monthly"]["sales_yen"])
+    var four_day_net_result_yen: int = int(statement["four_day_net_result_yen"])
+    var month_result_yen: int = int(statement["month_result_yen"])
+    var adjustment_yen: int = int(statement["adjustment_yen"])
+    var cash_before_adjustment_yen: int = economy.cash_yen
     var record: Dictionary = economy.record_month_end_settlement(
         minute_of_day,
         adjustment_yen,
@@ -4485,6 +4512,10 @@ func _settle_month_end() -> void:
             "four_day_net_result_yen": four_day_net_result_yen,
             "month_result_yen": month_result_yen,
             "capital_yen": capital_yen,
+            "one_off_yen": int(statement["one_off_yen"]),
+            "operating_statement": statement,
+            "cash_before_adjustment_yen": cash_before_adjustment_yen,
+            "cash_after_adjustment_yen": cash_before_adjustment_yen + adjustment_yen,
             "month_sales_yen": month_sales_yen,
             "town_population": town.population,
         }

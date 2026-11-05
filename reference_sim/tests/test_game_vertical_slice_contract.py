@@ -2423,7 +2423,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("func _advance_minute_of_day() -> void:", simulation)
         self.assertIn("func _handle_day_boundary() -> void:", simulation)
         self.assertIn("func _settle_month_end() -> void:", simulation)
-        self.assertIn("four_day_net_result_yen * MONTH_MULTIPLIER", simulation)
+        self.assertIn('int(statement["month_result_yen"])', simulation)
         self.assertIn("func record_month_end_settlement(", economy)
         self.assertIn(
             "month-end cash must equal the pre-settlement cash plus the x8 adjustment", smoke
@@ -4064,7 +4064,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         for expense_type in ("staff_wages", "fixture_maintenance", "inventory_restock", "promotion_cost"):
             self.assertNotIn('"%s"' % expense_type, capital)
         self.assertIn(
-            "var four_day_net_result_yen: int = economy.cash_yen - _cash_at_month_start + capital_yen",
+            "var four_day_net_result_yen: int = int(statement[\"four_day_net_result_yen\"])",
             simulation,
         )
         self.assertIn('"expense_index_at_month_start": _expense_index_at_month_start,', simulation)

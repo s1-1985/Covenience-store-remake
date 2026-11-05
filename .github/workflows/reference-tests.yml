@@ -36,3 +36,4 @@ jobs:
         run: |
           godot --headless --editor --path game --quit
           godot --headless --path game --script res://scripts/headless_smoke.gd
+          godot --headless --path game --script res://scripts/operating_statement_smoke.gd

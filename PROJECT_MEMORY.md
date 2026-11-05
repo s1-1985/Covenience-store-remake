@@ -2258,6 +2258,10 @@ The next large milestone is **turning the single scripted vertical slice into re
 
 - **2026-09-24 Android Japanese preview (decision 0154):** Japanese UI/font, larger Android controls, shortcuts/quick save and separate preview package. Android-only starting cash uses the researched 200-million-yen beginner anchor with a free furnished test shop (REMAKE_BALANCED_DEFAULT). Real scene-flow test verifies purchase/save/load/Continue. Still a vertical slice; no claim of complete recreation. See `docs/handoff/2026-09-24-android-preview-delivery.md`.
 
+### 2026-11-05：Android実装優先・営業台帳移植（decision 0206）
+
+ユーザーから、解析検証に偏った進め方を修正し、エミュレータに依存しないAndroid版を作ることへ徹底するよう指示された。ルートAGENTS.mdに優先順位と成果物の扱いを固定した。未マージPR #270の更新版0c15eebを基点に、原作の月末台帳集計をGDScriptへ移植。現金差から算出していたため賞金・強盗損失が繰り返し計上される問題を修正し、スマホの調査画面へ営業内訳を追加した。0.1.20-preview、Android arm64 APKをビルド・署名検証。実機動作は未確認。mainやPR #270は未マージ。最新引継ぎはdocs/handoff/2026-11-05-android-implementation-first.md。
+
 ## 20. Execution cadence and user-directed work
 
 Scheduled runs are a background cadence, not an exclusive gate for progress.

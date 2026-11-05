@@ -1,0 +1,45 @@
+{
+  "date_jst": "2026-11-05",
+  "base_commit": "0c15eeb401441c00ab48a0af13da8bd70d2a1b78",
+  "base_pr": 270,
+  "version": "0.1.20-preview",
+  "version_code": 21,
+  "package": "com.conveniremake.preview",
+  "godot": "4.3.stable.official.77dcf97d8",
+  "architecture": "arm64-v8a",
+  "apk_bytes": 27691022,
+  "apk_sha256": "acf035b1b958ccc47976cc2c8a19428c547815653b3f2f700e039ca524d263db",
+  "signature_verification": [
+    "Verifies",
+    "Verified using v1 scheme (JAR signing): true",
+    "Verified using v2 scheme (APK Signature Scheme v2): true",
+    "Verified using v3 scheme (APK Signature Scheme v3): true",
+    "Verified using v3.1 scheme (APK Signature Scheme v3.1): false",
+    "Verified using v4 scheme (APK Signature Scheme v4): false",
+    "Verified for SourceStamp: false",
+    "Number of signers: 1"
+  ],
+  "apk_badging": [
+    "package: name='com.conveniremake.preview' versionCode='21' versionName='0.1.20-preview' platformBuildVersionName='14' platformBuildVersionCode='34' compileSdkVersion='34' compileSdkVersionCodename='14'",
+    "install-location:'auto'",
+    "sdkVersion:'21'",
+    "targetSdkVersion:'34'",
+    "application-label:'ザ・コンビニ 再現試作'"
+  ],
+  "runtime_analysis_files": false,
+  "tests": {
+    "python": "786 tests; OK, existing expected failure 1",
+    "godot": "Existing headless smoke passed in 1205 steps",
+    "operating_statement": "Fixed source examples, cash/robbery/prize, save/load and two stores passed",
+    "android_preview": "Scene flow plus results label passed",
+    "visual": "Same scene flow passed under Xvfb/Mesa; screenshot inspected"
+  },
+  "screenshot": "docs/images/android-operating-statement-0.1.20.png",
+  "limits": [
+    "Android device installation/performance/audio not tested.",
+    "Existing ObjectDB exit warning remains.",
+    "Stock official template, larger than prior custom stripped engine.",
+    "This debug signing key is not guaranteed to match earlier distributed APKs.",
+    "Expense category mapping retains documented client choices; not all original cost writers ported."
+  ]
+}

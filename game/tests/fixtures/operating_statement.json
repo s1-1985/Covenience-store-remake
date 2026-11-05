@@ -1,0 +1,6 @@
+[
+  {"representative":{"maintenance_yen":100,"wages_yen":200,"promotion_yen":300,"goods_yen":400,"sales_yen":2000},"profit":1000,"monthly_profit":8000,"cash_adjustment":7000},
+  {"representative":{"maintenance_yen":200,"wages_yen":500,"promotion_yen":0,"goods_yen":300,"sales_yen":500},"profit":-500,"monthly_profit":-4000,"cash_adjustment":-3500},
+  {"representative":{"maintenance_yen":0,"wages_yen":0,"promotion_yen":0,"goods_yen":0,"sales_yen":0},"profit":0,"monthly_profit":0,"cash_adjustment":0},
+  {"representative":{"maintenance_yen":10000,"wages_yen":20000,"promotion_yen":30000,"goods_yen":40000,"sales_yen":100000},"profit":0,"monthly_profit":0,"cash_adjustment":0}
+]
