@@ -7,6 +7,8 @@ for script, args in [
     ('headless_smoke.gd', []),
     ('source_geometry_smoke.gd', []),
     ('source_people_smoke.gd', []),
+    ('source_notifications_smoke.gd', []),
+    ('source_notifications_ui_smoke.gd', ['--', '--android-preview']),
     ('operating_statement_smoke.gd', []),
     ('android_preview_smoke.gd', ['--', '--android-preview']),
     ('recovered_runtime_smoke.gd', []),
@@ -17,9 +19,11 @@ for script, args in [
     ('source_operations_smoke.gd', []),
     ('source_operations_ui_smoke.gd', ['--', '--android-preview']),
 ]:
-    result = subprocess.run([godot, '--headless', '--path', str(root / 'game'), '--script', 'res://scripts/' + script, *args], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
+    result = subprocess.run([godot, '--headless', '--quit-after', '600', '--path', str(root / 'game'), '--script', 'res://scripts/' + script, *args], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=120)
     output = result.stdout
-    print(script, 'PASS' if result.returncode == 0 and 'ERROR:' not in output else 'FAIL', flush=True)
+    completed = any(marker in output.lower() for marker in ('passed', '_pass ', 'failures: 0'))
+    success = result.returncode == 0 and 'ERROR:' not in output and completed
+    print(script, 'PASS' if success else 'FAIL', flush=True)
     print(output.strip(), flush=True)
-    if result.returncode or 'ERROR:' in output:
+    if not success:
         raise SystemExit(1)

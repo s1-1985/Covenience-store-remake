@@ -2,6 +2,8 @@ class_name VerticalSliceSimulation
 extends RefCounted
 
 const ProgramOperationsScript := preload("res://scripts/domain/program_operations.gd")
+const ProgramNotificationsScript := preload("res://scripts/domain/program_notifications.gd")
+var notifications := ProgramNotificationsScript.new()
 const StoreLayoutScript := preload("res://scripts/domain/store_layout.gd")
 const InventoryCatalogScript := preload("res://scripts/domain/inventory_catalog.gd")
 const EconomyStateScript := preload("res://scripts/domain/economy_state.gd")
@@ -349,6 +351,7 @@ func _init(source_config: Dictionary) -> void:
 
 
 func reset() -> void:
+    notifications.reset()
     _rival_simulations.clear()
     _rival_cash_yen = int(_recovery.get("initial_cash", [0, 100000000])[1])
     _rival_serial = 1
@@ -3882,6 +3885,7 @@ func save_state() -> Dictionary:
     _switch_store(0)
     var data := {
         "save_schema_version": SAVE_SCHEMA_VERSION,
+        "source_notifications": notifications.snapshot(),
         "scenario_id": str(config["scenario_id"]),
         "config_schema_version": int(config["schema_version"]),
         "minute_of_day": minute_of_day,
@@ -4020,6 +4024,9 @@ func _store_save_block() -> Dictionary:
 
 
 func load_state(data: Dictionary) -> bool:
+    var loaded_notices := ProgramNotificationsScript.new()
+    if not loaded_notices.restore(data.get("source_notifications", {})):
+        return false
     if str(data.get("scenario_id", "")) != str(config["scenario_id"]):
         return false
     if int(data.get("config_schema_version", -1)) != int(config["schema_version"]):
@@ -4151,6 +4158,7 @@ func load_state(data: Dictionary) -> bool:
         if not _source_runtime_to_restore.is_empty():
             _restore_source_runtime(_source_runtime_to_restore)
             _source_runtime_to_restore = {})
+    notifications = loaded_notices
     return true
 
 
@@ -4230,8 +4238,84 @@ func _record_event(event_type: String, details: Dictionary = {}) -> void:
         details = details.duplicate()
         details["store_index"] = active_store
     event_log.append(event_type, minute_of_day, details)
+    if program_town != null:
+        _reserve_source_notice(event_type, details)
     if active_store == viewed_store:
         last_event = event_type.replace("_", " ")
+
+
+# CONFIRMED_BINARY caller arguments: store_advice.py, rare_store_event.py,
+# rival_management.py, town_project_completion.py and town_monthly.py.
+# The context is this client's Unicode/UI payload, separate from source glyph bytes.
+func _reserve_source_notice(event_type: String, details: Dictionary) -> void:
+    var kind := 0
+    var parameter := 0
+    var sound := 100
+    var mode := 1
+    var variant := 0
+    match event_type:
+        "manager_advice", "manager_report", "sales_report", "store_rank_changed":
+            kind = 3
+            var manager = staff.members.get(str(config["staff"].get("manager_staff_id", "")))
+            if manager != null:
+                parameter = int(_staff_candidate_catalog.get(manager.candidate_id, {}).get("source_index", 0))
+            sound = 34 if event_type == "manager_report" or (event_type == "sales_report" and not bool(details.get("selling_well", false))) else 29 if event_type == "sales_report" else 28
+        "month_end_settlement":
+            mode = 2
+        "owner_review":
+            mode = 3
+        "rival_withdrew", "rival_opened":
+            parameter = 1
+            sound = 28
+        "town_press":
+            parameter = int(not str(details.get("rival_id", "")).is_empty())
+            sound = 101 if parameter else 100
+        _:
+            return
+    var body := PackedByteArray()
+    body.resize(120)
+    notifications.reserve(kind, parameter, sound, mode, variant, body,
+        {"event_type": event_type, "details": details.duplicate(true)})
+
+
+func consume_source_notice() -> Dictionary:
+    var n = notifications
+    n.put(0x800cd930, _chain_visitors_total)
+    n.put(0x800cd948, int(config.get("source_scenario_index", 0)))
+    var records: Array = economy.month_end_records
+    if not records.is_empty():
+        var latest: Dictionary = records[-1]["details"]
+        n.put(0x800e3c28, int(latest.get("month_result_yen", 0)))
+        n.put(0x800da974, int(latest.get("one_off_yen", 0)))
+        n.put(0x800e36a8, town.population)
+        if records.size() > 1:
+            var previous: Dictionary = records[-2]["details"]
+            n.put(0x800e3c2c, int(previous.get("month_result_yen", 0)))
+            n.put(0x800da978, int(previous.get("one_off_yen", 0)))
+            n.put(0x800e36ac, int(previous.get("town_population", 0)))
+        else:
+            n.put(0x800e36ac, int(config["town"]["population"]))
+    var entries: Array = []
+    _for_each_store(func():
+        if has_store_site():
+            entries.append({"annual_sales": _annual_sales_yen, "rating": internal_rating_value}))
+    # Annual ledgers have rolled over by display time; use the immutable review.
+    if not last_owner_review.is_empty():
+        var active_context: Dictionary = n.contexts.get(str(_next_notice_slot()), {})
+        if str(active_context.get("event_type", "")) == "owner_review":
+            for entry in entries:
+                entry["annual_sales"] = 0
+                entry["rating"] = int(last_owner_review.get("mean_rating", 0))
+            if not entries.is_empty():
+                entries[0]["annual_sales"] = int(last_owner_review.get("annual_sales", 0))
+    return n.consume(month_count * 5760 + _days_completed_this_month * 1440 + minute_of_day, entries, town.population)
+
+
+func _next_notice_slot() -> int:
+    for slot in 50:
+        if notifications.queue[slot * 160]:
+            return slot
+    return 50
 
 
 func _refresh_interactions() -> void:

@@ -33,11 +33,23 @@ func _initialize() -> void:
                 assert(sim.economy.cash_yen == cash - land - fee)
                 for tick in 2000:
                     sim.tick()
+                    # This matrix verifies opening and trading for each layout.
+                    # Long native runs have dedicated people/game regressions.
+                    if sim._store_sales_yen > 0:
+                        break
                 assert(sim._store_sales_yen > 0, "customers must buy in every small source sample")
             var serialized: Dictionary = JSON.parse_string(JSON.stringify(sim.save_state()))
             var clone = Sim.new(config)
             assert(clone.load_state(serialized))
-            assert(clone.config["store"]["source_floor"] == sim.config["store"]["source_floor"])
+            # Native wear writes integer cells; JSON reloads numeric cells as
+            # floats. Compare every source floor code, not Variant storage types.
+            var saved_floor: Array = clone.config["store"]["source_floor"]
+            var live_floor: Array = sim.config["store"]["source_floor"]
+            assert(saved_floor.size() == live_floor.size())
+            for y in live_floor.size():
+                assert(saved_floor[y].size() == live_floor[y].size())
+                for x in live_floor[y].size():
+                    assert(int(saved_floor[y][x]) == int(live_floor[y][x]))
             assert(clone.inventory.total_stock_units() == sim.inventory.total_stock_units())
             for cell in original["store"]["blocked_subcells"]:
                 assert(not clone.layout.is_walkable(Vector2i(int(cell[0]), int(cell[1]))))

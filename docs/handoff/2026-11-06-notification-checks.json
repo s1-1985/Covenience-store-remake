@@ -1,0 +1,38 @@
+{
+  "base_commit": "ce51a5a92cebd10c3df192acea1b5da2d2f0a7e6",
+  "date_jst": "2026-11-06",
+  "godot": "4.3.stable.official.77dcf97d8",
+  "checks": [
+    "headless_smoke.gd",
+    "source_geometry_smoke.gd",
+    "source_people_smoke.gd",
+    "source_notifications_smoke.gd",
+    "source_notifications_ui_smoke.gd",
+    "operating_statement_smoke.gd",
+    "android_preview_smoke.gd",
+    "recovered_runtime_smoke.gd",
+    "recovered_game_smoke.gd",
+    "recovered_ui_smoke.gd",
+    "source_interior_smoke.gd",
+    "analysis_integration_smoke.gd",
+    "source_operations_smoke.gd",
+    "source_operations_ui_smoke.gd"
+  ],
+  "godot_failures": 0,
+  "source_notification_reserve_consume_cases": 96,
+  "source_notification_display_cases": 640,
+  "python_tests": 786,
+  "python_expected_failures": 1,
+  "python_unexpected_failures": 0,
+  "commands": [
+    "python tools/run_recovered_checks.py <Godot4.3>",
+    "PYTHONPATH=reference_sim python -m unittest discover -s reference_sim/tests -q"
+  ],
+  "android_build_created": false,
+  "android_device_tested": false,
+  "limits": [
+    "Original notification voice and glyph rendering not connected; Unicode phone UI with explicit presentation fallback.",
+    "Existing ObjectDB exit leak warnings remain in scene tests.",
+    "All-analysis integration remains unfinished; no intermediate APK distributed."
+  ]
+}

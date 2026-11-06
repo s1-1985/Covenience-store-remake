@@ -12942,5 +12942,8 @@
         ]
       }
     }
+  },
+  "source_notification_presentation": {
+    "evidence_note": "CONFIRMED_BINARY: 50x160-byte notification reservations, dispatch modes and display lifecycle from analysis 2c00ba53 event_queue.py / notification_display.py. REMAKE_BALANCED_DEFAULT: native source glyph text is presented using client Unicode labels. Until original voice playback is connected, tap or readable UI timeout supplies audio-finished; timer expiration itself does not close source state. Monthly other-cost values use the existing one_off_yen compatibility ledger."
   }
 }

@@ -107,6 +107,9 @@ var notice_label: Label
 var _notice_left := 0.0
 var _updaters: Array[Callable] = []
 var _heard_sequence := 0
+var _fallback_notice_queue: Array[String] = []
+var _source_notice_visible := false
+var _notice_source
 var _last_message := ""
 var _day_seen := -1
 var _revenue_at_day_start := 0
@@ -570,7 +573,8 @@ func _process(delta: float) -> void:
     if notice.visible:
         _notice_left -= delta
         if _notice_left <= 0.0:
-            notice.visible = false
+            _finish_notice()
+    _pump_notices()
 
 
 # --- 誘致: choosing the place on the town map ---
@@ -825,7 +829,11 @@ func _build_notice() -> void:
     notice.theme = theme
     notice.add_theme_stylebox_override("panel", _box(Color(PAPER, 0.96), FRAME, 12, 3))
     notice.visible = false
-    notice.mouse_filter = Control.MOUSE_FILTER_IGNORE
+    notice.mouse_filter = Control.MOUSE_FILTER_STOP
+    notice.gui_input.connect(func(event):
+        if (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT) or (event is InputEventScreenTouch and event.pressed):
+            _finish_notice()
+            notice.accept_event())
     notice_label = _label("", 26)
     notice_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     notice.add_child(notice_label)
@@ -833,6 +841,13 @@ func _build_notice() -> void:
 
 
 func show_notice(text: String, seconds := 3.5) -> void:
+    if notice.visible:
+        _fallback_notice_queue.append(text)
+        return
+    _show_notice_now(text, seconds)
+
+
+func _show_notice_now(text: String, seconds := 3.5) -> void:
     notice_label.text = text
     notice.visible = true
     notice.size = Vector2.ZERO
@@ -845,6 +860,59 @@ func show_notice(text: String, seconds := 3.5) -> void:
     _notice_middle = middle
     _place_notice()
     _notice_left = seconds
+
+
+func _finish_notice() -> void:
+    if _source_notice_visible:
+        main.simulation.notifications.display(0, 0)
+    _source_notice_visible = false
+    notice.visible = false
+
+
+func _pump_notices() -> void:
+    if main.simulation == null:
+        return
+    var sim = main.simulation
+    if _notice_source != sim.notifications:
+        _notice_source = sim.notifications
+        _source_notice_visible = false
+        notice.visible = false
+        _fallback_notice_queue.clear()
+    if notice.visible:
+        return
+    if sim.program_town != null:
+        var n = sim.notifications
+        var record: Dictionary = n.current if n.word(0x801398b4) == 1 else sim.consume_source_notice()
+        if not record.is_empty() and n.word(0x801398b4) == 1:
+            var context: Dictionary = record.get("context", {})
+            var text := _notice_text(str(context.get("event_type", "")), context.get("details", {}))
+            var details: Dictionary = context.get("details", {})
+            var store_index := int(details.get("store_index", -1))
+            if int(record["mode"]) == 1 and sim.store_count() > 1 and store_index >= 0 and store_index < sim.store_count():
+                text = "［%s］%s" % [sim.store_field(store_index, "store_name"), text]
+            if int(record["mode"]) == 2:
+                text = "月次報告\n前月収支 ¥%s（前々月比 %s）\n他経費 ¥%s（前々月比 %s）\n町人口 %s人（前々月比 %s人）" % [
+                    _notice_number(n.word(0x800e3620)), _notice_number(n.word(0x800e3624)),
+                    _notice_number(n.word(0x800e3628)), _notice_number(n.word(0x800e362c)),
+                    _notice_number(n.word(0x800e3630)), _notice_number(n.word(0x800e3634))]
+            elif int(record["mode"]) == 3:
+                text = "年間オーナー評価　%d点\n店舗 %d店 ／ 来客 %s人\n年間売上 ¥%s ／ 町人口 %s人\n店舗の平均評価 %d\n内訳：店舗%d・来客%d・売上%d・人口%d・評価%d" % [
+                    n.word(0x800cd80c), n.word(0x800e3ba8), _notice_number(n.word(0x800e3bac)),
+                    _notice_number(n.word(0x800e3bb0)), _notice_number(n.word(0x800e3bb4)), n.word(0x800e3bb8),
+                    n.word(0x800e3bc0), n.word(0x800e3bc4), n.word(0x800e3bc8), n.word(0x800e3bcc), n.word(0x800e3bd0)]
+            # REMAKE_BALANCED_DEFAULT: until original voice playback is connected,
+            # tap or a readable timeout supplies the audio-finished boundary.
+            # Do not pretend that the source timer reaching zero closes a notice.
+            _source_notice_visible = true
+            n.display(0, 1)
+            _show_notice_now(text, 8.0 if int(record["mode"]) in [2, 3] else 3.5)
+            return
+    if not _fallback_notice_queue.is_empty():
+        _show_notice_now(_fallback_notice_queue.pop_front())
+
+
+func _notice_number(value: int) -> String:
+    return main._format_integer(preload("res://scripts/domain/program_notifications.gd").signed32(value))
 
 
 var _notice_middle := 0.0
@@ -867,20 +935,22 @@ func _show_event_notices() -> void:
     var newest := int(records[-1]["sequence"])
     if newest < _heard_sequence:
         _heard_sequence = 0
-    var shown := ""
     for record in records:
         if int(record["sequence"]) <= _heard_sequence:
             continue
         var event_type := str(record["event_type"])
+        if main.simulation.program_town != null and event_type in ["manager_advice", "manager_report", "sales_report", "store_rank_changed", "month_end_settlement", "owner_review", "rival_withdrew", "rival_opened", "town_press"]:
+            continue
         if EVENT_NOTICES.has(event_type):
             var details: Dictionary = record.get("details", {})
-            shown = _notice_text(event_type, details)
+            var shown := _notice_text(event_type, details)
             # Task #123: say which store it happened in.
             if details.has("store_index") and main.simulation.store_count() > 1 and not event_type in ["month_end_settlement", "rival_bought_out", "store_opened"]:
                 shown = "［%s］%s" % [main.simulation.store_field(int(details["store_index"]), "store_name"), shown]
+            if not shown.is_empty():
+                _fallback_notice_queue.append(shown)
     _heard_sequence = newest
-    if not shown.is_empty():
-        show_notice(shown)
+    _pump_notices()
 
 
 func _notice_text(event_type: String, details: Dictionary) -> String:
