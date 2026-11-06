@@ -1,0 +1,22 @@
+{
+  "version": "0.5.0-source-audio",
+  "version_code": 26,
+  "package": "com.conveniremake.recovered",
+  "apk_bytes": 40048247,
+  "apk_sha256": "2beb3a79702839eb8ca2d1fb720cbcd562f4cce3ecc38367d49d205c0a36bac5",
+  "signer_sha256": "de11d5d2c197d2081f502b6a5280307306b648c5762465fa4aecbc256738f406",
+  "python_tests": 788,
+  "python_expected_failures": 1,
+  "python_unexpected_failures": 0,
+  "godot_checks": 18,
+  "godot_errors": 0,
+  "godot_warnings": 0,
+  "exported_apk_linux_ui_verified": true,
+  "graphics_warning": "Xvfb does not support changing VSync; screenshots inspected; no runtime errors",
+  "source_audio_assets": 165,
+  "android_device_tested": false,
+  "all_analysis_implemented": false,
+  "source_branch": "chatgpt/android-analysis-integration-20261105",
+  "audio_checkpoint": "f7662277f5ef5efaea860c0d7b7c0b3fb99fadc5",
+  "template_origin": "Godot 4.3 official engine from previously verified 0.2.1 APK; game assets/signatures removed before export"
+}

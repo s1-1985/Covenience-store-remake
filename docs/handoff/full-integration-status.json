@@ -1,5 +1,5 @@
 {
-  "goal": "解析済み内容を全てネイティブAndroid本体へ反映。途中APKで完了としない。",
+  "goal": "解析済み内容をネイティブAndroid本体へ全反映。2026-11-06の追加指示により、まとまった進捗でAPKを作成する。",
   "branch": "chatgpt/android-analysis-integration-20261105",
   "base": "4e04e2cb8debc228ea0064d4e24e6cf25eaae84d",
   "updated": "2026-11-06",
@@ -22,13 +22,13 @@
       "id": "notifications",
       "status": "partial",
       "done": "50枠予約消費・表示モード・月次年次・JSON再開",
-      "remaining": "全生成元・原文画面・音声終了との接続"
+      "remaining": "全生成元・原文画面。音声終了との接続は実装済み"
     },
     {
       "id": "endings",
       "status": "partial",
       "done": "終了判定・解除・原画像・102行クレジット・保存FF・タイトル復帰",
-      "remaining": "原音源・原窓描画・演出再生境界"
+      "remaining": "原窓描画・演出境界。原音源とクレジットBGMの接続は実装済み"
     },
     {
       "id": "native_saves",
@@ -37,16 +37,19 @@
     },
     {
       "id": "source_audio",
-      "status": "in_progress",
-      "next": "最新audio-integration handoffを確認して続行",
-      "remaining": "全音声フラグ生成元、SPUとの差、回帰試験の終了時リソース警告の確認",
-      "done": "XA130を検証・GitHub保存。BGM7/SE16/VOS12を変換し、165資産・設定・通知・終了へ接続中。"
+      "status": "partial",
+      "next": "native_saves / operations の未反映境界を照合",
+      "remaining": "人物・営業の全フラグ生成元と既存合成SEの置換、SPUリバーブ等の音質差",
+      "done": "XA130、BGM7、SE16、VOS12の165資産と原設定3項目・通知音声待ち・終了音声/BGM接続。ミュート復帰とタイトル音声停止。18回帰はERROR/WARNINGなし。"
     },
     {
       "id": "android",
-      "status": "pending",
-      "remaining": "全体回帰、同一署名ビルド、実UI検証、最終APK"
+      "status": "milestone_built",
+      "remaining": "Android実機のインストール・タッチ・音量・性能確認と、全反映後の最終版",
+      "done": "0.5.0-source-audio / code26、同一署名v1/v2/v3、165音源・JSON一致、エクスポート内容でLinux画面検証"
     }
   ],
-  "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9"
+  "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
+  "latest_runtime_checkpoint": "f7662277f5ef5efaea860c0d7b7c0b3fb99fadc5",
+  "latest_build": "2026-11-06-v05-build.json"
 }

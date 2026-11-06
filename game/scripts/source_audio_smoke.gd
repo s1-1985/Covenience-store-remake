@@ -48,7 +48,15 @@ func _run() -> void:
     assert(sound.play_source(16))
     assert(sound.play_source_bgm(6))
     assert(not sound.play_source(28)) # original credit/BGM6 guard.
+    sound.set_enabled(false)
+    sound.set_enabled(true)
+    assert(sound.source_bgm_id == 6)
+    assert(sound._bgm_player.stream != null)
     sound.stop_music()
+    assert(sound._bgm_player.stream == null)
+    assert(sound.play_source(28))
+    sound.stop_source_voice()
+    assert(sound._source_voice.stream == null)
     sound.set_source_settings(original_bits)
     sound.set_enabled(false)
     for player in sound._source_tracks:

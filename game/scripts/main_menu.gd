@@ -17,6 +17,8 @@ func _ready() -> void:
 
     TranslationServer.set_locale("ja")
 
+    SoundManager.stop_music()
+    SoundManager.play_source(-1)
     SoundManager.play_source_bgm(0) # original title 80057C50 -> BGM01
     if OS.has_feature("android") or "--android-preview" in OS.get_cmdline_user_args():
 

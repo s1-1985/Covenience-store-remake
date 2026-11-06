@@ -78,6 +78,10 @@ func play_sfx(id: String) -> void:
         return
     if int(source_settings()["se_enabled"]) != 1:
         return
+    # As with source tracks/BGM, headless checks keep the request history
+    # without starting Dummy-audio playback that can outlive engine shutdown.
+    if not _renders_music():
+        return
     if not _sfx_cache.has(id):
         _sfx_cache[id] = SoundSynthScript.sfx(id)
     var player := _sfx_players[0]
@@ -109,6 +113,7 @@ func stop_music() -> void:
     source_bgm_id = -1
     current_theme = ""
     _bgm_player.stop()
+    _bgm_player.stream = null
 
 
 # A render still running when the game closes is waited for, so the
@@ -155,6 +160,13 @@ func set_enabled(on: bool) -> void:
         for player in _sfx_players + _source_tracks:
             player.stop()
     else:
+        # Resume the actual source track, including title/credits, rather than
+        # replacing it with the store's configured BGM after a mute toggle.
+        var resume_bgm := source_bgm_id
+        if resume_bgm >= 0:
+            source_bgm_id = -1
+            play_source_bgm(resume_bgm)
+            return
         var theme_id := current_theme
         current_theme = ""
         if not theme_id.is_empty():
@@ -177,11 +189,13 @@ func source_voice_active() -> bool:
 func _source_finished() -> void:
     _source_remaining = 0.0
     _source_voice_id = -1
+    _source_voice.stream = null
     source_voice_finished.emit()
 
 
 func stop_source_voice() -> void:
     _source_voice.stop()
+    _source_voice.stream = null
     _source_remaining = 0.0
     _source_voice_id = -1
 
@@ -242,6 +256,7 @@ func play_source_bgm(index: int, loop: bool = true) -> bool:
         return index >= 0
     source_bgm_id = index
     _bgm_player.stop()
+    _bgm_player.stream = null
     if index < 0 or not enabled or not source_catalog.has("bgm") or index >= source_catalog["bgm"].size():
         return false
     var stream := load("res://assets/audio/source/" + str(source_catalog["bgm"][index]["file"])) as AudioStreamOggVorbis

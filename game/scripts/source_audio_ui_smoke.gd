@@ -78,6 +78,11 @@ func _run() -> void:
     game.ending_view.advance_frames(7120)
     game.ending_view.advance()
     assert(game.ending_view.stage == "save" and sound.source_bgm_id == -1)
+    assert(sound.play_source(28) and sound.source_voice_active())
+    change_scene_to_file("res://scenes/main_menu.tscn")
+    await process_frame
+    await process_frame
+    assert(not sound.source_voice_active() and sound.source_bgm_id == 0)
     sound.set_source_settings(original_bits)
     sound.enabled = original_enabled
     print("SOURCE_AUDIO_UI_PASS original settings controls, monthly gating without lost ledger, JSON settings, notice voice-finished boundary, ending voice and credit BGM")
