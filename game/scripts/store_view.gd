@@ -793,7 +793,7 @@ func _draw_customer() -> void:
         var direction: String = ["up", "down", "left", "right"][customer.source_direction] if customer.source_native else _customer_facing_direction(customer.customer_id, customer.position)
         var texture := _customer_texture(sprite_id, direction, str(motion[1]))
         if simulation.program_town != null:
-            texture = _program_person_texture(customer.source_image if customer.source_native else int(customer.visit.get("sprite_index", 0)), direction)
+            texture = _program_person_texture(customer.source_image if customer.source_native else int(customer.visit.get("sprite_index", 0)), direction, str(motion[1]))
         if texture != null:
             var draw_size := Vector2(CUSTOMER_SPRITE_SIZE_PX, CUSTOMER_SPRITE_SIZE_PX)
             var anchor_offset := Vector2(
@@ -806,17 +806,23 @@ func _draw_customer() -> void:
             draw_circle(center, 13.0, Color("3a2630"), false, 2.0)
 
 
+# CONFIRMED_BINARY: interior_display.overlay_staff_records draws state 0
+# workers separately over the break room; state 0 never means an empty slot.
+func _staff_is_visible(person) -> bool:
+    return not person.candidate_id.is_empty() and person.position.x >= 0 and person.position.y >= 0
+
+
 func _draw_staff() -> void:
     var resting_index := 0
     for staff_member in simulation.staff.all_staff():
-        if staff_member.source_state == 0 or staff_member.position.x < 0:
+        if not _staff_is_visible(staff_member):
             continue
         var motion := _moving_center("s:" + staff_member.staff_id, staff_member.position)
         var center: Vector2 = motion[0]
         var phase := str(motion[1])
 
 
-        if staff_member.rest_phase == "resting":
+        if staff_member.rest_phase == "resting" and simulation.program_town == null:
             var rest_spot = _break_room_rest_spot(resting_index)
             if rest_spot != null:
                 center = rest_spot
@@ -826,11 +832,9 @@ func _draw_staff() -> void:
         var direction: String = ["up", "down", "left", "right"][staff_member.source_direction] if staff_member.source_state >= 0 else _staff_facing_direction(staff_member.staff_id, staff_member.position)
         var texture := _staff_texture(sprite_id, direction, phase)
         if simulation.program_town != null:
-            var slot: int = simulation.staff.all_staff().find(staff_member)
             var candidate: Dictionary = simulation._staff_candidate_catalog.get(staff_member.candidate_id, {})
-            var role_image := 42 if staff_member.staff_id == str(simulation.config["staff"]["manager_staff_id"]) else (38 if staff_member.staff_id == "staff-2" else 40)
             var role: int = [42, 43, 38, 40, 39, 41][(0 if staff_member.staff_id == str(simulation.config["staff"]["manager_staff_id"]) else (2 if staff_member.staff_id == "staff-2" else 4)) + int(candidate.get("female", false))]
-            texture = _program_person_texture(role, direction)
+            texture = _program_person_texture(role, "down" if staff_member.source_state == 0 else direction, phase)
         if texture != null:
             var draw_size := Vector2(STAFF_SPRITE_SIZE_PX, STAFF_SPRITE_SIZE_PX)
             var anchor_offset := Vector2(
@@ -926,15 +930,26 @@ func _program_texture(key: String) -> Texture2D:
     return _program_textures[key]
 
 
-func _program_person_texture(appearance: int, direction: String) -> Texture2D:
-    var key := "person_%d_%s" % [appearance, direction]
+func _program_person_texture(appearance: int, direction: String, phase := "A") -> Texture2D:
+    var key := "person_%d_%s_%s" % [appearance, direction, phase]
     if not _program_textures.has(key):
         var directions := {"down": 0, "left": 2, "up": 1, "right": 3}
         var code := clampi(appearance, 0, 43) * 4 + int(directions.get(direction, 0))
         var texture := AtlasTexture.new()
         texture.atlas = load("res://assets/ps1/people.png")
         texture.region = Rect2((code % 16) * 16, (code / 16) * 16, 16, 16)
-        _program_textures[key] = texture
+        if phase == "B":
+            # REMAKE_BALANCED_DEFAULT: MAN0 supplies four directions, not a
+            # second stride. Preserve the original head/body; reverse the
+            # lowest four pixel rows for the opposite foot. This is a client
+            # walk cycle, not a newly recovered original animation frame.
+            var image: Image = texture.atlas.get_image().get_region(Rect2i(texture.region))
+            var feet := image.get_region(Rect2i(0, 12, 16, 4))
+            feet.flip_x()
+            image.blit_rect(feet, Rect2i(0, 0, 16, 4), Vector2i(0, 12))
+            _program_textures[key] = ImageTexture.create_from_image(image)
+        else:
+            _program_textures[key] = texture
     return _program_textures[key]
 
 

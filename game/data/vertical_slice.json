@@ -1979,6 +1979,9 @@
   },
   "sound": {
     "evidence_note": "CONFIRMED_BINARY: source XA130, BGM7, SE16/VOS12 assets and original setting/dispatch tables are in source_audio.json. Title/BGM settings, confirmation wrapper, notifications and endings now use these original assets. REMAKE_BALANCED_DEFAULT: remaining legacy event_sfx aliases still use synthesized sounds; SoundFont ADSR/dry mixing, touch acknowledgement and interpolation are not physical SPU equivalence. SoundSynth and SoundThemes are retained for legacy aliases, not claimed as original audio.",
+    "source_event_sounds": {"checkout_completed": 10, "checkout_staff_started": 22, "checkout_staff_finished": 23},
+    "source_event_evidence_note": "CONFIRMED_BINARY: customer_queue_state success sets 0x200 -> SE10; staff_loop_selected rest departure sets 0x80 -> VOS22, service departure sets 0x100 -> VOS23; source_actor_tables.sound_flags.",
+    "people_presentation_evidence_note": "CONFIRMED_VISUAL: user video at 300/600/900 seconds, workers at register and break room. CONFIRMED_BINARY: overlay_staff_records draws state0. REMAKE_BALANCED_DEFAULT: opposite stride reverses the bottom four MAN0 pixel rows; linear A/B movement is client presentation, not recovered original animation frames.",
     "event_sfx": {
       "customer_entered": "door_chime",
       "checkout_completed": "register",

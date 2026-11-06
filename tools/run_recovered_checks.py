@@ -7,6 +7,7 @@ for script, args in [
     ('headless_smoke.gd', []),
     ('source_audio_smoke.gd', []),
     ('source_audio_ui_smoke.gd', ['--', '--android-preview']),
+    ('people_service_ui_smoke.gd', ['--', '--android-preview']),
     ('source_geometry_smoke.gd', []),
     ('source_people_smoke.gd', []),
     ('source_notifications_smoke.gd', []),

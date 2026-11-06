@@ -406,11 +406,16 @@ static func gate(s, worker) -> bool:
     return s._program_rng.randi() % 100 + 1 > ability * 2
 
 static func choose_work(s, p) -> bool:
+    var was_resting: bool = p.source_state == 0
     if p.stamina > 0:
         if gate(s, p) and clock(s) % 100 >= 100 - p.service_skill and relevant(s) and target(s, p, "checkout"):
             p.source_state = 1
             p.state = "checkout"
             p.rest_phase = ""
+            if was_resting:
+                # CONFIRMED_BINARY: staff_loop_selected rest_departure_choice
+                # sets flag 0x80; original main bit7 dispatches VOS ID22.
+                s._record_event("checkout_staff_started", {"staff_id": p.staff_id})
             return true
         if target(s, p, "refill"):
             p.source_state = 2
@@ -465,6 +470,9 @@ static func employee(s, p, slot: int) -> void:
         1:
             if not relevant(s):
                 p.source_goal = OFF
+                # CONFIRMED_BINARY: staff_loop_selected service_arrival sets
+                # flag 0x100; main audio bit 8 dispatches original VOS ID23.
+                s._record_event("checkout_staff_finished", {"staff_id": p.staff_id})
         2:
             var f = facing_fixture(s, p)
             for product in s.inventory.products.values():

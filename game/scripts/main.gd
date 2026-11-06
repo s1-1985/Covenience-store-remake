@@ -1564,13 +1564,29 @@ func _play_event_sounds() -> void:
     if newest < _heard_event_sequence:
         _heard_event_sequence = 0
     var to_play: Array[String] = []
+    var source_to_play: Array[int] = []
+    var source_events: Dictionary = config["sound"].get("source_event_sounds", {})
     var index := records.size() - 1
     while index >= 0 and int(records[index]["sequence"]) > _heard_event_sequence:
-        var sfx := str(event_sfx.get(str(records[index]["event_type"]), ""))
-        if not sfx.is_empty() and not to_play.has(sfx):
-            to_play.append(sfx)
+        var event_type := str(records[index]["event_type"])
+        if simulation.program_town != null and source_events.has(event_type):
+            # Original main's selected-store guard: a branch being simulated
+            # in the background must not speak over the displayed store.
+            var event_store := int(records[index].get("details", {}).get("store_index", simulation.viewed_store))
+            if event_store != simulation.viewed_store:
+                index -= 1
+                continue
+            var identifier := int(source_events[event_type])
+            if not source_to_play.has(identifier):
+                source_to_play.push_front(identifier)
+        else:
+            var sfx := str(event_sfx.get(event_type, ""))
+            if not sfx.is_empty() and not to_play.has(sfx):
+                to_play.append(sfx)
         index -= 1
     _heard_event_sequence = newest
+    for identifier in source_to_play:
+        SoundManager.play_source(identifier)
     for sfx in to_play:
         SoundManager.play_sfx(sfx)
     if simulation.clear_condition_met and not _heard_clear:

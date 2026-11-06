@@ -1143,3 +1143,9 @@ msgstr "万引きが発生した"
 
 msgid "self service sale"
 msgstr "自動販売・サービスの売上"
+
+msgid "checkout staff started"
+msgstr "店員がレジ業務に入った"
+
+msgid "checkout staff finished"
+msgstr "店員がレジ業務を終えた"

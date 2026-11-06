@@ -9,8 +9,8 @@
     {
       "id": "people",
       "status": "partial",
-      "done": "原人物状態、経路、作業マップ、役職画像、JSON再開を接続",
-      "remaining": "未照合の状態・乱数列と複数レジ等の差異を監査"
+      "done": "原人物状態、経路、作業マップ、役職画像、JSON再開を接続。0.5.1:休憩中の店員表示、原人物への補間と暫定足運びを接続",
+      "remaining": "未照合の状態・乱数列と複数レジ等の差異を監査。原歩行差分と行列幾何の完全一致は未確認"
     },
     {
       "id": "operations",
@@ -40,16 +40,16 @@
       "status": "partial",
       "next": "native_saves / operations の未反映境界を照合",
       "remaining": "人物・営業の全フラグ生成元と既存合成SEの置換、SPUリバーブ等の音質差",
-      "done": "XA130、BGM7、SE16、VOS12の165資産と原設定3項目・通知音声待ち・終了音声/BGM接続。ミュート復帰とタイトル音声停止。18回帰はERROR/WARNINGなし。"
+      "done": "XA130、BGM7、SE16、VOS12の165資産と原設定3項目・通知音声待ち・終了音声/BGM接続。ミュート復帰とタイトル音声停止。18回帰はERROR/WARNINGなし。 0.5.1:会計SE10/レジ開始VOS22/終了VOS23を接続、非表示店舗音を抑止。"
     },
     {
       "id": "android",
       "status": "milestone_built",
       "remaining": "Android実機のインストール・タッチ・音量・性能確認と、全反映後の最終版",
-      "done": "0.5.0-source-audio / code26、同一署名v1/v2/v3、165音源・JSON一致、エクスポート内容でLinux画面検証"
+      "done": "0.5.1-people-service/code27、従来と同一署名、165音源を保持。店員/客/接客音を修正"
     }
   ],
   "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9",
   "latest_runtime_checkpoint": "f7662277f5ef5efaea860c0d7b7c0b3fb99fadc5",
-  "latest_build": "2026-11-06-v05-build.json"
+  "latest_build": "2026-11-06-v051-build.json"
 }

@@ -1,0 +1,28 @@
+{
+  "version": "0.5.1-people-service",
+  "version_code": 27,
+  "package": "com.conveniremake.recovered",
+  "apk_bytes": 40048247,
+  "apk_sha256": "615cad5b5c29ea639cc2162cd7393703e3c501386cada550e436ed207fb2610e",
+  "signer_sha256": "de11d5d2c197d2081f502b6a5280307306b648c5762465fa4aecbc256738f406",
+  "python_tests": 788,
+  "python_expected_failures": 1,
+  "python_unexpected_failures": 0,
+  "godot_checks": 19,
+  "godot_errors": 0,
+  "godot_warnings": 0,
+  "exported_apk_linux_ui_verified": true,
+  "graphics_environment_notes": "Private Xvfb: missing default xkb include path and unsupported VSync mode; no game script errors; resting/working/stride screenshots inspected.",
+  "source_audio_assets": 165,
+  "android_device_tested": false,
+  "physical_audio_tested": false,
+  "walking_frames": "REMAKE_BALANCED_DEFAULT: original MAN0 head/body retained; alternate feet derived from lowest four rows",
+  "source_event_sounds": {
+    "checkout_completed": 10,
+    "checkout_staff_started": 22,
+    "checkout_staff_finished": 23
+  },
+  "all_analysis_implemented": false,
+  "source_branch": "chatgpt/android-analysis-integration-20261105",
+  "base_commit": "2dd31e3fce5daa3e9f7209e9ea7634f6e75883f9"
+}
