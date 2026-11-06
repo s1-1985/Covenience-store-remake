@@ -1,0 +1,50 @@
+{
+  "goal": "解析済み内容を全てネイティブAndroid本体へ反映。途中APKで完了としない。",
+  "branch": "chatgpt/android-analysis-integration-20261105",
+  "base": "4e04e2cb8debc228ea0064d4e24e6cf25eaae84d",
+  "updated": "2026-11-06",
+  "resume": "このファイルと最新handoffを読み、gitのHEADと実ファイルを確認。未完項目を続行する。",
+  "checkpoints": "実装・小さな検証・GitHub保存を繰り返す。中断前に変更ファイルと次の手順を明記する。",
+  "items": [
+    {
+      "id": "people",
+      "status": "partial",
+      "done": "原人物状態、経路、作業マップ、役職画像、JSON再開を接続",
+      "remaining": "未照合の状態・乱数列と複数レジ等の差異を監査"
+    },
+    {
+      "id": "operations",
+      "status": "partial",
+      "done": "24内装サンプル・原営業データ・町処理を接続",
+      "remaining": "入力の確定取消保持、出店従業員、価格、許可・改装の未移植境界を照合"
+    },
+    {
+      "id": "notifications",
+      "status": "partial",
+      "done": "50枠予約消費・表示モード・月次年次・JSON再開",
+      "remaining": "全生成元・原文画面・音声終了との接続"
+    },
+    {
+      "id": "endings",
+      "status": "partial",
+      "done": "終了判定・解除・原画像・102行クレジット・保存FF・タイトル復帰",
+      "remaining": "原音源・原窓描画・演出再生境界"
+    },
+    {
+      "id": "native_saves",
+      "status": "pending",
+      "remaining": "37領域、checksum、ブロック鎖、未知バイト保持、ゲーム対応、取込書出しUI"
+    },
+    {
+      "id": "source_audio",
+      "status": "in_progress",
+      "next": "BINからXA130件を変換しID表と元ハッシュを保存。原音声設定・通知・終了へ接続。SEQ/VAB7曲・SE16・VOS12も対象。",
+      "remaining": "変換ツール・資産・設定・効果番号・原再生状態"
+    },
+    {
+      "id": "android",
+      "status": "pending",
+      "remaining": "全体回帰、同一署名ビルド、実UI検証、最終APK"
+    }
+  ]
+}
