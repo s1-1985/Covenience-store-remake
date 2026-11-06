@@ -38,13 +38,15 @@
     {
       "id": "source_audio",
       "status": "in_progress",
-      "next": "BINからXA130件を変換しID表と元ハッシュを保存。原音声設定・通知・終了へ接続。SEQ/VAB7曲・SE16・VOS12も対象。",
-      "remaining": "変換ツール・資産・設定・効果番号・原再生状態"
+      "next": "最新audio-integration handoffを確認して続行",
+      "remaining": "全音声フラグ生成元、SPUとの差、回帰試験の終了時リソース警告の確認",
+      "done": "XA130を検証・GitHub保存。BGM7/SE16/VOS12を変換し、165資産・設定・通知・終了へ接続中。"
     },
     {
       "id": "android",
       "status": "pending",
       "remaining": "全体回帰、同一署名ビルド、実UI検証、最終APK"
     }
-  ]
+  ],
+  "latest_asset_checkpoint": "4380edd9da2262329f657fc352c8a3a686a79ba9"
 }

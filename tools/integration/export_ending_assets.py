@@ -124,8 +124,8 @@ for index in range(472,476):
     Image.open(messages/f'MSG00-{index:03d}.png').save(out/f'message_{index}.png')
 data=dict(source_exe_sha256=hashlib.sha256(exe).hexdigest(),source='analysis 2c00ba53',
           scenes=scenes,windows=window_sets,credits_page_lines=list(raw(0x80010ab0,20)),
-          credits_slide_frames=164,credits_hold_frames=186,credits_final_slide_frames=120,
-          evidence_note='CONFIRMED_BINARY: native constructor parameters and original TIM palettes; credit glyph bitmaps from STAFF.OBJ. Native CPU used only offline to extract bounded setup, all external APIs intercepted. APK uses only Godot/data/PNG. REMAKE_BALANCED_DEFAULT: next button replaces ending voice-finished acknowledgement until source audio is connected; scene/credit frames use 60 Hz presentation time; original window geometry uses a temporary flat panel. GPU semi-transparency and physical audio/vsync timing are not reproduced.')
+          credits_slide_frames=164,credits_hold_frames=186,credits_final_slide_frames=120,scene_audio_dispatcher_ids=[60,60,60,61],credits_bgm_id=6,
+          evidence_note='CONFIRMED_BINARY: native constructor parameters and original TIM palettes; credit glyph bitmaps from STAFF.OBJ. Native CPU used only offline to extract bounded setup, all external APIs intercepted. APK uses only Godot/data/PNG. REMAKE_BALANCED_DEFAULT: next button acknowledges source voice completion for touch input; scene/credit frames use 60 Hz presentation time; original window geometry uses a temporary flat panel. GPU semi-transparency and physical audio/vsync timing are not reproduced.')
 assert sum(data['credits_page_lines'])==100
 (root/'game/data/source_endings.json').write_text(json.dumps(data,separators=(',',':'))+'\n')
 print('Extracted four original ending scenes and 102 credit lines', {k:len(v)for k,v in scenes.items()})

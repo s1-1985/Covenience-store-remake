@@ -573,9 +573,15 @@ func _process(delta: float) -> void:
     if main != null and main.ending_view != null:
         return
     if notice.visible:
-        _notice_left -= delta
-        if _notice_left <= 0.0:
-            _finish_notice()
+        if _source_notice_visible:
+            var audio_active := SoundManager.source_voice_active()
+            var disabled := 0 if SoundManager.enabled else 1
+            if main.simulation.notifications.display(disabled, int(audio_active)) == "close":
+                _finish_notice()
+        else:
+            _notice_left -= delta
+            if _notice_left <= 0.0:
+                _finish_notice()
     _pump_notices()
 
 
@@ -866,6 +872,7 @@ func _show_notice_now(text: String, seconds := 3.5) -> void:
 
 func _finish_notice() -> void:
     if _source_notice_visible:
+        SoundManager.play_source(-1)
         main.simulation.notifications.display(0, 0)
     _source_notice_visible = false
     notice.visible = false
@@ -904,12 +911,13 @@ func _pump_notices() -> void:
                     n.word(0x800cd80c), n.word(0x800e3ba8), _notice_number(n.word(0x800e3bac)),
                     _notice_number(n.word(0x800e3bb0)), _notice_number(n.word(0x800e3bb4)), n.word(0x800e3bb8),
                     n.word(0x800e3bc0), n.word(0x800e3bc4), n.word(0x800e3bc8), n.word(0x800e3bcc), n.word(0x800e3bd0)]
-            # REMAKE_BALANCED_DEFAULT: until original voice playback is connected,
-            # tap or a readable timeout supplies the audio-finished boundary.
-            # Do not pretend that the source timer reaching zero closes a notice.
+            # CONFIRMED_BINARY: 8003EF44 dispatches the reserved sound; 8003FF00
+            # closes when original CD status is idle, not when timer reaches 0.
+            for identifier in record.get("sounds", []):
+                SoundManager.play_source(int(identifier))
             _source_notice_visible = true
             n.display(0, 1)
-            _show_notice_now(text, 8.0 if int(record["mode"]) in [2, 3] else 3.5)
+            _show_notice_now(text, 0.0)
             return
     if not _fallback_notice_queue.is_empty():
         _show_notice_now(_fallback_notice_queue.pop_front())
@@ -1775,6 +1783,22 @@ func _fill_system() -> void:
         close_window())
     var sound := _button("", func(): main.sound_toggle_button.pressed.emit())
     _updaters.append(func(): sound.text = main.sound_toggle_button.text)
+    var settings: Dictionary = SoundManager.source_settings()
+    var se := _button("SE：する" if int(settings["se_enabled"]) == 1 else "SE：しない", func():
+        SoundManager.set_source_settings(SoundManager.source_settings_bits ^ 1)
+        open_window("system"))
+    se.name = "SourceSESetting"
+    var music := _button("BGM：%d" % (int(settings["bgm_choice"]) + 1), func():
+        var choice := (int(SoundManager.source_settings()["bgm_choice"]) + 1) % 3
+        SoundManager.set_source_settings((SoundManager.source_settings_bits & 3) | (choice << 8))
+        SoundManager.play_source_bgm(int(SoundManager.source_settings()["bgm_id"]))
+        open_window("system"))
+    music.name = "SourceBGMSetting"
+    var report := _button("月次報告：する" if int(settings["monthly_enabled"]) == 1 else "月次報告：しない", func():
+        SoundManager.set_source_settings(SoundManager.source_settings_bits ^ 2)
+        main.simulation.config["source_settings_bits"] = SoundManager.source_settings_bits
+        open_window("system"))
+    report.name = "SourceMonthlySetting"
     _button("タイトルへ", main._on_quit_to_menu_pressed)
 
 

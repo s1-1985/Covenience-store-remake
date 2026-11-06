@@ -3890,6 +3890,7 @@ func save_state() -> Dictionary:
     var data := {
         "save_schema_version": SAVE_SCHEMA_VERSION,
         "source_progress": source_progress.duplicate(true),
+        "source_settings_bits": int(config.get("source_settings_bits", 0)),
         "source_notifications": notifications.snapshot(),
         "scenario_id": str(config["scenario_id"]),
         "config_schema_version": int(config["schema_version"]),
@@ -4029,6 +4030,9 @@ func _store_save_block() -> Dictionary:
 
 
 func load_state(data: Dictionary) -> bool:
+    var audio_bits = data.get("source_settings_bits", config.get("source_settings_bits", 0))
+    if (not audio_bits is int and not audio_bits is float) or float(audio_bits) != floorf(float(audio_bits)) or int(audio_bits) < 0 or int(audio_bits) & ~0x303 or ((int(audio_bits) >> 8) & 3) > 2:
+        return false
     if not data.get("source_progress", {}) is Dictionary:
         return false
     var progress_data: Dictionary = data.get("source_progress", {})
@@ -4171,6 +4175,7 @@ func load_state(data: Dictionary) -> bool:
         if not _source_runtime_to_restore.is_empty():
             _restore_source_runtime(_source_runtime_to_restore)
             _source_runtime_to_restore = {})
+    config["source_settings_bits"] = int(audio_bits)
     notifications = loaded_notices
     var loaded_progress: Dictionary = data.get("source_progress", {})
     source_progress = {"flags": int(loaded_progress.get("flags", config.get("source_progress_flags", 0))) & 255,
@@ -4284,6 +4289,8 @@ func _reserve_source_notice(event_type: String, details: Dictionary) -> void:
                 parameter = int(_staff_candidate_catalog.get(manager.candidate_id, {}).get("source_index", 0))
             sound = 34 if event_type == "manager_report" or (event_type == "sales_report" and not bool(details.get("selling_well", false))) else 29 if event_type == "sales_report" else 28
         "month_end_settlement":
+            if int(config.get("source_settings_bits", 0)) & 2:
+                return
             mode = 2
         "owner_review":
             mode = 3

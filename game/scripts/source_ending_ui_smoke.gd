@@ -34,6 +34,7 @@ func _run() -> void:
     await process_frame
     assert(notification_state == JSON.stringify(game.simulation.notifications.snapshot()))
     assert(view.next_button.disabled)
+    game.get_node("/root/SoundManager").stop_source_voice()
     view.advance_frames(389)
     view.next_button.pressed.emit()
     assert(view.stage == "credits")
@@ -54,6 +55,7 @@ func _run() -> void:
     game.simulation._set_source_ending(2)
     game._refresh_ui()
     view = game.ending_view
+    game.get_node("/root/SoundManager").stop_source_voice()
     view.advance_frames(389)
     view.advance()
     view.advance_frames(7120)
@@ -84,6 +86,7 @@ func _run() -> void:
     game._refresh_ui()
     view = game.ending_view
     assert(view != null and not view.save_yes.visible)
+    game.get_node("/root/SoundManager").stop_source_voice()
     view.advance_frames(5)
     view.next_button.pressed.emit()
     await process_frame

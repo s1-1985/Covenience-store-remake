@@ -2,8 +2,9 @@ extends Control
 signal finished(save_requested: bool)
 
 # Original constructor positions, artwork and credit timing; no original CPU.
-# REMAKE_BALANCED_DEFAULT: until original ending voices are connected, the
-# next button supplies the audio-finished boundary after fixed scene frames.
+# Original dispatcher60/61 supplies the scene voice; original BGM6 is used
+# for credits. REMAKE_BALANCED_DEFAULT: next button acknowledges completed
+# playback for touch input; 60Hz presentation and flat windows remain below.
 const Progression := preload("res://scripts/domain/program_progression.gd")
 var tables: Dictionary
 var ending := -1
@@ -49,6 +50,7 @@ func setup(value: int) -> void:
     status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
     status.add_theme_font_size_override("font_size", 32)
     add_child(status)
+    SoundManager.play_source(int(tables["scene_audio_dispatcher_ids"][Progression.presentation_plan(ending)["scene"]]))
     _update_controls()
 
 func _process(delta: float) -> void:
@@ -69,7 +71,7 @@ func _update_controls() -> void:
     save_yes.visible = stage == "save"
     save_no.visible = stage == "save"
     status.visible = stage == "save"
-    next_button.disabled = (stage == "scene" and frame < (389 if Progression.presentation_plan(ending)["scene"] in [1, 2] else 5)) or (stage == "credits" and frame < 7120)
+    next_button.disabled = (stage == "scene" and (SoundManager.source_voice_active() or frame < (389 if Progression.presentation_plan(ending)["scene"] in [1, 2] else 5))) or (stage == "credits" and frame < 7120)
     status.text = "クリア結果を保存しますか？" if stage == "save" else ""
 
 func show_save_error() -> void:
@@ -83,8 +85,10 @@ func advance() -> void:
             finished.emit(false)
             return
         stage = "credits"
+        SoundManager.play_source_bgm(int(tables["credits_bgm_id"]))
         frame = 0
     elif stage == "credits":
+        SoundManager.stop_music()
         stage = "save"
     _update_controls()
     queue_redraw()

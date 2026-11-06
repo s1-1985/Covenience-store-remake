@@ -44,6 +44,8 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             # The staff and customer sprites are lossy WebP textures (#115).
             "module_webp_enabled=yes",
             "module_svg_enabled=yes",
+            "module_ogg_enabled=yes",
+            "module_vorbis_enabled=yes",
         ):
             self.assertIn(flag, script)
         preset = (GAME_ROOT / "export_presets.cfg").read_text(encoding="utf-8")
@@ -57,7 +59,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         for path in sources:
             text = path.read_text(encoding="utf-8")
             self.assertIsNone(re.search(r"\b[A-Za-z]+3D\b|\bRegEx\b|HTTPRequest|\bNavigation[A-Z]", text), path.name)
-        for suffix in (".ogg", ".mp3", ".wav", ".jpg", ".jpeg", ".glb", ".gltf", ".svg", ".webp"):
+        for suffix in (".mp3", ".wav", ".jpg", ".jpeg", ".glb", ".gltf", ".svg", ".webp"):
             self.assertEqual(list(GAME_ROOT.joinpath("assets").rglob("*" + suffix)), [], suffix)
 
     def test_stocked_shelves_sell_with_their_goods_and_change_product(self):
@@ -3285,10 +3287,10 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         android = (GAME_ROOT / "scripts" / "android_preview_smoke.gd").read_text(encoding="utf-8")
         self.assertIn("Time must not run before the store has a site", android)
 
-    def test_sounds_are_this_projects_own_and_wired_to_real_events(self):
+    def test_legacy_sound_aliases_and_original_audio_assets_are_distinguished(self):
         # Task #96: music and effects, synthesized at run time.
         sound = self.config["sound"]
-        for tag in ("REMAKE_BALANCED_DEFAULT", "作業用BGM", "may not be copied"):
+        for tag in ("REMAKE_BALANCED_DEFAULT", "CONFIRMED_BINARY", "source_audio.json"):
             self.assertIn(tag, sound["evidence_note"])
         simulation = (GAME_ROOT / "scripts" / "vertical_slice_simulation.gd").read_text(encoding="utf-8")
         recorded = set(re.findall(r'_record_event\("([a-z_]+)"', simulation))
@@ -3302,12 +3304,17 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("# Task #96: the two background tunes. REMAKE_BALANCED_DEFAULT", themes)
         project = (GAME_ROOT / "project.godot").read_text(encoding="utf-8")
         self.assertIn('SoundManager="*res://scripts/audio/sound_manager.gd"', project)
-        # No audio file ships: everything is synthesized.
+        # Source sounds now ship; each asset must have provenance in the manifest.
         audio_files = [
             path for path in GAME_ROOT.rglob("*")
             if path.suffix.lower() in {".wav", ".ogg", ".mp3"} and ".godot" not in path.parts
         ]
-        self.assertEqual(audio_files, [])
+        catalog = json.loads((GAME_ROOT / "data/source_audio.json").read_text())
+        source_files = {GAME_ROOT / "assets/audio/source" / e["file"] for kind in ("xa", "bgm", "se", "vos") for e in catalog[kind]}
+        self.assertEqual(set(audio_files), source_files)
+        for kind, count in (("xa", 130), ("bgm", 7), ("se", 16), ("vos", 12)):
+            self.assertEqual(len(catalog[kind]), count)
+        self.assertIn("REMAKE_BALANCED_DEFAULT", catalog["sequence_evidence_note"])
         main = (GAME_ROOT / "scripts" / "main.gd").read_text(encoding="utf-8")
         self.assertIn('SoundManager.play_theme("town" if selecting_site else "store")', main)
         smoke = (GAME_ROOT / "scripts" / "headless_smoke.gd").read_text(encoding="utf-8")

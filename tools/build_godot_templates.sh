@@ -37,6 +37,8 @@ SLIM_FLAGS=(
   module_text_server_fb_enabled=yes
   module_webp_enabled=yes
   module_svg_enabled=yes
+  module_ogg_enabled=yes
+  module_vorbis_enabled=yes
 )
 
 cd "$SRC"

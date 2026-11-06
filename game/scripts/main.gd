@@ -163,7 +163,9 @@ func _ready() -> void:
     if config.is_empty():
         return
     config["source_progress_flags"] = GameLaunchState.progress_flags
+    config["source_settings_bits"] = SoundManager.source_settings_bits
     simulation = VerticalSliceSimulationScript.new(config)
+    SoundManager.source_settings_changed.connect(_source_settings_changed)
     # Task #104: the store (and so config["store"]/["fixtures"]/...) can
     # change when it is built, so the UI reads the simulation's own config.
     config = simulation.config
@@ -176,7 +178,8 @@ func _ready() -> void:
     # instantiate-and-free check.
     if GameLaunchState.continue_from_save:
         GameLaunchState.continue_from_save = false
-        _save_service.load_from_path(simulation)
+        if _save_service.load_from_path(simulation):
+            SoundManager.set_source_settings(int(simulation.config.get("source_settings_bits", 0)))
     store_view.bind(config, simulation)
     town_view.bind(simulation)
     _fit_store_view()
@@ -928,6 +931,7 @@ func _on_load_pressed() -> void:
     if simulation == null:
         return
     if _save_service.load_from_path(simulation):
+        SoundManager.set_source_settings(int(simulation.config.get("source_settings_bits", 0)))
         _select_current_business_hours()
         _heard_event_sequence = _latest_event_sequence()
         _heard_clear = simulation.clear_condition_met
@@ -1104,9 +1108,10 @@ func _ensure_source_ending() -> void:
     add_child(layer)
     ending_view = preload("res://scripts/ending_view.gd").new()
     layer.add_child(ending_view)
+    SoundManager.stop_music()
+    SoundManager.play_source(-1)
     ending_view.setup(pending)
     ending_view.finished.connect(_source_ending_finished)
-    SoundManager.stop_music()
 
 
 func _source_ending_finished(accepted: bool) -> void:
@@ -1926,3 +1931,8 @@ func _set_android_panel_open(open: bool) -> void:
         return
     _android_panel.offset_left = 540.0 if open else 1300.0
     _android_panel.offset_right = _android_panel.offset_left + 540.0
+
+
+func _source_settings_changed() -> void:
+    if simulation != null:
+        simulation.config["source_settings_bits"] = SoundManager.source_settings_bits
