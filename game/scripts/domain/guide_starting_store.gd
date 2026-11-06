@@ -87,6 +87,34 @@ static func apply(config: Dictionary) -> Dictionary:
         applied["scenario_id"] = str(store_types["scenario_id"])
         applied["store_types"] = (store_types["types"] as Array).duplicate(true)
         apply_store_type(applied, str(store_types["default_id"]))
+    # The real app uses recovered data; archived regression scenes explicitly
+    # keep their historical guide fixture via the test-only meta flag.
+    if not Engine.has_meta("legacy_guide_fixture"):
+        var recovery: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/ps1_recovered.json"))
+        var native = preload("res://scripts/domain/program_town.gd").new(recovery)
+        applied["guide_town_map"] = native.guide_map(config["guide_town_map"])
+        applied["simulation"]["program_recovery_enabled"] = true
+        applied["simulation"]["step_game_minutes"] = 2
+        applied["customer"]["max_concurrent_customers"] = 10
+        applied["scenario_id"] = "ps1-town0001-recovered"
+        applied["town"]["population"] = int(recovery["initial_population"])
+        applied["town"]["rival_stores"] = [{"id": "rival-hq", "position": [43, 12], "permits_held": []}]
+        applied["town"]["store_count_including_rivals"] = 2
+        applied["economy"]["initial_cash_yen"] = int(recovery["initial_cash"][0])
+        var interiors: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/ps1_interiors.json"))
+        applied["fixture_catalog"].append_array(interiors["extra_fixture_catalog"])
+        for index in applied["store_types"].size():
+            var entry: Dictionary = applied["store_types"][index]
+            entry["source_layouts"] = []
+            for variant in range(1, 5):
+                entry["source_layouts"].append(interiors["layouts"][index * 5 + variant])
+            entry["layout"] = (entry["source_layouts"][0] as Dictionary).duplicate(true)
+            var source_store: Dictionary = entry["layout"]["store"]
+            # Caption measures the interior; source grid also contains walls
+            # and the three-tile exterior, and may be square overall.
+            entry["floor_tiles"] = [int(source_store["width_tiles"]) - (5 if index % 2 == 0 else 2), int(source_store["height_tiles"]) - (2 if index % 2 == 0 else 5)]
+        applied["customer"]["visit_plan_product_ids"] = []
+        apply_store_type(applied, str(config["guide_store_types"]["default_id"]))
     return applied
 
 
@@ -120,4 +148,6 @@ static func apply_store_type(config: Dictionary, type_id: String) -> void:
         member["start_subcell"] = (layout["staff_start_subcells"][str(member["id"])] as Array).duplicate()
     # REMAKE_BALANCED_DEFAULT: p.48's customer cap scaled by floor area.
     config["customer"]["max_concurrent_customers"] = int(layout["max_concurrent_customers"])
+    if bool(config["simulation"].get("program_recovery_enabled", false)):
+        config["customer"]["max_concurrent_customers"] = {"small": 10, "medium": 15, "large": 20}.get(str(config["store"]["size_tier"]), 10)
     config["provisional_restock"]["product_id"] = str(layout["provisional_restock_product_id"])

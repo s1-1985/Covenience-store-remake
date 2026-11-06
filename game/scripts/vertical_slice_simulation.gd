@@ -23,6 +23,11 @@ const CheckoutAngerScript := preload("res://scripts/domain/checkout_anger.gd")
 const TownSpatialScript := preload("res://scripts/domain/town_spatial.gd")
 const StoreSiteScript := preload("res://scripts/domain/store_site.gd")
 const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
+const ProgramRivalsScript := preload("res://scripts/domain/program_rivals.gd")
+const ProgramTownScript := preload("res://scripts/domain/program_town.gd")
+const ProgramRandomScript := preload("res://scripts/domain/program_random.gd")
+const ProgramRulesScript := preload("res://scripts/domain/program_rules.gd")
+
 const ProgramDemandScript := preload("res://scripts/domain/program_demand.gd")
 
 # CONFIRMED_OFFICIAL, not a guess: the strategy guide states this multiplier
@@ -111,12 +116,12 @@ var customers
 var staff
 var event_log
 var demand
-var _demand_rng: RandomNumberGenerator
+var _demand_rng
 # Task #85: separate from _demand_rng so adding weather rolls does not shift
 # the existing seeded arrival/product-choice sequence.
-var _weather_rng: RandomNumberGenerator
+var _weather_rng
 # Task #134: the manager's report rolls, apart for the same reason.
-var _report_rng := RandomNumberGenerator.new()
+var _report_rng = RandomNumberGenerator.new()
 # Task #134: what the magazines have added to each candidate's figures
 # ({candidate_id: {figure: points}}), saved as "candidate_figure_raises".
 var _candidate_raises: Dictionary = {}
@@ -160,7 +165,7 @@ var survey_missing: Dictionary = {}
 # Task #122: this month's visitors by customer type (for 調査 → 店舗成績).
 var survey_types: Dictionary = {}
 var last_survey: Dictionary = {}
-var _stamina_rng := RandomNumberGenerator.new()
+var _stamina_rng = RandomNumberGenerator.new()
 # Where customers have walked and nobody has cleaned since (oldest first).
 var _dirty_cells: Array[Vector2i] = []
 const MAX_DIRTY_CELLS := 24
@@ -246,7 +251,7 @@ var _rivals_to_reopen: Array[Dictionary] = []
 # ({"facility_id", "origin", "ready_day"}, or empty).
 var induced_facilities: Array[Dictionary] = []
 var pending_inducement: Dictionary = {}
-var _inducement_rng := RandomNumberGenerator.new()
+var _inducement_rng = RandomNumberGenerator.new()
 # Task #114: the town's own buildings put up as it grows
 # ({"id", "origin"}, in order).
 var town_milestones: Array[Dictionary] = []
@@ -297,6 +302,12 @@ var _store_sales_at_day_start := 0
 # Task #130: the PS program's customers (ProgramDemand), real game only.
 # _program_counts: this store's heads still to come today, by visit row;
 # _parking_used: heads of the car groups inside.
+var _rival_simulations: Dictionary = {}
+var _rival_cash_yen := 100000000
+var _rival_serial := 2
+var program_town = null
+var _recovery: Dictionary = {}
+var _program_rng = null
 var _program_demand = null
 var _program_counts: Dictionary = {}
 var _parking_used := 0
@@ -326,6 +337,9 @@ var _chain_visitors_total := 0
 func _init(source_config: Dictionary) -> void:
     config = source_config.duplicate(true)
     _require_config()
+    if bool(config["simulation"].get("program_recovery_enabled", false)):
+        _recovery = JSON.parse_string(FileAccess.get_file_as_string("res://data/ps1_recovered.json"))
+        _program_rng = ProgramRandomScript.new()
     # Task #133: the real game's staff are the program's own figures.
     if bool(config["simulation"].get("building_demand_enabled", false)) and config.has("ps1_program_tables"):
         _apply_program_staff_figures()
@@ -349,6 +363,12 @@ func _init(source_config: Dictionary) -> void:
     event_log = RuntimeEventLogScript.new()
     _demand_rng = RandomNumberGenerator.new()
     _weather_rng = RandomNumberGenerator.new()
+    if _program_rng != null:
+        _demand_rng = _program_rng
+        _weather_rng = _program_rng
+        _report_rng = _program_rng
+        _stamina_rng = _program_rng
+        _inducement_rng = _program_rng
     demand = DemandPolicyScript.new(config["demand"], _demand_rng)
     town = TownStateScript.new(config["town"])
     _land_value_policy = LandValuePolicyScript.new()
@@ -409,6 +429,9 @@ func _init(source_config: Dictionary) -> void:
 
 
 func reset() -> void:
+    _rival_simulations.clear()
+    _rival_cash_yen = 100000000
+    _rival_serial = 2
     _drop_branches()
     minute_of_day = int(config["simulation"]["start_minute_of_day"])
     day_count = 0
@@ -457,6 +480,9 @@ func reset() -> void:
     _demand_rng.seed = int(config["demand"]["rng_seed"])
     _weather_rng.seed = int(config["weather"]["rng_seed"])
     _report_rng.seed = int(config["demand"]["rng_seed"]) + 134
+    if _program_rng != null:
+        _program_rng.seed = int(config["demand"]["rng_seed"])
+        _sync_program_town()
     _roll_weather()
     _refresh_interactions()
     _start_opening_customer()
@@ -564,6 +590,7 @@ func tick() -> void:
     _switch_store(0)
     _for_each_store(_admit_arrival)
     _switch_store(viewed)
+    _advance_program_rivals()
     if _program_demand != null and store_site != null and minute_of_day % int(_program_demand.tables["spawn_every_game_minutes"]) == 0:
         _step_town_press()
 
@@ -987,8 +1014,8 @@ func _raise_manager(figures: Array, points: int) -> void:
 # within 7 squares of the store. ---
 func _step_incidents() -> void:
     var rules: Dictionary = _program_demand.tables["incidents"]
-    var robbery := _report_rng.randi_range(0, int(rules["robbery_roll"][0]) - 1) == int(rules["robbery_roll"][1])
-    var fire := _report_rng.randi_range(0, int(rules["fire_roll"][0]) - 1) == int(rules["fire_roll"][1])
+    var robbery: bool = _report_rng.randi_range(0, int(rules["robbery_roll"][0]) - 1) == int(rules["robbery_roll"][1])
+    var fire: bool = _report_rng.randi_range(0, int(rules["fire_roll"][0]) - 1) == int(rules["fire_roll"][1])
     if not (robbery or fire) or not incident_possible():
         return
     if fire:
@@ -1130,6 +1157,7 @@ func _start_program_customer(row: Dictionary, heads: int) -> void:
             plan.append(extra_shelf)
     var customer = customers.admit_default(layout.entry, _route_to_product(layout.entry, plan[0]), plan)
     customer.visit = row
+    customer.set_meta("checkout_patience", int(row.get("stamina", 100)))
     customer.type_id = str(row["type"])
     customer.budget_left = int(row["budget_yen"])
     customer.group_size = heads
@@ -1151,6 +1179,8 @@ func _parking_capacity() -> int:
 # The day's customers for every store (0x8002619C): at 0:00 and whenever
 # the stores or the town change.
 func _allocate_program_day() -> void:
+    if bool(config["simulation"].get("rival_child", false)):
+        return
     if _program_demand == null or store_site == null:
         return
     _program_weather_value = _program_demand.weather_value(weather_category_index, _demand_rng)
@@ -1170,6 +1200,15 @@ func _allocate_program_day() -> void:
                 if heads > 0:
                     squares.append([Vector2i(x, y), mix])
                     program_town_heads += heads
+    if program_town != null:
+        squares.clear()
+        program_town_heads = 0
+        for i in 3000:
+            var mix := int(program_town.cells[i][5])
+            if mix < 0:
+                continue
+            squares.append([Vector2i(i % 60, i / 60), mix])
+            program_town_heads += _program_demand.mix_heads(mix)
     var stores: Array = []
     _for_each_store(func(): stores.append(_program_store_profile()))
     var own := stores.size()
@@ -1189,6 +1228,9 @@ func _allocate_program_day() -> void:
         next[0] += 1
     )
     assert(next[0] == own)
+    if program_town != null:
+        for index in _rival_stores.size():
+            _program_rival_simulation(_rival_stores[index])._program_counts = counts[own + index]
 
 
 func program_customers_today() -> int:
@@ -1223,6 +1265,8 @@ func _program_store_profile() -> Dictionary:
 # REMAKE_BALANCED_DEFAULT (ps1_program_tables.evidence_note): a rival store's
 # figures come from its guide_data where the guide gives them.
 func _program_rival_profile(rival: Dictionary) -> Dictionary:
+    if program_town != null:
+        return _program_rival_simulation(rival)._program_store_profile()
     var defaults: Dictionary = _program_demand.tables["rival_store"]
     var guide_data: Dictionary = _rival_guide_entry(str(rival["id"])).get("guide_data", {})
     var hours_label := str(guide_data.get("hours", defaults["hours"]))
@@ -1766,7 +1810,7 @@ func inducement_quote(facility_id: String, origin: Vector2i) -> Dictionary:
         result["reason"] = "one_at_a_time"
         return result
     var size := Vector2i(int(facility["size"][0]), int(facility["size"][1]))
-    if not store_site.rect_is_buildable(origin, size):
+    if (program_town != null and not program_town.feasible(origin.x, origin.y, int(facility["native_kind"]))) or (program_town == null and not store_site.rect_is_buildable(origin, size)):
         result["reason"] = "not_buildable_ground"
         return result
     var rect := Rect2i(origin, size)
@@ -1829,7 +1873,10 @@ func _put_up_facility(facility_id: String, origin: Vector2i, update_catchment: b
     var size := Vector2i(int(facility["size"][0]), int(facility["size"][1]))
     for index in store_site.buildings_under(origin, size, _bought_buildings):
         _bought_buildings.append(index)
-    store_site.add_building(str(facility["sprite"]), origin, size)
+    if program_town != null:
+        _program_place(origin, int(facility["native_kind"]))
+    else:
+        store_site.add_building(str(facility["sprite"]), origin, size)
     induced_facilities.append({"facility_id": facility_id, "origin": origin})
     _building_log.append({"kind": "facility", "id": facility_id, "origin": origin})
     if update_catchment:
@@ -1881,6 +1928,13 @@ func _town_growth() -> Dictionary:
 
 
 func _reset_town_growth() -> void:
+    if not _recovery.is_empty():
+        program_town = ProgramTownScript.new(_recovery)
+        program_town.seed = int(config["demand"]["rng_seed"])
+        store_site.program_town = program_town
+        town.population = program_town.population()
+        town_milestones.clear()
+        return
     town_milestones.clear()
     var growth := _town_growth()
     if not growth.is_empty():
@@ -1913,6 +1967,19 @@ func _town_milestone(milestone_id: String) -> Dictionary:
 
 
 func _grow_town_at_month_end() -> void:
+    if bool(config["simulation"].get("rival_child", false)):
+        return
+    if program_town != null:
+        program_town.seed = _program_rng.seed
+        var changes: Array = program_town.monthly(_program_store_descriptors())
+        _program_rng.seed = program_town.seed
+        _sync_program_town()
+        if program_town.tier >= 4:
+            clear_condition_met = true
+        for change in changes:
+            _record_event("program_town_changed", {"action": change})
+        _for_each_store(_refresh_store_catchment)
+        return
     var growth := _town_growth()
     if growth.is_empty() or store_site == null:
         return
@@ -1970,6 +2037,11 @@ func rival_deficit_months(rival_id: String) -> int:
 
 
 func _step_rivals_at_month_end() -> void:
+    if bool(config["simulation"].get("rival_child", false)):
+        return
+    if program_town != null:
+        _program_rival_monthly()
+        return
     var ai := _rival_ai()
     if ai.is_empty() or store_site == null or not has_store_site():
         return
@@ -2032,6 +2104,14 @@ func _step_rivals_at_month_end() -> void:
 # guide_town_map.rival_actions.evidence_note). Only rivals placed on the
 # guide town map carry the guide's data; others cannot be bought.
 func _rival_guide_entry(rival_id: String) -> Dictionary:
+    if program_town != null:
+        var index := _rival_index(rival_id)
+        if index < 0:
+            return {}
+        var rival: Dictionary = _rival_stores[index]
+        var sim = _program_rival_simulation(rival)
+        var values: Dictionary = sim._store_values()
+        return {"id": rival_id, "role": "head" if int(rival.get("serial", 1)) == 1 else "branch", "name": "ライバル本店" if int(rival.get("serial", 1)) == 1 else "ライバル%d号店" % int(rival["serial"]), "buyable": int(rival.get("serial", 1)) != 1, "guide_data": {"hours": str(sim._business_hours_preset(sim.business_hours_id).get("label", "")), "popularity": sim.popularity, "security": values["security"], "cleaning": values["cleaning"], "service": values["service"]}}
     if not config.has("guide_town_map"):
         return {}
     for entry in config["guide_town_map"].get("rival_stores", []):
@@ -2056,6 +2136,12 @@ func rival_is_buyable(rival_id: String) -> bool:
 # yearly rate (the price is CONFIRMED to rise with the years and the
 # store's sales; the formula is not recovered).
 func rival_buyout_price_yen(rival_id: String) -> int:
+    if program_town != null:
+        var index := _rival_index(rival_id)
+        if index < 0 or int(_rival_stores[index].get("serial", 1)) == 1:
+            return 0
+        var sim = _program_rival_simulation(_rival_stores[index])
+        return (store_site.start_land_price_yen(_rival_stores[index]["position"]) + _program_premises_value(sim)) * 2
     var guide_data: Dictionary = _rival_guide_entry(rival_id).get("guide_data", {})
     if not rival_is_buyable(rival_id) or not guide_data.has("buyout_yen"):
         return 0
@@ -2063,6 +2149,8 @@ func rival_buyout_price_yen(rival_id: String) -> int:
 
 
 func rival_investigation_cost_yen() -> int:
+    if program_town != null:
+        return 500000
     if not config.has("guide_town_map"):
         return 0
     return int(config["guide_town_map"]["rival_actions"]["investigation_cost_yen"])
@@ -2096,6 +2184,9 @@ func try_buy_out_rival(rival_id: String) -> bool:
         "rival_buyout", minute_of_day, price, {"rival_id": rival_id}
     )
     var bought: Dictionary = _rival_stores[index]
+    var acquired = _program_rival_simulation(bought) if program_town != null else null
+    if acquired != null:
+        _rival_cash_yen += price
     _rival_stores.remove_at(index)
     player_store_count += 1
     # Task #123: the bought store is now one of the player's own, run like
@@ -2107,6 +2198,20 @@ func try_buy_out_rival(rival_id: String) -> bool:
     if not store_types().is_empty():
         store_index = _add_store(_branch_store_type(), bought["position"], _branch_name())
     owned_branches.append({"id": rival_id, "position": bought["position"], "store_index": store_index})
+    if acquired != null and store_index >= 0:
+        var home := active_store
+        _switch_store(store_index)
+        # The buyer keeps the acquired fixtures and stock; the roster is
+        # rebound by _add_store rather than duplicating the rival's staff.
+        layout = acquired.layout
+        inventory = acquired.inventory
+        stored_fixtures = acquired.stored_fixtures
+        outdoor_fixtures = acquired.outdoor_fixtures
+        _refresh_interactions()
+        _stores[active_store] = _capture_store()
+        _switch_store(home)
+        _rival_simulations.erase(rival_id)
+        _program_place(bought["position"], 0)
     if store_index < 0:
         _for_each_store(_refresh_store_catchment)
     _record_event("rival_bought_out", {
@@ -2259,7 +2364,8 @@ func try_buy_store_site(origin: Vector2i, type_id := "") -> bool:
         or economy.cash_yen < int(site_quote["total_yen"]) + construction_yen
     ):
         return false
-    if type_id != store_type_id:
+    var opening: Dictionary = GuideStartingStoreScript.store_type_entry(config, type_id).get("layout", {})
+    if type_id != store_type_id or (opening.has("source_index") and int(opening["source_index"]) != int(config["store"].get("source_layout_index", -1))):
         _build_store_type(type_id)
     var expense: Dictionary = economy.record_explicit_expense(
         "store_site",
@@ -2272,6 +2378,8 @@ func try_buy_store_site(origin: Vector2i, type_id := "") -> bool:
         }
     )
     _apply_store_site(origin, site_quote["bought_buildings"])
+    if program_town != null:
+        _program_place(origin, 0)
     _record_event("store_site_bought", {
         "origin": [origin.x, origin.y],
         "cost_yen": int(site_quote["total_yen"]),
@@ -2319,6 +2427,8 @@ func _try_open_branch_on_site(origin: Vector2i, type_id: String) -> bool:
     player_store_count += 1
     var store_index := _add_store(type_id, origin, _branch_name())
     owned_branches.append({"id": "", "position": origin, "store_index": store_index})
+    if program_town != null:
+        _program_place(origin, 0)
     _record_event("store_opened", {
         "origin": [origin.x, origin.y],
         "store_type_id": type_id,
@@ -2344,7 +2454,12 @@ func store_type_is_selectable(type_id: String) -> bool:
 
 func store_type_price_yen(type_id: String) -> int:
     var entry := GuideStartingStoreScript.store_type_entry(config, type_id)
-    return int(entry.get("construction_price_yen", 0))
+    var price := int(entry.get("construction_price_yen", 0))
+    var opening: Dictionary = entry.get("layout", {})
+    # 8001D018 / 8001D618: opening equipment and goods are paid for.
+    if opening.has("source_index"):
+        price += int(opening["source_equipment_yen"]) + int(opening["source_goods_yen"])
+    return price
 
 
 # Replaces the store (floor, fixtures, shelves and their stock, staff posts)
@@ -2869,6 +2984,9 @@ const OUTDOOR_LOT_TILES := 3
 
 
 func has_outdoor_lot() -> bool:
+    # Source layouts already contain the exterior on their original grid.
+    if config["store"].has("source_floor"):
+        return false
     return _program_demand != null
 
 
@@ -3327,6 +3445,9 @@ func _advance_customer(customer) -> void:
                     "product_id": customer.current_product_id(),
                 })
         "shopping":
+            if program_town != null and not customer.visit.is_empty():
+                if _program_rng.randi_range(1, 100) > int(customer.visit.get("quickness", 100)):
+                    return
             customer.shopping_ticks_remaining -= 1
             if customer.shopping_ticks_remaining <= 0:
                 var product_id: String = customer.current_product_id()
@@ -3376,9 +3497,17 @@ func _advance_customer(customer) -> void:
                     "queue_position": _checkout_queue.size(),
                 })
         "waiting_checkout":
+            if program_town != null:
+                _program_wait_at_checkout(customer, false)
             pass  # Dequeued by _dispatch_checkout_queue() once the checkout is free.
         "checkout":
-            customer.checkout_ticks_remaining -= 1
+            if program_town != null:
+                var ready := ProgramRulesScript.checkout_ready(staff.checkout_staff().register_skill, int(customer.visit.get("quickness", 100)), _program_rng)
+                customer.checkout_ticks_remaining = 0 if ready else 1
+                if not ready and _program_wait_at_checkout(customer, true):
+                    return
+            else:
+                customer.checkout_ticks_remaining -= 1
             # Task #49/#51: a checkout service running unusually long
             # (relative to the confirmed CheckoutTiming reference duration)
             # angers the customer exactly once per checkout, applying the
@@ -3390,7 +3519,7 @@ func _advance_customer(customer) -> void:
             # them -- task #49 had scoped this down to the serving staff
             # member alone, a REMAKE_BALANCED_DEFAULT simplification this
             # stronger, officially-tier evidence now supersedes.
-            if not customer.checkout_anger_triggered:
+            if program_town == null and not customer.checkout_anger_triggered:
                 var elapsed_ticks: int = (
                     customer.checkout_assigned_ticks - customer.checkout_ticks_remaining
                 )
@@ -3425,7 +3554,7 @@ func _advance_customer(customer) -> void:
                             for declining in staff.all_staff():
                                 _staff_growth.apply_program_decline(declining)
                             _record_event("staff_skill_decline", {"customer_id": customer.customer_id})
-                    var rating_penalty_applied := (
+                    var rating_penalty_applied: bool = (
                         _demand_rng.randi_range(1, penalty_one_in)
                         <= StoreRatingScript.ANGRY_CUSTOMER_DOWNGRADE_PROBABILITY_NUMERATOR
                     )
@@ -3520,6 +3649,8 @@ func _dispatch_checkout_queue() -> void:
     customer.checkout_ticks_remaining = _checkout_timing.required_ticks(
         checkout_staff.register_skill, _checkout_ticks
     )
+    if program_town != null:
+        customer.checkout_ticks_remaining = 1
     customer.checkout_assigned_ticks = customer.checkout_ticks_remaining
     checkout_staff.state = "checkout"
     _record_event("checkout_started", {
@@ -3645,6 +3776,8 @@ func _start_default_customer() -> void:
 # Task #120 (REMAKE_BALANCED_DEFAULT shapes on CONFIRMED_OFFICIAL stats, see
 # guide_customer_types.evidence_note/rules). 素早さ: the time at a shelf.
 func _shopping_ticks_for(customer) -> int:
+    if program_town != null:
+        return 1
     if customer.visit.is_empty():
         return _shopping_ticks
     var offset := float(_customer_type_rules["quickness_offset"])
@@ -3670,7 +3803,7 @@ func _reason_to_skip(customer, product_id: String) -> String:
     var price := _apply_price_policy(inventory.get_product(product_id).sale_price_yen)
     if price > customer.budget_left:
         return "budget"
-    if price_change_pct > 0:
+    if program_town == null and price_change_pct > 0:
         var chance: float = (
             float(customer.visit["price_sensitivity"]) / 100.0 * price_change_pct
             * float(_customer_type_rules["price_skip_per_percent_at_full_sensitivity"])
@@ -3714,7 +3847,7 @@ func _maybe_add_on(customer) -> void:
         total += weight
     if candidates.is_empty():
         return
-    var roll := _demand_rng.randf() * total
+    var roll: int = _demand_rng.randf() * total
     var chosen: Array = candidates[candidates.size() - 1]
     for candidate in candidates:
         roll -= float(candidate[1])
@@ -3844,6 +3977,10 @@ func save_state() -> Dictionary:
             "id": str(rival["id"]),
             "position": [rival["position"].x, rival["position"].y],
             "deficit_months": int(rival["deficit_months"]),
+            "serial": int(rival.get("serial", 1)),
+            "monthly_profit_yen": int(rival.get("monthly_profit_yen", 0)),
+            "last_sales_yen": int(rival.get("last_sales_yen", 0)),
+            "permits_held": rival.get("permits_held", []),
         }),
         # Task #111 (schema 9): facilities built through 誘致, and the one
         # under construction.
@@ -3884,6 +4021,16 @@ func save_state() -> Dictionary:
     _switch_store(0)
     data["branches"] = branches
     _switch_store(viewed)
+    if program_town != null:
+        data["program_town"] = program_town.snapshot()
+        data["program_rng"] = _program_rng.seed
+        data["program_rival_cash"] = _rival_cash_yen
+        data["program_rival_serial"] = _rival_serial
+        data["program_rivals"] = {}
+        for id in _rival_simulations:
+            var child_data: Dictionary = _rival_simulations[id].save_state()
+            child_data.erase("program_town")
+            data["program_rivals"][id] = child_data
     return data
 
 
@@ -4007,6 +4154,9 @@ func load_state(data: Dictionary) -> bool:
         _rival_stores.append(_rival_store(
             str(rival_data["id"]), _vec2i_from_array(rival_data["position"]), int(rival_data["deficit_months"])
         ))
+        if program_town != null:
+            for field in ["serial", "monthly_profit_yen", "last_sales_yen", "permits_held"]:
+                _rival_stores.back()[field] = rival_data.get(field, [] if field == "permits_held" else (1 if field == "serial" else 0))
     for waiting in data["rivals_to_reopen"]:
         _rivals_to_reopen.append({"id": str(waiting["id"]), "left": _vec2i_from_array(waiting["left"])})
     for rival_id in data["investigated_rival_ids"]:
@@ -4058,6 +4208,17 @@ func load_state(data: Dictionary) -> bool:
     # Task #130: the program works the day's customers out again on a load.
     _allocate_program_day()
     _for_each_store(_start_opening_customer)
+    if program_town != null and data.has("program_town"):
+        program_town.restore(data["program_town"])
+        _rival_cash_yen = int(data.get("program_rival_cash", 100000000))
+        _rival_serial = int(data.get("program_rival_serial", 2))
+        _rival_simulations.clear()
+        for rival in _rival_stores:
+            var id := str(rival["id"])
+            if data.get("program_rivals", {}).has(id):
+                _program_rival_simulation(rival).load_state(data["program_rivals"][id])
+        _program_rng.seed = int(data.get("program_rng", program_town.seed))
+        _sync_program_town()
     return true
 
 
@@ -4345,7 +4506,7 @@ func _handle_day_boundary() -> void:
 # but no source states how often.
 func _roll_weather() -> void:
     var weights: Array = config["weather"]["monthly_percentages"][month_count % MONTHS_PER_YEAR]
-    var roll := _weather_rng.randi_range(1, 100)
+    var roll: int = _weather_rng.randi_range(1, 100)
     var cumulative := 0
     for index in range(weights.size()):
         cumulative += int(weights[index])
@@ -4407,6 +4568,16 @@ func _scale_yen_to_configured_business_hours(value_at_24h_basis: int) -> int:
 # purchased) records no expense at all rather than a redundant zero-yen
 # entry every single day.
 func _apply_daily_fixture_maintenance() -> void:
+    if program_town != null:
+        var total := 0
+        for fixture in layout.fixtures + outdoor_fixtures:
+            var kind := program_fixture_kind(fixture)
+            if kind >= 0:
+                total += int(_recovery["fixture_records"][kind][2]) * (demand.opening_minutes_per_day / 60)
+        if total > 0:
+            var expense: Dictionary = economy.record_explicit_expense("fixture_maintenance", minute_of_day, total)
+            _record_event("fixture_maintenance_charged", {"total_maintenance_yen": total, "expense_id": expense["expense_id"]})
+        return
     var total_maintenance_yen := 0
     for fixture in layout.fixtures + outdoor_fixtures:
         var catalog_id := str(fixture.get("catalog_id", ""))
@@ -4445,6 +4616,18 @@ func _apply_daily_fixture_maintenance() -> void:
 # so that branch is unreachable today -- kept for parity and so it remains
 # correct if a future hiring/firing UI ever lets the roster go empty.
 func _apply_daily_staff_wages() -> void:
+    if program_town != null:
+        var total := 0
+        var roster: Array = staff.all_staff()
+        for index in roster.size():
+            var hourly: int = int(roster[index].salary_yen_per_day_24h) / 24
+            if index == 0:
+                hourly = hourly * 130 / 100
+            total += hourly * (demand.opening_minutes_per_day / 60)
+        if total > 0:
+            var expense: Dictionary = economy.record_explicit_expense("staff_wages", minute_of_day, total)
+            _record_event("staff_wages_charged", {"total_wages_yen": total, "expense_id": expense["expense_id"]})
+        return
     var total_wages_yen := 0
     for staff_member in staff.all_staff():
         total_wages_yen += _scale_yen_to_configured_business_hours(
@@ -4737,6 +4920,8 @@ func _grow_staff(staff_member, task: String) -> Array[Dictionary]:
 
 
 func _evaluate_terminal_state() -> void:
+    if bool(config["simulation"].get("rival_child", false)):
+        return
     if economy.cash_yen < 0:
         _trigger_game_over("bankrupt")
         return
@@ -4850,6 +5035,12 @@ func _fire_due_chain_visitor_milestones() -> void:
 # currently behave the same. A store with no break room keeps every staff
 # member at their post.
 func _step_staff_rest() -> void:
+    if program_town != null:
+        for working in staff.all_staff():
+            if working.rest_phase != "resting":
+                working.stamina = ProgramRulesScript.working_energy(working.stamina, _program_rng)
+                if working.stamina <= 0:
+                    working.exhausted = true
     var door := _break_room_door()
     var store_is_empty: bool = customers.all_settled()
     for staff_member in staff.all_staff():
@@ -4990,6 +5181,8 @@ func _reset_stamina() -> void:
 
 
 func _spend_stamina(staff_member) -> void:
+    if program_town != null:
+        return
     if not _stamina_enabled or staff_member.stamina_max <= 0:
         return
     staff_member.stamina = maxi(0, staff_member.stamina - 1)
@@ -5004,7 +5197,15 @@ func _recover_stamina(staff_member) -> void:
             staff_member.exhausted = false
         return
     var agility := int(_staff_candidate_catalog.get(staff_member.candidate_id, {}).get("agility", 0))
-    var gain := 2 if _stamina_rng.randf() < 0.9 * float(agility) / 100.0 else 1
+    var gain := 0
+    if program_town != null:
+        var improved := false
+        for fixture in layout.fixtures:
+            if str(fixture.get("catalog_id", "")) == "break_room_2":
+                improved = true
+        gain = ProgramRulesScript.resting_energy(staff_member.stamina, staff_member.stamina_max, improved, _program_rng) - staff_member.stamina
+    else:
+        gain = 2 if _stamina_rng.randf() < 0.9 * float(agility) / 100.0 else 1
     staff_member.stamina = mini(staff_member.stamina_max, staff_member.stamina + gain)
     if staff_member.stamina >= staff_member.stamina_max:
         staff_member.exhausted = false
@@ -5065,6 +5266,12 @@ func _complete_restock(staff_member) -> void:
     var product_id: String = staff_member.restock_target_product_id
     var product = inventory.get_product(product_id)
     var quantity: int = product.initial_stock_units - product.stock_units
+    if program_town != null:
+        var amount := ProgramRulesScript.refill_amount(staff_member.replenishment_skill, _program_rng)
+        if amount == 0:
+            staff_member.restock_ticks_remaining = 1
+            return
+        quantity = mini(quantity, amount)
     if quantity > 0:
         var resulting_stock: int = inventory.add_explicit_units(product_id, quantity)
         var total_cost_yen: int = quantity * product.restock_unit_cost_yen
@@ -5081,6 +5288,9 @@ func _complete_restock(staff_member) -> void:
             "expense_id": expense["expense_id"],
             "resulting_stock_units": resulting_stock,
         })
+    if program_town != null and product.stock_units < product.initial_stock_units:
+        staff_member.restock_ticks_remaining = 1
+        return
     # Task #48: a completed restock task is a confirmed work-growth
     # trigger (replenishment_skill/cleaning_skill/security_skill),
     # applied whether or not any units actually needed restocking (the
@@ -5186,7 +5396,12 @@ func _step_cleaning_tasks() -> void:
                         staff_member.cleaning_skill, _restock_ticks
                     )
             "cleaning":
-                staff_member.restock_ticks_remaining -= 1
+                if program_town != null:
+                    if _program_rng.randi() % 5 != 0 or _program_rng.randi_range(1, 100) > staff_member.cleaning_skill:
+                        continue
+                    staff_member.restock_ticks_remaining = 0
+                else:
+                    staff_member.restock_ticks_remaining -= 1
                 if staff_member.restock_ticks_remaining <= 0:
                     _dirty_cells.erase(staff_member.position)
                     var growth: Array[Dictionary] = _grow_staff(staff_member, "clean")
@@ -5434,3 +5649,223 @@ func _require_config() -> void:
             if not staff_entry.has(key):
                 push_error("staff member config missing required key: %s" % key)
                 assert(false)
+
+
+# Source data -> actual store, demand and map systems; no PS1 runtime required.
+func _program_store_descriptors() -> Array:
+    var descriptors: Array = []
+    _for_each_store(func():
+        if has_store_site():
+            descriptors.append({"active": 1, "rect": [store_site_origin.x, store_site_origin.y, store_site_origin.x + 1, store_site_origin.y + 1], "value": _store_sales_last_month * 8, "c74": int(has_permit("tobacco")), "c75": int(has_permit("alcohol")), "c76": int(has_permit("medicine"))}))
+    for rival in _rival_stores:
+        var origin: Vector2i = rival["position"]
+        var permits: Array = rival.get("permits_held", [])
+        descriptors.append({"active": 1, "rect": [origin.x, origin.y, origin.x + 1, origin.y + 1], "value": int(rival.get("last_sales_yen", 0)), "c74": int(permits.has("tobacco")), "c75": int(permits.has("alcohol")), "c76": int(permits.has("medicine"))})
+    return descriptors
+
+
+func _sync_program_town() -> void:
+    var native_guide: Dictionary = program_town.guide_map(config["guide_town_map"])
+    store_site = StoreSiteScript.new(native_guide)
+    store_site.program_town = program_town
+    _bought_buildings.clear()
+    town.population = program_town.population()
+    program_town.rebuild_flags(_program_store_descriptors())
+    if _program_demand != null:
+        var mixes: Array = []
+        for group in _recovery["groups"]:
+            mixes.append(group.filter(func(pair): return int(pair[0]) >= 0 and int(pair[0]) < _program_demand.rows.size() and int(pair[1]) > 0))
+        _program_demand.mixes = mixes
+
+
+func _program_place(origin: Vector2i, kind: int) -> void:
+    program_town.seed = _program_rng.seed
+    program_town.place(origin.x, origin.y, kind)
+    _program_rng.seed = program_town.seed
+    _sync_program_town()
+
+
+func program_fixture_kind(fixture: Dictionary) -> int:
+    if fixture.has("source_kind"):
+        return int(fixture["source_kind"])
+    var id := str(fixture.get("catalog_id", ""))
+    if _recovery["fixture_kind"].has(id):
+        return int(_recovery["fixture_kind"][id])
+    if str(fixture["kind"]) == "checkout":
+        return 37 if int(fixture["footprint_tiles"][0]) == 2 else 40
+    if str(fixture["kind"]) == "break_room":
+        return 48
+    return -1
+
+
+# Rivals execute the same native game code as owned stores, with their own
+# inventory, employees and ledger. They never run an EXE or interpreter.
+func _program_rival_simulation(rival: Dictionary):
+    var id := str(rival["id"])
+    if not _rival_simulations.has(id):
+        var child_config := config.duplicate(true)
+        child_config["simulation"]["rival_child"] = true
+        child_config["town"]["rival_stores"] = []
+        child_config["guide_town_map"]["rival_stores"] = []
+        child_config["economy"]["initial_cash_yen"] = maxi(0, _rival_cash_yen)
+        var child = get_script().new(child_config)
+        child._apply_store_site(rival["position"], [])
+        child.store_name = "ライバル本店" if int(rival.get("serial", 1)) == 1 else "ライバル%d号店" % int(rival["serial"])
+        var reserved: Array = []
+        _for_each_store(func():
+            for person in staff.all_staff():
+                reserved.append(person.candidate_id))
+        for existing in _rival_simulations.values():
+            for person in existing.staff.all_staff():
+                reserved.append(person.candidate_id)
+        for person in child.staff.all_staff():
+            for candidate_id in _staff_candidate_catalog:
+                if not reserved.has(candidate_id):
+                    person.hire(_staff_candidate_catalog[candidate_id])
+                    reserved.append(candidate_id)
+                    break
+        _rival_simulations[id] = child
+    var sim = _rival_simulations[id]
+    sim.program_town = program_town
+    sim.store_site = store_site
+    sim._program_rng = _program_rng
+    sim._demand_rng = _program_rng
+    sim._weather_rng = _program_rng
+    sim._report_rng = _program_rng
+    sim._stamina_rng = _program_rng
+    sim._inducement_rng = _program_rng
+    sim.minute_of_day = minute_of_day if sim.day_count > day_count else sim.minute_of_day
+    return sim
+
+
+func _advance_program_rivals() -> void:
+    if program_town == null or bool(config["simulation"].get("rival_child", false)):
+        return
+    var clock := day_count * 1440 + minute_of_day
+    for rival in _rival_stores:
+        var sim = _program_rival_simulation(rival)
+        var guard := 0
+        while int(sim.day_count) * 1440 + int(sim.minute_of_day) < clock and guard < 721:
+            sim.economy.cash_yen = _rival_cash_yen
+            sim.tick()
+            _rival_cash_yen = sim.economy.cash_yen
+            guard += 1
+        if not sim.economy.month_end_records.is_empty():
+            var details: Dictionary = sim.economy.month_end_records.back()["details"]
+            rival["monthly_profit_yen"] = int(details["month_result_yen"])
+            rival["last_sales_yen"] = int(details["month_sales_yen"])
+
+
+func _program_rival_monthly() -> void:
+    _advance_program_rivals()
+    var result: Dictionary = ProgramRivalsScript.review(_rival_stores, player_store_count, month_count % 12 + 1)
+    var closed := str(result["closed"])
+    if not closed.is_empty():
+        var index := _rival_index(closed)
+        var origin: Vector2i = _rival_stores[index]["position"]
+        var sim = _program_rival_simulation(_rival_stores[index])
+        var refund: int = store_site.start_land_price_yen(origin) + 3000000
+        for fixture in sim.layout.fixtures + sim.outdoor_fixtures:
+            var kind: int = sim.program_fixture_kind(fixture)
+            if kind >= 0:
+                refund += int(_recovery["fixture_records"][kind][1])
+        for product_id in sim.inventory.product_order:
+            var product = sim.inventory.get_product(product_id)
+            refund += int(product.stock_units) * int(product.restock_unit_cost_yen)
+        _rival_cash_yen += refund
+        _rival_stores.remove_at(index)
+        _rival_simulations.erase(closed)
+        for dy in 2:
+            for dx in 2:
+                program_town.place(origin.x + dx, origin.y + dy, 12)
+        if _rival_stores.is_empty():
+            _rival_cash_yen = 0
+        _sync_program_town()
+        _record_event("rival_withdrew", {"rival_id": closed})
+        return
+    if _rival_stores.is_empty():
+        _rival_cash_yen = 0
+        return
+    if _program_rng.randi() & 3:
+        return
+    if town_is_full():
+        return
+    # REMAKE_BALANCED_DEFAULT: this bridge uses the current small-store configuration; original random
+    # size/layout selection is recorded as a remaining compatibility boundary.
+    var origin := ProgramRivalsScript.find_site(program_town, [], _program_rng)
+    if origin.x < 0:
+        return
+    var cost: int = store_site.start_land_price_yen(origin) + 6000000
+    if cost > _rival_cash_yen:
+        return
+    var id := "program-rival-%d" % _rival_serial
+    var rival := _rival_store(id, origin, 0)
+    rival["serial"] = _rival_serial
+    _rival_serial += 1
+    _rival_stores.append(rival)
+    var sim = _program_rival_simulation(rival)
+    for fixture in sim.layout.fixtures + sim.outdoor_fixtures:
+        var kind: int = sim.program_fixture_kind(fixture)
+        if kind >= 0:
+            cost += int(_recovery["fixture_records"][kind][1])
+    for product_id in sim.inventory.product_order:
+        var product = sim.inventory.get_product(product_id)
+        cost += int(product.stock_units) * int(product.restock_unit_cost_yen)
+    if cost > _rival_cash_yen:
+        _rival_stores.pop_back()
+        _rival_simulations.erase(id)
+        return
+    _rival_cash_yen -= cost
+    sim.day_count = day_count
+    sim.month_count = month_count
+    sim._days_completed_this_month = _days_completed_this_month
+    sim.minute_of_day = minute_of_day
+    _program_place(origin, 3)
+    _record_event("rival_opened", {"rival_id": id, "position": [origin.x, origin.y]})
+
+
+# CONFIRMED_BINARY checkout.wait_resolution (80035D58): waiting spends
+# patience on a 1/4 draw. At zero the held basket is paid and the group leaves.
+func _program_wait_at_checkout(customer, being_served: bool) -> bool:
+    var roll: int = _program_rng.randi_range(1, 100)
+    var patience: int = int(customer.get_meta("checkout_patience", customer.visit.get("stamina", 100)))
+    if patience > 0 and _program_rng.randi() & 3 == 0:
+        patience -= 1
+    customer.set_meta("checkout_patience", patience)
+    if patience > 0:
+        return false
+    if roll % 3 == 0:
+        for member in staff.all_staff():
+            _program_rng.randi()
+            for field in ["register_skill", "replenishment_skill", "cleaning_skill", "service_skill"]:
+                if int(member.get(field)) >= 2:
+                    member.set(field, int(member.get(field)) - 1)
+    if roll % 10 == 0 and internal_rating_value >= 6:
+        internal_rating_value -= 1
+        star_rating = _store_rating.star_rank_for_internal_value(internal_rating_value)
+    if not customer.basket.is_empty():
+        var record: Dictionary = economy.settle_basket(customer.customer_id, minute_of_day, customer.basket)
+        customer.mark_settled(record)
+        _store_sales_yen += int(record["total_yen"])
+    _checkout_queue.erase(customer.customer_id)
+    if being_served:
+        staff.checkout_staff().state = "idle"
+    customer.phase = "leaving"
+    customer.route = layout.find_path(customer.position, layout.exit)
+    _notice_counts["angry"] = int(_notice_counts["angry"]) + 1
+    _record_event("checkout_anger_triggered", {"customer_id": customer.customer_id, "internal_rating_value": internal_rating_value})
+    return true
+
+
+# 8001DE5C mode 0 / 80060E70: half construction + equipment + goods;
+# acquisition asks twice this amount plus twice the land value.
+func _program_premises_value(sim) -> int:
+    var total: int = {"small": 3000000, "medium": 6000000, "large": 9000000}[sim._store_size_tier]
+    for fixture in sim.layout.fixtures + sim.outdoor_fixtures:
+        var kind: int = sim.program_fixture_kind(fixture)
+        if kind >= 0:
+            total += int(_recovery["fixture_records"][kind][1])
+    for product_id in sim.inventory.product_order:
+        var product = sim.inventory.get_product(product_id)
+        total += int(product.stock_units) * int(product.restock_unit_cost_yen)
+    return total

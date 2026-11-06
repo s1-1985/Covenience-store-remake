@@ -11,6 +11,7 @@ extends RefCounted
 #   +built-up share, rounded to the million) and the customer catchment
 #   (building squares in the surrounding 16x16 area).
 
+var program_town = null
 var rows: Array = []
 var buildings: Array = []
 var catalog: Dictionary = {}
@@ -153,6 +154,11 @@ func shared_catchment(origin: Vector2i, others: Array, removed: Array = []) -> f
 # REMAKE_BALANCED_DEFAULT price shape (see the file header), before any
 # growth over time.
 func start_land_price_yen(origin: Vector2i) -> int:
+    if program_town != null:
+        var total := 0
+        for point in footprint_tiles(origin):
+            total += program_town.level(point.x, point.y) * 1000000
+        return total
     var density := float(catchment_building_tiles(origin)) / float(rules["max_catchment_building_tiles"])
     var price := float(rules["floor_land_price_yen"]) + float(rules["density_bonus_yen"]) * minf(1.0, density)
     if faces_road(origin):
@@ -189,6 +195,16 @@ func building_profile(index: int) -> Dictionary:
 # nearby_population scaled by this site's catchment against the mean site
 # (REMAKE_BALANCED_DEFAULT, see the file header).
 func nearby_population(origin: Vector2i, base_population: int, removed: Array = [], others: Array = []) -> int:
+    if program_town != null:
+        var total := 0
+        var reach := int(rules["catchment_tiles"])
+        for y in range(maxi(0, origin.y - reach), mini(50, origin.y + 2 + reach)):
+            for x in range(maxi(0, origin.x - reach), mini(60, origin.x + 2 + reach)):
+                var group := int(program_town.cells[y * 60 + x][5])
+                if group >= 0 and group < program_town.groups.size():
+                    for pair in program_town.groups[group]:
+                        total += int(pair[1])
+        return total
     var mean := float(rules["mean_catchment_building_tiles"])
     return int(round(float(base_population) * shared_catchment(origin, others, removed) / mean))
 
@@ -210,13 +226,16 @@ func quote(origin: Vector2i, growth: float, other_stores: Array, removed: Array 
     if not is_buildable_ground(origin):
         result["reason"] = "not_buildable_ground"
         return result
-    var min_distance := int(rules["min_store_distance_tiles"])
+    if program_town != null and not program_town.feasible(origin.x, origin.y, 0):
+        result["reason"] = "too_close_to_store"
+        return result
+    var min_distance := 0 if program_town != null else int(rules["min_store_distance_tiles"])
     for other in other_stores:
         var other_origin: Vector2i = other
         if maxi(absi(origin.x - other_origin.x), absi(origin.y - other_origin.y)) < min_distance:
             result["reason"] = "too_close_to_store"
             return result
-    var land_yen := int(round(float(start_land_price_yen(origin)) * growth))
+    var land_yen := start_land_price_yen(origin) if program_town != null else int(round(float(start_land_price_yen(origin)) * growth))
     var bought := buildings_on(origin, removed)
     var building_value := 0
     var names: Array[String] = []

@@ -1,0 +1,15 @@
+{
+  "version": "0.2.1-source-interior",
+  "version_code": 23,
+  "package": "com.conveniremake.recovered",
+  "apk_bytes": 27894002,
+  "apk_sha256": "c403fbf147759d53193ce0a124c5f5867479a5c3c67760f947f4c5b2f24567b9",
+  "source_layouts": 30,
+  "opening_layouts": 24,
+  "small_layout_sales_cases": 8,
+  "python_tests": 786,
+  "python_expected_failures": 1,
+  "godot_smoke_scripts": 7,
+  "android_device_tested": false,
+  "source_exe_or_bios_in_apk": false
+}

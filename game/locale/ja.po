@@ -1070,3 +1070,54 @@ msgstr "強盗"
 
 msgid "fire"
 msgstr "火災"
+
+msgid "program town changed"
+msgstr "街が変化しました"
+
+msgid "source_fixture_19"
+msgstr "大型冷凍棚"
+
+msgid "source_fixture_20"
+msgstr "小型冷凍ワゴン"
+
+msgid "source_fixture_21"
+msgstr "大型冷凍ワゴン"
+
+msgid "source_fixture_23"
+msgstr "おでん器"
+
+msgid "source_fixture_33"
+msgstr "コピー機1"
+
+msgid "source_fixture_34"
+msgstr "コピー機2"
+
+msgid "source_fixture_35"
+msgstr "コピー機3"
+
+msgid "source_fixture_36"
+msgstr "コピー機4"
+
+msgid "source_fixture_37"
+msgstr "レジ1"
+
+msgid "source_fixture_38"
+msgstr "レジ2"
+
+msgid "source_fixture_39"
+msgstr "宅配便受付レジ"
+
+msgid "source_fixture_40"
+msgstr "大型レジ1"
+
+msgid "source_fixture_41"
+msgstr "大型レジ2"
+
+msgid "source_fixture_42"
+msgstr "大型宅配便受付レジ"
+
+msgid "source_fixture_43"
+msgstr "特殊商品棚1"
+
+msgid "source_fixture_44"
+msgstr "特殊商品棚2"

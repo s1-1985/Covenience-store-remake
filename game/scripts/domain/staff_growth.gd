@@ -113,18 +113,18 @@ const DECLINE_SKILLS := ["register_skill", "replenishment_skill", "cleaning_skil
 
 func apply_program_growth(
     staff_member, task: String, manager_academic: int, candidate: Dictionary, rules: Dictionary,
-    store_cleaning: float, rng: RandomNumberGenerator
+    store_cleaning: float, rng
 ) -> Array[Dictionary]:
     var results: Array[Dictionary] = []
     var skills: Array = (PROGRAM_TASK_SKILLS[task] as Array).duplicate()
     if task == "restock" and store_cleaning < float(rules["cleaning_while_restocking_below"]):
         skills.append("cleaning_skill")
-    var over_ceiling := rng.randi_range(1, int(rules["over_ceiling_chance_one_in"])) == 1
+    var over_ceiling = rng.randi_range(1, int(rules["over_ceiling_chance_one_in"])) == 1
     var caps: Dictionary = rules["skill_caps"]
     for skill in skills:
         if rng.randi_range(1, 100) > manager_academic:
             continue
-        var before := int(staff_member.get(skill))
+        var before = int(staff_member.get(skill))
         if before >= int(candidate.get(str(caps[skill]), 0)):
             continue
         if before >= int(staff_member.get(skill + "_growth_ceiling")) and not over_ceiling:
@@ -138,7 +138,7 @@ func apply_program_growth(
 # point of レジ, 補充, 清掃 and 警備 (not below 1).
 func apply_program_decline(staff_member) -> void:
     for skill in DECLINE_SKILLS:
-        var value := int(staff_member.get(skill))
+        var value = int(staff_member.get(skill))
         if value >= 2:
             staff_member.set(skill, value - 1)
 

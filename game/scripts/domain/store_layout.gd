@@ -13,6 +13,7 @@ var height_subcells: int
 var entry: Vector2i
 var exit: Vector2i
 var blocked: Dictionary = {}
+var _fixed_blocked: Dictionary = {}
 var fixtures: Array = []
 var fixtures_by_id: Dictionary = {}
 var _subcells_per_tile: int
@@ -31,6 +32,8 @@ func _init(store_config: Dictionary, fixture_configs: Array, any_side_ids: Array
     height_subcells = int(store_config["height_tiles"]) * scale
     entry = _vec2i(store_config["entry_subcell"])
     exit = _vec2i(store_config["exit_subcell"])
+    for cell in store_config.get("blocked_subcells", []):
+        _fixed_blocked[_vec2i(cell)] = true
     _initial_fixtures = _normalize_fixture_configs(fixture_configs)
     _settle_any_side_fronts(_initial_fixtures)
     fixtures = _initial_fixtures.duplicate(true)
@@ -205,7 +208,7 @@ func _side_cells(fixture: Dictionary) -> Array[Vector2i]:
 func _settle_any_side_fronts(candidate_fixtures: Array) -> void:
     if any_side_catalog_ids.is_empty():
         return
-    var occupied: Dictionary = {}
+    var occupied: Dictionary = _fixed_blocked.duplicate()
     for fixture in candidate_fixtures:
         var origin := _vec2i(fixture["origin_subcell"])
         var footprint: Array = fixture["footprint_tiles"]
@@ -388,7 +391,7 @@ func try_swap_fixture_positions(fixture_id_a: String, fixture_id_b: String) -> b
 
 
 func _build_blocked_cells(scale: int) -> void:
-    blocked.clear()
+    blocked = _fixed_blocked.duplicate()
     fixtures_by_id.clear()
     for fixture in fixtures:
         var fixture_id := str(fixture["id"])
@@ -411,7 +414,7 @@ func _build_blocked_cells(scale: int) -> void:
 
 
 func _fixture_configs_are_valid(candidate_fixtures: Array) -> bool:
-    var occupied: Dictionary = {}
+    var occupied: Dictionary = _fixed_blocked.duplicate()
     var ids: Dictionary = {}
     for fixture in candidate_fixtures:
         var fixture_id := str(fixture.get("id", ""))

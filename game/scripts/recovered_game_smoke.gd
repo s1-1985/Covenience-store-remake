@@ -1,0 +1,43 @@
+extends SceneTree
+const Sim := preload("res://scripts/vertical_slice_simulation.gd")
+const Starting := preload("res://scripts/domain/guide_starting_store.gd")
+func _initialize() -> void:
+    var base: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/vertical_slice.json"))
+    var sim = Sim.new(Starting.apply(base))
+    print("NATIVE map=",sim.program_town.cells.size()," pop=",sim.town.population," rivals=",sim._rival_stores.size())
+    var quote = sim.store_site_quote(Vector2i(26,12))
+    print("NATIVE quote=",quote)
+    assert(sim.try_buy_store_site(Vector2i(26,12)), "native start site")
+    for i in 7200:
+        sim.tick()
+    print("NATIVE day=",sim.day_count," sales=",sim.snapshot()["completed_sales"]," rival_cash=",sim._rival_cash_yen)
+    print("NATIVE rivals=",sim._rival_stores)
+    assert(sim.snapshot()["completed_sales"] > 0, "native store sells")
+    assert(sim.month_count >= 2, "native monthly town + rival review")
+    var rival = sim._rival_simulations["rival-hq"]
+    assert(rival.economy.completed_sales > 0, "rival uses actual shop sales")
+    var saved = JSON.parse_string(JSON.stringify(sim.save_state()))
+    var clone = Sim.new(Starting.apply(base))
+    assert(clone.load_state(saved), "native serialized save reloads")
+    assert(clone.program_town.raw_bytes() == sim.program_town.raw_bytes())
+    assert(clone._program_rng.seed == sim._program_rng.seed)
+    assert(clone._rival_stores[0]["monthly_profit_yen"] == sim._rival_stores[0]["monthly_profit_yen"])
+    for i in 100:
+        clone.tick()
+    assert(clone.day_count >= sim.day_count)
+    # A recovered induced facility must modify the real map and survive reload.
+    clone._put_up_facility("police_box", Vector2i(29, 28), true)
+    assert(clone.program_town.kind(29, 28) == 18)
+    assert(clone.try_investigate_rival("rival-hq"))
+    assert(int(clone._rival_guide_entry("rival-hq")["guide_data"]["popularity"]) > 0)
+    clone._rival_stores[0]["serial"] = 2
+    var rival_stock: int = clone._rival_simulations["rival-hq"].inventory.total_stock_units()
+    var fee: int = clone.rival_buyout_price_yen("rival-hq")
+    assert(fee > 40000000)
+    assert(clone.try_buy_out_rival("rival-hq"))
+    assert(clone.player_store_count == 2 and clone._rival_stores.is_empty())
+    clone.select_store(1)
+    assert(clone.inventory.total_stock_units() == rival_stock, "acquired stock is preserved")
+    clone.tick()
+    print("Recovered game sales/monthly/JSON save/facility/acquisition smoke passed")
+    quit(0)

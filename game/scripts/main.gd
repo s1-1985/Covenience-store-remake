@@ -1437,6 +1437,17 @@ func _build_store_type_panel() -> void:
     store_type_info_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
     store_type_info_label.custom_minimum_size = Vector2(320, 0)
     box.add_child(store_type_info_label)
+    if simulation.program_town != null:
+        var source_layout_choice := OptionButton.new()
+        source_layout_choice.name = "SourceLayoutChoice"
+        source_layout_choice.custom_minimum_size = Vector2(0, 48)
+        for index in 4:
+            source_layout_choice.add_item("原作サンプル %d" % (index + 1))
+        source_layout_choice.item_selected.connect(func(index: int):
+            for entry in simulation.store_types():
+                entry["layout"] = (entry["source_layouts"][index] as Dictionary).duplicate(true)
+            _refresh_store_type_panel())
+        box.add_child(source_layout_choice)
     var row_box := HBoxContainer.new()
     box.add_child(row_box)
     store_type_build_button = Button.new()
@@ -1466,7 +1477,7 @@ func _refresh_store_type_panel() -> void:
         store_type_info_label.text = ""
         store_type_build_button.disabled = true
         return
-    var price := int(entry["construction_price_yen"])
+    var price: int = simulation.store_type_price_yen(_store_type_choice)
     var land := int(simulation.store_site_quote(_site_origin).get("total_yen", 0))
     store_type_info_label.text = "%s　¥%s\n%s" % [
         store_type_caption(entry),
@@ -1475,6 +1486,12 @@ func _refresh_store_type_panel() -> void:
             _format_integer(land), _format_integer(price), _format_integer(land + price),
         ],
     ]
+    if entry["layout"].has("source_index"):
+        store_type_info_label.text += "\n建物 ¥%s ／ 什器 ¥%s ／ 商品 ¥%s" % [
+            _format_integer(int(entry["construction_price_yen"])),
+            _format_integer(int(entry["layout"]["source_equipment_yen"])),
+            _format_integer(int(entry["layout"]["source_goods_yen"])),
+        ]
     store_type_build_button.disabled = simulation.economy.cash_yen < land + price
 
 

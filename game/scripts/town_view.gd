@@ -52,6 +52,7 @@ var map_tile_pixels := 24.0
 var view_size := Vector2(640, 560)
 var view_origin_tile := Vector2i.ZERO
 var _town_textures: Dictionary = {}
+var _program_atlas: Texture2D = null
 var _drag_remainder := Vector2.ZERO
 var _view_centered := false
 # Task #95: while true, a tap on the map picks the 2x2 site under it (its
@@ -173,7 +174,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _town_texture(sprite_id: String) -> Texture2D:
     if not _town_textures.has(sprite_id):
-        var path := TOWN_SPRITE_DIR + sprite_id + ".png"
+        var path := "res://assets/ps1/building_" + sprite_id.trim_prefix("ps1_") + ".png" if sprite_id.begins_with("ps1_") else TOWN_SPRITE_DIR + sprite_id + ".png"
         _town_textures[sprite_id] = load(path) as Texture2D if ResourceLoader.exists(path) else null
     return _town_textures[sprite_id] as Texture2D
 
@@ -261,7 +262,9 @@ func _draw_guide_map(guide: Dictionary) -> void:
         for x in range(view_origin_tile.x, view_origin_tile.x + shown.x):
             var kind := line[x]
             var rect := Rect2(Vector2(x, y) * t - origin, Vector2(t, t))
-            if kind == "R":
+            if simulation.program_town != null:
+                _draw_program_tile(int(simulation.program_town.cells[y * 60 + x][0]), rect)
+            elif kind == "R":
                 var road := _road_tile(_road_links(rows, x, y))
                 _draw_tile(str(road[0]), rect, int(road[1]))
             elif kind == "T" and _tile_at(rows, x, y - 1) == "R" and _tile_at(rows, x, y + 1) == "R":
@@ -272,7 +275,7 @@ func _draw_guide_map(guide: Dictionary) -> void:
     var bought: Array = simulation.bought_buildings()
     # Task #111: the simulation's own list, which grows with 誘致.
     var map_buildings: Array = simulation.store_site.buildings if simulation.store_site != null else guide["buildings"]
-    for index in map_buildings.size():
+    for index in (0 if simulation.program_town != null else map_buildings.size()):
         if bought.has(index):
             continue
         var building: Dictionary = map_buildings[index]
@@ -294,7 +297,10 @@ func _draw_guide_map(guide: Dictionary) -> void:
             for dy in 2:
                 for dx in 2:
                     _draw_tile("map_concrete", Rect2(mark_rect.position + Vector2(dx, dy) * t, Vector2(t, t)))
-            _draw_tile(str(guide["store_mark_sprite"]), mark_rect)
+            if simulation.program_town != null:
+                _draw_program_store(mark_rect, false)
+            else:
+                _draw_tile(str(guide["store_mark_sprite"]), mark_rect)
     # Rival stores: with the guide map their positions are map squares
     # (task #95), each a 2x2 store, drawn as the red 本/02 marks cut from
     # the gameplay video (task #98, guide_town_map.rival_stores).
@@ -306,7 +312,9 @@ func _draw_guide_map(guide: Dictionary) -> void:
         if not shown_rect.encloses(Rect2(cell, Vector2(2, 2))):
             continue
         var marker := Rect2(cell * t - origin, Vector2(2 * t, 2 * t))
-        if rival_sprites.has(str(rival["id"])):
+        if simulation.program_town != null:
+            _draw_program_store(marker, true)
+        elif rival_sprites.has(str(rival["id"])):
             for dy in 2:
                 for dx in 2:
                     _draw_tile("map_concrete", Rect2(marker.position + Vector2(dx, dy) * t, Vector2(t, t)))
@@ -324,7 +332,10 @@ func _draw_guide_map(guide: Dictionary) -> void:
         for dy in 2:
             for dx in 2:
                 _draw_tile("map_concrete", Rect2(branch_rect.position + Vector2(dx, dy) * t, Vector2(t, t)))
-        _draw_tile("map_blue_02", branch_rect)
+        if simulation.program_town != null:
+            _draw_program_store(branch_rect, false)
+        else:
+            _draw_tile("map_blue_02", branch_rect)
     # Task #111: the lot of a facility under construction (誘致用地).
     if not simulation.pending_inducement.is_empty():
         var pending: Dictionary = simulation.pending_inducement
@@ -425,3 +436,17 @@ func _draw() -> void:
             13,
             Color("111111")
         )
+
+
+func _draw_program_tile(tile: int, rect: Rect2) -> void:
+    if _program_atlas == null:
+        _program_atlas = load("res://assets/ps1/town_tiles.png") as Texture2D
+    if tile < 0 or tile >= 640:
+        return
+    draw_texture_rect_region(_program_atlas, rect, Rect2(Vector2((tile % 64) * 8, (tile / 64) * 8), Vector2(8, 8)))
+
+
+func _draw_program_store(rect: Rect2, rival: bool) -> void:
+    for y in 2:
+        for x in 2:
+            _draw_program_tile((12 if rival else 0) + y * 2 + x, Rect2(rect.position + Vector2(x, y) * rect.size / 2, rect.size / 2))
