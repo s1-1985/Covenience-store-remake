@@ -4,6 +4,8 @@ extends RefCounted
 const ProgramOperationsScript := preload("res://scripts/domain/program_operations.gd")
 const ProgramNotificationsScript := preload("res://scripts/domain/program_notifications.gd")
 var notifications := ProgramNotificationsScript.new()
+const ProgressionScript := preload("res://scripts/domain/program_progression.gd")
+var source_progress := {"flags": 0, "pending": -1, "save_finished": 0, "serial": 1, "mode": 0}
 const StoreLayoutScript := preload("res://scripts/domain/store_layout.gd")
 const InventoryCatalogScript := preload("res://scripts/domain/inventory_catalog.gd")
 const EconomyStateScript := preload("res://scripts/domain/economy_state.gd")
@@ -352,6 +354,7 @@ func _init(source_config: Dictionary) -> void:
 
 func reset() -> void:
     notifications.reset()
+    source_progress = {"flags": int(config.get("source_progress_flags", 0)) & 255, "pending": -1, "save_finished": 0, "serial": 1, "mode": int(config.get("source_scenario_index", 0))}
     _rival_simulations.clear()
     _rival_cash_yen = int(_recovery.get("initial_cash", [0, 100000000])[1])
     _rival_serial = 1
@@ -489,7 +492,7 @@ func demand_admit_if_due() -> bool:
 
 
 func tick_idle_for_demand() -> bool:
-    if is_game_over:
+    if is_game_over or (program_town != null and (int(source_progress["pending"]) >= 0 or int(source_progress["save_finished"]) == 255)):
         return false
     _advance_minute_of_day()
     _step_restock_tasks()
@@ -506,7 +509,7 @@ func tick_idle_for_demand() -> bool:
 # tick_idle_for_demand() keep their narrower semantics for the existing
 # scripted smoke scenarios.
 func tick() -> void:
-    if is_game_over or (program_town != null and source_management_has_vacancy()):
+    if is_game_over or (program_town != null and (int(source_progress["pending"]) >= 0 or int(source_progress["save_finished"]) == 255 or source_management_has_vacancy())):
         return
     step()
     var viewed := active_store
@@ -1915,6 +1918,7 @@ func _grow_town_at_month_end() -> void:
         _sync_program_town()
         if program_town.tier >= 4 and int(config.get("source_scenario_index", 0)) == 0:
             clear_condition_met = true
+            _set_source_ending(0)
         for change in changes:
             _record_event("program_town_changed", {"action": change})
         _for_each_store(_refresh_store_catchment)
@@ -3237,7 +3241,7 @@ func try_load_sample_layout(sample_id: String) -> bool:
 
 
 func step() -> void:
-    if is_game_over or (program_town != null and source_management_has_vacancy()):
+    if is_game_over or (program_town != null and (int(source_progress["pending"]) >= 0 or int(source_progress["save_finished"]) == 255 or source_management_has_vacancy())):
         return
     var viewed := active_store
     _switch_store(0)
@@ -3885,6 +3889,7 @@ func save_state() -> Dictionary:
     _switch_store(0)
     var data := {
         "save_schema_version": SAVE_SCHEMA_VERSION,
+        "source_progress": source_progress.duplicate(true),
         "source_notifications": notifications.snapshot(),
         "scenario_id": str(config["scenario_id"]),
         "config_schema_version": int(config["schema_version"]),
@@ -4024,6 +4029,14 @@ func _store_save_block() -> Dictionary:
 
 
 func load_state(data: Dictionary) -> bool:
+    if not data.get("source_progress", {}) is Dictionary:
+        return false
+    var progress_data: Dictionary = data.get("source_progress", {})
+    for key in ["flags", "pending", "save_finished", "serial", "mode"]:
+        if progress_data.has(key) and ((not progress_data[key] is int and not progress_data[key] is float) or float(progress_data[key]) != floorf(float(progress_data[key]))):
+            return false
+    if int(progress_data.get("pending", -1)) < -1 or int(progress_data.get("pending", -1)) > 4:
+        return false
     var loaded_notices := ProgramNotificationsScript.new()
     if not loaded_notices.restore(data.get("source_notifications", {})):
         return false
@@ -4159,6 +4172,14 @@ func load_state(data: Dictionary) -> bool:
             _restore_source_runtime(_source_runtime_to_restore)
             _source_runtime_to_restore = {})
     notifications = loaded_notices
+    var loaded_progress: Dictionary = data.get("source_progress", {})
+    source_progress = {"flags": int(loaded_progress.get("flags", config.get("source_progress_flags", 0))) & 255,
+        "pending": int(loaded_progress.get("pending", -1)), "save_finished": int(loaded_progress.get("save_finished", 0)) & 255,
+        "serial": int(loaded_progress.get("serial", player_store_count)) & 65535, "mode": int(loaded_progress.get("mode", config.get("source_scenario_index", 0))) & 255}
+    # Original completed save (FF) returns to title, rather than re-entering play.
+    # The title handles this marker; do not replay an acknowledged ending.
+    if int(source_progress["save_finished"]) == 255:
+        source_progress["pending"] = -1
     return true
 
 
@@ -4240,6 +4261,8 @@ func _record_event(event_type: String, details: Dictionary = {}) -> void:
     event_log.append(event_type, minute_of_day, details)
     if program_town != null:
         _reserve_source_notice(event_type, details)
+        if event_type in ["store_built", "store_opened", "rival_bought_out", "chain_expanded"]:
+            _source_store_milestone()
     if active_store == viewed_store:
         last_event = event_type.replace("_", " ")
 
@@ -4282,6 +4305,7 @@ func consume_source_notice() -> Dictionary:
     var n = notifications
     n.put(0x800cd930, _chain_visitors_total)
     n.put(0x800cd948, int(config.get("source_scenario_index", 0)))
+    n.put(0x800cd8a0, int(source_progress["flags"]))
     var records: Array = economy.month_end_records
     if not records.is_empty():
         var latest: Dictionary = records[-1]["details"]
@@ -4308,7 +4332,14 @@ func consume_source_notice() -> Dictionary:
                 entry["rating"] = int(last_owner_review.get("mean_rating", 0))
             if not entries.is_empty():
                 entries[0]["annual_sales"] = int(last_owner_review.get("annual_sales", 0))
-    return n.consume(month_count * 5760 + _days_completed_this_month * 1440 + minute_of_day, entries, town.population)
+    var record: Dictionary = n.consume(month_count * 5760 + _days_completed_this_month * 1440 + minute_of_day, entries, town.population)
+    # Original owner clear is generated by consuming the annual report,
+    # after any earlier monthly/manager notices, not by booking the ledger.
+    if not record.is_empty() and int(record["mode"]) == 3 and int(n.word(0x800cd80c)) == 100:
+        var mode := int(config.get("source_scenario_index", 0))
+        if mode in [2, 3]:
+            _set_source_ending(mode)
+    return record
 
 
 func _next_notice_slot() -> int:
@@ -4936,8 +4967,6 @@ func _grow_staff(staff_member, task: String) -> Array[Dictionary]:
 
 
 func _evaluate_terminal_state() -> void:
-    if program_town != null and int(config.get("source_scenario_index", 0)) == 1 and player_store_count >= 10:
-        clear_condition_met = true
     if program_town != null and minute_of_day != 0:
         return
     if bool(config["simulation"].get("rival_child", false)):
@@ -4946,9 +4975,10 @@ func _evaluate_terminal_state() -> void:
         _trigger_game_over("bankrupt")
         return
     if program_town != null:
-        if int(config.get("source_scenario_index", 0)) == 1 and player_store_count >= 10:
-            clear_condition_met = true
-        if month_count / 12 + 1 >= 99:
+        var guarded := ProgressionScript.terminal_guard(economy.cash_yen, month_count / 12 + 1, int(source_progress["serial"]), int(source_progress["mode"]), int(source_progress["pending"]))
+        if int(guarded["pending"]) == 4:
+            source_progress["mode"] = 255
+            _set_source_ending(4)
             _trigger_game_over("time_limit_exceeded")
         return
     if _town_growth().is_empty():
@@ -4966,7 +4996,37 @@ func _evaluate_terminal_state() -> void:
 func _trigger_game_over(reason: String) -> void:
     is_game_over = true
     game_over_reason = reason
+    if program_town != null:
+        source_progress["mode"] = 255
+        _set_source_ending(4)
     _record_event("game_over", {"reason": reason})
+
+
+func _set_source_ending(ending: int) -> void:
+    if program_town == null or bool(config["simulation"].get("rival_child", false)):
+        return
+    if int(source_progress["pending"]) >= 0 and ending != 4:
+        return
+    source_progress["pending"] = ending
+    if ending < 4:
+        source_progress["flags"] = int(source_progress["flags"]) | (1 << ending)
+        clear_condition_met = true
+
+
+func _source_store_milestone(notify: bool = true) -> void:
+    if bool(config["simulation"].get("rival_child", false)):
+        return
+    var stores: Array = []
+    for index in _stores.size():
+        stores.append({"active": store_field(index, "store_site_origin") != NO_STORE_SITE, "flags": 0})
+    var result := ProgressionScript.store_milestone(stores, int(source_progress["mode"]), int(source_progress["flags"]), int(source_progress["pending"]))
+    source_progress["serial"] = maxi(int(source_progress["serial"]), int(result["count"]))
+    if int(result["pending"]) == 1:
+        _set_source_ending(1)
+    elif notify and bool(result["notify"]) and int(result["count"]) > 0:
+        var body := PackedByteArray()
+        body.resize(120)
+        notifications.reserve(0, 0, 100, 1, 3, body, {"event_type": "store_milestone", "details": {"count": result["count"]}})
 
 
 func _fire_due_promotions() -> void:
@@ -6122,8 +6182,6 @@ func _annual_review() -> void:
             entries.append({"annual_sales": _annual_sales_yen, "rating": internal_rating_value}))
     last_owner_review = preload("res://scripts/domain/program_progression.gd").owner_rating(entries, _chain_visitors_total, town.population)
     last_owner_review["year"] = month_count / 12
-    if int(config.get("source_scenario_index", 0)) in [2, 3] and int(last_owner_review["total"]) == 100:
-        clear_condition_met = true
     _record_event("owner_review", last_owner_review.duplicate(true))
     _for_each_store( func():
         _annual_sales_yen = 0

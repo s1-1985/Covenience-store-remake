@@ -14,12 +14,23 @@ const DEFAULT_SAVE_PATH := "user://saves/vertical_slice_save.json"
 func save_to_path(simulation, path: String = DEFAULT_SAVE_PATH) -> bool:
     var save_dir := path.get_base_dir()
     if not save_dir.is_empty():
-        DirAccess.make_dir_recursive_absolute(save_dir)
-    var file := FileAccess.open(path, FileAccess.WRITE)
+        if DirAccess.make_dir_recursive_absolute(save_dir) != OK:
+            return false
+    # Commit a complete JSON file, preserving the old save on write failure.
+    var temporary := path + ".tmp"
+    var file := FileAccess.open(temporary, FileAccess.WRITE)
     if file == null:
         return false
     file.store_string(JSON.stringify(simulation.save_state()))
+    file.flush()
+    var error := file.get_error()
     file.close()
+    if error != OK:
+        DirAccess.remove_absolute(temporary)
+        return false
+    if DirAccess.rename_absolute(temporary, path) != OK:
+        DirAccess.remove_absolute(temporary)
+        return false
     return true
 
 

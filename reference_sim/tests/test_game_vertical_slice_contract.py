@@ -941,7 +941,13 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         # community source (PROJECT_MEMORY.md section 14) is itself
         # unverified.
         self.assertIn("const PLAYER_STORE_COUNT_SCENARIO_TARGET := 10", simulation)
-        self.assertIn('int(config.get("source_scenario_index", 0)) == 1 and player_store_count >= 10', simulation)
+        # The recovered source counts active owned stores and sets ending 1;
+        # a boolean based on the client's old store counter is insufficient.
+        progression = (GAME_ROOT / "scripts/domain/program_progression.gd").read_text()
+        self.assertIn('count == 10 and signed8(mode) == 1', progression)
+        self.assertIn('"flags": flags | 2, "pending": 1', progression)
+        self.assertIn('_source_store_milestone()', simulation)
+        self.assertIn('_set_source_ending(1)', simulation)
         self.assertIn("func try_expand_chain() -> bool:", simulation)
         self.assertIn("func chain_expansion_cost_yen() -> int:", simulation)
         self.assertIn(

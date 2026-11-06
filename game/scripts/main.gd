@@ -150,6 +150,8 @@ var _staff_slot_ids: Array[String] = []
 var _hire_candidate_ids: Array[String] = []
 var _next_fixture_purchase_sequence := 1
 var _next_product_purchase_sequence := 1
+var ending_view
+var _returning_finished_save := false
 
 
 func _ready() -> void:
@@ -160,6 +162,7 @@ func _ready() -> void:
     config = _load_config()
     if config.is_empty():
         return
+    config["source_progress_flags"] = GameLaunchState.progress_flags
     simulation = VerticalSliceSimulationScript.new(config)
     # Task #104: the store (and so config["store"]/["fixtures"]/...) can
     # change when it is built, so the UI reads the simulation's own config.
@@ -243,6 +246,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+    _ensure_source_ending()
+    if ending_view != null or _returning_finished_save:
+        return
     if simulation == null or paused or selecting_site or (simulation.program_town != null and phone_ui != null and not phone_ui.window_id.is_empty()):
         store_view.tick_progress = 1.0
         return
@@ -1071,8 +1077,50 @@ func _refresh_ui() -> void:
     if rival_panel != null:
         _refresh_rival_panel()
     _play_event_sounds()
-    if phone_ui != null:
+    _ensure_source_ending()
+    if phone_ui != null and ending_view == null:
         phone_ui.refresh()
+    _ensure_source_ending()
+
+
+func _ensure_source_ending() -> void:
+    if simulation == null or simulation.program_town == null or ending_view != null:
+        return
+    if int(simulation.source_progress["save_finished"]) == 255:
+        if not _returning_finished_save:
+            _returning_finished_save = true
+            GameLaunchState.progress_flags = int(simulation.source_progress["flags"])
+            call_deferred("_on_quit_to_menu_pressed")
+        return
+    var pending := int(simulation.source_progress["pending"])
+    if pending < 0:
+        return
+    paused = true
+    accumulator = 0.0
+    game_over_layer.visible = false
+    var layer := CanvasLayer.new()
+    layer.name = "SourceEndingLayer"
+    layer.layer = 40
+    add_child(layer)
+    ending_view = preload("res://scripts/ending_view.gd").new()
+    layer.add_child(ending_view)
+    ending_view.setup(pending)
+    ending_view.finished.connect(_source_ending_finished)
+    SoundManager.stop_music()
+
+
+func _source_ending_finished(accepted: bool) -> void:
+    var ending := int(simulation.source_progress["pending"])
+    if ending < 4:
+        GameLaunchState.progress_flags = int(simulation.source_progress["flags"])
+        if accepted:
+            var previous := int(simulation.source_progress["save_finished"])
+            simulation.source_progress["save_finished"] = 255
+            if not _save_service.save_to_path(simulation):
+                simulation.source_progress["save_finished"] = previous
+                ending_view.show_save_error()
+                return
+    _on_quit_to_menu_pressed()
 
 
 func _load_config() -> Dictionary:

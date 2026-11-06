@@ -1,0 +1,78 @@
+{
+  "base_commit": "9a6474575c9456185b3334d65c2d50b6f102ae1c",
+  "date_jst": "2026-11-06",
+  "godot": "4.3.stable.official.77dcf97d8",
+  "godot_checks": [
+    "headless_smoke.gd",
+    "source_geometry_smoke.gd",
+    "source_people_smoke.gd",
+    "source_notifications_smoke.gd",
+    "source_notifications_ui_smoke.gd",
+    "source_progression_smoke.gd",
+    "source_ending_ui_smoke.gd",
+    "operating_statement_smoke.gd",
+    "android_preview_smoke.gd",
+    "recovered_runtime_smoke.gd",
+    "recovered_game_smoke.gd",
+    "recovered_ui_smoke.gd",
+    "source_interior_smoke.gd",
+    "analysis_integration_smoke.gd",
+    "source_operations_smoke.gd",
+    "source_operations_ui_smoke.gd"
+  ],
+  "godot_unexpected_failures": 0,
+  "python_tests": 786,
+  "python_expected_failures": 1,
+  "python_unexpected_failures": 0,
+  "independent_cases": {
+    "store_milestone": 198,
+    "terminal_guard": 45,
+    "menu_byte": 256,
+    "presentation_dispatch": 5
+  },
+  "original_artwork_png": {
+    "credits.png": "4d3568acf5f69f12e34630449d7ebdd78717461ac07e280ef893c3ec01507960",
+    "message_472.png": "be73cce5b9039a220d47130c326055df6ae25b4d75f0e11bfea759e1373ff0e6",
+    "message_473.png": "a2e7feebb123acedbaa9dd32380c3732b8b408107c68042da97c550b93f17a9a",
+    "message_474.png": "d03c21b142c63ea2d276677e87fbf4b8c0b950511676f73b313bbddef724c3fa",
+    "message_475.png": "de66ced4b00ebf0cbf0d6aa33a7ab0c884eae49a990f0a3d9785e26470d12878",
+    "scene0_0.png": "f5c47da86ab2eb0c3b1c579b7bcc5a941b83b97ae3504b9bd369b261d9d80640",
+    "scene1_0.png": "db2888c8cad13b6c9c1e2ac040080fa342241b8473de21766b51dd3d205f6494",
+    "scene1_1.png": "3bad3d51077e76bcf94ab97441ff29a02546045b43d2eb9b58c02dee493218ec",
+    "scene1_2.png": "0903198c89880f9fd59b5305b805d3a082294616bfd527e13fb8b461940e55c2",
+    "scene1_2_palette0.png": "e66eaf81c264fbe0a1f804264a4fa4e327817f1c8d57e44bcd3d44df54768945",
+    "scene1_2_palette1.png": "0903198c89880f9fd59b5305b805d3a082294616bfd527e13fb8b461940e55c2",
+    "scene2_0.png": "db2888c8cad13b6c9c1e2ac040080fa342241b8473de21766b51dd3d205f6494",
+    "scene2_1.png": "004cf2fc142d5ceeaf2da35fa3fd0244559fb93ed711294f79195cefcb6e2f72",
+    "scene2_2.png": "0903198c89880f9fd59b5305b805d3a082294616bfd527e13fb8b461940e55c2",
+    "scene2_2_palette0.png": "e66eaf81c264fbe0a1f804264a4fa4e327817f1c8d57e44bcd3d44df54768945",
+    "scene2_2_palette1.png": "0903198c89880f9fd59b5305b805d3a082294616bfd527e13fb8b461940e55c2",
+    "scene3_0.png": "7f138a44ffbd2cc417f7b5b5f79f8595ed67c69934a0420ec89b1040324eeb8c",
+    "scene3_1.png": "1ac350a4c274ad267e51c3425befdabe6209d4ccf7b9503afef9f8c016a4ccfe",
+    "scene4_0.png": "7624adaf05a79d27b9302aa5e1648b5bbe82f67ec8db1df096e9755aaa7bce58",
+    "scene4_1.png": "563dc7f625d4b864e7b05841bae82c298aef50c78103be00e67e73102f1bfee2"
+  },
+  "ui_checked": [
+    "original artwork resource loading and fixed animation timing",
+    "102 credit lines / 20 pages / 7120 fixed frames",
+    "pending notices remain frozen behind ending",
+    "decline preserves prior save",
+    "real temporary-file creation failure restores FF and preserves prior save",
+    "accepted atomic JSON replacement and FF completion marker",
+    "title remains on finished-save read, flags7 unlocks extreme",
+    "bankruptcy skips credits/save and preserves prior save"
+  ],
+  "commands": [
+    "python tools/run_recovered_checks.py <Godot4.3>",
+    "PYTHONPATH=reference_sim python -m unittest discover -s reference_sim/tests -q"
+  ],
+  "android_build_created": false,
+  "android_device_tested": false,
+  "limits": [
+    "Original ending voices/BGM and original window textures are not connected; presentation boundaries are tagged.",
+    "JSON completion save is not the original 37-region payload or raw memory-card interchange.",
+    "No physical GPU/SPU/vsync verification; image composition preview is not an Android screenshot.",
+    "Existing ObjectDB exit warnings remain.",
+    "All-analysis integration is unfinished; no intermediate APK distributed."
+  ]
+}

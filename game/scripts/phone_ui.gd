@@ -570,6 +570,8 @@ func refresh() -> void:
 
 
 func _process(delta: float) -> void:
+    if main != null and main.ending_view != null:
+        return
     if notice.visible:
         _notice_left -= delta
         if _notice_left <= 0.0:
@@ -872,6 +874,8 @@ func _finish_notice() -> void:
 func _pump_notices() -> void:
     if main.simulation == null:
         return
+    if main.ending_view != null:
+        return
     var sim = main.simulation
     if _notice_source != sim.notifications:
         _notice_source = sim.notifications
@@ -955,6 +959,8 @@ func _show_event_notices() -> void:
 
 func _notice_text(event_type: String, details: Dictionary) -> String:
     match event_type:
+        "store_milestone":
+            return "店舗が%d店舗になりました！" % int(details.get("count", 0))
         "month_end_settlement":
             # Like the original's monthly report (収支, 町人口 and its change,
             # CONFIRMED_VISUAL video V03).

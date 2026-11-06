@@ -75,6 +75,11 @@ func play_theme(theme_id: String) -> void:
         _rendering[theme_id] = WorkerThreadPool.add_task(_render_theme.bind(theme_id))
 
 
+func stop_music() -> void:
+    current_theme = ""
+    _bgm_player.stop()
+
+
 # A render still running when the game closes is waited for, so the
 # worker never outlives the scripts it runs.
 func _exit_tree() -> void:

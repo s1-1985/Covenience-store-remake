@@ -39,6 +39,10 @@ func _ready() -> void:
     choices.custom_minimum_size.y = 48
     for label in ["初級", "中級", "上級", "極上"]:
         choices.add_item(label)
+    var limit := preload("res://scripts/domain/program_progression.gd").menu_limit(GameLaunchState.progress_flags)
+    choices.set_item_disabled(3, limit < 4)
+    if GameLaunchState.scenario_index >= limit:
+        GameLaunchState.scenario_index = 0
     choices.select(GameLaunchState.scenario_index)
     choices.item_selected.connect( func(index): GameLaunchState.scenario_index = index)
     $Panel / Margin / VBox.add_child(choices)
@@ -62,6 +66,16 @@ func _on_continue_pressed() -> void:
         return
     var saved = JSON.parse_string(FileAccess.get_file_as_string(SaveGameServiceScript.DEFAULT_SAVE_PATH))
     if saved is Dictionary:
+        if not saved.get("source_progress", {}) is Dictionary:
+            status_label.text = tr("No compatible save found")
+            return
+        var progress: Dictionary = saved.get("source_progress", {})
+        if int(progress.get("save_finished", 0)) == 255:
+            GameLaunchState.progress_flags = int(progress.get("flags", 0)) & 255
+            var choices = find_child("ScenarioChoice", true, false)
+            choices.set_item_disabled(3, preload("res://scripts/domain/program_progression.gd").menu_limit(GameLaunchState.progress_flags) < 4)
+            status_label.text = "クリア結果を読み込みました。"
+            return
         var ids := ["town0001", "town0002", "town0003", "townps"]
         for index in ids.size():
             if str(saved.get("scenario_id", "")) == "ps1-%s-recovered" % ids[index]:

@@ -9,6 +9,8 @@ for script, args in [
     ('source_people_smoke.gd', []),
     ('source_notifications_smoke.gd', []),
     ('source_notifications_ui_smoke.gd', ['--', '--android-preview']),
+    ('source_progression_smoke.gd', []),
+    ('source_ending_ui_smoke.gd', ['--', '--android-preview']),
     ('operating_statement_smoke.gd', []),
     ('android_preview_smoke.gd', ['--', '--android-preview']),
     ('recovered_runtime_smoke.gd', []),
