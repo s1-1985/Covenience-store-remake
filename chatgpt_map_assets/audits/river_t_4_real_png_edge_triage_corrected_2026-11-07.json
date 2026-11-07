@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-07",
+  "issue": 232,
+  "repository": "s1-1985/Covenience-store-remake",
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "corrects": "chatgpt_map_assets/audits/river_t_4_real_png_edge_triage_2026-11-07.json",
+  "correction_reason": "Prior ad-hoc DEFLATE decoder had an incorrect dynamic Huffman code-length permutation (omitted symbols 13 and 2), causing false backref/inflate-limit failures on compressed native PNGs. This report replaces its diagnostic conclusions; original audit remains untouched per no-overwrite rule.",
+  "scope": "Four real composited river T-junction PNGs plus four reference PNGs",
+  "method": "Read real GitHub PNG bytes; CRC32 on every PNG chunk, zlib Adler32, corrected DEFLATE full inflate, PNG row unfilter, 64x64 RGBA reconstruction and CRC32; 24px nearest-neighbor RGB edge MAE against cross and straight reference edges.",
+  "counts": {
+    "expected_pngs": 8,
+    "decoded_pngs": 8,
+    "git_sha_matches": 8,
+    "failed": 0,
+    "t_edges_checked": 16,
+    "connected_edges_checked": 12,
+    "closed_edges_checked": 4
+  },
+  "assets": [
+    {
+      "id": "river_nes",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_nes.png",
+      "expected": "9ac793f2d6aab8299e2defd37c40295e1a911c65",
+      "mask": 7,
+      "sha": "9ac793f2d6aab8299e2defd37c40295e1a911c65",
+      "sha_match": true,
+      "bytes": 16792,
+      "chunks": 4,
+      "decoded_crc32": "0e529e7b",
+      "filters": [
+        0
+      ]
+    },
+    {
+      "id": "river_new",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_new.png",
+      "expected": "44b8ccfb39b5918d9e31a757879166e8211b8e27",
+      "mask": 11,
+      "sha": "44b8ccfb39b5918d9e31a757879166e8211b8e27",
+      "sha_match": true,
+      "bytes": 16792,
+      "chunks": 4,
+      "decoded_crc32": "13f584c1",
+      "filters": [
+        0
+      ]
+    },
+    {
+      "id": "river_nsw",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_nsw.png",
+      "expected": "c2a8fc39b47814a01a0d87ce8b204afc35f034d0",
+      "mask": 13,
+      "sha": "c2a8fc39b47814a01a0d87ce8b204afc35f034d0",
+      "sha_match": true,
+      "bytes": 16792,
+      "chunks": 4,
+      "decoded_crc32": "8edd3bd0",
+      "filters": [
+        0
+      ]
+    },
+    {
+      "id": "river_esw",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_esw.png",
+      "expected": "1ee87978f16f1ef927a27d4d361c4599c095ff9f",
+      "mask": 14,
+      "sha": "1ee87978f16f1ef927a27d4d361c4599c095ff9f",
+      "sha_match": true,
+      "bytes": 16792,
+      "chunks": 4,
+      "decoded_crc32": "4dcaa723",
+      "filters": [
+        0
+      ]
+    },
+    {
+      "id": "river_nesw",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_cross.png",
+      "expected": "5b9f407898f91c3412fee847aa74f798a4ce1ae5",
+      "mask": 15,
+      "sha": "5b9f407898f91c3412fee847aa74f798a4ce1ae5",
+      "sha_match": true,
+      "bytes": 9197,
+      "chunks": 4,
+      "decoded_crc32": "4dbd22d3",
+      "filters": [
+        1,
+        4,
+        2
+      ]
+    },
+    {
+      "id": "river_ns",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ns.png",
+      "expected": "a5c0b606ce3f2653e3f0c3532eaa52211af59a53",
+      "mask": 5,
+      "sha": "a5c0b606ce3f2653e3f0c3532eaa52211af59a53",
+      "sha_match": true,
+      "bytes": 8912,
+      "chunks": 4,
+      "decoded_crc32": "cd328778",
+      "filters": [
+        1,
+        4,
+        2
+      ]
+    },
+    {
+      "id": "river_ew",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ew.png",
+      "expected": "e983dec2d4a21efaba521f490d9ad87bf750ba3a",
+      "mask": 10,
+      "sha": "e983dec2d4a21efaba521f490d9ad87bf750ba3a",
+      "sha_match": true,
+      "bytes": 9227,
+      "chunks": 4,
+      "decoded_crc32": "13820131",
+      "filters": [
+        1,
+        4,
+        2
+      ]
+    },
+    {
+      "id": "river_ne",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ne.png",
+      "expected": "6d8f54d38e461c48e940d8ac9de04b8d608b828f",
+      "mask": 3,
+      "sha": "6d8f54d38e461c48e940d8ac9de04b8d608b828f",
+      "sha_match": true,
+      "bytes": 9154,
+      "chunks": 4,
+      "decoded_crc32": "bbd5a9cc",
+      "filters": [
+        1,
+        4,
+        2
+      ]
+    }
+  ],
+  "edge_checks": [
+    {
+      "id": "river_nes",
+      "side": "N",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 4.208,
+      "mae_vs_straight_opposite_edge_24px": 11.125
+    },
+    {
+      "id": "river_nes",
+      "side": "E",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 0,
+      "mae_vs_straight_opposite_edge_24px": 19.528
+    },
+    {
+      "id": "river_nes",
+      "side": "S",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 3.556,
+      "mae_vs_straight_opposite_edge_24px": 12.611
+    },
+    {
+      "id": "river_nes",
+      "side": "W",
+      "connected": false,
+      "mae_vs_cross_same_side_24px": 31.514,
+      "mae_vs_straight_opposite_edge_24px": 37.167
+    },
+    {
+      "id": "river_new",
+      "side": "N",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 0,
+      "mae_vs_straight_opposite_edge_24px": 12.833
+    },
+    {
+      "id": "river_new",
+      "side": "E",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 13.333,
+      "mae_vs_straight_opposite_edge_24px": 8.333
+    },
+    {
+      "id": "river_new",
+      "side": "S",
+      "connected": false,
+      "mae_vs_cross_same_side_24px": 33.083,
+      "mae_vs_straight_opposite_edge_24px": 37.083
+    },
+    {
+      "id": "river_new",
+      "side": "W",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 13.694,
+      "mae_vs_straight_opposite_edge_24px": 9.847
+    },
+    {
+      "id": "river_nsw",
+      "side": "N",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 8.653,
+      "mae_vs_straight_opposite_edge_24px": 7.264
+    },
+    {
+      "id": "river_nsw",
+      "side": "E",
+      "connected": false,
+      "mae_vs_cross_same_side_24px": 32.208,
+      "mae_vs_straight_opposite_edge_24px": 37.403
+    },
+    {
+      "id": "river_nsw",
+      "side": "S",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 8.944,
+      "mae_vs_straight_opposite_edge_24px": 7.167
+    },
+    {
+      "id": "river_nsw",
+      "side": "W",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 0,
+      "mae_vs_straight_opposite_edge_24px": 19.347
+    },
+    {
+      "id": "river_esw",
+      "side": "N",
+      "connected": false,
+      "mae_vs_cross_same_side_24px": 32.014,
+      "mae_vs_straight_opposite_edge_24px": 37.125
+    },
+    {
+      "id": "river_esw",
+      "side": "E",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 5.889,
+      "mae_vs_straight_opposite_edge_24px": 16.667
+    },
+    {
+      "id": "river_esw",
+      "side": "S",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 0,
+      "mae_vs_straight_opposite_edge_24px": 14.222
+    },
+    {
+      "id": "river_esw",
+      "side": "W",
+      "connected": true,
+      "mae_vs_cross_same_side_24px": 6.375,
+      "mae_vs_straight_opposite_edge_24px": 14.972
+    }
+  ],
+  "failures": [],
+  "acceptance": "NUMERIC_DIAGNOSTICS_ONLY_NOT_ART_ACCEPTED",
+  "limitations": [
+    "RGB MAE includes grass/background; no aesthetic seam threshold defined",
+    "Closed-side comparison with cross is only diagnostic, not proof of correct branch termination",
+    "24px simulation is not Godot rendering",
+    "No original PS1 fidelity or regression test",
+    "No issue checkbox eligible for completion"
+  ]
+}
