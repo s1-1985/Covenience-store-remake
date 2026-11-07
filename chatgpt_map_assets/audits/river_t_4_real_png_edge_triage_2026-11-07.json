@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-07",
+  "issue": 232,
+  "repository": "s1-1985/Covenience-store-remake",
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "scope": "Four real composited river T-junction candidate PNGs and four reference PNGs. No production promotion.",
+  "method": "GitHub fetch of real base64 PNG bytes; chunk CRC32, zlib Adler32, DEFLATE full inflate, PNG row filter reconstruction, decoded 64x64 RGBA CRC32; 24px nearest-neighbor RGB edge mean absolute error against cross and straight reference edges.",
+  "counts": {
+    "expected_pngs": 8,
+    "decoded_pngs": 4,
+    "git_sha_matches": 4,
+    "failed": 4,
+    "t_edges_checked": 0,
+    "connected_edges_checked": 0,
+    "closed_edges_checked": 0
+  },
+  "assets": [
+    {
+      "id": "river_nes",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_nes.png",
+      "expected": "9ac793f2d6aab8299e2defd37c40295e1a911c65",
+      "mask": 7,
+      "sha": "9ac793f2d6aab8299e2defd37c40295e1a911c65",
+      "sha_match": true,
+      "bytes": 16792,
+      "chunks": 4,
+      "decoded_crc32": "0e529e7b",
+      "filters": [
+        0
+      ]
+    },
+    {
+      "id": "river_new",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_new.png",
+      "expected": "44b8ccfb39b5918d9e31a757879166e8211b8e27",
+      "mask": 11,
+      "sha": "44b8ccfb39b5918d9e31a757879166e8211b8e27",
+      "sha_match": true,
+      "bytes": 16792,
+      "chunks": 4,
+      "decoded_crc32": "13f584c1",
+      "filters": [
+        0
+      ]
+    },
+    {
+      "id": "river_nsw",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_nsw.png",
+      "expected": "c2a8fc39b47814a01a0d87ce8b204afc35f034d0",
+      "mask": 13,
+      "sha": "c2a8fc39b47814a01a0d87ce8b204afc35f034d0",
+      "sha_match": true,
+      "bytes": 16792,
+      "chunks": 4,
+      "decoded_crc32": "8edd3bd0",
+      "filters": [
+        0
+      ]
+    },
+    {
+      "id": "river_esw",
+      "path": "chatgpt_map_assets/generated/river_directional_2026-10-30/river_esw.png",
+      "expected": "1ee87978f16f1ef927a27d4d361c4599c095ff9f",
+      "mask": 14,
+      "sha": "1ee87978f16f1ef927a27d4d361c4599c095ff9f",
+      "sha_match": true,
+      "bytes": 16792,
+      "chunks": 4,
+      "decoded_crc32": "4dcaa723",
+      "filters": [
+        0
+      ]
+    },
+    {
+      "id": "river_nesw",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_cross.png",
+      "error": "Error: backref"
+    },
+    {
+      "id": "river_ns",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ns.png",
+      "error": "Error: backref"
+    },
+    {
+      "id": "river_ew",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ew.png",
+      "error": "Error: inflate limit"
+    },
+    {
+      "id": "river_ne",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ne.png",
+      "error": "Error: inflate limit"
+    }
+  ],
+  "edge_checks": [],
+  "failures": [
+    {
+      "id": "river_nesw",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_cross.png",
+      "error": "Error: backref"
+    },
+    {
+      "id": "river_ns",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ns.png",
+      "error": "Error: backref"
+    },
+    {
+      "id": "river_ew",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ew.png",
+      "error": "Error: inflate limit"
+    },
+    {
+      "id": "river_ne",
+      "path": "chatgpt_map_assets/generated/native_copies_2026-10-15/river/map_river_ne.png",
+      "error": "Error: inflate limit"
+    }
+  ],
+  "acceptance": "NUMERIC_DIAGNOSTICS_ONLY_NOT_ART_ACCEPTED",
+  "limitations": [
+    "A low RGB MAE is not proof of seamless river banks, and a high MAE includes surrounding grass and texture",
+    "Closed-side comparisons to cross are diagnostic only; no original-game art acceptance",
+    "24px is simulated nearest-neighbor, not a Godot rendering",
+    "No main or Claude branch writes; no existing files overwritten",
+    "No issue checkbox can be checked from this subset"
+  ]
+}
