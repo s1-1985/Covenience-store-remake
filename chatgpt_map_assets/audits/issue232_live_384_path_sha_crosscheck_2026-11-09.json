@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-11-09",
+  "issue": 232,
+  "registry": "chatgpt_map_assets/manifests/issue232_unified_218_readonly_registry_2026-11-08.json",
+  "registry_blob_sha": "4a92724aa129261dbb4f77e715e52f058fd74231",
+  "method": "Live GitHub Contents API directory listings: exact path and blob SHA comparison, no file writes to source",
+  "source_refs": [
+    "main",
+    "chatgpt/map-assets-isolated-20260922"
+  ],
+  "result": "PASS_GIT_OBJECT_METADATA_ONLY",
+  "verified_references": 384,
+  "matched": 384,
+  "mismatched": 0,
+  "groups": {
+    "asset": {
+      "total": 218,
+      "matched": 218,
+      "details": {
+        "building": 52,
+        "terrain": 121,
+        "connection_candidate": 45
+      }
+    },
+    "native_source": {
+      "total": 121,
+      "matched": 121
+    },
+    "direction_source": {
+      "total": 45,
+      "matched": 45
+    }
+  },
+  "directory_listing_count": 14,
+  "verified_directories": {
+    "main": [
+      [
+        "assets/raw/conveni_map_assets_v2/sprites",
+        52
+      ],
+      [
+        "assets/raw/conveni_map_assets_v2/terrain/tiles_64",
+        121
+      ],
+      [
+        "assets/raw/conveni_map_assets_v2/terrain/source_crops",
+        121
+      ]
+    ],
+    "isolated": [
+      [
+        "chatgpt_map_assets/generated/rail_directional_2026-10-29",
+        7
+      ],
+      [
+        "chatgpt_map_assets/generated/directional_2026-10-24/rail",
+        2
+      ],
+      [
+        "chatgpt_map_assets/generated/native_copies_2026-10-15/rail",
+        5
+      ],
+      [
+        "chatgpt_map_assets/candidates/rail_endpoints_and_t_2026-10-26",
+        6
+      ],
+      [
+        "chatgpt_map_assets/generated/river_directional_2026-10-30",
+        10
+      ],
+      [
+        "chatgpt_map_assets/generated/native_copies_2026-10-15/river",
+        5
+      ],
+      [
+        "chatgpt_map_assets/generated/directional_2026-10-24/river",
+        2
+      ],
+      [
+        "chatgpt_map_assets/generated/directional_2026-10-24/road",
+        2
+      ],
+      [
+        "chatgpt_map_assets/generated/directional_2026-10-16/road",
+        4
+      ],
+      [
+        "chatgpt_map_assets/generated/native_copies_2026-10-15/road",
+        6
+      ],
+      [
+        "chatgpt_map_assets/generated/directional_2026-10-22/road",
+        3
+      ]
+    ]
+  },
+  "validation_details": "Compared each manifest record path and expected Git blob SHA with returned live directory listing entries. Each of 218 asset entries, 121 terrain native source entries, and 45 directional original source entries matched.",
+  "limitations": [
+    "Git Blob SHA metadata match is not equivalent to independently decoding PNG pixel data",
+    "The companion offline Python verifier is syntax-checked and synthetic PNG CRC tested, but has NOT run against a full local repository checkout",
+    "All source-original PS1 matches, visual acceptance, river seams, cross-type connections, Godot rendering and regression testing remain unverified",
+    "No issue checklist item is satisfied by this metadata-only verification"
+  ]
+}
