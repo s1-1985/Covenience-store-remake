@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "date_utc": "2026-11-10",
+  "issue": 232,
+  "status": "RUNTIME_PNG_CRC_AND_TOPOLOGY_AUDIT_NOT_PRODUCTION_ACCEPTED",
+  "source_refs": {
+    "runtime": "main",
+    "candidate": "chatgpt/map-assets-isolated-20260922"
+  },
+  "source_blob_shas": {
+    "town_view": "74388f9190d9e039fd0a1567a9cdf02d503249d1",
+    "vertical_slice": "b5c4323412a165ac445bf529da4c915ff7b41443",
+    "unified_registry": "4a92724aa129261dbb4f77e715e52f058fd74231",
+    "connection_registry": "6ef146fd402be6a9789466e905419f4ed3eaf28e"
+  },
+  "checks": {
+    "runtime_png_files": 32,
+    "png_signature_crc_all_chunks_ihdr_iend_passed": 32,
+    "png_full_pixel_decode_performed": false,
+    "runtime_sprite_ids_referenced": 32,
+    "missing_runtime_sprite_ids": [],
+    "runtime_sha_matches_unified_registry": 31,
+    "runtime_sha_mismatches": [],
+    "runtime_sprite_ids_not_in_218_registry": [
+      "map_blue_hq"
+    ],
+    "guide_building_placements": 142,
+    "guide_building_footprint_mismatches": 0,
+    "directional_candidate_masks": {
+      "road": {
+        "count": 15,
+        "missing": [],
+        "duplicates": []
+      },
+      "rail": {
+        "count": 15,
+        "missing": [],
+        "duplicates": []
+      },
+      "river": {
+        "count": 15,
+        "missing": [],
+        "duplicates": []
+      }
+    },
+    "guide_map_dimensions_tiles": [
+      41,
+      35
+    ],
+    "guide_road_tiles": 174,
+    "guide_road_direction_mask_counts": {
+      "5": 71,
+      "7": 1,
+      "10": 94,
+      "11": 2,
+      "13": 1,
+      "14": 1,
+      "15": 4
+    },
+    "guide_road_curve_tiles": 0,
+    "guide_railway_crossings": 3,
+    "renderer_corner_masks_fall_back_to_ew": [
+      3,
+      6,
+      9,
+      12
+    ],
+    "candidate_45_integrated_into_main_renderer": false,
+    "godot_executed": false,
+    "game_regression_executed": false
+  },
+  "runtime_pngs": [
+    {
+      "id": "bookstore",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "8d9c0b2496e79f8a132498a83fc7dba1641e607a",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "clothing_store",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "268c9bcfb38303d64c66a427592630fb2ff31ee1",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "company_small_a",
+      "width_px": 128,
+      "height_px": 128,
+      "git_blob_sha": "a6843f57c070e43de06f5f579db6b6325d6e6e95",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "company_small_b",
+      "width_px": 128,
+      "height_px": 128,
+      "git_blob_sha": "a95a55bf105d0e934c7ddf8c6dfb476b11ec271d",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "company_small_c",
+      "width_px": 128,
+      "height_px": 128,
+      "git_blob_sha": "cc4251889e0d3476db5f18deb4d8768b48b4c00c",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "electronics_store",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "4e37fff2e9d078c0fa1c2fa209c28fb3036b5e23",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "fast_food_a",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "96a056d388104e9b80c72aa23089a0968b2b83ca",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "fast_food_b",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "e7f01676f8be33c965341712605c071d06761cc7",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "game_center",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "f7721facd2eb11eb4040c32900f27cac23cb9897",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "house_medium_a",
+      "width_px": 128,
+      "height_px": 128,
+      "git_blob_sha": "fb90b4c53fa19a817caa850bbf7ed64b62f7e408",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "house_medium_b",
+      "width_px": 128,
+      "height_px": 128,
+      "git_blob_sha": "49f3ccfc1708b30cc150186657d49213a7312f04",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "house_small_a",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "500724f2f21bd90e793a55524aab4662c5e96cf4",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "house_small_b",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "2d570a54d343f76745b569f41938d4d7122b3903",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "house_small_c",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "72efaf0f4aa0032f9ec1c64e620c957fa72d65dc",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "izakaya_a",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "5e0364600575fc808d7e51b1bff27763dfd887b1",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "izakaya_b",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "7001f7cab1465f73e66350b01736eadf4c7c6979",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "izakaya_c",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "7990e715fce86245261d19e5519202c7e9051d20",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_blue_hq",
+      "width_px": 47,
+      "height_px": 45,
+      "git_blob_sha": "e1f8e6ad38705ec4f4c91ce56082cbcda240fbd9",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_concrete",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "307fdbebccadfb270f6459e768fa7fc9791a79a1",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_crossing_basic",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "82488f0555d8888e3daf7024055aedc922456ecb",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_dirt_sparse",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "d7f0abbc0c966d0f357b431293791a39b7e97f56",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_grass_plain",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "64c5e59094dceb7911f9d9faa1466070ae66a09d",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_rail_ew",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_road_cross",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "3fc93b6e966feb2149d2bbbceb543982a2325aa8",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_road_end_s",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "cbc28b9fba5e7c8b2cfe94f530ba8531cfdf5f9e",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_road_ew",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "96dc9c5f90d134db6096295d649ee88d45b18f3a",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_road_ns",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "360c16bfe0c0a874af1ffac34e42eee51ce0e7c1",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_road_t_wes",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "4e7cb7705f7e4f41f5a031c41b2f5ee8c7b444cb",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "map_trees_sparse",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "223177c2e19160086747676e9065444aea98c4b1",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "ramen_shop",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "5274f680cc565ac492c7eacb8648ffe7973494ae",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "soba_shop",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "0751959adeb0ddcfcc108a294234c34756fb0edb",
+      "crc_all_chunks": "PASS"
+    },
+    {
+      "id": "toy_store",
+      "width_px": 64,
+      "height_px": 64,
+      "git_blob_sha": "2d5815fd7d26b3bc7945082c36a1232b9771b5a0",
+      "crc_all_chunks": "PASS"
+    }
+  ],
+  "findings": [
+    "All 32 main/game/assets/town PNGs were individually fetched as base64 and their PNG signature, each chunk CRC, IHDR dimensions, and IEND/trailing bytes checked in this run. This is NOT zlib decompression or all-pixel decoding.",
+    "All 32 runtime sprite IDs referenced by the current guide-map renderer/config exist. 31 are identical Git blobs to the 218 registry; map_blue_hq is a runtime-only store marker, 47x45 pixels displayed in a 2x2-tile rect.",
+    "All 142 guide building placements match their registered footprint. Guide map uses only 7 road masks and contains zero road corners; it has 3 railway crossings.",
+    "The existing renderer's two-link branch maps every non-N/S two-link road tile to map_road_ew, so masks 3,6,9,12 (the four curves) would render incorrectly on future maps. Current guide map does not exercise these masks.",
+    "The 45-candidate registry covers masks 1..15 for road, rail, river, but those candidate PNGs are NOT wired into the main game. The game currently handles R roads, T railway and a basic crossing, not river or general 15-mask rail/river topology.",
+    "A separate candidate-only GDScript mask lookup was added under chatgpt_map_assets/tools/; it has NOT been run in Godot or merged into game code."
+  ],
+  "limitations": [
+    "No original PS1 visual fidelity verification; no image visual acceptance or alpha requirement audit",
+    "No full pixel decode or seam comparison in this run",
+    "No Godot binary in execution environment; no Godot render or regression run",
+    "Do not check issue #232 tasks complete based on this audit"
+  ]
+}
