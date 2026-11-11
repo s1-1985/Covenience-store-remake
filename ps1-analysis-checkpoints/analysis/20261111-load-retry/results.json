@@ -1,0 +1,114 @@
+{
+  "all_passed": true,
+  "total": 2,
+  "cases": [
+    {
+      "case": "repeat-corrupt",
+      "passed": true,
+      "attempts": 2,
+      "confirmation_sessions": 1,
+      "native_results": [
+        -1,
+        -1
+      ],
+      "preserved_live_regions_per_attempt": 37,
+      "native_read_chunks": 1784,
+      "native_decodes": 0,
+      "messages": [
+        498,
+        498
+      ],
+      "external_card_replacement": false,
+      "clock_after": 18966,
+      "cash_after": [
+        99004409,
+        153137220
+      ],
+      "original_live_clock": 18960,
+      "restored_saved_clock": null,
+      "ram_sha256": "8c5997416746ac590f7ea1cc920227fc050186fb8c43621f369ce5d4107c70f1",
+      "confirmation": [
+        {
+          "before": 0,
+          "directions": 32,
+          "buttons": 32,
+          "selected": 0,
+          "action": "attempt",
+          "attempt": -1,
+          "terminal": false
+        },
+        {
+          "before": 0,
+          "directions": 32,
+          "buttons": 32,
+          "selected": 0,
+          "action": "attempt",
+          "attempt": -1,
+          "terminal": false
+        },
+        {
+          "before": 0,
+          "directions": 64,
+          "buttons": 64,
+          "selected": 0,
+          "action": "cancel",
+          "attempt": null,
+          "terminal": true
+        }
+      ]
+    },
+    {
+      "case": "replace-with-valid",
+      "passed": true,
+      "attempts": 2,
+      "confirmation_sessions": 1,
+      "native_results": [
+        -1,
+        0
+      ],
+      "preserved_live_regions_per_attempt": 37,
+      "native_read_chunks": 1784,
+      "native_decodes": 1,
+      "messages": [
+        498,
+        489
+      ],
+      "external_card_replacement": true,
+      "clock_after": 17646,
+      "cash_after": [
+        99005641,
+        153131796
+      ],
+      "original_live_clock": 18960,
+      "restored_saved_clock": 17640,
+      "ram_sha256": "994e4969d9c1ac6f911cf936078e82178157507f28b44f729c1ec00d6b581df5",
+      "confirmation": [
+        {
+          "before": 0,
+          "directions": 32,
+          "buttons": 32,
+          "selected": 0,
+          "action": "attempt",
+          "attempt": -1,
+          "terminal": false
+        },
+        {
+          "before": 0,
+          "directions": 32,
+          "buttons": 32,
+          "selected": 0,
+          "action": "attempt",
+          "attempt": 0,
+          "terminal": true
+        }
+      ]
+    }
+  ],
+  "source_snapshot": "TOWN0001-ci-main-20-single",
+  "limits": [
+    "Card replacement is a controlled modeled external event before the second attempt, not original BIOS/SIO execution.",
+    "The original UI, card routines, checksum and decoder execute unchanged; the driver supplies raw input streams.",
+    "The transfer map for replacement covers the final card attempt; the complete logical I/O trace covers both attempts.",
+    "Paired parents share Unicorn/native child routines and existing external adapters. Diagnostic branches do not replace natural main-20."
+  ]
+}

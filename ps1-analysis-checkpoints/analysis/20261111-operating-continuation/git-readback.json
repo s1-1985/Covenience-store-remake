@@ -1,0 +1,232 @@
+{
+  "commit": "f67cccd53c8d93fa2a2d21d8421fec77d7562f74",
+  "all_passed": true,
+  "files": 32,
+  "bytes": 13204609,
+  "items": [
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "size": 3722,
+      "sha": "3e03b70a777115843bca211e48b90600e685ea09",
+      "sha256": "be63580aeae974ada0558c4f25ad339064c60a997c2aceb68c1dd300396f4f35"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-ANALYSIS.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/LATEST-ANALYSIS.json",
+      "size": 812,
+      "sha": "77dbfd76e203a6e332bd59183d95510ad5799baf",
+      "sha256": "962e87286fe0dbcce7b6c2706375703ff6cb42621d6a50a6c76a9cadafa33f63"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/git-readback.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/git-readback.json",
+      "size": 20181,
+      "sha": "436fe82ccb8185bd1eb887d85f81cd247ababf80",
+      "sha256": "a5a441d58fe13b1f08d84f538b5f036fc051f3315cd910599e61d42635e175fc"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/README.md",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/README.md",
+      "size": 4271,
+      "sha": "eff76f97a336d63e28061b97a692755a5cc21c7e",
+      "sha256": "e5cb0e1bee05b6b08fad1efd5901d22e7dfb945ee29d34eb1c281cacf973df73"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-18-single.audit.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-18-single.audit.json",
+      "size": 3125,
+      "sha": "28224ce7919d9d18da736f42613bbf8b5be3e838",
+      "sha256": "12fbb9a10357079bdda39dd60114b56093c003f31836cfb4ad341fdbb4a096a7"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-18-single.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-18-single.log",
+      "size": 598,
+      "sha": "f234a99269860e68584f0281ddfd7e5d337ce6a8",
+      "sha256": "70e6c8f4a67da5c4ce79f1f3f93e06d8cb59f7cc6a8536917b4d2135233f7d8a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-19-single.audit.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-19-single.audit.json",
+      "size": 3140,
+      "sha": "a6ab26fd5421c6b2ee97578b361a2ad8915ad032",
+      "sha256": "f272dfb28b10fa9a2def44b99c06c649a5c984fcd3c5b4027d8968a7e705f6e4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-19-single.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-19-single.log",
+      "size": 598,
+      "sha": "3e9f54c7d68126816fd1b4e1e445f0a118e0f4b0",
+      "sha256": "921b855deccf721aece12baa53326a5c0919b4d12b44096f08f8424f44c397fe"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-20-single.audit.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-20-single.audit.json",
+      "size": 4006,
+      "sha": "597260062f7f68308437eef9492d760ca38a7adf",
+      "sha256": "7ec54a4d4090594076962ca833d71d961b8aae4f2992f660ded49322a71f9c44"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-20-single.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/TOWN0001-ci-main-20-single.log",
+      "size": 598,
+      "sha": "b21ee9f761af69e7c8dd43868ee0bc55468fcf76",
+      "sha256": "58136872d688535e3594a332ee14e1b87484ac24bf05077788f1c4e8bacb821f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/continue-main.py",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/continue-main.py",
+      "size": 7482,
+      "sha": "8f69f3f6d52e855833330f37ab0746b7dcaccc43",
+      "sha256": "6676d81be7c41f281f7ec189b55286a0050beec9c4d9a2f41947cd184f361e21"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/TOWN0001-ci-main-18-single-progress.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/TOWN0001-ci-main-18-single-progress.json",
+      "size": 233636,
+      "sha": "b8ae8d2cf1c2ac6d9d22e124638a288b4d0b0a01",
+      "sha256": "04c2ef269f71522c8b400070aa845be93e940c4d7827a2effec070c7f966eda4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/TOWN0001-ci-main-19-single-progress.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/TOWN0001-ci-main-19-single-progress.json",
+      "size": 233636,
+      "sha": "4506625dd40db94027029f0813de135ba25e9ca1",
+      "sha256": "cce4ee05f74430d384ee485726b79bec37ae9397b04c27da10e199648185dda8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/TOWN0001-ci-main-20-single-progress.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/TOWN0001-ci-main-20-single-progress.json",
+      "size": 233636,
+      "sha": "5e72bfd3ab581671c47afbd69d646aeb4bf8428c",
+      "sha256": "f685d45d9aecbbe50abbdd4170ab444c2126ff03908bf7be8a27539e41d9da52"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/opened-snapshot-TOWN0001-ci-main-18-single-verification-20261103.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/opened-snapshot-TOWN0001-ci-main-18-single-verification-20261103.json",
+      "size": 2116473,
+      "sha": "2f31cf56b815623997d080a58bf43936c1675c33",
+      "sha256": "f3b20dae351e8681a05a1ba4f4f3cee452f7ad9784aea23d2dfe2fa62e779e18"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/opened-snapshot-TOWN0001-ci-main-19-single-verification-20261103.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/opened-snapshot-TOWN0001-ci-main-19-single-verification-20261103.json",
+      "size": 2139392,
+      "sha": "636d5714466204935a0f70b1d905a90878ca766d",
+      "sha256": "09c54a11cf7167d05dd4365389cd63325dd538e98b21c67698557dadf4674aba"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/opened-snapshot-TOWN0001-ci-main-20-single-verification-20261103.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/opened-snapshot-TOWN0001-ci-main-20-single-verification-20261103.json",
+      "size": 2215991,
+      "sha": "a6523a364cb5a674b383adb76e8f53e7df0581bf",
+      "sha256": "6f1af0e114263793e7ed6b4ad6ece66fcf037dfdb9e4abc1e02a1fa57a803fd9"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-18-single.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-18-single.json",
+      "size": 1034158,
+      "sha": "ad90f190e4ac49f3fed4a3fdd99a31d923c9cd2d",
+      "sha256": "77d90b6b89c3a8e5c91cc9e49988e54af014bb8bdfe583ccccfa40a1ba542996"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-18-single.ram.zlib",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-18-single.ram.zlib",
+      "size": 508058,
+      "sha": "eff9fc457d6ed1b3cb76d726e1cac7c3a52fcd16",
+      "sha256": "a15e0de84e5418fb83c3272e17c926a2c9b371db49c5f0594d951e5f5f3a1214"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-19-single.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-19-single.json",
+      "size": 1034176,
+      "sha": "e06b1c96a35dcdf88c87ed73c27c9ccc521fbcd8",
+      "sha256": "f15f112c549d2bb7c1a5a2abc5814eecb2e513f0294672bb7f4cef68af887196"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-19-single.ram.zlib",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-19-single.ram.zlib",
+      "size": 508155,
+      "sha": "fd65b98d4af2bad4d343c893cf22c93e09c8a968",
+      "sha256": "6be55ef9cde34f022cd82fa7d65f8ddebe3ee7d4c0535312a6d5fee120cbceaf"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-20-single.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-20-single.json",
+      "size": 1034160,
+      "sha": "ecf39effba52b83d0f14e3261f57ac9119e86180",
+      "sha256": "fec69f2453d959dc346f0542032d3da4e1f6cd27a259ee790097c0081a277259"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-20-single.ram.zlib",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-20-single.ram.zlib",
+      "size": 507804,
+      "sha": "d3589025f6db6e0b101cc33f0c27c4cbe1059124",
+      "sha256": "b4da6a5df9f45a6771b842f4a88689f6a56ba9105cf24699c5a83e3e37118ba7"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/long-continuation-status.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/long-continuation-status.json",
+      "size": 12755,
+      "sha": "4a4528922f00a9dd311ee4720a115f31de92382f",
+      "sha256": "54a4953f9c8913b6e42f0bf5273f7e289373044aeb3506911320a67d3a90a367"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/prepare_inputs.py",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/prepare_inputs.py",
+      "size": 1003,
+      "sha": "b1ff64e97625189bbfeb543391549bb0990d6128",
+      "sha256": "df2a5a267270ba09be048585ca2fd1b38cdab61030c5aa8386ae580ffdda5a3b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/TOWN0001-restore-check-20261111-single-progress.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/TOWN0001-restore-check-20261111-single-progress.json",
+      "size": 2523,
+      "sha": "509a9146d29915c827d919150b2bb12132ff87ee",
+      "sha256": "fe8e0d518d6ae90c1a853a0e7cdaeb58b8cd7ff72da6513605c3133cff1379ac"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/TOWN0001-restore-check-20261111-single.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/TOWN0001-restore-check-20261111-single.json",
+      "size": 803080,
+      "sha": "3ea342382d0bcedb8e8dfa21dcfe40bf9b102819",
+      "sha256": "8dc796f213a373ec3b04c272edd21812c5f7fc2addb60972186e958a9ceeb1b2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/TOWN0001-restore-check-20261111-single.ram.zlib",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/TOWN0001-restore-check-20261111-single.ram.zlib",
+      "size": 507869,
+      "sha": "0bea5455056a9e9ebe38e22bde5d169b1626b29b",
+      "sha256": "22d75932d7b71ef4dfe8d0c12353b9f451de2c0d2ee266b9f5e790a60a097889"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/opened-snapshot-TOWN0001-restore-check-20261111-single-verification-20261103.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/opened-snapshot-TOWN0001-restore-check-20261111-single-verification-20261103.json",
+      "size": 27781,
+      "sha": "a5737bff5876f11db9497f7d54856d384c16f826",
+      "sha256": "3653400cf3f2580b4eaa21f86803a28a34131128a3ddbeae1fac81c82882b410"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/restore-check-20261111.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/restore-check-20261111.log",
+      "size": 433,
+      "sha": "24eec620f4f7f3717b8598e3afb3e872712f7245",
+      "sha256": "a5a66a7446d68cc8e46e2a1ad331fdac68feef6a285ed08454545a9bc62b9ad1"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/restore-check-play.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/restore-check-play.log",
+      "size": 201,
+      "sha": "2ed8253237a390f281a97d8c3eb1c7c41e5b0c16",
+      "sha256": "906d8c44e2450c6ea10f3612f997e6365ff54ed892b4576d9be1e1d24bbd44d0"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/results.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-operating-continuation/restore-check/results.json",
+      "size": 1156,
+      "sha": "8a6d29536da4e6427661fbf235ef6f761f9e12f8",
+      "sha256": "6cad5030642729d5b6a98be0661da1ebdf33ce3ac745726ca4e2b95dd654f82e"
+    }
+  ]
+}

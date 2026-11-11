@@ -1,0 +1,17 @@
+--- load_read_control_20261030.py
++++ retry_load_monitor.py
+@@ -53,12 +53,12 @@
+             if a==0x80051524:
+                 assert self.active is None
+                 status=statuses[min(len(self.checks),len(statuses)-1)]
+-                expected,result=policy(status,read_status,checksum_valid)
++                validity=checksum_valid[min(len(self.checks),len(checksum_valid)-1)] if isinstance(checksum_valid,list) else checksum_valid;expected,result=policy(status,read_status,validity)
+                 self.active=[]
+                 def finish():
+                     assert self.active==expected,('51524 calls',self.active,expected)
+                     actual=i32(z.reg_read(UC_MIPS_REG_V0));assert actual==result,(actual,result)
+-                    self.checks.append(dict(init_status=status,read_status=read_status,checksum_valid=checksum_valid,
++                    self.checks.append(dict(init_status=status,read_status=read_status,checksum_valid=validity,
+                                             calls=self.active,result=actual));self.active=None
+                 runner.onreturn(z.reg_read(UC_MIPS_REG_RA),finish)
+                 return
