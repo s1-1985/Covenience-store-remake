@@ -1,0 +1,193 @@
+{
+  "output": "TOWN0001-ci-main-20-single",
+  "source": "TOWN0001-ci-main-19-single",
+  "passed": true,
+  "updates": 200,
+  "clock_before": 18560,
+  "clock_after": 18960,
+  "completed_iterations": 9488,
+  "source_ram_sha256": "a7e417a563b7886d76823ab359c6d7a6617f623ddb04cb16fda349aa69efb17c",
+  "final_ram_sha256": "3c7127719ccd416adf702ba902ed67a094ca486805b5cb54489c193dbd927ac0",
+  "cash_before": [
+    99069771,
+    153201896
+  ],
+  "cash_after": [
+    99004769,
+    153137220
+  ],
+  "cash_from_ledgers": [
+    99004769,
+    153137220
+  ],
+  "cash_write_count": 116,
+  "cash_delta_by_pc": {
+    "0x8001cbac": [
+      27730,
+      23050
+    ],
+    "0x8001cb30": [
+      -49260,
+      -60750
+    ],
+    "0x800297a0": [
+      -43472,
+      -26976
+    ]
+  },
+  "stores": [
+    {
+      "slot": 0,
+      "company": 0,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        2400,
+        12230
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        0,
+        1000
+      ],
+      "previous_day_ledger": [
+        10784,
+        5616,
+        0,
+        2400,
+        12230
+      ],
+      "additional_sales": 1000,
+      "additional_goods": 0,
+      "daily_expense": 16400,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
+    },
+    {
+      "slot": 1,
+      "company": 1,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        7060,
+        86360
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        60750,
+        800
+      ],
+      "previous_day_ledger": [
+        10976,
+        16000,
+        0,
+        7060,
+        108610
+      ],
+      "additional_sales": 23050,
+      "additional_goods": 60750,
+      "daily_expense": 26976,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
+    },
+    {
+      "slot": 2,
+      "company": 0,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        40195,
+        54890
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        48600,
+        0
+      ],
+      "previous_day_ledger": [
+        10976,
+        16096,
+        0,
+        40855,
+        81620
+      ],
+      "additional_sales": 26730,
+      "additional_goods": 49260,
+      "daily_expense": 27072,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
+    }
+  ],
+  "daily_close_checks": [
+    {
+      "clock": 18720,
+      "calendar": [
+        1,
+        4,
+        2,
+        0,
+        0
+      ],
+      "store_order": [
+        0,
+        2,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "cash_before": [
+        99095841,
+        153224146
+      ],
+      "cash_after": [
+        99052369,
+        153197170
+      ],
+      "stores_sha256": "f69c0b143f3f1c21c476c802e9492317739851a22c5027b811370e966d6bbc77",
+      "staff_sha256": "971c7192b2624edec03530c750f125b74a2ad4d903c1fb125160eded65fc0050",
+      "events": [],
+      "UI": [],
+      "notification_text_calls": [],
+      "notification_text_sha256": "2f91d30839840a1e3402bff6b4843eb173b6068ca1bda2e93558c88ca3c7c6bb"
+    }
+  ],
+  "staff_checks": 600,
+  "customer_checks": 600,
+  "frames": 400,
+  "files": [
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-20-single-verification-20261103.json",
+      "bytes": 2215991,
+      "sha256": "6f1af0e114263793e7ed6b4ad6ece66fcf037dfdb9e4abc1e02a1fa57a803fd9"
+    },
+    {
+      "path": "evidence/TOWN0001-ci-main-20-single-progress.json",
+      "bytes": 233636,
+      "sha256": "f685d45d9aecbbe50abbdd4170ab444c2126ff03908bf7be8a27539e41d9da52"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-20-single.json",
+      "bytes": 1034160,
+      "sha256": "fec69f2453d959dc346f0542032d3da4e1f6cd27a259ee790097c0081a277259"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-20-single.ram.zlib",
+      "bytes": 507804,
+      "sha256": "b4da6a5df9f45a6771b842f4a88689f6a56ba9105cf24699c5a83e3e37118ba7"
+    }
+  ]
+}

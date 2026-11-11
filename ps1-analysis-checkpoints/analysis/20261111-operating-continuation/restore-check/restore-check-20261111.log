@@ -1,0 +1,13 @@
+{
+  "bytes": 153696391,
+  "sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "parts_verified": 209,
+  "mode": "restore"
+}
+{
+  "algorithm_analysis": "/workspace/scratch/4f61d98a2778/restore-check-20261111/algorithm-analysis",
+  "snapshot": "TOWN0001-ci-main-20-single",
+  "clock": 18960,
+  "completed_iterations": 9488,
+  "ram_sha256": "3c7127719ccd416adf702ba902ed67a094ca486805b5cb54489c193dbd927ac0"
+}

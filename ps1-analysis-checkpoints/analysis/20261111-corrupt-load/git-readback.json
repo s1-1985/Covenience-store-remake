@@ -1,0 +1,324 @@
+{
+  "commit": "a1a5062a55ab4dbac92f503b7813f66f69449013",
+  "all_passed": true,
+  "files": 45,
+  "bytes": 9161406,
+  "method": "Fetched committed Git objects and compared every uploaded byte against local SHA-256",
+  "items": [
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "size": 3568,
+      "sha": "5a07f31fdfb5c4ab8d379dea9b8cd1e782c7adb9",
+      "sha256": "f611f8e3ecbb6f709832129c613ad2f323b71308d02a962d2a4e1c59faf1bcf8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/8004eeb8-8004f5c8.asm",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/8004eeb8-8004f5c8.asm",
+      "size": 10819,
+      "sha": "5d9422898aeca22b09dabf96eb3c1964694942c8",
+      "sha256": "a71d06e978757e728e7f319c62df00adff6c74671b1e867ca14eae61e19d5404"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/80051174-800518e0.asm",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/80051174-800518e0.asm",
+      "size": 11617,
+      "sha": "ab99cede72b0998984e55e51705d92ae6c0d7185",
+      "sha256": "13bc476125cb492f6f753519139e0811c6aa8e0080cd0aab2ff3daa0070fc81d"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/80062484-800626f0.asm",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/80062484-800626f0.asm",
+      "size": 3895,
+      "sha": "43d45177370a04ceaeee5ced6cf07c9b3f7061d8",
+      "sha256": "d3b2796e9d479f2b0ead1a1eda3feb67338043b1cc30da00226c50f09fe432c1"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/README.md",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/README.md",
+      "size": 4728,
+      "sha": "fb263f4e4b12612e4f589c56bba0848124f6d727",
+      "sha256": "847d492d8687fff26f5280bfde5441ff4b12e269ea33f82a40658e2088149ef3"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/audit.py",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/audit.py",
+      "size": 3423,
+      "sha": "9e44f2477b0f0a0b73cbcbc557a253b091095a87",
+      "sha256": "bc7b96c004a119db103f961ecb9ddd5d9af11aedebcbd137cd7e56658c0c905c"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/TOWN0001-corrupt-byte-swap-preserving-sum-20261111-single.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/TOWN0001-corrupt-byte-swap-preserving-sum-20261111-single.json",
+      "size": 805424,
+      "sha": "94905730a7cf759872fa808fbc5a6ddc1b7c4f8d",
+      "sha256": "abd0404904704eebc0947010ae14adf7ebf6a9ea68770445c951e46a10c57534"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/TOWN0001-corrupt-byte-swap-preserving-sum-20261111-single.ram.zlib",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/TOWN0001-corrupt-byte-swap-preserving-sum-20261111-single.ram.zlib",
+      "size": 508005,
+      "sha": "b04a9252f0d4697c744f4c90c37f7b15279eaf10",
+      "sha256": "a68b1167e74aeafd99eefb79e1fef70662edd7d088d99231d731daa0af8552da"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/load-mapping.json.zlib",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/load-mapping.json.zlib",
+      "size": 9040,
+      "sha": "d368e5924d8e00035627472eeda335121af60f35",
+      "sha256": "a610ecb154f2da33bdf2ebfa1d63505f069d19529c8628ef56bd3e1509e6f151"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/menu-load-progress.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/menu-load-progress.json",
+      "size": 4853,
+      "sha": "8d22050056079c69d23311c722dae76ff3364f71",
+      "sha256": "d1a916690e1267132f448fa6cf7e31b663fa9f53a86cde05352dae4caa14142b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/menu-load-reach-trace.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/menu-load-reach-trace.json",
+      "size": 520891,
+      "sha": "388aad4c99269e807af779bda1b8fe4b3bace026",
+      "sha256": "33ae174f96a4942228027301863523c55e37d39afa4ca76f7aeb2e541b1e3a75"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/operating-menu-save.card-file.bin",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/operating-menu-save.card-file.bin",
+      "size": 114688,
+      "sha": "58013a87e390b6feadb55ca5077f2a443756924f",
+      "sha256": "016e361316d7364283bb72611a0f8489c88902aaa05b21fe90ea82daa0a41020"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/operating-menu-save.mcr",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/operating-menu-save.mcr",
+      "size": 131072,
+      "sha": "7bc42a53e15b534801791c7d0a37da9583f01624",
+      "sha256": "e47ae5925f37e25c014859e0d25f186707c08b87a4fa1a3d7d9f77e38bf1c847"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/play-load.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/play-load.json",
+      "size": 932202,
+      "sha": "f382a507c5a15e2215f4f2ae7943ccc4681cdc10",
+      "sha256": "1fa9ec2d98f2926c2ec8148f2d251a16943eb16bd1826957432b7039be9be591"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/save-monitor.patch",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum/save-monitor.patch",
+      "size": 651,
+      "sha": "e330f8bef5ac09e4b24a0b641f69af21632c1daf",
+      "sha256": "a2fee55a91ac617848648f9910e991bc01bca4bd0408cb0698f52880e7d66b43"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/byte-swap-preserving-sum.log",
+      "size": 391,
+      "sha": "e14bc898c3e198ce83a7dd0ba3975811ebbcd016",
+      "sha256": "7ecd091d50605002f7eaffade17a12f2f7f8da3a419dd751d0b7e0cfdae3c02e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/TOWN0001-corrupt-checksum-bit-flip-20261111-single.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/TOWN0001-corrupt-checksum-bit-flip-20261111-single.json",
+      "size": 805421,
+      "sha": "67e81f0c7c35921cf3d39cd5585963cb55cbf2e1",
+      "sha256": "3f881271fc22fdfbcf6fd9b65d28e48c471c0088402c76ac863efc739fddac20"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/TOWN0001-corrupt-checksum-bit-flip-20261111-single.ram.zlib",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/TOWN0001-corrupt-checksum-bit-flip-20261111-single.ram.zlib",
+      "size": 508057,
+      "sha": "5ab59208ee98211bfbb2a9bcf35d81c81baa9680",
+      "sha256": "aaa753bc91541fafaa0ccad048967a11b3bf47479042f6eea90f410a8edd2543"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/load-mapping.json.zlib",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/load-mapping.json.zlib",
+      "size": 9040,
+      "sha": "d368e5924d8e00035627472eeda335121af60f35",
+      "sha256": "a610ecb154f2da33bdf2ebfa1d63505f069d19529c8628ef56bd3e1509e6f151"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/menu-load-progress.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/menu-load-progress.json",
+      "size": 4853,
+      "sha": "f4a38d376bad10b4a7d2e8c47bbcc3bcb7ce35dc",
+      "sha256": "02e8f92a11ff18a1e490c54b0e8fe9b7ce6dd697d36118303f2af47382f20406"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/menu-load-reach-trace.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/menu-load-reach-trace.json",
+      "size": 520891,
+      "sha": "cada63d6b1e6904da8dba52f8c8764a82e988443",
+      "sha256": "2aebe4b76f78450629c09a882ce8b1191e038025b3df78968615155e2eeb6566"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/operating-menu-save.card-file.bin",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/operating-menu-save.card-file.bin",
+      "size": 114688,
+      "sha": "d2b143f1e52db243dc4df8368597966ee3f16ba3",
+      "sha256": "bfa5683f50b897a041284419f053b5037393257174350e38d9da4da270a21234"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/operating-menu-save.mcr",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/operating-menu-save.mcr",
+      "size": 131072,
+      "sha": "49b0cc0209d3dc920ef5d1d1d1b8473eda9896c3",
+      "sha256": "c08d8c2f31f64afe290e9ab76fbce9c2e9b8c0bac0d97e909a7ac6451a9f4bab"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/play-load.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/play-load.json",
+      "size": 938794,
+      "sha": "8b2898448805d6a38faf36a100f75ab815f99552",
+      "sha256": "b20a4682c2acd38a944cb61a2fad33e18fe55a3abe030f9f63c6a2cf1167e222"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/save-monitor.patch",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip/save-monitor.patch",
+      "size": 651,
+      "sha": "e330f8bef5ac09e4b24a0b641f69af21632c1daf",
+      "sha256": "a2fee55a91ac617848648f9910e991bc01bca4bd0408cb0698f52880e7d66b43"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/checksum-bit-flip.log",
+      "size": 391,
+      "sha": "684c11e094fa70355a3b0d51f0d1e161ee7ce731",
+      "sha256": "ac8d24b7989f1dbd69ceaa774d946c9de54aa505f73a9f6e2c798f231332a6a4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/development-missing-menu-exit.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/development-missing-menu-exit.log",
+      "size": 1725,
+      "sha": "e32af1456634beb3d79e2320ab92c4cd11b854e5",
+      "sha256": "7eb5478232115c311bfa47d75a64d7f203f4752272178b5f490b335c78808c0c"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/development-settings-exit-checksum-bit-flip.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/development-settings-exit-checksum-bit-flip.log",
+      "size": 1865,
+      "sha": "e9330e6e328bab7d999c45f8bfc2310fde2997fa",
+      "sha256": "e9fedfcc6b485738348e3a72df92f11c5c3eddfde431c819f2ff09459992771b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/development-settings-exit-payload-bit-flip.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/development-settings-exit-payload-bit-flip.log",
+      "size": 1865,
+      "sha": "e9330e6e328bab7d999c45f8bfc2310fde2997fa",
+      "sha256": "e9fedfcc6b485738348e3a72df92f11c5c3eddfde431c819f2ff09459992771b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/instruction-source.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/instruction-source.json",
+      "size": 718,
+      "sha": "c7ac9192f056c767e679f141c8c3e276b662b4b2",
+      "sha256": "3e27e77c43c10ab062a69339fde009150b980e41758506f69aeb6939dcd7f6d1"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/message-source.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/message-source.json",
+      "size": 436,
+      "sha": "7969545080dc8f2004809f6449aa4ddff97dcd49",
+      "sha256": "cf0622f8a15ff983161a468b1ac6e32f068b23d9299baba7cafdcdd3fb140fc4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/original-load-messages.png",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/original-load-messages.png",
+      "size": 6250,
+      "sha": "42be575d05df6e6d9387ce84e73ce5d80331e7d3",
+      "sha256": "42d52b342e9d61e475848ff2550db23bfe71a912653e4eee6dba4f50af94b9d1"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/TOWN0001-corrupt-payload-bit-flip-20261111-single.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/TOWN0001-corrupt-payload-bit-flip-20261111-single.json",
+      "size": 805420,
+      "sha": "577a056999b47fd2927bf732d6e7167d0ad3ac4f",
+      "sha256": "bcf82062e93af89ecdb93490f385b24fdbffa7fb2505e3f4057018b249f04c5f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/TOWN0001-corrupt-payload-bit-flip-20261111-single.ram.zlib",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/TOWN0001-corrupt-payload-bit-flip-20261111-single.ram.zlib",
+      "size": 508057,
+      "sha": "5ab59208ee98211bfbb2a9bcf35d81c81baa9680",
+      "sha256": "aaa753bc91541fafaa0ccad048967a11b3bf47479042f6eea90f410a8edd2543"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/load-mapping.json.zlib",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/load-mapping.json.zlib",
+      "size": 9040,
+      "sha": "d368e5924d8e00035627472eeda335121af60f35",
+      "sha256": "a610ecb154f2da33bdf2ebfa1d63505f069d19529c8628ef56bd3e1509e6f151"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/menu-load-progress.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/menu-load-progress.json",
+      "size": 4853,
+      "sha": "f4a38d376bad10b4a7d2e8c47bbcc3bcb7ce35dc",
+      "sha256": "02e8f92a11ff18a1e490c54b0e8fe9b7ce6dd697d36118303f2af47382f20406"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/menu-load-reach-trace.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/menu-load-reach-trace.json",
+      "size": 520891,
+      "sha": "a0d7f0c9c3cb7286f84c90ec90afc0a52140b48f",
+      "sha256": "b60164f5b8a026f6d4f3e3d98509193979d5d9200779f89dfaf15398e4f5312f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/operating-menu-save.card-file.bin",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/operating-menu-save.card-file.bin",
+      "size": 114688,
+      "sha": "2d90d36dd5bf619b7678cc5b26962fec23b89e8a",
+      "sha256": "1209fc29a75843b46762638b44ba25c21b9aa0472cfd3d2d83a0b369b35c540f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/operating-menu-save.mcr",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/operating-menu-save.mcr",
+      "size": 131072,
+      "sha": "7303a8519242609ddc0f9df18ece299268456777",
+      "sha256": "ec1abcc495cc9115791e6c7451c6bceeaf26c9d3e7f1f839109c1e92183d6a90"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/play-load.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/play-load.json",
+      "size": 938793,
+      "sha": "9f991b401151177a4f4dfa91c265e9379dfc4886",
+      "sha256": "8316ab6ea97ab4626a59e16f31e0da0c35b57b5a0a1e31f961c50e1a3b891e14"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/save-monitor.patch",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip/save-monitor.patch",
+      "size": 651,
+      "sha": "e330f8bef5ac09e4b24a0b641f69af21632c1daf",
+      "sha256": "a2fee55a91ac617848648f9910e991bc01bca4bd0408cb0698f52880e7d66b43"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip.log",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/payload-bit-flip.log",
+      "size": 391,
+      "sha": "684c11e094fa70355a3b0d51f0d1e161ee7ce731",
+      "sha256": "ac8d24b7989f1dbd69ceaa774d946c9de54aa505f73a9f6e2c798f231332a6a4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/play-corrupt.py",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/play-corrupt.py",
+      "size": 10270,
+      "sha": "c04223864d0497c394e37eb07b7311f94b25f11b",
+      "sha256": "39329c203dfc20639271be44611016146aa27a0bfbae16b16bf739d55c445cd8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/render-messages.py",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/render-messages.py",
+      "size": 1630,
+      "sha": "c7633ccc7f81e8d83b909aed8d94ce5f04c2f098",
+      "sha256": "5c9eb91057d8eb15e8bb549a2fcf468d4ccaeaec3a5a2f0d9e216bc8dc7de35a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261111-corrupt-load/results.json",
+      "absolute": "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/results.json",
+      "size": 3666,
+      "sha": "d41a495ba293c5aceb915a0932f51ecc28a67251",
+      "sha256": "dc565da5f1b105d06120f070a29598dbc55ccf1f2a3238ccf878366f38e67510"
+    }
+  ]
+}
