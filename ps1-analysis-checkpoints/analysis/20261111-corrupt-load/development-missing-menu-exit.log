@@ -1,0 +1,22 @@
+connected actual opened store -> play 17760 99005641
+connected play verified 1 clock 17760 view 0 pause 0 next input 128
+Traceback (most recent call last):
+  File "/workspace/scratch/4f61d98a2778/conveni/ps1-analysis-checkpoints/analysis/20261111-corrupt-load/play-corrupt.py", line 100, in <module>
+    result=play.compare('TOWN0001-ci-main-17-single',4,actions={0:128},native_music=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4f61d98a2778/restored/algorithm-analysis/verify_opened_snapshot_play_20261028.py", line 108, in compare
+    result=c.after_opening(units,runners,resources,voices)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/4f61d98a2778/restored/algorithm-analysis/title_opening_play_connection_20261028.py", line 140, in after_opening
+    u.emu_start(pc,0x80001000,count=100000000)
+  File "/home/agent/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 769, in emu_start
+    raise self._hook_exception
+  File "/home/agent/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 363, in wrapper
+    return func(uc, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/agent/.local/lib/python3.12/site-packages/unicorn/unicorn_py3/unicorn.py", line 1063, in __hook_code_cb
+    callback(uc, address, size, user_data)
+  File "/workspace/scratch/4f61d98a2778/restored/algorithm-analysis/category_frame_harness.py", line 28, in phase
+    assert self.plans[a],('phase queue exhausted',hex(a),self.phase_entries)
+           ~~~~~~~~~~^^^
+AssertionError: ('phase queue exhausted', '0x8004efd0', [2147804536, 2147807184, 2147815796, 2147816740])

@@ -1,0 +1,129 @@
+{
+  "all_passed": true,
+  "total": 3,
+  "source_snapshot": "TOWN0001-ci-main-17-single",
+  "cases": [
+    {
+      "case": "payload-bit-flip",
+      "passed": true,
+      "checksum_accepted": false,
+      "read_chunks": 892,
+      "native_decoder_calls": 0,
+      "attempt_preserved_live_regions": 37,
+      "confirmation": [
+        {
+          "before": 0,
+          "directions": 32,
+          "buttons": 32,
+          "selected": 0,
+          "action": "attempt",
+          "attempt": -1,
+          "terminal": false
+        },
+        {
+          "before": 0,
+          "directions": 64,
+          "buttons": 64,
+          "selected": 0,
+          "action": "cancel",
+          "attempt": null,
+          "terminal": true
+        }
+      ],
+      "message_ids": [
+        486,
+        482,
+        484,
+        498
+      ],
+      "final_clock": 17766,
+      "final_cash": [
+        99005641,
+        153127491
+      ],
+      "final_ram_sha256": "826286a35fa969ebeb083ba2366683168ebf2bb22f1fa0c0495e119369af7418",
+      "input_file_sha256": "1209fc29a75843b46762638b44ba25c21b9aa0472cfd3d2d83a0b369b35c540f"
+    },
+    {
+      "case": "checksum-bit-flip",
+      "passed": true,
+      "checksum_accepted": false,
+      "read_chunks": 892,
+      "native_decoder_calls": 0,
+      "attempt_preserved_live_regions": 37,
+      "confirmation": [
+        {
+          "before": 0,
+          "directions": 32,
+          "buttons": 32,
+          "selected": 0,
+          "action": "attempt",
+          "attempt": -1,
+          "terminal": false
+        },
+        {
+          "before": 0,
+          "directions": 64,
+          "buttons": 64,
+          "selected": 0,
+          "action": "cancel",
+          "attempt": null,
+          "terminal": true
+        }
+      ],
+      "message_ids": [
+        486,
+        482,
+        484,
+        498
+      ],
+      "final_clock": 17766,
+      "final_cash": [
+        99005641,
+        153127491
+      ],
+      "final_ram_sha256": "826286a35fa969ebeb083ba2366683168ebf2bb22f1fa0c0495e119369af7418",
+      "input_file_sha256": "bfa5683f50b897a041284419f053b5037393257174350e38d9da4da270a21234"
+    },
+    {
+      "case": "byte-swap-preserving-sum",
+      "passed": true,
+      "checksum_accepted": true,
+      "read_chunks": 892,
+      "native_decoder_calls": 1,
+      "attempt_preserved_live_regions": 37,
+      "confirmation": [
+        {
+          "before": 0,
+          "directions": 32,
+          "buttons": 32,
+          "selected": 0,
+          "action": "attempt",
+          "attempt": 0,
+          "terminal": true
+        }
+      ],
+      "message_ids": [
+        486,
+        482,
+        484,
+        489
+      ],
+      "final_clock": 17646,
+      "final_cash": [
+        99005440,
+        153131796
+      ],
+      "final_ram_sha256": "9a0712f9bdb796730ab057bf6bdc053c20f249e634bd0cbcfc3c4605c42eea2f",
+      "input_file_sha256": "016e361316d7364283bb72611a0f8489c88902aaa05b21fe90ea82daa0a41020"
+    }
+  ],
+  "scope": "Actual operating menu -> original card reader -> original checksum -> retry/cancel or native decoder -> operating loop.",
+  "limits": [
+    "Controlled copies of previously committed raw-card inputs; no natural-corruption frequency claim.",
+    "Unicorn, original child functions and BIOS/file/SDK adapters are shared by the paired parent comparison.",
+    "37 live ranges are unchanged across the attempt function only; normal simulation resumes afterwards.",
+    "Accepted collision proves these bytes reach the decoder; it does not prove all malformed payloads are safe.",
+    "No physical BIOS/SIO or device/GPU/audio validation. Branch results do not replace the natural main trajectory."
+  ]
+}

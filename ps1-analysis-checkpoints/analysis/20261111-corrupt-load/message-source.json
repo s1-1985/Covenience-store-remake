@@ -1,0 +1,13 @@
+{
+  "message_ids": [
+    489,
+    498
+  ],
+  "glyphs": 38,
+  "records_sha256": "667878cafba34ce5080e538bffed0c2100c75ee763c9734d11b58c0ed1caa301",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "msg_sha256": "d2ab3800ee82628cafe96d94f58d9790653b4e5387cbacc7097cc67c5ac18635",
+  "limits": [
+    "Original message bytes and font pixels; CPU text-only preview, not a complete game screenshot."
+  ]
+}
