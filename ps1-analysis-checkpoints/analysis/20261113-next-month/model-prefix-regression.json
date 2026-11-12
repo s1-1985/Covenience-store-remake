@@ -1,0 +1,8 @@
+{
+  "all_passed": true,
+  "prefix_updates_compared": 31,
+  "old_prefix_clock": 23022,
+  "new_verified_clock": 23082,
+  "comparison": "All saved per-step regions, clock, cash, selection/input/ticks and active slots before the monthly topology change match the old reference run.",
+  "duplicate_updates_added": 0
+}

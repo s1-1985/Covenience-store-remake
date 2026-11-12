@@ -1,0 +1,38 @@
+{
+  "source_preimage_sha256": "24faa3f8bef409fc00bd2c42741cf2dc6d8d5238eea3455f0056ece73fa468d2",
+  "source_postimage_sha256": "c2552583c98f5593be1fdb47d7c524c6eb71c4cca5f955852d0bf12175dd10e3",
+  "failure": "Independent parent cached the pre-month active-store order and missed newly opened rival slot 3 in the same update.",
+  "clock": 23040,
+  "observed_rebuilt_order": [
+    0,
+    2,
+    1,
+    3,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1
+  ],
+  "observed_active_slots": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "fix": "Recompute independent store order from updated stores immediately after original rival-monthly child returns.",
+  "original_gameplay_fields_modified": false,
+  "failed_attempt_natural_updates_counted": 0,
+  "reference_store_slots_before_fix": [
+    0,
+    2,
+    1
+  ],
+  "original_store_slots_in_same_update": [
+    0,
+    2,
+    1,
+    3
+  ]
+}

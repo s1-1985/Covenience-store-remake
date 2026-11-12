@@ -1,0 +1,7 @@
+{
+  "status": "extended_and_unit_verified",
+  "first_full_engine_attempt": "Unsupported little-endian MIPS-I LWL at 0x8006d788, word 0x88470003, encountered in original text assembly.",
+  "correction": "Added LWL/LWR/SWL/SWR with delayed merge-pair forwarding in a separate interpreter extension.",
+  "verification": "768 byte-formula and Unicorn comparisons across all alignments and both pair orders.",
+  "natural_updates_added": 0
+}

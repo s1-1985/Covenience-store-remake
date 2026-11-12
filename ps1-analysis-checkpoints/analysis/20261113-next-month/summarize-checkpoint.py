@@ -54,4 +54,23 @@ if p.exists():
  lines+=['','## 町処理の別整数実行器による追加照合','']
  for r in d['cases']:lines.append(f'時計{r["clock"]}の原町処理を厳密MIPS-Iで{r["instructions"]:,}命令実行し、スタックを除くRAM前方{r["matched_non_stack_ram_bytes"]:,}バイトが自然到達した原処理と完全一致した。外部フックは0件。到達原命令は全件原EXEと照合した。診断RAMは通常営業の再開点ではない。')
  lines+=['','`python audit-strict-town.py ALGO` で再実行する。']
+p=ROOT/'strict-rival-full-audit.json'
+if p.exists():
+ d=json.loads(p.read_text());assert d['all_passed'];lines+=['','## ライバル処理の文字列・キャッシュを含む整数実行','']
+ for r in d['cases']:lines.append(f'自然出店の原ライバル処理を、文字列生成とキャッシュ更新を省略せず厳密MIPS-Iで{r["instructions"]:,}命令実行した。外部フック0件、RAM前方{r["matched_non_stack_ram_bytes"]:,}バイトが原Unicorn到達結果と完全一致。独立方針モデルの照合とは別の追加検証である。')
+ lines+=['','文字列処理で必要だったLWL/LWR/SWL/SWRを別拡張に追加し、768条件でバイト列式およびUnicornと比較した。両方のペア順と全アライメントを含む。実機の全命令・タイミングを検証したものではない。']
+p=ROOT/'development-order-fix.json'
+if p.exists():
+ d=json.loads(p.read_text());lines+=['','## 新店舗を同じ更新から処理する順序の修正','',f'自然なライバル出店が時計{d["clock"]}で初めて発生し、原営業は店舗スロット `{d["original_store_slots_in_same_update"]}` を同じ更新から処理した。旧独立親モデルは月次前の `{d["reference_store_slots_before_fix"]}` を保持し、新店舗を落として不一致となった。', '原Rival管理後に、更新済み店舗から独立した店舗順モデルを再計算するよう修正した。原ゲームの時計・乱数・資金・データを変更した修正ではない。失敗した試行の区間を累積へ加算せず、main-30から再検証した。原命令・比較失敗ログ・修正前後ハッシュを保存した。']
+ pfx=ROOT/'model-prefix-regression.json'
+ if pfx.exists():lines.append('修正前後の月次直前31更新は、保存済みの全比較領域・時計・資金・入力・活動店舗の記録が一致した。')
+p=ROOT/'monthly-handoff-audit.json'
+if p.exists():
+ d=json.loads(p.read_text());assert d['all_passed'];lines+=['','## 月次処理間のデータ引渡し','']
+ for r in d['cases']:lines.append(f'時計{r["clock"]}で、決算終了時の資金・店舗・従業員・通知文字列がライバル入口と一致した。ライバル出口から町入口へ渡るRAM前方{r["rival_to_town_equal_ram_bytes"]:,}バイトも一致。続く需要再計算も原処理と独立モデルで照合した。原呼出順の命令ワードを保存した。')
+p=ROOT/'monthly-notices-audit.json'
+if p.exists():
+ d=json.loads(p.read_text());assert d['all_passed'];lines+=['','## 月次通知と結果画面','']
+ for r in d['cases']:lines.append(f'月次結果画面の6数値 `{r["monthly_values"]}` を、前月利益台帳・資本系履歴・人口履歴から別計算し、原の数値描画要求と全件一致した。描画呼出し{r["monthly_screen_calls"]}回、時計{r["first_screen_clock"]}〜{r["last_screen_clock"]}。呼出し回数は実時間の秒数ではない。通知の予約内容と消費順は `monthly-notices-audit.json` に保存した。')
+lines+=['','## 追加診断の再実行','', '```sh','python verify-unaligned.py ALGO','python audit-strict-rival-full.py ALGO','python audit-monthly-handoff.py ALGO','python audit-monthly-notices.py ALGO','```','','負数の結果数値は符号付き履歴と数値桁の描画値を分けて検査する。原画面は負の差分を正の桁値へ変換し、別のマイナス記号ラベルを描く。今回の結果画面でもこの原要求と一致した。']
 (ROOT/'README.md').write_text('\n'.join(lines)+'\n');print(json.dumps(summary))

@@ -1,17 +1,17 @@
 {
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
   "date_jst": "2026-11-13",
-  "snapshot": "TOWN0001-ci-main-29-single",
+  "snapshot": "TOWN0001-ci-main-31-single",
   "phase": "play_iteration_end",
-  "clock": 22560,
-  "completed_iterations": 11288,
+  "clock": 23360,
+  "completed_iterations": 11688,
   "cash": [
-    99060560,
-    153223428
+    99013362,
+    97694589
   ],
-  "ram_sha256": "fdeb2f72d6ead2f5421a0b23b63adf875b3d82e413c613f4e9117135d2d490e4",
-  "metadata": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-29-single.json.zlib",
-  "compressed_ram": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-29-single.ram.zlib",
+  "ram_sha256": "f9bba3258b11c921869e0ddfe8a34291a58102ea4023e490ac48f912f96a1971",
+  "metadata": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-31-single.json.zlib",
+  "compressed_ram": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-31-single.ram.zlib",
   "report": "analysis/20261113-next-month/README.md",
-  "limits": "Completed/hash-verified segments only. Longer trajectory still running. Monthly independent audits remain pending. SDK/GPU/SPU/IRQ boundaries remain modeled."
+  "limits": "Completed/hash-verified segments only. Six-segment natural trajectory completed. Natural monthly town/rival independent audits passed. SDK/GPU/SPU/IRQ boundaries remain modeled."
 }

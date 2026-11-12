@@ -1,0 +1,6167 @@
+{
+  "all_passed": true,
+  "seed": 1296650323,
+  "cases": 768,
+  "kinds": [
+    "LWL",
+    "LWR",
+    "SWL",
+    "SWR",
+    "load_pair",
+    "load_pair_reverse",
+    "store_pair",
+    "store_pair_reverse"
+  ],
+  "coverage": "24 random byte patterns x 4 alignments x 8 merge operations/pair orders; byte-slice formulas and Unicorn agree.",
+  "extension_sha256": "742c2208540a0d5b787c77bf4db420d015a6949508772e8ba4800dc72aa338a7",
+  "limits": [
+    "Final load values checked after an explicit delay slot; merge-pair forwarding exercised in both orders.",
+    "Only these opcodes/pairs; not a full R3000A hardware or timing validation."
+  ],
+  "evidence": [
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3730891539,
+      "data_hex": "6e7e77376d7c32a0ad7f4694",
+      "expected_value": 1851843347,
+      "expected_data_hex": "6e7e77376d7c32a0ad7f4694"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3730891539,
+      "data_hex": "6e7e77376d7c32a0ad7f4694",
+      "expected_value": 930578030,
+      "expected_data_hex": "6e7e77376d7c32a0ad7f4694"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3730891539,
+      "data_hex": "6e7e77376d7c32a0ad7f4694",
+      "expected_value": 3730891539,
+      "expected_data_hex": "de7e77376d7c32a0ad7f4694"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3730891539,
+      "data_hex": "6e7e77376d7c32a0ad7f4694",
+      "expected_value": 3730891539,
+      "expected_data_hex": "13e360de6d7c32a0ad7f4694"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3730891539,
+      "data_hex": "6e7e77376d7c32a0ad7f4694",
+      "expected_value": 930578030,
+      "expected_data_hex": "6e7e77376d7c32a0ad7f4694"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3730891539,
+      "data_hex": "6e7e77376d7c32a0ad7f4694",
+      "expected_value": 3730891539,
+      "expected_data_hex": "13e360de6d7c32a0ad7f4694"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3730891539,
+      "data_hex": "6e7e77376d7c32a0ad7f4694",
+      "expected_value": 930578030,
+      "expected_data_hex": "6e7e77376d7c32a0ad7f4694"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3730891539,
+      "data_hex": "6e7e77376d7c32a0ad7f4694",
+      "expected_value": 3730891539,
+      "expected_data_hex": "13e360de6d7c32a0ad7f4694"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 3406146750,
+      "data_hex": "92dd4a80c66140f55f4eaa16",
+      "expected_value": 3717377214,
+      "expected_data_hex": "92dd4a80c66140f55f4eaa16"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 3406146750,
+      "data_hex": "92dd4a80c66140f55f4eaa16",
+      "expected_value": 3414182621,
+      "expected_data_hex": "92dd4a80c66140f55f4eaa16"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 3406146750,
+      "data_hex": "92dd4a80c66140f55f4eaa16",
+      "expected_value": 3406146750,
+      "expected_data_hex": "05cb4a80c66140f55f4eaa16"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 3406146750,
+      "data_hex": "92dd4a80c66140f55f4eaa16",
+      "expected_value": 3406146750,
+      "expected_data_hex": "92beac05c66140f55f4eaa16"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 3406146750,
+      "data_hex": "92dd4a80c66140f55f4eaa16",
+      "expected_value": 3330296541,
+      "expected_data_hex": "92dd4a80c66140f55f4eaa16"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 3406146750,
+      "data_hex": "92dd4a80c66140f55f4eaa16",
+      "expected_value": 3406146750,
+      "expected_data_hex": "92beac05cb6140f55f4eaa16"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 3406146750,
+      "data_hex": "92dd4a80c66140f55f4eaa16",
+      "expected_value": 3330296541,
+      "expected_data_hex": "92dd4a80c66140f55f4eaa16"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 3406146750,
+      "data_hex": "92dd4a80c66140f55f4eaa16",
+      "expected_value": 3406146750,
+      "expected_data_hex": "92beac05cb6140f55f4eaa16"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 1051453987,
+      "data_hex": "426bd7b409af31cc4a611f8e",
+      "expected_value": 3614130723,
+      "expected_data_hex": "426bd7b409af31cc4a611f8e"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 1051453987,
+      "data_hex": "426bd7b409af31cc4a611f8e",
+      "expected_value": 1051440343,
+      "expected_data_hex": "426bd7b409af31cc4a611f8e"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 1051453987,
+      "data_hex": "426bd7b409af31cc4a611f8e",
+      "expected_value": 1051453987,
+      "expected_data_hex": "eaab3eb409af31cc4a611f8e"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 1051453987,
+      "data_hex": "426bd7b409af31cc4a611f8e",
+      "expected_value": 1051453987,
+      "expected_data_hex": "426b23ea09af31cc4a611f8e"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 1051453987,
+      "data_hex": "426bd7b409af31cc4a611f8e",
+      "expected_value": 2936648919,
+      "expected_data_hex": "426bd7b409af31cc4a611f8e"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 1051453987,
+      "data_hex": "426bd7b409af31cc4a611f8e",
+      "expected_value": 1051453987,
+      "expected_data_hex": "426b23eaab3e31cc4a611f8e"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 1051453987,
+      "data_hex": "426bd7b409af31cc4a611f8e",
+      "expected_value": 2936648919,
+      "expected_data_hex": "426bd7b409af31cc4a611f8e"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 1051453987,
+      "data_hex": "426bd7b409af31cc4a611f8e",
+      "expected_value": 1051453987,
+      "expected_data_hex": "426b23eaab3e31cc4a611f8e"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 585292153,
+      "data_hex": "beb490937abcb3ffdda32e6c",
+      "expected_value": 2475734206,
+      "expected_data_hex": "beb490937abcb3ffdda32e6c"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 585292153,
+      "data_hex": "beb490937abcb3ffdda32e6c",
+      "expected_value": 585292179,
+      "expected_data_hex": "beb490937abcb3ffdda32e6c"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 585292153,
+      "data_hex": "beb490937abcb3ffdda32e6c",
+      "expected_value": 585292153,
+      "expected_data_hex": "79d9e2227abcb3ffdda32e6c"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 585292153,
+      "data_hex": "beb490937abcb3ffdda32e6c",
+      "expected_value": 585292153,
+      "expected_data_hex": "beb490797abcb3ffdda32e6c"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 585292153,
+      "data_hex": "beb490937abcb3ffdda32e6c",
+      "expected_value": 3015473811,
+      "expected_data_hex": "beb490937abcb3ffdda32e6c"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 585292153,
+      "data_hex": "beb490937abcb3ffdda32e6c",
+      "expected_value": 585292153,
+      "expected_data_hex": "beb49079d9e222ffdda32e6c"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 585292153,
+      "data_hex": "beb490937abcb3ffdda32e6c",
+      "expected_value": 3015473811,
+      "expected_data_hex": "beb490937abcb3ffdda32e6c"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 585292153,
+      "data_hex": "beb490937abcb3ffdda32e6c",
+      "expected_value": 585292153,
+      "expected_data_hex": "beb49079d9e222ffdda32e6c"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 4003894851,
+      "data_hex": "facf029213cff8a6923e5890",
+      "expected_value": 4205221443,
+      "expected_data_hex": "facf029213cff8a6923e5890"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 4003894851,
+      "data_hex": "facf029213cff8a6923e5890",
+      "expected_value": 2449657850,
+      "expected_data_hex": "facf029213cff8a6923e5890"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 4003894851,
+      "data_hex": "facf029213cff8a6923e5890",
+      "expected_value": 4003894851,
+      "expected_data_hex": "eecf029213cff8a6923e5890"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 4003894851,
+      "data_hex": "facf029213cff8a6923e5890",
+      "expected_value": 4003894851,
+      "expected_data_hex": "4396a6ee13cff8a6923e5890"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 4003894851,
+      "data_hex": "facf029213cff8a6923e5890",
+      "expected_value": 2449657850,
+      "expected_data_hex": "facf029213cff8a6923e5890"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 4003894851,
+      "data_hex": "facf029213cff8a6923e5890",
+      "expected_value": 4003894851,
+      "expected_data_hex": "4396a6ee13cff8a6923e5890"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 4003894851,
+      "data_hex": "facf029213cff8a6923e5890",
+      "expected_value": 2449657850,
+      "expected_data_hex": "facf029213cff8a6923e5890"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 4003894851,
+      "data_hex": "facf029213cff8a6923e5890",
+      "expected_value": 4003894851,
+      "expected_data_hex": "4396a6ee13cff8a6923e5890"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 2948087871,
+      "data_hex": "7520309f0b8b52915ffa5cf3",
+      "expected_value": 544555071,
+      "expected_data_hex": "7520309f0b8b52915ffa5cf3"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 2948087871,
+      "data_hex": "7520309f0b8b52915ffa5cf3",
+      "expected_value": 2946445344,
+      "expected_data_hex": "7520309f0b8b52915ffa5cf3"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 2948087871,
+      "data_hex": "7520309f0b8b52915ffa5cf3",
+      "expected_value": 2948087871,
+      "expected_data_hex": "b8af309f0b8b52915ffa5cf3"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 2948087871,
+      "data_hex": "7520309f0b8b52915ffa5cf3",
+      "expected_value": 2948087871,
+      "expected_data_hex": "753f40b80b8b52915ffa5cf3"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 2948087871,
+      "data_hex": "7520309f0b8b52915ffa5cf3",
+      "expected_value": 194981920,
+      "expected_data_hex": "7520309f0b8b52915ffa5cf3"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 2948087871,
+      "data_hex": "7520309f0b8b52915ffa5cf3",
+      "expected_value": 2948087871,
+      "expected_data_hex": "753f40b8af8b52915ffa5cf3"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 2948087871,
+      "data_hex": "7520309f0b8b52915ffa5cf3",
+      "expected_value": 194981920,
+      "expected_data_hex": "7520309f0b8b52915ffa5cf3"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 2948087871,
+      "data_hex": "7520309f0b8b52915ffa5cf3",
+      "expected_value": 2948087871,
+      "expected_data_hex": "753f40b8af8b52915ffa5cf3"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 1613677839,
+      "data_hex": "4fb1c8e326d631547c766122",
+      "expected_value": 3367063311,
+      "expected_data_hex": "4fb1c8e326d631547c766122"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 1613677839,
+      "data_hex": "4fb1c8e326d631547c766122",
+      "expected_value": 1613685704,
+      "expected_data_hex": "4fb1c8e326d631547c766122"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 1613677839,
+      "data_hex": "4fb1c8e326d631547c766122",
+      "expected_value": 1613677839,
+      "expected_data_hex": "c52e60e326d631547c766122"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 1613677839,
+      "data_hex": "4fb1c8e326d631547c766122",
+      "expected_value": 1613677839,
+      "expected_data_hex": "4fb10fc526d631547c766122"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 1613677839,
+      "data_hex": "4fb1c8e326d631547c766122",
+      "expected_value": 3592872904,
+      "expected_data_hex": "4fb1c8e326d631547c766122"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 1613677839,
+      "data_hex": "4fb1c8e326d631547c766122",
+      "expected_value": 1613677839,
+      "expected_data_hex": "4fb10fc52e6031547c766122"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 1613677839,
+      "data_hex": "4fb1c8e326d631547c766122",
+      "expected_value": 3592872904,
+      "expected_data_hex": "4fb1c8e326d631547c766122"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 1613677839,
+      "data_hex": "4fb1c8e326d631547c766122",
+      "expected_value": 1613677839,
+      "expected_data_hex": "4fb10fc52e6031547c766122"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 206823902,
+      "data_hex": "59199a9d784eedafe32f40cb",
+      "expected_value": 2644121945,
+      "expected_data_hex": "59199a9d784eedafe32f40cb"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 206823902,
+      "data_hex": "59199a9d784eedafe32f40cb",
+      "expected_value": 206823837,
+      "expected_data_hex": "59199a9d784eedafe32f40cb"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 206823902,
+      "data_hex": "59199a9d784eedafe32f40cb",
+      "expected_value": 206823902,
+      "expected_data_hex": "dee1530c784eedafe32f40cb"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 206823902,
+      "data_hex": "59199a9d784eedafe32f40cb",
+      "expected_value": 206823902,
+      "expected_data_hex": "59199ade784eedafe32f40cb"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 206823902,
+      "data_hex": "59199a9d784eedafe32f40cb",
+      "expected_value": 3981342877,
+      "expected_data_hex": "59199a9d784eedafe32f40cb"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 206823902,
+      "data_hex": "59199a9d784eedafe32f40cb",
+      "expected_value": 206823902,
+      "expected_data_hex": "59199adee1530cafe32f40cb"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 206823902,
+      "data_hex": "59199a9d784eedafe32f40cb",
+      "expected_value": 3981342877,
+      "expected_data_hex": "59199a9d784eedafe32f40cb"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 206823902,
+      "data_hex": "59199a9d784eedafe32f40cb",
+      "expected_value": 206823902,
+      "expected_data_hex": "59199adee1530cafe32f40cb"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 1488354417,
+      "data_hex": "7c80be8d13508972a01f9387",
+      "expected_value": 2092334193,
+      "expected_data_hex": "7c80be8d13508972a01f9387"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 1488354417,
+      "data_hex": "7c80be8d13508972a01f9387",
+      "expected_value": 2378072188,
+      "expected_data_hex": "7c80be8d13508972a01f9387"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 1488354417,
+      "data_hex": "7c80be8d13508972a01f9387",
+      "expected_value": 1488354417,
+      "expected_data_hex": "5880be8d13508972a01f9387"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 1488354417,
+      "data_hex": "7c80be8d13508972a01f9387",
+      "expected_value": 1488354417,
+      "expected_data_hex": "717cb65813508972a01f9387"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 1488354417,
+      "data_hex": "7c80be8d13508972a01f9387",
+      "expected_value": 2378072188,
+      "expected_data_hex": "7c80be8d13508972a01f9387"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 1488354417,
+      "data_hex": "7c80be8d13508972a01f9387",
+      "expected_value": 1488354417,
+      "expected_data_hex": "717cb65813508972a01f9387"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 1488354417,
+      "data_hex": "7c80be8d13508972a01f9387",
+      "expected_value": 2378072188,
+      "expected_data_hex": "7c80be8d13508972a01f9387"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 1488354417,
+      "data_hex": "7c80be8d13508972a01f9387",
+      "expected_value": 1488354417,
+      "expected_data_hex": "717cb65813508972a01f9387"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 3877813863,
+      "data_hex": "87503c901cd9c90b75785569",
+      "expected_value": 1351073383,
+      "expected_data_hex": "87503c901cd9c90b75785569"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 3877813863,
+      "data_hex": "87503c901cd9c90b75785569",
+      "expected_value": 3884989520,
+      "expected_data_hex": "87503c901cd9c90b75785569"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 3877813863,
+      "data_hex": "87503c901cd9c90b75785569",
+      "expected_value": 3877813863,
+      "expected_data_hex": "22e73c901cd9c90b75785569"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 3877813863,
+      "data_hex": "87503c901cd9c90b75785569",
+      "expected_value": 3877813863,
+      "expected_data_hex": "8767be221cd9c90b75785569"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 3877813863,
+      "data_hex": "87503c901cd9c90b75785569",
+      "expected_value": 479214672,
+      "expected_data_hex": "87503c901cd9c90b75785569"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 3877813863,
+      "data_hex": "87503c901cd9c90b75785569",
+      "expected_value": 3877813863,
+      "expected_data_hex": "8767be22e7d9c90b75785569"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 3877813863,
+      "data_hex": "87503c901cd9c90b75785569",
+      "expected_value": 479214672,
+      "expected_data_hex": "87503c901cd9c90b75785569"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 3877813863,
+      "data_hex": "87503c901cd9c90b75785569",
+      "expected_value": 3877813863,
+      "expected_data_hex": "8767be22e7d9c90b75785569"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 1763119294,
+      "data_hex": "d77ed274448e6ccb8dc4d314",
+      "expected_value": 3531528126,
+      "expected_data_hex": "d77ed274448e6ccb8dc4d314"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 1763119294,
+      "data_hex": "d77ed274448e6ccb8dc4d314",
+      "expected_value": 1763144914,
+      "expected_data_hex": "d77ed274448e6ccb8dc4d314"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 1763119294,
+      "data_hex": "d77ed274448e6ccb8dc4d314",
+      "expected_value": 1763119294,
+      "expected_data_hex": "10176974448e6ccb8dc4d314"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 1763119294,
+      "data_hex": "d77ed274448e6ccb8dc4d314",
+      "expected_value": 1763119294,
+      "expected_data_hex": "d77ebe10448e6ccb8dc4d314"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 1763119294,
+      "data_hex": "d77ed274448e6ccb8dc4d314",
+      "expected_value": 2386851026,
+      "expected_data_hex": "d77ed274448e6ccb8dc4d314"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 1763119294,
+      "data_hex": "d77ed274448e6ccb8dc4d314",
+      "expected_value": 1763119294,
+      "expected_data_hex": "d77ebe1017696ccb8dc4d314"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 1763119294,
+      "data_hex": "d77ed274448e6ccb8dc4d314",
+      "expected_value": 2386851026,
+      "expected_data_hex": "d77ed274448e6ccb8dc4d314"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 1763119294,
+      "data_hex": "d77ed274448e6ccb8dc4d314",
+      "expected_value": 1763119294,
+      "expected_data_hex": "d77ebe1017696ccb8dc4d314"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 1877243607,
+      "data_hex": "5f8dce07793b49e91f21586e",
+      "expected_value": 130977119,
+      "expected_data_hex": "5f8dce07793b49e91f21586e"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 1877243607,
+      "data_hex": "5f8dce07793b49e91f21586e",
+      "expected_value": 1877243399,
+      "expected_data_hex": "5f8dce07793b49e91f21586e"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 1877243607,
+      "data_hex": "5f8dce07793b49e91f21586e",
+      "expected_value": 1877243607,
+      "expected_data_hex": "d776e46f793b49e91f21586e"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 1877243607,
+      "data_hex": "5f8dce07793b49e91f21586e",
+      "expected_value": 1877243607,
+      "expected_data_hex": "5f8dced7793b49e91f21586e"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 1877243607,
+      "data_hex": "5f8dce07793b49e91f21586e",
+      "expected_value": 1228634375,
+      "expected_data_hex": "5f8dce07793b49e91f21586e"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 1877243607,
+      "data_hex": "5f8dce07793b49e91f21586e",
+      "expected_value": 1877243607,
+      "expected_data_hex": "5f8dced776e46fe91f21586e"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 1877243607,
+      "data_hex": "5f8dce07793b49e91f21586e",
+      "expected_value": 1228634375,
+      "expected_data_hex": "5f8dce07793b49e91f21586e"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 1877243607,
+      "data_hex": "5f8dce07793b49e91f21586e",
+      "expected_value": 1877243607,
+      "expected_data_hex": "5f8dced776e46fe91f21586e"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3462763430,
+      "data_hex": "2c8844422a7270ab03f9bd2b",
+      "expected_value": 744854438,
+      "expected_data_hex": "2c8844422a7270ab03f9bd2b"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3462763430,
+      "data_hex": "2c8844422a7270ab03f9bd2b",
+      "expected_value": 1111787564,
+      "expected_data_hex": "2c8844422a7270ab03f9bd2b"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3462763430,
+      "data_hex": "2c8844422a7270ab03f9bd2b",
+      "expected_value": 3462763430,
+      "expected_data_hex": "ce8844422a7270ab03f9bd2b"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3462763430,
+      "data_hex": "2c8844422a7270ab03f9bd2b",
+      "expected_value": 3462763430,
+      "expected_data_hex": "a69365ce2a7270ab03f9bd2b"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3462763430,
+      "data_hex": "2c8844422a7270ab03f9bd2b",
+      "expected_value": 1111787564,
+      "expected_data_hex": "2c8844422a7270ab03f9bd2b"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3462763430,
+      "data_hex": "2c8844422a7270ab03f9bd2b",
+      "expected_value": 3462763430,
+      "expected_data_hex": "a69365ce2a7270ab03f9bd2b"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3462763430,
+      "data_hex": "2c8844422a7270ab03f9bd2b",
+      "expected_value": 1111787564,
+      "expected_data_hex": "2c8844422a7270ab03f9bd2b"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3462763430,
+      "data_hex": "2c8844422a7270ab03f9bd2b",
+      "expected_value": 3462763430,
+      "expected_data_hex": "a69365ce2a7270ab03f9bd2b"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 1079942913,
+      "data_hex": "77d335f5d7fffa94e28de7d7",
+      "expected_value": 3547832065,
+      "expected_data_hex": "77d335f5d7fffa94e28de7d7"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 1079942913,
+      "data_hex": "77d335f5d7fffa94e28de7d7",
+      "expected_value": 1089811923,
+      "expected_data_hex": "77d335f5d7fffa94e28de7d7"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 1079942913,
+      "data_hex": "77d335f5d7fffa94e28de7d7",
+      "expected_value": 1079942913,
+      "expected_data_hex": "5e4035f5d7fffa94e28de7d7"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 1079942913,
+      "data_hex": "77d335f5d7fffa94e28de7d7",
+      "expected_value": 1079942913,
+      "expected_data_hex": "77019f5ed7fffa94e28de7d7"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 1079942913,
+      "data_hex": "77d335f5d7fffa94e28de7d7",
+      "expected_value": 3623171539,
+      "expected_data_hex": "77d335f5d7fffa94e28de7d7"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 1079942913,
+      "data_hex": "77d335f5d7fffa94e28de7d7",
+      "expected_value": 1079942913,
+      "expected_data_hex": "77019f5e40fffa94e28de7d7"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 1079942913,
+      "data_hex": "77d335f5d7fffa94e28de7d7",
+      "expected_value": 3623171539,
+      "expected_data_hex": "77d335f5d7fffa94e28de7d7"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 1079942913,
+      "data_hex": "77d335f5d7fffa94e28de7d7",
+      "expected_value": 1079942913,
+      "expected_data_hex": "77019f5e40fffa94e28de7d7"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 1756630457,
+      "data_hex": "feb00885108bc724c5b4105a",
+      "expected_value": 145817273,
+      "expected_data_hex": "feb00885108bc724c5b4105a"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 1756630457,
+      "data_hex": "feb00885108bc724c5b4105a",
+      "expected_value": 1756661000,
+      "expected_data_hex": "feb00885108bc724c5b4105a"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 1756630457,
+      "data_hex": "feb00885108bc724c5b4105a",
+      "expected_value": 1756630457,
+      "expected_data_hex": "0db46885108bc724c5b4105a"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 1756630457,
+      "data_hex": "feb00885108bc724c5b4105a",
+      "expected_value": 1756630457,
+      "expected_data_hex": "feb0b90d108bc724c5b4105a"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 1756630457,
+      "data_hex": "feb00885108bc724c5b4105a",
+      "expected_value": 2333115656,
+      "expected_data_hex": "feb00885108bc724c5b4105a"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 1756630457,
+      "data_hex": "feb00885108bc724c5b4105a",
+      "expected_value": 1756630457,
+      "expected_data_hex": "feb0b90db468c724c5b4105a"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 1756630457,
+      "data_hex": "feb00885108bc724c5b4105a",
+      "expected_value": 2333115656,
+      "expected_data_hex": "feb00885108bc724c5b4105a"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 1756630457,
+      "data_hex": "feb00885108bc724c5b4105a",
+      "expected_value": 1756630457,
+      "expected_data_hex": "feb0b90db468c724c5b4105a"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 889355131,
+      "data_hex": "8fbc228ebe0453ca0b9c0481",
+      "expected_value": 2384641167,
+      "expected_data_hex": "8fbc228ebe0453ca0b9c0481"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 889355131,
+      "data_hex": "8fbc228ebe0453ca0b9c0481",
+      "expected_value": 889355150,
+      "expected_data_hex": "8fbc228ebe0453ca0b9c0481"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 889355131,
+      "data_hex": "8fbc228ebe0453ca0b9c0481",
+      "expected_value": 889355131,
+      "expected_data_hex": "7b7b0235be0453ca0b9c0481"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 889355131,
+      "data_hex": "8fbc228ebe0453ca0b9c0481",
+      "expected_value": 889355131,
+      "expected_data_hex": "8fbc227bbe0453ca0b9c0481"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 889355131,
+      "data_hex": "8fbc228ebe0453ca0b9c0481",
+      "expected_value": 1392819854,
+      "expected_data_hex": "8fbc228ebe0453ca0b9c0481"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 889355131,
+      "data_hex": "8fbc228ebe0453ca0b9c0481",
+      "expected_value": 889355131,
+      "expected_data_hex": "8fbc227b7b0235ca0b9c0481"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 889355131,
+      "data_hex": "8fbc228ebe0453ca0b9c0481",
+      "expected_value": 1392819854,
+      "expected_data_hex": "8fbc228ebe0453ca0b9c0481"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 889355131,
+      "data_hex": "8fbc228ebe0453ca0b9c0481",
+      "expected_value": 889355131,
+      "expected_data_hex": "8fbc227b7b0235ca0b9c0481"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3534002720,
+      "data_hex": "cf559c25141abf84c77aaf40",
+      "expected_value": 3483671072,
+      "expected_data_hex": "cf559c25141abf84c77aaf40"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3534002720,
+      "data_hex": "cf559c25141abf84c77aaf40",
+      "expected_value": 631002575,
+      "expected_data_hex": "cf559c25141abf84c77aaf40"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3534002720,
+      "data_hex": "cf559c25141abf84c77aaf40",
+      "expected_value": 3534002720,
+      "expected_data_hex": "d2559c25141abf84c77aaf40"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3534002720,
+      "data_hex": "cf559c25141abf84c77aaf40",
+      "expected_value": 3534002720,
+      "expected_data_hex": "209aa4d2141abf84c77aaf40"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3534002720,
+      "data_hex": "cf559c25141abf84c77aaf40",
+      "expected_value": 631002575,
+      "expected_data_hex": "cf559c25141abf84c77aaf40"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3534002720,
+      "data_hex": "cf559c25141abf84c77aaf40",
+      "expected_value": 3534002720,
+      "expected_data_hex": "209aa4d2141abf84c77aaf40"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3534002720,
+      "data_hex": "cf559c25141abf84c77aaf40",
+      "expected_value": 631002575,
+      "expected_data_hex": "cf559c25141abf84c77aaf40"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3534002720,
+      "data_hex": "cf559c25141abf84c77aaf40",
+      "expected_value": 3534002720,
+      "expected_data_hex": "209aa4d2141abf84c77aaf40"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 1417499353,
+      "data_hex": "c9e98c341aef88ae153622b5",
+      "expected_value": 3922285273,
+      "expected_data_hex": "c9e98c341aef88ae153622b5"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 1417499353,
+      "data_hex": "c9e98c341aef88ae153622b5",
+      "expected_value": 1412730089,
+      "expected_data_hex": "c9e98c341aef88ae153622b5"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 1417499353,
+      "data_hex": "c9e98c341aef88ae153622b5",
+      "expected_value": 1417499353,
+      "expected_data_hex": "7d548c341aef88ae153622b5"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 1417499353,
+      "data_hex": "c9e98c341aef88ae153622b5",
+      "expected_value": 1417499353,
+      "expected_data_hex": "c9d9527d1aef88ae153622b5"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 1417499353,
+      "data_hex": "c9e98c341aef88ae153622b5",
+      "expected_value": 439651561,
+      "expected_data_hex": "c9e98c341aef88ae153622b5"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 1417499353,
+      "data_hex": "c9e98c341aef88ae153622b5",
+      "expected_value": 1417499353,
+      "expected_data_hex": "c9d9527d54ef88ae153622b5"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 1417499353,
+      "data_hex": "c9e98c341aef88ae153622b5",
+      "expected_value": 439651561,
+      "expected_data_hex": "c9e98c341aef88ae153622b5"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 1417499353,
+      "data_hex": "c9e98c341aef88ae153622b5",
+      "expected_value": 1417499353,
+      "expected_data_hex": "c9d9527d54ef88ae153622b5"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 289162401,
+      "data_hex": "38f722c31046bec6c56643cf",
+      "expected_value": 586627233,
+      "expected_data_hex": "38f722c31046bec6c56643cf"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 289162401,
+      "data_hex": "38f722c31046bec6c56643cf",
+      "expected_value": 289194786,
+      "expected_data_hex": "38f722c31046bec6c56643cf"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 289162401,
+      "data_hex": "38f722c31046bec6c56643cf",
+      "expected_value": 289162401,
+      "expected_data_hex": "443c11c31046bec6c56643cf"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 289162401,
+      "data_hex": "38f722c31046bec6c56643cf",
+      "expected_value": 289162401,
+      "expected_data_hex": "38f7a1441046bec6c56643cf"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 289162401,
+      "data_hex": "38f722c31046bec6c56643cf",
+      "expected_value": 1175503650,
+      "expected_data_hex": "38f722c31046bec6c56643cf"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 289162401,
+      "data_hex": "38f722c31046bec6c56643cf",
+      "expected_value": 289162401,
+      "expected_data_hex": "38f7a1443c11bec6c56643cf"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 289162401,
+      "data_hex": "38f722c31046bec6c56643cf",
+      "expected_value": 1175503650,
+      "expected_data_hex": "38f722c31046bec6c56643cf"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 289162401,
+      "data_hex": "38f722c31046bec6c56643cf",
+      "expected_value": 289162401,
+      "expected_data_hex": "38f7a1443c11bec6c56643cf"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 1866407198,
+      "data_hex": "a2cb9573284a22b6ecd84173",
+      "expected_value": 1939196834,
+      "expected_data_hex": "a2cb9573284a22b6ecd84173"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 1866407198,
+      "data_hex": "a2cb9573284a22b6ecd84173",
+      "expected_value": 1866407283,
+      "expected_data_hex": "a2cb9573284a22b6ecd84173"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 1866407198,
+      "data_hex": "a2cb9573284a22b6ecd84173",
+      "expected_value": 1866407198,
+      "expected_data_hex": "1e1d3f6f284a22b6ecd84173"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 1866407198,
+      "data_hex": "a2cb9573284a22b6ecd84173",
+      "expected_value": 1866407198,
+      "expected_data_hex": "a2cb951e284a22b6ecd84173"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 1866407198,
+      "data_hex": "a2cb9573284a22b6ecd84173",
+      "expected_value": 575285363,
+      "expected_data_hex": "a2cb9573284a22b6ecd84173"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 1866407198,
+      "data_hex": "a2cb9573284a22b6ecd84173",
+      "expected_value": 1866407198,
+      "expected_data_hex": "a2cb951e1d3f6fb6ecd84173"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 1866407198,
+      "data_hex": "a2cb9573284a22b6ecd84173",
+      "expected_value": 575285363,
+      "expected_data_hex": "a2cb9573284a22b6ecd84173"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 1866407198,
+      "data_hex": "a2cb9573284a22b6ecd84173",
+      "expected_value": 1866407198,
+      "expected_data_hex": "a2cb951e1d3f6fb6ecd84173"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3814886483,
+      "data_hex": "a1bc0f38f1fe78702f1f1e33",
+      "expected_value": 2707590227,
+      "expected_data_hex": "a1bc0f38f1fe78702f1f1e33"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3814886483,
+      "data_hex": "a1bc0f38f1fe78702f1f1e33",
+      "expected_value": 940555425,
+      "expected_data_hex": "a1bc0f38f1fe78702f1f1e33"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3814886483,
+      "data_hex": "a1bc0f38f1fe78702f1f1e33",
+      "expected_value": 3814886483,
+      "expected_data_hex": "e3bc0f38f1fe78702f1f1e33"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3814886483,
+      "data_hex": "a1bc0f38f1fe78702f1f1e33",
+      "expected_value": 3814886483,
+      "expected_data_hex": "538c62e3f1fe78702f1f1e33"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3814886483,
+      "data_hex": "a1bc0f38f1fe78702f1f1e33",
+      "expected_value": 940555425,
+      "expected_data_hex": "a1bc0f38f1fe78702f1f1e33"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3814886483,
+      "data_hex": "a1bc0f38f1fe78702f1f1e33",
+      "expected_value": 3814886483,
+      "expected_data_hex": "538c62e3f1fe78702f1f1e33"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3814886483,
+      "data_hex": "a1bc0f38f1fe78702f1f1e33",
+      "expected_value": 940555425,
+      "expected_data_hex": "a1bc0f38f1fe78702f1f1e33"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3814886483,
+      "data_hex": "a1bc0f38f1fe78702f1f1e33",
+      "expected_value": 3814886483,
+      "expected_data_hex": "538c62e3f1fe78702f1f1e33"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 456199245,
+      "data_hex": "deebdfe76f59d52f58debc12",
+      "expected_value": 3957197901,
+      "expected_data_hex": "deebdfe76f59d52f58debc12"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 456199245,
+      "data_hex": "deebdfe76f59d52f58debc12",
+      "expected_value": 468180971,
+      "expected_data_hex": "deebdfe76f59d52f58debc12"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 456199245,
+      "data_hex": "deebdfe76f59d52f58debc12",
+      "expected_value": 456199245,
+      "expected_data_hex": "311bdfe76f59d52f58debc12"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 456199245,
+      "data_hex": "deebdfe76f59d52f58debc12",
+      "expected_value": 456199245,
+      "expected_data_hex": "de4d0c316f59d52f58debc12"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 456199245,
+      "data_hex": "deebdfe76f59d52f58debc12",
+      "expected_value": 1877467115,
+      "expected_data_hex": "deebdfe76f59d52f58debc12"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 456199245,
+      "data_hex": "deebdfe76f59d52f58debc12",
+      "expected_value": 456199245,
+      "expected_data_hex": "de4d0c311b59d52f58debc12"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 456199245,
+      "data_hex": "deebdfe76f59d52f58debc12",
+      "expected_value": 1877467115,
+      "expected_data_hex": "deebdfe76f59d52f58debc12"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 456199245,
+      "data_hex": "deebdfe76f59d52f58debc12",
+      "expected_value": 456199245,
+      "expected_data_hex": "de4d0c311b59d52f58debc12"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 1250958225,
+      "data_hex": "c828e45378ec43e3cc18ea3e",
+      "expected_value": 3827878033,
+      "expected_data_hex": "c828e45378ec43e3cc18ea3e"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 1250958225,
+      "data_hex": "c828e45378ec43e3cc18ea3e",
+      "expected_value": 1250972644,
+      "expected_data_hex": "c828e45378ec43e3cc18ea3e"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 1250958225,
+      "data_hex": "c828e45378ec43e3cc18ea3e",
+      "expected_value": 1250958225,
+      "expected_data_hex": "1b904a5378ec43e3cc18ea3e"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 1250958225,
+      "data_hex": "c828e45378ec43e3cc18ea3e",
+      "expected_value": 1250958225,
+      "expected_data_hex": "c828911b78ec43e3cc18ea3e"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 1250958225,
+      "data_hex": "c828e45378ec43e3cc18ea3e",
+      "expected_value": 3967308772,
+      "expected_data_hex": "c828e45378ec43e3cc18ea3e"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 1250958225,
+      "data_hex": "c828e45378ec43e3cc18ea3e",
+      "expected_value": 1250958225,
+      "expected_data_hex": "c828911b904a43e3cc18ea3e"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 1250958225,
+      "data_hex": "c828e45378ec43e3cc18ea3e",
+      "expected_value": 3967308772,
+      "expected_data_hex": "c828e45378ec43e3cc18ea3e"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 1250958225,
+      "data_hex": "c828e45378ec43e3cc18ea3e",
+      "expected_value": 1250958225,
+      "expected_data_hex": "c828911b904a43e3cc18ea3e"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 3862923,
+      "data_hex": "547759114418731222625654",
+      "expected_value": 291075924,
+      "expected_data_hex": "547759114418731222625654"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 3862923,
+      "data_hex": "547759114418731222625654",
+      "expected_value": 3862801,
+      "expected_data_hex": "547759114418731222625654"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 3862923,
+      "data_hex": "547759114418731222625654",
+      "expected_value": 3862923,
+      "expected_data_hex": "8bf13a004418731222625654"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 3862923,
+      "data_hex": "547759114418731222625654",
+      "expected_value": 3862923,
+      "expected_data_hex": "5477598b4418731222625654"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 3862923,
+      "data_hex": "547759114418731222625654",
+      "expected_value": 1930970129,
+      "expected_data_hex": "547759114418731222625654"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 3862923,
+      "data_hex": "547759114418731222625654",
+      "expected_value": 3862923,
+      "expected_data_hex": "5477598bf13a001222625654"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 3862923,
+      "data_hex": "547759114418731222625654",
+      "expected_value": 1930970129,
+      "expected_data_hex": "547759114418731222625654"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 3862923,
+      "data_hex": "547759114418731222625654",
+      "expected_value": 3862923,
+      "expected_data_hex": "5477598bf13a001222625654"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 2919012512,
+      "data_hex": "b0b3f48fa08e9141f5b5c248",
+      "expected_value": 2969344160,
+      "expected_data_hex": "b0b3f48fa08e9141f5b5c248"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 2919012512,
+      "data_hex": "b0b3f48fa08e9141f5b5c248",
+      "expected_value": 2415178672,
+      "expected_data_hex": "b0b3f48fa08e9141f5b5c248"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 2919012512,
+      "data_hex": "b0b3f48fa08e9141f5b5c248",
+      "expected_value": 2919012512,
+      "expected_data_hex": "adb3f48fa08e9141f5b5c248"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 2919012512,
+      "data_hex": "b0b3f48fa08e9141f5b5c248",
+      "expected_value": 2919012512,
+      "expected_data_hex": "a098fcada08e9141f5b5c248"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 2919012512,
+      "data_hex": "b0b3f48fa08e9141f5b5c248",
+      "expected_value": 2415178672,
+      "expected_data_hex": "b0b3f48fa08e9141f5b5c248"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 2919012512,
+      "data_hex": "b0b3f48fa08e9141f5b5c248",
+      "expected_value": 2919012512,
+      "expected_data_hex": "a098fcada08e9141f5b5c248"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 2919012512,
+      "data_hex": "b0b3f48fa08e9141f5b5c248",
+      "expected_value": 2415178672,
+      "expected_data_hex": "b0b3f48fa08e9141f5b5c248"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 2919012512,
+      "data_hex": "b0b3f48fa08e9141f5b5c248",
+      "expected_value": 2919012512,
+      "expected_data_hex": "a098fcada08e9141f5b5c248"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 2707312209,
+      "data_hex": "9e1c2b8ba0124f22ed36bfc9",
+      "expected_value": 480136785,
+      "expected_data_hex": "9e1c2b8ba0124f22ed36bfc9"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 2707312209,
+      "data_hex": "9e1c2b8ba0124f22ed36bfc9",
+      "expected_value": 2710252316,
+      "expected_data_hex": "9e1c2b8ba0124f22ed36bfc9"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 2707312209,
+      "data_hex": "9e1c2b8ba0124f22ed36bfc9",
+      "expected_value": 2707312209,
+      "expected_data_hex": "5ea12b8ba0124f22ed36bfc9"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 2707312209,
+      "data_hex": "9e1c2b8ba0124f22ed36bfc9",
+      "expected_value": 2707312209,
+      "expected_data_hex": "9e514e5ea0124f22ed36bfc9"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 2707312209,
+      "data_hex": "9e1c2b8ba0124f22ed36bfc9",
+      "expected_value": 2693475100,
+      "expected_data_hex": "9e1c2b8ba0124f22ed36bfc9"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 2707312209,
+      "data_hex": "9e1c2b8ba0124f22ed36bfc9",
+      "expected_value": 2707312209,
+      "expected_data_hex": "9e514e5ea1124f22ed36bfc9"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 2707312209,
+      "data_hex": "9e1c2b8ba0124f22ed36bfc9",
+      "expected_value": 2693475100,
+      "expected_data_hex": "9e1c2b8ba0124f22ed36bfc9"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 2707312209,
+      "data_hex": "9e1c2b8ba0124f22ed36bfc9",
+      "expected_value": 2707312209,
+      "expected_data_hex": "9e514e5ea1124f22ed36bfc9"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 2708192788,
+      "data_hex": "d05e371fe7c9e8a9ca672cdf",
+      "expected_value": 928960532,
+      "expected_data_hex": "d05e371fe7c9e8a9ca672cdf"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 2708192788,
+      "data_hex": "d05e371fe7c9e8a9ca672cdf",
+      "expected_value": 2708152119,
+      "expected_data_hex": "d05e371fe7c9e8a9ca672cdf"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 2708192788,
+      "data_hex": "d05e371fe7c9e8a9ca672cdf",
+      "expected_value": 2708192788,
+      "expected_data_hex": "be6ba11fe7c9e8a9ca672cdf"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 2708192788,
+      "data_hex": "d05e371fe7c9e8a9ca672cdf",
+      "expected_value": 2708192788,
+      "expected_data_hex": "d05e14bee7c9e8a9ca672cdf"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 2708192788,
+      "data_hex": "d05e371fe7c9e8a9ca672cdf",
+      "expected_value": 3387367223,
+      "expected_data_hex": "d05e371fe7c9e8a9ca672cdf"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 2708192788,
+      "data_hex": "d05e371fe7c9e8a9ca672cdf",
+      "expected_value": 2708192788,
+      "expected_data_hex": "d05e14be6ba1e8a9ca672cdf"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 2708192788,
+      "data_hex": "d05e371fe7c9e8a9ca672cdf",
+      "expected_value": 3387367223,
+      "expected_data_hex": "d05e371fe7c9e8a9ca672cdf"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 2708192788,
+      "data_hex": "d05e371fe7c9e8a9ca672cdf",
+      "expected_value": 2708192788,
+      "expected_data_hex": "d05e14be6ba1e8a9ca672cdf"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 938101033,
+      "data_hex": "ce43638a1a7774f22e8c69ed",
+      "expected_value": 2321761230,
+      "expected_data_hex": "ce43638a1a7774f22e8c69ed"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 938101033,
+      "data_hex": "ce43638a1a7774f22e8c69ed",
+      "expected_value": 938101130,
+      "expected_data_hex": "ce43638a1a7774f22e8c69ed"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 938101033,
+      "data_hex": "ce43638a1a7774f22e8c69ed",
+      "expected_value": 938101033,
+      "expected_data_hex": "2949ea371a7774f22e8c69ed"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 938101033,
+      "data_hex": "ce43638a1a7774f22e8c69ed",
+      "expected_value": 938101033,
+      "expected_data_hex": "ce4363291a7774f22e8c69ed"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 938101033,
+      "data_hex": "ce43638a1a7774f22e8c69ed",
+      "expected_value": 1953962634,
+      "expected_data_hex": "ce43638a1a7774f22e8c69ed"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 938101033,
+      "data_hex": "ce43638a1a7774f22e8c69ed",
+      "expected_value": 938101033,
+      "expected_data_hex": "ce43632949ea37f22e8c69ed"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 938101033,
+      "data_hex": "ce43638a1a7774f22e8c69ed",
+      "expected_value": 1953962634,
+      "expected_data_hex": "ce43638a1a7774f22e8c69ed"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 938101033,
+      "data_hex": "ce43638a1a7774f22e8c69ed",
+      "expected_value": 938101033,
+      "expected_data_hex": "ce43632949ea37f22e8c69ed"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 513912988,
+      "data_hex": "31af91751b106e9507823e70",
+      "expected_value": 832680092,
+      "expected_data_hex": "31af91751b106e9507823e70"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 513912988,
+      "data_hex": "31af91751b106e9507823e70",
+      "expected_value": 1972481841,
+      "expected_data_hex": "31af91751b106e9507823e70"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 513912988,
+      "data_hex": "31af91751b106e9507823e70",
+      "expected_value": 513912988,
+      "expected_data_hex": "1eaf91751b106e9507823e70"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 513912988,
+      "data_hex": "31af91751b106e9507823e70",
+      "expected_value": 513912988,
+      "expected_data_hex": "9cb0a11e1b106e9507823e70"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 513912988,
+      "data_hex": "31af91751b106e9507823e70",
+      "expected_value": 1972481841,
+      "expected_data_hex": "31af91751b106e9507823e70"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 513912988,
+      "data_hex": "31af91751b106e9507823e70",
+      "expected_value": 513912988,
+      "expected_data_hex": "9cb0a11e1b106e9507823e70"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 513912988,
+      "data_hex": "31af91751b106e9507823e70",
+      "expected_value": 1972481841,
+      "expected_data_hex": "31af91751b106e9507823e70"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 513912988,
+      "data_hex": "31af91751b106e9507823e70",
+      "expected_value": 513912988,
+      "expected_data_hex": "9cb0a11e1b106e9507823e70"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 1844971071,
+      "data_hex": "700f3afbe5792f3e2ce66827",
+      "expected_value": 258999871,
+      "expected_data_hex": "700f3afbe5792f3e2ce66827"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 1844971071,
+      "data_hex": "700f3afbe5792f3e2ce66827",
+      "expected_value": 1845180943,
+      "expected_data_hex": "700f3afbe5792f3e2ce66827"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 1844971071,
+      "data_hex": "700f3afbe5792f3e2ce66827",
+      "expected_value": 1844971071,
+      "expected_data_hex": "f86d3afbe5792f3e2ce66827"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 1844971071,
+      "data_hex": "700f3afbe5792f3e2ce66827",
+      "expected_value": 1844971071,
+      "expected_data_hex": "703f06f8e5792f3e2ce66827"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 1844971071,
+      "data_hex": "700f3afbe5792f3e2ce66827",
+      "expected_value": 3858446863,
+      "expected_data_hex": "700f3afbe5792f3e2ce66827"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 1844971071,
+      "data_hex": "700f3afbe5792f3e2ce66827",
+      "expected_value": 1844971071,
+      "expected_data_hex": "703f06f86d792f3e2ce66827"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 1844971071,
+      "data_hex": "700f3afbe5792f3e2ce66827",
+      "expected_value": 3858446863,
+      "expected_data_hex": "700f3afbe5792f3e2ce66827"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 1844971071,
+      "data_hex": "700f3afbe5792f3e2ce66827",
+      "expected_value": 1844971071,
+      "expected_data_hex": "703f06f86d792f3e2ce66827"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 2272958468,
+      "data_hex": "b0adbf6014eb101171d6151b",
+      "expected_value": 3215831044,
+      "expected_data_hex": "b0adbf6014eb101171d6151b"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 2272958468,
+      "data_hex": "b0adbf6014eb101171d6151b",
+      "expected_value": 2272944319,
+      "expected_data_hex": "b0adbf6014eb101171d6151b"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 2272958468,
+      "data_hex": "b0adbf6014eb101171d6151b",
+      "expected_value": 2272958468,
+      "expected_data_hex": "987a876014eb101171d6151b"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 2272958468,
+      "data_hex": "b0adbf6014eb101171d6151b",
+      "expected_value": 2272958468,
+      "expected_data_hex": "b0ad049814eb101171d6151b"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 2272958468,
+      "data_hex": "b0adbf6014eb101171d6151b",
+      "expected_value": 3943981247,
+      "expected_data_hex": "b0adbf6014eb101171d6151b"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 2272958468,
+      "data_hex": "b0adbf6014eb101171d6151b",
+      "expected_value": 2272958468,
+      "expected_data_hex": "b0ad04987a87101171d6151b"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 2272958468,
+      "data_hex": "b0adbf6014eb101171d6151b",
+      "expected_value": 3943981247,
+      "expected_data_hex": "b0adbf6014eb101171d6151b"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 2272958468,
+      "data_hex": "b0adbf6014eb101171d6151b",
+      "expected_value": 2272958468,
+      "expected_data_hex": "b0ad04987a87101171d6151b"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 359656592,
+      "data_hex": "bf2e1d565d66b033d7c27f27",
+      "expected_value": 1444753087,
+      "expected_data_hex": "bf2e1d565d66b033d7c27f27"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 359656592,
+      "data_hex": "bf2e1d565d66b033d7c27f27",
+      "expected_value": 359656534,
+      "expected_data_hex": "bf2e1d565d66b033d7c27f27"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 359656592,
+      "data_hex": "bf2e1d565d66b033d7c27f27",
+      "expected_value": 359656592,
+      "expected_data_hex": "90ec6f155d66b033d7c27f27"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 359656592,
+      "data_hex": "bf2e1d565d66b033d7c27f27",
+      "expected_value": 359656592,
+      "expected_data_hex": "bf2e1d905d66b033d7c27f27"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 359656592,
+      "data_hex": "bf2e1d565d66b033d7c27f27",
+      "expected_value": 2959498582,
+      "expected_data_hex": "bf2e1d565d66b033d7c27f27"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 359656592,
+      "data_hex": "bf2e1d565d66b033d7c27f27",
+      "expected_value": 359656592,
+      "expected_data_hex": "bf2e1d90ec6f1533d7c27f27"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 359656592,
+      "data_hex": "bf2e1d565d66b033d7c27f27",
+      "expected_value": 2959498582,
+      "expected_data_hex": "bf2e1d565d66b033d7c27f27"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 359656592,
+      "data_hex": "bf2e1d565d66b033d7c27f27",
+      "expected_value": 359656592,
+      "expected_data_hex": "bf2e1d90ec6f1533d7c27f27"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3613014081,
+      "data_hex": "0c2c53332a7a7b2b663d9b51",
+      "expected_value": 207239233,
+      "expected_data_hex": "0c2c53332a7a7b2b663d9b51"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3613014081,
+      "data_hex": "0c2c53332a7a7b2b663d9b51",
+      "expected_value": 861088780,
+      "expected_data_hex": "0c2c53332a7a7b2b663d9b51"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3613014081,
+      "data_hex": "0c2c53332a7a7b2b663d9b51",
+      "expected_value": 3613014081,
+      "expected_data_hex": "d72c53332a7a7b2b663d9b51"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3613014081,
+      "data_hex": "0c2c53332a7a7b2b663d9b51",
+      "expected_value": 3613014081,
+      "expected_data_hex": "41385ad72a7a7b2b663d9b51"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3613014081,
+      "data_hex": "0c2c53332a7a7b2b663d9b51",
+      "expected_value": 861088780,
+      "expected_data_hex": "0c2c53332a7a7b2b663d9b51"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3613014081,
+      "data_hex": "0c2c53332a7a7b2b663d9b51",
+      "expected_value": 3613014081,
+      "expected_data_hex": "41385ad72a7a7b2b663d9b51"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3613014081,
+      "data_hex": "0c2c53332a7a7b2b663d9b51",
+      "expected_value": 861088780,
+      "expected_data_hex": "0c2c53332a7a7b2b663d9b51"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3613014081,
+      "data_hex": "0c2c53332a7a7b2b663d9b51",
+      "expected_value": 3613014081,
+      "expected_data_hex": "41385ad72a7a7b2b663d9b51"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 3451360665,
+      "data_hex": "f93bfd8d1091ab77296f1507",
+      "expected_value": 1006212505,
+      "expected_data_hex": "f93bfd8d1091ab77296f1507"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 3451360665,
+      "data_hex": "f93bfd8d1091ab77296f1507",
+      "expected_value": 3448634683,
+      "expected_data_hex": "f93bfd8d1091ab77296f1507"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 3451360665,
+      "data_hex": "f93bfd8d1091ab77296f1507",
+      "expected_value": 3451360665,
+      "expected_data_hex": "b7cdfd8d1091ab77296f1507"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 3451360665,
+      "data_hex": "f93bfd8d1091ab77296f1507",
+      "expected_value": 3451360665,
+      "expected_data_hex": "f99995b71091ab77296f1507"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 3451360665,
+      "data_hex": "f93bfd8d1091ab77296f1507",
+      "expected_value": 277740859,
+      "expected_data_hex": "f93bfd8d1091ab77296f1507"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 3451360665,
+      "data_hex": "f93bfd8d1091ab77296f1507",
+      "expected_value": 3451360665,
+      "expected_data_hex": "f99995b7cd91ab77296f1507"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 3451360665,
+      "data_hex": "f93bfd8d1091ab77296f1507",
+      "expected_value": 277740859,
+      "expected_data_hex": "f93bfd8d1091ab77296f1507"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 3451360665,
+      "data_hex": "f93bfd8d1091ab77296f1507",
+      "expected_value": 3451360665,
+      "expected_data_hex": "f99995b7cd91ab77296f1507"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 3814667485,
+      "data_hex": "3b0b309c72046f9c1d83c3d1",
+      "expected_value": 806042589,
+      "expected_data_hex": "3b0b309c72046f9c1d83c3d1"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 3814667485,
+      "data_hex": "3b0b309c72046f9c1d83c3d1",
+      "expected_value": 3814693936,
+      "expected_data_hex": "3b0b309c72046f9c1d83c3d1"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 3814667485,
+      "data_hex": "3b0b309c72046f9c1d83c3d1",
+      "expected_value": 3814667485,
+      "expected_data_hex": "345fe39c72046f9c1d83c3d1"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 3814667485,
+      "data_hex": "3b0b309c72046f9c1d83c3d1",
+      "expected_value": 3814667485,
+      "expected_data_hex": "3b0bdd3472046f9c1d83c3d1"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 3814667485,
+      "data_hex": "3b0b309c72046f9c1d83c3d1",
+      "expected_value": 74619952,
+      "expected_data_hex": "3b0b309c72046f9c1d83c3d1"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 3814667485,
+      "data_hex": "3b0b309c72046f9c1d83c3d1",
+      "expected_value": 3814667485,
+      "expected_data_hex": "3b0bdd345fe36f9c1d83c3d1"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 3814667485,
+      "data_hex": "3b0b309c72046f9c1d83c3d1",
+      "expected_value": 74619952,
+      "expected_data_hex": "3b0b309c72046f9c1d83c3d1"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 3814667485,
+      "data_hex": "3b0b309c72046f9c1d83c3d1",
+      "expected_value": 3814667485,
+      "expected_data_hex": "3b0bdd345fe36f9c1d83c3d1"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 4056474820,
+      "data_hex": "e9531219e796edf9fcdd00d8",
+      "expected_value": 420631529,
+      "expected_data_hex": "e9531219e796edf9fcdd00d8"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 4056474820,
+      "data_hex": "e9531219e796edf9fcdd00d8",
+      "expected_value": 4056474649,
+      "expected_data_hex": "e9531219e796edf9fcdd00d8"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 4056474820,
+      "data_hex": "e9531219e796edf9fcdd00d8",
+      "expected_value": 4056474820,
+      "expected_data_hex": "c4e4c8f1e796edf9fcdd00d8"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 4056474820,
+      "data_hex": "e9531219e796edf9fcdd00d8",
+      "expected_value": 4056474820,
+      "expected_data_hex": "e95312c4e796edf9fcdd00d8"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 4056474820,
+      "data_hex": "e9531219e796edf9fcdd00d8",
+      "expected_value": 3986089753,
+      "expected_data_hex": "e9531219e796edf9fcdd00d8"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 4056474820,
+      "data_hex": "e9531219e796edf9fcdd00d8",
+      "expected_value": 4056474820,
+      "expected_data_hex": "e95312c4e4c8f1f9fcdd00d8"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 4056474820,
+      "data_hex": "e9531219e796edf9fcdd00d8",
+      "expected_value": 3986089753,
+      "expected_data_hex": "e9531219e796edf9fcdd00d8"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 4056474820,
+      "data_hex": "e9531219e796edf9fcdd00d8",
+      "expected_value": 4056474820,
+      "expected_data_hex": "e95312c4e4c8f1f9fcdd00d8"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 4268612637,
+      "data_hex": "5024c461ae74354ce6481f55",
+      "expected_value": 1349377053,
+      "expected_data_hex": "5024c461ae74354ce6481f55"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 4268612637,
+      "data_hex": "5024c461ae74354ce6481f55",
+      "expected_value": 1640244304,
+      "expected_data_hex": "5024c461ae74354ce6481f55"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 4268612637,
+      "data_hex": "5024c461ae74354ce6481f55",
+      "expected_value": 4268612637,
+      "expected_data_hex": "fe24c461ae74354ce6481f55"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 4268612637,
+      "data_hex": "5024c461ae74354ce6481f55",
+      "expected_value": 4268612637,
+      "expected_data_hex": "1ddc6dfeae74354ce6481f55"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 4268612637,
+      "data_hex": "5024c461ae74354ce6481f55",
+      "expected_value": 1640244304,
+      "expected_data_hex": "5024c461ae74354ce6481f55"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 4268612637,
+      "data_hex": "5024c461ae74354ce6481f55",
+      "expected_value": 4268612637,
+      "expected_data_hex": "1ddc6dfeae74354ce6481f55"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 4268612637,
+      "data_hex": "5024c461ae74354ce6481f55",
+      "expected_value": 1640244304,
+      "expected_data_hex": "5024c461ae74354ce6481f55"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 4268612637,
+      "data_hex": "5024c461ae74354ce6481f55",
+      "expected_value": 4268612637,
+      "expected_data_hex": "1ddc6dfeae74354ce6481f55"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 2723884341,
+      "data_hex": "eb3637fd964e983c6c5ce2b7",
+      "expected_value": 921382197,
+      "expected_data_hex": "eb3637fd964e983c6c5ce2b7"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 2723884341,
+      "data_hex": "eb3637fd964e983c6c5ce2b7",
+      "expected_value": 2734503734,
+      "expected_data_hex": "eb3637fd964e983c6c5ce2b7"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 2723884341,
+      "data_hex": "eb3637fd964e983c6c5ce2b7",
+      "expected_value": 2723884341,
+      "expected_data_hex": "5ba237fd964e983c6c5ce2b7"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 2723884341,
+      "data_hex": "eb3637fd964e983c6c5ce2b7",
+      "expected_value": 2723884341,
+      "expected_data_hex": "eb352d5b964e983c6c5ce2b7"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 2723884341,
+      "data_hex": "eb3637fd964e983c6c5ce2b7",
+      "expected_value": 2533177142,
+      "expected_data_hex": "eb3637fd964e983c6c5ce2b7"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 2723884341,
+      "data_hex": "eb3637fd964e983c6c5ce2b7",
+      "expected_value": 2723884341,
+      "expected_data_hex": "eb352d5ba24e983c6c5ce2b7"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 2723884341,
+      "data_hex": "eb3637fd964e983c6c5ce2b7",
+      "expected_value": 2533177142,
+      "expected_data_hex": "eb3637fd964e983c6c5ce2b7"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 2723884341,
+      "data_hex": "eb3637fd964e983c6c5ce2b7",
+      "expected_value": 2723884341,
+      "expected_data_hex": "eb352d5ba24e983c6c5ce2b7"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 3953113206,
+      "data_hex": "46331566c58a7fb2bab37a62",
+      "expected_value": 355681910,
+      "expected_data_hex": "46331566c58a7fb2bab37a62"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 3953113206,
+      "data_hex": "46331566c58a7fb2bab37a62",
+      "expected_value": 3953092117,
+      "expected_data_hex": "46331566c58a7fb2bab37a62"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 3953113206,
+      "data_hex": "46331566c58a7fb2bab37a62",
+      "expected_value": 3953113206,
+      "expected_data_hex": "b89feb66c58a7fb2bab37a62"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 3953113206,
+      "data_hex": "46331566c58a7fb2bab37a62",
+      "expected_value": 3953113206,
+      "expected_data_hex": "463376b8c58a7fb2bab37a62"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 3953113206,
+      "data_hex": "46331566c58a7fb2bab37a62",
+      "expected_value": 2328192533,
+      "expected_data_hex": "46331566c58a7fb2bab37a62"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 3953113206,
+      "data_hex": "46331566c58a7fb2bab37a62",
+      "expected_value": 3953113206,
+      "expected_data_hex": "463376b89feb7fb2bab37a62"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 3953113206,
+      "data_hex": "46331566c58a7fb2bab37a62",
+      "expected_value": 2328192533,
+      "expected_data_hex": "46331566c58a7fb2bab37a62"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 3953113206,
+      "data_hex": "46331566c58a7fb2bab37a62",
+      "expected_value": 3953113206,
+      "expected_data_hex": "463376b89feb7fb2bab37a62"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 168701974,
+      "data_hex": "80b2c06acd348347026cc811",
+      "expected_value": 1791013504,
+      "expected_data_hex": "80b2c06acd348347026cc811"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 168701974,
+      "data_hex": "80b2c06acd348347026cc811",
+      "expected_value": 168702058,
+      "expected_data_hex": "80b2c06acd348347026cc811"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 168701974,
+      "data_hex": "80b2c06acd348347026cc811",
+      "expected_value": 168701974,
+      "expected_data_hex": "16300e0acd348347026cc811"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 168701974,
+      "data_hex": "80b2c06acd348347026cc811",
+      "expected_value": 168701974,
+      "expected_data_hex": "80b2c016cd348347026cc811"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 168701974,
+      "data_hex": "80b2c06acd348347026cc811",
+      "expected_value": 2201275754,
+      "expected_data_hex": "80b2c06acd348347026cc811"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 168701974,
+      "data_hex": "80b2c06acd348347026cc811",
+      "expected_value": 168701974,
+      "expected_data_hex": "80b2c016300e0a47026cc811"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 168701974,
+      "data_hex": "80b2c06acd348347026cc811",
+      "expected_value": 2201275754,
+      "expected_data_hex": "80b2c06acd348347026cc811"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 168701974,
+      "data_hex": "80b2c06acd348347026cc811",
+      "expected_value": 168701974,
+      "expected_data_hex": "80b2c016300e0a47026cc811"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 2227357092,
+      "data_hex": "a8d9f9fbed3d88b112ee7e27",
+      "expected_value": 2831336868,
+      "expected_data_hex": "a8d9f9fbed3d88b112ee7e27"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 2227357092,
+      "data_hex": "a8d9f9fbed3d88b112ee7e27",
+      "expected_value": 4227455400,
+      "expected_data_hex": "a8d9f9fbed3d88b112ee7e27"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 2227357092,
+      "data_hex": "a8d9f9fbed3d88b112ee7e27",
+      "expected_value": 2227357092,
+      "expected_data_hex": "84d9f9fbed3d88b112ee7e27"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 2227357092,
+      "data_hex": "a8d9f9fbed3d88b112ee7e27",
+      "expected_value": 2227357092,
+      "expected_data_hex": "a4c5c284ed3d88b112ee7e27"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 2227357092,
+      "data_hex": "a8d9f9fbed3d88b112ee7e27",
+      "expected_value": 4227455400,
+      "expected_data_hex": "a8d9f9fbed3d88b112ee7e27"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 2227357092,
+      "data_hex": "a8d9f9fbed3d88b112ee7e27",
+      "expected_value": 2227357092,
+      "expected_data_hex": "a4c5c284ed3d88b112ee7e27"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 2227357092,
+      "data_hex": "a8d9f9fbed3d88b112ee7e27",
+      "expected_value": 4227455400,
+      "expected_data_hex": "a8d9f9fbed3d88b112ee7e27"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 2227357092,
+      "data_hex": "a8d9f9fbed3d88b112ee7e27",
+      "expected_value": 2227357092,
+      "expected_data_hex": "a4c5c284ed3d88b112ee7e27"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 3731620291,
+      "data_hex": "896d48916c8de67561376687",
+      "expected_value": 1837695427,
+      "expected_data_hex": "896d48916c8de67561376687"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 3731620291,
+      "data_hex": "896d48916c8de67561376687",
+      "expected_value": 3734063213,
+      "expected_data_hex": "896d48916c8de67561376687"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 3731620291,
+      "data_hex": "896d48916c8de67561376687",
+      "expected_value": 3731620291,
+      "expected_data_hex": "6cde48916c8de67561376687"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 3731620291,
+      "data_hex": "896d48916c8de67561376687",
+      "expected_value": 3731620291,
+      "expected_data_hex": "89c3016c6c8de67561376687"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 3731620291,
+      "data_hex": "896d48916c8de67561376687",
+      "expected_value": 1821460589,
+      "expected_data_hex": "896d48916c8de67561376687"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 3731620291,
+      "data_hex": "896d48916c8de67561376687",
+      "expected_value": 3731620291,
+      "expected_data_hex": "89c3016cde8de67561376687"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 3731620291,
+      "data_hex": "896d48916c8de67561376687",
+      "expected_value": 1821460589,
+      "expected_data_hex": "896d48916c8de67561376687"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 3731620291,
+      "data_hex": "896d48916c8de67561376687",
+      "expected_value": 3731620291,
+      "expected_data_hex": "89c3016cde8de67561376687"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 1721014990,
+      "data_hex": "18a4a44d07216dd0dd81acec",
+      "expected_value": 2762217678,
+      "expected_data_hex": "18a4a44d07216dd0dd81acec"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 1721014990,
+      "data_hex": "18a4a44d07216dd0dd81acec",
+      "expected_value": 1720995236,
+      "expected_data_hex": "18a4a44d07216dd0dd81acec"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 1721014990,
+      "data_hex": "18a4a44d07216dd0dd81acec",
+      "expected_value": 1721014990,
+      "expected_data_hex": "9a94664d07216dd0dd81acec"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 1721014990,
+      "data_hex": "18a4a44d07216dd0dd81acec",
+      "expected_value": 1721014990,
+      "expected_data_hex": "18a4ce9a07216dd0dd81acec"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 1721014990,
+      "data_hex": "18a4a44d07216dd0dd81acec",
+      "expected_value": 554126756,
+      "expected_data_hex": "18a4a44d07216dd0dd81acec"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 1721014990,
+      "data_hex": "18a4a44d07216dd0dd81acec",
+      "expected_value": 1721014990,
+      "expected_data_hex": "18a4ce9a94666dd0dd81acec"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 1721014990,
+      "data_hex": "18a4a44d07216dd0dd81acec",
+      "expected_value": 554126756,
+      "expected_data_hex": "18a4a44d07216dd0dd81acec"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 1721014990,
+      "data_hex": "18a4a44d07216dd0dd81acec",
+      "expected_value": 1721014990,
+      "expected_data_hex": "18a4ce9a94666dd0dd81acec"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 90780131,
+      "data_hex": "419d7d56f6acb242d2bf3352",
+      "expected_value": 1451072833,
+      "expected_data_hex": "419d7d56f6acb242d2bf3352"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 90780131,
+      "data_hex": "419d7d56f6acb242d2bf3352",
+      "expected_value": 90779990,
+      "expected_data_hex": "419d7d56f6acb242d2bf3352"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 90780131,
+      "data_hex": "419d7d56f6acb242d2bf3352",
+      "expected_value": 90780131,
+      "expected_data_hex": "e3316905f6acb242d2bf3352"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 90780131,
+      "data_hex": "419d7d56f6acb242d2bf3352",
+      "expected_value": 90780131,
+      "expected_data_hex": "419d7de3f6acb242d2bf3352"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 90780131,
+      "data_hex": "419d7d56f6acb242d2bf3352",
+      "expected_value": 2997679702,
+      "expected_data_hex": "419d7d56f6acb242d2bf3352"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 90780131,
+      "data_hex": "419d7d56f6acb242d2bf3352",
+      "expected_value": 90780131,
+      "expected_data_hex": "419d7de331690542d2bf3352"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 90780131,
+      "data_hex": "419d7d56f6acb242d2bf3352",
+      "expected_value": 2997679702,
+      "expected_data_hex": "419d7d56f6acb242d2bf3352"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 90780131,
+      "data_hex": "419d7d56f6acb242d2bf3352",
+      "expected_value": 90780131,
+      "expected_data_hex": "419d7de331690542d2bf3352"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 2889015250,
+      "data_hex": "4592077f1b04a5db8c89366b",
+      "expected_value": 1160962002,
+      "expected_data_hex": "4592077f1b04a5db8c89366b"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 2889015250,
+      "data_hex": "4592077f1b04a5db8c89366b",
+      "expected_value": 2131202629,
+      "expected_data_hex": "4592077f1b04a5db8c89366b"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 2889015250,
+      "data_hex": "4592077f1b04a5db8c89366b",
+      "expected_value": 2889015250,
+      "expected_data_hex": "ac92077f1b04a5db8c89366b"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 2889015250,
+      "data_hex": "4592077f1b04a5db8c89366b",
+      "expected_value": 2889015250,
+      "expected_data_hex": "d2df32ac1b04a5db8c89366b"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 2889015250,
+      "data_hex": "4592077f1b04a5db8c89366b",
+      "expected_value": 2131202629,
+      "expected_data_hex": "4592077f1b04a5db8c89366b"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 2889015250,
+      "data_hex": "4592077f1b04a5db8c89366b",
+      "expected_value": 2889015250,
+      "expected_data_hex": "d2df32ac1b04a5db8c89366b"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 2889015250,
+      "data_hex": "4592077f1b04a5db8c89366b",
+      "expected_value": 2131202629,
+      "expected_data_hex": "4592077f1b04a5db8c89366b"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 2889015250,
+      "data_hex": "4592077f1b04a5db8c89366b",
+      "expected_value": 2889015250,
+      "expected_data_hex": "d2df32ac1b04a5db8c89366b"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 3161883159,
+      "data_hex": "2975f55f23c9caa2411d2f1b",
+      "expected_value": 1965654551,
+      "expected_data_hex": "2975f55f23c9caa2411d2f1b"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 3161883159,
+      "data_hex": "2975f55f23c9caa2411d2f1b",
+      "expected_value": 3160405365,
+      "expected_data_hex": "2975f55f23c9caa2411d2f1b"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 3161883159,
+      "data_hex": "2975f55f23c9caa2411d2f1b",
+      "expected_value": 3161883159,
+      "expected_data_hex": "76bcf55f23c9caa2411d2f1b"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 3161883159,
+      "data_hex": "2975f55f23c9caa2411d2f1b",
+      "expected_value": 3161883159,
+      "expected_data_hex": "2917827623c9caa2411d2f1b"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 3161883159,
+      "data_hex": "2975f55f23c9caa2411d2f1b",
+      "expected_value": 593491317,
+      "expected_data_hex": "2975f55f23c9caa2411d2f1b"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 3161883159,
+      "data_hex": "2975f55f23c9caa2411d2f1b",
+      "expected_value": 3161883159,
+      "expected_data_hex": "29178276bcc9caa2411d2f1b"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 3161883159,
+      "data_hex": "2975f55f23c9caa2411d2f1b",
+      "expected_value": 593491317,
+      "expected_data_hex": "2975f55f23c9caa2411d2f1b"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 3161883159,
+      "data_hex": "2975f55f23c9caa2411d2f1b",
+      "expected_value": 3161883159,
+      "expected_data_hex": "29178276bcc9caa2411d2f1b"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 2947589360,
+      "data_hex": "c184e10caf17dcb6e5498746",
+      "expected_value": 3783574000,
+      "expected_data_hex": "c184e10caf17dcb6e5498746"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 2947589360,
+      "data_hex": "c184e10caf17dcb6e5498746",
+      "expected_value": 2947550433,
+      "expected_data_hex": "c184e10caf17dcb6e5498746"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 2947589360,
+      "data_hex": "c184e10caf17dcb6e5498746",
+      "expected_value": 2947589360,
+      "expected_data_hex": "a4b0af0caf17dcb6e5498746"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 2947589360,
+      "data_hex": "c184e10caf17dcb6e5498746",
+      "expected_value": 2947589360,
+      "expected_data_hex": "c184f0a4af17dcb6e5498746"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 2947589360,
+      "data_hex": "c184e10caf17dcb6e5498746",
+      "expected_value": 397348065,
+      "expected_data_hex": "c184e10caf17dcb6e5498746"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 2947589360,
+      "data_hex": "c184e10caf17dcb6e5498746",
+      "expected_value": 2947589360,
+      "expected_data_hex": "c184f0a4b0afdcb6e5498746"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 2947589360,
+      "data_hex": "c184e10caf17dcb6e5498746",
+      "expected_value": 397348065,
+      "expected_data_hex": "c184e10caf17dcb6e5498746"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 2947589360,
+      "data_hex": "c184e10caf17dcb6e5498746",
+      "expected_value": 2947589360,
+      "expected_data_hex": "c184f0a4b0afdcb6e5498746"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 3160246967,
+      "data_hex": "7c068283bf2fcc82a40085ed",
+      "expected_value": 2206336636,
+      "expected_data_hex": "7c068283bf2fcc82a40085ed"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 3160246967,
+      "data_hex": "7c068283bf2fcc82a40085ed",
+      "expected_value": 3160246915,
+      "expected_data_hex": "7c068283bf2fcc82a40085ed"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 3160246967,
+      "data_hex": "7c068283bf2fcc82a40085ed",
+      "expected_value": 3160246967,
+      "expected_data_hex": "b78a5dbcbf2fcc82a40085ed"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 3160246967,
+      "data_hex": "7c068283bf2fcc82a40085ed",
+      "expected_value": 3160246967,
+      "expected_data_hex": "7c0682b7bf2fcc82a40085ed"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 3160246967,
+      "data_hex": "7c068283bf2fcc82a40085ed",
+      "expected_value": 3425681283,
+      "expected_data_hex": "7c068283bf2fcc82a40085ed"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 3160246967,
+      "data_hex": "7c068283bf2fcc82a40085ed",
+      "expected_value": 3160246967,
+      "expected_data_hex": "7c0682b78a5dbc82a40085ed"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 3160246967,
+      "data_hex": "7c068283bf2fcc82a40085ed",
+      "expected_value": 3425681283,
+      "expected_data_hex": "7c068283bf2fcc82a40085ed"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 3160246967,
+      "data_hex": "7c068283bf2fcc82a40085ed",
+      "expected_value": 3160246967,
+      "expected_data_hex": "7c0682b78a5dbc82a40085ed"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 4036490951,
+      "data_hex": "1ace06b6954c4b6775fd9106",
+      "expected_value": 446166727,
+      "expected_data_hex": "1ace06b6954c4b6775fd9106"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 4036490951,
+      "data_hex": "1ace06b6954c4b6775fd9106",
+      "expected_value": 3053899290,
+      "expected_data_hex": "1ace06b6954c4b6775fd9106"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 4036490951,
+      "data_hex": "1ace06b6954c4b6775fd9106",
+      "expected_value": 4036490951,
+      "expected_data_hex": "f0ce06b6954c4b6775fd9106"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 4036490951,
+      "data_hex": "1ace06b6954c4b6775fd9106",
+      "expected_value": 4036490951,
+      "expected_data_hex": "c7f697f0954c4b6775fd9106"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 4036490951,
+      "data_hex": "1ace06b6954c4b6775fd9106",
+      "expected_value": 3053899290,
+      "expected_data_hex": "1ace06b6954c4b6775fd9106"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 4036490951,
+      "data_hex": "1ace06b6954c4b6775fd9106",
+      "expected_value": 4036490951,
+      "expected_data_hex": "c7f697f0954c4b6775fd9106"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 4036490951,
+      "data_hex": "1ace06b6954c4b6775fd9106",
+      "expected_value": 3053899290,
+      "expected_data_hex": "1ace06b6954c4b6775fd9106"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 4036490951,
+      "data_hex": "1ace06b6954c4b6775fd9106",
+      "expected_value": 4036490951,
+      "expected_data_hex": "c7f697f0954c4b6775fd9106"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 3900724280,
+      "data_hex": "dd9af2336f331de4fdd8d1a2",
+      "expected_value": 2598196280,
+      "expected_data_hex": "dd9af2336f331de4fdd8d1a2"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 3900724280,
+      "data_hex": "dd9af2336f331de4fdd8d1a2",
+      "expected_value": 3895718554,
+      "expected_data_hex": "dd9af2336f331de4fdd8d1a2"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 3900724280,
+      "data_hex": "dd9af2336f331de4fdd8d1a2",
+      "expected_value": 3900724280,
+      "expected_data_hex": "80e8f2336f331de4fdd8d1a2"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 3900724280,
+      "data_hex": "dd9af2336f331de4fdd8d1a2",
+      "expected_value": 3900724280,
+      "expected_data_hex": "dd3854806f331de4fdd8d1a2"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 3900724280,
+      "data_hex": "dd9af2336f331de4fdd8d1a2",
+      "expected_value": 1865675418,
+      "expected_data_hex": "dd9af2336f331de4fdd8d1a2"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 3900724280,
+      "data_hex": "dd9af2336f331de4fdd8d1a2",
+      "expected_value": 3900724280,
+      "expected_data_hex": "dd385480e8331de4fdd8d1a2"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 3900724280,
+      "data_hex": "dd9af2336f331de4fdd8d1a2",
+      "expected_value": 1865675418,
+      "expected_data_hex": "dd9af2336f331de4fdd8d1a2"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 3900724280,
+      "data_hex": "dd9af2336f331de4fdd8d1a2",
+      "expected_value": 3900724280,
+      "expected_data_hex": "dd385480e8331de4fdd8d1a2"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 1463006835,
+      "data_hex": "7d39712df76b0eb50aef36e3",
+      "expected_value": 1899593075,
+      "expected_data_hex": "7d39712df76b0eb50aef36e3"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 1463006835,
+      "data_hex": "7d39712df76b0eb50aef36e3",
+      "expected_value": 1462971761,
+      "expected_data_hex": "7d39712df76b0eb50aef36e3"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 1463006835,
+      "data_hex": "7d39712df76b0eb50aef36e3",
+      "expected_value": 1463006835,
+      "expected_data_hex": "b633572df76b0eb50aef36e3"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 1463006835,
+      "data_hex": "7d39712df76b0eb50aef36e3",
+      "expected_value": 1463006835,
+      "expected_data_hex": "7d3973b6f76b0eb50aef36e3"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 1463006835,
+      "data_hex": "7d39712df76b0eb50aef36e3",
+      "expected_value": 1811361137,
+      "expected_data_hex": "7d39712df76b0eb50aef36e3"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 1463006835,
+      "data_hex": "7d39712df76b0eb50aef36e3",
+      "expected_value": 1463006835,
+      "expected_data_hex": "7d3973b633570eb50aef36e3"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 1463006835,
+      "data_hex": "7d39712df76b0eb50aef36e3",
+      "expected_value": 1811361137,
+      "expected_data_hex": "7d39712df76b0eb50aef36e3"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 1463006835,
+      "data_hex": "7d39712df76b0eb50aef36e3",
+      "expected_value": 1463006835,
+      "expected_data_hex": "7d3973b633570eb50aef36e3"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 544376694,
+      "data_hex": "8104494b2766941b5cdfd047",
+      "expected_value": 1263076481,
+      "expected_data_hex": "8104494b2766941b5cdfd047"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 544376694,
+      "data_hex": "8104494b2766941b5cdfd047",
+      "expected_value": 544376651,
+      "expected_data_hex": "8104494b2766941b5cdfd047"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 544376694,
+      "data_hex": "8104494b2766941b5cdfd047",
+      "expected_value": 544376694,
+      "expected_data_hex": "768772202766941b5cdfd047"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 544376694,
+      "data_hex": "8104494b2766941b5cdfd047",
+      "expected_value": 544376694,
+      "expected_data_hex": "810449762766941b5cdfd047"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 544376694,
+      "data_hex": "8104494b2766941b5cdfd047",
+      "expected_value": 2489722699,
+      "expected_data_hex": "8104494b2766941b5cdfd047"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 544376694,
+      "data_hex": "8104494b2766941b5cdfd047",
+      "expected_value": 544376694,
+      "expected_data_hex": "810449768772201b5cdfd047"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 544376694,
+      "data_hex": "8104494b2766941b5cdfd047",
+      "expected_value": 2489722699,
+      "expected_data_hex": "8104494b2766941b5cdfd047"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 544376694,
+      "data_hex": "8104494b2766941b5cdfd047",
+      "expected_value": 544376694,
+      "expected_data_hex": "810449768772201b5cdfd047"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3306159138,
+      "data_hex": "c3cea31bcf1f63afaedcb91b",
+      "expected_value": 3272604706,
+      "expected_data_hex": "c3cea31bcf1f63afaedcb91b"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3306159138,
+      "data_hex": "c3cea31bcf1f63afaedcb91b",
+      "expected_value": 463720131,
+      "expected_data_hex": "c3cea31bcf1f63afaedcb91b"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3306159138,
+      "data_hex": "c3cea31bcf1f63afaedcb91b",
+      "expected_value": 3306159138,
+      "expected_data_hex": "c5cea31bcf1f63afaedcb91b"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3306159138,
+      "data_hex": "c3cea31bcf1f63afaedcb91b",
+      "expected_value": 3306159138,
+      "expected_data_hex": "22fc0fc5cf1f63afaedcb91b"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3306159138,
+      "data_hex": "c3cea31bcf1f63afaedcb91b",
+      "expected_value": 463720131,
+      "expected_data_hex": "c3cea31bcf1f63afaedcb91b"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3306159138,
+      "data_hex": "c3cea31bcf1f63afaedcb91b",
+      "expected_value": 3306159138,
+      "expected_data_hex": "22fc0fc5cf1f63afaedcb91b"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3306159138,
+      "data_hex": "c3cea31bcf1f63afaedcb91b",
+      "expected_value": 463720131,
+      "expected_data_hex": "c3cea31bcf1f63afaedcb91b"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3306159138,
+      "data_hex": "c3cea31bcf1f63afaedcb91b",
+      "expected_value": 3306159138,
+      "expected_data_hex": "22fc0fc5cf1f63afaedcb91b"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 1910084104,
+      "data_hex": "57bbf27f3eec2d439875d268",
+      "expected_value": 3143078408,
+      "expected_data_hex": "57bbf27f3eec2d439875d268"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 1910084104,
+      "data_hex": "57bbf27f3eec2d439875d268",
+      "expected_value": 1904210619,
+      "expected_data_hex": "57bbf27f3eec2d439875d268"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 1910084104,
+      "data_hex": "57bbf27f3eec2d439875d268",
+      "expected_value": 1910084104,
+      "expected_data_hex": "d971f27f3eec2d439875d268"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 1910084104,
+      "data_hex": "57bbf27f3eec2d439875d268",
+      "expected_value": 1910084104,
+      "expected_data_hex": "570892d93eec2d439875d268"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 1910084104,
+      "data_hex": "57bbf27f3eec2d439875d268",
+      "expected_value": 1048572603,
+      "expected_data_hex": "57bbf27f3eec2d439875d268"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 1910084104,
+      "data_hex": "57bbf27f3eec2d439875d268",
+      "expected_value": 1910084104,
+      "expected_data_hex": "570892d971ec2d439875d268"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 1910084104,
+      "data_hex": "57bbf27f3eec2d439875d268",
+      "expected_value": 1048572603,
+      "expected_data_hex": "57bbf27f3eec2d439875d268"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 1910084104,
+      "data_hex": "57bbf27f3eec2d439875d268",
+      "expected_value": 1910084104,
+      "expected_data_hex": "570892d971ec2d439875d268"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 238938104,
+      "data_hex": "b06951b07535c95cdde39150",
+      "expected_value": 1365881080,
+      "expected_data_hex": "b06951b07535c95cdde39150"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 238938104,
+      "data_hex": "b06951b07535c95cdde39150",
+      "expected_value": 238923857,
+      "expected_data_hex": "b06951b07535c95cdde39150"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 238938104,
+      "data_hex": "b06951b07535c95cdde39150",
+      "expected_value": 238938104,
+      "expected_data_hex": "e73d0eb07535c95cdde39150"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 238938104,
+      "data_hex": "b06951b07535c95cdde39150",
+      "expected_value": 238938104,
+      "expected_data_hex": "b069f8e77535c95cdde39150"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 238938104,
+      "data_hex": "b06951b07535c95cdde39150",
+      "expected_value": 896905297,
+      "expected_data_hex": "b06951b07535c95cdde39150"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 238938104,
+      "data_hex": "b06951b07535c95cdde39150",
+      "expected_value": 238938104,
+      "expected_data_hex": "b069f8e73d0ec95cdde39150"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 238938104,
+      "data_hex": "b06951b07535c95cdde39150",
+      "expected_value": 896905297,
+      "expected_data_hex": "b06951b07535c95cdde39150"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 238938104,
+      "data_hex": "b06951b07535c95cdde39150",
+      "expected_value": 238938104,
+      "expected_data_hex": "b069f8e73d0ec95cdde39150"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 596696677,
+      "data_hex": "f755758a9dee8a1f3f1d2156",
+      "expected_value": 2322945527,
+      "expected_data_hex": "f755758a9dee8a1f3f1d2156"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 596696677,
+      "data_hex": "f755758a9dee8a1f3f1d2156",
+      "expected_value": 596696714,
+      "expected_data_hex": "f755758a9dee8a1f3f1d2156"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 596696677,
+      "data_hex": "f755758a9dee8a1f3f1d2156",
+      "expected_value": 596696677,
+      "expected_data_hex": "65de90239dee8a1f3f1d2156"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 596696677,
+      "data_hex": "f755758a9dee8a1f3f1d2156",
+      "expected_value": 596696677,
+      "expected_data_hex": "f75575659dee8a1f3f1d2156"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 596696677,
+      "data_hex": "f755758a9dee8a1f3f1d2156",
+      "expected_value": 2330893706,
+      "expected_data_hex": "f755758a9dee8a1f3f1d2156"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 596696677,
+      "data_hex": "f755758a9dee8a1f3f1d2156",
+      "expected_value": 596696677,
+      "expected_data_hex": "f7557565de90231f3f1d2156"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 596696677,
+      "data_hex": "f755758a9dee8a1f3f1d2156",
+      "expected_value": 2330893706,
+      "expected_data_hex": "f755758a9dee8a1f3f1d2156"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 596696677,
+      "data_hex": "f755758a9dee8a1f3f1d2156",
+      "expected_value": 596696677,
+      "expected_data_hex": "f7557565de90231f3f1d2156"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 1345945201,
+      "data_hex": "25e0abf532732d4f553c247e",
+      "expected_value": 624524913,
+      "expected_data_hex": "25e0abf532732d4f553c247e"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 1345945201,
+      "data_hex": "25e0abf532732d4f553c247e",
+      "expected_value": 4121681957,
+      "expected_data_hex": "25e0abf532732d4f553c247e"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 1345945201,
+      "data_hex": "25e0abf532732d4f553c247e",
+      "expected_value": 1345945201,
+      "expected_data_hex": "50e0abf532732d4f553c247e"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 1345945201,
+      "data_hex": "25e0abf532732d4f553c247e",
+      "expected_value": 1345945201,
+      "expected_data_hex": "717e395032732d4f553c247e"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 1345945201,
+      "data_hex": "25e0abf532732d4f553c247e",
+      "expected_value": 4121681957,
+      "expected_data_hex": "25e0abf532732d4f553c247e"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 1345945201,
+      "data_hex": "25e0abf532732d4f553c247e",
+      "expected_value": 1345945201,
+      "expected_data_hex": "717e395032732d4f553c247e"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 1345945201,
+      "data_hex": "25e0abf532732d4f553c247e",
+      "expected_value": 4121681957,
+      "expected_data_hex": "25e0abf532732d4f553c247e"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 1345945201,
+      "data_hex": "25e0abf532732d4f553c247e",
+      "expected_value": 1345945201,
+      "expected_data_hex": "717e395032732d4f553c247e"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 4259330870,
+      "data_hex": "60d4348c5649f0123a69380c",
+      "expected_value": 3563076406,
+      "expected_data_hex": "60d4348c5649f0123a69380c"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 4259330870,
+      "data_hex": "60d4348c5649f0123a69380c",
+      "expected_value": 4253824212,
+      "expected_data_hex": "60d4348c5649f0123a69380c"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 4259330870,
+      "data_hex": "60d4348c5649f0123a69380c",
+      "expected_value": 4259330870,
+      "expected_data_hex": "e0fd348c5649f0123a69380c"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 4259330870,
+      "data_hex": "60d4348c5649f0123a69380c",
+      "expected_value": 4259330870,
+      "expected_data_hex": "60363be05649f0123a69380c"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 4259330870,
+      "data_hex": "60d4348c5649f0123a69380c",
+      "expected_value": 1452029140,
+      "expected_data_hex": "60d4348c5649f0123a69380c"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 4259330870,
+      "data_hex": "60d4348c5649f0123a69380c",
+      "expected_value": 4259330870,
+      "expected_data_hex": "60363be0fd49f0123a69380c"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 4259330870,
+      "data_hex": "60d4348c5649f0123a69380c",
+      "expected_value": 1452029140,
+      "expected_data_hex": "60d4348c5649f0123a69380c"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 4259330870,
+      "data_hex": "60d4348c5649f0123a69380c",
+      "expected_value": 4259330870,
+      "expected_data_hex": "60363be0fd49f0123a69380c"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 1986275365,
+      "data_hex": "a7ae8eb3638a9497a2f3f583",
+      "expected_value": 2393810725,
+      "expected_data_hex": "a7ae8eb3638a9497a2f3f583"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 1986275365,
+      "data_hex": "a7ae8eb3638a9497a2f3f583",
+      "expected_value": 1986311054,
+      "expected_data_hex": "a7ae8eb3638a9497a2f3f583"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 1986275365,
+      "data_hex": "a7ae8eb3638a9497a2f3f583",
+      "expected_value": 1986275365,
+      "expected_data_hex": "286476b3638a9497a2f3f583"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 1986275365,
+      "data_hex": "a7ae8eb3638a9497a2f3f583",
+      "expected_value": 1986275365,
+      "expected_data_hex": "a7ae2528638a9497a2f3f583"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 1986275365,
+      "data_hex": "a7ae8eb3638a9497a2f3f583",
+      "expected_value": 2321789838,
+      "expected_data_hex": "a7ae8eb3638a9497a2f3f583"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 1986275365,
+      "data_hex": "a7ae8eb3638a9497a2f3f583",
+      "expected_value": 1986275365,
+      "expected_data_hex": "a7ae252864769497a2f3f583"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 1986275365,
+      "data_hex": "a7ae8eb3638a9497a2f3f583",
+      "expected_value": 2321789838,
+      "expected_data_hex": "a7ae8eb3638a9497a2f3f583"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 1986275365,
+      "data_hex": "a7ae8eb3638a9497a2f3f583",
+      "expected_value": 1986275365,
+      "expected_data_hex": "a7ae252864769497a2f3f583"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 2178343904,
+      "data_hex": "79ca6d57ec7a23e36a682de9",
+      "expected_value": 1466813049,
+      "expected_data_hex": "79ca6d57ec7a23e36a682de9"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 2178343904,
+      "data_hex": "79ca6d57ec7a23e36a682de9",
+      "expected_value": 2178343767,
+      "expected_data_hex": "79ca6d57ec7a23e36a682de9"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 2178343904,
+      "data_hex": "79ca6d57ec7a23e36a682de9",
+      "expected_value": 2178343904,
+      "expected_data_hex": "e0e3d681ec7a23e36a682de9"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 2178343904,
+      "data_hex": "79ca6d57ec7a23e36a682de9",
+      "expected_value": 2178343904,
+      "expected_data_hex": "79ca6de0ec7a23e36a682de9"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 2178343904,
+      "data_hex": "79ca6d57ec7a23e36a682de9",
+      "expected_value": 595258455,
+      "expected_data_hex": "79ca6d57ec7a23e36a682de9"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 2178343904,
+      "data_hex": "79ca6d57ec7a23e36a682de9",
+      "expected_value": 2178343904,
+      "expected_data_hex": "79ca6de0e3d681e36a682de9"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 2178343904,
+      "data_hex": "79ca6d57ec7a23e36a682de9",
+      "expected_value": 595258455,
+      "expected_data_hex": "79ca6d57ec7a23e36a682de9"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 2178343904,
+      "data_hex": "79ca6d57ec7a23e36a682de9",
+      "expected_value": 2178343904,
+      "expected_data_hex": "79ca6de0e3d681e36a682de9"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3373556386,
+      "data_hex": "56bae93cf81350e4ce6c6790",
+      "expected_value": 1444176546,
+      "expected_data_hex": "56bae93cf81350e4ce6c6790"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3373556386,
+      "data_hex": "56bae93cf81350e4ce6c6790",
+      "expected_value": 1021950550,
+      "expected_data_hex": "56bae93cf81350e4ce6c6790"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3373556386,
+      "data_hex": "56bae93cf81350e4ce6c6790",
+      "expected_value": 3373556386,
+      "expected_data_hex": "c9bae93cf81350e4ce6c6790"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3373556386,
+      "data_hex": "56bae93cf81350e4ce6c6790",
+      "expected_value": 3373556386,
+      "expected_data_hex": "a26214c9f81350e4ce6c6790"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3373556386,
+      "data_hex": "56bae93cf81350e4ce6c6790",
+      "expected_value": 1021950550,
+      "expected_data_hex": "56bae93cf81350e4ce6c6790"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3373556386,
+      "data_hex": "56bae93cf81350e4ce6c6790",
+      "expected_value": 3373556386,
+      "expected_data_hex": "a26214c9f81350e4ce6c6790"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3373556386,
+      "data_hex": "56bae93cf81350e4ce6c6790",
+      "expected_value": 1021950550,
+      "expected_data_hex": "56bae93cf81350e4ce6c6790"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3373556386,
+      "data_hex": "56bae93cf81350e4ce6c6790",
+      "expected_value": 3373556386,
+      "expected_data_hex": "a26214c9f81350e4ce6c6790"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 3393497293,
+      "data_hex": "ff00cefe141ac940a5db3ef5",
+      "expected_value": 16754893,
+      "expected_data_hex": "ff00cefe141ac940a5db3ef5"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 3393497293,
+      "data_hex": "ff00cefe141ac940a5db3ef5",
+      "expected_value": 3405696512,
+      "expected_data_hex": "ff00cefe141ac940a5db3ef5"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 3393497293,
+      "data_hex": "ff00cefe141ac940a5db3ef5",
+      "expected_value": 3393497293,
+      "expected_data_hex": "44cacefe141ac940a5db3ef5"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 3393497293,
+      "data_hex": "ff00cefe141ac940a5db3ef5",
+      "expected_value": 3393497293,
+      "expected_data_hex": "ffcda844141ac940a5db3ef5"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 3393497293,
+      "data_hex": "ff00cefe141ac940a5db3ef5",
+      "expected_value": 352243200,
+      "expected_data_hex": "ff00cefe141ac940a5db3ef5"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 3393497293,
+      "data_hex": "ff00cefe141ac940a5db3ef5",
+      "expected_value": 3393497293,
+      "expected_data_hex": "ffcda844ca1ac940a5db3ef5"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 3393497293,
+      "data_hex": "ff00cefe141ac940a5db3ef5",
+      "expected_value": 352243200,
+      "expected_data_hex": "ff00cefe141ac940a5db3ef5"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 3393497293,
+      "data_hex": "ff00cefe141ac940a5db3ef5",
+      "expected_value": 3393497293,
+      "expected_data_hex": "ffcda844ca1ac940a5db3ef5"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 4048067795,
+      "data_hex": "56882ec2889c33caeb7477ab",
+      "expected_value": 780687059,
+      "expected_data_hex": "56882ec2889c33caeb7477ab"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 4048067795,
+      "data_hex": "56882ec2889c33caeb7477ab",
+      "expected_value": 4048077358,
+      "expected_data_hex": "56882ec2889c33caeb7477ab"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 4048067795,
+      "data_hex": "56882ec2889c33caeb7477ab",
+      "expected_value": 4048067795,
+      "expected_data_hex": "9c48f1c2889c33caeb7477ab"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 4048067795,
+      "data_hex": "56882ec2889c33caeb7477ab",
+      "expected_value": 4048067795,
+      "expected_data_hex": "5688d39c889c33caeb7477ab"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 4048067795,
+      "data_hex": "56882ec2889c33caeb7477ab",
+      "expected_value": 2626208302,
+      "expected_data_hex": "56882ec2889c33caeb7477ab"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 4048067795,
+      "data_hex": "56882ec2889c33caeb7477ab",
+      "expected_value": 4048067795,
+      "expected_data_hex": "5688d39c48f133caeb7477ab"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 4048067795,
+      "data_hex": "56882ec2889c33caeb7477ab",
+      "expected_value": 2626208302,
+      "expected_data_hex": "56882ec2889c33caeb7477ab"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 4048067795,
+      "data_hex": "56882ec2889c33caeb7477ab",
+      "expected_value": 4048067795,
+      "expected_data_hex": "5688d39c48f133caeb7477ab"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 1439483519,
+      "data_hex": "bed7d6bcd1336d4e2f4065e6",
+      "expected_value": 3168196542,
+      "expected_data_hex": "bed7d6bcd1336d4e2f4065e6"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 1439483519,
+      "data_hex": "bed7d6bcd1336d4e2f4065e6",
+      "expected_value": 1439483580,
+      "expected_data_hex": "bed7d6bcd1336d4e2f4065e6"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 1439483519,
+      "data_hex": "bed7d6bcd1336d4e2f4065e6",
+      "expected_value": 1439483519,
+      "expected_data_hex": "7fc6cc55d1336d4e2f4065e6"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 1439483519,
+      "data_hex": "bed7d6bcd1336d4e2f4065e6",
+      "expected_value": 1439483519,
+      "expected_data_hex": "bed7d67fd1336d4e2f4065e6"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 1439483519,
+      "data_hex": "bed7d6bcd1336d4e2f4065e6",
+      "expected_value": 1832112572,
+      "expected_data_hex": "bed7d6bcd1336d4e2f4065e6"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 1439483519,
+      "data_hex": "bed7d6bcd1336d4e2f4065e6",
+      "expected_value": 1439483519,
+      "expected_data_hex": "bed7d67fc6cc554e2f4065e6"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 1439483519,
+      "data_hex": "bed7d6bcd1336d4e2f4065e6",
+      "expected_value": 1832112572,
+      "expected_data_hex": "bed7d6bcd1336d4e2f4065e6"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 1439483519,
+      "data_hex": "bed7d6bcd1336d4e2f4065e6",
+      "expected_value": 1439483519,
+      "expected_data_hex": "bed7d67fc6cc554e2f4065e6"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 1136546134,
+      "data_hex": "43f783576ed45615d7245cad",
+      "expected_value": 1136546134,
+      "expected_data_hex": "43f783576ed45615d7245cad"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 1136546134,
+      "data_hex": "43f783576ed45615d7245cad",
+      "expected_value": 1468266307,
+      "expected_data_hex": "43f783576ed45615d7245cad"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 1136546134,
+      "data_hex": "43f783576ed45615d7245cad",
+      "expected_value": 1136546134,
+      "expected_data_hex": "43f783576ed45615d7245cad"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 1136546134,
+      "data_hex": "43f783576ed45615d7245cad",
+      "expected_value": 1136546134,
+      "expected_data_hex": "5651be436ed45615d7245cad"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 1136546134,
+      "data_hex": "43f783576ed45615d7245cad",
+      "expected_value": 1468266307,
+      "expected_data_hex": "43f783576ed45615d7245cad"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 1136546134,
+      "data_hex": "43f783576ed45615d7245cad",
+      "expected_value": 1136546134,
+      "expected_data_hex": "5651be436ed45615d7245cad"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 1136546134,
+      "data_hex": "43f783576ed45615d7245cad",
+      "expected_value": 1468266307,
+      "expected_data_hex": "43f783576ed45615d7245cad"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 1136546134,
+      "data_hex": "43f783576ed45615d7245cad",
+      "expected_value": 1136546134,
+      "expected_data_hex": "5651be436ed45615d7245cad"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 2230749771,
+      "data_hex": "43eebdfee435e2ae17e1b640",
+      "expected_value": 3997403723,
+      "expected_data_hex": "43eebdfee435e2ae17e1b640"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 2230749771,
+      "data_hex": "43eebdfee435e2ae17e1b640",
+      "expected_value": 2231287278,
+      "expected_data_hex": "43eebdfee435e2ae17e1b640"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 2230749771,
+      "data_hex": "43eebdfee435e2ae17e1b640",
+      "expected_value": 2230749771,
+      "expected_data_hex": "f684bdfee435e2ae17e1b640"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 2230749771,
+      "data_hex": "43eebdfee435e2ae17e1b640",
+      "expected_value": 2230749771,
+      "expected_data_hex": "434b8af6e435e2ae17e1b640"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 2230749771,
+      "data_hex": "43eebdfee435e2ae17e1b640",
+      "expected_value": 3841900014,
+      "expected_data_hex": "43eebdfee435e2ae17e1b640"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 2230749771,
+      "data_hex": "43eebdfee435e2ae17e1b640",
+      "expected_value": 2230749771,
+      "expected_data_hex": "434b8af68435e2ae17e1b640"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 2230749771,
+      "data_hex": "43eebdfee435e2ae17e1b640",
+      "expected_value": 3841900014,
+      "expected_data_hex": "43eebdfee435e2ae17e1b640"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 2230749771,
+      "data_hex": "43eebdfee435e2ae17e1b640",
+      "expected_value": 2230749771,
+      "expected_data_hex": "434b8af68435e2ae17e1b640"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 281972995,
+      "data_hex": "50b5b8358e3da343bf4217af",
+      "expected_value": 3098890243,
+      "expected_data_hex": "50b5b8358e3da343bf4217af"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 281972995,
+      "data_hex": "50b5b8358e3da343bf4217af",
+      "expected_value": 281949624,
+      "expected_data_hex": "50b5b8358e3da343bf4217af"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 281972995,
+      "data_hex": "50b5b8358e3da343bf4217af",
+      "expected_value": 281972995,
+      "expected_data_hex": "91ce10358e3da343bf4217af"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 281972995,
+      "data_hex": "50b5b8358e3da343bf4217af",
+      "expected_value": 281972995,
+      "expected_data_hex": "50b503918e3da343bf4217af"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 281972995,
+      "data_hex": "50b5b8358e3da343bf4217af",
+      "expected_value": 1032730040,
+      "expected_data_hex": "50b5b8358e3da343bf4217af"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 281972995,
+      "data_hex": "50b5b8358e3da343bf4217af",
+      "expected_value": 281972995,
+      "expected_data_hex": "50b50391ce10a343bf4217af"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 281972995,
+      "data_hex": "50b5b8358e3da343bf4217af",
+      "expected_value": 1032730040,
+      "expected_data_hex": "50b5b8358e3da343bf4217af"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 281972995,
+      "data_hex": "50b5b8358e3da343bf4217af",
+      "expected_value": 281972995,
+      "expected_data_hex": "50b50391ce10a343bf4217af"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 1858784929,
+      "data_hex": "5c769e6e092bd6fd85249e70",
+      "expected_value": 1855878748,
+      "expected_data_hex": "5c769e6e092bd6fd85249e70"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 1858784929,
+      "data_hex": "5c769e6e092bd6fd85249e70",
+      "expected_value": 1858784878,
+      "expected_data_hex": "5c769e6e092bd6fd85249e70"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 1858784929,
+      "data_hex": "5c769e6e092bd6fd85249e70",
+      "expected_value": 1858784929,
+      "expected_data_hex": "a1ceca6e092bd6fd85249e70"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 1858784929,
+      "data_hex": "5c769e6e092bd6fd85249e70",
+      "expected_value": 1858784929,
+      "expected_data_hex": "5c769ea1092bd6fd85249e70"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 1858784929,
+      "data_hex": "5c769e6e092bd6fd85249e70",
+      "expected_value": 3593144686,
+      "expected_data_hex": "5c769e6e092bd6fd85249e70"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 1858784929,
+      "data_hex": "5c769e6e092bd6fd85249e70",
+      "expected_value": 1858784929,
+      "expected_data_hex": "5c769ea1ceca6efd85249e70"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 1858784929,
+      "data_hex": "5c769e6e092bd6fd85249e70",
+      "expected_value": 3593144686,
+      "expected_data_hex": "5c769e6e092bd6fd85249e70"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 1858784929,
+      "data_hex": "5c769e6e092bd6fd85249e70",
+      "expected_value": 1858784929,
+      "expected_data_hex": "5c769ea1ceca6efd85249e70"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 4122103113,
+      "data_hex": "4678f27f8cb409d23063e7d5",
+      "expected_value": 1186090313,
+      "expected_data_hex": "4678f27f8cb409d23063e7d5"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 4122103113,
+      "data_hex": "4678f27f8cb409d23063e7d5",
+      "expected_value": 2146596934,
+      "expected_data_hex": "4678f27f8cb409d23063e7d5"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 4122103113,
+      "data_hex": "4678f27f8cb409d23063e7d5",
+      "expected_value": 4122103113,
+      "expected_data_hex": "f578f27f8cb409d23063e7d5"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 4122103113,
+      "data_hex": "4678f27f8cb409d23063e7d5",
+      "expected_value": 4122103113,
+      "expected_data_hex": "494db2f58cb409d23063e7d5"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 4122103113,
+      "data_hex": "4678f27f8cb409d23063e7d5",
+      "expected_value": 2146596934,
+      "expected_data_hex": "4678f27f8cb409d23063e7d5"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 4122103113,
+      "data_hex": "4678f27f8cb409d23063e7d5",
+      "expected_value": 4122103113,
+      "expected_data_hex": "494db2f58cb409d23063e7d5"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 4122103113,
+      "data_hex": "4678f27f8cb409d23063e7d5",
+      "expected_value": 2146596934,
+      "expected_data_hex": "4678f27f8cb409d23063e7d5"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 4122103113,
+      "data_hex": "4678f27f8cb409d23063e7d5",
+      "expected_value": 4122103113,
+      "expected_data_hex": "494db2f58cb409d23063e7d5"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 2673272053,
+      "data_hex": "da7ddf058f7554fadf38400b",
+      "expected_value": 2111497461,
+      "expected_data_hex": "da7ddf058f7554fadf38400b"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 2673272053,
+      "data_hex": "da7ddf058f7554fadf38400b",
+      "expected_value": 2667962237,
+      "expected_data_hex": "da7ddf058f7554fadf38400b"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 2673272053,
+      "data_hex": "da7ddf058f7554fadf38400b",
+      "expected_value": 2673272053,
+      "expected_data_hex": "569fdf058f7554fadf38400b"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 2673272053,
+      "data_hex": "da7ddf058f7554fadf38400b",
+      "expected_value": 2673272053,
+      "expected_data_hex": "daf5e4568f7554fadf38400b"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 2673272053,
+      "data_hex": "da7ddf058f7554fadf38400b",
+      "expected_value": 2399526781,
+      "expected_data_hex": "da7ddf058f7554fadf38400b"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 2673272053,
+      "data_hex": "da7ddf058f7554fadf38400b",
+      "expected_value": 2673272053,
+      "expected_data_hex": "daf5e4569f7554fadf38400b"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 2673272053,
+      "data_hex": "da7ddf058f7554fadf38400b",
+      "expected_value": 2399526781,
+      "expected_data_hex": "da7ddf058f7554fadf38400b"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 2673272053,
+      "data_hex": "da7ddf058f7554fadf38400b",
+      "expected_value": 2673272053,
+      "expected_data_hex": "daf5e4569f7554fadf38400b"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 328641482,
+      "data_hex": "20fedffcb68760a17d44ba6d",
+      "expected_value": 3757973706,
+      "expected_data_hex": "20fedffcb68760a17d44ba6d"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 328641482,
+      "data_hex": "20fedffcb68760a17d44ba6d",
+      "expected_value": 328662239,
+      "expected_data_hex": "20fedffcb68760a17d44ba6d"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 328641482,
+      "data_hex": "20fedffcb68760a17d44ba6d",
+      "expected_value": 328641482,
+      "expected_data_hex": "ab9613fcb68760a17d44ba6d"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 328641482,
+      "data_hex": "20fedffcb68760a17d44ba6d",
+      "expected_value": 328641482,
+      "expected_data_hex": "20fecaabb68760a17d44ba6d"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 328641482,
+      "data_hex": "20fedffcb68760a17d44ba6d",
+      "expected_value": 2276916447,
+      "expected_data_hex": "20fedffcb68760a17d44ba6d"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 328641482,
+      "data_hex": "20fedffcb68760a17d44ba6d",
+      "expected_value": 328641482,
+      "expected_data_hex": "20fecaab961360a17d44ba6d"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 328641482,
+      "data_hex": "20fedffcb68760a17d44ba6d",
+      "expected_value": 2276916447,
+      "expected_data_hex": "20fedffcb68760a17d44ba6d"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 328641482,
+      "data_hex": "20fedffcb68760a17d44ba6d",
+      "expected_value": 328641482,
+      "expected_data_hex": "20fecaab961360a17d44ba6d"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 703195086,
+      "data_hex": "89bdabb8d5c2e33f0de3099b",
+      "expected_value": 3098262921,
+      "expected_data_hex": "89bdabb8d5c2e33f0de3099b"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 703195086,
+      "data_hex": "89bdabb8d5c2e33f0de3099b",
+      "expected_value": 703195064,
+      "expected_data_hex": "89bdabb8d5c2e33f0de3099b"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 703195086,
+      "data_hex": "89bdabb8d5c2e33f0de3099b",
+      "expected_value": 703195086,
+      "expected_data_hex": "cee7e929d5c2e33f0de3099b"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 703195086,
+      "data_hex": "89bdabb8d5c2e33f0de3099b",
+      "expected_value": 703195086,
+      "expected_data_hex": "89bdabced5c2e33f0de3099b"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 703195086,
+      "data_hex": "89bdabb8d5c2e33f0de3099b",
+      "expected_value": 3821196728,
+      "expected_data_hex": "89bdabb8d5c2e33f0de3099b"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 703195086,
+      "data_hex": "89bdabb8d5c2e33f0de3099b",
+      "expected_value": 703195086,
+      "expected_data_hex": "89bdabcee7e9293f0de3099b"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 703195086,
+      "data_hex": "89bdabb8d5c2e33f0de3099b",
+      "expected_value": 3821196728,
+      "expected_data_hex": "89bdabb8d5c2e33f0de3099b"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 703195086,
+      "data_hex": "89bdabb8d5c2e33f0de3099b",
+      "expected_value": 703195086,
+      "expected_data_hex": "89bdabcee7e9293f0de3099b"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 2558834953,
+      "data_hex": "7845bca015c66d4b261cc541",
+      "expected_value": 2021964041,
+      "expected_data_hex": "7845bca015c66d4b261cc541"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 2558834953,
+      "data_hex": "7845bca015c66d4b261cc541",
+      "expected_value": 2696693112,
+      "expected_data_hex": "7845bca015c66d4b261cc541"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 2558834953,
+      "data_hex": "7845bca015c66d4b261cc541",
+      "expected_value": 2558834953,
+      "expected_data_hex": "9845bca015c66d4b261cc541"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 2558834953,
+      "data_hex": "7845bca015c66d4b261cc541",
+      "expected_value": 2558834953,
+      "expected_data_hex": "09b9849815c66d4b261cc541"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 2558834953,
+      "data_hex": "7845bca015c66d4b261cc541",
+      "expected_value": 2696693112,
+      "expected_data_hex": "7845bca015c66d4b261cc541"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 2558834953,
+      "data_hex": "7845bca015c66d4b261cc541",
+      "expected_value": 2558834953,
+      "expected_data_hex": "09b9849815c66d4b261cc541"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 2558834953,
+      "data_hex": "7845bca015c66d4b261cc541",
+      "expected_value": 2696693112,
+      "expected_data_hex": "7845bca015c66d4b261cc541"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 2558834953,
+      "data_hex": "7845bca015c66d4b261cc541",
+      "expected_value": 2558834953,
+      "expected_data_hex": "09b9849815c66d4b261cc541"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 2942496301,
+      "data_hex": "b02a9e8daed9ca271849f3f1",
+      "expected_value": 716238381,
+      "expected_data_hex": "b02a9e8daed9ca271849f3f1"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 2942496301,
+      "data_hex": "b02a9e8daed9ca271849f3f1",
+      "expected_value": 2945293866,
+      "expected_data_hex": "b02a9e8daed9ca271849f3f1"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 2942496301,
+      "data_hex": "b02a9e8daed9ca271849f3f1",
+      "expected_value": 2942496301,
+      "expected_data_hex": "62af9e8daed9ca271849f3f1"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 2942496301,
+      "data_hex": "b02a9e8daed9ca271849f3f1",
+      "expected_value": 2942496301,
+      "expected_data_hex": "b02dee62aed9ca271849f3f1"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 2942496301,
+      "data_hex": "b02a9e8daed9ca271849f3f1",
+      "expected_value": 2928516650,
+      "expected_data_hex": "b02a9e8daed9ca271849f3f1"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 2942496301,
+      "data_hex": "b02a9e8daed9ca271849f3f1",
+      "expected_value": 2942496301,
+      "expected_data_hex": "b02dee62afd9ca271849f3f1"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 2942496301,
+      "data_hex": "b02a9e8daed9ca271849f3f1",
+      "expected_value": 2928516650,
+      "expected_data_hex": "b02a9e8daed9ca271849f3f1"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 2942496301,
+      "data_hex": "b02a9e8daed9ca271849f3f1",
+      "expected_value": 2942496301,
+      "expected_data_hex": "b02dee62afd9ca271849f3f1"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 2957709788,
+      "data_hex": "7380f10a4c7440f052e47c7d",
+      "expected_value": 4051727324,
+      "expected_data_hex": "7380f10a4c7440f052e47c7d"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 2957709788,
+      "data_hex": "7380f10a4c7440f052e47c7d",
+      "expected_value": 2957708017,
+      "expected_data_hex": "7380f10a4c7440f052e47c7d"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 2957709788,
+      "data_hex": "7380f10a4c7440f052e47c7d",
+      "expected_value": 2957709788,
+      "expected_data_hex": "114bb00a4c7440f052e47c7d"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 2957709788,
+      "data_hex": "7380f10a4c7440f052e47c7d",
+      "expected_value": 2957709788,
+      "expected_data_hex": "7380dc114c7440f052e47c7d"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 2957709788,
+      "data_hex": "7380f10a4c7440f052e47c7d",
+      "expected_value": 1951140593,
+      "expected_data_hex": "7380f10a4c7440f052e47c7d"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 2957709788,
+      "data_hex": "7380f10a4c7440f052e47c7d",
+      "expected_value": 2957709788,
+      "expected_data_hex": "7380dc114bb040f052e47c7d"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 2957709788,
+      "data_hex": "7380f10a4c7440f052e47c7d",
+      "expected_value": 1951140593,
+      "expected_data_hex": "7380f10a4c7440f052e47c7d"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 2957709788,
+      "data_hex": "7380f10a4c7440f052e47c7d",
+      "expected_value": 2957709788,
+      "expected_data_hex": "7380dc114bb040f052e47c7d"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 4131626535,
+      "data_hex": "f0a0baadda85e6cdabf6cc2d",
+      "expected_value": 2914689264,
+      "expected_data_hex": "f0a0baadda85e6cdabf6cc2d"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 4131626535,
+      "data_hex": "f0a0baadda85e6cdabf6cc2d",
+      "expected_value": 4131626669,
+      "expected_data_hex": "f0a0baadda85e6cdabf6cc2d"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 4131626535,
+      "data_hex": "f0a0baadda85e6cdabf6cc2d",
+      "expected_value": 4131626535,
+      "expected_data_hex": "279e43f6da85e6cdabf6cc2d"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 4131626535,
+      "data_hex": "f0a0baadda85e6cdabf6cc2d",
+      "expected_value": 4131626535,
+      "expected_data_hex": "f0a0ba27da85e6cdabf6cc2d"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 4131626535,
+      "data_hex": "f0a0baadda85e6cdabf6cc2d",
+      "expected_value": 3867531949,
+      "expected_data_hex": "f0a0baadda85e6cdabf6cc2d"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 4131626535,
+      "data_hex": "f0a0baadda85e6cdabf6cc2d",
+      "expected_value": 4131626535,
+      "expected_data_hex": "f0a0ba279e43f6cdabf6cc2d"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 4131626535,
+      "data_hex": "f0a0baadda85e6cdabf6cc2d",
+      "expected_value": 3867531949,
+      "expected_data_hex": "f0a0baadda85e6cdabf6cc2d"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 4131626535,
+      "data_hex": "f0a0baadda85e6cdabf6cc2d",
+      "expected_value": 4131626535,
+      "expected_data_hex": "f0a0ba279e43f6cdabf6cc2d"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3861353714,
+      "data_hex": "deef0abd5e5f0522dace9beb",
+      "expected_value": 3727135986,
+      "expected_data_hex": "deef0abd5e5f0522dace9beb"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3861353714,
+      "data_hex": "deef0abd5e5f0522dace9beb",
+      "expected_value": 3171610590,
+      "expected_data_hex": "deef0abd5e5f0522dace9beb"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3861353714,
+      "data_hex": "deef0abd5e5f0522dace9beb",
+      "expected_value": 3861353714,
+      "expected_data_hex": "e6ef0abd5e5f0522dace9beb"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3861353714,
+      "data_hex": "deef0abd5e5f0522dace9beb",
+      "expected_value": 3861353714,
+      "expected_data_hex": "f29427e65e5f0522dace9beb"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3861353714,
+      "data_hex": "deef0abd5e5f0522dace9beb",
+      "expected_value": 3171610590,
+      "expected_data_hex": "deef0abd5e5f0522dace9beb"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3861353714,
+      "data_hex": "deef0abd5e5f0522dace9beb",
+      "expected_value": 3861353714,
+      "expected_data_hex": "f29427e65e5f0522dace9beb"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3861353714,
+      "data_hex": "deef0abd5e5f0522dace9beb",
+      "expected_value": 3171610590,
+      "expected_data_hex": "deef0abd5e5f0522dace9beb"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3861353714,
+      "data_hex": "deef0abd5e5f0522dace9beb",
+      "expected_value": 3861353714,
+      "expected_data_hex": "f29427e65e5f0522dace9beb"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 2944270489,
+      "data_hex": "7de95d2e093c0114017ef4e0",
+      "expected_value": 3917283481,
+      "expected_data_hex": "7de95d2e093c0114017ef4e0"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 2944270489,
+      "data_hex": "7de95d2e093c0114017ef4e0",
+      "expected_value": 2939051497,
+      "expected_data_hex": "7de95d2e093c0114017ef4e0"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 2944270489,
+      "data_hex": "7de95d2e093c0114017ef4e0",
+      "expected_value": 2944270489,
+      "expected_data_hex": "7eaf5d2e093c0114017ef4e0"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 2944270489,
+      "data_hex": "7de95d2e093c0114017ef4e0",
+      "expected_value": 2944270489,
+      "expected_data_hex": "7d99007e093c0114017ef4e0"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 2944270489,
+      "data_hex": "7de95d2e093c0114017ef4e0",
+      "expected_value": 154033641,
+      "expected_data_hex": "7de95d2e093c0114017ef4e0"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 2944270489,
+      "data_hex": "7de95d2e093c0114017ef4e0",
+      "expected_value": 2944270489,
+      "expected_data_hex": "7d99007eaf3c0114017ef4e0"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 2944270489,
+      "data_hex": "7de95d2e093c0114017ef4e0",
+      "expected_value": 154033641,
+      "expected_data_hex": "7de95d2e093c0114017ef4e0"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 2944270489,
+      "data_hex": "7de95d2e093c0114017ef4e0",
+      "expected_value": 2944270489,
+      "expected_data_hex": "7d99007eaf3c0114017ef4e0"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 1001608241,
+      "data_hex": "ab5da6b17aca86f4e3d7675c",
+      "expected_value": 2791156529,
+      "expected_data_hex": "ab5da6b17aca86f4e3d7675c"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 1001608241,
+      "data_hex": "ab5da6b17aca86f4e3d7675c",
+      "expected_value": 1001632166,
+      "expected_data_hex": "ab5da6b17aca86f4e3d7675c"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 1001608241,
+      "data_hex": "ab5da6b17aca86f4e3d7675c",
+      "expected_value": 1001608241,
+      "expected_data_hex": "54b33bb17aca86f4e3d7675c"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 1001608241,
+      "data_hex": "ab5da6b17aca86f4e3d7675c",
+      "expected_value": 1001608241,
+      "expected_data_hex": "ab5d31547aca86f4e3d7675c"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 1001608241,
+      "data_hex": "ab5da6b17aca86f4e3d7675c",
+      "expected_value": 3397038502,
+      "expected_data_hex": "ab5da6b17aca86f4e3d7675c"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 1001608241,
+      "data_hex": "ab5da6b17aca86f4e3d7675c",
+      "expected_value": 1001608241,
+      "expected_data_hex": "ab5d3154b33b86f4e3d7675c"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 1001608241,
+      "data_hex": "ab5da6b17aca86f4e3d7675c",
+      "expected_value": 3397038502,
+      "expected_data_hex": "ab5da6b17aca86f4e3d7675c"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 1001608241,
+      "data_hex": "ab5da6b17aca86f4e3d7675c",
+      "expected_value": 1001608241,
+      "expected_data_hex": "ab5d3154b33b86f4e3d7675c"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 273605386,
+      "data_hex": "0dc46adf292df237f5984477",
+      "expected_value": 3748316173,
+      "expected_data_hex": "0dc46adf292df237f5984477"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 273605386,
+      "data_hex": "0dc46adf292df237f5984477",
+      "expected_value": 273605599,
+      "expected_data_hex": "0dc46adf292df237f5984477"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 273605386,
+      "data_hex": "0dc46adf292df237f5984477",
+      "expected_value": 273605386,
+      "expected_data_hex": "0ae34e10292df237f5984477"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 273605386,
+      "data_hex": "0dc46adf292df237f5984477",
+      "expected_value": 273605386,
+      "expected_data_hex": "0dc46a0a292df237f5984477"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 273605386,
+      "data_hex": "0dc46adf292df237f5984477",
+      "expected_value": 4063046111,
+      "expected_data_hex": "0dc46adf292df237f5984477"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 273605386,
+      "data_hex": "0dc46adf292df237f5984477",
+      "expected_value": 273605386,
+      "expected_data_hex": "0dc46a0ae34e1037f5984477"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 273605386,
+      "data_hex": "0dc46adf292df237f5984477",
+      "expected_value": 4063046111,
+      "expected_data_hex": "0dc46adf292df237f5984477"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 273605386,
+      "data_hex": "0dc46adf292df237f5984477",
+      "expected_value": 273605386,
+      "expected_data_hex": "0dc46a0ae34e1037f5984477"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3315369420,
+      "data_hex": "c921f4cf767693cf768be76a",
+      "expected_value": 3382478284,
+      "expected_data_hex": "c921f4cf767693cf768be76a"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3315369420,
+      "data_hex": "c921f4cf767693cf768be76a",
+      "expected_value": 3488883145,
+      "expected_data_hex": "c921f4cf767693cf768be76a"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3315369420,
+      "data_hex": "c921f4cf767693cf768be76a",
+      "expected_value": 3315369420,
+      "expected_data_hex": "c521f4cf767693cf768be76a"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3315369420,
+      "data_hex": "c921f4cf767693cf768be76a",
+      "expected_value": 3315369420,
+      "expected_data_hex": "cc859cc5767693cf768be76a"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3315369420,
+      "data_hex": "c921f4cf767693cf768be76a",
+      "expected_value": 3488883145,
+      "expected_data_hex": "c921f4cf767693cf768be76a"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3315369420,
+      "data_hex": "c921f4cf767693cf768be76a",
+      "expected_value": 3315369420,
+      "expected_data_hex": "cc859cc5767693cf768be76a"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3315369420,
+      "data_hex": "c921f4cf767693cf768be76a",
+      "expected_value": 3488883145,
+      "expected_data_hex": "c921f4cf767693cf768be76a"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3315369420,
+      "data_hex": "c921f4cf767693cf768be76a",
+      "expected_value": 3315369420,
+      "expected_data_hex": "cc859cc5767693cf768be76a"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 3999120711,
+      "data_hex": "0617148ef4ffbdedc2321684",
+      "expected_value": 386317639,
+      "expected_data_hex": "0617148ef4ffbdedc2321684"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 3999120711,
+      "data_hex": "0617148ef4ffbdedc2321684",
+      "expected_value": 4002288663,
+      "expected_data_hex": "0617148ef4ffbdedc2321684"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 3999120711,
+      "data_hex": "0617148ef4ffbdedc2321684",
+      "expected_value": 3999120711,
+      "expected_data_hex": "5dee148ef4ffbdedc2321684"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 3999120711,
+      "data_hex": "0617148ef4ffbdedc2321684",
+      "expected_value": 3999120711,
+      "expected_data_hex": "0647bd5df4ffbdedc2321684"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 3999120711,
+      "data_hex": "0617148ef4ffbdedc2321684",
+      "expected_value": 4102951959,
+      "expected_data_hex": "0617148ef4ffbdedc2321684"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 3999120711,
+      "data_hex": "0617148ef4ffbdedc2321684",
+      "expected_value": 3999120711,
+      "expected_data_hex": "0647bd5deeffbdedc2321684"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 3999120711,
+      "data_hex": "0617148ef4ffbdedc2321684",
+      "expected_value": 4102951959,
+      "expected_data_hex": "0617148ef4ffbdedc2321684"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 3999120711,
+      "data_hex": "0617148ef4ffbdedc2321684",
+      "expected_value": 3999120711,
+      "expected_data_hex": "0647bd5deeffbdedc2321684"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 315233860,
+      "data_hex": "5f6e2cf8397fba3911cb1cf3",
+      "expected_value": 745430852,
+      "expected_data_hex": "5f6e2cf8397fba3911cb1cf3"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 315233860,
+      "data_hex": "5f6e2cf8397fba3911cb1cf3",
+      "expected_value": 315291692,
+      "expected_data_hex": "5f6e2cf8397fba3911cb1cf3"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 315233860,
+      "data_hex": "5f6e2cf8397fba3911cb1cf3",
+      "expected_value": 315233860,
+      "expected_data_hex": "16ca12f8397fba3911cb1cf3"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 315233860,
+      "data_hex": "5f6e2cf8397fba3911cb1cf3",
+      "expected_value": 315233860,
+      "expected_data_hex": "5f6e4416397fba3911cb1cf3"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 315233860,
+      "data_hex": "5f6e2cf8397fba3911cb1cf3",
+      "expected_value": 2134505516,
+      "expected_data_hex": "5f6e2cf8397fba3911cb1cf3"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 315233860,
+      "data_hex": "5f6e2cf8397fba3911cb1cf3",
+      "expected_value": 315233860,
+      "expected_data_hex": "5f6e4416ca12ba3911cb1cf3"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 315233860,
+      "data_hex": "5f6e2cf8397fba3911cb1cf3",
+      "expected_value": 2134505516,
+      "expected_data_hex": "5f6e2cf8397fba3911cb1cf3"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 315233860,
+      "data_hex": "5f6e2cf8397fba3911cb1cf3",
+      "expected_value": 315233860,
+      "expected_data_hex": "5f6e4416ca12ba3911cb1cf3"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 179846490,
+      "data_hex": "5da2821043fccf450d3fd1b8",
+      "expected_value": 276996701,
+      "expected_data_hex": "5da2821043fccf450d3fd1b8"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 179846490,
+      "data_hex": "5da2821043fccf450d3fd1b8",
+      "expected_value": 179846416,
+      "expected_data_hex": "5da2821043fccf450d3fd1b8"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 179846490,
+      "data_hex": "5da2821043fccf450d3fd1b8",
+      "expected_value": 179846490,
+      "expected_data_hex": "5a3db80a43fccf450d3fd1b8"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 179846490,
+      "data_hex": "5da2821043fccf450d3fd1b8",
+      "expected_value": 179846490,
+      "expected_data_hex": "5da2825a43fccf450d3fd1b8"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 179846490,
+      "data_hex": "5da2821043fccf450d3fd1b8",
+      "expected_value": 3489415952,
+      "expected_data_hex": "5da2821043fccf450d3fd1b8"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 179846490,
+      "data_hex": "5da2821043fccf450d3fd1b8",
+      "expected_value": 179846490,
+      "expected_data_hex": "5da2825a3db80a450d3fd1b8"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 179846490,
+      "data_hex": "5da2821043fccf450d3fd1b8",
+      "expected_value": 3489415952,
+      "expected_data_hex": "5da2821043fccf450d3fd1b8"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 179846490,
+      "data_hex": "5da2821043fccf450d3fd1b8",
+      "expected_value": 179846490,
+      "expected_data_hex": "5da2825a3db80a450d3fd1b8"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3441812566,
+      "data_hex": "99c954c5b81d285389a8535b",
+      "expected_value": 2569397334,
+      "expected_data_hex": "99c954c5b81d285389a8535b"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3441812566,
+      "data_hex": "99c954c5b81d285389a8535b",
+      "expected_value": 3310668185,
+      "expected_data_hex": "99c954c5b81d285389a8535b"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3441812566,
+      "data_hex": "99c954c5b81d285389a8535b",
+      "expected_value": 3441812566,
+      "expected_data_hex": "cdc954c5b81d285389a8535b"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3441812566,
+      "data_hex": "99c954c5b81d285389a8535b",
+      "expected_value": 3441812566,
+      "expected_data_hex": "56e425cdb81d285389a8535b"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3441812566,
+      "data_hex": "99c954c5b81d285389a8535b",
+      "expected_value": 3310668185,
+      "expected_data_hex": "99c954c5b81d285389a8535b"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3441812566,
+      "data_hex": "99c954c5b81d285389a8535b",
+      "expected_value": 3441812566,
+      "expected_data_hex": "56e425cdb81d285389a8535b"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3441812566,
+      "data_hex": "99c954c5b81d285389a8535b",
+      "expected_value": 3310668185,
+      "expected_data_hex": "99c954c5b81d285389a8535b"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3441812566,
+      "data_hex": "99c954c5b81d285389a8535b",
+      "expected_value": 3441812566,
+      "expected_data_hex": "56e425cdb81d285389a8535b"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 440659829,
+      "data_hex": "59b32d010f378c2ffbe54430",
+      "expected_value": 3009015669,
+      "expected_data_hex": "59b32d010f378c2ffbe54430"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 440659829,
+      "data_hex": "59b32d010f378c2ffbe54430",
+      "expected_value": 436284851,
+      "expected_data_hex": "59b32d010f378c2ffbe54430"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 440659829,
+      "data_hex": "59b32d010f378c2ffbe54430",
+      "expected_value": 440659829,
+      "expected_data_hex": "431a2d010f378c2ffbe54430"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 440659829,
+      "data_hex": "59b32d010f378c2ffbe54430",
+      "expected_value": 440659829,
+      "expected_data_hex": "5975ef430f378c2ffbe54430"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 440659829,
+      "data_hex": "59b32d010f378c2ffbe54430",
+      "expected_value": 251735475,
+      "expected_data_hex": "59b32d010f378c2ffbe54430"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 440659829,
+      "data_hex": "59b32d010f378c2ffbe54430",
+      "expected_value": 440659829,
+      "expected_data_hex": "5975ef431a378c2ffbe54430"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 440659829,
+      "data_hex": "59b32d010f378c2ffbe54430",
+      "expected_value": 251735475,
+      "expected_data_hex": "59b32d010f378c2ffbe54430"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 440659829,
+      "data_hex": "59b32d010f378c2ffbe54430",
+      "expected_value": 440659829,
+      "expected_data_hex": "5975ef431a378c2ffbe54430"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 2899747070,
+      "data_hex": "6ac9a5f09a26ab6b87a92f6d",
+      "expected_value": 2781440766,
+      "expected_data_hex": "6ac9a5f09a26ab6b87a92f6d"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 2899747070,
+      "data_hex": "6ac9a5f09a26ab6b87a92f6d",
+      "expected_value": 2899767461,
+      "expected_data_hex": "6ac9a5f09a26ab6b87a92f6d"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 2899747070,
+      "data_hex": "6ac9a5f09a26ab6b87a92f6d",
+      "expected_value": 2899747070,
+      "expected_data_hex": "a0d6acf09a26ab6b87a92f6d"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 2899747070,
+      "data_hex": "6ac9a5f09a26ab6b87a92f6d",
+      "expected_value": 2899747070,
+      "expected_data_hex": "6ac9fea09a26ab6b87a92f6d"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 2899747070,
+      "data_hex": "6ac9a5f09a26ab6b87a92f6d",
+      "expected_value": 647688357,
+      "expected_data_hex": "6ac9a5f09a26ab6b87a92f6d"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 2899747070,
+      "data_hex": "6ac9a5f09a26ab6b87a92f6d",
+      "expected_value": 2899747070,
+      "expected_data_hex": "6ac9fea0d6acab6b87a92f6d"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 2899747070,
+      "data_hex": "6ac9a5f09a26ab6b87a92f6d",
+      "expected_value": 647688357,
+      "expected_data_hex": "6ac9a5f09a26ab6b87a92f6d"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 2899747070,
+      "data_hex": "6ac9a5f09a26ab6b87a92f6d",
+      "expected_value": 2899747070,
+      "expected_data_hex": "6ac9fea0d6acab6b87a92f6d"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 1490672195,
+      "data_hex": "f2a33d8e1914ff73c05e4a4e",
+      "expected_value": 2386404338,
+      "expected_data_hex": "f2a33d8e1914ff73c05e4a4e"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 1490672195,
+      "data_hex": "f2a33d8e1914ff73c05e4a4e",
+      "expected_value": 1490672270,
+      "expected_data_hex": "f2a33d8e1914ff73c05e4a4e"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 1490672195,
+      "data_hex": "f2a33d8e1914ff73c05e4a4e",
+      "expected_value": 1490672195,
+      "expected_data_hex": "43dad9581914ff73c05e4a4e"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 1490672195,
+      "data_hex": "f2a33d8e1914ff73c05e4a4e",
+      "expected_value": 1490672195,
+      "expected_data_hex": "f2a33d431914ff73c05e4a4e"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 1490672195,
+      "data_hex": "f2a33d8e1914ff73c05e4a4e",
+      "expected_value": 4279507342,
+      "expected_data_hex": "f2a33d8e1914ff73c05e4a4e"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 1490672195,
+      "data_hex": "f2a33d8e1914ff73c05e4a4e",
+      "expected_value": 1490672195,
+      "expected_data_hex": "f2a33d43dad95873c05e4a4e"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 1490672195,
+      "data_hex": "f2a33d8e1914ff73c05e4a4e",
+      "expected_value": 4279507342,
+      "expected_data_hex": "f2a33d8e1914ff73c05e4a4e"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 1490672195,
+      "data_hex": "f2a33d8e1914ff73c05e4a4e",
+      "expected_value": 1490672195,
+      "expected_data_hex": "f2a33d43dad95873c05e4a4e"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3993525943,
+      "data_hex": "5f8351304d46dd86e75a47e1",
+      "expected_value": 1594384055,
+      "expected_data_hex": "5f8351304d46dd86e75a47e1"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3993525943,
+      "data_hex": "5f8351304d46dd86e75a47e1",
+      "expected_value": 810648415,
+      "expected_data_hex": "5f8351304d46dd86e75a47e1"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3993525943,
+      "data_hex": "5f8351304d46dd86e75a47e1",
+      "expected_value": 3993525943,
+      "expected_data_hex": "ee8351304d46dd86e75a47e1"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3993525943,
+      "data_hex": "5f8351304d46dd86e75a47e1",
+      "expected_value": 3993525943,
+      "expected_data_hex": "b75e08ee4d46dd86e75a47e1"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3993525943,
+      "data_hex": "5f8351304d46dd86e75a47e1",
+      "expected_value": 810648415,
+      "expected_data_hex": "5f8351304d46dd86e75a47e1"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3993525943,
+      "data_hex": "5f8351304d46dd86e75a47e1",
+      "expected_value": 3993525943,
+      "expected_data_hex": "b75e08ee4d46dd86e75a47e1"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3993525943,
+      "data_hex": "5f8351304d46dd86e75a47e1",
+      "expected_value": 810648415,
+      "expected_data_hex": "5f8351304d46dd86e75a47e1"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3993525943,
+      "data_hex": "5f8351304d46dd86e75a47e1",
+      "expected_value": 3993525943,
+      "expected_data_hex": "b75e08ee4d46dd86e75a47e1"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 1169160157,
+      "data_hex": "f6cfd89d2bfe344b439909e2",
+      "expected_value": 3489069021,
+      "expected_data_hex": "f6cfd89d2bfe344b439909e2"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 1169160157,
+      "data_hex": "f6cfd89d2bfe344b439909e2",
+      "expected_value": 1167972559,
+      "expected_data_hex": "f6cfd89d2bfe344b439909e2"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 1169160157,
+      "data_hex": "f6cfd89d2bfe344b439909e2",
+      "expected_value": 1169160157,
+      "expected_data_hex": "af45d89d2bfe344b439909e2"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 1169160157,
+      "data_hex": "f6cfd89d2bfe344b439909e2",
+      "expected_value": 1169160157,
+      "expected_data_hex": "f6ddf7af2bfe344b439909e2"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 1169160157,
+      "data_hex": "f6cfd89d2bfe344b439909e2",
+      "expected_value": 731764943,
+      "expected_data_hex": "f6cfd89d2bfe344b439909e2"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 1169160157,
+      "data_hex": "f6cfd89d2bfe344b439909e2",
+      "expected_value": 1169160157,
+      "expected_data_hex": "f6ddf7af45fe344b439909e2"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 1169160157,
+      "data_hex": "f6cfd89d2bfe344b439909e2",
+      "expected_value": 731764943,
+      "expected_data_hex": "f6cfd89d2bfe344b439909e2"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 1169160157,
+      "data_hex": "f6cfd89d2bfe344b439909e2",
+      "expected_value": 1169160157,
+      "expected_data_hex": "f6ddf7af45fe344b439909e2"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 3891806029,
+      "data_hex": "3e7c0b43abfa19b8ecea4fb5",
+      "expected_value": 192691789,
+      "expected_data_hex": "3e7c0b43abfa19b8ecea4fb5"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 3891806029,
+      "data_hex": "3e7c0b43abfa19b8ecea4fb5",
+      "expected_value": 3891806987,
+      "expected_data_hex": "3e7c0b43abfa19b8ecea4fb5"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 3891806029,
+      "data_hex": "3e7c0b43abfa19b8ecea4fb5",
+      "expected_value": 3891806029,
+      "expected_data_hex": "3ff8e743abfa19b8ecea4fb5"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 3891806029,
+      "data_hex": "3e7c0b43abfa19b8ecea4fb5",
+      "expected_value": 3891806029,
+      "expected_data_hex": "3e7c4d3fabfa19b8ecea4fb5"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 3891806029,
+      "data_hex": "3e7c0b43abfa19b8ecea4fb5",
+      "expected_value": 4205527819,
+      "expected_data_hex": "3e7c0b43abfa19b8ecea4fb5"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 3891806029,
+      "data_hex": "3e7c0b43abfa19b8ecea4fb5",
+      "expected_value": 3891806029,
+      "expected_data_hex": "3e7c4d3ff8e719b8ecea4fb5"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 3891806029,
+      "data_hex": "3e7c0b43abfa19b8ecea4fb5",
+      "expected_value": 4205527819,
+      "expected_data_hex": "3e7c0b43abfa19b8ecea4fb5"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 3891806029,
+      "data_hex": "3e7c0b43abfa19b8ecea4fb5",
+      "expected_value": 3891806029,
+      "expected_data_hex": "3e7c4d3ff8e719b8ecea4fb5"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 4017514661,
+      "data_hex": "b3a9348c6aa7498f0a2e57e9",
+      "expected_value": 2352261555,
+      "expected_data_hex": "b3a9348c6aa7498f0a2e57e9"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 4017514661,
+      "data_hex": "b3a9348c6aa7498f0a2e57e9",
+      "expected_value": 4017514636,
+      "expected_data_hex": "b3a9348c6aa7498f0a2e57e9"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 4017514661,
+      "data_hex": "b3a9348c6aa7498f0a2e57e9",
+      "expected_value": 4017514661,
+      "expected_data_hex": "a56876ef6aa7498f0a2e57e9"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 4017514661,
+      "data_hex": "b3a9348c6aa7498f0a2e57e9",
+      "expected_value": 4017514661,
+      "expected_data_hex": "b3a934a56aa7498f0a2e57e9"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 4017514661,
+      "data_hex": "b3a9348c6aa7498f0a2e57e9",
+      "expected_value": 1235708556,
+      "expected_data_hex": "b3a9348c6aa7498f0a2e57e9"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 4017514661,
+      "data_hex": "b3a9348c6aa7498f0a2e57e9",
+      "expected_value": 4017514661,
+      "expected_data_hex": "b3a934a56876ef8f0a2e57e9"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 4017514661,
+      "data_hex": "b3a9348c6aa7498f0a2e57e9",
+      "expected_value": 1235708556,
+      "expected_data_hex": "b3a9348c6aa7498f0a2e57e9"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 4017514661,
+      "data_hex": "b3a9348c6aa7498f0a2e57e9",
+      "expected_value": 4017514661,
+      "expected_data_hex": "b3a934a56876ef8f0a2e57e9"
+    },
+    {
+      "kind": "LWL",
+      "offset": 0,
+      "input_value": 3528082875,
+      "data_hex": "7bca625f401e852f916ac25e",
+      "expected_value": 2068465083,
+      "expected_data_hex": "7bca625f401e852f916ac25e"
+    },
+    {
+      "kind": "LWR",
+      "offset": 0,
+      "input_value": 3528082875,
+      "data_hex": "7bca625f401e852f916ac25e",
+      "expected_value": 1600309883,
+      "expected_data_hex": "7bca625f401e852f916ac25e"
+    },
+    {
+      "kind": "SWL",
+      "offset": 0,
+      "input_value": 3528082875,
+      "data_hex": "7bca625f401e852f916ac25e",
+      "expected_value": 3528082875,
+      "expected_data_hex": "d2ca625f401e852f916ac25e"
+    },
+    {
+      "kind": "SWR",
+      "offset": 0,
+      "input_value": 3528082875,
+      "data_hex": "7bca625f401e852f916ac25e",
+      "expected_value": 3528082875,
+      "expected_data_hex": "bb454ad2401e852f916ac25e"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 0,
+      "input_value": 3528082875,
+      "data_hex": "7bca625f401e852f916ac25e",
+      "expected_value": 1600309883,
+      "expected_data_hex": "7bca625f401e852f916ac25e"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 0,
+      "input_value": 3528082875,
+      "data_hex": "7bca625f401e852f916ac25e",
+      "expected_value": 3528082875,
+      "expected_data_hex": "bb454ad2401e852f916ac25e"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 0,
+      "input_value": 3528082875,
+      "data_hex": "7bca625f401e852f916ac25e",
+      "expected_value": 1600309883,
+      "expected_data_hex": "7bca625f401e852f916ac25e"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 0,
+      "input_value": 3528082875,
+      "data_hex": "7bca625f401e852f916ac25e",
+      "expected_value": 3528082875,
+      "expected_data_hex": "bb454ad2401e852f916ac25e"
+    },
+    {
+      "kind": "LWL",
+      "offset": 1,
+      "input_value": 2142040727,
+      "data_hex": "6cf42cf2176e4b4ae6f344c2",
+      "expected_value": 4100780695,
+      "expected_data_hex": "6cf42cf2176e4b4ae6f344c2"
+    },
+    {
+      "kind": "LWR",
+      "offset": 1,
+      "input_value": 2142040727,
+      "data_hex": "6cf42cf2176e4b4ae6f344c2",
+      "expected_value": 2146577652,
+      "expected_data_hex": "6cf42cf2176e4b4ae6f344c2"
+    },
+    {
+      "kind": "SWL",
+      "offset": 1,
+      "input_value": 2142040727,
+      "data_hex": "6cf42cf2176e4b4ae6f344c2",
+      "expected_value": 2142040727,
+      "expected_data_hex": "ac7f2cf2176e4b4ae6f344c2"
+    },
+    {
+      "kind": "SWR",
+      "offset": 1,
+      "input_value": 2142040727,
+      "data_hex": "6cf42cf2176e4b4ae6f344c2",
+      "expected_value": 2142040727,
+      "expected_data_hex": "6c97f2ac176e4b4ae6f344c2"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 1,
+      "input_value": 2142040727,
+      "data_hex": "6cf42cf2176e4b4ae6f344c2",
+      "expected_value": 401747188,
+      "expected_data_hex": "6cf42cf2176e4b4ae6f344c2"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 1,
+      "input_value": 2142040727,
+      "data_hex": "6cf42cf2176e4b4ae6f344c2",
+      "expected_value": 2142040727,
+      "expected_data_hex": "6c97f2ac7f6e4b4ae6f344c2"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 1,
+      "input_value": 2142040727,
+      "data_hex": "6cf42cf2176e4b4ae6f344c2",
+      "expected_value": 401747188,
+      "expected_data_hex": "6cf42cf2176e4b4ae6f344c2"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 1,
+      "input_value": 2142040727,
+      "data_hex": "6cf42cf2176e4b4ae6f344c2",
+      "expected_value": 2142040727,
+      "expected_data_hex": "6c97f2ac7f6e4b4ae6f344c2"
+    },
+    {
+      "kind": "LWL",
+      "offset": 2,
+      "input_value": 753182412,
+      "data_hex": "80937e213fae166cdc57c45e",
+      "expected_value": 2123595980,
+      "expected_data_hex": "80937e213fae166cdc57c45e"
+    },
+    {
+      "kind": "LWR",
+      "offset": 2,
+      "input_value": 753182412,
+      "data_hex": "80937e213fae166cdc57c45e",
+      "expected_value": 753148286,
+      "expected_data_hex": "80937e213fae166cdc57c45e"
+    },
+    {
+      "kind": "SWL",
+      "offset": 2,
+      "input_value": 753182412,
+      "data_hex": "80937e213fae166cdc57c45e",
+      "expected_value": 753182412,
+      "expected_data_hex": "a6e42c213fae166cdc57c45e"
+    },
+    {
+      "kind": "SWR",
+      "offset": 2,
+      "input_value": 753182412,
+      "data_hex": "80937e213fae166cdc57c45e",
+      "expected_value": 753182412,
+      "expected_data_hex": "8093cca63fae166cdc57c45e"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 2,
+      "input_value": 753182412,
+      "data_hex": "80937e213fae166cdc57c45e",
+      "expected_value": 2923372926,
+      "expected_data_hex": "80937e213fae166cdc57c45e"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 2,
+      "input_value": 753182412,
+      "data_hex": "80937e213fae166cdc57c45e",
+      "expected_value": 753182412,
+      "expected_data_hex": "8093cca6e42c166cdc57c45e"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 2,
+      "input_value": 753182412,
+      "data_hex": "80937e213fae166cdc57c45e",
+      "expected_value": 2923372926,
+      "expected_data_hex": "80937e213fae166cdc57c45e"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 2,
+      "input_value": 753182412,
+      "data_hex": "80937e213fae166cdc57c45e",
+      "expected_value": 753182412,
+      "expected_data_hex": "8093cca6e42c166cdc57c45e"
+    },
+    {
+      "kind": "LWL",
+      "offset": 3,
+      "input_value": 2051602992,
+      "data_hex": "6620af8c20499e31358af729",
+      "expected_value": 2360287334,
+      "expected_data_hex": "6620af8c20499e31358af729"
+    },
+    {
+      "kind": "LWR",
+      "offset": 3,
+      "input_value": 2051602992,
+      "data_hex": "6620af8c20499e31358af729",
+      "expected_value": 2051603084,
+      "expected_data_hex": "6620af8c20499e31358af729"
+    },
+    {
+      "kind": "SWL",
+      "offset": 3,
+      "input_value": 2051602992,
+      "data_hex": "6620af8c20499e31358af729",
+      "expected_value": 2051602992,
+      "expected_data_hex": "30fa487a20499e31358af729"
+    },
+    {
+      "kind": "SWR",
+      "offset": 3,
+      "input_value": 2051602992,
+      "data_hex": "6620af8c20499e31358af729",
+      "expected_value": 2051602992,
+      "expected_data_hex": "6620af3020499e31358af729"
+    },
+    {
+      "kind": "load_pair",
+      "offset": 3,
+      "input_value": 2051602992,
+      "data_hex": "6620af8c20499e31358af729",
+      "expected_value": 2655592588,
+      "expected_data_hex": "6620af8c20499e31358af729"
+    },
+    {
+      "kind": "store_pair",
+      "offset": 3,
+      "input_value": 2051602992,
+      "data_hex": "6620af8c20499e31358af729",
+      "expected_value": 2051602992,
+      "expected_data_hex": "6620af30fa487a31358af729"
+    },
+    {
+      "kind": "load_pair_reverse",
+      "offset": 3,
+      "input_value": 2051602992,
+      "data_hex": "6620af8c20499e31358af729",
+      "expected_value": 2655592588,
+      "expected_data_hex": "6620af8c20499e31358af729"
+    },
+    {
+      "kind": "store_pair_reverse",
+      "offset": 3,
+      "input_value": 2051602992,
+      "data_hex": "6620af8c20499e31358af729",
+      "expected_value": 2051602992,
+      "expected_data_hex": "6620af30fa487a31358af729"
+    }
+  ]
+}

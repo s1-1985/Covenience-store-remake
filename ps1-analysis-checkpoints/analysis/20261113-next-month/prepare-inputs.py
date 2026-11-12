@@ -4,6 +4,12 @@ import hashlib,json,sys,zlib
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent;algo=Path(sys.argv[1]).resolve()
 snap=algo/'source/opened-snapshots-20261028';snap.mkdir(parents=True,exist_ok=True)
+model=ROOT.parent/'20261103-operating-continuation/source-reference/live_master_oracle_20261028.py'
+target_model=algo/model.name
+if target_model.read_bytes()!=model.read_bytes():
+ assert hashlib.sha256(target_model.read_bytes()).hexdigest()=='24faa3f8bef409fc00bd2c42741cf2dc6d8d5238eea3455f0056ece73fa468d2','Unexpected customized parent oracle'
+ target_model.write_bytes(model.read_bytes())
+
 old=ROOT.parent/'20261113-operating-continuation/encoded/evidence/source/opened-snapshots-20261028'
 name='TOWN0001-ci-main-25-single'
 for suffix in ('.json','.ram.zlib'):

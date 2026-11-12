@@ -1,0 +1,64 @@
+{
+  "all_passed": true,
+  "source_executable_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "cases": [
+    {
+      "clock": 23040,
+      "segment": "TOWN0001-ci-main-31-single",
+      "source_call_words": [
+        {
+          "pc": "0x800234a0",
+          "word": "0xc00a4cd",
+          "target": "0x80029334"
+        },
+        {
+          "pc": "0x800234a8",
+          "word": "0xc00aa38",
+          "target": "0x8002a8e0"
+        },
+        {
+          "pc": "0x800234b0",
+          "word": "0xc00af55",
+          "target": "0x8002bd54"
+        },
+        {
+          "pc": "0x800234e0",
+          "word": "0xc009867",
+          "target": "0x8002619c"
+        }
+      ],
+      "finance_cash_after": [
+        99061022,
+        154113324
+      ],
+      "finance_stores_sha256": "2124999dc90daeb1fbe9e9b67f769ba2133a85e4cbaa69b5c70fbc1fb68d06b5",
+      "finance_staff_sha256": "8b921db26d8a7da7acf4c99b6085defc20c10c004a8710ea11419ffc060fe63e",
+      "rival_input_sha256": "99a7709ba051ca44556e8b4235df1abdd99b5a7d4acda8a7a99825a90c6b23b2",
+      "rival_output_sha256": "8f4a6c8c0871d8c9c2e0c1cdce64af24b21edd65b16e30cb2f19163f112aa4ca",
+      "town_input_sha256": "8f4a6c8c0871d8c9c2e0c1cdce64af24b21edd65b16e30cb2f19163f112aa4ca",
+      "rival_to_town_equal_ram_bytes": 1835008,
+      "demand_check": [
+        2147639708,
+        0,
+        76328718,
+        [
+          14,
+          271,
+          291,
+          148,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "5fb213db7eb8e696468fceb4bff65b346566ad7472f2f9e8674336648943055a"
+      ]
+    }
+  ],
+  "limits": [
+    "Natural boundary captures and original source call order; distinct parent/callee stacks are excluded.",
+    "Finance and demand result checks use existing independent models; no new natural updates counted by this audit."
+  ]
+}

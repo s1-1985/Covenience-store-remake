@@ -1,0 +1,16 @@
+{
+  "all_passed": true,
+  "monthly_clock": 23040,
+  "new_slot": 3,
+  "original_and_independent_parent_call_traces_matched": true,
+  "new_staff_loop_same_update": true,
+  "new_customer_loop_same_update": true,
+  "segment_verified_updates": 200,
+  "final_clock": 23360,
+  "final_active_slots": [
+    0,
+    1,
+    2,
+    3
+  ]
+}

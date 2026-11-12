@@ -1,0 +1,7 @@
+{
+  "status": "audit_corrected",
+  "initial_assumption": "Numeric draw slots equal all signed source values.",
+  "observed": "Negative deltas are converted to positive digit magnitudes; a separate minus-label request carries their sign.",
+  "correction": "Verify signed history values and absolute digit magnitudes separately, and verify plus/minus label counts.",
+  "original_gameplay_or_display_modified": false
+}

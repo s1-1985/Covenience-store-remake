@@ -2,7 +2,7 @@
 """Continue main-25 naturally through the next monthly boundary and audit cash ledgers.
 
 Arguments: unchanged extracted algorithm-analysis directory. Its source folder
-must include the preceding committed main-20 snapshot. Every segment is saved
+must include the preceding committed main-25 snapshot. Every segment is saved
 immediately so an interruption retains a complete restart and cash proof.
 """
 import collections
@@ -74,38 +74,67 @@ for index in range(26, 32):
         write_count += 1
     assert cash == list(struct.unpack_from('<2i', after, 0xcd9f8))
     ledger_cash = cash_before[:]
+    rival_transitions = []
+    rival_inputs, rival_outputs = [], []
+    for capture in row.get('natural_rival_boundaries', []):
+        rb = zlib.decompress((ROOT / capture['before_path']).read_bytes())
+        ra = zlib.decompress((ROOT / capture['after_path']).read_bytes())
+        assert sha(rb) == capture['before_sha256'] and sha(ra) == capture['after_sha256']
+        bc = list(struct.unpack_from('<2i', rb, 0xcd9f8)); ac = list(struct.unpack_from('<2i', ra, 0xcd9f8))
+        delta = [signed(b-a) for a,b in zip(bc,ac)]
+        policy = json.loads((ROOT/'natural-rival-audit.json').read_text())
+        assert policy['all_passed']
+        independent = next(c for c in policy['cases'] if c['clock']==capture['clock'] and c['input_sha256']==capture['before_sha256'])
+        expected_delta = [signed(b-a) for a,b in zip(independent['cash_before'],independent['cash_after'])]
+        assert bc==independent['cash_before'] and ac==independent['cash_after'] and delta==expected_delta
+        if independent['reason']=='opened':assert delta==[0,-sum(independent['costs'])]
+        delta = expected_delta
+        ledger_cash = [signed(a+b) for a,b in zip(ledger_cash,delta)]
+        rival_transitions.append(dict(clock=capture['clock'],cash_before=bc,cash_after=ac,cash_delta=delta))
+        rival_inputs.append(rb); rival_outputs.append(ra)
     stores = []
     for slot in range(10):
         offset = 0x12b2f8 + slot * 5080
-        assert before[offset] == after[offset]
-        assert before[offset + 4:offset + 6] == after[offset + 4:offset + 6]
-        if not before[offset]:
+        if not before[offset] and not after[offset]:
             continue
-        side = struct.unpack_from('<H', before, offset + 4)[0] >> 15
-        opening = list(struct.unpack_from('<5i', before, offset + 0xd88))
-        current = list(struct.unpack_from('<5i', after, offset + 0xd88))
-        closed = list(struct.unpack_from('<5i', after, offset + 0xd9c)) if closes else [0] * 5
-        sales, goods = closed[4] + current[4] - opening[4], closed[3] + current[3] - opening[3]
-        expense = sum(closed[:3])
-        # Calendar stage 1 also posts seven additional copies of the completed
-        # four-day operating ledger. Derive it from the entry ledger and closed
-        # day, then separately check the source's eightfold month history.
-        monthly_adjustment = 0
-        monthly_source = None
-        if closes and closes[0]['calendar'][2] == 1:
+        birth = next((b for b in rival_outputs if b[offset]), None) if not before[offset] else None
+        terminal = after
+        if before[offset] and not after[offset]:
+            terminal = next(b for b in rival_inputs if b[offset])
+        if birth is not None:
+            # The original rival manager already charged all opening costs,
+            # including the initial equipment day-ledger posting. Count only
+            # subsequent ordinary sales/goods from this birth boundary onward.
+            opening = list(struct.unpack_from('<5i', birth, offset + 0xd88))
+            current = list(struct.unpack_from('<5i', after, offset + 0xd88))
+            closed = [0] * 5
+            side = struct.unpack_from('<H', birth, offset + 4)[0] >> 15
+        else:
+            assert before[offset] and (terminal[offset])
+            assert before[offset+4:offset+6] == terminal[offset+4:offset+6]
+            side = struct.unpack_from('<H', before, offset + 4)[0] >> 15
+            opening = list(struct.unpack_from('<5i', before, offset + 0xd88))
+            current = list(struct.unpack_from('<5i', terminal, offset + 0xd88))
+            closed = list(struct.unpack_from('<5i', terminal, offset + 0xd9c)) if closes else [0] * 5
+        sales = signed(closed[4] + current[4] - opening[4])
+        goods = signed(closed[3] + current[3] - opening[3])
+        expense = sum(closed[:3]); monthly_adjustment = 0; monthly_source = None
+        if birth is None and closes and closes[0]['calendar'][2] == 1:
             monthly_open = struct.unpack_from('<5i', before, offset + 0xd38)
-            monthly_source = [signed(a + b) for a, b in zip(monthly_open, closed)]
-            monthly_adjustment = signed(7 * signed(monthly_source[4] - sum(monthly_source[:4])))
-            assert list(struct.unpack_from('<5i', after, offset + 0xd4c)) == [signed(v * 8) for v in monthly_source]
-            assert list(struct.unpack_from('<5i', after, offset + 0xd38)) == [0] * 5
-        ledger_cash[side] = signed(ledger_cash[side] + sales - goods - expense + monthly_adjustment)
-        stores.append(dict(slot=slot, company=side, opening_ledger=opening, closing_ledger=current,
-                           previous_day_ledger=closed, additional_sales=sales, additional_goods=goods,
-                           daily_expense=expense, monthly_source_ledger=monthly_source,
-                           monthly_adjustment=monthly_adjustment))
-    assert ledger_cash == cash
-    assert len(row['whole_staff_loop_checks']) == row['master_reasons'].count('normal') * len(stores)
-    assert len(row['customer_loop_checks']) == row['master_reasons'].count('normal') * len(stores)
+            monthly_source = [signed(a+b) for a,b in zip(monthly_open,closed)]
+            monthly_adjustment = signed(7 * signed(monthly_source[4]-sum(monthly_source[:4])))
+            assert list(struct.unpack_from('<5i',terminal,offset+0xd4c)) == [signed(v*8) for v in monthly_source]
+            assert list(struct.unpack_from('<5i',terminal,offset+0xd38)) == [0] * 5
+        ledger_cash[side] = signed(ledger_cash[side]+sales-goods-expense+monthly_adjustment)
+        stores.append(dict(slot=slot,company=side,active_before=bool(before[offset]),active_after=bool(after[offset]),
+            opening_ledger=opening,closing_ledger=current,previous_day_ledger=closed,additional_sales=sales,
+            additional_goods=goods,daily_expense=expense,monthly_source_ledger=monthly_source,
+            monthly_adjustment=monthly_adjustment,new_store_opening_costs_accounted_at_rival_boundary=birth is not None))
+    assert ledger_cash == cash, ('cash from ordinary ledgers plus rival transitions',ledger_cash,cash)
+    assert len(row['steps']) == len(row['master_reasons'])
+    expected_loops = sum(len(step['active_slots']) for step,reason in zip(row['steps'],row['master_reasons']) if reason == 'normal')
+    assert len(row['whole_staff_loop_checks']) == expected_loops
+    assert len(row['customer_loop_checks']) == expected_loops
     files = []
     for path in (proof_path, algo / (output + '-progress.json'),
                  snapshots / (output + '.json'), snapshots / (output + '.ram.zlib')):
@@ -120,7 +149,7 @@ for index in range(26, 32):
                 source_ram_sha256=opening_meta['ram_sha256'], final_ram_sha256=final_meta['ram_sha256'],
                 cash_before=cash_before, cash_after=cash, cash_from_ledgers=ledger_cash,
                 cash_write_count=write_count, cash_delta_by_pc=dict(deltas), stores=stores,
-                daily_close_checks=closes, staff_checks=len(row['whole_staff_loop_checks']),
+                rival_cash_transitions=rival_transitions, daily_close_checks=closes, staff_checks=len(row['whole_staff_loop_checks']),
                 customer_checks=len(row['customer_loop_checks']), frames=proof['frames_verified'], files=files)
     rows.append(item)
     (ROOT / (output + '.audit.json')).write_text(json.dumps(item, ensure_ascii=False, indent=2) + '\n')

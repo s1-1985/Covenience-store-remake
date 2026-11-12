@@ -1,18 +1,21 @@
 {
-  "completed_segments": 4,
+  "completed_segments": 6,
   "planned_segments": 6,
-  "verified_updates": 800,
-  "completed_plan": false,
+  "verified_updates": 1200,
+  "completed_plan": true,
   "latest": {
-    "snapshot": "TOWN0001-ci-main-29-single",
-    "clock": 22560,
-    "completed_iterations": 11288,
+    "snapshot": "TOWN0001-ci-main-31-single",
+    "clock": 23360,
+    "completed_iterations": 11688,
     "cash": [
-      99060560,
-      153223428
+      99013362,
+      97694589
     ],
-    "ram_sha256": "fdeb2f72d6ead2f5421a0b23b63adf875b3d82e413c613f4e9117135d2d490e4"
+    "ram_sha256": "f9bba3258b11c921869e0ddfe8a34291a58102ea4023e490ac48f912f96a1971"
   },
-  "independent_monthly_audits": [],
-  "evidence_files": 16
+  "independent_monthly_audits": [
+    "rival",
+    "town"
+  ],
+  "evidence_files": 24
 }

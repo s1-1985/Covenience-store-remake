@@ -1,0 +1,20 @@
+connected actual opened store -> play 22960 99093450
+connected play verified 1 clock 22962 view 0 pause 0 next input 0
+connected play verified 31 clock 23022 view 0 pause 0 next input 0
+Traceback (most recent call last):
+  File "/workspace/scratch/c1d5e9674ef5/conveni/ps1-analysis-checkpoints/analysis/20261113-next-month/verify-segment.py", line 48, in <module>
+    row=verifier.compare(source,count,native_music=True,finance_monitor=True,event_monitor=True,refill_monitor=True,customer_monitor=True,whole_town_monitor=True,staff_loop_monitor=True,progress_snapshot=name,progress_file=str(algo/(name+'-progress.json')))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c1d5e9674ef5/restore-main25/algorithm-analysis/verify_opened_snapshot_play_20261028.py", line 108, in compare
+    result=c.after_opening(units,runners,resources,voices)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c1d5e9674ef5/restore-main25/algorithm-analysis/title_opening_play_connection_20261028.py", line 147, in after_opening
+    child(0x80065974);assert iteration(Memory(v),child)=='next'
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c1d5e9674ef5/restore-main25/algorithm-analysis/mainplay_iteration.py", line 65, in iteration
+    if m.word(0x800cd7f4)==0:call(0x80023438)
+                             ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/c1d5e9674ef5/restore-main25/algorithm-analysis/title_opening_play_connection_20261028.py", line 130, in child
+    assert trace==native_master[-len(trace):],('master calls',trace,native_master[-len(trace):]);return 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('master calls', [[2147748188, [0]], [2147630112, []], [2147741508, []], [2147644920, []], [2147651616, []], [2147652404, []], [2147657952, []], [2147663188, []], [2147639708, []], [2147733164, []], [2147597396, []], [2147633328, [2148709112]], [2147686828, [2148709112]], [2147707584, [2148709112]], [2147685528, [2148709112]], [2147726704, [2148709112, 0]], [2147729192, [2148709112]], [2147894700, []], [2148068076, [32, 100, 100]], [2147633328, [2148719272]], [2147686828, [2148719272]], [2147707584, [2148719272]], [2147685528, [2148719272]], [2147726704, [2148719272, 2]], [2147729192, [2148719272]], [2147894700, []], [2148068076, [32, 100, 100]], [2147633328, [2148714192]], [2147686828, [2148714192]], [2147707584, [2148714192]], [2147685528, [2148714192]], [2147726704, [2148714192, 1]], [2147729192, [2148714192]], [2147894700, []], [2148068076, [32, 100, 100]]], [[2147639708, []], [2147733164, []], [2147597396, []], [2147633328, [2148709112]], [2147686828, [2148709112]], [2147707584, [2148709112]], [2147685528, [2148709112]], [2147726704, [2148709112, 0]], [2147729192, [2148709112]], [2147894700, []], [2148068076, [32, 100, 100]], [2147633328, [2148719272]], [2147686828, [2148719272]], [2147707584, [2148719272]], [2147685528, [2148719272]], [2147726704, [2148719272, 2]], [2147729192, [2148719272]], [2147894700, []], [2148068076, [32, 100, 100]], [2147633328, [2148714192]], [2147686828, [2148714192]], [2147707584, [2148714192]], [2147685528, [2148714192]], [2147726704, [2148714192, 1]], [2147729192, [2148714192]], [2147894700, []], [2148068076, [32, 100, 100]], [2147633328, [2148724352]], [2147686828, [2148724352]], [2147707584, [2148724352]], [2147685528, [2148724352]], [2147726704, [2148724352, 3]], [2147729192, [2148724352]], [2147894700, []], [2148068076, [32, 100, 100]]])

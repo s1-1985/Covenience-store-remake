@@ -1,0 +1,96 @@
+{
+  "all_passed": true,
+  "cases": [
+    {
+      "clock": 23040,
+      "source_ram_sha256": "24d2e4d6784f8beeca4ff8568e86e8e7a2f8fb3b2d7e4513f56be2a6f60a70ee",
+      "monthly_values": [
+        15776,
+        -310200,
+        0,
+        -54617780,
+        2221,
+        38
+      ],
+      "rendered_digit_values": [
+        15776,
+        310200,
+        0,
+        54617780,
+        2221,
+        38
+      ],
+      "negative_sign_labels_per_screen": 2,
+      "own_previous_month_ledgers": [
+        {
+          "slot": 0,
+          "ledger": [
+            345088,
+            179712,
+            0,
+            57600,
+            243280
+          ],
+          "profit": -339120
+        },
+        {
+          "slot": 2,
+          "ledger": [
+            351232,
+            515072,
+            0,
+            1630720,
+            2851920
+          ],
+          "profit": 354896
+        }
+      ],
+      "own_profit": 15776,
+      "queued_requests": [
+        {
+          "slot": 1,
+          "kind": 0,
+          "param": 1,
+          "sound": 101,
+          "mode": 1
+        }
+      ],
+      "dequeues": [
+        {
+          "clock": 23042,
+          "slot": 1,
+          "kind": 0,
+          "mode": 1,
+          "sounds": [
+            29
+          ],
+          "active": 1,
+          "timer": 60,
+          "queue_sha256": "5002d016a8d6eb9d207770f564d7d4e89fa7a6223bc07c9740ca5ab6cfe1a7ba",
+          "text_sha256": "51946ea61ac6c72effabaf4d0f18684d28c638f1f4695a38fc2de89c817b4163"
+        },
+        {
+          "clock": 23078,
+          "slot": 2,
+          "kind": 0,
+          "mode": 2,
+          "sounds": [
+            28
+          ],
+          "active": 1,
+          "timer": 240,
+          "queue_sha256": "e66ef16a67db12933406f0b163fc50bdb64cd2768fd2753fea58b5d4d99b9222",
+          "text_sha256": "51946ea61ac6c72effabaf4d0f18684d28c638f1f4695a38fc2de89c817b4163"
+        }
+      ],
+      "monthly_screen_calls": 17,
+      "first_screen_clock": 23078,
+      "last_screen_clock": 23110
+    }
+  ],
+  "limits": [
+    "Original logical draw/number requests and consumer/model checks, not GPU rasterization or physical audio.",
+    "Screen call count and clock span are not real elapsed seconds.",
+    "This source trajectory only; no new natural updates counted by the audit."
+  ]
+}

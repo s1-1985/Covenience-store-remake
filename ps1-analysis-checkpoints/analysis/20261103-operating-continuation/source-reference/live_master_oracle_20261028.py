@@ -12,7 +12,11 @@ def run(u,invoke):
         for j,s in enumerate(stores):u.mem_write(0x12b2f8+j*5080,bytes(s))
         calls.append([a,[x&0xffffffff for x in args]]);result=invoke(a,*args)
         for j,s in enumerate(stores):s[:]=u.mem_read(0x12b2f8+j*5080,5080)
-        g['flags']=struct.unpack('<H',u.mem_read(0xcd790,2))[0];return result
+        g['flags']=struct.unpack('<H',u.mem_read(0xcd790,2))[0]
+        # Original rival manager may rebuild the active-store list at this
+        # boundary. The same master update iterates that rebuilt list.
+        if a==0x8002a8e0:order[:]=store_order(stores,-1)[0]
+        return result
     reason=update(stores,order,g,c[1],c[2],c[3],c[4],SCHEDULES,enabled,channel,extra,TONES,child)
     put(u,0x800cd93c,g['clock']);put(u,0x800cd8ec,g['index']);u.mem_write(0xcd790,struct.pack('<H',g['flags']));u.mem_write(0xcd994,bytes([g['max']]));u.mem_write(0x1398bc,bytes([g['regen']]))
     for j,s in enumerate(stores):u.mem_write(0x12b2f8+j*5080,bytes(s))

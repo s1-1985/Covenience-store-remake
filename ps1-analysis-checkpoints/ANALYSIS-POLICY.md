@@ -14,7 +14,7 @@
 
 ## 保存済み
 
-- [2026-11-13：次の自然月次へ継続中、完成区間ごとに保存](analysis/20261113-next-month/README.md)
+- [2026-11-13：自然月次・ライバル出店・会社建築と11,688更新、店舗順モデル修正](analysis/20261113-next-month/README.md)
 
 - [2026-11-13：自然営業200更新・最新10,488更新と復元再開検証](analysis/20261113-operating-continuation/README.md)
 
