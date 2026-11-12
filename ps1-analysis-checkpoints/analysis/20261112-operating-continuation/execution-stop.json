@@ -1,0 +1,5 @@
+{
+  "reason": "Bounded checkpoint after four completed 200-update segments; no partial fifth segment executed.",
+  "last_completed_snapshot": "TOWN0001-ci-main-24-single",
+  "pending_monthly_boundary": true
+}

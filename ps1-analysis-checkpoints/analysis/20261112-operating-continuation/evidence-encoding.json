@@ -1,0 +1,149 @@
+{
+  "all_passed": true,
+  "files": [
+    {
+      "path": "evidence/TOWN0001-ci-main-21-single-progress.json",
+      "stored_path": "encoded/evidence/TOWN0001-ci-main-21-single-progress.json.zlib",
+      "encoding": "zlib",
+      "bytes": 233636,
+      "sha256": "00c35371abf07af7df35a16018ea89942a11e988a5cc5cb0ec8dbcf7420aacf8",
+      "stored_bytes": 61862,
+      "stored_sha256": "8d3b0ee4c0a0e9b9d04edc257df302274760b3ddba3e2b82e4323dc2627140f5"
+    },
+    {
+      "path": "evidence/TOWN0001-ci-main-22-single-progress.json",
+      "stored_path": "encoded/evidence/TOWN0001-ci-main-22-single-progress.json.zlib",
+      "encoding": "zlib",
+      "bytes": 233636,
+      "sha256": "01dd545892cefd418b4a98a4af6fbf5bb5e5842f93d2a74938f79245bad710e1",
+      "stored_bytes": 60649,
+      "stored_sha256": "d8647a00a41de11442b2679b453d8f0ecf847e521e4f45abe35ff32bc3c99575"
+    },
+    {
+      "path": "evidence/TOWN0001-ci-main-23-single-progress.json",
+      "stored_path": "encoded/evidence/TOWN0001-ci-main-23-single-progress.json.zlib",
+      "encoding": "zlib",
+      "bytes": 233636,
+      "sha256": "93844dc309e3fc2e5afb7c276c14e22357a35aff4c44c5ac63518d72d859a41e",
+      "stored_bytes": 62375,
+      "stored_sha256": "657fff60e28cb51d850d8b74f44b98c0052bab77ef12728a820a7fa7b0fdb4d3"
+    },
+    {
+      "path": "evidence/TOWN0001-ci-main-24-single-progress.json",
+      "stored_path": "encoded/evidence/TOWN0001-ci-main-24-single-progress.json.zlib",
+      "encoding": "zlib",
+      "bytes": 233636,
+      "sha256": "7d2341e066a2387b0d4e9ade8dc88da3a9cfb83e0419e6e3a6b28ab9e2cd7438",
+      "stored_bytes": 60387,
+      "stored_sha256": "effc1d643e4b9ef7e88481c4b86ca4ab81e1f0d64cccd911fa0080f895163d3d"
+    },
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-21-single-verification-20261103.json",
+      "stored_path": "encoded/evidence/opened-snapshot-TOWN0001-ci-main-21-single-verification-20261103.json.zlib",
+      "encoding": "zlib",
+      "bytes": 2108562,
+      "sha256": "6df3a1bf26a8fe5038b76a62466cb24eaf1f5aabac189b3a1acb899b1d4978bf",
+      "stored_bytes": 182307,
+      "stored_sha256": "6b16aea5ef0a013e68275c39c696dce541a1dcbe300ce0ca1abc327d15204e55"
+    },
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-22-single-verification-20261103.json",
+      "stored_path": "encoded/evidence/opened-snapshot-TOWN0001-ci-main-22-single-verification-20261103.json.zlib",
+      "encoding": "zlib",
+      "bytes": 2125095,
+      "sha256": "4a5c13a1709eab756bc5109cf665487482075e0d67abc2a044b7c19515312bb1",
+      "stored_bytes": 197378,
+      "stored_sha256": "a41b82eb41f6bad489e7aa45fd213f75cafaa76cee4f5b1bdc37762fea396c39"
+    },
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-23-single-verification-20261103.json",
+      "stored_path": "encoded/evidence/opened-snapshot-TOWN0001-ci-main-23-single-verification-20261103.json.zlib",
+      "encoding": "zlib",
+      "bytes": 2126577,
+      "sha256": "093329c09c76fdbab3e9ee31501c6aa40fd1b82fe1db9bfd93cded57ba81f688",
+      "stored_bytes": 192242,
+      "stored_sha256": "0ada6efd39b7bd6472cfddec456293b11a1562e7e447ff39f7a6d79b25a6de11"
+    },
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-24-single-verification-20261103.json",
+      "stored_path": "encoded/evidence/opened-snapshot-TOWN0001-ci-main-24-single-verification-20261103.json.zlib",
+      "encoding": "zlib",
+      "bytes": 2178572,
+      "sha256": "81c5d9405db8335d2c977733686f5e52d2f8a7f0866fd3c9190a9e7f307b1818",
+      "stored_bytes": 185290,
+      "stored_sha256": "4a32f148c2aaf06bb9312350d2d0a1ae13be799635a283ee5f53cfae297a9416"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-21-single.json",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-21-single.json.zlib",
+      "encoding": "zlib",
+      "bytes": 1034177,
+      "sha256": "915586038c00bfb82c6a7b81315ad4f2a6006c4a4f67e0cf25af0cd16dfce019",
+      "stored_bytes": 207899,
+      "stored_sha256": "7a6c56c9e94e2ee1e1eee961ac5f4d5f42c015a9b88390a994e21ef5babb6ed3"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-21-single.ram.zlib",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-21-single.ram.zlib",
+      "encoding": "identity",
+      "bytes": 508128,
+      "sha256": "a719452965fad07989d2ed592205c999f2c3285f7471eb19ef75571f6411d6a2",
+      "stored_bytes": 508128,
+      "stored_sha256": "a719452965fad07989d2ed592205c999f2c3285f7471eb19ef75571f6411d6a2"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-22-single.json",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-22-single.json.zlib",
+      "encoding": "zlib",
+      "bytes": 1034177,
+      "sha256": "8e5aadbe0e7ce9c57142395d5059ce0f0738829ecbf4e196b975b59ed40ad7a6",
+      "stored_bytes": 206682,
+      "stored_sha256": "be163c67af85cf5c354df4d4864ea340187e3d5cf8a3bed0112fc79775a9dc10"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-22-single.ram.zlib",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-22-single.ram.zlib",
+      "encoding": "identity",
+      "bytes": 508196,
+      "sha256": "6f2fc4ab31a046d4c4a1e2ee0ea6ccbda258407af4ae87461ac0fe4714c691a0",
+      "stored_bytes": 508196,
+      "stored_sha256": "6f2fc4ab31a046d4c4a1e2ee0ea6ccbda258407af4ae87461ac0fe4714c691a0"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-23-single.json",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-23-single.json.zlib",
+      "encoding": "zlib",
+      "bytes": 1034170,
+      "sha256": "4f30d16b10977160c8e7174b8e62a03d77d642ea8f071bbfa20358f10fdccd41",
+      "stored_bytes": 208384,
+      "stored_sha256": "9b456029dbe09600eb7bd1b4ed1073b63c3486b542a05a05dc891872e0f7c64d"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-23-single.ram.zlib",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-23-single.ram.zlib",
+      "encoding": "identity",
+      "bytes": 508025,
+      "sha256": "c1a8f7931e4641211314e9143990663ba7958e55f1743dd71fa3a0d5e19e7c66",
+      "stored_bytes": 508025,
+      "stored_sha256": "c1a8f7931e4641211314e9143990663ba7958e55f1743dd71fa3a0d5e19e7c66"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-24-single.json",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-24-single.json.zlib",
+      "encoding": "zlib",
+      "bytes": 1034172,
+      "sha256": "f7234145c3a85dd1b035fccdddfa33364ef481d339185b5d2e31d0bc5b2d0f17",
+      "stored_bytes": 206412,
+      "stored_sha256": "4e341198f4a15ca1cb7562b7f6bd0e5a1aa5610d9f5e6e4b24431ff0198ff31f"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-24-single.ram.zlib",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-24-single.ram.zlib",
+      "encoding": "identity",
+      "bytes": 507823,
+      "sha256": "ba6a8ba4e078b3a454d86d847d90c5fb3d2c4b0216a35d398e49729a55be8fbe",
+      "stored_bytes": 507823,
+      "stored_sha256": "ba6a8ba4e078b3a454d86d847d90c5fb3d2c4b0216a35d398e49729a55be8fbe"
+    }
+  ]
+}

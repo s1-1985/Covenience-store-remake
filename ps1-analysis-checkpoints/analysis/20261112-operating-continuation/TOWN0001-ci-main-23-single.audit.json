@@ -1,0 +1,193 @@
+{
+  "output": "TOWN0001-ci-main-23-single",
+  "source": "TOWN0001-ci-main-22-single",
+  "passed": true,
+  "updates": 200,
+  "clock_before": 19760,
+  "clock_after": 20160,
+  "completed_iterations": 10088,
+  "source_ram_sha256": "f56878797f9659fd0bad34954ab75c571935f921c55c2b66cc3705a72048545a",
+  "final_ram_sha256": "6bd85507e6c237fc18a8a41a9de19a536e5893464626480bf980f7ae452b242b",
+  "cash_before": [
+    99056249,
+    153176430
+  ],
+  "cash_after": [
+    99069977,
+    153191854
+  ],
+  "cash_from_ledgers": [
+    99069977,
+    153191854
+  ],
+  "cash_write_count": 80,
+  "cash_delta_by_pc": {
+    "0x8001cbac": [
+      59170,
+      49180
+    ],
+    "0x8001cb30": [
+      -1970,
+      -6780
+    ],
+    "0x800297a0": [
+      -43472,
+      -26976
+    ]
+  },
+  "stores": [
+    {
+      "slot": 0,
+      "company": 0,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        600,
+        3640
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "previous_day_ledger": [
+        10784,
+        5616,
+        0,
+        1800,
+        4040
+      ],
+      "additional_sales": 400,
+      "additional_goods": 1200,
+      "daily_expense": 16400,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
+    },
+    {
+      "slot": 1,
+      "company": 1,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        66970,
+        46230
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "previous_day_ledger": [
+        10976,
+        16000,
+        0,
+        73750,
+        95410
+      ],
+      "additional_sales": 49180,
+      "additional_goods": 6780,
+      "daily_expense": 26976,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
+    },
+    {
+      "slot": 2,
+      "company": 0,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        49230,
+        50070
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "previous_day_ledger": [
+        10976,
+        16096,
+        0,
+        50000,
+        108840
+      ],
+      "additional_sales": 58770,
+      "additional_goods": 770,
+      "daily_expense": 27072,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
+    }
+  ],
+  "daily_close_checks": [
+    {
+      "clock": 20160,
+      "calendar": [
+        1,
+        4,
+        3,
+        0,
+        0
+      ],
+      "store_order": [
+        0,
+        2,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "cash_before": [
+        99113449,
+        153218830
+      ],
+      "cash_after": [
+        99069977,
+        153191854
+      ],
+      "stores_sha256": "55aeea64df6ffada8a06963d6aa916ddf436234aeed2eac6c2be5e690c79469b",
+      "staff_sha256": "f865de1a0cab820848dcffe27a144083b22a5546a8fa1afc012b30bfb571d9aa",
+      "events": [],
+      "UI": [],
+      "notification_text_calls": [],
+      "notification_text_sha256": "2f91d30839840a1e3402bff6b4843eb173b6068ca1bda2e93558c88ca3c7c6bb"
+    }
+  ],
+  "staff_checks": 600,
+  "customer_checks": 600,
+  "frames": 400,
+  "files": [
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-23-single-verification-20261103.json",
+      "bytes": 2126577,
+      "sha256": "093329c09c76fdbab3e9ee31501c6aa40fd1b82fe1db9bfd93cded57ba81f688"
+    },
+    {
+      "path": "evidence/TOWN0001-ci-main-23-single-progress.json",
+      "bytes": 233636,
+      "sha256": "93844dc309e3fc2e5afb7c276c14e22357a35aff4c44c5ac63518d72d859a41e"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-23-single.json",
+      "bytes": 1034170,
+      "sha256": "4f30d16b10977160c8e7174b8e62a03d77d642ea8f071bbfa20358f10fdccd41"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-23-single.ram.zlib",
+      "bytes": 508025,
+      "sha256": "c1a8f7931e4641211314e9143990663ba7958e55f1743dd71fa3a0d5e19e7c66"
+    }
+  ]
+}

@@ -1,17 +1,17 @@
 {
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
-  "date_jst": "2026-11-11",
-  "snapshot": "TOWN0001-ci-main-20-single",
+  "date_jst": "2026-11-12",
+  "snapshot": "TOWN0001-ci-main-24-single",
   "phase": "play_iteration_end",
-  "clock": 18960,
-  "completed_iterations": 9488,
+  "clock": 20560,
+  "completed_iterations": 10288,
   "cash": [
-    99004769,
-    153137220
+    99006242,
+    153151089
   ],
-  "ram_sha256": "3c7127719ccd416adf702ba902ed67a094ca486805b5cb54489c193dbd927ac0",
-  "metadata": "analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-20-single.json",
-  "compressed_ram": "analysis/20261111-operating-continuation/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-20-single.ram.zlib",
-  "report": "analysis/20261111-operating-continuation/README.md",
-  "limits": "Natural main trajectory. Controlled corrupt-card UI branches are retained separately and do not replace this state."
+  "ram_sha256": "8574c3d0fa7f98cb385e74e317ae570886f73960c4fc366da4cafeac410c7072",
+  "metadata": "analysis/20261112-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-24-single.json.zlib",
+  "compressed_ram": "analysis/20261112-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-24-single.ram.zlib",
+  "report": "analysis/20261112-operating-continuation/README.md",
+  "limits": "Natural main trajectory. Metadata is losslessly zlib-compressed; restore-latest.py expands it. Monthly town/rival transition remains pending. Actor packet diagnostics do not replace this state."
 }

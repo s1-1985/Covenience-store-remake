@@ -1,0 +1,45 @@
+{
+  "all_passed": true,
+  "packet_commit": "1fe1bcb11ad0b20c55dc3e6aa598814b7ec91082",
+  "texture_commit": "c45638062d317fd20d42a8e8a4ba116d42947fbf",
+  "method": "GitHub fetch_file base64 at immutable commit, complete bytes compared to pre-upload content.",
+  "packet_files_unchanged_by_texture_commit": [
+    {
+      "path": "results.json.zlib",
+      "bytes": 13448,
+      "sha256": "f5d69bfb34c306a293a0f21346a5a73ac895c80b3efdfa80733480a6297b8fc9"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 1016,
+      "sha256": "8f7fe76c47d96fcb04a6cdb236ec8729f4452ce8ac71735da996f64953630f94"
+    },
+    {
+      "path": "verify-packets.py",
+      "bytes": 4790,
+      "sha256": "567b2694c75245381772f5ed7f3dd7b30e1d015f3385a2b37e841a3dc1fe7652"
+    }
+  ],
+  "texture_files": [
+    {
+      "path": "README.md",
+      "bytes": 4561,
+      "sha256": "e842ece45fe5e5364f105ec42fef8ec968ca4638c67201d97ffd131890162a77"
+    },
+    {
+      "path": "verify-textures.py",
+      "bytes": 3694,
+      "sha256": "1f2713b40cb3fc12d937612d72779839c3b8c179ada33183d6787b7c479d85f1"
+    },
+    {
+      "path": "texture-results.json.zlib",
+      "bytes": 4496,
+      "sha256": "e6e0bb0772b1daec586781e2a1ab83d12df0c87aef48e018fb4a129d6c83d270"
+    },
+    {
+      "path": "texture-summary.json",
+      "bytes": 902,
+      "sha256": "1a542ad42ae26e455d8d548499bdb28dd7f6c8392443ee1b85918fa0c7b7e471"
+    }
+  ]
+}

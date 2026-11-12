@@ -45,13 +45,22 @@ def restore(destination):
     for source in reference.glob('*.py'):
         shutil.copy2(source, algo / source.name)
     snapshots = algo / 'source/opened-snapshots-20261028'
-    for key in ('metadata', 'compressed_ram'):
-        source = (root / latest[key]).resolve()
-        if not source.is_relative_to(root):
-            raise ValueError('Unsafe checkpoint path')
-        shutil.copy2(source, snapshots / source.name)
-    metadata = json.loads((root / latest['metadata']).read_text())
-    ram = zlib.decompress((root / latest['compressed_ram']).read_bytes())
+    metadata_source = (root / latest['metadata']).resolve()
+    ram_source = (root / latest['compressed_ram']).resolve()
+    if not metadata_source.is_relative_to(root) or not ram_source.is_relative_to(root):
+        raise ValueError('Unsafe checkpoint path')
+    metadata_bytes = metadata_source.read_bytes()
+    if metadata_source.suffix == '.zlib':
+        metadata_bytes = zlib.decompress(metadata_bytes)
+    metadata = json.loads(metadata_bytes)
+    # Committed text evidence may be losslessly compressed. Runtime snapshot
+    # filenames retain the original name expected by the archived verifier.
+    name = latest['snapshot']
+    if Path(name).name != name:
+        raise ValueError('Unsafe snapshot name')
+    (snapshots / (name + '.json')).write_bytes(metadata_bytes)
+    shutil.copy2(ram_source, snapshots / (name + '.ram.zlib'))
+    ram = zlib.decompress(ram_source.read_bytes())
     assert len(ram) == 2097152
     assert hashlib.sha256(ram).hexdigest() == latest['ram_sha256'] == metadata['ram_sha256']
     assert hashlib.sha256((algo / 'source/SLPS_007.82').read_bytes()).hexdigest() == metadata['source_executable_sha256']
