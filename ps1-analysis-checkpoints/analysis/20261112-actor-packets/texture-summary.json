@@ -1,0 +1,32 @@
+{
+  "all_passed": true,
+  "native_packets_checked": 544,
+  "unique_observed_images": 14,
+  "source_file": "source/MAN0.TIM",
+  "source_sha256": "6a7349c4fc655fb6b2d441f5332d07481329e03391816849da62485a3ffb2ae4",
+  "source_dimensions": [
+    256,
+    176
+  ],
+  "requested_upload_dimensions": [
+    256,
+    256
+  ],
+  "palette_source_xy": [
+    0,
+    480
+  ],
+  "palette_destination_xy": [
+    0,
+    493
+  ],
+  "texture_page_xy": [
+    320,
+    0
+  ],
+  "limits": [
+    "Exact source texel indices and original 16-bit palette words, not GPU rasterization or alpha/semitransparency emulation.",
+    "The archived native upload requests 256 rows although the TIM file contains 176. All observed samples end at or before row 176; no missing rows are invented.",
+    "Only the 14 observed image codes are bound here. Code acceptance range 640..819 does not prove every code has bytes in this TIM."
+  ]
+}

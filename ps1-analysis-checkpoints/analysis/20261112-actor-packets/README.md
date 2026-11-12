@@ -31,3 +31,15 @@ python verify-packets.py /absolute/path/to/algorithm-analysis
 入力は前回の `../20261112-actor-display/first-store-results.json` と `second-store-results.json`。両ファイルのSHA-256を結果内に保持する。原EXEは `SLPS_007.82`、SHA-256 `d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd`。
 
 SDKの同期・送信境界はアーカイブの `BackgroundCategoryRunner` を再利用した。2つのOTバッファとも論理原点 `(160,120)` を与えており、実画面の上下交互バッファオフセット、GPUの画素化、VRAM画像の読出し、実時間の歩行速度、実音声は今回の検証外。元の営業RAM・時計・乱数やmain・Android本体を変更していない。
+
+## パケットから原テクスチャーへの照合
+
+追加の `verify-textures.py` は544個すべての原パケットを読み、8bitインデックス画像モード、テクスチャページ座標 `(320,0)`、CLUT座標 `(0,493)`、各16×16領域を原 `MAN0.TIM` に対応付ける。観測した画像コード14種類について、256個の画素インデックスと256個の16bitパレット色を全バイト抽出し、ハッシュと実バイト列を `texture-results.json.zlib` に保持した。
+
+`MAN0.TIM` はSHA-256 `6a7349c4fc655fb6b2d441f5332d07481329e03391816849da62485a3ffb2ae4`、実画像寸法256×176。元パレットの格納座標 `(0,480)` と、原転送先 `(0,493)` を区別した。原転送要求は256×256だが、このファイルの画素は176行までしかないことが従来の転送台帳にも記録されている。今回参照された画素はすべて176行以内に収まり、不足行や画像816〜819の実データを仮定していない。画像コードの許容範囲640〜819と、実ファイルに存在する領域を同一視しない。
+
+色はPS1の15bit色＋STPビットを保持した16bit語のまま比較した。透明度・半透明合成を独自に決めたり、GPUの最終画面が一致したと主張したりする検証ではない。
+
+```sh
+python verify-textures.py /absolute/path/to/algorithm-analysis
+```
