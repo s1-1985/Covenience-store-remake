@@ -1,0 +1,184 @@
+{
+  "all_passed": true,
+  "commit": "146e212797d7e1e97efef6d9d9dfb3ee3c86931b",
+  "branch": "chatgpt/ps1-analysis-recovery-20261103",
+  "method": "GitHub fetch_file base64 at immutable commit; full content and Git blob SHA matched local bytes for every listed file.",
+  "files": [
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "bytes": 4456,
+      "sha": "5fc8fc75faa238e68d761c2d19833ed188310ab2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-ANALYSIS.json",
+      "bytes": 886,
+      "sha": "f9a4551a30eef5b0782c8c6dc5c26eabf7b118bd"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/README.md",
+      "bytes": 4818,
+      "sha": "eabbfd82f66e0d8ceda36ef3b50e3e38e03c9f15"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/audit-sound-frame.py",
+      "bytes": 1784,
+      "sha": "9f90e8fe1662b60e3e8f8406ce38345455f5205f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/audit-timeline.py",
+      "bytes": 3642,
+      "sha": "97706c405de55edd110562471dcf92e45f544437"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/audit.json",
+      "bytes": 5731,
+      "sha": "d5536e2ed40edee10fa1af8c2e2609504ca7c246"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/development-caller-comparison.json",
+      "bytes": 536,
+      "sha": "b29cd0c268b424c20721f866986c24b6eed64954"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/development-caller-comparison.log",
+      "bytes": 2194,
+      "sha": "14e5c78b3eb6102e3281b5238c5f0689c7e8da7b"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/evidence-manifest.json",
+      "bytes": 721,
+      "sha": "0d3c99008ca1b7e0f46c06c24e9a8dd28a780db4"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/pack-evidence.py",
+      "bytes": 655,
+      "sha": "49f1c3b4744e9c6915222bbdd9651f437647d65e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/second-store-play-proof.json.zlib",
+      "bytes": 31951,
+      "sha": "f05558ce752a17d85df9e8504364098b12572c04"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/second-store-results.json.zlib",
+      "bytes": 6356,
+      "sha": "1ff175817452b7798999dd78a591fc2f61e77672"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/second-store.log",
+      "bytes": 2296,
+      "sha": "1980d2426009157b39ec28c503e230fcf3ba6179"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/sound-frame-audit.json",
+      "bytes": 1107,
+      "sha": "da0eebd795cdace7d59d8783572363ca4aacaf63"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-frame-timeline/verify-timeline.py",
+      "bytes": 8019,
+      "sha": "28b1bb7d74460330228e8d382a69c4874e4286e0"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/README.md",
+      "bytes": 4533,
+      "sha": "e91d9ddcc80cd5b74d6914391f9c34357e2c15e9"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/TOWN0001-ci-main-25-single.audit.json",
+      "bytes": 3066,
+      "sha": "e2755c6f0c5cdf0adb7064ad0a96ca60a4763479"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/TOWN0001-ci-main-25-single.log",
+      "bytes": 587,
+      "sha": "327cae9e686c78572c5c3aa0c89110a084d19180"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/TOWN0001-ci-main-26-single.log",
+      "bytes": 57,
+      "sha": "b3d9619d72cf97e77498ccd738d52120ddf4ff75"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/audit-natural-rival.py",
+      "bytes": 2807,
+      "sha": "37bf103c86ab24727215c017a90f20a43d02de29"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/continue-main.py",
+      "bytes": 7493,
+      "sha": "6e816b164957adc04f766dab5a5c11b06a500829"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/encode-evidence.py",
+      "bytes": 1098,
+      "sha": "849522082d4253e5d0c8a8ae23bc56b702330d1e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/encoded/evidence/TOWN0001-ci-main-25-single-progress.json.zlib",
+      "bytes": 59799,
+      "sha": "4e2124291fb30b941ba60a0a5922e27d9fd5800f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/encoded/evidence/opened-snapshot-TOWN0001-ci-main-25-single-verification-20261103.json.zlib",
+      "bytes": 184395,
+      "sha": "fdae6d47cc915e794302e44f6730ce10c59ac496"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-25-single.json.zlib",
+      "bytes": 205832,
+      "sha": "35757c358ab663150e048935ccc19ab181f8a550"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-25-single.ram.zlib",
+      "bytes": 508249,
+      "sha": "27a57dfbc853e1156b68c947143f76f07ba478ba"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/evidence-encoding.json",
+      "bytes": 1884,
+      "sha": "b2da50a3a69767403e5c58c1e274f6fc7ad1ba93"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/execution-stop.json",
+      "bytes": 224,
+      "sha": "a779f225c0a5e32db982ff7a81a1996e7491c4a8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/expand-evidence.py",
+      "bytes": 1125,
+      "sha": "06df775a113b9becba3a086c50120dc2a1ba8247"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/long-continuation-status.json",
+      "bytes": 4152,
+      "sha": "99279cd7f954eeac5c54196825a25979afabd441"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/publication-status.json",
+      "bytes": 673,
+      "sha": "3fe38858ef01cef7a624cc9302f7bf91ad700c03"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/restart-check.json",
+      "bytes": 414,
+      "sha": "4d5e7d6bfec93ef78a81406cb1fc5d322e893eff"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/restart-proof.json.zlib",
+      "bytes": 5531,
+      "sha": "f7881e7e157224e2aa738eb8cd864f66d92b8c23"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/verify-restart.py",
+      "bytes": 1221,
+      "sha": "3008e7c57307b88f2e6084f15ec44a8954d56607"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-operating-continuation/verify-segment.py",
+      "bytes": 4193,
+      "sha": "85dcca8d4f438d3cf56fb422cb621cf194ba9086"
+    }
+  ],
+  "user_authorized": true
+}

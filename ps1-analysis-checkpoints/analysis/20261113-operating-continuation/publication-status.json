@@ -1,12 +1,16 @@
 {
-  "status": "user_authorized",
+  "status": "published_and_readback_verified",
   "destination": "s1-1985/Covenience-store-remake",
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
   "remote_head_observed": "6befed0308385a15d3518447d9f2204bab9c44a9",
   "reason": "Push rejected because the review could not establish explicit authorization for the newly generated analysis artifacts, which include derived RAM data.",
-  "retried_after_rejection": false,
+  "retried_after_rejection": true,
   "local_evidence_verified": true,
   "authorization": "User explicitly approved uploading the analysis code, verification records, and restart RAM to the existing analysis branch.",
   "authorization_date_jst": "2026-11-13",
-  "prior_rejection_resolved": true
+  "prior_rejection_resolved": true,
+  "data_commit": "146e212797d7e1e97efef6d9d9dfb3ee3c86931b",
+  "verified_files": 35,
+  "retry_basis": "Explicit user authorization in the next user turn",
+  "transport": "Connected GitHub app; unauthenticated shell push did not publish"
 }
