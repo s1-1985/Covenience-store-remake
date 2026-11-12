@@ -1,17 +1,17 @@
 {
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
   "date_jst": "2026-11-13",
-  "snapshot": "TOWN0001-ci-main-26-single",
+  "snapshot": "TOWN0001-ci-main-27-single",
   "phase": "play_iteration_end",
-  "clock": 21360,
-  "completed_iterations": 10688,
+  "clock": 21760,
+  "completed_iterations": 10888,
   "cash": [
-    99027612,
-    153246629
+    98986740,
+    153207113
   ],
-  "ram_sha256": "1ed9493c83faee172e636203101950abbffb4bac5efed5fab4dc03604a36408f",
-  "metadata": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-26-single.json.zlib",
-  "compressed_ram": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-26-single.ram.zlib",
+  "ram_sha256": "72ed30275a6f47c62eabd93382fa7125fa2b8df296c32050495bbb5ea2edec78",
+  "metadata": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-27-single.json.zlib",
+  "compressed_ram": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-27-single.ram.zlib",
   "report": "analysis/20261113-next-month/README.md",
-  "limits": "Next-month continuation in progress. This latest pointer references a completed 200-update segment, not a partial live checkpoint. Monthly transition still pending at this point."
+  "limits": "Completed/hash-verified segments only. Longer trajectory still running. Monthly independent audits remain pending. SDK/GPU/SPU/IRQ boundaries remain modeled."
 }

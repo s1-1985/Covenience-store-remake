@@ -1,0 +1,18 @@
+{
+  "completed_segments": 2,
+  "planned_segments": 6,
+  "verified_updates": 400,
+  "completed_plan": false,
+  "latest": {
+    "snapshot": "TOWN0001-ci-main-27-single",
+    "clock": 21760,
+    "completed_iterations": 10888,
+    "cash": [
+      98986740,
+      153207113
+    ],
+    "ram_sha256": "72ed30275a6f47c62eabd93382fa7125fa2b8df296c32050495bbb5ea2edec78"
+  },
+  "independent_monthly_audits": [],
+  "evidence_files": 8
+}

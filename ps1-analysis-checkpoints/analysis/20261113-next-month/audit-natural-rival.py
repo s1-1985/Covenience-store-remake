@@ -28,7 +28,9 @@ for p in sorted((ROOT/'rival-boundaries').glob('*-before.ram.zlib')):
   same=bytes(cpu.mem[a:a+n])==after[a:a+n]
   if not result['events']:assert same,name
   regions.append(dict(name=name,bytes=n,equal=same))
- result.update(input=str(p.relative_to(ROOT)),clock=struct.unpack_from('<I',before,0xcd93c)[0],natural_domains=regions,
+ prefix_equal=bytes(cpu.mem[:0x1c0000])==after[:0x1c0000]
+ if not result['events']:assert prefix_equal,'Non-stack RAM mismatch without notification/cache refresh'
+ result.update(non_stack_ram_prefix_bytes=0x1c0000,non_stack_ram_prefix_equal=prefix_equal,input=str(p.relative_to(ROOT)),clock=struct.unpack_from('<I',before,0xcd93c)[0],natural_domains=regions,
                input_sha256=hashlib.sha256(before).hexdigest(),captured_output_sha256=hashlib.sha256(after).hexdigest(),
                source_instructions={hex(k):hex(v) for k,v in sorted(cpu.visited.items())},changes=m.additions(before,cpu))
  rows.append(result)
