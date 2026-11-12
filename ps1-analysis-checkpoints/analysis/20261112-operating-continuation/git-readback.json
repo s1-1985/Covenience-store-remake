@@ -1,0 +1,262 @@
+{
+  "all_passed": true,
+  "commit": "c1d85468c4874b3ce06234c817cc3667efa1a36f",
+  "branch": "chatgpt/ps1-analysis-recovery-20261103",
+  "method": "fetch_file base64 at immutable commit; complete contents matched pre-upload bytes for every listed file.",
+  "files": [
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "bytes": 4195,
+      "blob_sha": "f79820b46d063c9a8f64171f0709522ea66f07ed",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-ANALYSIS.json",
+      "bytes": 912,
+      "blob_sha": "4a86769635a8c0c900818b5f9c6aa6d16782ce76",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-packets/git-readback.json",
+      "bytes": 1400,
+      "blob_sha": "6b5cbc8cc44f8e86828672f3e2e265dd64fc3cff",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/README.md",
+      "bytes": 5035,
+      "blob_sha": "2fed0b7a50480523b547a296aecb43a3a1e1f256",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/TOWN0001-ci-main-21-single.audit.json",
+      "bytes": 3119,
+      "blob_sha": "90623255b396508a7f7a8f917f0ecb21eaa8e867",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/TOWN0001-ci-main-21-single.log",
+      "bytes": 598,
+      "blob_sha": "f6dfa4cb550ecd78972d0d5f5663e6e6a9794ed4",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/TOWN0001-ci-main-22-single.audit.json",
+      "bytes": 3129,
+      "blob_sha": "4ca6c8c4e0ab413913ebc7774d3c8028c2d0cfab",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/TOWN0001-ci-main-22-single.log",
+      "bytes": 587,
+      "blob_sha": "8f0cd583275c55292114c37b99226ee77083fd8f",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/TOWN0001-ci-main-23-single.audit.json",
+      "bytes": 3989,
+      "blob_sha": "858a0d9afda58dfe84e3758d39d12465f168d5f8",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/TOWN0001-ci-main-23-single.log",
+      "bytes": 587,
+      "blob_sha": "79f5c68576e6eeb097a04a4706e9c47c96738bbc",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/TOWN0001-ci-main-24-single.audit.json",
+      "bytes": 3109,
+      "blob_sha": "fde72f31d0af39bf6fe67621799f9ddc285c59d0",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/TOWN0001-ci-main-24-single.log",
+      "bytes": 587,
+      "blob_sha": "16475150a47fe9186139477019c6edf7006ec74a",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/continue-main.py",
+      "bytes": 7496,
+      "blob_sha": "fefae17c92baf41a67adc1e85a6e3ed8b1dd2695",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encode-evidence.py",
+      "bytes": 1098,
+      "blob_sha": "849522082d4253e5d0c8a8ae23bc56b702330d1e",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/TOWN0001-ci-main-21-single-progress.json.zlib",
+      "bytes": 61862,
+      "blob_sha": "d27938069139ebb29907d199d2a7030f1f086eec",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/TOWN0001-ci-main-22-single-progress.json.zlib",
+      "bytes": 60649,
+      "blob_sha": "f70a54bc402ece51bafb7ec41a69d0ac3599713b",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/TOWN0001-ci-main-23-single-progress.json.zlib",
+      "bytes": 62375,
+      "blob_sha": "7987c8b8ee0019889c4c6ba93d9993228fb5ca19",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/TOWN0001-ci-main-24-single-progress.json.zlib",
+      "bytes": 60387,
+      "blob_sha": "c26f28d8add2563ad829be8e08ad2e0898a99754",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/opened-snapshot-TOWN0001-ci-main-21-single-verification-20261103.json.zlib",
+      "bytes": 182307,
+      "blob_sha": "0455c1f30b033819df0d2101768967a9694ac5fd",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/opened-snapshot-TOWN0001-ci-main-22-single-verification-20261103.json.zlib",
+      "bytes": 197378,
+      "blob_sha": "b07f88298b97057d1c0ada70b1d489c9a067fa90",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/opened-snapshot-TOWN0001-ci-main-23-single-verification-20261103.json.zlib",
+      "bytes": 192242,
+      "blob_sha": "603ab2b8a878c1dcceadec81a479be1d27c577f1",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/opened-snapshot-TOWN0001-ci-main-24-single-verification-20261103.json.zlib",
+      "bytes": 185290,
+      "blob_sha": "d54f97c950c7a97c9125a1afda8063e501d02d36",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-21-single.json.zlib",
+      "bytes": 207899,
+      "blob_sha": "b6a069236423a33ae0f44e53dc1a78b88fb53926",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-21-single.ram.zlib",
+      "bytes": 508128,
+      "blob_sha": "9a87145d8a3b8fdfa5c002b0fa270998fb21cfe4",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-22-single.json.zlib",
+      "bytes": 206682,
+      "blob_sha": "36634adec9477ced8e9d67d2e850a9008a937622",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-22-single.ram.zlib",
+      "bytes": 508196,
+      "blob_sha": "8b70fe2494fef02580afde3d46f6266eb1a0bb75",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-23-single.json.zlib",
+      "bytes": 208384,
+      "blob_sha": "c17b7968d19cdb084e39dbe9ca6929cb5504e76e",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-23-single.ram.zlib",
+      "bytes": 508025,
+      "blob_sha": "f2ef7a49ddc99ac04191c126ae5a6fdc3991543d",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-24-single.json.zlib",
+      "bytes": 206412,
+      "blob_sha": "254e014f1674af7ac74248f5e662ea8923918eba",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-24-single.ram.zlib",
+      "bytes": 507823,
+      "blob_sha": "aa8be838d558860d5c54dbd0face4372a02abafa",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/evidence-encoding.json",
+      "bytes": 7410,
+      "blob_sha": "b2b909b298c65a4a0bbca8ed9535d96674342155",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/execution-stop.json",
+      "bytes": 209,
+      "blob_sha": "b1eecab912d60d4c37fc61508a45c13703d6c6b8",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/expand-evidence.py",
+      "bytes": 1125,
+      "blob_sha": "06df775a113b9becba3a086c50120dc2a1ba8247",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/long-continuation-status.json",
+      "bytes": 16439,
+      "blob_sha": "3f7c79666d81d06e0c44ead9c40d611c327eaadb",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/prepare-inputs.py",
+      "bytes": 1023,
+      "blob_sha": "d8175d1f680c481993fff89c6b050f0ad80ae826",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/restart-check.json",
+      "bytes": 414,
+      "blob_sha": "c1a51acc12c36adea58f16e982a1fe70e7d29b75",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/restart-proof.json.zlib",
+      "bytes": 4720,
+      "blob_sha": "9d8eacc4f8880bcde101f48ba20c85b6e4187595",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/verify-restart.py",
+      "bytes": 1221,
+      "blob_sha": "ebb887d402a14e5b777a7ef51adef418e8864db7",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-operating-continuation/verify-segment.py",
+      "bytes": 3638,
+      "blob_sha": "f353f7fc01347a564e2c5c875f0a068569d7bf48",
+      "bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/restore-latest.py",
+      "bytes": 3750,
+      "blob_sha": "e64bd15692635e8432ca6760cb1863c001cfb529",
+      "bytes_equal": true
+    }
+  ],
+  "evidence_expansion": {
+    "all_passed": true,
+    "files": 16,
+    "decoded_bytes": 15642218,
+    "stored_bytes": 3864039
+  },
+  "restart": {
+    "all_passed": true,
+    "snapshot": "TOWN0001-ci-main-24-single",
+    "ram_sha256": "8574c3d0fa7f98cb385e74e317ae570886f73960c4fc366da4cafeac410c7072",
+    "clock_before": 20560,
+    "clock_after": 20564,
+    "diagnostic_updates": 2
+  }
+}
