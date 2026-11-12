@@ -17,13 +17,19 @@ for case in ('first-store', 'second-store'):
     shifts = 0
     movements = []
     unmatched = 0
+    resting = 0
+    customer_matches = 0
     previous = {}
     for row in result['cases']:
         remaining = list(row['actors'])
         for person in row['personnel']:
             if person['state'] == 0:
-                # The current natural samples do not reach resting state zero.
-                raise AssertionError('Expand audit for a naturally reached resting record')
+                candidates = [a for a in remaining if a['source'] == 'resting_staff' and a['id'] == person['id']]
+                assert len(candidates) == int(person['appended'])
+                if candidates:
+                    remaining.remove(candidates[0])
+                    resting += 1
+                continue
             image = 640 + 4 * person['appearance'] + offsets[person['direction']]
             candidates = [a for a in remaining if a['source'] == 'grid' and
                           a['cell'] == person['cell'] and a['image'] == image]
@@ -40,18 +46,28 @@ for case in ('first-store', 'second-store'):
                                       before_pixel=last['pixel'], pixel=actor['pixel'],
                                       image=image, direction=person['direction']))
             previous[key] = dict(clock=row['clock'], cell=person['cell'], pixel=actor['pixel'])
+        for person in row.get('customers', []):
+            image = 640 + 4 * person['appearance'] + offsets[person['direction']]
+            candidates = [a for a in remaining if a['source'] == 'grid' and a['cell'] == person['cell'] and a['image'] == image]
+            if candidates:
+                assert len(candidates) == 1
+                remaining.remove(candidates[0])
+                customer_matches += 1
         unmatched += len(remaining)
     reports.append(dict(case=case, display_checks=len(result['cases']),
                         source_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
                         actor_records=sum(row['count'] for row in result['cases']),
                         staff_records_matched=matched, right_fixture_shifts=shifts,
+                        resting_staff_records_matched=resting, customer_records_matched=customer_matches,
                         nonstaff_grid_records=unmatched, observed_movements=movements,
                         state_counts=dict(collections.Counter(p['state'] for row in result['cases'] for p in row['personnel']))))
 output = dict(all_passed=True, display_checks=sum(r['display_checks'] for r in reports),
               staff_records_matched=sum(r['staff_records_matched'] for r in reports),
+              resting_staff_records_matched=sum(r['resting_staff_records_matched'] for r in reports),
+              customer_records_matched=sum(r['customer_records_matched'] for r in reports),
               actor_records=sum(r['actor_records'] for r in reports), cases=reports,
               limits=['Nonstaff grid records are counted without inferring an identity from image alone.',
-                      'Natural samples do not reach state zero; resting append behavior is not newly covered.',
+                      'Resting and customer coverage are counted only when matching collected natural state.',
                       'Movement observations are CPU records, not a measured GPU animation or real-time rate.'])
 (ROOT / 'audit.json').write_text(json.dumps(output, ensure_ascii=False, indent=2) + '\n')
 print(json.dumps({k: output[k] for k in ('all_passed', 'display_checks', 'staff_records_matched', 'actor_records')}))

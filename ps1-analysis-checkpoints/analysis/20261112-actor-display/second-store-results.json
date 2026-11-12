@@ -1,7 +1,8 @@
 {
   "all_passed": true,
   "snapshot": "TOWN0001-ci-main-20-single",
-  "iterations": 24,
+  "case": "second-store",
+  "iterations": 64,
   "diagnostic_only": true,
   "source_executable_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
   "actions": {
@@ -15,7 +16,7 @@
     2,
     3
   ],
-  "display_checks": 20,
+  "display_checks": 60,
   "cases": [
     {
       "clock": 18964,
@@ -111,6 +112,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001d0ffeeff100010000500f0900000ed0180808000000000000010001000000000",
@@ -213,6 +215,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001d0ffeeff100010000500f0900000ed0180808000000000000010001000000000",
@@ -315,6 +318,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001d0ffeeff100010000500f0900000ed0180808000000000000010001000000000",
@@ -417,6 +421,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001d0ffeeff100010000500a0900000ed0180808000000000000010001000000000",
@@ -519,6 +524,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001c8ffeeff100010000500a0900000ed0180808000000000000010001000000000",
@@ -621,6 +627,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001c0ffeeff100010000500a0900000ed0180808000000000000010001000000000",
@@ -723,6 +730,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001b8ffeeff10001000050090900000ed0180808000000000000010001000000000",
@@ -825,6 +833,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001b0ffe6ff10001000050090900000ed0180808000000000000010001000000000",
@@ -927,6 +936,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001b0ffdeff10001000050090900000ed0180808000000000000010001000000000",
@@ -1029,6 +1039,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001b0ffd6ff10001000050090900000ed0180808000000000000010001000000000",
@@ -1131,6 +1142,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001b0ffceff10001000050090900000ed0180808000000000000010001000000000",
@@ -1233,6 +1245,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001b0ffc6ff10001000050090900000ed0180808000000000000010001000000000",
@@ -1335,6 +1348,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001b0ffbeff10001000050090900000ed0180808000000000000010001000000000",
@@ -1437,6 +1451,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001b8ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
@@ -1539,6 +1554,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001b0ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
@@ -1641,6 +1657,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001a8ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
@@ -1743,6 +1760,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "00000001a0ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
@@ -1845,6 +1863,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "0000000198ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
@@ -1947,6 +1966,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "0000000190ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
@@ -2049,6 +2069,7 @@
           "appended": false
         }
       ],
+      "customers": [],
       "count": 3,
       "records_hex": [
         "0000000188ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
@@ -2056,6 +2077,4126 @@
         "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000"
       ],
       "record_pool_sha256": "11b67e4bef53c2dc39e331f91b3b3bb22c80b2f2af40826ee8d4bbb619c97705"
+    },
+    {
+      "clock": 19002,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            4,
+            3
+          ],
+          "image": 794,
+          "pixel": [
+            -128,
+            -74
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            10
+          ],
+          "image": 812,
+          "pixel": [
+            -88,
+            -18
+          ],
+          "uv": [
+            192,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            4,
+            3
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            9,
+            10
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "0000000180ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001a8ffeeff100010000500c0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "7e923b96a694a9e60173ab88ead34e5be0e9f5d48a27f0a6366313aca5ad7c90"
+    },
+    {
+      "clock": 19004,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            9
+          ],
+          "image": 812,
+          "pixel": [
+            -88,
+            -26
+          ],
+          "uv": [
+            192,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            9,
+            9
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a8ffe6ff100010000500c0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "16f02cef2e14eb875945476c797ac2f1b9ae4811116f68d5d474c1ce82beecff"
+    },
+    {
+      "clock": 19006,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            9
+          ],
+          "image": 815,
+          "pixel": [
+            -88,
+            -26
+          ],
+          "uv": [
+            240,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            9,
+            9
+          ],
+          "direction": 3,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a8ffe6ff100010000500f0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "4a8e260eb3b7fc81290d8001b4eb9d8010c9572a32e62ddd029b564063fd8c23"
+    },
+    {
+      "clock": 19008,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            10,
+            9
+          ],
+          "image": 813,
+          "pixel": [
+            -80,
+            -26
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            10,
+            9
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffe6ff100010000500d0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "b3bc1ec136fede2088f3740a5985222d3a5cb3a86a1f69113fe4c321ea403c9b"
+    },
+    {
+      "clock": 19010,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            10,
+            8
+          ],
+          "image": 813,
+          "pixel": [
+            -80,
+            -34
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            10,
+            8
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffdeff100010000500d0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "8883d9b5d4d688f09ec01232892ef344a82b5bbd15e8fd4e17b42fe2e2e1e79f"
+    },
+    {
+      "clock": 19012,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            10,
+            7
+          ],
+          "image": 813,
+          "pixel": [
+            -80,
+            -42
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            10,
+            7
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffd6ff100010000500d0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "d137eb887f8eac6b733b8997bc403afe827e602956f31ba5557d8c0e30d1081d"
+    },
+    {
+      "clock": 19014,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            10,
+            6
+          ],
+          "image": 813,
+          "pixel": [
+            -80,
+            -50
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            10,
+            6
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffceff100010000500d0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "8d2c873b091eecb606823ee542d1da41eca908a228402e36b1ca1e5f875361d0"
+    },
+    {
+      "clock": 19016,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            10,
+            5
+          ],
+          "image": 813,
+          "pixel": [
+            -80,
+            -58
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            10,
+            5
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffc6ff100010000500d0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "c3618cd7e6025044c3cbe9328f0f2dad7d05fbc66c537c76c966793accecb2b1"
+    },
+    {
+      "clock": 19018,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            10,
+            4
+          ],
+          "image": 813,
+          "pixel": [
+            -80,
+            -66
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            10,
+            4
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffbeff100010000500d0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "0a2e316852d3e3a4478b7ce186e5238146dd2049c31b87b0a722b4413729cbc0"
+    },
+    {
+      "clock": 19020,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            10,
+            3
+          ],
+          "image": 814,
+          "pixel": [
+            -80,
+            -74
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            10,
+            3
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffb6ff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "c8642c4ff95a904a7d67360ffd111b9028a156c2f0c23b8cab5114a9ea3dbf01"
+    },
+    {
+      "clock": 19022,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            3
+          ],
+          "image": 814,
+          "pixel": [
+            -88,
+            -74
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            9,
+            3
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a8ffb6ff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "ea08d8c6b324e43f7ad35ef14ed9cacabb272eaadd4395ec26fdaf29cb386114"
+    },
+    {
+      "clock": 19024,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            8,
+            3
+          ],
+          "image": 814,
+          "pixel": [
+            -96,
+            -74
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            8,
+            3
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0ffb6ff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "892e7f2d085d77dd6324ba5827b7ca2fe146e5ae62ce025e067f9c18f0861787"
+    },
+    {
+      "clock": 19026,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            7,
+            3
+          ],
+          "image": 814,
+          "pixel": [
+            -104,
+            -74
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            7,
+            3
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "0000000198ffb6ff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "8e405acce7043988ca33c269354edde352b7553a9181bf0f85811e835fbe3b7b"
+    },
+    {
+      "clock": 19028,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            6,
+            3
+          ],
+          "image": 814,
+          "pixel": [
+            -112,
+            -74
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            6,
+            3
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "0000000190ffb6ff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "52a995fbb6b884d05eac159d8b2fd9dd58e0a16adb31022f9d3ecdbbd5d01415"
+    },
+    {
+      "clock": 19030,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            5,
+            3
+          ],
+          "image": 814,
+          "pixel": [
+            -120,
+            -74
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            5,
+            3
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "0000000188ffb6ff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "91b3b69ddfe3de1f3aa6a33a9f41f14691b9b28e56e23f4a4bf5141b9bdb47e2"
+    },
+    {
+      "clock": 19032,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            4,
+            3
+          ],
+          "image": 814,
+          "pixel": [
+            -128,
+            -74
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 3,
+          "cell": [
+            4,
+            3
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "0000000180ffb6ff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "313a61cc6e96b5051e1f587b73b9225edf492b7c9e4171f8e7a5dc2448e8d744"
+    },
+    {
+      "clock": 19034,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "b1bbc9091abbe2f4449a12620f67630b3a3af1ef968810d47e3669b8b2fca991"
+    },
+    {
+      "clock": 19036,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "b1bbc9091abbe2f4449a12620f67630b3a3af1ef968810d47e3669b8b2fca991"
+    },
+    {
+      "clock": 19038,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "b1bbc9091abbe2f4449a12620f67630b3a3af1ef968810d47e3669b8b2fca991"
+    },
+    {
+      "clock": 19040,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "d26f6a6fcf692e44d70cf0a05222595ffd6837793c3aa5d15513592412284195"
+    },
+    {
+      "clock": 19042,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "d26f6a6fcf692e44d70cf0a05222595ffd6837793c3aa5d15513592412284195"
+    },
+    {
+      "clock": 19044,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "d26f6a6fcf692e44d70cf0a05222595ffd6837793c3aa5d15513592412284195"
+    },
+    {
+      "clock": 19046,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "d26f6a6fcf692e44d70cf0a05222595ffd6837793c3aa5d15513592412284195"
+    },
+    {
+      "clock": 19048,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "b1bbc9091abbe2f4449a12620f67630b3a3af1ef968810d47e3669b8b2fca991"
+    },
+    {
+      "clock": 19050,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "b1bbc9091abbe2f4449a12620f67630b3a3af1ef968810d47e3669b8b2fca991"
+    },
+    {
+      "clock": 19052,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "b1bbc9091abbe2f4449a12620f67630b3a3af1ef968810d47e3669b8b2fca991"
+    },
+    {
+      "clock": 19054,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "b1bbc9091abbe2f4449a12620f67630b3a3af1ef968810d47e3669b8b2fca991"
+    },
+    {
+      "clock": 19056,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "d26f6a6fcf692e44d70cf0a05222595ffd6837793c3aa5d15513592412284195"
+    },
+    {
+      "clock": 19058,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "d26f6a6fcf692e44d70cf0a05222595ffd6837793c3aa5d15513592412284195"
+    },
+    {
+      "clock": 19060,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "d26f6a6fcf692e44d70cf0a05222595ffd6837793c3aa5d15513592412284195"
+    },
+    {
+      "clock": 19062,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 34,
+          "cell": [
+            0,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -152,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ]
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 0,
+          "cell": [
+            0,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": true
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "d26f6a6fcf692e44d70cf0a05222595ffd6837793c3aa5d15513592412284195"
+    },
+    {
+      "clock": 19064,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            4,
+            3
+          ],
+          "image": 795,
+          "pixel": [
+            -128,
+            -74
+          ],
+          "uv": [
+            176,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 4,
+          "cell": [
+            4,
+            3
+          ],
+          "direction": 3,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "0000000180ffb6ff100010000500b0900000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "b8be5c74d8514ad23858037ac2ede41d28b595d2777970ccd169a638a58eab30"
+    },
+    {
+      "clock": 19066,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            5,
+            3
+          ],
+          "image": 795,
+          "pixel": [
+            -120,
+            -74
+          ],
+          "uv": [
+            176,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 4,
+          "cell": [
+            5,
+            3
+          ],
+          "direction": 3,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "0000000188ffb6ff100010000500b0900000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "7eff81d7c405a2d4e0340e2929078367a1604d308722083f2e8e9f58f3e494a8"
+    },
+    {
+      "clock": 19068,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            6,
+            3
+          ],
+          "image": 795,
+          "pixel": [
+            -112,
+            -74
+          ],
+          "uv": [
+            176,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 4,
+          "cell": [
+            6,
+            3
+          ],
+          "direction": 3,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "0000000190ffb6ff100010000500b0900000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "912ee8d2a33c90bacbc4e5c293d839af71599dfb551c6fd41fb97cd41ade4c63"
+    },
+    {
+      "clock": 19070,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            7,
+            3
+          ],
+          "image": 795,
+          "pixel": [
+            -104,
+            -74
+          ],
+          "uv": [
+            176,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 4,
+          "cell": [
+            7,
+            3
+          ],
+          "direction": 3,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "0000000198ffb6ff100010000500b0900000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "a47411b7076014d00da5164ecb41c322f807a3098f3d9cd6f2b80443c492a1be"
+    },
+    {
+      "clock": 19072,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            8,
+            3
+          ],
+          "image": 792,
+          "pixel": [
+            -96,
+            -74
+          ],
+          "uv": [
+            128,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 4,
+          "cell": [
+            8,
+            3
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0ffb6ff10001000050080900000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "ed4edde41940f6f3dabbd0dbb10ffd6641017e26e82a6643296135e323d074e1"
+    },
+    {
+      "clock": 19074,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            8,
+            4
+          ],
+          "image": 792,
+          "pixel": [
+            -96,
+            -66
+          ],
+          "uv": [
+            128,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 4,
+          "cell": [
+            8,
+            4
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0ffbeff10001000050080900000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "2dcbf5d75b3c8e25b2993d468c15770c969a6ca28432909e25eaea370bfd0696"
+    },
+    {
+      "clock": 19076,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            8,
+            5
+          ],
+          "image": 792,
+          "pixel": [
+            -96,
+            -58
+          ],
+          "uv": [
+            128,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 4,
+          "cell": [
+            8,
+            5
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0ffc6ff10001000050080900000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "771f251120997b9e3f4dcde2dd5344954b579aae127b9c230372927f5abb962c"
+    },
+    {
+      "clock": 19078,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            8,
+            6
+          ],
+          "image": 792,
+          "pixel": [
+            -96,
+            -50
+          ],
+          "uv": [
+            128,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 4,
+          "cell": [
+            8,
+            6
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0ffceff10001000050080900000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "0aa29bce8be6475e6c264c1ac1cf4d979bff141092adaf30d728b5fbd80e67d0"
+    },
+    {
+      "clock": 19080,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            8,
+            7
+          ],
+          "image": 792,
+          "pixel": [
+            -96,
+            -42
+          ],
+          "uv": [
+            128,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "resting_staff",
+          "id": 6,
+          "cell": [
+            0,
+            4
+          ],
+          "image": 812,
+          "pixel": [
+            -152,
+            -58
+          ],
+          "uv": [
+            192,
+            160
+          ]
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 4,
+          "cell": [
+            8,
+            7
+          ],
+          "direction": 1,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 0,
+          "cell": [
+            0,
+            4
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": true
+        }
+      ],
+      "customers": [],
+      "count": 3,
+      "records_hex": [
+        "00000001a0ffd6ff10001000050080900000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500c0900000ed0180808000000000000010001000000000",
+        "0000000168ffc6ff100010000500c0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "81d699df4b5653a5805e6405041de148eb11231a7b85f1f49a3b09ee86d76a9f"
     }
   ],
   "limits": [

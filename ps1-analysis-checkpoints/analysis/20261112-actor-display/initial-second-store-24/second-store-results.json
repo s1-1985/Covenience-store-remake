@@ -1,0 +1,2068 @@
+{
+  "all_passed": true,
+  "snapshot": "TOWN0001-ci-main-20-single",
+  "iterations": 24,
+  "diagnostic_only": true,
+  "source_executable_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "actions": {
+    "0": 16,
+    "2": 16384,
+    "4": 32
+  },
+  "direction_image_offsets": [
+    1,
+    0,
+    2,
+    3
+  ],
+  "display_checks": 20,
+  "cases": [
+    {
+      "clock": 18964,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            15,
+            10
+          ],
+          "image": 799,
+          "pixel": [
+            -48,
+            -18
+          ],
+          "uv": [
+            240,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            12
+          ],
+          "image": 793,
+          "pixel": [
+            -48,
+            -2
+          ],
+          "uv": [
+            144,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            13
+          ],
+          "image": 813,
+          "pixel": [
+            -48,
+            6
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 2,
+          "cell": [
+            15,
+            10
+          ],
+          "direction": 3,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            14,
+            12
+          ],
+          "direction": 0,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 2,
+          "cell": [
+            14,
+            13
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001d0ffeeff100010000500f0900000ed0180808000000000000010001000000000",
+        "00000001d0fffeff10001000050090900000ed0180808000000000000010001000000000",
+        "00000001d0ff0600100010000500d0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "133ce7d5549b934776edb9e67d6df5c888a0d8bd970fd72900d0bf3043168c29"
+    },
+    {
+      "clock": 18964,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            15,
+            10
+          ],
+          "image": 799,
+          "pixel": [
+            -48,
+            -18
+          ],
+          "uv": [
+            240,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            12
+          ],
+          "image": 793,
+          "pixel": [
+            -48,
+            -2
+          ],
+          "uv": [
+            144,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            13
+          ],
+          "image": 813,
+          "pixel": [
+            -48,
+            6
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 2,
+          "cell": [
+            15,
+            10
+          ],
+          "direction": 3,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            14,
+            12
+          ],
+          "direction": 0,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 2,
+          "cell": [
+            14,
+            13
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001d0ffeeff100010000500f0900000ed0180808000000000000010001000000000",
+        "00000001d0fffeff10001000050090900000ed0180808000000000000010001000000000",
+        "00000001d0ff0600100010000500d0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "133ce7d5549b934776edb9e67d6df5c888a0d8bd970fd72900d0bf3043168c29"
+    },
+    {
+      "clock": 18966,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            15,
+            10
+          ],
+          "image": 799,
+          "pixel": [
+            -48,
+            -18
+          ],
+          "uv": [
+            240,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            11
+          ],
+          "image": 793,
+          "pixel": [
+            -48,
+            -10
+          ],
+          "uv": [
+            144,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            12
+          ],
+          "image": 813,
+          "pixel": [
+            -48,
+            -2
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 2,
+          "cell": [
+            15,
+            10
+          ],
+          "direction": 3,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            14,
+            11
+          ],
+          "direction": 0,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 2,
+          "cell": [
+            14,
+            12
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001d0ffeeff100010000500f0900000ed0180808000000000000010001000000000",
+        "00000001d0fff6ff10001000050090900000ed0180808000000000000010001000000000",
+        "00000001d0fffeff100010000500d0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "936e2436f5ddf534a33ae2fe0ce0a3d9bee15d1b29b24680f60755ddf0606242"
+    },
+    {
+      "clock": 18968,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            10
+          ],
+          "image": 794,
+          "pixel": [
+            -48,
+            -18
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            15,
+            10
+          ],
+          "image": 798,
+          "pixel": [
+            -48,
+            -18
+          ],
+          "uv": [
+            224,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            11
+          ],
+          "image": 815,
+          "pixel": [
+            -48,
+            -10
+          ],
+          "uv": [
+            240,
+            160
+          ],
+          "right_fixture_shift": false
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            15,
+            10
+          ],
+          "direction": 2,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            14,
+            10
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 2,
+          "cell": [
+            14,
+            11
+          ],
+          "direction": 3,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001d0ffeeff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001d0ffeeff100010000500e0900000ed0180808000000000000010001000000000",
+        "00000001d0fff6ff100010000500f0a00000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "4ab596a19a5ad069ea362903448af98684beb2808dc1bbdf6536dbccdc8f5844"
+    },
+    {
+      "clock": 18970,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            13,
+            10
+          ],
+          "image": 794,
+          "pixel": [
+            -56,
+            -18
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            10
+          ],
+          "image": 815,
+          "pixel": [
+            -48,
+            -18
+          ],
+          "uv": [
+            240,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            15,
+            11
+          ],
+          "image": 798,
+          "pixel": [
+            -48,
+            -10
+          ],
+          "uv": [
+            224,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            15,
+            11
+          ],
+          "direction": 2,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            13,
+            10
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 2,
+          "cell": [
+            14,
+            10
+          ],
+          "direction": 3,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001c8ffeeff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001d0ffeeff100010000500f0a00000ed0180808000000000000010001000000000",
+        "00000001d0fff6ff100010000500e0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "3f992e8276821d88419280d84ec0e4631e3aee9fbe6403f31784c9eaf4ea3bf8"
+    },
+    {
+      "clock": 18972,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            12,
+            10
+          ],
+          "image": 794,
+          "pixel": [
+            -64,
+            -18
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            10
+          ],
+          "image": 812,
+          "pixel": [
+            -48,
+            -18
+          ],
+          "uv": [
+            192,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            15,
+            11
+          ],
+          "image": 796,
+          "pixel": [
+            -48,
+            -10
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            15,
+            11
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            12,
+            10
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            10
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001c0ffeeff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001d0ffeeff100010000500c0a00000ed0180808000000000000010001000000000",
+        "00000001d0fff6ff100010000500c0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "12f42952a532214c4de6a3dcd4634873f82db3cf96dee7510f3a4cb2e00505ea"
+    },
+    {
+      "clock": 18974,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            11,
+            10
+          ],
+          "image": 793,
+          "pixel": [
+            -72,
+            -18
+          ],
+          "uv": [
+            144,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            11
+          ],
+          "image": 812,
+          "pixel": [
+            -48,
+            -10
+          ],
+          "uv": [
+            192,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            15,
+            12
+          ],
+          "image": 796,
+          "pixel": [
+            -48,
+            -2
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            15,
+            12
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            11,
+            10
+          ],
+          "direction": 0,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            11
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001b8ffeeff10001000050090900000ed0180808000000000000010001000000000",
+        "00000001d0fff6ff100010000500c0a00000ed0180808000000000000010001000000000",
+        "00000001d0fffeff100010000500c0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "5f678f9af323017163a6b8195ca66c5ca8a58524a5bbd1762b469f588ea14be5"
+    },
+    {
+      "clock": 18976,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            11,
+            9
+          ],
+          "image": 793,
+          "pixel": [
+            -80,
+            -26
+          ],
+          "uv": [
+            144,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            12
+          ],
+          "image": 812,
+          "pixel": [
+            -48,
+            -2
+          ],
+          "uv": [
+            192,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            15,
+            13
+          ],
+          "image": 796,
+          "pixel": [
+            -48,
+            6
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            15,
+            13
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            11,
+            9
+          ],
+          "direction": 0,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            12
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffe6ff10001000050090900000ed0180808000000000000010001000000000",
+        "00000001d0fffeff100010000500c0a00000ed0180808000000000000010001000000000",
+        "00000001d0ff0600100010000500c0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "a016826f7494b2e80c9b9c8f351cb0590411f646ebfd3b7be4d713185b4b27b9"
+    },
+    {
+      "clock": 18978,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            11,
+            8
+          ],
+          "image": 793,
+          "pixel": [
+            -80,
+            -34
+          ],
+          "uv": [
+            144,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            13
+          ],
+          "image": 812,
+          "pixel": [
+            -48,
+            6
+          ],
+          "uv": [
+            192,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            15,
+            14
+          ],
+          "image": 796,
+          "pixel": [
+            -48,
+            14
+          ],
+          "uv": [
+            192,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            15,
+            14
+          ],
+          "direction": 1,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            11,
+            8
+          ],
+          "direction": 0,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            13
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffdeff10001000050090900000ed0180808000000000000010001000000000",
+        "00000001d0ff0600100010000500c0a00000ed0180808000000000000010001000000000",
+        "00000001d0ff0e00100010000500c0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "acf94f0b2b5eb00d2b1605ece74b07ad5448e35c5249df3424d43c4dd561e4de"
+    },
+    {
+      "clock": 18980,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            11,
+            7
+          ],
+          "image": 793,
+          "pixel": [
+            -80,
+            -42
+          ],
+          "uv": [
+            144,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            14
+          ],
+          "image": 812,
+          "pixel": [
+            -48,
+            14
+          ],
+          "uv": [
+            192,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            15,
+            15
+          ],
+          "image": 798,
+          "pixel": [
+            -48,
+            22
+          ],
+          "uv": [
+            224,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            15,
+            15
+          ],
+          "direction": 2,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            11,
+            7
+          ],
+          "direction": 0,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            14
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffd6ff10001000050090900000ed0180808000000000000010001000000000",
+        "00000001d0ff0e00100010000500c0a00000ed0180808000000000000010001000000000",
+        "00000001d0ff1600100010000500e0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "51a06a2f32358f5febc8528554864c88a931938d6247eabd25049c0d8af289fc"
+    },
+    {
+      "clock": 18982,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            11,
+            6
+          ],
+          "image": 793,
+          "pixel": [
+            -80,
+            -50
+          ],
+          "uv": [
+            144,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            14
+          ],
+          "image": 812,
+          "pixel": [
+            -48,
+            14
+          ],
+          "uv": [
+            192,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            15
+          ],
+          "image": 798,
+          "pixel": [
+            -48,
+            22
+          ],
+          "uv": [
+            224,
+            144
+          ],
+          "right_fixture_shift": false
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            14,
+            15
+          ],
+          "direction": 2,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            11,
+            6
+          ],
+          "direction": 0,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            14
+          ],
+          "direction": 1,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffceff10001000050090900000ed0180808000000000000010001000000000",
+        "00000001d0ff0e00100010000500c0a00000ed0180808000000000000010001000000000",
+        "00000001d0ff1600100010000500e0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "4e14b5900271c8a6b103fb1469cee3d0733af60dd0ab6d2a6895a1c91b26aead"
+    },
+    {
+      "clock": 18984,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            11,
+            5
+          ],
+          "image": 793,
+          "pixel": [
+            -80,
+            -58
+          ],
+          "uv": [
+            144,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            14
+          ],
+          "image": 813,
+          "pixel": [
+            -48,
+            14
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            13,
+            15
+          ],
+          "image": 798,
+          "pixel": [
+            -56,
+            22
+          ],
+          "uv": [
+            224,
+            144
+          ],
+          "right_fixture_shift": false
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            13,
+            15
+          ],
+          "direction": 2,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            11,
+            5
+          ],
+          "direction": 0,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            14
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffc6ff10001000050090900000ed0180808000000000000010001000000000",
+        "00000001d0ff0e00100010000500d0a00000ed0180808000000000000010001000000000",
+        "00000001c8ff1600100010000500e0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "65241d361977873404feae2478346ab1ba8e99b92249029b0cd7f1ca0955aea2"
+    },
+    {
+      "clock": 18986,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            11,
+            4
+          ],
+          "image": 793,
+          "pixel": [
+            -80,
+            -66
+          ],
+          "uv": [
+            144,
+            144
+          ],
+          "right_fixture_shift": true
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            13
+          ],
+          "image": 813,
+          "pixel": [
+            -48,
+            6
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            12,
+            15
+          ],
+          "image": 798,
+          "pixel": [
+            -64,
+            22
+          ],
+          "uv": [
+            224,
+            144
+          ],
+          "right_fixture_shift": false
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            12,
+            15
+          ],
+          "direction": 2,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            11,
+            4
+          ],
+          "direction": 0,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            13
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffbeff10001000050090900000ed0180808000000000000010001000000000",
+        "00000001d0ff0600100010000500d0a00000ed0180808000000000000010001000000000",
+        "00000001c0ff1600100010000500e0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "8f5605f9fdb7eb9d2951110c56ec2ecb3aa86daad2e7871481ad2f63fb8d830f"
+    },
+    {
+      "clock": 18988,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            11,
+            3
+          ],
+          "image": 794,
+          "pixel": [
+            -72,
+            -74
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            12
+          ],
+          "image": 813,
+          "pixel": [
+            -48,
+            -2
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            11,
+            15
+          ],
+          "image": 798,
+          "pixel": [
+            -72,
+            22
+          ],
+          "uv": [
+            224,
+            144
+          ],
+          "right_fixture_shift": false
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            11,
+            15
+          ],
+          "direction": 2,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            11,
+            3
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            12
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001b8ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001d0fffeff100010000500d0a00000ed0180808000000000000010001000000000",
+        "00000001b8ff1600100010000500e0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "7cfb02fe13bdacea52d102f3a8f12ac8f2ea6d7ae9ea4c4c51115bc488a553ae"
+    },
+    {
+      "clock": 18990,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            10,
+            3
+          ],
+          "image": 794,
+          "pixel": [
+            -80,
+            -74
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            11
+          ],
+          "image": 813,
+          "pixel": [
+            -48,
+            -10
+          ],
+          "uv": [
+            208,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            10,
+            15
+          ],
+          "image": 798,
+          "pixel": [
+            -80,
+            22
+          ],
+          "uv": [
+            224,
+            144
+          ],
+          "right_fixture_shift": false
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            10,
+            15
+          ],
+          "direction": 2,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            10,
+            3
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            11
+          ],
+          "direction": 0,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001b0ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001d0fff6ff100010000500d0a00000ed0180808000000000000010001000000000",
+        "00000001b0ff1600100010000500e0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "743a95a0fe7c68971c54dd09bd6770505cee71b9583d8733022b0beff38ce522"
+    },
+    {
+      "clock": 18992,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            3
+          ],
+          "image": 794,
+          "pixel": [
+            -88,
+            -74
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            14,
+            10
+          ],
+          "image": 814,
+          "pixel": [
+            -48,
+            -18
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            15
+          ],
+          "image": 797,
+          "pixel": [
+            -88,
+            22
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": false
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            15
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            9,
+            3
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            14,
+            10
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001a8ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001d0ffeeff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a8ff1600100010000500d0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "491e5d15369afefbf025474855676179f320e41192dbcab19453f25236240bda"
+    },
+    {
+      "clock": 18994,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            8,
+            3
+          ],
+          "image": 794,
+          "pixel": [
+            -96,
+            -74
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            13,
+            10
+          ],
+          "image": 814,
+          "pixel": [
+            -56,
+            -18
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            14
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            14
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            14
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            8,
+            3
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            13,
+            10
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "00000001a0ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001c8ffeeff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0ff0e00100010000500d0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "849fe62eaace14bc992d23629364989932b970f023b2437499cb791d4cefda4f"
+    },
+    {
+      "clock": 18996,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            7,
+            3
+          ],
+          "image": 794,
+          "pixel": [
+            -104,
+            -74
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            12,
+            10
+          ],
+          "image": 814,
+          "pixel": [
+            -64,
+            -18
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            13
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            6
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            13
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            7,
+            3
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            12,
+            10
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "0000000198ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001c0ffeeff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0ff0600100010000500d0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "5b881074ed3d3f621f11dd95215605191867ffdf21d33ac6cc3883b1eefbefa5"
+    },
+    {
+      "clock": 18998,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            6,
+            3
+          ],
+          "image": 794,
+          "pixel": [
+            -112,
+            -74
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            11,
+            10
+          ],
+          "image": 814,
+          "pixel": [
+            -72,
+            -18
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            12
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -2
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            12
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            6,
+            3
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            11,
+            10
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "0000000190ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001b8ffeeff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0fffeff100010000500d0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "02c15952dc55c9f94190e84d98650a65df73422759ea5a6a68cf1b0219ba6ef5"
+    },
+    {
+      "clock": 19000,
+      "store_slot": 2,
+      "actors": [
+        {
+          "source": "grid",
+          "cell": [
+            5,
+            3
+          ],
+          "image": 794,
+          "pixel": [
+            -120,
+            -74
+          ],
+          "uv": [
+            160,
+            144
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            10,
+            10
+          ],
+          "image": 814,
+          "pixel": [
+            -80,
+            -18
+          ],
+          "uv": [
+            224,
+            160
+          ],
+          "right_fixture_shift": false
+        },
+        {
+          "source": "grid",
+          "cell": [
+            9,
+            11
+          ],
+          "image": 797,
+          "pixel": [
+            -96,
+            -10
+          ],
+          "uv": [
+            208,
+            144
+          ],
+          "right_fixture_shift": true
+        }
+      ],
+      "personnel": [
+        {
+          "slot": 2,
+          "id": 18,
+          "state": 4,
+          "cell": [
+            9,
+            11
+          ],
+          "direction": 0,
+          "appearance": 39,
+          "appended": false
+        },
+        {
+          "slot": 1,
+          "id": 34,
+          "state": 3,
+          "cell": [
+            5,
+            3
+          ],
+          "direction": 2,
+          "appearance": 38,
+          "appended": false
+        },
+        {
+          "slot": 0,
+          "id": 6,
+          "state": 4,
+          "cell": [
+            10,
+            10
+          ],
+          "direction": 2,
+          "appearance": 43,
+          "appended": false
+        }
+      ],
+      "count": 3,
+      "records_hex": [
+        "0000000188ffb6ff100010000500a0900000ed0180808000000000000010001000000000",
+        "00000001b0ffeeff100010000500e0a00000ed0180808000000000000010001000000000",
+        "00000001a0fff6ff100010000500d0900000ed0180808000000000000010001000000000"
+      ],
+      "record_pool_sha256": "11b67e4bef53c2dc39e331f91b3b3bb22c80b2f2af40826ee8d4bbb619c97705"
+    }
+  ],
+  "limits": [
+    "Unmodified main-20 natural play, original 56A3C and 18940 executed.",
+    "Complete 1152-byte CPU record pool, count and source state checked.",
+    "Parent comparison shares native children; SDK/GPU/SPU/IRQ boundaries modeled.",
+    "CPU coordinates and texture UVs, no GPU rasterization or measured display cadence.",
+    "Diagnostic branch does not replace the natural continuation checkpoint."
+  ]
+}

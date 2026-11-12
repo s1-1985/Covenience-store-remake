@@ -44,6 +44,16 @@ class DisplayMonitor:
                                        right_fixture_shift=bool(shift)))
             refs = struct.unpack_from('<3h', store, 0xdd8)
             personnel = []
+            customers = []
+            capacity = (10, 10, 15, 15, 20, 20)[struct.unpack_from('<i', store, 0xc70)[0]]
+            for index in range(capacity):
+                offset = 0xf04 + index * 32
+                state = store[offset]
+                if not state:
+                    continue
+                x, y, direction = struct.unpack_from('<3b', store, offset + 12)
+                customers.append(dict(id=index, state=state, cell=[x, y], direction=direction,
+                                      appearance=struct.unpack_from('<b', store, offset + 31)[0]))
             for slot in (2, 1, 0):
                 index = refs[slot]
                 if index == -1:
@@ -73,7 +83,7 @@ class DisplayMonitor:
                     assert list(record[14:16]) == actor['uv']
                     records.append(record.hex())
                 self.rows.append(dict(clock=clock, store_slot=(pointer - 0x8012b2f8) // 5080,
-                                      actors=actors, personnel=personnel, count=count,
+                                      actors=actors, personnel=personnel, customers=customers, count=count,
                                       records_hex=records, record_pool_sha256=hashlib.sha256(actual).hexdigest()))
                 self.pending -= 1
 
@@ -106,7 +116,10 @@ play.Connection = Connection
 name = 'TOWN0001-ci-main-20-single'
 case = sys.argv[2] if len(sys.argv) > 2 else 'second-store'
 assert case in ('first-store', 'second-store')
-count = 48 if case == 'first-store' else 24
+count = 48 if case == 'first-store' else 64
+if len(sys.argv) > 3:
+    count = int(sys.argv[3])
+assert count > 0
 actions = {0: 16, 2: 32} if case == 'first-store' else {0: 16, 2: 0x4000, 4: 32}
 proof = play.compare(name, count, actions=actions, native_music=True, finance_monitor=True, event_monitor=True,
                      refill_monitor=True, customer_monitor=True, whole_town_monitor=True,

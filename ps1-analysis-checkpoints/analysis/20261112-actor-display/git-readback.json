@@ -1,0 +1,78 @@
+{
+  "verified_commit": "f0cef62fd786a900ae05739e7edb75620d9f90c0",
+  "all_passed": true,
+  "files": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/README.md",
+      "bytes": 4258,
+      "sha256": "39903a62eef95f9271f8b1fa7fe974c98cd5c2db93505b0071af9b0a94bfda35",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/audit.json",
+      "bytes": 21498,
+      "sha256": "badfeabcca17cb5b67b8acb9fe176f77222c90ae42b1b952e9ff6978cf1ba600",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/audit.py",
+      "bytes": 3344,
+      "sha256": "b3093cb5666b57a198d1da3a156a1190f2be312dc77b544e867666005c683878",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/development-town-view-no-interior.log",
+      "bytes": 454,
+      "sha256": "a3c2e2a37083b4b3ad964803a22ea676dda0012ec94bd291fc015c675e5eb095",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/first-store-play-proof.json",
+      "bytes": 839190,
+      "sha256": "2c638beae4e29c0fc14321868ab8d149c94d76556306372e3ea983487918fb44",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/first-store-results.json",
+      "bytes": 58954,
+      "sha256": "6233cbbdfc2a20cf6de917520fd7876024e9e4ef885f89bb728b2ee124b2250a",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/first-store.log",
+      "bytes": 3364,
+      "sha256": "9d2a8a0c28132f637db30d5427c8caedec23e58b4bd3a7fe5a92d6ec151b8283",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/instruction-source.json",
+      "bytes": 76558,
+      "sha256": "6d3511f321530b0bfb9ac7ce478dfdad01d51c0e6e393503722e41b0890a8a98",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/second-store-play-proof.json",
+      "bytes": 403885,
+      "sha256": "d56871daf468136646821b63c0a5a492e4269472733dcd8426098835251f9ca5",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/second-store-results.json",
+      "bytes": 43087,
+      "sha256": "5aa295ee99375ee4a3af011a9dc8e7e6e8d8fdcc3aae5cdab21e29e14c4564b2",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/second-store.log",
+      "bytes": 1760,
+      "sha256": "9c4c5ea1d7abe72c69a2d18582d7cf86564b1db4bae197794002839a78284094",
+      "all_bytes_equal": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261112-actor-display/verify-display.py",
+      "bytes": 6411,
+      "sha256": "edc3d4cc61cbc43b9f6b3926352fdf9e96edbdc64413d5beae29cf2bdd9b9275",
+      "all_bytes_equal": true
+    }
+  ]
+}
