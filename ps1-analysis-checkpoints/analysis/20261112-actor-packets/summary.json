@@ -1,0 +1,22 @@
+{
+  "all_passed": true,
+  "source_executable_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "source_files": [
+    {
+      "path": "20261112-actor-display/first-store-results.json",
+      "sha256": "570e2da414e8d128ecc6347a7c06e209c758b1158c58b91f7e25db937c8f0f18"
+    },
+    {
+      "path": "20261112-actor-display/second-store-results.json",
+      "sha256": "5be76c0347477e2175434882b3ebe0570fbd2adf52129b59320c1c2a4f2568ce"
+    }
+  ],
+  "frames": 212,
+  "packets": 544,
+  "limits": [
+    "Actor records are committed natural-play observations; frame inputs are isolated diagnostic inputs.",
+    "Original 18A5C dispatcher and 84830 packet builder, with SDK sync/submission boundaries supplied by archived runner.",
+    "No GPU rasterization, physical display timing, VRAM texture decoding or measured walking animation cadence.",
+    "The two OT buffers use the same runner-supplied logical offset (160,120); physical alternating display offsets are outside this diagnostic."
+  ]
+}
