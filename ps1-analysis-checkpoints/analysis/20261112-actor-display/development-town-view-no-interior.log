@@ -1,0 +1,7 @@
+connected actual opened store -> play 18960 99004769
+connected play verified 1 clock 18962 view 0 pause 0 next input 0
+Traceback (most recent call last):
+  File "/workspace/scratch/cf8f00cbb041/conveni/ps1-analysis-checkpoints/analysis/20261112-actor-display/verify-display.py", line 110, in <module>
+    assert monitors[0].rows == monitors[1].rows and monitors[0].rows
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

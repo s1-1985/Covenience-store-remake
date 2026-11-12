@@ -1,0 +1,26 @@
+connected actual opened store -> play 18960 99004769
+connected play verified 1 clock 18960 view 0 pause 0 next input 16
+connected play verified 2 clock 18962 view 1 pause 0 next input 0
+connected play verified 3 clock 18962 view 1 pause 0 next input 16384
+connected play verified 4 clock 18964 view 1 pause 0 next input 0
+connected play verified 5 clock 18964 view 1 pause 0 next input 32
+connected play verified 6 clock 18966 view 2 pause 0 next input 0
+connected play verified 7 clock 18968 view 2 pause 0 next input 0
+connected play verified 8 clock 18970 view 2 pause 0 next input 0
+connected play verified 9 clock 18972 view 2 pause 0 next input 0
+connected play verified 10 clock 18974 view 2 pause 0 next input 0
+connected play verified 11 clock 18976 view 2 pause 0 next input 0
+connected play verified 12 clock 18978 view 2 pause 0 next input 0
+connected play verified 13 clock 18980 view 2 pause 0 next input 0
+connected play verified 14 clock 18982 view 2 pause 0 next input 0
+connected play verified 15 clock 18984 view 2 pause 0 next input 0
+connected play verified 16 clock 18986 view 2 pause 0 next input 0
+connected play verified 17 clock 18988 view 2 pause 0 next input 0
+connected play verified 18 clock 18990 view 2 pause 0 next input 0
+connected play verified 19 clock 18992 view 2 pause 0 next input 0
+connected play verified 20 clock 18994 view 2 pause 0 next input 0
+connected play verified 21 clock 18996 view 2 pause 0 next input 0
+connected play verified 22 clock 18998 view 2 pause 0 next input 0
+connected play verified 23 clock 19000 view 2 pause 0 next input 0
+connected play verified 24 clock 19002 view 2 pause 0 next input 0
+{"all_passed": true, "iterations": 24, "display_checks": 20, "direction_image_offsets": [1, 0, 2, 3]}

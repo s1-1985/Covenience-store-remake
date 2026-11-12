@@ -1,0 +1,1146 @@
+{
+  "all_passed": true,
+  "display_checks": 66,
+  "staff_records_matched": 106,
+  "actor_records": 152,
+  "cases": [
+    {
+      "case": "first-store",
+      "display_checks": 46,
+      "source_sha256": "6233cbbdfc2a20cf6de917520fd7876024e9e4ef885f89bb728b2ee124b2250a",
+      "actor_records": 92,
+      "staff_records_matched": 46,
+      "right_fixture_shifts": 46,
+      "nonstaff_grid_records": 46,
+      "observed_movements": [],
+      "state_counts": {
+        "2": 46
+      }
+    },
+    {
+      "case": "second-store",
+      "display_checks": 20,
+      "source_sha256": "5aa295ee99375ee4a3af011a9dc8e7e6e8d8fdcc3aae5cdab21e29e14c4564b2",
+      "actor_records": 60,
+      "staff_records_matched": 60,
+      "right_fixture_shifts": 20,
+      "nonstaff_grid_records": 0,
+      "observed_movements": [
+        {
+          "id": 34,
+          "before_clock": 18964,
+          "clock": 18966,
+          "before_cell": [
+            14,
+            12
+          ],
+          "cell": [
+            14,
+            11
+          ],
+          "before_pixel": [
+            -48,
+            -2
+          ],
+          "pixel": [
+            -48,
+            -10
+          ],
+          "image": 793,
+          "direction": 0
+        },
+        {
+          "id": 6,
+          "before_clock": 18964,
+          "clock": 18966,
+          "before_cell": [
+            14,
+            13
+          ],
+          "cell": [
+            14,
+            12
+          ],
+          "before_pixel": [
+            -48,
+            6
+          ],
+          "pixel": [
+            -48,
+            -2
+          ],
+          "image": 813,
+          "direction": 0
+        },
+        {
+          "id": 34,
+          "before_clock": 18966,
+          "clock": 18968,
+          "before_cell": [
+            14,
+            11
+          ],
+          "cell": [
+            14,
+            10
+          ],
+          "before_pixel": [
+            -48,
+            -10
+          ],
+          "pixel": [
+            -48,
+            -18
+          ],
+          "image": 794,
+          "direction": 2
+        },
+        {
+          "id": 6,
+          "before_clock": 18966,
+          "clock": 18968,
+          "before_cell": [
+            14,
+            12
+          ],
+          "cell": [
+            14,
+            11
+          ],
+          "before_pixel": [
+            -48,
+            -2
+          ],
+          "pixel": [
+            -48,
+            -10
+          ],
+          "image": 815,
+          "direction": 3
+        },
+        {
+          "id": 18,
+          "before_clock": 18968,
+          "clock": 18970,
+          "before_cell": [
+            15,
+            10
+          ],
+          "cell": [
+            15,
+            11
+          ],
+          "before_pixel": [
+            -48,
+            -18
+          ],
+          "pixel": [
+            -48,
+            -10
+          ],
+          "image": 798,
+          "direction": 2
+        },
+        {
+          "id": 34,
+          "before_clock": 18968,
+          "clock": 18970,
+          "before_cell": [
+            14,
+            10
+          ],
+          "cell": [
+            13,
+            10
+          ],
+          "before_pixel": [
+            -48,
+            -18
+          ],
+          "pixel": [
+            -56,
+            -18
+          ],
+          "image": 794,
+          "direction": 2
+        },
+        {
+          "id": 6,
+          "before_clock": 18968,
+          "clock": 18970,
+          "before_cell": [
+            14,
+            11
+          ],
+          "cell": [
+            14,
+            10
+          ],
+          "before_pixel": [
+            -48,
+            -10
+          ],
+          "pixel": [
+            -48,
+            -18
+          ],
+          "image": 815,
+          "direction": 3
+        },
+        {
+          "id": 34,
+          "before_clock": 18970,
+          "clock": 18972,
+          "before_cell": [
+            13,
+            10
+          ],
+          "cell": [
+            12,
+            10
+          ],
+          "before_pixel": [
+            -56,
+            -18
+          ],
+          "pixel": [
+            -64,
+            -18
+          ],
+          "image": 794,
+          "direction": 2
+        },
+        {
+          "id": 18,
+          "before_clock": 18972,
+          "clock": 18974,
+          "before_cell": [
+            15,
+            11
+          ],
+          "cell": [
+            15,
+            12
+          ],
+          "before_pixel": [
+            -48,
+            -10
+          ],
+          "pixel": [
+            -48,
+            -2
+          ],
+          "image": 796,
+          "direction": 1
+        },
+        {
+          "id": 34,
+          "before_clock": 18972,
+          "clock": 18974,
+          "before_cell": [
+            12,
+            10
+          ],
+          "cell": [
+            11,
+            10
+          ],
+          "before_pixel": [
+            -64,
+            -18
+          ],
+          "pixel": [
+            -72,
+            -18
+          ],
+          "image": 793,
+          "direction": 0
+        },
+        {
+          "id": 6,
+          "before_clock": 18972,
+          "clock": 18974,
+          "before_cell": [
+            14,
+            10
+          ],
+          "cell": [
+            14,
+            11
+          ],
+          "before_pixel": [
+            -48,
+            -18
+          ],
+          "pixel": [
+            -48,
+            -10
+          ],
+          "image": 812,
+          "direction": 1
+        },
+        {
+          "id": 18,
+          "before_clock": 18974,
+          "clock": 18976,
+          "before_cell": [
+            15,
+            12
+          ],
+          "cell": [
+            15,
+            13
+          ],
+          "before_pixel": [
+            -48,
+            -2
+          ],
+          "pixel": [
+            -48,
+            6
+          ],
+          "image": 796,
+          "direction": 1
+        },
+        {
+          "id": 34,
+          "before_clock": 18974,
+          "clock": 18976,
+          "before_cell": [
+            11,
+            10
+          ],
+          "cell": [
+            11,
+            9
+          ],
+          "before_pixel": [
+            -72,
+            -18
+          ],
+          "pixel": [
+            -80,
+            -26
+          ],
+          "image": 793,
+          "direction": 0
+        },
+        {
+          "id": 6,
+          "before_clock": 18974,
+          "clock": 18976,
+          "before_cell": [
+            14,
+            11
+          ],
+          "cell": [
+            14,
+            12
+          ],
+          "before_pixel": [
+            -48,
+            -10
+          ],
+          "pixel": [
+            -48,
+            -2
+          ],
+          "image": 812,
+          "direction": 1
+        },
+        {
+          "id": 18,
+          "before_clock": 18976,
+          "clock": 18978,
+          "before_cell": [
+            15,
+            13
+          ],
+          "cell": [
+            15,
+            14
+          ],
+          "before_pixel": [
+            -48,
+            6
+          ],
+          "pixel": [
+            -48,
+            14
+          ],
+          "image": 796,
+          "direction": 1
+        },
+        {
+          "id": 34,
+          "before_clock": 18976,
+          "clock": 18978,
+          "before_cell": [
+            11,
+            9
+          ],
+          "cell": [
+            11,
+            8
+          ],
+          "before_pixel": [
+            -80,
+            -26
+          ],
+          "pixel": [
+            -80,
+            -34
+          ],
+          "image": 793,
+          "direction": 0
+        },
+        {
+          "id": 6,
+          "before_clock": 18976,
+          "clock": 18978,
+          "before_cell": [
+            14,
+            12
+          ],
+          "cell": [
+            14,
+            13
+          ],
+          "before_pixel": [
+            -48,
+            -2
+          ],
+          "pixel": [
+            -48,
+            6
+          ],
+          "image": 812,
+          "direction": 1
+        },
+        {
+          "id": 18,
+          "before_clock": 18978,
+          "clock": 18980,
+          "before_cell": [
+            15,
+            14
+          ],
+          "cell": [
+            15,
+            15
+          ],
+          "before_pixel": [
+            -48,
+            14
+          ],
+          "pixel": [
+            -48,
+            22
+          ],
+          "image": 798,
+          "direction": 2
+        },
+        {
+          "id": 34,
+          "before_clock": 18978,
+          "clock": 18980,
+          "before_cell": [
+            11,
+            8
+          ],
+          "cell": [
+            11,
+            7
+          ],
+          "before_pixel": [
+            -80,
+            -34
+          ],
+          "pixel": [
+            -80,
+            -42
+          ],
+          "image": 793,
+          "direction": 0
+        },
+        {
+          "id": 6,
+          "before_clock": 18978,
+          "clock": 18980,
+          "before_cell": [
+            14,
+            13
+          ],
+          "cell": [
+            14,
+            14
+          ],
+          "before_pixel": [
+            -48,
+            6
+          ],
+          "pixel": [
+            -48,
+            14
+          ],
+          "image": 812,
+          "direction": 1
+        },
+        {
+          "id": 18,
+          "before_clock": 18980,
+          "clock": 18982,
+          "before_cell": [
+            15,
+            15
+          ],
+          "cell": [
+            14,
+            15
+          ],
+          "before_pixel": [
+            -48,
+            22
+          ],
+          "pixel": [
+            -48,
+            22
+          ],
+          "image": 798,
+          "direction": 2
+        },
+        {
+          "id": 34,
+          "before_clock": 18980,
+          "clock": 18982,
+          "before_cell": [
+            11,
+            7
+          ],
+          "cell": [
+            11,
+            6
+          ],
+          "before_pixel": [
+            -80,
+            -42
+          ],
+          "pixel": [
+            -80,
+            -50
+          ],
+          "image": 793,
+          "direction": 0
+        },
+        {
+          "id": 18,
+          "before_clock": 18982,
+          "clock": 18984,
+          "before_cell": [
+            14,
+            15
+          ],
+          "cell": [
+            13,
+            15
+          ],
+          "before_pixel": [
+            -48,
+            22
+          ],
+          "pixel": [
+            -56,
+            22
+          ],
+          "image": 798,
+          "direction": 2
+        },
+        {
+          "id": 34,
+          "before_clock": 18982,
+          "clock": 18984,
+          "before_cell": [
+            11,
+            6
+          ],
+          "cell": [
+            11,
+            5
+          ],
+          "before_pixel": [
+            -80,
+            -50
+          ],
+          "pixel": [
+            -80,
+            -58
+          ],
+          "image": 793,
+          "direction": 0
+        },
+        {
+          "id": 18,
+          "before_clock": 18984,
+          "clock": 18986,
+          "before_cell": [
+            13,
+            15
+          ],
+          "cell": [
+            12,
+            15
+          ],
+          "before_pixel": [
+            -56,
+            22
+          ],
+          "pixel": [
+            -64,
+            22
+          ],
+          "image": 798,
+          "direction": 2
+        },
+        {
+          "id": 34,
+          "before_clock": 18984,
+          "clock": 18986,
+          "before_cell": [
+            11,
+            5
+          ],
+          "cell": [
+            11,
+            4
+          ],
+          "before_pixel": [
+            -80,
+            -58
+          ],
+          "pixel": [
+            -80,
+            -66
+          ],
+          "image": 793,
+          "direction": 0
+        },
+        {
+          "id": 6,
+          "before_clock": 18984,
+          "clock": 18986,
+          "before_cell": [
+            14,
+            14
+          ],
+          "cell": [
+            14,
+            13
+          ],
+          "before_pixel": [
+            -48,
+            14
+          ],
+          "pixel": [
+            -48,
+            6
+          ],
+          "image": 813,
+          "direction": 0
+        },
+        {
+          "id": 18,
+          "before_clock": 18986,
+          "clock": 18988,
+          "before_cell": [
+            12,
+            15
+          ],
+          "cell": [
+            11,
+            15
+          ],
+          "before_pixel": [
+            -64,
+            22
+          ],
+          "pixel": [
+            -72,
+            22
+          ],
+          "image": 798,
+          "direction": 2
+        },
+        {
+          "id": 34,
+          "before_clock": 18986,
+          "clock": 18988,
+          "before_cell": [
+            11,
+            4
+          ],
+          "cell": [
+            11,
+            3
+          ],
+          "before_pixel": [
+            -80,
+            -66
+          ],
+          "pixel": [
+            -72,
+            -74
+          ],
+          "image": 794,
+          "direction": 2
+        },
+        {
+          "id": 6,
+          "before_clock": 18986,
+          "clock": 18988,
+          "before_cell": [
+            14,
+            13
+          ],
+          "cell": [
+            14,
+            12
+          ],
+          "before_pixel": [
+            -48,
+            6
+          ],
+          "pixel": [
+            -48,
+            -2
+          ],
+          "image": 813,
+          "direction": 0
+        },
+        {
+          "id": 18,
+          "before_clock": 18988,
+          "clock": 18990,
+          "before_cell": [
+            11,
+            15
+          ],
+          "cell": [
+            10,
+            15
+          ],
+          "before_pixel": [
+            -72,
+            22
+          ],
+          "pixel": [
+            -80,
+            22
+          ],
+          "image": 798,
+          "direction": 2
+        },
+        {
+          "id": 34,
+          "before_clock": 18988,
+          "clock": 18990,
+          "before_cell": [
+            11,
+            3
+          ],
+          "cell": [
+            10,
+            3
+          ],
+          "before_pixel": [
+            -72,
+            -74
+          ],
+          "pixel": [
+            -80,
+            -74
+          ],
+          "image": 794,
+          "direction": 2
+        },
+        {
+          "id": 6,
+          "before_clock": 18988,
+          "clock": 18990,
+          "before_cell": [
+            14,
+            12
+          ],
+          "cell": [
+            14,
+            11
+          ],
+          "before_pixel": [
+            -48,
+            -2
+          ],
+          "pixel": [
+            -48,
+            -10
+          ],
+          "image": 813,
+          "direction": 0
+        },
+        {
+          "id": 18,
+          "before_clock": 18990,
+          "clock": 18992,
+          "before_cell": [
+            10,
+            15
+          ],
+          "cell": [
+            9,
+            15
+          ],
+          "before_pixel": [
+            -80,
+            22
+          ],
+          "pixel": [
+            -88,
+            22
+          ],
+          "image": 797,
+          "direction": 0
+        },
+        {
+          "id": 34,
+          "before_clock": 18990,
+          "clock": 18992,
+          "before_cell": [
+            10,
+            3
+          ],
+          "cell": [
+            9,
+            3
+          ],
+          "before_pixel": [
+            -80,
+            -74
+          ],
+          "pixel": [
+            -88,
+            -74
+          ],
+          "image": 794,
+          "direction": 2
+        },
+        {
+          "id": 6,
+          "before_clock": 18990,
+          "clock": 18992,
+          "before_cell": [
+            14,
+            11
+          ],
+          "cell": [
+            14,
+            10
+          ],
+          "before_pixel": [
+            -48,
+            -10
+          ],
+          "pixel": [
+            -48,
+            -18
+          ],
+          "image": 814,
+          "direction": 2
+        },
+        {
+          "id": 18,
+          "before_clock": 18992,
+          "clock": 18994,
+          "before_cell": [
+            9,
+            15
+          ],
+          "cell": [
+            9,
+            14
+          ],
+          "before_pixel": [
+            -88,
+            22
+          ],
+          "pixel": [
+            -96,
+            14
+          ],
+          "image": 797,
+          "direction": 0
+        },
+        {
+          "id": 34,
+          "before_clock": 18992,
+          "clock": 18994,
+          "before_cell": [
+            9,
+            3
+          ],
+          "cell": [
+            8,
+            3
+          ],
+          "before_pixel": [
+            -88,
+            -74
+          ],
+          "pixel": [
+            -96,
+            -74
+          ],
+          "image": 794,
+          "direction": 2
+        },
+        {
+          "id": 6,
+          "before_clock": 18992,
+          "clock": 18994,
+          "before_cell": [
+            14,
+            10
+          ],
+          "cell": [
+            13,
+            10
+          ],
+          "before_pixel": [
+            -48,
+            -18
+          ],
+          "pixel": [
+            -56,
+            -18
+          ],
+          "image": 814,
+          "direction": 2
+        },
+        {
+          "id": 18,
+          "before_clock": 18994,
+          "clock": 18996,
+          "before_cell": [
+            9,
+            14
+          ],
+          "cell": [
+            9,
+            13
+          ],
+          "before_pixel": [
+            -96,
+            14
+          ],
+          "pixel": [
+            -96,
+            6
+          ],
+          "image": 797,
+          "direction": 0
+        },
+        {
+          "id": 34,
+          "before_clock": 18994,
+          "clock": 18996,
+          "before_cell": [
+            8,
+            3
+          ],
+          "cell": [
+            7,
+            3
+          ],
+          "before_pixel": [
+            -96,
+            -74
+          ],
+          "pixel": [
+            -104,
+            -74
+          ],
+          "image": 794,
+          "direction": 2
+        },
+        {
+          "id": 6,
+          "before_clock": 18994,
+          "clock": 18996,
+          "before_cell": [
+            13,
+            10
+          ],
+          "cell": [
+            12,
+            10
+          ],
+          "before_pixel": [
+            -56,
+            -18
+          ],
+          "pixel": [
+            -64,
+            -18
+          ],
+          "image": 814,
+          "direction": 2
+        },
+        {
+          "id": 18,
+          "before_clock": 18996,
+          "clock": 18998,
+          "before_cell": [
+            9,
+            13
+          ],
+          "cell": [
+            9,
+            12
+          ],
+          "before_pixel": [
+            -96,
+            6
+          ],
+          "pixel": [
+            -96,
+            -2
+          ],
+          "image": 797,
+          "direction": 0
+        },
+        {
+          "id": 34,
+          "before_clock": 18996,
+          "clock": 18998,
+          "before_cell": [
+            7,
+            3
+          ],
+          "cell": [
+            6,
+            3
+          ],
+          "before_pixel": [
+            -104,
+            -74
+          ],
+          "pixel": [
+            -112,
+            -74
+          ],
+          "image": 794,
+          "direction": 2
+        },
+        {
+          "id": 6,
+          "before_clock": 18996,
+          "clock": 18998,
+          "before_cell": [
+            12,
+            10
+          ],
+          "cell": [
+            11,
+            10
+          ],
+          "before_pixel": [
+            -64,
+            -18
+          ],
+          "pixel": [
+            -72,
+            -18
+          ],
+          "image": 814,
+          "direction": 2
+        },
+        {
+          "id": 18,
+          "before_clock": 18998,
+          "clock": 19000,
+          "before_cell": [
+            9,
+            12
+          ],
+          "cell": [
+            9,
+            11
+          ],
+          "before_pixel": [
+            -96,
+            -2
+          ],
+          "pixel": [
+            -96,
+            -10
+          ],
+          "image": 797,
+          "direction": 0
+        },
+        {
+          "id": 34,
+          "before_clock": 18998,
+          "clock": 19000,
+          "before_cell": [
+            6,
+            3
+          ],
+          "cell": [
+            5,
+            3
+          ],
+          "before_pixel": [
+            -112,
+            -74
+          ],
+          "pixel": [
+            -120,
+            -74
+          ],
+          "image": 794,
+          "direction": 2
+        },
+        {
+          "id": 6,
+          "before_clock": 18998,
+          "clock": 19000,
+          "before_cell": [
+            11,
+            10
+          ],
+          "cell": [
+            10,
+            10
+          ],
+          "before_pixel": [
+            -72,
+            -18
+          ],
+          "pixel": [
+            -80,
+            -18
+          ],
+          "image": 814,
+          "direction": 2
+        }
+      ],
+      "state_counts": {
+        "2": 8,
+        "3": 20,
+        "4": 32
+      }
+    }
+  ],
+  "limits": [
+    "Nonstaff grid records are counted without inferring an identity from image alone.",
+    "Natural samples do not reach state zero; resting append behavior is not newly covered.",
+    "Movement observations are CPU records, not a measured GPU animation or real-time rate."
+  ]
+}
