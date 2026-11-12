@@ -1,0 +1,33 @@
+{
+  "all_passed": true,
+  "source_executable_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "source_words": {
+    "0x80064fc0": "0xc019154",
+    "0x80064fc4": "0x0",
+    "0x80064fc8": "0xc006297",
+    "0x80064fcc": "0x0",
+    "0x80064fd0": "0x8fc30020",
+    "0x80064fd4": "0x0",
+    "0x80064fd8": "0x2462ffe4",
+    "0x80064fdc": "0x402021",
+    "0x80064fe0": "0xc0191d0",
+    "0x80064fe4": "0x0"
+  },
+  "original_call_order": [
+    "80064550: stop prior voice state",
+    "80018A5C: draw current record pool",
+    "80064740: start requested voice"
+  ],
+  "observed_extra_frame": {
+    "clock": 20580,
+    "record_clock": 20578,
+    "caller": "0x80064fd0",
+    "construction": 9
+  },
+  "observed_voice_index": 22,
+  "limits": [
+    "Source wrapper call order and observed branch; not a recording of the spoken phrase or actual playback latency.",
+    "One stored voice start and one wrapper frame in this branch; does not imply every sound adds a frame.",
+    "Original source texture/record remains valid while logical state has advanced; no interpolation is implied."
+  ]
+}

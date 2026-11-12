@@ -14,6 +14,10 @@
 
 ## 保存済み
 
+- [2026-11-13：自然営業200更新・最新10,488更新と復元再開検証](analysis/20261113-operating-continuation/README.md)
+
+- [2026-11-13：人物57描画・12移動と音声開始前の追加描画](analysis/20261113-actor-frame-timeline/README.md)
+
 - [2026-11-12：通常営業800更新・時計20560、日次決算と全証跡の再展開検証](analysis/20261112-operating-continuation/README.md)
 
 - [2026-11-12：人物レコードから544個の原描画パケットと原テクスチャー14画像へ接続](analysis/20261112-actor-packets/README.md)

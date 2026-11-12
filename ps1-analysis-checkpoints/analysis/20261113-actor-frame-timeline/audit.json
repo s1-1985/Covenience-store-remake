@@ -1,0 +1,362 @@
+{
+  "all_passed": true,
+  "source_sha256": "89a1fe052b17e07d195a3f2f56a7a2c8ad60204e071b54f75be43a2501cf0a14",
+  "diagnostic_iterations": 32,
+  "original_actor_constructions": 28,
+  "total_frames": 65,
+  "actor_frames": 57,
+  "observed_construction_groups": 28,
+  "same_construction_repeated_frames": 29,
+  "unchanged_pose_transitions": 65,
+  "staff_cell_transitions": 12,
+  "movements": [
+    {
+      "person": 6,
+      "before": 6,
+      "after": 7,
+      "cell_before": [
+        0,
+        4
+      ],
+      "cell_after": [
+        4,
+        3
+      ],
+      "pixel_before": [
+        -152,
+        -58
+      ],
+      "pixel_after": [
+        -128,
+        -74
+      ],
+      "direction": 3,
+      "uv": [
+        240,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 7,
+      "after": 8,
+      "cell_before": [
+        4,
+        3
+      ],
+      "cell_after": [
+        5,
+        3
+      ],
+      "pixel_before": [
+        -128,
+        -74
+      ],
+      "pixel_after": [
+        -120,
+        -74
+      ],
+      "direction": 3,
+      "uv": [
+        240,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 8,
+      "after": 9,
+      "cell_before": [
+        5,
+        3
+      ],
+      "cell_after": [
+        6,
+        3
+      ],
+      "pixel_before": [
+        -120,
+        -74
+      ],
+      "pixel_after": [
+        -112,
+        -74
+      ],
+      "direction": 3,
+      "uv": [
+        240,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 9,
+      "after": 10,
+      "cell_before": [
+        6,
+        3
+      ],
+      "cell_after": [
+        7,
+        3
+      ],
+      "pixel_before": [
+        -112,
+        -74
+      ],
+      "pixel_after": [
+        -104,
+        -74
+      ],
+      "direction": 3,
+      "uv": [
+        240,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 10,
+      "after": 11,
+      "cell_before": [
+        7,
+        3
+      ],
+      "cell_after": [
+        8,
+        3
+      ],
+      "pixel_before": [
+        -104,
+        -74
+      ],
+      "pixel_after": [
+        -96,
+        -74
+      ],
+      "direction": 1,
+      "uv": [
+        192,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 11,
+      "after": 12,
+      "cell_before": [
+        8,
+        3
+      ],
+      "cell_after": [
+        8,
+        4
+      ],
+      "pixel_before": [
+        -96,
+        -74
+      ],
+      "pixel_after": [
+        -96,
+        -66
+      ],
+      "direction": 1,
+      "uv": [
+        192,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 12,
+      "after": 13,
+      "cell_before": [
+        8,
+        4
+      ],
+      "cell_after": [
+        8,
+        5
+      ],
+      "pixel_before": [
+        -96,
+        -66
+      ],
+      "pixel_after": [
+        -96,
+        -58
+      ],
+      "direction": 1,
+      "uv": [
+        192,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 13,
+      "after": 14,
+      "cell_before": [
+        8,
+        5
+      ],
+      "cell_after": [
+        8,
+        6
+      ],
+      "pixel_before": [
+        -96,
+        -58
+      ],
+      "pixel_after": [
+        -96,
+        -50
+      ],
+      "direction": 1,
+      "uv": [
+        192,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 14,
+      "after": 15,
+      "cell_before": [
+        8,
+        6
+      ],
+      "cell_after": [
+        8,
+        7
+      ],
+      "pixel_before": [
+        -96,
+        -50
+      ],
+      "pixel_after": [
+        -96,
+        -42
+      ],
+      "direction": 1,
+      "uv": [
+        192,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 15,
+      "after": 16,
+      "cell_before": [
+        8,
+        7
+      ],
+      "cell_after": [
+        8,
+        8
+      ],
+      "pixel_before": [
+        -96,
+        -42
+      ],
+      "pixel_after": [
+        -96,
+        -34
+      ],
+      "direction": 3,
+      "uv": [
+        240,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 16,
+      "after": 17,
+      "cell_before": [
+        8,
+        8
+      ],
+      "cell_after": [
+        9,
+        8
+      ],
+      "pixel_before": [
+        -96,
+        -34
+      ],
+      "pixel_after": [
+        -88,
+        -34
+      ],
+      "direction": 3,
+      "uv": [
+        240,
+        160
+      ]
+    },
+    {
+      "person": 6,
+      "before": 17,
+      "after": 18,
+      "cell_before": [
+        9,
+        8
+      ],
+      "cell_after": [
+        10,
+        8
+      ],
+      "pixel_before": [
+        -88,
+        -34
+      ],
+      "pixel_after": [
+        -80,
+        -34
+      ],
+      "direction": 3,
+      "uv": [
+        240,
+        160
+      ]
+    }
+  ],
+  "frame_record_clock_deltas": {
+    "0": 56,
+    "2": 1
+  },
+  "frame_callers": {
+    "0x800656bc": 1,
+    "0x8005f6a0": 1,
+    "0x8005d4c0": 27,
+    "0x8005d4dc": 27,
+    "0x80064fd0": 1
+  },
+  "stale_records": [
+    {
+      "clock": 20580,
+      "record_clock": 20578,
+      "caller": "0x80064fd0",
+      "construction": 9
+    }
+  ],
+  "same_clock_with_different_records": [
+    {
+      "clock": 20580,
+      "frames": 3,
+      "constructions": [
+        9,
+        10
+      ]
+    }
+  ],
+  "limits": [
+    "CPU frame-dispatch calls, not measured real display frames or wall time.",
+    "Frame counter is zero under this SDK boundary; do not infer PAL/NTSC/Hz or speed.",
+    "Observed original actor records match the latest logical cell/pose; no intermediate coordinate or footstep texture was observed in this branch.",
+    "Fixed pose alone does not prove absence of all animation in other routines, actors, or scenes.",
+    "Diagnostic input branch; excluded from natural continuation update totals."
+  ]
+}

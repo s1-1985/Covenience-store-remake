@@ -1,0 +1,7 @@
+{
+  "status": "diagnostic_assertion_corrected",
+  "attempted_iterations": 32,
+  "error": "Frame observations were compared with raw parent return addresses included. The independent parent invokes native children via a sentinel return, so caller addresses are intentionally different.",
+  "correction": "Compare every other observed field exactly; preserve original caller and reference_caller separately in final evidence.",
+  "counting": "Repeated prefixes are not added to the 32-update diagnostic branch or natural continuation."
+}

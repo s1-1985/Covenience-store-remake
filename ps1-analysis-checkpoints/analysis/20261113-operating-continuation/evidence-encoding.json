@@ -1,0 +1,41 @@
+{
+  "all_passed": true,
+  "files": [
+    {
+      "path": "evidence/TOWN0001-ci-main-25-single-progress.json",
+      "stored_path": "encoded/evidence/TOWN0001-ci-main-25-single-progress.json.zlib",
+      "encoding": "zlib",
+      "bytes": 233636,
+      "sha256": "380c6c4d51d4ddbcf4fa7d80c1f49dc0b95b26698eec929266a3fa622802bbca",
+      "stored_bytes": 59799,
+      "stored_sha256": "721df011e78fb4688dc3a005f01488ac4ddce0c1edb36c7f0a698c50251ad9c5"
+    },
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-25-single-verification-20261103.json",
+      "stored_path": "encoded/evidence/opened-snapshot-TOWN0001-ci-main-25-single-verification-20261103.json.zlib",
+      "encoding": "zlib",
+      "bytes": 2146813,
+      "sha256": "b043fe99def1de53d8f06af74cd68b58f4589f9ca2e7176e16d51ebda31b2563",
+      "stored_bytes": 184395,
+      "stored_sha256": "adfb751c45ae9be3bf3ed103cf4c5091faed7087a98d914789544482b7e8b511"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-25-single.json",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-25-single.json.zlib",
+      "encoding": "zlib",
+      "bytes": 1034176,
+      "sha256": "10387b5f37eb6eef0b506d26c7eafff7e146283433ea12af95558425d453a25f",
+      "stored_bytes": 205832,
+      "stored_sha256": "0c012d74f9a2ce04d59f92a2d1d2e95f8264465708ebca256d5e3d0480d02276"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-25-single.ram.zlib",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-25-single.ram.zlib",
+      "encoding": "identity",
+      "bytes": 508249,
+      "sha256": "56b4c91b14b636b85abe3f4ef1b7f08ee4bd9a1869d9f68a2185bc35e990db19",
+      "stored_bytes": 508249,
+      "stored_sha256": "56b4c91b14b636b85abe3f4ef1b7f08ee4bd9a1869d9f68a2185bc35e990db19"
+    }
+  ]
+}

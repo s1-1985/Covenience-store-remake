@@ -1,0 +1,21 @@
+{
+  "all_passed": true,
+  "files": [
+    {
+      "path": "second-store-results.json",
+      "stored_path": "second-store-results.json.zlib",
+      "bytes": 152444,
+      "stored_bytes": 6356,
+      "sha256": "89a1fe052b17e07d195a3f2f56a7a2c8ad60204e071b54f75be43a2501cf0a14",
+      "stored_sha256": "0e3d2b6bc370bae9a4e99bb2c2e5ff309fd03e9c7f3c54aacb2ad0d50ef7763f"
+    },
+    {
+      "path": "second-store-play-proof.json",
+      "stored_path": "second-store-play-proof.json.zlib",
+      "bytes": 559305,
+      "stored_bytes": 31951,
+      "sha256": "614a2feca02a984a50454d982e97ad95d483ad1d358238b4daef79fdd1c81c6b",
+      "stored_sha256": "8e49f87889ff5d427a680c6e9fae484de8744f82db9f8bf3e2a2089d61d74c29"
+    }
+  ]
+}

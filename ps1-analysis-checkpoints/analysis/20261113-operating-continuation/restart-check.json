@@ -1,0 +1,10 @@
+{
+  "all_passed": true,
+  "snapshot": "TOWN0001-ci-main-25-single",
+  "snapshot_sha256": "236b0a2fffe3a27c229c63565cda9b11228fbdebd3c063e2ec82bb6d011716fe",
+  "diagnostic_updates": 2,
+  "opening_clock": 20960,
+  "final_clock": 20964,
+  "proof_sha256": "9a9a2f3c4e0868510968daf907cd6deab582061b6539246d6bcee9aab14222d5",
+  "limits": "Diagnostic only; the latest natural checkpoint remains main-25 at clock20960."
+}
