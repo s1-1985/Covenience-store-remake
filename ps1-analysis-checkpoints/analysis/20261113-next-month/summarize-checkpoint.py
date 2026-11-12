@@ -40,4 +40,18 @@ if 'rival' in monthly:
  for r in monthly['rival']['cases']:lines += [f'- ライバルの自然月次判断：`{r["reason"]}`。厳密MIPS-I実行器で原命令を{r["steps"]:,}命令実行し、独立方針モデル・自然到達後の対象領域と照合。',f'- 店舗・従業員・町・資金・資本・乱数・通番・更新フラグが一致。通知/キャッシュ省略境界と、非スタックRAM前方領域の比較結果は `natural-rival-audit.json` に明記。']
 else:lines+=['ライバルの自然月次前後RAMの厳密整数実行器による再照合は、この保存時点では未完。']
 lines+=['','## 保存と再現','',f'最新の完成再開点は `{name}`。RAM SHA-256：`{last["final_ram_sha256"]}`。',f'証跡{len(manifest["files"])}ファイルのサイズ・ハッシュと可逆圧縮方法は `evidence-encoding.json`。機能境界で捕捉したRAMは診断専用であり、再開可能なCPU状態と混同しない。','','```sh','python ps1-analysis-checkpoints/restore-latest.py --destination /absolute/empty/runtime','python prepare-inputs.py /absolute/empty/runtime/algorithm-analysis','python continue-main.py /absolute/empty/runtime/algorithm-analysis','python audit-natural-town.py /absolute/empty/runtime/algorithm-analysis','python audit-natural-rival.py /absolute/empty/runtime/algorithm-analysis','```','','`prepare-inputs.py` は開始点main-25と保存済み完成区間の全入力を検査・展開する。完成証跡があれば再実行せず全体を再監査し、未完区間から続ける。原r2の209部品と原EXEは既存復元スクリプトで照合する。','','## 原資料と制限','','原EXE `SLPS_007.82` SHA-256：`d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd`。Unicorn 2.1.4、Capstone 5.0.7、Pillow 12.3.0。営業比較は原子関数を共有する。追加のライバル診断では別の厳密整数実行器を使うが、文字列生成・キャッシュ更新には明記した省略境界がある。SDK/BIOS・GPU/SPU/IRQは既存モデルであり、実画面の画素・実音声・実時間速度や全実機動作を証明しない。main・Claudeブランチ・Android本体の変更なし。']
+restarts=[]
+for p in sorted(ROOT.glob('restart-*-check.json')):
+ d=json.loads(p.read_text());assert d['all_passed']
+ b=zlib.decompress((ROOT/d['proof']).read_bytes());assert hashlib.sha256(b).hexdigest()==d['proof_sha256'];restarts.append(d)
+if restarts:
+ lines+=['','## 別フォルダーへの復元と再開確認','','各状態を別フォルダーへ復元して診断用2更新を比較した。原主系列の累積には加算しない。','','| 再開点 | 診断開始時計 | 診断終了時計 |','|---|---:|---:|']
+ for d in restarts:lines.append(f'| {d["snapshot"]} | {d["clock_before"]} | {d["clock_after"]} |')
+ lines+=['','`python verify-restart.py ALGO SNAPSHOT` で再確認できる。最新主系列を診断出力で置き換えない。']
+p=ROOT/'strict-town-audit.json'
+if p.exists():
+ d=json.loads(p.read_text());assert d['all_passed']
+ lines+=['','## 町処理の別整数実行器による追加照合','']
+ for r in d['cases']:lines.append(f'時計{r["clock"]}の原町処理を厳密MIPS-Iで{r["instructions"]:,}命令実行し、スタックを除くRAM前方{r["matched_non_stack_ram_bytes"]:,}バイトが自然到達した原処理と完全一致した。外部フックは0件。到達原命令は全件原EXEと照合した。診断RAMは通常営業の再開点ではない。')
+ lines+=['','`python audit-strict-town.py ALGO` で再実行する。']
 (ROOT/'README.md').write_text('\n'.join(lines)+'\n');print(json.dumps(summary))

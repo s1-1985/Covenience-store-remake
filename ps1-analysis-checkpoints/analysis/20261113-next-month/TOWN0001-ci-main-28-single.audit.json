@@ -1,0 +1,152 @@
+{
+  "output": "TOWN0001-ci-main-28-single",
+  "source": "TOWN0001-ci-main-27-single",
+  "passed": true,
+  "updates": 200,
+  "clock_before": 21760,
+  "clock_after": 22160,
+  "completed_iterations": 11088,
+  "source_ram_sha256": "72ed30275a6f47c62eabd93382fa7125fa2b8df296c32050495bbb5ea2edec78",
+  "final_ram_sha256": "eea427622605e7db5df3bfa3196e54d4aa5db31363612d6f86f3dc75a1de99bd",
+  "cash_before": [
+    98986740,
+    153207113
+  ],
+  "cash_after": [
+    99001160,
+    153185913
+  ],
+  "cash_from_ledgers": [
+    99001160,
+    153185913
+  ],
+  "cash_write_count": 33,
+  "cash_delta_by_pc": {
+    "0x8001cb30": [
+      -600,
+      -26310
+    ],
+    "0x8001cbac": [
+      15020,
+      5110
+    ]
+  },
+  "stores": [
+    {
+      "slot": 0,
+      "company": 0,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        600,
+        0
+      ],
+      "previous_day_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "additional_sales": 0,
+      "additional_goods": 600,
+      "daily_expense": 0,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
+    },
+    {
+      "slot": 1,
+      "company": 1,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        31105,
+        3000
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        57415,
+        8110
+      ],
+      "previous_day_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "additional_sales": 5110,
+      "additional_goods": 26310,
+      "daily_expense": 0,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
+    },
+    {
+      "slot": 2,
+      "company": 0,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        0,
+        2500
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        0,
+        17520
+      ],
+      "previous_day_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "additional_sales": 15020,
+      "additional_goods": 0,
+      "daily_expense": 0,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0
+    }
+  ],
+  "daily_close_checks": [],
+  "staff_checks": 600,
+  "customer_checks": 600,
+  "frames": 400,
+  "files": [
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-28-single-verification-20261103.json",
+      "bytes": 2136813,
+      "sha256": "1bd4587527e077fc44e41977fc2cdce6e7e30ca3b732fc0876da4983469d48b1"
+    },
+    {
+      "path": "evidence/TOWN0001-ci-main-28-single-progress.json",
+      "bytes": 233636,
+      "sha256": "79dc7c2c72448891df73f1cf5f9a68837766cfbc066c8df0462e5633d2c3f88f"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-28-single.json",
+      "bytes": 1034174,
+      "sha256": "a43c4fc69666dc11af33f8fb2569b4bcd9d09838742acdd6be5620ecb56d14e2"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-28-single.ram.zlib",
+      "bytes": 508233,
+      "sha256": "4762481c9a8f4f23c3e4d3e26cfcfc6ae9384e02fbf860e68da659d500020beb"
+    }
+  ]
+}

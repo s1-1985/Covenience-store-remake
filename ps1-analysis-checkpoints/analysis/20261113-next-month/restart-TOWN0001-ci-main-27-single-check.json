@@ -1,0 +1,12 @@
+{
+  "all_passed": true,
+  "snapshot": "TOWN0001-ci-main-27-single",
+  "diagnostic_updates": 2,
+  "completed_before": 10888,
+  "ram_sha256": "72ed30275a6f47c62eabd93382fa7125fa2b8df296c32050495bbb5ea2edec78",
+  "clock_before": 21760,
+  "clock_after": 21764,
+  "proof": "restart-TOWN0001-ci-main-27-single-proof.json.zlib",
+  "proof_sha256": "4e01069b885cd3dc2c62580a66b033e7061e56e43714935357821ad3178679e9",
+  "limits": "Diagnostic only; excluded from all natural trajectory counts and latest CPU checkpoint."
+}

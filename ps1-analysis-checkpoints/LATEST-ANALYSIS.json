@@ -1,17 +1,17 @@
 {
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
   "date_jst": "2026-11-13",
-  "snapshot": "TOWN0001-ci-main-27-single",
+  "snapshot": "TOWN0001-ci-main-28-single",
   "phase": "play_iteration_end",
-  "clock": 21760,
-  "completed_iterations": 10888,
+  "clock": 22160,
+  "completed_iterations": 11088,
   "cash": [
-    98986740,
-    153207113
+    99001160,
+    153185913
   ],
-  "ram_sha256": "72ed30275a6f47c62eabd93382fa7125fa2b8df296c32050495bbb5ea2edec78",
-  "metadata": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-27-single.json.zlib",
-  "compressed_ram": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-27-single.ram.zlib",
+  "ram_sha256": "eea427622605e7db5df3bfa3196e54d4aa5db31363612d6f86f3dc75a1de99bd",
+  "metadata": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-28-single.json.zlib",
+  "compressed_ram": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-28-single.ram.zlib",
   "report": "analysis/20261113-next-month/README.md",
   "limits": "Completed/hash-verified segments only. Longer trajectory still running. Monthly independent audits remain pending. SDK/GPU/SPU/IRQ boundaries remain modeled."
 }
