@@ -1,17 +1,17 @@
 {
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
   "date_jst": "2026-11-13",
-  "snapshot": "TOWN0001-ci-main-25-single",
+  "snapshot": "TOWN0001-ci-main-26-single",
   "phase": "play_iteration_end",
-  "clock": 20960,
-  "completed_iterations": 10488,
+  "clock": 21360,
+  "completed_iterations": 10688,
   "cash": [
-    99015592,
-    153173639
+    99027612,
+    153246629
   ],
-  "ram_sha256": "236b0a2fffe3a27c229c63565cda9b11228fbdebd3c063e2ec82bb6d011716fe",
-  "metadata": "analysis/20261113-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-25-single.json.zlib",
-  "compressed_ram": "analysis/20261113-operating-continuation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-25-single.ram.zlib",
-  "report": "analysis/20261113-operating-continuation/README.md",
-  "limits": "Natural main trajectory, 200 further verified updates. Monthly town/rival transition remains pending; the separate 32-update actor/voice diagnostic branch is excluded."
+  "ram_sha256": "1ed9493c83faee172e636203101950abbffb4bac5efed5fab4dc03604a36408f",
+  "metadata": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-26-single.json.zlib",
+  "compressed_ram": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-26-single.ram.zlib",
+  "report": "analysis/20261113-next-month/README.md",
+  "limits": "Next-month continuation in progress. This latest pointer references a completed 200-update segment, not a partial live checkpoint. Monthly transition still pending at this point."
 }
