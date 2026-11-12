@@ -1,0 +1,883 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-11-12",
+  "issue": 232,
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "scope": "Issue #232 task 6: actual cross-type PNG full-pixel decode and 24px edge triage, without editing existing assets",
+  "method": {
+    "source": "GitHub connector fetch_file(base64) of 19 actual main-branch PNGs",
+    "png_checks": "PNG signature, every chunk CRC, IHDR RGBA8 64x64 non-interlaced, IEND/trailing bytes, zlib DEFLATE and Adler32, 64 scanlines with PNG filters, 4096 RGBA pixels reconstructed",
+    "seam_sampling": "For i=0..23 use floor((i+0.5)*64/24) on each edge, RGB absolute difference mean over 72 channels; alpha separately",
+    "warning": "RGB MAE measures texture discontinuity only; it cannot certify roadway/rail/water geometry or PS1 fidelity"
+  },
+  "verification": {
+    "actual_pngs_fetched": 19,
+    "cross_type": 12,
+    "reference_controls": 7,
+    "full_rgba_decode_pass": 19,
+    "full_rgba_decode_fail": 0,
+    "edge_pair_diagnostics": 20,
+    "opaque_pngs": 19,
+    "visual_approved": 0,
+    "godot_render_executed": false,
+    "game_regression_executed": false
+  },
+  "assets": [
+    {
+      "asset_id": "map_crossing_basic",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_crossing_basic.png",
+      "git_blob_sha": "82488f0555d8888e3daf7024055aedc922456ecb",
+      "compressed_file_bytes": 9994,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 7,
+        "2": 15,
+        "4": 42
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_crossing_closed",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_crossing_closed.png",
+      "git_blob_sha": "14f1ee025ec2d7eebbb8bb5ec96a5ef9b15ecec3",
+      "compressed_file_bytes": 10361,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 2,
+        "2": 21,
+        "4": 41
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_road_bridge_ew",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_bridge_ew.png",
+      "git_blob_sha": "e3d8830a407a0191d401360e3f9f497d3afca398",
+      "compressed_file_bytes": 10236,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 13,
+        "2": 17,
+        "4": 34
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_road_bridge_ns",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_bridge_ns.png",
+      "git_blob_sha": "f6b790cef82d6e9a5c69de1409b874d06a13ff17",
+      "compressed_file_bytes": 8627,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 1,
+        "2": 22,
+        "4": 41
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_rail_bridge_ew",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_bridge_ew.png",
+      "git_blob_sha": "cc9e9cfc4d579d141d866cd1dac6858dfee4bf30",
+      "compressed_file_bytes": 11447,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 9,
+        "2": 27,
+        "4": 28
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_rail_bridge_ns",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_bridge_ns.png",
+      "git_blob_sha": "8568e2684b4ccb980ca45588f75a1e9c708c76f4",
+      "compressed_file_bytes": 10778,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 1,
+        "2": 6,
+        "4": 57
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_grade_separation_cross",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_grade_separation_cross.png",
+      "git_blob_sha": "1e608afb8b66c0c28648059de99b760dc7c43b1d",
+      "compressed_file_bytes": 9561,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 5,
+        "2": 12,
+        "4": 47
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_river_mouth_s",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_mouth_s.png",
+      "git_blob_sha": "2d4d320668dba58a7f38a892bfdf86a0a93a1430",
+      "compressed_file_bytes": 9801,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 12,
+        "2": 18,
+        "4": 34
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_river_mouth_s_square",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_mouth_s_square.png",
+      "git_blob_sha": "53e4639bdef1396268828bc7c7855605d1df452d",
+      "compressed_file_bytes": 9520,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 10,
+        "2": 17,
+        "4": 37
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_pond_channel_s",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_pond_channel_s.png",
+      "git_blob_sha": "284338cab1de51626306a250e26e42f3ad7ea4f5",
+      "compressed_file_bytes": 9838,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 3,
+        "2": 41,
+        "4": 20
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_inlet_w",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_inlet_w.png",
+      "git_blob_sha": "0313cc140595aafcb898f3363586fc23a75e7644",
+      "compressed_file_bytes": 9176,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 3,
+        "2": 7,
+        "4": 54
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_concrete",
+      "role": "cross_type",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_concrete.png",
+      "git_blob_sha": "307fdbebccadfb270f6459e768fa7fc9791a79a1",
+      "compressed_file_bytes": 6548,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 1,
+        "2": 6,
+        "4": 57
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_road_ew",
+      "role": "reference_control",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_ew.png",
+      "git_blob_sha": "96dc9c5f90d134db6096295d649ee88d45b18f3a",
+      "compressed_file_bytes": 8931,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 9,
+        "2": 8,
+        "4": 47
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_road_ns",
+      "role": "reference_control",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_ns.png",
+      "git_blob_sha": "360c16bfe0c0a874af1ffac34e42eee51ce0e7c1",
+      "compressed_file_bytes": 8620,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 1,
+        "2": 19,
+        "4": 44
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_rail_ew",
+      "role": "reference_control",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_ew.png",
+      "git_blob_sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "compressed_file_bytes": 10943,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 12,
+        "2": 14,
+        "4": 38
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_rail_ns",
+      "role": "reference_control",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_ns.png",
+      "git_blob_sha": "3ecc57989beab8f74b97a5079d14fc557de15e5b",
+      "compressed_file_bytes": 11115,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 1,
+        "2": 9,
+        "4": 54
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_river_ns",
+      "role": "reference_control",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_ns.png",
+      "git_blob_sha": "a5c0b606ce3f2653e3f0c3532eaa52211af59a53",
+      "compressed_file_bytes": 8912,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 1,
+        "2": 36,
+        "4": 27
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_water_calm",
+      "role": "reference_control",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_water_calm.png",
+      "git_blob_sha": "7f38c2b355344499172bd89def7b8addc48c34b5",
+      "compressed_file_bytes": 8082,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 5,
+        "2": 5,
+        "4": 54
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    },
+    {
+      "asset_id": "map_pond_small",
+      "role": "reference_control",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_pond_small.png",
+      "git_blob_sha": "2719b0b51ece024a1b26453e73fc415e85c3147a",
+      "compressed_file_bytes": 9623,
+      "decoded_size_px": [
+        64,
+        64
+      ],
+      "color_type": "RGBA8",
+      "interlaced": false,
+      "png_all_chunk_crc_pass": true,
+      "zlib_adler32_pass": true,
+      "unfiltered_rgba_pixels": 4096,
+      "filter_rows": {
+        "1": 6,
+        "2": 14,
+        "4": 44
+      },
+      "alpha_pixels": {
+        "transparent": 0,
+        "partial": 0,
+        "opaque": 4096
+      }
+    }
+  ],
+  "seam_diagnostics": [
+    {
+      "label": "road_bridge_E",
+      "tile_a": "map_road_bridge_ew",
+      "edge_a": "E",
+      "tile_b": "map_road_ew",
+      "edge_b": "W",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 50.597,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "road_bridge_W",
+      "tile_a": "map_road_bridge_ew",
+      "edge_a": "W",
+      "tile_b": "map_road_ew",
+      "edge_b": "E",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 56.528,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "road_bridge_N",
+      "tile_a": "map_road_bridge_ns",
+      "edge_a": "N",
+      "tile_b": "map_road_ns",
+      "edge_b": "S",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 16.972,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 1,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "road_bridge_S",
+      "tile_a": "map_road_bridge_ns",
+      "edge_a": "S",
+      "tile_b": "map_road_ns",
+      "edge_b": "N",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 11.583,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "rail_bridge_E",
+      "tile_a": "map_rail_bridge_ew",
+      "edge_a": "E",
+      "tile_b": "map_rail_ew",
+      "edge_b": "W",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 52.361,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "rail_bridge_W",
+      "tile_a": "map_rail_bridge_ew",
+      "edge_a": "W",
+      "tile_b": "map_rail_ew",
+      "edge_b": "E",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 67.292,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "rail_bridge_N",
+      "tile_a": "map_rail_bridge_ns",
+      "edge_a": "N",
+      "tile_b": "map_rail_ns",
+      "edge_b": "S",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 30.986,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "rail_bridge_S",
+      "tile_a": "map_rail_bridge_ns",
+      "edge_a": "S",
+      "tile_b": "map_rail_ns",
+      "edge_b": "N",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 33.153,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "river_mouth_s_N",
+      "tile_a": "map_river_mouth_s",
+      "edge_a": "N",
+      "tile_b": "map_river_ns",
+      "edge_b": "S",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 22.847,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "river_mouth_s_S",
+      "tile_a": "map_river_mouth_s",
+      "edge_a": "S",
+      "tile_b": "map_water_calm",
+      "edge_b": "N",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 10.417,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "river_mouth_square_N",
+      "tile_a": "map_river_mouth_s_square",
+      "edge_a": "N",
+      "tile_b": "map_river_ns",
+      "edge_b": "S",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 19.986,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "river_mouth_square_S",
+      "tile_a": "map_river_mouth_s_square",
+      "edge_a": "S",
+      "tile_b": "map_water_calm",
+      "edge_b": "N",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 10.764,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "pond_channel_s_N",
+      "tile_a": "map_pond_channel_s",
+      "edge_a": "N",
+      "tile_b": "map_river_ns",
+      "edge_b": "S",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 39.431,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "pond_channel_s_S",
+      "tile_a": "map_pond_channel_s",
+      "edge_a": "S",
+      "tile_b": "map_pond_small",
+      "edge_b": "N",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 26.764,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "inlet_w_W",
+      "tile_a": "map_inlet_w",
+      "edge_a": "W",
+      "tile_b": "map_water_calm",
+      "edge_b": "E",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 52.472,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "road_EW_self",
+      "tile_a": "map_road_ew",
+      "edge_a": "E",
+      "tile_b": "map_road_ew",
+      "edge_b": "W",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 9.847,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "road_NS_self",
+      "tile_a": "map_road_ns",
+      "edge_a": "N",
+      "tile_b": "map_road_ns",
+      "edge_b": "S",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 10.264,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "rail_EW_self",
+      "tile_a": "map_rail_ew",
+      "edge_a": "E",
+      "tile_b": "map_rail_ew",
+      "edge_b": "W",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 15.958,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "rail_NS_self",
+      "tile_a": "map_rail_ns",
+      "edge_a": "N",
+      "tile_b": "map_rail_ns",
+      "edge_b": "S",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 24.569,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    },
+    {
+      "label": "river_NS_self",
+      "tile_a": "map_river_ns",
+      "edge_a": "N",
+      "tile_b": "map_river_ns",
+      "edge_b": "S",
+      "sampled_edge_pixels": 24,
+      "nearest_64_to_24": true,
+      "rgb_mae": 5.556,
+      "alpha_mae": 0,
+      "exact_rgba_samples": 0,
+      "alpha_mismatched_samples": 0,
+      "acceptance": "NOT_VISUALLY_APPROVED"
+    }
+  ],
+  "straight_tile_self_seam_baselines_rgb_mae": {
+    "road_ew": 9.847,
+    "road_ns": 10.264,
+    "rail_ew": 15.958,
+    "rail_ns": 24.569,
+    "river_ns": 5.556
+  },
+  "priority_review": [
+    {
+      "asset_id": "map_road_bridge_ew",
+      "edge": "E",
+      "observed_rgb_mae": 50.597,
+      "straight_self_seam_baseline": 9.847,
+      "ratio": 5.14,
+      "priority": "manual_visual_and_topology_review",
+      "not_proven_defect": true
+    },
+    {
+      "asset_id": "map_road_bridge_ew",
+      "edge": "W",
+      "observed_rgb_mae": 56.528,
+      "straight_self_seam_baseline": 9.847,
+      "ratio": 5.74,
+      "priority": "manual_visual_and_topology_review",
+      "not_proven_defect": true
+    },
+    {
+      "asset_id": "map_rail_bridge_ew",
+      "edge": "E",
+      "observed_rgb_mae": 52.361,
+      "straight_self_seam_baseline": 15.958,
+      "ratio": 3.28,
+      "priority": "manual_visual_and_topology_review",
+      "not_proven_defect": true
+    },
+    {
+      "asset_id": "map_rail_bridge_ew",
+      "edge": "W",
+      "observed_rgb_mae": 67.292,
+      "straight_self_seam_baseline": 15.958,
+      "ratio": 4.22,
+      "priority": "manual_visual_and_topology_review",
+      "not_proven_defect": true
+    }
+  ],
+  "findings": [
+    "All 12 cross-type and 7 comparison PNGs decode successfully as 64x64 RGBA8; no transparent or partial-alpha pixels. Full opacity is appropriate for ground tile sprites but not a general rule for buildings.",
+    "EW road-bridge edges have 50.597 and 56.528 RGB MAE against straight road, versus straight-road self seam 9.847; likely needs visual review before adoption.",
+    "EW rail-bridge edges have 52.361 and 67.292 RGB MAE against straight rail, versus straight-rail self seam 15.958; likely needs visual review before adoption.",
+    "NS road bridge edges have 16.972 and 11.583 RGB MAE, versus straight-road NS self seam 10.264; still not a visual pass.",
+    "River mouth and pond/inlet comparisons are hypothesis-based neighboring tiles, not established gameplay topology."
+  ],
+  "limitations": [
+    "No source PNGs or game code were modified or regenerated.",
+    "Actual image pixel decode and edge diagnostics ran in the tool runtime; the new Python recheck script passed syntax/synthetic tests locally but was not executed against a full local Git checkout.",
+    "Only 24px edge samples were compared; no screenshot or human visual approval, no actual Godot draw, no original PS1 video/manual comparison, and no game regression.",
+    "Filename-derived pairings (pond, inlet, river mouth) are provisional; an edge mismatch is not proof of a defect.",
+    "Task 6 and all issue #232 completion checkboxes remain incomplete."
+  ],
+  "issue_checkbox_task_6_complete": false,
+  "issue_all_tasks_complete": false
+}
