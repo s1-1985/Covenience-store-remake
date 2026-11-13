@@ -1,0 +1,250 @@
+{
+  "all_passed": true,
+  "date_jst": "2026-11-13",
+  "verified_commit": "bc82faa52b992c2aa3e54b7506a10a1c148e5a7a",
+  "files_verified": 40,
+  "total_bytes": 3167260,
+  "method": "Full fetch_file base64 readback at an exact commit; all bytes decoded and rehashed with the Git blob header; byte lengths and hashes compared with the local files. SHA-1 implementation passed the abc known-answer test.",
+  "files": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/.gitignore",
+      "bytes": 23,
+      "git_blob_sha1": "cc268ca642e50169ccd6058e8837df82395a8246",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/README.md",
+      "bytes": 4094,
+      "git_blob_sha1": "acb41a474ddd3c7eb900142062a0deaf0225740f",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/TOWN0001-ci-main-32-single.audit.json",
+      "bytes": 4141,
+      "git_blob_sha1": "3698ab40dbc27fa4873dc75ad16377252c797f92",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/TOWN0001-ci-main-32-single.log",
+      "bytes": 587,
+      "git_blob_sha1": "3802b5c559a7827bd5c9f6cd3faf23a3dae28cf4",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/TOWN0001-ci-main-33-single.audit.json",
+      "bytes": 4165,
+      "git_blob_sha1": "3831ec87ea913ad7ab92c1396db2b858b5aca607",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/TOWN0001-ci-main-33-single.log",
+      "bytes": 587,
+      "git_blob_sha1": "3c4ffbebff28d490f56dae97918cae80ddc44bf6",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/TOWN0001-ci-main-34-single.audit.json",
+      "bytes": 5049,
+      "git_blob_sha1": "5c4eca84e6173ec76932d9ff1f9128bd18bf060c",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/TOWN0001-ci-main-34-single.log",
+      "bytes": 587,
+      "git_blob_sha1": "03e24c3f0cd47eb8d567eb3ad28cafd59f634944",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/audit-new-store.py",
+      "bytes": 9713,
+      "git_blob_sha1": "3c89b7977ccf1bb763301a47b758946c288900a7",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/continue-main.py",
+      "bytes": 9738,
+      "git_blob_sha1": "fd9a04858ba1fa6737709171c7ea8f31017a5bf3",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encode-evidence.py",
+      "bytes": 1098,
+      "git_blob_sha1": "849522082d4253e5d0c8a8ae23bc56b702330d1e",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/TOWN0001-ci-main-32-single-progress.json.zlib",
+      "bytes": 63588,
+      "git_blob_sha1": "fc80d30dc6a7aa3124a21b859d57ee053e2b485d",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/TOWN0001-ci-main-33-single-progress.json.zlib",
+      "bytes": 62335,
+      "git_blob_sha1": "199f3e92c6cc79d71967bc8553e4052f4c81636e",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/TOWN0001-ci-main-34-single-progress.json.zlib",
+      "bytes": 60118,
+      "git_blob_sha1": "1ca754883caa0fab08480ce5ef13f20375e584e6",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/opened-snapshot-TOWN0001-ci-main-32-single-verification-20261103.json.zlib",
+      "bytes": 225798,
+      "git_blob_sha1": "bc9684c4eb891b72016b2d745d822f27cbcf048c",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/opened-snapshot-TOWN0001-ci-main-33-single-verification-20261103.json.zlib",
+      "bytes": 240094,
+      "git_blob_sha1": "a85ec14244d74aac3d3b48ef09d560f356b5ecd8",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/opened-snapshot-TOWN0001-ci-main-34-single-verification-20261103.json.zlib",
+      "bytes": 244882,
+      "git_blob_sha1": "f455234ed060eee4ad4e5cfccad2f659d999bc2c",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-32-single.json.zlib",
+      "bytes": 209599,
+      "git_blob_sha1": "b290f683abcd924f86bf7d59b9b11980589553bd",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-32-single.ram.zlib",
+      "bytes": 510195,
+      "git_blob_sha1": "f8d003b32f973e78054429b8ee8708e236246f48",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-33-single.json.zlib",
+      "bytes": 208381,
+      "git_blob_sha1": "4d2a3be7a0bfb27708f359d750d8f29e788c49de",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-33-single.ram.zlib",
+      "bytes": 510037,
+      "git_blob_sha1": "ef44b4fa5407b0efe910687c1a113c13896e73ff",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-34-single.json.zlib",
+      "bytes": 206146,
+      "git_blob_sha1": "85452dcad104ddf81b3859e63cebda13370a1095",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-34-single.ram.zlib",
+      "bytes": 509768,
+      "git_blob_sha1": "9d2028b5b846f0aecc8661917aa40ec10e77d123",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/evidence-encoding.json",
+      "bytes": 5568,
+      "git_blob_sha1": "e532fc44b5210127e0deebc6747c0d4a79a1ce68",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/execution-experiments.json",
+      "bytes": 832,
+      "git_blob_sha1": "b19ce696f9b6f0702dbbaf1b29c9901519f3d816",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/expand-evidence.py",
+      "bytes": 1125,
+      "git_blob_sha1": "06df775a113b9becba3a086c50120dc2a1ba8247",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/git-readback-main-32.json",
+      "bytes": 5400,
+      "git_blob_sha1": "0def4f771f87f920b04a37f5d558879062ed1d2d",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/long-continuation-status.json",
+      "bytes": 16355,
+      "git_blob_sha1": "3f6f6e60c1fc61d4fa19609764f568f854ea0321",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/new-store-audit.json",
+      "bytes": 13933,
+      "git_blob_sha1": "06ddb9b7fb00c5c7dbd43c720690aa9d3c4946cd",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/package-checkpoint.py",
+      "bytes": 6963,
+      "git_blob_sha1": "8622a0065f70c525750fcedadb8d32b1434a0718",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/prepare-inputs.py",
+      "bytes": 1682,
+      "git_blob_sha1": "e8ce4955701ae7dfab5c55ec60db8b8b1c03333b",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/reporting-correction.json",
+      "bytes": 333,
+      "git_blob_sha1": "c198eaf4408a603ee68f7b8bb954ecb1a018d9dd",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/restart-TOWN0001-ci-main-32-single-check.json",
+      "bytes": 512,
+      "git_blob_sha1": "4cd0f4478fa69d54f0b99ba532d15298fee04c7a",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/restart-TOWN0001-ci-main-32-single-proof.json.zlib",
+      "bytes": 5969,
+      "git_blob_sha1": "c68e969c59aa7e8674d858df46d331790185477d",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/restart-TOWN0001-ci-main-34-single-check.json",
+      "bytes": 512,
+      "git_blob_sha1": "c8db57a3b96695b9b0f182f2c8d1391eb36b6116",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/restart-TOWN0001-ci-main-34-single-proof.json.zlib",
+      "bytes": 6058,
+      "git_blob_sha1": "372f36bb69e0f6a39f3385f41c0d9d6311f3d0c6",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/verify-restart.py",
+      "bytes": 1721,
+      "git_blob_sha1": "f0f0b76479d3bb150cd448e13d16e340f95eac2a",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-new-rival-operation/verify-segment.py",
+      "bytes": 4029,
+      "git_blob_sha1": "035b071ccb6878bb14f33aa774012b2a1634396e",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-ANALYSIS.json",
+      "bytes": 824,
+      "git_blob_sha1": "aa4e0a38398fd75d6a4e6e707fa560e9a069dcfe",
+      "full_byte_readback": true
+    },
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "bytes": 4721,
+      "git_blob_sha1": "178b2259df3014a8c4a2eaf99e02e5ad6498da66",
+      "full_byte_readback": true
+    }
+  ]
+}
