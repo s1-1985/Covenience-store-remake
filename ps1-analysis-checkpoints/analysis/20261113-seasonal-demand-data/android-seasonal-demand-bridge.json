@@ -1,0 +1,4545 @@
+{
+  "schema_version": 1,
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "products": [
+    {
+      "id": 0,
+      "name": "冷たい飲料",
+      "season_code": 1,
+      "primary_profile_ids": [
+        88,
+        89,
+        90,
+        91,
+        94,
+        95,
+        97,
+        98,
+        99,
+        140,
+        141,
+        142,
+        143
+      ],
+      "extra_slots": [
+        {
+          "profile": 0,
+          "slot": 1
+        },
+        {
+          "profile": 2,
+          "slot": 1
+        },
+        {
+          "profile": 4,
+          "slot": 1
+        },
+        {
+          "profile": 6,
+          "slot": 1
+        },
+        {
+          "profile": 7,
+          "slot": 1
+        },
+        {
+          "profile": 10,
+          "slot": 1
+        },
+        {
+          "profile": 12,
+          "slot": 1
+        },
+        {
+          "profile": 14,
+          "slot": 1
+        },
+        {
+          "profile": 19,
+          "slot": 1
+        },
+        {
+          "profile": 21,
+          "slot": 1
+        },
+        {
+          "profile": 23,
+          "slot": 1
+        },
+        {
+          "profile": 24,
+          "slot": 1
+        },
+        {
+          "profile": 26,
+          "slot": 1
+        },
+        {
+          "profile": 27,
+          "slot": 1
+        },
+        {
+          "profile": 28,
+          "slot": 1
+        },
+        {
+          "profile": 30,
+          "slot": 1
+        },
+        {
+          "profile": 45,
+          "slot": 1
+        },
+        {
+          "profile": 47,
+          "slot": 1
+        },
+        {
+          "profile": 49,
+          "slot": 1
+        },
+        {
+          "profile": 50,
+          "slot": 1
+        },
+        {
+          "profile": 51,
+          "slot": 1
+        },
+        {
+          "profile": 52,
+          "slot": 1
+        },
+        {
+          "profile": 53,
+          "slot": 1
+        },
+        {
+          "profile": 55,
+          "slot": 1
+        },
+        {
+          "profile": 65,
+          "slot": 1
+        },
+        {
+          "profile": 66,
+          "slot": 1
+        },
+        {
+          "profile": 67,
+          "slot": 1
+        },
+        {
+          "profile": 69,
+          "slot": 1
+        },
+        {
+          "profile": 70,
+          "slot": 1
+        },
+        {
+          "profile": 73,
+          "slot": 1
+        },
+        {
+          "profile": 74,
+          "slot": 1
+        },
+        {
+          "profile": 82,
+          "slot": 1
+        },
+        {
+          "profile": 85,
+          "slot": 1
+        },
+        {
+          "profile": 93,
+          "slot": 2
+        },
+        {
+          "profile": 96,
+          "slot": 1
+        },
+        {
+          "profile": 100,
+          "slot": 1
+        },
+        {
+          "profile": 101,
+          "slot": 2
+        },
+        {
+          "profile": 102,
+          "slot": 2
+        },
+        {
+          "profile": 103,
+          "slot": 1
+        },
+        {
+          "profile": 104,
+          "slot": 1
+        },
+        {
+          "profile": 105,
+          "slot": 1
+        },
+        {
+          "profile": 106,
+          "slot": 1
+        },
+        {
+          "profile": 107,
+          "slot": 1
+        },
+        {
+          "profile": 108,
+          "slot": 1
+        },
+        {
+          "profile": 109,
+          "slot": 1
+        },
+        {
+          "profile": 130,
+          "slot": 1
+        },
+        {
+          "profile": 131,
+          "slot": 1
+        },
+        {
+          "profile": 138,
+          "slot": 1
+        },
+        {
+          "profile": 139,
+          "slot": 1
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "温かい飲料",
+      "season_code": 2,
+      "primary_profile_ids": [],
+      "extra_slots": [
+        {
+          "profile": 1,
+          "slot": 1
+        },
+        {
+          "profile": 3,
+          "slot": 1
+        },
+        {
+          "profile": 5,
+          "slot": 1
+        },
+        {
+          "profile": 8,
+          "slot": 1
+        },
+        {
+          "profile": 9,
+          "slot": 1
+        },
+        {
+          "profile": 13,
+          "slot": 1
+        },
+        {
+          "profile": 15,
+          "slot": 1
+        },
+        {
+          "profile": 20,
+          "slot": 1
+        },
+        {
+          "profile": 22,
+          "slot": 1
+        },
+        {
+          "profile": 25,
+          "slot": 1
+        },
+        {
+          "profile": 29,
+          "slot": 1
+        },
+        {
+          "profile": 31,
+          "slot": 1
+        },
+        {
+          "profile": 34,
+          "slot": 1
+        },
+        {
+          "profile": 35,
+          "slot": 2
+        },
+        {
+          "profile": 37,
+          "slot": 1
+        },
+        {
+          "profile": 40,
+          "slot": 1
+        },
+        {
+          "profile": 43,
+          "slot": 1
+        },
+        {
+          "profile": 44,
+          "slot": 1
+        },
+        {
+          "profile": 46,
+          "slot": 1
+        },
+        {
+          "profile": 48,
+          "slot": 1
+        },
+        {
+          "profile": 52,
+          "slot": 2
+        },
+        {
+          "profile": 54,
+          "slot": 1
+        },
+        {
+          "profile": 56,
+          "slot": 1
+        },
+        {
+          "profile": 59,
+          "slot": 1
+        },
+        {
+          "profile": 61,
+          "slot": 1
+        },
+        {
+          "profile": 62,
+          "slot": 1
+        },
+        {
+          "profile": 63,
+          "slot": 1
+        },
+        {
+          "profile": 64,
+          "slot": 1
+        },
+        {
+          "profile": 68,
+          "slot": 1
+        },
+        {
+          "profile": 72,
+          "slot": 1
+        },
+        {
+          "profile": 74,
+          "slot": 2
+        },
+        {
+          "profile": 77,
+          "slot": 2
+        },
+        {
+          "profile": 79,
+          "slot": 1
+        },
+        {
+          "profile": 83,
+          "slot": 2
+        },
+        {
+          "profile": 85,
+          "slot": 2
+        },
+        {
+          "profile": 88,
+          "slot": 1
+        },
+        {
+          "profile": 90,
+          "slot": 1
+        },
+        {
+          "profile": 92,
+          "slot": 2
+        },
+        {
+          "profile": 94,
+          "slot": 1
+        },
+        {
+          "profile": 95,
+          "slot": 1
+        },
+        {
+          "profile": 97,
+          "slot": 1
+        },
+        {
+          "profile": 98,
+          "slot": 1
+        },
+        {
+          "profile": 99,
+          "slot": 1
+        },
+        {
+          "profile": 110,
+          "slot": 1
+        },
+        {
+          "profile": 119,
+          "slot": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "酒類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        36,
+        57,
+        76,
+        80,
+        81,
+        111
+      ],
+      "extra_slots": [
+        {
+          "profile": 13,
+          "slot": 3
+        },
+        {
+          "profile": 18,
+          "slot": 1
+        },
+        {
+          "profile": 32,
+          "slot": 1
+        },
+        {
+          "profile": 37,
+          "slot": 2
+        },
+        {
+          "profile": 39,
+          "slot": 1
+        },
+        {
+          "profile": 41,
+          "slot": 1
+        },
+        {
+          "profile": 43,
+          "slot": 2
+        },
+        {
+          "profile": 54,
+          "slot": 2
+        },
+        {
+          "profile": 56,
+          "slot": 2
+        },
+        {
+          "profile": 58,
+          "slot": 1
+        },
+        {
+          "profile": 60,
+          "slot": 1
+        },
+        {
+          "profile": 61,
+          "slot": 2
+        },
+        {
+          "profile": 78,
+          "slot": 2
+        },
+        {
+          "profile": 84,
+          "slot": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "弁当類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        6,
+        7,
+        8,
+        12,
+        13,
+        20,
+        22,
+        25,
+        26,
+        27,
+        29,
+        32,
+        41,
+        42,
+        46,
+        49,
+        51,
+        53,
+        55,
+        59,
+        66,
+        68,
+        69,
+        73
+      ],
+      "extra_slots": []
+    },
+    {
+      "id": 4,
+      "name": "パン類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        19,
+        21,
+        24,
+        44,
+        45,
+        47,
+        48,
+        62,
+        63,
+        64,
+        65,
+        67,
+        72
+      ],
+      "extra_slots": [
+        {
+          "profile": 125,
+          "slot": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "ｲﾝｽﾀﾝﾄ類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        9,
+        18,
+        31,
+        34,
+        50,
+        58,
+        60,
+        70,
+        79
+      ],
+      "extra_slots": [
+        {
+          "profile": 16,
+          "slot": 1
+        },
+        {
+          "profile": 38,
+          "slot": 1
+        },
+        {
+          "profile": 58,
+          "slot": 2
+        },
+        {
+          "profile": 60,
+          "slot": 2
+        },
+        {
+          "profile": 75,
+          "slot": 1
+        },
+        {
+          "profile": 76,
+          "slot": 3
+        },
+        {
+          "profile": 125,
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "菓子類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        16,
+        106,
+        107,
+        108,
+        109,
+        130,
+        131
+      ],
+      "extra_slots": [
+        {
+          "profile": 1,
+          "slot": 2
+        },
+        {
+          "profile": 2,
+          "slot": 2
+        },
+        {
+          "profile": 4,
+          "slot": 2
+        },
+        {
+          "profile": 6,
+          "slot": 2
+        },
+        {
+          "profile": 9,
+          "slot": 2
+        },
+        {
+          "profile": 11,
+          "slot": 1
+        },
+        {
+          "profile": 12,
+          "slot": 2
+        },
+        {
+          "profile": 13,
+          "slot": 2
+        },
+        {
+          "profile": 14,
+          "slot": 2
+        },
+        {
+          "profile": 15,
+          "slot": 2
+        },
+        {
+          "profile": 31,
+          "slot": 3
+        },
+        {
+          "profile": 35,
+          "slot": 3
+        },
+        {
+          "profile": 36,
+          "slot": 2
+        },
+        {
+          "profile": 42,
+          "slot": 3
+        },
+        {
+          "profile": 57,
+          "slot": 2
+        },
+        {
+          "profile": 65,
+          "slot": 2
+        },
+        {
+          "profile": 68,
+          "slot": 2
+        },
+        {
+          "profile": 70,
+          "slot": 2
+        },
+        {
+          "profile": 72,
+          "slot": 2
+        },
+        {
+          "profile": 73,
+          "slot": 2
+        },
+        {
+          "profile": 76,
+          "slot": 1
+        },
+        {
+          "profile": 77,
+          "slot": 1
+        },
+        {
+          "profile": 78,
+          "slot": 1
+        },
+        {
+          "profile": 79,
+          "slot": 3
+        },
+        {
+          "profile": 80,
+          "slot": 2
+        },
+        {
+          "profile": 81,
+          "slot": 2
+        },
+        {
+          "profile": 84,
+          "slot": 2
+        },
+        {
+          "profile": 88,
+          "slot": 2
+        },
+        {
+          "profile": 89,
+          "slot": 2
+        },
+        {
+          "profile": 90,
+          "slot": 3
+        },
+        {
+          "profile": 92,
+          "slot": 3
+        },
+        {
+          "profile": 93,
+          "slot": 1
+        },
+        {
+          "profile": 97,
+          "slot": 2
+        },
+        {
+          "profile": 99,
+          "slot": 2
+        },
+        {
+          "profile": 100,
+          "slot": 2
+        },
+        {
+          "profile": 102,
+          "slot": 1
+        },
+        {
+          "profile": 104,
+          "slot": 2
+        },
+        {
+          "profile": 105,
+          "slot": 2
+        },
+        {
+          "profile": 111,
+          "slot": 1
+        },
+        {
+          "profile": 119,
+          "slot": 2
+        },
+        {
+          "profile": 138,
+          "slot": 2
+        },
+        {
+          "profile": 139,
+          "slot": 2
+        },
+        {
+          "profile": 140,
+          "slot": 2
+        },
+        {
+          "profile": 141,
+          "slot": 2
+        },
+        {
+          "profile": 142,
+          "slot": 2
+        },
+        {
+          "profile": 143,
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "本類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        78,
+        138,
+        139
+      ],
+      "extra_slots": [
+        {
+          "profile": 3,
+          "slot": 2
+        },
+        {
+          "profile": 5,
+          "slot": 2
+        },
+        {
+          "profile": 11,
+          "slot": 2
+        },
+        {
+          "profile": 16,
+          "slot": 3
+        },
+        {
+          "profile": 21,
+          "slot": 2
+        },
+        {
+          "profile": 27,
+          "slot": 2
+        },
+        {
+          "profile": 29,
+          "slot": 2
+        },
+        {
+          "profile": 30,
+          "slot": 2
+        },
+        {
+          "profile": 34,
+          "slot": 2
+        },
+        {
+          "profile": 41,
+          "slot": 2
+        },
+        {
+          "profile": 46,
+          "slot": 2
+        },
+        {
+          "profile": 50,
+          "slot": 2
+        },
+        {
+          "profile": 51,
+          "slot": 2
+        },
+        {
+          "profile": 62,
+          "slot": 2
+        },
+        {
+          "profile": 65,
+          "slot": 3
+        },
+        {
+          "profile": 73,
+          "slot": 3
+        },
+        {
+          "profile": 74,
+          "slot": 3
+        },
+        {
+          "profile": 88,
+          "slot": 3
+        },
+        {
+          "profile": 91,
+          "slot": 3
+        },
+        {
+          "profile": 93,
+          "slot": 3
+        },
+        {
+          "profile": 94,
+          "slot": 2
+        },
+        {
+          "profile": 99,
+          "slot": 3
+        },
+        {
+          "profile": 100,
+          "slot": 3
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "たばこ",
+      "season_code": 0,
+      "primary_profile_ids": [
+        23,
+        28,
+        37,
+        43,
+        52,
+        61,
+        74,
+        84,
+        85,
+        110
+      ],
+      "extra_slots": [
+        {
+          "profile": 5,
+          "slot": 3
+        },
+        {
+          "profile": 9,
+          "slot": 3
+        },
+        {
+          "profile": 18,
+          "slot": 2
+        },
+        {
+          "profile": 20,
+          "slot": 2
+        },
+        {
+          "profile": 22,
+          "slot": 2
+        },
+        {
+          "profile": 25,
+          "slot": 2
+        },
+        {
+          "profile": 32,
+          "slot": 2
+        },
+        {
+          "profile": 36,
+          "slot": 3
+        },
+        {
+          "profile": 39,
+          "slot": 2
+        },
+        {
+          "profile": 40,
+          "slot": 3
+        },
+        {
+          "profile": 45,
+          "slot": 2
+        },
+        {
+          "profile": 46,
+          "slot": 3
+        },
+        {
+          "profile": 47,
+          "slot": 3
+        },
+        {
+          "profile": 48,
+          "slot": 2
+        },
+        {
+          "profile": 51,
+          "slot": 3
+        },
+        {
+          "profile": 53,
+          "slot": 3
+        },
+        {
+          "profile": 55,
+          "slot": 3
+        },
+        {
+          "profile": 58,
+          "slot": 3
+        },
+        {
+          "profile": 60,
+          "slot": 3
+        },
+        {
+          "profile": 63,
+          "slot": 3
+        },
+        {
+          "profile": 66,
+          "slot": 3
+        },
+        {
+          "profile": 67,
+          "slot": 2
+        },
+        {
+          "profile": 70,
+          "slot": 3
+        },
+        {
+          "profile": 80,
+          "slot": 3
+        },
+        {
+          "profile": 81,
+          "slot": 3
+        },
+        {
+          "profile": 82,
+          "slot": 2
+        },
+        {
+          "profile": 83,
+          "slot": 1
+        },
+        {
+          "profile": 84,
+          "slot": 3
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "ｱｲｽｸﾘｰﾑ",
+      "season_code": 1,
+      "primary_profile_ids": [
+        38,
+        82,
+        83,
+        100
+      ],
+      "extra_slots": [
+        {
+          "profile": 7,
+          "slot": 2
+        },
+        {
+          "profile": 8,
+          "slot": 2
+        },
+        {
+          "profile": 14,
+          "slot": 3
+        },
+        {
+          "profile": 16,
+          "slot": 2
+        },
+        {
+          "profile": 66,
+          "slot": 2
+        },
+        {
+          "profile": 68,
+          "slot": 3
+        },
+        {
+          "profile": 89,
+          "slot": 1
+        },
+        {
+          "profile": 91,
+          "slot": 1
+        },
+        {
+          "profile": 130,
+          "slot": 2
+        },
+        {
+          "profile": 140,
+          "slot": 1
+        },
+        {
+          "profile": 141,
+          "slot": 1
+        },
+        {
+          "profile": 142,
+          "slot": 1
+        },
+        {
+          "profile": 143,
+          "slot": 1
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "文房具",
+      "season_code": 0,
+      "primary_profile_ids": [
+        86,
+        87,
+        104,
+        105
+      ],
+      "extra_slots": [
+        {
+          "profile": 10,
+          "slot": 3
+        },
+        {
+          "profile": 11,
+          "slot": 3
+        },
+        {
+          "profile": 20,
+          "slot": 3
+        },
+        {
+          "profile": 21,
+          "slot": 3
+        },
+        {
+          "profile": 34,
+          "slot": 3
+        },
+        {
+          "profile": 40,
+          "slot": 2
+        },
+        {
+          "profile": 44,
+          "slot": 2
+        },
+        {
+          "profile": 89,
+          "slot": 3
+        },
+        {
+          "profile": 90,
+          "slot": 2
+        },
+        {
+          "profile": 91,
+          "slot": 2
+        },
+        {
+          "profile": 95,
+          "slot": 3
+        },
+        {
+          "profile": 96,
+          "slot": 2
+        },
+        {
+          "profile": 98,
+          "slot": 3
+        },
+        {
+          "profile": 101,
+          "slot": 3
+        },
+        {
+          "profile": 102,
+          "slot": 3
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "電気製品類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        132,
+        133
+      ],
+      "extra_slots": [
+        {
+          "profile": 112,
+          "slot": 2
+        },
+        {
+          "profile": 114,
+          "slot": 2
+        },
+        {
+          "profile": 119,
+          "slot": 3
+        },
+        {
+          "profile": 121,
+          "slot": 3
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "野菜類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        71,
+        124,
+        126,
+        129
+      ],
+      "extra_slots": [
+        {
+          "profile": 33,
+          "slot": 1
+        },
+        {
+          "profile": 111,
+          "slot": 3
+        },
+        {
+          "profile": 116,
+          "slot": 1
+        },
+        {
+          "profile": 117,
+          "slot": 1
+        },
+        {
+          "profile": 118,
+          "slot": 3
+        },
+        {
+          "profile": 122,
+          "slot": 3
+        },
+        {
+          "profile": 123,
+          "slot": 1
+        },
+        {
+          "profile": 127,
+          "slot": 1
+        },
+        {
+          "profile": 128,
+          "slot": 1
+        },
+        {
+          "profile": 134,
+          "slot": 1
+        },
+        {
+          "profile": 135,
+          "slot": 1
+        },
+        {
+          "profile": 136,
+          "slot": 1
+        },
+        {
+          "profile": 137,
+          "slot": 1
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "魚類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        39,
+        116,
+        117,
+        127,
+        136
+      ],
+      "extra_slots": [
+        {
+          "profile": 33,
+          "slot": 2
+        },
+        {
+          "profile": 71,
+          "slot": 2
+        },
+        {
+          "profile": 111,
+          "slot": 2
+        },
+        {
+          "profile": 120,
+          "slot": 1
+        },
+        {
+          "profile": 126,
+          "slot": 1
+        },
+        {
+          "profile": 128,
+          "slot": 2
+        },
+        {
+          "profile": 129,
+          "slot": 1
+        },
+        {
+          "profile": 137,
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "肉類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        33,
+        125,
+        128,
+        137
+      ],
+      "extra_slots": [
+        {
+          "profile": 71,
+          "slot": 1
+        },
+        {
+          "profile": 116,
+          "slot": 2
+        },
+        {
+          "profile": 117,
+          "slot": 2
+        },
+        {
+          "profile": 120,
+          "slot": 2
+        },
+        {
+          "profile": 121,
+          "slot": 2
+        },
+        {
+          "profile": 124,
+          "slot": 3
+        },
+        {
+          "profile": 126,
+          "slot": 2
+        },
+        {
+          "profile": 127,
+          "slot": 2
+        },
+        {
+          "profile": 129,
+          "slot": 2
+        },
+        {
+          "profile": 134,
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "レトルト類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        10,
+        30,
+        35,
+        54,
+        56,
+        75
+      ],
+      "extra_slots": [
+        {
+          "profile": 57,
+          "slot": 3
+        },
+        {
+          "profile": 122,
+          "slot": 2
+        },
+        {
+          "profile": 124,
+          "slot": 1
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "調味料類",
+      "season_code": 0,
+      "primary_profile_ids": [],
+      "extra_slots": [
+        {
+          "profile": 33,
+          "slot": 3
+        },
+        {
+          "profile": 71,
+          "slot": 3
+        },
+        {
+          "profile": 116,
+          "slot": 3
+        },
+        {
+          "profile": 117,
+          "slot": 3
+        },
+        {
+          "profile": 123,
+          "slot": 3
+        },
+        {
+          "profile": 126,
+          "slot": 3
+        },
+        {
+          "profile": 127,
+          "slot": 3
+        },
+        {
+          "profile": 128,
+          "slot": 3
+        },
+        {
+          "profile": 129,
+          "slot": 3
+        },
+        {
+          "profile": 134,
+          "slot": 3
+        },
+        {
+          "profile": 135,
+          "slot": 3
+        },
+        {
+          "profile": 136,
+          "slot": 3
+        },
+        {
+          "profile": 137,
+          "slot": 3
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "冷凍食品類",
+      "season_code": 0,
+      "primary_profile_ids": [],
+      "extra_slots": [
+        {
+          "profile": 38,
+          "slot": 2
+        },
+        {
+          "profile": 75,
+          "slot": 2
+        },
+        {
+          "profile": 77,
+          "slot": 3
+        },
+        {
+          "profile": 113,
+          "slot": 2
+        },
+        {
+          "profile": 115,
+          "slot": 2
+        },
+        {
+          "profile": 120,
+          "slot": 3
+        },
+        {
+          "profile": 123,
+          "slot": 2
+        },
+        {
+          "profile": 124,
+          "slot": 2
+        },
+        {
+          "profile": 125,
+          "slot": 3
+        },
+        {
+          "profile": 135,
+          "slot": 2
+        },
+        {
+          "profile": 136,
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "おでん",
+      "season_code": 2,
+      "primary_profile_ids": [],
+      "extra_slots": [
+        {
+          "profile": 32,
+          "slot": 3
+        },
+        {
+          "profile": 36,
+          "slot": 1
+        },
+        {
+          "profile": 39,
+          "slot": 3
+        },
+        {
+          "profile": 41,
+          "slot": 3
+        },
+        {
+          "profile": 42,
+          "slot": 1
+        },
+        {
+          "profile": 54,
+          "slot": 3
+        },
+        {
+          "profile": 56,
+          "slot": 3
+        },
+        {
+          "profile": 57,
+          "slot": 1
+        },
+        {
+          "profile": 59,
+          "slot": 2
+        },
+        {
+          "profile": 76,
+          "slot": 2
+        },
+        {
+          "profile": 78,
+          "slot": 3
+        },
+        {
+          "profile": 79,
+          "slot": 2
+        },
+        {
+          "profile": 80,
+          "slot": 1
+        },
+        {
+          "profile": 81,
+          "slot": 1
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "日用品",
+      "season_code": 0,
+      "primary_profile_ids": [
+        77,
+        112,
+        114,
+        120,
+        121,
+        134
+      ],
+      "extra_slots": [
+        {
+          "profile": 1,
+          "slot": 3
+        },
+        {
+          "profile": 17,
+          "slot": 1
+        },
+        {
+          "profile": 29,
+          "slot": 3
+        },
+        {
+          "profile": 49,
+          "slot": 2
+        },
+        {
+          "profile": 69,
+          "slot": 3
+        },
+        {
+          "profile": 113,
+          "slot": 1
+        },
+        {
+          "profile": 115,
+          "slot": 1
+        },
+        {
+          "profile": 118,
+          "slot": 2
+        },
+        {
+          "profile": 122,
+          "slot": 1
+        },
+        {
+          "profile": 132,
+          "slot": 1
+        },
+        {
+          "profile": 133,
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "コピー用紙",
+      "season_code": 0,
+      "primary_profile_ids": [
+        14,
+        40,
+        96
+      ],
+      "extra_slots": [
+        {
+          "profile": 4,
+          "slot": 3
+        },
+        {
+          "profile": 8,
+          "slot": 3
+        },
+        {
+          "profile": 10,
+          "slot": 2
+        },
+        {
+          "profile": 22,
+          "slot": 3
+        },
+        {
+          "profile": 27,
+          "slot": 3
+        },
+        {
+          "profile": 30,
+          "slot": 3
+        },
+        {
+          "profile": 31,
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "宅急便申込書",
+      "season_code": 0,
+      "primary_profile_ids": [
+        15,
+        119
+      ],
+      "extra_slots": []
+    },
+    {
+      "id": 22,
+      "name": "薬品",
+      "season_code": 0,
+      "primary_profile_ids": [
+        17,
+        103,
+        118
+      ],
+      "extra_slots": [
+        {
+          "profile": 2,
+          "slot": 3
+        },
+        {
+          "profile": 47,
+          "slot": 2
+        },
+        {
+          "profile": 53,
+          "slot": 2
+        },
+        {
+          "profile": 55,
+          "slot": 2
+        },
+        {
+          "profile": 63,
+          "slot": 2
+        },
+        {
+          "profile": 69,
+          "slot": 2
+        },
+        {
+          "profile": 110,
+          "slot": 3
+        },
+        {
+          "profile": 112,
+          "slot": 3
+        },
+        {
+          "profile": 113,
+          "slot": 3
+        },
+        {
+          "profile": 114,
+          "slot": 3
+        },
+        {
+          "profile": 115,
+          "slot": 3
+        },
+        {
+          "profile": 131,
+          "slot": 3
+        },
+        {
+          "profile": 138,
+          "slot": 3
+        },
+        {
+          "profile": 139,
+          "slot": 3
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "下着類",
+      "season_code": 0,
+      "primary_profile_ids": [
+        113,
+        115,
+        122,
+        123,
+        135
+      ],
+      "extra_slots": [
+        {
+          "profile": 112,
+          "slot": 1
+        },
+        {
+          "profile": 114,
+          "slot": 1
+        },
+        {
+          "profile": 118,
+          "slot": 1
+        },
+        {
+          "profile": 121,
+          "slot": 1
+        },
+        {
+          "profile": 132,
+          "slot": 2
+        },
+        {
+          "profile": 133,
+          "slot": 1
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "イベント商品",
+      "season_code": 0,
+      "primary_profile_ids": [
+        11,
+        92,
+        93,
+        101,
+        102
+      ],
+      "extra_slots": [
+        {
+          "profile": 6,
+          "slot": 3
+        },
+        {
+          "profile": 7,
+          "slot": 3
+        },
+        {
+          "profile": 15,
+          "slot": 3
+        },
+        {
+          "profile": 18,
+          "slot": 3
+        },
+        {
+          "profile": 67,
+          "slot": 3
+        },
+        {
+          "profile": 72,
+          "slot": 3
+        },
+        {
+          "profile": 94,
+          "slot": 3
+        },
+        {
+          "profile": 95,
+          "slot": 2
+        },
+        {
+          "profile": 96,
+          "slot": 3
+        },
+        {
+          "profile": 97,
+          "slot": 3
+        },
+        {
+          "profile": 98,
+          "slot": 2
+        },
+        {
+          "profile": 103,
+          "slot": 2
+        },
+        {
+          "profile": 104,
+          "slot": 3
+        },
+        {
+          "profile": 105,
+          "slot": 3
+        },
+        {
+          "profile": 106,
+          "slot": 2
+        },
+        {
+          "profile": 107,
+          "slot": 2
+        },
+        {
+          "profile": 108,
+          "slot": 2
+        },
+        {
+          "profile": 109,
+          "slot": 2
+        },
+        {
+          "profile": 130,
+          "slot": 3
+        },
+        {
+          "profile": 131,
+          "slot": 2
+        },
+        {
+          "profile": 132,
+          "slot": 3
+        },
+        {
+          "profile": 133,
+          "slot": 3
+        },
+        {
+          "profile": 140,
+          "slot": 3
+        },
+        {
+          "profile": 141,
+          "slot": 3
+        },
+        {
+          "profile": 142,
+          "slot": 3
+        },
+        {
+          "profile": 143,
+          "slot": 3
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "中華まん",
+      "season_code": 2,
+      "primary_profile_ids": [],
+      "extra_slots": [
+        {
+          "profile": 12,
+          "slot": 3
+        },
+        {
+          "profile": 25,
+          "slot": 3
+        },
+        {
+          "profile": 26,
+          "slot": 2
+        },
+        {
+          "profile": 35,
+          "slot": 1
+        },
+        {
+          "profile": 37,
+          "slot": 3
+        },
+        {
+          "profile": 38,
+          "slot": 3
+        },
+        {
+          "profile": 42,
+          "slot": 2
+        },
+        {
+          "profile": 43,
+          "slot": 3
+        },
+        {
+          "profile": 50,
+          "slot": 3
+        },
+        {
+          "profile": 59,
+          "slot": 3
+        },
+        {
+          "profile": 61,
+          "slot": 3
+        },
+        {
+          "profile": 75,
+          "slot": 3
+        },
+        {
+          "profile": 92,
+          "slot": 1
+        },
+        {
+          "profile": 101,
+          "slot": 1
+        },
+        {
+          "profile": 103,
+          "slot": 3
+        },
+        {
+          "profile": 110,
+          "slot": 2
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "現金",
+      "season_code": 0,
+      "primary_profile_ids": [],
+      "extra_slots": []
+    }
+  ],
+  "profiles": [
+    {
+      "id": 0,
+      "product_ids": [
+        4,
+        0,
+        -1,
+        -1
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 10,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 1,
+      "product_ids": [
+        4,
+        1,
+        6,
+        19
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 10,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 2,
+      "product_ids": [
+        4,
+        0,
+        6,
+        22
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 40,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 3,
+      "product_ids": [
+        4,
+        1,
+        7,
+        -1
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 4,
+      "product_ids": [
+        4,
+        0,
+        6,
+        20
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 20,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 5,
+      "product_ids": [
+        4,
+        1,
+        7,
+        8
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 20,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 6,
+      "product_ids": [
+        3,
+        0,
+        6,
+        24
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 20,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 7,
+      "product_ids": [
+        3,
+        0,
+        9,
+        24
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 8,
+      "product_ids": [
+        3,
+        1,
+        9,
+        20
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 40,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 9,
+      "product_ids": [
+        5,
+        1,
+        6,
+        8
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 40,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 10,
+      "product_ids": [
+        15,
+        0,
+        20,
+        10
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 40,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 11,
+      "product_ids": [
+        24,
+        6,
+        7,
+        10
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 12,
+      "product_ids": [
+        3,
+        0,
+        6,
+        25
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 13,
+      "product_ids": [
+        3,
+        1,
+        6,
+        2
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 14,
+      "product_ids": [
+        20,
+        0,
+        6,
+        9
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 15,
+      "product_ids": [
+        21,
+        1,
+        6,
+        24
+      ],
+      "shopping_importance": 90,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 110
+    },
+    {
+      "id": 16,
+      "product_ids": [
+        6,
+        5,
+        9,
+        7
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 90,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 17,
+      "product_ids": [
+        22,
+        19,
+        -1,
+        -1
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 10,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 18,
+      "product_ids": [
+        5,
+        2,
+        8,
+        24
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 19,
+      "product_ids": [
+        4,
+        0,
+        -1,
+        -1
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 10,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 20,
+      "product_ids": [
+        3,
+        1,
+        8,
+        10
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 21,
+      "product_ids": [
+        4,
+        0,
+        7,
+        10
+      ],
+      "shopping_importance": 60,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 80
+    },
+    {
+      "id": 22,
+      "product_ids": [
+        3,
+        1,
+        8,
+        20
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 23,
+      "product_ids": [
+        8,
+        0,
+        -1,
+        -1
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 10,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 24,
+      "product_ids": [
+        4,
+        0,
+        -1,
+        -1
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 25,
+      "product_ids": [
+        3,
+        1,
+        8,
+        25
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 26,
+      "product_ids": [
+        3,
+        0,
+        25,
+        -1
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 27,
+      "product_ids": [
+        3,
+        0,
+        7,
+        20
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 28,
+      "product_ids": [
+        8,
+        0,
+        -1,
+        -1
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 10,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 29,
+      "product_ids": [
+        3,
+        1,
+        7,
+        19
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 40,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 30,
+      "product_ids": [
+        15,
+        0,
+        7,
+        20
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 40,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 31,
+      "product_ids": [
+        5,
+        1,
+        20,
+        6
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 40,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 32,
+      "product_ids": [
+        3,
+        2,
+        8,
+        18
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 40,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 33,
+      "product_ids": [
+        14,
+        12,
+        13,
+        16
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 34,
+      "product_ids": [
+        5,
+        1,
+        7,
+        10
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 35,
+      "product_ids": [
+        15,
+        25,
+        1,
+        6
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 60,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 36,
+      "product_ids": [
+        2,
+        18,
+        6,
+        8
+      ],
+      "shopping_importance": 90,
+      "focus_threshold": 90,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 110
+    },
+    {
+      "id": 37,
+      "product_ids": [
+        8,
+        1,
+        2,
+        25
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 38,
+      "product_ids": [
+        9,
+        5,
+        17,
+        25
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 39,
+      "product_ids": [
+        13,
+        2,
+        8,
+        18
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 40,
+      "product_ids": [
+        20,
+        1,
+        10,
+        8
+      ],
+      "shopping_importance": 90,
+      "focus_threshold": 60,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 110
+    },
+    {
+      "id": 41,
+      "product_ids": [
+        3,
+        2,
+        7,
+        18
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 42,
+      "product_ids": [
+        3,
+        18,
+        25,
+        6
+      ],
+      "shopping_importance": 90,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 110
+    },
+    {
+      "id": 43,
+      "product_ids": [
+        8,
+        1,
+        2,
+        25
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 44,
+      "product_ids": [
+        4,
+        1,
+        10,
+        -1
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 45,
+      "product_ids": [
+        4,
+        0,
+        8,
+        -1
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 46,
+      "product_ids": [
+        3,
+        1,
+        7,
+        8
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 47,
+      "product_ids": [
+        4,
+        0,
+        22,
+        8
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 48,
+      "product_ids": [
+        4,
+        1,
+        8,
+        -1
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 49,
+      "product_ids": [
+        3,
+        0,
+        19,
+        -1
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 40,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 50,
+      "product_ids": [
+        5,
+        0,
+        7,
+        25
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 51,
+      "product_ids": [
+        3,
+        0,
+        7,
+        8
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 52,
+      "product_ids": [
+        8,
+        0,
+        1,
+        -1
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 70,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 53,
+      "product_ids": [
+        3,
+        0,
+        22,
+        8
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 60,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 54,
+      "product_ids": [
+        15,
+        1,
+        2,
+        18
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 60,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 55,
+      "product_ids": [
+        3,
+        0,
+        22,
+        8
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 60,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 56,
+      "product_ids": [
+        15,
+        1,
+        2,
+        18
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 60,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 57,
+      "product_ids": [
+        2,
+        18,
+        6,
+        15
+      ],
+      "shopping_importance": 90,
+      "focus_threshold": 90,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 110
+    },
+    {
+      "id": 58,
+      "product_ids": [
+        5,
+        2,
+        5,
+        8
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 60,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 59,
+      "product_ids": [
+        3,
+        1,
+        18,
+        25
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 60,
+      "product_ids": [
+        5,
+        2,
+        5,
+        8
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 61,
+      "product_ids": [
+        8,
+        1,
+        2,
+        25
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 70,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 62,
+      "product_ids": [
+        4,
+        1,
+        7,
+        -1
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 63,
+      "product_ids": [
+        4,
+        1,
+        22,
+        8
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 70,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 64,
+      "product_ids": [
+        4,
+        1,
+        -1,
+        -1
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 65,
+      "product_ids": [
+        4,
+        0,
+        6,
+        7
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 60,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 66,
+      "product_ids": [
+        3,
+        0,
+        9,
+        8
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 67,
+      "product_ids": [
+        4,
+        0,
+        8,
+        24
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 68,
+      "product_ids": [
+        3,
+        1,
+        6,
+        9
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 69,
+      "product_ids": [
+        3,
+        0,
+        22,
+        19
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 70,
+      "product_ids": [
+        5,
+        0,
+        6,
+        8
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 71,
+      "product_ids": [
+        12,
+        14,
+        13,
+        16
+      ],
+      "shopping_importance": 60,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 80
+    },
+    {
+      "id": 72,
+      "product_ids": [
+        4,
+        1,
+        6,
+        24
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 73,
+      "product_ids": [
+        3,
+        0,
+        6,
+        7
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 30,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 74,
+      "product_ids": [
+        8,
+        0,
+        1,
+        7
+      ],
+      "shopping_importance": 90,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 110
+    },
+    {
+      "id": 75,
+      "product_ids": [
+        15,
+        5,
+        17,
+        25
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 40,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 76,
+      "product_ids": [
+        2,
+        6,
+        18,
+        5
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 77,
+      "product_ids": [
+        19,
+        6,
+        1,
+        17
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 78,
+      "product_ids": [
+        7,
+        6,
+        2,
+        18
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 79,
+      "product_ids": [
+        5,
+        1,
+        18,
+        6
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 50,
+      "weekday_threshold": 100,
+      "holiday_threshold": 20,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 80,
+      "product_ids": [
+        2,
+        18,
+        6,
+        8
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 81,
+      "product_ids": [
+        2,
+        18,
+        6,
+        8
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 82,
+      "product_ids": [
+        9,
+        0,
+        8,
+        -1
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 50,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 83,
+      "product_ids": [
+        9,
+        8,
+        1,
+        -1
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 50,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 84,
+      "product_ids": [
+        8,
+        2,
+        6,
+        8
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 80,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 85,
+      "product_ids": [
+        8,
+        0,
+        1,
+        -1
+      ],
+      "shopping_importance": 60,
+      "focus_threshold": 50,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 80
+    },
+    {
+      "id": 86,
+      "product_ids": [
+        10,
+        -1,
+        -1,
+        -1
+      ],
+      "shopping_importance": 90,
+      "focus_threshold": 10,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 110
+    },
+    {
+      "id": 87,
+      "product_ids": [
+        10,
+        -1,
+        -1,
+        -1
+      ],
+      "shopping_importance": 90,
+      "focus_threshold": 10,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 110
+    },
+    {
+      "id": 88,
+      "product_ids": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 89,
+      "product_ids": [
+        0,
+        9,
+        6,
+        10
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 90,
+      "product_ids": [
+        0,
+        1,
+        10,
+        6
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 91,
+      "product_ids": [
+        0,
+        9,
+        10,
+        7
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 92,
+      "product_ids": [
+        24,
+        25,
+        1,
+        6
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 93,
+      "product_ids": [
+        24,
+        6,
+        0,
+        7
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 94,
+      "product_ids": [
+        0,
+        1,
+        7,
+        24
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 80,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 95,
+      "product_ids": [
+        0,
+        1,
+        24,
+        10
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 96,
+      "product_ids": [
+        20,
+        0,
+        10,
+        24
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 97,
+      "product_ids": [
+        0,
+        1,
+        6,
+        24
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 98,
+      "product_ids": [
+        0,
+        1,
+        24,
+        10
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 99,
+      "product_ids": [
+        0,
+        1,
+        6,
+        7
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 100,
+      "product_ids": [
+        9,
+        0,
+        6,
+        7
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 101,
+      "product_ids": [
+        24,
+        25,
+        0,
+        10
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 102,
+      "product_ids": [
+        24,
+        6,
+        0,
+        10
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 30,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 103,
+      "product_ids": [
+        22,
+        0,
+        24,
+        25
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 80,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 104,
+      "product_ids": [
+        10,
+        0,
+        6,
+        24
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 80,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 105,
+      "product_ids": [
+        10,
+        0,
+        6,
+        24
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 80,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 106,
+      "product_ids": [
+        6,
+        0,
+        24,
+        -1
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 80,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 107,
+      "product_ids": [
+        6,
+        0,
+        24,
+        -1
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 80,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 108,
+      "product_ids": [
+        6,
+        0,
+        24,
+        -1
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 100,
+      "weekday_threshold": 50,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 109,
+      "product_ids": [
+        6,
+        0,
+        24,
+        -1
+      ],
+      "shopping_importance": 30,
+      "focus_threshold": 100,
+      "weekday_threshold": 50,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 50
+    },
+    {
+      "id": 110,
+      "product_ids": [
+        8,
+        1,
+        25,
+        22
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 111,
+      "product_ids": [
+        2,
+        6,
+        13,
+        12
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 112,
+      "product_ids": [
+        19,
+        23,
+        11,
+        22
+      ],
+      "shopping_importance": 20,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 40
+    },
+    {
+      "id": 113,
+      "product_ids": [
+        23,
+        19,
+        17,
+        22
+      ],
+      "shopping_importance": 10,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 30
+    },
+    {
+      "id": 114,
+      "product_ids": [
+        19,
+        23,
+        11,
+        22
+      ],
+      "shopping_importance": 20,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 40
+    },
+    {
+      "id": 115,
+      "product_ids": [
+        23,
+        19,
+        17,
+        22
+      ],
+      "shopping_importance": 10,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 30
+    },
+    {
+      "id": 116,
+      "product_ids": [
+        13,
+        12,
+        14,
+        16
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 117,
+      "product_ids": [
+        13,
+        12,
+        14,
+        16
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 118,
+      "product_ids": [
+        22,
+        23,
+        19,
+        12
+      ],
+      "shopping_importance": 90,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 110
+    },
+    {
+      "id": 119,
+      "product_ids": [
+        21,
+        1,
+        6,
+        11
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 70,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 120,
+      "product_ids": [
+        19,
+        13,
+        14,
+        17
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 40,
+      "weekday_threshold": 80,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 121,
+      "product_ids": [
+        19,
+        23,
+        14,
+        11
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 40,
+      "weekday_threshold": 80,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 122,
+      "product_ids": [
+        23,
+        19,
+        15,
+        12
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 50,
+      "weekday_threshold": 80,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 123,
+      "product_ids": [
+        23,
+        12,
+        17,
+        16
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 50,
+      "weekday_threshold": 80,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 124,
+      "product_ids": [
+        12,
+        15,
+        17,
+        14
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 40,
+      "weekday_threshold": 80,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 125,
+      "product_ids": [
+        14,
+        4,
+        5,
+        17
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 40,
+      "weekday_threshold": 80,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 126,
+      "product_ids": [
+        12,
+        13,
+        14,
+        16
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 30,
+      "weekday_threshold": 80,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 127,
+      "product_ids": [
+        13,
+        12,
+        14,
+        16
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 30,
+      "weekday_threshold": 80,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 128,
+      "product_ids": [
+        14,
+        12,
+        13,
+        16
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 30,
+      "weekday_threshold": 80,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 129,
+      "product_ids": [
+        12,
+        13,
+        14,
+        16
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 30,
+      "weekday_threshold": 80,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 130,
+      "product_ids": [
+        6,
+        0,
+        9,
+        24
+      ],
+      "shopping_importance": 60,
+      "focus_threshold": 70,
+      "weekday_threshold": 20,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 80
+    },
+    {
+      "id": 131,
+      "product_ids": [
+        6,
+        0,
+        24,
+        22
+      ],
+      "shopping_importance": 50,
+      "focus_threshold": 60,
+      "weekday_threshold": 20,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 70
+    },
+    {
+      "id": 132,
+      "product_ids": [
+        11,
+        19,
+        23,
+        24
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 70,
+      "weekday_threshold": 20,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 133,
+      "product_ids": [
+        11,
+        23,
+        19,
+        24
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 60,
+      "weekday_threshold": 20,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 134,
+      "product_ids": [
+        19,
+        12,
+        14,
+        16
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 50,
+      "weekday_threshold": 20,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 135,
+      "product_ids": [
+        23,
+        12,
+        17,
+        16
+      ],
+      "shopping_importance": 80,
+      "focus_threshold": 50,
+      "weekday_threshold": 20,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 100
+    },
+    {
+      "id": 136,
+      "product_ids": [
+        13,
+        12,
+        17,
+        16
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 40,
+      "weekday_threshold": 20,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 137,
+      "product_ids": [
+        14,
+        12,
+        13,
+        16
+      ],
+      "shopping_importance": 100,
+      "focus_threshold": 40,
+      "weekday_threshold": 20,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 120
+    },
+    {
+      "id": 138,
+      "product_ids": [
+        7,
+        0,
+        6,
+        22
+      ],
+      "shopping_importance": 20,
+      "focus_threshold": 50,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 40
+    },
+    {
+      "id": 139,
+      "product_ids": [
+        7,
+        0,
+        6,
+        22
+      ],
+      "shopping_importance": 20,
+      "focus_threshold": 50,
+      "weekday_threshold": 70,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 40
+    },
+    {
+      "id": 140,
+      "product_ids": [
+        0,
+        9,
+        6,
+        24
+      ],
+      "shopping_importance": 60,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 80
+    },
+    {
+      "id": 141,
+      "product_ids": [
+        0,
+        9,
+        6,
+        24
+      ],
+      "shopping_importance": 60,
+      "focus_threshold": 80,
+      "weekday_threshold": 100,
+      "holiday_threshold": 50,
+      "weather_max_accepted": 80
+    },
+    {
+      "id": 142,
+      "product_ids": [
+        0,
+        9,
+        6,
+        24
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 60,
+      "weekday_threshold": 20,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 90
+    },
+    {
+      "id": 143,
+      "product_ids": [
+        0,
+        9,
+        6,
+        24
+      ],
+      "shopping_importance": 70,
+      "focus_threshold": 70,
+      "weekday_threshold": 20,
+      "holiday_threshold": 100,
+      "weather_max_accepted": 90
+    }
+  ],
+  "months": [
+    {
+      "month": 1,
+      "weather_thresholds": [
+        30,
+        60,
+        80,
+        95
+      ],
+      "calendar_profile_share_selector": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "opposite",
+        "preferred",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "opposite",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "preferred",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "preferred",
+        "neutral"
+      ]
+    },
+    {
+      "month": 2,
+      "weather_thresholds": [
+        30,
+        60,
+        70,
+        90
+      ],
+      "calendar_profile_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "opposite",
+        "preferred",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "opposite",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "preferred",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "preferred",
+        "neutral"
+      ]
+    },
+    {
+      "month": 3,
+      "weather_thresholds": [
+        30,
+        60,
+        80,
+        95
+      ],
+      "calendar_profile_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral"
+      ]
+    },
+    {
+      "month": 4,
+      "weather_thresholds": [
+        30,
+        60,
+        80,
+        95
+      ],
+      "calendar_profile_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral"
+      ]
+    },
+    {
+      "month": 5,
+      "weather_thresholds": [
+        40,
+        70,
+        80,
+        95
+      ],
+      "calendar_profile_share_selector": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral"
+      ]
+    },
+    {
+      "month": 6,
+      "weather_thresholds": [
+        1,
+        10,
+        40,
+        90
+      ],
+      "calendar_profile_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "preferred",
+        "opposite",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "preferred",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "opposite",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "opposite",
+        "neutral"
+      ]
+    },
+    {
+      "month": 7,
+      "weather_thresholds": [
+        20,
+        40,
+        70,
+        90
+      ],
+      "calendar_profile_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "preferred",
+        "opposite",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "preferred",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "opposite",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "opposite",
+        "neutral"
+      ]
+    },
+    {
+      "month": 8,
+      "weather_thresholds": [
+        30,
+        60,
+        80,
+        90
+      ],
+      "calendar_profile_share_selector": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "preferred",
+        "opposite",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "preferred",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "opposite",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "opposite",
+        "neutral"
+      ]
+    },
+    {
+      "month": 9,
+      "weather_thresholds": [
+        20,
+        50,
+        70,
+        80
+      ],
+      "calendar_profile_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral"
+      ]
+    },
+    {
+      "month": 10,
+      "weather_thresholds": [
+        40,
+        70,
+        80,
+        90
+      ],
+      "calendar_profile_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral"
+      ]
+    },
+    {
+      "month": 11,
+      "weather_thresholds": [
+        40,
+        70,
+        80,
+        95
+      ],
+      "calendar_profile_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "product_regimes": [
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral"
+      ]
+    },
+    {
+      "month": 12,
+      "weather_thresholds": [
+        30,
+        60,
+        80,
+        95
+      ],
+      "calendar_profile_share_selector": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "product_regimes": [
+        "opposite",
+        "preferred",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "opposite",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "preferred",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "neutral",
+        "preferred",
+        "neutral"
+      ]
+    }
+  ],
+  "extra_candidate_rules": {
+    "preferred": {
+      "season_return": 1,
+      "season_rng_calls": 0,
+      "focus_rng_calls": 0,
+      "selection": "continue"
+    },
+    "neutral": {
+      "season_return": 0,
+      "season_rng_calls": 0,
+      "focus_rng_calls": 1,
+      "selection": "skip if rand()%100+1 <= signed_profile_byte20; otherwise continue"
+    },
+    "opposite": {
+      "season_return": "2 if season roll<=90, otherwise0",
+      "season_rng_calls": 1,
+      "focus_rng_calls": "1 only if season roll>90",
+      "selection": "skip on seasonal rejection, else apply the neutral focus gate"
+    }
+  },
+  "primary_entry_rule": "Entry initializes current product directly from profile+8. The in-store seasonal/focus gate is bypassed while that product is already assigned.",
+  "arrival_rule": "Unless bypass flag is set: reject when profile+13+20 < weather; seasonal gate primary product and reject only return2; then apply selected weekday/holiday share roll.",
+  "cash_rule": "No ordinary profile product slot references26. Cash is excluded from the store price-average accumulator. Customer withdrawal/fees are not established.",
+  "rng_rule": "LCG seed=(seed*1103515245+12345)&0xffffffff; rand=(seed>>16)&32767. Preserve conditional call order and modulo100."
+}

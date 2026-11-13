@@ -1,0 +1,71 @@
+{
+  "ranges": [
+    {
+      "name": "product-master",
+      "address": "0x8009cdf0",
+      "bytes": 2376,
+      "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+    },
+    {
+      "name": "shopping-profiles",
+      "address": "0x800a09d0",
+      "bytes": 3456,
+      "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+    },
+    {
+      "name": "weather-thresholds",
+      "address": "0x800994b0",
+      "bytes": 192,
+      "sha256": "e4216d7576b7f4b7bf8f78c3ba3cb9a11cbf3b79faa14dbba418c863449704b4"
+    },
+    {
+      "name": "calendar-share-selectors",
+      "address": "0x80099d88",
+      "bytes": 48,
+      "sha256": "236309322d7502b6332228a9e6163982aa9103f627a23df39db0a04fcf67baec"
+    },
+    {
+      "name": "seasonal_gate",
+      "address": "0x80027328",
+      "bytes": 720,
+      "sha256": "8d0f475bb1c356efff85e712e18f93b47a3417723ab46fed96282cba41a20f5b"
+    },
+    {
+      "name": "demand_selection_chain",
+      "address": "0x8002619c",
+      "bytes": 4492,
+      "sha256": "c58934367c4d7a61b5e7d955d80cc124a9ca85de99a50331619f69d7dc028a99"
+    },
+    {
+      "name": "purchase_control",
+      "address": "0x800340fc",
+      "bytes": 4140,
+      "sha256": "39283f254c9fa54ec364e48178cc04e0c50835e895f8edad0c6ecc0872034627"
+    },
+    {
+      "name": "entry_initialization",
+      "address": "0x800319ac",
+      "bytes": 568,
+      "sha256": "6da274dc0f67ddb1fb1270036c603b89e1129b68013db9ff4376e15c65e6d6b1"
+    },
+    {
+      "name": "cash_average_exclusion",
+      "address": "0x80023f48",
+      "bytes": 1352,
+      "sha256": "af94357c275a076755589da0f11b18fe54a77205d9c4a1a134f4ad4ee17e172a"
+    },
+    {
+      "name": "cash_fixture_immediate_class",
+      "address": "0x800360a0",
+      "bytes": 192,
+      "sha256": "b2d5479558c03f8ab3424657908997ce356f42ffc9492aad5938cf242c21dd9e"
+    }
+  ],
+  "direct_season_gate_calls": [
+    "0x80026680",
+    "0x80034268"
+  ],
+  "scan_start": "0x80010000",
+  "scan_bytes": "0x70000",
+  "scan_limit": "Only direct jal instructions; indirect calls are not excluded."
+}

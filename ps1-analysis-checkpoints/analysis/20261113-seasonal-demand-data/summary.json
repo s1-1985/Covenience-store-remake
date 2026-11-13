@@ -1,0 +1,74 @@
+{
+  "seasonal_products": [
+    {
+      "id": 0,
+      "name": "冷たい飲料",
+      "season_code": 1,
+      "primary_profiles": 13,
+      "extra_slots": 49
+    },
+    {
+      "id": 1,
+      "name": "温かい飲料",
+      "season_code": 2,
+      "primary_profiles": 0,
+      "extra_slots": 45
+    },
+    {
+      "id": 9,
+      "name": "ｱｲｽｸﾘｰﾑ",
+      "season_code": 1,
+      "primary_profiles": 4,
+      "extra_slots": 13
+    },
+    {
+      "id": 18,
+      "name": "おでん",
+      "season_code": 2,
+      "primary_profiles": 0,
+      "extra_slots": 14
+    },
+    {
+      "id": 25,
+      "name": "中華まん",
+      "season_code": 2,
+      "primary_profiles": 0,
+      "extra_slots": 16
+    }
+  ],
+  "extra_only_products": [
+    {
+      "id": 1,
+      "name": "温かい飲料"
+    },
+    {
+      "id": 18,
+      "name": "おでん"
+    },
+    {
+      "id": 25,
+      "name": "中華まん"
+    }
+  ],
+  "extra_candidate_exclusions": [
+    {
+      "profile": 108,
+      "slot": 2,
+      "product": 24,
+      "reason": "Season0 always returns0; focus100 rejects every roll1..100 in the normal extra-candidate selection path."
+    },
+    {
+      "profile": 109,
+      "slot": 2,
+      "product": 24,
+      "reason": "Season0 always returns0; focus100 rejects every roll1..100 in the normal extra-candidate selection path."
+    }
+  ],
+  "cash_profile_slots": 0,
+  "season_direct_call_sites": [
+    "0x80026680",
+    "0x80034268"
+  ],
+  "new_contribution": "Connect existing seasonal formula to named customer products, primary-vs-extra initialization and conditional RNG call order; identify two event-product slots rejected unconditionally by normal extra selection; extract month weather/calendar data as a native port contract.",
+  "not_claimed": "The seasonal formula was already present in earlier recovered models. Actual cash withdrawal behavior remains unresolved."
+}

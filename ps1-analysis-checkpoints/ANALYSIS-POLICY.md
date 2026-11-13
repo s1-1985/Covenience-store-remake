@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-13：季節・来店判定・追加購買と通常選択から除外される2商品枠](analysis/20261113-seasonal-demand-data/README.md)
+
 - [2026-11-13：商品27件・什器53件・現金の識別と方向/月別在庫画像](analysis/20261113-product-stock-data/README.md)
 
 - [2026-11-13：建物・客構成・購買型・外見の連結と人口計算の扱い](analysis/20261113-customer-data/README.md)

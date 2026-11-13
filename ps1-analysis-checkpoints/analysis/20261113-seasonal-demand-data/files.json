@@ -1,0 +1,87 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 8558,
+    "sha256": "491400c7adfc68e9f5815e10b2ea9927efdb856fa88c97a97debc051ef120263"
+  },
+  {
+    "path": "android-seasonal-demand-bridge.json",
+    "bytes": 80887,
+    "sha256": "3b5dc65d7ecaf2d2504e209ef980b750414d33472f47831bdb6965dba18c0f34"
+  },
+  {
+    "path": "demand-readers.asm",
+    "bytes": 97174,
+    "sha256": "d6ebddc90266c80e3ad8e069c818d1daff33ef0f003aab4fd577f8edf811e7b2"
+  },
+  {
+    "path": "extra-candidate-exclusions.json",
+    "bytes": 578,
+    "sha256": "06ca1a92dc0a6c1b91f29276377004e42653a726a7b816d488306639a06cf435"
+  },
+  {
+    "path": "extract-seasonal-demand.py",
+    "bytes": 7386,
+    "sha256": "07b6eb2ff3f70fdf59e10928c472f25d34c180b1123e000d1f384613cf95b53c"
+  },
+  {
+    "path": "source/calendar-share-selectors.bin",
+    "bytes": 48,
+    "sha256": "236309322d7502b6332228a9e6163982aa9103f627a23df39db0a04fcf67baec"
+  },
+  {
+    "path": "source/cash_average_exclusion.bin",
+    "bytes": 1352,
+    "sha256": "af94357c275a076755589da0f11b18fe54a77205d9c4a1a134f4ad4ee17e172a"
+  },
+  {
+    "path": "source/cash_fixture_immediate_class.bin",
+    "bytes": 192,
+    "sha256": "b2d5479558c03f8ab3424657908997ce356f42ffc9492aad5938cf242c21dd9e"
+  },
+  {
+    "path": "source/demand_selection_chain.bin",
+    "bytes": 4492,
+    "sha256": "c58934367c4d7a61b5e7d955d80cc124a9ca85de99a50331619f69d7dc028a99"
+  },
+  {
+    "path": "source/entry_initialization.bin",
+    "bytes": 568,
+    "sha256": "6da274dc0f67ddb1fb1270036c603b89e1129b68013db9ff4376e15c65e6d6b1"
+  },
+  {
+    "path": "source/product-master.bin",
+    "bytes": 2376,
+    "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+  },
+  {
+    "path": "source/purchase_control.bin",
+    "bytes": 4140,
+    "sha256": "39283f254c9fa54ec364e48178cc04e0c50835e895f8edad0c6ecc0872034627"
+  },
+  {
+    "path": "source/seasonal_gate.bin",
+    "bytes": 720,
+    "sha256": "8d0f475bb1c356efff85e712e18f93b47a3417723ab46fed96282cba41a20f5b"
+  },
+  {
+    "path": "source/shopping-profiles.bin",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "path": "source/weather-thresholds.bin",
+    "bytes": 192,
+    "sha256": "e4216d7576b7f4b7bf8f78c3ba3cb9a11cbf3b79faa14dbba418c863449704b4"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 2080,
+    "sha256": "3f27be873720343291d876909f1d06f54f8e7d9ac994f2dad125b72c91750b6a"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 1896,
+    "sha256": "6ab409f5c681d64d68a917b00f33ac8d09d28ad0b140adaebd325557764d00c1"
+  }
+]

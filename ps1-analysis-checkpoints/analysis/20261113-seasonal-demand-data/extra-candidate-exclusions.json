@@ -1,0 +1,17 @@
+{
+  "scope": "Ordinary in-store extra-candidate selection using unmodified source profiles. This does not prove global unreachability under edits or other callers.",
+  "entries": [
+    {
+      "profile": 108,
+      "slot": 2,
+      "product": 24,
+      "reason": "Season0 always returns0; focus100 rejects every roll1..100 in the normal extra-candidate selection path."
+    },
+    {
+      "profile": 109,
+      "slot": 2,
+      "product": 24,
+      "reason": "Season0 always returns0; focus100 rejects every roll1..100 in the normal extra-candidate selection path."
+    }
+  ]
+}
