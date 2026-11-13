@@ -1,0 +1,157 @@
+{
+  "effect_sequences": 16,
+  "voice_sequences": 12,
+  "effect_programs": 19,
+  "effect_samples": 14,
+  "voice_samples": 12,
+  "sparse_effect_program_ids": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "checkout_notes": [
+    {
+      "tick": 30,
+      "status": 144,
+      "channel": 0,
+      "data": [
+        60,
+        100
+      ],
+      "note_on": true,
+      "program": 14,
+      "note": 60,
+      "velocity": 100,
+      "tone_matches": [
+        {
+          "sample": 11,
+          "center_note": 72,
+          "shift_raw": 0,
+          "tone_index": 0
+        }
+      ]
+    },
+    {
+      "tick": 210,
+      "status": 144,
+      "channel": 0,
+      "data": [
+        60,
+        100
+      ],
+      "note_on": true,
+      "program": 14,
+      "note": 60,
+      "velocity": 100,
+      "tone_matches": [
+        {
+          "sample": 11,
+          "center_note": 72,
+          "shift_raw": 0,
+          "tone_index": 0
+        }
+      ]
+    },
+    {
+      "tick": 450,
+      "status": 144,
+      "channel": 0,
+      "data": [
+        60,
+        100
+      ],
+      "note_on": true,
+      "program": 14,
+      "note": 60,
+      "velocity": 100,
+      "tone_matches": [
+        {
+          "sample": 11,
+          "center_note": 72,
+          "shift_raw": 0,
+          "tone_index": 0
+        }
+      ]
+    },
+    {
+      "tick": 690,
+      "status": 144,
+      "channel": 0,
+      "data": [
+        60,
+        100
+      ],
+      "note_on": true,
+      "program": 14,
+      "note": 60,
+      "velocity": 100,
+      "tone_matches": [
+        {
+          "sample": 11,
+          "center_note": 72,
+          "shift_raw": 0,
+          "tone_index": 0
+        }
+      ]
+    },
+    {
+      "tick": 850,
+      "status": 144,
+      "channel": 0,
+      "data": [
+        60,
+        100
+      ],
+      "note_on": true,
+      "program": 14,
+      "note": 60,
+      "velocity": 100,
+      "tone_matches": [
+        {
+          "sample": 11,
+          "center_note": 72,
+          "shift_raw": 0,
+          "tone_index": 0
+        }
+      ]
+    },
+    {
+      "tick": 1210,
+      "status": 145,
+      "channel": 1,
+      "data": [
+        57,
+        100
+      ],
+      "note_on": true,
+      "program": 15,
+      "note": 57,
+      "velocity": 100,
+      "tone_matches": [
+        {
+          "sample": 12,
+          "center_note": 72,
+          "shift_raw": 87,
+          "tone_index": 0
+        }
+      ]
+    }
+  ],
+  "new_work": "Parse actual SEP/VAB sample links, distinguish dispatch versus XA IDs, connect staff/checkout flags to source audio sequences. Movement formula/state evidence reused and packaged."
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "main_audio_flags",
+    "address": "0x80023a14",
+    "bytes": 424,
+    "sha256": "cf1ea9e942717852f440de613538a183ebf99aee0c5247feb1b2dfc225a1642f"
+  },
+  {
+    "name": "audio_dispatch",
+    "address": "0x80064e4c",
+    "bytes": 436,
+    "sha256": "7eac9ae8e0aefd326315c5adc4e2c86607f873e705e343116744c58d4bd3bb7a"
+  },
+  {
+    "name": "se_initialize",
+    "address": "0x80065350",
+    "bytes": 572,
+    "sha256": "a8eeef0d7c3c3deb4b8b497d1bc807261ed92f708e1e6c46dedc175bbf03ca08"
+  },
+  {
+    "name": "staff_move_commit",
+    "address": "0x80037734",
+    "bytes": 2064,
+    "sha256": "1f1dff25f7f4d62cb2965e067ef6e6bbf808834c07bc96f86df5778df61f1a49"
+  },
+  {
+    "name": "staff_state_update",
+    "address": "0x80036ac0",
+    "bytes": 3188,
+    "sha256": "1bb81aaf272a765782ae990d8752cc96920bc01351b8e2482b080e605166f1a0"
+  },
+  {
+    "name": "checkout_settlement",
+    "address": "0x80035128",
+    "bytes": 1608,
+    "sha256": "c5d8dcd23f97962375f204944596679b9e2d72dcbbb4d52276db787bda026a33"
+  }
+]

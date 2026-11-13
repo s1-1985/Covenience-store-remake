@@ -1,32 +1,17 @@
 {
   "date_jst": "2026-11-13",
-  "work_kind": "seasonal_customer_demand_data_analysis",
-  "report": "analysis/20261113-seasonal-demand-data/README.md",
+  "work_kind": "staff_audio_source_data_analysis",
+  "report": "analysis/20261113-staff-sound-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "shopping_profiles": 144,
-  "seasonal_products": 5,
-  "months": 12,
-  "extra_only_products": [
-    1,
-    18,
-    25
-  ],
-  "normally_excluded_extra_slots": [
-    {
-      "profile": 108,
-      "slot": 2,
-      "product": 24
-    },
-    {
-      "profile": 109,
-      "slot": 2,
-      "product": 24
-    }
-  ],
-  "new_specification": "Connect seasonal gate callers to primary entry initialization and extra selection. Hot drinks, oden and steamed buns occur only in extra slots. Event goods in profiles108/109 are rejected by focus100. Cash is excluded from price averaging; withdrawal still unconfirmed.",
-  "previous_report": "analysis/20261113-product-stock-data/README.md",
-  "android_bridge": "analysis/20261113-seasonal-demand-data/android-seasonal-demand-bridge.json",
+  "effect_sequences": 16,
+  "voice_sequences": 12,
+  "effect_programs": 19,
+  "effect_samples": 14,
+  "voice_samples": 12,
+  "new_specification": "Mapped gameplay sound flags through dispatch namespace to SEP programs and VAB samples. Checkout sequence10 contains six note-on events across two programs. Sparse SE program IDs require packed tone-block indexing. Exported voice sample previews and editable scores.",
+  "previous_report": "analysis/20261113-seasonal-demand-data/README.md",
+  "android_bridge": "analysis/20261113-staff-sound-data/android-staff-sound-bridge.json",
   "original_cpu_updates_this_work": 0,
-  "next_priority": "Continue needed normal-play source-data analysis, then port recovered specifications/data to native Android and build APK."
+  "next_priority": "Resolve remaining required normal-play source data, then port to native Android. Voice previews are decoded samples rather than exact SPU mixes; global walking animation timing remains unconfirmed."
 }

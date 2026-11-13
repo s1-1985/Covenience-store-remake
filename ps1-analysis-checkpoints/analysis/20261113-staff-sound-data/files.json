@@ -1,0 +1,112 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 9277,
+    "sha256": "2c76956117c2a664a5b6e4ab4d196276e75450387b88fc9621d453afd9f2d395"
+  },
+  {
+    "path": "android-staff-sound-bridge.json",
+    "bytes": 4426,
+    "sha256": "a27766407bb4ad91d55f7d4730050db47102999f35945dd9c50bd674be34c141"
+  },
+  {
+    "path": "audio-sequence-bank-data.json",
+    "bytes": 249204,
+    "sha256": "f20563b534c2ad4fcb205d515ef3ccbdad3604f7c93cfc36e5ccefc22b04135a"
+  },
+  {
+    "path": "extract-staff-sound.py",
+    "bytes": 12113,
+    "sha256": "b5dcd31d53aa67c3feef6d8ea3a0a961495786d65d745bb91d0157ea7ef646ea"
+  },
+  {
+    "path": "sequence-midi.zip",
+    "bytes": 6208,
+    "sha256": "9d9fbb73f62bb69f8ea59ad9b6bc55bd2e721398170f96b2e03f30ada76ca770"
+  },
+  {
+    "path": "source/CON_KOE.VB",
+    "bytes": 63088,
+    "sha256": "91ada72588eea627d4c2aa52a00daa7e3bf972c092bccabe0e9fba07ce163161"
+  },
+  {
+    "path": "source/CON_KOE.VH",
+    "bytes": 8736,
+    "sha256": "519e4599f1186250d56d12db89da8be944e8b07f5d992234e3d78a095585a6e6"
+  },
+  {
+    "path": "source/CON_SE.VB",
+    "bytes": 120048,
+    "sha256": "51fa782ebf07dd05a341bfc3283fa60af60f46af0289adb80af49dfe95d2f967"
+  },
+  {
+    "path": "source/CON_SE.VH",
+    "bytes": 12320,
+    "sha256": "02259d43ad3b9f14b7b5174d7741aab4694ae018959c66c2f60d726a9adc3e59"
+  },
+  {
+    "path": "source/SE.SEP",
+    "bytes": 3187,
+    "sha256": "f3a95b361adc0d52b3ec6785bcf3ef0f6404fdfdd4df4a3f078162e6360a4b7f"
+  },
+  {
+    "path": "source/VOS.SEP",
+    "bytes": 450,
+    "sha256": "a8c62625e9b6e0779ede8fa7cf177db67b00ed7e97e7374ec0e9304e62fb7391"
+  },
+  {
+    "path": "source/audio_dispatch.bin",
+    "bytes": 436,
+    "sha256": "7eac9ae8e0aefd326315c5adc4e2c86607f873e705e343116744c58d4bd3bb7a"
+  },
+  {
+    "path": "source/checkout_settlement.bin",
+    "bytes": 1608,
+    "sha256": "c5d8dcd23f97962375f204944596679b9e2d72dcbbb4d52276db787bda026a33"
+  },
+  {
+    "path": "source/main_audio_flags.bin",
+    "bytes": 424,
+    "sha256": "cf1ea9e942717852f440de613538a183ebf99aee0c5247feb1b2dfc225a1642f"
+  },
+  {
+    "path": "source/se_initialize.bin",
+    "bytes": 572,
+    "sha256": "a8eeef0d7c3c3deb4b8b497d1bc807261ed92f708e1e6c46dedc175bbf03ca08"
+  },
+  {
+    "path": "source/staff_move_commit.bin",
+    "bytes": 2064,
+    "sha256": "1f1dff25f7f4d62cb2965e067ef6e6bbf808834c07bc96f86df5778df61f1a49"
+  },
+  {
+    "path": "source/staff_state_update.bin",
+    "bytes": 3188,
+    "sha256": "1bb81aaf272a765782ae990d8752cc96920bc01351b8e2482b080e605166f1a0"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1021,
+    "sha256": "710653bac43826a3ef5546749af64b5822f832b1078a05b8593806f15e9aa647"
+  },
+  {
+    "path": "staff-audio-readers.asm",
+    "bytes": 70762,
+    "sha256": "ebda7523d55ee739f82b4f641cadaf1154ea7a7a6035f557e2af42c53106f4ec"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 2716,
+    "sha256": "333fb207da9ff8ff5f15d1e0224643fd08a484bc7b2926353c181973e465eae7"
+  },
+  {
+    "path": "voice-preview-index.json",
+    "bytes": 2706,
+    "sha256": "db1f5e8e267128f2f4466bac395fc095facd11db1ab85160fd51c30cf194da68"
+  },
+  {
+    "path": "voice-previews.zip",
+    "bytes": 193530,
+    "sha256": "76def6de48e4a63cf7115cb4ea6247cb0227ac87e6923e5f9d0903cb00b7d79c"
+  }
+]

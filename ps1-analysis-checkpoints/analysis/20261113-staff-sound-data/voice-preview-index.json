@@ -1,0 +1,89 @@
+{
+  "files": [
+    {
+      "file": "dispatch-16-sample-01.wav",
+      "dispatch": 16,
+      "sample": 1,
+      "sample_rate": 11025,
+      "sha256": "524e059a06ce3c0fbbb0baa998388de16610103bc9ecc5a9f0a499c909122da9"
+    },
+    {
+      "file": "dispatch-17-sample-02.wav",
+      "dispatch": 17,
+      "sample": 2,
+      "sample_rate": 11025,
+      "sha256": "b404bc6e23f908e0f0b2aff7ae75705f83706f16ac90bff51eb146f7160572bd"
+    },
+    {
+      "file": "dispatch-18-sample-03.wav",
+      "dispatch": 18,
+      "sample": 3,
+      "sample_rate": 11025,
+      "sha256": "7d4f33da9c37222f702f924c3bd4b6f824f7e10611c0cbc14cd7102c196362cc"
+    },
+    {
+      "file": "dispatch-19-sample-04.wav",
+      "dispatch": 19,
+      "sample": 4,
+      "sample_rate": 11025,
+      "sha256": "a3c2c3b8391936f1401934c1cb6777db6b66608e5b926c1b2c51a55bd287b191"
+    },
+    {
+      "file": "dispatch-20-sample-05.wav",
+      "dispatch": 20,
+      "sample": 5,
+      "sample_rate": 11025,
+      "sha256": "d65cb607e633dfe07c602a8039eaace433e7c511718be4fb8d7d3aa906e3cf52"
+    },
+    {
+      "file": "dispatch-21-sample-06.wav",
+      "dispatch": 21,
+      "sample": 6,
+      "sample_rate": 11025,
+      "sha256": "14a126b119d726aef79037705ef5eda36de260a77545f70ea14f0a52f30523f3"
+    },
+    {
+      "file": "dispatch-22-sample-07.wav",
+      "dispatch": 22,
+      "sample": 7,
+      "sample_rate": 11025,
+      "sha256": "7397b6cfb334d3e3468d672bf3213f903059b9790314586b26e879c6351f8723"
+    },
+    {
+      "file": "dispatch-23-sample-08.wav",
+      "dispatch": 23,
+      "sample": 8,
+      "sample_rate": 11025,
+      "sha256": "405cdcd411752728900ead2f548d206b64a5b3c201639d9579d4617a1365f394"
+    },
+    {
+      "file": "dispatch-24-sample-09.wav",
+      "dispatch": 24,
+      "sample": 9,
+      "sample_rate": 11025,
+      "sha256": "9ed0703ce4fe89c7bb90aacc1d1d85a5789f392ab3cb97970a931d67077d42bc"
+    },
+    {
+      "file": "dispatch-25-sample-10.wav",
+      "dispatch": 25,
+      "sample": 10,
+      "sample_rate": 11025,
+      "sha256": "4075beacba3912bb113a4bf8124da2f1e7843543caf30c69b21557ca3b80a4b0"
+    },
+    {
+      "file": "dispatch-26-sample-11.wav",
+      "dispatch": 26,
+      "sample": 11,
+      "sample_rate": 11025,
+      "sha256": "cb3e9ee6484188fc5bdfc4d86ada865a2fdf6aa2222c05096d91d85093ccddc0"
+    },
+    {
+      "file": "dispatch-27-sample-12.wav",
+      "dispatch": 27,
+      "sample": 12,
+      "sample_rate": 11025,
+      "sha256": "b739578b4ddd7a965037b6dba01d10c50d55fbc2b982df4bf231f93753bcd0a4"
+    }
+  ],
+  "note": "Decoded sample previews at note60/center84 pitch rate44100/4. Not a full SPU mix: no ADSR, gain, reverb or sequence note-off rendering. No spoken-text transcription claimed."
+}

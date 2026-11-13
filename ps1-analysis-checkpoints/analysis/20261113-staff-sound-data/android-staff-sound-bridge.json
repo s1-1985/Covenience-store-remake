@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "flag_order": "ascending bit order0..15; repeated same-bit events coalesce until consumed",
+  "flag_gate": "Main fragment requires enabled byte nonzero and selected store matching; dispatcher SE/voice requires enabled byte exactly1; guard6 suppresses dispatcher.",
+  "flags": [
+    {
+      "bit": 0,
+      "mask": "0x1",
+      "dispatch": "50",
+      "context": "producer not mapped in this work",
+      "bank": "XA",
+      "xa_row": "22"
+    },
+    {
+      "bit": 1,
+      "mask": "0x2",
+      "dispatch": "49",
+      "context": "producer not mapped in this work",
+      "bank": "XA",
+      "xa_row": "21"
+    },
+    {
+      "bit": 2,
+      "mask": "0x4",
+      "dispatch": "month+36",
+      "context": "producer not mapped in this work",
+      "bank": "XA",
+      "xa_row": "month+8"
+    },
+    {
+      "bit": 3,
+      "mask": "0x8",
+      "dispatch": "extra+51",
+      "context": "producer not mapped in this work",
+      "bank": "XA",
+      "xa_row": "extra+23"
+    },
+    {
+      "bit": 4,
+      "mask": "0x10",
+      "dispatch": "21",
+      "context": "underfunded ordinary purchase/theft branch",
+      "bank": "voices",
+      "sequence_id": 5
+    },
+    {
+      "bit": 5,
+      "mask": "0x20",
+      "dispatch": "20",
+      "context": "producer not mapped in this work",
+      "bank": "voices",
+      "sequence_id": 4
+    },
+    {
+      "bit": 6,
+      "mask": "0x40",
+      "dispatch": "11",
+      "context": "producer not mapped in this work",
+      "bank": "effects",
+      "sequence_id": 11
+    },
+    {
+      "bit": 7,
+      "mask": "0x80",
+      "dispatch": "22",
+      "context": "resting employee switches to cashier after recovery",
+      "bank": "voices",
+      "sequence_id": 6
+    },
+    {
+      "bit": 8,
+      "mask": "0x100",
+      "dispatch": "23",
+      "context": "cashier finds no relevant customers and clears goal",
+      "bank": "voices",
+      "sequence_id": 7
+    },
+    {
+      "bit": 9,
+      "mask": "0x200",
+      "dispatch": "10",
+      "context": "checkout service completed and cart settled",
+      "bank": "effects",
+      "sequence_id": 10
+    },
+    {
+      "bit": 10,
+      "mask": "0x400",
+      "dispatch": "9",
+      "context": "immediate-payment purchase completed",
+      "bank": "effects",
+      "sequence_id": 9
+    },
+    {
+      "bit": 11,
+      "mask": "0x800",
+      "dispatch": "24",
+      "context": "successful replenishment or cleaning",
+      "bank": "voices",
+      "sequence_id": 8
+    },
+    {
+      "bit": 12,
+      "mask": "0x1000",
+      "dispatch": "25",
+      "context": "active employee energy exhausted",
+      "bank": "voices",
+      "sequence_id": 9
+    },
+    {
+      "bit": 13,
+      "mask": "0x2000",
+      "dispatch": "30",
+      "context": "producer not mapped in this work",
+      "bank": "XA",
+      "xa_row": 2
+    },
+    {
+      "bit": 14,
+      "mask": "0x4000",
+      "dispatch": "60",
+      "context": "producer not mapped in this work",
+      "bank": "XA",
+      "xa_row": 32
+    },
+    {
+      "bit": 15,
+      "mask": "0x8000",
+      "dispatch": "80",
+      "context": "producer not mapped in this work",
+      "bank": "XA",
+      "xa_row": 52
+    }
+  ],
+  "dispatch_domains": {
+    "0..15": "SE.SEP sequence ID, CON_SE bank",
+    "16..27": "VOS.SEP sequence ID=dispatch-16, CON_KOE bank",
+    "28+": "XA startup row=dispatch-28"
+  },
+  "voice22": {
+    "sequence": 6,
+    "program": 6,
+    "sample": 7
+  },
+  "voice23": {
+    "sequence": 7,
+    "program": 7,
+    "sample": 8
+  },
+  "checkout10": "SE sequence10 uses multiple note events/programs; do not replace its score with a single sample.",
+  "staff_states": {
+    "0": "resting",
+    "1": "cashier task including travel",
+    "2": "refill task including travel",
+    "3": "travel toward rest",
+    "4": "cleaning task including travel"
+  },
+  "direction_vectors": [
+    [
+      0,
+      -1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      -1,
+      0
+    ],
+    [
+      1,
+      0
+    ]
+  ],
+  "direction_image_offsets": [
+    1,
+    0,
+    2,
+    3
+  ],
+  "route": "10 bytes;0xff terminates; high2 bits direction,low6 bits remaining half-cell steps. Obstruction can trigger sidestep/replan.",
+  "actor_image_rule": "appearance*4+direction_offset+640; these source expressions contain no walk-phase term.",
+  "limits": "No global claim that original game has no walking animation; real-time timing and other render paths remain outside this extraction."
+}
