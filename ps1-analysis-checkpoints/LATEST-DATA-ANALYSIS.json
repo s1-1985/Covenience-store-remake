@@ -1,16 +1,16 @@
 {
   "date_jst": "2026-11-13",
-  "work_kind": "customer_master_data_analysis",
-  "report": "analysis/20261113-customer-data/README.md",
+  "work_kind": "product_fixture_stock_data_analysis",
+  "report": "analysis/20261113-product-stock-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "shopping_profiles": 144,
-  "customer_mixes": 137,
-  "appearance_descriptors": 44,
-  "direction_frames": 176,
-  "new_specification": "Population retains the source mix136 head count for the invalid profile144 reference, while normal filtered purchasing excludes it. Full building/mix/profile/appearance mapping is exported.",
-  "previous_report": "analysis/20261113-disc-data-extraction/README.md",
-  "android_bridge": "analysis/20261113-customer-data/android-customer-bridge.json",
+  "products": 27,
+  "fixtures": 53,
+  "compatible_pairs": 172,
+  "direction_plans": 688,
+  "new_specification": "Product26 is cash; fixtures43/44 are cash dispensers. Consumption preserves per-cell image variants, while refill selects the current month variant. Native product structure includes 24-byte Shift-JIS names before pricing fields.",
+  "previous_report": "analysis/20261113-customer-data/README.md",
+  "android_bridge": "analysis/20261113-product-stock-data/android-stock-bridge.json",
   "original_cpu_updates_this_work": 0,
-  "next_priority": "Port recovered normal-play data/specifications after remaining needed analysis; do not extend operating-update counts as the task."
+  "next_priority": "Resolve remaining normal-play source data and then port specifications/data into native Android; cash withdrawal behavior remains unconfirmed."
 }

@@ -1,0 +1,271 @@
+{
+  "source": "Previously decoded MSG00.txt; these labels are not newly extracted Shift-JIS bytes.",
+  "source_url": "https://github.com/s1-1985/Covenience-store-remake/blob/chatgpt/android-analysis-integration-20261105/assets/raw/ps1_disc_analysis_v1/text/MSG00.txt",
+  "labels": [
+    {
+      "id": 0,
+      "message_index": 387,
+      "name": "常温棚"
+    },
+    {
+      "id": 1,
+      "message_index": 388,
+      "name": "常温棚"
+    },
+    {
+      "id": 2,
+      "message_index": 389,
+      "name": "常温棚"
+    },
+    {
+      "id": 3,
+      "message_index": 390,
+      "name": "常温ワゴン"
+    },
+    {
+      "id": 4,
+      "message_index": 391,
+      "name": "常温ワゴン"
+    },
+    {
+      "id": 5,
+      "message_index": 392,
+      "name": "常温ワゴン"
+    },
+    {
+      "id": 6,
+      "message_index": 393,
+      "name": "常温ワゴン"
+    },
+    {
+      "id": 7,
+      "message_index": 394,
+      "name": "冷蔵棚"
+    },
+    {
+      "id": 8,
+      "message_index": 395,
+      "name": "冷蔵棚"
+    },
+    {
+      "id": 9,
+      "message_index": 396,
+      "name": "冷蔵棚"
+    },
+    {
+      "id": 10,
+      "message_index": 397,
+      "name": "冷蔵ワゴン"
+    },
+    {
+      "id": 11,
+      "message_index": 398,
+      "name": "冷蔵ワゴン"
+    },
+    {
+      "id": 12,
+      "message_index": 399,
+      "name": "冷蔵ワゴン"
+    },
+    {
+      "id": 13,
+      "message_index": 400,
+      "name": "冷蔵ワゴン"
+    },
+    {
+      "id": 14,
+      "message_index": 401,
+      "name": "冷凍棚"
+    },
+    {
+      "id": 15,
+      "message_index": 402,
+      "name": "冷凍棚"
+    },
+    {
+      "id": 16,
+      "message_index": 403,
+      "name": "冷凍ワゴン"
+    },
+    {
+      "id": 17,
+      "message_index": 404,
+      "name": "冷凍ワゴン"
+    },
+    {
+      "id": 18,
+      "message_index": 405,
+      "name": "冷凍棚・扉"
+    },
+    {
+      "id": 19,
+      "message_index": 406,
+      "name": "冷凍棚・扉"
+    },
+    {
+      "id": 20,
+      "message_index": 407,
+      "name": "冷凍ワゴン・扉"
+    },
+    {
+      "id": 21,
+      "message_index": 408,
+      "name": "冷凍ワゴン・扉"
+    },
+    {
+      "id": 22,
+      "message_index": 409,
+      "name": "温かい飲み物"
+    },
+    {
+      "id": 23,
+      "message_index": 410,
+      "name": "おでん"
+    },
+    {
+      "id": 24,
+      "message_index": 411,
+      "name": "中華まん"
+    },
+    {
+      "id": 25,
+      "message_index": 412,
+      "name": "イベントケース棚"
+    },
+    {
+      "id": 26,
+      "message_index": 413,
+      "name": "イベントケースワゴン"
+    },
+    {
+      "id": 27,
+      "message_index": 414,
+      "name": "たばこ自販"
+    },
+    {
+      "id": 28,
+      "message_index": 415,
+      "name": "たばこ自販"
+    },
+    {
+      "id": 29,
+      "message_index": 416,
+      "name": "飲料自販・冷蔵"
+    },
+    {
+      "id": 30,
+      "message_index": 417,
+      "name": "飲料自販・冷蔵"
+    },
+    {
+      "id": 31,
+      "message_index": 418,
+      "name": "飲料自販・温冷"
+    },
+    {
+      "id": 32,
+      "message_index": 419,
+      "name": "飲料自販・温冷"
+    },
+    {
+      "id": 33,
+      "message_index": 420,
+      "name": "コピー機"
+    },
+    {
+      "id": 34,
+      "message_index": 421,
+      "name": "コピー機"
+    },
+    {
+      "id": 35,
+      "message_index": 422,
+      "name": "コピー機"
+    },
+    {
+      "id": 36,
+      "message_index": 423,
+      "name": "コピー機"
+    },
+    {
+      "id": 37,
+      "message_index": 424,
+      "name": "レジ"
+    },
+    {
+      "id": 38,
+      "message_index": 425,
+      "name": "レジ"
+    },
+    {
+      "id": 39,
+      "message_index": 426,
+      "name": "レジ"
+    },
+    {
+      "id": 40,
+      "message_index": 427,
+      "name": "レジ"
+    },
+    {
+      "id": 41,
+      "message_index": 428,
+      "name": "レジ"
+    },
+    {
+      "id": 42,
+      "message_index": 429,
+      "name": "レジ"
+    },
+    {
+      "id": 43,
+      "message_index": 430,
+      "name": "キャッシュディスペンサー"
+    },
+    {
+      "id": 44,
+      "message_index": 431,
+      "name": "キャッシュディスペンサー"
+    },
+    {
+      "id": 45,
+      "message_index": 432,
+      "name": "観葉植物"
+    },
+    {
+      "id": 46,
+      "message_index": 433,
+      "name": "ベンチ"
+    },
+    {
+      "id": 47,
+      "message_index": 434,
+      "name": "噴水"
+    },
+    {
+      "id": 48,
+      "message_index": 435,
+      "name": "控え室"
+    },
+    {
+      "id": 49,
+      "message_index": 436,
+      "name": "控え室"
+    },
+    {
+      "id": 50,
+      "message_index": 437,
+      "name": "駐車場"
+    },
+    {
+      "id": 51,
+      "message_index": 438,
+      "name": "2階建駐車場"
+    },
+    {
+      "id": 52,
+      "message_index": 439,
+      "name": "タワー駐車場"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 7710,
+    "sha256": "e6ac10b88026d2a3edf36b69af10748d414338a9c5bcba1c769aa9df9485439a"
+  },
+  {
+    "path": "android-stock-bridge.json",
+    "bytes": 506202,
+    "sha256": "4bf14481ee242f6e054bab5a9abc47ecde6f57a1f9f29963868a0af1fba8637b"
+  },
+  {
+    "path": "extract-product-stock.py",
+    "bytes": 8993,
+    "sha256": "0e4c6726d4b415732429d4c8f1b1e8c8c9512cb25d63c7f4ecd285d69634f3ea"
+  },
+  {
+    "path": "fixture-labels.json",
+    "bytes": 4945,
+    "sha256": "530073282f19a85a7ff4b935c6c23269b44a1d9ae2b20c58cdf5974b2b774bd8"
+  },
+  {
+    "path": "product-fixture-data.json",
+    "bytes": 69325,
+    "sha256": "0cd1bbda4ed54c585afe05d88ac44ad25df5624169e48524c5826eb78e63f5a5"
+  },
+  {
+    "path": "product-images.png",
+    "bytes": 128368,
+    "sha256": "cbc0ef3061c0fd379e6d44c150fe3082963983462110a4fc66580cb1333f43e9"
+  },
+  {
+    "path": "products.csv",
+    "bytes": 2230,
+    "sha256": "a449ef9f0927d5566d27f91df1fdce1dc69f0794a8a6a57f7b5504328c4fed8d"
+  },
+  {
+    "path": "source/equipment_product_records.bin",
+    "bytes": 720,
+    "sha256": "f91a90ef6c8bbc15d92b24ec229bf2e78a7e22b03df1a4279e6ad20260c175ed"
+  },
+  {
+    "path": "source/fixture-master.bin",
+    "bytes": 10388,
+    "sha256": "ff38d0b8eb5d1d17fabca839abed108b9243b9fafc70449024763e73fc5eba51"
+  },
+  {
+    "path": "source/product-master.bin",
+    "bytes": 2376,
+    "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+  },
+  {
+    "path": "source/runtime_tables_bootstrap.bin",
+    "bytes": 664,
+    "sha256": "5214683e48409f8164031e6cce23fb900d8b0b6316cca379b839b0ad46bca09c"
+  },
+  {
+    "path": "source/shopping-profiles.bin",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "path": "source/stock_update.bin",
+    "bytes": 5416,
+    "sha256": "16feb0ad670f19c2a1fed03148aa020000aeabd6d259f86dd3573c08770a4741"
+  },
+  {
+    "path": "source/store_initialize.bin",
+    "bytes": 600,
+    "sha256": "ad124ee33325318488e58023cad68129fb9d82995bb250579bfeeaa1daf6067e"
+  },
+  {
+    "path": "source/tile_record.bin",
+    "bytes": 816,
+    "sha256": "138f07c30478a525df243df10fe6b9880c61cefab276fbdc30c15baacb7a5fd6"
+  },
+  {
+    "path": "stock-readers.asm",
+    "bytes": 71759,
+    "sha256": "0cd023e032a9dd1fc5b4ca2c59954e398bf02ae745233733ab3829e85accae45"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 575,
+    "sha256": "a1d5b9b6a721f9500c57d1c25b9c7b4710fe12f5ae201f3280fbe1a9c4a6db02"
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "products": 27,
+  "fixtures": 53,
+  "compatible_pairs": 172,
+  "direction_plans": 688,
+  "cash": {
+    "product": 26,
+    "name": "現金",
+    "fixtures": [
+      43,
+      44
+    ],
+    "profile_references": [],
+    "ordinary_withdrawal_behavior": "unconfirmed"
+  },
+  "month_transition_example": {
+    "fixture": 0,
+    "product": 3,
+    "direction": 0,
+    "month1_refill_bases": [
+      387
+    ],
+    "month2_sale_bases": [
+      387
+    ],
+    "month2_refill_bases": [
+      390
+    ]
+  },
+  "execution": "Static extraction only; no simulated business updates."
+}
