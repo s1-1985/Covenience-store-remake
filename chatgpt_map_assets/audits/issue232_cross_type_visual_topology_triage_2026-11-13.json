@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-11-13",
+  "issue": 232,
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "scope": "Focused actual-source image inspection and read-only topology QA; no game edits",
+  "inputs": {
+    "source_ref": "main",
+    "png_images_rendered_for_review": 19,
+    "source_dir": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/",
+    "prior_pixel_audit": "chatgpt_map_assets/audits/issue232_cross_type_real_pixel_seams_2026-11-12.json",
+    "prior_fixture_tool": "chatgpt_map_assets/tools/issue232_cross_type_fixtures_2026_11_13.py"
+  },
+  "findings": [
+    {
+      "id": "pond_channel_s",
+      "blob_sha": "284338cab1de51626306a250e26e42f3ad7ea4f5",
+      "severity": "review_required",
+      "observation": "The source image visibly depicts a pond-like widened water body toward the upper interior and a narrow channel descending toward the lower edge. The new fixture places river_ns north and pond_small south; this pairing appears directionally suspect. In particular pond_small itself is an isolated pool with grass on the outer edges.",
+      "implication": "Do not accept pond_channel_s_N_to_river_S and pond_channel_s_S_to_pond_N as validated; check actual 24px edge water runs and reverse/alternative layouts before adopting.",
+      "certainty": "visual_triage_not_confirmed_topology"
+    },
+    {
+      "id": "crossing_basic",
+      "blob_sha": "82488f0555d8888e3daf7024055aedc922456ecb",
+      "severity": "review_required",
+      "observation": "The tile is visually asymmetric rather than an obvious four-way canonical EW-road/NS-rail crossing; its visible road/track layout requires edge-direction identification.",
+      "implication": "The crossing_basic fixture currently assumes EW road and NS rail on all four sides; do not certify its neighbor assignment without edge classification and game-source confirmation.",
+      "certainty": "visual_triage_not_confirmed_topology"
+    },
+    {
+      "id": "crossing_closed",
+      "blob_sha": "14f1ee025ec2d7eebbb8bb5ec96a5ef9b15ecec3",
+      "severity": "review_required",
+      "observation": "Barrier and track/road markings differ substantially from crossing_basic; the same neighbor assignment is not proven for both variants.",
+      "implication": "Keep the closed variant as a distinct candidate; do not infer identical connection mask solely from the word crossing.",
+      "certainty": "visual_triage_not_confirmed_topology"
+    },
+    {
+      "id": "ew_bridge_seams",
+      "blob_sha": [
+        "e3d8830a407a0191d401360e3f9f497d3afca398",
+        "cc9e9cfc4d579d141d866cd1dac6858dfee4bf30"
+      ],
+      "severity": "review_required",
+      "observation": "The two EW bridge sprites show a horizontal deck over blue water and different approach-side background from ordinary straight road/rail tiles. The 2026-11-12 RGB edge MAE is elevated, but the cause cannot be diagnosed from a single sprite alone.",
+      "implication": "Review individual 24px multi-tile composites; do not claim an image defect or approve continuity from MAE alone.",
+      "certainty": "visual_triage"
+    }
+  ],
+  "new_tool": "chatgpt_map_assets/tools/issue232_water_topology_edge_probe_2026_11_13.py",
+  "new_tool_tests": {
+    "python_syntax_compile": true,
+    "synthetic_water_land_edge_profiles": true,
+    "synthetic_mismatched_edge_detection": true,
+    "synthetic_invalid_direction_rejection": true,
+    "real_source_tool_execution": false,
+    "real_source_numeric_edge_profiles": false
+  },
+  "source_sha_verification": "Actual PNGs were read through GitHub connector; source SHAs matched the previously recorded manifest for visually examined examples. The new script will independently verify blobs when run in a checkout.",
+  "not_verified": [
+    "24px image composite visually inspected",
+    "PS1 reference comparison",
+    "Godot viewport render",
+    "game integration/regression",
+    "source-accurate water geometry masks"
+  ],
+  "issue_checkbox_changes": 0,
+  "all_tasks_complete": false,
+  "safety": {
+    "existing_files_modified": 0,
+    "main_modified": false,
+    "claude_branches_modified": false
+  }
+}
