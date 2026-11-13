@@ -1,0 +1,95 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7655,
+      "sha256": "e32c15c08cac46af18cc5db096beb18bc2f3f9592f411cdf6ecdf0fadd1bf7e8"
+    },
+    {
+      "path": "android-customer-bridge.json",
+      "bytes": 7859,
+      "sha256": "082e861b686b3deae5b2007030d228798bd2cf99026fb0dbc5b9d6c283b6fd27"
+    },
+    {
+      "path": "appearance-contact-sheet.png",
+      "bytes": 101480,
+      "sha256": "e75c906b421b49ea9104e69cd3351527d1d518c2584a97b2e980e6d2a276d95b"
+    },
+    {
+      "path": "customer-data.json",
+      "bytes": 468499,
+      "sha256": "2d1247e60879eaa50965fd1d5b679e7a937d29998c18c2db77d4642c1c043fe6"
+    },
+    {
+      "path": "customer-readers.asm",
+      "bytes": 12697,
+      "sha256": "6f76363f97f722c079695c06c8911f6a2909fcba8ec8db4007cc0548a90cb0d3"
+    },
+    {
+      "path": "extract-customer-data.py",
+      "bytes": 16913,
+      "sha256": "0cbc535ec1b2684cc17b61590d41edcad8a3468241f1f450152d6ec9a608fa30"
+    },
+    {
+      "path": "person-texture-map.json",
+      "bytes": 83761,
+      "sha256": "2a19b70665d1afada448b403cd0290a3c5bf1060985280887c21ce85846076dc"
+    },
+    {
+      "path": "profile144-analysis.json",
+      "bytes": 2673,
+      "sha256": "8629177b882122b80f129baf3ef8fb76f40a332289eea5f1a3770882707f0838"
+    },
+    {
+      "path": "reader-words.json",
+      "bytes": 23848,
+      "sha256": "5829e5c4301771cdefe649b63a93fac9b2f2fd96cb574b616561590979b18e6d"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 31,
+      "sha256": "ed28ff23218d4946a2a77e0d4847a8207777742013d6cf7502de7658e60f3ddb"
+    },
+    {
+      "path": "shopping-profiles.csv",
+      "bytes": 23984,
+      "sha256": "b85130d93d4ebb2560fbad332226a90e72a3c65f7a88c7468e1523c517b90ffe"
+    },
+    {
+      "path": "source/MAN0.TIM",
+      "bytes": 45600,
+      "sha256": "6a7349c4fc655fb6b2d441f5332d07481329e03391816849da62485a3ffb2ae4"
+    },
+    {
+      "path": "source/appearance-choices.bin",
+      "bytes": 176,
+      "sha256": "1835a35d1444f2c1ddd4e0d437f563342d4dd5259aa4e599945bdf8ece5ee60a"
+    },
+    {
+      "path": "source/appearance-descriptors.bin",
+      "bytes": 1012,
+      "sha256": "f283ec2fbe47419b126d8519a056e8ed9f278024e1bfe1ed78432a211d858350"
+    },
+    {
+      "path": "source/building-master.bin",
+      "bytes": 3864,
+      "sha256": "8a36a6013e054f5a3cc0ad898adc28ed1ab8503035b0a47decd84c317083167e"
+    },
+    {
+      "path": "source/customer-mixes.bin",
+      "bytes": 2740,
+      "sha256": "1b9e985b16aa099f7542690e9b6745a46cb4d801c34be10f816d4af0cf419557"
+    },
+    {
+      "path": "source/shopping-profiles.bin",
+      "bytes": 3456,
+      "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 2513,
+      "sha256": "13d88671f53beec2d0c83d24c414e28429d494c3e2cc015e760b6ae35dfe5a32"
+    }
+  ],
+  "total_bytes": 808761
+}

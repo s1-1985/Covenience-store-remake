@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-13：建物・客構成・購買型・外見の連結と人口計算の扱い](analysis/20261113-customer-data/README.md)
+
 - [2026-11-13：ディスク77ファイル・TIM34画像・外部配置の構造解析](analysis/20261113-disc-data-extraction/README.md)
 
 - [2026-11-13：新ライバル店の初日営業と日次決算](analysis/20261113-new-rival-operation/README.md)

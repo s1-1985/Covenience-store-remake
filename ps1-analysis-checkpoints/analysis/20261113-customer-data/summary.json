@@ -1,0 +1,90 @@
+{
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "building_rows": 69,
+  "base_building_rows": 59,
+  "extension_named_rows": 10,
+  "mixes": 137,
+  "shopping_profiles": 144,
+  "appearance_descriptors": 44,
+  "appearance_frames": 176,
+  "appearance_metadata_semantics": "sex/age candidates only; no original reader identified",
+  "appearance_descriptor_pointer_word_hits": [],
+  "world_populations": [
+    {
+      "file": "TOWN0001.BIN",
+      "source_population_heads": 2179,
+      "heads_if_invalid_profile_entries_are_dropped": 2177,
+      "difference": 2,
+      "affected_cells": [
+        {
+          "x": 39,
+          "y": 10,
+          "tile": 519,
+          "mix_id": 136,
+          "building_id": 56,
+          "building_name": "電気屋"
+        },
+        {
+          "x": 15,
+          "y": 14,
+          "tile": 519,
+          "mix_id": 136,
+          "building_id": 56,
+          "building_name": "電気屋"
+        }
+      ]
+    },
+    {
+      "file": "TOWN0002.BIN",
+      "source_population_heads": 1880,
+      "heads_if_invalid_profile_entries_are_dropped": 1879,
+      "difference": 1,
+      "affected_cells": [
+        {
+          "x": 39,
+          "y": 26,
+          "tile": 519,
+          "mix_id": 136,
+          "building_id": 56,
+          "building_name": "電気屋"
+        }
+      ]
+    },
+    {
+      "file": "TOWN0003.BIN",
+      "source_population_heads": 1424,
+      "heads_if_invalid_profile_entries_are_dropped": 1424,
+      "difference": 0,
+      "affected_cells": []
+    },
+    {
+      "file": "TOWNPS.BIN",
+      "source_population_heads": 2839,
+      "heads_if_invalid_profile_entries_are_dropped": 2838,
+      "difference": 1,
+      "affected_cells": [
+        {
+          "x": 52,
+          "y": 22,
+          "tile": 519,
+          "mix_id": 136,
+          "building_id": 56,
+          "building_name": "電気屋"
+        }
+      ]
+    }
+  ],
+  "normal_product_guard_excludes_profile144": true,
+  "source_cpu_updates": 0,
+  "known_before": [
+    "144 shopping profiles",
+    "137 mixes",
+    "invalid profile144 reference in mix136"
+  ],
+  "newly_resolved": [
+    "23-byte appearance descriptor boundary, names and candidate metadata",
+    "Full building/mix/profile/appearance relationship exported without collapsing duplicate slots",
+    "Profile144 aliases the next table label, and ordinary product guard excludes it",
+    "Population must retain the invalid entry; dropping it changes the original map totals"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "known_before_this_work": "The prior Android table exporter already excluded mix136 profile144. This work identifies the adjacent source bytes, native rejection path, and the different population semantics.",
+  "reference": {
+    "mix_id": 136,
+    "slot": 3,
+    "profile_id": 144,
+    "heads": 1,
+    "sentinel": false,
+    "valid_profile": false
+  },
+  "mix136": {
+    "id": 136,
+    "address": "0x800a09bc",
+    "raw_hex": "84000200850002007000020090000100ffff0000",
+    "entries": [
+      {
+        "slot": 0,
+        "profile_id": 132,
+        "heads": 2,
+        "sentinel": false,
+        "valid_profile": true
+      },
+      {
+        "slot": 1,
+        "profile_id": 133,
+        "heads": 2,
+        "sentinel": false,
+        "valid_profile": true
+      },
+      {
+        "slot": 2,
+        "profile_id": 112,
+        "heads": 2,
+        "sentinel": false,
+        "valid_profile": true
+      },
+      {
+        "slot": 3,
+        "profile_id": 144,
+        "heads": 1,
+        "sentinel": false,
+        "valid_profile": false
+      },
+      {
+        "slot": 4,
+        "profile_id": -1,
+        "heads": 0,
+        "sentinel": true,
+        "valid_profile": false
+      }
+    ],
+    "source_population_heads": 7,
+    "valid_profile_heads": 6
+  },
+  "buildings_with_this_mix": [
+    {
+      "id": 56,
+      "name": "電気屋",
+      "mix_slots": [
+        134,
+        135,
+        135,
+        136,
+        136
+      ]
+    }
+  ],
+  "profile144_address": "0x800a1750",
+  "bytes_if_misread_as_profile": "90d482a28f978e7191e590b6000000000000000000011290",
+  "first_23_bytes_decode_to": "赤い女子大生",
+  "interpreted_primary_product_signed8": -111,
+  "normal_native_path": [
+    "800265D0: read signed profile ID from a mix",
+    "800265E0..800265EC: skip only the -1 sentinel at this stage",
+    "80026628: weather gate reads profile+13",
+    "80026674..80026680: signed primary product byte passed to80027328",
+    "80027344..8002736C: negative or>=27 product returns2",
+    "80026688..80026694: return2 skips allocation for this mix entry"
+  ],
+  "normal_path_outcome": "No valid145th profile. The negative product ID is rejected in the ordinary filtered path. Population80020498 still adds the mix head count because it only skips profile ID-1.",
+  "nonzero_800cda00_path": "80026600 can bypass the filter block. Reachability and gameplay effects of that exceptional state are not established here; no corruption is claimed.",
+  "population_versus_demand_policy": "Preserve the original heads for population; exclude invalid profile rows from purchasable customer data. Do not delete the pair from the population mix or invent a145th shopper."
+}
