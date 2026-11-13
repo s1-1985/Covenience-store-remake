@@ -1,0 +1,52 @@
+{
+  "scope": "Arithmetic examples from source formulas; no captured gameplay run.",
+  "target_boundary": {
+    "capacity": 40,
+    "selection_skill_byte20": 100,
+    "threshold": 66,
+    "quantity26_percent": 65,
+    "quantity26_eligible": true,
+    "quantity27_percent": 67,
+    "quantity27_eligible": false
+  },
+  "refill_to_full": {
+    "fixture_id": 13,
+    "fixture_name": "冷蔵ワゴン",
+    "product_id": 0,
+    "initial": 26,
+    "capacity": 40,
+    "refill_skill": 100,
+    "unit_cost": 55,
+    "steps": [
+      {
+        "before": 26,
+        "requested": 11,
+        "added": 11,
+        "after": 37,
+        "cost": 605,
+        "inventory_return": 1
+      },
+      {
+        "before": 37,
+        "requested": 11,
+        "added": 3,
+        "after": 40,
+        "cost": 165,
+        "inventory_return": 0
+      }
+    ]
+  },
+  "group_stock_failure": {
+    "available": 2,
+    "requested_group_quantity": 3,
+    "result_stock": 2,
+    "acquisition_counter_increment": 1,
+    "partial_purchase": false
+  },
+  "leadership_warning": {
+    "leadership": 100,
+    "threshold": 5,
+    "at5": false,
+    "at6": true
+  }
+}

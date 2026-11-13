@@ -1,0 +1,2529 @@
+{
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "fixtures": [
+    {
+      "id": 0,
+      "name": "常温棚",
+      "capacity": 40,
+      "size": [
+        1,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 13
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 26
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 39
+    },
+    {
+      "id": 1,
+      "name": "常温棚",
+      "capacity": 80,
+      "size": [
+        2,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 13
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 27
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 40
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 53
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 79
+    },
+    {
+      "id": 2,
+      "name": "常温棚",
+      "capacity": 120,
+      "size": [
+        3,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 1
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 40
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 61
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 80
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 119
+    },
+    {
+      "id": 3,
+      "name": "常温ワゴン",
+      "capacity": 15,
+      "size": [
+        1,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 2
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 7
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 10
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 14
+    },
+    {
+      "id": 4,
+      "name": "常温ワゴン",
+      "capacity": 30,
+      "size": [
+        2,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 15
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 20
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 29
+    },
+    {
+      "id": 5,
+      "name": "常温ワゴン",
+      "capacity": 45,
+      "size": [
+        3,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 7
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 15
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 22
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 30
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 44
+    },
+    {
+      "id": 6,
+      "name": "常温ワゴン",
+      "capacity": 60,
+      "size": [
+        2,
+        2
+      ],
+      "category": 1,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 30
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 40
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 59
+    },
+    {
+      "id": 7,
+      "name": "冷蔵棚",
+      "capacity": 30,
+      "size": [
+        1,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 15
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 20
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 29
+    },
+    {
+      "id": 8,
+      "name": "冷蔵棚",
+      "capacity": 60,
+      "size": [
+        2,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 30
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 40
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 59
+    },
+    {
+      "id": 9,
+      "name": "冷蔵棚",
+      "capacity": 90,
+      "size": [
+        3,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 15
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 30
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 45
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 60
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 89
+    },
+    {
+      "id": 10,
+      "name": "冷蔵ワゴン",
+      "capacity": 10,
+      "size": [
+        1,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 1
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 6
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 9
+    },
+    {
+      "id": 11,
+      "name": "冷蔵ワゴン",
+      "capacity": 20,
+      "size": [
+        2,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 13
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 19
+    },
+    {
+      "id": 12,
+      "name": "冷蔵ワゴン",
+      "capacity": 30,
+      "size": [
+        3,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 15
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 20
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 29
+    },
+    {
+      "id": 13,
+      "name": "冷蔵ワゴン",
+      "capacity": 40,
+      "size": [
+        2,
+        2
+      ],
+      "category": 1,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 13
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 26
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 39
+    },
+    {
+      "id": 14,
+      "name": "冷凍棚",
+      "capacity": 25,
+      "size": [
+        1,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        17,
+        9
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 4
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 8
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 12
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 16
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 24
+    },
+    {
+      "id": 15,
+      "name": "冷凍棚",
+      "capacity": 50,
+      "size": [
+        2,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        17,
+        9
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 8
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 16
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 25
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 33
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 49
+    },
+    {
+      "id": 16,
+      "name": "冷凍ワゴン",
+      "capacity": 10,
+      "size": [
+        1,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        9,
+        17
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 1
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 6
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 9
+    },
+    {
+      "id": 17,
+      "name": "冷凍ワゴン",
+      "capacity": 20,
+      "size": [
+        2,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        9,
+        17
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 13
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 19
+    },
+    {
+      "id": 18,
+      "name": "冷凍棚・扉",
+      "capacity": 30,
+      "size": [
+        1,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        17,
+        9
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 15
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 20
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 29
+    },
+    {
+      "id": 19,
+      "name": "冷凍棚・扉",
+      "capacity": 60,
+      "size": [
+        2,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        17,
+        9
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 30
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 40
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 59
+    },
+    {
+      "id": 20,
+      "name": "冷凍ワゴン・扉",
+      "capacity": 10,
+      "size": [
+        1,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        9,
+        17
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 1
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 6
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 9
+    },
+    {
+      "id": 21,
+      "name": "冷凍ワゴン・扉",
+      "capacity": 20,
+      "size": [
+        2,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        9,
+        17
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 13
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 19
+    },
+    {
+      "id": 22,
+      "name": "温かい飲み物",
+      "capacity": 20,
+      "size": [
+        1,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        1
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 13
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 19
+    },
+    {
+      "id": 23,
+      "name": "おでん",
+      "capacity": 10,
+      "size": [
+        1,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        18
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 1
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 6
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 9
+    },
+    {
+      "id": 24,
+      "name": "中華まん",
+      "capacity": 20,
+      "size": [
+        1,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        25
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 13
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 19
+    },
+    {
+      "id": 25,
+      "name": "イベントケース棚",
+      "capacity": 60,
+      "size": [
+        2,
+        1
+      ],
+      "category": 0,
+      "allowed_products": [
+        24
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 30
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 40
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 59
+    },
+    {
+      "id": 26,
+      "name": "イベントケースワゴン",
+      "capacity": 30,
+      "size": [
+        2,
+        1
+      ],
+      "category": 1,
+      "allowed_products": [
+        24
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 15
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 20
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 29
+    },
+    {
+      "id": 27,
+      "name": "たばこ自販",
+      "capacity": 20,
+      "size": [
+        1,
+        1
+      ],
+      "category": 2,
+      "allowed_products": [
+        8
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 13
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 19
+    },
+    {
+      "id": 28,
+      "name": "たばこ自販",
+      "capacity": 40,
+      "size": [
+        2,
+        1
+      ],
+      "category": 2,
+      "allowed_products": [
+        8
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 13
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 26
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 39
+    },
+    {
+      "id": 29,
+      "name": "飲料自販・冷蔵",
+      "capacity": 20,
+      "size": [
+        1,
+        1
+      ],
+      "category": 2,
+      "allowed_products": [
+        0,
+        2
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 13
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 19
+    },
+    {
+      "id": 30,
+      "name": "飲料自販・冷蔵",
+      "capacity": 40,
+      "size": [
+        2,
+        1
+      ],
+      "category": 2,
+      "allowed_products": [
+        0,
+        2
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 13
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 26
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 39
+    },
+    {
+      "id": 31,
+      "name": "飲料自販・温冷",
+      "capacity": 15,
+      "size": [
+        1,
+        1
+      ],
+      "category": 2,
+      "allowed_products": [
+        1,
+        0
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 2
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 7
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 10
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 14
+    },
+    {
+      "id": 32,
+      "name": "飲料自販・温冷",
+      "capacity": 30,
+      "size": [
+        2,
+        1
+      ],
+      "category": 2,
+      "allowed_products": [
+        1,
+        0
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 15
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 20
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 29
+    },
+    {
+      "id": 33,
+      "name": "コピー機",
+      "capacity": 10,
+      "size": [
+        1,
+        1
+      ],
+      "category": 3,
+      "allowed_products": [
+        20
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 1
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 6
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 9
+    },
+    {
+      "id": 34,
+      "name": "コピー機",
+      "capacity": 15,
+      "size": [
+        1,
+        1
+      ],
+      "category": 3,
+      "allowed_products": [
+        20
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 2
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 5
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 7
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 10
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 14
+    },
+    {
+      "id": 35,
+      "name": "コピー機",
+      "capacity": 20,
+      "size": [
+        1,
+        1
+      ],
+      "category": 3,
+      "allowed_products": [
+        20
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 3
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 13
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 19
+    },
+    {
+      "id": 36,
+      "name": "コピー機",
+      "capacity": 40,
+      "size": [
+        2,
+        1
+      ],
+      "category": 3,
+      "allowed_products": [
+        20
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 6
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 13
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 26
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 39
+    },
+    {
+      "id": 39,
+      "name": "レジ",
+      "capacity": 60,
+      "size": [
+        2,
+        1
+      ],
+      "category": 4,
+      "allowed_products": [
+        21
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 10
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 20
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 30
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 40
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 59
+    },
+    {
+      "id": 42,
+      "name": "レジ",
+      "capacity": 90,
+      "size": [
+        3,
+        1
+      ],
+      "category": 4,
+      "allowed_products": [
+        21
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 15
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 30
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 45
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 60
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 89
+    },
+    {
+      "id": 43,
+      "name": "キャッシュディスペンサー",
+      "capacity": 50,
+      "size": [
+        1,
+        1
+      ],
+      "category": 5,
+      "allowed_products": [
+        26
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 8
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 16
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 25
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 33
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 49
+    },
+    {
+      "id": 44,
+      "name": "キャッシュディスペンサー",
+      "capacity": 90,
+      "size": [
+        1,
+        1
+      ],
+      "category": 5,
+      "allowed_products": [
+        26
+      ],
+      "open_threshold_examples": [
+        {
+          "selection_skill_byte20": 0,
+          "open_or_closing_threshold_percent": 0,
+          "max_existing_quantity_eligible": 0
+        },
+        {
+          "selection_skill_byte20": 25,
+          "open_or_closing_threshold_percent": 16,
+          "max_existing_quantity_eligible": 15
+        },
+        {
+          "selection_skill_byte20": 50,
+          "open_or_closing_threshold_percent": 33,
+          "max_existing_quantity_eligible": 30
+        },
+        {
+          "selection_skill_byte20": 75,
+          "open_or_closing_threshold_percent": 50,
+          "max_existing_quantity_eligible": 45
+        },
+        {
+          "selection_skill_byte20": 100,
+          "open_or_closing_threshold_percent": 66,
+          "max_existing_quantity_eligible": 60
+        }
+      ],
+      "closed_or_opening_max_existing_quantity": 89
+    }
+  ],
+  "skill_rules": [
+    {
+      "refill_skill_byte1f": 0,
+      "request_quantity_on_success": 1,
+      "success_gate": "roll1..100<=0",
+      "reservation_exclusion_raw_threshold": 0,
+      "reservation_exclusion_effective_cutoff": 0
+    },
+    {
+      "refill_skill_byte1f": 1,
+      "request_quantity_on_success": 1,
+      "success_gate": "roll1..100<=1",
+      "reservation_exclusion_raw_threshold": 2,
+      "reservation_exclusion_effective_cutoff": 2
+    },
+    {
+      "refill_skill_byte1f": 2,
+      "request_quantity_on_success": 1,
+      "success_gate": "roll1..100<=2",
+      "reservation_exclusion_raw_threshold": 4,
+      "reservation_exclusion_effective_cutoff": 4
+    },
+    {
+      "refill_skill_byte1f": 3,
+      "request_quantity_on_success": 1,
+      "success_gate": "roll1..100<=3",
+      "reservation_exclusion_raw_threshold": 6,
+      "reservation_exclusion_effective_cutoff": 6
+    },
+    {
+      "refill_skill_byte1f": 4,
+      "request_quantity_on_success": 1,
+      "success_gate": "roll1..100<=4",
+      "reservation_exclusion_raw_threshold": 8,
+      "reservation_exclusion_effective_cutoff": 8
+    },
+    {
+      "refill_skill_byte1f": 5,
+      "request_quantity_on_success": 1,
+      "success_gate": "roll1..100<=5",
+      "reservation_exclusion_raw_threshold": 10,
+      "reservation_exclusion_effective_cutoff": 10
+    },
+    {
+      "refill_skill_byte1f": 6,
+      "request_quantity_on_success": 1,
+      "success_gate": "roll1..100<=6",
+      "reservation_exclusion_raw_threshold": 12,
+      "reservation_exclusion_effective_cutoff": 12
+    },
+    {
+      "refill_skill_byte1f": 7,
+      "request_quantity_on_success": 1,
+      "success_gate": "roll1..100<=7",
+      "reservation_exclusion_raw_threshold": 14,
+      "reservation_exclusion_effective_cutoff": 14
+    },
+    {
+      "refill_skill_byte1f": 8,
+      "request_quantity_on_success": 1,
+      "success_gate": "roll1..100<=8",
+      "reservation_exclusion_raw_threshold": 16,
+      "reservation_exclusion_effective_cutoff": 16
+    },
+    {
+      "refill_skill_byte1f": 9,
+      "request_quantity_on_success": 1,
+      "success_gate": "roll1..100<=9",
+      "reservation_exclusion_raw_threshold": 18,
+      "reservation_exclusion_effective_cutoff": 18
+    },
+    {
+      "refill_skill_byte1f": 10,
+      "request_quantity_on_success": 2,
+      "success_gate": "roll1..100<=10",
+      "reservation_exclusion_raw_threshold": 20,
+      "reservation_exclusion_effective_cutoff": 20
+    },
+    {
+      "refill_skill_byte1f": 11,
+      "request_quantity_on_success": 2,
+      "success_gate": "roll1..100<=11",
+      "reservation_exclusion_raw_threshold": 22,
+      "reservation_exclusion_effective_cutoff": 22
+    },
+    {
+      "refill_skill_byte1f": 12,
+      "request_quantity_on_success": 2,
+      "success_gate": "roll1..100<=12",
+      "reservation_exclusion_raw_threshold": 24,
+      "reservation_exclusion_effective_cutoff": 24
+    },
+    {
+      "refill_skill_byte1f": 13,
+      "request_quantity_on_success": 2,
+      "success_gate": "roll1..100<=13",
+      "reservation_exclusion_raw_threshold": 26,
+      "reservation_exclusion_effective_cutoff": 26
+    },
+    {
+      "refill_skill_byte1f": 14,
+      "request_quantity_on_success": 2,
+      "success_gate": "roll1..100<=14",
+      "reservation_exclusion_raw_threshold": 28,
+      "reservation_exclusion_effective_cutoff": 28
+    },
+    {
+      "refill_skill_byte1f": 15,
+      "request_quantity_on_success": 2,
+      "success_gate": "roll1..100<=15",
+      "reservation_exclusion_raw_threshold": 30,
+      "reservation_exclusion_effective_cutoff": 30
+    },
+    {
+      "refill_skill_byte1f": 16,
+      "request_quantity_on_success": 2,
+      "success_gate": "roll1..100<=16",
+      "reservation_exclusion_raw_threshold": 32,
+      "reservation_exclusion_effective_cutoff": 32
+    },
+    {
+      "refill_skill_byte1f": 17,
+      "request_quantity_on_success": 2,
+      "success_gate": "roll1..100<=17",
+      "reservation_exclusion_raw_threshold": 34,
+      "reservation_exclusion_effective_cutoff": 34
+    },
+    {
+      "refill_skill_byte1f": 18,
+      "request_quantity_on_success": 2,
+      "success_gate": "roll1..100<=18",
+      "reservation_exclusion_raw_threshold": 36,
+      "reservation_exclusion_effective_cutoff": 36
+    },
+    {
+      "refill_skill_byte1f": 19,
+      "request_quantity_on_success": 2,
+      "success_gate": "roll1..100<=19",
+      "reservation_exclusion_raw_threshold": 38,
+      "reservation_exclusion_effective_cutoff": 38
+    },
+    {
+      "refill_skill_byte1f": 20,
+      "request_quantity_on_success": 3,
+      "success_gate": "roll1..100<=20",
+      "reservation_exclusion_raw_threshold": 40,
+      "reservation_exclusion_effective_cutoff": 40
+    },
+    {
+      "refill_skill_byte1f": 21,
+      "request_quantity_on_success": 3,
+      "success_gate": "roll1..100<=21",
+      "reservation_exclusion_raw_threshold": 42,
+      "reservation_exclusion_effective_cutoff": 42
+    },
+    {
+      "refill_skill_byte1f": 22,
+      "request_quantity_on_success": 3,
+      "success_gate": "roll1..100<=22",
+      "reservation_exclusion_raw_threshold": 44,
+      "reservation_exclusion_effective_cutoff": 44
+    },
+    {
+      "refill_skill_byte1f": 23,
+      "request_quantity_on_success": 3,
+      "success_gate": "roll1..100<=23",
+      "reservation_exclusion_raw_threshold": 46,
+      "reservation_exclusion_effective_cutoff": 46
+    },
+    {
+      "refill_skill_byte1f": 24,
+      "request_quantity_on_success": 3,
+      "success_gate": "roll1..100<=24",
+      "reservation_exclusion_raw_threshold": 48,
+      "reservation_exclusion_effective_cutoff": 48
+    },
+    {
+      "refill_skill_byte1f": 25,
+      "request_quantity_on_success": 3,
+      "success_gate": "roll1..100<=25",
+      "reservation_exclusion_raw_threshold": 50,
+      "reservation_exclusion_effective_cutoff": 50
+    },
+    {
+      "refill_skill_byte1f": 26,
+      "request_quantity_on_success": 3,
+      "success_gate": "roll1..100<=26",
+      "reservation_exclusion_raw_threshold": 52,
+      "reservation_exclusion_effective_cutoff": 52
+    },
+    {
+      "refill_skill_byte1f": 27,
+      "request_quantity_on_success": 3,
+      "success_gate": "roll1..100<=27",
+      "reservation_exclusion_raw_threshold": 54,
+      "reservation_exclusion_effective_cutoff": 54
+    },
+    {
+      "refill_skill_byte1f": 28,
+      "request_quantity_on_success": 3,
+      "success_gate": "roll1..100<=28",
+      "reservation_exclusion_raw_threshold": 56,
+      "reservation_exclusion_effective_cutoff": 56
+    },
+    {
+      "refill_skill_byte1f": 29,
+      "request_quantity_on_success": 3,
+      "success_gate": "roll1..100<=29",
+      "reservation_exclusion_raw_threshold": 58,
+      "reservation_exclusion_effective_cutoff": 58
+    },
+    {
+      "refill_skill_byte1f": 30,
+      "request_quantity_on_success": 4,
+      "success_gate": "roll1..100<=30",
+      "reservation_exclusion_raw_threshold": 60,
+      "reservation_exclusion_effective_cutoff": 60
+    },
+    {
+      "refill_skill_byte1f": 31,
+      "request_quantity_on_success": 4,
+      "success_gate": "roll1..100<=31",
+      "reservation_exclusion_raw_threshold": 62,
+      "reservation_exclusion_effective_cutoff": 62
+    },
+    {
+      "refill_skill_byte1f": 32,
+      "request_quantity_on_success": 4,
+      "success_gate": "roll1..100<=32",
+      "reservation_exclusion_raw_threshold": 64,
+      "reservation_exclusion_effective_cutoff": 64
+    },
+    {
+      "refill_skill_byte1f": 33,
+      "request_quantity_on_success": 4,
+      "success_gate": "roll1..100<=33",
+      "reservation_exclusion_raw_threshold": 66,
+      "reservation_exclusion_effective_cutoff": 66
+    },
+    {
+      "refill_skill_byte1f": 34,
+      "request_quantity_on_success": 4,
+      "success_gate": "roll1..100<=34",
+      "reservation_exclusion_raw_threshold": 68,
+      "reservation_exclusion_effective_cutoff": 68
+    },
+    {
+      "refill_skill_byte1f": 35,
+      "request_quantity_on_success": 4,
+      "success_gate": "roll1..100<=35",
+      "reservation_exclusion_raw_threshold": 70,
+      "reservation_exclusion_effective_cutoff": 70
+    },
+    {
+      "refill_skill_byte1f": 36,
+      "request_quantity_on_success": 4,
+      "success_gate": "roll1..100<=36",
+      "reservation_exclusion_raw_threshold": 72,
+      "reservation_exclusion_effective_cutoff": 72
+    },
+    {
+      "refill_skill_byte1f": 37,
+      "request_quantity_on_success": 4,
+      "success_gate": "roll1..100<=37",
+      "reservation_exclusion_raw_threshold": 74,
+      "reservation_exclusion_effective_cutoff": 74
+    },
+    {
+      "refill_skill_byte1f": 38,
+      "request_quantity_on_success": 4,
+      "success_gate": "roll1..100<=38",
+      "reservation_exclusion_raw_threshold": 76,
+      "reservation_exclusion_effective_cutoff": 76
+    },
+    {
+      "refill_skill_byte1f": 39,
+      "request_quantity_on_success": 4,
+      "success_gate": "roll1..100<=39",
+      "reservation_exclusion_raw_threshold": 78,
+      "reservation_exclusion_effective_cutoff": 78
+    },
+    {
+      "refill_skill_byte1f": 40,
+      "request_quantity_on_success": 5,
+      "success_gate": "roll1..100<=40",
+      "reservation_exclusion_raw_threshold": 80,
+      "reservation_exclusion_effective_cutoff": 80
+    },
+    {
+      "refill_skill_byte1f": 41,
+      "request_quantity_on_success": 5,
+      "success_gate": "roll1..100<=41",
+      "reservation_exclusion_raw_threshold": 82,
+      "reservation_exclusion_effective_cutoff": 82
+    },
+    {
+      "refill_skill_byte1f": 42,
+      "request_quantity_on_success": 5,
+      "success_gate": "roll1..100<=42",
+      "reservation_exclusion_raw_threshold": 84,
+      "reservation_exclusion_effective_cutoff": 84
+    },
+    {
+      "refill_skill_byte1f": 43,
+      "request_quantity_on_success": 5,
+      "success_gate": "roll1..100<=43",
+      "reservation_exclusion_raw_threshold": 86,
+      "reservation_exclusion_effective_cutoff": 86
+    },
+    {
+      "refill_skill_byte1f": 44,
+      "request_quantity_on_success": 5,
+      "success_gate": "roll1..100<=44",
+      "reservation_exclusion_raw_threshold": 88,
+      "reservation_exclusion_effective_cutoff": 88
+    },
+    {
+      "refill_skill_byte1f": 45,
+      "request_quantity_on_success": 5,
+      "success_gate": "roll1..100<=45",
+      "reservation_exclusion_raw_threshold": 90,
+      "reservation_exclusion_effective_cutoff": 90
+    },
+    {
+      "refill_skill_byte1f": 46,
+      "request_quantity_on_success": 5,
+      "success_gate": "roll1..100<=46",
+      "reservation_exclusion_raw_threshold": 92,
+      "reservation_exclusion_effective_cutoff": 92
+    },
+    {
+      "refill_skill_byte1f": 47,
+      "request_quantity_on_success": 5,
+      "success_gate": "roll1..100<=47",
+      "reservation_exclusion_raw_threshold": 94,
+      "reservation_exclusion_effective_cutoff": 94
+    },
+    {
+      "refill_skill_byte1f": 48,
+      "request_quantity_on_success": 5,
+      "success_gate": "roll1..100<=48",
+      "reservation_exclusion_raw_threshold": 96,
+      "reservation_exclusion_effective_cutoff": 96
+    },
+    {
+      "refill_skill_byte1f": 49,
+      "request_quantity_on_success": 5,
+      "success_gate": "roll1..100<=49",
+      "reservation_exclusion_raw_threshold": 98,
+      "reservation_exclusion_effective_cutoff": 98
+    },
+    {
+      "refill_skill_byte1f": 50,
+      "request_quantity_on_success": 6,
+      "success_gate": "roll1..100<=50",
+      "reservation_exclusion_raw_threshold": 100,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 51,
+      "request_quantity_on_success": 6,
+      "success_gate": "roll1..100<=51",
+      "reservation_exclusion_raw_threshold": 102,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 52,
+      "request_quantity_on_success": 6,
+      "success_gate": "roll1..100<=52",
+      "reservation_exclusion_raw_threshold": 104,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 53,
+      "request_quantity_on_success": 6,
+      "success_gate": "roll1..100<=53",
+      "reservation_exclusion_raw_threshold": 106,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 54,
+      "request_quantity_on_success": 6,
+      "success_gate": "roll1..100<=54",
+      "reservation_exclusion_raw_threshold": 108,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 55,
+      "request_quantity_on_success": 6,
+      "success_gate": "roll1..100<=55",
+      "reservation_exclusion_raw_threshold": 110,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 56,
+      "request_quantity_on_success": 6,
+      "success_gate": "roll1..100<=56",
+      "reservation_exclusion_raw_threshold": 112,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 57,
+      "request_quantity_on_success": 6,
+      "success_gate": "roll1..100<=57",
+      "reservation_exclusion_raw_threshold": 114,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 58,
+      "request_quantity_on_success": 6,
+      "success_gate": "roll1..100<=58",
+      "reservation_exclusion_raw_threshold": 116,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 59,
+      "request_quantity_on_success": 6,
+      "success_gate": "roll1..100<=59",
+      "reservation_exclusion_raw_threshold": 118,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 60,
+      "request_quantity_on_success": 7,
+      "success_gate": "roll1..100<=60",
+      "reservation_exclusion_raw_threshold": 120,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 61,
+      "request_quantity_on_success": 7,
+      "success_gate": "roll1..100<=61",
+      "reservation_exclusion_raw_threshold": 122,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 62,
+      "request_quantity_on_success": 7,
+      "success_gate": "roll1..100<=62",
+      "reservation_exclusion_raw_threshold": 124,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 63,
+      "request_quantity_on_success": 7,
+      "success_gate": "roll1..100<=63",
+      "reservation_exclusion_raw_threshold": 126,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 64,
+      "request_quantity_on_success": 7,
+      "success_gate": "roll1..100<=64",
+      "reservation_exclusion_raw_threshold": 128,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 65,
+      "request_quantity_on_success": 7,
+      "success_gate": "roll1..100<=65",
+      "reservation_exclusion_raw_threshold": 130,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 66,
+      "request_quantity_on_success": 7,
+      "success_gate": "roll1..100<=66",
+      "reservation_exclusion_raw_threshold": 132,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 67,
+      "request_quantity_on_success": 7,
+      "success_gate": "roll1..100<=67",
+      "reservation_exclusion_raw_threshold": 134,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 68,
+      "request_quantity_on_success": 7,
+      "success_gate": "roll1..100<=68",
+      "reservation_exclusion_raw_threshold": 136,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 69,
+      "request_quantity_on_success": 7,
+      "success_gate": "roll1..100<=69",
+      "reservation_exclusion_raw_threshold": 138,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 70,
+      "request_quantity_on_success": 8,
+      "success_gate": "roll1..100<=70",
+      "reservation_exclusion_raw_threshold": 140,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 71,
+      "request_quantity_on_success": 8,
+      "success_gate": "roll1..100<=71",
+      "reservation_exclusion_raw_threshold": 142,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 72,
+      "request_quantity_on_success": 8,
+      "success_gate": "roll1..100<=72",
+      "reservation_exclusion_raw_threshold": 144,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 73,
+      "request_quantity_on_success": 8,
+      "success_gate": "roll1..100<=73",
+      "reservation_exclusion_raw_threshold": 146,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 74,
+      "request_quantity_on_success": 8,
+      "success_gate": "roll1..100<=74",
+      "reservation_exclusion_raw_threshold": 148,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 75,
+      "request_quantity_on_success": 8,
+      "success_gate": "roll1..100<=75",
+      "reservation_exclusion_raw_threshold": 150,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 76,
+      "request_quantity_on_success": 8,
+      "success_gate": "roll1..100<=76",
+      "reservation_exclusion_raw_threshold": 152,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 77,
+      "request_quantity_on_success": 8,
+      "success_gate": "roll1..100<=77",
+      "reservation_exclusion_raw_threshold": 154,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 78,
+      "request_quantity_on_success": 8,
+      "success_gate": "roll1..100<=78",
+      "reservation_exclusion_raw_threshold": 156,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 79,
+      "request_quantity_on_success": 8,
+      "success_gate": "roll1..100<=79",
+      "reservation_exclusion_raw_threshold": 158,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 80,
+      "request_quantity_on_success": 9,
+      "success_gate": "roll1..100<=80",
+      "reservation_exclusion_raw_threshold": 160,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 81,
+      "request_quantity_on_success": 9,
+      "success_gate": "roll1..100<=81",
+      "reservation_exclusion_raw_threshold": 162,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 82,
+      "request_quantity_on_success": 9,
+      "success_gate": "roll1..100<=82",
+      "reservation_exclusion_raw_threshold": 164,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 83,
+      "request_quantity_on_success": 9,
+      "success_gate": "roll1..100<=83",
+      "reservation_exclusion_raw_threshold": 166,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 84,
+      "request_quantity_on_success": 9,
+      "success_gate": "roll1..100<=84",
+      "reservation_exclusion_raw_threshold": 168,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 85,
+      "request_quantity_on_success": 9,
+      "success_gate": "roll1..100<=85",
+      "reservation_exclusion_raw_threshold": 170,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 86,
+      "request_quantity_on_success": 9,
+      "success_gate": "roll1..100<=86",
+      "reservation_exclusion_raw_threshold": 172,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 87,
+      "request_quantity_on_success": 9,
+      "success_gate": "roll1..100<=87",
+      "reservation_exclusion_raw_threshold": 174,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 88,
+      "request_quantity_on_success": 9,
+      "success_gate": "roll1..100<=88",
+      "reservation_exclusion_raw_threshold": 176,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 89,
+      "request_quantity_on_success": 9,
+      "success_gate": "roll1..100<=89",
+      "reservation_exclusion_raw_threshold": 178,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 90,
+      "request_quantity_on_success": 10,
+      "success_gate": "roll1..100<=90",
+      "reservation_exclusion_raw_threshold": 180,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 91,
+      "request_quantity_on_success": 10,
+      "success_gate": "roll1..100<=91",
+      "reservation_exclusion_raw_threshold": 182,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 92,
+      "request_quantity_on_success": 10,
+      "success_gate": "roll1..100<=92",
+      "reservation_exclusion_raw_threshold": 184,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 93,
+      "request_quantity_on_success": 10,
+      "success_gate": "roll1..100<=93",
+      "reservation_exclusion_raw_threshold": 186,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 94,
+      "request_quantity_on_success": 10,
+      "success_gate": "roll1..100<=94",
+      "reservation_exclusion_raw_threshold": 188,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 95,
+      "request_quantity_on_success": 10,
+      "success_gate": "roll1..100<=95",
+      "reservation_exclusion_raw_threshold": 190,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 96,
+      "request_quantity_on_success": 10,
+      "success_gate": "roll1..100<=96",
+      "reservation_exclusion_raw_threshold": 192,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 97,
+      "request_quantity_on_success": 10,
+      "success_gate": "roll1..100<=97",
+      "reservation_exclusion_raw_threshold": 194,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 98,
+      "request_quantity_on_success": 10,
+      "success_gate": "roll1..100<=98",
+      "reservation_exclusion_raw_threshold": 196,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 99,
+      "request_quantity_on_success": 10,
+      "success_gate": "roll1..100<=99",
+      "reservation_exclusion_raw_threshold": 198,
+      "reservation_exclusion_effective_cutoff": 100
+    },
+    {
+      "refill_skill_byte1f": 100,
+      "request_quantity_on_success": 11,
+      "success_gate": "roll1..100<=100",
+      "reservation_exclusion_raw_threshold": 200,
+      "reservation_exclusion_effective_cutoff": 100
+    }
+  ],
+  "label_dependency": "../20261113-product-stock-data/product-fixture-data.json; numeric fields reread from disc",
+  "note": "Fixture rows cover those with allowed-product lists, not parking/rest facilities. Capacity is one fixture total, not per rendered tile."
+}

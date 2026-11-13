@@ -1,0 +1,87 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 9300,
+    "sha256": "858b299323c082a865a18afcfd417a557e85dd0790896e49e1a8c1ca8e49634e"
+  },
+  {
+    "path": "android-restocking-stockout-bridge.json",
+    "bytes": 3482,
+    "sha256": "851b54fcd5930d8c393b6007e294fa9c94f63a82895332ff141db0a98f5e5a81"
+  },
+  {
+    "path": "extract-restocking.py",
+    "bytes": 8936,
+    "sha256": "36cd23aa6275e076456436d6e07e5b8be2b9b90591b6f32f764afe4dea96c542"
+  },
+  {
+    "path": "restocking-capacity-masters.json",
+    "bytes": 69412,
+    "sha256": "f594a39912b974ddf2902cc66509ee3625c433040cf4aa6f74bfbfbef91c6c21"
+  },
+  {
+    "path": "restocking-readers.asm",
+    "bytes": 85541,
+    "sha256": "d631f1c521dcd59f662631f8cd71b6d497241dd14e8f925c3fdd81b69d50dae8"
+  },
+  {
+    "path": "source/acquisition_caller.bin",
+    "bytes": 336,
+    "sha256": "067b1756d30ce52a907912912263834ef9265c457d28d9435fb66a1f0806d4ef"
+  },
+  {
+    "path": "source/advice_threshold_excerpt.bin",
+    "bytes": 1152,
+    "sha256": "186a49f8fe717c4dc13e0719d00da9c7bc942b15103cdf1673333dd979f5c110"
+  },
+  {
+    "path": "source/fixture_master.bin",
+    "bytes": 10388,
+    "sha256": "ff38d0b8eb5d1d17fabca839abed108b9243b9fafc70449024763e73fc5eba51"
+  },
+  {
+    "path": "source/inventory_update.bin",
+    "bytes": 5416,
+    "sha256": "16feb0ad670f19c2a1fed03148aa020000aeabd6d259f86dd3573c08770a4741"
+  },
+  {
+    "path": "source/product_master.bin",
+    "bytes": 2376,
+    "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+  },
+  {
+    "path": "source/refill_caller.bin",
+    "bytes": 424,
+    "sha256": "2cd1398b8a6c5444f50cd91ce76add010288d11378cf6b37448360565af337e2"
+  },
+  {
+    "path": "source/refill_target_selection.bin",
+    "bytes": 1724,
+    "sha256": "7cbd8b0223acec1cb42ad531acce4980f7d83d44a17a93cf9a5713f9217d6022"
+  },
+  {
+    "path": "source/staff_refill_parent_excerpt.bin",
+    "bytes": 780,
+    "sha256": "04072396bf79ec05998977495aa0441eb13998bfe5a073348d36b31061d4d337"
+  },
+  {
+    "path": "source/unmet_demand_excerpt.bin",
+    "bytes": 308,
+    "sha256": "b9b861c1e8a05bdb64e0bbb651ebe16067f2b178857189c8f14554b655a94b15"
+  },
+  {
+    "path": "source-derived-examples.json",
+    "bytes": 1130,
+    "sha256": "8c821d86897eeceac35f1bd580401f51ede99924cab7add096a8870efb5cf6e1"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1555,
+    "sha256": "6720325d4e53362e8954656df1794a48fe1ddb4a94d675a559ce4f261cc6bb23"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 576,
+    "sha256": "016d3841ad3b487d80c1dba86358c0be2769a3aea3f17b959001375cd8fc59a7"
+  }
+]

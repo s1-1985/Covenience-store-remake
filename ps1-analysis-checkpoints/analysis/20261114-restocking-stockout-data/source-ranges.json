@@ -1,0 +1,56 @@
+[
+  {
+    "name": "fixture_master",
+    "address": "0x80099f0c",
+    "bytes": 10388,
+    "sha256": "ff38d0b8eb5d1d17fabca839abed108b9243b9fafc70449024763e73fc5eba51"
+  },
+  {
+    "name": "product_master",
+    "address": "0x8009cdf0",
+    "bytes": 2376,
+    "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+  },
+  {
+    "name": "refill_target_selection",
+    "address": "0x80038d6c",
+    "bytes": 1724,
+    "sha256": "7cbd8b0223acec1cb42ad531acce4980f7d83d44a17a93cf9a5713f9217d6022"
+  },
+  {
+    "name": "refill_caller",
+    "address": "0x8003b278",
+    "bytes": 424,
+    "sha256": "2cd1398b8a6c5444f50cd91ce76add010288d11378cf6b37448360565af337e2"
+  },
+  {
+    "name": "acquisition_caller",
+    "address": "0x8003b420",
+    "bytes": 336,
+    "sha256": "067b1756d30ce52a907912912263834ef9265c457d28d9435fb66a1f0806d4ef"
+  },
+  {
+    "name": "inventory_update",
+    "address": "0x800209f8",
+    "bytes": 5416,
+    "sha256": "16feb0ad670f19c2a1fed03148aa020000aeabd6d259f86dd3573c08770a4741"
+  },
+  {
+    "name": "staff_refill_parent_excerpt",
+    "address": "0x80037428",
+    "bytes": 780,
+    "sha256": "04072396bf79ec05998977495aa0441eb13998bfe5a073348d36b31061d4d337"
+  },
+  {
+    "name": "unmet_demand_excerpt",
+    "address": "0x800343b4",
+    "bytes": 308,
+    "sha256": "b9b861c1e8a05bdb64e0bbb651ebe16067f2b178857189c8f14554b655a94b15"
+  },
+  {
+    "name": "advice_threshold_excerpt",
+    "address": "0x8003b570",
+    "bytes": 1152,
+    "sha256": "186a49f8fe717c4dc13e0719d00da9c7bc942b15103cdf1673333dd979f5c110"
+  }
+]

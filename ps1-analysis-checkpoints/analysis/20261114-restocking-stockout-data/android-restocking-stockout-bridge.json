@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "staff_field_roles": {
+    "0x20": "target-selection threshold input; distinct from actual refill skill; no new semantic label assigned",
+    "0x1f": "actual refill success and quantity; also another refilling employee reservation exclusion",
+    "0x28": "task state;2 means refill",
+    "0x2c..0x2e": "goal x,y,direction"
+  },
+  "target_selection": {
+    "function": "0x80038d6c",
+    "store_state": "store+C77:0closed,1open,2closing,3opening",
+    "threshold": "trunc(2*staff_byte20/3) for states1/2; otherwise99",
+    "predicate": "Anchor bit31 set, kind<53, nonzero product image; trunc(quantity*100/capacity)<=threshold",
+    "routing": "Mark usable fixture sides, then route search selects reachable target by source distance/frontier order; it does not sort eligible fixtures by remaining quantity.",
+    "image_zero": "No product image means not a candidate. Quantity0 with a retained image remains a candidate.",
+    "reservation": "For each other staff on task2: draw roll, exclude their target sides if roll<=2*their refill skill1f and target is valid. This is probabilistic, not an unconditional lock."
+  },
+  "work_priority": "If energy<=0 choose rest; otherwise eligible cashier target before refill, then cleaning, then rest. This is task-choice order, not a continuous preemption rule.",
+  "refill_action": {
+    "function": "0x8003b278",
+    "success": "One roll1..100 must be<=signed staff_byte1f; otherwise return1 without inventory or money mutation.",
+    "request": "trunc(refill skill/10)+1",
+    "applied": "min(request, capacity-current quantity)",
+    "unit_cost": "trunc(base_price*cost_percent/100)",
+    "cash": "Applied quantity*unit_cost added to store+D94, subtracted from owning side cash. No balance refusal appears in this local caller.",
+    "continuation": "Return1 means failed attempt or not-yet-full shelf; parent keeps target. Return0 means full; parent clears target, applies growth and sound0x800. Return2 error also clears target.",
+    "threshold_scope": "Threshold is for choosing a new target. It is not the final desired stock level; retained job refills toward full capacity."
+  },
+  "acquisition": {
+    "function": "0x8003b420 ->800209f8",
+    "request": "Current customer group quantity byte+1e, as one all-or-nothing subtraction.",
+    "failure": "No matching product/anchor or insufficient total quantity -> no stock decrement; caller increments store+12e2 by1 if signed counter<127; returns failure1.",
+    "count_unit": "One failed acquisition call, not number of people or missing units."
+  },
+  "unmet_product_demand": {
+    "function": "purchase_control800340fc",
+    "condition": "Destination search failed, current product!=-1 and product stock summary==0.",
+    "write": "store+119c+12*product += group quantity",
+    "scope": "Separate from acquisition failure+12e2. No new outside-store rerouting behavior is inferred."
+  },
+  "advice": {
+    "counter": "signed store+12e2",
+    "threshold": "trunc((100-manager leadership1d)/4)+5; trigger uses counter>threshold",
+    "examples": [
+      {
+        "leadership": 100,
+        "threshold": 5,
+        "first_trigger_count": 6
+      },
+      {
+        "leadership": 0,
+        "threshold": 30,
+        "first_trigger_count": 31
+      }
+    ],
+    "counter_resets": "Existing four-hour/advice/rare-reset rules in3B570; see floor-cleaning report."
+  }
+}

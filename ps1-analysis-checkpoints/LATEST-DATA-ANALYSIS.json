@@ -1,14 +1,14 @@
 {
   "date_jst": "2026-11-14",
-  "work_kind": "pricing_and_store_choice_data_analysis",
-  "report": "analysis/20261113-pricing-store-choice-data/README.md",
+  "work_kind": "restocking_and_stockout_data_analysis",
+  "report": "analysis/20261114-restocking-stockout-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "products": 27,
-  "editable_products": 26,
-  "profiles": 144,
-  "new_specification": "Connected price setting to unit price, weighted price/distance/service ranking, strict stock gates and tie order. Original physical-store metric accumulators carry across stores; preserve source quirk.",
-  "previous_report": "analysis/20261113-operating-cost-data/README.md",
-  "android_bridge": "analysis/20261113-pricing-store-choice-data/android-pricing-choice-bridge.json",
-  "original_cpu_updates_this_work": 0
+  "stock_fixtures": 41,
+  "capacity_variants": 12,
+  "new_specification": "Separate staff field20 target threshold from field1F refill success/quantity. Threshold selects new shelf; retained jobs fill to capacity. Reservations are probabilistic. Acquisition failure counts calls, while product unmet demand counts group quantity.",
+  "previous_report": "analysis/20261113-pricing-store-choice-data/README.md",
+  "android_bridge": "analysis/20261114-restocking-stockout-data/android-restocking-stockout-bridge.json",
+  "original_cpu_updates_this_work": 0,
+  "next_priority": "Continue required source-data analysis and integrate recovered normal-play specifications into native Android before APK build."
 }
