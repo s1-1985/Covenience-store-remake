@@ -1,0 +1,20 @@
+{
+  "used_for_completed_evidence": false,
+  "experiments": [
+    {
+      "change": "Uc.emu_start wrapper, original count replaced with0, timeout replaced with120000000 microseconds",
+      "source_snapshot": "TOWN0001-ci-main-31-single",
+      "diagnostic_updates_requested": 2,
+      "exit_code": 139,
+      "passed": false
+    },
+    {
+      "change": "Uc.emu_start wrapper, original count replaced with0, original timeout retained",
+      "source_snapshot": "TOWN0001-ci-main-31-single",
+      "diagnostic_updates_requested": 2,
+      "exit_code": 139,
+      "passed": false
+    }
+  ],
+  "conclusion": "No optimization adopted. No result or partial update from these processes added to the natural trajectory. Cause of SIGSEGV was not diagnosed; completed segments use unmodified Unicorn emu_start with archived count guards."
+}

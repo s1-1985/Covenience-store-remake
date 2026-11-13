@@ -14,6 +14,8 @@
 
 ## 保存済み
 
+- [2026-11-13：新ライバル店の初日営業と日次決算](analysis/20261113-new-rival-operation/README.md)
+
 - [2026-11-13：自然月次・ライバル出店・会社建築と11,688更新、店舗順モデル修正](analysis/20261113-next-month/README.md)
 
 - [2026-11-13：自然営業200更新・最新10,488更新と復元再開検証](analysis/20261113-operating-continuation/README.md)

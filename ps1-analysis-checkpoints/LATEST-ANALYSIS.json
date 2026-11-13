@@ -1,17 +1,17 @@
 {
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
   "date_jst": "2026-11-13",
-  "snapshot": "TOWN0001-ci-main-31-single",
+  "snapshot": "TOWN0001-ci-main-32-single",
   "phase": "play_iteration_end",
-  "clock": 23360,
-  "completed_iterations": 11688,
+  "clock": 23760,
+  "completed_iterations": 11888,
   "cash": [
-    99013362,
-    97694589
+    99052002,
+    97743149
   ],
-  "ram_sha256": "f9bba3258b11c921869e0ddfe8a34291a58102ea4023e490ac48f912f96a1971",
-  "metadata": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-31-single.json.zlib",
-  "compressed_ram": "analysis/20261113-next-month/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-31-single.ram.zlib",
-  "report": "analysis/20261113-next-month/README.md",
-  "limits": "Completed/hash-verified segments only. Six-segment natural trajectory completed. Natural monthly town/rival independent audits passed. SDK/GPU/SPU/IRQ boundaries remain modeled."
+  "ram_sha256": "51fc871ad49fe048222c3ddb0a4fdf1b784cb89427cddf877c0b180a07b9519d",
+  "metadata": "analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-32-single.json.zlib",
+  "compressed_ram": "analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-32-single.ram.zlib",
+  "report": "analysis/20261113-new-rival-operation/README.md",
+  "limits": "Completed/hash-verified segments only. New rival first-day continuation; SDK/GPU/SPU/IRQ boundaries remain modeled."
 }
