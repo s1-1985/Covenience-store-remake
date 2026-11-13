@@ -1,0 +1,1310 @@
+{
+  "schema_version": 1,
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "table_address": "0x800a09d0",
+  "stride": 24,
+  "count": 144,
+  "profiles": [
+    {
+      "id": 0,
+      "appearance_group": 0,
+      "appearance_group_label": "赤い女子大生",
+      "raw_hex": "000006007800f4010400ffff001e3250143250280a643200",
+      "primary_product": 4,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 1,
+      "appearance_group": 0,
+      "appearance_group_label": "赤い女子大生",
+      "raw_hex": "000007003c002003040106130132502814325a320a643200",
+      "primary_product": 4,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 2,
+      "appearance_group": 1,
+      "appearance_group_label": "青い女子大生",
+      "raw_hex": "010006007800e80304000616001e32501432502828643200",
+      "primary_product": 4,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 3,
+      "appearance_group": 2,
+      "appearance_group_label": "緑の女子大生",
+      "raw_hex": "020007007800bc02040107ff001e325014325a321e643200",
+      "primary_product": 4,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 4,
+      "appearance_group": 0,
+      "appearance_group_label": "赤い女子大生",
+      "raw_hex": "00000b007800200304000614001e323c1432643c14643200",
+      "primary_product": 4,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 5,
+      "appearance_group": 0,
+      "appearance_group_label": "赤い女子大生",
+      "raw_hex": "00000c003c00e80304010708011e50281432643c14643200",
+      "primary_product": 4,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 6,
+      "appearance_group": 1,
+      "appearance_group_label": "青い女子大生",
+      "raw_hex": "01000b007800200303000618001e323c1432643c14643200",
+      "primary_product": 3,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 7,
+      "appearance_group": 2,
+      "appearance_group_label": "緑の女子大生",
+      "raw_hex": "02000c007800200303000918001e323c1432643c1e643200",
+      "primary_product": 3,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 8,
+      "appearance_group": 0,
+      "appearance_group_label": "赤い女子大生",
+      "raw_hex": "000011007800e80303010914001e323c1432643c28643200",
+      "primary_product": 3,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 9,
+      "appearance_group": 0,
+      "appearance_group_label": "赤い女子大生",
+      "raw_hex": "000012003c00e80305010608013250281432643c28643200",
+      "primary_product": 5,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 10,
+      "appearance_group": 1,
+      "appearance_group_label": "青い女子大生",
+      "raw_hex": "010012007800dc050f00140a001e323c2832643c28643200",
+      "primary_product": 15,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 11,
+      "appearance_group": 1,
+      "appearance_group_label": "青い女子大生",
+      "raw_hex": "010013007800b80b1806070a00461414143c643c50643200",
+      "primary_product": 24,
+      "initial_wait_budget": 60,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 12,
+      "appearance_group": 2,
+      "appearance_group_label": "緑の女子大生",
+      "raw_hex": "020013007800e80303000619001e323c2832643c32643200",
+      "primary_product": 3,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 13,
+      "appearance_group": 0,
+      "appearance_group_label": "赤い女子大生",
+      "raw_hex": "000014003c00e80303010602013250281432643c32643200",
+      "primary_product": 3,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 14,
+      "appearance_group": 0,
+      "appearance_group_label": "赤い女子大生",
+      "raw_hex": "000014003c00b80b14000609005032281432643c32643200",
+      "primary_product": 20,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 15,
+      "appearance_group": 0,
+      "appearance_group_label": "赤い女子大生",
+      "raw_hex": "000014003c00881315010618035a32281432643c32643200",
+      "primary_product": 21,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 16,
+      "appearance_group": 0,
+      "appearance_group_label": "赤い女子大生",
+      "raw_hex": "00001400b400dc05060509070046323c2832643c5a643200",
+      "primary_product": 6,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 17,
+      "appearance_group": 1,
+      "appearance_group_label": "青い女子大生",
+      "raw_hex": "01001500b400b80b1613ffff01640a0a0a5a643c0a643200",
+      "primary_product": 22,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 18,
+      "appearance_group": 2,
+      "appearance_group_label": "緑の女子大生",
+      "raw_hex": "020015007800b80b050208180050323c2832503250643200",
+      "primary_product": 5,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 19,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "03000600780090010400ffff00463c320a5a643c0a643200",
+      "primary_product": 4,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 20,
+      "appearance_group": 4,
+      "appearance_group_label": "青い大学生",
+      "raw_hex": "04000600780020030301080a01503c280a5a643c1e643200",
+      "primary_product": 3,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 21,
+      "appearance_group": 5,
+      "appearance_group_label": "黄色い大学生",
+      "raw_hex": "05000700780090010400070a003c3c320a5a643c1e643200",
+      "primary_product": 4,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 22,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "03000700780020030301081400463c280a5a643c32643200",
+      "primary_product": 3,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 23,
+      "appearance_group": 4,
+      "appearance_group_label": "青い大学生",
+      "raw_hex": "040006007800f4010800ffff0164640a0a5a64280a643200",
+      "primary_product": 8,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 24,
+      "appearance_group": 5,
+      "appearance_group_label": "黄色い大学生",
+      "raw_hex": "05000b00780090010400ffff00463c320a5a643c1e643200",
+      "primary_product": 4,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 25,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "03000c00780020030301081900463c320a5a643c1e643200",
+      "primary_product": 3,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 26,
+      "appearance_group": 4,
+      "appearance_group_label": "青い大学生",
+      "raw_hex": "04000c0078002003030019ff00463c320a5a643c1e643200",
+      "primary_product": 3,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 27,
+      "appearance_group": 5,
+      "appearance_group_label": "黄色い大学生",
+      "raw_hex": "05000d00780020030300071400463c320a5a643c1e643200",
+      "primary_product": 3,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 28,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "03000d007800f4010800ffff01640a0a0a6464280a643200",
+      "primary_product": 8,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 29,
+      "appearance_group": 4,
+      "appearance_group_label": "青い大学生",
+      "raw_hex": "040011007800b0040301071300463c320a5a643c28643200",
+      "primary_product": 3,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 30,
+      "appearance_group": 5,
+      "appearance_group_label": "黄色い大学生",
+      "raw_hex": "050012007800b0040f00071400463c32145a643c28643200",
+      "primary_product": 15,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 31,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "030012007800b0040501140600463c32145a643c28643200",
+      "primary_product": 5,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 32,
+      "appearance_group": 4,
+      "appearance_group_label": "青い大学生",
+      "raw_hex": "040013007800b0040302081200463c32145a643c28643200",
+      "primary_product": 3,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 33,
+      "appearance_group": 4,
+      "appearance_group_label": "青い大学生",
+      "raw_hex": "040013007800b0040e0c0d1000505032285a503c50643200",
+      "primary_product": 14,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 34,
+      "appearance_group": 5,
+      "appearance_group_label": "黄色い大学生",
+      "raw_hex": "050015007800b0040501070a00463c32145a643c32643200",
+      "primary_product": 5,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 35,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "030016007800b0040f19010600463c320a5a643c3c643200",
+      "primary_product": 15,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 36,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "030016007800b80b02120608015a281e0a5a643c5a643200",
+      "primary_product": 2,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 37,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "030016007800d0070801021902640a140a5a643c50643200",
+      "primary_product": 8,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 38,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "030016007800b80b0905111902640a140a5a643c50643200",
+      "primary_product": 9,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 39,
+      "appearance_group": 4,
+      "appearance_group_label": "青い大学生",
+      "raw_hex": "040017007800b0040d02081200463c32145a643c32643200",
+      "primary_product": 13,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 40,
+      "appearance_group": 4,
+      "appearance_group_label": "青い大学生",
+      "raw_hex": "04001700b400b80b14010a08025a3c32145a643c3c643200",
+      "primary_product": 20,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 41,
+      "appearance_group": 5,
+      "appearance_group_label": "黄色い大学生",
+      "raw_hex": "050000007800b0040302071200463c320a5a643c32643200",
+      "primary_product": 3,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 42,
+      "appearance_group": 4,
+      "appearance_group_label": "青い大学生",
+      "raw_hex": "040002007800b00403121906005a0a140a3c3c3250643200",
+      "primary_product": 3,
+      "initial_wait_budget": 60,
+      "service_and_sidestep_gate": 60
+    },
+    {
+      "id": 43,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "030003007800d0070801021900640a140a5a3c3250643200",
+      "primary_product": 8,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 60
+    },
+    {
+      "id": 44,
+      "appearance_group": 6,
+      "appearance_group_label": "灰色ｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "060005007800e80304010aff00461e3c1e465a5a1e641400",
+      "primary_product": 4,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 45,
+      "appearance_group": 7,
+      "appearance_group_label": "白いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "0700060078002003040008ff00461e3c1e465a5a1e641400",
+      "primary_product": 4,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 46,
+      "appearance_group": 8,
+      "appearance_group_label": "茶色いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "080007003c00e8030301070800461e3c1e465a5a32641400",
+      "primary_product": 3,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 47,
+      "appearance_group": 9,
+      "appearance_group_label": "作業服のｻﾗﾘｰﾏﾝ",
+      "raw_hex": "090008003c0020030400160801461e3c1e465a5a32641400",
+      "primary_product": 4,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 48,
+      "appearance_group": 6,
+      "appearance_group_label": "灰色ｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "06000c003c00e803040108ff00461e3c1e465a5a1e641400",
+      "primary_product": 4,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 49,
+      "appearance_group": 7,
+      "appearance_group_label": "白いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "07000c003c001405030013ff00461e3c1e465a5a28641400",
+      "primary_product": 3,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 50,
+      "appearance_group": 8,
+      "appearance_group_label": "茶色いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "08000c003c00e8030500071900461e3c1e465a5a1e641400",
+      "primary_product": 5,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 51,
+      "appearance_group": 9,
+      "appearance_group_label": "作業服のｻﾗﾘｰﾏﾝ",
+      "raw_hex": "09000c003c00dc050300070800461e3c1e465a5a1e641400",
+      "primary_product": 3,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 52,
+      "appearance_group": 9,
+      "appearance_group_label": "作業服のｻﾗﾘｰﾏﾝ",
+      "raw_hex": "09000c003c00bc02080001ff0064641e0a645a5046641400",
+      "primary_product": 8,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 53,
+      "appearance_group": 6,
+      "appearance_group_label": "灰色ｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "060013003c00d0070300160800461e3c1e465a5a3c641400",
+      "primary_product": 3,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 54,
+      "appearance_group": 7,
+      "appearance_group_label": "白いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "070014003c00d0070f01021200461e3c1e465a5a3c641400",
+      "primary_product": 15,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 55,
+      "appearance_group": 8,
+      "appearance_group_label": "茶色いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "080013003c00d0070300160800461e3c1e465a5a3c641400",
+      "primary_product": 3,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 56,
+      "appearance_group": 9,
+      "appearance_group_label": "作業服のｻﾗﾘｰﾏﾝ",
+      "raw_hex": "090014007800d0070f01021200461e3c1e465a5a3c641400",
+      "primary_product": 15,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 57,
+      "appearance_group": 6,
+      "appearance_group_label": "灰色ｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "060016003c0088130212060f005a504614463c505a641400",
+      "primary_product": 2,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 60
+    },
+    {
+      "id": 58,
+      "appearance_group": 7,
+      "appearance_group_label": "白いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "070017003c00c4090502050800461e3c1e46505a3c641400",
+      "primary_product": 5,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 59,
+      "appearance_group": 8,
+      "appearance_group_label": "茶色いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "080000003c00c4090301121900461e3c1e46505a32641400",
+      "primary_product": 3,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 60,
+      "appearance_group": 9,
+      "appearance_group_label": "作業服のｻﾗﾘｰﾏﾝ",
+      "raw_hex": "090001003c00b80b0502050801461e3c1e46505a32641400",
+      "primary_product": 5,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 61,
+      "appearance_group": 6,
+      "appearance_group_label": "灰色ｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_hex": "060000007800e803080102190064641e0a64465046641400",
+      "primary_product": 8,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 62,
+      "appearance_group": 10,
+      "appearance_group_label": "青いＯＬ",
+      "raw_hex": "0a0006003c00e803040107ff001e46462846505a1e641400",
+      "primary_product": 4,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 63,
+      "appearance_group": 11,
+      "appearance_group_label": "赤いＯＬ",
+      "raw_hex": "0b0007003c00e80304011608003246462846505a46641400",
+      "primary_product": 4,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 64,
+      "appearance_group": 12,
+      "appearance_group_label": "作業服のＯＬ",
+      "raw_hex": "0c0007003c0020030401ffff001e464628465a5a1e641400",
+      "primary_product": 4,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 65,
+      "appearance_group": 13,
+      "appearance_group_label": "白いＯＬ",
+      "raw_hex": "0d0008003c00e80304000607001e464628465a5a3c641400",
+      "primary_product": 4,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 66,
+      "appearance_group": 10,
+      "appearance_group_label": "青いＯＬ",
+      "raw_hex": "0a000c003c00b00403000908001e464628465a5a1e641400",
+      "primary_product": 3,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 67,
+      "appearance_group": 11,
+      "appearance_group_label": "赤いＯＬ",
+      "raw_hex": "0b000c003c00b00404000818001e464628465a5a1e641400",
+      "primary_product": 4,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 68,
+      "appearance_group": 12,
+      "appearance_group_label": "作業服のＯＬ",
+      "raw_hex": "0c000c003c00dc0503010609001e464628465a5a1e641400",
+      "primary_product": 3,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 69,
+      "appearance_group": 13,
+      "appearance_group_label": "白いＯＬ",
+      "raw_hex": "0d000c003c00d007030016130032464628465a5a32641400",
+      "primary_product": 3,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 70,
+      "appearance_group": 10,
+      "appearance_group_label": "青いＯＬ",
+      "raw_hex": "0a0012003c00d00705000608001e464628465a5a1e641400",
+      "primary_product": 5,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 71,
+      "appearance_group": 11,
+      "appearance_group_label": "赤いＯＬ",
+      "raw_hex": "0b001300b400a00f0c0e0d10003c505032465a5a50641400",
+      "primary_product": 12,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 72,
+      "appearance_group": 12,
+      "appearance_group_label": "作業服のＯＬ",
+      "raw_hex": "0c0013007800d00704010618001e464628465a5a1e641400",
+      "primary_product": 4,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 73,
+      "appearance_group": 13,
+      "appearance_group_label": "白いＯＬ",
+      "raw_hex": "0d0014003c00d00703000607001e464628465a5a1e641400",
+      "primary_product": 3,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 74,
+      "appearance_group": 13,
+      "appearance_group_label": "白いＯＬ",
+      "raw_hex": "0d0014007800e80308000107005a5a28145a5a5a32641400",
+      "primary_product": 8,
+      "initial_wait_budget": 90,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 75,
+      "appearance_group": 10,
+      "appearance_group_label": "青いＯＬ",
+      "raw_hex": "0a0015003c00b80b0f051119001e46462846505a28641400",
+      "primary_product": 15,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 76,
+      "appearance_group": 10,
+      "appearance_group_label": "青いＯＬ",
+      "raw_hex": "0a0015007800a00f020612050050463c2850465050641400",
+      "primary_product": 2,
+      "initial_wait_budget": 80,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 77,
+      "appearance_group": 11,
+      "appearance_group_label": "赤いＯＬ",
+      "raw_hex": "0b00150078008813130601110050463c2850465050641400",
+      "primary_product": 19,
+      "initial_wait_budget": 80,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 78,
+      "appearance_group": 10,
+      "appearance_group_label": "青いＯＬ",
+      "raw_hex": "0a00150078008813070602120050463c2850465050641400",
+      "primary_product": 7,
+      "initial_wait_budget": 80,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 79,
+      "appearance_group": 11,
+      "appearance_group_label": "赤いＯＬ",
+      "raw_hex": "0b0016003c00b80b05011206001e46462846465032641400",
+      "primary_product": 5,
+      "initial_wait_budget": 70,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 80,
+      "appearance_group": 14,
+      "appearance_group_label": "はげたおじさん",
+      "raw_hex": "0e0016007800401f0212060800320a0a3232464646466400",
+      "primary_product": 2,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 81,
+      "appearance_group": 14,
+      "appearance_group_label": "はげたおじさん",
+      "raw_hex": "0e001700780010270212060803640a0a0a32461e46466400",
+      "primary_product": 2,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 82,
+      "appearance_group": 15,
+      "appearance_group_label": "汗かきのおじさん",
+      "raw_hex": "0f000f007800dc05090008ff03320a0a3232464632466400",
+      "primary_product": 9,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 83,
+      "appearance_group": 15,
+      "appearance_group_label": "汗かきのおじさん",
+      "raw_hex": "0f000f007800e803090801ff02320a0a3232464632466400",
+      "primary_product": 9,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 84,
+      "appearance_group": 15,
+      "appearance_group_label": "汗かきのおじさん",
+      "raw_hex": "0f001700780088130802060803640a0a0a32461e50466400",
+      "primary_product": 8,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 85,
+      "appearance_group": 14,
+      "appearance_group_label": "はげたおじさん",
+      "raw_hex": "0e000f007800dc05080001ff003c0a0a3232464632466400",
+      "primary_product": 8,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 86,
+      "appearance_group": 18,
+      "appearance_group_label": "中学生",
+      "raw_hex": "120007003c00f4010affffff005a14320a6450320a466400",
+      "primary_product": 10,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 87,
+      "appearance_group": 16,
+      "appearance_group_label": "中学生",
+      "raw_hex": "100007003c00f4010affffff015a0a320a6450320a466400",
+      "primary_product": 10,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 88,
+      "appearance_group": 16,
+      "appearance_group_label": "中学生",
+      "raw_hex": "10000e00780020030001060701500a1e0a6450321e466400",
+      "primary_product": 0,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 89,
+      "appearance_group": 18,
+      "appearance_group_label": "中学生",
+      "raw_hex": "12000f007800e8030009060a00501e1e0a6450321e466400",
+      "primary_product": 0,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 90,
+      "appearance_group": 16,
+      "appearance_group_label": "中学生",
+      "raw_hex": "10000f007800200300010a0600500a1e0a6450321e466400",
+      "primary_product": 0,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 91,
+      "appearance_group": 18,
+      "appearance_group_label": "中学生",
+      "raw_hex": "120011007800e80300090a0701501e1e0a6450321e466400",
+      "primary_product": 0,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 92,
+      "appearance_group": 16,
+      "appearance_group_label": "中学生",
+      "raw_hex": "10000f007800b0041819010600500a1e0a6450321e466400",
+      "primary_product": 24,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 93,
+      "appearance_group": 18,
+      "appearance_group_label": "中学生",
+      "raw_hex": "120011007800dc051806000701501e1e0a6450321e466400",
+      "primary_product": 24,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 94,
+      "appearance_group": 16,
+      "appearance_group_label": "中学生",
+      "raw_hex": "10000f007800b80b0001071800320a1e0a64640a50466400",
+      "primary_product": 0,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 100
+    },
+    {
+      "id": 95,
+      "appearance_group": 17,
+      "appearance_group_label": "高校生",
+      "raw_hex": "110010007800dc050001180a00500a1e0a645a281e466400",
+      "primary_product": 0,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 96,
+      "appearance_group": 19,
+      "appearance_group_label": "女子高生",
+      "raw_hex": "13001000b400b80b14000a18006432321e645a281e466400",
+      "primary_product": 20,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 97,
+      "appearance_group": 19,
+      "appearance_group_label": "女子高生",
+      "raw_hex": "130010007800d0070001061800500a1e1e645a281e466400",
+      "primary_product": 0,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 98,
+      "appearance_group": 17,
+      "appearance_group_label": "高校生",
+      "raw_hex": "110011007800dc050001180a02500a0a0a645a281e466400",
+      "primary_product": 0,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 99,
+      "appearance_group": 19,
+      "appearance_group_label": "女子高生",
+      "raw_hex": "130011007800d0070001060701500a141e645a281e466400",
+      "primary_product": 0,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 100,
+      "appearance_group": 19,
+      "appearance_group_label": "女子高生",
+      "raw_hex": "130010007800d0070900060700500a1e1e645a281e466400",
+      "primary_product": 9,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 101,
+      "appearance_group": 17,
+      "appearance_group_label": "高校生",
+      "raw_hex": "110010007800b80b1819000a02500a0a0a645a281e466400",
+      "primary_product": 24,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 102,
+      "appearance_group": 19,
+      "appearance_group_label": "女子高生",
+      "raw_hex": "130011007800ac0d1806000a01500a141e6409281e466400",
+      "primary_product": 24,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 9
+    },
+    {
+      "id": 103,
+      "appearance_group": 17,
+      "appearance_group_label": "高校生",
+      "raw_hex": "110011007800a00f1600181902320a0a0a645a0a50466400",
+      "primary_product": 22,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 90
+    },
+    {
+      "id": 104,
+      "appearance_group": 20,
+      "appearance_group_label": "小学生",
+      "raw_hex": "14000e007800e8030a00061801320a463264463250466400",
+      "primary_product": 10,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 105,
+      "appearance_group": 21,
+      "appearance_group_label": "小学生",
+      "raw_hex": "15000f007800e8030a00061801320a463264463250466400",
+      "primary_product": 10,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 106,
+      "appearance_group": 20,
+      "appearance_group_label": "小学生",
+      "raw_hex": "14000f0078002003060018ff01320a463264463250466400",
+      "primary_product": 6,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 107,
+      "appearance_group": 21,
+      "appearance_group_label": "小学生",
+      "raw_hex": "15000e0078002003060018ff01320a463264463250466400",
+      "primary_product": 6,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 70
+    },
+    {
+      "id": 108,
+      "appearance_group": 22,
+      "appearance_group_label": "幼稚園児",
+      "raw_hex": "16000d007800f401060018ff001e005a50283c3264326400",
+      "primary_product": 6,
+      "initial_wait_budget": 40,
+      "service_and_sidestep_gate": 60
+    },
+    {
+      "id": 109,
+      "appearance_group": 23,
+      "appearance_group_label": "幼稚園児",
+      "raw_hex": "17000d007800f401060018ff001e005a50283c3264326400",
+      "primary_product": 6,
+      "initial_wait_budget": 40,
+      "service_and_sidestep_gate": 60
+    },
+    {
+      "id": 110,
+      "appearance_group": 25,
+      "appearance_group_label": "杖をついたおじいさん",
+      "raw_hex": "19000a00f000b80b0801191600501450500a146446466400",
+      "primary_product": 8,
+      "initial_wait_budget": 10,
+      "service_and_sidestep_gate": 20
+    },
+    {
+      "id": 111,
+      "appearance_group": 24,
+      "appearance_group_label": "甚平姿のおじいさん",
+      "raw_hex": "18000f006801881302060d0c00461450500a146446466400",
+      "primary_product": 2,
+      "initial_wait_budget": 10,
+      "service_and_sidestep_gate": 20
+    },
+    {
+      "id": 112,
+      "appearance_group": 24,
+      "appearance_group_label": "甚平姿のおじいさん",
+      "raw_hex": "180009006801881313170b160014145a640a146446466400",
+      "primary_product": 19,
+      "initial_wait_budget": 10,
+      "service_and_sidestep_gate": 20
+    },
+    {
+      "id": 113,
+      "appearance_group": 25,
+      "appearance_group_label": "杖をついたおじいさん",
+      "raw_hex": "19000a006801401f17131116000a145a640a146446466400",
+      "primary_product": 23,
+      "initial_wait_budget": 10,
+      "service_and_sidestep_gate": 20
+    },
+    {
+      "id": 114,
+      "appearance_group": 26,
+      "appearance_group_label": "着物姿のおばあさん",
+      "raw_hex": "1a000b006801102713170b1600141e5a6414146446466400",
+      "primary_product": 19,
+      "initial_wait_budget": 20,
+      "service_and_sidestep_gate": 20
+    },
+    {
+      "id": 115,
+      "appearance_group": 27,
+      "appearance_group_label": "ｶｰﾄ押しのおばあさん",
+      "raw_hex": "1b000b006801401f17131116000a1e5a6414146446466400",
+      "primary_product": 23,
+      "initial_wait_budget": 20,
+      "service_and_sidestep_gate": 20
+    },
+    {
+      "id": 116,
+      "appearance_group": 25,
+      "appearance_group_label": "杖をついたおじいさん",
+      "raw_hex": "19001000680170170d0c0e100032145a640a146446466400",
+      "primary_product": 13,
+      "initial_wait_budget": 10,
+      "service_and_sidestep_gate": 20
+    },
+    {
+      "id": 117,
+      "appearance_group": 26,
+      "appearance_group_label": "着物姿のおばあさん",
+      "raw_hex": "1a000f00680170170d0c0e1000321e5a6414146446466400",
+      "primary_product": 13,
+      "initial_wait_budget": 20,
+      "service_and_sidestep_gate": 20
+    },
+    {
+      "id": 118,
+      "appearance_group": 27,
+      "appearance_group_label": "ｶｰﾄ押しのおばあさん",
+      "raw_hex": "1b000b006801401f1617130c005a1e465014146446466400",
+      "primary_product": 22,
+      "initial_wait_budget": 20,
+      "service_and_sidestep_gate": 20
+    },
+    {
+      "id": 119,
+      "appearance_group": 27,
+      "appearance_group_label": "ｶｰﾄ押しのおばあさん",
+      "raw_hex": "1b000d006801581b1501060b005014645014146446466400",
+      "primary_product": 21,
+      "initial_wait_budget": 20,
+      "service_and_sidestep_gate": 20
+    },
+    {
+      "id": 120,
+      "appearance_group": 28,
+      "appearance_group_label": "籠を持ったおばさん",
+      "raw_hex": "1c000a00f0001027130d0e11006464284664325028506400",
+      "primary_product": 19,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 50
+    },
+    {
+      "id": 121,
+      "appearance_group": 29,
+      "appearance_group_label": "ｴﾌﾟﾛﾝ姿のおばさん",
+      "raw_hex": "1d000e00f000983a13170e0b016464144664325028506400",
+      "primary_product": 19,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 50
+    },
+    {
+      "id": 122,
+      "appearance_group": 28,
+      "appearance_group_label": "籠を持ったおばさん",
+      "raw_hex": "1c000a00f000e02e17130f0c006464284664325032506400",
+      "primary_product": 23,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 50
+    },
+    {
+      "id": 123,
+      "appearance_group": 29,
+      "appearance_group_label": "ｴﾌﾟﾛﾝ姿のおばさん",
+      "raw_hex": "1d000e00f000e02e170c1110016464144664325032506400",
+      "primary_product": 23,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 50
+    },
+    {
+      "id": 124,
+      "appearance_group": 30,
+      "appearance_group_label": "割烹着姿のおばさん",
+      "raw_hex": "1e000a00f00088130c0f110e0064641e5064325028506400",
+      "primary_product": 12,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 50
+    },
+    {
+      "id": 125,
+      "appearance_group": 31,
+      "appearance_group_label": "ｶｰﾙ髪のおばさん",
+      "raw_hex": "1f000a00f00088130e04051101645a145064325028506400",
+      "primary_product": 14,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 50
+    },
+    {
+      "id": 126,
+      "appearance_group": 28,
+      "appearance_group_label": "籠を持ったおばさん",
+      "raw_hex": "1c000f00f000401f0c0d0e1000645a1e506432501e506400",
+      "primary_product": 12,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 50
+    },
+    {
+      "id": 127,
+      "appearance_group": 29,
+      "appearance_group_label": "ｴﾌﾟﾛﾝ姿のおばさん",
+      "raw_hex": "1d000f00f000401f0d0c0e1003645a0a506432501e506400",
+      "primary_product": 13,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 50
+    },
+    {
+      "id": 128,
+      "appearance_group": 30,
+      "appearance_group_label": "割烹着姿のおばさん",
+      "raw_hex": "1e001000f00010270e0c0d1002645a0a506432501e506400",
+      "primary_product": 14,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 50
+    },
+    {
+      "id": 129,
+      "appearance_group": 31,
+      "appearance_group_label": "ｶｰﾙ髪のおばさん",
+      "raw_hex": "1f001100f00010270c0d0e1003645a0a506432501e506400",
+      "primary_product": 12,
+      "initial_wait_budget": 100,
+      "service_and_sidestep_gate": 50
+    },
+    {
+      "id": 130,
+      "appearance_group": 32,
+      "appearance_group_label": "子供連れのおじさん",
+      "raw_hex": "20001400f000a00f06000918033c32141e281e5046146400",
+      "primary_product": 6,
+      "initial_wait_budget": 40,
+      "service_and_sidestep_gate": 30
+    },
+    {
+      "id": 131,
+      "appearance_group": 33,
+      "appearance_group_label": "子抱きのおばさん",
+      "raw_hex": "21001400f0008813060018160032503c46281e463c146400",
+      "primary_product": 6,
+      "initial_wait_budget": 40,
+      "service_and_sidestep_gate": 30
+    },
+    {
+      "id": 132,
+      "appearance_group": 32,
+      "appearance_group_label": "子供連れのおじさん",
+      "raw_hex": "20000f00f000204e0b131718005032321e281e5046146400",
+      "primary_product": 11,
+      "initial_wait_budget": 40,
+      "service_and_sidestep_gate": 30
+    },
+    {
+      "id": 133,
+      "appearance_group": 33,
+      "appearance_group_label": "子抱きのおばさん",
+      "raw_hex": "21000f00f00050460b1713180346501446281e463c146400",
+      "primary_product": 11,
+      "initial_wait_budget": 40,
+      "service_and_sidestep_gate": 30
+    },
+    {
+      "id": 134,
+      "appearance_group": 34,
+      "appearance_group_label": "子供連れのおばさん",
+      "raw_hex": "22000e00f0001027130c0e1001505a2846321e5032146400",
+      "primary_product": 19,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 30
+    },
+    {
+      "id": 135,
+      "appearance_group": 35,
+      "appearance_group_label": "ﾍﾞﾋﾞｰｶｰのおばさん",
+      "raw_hex": "23000f00f000983a170c111003505a0a46321e5032146400",
+      "primary_product": 23,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 30
+    },
+    {
+      "id": 136,
+      "appearance_group": 34,
+      "appearance_group_label": "子供連れのおばさん",
+      "raw_hex": "22001000f00088130d0c111003645a0a46321e5028146400",
+      "primary_product": 13,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 30
+    },
+    {
+      "id": 137,
+      "appearance_group": 35,
+      "appearance_group_label": "ﾍﾞﾋﾞｰｶｰのおばさん",
+      "raw_hex": "23001100f000401f0e0c0d1000645a4646321e5028146400",
+      "primary_product": 14,
+      "initial_wait_budget": 50,
+      "service_and_sidestep_gate": 30
+    },
+    {
+      "id": 138,
+      "appearance_group": 36,
+      "appearance_group_label": "車椅子に乗った男性",
+      "raw_hex": "24000e006801983a0700061600140064321e0a5032466400",
+      "primary_product": 7,
+      "initial_wait_budget": 30,
+      "service_and_sidestep_gate": 10
+    },
+    {
+      "id": 139,
+      "appearance_group": 37,
+      "appearance_group_label": "松葉杖をついた男性",
+      "raw_hex": "25000b006801983a0700061600140064321e0a5032466400",
+      "primary_product": 7,
+      "initial_wait_budget": 30,
+      "service_and_sidestep_gate": 10
+    },
+    {
+      "id": 140,
+      "appearance_group": 2,
+      "appearance_group_label": "緑の女子大生",
+      "raw_hex": "020011003c00b80b00090618033c14501450504650643200",
+      "primary_product": 0,
+      "initial_wait_budget": 80,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 141,
+      "appearance_group": 3,
+      "appearance_group_label": "白い大学生",
+      "raw_hex": "030011003c00b80b00090618033c14501450504650643200",
+      "primary_product": 0,
+      "initial_wait_budget": 80,
+      "service_and_sidestep_gate": 80
+    },
+    {
+      "id": 142,
+      "appearance_group": 32,
+      "appearance_group_label": "子供連れのおじさん",
+      "raw_hex": "200010003c0070170009061803461450142828503c146400",
+      "primary_product": 0,
+      "initial_wait_budget": 40,
+      "service_and_sidestep_gate": 40
+    },
+    {
+      "id": 143,
+      "appearance_group": 34,
+      "appearance_group_label": "子供連れのおばさん",
+      "raw_hex": "220010003c00701700090618034614501428285046146400",
+      "primary_product": 0,
+      "initial_wait_budget": 40,
+      "service_and_sidestep_gate": 40
+    }
+  ],
+  "field_meanings": {
+    "17": "Copied once into customer+1c at allocation; wait-resolution decrements this budget. Earlier exporter called it stamina.",
+    "18": "Second cashier-success roll and obstruction sidestep/replan threshold. Earlier exporter called it quickness. These are code-derived roles, not original UI labels."
+  },
+  "preserve_unusual_value": "Profile102 is9, not90; do not repair to a rounded tens value."
+}

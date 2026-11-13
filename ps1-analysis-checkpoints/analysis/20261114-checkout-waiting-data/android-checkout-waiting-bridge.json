@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "customer_fields": {
+    "0x1c": "remaining wait budget, initialized from profile+17",
+    "0x0a": "signed16 cart amount per group member",
+    "0x1e": "signed8 group quantity"
+  },
+  "wait_order": [
+    "Always consume first rand()%100+1 roll, even while patience remains positive.",
+    "Force argument!=0 sets wait budget0. Otherwise positive budget consumes a second RNG; rand()&3==0 decrements1.",
+    "Budget still positive returns1 without payment, penalty or complaint increment.",
+    "Budget<=0 sets event flag0x20. Nonzero cart is paid through8001ca7c(store,cart*group_quantity,1), then cart becomes0.",
+    "Use the saved first roll for both penalty gates. roll%3==0 calls growth(mode=-1) for each occupied slot0..2. roll%10==0 decrements store+C68 only if>=6.",
+    "Increment signed store+12e1 by1 if<127; return0. Counter increment is independent of group quantity and the two penalty gates."
+  ],
+  "growth_penalty": "All assigned employees, not just the current cashier: decrease fields1e,1f,21,22 by1 when>=2. Do not decrease service20 or basic traits. Each growth call still consumes its entry RNG even for mode-1.",
+  "gate_coupling": "There are33 multiples of3 and10 multiples of10 in rolls1..100, with3 overlaps(30,60,90). These are roll bucket counts, not measured independent RNG probabilities.",
+  "callers": [
+    {
+      "call": "0x8003501c",
+      "force": 0,
+      "context": "purchase control: blocked movement after sidestep did not resolve"
+    },
+    {
+      "call": "0x800351d0",
+      "force": 1,
+      "context": "checkout with nonzero cart, no goal, destination search returns nonzero"
+    },
+    {
+      "call": "0x800352ac",
+      "force": 0,
+      "context": "at checkout goal after cashier service returned failure"
+    },
+    {
+      "call": "0x8003567c",
+      "force": 0,
+      "context": "checkout travel blocked after sidestep returned nonzero"
+    }
+  ],
+  "cashier": "Customer and employee facing cells must resolve to the same fixture anchor. Search assigned slots0..2; employee task1 and busy0 required. Mark busy1 before rolls; first eligible employee is used, and failure does not continue to another employee in this call.",
+  "service_rolls": "First roll1..100<=employee cashier1e; only if passed, second roll1..100<=profile18. Both pass calls growth(mode1). Busy flag remains set even if either roll fails.",
+  "busy_reset": "0x80024a10..80024aa0 clears the three per-store metadata busy words. Preserve this explicit preparation boundary instead of clearing after each customer.",
+  "success": "Checkout parent charges cart*group_quantity through same revenue routine, zeroes cart, sets flag0x200 and returns4. The wait path instead sets0x20 and checkout parent returns5.",
+  "not_inferred": [
+    "No real-time wait seconds measured.",
+    "No automatic dropping/restoring stock on complaint inferred.",
+    "No purpose/unlock for TOWNPS staff27 ownerFFFF established."
+  ]
+}

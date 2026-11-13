@@ -1,0 +1,65 @@
+{
+  "scope": "Arithmetic examples from original formulas, not runtime observations.",
+  "group_charge": {
+    "cart": 1200,
+    "group_quantity": 5,
+    "revenue": 6000,
+    "wait_complaint_increment": 1
+  },
+  "coupled_rolls": [
+    {
+      "roll": 3,
+      "all_staff_penalty": true,
+      "rating_penalty_when_ge6": false
+    },
+    {
+      "roll": 10,
+      "all_staff_penalty": false,
+      "rating_penalty_when_ge6": true
+    },
+    {
+      "roll": 30,
+      "all_staff_penalty": true,
+      "rating_penalty_when_ge6": true
+    },
+    {
+      "roll": 31,
+      "all_staff_penalty": false,
+      "rating_penalty_when_ge6": false
+    }
+  ],
+  "thresholds": [
+    {
+      "manager_academic": 0,
+      "wait_threshold": 11,
+      "first_wait_complaint_count": 12,
+      "stock_parking_threshold": 30,
+      "first_stock_parking_count": 31,
+      "high_detail": false
+    },
+    {
+      "manager_academic": 69,
+      "wait_threshold": 4,
+      "first_wait_complaint_count": 5,
+      "stock_parking_threshold": 12,
+      "first_stock_parking_count": 13,
+      "high_detail": false
+    },
+    {
+      "manager_academic": 70,
+      "wait_threshold": 4,
+      "first_wait_complaint_count": 5,
+      "stock_parking_threshold": 12,
+      "first_stock_parking_count": 13,
+      "high_detail": true
+    },
+    {
+      "manager_academic": 100,
+      "wait_threshold": 1,
+      "first_wait_complaint_count": 2,
+      "stock_parking_threshold": 5,
+      "first_stock_parking_count": 6,
+      "high_detail": true
+    }
+  ]
+}

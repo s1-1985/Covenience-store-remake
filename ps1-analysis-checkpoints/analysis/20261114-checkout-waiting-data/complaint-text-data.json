@@ -1,0 +1,239 @@
+{
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "messages": [
+    {
+      "address": "0x80098f4c",
+      "codes": [
+        16386,
+        184,
+        195,
+        87,
+        458,
+        459,
+        109,
+        544,
+        424,
+        73,
+        104,
+        93,
+        76,
+        108,
+        16639
+      ],
+      "text": "{4002}レジの混雑が解消されません"
+    },
+    {
+      "address": "0x80098f6c",
+      "codes": [
+        184,
+        195,
+        109,
+        458,
+        459,
+        74,
+        81,
+        16386,
+        16639
+      ],
+      "text": "レジが混雑して{4002}"
+    },
+    {
+      "address": "0x80098f80",
+      "codes": [
+        389,
+        87,
+        67,
+        382,
+        73,
+        108,
+        84,
+        16386,
+        546,
+        101,
+        104,
+        81,
+        74,
+        93,
+        64,
+        93,
+        74,
+        78,
+        16639
+      ],
+      "text": "人のお客さんに{4002}怒られてしまいました"
+    },
+    {
+      "address": "0x80098fa8",
+      "codes": [
+        310,
+        588,
+        87,
+        377,
+        378,
+        109,
+        356,
+        84,
+        405,
+        64,
+        93,
+        76,
+        108,
+        16639
+      ],
+      "text": "商品の補充が間に合いません"
+    },
+    {
+      "address": "0x80098fc4",
+      "codes": [
+        310,
+        588,
+        109,
+        588,
+        613,
+        104,
+        84,
+        83,
+        102,
+        16386,
+        16639
+      ],
+      "text": "商品が品切れになり{4002}"
+    },
+    {
+      "address": "0x80098fdc",
+      "codes": [
+        389,
+        87,
+        67,
+        382,
+        73,
+        108,
+        109,
+        16386,
+        388,
+        66,
+        93,
+        76,
+        108,
+        122,
+        74,
+        78,
+        16639
+      ],
+      "text": "人のお客さんが{4002}買えませんでした"
+    },
+    {
+      "address": "0x80099000",
+      "codes": [
+        322,
+        107,
+        321,
+        322,
+        122,
+        69,
+        83,
+        64,
+        16386,
+        67,
+        382,
+        73,
+        108,
+        109,
+        64,
+        93,
+        75,
+        16639
+      ],
+      "text": "車を駐車できない{4002}お客さんがいます"
+    },
+    {
+      "address": "0x80099024",
+      "codes": [
+        321,
+        322,
+        155,
+        212,
+        666,
+        155,
+        109,
+        445,
+        70,
+        81,
+        16386,
+        16639
+      ],
+      "text": "駐車スペ―スが無くて{4002}"
+    },
+    {
+      "address": "0x8009903c",
+      "codes": [
+        389,
+        87,
+        67,
+        382,
+        73,
+        108,
+        109,
+        16386,
+        254,
+        104,
+        93,
+        76,
+        108,
+        122,
+        74,
+        78,
+        16639
+      ],
+      "text": "人のお客さんが{4002}入れませんでした"
+    },
+    {
+      "address": "0x80099060",
+      "codes": [
+        16386,
+        531,
+        380,
+        109,
+        418,
+        69,
+        552,
+        69,
+        93,
+        76,
+        108,
+        16639
+      ],
+      "text": "{4002}清掃が行き届きません"
+    }
+  ],
+  "decoding": "Existing by-eye font transcription reused; fresh source words decoded here, no new OCR.",
+  "channels": [
+    {
+      "counter": "store+0x12e1",
+      "meaning": "wait resolution exhaustion/force calls",
+      "threshold": "trunc((100-manager_academic)/10)+1",
+      "low": "0x80098f4c",
+      "high_prefix": "0x80098f6c",
+      "high_suffix": "0x80098f80"
+    },
+    {
+      "counter": "store+0x12e2",
+      "meaning": "failed acquisition calls",
+      "threshold": "trunc((100-manager_academic)/4)+5",
+      "low": "0x80098fa8",
+      "high_prefix": "0x80098fc4",
+      "high_suffix": "0x80098fdc"
+    },
+    {
+      "counter": "store+0x12e3",
+      "meaning": "parking-overflow branch occurrences",
+      "threshold": "trunc((100-manager_academic)/4)+5",
+      "low": "0x80099000",
+      "high_prefix": "0x80099024",
+      "high_suffix": "0x8009903c"
+    }
+  ],
+  "gate": "Strict counter>threshold; academic<70 uses low-detail text, >=70 inserts the raw counter into the high-detail text. Text says people, but these writers increment once per triggering call/branch, without multiplying by group quantity.",
+  "cleaning": "counter12e4>=4 then one roll1..100<=academic; text0x80099060",
+  "reset": "All4 counters cleared at minute0 with(hour&3)==0; also after queued warning and after rare statistics block. Rival-flag stores return before this reporting path."
+}

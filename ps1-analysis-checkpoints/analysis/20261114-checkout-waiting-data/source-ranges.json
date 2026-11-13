@@ -1,0 +1,74 @@
+[
+  {
+    "name": "customer_allocation_wait",
+    "address": "0x80031e3c",
+    "bytes": 232,
+    "sha256": "40f66c49d87f91cbcfbb7d739401496498913293abcd46284a44aa44961afe44"
+  },
+  {
+    "name": "purchase_wait_call",
+    "address": "0x80034f4c",
+    "bytes": 476,
+    "sha256": "3c9777999868018c7bbf789fbef6d84927f1d04b05789accddf63129bbba3c27"
+  },
+  {
+    "name": "checkout_control",
+    "address": "0x80035128",
+    "bytes": 1608,
+    "sha256": "c5d8dcd23f97962375f204944596679b9e2d72dcbbb4d52276db787bda026a33"
+  },
+  {
+    "name": "wait_resolution",
+    "address": "0x80035d58",
+    "bytes": 844,
+    "sha256": "c6ef2a3f9e30b87d2018194827eab7beee0c3508c28cba94c7bfa6a396ddb112"
+  },
+  {
+    "name": "cashier_service",
+    "address": "0x8003839c",
+    "bytes": 1272,
+    "sha256": "ce60c5da41cabc86669f51ef367616d039e2780412e89ef4fe21af7fca6abe58"
+  },
+  {
+    "name": "growth_entry",
+    "address": "0x8003aa58",
+    "bytes": 204,
+    "sha256": "66df6cf54267d7efad7c3a538e9baed00df8742551f7ae864429e3c9596eb0b4"
+  },
+  {
+    "name": "growth_minus_one",
+    "address": "0x8003b158",
+    "bytes": 288,
+    "sha256": "3c633066c3a8ebcdf99ef3e327fbe31374ff6eaff1133fc89acc66ed43b429dd"
+  },
+  {
+    "name": "advice",
+    "address": "0x8003b570",
+    "bytes": 2488,
+    "sha256": "2b81347c4676751bcfb8780054e87eef86bb22fe0b35f7232600093bd319b80f"
+  },
+  {
+    "name": "cashier_busy_reset",
+    "address": "0x80024a10",
+    "bytes": 144,
+    "sha256": "16483985966079aa194745bac26c9b05f3d4d15ed349de34da14fea5b14554cd"
+  },
+  {
+    "name": "revenue_commit",
+    "address": "0x8001ca7c",
+    "bytes": 332,
+    "sha256": "580681174fc7e360f4f135794edab95be9ff830a67667c06015e2640b27349b2"
+  },
+  {
+    "name": "shopping-profiles",
+    "address": "0x800a09d0",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "name": "complaint-text",
+    "address": "0x80098f4c",
+    "bytes": 308,
+    "sha256": "721a1b79fd45a3f38f9ae749d4ca1f719b914323d6f0fd2f9a4e39bcbcfc8ed5"
+  }
+]

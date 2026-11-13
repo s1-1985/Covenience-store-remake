@@ -1,25 +1,18 @@
 {
   "date_jst": "2026-11-14",
-  "work_kind": "staff_roster_growth_source_data_analysis",
-  "report": "analysis/20261114-staff-roster-growth-data/README.md",
+  "work_kind": "customer_checkout_waiting_source_data_analysis",
+  "report": "analysis/20261114-checkout-waiting-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "person_profiles": 35,
-  "map_staff_states": 140,
-  "free_by_map": {
-    "TOWN0001": 29,
-    "TOWN0002": 26,
-    "TOWN0003": 32,
-    "TOWNPS": 23
-  },
-  "canonical_field_names": {
-    "0x1A": "教育",
-    "0x1D": "学歴",
-    "0x20": "接客"
-  },
-  "new_specification": "Complete shared35 initial profiles and140 map-specific states. Original UI labels correct inferred leadership to academic background and identify customer-service byte. Preserve source hiring RNG order, hard/soft growth limits, role appearance, rest recovery, annual age/wage and separate wage display/payroll.",
-  "previous_report": "analysis/20261114-restocking-stockout-data/README.md",
-  "android_bridge": "analysis/20261114-staff-roster-growth-data/android-staff-roster-bridge.json",
+  "profiles": 144,
+  "source_complaint_strings": 10,
+  "direct_wait_calls": 4,
+  "direct_growth_calls": 4,
+  "new_specification": "Link144 actual profile wait/service values to four wait call contexts, all-occupied-staff penalty and source complaint text. Preserve profile102 gate9, cashier busy-before-roll ordering, payment even on exhausted/forced wait, per-call complaint counts and original warning resets.",
+  "known_before": "Isolated wait_resolution, cashier service and store_advice models existed. This work links them to all144 original profile records, original text, caller contexts and the full occupied-staff penalty scope.",
+  "previous_report": "analysis/20261114-staff-roster-growth-data/README.md",
+  "android_bridge": "analysis/20261114-checkout-waiting-data/android-checkout-waiting-bridge.json",
   "original_cpu_updates_this_work": 0,
-  "next_priority": "Continue unresolved normal-play source-data analysis, then integrate recovered specifications into native Android and build APK."
+  "unresolved": "TOWNPS staff27 ownerFFFF purpose/unlock remains unestablished.",
+  "next_priority": "Continue necessary normal-play data analysis, integrate recovered specifications into native Android, then build APK."
 }

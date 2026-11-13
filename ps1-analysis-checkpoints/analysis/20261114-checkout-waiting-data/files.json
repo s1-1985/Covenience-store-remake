@@ -1,0 +1,112 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 10253,
+    "sha256": "d074213e5228f5c40d7ad557268c1e4a1b6cc7ed89e2117aa61910bad10042d0"
+  },
+  {
+    "path": "android-checkout-waiting-bridge.json",
+    "bytes": 2960,
+    "sha256": "f66c9a4fb7b31e56183cebfca4a738ba602e1db0fa6667c17ce659330111fbd3"
+  },
+  {
+    "path": "checkout-readers.asm",
+    "bytes": 66896,
+    "sha256": "26528e32dc36d40580a8a75998b3a0ca324fb924799dbb6727b55707c070b767"
+  },
+  {
+    "path": "complaint-text-data.json",
+    "bytes": 4641,
+    "sha256": "3ee8bf2622fb1fa83a4c04e88a600780787d3f04fce5b0060bd3379fbbcd4d6c"
+  },
+  {
+    "path": "customer-checkout-data.json",
+    "bytes": 41517,
+    "sha256": "c307163c9a66e195eb827a232093adf8b27381c5fa86813265b60544fb11101e"
+  },
+  {
+    "path": "direct-call-sites.json",
+    "bytes": 191,
+    "sha256": "a8a54b000498249b554d0b47d6d7aefe53efc5bf2c9d19907ac2179603fa2876"
+  },
+  {
+    "path": "extract-checkout-data.py",
+    "bytes": 10806,
+    "sha256": "7651aaeefa4d32e1e00a673b6ce5d966c8b8862d0ed7dbccc237794d8221ad5f"
+  },
+  {
+    "path": "source/advice.bin",
+    "bytes": 2488,
+    "sha256": "2b81347c4676751bcfb8780054e87eef86bb22fe0b35f7232600093bd319b80f"
+  },
+  {
+    "path": "source/cashier_busy_reset.bin",
+    "bytes": 144,
+    "sha256": "16483985966079aa194745bac26c9b05f3d4d15ed349de34da14fea5b14554cd"
+  },
+  {
+    "path": "source/cashier_service.bin",
+    "bytes": 1272,
+    "sha256": "ce60c5da41cabc86669f51ef367616d039e2780412e89ef4fe21af7fca6abe58"
+  },
+  {
+    "path": "source/checkout_control.bin",
+    "bytes": 1608,
+    "sha256": "c5d8dcd23f97962375f204944596679b9e2d72dcbbb4d52276db787bda026a33"
+  },
+  {
+    "path": "source/complaint-text.bin",
+    "bytes": 308,
+    "sha256": "721a1b79fd45a3f38f9ae749d4ca1f719b914323d6f0fd2f9a4e39bcbcfc8ed5"
+  },
+  {
+    "path": "source/customer_allocation_wait.bin",
+    "bytes": 232,
+    "sha256": "40f66c49d87f91cbcfbb7d739401496498913293abcd46284a44aa44961afe44"
+  },
+  {
+    "path": "source/growth_entry.bin",
+    "bytes": 204,
+    "sha256": "66df6cf54267d7efad7c3a538e9baed00df8742551f7ae864429e3c9596eb0b4"
+  },
+  {
+    "path": "source/growth_minus_one.bin",
+    "bytes": 288,
+    "sha256": "3c633066c3a8ebcdf99ef3e327fbe31374ff6eaff1133fc89acc66ed43b429dd"
+  },
+  {
+    "path": "source/purchase_wait_call.bin",
+    "bytes": 476,
+    "sha256": "3c9777999868018c7bbf789fbef6d84927f1d04b05789accddf63129bbba3c27"
+  },
+  {
+    "path": "source/revenue_commit.bin",
+    "bytes": 332,
+    "sha256": "580681174fc7e360f4f135794edab95be9ff830a67667c06015e2640b27349b2"
+  },
+  {
+    "path": "source/shopping-profiles.bin",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "path": "source/wait_resolution.bin",
+    "bytes": 844,
+    "sha256": "c6ef2a3f9e30b87d2018194827eab7beee0c3508c28cba94c7bfa6a396ddb112"
+  },
+  {
+    "path": "source-derived-examples.json",
+    "bytes": 1514,
+    "sha256": "be5ed716d958f53506f9295c561c4eb51e244bc24dc0001d76319e4d346083d0"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 2028,
+    "sha256": "fe71130c1d4cd9c39d6c4328b220867844ba2590934335ad6010ae3b9b80b23f"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 909,
+    "sha256": "85f3c90943dfc0942d45aa61bd86a64213a88b892c96b0f8eac413e7b19c55e1"
+  }
+]
