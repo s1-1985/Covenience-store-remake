@@ -1,0 +1,674 @@
+{
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "files": [
+    {
+      "path": "/3MIN.BIN",
+      "exact_iso_path_string_hits": []
+    },
+    {
+      "path": "/BGM/BGM01.SEQ",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2740,
+          "ram_address": "0x800102b4"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM01.VB",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2572,
+          "ram_address": "0x8001020c"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM01.VH",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2424,
+          "ram_address": "0x80010178"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM02.SEQ",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2720,
+          "ram_address": "0x800102a0"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM02.VB",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2556,
+          "ram_address": "0x800101fc"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM02.VH",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2408,
+          "ram_address": "0x80010168"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM03.SEQ",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2700,
+          "ram_address": "0x8001028c"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM03.VB",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2540,
+          "ram_address": "0x800101ec"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM03.VH",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2392,
+          "ram_address": "0x80010158"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM04.SEQ",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2680,
+          "ram_address": "0x80010278"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM04.VB",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2524,
+          "ram_address": "0x800101dc"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM04.VH",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2376,
+          "ram_address": "0x80010148"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM05.SEQ",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2660,
+          "ram_address": "0x80010264"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM05.VB",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2508,
+          "ram_address": "0x800101cc"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM05.VH",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2360,
+          "ram_address": "0x80010138"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM06.SEQ",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2640,
+          "ram_address": "0x80010250"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM06.VB",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2492,
+          "ram_address": "0x800101bc"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM06.VH",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2344,
+          "ram_address": "0x80010128"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM07.SEQ",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2620,
+          "ram_address": "0x8001023c"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM07.VB",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2476,
+          "ram_address": "0x800101ac"
+        }
+      ]
+    },
+    {
+      "path": "/BGM/BGM07.VH",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2328,
+          "ram_address": "0x80010118"
+        }
+      ]
+    },
+    {
+      "path": "/DAT/KABEE.BGD",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3572,
+          "ram_address": "0x800105f4"
+        }
+      ]
+    },
+    {
+      "path": "/DAT/KABEE.CEL",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3492,
+          "ram_address": "0x800105a4"
+        }
+      ]
+    },
+    {
+      "path": "/DAT/MSG00.OBJ",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3552,
+          "ram_address": "0x800105e0"
+        }
+      ]
+    },
+    {
+      "path": "/DAT/SHOP0302.BIN",
+      "exact_iso_path_string_hits": []
+    },
+    {
+      "path": "/DAT/STAFF.OBJ",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3532,
+          "ram_address": "0x800105cc"
+        }
+      ]
+    },
+    {
+      "path": "/DAT/TOWN0001.BIN",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3652,
+          "ram_address": "0x80010644"
+        }
+      ]
+    },
+    {
+      "path": "/DAT/TOWN0002.BIN",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3632,
+          "ram_address": "0x80010630"
+        }
+      ]
+    },
+    {
+      "path": "/DAT/TOWN0003.BIN",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3612,
+          "ram_address": "0x8001061c"
+        }
+      ]
+    },
+    {
+      "path": "/DAT/TOWNPS.BIN",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3592,
+          "ram_address": "0x80010608"
+        }
+      ]
+    },
+    {
+      "path": "/DAT/TOWN_PR1.CEL",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3512,
+          "ram_address": "0x800105b8"
+        }
+      ]
+    },
+    {
+      "path": "/LICENSEJ.DAT",
+      "exact_iso_path_string_hits": []
+    },
+    {
+      "path": "/MPLOGO.STR",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 5364,
+          "ram_address": "0x80010cf4"
+        }
+      ]
+    },
+    {
+      "path": "/SE/CON_KOE.VB",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2456,
+          "ram_address": "0x80010198"
+        }
+      ]
+    },
+    {
+      "path": "/SE/CON_KOE.VH",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2308,
+          "ram_address": "0x80010104"
+        }
+      ]
+    },
+    {
+      "path": "/SE/CON_SE.VB",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2440,
+          "ram_address": "0x80010188"
+        }
+      ]
+    },
+    {
+      "path": "/SE/CON_SE.VH",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2292,
+          "ram_address": "0x800100f4"
+        }
+      ]
+    },
+    {
+      "path": "/SE/SE.SEP",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2588,
+          "ram_address": "0x8001021c"
+        }
+      ]
+    },
+    {
+      "path": "/SE/VOS.SEP",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2604,
+          "ram_address": "0x8001022c"
+        }
+      ]
+    },
+    {
+      "path": "/SLPS_007.82",
+      "exact_iso_path_string_hits": []
+    },
+    {
+      "path": "/SOUND.XA",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 5000,
+          "ram_address": "0x80010b88"
+        }
+      ]
+    },
+    {
+      "path": "/SYSTEM.CNF",
+      "exact_iso_path_string_hits": []
+    },
+    {
+      "path": "/TIM0/BUILDIN1.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3096,
+          "ram_address": "0x80010418"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/CASE_T00.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3300,
+          "ram_address": "0x800104e4"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/CASE_T01.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2760,
+          "ram_address": "0x800102c8"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/IOLE.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3076,
+          "ram_address": "0x80010404"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/KAO01.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3160,
+          "ram_address": "0x80010458"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/KAO02.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3140,
+          "ram_address": "0x80010444"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/KYOU.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3280,
+          "ram_address": "0x800104d0"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/MAN0.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3260,
+          "ram_address": "0x800104bc"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/PSMOJI0.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3200,
+          "ram_address": "0x80010480"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/PSMOJI1.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3180,
+          "ram_address": "0x8001046c"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/PS_CM1.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3120,
+          "ram_address": "0x80010430"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/SHOPTYP1.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3324,
+          "ram_address": "0x800104fc"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/SHOP_T00.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3444,
+          "ram_address": "0x80010574"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/SHOP_T01.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3420,
+          "ram_address": "0x8001055c"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/SYOP_S00.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3396,
+          "ram_address": "0x80010544"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/SYOP_S01.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3372,
+          "ram_address": "0x8001052c"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/SYOP_S02.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3348,
+          "ram_address": "0x80010514"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/SYOP_S03.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2784,
+          "ram_address": "0x800102e0"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/TITL0.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3240,
+          "ram_address": "0x800104a8"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/TITL1.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3220,
+          "ram_address": "0x80010494"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/TOWN_PR1.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3468,
+          "ram_address": "0x8001058c"
+        }
+      ]
+    },
+    {
+      "path": "/TIM0/TOWN_YU1.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2848,
+          "ram_address": "0x80010320"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/ENDMOJI.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2872,
+          "ram_address": "0x80010338"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/ENDSH00.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2912,
+          "ram_address": "0x80010360"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/ENDSH01.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2892,
+          "ram_address": "0x8001034c"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/HULOGO0.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2828,
+          "ram_address": "0x8001030c"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/HULOGO1.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2808,
+          "ram_address": "0x800102f8"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/MISE000.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3032,
+          "ram_address": "0x800103d8"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/MISE001.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3012,
+          "ram_address": "0x800103c4"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/MISE002.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2992,
+          "ram_address": "0x800103b0"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/MISE003.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2972,
+          "ram_address": "0x8001039c"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/MISE005.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2952,
+          "ram_address": "0x80010388"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/MISE006.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 2932,
+          "ram_address": "0x80010374"
+        }
+      ]
+    },
+    {
+      "path": "/TIM1/TOTYO001.TIM",
+      "exact_iso_path_string_hits": [
+        {
+          "exe_file_offset": 3052,
+          "ram_address": "0x800103ec"
+        }
+      ]
+    }
+  ],
+  "limits": "Literal exact filename search only; no-reference files can still be opened by constructed names."
+}

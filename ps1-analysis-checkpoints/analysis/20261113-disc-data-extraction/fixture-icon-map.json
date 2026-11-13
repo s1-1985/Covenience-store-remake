@@ -1,0 +1,630 @@
+{
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "descriptor_stride": 196,
+  "icon_field_offset": 80,
+  "rows": [
+    {
+      "fixture_kind": 0,
+      "descriptor_address": "0x80099f0c",
+      "icon_index_word20": 1,
+      "atlas_32px_rect": [
+        32,
+        0,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 1,
+      "descriptor_address": "0x80099fd0",
+      "icon_index_word20": 2,
+      "atlas_32px_rect": [
+        64,
+        0,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 2,
+      "descriptor_address": "0x8009a094",
+      "icon_index_word20": 3,
+      "atlas_32px_rect": [
+        96,
+        0,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 3,
+      "descriptor_address": "0x8009a158",
+      "icon_index_word20": 4,
+      "atlas_32px_rect": [
+        128,
+        0,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 4,
+      "descriptor_address": "0x8009a21c",
+      "icon_index_word20": 5,
+      "atlas_32px_rect": [
+        160,
+        0,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 5,
+      "descriptor_address": "0x8009a2e0",
+      "icon_index_word20": 6,
+      "atlas_32px_rect": [
+        192,
+        0,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 6,
+      "descriptor_address": "0x8009a3a4",
+      "icon_index_word20": 7,
+      "atlas_32px_rect": [
+        224,
+        0,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 7,
+      "descriptor_address": "0x8009a468",
+      "icon_index_word20": 8,
+      "atlas_32px_rect": [
+        0,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 8,
+      "descriptor_address": "0x8009a52c",
+      "icon_index_word20": 9,
+      "atlas_32px_rect": [
+        32,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 9,
+      "descriptor_address": "0x8009a5f0",
+      "icon_index_word20": 10,
+      "atlas_32px_rect": [
+        64,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 10,
+      "descriptor_address": "0x8009a6b4",
+      "icon_index_word20": 11,
+      "atlas_32px_rect": [
+        96,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 11,
+      "descriptor_address": "0x8009a778",
+      "icon_index_word20": 12,
+      "atlas_32px_rect": [
+        128,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 12,
+      "descriptor_address": "0x8009a83c",
+      "icon_index_word20": 13,
+      "atlas_32px_rect": [
+        160,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 13,
+      "descriptor_address": "0x8009a900",
+      "icon_index_word20": 14,
+      "atlas_32px_rect": [
+        192,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 14,
+      "descriptor_address": "0x8009a9c4",
+      "icon_index_word20": 15,
+      "atlas_32px_rect": [
+        224,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 15,
+      "descriptor_address": "0x8009aa88",
+      "icon_index_word20": 16,
+      "atlas_32px_rect": [
+        0,
+        64,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 16,
+      "descriptor_address": "0x8009ab4c",
+      "icon_index_word20": 17,
+      "atlas_32px_rect": [
+        32,
+        64,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 17,
+      "descriptor_address": "0x8009ac10",
+      "icon_index_word20": 18,
+      "atlas_32px_rect": [
+        64,
+        64,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 18,
+      "descriptor_address": "0x8009acd4",
+      "icon_index_word20": 19,
+      "atlas_32px_rect": [
+        96,
+        64,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 19,
+      "descriptor_address": "0x8009ad98",
+      "icon_index_word20": 20,
+      "atlas_32px_rect": [
+        128,
+        64,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 20,
+      "descriptor_address": "0x8009ae5c",
+      "icon_index_word20": 21,
+      "atlas_32px_rect": [
+        160,
+        64,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 21,
+      "descriptor_address": "0x8009af20",
+      "icon_index_word20": 22,
+      "atlas_32px_rect": [
+        192,
+        64,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 22,
+      "descriptor_address": "0x8009afe4",
+      "icon_index_word20": 23,
+      "atlas_32px_rect": [
+        224,
+        64,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 23,
+      "descriptor_address": "0x8009b0a8",
+      "icon_index_word20": 24,
+      "atlas_32px_rect": [
+        0,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 24,
+      "descriptor_address": "0x8009b16c",
+      "icon_index_word20": 25,
+      "atlas_32px_rect": [
+        32,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 25,
+      "descriptor_address": "0x8009b230",
+      "icon_index_word20": 26,
+      "atlas_32px_rect": [
+        64,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 26,
+      "descriptor_address": "0x8009b2f4",
+      "icon_index_word20": 27,
+      "atlas_32px_rect": [
+        96,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 27,
+      "descriptor_address": "0x8009b3b8",
+      "icon_index_word20": 28,
+      "atlas_32px_rect": [
+        128,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 28,
+      "descriptor_address": "0x8009b47c",
+      "icon_index_word20": 29,
+      "atlas_32px_rect": [
+        160,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 29,
+      "descriptor_address": "0x8009b540",
+      "icon_index_word20": 30,
+      "atlas_32px_rect": [
+        192,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 30,
+      "descriptor_address": "0x8009b604",
+      "icon_index_word20": 31,
+      "atlas_32px_rect": [
+        224,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 31,
+      "descriptor_address": "0x8009b6c8",
+      "icon_index_word20": 32,
+      "atlas_32px_rect": [
+        0,
+        128,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 32,
+      "descriptor_address": "0x8009b78c",
+      "icon_index_word20": 33,
+      "atlas_32px_rect": [
+        32,
+        128,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 33,
+      "descriptor_address": "0x8009b850",
+      "icon_index_word20": 34,
+      "atlas_32px_rect": [
+        64,
+        128,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 34,
+      "descriptor_address": "0x8009b914",
+      "icon_index_word20": 35,
+      "atlas_32px_rect": [
+        96,
+        128,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 35,
+      "descriptor_address": "0x8009b9d8",
+      "icon_index_word20": 36,
+      "atlas_32px_rect": [
+        128,
+        128,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 36,
+      "descriptor_address": "0x8009ba9c",
+      "icon_index_word20": 37,
+      "atlas_32px_rect": [
+        160,
+        128,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 37,
+      "descriptor_address": "0x8009bb60",
+      "icon_index_word20": 38,
+      "atlas_32px_rect": [
+        192,
+        128,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 38,
+      "descriptor_address": "0x8009bc24",
+      "icon_index_word20": 39,
+      "atlas_32px_rect": [
+        224,
+        128,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 39,
+      "descriptor_address": "0x8009bce8",
+      "icon_index_word20": 40,
+      "atlas_32px_rect": [
+        0,
+        160,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 40,
+      "descriptor_address": "0x8009bdac",
+      "icon_index_word20": 41,
+      "atlas_32px_rect": [
+        32,
+        160,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 41,
+      "descriptor_address": "0x8009be70",
+      "icon_index_word20": 42,
+      "atlas_32px_rect": [
+        64,
+        160,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 42,
+      "descriptor_address": "0x8009bf34",
+      "icon_index_word20": 43,
+      "atlas_32px_rect": [
+        96,
+        160,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 43,
+      "descriptor_address": "0x8009bff8",
+      "icon_index_word20": 44,
+      "atlas_32px_rect": [
+        128,
+        160,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 44,
+      "descriptor_address": "0x8009c0bc",
+      "icon_index_word20": 45,
+      "atlas_32px_rect": [
+        160,
+        160,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 45,
+      "descriptor_address": "0x8009c180",
+      "icon_index_word20": 54,
+      "atlas_32px_rect": [
+        192,
+        192,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 46,
+      "descriptor_address": "0x8009c244",
+      "icon_index_word20": 49,
+      "atlas_32px_rect": [
+        32,
+        192,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 47,
+      "descriptor_address": "0x8009c308",
+      "icon_index_word20": 53,
+      "atlas_32px_rect": [
+        160,
+        192,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 48,
+      "descriptor_address": "0x8009c3cc",
+      "icon_index_word20": 51,
+      "atlas_32px_rect": [
+        96,
+        192,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 49,
+      "descriptor_address": "0x8009c490",
+      "icon_index_word20": 52,
+      "atlas_32px_rect": [
+        128,
+        192,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 50,
+      "descriptor_address": "0x8009c554",
+      "icon_index_word20": 46,
+      "atlas_32px_rect": [
+        192,
+        160,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 51,
+      "descriptor_address": "0x8009c618",
+      "icon_index_word20": 47,
+      "atlas_32px_rect": [
+        224,
+        160,
+        32,
+        32
+      ]
+    },
+    {
+      "fixture_kind": 52,
+      "descriptor_address": "0x8009c6dc",
+      "icon_index_word20": 48,
+      "atlas_32px_rect": [
+        0,
+        192,
+        32,
+        32
+      ]
+    }
+  ],
+  "alternate_case_texture_difference": {
+    "baseline": "/TIM0/CASE_T00.TIM",
+    "alternate": "/TIM0/CASE_T01.TIM",
+    "same_palette": true,
+    "changed_pixel_indices": 397,
+    "changed_tiles": [
+      {
+        "x": 12,
+        "y": 12,
+        "pixels": 91
+      },
+      {
+        "x": 12,
+        "y": 13,
+        "pixels": 94
+      },
+      {
+        "x": 13,
+        "y": 12,
+        "pixels": 105
+      },
+      {
+        "x": 13,
+        "y": 13,
+        "pixels": 107
+      }
+    ],
+    "index_difference_bbox": [
+      200,
+      193,
+      216,
+      223
+    ],
+    "changed_32px_icon_slots": [
+      54
+    ],
+    "descriptor_referencing_slot": [
+      45
+    ]
+  }
+}
