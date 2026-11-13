@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-11-13",
+  "issue": 232,
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "scope": "Isolated reproducible cross-type 24px fixture rendering and seam triage; no source or game changes",
+  "new_tool": "chatgpt_map_assets/tools/issue232_cross_type_fixtures_2026_11_13.py",
+  "source_manifest": "chatgpt_map_assets/manifests/issue232_cross_type_existing_12_readonly_2026-11-11.json",
+  "dependency": "chatgpt_map_assets/tools/issue232_cross_type_seam_recheck_2026_11_12.py",
+  "planned_actual_source_pngs": 19,
+  "planned_focused_fixture_pngs": 12,
+  "planned_adjacent_edge_diagnostics": 28,
+  "verified_this_run": {
+    "python_compile_pass": true,
+    "synthetic_edge_mae_pass": true,
+    "end_to_end_synthetic_render_pass": true,
+    "synthetic_source_records": 19,
+    "synthetic_fixture_pngs_written": 12,
+    "synthetic_edge_diagnostics": 28,
+    "synthetic_existing_output_refusal_pass": true,
+    "synthetic_path_traversal_refusal_pass": true,
+    "github_new_script_committed": true,
+    "real_main_pngs_loaded_by_new_tool": false,
+    "real_fixture_pngs_rendered": false,
+    "godot_render_executed": false,
+    "ps1_appearance_verified": false,
+    "game_regression_executed": false
+  },
+  "usage": "python chatgpt_map_assets/tools/issue232_cross_type_fixtures_2026_11_13.py --repo-root /absolute/path/to/checkout --output-name output_cross_type_first",
+  "writes": "Only a new chatgpt_map_assets/output_* directory in a local checkout; never edits source files or game code",
+  "cautions": [
+    "Local git main ref and Pillow are required; this runtime has no Git checkout of the repo or Godot and cannot run against actual source PNGs.",
+    "Fixture neighbors are candidate topology based on names; the original game may use different connectivity.",
+    "Pillow 24px nearest composites are not Godot runtime screenshots.",
+    "RGB seam MAE is diagnostic only and cannot prove visual continuity or original PlayStation fidelity.",
+    "No issue #232 checkbox satisfies its full acceptance conditions."
+  ],
+  "issue_checkbox_changes": 0,
+  "all_tasks_complete": false
+}
