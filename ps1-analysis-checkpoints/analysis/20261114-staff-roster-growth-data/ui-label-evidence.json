@@ -1,0 +1,598 @@
+{
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "inline_labels": [
+    {
+      "address": "0x800b9654",
+      "codes": [
+        359,
+        255,
+        16386,
+        367,
+        368,
+        16386,
+        369,
+        370,
+        371,
+        16386,
+        372,
+        373,
+        371,
+        16639
+      ],
+      "text": "体力{4002}学歴{4002}敏捷性{4002}社交性"
+    },
+    {
+      "address": "0x800b96b0",
+      "codes": [
+        359,
+        255,
+        16386,
+        375,
+        376,
+        16386,
+        184,
+        195,
+        16386,
+        377,
+        378,
+        16386,
+        379,
+        306,
+        16386,
+        531,
+        380,
+        16386,
+        381,
+        382,
+        16639
+      ],
+      "text": "体力{4002}教育{4002}レジ{4002}補充{4002}警備{4002}清掃{4002}接客"
+    },
+    {
+      "address": "0x800b9670",
+      "codes": [
+        365,
+        366,
+        63,
+        102,
+        16639
+      ],
+      "text": "経験あり"
+    },
+    {
+      "address": "0x800b967c",
+      "codes": [
+        365,
+        366,
+        83,
+        74,
+        16639
+      ],
+      "text": "経験なし"
+    }
+  ],
+  "name_source": "/DAT/MSG00.OBJ",
+  "name_source_sha256": "d2ab3800ee82628cafe96d94f58d9790653b4e5387cbacc7097cc67c5ac18635",
+  "staff_names": [
+    {
+      "id": 0,
+      "message_index": 150,
+      "source_offset": 4440,
+      "codes": [
+        505,
+        225,
+        278,
+        506,
+        405,
+        16639
+      ],
+      "name": "竹中小百合"
+    },
+    {
+      "id": 1,
+      "message_index": 151,
+      "source_offset": 4452,
+      "codes": [
+        507,
+        475,
+        508,
+        509,
+        16639
+      ],
+      "name": "吉田有紀"
+    },
+    {
+      "id": 2,
+      "message_index": 152,
+      "source_offset": 4462,
+      "codes": [
+        278,
+        510,
+        511,
+        394,
+        16639
+      ],
+      "name": "小宮千明"
+    },
+    {
+      "id": 3,
+      "message_index": 153,
+      "source_offset": 4472,
+      "codes": [
+        514,
+        475,
+        603,
+        337,
+        16639
+      ],
+      "name": "浜田裕子"
+    },
+    {
+      "id": 4,
+      "message_index": 154,
+      "source_offset": 4482,
+      "codes": [
+        410,
+        475,
+        520,
+        337,
+        16639
+      ],
+      "name": "万田町子"
+    },
+    {
+      "id": 5,
+      "message_index": 155,
+      "source_offset": 4492,
+      "codes": [
+        566,
+        567,
+        472,
+        337,
+        16639
+      ],
+      "name": "富永福子"
+    },
+    {
+      "id": 6,
+      "message_index": 156,
+      "source_offset": 4502,
+      "codes": [
+        519,
+        475,
+        461,
+        337,
+        16639
+      ],
+      "name": "忍田信子"
+    },
+    {
+      "id": 7,
+      "message_index": 157,
+      "source_offset": 4512,
+      "codes": [
+        521,
+        522,
+        523,
+        524,
+        337,
+        16639
+      ],
+      "name": "市川智恵子"
+    },
+    {
+      "id": 8,
+      "message_index": 158,
+      "source_offset": 4524,
+      "codes": [
+        467,
+        525,
+        526,
+        523,
+        337,
+        16639
+      ],
+      "name": "杉村真智子"
+    },
+    {
+      "id": 9,
+      "message_index": 159,
+      "source_offset": 4536,
+      "codes": [
+        475,
+        225,
+        568,
+        337,
+        16639
+      ],
+      "name": "田中幸子"
+    },
+    {
+      "id": 10,
+      "message_index": 160,
+      "source_offset": 4546,
+      "codes": [
+        516,
+        477,
+        517,
+        518,
+        16639
+      ],
+      "name": "花沢咲江"
+    },
+    {
+      "id": 11,
+      "message_index": 161,
+      "source_offset": 4556,
+      "codes": [
+        512,
+        225,
+        513,
+        337,
+        16639
+      ],
+      "name": "里中涼子"
+    },
+    {
+      "id": 12,
+      "message_index": 162,
+      "source_offset": 4566,
+      "codes": [
+        460,
+        272,
+        461,
+        462,
+        16639
+      ],
+      "name": "山本信夫"
+    },
+    {
+      "id": 13,
+      "message_index": 163,
+      "source_offset": 4576,
+      "codes": [
+        460,
+        342,
+        250,
+        466,
+        16639
+      ],
+      "name": "山下大介"
+    },
+    {
+      "id": 14,
+      "message_index": 164,
+      "source_offset": 4586,
+      "codes": [
+        467,
+        272,
+        468,
+        469,
+        16639
+      ],
+      "name": "杉本三郎"
+    },
+    {
+      "id": 15,
+      "message_index": 165,
+      "source_offset": 4596,
+      "codes": [
+        247,
+        225,
+        482,
+        389,
+        16639
+      ],
+      "name": "雨中聖人"
+    },
+    {
+      "id": 16,
+      "message_index": 166,
+      "source_offset": 4606,
+      "codes": [
+        501,
+        272,
+        468,
+        502,
+        469,
+        16639
+      ],
+      "name": "秋本三四郎"
+    },
+    {
+      "id": 17,
+      "message_index": 167,
+      "source_offset": 4618,
+      "codes": [
+        497,
+        498,
+        499,
+        461,
+        500,
+        16639
+      ],
+      "name": "佐々木信雄"
+    },
+    {
+      "id": 18,
+      "message_index": 168,
+      "source_offset": 4630,
+      "codes": [
+        470,
+        460,
+        249,
+        471,
+        464,
+        16639
+      ],
+      "name": "森山雪之丈"
+    },
+    {
+      "id": 19,
+      "message_index": 169,
+      "source_offset": 4642,
+      "codes": [
+        489,
+        475,
+        228,
+        490,
+        16639
+      ],
+      "name": "西田年男"
+    },
+    {
+      "id": 20,
+      "message_index": 170,
+      "source_offset": 4652,
+      "codes": [
+        503,
+        475,
+        504,
+        268,
+        16639
+      ],
+      "name": "南田洋次"
+    },
+    {
+      "id": 21,
+      "message_index": 171,
+      "source_offset": 4662,
+      "codes": [
+        569,
+        390,
+        394,
+        16639
+      ],
+      "name": "谷口明"
+    },
+    {
+      "id": 22,
+      "message_index": 172,
+      "source_offset": 4670,
+      "codes": [
+        374,
+        477,
+        478,
+        479,
+        16639
+      ],
+      "name": "長沢達也"
+    },
+    {
+      "id": 23,
+      "message_index": 173,
+      "source_offset": 4680,
+      "codes": [
+        570,
+        329,
+        571,
+        466,
+        16639
+      ],
+      "name": "今野京介"
+    },
+    {
+      "id": 24,
+      "message_index": 174,
+      "source_offset": 4690,
+      "codes": [
+        572,
+        460,
+        573,
+        462,
+        16639
+      ],
+      "name": "丸山昭夫"
+    },
+    {
+      "id": 25,
+      "message_index": 175,
+      "source_offset": 4700,
+      "codes": [
+        472,
+        272,
+        473,
+        474,
+        16639
+      ],
+      "name": "福本孝仁"
+    },
+    {
+      "id": 26,
+      "message_index": 176,
+      "source_offset": 4710,
+      "codes": [
+        278,
+        475,
+        574,
+        418,
+        16639
+      ],
+      "name": "小田伸行"
+    },
+    {
+      "id": 27,
+      "message_index": 177,
+      "source_offset": 4720,
+      "codes": [
+        483,
+        224,
+        484,
+        462,
+        16639
+      ],
+      "name": "池上秀夫"
+    },
+    {
+      "id": 28,
+      "message_index": 178,
+      "source_offset": 4730,
+      "codes": [
+        289,
+        475,
+        485,
+        479,
+        16639
+      ],
+      "name": "金田哲也"
+    },
+    {
+      "id": 29,
+      "message_index": 179,
+      "source_offset": 4740,
+      "codes": [
+        480,
+        481,
+        258,
+        462,
+        16639
+      ],
+      "name": "菅原文夫"
+    },
+    {
+      "id": 30,
+      "message_index": 180,
+      "source_offset": 4750,
+      "codes": [
+        440,
+        576,
+        250,
+        466,
+        16639
+      ],
+      "name": "高橋大介"
+    },
+    {
+      "id": 31,
+      "message_index": 181,
+      "source_offset": 4760,
+      "codes": [
+        493,
+        494,
+        495,
+        462,
+        16639
+      ],
+      "name": "奥平康夫"
+    },
+    {
+      "id": 32,
+      "message_index": 182,
+      "source_offset": 4770,
+      "codes": [
+        225,
+        460,
+        496,
+        268,
+        16639
+      ],
+      "name": "中山光次"
+    },
+    {
+      "id": 33,
+      "message_index": 183,
+      "source_offset": 4780,
+      "codes": [
+        463,
+        323,
+        464,
+        465,
+        16639
+      ],
+      "name": "的場丈二"
+    },
+    {
+      "id": 34,
+      "message_index": 184,
+      "source_offset": 4790,
+      "codes": [
+        486,
+        475,
+        487,
+        488,
+        16639
+      ],
+      "name": "朝田宗司"
+    }
+  ],
+  "candidate_rows": [
+    {
+      "label": "体力",
+      "offset": 25,
+      "profile_dy": 64
+    },
+    {
+      "label": "学歴",
+      "offset": 29,
+      "profile_dy": 80
+    },
+    {
+      "label": "敏捷性",
+      "offset": 27,
+      "profile_dy": 96
+    },
+    {
+      "label": "社交性",
+      "offset": 28,
+      "profile_dy": 112
+    }
+  ],
+  "transfer_rows": [
+    {
+      "label": "体力",
+      "offset": 25,
+      "profile_dy": 48
+    },
+    {
+      "label": "教育",
+      "offset": 26,
+      "profile_dy": 64
+    },
+    {
+      "label": "レジ",
+      "offset": 30,
+      "profile_dy": 80
+    },
+    {
+      "label": "補充",
+      "offset": 31,
+      "profile_dy": 96
+    },
+    {
+      "label": "警備",
+      "offset": 34,
+      "profile_dy": 112
+    },
+    {
+      "label": "清掃",
+      "offset": 33,
+      "profile_dy": 128
+    },
+    {
+      "label": "接客",
+      "offset": 32,
+      "profile_dy": 144
+    }
+  ],
+  "glyph_reference": "Reused prior by-eye PSMOJI0/1 transcription from repository tools/ps1/psmoji.py. This work decodes fresh source words; it does not claim new font OCR."
+}

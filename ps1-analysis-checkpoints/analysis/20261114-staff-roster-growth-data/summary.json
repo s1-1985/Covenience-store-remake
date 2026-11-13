@@ -1,0 +1,27 @@
+{
+  "person_profiles": 35,
+  "map_staff_states": 140,
+  "free_by_map": {
+    "TOWN0001": 29,
+    "TOWN0002": 26,
+    "TOWN0003": 32,
+    "TOWNPS": 23
+  },
+  "initial_age_range": [
+    16,
+    58
+  ],
+  "initial_wage_range": [
+    250,
+    340
+  ],
+  "source_label_corrections": {
+    "29": "学歴",
+    "32": "接客",
+    "26": "教育"
+  },
+  "new_work": "Full54-byte staff records to60-byte runtime fields; shared35 named personal profiles plus140 ownership/role states; source UI labels resolve academic/customer-service fields and connect to growth/rest/payroll.",
+  "known_before": "Isolated candidate, growth, rest and commit algorithms were reconstructed earlier.",
+  "unresolved": "Purpose of TOWNPS ownerFFFF for staff27; raw word16 remains unlabeled.",
+  "original_cpu_updates": 0
+}

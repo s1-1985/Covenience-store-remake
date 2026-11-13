@@ -1,0 +1,5772 @@
+{
+  "schema_version": 1,
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "sources": [
+    {
+      "file": "/DAT/TOWN0001.BIN",
+      "file_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+      "staff_offset": 24017,
+      "bytes": 1890,
+      "staff_sha256": "7bf817578eae44de01d29138f5859e6ca01190d6ab2b91778e821bedadc4efdd"
+    },
+    {
+      "file": "/DAT/TOWN0002.BIN",
+      "file_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+      "staff_offset": 24017,
+      "bytes": 1890,
+      "staff_sha256": "5a0728461d33f53db50da47e4bb6264d46fa893c7a47b910282731f0ae359fb6"
+    },
+    {
+      "file": "/DAT/TOWN0003.BIN",
+      "file_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+      "staff_offset": 24017,
+      "bytes": 1890,
+      "staff_sha256": "1dcf4cd6412274c384cb3cac77b3bcf8a39a495fcf3d8f1f2fe377a2ff4ffbc3"
+    },
+    {
+      "file": "/DAT/TOWNPS.BIN",
+      "file_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+      "staff_offset": 24017,
+      "bytes": 1890,
+      "staff_sha256": "b1c42fd2905da602c1596983cff03535c34b098c0a972ffd9cf8418492c9a078"
+    }
+  ],
+  "packed_schema": {
+    "staff_count_per_map": 35,
+    "packed_record_bytes": 54,
+    "runtime_record_bytes": 60,
+    "field_map": [
+      {
+        "packed_offset": 0,
+        "runtime_offset": 0,
+        "bytes": 2
+      },
+      {
+        "packed_offset": 2,
+        "runtime_offset": 2,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 3,
+        "runtime_offset": 3,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 4,
+        "runtime_offset": 4,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 5,
+        "runtime_offset": 6,
+        "bytes": 2
+      },
+      {
+        "packed_offset": 7,
+        "runtime_offset": 8,
+        "bytes": 2
+      },
+      {
+        "packed_offset": 9,
+        "runtime_offset": 12,
+        "bytes": 4
+      },
+      {
+        "packed_offset": 13,
+        "runtime_offset": 16,
+        "bytes": 4
+      },
+      {
+        "packed_offset": 17,
+        "runtime_offset": 20,
+        "bytes": 4
+      },
+      {
+        "packed_offset": 21,
+        "runtime_offset": 24,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 22,
+        "runtime_offset": 25,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 23,
+        "runtime_offset": 26,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 24,
+        "runtime_offset": 27,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 25,
+        "runtime_offset": 28,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 26,
+        "runtime_offset": 29,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 27,
+        "runtime_offset": 30,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 28,
+        "runtime_offset": 31,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 29,
+        "runtime_offset": 32,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 30,
+        "runtime_offset": 33,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 31,
+        "runtime_offset": 34,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 32,
+        "runtime_offset": 35,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 33,
+        "runtime_offset": 36,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 34,
+        "runtime_offset": 37,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 35,
+        "runtime_offset": 38,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 36,
+        "runtime_offset": 39,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 37,
+        "runtime_offset": 40,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 38,
+        "runtime_offset": 41,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 39,
+        "runtime_offset": 42,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 40,
+        "runtime_offset": 43,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 41,
+        "runtime_offset": 44,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 42,
+        "runtime_offset": 45,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 43,
+        "runtime_offset": 46,
+        "bytes": 1
+      },
+      {
+        "packed_offset": 44,
+        "runtime_offset": 47,
+        "bytes": 10
+      }
+    ],
+    "unwritten_padding": [
+      5,
+      10,
+      11,
+      57,
+      58,
+      59
+    ],
+    "padding_note": "Canonical decode here uses zero scratch bytes for padding; original loader does not write these holes. They are not source-defined fields."
+  },
+  "shared_initial_profiles": [
+    {
+      "id": 0,
+      "name": "竹中小百合",
+      "name_index": 0,
+      "age": 28,
+      "sex_code": 1,
+      "portrait": 0,
+      "wage_base": 280,
+      "initial_attributes": {
+        "maximum_energy": 80,
+        "current_energy": 80,
+        "education": 80,
+        "agility": 65,
+        "sociability": 90,
+        "academic_background": 90,
+        "cashier": 14,
+        "restocking": 12,
+        "customer_service": 14,
+        "cleaning": 14,
+        "security": 14,
+        "cashier_soft_limit": 52,
+        "restocking_soft_limit": 48,
+        "customer_service_soft_limit": 54,
+        "cleaning_soft_limit": 52,
+        "security_soft_limit": 51
+      }
+    },
+    {
+      "id": 1,
+      "name": "吉田有紀",
+      "name_index": 1,
+      "age": 24,
+      "sex_code": 1,
+      "portrait": 1,
+      "wage_base": 270,
+      "initial_attributes": {
+        "maximum_energy": 60,
+        "current_energy": 60,
+        "education": 70,
+        "agility": 80,
+        "sociability": 80,
+        "academic_background": 65,
+        "cashier": 10,
+        "restocking": 11,
+        "customer_service": 11,
+        "cleaning": 11,
+        "security": 10,
+        "cashier_soft_limit": 45,
+        "restocking_soft_limit": 40,
+        "customer_service_soft_limit": 44,
+        "cleaning_soft_limit": 41,
+        "security_soft_limit": 38
+      }
+    },
+    {
+      "id": 2,
+      "name": "小宮千明",
+      "name_index": 2,
+      "age": 30,
+      "sex_code": 1,
+      "portrait": 2,
+      "wage_base": 280,
+      "initial_attributes": {
+        "maximum_energy": 70,
+        "current_energy": 70,
+        "education": 70,
+        "agility": 70,
+        "sociability": 75,
+        "academic_background": 70,
+        "cashier": 13,
+        "restocking": 13,
+        "customer_service": 13,
+        "cleaning": 13,
+        "security": 13,
+        "cashier_soft_limit": 41,
+        "restocking_soft_limit": 41,
+        "customer_service_soft_limit": 44,
+        "cleaning_soft_limit": 44,
+        "security_soft_limit": 41
+      }
+    },
+    {
+      "id": 3,
+      "name": "浜田裕子",
+      "name_index": 3,
+      "age": 22,
+      "sex_code": 1,
+      "portrait": 3,
+      "wage_base": 270,
+      "initial_attributes": {
+        "maximum_energy": 65,
+        "current_energy": 65,
+        "education": 75,
+        "agility": 70,
+        "sociability": 50,
+        "academic_background": 55,
+        "cashier": 11,
+        "restocking": 9,
+        "customer_service": 10,
+        "cleaning": 9,
+        "security": 9,
+        "cashier_soft_limit": 44,
+        "restocking_soft_limit": 25,
+        "customer_service_soft_limit": 33,
+        "cleaning_soft_limit": 40,
+        "security_soft_limit": 27
+      }
+    },
+    {
+      "id": 4,
+      "name": "万田町子",
+      "name_index": 4,
+      "age": 42,
+      "sex_code": 1,
+      "portrait": 4,
+      "wage_base": 320,
+      "initial_attributes": {
+        "maximum_energy": 70,
+        "current_energy": 70,
+        "education": 85,
+        "agility": 65,
+        "sociability": 60,
+        "academic_background": 65,
+        "cashier": 20,
+        "restocking": 17,
+        "customer_service": 17,
+        "cleaning": 17,
+        "security": 18,
+        "cashier_soft_limit": 55,
+        "restocking_soft_limit": 35,
+        "customer_service_soft_limit": 41,
+        "cleaning_soft_limit": 36,
+        "security_soft_limit": 42
+      }
+    },
+    {
+      "id": 5,
+      "name": "富永福子",
+      "name_index": 5,
+      "age": 58,
+      "sex_code": 1,
+      "portrait": 5,
+      "wage_base": 320,
+      "initial_attributes": {
+        "maximum_energy": 40,
+        "current_energy": 40,
+        "education": 70,
+        "agility": 40,
+        "sociability": 70,
+        "academic_background": 70,
+        "cashier": 20,
+        "restocking": 16,
+        "customer_service": 19,
+        "cleaning": 20,
+        "security": 18,
+        "cashier_soft_limit": 40,
+        "restocking_soft_limit": 32,
+        "customer_service_soft_limit": 36,
+        "cleaning_soft_limit": 40,
+        "security_soft_limit": 34
+      }
+    },
+    {
+      "id": 6,
+      "name": "忍田信子",
+      "name_index": 6,
+      "age": 39,
+      "sex_code": 1,
+      "portrait": 6,
+      "wage_base": 320,
+      "initial_attributes": {
+        "maximum_energy": 60,
+        "current_energy": 60,
+        "education": 65,
+        "agility": 70,
+        "sociability": 85,
+        "academic_background": 70,
+        "cashier": 16,
+        "restocking": 15,
+        "customer_service": 18,
+        "cleaning": 18,
+        "security": 16,
+        "cashier_soft_limit": 42,
+        "restocking_soft_limit": 42,
+        "customer_service_soft_limit": 38,
+        "cleaning_soft_limit": 38,
+        "security_soft_limit": 38
+      }
+    },
+    {
+      "id": 7,
+      "name": "市川智恵子",
+      "name_index": 7,
+      "age": 35,
+      "sex_code": 1,
+      "portrait": 7,
+      "wage_base": 300,
+      "initial_attributes": {
+        "maximum_energy": 75,
+        "current_energy": 75,
+        "education": 75,
+        "agility": 55,
+        "sociability": 75,
+        "academic_background": 70,
+        "cashier": 16,
+        "restocking": 15,
+        "customer_service": 16,
+        "cleaning": 16,
+        "security": 16,
+        "cashier_soft_limit": 43,
+        "restocking_soft_limit": 37,
+        "customer_service_soft_limit": 41,
+        "cleaning_soft_limit": 39,
+        "security_soft_limit": 37
+      }
+    },
+    {
+      "id": 8,
+      "name": "杉村真智子",
+      "name_index": 8,
+      "age": 32,
+      "sex_code": 1,
+      "portrait": 8,
+      "wage_base": 300,
+      "initial_attributes": {
+        "maximum_energy": 70,
+        "current_energy": 70,
+        "education": 80,
+        "agility": 75,
+        "sociability": 95,
+        "academic_background": 85,
+        "cashier": 14,
+        "restocking": 13,
+        "customer_service": 15,
+        "cleaning": 15,
+        "security": 14,
+        "cashier_soft_limit": 58,
+        "restocking_soft_limit": 52,
+        "customer_service_soft_limit": 65,
+        "cleaning_soft_limit": 60,
+        "security_soft_limit": 50
+      }
+    },
+    {
+      "id": 9,
+      "name": "田中幸子",
+      "name_index": 9,
+      "age": 44,
+      "sex_code": 1,
+      "portrait": 9,
+      "wage_base": 330,
+      "initial_attributes": {
+        "maximum_energy": 75,
+        "current_energy": 75,
+        "education": 75,
+        "agility": 75,
+        "sociability": 85,
+        "academic_background": 80,
+        "cashier": 18,
+        "restocking": 18,
+        "customer_service": 19,
+        "cleaning": 19,
+        "security": 18,
+        "cashier_soft_limit": 46,
+        "restocking_soft_limit": 46,
+        "customer_service_soft_limit": 48,
+        "cleaning_soft_limit": 48,
+        "security_soft_limit": 46
+      }
+    },
+    {
+      "id": 10,
+      "name": "花沢咲江",
+      "name_index": 10,
+      "age": 46,
+      "sex_code": 1,
+      "portrait": 10,
+      "wage_base": 330,
+      "initial_attributes": {
+        "maximum_energy": 60,
+        "current_energy": 60,
+        "education": 75,
+        "agility": 60,
+        "sociability": 65,
+        "academic_background": 55,
+        "cashier": 19,
+        "restocking": 17,
+        "customer_service": 18,
+        "cleaning": 18,
+        "security": 18,
+        "cashier_soft_limit": 38,
+        "restocking_soft_limit": 34,
+        "customer_service_soft_limit": 36,
+        "cleaning_soft_limit": 36,
+        "security_soft_limit": 36
+      }
+    },
+    {
+      "id": 11,
+      "name": "里中涼子",
+      "name_index": 11,
+      "age": 18,
+      "sex_code": 1,
+      "portrait": 11,
+      "wage_base": 270,
+      "initial_attributes": {
+        "maximum_energy": 65,
+        "current_energy": 65,
+        "education": 90,
+        "agility": 80,
+        "sociability": 90,
+        "academic_background": 80,
+        "cashier": 9,
+        "restocking": 8,
+        "customer_service": 9,
+        "cleaning": 9,
+        "security": 9,
+        "cashier_soft_limit": 60,
+        "restocking_soft_limit": 55,
+        "customer_service_soft_limit": 65,
+        "cleaning_soft_limit": 65,
+        "security_soft_limit": 55
+      }
+    },
+    {
+      "id": 12,
+      "name": "山本信夫",
+      "name_index": 12,
+      "age": 31,
+      "sex_code": 0,
+      "portrait": 12,
+      "wage_base": 290,
+      "initial_attributes": {
+        "maximum_energy": 95,
+        "current_energy": 95,
+        "education": 70,
+        "agility": 65,
+        "sociability": 75,
+        "academic_background": 60,
+        "cashier": 13,
+        "restocking": 16,
+        "customer_service": 13,
+        "cleaning": 13,
+        "security": 14,
+        "cashier_soft_limit": 39,
+        "restocking_soft_limit": 55,
+        "customer_service_soft_limit": 40,
+        "cleaning_soft_limit": 41,
+        "security_soft_limit": 52
+      }
+    },
+    {
+      "id": 13,
+      "name": "山下大介",
+      "name_index": 13,
+      "age": 16,
+      "sex_code": 0,
+      "portrait": 13,
+      "wage_base": 250,
+      "initial_attributes": {
+        "maximum_energy": 55,
+        "current_energy": 55,
+        "education": 75,
+        "agility": 70,
+        "sociability": 55,
+        "academic_background": 50,
+        "cashier": 8,
+        "restocking": 10,
+        "customer_service": 8,
+        "cleaning": 8,
+        "security": 8,
+        "cashier_soft_limit": 36,
+        "restocking_soft_limit": 39,
+        "customer_service_soft_limit": 36,
+        "cleaning_soft_limit": 36,
+        "security_soft_limit": 49
+      }
+    },
+    {
+      "id": 14,
+      "name": "杉本三郎",
+      "name_index": 14,
+      "age": 36,
+      "sex_code": 0,
+      "portrait": 14,
+      "wage_base": 300,
+      "initial_attributes": {
+        "maximum_energy": 70,
+        "current_energy": 70,
+        "education": 75,
+        "agility": 75,
+        "sociability": 65,
+        "academic_background": 55,
+        "cashier": 16,
+        "restocking": 16,
+        "customer_service": 15,
+        "cleaning": 15,
+        "security": 16,
+        "cashier_soft_limit": 43,
+        "restocking_soft_limit": 45,
+        "customer_service_soft_limit": 40,
+        "cleaning_soft_limit": 41,
+        "security_soft_limit": 43
+      }
+    },
+    {
+      "id": 15,
+      "name": "雨中聖人",
+      "name_index": 15,
+      "age": 22,
+      "sex_code": 0,
+      "portrait": 15,
+      "wage_base": 270,
+      "initial_attributes": {
+        "maximum_energy": 40,
+        "current_energy": 40,
+        "education": 100,
+        "agility": 100,
+        "sociability": 50,
+        "academic_background": 40,
+        "cashier": 13,
+        "restocking": 8,
+        "customer_service": 8,
+        "cleaning": 8,
+        "security": 12,
+        "cashier_soft_limit": 90,
+        "restocking_soft_limit": 80,
+        "customer_service_soft_limit": 50,
+        "cleaning_soft_limit": 50,
+        "security_soft_limit": 30
+      }
+    },
+    {
+      "id": 16,
+      "name": "秋本三四郎",
+      "name_index": 16,
+      "age": 28,
+      "sex_code": 0,
+      "portrait": 16,
+      "wage_base": 280,
+      "initial_attributes": {
+        "maximum_energy": 70,
+        "current_energy": 70,
+        "education": 65,
+        "agility": 75,
+        "sociability": 60,
+        "academic_background": 70,
+        "cashier": 12,
+        "restocking": 13,
+        "customer_service": 10,
+        "cleaning": 10,
+        "security": 11,
+        "cashier_soft_limit": 36,
+        "restocking_soft_limit": 39,
+        "customer_service_soft_limit": 32,
+        "cleaning_soft_limit": 34,
+        "security_soft_limit": 35
+      }
+    },
+    {
+      "id": 17,
+      "name": "佐々木信雄",
+      "name_index": 17,
+      "age": 20,
+      "sex_code": 0,
+      "portrait": 17,
+      "wage_base": 270,
+      "initial_attributes": {
+        "maximum_energy": 85,
+        "current_energy": 85,
+        "education": 65,
+        "agility": 75,
+        "sociability": 70,
+        "academic_background": 70,
+        "cashier": 9,
+        "restocking": 12,
+        "customer_service": 9,
+        "cleaning": 9,
+        "security": 9,
+        "cashier_soft_limit": 36,
+        "restocking_soft_limit": 42,
+        "customer_service_soft_limit": 34,
+        "cleaning_soft_limit": 35,
+        "security_soft_limit": 38
+      }
+    },
+    {
+      "id": 18,
+      "name": "森山雪之丈",
+      "name_index": 18,
+      "age": 26,
+      "sex_code": 0,
+      "portrait": 18,
+      "wage_base": 280,
+      "initial_attributes": {
+        "maximum_energy": 75,
+        "current_energy": 75,
+        "education": 75,
+        "agility": 70,
+        "sociability": 75,
+        "academic_background": 80,
+        "cashier": 13,
+        "restocking": 12,
+        "customer_service": 12,
+        "cleaning": 12,
+        "security": 12,
+        "cashier_soft_limit": 43,
+        "restocking_soft_limit": 39,
+        "customer_service_soft_limit": 42,
+        "cleaning_soft_limit": 43,
+        "security_soft_limit": 40
+      }
+    },
+    {
+      "id": 19,
+      "name": "西田年男",
+      "name_index": 19,
+      "age": 53,
+      "sex_code": 0,
+      "portrait": 19,
+      "wage_base": 340,
+      "initial_attributes": {
+        "maximum_energy": 60,
+        "current_energy": 60,
+        "education": 75,
+        "agility": 65,
+        "sociability": 75,
+        "academic_background": 75,
+        "cashier": 18,
+        "restocking": 17,
+        "customer_service": 18,
+        "cleaning": 18,
+        "security": 19,
+        "cashier_soft_limit": 36,
+        "restocking_soft_limit": 34,
+        "customer_service_soft_limit": 36,
+        "cleaning_soft_limit": 38,
+        "security_soft_limit": 40
+      }
+    },
+    {
+      "id": 20,
+      "name": "南田洋次",
+      "name_index": 20,
+      "age": 40,
+      "sex_code": 0,
+      "portrait": 20,
+      "wage_base": 310,
+      "initial_attributes": {
+        "maximum_energy": 75,
+        "current_energy": 75,
+        "education": 75,
+        "agility": 75,
+        "sociability": 75,
+        "academic_background": 75,
+        "cashier": 18,
+        "restocking": 18,
+        "customer_service": 17,
+        "cleaning": 18,
+        "security": 18,
+        "cashier_soft_limit": 40,
+        "restocking_soft_limit": 40,
+        "customer_service_soft_limit": 38,
+        "cleaning_soft_limit": 40,
+        "security_soft_limit": 42
+      }
+    },
+    {
+      "id": 21,
+      "name": "谷口明",
+      "name_index": 21,
+      "age": 26,
+      "sex_code": 0,
+      "portrait": 21,
+      "wage_base": 280,
+      "initial_attributes": {
+        "maximum_energy": 75,
+        "current_energy": 75,
+        "education": 55,
+        "agility": 60,
+        "sociability": 60,
+        "academic_background": 60,
+        "cashier": 11,
+        "restocking": 13,
+        "customer_service": 11,
+        "cleaning": 11,
+        "security": 12,
+        "cashier_soft_limit": 33,
+        "restocking_soft_limit": 39,
+        "customer_service_soft_limit": 33,
+        "cleaning_soft_limit": 33,
+        "security_soft_limit": 36
+      }
+    },
+    {
+      "id": 22,
+      "name": "長沢達也",
+      "name_index": 22,
+      "age": 34,
+      "sex_code": 0,
+      "portrait": 22,
+      "wage_base": 310,
+      "initial_attributes": {
+        "maximum_energy": 85,
+        "current_energy": 85,
+        "education": 80,
+        "agility": 75,
+        "sociability": 75,
+        "academic_background": 80,
+        "cashier": 16,
+        "restocking": 16,
+        "customer_service": 15,
+        "cleaning": 15,
+        "security": 17,
+        "cashier_soft_limit": 55,
+        "restocking_soft_limit": 65,
+        "customer_service_soft_limit": 51,
+        "cleaning_soft_limit": 54,
+        "security_soft_limit": 61
+      }
+    },
+    {
+      "id": 23,
+      "name": "今野京介",
+      "name_index": 23,
+      "age": 21,
+      "sex_code": 0,
+      "portrait": 23,
+      "wage_base": 280,
+      "initial_attributes": {
+        "maximum_energy": 80,
+        "current_energy": 80,
+        "education": 85,
+        "agility": 70,
+        "sociability": 75,
+        "academic_background": 85,
+        "cashier": 10,
+        "restocking": 10,
+        "customer_service": 10,
+        "cleaning": 10,
+        "security": 10,
+        "cashier_soft_limit": 48,
+        "restocking_soft_limit": 52,
+        "customer_service_soft_limit": 45,
+        "cleaning_soft_limit": 47,
+        "security_soft_limit": 48
+      }
+    },
+    {
+      "id": 24,
+      "name": "丸山昭夫",
+      "name_index": 24,
+      "age": 28,
+      "sex_code": 0,
+      "portrait": 24,
+      "wage_base": 280,
+      "initial_attributes": {
+        "maximum_energy": 90,
+        "current_energy": 90,
+        "education": 60,
+        "agility": 70,
+        "sociability": 65,
+        "academic_background": 75,
+        "cashier": 11,
+        "restocking": 15,
+        "customer_service": 10,
+        "cleaning": 11,
+        "security": 14,
+        "cashier_soft_limit": 35,
+        "restocking_soft_limit": 55,
+        "customer_service_soft_limit": 32,
+        "cleaning_soft_limit": 34,
+        "security_soft_limit": 50
+      }
+    },
+    {
+      "id": 25,
+      "name": "福本孝仁",
+      "name_index": 25,
+      "age": 32,
+      "sex_code": 0,
+      "portrait": 25,
+      "wage_base": 310,
+      "initial_attributes": {
+        "maximum_energy": 75,
+        "current_energy": 75,
+        "education": 95,
+        "agility": 75,
+        "sociability": 80,
+        "academic_background": 95,
+        "cashier": 16,
+        "restocking": 13,
+        "customer_service": 13,
+        "cleaning": 13,
+        "security": 16,
+        "cashier_soft_limit": 68,
+        "restocking_soft_limit": 62,
+        "customer_service_soft_limit": 58,
+        "cleaning_soft_limit": 63,
+        "security_soft_limit": 63
+      }
+    },
+    {
+      "id": 26,
+      "name": "小田伸行",
+      "name_index": 26,
+      "age": 27,
+      "sex_code": 0,
+      "portrait": 26,
+      "wage_base": 280,
+      "initial_attributes": {
+        "maximum_energy": 75,
+        "current_energy": 75,
+        "education": 70,
+        "agility": 75,
+        "sociability": 65,
+        "academic_background": 65,
+        "cashier": 12,
+        "restocking": 13,
+        "customer_service": 11,
+        "cleaning": 11,
+        "security": 12,
+        "cashier_soft_limit": 36,
+        "restocking_soft_limit": 40,
+        "customer_service_soft_limit": 33,
+        "cleaning_soft_limit": 34,
+        "security_soft_limit": 37
+      }
+    },
+    {
+      "id": 27,
+      "name": "池上秀夫",
+      "name_index": 27,
+      "age": 25,
+      "sex_code": 0,
+      "portrait": 27,
+      "wage_base": 270,
+      "initial_attributes": {
+        "maximum_energy": 70,
+        "current_energy": 70,
+        "education": 75,
+        "agility": 70,
+        "sociability": 50,
+        "academic_background": 60,
+        "cashier": 12,
+        "restocking": 10,
+        "customer_service": 11,
+        "cleaning": 11,
+        "security": 12,
+        "cashier_soft_limit": 36,
+        "restocking_soft_limit": 40,
+        "customer_service_soft_limit": 32,
+        "cleaning_soft_limit": 32,
+        "security_soft_limit": 40
+      }
+    },
+    {
+      "id": 28,
+      "name": "金田哲也",
+      "name_index": 28,
+      "age": 36,
+      "sex_code": 0,
+      "portrait": 28,
+      "wage_base": 330,
+      "initial_attributes": {
+        "maximum_energy": 75,
+        "current_energy": 75,
+        "education": 85,
+        "agility": 75,
+        "sociability": 80,
+        "academic_background": 85,
+        "cashier": 17,
+        "restocking": 16,
+        "customer_service": 16,
+        "cleaning": 16,
+        "security": 16,
+        "cashier_soft_limit": 54,
+        "restocking_soft_limit": 51,
+        "customer_service_soft_limit": 48,
+        "cleaning_soft_limit": 48,
+        "security_soft_limit": 50
+      }
+    },
+    {
+      "id": 29,
+      "name": "菅原文夫",
+      "name_index": 29,
+      "age": 42,
+      "sex_code": 0,
+      "portrait": 29,
+      "wage_base": 330,
+      "initial_attributes": {
+        "maximum_energy": 85,
+        "current_energy": 90,
+        "education": 70,
+        "agility": 85,
+        "sociability": 70,
+        "academic_background": 85,
+        "cashier": 18,
+        "restocking": 20,
+        "customer_service": 17,
+        "cleaning": 17,
+        "security": 20,
+        "cashier_soft_limit": 35,
+        "restocking_soft_limit": 42,
+        "customer_service_soft_limit": 35,
+        "cleaning_soft_limit": 35,
+        "security_soft_limit": 50
+      }
+    },
+    {
+      "id": 30,
+      "name": "高橋大介",
+      "name_index": 30,
+      "age": 24,
+      "sex_code": 0,
+      "portrait": 30,
+      "wage_base": 280,
+      "initial_attributes": {
+        "maximum_energy": 75,
+        "current_energy": 75,
+        "education": 75,
+        "agility": 70,
+        "sociability": 75,
+        "academic_background": 75,
+        "cashier": 11,
+        "restocking": 11,
+        "customer_service": 11,
+        "cleaning": 11,
+        "security": 11,
+        "cashier_soft_limit": 40,
+        "restocking_soft_limit": 45,
+        "customer_service_soft_limit": 40,
+        "cleaning_soft_limit": 42,
+        "security_soft_limit": 42
+      }
+    },
+    {
+      "id": 31,
+      "name": "奥平康夫",
+      "name_index": 31,
+      "age": 51,
+      "sex_code": 0,
+      "portrait": 31,
+      "wage_base": 340,
+      "initial_attributes": {
+        "maximum_energy": 60,
+        "current_energy": 60,
+        "education": 80,
+        "agility": 60,
+        "sociability": 80,
+        "academic_background": 95,
+        "cashier": 20,
+        "restocking": 17,
+        "customer_service": 18,
+        "cleaning": 18,
+        "security": 19,
+        "cashier_soft_limit": 44,
+        "restocking_soft_limit": 34,
+        "customer_service_soft_limit": 50,
+        "cleaning_soft_limit": 50,
+        "security_soft_limit": 40
+      }
+    },
+    {
+      "id": 32,
+      "name": "中山光次",
+      "name_index": 32,
+      "age": 17,
+      "sex_code": 0,
+      "portrait": 32,
+      "wage_base": 260,
+      "initial_attributes": {
+        "maximum_energy": 80,
+        "current_energy": 80,
+        "education": 75,
+        "agility": 75,
+        "sociability": 80,
+        "academic_background": 80,
+        "cashier": 8,
+        "restocking": 9,
+        "customer_service": 9,
+        "cleaning": 9,
+        "security": 8,
+        "cashier_soft_limit": 50,
+        "restocking_soft_limit": 55,
+        "customer_service_soft_limit": 55,
+        "cleaning_soft_limit": 60,
+        "security_soft_limit": 60
+      }
+    },
+    {
+      "id": 33,
+      "name": "的場丈二",
+      "name_index": 33,
+      "age": 19,
+      "sex_code": 0,
+      "portrait": 33,
+      "wage_base": 260,
+      "initial_attributes": {
+        "maximum_energy": 95,
+        "current_energy": 95,
+        "education": 60,
+        "agility": 95,
+        "sociability": 65,
+        "academic_background": 70,
+        "cashier": 8,
+        "restocking": 12,
+        "customer_service": 8,
+        "cleaning": 8,
+        "security": 10,
+        "cashier_soft_limit": 37,
+        "restocking_soft_limit": 65,
+        "customer_service_soft_limit": 37,
+        "cleaning_soft_limit": 37,
+        "security_soft_limit": 50
+      }
+    },
+    {
+      "id": 34,
+      "name": "朝田宗司",
+      "name_index": 34,
+      "age": 43,
+      "sex_code": 0,
+      "portrait": 34,
+      "wage_base": 310,
+      "initial_attributes": {
+        "maximum_energy": 70,
+        "current_energy": 70,
+        "education": 50,
+        "agility": 60,
+        "sociability": 65,
+        "academic_background": 50,
+        "cashier": 16,
+        "restocking": 18,
+        "customer_service": 16,
+        "cleaning": 16,
+        "security": 18,
+        "cashier_soft_limit": 32,
+        "restocking_soft_limit": 36,
+        "customer_service_soft_limit": 32,
+        "cleaning_soft_limit": 33,
+        "security_soft_limit": 36
+      }
+    }
+  ],
+  "maps": [
+    {
+      "map": "TOWN0001",
+      "free_count": 29,
+      "free_staff_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        19,
+        20,
+        21,
+        22,
+        23,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "nonfree_without_active_store_reference": [],
+      "active_stores": [
+        {
+          "physical_slot": 1,
+          "flags": 32769,
+          "staff_ids": [
+            14,
+            24,
+            9
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 2,
+          "flags": 32770,
+          "staff_ids": [
+            6,
+            34,
+            18
+          ],
+          "annual_wage_rate": 3
+        }
+      ],
+      "staff_states": [
+        {
+          "id": 0,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 0,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 1,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 1,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 2,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 2,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 3,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 3,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 4,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 4,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 5,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 5,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 6,
+          "owner_flags": 32770,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 43,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 7,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 7,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 8,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 8,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 9,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 41,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 10,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 10,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 11,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 11,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 12,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 12,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 13,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 13,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 14,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 42,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 15,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 15,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 16,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 16,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 17,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 17,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 18,
+          "owner_flags": 32770,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 39,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 19,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 19,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 20,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 20,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 21,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 21,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 22,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 22,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 23,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 32,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 24,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 38,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 25,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 25,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 26,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 26,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 27,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 27,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 28,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 28,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 29,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 29,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 30,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 30,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 31,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 31,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 32,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 32,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 33,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 33,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 34,
+          "owner_flags": 32770,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 38,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "free_count": 26,
+      "free_staff_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        8,
+        11,
+        12,
+        13,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        23,
+        25,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "nonfree_without_active_store_reference": [],
+      "active_stores": [
+        {
+          "physical_slot": 1,
+          "flags": 32769,
+          "staff_ids": [
+            14,
+            26,
+            10
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 2,
+          "flags": 32770,
+          "staff_ids": [
+            34,
+            5,
+            24
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 3,
+          "flags": 32771,
+          "staff_ids": [
+            9,
+            21,
+            7
+          ],
+          "annual_wage_rate": 3
+        }
+      ],
+      "staff_states": [
+        {
+          "id": 0,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 0,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 1,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 1,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 2,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 2,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 3,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 3,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 4,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 4,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 5,
+          "owner_flags": 32770,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 40,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 6,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 6,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 7,
+          "owner_flags": 32771,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 41,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 8,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 8,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 9,
+          "owner_flags": 32771,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 43,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 10,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 41,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 11,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 11,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 12,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 12,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 13,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 13,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 14,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 42,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 15,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 15,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 16,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 16,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 17,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 17,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 18,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 18,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 19,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 19,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 20,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 20,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 21,
+          "owner_flags": 32771,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 38,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 22,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 22,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 23,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 32,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 24,
+          "owner_flags": 32770,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 39,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 25,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 25,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 26,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 38,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 27,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 27,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 28,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 28,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 29,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 29,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 30,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 30,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 31,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 31,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 32,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 32,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 33,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 33,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 34,
+          "owner_flags": 32770,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 42,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "free_count": 32,
+      "free_staff_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "nonfree_without_active_store_reference": [],
+      "active_stores": [
+        {
+          "physical_slot": 1,
+          "flags": 32769,
+          "staff_ids": [
+            34,
+            26,
+            9
+          ],
+          "annual_wage_rate": 3
+        }
+      ],
+      "staff_states": [
+        {
+          "id": 0,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 0,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 1,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 1,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 2,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 2,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 3,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 3,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 4,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 4,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 5,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 5,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 6,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 6,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 7,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 7,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 8,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 8,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 9,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 41,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 10,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 10,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 11,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 11,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 12,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 12,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 13,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 13,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 14,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 14,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 15,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 15,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 16,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 16,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 17,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 17,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 18,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 18,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 19,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 19,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 20,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 20,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 21,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 21,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 22,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 22,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 23,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 32,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 24,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 24,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 25,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 25,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 26,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 38,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 27,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 27,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 28,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 28,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 29,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 29,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 30,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 30,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 31,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 31,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 32,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 32,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 33,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 33,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 34,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 42,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "free_count": 23,
+      "free_staff_ids": [
+        0,
+        1,
+        2,
+        8,
+        9,
+        11,
+        12,
+        13,
+        15,
+        17,
+        18,
+        20,
+        22,
+        23,
+        24,
+        25,
+        26,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "nonfree_without_active_store_reference": [
+        27
+      ],
+      "active_stores": [
+        {
+          "physical_slot": 1,
+          "flags": 32769,
+          "staff_ids": [
+            4,
+            3,
+            10
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 2,
+          "flags": 32770,
+          "staff_ids": [
+            34,
+            7,
+            -1
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 3,
+          "flags": 32771,
+          "staff_ids": [
+            19,
+            14,
+            -1
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 4,
+          "flags": 32772,
+          "staff_ids": [
+            6,
+            16,
+            -1
+          ],
+          "annual_wage_rate": 3
+        },
+        {
+          "physical_slot": 5,
+          "flags": 32773,
+          "staff_ids": [
+            5,
+            21,
+            -1
+          ],
+          "annual_wage_rate": 3
+        }
+      ],
+      "staff_states": [
+        {
+          "id": 0,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 0,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 1,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 1,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 2,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 2,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 3,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 40,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 4,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 43,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 5,
+          "owner_flags": 32773,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 43,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 6,
+          "owner_flags": 32772,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 43,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 7,
+          "owner_flags": 32770,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 40,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 8,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 8,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 9,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 9,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 10,
+          "owner_flags": 32769,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 41,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 11,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 11,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 12,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 12,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 13,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 13,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 14,
+          "owner_flags": 32771,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 38,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 15,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 15,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 16,
+          "owner_flags": 32772,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 38,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 17,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 17,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 18,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 18,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 19,
+          "owner_flags": 32771,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 42,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 20,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 20,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 21,
+          "owner_flags": 32773,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 38,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 22,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 22,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 23,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 32,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 24,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 24,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 25,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 25,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 26,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 26,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 27,
+          "owner_flags": 65535,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 39,
+          "raw_word16": 69120,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 28,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 28,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 29,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 29,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 30,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 30,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 31,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 31,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 32,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 32,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 33,
+          "owner_flags": 0,
+          "hire_pool_eligible": true,
+          "initial_body_appearance": 33,
+          "raw_word16": 0,
+          "employment_experience_counter": 0,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "id": 34,
+          "owner_flags": 32770,
+          "hire_pool_eligible": false,
+          "initial_body_appearance": 42,
+          "raw_word16": 0,
+          "employment_experience_counter": 1,
+          "task": 0,
+          "position": [
+            -1,
+            -1,
+            -1
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ],
+          "route": [
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "35 shared initial profiles, with140 map-specific states. Skills/age/wage are mutable during gameplay; do not share one mutable prototype between sessions."
+}

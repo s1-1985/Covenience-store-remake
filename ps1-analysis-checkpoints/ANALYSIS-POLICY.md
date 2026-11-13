@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-14：店員35人・4マップの配属、原能力名と成長・休憩・年次処理](analysis/20261114-staff-roster-growth-data/README.md)
+
 - [2026-11-14：41什器の補充閾値・満杯までの継続・在庫不足の2集計](analysis/20261114-restocking-stockout-data/README.md)
 
 - [2026-11-14保存：価格設定・144購買型の店選び・店舗指標の持越し](analysis/20261113-pricing-store-choice-data/README.md)

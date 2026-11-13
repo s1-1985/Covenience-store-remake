@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "fields": {
+    "24": "maximum_energy",
+    "25": "current_energy",
+    "26": "education",
+    "27": "agility",
+    "28": "sociability",
+    "29": "academic_background",
+    "30": "cashier",
+    "31": "restocking",
+    "32": "customer_service",
+    "33": "cleaning",
+    "34": "security",
+    "35": "cashier_soft_limit",
+    "36": "restocking_soft_limit",
+    "37": "customer_service_soft_limit",
+    "38": "cleaning_soft_limit",
+    "39": "security_soft_limit"
+  },
+  "ui_name_correction": {
+    "0x1d": "学歴; earlier reports used inferred name指導力 for this same byte. Manager academic value really is used in growth/advice rolls.",
+    "0x20": "接客; this current skill is also used in replenishment target threshold.",
+    "0x1a": "教育, also the hard limit for current cashier/security growth."
+  },
+  "candidates": "Scan35 records, eligible only if u16 owner_flags==0. Choose up to10 with rejection sampling over the original free-list length; used entries become-1 and repeated draws consume RNG.",
+  "required_manager": "Staffing commit refuses an empty first slot. Transfer final validation checks first slots; native writes are not a generic transactional rollback.",
+  "roles": [
+    {
+      "slot": 0,
+      "male": 42,
+      "female": 43,
+      "rest_offset": [
+        0,
+        2
+      ]
+    },
+    {
+      "slot": 1,
+      "male": 38,
+      "female": 40,
+      "rest_offset": [
+        0,
+        1
+      ]
+    },
+    {
+      "slot": 2,
+      "male": 39,
+      "female": 41,
+      "rest_offset": [
+        1,
+        1
+      ]
+    }
+  ],
+  "hiring_commit": "New assignment sets owner flags, role/sex body appearance, state0 and coordinates-1 before native rest placement; increments experience counter+20. Original unassigned look is not the hired role sprite.",
+  "growth": {
+    "manager_input": "academic background+0x1d of store slot0 employee",
+    "rare": "Draw rand()%16 once at function entry. Zero permits crossing soft limits for this call, but never the hard limit.",
+    "per_attribute": "Always draw roll before comparing current<hard and(current<soft or rare); increment by1 if roll1..100<=manager academic value and both bounds permit.",
+    "modes": {
+      "1": [
+        {
+          "skill": 30,
+          "hard": 26,
+          "soft": 35
+        },
+        {
+          "skill": 32,
+          "hard": 28,
+          "soft": 37
+        }
+      ],
+      "2": [
+        {
+          "skill": 31,
+          "hard": 27,
+          "soft": 36
+        },
+        {
+          "skill": 34,
+          "hard": 26,
+          "soft": 39
+        },
+        {
+          "skill": 33,
+          "hard": 28,
+          "soft": 38,
+          "extra_condition": "cleanliness summary>=100"
+        }
+      ],
+      "4": [
+        {
+          "skill": 33,
+          "hard": 28,
+          "soft": 38
+        },
+        {
+          "skill": 34,
+          "hard": 26,
+          "soft": 39
+        }
+      ]
+    },
+    "minus1": "Reduce cashier30,restocking31,cleaning33,security34 by1 only when>=2; customer_service32 is not reduced by this mode."
+  },
+  "energy": {
+    "active": "If energy>0, one rand()&3==0 decrements it. Exhaustion clears non-rest-travel goals and sets flag0x1000; rest-travel state3 can keep its goal.",
+    "room48": "Below maximum, one rand()&1==0 recovers1.",
+    "room49": "Below maximum, recovers1 without RNG.",
+    "resume": "Once full, resting slot is eligible to choose work only when (clock//2)%3==slot. These are update rules, not measured seconds."
+  },
+  "annual": {
+    "gate": "Finance close at stage1/month1 and minute0/hour0",
+    "age": "All35 records age by1 if signed age<127, including unassigned records. Age>=80 rolls rand()%5==0 for basic-trait boost; age127 guarantees it.",
+    "boost": "Set maximum energy24,education26,agility27,sociability28,academic29 to100. Does not directly set current energy or five current work skills to100.",
+    "wage": "Per active store assigned staff: wage=trunc((store+12dc+100)*wage/100). Free records outside assignments do not receive that per-store multiplication."
+  },
+  "wage_display": "Transfer profile displays wage_base*scheduled_hours; actual payroll separately applies130% to slot0 before hours. Do not conflate UI amount with charged manager amount."
+}

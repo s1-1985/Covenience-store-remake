@@ -1,0 +1,86 @@
+[
+  {
+    "name": "town_loader",
+    "address": "0x8001a0b8",
+    "bytes": 4076,
+    "sha256": "b99f946d51a2fc511a8c4b1e9f2daab6ac2f77ac8f770aae08f05088fa4a603e"
+  },
+  {
+    "name": "candidate_pool",
+    "address": "0x8006f8bc",
+    "bytes": 548,
+    "sha256": "5f10d530f506867d4def3c6831527c4d5f2db9210be012366f15789ff3c68838"
+  },
+  {
+    "name": "hire_shell",
+    "address": "0x8006fae0",
+    "bytes": 648,
+    "sha256": "e0022da822314cfcd223a87a102a89328b920efd915cc4337664c4b9145531d8"
+  },
+  {
+    "name": "candidate_profile",
+    "address": "0x800703e4",
+    "bytes": 2916,
+    "sha256": "ccc09c0343d9778c5ae628a1dffd03abd4fa02138f1ac5f01a26b7029fe4ef6f"
+  },
+  {
+    "name": "hire_commit",
+    "address": "0x80070f48",
+    "bytes": 1084,
+    "sha256": "9161de219fe75b3d595b9ac6d80f31c6f5105938acacde202f96a5ab1244cd8b"
+  },
+  {
+    "name": "transfer_label_panel",
+    "address": "0x80072f20",
+    "bytes": 480,
+    "sha256": "4c5be2d689f91431e19eff6f23be6246ee83f2ffe3c0e7389fc5c38b3b7fe447"
+  },
+  {
+    "name": "transfer_profile_left",
+    "address": "0x80073100",
+    "bytes": 4176,
+    "sha256": "c0148ea34471b10d200f17e4f09ffa3219aba8ae5716b45c4109e473ca674fdc"
+  },
+  {
+    "name": "growth",
+    "address": "0x8003aa58",
+    "bytes": 2080,
+    "sha256": "980ee7fa05b7b0dfbda8362df5f3792ed3cd4f9c76c6650e6fff0caa8271fc96"
+  },
+  {
+    "name": "rest_entry",
+    "address": "0x8003dda8",
+    "bytes": 904,
+    "sha256": "1969ea52c48f20317f3abc83532aed2b6aff01a439adb009668938d1e1e51ce0"
+  },
+  {
+    "name": "rest_energy",
+    "address": "0x80036e10",
+    "bytes": 288,
+    "sha256": "4952e5aff2dd279d06726c55e807a7154f39fe2163a107397c0bebc90c1b1530"
+  },
+  {
+    "name": "active_energy",
+    "address": "0x800370ec",
+    "bytes": 188,
+    "sha256": "259586c02fa314c34ad99ebc7af0f2c7fb4db38b2d51510b1982dad5fe785334"
+  },
+  {
+    "name": "finance_close",
+    "address": "0x80029334",
+    "bytes": 5548,
+    "sha256": "24790ec082108e351ed98a94102e35fb0bae7c1e938b1856576e0bcb8b107a97"
+  },
+  {
+    "name": "inline_ui_labels",
+    "address": "0x800b9654",
+    "bytes": 134,
+    "sha256": "0dbe1035058e6eb369675bbeee1d7e3caaa500693bf4b953bd087c48cf58645a"
+  },
+  {
+    "name": "display_hours_and_roles",
+    "address": "0x800cd750",
+    "bytes": 14,
+    "sha256": "068fae222d2d744901de7dd223166e401973975fe0ab0ccaa720d55d445df6cb"
+  }
+]

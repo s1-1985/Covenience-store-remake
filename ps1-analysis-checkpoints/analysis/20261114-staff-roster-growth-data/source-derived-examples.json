@@ -1,0 +1,21 @@
+{
+  "scope": "Source arithmetic examples, not gameplay observations.",
+  "soft_limit": {
+    "initial_profile": 0,
+    "cashier_hard_limit": 80,
+    "cashier_soft_limit": 52,
+    "at51": "Can grow to52 when academic roll passes.",
+    "at52": "Needs shared rare flag and academic roll to grow to53.",
+    "at80": "Cannot grow beyond hard limit even with rare flag."
+  },
+  "wage": {
+    "profile": 0,
+    "base": 280,
+    "hours": 24,
+    "profile_display": 6720,
+    "manager_hourly": 364,
+    "manager_payroll": 8736,
+    "after3_percent_annual_raise_base": 288,
+    "unassigned_record": "No per-store annual wage multiplication while unassigned."
+  }
+}

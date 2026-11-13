@@ -1,0 +1,142 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 11991,
+    "sha256": "2a9747f863a434fd993501fb8d2d9e80061dc53cccfeb9e6d6e670798015d60c"
+  },
+  {
+    "path": "android-staff-roster-bridge.json",
+    "bytes": 4291,
+    "sha256": "fd2e90086c8387a570741181785c1b97486dc733f1b6f8872038bade480a1dd8"
+  },
+  {
+    "path": "extract-staff-roster.py",
+    "bytes": 12722,
+    "sha256": "07f8ac66b117eb4035266fdedd199aaf5c637e2c829e13e655476e513a987590"
+  },
+  {
+    "path": "source/TOWN0001-staff-packed.bin",
+    "bytes": 1890,
+    "sha256": "7bf817578eae44de01d29138f5859e6ca01190d6ab2b91778e821bedadc4efdd"
+  },
+  {
+    "path": "source/TOWN0002-staff-packed.bin",
+    "bytes": 1890,
+    "sha256": "5a0728461d33f53db50da47e4bb6264d46fa893c7a47b910282731f0ae359fb6"
+  },
+  {
+    "path": "source/TOWN0003-staff-packed.bin",
+    "bytes": 1890,
+    "sha256": "1dcf4cd6412274c384cb3cac77b3bcf8a39a495fcf3d8f1f2fe377a2ff4ffbc3"
+  },
+  {
+    "path": "source/TOWNPS-staff-packed.bin",
+    "bytes": 1890,
+    "sha256": "b1c42fd2905da602c1596983cff03535c34b098c0a972ffd9cf8418492c9a078"
+  },
+  {
+    "path": "source/active_energy.bin",
+    "bytes": 188,
+    "sha256": "259586c02fa314c34ad99ebc7af0f2c7fb4db38b2d51510b1982dad5fe785334"
+  },
+  {
+    "path": "source/candidate_pool.bin",
+    "bytes": 548,
+    "sha256": "5f10d530f506867d4def3c6831527c4d5f2db9210be012366f15789ff3c68838"
+  },
+  {
+    "path": "source/candidate_profile.bin",
+    "bytes": 2916,
+    "sha256": "ccc09c0343d9778c5ae628a1dffd03abd4fa02138f1ac5f01a26b7029fe4ef6f"
+  },
+  {
+    "path": "source/display-hours-and-role-table.bin",
+    "bytes": 14,
+    "sha256": "068fae222d2d744901de7dd223166e401973975fe0ab0ccaa720d55d445df6cb"
+  },
+  {
+    "path": "source/finance_close.bin",
+    "bytes": 5548,
+    "sha256": "24790ec082108e351ed98a94102e35fb0bae7c1e938b1856576e0bcb8b107a97"
+  },
+  {
+    "path": "source/growth.bin",
+    "bytes": 2080,
+    "sha256": "980ee7fa05b7b0dfbda8362df5f3792ed3cd4f9c76c6650e6fff0caa8271fc96"
+  },
+  {
+    "path": "source/hire_commit.bin",
+    "bytes": 1084,
+    "sha256": "9161de219fe75b3d595b9ac6d80f31c6f5105938acacde202f96a5ab1244cd8b"
+  },
+  {
+    "path": "source/hire_shell.bin",
+    "bytes": 648,
+    "sha256": "e0022da822314cfcd223a87a102a89328b920efd915cc4337664c4b9145531d8"
+  },
+  {
+    "path": "source/inline-ui-labels.bin",
+    "bytes": 134,
+    "sha256": "0dbe1035058e6eb369675bbeee1d7e3caaa500693bf4b953bd087c48cf58645a"
+  },
+  {
+    "path": "source/rest_energy.bin",
+    "bytes": 288,
+    "sha256": "4952e5aff2dd279d06726c55e807a7154f39fe2163a107397c0bebc90c1b1530"
+  },
+  {
+    "path": "source/rest_entry.bin",
+    "bytes": 904,
+    "sha256": "1969ea52c48f20317f3abc83532aed2b6aff01a439adb009668938d1e1e51ce0"
+  },
+  {
+    "path": "source/town_loader.bin",
+    "bytes": 4076,
+    "sha256": "b99f946d51a2fc511a8c4b1e9f2daab6ac2f77ac8f770aae08f05088fa4a603e"
+  },
+  {
+    "path": "source/transfer_label_panel.bin",
+    "bytes": 480,
+    "sha256": "4c5be2d689f91431e19eff6f23be6246ee83f2ffe3c0e7389fc5c38b3b7fe447"
+  },
+  {
+    "path": "source/transfer_profile_left.bin",
+    "bytes": 4176,
+    "sha256": "c0148ea34471b10d200f17e4f09ffa3219aba8ae5716b45c4109e473ca674fdc"
+  },
+  {
+    "path": "source-derived-examples.json",
+    "bytes": 656,
+    "sha256": "ed46746bfcdea1cfe9b62e9ac6b64d3b0310e327086f55e0dfa250fd07ce700c"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 2346,
+    "sha256": "90714c1f24fd04f52b82a1bbfb0d40fafef983cf0f559315d607ba179b94b1d0"
+  },
+  {
+    "path": "source-reference/psmoji.py",
+    "bytes": 3212,
+    "sha256": "6420fe9c15979aee1862dc5a737ecacb6928907c7b0f157bed6691bb833130ea"
+  },
+  {
+    "path": "staff-readers.asm",
+    "bytes": 196919,
+    "sha256": "faec95df473264d30220ccdae5d56fc10e5d65d4529dbf096b5b84879348ed5a"
+  },
+  {
+    "path": "staff-roster-data.json",
+    "bytes": 118559,
+    "sha256": "6513b715dfa880ffe77ae6a98a5dc96342e3191d75604738a2cb1b4a1067e615"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 795,
+    "sha256": "7eafd2ea99d4dd975f08165b3301cbcee1d6f341fb782672c362d023304d0792"
+  },
+  {
+    "path": "ui-label-evidence.json",
+    "bytes": 9813,
+    "sha256": "67cd99662bb1df63b148dafef282a7e592be27c1bc1203d7d2e33cbf04c33bbc"
+  }
+]
