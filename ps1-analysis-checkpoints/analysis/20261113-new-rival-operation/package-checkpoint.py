@@ -12,14 +12,23 @@ latest=dict(branch='chatgpt/ps1-analysis-recovery-20261103',date_jst='2026-11-13
 (CHECKPOINTS/'LATEST-ANALYSIS.json').write_text(json.dumps(latest,ensure_ascii=False,indent=2)+'\n')
 policy=CHECKPOINTS/'ANALYSIS-POLICY.md';s=policy.read_text();link=f'- [2026-11-13：新ライバル店の初日営業と日次決算](analysis/{ROOT.name}/README.md)\n\n'
 if link not in s:s=s.replace('## 保存済み\n\n','## 保存済み\n\n'+link);policy.write_text(s)
-lines=['# 自然出店したライバル店の初日営業','', '2026-11-13（日本時間）。main-31・時計23,360・累積11,688更新から継続。時計・資金・乱数・配属の直接変更なし。','',f"完成済み {len(status['cases'])}/3区間、追加{status['total_updates']:,}更新。完成区間のみを最新再開点へ採用する。",'', '| 完成区間 | 時計 | 累積更新 | 自社資金 | 他社資金 |','|---|---:|---:|---:|---:|']
-for x in status['cases']:lines.append(f"| {x['output']} | {x['clock_after']:,} | {x['completed_iterations']:,} | {x['cash_after'][0]:,} | {x['cash_after'][1]:,} |")
+lines=['# 自然出店したライバル店の初日営業','', '2026-11-13（日本時間）。main-31・時計23,360・累積11,688更新から継続。時計・資金・乱数・配属の直接変更なし。','',f"完成済み {len(status['cases'])}/3区間、追加{status['total_updates']:,}更新。完成区間のみを最新再開点へ採用する。",'', '| 完成区間 | 時計 | ゲーム時刻 | 累積更新 | 自社資金 | 他社資金 |','|---|---:|---:|---:|---:|---:|']
+for x in status['cases']:lines.append(f"| {x['output']} | {x['clock_after']:,} | {(x['clock_after']%1440)//60:02d}:{x['clock_after']%60:02d} | {x['completed_iterations']:,} | {x['cash_after'][0]:,} | {x['cash_after'][1]:,} |")
 lines+=['','各区間で原営業親処理と独立親モデルを比較し、従業員・客・補充・日次決算の独立監視を実行した。両社資金は全書込みの連鎖と店舗日次台帳からの再計算で一致。','']
 audit=ROOT/'new-store-audit.json'
 if audit.exists():
  a=json.loads(audit.read_text());assert a['all_passed']
- lines+=['## 新店舗スロット3の検証','',f"他社店舗・従業員ID {a['staff_ids']}。営業時間表の番号{a['schedule_index']}は7時〜23時で、23時台は新規入客しない。",'', '| 照合項目 | 結果 |','|---|---:|',f"| 従業員／客／入客の各監視 | 各{a['verified_loops_per_domain']:,}回 |",f"| 新規入客グループ | {a['created_groups']}組 |",f"| 新規入客人数 | {a['created_people']}人 |",f"| 売上計上 | {a['sales_postings']}回・{a['additional_revenue']:,}円 |",f"| 従業員の座標移動 | {a['staff_movement_steps']}回 |",f"| 向きだけの変更 | {a['staff_direction_only_changes']}回 |",f"| 補充関数の照合 | {a['restock_checks']}回 |",f"| 追加仕入計上 | {a['additional_goods']:,}円 |",'',f"初入客は時計{a['first_created']['clock']}、初売上は時計{a['first_revenue']['clock']}。日次決算は時計{a['midnight']['clock']}、カレンダー{a['midnight']['calendar']}で新店舗も処理対象となった。",'', f"前日台帳の5欄は `{a['previous_day_ledger']}`。開設時の日次費用欄 `{a['opening_day_ledger']}` と、その後の支払／売上を個別伝票で突合した。開設時に支払済みの38,260円を重複して差し引かない。詳細は `new-store-audit.json`。",'']
+ lines+=['## 新店舗スロット3の検証','',f"他社店舗・従業員ID {a['staff_ids']}。営業時間表の番号{a['schedule_index']}は7時〜23時で、23時台は新規入客しない。",'', '| 照合項目 | 結果 |','|---|---:|',f"| 従業員／客／入客の各監視 | 各{a['verified_loops_per_domain']:,}回 |",f"| 新規入客グループ | {a['created_groups']}組 |",f"| 新規入客人数 | {a['created_people']}人 |",f"| 売上計上 | {a['sales_postings']}回・{a['additional_revenue']:,}円 |",f"| 従業員の座標移動 | {a['staff_movement_steps']}回 |",f"| 向きだけの変更 | {a['staff_direction_only_changes']}回 |",f"| 補充関数の照合 | {a['restock_checks']}回 |",f"| 初日の追加仕入計上 | {a['additional_goods']:,}円 |",'',f"初入客は時計{a['first_created']['clock']}、初売上は時計{a['first_revenue']['clock']}。日次決算は時計{a['midnight']['clock']}、カレンダー{a['midnight']['calendar']}で新店舗も処理対象となった。",'', f"前日台帳の5欄は `{a['previous_day_ledger']}`。開設時の日次費用欄 `{a['opening_day_ledger']}` と、その後の支払／売上を個別伝票で突合した。開設時に支払済みの38,260円を重複して差し引かない。詳細は `new-store-audit.json`。",'']
+if audit.exists():
+ lines+=['## 営業時間外の補充と日付境界','',f"営業時間外の仕入は{len(a['closed_hours_goods_postings'])}伝票・{a['closed_hours_goods_amount']:,}円。翌日0時以降の仕入{a['next_day_goods']:,}円は、現在日台帳 `{a['current_day_ledger']}` と一致した。",'', '時計24,480（0時）の同じ更新内で、決算処理80029334が新店舗の従業員処理80036AC0より先に呼ばれる。原呼出し記録と原EXEのJAL命令2箇所で確認した。この更新で発生する180円の仕入は、決算で締めた前日ではなく、新しい日の台帳へ計上される。','', '初回の監査側集計では時計が決算時刻以下の伝票を前日に含めて180円の不一致が出た。原呼出順に合わせ、決算時刻未満を前日・決算時刻以降を新日に分けて一致を確認した。原ゲームの計算や状態への変更は行っていない。','']
 if audit.exists() and a['restock_checks']==0:lines+=['新店舗の補充関数はこの区間では未到達。追加仕入が発生したとは扱わない。','']
 lines+=['## 再現','', '```sh','python ps1-analysis-checkpoints/restore-latest.py --destination /absolute/empty/runtime','python prepare-inputs.py /absolute/empty/runtime/algorithm-analysis','python continue-main.py /absolute/empty/runtime/algorithm-analysis','python audit-new-store.py /absolute/empty/runtime/algorithm-analysis','```','', '完成証跡があれば再実行せず再監査する。`evidence-encoding.json` に全証跡のサイズ・SHA-256と可逆圧縮方法を記録する。原EXE SHA-256は `d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd`。','', '## 制限','', '原子関数を共有する親処理間比較と、自然到達した状態での独立モデル照合である。SDK/BIOS・GPU/SPU/IRQは既存モデルであり、実画面の画素・実音声・実時間速度を証明しない。従業員移動の回数は論理座標の変化である。','', '実行器の命令数制限を外す診断2条件はSIGSEGVで終了したため採用していない。完成区間は原実行器の命令数制限を維持している。失敗診断は主系列の更新回数へ加算しない。','']
+restarts=[]
+for path in sorted(ROOT.glob('restart-*-check.json')):
+ r=json.loads(path.read_text());assert r['all_passed'];restarts.append(r)
+if restarts:
+ lines+=['## 別フォルダーへの復元再開','', '| 再開点 | 診断前の時計 | 診断後の時計 |','|---|---:|---:|']
+ for r in restarts:lines.append(f"| {r['snapshot']} | {r['clock_before']} | {r['clock_after']} |")
+ lines+=['', '各2更新の診断は主系列の累積回数と最新RAMに加算しない。再開前RAMのSHA-256も検査した。','']
 (ROOT/'README.md').write_text('\n'.join(lines))
 print(json.dumps(dict(snapshot=name,completed_segments=len(status['cases']),clock=last['clock_after'],completed_iterations=meta['completed_iterations'])))

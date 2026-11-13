@@ -1,0 +1,744 @@
+{
+  "all_passed": true,
+  "slot": 3,
+  "company": 1,
+  "staff_ids": [
+    13,
+    0,
+    7
+  ],
+  "schedule_index": 2,
+  "scheduled_open_hours": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "segments": [
+    {
+      "name": "TOWN0001-ci-main-32-single",
+      "iterations": 200,
+      "clock": 23760,
+      "ram_sha256": "51fc871ad49fe048222c3ddb0a4fdf1b784cb89427cddf877c0b180a07b9519d",
+      "proof_sha256": "cb2d14d7bf91614a7fdabe83ad1c0256d34700d9e91b3bf9c90d8361352ca65c"
+    },
+    {
+      "name": "TOWN0001-ci-main-33-single",
+      "iterations": 200,
+      "clock": 24160,
+      "ram_sha256": "3ee0bd61890e60ffb6fa58727d8e3dd4089c6ab25512a1af471d48ec0ad49dfc",
+      "proof_sha256": "844b99126aec522c8fda350b8a6abdcf745ad953a885b2b1c589fb78e7bd0713"
+    },
+    {
+      "name": "TOWN0001-ci-main-34-single",
+      "iterations": 200,
+      "clock": 24560,
+      "ram_sha256": "9051a99a20b4d38121c8115e66b389b569a9eda27fb6ebc9d4172349ed7ed3e1",
+      "proof_sha256": "29529f03b13a6ac59fab34765037c1123fd1fcb9441a874a0b9f8083b32f1d40"
+    }
+  ],
+  "start_ram_sha256": "f9bba3258b11c921869e0ddfe8a34291a58102ea4023e490ac48f912f96a1971",
+  "completed_iterations": 12288,
+  "verified_loops_per_domain": 600,
+  "spawn_reasons": {
+    "not_open": 120,
+    "random_gate": 267,
+    "created": 45,
+    "no_demand": 33,
+    "full": 135
+  },
+  "opening_trace": {
+    "clock": 23460,
+    "store_slot": 3,
+    "seed": 3492947068,
+    "reason": "random_gate",
+    "slot": null,
+    "profile": null,
+    "quantity": null
+  },
+  "closing_trace": {
+    "clock": 24420,
+    "store_slot": 3,
+    "seed": 2153389037,
+    "reason": "not_open",
+    "slot": null,
+    "profile": null,
+    "quantity": null
+  },
+  "first_created": {
+    "clock": 23462,
+    "store_slot": 3,
+    "seed": 2611446367,
+    "reason": "created",
+    "slot": 0,
+    "profile": 67,
+    "quantity": 3
+  },
+  "created_groups": 45,
+  "created_people": 137,
+  "first_revenue": {
+    "clock": 23478,
+    "store_slot": 3,
+    "child_calls": [
+      [
+        "destination",
+        1,
+        3,
+        0
+      ]
+    ],
+    "states_before": [
+      2,
+      2,
+      2,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "states_after": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "cash_before": [
+      99012762,
+      97694589
+    ],
+    "cash_after": [
+      99012762,
+      97695339
+    ],
+    "revenue_before": 0,
+    "revenue_after": 750,
+    "store_sha256": "3c24ea28f6f4d85977b2486baee0d4595e0c95ca22cf9aa52c95887d34c32940",
+    "seed": 3403665437
+  },
+  "sales_postings": 55,
+  "additional_revenue": 162630,
+  "staff_summary": [
+    {
+      "role_index": 0,
+      "id": 13,
+      "capability_field_changes": [
+        {
+          "offset": "0x1f",
+          "before": 10,
+          "after": 13
+        },
+        {
+          "offset": "0x21",
+          "before": 8,
+          "after": 10
+        },
+        {
+          "offset": "0x22",
+          "before": 8,
+          "after": 10
+        }
+      ],
+      "state_counts": {
+        "0": 384,
+        "4": 97,
+        "3": 54,
+        "2": 65
+      },
+      "movement_steps": 108,
+      "direction_changes": 35,
+      "energy_range": [
+        37,
+        55
+      ]
+    },
+    {
+      "role_index": 1,
+      "id": 0,
+      "capability_field_changes": [
+        {
+          "offset": "0x1e",
+          "before": 14,
+          "after": 19
+        },
+        {
+          "offset": "0x1f",
+          "before": 12,
+          "after": 13
+        },
+        {
+          "offset": "0x20",
+          "before": 14,
+          "after": 19
+        },
+        {
+          "offset": "0x21",
+          "before": 14,
+          "after": 17
+        },
+        {
+          "offset": "0x22",
+          "before": 14,
+          "after": 16
+        }
+      ],
+      "state_counts": {
+        "0": 294,
+        "4": 150,
+        "3": 33,
+        "1": 98,
+        "2": 25
+      },
+      "movement_steps": 71,
+      "direction_changes": 41,
+      "energy_range": [
+        43,
+        80
+      ]
+    },
+    {
+      "role_index": 2,
+      "id": 7,
+      "capability_field_changes": [
+        {
+          "offset": "0x1e",
+          "before": 16,
+          "after": 32
+        },
+        {
+          "offset": "0x1f",
+          "before": 15,
+          "after": 16
+        },
+        {
+          "offset": "0x20",
+          "before": 16,
+          "after": 31
+        },
+        {
+          "offset": "0x22",
+          "before": 16,
+          "after": 17
+        }
+      ],
+      "state_counts": {
+        "0": 141,
+        "1": 311,
+        "3": 1,
+        "2": 147
+      },
+      "movement_steps": 16,
+      "direction_changes": 4,
+      "energy_range": [
+        0,
+        75
+      ]
+    }
+  ],
+  "staff_movement_steps": 195,
+  "staff_direction_only_changes": 80,
+  "staff_state_transitions": {
+    "0->1": 2,
+    "0->4": 12,
+    "4->3": 13,
+    "3->0": 14,
+    "1->3": 1,
+    "0->2": 3,
+    "1->4": 1
+  },
+  "staff_energy_changes": 446,
+  "staff_effects": {
+    "rest_departure_choice": 217,
+    "service_arrival": 407,
+    "walk": 167,
+    "clean_0": 150,
+    "active_target_choice": 25,
+    "turn": 20,
+    "rest_arrival_0": 14,
+    "rest_recovery": 189,
+    "clean_1": 5,
+    "refill_1": 183,
+    "refill_0": 7
+  },
+  "first_movement": {
+    "clock": 23488,
+    "id": 7,
+    "before": [
+      19,
+      9,
+      1
+    ],
+    "after": [
+      17,
+      8,
+      2
+    ]
+  },
+  "first_energy_change": {
+    "clock": 23498,
+    "id": 7,
+    "before": 75,
+    "after": 74
+  },
+  "restock_checks": 190,
+  "stock_postings": 82,
+  "first_ledger_posting": {
+    "clock": 23478,
+    "store_slot": 3,
+    "caller": "0x80034b48",
+    "amount": 750,
+    "income": 1,
+    "cash_before": [
+      99012762,
+      97694589
+    ],
+    "cash_after": [
+      99012762,
+      97695339
+    ]
+  },
+  "first_goods_posting": {
+    "clock": 24314,
+    "store_slot": 3,
+    "caller": "0x8003b3fc",
+    "amount": 1500,
+    "income": 0,
+    "cash_before": [
+      99148947,
+      97978214
+    ],
+    "cash_after": [
+      99148947,
+      97976714
+    ]
+  },
+  "midnight": {
+    "clock": 24480,
+    "calendar": [
+      1,
+      5,
+      2,
+      0,
+      0
+    ],
+    "store_order": [
+      0,
+      2,
+      1,
+      3,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "cash_before": [
+      99165757,
+      97952199
+    ],
+    "cash_after": [
+      99122285,
+      97892423
+    ],
+    "stores_sha256": "37be398df1a4e31a4ef22260df28173e1472681c367d5c9e16812dcc3e42a460",
+    "staff_sha256": "cd95d7e1965b859c39a911afbb0ac100001e1e6ea113f89628fe911791e27729",
+    "events": [],
+    "UI": [],
+    "notification_text_calls": [],
+    "notification_text_sha256": "8c47f45678589789cef9a8d50c224c39d43c47885602aae1663ddd4069d7ccb9"
+  },
+  "midnight_order": {
+    "clock": 24480,
+    "finance_trace_index": 5,
+    "new_store_staff_trace_index": 37,
+    "original_jal_words": [
+      {
+        "pc": "0x800234a0",
+        "word": "0xc00a4cd",
+        "target": "0x80029334"
+      },
+      {
+        "pc": "0x800238bc",
+        "word": "0xc00dab0",
+        "target": "0x80036ac0"
+      }
+    ],
+    "first_after_close_posting": {
+      "clock": 24480,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 180,
+      "income": 0,
+      "cash_before": [
+        99121760,
+        97892423
+      ],
+      "cash_after": [
+        99121760,
+        97892243
+      ]
+    },
+    "old_day_postings_use_strict_clock_less_than": 24480,
+    "reason": "Finance closes and resets day ledgers before staff work at the same clock. The180 expense at clock24480 belongs to the new day."
+  },
+  "next_day_goods": 4380,
+  "current_day_ledger": [
+    0,
+    0,
+    0,
+    4380,
+    0
+  ],
+  "closed_hours_goods_amount": 10200,
+  "closed_hours_goods_postings": [
+    {
+      "clock": 24426,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 1500,
+      "income": 0,
+      "cash_before": [
+        99167157,
+        97970949
+      ],
+      "cash_after": [
+        99167157,
+        97969449
+      ]
+    },
+    {
+      "clock": 24438,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 1500,
+      "income": 0,
+      "cash_before": [
+        99167157,
+        97960449
+      ],
+      "cash_after": [
+        99167157,
+        97958949
+      ]
+    },
+    {
+      "clock": 24444,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 1600,
+      "income": 0,
+      "cash_before": [
+        99167157,
+        97958949
+      ],
+      "cash_after": [
+        99167157,
+        97957349
+      ]
+    },
+    {
+      "clock": 24454,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 180,
+      "income": 0,
+      "cash_before": [
+        99167157,
+        97955849
+      ],
+      "cash_after": [
+        99167157,
+        97955669
+      ]
+    },
+    {
+      "clock": 24458,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 250,
+      "income": 0,
+      "cash_before": [
+        99167157,
+        97955369
+      ],
+      "cash_after": [
+        99167157,
+        97955119
+      ]
+    },
+    {
+      "clock": 24460,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 250,
+      "income": 0,
+      "cash_before": [
+        99167157,
+        97955119
+      ],
+      "cash_after": [
+        99167157,
+        97954869
+      ]
+    },
+    {
+      "clock": 24478,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 180,
+      "income": 0,
+      "cash_before": [
+        99165757,
+        97952739
+      ],
+      "cash_after": [
+        99165757,
+        97952559
+      ]
+    },
+    {
+      "clock": 24478,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 360,
+      "income": 0,
+      "cash_before": [
+        99165757,
+        97952559
+      ],
+      "cash_after": [
+        99165757,
+        97952199
+      ]
+    },
+    {
+      "clock": 24480,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 180,
+      "income": 0,
+      "cash_before": [
+        99121760,
+        97892423
+      ],
+      "cash_after": [
+        99121760,
+        97892243
+      ]
+    },
+    {
+      "clock": 24494,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 480,
+      "income": 0,
+      "cash_before": [
+        99126560,
+        97888563
+      ],
+      "cash_after": [
+        99126560,
+        97888083
+      ]
+    },
+    {
+      "clock": 24494,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 1200,
+      "income": 0,
+      "cash_before": [
+        99126560,
+        97888083
+      ],
+      "cash_after": [
+        99126560,
+        97886883
+      ]
+    },
+    {
+      "clock": 24504,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 600,
+      "income": 0,
+      "cash_before": [
+        99123760,
+        97885408
+      ],
+      "cash_after": [
+        99123760,
+        97884808
+      ]
+    },
+    {
+      "clock": 24508,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 480,
+      "income": 0,
+      "cash_before": [
+        99123760,
+        97884808
+      ],
+      "cash_after": [
+        99123760,
+        97884328
+      ]
+    },
+    {
+      "clock": 24514,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 480,
+      "income": 0,
+      "cash_before": [
+        99120960,
+        97883128
+      ],
+      "cash_after": [
+        99120960,
+        97882648
+      ]
+    },
+    {
+      "clock": 24524,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 480,
+      "income": 0,
+      "cash_before": [
+        99120630,
+        97878448
+      ],
+      "cash_after": [
+        99120630,
+        97877968
+      ]
+    },
+    {
+      "clock": 24524,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 60,
+      "income": 0,
+      "cash_before": [
+        99120630,
+        97877968
+      ],
+      "cash_after": [
+        99120630,
+        97877908
+      ]
+    },
+    {
+      "clock": 24528,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 60,
+      "income": 0,
+      "cash_before": [
+        99120630,
+        97877908
+      ],
+      "cash_after": [
+        99120630,
+        97877848
+      ]
+    },
+    {
+      "clock": 24538,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 60,
+      "income": 0,
+      "cash_before": [
+        99120300,
+        97873138
+      ],
+      "cash_after": [
+        99120300,
+        97873078
+      ]
+    },
+    {
+      "clock": 24556,
+      "store_slot": 3,
+      "caller": "0x8003b3fc",
+      "amount": 300,
+      "income": 0,
+      "cash_before": [
+        99116550,
+        97860448
+      ],
+      "cash_after": [
+        99116550,
+        97860148
+      ]
+    }
+  ],
+  "opening_day_ledger": [
+    0,
+    0,
+    0,
+    38260,
+    0
+  ],
+  "additional_goods": 16320,
+  "previous_day_ledger": [
+    18320,
+    14480,
+    0,
+    54580,
+    162630
+  ],
+  "limits": [
+    "Natural trajectory without input/cash/clock/roster/RNG edits.",
+    "Each paired live loop compares model bytes and original RAM; original child routines remain shared by the paired parent execution.",
+    "Position changes are logical half-tile coordinates, not a rendered-pixel or real-time animation test.",
+    "Unvisited restock paths are disclosed by counts; task execution is not assumed from the staff roster.",
+    "Previous-day sales and goods reconcile to individual postings. Opening day-ledger goods includes38260 initial equipment already paid at the monthly birth boundary; it is not charged again by this audit.",
+    "GPU/SPU/IRQ/SDK boundaries are modeled, as in the archived runner."
+  ]
+}
