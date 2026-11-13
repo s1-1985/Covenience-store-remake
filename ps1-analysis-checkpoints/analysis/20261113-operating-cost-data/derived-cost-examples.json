@@ -1,0 +1,25 @@
+{
+  "scope": "Source-table arithmetic, not a gameplay or billing trace.",
+  "fixture7": {
+    "name": "冷蔵棚",
+    "rate": 30,
+    "schedule1_hours": 8,
+    "daily_schedule1": 240,
+    "daily_schedule0": 720
+  },
+  "manager_rounding": {
+    "wage_base": 99,
+    "hours": 8,
+    "manager_hourly": 128,
+    "manager_daily": 1024,
+    "ordinary_daily": 792,
+    "formula": "trunc(99*130/100)*8; not trunc(99*130*8/100)"
+  },
+  "temporary_closed": {
+    "schedule": 6,
+    "hours": 0,
+    "equipment": 0,
+    "staff": 0,
+    "other_costs": "Existing+D90 is still part of the separate daily debit."
+  }
+}

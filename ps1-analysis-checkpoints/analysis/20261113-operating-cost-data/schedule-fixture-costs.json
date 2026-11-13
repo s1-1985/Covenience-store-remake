@@ -1,0 +1,1318 @@
+{
+  "schema_version": 1,
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "schedule_schema": {
+    "base": "0x80099dd0",
+    "count": 7,
+    "stride": 45,
+    "name": "Shift-JIS[21]",
+    "flags": "u8[24] at+21"
+  },
+  "fixture_rate_schema": {
+    "base": "0x80099f0c",
+    "count": 53,
+    "stride": 196,
+    "hourly_rate_offset": 8
+  },
+  "label_dependency": "../20261113-product-stock-data/fixture-labels.json",
+  "schedules": [
+    {
+      "id": 0,
+      "address": "0x80099dd0",
+      "name": "24時間",
+      "hour_flags": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "open_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "hours_per_day": 24,
+      "temporary_closed": false
+    },
+    {
+      "id": 1,
+      "address": "0x80099dfd",
+      "name": "AM10:00〜PM 6:00",
+      "hour_flags": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "open_hours": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "hours_per_day": 8,
+      "temporary_closed": false
+    },
+    {
+      "id": 2,
+      "address": "0x80099e2a",
+      "name": "AM 7:00〜PM11:00",
+      "hour_flags": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "open_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "hours_per_day": 16,
+      "temporary_closed": false
+    },
+    {
+      "id": 3,
+      "address": "0x80099e57",
+      "name": "AM10:00〜AM 2:00",
+      "hour_flags": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "open_hours": [
+        0,
+        1,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "hours_per_day": 16,
+      "temporary_closed": false
+    },
+    {
+      "id": 4,
+      "address": "0x80099e84",
+      "name": "PM 0:00〜AM 4:00",
+      "hour_flags": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "open_hours": [
+        0,
+        1,
+        2,
+        3,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "hours_per_day": 16,
+      "temporary_closed": false
+    },
+    {
+      "id": 5,
+      "address": "0x80099eb1",
+      "name": "PM 7:00〜AM11:00",
+      "hour_flags": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "open_hours": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "hours_per_day": 16,
+      "temporary_closed": false
+    },
+    {
+      "id": 6,
+      "address": "0x80099ede",
+      "name": "臨時休業",
+      "hour_flags": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "open_hours": [],
+      "hours_per_day": 0,
+      "temporary_closed": true
+    }
+  ],
+  "fixtures": [
+    {
+      "id": 0,
+      "address": "0x80099f0c",
+      "name": "常温棚",
+      "category": 0,
+      "raw_purchase_price": 60,
+      "hourly_operating_rate": 1,
+      "cost_per_schedule": [
+        24,
+        8,
+        16,
+        16,
+        16,
+        16,
+        0
+      ],
+      "cost_fixed24_mode": 24
+    },
+    {
+      "id": 1,
+      "address": "0x80099fd0",
+      "name": "常温棚",
+      "category": 0,
+      "raw_purchase_price": 100,
+      "hourly_operating_rate": 2,
+      "cost_per_schedule": [
+        48,
+        16,
+        32,
+        32,
+        32,
+        32,
+        0
+      ],
+      "cost_fixed24_mode": 48
+    },
+    {
+      "id": 2,
+      "address": "0x8009a094",
+      "name": "常温棚",
+      "category": 0,
+      "raw_purchase_price": 140,
+      "hourly_operating_rate": 3,
+      "cost_per_schedule": [
+        72,
+        24,
+        48,
+        48,
+        48,
+        48,
+        0
+      ],
+      "cost_fixed24_mode": 72
+    },
+    {
+      "id": 3,
+      "address": "0x8009a158",
+      "name": "常温ワゴン",
+      "category": 1,
+      "raw_purchase_price": 30,
+      "hourly_operating_rate": 1,
+      "cost_per_schedule": [
+        24,
+        8,
+        16,
+        16,
+        16,
+        16,
+        0
+      ],
+      "cost_fixed24_mode": 24
+    },
+    {
+      "id": 4,
+      "address": "0x8009a21c",
+      "name": "常温ワゴン",
+      "category": 1,
+      "raw_purchase_price": 50,
+      "hourly_operating_rate": 2,
+      "cost_per_schedule": [
+        48,
+        16,
+        32,
+        32,
+        32,
+        32,
+        0
+      ],
+      "cost_fixed24_mode": 48
+    },
+    {
+      "id": 5,
+      "address": "0x8009a2e0",
+      "name": "常温ワゴン",
+      "category": 1,
+      "raw_purchase_price": 70,
+      "hourly_operating_rate": 3,
+      "cost_per_schedule": [
+        72,
+        24,
+        48,
+        48,
+        48,
+        48,
+        0
+      ],
+      "cost_fixed24_mode": 72
+    },
+    {
+      "id": 6,
+      "address": "0x8009a3a4",
+      "name": "常温ワゴン",
+      "category": 1,
+      "raw_purchase_price": 90,
+      "hourly_operating_rate": 4,
+      "cost_per_schedule": [
+        96,
+        32,
+        64,
+        64,
+        64,
+        64,
+        0
+      ],
+      "cost_fixed24_mode": 96
+    },
+    {
+      "id": 7,
+      "address": "0x8009a468",
+      "name": "冷蔵棚",
+      "category": 0,
+      "raw_purchase_price": 200,
+      "hourly_operating_rate": 30,
+      "cost_per_schedule": [
+        720,
+        240,
+        480,
+        480,
+        480,
+        480,
+        0
+      ],
+      "cost_fixed24_mode": 720
+    },
+    {
+      "id": 8,
+      "address": "0x8009a52c",
+      "name": "冷蔵棚",
+      "category": 0,
+      "raw_purchase_price": 350,
+      "hourly_operating_rate": 50,
+      "cost_per_schedule": [
+        1200,
+        400,
+        800,
+        800,
+        800,
+        800,
+        0
+      ],
+      "cost_fixed24_mode": 1200
+    },
+    {
+      "id": 9,
+      "address": "0x8009a5f0",
+      "name": "冷蔵棚",
+      "category": 0,
+      "raw_purchase_price": 500,
+      "hourly_operating_rate": 80,
+      "cost_per_schedule": [
+        1920,
+        640,
+        1280,
+        1280,
+        1280,
+        1280,
+        0
+      ],
+      "cost_fixed24_mode": 1920
+    },
+    {
+      "id": 10,
+      "address": "0x8009a6b4",
+      "name": "冷蔵ワゴン",
+      "category": 1,
+      "raw_purchase_price": 120,
+      "hourly_operating_rate": 40,
+      "cost_per_schedule": [
+        960,
+        320,
+        640,
+        640,
+        640,
+        640,
+        0
+      ],
+      "cost_fixed24_mode": 960
+    },
+    {
+      "id": 11,
+      "address": "0x8009a778",
+      "name": "冷蔵ワゴン",
+      "category": 1,
+      "raw_purchase_price": 200,
+      "hourly_operating_rate": 70,
+      "cost_per_schedule": [
+        1680,
+        560,
+        1120,
+        1120,
+        1120,
+        1120,
+        0
+      ],
+      "cost_fixed24_mode": 1680
+    },
+    {
+      "id": 12,
+      "address": "0x8009a83c",
+      "name": "冷蔵ワゴン",
+      "category": 1,
+      "raw_purchase_price": 280,
+      "hourly_operating_rate": 100,
+      "cost_per_schedule": [
+        2400,
+        800,
+        1600,
+        1600,
+        1600,
+        1600,
+        0
+      ],
+      "cost_fixed24_mode": 2400
+    },
+    {
+      "id": 13,
+      "address": "0x8009a900",
+      "name": "冷蔵ワゴン",
+      "category": 1,
+      "raw_purchase_price": 360,
+      "hourly_operating_rate": 130,
+      "cost_per_schedule": [
+        3120,
+        1040,
+        2080,
+        2080,
+        2080,
+        2080,
+        0
+      ],
+      "cost_fixed24_mode": 3120
+    },
+    {
+      "id": 14,
+      "address": "0x8009a9c4",
+      "name": "冷凍棚",
+      "category": 0,
+      "raw_purchase_price": 300,
+      "hourly_operating_rate": 90,
+      "cost_per_schedule": [
+        2160,
+        720,
+        1440,
+        1440,
+        1440,
+        1440,
+        0
+      ],
+      "cost_fixed24_mode": 2160
+    },
+    {
+      "id": 15,
+      "address": "0x8009aa88",
+      "name": "冷凍棚",
+      "category": 0,
+      "raw_purchase_price": 500,
+      "hourly_operating_rate": 150,
+      "cost_per_schedule": [
+        3600,
+        1200,
+        2400,
+        2400,
+        2400,
+        2400,
+        0
+      ],
+      "cost_fixed24_mode": 3600
+    },
+    {
+      "id": 16,
+      "address": "0x8009ab4c",
+      "name": "冷凍ワゴン",
+      "category": 1,
+      "raw_purchase_price": 200,
+      "hourly_operating_rate": 80,
+      "cost_per_schedule": [
+        1920,
+        640,
+        1280,
+        1280,
+        1280,
+        1280,
+        0
+      ],
+      "cost_fixed24_mode": 1920
+    },
+    {
+      "id": 17,
+      "address": "0x8009ac10",
+      "name": "冷凍ワゴン",
+      "category": 1,
+      "raw_purchase_price": 380,
+      "hourly_operating_rate": 130,
+      "cost_per_schedule": [
+        3120,
+        1040,
+        2080,
+        2080,
+        2080,
+        2080,
+        0
+      ],
+      "cost_fixed24_mode": 3120
+    },
+    {
+      "id": 18,
+      "address": "0x8009acd4",
+      "name": "冷凍棚・扉",
+      "category": 0,
+      "raw_purchase_price": 300,
+      "hourly_operating_rate": 70,
+      "cost_per_schedule": [
+        1680,
+        560,
+        1120,
+        1120,
+        1120,
+        1120,
+        0
+      ],
+      "cost_fixed24_mode": 1680
+    },
+    {
+      "id": 19,
+      "address": "0x8009ad98",
+      "name": "冷凍棚・扉",
+      "category": 0,
+      "raw_purchase_price": 560,
+      "hourly_operating_rate": 140,
+      "cost_per_schedule": [
+        3360,
+        1120,
+        2240,
+        2240,
+        2240,
+        2240,
+        0
+      ],
+      "cost_fixed24_mode": 3360
+    },
+    {
+      "id": 20,
+      "address": "0x8009ae5c",
+      "name": "冷凍ワゴン・扉",
+      "category": 1,
+      "raw_purchase_price": 150,
+      "hourly_operating_rate": 60,
+      "cost_per_schedule": [
+        1440,
+        480,
+        960,
+        960,
+        960,
+        960,
+        0
+      ],
+      "cost_fixed24_mode": 1440
+    },
+    {
+      "id": 21,
+      "address": "0x8009af20",
+      "name": "冷凍ワゴン・扉",
+      "category": 1,
+      "raw_purchase_price": 300,
+      "hourly_operating_rate": 100,
+      "cost_per_schedule": [
+        2400,
+        800,
+        1600,
+        1600,
+        1600,
+        1600,
+        0
+      ],
+      "cost_fixed24_mode": 2400
+    },
+    {
+      "id": 22,
+      "address": "0x8009afe4",
+      "name": "温かい飲み物",
+      "category": 0,
+      "raw_purchase_price": 300,
+      "hourly_operating_rate": 70,
+      "cost_per_schedule": [
+        1680,
+        560,
+        1120,
+        1120,
+        1120,
+        1120,
+        0
+      ],
+      "cost_fixed24_mode": 1680
+    },
+    {
+      "id": 23,
+      "address": "0x8009b0a8",
+      "name": "おでん",
+      "category": 1,
+      "raw_purchase_price": 100,
+      "hourly_operating_rate": 80,
+      "cost_per_schedule": [
+        1920,
+        640,
+        1280,
+        1280,
+        1280,
+        1280,
+        0
+      ],
+      "cost_fixed24_mode": 1920
+    },
+    {
+      "id": 24,
+      "address": "0x8009b16c",
+      "name": "中華まん",
+      "category": 0,
+      "raw_purchase_price": 300,
+      "hourly_operating_rate": 80,
+      "cost_per_schedule": [
+        1920,
+        640,
+        1280,
+        1280,
+        1280,
+        1280,
+        0
+      ],
+      "cost_fixed24_mode": 1920
+    },
+    {
+      "id": 25,
+      "address": "0x8009b230",
+      "name": "イベントケース棚",
+      "category": 0,
+      "raw_purchase_price": 600,
+      "hourly_operating_rate": 80,
+      "cost_per_schedule": [
+        1920,
+        640,
+        1280,
+        1280,
+        1280,
+        1280,
+        0
+      ],
+      "cost_fixed24_mode": 1920
+    },
+    {
+      "id": 26,
+      "address": "0x8009b2f4",
+      "name": "イベントケースワゴン",
+      "category": 1,
+      "raw_purchase_price": 300,
+      "hourly_operating_rate": 50,
+      "cost_per_schedule": [
+        1200,
+        400,
+        800,
+        800,
+        800,
+        800,
+        0
+      ],
+      "cost_fixed24_mode": 1200
+    },
+    {
+      "id": 27,
+      "address": "0x8009b3b8",
+      "name": "たばこ自販",
+      "category": 2,
+      "raw_purchase_price": 600,
+      "hourly_operating_rate": 10,
+      "cost_per_schedule": [
+        240,
+        80,
+        160,
+        160,
+        160,
+        160,
+        0
+      ],
+      "cost_fixed24_mode": 240
+    },
+    {
+      "id": 28,
+      "address": "0x8009b47c",
+      "name": "たばこ自販",
+      "category": 2,
+      "raw_purchase_price": 1000,
+      "hourly_operating_rate": 20,
+      "cost_per_schedule": [
+        480,
+        160,
+        320,
+        320,
+        320,
+        320,
+        0
+      ],
+      "cost_fixed24_mode": 480
+    },
+    {
+      "id": 29,
+      "address": "0x8009b540",
+      "name": "飲料自販・冷蔵",
+      "category": 2,
+      "raw_purchase_price": 800,
+      "hourly_operating_rate": 20,
+      "cost_per_schedule": [
+        480,
+        160,
+        320,
+        320,
+        320,
+        320,
+        0
+      ],
+      "cost_fixed24_mode": 480
+    },
+    {
+      "id": 30,
+      "address": "0x8009b604",
+      "name": "飲料自販・冷蔵",
+      "category": 2,
+      "raw_purchase_price": 1400,
+      "hourly_operating_rate": 40,
+      "cost_per_schedule": [
+        960,
+        320,
+        640,
+        640,
+        640,
+        640,
+        0
+      ],
+      "cost_fixed24_mode": 960
+    },
+    {
+      "id": 31,
+      "address": "0x8009b6c8",
+      "name": "飲料自販・温冷",
+      "category": 2,
+      "raw_purchase_price": 1000,
+      "hourly_operating_rate": 40,
+      "cost_per_schedule": [
+        960,
+        320,
+        640,
+        640,
+        640,
+        640,
+        0
+      ],
+      "cost_fixed24_mode": 960
+    },
+    {
+      "id": 32,
+      "address": "0x8009b78c",
+      "name": "飲料自販・温冷",
+      "category": 2,
+      "raw_purchase_price": 1800,
+      "hourly_operating_rate": 80,
+      "cost_per_schedule": [
+        1920,
+        640,
+        1280,
+        1280,
+        1280,
+        1280,
+        0
+      ],
+      "cost_fixed24_mode": 1920
+    },
+    {
+      "id": 33,
+      "address": "0x8009b850",
+      "name": "コピー機",
+      "category": 3,
+      "raw_purchase_price": 800,
+      "hourly_operating_rate": 40,
+      "cost_per_schedule": [
+        960,
+        320,
+        640,
+        640,
+        640,
+        640,
+        0
+      ],
+      "cost_fixed24_mode": 960
+    },
+    {
+      "id": 34,
+      "address": "0x8009b914",
+      "name": "コピー機",
+      "category": 3,
+      "raw_purchase_price": 1200,
+      "hourly_operating_rate": 45,
+      "cost_per_schedule": [
+        1080,
+        360,
+        720,
+        720,
+        720,
+        720,
+        0
+      ],
+      "cost_fixed24_mode": 1080
+    },
+    {
+      "id": 35,
+      "address": "0x8009b9d8",
+      "name": "コピー機",
+      "category": 3,
+      "raw_purchase_price": 1500,
+      "hourly_operating_rate": 50,
+      "cost_per_schedule": [
+        1200,
+        400,
+        800,
+        800,
+        800,
+        800,
+        0
+      ],
+      "cost_fixed24_mode": 1200
+    },
+    {
+      "id": 36,
+      "address": "0x8009ba9c",
+      "name": "コピー機",
+      "category": 3,
+      "raw_purchase_price": 2000,
+      "hourly_operating_rate": 60,
+      "cost_per_schedule": [
+        1440,
+        480,
+        960,
+        960,
+        960,
+        960,
+        0
+      ],
+      "cost_fixed24_mode": 1440
+    },
+    {
+      "id": 37,
+      "address": "0x8009bb60",
+      "name": "レジ",
+      "category": 4,
+      "raw_purchase_price": 1500,
+      "hourly_operating_rate": 50,
+      "cost_per_schedule": [
+        1200,
+        400,
+        800,
+        800,
+        800,
+        800,
+        0
+      ],
+      "cost_fixed24_mode": 1200
+    },
+    {
+      "id": 38,
+      "address": "0x8009bc24",
+      "name": "レジ",
+      "category": 4,
+      "raw_purchase_price": 2000,
+      "hourly_operating_rate": 60,
+      "cost_per_schedule": [
+        1440,
+        480,
+        960,
+        960,
+        960,
+        960,
+        0
+      ],
+      "cost_fixed24_mode": 1440
+    },
+    {
+      "id": 39,
+      "address": "0x8009bce8",
+      "name": "レジ",
+      "category": 4,
+      "raw_purchase_price": 3000,
+      "hourly_operating_rate": 70,
+      "cost_per_schedule": [
+        1680,
+        560,
+        1120,
+        1120,
+        1120,
+        1120,
+        0
+      ],
+      "cost_fixed24_mode": 1680
+    },
+    {
+      "id": 40,
+      "address": "0x8009bdac",
+      "name": "レジ",
+      "category": 4,
+      "raw_purchase_price": 2000,
+      "hourly_operating_rate": 60,
+      "cost_per_schedule": [
+        1440,
+        480,
+        960,
+        960,
+        960,
+        960,
+        0
+      ],
+      "cost_fixed24_mode": 1440
+    },
+    {
+      "id": 41,
+      "address": "0x8009be70",
+      "name": "レジ",
+      "category": 4,
+      "raw_purchase_price": 3000,
+      "hourly_operating_rate": 70,
+      "cost_per_schedule": [
+        1680,
+        560,
+        1120,
+        1120,
+        1120,
+        1120,
+        0
+      ],
+      "cost_fixed24_mode": 1680
+    },
+    {
+      "id": 42,
+      "address": "0x8009bf34",
+      "name": "レジ",
+      "category": 4,
+      "raw_purchase_price": 5000,
+      "hourly_operating_rate": 80,
+      "cost_per_schedule": [
+        1920,
+        640,
+        1280,
+        1280,
+        1280,
+        1280,
+        0
+      ],
+      "cost_fixed24_mode": 1920
+    },
+    {
+      "id": 43,
+      "address": "0x8009bff8",
+      "name": "キャッシュディスペンサー",
+      "category": 5,
+      "raw_purchase_price": 4000,
+      "hourly_operating_rate": 60,
+      "cost_per_schedule": [
+        1440,
+        480,
+        960,
+        960,
+        960,
+        960,
+        0
+      ],
+      "cost_fixed24_mode": 1440
+    },
+    {
+      "id": 44,
+      "address": "0x8009c0bc",
+      "name": "キャッシュディスペンサー",
+      "category": 5,
+      "raw_purchase_price": 7000,
+      "hourly_operating_rate": 100,
+      "cost_per_schedule": [
+        2400,
+        800,
+        1600,
+        1600,
+        1600,
+        1600,
+        0
+      ],
+      "cost_fixed24_mode": 2400
+    },
+    {
+      "id": 45,
+      "address": "0x8009c180",
+      "name": "観葉植物",
+      "category": 7,
+      "raw_purchase_price": 1000,
+      "hourly_operating_rate": 5,
+      "cost_per_schedule": [
+        120,
+        40,
+        80,
+        80,
+        80,
+        80,
+        0
+      ],
+      "cost_fixed24_mode": 120
+    },
+    {
+      "id": 46,
+      "address": "0x8009c244",
+      "name": "ベンチ",
+      "category": 8,
+      "raw_purchase_price": 2000,
+      "hourly_operating_rate": 7,
+      "cost_per_schedule": [
+        168,
+        56,
+        112,
+        112,
+        112,
+        112,
+        0
+      ],
+      "cost_fixed24_mode": 168
+    },
+    {
+      "id": 47,
+      "address": "0x8009c308",
+      "name": "噴水",
+      "category": 9,
+      "raw_purchase_price": 5000,
+      "hourly_operating_rate": 100,
+      "cost_per_schedule": [
+        2400,
+        800,
+        1600,
+        1600,
+        1600,
+        1600,
+        0
+      ],
+      "cost_fixed24_mode": 2400
+    },
+    {
+      "id": 48,
+      "address": "0x8009c3cc",
+      "name": "控え室",
+      "category": 6,
+      "raw_purchase_price": 3000,
+      "hourly_operating_rate": 50,
+      "cost_per_schedule": [
+        1200,
+        400,
+        800,
+        800,
+        800,
+        800,
+        0
+      ],
+      "cost_fixed24_mode": 1200
+    },
+    {
+      "id": 49,
+      "address": "0x8009c490",
+      "name": "控え室",
+      "category": 6,
+      "raw_purchase_price": 7000,
+      "hourly_operating_rate": 100,
+      "cost_per_schedule": [
+        2400,
+        800,
+        1600,
+        1600,
+        1600,
+        1600,
+        0
+      ],
+      "cost_fixed24_mode": 2400
+    },
+    {
+      "id": 50,
+      "address": "0x8009c554",
+      "name": "駐車場",
+      "category": 10,
+      "raw_purchase_price": 500,
+      "hourly_operating_rate": 0,
+      "cost_per_schedule": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "cost_fixed24_mode": 0
+    },
+    {
+      "id": 51,
+      "address": "0x8009c618",
+      "name": "2階建駐車場",
+      "category": 10,
+      "raw_purchase_price": 1000,
+      "hourly_operating_rate": 10,
+      "cost_per_schedule": [
+        240,
+        80,
+        160,
+        160,
+        160,
+        160,
+        0
+      ],
+      "cost_fixed24_mode": 240
+    },
+    {
+      "id": 52,
+      "address": "0x8009c6dc",
+      "name": "タワー駐車場",
+      "category": 10,
+      "raw_purchase_price": 9000,
+      "hourly_operating_rate": 200,
+      "cost_per_schedule": [
+        4800,
+        1600,
+        3200,
+        3200,
+        3200,
+        3200,
+        0
+      ],
+      "cost_fixed24_mode": 4800
+    }
+  ],
+  "unit_note": "Values are source internal monetary amounts. No additional x1000 conversion or purchase-price display unit is inferred by this extractor."
+}

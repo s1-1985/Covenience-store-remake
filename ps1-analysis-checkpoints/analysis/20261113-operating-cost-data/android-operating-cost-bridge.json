@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "mode_rule": "mode0 uses count of nonzero flags of current schedule; any nonzero mode uses24 hours.",
+  "schedule6": "Temporary closure is a real seventh data row with zero hourly flags; normal operation-menu code can assign index6.",
+  "equipment": "Sum rate*hours for each grid anchor(bit31 set) whose fixture id=(word>>12)&1023 is<53. Count once per anchor; do not multiply by footprint or remaining stock.",
+  "staff": "For each assigned ref!=-1: read signed i32 wage base at staff+12. Slot0 applies trunc_toward_zero(wage*130/100) before multiplying by hours; slots1/2 use wage as-is.",
+  "staff_scope": "No actual-worktime, task, rest or energy filter in these cost helpers.",
+  "daily_debit": "At native296F0..297A4 write equipment cost to store+D88 and staff cost to+D8C, then debit these plus existing+D90 from owning side cash. This report does not assign a new label or recalculation formula to+D90.",
+  "side": "(u16(store+4)>>15)&1 chooses cash side.",
+  "arithmetic": "Source uses signed32 operations and truncation toward zero; examples here use normal nonnegative amounts.",
+  "currency": "Preserve source amounts; purchase display units and other monetary conversions are outside this report."
+}

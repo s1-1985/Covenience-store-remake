@@ -1,0 +1,26 @@
+[
+  {
+    "name": "opening_schedules",
+    "address": "0x80099dd0",
+    "bytes": 315,
+    "sha256": "00a01ac7342d76b407e59316d32a03abe49475fc96e11dee06c0c9d1aa3377ae"
+  },
+  {
+    "name": "fixture_master",
+    "address": "0x80099f0c",
+    "bytes": 10388,
+    "sha256": "ff38d0b8eb5d1d17fabca839abed108b9243b9fafc70449024763e73fc5eba51"
+  },
+  {
+    "name": "operating_cost_helpers",
+    "address": "0x8001d8ac",
+    "bytes": 1456,
+    "sha256": "c104f2e3346a8c5ff5e34fd962111c2228acf71ec4be9a4532cafdc53b0ea79c"
+  },
+  {
+    "name": "daily_expense_debit",
+    "address": "0x800296f0",
+    "bytes": 180,
+    "sha256": "9472d78168ec7681fdccd7e6fc8bc921cd8607fb8ea56acadfd77003b4e0e423"
+  }
+]

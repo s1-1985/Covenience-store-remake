@@ -1,0 +1,9 @@
+{
+  "schedules": 7,
+  "normal_schedules": 6,
+  "temporary_closed": 6,
+  "fixtures": 53,
+  "new_work": "Identify complete45-byte opening schedule rows including Shift-JIS labels and temporary closure; map named fixture hourly-rate field+8 and schedule-specific daily values; preserve manager rounding order.",
+  "existing_work": "Isolated operating-cost helper formulas were reconstructed earlier.",
+  "original_cpu_updates": 0
+}

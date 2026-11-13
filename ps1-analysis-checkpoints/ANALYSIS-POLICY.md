@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-13：営業時間7区分・53什器の維持費と人件費の丸め順](analysis/20261113-operating-cost-data/README.md)
+
 - [2026-11-13：床画像・清掃能力指標・汚れ発生と警告判定の接続](analysis/20261113-floor-cleaning-data/README.md)
 
 - [2026-11-13：通常店内の人物描画・休憩姿勢・区間末尾の向きと入力別更新](analysis/20261113-actor-render-data/README.md)

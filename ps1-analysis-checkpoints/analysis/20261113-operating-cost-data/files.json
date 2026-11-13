@@ -1,0 +1,62 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 5777,
+    "sha256": "877261c86b85ba3a6a58dd6d75eba61f591c30b67b662aa710f6d4f6b898f2f5"
+  },
+  {
+    "path": "android-operating-cost-bridge.json",
+    "bytes": 1331,
+    "sha256": "cffad7459e9753975fb0071918dfe845d0598c19c006c3e8efe32fb8550dc8cf"
+  },
+  {
+    "path": "cost-readers.asm",
+    "bytes": 13716,
+    "sha256": "f24256cdcb2b584f6c1b26b8e792788aec51f4dee1fb680890f4a28f26aa4b9e"
+  },
+  {
+    "path": "derived-cost-examples.json",
+    "bytes": 604,
+    "sha256": "efbe2cc83f5939ce24c3a501b08c1aef32359b0e7238e9a920f740dfe7c66fab"
+  },
+  {
+    "path": "extract-operating-cost.py",
+    "bytes": 5817,
+    "sha256": "2f536192c44dc758601d25b4c36b3ef1bb54e5f1eff77d9cecbffddeb479e08c"
+  },
+  {
+    "path": "schedule-fixture-costs.json",
+    "bytes": 23207,
+    "sha256": "18d2bd88faa949f753dec44aa8eae14a7edab7428dd28a17db5f6d7155bb95e1"
+  },
+  {
+    "path": "source/daily_expense_debit.bin",
+    "bytes": 180,
+    "sha256": "9472d78168ec7681fdccd7e6fc8bc921cd8607fb8ea56acadfd77003b4e0e423"
+  },
+  {
+    "path": "source/fixture_master.bin",
+    "bytes": 10388,
+    "sha256": "ff38d0b8eb5d1d17fabca839abed108b9243b9fafc70449024763e73fc5eba51"
+  },
+  {
+    "path": "source/opening_schedules.bin",
+    "bytes": 315,
+    "sha256": "00a01ac7342d76b407e59316d32a03abe49475fc96e11dee06c0c9d1aa3377ae"
+  },
+  {
+    "path": "source/operating_cost_helpers.bin",
+    "bytes": 1456,
+    "sha256": "c104f2e3346a8c5ff5e34fd962111c2228acf71ec4be9a4532cafdc53b0ea79c"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 690,
+    "sha256": "dd91b112bbdc394b3429ebaeea851dae9cf2ce23644044d873c96c0e77331e37"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 429,
+    "sha256": "3011fffbba0bd40d7a01f65babbd68d663d7b9bd52f927af06fdcab908aaa426"
+  }
+]
