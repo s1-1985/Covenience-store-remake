@@ -1,0 +1,195 @@
+{
+  "output": "TOWN0001-ci-main-33-single",
+  "source": "TOWN0001-ci-main-32-single",
+  "passed": true,
+  "updates": 200,
+  "clock_before": 23760,
+  "clock_after": 24160,
+  "completed_iterations": 12088,
+  "source_ram_sha256": "51fc871ad49fe048222c3ddb0a4fdf1b784cb89427cddf877c0b180a07b9519d",
+  "final_ram_sha256": "3ee0bd61890e60ffb6fa58727d8e3dd4089c6ab25512a1af471d48ec0ad49dfc",
+  "cash_before": [
+    99052002,
+    97743149
+  ],
+  "cash_after": [
+    99109097,
+    97892604
+  ],
+  "cash_from_ledgers": [
+    99109097,
+    97892604
+  ],
+  "cash_write_count": 99,
+  "cash_delta_by_pc": {
+    "0x8001cbac": [
+      58520,
+      150940
+    ],
+    "0x8001cb30": [
+      -1425,
+      -1485
+    ]
+  },
+  "stores": [
+    {
+      "slot": 0,
+      "company": 0,
+      "active_before": true,
+      "active_after": true,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        2400,
+        1110
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        3000,
+        1330
+      ],
+      "previous_day_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "additional_sales": 220,
+      "additional_goods": 600,
+      "daily_expense": 0,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0,
+      "new_store_opening_costs_accounted_at_rival_boundary": false
+    },
+    {
+      "slot": 1,
+      "company": 1,
+      "active_before": true,
+      "active_after": true,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        49860,
+        25580
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        51345,
+        78070
+      ],
+      "previous_day_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "additional_sales": 52490,
+      "additional_goods": 1485,
+      "daily_expense": 0,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0,
+      "new_store_opening_costs_accounted_at_rival_boundary": false
+    },
+    {
+      "slot": 2,
+      "company": 0,
+      "active_before": true,
+      "active_after": true,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        46460,
+        38730
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        47285,
+        97030
+      ],
+      "previous_day_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "additional_sales": 58300,
+      "additional_goods": 825,
+      "daily_expense": 0,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0,
+      "new_store_opening_costs_accounted_at_rival_boundary": false
+    },
+    {
+      "slot": 3,
+      "company": 1,
+      "active_before": true,
+      "active_after": true,
+      "opening_ledger": [
+        0,
+        0,
+        0,
+        38260,
+        22980
+      ],
+      "closing_ledger": [
+        0,
+        0,
+        0,
+        38260,
+        121430
+      ],
+      "previous_day_ledger": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "additional_sales": 98450,
+      "additional_goods": 0,
+      "daily_expense": 0,
+      "monthly_source_ledger": null,
+      "monthly_adjustment": 0,
+      "new_store_opening_costs_accounted_at_rival_boundary": false
+    }
+  ],
+  "rival_cash_transitions": [],
+  "daily_close_checks": [],
+  "staff_checks": 800,
+  "customer_checks": 800,
+  "frames": 400,
+  "files": [
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-33-single-verification-20261103.json",
+      "bytes": 2512167,
+      "sha256": "844b99126aec522c8fda350b8a6abdcf745ad953a885b2b1c589fb78e7bd0713"
+    },
+    {
+      "path": "evidence/TOWN0001-ci-main-33-single-progress.json",
+      "bytes": 234036,
+      "sha256": "5d2801baec39fe2d9633cc8777552cea9d62acd7b077ba17eaf2e008a19b4f7c"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-33-single.json",
+      "bytes": 1034573,
+      "sha256": "9465b3d295686f2f416bf5fc742daa3262fd85363d0d8c273f56535014af26ab"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-33-single.ram.zlib",
+      "bytes": 510037,
+      "sha256": "bcc6a4077f80ee4eab8ec101eee9cc52e07555fea6eebf4ba186f1f0f2bd60b0"
+    }
+  ]
+}

@@ -11,6 +11,15 @@
       "stored_sha256": "cd5f4b6ca2b3731029c973c7474aee67eb1dee0291ce5c64bcba1f67a2f6bedf"
     },
     {
+      "path": "evidence/TOWN0001-ci-main-33-single-progress.json",
+      "stored_path": "encoded/evidence/TOWN0001-ci-main-33-single-progress.json.zlib",
+      "encoding": "zlib",
+      "bytes": 234036,
+      "sha256": "5d2801baec39fe2d9633cc8777552cea9d62acd7b077ba17eaf2e008a19b4f7c",
+      "stored_bytes": 62335,
+      "stored_sha256": "d70711aa9fc21d8109cf274ff8e4ea8063828b49e0bb9ff8ede412f5b3dd8b86"
+    },
+    {
       "path": "evidence/opened-snapshot-TOWN0001-ci-main-32-single-verification-20261103.json",
       "stored_path": "encoded/evidence/opened-snapshot-TOWN0001-ci-main-32-single-verification-20261103.json.zlib",
       "encoding": "zlib",
@@ -18,6 +27,15 @@
       "sha256": "cb2d14d7bf91614a7fdabe83ad1c0256d34700d9e91b3bf9c90d8361352ca65c",
       "stored_bytes": 225798,
       "stored_sha256": "1a6c6259d2931c0f9c84c47d8a09f566abcfd440772713496ffd57c7ce57247f"
+    },
+    {
+      "path": "evidence/opened-snapshot-TOWN0001-ci-main-33-single-verification-20261103.json",
+      "stored_path": "encoded/evidence/opened-snapshot-TOWN0001-ci-main-33-single-verification-20261103.json.zlib",
+      "encoding": "zlib",
+      "bytes": 2512167,
+      "sha256": "844b99126aec522c8fda350b8a6abdcf745ad953a885b2b1c589fb78e7bd0713",
+      "stored_bytes": 240094,
+      "stored_sha256": "c3628b1718d27f1f3ccd313c519b4e189932d0896f6d2500cacbd194bfa0da9a"
     },
     {
       "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-32-single.json",
@@ -36,6 +54,24 @@
       "sha256": "da4d42d8a17ee544be77da1a97cbad169f5685c5299c4332456abe266b77ab4a",
       "stored_bytes": 510195,
       "stored_sha256": "da4d42d8a17ee544be77da1a97cbad169f5685c5299c4332456abe266b77ab4a"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-33-single.json",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-33-single.json.zlib",
+      "encoding": "zlib",
+      "bytes": 1034573,
+      "sha256": "9465b3d295686f2f416bf5fc742daa3262fd85363d0d8c273f56535014af26ab",
+      "stored_bytes": 208381,
+      "stored_sha256": "c65c0181245e4490aedd15a3b03e37b10e49c88cb90ed704eb904ace462a289d"
+    },
+    {
+      "path": "evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-33-single.ram.zlib",
+      "stored_path": "encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-33-single.ram.zlib",
+      "encoding": "identity",
+      "bytes": 510037,
+      "sha256": "bcc6a4077f80ee4eab8ec101eee9cc52e07555fea6eebf4ba186f1f0f2bd60b0",
+      "stored_bytes": 510037,
+      "stored_sha256": "bcc6a4077f80ee4eab8ec101eee9cc52e07555fea6eebf4ba186f1f0f2bd60b0"
     }
   ]
 }

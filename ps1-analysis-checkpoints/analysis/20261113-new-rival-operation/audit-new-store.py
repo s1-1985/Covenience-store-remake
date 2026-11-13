@@ -69,13 +69,18 @@ additional_goods=sum(x['amount'] for x in closing_postings if not x['income'])
 assert ending[3]==opening_ledger[3]+additional_goods
 assert ending[4]==opening_ledger[4]+sum(x['amount'] for x in closing_postings if x['income'])
 assert created and movement and sales and postings
+staff_summary=[]
+for role,ident in enumerate(refs):
+ observed=[p for x in staff for p in x['after'] if p['id']==ident]
+ capability_changes=[dict(offset=hex(j),before=start[0x143ff8+ident*60+j],after=ram[0x143ff8+ident*60+j]) for j in range(0x1a,0x28) if start[0x143ff8+ident*60+j]!=ram[0x143ff8+ident*60+j]]
+ staff_summary.append(dict(role_index=role,id=ident,capability_field_changes=capability_changes,state_counts=dict(collections.Counter(p['state'] for p in observed)),movement_steps=sum(x['id']==ident for x in movement),direction_changes=sum(x['id']==ident for x in turns),energy_range=[min(p['energy'] for p in observed),max(p['energy'] for p in observed)]))
 report=dict(all_passed=True,slot=slot,company=1,staff_ids=refs,schedule_index=schedule,
  scheduled_open_hours=[j for j,v in enumerate(hours) if v],
  segments=segments,start_ram_sha256=start_meta['ram_sha256'],completed_iterations=prior['completed_iterations'],
  verified_loops_per_domain=len(staff),spawn_reasons=dict(collections.Counter(x['reason'] for x in spawn)),
  first_created=created[0],created_groups=len(created),created_people=sum(x['quantity'] for x in created),
  first_revenue=sales[0],sales_postings=len(sales),additional_revenue=sum(x['revenue_after']-x['revenue_before'] for x in sales),
- staff_movement_steps=len(movement),staff_direction_only_changes=len(turns),staff_state_transitions=dict(transitions),
+ staff_summary=staff_summary,staff_movement_steps=len(movement),staff_direction_only_changes=len(turns),staff_state_transitions=dict(transitions),
  staff_energy_changes=len(energy),staff_effects=dict(collections.Counter(e for x in staff for e in x['effects'])),
  first_movement=movement[0],first_energy_change=energy[0] if energy else None,
  restock_checks=len(refills),stock_postings=len(postings),first_stock_posting=postings[0],

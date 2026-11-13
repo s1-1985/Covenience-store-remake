@@ -1,17 +1,17 @@
 {
   "branch": "chatgpt/ps1-analysis-recovery-20261103",
   "date_jst": "2026-11-13",
-  "snapshot": "TOWN0001-ci-main-32-single",
+  "snapshot": "TOWN0001-ci-main-33-single",
   "phase": "play_iteration_end",
-  "clock": 23760,
-  "completed_iterations": 11888,
+  "clock": 24160,
+  "completed_iterations": 12088,
   "cash": [
-    99052002,
-    97743149
+    99109097,
+    97892604
   ],
-  "ram_sha256": "51fc871ad49fe048222c3ddb0a4fdf1b784cb89427cddf877c0b180a07b9519d",
-  "metadata": "analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-32-single.json.zlib",
-  "compressed_ram": "analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-32-single.ram.zlib",
+  "ram_sha256": "3ee0bd61890e60ffb6fa58727d8e3dd4089c6ab25512a1af471d48ec0ad49dfc",
+  "metadata": "analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-33-single.json.zlib",
+  "compressed_ram": "analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-33-single.ram.zlib",
   "report": "analysis/20261113-new-rival-operation/README.md",
   "limits": "Completed/hash-verified segments only. New rival first-day continuation; SDK/GPU/SPU/IRQ boundaries remain modeled."
 }
