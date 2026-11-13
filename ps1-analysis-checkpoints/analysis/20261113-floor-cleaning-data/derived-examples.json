@@ -1,0 +1,223 @@
+{
+  "scope": "Arithmetic examples derived from source rules, not gameplay captures.",
+  "staffing": [
+    {
+      "level": 0,
+      "assigned_skills": [
+        50,
+        50,
+        50
+      ],
+      "score": 100
+    },
+    {
+      "level": 1,
+      "assigned_skills": [
+        50,
+        50,
+        50
+      ],
+      "score": 100
+    },
+    {
+      "level": 2,
+      "assigned_skills": [
+        50,
+        50,
+        50
+      ],
+      "score": 90
+    },
+    {
+      "level": 3,
+      "assigned_skills": [
+        50,
+        50,
+        50
+      ],
+      "score": 90
+    },
+    {
+      "level": 4,
+      "assigned_skills": [
+        50,
+        50,
+        50
+      ],
+      "score": 83
+    },
+    {
+      "level": 5,
+      "assigned_skills": [
+        50,
+        50,
+        50
+      ],
+      "score": 83
+    }
+  ],
+  "warning_boundary": {
+    "floor_tiles": 10,
+    "clean_before": 7,
+    "visual_percent_before": 70,
+    "staff_score": 60,
+    "eligible_customer_on_clean_floor": true,
+    "stains_added": 1,
+    "clean_after": 6,
+    "visual_percent_after": 60,
+    "counter_increments_this_call": false,
+    "reason": "Counter compares percentage computed before stain write."
+  },
+  "same_floor_variants": [
+    {
+      "code": 0,
+      "cleaned_to": 0,
+      "stain_choices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "code": 1,
+      "cleaned_to": 0,
+      "stain_choices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "code": 2,
+      "cleaned_to": 0,
+      "stain_choices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "code": 3,
+      "cleaned_to": 0,
+      "stain_choices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "code": 4,
+      "cleaned_to": 0,
+      "stain_choices": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "code": 5,
+      "cleaned_to": 5,
+      "stain_choices": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "code": 6,
+      "cleaned_to": 5,
+      "stain_choices": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "code": 7,
+      "cleaned_to": 5,
+      "stain_choices": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "code": 8,
+      "cleaned_to": 5,
+      "stain_choices": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "code": 9,
+      "cleaned_to": 5,
+      "stain_choices": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "code": 10,
+      "cleaned_to": 10,
+      "stain_choices": [
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "code": 11,
+      "cleaned_to": 10,
+      "stain_choices": [
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "code": 12,
+      "cleaned_to": 10,
+      "stain_choices": [
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "code": 13,
+      "cleaned_to": 10,
+      "stain_choices": [
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "code": 14,
+      "cleaned_to": 10,
+      "stain_choices": [
+        11,
+        12,
+        13,
+        14
+      ]
+    }
+  ]
+}

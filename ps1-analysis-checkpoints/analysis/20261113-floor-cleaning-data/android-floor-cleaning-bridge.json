@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "store_fields": {
+    "floor_base": "0x4c",
+    "floor_grid": "0x50;14-byte row stride",
+    "width_subcells": "0x44",
+    "height_subcells": "0x48",
+    "staff_refs": "0xdd8;3*i16",
+    "store_level": "0xc70",
+    "dirty_floor_counter": "0x12e4;u8 storage, signed read by adviser"
+  },
+  "staff_fields": {
+    "cleaning_skill": "0x21; signed byte",
+    "target_selection_phase_skill": "0x20; signed byte, semantic label not assigned here"
+  },
+  "cleanliness_metric": {
+    "source_function": "0x8002287c",
+    "summary_field": "+4",
+    "denominators": [
+      150,
+      150,
+      165,
+      165,
+      180,
+      180
+    ],
+    "formula": "min(100, trunc_toward_zero(sum(assigned staff cleaning skill)*100 / denominator[level]))",
+    "includes": "All3 assigned refs except-1; this score function does not filter by task, rest or energy.",
+    "not_equal_to": "Fraction of clean floor images"
+  },
+  "visual_floor": {
+    "count": "0<=signed_tile<16",
+    "clean": "tile%5==0",
+    "percentage": "trunc_toward_zero(clean_count*100/floor_count)",
+    "normal_material_bases": [
+      0,
+      5,
+      10
+    ],
+    "stain_variants": "base+1..base+4 are alternative patterns selected by one rand()%4; not progressive dirt levels"
+  },
+  "stain_update": {
+    "function": "0x80031498",
+    "gate": "minute field800ce618==0",
+    "condition": "staff-derived summary+4 < current visual floor percentage",
+    "target": "First active customer in slots0..19 whose floor cell has code0..15 and remainder0 mod5.",
+    "coordinate": "signed customer x/y divided by2 with truncation toward zero",
+    "write": "base=trunc(tile/5)*5; tile=base+rand()%4+1; dirty cache byte+1=0; stop after one successful stain.",
+    "counter": "If pre-stain visual percentage<70, increment store+12e4 modulo256; independent of whether a new stain was added."
+  },
+  "cleaning_target": {
+    "function": "0x80039618",
+    "tile_gate": "0<=tile<15 and tile%5!=0",
+    "phase_gate": "Reject selection when clock%100 <100-signed_staff_byte20.",
+    "mark": "Mark accessible half-cells in each dirty full floor tile as10001; reservations can exclude another cleaner target."
+  },
+  "clean_action": {
+    "function": "0x80038894",
+    "turn": "On clock&7==0, direction changes through[1,0,2,3].",
+    "random_gate": "First rand()%5 must equal0; then another rand()%100+1 must be<=cleaning_skill.",
+    "write": "tile=trunc_toward_zero(tile/5)*5; cache dirty byte+1=0",
+    "on_success": "Parent sets sound flag0x800, clears staff target and applies cleaning skill growth."
+  },
+  "advice": {
+    "function": "0x8003b570",
+    "own_store_only": true,
+    "threshold": "signed dirty counter>=4, then rand()%100+1<=manager leadership byte1d",
+    "resets": "Counters12e1..12e4 reset at minute0 and hour divisible by4, or after advice; rare branch has additional resets.",
+    "note": "Threshold is not a count of dirty tiles and not an elapsed-hours field."
+  },
+  "unconfirmed": "A general fixture breakage/repair system has not been established by these floor/cleaning functions; do not add one from this report."
+}

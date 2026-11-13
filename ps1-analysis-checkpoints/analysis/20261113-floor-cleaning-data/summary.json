@@ -1,0 +1,11 @@
+{
+  "normal_floor_materials": 3,
+  "variants_per_material": 5,
+  "renderable_floor_codes": 36,
+  "builtin_layouts": 30,
+  "cleanliness_metric": "Assigned employee cleaning skills and store level, not observed clean-tile percentage.",
+  "new_work": "Connected the staffing metric producer to the floor-stain consumer; decoded floor image families and all30 initial-layout usage; recorded pre-stain warning boundary and whole-tile cleanup.",
+  "already_known": "Isolated cleaning_score, floor_wear and clean_floor algorithms existed in earlier models. This report links their semantics and actual image data.",
+  "unconfirmed": "Generic fixture wear/breakage/repair behavior.",
+  "original_cpu_updates": 0
+}

@@ -1,0 +1,479 @@
+{
+  "source_tim": "/TIM0/SYOP_S00.TIM",
+  "source_tim_sha256": "b3fef8b04b9a8367397192a93ac0e8308e388cf383c55fadcfa2e1cf582a661a",
+  "source_dimensions": [
+    256,
+    256
+  ],
+  "tiles": [
+    {
+      "code": 0,
+      "uv": [
+        0,
+        0
+      ],
+      "indices_sha256": "3e371c022a6e1ba86166db81d638f27181b69699025f3176a751f25f0e8c7e25",
+      "normal_family": 0,
+      "variant": 0,
+      "cleaning_target": false,
+      "counted_as_floor": true,
+      "counted_clean": true
+    },
+    {
+      "code": 1,
+      "uv": [
+        16,
+        0
+      ],
+      "indices_sha256": "54ce3bcf8f403136b9028fa5ab9e57d07a7eeab213142cc56cd3d457421042ec",
+      "normal_family": 0,
+      "variant": 1,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 2,
+      "uv": [
+        32,
+        0
+      ],
+      "indices_sha256": "8bfead1e0435032204065a57fa8d932944d276d786549290c88cab89e066c6df",
+      "normal_family": 0,
+      "variant": 2,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 3,
+      "uv": [
+        48,
+        0
+      ],
+      "indices_sha256": "b8cc2f9928fa4d2d1ff864652d1ffc174c915f7e81e6fcb46066e9e997f17a12",
+      "normal_family": 0,
+      "variant": 3,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 4,
+      "uv": [
+        64,
+        0
+      ],
+      "indices_sha256": "f5c9ef5168e793e953962db3dda838a801a15de4446d599c97d3f2a5964a2753",
+      "normal_family": 0,
+      "variant": 4,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 5,
+      "uv": [
+        80,
+        0
+      ],
+      "indices_sha256": "0227186d7982d1ea548fa2489698f60aa44d6df07d1e9307c5f5f1f8444e7f31",
+      "normal_family": 1,
+      "variant": 0,
+      "cleaning_target": false,
+      "counted_as_floor": true,
+      "counted_clean": true
+    },
+    {
+      "code": 6,
+      "uv": [
+        96,
+        0
+      ],
+      "indices_sha256": "076a80a896c085f32d58bbc12bf219951b0e479179ac0cf8467ff873901f4db9",
+      "normal_family": 1,
+      "variant": 1,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 7,
+      "uv": [
+        112,
+        0
+      ],
+      "indices_sha256": "329394260978fcbf77a3c3f117924ff739dec9699d663a48afa5a434405d7a39",
+      "normal_family": 1,
+      "variant": 2,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 8,
+      "uv": [
+        128,
+        0
+      ],
+      "indices_sha256": "3cee6f04bd8bb75b0819a214fa97922674891399bdce8a58edd83030e12626fa",
+      "normal_family": 1,
+      "variant": 3,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 9,
+      "uv": [
+        144,
+        0
+      ],
+      "indices_sha256": "f8de51dc515f319b760ed80bd67e76c2e516bcaceaed5f1cb208d27747d54249",
+      "normal_family": 1,
+      "variant": 4,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 10,
+      "uv": [
+        160,
+        0
+      ],
+      "indices_sha256": "16afaec87ebc400a4c833c624405df922ec13eabf61cb58aa3aea1c6e2b0140e",
+      "normal_family": 2,
+      "variant": 0,
+      "cleaning_target": false,
+      "counted_as_floor": true,
+      "counted_clean": true
+    },
+    {
+      "code": 11,
+      "uv": [
+        176,
+        0
+      ],
+      "indices_sha256": "35e83fb7ba399bb7713a09c27bac9251a81d703a29fb6b7d305fcf824d6114c3",
+      "normal_family": 2,
+      "variant": 1,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 12,
+      "uv": [
+        192,
+        0
+      ],
+      "indices_sha256": "4a2ae1ca0da35f55420b050dab7b90a7071e5d7aa4d15b9ac264336c83641a40",
+      "normal_family": 2,
+      "variant": 2,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 13,
+      "uv": [
+        208,
+        0
+      ],
+      "indices_sha256": "66eca99c404932c0d6838756a5ed8c93fe9aaf0089d51f4e0b3ad1228e8ea9ae",
+      "normal_family": 2,
+      "variant": 3,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 14,
+      "uv": [
+        224,
+        0
+      ],
+      "indices_sha256": "0ca9907ed352e8685688f715fdcf5226aee924422b1bd56c768d5765e5ac5915",
+      "normal_family": 2,
+      "variant": 4,
+      "cleaning_target": true,
+      "counted_as_floor": true,
+      "counted_clean": false
+    },
+    {
+      "code": 15,
+      "uv": [
+        240,
+        0
+      ],
+      "indices_sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": true,
+      "counted_clean": true
+    },
+    {
+      "code": 16,
+      "uv": [
+        0,
+        16
+      ],
+      "indices_sha256": "c6a0088c5c3dd6979e1d5fb94590522d8842a4dfb2ffdbed40aedaeec12f5e84",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 17,
+      "uv": [
+        16,
+        16
+      ],
+      "indices_sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 18,
+      "uv": [
+        32,
+        16
+      ],
+      "indices_sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 19,
+      "uv": [
+        48,
+        16
+      ],
+      "indices_sha256": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 20,
+      "uv": [
+        64,
+        16
+      ],
+      "indices_sha256": "537a36b130f1089f962f84deb58af10b7c0f7bd01a01161f1c3b0b4dab32ced7",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 21,
+      "uv": [
+        80,
+        16
+      ],
+      "indices_sha256": "a57c079cb2e7b53e5944ad18996e5414d9cf23333286f8b53bb2b58096225c6f",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 22,
+      "uv": [
+        96,
+        16
+      ],
+      "indices_sha256": "b75f70299ceb4d9b1db60d15347d6ce43e565e789c4e5bc390c5e07de047f4ee",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 23,
+      "uv": [
+        112,
+        16
+      ],
+      "indices_sha256": "0551604817779499834f98dcc3fa969c99a77ef10008d5d8f14e5e86880bfe7b",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 24,
+      "uv": [
+        128,
+        16
+      ],
+      "indices_sha256": "d6761a2cb3dd5cdc9ad18d23df16cd75c3d2df8050e1f4733646c7757a59c9e3",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 25,
+      "uv": [
+        144,
+        16
+      ],
+      "indices_sha256": "1fa4010dd905a90cf48655e3bfb39ca4cad64e12f284598573bbb75180ae64d2",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 26,
+      "uv": [
+        160,
+        16
+      ],
+      "indices_sha256": "c4a35fb06da286a3409d51836ab20af93407c6e4c448dd30277942d12342fc3d",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 27,
+      "uv": [
+        176,
+        16
+      ],
+      "indices_sha256": "e094977bdcff2aa1543ec779d5a7c59a8b14ed985373e0571e02f4e7eb4aba0a",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 28,
+      "uv": [
+        192,
+        16
+      ],
+      "indices_sha256": "e1b6ca1510371ca617119147f31e292352f0f4af1c38c8b8662462c57a67ead5",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 29,
+      "uv": [
+        208,
+        16
+      ],
+      "indices_sha256": "dea2263cdc9570aa0972bf323d8b32ec88d789c69b42fd134f5b4c29ac2ef930",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 30,
+      "uv": [
+        224,
+        16
+      ],
+      "indices_sha256": "dcae5ba4e713eb1aefe2ae7d8b6919eae4ef72a268560f1006c7bf769fece2ae",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 31,
+      "uv": [
+        240,
+        16
+      ],
+      "indices_sha256": "c143c240726e1dde760c39fcfc20db495e8c83c8fcf06169ce0ddda0149e7923",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 32,
+      "uv": [
+        0,
+        32
+      ],
+      "indices_sha256": "40ad846433fccd51f7921037787de41ca5c078df8cfc3e278c3ec6423aba6341",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 33,
+      "uv": [
+        16,
+        32
+      ],
+      "indices_sha256": "874cb9c5055c1335212ec7449055cb393fdc6b1467f7e834b868f8a081d2bbf3",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 34,
+      "uv": [
+        32,
+        32
+      ],
+      "indices_sha256": "1d83fbcb153dddce40fb16e364ffabc640fea1de17b99ab222de1a34a25befec",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    },
+    {
+      "code": 35,
+      "uv": [
+        48,
+        32
+      ],
+      "indices_sha256": "8f92e27fae615dc71ab85c6cb6ead1fa7449957d1628bfafbe5428ce9808e3f8",
+      "normal_family": null,
+      "variant": null,
+      "cleaning_target": false,
+      "counted_as_floor": false,
+      "counted_clean": false
+    }
+  ],
+  "palette_note": "Original16-bit palette words preserved. PNG treats word0 as transparent; it is a reference atlas, not full PS1 blending emulation."
+}

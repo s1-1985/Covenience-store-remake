@@ -1,0 +1,50 @@
+[
+  {
+    "name": "cleaning_score",
+    "address": "0x8002287c",
+    "bytes": 412,
+    "sha256": "5e7c17c4c662b0c3aa7105618349124614bef3a7b01b98c72a8dcf6e2c8ddb5a"
+  },
+  {
+    "name": "score_to_summary",
+    "address": "0x80023d70",
+    "bytes": 92,
+    "sha256": "aa1259406c51ed58d4b4403f22c800e7b3cc0cf97ba1dc3c01d410494c2ffcf6"
+  },
+  {
+    "name": "floor_wear",
+    "address": "0x80031498",
+    "bytes": 1300,
+    "sha256": "aace8a979fec3baa8d7a2b85ad0173aab2e79cf523d9339bc2ec156a512933a3"
+  },
+  {
+    "name": "clean_action",
+    "address": "0x80038894",
+    "bytes": 580,
+    "sha256": "73074cba0afba616af9d973e63a63d88226442878bd87cfa8ba9fe604975a276"
+  },
+  {
+    "name": "clean_target",
+    "address": "0x80039618",
+    "bytes": 3548,
+    "sha256": "8e22cd72852a838183c1e91711f432aedb343edc8cd9bea90eece7a5222b51b3"
+  },
+  {
+    "name": "floor_render",
+    "address": "0x800561cc",
+    "bytes": 624,
+    "sha256": "8a81059db39d25d70234b9027de5617a877dc9b7ec6b3240ec4f0e52f03d6ad6"
+  },
+  {
+    "name": "store_advice",
+    "address": "0x8003b570",
+    "bytes": 2488,
+    "sha256": "2b81347c4676751bcfb8780054e87eef86bb22fe0b35f7232600093bd319b80f"
+  },
+  {
+    "name": "cleaning_denominators",
+    "address": "0x80098d10",
+    "bytes": 24,
+    "sha256": "949985646d8e6bd08da6c745c9d14c22820e5d9047ca2dc2b7fa5548f1126b06"
+  }
+]

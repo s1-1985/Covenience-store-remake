@@ -1,13 +1,16 @@
 {
   "date_jst": "2026-11-13",
-  "work_kind": "normal_interior_actor_render_data_analysis",
-  "report": "analysis/20261113-actor-render-data/README.md",
+  "work_kind": "floor_cleaning_data_analysis",
+  "report": "analysis/20261113-floor-cleaning-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "new_specification": "Normal interior actor pipeline uses integer grid coordinates and direction tiles; native84830 ignores record bytes24..35. Resting staff use fixed down-facing image and a separate anchor. Staff face next route segment on the final step. Normal play tail gates simulation on input snapshot after first draw.",
-  "previous_report": "analysis/20261113-staff-sound-data/README.md",
-  "android_bridge": "analysis/20261113-actor-render-data/android-actor-render-bridge.json",
+  "floor_materials": 3,
+  "variants_per_material": 5,
+  "initial_layouts": 30,
+  "new_specification": "Store cleanliness summary+4 derives from assigned staff cleaning skills and store level, not clean floor percentage. Floor stain generation compares these two values; dirt patterns are alternatives rather than progressive levels. Warning counter tests pre-stain percentage.",
+  "previous_report": "analysis/20261113-actor-render-data/README.md",
+  "android_bridge": "analysis/20261113-floor-cleaning-data/android-floor-cleaning-bridge.json",
   "original_cpu_updates_this_work": 0,
-  "scope": "Normal interior render/position path, not a global proof that all game animations lack interpolation.",
-  "next_priority": "Use recovered normal interior contract for the Android port; analyze remaining normal-play data without extending verification-update counts."
+  "unconfirmed": "General fixture wear, breakage or repair system not established by these functions.",
+  "next_priority": "Continue required normal-play data extraction, then port recovered data/specifications into native Android and build APK."
 }

@@ -1,0 +1,107 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 9294,
+    "sha256": "e4cc7ee225b79b8a3ba4135a783d26accfd9225051d19c92dfc3cd367e106891"
+  },
+  {
+    "path": "android-floor-cleaning-bridge.json",
+    "bytes": 3297,
+    "sha256": "6bd86f928f3979eccf7aae9243acb7bac488b59cc02066544728284d63523ddd"
+  },
+  {
+    "path": "derived-examples.json",
+    "bytes": 3195,
+    "sha256": "592523ab19e984782f8d89a5b118e22b393d17e8a74275f07c76ecf57bb3b759"
+  },
+  {
+    "path": "extract-floor-cleaning.py",
+    "bytes": 9260,
+    "sha256": "2eaefe07bca617aa47c9c7e1101c25df513c94988845960ab12b95c4f717b80b"
+  },
+  {
+    "path": "floor-readers.asm",
+    "bytes": 77023,
+    "sha256": "d30da1e4c0a2b2da2428ce9da753e8afcd5baa71cb8908c9c175256ad3e521b9"
+  },
+  {
+    "path": "floor-tile-map.json",
+    "bytes": 11555,
+    "sha256": "ac0a80c5b81f747b32f10c65acc5f8d6fb56dd756116e4a8fea68417943063d7"
+  },
+  {
+    "path": "floor-tiles.png",
+    "bytes": 26139,
+    "sha256": "0f8680486c98f9df210192ea3bb9c6b9eb1a156d5fc629a5f49c2e6c26415786"
+  },
+  {
+    "path": "layout-floor-counts.json",
+    "bytes": 14101,
+    "sha256": "17be79f2ad2217688a7c2844765afe46a132fc146fe4c830eada70fa72287d39"
+  },
+  {
+    "path": "source/clean_action.bin",
+    "bytes": 580,
+    "sha256": "73074cba0afba616af9d973e63a63d88226442878bd87cfa8ba9fe604975a276"
+  },
+  {
+    "path": "source/clean_target.bin",
+    "bytes": 3548,
+    "sha256": "8e22cd72852a838183c1e91711f432aedb343edc8cd9bea90eece7a5222b51b3"
+  },
+  {
+    "path": "source/cleaning-denominators.bin",
+    "bytes": 24,
+    "sha256": "949985646d8e6bd08da6c745c9d14c22820e5d9047ca2dc2b7fa5548f1126b06"
+  },
+  {
+    "path": "source/cleaning_score.bin",
+    "bytes": 412,
+    "sha256": "5e7c17c4c662b0c3aa7105618349124614bef3a7b01b98c72a8dcf6e2c8ddb5a"
+  },
+  {
+    "path": "source/floor-palette.bin",
+    "bytes": 512,
+    "sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b"
+  },
+  {
+    "path": "source/floor-tile-indices.bin",
+    "bytes": 9216,
+    "sha256": "aff5db8d3e725a5cfc009bfe4d39cff79f0b3b9e3b10a75c64ddd2aa38501543"
+  },
+  {
+    "path": "source/floor_render.bin",
+    "bytes": 624,
+    "sha256": "8a81059db39d25d70234b9027de5617a877dc9b7ec6b3240ec4f0e52f03d6ad6"
+  },
+  {
+    "path": "source/floor_wear.bin",
+    "bytes": 1300,
+    "sha256": "aace8a979fec3baa8d7a2b85ad0173aab2e79cf523d9339bc2ec156a512933a3"
+  },
+  {
+    "path": "source/layout-floor-prefixes.bin",
+    "bytes": 5820,
+    "sha256": "dc5b8ef52ea68d67337aa257947a82392f576709f8cff8010d7066c6b0b26b13"
+  },
+  {
+    "path": "source/score_to_summary.bin",
+    "bytes": 92,
+    "sha256": "aa1259406c51ed58d4b4403f22c800e7b3cc0cf97ba1dc3c01d410494c2ffcf6"
+  },
+  {
+    "path": "source/store_advice.bin",
+    "bytes": 2488,
+    "sha256": "2b81347c4676751bcfb8780054e87eef86bb22fe0b35f7232600093bd319b80f"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1337,
+    "sha256": "dfab60c2d6b1bd77fcd8f41e4a27029c0b551f8f2e4c43789b46f3f540305900"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 706,
+    "sha256": "60f1c97ec45aef251e63a7df0d76dc63305097d484f66341b684f8376c568ada"
+  }
+]
