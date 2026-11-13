@@ -1,0 +1,22 @@
+{
+  "products": 27,
+  "editable_products": 26,
+  "profiles": 144,
+  "arrival_mode_counts": {
+    "0": 97,
+    "1": 25,
+    "2": 8,
+    "3": 14
+  },
+  "arrival_ranges": [
+    20,
+    40,
+    60,
+    70
+  ],
+  "weight_sum_min": 30,
+  "weight_sum_max": 230,
+  "new_work": "Connect raw price settings to currency prices, all144 named profile weights/ranges, and normalized service rather than security. Document physical-slot carryover with exact zero/store sites and a concrete identical-shop example.",
+  "known_before": "Core selector and metric-builder formulas already existed in independently reconstructed models.",
+  "original_cpu_updates": 0
+}

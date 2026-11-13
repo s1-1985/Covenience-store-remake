@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "pricing": {
+    "setting_field": "store+C7C+4*product",
+    "unit_formula": "trunc_toward_zero(base_price*(cost_percent+setting)/100)",
+    "purchase_cast": "Purchase control narrows computed unit price to signed16 before wallet comparison; ordinary UI values remain in range.",
+    "editable_products": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "readonly_product26": "Cash; no ordinary individual-menu entry.",
+    "individual_editor": "Temporary26-value delta array. Commit writes all26; cancel does not write them back. Direction edits stop at setting0/100.",
+    "group_editor": "Raise all26 by1 only if none is>=100; lower all26 by1 only if none is<=0. Do not clamp each item independently.",
+    "meaning": "Setting1 step changes coefficient by1 percentage point of source base price, not1 monetary unit and not1% of procurement cost."
+  },
+  "store_metrics": {
+    "price_raw": "Summary+00: running average of cost_percent+setting for every anchored fixture with a recognized product image, exceptcash26; quantity0 does not itself exclude an image.",
+    "price_normalized": "Summary+9C:100-trunc((price_raw-min)*100/(max-min)),or100 when equal.",
+    "service_raw": "Summary+0C, normalized at+A4. Not security at+08. Earlier helper variables namedsecurity in this path refer to service.",
+    "distance": "max(left-x,x-right)+max(top-y,y-bottom)",
+    "distance_normalized": "Summary+A0:100-trunc((distance-low)*100/(high-low)),or0 if equal; source initializes low0/high110.",
+    "carryover": "Native23C20 clears stack+48(count),+4C(parking),+50(price accumulator) before physical-store loop0..9 only. Later active stores inherit all three; price accumulator has already been divided for prior store. Preserve as a source quirk rather than silently resetting per store."
+  },
+  "candidate_gates": [
+    "One RNG for rating gate per store in order; continue only if rand()%100+1<=store rating+20.",
+    "Schedule must be open at profile signed byte+2 arrival hour.",
+    "Arrival mode3 requires summary parking capacity>0.",
+    "Primary product profile+8 stock must be>0. Other stock cannot substitute.",
+    "Computed source distance must be<=arrival_ranges[mode]."
+  ],
+  "ranking": "price_norm*profile+14 + distance_norm*profile+15 + service_norm*profile+16; highest score wins.",
+  "ties": [
+    "more primary-product stock",
+    "higher store rating",
+    "first in supplied store order"
+  ],
+  "wallet": "Not part of candidate ranking; later purchase control compares per-person current wallet against unit price.",
+  "limits": [
+    "This report links existing algorithms to complete named master data and exact source fields; it does not claim each formula is newly discovered.",
+    "Store-order/carryover behavior is from the original code, not a desired economic design.",
+    "No approximation of these weights as independent percentages or new probabilistic model."
+  ]
+}

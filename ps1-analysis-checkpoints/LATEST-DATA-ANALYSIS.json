@@ -1,14 +1,14 @@
 {
-  "date_jst": "2026-11-13",
-  "work_kind": "operating_schedule_fixture_cost_data_analysis",
-  "report": "analysis/20261113-operating-cost-data/README.md",
+  "date_jst": "2026-11-14",
+  "work_kind": "pricing_and_store_choice_data_analysis",
+  "report": "analysis/20261113-pricing-store-choice-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "opening_schedules": 7,
-  "fixtures": 53,
-  "new_specification": "Full45-byte schedule entries contain21-byte Shift-JIS labels and24 hourly flags, including temporary closure6. Fixture word+8 is the hourly operating rate. Fixed24 mode differs from daily actual-hours mode; manager slot0 truncates130% wage before multiplying hours.",
-  "previous_report": "analysis/20261113-floor-cleaning-data/README.md",
-  "android_bridge": "analysis/20261113-operating-cost-data/android-operating-cost-bridge.json",
-  "original_cpu_updates_this_work": 0,
-  "next_priority": "Continue required normal-play data extraction, then integrate data/specifications into native Android and build APK."
+  "products": 27,
+  "editable_products": 26,
+  "profiles": 144,
+  "new_specification": "Connected price setting to unit price, weighted price/distance/service ranking, strict stock gates and tie order. Original physical-store metric accumulators carry across stores; preserve source quirk.",
+  "previous_report": "analysis/20261113-operating-cost-data/README.md",
+  "android_bridge": "analysis/20261113-pricing-store-choice-data/android-pricing-choice-bridge.json",
+  "original_cpu_updates_this_work": 0
 }

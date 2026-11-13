@@ -1,0 +1,87 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 10316,
+    "sha256": "d5a7485e8bbbd73e36b7ff61ce88ba9b184d472a96ba7e586acb2ccff711e732"
+  },
+  {
+    "path": "android-pricing-choice-bridge.json",
+    "bytes": 3233,
+    "sha256": "f66d5b0a58e44396c93d1074ded495b11f668dfc0de4c5602ebe6cc501829426"
+  },
+  {
+    "path": "extract-pricing-choice.py",
+    "bytes": 9770,
+    "sha256": "b3e20a8ef293f224a44efd095ad396e469aaf89f94e74921ca0fd04590c3e8d7"
+  },
+  {
+    "path": "pricing-choice-masters.json",
+    "bytes": 78816,
+    "sha256": "efd044ce119f0e8044c1d499925de3ab0c575e36de14dbf88d8d3e4ec6af2c31"
+  },
+  {
+    "path": "pricing-readers.asm",
+    "bytes": 73403,
+    "sha256": "8072f549fbcd431c5cd363f6520054293a710c9d9f1cf11370d090672ddb1333"
+  },
+  {
+    "path": "source/arrival_ranges.bin",
+    "bytes": 16,
+    "sha256": "851a2441c655c7ad520c744087f7ba8f6b5e1ff4f2105ad387dc2d5c2d3b6144"
+  },
+  {
+    "path": "source/customer_profiles.bin",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "path": "source/group_price_step_excerpt.bin",
+    "bytes": 1152,
+    "sha256": "996753939ced9c51b35f7069f32f35888fd9b151b4238a7d14c140d945621fe0"
+  },
+  {
+    "path": "source/individual_price_editor.bin",
+    "bytes": 1840,
+    "sha256": "e31a7e04821ca08f73e73b8d5964cf621394c6ce8a59ec0219d3ca55e54c158a"
+  },
+  {
+    "path": "source/product_master.bin",
+    "bytes": 2376,
+    "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+  },
+  {
+    "path": "source/purchase_unit_price_excerpt.bin",
+    "bytes": 196,
+    "sha256": "2581ce11be5092162e29500ca870b86647b003c0e545e1c727ccadc7d152f7fb"
+  },
+  {
+    "path": "source/store_metric_builder.bin",
+    "bytes": 3216,
+    "sha256": "128e200377819f597ce1ce0681e9f08a91e13468bd03b63744d1e9e390934a3d"
+  },
+  {
+    "path": "source/store_selector.bin",
+    "bytes": 2244,
+    "sha256": "ba81b7b23bea7d9b45bb50974656b4012b0505c77b2921b1cac82cecf9c92fa4"
+  },
+  {
+    "path": "source-derived-examples.json",
+    "bytes": 1886,
+    "sha256": "d6cedc23c7885315c3e93fb513eb0f76fac017eea890684fb6d887cf125538da"
+  },
+  {
+    "path": "source-field-evidence.json",
+    "bytes": 508,
+    "sha256": "dc6024a6d1d7bd16ec5ff55b9d9433db9bab4310d55911364def3e865cd24749"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1385,
+    "sha256": "ee496f3adb812c13397f37fc97c1879c93ee5f3fe28336ab367c8e6f466a0862"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 649,
+    "sha256": "cd583e3b9686c5494131d78ed5c593ba343cd1bfe67d7b63ab43e9e317f48fbe"
+  }
+]

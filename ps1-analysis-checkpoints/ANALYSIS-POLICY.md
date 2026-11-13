@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-14保存：価格設定・144購買型の店選び・店舗指標の持越し](analysis/20261113-pricing-store-choice-data/README.md)
+
 - [2026-11-13：営業時間7区分・53什器の維持費と人件費の丸め順](analysis/20261113-operating-cost-data/README.md)
 
 - [2026-11-13：床画像・清掃能力指標・汚れ発生と警告判定の接続](analysis/20261113-floor-cleaning-data/README.md)

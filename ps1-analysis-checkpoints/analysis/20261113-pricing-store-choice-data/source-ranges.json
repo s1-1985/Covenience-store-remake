@@ -1,0 +1,50 @@
+[
+  {
+    "name": "product_master",
+    "address": "0x8009cdf0",
+    "bytes": 2376,
+    "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+  },
+  {
+    "name": "customer_profiles",
+    "address": "0x800a09d0",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "name": "arrival_ranges",
+    "address": "0x80099570",
+    "bytes": 16,
+    "sha256": "851a2441c655c7ad520c744087f7ba8f6b5e1ff4f2105ad387dc2d5c2d3b6144"
+  },
+  {
+    "name": "store_metric_builder",
+    "address": "0x80023c20",
+    "bytes": 3216,
+    "sha256": "128e200377819f597ce1ce0681e9f08a91e13468bd03b63744d1e9e390934a3d"
+  },
+  {
+    "name": "store_selector",
+    "address": "0x80026a64",
+    "bytes": 2244,
+    "sha256": "ba81b7b23bea7d9b45bb50974656b4012b0505c77b2921b1cac82cecf9c92fa4"
+  },
+  {
+    "name": "individual_price_editor",
+    "address": "0x80063714",
+    "bytes": 1840,
+    "sha256": "e31a7e04821ca08f73e73b8d5964cf621394c6ce8a59ec0219d3ca55e54c158a"
+  },
+  {
+    "name": "group_price_step_excerpt",
+    "address": "0x80063208",
+    "bytes": 1152,
+    "sha256": "996753939ced9c51b35f7069f32f35888fd9b151b4238a7d14c140d945621fe0"
+  },
+  {
+    "name": "purchase_unit_price_excerpt",
+    "address": "0x8003473c",
+    "bytes": 196,
+    "sha256": "2581ce11be5092162e29500ca870b86647b003c0e545e1c727ccadc7d152f7fb"
+  }
+]

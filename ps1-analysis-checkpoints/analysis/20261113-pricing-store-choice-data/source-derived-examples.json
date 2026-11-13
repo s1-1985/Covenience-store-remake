@@ -1,0 +1,74 @@
+{
+  "scope": "Arithmetic examples from raw tables/source expressions, not real gameplay observations.",
+  "price_step_examples": [
+    {
+      "id": 0,
+      "address": "0x8009cdf0",
+      "name": "冷たい飲料",
+      "base_price": 110,
+      "cost_percent": 50,
+      "initial_setting": 50,
+      "editable_in_individual_menu": true,
+      "procurement_unit_cost": 55,
+      "initial_selling_price": 110,
+      "selling_price_at_setting0": 55,
+      "selling_price_at_setting100": 165,
+      "price_at_initial_minus1": 108,
+      "price_at_initial_plus1": 111
+    },
+    {
+      "id": 3,
+      "address": "0x8009cef8",
+      "name": "弁当類",
+      "base_price": 400,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "editable_in_individual_menu": true,
+      "procurement_unit_cost": 240,
+      "initial_selling_price": 400,
+      "selling_price_at_setting0": 240,
+      "selling_price_at_setting100": 640,
+      "price_at_initial_minus1": 396,
+      "price_at_initial_plus1": 404
+    }
+  ],
+  "physical_slot_carryover": [
+    {
+      "physical_slot": 0,
+      "identical_fixture_price_factors": [
+        100,
+        100
+      ],
+      "own_parking": 2,
+      "accumulated_fixture_count": 2,
+      "stored_price_factor": 100,
+      "stored_parking_capacity": 2
+    },
+    {
+      "physical_slot": 1,
+      "identical_fixture_price_factors": [
+        100,
+        100
+      ],
+      "own_parking": 0,
+      "accumulated_fixture_count": 4,
+      "stored_price_factor": 75,
+      "stored_parking_capacity": 2
+    }
+  ],
+  "price_normalization_for_two_example_stores": [
+    0,
+    100
+  ],
+  "tie_break": {
+    "order": [
+      4,
+      1
+    ],
+    "same_score": true,
+    "same_primary_stock": true,
+    "same_rating": true,
+    "selected": 4
+  },
+  "budget_note": "Initial wallet is not used in26A64 store ranking. It is checked in the later purchase branch."
+}

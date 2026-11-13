@@ -1,0 +1,23 @@
+{
+  "carryover_accumulator_zero_sites": [
+    {
+      "address": "0x80023c30",
+      "stack_offset": 72
+    },
+    {
+      "address": "0x80023c34",
+      "stack_offset": 76
+    },
+    {
+      "address": "0x80023c38",
+      "stack_offset": 80
+    }
+  ],
+  "normalized_service_read": [
+    {
+      "address": "0x800270b8",
+      "instruction": "lw $a1, 0xa4($a0)"
+    }
+  ],
+  "reference": "See full store_metric_builder/store_selector instructions and physical-slot loop boundaries in pricing-readers.asm."
+}
