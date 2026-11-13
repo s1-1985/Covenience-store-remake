@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "normal_interior_scope": [
+    "customer position commit",
+    "staff position commit",
+    "56A3C actor record builder",
+    "18A5C actor group dispatch",
+    "84830 packet builder"
+  ],
+  "actor_record": {
+    "base": "0x800da990",
+    "count": "0x800cda2c",
+    "stride": 36,
+    "initialized_slots": 33,
+    "width": 16,
+    "height": 16,
+    "page": 5,
+    "clut": [
+      0,
+      493
+    ]
+  },
+  "directions": [
+    [
+      0,
+      -1
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      -1,
+      0
+    ],
+    [
+      1,
+      0
+    ]
+  ],
+  "direction_image_offsets": [
+    1,
+    0,
+    2,
+    3
+  ],
+  "grid_image": "appearance*4+direction_offset+640",
+  "rest_image": "appearance*4+640; fixed down-facing source image, no direction lookup",
+  "grid_actor_gate": "word low10==0 and640<=((word>>12)&1023)<820",
+  "grid_record_xy": [
+    "8*x-160-(8 if right neighbor within width has nonzero low10 else0)",
+    "8*(y-1)-90"
+  ],
+  "rest_actor_gate": "assigned staff slot, staff state byte+40==0, x!=-1,y!=-1",
+  "rest_record_xy": [
+    "8*x+8-160",
+    "8*(y-1)+8-90"
+  ],
+  "record_build_order": "grid row-major top-to-bottom/left-to-right, then resting staff slot2,1,0",
+  "packet_cpu_order": "actor records last-to-first at OT depth9",
+  "ot_link_order": "head insertion reconstructs actor record order0..n-1 in this OT bucket",
+  "packet_record_unused_tail": [
+    24,
+    36
+  ],
+  "interpolation": "None in these normal actor image/coordinate expressions or84830 packet emission. Global draw origin remains an input.",
+  "timing": {
+    "frame_vsync_site": "0x800193b8: call89ca4 with a0=0",
+    "normal_tail": [
+      "3FF00 ancillary updates",
+      "18A5C draw and input snapshot update",
+      "if cd9cc==0: second18A5C",
+      "if branch taken and cd7f4==0:23438 simulation update"
+    ],
+    "input_state": "13DDC updates current/previous logical input and rising edges; cd9cc is the previous snapshot after that helper",
+    "rule": "Holding nonzero logical input across first draw prevents this tail from entering simulation-update branch. If input changes during second draw, that gate is not rechecked before23438.",
+    "wall_clock": "Two draw calls in the uncomplicated tail are not a measured fixed frame rate. Extra UI/audio draws and waits exist; do not assign a global pixels-per-second constant from this alone."
+  },
+  "limitations": [
+    "No original game CPU execution or new game-state trace in this work.",
+    "No claim that every UI, cutscene, customer variant or hardware path has no animation.",
+    "Original TIM only supplies four direction tiles per identified appearance; synthesized footstep frames would be remake additions."
+  ]
+}

@@ -1,17 +1,13 @@
 {
   "date_jst": "2026-11-13",
-  "work_kind": "staff_audio_source_data_analysis",
-  "report": "analysis/20261113-staff-sound-data/README.md",
+  "work_kind": "normal_interior_actor_render_data_analysis",
+  "report": "analysis/20261113-actor-render-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "effect_sequences": 16,
-  "voice_sequences": 12,
-  "effect_programs": 19,
-  "effect_samples": 14,
-  "voice_samples": 12,
-  "new_specification": "Mapped gameplay sound flags through dispatch namespace to SEP programs and VAB samples. Checkout sequence10 contains six note-on events across two programs. Sparse SE program IDs require packed tone-block indexing. Exported voice sample previews and editable scores.",
-  "previous_report": "analysis/20261113-seasonal-demand-data/README.md",
-  "android_bridge": "analysis/20261113-staff-sound-data/android-staff-sound-bridge.json",
+  "new_specification": "Normal interior actor pipeline uses integer grid coordinates and direction tiles; native84830 ignores record bytes24..35. Resting staff use fixed down-facing image and a separate anchor. Staff face next route segment on the final step. Normal play tail gates simulation on input snapshot after first draw.",
+  "previous_report": "analysis/20261113-staff-sound-data/README.md",
+  "android_bridge": "analysis/20261113-actor-render-data/android-actor-render-bridge.json",
   "original_cpu_updates_this_work": 0,
-  "next_priority": "Resolve remaining required normal-play source data, then port to native Android. Voice previews are decoded samples rather than exact SPU mixes; global walking animation timing remains unconfirmed."
+  "scope": "Normal interior render/position path, not a global proof that all game animations lack interpolation.",
+  "next_priority": "Use recovered normal interior contract for the Android port; analyze remaining normal-play data without extending verification-update counts."
 }

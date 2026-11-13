@@ -1,0 +1,111 @@
+{
+  "record_bytes": 36,
+  "record_base_register": "t3, assigned from a0 at entry",
+  "loads": [
+    {
+      "site": "0x80084838",
+      "offset": 0,
+      "bytes": 4,
+      "instruction": "lw $t4, ($t3)"
+    },
+    {
+      "site": "0x80084848",
+      "offset": 8,
+      "bytes": 2,
+      "instruction": "lhu $v0, 8($t3)"
+    },
+    {
+      "site": "0x80084858",
+      "offset": 10,
+      "bytes": 2,
+      "instruction": "lhu $v0, 0xa($t3)"
+    },
+    {
+      "site": "0x80084888",
+      "offset": 12,
+      "bytes": 2,
+      "instruction": "lhu $v1, 0xc($t3)"
+    },
+    {
+      "site": "0x80084894",
+      "offset": 6,
+      "bytes": 2,
+      "instruction": "lhu $a1, 6($t3)"
+    },
+    {
+      "site": "0x800848a4",
+      "offset": 4,
+      "bytes": 2,
+      "instruction": "lhu $v0, 4($t3)"
+    },
+    {
+      "site": "0x800848c0",
+      "offset": 22,
+      "bytes": 1,
+      "instruction": "lbu $a2, 0x16($t3)"
+    },
+    {
+      "site": "0x800848c4",
+      "offset": 21,
+      "bytes": 1,
+      "instruction": "lbu $t0, 0x15($t3)"
+    },
+    {
+      "site": "0x800848c8",
+      "offset": 20,
+      "bytes": 1,
+      "instruction": "lbu $t1, 0x14($t3)"
+    },
+    {
+      "site": "0x80084920",
+      "offset": 15,
+      "bytes": 1,
+      "instruction": "lbu $v1, 0xf($t3)"
+    },
+    {
+      "site": "0x80084924",
+      "offset": 14,
+      "bytes": 1,
+      "instruction": "lbu $v0, 0xe($t3)"
+    },
+    {
+      "site": "0x80084928",
+      "offset": 18,
+      "bytes": 2,
+      "instruction": "lh $a0, 0x12($t3)"
+    },
+    {
+      "site": "0x8008493c",
+      "offset": 16,
+      "bytes": 2,
+      "instruction": "lh $v1, 0x10($t3)"
+    },
+    {
+      "site": "0x80084954",
+      "offset": 10,
+      "bytes": 2,
+      "instruction": "lhu $v0, 0xa($t3)"
+    },
+    {
+      "site": "0x80084958",
+      "offset": 8,
+      "bytes": 2,
+      "instruction": "lhu $v1, 8($t3)"
+    }
+  ],
+  "unused_trailing_bytes": [
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "conclusion": "This packet function does not read the record transform/scale tail and does not interpolate XY or animate UV. Global draw origin is added directly. Scope is84830, not every renderer in the executable."
+}

@@ -1,0 +1,215 @@
+{
+  "input_interrupt": [
+    {
+      "site": "0x80013174",
+      "opcode": "jal",
+      "target": "0x80089c24"
+    }
+  ],
+  "interior_record_init": [],
+  "input_edge_update": [],
+  "frame_draw": [
+    {
+      "site": "0x80018a6c",
+      "opcode": "jal",
+      "target": "0x80084fac"
+    },
+    {
+      "site": "0x80018ab0",
+      "opcode": "jal",
+      "target": "0x800856c0"
+    },
+    {
+      "site": "0x80018ae8",
+      "opcode": "jal",
+      "target": "0x8008535c"
+    },
+    {
+      "site": "0x80018b50",
+      "opcode": "jal",
+      "target": "0x80083b4c"
+    },
+    {
+      "site": "0x80018b94",
+      "opcode": "jal",
+      "target": "0x80083338"
+    },
+    {
+      "site": "0x80018c30",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x80018cc8",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x80018d80",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x80018e38",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x80018ef0",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x80018f60",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x80018ffc",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x800190b4",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x8001916c",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x80019224",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x800192e0",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x80019390",
+      "opcode": "jal",
+      "target": "0x80084830"
+    },
+    {
+      "site": "0x800193b8",
+      "opcode": "jal",
+      "target": "0x80089ca4"
+    },
+    {
+      "site": "0x800193c0",
+      "opcode": "jal",
+      "target": "0x80013ddc"
+    },
+    {
+      "site": "0x800193cc",
+      "opcode": "jal",
+      "target": "0x800805dc"
+    },
+    {
+      "site": "0x800193d4",
+      "opcode": "jal",
+      "target": "0x80085160"
+    },
+    {
+      "site": "0x80019410",
+      "opcode": "jal",
+      "target": "0x80084e70"
+    },
+    {
+      "site": "0x80019440",
+      "opcode": "jal",
+      "target": "0x80085338"
+    }
+  ],
+  "interior_refresh": [
+    {
+      "site": "0x80041230",
+      "opcode": "jal",
+      "target": "0x800561cc"
+    },
+    {
+      "site": "0x8004123c",
+      "opcode": "jal",
+      "target": "0x8005643c"
+    },
+    {
+      "site": "0x80041248",
+      "opcode": "jal",
+      "target": "0x80056a3c"
+    }
+  ],
+  "actor_records": [
+    {
+      "site": "0x80056fd0",
+      "opcode": "jal",
+      "target": "0x80018940"
+    }
+  ],
+  "sprite_packet": [],
+  "vsync": [
+    {
+      "site": "0x80089d34",
+      "opcode": "jal",
+      "target": "0x80089dec"
+    },
+    {
+      "site": "0x80089d58",
+      "opcode": "jal",
+      "target": "0x80089dec"
+    }
+  ],
+  "play_tail": [
+    {
+      "site": "0x8005d4b0",
+      "opcode": "jal",
+      "target": "0x8003ff00"
+    },
+    {
+      "site": "0x8005d4b8",
+      "opcode": "jal",
+      "target": "0x80018a5c"
+    },
+    {
+      "site": "0x8005d4d4",
+      "opcode": "jal",
+      "target": "0x80018a5c"
+    },
+    {
+      "site": "0x8005d4f8",
+      "opcode": "jal",
+      "target": "0x80023438"
+    },
+    {
+      "site": "0x8005d524",
+      "opcode": "jal",
+      "target": "0x80013ddc"
+    },
+    {
+      "site": "0x8005d548",
+      "opcode": "jal",
+      "target": "0x8006d8ec"
+    },
+    {
+      "site": "0x8005d558",
+      "opcode": "jal",
+      "target": "0x80065a1c"
+    }
+  ],
+  "staff_walk_commit": [
+    {
+      "site": "0x80037940",
+      "opcode": "jal",
+      "target": "0x8007e57c"
+    },
+    {
+      "site": "0x80037a08",
+      "opcode": "jal",
+      "target": "0x8002e5b0"
+    }
+  ],
+  "customer_position_commit": []
+}

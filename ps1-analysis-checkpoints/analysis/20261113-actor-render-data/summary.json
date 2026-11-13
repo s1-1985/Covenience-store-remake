@@ -1,0 +1,12 @@
+{
+  "new_work": [
+    "Enumerated exact record bytes read by native84830: trailing transform fields+24..35 are unused in this path.",
+    "Connected normal interior render stages and distinguished fixed down-facing rest record from active direction lookup.",
+    "Made end-of-route-segment facing change and input-gated simulation timing explicit for the native port."
+  ],
+  "existing_work": [
+    "176 appearance direction frames and previous actor coordinate formulas were already extracted."
+  ],
+  "scope": "Normal interior render data contract; not a global no-animation proof.",
+  "original_cpu_updates": 0
+}

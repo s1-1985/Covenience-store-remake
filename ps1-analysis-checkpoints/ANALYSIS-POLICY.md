@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-13：通常店内の人物描画・休憩姿勢・区間末尾の向きと入力別更新](analysis/20261113-actor-render-data/README.md)
+
 - [2026-11-13：店員・決済イベントから効果音16本／ボイス12本と元サンプルへの連結](analysis/20261113-staff-sound-data/README.md)
 
 - [2026-11-13：季節・来店判定・追加購買と通常選択から除外される2商品枠](analysis/20261113-seasonal-demand-data/README.md)

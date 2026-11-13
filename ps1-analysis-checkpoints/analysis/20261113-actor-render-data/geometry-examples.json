@@ -1,0 +1,173 @@
+{
+  "scope": "Source-derived arithmetic examples, not captured gameplay frames.",
+  "draw_origin": [
+    160,
+    120
+  ],
+  "position_cases": [
+    {
+      "name": "ordinary_grid_actor",
+      "grid": [
+        4,
+        3
+      ],
+      "record_xy": [
+        -128,
+        -74
+      ],
+      "packet_xy": [
+        32,
+        46
+      ]
+    },
+    {
+      "name": "right_neighbor_has_fixture_low10",
+      "grid": [
+        4,
+        3
+      ],
+      "record_xy": [
+        -136,
+        -74
+      ],
+      "packet_xy": [
+        24,
+        46
+      ]
+    },
+    {
+      "name": "resting_staff_separate_record",
+      "grid": [
+        4,
+        3
+      ],
+      "record_xy": [
+        -120,
+        -66
+      ],
+      "packet_xy": [
+        40,
+        54
+      ]
+    }
+  ],
+  "route_turn_case": [
+    {
+      "tick": 0,
+      "grid": [
+        4,
+        3
+      ],
+      "direction": 3,
+      "image_code": 795,
+      "route": [
+        193,
+        2,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ],
+      "record_xy": [
+        -128,
+        -74
+      ],
+      "packet_xy": [
+        32,
+        46
+      ]
+    },
+    {
+      "tick": 1,
+      "grid": [
+        5,
+        3
+      ],
+      "direction": 0,
+      "image_code": 793,
+      "route": [
+        2,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ],
+      "record_xy": [
+        -120,
+        -74
+      ],
+      "packet_xy": [
+        40,
+        46
+      ]
+    },
+    {
+      "tick": 2,
+      "grid": [
+        5,
+        2
+      ],
+      "direction": 0,
+      "image_code": 793,
+      "route": [
+        1,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ],
+      "record_xy": [
+        -120,
+        -82
+      ],
+      "packet_xy": [
+        40,
+        38
+      ]
+    },
+    {
+      "tick": 3,
+      "grid": [
+        5,
+        1
+      ],
+      "direction": 0,
+      "image_code": 793,
+      "route": [
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ],
+      "record_xy": [
+        -120,
+        -90
+      ],
+      "packet_xy": [
+        40,
+        30
+      ]
+    }
+  ],
+  "turn_note": "On the final rightward step, the actor already faces the next segment(up); there is no additional turn-only sample in this unobstructed route case."
+}

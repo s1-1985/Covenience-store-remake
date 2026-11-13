@@ -1,0 +1,102 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 8600,
+    "sha256": "5e2ad53964c452a521db31fb05326065a608beb7f230e2d5339d4b0eecc78f91"
+  },
+  {
+    "path": "actor-readers.asm",
+    "bytes": 94687,
+    "sha256": "80ba770b9a21962632cf1e1b542914ec540633c262a1e2c1b53450f516ba78ac"
+  },
+  {
+    "path": "analyze-actor-render.py",
+    "bytes": 8067,
+    "sha256": "5e58d135385e37c7f9acff810f54a8b2cecc601c8442e7213185b02b4ce2f1ca"
+  },
+  {
+    "path": "android-actor-render-bridge.json",
+    "bytes": 2889,
+    "sha256": "993df27c9bd3b97b6d3e707d6b2fd49df1aa05b680d1602c49dc09bca2bf42c5"
+  },
+  {
+    "path": "direct-calls.json",
+    "bytes": 3913,
+    "sha256": "cc916e87cc3dcdd36576c4b2a60cecb554f4902326bbc951d49d6245b3e5bec8"
+  },
+  {
+    "path": "geometry-examples.json",
+    "bytes": 2516,
+    "sha256": "807cebc0d413c27a23fcd4b2ab6a421f57e9ebde37bd133e05e1f00b4d0a7e57"
+  },
+  {
+    "path": "packet-record-accesses.json",
+    "bytes": 2236,
+    "sha256": "488c4667ca0f8d590a27da26bf48997564dc7dc5a44d461241673d52465d1af0"
+  },
+  {
+    "path": "source/actor_records.bin",
+    "bytes": 1460,
+    "sha256": "da0df9a70dca8f15381dff223a01ca41f77d72b25e1b4bd7d232c0dc01f869af"
+  },
+  {
+    "path": "source/customer_position_commit.bin",
+    "bytes": 1096,
+    "sha256": "c4831424bf62d71e14fe7c4fad058e1907c26d32be643cb49e2ec841501268ee"
+  },
+  {
+    "path": "source/frame_draw.bin",
+    "bytes": 2564,
+    "sha256": "4c3056eb230da88943e4600f80b7b5594c8fd5afcb9dd783b2d6e7e362b3ce5d"
+  },
+  {
+    "path": "source/input_edge_update.bin",
+    "bytes": 128,
+    "sha256": "5453eb5b89de651e79c5a624a10370b507a042fdf3ac472453768dc2544d8335"
+  },
+  {
+    "path": "source/input_interrupt.bin",
+    "bytes": 196,
+    "sha256": "ac0e5f57a9b9dce7dbe9ed5a57a93d17a834cb175b9068d3bedd1b9e5b84d63f"
+  },
+  {
+    "path": "source/interior_record_init.bin",
+    "bytes": 2452,
+    "sha256": "13c897a7e875270b3840b1cfd038168dace530cc7d57ebb8c68c4e9601923791"
+  },
+  {
+    "path": "source/interior_refresh.bin",
+    "bytes": 80,
+    "sha256": "3297154d2731065237666fc3cc7f5a35397c308a394f16ed9fe9aa1aa42c58a6"
+  },
+  {
+    "path": "source/play_tail.bin",
+    "bytes": 244,
+    "sha256": "81441c118fe848e523de0278389cf6246b968ffcdc96199b01a3e59fe0cb93c3"
+  },
+  {
+    "path": "source/sprite_packet.bin",
+    "bytes": 380,
+    "sha256": "f86d9cbe224376e1c3871d9b9042dab1a671e80f7af34cf3422439b25acec459"
+  },
+  {
+    "path": "source/staff_walk_commit.bin",
+    "bytes": 2064,
+    "sha256": "1f1dff25f7f4d62cb2965e067ef6e6bbf808834c07bc96f86df5778df61f1a49"
+  },
+  {
+    "path": "source/vsync.bin",
+    "bytes": 328,
+    "sha256": "77397301b3732e9dab6b5b6b5a76b7999c6e581824f8c07534b027c51b2538c5"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1849,
+    "sha256": "203c47243097ef6e9536b417d144c90975795beba59b214e71dcd94b5d014b28"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 616,
+    "sha256": "d9a931257018e6d78aa6b0fa791b733a5dd10252f6189fef58b431c12073cf69"
+  }
+]
