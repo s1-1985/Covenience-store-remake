@@ -1,0 +1,62 @@
+[
+  {
+    "name": "operation_menu",
+    "address": "0x80060418",
+    "bytes": 1912,
+    "sha256": "12487de9f4dbe657d8879a017f2d3fccc3d4c982f114131cae48f72660585c6e"
+  },
+  {
+    "name": "first_opening_interior",
+    "address": "0x8005dd04",
+    "bytes": 280,
+    "sha256": "a0fd5cc77adc38ad81fdbed3989181d8ab48b4b6105264d0001dedab14c51c10"
+  },
+  {
+    "name": "new_branch_interior",
+    "address": "0x80061508",
+    "bytes": 296,
+    "sha256": "dbbe699d7c26565bd7562e2d5e43df7cd9ab7aa21486b30c4f75d2292b88e343"
+  },
+  {
+    "name": "remodel_controller",
+    "address": "0x80063e44",
+    "bytes": 672,
+    "sha256": "3d4f2ffd2104ffc7a341bf103455206ab3a15a1e97402eb5acf167371eecf48b"
+  },
+  {
+    "name": "cursor_only",
+    "address": "0x80065ff4",
+    "bytes": 124,
+    "sha256": "7ff3b0bbc27a17fe5c0fbbbe25b4a38e04e0b54d85b4f479e38a77d5e375d666"
+  },
+  {
+    "name": "stock_and_capital_post",
+    "address": "0x8001ca7c",
+    "bytes": 580,
+    "sha256": "4666a4e2f3548836bc85c69519b73e73d8b98f2325bc2dcd249f42b424bbe3e8"
+  },
+  {
+    "name": "close_capital_history",
+    "address": "0x8002a47c",
+    "bytes": 872,
+    "sha256": "6189af3415162483d99e4fbc26349b870206a6ce4936bc62b27919e3634555ba"
+  },
+  {
+    "name": "close_exit_conditions",
+    "address": "0x8002a864",
+    "bytes": 124,
+    "sha256": "b24a7b1f9a1aac8f560143e84ceddb08006c562b3d69ec4cd42d6b98ae499175"
+  },
+  {
+    "name": "save_financial_series",
+    "address": "0x8006babc",
+    "bytes": 108,
+    "sha256": "a093598b734e2b6554d2b62a8798b0f12f4990697466ec5aedc4867714bfb769"
+  },
+  {
+    "name": "load_financial_series",
+    "address": "0x8006bedc",
+    "bytes": 108,
+    "sha256": "66a4387fe32011a42363bc0d684341fa66ff104f2ef403238f6075bfd00c5469"
+  }
+]

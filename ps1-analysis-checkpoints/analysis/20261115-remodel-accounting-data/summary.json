@@ -1,0 +1,28 @@
+{
+  "caller_routes": 4,
+  "original_active_store_records": 11,
+  "prefab_caller_examples": 6,
+  "size_fee_transitions": 36,
+  "stored_asset_value_by_map": {
+    "TOWN0001": {
+      "equipment": 67240,
+      "stock": 654250
+    },
+    "TOWN0002": {
+      "equipment": 100860,
+      "stock": 981375
+    },
+    "TOWN0003": {
+      "equipment": 33620,
+      "stock": 327125
+    },
+    "TOWNPS": {
+      "equipment": 138450,
+      "stock": 1504190
+    }
+  },
+  "persistence_series": 3,
+  "original_cpu_updates": 0,
+  "known_before": "Four isolated75514 caller slices and63E44 controller already recovered. New work connects source operation menu, distinct confirmed/provisional postings, real11 source-store asset values, six real prefab totals,3 persisted history series and post-close cash exit condition.",
+  "limits": "Source data/control extraction, not a new gameplay run. Do not call preserved original accounting asymmetry a fixed bug. Native Android/APK not updated."
+}

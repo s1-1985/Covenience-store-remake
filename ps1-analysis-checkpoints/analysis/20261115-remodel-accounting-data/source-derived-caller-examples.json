@@ -1,0 +1,203 @@
+{
+  "method": "Source arithmetic on actual six selected prefab cost rows, no CPU execution or observed playthrough.",
+  "rows": [
+    {
+      "tier": 0,
+      "source_layout": 1,
+      "equipment": 34550,
+      "stock": 198015,
+      "size_fee": 6000000,
+      "direct_buy_equivalent": {
+        "cash_delta": -232565,
+        "stock_expense_post_delta": 0,
+        "capital_post_delta": 0,
+        "scope": "Sum of eligible individual purchase leaf effects only; not a claim existing-editor arg1 loads this prefab, and required facility changes have separate paths."
+      },
+      "new_opening_interior_commit": {
+        "cash_delta": -232565,
+        "stock_expense_post_delta": 198015,
+        "capital_post_delta": 34550
+      },
+      "existing_remodel_accept": {
+        "starting_cash": 200000000,
+        "cash_after_size_fee": 194000000,
+        "editor_temporary_cash": 193767435,
+        "cash_after_parent_restore": 194000000,
+        "capital_post_delta": 6000000,
+        "stock_expense_post_delta": 0,
+        "note": "Source-only arithmetic with no new permits and enough funds. Layout retained but no extra equipment/stock repost in63E44."
+      },
+      "existing_remodel_cancel": {
+        "cash_after_editor_restore": 194000000,
+        "cash_after_refund": 200000000,
+        "net_capital_post_delta": 0,
+        "store_snapshot": "5080 bytes captured AFTER new size/permit selection; restoring it retains selected C70. Restore saved original3 permit flags separately. Retry premises stage."
+      }
+    },
+    {
+      "tier": 1,
+      "source_layout": 6,
+      "equipment": 21610,
+      "stock": 140990,
+      "size_fee": 6000000,
+      "direct_buy_equivalent": {
+        "cash_delta": -162600,
+        "stock_expense_post_delta": 0,
+        "capital_post_delta": 0,
+        "scope": "Sum of eligible individual purchase leaf effects only; not a claim existing-editor arg1 loads this prefab, and required facility changes have separate paths."
+      },
+      "new_opening_interior_commit": {
+        "cash_delta": -162600,
+        "stock_expense_post_delta": 140990,
+        "capital_post_delta": 21610
+      },
+      "existing_remodel_accept": {
+        "starting_cash": 200000000,
+        "cash_after_size_fee": 194000000,
+        "editor_temporary_cash": 193837400,
+        "cash_after_parent_restore": 194000000,
+        "capital_post_delta": 6000000,
+        "stock_expense_post_delta": 0,
+        "note": "Source-only arithmetic with no new permits and enough funds. Layout retained but no extra equipment/stock repost in63E44."
+      },
+      "existing_remodel_cancel": {
+        "cash_after_editor_restore": 194000000,
+        "cash_after_refund": 200000000,
+        "net_capital_post_delta": 0,
+        "store_snapshot": "5080 bytes captured AFTER new size/permit selection; restoring it retains selected C70. Restore saved original3 permit flags separately. Retry premises stage."
+      }
+    },
+    {
+      "tier": 2,
+      "source_layout": 11,
+      "equipment": 27360,
+      "stock": 296840,
+      "size_fee": 12000000,
+      "direct_buy_equivalent": {
+        "cash_delta": -324200,
+        "stock_expense_post_delta": 0,
+        "capital_post_delta": 0,
+        "scope": "Sum of eligible individual purchase leaf effects only; not a claim existing-editor arg1 loads this prefab, and required facility changes have separate paths."
+      },
+      "new_opening_interior_commit": {
+        "cash_delta": -324200,
+        "stock_expense_post_delta": 296840,
+        "capital_post_delta": 27360
+      },
+      "existing_remodel_accept": {
+        "starting_cash": 200000000,
+        "cash_after_size_fee": 188000000,
+        "editor_temporary_cash": 187675800,
+        "cash_after_parent_restore": 188000000,
+        "capital_post_delta": 12000000,
+        "stock_expense_post_delta": 0,
+        "note": "Source-only arithmetic with no new permits and enough funds. Layout retained but no extra equipment/stock repost in63E44."
+      },
+      "existing_remodel_cancel": {
+        "cash_after_editor_restore": 188000000,
+        "cash_after_refund": 200000000,
+        "net_capital_post_delta": 0,
+        "store_snapshot": "5080 bytes captured AFTER new size/permit selection; restoring it retains selected C70. Restore saved original3 permit flags separately. Retry premises stage."
+      }
+    },
+    {
+      "tier": 3,
+      "source_layout": 16,
+      "equipment": 57480,
+      "stock": 318050,
+      "size_fee": 12000000,
+      "direct_buy_equivalent": {
+        "cash_delta": -375530,
+        "stock_expense_post_delta": 0,
+        "capital_post_delta": 0,
+        "scope": "Sum of eligible individual purchase leaf effects only; not a claim existing-editor arg1 loads this prefab, and required facility changes have separate paths."
+      },
+      "new_opening_interior_commit": {
+        "cash_delta": -375530,
+        "stock_expense_post_delta": 318050,
+        "capital_post_delta": 57480
+      },
+      "existing_remodel_accept": {
+        "starting_cash": 200000000,
+        "cash_after_size_fee": 188000000,
+        "editor_temporary_cash": 187624470,
+        "cash_after_parent_restore": 188000000,
+        "capital_post_delta": 12000000,
+        "stock_expense_post_delta": 0,
+        "note": "Source-only arithmetic with no new permits and enough funds. Layout retained but no extra equipment/stock repost in63E44."
+      },
+      "existing_remodel_cancel": {
+        "cash_after_editor_restore": 188000000,
+        "cash_after_refund": 200000000,
+        "net_capital_post_delta": 0,
+        "store_snapshot": "5080 bytes captured AFTER new size/permit selection; restoring it retains selected C70. Restore saved original3 permit flags separately. Retry premises stage."
+      }
+    },
+    {
+      "tier": 4,
+      "source_layout": 21,
+      "equipment": 26320,
+      "stock": 299115,
+      "size_fee": 18000000,
+      "direct_buy_equivalent": {
+        "cash_delta": -325435,
+        "stock_expense_post_delta": 0,
+        "capital_post_delta": 0,
+        "scope": "Sum of eligible individual purchase leaf effects only; not a claim existing-editor arg1 loads this prefab, and required facility changes have separate paths."
+      },
+      "new_opening_interior_commit": {
+        "cash_delta": -325435,
+        "stock_expense_post_delta": 299115,
+        "capital_post_delta": 26320
+      },
+      "existing_remodel_accept": {
+        "starting_cash": 200000000,
+        "cash_after_size_fee": 182000000,
+        "editor_temporary_cash": 181674565,
+        "cash_after_parent_restore": 182000000,
+        "capital_post_delta": 18000000,
+        "stock_expense_post_delta": 0,
+        "note": "Source-only arithmetic with no new permits and enough funds. Layout retained but no extra equipment/stock repost in63E44."
+      },
+      "existing_remodel_cancel": {
+        "cash_after_editor_restore": 182000000,
+        "cash_after_refund": 200000000,
+        "net_capital_post_delta": 0,
+        "store_snapshot": "5080 bytes captured AFTER new size/permit selection; restoring it retains selected C70. Restore saved original3 permit flags separately. Retry premises stage."
+      }
+    },
+    {
+      "tier": 5,
+      "source_layout": 26,
+      "equipment": 62760,
+      "stock": 408765,
+      "size_fee": 18000000,
+      "direct_buy_equivalent": {
+        "cash_delta": -471525,
+        "stock_expense_post_delta": 0,
+        "capital_post_delta": 0,
+        "scope": "Sum of eligible individual purchase leaf effects only; not a claim existing-editor arg1 loads this prefab, and required facility changes have separate paths."
+      },
+      "new_opening_interior_commit": {
+        "cash_delta": -471525,
+        "stock_expense_post_delta": 408765,
+        "capital_post_delta": 62760
+      },
+      "existing_remodel_accept": {
+        "starting_cash": 200000000,
+        "cash_after_size_fee": 182000000,
+        "editor_temporary_cash": 181528475,
+        "cash_after_parent_restore": 182000000,
+        "capital_post_delta": 18000000,
+        "stock_expense_post_delta": 0,
+        "note": "Source-only arithmetic with no new permits and enough funds. Layout retained but no extra equipment/stock repost in63E44."
+      },
+      "existing_remodel_cancel": {
+        "cash_after_editor_restore": 182000000,
+        "cash_after_refund": 200000000,
+        "net_capital_post_delta": 0,
+        "store_snapshot": "5080 bytes captured AFTER new size/permit selection; restoring it retains selected C70. Restore saved original3 permit flags separately. Retry premises stage."
+      }
+    }
+  ]
+}

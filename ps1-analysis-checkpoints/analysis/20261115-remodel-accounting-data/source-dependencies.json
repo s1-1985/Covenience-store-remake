@@ -1,0 +1,8 @@
+{
+  "original_stores": "../20261114-parking-arrival-data/source/initial-active-stores.bin",
+  "fixture_product_costs": "../20261114-interior-transactions-data/fixture-transaction-master.json",
+  "prefab_costs": "../20261114-interior-transactions-data/built-in-prefab-opening-costs.json",
+  "size_fee_reader": "../20261114-land-construction-cost-data/source/premises_value.bin",
+  "size_dialog": "../20261114-land-construction-cost-data/source/size_ui.bin",
+  "note": "Reuses original evidence; source disc reread, no new RAM/emulator dumps."
+}

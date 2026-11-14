@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "entrypoint": "Preserve distinct workflows.60418 menu0->75514(arg1) is direct editor; menu3->63E44->6DD18(mode1)->75514(arg0) is whole remodel. New-store calls at5DD2C/61530 have separate accounting.",
+  "direct": "Existing direct editor starts at state7 and keeps individual changes in cash. No parent cash backup/restore, stock1CA7C or capital1CBC4. Its counters are not automatic financial-history postings.",
+  "remodel": "After premises confirmation post sizeCD8D8 and permitCD998 using1CBC4. Snapshot cash/capital and5080 store bytes. After editor restore cash/capital unconditionally. Success retains layout, calls65FF4 cursor initialization only and refresh; do not add a missing new-store equipment/stock posting as an assumed original rule.",
+  "cancel": "If editor returns-1, reverse size and permit signed amounts with1CBC4; restore post-premises5080 store snapshot and original3 permits; retry from premises. This does not restore all bytes from before premises selection or whole-world/external staff state.",
+  "new_store": "On success restore provisional cash/capital then post CD8E0 to1CA7C(mode0),CD978 to1CBC4. On cancellation reverse four premises amounts. Do not charge provisional and final debits twice.",
+  "routing": "1CA7C/1CBC4 derive owner from store flags bit15.1CBC4 null-store fallback targets company1. Editors and saved backups discussed here use primary cash/record explicitly. Do not make arbitrary rival-editor guarantees.",
+  "histories": "Keep1CBC4 company series separate from store D94/D98, and preserve daily/monthly/yearly histories. Persist exact decoded save offsets with the rest of save state.",
+  "negative": "No new immediate editor cash guard inferred. The identified daily-close negative primary cash condition enters state4 withreasonFF; complete UI outcome and timing outside this condition are not executed here.",
+  "scope": "Native implementation specification, no emulator/BIOS/EXE runtime dependency. This package does not change native Android code/APK."
+}

@@ -1,0 +1,3598 @@
+{
+  "stores": [
+    {
+      "map": "TOWN0001",
+      "slot": 1,
+      "owner": 1,
+      "source_store_sha256": "869b5315c5a6af7431828f3c50a17bed5284d25eea1d015a6bc7c404bcc5467d",
+      "tier": 1,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 33620,
+      "stock_asset_value": 327125,
+      "anchors": [
+        {
+          "x": 7,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 31,
+          "equipment": 1000,
+          "stock_product": 1,
+          "stock_quantity": 15,
+          "stock_cost": 825,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 52,
+          "equipment": 9000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 49,
+          "equipment": 7000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 0,
+          "stock_quantity": 20,
+          "stock_cost": 1100,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 2,
+          "stock_quantity": 20,
+          "stock_cost": 14000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 3,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 4,
+          "stock_quantity": 40,
+          "stock_cost": 6000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "fixture": 39,
+          "equipment": 3000,
+          "stock_product": 21,
+          "stock_quantity": 60,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 12,
+          "stock_quantity": 30,
+          "stock_cost": 22500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 14,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 35,
+          "equipment": 1500,
+          "stock_product": 20,
+          "stock_quantity": 20,
+          "stock_cost": 600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 13,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 22,
+          "stock_quantity": 30,
+          "stock_cost": 31500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 23,
+          "stock_quantity": 40,
+          "stock_cost": 24000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 22,
+          "stock_quantity": 40,
+          "stock_cost": 42000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 19,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 11,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    },
+    {
+      "map": "TOWN0001",
+      "slot": 2,
+      "owner": 1,
+      "source_store_sha256": "fc862261eef9f9c0c6dcf654d99528eaa8f8b5110be74bb40a0da3d98ea8f3a2",
+      "tier": 1,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 33620,
+      "stock_asset_value": 327125,
+      "anchors": [
+        {
+          "x": 7,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 31,
+          "equipment": 1000,
+          "stock_product": 1,
+          "stock_quantity": 15,
+          "stock_cost": 825,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 52,
+          "equipment": 9000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 49,
+          "equipment": 7000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 0,
+          "stock_quantity": 20,
+          "stock_cost": 1100,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 2,
+          "stock_quantity": 20,
+          "stock_cost": 14000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 3,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 4,
+          "stock_quantity": 40,
+          "stock_cost": 6000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "fixture": 39,
+          "equipment": 3000,
+          "stock_product": 21,
+          "stock_quantity": 60,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 12,
+          "stock_quantity": 30,
+          "stock_cost": 22500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 14,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 35,
+          "equipment": 1500,
+          "stock_product": 20,
+          "stock_quantity": 20,
+          "stock_cost": 600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 13,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 22,
+          "stock_quantity": 30,
+          "stock_cost": 31500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 23,
+          "stock_quantity": 40,
+          "stock_cost": 24000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 22,
+          "stock_quantity": 40,
+          "stock_cost": 42000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 19,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 11,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "slot": 1,
+      "owner": 1,
+      "source_store_sha256": "71d5200dbf0a0af0fc8512bd5d4b06e96c1a116c653eccc6165547770e185814",
+      "tier": 1,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 33620,
+      "stock_asset_value": 327125,
+      "anchors": [
+        {
+          "x": 7,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 31,
+          "equipment": 1000,
+          "stock_product": 1,
+          "stock_quantity": 15,
+          "stock_cost": 825,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 52,
+          "equipment": 9000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 49,
+          "equipment": 7000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 0,
+          "stock_quantity": 20,
+          "stock_cost": 1100,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 2,
+          "stock_quantity": 20,
+          "stock_cost": 14000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 3,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 4,
+          "stock_quantity": 40,
+          "stock_cost": 6000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "fixture": 39,
+          "equipment": 3000,
+          "stock_product": 21,
+          "stock_quantity": 60,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 12,
+          "stock_quantity": 30,
+          "stock_cost": 22500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 14,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 35,
+          "equipment": 1500,
+          "stock_product": 20,
+          "stock_quantity": 20,
+          "stock_cost": 600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 13,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 22,
+          "stock_quantity": 30,
+          "stock_cost": 31500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 23,
+          "stock_quantity": 40,
+          "stock_cost": 24000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 22,
+          "stock_quantity": 40,
+          "stock_cost": 42000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 19,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 11,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "slot": 2,
+      "owner": 1,
+      "source_store_sha256": "d369ed1533f9766be03be54780df9221e8d284111e8cdeeafafd85363cab9c63",
+      "tier": 1,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 33620,
+      "stock_asset_value": 327125,
+      "anchors": [
+        {
+          "x": 7,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 31,
+          "equipment": 1000,
+          "stock_product": 1,
+          "stock_quantity": 15,
+          "stock_cost": 825,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 52,
+          "equipment": 9000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 49,
+          "equipment": 7000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 0,
+          "stock_quantity": 20,
+          "stock_cost": 1100,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 2,
+          "stock_quantity": 20,
+          "stock_cost": 14000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 3,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 4,
+          "stock_quantity": 40,
+          "stock_cost": 6000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "fixture": 39,
+          "equipment": 3000,
+          "stock_product": 21,
+          "stock_quantity": 60,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 12,
+          "stock_quantity": 30,
+          "stock_cost": 22500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 14,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 35,
+          "equipment": 1500,
+          "stock_product": 20,
+          "stock_quantity": 20,
+          "stock_cost": 600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 13,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 22,
+          "stock_quantity": 30,
+          "stock_cost": 31500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 23,
+          "stock_quantity": 40,
+          "stock_cost": 24000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 22,
+          "stock_quantity": 40,
+          "stock_cost": 42000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 19,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 11,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "slot": 3,
+      "owner": 1,
+      "source_store_sha256": "dda3c3e2dcffa37855caff0016898936687995ab965ce687c356adb982e1a3bb",
+      "tier": 1,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 33620,
+      "stock_asset_value": 327125,
+      "anchors": [
+        {
+          "x": 7,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 31,
+          "equipment": 1000,
+          "stock_product": 1,
+          "stock_quantity": 15,
+          "stock_cost": 825,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 52,
+          "equipment": 9000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 49,
+          "equipment": 7000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 0,
+          "stock_quantity": 20,
+          "stock_cost": 1100,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 2,
+          "stock_quantity": 20,
+          "stock_cost": 14000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 3,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 4,
+          "stock_quantity": 40,
+          "stock_cost": 6000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "fixture": 39,
+          "equipment": 3000,
+          "stock_product": 21,
+          "stock_quantity": 60,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 12,
+          "stock_quantity": 30,
+          "stock_cost": 22500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 14,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 35,
+          "equipment": 1500,
+          "stock_product": 20,
+          "stock_quantity": 20,
+          "stock_cost": 600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 13,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 22,
+          "stock_quantity": 30,
+          "stock_cost": 31500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 23,
+          "stock_quantity": 40,
+          "stock_cost": 24000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 22,
+          "stock_quantity": 40,
+          "stock_cost": 42000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 19,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 11,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "slot": 1,
+      "owner": 1,
+      "source_store_sha256": "47fef0650f7a31e0bed3871e76cc4eee39da87fabb1f74da79aa255afddced8e",
+      "tier": 1,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 33620,
+      "stock_asset_value": 327125,
+      "anchors": [
+        {
+          "x": 7,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 31,
+          "equipment": 1000,
+          "stock_product": 1,
+          "stock_quantity": 15,
+          "stock_cost": 825,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 52,
+          "equipment": 9000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 49,
+          "equipment": 7000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 0,
+          "stock_quantity": 20,
+          "stock_cost": 1100,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 2,
+          "stock_quantity": 20,
+          "stock_cost": 14000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 3,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 4,
+          "stock_quantity": 40,
+          "stock_cost": 6000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "fixture": 39,
+          "equipment": 3000,
+          "stock_product": 21,
+          "stock_quantity": 60,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 12,
+          "stock_quantity": 30,
+          "stock_cost": 22500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 14,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 35,
+          "equipment": 1500,
+          "stock_product": 20,
+          "stock_quantity": 20,
+          "stock_cost": 600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 13,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 22,
+          "stock_quantity": 30,
+          "stock_cost": 31500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 23,
+          "stock_quantity": 40,
+          "stock_cost": 24000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 22,
+          "stock_quantity": 40,
+          "stock_cost": 42000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 19,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 11,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "slot": 1,
+      "owner": 1,
+      "source_store_sha256": "f48b23abfdf94b929feece7a1f1608fc2180b340d345daa8400a6cd5c0cf6843",
+      "tier": 3,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 26610,
+      "stock_asset_value": 454690,
+      "anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "fixture": 30,
+          "equipment": 1400,
+          "stock_product": 2,
+          "stock_quantity": 40,
+          "stock_cost": 28000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 18,
+          "y": 0,
+          "fixture": 32,
+          "equipment": 1800,
+          "stock_product": 1,
+          "stock_quantity": 30,
+          "stock_cost": 1650,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 20,
+          "y": 2,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 30,
+          "equipment": 1400,
+          "stock_product": 0,
+          "stock_quantity": 40,
+          "stock_cost": 2200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 18,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 20,
+          "y": 4,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 8,
+          "fixture": 1,
+          "equipment": 100,
+          "stock_product": 4,
+          "stock_quantity": 80,
+          "stock_cost": 12000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 15,
+          "y": 8,
+          "fixture": 38,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 18,
+          "y": 8,
+          "fixture": 48,
+          "equipment": 3000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 2,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 12,
+          "fixture": 8,
+          "equipment": 350,
+          "stock_product": 13,
+          "stock_quantity": 60,
+          "stock_cost": 36000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 20,
+          "y": 12,
+          "fixture": 36,
+          "equipment": 2000,
+          "stock_product": 20,
+          "stock_quantity": 40,
+          "stock_cost": 1200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 14,
+          "fixture": 8,
+          "equipment": 350,
+          "stock_product": 12,
+          "stock_quantity": 60,
+          "stock_cost": 45000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 14,
+          "fixture": 8,
+          "equipment": 350,
+          "stock_product": 13,
+          "stock_quantity": 60,
+          "stock_cost": 36000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 13,
+          "y": 14,
+          "fixture": 1,
+          "equipment": 100,
+          "stock_product": 3,
+          "stock_quantity": 80,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 15,
+          "y": 14,
+          "fixture": 23,
+          "equipment": 100,
+          "stock_product": 18,
+          "stock_quantity": 10,
+          "stock_cost": 1250,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 15,
+          "y": 16,
+          "fixture": 24,
+          "equipment": 300,
+          "stock_product": 25,
+          "stock_quantity": 20,
+          "stock_cost": 2040,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 20,
+          "y": 16,
+          "fixture": 14,
+          "equipment": 300,
+          "stock_product": 9,
+          "stock_quantity": 25,
+          "stock_cost": 1250,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 18,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 20,
+          "y": 18,
+          "fixture": 14,
+          "equipment": 300,
+          "stock_product": 17,
+          "stock_quantity": 25,
+          "stock_cost": 7500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 20,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 20,
+          "fixture": 1,
+          "equipment": 100,
+          "stock_product": 11,
+          "stock_quantity": 80,
+          "stock_cost": 38400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 20,
+          "fixture": 1,
+          "equipment": 100,
+          "stock_product": 19,
+          "stock_quantity": 80,
+          "stock_cost": 38400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 20,
+          "fixture": 1,
+          "equipment": 100,
+          "stock_product": 22,
+          "stock_quantity": 80,
+          "stock_cost": 84000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 20,
+          "fixture": 1,
+          "equipment": 100,
+          "stock_product": 23,
+          "stock_quantity": 80,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 20,
+          "y": 20,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "slot": 2,
+      "owner": 1,
+      "source_store_sha256": "d9c7c0d2efa2a06fe96f62be2448f6cb772893a548a3e0523a770335d4b01c99",
+      "tier": 1,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 27960,
+      "stock_asset_value": 262375,
+      "anchors": [
+        {
+          "x": 7,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 31,
+          "equipment": 1000,
+          "stock_product": 1,
+          "stock_quantity": 15,
+          "stock_cost": 825,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 49,
+          "equipment": 7000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 0,
+          "stock_quantity": 20,
+          "stock_cost": 1100,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 2,
+          "stock_quantity": 20,
+          "stock_cost": 14000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 3,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 4,
+          "stock_quantity": 40,
+          "stock_cost": 6000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "fixture": 39,
+          "equipment": 3000,
+          "stock_product": 21,
+          "stock_quantity": 60,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 12,
+          "stock_quantity": 30,
+          "stock_cost": 22500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 14,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 35,
+          "equipment": 1500,
+          "stock_product": 20,
+          "stock_quantity": 20,
+          "stock_cost": 600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 13,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "fixture": 14,
+          "equipment": 300,
+          "stock_product": 17,
+          "stock_quantity": 25,
+          "stock_cost": 7500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 23,
+          "stock_quantity": 40,
+          "stock_cost": 24000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "fixture": 14,
+          "equipment": 300,
+          "stock_product": 9,
+          "stock_quantity": 25,
+          "stock_cost": 1250,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 19,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 11,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "slot": 3,
+      "owner": 1,
+      "source_store_sha256": "cda09ed29ba87e1cb38d22af754c375178a943bae3e88c96c02dad8ae910c3a2",
+      "tier": 1,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 27960,
+      "stock_asset_value": 262375,
+      "anchors": [
+        {
+          "x": 7,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 31,
+          "equipment": 1000,
+          "stock_product": 1,
+          "stock_quantity": 15,
+          "stock_cost": 825,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 49,
+          "equipment": 7000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 0,
+          "stock_quantity": 20,
+          "stock_cost": 1100,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 2,
+          "stock_quantity": 20,
+          "stock_cost": 14000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 3,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 4,
+          "stock_quantity": 40,
+          "stock_cost": 6000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "fixture": 39,
+          "equipment": 3000,
+          "stock_product": 21,
+          "stock_quantity": 60,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 12,
+          "stock_quantity": 30,
+          "stock_cost": 22500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 14,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 35,
+          "equipment": 1500,
+          "stock_product": 20,
+          "stock_quantity": 20,
+          "stock_cost": 600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 13,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "fixture": 14,
+          "equipment": 300,
+          "stock_product": 17,
+          "stock_quantity": 25,
+          "stock_cost": 7500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 23,
+          "stock_quantity": 40,
+          "stock_cost": 24000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "fixture": 14,
+          "equipment": 300,
+          "stock_product": 9,
+          "stock_quantity": 25,
+          "stock_cost": 1250,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 19,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 11,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "slot": 4,
+      "owner": 1,
+      "source_store_sha256": "6351d639b44e9e258c2803a027ede27eb690cdc88ac6f48211ed6b55b47d954b",
+      "tier": 1,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 27960,
+      "stock_asset_value": 262375,
+      "anchors": [
+        {
+          "x": 7,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 31,
+          "equipment": 1000,
+          "stock_product": 1,
+          "stock_quantity": 15,
+          "stock_cost": 825,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 49,
+          "equipment": 7000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 0,
+          "stock_quantity": 20,
+          "stock_cost": 1100,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 2,
+          "stock_quantity": 20,
+          "stock_cost": 14000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 3,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 4,
+          "stock_quantity": 40,
+          "stock_cost": 6000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "fixture": 39,
+          "equipment": 3000,
+          "stock_product": 21,
+          "stock_quantity": 60,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 12,
+          "stock_quantity": 30,
+          "stock_cost": 22500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 14,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 35,
+          "equipment": 1500,
+          "stock_product": 20,
+          "stock_quantity": 20,
+          "stock_cost": 600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 13,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "fixture": 14,
+          "equipment": 300,
+          "stock_product": 17,
+          "stock_quantity": 25,
+          "stock_cost": 7500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 23,
+          "stock_quantity": 40,
+          "stock_cost": 24000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "fixture": 14,
+          "equipment": 300,
+          "stock_product": 9,
+          "stock_quantity": 25,
+          "stock_cost": 1250,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 19,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 11,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "slot": 5,
+      "owner": 1,
+      "source_store_sha256": "63b5e7af41d3ea433e672cda500935ee70c08ca2df05243582471c1b61dc19e1",
+      "tier": 1,
+      "stored_D94": 0,
+      "stored_D98": 0,
+      "equipment_value": 27960,
+      "stock_asset_value": 262375,
+      "anchors": [
+        {
+          "x": 7,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "fixture": 46,
+          "equipment": 2000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 31,
+          "equipment": 1000,
+          "stock_product": 1,
+          "stock_quantity": 15,
+          "stock_cost": 825,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 49,
+          "equipment": 7000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 14,
+          "y": 2,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 0,
+          "stock_quantity": 20,
+          "stock_cost": 1100,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 28,
+          "equipment": 1000,
+          "stock_product": 8,
+          "stock_quantity": 40,
+          "stock_cost": 7000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "fixture": 29,
+          "equipment": 800,
+          "stock_product": 2,
+          "stock_quantity": 20,
+          "stock_cost": 14000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 4,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "fixture": 51,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 3,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 8,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 4,
+          "stock_quantity": 40,
+          "stock_cost": 6000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 8,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 9,
+          "fixture": 39,
+          "equipment": 3000,
+          "stock_product": 21,
+          "stock_quantity": 60,
+          "stock_cost": 48000,
+          "ordinary_removal_allowed": false
+        },
+        {
+          "x": 16,
+          "y": 10,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 5,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 12,
+          "stock_quantity": 30,
+          "stock_cost": 22500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 11,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 14,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 12,
+          "fixture": 35,
+          "equipment": 1500,
+          "stock_product": 20,
+          "stock_quantity": 20,
+          "stock_cost": 600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 12,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 6,
+          "stock_quantity": 40,
+          "stock_cost": 4800,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 13,
+          "fixture": 7,
+          "equipment": 200,
+          "stock_product": 13,
+          "stock_quantity": 30,
+          "stock_cost": 18000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "fixture": 14,
+          "equipment": 300,
+          "stock_product": 17,
+          "stock_quantity": 25,
+          "stock_cost": 7500,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 23,
+          "stock_quantity": 40,
+          "stock_cost": 24000,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 14,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 7,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 4,
+          "y": 16,
+          "fixture": 14,
+          "equipment": 300,
+          "stock_product": 9,
+          "stock_quantity": 25,
+          "stock_cost": 1250,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 19,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 8,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 16,
+          "stock_quantity": 40,
+          "stock_cost": 9600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 15,
+          "stock_quantity": 40,
+          "stock_cost": 14400,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 12,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 11,
+          "stock_quantity": 40,
+          "stock_cost": 19200,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 14,
+          "y": 16,
+          "fixture": 0,
+          "equipment": 60,
+          "stock_product": 10,
+          "stock_quantity": 40,
+          "stock_cost": 3600,
+          "ordinary_removal_allowed": true
+        },
+        {
+          "x": 16,
+          "y": 16,
+          "fixture": 45,
+          "equipment": 1000,
+          "stock_product": null,
+          "stock_quantity": 0,
+          "stock_cost": 0,
+          "ordinary_removal_allowed": true
+        }
+      ]
+    }
+  ],
+  "scope": "All11 source active stores are rival company1. Their asset values and stored D94/D98 are real input evidence; this file does not claim own-company editor actions were performed on those stores. Asset stock value is not automatically daily procurement expense."
+}

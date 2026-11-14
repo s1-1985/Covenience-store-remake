@@ -1,0 +1,38 @@
+{
+  "fixture": {
+    "id": 0,
+    "label": {
+      "index": 387,
+      "offset": 8496,
+      "codes": [
+        599,
+        309,
+        600,
+        16639
+      ],
+      "text": "常温棚"
+    },
+    "price": 60
+  },
+  "product": {
+    "id": 3,
+    "name": "弁当類",
+    "quantity": 40,
+    "unit": 240
+  },
+  "buy": {
+    "cash_delta": -9660,
+    "editor_equipment_delta": 60,
+    "editor_stock_delta": 9600,
+    "store_D94_post_delta": 0,
+    "company_capital_post_delta": 0
+  },
+  "remove_same_full_item": {
+    "cash_delta": 9660,
+    "editor_equipment_delta": -60,
+    "editor_stock_delta": -9600,
+    "store_D94_post_delta": 0,
+    "company_capital_post_delta": 0
+  },
+  "scope": "Specific76474/773BC cash/cost effects. They do not invoke1CA7C/1CBC4. Numeric example follows source price units, not a real-world price estimate."
+}

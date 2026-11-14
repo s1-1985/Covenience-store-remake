@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-15：既存店改装と出店4経路の現金・帳簿差、初期11店資産と36サイズ変更・3保存系列](analysis/20261115-remodel-accounting-data/README.md)
+
 - [2026-11-14：内装53什器・27商品・30配置の購入返金、4197商品差額と標準出店6件](analysis/20261114-interior-transactions-data/README.md)
 
 - [2026-11-14：土地・建物82行と11564区画の取得費、6段階の建築費・出店時の街セル更新](analysis/20261114-land-construction-cost-data/README.md)

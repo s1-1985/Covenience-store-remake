@@ -1,0 +1,53 @@
+{
+  "routes": [
+    {
+      "id": "direct_existing",
+      "menu_index": 0,
+      "parent": "0x80060418",
+      "editor_call": "0x80060abc",
+      "editor_argument": 1,
+      "initial_editor_state": 7,
+      "restore_primary_cash": false,
+      "restore_primary_capital": false,
+      "success_post_stock": false,
+      "success_post_equipment": false,
+      "meaning": "Keeps actual cash changes made during individual editor operations. No extra1CA7C/1CBC4 after return in60418. No whole-store restore in this caller."
+    },
+    {
+      "id": "remodel_existing",
+      "menu_index": 3,
+      "parent": "0x80063e44",
+      "editor_call": "0x80063fc4",
+      "editor_argument": 0,
+      "initial_editor_state": 1,
+      "restore_primary_cash": true,
+      "restore_primary_capital": true,
+      "success_post_stock": false,
+      "success_post_equipment": false,
+      "meaning": "Pays confirmed size/permit fees through1CBC4 before editor. After editor restores primary cash/capital; accepted interior values/layout retained, editor equipment/stock costs not reposted.65FF4 only initializes cursor variables."
+    },
+    {
+      "id": "first_opening",
+      "parent": "new-game opening",
+      "editor_call": "0x8005dd2c",
+      "editor_argument": "local continuation flag; initially0",
+      "restore_primary_cash": true,
+      "restore_primary_capital": true,
+      "success_post_stock": true,
+      "success_post_equipment": true,
+      "meaning": "Restores provisional primary cash/capital then posts stockCD8E0 to1CA7C(mode0) and equipmentCD978 to1CBC4. Cancel reverses land/demolition/size/permit fees."
+    },
+    {
+      "id": "later_opening",
+      "parent": "0x800612cc",
+      "editor_call": "0x80061530",
+      "editor_argument": "local continuation flag; initially0",
+      "restore_primary_cash": true,
+      "restore_primary_capital": true,
+      "success_post_stock": true,
+      "success_post_equipment": true,
+      "meaning": "Same stock/equipment posting distinction as first opening. Cancel reverses the four previously posted premises fees."
+    }
+  ],
+  "scope": "Route names describe observed behavior, not newly transcribed UI labels. Normal own-company routes. Primary cash/capital backups are hard-coded, not automatically selected by the store owner flag. Do not apply this as a rival editor policy."
+}

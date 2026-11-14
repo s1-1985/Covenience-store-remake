@@ -1,0 +1,210 @@
+{
+  "operation_menu": [
+    {
+      "address": "0x80060444",
+      "target": "0x8008eaec"
+    },
+    {
+      "address": "0x80060498",
+      "target": "0x80065974"
+    },
+    {
+      "address": "0x8006053c",
+      "target": "0x80017b18"
+    },
+    {
+      "address": "0x80060550",
+      "target": "0x8004e494"
+    },
+    {
+      "address": "0x80060578",
+      "target": "0x8004e494"
+    },
+    {
+      "address": "0x800605b4",
+      "target": "0x8004e494"
+    },
+    {
+      "address": "0x800605d8",
+      "target": "0x80065820"
+    },
+    {
+      "address": "0x80060618",
+      "target": "0x8004e494"
+    },
+    {
+      "address": "0x80060658",
+      "target": "0x80067338"
+    },
+    {
+      "address": "0x8006069c",
+      "target": "0x8004e494"
+    },
+    {
+      "address": "0x800606b4",
+      "target": "0x80067338"
+    },
+    {
+      "address": "0x800606c4",
+      "target": "0x80018940"
+    },
+    {
+      "address": "0x800606cc",
+      "target": "0x800419e0"
+    },
+    {
+      "address": "0x800607c8",
+      "target": "0x80041630"
+    },
+    {
+      "address": "0x80060888",
+      "target": "0x80041630"
+    },
+    {
+      "address": "0x80060948",
+      "target": "0x80041630"
+    },
+    {
+      "address": "0x80060978",
+      "target": "0x80018940"
+    },
+    {
+      "address": "0x80060a10",
+      "target": "0x8004e578"
+    },
+    {
+      "address": "0x80060a8c",
+      "target": "0x80066fcc"
+    },
+    {
+      "address": "0x80060abc",
+      "target": "0x80075514"
+    },
+    {
+      "address": "0x80060adc",
+      "target": "0x80062bd8"
+    },
+    {
+      "address": "0x80060af0",
+      "target": "0x80061938"
+    },
+    {
+      "address": "0x80060b20",
+      "target": "0x80066fcc"
+    },
+    {
+      "address": "0x80060b4c",
+      "target": "0x80063e44"
+    },
+    {
+      "address": "0x80060b5c",
+      "target": "0x80065974"
+    }
+  ],
+  "first_opening_interior": [
+    {
+      "address": "0x8005dd2c",
+      "target": "0x80075514"
+    },
+    {
+      "address": "0x8005dd78",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x8005dd98",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x8005ddb8",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x8005ddd8",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x8005de00",
+      "target": "0x8001ca7c"
+    },
+    {
+      "address": "0x8005de14",
+      "target": "0x8001cbc4"
+    }
+  ],
+  "new_branch_interior": [
+    {
+      "address": "0x80061530",
+      "target": "0x80075514"
+    },
+    {
+      "address": "0x8006157c",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x8006159c",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x800615bc",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x800615dc",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x80061604",
+      "target": "0x8001ca7c"
+    },
+    {
+      "address": "0x80061618",
+      "target": "0x8001cbc4"
+    }
+  ],
+  "remodel_controller": [
+    {
+      "address": "0x80063ec0",
+      "target": "0x8006dd18"
+    },
+    {
+      "address": "0x80063f08",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x80063f1c",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x80063fb4",
+      "target": "0x8007e57c"
+    },
+    {
+      "address": "0x80063fc4",
+      "target": "0x80075514"
+    },
+    {
+      "address": "0x80064018",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x80064038",
+      "target": "0x8001cbc4"
+    },
+    {
+      "address": "0x80064050",
+      "target": "0x8007e57c"
+    },
+    {
+      "address": "0x800640ac",
+      "target": "0x80065ff4"
+    },
+    {
+      "address": "0x800640b8",
+      "target": "0x80041218"
+    }
+  ],
+  "cursor_only": [],
+  "stock_and_capital_post": [],
+  "close_capital_history": [],
+  "close_exit_conditions": []
+}

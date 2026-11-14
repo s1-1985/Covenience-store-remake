@@ -1,0 +1,293 @@
+{
+  "rows": [
+    {
+      "old_tier": 0,
+      "new_tier": 0,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 0,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 0,
+      "new_tier": 1,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 1,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 0,
+      "new_tier": 2,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 2,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 0,
+      "new_tier": 3,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 3,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 0,
+      "new_tier": 4,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 4,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 0,
+      "new_tier": 5,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 5,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 1,
+      "new_tier": 0,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 0,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 1,
+      "new_tier": 1,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 1,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 1,
+      "new_tier": 2,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 2,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 1,
+      "new_tier": 3,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 3,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 1,
+      "new_tier": 4,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 4,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 1,
+      "new_tier": 5,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 5,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 2,
+      "new_tier": 0,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 0,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 2,
+      "new_tier": 1,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 1,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 2,
+      "new_tier": 2,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 2,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 2,
+      "new_tier": 3,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 3,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 2,
+      "new_tier": 4,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 4,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 2,
+      "new_tier": 5,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 5,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 3,
+      "new_tier": 0,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 0,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 3,
+      "new_tier": 1,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 1,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 3,
+      "new_tier": 2,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 2,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 3,
+      "new_tier": 3,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 3,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 3,
+      "new_tier": 4,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 4,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 3,
+      "new_tier": 5,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 5,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 4,
+      "new_tier": 0,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 0,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 4,
+      "new_tier": 1,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 1,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 4,
+      "new_tier": 2,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 2,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 4,
+      "new_tier": 3,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 3,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 4,
+      "new_tier": 4,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 4,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 4,
+      "new_tier": 5,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 5,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 5,
+      "new_tier": 0,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 0,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 5,
+      "new_tier": 1,
+      "confirmed_construction_fee": 6000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 1,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 5,
+      "new_tier": 2,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 2,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 5,
+      "new_tier": 3,
+      "confirmed_construction_fee": 12000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 3,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 5,
+      "new_tier": 4,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 4,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    },
+    {
+      "old_tier": 5,
+      "new_tier": 5,
+      "confirmed_construction_fee": 18000000,
+      "old_building_refund_in_this_path": 0,
+      "editor_cancel_then_snapshot_restore_C70": 5,
+      "source_note": "6DD18mode1 calls1DE5C(mode1) with newly storedC70; no old-tier subtraction.63E44 snapshot after premises confirmation."
+    }
+  ],
+  "scope": "36 source arithmetic transitions. Full selected-tier fee includes same-size and downsizing; not difference between old/new fees. Selector availability, cash checks and successful confirmation still required. Cancellation snapshot C70 result is source field order, not a gameplay run."
+}

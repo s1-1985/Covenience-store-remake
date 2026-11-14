@@ -1,66 +1,18 @@
 {
-  "date_jst": "2026-11-14",
-  "work_kind": "interior_transactions_source_data_analysis",
-  "report": "analysis/20261114-interior-transactions-data/README.md",
+  "date_jst": "2026-11-15",
+  "work_kind": "remodel_accounting_source_data_analysis",
+  "report": "analysis/20261115-remodel-accounting-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "fixtures": 53,
-  "products": 27,
-  "layouts": 30,
-  "source_anchors": 852,
-  "product_change_charge_entries": 4197,
-  "ordinary_removal_blocked_fixture_ids": [
-    37,
-    38,
-    39,
-    40,
-    41,
-    42,
-    48,
-    49
-  ],
-  "built_in_prefab_quotes": [
-    {
-      "tier": 0,
-      "layout": 1,
-      "interior": 232565,
-      "minimum_opening_amount": 26232565
-    },
-    {
-      "tier": 1,
-      "layout": 6,
-      "interior": 162600,
-      "minimum_opening_amount": 26162600
-    },
-    {
-      "tier": 2,
-      "layout": 11,
-      "interior": 324200,
-      "minimum_opening_amount": 32324200
-    },
-    {
-      "tier": 3,
-      "layout": 16,
-      "interior": 375530,
-      "minimum_opening_amount": 32375530
-    },
-    {
-      "tier": 4,
-      "layout": 21,
-      "interior": 325435,
-      "minimum_opening_amount": 38325435
-    },
-    {
-      "tier": 5,
-      "layout": 26,
-      "interior": 471525,
-      "minimum_opening_amount": 38471525
-    }
-  ],
-  "new_specification": "Bind all source fixture/product/options/layouts to full purchase/refund procurement arithmetic; connect normal move mode1 and finish mode4 to upper menu, required register/staff-room replacement exceptions, saved-template refill and six actual prefab costs with land/construction. Preserve original price units and strict prefab cash gate.",
-  "known_before": "Isolated placement/removal/product-change and template-cost paths already recovered. This extraction binds53 actual descriptors,27 products,30 original templates and source-compatible change matrices to working counters, required-facility exceptions and six actual prefab selections.",
-  "previous_report": "analysis/20261114-land-construction-cost-data/README.md",
-  "android_bridge": "analysis/20261114-interior-transactions-data/android-interior-transactions-bridge.json",
+  "caller_routes": 4,
+  "original_active_store_records": 11,
+  "prefab_caller_examples": 6,
+  "size_fee_transitions": 36,
+  "persistence_series": 3,
+  "new_specification": "Connect direct existing editor and full remodel to actual caller postings; retain cash/capital restore asymmetry without inventing missing interior charges. Map cancellation snapshot after premises selection, source11 store assets versus zero daily ledger inputs, full selected-tier fees and persisted history rollovers plus negative-primary-cash daily-close branch.",
+  "known_before": "Four isolated75514 caller slices and63E44 controller already recovered. New work connects source operation menu, distinct confirmed/provisional postings, real11 source-store asset values, six real prefab totals,3 persisted history series and post-close cash exit condition.",
+  "previous_report": "analysis/20261114-interior-transactions-data/README.md",
+  "android_bridge": "analysis/20261115-remodel-accounting-data/android-remodel-accounting-bridge.json",
   "original_cpu_updates_this_work": 0,
-  "next_priority": "Connect existing-store editor final posting and required normal-play source data; then integrate native Android and build APK."
+  "next_priority": "Continue remaining normal-play source-data analysis such as town development and land values; integrate extracted rules in native Android and build APK after necessary analysis."
 }

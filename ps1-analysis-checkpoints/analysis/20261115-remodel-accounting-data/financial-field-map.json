@@ -1,0 +1,68 @@
+{
+  "fields": [
+    {
+      "name": "cash",
+      "address": "0x800cd9f8",
+      "stride": 4,
+      "company_slots": 2,
+      "rule": "cash[owner] for1CA7C/1CBC4; direct editor leaves use primary cash"
+    },
+    {
+      "name": "editor_equipment",
+      "address": "0x800cd978",
+      "rule": "Working cost reset by75514, not itself a company historical ledger"
+    },
+    {
+      "name": "editor_stock",
+      "address": "0x800cd8e0",
+      "rule": "Working procurement cost reset by75514, not itself store D94"
+    },
+    {
+      "name": "store_daily_stock_expense",
+      "store_offset": "0xd94",
+      "rule": "1CA7C mode0 adds amount here and subtracts owner cash; mode!=0 instead adds D98 and owner cash"
+    },
+    {
+      "name": "store_daily_revenue",
+      "store_offset": "0xd98",
+      "rule": "1CA7C nonzero mode credits this field and owner cash"
+    },
+    {
+      "name": "company_capital_history_today",
+      "address": "0x800d8f68",
+      "company_stride": 16,
+      "history_words": 4,
+      "rule": "1CBC4 adds signed amount and subtracts owner cash. Null store explicitly targets company1."
+    },
+    {
+      "name": "company_capital_history_month",
+      "address": "0x800da970",
+      "company_stride": 16,
+      "history_words": 4
+    },
+    {
+      "name": "company_capital_history_year",
+      "address": "0x800df080",
+      "company_stride": 16,
+      "history_words": 4
+    }
+  ],
+  "capital_label_scope": "Descriptive name for the amount maintained by1CBC4, not newly decoded UI wording.",
+  "rollover": "Native2A464 onward adds daily current amount into monthly current, shifts daily4 words and zeros current. Stage1 adds monthly into annual current then shifts monthly; stage1+month1 shifts annual. Stores live only own/rival side0/1; no times8 multiplier on this company capital series.",
+  "negative_cash": "At daily-close end2A868, signed primary cash<0 branches to2A8B0, setsCD9B4=4 andCD948=0xff. Year/serial>=99 share the exit target. Zero cash alone does not take the negative branch. This is a post-close condition, not an immediate editor affordability check.",
+  "save_layout": {
+    "daily": {
+      "offset": "0x861c",
+      "bytes": 32
+    },
+    "monthly": {
+      "offset": "0x85fc",
+      "bytes": 32
+    },
+    "yearly": {
+      "offset": "0x85dc",
+      "bytes": 32
+    },
+    "evidence": "Native save6BB04..6BB24,6BAE0..6BB00,6BABC..6BADC and inverse load6BEDC..6BF44; these offsets are within decoded save payload, not raw memory-card block offsets."
+  }
+}

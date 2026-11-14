@@ -1,0 +1,152 @@
+[
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/README.md",
+    "bytes": 8510,
+    "sha256": "90d7fd31190f6d312e41c53dd46affb1d30455bb6ce5935ebceba4fb441cc953",
+    "git_sha1": "8e8f5b97b4f9d5f01ce0282d501946e85073583c"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/accounting-readers.asm",
+    "bytes": 42457,
+    "sha256": "ae00ea4e4ce0f9bac7799fd72c3b15bfa232a1f70f3a6d47f9d3e50fdcf100c5",
+    "git_sha1": "72de23209183bb0bdf7c3f2bc317022708c643ac"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/android-remodel-accounting-bridge.json",
+    "bytes": 2042,
+    "sha256": "f420a478ff02bdede8bd56f52c490252400bdbaee3a68906e195505669e0cd54",
+    "git_sha1": "c654de00532269c15fe6ef5a66ed4f2c52dc6251"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/caller-accounting-routes.json",
+    "bytes": 2333,
+    "sha256": "6d717601a44acd9f7a88c55b3df2cff83e98af9e83b1f56b0bae1a92bdc0ff93",
+    "git_sha1": "7b50f32d35f9bbea522b525241f9d06261239f0d"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/existing-store-size-fees.json",
+    "bytes": 12545,
+    "sha256": "3d0c5eb5e9b577fc80011466835a5fe229df67082afd0dea934c59b4d98b74a3",
+    "git_sha1": "5bfefc59601eb573a3c3ce71639556e06875cd5b"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/extract-remodel-accounting.py",
+    "bytes": 16423,
+    "sha256": "6dadf690c1718585802cdf26d260981f557f00d6b4585e582475091f351c1411",
+    "git_sha1": "bcd98a23dc567d2f17bb8211adf25bb03bccc672"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/extraction-check.json",
+    "bytes": 265,
+    "sha256": "a57cbb42299b0e3a73789925474134df1b977a5fb65601c9f8e01da4da1e7c4c",
+    "git_sha1": "ad5a2404798c9e839501a2e21ec6ea9695a3e1e1"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/financial-field-map.json",
+    "bytes": 2511,
+    "sha256": "aaf99534b0f5396dba20a16413931597cc73b88b14ed95b1a9babadd6c88f3c8",
+    "git_sha1": "6a2752ddaebc9e9e7a1678c826e966fb3f46171f"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/initial-store-assets-and-ledgers.json",
+    "bytes": 88812,
+    "sha256": "4674e93095f9b43ec90c02732eca191c01f57c8a4de268b3a71a8dfd740e0e57",
+    "git_sha1": "f514eccc14de2dd15d72d69df58b46178ccaa7e0"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source/close_capital_history.bin",
+    "bytes": 872,
+    "sha256": "6189af3415162483d99e4fbc26349b870206a6ce4936bc62b27919e3634555ba",
+    "git_sha1": "dd84d1e7ea079b0317b03b50f9d24158e815342f"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source/close_exit_conditions.bin",
+    "bytes": 124,
+    "sha256": "b24a7b1f9a1aac8f560143e84ceddb08006c562b3d69ec4cd42d6b98ae499175",
+    "git_sha1": "3b95419de5f37fccc0da0fc20a1435b49326560a"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source/cursor_only.bin",
+    "bytes": 124,
+    "sha256": "7ff3b0bbc27a17fe5c0fbbbe25b4a38e04e0b54d85b4f479e38a77d5e375d666",
+    "git_sha1": "6ad8cc22d997b3b6ceeb11b0741e6c8d44a11d5e"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source/first_opening_interior.bin",
+    "bytes": 280,
+    "sha256": "a0fd5cc77adc38ad81fdbed3989181d8ab48b4b6105264d0001dedab14c51c10",
+    "git_sha1": "79fe9e5ca4e6572b14cf2ed973ff9ac1d2acd7df"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source/load_financial_series.bin",
+    "bytes": 108,
+    "sha256": "66a4387fe32011a42363bc0d684341fa66ff104f2ef403238f6075bfd00c5469",
+    "git_sha1": "12867bf91000ef1a629a9d5c46747c4517d3d65f"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source/new_branch_interior.bin",
+    "bytes": 296,
+    "sha256": "dbbe699d7c26565bd7562e2d5e43df7cd9ab7aa21486b30c4f75d2292b88e343",
+    "git_sha1": "ac551c0be4f5453336fce2d3d53d9b2ca8e158dc"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source/operation_menu.bin",
+    "bytes": 1912,
+    "sha256": "12487de9f4dbe657d8879a017f2d3fccc3d4c982f114131cae48f72660585c6e",
+    "git_sha1": "4933ed0d43d1526787b34d494cb702ec503e8165"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source/remodel_controller.bin",
+    "bytes": 672,
+    "sha256": "3d4f2ffd2104ffc7a341bf103455206ab3a15a1e97402eb5acf167371eecf48b",
+    "git_sha1": "7b2690f670a85bcad189908185aa727cb876827f"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source/save_financial_series.bin",
+    "bytes": 108,
+    "sha256": "a093598b734e2b6554d2b62a8798b0f12f4990697466ec5aedc4867714bfb769",
+    "git_sha1": "9bb76760823a662865709fc31195ca95aa0ad692"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source/stock_and_capital_post.bin",
+    "bytes": 580,
+    "sha256": "4666a4e2f3548836bc85c69519b73e73d8b98f2325bc2dcd249f42b424bbe3e8",
+    "git_sha1": "df53db1814b38aa70203dba624e85254621dc7ca"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source-call-sites.json",
+    "bytes": 3816,
+    "sha256": "07a6d077ba650d28051aff54621bbd982cf60424bb9a5d0d911456009efe1a7c",
+    "git_sha1": "19e95018fd5468970b508b651ca2709f22126390"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source-dependencies.json",
+    "bytes": 544,
+    "sha256": "ecef099ec5337cdc86bb1b70bcc5c1a69a1762d7c9f2399096b5b8cb6e75446d",
+    "git_sha1": "e6d8394af45a9ddb6b58b2fc0d55bbeab42f97d8"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source-derived-caller-examples.json",
+    "bytes": 8547,
+    "sha256": "3164456919ce24faab968a9cb91d50054afafbc07dc107efb9ddaa680eb86680",
+    "git_sha1": "6de244ae32bcfc8394096805534d0e98efb48178"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source-derived-single-operation.json",
+    "bytes": 843,
+    "sha256": "8388afcbe8cd9516973ab56b1aa692366bd63b1d087ad15d39d9446dcceedb21",
+    "git_sha1": "dcdfc143615f10d39b8024cc2c74ec5619404039"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/source-ranges.json",
+    "bytes": 1724,
+    "sha256": "77b3f344a68fd4dd24e4881b210fc25320426ec3974bb239048307862d09bbfb",
+    "git_sha1": "3cbc6a42854f257f34ac6611a7a458ebbd1ca2bd"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-remodel-accounting-data/summary.json",
+    "bytes": 974,
+    "sha256": "94f66b59c3dc8216aa3e0b837a91a387dcbd8eb5970645a73d8d8887a63ba736",
+    "git_sha1": "e2e75d5bd98f93b873d0ef650cb27f44ab911892"
+  }
+]
