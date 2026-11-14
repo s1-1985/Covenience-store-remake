@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-14：防犯・周辺施設のセル加算、客144件と初期11店舗、万引き被害通知](analysis/20261114-security-theft-data/README.md)
+
 - [2026-11-14：駐車3什器・30レイアウト・初期11店舗と部分入店の需要減算](analysis/20261114-parking-arrival-data/README.md)
 
 - [2026-11-14：客144購買型の待機・会計・混雑警告と全配属店員への能力低下](analysis/20261114-checkout-waiting-data/README.md)

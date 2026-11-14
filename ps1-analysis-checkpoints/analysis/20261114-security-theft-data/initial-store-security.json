@@ -1,0 +1,1120 @@
+{
+  "worlds": [
+    {
+      "map": "TOWN0001",
+      "town_source_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+      "town_cells_sha256": "b3da5e5439e9682f32a7b868c724be0a01f4f6a76928f9bafc853f8256ddbe5d",
+      "town_cells_packed_offset": 0,
+      "stores": [
+        {
+          "physical_slot": 1,
+          "rect": [
+            43,
+            12,
+            44,
+            13
+          ],
+          "tier": 1,
+          "staff_ids": [
+            14,
+            24,
+            9
+          ],
+          "staff_security": [
+            {
+              "id": 14,
+              "name": "杉本三郎",
+              "security": 16
+            },
+            {
+              "id": 24,
+              "name": "丸山昭夫",
+              "security": 14
+            },
+            {
+              "id": 9,
+              "name": "田中幸子",
+              "security": 18
+            }
+          ],
+          "raw_security_sum": 48,
+          "denominator": 250,
+          "staff_component": 19,
+          "neighbor_cells": [
+            {
+              "x": 48,
+              "y": 10,
+              "tile": 60,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 49,
+              "y": 10,
+              "tile": 61,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 48,
+              "y": 11,
+              "tile": 62,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 49,
+              "y": 11,
+              "tile": 63,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 46,
+              "y": 15,
+              "tile": 64,
+              "building": 6,
+              "bonus": 5
+            },
+            {
+              "x": 47,
+              "y": 15,
+              "tile": 65,
+              "building": 6,
+              "bonus": 5
+            },
+            {
+              "x": 48,
+              "y": 15,
+              "tile": 66,
+              "building": 6,
+              "bonus": 5
+            },
+            {
+              "x": 46,
+              "y": 16,
+              "tile": 67,
+              "building": 6,
+              "bonus": 5
+            },
+            {
+              "x": 47,
+              "y": 16,
+              "tile": 68,
+              "building": 6,
+              "bonus": 5
+            },
+            {
+              "x": 48,
+              "y": 16,
+              "tile": 69,
+              "building": 6,
+              "bonus": 5
+            }
+          ],
+          "neighborhood_component": 70,
+          "source_security": 89,
+          "below_threshold_profile_ids": [
+            94,
+            103
+          ]
+        },
+        {
+          "physical_slot": 2,
+          "rect": [
+            14,
+            10,
+            15,
+            11
+          ],
+          "tier": 1,
+          "staff_ids": [
+            6,
+            34,
+            18
+          ],
+          "staff_security": [
+            {
+              "id": 6,
+              "name": "忍田信子",
+              "security": 16
+            },
+            {
+              "id": 34,
+              "name": "朝田宗司",
+              "security": 18
+            },
+            {
+              "id": 18,
+              "name": "森山雪之丈",
+              "security": 12
+            }
+          ],
+          "raw_security_sum": 46,
+          "denominator": 250,
+          "staff_component": 18,
+          "neighbor_cells": [
+            {
+              "x": 14,
+              "y": 7,
+              "tile": 60,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 15,
+              "y": 7,
+              "tile": 61,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 14,
+              "y": 8,
+              "tile": 62,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 15,
+              "y": 8,
+              "tile": 63,
+              "building": 5,
+              "bonus": 10
+            }
+          ],
+          "neighborhood_component": 40,
+          "source_security": 58,
+          "below_threshold_profile_ids": [
+            0,
+            2,
+            23,
+            28,
+            81,
+            84,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103
+          ]
+        }
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "town_source_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+      "town_cells_sha256": "df62cf616bae4a92e5e92f60836e7b821ee5647cc4a16ce9476ee873912002f8",
+      "town_cells_packed_offset": 24000,
+      "stores": [
+        {
+          "physical_slot": 1,
+          "rect": [
+            47,
+            12,
+            48,
+            13
+          ],
+          "tier": 1,
+          "staff_ids": [
+            14,
+            26,
+            10
+          ],
+          "staff_security": [
+            {
+              "id": 14,
+              "name": "杉本三郎",
+              "security": 16
+            },
+            {
+              "id": 26,
+              "name": "小田伸行",
+              "security": 12
+            },
+            {
+              "id": 10,
+              "name": "花沢咲江",
+              "security": 18
+            }
+          ],
+          "raw_security_sum": 46,
+          "denominator": 250,
+          "staff_component": 18,
+          "neighbor_cells": [
+            {
+              "x": 50,
+              "y": 14,
+              "tile": 60,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 51,
+              "y": 14,
+              "tile": 61,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 50,
+              "y": 15,
+              "tile": 62,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 51,
+              "y": 15,
+              "tile": 63,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 43,
+              "y": 17,
+              "tile": 64,
+              "building": 6,
+              "bonus": 5
+            },
+            {
+              "x": 44,
+              "y": 17,
+              "tile": 65,
+              "building": 6,
+              "bonus": 5
+            },
+            {
+              "x": 45,
+              "y": 17,
+              "tile": 66,
+              "building": 6,
+              "bonus": 5
+            },
+            {
+              "x": 43,
+              "y": 18,
+              "tile": 67,
+              "building": 6,
+              "bonus": 5
+            },
+            {
+              "x": 44,
+              "y": 18,
+              "tile": 68,
+              "building": 6,
+              "bonus": 5
+            },
+            {
+              "x": 45,
+              "y": 18,
+              "tile": 69,
+              "building": 6,
+              "bonus": 5
+            }
+          ],
+          "neighborhood_component": 70,
+          "source_security": 88,
+          "below_threshold_profile_ids": [
+            94,
+            103
+          ]
+        },
+        {
+          "physical_slot": 2,
+          "rect": [
+            23,
+            14,
+            24,
+            15
+          ],
+          "tier": 1,
+          "staff_ids": [
+            34,
+            5,
+            24
+          ],
+          "staff_security": [
+            {
+              "id": 34,
+              "name": "朝田宗司",
+              "security": 18
+            },
+            {
+              "id": 5,
+              "name": "富永福子",
+              "security": 18
+            },
+            {
+              "id": 24,
+              "name": "丸山昭夫",
+              "security": 14
+            }
+          ],
+          "raw_security_sum": 50,
+          "denominator": 250,
+          "staff_component": 20,
+          "neighbor_cells": [
+            {
+              "x": 23,
+              "y": 19,
+              "tile": 60,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 24,
+              "y": 19,
+              "tile": 61,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 23,
+              "y": 20,
+              "tile": 62,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 24,
+              "y": 20,
+              "tile": 63,
+              "building": 5,
+              "bonus": 10
+            }
+          ],
+          "neighborhood_component": 40,
+          "source_security": 60,
+          "below_threshold_profile_ids": [
+            81,
+            84,
+            94,
+            103
+          ]
+        },
+        {
+          "physical_slot": 3,
+          "rect": [
+            19,
+            34,
+            20,
+            35
+          ],
+          "tier": 1,
+          "staff_ids": [
+            9,
+            21,
+            7
+          ],
+          "staff_security": [
+            {
+              "id": 9,
+              "name": "田中幸子",
+              "security": 18
+            },
+            {
+              "id": 21,
+              "name": "谷口明",
+              "security": 12
+            },
+            {
+              "id": 7,
+              "name": "市川智恵子",
+              "security": 16
+            }
+          ],
+          "raw_security_sum": 46,
+          "denominator": 250,
+          "staff_component": 18,
+          "neighbor_cells": [],
+          "neighborhood_component": 0,
+          "source_security": 18,
+          "below_threshold_profile_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            52,
+            57,
+            61,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143
+          ]
+        }
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "town_source_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+      "town_cells_sha256": "c741fdcea321e3d3cbd6c048060c3974e46598ee59db726306050f1254c34077",
+      "town_cells_packed_offset": 48000,
+      "stores": [
+        {
+          "physical_slot": 1,
+          "rect": [
+            42,
+            11,
+            43,
+            12
+          ],
+          "tier": 1,
+          "staff_ids": [
+            34,
+            26,
+            9
+          ],
+          "staff_security": [
+            {
+              "id": 34,
+              "name": "朝田宗司",
+              "security": 18
+            },
+            {
+              "id": 26,
+              "name": "小田伸行",
+              "security": 12
+            },
+            {
+              "id": 9,
+              "name": "田中幸子",
+              "security": 18
+            }
+          ],
+          "raw_security_sum": 48,
+          "denominator": 250,
+          "staff_component": 19,
+          "neighbor_cells": [
+            {
+              "x": 38,
+              "y": 14,
+              "tile": 60,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 39,
+              "y": 14,
+              "tile": 61,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 38,
+              "y": 15,
+              "tile": 62,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 39,
+              "y": 15,
+              "tile": 63,
+              "building": 5,
+              "bonus": 10
+            }
+          ],
+          "neighborhood_component": 40,
+          "source_security": 59,
+          "below_threshold_profile_ids": [
+            0,
+            2,
+            23,
+            28,
+            81,
+            84,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103
+          ]
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "town_source_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+      "town_cells_sha256": "8941615286845335df1ae542e587486d66650070e51cc33ecacf6ed885db3faf",
+      "town_cells_packed_offset": 72000,
+      "stores": [
+        {
+          "physical_slot": 1,
+          "rect": [
+            30,
+            24,
+            31,
+            25
+          ],
+          "tier": 3,
+          "staff_ids": [
+            4,
+            3,
+            10
+          ],
+          "staff_security": [
+            {
+              "id": 4,
+              "name": "万田町子",
+              "security": 18
+            },
+            {
+              "id": 3,
+              "name": "浜田裕子",
+              "security": 9
+            },
+            {
+              "id": 10,
+              "name": "花沢咲江",
+              "security": 18
+            }
+          ],
+          "raw_security_sum": 45,
+          "denominator": 275,
+          "staff_component": 16,
+          "neighbor_cells": [],
+          "neighborhood_component": 0,
+          "source_security": 16,
+          "below_threshold_profile_ids": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            52,
+            57,
+            61,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143
+          ]
+        },
+        {
+          "physical_slot": 2,
+          "rect": [
+            43,
+            24,
+            44,
+            25
+          ],
+          "tier": 1,
+          "staff_ids": [
+            34,
+            7,
+            -1
+          ],
+          "staff_security": [
+            {
+              "id": 34,
+              "name": "朝田宗司",
+              "security": 18
+            },
+            {
+              "id": 7,
+              "name": "市川智恵子",
+              "security": 16
+            }
+          ],
+          "raw_security_sum": 34,
+          "denominator": 250,
+          "staff_component": 13,
+          "neighbor_cells": [
+            {
+              "x": 47,
+              "y": 24,
+              "tile": 60,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 48,
+              "y": 24,
+              "tile": 61,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 47,
+              "y": 25,
+              "tile": 62,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 48,
+              "y": 25,
+              "tile": 63,
+              "building": 5,
+              "bonus": 10
+            }
+          ],
+          "neighborhood_component": 40,
+          "source_security": 53,
+          "below_threshold_profile_ids": [
+            0,
+            2,
+            23,
+            28,
+            81,
+            84,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103
+          ]
+        },
+        {
+          "physical_slot": 3,
+          "rect": [
+            17,
+            24,
+            18,
+            25
+          ],
+          "tier": 1,
+          "staff_ids": [
+            19,
+            14,
+            -1
+          ],
+          "staff_security": [
+            {
+              "id": 19,
+              "name": "西田年男",
+              "security": 19
+            },
+            {
+              "id": 14,
+              "name": "杉本三郎",
+              "security": 16
+            }
+          ],
+          "raw_security_sum": 35,
+          "denominator": 250,
+          "staff_component": 14,
+          "neighbor_cells": [
+            {
+              "x": 13,
+              "y": 21,
+              "tile": 60,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 14,
+              "y": 21,
+              "tile": 61,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 13,
+              "y": 22,
+              "tile": 62,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 14,
+              "y": 22,
+              "tile": 63,
+              "building": 5,
+              "bonus": 10
+            }
+          ],
+          "neighborhood_component": 40,
+          "source_security": 54,
+          "below_threshold_profile_ids": [
+            0,
+            2,
+            23,
+            28,
+            81,
+            84,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103
+          ]
+        },
+        {
+          "physical_slot": 4,
+          "rect": [
+            30,
+            11,
+            31,
+            12
+          ],
+          "tier": 1,
+          "staff_ids": [
+            6,
+            16,
+            -1
+          ],
+          "staff_security": [
+            {
+              "id": 6,
+              "name": "忍田信子",
+              "security": 16
+            },
+            {
+              "id": 16,
+              "name": "秋本三四郎",
+              "security": 11
+            }
+          ],
+          "raw_security_sum": 27,
+          "denominator": 250,
+          "staff_component": 10,
+          "neighbor_cells": [
+            {
+              "x": 30,
+              "y": 13,
+              "tile": 60,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 31,
+              "y": 13,
+              "tile": 61,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 30,
+              "y": 14,
+              "tile": 62,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 31,
+              "y": 14,
+              "tile": 63,
+              "building": 5,
+              "bonus": 10
+            }
+          ],
+          "neighborhood_component": 40,
+          "source_security": 50,
+          "below_threshold_profile_ids": [
+            0,
+            2,
+            23,
+            28,
+            81,
+            84,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103
+          ]
+        },
+        {
+          "physical_slot": 5,
+          "rect": [
+            30,
+            37,
+            31,
+            38
+          ],
+          "tier": 1,
+          "staff_ids": [
+            5,
+            21,
+            -1
+          ],
+          "staff_security": [
+            {
+              "id": 5,
+              "name": "富永福子",
+              "security": 18
+            },
+            {
+              "id": 21,
+              "name": "谷口明",
+              "security": 12
+            }
+          ],
+          "raw_security_sum": 30,
+          "denominator": 250,
+          "staff_component": 12,
+          "neighbor_cells": [
+            {
+              "x": 30,
+              "y": 40,
+              "tile": 60,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 31,
+              "y": 40,
+              "tile": 61,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 30,
+              "y": 41,
+              "tile": 62,
+              "building": 5,
+              "bonus": 10
+            },
+            {
+              "x": 31,
+              "y": 41,
+              "tile": 63,
+              "building": 5,
+              "bonus": 10
+            }
+          ],
+          "neighborhood_component": 40,
+          "source_security": 52,
+          "below_threshold_profile_ids": [
+            0,
+            2,
+            23,
+            28,
+            81,
+            84,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "Arithmetic from original initial map/staff data, not a new gameplay run. Below-threshold IDs ignore wallet, stock, product reachability, season and appearance frequency; they are not theft probabilities.",
+  "source_town_cells_file": "source/town-cells.bin",
+  "town_cells_bytes_per_map": 24000,
+  "source_staff_reference": "../20261114-staff-roster-growth-data/source/TOWN*-staff-packed.bin",
+  "source_store_reference": "../20261114-parking-arrival-data/source/initial-active-stores.bin"
+}

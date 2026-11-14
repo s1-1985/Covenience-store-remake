@@ -1,0 +1,50 @@
+{
+  "profiles": 144,
+  "initial_stores": 11,
+  "neighborhood_building_types": 2,
+  "security_denominators": [
+    250,
+    250,
+    275,
+    275,
+    300,
+    300
+  ],
+  "initial_store_security": {
+    "TOWN0001": [
+      89,
+      58
+    ],
+    "TOWN0002": [
+      88,
+      60,
+      18
+    ],
+    "TOWN0003": [
+      59
+    ],
+    "TOWNPS": [
+      16,
+      53,
+      54,
+      50,
+      52
+    ]
+  },
+  "maximum_initial_profile_threshold": 90,
+  "immediate_fixture_count": 12,
+  "trait19_histogram": {
+    "10": 2,
+    "30": 2,
+    "40": 12,
+    "50": 19,
+    "60": 35,
+    "70": 8,
+    "80": 27,
+    "90": 29,
+    "100": 10
+  },
+  "original_cpu_updates": 0,
+  "known_before": "Isolated theft gate, purchase control and neighborhood score models existed; this work connects all144 original traits, all53 fixture classes and initial11-store map/staff data, plus source loss notification.",
+  "unresolved": "Separate robbery/fire incident frequency and complete end-to-end prior-cart handling are not newly established here."
+}

@@ -1,0 +1,117 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 10997,
+    "sha256": "9ad92867514301bf83df5a0f4f67444a875a738beaf8b1d26415db76cd31cdf5"
+  },
+  {
+    "path": "android-security-theft-bridge.json",
+    "bytes": 2426,
+    "sha256": "b380df487e408e7a46a1215181d546970bccf774dc755bbe63d8c3272a0d68d6"
+  },
+  {
+    "path": "extract-security-theft.py",
+    "bytes": 13429,
+    "sha256": "385e9358a94762186855be514646ae310c40f2b951e107619883a4307b90d72e"
+  },
+  {
+    "path": "initial-store-security.json",
+    "bytes": 23869,
+    "sha256": "1ff898fbda200ebd855768fed08cfeb73e6f4610fa8ff9ffe28363dd3f2fa923"
+  },
+  {
+    "path": "security-readers.asm",
+    "bytes": 27444,
+    "sha256": "ce5d55b71026b605195cc395a6c4dd753eeca7a585b9a58822d0f2534e03a2d1"
+  },
+  {
+    "path": "security-theft-masters.json",
+    "bytes": 61348,
+    "sha256": "f645fa55afc1a453de659839d5fb1040ff4c26443a0a572c851a92b3bc91dc30"
+  },
+  {
+    "path": "source/denominators.bin",
+    "bytes": 24,
+    "sha256": "606e77c295f41826b800d98cd4db1df6d1ec80a370f5cb0b8522f0ada364273a"
+  },
+  {
+    "path": "source/fixture-master.bin",
+    "bytes": 10388,
+    "sha256": "ff38d0b8eb5d1d17fabca839abed108b9243b9fafc70449024763e73fc5eba51"
+  },
+  {
+    "path": "source/group_acquisition.bin",
+    "bytes": 336,
+    "sha256": "067b1756d30ce52a907912912263834ef9265c457d28d9435fb66a1f0806d4ef"
+  },
+  {
+    "path": "source/immediate_classifier.bin",
+    "bytes": 192,
+    "sha256": "b2d5479558c03f8ab3424657908997ce356f42ffc9492aad5938cf242c21dd9e"
+  },
+  {
+    "path": "source/police-fire-buildings.bin",
+    "bytes": 112,
+    "sha256": "89884ff92841b32a4b64d3b9adc649b2b8d687afc2233f2967bb4f572333bc91"
+  },
+  {
+    "path": "source/product-master.bin",
+    "bytes": 2376,
+    "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+  },
+  {
+    "path": "source/profiles.bin",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "path": "source/purchase_security_and_theft.bin",
+    "bytes": 1424,
+    "sha256": "4db2e84d513a1284dfdd1dcd01e796a728a1dbb1922168d1b227d1881ec70d86"
+  },
+  {
+    "path": "source/rating_loss.bin",
+    "bytes": 328,
+    "sha256": "f128ce047332212f7958f1159fe6ab2f5ecc2f8a5cbe263ef3fae8fa80c0c367"
+  },
+  {
+    "path": "source/security_producer.bin",
+    "bytes": 924,
+    "sha256": "f59ac18040c0cf4d0e51826441a2f729735317d613fff4cd1d9fe32373abdfe5"
+  },
+  {
+    "path": "source/summary_security_link.bin",
+    "bytes": 72,
+    "sha256": "847ec22662b76c7237b604b53cd30bfa500eff6e2b38b560e5bd2102eaf5fa0d"
+  },
+  {
+    "path": "source/theft-text.bin",
+    "bytes": 52,
+    "sha256": "1ac0ccdfd848e43a1124994918c4b56b01f56bea88ad7c740d2bb949a3b78ba9"
+  },
+  {
+    "path": "source/town-cells.bin",
+    "bytes": 96000,
+    "sha256": "686941d49363ce3f75438ef0d50946c5d30913a61495467217e5b56f7c8a8afb"
+  },
+  {
+    "path": "source-derived-examples.json",
+    "bytes": 1138,
+    "sha256": "25b8e8b918dea7dcc6c09cf954a71487182414d0e4079a7df2b156ff201ec683"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 2033,
+    "sha256": "a273eb96ef434b9052ff8cf3346e49419f024bdcb93c2e0642bc735afc175232"
+  },
+  {
+    "path": "source-text.json",
+    "bytes": 533,
+    "sha256": "33ffe84a28777469919cbbeb80340a93e29f87b3a94a78f03bbe34fd517446bd"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 1031,
+    "sha256": "96d09b9ac6edd80e1ac79bbef9a76c2baee0bb24d60285a67fecd04ab7dd2406"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "security": {
+    "producer": "800224e0 -> summary+08 via80023da0",
+    "staff": "Sum signed current警備+22 for assigned slots, no task/energy filter. trunc(sum*100/denominator[tier]).",
+    "area": "Inclusive rectangle(left-7,top-7,right+7,bottom+7), clipped to60x50 map.",
+    "neighborhood": "Every matching cell60..63 adds10;64..69 adds5. Count matching cells, not anchors or buildings; partial intersection contributes partial bonus.",
+    "clamp": "Upper clamp100 after additions; no new lower clamp.",
+    "decor": "Fixture45/46/47 additions in summary builder feed service+0c, not this security+08. No new anti-theft equipment field is inferred."
+  },
+  "theft_gate": [
+    "At product goal and facing correct direction, compute current selling unit price and narrow to signed16.",
+    "Books7 first pause ordinary purchase while security<100-profile19 and unsigned deadline>=clock.",
+    "Underfunded path only when signed wallet<unit. Immediate categories2/3/5 do not take this theft branch.",
+    "Require security<100-signed profile19, strictly. No separate theft random draw occurs in this local branch.",
+    "Attempt group inventory removal via8003b420; failure is not theft. It can increment the separate stockout call counter.",
+    "On success loss118c += unit*group_quantity; event flag0x10; return5 for exit. Do not register purchase statistics or charge selling-price loss again to cash."
+  ],
+  "unchanged_locally": "The theft-success block does not update wallet, cart+0a or cash, and does not increment product counters1198/11a0. Previous cart settlement is not newly invented here.",
+  "loss_meaning": "Current selling price*group quantity, not procurement price and not a separate immediate cash debit.",
+  "rating_loss": "In the rating-update branch gated here by hour0/stage1, nonzero118c decreases ratingC68 by1 once, then118c is cleared. Player-side message includes loss amount and face of slot0 manager; rival skips notification but still reaches reset. Overall later rating calculation can add other changes.",
+  "warning": "Message event parameters(3,manager_portrait,35,1,0). Distinct from the immediate theft event flag0x10.",
+  "limits": "No percentage theft probability inferred from profile counts. Security90 closes this comparison for all144 initial profiles; it does not prove protection from other incidents such as the separate robbery/fire routine."
+}

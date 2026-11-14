@@ -1,0 +1,3439 @@
+{
+  "schema_version": 1,
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "security_staff_denominators": [
+    250,
+    250,
+    275,
+    275,
+    300,
+    300
+  ],
+  "neighborhood_facilities": [
+    {
+      "building": 5,
+      "name": "交番",
+      "size": [
+        2,
+        2
+      ],
+      "tile_range": [
+        60,
+        63
+      ],
+      "bonus_per_matching_cell": 10,
+      "full_footprint_bonus": 40,
+      "raw_hex": "8cf094d4000000000000000000000000000000000000000002000000020000003c0000003f00000008010000000000000000000000000000"
+    },
+    {
+      "building": 6,
+      "name": "消防署",
+      "size": [
+        3,
+        2
+      ],
+      "tile_range": [
+        64,
+        69
+      ],
+      "bonus_per_matching_cell": 5,
+      "full_footprint_bonus": 30,
+      "raw_hex": "8fc196688f900000000000000000000000000000000000000300000002000000400000004500000008010100010001000100010001000000"
+    }
+  ],
+  "profiles": [
+    {
+      "id": 0,
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        4,
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 1,
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        4,
+        1,
+        6,
+        19
+      ]
+    },
+    {
+      "id": 2,
+      "appearance_group": 1,
+      "group_label": "青い女子大生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        4,
+        0,
+        6,
+        22
+      ]
+    },
+    {
+      "id": 3,
+      "appearance_group": 2,
+      "group_label": "緑の女子大生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        4,
+        1,
+        7,
+        -1
+      ]
+    },
+    {
+      "id": 4,
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        4,
+        0,
+        6,
+        20
+      ]
+    },
+    {
+      "id": 5,
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        4,
+        1,
+        7,
+        8
+      ]
+    },
+    {
+      "id": 6,
+      "appearance_group": 1,
+      "group_label": "青い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        0,
+        6,
+        24
+      ]
+    },
+    {
+      "id": 7,
+      "appearance_group": 2,
+      "group_label": "緑の女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        0,
+        9,
+        24
+      ]
+    },
+    {
+      "id": 8,
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        1,
+        9,
+        20
+      ]
+    },
+    {
+      "id": 9,
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        5,
+        1,
+        6,
+        8
+      ]
+    },
+    {
+      "id": 10,
+      "appearance_group": 1,
+      "group_label": "青い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        15,
+        0,
+        20,
+        10
+      ]
+    },
+    {
+      "id": 11,
+      "appearance_group": 1,
+      "group_label": "青い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        24,
+        6,
+        7,
+        10
+      ]
+    },
+    {
+      "id": 12,
+      "appearance_group": 2,
+      "group_label": "緑の女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        0,
+        6,
+        25
+      ]
+    },
+    {
+      "id": 13,
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        1,
+        6,
+        2
+      ]
+    },
+    {
+      "id": 14,
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        20,
+        0,
+        6,
+        9
+      ]
+    },
+    {
+      "id": 15,
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        21,
+        1,
+        6,
+        24
+      ]
+    },
+    {
+      "id": 16,
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        6,
+        5,
+        9,
+        7
+      ]
+    },
+    {
+      "id": 17,
+      "appearance_group": 1,
+      "group_label": "青い女子大生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        22,
+        19,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 18,
+      "appearance_group": 2,
+      "group_label": "緑の女子大生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        5,
+        2,
+        8,
+        24
+      ]
+    },
+    {
+      "id": 19,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        4,
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 20,
+      "appearance_group": 4,
+      "group_label": "青い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        1,
+        8,
+        10
+      ]
+    },
+    {
+      "id": 21,
+      "appearance_group": 5,
+      "group_label": "黄色い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        4,
+        0,
+        7,
+        10
+      ]
+    },
+    {
+      "id": 22,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        1,
+        8,
+        20
+      ]
+    },
+    {
+      "id": 23,
+      "appearance_group": 4,
+      "group_label": "青い大学生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        8,
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 24,
+      "appearance_group": 5,
+      "group_label": "黄色い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        4,
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 25,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        1,
+        8,
+        25
+      ]
+    },
+    {
+      "id": 26,
+      "appearance_group": 4,
+      "group_label": "青い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        0,
+        25,
+        -1
+      ]
+    },
+    {
+      "id": 27,
+      "appearance_group": 5,
+      "group_label": "黄色い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        0,
+        7,
+        20
+      ]
+    },
+    {
+      "id": 28,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        8,
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 29,
+      "appearance_group": 4,
+      "group_label": "青い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        1,
+        7,
+        19
+      ]
+    },
+    {
+      "id": 30,
+      "appearance_group": 5,
+      "group_label": "黄色い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        15,
+        0,
+        7,
+        20
+      ]
+    },
+    {
+      "id": 31,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        5,
+        1,
+        20,
+        6
+      ]
+    },
+    {
+      "id": 32,
+      "appearance_group": 4,
+      "group_label": "青い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        2,
+        8,
+        18
+      ]
+    },
+    {
+      "id": 33,
+      "appearance_group": 4,
+      "group_label": "青い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        14,
+        12,
+        13,
+        16
+      ]
+    },
+    {
+      "id": 34,
+      "appearance_group": 5,
+      "group_label": "黄色い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        5,
+        1,
+        7,
+        10
+      ]
+    },
+    {
+      "id": 35,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        15,
+        25,
+        1,
+        6
+      ]
+    },
+    {
+      "id": 36,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        2,
+        18,
+        6,
+        8
+      ]
+    },
+    {
+      "id": 37,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        8,
+        1,
+        2,
+        25
+      ]
+    },
+    {
+      "id": 38,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        9,
+        5,
+        17,
+        25
+      ]
+    },
+    {
+      "id": 39,
+      "appearance_group": 4,
+      "group_label": "青い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        13,
+        2,
+        8,
+        18
+      ]
+    },
+    {
+      "id": 40,
+      "appearance_group": 4,
+      "group_label": "青い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        20,
+        1,
+        10,
+        8
+      ]
+    },
+    {
+      "id": 41,
+      "appearance_group": 5,
+      "group_label": "黄色い大学生",
+      "raw_trait19": 60,
+      "security_threshold": 40,
+      "source_products": [
+        3,
+        2,
+        7,
+        18
+      ]
+    },
+    {
+      "id": 42,
+      "appearance_group": 4,
+      "group_label": "青い大学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        3,
+        18,
+        25,
+        6
+      ]
+    },
+    {
+      "id": 43,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        8,
+        1,
+        2,
+        25
+      ]
+    },
+    {
+      "id": 44,
+      "appearance_group": 6,
+      "group_label": "灰色ｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        4,
+        1,
+        10,
+        -1
+      ]
+    },
+    {
+      "id": 45,
+      "appearance_group": 7,
+      "group_label": "白いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        4,
+        0,
+        8,
+        -1
+      ]
+    },
+    {
+      "id": 46,
+      "appearance_group": 8,
+      "group_label": "茶色いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        3,
+        1,
+        7,
+        8
+      ]
+    },
+    {
+      "id": 47,
+      "appearance_group": 9,
+      "group_label": "作業服のｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        4,
+        0,
+        22,
+        8
+      ]
+    },
+    {
+      "id": 48,
+      "appearance_group": 6,
+      "group_label": "灰色ｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        4,
+        1,
+        8,
+        -1
+      ]
+    },
+    {
+      "id": 49,
+      "appearance_group": 7,
+      "group_label": "白いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        3,
+        0,
+        19,
+        -1
+      ]
+    },
+    {
+      "id": 50,
+      "appearance_group": 8,
+      "group_label": "茶色いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        5,
+        0,
+        7,
+        25
+      ]
+    },
+    {
+      "id": 51,
+      "appearance_group": 9,
+      "group_label": "作業服のｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        3,
+        0,
+        7,
+        8
+      ]
+    },
+    {
+      "id": 52,
+      "appearance_group": 9,
+      "group_label": "作業服のｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        8,
+        0,
+        1,
+        -1
+      ]
+    },
+    {
+      "id": 53,
+      "appearance_group": 6,
+      "group_label": "灰色ｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        3,
+        0,
+        22,
+        8
+      ]
+    },
+    {
+      "id": 54,
+      "appearance_group": 7,
+      "group_label": "白いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        15,
+        1,
+        2,
+        18
+      ]
+    },
+    {
+      "id": 55,
+      "appearance_group": 8,
+      "group_label": "茶色いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        3,
+        0,
+        22,
+        8
+      ]
+    },
+    {
+      "id": 56,
+      "appearance_group": 9,
+      "group_label": "作業服のｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        15,
+        1,
+        2,
+        18
+      ]
+    },
+    {
+      "id": 57,
+      "appearance_group": 6,
+      "group_label": "灰色ｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        2,
+        18,
+        6,
+        15
+      ]
+    },
+    {
+      "id": 58,
+      "appearance_group": 7,
+      "group_label": "白いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        5,
+        2,
+        5,
+        8
+      ]
+    },
+    {
+      "id": 59,
+      "appearance_group": 8,
+      "group_label": "茶色いｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        3,
+        1,
+        18,
+        25
+      ]
+    },
+    {
+      "id": 60,
+      "appearance_group": 9,
+      "group_label": "作業服のｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        5,
+        2,
+        5,
+        8
+      ]
+    },
+    {
+      "id": 61,
+      "appearance_group": 6,
+      "group_label": "灰色ｽｰﾂのｻﾗﾘｰﾏﾝ",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        8,
+        1,
+        2,
+        25
+      ]
+    },
+    {
+      "id": 62,
+      "appearance_group": 10,
+      "group_label": "青いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        4,
+        1,
+        7,
+        -1
+      ]
+    },
+    {
+      "id": 63,
+      "appearance_group": 11,
+      "group_label": "赤いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        4,
+        1,
+        22,
+        8
+      ]
+    },
+    {
+      "id": 64,
+      "appearance_group": 12,
+      "group_label": "作業服のＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        4,
+        1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 65,
+      "appearance_group": 13,
+      "group_label": "白いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        4,
+        0,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 66,
+      "appearance_group": 10,
+      "group_label": "青いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        3,
+        0,
+        9,
+        8
+      ]
+    },
+    {
+      "id": 67,
+      "appearance_group": 11,
+      "group_label": "赤いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        4,
+        0,
+        8,
+        24
+      ]
+    },
+    {
+      "id": 68,
+      "appearance_group": 12,
+      "group_label": "作業服のＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        3,
+        1,
+        6,
+        9
+      ]
+    },
+    {
+      "id": 69,
+      "appearance_group": 13,
+      "group_label": "白いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        3,
+        0,
+        22,
+        19
+      ]
+    },
+    {
+      "id": 70,
+      "appearance_group": 10,
+      "group_label": "青いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        5,
+        0,
+        6,
+        8
+      ]
+    },
+    {
+      "id": 71,
+      "appearance_group": 11,
+      "group_label": "赤いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        12,
+        14,
+        13,
+        16
+      ]
+    },
+    {
+      "id": 72,
+      "appearance_group": 12,
+      "group_label": "作業服のＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        4,
+        1,
+        6,
+        24
+      ]
+    },
+    {
+      "id": 73,
+      "appearance_group": 13,
+      "group_label": "白いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        3,
+        0,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 74,
+      "appearance_group": 13,
+      "group_label": "白いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        8,
+        0,
+        1,
+        7
+      ]
+    },
+    {
+      "id": 75,
+      "appearance_group": 10,
+      "group_label": "青いＯＬ",
+      "raw_trait19": 90,
+      "security_threshold": 10,
+      "source_products": [
+        15,
+        5,
+        17,
+        25
+      ]
+    },
+    {
+      "id": 76,
+      "appearance_group": 10,
+      "group_label": "青いＯＬ",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        2,
+        6,
+        18,
+        5
+      ]
+    },
+    {
+      "id": 77,
+      "appearance_group": 11,
+      "group_label": "赤いＯＬ",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        19,
+        6,
+        1,
+        17
+      ]
+    },
+    {
+      "id": 78,
+      "appearance_group": 10,
+      "group_label": "青いＯＬ",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        7,
+        6,
+        2,
+        18
+      ]
+    },
+    {
+      "id": 79,
+      "appearance_group": 11,
+      "group_label": "赤いＯＬ",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        5,
+        1,
+        18,
+        6
+      ]
+    },
+    {
+      "id": 80,
+      "appearance_group": 14,
+      "group_label": "はげたおじさん",
+      "raw_trait19": 70,
+      "security_threshold": 30,
+      "source_products": [
+        2,
+        18,
+        6,
+        8
+      ]
+    },
+    {
+      "id": 81,
+      "appearance_group": 14,
+      "group_label": "はげたおじさん",
+      "raw_trait19": 30,
+      "security_threshold": 70,
+      "source_products": [
+        2,
+        18,
+        6,
+        8
+      ]
+    },
+    {
+      "id": 82,
+      "appearance_group": 15,
+      "group_label": "汗かきのおじさん",
+      "raw_trait19": 70,
+      "security_threshold": 30,
+      "source_products": [
+        9,
+        0,
+        8,
+        -1
+      ]
+    },
+    {
+      "id": 83,
+      "appearance_group": 15,
+      "group_label": "汗かきのおじさん",
+      "raw_trait19": 70,
+      "security_threshold": 30,
+      "source_products": [
+        9,
+        8,
+        1,
+        -1
+      ]
+    },
+    {
+      "id": 84,
+      "appearance_group": 15,
+      "group_label": "汗かきのおじさん",
+      "raw_trait19": 30,
+      "security_threshold": 70,
+      "source_products": [
+        8,
+        2,
+        6,
+        8
+      ]
+    },
+    {
+      "id": 85,
+      "appearance_group": 14,
+      "group_label": "はげたおじさん",
+      "raw_trait19": 70,
+      "security_threshold": 30,
+      "source_products": [
+        8,
+        0,
+        1,
+        -1
+      ]
+    },
+    {
+      "id": 86,
+      "appearance_group": 18,
+      "group_label": "中学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        10,
+        -1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 87,
+      "appearance_group": 16,
+      "group_label": "中学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        10,
+        -1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "id": 88,
+      "appearance_group": 16,
+      "group_label": "中学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        0,
+        1,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 89,
+      "appearance_group": 18,
+      "group_label": "中学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        0,
+        9,
+        6,
+        10
+      ]
+    },
+    {
+      "id": 90,
+      "appearance_group": 16,
+      "group_label": "中学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        0,
+        1,
+        10,
+        6
+      ]
+    },
+    {
+      "id": 91,
+      "appearance_group": 18,
+      "group_label": "中学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        0,
+        9,
+        10,
+        7
+      ]
+    },
+    {
+      "id": 92,
+      "appearance_group": 16,
+      "group_label": "中学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        24,
+        25,
+        1,
+        6
+      ]
+    },
+    {
+      "id": 93,
+      "appearance_group": 18,
+      "group_label": "中学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        24,
+        6,
+        0,
+        7
+      ]
+    },
+    {
+      "id": 94,
+      "appearance_group": 16,
+      "group_label": "中学生",
+      "raw_trait19": 10,
+      "security_threshold": 90,
+      "source_products": [
+        0,
+        1,
+        7,
+        24
+      ]
+    },
+    {
+      "id": 95,
+      "appearance_group": 17,
+      "group_label": "高校生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        0,
+        1,
+        24,
+        10
+      ]
+    },
+    {
+      "id": 96,
+      "appearance_group": 19,
+      "group_label": "女子高生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        20,
+        0,
+        10,
+        24
+      ]
+    },
+    {
+      "id": 97,
+      "appearance_group": 19,
+      "group_label": "女子高生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        0,
+        1,
+        6,
+        24
+      ]
+    },
+    {
+      "id": 98,
+      "appearance_group": 17,
+      "group_label": "高校生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        0,
+        1,
+        24,
+        10
+      ]
+    },
+    {
+      "id": 99,
+      "appearance_group": 19,
+      "group_label": "女子高生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        0,
+        1,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 100,
+      "appearance_group": 19,
+      "group_label": "女子高生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        9,
+        0,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 101,
+      "appearance_group": 17,
+      "group_label": "高校生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        24,
+        25,
+        0,
+        10
+      ]
+    },
+    {
+      "id": 102,
+      "appearance_group": 19,
+      "group_label": "女子高生",
+      "raw_trait19": 40,
+      "security_threshold": 60,
+      "source_products": [
+        24,
+        6,
+        0,
+        10
+      ]
+    },
+    {
+      "id": 103,
+      "appearance_group": 17,
+      "group_label": "高校生",
+      "raw_trait19": 10,
+      "security_threshold": 90,
+      "source_products": [
+        22,
+        0,
+        24,
+        25
+      ]
+    },
+    {
+      "id": 104,
+      "appearance_group": 20,
+      "group_label": "小学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        10,
+        0,
+        6,
+        24
+      ]
+    },
+    {
+      "id": 105,
+      "appearance_group": 21,
+      "group_label": "小学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        10,
+        0,
+        6,
+        24
+      ]
+    },
+    {
+      "id": 106,
+      "appearance_group": 20,
+      "group_label": "小学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        6,
+        0,
+        24,
+        -1
+      ]
+    },
+    {
+      "id": 107,
+      "appearance_group": 21,
+      "group_label": "小学生",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        6,
+        0,
+        24,
+        -1
+      ]
+    },
+    {
+      "id": 108,
+      "appearance_group": 22,
+      "group_label": "幼稚園児",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        6,
+        0,
+        24,
+        -1
+      ]
+    },
+    {
+      "id": 109,
+      "appearance_group": 23,
+      "group_label": "幼稚園児",
+      "raw_trait19": 50,
+      "security_threshold": 50,
+      "source_products": [
+        6,
+        0,
+        24,
+        -1
+      ]
+    },
+    {
+      "id": 110,
+      "appearance_group": 25,
+      "group_label": "杖をついたおじいさん",
+      "raw_trait19": 100,
+      "security_threshold": 0,
+      "source_products": [
+        8,
+        1,
+        25,
+        22
+      ]
+    },
+    {
+      "id": 111,
+      "appearance_group": 24,
+      "group_label": "甚平姿のおじいさん",
+      "raw_trait19": 100,
+      "security_threshold": 0,
+      "source_products": [
+        2,
+        6,
+        13,
+        12
+      ]
+    },
+    {
+      "id": 112,
+      "appearance_group": 24,
+      "group_label": "甚平姿のおじいさん",
+      "raw_trait19": 100,
+      "security_threshold": 0,
+      "source_products": [
+        19,
+        23,
+        11,
+        22
+      ]
+    },
+    {
+      "id": 113,
+      "appearance_group": 25,
+      "group_label": "杖をついたおじいさん",
+      "raw_trait19": 100,
+      "security_threshold": 0,
+      "source_products": [
+        23,
+        19,
+        17,
+        22
+      ]
+    },
+    {
+      "id": 114,
+      "appearance_group": 26,
+      "group_label": "着物姿のおばあさん",
+      "raw_trait19": 100,
+      "security_threshold": 0,
+      "source_products": [
+        19,
+        23,
+        11,
+        22
+      ]
+    },
+    {
+      "id": 115,
+      "appearance_group": 27,
+      "group_label": "ｶｰﾄ押しのおばあさん",
+      "raw_trait19": 100,
+      "security_threshold": 0,
+      "source_products": [
+        23,
+        19,
+        17,
+        22
+      ]
+    },
+    {
+      "id": 116,
+      "appearance_group": 25,
+      "group_label": "杖をついたおじいさん",
+      "raw_trait19": 100,
+      "security_threshold": 0,
+      "source_products": [
+        13,
+        12,
+        14,
+        16
+      ]
+    },
+    {
+      "id": 117,
+      "appearance_group": 26,
+      "group_label": "着物姿のおばあさん",
+      "raw_trait19": 100,
+      "security_threshold": 0,
+      "source_products": [
+        13,
+        12,
+        14,
+        16
+      ]
+    },
+    {
+      "id": 118,
+      "appearance_group": 27,
+      "group_label": "ｶｰﾄ押しのおばあさん",
+      "raw_trait19": 100,
+      "security_threshold": 0,
+      "source_products": [
+        22,
+        23,
+        19,
+        12
+      ]
+    },
+    {
+      "id": 119,
+      "appearance_group": 27,
+      "group_label": "ｶｰﾄ押しのおばあさん",
+      "raw_trait19": 100,
+      "security_threshold": 0,
+      "source_products": [
+        21,
+        1,
+        6,
+        11
+      ]
+    },
+    {
+      "id": 120,
+      "appearance_group": 28,
+      "group_label": "籠を持ったおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        19,
+        13,
+        14,
+        17
+      ]
+    },
+    {
+      "id": 121,
+      "appearance_group": 29,
+      "group_label": "ｴﾌﾟﾛﾝ姿のおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        19,
+        23,
+        14,
+        11
+      ]
+    },
+    {
+      "id": 122,
+      "appearance_group": 28,
+      "group_label": "籠を持ったおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        23,
+        19,
+        15,
+        12
+      ]
+    },
+    {
+      "id": 123,
+      "appearance_group": 29,
+      "group_label": "ｴﾌﾟﾛﾝ姿のおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        23,
+        12,
+        17,
+        16
+      ]
+    },
+    {
+      "id": 124,
+      "appearance_group": 30,
+      "group_label": "割烹着姿のおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        12,
+        15,
+        17,
+        14
+      ]
+    },
+    {
+      "id": 125,
+      "appearance_group": 31,
+      "group_label": "ｶｰﾙ髪のおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        14,
+        4,
+        5,
+        17
+      ]
+    },
+    {
+      "id": 126,
+      "appearance_group": 28,
+      "group_label": "籠を持ったおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        12,
+        13,
+        14,
+        16
+      ]
+    },
+    {
+      "id": 127,
+      "appearance_group": 29,
+      "group_label": "ｴﾌﾟﾛﾝ姿のおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        13,
+        12,
+        14,
+        16
+      ]
+    },
+    {
+      "id": 128,
+      "appearance_group": 30,
+      "group_label": "割烹着姿のおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        14,
+        12,
+        13,
+        16
+      ]
+    },
+    {
+      "id": 129,
+      "appearance_group": 31,
+      "group_label": "ｶｰﾙ髪のおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        12,
+        13,
+        14,
+        16
+      ]
+    },
+    {
+      "id": 130,
+      "appearance_group": 32,
+      "group_label": "子供連れのおじさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        6,
+        0,
+        9,
+        24
+      ]
+    },
+    {
+      "id": 131,
+      "appearance_group": 33,
+      "group_label": "子抱きのおばさん",
+      "raw_trait19": 70,
+      "security_threshold": 30,
+      "source_products": [
+        6,
+        0,
+        24,
+        22
+      ]
+    },
+    {
+      "id": 132,
+      "appearance_group": 32,
+      "group_label": "子供連れのおじさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        11,
+        19,
+        23,
+        24
+      ]
+    },
+    {
+      "id": 133,
+      "appearance_group": 33,
+      "group_label": "子抱きのおばさん",
+      "raw_trait19": 70,
+      "security_threshold": 30,
+      "source_products": [
+        11,
+        23,
+        19,
+        24
+      ]
+    },
+    {
+      "id": 134,
+      "appearance_group": 34,
+      "group_label": "子供連れのおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        19,
+        12,
+        14,
+        16
+      ]
+    },
+    {
+      "id": 135,
+      "appearance_group": 35,
+      "group_label": "ﾍﾞﾋﾞｰｶｰのおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        23,
+        12,
+        17,
+        16
+      ]
+    },
+    {
+      "id": 136,
+      "appearance_group": 34,
+      "group_label": "子供連れのおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        13,
+        12,
+        17,
+        16
+      ]
+    },
+    {
+      "id": 137,
+      "appearance_group": 35,
+      "group_label": "ﾍﾞﾋﾞｰｶｰのおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        14,
+        12,
+        13,
+        16
+      ]
+    },
+    {
+      "id": 138,
+      "appearance_group": 36,
+      "group_label": "車椅子に乗った男性",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        7,
+        0,
+        6,
+        22
+      ]
+    },
+    {
+      "id": 139,
+      "appearance_group": 37,
+      "group_label": "松葉杖をついた男性",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        7,
+        0,
+        6,
+        22
+      ]
+    },
+    {
+      "id": 140,
+      "appearance_group": 2,
+      "group_label": "緑の女子大生",
+      "raw_trait19": 70,
+      "security_threshold": 30,
+      "source_products": [
+        0,
+        9,
+        6,
+        24
+      ]
+    },
+    {
+      "id": 141,
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "raw_trait19": 70,
+      "security_threshold": 30,
+      "source_products": [
+        0,
+        9,
+        6,
+        24
+      ]
+    },
+    {
+      "id": 142,
+      "appearance_group": 32,
+      "group_label": "子供連れのおじさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        0,
+        9,
+        6,
+        24
+      ]
+    },
+    {
+      "id": 143,
+      "appearance_group": 34,
+      "group_label": "子供連れのおばさん",
+      "raw_trait19": 80,
+      "security_threshold": 20,
+      "source_products": [
+        0,
+        9,
+        6,
+        24
+      ]
+    }
+  ],
+  "fixture_payment_classes": [
+    {
+      "id": 0,
+      "name": "常温棚",
+      "raw_flags": 256,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ]
+    },
+    {
+      "id": 1,
+      "name": "常温棚",
+      "raw_flags": 256,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ]
+    },
+    {
+      "id": 2,
+      "name": "常温棚",
+      "raw_flags": 256,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ]
+    },
+    {
+      "id": 3,
+      "name": "常温ワゴン",
+      "raw_flags": 257,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ]
+    },
+    {
+      "id": 4,
+      "name": "常温ワゴン",
+      "raw_flags": 257,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ]
+    },
+    {
+      "id": 5,
+      "name": "常温ワゴン",
+      "raw_flags": 257,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ]
+    },
+    {
+      "id": 6,
+      "name": "常温ワゴン",
+      "raw_flags": 257,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ]
+    },
+    {
+      "id": 7,
+      "name": "冷蔵棚",
+      "raw_flags": 8448,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ]
+    },
+    {
+      "id": 8,
+      "name": "冷蔵棚",
+      "raw_flags": 8448,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ]
+    },
+    {
+      "id": 9,
+      "name": "冷蔵棚",
+      "raw_flags": 8448,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ]
+    },
+    {
+      "id": 10,
+      "name": "冷蔵ワゴン",
+      "raw_flags": 8449,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ]
+    },
+    {
+      "id": 11,
+      "name": "冷蔵ワゴン",
+      "raw_flags": 8449,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ]
+    },
+    {
+      "id": 12,
+      "name": "冷蔵ワゴン",
+      "raw_flags": 8449,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ]
+    },
+    {
+      "id": 13,
+      "name": "冷蔵ワゴン",
+      "raw_flags": 8449,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ]
+    },
+    {
+      "id": 14,
+      "name": "冷凍棚",
+      "raw_flags": 4352,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        17,
+        9
+      ]
+    },
+    {
+      "id": 15,
+      "name": "冷凍棚",
+      "raw_flags": 4352,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        17,
+        9
+      ]
+    },
+    {
+      "id": 16,
+      "name": "冷凍ワゴン",
+      "raw_flags": 4353,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        9,
+        17
+      ]
+    },
+    {
+      "id": 17,
+      "name": "冷凍ワゴン",
+      "raw_flags": 4353,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        9,
+        17
+      ]
+    },
+    {
+      "id": 18,
+      "name": "冷凍棚・扉",
+      "raw_flags": 5376,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        17,
+        9
+      ]
+    },
+    {
+      "id": 19,
+      "name": "冷凍棚・扉",
+      "raw_flags": 5376,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        17,
+        9
+      ]
+    },
+    {
+      "id": 20,
+      "name": "冷凍ワゴン・扉",
+      "raw_flags": 5377,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        9,
+        17
+      ]
+    },
+    {
+      "id": 21,
+      "name": "冷凍ワゴン・扉",
+      "raw_flags": 5377,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        9,
+        17
+      ]
+    },
+    {
+      "id": 22,
+      "name": "温かい飲み物",
+      "raw_flags": 17664,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        1
+      ]
+    },
+    {
+      "id": 23,
+      "name": "おでん",
+      "raw_flags": 16641,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        18
+      ]
+    },
+    {
+      "id": 24,
+      "name": "中華まん",
+      "raw_flags": 17664,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        25
+      ]
+    },
+    {
+      "id": 25,
+      "name": "イベントケース棚",
+      "raw_flags": 28928,
+      "category": 0,
+      "immediate_payment": false,
+      "allowed_products": [
+        24
+      ]
+    },
+    {
+      "id": 26,
+      "name": "イベントケースワゴン",
+      "raw_flags": 28929,
+      "category": 1,
+      "immediate_payment": false,
+      "allowed_products": [
+        24
+      ]
+    },
+    {
+      "id": 27,
+      "name": "たばこ自販",
+      "raw_flags": 770,
+      "category": 2,
+      "immediate_payment": true,
+      "allowed_products": [
+        8
+      ]
+    },
+    {
+      "id": 28,
+      "name": "たばこ自販",
+      "raw_flags": 770,
+      "category": 2,
+      "immediate_payment": true,
+      "allowed_products": [
+        8
+      ]
+    },
+    {
+      "id": 29,
+      "name": "飲料自販・冷蔵",
+      "raw_flags": 8962,
+      "category": 2,
+      "immediate_payment": true,
+      "allowed_products": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": 30,
+      "name": "飲料自販・冷蔵",
+      "raw_flags": 8962,
+      "category": 2,
+      "immediate_payment": true,
+      "allowed_products": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": 31,
+      "name": "飲料自販・温冷",
+      "raw_flags": 25346,
+      "category": 2,
+      "immediate_payment": true,
+      "allowed_products": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 32,
+      "name": "飲料自販・温冷",
+      "raw_flags": 25346,
+      "category": 2,
+      "immediate_payment": true,
+      "allowed_products": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": 33,
+      "name": "コピー機",
+      "raw_flags": 259,
+      "category": 3,
+      "immediate_payment": true,
+      "allowed_products": [
+        20
+      ]
+    },
+    {
+      "id": 34,
+      "name": "コピー機",
+      "raw_flags": 259,
+      "category": 3,
+      "immediate_payment": true,
+      "allowed_products": [
+        20
+      ]
+    },
+    {
+      "id": 35,
+      "name": "コピー機",
+      "raw_flags": 259,
+      "category": 3,
+      "immediate_payment": true,
+      "allowed_products": [
+        20
+      ]
+    },
+    {
+      "id": 36,
+      "name": "コピー機",
+      "raw_flags": 259,
+      "category": 3,
+      "immediate_payment": true,
+      "allowed_products": [
+        20
+      ]
+    },
+    {
+      "id": 37,
+      "name": "レジ",
+      "raw_flags": 260,
+      "category": 4,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 38,
+      "name": "レジ",
+      "raw_flags": 260,
+      "category": 4,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 39,
+      "name": "レジ",
+      "raw_flags": 260,
+      "category": 4,
+      "immediate_payment": false,
+      "allowed_products": [
+        21
+      ]
+    },
+    {
+      "id": 40,
+      "name": "レジ",
+      "raw_flags": 260,
+      "category": 4,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 41,
+      "name": "レジ",
+      "raw_flags": 260,
+      "category": 4,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 42,
+      "name": "レジ",
+      "raw_flags": 260,
+      "category": 4,
+      "immediate_payment": false,
+      "allowed_products": [
+        21
+      ]
+    },
+    {
+      "id": 43,
+      "name": "キャッシュディスペンサー",
+      "raw_flags": 261,
+      "category": 5,
+      "immediate_payment": true,
+      "allowed_products": [
+        26
+      ]
+    },
+    {
+      "id": 44,
+      "name": "キャッシュディスペンサー",
+      "raw_flags": 773,
+      "category": 5,
+      "immediate_payment": true,
+      "allowed_products": [
+        26
+      ]
+    },
+    {
+      "id": 45,
+      "name": "観葉植物",
+      "raw_flags": 775,
+      "category": 7,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 46,
+      "name": "ベンチ",
+      "raw_flags": 776,
+      "category": 8,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 47,
+      "name": "噴水",
+      "raw_flags": 777,
+      "category": 9,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 48,
+      "name": "控え室",
+      "raw_flags": 774,
+      "category": 6,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 49,
+      "name": "控え室",
+      "raw_flags": 774,
+      "category": 6,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 50,
+      "name": "駐車場",
+      "raw_flags": 522,
+      "category": 10,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 51,
+      "name": "2階建駐車場",
+      "raw_flags": 522,
+      "category": 10,
+      "immediate_payment": false,
+      "allowed_products": []
+    },
+    {
+      "id": 52,
+      "name": "タワー駐車場",
+      "raw_flags": 522,
+      "category": 10,
+      "immediate_payment": false,
+      "allowed_products": []
+    }
+  ],
+  "products": [
+    {
+      "id": 0,
+      "name": "冷たい飲料",
+      "base_price": 110,
+      "cost_percent": 50,
+      "initial_setting": 50,
+      "initial_unit_price": 110,
+      "non_immediate_fixture_ids": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "immediate_fixture_ids": [
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "id": 1,
+      "name": "温かい飲料",
+      "base_price": 110,
+      "cost_percent": 50,
+      "initial_setting": 50,
+      "initial_unit_price": 110,
+      "non_immediate_fixture_ids": [
+        22
+      ],
+      "immediate_fixture_ids": [
+        31,
+        32
+      ]
+    },
+    {
+      "id": 2,
+      "name": "酒類",
+      "base_price": 1000,
+      "cost_percent": 70,
+      "initial_setting": 30,
+      "initial_unit_price": 1000,
+      "non_immediate_fixture_ids": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "immediate_fixture_ids": [
+        29,
+        30
+      ]
+    },
+    {
+      "id": 3,
+      "name": "弁当類",
+      "base_price": 400,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 400,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 4,
+      "name": "パン類",
+      "base_price": 300,
+      "cost_percent": 50,
+      "initial_setting": 50,
+      "initial_unit_price": 300,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 5,
+      "name": "ｲﾝｽﾀﾝﾄ類",
+      "base_price": 150,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 150,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 6,
+      "name": "菓子類",
+      "base_price": 200,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 200,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 7,
+      "name": "本類",
+      "base_price": 400,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 400,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 8,
+      "name": "たばこ",
+      "base_price": 250,
+      "cost_percent": 70,
+      "initial_setting": 30,
+      "initial_unit_price": 250,
+      "non_immediate_fixture_ids": [],
+      "immediate_fixture_ids": [
+        27,
+        28
+      ]
+    },
+    {
+      "id": 9,
+      "name": "ｱｲｽｸﾘｰﾑ",
+      "base_price": 100,
+      "cost_percent": 50,
+      "initial_setting": 50,
+      "initial_unit_price": 100,
+      "non_immediate_fixture_ids": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 10,
+      "name": "文房具",
+      "base_price": 150,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 150,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 11,
+      "name": "電気製品類",
+      "base_price": 800,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 800,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 12,
+      "name": "野菜類",
+      "base_price": 1500,
+      "cost_percent": 50,
+      "initial_setting": 50,
+      "initial_unit_price": 1500,
+      "non_immediate_fixture_ids": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 13,
+      "name": "魚類",
+      "base_price": 1000,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 1000,
+      "non_immediate_fixture_ids": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 14,
+      "name": "肉類",
+      "base_price": 1200,
+      "cost_percent": 50,
+      "initial_setting": 50,
+      "initial_unit_price": 1200,
+      "non_immediate_fixture_ids": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 15,
+      "name": "レトルト類",
+      "base_price": 600,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 600,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 16,
+      "name": "調味料類",
+      "base_price": 400,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 400,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 17,
+      "name": "冷凍食品類",
+      "base_price": 500,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 500,
+      "non_immediate_fixture_ids": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 18,
+      "name": "おでん",
+      "base_price": 250,
+      "cost_percent": 50,
+      "initial_setting": 50,
+      "initial_unit_price": 250,
+      "non_immediate_fixture_ids": [
+        23
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 19,
+      "name": "日用品",
+      "base_price": 800,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 800,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 20,
+      "name": "コピー用紙",
+      "base_price": 50,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 50,
+      "non_immediate_fixture_ids": [],
+      "immediate_fixture_ids": [
+        33,
+        34,
+        35,
+        36
+      ]
+    },
+    {
+      "id": 21,
+      "name": "宅急便申込書",
+      "base_price": 1000,
+      "cost_percent": 80,
+      "initial_setting": 20,
+      "initial_unit_price": 1000,
+      "non_immediate_fixture_ids": [
+        39,
+        42
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 22,
+      "name": "薬品",
+      "base_price": 1500,
+      "cost_percent": 70,
+      "initial_setting": 30,
+      "initial_unit_price": 1500,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 23,
+      "name": "下着類",
+      "base_price": 1000,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 1000,
+      "non_immediate_fixture_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 24,
+      "name": "イベント商品",
+      "base_price": 1000,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 1000,
+      "non_immediate_fixture_ids": [
+        25,
+        26
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 25,
+      "name": "中華まん",
+      "base_price": 170,
+      "cost_percent": 60,
+      "initial_setting": 40,
+      "initial_unit_price": 170,
+      "non_immediate_fixture_ids": [
+        24
+      ],
+      "immediate_fixture_ids": []
+    },
+    {
+      "id": 26,
+      "name": "現金",
+      "base_price": 0,
+      "cost_percent": 100,
+      "initial_setting": 0,
+      "initial_unit_price": 0,
+      "non_immediate_fixture_ids": [],
+      "immediate_fixture_ids": [
+        43,
+        44
+      ]
+    }
+  ],
+  "trait_label_note": "Profile+19 was previously called manners; this work grounds the security comparison role, not a new original UI label.",
+  "conditional_profile_counts_by_security": [
+    {
+      "security": 0,
+      "count": 134
+    },
+    {
+      "security": 1,
+      "count": 134
+    },
+    {
+      "security": 2,
+      "count": 134
+    },
+    {
+      "security": 3,
+      "count": 134
+    },
+    {
+      "security": 4,
+      "count": 134
+    },
+    {
+      "security": 5,
+      "count": 134
+    },
+    {
+      "security": 6,
+      "count": 134
+    },
+    {
+      "security": 7,
+      "count": 134
+    },
+    {
+      "security": 8,
+      "count": 134
+    },
+    {
+      "security": 9,
+      "count": 134
+    },
+    {
+      "security": 10,
+      "count": 105
+    },
+    {
+      "security": 11,
+      "count": 105
+    },
+    {
+      "security": 12,
+      "count": 105
+    },
+    {
+      "security": 13,
+      "count": 105
+    },
+    {
+      "security": 14,
+      "count": 105
+    },
+    {
+      "security": 15,
+      "count": 105
+    },
+    {
+      "security": 16,
+      "count": 105
+    },
+    {
+      "security": 17,
+      "count": 105
+    },
+    {
+      "security": 18,
+      "count": 105
+    },
+    {
+      "security": 19,
+      "count": 105
+    },
+    {
+      "security": 20,
+      "count": 78
+    },
+    {
+      "security": 21,
+      "count": 78
+    },
+    {
+      "security": 22,
+      "count": 78
+    },
+    {
+      "security": 23,
+      "count": 78
+    },
+    {
+      "security": 24,
+      "count": 78
+    },
+    {
+      "security": 25,
+      "count": 78
+    },
+    {
+      "security": 26,
+      "count": 78
+    },
+    {
+      "security": 27,
+      "count": 78
+    },
+    {
+      "security": 28,
+      "count": 78
+    },
+    {
+      "security": 29,
+      "count": 78
+    },
+    {
+      "security": 30,
+      "count": 70
+    },
+    {
+      "security": 31,
+      "count": 70
+    },
+    {
+      "security": 32,
+      "count": 70
+    },
+    {
+      "security": 33,
+      "count": 70
+    },
+    {
+      "security": 34,
+      "count": 70
+    },
+    {
+      "security": 35,
+      "count": 70
+    },
+    {
+      "security": 36,
+      "count": 70
+    },
+    {
+      "security": 37,
+      "count": 70
+    },
+    {
+      "security": 38,
+      "count": 70
+    },
+    {
+      "security": 39,
+      "count": 70
+    },
+    {
+      "security": 40,
+      "count": 35
+    },
+    {
+      "security": 41,
+      "count": 35
+    },
+    {
+      "security": 42,
+      "count": 35
+    },
+    {
+      "security": 43,
+      "count": 35
+    },
+    {
+      "security": 44,
+      "count": 35
+    },
+    {
+      "security": 45,
+      "count": 35
+    },
+    {
+      "security": 46,
+      "count": 35
+    },
+    {
+      "security": 47,
+      "count": 35
+    },
+    {
+      "security": 48,
+      "count": 35
+    },
+    {
+      "security": 49,
+      "count": 35
+    },
+    {
+      "security": 50,
+      "count": 16
+    },
+    {
+      "security": 51,
+      "count": 16
+    },
+    {
+      "security": 52,
+      "count": 16
+    },
+    {
+      "security": 53,
+      "count": 16
+    },
+    {
+      "security": 54,
+      "count": 16
+    },
+    {
+      "security": 55,
+      "count": 16
+    },
+    {
+      "security": 56,
+      "count": 16
+    },
+    {
+      "security": 57,
+      "count": 16
+    },
+    {
+      "security": 58,
+      "count": 16
+    },
+    {
+      "security": 59,
+      "count": 16
+    },
+    {
+      "security": 60,
+      "count": 4
+    },
+    {
+      "security": 61,
+      "count": 4
+    },
+    {
+      "security": 62,
+      "count": 4
+    },
+    {
+      "security": 63,
+      "count": 4
+    },
+    {
+      "security": 64,
+      "count": 4
+    },
+    {
+      "security": 65,
+      "count": 4
+    },
+    {
+      "security": 66,
+      "count": 4
+    },
+    {
+      "security": 67,
+      "count": 4
+    },
+    {
+      "security": 68,
+      "count": 4
+    },
+    {
+      "security": 69,
+      "count": 4
+    },
+    {
+      "security": 70,
+      "count": 2
+    },
+    {
+      "security": 71,
+      "count": 2
+    },
+    {
+      "security": 72,
+      "count": 2
+    },
+    {
+      "security": 73,
+      "count": 2
+    },
+    {
+      "security": 74,
+      "count": 2
+    },
+    {
+      "security": 75,
+      "count": 2
+    },
+    {
+      "security": 76,
+      "count": 2
+    },
+    {
+      "security": 77,
+      "count": 2
+    },
+    {
+      "security": 78,
+      "count": 2
+    },
+    {
+      "security": 79,
+      "count": 2
+    },
+    {
+      "security": 80,
+      "count": 2
+    },
+    {
+      "security": 81,
+      "count": 2
+    },
+    {
+      "security": 82,
+      "count": 2
+    },
+    {
+      "security": 83,
+      "count": 2
+    },
+    {
+      "security": 84,
+      "count": 2
+    },
+    {
+      "security": 85,
+      "count": 2
+    },
+    {
+      "security": 86,
+      "count": 2
+    },
+    {
+      "security": 87,
+      "count": 2
+    },
+    {
+      "security": 88,
+      "count": 2
+    },
+    {
+      "security": 89,
+      "count": 2
+    },
+    {
+      "security": 90,
+      "count": 0
+    },
+    {
+      "security": 91,
+      "count": 0
+    },
+    {
+      "security": 92,
+      "count": 0
+    },
+    {
+      "security": 93,
+      "count": 0
+    },
+    {
+      "security": 94,
+      "count": 0
+    },
+    {
+      "security": 95,
+      "count": 0
+    },
+    {
+      "security": 96,
+      "count": 0
+    },
+    {
+      "security": 97,
+      "count": 0
+    },
+    {
+      "security": 98,
+      "count": 0
+    },
+    {
+      "security": 99,
+      "count": 0
+    },
+    {
+      "security": 100,
+      "count": 0
+    }
+  ],
+  "source_label_note": "Fixture labels decoded from source MSG00 using existing by-eye font table. Building/product/group labels are original Shift-JIS."
+}

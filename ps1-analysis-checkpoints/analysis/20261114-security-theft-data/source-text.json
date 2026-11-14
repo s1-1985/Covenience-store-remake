@@ -1,0 +1,34 @@
+{
+  "theft_prefix": {
+    "address": "0x80098e1c",
+    "codes": [
+      570,
+      230,
+      39,
+      16639
+    ],
+    "text": "今月、"
+  },
+  "theft_suffix": {
+    "address": "0x80098e24",
+    "codes": [
+      300,
+      16386,
+      410,
+      457,
+      69,
+      73,
+      104,
+      81,
+      74,
+      93,
+      64,
+      93,
+      74,
+      78,
+      16639
+    ],
+    "text": "分{4002}万引きされてしまいました"
+  },
+  "decoding": "Original16-bit words plus existing by-eye font transcription; no new OCR."
+}

@@ -1,0 +1,53 @@
+{
+  "scope": "Source arithmetic examples, not new gameplay observations.",
+  "neighborhood": [
+    {
+      "facility": "交番",
+      "matching_cells": 4,
+      "bonus": 40
+    },
+    {
+      "facility": "消防署",
+      "matching_cells": 6,
+      "bonus": 30
+    },
+    {
+      "facility": "交番部分重なり",
+      "matching_cells": 1,
+      "bonus": 10
+    }
+  ],
+  "boundaries": [
+    {
+      "security": 89,
+      "profile_trait19": 10,
+      "threshold": 90,
+      "below": true
+    },
+    {
+      "security": 90,
+      "profile_trait19": 10,
+      "threshold": 90,
+      "below": false
+    },
+    {
+      "security": 100,
+      "profile_trait19": 10,
+      "threshold": 90,
+      "below": false
+    }
+  ],
+  "loss": {
+    "unit_selling_price": 110,
+    "procurement_unit_cost": 55,
+    "quantity": 5,
+    "loss_counter_increase": 550,
+    "immediate_cash_debit": 0,
+    "note": "Uses initial cold-drink price/cost directly from the source master, provided non-immediate fixture and all other gates pass."
+  },
+  "rating": {
+    "nonzero_loss_counter": 550,
+    "loss_penalty": -1,
+    "penalty_is_not_minus550": true
+  }
+}

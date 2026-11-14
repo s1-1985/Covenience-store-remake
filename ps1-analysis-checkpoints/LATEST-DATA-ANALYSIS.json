@@ -1,23 +1,38 @@
 {
   "date_jst": "2026-11-14",
-  "work_kind": "parking_arrival_group_source_data_analysis",
-  "report": "analysis/20261114-parking-arrival-data/README.md",
+  "work_kind": "security_theft_source_data_analysis",
+  "report": "analysis/20261114-security-theft-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "parking_fixture_types": 3,
-  "builtin_layouts": 30,
-  "initial_active_stores": 11,
-  "parking_required_profiles": 14,
-  "initial_parking_mode_population_heads": {
-    "TOWN0001": 232,
-    "TOWN0002": 249,
-    "TOWN0003": 191,
-    "TOWNPS": 133
+  "profiles": 144,
+  "fixture_classes": 53,
+  "initial_stores": 11,
+  "initial_store_security": {
+    "TOWN0001": [
+      89,
+      58
+    ],
+    "TOWN0002": [
+      88,
+      60,
+      18
+    ],
+    "TOWN0003": [
+      59
+    ],
+    "TOWNPS": [
+      16,
+      53,
+      54,
+      50,
+      52
+    ]
   },
-  "new_specification": "Connect actual parking fixtures/layouts to mode3 group heads. Preserve cumulative capacity across physical slots, active-mode3 occupancy, partial admission and two pending-demand deductions, signed16 negative demand, per-overflow warning and one-edge entry retry.",
-  "known_before": "Isolated parking/spawn logic and cross-store capacity carryover already existed. This work binds them to all source layouts and actual map populations.",
-  "previous_report": "analysis/20261114-checkout-waiting-data/README.md",
-  "android_bridge": "analysis/20261114-parking-arrival-data/android-parking-arrival-bridge.json",
+  "new_specification": "Link current staff security and per-cell police-box/fire-station bonuses to all11 initial stores, all144 conditional profile thresholds and53 fixture payment classes. Theft branch uses selling-price loss, no direct cash debit or extra local RNG; rating consumes nonzero loss once and clears it.",
+  "known_before": "Isolated theft gate, purchase control and neighborhood score models existed; this work connects all144 original traits, all53 fixture classes and initial11-store map/staff data, plus source loss notification.",
+  "previous_report": "analysis/20261114-parking-arrival-data/README.md",
+  "android_bridge": "analysis/20261114-security-theft-data/android-security-theft-bridge.json",
   "original_cpu_updates_this_work": 0,
+  "unresolved": "Separate robbery/fire incident frequency and complete end-to-end prior-cart handling are not newly established here.",
   "next_priority": "Continue necessary normal-play source-data analysis, integrate recovered specifications into native Android, then build APK."
 }

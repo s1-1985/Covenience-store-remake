@@ -1,0 +1,74 @@
+[
+  {
+    "name": "security_producer",
+    "address": "0x800224e0",
+    "bytes": 924,
+    "sha256": "f59ac18040c0cf4d0e51826441a2f729735317d613fff4cd1d9fe32373abdfe5"
+  },
+  {
+    "name": "summary_security_link",
+    "address": "0x80023d84",
+    "bytes": 72,
+    "sha256": "847ec22662b76c7237b604b53cd30bfa500eff6e2b38b560e5bd2102eaf5fa0d"
+  },
+  {
+    "name": "purchase_security_and_theft",
+    "address": "0x8003473c",
+    "bytes": 1424,
+    "sha256": "4db2e84d513a1284dfdd1dcd01e796a728a1dbb1922168d1b227d1881ec70d86"
+  },
+  {
+    "name": "immediate_classifier",
+    "address": "0x800360a0",
+    "bytes": 192,
+    "sha256": "b2d5479558c03f8ab3424657908997ce356f42ffc9492aad5938cf242c21dd9e"
+  },
+  {
+    "name": "group_acquisition",
+    "address": "0x8003b420",
+    "bytes": 336,
+    "sha256": "067b1756d30ce52a907912912263834ef9265c457d28d9435fb66a1f0806d4ef"
+  },
+  {
+    "name": "rating_loss",
+    "address": "0x800281b4",
+    "bytes": 328,
+    "sha256": "f128ce047332212f7958f1159fe6ab2f5ecc2f8a5cbe263ef3fae8fa80c0c367"
+  },
+  {
+    "name": "denominators",
+    "address": "0x80098cf8",
+    "bytes": 24,
+    "sha256": "606e77c295f41826b800d98cd4db1df6d1ec80a370f5cb0b8522f0ada364273a"
+  },
+  {
+    "name": "police-fire-buildings",
+    "address": "0x8009db28",
+    "bytes": 112,
+    "sha256": "89884ff92841b32a4b64d3b9adc649b2b8d687afc2233f2967bb4f572333bc91"
+  },
+  {
+    "name": "profiles",
+    "address": "0x800a09d0",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "name": "fixture-master",
+    "address": "0x80099f0c",
+    "bytes": 10388,
+    "sha256": "ff38d0b8eb5d1d17fabca839abed108b9243b9fafc70449024763e73fc5eba51"
+  },
+  {
+    "name": "product-master",
+    "address": "0x8009cdf0",
+    "bytes": 2376,
+    "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+  },
+  {
+    "name": "theft-text",
+    "address": "0x80098e1c",
+    "bytes": 52,
+    "sha256": "1ac0ccdfd848e43a1124994918c4b56b01f56bea88ad7c740d2bb949a3b78ba9"
+  }
+]
