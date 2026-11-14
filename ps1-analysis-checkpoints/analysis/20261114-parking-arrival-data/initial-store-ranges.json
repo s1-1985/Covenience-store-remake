@@ -1,0 +1,93 @@
+{
+  "file": "source/initial-active-stores.bin",
+  "stores": [
+    {
+      "map": "TOWN0001",
+      "physical_slot": 1,
+      "source_offset": 30987,
+      "packed_offset": 0,
+      "bytes": 5080,
+      "sha256": "869b5315c5a6af7431828f3c50a17bed5284d25eea1d015a6bc7c404bcc5467d"
+    },
+    {
+      "map": "TOWN0001",
+      "physical_slot": 2,
+      "source_offset": 36067,
+      "packed_offset": 5080,
+      "bytes": 5080,
+      "sha256": "fc862261eef9f9c0c6dcf654d99528eaa8f8b5110be74bb40a0da3d98ea8f3a2"
+    },
+    {
+      "map": "TOWN0002",
+      "physical_slot": 1,
+      "source_offset": 30987,
+      "packed_offset": 10160,
+      "bytes": 5080,
+      "sha256": "71d5200dbf0a0af0fc8512bd5d4b06e96c1a116c653eccc6165547770e185814"
+    },
+    {
+      "map": "TOWN0002",
+      "physical_slot": 2,
+      "source_offset": 36067,
+      "packed_offset": 15240,
+      "bytes": 5080,
+      "sha256": "d369ed1533f9766be03be54780df9221e8d284111e8cdeeafafd85363cab9c63"
+    },
+    {
+      "map": "TOWN0002",
+      "physical_slot": 3,
+      "source_offset": 41147,
+      "packed_offset": 20320,
+      "bytes": 5080,
+      "sha256": "dda3c3e2dcffa37855caff0016898936687995ab965ce687c356adb982e1a3bb"
+    },
+    {
+      "map": "TOWN0003",
+      "physical_slot": 1,
+      "source_offset": 30987,
+      "packed_offset": 25400,
+      "bytes": 5080,
+      "sha256": "47fef0650f7a31e0bed3871e76cc4eee39da87fabb1f74da79aa255afddced8e"
+    },
+    {
+      "map": "TOWNPS",
+      "physical_slot": 1,
+      "source_offset": 30987,
+      "packed_offset": 30480,
+      "bytes": 5080,
+      "sha256": "f48b23abfdf94b929feece7a1f1608fc2180b340d345daa8400a6cd5c0cf6843"
+    },
+    {
+      "map": "TOWNPS",
+      "physical_slot": 2,
+      "source_offset": 36067,
+      "packed_offset": 35560,
+      "bytes": 5080,
+      "sha256": "d9c7c0d2efa2a06fe96f62be2448f6cb772893a548a3e0523a770335d4b01c99"
+    },
+    {
+      "map": "TOWNPS",
+      "physical_slot": 3,
+      "source_offset": 41147,
+      "packed_offset": 40640,
+      "bytes": 5080,
+      "sha256": "cda09ed29ba87e1cb38d22af754c375178a943bae3e88c96c02dad8ae910c3a2"
+    },
+    {
+      "map": "TOWNPS",
+      "physical_slot": 4,
+      "source_offset": 46227,
+      "packed_offset": 45720,
+      "bytes": 5080,
+      "sha256": "6351d639b44e9e258c2803a027ede27eb690cdc88ac6f48211ed6b55b47d954b"
+    },
+    {
+      "map": "TOWNPS",
+      "physical_slot": 5,
+      "source_offset": 51307,
+      "packed_offset": 50800,
+      "bytes": 5080,
+      "sha256": "63b5e7af41d3ea433e672cda500935ee70c08ca2df05243582471c1b61dc19e1"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 10236,
+    "sha256": "d41cbe60034cc9968a79fa0671126c4879bacb12f601f5fc5c113b3b58433ad3"
+  },
+  {
+    "path": "android-parking-arrival-bridge.json",
+    "bytes": 2651,
+    "sha256": "fcda5fab51a23b78464c86e06fef4b231e978d8038f36f7b87c8a365e45aabcf"
+  },
+  {
+    "path": "extract-parking-arrival.py",
+    "bytes": 13316,
+    "sha256": "1164eabff731599f1e37913bab5fc3a8d786eaf44c934bdc7e8a33ad31aaae6c"
+  },
+  {
+    "path": "initial-store-ranges.json",
+    "bytes": 2560,
+    "sha256": "17c30e5c54f75e38de340ec32dcb4f99d53741e408c5be1f96e1248649e6b00a"
+  },
+  {
+    "path": "parking-arrival-data.json",
+    "bytes": 63429,
+    "sha256": "ed89861bd1a6b63da9da7c67cb4d131d235267139590ada817e9b4985e5c1d57"
+  },
+  {
+    "path": "parking-readers.asm",
+    "bytes": 79562,
+    "sha256": "ca89137c221d63d4ffd7763b8fdc4fd52b080c5c0dae2ee8e47ea829ead210af"
+  },
+  {
+    "path": "source/arrival_allocate.bin",
+    "bytes": 1824,
+    "sha256": "e46aa354e8a22dc1344b358f319dc1329dc62821befbf959b908f7dd68fd1ec3"
+  },
+  {
+    "path": "source/customer-mixes.bin",
+    "bytes": 2740,
+    "sha256": "1b9e985b16aa099f7542690e9b6745a46cb4d801c34be10f816d4af0cf419557"
+  },
+  {
+    "path": "source/customer-record-limits.bin",
+    "bytes": 24,
+    "sha256": "bf8a572d7a2a7df453e59890702b869eed4da01f38336fe41584efdeb3501a37"
+  },
+  {
+    "path": "source/edge_entry.bin",
+    "bytes": 3912,
+    "sha256": "cea4b13bd9f3ac78a2843272e33489fa3290e8d6445a4d9b0679b818b9755d77"
+  },
+  {
+    "path": "source/initial-active-stores.bin",
+    "bytes": 55880,
+    "sha256": "11cfb408dce3d1df6b4d776d8ad15676a7310a41f0bff2ee6aa80a6519a738e3"
+  },
+  {
+    "path": "source/layouts.bin",
+    "bytes": 93240,
+    "sha256": "2605b35d94975af3f95a625a44c9f68819b56e0755df72e0551afee7b4928b91"
+  },
+  {
+    "path": "source/metric_capacity.bin",
+    "bytes": 3216,
+    "sha256": "128e200377819f597ce1ce0681e9f08a91e13468bd03b63744d1e9e390934a3d"
+  },
+  {
+    "path": "source/occupied_parking_heads.bin",
+    "bytes": 308,
+    "sha256": "9b92fe11bfc9168e159123d3fb0282bac97865ec9281028df0dcab8aa9dc02ea"
+  },
+  {
+    "path": "source/parking-fixtures.bin",
+    "bytes": 588,
+    "sha256": "99134210efed0c42953089c7af6280b7674efa8f28c230538ad057d6e14e91eb"
+  },
+  {
+    "path": "source/shopping-profiles.bin",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "path": "source-derived-examples.json",
+    "bytes": 1498,
+    "sha256": "bdb53617e72eb9116ce7ddf2bcfb7b8cb58c7e009b2a0df13d3b67d194c43a5c"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1525,
+    "sha256": "df27e69380f1d493b623a203d14c6ecd169a76d0f6ee638ea23b0b64febfb7e4"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 980,
+    "sha256": "fee859227e891d2b9e039d2f37d6674c0a55d08e188761a077449d785f213660"
+  }
+]

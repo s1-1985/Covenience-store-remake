@@ -1,0 +1,32 @@
+{
+  "parking_fixture_types": 3,
+  "parking_required_profiles": 14,
+  "builtin_layouts": 30,
+  "layouts_without_own_parking": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25
+  ],
+  "initial_active_stores": 11,
+  "initial_parking_mode_population_heads": {
+    "TOWN0001": 232,
+    "TOWN0002": 249,
+    "TOWN0003": 191,
+    "TOWNPS": 133
+  },
+  "customer_record_limits": [
+    10,
+    10,
+    15,
+    15,
+    20,
+    20
+  ],
+  "original_cpu_updates": 0,
+  "newly_connected": "Parking fixtures and capacities for30 layouts/11 starting stores;14 mode3 profiles and4-map mix heads; source occupancy/rejected-partial-group effects with pending-demand signedness.",
+  "known_before": "Isolated parking/spawn logic and cross-store capacity carryover already existed. This work binds them to all source layouts and actual map populations.",
+  "not_claimed": "Initial population mix is not a daily visitor forecast; no new transport label for modes0..2; no real-time entry delay measured."
+}

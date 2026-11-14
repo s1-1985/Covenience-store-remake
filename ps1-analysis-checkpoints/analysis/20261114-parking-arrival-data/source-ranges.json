@@ -1,0 +1,56 @@
+[
+  {
+    "name": "occupied_parking_heads",
+    "address": "0x80022bf4",
+    "bytes": 308,
+    "sha256": "9b92fe11bfc9168e159123d3fb0282bac97865ec9281028df0dcab8aa9dc02ea"
+  },
+  {
+    "name": "metric_capacity",
+    "address": "0x80023c20",
+    "bytes": 3216,
+    "sha256": "128e200377819f597ce1ce0681e9f08a91e13468bd03b63744d1e9e390934a3d"
+  },
+  {
+    "name": "arrival_allocate",
+    "address": "0x800319ac",
+    "bytes": 1824,
+    "sha256": "e46aa354e8a22dc1344b358f319dc1329dc62821befbf959b908f7dd68fd1ec3"
+  },
+  {
+    "name": "edge_entry",
+    "address": "0x800331b4",
+    "bytes": 3912,
+    "sha256": "cea4b13bd9f3ac78a2843272e33489fa3290e8d6445a4d9b0679b818b9755d77"
+  },
+  {
+    "name": "layouts",
+    "address": "0x800a2074",
+    "bytes": 93240,
+    "sha256": "2605b35d94975af3f95a625a44c9f68819b56e0755df72e0551afee7b4928b91"
+  },
+  {
+    "name": "parking-fixtures",
+    "address": "0x8009c554",
+    "bytes": 588,
+    "sha256": "99134210efed0c42953089c7af6280b7674efa8f28c230538ad057d6e14e91eb"
+  },
+  {
+    "name": "shopping-profiles",
+    "address": "0x800a09d0",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "name": "customer-mixes",
+    "address": "0x8009ff1c",
+    "bytes": 2740,
+    "sha256": "1b9e985b16aa099f7542690e9b6745a46cb4d801c34be10f816d4af0cf419557"
+  },
+  {
+    "name": "customer-record-limits",
+    "address": "0x80099db8",
+    "bytes": 24,
+    "sha256": "bf8a572d7a2a7df453e59890702b869eed4da01f38336fe41584efdeb3501a37"
+  }
+]

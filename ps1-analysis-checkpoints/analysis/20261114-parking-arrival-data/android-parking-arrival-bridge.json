@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "fixtures": "Only anchored fixtures with kind<53 and(master_flags&255)==10 contribute master+12 capacity. Sum once per anchor, not every covered cell. Rotate footprint when direction>=2.",
+  "capacity_carry": "Summary builder clears parking accumulator once before physical-slot loop0..9. Active later stores inherit previous active stores capacity; not a per-store reset.",
+  "occupied_rebuild": "80022bf4 scans tier-limited customer records. Count group quantity+1e only if state!=0 AND profile+12==3. Coordinates and exact active state1..5 do not filter it.",
+  "record_limit": "10,10,15,15,20,20 indexed by store+C70. These are group-record counts, not total people or parking slots.",
+  "candidate": "Open store, first free record, RNG&3==0. Choose random starting profile modulo144 then advance before checking. Eligibility uses schedule at profile arrival hour and signed16 remaining demand>0. Request=min(demand,5).",
+  "parking_gate": "Only arrival mode3: if occupied+request>capacity, increment signed complaint12e3 if<127, deduct ORIGINAL request from u16 pending demand, and set flag0x40. Then request=capacity-occupied. <=0 means no new record this attempt; do not retry a different profile here.",
+  "creation": "Initialize one state1 customer record with admitted group quantity and one randomly chosen appearance. Deduct admitted quantity from pending demand again, add admitted quantity to summary occupied14 and store visitor count1188. The summary increment is unconditional in this local block, even for modes0..2; the rebuild later counts only active mode3 records.",
+  "signed_demand": "The table is written with low16-bit subtraction but candidates read signed16 and require>0. Partial overflow can make a negative value; preserve it rather than clamping or treating as huge unsigned demand.",
+  "people_vs_objects": "One source customer record and one image represent up to5 admitted heads. Do not expand a group into5 independent source records or debit parking once per record.",
+  "entry": "State1 later attempts edge entry via800331b4: one random edge, ordered scan for empty cell with route marker-2. Failing that edge returns1 and retries in a later update; no fallback scan of all4 edges within this call.",
+  "warning": "12e3 increments once per overflow branch, including partial admission. Original detailed warning displays raw count as people; see prior checkout-waiting report for thresholds and resets.",
+  "scope": "Static source data plus code contract. Existing isolated spawn/parking models are reused as prior knowledge; no CPU-run extension or new gameplay timing measurement."
+}

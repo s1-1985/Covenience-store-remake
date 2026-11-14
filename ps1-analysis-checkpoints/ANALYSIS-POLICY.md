@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-14：駐車3什器・30レイアウト・初期11店舗と部分入店の需要減算](analysis/20261114-parking-arrival-data/README.md)
+
 - [2026-11-14：客144購買型の待機・会計・混雑警告と全配属店員への能力低下](analysis/20261114-checkout-waiting-data/README.md)
 
 - [2026-11-14：店員35人・4マップの配属、原能力名と成長・休憩・年次処理](analysis/20261114-staff-roster-growth-data/README.md)

@@ -1,0 +1,2911 @@
+{
+  "schema_version": 1,
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "parking_fixtures": [
+    {
+      "id": 50,
+      "address": "0x8009c554",
+      "raw_words": [
+        522,
+        500,
+        0,
+        2,
+        0,
+        0,
+        50,
+        100,
+        100,
+        1,
+        2,
+        91,
+        -1,
+        -1,
+        92,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        46,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "category": 10,
+      "capacity": 2,
+      "logical_footprint": [
+        1,
+        2
+      ],
+      "label": {
+        "message_index": 437,
+        "offset": 9064,
+        "codes": [
+          321,
+          322,
+          323,
+          16639
+        ],
+        "text": "駐車場"
+      }
+    },
+    {
+      "id": 51,
+      "address": "0x8009c618",
+      "raw_words": [
+        522,
+        1000,
+        10,
+        4,
+        0,
+        0,
+        50,
+        200,
+        100,
+        1,
+        2,
+        93,
+        -1,
+        -1,
+        94,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        47,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "category": 10,
+      "capacity": 4,
+      "logical_footprint": [
+        1,
+        2
+      ],
+      "label": {
+        "message_index": 438,
+        "offset": 9072,
+        "codes": [
+          2,
+          631,
+          240,
+          321,
+          322,
+          323,
+          16639
+        ],
+        "text": "2階建駐車場"
+      }
+    },
+    {
+      "id": 52,
+      "address": "0x8009c6dc",
+      "raw_words": [
+        522,
+        9000,
+        200,
+        20,
+        0,
+        0,
+        150,
+        900,
+        100,
+        3,
+        2,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        -1,
+        -1,
+        -1,
+        48,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        0
+      ],
+      "category": 10,
+      "capacity": 20,
+      "logical_footprint": [
+        3,
+        2
+      ],
+      "label": {
+        "message_index": 439,
+        "offset": 9086,
+        "codes": [
+          158,
+          186,
+          46,
+          321,
+          322,
+          323,
+          16639
+        ],
+        "text": "タワー駐車場"
+      }
+    }
+  ],
+  "customer_record_limits": [
+    10,
+    10,
+    15,
+    15,
+    20,
+    20
+  ],
+  "all_profile_arrival_mode_counts": {
+    "0": 97,
+    "1": 25,
+    "2": 8,
+    "3": 14
+  },
+  "parking_required_profiles": [
+    {
+      "id": 15,
+      "address": "0x800a0b38",
+      "raw_hex": "000014003c00881315010618035a32281432643c32643200",
+      "appearance_group": 0,
+      "group_label": "赤い女子大生",
+      "arrival_hour": 20,
+      "stay_minutes": 60,
+      "budget": 5000,
+      "arrival_mode": 3,
+      "product_ids": [
+        21,
+        1,
+        6,
+        24
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 81,
+      "address": "0x800a1168",
+      "raw_hex": "0e001700780010270212060803640a0a0a32461e46466400",
+      "appearance_group": 14,
+      "group_label": "はげたおじさん",
+      "arrival_hour": 23,
+      "stay_minutes": 120,
+      "budget": 10000,
+      "arrival_mode": 3,
+      "product_ids": [
+        2,
+        18,
+        6,
+        8
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 82,
+      "address": "0x800a1180",
+      "raw_hex": "0f000f007800dc05090008ff03320a0a3232464632466400",
+      "appearance_group": 15,
+      "group_label": "汗かきのおじさん",
+      "arrival_hour": 15,
+      "stay_minutes": 120,
+      "budget": 1500,
+      "arrival_mode": 3,
+      "product_ids": [
+        9,
+        0,
+        8,
+        -1
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 84,
+      "address": "0x800a11b0",
+      "raw_hex": "0f001700780088130802060803640a0a0a32461e50466400",
+      "appearance_group": 15,
+      "group_label": "汗かきのおじさん",
+      "arrival_hour": 23,
+      "stay_minutes": 120,
+      "budget": 5000,
+      "arrival_mode": 3,
+      "product_ids": [
+        8,
+        2,
+        6,
+        8
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 127,
+      "address": "0x800a15b8",
+      "raw_hex": "1d000f00f000401f0d0c0e1003645a0a506432501e506400",
+      "appearance_group": 29,
+      "group_label": "ｴﾌﾟﾛﾝ姿のおばさん",
+      "arrival_hour": 15,
+      "stay_minutes": 240,
+      "budget": 8000,
+      "arrival_mode": 3,
+      "product_ids": [
+        13,
+        12,
+        14,
+        16
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 129,
+      "address": "0x800a15e8",
+      "raw_hex": "1f001100f00010270c0d0e1003645a0a506432501e506400",
+      "appearance_group": 31,
+      "group_label": "ｶｰﾙ髪のおばさん",
+      "arrival_hour": 17,
+      "stay_minutes": 240,
+      "budget": 10000,
+      "arrival_mode": 3,
+      "product_ids": [
+        12,
+        13,
+        14,
+        16
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 130,
+      "address": "0x800a1600",
+      "raw_hex": "20001400f000a00f06000918033c32141e281e5046146400",
+      "appearance_group": 32,
+      "group_label": "子供連れのおじさん",
+      "arrival_hour": 20,
+      "stay_minutes": 240,
+      "budget": 4000,
+      "arrival_mode": 3,
+      "product_ids": [
+        6,
+        0,
+        9,
+        24
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 133,
+      "address": "0x800a1648",
+      "raw_hex": "21000f00f00050460b1713180346501446281e463c146400",
+      "appearance_group": 33,
+      "group_label": "子抱きのおばさん",
+      "arrival_hour": 15,
+      "stay_minutes": 240,
+      "budget": 18000,
+      "arrival_mode": 3,
+      "product_ids": [
+        11,
+        23,
+        19,
+        24
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 135,
+      "address": "0x800a1678",
+      "raw_hex": "23000f00f000983a170c111003505a0a46321e5032146400",
+      "appearance_group": 35,
+      "group_label": "ﾍﾞﾋﾞｰｶｰのおばさん",
+      "arrival_hour": 15,
+      "stay_minutes": 240,
+      "budget": 15000,
+      "arrival_mode": 3,
+      "product_ids": [
+        23,
+        12,
+        17,
+        16
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 136,
+      "address": "0x800a1690",
+      "raw_hex": "22001000f00088130d0c111003645a0a46321e5028146400",
+      "appearance_group": 34,
+      "group_label": "子供連れのおばさん",
+      "arrival_hour": 16,
+      "stay_minutes": 240,
+      "budget": 5000,
+      "arrival_mode": 3,
+      "product_ids": [
+        13,
+        12,
+        17,
+        16
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 140,
+      "address": "0x800a16f0",
+      "raw_hex": "020011003c00b80b00090618033c14501450504650643200",
+      "appearance_group": 2,
+      "group_label": "緑の女子大生",
+      "arrival_hour": 17,
+      "stay_minutes": 60,
+      "budget": 3000,
+      "arrival_mode": 3,
+      "product_ids": [
+        0,
+        9,
+        6,
+        24
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 141,
+      "address": "0x800a1708",
+      "raw_hex": "030011003c00b80b00090618033c14501450504650643200",
+      "appearance_group": 3,
+      "group_label": "白い大学生",
+      "arrival_hour": 17,
+      "stay_minutes": 60,
+      "budget": 3000,
+      "arrival_mode": 3,
+      "product_ids": [
+        0,
+        9,
+        6,
+        24
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 142,
+      "address": "0x800a1720",
+      "raw_hex": "200010003c0070170009061803461450142828503c146400",
+      "appearance_group": 32,
+      "group_label": "子供連れのおじさん",
+      "arrival_hour": 16,
+      "stay_minutes": 60,
+      "budget": 6000,
+      "arrival_mode": 3,
+      "product_ids": [
+        0,
+        9,
+        6,
+        24
+      ],
+      "source_distance_limit": 70
+    },
+    {
+      "id": 143,
+      "address": "0x800a1738",
+      "raw_hex": "220010003c00701700090618034614501428285046146400",
+      "appearance_group": 34,
+      "group_label": "子供連れのおばさん",
+      "arrival_hour": 16,
+      "stay_minutes": 60,
+      "budget": 6000,
+      "arrival_mode": 3,
+      "product_ids": [
+        0,
+        9,
+        6,
+        24
+      ],
+      "source_distance_limit": 70
+    }
+  ],
+  "builtin_layouts": [
+    {
+      "id": 0,
+      "address": "0x800a2074",
+      "sha256": "a9a8f5cd5d6ccdec8d49cd8738bfe9184f28c796c72d63120237e5d77f2c201b",
+      "size_subcells": [
+        20,
+        20
+      ],
+      "parking_anchors": [],
+      "own_parking_capacity": 0
+    },
+    {
+      "id": 1,
+      "address": "0x800a2c98",
+      "sha256": "569edb6796878882415ec598b7d8d6eace576bcc56fe4888e0b9200bad443635",
+      "size_subcells": [
+        20,
+        20
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 196,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 204,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 212,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 644,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 4,
+          "y": 4,
+          "fixture": 50,
+          "rotation": 1,
+          "raw_word": "80432162",
+          "source_offset": 660,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 868,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        }
+      ],
+      "own_parking_capacity": 18
+    },
+    {
+      "id": 2,
+      "address": "0x800a38bc",
+      "sha256": "a46a396d78fa6183d16c0448614137b70775d77eafadae6d3041e4ad3f078d0d",
+      "size_subcells": [
+        20,
+        20
+      ],
+      "parking_anchors": [
+        {
+          "x": 2,
+          "y": 0,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 204,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 428,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 652,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 876,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        }
+      ],
+      "own_parking_capacity": 8
+    },
+    {
+      "id": 3,
+      "address": "0x800a44e0",
+      "sha256": "23fc2dce716de7954e6a51875b0742c9d551fcea17a89d73e98ae68c04a8c140",
+      "size_subcells": [
+        20,
+        20
+      ],
+      "parking_anchors": [
+        {
+          "x": 2,
+          "y": 0,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 204,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 428,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 652,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 876,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        }
+      ],
+      "own_parking_capacity": 8
+    },
+    {
+      "id": 4,
+      "address": "0x800a5104",
+      "sha256": "a27e172f8f9c0de3532aca5111312f35c0e00d1308c7975d534f3287d7916c28",
+      "size_subcells": [
+        20,
+        20
+      ],
+      "parking_anchors": [
+        {
+          "x": 2,
+          "y": 0,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 204,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 428,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 652,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "fixture": 50,
+          "rotation": 2,
+          "raw_word": "80832160",
+          "source_offset": 876,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        }
+      ],
+      "own_parking_capacity": 8
+    },
+    {
+      "id": 5,
+      "address": "0x800a5d28",
+      "sha256": "7f6e43dc176e294418b0cf7c83eb0a17fa77733675557d6b64e1a8328b8ee063",
+      "size_subcells": [
+        20,
+        20
+      ],
+      "parking_anchors": [],
+      "own_parking_capacity": 0
+    },
+    {
+      "id": 6,
+      "address": "0x800a694c",
+      "sha256": "1c1bd65a16ff691b246c8597fb4c2c5ae461bb561f296a3648863076a24028e1",
+      "size_subcells": [
+        20,
+        20
+      ],
+      "parking_anchors": [
+        {
+          "x": 12,
+          "y": 0,
+          "fixture": 50,
+          "rotation": 0,
+          "raw_word": "80032162",
+          "source_offset": 244,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 14,
+          "y": 0,
+          "fixture": 50,
+          "rotation": 1,
+          "raw_word": "80432162",
+          "source_offset": 252,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 50,
+          "rotation": 0,
+          "raw_word": "80032162",
+          "source_offset": 260,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 18,
+          "y": 0,
+          "fixture": 50,
+          "rotation": 0,
+          "raw_word": "80032162",
+          "source_offset": 268,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 2
+        }
+      ],
+      "own_parking_capacity": 8
+    },
+    {
+      "id": 7,
+      "address": "0x800a7570",
+      "sha256": "0cc531536bbf328345b1fc8fe7a24cacbfeefe21f9e2176bb34ea096e31f8c9a",
+      "size_subcells": [
+        20,
+        20
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 196,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 260,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 420,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 484,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 644,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 708,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 24
+    },
+    {
+      "id": 8,
+      "address": "0x800a8194",
+      "sha256": "928eb88cbfbd2b6193389ddacaadf03e9330f74a9c7e4b3d75773cc365299f57",
+      "size_subcells": [
+        20,
+        20
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 196,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 260,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 420,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 484,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 644,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 708,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 24
+    },
+    {
+      "id": 9,
+      "address": "0x800a8db8",
+      "sha256": "3c41da18f3f1f57e19194b51d75765c5ec6d1db9f309a0abd2dd79801fc15ea4",
+      "size_subcells": [
+        20,
+        20
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 196,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 260,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 420,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 484,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 644,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 708,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 24
+    },
+    {
+      "id": 10,
+      "address": "0x800a99dc",
+      "sha256": "e856a224151804edf45dfe44591a27b58cc65ea37b0c0cdfd3707ebb1a561ba6",
+      "size_subcells": [
+        24,
+        24
+      ],
+      "parking_anchors": [],
+      "own_parking_capacity": 0
+    },
+    {
+      "id": 11,
+      "address": "0x800aa600",
+      "sha256": "047d22dbd24fec07c6cd7183f0460cb8bd228d1879dc2a7470cfec5b02899be3",
+      "size_subcells": [
+        24,
+        24
+      ],
+      "parking_anchors": [
+        {
+          "x": 2,
+          "y": 0,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 204,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 428,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 652,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 876,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 1100,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        }
+      ],
+      "own_parking_capacity": 10
+    },
+    {
+      "id": 12,
+      "address": "0x800ab224",
+      "sha256": "e3508cb76ea57c87e31bc94fd5d35dbdee4269c5d250647b8f1e706ebe082a25",
+      "size_subcells": [
+        24,
+        24
+      ],
+      "parking_anchors": [
+        {
+          "x": 2,
+          "y": 0,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 204,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 428,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 652,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 876,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 1100,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        }
+      ],
+      "own_parking_capacity": 10
+    },
+    {
+      "id": 13,
+      "address": "0x800abe48",
+      "sha256": "6d8225e921b68f354728075ac7dfcb5ab4e107295e7e5f424fc445d32bf18191",
+      "size_subcells": [
+        24,
+        24
+      ],
+      "parking_anchors": [
+        {
+          "x": 2,
+          "y": 0,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 204,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 428,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 652,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 876,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        },
+        {
+          "x": 2,
+          "y": 8,
+          "fixture": 50,
+          "rotation": 3,
+          "raw_word": "80c32160",
+          "source_offset": 1100,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 2
+        }
+      ],
+      "own_parking_capacity": 10
+    },
+    {
+      "id": 14,
+      "address": "0x800aca6c",
+      "sha256": "f3d0c6e9181a3e398c24e4fe3806523e2bd53c681a409a33bf32a7c3a649d690",
+      "size_subcells": [
+        24,
+        24
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 196,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 420,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 644,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 868,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 8,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 1092,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 20
+    },
+    {
+      "id": 15,
+      "address": "0x800ad690",
+      "sha256": "c6cfcc17159dbcf551012da7b5d3487b54f6dfcf8be0ed782d0b1abf88b93672",
+      "size_subcells": [
+        24,
+        24
+      ],
+      "parking_anchors": [],
+      "own_parking_capacity": 0
+    },
+    {
+      "id": 16,
+      "address": "0x800ae2b4",
+      "sha256": "2287d22a36c7dd87adfbd11371b4c67a8cc8314cb32939e405fbc1a6aa2ac800",
+      "size_subcells": [
+        24,
+        24
+      ],
+      "parking_anchors": [
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 52,
+          "rotation": 2,
+          "raw_word": "8083415a",
+          "source_offset": 260,
+          "footprint_subcells": [
+            4,
+            6
+          ],
+          "capacity": 20
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "fixture": 52,
+          "rotation": 2,
+          "raw_word": "8083415a",
+          "source_offset": 276,
+          "footprint_subcells": [
+            4,
+            6
+          ],
+          "capacity": 20
+        }
+      ],
+      "own_parking_capacity": 40
+    },
+    {
+      "id": 17,
+      "address": "0x800aeed8",
+      "sha256": "9332a9997bed5b04748e82dc6afdfb4c3e0d5cb55535007fc658b01954f60db4",
+      "size_subcells": [
+        24,
+        24
+      ],
+      "parking_anchors": [
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 260,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 276,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 22,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 284,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 484,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 18,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 492,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 20,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 724,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 24
+    },
+    {
+      "id": 18,
+      "address": "0x800afafc",
+      "sha256": "20ed82964af2606ba4f9f3834c605dc60985d4d0ed452d3d18c8ecd42252f670",
+      "size_subcells": [
+        24,
+        24
+      ],
+      "parking_anchors": [
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 260,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 276,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 22,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 284,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 484,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 18,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 492,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 20,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 724,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 24
+    },
+    {
+      "id": 19,
+      "address": "0x800b0720",
+      "sha256": "bbcccc2878a1ab3a38c79bbbc794657553b768968328e81aa6f0a3e8c922ee39",
+      "size_subcells": [
+        24,
+        24
+      ],
+      "parking_anchors": [
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 260,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 276,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 22,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 284,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 16,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 484,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 18,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 492,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 20,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 724,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 24
+    },
+    {
+      "id": 20,
+      "address": "0x800b1344",
+      "sha256": "af4e59124df8282ef08bb3e4a3636b55b4ea80159727decb0444f37afbda7023",
+      "size_subcells": [
+        28,
+        26
+      ],
+      "parking_anchors": [],
+      "own_parking_capacity": 0
+    },
+    {
+      "id": 21,
+      "address": "0x800b1f68",
+      "sha256": "2baccb31bf7158544f79e026a999183b2c6a79c9e5733e29a619be0cd212b280",
+      "size_subcells": [
+        28,
+        26
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 196,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 212,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 2,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 420,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 644,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 2,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 652,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 2,
+          "y": 6,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 876,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 24
+    },
+    {
+      "id": 22,
+      "address": "0x800b2b8c",
+      "sha256": "7158a32671d19b7317b24c9d374f448800c40aba0e914739fe6389cd077910c3",
+      "size_subcells": [
+        28,
+        26
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 52,
+          "rotation": 0,
+          "raw_word": "80034154",
+          "source_offset": 196,
+          "footprint_subcells": [
+            6,
+            4
+          ],
+          "capacity": 20
+        },
+        {
+          "x": 0,
+          "y": 22,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 2660,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 24,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 2884,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 28
+    },
+    {
+      "id": 23,
+      "address": "0x800b37b0",
+      "sha256": "862590cbb3b9e495eafc69ffafcf70e798837cf1e17f2af978bac6b08b97a313",
+      "size_subcells": [
+        28,
+        26
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 52,
+          "rotation": 0,
+          "raw_word": "80034154",
+          "source_offset": 196,
+          "footprint_subcells": [
+            6,
+            4
+          ],
+          "capacity": 20
+        },
+        {
+          "x": 0,
+          "y": 22,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 2660,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 24,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 2884,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 28
+    },
+    {
+      "id": 24,
+      "address": "0x800b43d4",
+      "sha256": "91a7aea5a3d55448c7fd1342fb865e8643e52005bc5821e083e487f0c3e1839e",
+      "size_subcells": [
+        28,
+        26
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 52,
+          "rotation": 0,
+          "raw_word": "80034154",
+          "source_offset": 196,
+          "footprint_subcells": [
+            6,
+            4
+          ],
+          "capacity": 20
+        },
+        {
+          "x": 0,
+          "y": 22,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 2660,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 0,
+          "y": 24,
+          "fixture": 51,
+          "rotation": 3,
+          "raw_word": "80c33164",
+          "source_offset": 2884,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 28
+    },
+    {
+      "id": 25,
+      "address": "0x800b4ff8",
+      "sha256": "8260e992d56be0400e0718453d39a3210f742b88a6118a4823a59d9650b47ce8",
+      "size_subcells": [
+        28,
+        26
+      ],
+      "parking_anchors": [],
+      "own_parking_capacity": 0
+    },
+    {
+      "id": 26,
+      "address": "0x800b5c1c",
+      "sha256": "5d64b4a53757bf944ee0e704b3193174bad3a6202ed2ebfe88092ddfcd228a32",
+      "size_subcells": [
+        28,
+        26
+      ],
+      "parking_anchors": [
+        {
+          "x": 16,
+          "y": 0,
+          "fixture": 52,
+          "rotation": 3,
+          "raw_word": "80c3415a",
+          "source_offset": 260,
+          "footprint_subcells": [
+            4,
+            6
+          ],
+          "capacity": 20
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "fixture": 52,
+          "rotation": 3,
+          "raw_word": "80c3415a",
+          "source_offset": 276,
+          "footprint_subcells": [
+            4,
+            6
+          ],
+          "capacity": 20
+        },
+        {
+          "x": 24,
+          "y": 0,
+          "fixture": 52,
+          "rotation": 3,
+          "raw_word": "80c3415a",
+          "source_offset": 292,
+          "footprint_subcells": [
+            4,
+            6
+          ],
+          "capacity": 20
+        }
+      ],
+      "own_parking_capacity": 60
+    },
+    {
+      "id": 27,
+      "address": "0x800b6840",
+      "sha256": "9d30ad3aabd553d1854f658958246533b05a4e550f75e6fe0829b61c341faa27",
+      "size_subcells": [
+        28,
+        26
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 196,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 204,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 4,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 212,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 276,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 22,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 284,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 24,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 292,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 26,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 300,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 28
+    },
+    {
+      "id": 28,
+      "address": "0x800b7464",
+      "sha256": "7bf2832f57cc278381f0014d03f69293496635797f7a31ae4635c39003e89c4b",
+      "size_subcells": [
+        28,
+        26
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 196,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 204,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 276,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 22,
+          "y": 0,
+          "fixture": 52,
+          "rotation": 0,
+          "raw_word": "80034154",
+          "source_offset": 284,
+          "footprint_subcells": [
+            6,
+            4
+          ],
+          "capacity": 20
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 644,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 36
+    },
+    {
+      "id": 29,
+      "address": "0x800b8088",
+      "sha256": "32b63f876113ab1e4de61b455a2191a0a1487126970a7170e5cd99153389e833",
+      "size_subcells": [
+        28,
+        26
+      ],
+      "parking_anchors": [
+        {
+          "x": 0,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 196,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 2,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 1,
+          "raw_word": "80433166",
+          "source_offset": 204,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 20,
+          "y": 0,
+          "fixture": 51,
+          "rotation": 0,
+          "raw_word": "80033166",
+          "source_offset": 276,
+          "footprint_subcells": [
+            2,
+            4
+          ],
+          "capacity": 4
+        },
+        {
+          "x": 22,
+          "y": 0,
+          "fixture": 52,
+          "rotation": 0,
+          "raw_word": "80034154",
+          "source_offset": 284,
+          "footprint_subcells": [
+            6,
+            4
+          ],
+          "capacity": 20
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "fixture": 51,
+          "rotation": 2,
+          "raw_word": "80833164",
+          "source_offset": 644,
+          "footprint_subcells": [
+            4,
+            2
+          ],
+          "capacity": 4
+        }
+      ],
+      "own_parking_capacity": 36
+    }
+  ],
+  "worlds": [
+    {
+      "map": "TOWN0001",
+      "source_town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+      "valid_profile_population_by_arrival_mode": {
+        "0": 1356,
+        "1": 476,
+        "2": 113,
+        "3": 232
+      },
+      "parking_mode_population_heads": 232,
+      "invalid_profile_entries": [
+        {
+          "x": 39,
+          "y": 10,
+          "mix": 136,
+          "profile": 144,
+          "heads": 1
+        },
+        {
+          "x": 15,
+          "y": 14,
+          "mix": 136,
+          "profile": 144,
+          "heads": 1
+        }
+      ],
+      "initial_active_stores": [
+        {
+          "physical_slot": 1,
+          "owner_flags": 32769,
+          "size_subcells": [
+            20,
+            20
+          ],
+          "tier_index": 1,
+          "customer_record_limit": 10,
+          "parking_anchors": [
+            {
+              "x": 16,
+              "y": 0,
+              "fixture": 52,
+              "rotation": 2,
+              "raw_word": "8083415a",
+              "source_offset": 328,
+              "footprint_subcells": [
+                4,
+                6
+              ],
+              "capacity": 20
+            }
+          ],
+          "own_parking_capacity": 20,
+          "source_capacity_after_physical_slot_carryover": 20
+        },
+        {
+          "physical_slot": 2,
+          "owner_flags": 32770,
+          "size_subcells": [
+            20,
+            20
+          ],
+          "tier_index": 1,
+          "customer_record_limit": 10,
+          "parking_anchors": [
+            {
+              "x": 16,
+              "y": 0,
+              "fixture": 52,
+              "rotation": 2,
+              "raw_word": "8083415a",
+              "source_offset": 328,
+              "footprint_subcells": [
+                4,
+                6
+              ],
+              "capacity": 20
+            }
+          ],
+          "own_parking_capacity": 20,
+          "source_capacity_after_physical_slot_carryover": 40
+        }
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "source_town_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+      "valid_profile_population_by_arrival_mode": {
+        "0": 1184,
+        "1": 361,
+        "2": 85,
+        "3": 249
+      },
+      "parking_mode_population_heads": 249,
+      "invalid_profile_entries": [
+        {
+          "x": 39,
+          "y": 26,
+          "mix": 136,
+          "profile": 144,
+          "heads": 1
+        }
+      ],
+      "initial_active_stores": [
+        {
+          "physical_slot": 1,
+          "owner_flags": 32769,
+          "size_subcells": [
+            20,
+            20
+          ],
+          "tier_index": 1,
+          "customer_record_limit": 10,
+          "parking_anchors": [
+            {
+              "x": 16,
+              "y": 0,
+              "fixture": 52,
+              "rotation": 2,
+              "raw_word": "8083415a",
+              "source_offset": 328,
+              "footprint_subcells": [
+                4,
+                6
+              ],
+              "capacity": 20
+            }
+          ],
+          "own_parking_capacity": 20,
+          "source_capacity_after_physical_slot_carryover": 20
+        },
+        {
+          "physical_slot": 2,
+          "owner_flags": 32770,
+          "size_subcells": [
+            20,
+            20
+          ],
+          "tier_index": 1,
+          "customer_record_limit": 10,
+          "parking_anchors": [
+            {
+              "x": 16,
+              "y": 0,
+              "fixture": 52,
+              "rotation": 2,
+              "raw_word": "8083415a",
+              "source_offset": 328,
+              "footprint_subcells": [
+                4,
+                6
+              ],
+              "capacity": 20
+            }
+          ],
+          "own_parking_capacity": 20,
+          "source_capacity_after_physical_slot_carryover": 40
+        },
+        {
+          "physical_slot": 3,
+          "owner_flags": 32771,
+          "size_subcells": [
+            20,
+            20
+          ],
+          "tier_index": 1,
+          "customer_record_limit": 10,
+          "parking_anchors": [
+            {
+              "x": 16,
+              "y": 0,
+              "fixture": 52,
+              "rotation": 2,
+              "raw_word": "8083415a",
+              "source_offset": 328,
+              "footprint_subcells": [
+                4,
+                6
+              ],
+              "capacity": 20
+            }
+          ],
+          "own_parking_capacity": 20,
+          "source_capacity_after_physical_slot_carryover": 60
+        }
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "source_town_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+      "valid_profile_population_by_arrival_mode": {
+        "0": 833,
+        "1": 336,
+        "2": 64,
+        "3": 191
+      },
+      "parking_mode_population_heads": 191,
+      "invalid_profile_entries": [],
+      "initial_active_stores": [
+        {
+          "physical_slot": 1,
+          "owner_flags": 32769,
+          "size_subcells": [
+            20,
+            20
+          ],
+          "tier_index": 1,
+          "customer_record_limit": 10,
+          "parking_anchors": [
+            {
+              "x": 16,
+              "y": 0,
+              "fixture": 52,
+              "rotation": 2,
+              "raw_word": "8083415a",
+              "source_offset": 328,
+              "footprint_subcells": [
+                4,
+                6
+              ],
+              "capacity": 20
+            }
+          ],
+          "own_parking_capacity": 20,
+          "source_capacity_after_physical_slot_carryover": 20
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "source_town_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+      "valid_profile_population_by_arrival_mode": {
+        "0": 2410,
+        "1": 273,
+        "2": 22,
+        "3": 133
+      },
+      "parking_mode_population_heads": 133,
+      "invalid_profile_entries": [
+        {
+          "x": 52,
+          "y": 22,
+          "mix": 136,
+          "profile": 144,
+          "heads": 1
+        }
+      ],
+      "initial_active_stores": [
+        {
+          "physical_slot": 1,
+          "owner_flags": 32769,
+          "size_subcells": [
+            24,
+            24
+          ],
+          "tier_index": 3,
+          "customer_record_limit": 15,
+          "parking_anchors": [
+            {
+              "x": 0,
+              "y": 0,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 264,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 20,
+              "y": 0,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 344,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 0,
+              "y": 2,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 488,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 20,
+              "y": 2,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 568,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 0,
+              "y": 4,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 712,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 20,
+              "y": 4,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 792,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            }
+          ],
+          "own_parking_capacity": 24,
+          "source_capacity_after_physical_slot_carryover": 24
+        },
+        {
+          "physical_slot": 2,
+          "owner_flags": 32770,
+          "size_subcells": [
+            20,
+            20
+          ],
+          "tier_index": 1,
+          "customer_record_limit": 10,
+          "parking_anchors": [
+            {
+              "x": 16,
+              "y": 0,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 328,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 16,
+              "y": 2,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 552,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 16,
+              "y": 4,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 776,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            }
+          ],
+          "own_parking_capacity": 12,
+          "source_capacity_after_physical_slot_carryover": 36
+        },
+        {
+          "physical_slot": 3,
+          "owner_flags": 32771,
+          "size_subcells": [
+            20,
+            20
+          ],
+          "tier_index": 1,
+          "customer_record_limit": 10,
+          "parking_anchors": [
+            {
+              "x": 16,
+              "y": 0,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 328,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 16,
+              "y": 2,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 552,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 16,
+              "y": 4,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 776,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            }
+          ],
+          "own_parking_capacity": 12,
+          "source_capacity_after_physical_slot_carryover": 48
+        },
+        {
+          "physical_slot": 4,
+          "owner_flags": 32772,
+          "size_subcells": [
+            20,
+            20
+          ],
+          "tier_index": 1,
+          "customer_record_limit": 10,
+          "parking_anchors": [
+            {
+              "x": 16,
+              "y": 0,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 328,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 16,
+              "y": 2,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 552,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 16,
+              "y": 4,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 776,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            }
+          ],
+          "own_parking_capacity": 12,
+          "source_capacity_after_physical_slot_carryover": 60
+        },
+        {
+          "physical_slot": 5,
+          "owner_flags": 32773,
+          "size_subcells": [
+            20,
+            20
+          ],
+          "tier_index": 1,
+          "customer_record_limit": 10,
+          "parking_anchors": [
+            {
+              "x": 16,
+              "y": 0,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 328,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 16,
+              "y": 2,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 552,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            },
+            {
+              "x": 16,
+              "y": 4,
+              "fixture": 51,
+              "rotation": 2,
+              "raw_word": "80833164",
+              "source_offset": 776,
+              "footprint_subcells": [
+                4,
+                2
+              ],
+              "capacity": 4
+            }
+          ],
+          "own_parking_capacity": 12,
+          "source_capacity_after_physical_slot_carryover": 72
+        }
+      ]
+    }
+  ],
+  "external_layout": {
+    "path": "/DAT/SHOP0302.BIN",
+    "sha256": "b72c911bdc150e6fa0896c24b7ce49db4eb3ab1c6a5ac11fceaea74fd73ac03d",
+    "matches_layout": 16,
+    "parking_capacity": 40
+  },
+  "meaning": "Population heads describe initial map mix composition, not measured per-day visitors. Parking capacity is a scalar used against group head counts, not one space per customer record. Modes0..2 receive no new transport labels.",
+  "label_provenance": "Fixture label words freshly read from MSG00.OBJ387+id, using existing by-eye font transcription; not new OCR. Appearance group labels are source Shift-JIS."
+}

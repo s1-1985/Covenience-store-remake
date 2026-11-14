@@ -1,0 +1,62 @@
+{
+  "scope": "Arithmetic from source expressions, not runtime observations.",
+  "arrivals": [
+    {
+      "demand_before": 5,
+      "capacity": 3,
+      "occupied": 2,
+      "requested": 5,
+      "overflow": true,
+      "after_overflow_deduction": 0,
+      "admitted": 1,
+      "after_creation_deduction": -1,
+      "complaint_increment": 1,
+      "visitor_count_increment": 1,
+      "reason": "created"
+    },
+    {
+      "demand_before": 5,
+      "capacity": 4,
+      "occupied": 2,
+      "requested": 5,
+      "overflow": true,
+      "after_overflow_deduction": 0,
+      "admitted": 2,
+      "after_creation_deduction": -2,
+      "complaint_increment": 1,
+      "visitor_count_increment": 2,
+      "reason": "created"
+    },
+    {
+      "demand_before": 5,
+      "capacity": 4,
+      "occupied": 4,
+      "requested": 5,
+      "overflow": true,
+      "after_overflow_deduction": 0,
+      "admitted": 0,
+      "after_creation_deduction": 0,
+      "complaint_increment": 1,
+      "visitor_count_increment": 0,
+      "reason": "no new record"
+    },
+    {
+      "demand_before": 9,
+      "capacity": 4,
+      "occupied": 2,
+      "requested": 5,
+      "overflow": true,
+      "after_overflow_deduction": 4,
+      "admitted": 2,
+      "after_creation_deduction": 2,
+      "complaint_increment": 1,
+      "visitor_count_increment": 2,
+      "reason": "created"
+    }
+  ],
+  "group_limit": {
+    "tier0_records": 10,
+    "maximum_heads_if_each_group_is5": 50,
+    "not_a_parking_capacity": true
+  }
+}

@@ -1,18 +1,23 @@
 {
   "date_jst": "2026-11-14",
-  "work_kind": "customer_checkout_waiting_source_data_analysis",
-  "report": "analysis/20261114-checkout-waiting-data/README.md",
+  "work_kind": "parking_arrival_group_source_data_analysis",
+  "report": "analysis/20261114-parking-arrival-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "profiles": 144,
-  "source_complaint_strings": 10,
-  "direct_wait_calls": 4,
-  "direct_growth_calls": 4,
-  "new_specification": "Link144 actual profile wait/service values to four wait call contexts, all-occupied-staff penalty and source complaint text. Preserve profile102 gate9, cashier busy-before-roll ordering, payment even on exhausted/forced wait, per-call complaint counts and original warning resets.",
-  "known_before": "Isolated wait_resolution, cashier service and store_advice models existed. This work links them to all144 original profile records, original text, caller contexts and the full occupied-staff penalty scope.",
-  "previous_report": "analysis/20261114-staff-roster-growth-data/README.md",
-  "android_bridge": "analysis/20261114-checkout-waiting-data/android-checkout-waiting-bridge.json",
+  "parking_fixture_types": 3,
+  "builtin_layouts": 30,
+  "initial_active_stores": 11,
+  "parking_required_profiles": 14,
+  "initial_parking_mode_population_heads": {
+    "TOWN0001": 232,
+    "TOWN0002": 249,
+    "TOWN0003": 191,
+    "TOWNPS": 133
+  },
+  "new_specification": "Connect actual parking fixtures/layouts to mode3 group heads. Preserve cumulative capacity across physical slots, active-mode3 occupancy, partial admission and two pending-demand deductions, signed16 negative demand, per-overflow warning and one-edge entry retry.",
+  "known_before": "Isolated parking/spawn logic and cross-store capacity carryover already existed. This work binds them to all source layouts and actual map populations.",
+  "previous_report": "analysis/20261114-checkout-waiting-data/README.md",
+  "android_bridge": "analysis/20261114-parking-arrival-data/android-parking-arrival-bridge.json",
   "original_cpu_updates_this_work": 0,
-  "unresolved": "TOWNPS staff27 ownerFFFF purpose/unlock remains unestablished.",
-  "next_priority": "Continue necessary normal-play data analysis, integrate recovered specifications into native Android, then build APK."
+  "next_priority": "Continue necessary normal-play source-data analysis, integrate recovered specifications into native Android, then build APK."
 }
