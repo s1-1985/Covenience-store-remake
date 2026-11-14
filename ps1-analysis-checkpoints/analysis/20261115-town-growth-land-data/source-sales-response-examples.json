@@ -1,0 +1,250 @@
+[
+  {
+    "map": "TOWN0001",
+    "reference": 3750,
+    "residential_population": 824,
+    "scenarios": [
+      {
+        "input_average": 0,
+        "total_sales": 0,
+        "effective_average": 3750,
+        "base_influence": 0
+      },
+      {
+        "input_average": 1,
+        "total_sales": 824,
+        "effective_average": 1,
+        "base_influence": -99
+      },
+      {
+        "input_average": 937,
+        "total_sales": 772088,
+        "effective_average": 937,
+        "base_influence": -75
+      },
+      {
+        "input_average": 1875,
+        "total_sales": 1545000,
+        "effective_average": 1875,
+        "base_influence": -50
+      },
+      {
+        "input_average": 3375,
+        "total_sales": 2781000,
+        "effective_average": 3375,
+        "base_influence": -10
+      },
+      {
+        "input_average": 3750,
+        "total_sales": 3090000,
+        "effective_average": 3750,
+        "base_influence": 0
+      },
+      {
+        "input_average": 4167,
+        "total_sales": 3433608,
+        "effective_average": 4167,
+        "base_influence": 1
+      },
+      {
+        "input_average": 7500,
+        "total_sales": 6180000,
+        "effective_average": 7500,
+        "base_influence": 5
+      },
+      {
+        "input_average": 37500,
+        "total_sales": 30900000,
+        "effective_average": 37500,
+        "base_influence": 9
+      }
+    ],
+    "note": "Constructed source-arithmetic inputs, not observed store earnings. Zero/nonpositive mean falls back to source reference and yields0."
+  },
+  {
+    "map": "TOWN0002",
+    "reference": 4250,
+    "residential_population": 688,
+    "scenarios": [
+      {
+        "input_average": 0,
+        "total_sales": 0,
+        "effective_average": 4250,
+        "base_influence": 0
+      },
+      {
+        "input_average": 1,
+        "total_sales": 688,
+        "effective_average": 1,
+        "base_influence": -99
+      },
+      {
+        "input_average": 1062,
+        "total_sales": 730656,
+        "effective_average": 1062,
+        "base_influence": -75
+      },
+      {
+        "input_average": 2125,
+        "total_sales": 1462000,
+        "effective_average": 2125,
+        "base_influence": -50
+      },
+      {
+        "input_average": 3825,
+        "total_sales": 2631600,
+        "effective_average": 3825,
+        "base_influence": -10
+      },
+      {
+        "input_average": 4250,
+        "total_sales": 2924000,
+        "effective_average": 4250,
+        "base_influence": 0
+      },
+      {
+        "input_average": 4723,
+        "total_sales": 3249424,
+        "effective_average": 4723,
+        "base_influence": 1
+      },
+      {
+        "input_average": 8500,
+        "total_sales": 5848000,
+        "effective_average": 8500,
+        "base_influence": 5
+      },
+      {
+        "input_average": 42500,
+        "total_sales": 29240000,
+        "effective_average": 42500,
+        "base_influence": 9
+      }
+    ],
+    "note": "Constructed source-arithmetic inputs, not observed store earnings. Zero/nonpositive mean falls back to source reference and yields0."
+  },
+  {
+    "map": "TOWN0003",
+    "reference": 4750,
+    "residential_population": 724,
+    "scenarios": [
+      {
+        "input_average": 0,
+        "total_sales": 0,
+        "effective_average": 4750,
+        "base_influence": 0
+      },
+      {
+        "input_average": 1,
+        "total_sales": 724,
+        "effective_average": 1,
+        "base_influence": -99
+      },
+      {
+        "input_average": 1187,
+        "total_sales": 859388,
+        "effective_average": 1187,
+        "base_influence": -75
+      },
+      {
+        "input_average": 2375,
+        "total_sales": 1719500,
+        "effective_average": 2375,
+        "base_influence": -50
+      },
+      {
+        "input_average": 4275,
+        "total_sales": 3095100,
+        "effective_average": 4275,
+        "base_influence": -10
+      },
+      {
+        "input_average": 4750,
+        "total_sales": 3439000,
+        "effective_average": 4750,
+        "base_influence": 0
+      },
+      {
+        "input_average": 5278,
+        "total_sales": 3821272,
+        "effective_average": 5278,
+        "base_influence": 1
+      },
+      {
+        "input_average": 9500,
+        "total_sales": 6878000,
+        "effective_average": 9500,
+        "base_influence": 5
+      },
+      {
+        "input_average": 47500,
+        "total_sales": 34390000,
+        "effective_average": 47500,
+        "base_influence": 9
+      }
+    ],
+    "note": "Constructed source-arithmetic inputs, not observed store earnings. Zero/nonpositive mean falls back to source reference and yields0."
+  },
+  {
+    "map": "TOWNPS",
+    "reference": 4900,
+    "residential_population": 32,
+    "scenarios": [
+      {
+        "input_average": 0,
+        "total_sales": 0,
+        "effective_average": 4900,
+        "base_influence": 0
+      },
+      {
+        "input_average": 1,
+        "total_sales": 32,
+        "effective_average": 1,
+        "base_influence": -99
+      },
+      {
+        "input_average": 1225,
+        "total_sales": 39200,
+        "effective_average": 1225,
+        "base_influence": -75
+      },
+      {
+        "input_average": 2450,
+        "total_sales": 78400,
+        "effective_average": 2450,
+        "base_influence": -50
+      },
+      {
+        "input_average": 4410,
+        "total_sales": 141120,
+        "effective_average": 4410,
+        "base_influence": -10
+      },
+      {
+        "input_average": 4900,
+        "total_sales": 156800,
+        "effective_average": 4900,
+        "base_influence": 0
+      },
+      {
+        "input_average": 5445,
+        "total_sales": 174240,
+        "effective_average": 5445,
+        "base_influence": 1
+      },
+      {
+        "input_average": 9800,
+        "total_sales": 313600,
+        "effective_average": 9800,
+        "base_influence": 5
+      },
+      {
+        "input_average": 49000,
+        "total_sales": 1568000,
+        "effective_average": 49000,
+        "base_influence": 9
+      }
+    ],
+    "note": "Constructed source-arithmetic inputs, not observed store earnings. Zero/nonpositive mean falls back to source reference and yields0."
+  }
+]

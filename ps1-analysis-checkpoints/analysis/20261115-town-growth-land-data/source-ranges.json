@@ -1,0 +1,38 @@
+[
+  {
+    "name": "monthly_growth",
+    "address": "0x8002bd54",
+    "bytes": 9188,
+    "sha256": "7f593d84b9a1180ed8cdffbb93c292b7b17964087fd67ae80defd4c6d3220d20"
+  },
+  {
+    "name": "finance_before_growth",
+    "address": "0x80023490",
+    "bytes": 40,
+    "sha256": "45abcb70c5b645aababc13829f44876e1bf5f548dc0d943eadaa264736755594"
+  },
+  {
+    "name": "population_reader",
+    "address": "0x80020498",
+    "bytes": 532,
+    "sha256": "1b688efa6faca63887238b49f2d7d12ff73b952f1f4d8c30445386320a658ccf"
+  },
+  {
+    "name": "building_choice",
+    "address": "0x80020364",
+    "bytes": 308,
+    "sha256": "2b1e7380ad8deafb91f28df82197fe90e024e81d6b025fed4361af932f8da3b2"
+  },
+  {
+    "name": "land_price",
+    "address": "0x8001dfd0",
+    "bytes": 472,
+    "sha256": "fa190d24b97a82fc413eb6c518d04387befc12c713d6898a9a3d7d44f36c5ac4"
+  },
+  {
+    "name": "rng",
+    "address": "0x8007e648",
+    "bytes": 72,
+    "sha256": "ba88fe9f36231f284094996c5fe97098dbc8487b910e056a0e6a82aae27a3b9b"
+  }
+]

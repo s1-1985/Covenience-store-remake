@@ -1,0 +1,1252 @@
+{
+  "lookup_rows": 72,
+  "categories": {
+    "0": [
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "1": [
+      14,
+      15,
+      16,
+      17,
+      20,
+      21
+    ],
+    "2": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "3": [
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "4": [
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "5": [
+      36,
+      37,
+      50,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69
+    ],
+    "6": [
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "7": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    "8": [
+      18,
+      19,
+      51,
+      52,
+      53,
+      54
+    ],
+    "9": [
+      22,
+      23,
+      24,
+      70
+    ],
+    "10": [
+      71
+    ]
+  },
+  "buildings": [
+    {
+      "id": 18,
+      "name": "交番",
+      "category": 8,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        60,
+        63
+      ],
+      "customer_mix_choices": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "notification_event": 0
+    },
+    {
+      "id": 19,
+      "name": "消防署",
+      "category": 8,
+      "footprint": [
+        3,
+        2
+      ],
+      "tiles": [
+        64,
+        69
+      ],
+      "customer_mix_choices": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "notification_event": 1
+    },
+    {
+      "id": 20,
+      "name": "駅",
+      "category": 1,
+      "footprint": [
+        2,
+        1
+      ],
+      "tiles": [
+        70,
+        71
+      ],
+      "customer_mix_choices": [
+        2,
+        3,
+        4,
+        5,
+        5
+      ],
+      "notification_event": 2
+    },
+    {
+      "id": 21,
+      "name": "駅",
+      "category": 1,
+      "footprint": [
+        4,
+        2
+      ],
+      "tiles": [
+        72,
+        79
+      ],
+      "customer_mix_choices": [
+        6,
+        7,
+        8,
+        9,
+        9
+      ],
+      "notification_event": 2
+    },
+    {
+      "id": 22,
+      "name": "役場",
+      "category": 9,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        80,
+        83
+      ],
+      "customer_mix_choices": [
+        10,
+        10,
+        10,
+        11,
+        11
+      ],
+      "notification_event": 3
+    },
+    {
+      "id": 23,
+      "name": "役所",
+      "category": 9,
+      "footprint": [
+        5,
+        5
+      ],
+      "tiles": [
+        84,
+        108
+      ],
+      "customer_mix_choices": [
+        12,
+        13,
+        13,
+        14,
+        14
+      ],
+      "notification_event": 5
+    },
+    {
+      "id": 24,
+      "name": "都庁",
+      "category": 9,
+      "footprint": [
+        7,
+        7
+      ],
+      "tiles": [
+        109,
+        157
+      ],
+      "customer_mix_choices": [
+        15,
+        16,
+        17,
+        18,
+        18
+      ],
+      "notification_event": 6
+    },
+    {
+      "id": 25,
+      "name": "幼稚園",
+      "category": 7,
+      "footprint": [
+        3,
+        2
+      ],
+      "tiles": [
+        158,
+        163
+      ],
+      "customer_mix_choices": [
+        19,
+        19,
+        19,
+        19,
+        19
+      ],
+      "notification_event": 7
+    },
+    {
+      "id": 26,
+      "name": "小学校",
+      "category": 7,
+      "footprint": [
+        4,
+        4
+      ],
+      "tiles": [
+        164,
+        179
+      ],
+      "customer_mix_choices": [
+        20,
+        20,
+        20,
+        21,
+        21
+      ],
+      "notification_event": 8
+    },
+    {
+      "id": 27,
+      "name": "中学校",
+      "category": 7,
+      "footprint": [
+        5,
+        5
+      ],
+      "tiles": [
+        180,
+        204
+      ],
+      "customer_mix_choices": [
+        22,
+        22,
+        22,
+        23,
+        23
+      ],
+      "notification_event": 8
+    },
+    {
+      "id": 28,
+      "name": "高校",
+      "category": 7,
+      "footprint": [
+        6,
+        6
+      ],
+      "tiles": [
+        205,
+        240
+      ],
+      "customer_mix_choices": [
+        24,
+        25,
+        26,
+        27,
+        27
+      ],
+      "notification_event": 8
+    },
+    {
+      "id": 29,
+      "name": "大学",
+      "category": 7,
+      "footprint": [
+        7,
+        7
+      ],
+      "tiles": [
+        241,
+        289
+      ],
+      "customer_mix_choices": [
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "notification_event": 9
+    },
+    {
+      "id": 30,
+      "name": "専門学校",
+      "category": 7,
+      "footprint": [
+        4,
+        3
+      ],
+      "tiles": [
+        290,
+        301
+      ],
+      "customer_mix_choices": [
+        33,
+        33,
+        33,
+        34,
+        34
+      ],
+      "notification_event": 10
+    },
+    {
+      "id": 31,
+      "name": "遊園地",
+      "category": 6,
+      "footprint": [
+        7,
+        7
+      ],
+      "tiles": [
+        302,
+        350
+      ],
+      "customer_mix_choices": [
+        35,
+        36,
+        36,
+        37,
+        37
+      ],
+      "notification_event": 11
+    },
+    {
+      "id": 32,
+      "name": "水族館",
+      "category": 6,
+      "footprint": [
+        3,
+        3
+      ],
+      "tiles": [
+        351,
+        359
+      ],
+      "customer_mix_choices": [
+        38,
+        38,
+        38,
+        38,
+        38
+      ],
+      "notification_event": 12
+    },
+    {
+      "id": 33,
+      "name": "動物園",
+      "category": 6,
+      "footprint": [
+        6,
+        6
+      ],
+      "tiles": [
+        360,
+        395
+      ],
+      "customer_mix_choices": [
+        35,
+        35,
+        35,
+        37,
+        37
+      ],
+      "notification_event": 13
+    },
+    {
+      "id": 34,
+      "name": "公園",
+      "category": 6,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        396,
+        396
+      ],
+      "customer_mix_choices": [
+        39,
+        39,
+        39,
+        40,
+        37
+      ],
+      "notification_event": 14
+    },
+    {
+      "id": 35,
+      "name": "公園",
+      "category": 6,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        397,
+        400
+      ],
+      "customer_mix_choices": [
+        39,
+        40,
+        40,
+        40,
+        37
+      ],
+      "notification_event": 14
+    },
+    {
+      "id": 36,
+      "name": "ｹﾞｰﾑｾﾝﾀｰ",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        401,
+        401
+      ],
+      "customer_mix_choices": [
+        41,
+        41,
+        42,
+        42,
+        42
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 37,
+      "name": "パチンコ屋",
+      "category": 5,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        402,
+        405
+      ],
+      "customer_mix_choices": [
+        43,
+        44,
+        44,
+        45,
+        45
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 38,
+      "name": "会社",
+      "category": 4,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        406,
+        409
+      ],
+      "customer_mix_choices": [
+        46,
+        47,
+        48,
+        49,
+        52
+      ],
+      "notification_event": 15
+    },
+    {
+      "id": 39,
+      "name": "会社",
+      "category": 4,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        410,
+        413
+      ],
+      "customer_mix_choices": [
+        50,
+        51,
+        53,
+        54,
+        55
+      ],
+      "notification_event": 15
+    },
+    {
+      "id": 40,
+      "name": "会社",
+      "category": 4,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        414,
+        417
+      ],
+      "customer_mix_choices": [
+        51,
+        52,
+        53,
+        54,
+        56
+      ],
+      "notification_event": 15
+    },
+    {
+      "id": 41,
+      "name": "会社",
+      "category": 4,
+      "footprint": [
+        3,
+        3
+      ],
+      "tiles": [
+        418,
+        426
+      ],
+      "customer_mix_choices": [
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "notification_event": 15
+    },
+    {
+      "id": 42,
+      "name": "会社",
+      "category": 4,
+      "footprint": [
+        3,
+        3
+      ],
+      "tiles": [
+        427,
+        435
+      ],
+      "customer_mix_choices": [
+        55,
+        56,
+        57,
+        58,
+        58
+      ],
+      "notification_event": 15
+    },
+    {
+      "id": 43,
+      "name": "住宅",
+      "category": 3,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        436,
+        436
+      ],
+      "customer_mix_choices": [
+        59,
+        60,
+        61,
+        62,
+        63
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 44,
+      "name": "住宅",
+      "category": 3,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        437,
+        437
+      ],
+      "customer_mix_choices": [
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 45,
+      "name": "住宅",
+      "category": 3,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        438,
+        438
+      ],
+      "customer_mix_choices": [
+        69,
+        70,
+        71,
+        72,
+        73
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 46,
+      "name": "住宅",
+      "category": 3,
+      "footprint": [
+        1,
+        2
+      ],
+      "tiles": [
+        439,
+        440
+      ],
+      "customer_mix_choices": [
+        74,
+        75,
+        76,
+        77,
+        78
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 47,
+      "name": "住宅",
+      "category": 3,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        441,
+        444
+      ],
+      "customer_mix_choices": [
+        59,
+        61,
+        63,
+        65,
+        67
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 48,
+      "name": "住宅",
+      "category": 3,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        445,
+        448
+      ],
+      "customer_mix_choices": [
+        69,
+        71,
+        73,
+        75,
+        77
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 49,
+      "name": "住宅",
+      "category": 3,
+      "footprint": [
+        3,
+        2
+      ],
+      "tiles": [
+        449,
+        454
+      ],
+      "customer_mix_choices": [
+        74,
+        75,
+        76,
+        77,
+        78
+      ],
+      "notification_event": 16
+    },
+    {
+      "id": 50,
+      "name": "銭湯",
+      "category": 5,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        455,
+        458
+      ],
+      "customer_mix_choices": [
+        79,
+        79,
+        79,
+        80,
+        80
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 51,
+      "name": "体育館",
+      "category": 8,
+      "footprint": [
+        3,
+        2
+      ],
+      "tiles": [
+        459,
+        464
+      ],
+      "customer_mix_choices": [
+        81,
+        82,
+        82,
+        83,
+        83
+      ],
+      "notification_event": 18
+    },
+    {
+      "id": 52,
+      "name": "運動場",
+      "category": 8,
+      "footprint": [
+        5,
+        4
+      ],
+      "tiles": [
+        465,
+        484
+      ],
+      "customer_mix_choices": [
+        84,
+        85,
+        85,
+        86,
+        86
+      ],
+      "notification_event": 17
+    },
+    {
+      "id": 53,
+      "name": "プール",
+      "category": 8,
+      "footprint": [
+        3,
+        2
+      ],
+      "tiles": [
+        485,
+        490
+      ],
+      "customer_mix_choices": [
+        87,
+        88,
+        89,
+        90,
+        90
+      ],
+      "notification_event": 18
+    },
+    {
+      "id": 54,
+      "name": "ｲﾍﾞﾝﾄ会場",
+      "category": 8,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        491,
+        494
+      ],
+      "customer_mix_choices": [
+        91,
+        92,
+        92,
+        93,
+        93
+      ],
+      "notification_event": 23
+    },
+    {
+      "id": 55,
+      "name": "ﾌｧﾐﾘｰﾚｽﾄﾗﾝ",
+      "category": 5,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        495,
+        498
+      ],
+      "customer_mix_choices": [
+        94,
+        95,
+        96,
+        97,
+        98
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 56,
+      "name": "ﾌｧﾐﾘｰﾚｽﾄﾗﾝ",
+      "category": 5,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        499,
+        502
+      ],
+      "customer_mix_choices": [
+        98,
+        99,
+        100,
+        101,
+        102
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 57,
+      "name": "ﾌｧﾐﾘｰﾚｽﾄﾗﾝ",
+      "category": 5,
+      "footprint": [
+        2,
+        2
+      ],
+      "tiles": [
+        503,
+        506
+      ],
+      "customer_mix_choices": [
+        101,
+        102,
+        103,
+        104,
+        105
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 58,
+      "name": "レストラン",
+      "category": 5,
+      "footprint": [
+        2,
+        1
+      ],
+      "tiles": [
+        507,
+        508
+      ],
+      "customer_mix_choices": [
+        106,
+        107,
+        107,
+        108,
+        108
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 59,
+      "name": "ﾌｧｰｽﾄﾌｰﾄﾞ",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        509,
+        509
+      ],
+      "customer_mix_choices": [
+        109,
+        109,
+        110,
+        110,
+        111
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 60,
+      "name": "ﾌｧｰｽﾄﾌｰﾄﾞ",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        510,
+        510
+      ],
+      "customer_mix_choices": [
+        110,
+        111,
+        111,
+        112,
+        112
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 61,
+      "name": "ラーメン屋",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        511,
+        511
+      ],
+      "customer_mix_choices": [
+        113,
+        113,
+        114,
+        114,
+        114
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 62,
+      "name": "そば屋",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        512,
+        512
+      ],
+      "customer_mix_choices": [
+        115,
+        115,
+        116,
+        116,
+        116
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 63,
+      "name": "飲み屋",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        513,
+        513
+      ],
+      "customer_mix_choices": [
+        117,
+        118,
+        119,
+        120,
+        121
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 64,
+      "name": "飲み屋",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        514,
+        514
+      ],
+      "customer_mix_choices": [
+        119,
+        120,
+        121,
+        122,
+        123
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 65,
+      "name": "飲み屋",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        515,
+        515
+      ],
+      "customer_mix_choices": [
+        121,
+        122,
+        123,
+        124,
+        125
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 66,
+      "name": "本屋",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        516,
+        516
+      ],
+      "customer_mix_choices": [
+        126,
+        126,
+        126,
+        127,
+        128
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 67,
+      "name": "おもちゃ屋",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        517,
+        517
+      ],
+      "customer_mix_choices": [
+        129,
+        129,
+        129,
+        130,
+        130
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 68,
+      "name": "洋品店",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        518,
+        518
+      ],
+      "customer_mix_choices": [
+        131,
+        132,
+        132,
+        133,
+        133
+      ],
+      "notification_event": -1
+    },
+    {
+      "id": 69,
+      "name": "電気屋",
+      "category": 5,
+      "footprint": [
+        1,
+        1
+      ],
+      "tiles": [
+        519,
+        519
+      ],
+      "customer_mix_choices": [
+        134,
+        135,
+        135,
+        136,
+        136
+      ],
+      "notification_event": -1
+    }
+  ],
+  "housing": {
+    "level_8_to_14": [
+      43,
+      44,
+      45,
+      46,
+      47,
+      48
+    ],
+    "level_15_up": [
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ],
+    "rule": "43 + RNG%(6 if level<15 else7), no category-wide random substitution."
+  },
+  "company": {
+    "category": 4,
+    "target": "residential population"
+  },
+  "retail": {
+    "category": 5,
+    "target": "trunc(residential population/4)"
+  },
+  "public_facilities": {
+    "population_5000_to_7999": {
+      "categories": [
+        8
+      ],
+      "radius": 100
+    },
+    "population_8000_to_19999": {
+      "categories": [
+        6,
+        7,
+        8
+      ],
+      "radius": 50
+    },
+    "population_20000_up": {
+      "categories": [
+        6,
+        7,
+        8
+      ],
+      "radius": 30
+    },
+    "selection": "At >=8000 choose category6+RNG%3 then choose a row uniformly by RNG%category_row_count. Preserve category-first selection; row probabilities differ between categories."
+  },
+  "administration": {
+    "tier1": 22,
+    "tier2": 23,
+    "tier3": 23,
+    "tier4": 24
+  }
+}

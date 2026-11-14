@@ -1,0 +1,312 @@
+{
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "worlds": [
+    {
+      "map": "TOWN0001",
+      "source_town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+      "sales_per_resident_reference": 3750,
+      "store_sales_influence_divisor": 110000,
+      "population_by_category": {
+        "3": 824,
+        "4": 423,
+        "5": 524,
+        "6": 32,
+        "7": 348,
+        "8": 28
+      },
+      "total_population": 2179,
+      "residential_population": 824,
+      "source_stores": [
+        {
+          "slot": 1,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            43,
+            12,
+            44,
+            13
+          ]
+        },
+        {
+          "slot": 2,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            14,
+            10,
+            15,
+            11
+          ]
+        }
+      ],
+      "source_base_influence": 0,
+      "source_average_after_fallback": 3750,
+      "roads": 255,
+      "station_origins": [],
+      "first_administrative_cell": [
+        17,
+        30
+      ],
+      "land_coefficient_histogram": {
+        "5": 3000
+      },
+      "influence_histogram": {
+        "0": 2262,
+        "10": 692,
+        "20": 44,
+        "30": 2
+      },
+      "positive_influence_cells": 738,
+      "influence_file_offset": 0,
+      "active_customer_mix_count": 80,
+      "neutral_average_at_reference_total_sales": 3090000,
+      "growth_first_positive_average": 4167,
+      "development_balance_targets": {
+        "company": 824,
+        "retail": 206
+      },
+      "initial_public_facility_population_gate": false
+    },
+    {
+      "map": "TOWN0002",
+      "source_town_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+      "sales_per_resident_reference": 4250,
+      "store_sales_influence_divisor": 150000,
+      "population_by_category": {
+        "3": 688,
+        "4": 386,
+        "5": 467,
+        "6": 75,
+        "7": 236,
+        "8": 28
+      },
+      "total_population": 1880,
+      "residential_population": 688,
+      "source_stores": [
+        {
+          "slot": 1,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            47,
+            12,
+            48,
+            13
+          ]
+        },
+        {
+          "slot": 2,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            23,
+            14,
+            24,
+            15
+          ]
+        },
+        {
+          "slot": 3,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            19,
+            34,
+            20,
+            35
+          ]
+        }
+      ],
+      "source_base_influence": 0,
+      "source_average_after_fallback": 4250,
+      "roads": 284,
+      "station_origins": [],
+      "first_administrative_cell": [
+        15,
+        22
+      ],
+      "land_coefficient_histogram": {
+        "5": 3000
+      },
+      "influence_histogram": {
+        "0": 2092,
+        "10": 850,
+        "20": 56,
+        "30": 2
+      },
+      "positive_influence_cells": 908,
+      "influence_file_offset": 3000,
+      "active_customer_mix_count": 76,
+      "neutral_average_at_reference_total_sales": 2924000,
+      "growth_first_positive_average": 4723,
+      "development_balance_targets": {
+        "company": 688,
+        "retail": 172
+      },
+      "initial_public_facility_population_gate": false
+    },
+    {
+      "map": "TOWN0003",
+      "source_town_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+      "sales_per_resident_reference": 4750,
+      "store_sales_influence_divisor": 200000,
+      "population_by_category": {
+        "3": 724,
+        "4": 210,
+        "5": 322,
+        "6": 36,
+        "7": 112,
+        "8": 20
+      },
+      "total_population": 1424,
+      "residential_population": 724,
+      "source_stores": [
+        {
+          "slot": 1,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            42,
+            11,
+            43,
+            12
+          ]
+        }
+      ],
+      "source_base_influence": 0,
+      "source_average_after_fallback": 4750,
+      "roads": 223,
+      "station_origins": [],
+      "first_administrative_cell": [
+        48,
+        29
+      ],
+      "land_coefficient_histogram": {
+        "5": 3000
+      },
+      "influence_histogram": {
+        "0": 2153,
+        "10": 813,
+        "20": 32,
+        "30": 2
+      },
+      "positive_influence_cells": 847,
+      "influence_file_offset": 6000,
+      "active_customer_mix_count": 64,
+      "neutral_average_at_reference_total_sales": 3439000,
+      "growth_first_positive_average": 5278,
+      "development_balance_targets": {
+        "company": 724,
+        "retail": 181
+      },
+      "initial_public_facility_population_gate": false
+    },
+    {
+      "map": "TOWNPS",
+      "source_town_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+      "sales_per_resident_reference": 4900,
+      "store_sales_influence_divisor": 210000,
+      "population_by_category": {
+        "3": 32,
+        "4": 2225,
+        "5": 268,
+        "6": 70,
+        "7": 200,
+        "8": 44
+      },
+      "total_population": 2839,
+      "residential_population": 32,
+      "source_stores": [
+        {
+          "slot": 1,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            30,
+            24,
+            31,
+            25
+          ]
+        },
+        {
+          "slot": 2,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            43,
+            24,
+            44,
+            25
+          ]
+        },
+        {
+          "slot": 3,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            17,
+            24,
+            18,
+            25
+          ]
+        },
+        {
+          "slot": 4,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            30,
+            11,
+            31,
+            12
+          ]
+        },
+        {
+          "slot": 5,
+          "previous_month_sales_D5C": 0,
+          "rect": [
+            30,
+            37,
+            31,
+            38
+          ]
+        }
+      ],
+      "source_base_influence": 0,
+      "source_average_after_fallback": 4900,
+      "roads": 425,
+      "station_origins": [],
+      "first_administrative_cell": [
+        53,
+        0
+      ],
+      "land_coefficient_histogram": {
+        "5": 3000
+      },
+      "influence_histogram": {
+        "0": 1585,
+        "10": 1181,
+        "20": 204,
+        "30": 30
+      },
+      "positive_influence_cells": 1415,
+      "influence_file_offset": 9000,
+      "active_customer_mix_count": 54,
+      "neutral_average_at_reference_total_sales": 156800,
+      "growth_first_positive_average": 5445,
+      "development_balance_targets": {
+        "company": 32,
+        "retail": 8
+      },
+      "initial_public_facility_population_gate": false
+    }
+  ],
+  "binary": {
+    "path": "initial-influence.i8",
+    "map_order": [
+      "TOWN0001",
+      "TOWN0002",
+      "TOWN0003",
+      "TOWNPS"
+    ],
+    "bytes_per_map": 3000,
+    "dimensions": [
+      60,
+      50
+    ],
+    "format": "signed int8,row-major"
+  },
+  "scope": "Influence computed on raw initial source town/store records. All source D5C values0, so no store influence/RNG is needed for these specific files. This is not the real first-month input after player opening and a month of trading. No level changes, RNG calls or building placement executed."
+}

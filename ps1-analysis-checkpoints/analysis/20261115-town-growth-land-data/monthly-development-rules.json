@@ -1,0 +1,71 @@
+{
+  "run_gate": {
+    "day": 1,
+    "hour": 0,
+    "subhour": 0,
+    "reader": "2BD84..2BDC8"
+  },
+  "parent_order": [
+    "275F8",
+    "29020",
+    "29334 daily/monthly finance",
+    "2A8E0",
+    "2BD54 town growth"
+  ],
+  "sales": "D5C is prior-month revenue after financial monthly rollup. Original29334 runs first and stores month revenue multiplied by8; do not multiply by8 a second time in growth.",
+  "land": "Update each signed cell+2 by at most1; then test local building removal/placement on the resulting level. New/removed buildings retain this land value.",
+  "housing_removal": {
+    "level_below": 4,
+    "random_residue_percent": 2,
+    "category": 3
+  },
+  "housing_build": {
+    "level_at_least": 8,
+    "random_residue_percent": 2,
+    "large_residence_at_level": 15,
+    "feasibility_required": true
+  },
+  "balance": "Recompute residential population after local cell actions. For company then retail scan from random x/y with wrapped row-major coordinates, max one mutation each. Negative target difference: remove matching category only at level<3; positive difference: try category-chosen building at level>=9. Stop after success; infeasible candidates do not guarantee construction.",
+  "public": "At totalpopulation>=5000 choose one category/row, random-origin wrapped scan; candidate level>=5, feasibility0, no same building within population-based radius. At mostone public building here; no direct company cash debit in2BD54.",
+  "town_tiers": [
+    {
+      "population_lower": 0,
+      "population_upper": 4999,
+      "tier": 0,
+      "station_target": 0,
+      "administration": null
+    },
+    {
+      "population_lower": 5000,
+      "population_upper": 7999,
+      "tier": 1,
+      "station_target": 1,
+      "administration": 22
+    },
+    {
+      "population_lower": 8000,
+      "population_upper": 15999,
+      "tier": 2,
+      "station_target": 2,
+      "administration": 23
+    },
+    {
+      "population_lower": 16000,
+      "population_upper": 19999,
+      "tier": 3,
+      "station_target": 3,
+      "administration": 23
+    },
+    {
+      "population_lower": 20000,
+      "population_upper": null,
+      "tier": 4,
+      "station_target": 4,
+      "administration": 24
+    }
+  ],
+  "station": "Count only tile70/72 anchors from current scan. Initial threshold11; update it to greater level of eligible rail sites with no station within40, then subtract1. If station_count<tier, try one small station20 using this threshold, feasibility and radius40.",
+  "administrative": "Only when new tier exceeds stored CD98C, update CD98C, choose22 at1,23 at2/3,24 at4, and place at first row-major category9 cell. Do not silently replace(-1,-1) with a guessed origin in malformed states. Source initial maps all supply an administrative cell. Mode0+building24 sets progress flag bit1 and counter0 instead of normal notice.",
+  "finish": "Population history60 words shifts once and new population goes at head. Months6/12 queue a notice. Rebuild map masks1F8BC only after all building actions; dirtyCD8DC=0.",
+  "feasibility": "Respect mutable current town flags during sequential placements; do not evaluate all intended buildings against a frozen initial map."
+}

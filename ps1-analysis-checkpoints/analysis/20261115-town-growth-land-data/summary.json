@@ -1,0 +1,54 @@
+{
+  "maps": 4,
+  "source_cells": 12000,
+  "building_lookup_rows": 72,
+  "customer_mix_rows": 137,
+  "influence_values": 256,
+  "population": {
+    "TOWN0001": 2179,
+    "TOWN0002": 1880,
+    "TOWN0003": 1424,
+    "TOWNPS": 2839
+  },
+  "references": {
+    "TOWN0001": 3750,
+    "TOWN0002": 4250,
+    "TOWN0003": 4750,
+    "TOWNPS": 4900
+  },
+  "source_influence_histograms": {
+    "TOWN0001": {
+      "0": 2262,
+      "10": 692,
+      "20": 44,
+      "30": 2
+    },
+    "TOWN0002": {
+      "0": 2092,
+      "10": 850,
+      "20": 56,
+      "30": 2
+    },
+    "TOWN0003": {
+      "0": 2153,
+      "10": 813,
+      "20": 32,
+      "30": 2
+    },
+    "TOWNPS": {
+      "0": 1585,
+      "10": 1181,
+      "20": 204,
+      "30": 30
+    }
+  },
+  "positive_influence_cells": {
+    "TOWN0001": 738,
+    "TOWN0002": 908,
+    "TOWN0003": 847,
+    "TOWNPS": 1415
+  },
+  "original_cpu_updates": 0,
+  "known_before": "Town growth/monthly isolated rules and whole source interpreter existed. New extraction binds actual four map economic parameters/category populations and road coordinates to initial influence maps, 72-row building choice sets,137 population mixes, land-price byte, calendar/finance ordering and native Android rules.",
+  "limits": "Initial-source influence only; not an actual first-month run, future outcome prediction or native Android/APK update."
+}

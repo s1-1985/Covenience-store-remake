@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "baseline": "Sum ordered stores D5C with signed32 wrapping. Divide by population(category3) ifpositive. Nonpositive mean falls back to map reference. If mean>=reference use trunc((mean-reference)*10/mean), else -trunc((reference-mean)*100/reference), then signed byte.",
+  "roads": "Every tile50..52: +10 at(x,max(0,y-3)), then at all(x-3..x+3,y), clipped. Skip category1 target cells, cap each addition at100. Original vertical loop ends at BE0, not BE8. Keep this asymmetry.",
+  "stations": "Every tile70 or72 origin adds30 to inclusive square radius8, clipped, cap100. One influence per station anchor, not one per every station tile.",
+  "stores": "Process CE61C order until-1. Strength=signed8(min(100,trunc(D5C/map_divisor))). Skip nonpositive strength. Expand store rectangle by12; inner rectangle expansion7 always receives strength, outer ring receives only when RNG&3==0. Ring consumes a draw per candidate; cap additions100. Do not apply store influence to the raw source map dump when all source D5C0.",
+  "thresholds": "Land1..25 normal range, at mostone step per update; housing gates4/8/15; company and retail build9/removebelow3; publicbuild5; populationtiers5000/8000/16000/20000. Keep population and shopping-profile validity separate.",
+  "sequencing": "Monthly finance precedes growth. In growth, grid inputs are read before local level/building updates; later balance/public/administrative population is recomputed after preceding mutations. Preserve order, target predicates, and RNG call order.",
+  "native": "These extracted values/rules are inputs to native Android logic. No PS emulator/BIOS/original EXE runtime needed. No APK change in this extraction."
+}

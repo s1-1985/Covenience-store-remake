@@ -1,0 +1,122 @@
+[
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/README.md",
+    "bytes": 9305,
+    "sha256": "7beba5d1673cc71c13ba7b9d881e437d62ce41e807c628101260a75d5f6bcf15",
+    "git_sha1": "87a1c394ae61279aa2452155e4f4930200bc07f4"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/android-town-growth-bridge.json",
+    "bytes": 1711,
+    "sha256": "12e566388eb5f8cf98aaf57f4f853cbd04655af655269062bfefc8b729974499",
+    "git_sha1": "de935bde3f3b58cdea4b1b4dd7cd3ab5bc5234d6"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/extract-town-growth.py",
+    "bytes": 16049,
+    "sha256": "cbf11099838eaa7a5f839537fc8655d4224d6eb0641bdfcfa35251e3bc92fb0c",
+    "git_sha1": "759acc83be2d591d84c086f85df2eee1612dc863"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/extraction-check.json",
+    "bytes": 233,
+    "sha256": "c2b9ceea6e9233f3dc2f7f34eebb7a7f6f8ea8f384a613362db688b63da534b1",
+    "git_sha1": "7cc5f4a73583ebd0a1e8a669ae08575f7a1a6a3e"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/growth-building-choices.json",
+    "bytes": 18292,
+    "sha256": "88f29d0024f6b2d66e6a2e1a9bc06337a82b3090a7a4c1a67778b04f6e2dabf2",
+    "git_sha1": "4ea35a4a073dd653a2194c27ce05e6feef671f43"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/growth-readers.asm",
+    "bytes": 89593,
+    "sha256": "893f618088f22909fcc6cd9ac092184b7e6ebd27011137a5048828905769cf48",
+    "git_sha1": "2200e04df81748a866bd159fb1632f21f0cae3d1"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/initial-influence.i8",
+    "bytes": 12000,
+    "sha256": "833c3ee2a9a7564cf519281fb5807861d214dcdd412f040c8650f18569f25399",
+    "git_sha1": "29180be8530366645a84daf7d5dd04683fb48a61"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/initial-town-growth-inputs.json",
+    "bytes": 7589,
+    "sha256": "b8eb6fb77c09ca9ee645a05c55ebc555792e19b78f4f8e26b26da5b941b3c53d",
+    "git_sha1": "e8a9f398fc582775df9521570313e7b7933481b2"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/land-level-transition-rules.json",
+    "bytes": 45003,
+    "sha256": "45cbd9d85c69b7fb7b74b8c03d967c262b4f0c1791e8978dec77f8a6edf543d2",
+    "git_sha1": "cad0865b77c29b0ccd79e916c3e66c7b942df578"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/monthly-development-rules.json",
+    "bytes": 3195,
+    "sha256": "5578413b69bc170ed960746ecfaeb11f56c49ed1143f264df1974121e7bbafd7",
+    "git_sha1": "d1469c06c33126046980e69e9ddecbc35144ac2e"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/source/building_choice.bin",
+    "bytes": 308,
+    "sha256": "2b1e7380ad8deafb91f28df82197fe90e024e81d6b025fed4361af932f8da3b2",
+    "git_sha1": "73d6e5a96caa0d5faad01e196c39125367df5cfd"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/source/finance_before_growth.bin",
+    "bytes": 40,
+    "sha256": "45abcb70c5b645aababc13829f44876e1bf5f548dc0d943eadaa264736755594",
+    "git_sha1": "f98227c67f72dc0fbc095d70e5d5a1adccec81b1"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/source/land_price.bin",
+    "bytes": 472,
+    "sha256": "fa190d24b97a82fc413eb6c518d04387befc12c713d6898a9a3d7d44f36c5ac4",
+    "git_sha1": "73fccd3655fee7365d5d8a6b780659ab41a650a3"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/source/monthly_growth.bin",
+    "bytes": 9188,
+    "sha256": "7f593d84b9a1180ed8cdffbb93c292b7b17964087fd67ae80defd4c6d3220d20",
+    "git_sha1": "db9b1d585510d3a253329e2a68507173ef35f680"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/source/population_reader.bin",
+    "bytes": 532,
+    "sha256": "1b688efa6faca63887238b49f2d7d12ff73b952f1f4d8c30445386320a658ccf",
+    "git_sha1": "e876bdd5beaab3fef796487ad7908a7ec92e6081"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/source/rng.bin",
+    "bytes": 72,
+    "sha256": "ba88fe9f36231f284094996c5fe97098dbc8487b910e056a0e6a82aae27a3b9b",
+    "git_sha1": "7c6d99c0a75059a42e69d2542d8b2795e6febb86"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/source-dependencies.json",
+    "bytes": 336,
+    "sha256": "e6c4dd2230bf5d44d20264df864a9e69080f056b370e9a8e08bd1015544729d5",
+    "git_sha1": "e5f2063de32f8f7451b381c6e9c8070aca16c477"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/source-ranges.json",
+    "bytes": 1000,
+    "sha256": "23caa973c420a152ab3e57588878d976168b1ed5aabab20301fbeedae3b9cb88",
+    "git_sha1": "4181b9558efa5a4e7040b4bc8a3302a8a12c4f2a"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/source-sales-response-examples.json",
+    "bytes": 6149,
+    "sha256": "c55af462fabb1f1550d1bffc524f37e3a381f850bf8f4b58a6a6539d02ede97d",
+    "git_sha1": "8380a8ca8be24fca78959aeabb463e0a5083b806"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-growth-land-data/summary.json",
+    "bytes": 1358,
+    "sha256": "de381466b25f354de9f21804208ee78db47525968d713977a0ddd2bf60cbd74f",
+    "git_sha1": "254c26cc335648eb80378b6eb424c69c2f29a38b"
+  }
+]

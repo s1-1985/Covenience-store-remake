@@ -1,0 +1,6 @@
+{
+  "town_cells": "../20261114-security-theft-data/source/town-cells.bin",
+  "building_master": "../20261114-land-construction-cost-data/source/building-descriptors.bin",
+  "population_mixes": "../20261113-customer-data/source/customer-mixes.bin",
+  "note": "Reuses source bytes. Extractor rereads disc; no full EXE/RAM duplication."
+}
