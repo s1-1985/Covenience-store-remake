@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "issue": 232,
+  "run_date": "2026-11-15",
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "source_manifest": "chatgpt_map_assets/individual_cross_type_2026-11-14/manifest.json",
+  "status": "VISUAL_TOPOLOGY_CORRECTION_CANDIDATE_ONLY",
+  "source_png_paths_sha_preflight": {
+    "matched": 12,
+    "total": 12
+  },
+  "source_visual_inspection": {
+    "actual_isolated_pngs": 12,
+    "main_control_pngs": 7,
+    "method": "GitHub fetch_file(base64) image rendering; visual axis classification; no pixel-level numerical edge measurement in this run"
+  },
+  "corrections": [
+    {
+      "prior_fixture": "crossing_basic and crossing_closed in issue232_cross_type_fixtures_2026_11_13.py",
+      "old": "road EW + rail NS",
+      "corrected_visual_hypothesis": "road NS + rail EW",
+      "evidence": "Crossing sprites and main map_road_ns / map_rail_ew control images; game/scripts/town_view.gd draws crossing when roads are N and S"
+    },
+    {
+      "prior_fixture": "grade_separation in same file",
+      "old": "road EW + rail NS",
+      "corrected_visual_hypothesis": "vertical road NS + horizontal elevated structure (type unconfirmed)",
+      "action": "Exclude until elevated deck type is identified"
+    },
+    {
+      "prior_fixture": "pond_channel_s in same file",
+      "old": "north river_ns and south pond_small",
+      "corrected_visual_hypothesis": "not established by visible edges",
+      "action": "Exclude until 24px edge profile and original layout prove connections"
+    }
+  ],
+  "excluded_from_connection_fixtures": [
+    "map_grade_separation_cross",
+    "map_pond_channel_s",
+    "map_concrete"
+  ],
+  "assets": [
+    {
+      "asset_id": "map_crossing_basic",
+      "role": "road_rail_crossing",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_crossing_basic.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_crossing_basic.png",
+      "source_git_blob_sha": "82488f0555d8888e3daf7024055aedc922456ecb",
+      "visual_connectivity": {
+        "road": [
+          "N",
+          "S"
+        ],
+        "rail": [
+          "E",
+          "W"
+        ]
+      },
+      "fixture_candidate": true,
+      "visual_observation": "Actual image shows vertical gray roadway and horizontal rails; old 2026-11-13 fixture incorrectly swapped these.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_crossing_closed",
+      "role": "road_rail_crossing",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_crossing_closed.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_crossing_closed.png",
+      "source_git_blob_sha": "14f1ee025ec2d7eebbb8bb5ec96a5ef9b15ecec3",
+      "visual_connectivity": {
+        "road": [
+          "N",
+          "S"
+        ],
+        "rail": [
+          "E",
+          "W"
+        ]
+      },
+      "fixture_candidate": true,
+      "visual_observation": "Barrier-down variant; road vertical and rails horizontal, same visual axes as basic.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_road_bridge_ew",
+      "role": "road_bridge",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_road_bridge_ew.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_bridge_ew.png",
+      "source_git_blob_sha": "e3d8830a407a0191d401360e3f9f497d3afca398",
+      "visual_connectivity": {
+        "road": [
+          "E",
+          "W"
+        ],
+        "water": [
+          "N",
+          "S"
+        ]
+      },
+      "fixture_candidate": true,
+      "visual_observation": "Horizontal road deck over vertical water.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_road_bridge_ns",
+      "role": "road_bridge",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_road_bridge_ns.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_bridge_ns.png",
+      "source_git_blob_sha": "f6b790cef82d6e9a5c69de1409b874d06a13ff17",
+      "visual_connectivity": {
+        "road": [
+          "N",
+          "S"
+        ],
+        "water": [
+          "E",
+          "W"
+        ]
+      },
+      "fixture_candidate": true,
+      "visual_observation": "Vertical road deck over horizontal water.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_rail_bridge_ew",
+      "role": "rail_bridge",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_rail_bridge_ew.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_bridge_ew.png",
+      "source_git_blob_sha": "cc9e9cfc4d579d141d866cd1dac6858dfee4bf30",
+      "visual_connectivity": {
+        "rail": [
+          "E",
+          "W"
+        ],
+        "water": [
+          "N",
+          "S"
+        ]
+      },
+      "fixture_candidate": true,
+      "visual_observation": "Horizontal rail bridge over vertical water.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_rail_bridge_ns",
+      "role": "rail_bridge",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_rail_bridge_ns.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_bridge_ns.png",
+      "source_git_blob_sha": "8568e2684b4ccb980ca45588f75a1e9c708c76f4",
+      "visual_connectivity": {
+        "rail": [
+          "N",
+          "S"
+        ],
+        "water": [
+          "E",
+          "W"
+        ]
+      },
+      "fixture_candidate": true,
+      "visual_observation": "Vertical rail bridge over horizontal water.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_grade_separation_cross",
+      "role": "grade_separation",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_grade_separation_cross.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_grade_separation_cross.png",
+      "source_git_blob_sha": "1e608afb8b66c0c28648059de99b760dc7c43b1d",
+      "visual_connectivity": {
+        "road": [
+          "N",
+          "S"
+        ],
+        "elevated_structure": [
+          "E",
+          "W"
+        ]
+      },
+      "fixture_candidate": false,
+      "visual_observation": "Image shows vertical road and horizontal elevated gray deck; deck type is not independently verified as rail. Exclude from rail/road fixture pending classification.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_river_mouth_s",
+      "role": "river_mouth",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_river_mouth_s.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_mouth_s.png",
+      "source_git_blob_sha": "2d4d320668dba58a7f38a892bfdf86a0a93a1430",
+      "visual_connectivity": {
+        "river": [
+          "N"
+        ],
+        "sea": [
+          "S"
+        ]
+      },
+      "fixture_candidate": true,
+      "visual_observation": "Narrow river from top joins open water at bottom; candidate seam only.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_river_mouth_s_square",
+      "role": "river_mouth",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_river_mouth_s_square.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_mouth_s_square.png",
+      "source_git_blob_sha": "53e4639bdef1396268828bc7c7855605d1df452d",
+      "visual_connectivity": {
+        "river": [
+          "N"
+        ],
+        "sea": [
+          "S"
+        ]
+      },
+      "fixture_candidate": true,
+      "visual_observation": "Squared mouth variant with top river and bottom open water.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_pond_channel_s",
+      "role": "pond_channel",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_pond_channel_s.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_pond_channel_s.png",
+      "source_git_blob_sha": "284338cab1de51626306a250e26e42f3ad7ea4f5",
+      "visual_connectivity": {},
+      "fixture_candidate": false,
+      "visual_observation": "Visible blue pool/channel is interior; no confirmed water opening at bottom edge. Previous fixture connected south to pond_small and north to river_ns without evidence. Exclude until edge pixels and source layout prove a neighbor.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_inlet_w",
+      "role": "coastal_inlet",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_inlet_w.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_inlet_w.png",
+      "source_git_blob_sha": "0313cc140595aafcb898f3363586fc23a75e7644",
+      "visual_connectivity": {
+        "sea": [
+          "W"
+        ]
+      },
+      "fixture_candidate": true,
+      "visual_observation": "Blue inlet opens at west boundary and terminates inland toward east; candidate W-sea neighbor.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_concrete",
+      "role": "site_surface",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_concrete.png",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_concrete.png",
+      "source_git_blob_sha": "307fdbebccadfb270f6459e768fa7fc9791a79a1",
+      "visual_connectivity": {},
+      "fixture_candidate": false,
+      "visual_observation": "Full paving surface; road-edge seamlessness and site/road access not proven. No transport direction mask.",
+      "source_png_decoded_in_this_run": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    }
+  ],
+  "acceptance": {
+    "issue_checkbox_changes": 0,
+    "fully_complete": false,
+    "unverified": [
+      "PS1 original appearance",
+      "numerical edge continuity",
+      "Godot render",
+      "game regression",
+      "site access geometry"
+    ]
+  }
+}
