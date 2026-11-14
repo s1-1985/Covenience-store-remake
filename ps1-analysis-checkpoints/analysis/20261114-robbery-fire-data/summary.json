@@ -1,0 +1,27 @@
+{
+  "incident_modes": 2,
+  "source_messages": 3,
+  "fixture_classes": 53,
+  "fire_retained_fixture_ids": [
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    48,
+    49
+  ],
+  "layouts": 30,
+  "populated_layouts_passing_assets_gate": 24,
+  "trait_eligible_profile_ids": [
+    81,
+    84,
+    94,
+    103
+  ],
+  "initial_location_coverage_rows": 11,
+  "original_cpu_updates": 0,
+  "known_before": "Isolated incident damage and original popup paths were reconstructed earlier. This work connects labels, all53 classes/30 layouts,4 actual qualifying profiles,11 initial locations, distinct monetary effects and source common-tail offsets.",
+  "not_claimed": "Actual incidents at initial rival stores, probability per day, a new emulated incident run, or new Android/APK changes."
+}

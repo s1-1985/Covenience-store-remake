@@ -1,38 +1,24 @@
 {
   "date_jst": "2026-11-14",
-  "work_kind": "security_theft_source_data_analysis",
-  "report": "analysis/20261114-security-theft-data/README.md",
+  "work_kind": "robbery_fire_source_data_analysis",
+  "report": "analysis/20261114-robbery-fire-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "profiles": 144,
+  "incident_modes": 2,
   "fixture_classes": 53,
-  "initial_stores": 11,
-  "initial_store_security": {
-    "TOWN0001": [
-      89,
-      58
-    ],
-    "TOWN0002": [
-      88,
-      60,
-      18
-    ],
-    "TOWN0003": [
-      59
-    ],
-    "TOWNPS": [
-      16,
-      53,
-      54,
-      50,
-      52
-    ]
-  },
-  "new_specification": "Link current staff security and per-cell police-box/fire-station bonuses to all11 initial stores, all144 conditional profile thresholds and53 fixture payment classes. Theft branch uses selling-price loss, no direct cash debit or extra local RNG; rating consumes nonzero loss once and clears it.",
-  "known_before": "Isolated theft gate, purchase control and neighborhood score models existed; this work connects all144 original traits, all53 fixture classes and initial11-store map/staff data, plus source loss notification.",
-  "previous_report": "analysis/20261114-parking-arrival-data/README.md",
-  "android_bridge": "analysis/20261114-security-theft-data/android-security-theft-bridge.json",
+  "layouts": 30,
+  "populated_layouts_passing_assets_gate": 24,
+  "trait_eligible_profile_ids": [
+    81,
+    84,
+    94,
+    103
+  ],
+  "initial_location_coverage_rows": 11,
+  "new_specification": "Link source incident labels, two RNG choices with fire override, police/fire facility table aliases, all53 fire classes and30 actual layouts. Preserve distinct cash/revenue changes versus common popup amount, mutable floor scan,20 customer cleanup and employee energy-only common tail.",
+  "known_before": "Isolated incident damage and original popup paths were reconstructed earlier. This work connects labels, all53 classes/30 layouts,4 actual qualifying profiles,11 initial locations, distinct monetary effects and source common-tail offsets.",
+  "previous_report": "analysis/20261114-security-theft-data/README.md",
+  "android_bridge": "analysis/20261114-robbery-fire-data/android-incident-bridge.json",
   "original_cpu_updates_this_work": 0,
-  "unresolved": "Separate robbery/fire incident frequency and complete end-to-end prior-cart handling are not newly established here.",
   "next_priority": "Continue necessary normal-play source-data analysis, integrate recovered specifications into native Android, then build APK."
 }

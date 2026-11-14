@@ -1,0 +1,10 @@
+{
+  "layouts": {
+    "path": "../20261114-parking-arrival-data/source/layouts.bin",
+    "sha256": "2605b35d94975af3f95a625a44c9f68819b56e0755df72e0551afee7b4928b91"
+  },
+  "town_cells": {
+    "path": "../20261114-security-theft-data/source/town-cells.bin",
+    "sha256": "686941d49363ce3f75438ef0d50946c5d30913a61495467217e5b56f7c8a8afb"
+  }
+}

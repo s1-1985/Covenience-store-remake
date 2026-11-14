@@ -1,0 +1,92 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 10930,
+    "sha256": "41ab716e9b7d1133072809353defa3d3cb07da7679407ce5ebbbec6795801bfd"
+  },
+  {
+    "path": "android-incident-bridge.json",
+    "bytes": 2688,
+    "sha256": "0f57f42d0ac013ce4a8a5e9cf8ba853a8908a6bc07d8050c0c23dc24320136ec"
+  },
+  {
+    "path": "extract-robbery-fire.py",
+    "bytes": 12878,
+    "sha256": "faaa4158bc631593a18458d841137674f86ee57a47f3ae0f69634c2a775fa2a0"
+  },
+  {
+    "path": "incident-data.json",
+    "bytes": 309911,
+    "sha256": "54a74b2ef20110c52452da8908a4de76d4e4fc2ad27698107fead918c043ef76"
+  },
+  {
+    "path": "incident-readers.asm",
+    "bytes": 84178,
+    "sha256": "3e41b654283bc4cf9531b137972dff3d323054022cf792b0b4e275333fc8be38"
+  },
+  {
+    "path": "source/equipment_value.bin",
+    "bytes": 404,
+    "sha256": "09f51e7def463a4e6cf07805d3687c7c6a85277002a0e8f9e562ba4d8827fc7c"
+  },
+  {
+    "path": "source/facility-descriptors.bin",
+    "bytes": 112,
+    "sha256": "89884ff92841b32a4b64d3b9adc649b2b8d687afc2233f2967bb4f572333bc91"
+  },
+  {
+    "path": "source/fixture-master.bin",
+    "bytes": 10388,
+    "sha256": "ff38d0b8eb5d1d17fabca839abed108b9243b9fafc70449024763e73fc5eba51"
+  },
+  {
+    "path": "source/incident.bin",
+    "bytes": 3972,
+    "sha256": "2358bc6c43e603d1ba513816970597b10fa76bc6f95865c1cc0dcf1ea155ddea"
+  },
+  {
+    "path": "source/incident_popup.bin",
+    "bytes": 2892,
+    "sha256": "5de5b081ae503f8d5201ce62151da1af6ec4360e41d3ca9ef459a5244d52c603"
+  },
+  {
+    "path": "source/inventory_value.bin",
+    "bytes": 660,
+    "sha256": "3cc1fc04aa218227365d978a6486a37d1552517ce2c398722abdbd3598611e1a"
+  },
+  {
+    "path": "source/parent_job_order.bin",
+    "bytes": 2024,
+    "sha256": "4905f880db940459d2b4004d9638c7db30553a7ebbe3baac8b3594a7c58f9a21"
+  },
+  {
+    "path": "source/product-master.bin",
+    "bytes": 2376,
+    "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+  },
+  {
+    "path": "source/profiles.bin",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 344,
+    "sha256": "e8f037a8d8704ec6f900e62f63d69eb813e3160fb23e24323088120af3a8efe8"
+  },
+  {
+    "path": "source-derived-examples.json",
+    "bytes": 1585,
+    "sha256": "12b878d744f012837db67ee2f42f522d38335a17a2f3d6fda00fb764dd241f3f"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1511,
+    "sha256": "8638273cc0ddb04da5f1558491cc4b73e0b2df128555ab9973a952fb4c9ae0ab"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 780,
+    "sha256": "4db3b68a5b4be7997aaa05391cbc15f07779916b84dd4991b58b95274723f3a1"
+  }
+]

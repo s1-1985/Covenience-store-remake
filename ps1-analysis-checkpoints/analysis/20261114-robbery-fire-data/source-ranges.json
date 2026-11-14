@@ -1,0 +1,56 @@
+[
+  {
+    "name": "incident",
+    "address": "0x8003bf28",
+    "bytes": 3972,
+    "sha256": "2358bc6c43e603d1ba513816970597b10fa76bc6f95865c1cc0dcf1ea155ddea"
+  },
+  {
+    "name": "incident_popup",
+    "address": "0x80052270",
+    "bytes": 2892,
+    "sha256": "5de5b081ae503f8d5201ce62151da1af6ec4360e41d3ca9ef459a5244d52c603"
+  },
+  {
+    "name": "equipment_value",
+    "address": "0x8001d018",
+    "bytes": 404,
+    "sha256": "09f51e7def463a4e6cf07805d3687c7c6a85277002a0e8f9e562ba4d8827fc7c"
+  },
+  {
+    "name": "inventory_value",
+    "address": "0x8001d618",
+    "bytes": 660,
+    "sha256": "3cc1fc04aa218227365d978a6486a37d1552517ce2c398722abdbd3598611e1a"
+  },
+  {
+    "name": "parent_job_order",
+    "address": "0x80023438",
+    "bytes": 2024,
+    "sha256": "4905f880db940459d2b4004d9638c7db30553a7ebbe3baac8b3594a7c58f9a21"
+  },
+  {
+    "name": "facility-descriptors",
+    "address": "0x8009db28",
+    "bytes": 112,
+    "sha256": "89884ff92841b32a4b64d3b9adc649b2b8d687afc2233f2967bb4f572333bc91"
+  },
+  {
+    "name": "fixture-master",
+    "address": "0x80099f0c",
+    "bytes": 10388,
+    "sha256": "ff38d0b8eb5d1d17fabca839abed108b9243b9fafc70449024763e73fc5eba51"
+  },
+  {
+    "name": "profiles",
+    "address": "0x800a09d0",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "name": "product-master",
+    "address": "0x8009cdf0",
+    "bytes": 2376,
+    "sha256": "4480a37afc97b461bbd0b6f79b0b08b8f924b88bbd0b8bf4855d7e1be487840d"
+  }
+]

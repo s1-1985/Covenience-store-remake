@@ -1,0 +1,67 @@
+{
+  "scope": "Arithmetic and source branch examples, not new gameplay observations.",
+  "revenue": {
+    "pre_event_revenue": 100000,
+    "robbery_cash_delta": -800000,
+    "robbery_revenue_after": 0,
+    "fire_direct_cash_delta": 0,
+    "fire_revenue_after": 100000,
+    "both_popup_amount_argument": 800000
+  },
+  "rng_overwrite": [
+    {
+      "first_remainder128": 100,
+      "second_remainder256": 0,
+      "kind": 0
+    },
+    {
+      "first_remainder128": 0,
+      "second_remainder256": 100,
+      "kind": 1
+    },
+    {
+      "first_remainder128": 100,
+      "second_remainder256": 100,
+      "kind": 1
+    },
+    {
+      "first_remainder128": 0,
+      "second_remainder256": 0,
+      "kind": -1
+    }
+  ],
+  "fire_fixture_totals": [
+    {
+      "id": 1,
+      "fixture_count": 31,
+      "retained_fixture_count": 2,
+      "removed_fixture_count": 29,
+      "assets_gate_value": 232565,
+      "removed_value_by_class": 174565
+    },
+    {
+      "id": 16,
+      "fixture_count": 31,
+      "retained_fixture_count": 2,
+      "removed_fixture_count": 29,
+      "assets_gate_value": 375530,
+      "removed_value_by_class": 291530
+    },
+    {
+      "id": 26,
+      "fixture_count": 32,
+      "retained_fixture_count": 2,
+      "removed_fixture_count": 30,
+      "assets_gate_value": 471525,
+      "removed_value_by_class": 387525
+    }
+  ],
+  "floor_writes": {
+    "initial_floor": 5,
+    "first_draw_mod4": 0,
+    "first_write": 6,
+    "second_draw_mod4": 3,
+    "second_write": 9,
+    "note": "Two qualifying half-cell visits to same logical tile; second replaces first."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "gate_order": [
+    "Owner rival bit8000 must be clear.",
+    "Summary security08 must be strictly below storeC6C.",
+    "Unsigned cumulative visitors1188>=2000.",
+    "Signed storeD5C>999999 and signed current revenueD98>99999.",
+    "Signed32 sum of original equipment valuation8001D018 plus stock procurement valuation8001D618>99999.",
+    "Consume2 RNG calls: first rand()%128==100 selects kind0; second rand()%256==100 selects kind1 and overrides kind0. If neither matches, exit.",
+    "Search clipped7-cell expanded store rectangle. Kind0 exits on any police-box cell60..63; kind1 exits on any fire-station cell64..69.",
+    "Minimum signed profile19 among tier-limited active customer records must be<31. Start minimum at100, so no active customer cannot pass."
+  ],
+  "eligibility_note": "One eligible active group is sufficient; group quantity and exact active state are not weighted. Uses same trait19 as ordinary theft, but threshold is fixed31 here.",
+  "robbery": "Set revenueD98=0; subtract signed32(saved pre-event revenueD98<<3) from player cash0. Popup mode0 receives serial(flags&7fff) and the same scaled amount. No general fixture/customer clear in this branch.",
+  "fire": "No direct revenue zero or player-cash debit here. Scan mutable half-cell grid row-major. For empty cell and signed logical floor0..15, draw once and write trunc(floor/5)*5+rand()%4+1. For valid fixture anchor kind<53 except categories4/6, erase its rotated footprint to0. Loop later sees cells just cleared.",
+  "fire_floor_note": "Multiple empty half-cells can rewrite the same logical floor tile, consuming multiple RNG draws. Floor dirt here is not a new dedicated scorch asset.",
+  "fire_customers": "Scan all20 records, not the tier-limited subset. Set active state0; if coordinates valid, clear image bits in old grid cell. Other customer bytes are not globally memset.",
+  "fire_popup": "Mode1 gets serial(flags&7fff), amount=saved revenueD98<<3. This UI amount is not recomputed as removed equipment+inventory cost.",
+  "common_tail": "After popup path, set current energy19=0 for each assigned employee. Do not set staff task28 to0 or unassign them. Set storeC6C=5 and dirty byte1=0. Do not confuse C6C with ratingC68.",
+  "subsequent_update": "Parent job order is customer319AC,staff36AC0,floor31498,advice3B570,incident3BF28. Incident is at end of these jobs; do not assume earlier summary/occupancy was rebuilt immediately inside this function.",
+  "limits": "No new real-time frequency, exact probability per day, full popup animation/audio reproduction or native Android implementation claimed. Original isolated incident/UI models already existed."
+}
