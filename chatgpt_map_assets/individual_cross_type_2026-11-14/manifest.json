@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "run_date": "2026-11-14",
+  "issue": 232,
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "source": "main:assets/raw/conveni_map_assets_v2/terrain/tiles_64",
+  "status": "INDIVIDUAL_PNGS_MATERIALIZED_NOT_APPROVED",
+  "copy_method": "Git tree entries referencing exact existing source blob SHAs (lossless byte-for-byte copy)",
+  "asset_count": 12,
+  "checks": {
+    "main_source_blob_sha_matched": 12,
+    "png_signature_ihdr_crc_all_chunks_iend_passed": 12,
+    "png_rgba_64x64_passed": 12,
+    "full_pixel_decode_not_run": 12,
+    "godot_render_not_run": 12,
+    "ps1_fidelity_not_verified": 12
+  },
+  "assets": [
+    {
+      "asset_id": "map_crossing_basic",
+      "role": "road_rail_crossing",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_crossing_basic.png",
+      "source_git_blob_sha": "82488f0555d8888e3daf7024055aedc922456ecb",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_crossing_basic.png",
+      "size_bytes": 9994,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_crossing_closed",
+      "role": "road_rail_crossing",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_crossing_closed.png",
+      "source_git_blob_sha": "14f1ee025ec2d7eebbb8bb5ec96a5ef9b15ecec3",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_crossing_closed.png",
+      "size_bytes": 10361,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_road_bridge_ew",
+      "role": "road_bridge",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_bridge_ew.png",
+      "source_git_blob_sha": "e3d8830a407a0191d401360e3f9f497d3afca398",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_road_bridge_ew.png",
+      "size_bytes": 10236,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_road_bridge_ns",
+      "role": "road_bridge",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_road_bridge_ns.png",
+      "source_git_blob_sha": "f6b790cef82d6e9a5c69de1409b874d06a13ff17",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_road_bridge_ns.png",
+      "size_bytes": 8627,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_rail_bridge_ew",
+      "role": "rail_bridge",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_bridge_ew.png",
+      "source_git_blob_sha": "cc9e9cfc4d579d141d866cd1dac6858dfee4bf30",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_rail_bridge_ew.png",
+      "size_bytes": 11447,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_rail_bridge_ns",
+      "role": "rail_bridge",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_rail_bridge_ns.png",
+      "source_git_blob_sha": "8568e2684b4ccb980ca45588f75a1e9c708c76f4",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_rail_bridge_ns.png",
+      "size_bytes": 10778,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_grade_separation_cross",
+      "role": "grade_separation",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_grade_separation_cross.png",
+      "source_git_blob_sha": "1e608afb8b66c0c28648059de99b760dc7c43b1d",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_grade_separation_cross.png",
+      "size_bytes": 9561,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_river_mouth_s",
+      "role": "river_mouth",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_mouth_s.png",
+      "source_git_blob_sha": "2d4d320668dba58a7f38a892bfdf86a0a93a1430",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_river_mouth_s.png",
+      "size_bytes": 9801,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_river_mouth_s_square",
+      "role": "river_mouth",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_river_mouth_s_square.png",
+      "source_git_blob_sha": "53e4639bdef1396268828bc7c7855605d1df452d",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_river_mouth_s_square.png",
+      "size_bytes": 9520,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_pond_channel_s",
+      "role": "pond_channel",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_pond_channel_s.png",
+      "source_git_blob_sha": "284338cab1de51626306a250e26e42f3ad7ea4f5",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_pond_channel_s.png",
+      "size_bytes": 9838,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_inlet_w",
+      "role": "coastal_inlet",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_inlet_w.png",
+      "source_git_blob_sha": "0313cc140595aafcb898f3363586fc23a75e7644",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_inlet_w.png",
+      "size_bytes": 9176,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    },
+    {
+      "asset_id": "map_concrete",
+      "role": "site_surface",
+      "source_ref": "main",
+      "source_path": "assets/raw/conveni_map_assets_v2/terrain/tiles_64/map_concrete.png",
+      "source_git_blob_sha": "307fdbebccadfb270f6459e768fa7fc9791a79a1",
+      "isolated_path": "chatgpt_map_assets/individual_cross_type_2026-11-14/map_concrete.png",
+      "size_bytes": 6548,
+      "size_px": [
+        64,
+        64
+      ],
+      "display_px": [
+        24,
+        24
+      ],
+      "png_crc_checked": true,
+      "png_structure_checked": true,
+      "png_idat_decompressed": false,
+      "original_ps1_verified": false,
+      "seam_accepted": false,
+      "godot_render_verified": false,
+      "runtime_integrated": false
+    }
+  ],
+  "limitations": [
+    "Existing candidate images copied without any pixel edits; source is not PS1-verified",
+    "PNG CRC and chunk structure checked; compressed IDAT was not decompressed in this run",
+    "No game source, main or Claude branch modified",
+    "Topology and seam visual approval remains pending"
+  ]
+}
