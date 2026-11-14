@@ -1,0 +1,87 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 10127,
+    "sha256": "2cf4342919b74640d7d05d026910337aee54cca48fcce9e6332739d936a4d265"
+  },
+  {
+    "path": "advertising-data.json",
+    "bytes": 14309,
+    "sha256": "5cb2e4654e30b88d0822fffbfbd4e22683af47ab0333a975c744808f85a1d422"
+  },
+  {
+    "path": "advertising-readers.asm",
+    "bytes": 77378,
+    "sha256": "b76edd006fc34deadf0afe0feebe3d2572f9610ec35c7f3f61cac2fc7b9d1711"
+  },
+  {
+    "path": "android-advertising-bridge.json",
+    "bytes": 2552,
+    "sha256": "bc58f29d61f50be559931fe6aaa1c944d8290ffaac854412ca76e71c0830857f"
+  },
+  {
+    "path": "extract-advertising.py",
+    "bytes": 10958,
+    "sha256": "759f748b3cd45159a02976f94c5672110d72876c85c4e5349efde6bca302feab"
+  },
+  {
+    "path": "source/advertising-master.bin",
+    "bytes": 220,
+    "sha256": "5a984e36dcc7652d9d14a833ab578ea31fa05b110ffd3a858058b355520a5acd"
+  },
+  {
+    "path": "source/advertising_and_popularity.bin",
+    "bytes": 6696,
+    "sha256": "7beb741eed8865bf7d58c0e90cc79cd5e7409577cd97b9b292e591553d63b35d"
+  },
+  {
+    "path": "source/advertising_menu.bin",
+    "bytes": 1864,
+    "sha256": "b34b12d9bd6cd469f96096f0d14fb64504e64a93a8353d1f2fbe74abd2fad6b0"
+  },
+  {
+    "path": "source/company_payment.bin",
+    "bytes": 252,
+    "sha256": "af9da4ab3c95bb9e4b1c81b44304dc513eda738fd97b8c23533de84436dc79dc"
+  },
+  {
+    "path": "source/daily-delta-jump-table.bin",
+    "bytes": 24,
+    "sha256": "95cecb91e71fc8fc319770990641afbeaea345ba51af77ea42fc252ee73c87cd"
+  },
+  {
+    "path": "source/flags_initialize.bin",
+    "bytes": 24,
+    "sha256": "46eead458b1f82758870ffb3e07de74b1906d5e3e28c2525958f30c69723f8b6"
+  },
+  {
+    "path": "source/notification-strings.bin",
+    "bytes": 132,
+    "sha256": "56cfa459f25c6560f1aeb63c381c4f4bdc8a0e36902667a57aab005ca1d437b4"
+  },
+  {
+    "path": "source/popularity_ui.bin",
+    "bytes": 248,
+    "sha256": "4c1ebbe774ed84cd2d1a4fd7ad4d83e7e1eae9d6f4b3fcc0ad4b9686fbde30e1"
+  },
+  {
+    "path": "source-derived-examples.json",
+    "bytes": 1378,
+    "sha256": "41cefe36d3bd5db52f8c116c155bfceea2f541de9be8f804a66bed03bd44e2fe"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1373,
+    "sha256": "03783efa029620f64dde50ecb7d23b6c3d0882c1afec76fb040ff260592b6b7b"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 897,
+    "sha256": "4ae20e64e67fc88b75ba306b4329575bb6a6c5ac48329f4ea4d38efd477ed42b"
+  },
+  {
+    "path": "ui-label-evidence.json",
+    "bytes": 4298,
+    "sha256": "f5059999502bab3416ffdfea097f8a7ee83c9540aca02ab4403ed7bd763f38e5"
+  }
+]

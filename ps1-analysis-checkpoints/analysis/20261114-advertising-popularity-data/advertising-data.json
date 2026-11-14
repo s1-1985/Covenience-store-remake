@@ -1,0 +1,825 @@
+{
+  "schema_version": 1,
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "table_address": "0x8009fe40",
+  "record_bytes": 44,
+  "count": 5,
+  "fields": {
+    "0": "Shift-JIS name24",
+    "24": "i32 cost",
+    "28": "i32 notification variant",
+    "32": "i32 popularity gain",
+    "36": "i32 stage",
+    "40": "i32 hour"
+  },
+  "promotions": [
+    {
+      "id": 0,
+      "address": "0x8009fe40",
+      "raw_hex": "835f8343838c834e83678381815b838b0000000000000000a0860100000000000c000000020000000a000000",
+      "name": "ダイレクトメール",
+      "menu_message": {
+        "index": 145,
+        "source_offset": 4390,
+        "codes": [
+          199,
+          144,
+          184,
+          150,
+          162,
+          176,
+          46,
+          183,
+          16639
+        ],
+        "text": "ダイレクトメール"
+      },
+      "cost": 100000,
+      "notification_variant": 0,
+      "popularity_gain": 12,
+      "trigger_stage": 2,
+      "trigger_hour": 10,
+      "player_required_cash": 500000,
+      "rival_selection_required_cash": 1000000
+    },
+    {
+      "id": 1,
+      "address": "0x8009fe6c",
+      "raw_hex": "905695b78d4c8d900000000000000000000000000000000020a1070001000000140000000200000007000000",
+      "name": "新聞広告",
+      "menu_message": {
+        "index": 146,
+        "source_offset": 4408,
+        "codes": [
+          398,
+          415,
+          416,
+          270,
+          16639
+        ],
+        "text": "新聞広告"
+      },
+      "cost": 500000,
+      "notification_variant": 1,
+      "popularity_gain": 20,
+      "trigger_stage": 2,
+      "trigger_hour": 7,
+      "player_required_cash": 2500000,
+      "rival_selection_required_cash": 5000000
+    },
+    {
+      "id": 2,
+      "address": "0x8009fe98",
+      "raw_hex": "94f28d73914400000000000000000000000000000000000040420f000200000028000000030000000f000000",
+      "name": "飛行船",
+      "menu_message": {
+        "index": 147,
+        "source_offset": 4418,
+        "codes": [
+          417,
+          418,
+          419,
+          16639
+        ],
+        "text": "飛行船"
+      },
+      "cost": 1000000,
+      "notification_variant": 2,
+      "popularity_gain": 40,
+      "trigger_stage": 3,
+      "trigger_hour": 15,
+      "player_required_cash": 5000000,
+      "rival_selection_required_cash": 10000000
+    },
+    {
+      "id": 3,
+      "address": "0x8009fec4",
+      "raw_hex": "8389835783498262826c0000000000000000000000000000c0c62d00030000003c0000000100000011000000",
+      "name": "ラジオＣＭ",
+      "menu_message": {
+        "index": 148,
+        "source_offset": 4426,
+        "codes": [
+          181,
+          195,
+          147,
+          16639
+        ],
+        "text": "ラジオ"
+      },
+      "cost": 3000000,
+      "notification_variant": 3,
+      "popularity_gain": 60,
+      "trigger_stage": 1,
+      "trigger_hour": 17,
+      "player_required_cash": 15000000,
+      "rival_selection_required_cash": 30000000
+    },
+    {
+      "id": 4,
+      "address": "0x8009fef0",
+      "raw_hex": "8365838c83728262826c0000000000000000000000000000404b4c00040000005a0000000100000013000000",
+      "name": "テレビＣＭ",
+      "menu_message": {
+        "index": 149,
+        "source_offset": 4434,
+        "codes": [
+          29,
+          31,
+          16639
+        ],
+        "text": "TV"
+      },
+      "cost": 5000000,
+      "notification_variant": 4,
+      "popularity_gain": 90,
+      "trigger_stage": 1,
+      "trigger_hour": 19,
+      "player_required_cash": 25000000,
+      "rival_selection_required_cash": 50000000
+    }
+  ],
+  "menu_combinations": [
+    {
+      "mask": 0,
+      "flags": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "selected_ids": [],
+      "menu_total": 0,
+      "raw_gain_sum": 0
+    },
+    {
+      "mask": 1,
+      "flags": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "selected_ids": [
+        0
+      ],
+      "menu_total": 100000,
+      "raw_gain_sum": 12
+    },
+    {
+      "mask": 2,
+      "flags": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "selected_ids": [
+        1
+      ],
+      "menu_total": 500000,
+      "raw_gain_sum": 20
+    },
+    {
+      "mask": 3,
+      "flags": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "selected_ids": [
+        0,
+        1
+      ],
+      "menu_total": 600000,
+      "raw_gain_sum": 32
+    },
+    {
+      "mask": 4,
+      "flags": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "selected_ids": [
+        2
+      ],
+      "menu_total": 1000000,
+      "raw_gain_sum": 40
+    },
+    {
+      "mask": 5,
+      "flags": [
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      "selected_ids": [
+        0,
+        2
+      ],
+      "menu_total": 1100000,
+      "raw_gain_sum": 52
+    },
+    {
+      "mask": 6,
+      "flags": [
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "selected_ids": [
+        1,
+        2
+      ],
+      "menu_total": 1500000,
+      "raw_gain_sum": 60
+    },
+    {
+      "mask": 7,
+      "flags": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "selected_ids": [
+        0,
+        1,
+        2
+      ],
+      "menu_total": 1600000,
+      "raw_gain_sum": 72
+    },
+    {
+      "mask": 8,
+      "flags": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "selected_ids": [
+        3
+      ],
+      "menu_total": 3000000,
+      "raw_gain_sum": 60
+    },
+    {
+      "mask": 9,
+      "flags": [
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "selected_ids": [
+        0,
+        3
+      ],
+      "menu_total": 3100000,
+      "raw_gain_sum": 72
+    },
+    {
+      "mask": 10,
+      "flags": [
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "selected_ids": [
+        1,
+        3
+      ],
+      "menu_total": 3500000,
+      "raw_gain_sum": 80
+    },
+    {
+      "mask": 11,
+      "flags": [
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "selected_ids": [
+        0,
+        1,
+        3
+      ],
+      "menu_total": 3600000,
+      "raw_gain_sum": 92
+    },
+    {
+      "mask": 12,
+      "flags": [
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "selected_ids": [
+        2,
+        3
+      ],
+      "menu_total": 4000000,
+      "raw_gain_sum": 100
+    },
+    {
+      "mask": 13,
+      "flags": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "selected_ids": [
+        0,
+        2,
+        3
+      ],
+      "menu_total": 4100000,
+      "raw_gain_sum": 112
+    },
+    {
+      "mask": 14,
+      "flags": [
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "selected_ids": [
+        1,
+        2,
+        3
+      ],
+      "menu_total": 4500000,
+      "raw_gain_sum": 120
+    },
+    {
+      "mask": 15,
+      "flags": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "selected_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "menu_total": 4600000,
+      "raw_gain_sum": 132
+    },
+    {
+      "mask": 16,
+      "flags": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "selected_ids": [
+        4
+      ],
+      "menu_total": 5000000,
+      "raw_gain_sum": 90
+    },
+    {
+      "mask": 17,
+      "flags": [
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "selected_ids": [
+        0,
+        4
+      ],
+      "menu_total": 5100000,
+      "raw_gain_sum": 102
+    },
+    {
+      "mask": 18,
+      "flags": [
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "selected_ids": [
+        1,
+        4
+      ],
+      "menu_total": 5500000,
+      "raw_gain_sum": 110
+    },
+    {
+      "mask": 19,
+      "flags": [
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "selected_ids": [
+        0,
+        1,
+        4
+      ],
+      "menu_total": 5600000,
+      "raw_gain_sum": 122
+    },
+    {
+      "mask": 20,
+      "flags": [
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "selected_ids": [
+        2,
+        4
+      ],
+      "menu_total": 6000000,
+      "raw_gain_sum": 130
+    },
+    {
+      "mask": 21,
+      "flags": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "selected_ids": [
+        0,
+        2,
+        4
+      ],
+      "menu_total": 6100000,
+      "raw_gain_sum": 142
+    },
+    {
+      "mask": 22,
+      "flags": [
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "selected_ids": [
+        1,
+        2,
+        4
+      ],
+      "menu_total": 6500000,
+      "raw_gain_sum": 150
+    },
+    {
+      "mask": 23,
+      "flags": [
+        1,
+        1,
+        1,
+        0,
+        1
+      ],
+      "selected_ids": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "menu_total": 6600000,
+      "raw_gain_sum": 162
+    },
+    {
+      "mask": 24,
+      "flags": [
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "selected_ids": [
+        3,
+        4
+      ],
+      "menu_total": 8000000,
+      "raw_gain_sum": 150
+    },
+    {
+      "mask": 25,
+      "flags": [
+        1,
+        0,
+        0,
+        1,
+        1
+      ],
+      "selected_ids": [
+        0,
+        3,
+        4
+      ],
+      "menu_total": 8100000,
+      "raw_gain_sum": 162
+    },
+    {
+      "mask": 26,
+      "flags": [
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "selected_ids": [
+        1,
+        3,
+        4
+      ],
+      "menu_total": 8500000,
+      "raw_gain_sum": 170
+    },
+    {
+      "mask": 27,
+      "flags": [
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "selected_ids": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "menu_total": 8600000,
+      "raw_gain_sum": 182
+    },
+    {
+      "mask": 28,
+      "flags": [
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "selected_ids": [
+        2,
+        3,
+        4
+      ],
+      "menu_total": 9000000,
+      "raw_gain_sum": 190
+    },
+    {
+      "mask": 29,
+      "flags": [
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "selected_ids": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "menu_total": 9100000,
+      "raw_gain_sum": 202
+    },
+    {
+      "mask": 30,
+      "flags": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "selected_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "menu_total": 9500000,
+      "raw_gain_sum": 210
+    },
+    {
+      "mask": 31,
+      "flags": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "selected_ids": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "menu_total": 9600000,
+      "raw_gain_sum": 222
+    }
+  ],
+  "popularity_daily_delta": [
+    {
+      "rating_band": 0,
+      "rating_range": [
+        0,
+        19
+      ],
+      "daily_midnight_delta": -15,
+      "branch": "0x80028eb8"
+    },
+    {
+      "rating_band": 1,
+      "rating_range": [
+        20,
+        39
+      ],
+      "daily_midnight_delta": -10,
+      "branch": "0x80028edc"
+    },
+    {
+      "rating_band": 2,
+      "rating_range": [
+        40,
+        59
+      ],
+      "daily_midnight_delta": -5,
+      "branch": "0x80028f00"
+    },
+    {
+      "rating_band": 3,
+      "rating_range": [
+        60,
+        79
+      ],
+      "daily_midnight_delta": -3,
+      "branch": "0x80028f24"
+    },
+    {
+      "rating_band": 4,
+      "rating_range": [
+        80,
+        99
+      ],
+      "daily_midnight_delta": 0,
+      "branch": "0x80028f48"
+    },
+    {
+      "rating_band": 5,
+      "rating_range": [
+        100,
+        100
+      ],
+      "daily_midnight_delta": 5,
+      "branch": "0x80028f68"
+    }
+  ],
+  "initial_map_stores": [
+    {
+      "map": "TOWN0001",
+      "source_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+      "stores": [
+        {
+          "slot": 1,
+          "owner_flags": 32769,
+          "rating": 10,
+          "popularity": 20
+        },
+        {
+          "slot": 2,
+          "owner_flags": 32770,
+          "rating": 10,
+          "popularity": 20
+        }
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "source_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+      "stores": [
+        {
+          "slot": 1,
+          "owner_flags": 32769,
+          "rating": 10,
+          "popularity": 20
+        },
+        {
+          "slot": 2,
+          "owner_flags": 32770,
+          "rating": 10,
+          "popularity": 20
+        },
+        {
+          "slot": 3,
+          "owner_flags": 32771,
+          "rating": 10,
+          "popularity": 20
+        }
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "source_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+      "stores": [
+        {
+          "slot": 1,
+          "owner_flags": 32769,
+          "rating": 10,
+          "popularity": 20
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "source_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+      "stores": [
+        {
+          "slot": 1,
+          "owner_flags": 32769,
+          "rating": 10,
+          "popularity": 20
+        },
+        {
+          "slot": 2,
+          "owner_flags": 32770,
+          "rating": 10,
+          "popularity": 20
+        },
+        {
+          "slot": 3,
+          "owner_flags": 32771,
+          "rating": 10,
+          "popularity": 20
+        },
+        {
+          "slot": 4,
+          "owner_flags": 32772,
+          "rating": 10,
+          "popularity": 20
+        },
+        {
+          "slot": 5,
+          "owner_flags": 32773,
+          "rating": 10,
+          "popularity": 20
+        }
+      ]
+    }
+  ],
+  "canonical_fields": {
+    "store+C68": "評価; MSG310, source UI renders trunc(value/20)",
+    "store+C6C": "人気; MSG311 aligned with numeric MSG369 fed fromC6C"
+  },
+  "known_before": "Prior guide/video-derived definitions held these five numeric rows. This work reads the original records and ties them to original menu, payments, persistent flags, company scope and decay implementation."
+}

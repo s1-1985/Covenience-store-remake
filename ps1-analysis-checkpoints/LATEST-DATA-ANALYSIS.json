@@ -1,24 +1,19 @@
 {
   "date_jst": "2026-11-14",
-  "work_kind": "robbery_fire_source_data_analysis",
-  "report": "analysis/20261114-robbery-fire-data/README.md",
+  "work_kind": "advertising_popularity_source_data_analysis",
+  "report": "analysis/20261114-advertising-popularity-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "incident_modes": 2,
-  "fixture_classes": 53,
-  "layouts": 30,
-  "populated_layouts_passing_assets_gate": 24,
-  "trait_eligible_profile_ids": [
-    81,
-    84,
-    94,
-    103
-  ],
-  "initial_location_coverage_rows": 11,
-  "new_specification": "Link source incident labels, two RNG choices with fire override, police/fire facility table aliases, all53 fire classes and30 actual layouts. Preserve distinct cash/revenue changes versus common popup amount, mutable floor scan,20 customer cleanup and employee energy-only common tail.",
-  "known_before": "Isolated incident damage and original popup paths were reconstructed earlier. This work connects labels, all53 classes/30 layouts,4 actual qualifying profiles,11 initial locations, distinct monetary effects and source common-tail offsets.",
-  "previous_report": "analysis/20261114-security-theft-data/README.md",
-  "android_bridge": "analysis/20261114-robbery-fire-data/android-incident-bridge.json",
+  "promotion_types": 5,
+  "menu_combinations": 32,
+  "canonical_fields": {
+    "store+C68": "評価",
+    "store+C6C": "人気"
+  },
+  "new_specification": "Read five original44-byte advertising records and link persistent own flags, menu commit/cancel, trigger-time5x cash gate versus1x charge and all-company-store gain. Resolve original popularity labelC6C, daily6-band correction with rating floor and cap100; rival10x monthly selection versus single charge at trigger.",
+  "known_before": "Guide/video definitions already had matching cost/gain/time rows; isolated native economic paths existed. Prior reference_sim scheduler explicitly left late scheduling/payment semantics partially unresolved.",
+  "previous_report": "analysis/20261114-robbery-fire-data/README.md",
+  "android_bridge": "analysis/20261114-advertising-popularity-data/android-advertising-bridge.json",
   "original_cpu_updates_this_work": 0,
   "next_priority": "Continue necessary normal-play source-data analysis, integrate recovered specifications into native Android, then build APK."
 }

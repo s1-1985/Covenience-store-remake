@@ -1,0 +1,32 @@
+{
+  "promotion_types": 5,
+  "menu_combinations": 32,
+  "initial_stores": 11,
+  "canonical_popularity_field": "store+C6C",
+  "cost_values": [
+    100000,
+    500000,
+    1000000,
+    3000000,
+    5000000
+  ],
+  "gains": [
+    12,
+    20,
+    40,
+    60,
+    90
+  ],
+  "daily_midnight_delta": [
+    -15,
+    -10,
+    -5,
+    -3,
+    0,
+    5
+  ],
+  "original_cpu_updates": 0,
+  "source_confirmed": "Five original44-byte rows; current cash5x gate versus1x charge, persistent own flags, all-company scope, rival10x selection and original UI popularity label.",
+  "prior_context": "Guide/video definitions already had matching cost/gain/time rows; isolated native economic paths existed. Prior reference_sim scheduler explicitly left late scheduling/payment semantics partially unresolved.",
+  "remaining": "No new mobile implementation, UI timing measurement or natural rival advertising sequence."
+}

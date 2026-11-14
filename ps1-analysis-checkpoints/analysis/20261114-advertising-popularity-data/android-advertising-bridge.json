@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "state": {
+    "player_flags": "Five bytes800e3688..368c",
+    "rival_flags": "Five bytes800e368d..3691",
+    "initialization": "8001aee8..1aefc clears10 bytes together"
+  },
+  "menu": "80069bbc copies five player bytes to local buffer. Confirm input800 writes all5 back; cancel40 returns without writeback. Toggle20 changes local0/1 only. No cash debit or current-date rejection in these commit/toggle branches.",
+  "clock": "275f8 returns unless minute0. Each promotion tests current stage and hour against its record. Month itself is not a record field.",
+  "recurring": "Success does not clear player flag. It remains enabled for later matching months until menu disables it or insufficient-cash branch clears it. Enabling after its monthly time is not an immediate catch-up trigger.",
+  "player": "At trigger require signed cash0>=5*cost. Success accumulates gain for owner0, charges cost once via1cbc4(store0,cost), queues kind4/variant/master28/sound100. Failure clears that player flag, no gain/debit, and queues cancellation sound31.",
+  "scope": "Loop valid store-order entries. For each store add the gain accumulator selected by owner high bit toC6C, regardless of open/closed schedule state. Charge once per method/company, not per beneficiary store.",
+  "ledger": "1cbc4 adds cost to company ledger800d8f68+16*side and subtracts it from company cash800cd9f8+4*side. The5x amount is a gate, not the debit.",
+  "rival": "At stage1/hour0/minute0 consume rand()%4 and compare against signed control byte800cd8a8. If allowed, scan methods4..0 and set only the first whose10*cost<=rival cash; clear all other rival flags. At its trigger add owner1 gain, find first active rival in physical slots0..9, debit cost once and queue sound101, then break. No extra cash-adequacy check is present in that trigger path.",
+  "popularity": "At minute0 add company gain. If hour0, add delta indexed by trunc(current ratingC68/20). Then floor popularity to current ratingC68, and cap100. Monthly rating changes earlier in the same routine are already applied.",
+  "ui_correction": "C6C was left unnamed in the preceding incident/security reports; original UI identifies it as popularity人気. Keep it distinct from evaluationC68.",
+  "not_claimed": [
+    "Raw gain sum222 from all5 is not an immediate222-point effective gain; time, decay and cap apply.",
+    "No per-day rival probability or natural advertising run newly measured.",
+    "No guide-only one-shot scheduling assumption overrides original persistent flags."
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "scope": "Source arithmetic examples, not runtime observations.",
+  "direct_mail": [
+    {
+      "cash_before": 499999,
+      "allowed": false,
+      "charge": 0,
+      "cash_after": 499999,
+      "flag_after": 0
+    },
+    {
+      "cash_before": 500000,
+      "allowed": true,
+      "charge": 100000,
+      "cash_after": 400000,
+      "flag_after": 1
+    }
+  ],
+  "company_scope": {
+    "stores_before": [
+      20,
+      70
+    ],
+    "gain": 12,
+    "after_gain_before_rating_floor_and_cap": [
+      32,
+      82
+    ],
+    "company_charge": 100000,
+    "not_per_store_charge": 200000
+  },
+  "late_selection": {
+    "stage": 1,
+    "hour": 20,
+    "selected_method": 4,
+    "next_matching_stage": 1,
+    "next_matching_hour": 19,
+    "note": "On following monthly cycle, provided flag persists and cash gate passes; no immediate catch-up."
+  },
+  "popularity_update": [
+    {
+      "before": 95,
+      "rating": 40,
+      "hour": 0,
+      "gain": 0,
+      "delta": -5,
+      "after": 90
+    },
+    {
+      "before": 50,
+      "rating": 60,
+      "hour": 0,
+      "gain": 0,
+      "delta": -3,
+      "after": 60
+    },
+    {
+      "before": 5,
+      "rating": 60,
+      "hour": 1,
+      "gain": 0,
+      "delta": 0,
+      "after": 60
+    },
+    {
+      "before": 95,
+      "rating": 60,
+      "hour": 10,
+      "gain": 12,
+      "delta": 0,
+      "after": 100
+    }
+  ]
+}

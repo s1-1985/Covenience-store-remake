@@ -1,0 +1,50 @@
+[
+  {
+    "name": "advertising_and_popularity",
+    "address": "0x800275f8",
+    "bytes": 6696,
+    "sha256": "7beb741eed8865bf7d58c0e90cc79cd5e7409577cd97b9b292e591553d63b35d"
+  },
+  {
+    "name": "advertising_menu",
+    "address": "0x80069bbc",
+    "bytes": 1864,
+    "sha256": "b34b12d9bd6cd469f96096f0d14fb64504e64a93a8353d1f2fbe74abd2fad6b0"
+  },
+  {
+    "name": "popularity_ui",
+    "address": "0x8004dbdc",
+    "bytes": 248,
+    "sha256": "4c1ebbe774ed84cd2d1a4fd7ad4d83e7e1eae9d6f4b3fcc0ad4b9686fbde30e1"
+  },
+  {
+    "name": "company_payment",
+    "address": "0x8001cbc4",
+    "bytes": 252,
+    "sha256": "af9da4ab3c95bb9e4b1c81b44304dc513eda738fd97b8c23533de84436dc79dc"
+  },
+  {
+    "name": "flags_initialize",
+    "address": "0x8001aee8",
+    "bytes": 24,
+    "sha256": "46eead458b1f82758870ffb3e07de74b1906d5e3e28c2525958f30c69723f8b6"
+  },
+  {
+    "name": "advertising-master",
+    "address": "0x8009fe40",
+    "bytes": 220,
+    "sha256": "5a984e36dcc7652d9d14a833ab578ea31fa05b110ffd3a858058b355520a5acd"
+  },
+  {
+    "name": "daily-delta-jump-table",
+    "address": "0x800108b0",
+    "bytes": 24,
+    "sha256": "95cecb91e71fc8fc319770990641afbeaea345ba51af77ea42fc252ee73c87cd"
+  },
+  {
+    "name": "notification-strings",
+    "address": "0x80098d6c",
+    "bytes": 132,
+    "sha256": "56cfa459f25c6560f1aeb63c381c4f4bdc8a0e36902667a57aab005ca1d437b4"
+  }
+]
