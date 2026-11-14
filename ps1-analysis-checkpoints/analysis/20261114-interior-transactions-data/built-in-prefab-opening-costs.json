@@ -1,0 +1,215 @@
+{
+  "rows": [
+    {
+      "tier": 0,
+      "built_in_prefab_layout": 1,
+      "required_permit_mask": 0,
+      "required_permit_fee": 0,
+      "construction_fee": 6000000,
+      "equipment": 34550,
+      "stock": 198015,
+      "interior": 232565,
+      "cheapest_initial_acquisition": 20000000,
+      "minimum_opening_amount_without_editor_changes": 26232565,
+      "additional_cash_needed_for_strict_interior_gate": 1,
+      "map_price_ranges_before_permit_siting_filter": [
+        {
+          "map": "TOWN0001",
+          "minimum": 26232565,
+          "maximum": 77232565
+        },
+        {
+          "map": "TOWN0002",
+          "minimum": 26232565,
+          "maximum": 58232565
+        },
+        {
+          "map": "TOWN0003",
+          "minimum": 26232565,
+          "maximum": 61232565
+        },
+        {
+          "map": "TOWNPS",
+          "minimum": 26232565,
+          "maximum": 71232565
+        }
+      ]
+    },
+    {
+      "tier": 1,
+      "built_in_prefab_layout": 6,
+      "required_permit_mask": 0,
+      "required_permit_fee": 0,
+      "construction_fee": 6000000,
+      "equipment": 21610,
+      "stock": 140990,
+      "interior": 162600,
+      "cheapest_initial_acquisition": 20000000,
+      "minimum_opening_amount_without_editor_changes": 26162600,
+      "additional_cash_needed_for_strict_interior_gate": 1,
+      "map_price_ranges_before_permit_siting_filter": [
+        {
+          "map": "TOWN0001",
+          "minimum": 26162600,
+          "maximum": 77162600
+        },
+        {
+          "map": "TOWN0002",
+          "minimum": 26162600,
+          "maximum": 58162600
+        },
+        {
+          "map": "TOWN0003",
+          "minimum": 26162600,
+          "maximum": 61162600
+        },
+        {
+          "map": "TOWNPS",
+          "minimum": 26162600,
+          "maximum": 71162600
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "built_in_prefab_layout": 11,
+      "required_permit_mask": 0,
+      "required_permit_fee": 0,
+      "construction_fee": 12000000,
+      "equipment": 27360,
+      "stock": 296840,
+      "interior": 324200,
+      "cheapest_initial_acquisition": 20000000,
+      "minimum_opening_amount_without_editor_changes": 32324200,
+      "additional_cash_needed_for_strict_interior_gate": 1,
+      "map_price_ranges_before_permit_siting_filter": [
+        {
+          "map": "TOWN0001",
+          "minimum": 32324200,
+          "maximum": 83324200
+        },
+        {
+          "map": "TOWN0002",
+          "minimum": 32324200,
+          "maximum": 64324200
+        },
+        {
+          "map": "TOWN0003",
+          "minimum": 32324200,
+          "maximum": 67324200
+        },
+        {
+          "map": "TOWNPS",
+          "minimum": 32324200,
+          "maximum": 77324200
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "built_in_prefab_layout": 16,
+      "required_permit_mask": 0,
+      "required_permit_fee": 0,
+      "construction_fee": 12000000,
+      "equipment": 57480,
+      "stock": 318050,
+      "interior": 375530,
+      "cheapest_initial_acquisition": 20000000,
+      "minimum_opening_amount_without_editor_changes": 32375530,
+      "additional_cash_needed_for_strict_interior_gate": 1,
+      "map_price_ranges_before_permit_siting_filter": [
+        {
+          "map": "TOWN0001",
+          "minimum": 32375530,
+          "maximum": 83375530
+        },
+        {
+          "map": "TOWN0002",
+          "minimum": 32375530,
+          "maximum": 64375530
+        },
+        {
+          "map": "TOWN0003",
+          "minimum": 32375530,
+          "maximum": 67375530
+        },
+        {
+          "map": "TOWNPS",
+          "minimum": 32375530,
+          "maximum": 77375530
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "built_in_prefab_layout": 21,
+      "required_permit_mask": 0,
+      "required_permit_fee": 0,
+      "construction_fee": 18000000,
+      "equipment": 26320,
+      "stock": 299115,
+      "interior": 325435,
+      "cheapest_initial_acquisition": 20000000,
+      "minimum_opening_amount_without_editor_changes": 38325435,
+      "additional_cash_needed_for_strict_interior_gate": 1,
+      "map_price_ranges_before_permit_siting_filter": [
+        {
+          "map": "TOWN0001",
+          "minimum": 38325435,
+          "maximum": 89325435
+        },
+        {
+          "map": "TOWN0002",
+          "minimum": 38325435,
+          "maximum": 70325435
+        },
+        {
+          "map": "TOWN0003",
+          "minimum": 38325435,
+          "maximum": 73325435
+        },
+        {
+          "map": "TOWNPS",
+          "minimum": 38325435,
+          "maximum": 83325435
+        }
+      ]
+    },
+    {
+      "tier": 5,
+      "built_in_prefab_layout": 26,
+      "required_permit_mask": 0,
+      "required_permit_fee": 0,
+      "construction_fee": 18000000,
+      "equipment": 62760,
+      "stock": 408765,
+      "interior": 471525,
+      "cheapest_initial_acquisition": 20000000,
+      "minimum_opening_amount_without_editor_changes": 38471525,
+      "additional_cash_needed_for_strict_interior_gate": 1,
+      "map_price_ranges_before_permit_siting_filter": [
+        {
+          "map": "TOWN0001",
+          "minimum": 38471525,
+          "maximum": 89471525
+        },
+        {
+          "map": "TOWN0002",
+          "minimum": 38471525,
+          "maximum": 70471525
+        },
+        {
+          "map": "TOWN0003",
+          "minimum": 38471525,
+          "maximum": 73471525
+        },
+        {
+          "map": "TOWNPS",
+          "minimum": 38471525,
+          "maximum": 83471525
+        }
+      ]
+    }
+  ],
+  "note": "Source arithmetic at original template values, minimum required permits only, unchanged prefab, no later manual edits. Strict acquisition/interior cash gates mean a bare exact total is insufficient at interior confirmation. Requested additional optional permits add their own fees. Size unlock and final operational/layout preflight still apply. Ranges are before extra permit availability filtering."
+}

@@ -1,37 +1,66 @@
 {
   "date_jst": "2026-11-14",
-  "work_kind": "land_construction_and_placement_source_data_analysis",
-  "report": "analysis/20261114-land-construction-cost-data/README.md",
+  "work_kind": "interior_transactions_source_data_analysis",
+  "report": "analysis/20261114-interior-transactions-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "stored_descriptors": 82,
-  "demolition_lookup_rows": 72,
-  "construction_tiers": 6,
+  "fixtures": 53,
+  "products": 27,
   "layouts": 30,
-  "candidate_rectangles": 11564,
-  "acquisition_ranges": {
-    "TOWN0001": [
-      20000000,
-      71000000
-    ],
-    "TOWN0002": [
-      20000000,
-      52000000
-    ],
-    "TOWN0003": [
-      20000000,
-      55000000
-    ],
-    "TOWNPS": [
-      20000000,
-      65000000
-    ]
-  },
-  "placement_examples": 12,
-  "new_specification": "Connect all initial land coefficients and native demolition masters to full-footprint charging, 11564 sites, six construction tiers and twelve cell-output patches. Distinguish72 lookup rows from82 stored rows, strict land cash gate from later inclusive gates, unchanged land bytes on clearing, and mandatory mask rebuild after placement.",
-  "known_before": "Isolated land, demolition, valuation and premises controls already recovered. New work connects all native descriptors, actual72-row lookup, all12000 initial cell coefficients,11564 positions and30 layouts to original stage-specific charges.",
-  "previous_report": "analysis/20261114-permit-siting-data/README.md",
-  "android_bridge": "analysis/20261114-land-construction-cost-data/android-land-construction-bridge.json",
+  "source_anchors": 852,
+  "product_change_charge_entries": 4197,
+  "ordinary_removal_blocked_fixture_ids": [
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    48,
+    49
+  ],
+  "built_in_prefab_quotes": [
+    {
+      "tier": 0,
+      "layout": 1,
+      "interior": 232565,
+      "minimum_opening_amount": 26232565
+    },
+    {
+      "tier": 1,
+      "layout": 6,
+      "interior": 162600,
+      "minimum_opening_amount": 26162600
+    },
+    {
+      "tier": 2,
+      "layout": 11,
+      "interior": 324200,
+      "minimum_opening_amount": 32324200
+    },
+    {
+      "tier": 3,
+      "layout": 16,
+      "interior": 375530,
+      "minimum_opening_amount": 32375530
+    },
+    {
+      "tier": 4,
+      "layout": 21,
+      "interior": 325435,
+      "minimum_opening_amount": 38325435
+    },
+    {
+      "tier": 5,
+      "layout": 26,
+      "interior": 471525,
+      "minimum_opening_amount": 38471525
+    }
+  ],
+  "new_specification": "Bind all source fixture/product/options/layouts to full purchase/refund procurement arithmetic; connect normal move mode1 and finish mode4 to upper menu, required register/staff-room replacement exceptions, saved-template refill and six actual prefab costs with land/construction. Preserve original price units and strict prefab cash gate.",
+  "known_before": "Isolated placement/removal/product-change and template-cost paths already recovered. This extraction binds53 actual descriptors,27 products,30 original templates and source-compatible change matrices to working counters, required-facility exceptions and six actual prefab selections.",
+  "previous_report": "analysis/20261114-land-construction-cost-data/README.md",
+  "android_bridge": "analysis/20261114-interior-transactions-data/android-interior-transactions-bridge.json",
   "original_cpu_updates_this_work": 0,
-  "next_priority": "Continue necessary normal-play source-data analysis, integrate recovered specifications into native Android, then build APK."
+  "next_priority": "Connect existing-store editor final posting and required normal-play source data; then integrate native Android and build APK."
 }

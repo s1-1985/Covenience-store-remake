@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-14：内装53什器・27商品・30配置の購入返金、4197商品差額と標準出店6件](analysis/20261114-interior-transactions-data/README.md)
+
 - [2026-11-14：土地・建物82行と11564区画の取得費、6段階の建築費・出店時の街セル更新](analysis/20261114-land-construction-cost-data/README.md)
 
 - [2026-11-14：販売許可3種類、制限再構築と全11564出店候補、30配置・64費用組合せ](analysis/20261114-permit-siting-data/README.md)

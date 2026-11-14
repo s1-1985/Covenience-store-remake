@@ -1,0 +1,2074 @@
+{
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "fixture_rows": [
+    {
+      "id": 0,
+      "label": {
+        "index": 387,
+        "offset": 8496,
+        "codes": [
+          599,
+          309,
+          600,
+          16639
+        ],
+        "text": "常温棚"
+      },
+      "category": 0,
+      "flags": 256,
+      "purchase_price": 60,
+      "capacity": 40,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 3
+    },
+    {
+      "id": 1,
+      "label": {
+        "index": 388,
+        "offset": 8504,
+        "codes": [
+          599,
+          309,
+          600,
+          16639
+        ],
+        "text": "常温棚"
+      },
+      "category": 0,
+      "flags": 256,
+      "purchase_price": 100,
+      "capacity": 80,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 3
+    },
+    {
+      "id": 2,
+      "label": {
+        "index": 389,
+        "offset": 8512,
+        "codes": [
+          599,
+          309,
+          600,
+          16639
+        ],
+        "text": "常温棚"
+      },
+      "category": 0,
+      "flags": 256,
+      "purchase_price": 140,
+      "capacity": 120,
+      "logical_footprint": [
+        3,
+        1
+      ],
+      "compatible_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 3
+    },
+    {
+      "id": 3,
+      "label": {
+        "index": 390,
+        "offset": 8520,
+        "codes": [
+          599,
+          309,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "常温ワゴン"
+      },
+      "category": 1,
+      "flags": 257,
+      "purchase_price": 30,
+      "capacity": 15,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 3
+    },
+    {
+      "id": 4,
+      "label": {
+        "index": 391,
+        "offset": 8532,
+        "codes": [
+          599,
+          309,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "常温ワゴン"
+      },
+      "category": 1,
+      "flags": 257,
+      "purchase_price": 50,
+      "capacity": 30,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 3
+    },
+    {
+      "id": 5,
+      "label": {
+        "index": 392,
+        "offset": 8544,
+        "codes": [
+          599,
+          309,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "常温ワゴン"
+      },
+      "category": 1,
+      "flags": 257,
+      "purchase_price": 70,
+      "capacity": 45,
+      "logical_footprint": [
+        3,
+        1
+      ],
+      "compatible_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 3
+    },
+    {
+      "id": 6,
+      "label": {
+        "index": 393,
+        "offset": 8556,
+        "codes": [
+          599,
+          309,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "常温ワゴン"
+      },
+      "category": 1,
+      "flags": 257,
+      "purchase_price": 90,
+      "capacity": 60,
+      "logical_footprint": [
+        2,
+        2
+      ],
+      "compatible_products": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        15,
+        16,
+        19,
+        22,
+        23
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 3
+    },
+    {
+      "id": 7,
+      "label": {
+        "index": 394,
+        "offset": 8568,
+        "codes": [
+          311,
+          312,
+          600,
+          16639
+        ],
+        "text": "冷蔵棚"
+      },
+      "category": 0,
+      "flags": 8448,
+      "purchase_price": 200,
+      "capacity": 30,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 0
+    },
+    {
+      "id": 8,
+      "label": {
+        "index": 395,
+        "offset": 8576,
+        "codes": [
+          311,
+          312,
+          600,
+          16639
+        ],
+        "text": "冷蔵棚"
+      },
+      "category": 0,
+      "flags": 8448,
+      "purchase_price": 350,
+      "capacity": 60,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 0
+    },
+    {
+      "id": 9,
+      "label": {
+        "index": 396,
+        "offset": 8584,
+        "codes": [
+          311,
+          312,
+          600,
+          16639
+        ],
+        "text": "冷蔵棚"
+      },
+      "category": 0,
+      "flags": 8448,
+      "purchase_price": 500,
+      "capacity": 90,
+      "logical_footprint": [
+        3,
+        1
+      ],
+      "compatible_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 0
+    },
+    {
+      "id": 10,
+      "label": {
+        "index": 397,
+        "offset": 8592,
+        "codes": [
+          311,
+          312,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "冷蔵ワゴン"
+      },
+      "category": 1,
+      "flags": 8449,
+      "purchase_price": 120,
+      "capacity": 10,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 0
+    },
+    {
+      "id": 11,
+      "label": {
+        "index": 398,
+        "offset": 8604,
+        "codes": [
+          311,
+          312,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "冷蔵ワゴン"
+      },
+      "category": 1,
+      "flags": 8449,
+      "purchase_price": 200,
+      "capacity": 20,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 0
+    },
+    {
+      "id": 12,
+      "label": {
+        "index": 399,
+        "offset": 8616,
+        "codes": [
+          311,
+          312,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "冷蔵ワゴン"
+      },
+      "category": 1,
+      "flags": 8449,
+      "purchase_price": 280,
+      "capacity": 30,
+      "logical_footprint": [
+        3,
+        1
+      ],
+      "compatible_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 0
+    },
+    {
+      "id": 13,
+      "label": {
+        "index": 400,
+        "offset": 8628,
+        "codes": [
+          311,
+          312,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "冷蔵ワゴン"
+      },
+      "category": 1,
+      "flags": 8449,
+      "purchase_price": 360,
+      "capacity": 40,
+      "logical_footprint": [
+        2,
+        2
+      ],
+      "compatible_products": [
+        0,
+        2,
+        3,
+        12,
+        13,
+        14,
+        22
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 0
+    },
+    {
+      "id": 14,
+      "label": {
+        "index": 401,
+        "offset": 8640,
+        "codes": [
+          311,
+          313,
+          600,
+          16639
+        ],
+        "text": "冷凍棚"
+      },
+      "category": 0,
+      "flags": 4352,
+      "purchase_price": 300,
+      "capacity": 25,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        17,
+        9
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 17
+    },
+    {
+      "id": 15,
+      "label": {
+        "index": 402,
+        "offset": 8648,
+        "codes": [
+          311,
+          313,
+          600,
+          16639
+        ],
+        "text": "冷凍棚"
+      },
+      "category": 0,
+      "flags": 4352,
+      "purchase_price": 500,
+      "capacity": 50,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        17,
+        9
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 17
+    },
+    {
+      "id": 16,
+      "label": {
+        "index": 403,
+        "offset": 8656,
+        "codes": [
+          311,
+          313,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "冷凍ワゴン"
+      },
+      "category": 1,
+      "flags": 4353,
+      "purchase_price": 200,
+      "capacity": 10,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        9,
+        17
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 9
+    },
+    {
+      "id": 17,
+      "label": {
+        "index": 404,
+        "offset": 8668,
+        "codes": [
+          311,
+          313,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "冷凍ワゴン"
+      },
+      "category": 1,
+      "flags": 4353,
+      "purchase_price": 380,
+      "capacity": 20,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        9,
+        17
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 9
+    },
+    {
+      "id": 18,
+      "label": {
+        "index": 405,
+        "offset": 8680,
+        "codes": [
+          311,
+          313,
+          600,
+          47,
+          601,
+          16639
+        ],
+        "text": "冷凍棚・扉"
+      },
+      "category": 0,
+      "flags": 5376,
+      "purchase_price": 300,
+      "capacity": 30,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        17,
+        9
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 17
+    },
+    {
+      "id": 19,
+      "label": {
+        "index": 406,
+        "offset": 8692,
+        "codes": [
+          311,
+          313,
+          600,
+          47,
+          601,
+          16639
+        ],
+        "text": "冷凍棚・扉"
+      },
+      "category": 0,
+      "flags": 5376,
+      "purchase_price": 560,
+      "capacity": 60,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        17,
+        9
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 17
+    },
+    {
+      "id": 20,
+      "label": {
+        "index": 407,
+        "offset": 8704,
+        "codes": [
+          311,
+          313,
+          186,
+          193,
+          188,
+          47,
+          601,
+          16639
+        ],
+        "text": "冷凍ワゴン・扉"
+      },
+      "category": 1,
+      "flags": 5377,
+      "purchase_price": 150,
+      "capacity": 10,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        9,
+        17
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 9
+    },
+    {
+      "id": 21,
+      "label": {
+        "index": 408,
+        "offset": 8720,
+        "codes": [
+          311,
+          313,
+          186,
+          193,
+          188,
+          47,
+          601,
+          16639
+        ],
+        "text": "冷凍ワゴン・扉"
+      },
+      "category": 1,
+      "flags": 5377,
+      "purchase_price": 300,
+      "capacity": 20,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        9,
+        17
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 9
+    },
+    {
+      "id": 22,
+      "label": {
+        "index": 409,
+        "offset": 8736,
+        "codes": [
+          309,
+          68,
+          64,
+          325,
+          94,
+          318,
+          16639
+        ],
+        "text": "温かい飲み物"
+      },
+      "category": 0,
+      "flags": 17664,
+      "purchase_price": 300,
+      "capacity": 20,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        1
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 1
+    },
+    {
+      "id": 23,
+      "label": {
+        "index": 410,
+        "offset": 8750,
+        "codes": [
+          67,
+          122,
+          108,
+          16639
+        ],
+        "text": "おでん"
+      },
+      "category": 1,
+      "flags": 16641,
+      "purchase_price": 100,
+      "capacity": 10,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        18
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 18
+    },
+    {
+      "id": 24,
+      "label": {
+        "index": 411,
+        "offset": 8758,
+        "codes": [
+          225,
+          590,
+          93,
+          108,
+          16639
+        ],
+        "text": "中華まん"
+      },
+      "category": 0,
+      "flags": 17664,
+      "purchase_price": 300,
+      "capacity": 20,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        25
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 25
+    },
+    {
+      "id": 25,
+      "label": {
+        "index": 412,
+        "offset": 8768,
+        "codes": [
+          144,
+          207,
+          188,
+          162,
+          151,
+          46,
+          155,
+          600,
+          16639
+        ],
+        "text": "イベントケース棚"
+      },
+      "category": 0,
+      "flags": 28928,
+      "purchase_price": 600,
+      "capacity": 60,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        24
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 24
+    },
+    {
+      "id": 26,
+      "label": {
+        "index": 413,
+        "offset": 8786,
+        "codes": [
+          144,
+          207,
+          188,
+          162,
+          151,
+          46,
+          155,
+          186,
+          193,
+          188,
+          16639
+        ],
+        "text": "イベントケースワゴン"
+      },
+      "category": 1,
+      "flags": 28929,
+      "purchase_price": 300,
+      "capacity": 30,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        24
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 24
+    },
+    {
+      "id": 27,
+      "label": {
+        "index": 414,
+        "offset": 8808,
+        "codes": [
+          78,
+          124,
+          72,
+          299,
+          279,
+          16639
+        ],
+        "text": "たばこ自販"
+      },
+      "category": 2,
+      "flags": 770,
+      "purchase_price": 600,
+      "capacity": 20,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        8
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 8
+    },
+    {
+      "id": 28,
+      "label": {
+        "index": 415,
+        "offset": 8820,
+        "codes": [
+          78,
+          124,
+          72,
+          299,
+          279,
+          16639
+        ],
+        "text": "たばこ自販"
+      },
+      "category": 2,
+      "flags": 770,
+      "purchase_price": 1000,
+      "capacity": 40,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        8
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 8
+    },
+    {
+      "id": 29,
+      "label": {
+        "index": 416,
+        "offset": 8832,
+        "codes": [
+          325,
+          326,
+          299,
+          279,
+          47,
+          311,
+          312,
+          16639
+        ],
+        "text": "飲料自販・冷蔵"
+      },
+      "category": 2,
+      "flags": 8962,
+      "purchase_price": 800,
+      "capacity": 20,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        0,
+        2
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 0
+    },
+    {
+      "id": 30,
+      "label": {
+        "index": 417,
+        "offset": 8848,
+        "codes": [
+          325,
+          326,
+          299,
+          279,
+          47,
+          311,
+          312,
+          16639
+        ],
+        "text": "飲料自販・冷蔵"
+      },
+      "category": 2,
+      "flags": 8962,
+      "purchase_price": 1400,
+      "capacity": 40,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        0,
+        2
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 0
+    },
+    {
+      "id": 31,
+      "label": {
+        "index": 418,
+        "offset": 8864,
+        "codes": [
+          325,
+          326,
+          299,
+          279,
+          47,
+          309,
+          311,
+          16639
+        ],
+        "text": "飲料自販・温冷"
+      },
+      "category": 2,
+      "flags": 25346,
+      "purchase_price": 1000,
+      "capacity": 15,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        1,
+        0
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 1
+    },
+    {
+      "id": 32,
+      "label": {
+        "index": 419,
+        "offset": 8880,
+        "codes": [
+          325,
+          326,
+          299,
+          279,
+          47,
+          309,
+          311,
+          16639
+        ],
+        "text": "飲料自販・温冷"
+      },
+      "category": 2,
+      "flags": 25346,
+      "purchase_price": 1800,
+      "capacity": 30,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        1,
+        0
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": true,
+      "source_default_product": 1
+    },
+    {
+      "id": 33,
+      "label": {
+        "index": 420,
+        "offset": 8896,
+        "codes": [
+          152,
+          210,
+          46,
+          307,
+          16639
+        ],
+        "text": "コピー機"
+      },
+      "category": 3,
+      "flags": 259,
+      "purchase_price": 800,
+      "capacity": 10,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        20
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 20
+    },
+    {
+      "id": 34,
+      "label": {
+        "index": 421,
+        "offset": 8906,
+        "codes": [
+          152,
+          210,
+          46,
+          307,
+          16639
+        ],
+        "text": "コピー機"
+      },
+      "category": 3,
+      "flags": 259,
+      "purchase_price": 1200,
+      "capacity": 15,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        20
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 20
+    },
+    {
+      "id": 35,
+      "label": {
+        "index": 422,
+        "offset": 8916,
+        "codes": [
+          152,
+          210,
+          46,
+          307,
+          16639
+        ],
+        "text": "コピー機"
+      },
+      "category": 3,
+      "flags": 259,
+      "purchase_price": 1500,
+      "capacity": 20,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        20
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 20
+    },
+    {
+      "id": 36,
+      "label": {
+        "index": 423,
+        "offset": 8926,
+        "codes": [
+          152,
+          210,
+          46,
+          307,
+          16639
+        ],
+        "text": "コピー機"
+      },
+      "category": 3,
+      "flags": 259,
+      "purchase_price": 2000,
+      "capacity": 40,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        20
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 20
+    },
+    {
+      "id": 37,
+      "label": {
+        "index": 424,
+        "offset": 8936,
+        "codes": [
+          184,
+          195,
+          16639
+        ],
+        "text": "レジ"
+      },
+      "category": 4,
+      "flags": 260,
+      "purchase_price": 1500,
+      "capacity": 0,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": false,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 38,
+      "label": {
+        "index": 425,
+        "offset": 8942,
+        "codes": [
+          184,
+          195,
+          16639
+        ],
+        "text": "レジ"
+      },
+      "category": 4,
+      "flags": 260,
+      "purchase_price": 2000,
+      "capacity": 0,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": false,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 39,
+      "label": {
+        "index": 426,
+        "offset": 8948,
+        "codes": [
+          184,
+          195,
+          16639
+        ],
+        "text": "レジ"
+      },
+      "category": 4,
+      "flags": 260,
+      "purchase_price": 3000,
+      "capacity": 60,
+      "logical_footprint": [
+        2,
+        1
+      ],
+      "compatible_products": [
+        21
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": false,
+      "ordinary_product_change": false,
+      "source_default_product": 21
+    },
+    {
+      "id": 40,
+      "label": {
+        "index": 427,
+        "offset": 8954,
+        "codes": [
+          184,
+          195,
+          16639
+        ],
+        "text": "レジ"
+      },
+      "category": 4,
+      "flags": 260,
+      "purchase_price": 2000,
+      "capacity": 0,
+      "logical_footprint": [
+        3,
+        1
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": false,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 41,
+      "label": {
+        "index": 428,
+        "offset": 8960,
+        "codes": [
+          184,
+          195,
+          16639
+        ],
+        "text": "レジ"
+      },
+      "category": 4,
+      "flags": 260,
+      "purchase_price": 3000,
+      "capacity": 0,
+      "logical_footprint": [
+        3,
+        1
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": false,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 42,
+      "label": {
+        "index": 429,
+        "offset": 8966,
+        "codes": [
+          184,
+          195,
+          16639
+        ],
+        "text": "レジ"
+      },
+      "category": 4,
+      "flags": 260,
+      "purchase_price": 5000,
+      "capacity": 90,
+      "logical_footprint": [
+        3,
+        1
+      ],
+      "compatible_products": [
+        21
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": false,
+      "ordinary_product_change": false,
+      "source_default_product": 21
+    },
+    {
+      "id": 43,
+      "label": {
+        "index": 430,
+        "offset": 8972,
+        "codes": [
+          149,
+          220,
+          219,
+          154,
+          221,
+          202,
+          215,
+          155,
+          212,
+          188,
+          153,
+          46,
+          16639
+        ],
+        "text": "キャッシュディスペンサー"
+      },
+      "category": 5,
+      "flags": 261,
+      "purchase_price": 4000,
+      "capacity": 50,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        26
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 26
+    },
+    {
+      "id": 44,
+      "label": {
+        "index": 431,
+        "offset": 8998,
+        "codes": [
+          149,
+          220,
+          219,
+          154,
+          221,
+          202,
+          215,
+          155,
+          212,
+          188,
+          153,
+          46,
+          16639
+        ],
+        "text": "キャッシュディスペンサー"
+      },
+      "category": 5,
+      "flags": 773,
+      "purchase_price": 7000,
+      "capacity": 90,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [
+        26
+      ],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": 26
+    },
+    {
+      "id": 45,
+      "label": {
+        "index": 432,
+        "offset": 9024,
+        "codes": [
+          315,
+          316,
+          317,
+          318,
+          16639
+        ],
+        "text": "観葉植物"
+      },
+      "category": 7,
+      "flags": 775,
+      "purchase_price": 1000,
+      "capacity": 0,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 46,
+      "label": {
+        "index": 433,
+        "offset": 9034,
+        "codes": [
+          207,
+          188,
+          159,
+          16639
+        ],
+        "text": "ベンチ"
+      },
+      "category": 8,
+      "flags": 776,
+      "purchase_price": 2000,
+      "capacity": 0,
+      "logical_footprint": [
+        1,
+        1
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 47,
+      "label": {
+        "index": 434,
+        "offset": 9042,
+        "codes": [
+          319,
+          320,
+          16639
+        ],
+        "text": "噴水"
+      },
+      "category": 9,
+      "flags": 777,
+      "purchase_price": 5000,
+      "capacity": 0,
+      "logical_footprint": [
+        2,
+        2
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 48,
+      "label": {
+        "index": 435,
+        "offset": 9048,
+        "codes": [
+          304,
+          66,
+          305,
+          16639
+        ],
+        "text": "控え室"
+      },
+      "category": 6,
+      "flags": 774,
+      "purchase_price": 3000,
+      "capacity": 0,
+      "logical_footprint": [
+        2,
+        2
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": false,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 49,
+      "label": {
+        "index": 436,
+        "offset": 9056,
+        "codes": [
+          304,
+          66,
+          305,
+          16639
+        ],
+        "text": "控え室"
+      },
+      "category": 6,
+      "flags": 774,
+      "purchase_price": 7000,
+      "capacity": 0,
+      "logical_footprint": [
+        2,
+        2
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": false,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 50,
+      "label": {
+        "index": 437,
+        "offset": 9064,
+        "codes": [
+          321,
+          322,
+          323,
+          16639
+        ],
+        "text": "駐車場"
+      },
+      "category": 10,
+      "flags": 522,
+      "purchase_price": 500,
+      "capacity": 2,
+      "logical_footprint": [
+        1,
+        2
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 51,
+      "label": {
+        "index": 438,
+        "offset": 9072,
+        "codes": [
+          2,
+          631,
+          240,
+          321,
+          322,
+          323,
+          16639
+        ],
+        "text": "2階建駐車場"
+      },
+      "category": 10,
+      "flags": 522,
+      "purchase_price": 1000,
+      "capacity": 4,
+      "logical_footprint": [
+        1,
+        2
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    },
+    {
+      "id": 52,
+      "label": {
+        "index": 439,
+        "offset": 9086,
+        "codes": [
+          158,
+          186,
+          46,
+          321,
+          322,
+          323,
+          16639
+        ],
+        "text": "タワー駐車場"
+      },
+      "category": 10,
+      "flags": 522,
+      "purchase_price": 9000,
+      "capacity": 20,
+      "logical_footprint": [
+        3,
+        2
+      ],
+      "compatible_products": [],
+      "source_default_index": 0,
+      "regular_removal_allowed": true,
+      "ordinary_product_change": false,
+      "source_default_product": null
+    }
+  ],
+  "product_rows": [
+    {
+      "id": 0,
+      "name": "冷たい飲料",
+      "base_price": 110,
+      "cost_percent": 50,
+      "procurement_unit": 55,
+      "runtime_images": [
+        360,
+        363,
+        366
+      ]
+    },
+    {
+      "id": 1,
+      "name": "温かい飲料",
+      "base_price": 110,
+      "cost_percent": 50,
+      "procurement_unit": 55,
+      "runtime_images": [
+        369,
+        372,
+        375
+      ]
+    },
+    {
+      "id": 2,
+      "name": "酒類",
+      "base_price": 1000,
+      "cost_percent": 70,
+      "procurement_unit": 700,
+      "runtime_images": [
+        378,
+        381,
+        384
+      ]
+    },
+    {
+      "id": 3,
+      "name": "弁当類",
+      "base_price": 400,
+      "cost_percent": 60,
+      "procurement_unit": 240,
+      "runtime_images": [
+        387,
+        390,
+        393
+      ]
+    },
+    {
+      "id": 4,
+      "name": "パン類",
+      "base_price": 300,
+      "cost_percent": 50,
+      "procurement_unit": 150,
+      "runtime_images": [
+        396,
+        399,
+        402
+      ]
+    },
+    {
+      "id": 5,
+      "name": "ｲﾝｽﾀﾝﾄ類",
+      "base_price": 150,
+      "cost_percent": 60,
+      "procurement_unit": 90,
+      "runtime_images": [
+        405,
+        408,
+        411
+      ]
+    },
+    {
+      "id": 6,
+      "name": "菓子類",
+      "base_price": 200,
+      "cost_percent": 60,
+      "procurement_unit": 120,
+      "runtime_images": [
+        414,
+        417,
+        420
+      ]
+    },
+    {
+      "id": 7,
+      "name": "本類",
+      "base_price": 400,
+      "cost_percent": 60,
+      "procurement_unit": 240,
+      "runtime_images": [
+        423,
+        426,
+        429
+      ]
+    },
+    {
+      "id": 8,
+      "name": "たばこ",
+      "base_price": 250,
+      "cost_percent": 70,
+      "procurement_unit": 175,
+      "runtime_images": [
+        432,
+        435
+      ]
+    },
+    {
+      "id": 9,
+      "name": "ｱｲｽｸﾘｰﾑ",
+      "base_price": 100,
+      "cost_percent": 50,
+      "procurement_unit": 50,
+      "runtime_images": [
+        438,
+        441
+      ]
+    },
+    {
+      "id": 10,
+      "name": "文房具",
+      "base_price": 150,
+      "cost_percent": 60,
+      "procurement_unit": 90,
+      "runtime_images": [
+        444,
+        447,
+        450
+      ]
+    },
+    {
+      "id": 11,
+      "name": "電気製品類",
+      "base_price": 800,
+      "cost_percent": 60,
+      "procurement_unit": 480,
+      "runtime_images": [
+        453,
+        456,
+        459
+      ]
+    },
+    {
+      "id": 12,
+      "name": "野菜類",
+      "base_price": 1500,
+      "cost_percent": 50,
+      "procurement_unit": 750,
+      "runtime_images": [
+        462,
+        465,
+        468
+      ]
+    },
+    {
+      "id": 13,
+      "name": "魚類",
+      "base_price": 1000,
+      "cost_percent": 60,
+      "procurement_unit": 600,
+      "runtime_images": [
+        471,
+        474,
+        477
+      ]
+    },
+    {
+      "id": 14,
+      "name": "肉類",
+      "base_price": 1200,
+      "cost_percent": 50,
+      "procurement_unit": 600,
+      "runtime_images": [
+        480,
+        483,
+        486
+      ]
+    },
+    {
+      "id": 15,
+      "name": "レトルト類",
+      "base_price": 600,
+      "cost_percent": 60,
+      "procurement_unit": 360,
+      "runtime_images": [
+        489,
+        492,
+        495
+      ]
+    },
+    {
+      "id": 16,
+      "name": "調味料類",
+      "base_price": 400,
+      "cost_percent": 60,
+      "procurement_unit": 240,
+      "runtime_images": [
+        498,
+        501,
+        504
+      ]
+    },
+    {
+      "id": 17,
+      "name": "冷凍食品類",
+      "base_price": 500,
+      "cost_percent": 60,
+      "procurement_unit": 300,
+      "runtime_images": [
+        507,
+        510,
+        513
+      ]
+    },
+    {
+      "id": 18,
+      "name": "おでん",
+      "base_price": 250,
+      "cost_percent": 50,
+      "procurement_unit": 125,
+      "runtime_images": [
+        516
+      ]
+    },
+    {
+      "id": 19,
+      "name": "日用品",
+      "base_price": 800,
+      "cost_percent": 60,
+      "procurement_unit": 480,
+      "runtime_images": [
+        519,
+        522,
+        525
+      ]
+    },
+    {
+      "id": 20,
+      "name": "コピー用紙",
+      "base_price": 50,
+      "cost_percent": 60,
+      "procurement_unit": 30,
+      "runtime_images": [
+        615,
+        528,
+        531,
+        618
+      ]
+    },
+    {
+      "id": 21,
+      "name": "宅急便申込書",
+      "base_price": 1000,
+      "cost_percent": 80,
+      "procurement_unit": 800,
+      "runtime_images": [
+        543,
+        534,
+        537,
+        540,
+        621
+      ]
+    },
+    {
+      "id": 22,
+      "name": "薬品",
+      "base_price": 1500,
+      "cost_percent": 70,
+      "procurement_unit": 1050,
+      "runtime_images": [
+        546,
+        549,
+        552
+      ]
+    },
+    {
+      "id": 23,
+      "name": "下着類",
+      "base_price": 1000,
+      "cost_percent": 60,
+      "procurement_unit": 600,
+      "runtime_images": [
+        555,
+        558,
+        561
+      ]
+    },
+    {
+      "id": 24,
+      "name": "イベント商品",
+      "base_price": 1000,
+      "cost_percent": 60,
+      "procurement_unit": 600,
+      "runtime_images": [
+        564,
+        567,
+        570,
+        573,
+        576,
+        579,
+        582,
+        585,
+        588,
+        591,
+        594,
+        597
+      ]
+    },
+    {
+      "id": 25,
+      "name": "中華まん",
+      "base_price": 170,
+      "cost_percent": 60,
+      "procurement_unit": 102,
+      "runtime_images": [
+        600
+      ]
+    },
+    {
+      "id": 26,
+      "name": "現金",
+      "base_price": 0,
+      "cost_percent": 100,
+      "procurement_unit": 0,
+      "runtime_images": [
+        612,
+        603,
+        606,
+        609
+      ]
+    }
+  ],
+  "unit_note": "Amounts are original signed cash arithmetic units. Fixture source word1 enters cash directly in76474/773BC/1D018, without guessed scaling."
+}

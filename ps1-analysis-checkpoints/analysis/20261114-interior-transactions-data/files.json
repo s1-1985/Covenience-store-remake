@@ -1,0 +1,152 @@
+[
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/README.md",
+    "bytes": 8092,
+    "sha256": "336408b78c9182ba60c5b85fd6a8d8958ff117b26c260514a0ea6a47ce44bc79",
+    "git_sha1": "0a3a1459d0caf3f21d43387f68dc0ee7475093ca"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/android-interior-transactions-bridge.json",
+    "bytes": 2991,
+    "sha256": "e41593abfa2aa35cb8ff618d1a9533a160baad6c5235467ee55e2cd6bfa9d374",
+    "git_sha1": "66a063d944515eb97ea4b813876760caadd77aee"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/built-in-prefab-opening-costs.json",
+    "bytes": 5949,
+    "sha256": "9fac9a374346163a8deb4a62855dec89e0b72bfffa76c30ea56f69ef04674dc8",
+    "git_sha1": "62749f7c48702a1be48a32fbfa7948296484f5ba"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/catalog-purchase-quotes.json",
+    "bytes": 42353,
+    "sha256": "0204870201c8a68bd4d785dd3b3b15737bb3867f20f49e1871b3f3ad5d70cf6a",
+    "git_sha1": "c95f5383092b114e10b19926e02d4bbbbb8eb48e"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/extract-interior-transactions.py",
+    "bytes": 15081,
+    "sha256": "669d6d8c2a020dc9fb537d2586ed03bf50be4ff7388c24081c01703059c32052",
+    "git_sha1": "c1d37eaa57d22e0739665ef5d0288853f2d312f8"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/extraction-check.json",
+    "bytes": 272,
+    "sha256": "fa446848057831954e2c3161281268a3430bf8b16e3463fbf7a7e4767c5181af",
+    "git_sha1": "386b6c753da91847183dc75e32969eab19280a78"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/fixture-transaction-master.json",
+    "bytes": 39245,
+    "sha256": "d3f5fab90d9df2164fa3a088002dd0f457bda4fe838db7a06381a1917b2a1283",
+    "git_sha1": "9b2cb689eb7f730e1ef668a0623d433ffc4c7200"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/layout-interior-costs.json",
+    "bytes": 387213,
+    "sha256": "95c3d6b19173847ac915a1d9cda4d3b002a6be390636f782f299357e6787f141",
+    "git_sha1": "6a0275f58dc5d7ce133eb3b62f8de1768d940926"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/product-change-matrices.json",
+    "bytes": 112004,
+    "sha256": "51aa1ac53caaa132a34799d0eadbac53dd38c10c609468108288f9926f3e16f0",
+    "git_sha1": "341651fc83041a8449abff2062c3a2b4ca45ccef"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/equipment_value.bin",
+    "bytes": 404,
+    "sha256": "09f51e7def463a4e6cf07805d3687c7c6a85277002a0e8f9e562ba4d8827fc7c",
+    "git_sha1": "6451e5d5845c9d64a4a4b141ec6f2411706f74c0"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/existing_select.bin",
+    "bytes": 2600,
+    "sha256": "a5c31a88589c59dc84d493a1760f42c9f6ac2958bfc5829eedf83c89ce505100",
+    "git_sha1": "5cd819f5bfc1f306fbdfa107477b21a2faf574ed"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/newgame_interior_post.bin",
+    "bytes": 280,
+    "sha256": "a0fd5cc77adc38ad81fdbed3989181d8ab48b4b6105264d0001dedab14c51c10",
+    "git_sha1": "79fe9e5ca4e6572b14cf2ed973ff9ac1d2acd7df"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/normal_menu_dispatch.bin",
+    "bytes": 352,
+    "sha256": "935d81dd4718f9935d32178e0a30baaf3db2929550abf0786ad684743ba6b681",
+    "git_sha1": "096911f769b376dede212849f426849ef30d2b6b"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/pickup_cancel.bin",
+    "bytes": 564,
+    "sha256": "2f3f02478d7b4c88f6e3ddcfdf816d85d8dffdcece12f3a7f304f5499538c317",
+    "git_sha1": "91a50b5f708cabf14a97b4d7a1409cdfe20159fa"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/placement_charge.bin",
+    "bytes": 1780,
+    "sha256": "14d420bf612ea5b06760633b06355af623fd0f677bc9f7672d6239c9a5331283",
+    "git_sha1": "da8277ae21f0e4e56047e5597a0ae42a95150d25"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/prefab_charge.bin",
+    "bytes": 868,
+    "sha256": "473a592cdc2d9ca651173300e59790f82b02d8a0512d76123432fa1fc602b73c",
+    "git_sha1": "154648aecc2d3d7c18220df69f2dde1349f5f6e3"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/product_image_lookup.bin",
+    "bytes": 844,
+    "sha256": "b5883313e75d17c3e208cf48280d63374833ebdf37c7442371deb506173ee5ea",
+    "git_sha1": "fe47777976a48bec351a39fb9f214ce246942fe5"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/product_selection.bin",
+    "bytes": 2752,
+    "sha256": "723ccfc4fc59ac061deabe6abddb7e4159bdc26babf6d6bef9b9a541b43be9e2",
+    "git_sha1": "0c74716dafa1adc7361558f54392d38506af3ebc"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/stock_change.bin",
+    "bytes": 4312,
+    "sha256": "f33b613c4ed9e387164ec5b81ee8bcde7bf1325f2400be4ffcea2fa194aeed0c",
+    "git_sha1": "6ea1bf3f3e24227db951476576bc00fc602bdd2b"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/stock_value.bin",
+    "bytes": 660,
+    "sha256": "3cc1fc04aa218227365d978a6486a37d1552517ce2c398722abdbd3598611e1a",
+    "git_sha1": "5428d6a6110e5c9e908b13bcc3026dfacc1918cb"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source/template_refill.bin",
+    "bytes": 412,
+    "sha256": "14af96d0d54f4aebcc783fb8ddcf2d1359733e45021f3b10a4063187411bccc4",
+    "git_sha1": "a316b2b0b75e12d2fdee58f9ac0453c1b186b0fe"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source-dependencies.json",
+    "bytes": 365,
+    "sha256": "d956c37a8ada8072d4b08a588f803a0417035f58371ec1519dcb2a3496ad635d",
+    "git_sha1": "467618b46e9ee2068d504d8edf5cd1cda1630c9c"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/source-ranges.json",
+    "bytes": 2031,
+    "sha256": "bf75fa17b379fc3d502671ee50edc7ec129a971c44fcca8b68c953d800581c41",
+    "git_sha1": "051bddd5fae4c40f9283f3289523527c5ecbba4d"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/summary.json",
+    "bytes": 1545,
+    "sha256": "c2b56d937d40f2a035d1556f09c4ef3fefdafc8d172f6eb059028beb8b6777fd",
+    "git_sha1": "bdcaebb48789ee93f3a58e0a8db564a72d3b3472"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-interior-transactions-data/transaction-readers.asm",
+    "bytes": 134263,
+    "sha256": "212954a4885f0a79330f3137b225e757233f8af2f484f4e5bb645d95a8cfd2b3",
+    "git_sha1": "9ace3fbc37a1959949422a873d9815b24008a6ea"
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "fixtures": 53,
+  "products": 27,
+  "layouts": 30,
+  "source_anchors": 852,
+  "source_anchors_below_capacity": 0,
+  "ordinary_product_change_fixtures": 26,
+  "product_change_charge_entries": 4197,
+  "ordinary_removal_blocked_fixture_ids": [
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    48,
+    49
+  ],
+  "built_in_prefab_quotes": [
+    {
+      "tier": 0,
+      "layout": 1,
+      "interior": 232565,
+      "minimum_opening_amount": 26232565
+    },
+    {
+      "tier": 1,
+      "layout": 6,
+      "interior": 162600,
+      "minimum_opening_amount": 26162600
+    },
+    {
+      "tier": 2,
+      "layout": 11,
+      "interior": 324200,
+      "minimum_opening_amount": 32324200
+    },
+    {
+      "tier": 3,
+      "layout": 16,
+      "interior": 375530,
+      "minimum_opening_amount": 32375530
+    },
+    {
+      "tier": 4,
+      "layout": 21,
+      "interior": 325435,
+      "minimum_opening_amount": 38325435
+    },
+    {
+      "tier": 5,
+      "layout": 26,
+      "interior": 471525,
+      "minimum_opening_amount": 38471525
+    }
+  ],
+  "original_cpu_updates": 0,
+  "known_before": "Isolated placement/removal/product-change and template-cost paths already recovered. This extraction binds53 actual descriptors,27 products,30 original templates and source-compatible change matrices to working counters, required-facility exceptions and six actual prefab selections.",
+  "limits": "No claim of all editor paths complete; existing-store final posting and later negative-cash handling remain to connect. No Android build this work."
+}

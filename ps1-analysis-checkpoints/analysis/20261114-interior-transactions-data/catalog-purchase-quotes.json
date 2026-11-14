@@ -1,0 +1,1737 @@
+[
+  {
+    "fixture": 0,
+    "empty_purchase": 60,
+    "full_stock_options": [
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 40,
+        "stock_cost": 9600,
+        "total_purchase": 9660,
+        "ordinary_removal_refund": 9660
+      },
+      {
+        "product": 4,
+        "product_name": "パン類",
+        "stock_quantity": 40,
+        "stock_cost": 6000,
+        "total_purchase": 6060,
+        "ordinary_removal_refund": 6060
+      },
+      {
+        "product": 5,
+        "product_name": "ｲﾝｽﾀﾝﾄ類",
+        "stock_quantity": 40,
+        "stock_cost": 3600,
+        "total_purchase": 3660,
+        "ordinary_removal_refund": 3660
+      },
+      {
+        "product": 6,
+        "product_name": "菓子類",
+        "stock_quantity": 40,
+        "stock_cost": 4800,
+        "total_purchase": 4860,
+        "ordinary_removal_refund": 4860
+      },
+      {
+        "product": 7,
+        "product_name": "本類",
+        "stock_quantity": 40,
+        "stock_cost": 9600,
+        "total_purchase": 9660,
+        "ordinary_removal_refund": 9660
+      },
+      {
+        "product": 10,
+        "product_name": "文房具",
+        "stock_quantity": 40,
+        "stock_cost": 3600,
+        "total_purchase": 3660,
+        "ordinary_removal_refund": 3660
+      },
+      {
+        "product": 11,
+        "product_name": "電気製品類",
+        "stock_quantity": 40,
+        "stock_cost": 19200,
+        "total_purchase": 19260,
+        "ordinary_removal_refund": 19260
+      },
+      {
+        "product": 15,
+        "product_name": "レトルト類",
+        "stock_quantity": 40,
+        "stock_cost": 14400,
+        "total_purchase": 14460,
+        "ordinary_removal_refund": 14460
+      },
+      {
+        "product": 16,
+        "product_name": "調味料類",
+        "stock_quantity": 40,
+        "stock_cost": 9600,
+        "total_purchase": 9660,
+        "ordinary_removal_refund": 9660
+      },
+      {
+        "product": 19,
+        "product_name": "日用品",
+        "stock_quantity": 40,
+        "stock_cost": 19200,
+        "total_purchase": 19260,
+        "ordinary_removal_refund": 19260
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 40,
+        "stock_cost": 42000,
+        "total_purchase": 42060,
+        "ordinary_removal_refund": 42060
+      },
+      {
+        "product": 23,
+        "product_name": "下着類",
+        "stock_quantity": 40,
+        "stock_cost": 24000,
+        "total_purchase": 24060,
+        "ordinary_removal_refund": 24060
+      }
+    ],
+    "default_purchase": 9660
+  },
+  {
+    "fixture": 1,
+    "empty_purchase": 100,
+    "full_stock_options": [
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 80,
+        "stock_cost": 19200,
+        "total_purchase": 19300,
+        "ordinary_removal_refund": 19300
+      },
+      {
+        "product": 4,
+        "product_name": "パン類",
+        "stock_quantity": 80,
+        "stock_cost": 12000,
+        "total_purchase": 12100,
+        "ordinary_removal_refund": 12100
+      },
+      {
+        "product": 5,
+        "product_name": "ｲﾝｽﾀﾝﾄ類",
+        "stock_quantity": 80,
+        "stock_cost": 7200,
+        "total_purchase": 7300,
+        "ordinary_removal_refund": 7300
+      },
+      {
+        "product": 6,
+        "product_name": "菓子類",
+        "stock_quantity": 80,
+        "stock_cost": 9600,
+        "total_purchase": 9700,
+        "ordinary_removal_refund": 9700
+      },
+      {
+        "product": 7,
+        "product_name": "本類",
+        "stock_quantity": 80,
+        "stock_cost": 19200,
+        "total_purchase": 19300,
+        "ordinary_removal_refund": 19300
+      },
+      {
+        "product": 10,
+        "product_name": "文房具",
+        "stock_quantity": 80,
+        "stock_cost": 7200,
+        "total_purchase": 7300,
+        "ordinary_removal_refund": 7300
+      },
+      {
+        "product": 11,
+        "product_name": "電気製品類",
+        "stock_quantity": 80,
+        "stock_cost": 38400,
+        "total_purchase": 38500,
+        "ordinary_removal_refund": 38500
+      },
+      {
+        "product": 15,
+        "product_name": "レトルト類",
+        "stock_quantity": 80,
+        "stock_cost": 28800,
+        "total_purchase": 28900,
+        "ordinary_removal_refund": 28900
+      },
+      {
+        "product": 16,
+        "product_name": "調味料類",
+        "stock_quantity": 80,
+        "stock_cost": 19200,
+        "total_purchase": 19300,
+        "ordinary_removal_refund": 19300
+      },
+      {
+        "product": 19,
+        "product_name": "日用品",
+        "stock_quantity": 80,
+        "stock_cost": 38400,
+        "total_purchase": 38500,
+        "ordinary_removal_refund": 38500
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 80,
+        "stock_cost": 84000,
+        "total_purchase": 84100,
+        "ordinary_removal_refund": 84100
+      },
+      {
+        "product": 23,
+        "product_name": "下着類",
+        "stock_quantity": 80,
+        "stock_cost": 48000,
+        "total_purchase": 48100,
+        "ordinary_removal_refund": 48100
+      }
+    ],
+    "default_purchase": 19300
+  },
+  {
+    "fixture": 2,
+    "empty_purchase": 140,
+    "full_stock_options": [
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 120,
+        "stock_cost": 28800,
+        "total_purchase": 28940,
+        "ordinary_removal_refund": 28940
+      },
+      {
+        "product": 4,
+        "product_name": "パン類",
+        "stock_quantity": 120,
+        "stock_cost": 18000,
+        "total_purchase": 18140,
+        "ordinary_removal_refund": 18140
+      },
+      {
+        "product": 5,
+        "product_name": "ｲﾝｽﾀﾝﾄ類",
+        "stock_quantity": 120,
+        "stock_cost": 10800,
+        "total_purchase": 10940,
+        "ordinary_removal_refund": 10940
+      },
+      {
+        "product": 6,
+        "product_name": "菓子類",
+        "stock_quantity": 120,
+        "stock_cost": 14400,
+        "total_purchase": 14540,
+        "ordinary_removal_refund": 14540
+      },
+      {
+        "product": 7,
+        "product_name": "本類",
+        "stock_quantity": 120,
+        "stock_cost": 28800,
+        "total_purchase": 28940,
+        "ordinary_removal_refund": 28940
+      },
+      {
+        "product": 10,
+        "product_name": "文房具",
+        "stock_quantity": 120,
+        "stock_cost": 10800,
+        "total_purchase": 10940,
+        "ordinary_removal_refund": 10940
+      },
+      {
+        "product": 11,
+        "product_name": "電気製品類",
+        "stock_quantity": 120,
+        "stock_cost": 57600,
+        "total_purchase": 57740,
+        "ordinary_removal_refund": 57740
+      },
+      {
+        "product": 15,
+        "product_name": "レトルト類",
+        "stock_quantity": 120,
+        "stock_cost": 43200,
+        "total_purchase": 43340,
+        "ordinary_removal_refund": 43340
+      },
+      {
+        "product": 16,
+        "product_name": "調味料類",
+        "stock_quantity": 120,
+        "stock_cost": 28800,
+        "total_purchase": 28940,
+        "ordinary_removal_refund": 28940
+      },
+      {
+        "product": 19,
+        "product_name": "日用品",
+        "stock_quantity": 120,
+        "stock_cost": 57600,
+        "total_purchase": 57740,
+        "ordinary_removal_refund": 57740
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 120,
+        "stock_cost": 126000,
+        "total_purchase": 126140,
+        "ordinary_removal_refund": 126140
+      },
+      {
+        "product": 23,
+        "product_name": "下着類",
+        "stock_quantity": 120,
+        "stock_cost": 72000,
+        "total_purchase": 72140,
+        "ordinary_removal_refund": 72140
+      }
+    ],
+    "default_purchase": 28940
+  },
+  {
+    "fixture": 3,
+    "empty_purchase": 30,
+    "full_stock_options": [
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 15,
+        "stock_cost": 3600,
+        "total_purchase": 3630,
+        "ordinary_removal_refund": 3630
+      },
+      {
+        "product": 4,
+        "product_name": "パン類",
+        "stock_quantity": 15,
+        "stock_cost": 2250,
+        "total_purchase": 2280,
+        "ordinary_removal_refund": 2280
+      },
+      {
+        "product": 5,
+        "product_name": "ｲﾝｽﾀﾝﾄ類",
+        "stock_quantity": 15,
+        "stock_cost": 1350,
+        "total_purchase": 1380,
+        "ordinary_removal_refund": 1380
+      },
+      {
+        "product": 6,
+        "product_name": "菓子類",
+        "stock_quantity": 15,
+        "stock_cost": 1800,
+        "total_purchase": 1830,
+        "ordinary_removal_refund": 1830
+      },
+      {
+        "product": 7,
+        "product_name": "本類",
+        "stock_quantity": 15,
+        "stock_cost": 3600,
+        "total_purchase": 3630,
+        "ordinary_removal_refund": 3630
+      },
+      {
+        "product": 10,
+        "product_name": "文房具",
+        "stock_quantity": 15,
+        "stock_cost": 1350,
+        "total_purchase": 1380,
+        "ordinary_removal_refund": 1380
+      },
+      {
+        "product": 11,
+        "product_name": "電気製品類",
+        "stock_quantity": 15,
+        "stock_cost": 7200,
+        "total_purchase": 7230,
+        "ordinary_removal_refund": 7230
+      },
+      {
+        "product": 15,
+        "product_name": "レトルト類",
+        "stock_quantity": 15,
+        "stock_cost": 5400,
+        "total_purchase": 5430,
+        "ordinary_removal_refund": 5430
+      },
+      {
+        "product": 16,
+        "product_name": "調味料類",
+        "stock_quantity": 15,
+        "stock_cost": 3600,
+        "total_purchase": 3630,
+        "ordinary_removal_refund": 3630
+      },
+      {
+        "product": 19,
+        "product_name": "日用品",
+        "stock_quantity": 15,
+        "stock_cost": 7200,
+        "total_purchase": 7230,
+        "ordinary_removal_refund": 7230
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 15,
+        "stock_cost": 15750,
+        "total_purchase": 15780,
+        "ordinary_removal_refund": 15780
+      },
+      {
+        "product": 23,
+        "product_name": "下着類",
+        "stock_quantity": 15,
+        "stock_cost": 9000,
+        "total_purchase": 9030,
+        "ordinary_removal_refund": 9030
+      }
+    ],
+    "default_purchase": 3630
+  },
+  {
+    "fixture": 4,
+    "empty_purchase": 50,
+    "full_stock_options": [
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 30,
+        "stock_cost": 7200,
+        "total_purchase": 7250,
+        "ordinary_removal_refund": 7250
+      },
+      {
+        "product": 4,
+        "product_name": "パン類",
+        "stock_quantity": 30,
+        "stock_cost": 4500,
+        "total_purchase": 4550,
+        "ordinary_removal_refund": 4550
+      },
+      {
+        "product": 5,
+        "product_name": "ｲﾝｽﾀﾝﾄ類",
+        "stock_quantity": 30,
+        "stock_cost": 2700,
+        "total_purchase": 2750,
+        "ordinary_removal_refund": 2750
+      },
+      {
+        "product": 6,
+        "product_name": "菓子類",
+        "stock_quantity": 30,
+        "stock_cost": 3600,
+        "total_purchase": 3650,
+        "ordinary_removal_refund": 3650
+      },
+      {
+        "product": 7,
+        "product_name": "本類",
+        "stock_quantity": 30,
+        "stock_cost": 7200,
+        "total_purchase": 7250,
+        "ordinary_removal_refund": 7250
+      },
+      {
+        "product": 10,
+        "product_name": "文房具",
+        "stock_quantity": 30,
+        "stock_cost": 2700,
+        "total_purchase": 2750,
+        "ordinary_removal_refund": 2750
+      },
+      {
+        "product": 11,
+        "product_name": "電気製品類",
+        "stock_quantity": 30,
+        "stock_cost": 14400,
+        "total_purchase": 14450,
+        "ordinary_removal_refund": 14450
+      },
+      {
+        "product": 15,
+        "product_name": "レトルト類",
+        "stock_quantity": 30,
+        "stock_cost": 10800,
+        "total_purchase": 10850,
+        "ordinary_removal_refund": 10850
+      },
+      {
+        "product": 16,
+        "product_name": "調味料類",
+        "stock_quantity": 30,
+        "stock_cost": 7200,
+        "total_purchase": 7250,
+        "ordinary_removal_refund": 7250
+      },
+      {
+        "product": 19,
+        "product_name": "日用品",
+        "stock_quantity": 30,
+        "stock_cost": 14400,
+        "total_purchase": 14450,
+        "ordinary_removal_refund": 14450
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 30,
+        "stock_cost": 31500,
+        "total_purchase": 31550,
+        "ordinary_removal_refund": 31550
+      },
+      {
+        "product": 23,
+        "product_name": "下着類",
+        "stock_quantity": 30,
+        "stock_cost": 18000,
+        "total_purchase": 18050,
+        "ordinary_removal_refund": 18050
+      }
+    ],
+    "default_purchase": 7250
+  },
+  {
+    "fixture": 5,
+    "empty_purchase": 70,
+    "full_stock_options": [
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 45,
+        "stock_cost": 10800,
+        "total_purchase": 10870,
+        "ordinary_removal_refund": 10870
+      },
+      {
+        "product": 4,
+        "product_name": "パン類",
+        "stock_quantity": 45,
+        "stock_cost": 6750,
+        "total_purchase": 6820,
+        "ordinary_removal_refund": 6820
+      },
+      {
+        "product": 5,
+        "product_name": "ｲﾝｽﾀﾝﾄ類",
+        "stock_quantity": 45,
+        "stock_cost": 4050,
+        "total_purchase": 4120,
+        "ordinary_removal_refund": 4120
+      },
+      {
+        "product": 6,
+        "product_name": "菓子類",
+        "stock_quantity": 45,
+        "stock_cost": 5400,
+        "total_purchase": 5470,
+        "ordinary_removal_refund": 5470
+      },
+      {
+        "product": 7,
+        "product_name": "本類",
+        "stock_quantity": 45,
+        "stock_cost": 10800,
+        "total_purchase": 10870,
+        "ordinary_removal_refund": 10870
+      },
+      {
+        "product": 10,
+        "product_name": "文房具",
+        "stock_quantity": 45,
+        "stock_cost": 4050,
+        "total_purchase": 4120,
+        "ordinary_removal_refund": 4120
+      },
+      {
+        "product": 11,
+        "product_name": "電気製品類",
+        "stock_quantity": 45,
+        "stock_cost": 21600,
+        "total_purchase": 21670,
+        "ordinary_removal_refund": 21670
+      },
+      {
+        "product": 15,
+        "product_name": "レトルト類",
+        "stock_quantity": 45,
+        "stock_cost": 16200,
+        "total_purchase": 16270,
+        "ordinary_removal_refund": 16270
+      },
+      {
+        "product": 16,
+        "product_name": "調味料類",
+        "stock_quantity": 45,
+        "stock_cost": 10800,
+        "total_purchase": 10870,
+        "ordinary_removal_refund": 10870
+      },
+      {
+        "product": 19,
+        "product_name": "日用品",
+        "stock_quantity": 45,
+        "stock_cost": 21600,
+        "total_purchase": 21670,
+        "ordinary_removal_refund": 21670
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 45,
+        "stock_cost": 47250,
+        "total_purchase": 47320,
+        "ordinary_removal_refund": 47320
+      },
+      {
+        "product": 23,
+        "product_name": "下着類",
+        "stock_quantity": 45,
+        "stock_cost": 27000,
+        "total_purchase": 27070,
+        "ordinary_removal_refund": 27070
+      }
+    ],
+    "default_purchase": 10870
+  },
+  {
+    "fixture": 6,
+    "empty_purchase": 90,
+    "full_stock_options": [
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 60,
+        "stock_cost": 14400,
+        "total_purchase": 14490,
+        "ordinary_removal_refund": 14490
+      },
+      {
+        "product": 4,
+        "product_name": "パン類",
+        "stock_quantity": 60,
+        "stock_cost": 9000,
+        "total_purchase": 9090,
+        "ordinary_removal_refund": 9090
+      },
+      {
+        "product": 5,
+        "product_name": "ｲﾝｽﾀﾝﾄ類",
+        "stock_quantity": 60,
+        "stock_cost": 5400,
+        "total_purchase": 5490,
+        "ordinary_removal_refund": 5490
+      },
+      {
+        "product": 6,
+        "product_name": "菓子類",
+        "stock_quantity": 60,
+        "stock_cost": 7200,
+        "total_purchase": 7290,
+        "ordinary_removal_refund": 7290
+      },
+      {
+        "product": 7,
+        "product_name": "本類",
+        "stock_quantity": 60,
+        "stock_cost": 14400,
+        "total_purchase": 14490,
+        "ordinary_removal_refund": 14490
+      },
+      {
+        "product": 10,
+        "product_name": "文房具",
+        "stock_quantity": 60,
+        "stock_cost": 5400,
+        "total_purchase": 5490,
+        "ordinary_removal_refund": 5490
+      },
+      {
+        "product": 11,
+        "product_name": "電気製品類",
+        "stock_quantity": 60,
+        "stock_cost": 28800,
+        "total_purchase": 28890,
+        "ordinary_removal_refund": 28890
+      },
+      {
+        "product": 15,
+        "product_name": "レトルト類",
+        "stock_quantity": 60,
+        "stock_cost": 21600,
+        "total_purchase": 21690,
+        "ordinary_removal_refund": 21690
+      },
+      {
+        "product": 16,
+        "product_name": "調味料類",
+        "stock_quantity": 60,
+        "stock_cost": 14400,
+        "total_purchase": 14490,
+        "ordinary_removal_refund": 14490
+      },
+      {
+        "product": 19,
+        "product_name": "日用品",
+        "stock_quantity": 60,
+        "stock_cost": 28800,
+        "total_purchase": 28890,
+        "ordinary_removal_refund": 28890
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 60,
+        "stock_cost": 63000,
+        "total_purchase": 63090,
+        "ordinary_removal_refund": 63090
+      },
+      {
+        "product": 23,
+        "product_name": "下着類",
+        "stock_quantity": 60,
+        "stock_cost": 36000,
+        "total_purchase": 36090,
+        "ordinary_removal_refund": 36090
+      }
+    ],
+    "default_purchase": 14490
+  },
+  {
+    "fixture": 7,
+    "empty_purchase": 200,
+    "full_stock_options": [
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 30,
+        "stock_cost": 1650,
+        "total_purchase": 1850,
+        "ordinary_removal_refund": 1850
+      },
+      {
+        "product": 2,
+        "product_name": "酒類",
+        "stock_quantity": 30,
+        "stock_cost": 21000,
+        "total_purchase": 21200,
+        "ordinary_removal_refund": 21200
+      },
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 30,
+        "stock_cost": 7200,
+        "total_purchase": 7400,
+        "ordinary_removal_refund": 7400
+      },
+      {
+        "product": 12,
+        "product_name": "野菜類",
+        "stock_quantity": 30,
+        "stock_cost": 22500,
+        "total_purchase": 22700,
+        "ordinary_removal_refund": 22700
+      },
+      {
+        "product": 13,
+        "product_name": "魚類",
+        "stock_quantity": 30,
+        "stock_cost": 18000,
+        "total_purchase": 18200,
+        "ordinary_removal_refund": 18200
+      },
+      {
+        "product": 14,
+        "product_name": "肉類",
+        "stock_quantity": 30,
+        "stock_cost": 18000,
+        "total_purchase": 18200,
+        "ordinary_removal_refund": 18200
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 30,
+        "stock_cost": 31500,
+        "total_purchase": 31700,
+        "ordinary_removal_refund": 31700
+      }
+    ],
+    "default_purchase": 1850
+  },
+  {
+    "fixture": 8,
+    "empty_purchase": 350,
+    "full_stock_options": [
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 60,
+        "stock_cost": 3300,
+        "total_purchase": 3650,
+        "ordinary_removal_refund": 3650
+      },
+      {
+        "product": 2,
+        "product_name": "酒類",
+        "stock_quantity": 60,
+        "stock_cost": 42000,
+        "total_purchase": 42350,
+        "ordinary_removal_refund": 42350
+      },
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 60,
+        "stock_cost": 14400,
+        "total_purchase": 14750,
+        "ordinary_removal_refund": 14750
+      },
+      {
+        "product": 12,
+        "product_name": "野菜類",
+        "stock_quantity": 60,
+        "stock_cost": 45000,
+        "total_purchase": 45350,
+        "ordinary_removal_refund": 45350
+      },
+      {
+        "product": 13,
+        "product_name": "魚類",
+        "stock_quantity": 60,
+        "stock_cost": 36000,
+        "total_purchase": 36350,
+        "ordinary_removal_refund": 36350
+      },
+      {
+        "product": 14,
+        "product_name": "肉類",
+        "stock_quantity": 60,
+        "stock_cost": 36000,
+        "total_purchase": 36350,
+        "ordinary_removal_refund": 36350
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 60,
+        "stock_cost": 63000,
+        "total_purchase": 63350,
+        "ordinary_removal_refund": 63350
+      }
+    ],
+    "default_purchase": 3650
+  },
+  {
+    "fixture": 9,
+    "empty_purchase": 500,
+    "full_stock_options": [
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 90,
+        "stock_cost": 4950,
+        "total_purchase": 5450,
+        "ordinary_removal_refund": 5450
+      },
+      {
+        "product": 2,
+        "product_name": "酒類",
+        "stock_quantity": 90,
+        "stock_cost": 63000,
+        "total_purchase": 63500,
+        "ordinary_removal_refund": 63500
+      },
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 90,
+        "stock_cost": 21600,
+        "total_purchase": 22100,
+        "ordinary_removal_refund": 22100
+      },
+      {
+        "product": 12,
+        "product_name": "野菜類",
+        "stock_quantity": 90,
+        "stock_cost": 67500,
+        "total_purchase": 68000,
+        "ordinary_removal_refund": 68000
+      },
+      {
+        "product": 13,
+        "product_name": "魚類",
+        "stock_quantity": 90,
+        "stock_cost": 54000,
+        "total_purchase": 54500,
+        "ordinary_removal_refund": 54500
+      },
+      {
+        "product": 14,
+        "product_name": "肉類",
+        "stock_quantity": 90,
+        "stock_cost": 54000,
+        "total_purchase": 54500,
+        "ordinary_removal_refund": 54500
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 90,
+        "stock_cost": 94500,
+        "total_purchase": 95000,
+        "ordinary_removal_refund": 95000
+      }
+    ],
+    "default_purchase": 5450
+  },
+  {
+    "fixture": 10,
+    "empty_purchase": 120,
+    "full_stock_options": [
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 10,
+        "stock_cost": 550,
+        "total_purchase": 670,
+        "ordinary_removal_refund": 670
+      },
+      {
+        "product": 2,
+        "product_name": "酒類",
+        "stock_quantity": 10,
+        "stock_cost": 7000,
+        "total_purchase": 7120,
+        "ordinary_removal_refund": 7120
+      },
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 10,
+        "stock_cost": 2400,
+        "total_purchase": 2520,
+        "ordinary_removal_refund": 2520
+      },
+      {
+        "product": 12,
+        "product_name": "野菜類",
+        "stock_quantity": 10,
+        "stock_cost": 7500,
+        "total_purchase": 7620,
+        "ordinary_removal_refund": 7620
+      },
+      {
+        "product": 13,
+        "product_name": "魚類",
+        "stock_quantity": 10,
+        "stock_cost": 6000,
+        "total_purchase": 6120,
+        "ordinary_removal_refund": 6120
+      },
+      {
+        "product": 14,
+        "product_name": "肉類",
+        "stock_quantity": 10,
+        "stock_cost": 6000,
+        "total_purchase": 6120,
+        "ordinary_removal_refund": 6120
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 10,
+        "stock_cost": 10500,
+        "total_purchase": 10620,
+        "ordinary_removal_refund": 10620
+      }
+    ],
+    "default_purchase": 670
+  },
+  {
+    "fixture": 11,
+    "empty_purchase": 200,
+    "full_stock_options": [
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 20,
+        "stock_cost": 1100,
+        "total_purchase": 1300,
+        "ordinary_removal_refund": 1300
+      },
+      {
+        "product": 2,
+        "product_name": "酒類",
+        "stock_quantity": 20,
+        "stock_cost": 14000,
+        "total_purchase": 14200,
+        "ordinary_removal_refund": 14200
+      },
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 20,
+        "stock_cost": 4800,
+        "total_purchase": 5000,
+        "ordinary_removal_refund": 5000
+      },
+      {
+        "product": 12,
+        "product_name": "野菜類",
+        "stock_quantity": 20,
+        "stock_cost": 15000,
+        "total_purchase": 15200,
+        "ordinary_removal_refund": 15200
+      },
+      {
+        "product": 13,
+        "product_name": "魚類",
+        "stock_quantity": 20,
+        "stock_cost": 12000,
+        "total_purchase": 12200,
+        "ordinary_removal_refund": 12200
+      },
+      {
+        "product": 14,
+        "product_name": "肉類",
+        "stock_quantity": 20,
+        "stock_cost": 12000,
+        "total_purchase": 12200,
+        "ordinary_removal_refund": 12200
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 20,
+        "stock_cost": 21000,
+        "total_purchase": 21200,
+        "ordinary_removal_refund": 21200
+      }
+    ],
+    "default_purchase": 1300
+  },
+  {
+    "fixture": 12,
+    "empty_purchase": 280,
+    "full_stock_options": [
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 30,
+        "stock_cost": 1650,
+        "total_purchase": 1930,
+        "ordinary_removal_refund": 1930
+      },
+      {
+        "product": 2,
+        "product_name": "酒類",
+        "stock_quantity": 30,
+        "stock_cost": 21000,
+        "total_purchase": 21280,
+        "ordinary_removal_refund": 21280
+      },
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 30,
+        "stock_cost": 7200,
+        "total_purchase": 7480,
+        "ordinary_removal_refund": 7480
+      },
+      {
+        "product": 12,
+        "product_name": "野菜類",
+        "stock_quantity": 30,
+        "stock_cost": 22500,
+        "total_purchase": 22780,
+        "ordinary_removal_refund": 22780
+      },
+      {
+        "product": 13,
+        "product_name": "魚類",
+        "stock_quantity": 30,
+        "stock_cost": 18000,
+        "total_purchase": 18280,
+        "ordinary_removal_refund": 18280
+      },
+      {
+        "product": 14,
+        "product_name": "肉類",
+        "stock_quantity": 30,
+        "stock_cost": 18000,
+        "total_purchase": 18280,
+        "ordinary_removal_refund": 18280
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 30,
+        "stock_cost": 31500,
+        "total_purchase": 31780,
+        "ordinary_removal_refund": 31780
+      }
+    ],
+    "default_purchase": 1930
+  },
+  {
+    "fixture": 13,
+    "empty_purchase": 360,
+    "full_stock_options": [
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 40,
+        "stock_cost": 2200,
+        "total_purchase": 2560,
+        "ordinary_removal_refund": 2560
+      },
+      {
+        "product": 2,
+        "product_name": "酒類",
+        "stock_quantity": 40,
+        "stock_cost": 28000,
+        "total_purchase": 28360,
+        "ordinary_removal_refund": 28360
+      },
+      {
+        "product": 3,
+        "product_name": "弁当類",
+        "stock_quantity": 40,
+        "stock_cost": 9600,
+        "total_purchase": 9960,
+        "ordinary_removal_refund": 9960
+      },
+      {
+        "product": 12,
+        "product_name": "野菜類",
+        "stock_quantity": 40,
+        "stock_cost": 30000,
+        "total_purchase": 30360,
+        "ordinary_removal_refund": 30360
+      },
+      {
+        "product": 13,
+        "product_name": "魚類",
+        "stock_quantity": 40,
+        "stock_cost": 24000,
+        "total_purchase": 24360,
+        "ordinary_removal_refund": 24360
+      },
+      {
+        "product": 14,
+        "product_name": "肉類",
+        "stock_quantity": 40,
+        "stock_cost": 24000,
+        "total_purchase": 24360,
+        "ordinary_removal_refund": 24360
+      },
+      {
+        "product": 22,
+        "product_name": "薬品",
+        "stock_quantity": 40,
+        "stock_cost": 42000,
+        "total_purchase": 42360,
+        "ordinary_removal_refund": 42360
+      }
+    ],
+    "default_purchase": 2560
+  },
+  {
+    "fixture": 14,
+    "empty_purchase": 300,
+    "full_stock_options": [
+      {
+        "product": 17,
+        "product_name": "冷凍食品類",
+        "stock_quantity": 25,
+        "stock_cost": 7500,
+        "total_purchase": 7800,
+        "ordinary_removal_refund": 7800
+      },
+      {
+        "product": 9,
+        "product_name": "ｱｲｽｸﾘｰﾑ",
+        "stock_quantity": 25,
+        "stock_cost": 1250,
+        "total_purchase": 1550,
+        "ordinary_removal_refund": 1550
+      }
+    ],
+    "default_purchase": 7800
+  },
+  {
+    "fixture": 15,
+    "empty_purchase": 500,
+    "full_stock_options": [
+      {
+        "product": 17,
+        "product_name": "冷凍食品類",
+        "stock_quantity": 50,
+        "stock_cost": 15000,
+        "total_purchase": 15500,
+        "ordinary_removal_refund": 15500
+      },
+      {
+        "product": 9,
+        "product_name": "ｱｲｽｸﾘｰﾑ",
+        "stock_quantity": 50,
+        "stock_cost": 2500,
+        "total_purchase": 3000,
+        "ordinary_removal_refund": 3000
+      }
+    ],
+    "default_purchase": 15500
+  },
+  {
+    "fixture": 16,
+    "empty_purchase": 200,
+    "full_stock_options": [
+      {
+        "product": 9,
+        "product_name": "ｱｲｽｸﾘｰﾑ",
+        "stock_quantity": 10,
+        "stock_cost": 500,
+        "total_purchase": 700,
+        "ordinary_removal_refund": 700
+      },
+      {
+        "product": 17,
+        "product_name": "冷凍食品類",
+        "stock_quantity": 10,
+        "stock_cost": 3000,
+        "total_purchase": 3200,
+        "ordinary_removal_refund": 3200
+      }
+    ],
+    "default_purchase": 700
+  },
+  {
+    "fixture": 17,
+    "empty_purchase": 380,
+    "full_stock_options": [
+      {
+        "product": 9,
+        "product_name": "ｱｲｽｸﾘｰﾑ",
+        "stock_quantity": 20,
+        "stock_cost": 1000,
+        "total_purchase": 1380,
+        "ordinary_removal_refund": 1380
+      },
+      {
+        "product": 17,
+        "product_name": "冷凍食品類",
+        "stock_quantity": 20,
+        "stock_cost": 6000,
+        "total_purchase": 6380,
+        "ordinary_removal_refund": 6380
+      }
+    ],
+    "default_purchase": 1380
+  },
+  {
+    "fixture": 18,
+    "empty_purchase": 300,
+    "full_stock_options": [
+      {
+        "product": 17,
+        "product_name": "冷凍食品類",
+        "stock_quantity": 30,
+        "stock_cost": 9000,
+        "total_purchase": 9300,
+        "ordinary_removal_refund": 9300
+      },
+      {
+        "product": 9,
+        "product_name": "ｱｲｽｸﾘｰﾑ",
+        "stock_quantity": 30,
+        "stock_cost": 1500,
+        "total_purchase": 1800,
+        "ordinary_removal_refund": 1800
+      }
+    ],
+    "default_purchase": 9300
+  },
+  {
+    "fixture": 19,
+    "empty_purchase": 560,
+    "full_stock_options": [
+      {
+        "product": 17,
+        "product_name": "冷凍食品類",
+        "stock_quantity": 60,
+        "stock_cost": 18000,
+        "total_purchase": 18560,
+        "ordinary_removal_refund": 18560
+      },
+      {
+        "product": 9,
+        "product_name": "ｱｲｽｸﾘｰﾑ",
+        "stock_quantity": 60,
+        "stock_cost": 3000,
+        "total_purchase": 3560,
+        "ordinary_removal_refund": 3560
+      }
+    ],
+    "default_purchase": 18560
+  },
+  {
+    "fixture": 20,
+    "empty_purchase": 150,
+    "full_stock_options": [
+      {
+        "product": 9,
+        "product_name": "ｱｲｽｸﾘｰﾑ",
+        "stock_quantity": 10,
+        "stock_cost": 500,
+        "total_purchase": 650,
+        "ordinary_removal_refund": 650
+      },
+      {
+        "product": 17,
+        "product_name": "冷凍食品類",
+        "stock_quantity": 10,
+        "stock_cost": 3000,
+        "total_purchase": 3150,
+        "ordinary_removal_refund": 3150
+      }
+    ],
+    "default_purchase": 650
+  },
+  {
+    "fixture": 21,
+    "empty_purchase": 300,
+    "full_stock_options": [
+      {
+        "product": 9,
+        "product_name": "ｱｲｽｸﾘｰﾑ",
+        "stock_quantity": 20,
+        "stock_cost": 1000,
+        "total_purchase": 1300,
+        "ordinary_removal_refund": 1300
+      },
+      {
+        "product": 17,
+        "product_name": "冷凍食品類",
+        "stock_quantity": 20,
+        "stock_cost": 6000,
+        "total_purchase": 6300,
+        "ordinary_removal_refund": 6300
+      }
+    ],
+    "default_purchase": 1300
+  },
+  {
+    "fixture": 22,
+    "empty_purchase": 300,
+    "full_stock_options": [
+      {
+        "product": 1,
+        "product_name": "温かい飲料",
+        "stock_quantity": 20,
+        "stock_cost": 1100,
+        "total_purchase": 1400,
+        "ordinary_removal_refund": 1400
+      }
+    ],
+    "default_purchase": 1400
+  },
+  {
+    "fixture": 23,
+    "empty_purchase": 100,
+    "full_stock_options": [
+      {
+        "product": 18,
+        "product_name": "おでん",
+        "stock_quantity": 10,
+        "stock_cost": 1250,
+        "total_purchase": 1350,
+        "ordinary_removal_refund": 1350
+      }
+    ],
+    "default_purchase": 1350
+  },
+  {
+    "fixture": 24,
+    "empty_purchase": 300,
+    "full_stock_options": [
+      {
+        "product": 25,
+        "product_name": "中華まん",
+        "stock_quantity": 20,
+        "stock_cost": 2040,
+        "total_purchase": 2340,
+        "ordinary_removal_refund": 2340
+      }
+    ],
+    "default_purchase": 2340
+  },
+  {
+    "fixture": 25,
+    "empty_purchase": 600,
+    "full_stock_options": [
+      {
+        "product": 24,
+        "product_name": "イベント商品",
+        "stock_quantity": 60,
+        "stock_cost": 36000,
+        "total_purchase": 36600,
+        "ordinary_removal_refund": 36600
+      }
+    ],
+    "default_purchase": 36600
+  },
+  {
+    "fixture": 26,
+    "empty_purchase": 300,
+    "full_stock_options": [
+      {
+        "product": 24,
+        "product_name": "イベント商品",
+        "stock_quantity": 30,
+        "stock_cost": 18000,
+        "total_purchase": 18300,
+        "ordinary_removal_refund": 18300
+      }
+    ],
+    "default_purchase": 18300
+  },
+  {
+    "fixture": 27,
+    "empty_purchase": 600,
+    "full_stock_options": [
+      {
+        "product": 8,
+        "product_name": "たばこ",
+        "stock_quantity": 20,
+        "stock_cost": 3500,
+        "total_purchase": 4100,
+        "ordinary_removal_refund": 4100
+      }
+    ],
+    "default_purchase": 4100
+  },
+  {
+    "fixture": 28,
+    "empty_purchase": 1000,
+    "full_stock_options": [
+      {
+        "product": 8,
+        "product_name": "たばこ",
+        "stock_quantity": 40,
+        "stock_cost": 7000,
+        "total_purchase": 8000,
+        "ordinary_removal_refund": 8000
+      }
+    ],
+    "default_purchase": 8000
+  },
+  {
+    "fixture": 29,
+    "empty_purchase": 800,
+    "full_stock_options": [
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 20,
+        "stock_cost": 1100,
+        "total_purchase": 1900,
+        "ordinary_removal_refund": 1900
+      },
+      {
+        "product": 2,
+        "product_name": "酒類",
+        "stock_quantity": 20,
+        "stock_cost": 14000,
+        "total_purchase": 14800,
+        "ordinary_removal_refund": 14800
+      }
+    ],
+    "default_purchase": 1900
+  },
+  {
+    "fixture": 30,
+    "empty_purchase": 1400,
+    "full_stock_options": [
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 40,
+        "stock_cost": 2200,
+        "total_purchase": 3600,
+        "ordinary_removal_refund": 3600
+      },
+      {
+        "product": 2,
+        "product_name": "酒類",
+        "stock_quantity": 40,
+        "stock_cost": 28000,
+        "total_purchase": 29400,
+        "ordinary_removal_refund": 29400
+      }
+    ],
+    "default_purchase": 3600
+  },
+  {
+    "fixture": 31,
+    "empty_purchase": 1000,
+    "full_stock_options": [
+      {
+        "product": 1,
+        "product_name": "温かい飲料",
+        "stock_quantity": 15,
+        "stock_cost": 825,
+        "total_purchase": 1825,
+        "ordinary_removal_refund": 1825
+      },
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 15,
+        "stock_cost": 825,
+        "total_purchase": 1825,
+        "ordinary_removal_refund": 1825
+      }
+    ],
+    "default_purchase": 1825
+  },
+  {
+    "fixture": 32,
+    "empty_purchase": 1800,
+    "full_stock_options": [
+      {
+        "product": 1,
+        "product_name": "温かい飲料",
+        "stock_quantity": 30,
+        "stock_cost": 1650,
+        "total_purchase": 3450,
+        "ordinary_removal_refund": 3450
+      },
+      {
+        "product": 0,
+        "product_name": "冷たい飲料",
+        "stock_quantity": 30,
+        "stock_cost": 1650,
+        "total_purchase": 3450,
+        "ordinary_removal_refund": 3450
+      }
+    ],
+    "default_purchase": 3450
+  },
+  {
+    "fixture": 33,
+    "empty_purchase": 800,
+    "full_stock_options": [
+      {
+        "product": 20,
+        "product_name": "コピー用紙",
+        "stock_quantity": 10,
+        "stock_cost": 300,
+        "total_purchase": 1100,
+        "ordinary_removal_refund": 1100
+      }
+    ],
+    "default_purchase": 1100
+  },
+  {
+    "fixture": 34,
+    "empty_purchase": 1200,
+    "full_stock_options": [
+      {
+        "product": 20,
+        "product_name": "コピー用紙",
+        "stock_quantity": 15,
+        "stock_cost": 450,
+        "total_purchase": 1650,
+        "ordinary_removal_refund": 1650
+      }
+    ],
+    "default_purchase": 1650
+  },
+  {
+    "fixture": 35,
+    "empty_purchase": 1500,
+    "full_stock_options": [
+      {
+        "product": 20,
+        "product_name": "コピー用紙",
+        "stock_quantity": 20,
+        "stock_cost": 600,
+        "total_purchase": 2100,
+        "ordinary_removal_refund": 2100
+      }
+    ],
+    "default_purchase": 2100
+  },
+  {
+    "fixture": 36,
+    "empty_purchase": 2000,
+    "full_stock_options": [
+      {
+        "product": 20,
+        "product_name": "コピー用紙",
+        "stock_quantity": 40,
+        "stock_cost": 1200,
+        "total_purchase": 3200,
+        "ordinary_removal_refund": 3200
+      }
+    ],
+    "default_purchase": 3200
+  },
+  {
+    "fixture": 37,
+    "empty_purchase": 1500,
+    "full_stock_options": [],
+    "default_purchase": 1500
+  },
+  {
+    "fixture": 38,
+    "empty_purchase": 2000,
+    "full_stock_options": [],
+    "default_purchase": 2000
+  },
+  {
+    "fixture": 39,
+    "empty_purchase": 3000,
+    "full_stock_options": [
+      {
+        "product": 21,
+        "product_name": "宅急便申込書",
+        "stock_quantity": 60,
+        "stock_cost": 48000,
+        "total_purchase": 51000,
+        "ordinary_removal_refund": null
+      }
+    ],
+    "default_purchase": 51000
+  },
+  {
+    "fixture": 40,
+    "empty_purchase": 2000,
+    "full_stock_options": [],
+    "default_purchase": 2000
+  },
+  {
+    "fixture": 41,
+    "empty_purchase": 3000,
+    "full_stock_options": [],
+    "default_purchase": 3000
+  },
+  {
+    "fixture": 42,
+    "empty_purchase": 5000,
+    "full_stock_options": [
+      {
+        "product": 21,
+        "product_name": "宅急便申込書",
+        "stock_quantity": 90,
+        "stock_cost": 72000,
+        "total_purchase": 77000,
+        "ordinary_removal_refund": null
+      }
+    ],
+    "default_purchase": 77000
+  },
+  {
+    "fixture": 43,
+    "empty_purchase": 4000,
+    "full_stock_options": [
+      {
+        "product": 26,
+        "product_name": "現金",
+        "stock_quantity": 50,
+        "stock_cost": 0,
+        "total_purchase": 4000,
+        "ordinary_removal_refund": 4000
+      }
+    ],
+    "default_purchase": 4000
+  },
+  {
+    "fixture": 44,
+    "empty_purchase": 7000,
+    "full_stock_options": [
+      {
+        "product": 26,
+        "product_name": "現金",
+        "stock_quantity": 90,
+        "stock_cost": 0,
+        "total_purchase": 7000,
+        "ordinary_removal_refund": 7000
+      }
+    ],
+    "default_purchase": 7000
+  },
+  {
+    "fixture": 45,
+    "empty_purchase": 1000,
+    "full_stock_options": [],
+    "default_purchase": 1000
+  },
+  {
+    "fixture": 46,
+    "empty_purchase": 2000,
+    "full_stock_options": [],
+    "default_purchase": 2000
+  },
+  {
+    "fixture": 47,
+    "empty_purchase": 5000,
+    "full_stock_options": [],
+    "default_purchase": 5000
+  },
+  {
+    "fixture": 48,
+    "empty_purchase": 3000,
+    "full_stock_options": [],
+    "default_purchase": 3000
+  },
+  {
+    "fixture": 49,
+    "empty_purchase": 7000,
+    "full_stock_options": [],
+    "default_purchase": 7000
+  },
+  {
+    "fixture": 50,
+    "empty_purchase": 500,
+    "full_stock_options": [],
+    "default_purchase": 500
+  },
+  {
+    "fixture": 51,
+    "empty_purchase": 1000,
+    "full_stock_options": [],
+    "default_purchase": 1000
+  },
+  {
+    "fixture": 52,
+    "empty_purchase": 9000,
+    "full_stock_options": [],
+    "default_purchase": 9000
+  }
+]

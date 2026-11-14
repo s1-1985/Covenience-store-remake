@@ -1,0 +1,74 @@
+[
+  {
+    "name": "equipment_value",
+    "address": "0x8001d018",
+    "bytes": 404,
+    "sha256": "09f51e7def463a4e6cf07805d3687c7c6a85277002a0e8f9e562ba4d8827fc7c"
+  },
+  {
+    "name": "template_refill",
+    "address": "0x8001d1ac",
+    "bytes": 412,
+    "sha256": "14af96d0d54f4aebcc783fb8ddcf2d1359733e45021f3b10a4063187411bccc4"
+  },
+  {
+    "name": "stock_value",
+    "address": "0x8001d618",
+    "bytes": 660,
+    "sha256": "3cc1fc04aa218227365d978a6486a37d1552517ce2c398722abdbd3598611e1a"
+  },
+  {
+    "name": "product_image_lookup",
+    "address": "0x800206ac",
+    "bytes": 844,
+    "sha256": "b5883313e75d17c3e208cf48280d63374833ebdf37c7442371deb506173ee5ea"
+  },
+  {
+    "name": "stock_change",
+    "address": "0x800209f8",
+    "bytes": 4312,
+    "sha256": "f33b613c4ed9e387164ec5b81ee8bcde7bf1325f2400be4ffcea2fa194aeed0c"
+  },
+  {
+    "name": "product_selection",
+    "address": "0x80068978",
+    "bytes": 2752,
+    "sha256": "723ccfc4fc59ac061deabe6abddb7e4159bdc26babf6d6bef9b9a541b43be9e2"
+  },
+  {
+    "name": "prefab_charge",
+    "address": "0x800759dc",
+    "bytes": 868,
+    "sha256": "473a592cdc2d9ca651173300e59790f82b02d8a0512d76123432fa1fc602b73c"
+  },
+  {
+    "name": "placement_charge",
+    "address": "0x80076474",
+    "bytes": 1780,
+    "sha256": "14d420bf612ea5b06760633b06355af623fd0f677bc9f7672d6239c9a5331283"
+  },
+  {
+    "name": "normal_menu_dispatch",
+    "address": "0x80076164",
+    "bytes": 352,
+    "sha256": "935d81dd4718f9935d32178e0a30baaf3db2929550abf0786ad684743ba6b681"
+  },
+  {
+    "name": "existing_select",
+    "address": "0x800773bc",
+    "bytes": 2600,
+    "sha256": "a5c31a88589c59dc84d493a1760f42c9f6ac2958bfc5829eedf83c89ce505100"
+  },
+  {
+    "name": "pickup_cancel",
+    "address": "0x800782a4",
+    "bytes": 564,
+    "sha256": "2f3f02478d7b4c88f6e3ddcfdf816d85d8dffdcece12f3a7f304f5499538c317"
+  },
+  {
+    "name": "newgame_interior_post",
+    "address": "0x8005dd04",
+    "bytes": 280,
+    "sha256": "a0fd5cc77adc38ad81fdbed3989181d8ab48b4b6105264d0001dedab14c51c10"
+  }
+]

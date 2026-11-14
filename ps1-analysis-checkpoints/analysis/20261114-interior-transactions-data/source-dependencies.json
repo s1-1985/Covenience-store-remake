@@ -1,0 +1,6 @@
+{
+  "fixture_master": "../20261114-robbery-fire-data/source/fixture-master.bin",
+  "product_master": "../20261114-robbery-fire-data/source/product-master.bin",
+  "raw_layouts": "../20261114-parking-arrival-data/source/layouts.bin",
+  "source_note": "This extractor rereads verified disc; existing raw master/layout evidence reused, no new full EXE or RAM dumps."
+}
