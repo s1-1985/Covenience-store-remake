@@ -1,0 +1,62 @@
+[
+  {
+    "label": "premises_value",
+    "address": "0x8001de5c",
+    "bytes": 372,
+    "sha256": "d88a7b9f81fc01a7be56b1d1ef8b78422f2bd136662ca832ee6bf2da0ab6dfa8"
+  },
+  {
+    "label": "land_value",
+    "address": "0x8001dfd0",
+    "bytes": 472,
+    "sha256": "fa190d24b97a82fc413eb6c518d04387befc12c713d6898a9a3d7d44f36c5ac4"
+  },
+  {
+    "label": "demolition_value",
+    "address": "0x8001e1a8",
+    "bytes": 1208,
+    "sha256": "1bc434360582478929338a509519125a904963e24fb86afd542d979e19965123"
+  },
+  {
+    "label": "building_lookup",
+    "address": "0x80020238",
+    "bytes": 300,
+    "sha256": "bf1cf5299133397e6cf8520d739d454c80e918162f281e61481c6e11cafc590c"
+  },
+  {
+    "label": "layout_loader",
+    "address": "0x8001b678",
+    "bytes": 588,
+    "sha256": "b44f4e066e754f9906c3add79a77d7d24118bbcdced765154dcf090cd78026ba"
+  },
+  {
+    "label": "store_activate",
+    "address": "0x8001baac",
+    "bytes": 212,
+    "sha256": "3601e273120219d62a433a19366c7bbc9b2b424bf0a63d06b72a8867d37c9f47"
+  },
+  {
+    "label": "place_and_clear",
+    "address": "0x8001f1c0",
+    "bytes": 1788,
+    "sha256": "b453e66d33c936be6691f6aac0a3d4d38a311d12fe543741a42c7398fc4fb08b"
+  },
+  {
+    "label": "land_ui",
+    "address": "0x8006df94",
+    "bytes": 1080,
+    "sha256": "d2d97dab3d55f14459a4b7ccc85f40aa468d750e48aded102543d5a17e9da2a6"
+  },
+  {
+    "label": "size_ui",
+    "address": "0x8006e984",
+    "bytes": 432,
+    "sha256": "a6c35a4a1f72d2b68b2f381f47f839c6fdc0002f08f552fe1ade5970ba0efe66"
+  },
+  {
+    "label": "newgame_posting",
+    "address": "0x8005dbb8",
+    "bytes": 552,
+    "sha256": "0ad67ead49df42ec3753f7fecd7fdbdbf6f0c56cff1605a80035775073e5a57c"
+  }
+]

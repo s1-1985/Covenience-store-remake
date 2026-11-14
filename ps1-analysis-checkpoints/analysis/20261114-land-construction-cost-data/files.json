@@ -1,0 +1,152 @@
+[
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/README.md",
+    "bytes": 8473,
+    "sha256": "a3baed948e2f94715a8c11bbc038bf8aae2f5996221a703e4d98c895ad2c8604",
+    "git_sha1": "e61c8ab0197fedbaab6d86fcb5f901d41ce4ab4f"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/android-land-construction-bridge.json",
+    "bytes": 2857,
+    "sha256": "7a0afa9a5635e1db7693c8f83137a8967e41fcbb3d97cd42992df19f3e4f366a",
+    "git_sha1": "53b20c24525f08de20b4c2310af9d0c74a5571bd"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/building-demolition-master.json",
+    "bytes": 36640,
+    "sha256": "ab8f39db5fdb5012e771846ba7839fc4f82664f26acfdbbd334ef7895a6ce79a",
+    "git_sha1": "218675107d729b40c00ca9433fde7baa4dd8dfac"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/candidate-costs.i32le",
+    "bytes": 185024,
+    "sha256": "3513d5840f1ef6da45e8b9704ac7329798a231796438245b412ad058adece6eb",
+    "git_sha1": "d12c04a9176543d2472593216ee546ebe3e0b587"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/construction-tiers.json",
+    "bytes": 10488,
+    "sha256": "fb47d709d195c9efad90b8c7cf3c7ad95c246cb07fe5bd4539ae1e7583f48ea5",
+    "git_sha1": "290350410fcbb7a8ef195a2c60be86819bea9956"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/cost-readers.asm",
+    "bytes": 59231,
+    "sha256": "aeee10a5192ab1469955860a8336903d41e748308d63010ff2481b459cf529ca",
+    "git_sha1": "d8a6720c7e12060d693227368997bab63ee18fe5"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/extract-land-costs.py",
+    "bytes": 17533,
+    "sha256": "efee981e7501d05564108d90385aafdeaae57f58de38a3e31cba71c258344697",
+    "git_sha1": "fee8848d3b1c444a7c1741213edff77f94f99ad6"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/extraction-check.json",
+    "bytes": 290,
+    "sha256": "8018128d0650f02be20d85d3f5e50dd6ee78e701227d708ed104587e06d7c6a3",
+    "git_sha1": "f48ae0ca2a883cc53500e9c77c2b464b7b65fd4c"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/initial-map-site-costs.json",
+    "bytes": 10035,
+    "sha256": "62ad0282ec8add35af5c29c7ecd255ba274403217b385722ad0e59d2f5568533",
+    "git_sha1": "b4189201ed98049d72668976e224cc8a928f497d"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/building-descriptors.bin",
+    "bytes": 4592,
+    "sha256": "7a9d8b55f83a3b0d9585ba724bd2140354d51c360c3076cc31e9a09aca46b1ab",
+    "git_sha1": "5eff79a12ff69fab702ab6729792bddd281ec91c"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/building_lookup.bin",
+    "bytes": 300,
+    "sha256": "bf1cf5299133397e6cf8520d739d454c80e918162f281e61481c6e11cafc590c",
+    "git_sha1": "7ae23769adc77a156d0b452e45918a895d2afe37"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/demolition_value.bin",
+    "bytes": 1208,
+    "sha256": "1bc434360582478929338a509519125a904963e24fb86afd542d979e19965123",
+    "git_sha1": "238ed74f5445d758b1118d57d48bd45465a6647f"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/land_ui.bin",
+    "bytes": 1080,
+    "sha256": "d2d97dab3d55f14459a4b7ccc85f40aa468d750e48aded102543d5a17e9da2a6",
+    "git_sha1": "64043a21917c276a9f5692c9c9f74ccb3624c59d"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/land_value.bin",
+    "bytes": 472,
+    "sha256": "fa190d24b97a82fc413eb6c518d04387befc12c713d6898a9a3d7d44f36c5ac4",
+    "git_sha1": "73fccd3655fee7365d5d8a6b780659ab41a650a3"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/layout_loader.bin",
+    "bytes": 588,
+    "sha256": "b44f4e066e754f9906c3add79a77d7d24118bbcdced765154dcf090cd78026ba",
+    "git_sha1": "f7abbd7c9ffef894f87dff93f00dd45c4d3e2e82"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/newgame_posting.bin",
+    "bytes": 552,
+    "sha256": "0ad67ead49df42ec3753f7fecd7fdbdbf6f0c56cff1605a80035775073e5a57c",
+    "git_sha1": "1238d3702abcfdbe95d7a221996c06104bc7b37a"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/place_and_clear.bin",
+    "bytes": 1788,
+    "sha256": "b453e66d33c936be6691f6aac0a3d4d38a311d12fe543741a42c7398fc4fb08b",
+    "git_sha1": "c08e0bac473b30b8242c501d399641c592f3166e"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/premises_value.bin",
+    "bytes": 372,
+    "sha256": "d88a7b9f81fc01a7be56b1d1ef8b78422f2bd136662ca832ee6bf2da0ab6dfa8",
+    "git_sha1": "0b9150879049b4c7f6dd3ed638201ed488ae2e3d"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/size_ui.bin",
+    "bytes": 432,
+    "sha256": "a6c35a4a1f72d2b68b2f381f47f839c6fdc0002f08f552fe1ade5970ba0efe66",
+    "git_sha1": "aba46b30347becc61c60cf0d9b98795cacd97d7f"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source/store_activate.bin",
+    "bytes": 212,
+    "sha256": "3601e273120219d62a433a19366c7bbc9b2b424bf0a63d06b72a8867d37c9f47",
+    "git_sha1": "6acbe89656905d2db75a830ab65336f05262bc0c"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source-dependencies.json",
+    "bytes": 354,
+    "sha256": "aee0131a7806bfd7dcaee1193e294896f1a686de5b98f502505ee2b9e7ff91fb",
+    "git_sha1": "76eb537b18424b9bc9a392ce344760540493780c"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source-derived-examples.json",
+    "bytes": 34185,
+    "sha256": "f52a3f9170909860f0a5f95206dbefa8c4913dc44aee58784b6727d46872dd95",
+    "git_sha1": "3c7e70c3a09390d3a051073a48fa073638207104"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source-derived-placement-patches.json",
+    "bytes": 29847,
+    "sha256": "b29675bbc1ddde43f38ed2a650e916384e47ab76f84fe7bf880cba7a67cef5c2",
+    "git_sha1": "5cd47d9e56d45c351e08dc6d5d08f5c2a2e19d6e"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/source-ranges.json",
+    "bytes": 1672,
+    "sha256": "078d6fa2265f5e63d489632fcf392adcad7a59bb32af2db3ca479e5388c72c27",
+    "git_sha1": "3870b2ef7043168570a0d83f856cf4516e2facef"
+  },
+  {
+    "path": "ps1-analysis-checkpoints/analysis/20261114-land-construction-cost-data/summary.json",
+    "bytes": 1361,
+    "sha256": "2c40ac30cc5fa8140e41471ab8608d5a305bee2936f9410a01418dc5a0439cd2",
+    "git_sha1": "fdbc3d883a96efd1f4d965fbcfcbdd8400a3c4a0"
+  }
+]

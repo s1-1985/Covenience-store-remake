@@ -1,0 +1,447 @@
+{
+  "reader": "0x8001de5c",
+  "tier_count": 6,
+  "tiers": [
+    {
+      "tier": 0,
+      "source_store_offset": "0xc70",
+      "construction_fee": 6000000,
+      "mode0_building_component": 3000000,
+      "layouts": [
+        {
+          "id": 0,
+          "variant": 0,
+          "half_cell_grid": [
+            20,
+            20
+          ],
+          "logical_grid": [
+            10,
+            10
+          ],
+          "sha256": "a9a8f5cd5d6ccdec8d49cd8738bfe9184f28c796c72d63120237e5d77f2c201b"
+        },
+        {
+          "id": 1,
+          "variant": 1,
+          "half_cell_grid": [
+            20,
+            20
+          ],
+          "logical_grid": [
+            10,
+            10
+          ],
+          "sha256": "569edb6796878882415ec598b7d8d6eace576bcc56fe4888e0b9200bad443635"
+        },
+        {
+          "id": 2,
+          "variant": 2,
+          "half_cell_grid": [
+            20,
+            20
+          ],
+          "logical_grid": [
+            10,
+            10
+          ],
+          "sha256": "a46a396d78fa6183d16c0448614137b70775d77eafadae6d3041e4ad3f078d0d"
+        },
+        {
+          "id": 3,
+          "variant": 3,
+          "half_cell_grid": [
+            20,
+            20
+          ],
+          "logical_grid": [
+            10,
+            10
+          ],
+          "sha256": "23fc2dce716de7954e6a51875b0742c9d551fcea17a89d73e98ae68c04a8c140"
+        },
+        {
+          "id": 4,
+          "variant": 4,
+          "half_cell_grid": [
+            20,
+            20
+          ],
+          "logical_grid": [
+            10,
+            10
+          ],
+          "sha256": "a27e172f8f9c0de3532aca5111312f35c0e00d1308c7975d534f3287d7916c28"
+        }
+      ]
+    },
+    {
+      "tier": 1,
+      "source_store_offset": "0xc70",
+      "construction_fee": 6000000,
+      "mode0_building_component": 3000000,
+      "layouts": [
+        {
+          "id": 5,
+          "variant": 0,
+          "half_cell_grid": [
+            20,
+            20
+          ],
+          "logical_grid": [
+            10,
+            10
+          ],
+          "sha256": "7f6e43dc176e294418b0cf7c83eb0a17fa77733675557d6b64e1a8328b8ee063"
+        },
+        {
+          "id": 6,
+          "variant": 1,
+          "half_cell_grid": [
+            20,
+            20
+          ],
+          "logical_grid": [
+            10,
+            10
+          ],
+          "sha256": "1c1bd65a16ff691b246c8597fb4c2c5ae461bb561f296a3648863076a24028e1"
+        },
+        {
+          "id": 7,
+          "variant": 2,
+          "half_cell_grid": [
+            20,
+            20
+          ],
+          "logical_grid": [
+            10,
+            10
+          ],
+          "sha256": "0cc531536bbf328345b1fc8fe7a24cacbfeefe21f9e2176bb34ea096e31f8c9a"
+        },
+        {
+          "id": 8,
+          "variant": 3,
+          "half_cell_grid": [
+            20,
+            20
+          ],
+          "logical_grid": [
+            10,
+            10
+          ],
+          "sha256": "928eb88cbfbd2b6193389ddacaadf03e9330f74a9c7e4b3d75773cc365299f57"
+        },
+        {
+          "id": 9,
+          "variant": 4,
+          "half_cell_grid": [
+            20,
+            20
+          ],
+          "logical_grid": [
+            10,
+            10
+          ],
+          "sha256": "3c41da18f3f1f57e19194b51d75765c5ec6d1db9f309a0abd2dd79801fc15ea4"
+        }
+      ]
+    },
+    {
+      "tier": 2,
+      "source_store_offset": "0xc70",
+      "construction_fee": 12000000,
+      "mode0_building_component": 6000000,
+      "layouts": [
+        {
+          "id": 10,
+          "variant": 0,
+          "half_cell_grid": [
+            24,
+            24
+          ],
+          "logical_grid": [
+            12,
+            12
+          ],
+          "sha256": "e856a224151804edf45dfe44591a27b58cc65ea37b0c0cdfd3707ebb1a561ba6"
+        },
+        {
+          "id": 11,
+          "variant": 1,
+          "half_cell_grid": [
+            24,
+            24
+          ],
+          "logical_grid": [
+            12,
+            12
+          ],
+          "sha256": "047d22dbd24fec07c6cd7183f0460cb8bd228d1879dc2a7470cfec5b02899be3"
+        },
+        {
+          "id": 12,
+          "variant": 2,
+          "half_cell_grid": [
+            24,
+            24
+          ],
+          "logical_grid": [
+            12,
+            12
+          ],
+          "sha256": "e3508cb76ea57c87e31bc94fd5d35dbdee4269c5d250647b8f1e706ebe082a25"
+        },
+        {
+          "id": 13,
+          "variant": 3,
+          "half_cell_grid": [
+            24,
+            24
+          ],
+          "logical_grid": [
+            12,
+            12
+          ],
+          "sha256": "6d8225e921b68f354728075ac7dfcb5ab4e107295e7e5f424fc445d32bf18191"
+        },
+        {
+          "id": 14,
+          "variant": 4,
+          "half_cell_grid": [
+            24,
+            24
+          ],
+          "logical_grid": [
+            12,
+            12
+          ],
+          "sha256": "f3d0c6e9181a3e398c24e4fe3806523e2bd53c681a409a33bf32a7c3a649d690"
+        }
+      ]
+    },
+    {
+      "tier": 3,
+      "source_store_offset": "0xc70",
+      "construction_fee": 12000000,
+      "mode0_building_component": 6000000,
+      "layouts": [
+        {
+          "id": 15,
+          "variant": 0,
+          "half_cell_grid": [
+            24,
+            24
+          ],
+          "logical_grid": [
+            12,
+            12
+          ],
+          "sha256": "c6cfcc17159dbcf551012da7b5d3487b54f6dfcf8be0ed782d0b1abf88b93672"
+        },
+        {
+          "id": 16,
+          "variant": 1,
+          "half_cell_grid": [
+            24,
+            24
+          ],
+          "logical_grid": [
+            12,
+            12
+          ],
+          "sha256": "2287d22a36c7dd87adfbd11371b4c67a8cc8314cb32939e405fbc1a6aa2ac800"
+        },
+        {
+          "id": 17,
+          "variant": 2,
+          "half_cell_grid": [
+            24,
+            24
+          ],
+          "logical_grid": [
+            12,
+            12
+          ],
+          "sha256": "9332a9997bed5b04748e82dc6afdfb4c3e0d5cb55535007fc658b01954f60db4"
+        },
+        {
+          "id": 18,
+          "variant": 3,
+          "half_cell_grid": [
+            24,
+            24
+          ],
+          "logical_grid": [
+            12,
+            12
+          ],
+          "sha256": "20ed82964af2606ba4f9f3834c605dc60985d4d0ed452d3d18c8ecd42252f670"
+        },
+        {
+          "id": 19,
+          "variant": 4,
+          "half_cell_grid": [
+            24,
+            24
+          ],
+          "logical_grid": [
+            12,
+            12
+          ],
+          "sha256": "bbcccc2878a1ab3a38c79bbbc794657553b768968328e81aa6f0a3e8c922ee39"
+        }
+      ]
+    },
+    {
+      "tier": 4,
+      "source_store_offset": "0xc70",
+      "construction_fee": 18000000,
+      "mode0_building_component": 9000000,
+      "layouts": [
+        {
+          "id": 20,
+          "variant": 0,
+          "half_cell_grid": [
+            28,
+            26
+          ],
+          "logical_grid": [
+            14,
+            13
+          ],
+          "sha256": "af4e59124df8282ef08bb3e4a3636b55b4ea80159727decb0444f37afbda7023"
+        },
+        {
+          "id": 21,
+          "variant": 1,
+          "half_cell_grid": [
+            28,
+            26
+          ],
+          "logical_grid": [
+            14,
+            13
+          ],
+          "sha256": "2baccb31bf7158544f79e026a999183b2c6a79c9e5733e29a619be0cd212b280"
+        },
+        {
+          "id": 22,
+          "variant": 2,
+          "half_cell_grid": [
+            28,
+            26
+          ],
+          "logical_grid": [
+            14,
+            13
+          ],
+          "sha256": "7158a32671d19b7317b24c9d374f448800c40aba0e914739fe6389cd077910c3"
+        },
+        {
+          "id": 23,
+          "variant": 3,
+          "half_cell_grid": [
+            28,
+            26
+          ],
+          "logical_grid": [
+            14,
+            13
+          ],
+          "sha256": "862590cbb3b9e495eafc69ffafcf70e798837cf1e17f2af978bac6b08b97a313"
+        },
+        {
+          "id": 24,
+          "variant": 4,
+          "half_cell_grid": [
+            28,
+            26
+          ],
+          "logical_grid": [
+            14,
+            13
+          ],
+          "sha256": "91a7aea5a3d55448c7fd1342fb865e8643e52005bc5821e083e487f0c3e1839e"
+        }
+      ]
+    },
+    {
+      "tier": 5,
+      "source_store_offset": "0xc70",
+      "construction_fee": 18000000,
+      "mode0_building_component": 9000000,
+      "layouts": [
+        {
+          "id": 25,
+          "variant": 0,
+          "half_cell_grid": [
+            28,
+            26
+          ],
+          "logical_grid": [
+            14,
+            13
+          ],
+          "sha256": "8260e992d56be0400e0718453d39a3210f742b88a6118a4823a59d9650b47ce8"
+        },
+        {
+          "id": 26,
+          "variant": 1,
+          "half_cell_grid": [
+            28,
+            26
+          ],
+          "logical_grid": [
+            14,
+            13
+          ],
+          "sha256": "5d64b4a53757bf944ee0e704b3193174bad3a6202ed2ebfe88092ddfcd228a32"
+        },
+        {
+          "id": 27,
+          "variant": 2,
+          "half_cell_grid": [
+            28,
+            26
+          ],
+          "logical_grid": [
+            14,
+            13
+          ],
+          "sha256": "9d30ad3aabd553d1854f658958246533b05a4e550f75e6fe0829b61c341faa27"
+        },
+        {
+          "id": 28,
+          "variant": 3,
+          "half_cell_grid": [
+            28,
+            26
+          ],
+          "logical_grid": [
+            14,
+            13
+          ],
+          "sha256": "7bf2832f57cc278381f0014d03f69293496635797f7a31ae4635c39003e89c4b"
+        },
+        {
+          "id": 29,
+          "variant": 4,
+          "half_cell_grid": [
+            28,
+            26
+          ],
+          "logical_grid": [
+            14,
+            13
+          ],
+          "sha256": "32b63f876113ab1e4de61b455a2191a0a1487126970a7170e5cd99153389e833"
+        }
+      ]
+    }
+  ],
+  "mode0_note": "Mode0 adds equipment_total(1D018) and procurement_inventory_total(1D618) to this building component; it is not the construction purchase fee.",
+  "mode1_note": "Mode1 returns construction fee only. Original land footprint stays 2x2 for all six internal store tiers.",
+  "availability": "6E998 reads signed CD994: <3 exposes2 tiers; otherwise <5 exposes4; otherwise6. This is the source selector condition, not a decoded meaning of CD994."
+}

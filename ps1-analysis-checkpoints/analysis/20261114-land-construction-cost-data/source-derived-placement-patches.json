@@ -1,0 +1,1030 @@
+[
+  {
+    "map": "TOWN0001",
+    "examples": [
+      {
+        "label": "minimum",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            0,
+            0
+          ],
+          "demolished": [],
+          "changed_cells": [
+            {
+              "x": 0,
+              "y": 0,
+              "before_hex": "2c0005000001ffff",
+              "after_hex": "000005030219ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "before_hex": "2b0005000001ffff",
+              "after_hex": "010005030219ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 0,
+              "y": 1,
+              "before_hex": "2c0005000001ffff",
+              "after_hex": "020005030219ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 1,
+              "y": 1,
+              "before_hex": "2c0005000001ffff",
+              "after_hex": "030005030219ffff",
+              "outside_selected_rectangle": false
+            }
+          ],
+          "changed_outside_selected_rectangle": 0,
+          "original_rng_draws_with_constant_mix_result": 4,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      },
+      {
+        "label": "maximum",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            42,
+            6
+          ],
+          "demolished": [
+            {
+              "descriptor": 43,
+              "origin": [
+                42,
+                6
+              ],
+              "footprint": [
+                1,
+                1
+              ]
+            },
+            {
+              "descriptor": 45,
+              "origin": [
+                43,
+                6
+              ],
+              "footprint": [
+                1,
+                1
+              ]
+            },
+            {
+              "descriptor": 56,
+              "origin": [
+                41,
+                7
+              ],
+              "footprint": [
+                2,
+                2
+              ]
+            },
+            {
+              "descriptor": 37,
+              "origin": [
+                43,
+                7
+              ],
+              "footprint": [
+                2,
+                2
+              ]
+            }
+          ],
+          "changed_cells": [
+            {
+              "x": 42,
+              "y": 6,
+              "before_hex": "b401050a03173f00",
+              "after_hex": "00000503021fffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 43,
+              "y": 6,
+              "before_hex": "b601051403174500",
+              "after_hex": "01000503021fffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 41,
+              "y": 7,
+              "before_hex": "f301050a051f6600",
+              "after_hex": "2b0005000007ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 42,
+              "y": 7,
+              "before_hex": "f401050a051f6300",
+              "after_hex": "02000503021fffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 43,
+              "y": 7,
+              "before_hex": "92010508051f2c00",
+              "after_hex": "03000503021fffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 44,
+              "y": 7,
+              "before_hex": "93010508051f2c00",
+              "after_hex": "2b0005000007ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 41,
+              "y": 8,
+              "before_hex": "f501050a051f6200",
+              "after_hex": "2b0005000007ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 42,
+              "y": 8,
+              "before_hex": "f601050a051f6500",
+              "after_hex": "2b0005000007ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 43,
+              "y": 8,
+              "before_hex": "94010508051f2d00",
+              "after_hex": "2b0005000007ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 44,
+              "y": 8,
+              "before_hex": "95010508051f2d00",
+              "after_hex": "2b0005000007ffff",
+              "outside_selected_rectangle": true
+            }
+          ],
+          "changed_outside_selected_rectangle": 6,
+          "original_rng_draws_with_constant_mix_result": 14,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      },
+      {
+        "label": "partial_building",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            46,
+            2
+          ],
+          "demolished": [
+            {
+              "descriptor": 43,
+              "origin": [
+                47,
+                2
+              ],
+              "footprint": [
+                1,
+                1
+              ]
+            },
+            {
+              "descriptor": 46,
+              "origin": [
+                46,
+                3
+              ],
+              "footprint": [
+                1,
+                2
+              ]
+            }
+          ],
+          "changed_cells": [
+            {
+              "x": 46,
+              "y": 2,
+              "before_hex": "2a0005000003ffff",
+              "after_hex": "00000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 47,
+              "y": 2,
+              "before_hex": "b401050a03133e00",
+              "after_hex": "01000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 46,
+              "y": 3,
+              "before_hex": "b701050a03134d00",
+              "after_hex": "02000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 47,
+              "y": 3,
+              "before_hex": "290005000003ffff",
+              "after_hex": "03000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 46,
+              "y": 4,
+              "before_hex": "b801050a03134e00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            }
+          ],
+          "changed_outside_selected_rectangle": 1,
+          "original_rng_draws_with_constant_mix_result": 7,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      }
+    ]
+  },
+  {
+    "map": "TOWN0002",
+    "examples": [
+      {
+        "label": "minimum",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            0,
+            0
+          ],
+          "demolished": [],
+          "changed_cells": [
+            {
+              "x": 0,
+              "y": 0,
+              "before_hex": "2b0005000000ffff",
+              "after_hex": "000005030218ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "before_hex": "2c0005000000ffff",
+              "after_hex": "010005030218ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 0,
+              "y": 1,
+              "before_hex": "280005000000ffff",
+              "after_hex": "020005030218ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 1,
+              "y": 1,
+              "before_hex": "2a0005000000ffff",
+              "after_hex": "030005030218ffff",
+              "outside_selected_rectangle": false
+            }
+          ],
+          "changed_outside_selected_rectangle": 0,
+          "original_rng_draws_with_constant_mix_result": 4,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      },
+      {
+        "label": "maximum",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            35,
+            21
+          ],
+          "demolished": [
+            {
+              "descriptor": 43,
+              "origin": [
+                36,
+                21
+              ],
+              "footprint": [
+                1,
+                1
+              ]
+            },
+            {
+              "descriptor": 42,
+              "origin": [
+                34,
+                22
+              ],
+              "footprint": [
+                3,
+                3
+              ]
+            }
+          ],
+          "changed_cells": [
+            {
+              "x": 35,
+              "y": 21,
+              "before_hex": "2c0005000003ffff",
+              "after_hex": "00000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 36,
+              "y": 21,
+              "before_hex": "b401050a03133e00",
+              "after_hex": "01000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 34,
+              "y": 22,
+              "before_hex": "ab01050604133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 35,
+              "y": 22,
+              "before_hex": "ac01050604133700",
+              "after_hex": "02000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 36,
+              "y": 22,
+              "before_hex": "ad01050604133700",
+              "after_hex": "03000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 34,
+              "y": 23,
+              "before_hex": "ae01050604133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 35,
+              "y": 23,
+              "before_hex": "af01050604133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 36,
+              "y": 23,
+              "before_hex": "b001050604133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 34,
+              "y": 24,
+              "before_hex": "b101050604133900",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 35,
+              "y": 24,
+              "before_hex": "b201050604133700",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 36,
+              "y": 24,
+              "before_hex": "b301050604133900",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            }
+          ],
+          "changed_outside_selected_rectangle": 7,
+          "original_rng_draws_with_constant_mix_result": 14,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      },
+      {
+        "label": "partial_building",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            8,
+            8
+          ],
+          "demolished": [
+            {
+              "descriptor": 44,
+              "origin": [
+                8,
+                8
+              ],
+              "footprint": [
+                1,
+                1
+              ]
+            },
+            {
+              "descriptor": 48,
+              "origin": [
+                9,
+                9
+              ],
+              "footprint": [
+                2,
+                2
+              ]
+            }
+          ],
+          "changed_cells": [
+            {
+              "x": 8,
+              "y": 8,
+              "before_hex": "b501050a03114300",
+              "after_hex": "000005030219ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 9,
+              "y": 8,
+              "before_hex": "2b0005000001ffff",
+              "after_hex": "010005030219ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 8,
+              "y": 9,
+              "before_hex": "2c0005000001ffff",
+              "after_hex": "020005030219ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 9,
+              "y": 9,
+              "before_hex": "bd01050703114700",
+              "after_hex": "030005030219ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 10,
+              "y": 9,
+              "before_hex": "be01050703114500",
+              "after_hex": "2b0005000001ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 9,
+              "y": 10,
+              "before_hex": "bf01050703114d00",
+              "after_hex": "2b0005000001ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 10,
+              "y": 10,
+              "before_hex": "c001050703114900",
+              "after_hex": "2b0005000001ffff",
+              "outside_selected_rectangle": true
+            }
+          ],
+          "changed_outside_selected_rectangle": 3,
+          "original_rng_draws_with_constant_mix_result": 9,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      }
+    ]
+  },
+  {
+    "map": "TOWN0003",
+    "examples": [
+      {
+        "label": "minimum",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            0,
+            0
+          ],
+          "demolished": [],
+          "changed_cells": [
+            {
+              "x": 0,
+              "y": 0,
+              "before_hex": "280005000000ffff",
+              "after_hex": "000005030218ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "before_hex": "280005000000ffff",
+              "after_hex": "010005030218ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 0,
+              "y": 1,
+              "before_hex": "280005000000ffff",
+              "after_hex": "020005030218ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 1,
+              "y": 1,
+              "before_hex": "280005000000ffff",
+              "after_hex": "030005030218ffff",
+              "outside_selected_rectangle": false
+            }
+          ],
+          "changed_outside_selected_rectangle": 0,
+          "original_rng_draws_with_constant_mix_result": 4,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      },
+      {
+        "label": "maximum",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            48,
+            9
+          ],
+          "demolished": [
+            {
+              "descriptor": 40,
+              "origin": [
+                48,
+                8
+              ],
+              "footprint": [
+                2,
+                2
+              ]
+            },
+            {
+              "descriptor": 43,
+              "origin": [
+                48,
+                10
+              ],
+              "footprint": [
+                1,
+                1
+              ]
+            },
+            {
+              "descriptor": 45,
+              "origin": [
+                49,
+                10
+              ],
+              "footprint": [
+                1,
+                1
+              ]
+            }
+          ],
+          "changed_cells": [
+            {
+              "x": 48,
+              "y": 8,
+              "before_hex": "9e01050a041f3800",
+              "after_hex": "2b0005000007ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 49,
+              "y": 8,
+              "before_hex": "9f01050a04173500",
+              "after_hex": "2b0005000007ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 48,
+              "y": 9,
+              "before_hex": "a001050a041f3400",
+              "after_hex": "00000503021fffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 49,
+              "y": 9,
+              "before_hex": "a101050a04173300",
+              "after_hex": "01000503021fffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 48,
+              "y": 10,
+              "before_hex": "b401050a031f3c00",
+              "after_hex": "02000503021fffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 49,
+              "y": 10,
+              "before_hex": "b601051403174900",
+              "after_hex": "03000503021fffff",
+              "outside_selected_rectangle": false
+            }
+          ],
+          "changed_outside_selected_rectangle": 2,
+          "original_rng_draws_with_constant_mix_result": 10,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      },
+      {
+        "label": "partial_building",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            48,
+            1
+          ],
+          "demolished": [
+            {
+              "descriptor": 46,
+              "origin": [
+                48,
+                2
+              ],
+              "footprint": [
+                1,
+                2
+              ]
+            }
+          ],
+          "changed_cells": [
+            {
+              "x": 48,
+              "y": 1,
+              "before_hex": "280005000003ffff",
+              "after_hex": "00000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 49,
+              "y": 1,
+              "before_hex": "290005000003ffff",
+              "after_hex": "01000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 48,
+              "y": 2,
+              "before_hex": "b701050a03134b00",
+              "after_hex": "02000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 49,
+              "y": 2,
+              "before_hex": "280005000003ffff",
+              "after_hex": "03000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 48,
+              "y": 3,
+              "before_hex": "b801050a03134d00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            }
+          ],
+          "changed_outside_selected_rectangle": 1,
+          "original_rng_draws_with_constant_mix_result": 6,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      }
+    ]
+  },
+  {
+    "map": "TOWNPS",
+    "examples": [
+      {
+        "label": "minimum",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            0,
+            0
+          ],
+          "demolished": [],
+          "changed_cells": [
+            {
+              "x": 0,
+              "y": 0,
+              "before_hex": "2b0005000000ffff",
+              "after_hex": "000005030218ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 1,
+              "y": 0,
+              "before_hex": "2b0005000000ffff",
+              "after_hex": "010005030218ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 0,
+              "y": 1,
+              "before_hex": "2b0005000000ffff",
+              "after_hex": "020005030218ffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 1,
+              "y": 1,
+              "before_hex": "290005000000ffff",
+              "after_hex": "030005030218ffff",
+              "outside_selected_rectangle": false
+            }
+          ],
+          "changed_outside_selected_rectangle": 0,
+          "original_rng_draws_with_constant_mix_result": 4,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      },
+      {
+        "label": "maximum",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            38,
+            11
+          ],
+          "demolished": [
+            {
+              "descriptor": 41,
+              "origin": [
+                39,
+                9
+              ],
+              "footprint": [
+                3,
+                3
+              ]
+            },
+            {
+              "descriptor": 41,
+              "origin": [
+                39,
+                12
+              ],
+              "footprint": [
+                3,
+                3
+              ]
+            }
+          ],
+          "changed_cells": [
+            {
+              "x": 39,
+              "y": 9,
+              "before_hex": "a201050504133900",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 40,
+              "y": 9,
+              "before_hex": "a301050504133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 41,
+              "y": 9,
+              "before_hex": "a401050504133700",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 39,
+              "y": 10,
+              "before_hex": "a501050504133600",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 40,
+              "y": 10,
+              "before_hex": "a601050504133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 41,
+              "y": 10,
+              "before_hex": "a701050504133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 38,
+              "y": 11,
+              "before_hex": "2b0005000007ffff",
+              "after_hex": "00000503021fffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 39,
+              "y": 11,
+              "before_hex": "a801050504133800",
+              "after_hex": "01000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 40,
+              "y": 11,
+              "before_hex": "a901050504133600",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 41,
+              "y": 11,
+              "before_hex": "aa01050504133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 38,
+              "y": 12,
+              "before_hex": "2b0005000007ffff",
+              "after_hex": "02000503021fffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 39,
+              "y": 12,
+              "before_hex": "a201050504133a00",
+              "after_hex": "03000503021bffff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 40,
+              "y": 12,
+              "before_hex": "a301050504133600",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 41,
+              "y": 12,
+              "before_hex": "a401050504133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 39,
+              "y": 13,
+              "before_hex": "a501050504133600",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 40,
+              "y": 13,
+              "before_hex": "a601050504133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 41,
+              "y": 13,
+              "before_hex": "a701050504133900",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 39,
+              "y": 14,
+              "before_hex": "a801050504133900",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 40,
+              "y": 14,
+              "before_hex": "a901050504133a00",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 41,
+              "y": 14,
+              "before_hex": "aa01050504133700",
+              "after_hex": "2b0005000003ffff",
+              "outside_selected_rectangle": true
+            }
+          ],
+          "changed_outside_selected_rectangle": 16,
+          "original_rng_draws_with_constant_mix_result": 22,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      },
+      {
+        "label": "partial_building",
+        "trace": {
+          "store_descriptor": 0,
+          "mode": 0,
+          "origin": [
+            31,
+            0
+          ],
+          "demolished": [
+            {
+              "descriptor": 48,
+              "origin": [
+                32,
+                1
+              ],
+              "footprint": [
+                2,
+                2
+              ]
+            }
+          ],
+          "changed_cells": [
+            {
+              "x": 31,
+              "y": 0,
+              "before_hex": "280005000002ffff",
+              "after_hex": "00000503021affff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 32,
+              "y": 0,
+              "before_hex": "2a0005000002ffff",
+              "after_hex": "01000503021affff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 31,
+              "y": 1,
+              "before_hex": "2b0005000002ffff",
+              "after_hex": "02000503021affff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 32,
+              "y": 1,
+              "before_hex": "bd01050703124d00",
+              "after_hex": "03000503021affff",
+              "outside_selected_rectangle": false
+            },
+            {
+              "x": 33,
+              "y": 1,
+              "before_hex": "be01050703124700",
+              "after_hex": "2b0005000002ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 32,
+              "y": 2,
+              "before_hex": "bf01050703124500",
+              "after_hex": "2b0005000002ffff",
+              "outside_selected_rectangle": true
+            },
+            {
+              "x": 33,
+              "y": 2,
+              "before_hex": "c001050703124500",
+              "after_hex": "2b0005000002ffff",
+              "outside_selected_rectangle": true
+            }
+          ],
+          "changed_outside_selected_rectangle": 3,
+          "original_rng_draws_with_constant_mix_result": 8,
+          "scope": "Cell outputs derived from native1F1C0 and1F4B4 using stored initial masks, before1BAAC final1F8BC rebuild. Not a gameplay run or whole-map post-rebuild snapshot."
+        }
+      }
+    ]
+  }
+]

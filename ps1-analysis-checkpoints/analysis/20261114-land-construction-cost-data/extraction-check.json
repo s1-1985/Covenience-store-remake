@@ -1,0 +1,6 @@
+{
+  "method": "Compare twelve source-derived minimum/maximum/partial-footprint quotes against previously recovered isolated helpers; source hashes and candidate mask count checked in extractor.",
+  "matched_source_examples": 12,
+  "cost_binary_bytes": 185024,
+  "original_cpu_updates": 0
+}

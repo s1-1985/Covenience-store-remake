@@ -1,0 +1,6 @@
+{
+  "town_cells": "../20261114-security-theft-data/source/town-cells.bin",
+  "raw_layouts": "../20261114-parking-arrival-data/source/layouts.bin",
+  "candidate_masks": "../20261114-permit-siting-data/source/candidate-mask-bytes.bin",
+  "note": "Existing evidence reused without duplicating whole town or EXE files. This extractor rereads source disc."
+}

@@ -1,0 +1,55 @@
+{
+  "stored_building_descriptors": 82,
+  "demolition_lookup_rows": 72,
+  "construction_tiers": 6,
+  "layouts": 30,
+  "initial_land_coefficients": {
+    "TOWN0001": {
+      "5": 3000
+    },
+    "TOWN0002": {
+      "5": 3000
+    },
+    "TOWN0003": {
+      "5": 3000
+    },
+    "TOWNPS": {
+      "5": 3000
+    }
+  },
+  "candidate_rectangles": 11564,
+  "valid_sites": {
+    "TOWN0001": 2030,
+    "TOWN0002": 1789,
+    "TOWN0003": 2182,
+    "TOWNPS": 1526
+  },
+  "acquisition_ranges": {
+    "TOWN0001": [
+      20000000,
+      71000000
+    ],
+    "TOWN0002": [
+      20000000,
+      52000000
+    ],
+    "TOWN0003": [
+      20000000,
+      55000000
+    ],
+    "TOWNPS": [
+      20000000,
+      65000000
+    ]
+  },
+  "partial_building_site_counts": {
+    "TOWN0001": 84,
+    "TOWN0002": 69,
+    "TOWN0003": 82,
+    "TOWNPS": 157
+  },
+  "original_cpu_updates": 0,
+  "known_before": "Isolated land, demolition, valuation and premises controls already recovered. New work connects all native descriptors, actual72-row lookup, all12000 initial cell coefficients,11564 positions and30 layouts to original stage-specific charges.",
+  "placement_examples": 12,
+  "limitations": "Static initial-map arithmetic and source-derived12 placement patches before mask rebuild, not future town values or a complete editor/furnished-store expenditure audit; native APK not rebuilt."
+}

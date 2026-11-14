@@ -1,0 +1,438 @@
+{
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "worlds": [
+    {
+      "map": "TOWN0001",
+      "source_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+      "land_coefficient_histogram": {
+        "5": 3000
+      },
+      "candidate_count": 2891,
+      "base_siting_allowed": 2030,
+      "cost_binary_offset": 0,
+      "valid_acquisition_histogram": {
+        "20000000": 1655,
+        "25000000": 160,
+        "30000000": 102,
+        "34000000": 41,
+        "35000000": 25,
+        "36000000": 3,
+        "39000000": 2,
+        "40000000": 15,
+        "41000000": 4,
+        "44000000": 1,
+        "45000000": 10,
+        "46000000": 2,
+        "50000000": 1,
+        "51000000": 5,
+        "52000000": 1,
+        "55000000": 1,
+        "62000000": 1,
+        "71000000": 1
+      },
+      "minimum_acquisition": 20000000,
+      "maximum_acquisition": 71000000,
+      "minimum_origin": [
+        0,
+        0
+      ],
+      "maximum_origin": [
+        42,
+        6
+      ],
+      "minimum_acquisition_positions": 1655,
+      "valid_sites_touching_part_of_chargeable_building": 84,
+      "building_ids_seen_on_valid_sites": {
+        "9": 1475,
+        "10": 1535,
+        "11": 1544,
+        "12": 1397,
+        "13": 1605,
+        "36": 1,
+        "37": 2,
+        "38": 5,
+        "39": 12,
+        "40": 6,
+        "43": 97,
+        "44": 126,
+        "45": 82,
+        "46": 40,
+        "47": 8,
+        "48": 30,
+        "50": 6,
+        "55": 4,
+        "56": 3,
+        "58": 4,
+        "60": 1,
+        "61": 7,
+        "62": 13,
+        "63": 9,
+        "64": 8,
+        "65": 4,
+        "66": 4,
+        "67": 2,
+        "68": 1
+      },
+      "initial_company_cash": [
+        200000000,
+        100000000
+      ],
+      "land_plus_building_ranges": [
+        {
+          "tier": 0,
+          "minimum": 26000000,
+          "maximum": 77000000
+        },
+        {
+          "tier": 1,
+          "minimum": 26000000,
+          "maximum": 77000000
+        },
+        {
+          "tier": 2,
+          "minimum": 32000000,
+          "maximum": 83000000
+        },
+        {
+          "tier": 3,
+          "minimum": 32000000,
+          "maximum": 83000000
+        },
+        {
+          "tier": 4,
+          "minimum": 38000000,
+          "maximum": 89000000
+        },
+        {
+          "tier": 5,
+          "minimum": 38000000,
+          "maximum": 89000000
+        }
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "source_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+      "land_coefficient_histogram": {
+        "5": 3000
+      },
+      "candidate_count": 2891,
+      "base_siting_allowed": 1789,
+      "cost_binary_offset": 46256,
+      "valid_acquisition_histogram": {
+        "20000000": 1503,
+        "25000000": 118,
+        "30000000": 88,
+        "34000000": 38,
+        "35000000": 16,
+        "36000000": 2,
+        "39000000": 3,
+        "40000000": 4,
+        "44000000": 1,
+        "45000000": 3,
+        "46000000": 1,
+        "47000000": 8,
+        "50000000": 3,
+        "52000000": 1
+      },
+      "minimum_acquisition": 20000000,
+      "maximum_acquisition": 52000000,
+      "minimum_origin": [
+        0,
+        0
+      ],
+      "maximum_origin": [
+        35,
+        21
+      ],
+      "minimum_acquisition_positions": 1503,
+      "valid_sites_touching_part_of_chargeable_building": 69,
+      "building_ids_seen_on_valid_sites": {
+        "9": 1342,
+        "10": 1296,
+        "11": 1320,
+        "12": 1418,
+        "13": 1372,
+        "39": 3,
+        "42": 9,
+        "43": 88,
+        "44": 72,
+        "45": 60,
+        "46": 28,
+        "47": 12,
+        "48": 24,
+        "50": 6,
+        "56": 6,
+        "58": 2,
+        "59": 2,
+        "61": 4,
+        "62": 3,
+        "64": 1,
+        "66": 4,
+        "67": 3,
+        "68": 3,
+        "69": 3
+      },
+      "initial_company_cash": [
+        150000000,
+        150000000
+      ],
+      "land_plus_building_ranges": [
+        {
+          "tier": 0,
+          "minimum": 26000000,
+          "maximum": 58000000
+        },
+        {
+          "tier": 1,
+          "minimum": 26000000,
+          "maximum": 58000000
+        },
+        {
+          "tier": 2,
+          "minimum": 32000000,
+          "maximum": 64000000
+        },
+        {
+          "tier": 3,
+          "minimum": 32000000,
+          "maximum": 64000000
+        },
+        {
+          "tier": 4,
+          "minimum": 38000000,
+          "maximum": 70000000
+        },
+        {
+          "tier": 5,
+          "minimum": 38000000,
+          "maximum": 70000000
+        }
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "source_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+      "land_coefficient_histogram": {
+        "5": 3000
+      },
+      "candidate_count": 2891,
+      "base_siting_allowed": 2182,
+      "cost_binary_offset": 92512,
+      "valid_acquisition_histogram": {
+        "20000000": 1795,
+        "25000000": 153,
+        "30000000": 133,
+        "34000000": 40,
+        "35000000": 20,
+        "36000000": 2,
+        "39000000": 2,
+        "40000000": 14,
+        "41000000": 2,
+        "42500000": 11,
+        "45000000": 5,
+        "50000000": 3,
+        "52500000": 1,
+        "55000000": 1
+      },
+      "minimum_acquisition": 20000000,
+      "maximum_acquisition": 55000000,
+      "minimum_origin": [
+        0,
+        0
+      ],
+      "maximum_origin": [
+        48,
+        9
+      ],
+      "minimum_acquisition_positions": 1795,
+      "valid_sites_touching_part_of_chargeable_building": 82,
+      "building_ids_seen_on_valid_sites": {
+        "9": 4101,
+        "10": 1392,
+        "11": 1879,
+        "13": 829,
+        "37": 4,
+        "40": 6,
+        "41": 12,
+        "43": 95,
+        "44": 84,
+        "45": 121,
+        "46": 33,
+        "47": 12,
+        "48": 24,
+        "50": 6,
+        "55": 6,
+        "58": 2,
+        "59": 4,
+        "60": 1,
+        "61": 6,
+        "62": 9,
+        "63": 1,
+        "64": 4,
+        "65": 2,
+        "66": 2,
+        "67": 2,
+        "68": 3,
+        "69": 1
+      },
+      "initial_company_cash": [
+        150000000,
+        200000000
+      ],
+      "land_plus_building_ranges": [
+        {
+          "tier": 0,
+          "minimum": 26000000,
+          "maximum": 61000000
+        },
+        {
+          "tier": 1,
+          "minimum": 26000000,
+          "maximum": 61000000
+        },
+        {
+          "tier": 2,
+          "minimum": 32000000,
+          "maximum": 67000000
+        },
+        {
+          "tier": 3,
+          "minimum": 32000000,
+          "maximum": 67000000
+        },
+        {
+          "tier": 4,
+          "minimum": 38000000,
+          "maximum": 73000000
+        },
+        {
+          "tier": 5,
+          "minimum": 38000000,
+          "maximum": 73000000
+        }
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "source_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+      "land_coefficient_histogram": {
+        "5": 3000
+      },
+      "candidate_count": 2891,
+      "base_siting_allowed": 1526,
+      "cost_binary_offset": 138768,
+      "valid_acquisition_histogram": {
+        "20000000": 1330,
+        "25000000": 12,
+        "30000000": 5,
+        "34000000": 18,
+        "36000000": 104,
+        "40000000": 27,
+        "41000000": 1,
+        "42500000": 14,
+        "45000000": 2,
+        "47000000": 9,
+        "47500000": 1,
+        "65000000": 3
+      },
+      "minimum_acquisition": 20000000,
+      "maximum_acquisition": 65000000,
+      "minimum_origin": [
+        0,
+        0
+      ],
+      "maximum_origin": [
+        38,
+        11
+      ],
+      "minimum_acquisition_positions": 1330,
+      "valid_sites_touching_part_of_chargeable_building": 157,
+      "building_ids_seen_on_valid_sites": {
+        "9": 618,
+        "10": 542,
+        "11": 582,
+        "12": 3005,
+        "13": 960,
+        "38": 69,
+        "39": 36,
+        "40": 27,
+        "41": 21,
+        "42": 9,
+        "48": 18,
+        "56": 2,
+        "59": 1,
+        "60": 2,
+        "61": 2,
+        "62": 2,
+        "63": 1,
+        "64": 4,
+        "65": 2,
+        "66": 2,
+        "68": 2,
+        "69": 3
+      },
+      "initial_company_cash": [
+        150000000,
+        200000000
+      ],
+      "land_plus_building_ranges": [
+        {
+          "tier": 0,
+          "minimum": 26000000,
+          "maximum": 71000000
+        },
+        {
+          "tier": 1,
+          "minimum": 26000000,
+          "maximum": 71000000
+        },
+        {
+          "tier": 2,
+          "minimum": 32000000,
+          "maximum": 77000000
+        },
+        {
+          "tier": 3,
+          "minimum": 32000000,
+          "maximum": 77000000
+        },
+        {
+          "tier": 4,
+          "minimum": 38000000,
+          "maximum": 83000000
+        },
+        {
+          "tier": 5,
+          "minimum": 38000000,
+          "maximum": 83000000
+        }
+      ]
+    }
+  ],
+  "binary": {
+    "path": "candidate-costs.i32le",
+    "bytes": 185024,
+    "record_format": "<4i",
+    "fields": [
+      "land",
+      "full_demolition",
+      "player_half_demolition",
+      "acquisition"
+    ],
+    "map_order": [
+      "TOWN0001",
+      "TOWN0002",
+      "TOWN0003",
+      "TOWNPS"
+    ],
+    "origins_grid": [
+      59,
+      49
+    ],
+    "order": "For each map, y=0..48 outer, x=0..58 inner; four signed little-endian i32 per position.",
+    "restrictions": "../20261114-permit-siting-data/source/candidate-mask-bytes.bin; offsets in sibling permit-siting-data.json"
+  },
+  "scope": "Loaded original town cells and rebuilt original initial masks; all positions exported, summaries exclude bit8-blocked sites. No future town growth/repricing, permit fees, equipment, stock or editor changes are included. Ranges with construction are additive source arithmetic, not complete furnished-store quotes."
+}
