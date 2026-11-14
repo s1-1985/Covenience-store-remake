@@ -1,19 +1,29 @@
 {
   "date_jst": "2026-11-14",
-  "work_kind": "advertising_popularity_source_data_analysis",
-  "report": "analysis/20261114-advertising-popularity-data/README.md",
+  "work_kind": "permit_siting_source_data_analysis",
+  "report": "analysis/20261114-permit-siting-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "promotion_types": 5,
-  "menu_combinations": 32,
-  "canonical_fields": {
-    "store+C68": "評価",
-    "store+C6C": "人気"
+  "permit_types": 3,
+  "fee_transitions": 64,
+  "layouts": 30,
+  "total_candidate_rectangles": 11564,
+  "base_siting_allowed": {
+    "TOWN0001": 2030,
+    "TOWN0002": 1789,
+    "TOWN0003": 2182,
+    "TOWNPS": 1526
   },
-  "new_specification": "Read five original44-byte advertising records and link persistent own flags, menu commit/cancel, trigger-time5x cash gate versus1x charge and all-company-store gain. Resolve original popularity labelC6C, daily6-band correction with rating floor and cap100; rival10x monthly selection versus single charge at trigger.",
-  "known_before": "Guide/video definitions already had matching cost/gain/time rows; isolated native economic paths existed. Prior reference_sim scheduler explicitly left late scheduling/payment semantics partially unresolved.",
-  "previous_report": "analysis/20261114-robbery-fire-data/README.md",
-  "android_bridge": "analysis/20261114-advertising-popularity-data/android-advertising-bridge.json",
+  "all3_permits_allowed": {
+    "TOWN0001": 1433,
+    "TOWN0002": 985,
+    "TOWN0003": 1884,
+    "TOWNPS": 1201
+  },
+  "new_specification": "Link original permit fees/labels/product IDs to3 distinct encodings, original new-game load/rebuild call order,4-map stored versus rebuilt masks and all11564 two-by-two candidate rectangles. Preserve existing permits, incremental fees, provisional versus final debits and image-based checks even at zero quantity.",
+  "known_before": "Isolated town mask builder, permit query and premises controls existed. This work binds original fees/labels/3 encodings to all4 maps,11564 candidate rectangles,30 source layouts and64 prior/new permit combinations.",
+  "previous_report": "analysis/20261114-advertising-popularity-data/README.md",
+  "android_bridge": "analysis/20261114-permit-siting-data/android-permit-siting-bridge.json",
   "original_cpu_updates_this_work": 0,
   "next_priority": "Continue necessary normal-play source-data analysis, integrate recovered specifications into native Android, then build APK."
 }

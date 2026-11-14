@@ -1,0 +1,2027 @@
+{
+  "schema_version": 1,
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "permits": [
+    {
+      "id": 0,
+      "label": {
+        "index": 24,
+        "source_offset": 2844,
+        "codes": [
+          78,
+          124,
+          72,
+          16639
+        ],
+        "text": "たばこ"
+      },
+      "product": 8,
+      "store_offset": "0xc74",
+      "fee": 3000000,
+      "town_mask": 4,
+      "range_cells": 5,
+      "selection_bit": 1,
+      "missing_validation_reason": 1
+    },
+    {
+      "id": 1,
+      "label": {
+        "index": 25,
+        "source_offset": 2852,
+        "codes": [
+          285,
+          286,
+          16639
+        ],
+        "text": "酒類"
+      },
+      "product": 2,
+      "store_offset": "0xc75",
+      "fee": 7000000,
+      "town_mask": 2,
+      "range_cells": 7,
+      "selection_bit": 2,
+      "missing_validation_reason": 2
+    },
+    {
+      "id": 2,
+      "label": {
+        "index": 26,
+        "source_offset": 2858,
+        "codes": [
+          287,
+          588,
+          286,
+          16639
+        ],
+        "text": "薬品類"
+      },
+      "product": 22,
+      "store_offset": "0xc76",
+      "fee": 10000000,
+      "town_mask": 1,
+      "range_cells": 10,
+      "selection_bit": 4,
+      "missing_validation_reason": 3
+    }
+  ],
+  "fee_transitions": [
+    {
+      "old_mask": 0,
+      "selected_mask": 0,
+      "dialog_excluded_mask": 7,
+      "new_mask": 0,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 0,
+      "selected_mask": 1,
+      "dialog_excluded_mask": 6,
+      "new_mask": 1,
+      "newly_charged_mask": 1,
+      "fee": 3000000
+    },
+    {
+      "old_mask": 0,
+      "selected_mask": 2,
+      "dialog_excluded_mask": 5,
+      "new_mask": 2,
+      "newly_charged_mask": 2,
+      "fee": 7000000
+    },
+    {
+      "old_mask": 0,
+      "selected_mask": 3,
+      "dialog_excluded_mask": 4,
+      "new_mask": 3,
+      "newly_charged_mask": 3,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 0,
+      "selected_mask": 4,
+      "dialog_excluded_mask": 3,
+      "new_mask": 4,
+      "newly_charged_mask": 4,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 0,
+      "selected_mask": 5,
+      "dialog_excluded_mask": 2,
+      "new_mask": 5,
+      "newly_charged_mask": 5,
+      "fee": 13000000
+    },
+    {
+      "old_mask": 0,
+      "selected_mask": 6,
+      "dialog_excluded_mask": 1,
+      "new_mask": 6,
+      "newly_charged_mask": 6,
+      "fee": 17000000
+    },
+    {
+      "old_mask": 0,
+      "selected_mask": 7,
+      "dialog_excluded_mask": 0,
+      "new_mask": 7,
+      "newly_charged_mask": 7,
+      "fee": 20000000
+    },
+    {
+      "old_mask": 1,
+      "selected_mask": 0,
+      "dialog_excluded_mask": 7,
+      "new_mask": 1,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 1,
+      "selected_mask": 1,
+      "dialog_excluded_mask": 6,
+      "new_mask": 1,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 1,
+      "selected_mask": 2,
+      "dialog_excluded_mask": 5,
+      "new_mask": 3,
+      "newly_charged_mask": 2,
+      "fee": 7000000
+    },
+    {
+      "old_mask": 1,
+      "selected_mask": 3,
+      "dialog_excluded_mask": 4,
+      "new_mask": 3,
+      "newly_charged_mask": 2,
+      "fee": 7000000
+    },
+    {
+      "old_mask": 1,
+      "selected_mask": 4,
+      "dialog_excluded_mask": 3,
+      "new_mask": 5,
+      "newly_charged_mask": 4,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 1,
+      "selected_mask": 5,
+      "dialog_excluded_mask": 2,
+      "new_mask": 5,
+      "newly_charged_mask": 4,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 1,
+      "selected_mask": 6,
+      "dialog_excluded_mask": 1,
+      "new_mask": 7,
+      "newly_charged_mask": 6,
+      "fee": 17000000
+    },
+    {
+      "old_mask": 1,
+      "selected_mask": 7,
+      "dialog_excluded_mask": 0,
+      "new_mask": 7,
+      "newly_charged_mask": 6,
+      "fee": 17000000
+    },
+    {
+      "old_mask": 2,
+      "selected_mask": 0,
+      "dialog_excluded_mask": 7,
+      "new_mask": 2,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 2,
+      "selected_mask": 1,
+      "dialog_excluded_mask": 6,
+      "new_mask": 3,
+      "newly_charged_mask": 1,
+      "fee": 3000000
+    },
+    {
+      "old_mask": 2,
+      "selected_mask": 2,
+      "dialog_excluded_mask": 5,
+      "new_mask": 2,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 2,
+      "selected_mask": 3,
+      "dialog_excluded_mask": 4,
+      "new_mask": 3,
+      "newly_charged_mask": 1,
+      "fee": 3000000
+    },
+    {
+      "old_mask": 2,
+      "selected_mask": 4,
+      "dialog_excluded_mask": 3,
+      "new_mask": 6,
+      "newly_charged_mask": 4,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 2,
+      "selected_mask": 5,
+      "dialog_excluded_mask": 2,
+      "new_mask": 7,
+      "newly_charged_mask": 5,
+      "fee": 13000000
+    },
+    {
+      "old_mask": 2,
+      "selected_mask": 6,
+      "dialog_excluded_mask": 1,
+      "new_mask": 6,
+      "newly_charged_mask": 4,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 2,
+      "selected_mask": 7,
+      "dialog_excluded_mask": 0,
+      "new_mask": 7,
+      "newly_charged_mask": 5,
+      "fee": 13000000
+    },
+    {
+      "old_mask": 3,
+      "selected_mask": 0,
+      "dialog_excluded_mask": 7,
+      "new_mask": 3,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 3,
+      "selected_mask": 1,
+      "dialog_excluded_mask": 6,
+      "new_mask": 3,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 3,
+      "selected_mask": 2,
+      "dialog_excluded_mask": 5,
+      "new_mask": 3,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 3,
+      "selected_mask": 3,
+      "dialog_excluded_mask": 4,
+      "new_mask": 3,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 3,
+      "selected_mask": 4,
+      "dialog_excluded_mask": 3,
+      "new_mask": 7,
+      "newly_charged_mask": 4,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 3,
+      "selected_mask": 5,
+      "dialog_excluded_mask": 2,
+      "new_mask": 7,
+      "newly_charged_mask": 4,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 3,
+      "selected_mask": 6,
+      "dialog_excluded_mask": 1,
+      "new_mask": 7,
+      "newly_charged_mask": 4,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 3,
+      "selected_mask": 7,
+      "dialog_excluded_mask": 0,
+      "new_mask": 7,
+      "newly_charged_mask": 4,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 4,
+      "selected_mask": 0,
+      "dialog_excluded_mask": 7,
+      "new_mask": 4,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 4,
+      "selected_mask": 1,
+      "dialog_excluded_mask": 6,
+      "new_mask": 5,
+      "newly_charged_mask": 1,
+      "fee": 3000000
+    },
+    {
+      "old_mask": 4,
+      "selected_mask": 2,
+      "dialog_excluded_mask": 5,
+      "new_mask": 6,
+      "newly_charged_mask": 2,
+      "fee": 7000000
+    },
+    {
+      "old_mask": 4,
+      "selected_mask": 3,
+      "dialog_excluded_mask": 4,
+      "new_mask": 7,
+      "newly_charged_mask": 3,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 4,
+      "selected_mask": 4,
+      "dialog_excluded_mask": 3,
+      "new_mask": 4,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 4,
+      "selected_mask": 5,
+      "dialog_excluded_mask": 2,
+      "new_mask": 5,
+      "newly_charged_mask": 1,
+      "fee": 3000000
+    },
+    {
+      "old_mask": 4,
+      "selected_mask": 6,
+      "dialog_excluded_mask": 1,
+      "new_mask": 6,
+      "newly_charged_mask": 2,
+      "fee": 7000000
+    },
+    {
+      "old_mask": 4,
+      "selected_mask": 7,
+      "dialog_excluded_mask": 0,
+      "new_mask": 7,
+      "newly_charged_mask": 3,
+      "fee": 10000000
+    },
+    {
+      "old_mask": 5,
+      "selected_mask": 0,
+      "dialog_excluded_mask": 7,
+      "new_mask": 5,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 5,
+      "selected_mask": 1,
+      "dialog_excluded_mask": 6,
+      "new_mask": 5,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 5,
+      "selected_mask": 2,
+      "dialog_excluded_mask": 5,
+      "new_mask": 7,
+      "newly_charged_mask": 2,
+      "fee": 7000000
+    },
+    {
+      "old_mask": 5,
+      "selected_mask": 3,
+      "dialog_excluded_mask": 4,
+      "new_mask": 7,
+      "newly_charged_mask": 2,
+      "fee": 7000000
+    },
+    {
+      "old_mask": 5,
+      "selected_mask": 4,
+      "dialog_excluded_mask": 3,
+      "new_mask": 5,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 5,
+      "selected_mask": 5,
+      "dialog_excluded_mask": 2,
+      "new_mask": 5,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 5,
+      "selected_mask": 6,
+      "dialog_excluded_mask": 1,
+      "new_mask": 7,
+      "newly_charged_mask": 2,
+      "fee": 7000000
+    },
+    {
+      "old_mask": 5,
+      "selected_mask": 7,
+      "dialog_excluded_mask": 0,
+      "new_mask": 7,
+      "newly_charged_mask": 2,
+      "fee": 7000000
+    },
+    {
+      "old_mask": 6,
+      "selected_mask": 0,
+      "dialog_excluded_mask": 7,
+      "new_mask": 6,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 6,
+      "selected_mask": 1,
+      "dialog_excluded_mask": 6,
+      "new_mask": 7,
+      "newly_charged_mask": 1,
+      "fee": 3000000
+    },
+    {
+      "old_mask": 6,
+      "selected_mask": 2,
+      "dialog_excluded_mask": 5,
+      "new_mask": 6,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 6,
+      "selected_mask": 3,
+      "dialog_excluded_mask": 4,
+      "new_mask": 7,
+      "newly_charged_mask": 1,
+      "fee": 3000000
+    },
+    {
+      "old_mask": 6,
+      "selected_mask": 4,
+      "dialog_excluded_mask": 3,
+      "new_mask": 6,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 6,
+      "selected_mask": 5,
+      "dialog_excluded_mask": 2,
+      "new_mask": 7,
+      "newly_charged_mask": 1,
+      "fee": 3000000
+    },
+    {
+      "old_mask": 6,
+      "selected_mask": 6,
+      "dialog_excluded_mask": 1,
+      "new_mask": 6,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 6,
+      "selected_mask": 7,
+      "dialog_excluded_mask": 0,
+      "new_mask": 7,
+      "newly_charged_mask": 1,
+      "fee": 3000000
+    },
+    {
+      "old_mask": 7,
+      "selected_mask": 0,
+      "dialog_excluded_mask": 7,
+      "new_mask": 7,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 7,
+      "selected_mask": 1,
+      "dialog_excluded_mask": 6,
+      "new_mask": 7,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 7,
+      "selected_mask": 2,
+      "dialog_excluded_mask": 5,
+      "new_mask": 7,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 7,
+      "selected_mask": 3,
+      "dialog_excluded_mask": 4,
+      "new_mask": 7,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 7,
+      "selected_mask": 4,
+      "dialog_excluded_mask": 3,
+      "new_mask": 7,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 7,
+      "selected_mask": 5,
+      "dialog_excluded_mask": 2,
+      "new_mask": 7,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 7,
+      "selected_mask": 6,
+      "dialog_excluded_mask": 1,
+      "new_mask": 7,
+      "newly_charged_mask": 0,
+      "fee": 0
+    },
+    {
+      "old_mask": 7,
+      "selected_mask": 7,
+      "dialog_excluded_mask": 0,
+      "new_mask": 7,
+      "newly_charged_mask": 0,
+      "fee": 0
+    }
+  ],
+  "layouts": [
+    {
+      "id": 0,
+      "source_sha256": "a9a8f5cd5d6ccdec8d49cd8738bfe9184f28c796c72d63120237e5d77f2c201b",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 1,
+      "source_sha256": "569edb6796878882415ec598b7d8d6eace576bcc56fe4888e0b9200bad443635",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 2,
+      "source_sha256": "a46a396d78fa6183d16c0448614137b70775d77eafadae6d3041e4ad3f078d0d",
+      "required_permit_mask": 3,
+      "required_permit_ids": [
+        0,
+        1
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 4,
+          "y": 13,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 4,
+          "y": 15,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "source_sha256": "23fc2dce716de7954e6a51875b0742c9d551fcea17a89d73e98ae68c04a8c140",
+      "required_permit_mask": 3,
+      "required_permit_ids": [
+        0,
+        1
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 4,
+          "y": 13,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 4,
+          "y": 15,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "source_sha256": "a27e172f8f9c0de3532aca5111312f35c0e00d1308c7975d534f3287d7916c28",
+      "required_permit_mask": 3,
+      "required_permit_ids": [
+        0,
+        1
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 4,
+          "y": 13,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 4,
+          "y": 15,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "source_sha256": "7f6e43dc176e294418b0cf7c83eb0a17fa77733675557d6b64e1a8328b8ee063",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 6,
+      "source_sha256": "1c1bd65a16ff691b246c8597fb4c2c5ae461bb561f296a3648863076a24028e1",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 7,
+      "source_sha256": "0cc531536bbf328345b1fc8fe7a24cacbfeefe21f9e2176bb34ea096e31f8c9a",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 14,
+          "y": 3,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 14,
+          "y": 5,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "image": 546,
+          "quantity": 40,
+          "product": 22,
+          "permit": 2
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "source_sha256": "928eb88cbfbd2b6193389ddacaadf03e9330f74a9c7e4b3d75773cc365299f57",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 14,
+          "y": 3,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 14,
+          "y": 5,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "image": 546,
+          "quantity": 40,
+          "product": 22,
+          "permit": 2
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "source_sha256": "3c41da18f3f1f57e19194b51d75765c5ec6d1db9f309a0abd2dd79801fc15ea4",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 14,
+          "y": 3,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 14,
+          "y": 5,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "image": 546,
+          "quantity": 40,
+          "product": 22,
+          "permit": 2
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "source_sha256": "e856a224151804edf45dfe44591a27b58cc65ea37b0c0cdfd3707ebb1a561ba6",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 11,
+      "source_sha256": "047d22dbd24fec07c6cd7183f0460cb8bd228d1879dc2a7470cfec5b02899be3",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 12,
+      "source_sha256": "e3508cb76ea57c87e31bc94fd5d35dbdee4269c5d250647b8f1e706ebe082a25",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 20,
+          "y": 7,
+          "image": 546,
+          "quantity": 40,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 21,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 4,
+          "y": 23,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "source_sha256": "6d8225e921b68f354728075ac7dfcb5ab4e107295e7e5f424fc445d32bf18191",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 20,
+          "y": 7,
+          "image": 546,
+          "quantity": 40,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 21,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 4,
+          "y": 23,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "source_sha256": "f3d0c6e9181a3e398c24e4fe3806523e2bd53c681a409a33bf32a7c3a649d690",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 20,
+          "y": 7,
+          "image": 546,
+          "quantity": 40,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 21,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 4,
+          "y": 23,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "source_sha256": "c6cfcc17159dbcf551012da7b5d3487b54f6dfcf8be0ed782d0b1abf88b93672",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 16,
+      "source_sha256": "2287d22a36c7dd87adfbd11371b4c67a8cc8314cb32939e405fbc1a6aa2ac800",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 17,
+      "source_sha256": "9332a9997bed5b04748e82dc6afdfb4c3e0d5cb55535007fc658b01954f60db4",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 6,
+          "y": 1,
+          "image": 381,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 8,
+          "y": 1,
+          "image": 435,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 10,
+          "y": 15,
+          "image": 549,
+          "quantity": 15,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 20,
+          "y": 19,
+          "image": 381,
+          "quantity": 10,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 20,
+          "y": 21,
+          "image": 435,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "source_sha256": "20ed82964af2606ba4f9f3834c605dc60985d4d0ed452d3d18c8ecd42252f670",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 6,
+          "y": 1,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 8,
+          "y": 1,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 10,
+          "y": 15,
+          "image": 546,
+          "quantity": 15,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 20,
+          "y": 19,
+          "image": 378,
+          "quantity": 10,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 20,
+          "y": 21,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "source_sha256": "bbcccc2878a1ab3a38c79bbbc794657553b768968328e81aa6f0a3e8c922ee39",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 6,
+          "y": 1,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 8,
+          "y": 1,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 10,
+          "y": 15,
+          "image": 546,
+          "quantity": 15,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 20,
+          "y": 19,
+          "image": 378,
+          "quantity": 10,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 20,
+          "y": 21,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "source_sha256": "af4e59124df8282ef08bb3e4a3636b55b4ea80159727decb0444f37afbda7023",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 21,
+      "source_sha256": "2baccb31bf7158544f79e026a999183b2c6a79c9e5733e29a619be0cd212b280",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 22,
+      "source_sha256": "7158a32671d19b7317b24c9d374f448800c40aba0e914739fe6389cd077910c3",
+      "required_permit_mask": 5,
+      "required_permit_ids": [
+        0,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 8,
+          "y": 5,
+          "image": 546,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "image": 549,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "image": 432,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "image": 435,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "source_sha256": "862590cbb3b9e495eafc69ffafcf70e798837cf1e17f2af978bac6b08b97a313",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 8,
+          "y": 5,
+          "image": 546,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "image": 549,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "image": 432,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "image": 435,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 0,
+          "y": 21,
+          "image": 378,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 2,
+          "y": 21,
+          "image": 381,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "source_sha256": "91a7aea5a3d55448c7fd1342fb865e8643e52005bc5821e083e487f0c3e1839e",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 8,
+          "y": 5,
+          "image": 546,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 8,
+          "y": 7,
+          "image": 549,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 4,
+          "y": 17,
+          "image": 432,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 4,
+          "y": 19,
+          "image": 435,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 0,
+          "y": 21,
+          "image": 378,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 2,
+          "y": 21,
+          "image": 381,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "source_sha256": "8260e992d56be0400e0718453d39a3210f742b88a6118a4823a59d9650b47ce8",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 26,
+      "source_sha256": "5d64b4a53757bf944ee0e704b3193174bad3a6202ed2ebfe88092ddfcd228a32",
+      "required_permit_mask": 0,
+      "required_permit_ids": [],
+      "restricted_goods_cells": []
+    },
+    {
+      "id": 27,
+      "source_sha256": "9d30ad3aabd553d1854f658958246533b05a4e550f75e6fe0829b61c341faa27",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 10,
+          "y": 1,
+          "image": 432,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 18,
+          "y": 1,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 10,
+          "y": 3,
+          "image": 435,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 6,
+          "y": 13,
+          "image": 378,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 8,
+          "y": 13,
+          "image": 381,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 6,
+          "y": 15,
+          "image": 384,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 8,
+          "y": 15,
+          "image": 378,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 12,
+          "y": 23,
+          "image": 546,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 14,
+          "y": 23,
+          "image": 549,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "source_sha256": "7bf2832f57cc278381f0014d03f69293496635797f7a31ae4635c39003e89c4b",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 10,
+          "y": 1,
+          "image": 432,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 18,
+          "y": 1,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 10,
+          "y": 3,
+          "image": 435,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 12,
+          "y": 13,
+          "image": 378,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 14,
+          "y": 13,
+          "image": 381,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 12,
+          "y": 15,
+          "image": 384,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 14,
+          "y": 15,
+          "image": 378,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 12,
+          "y": 23,
+          "image": 546,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 14,
+          "y": 23,
+          "image": 549,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "source_sha256": "32b63f876113ab1e4de61b455a2191a0a1487126970a7170e5cd99153389e833",
+      "required_permit_mask": 7,
+      "required_permit_ids": [
+        0,
+        1,
+        2
+      ],
+      "restricted_goods_cells": [
+        {
+          "x": 8,
+          "y": 1,
+          "image": 432,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 16,
+          "y": 1,
+          "image": 378,
+          "quantity": 20,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 8,
+          "y": 3,
+          "image": 435,
+          "quantity": 40,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 24,
+          "y": 15,
+          "image": 432,
+          "quantity": 20,
+          "product": 8,
+          "permit": 0
+        },
+        {
+          "x": 18,
+          "y": 17,
+          "image": 378,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 20,
+          "y": 17,
+          "image": 381,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 18,
+          "y": 19,
+          "image": 384,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 20,
+          "y": 19,
+          "image": 378,
+          "quantity": 40,
+          "product": 2,
+          "permit": 1
+        },
+        {
+          "x": 12,
+          "y": 23,
+          "image": 546,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        },
+        {
+          "x": 14,
+          "y": 23,
+          "image": 549,
+          "quantity": 80,
+          "product": 22,
+          "permit": 2
+        }
+      ]
+    }
+  ],
+  "worlds": [
+    {
+      "map": "TOWN0001",
+      "source_town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+      "stores": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "rect": [
+            43,
+            12,
+            44,
+            13
+          ],
+          "permits": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "rect": [
+            14,
+            10,
+            15,
+            11
+          ],
+          "permits": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "raw_flags_offset": 0,
+      "rebuilt_flags_offset": 3000,
+      "raw_vs_rebuilt_changed_cells": 1459,
+      "candidate_raw_offset": 0,
+      "candidate_rebuilt_offset": 2891,
+      "candidate_rectangles": 2891,
+      "base_siting_blocked": 861,
+      "base_siting_allowed": 2030,
+      "available_permit_mask_histogram": {
+        "0": 61,
+        "1": 162,
+        "3": 374,
+        "7": 1433
+      },
+      "first_candidate_by_available_mask": {
+        "0": [
+          8,
+          4
+        ],
+        "1": [
+          6,
+          2
+        ],
+        "3": [
+          3,
+          0
+        ],
+        "7": [
+          0,
+          0
+        ]
+      },
+      "eligible_count_by_requested_subset": [
+        2030,
+        1969,
+        1807,
+        1807,
+        1433,
+        1433,
+        1433,
+        1433
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "source_town_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+      "stores": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "rect": [
+            47,
+            12,
+            48,
+            13
+          ],
+          "permits": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "rect": [
+            23,
+            14,
+            24,
+            15
+          ],
+          "permits": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "slot": 3,
+          "flags": 32771,
+          "rect": [
+            19,
+            34,
+            20,
+            35
+          ],
+          "permits": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "raw_flags_offset": 6000,
+      "rebuilt_flags_offset": 9000,
+      "raw_vs_rebuilt_changed_cells": 1894,
+      "candidate_raw_offset": 5782,
+      "candidate_rebuilt_offset": 8673,
+      "candidate_rectangles": 2891,
+      "base_siting_blocked": 1102,
+      "base_siting_allowed": 1789,
+      "available_permit_mask_histogram": {
+        "0": 75,
+        "1": 229,
+        "3": 500,
+        "7": 985
+      },
+      "first_candidate_by_available_mask": {
+        "0": [
+          17,
+          8
+        ],
+        "1": [
+          39,
+          4
+        ],
+        "3": [
+          36,
+          1
+        ],
+        "7": [
+          0,
+          0
+        ]
+      },
+      "eligible_count_by_requested_subset": [
+        1789,
+        1714,
+        1485,
+        1485,
+        985,
+        985,
+        985,
+        985
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "source_town_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+      "stores": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "rect": [
+            42,
+            11,
+            43,
+            12
+          ],
+          "permits": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "raw_flags_offset": 12000,
+      "rebuilt_flags_offset": 15000,
+      "raw_vs_rebuilt_changed_cells": 791,
+      "candidate_raw_offset": 11564,
+      "candidate_rebuilt_offset": 14455,
+      "candidate_rectangles": 2891,
+      "base_siting_blocked": 709,
+      "base_siting_allowed": 2182,
+      "available_permit_mask_histogram": {
+        "0": 27,
+        "1": 79,
+        "3": 192,
+        "7": 1884
+      },
+      "first_candidate_by_available_mask": {
+        "0": [
+          36,
+          6
+        ],
+        "1": [
+          34,
+          3
+        ],
+        "3": [
+          31,
+          0
+        ],
+        "7": [
+          0,
+          0
+        ]
+      },
+      "eligible_count_by_requested_subset": [
+        2182,
+        2155,
+        2076,
+        2076,
+        1884,
+        1884,
+        1884,
+        1884
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "source_town_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+      "stores": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "rect": [
+            30,
+            24,
+            31,
+            25
+          ],
+          "permits": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "rect": [
+            43,
+            24,
+            44,
+            25
+          ],
+          "permits": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "slot": 3,
+          "flags": 32771,
+          "rect": [
+            17,
+            24,
+            18,
+            25
+          ],
+          "permits": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "slot": 4,
+          "flags": 32772,
+          "rect": [
+            30,
+            11,
+            31,
+            12
+          ],
+          "permits": [
+            1,
+            1,
+            0
+          ]
+        },
+        {
+          "slot": 5,
+          "flags": 32773,
+          "rect": [
+            30,
+            37,
+            31,
+            38
+          ],
+          "permits": [
+            1,
+            1,
+            0
+          ]
+        }
+      ],
+      "raw_flags_offset": 18000,
+      "rebuilt_flags_offset": 21000,
+      "raw_vs_rebuilt_changed_cells": 1541,
+      "candidate_raw_offset": 17346,
+      "candidate_rebuilt_offset": 20237,
+      "candidate_rectangles": 2891,
+      "base_siting_blocked": 1365,
+      "base_siting_allowed": 1526,
+      "available_permit_mask_histogram": {
+        "0": 61,
+        "1": 44,
+        "3": 13,
+        "4": 60,
+        "5": 147,
+        "7": 1201
+      },
+      "first_candidate_by_available_mask": {
+        "0": [
+          24,
+          13
+        ],
+        "1": [
+          22,
+          13
+        ],
+        "3": [
+          19,
+          13
+        ],
+        "4": [
+          24,
+          5
+        ],
+        "5": [
+          22,
+          3
+        ],
+        "7": [
+          0,
+          0
+        ]
+      },
+      "eligible_count_by_requested_subset": [
+        1526,
+        1405,
+        1214,
+        1214,
+        1408,
+        1348,
+        1201,
+        1201
+      ]
+    }
+  ],
+  "mask_schema": {
+    "cell_file": "source/map-mask-bytes.bin",
+    "cell_grid": [
+      60,
+      50
+    ],
+    "cell_bytes": 1,
+    "candidate_file": "source/candidate-mask-bytes.bin",
+    "candidate_grid": [
+      59,
+      49
+    ],
+    "candidate_bytes": 1,
+    "order": "row-major; each map stores raw then rebuilt bytes; see offsets",
+    "candidate_value": "OR of4 town-cell masks for inclusive2x2 rectangle"
+  },
+  "scope": "All candidate counts use rebuilt flags from original initial map categories and11 active store permit states. Overlapping candidate rectangles are separate positions, not simultaneous store capacity; prices, cash and later map changes are not included."
+}

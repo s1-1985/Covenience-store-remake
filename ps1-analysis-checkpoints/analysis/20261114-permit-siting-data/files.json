@@ -1,0 +1,112 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 9984,
+    "sha256": "03227940f76b3e2588d773fe034f7a7e609c93a032784531604a7ea48f20662e"
+  },
+  {
+    "path": "android-permit-siting-bridge.json",
+    "bytes": 2543,
+    "sha256": "18947c19022b906a5fa32122b8d3be228dd53476330a7b0647f13af12c77fb9d"
+  },
+  {
+    "path": "extract-permit-siting.py",
+    "bytes": 13281,
+    "sha256": "5fabcdee2b146fc997fc7117015d7d09e4c6be2d0f9d5e8d2d98cc035c53ee03"
+  },
+  {
+    "path": "permit-readers.asm",
+    "bytes": 80179,
+    "sha256": "a3fe747affb67101c7066d5509fa76d30e82be33edf44b3bd1f560ded9c08a81"
+  },
+  {
+    "path": "permit-siting-data.json",
+    "bytes": 41526,
+    "sha256": "900465f50577b931a6716dc7538f521c2317fec3ec7cb22d6691a833fa3d3b6a"
+  },
+  {
+    "path": "source/candidate-mask-bytes.bin",
+    "bytes": 23128,
+    "sha256": "0145e9cc043fd96ecf8175d8515d8596e2fcedf4ae80f224ef969b2a951bcb4e"
+  },
+  {
+    "path": "source/company-store-descriptor.bin",
+    "bytes": 56,
+    "sha256": "33982a81aa3d762f7b75e88fb1131aa8d99289212c329ebdaf9d6e3d020a9c27"
+  },
+  {
+    "path": "source/existing_store_reconfigure.bin",
+    "bytes": 672,
+    "sha256": "3d4f2ffd2104ffc7a341bf103455206ab3a15a1e97402eb5acf167371eecf48b"
+  },
+  {
+    "path": "source/load_then_rebuild.bin",
+    "bytes": 32,
+    "sha256": "73a50555e90ca78173e42869b88da12d0624288fb293e8e741916e1d94cfa4ef"
+  },
+  {
+    "path": "source/map-mask-bytes.bin",
+    "bytes": 24000,
+    "sha256": "462b259b07b910e61fa0a9a6674127b092ce70a93df44dc2011ce25f74c5124f"
+  },
+  {
+    "path": "source/mask_rebuild.bin",
+    "bytes": 1660,
+    "sha256": "2eedec20c78e226f163be4399c8398c0c978a2756776196f42475a1f6f5350f4"
+  },
+  {
+    "path": "source/permit-fees.bin",
+    "bytes": 12,
+    "sha256": "accaaf9cd76988bf0b52318f2d510008887724d9297d4486875c3df9c86c504c"
+  },
+  {
+    "path": "source/permit_dialog.bin",
+    "bytes": 2520,
+    "sha256": "f2f6cc80f3df169003276fd81bc5047ab6ff69e131724c86cb4ab2999db2d88d"
+  },
+  {
+    "path": "source/permit_query.bin",
+    "bytes": 620,
+    "sha256": "841e270bf6b717881b336b108b5c6dc4339b7c3852451d271c5754aa515e64ba"
+  },
+  {
+    "path": "source/premises_permission_commit.bin",
+    "bytes": 1216,
+    "sha256": "610deebffec9704abcd515c6c0d2b207c08bab76c9338da13e3300fa271d58cd"
+  },
+  {
+    "path": "source/product_permission_preflight.bin",
+    "bytes": 400,
+    "sha256": "ef2e06bcb8865dfd0636024644b75588da887a48a267bfb054de4682c2647d06"
+  },
+  {
+    "path": "source/store_siting.bin",
+    "bytes": 2292,
+    "sha256": "ca5f3800d73c42c98ce72b52c0b3199de203f3f61dd9b04f611e082cc7875da1"
+  },
+  {
+    "path": "source/zero_rect.bin",
+    "bytes": 144,
+    "sha256": "5f23b7874fe122d889b5ef21d3b263f8320c8af83f3faa603371920973661d2a"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 358,
+    "sha256": "beaa80e300a8f8a69a967a5bae201ef9302d795e8ba1b9385c745f95a126d4ed"
+  },
+  {
+    "path": "source-derived-examples.json",
+    "bytes": 1120,
+    "sha256": "79f86b71c66079aef7daf4203d85343f0b6e67785672153d1654e96d564619af"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1877,
+    "sha256": "ca7ae1961e525e0c608c81743f6a968c46176d90a4bacf2f2e236e3ec3e5f39b"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 899,
+    "sha256": "84d8433a9d2a8da28f7192feb48d1fc8db275c8a29807271abd735b70d27023f"
+  }
+]

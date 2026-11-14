@@ -1,0 +1,28 @@
+{
+  "permit_types": 3,
+  "fee_transitions": 64,
+  "layouts": 30,
+  "candidate_rectangles_per_map": 2891,
+  "total_candidate_rectangles": 11564,
+  "base_siting_allowed": {
+    "TOWN0001": 2030,
+    "TOWN0002": 1789,
+    "TOWN0003": 2182,
+    "TOWNPS": 1526
+  },
+  "all3_permits_allowed": {
+    "TOWN0001": 1433,
+    "TOWN0002": 985,
+    "TOWN0003": 1884,
+    "TOWNPS": 1201
+  },
+  "raw_rebuilt_differences": {
+    "TOWN0001": 1459,
+    "TOWN0002": 1894,
+    "TOWN0003": 791,
+    "TOWNPS": 1541
+  },
+  "original_cpu_updates": 0,
+  "known_before": "Isolated town mask builder, permit query and premises controls existed. This work binds original fees/labels/3 encodings to all4 maps,11564 candidate rectangles,30 source layouts and64 prior/new permit combinations.",
+  "remaining": "Not a new playable building/permit UI or APK; monetary land/demolition stages are not included in candidate counts."
+}

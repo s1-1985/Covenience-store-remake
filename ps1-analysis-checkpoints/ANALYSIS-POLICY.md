@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-14：販売許可3種類、制限再構築と全11564出店候補、30配置・64費用組合せ](analysis/20261114-permit-siting-data/README.md)
+
 - [2026-11-14：宣伝5種類・32選択、5倍資金条件と継続設定、原「人気」欄と日次補正](analysis/20261114-advertising-popularity-data/README.md)
 
 - [2026-11-14：強盗・火災の条件、全53什器と30配置、被害表示と現金・客・店員の後処理](analysis/20261114-robbery-fire-data/README.md)

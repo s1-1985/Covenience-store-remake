@@ -1,0 +1,6 @@
+{
+  "town_cells": "../20261114-security-theft-data/source/town-cells.bin",
+  "layouts": "../20261114-parking-arrival-data/source/layouts.bin",
+  "initial_stores": "../20261114-parking-arrival-data/source/initial-active-stores.bin",
+  "source_note": "Existing raw source files reused; this extractor itself rereads the disc and exports derived mask bytes."
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "name": "permit_query",
+    "address": "0x8001e660",
+    "bytes": 620,
+    "sha256": "841e270bf6b717881b336b108b5c6dc4339b7c3852451d271c5754aa515e64ba"
+  },
+  {
+    "name": "store_siting",
+    "address": "0x8001e8cc",
+    "bytes": 2292,
+    "sha256": "ca5f3800d73c42c98ce72b52c0b3199de203f3f61dd9b04f611e082cc7875da1"
+  },
+  {
+    "name": "mask_rebuild",
+    "address": "0x8001f8bc",
+    "bytes": 1660,
+    "sha256": "2eedec20c78e226f163be4399c8398c0c978a2756776196f42475a1f6f5350f4"
+  },
+  {
+    "name": "zero_rect",
+    "address": "0x80041290",
+    "bytes": 144,
+    "sha256": "5f23b7874fe122d889b5ef21d3b263f8320c8af83f3faa603371920973661d2a"
+  },
+  {
+    "name": "permit_dialog",
+    "address": "0x800422a4",
+    "bytes": 2520,
+    "sha256": "f2f6cc80f3df169003276fd81bc5047ab6ff69e131724c86cb4ab2999db2d88d"
+  },
+  {
+    "name": "premises_permission_commit",
+    "address": "0x8006e4bc",
+    "bytes": 1216,
+    "sha256": "610deebffec9704abcd515c6c0d2b207c08bab76c9338da13e3300fa271d58cd"
+  },
+  {
+    "name": "existing_store_reconfigure",
+    "address": "0x80063e44",
+    "bytes": 672,
+    "sha256": "3d4f2ffd2104ffc7a341bf103455206ab3a15a1e97402eb5acf167371eecf48b"
+  },
+  {
+    "name": "product_permission_preflight",
+    "address": "0x800788c8",
+    "bytes": 400,
+    "sha256": "ef2e06bcb8865dfd0636024644b75588da887a48a267bfb054de4682c2647d06"
+  },
+  {
+    "name": "load_then_rebuild",
+    "address": "0x8005dae4",
+    "bytes": 32,
+    "sha256": "73a50555e90ca78173e42869b88da12d0624288fb293e8e741916e1d94cfa4ef"
+  },
+  {
+    "name": "permit-fees",
+    "address": "0x800b92d0",
+    "bytes": 12,
+    "sha256": "accaaf9cd76988bf0b52318f2d510008887724d9297d4486875c3df9c86c504c"
+  },
+  {
+    "name": "company-store-descriptor",
+    "address": "0x8009d738",
+    "bytes": 56,
+    "sha256": "33982a81aa3d762f7b75e88fb1131aa8d99289212c329ebdaf9d6e3d020a9c27"
+  }
+]

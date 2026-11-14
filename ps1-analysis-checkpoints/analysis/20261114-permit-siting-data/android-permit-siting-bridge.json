@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "raw_vs_runtime": "Original new-game caller5DAF4 loadsTOWN via1A0B8 then5DAFC calls1F8BC to rebuild masks. Treat stored byte5 as source evidence, not immutable runtime restriction data.",
+  "rebuild": "Reset all3000 cell masks from signed category+4: <=0=>0, categories3/4/5=>16, other positive=>24. For each active store of either owner, drug flagC76 addsbit1 in expanded rectangle10; alcoholC75 bit2/range7; tobaccoC74 bit4/range5; all active stores add siting bit8/range4. Rectangles inclusive and map-clipped.",
+  "site": "Native company-store descriptor0 has footprint2x2 and low-byte category2. Valid2x2 map rectangle cannot contain bit8. This is separate from permit bit1/2/4 checks.",
+  "permit_query": "1E660 returns1 if any cell in requested rectangle has corresponding bit4,2,1;0 means no restriction. Its first child41290 only recognizes all-zero rectangle, not a general bounds check. Valid edge rectangles with some zero coordinates must still scan.",
+  "old_permits": "Reconfiguration computes available=(query==0) OR old permit. Existing permit is preserved even if own/nearby mask would now block new issuance; no self-store removal is required to explain this path.",
+  "selection": "UI caller translates dialog excluded bits1/2/4 into selected flags for tobacco/alcohol/drug. Town restriction bits for same order are4/2/1; keep these encodings distinct.",
+  "fee": "For selected permit whose current flag is0, set flag1 and add source fee. No fee for previously held permit. Cash>=sum succeeds locally; insufficient cash restores old3 flags. All3 from none cost20000000. This path does not issue refunds/revoke previously held permits when excluded in a returned selection.",
+  "parent_commit": "Premises screens provisionally deduct cash. Existing-store reconfigure63E44 restores saved cash/ledger around the screen, then posts final permit/size fees via1CBC4. If later interior stage cancels, post negative fees and restore snapshot/old permits before retry. Do not keep provisional debit and also post final charge.",
+  "product_check": "Interior preflight788C8 scans all image fields360..639 even ifquantity0; product8 requiresC74,2 requiresC75,22 requiresC76. Reasons1/2/3 can later be overwritten by other layout errors. Empty shelf with retained product image is not automatically exempt.",
+  "scope": "These are original game rules, not statements about real licensing law. Map overlays change when store/town state changes; initial candidate tables are not permanent city permissions."
+}

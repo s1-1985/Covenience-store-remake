@@ -1,0 +1,61 @@
+{
+  "scope": "Source arithmetic/encoding examples, not new gameplay runs.",
+  "fees": {
+    "from_none_all": 20000000,
+    "already_tobacco_then_all": 17000000,
+    "already_all_then_all": 0
+  },
+  "encodings": [
+    {
+      "permit": 0,
+      "town_mask": 4,
+      "selection_bit": 1
+    },
+    {
+      "permit": 1,
+      "town_mask": 2,
+      "selection_bit": 2
+    },
+    {
+      "permit": 2,
+      "town_mask": 1,
+      "selection_bit": 4
+    }
+  ],
+  "range_example": {
+    "existing_rect": [
+      20,
+      20,
+      21,
+      21
+    ],
+    "tobacco_affected_cells": [
+      15,
+      15,
+      26,
+      26
+    ],
+    "two_by_two_candidate_origins_intersecting_tobacco": [
+      14,
+      14,
+      26,
+      26
+    ],
+    "note": "Only this store influence, away from boundaries. Any one of candidate4 cells intersecting the affected region is sufficient."
+  },
+  "rectangles": {
+    "all_zero": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "valid_corner_candidate": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "note": "Only all-zero is the sentinel; do not reject every rectangle with left/top0."
+  }
+}
