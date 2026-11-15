@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-15：誘致18種類・21万6000始点の費用、完成客構成と区画外撤去](analysis/20261115-town-project-data/README.md)
+
 - [2026-11-15：街発展・地価、4マップ12000セルの補正と住宅・会社・公共施設・行政更新](analysis/20261115-town-growth-land-data/README.md)
 
 - [2026-11-15：既存店改装と出店4経路の現金・帳簿差、初期11店資産と36サイズ変更・3保存系列](analysis/20261115-remodel-accounting-data/README.md)

@@ -1,0 +1,2645 @@
+{
+  "address": "0x8009fcd8",
+  "stride": 20,
+  "rows": [
+    {
+      "selection": 0,
+      "kind": 18,
+      "name": "交番",
+      "footprint": [
+        2,
+        2
+      ],
+      "category": 8,
+      "attribute": 1,
+      "base_cost": 400000,
+      "tile_range": [
+        60,
+        63
+      ],
+      "customer_mix_choices": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "notification_event": 0,
+      "completion_name_message": 103,
+      "raw_hex": "1200020003000000881300000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 2,
+        "i16_at_4": 3,
+        "i16_at_6": 0,
+        "i32_at_8": 5000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 0,
+          "profiles": [
+            [
+              51,
+              1
+            ],
+            [
+              52,
+              1
+            ]
+          ],
+          "population": 2
+        },
+        {
+          "mix": 0,
+          "profiles": [
+            [
+              51,
+              1
+            ],
+            [
+              52,
+              1
+            ]
+          ],
+          "population": 2
+        },
+        {
+          "mix": 0,
+          "profiles": [
+            [
+              51,
+              1
+            ],
+            [
+              52,
+              1
+            ]
+          ],
+          "population": 2
+        },
+        {
+          "mix": 0,
+          "profiles": [
+            [
+              51,
+              1
+            ],
+            [
+              52,
+              1
+            ]
+          ],
+          "population": 2
+        },
+        {
+          "mix": 0,
+          "profiles": [
+            [
+              51,
+              1
+            ],
+            [
+              52,
+              1
+            ]
+          ],
+          "population": 2
+        }
+      ],
+      "completed_building_population_range": [
+        8,
+        8
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 1,
+      "kind": 19,
+      "name": "消防署",
+      "footprint": [
+        3,
+        2
+      ],
+      "category": 8,
+      "attribute": 1,
+      "base_cost": 600000,
+      "tile_range": [
+        64,
+        69
+      ],
+      "customer_mix_choices": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "notification_event": 1,
+      "completion_name_message": 104,
+      "raw_hex": "1300020003000000881300000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 2,
+        "i16_at_4": 3,
+        "i16_at_6": 0,
+        "i32_at_8": 5000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 1,
+          "profiles": [
+            [
+              51,
+              1
+            ],
+            [
+              60,
+              1
+            ]
+          ],
+          "population": 2
+        },
+        {
+          "mix": 1,
+          "profiles": [
+            [
+              51,
+              1
+            ],
+            [
+              60,
+              1
+            ]
+          ],
+          "population": 2
+        },
+        {
+          "mix": 1,
+          "profiles": [
+            [
+              51,
+              1
+            ],
+            [
+              60,
+              1
+            ]
+          ],
+          "population": 2
+        },
+        {
+          "mix": 1,
+          "profiles": [
+            [
+              51,
+              1
+            ],
+            [
+              60,
+              1
+            ]
+          ],
+          "population": 2
+        },
+        {
+          "mix": 1,
+          "profiles": [
+            [
+              51,
+              1
+            ],
+            [
+              60,
+              1
+            ]
+          ],
+          "population": 2
+        }
+      ],
+      "completed_building_population_range": [
+        12,
+        12
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 2,
+      "kind": 49,
+      "name": "住宅",
+      "footprint": [
+        3,
+        2
+      ],
+      "category": 3,
+      "attribute": 7,
+      "base_cost": 4200000,
+      "tile_range": [
+        449,
+        454
+      ],
+      "customer_mix_choices": [
+        74,
+        75,
+        76,
+        77,
+        78
+      ],
+      "notification_event": 16,
+      "completion_name_message": 122,
+      "raw_hex": "3100030004000000881300000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 3,
+        "i16_at_4": 4,
+        "i16_at_6": 0,
+        "i32_at_8": 5000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 74,
+          "profiles": [
+            [
+              81,
+              1
+            ],
+            [
+              127,
+              1
+            ],
+            [
+              92,
+              1
+            ],
+            [
+              102,
+              1
+            ]
+          ],
+          "population": 4
+        },
+        {
+          "mix": 75,
+          "profiles": [
+            [
+              80,
+              1
+            ],
+            [
+              134,
+              1
+            ],
+            [
+              96,
+              1
+            ],
+            [
+              14,
+              1
+            ]
+          ],
+          "population": 4
+        },
+        {
+          "mix": 76,
+          "profiles": [
+            [
+              81,
+              1
+            ],
+            [
+              135,
+              1
+            ],
+            [
+              98,
+              1
+            ],
+            [
+              37,
+              1
+            ]
+          ],
+          "population": 4
+        },
+        {
+          "mix": 77,
+          "profiles": [
+            [
+              82,
+              1
+            ],
+            [
+              128,
+              1
+            ],
+            [
+              93,
+              1
+            ],
+            [
+              103,
+              1
+            ]
+          ],
+          "population": 4
+        },
+        {
+          "mix": 78,
+          "profiles": [
+            [
+              83,
+              1
+            ],
+            [
+              129,
+              1
+            ],
+            [
+              94,
+              1
+            ],
+            [
+              113,
+              1
+            ]
+          ],
+          "population": 4
+        }
+      ],
+      "completed_building_population_range": [
+        24,
+        24
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 3,
+      "kind": 42,
+      "name": "会社",
+      "footprint": [
+        3,
+        3
+      ],
+      "category": 4,
+      "attribute": 6,
+      "base_cost": 5400000,
+      "tile_range": [
+        427,
+        435
+      ],
+      "customer_mix_choices": [
+        55,
+        56,
+        57,
+        58,
+        58
+      ],
+      "notification_event": 15,
+      "completion_name_message": 121,
+      "raw_hex": "2a00030004000000881300000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 3,
+        "i16_at_4": 4,
+        "i16_at_6": 0,
+        "i32_at_8": 5000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 55,
+          "profiles": [
+            [
+              62,
+              2
+            ],
+            [
+              49,
+              3
+            ],
+            [
+              79,
+              3
+            ],
+            [
+              72,
+              2
+            ]
+          ],
+          "population": 10
+        },
+        {
+          "mix": 56,
+          "profiles": [
+            [
+              44,
+              3
+            ],
+            [
+              51,
+              3
+            ],
+            [
+              76,
+              3
+            ],
+            [
+              73,
+              2
+            ]
+          ],
+          "population": 11
+        },
+        {
+          "mix": 57,
+          "profiles": [
+            [
+              45,
+              3
+            ],
+            [
+              52,
+              3
+            ],
+            [
+              77,
+              3
+            ],
+            [
+              74,
+              2
+            ]
+          ],
+          "population": 11
+        },
+        {
+          "mix": 58,
+          "profiles": [
+            [
+              46,
+              3
+            ],
+            [
+              49,
+              3
+            ],
+            [
+              78,
+              3
+            ],
+            [
+              75,
+              2
+            ]
+          ],
+          "population": 11
+        },
+        {
+          "mix": 58,
+          "profiles": [
+            [
+              46,
+              3
+            ],
+            [
+              49,
+              3
+            ],
+            [
+              78,
+              3
+            ],
+            [
+              75,
+              2
+            ]
+          ],
+          "population": 11
+        }
+      ],
+      "completed_building_population_range": [
+        90,
+        99
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 4,
+      "kind": 51,
+      "name": "体育館",
+      "footprint": [
+        3,
+        2
+      ],
+      "category": 8,
+      "attribute": 7,
+      "base_cost": 4200000,
+      "tile_range": [
+        459,
+        464
+      ],
+      "customer_mix_choices": [
+        81,
+        82,
+        82,
+        83,
+        83
+      ],
+      "notification_event": 18,
+      "completion_name_message": 124,
+      "raw_hex": "3300030006000000102700000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 3,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 10000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 81,
+          "profiles": [
+            [
+              90,
+              1
+            ],
+            [
+              91,
+              1
+            ],
+            [
+              106,
+              2
+            ],
+            [
+              95,
+              1
+            ]
+          ],
+          "population": 5
+        },
+        {
+          "mix": 82,
+          "profiles": [
+            [
+              88,
+              1
+            ],
+            [
+              89,
+              1
+            ],
+            [
+              97,
+              2
+            ],
+            [
+              98,
+              1
+            ]
+          ],
+          "population": 5
+        },
+        {
+          "mix": 82,
+          "profiles": [
+            [
+              88,
+              1
+            ],
+            [
+              89,
+              1
+            ],
+            [
+              97,
+              2
+            ],
+            [
+              98,
+              1
+            ]
+          ],
+          "population": 5
+        },
+        {
+          "mix": 83,
+          "profiles": [
+            [
+              140,
+              1
+            ],
+            [
+              141,
+              1
+            ],
+            [
+              99,
+              2
+            ],
+            [
+              88,
+              1
+            ]
+          ],
+          "population": 5
+        },
+        {
+          "mix": 83,
+          "profiles": [
+            [
+              140,
+              1
+            ],
+            [
+              141,
+              1
+            ],
+            [
+              99,
+              2
+            ],
+            [
+              88,
+              1
+            ]
+          ],
+          "population": 5
+        }
+      ],
+      "completed_building_population_range": [
+        30,
+        30
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 5,
+      "kind": 53,
+      "name": "プール",
+      "footprint": [
+        3,
+        2
+      ],
+      "category": 8,
+      "attribute": 3,
+      "base_cost": 1800000,
+      "tile_range": [
+        485,
+        490
+      ],
+      "customer_mix_choices": [
+        87,
+        88,
+        89,
+        90,
+        90
+      ],
+      "notification_event": 18,
+      "completion_name_message": 126,
+      "raw_hex": "3500030006000000102700000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 3,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 10000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 87,
+          "profiles": [
+            [
+              88,
+              2
+            ],
+            [
+              89,
+              2
+            ],
+            [
+              106,
+              2
+            ],
+            [
+              107,
+              1
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 88,
+          "profiles": [
+            [
+              90,
+              2
+            ],
+            [
+              91,
+              2
+            ],
+            [
+              108,
+              2
+            ],
+            [
+              109,
+              1
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 89,
+          "profiles": [
+            [
+              97,
+              2
+            ],
+            [
+              98,
+              2
+            ],
+            [
+              140,
+              2
+            ],
+            [
+              141,
+              1
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 90,
+          "profiles": [
+            [
+              142,
+              2
+            ],
+            [
+              143,
+              2
+            ],
+            [
+              106,
+              2
+            ],
+            [
+              107,
+              1
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 90,
+          "profiles": [
+            [
+              142,
+              2
+            ],
+            [
+              143,
+              2
+            ],
+            [
+              106,
+              2
+            ],
+            [
+              107,
+              1
+            ]
+          ],
+          "population": 7
+        }
+      ],
+      "completed_building_population_range": [
+        42,
+        42
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 6,
+      "kind": 52,
+      "name": "運動場",
+      "footprint": [
+        5,
+        4
+      ],
+      "category": 8,
+      "attribute": 1,
+      "base_cost": 2000000,
+      "tile_range": [
+        465,
+        484
+      ],
+      "customer_mix_choices": [
+        84,
+        85,
+        85,
+        86,
+        86
+      ],
+      "notification_event": 17,
+      "completion_name_message": 125,
+      "raw_hex": "3400030006000000102700000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 3,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 10000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 84,
+          "profiles": [
+            [
+              90,
+              1
+            ],
+            [
+              91,
+              1
+            ],
+            [
+              98,
+              2
+            ],
+            [
+              99,
+              1
+            ]
+          ],
+          "population": 5
+        },
+        {
+          "mix": 85,
+          "profiles": [
+            [
+              140,
+              1
+            ],
+            [
+              141,
+              1
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              27,
+              1
+            ]
+          ],
+          "population": 5
+        },
+        {
+          "mix": 85,
+          "profiles": [
+            [
+              140,
+              1
+            ],
+            [
+              141,
+              1
+            ],
+            [
+              7,
+              2
+            ],
+            [
+              27,
+              1
+            ]
+          ],
+          "population": 5
+        },
+        {
+          "mix": 86,
+          "profiles": [
+            [
+              106,
+              1
+            ],
+            [
+              100,
+              1
+            ],
+            [
+              103,
+              2
+            ],
+            [
+              6,
+              1
+            ]
+          ],
+          "population": 5
+        },
+        {
+          "mix": 86,
+          "profiles": [
+            [
+              106,
+              1
+            ],
+            [
+              100,
+              1
+            ],
+            [
+              103,
+              2
+            ],
+            [
+              6,
+              1
+            ]
+          ],
+          "population": 5
+        }
+      ],
+      "completed_building_population_range": [
+        100,
+        100
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 7,
+      "kind": 54,
+      "name": "ｲﾍﾞﾝﾄ会場",
+      "footprint": [
+        2,
+        2
+      ],
+      "category": 8,
+      "attribute": 15,
+      "base_cost": 6000000,
+      "tile_range": [
+        491,
+        494
+      ],
+      "customer_mix_choices": [
+        91,
+        92,
+        92,
+        93,
+        93
+      ],
+      "notification_event": 23,
+      "completion_name_message": 127,
+      "raw_hex": "3600030006000000983a00000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 3,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 15000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 91,
+          "profiles": [
+            [
+              140,
+              3
+            ],
+            [
+              141,
+              3
+            ],
+            [
+              142,
+              4
+            ],
+            [
+              143,
+              3
+            ]
+          ],
+          "population": 13
+        },
+        {
+          "mix": 92,
+          "profiles": [
+            [
+              101,
+              4
+            ],
+            [
+              102,
+              3
+            ],
+            [
+              142,
+              4
+            ],
+            [
+              106,
+              2
+            ]
+          ],
+          "population": 13
+        },
+        {
+          "mix": 92,
+          "profiles": [
+            [
+              101,
+              4
+            ],
+            [
+              102,
+              3
+            ],
+            [
+              142,
+              4
+            ],
+            [
+              106,
+              2
+            ]
+          ],
+          "population": 13
+        },
+        {
+          "mix": 93,
+          "profiles": [
+            [
+              92,
+              4
+            ],
+            [
+              93,
+              3
+            ],
+            [
+              143,
+              4
+            ],
+            [
+              107,
+              2
+            ]
+          ],
+          "population": 13
+        },
+        {
+          "mix": 93,
+          "profiles": [
+            [
+              92,
+              4
+            ],
+            [
+              93,
+              3
+            ],
+            [
+              143,
+              4
+            ],
+            [
+              107,
+              2
+            ]
+          ],
+          "population": 13
+        }
+      ],
+      "completed_building_population_range": [
+        52,
+        52
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 8,
+      "kind": 25,
+      "name": "幼稚園",
+      "footprint": [
+        3,
+        2
+      ],
+      "category": 7,
+      "attribute": 2,
+      "base_cost": 1200000,
+      "tile_range": [
+        158,
+        163
+      ],
+      "customer_mix_choices": [
+        19,
+        19,
+        19,
+        19,
+        19
+      ],
+      "notification_event": 7,
+      "completion_name_message": 109,
+      "raw_hex": "1900040006000000581b00000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 4,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 7000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 19,
+          "profiles": [
+            [
+              108,
+              2
+            ],
+            [
+              109,
+              1
+            ],
+            [
+              136,
+              2
+            ],
+            [
+              137,
+              1
+            ]
+          ],
+          "population": 6
+        },
+        {
+          "mix": 19,
+          "profiles": [
+            [
+              108,
+              2
+            ],
+            [
+              109,
+              1
+            ],
+            [
+              136,
+              2
+            ],
+            [
+              137,
+              1
+            ]
+          ],
+          "population": 6
+        },
+        {
+          "mix": 19,
+          "profiles": [
+            [
+              108,
+              2
+            ],
+            [
+              109,
+              1
+            ],
+            [
+              136,
+              2
+            ],
+            [
+              137,
+              1
+            ]
+          ],
+          "population": 6
+        },
+        {
+          "mix": 19,
+          "profiles": [
+            [
+              108,
+              2
+            ],
+            [
+              109,
+              1
+            ],
+            [
+              136,
+              2
+            ],
+            [
+              137,
+              1
+            ]
+          ],
+          "population": 6
+        },
+        {
+          "mix": 19,
+          "profiles": [
+            [
+              108,
+              2
+            ],
+            [
+              109,
+              1
+            ],
+            [
+              136,
+              2
+            ],
+            [
+              137,
+              1
+            ]
+          ],
+          "population": 6
+        }
+      ],
+      "completed_building_population_range": [
+        36,
+        36
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 9,
+      "kind": 26,
+      "name": "小学校",
+      "footprint": [
+        4,
+        4
+      ],
+      "category": 7,
+      "attribute": 2,
+      "base_cost": 3200000,
+      "tile_range": [
+        164,
+        179
+      ],
+      "customer_mix_choices": [
+        20,
+        20,
+        20,
+        21,
+        21
+      ],
+      "notification_event": 8,
+      "completion_name_message": 110,
+      "raw_hex": "1a00040006000000581b00000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 4,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 7000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 20,
+          "profiles": [
+            [
+              104,
+              2
+            ],
+            [
+              105,
+              2
+            ],
+            [
+              106,
+              2
+            ],
+            [
+              107,
+              1
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 20,
+          "profiles": [
+            [
+              104,
+              2
+            ],
+            [
+              105,
+              2
+            ],
+            [
+              106,
+              2
+            ],
+            [
+              107,
+              1
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 20,
+          "profiles": [
+            [
+              104,
+              2
+            ],
+            [
+              105,
+              2
+            ],
+            [
+              106,
+              2
+            ],
+            [
+              107,
+              1
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 21,
+          "profiles": [
+            [
+              104,
+              2
+            ],
+            [
+              105,
+              2
+            ],
+            [
+              106,
+              1
+            ],
+            [
+              107,
+              2
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 21,
+          "profiles": [
+            [
+              104,
+              2
+            ],
+            [
+              105,
+              2
+            ],
+            [
+              106,
+              1
+            ],
+            [
+              107,
+              2
+            ]
+          ],
+          "population": 7
+        }
+      ],
+      "completed_building_population_range": [
+        112,
+        112
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 10,
+      "kind": 27,
+      "name": "中学校",
+      "footprint": [
+        5,
+        5
+      ],
+      "category": 7,
+      "attribute": 2,
+      "base_cost": 5000000,
+      "tile_range": [
+        180,
+        204
+      ],
+      "customer_mix_choices": [
+        22,
+        22,
+        22,
+        23,
+        23
+      ],
+      "notification_event": 8,
+      "completion_name_message": 111,
+      "raw_hex": "1b00040006000000581b00000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 4,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 7000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 22,
+          "profiles": [
+            [
+              86,
+              2
+            ],
+            [
+              88,
+              3
+            ],
+            [
+              90,
+              1
+            ],
+            [
+              92,
+              2
+            ]
+          ],
+          "population": 8
+        },
+        {
+          "mix": 22,
+          "profiles": [
+            [
+              86,
+              2
+            ],
+            [
+              88,
+              3
+            ],
+            [
+              90,
+              1
+            ],
+            [
+              92,
+              2
+            ]
+          ],
+          "population": 8
+        },
+        {
+          "mix": 22,
+          "profiles": [
+            [
+              86,
+              2
+            ],
+            [
+              88,
+              3
+            ],
+            [
+              90,
+              1
+            ],
+            [
+              92,
+              2
+            ]
+          ],
+          "population": 8
+        },
+        {
+          "mix": 23,
+          "profiles": [
+            [
+              87,
+              2
+            ],
+            [
+              89,
+              3
+            ],
+            [
+              91,
+              1
+            ],
+            [
+              93,
+              2
+            ]
+          ],
+          "population": 8
+        },
+        {
+          "mix": 23,
+          "profiles": [
+            [
+              87,
+              2
+            ],
+            [
+              89,
+              3
+            ],
+            [
+              91,
+              1
+            ],
+            [
+              93,
+              2
+            ]
+          ],
+          "population": 8
+        }
+      ],
+      "completed_building_population_range": [
+        200,
+        200
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 11,
+      "kind": 28,
+      "name": "高校",
+      "footprint": [
+        6,
+        6
+      ],
+      "category": 7,
+      "attribute": 2,
+      "base_cost": 7200000,
+      "tile_range": [
+        205,
+        240
+      ],
+      "customer_mix_choices": [
+        24,
+        25,
+        26,
+        27,
+        27
+      ],
+      "notification_event": 8,
+      "completion_name_message": 112,
+      "raw_hex": "1c00040006000000581b00000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 4,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 7000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 24,
+          "profiles": [
+            [
+              96,
+              1
+            ],
+            [
+              97,
+              2
+            ],
+            [
+              99,
+              2
+            ],
+            [
+              100,
+              2
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 25,
+          "profiles": [
+            [
+              95,
+              3
+            ],
+            [
+              98,
+              3
+            ],
+            [
+              101,
+              3
+            ],
+            [
+              103,
+              1
+            ]
+          ],
+          "population": 10
+        },
+        {
+          "mix": 26,
+          "profiles": [
+            [
+              97,
+              3
+            ],
+            [
+              98,
+              2
+            ],
+            [
+              102,
+              3
+            ],
+            [
+              96,
+              2
+            ]
+          ],
+          "population": 10
+        },
+        {
+          "mix": 27,
+          "profiles": [
+            [
+              95,
+              3
+            ],
+            [
+              96,
+              2
+            ],
+            [
+              97,
+              3
+            ],
+            [
+              102,
+              2
+            ]
+          ],
+          "population": 10
+        },
+        {
+          "mix": 27,
+          "profiles": [
+            [
+              95,
+              3
+            ],
+            [
+              96,
+              2
+            ],
+            [
+              97,
+              3
+            ],
+            [
+              102,
+              2
+            ]
+          ],
+          "population": 10
+        }
+      ],
+      "completed_building_population_range": [
+        252,
+        360
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 12,
+      "kind": 29,
+      "name": "大学",
+      "footprint": [
+        7,
+        7
+      ],
+      "category": 7,
+      "attribute": 2,
+      "base_cost": 9800000,
+      "tile_range": [
+        241,
+        289
+      ],
+      "customer_mix_choices": [
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "notification_event": 9,
+      "completion_name_message": 113,
+      "raw_hex": "1d00040006000000581b00000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 4,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 7000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 28,
+          "profiles": [
+            [
+              0,
+              3
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              11,
+              2
+            ]
+          ],
+          "population": 11
+        },
+        {
+          "mix": 29,
+          "profiles": [
+            [
+              1,
+              3
+            ],
+            [
+              24,
+              5
+            ],
+            [
+              29,
+              4
+            ],
+            [
+              9,
+              3
+            ]
+          ],
+          "population": 15
+        },
+        {
+          "mix": 30,
+          "profiles": [
+            [
+              19,
+              3
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              14,
+              3
+            ],
+            [
+              30,
+              3
+            ]
+          ],
+          "population": 13
+        },
+        {
+          "mix": 31,
+          "profiles": [
+            [
+              20,
+              5
+            ],
+            [
+              25,
+              6
+            ],
+            [
+              9,
+              4
+            ],
+            [
+              34,
+              4
+            ]
+          ],
+          "population": 19
+        },
+        {
+          "mix": 32,
+          "profiles": [
+            [
+              21,
+              5
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              31,
+              4
+            ],
+            [
+              40,
+              3
+            ]
+          ],
+          "population": 18
+        }
+      ],
+      "completed_building_population_range": [
+        539,
+        931
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 13,
+      "kind": 30,
+      "name": "専門学校",
+      "footprint": [
+        4,
+        3
+      ],
+      "category": 7,
+      "attribute": 4,
+      "base_cost": 4800000,
+      "tile_range": [
+        290,
+        301
+      ],
+      "customer_mix_choices": [
+        33,
+        33,
+        33,
+        34,
+        34
+      ],
+      "notification_event": 10,
+      "completion_name_message": 114,
+      "raw_hex": "1e00040006000000581b00000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 4,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 7000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 33,
+          "profiles": [
+            [
+              2,
+              3
+            ],
+            [
+              26,
+              2
+            ],
+            [
+              7,
+              3
+            ],
+            [
+              28,
+              3
+            ]
+          ],
+          "population": 11
+        },
+        {
+          "mix": 33,
+          "profiles": [
+            [
+              2,
+              3
+            ],
+            [
+              26,
+              2
+            ],
+            [
+              7,
+              3
+            ],
+            [
+              28,
+              3
+            ]
+          ],
+          "population": 11
+        },
+        {
+          "mix": 33,
+          "profiles": [
+            [
+              2,
+              3
+            ],
+            [
+              26,
+              2
+            ],
+            [
+              7,
+              3
+            ],
+            [
+              28,
+              3
+            ]
+          ],
+          "population": 11
+        },
+        {
+          "mix": 34,
+          "profiles": [
+            [
+              21,
+              3
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              27,
+              3
+            ],
+            [
+              11,
+              3
+            ]
+          ],
+          "population": 11
+        },
+        {
+          "mix": 34,
+          "profiles": [
+            [
+              21,
+              3
+            ],
+            [
+              6,
+              2
+            ],
+            [
+              27,
+              3
+            ],
+            [
+              11,
+              3
+            ]
+          ],
+          "population": 11
+        }
+      ],
+      "completed_building_population_range": [
+        132,
+        132
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 14,
+      "kind": 35,
+      "name": "公園",
+      "footprint": [
+        2,
+        2
+      ],
+      "category": 6,
+      "attribute": 5,
+      "base_cost": 2000000,
+      "tile_range": [
+        397,
+        400
+      ],
+      "customer_mix_choices": [
+        39,
+        40,
+        40,
+        40,
+        37
+      ],
+      "notification_event": 14,
+      "completion_name_message": 118,
+      "raw_hex": "2300040006000000881300000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 4,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 5000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 39,
+          "profiles": [
+            [
+              140,
+              3
+            ],
+            [
+              141,
+              2
+            ],
+            [
+              142,
+              3
+            ],
+            [
+              143,
+              3
+            ]
+          ],
+          "population": 11
+        },
+        {
+          "mix": 40,
+          "profiles": [
+            [
+              142,
+              3
+            ],
+            [
+              143,
+              2
+            ],
+            [
+              106,
+              1
+            ],
+            [
+              107,
+              1
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 40,
+          "profiles": [
+            [
+              142,
+              3
+            ],
+            [
+              143,
+              2
+            ],
+            [
+              106,
+              1
+            ],
+            [
+              107,
+              1
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 40,
+          "profiles": [
+            [
+              142,
+              3
+            ],
+            [
+              143,
+              2
+            ],
+            [
+              106,
+              1
+            ],
+            [
+              107,
+              1
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 37,
+          "profiles": [
+            [
+              130,
+              4
+            ],
+            [
+              131,
+              3
+            ],
+            [
+              142,
+              4
+            ],
+            [
+              141,
+              3
+            ]
+          ],
+          "population": 14
+        }
+      ],
+      "completed_building_population_range": [
+        28,
+        56
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 15,
+      "kind": 32,
+      "name": "水族館",
+      "footprint": [
+        3,
+        3
+      ],
+      "category": 6,
+      "attribute": 3,
+      "base_cost": 2700000,
+      "tile_range": [
+        351,
+        359
+      ],
+      "customer_mix_choices": [
+        38,
+        38,
+        38,
+        38,
+        38
+      ],
+      "notification_event": 12,
+      "completion_name_message": 116,
+      "raw_hex": "2000040006000000983a00000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 4,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 15000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 38,
+          "profiles": [
+            [
+              130,
+              1
+            ],
+            [
+              131,
+              2
+            ],
+            [
+              142,
+              2
+            ],
+            [
+              143,
+              2
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 38,
+          "profiles": [
+            [
+              130,
+              1
+            ],
+            [
+              131,
+              2
+            ],
+            [
+              142,
+              2
+            ],
+            [
+              143,
+              2
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 38,
+          "profiles": [
+            [
+              130,
+              1
+            ],
+            [
+              131,
+              2
+            ],
+            [
+              142,
+              2
+            ],
+            [
+              143,
+              2
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 38,
+          "profiles": [
+            [
+              130,
+              1
+            ],
+            [
+              131,
+              2
+            ],
+            [
+              142,
+              2
+            ],
+            [
+              143,
+              2
+            ]
+          ],
+          "population": 7
+        },
+        {
+          "mix": 38,
+          "profiles": [
+            [
+              130,
+              1
+            ],
+            [
+              131,
+              2
+            ],
+            [
+              142,
+              2
+            ],
+            [
+              143,
+              2
+            ]
+          ],
+          "population": 7
+        }
+      ],
+      "completed_building_population_range": [
+        63,
+        63
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 16,
+      "kind": 33,
+      "name": "動物園",
+      "footprint": [
+        6,
+        6
+      ],
+      "category": 6,
+      "attribute": 2,
+      "base_cost": 7200000,
+      "tile_range": [
+        360,
+        395
+      ],
+      "customer_mix_choices": [
+        35,
+        35,
+        35,
+        37,
+        37
+      ],
+      "notification_event": 13,
+      "completion_name_message": 117,
+      "raw_hex": "2100040006000000983a00000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 4,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 15000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 35,
+          "profiles": [
+            [
+              130,
+              5
+            ],
+            [
+              131,
+              4
+            ],
+            [
+              142,
+              3
+            ],
+            [
+              143,
+              2
+            ]
+          ],
+          "population": 14
+        },
+        {
+          "mix": 35,
+          "profiles": [
+            [
+              130,
+              5
+            ],
+            [
+              131,
+              4
+            ],
+            [
+              142,
+              3
+            ],
+            [
+              143,
+              2
+            ]
+          ],
+          "population": 14
+        },
+        {
+          "mix": 35,
+          "profiles": [
+            [
+              130,
+              5
+            ],
+            [
+              131,
+              4
+            ],
+            [
+              142,
+              3
+            ],
+            [
+              143,
+              2
+            ]
+          ],
+          "population": 14
+        },
+        {
+          "mix": 37,
+          "profiles": [
+            [
+              130,
+              4
+            ],
+            [
+              131,
+              3
+            ],
+            [
+              142,
+              4
+            ],
+            [
+              141,
+              3
+            ]
+          ],
+          "population": 14
+        },
+        {
+          "mix": 37,
+          "profiles": [
+            [
+              130,
+              4
+            ],
+            [
+              131,
+              3
+            ],
+            [
+              142,
+              4
+            ],
+            [
+              141,
+              3
+            ]
+          ],
+          "population": 14
+        }
+      ],
+      "completed_building_population_range": [
+        504,
+        504
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    },
+    {
+      "selection": 17,
+      "kind": 31,
+      "name": "遊園地",
+      "footprint": [
+        7,
+        7
+      ],
+      "category": 6,
+      "attribute": 2,
+      "base_cost": 9800000,
+      "tile_range": [
+        302,
+        350
+      ],
+      "customer_mix_choices": [
+        35,
+        36,
+        36,
+        37,
+        37
+      ],
+      "notification_event": 11,
+      "completion_name_message": 115,
+      "raw_hex": "1f00040006000000204e00000000000000000000",
+      "unassigned_fields": {
+        "i16_at_2": 4,
+        "i16_at_4": 6,
+        "i16_at_6": 0,
+        "i32_at_8": 20000,
+        "i32_at_16": 0
+      },
+      "mutable_cost_at_12": 0,
+      "per_cell_mix_choices": [
+        {
+          "mix": 35,
+          "profiles": [
+            [
+              130,
+              5
+            ],
+            [
+              131,
+              4
+            ],
+            [
+              142,
+              3
+            ],
+            [
+              143,
+              2
+            ]
+          ],
+          "population": 14
+        },
+        {
+          "mix": 36,
+          "profiles": [
+            [
+              140,
+              3
+            ],
+            [
+              141,
+              2
+            ],
+            [
+              98,
+              4
+            ],
+            [
+              99,
+              3
+            ]
+          ],
+          "population": 12
+        },
+        {
+          "mix": 36,
+          "profiles": [
+            [
+              140,
+              3
+            ],
+            [
+              141,
+              2
+            ],
+            [
+              98,
+              4
+            ],
+            [
+              99,
+              3
+            ]
+          ],
+          "population": 12
+        },
+        {
+          "mix": 37,
+          "profiles": [
+            [
+              130,
+              4
+            ],
+            [
+              131,
+              3
+            ],
+            [
+              142,
+              4
+            ],
+            [
+              141,
+              3
+            ]
+          ],
+          "population": 14
+        },
+        {
+          "mix": 37,
+          "profiles": [
+            [
+              130,
+              4
+            ],
+            [
+              131,
+              3
+            ],
+            [
+              142,
+              4
+            ],
+            [
+              141,
+              3
+            ]
+          ],
+          "population": 14
+        }
+      ],
+      "completed_building_population_range": [
+        588,
+        686
+      ],
+      "population_scope": "Native customer-profile population over all footprint cells, not exclusively residential residents. Each written cell chooses one of five entries with RNG%5; duplicate entries retain their weights."
+    }
+  ],
+  "unknown": "Fields +2,+4,+6,+8,+16 are retained without assigning meaning. +8 is not used as construction time or base cost by the recovered project path."
+}

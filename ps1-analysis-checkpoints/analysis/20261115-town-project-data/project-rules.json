@@ -1,0 +1,89 @@
+{
+  "source": {
+    "gate": "0x800643f8",
+    "start": "0x8006a44c",
+    "quote": "0x800752c4",
+    "confirm": "0x8006b55c..0x8006b5a0",
+    "completion": "0x80029020"
+  },
+  "availability": {
+    "pending_slots": 1,
+    "inactive_selection": -1,
+    "page0": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "page1": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "gate": "Reject entry when signed16 record selection != -1. The project menu presents all18 rows; this path does not gate by town population."
+  },
+  "costs": {
+    "base": "trunc(i32(sum for width*height cells of signed8 descriptor attribute*1000000)/10)",
+    "site": "trunc(i32(signed land total + FULL demolition total)/10)",
+    "total": "i32(base+site)",
+    "demolition": "Count each intersecting original building once at full footprint*attribute*1000000, using first72 native tile-range descriptors. Whole-footprint demolition can extend beyond the chosen rectangle.",
+    "budget": "Menu first accepts cash>=base. Site confirm requires site < i32(cash-base), so cash==total is rejected on these non-overflow source inputs.",
+    "payment": "Temporarily subtract base for site UI, restore cash on return. On success post full amount once through 0x8001cbc4 with first-store pointer0x8012b2f8; use its flags bit15 to choose company cash/capital ledger. Cancellation leaves cash unchanged.",
+    "different_from_store_acquisition": "Project uses (land+full demolition)/10, not land+demolition/2."
+  },
+  "siting": {
+    "bounds": [
+      60,
+      50
+    ],
+    "category3_housing49": "If mask16 set, accept only source tile in descriptor43.lower..48.upper. Existing kind49 does not qualify.",
+    "category4_company42": "Reject any mask16 occupied cell.",
+    "categories6to8": "If mask16 set, only existing category3..5 may be replaced.",
+    "distance": "No native nearby-distance search is invoked by quote; the natural monthly-growth facility radius rule must not be added to project quote.",
+    "cursor_edge": "Quote first shifts drawn rectangle inside map, but feasibility checks original x,y. An out-of-bounds original footprint remains invalid; invalid quote leaves old demolition/display/mask values in globals and sets land=-1. Confirm checks that sentinel."
+  },
+  "start": {
+    "record_address": "0x800e3c00",
+    "record_bytes": 32,
+    "record_fields": {
+      "0": "signed16 selection",
+      "4": "4 signed32 inclusive rectangle coordinates",
+      "20": "unsigned16 countdown",
+      "30": "signed16 sound comparison threshold, not initialized here"
+    },
+    "countdown": "RNG%5+4, stored u16. One further random mix choice per modified cell, including otherwise deterministic empty/reserved cells.",
+    "town": "For each selected cell, place kind71 誘致用地(tile521, category10), mode0. Positive-category buildings are demolished as whole footprints. Preserve land coefficient byte+2; write attribute/category/tile/mix and mask bits24 via source placement."
+  },
+  "completion": {
+    "clock": "Only hour==0 and subhour==0. No day-of-month condition. Tick unsigned16(countdown-1), complete only on zero. Starting from0 underflows65535.",
+    "town": "Clear each reserved cell using kind12 空き地 mode0, then place selected complete building at rectangle origin. Each footprint cell chooses one of five customer mixes independently; preserve duplicate weights and signed bytes.",
+    "record": "Set signed16 selection=-1; other record bytes persist.",
+    "cost": "No second payment in completion.",
+    "notification": "Text prefix0x800992d8 + MSG[98+i16(0x80098768+kind*2)] + suffix0x800992ec; queue type2, descriptor event field+52, flags1/0.",
+    "sound": "29 or34 depends on comparison of uninitialized completion stack[fp+0x1c] with record i16+30. Preserve as unresolved input; do not assign a stable facility-specific sound.",
+    "scheduling": "Caller0x80023438 invokes project completion before daily close and later natural monthly town growth. A finished building is available to following processing at that midnight."
+  },
+  "save": {
+    "payload_offset": "0x7d78",
+    "bytes": 32,
+    "save_source": "0x8006ba38..0x8006ba58",
+    "load_source": "0x8006be58..0x8006be78",
+    "note": "Original payload compatibility fact, not a requirement to implement PS1 memory cards on Android."
+  },
+  "unknown": [
+    "Raw project fields+2,+4,+6,+8,+16 are retained without semantic labels.",
+    "Notification sound stack dependency unresolved.",
+    "Static source maps are not post-play observations; no new APK in this data extraction."
+  ]
+}

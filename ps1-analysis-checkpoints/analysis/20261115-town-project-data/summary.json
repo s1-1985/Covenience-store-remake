@@ -1,0 +1,18 @@
+{
+  "project_types": 18,
+  "maps": 4,
+  "candidate_origins": 216000,
+  "allowed": 101498,
+  "blocked": 93606,
+  "out_of_bounds": 20896,
+  "base_cost_min": 400000,
+  "base_cost_max": 9800000,
+  "construction_midnight_ticks": [
+    4,
+    8
+  ],
+  "original_cpu_updates": 0,
+  "grid_bytes": 864000,
+  "grid_compressed_bytes": 42925,
+  "known_before": "Isolated quote/start/completion rules and helpers existed. Newly extracted all18 master rows and linked native building descriptors to 4 maps, 216000 origins, site costs, completion names/events, and whole-building spillover examples."
+}

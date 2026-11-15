@@ -1,49 +1,26 @@
 {
   "date_jst": "2026-11-15",
-  "work_kind": "town_growth_and_land_source_data_analysis",
-  "report": "analysis/20261115-town-growth-land-data/README.md",
+  "work_kind": "town_project_master_and_site_cost_data_analysis",
+  "report": "analysis/20261115-town-project-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "project_types": 18,
   "maps": 4,
-  "source_cells": 12000,
-  "building_lookup_rows": 72,
-  "customer_mix_rows": 137,
-  "population": {
-    "TOWN0001": 2179,
-    "TOWN0002": 1880,
-    "TOWN0003": 1424,
-    "TOWNPS": 2839
-  },
-  "source_influence_histograms": {
-    "TOWN0001": {
-      "0": 2262,
-      "10": 692,
-      "20": 44,
-      "30": 2
-    },
-    "TOWN0002": {
-      "0": 2092,
-      "10": 850,
-      "20": 56,
-      "30": 2
-    },
-    "TOWN0003": {
-      "0": 2153,
-      "10": 813,
-      "20": 32,
-      "30": 2
-    },
-    "TOWNPS": {
-      "0": 1585,
-      "10": 1181,
-      "20": 204,
-      "30": 30
-    }
-  },
-  "new_specification": "Connect original town economic references and category populations to baseline, asymmetric road and station influence, land-price byte transitions, source housing/public building choices, development tiers and finance-before-growth order. Initial influence maps are static source-file calculations, not observed first-month outcomes.",
-  "known_before": "Town growth/monthly isolated rules and whole source interpreter existed. New extraction binds actual four map economic parameters/category populations and road coordinates to initial influence maps, 72-row building choice sets,137 population mixes, land-price byte, calendar/finance ordering and native Android rules.",
-  "previous_report": "analysis/20261115-remodel-accounting-data/README.md",
-  "android_bridge": "analysis/20261115-town-growth-land-data/android-town-growth-bridge.json",
-  "original_cpu_updates_this_work": 0,
-  "next_priority": "Continue required source-data analysis for town projects and remaining normal-play systems, integrate recovered data into native Android, then build APK."
+  "candidate_origins": 216000,
+  "allowed": 101498,
+  "blocked": 93606,
+  "out_of_bounds": 20896,
+  "base_cost_min": 400000,
+  "base_cost_max": 9800000,
+  "construction_midnight_ticks": [
+    4,
+    8
+  ],
+  "original_cpu_updates": 0,
+  "grid_bytes": 864000,
+  "grid_compressed_bytes": 42925,
+  "known_before": "Isolated quote/start/completion rules and helpers existed. Newly extracted all18 master rows and linked native building descriptors to 4 maps, 216000 origins, site costs, completion names/events, and whole-building spillover examples.",
+  "previous_report": "analysis/20261115-town-growth-land-data/README.md",
+  "android_bridge": "analysis/20261115-town-project-data/android-project-bridge.json",
+  "next_priority": "Continue remaining normal-play source data analysis, integrate recovered data into native Android, then build APK."
 }

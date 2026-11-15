@@ -1,0 +1,33 @@
+{
+  "primary": "Hash-verified original supplied disc, /SLPS_007.82 and /DAT/TOWN*.BIN",
+  "reused": [
+    {
+      "path": "../20261113-disc-data-extraction/extract-disc-data.py",
+      "purpose": "ISO9660 payload reader"
+    },
+    {
+      "path": "../20261114-land-construction-cost-data/README.md",
+      "purpose": "Previously recovered first72 building lookup and full-footprint demolition semantics"
+    },
+    {
+      "path": "../20261114-permit-siting-data/README.md",
+      "purpose": "Previously recovered load-time category mask16 rebuilding"
+    },
+    {
+      "path": "../20261115-town-growth-land-data/README.md",
+      "purpose": "Population mixes, midnight ordering and natural growth distinction"
+    },
+    {
+      "path": "../20261115-remodel-accounting-data/README.md",
+      "purpose": "0x8001cbc4 cash/capital owner posting and original save payload layout"
+    }
+  ],
+  "old_helpers": [
+    "runtime/algorithm-analysis/town_project_start.py",
+    "runtime/algorithm-analysis/town_project_completion.py",
+    "runtime/algorithm-analysis/town_mutation.py",
+    "runtime/algorithm-analysis/rival_helpers.py"
+  ],
+  "distinction": "Isolated quote/start/completion rules and helpers existed. Newly extracted all18 master rows and linked native building descriptors to 4 maps, 216000 origins, site costs, completion names/events, and whole-building spillover examples.",
+  "checks": "Disc/EXE hashes, native table bounds, all216000 origin classifications, sums and compact grid length. No gameplay CPU updates."
+}

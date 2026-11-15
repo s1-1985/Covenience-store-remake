@@ -1,0 +1,87 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 6501,
+    "sha256": "71b2206beae2d99d3ebaf043d20bd8ca8fadbfe5a2eb56e3580566667aa6856d"
+  },
+  {
+    "path": "android-project-bridge.json",
+    "bytes": 1699,
+    "sha256": "28b645e08f0103a3b9bee15545b0fbb97090f94d0db822dd7792bcfde3eefe8e"
+  },
+  {
+    "path": "extract-projects.py",
+    "bytes": 9808,
+    "sha256": "a92e187954562070f4a0d13c586f287cb1cb033f5df6b45b7bb76d9b5975357b"
+  },
+  {
+    "path": "map-project-costs.json",
+    "bytes": 159607,
+    "sha256": "5d52a5ee171e0c12772f8b94e30b6dd23fe9e66033f37b5c96028766aa11247f"
+  },
+  {
+    "path": "project-cost-grids.i32.zlib",
+    "bytes": 42925,
+    "sha256": "1201e994eb9aff1f13e402f9b8445cd0b2890d4238a942aecc4e5f22cca248c5"
+  },
+  {
+    "path": "project-master.json",
+    "bytes": 49564,
+    "sha256": "79564484c1f38385382c6fb2712b07b7b92a6d6a271c749abd842a5969277674"
+  },
+  {
+    "path": "project-rules.json",
+    "bytes": 4652,
+    "sha256": "79d72cb8786da359bd594d4fe75b4d0acb6178ed86c2a41df8afe6aae02c2be8"
+  },
+  {
+    "path": "source/completion.bin",
+    "bytes": 788,
+    "sha256": "e6f0cc9670fb15934684f5bc0d8b9a49a45315b8d96fa2c7421805f041077791"
+  },
+  {
+    "path": "source/gate.bin",
+    "bytes": 68,
+    "sha256": "20e93065aa747175500b03d88bec7f25be6f942a714fff50a444cb81795ec8f6"
+  },
+  {
+    "path": "source/menu_start.bin",
+    "bytes": 3456,
+    "sha256": "01304beaf34c422de49a939e2445d4e4822f9cad11ac9cbcb15571d12be4d7ed"
+  },
+  {
+    "path": "source/project-master.bin",
+    "bytes": 360,
+    "sha256": "48c52c3e6b3525e89e34a0e458bdad01468006fded6240c49266d917466ec36e"
+  },
+  {
+    "path": "source/quote.bin",
+    "bytes": 592,
+    "sha256": "883f3bbaccda5efb814159912c79c72be7117b37fe0b7149bc6004ebd38c8116"
+  },
+  {
+    "path": "source/site_confirm.bin",
+    "bytes": 256,
+    "sha256": "13d2df6e0731b9e77bd978d57c44ef82a676f7b5a0c795be10ad96cb8a67fc92"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 1530,
+    "sha256": "e74015fd7d43f545ff03e65e12d02e925bdc64cca8e7357c1c49651d1c8d2f48"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1186,
+    "sha256": "a353542df6b70161d426cd5f9842798485e1f9e795081179dc483df5caffd985"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 588,
+    "sha256": "67658b5d3e06440b1114b081af297022789ebd3fa0b6c89f229dce0958e527dc"
+  },
+  {
+    "path": "whole-building-removal-examples.json",
+    "bytes": 10047,
+    "sha256": "759ac6de902a13156d76a7a6f50f2f233e3257a6efb0c640d59afc6d304893f8"
+  }
+]

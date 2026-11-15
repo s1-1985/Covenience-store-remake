@@ -1,0 +1,30 @@
+{
+  "target": "Native Android game data and logic, without original EXE/CPU/BIOS execution",
+  "master": "project-master.json:18 rows, footprint/tile/attribute/event/mix mapping. Unknown raw fields do not drive invented rules.",
+  "runtime_order": [
+    "Reject while one project pending",
+    "Choose project and quote using live town cells",
+    "Check total cash with source strict boundary",
+    "Post full project capital expense once and reserve cells",
+    "Persist pending selection/rect/countdown and RNG state",
+    "On each midnight decrement countdown, clear and complete building",
+    "Generate source-linked completion message/event, then run later day/month updates"
+  ],
+  "population": "Use five per-cell customer mix choices and their profile populations. Duplicate rows have duplicate probability. Facility population is not automatically residential population.",
+  "initial_maps": "project-cost-grids.i32.zlib and map-project-costs.json are reference source calculations; regenerate quotes after town mutations.",
+  "preserve": [
+    "whole-building removal outside selected rectangle",
+    "signed32/truncation order",
+    "signed land coefficient retained",
+    "original cursor versus shifted rectangle",
+    "single pending project",
+    "cash==total rejection",
+    "u16 countdown and RNG sequence"
+  ],
+  "unresolved": [
+    "Raw project fields+2,+4,+6,+8,+16 are retained without semantic labels.",
+    "Notification sound stack dependency unresolved.",
+    "Static source maps are not post-play observations; no new APK in this data extraction."
+  ],
+  "implementation_status": "Data extracted; Android gameplay integration and APK build not performed in this work."
+}

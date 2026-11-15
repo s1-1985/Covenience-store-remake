@@ -1,0 +1,592 @@
+[
+  {
+    "map": "TOWN0001",
+    "selection": 0,
+    "name": "交番",
+    "origin": [
+      46,
+      2
+    ],
+    "rect": [
+      46,
+      2,
+      47,
+      3
+    ],
+    "base_cost": 400000,
+    "land": 20000000,
+    "full_demolition": 30000000,
+    "site_surcharge": 5000000,
+    "total_charge": 5400000,
+    "minimum_cash_to_confirm": 5400001,
+    "removed_buildings": [
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        46,
+        4
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 1,
+    "name": "消防署",
+    "origin": [
+      46,
+      2
+    ],
+    "rect": [
+      46,
+      2,
+      48,
+      3
+    ],
+    "base_cost": 600000,
+    "land": 30000000,
+    "full_demolition": 30000000,
+    "site_surcharge": 6000000,
+    "total_charge": 6600000,
+    "minimum_cash_to_confirm": 6600001,
+    "removed_buildings": [
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        46,
+        4
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 2,
+    "name": "住宅",
+    "origin": [
+      46,
+      2
+    ],
+    "rect": [
+      46,
+      2,
+      48,
+      3
+    ],
+    "base_cost": 4200000,
+    "land": 30000000,
+    "full_demolition": 30000000,
+    "site_surcharge": 6000000,
+    "total_charge": 10200000,
+    "minimum_cash_to_confirm": 10200001,
+    "removed_buildings": [
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        46,
+        4
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 4,
+    "name": "体育館",
+    "origin": [
+      46,
+      2
+    ],
+    "rect": [
+      46,
+      2,
+      48,
+      3
+    ],
+    "base_cost": 4200000,
+    "land": 30000000,
+    "full_demolition": 30000000,
+    "site_surcharge": 6000000,
+    "total_charge": 10200000,
+    "minimum_cash_to_confirm": 10200001,
+    "removed_buildings": [
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        46,
+        4
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 5,
+    "name": "プール",
+    "origin": [
+      46,
+      2
+    ],
+    "rect": [
+      46,
+      2,
+      48,
+      3
+    ],
+    "base_cost": 1800000,
+    "land": 30000000,
+    "full_demolition": 30000000,
+    "site_surcharge": 6000000,
+    "total_charge": 7800000,
+    "minimum_cash_to_confirm": 7800001,
+    "removed_buildings": [
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        46,
+        4
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 6,
+    "name": "運動場",
+    "origin": [
+      46,
+      0
+    ],
+    "rect": [
+      46,
+      0,
+      50,
+      3
+    ],
+    "base_cost": 2000000,
+    "land": 100000000,
+    "full_demolition": 60000000,
+    "site_surcharge": 16000000,
+    "total_charge": 18000000,
+    "minimum_cash_to_confirm": 18000001,
+    "removed_buildings": [
+      [
+        44,
+        46,
+        0
+      ],
+      [
+        45,
+        46,
+        1
+      ],
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        46,
+        4
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 7,
+    "name": "ｲﾍﾞﾝﾄ会場",
+    "origin": [
+      46,
+      2
+    ],
+    "rect": [
+      46,
+      2,
+      47,
+      3
+    ],
+    "base_cost": 6000000,
+    "land": 20000000,
+    "full_demolition": 30000000,
+    "site_surcharge": 5000000,
+    "total_charge": 11000000,
+    "minimum_cash_to_confirm": 11000001,
+    "removed_buildings": [
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        46,
+        4
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 8,
+    "name": "幼稚園",
+    "origin": [
+      46,
+      2
+    ],
+    "rect": [
+      46,
+      2,
+      48,
+      3
+    ],
+    "base_cost": 1200000,
+    "land": 30000000,
+    "full_demolition": 30000000,
+    "site_surcharge": 6000000,
+    "total_charge": 7200000,
+    "minimum_cash_to_confirm": 7200001,
+    "removed_buildings": [
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        46,
+        4
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 9,
+    "name": "小学校",
+    "origin": [
+      46,
+      0
+    ],
+    "rect": [
+      46,
+      0,
+      49,
+      3
+    ],
+    "base_cost": 3200000,
+    "land": 80000000,
+    "full_demolition": 60000000,
+    "site_surcharge": 14000000,
+    "total_charge": 17200000,
+    "minimum_cash_to_confirm": 17200001,
+    "removed_buildings": [
+      [
+        44,
+        46,
+        0
+      ],
+      [
+        45,
+        46,
+        1
+      ],
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        46,
+        4
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 10,
+    "name": "中学校",
+    "origin": [
+      46,
+      0
+    ],
+    "rect": [
+      46,
+      0,
+      50,
+      4
+    ],
+    "base_cost": 5000000,
+    "land": 125000000,
+    "full_demolition": 98000000,
+    "site_surcharge": 22300000,
+    "total_charge": 27300000,
+    "minimum_cash_to_confirm": 27300001,
+    "removed_buildings": [
+      [
+        44,
+        46,
+        0
+      ],
+      [
+        45,
+        46,
+        1
+      ],
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ],
+      [
+        44,
+        47,
+        4
+      ],
+      [
+        48,
+        50,
+        4
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        51,
+        4
+      ],
+      [
+        50,
+        5
+      ],
+      [
+        51,
+        5
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 11,
+    "name": "高校",
+    "origin": [
+      46,
+      0
+    ],
+    "rect": [
+      46,
+      0,
+      51,
+      5
+    ],
+    "base_cost": 7200000,
+    "land": 180000000,
+    "full_demolition": 150000000,
+    "site_surcharge": 33000000,
+    "total_charge": 40200000,
+    "minimum_cash_to_confirm": 40200001,
+    "removed_buildings": [
+      [
+        44,
+        46,
+        0
+      ],
+      [
+        45,
+        46,
+        1
+      ],
+      [
+        43,
+        47,
+        2
+      ],
+      [
+        46,
+        46,
+        3
+      ],
+      [
+        44,
+        47,
+        4
+      ],
+      [
+        48,
+        50,
+        4
+      ],
+      [
+        39,
+        46,
+        5
+      ],
+      [
+        45,
+        48,
+        5
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        46,
+        6
+      ],
+      [
+        47,
+        6
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 12,
+    "name": "大学",
+    "origin": [
+      17,
+      0
+    ],
+    "rect": [
+      17,
+      0,
+      23,
+      6
+    ],
+    "base_cost": 9800000,
+    "land": 245000000,
+    "full_demolition": 98000000,
+    "site_surcharge": 34300000,
+    "total_charge": 44100000,
+    "minimum_cash_to_confirm": 44100001,
+    "removed_buildings": [
+      [
+        45,
+        17,
+        2
+      ],
+      [
+        62,
+        17,
+        4
+      ],
+      [
+        44,
+        17,
+        5
+      ],
+      [
+        47,
+        17,
+        6
+      ],
+      [
+        43,
+        20,
+        6
+      ],
+      [
+        46,
+        21,
+        6
+      ]
+    ],
+    "outside_selected_rect": [
+      [
+        17,
+        7
+      ],
+      [
+        18,
+        7
+      ],
+      [
+        21,
+        7
+      ]
+    ],
+    "effect": "Mode0 demolition clears entire old positive-category footprints, including these cells outside the selected rectangle. They are not reserved as project land."
+  }
+]
