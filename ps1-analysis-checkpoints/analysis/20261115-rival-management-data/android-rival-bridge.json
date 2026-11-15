@@ -1,0 +1,22 @@
+{
+  "target": "Native Android rival management using extracted data and ordinary logic; no original EXE/CPU/BIOS runtime.",
+  "data": [
+    "rival-layout-costs.json",
+    "initial-rival-inputs.json",
+    "staff-first-free-links.json",
+    "rival-price-initialization.json",
+    "initial-withdrawal-values.json"
+  ],
+  "integrate": [
+    "Run withdrawal before RNG expansion; preserve source store order and one withdrawal per call.",
+    "Read previous-month profit after finance close; use signed16 streak threshold and serial1 protection/January exception.",
+    "Respect active slots,35-person ownership and cyclic first-free hiring.",
+    "Use original tier/header to select variant2/3/4, product-derived permit fees and restriction masks.",
+    "Use top-left land>=8 and all4 mask checks; actual live town required.",
+    "Compute full six costs and accept exact funding equality; preserve rival-specific ledger destinations.",
+    "Apply original schedule/27 settings RNG initialization; activate only after all prerequisites.",
+    "Keep candidate dirty state distinct from active stores."
+  ],
+  "source_map_note": "Initial4 source maps have zero eligible rival origins. Current-month natural growth follows manager call, so newly raised land can only affect a later invocation.",
+  "scope": "Data extraction only; native gameplay integration/APK not updated."
+}

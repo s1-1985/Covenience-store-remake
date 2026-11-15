@@ -1,0 +1,87 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 7748,
+    "sha256": "a19a127e8e143971e6ef556d5ff77084cf07610cdb85b893723b20ffe9b0e60a"
+  },
+  {
+    "path": "android-rival-bridge.json",
+    "bytes": 1371,
+    "sha256": "3d5a24a3ae7c1148643af2de8ccf675ec894870aaa1a3d0f4eeeefe5ae61a7af"
+  },
+  {
+    "path": "extract-rivals.py",
+    "bytes": 9537,
+    "sha256": "2f6c15efb354ea60064715885a2d378857359f3bf63a156089c75dc6c5ffb4fc"
+  },
+  {
+    "path": "initial-rival-inputs.json",
+    "bytes": 7323,
+    "sha256": "3a6532cd4a3608d70dc23e2054caf32983d6193e7198ce1f8fbd1b386783f54c"
+  },
+  {
+    "path": "initial-withdrawal-values.json",
+    "bytes": 4096,
+    "sha256": "4a48f8e03d75c72869eb93b3c44e236fac4d61a9c62c33f74d9073b7d999dcf0"
+  },
+  {
+    "path": "map-layout-siting-links.json",
+    "bytes": 18204,
+    "sha256": "7e4890974bc5a69e7d986eb588a11a38a52f80d30cb9b009746830f421d1b58d"
+  },
+  {
+    "path": "rival-decision-rules.json",
+    "bytes": 4869,
+    "sha256": "6f143c40136c9b082053796490796dd68ee6ada69364bd846c55addb392a9488"
+  },
+  {
+    "path": "rival-layout-costs.json",
+    "bytes": 19375,
+    "sha256": "d1b67027b65bdf77fac5a054eb91375d30e1c2705ef92f8e66b5c5557ff90218"
+  },
+  {
+    "path": "rival-price-initialization.json",
+    "bytes": 16258,
+    "sha256": "95f25bf34e5fa24fdb96b6ffd802ab89cf11a1247032f4226a5ac0beef0f53fd"
+  },
+  {
+    "path": "source/equipment_value.bin",
+    "bytes": 404,
+    "sha256": "09f51e7def463a4e6cf07805d3687c7c6a85277002a0e8f9e562ba4d8827fc7c"
+  },
+  {
+    "path": "source/inventory_value.bin",
+    "bytes": 660,
+    "sha256": "3cc1fc04aa218227365d978a6486a37d1552517ce2c398722abdbd3598611e1a"
+  },
+  {
+    "path": "source/layout_loader.bin",
+    "bytes": 588,
+    "sha256": "b44f4e066e754f9906c3add79a77d7d24118bbcdced765154dcf090cd78026ba"
+  },
+  {
+    "path": "source/monthly_manager.bin",
+    "bytes": 5236,
+    "sha256": "e378c235e8e03ad454d18f362d666c81223eecc6697a96fa64ef9161955dffa1"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 1891,
+    "sha256": "7dc94b9475fd19f616dc63af6adf321a4013e897bb00b71810421e09e900b8c5"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1012,
+    "sha256": "9112b203aaa4088f92f92c26f5bbf07acfceb709529679a070da2bd5260cbc0c"
+  },
+  {
+    "path": "staff-first-free-links.json",
+    "bytes": 6215,
+    "sha256": "3a8b7d2113f634e31c9f231bbb1f46f3682fe547ef97c905bec472dd035524df"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 687,
+    "sha256": "4b3bc6bcee11f2893e4bfe3d996f0695d7ae451086a31fea010a038d788f83af"
+  }
+]

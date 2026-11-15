@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-15：ライバル18内装・72配置/マップ接続、初期11店の撤退資産と採用・価格設定](analysis/20261115-rival-management-data/README.md)
+
 - [2026-11-15：余剰資金寄付・アイドル来客記念・祭り、原メッセージと人気の更新範囲](analysis/20261115-donations-milestone-data/README.md)
 
 - [2026-11-15：年次評価5項目・累積来客と年商、4マップと誘致人口72例・100点7条件](analysis/20261115-annual-evaluation-data/README.md)

@@ -1,0 +1,951 @@
+{
+  "rule": "After successful capital posting: for each27 products draw RNG&15. If zero draw another RNG%7*5; subtract only when delta<current setting. Store+0xc7c+product*4. No existing-rival repricing claim.",
+  "products": [
+    {
+      "product": 0,
+      "name": "冷たい飲料",
+      "initial_setting": 50,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 50
+        },
+        {
+          "delta": 5,
+          "after": 45
+        },
+        {
+          "delta": 10,
+          "after": 40
+        },
+        {
+          "delta": 15,
+          "after": 35
+        },
+        {
+          "delta": 20,
+          "after": 30
+        },
+        {
+          "delta": 25,
+          "after": 25
+        },
+        {
+          "delta": 30,
+          "after": 20
+        }
+      ]
+    },
+    {
+      "product": 1,
+      "name": "温かい飲料",
+      "initial_setting": 50,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 50
+        },
+        {
+          "delta": 5,
+          "after": 45
+        },
+        {
+          "delta": 10,
+          "after": 40
+        },
+        {
+          "delta": 15,
+          "after": 35
+        },
+        {
+          "delta": 20,
+          "after": 30
+        },
+        {
+          "delta": 25,
+          "after": 25
+        },
+        {
+          "delta": 30,
+          "after": 20
+        }
+      ]
+    },
+    {
+      "product": 2,
+      "name": "酒類",
+      "initial_setting": 30,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 30
+        },
+        {
+          "delta": 5,
+          "after": 25
+        },
+        {
+          "delta": 10,
+          "after": 20
+        },
+        {
+          "delta": 15,
+          "after": 15
+        },
+        {
+          "delta": 20,
+          "after": 10
+        },
+        {
+          "delta": 25,
+          "after": 5
+        },
+        {
+          "delta": 30,
+          "after": 30
+        }
+      ]
+    },
+    {
+      "product": 3,
+      "name": "弁当類",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 4,
+      "name": "パン類",
+      "initial_setting": 50,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 50
+        },
+        {
+          "delta": 5,
+          "after": 45
+        },
+        {
+          "delta": 10,
+          "after": 40
+        },
+        {
+          "delta": 15,
+          "after": 35
+        },
+        {
+          "delta": 20,
+          "after": 30
+        },
+        {
+          "delta": 25,
+          "after": 25
+        },
+        {
+          "delta": 30,
+          "after": 20
+        }
+      ]
+    },
+    {
+      "product": 5,
+      "name": "ｲﾝｽﾀﾝﾄ類",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 6,
+      "name": "菓子類",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 7,
+      "name": "本類",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 8,
+      "name": "たばこ",
+      "initial_setting": 30,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 30
+        },
+        {
+          "delta": 5,
+          "after": 25
+        },
+        {
+          "delta": 10,
+          "after": 20
+        },
+        {
+          "delta": 15,
+          "after": 15
+        },
+        {
+          "delta": 20,
+          "after": 10
+        },
+        {
+          "delta": 25,
+          "after": 5
+        },
+        {
+          "delta": 30,
+          "after": 30
+        }
+      ]
+    },
+    {
+      "product": 9,
+      "name": "ｱｲｽｸﾘｰﾑ",
+      "initial_setting": 50,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 50
+        },
+        {
+          "delta": 5,
+          "after": 45
+        },
+        {
+          "delta": 10,
+          "after": 40
+        },
+        {
+          "delta": 15,
+          "after": 35
+        },
+        {
+          "delta": 20,
+          "after": 30
+        },
+        {
+          "delta": 25,
+          "after": 25
+        },
+        {
+          "delta": 30,
+          "after": 20
+        }
+      ]
+    },
+    {
+      "product": 10,
+      "name": "文房具",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 11,
+      "name": "電気製品類",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 12,
+      "name": "野菜類",
+      "initial_setting": 50,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 50
+        },
+        {
+          "delta": 5,
+          "after": 45
+        },
+        {
+          "delta": 10,
+          "after": 40
+        },
+        {
+          "delta": 15,
+          "after": 35
+        },
+        {
+          "delta": 20,
+          "after": 30
+        },
+        {
+          "delta": 25,
+          "after": 25
+        },
+        {
+          "delta": 30,
+          "after": 20
+        }
+      ]
+    },
+    {
+      "product": 13,
+      "name": "魚類",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 14,
+      "name": "肉類",
+      "initial_setting": 50,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 50
+        },
+        {
+          "delta": 5,
+          "after": 45
+        },
+        {
+          "delta": 10,
+          "after": 40
+        },
+        {
+          "delta": 15,
+          "after": 35
+        },
+        {
+          "delta": 20,
+          "after": 30
+        },
+        {
+          "delta": 25,
+          "after": 25
+        },
+        {
+          "delta": 30,
+          "after": 20
+        }
+      ]
+    },
+    {
+      "product": 15,
+      "name": "レトルト類",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 16,
+      "name": "調味料類",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 17,
+      "name": "冷凍食品類",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 18,
+      "name": "おでん",
+      "initial_setting": 50,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 50
+        },
+        {
+          "delta": 5,
+          "after": 45
+        },
+        {
+          "delta": 10,
+          "after": 40
+        },
+        {
+          "delta": 15,
+          "after": 35
+        },
+        {
+          "delta": 20,
+          "after": 30
+        },
+        {
+          "delta": 25,
+          "after": 25
+        },
+        {
+          "delta": 30,
+          "after": 20
+        }
+      ]
+    },
+    {
+      "product": 19,
+      "name": "日用品",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 20,
+      "name": "コピー用紙",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 21,
+      "name": "宅急便申込書",
+      "initial_setting": 20,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 20
+        },
+        {
+          "delta": 5,
+          "after": 15
+        },
+        {
+          "delta": 10,
+          "after": 10
+        },
+        {
+          "delta": 15,
+          "after": 5
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 20
+        },
+        {
+          "delta": 30,
+          "after": 20
+        }
+      ]
+    },
+    {
+      "product": 22,
+      "name": "薬品",
+      "initial_setting": 30,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 30
+        },
+        {
+          "delta": 5,
+          "after": 25
+        },
+        {
+          "delta": 10,
+          "after": 20
+        },
+        {
+          "delta": 15,
+          "after": 15
+        },
+        {
+          "delta": 20,
+          "after": 10
+        },
+        {
+          "delta": 25,
+          "after": 5
+        },
+        {
+          "delta": 30,
+          "after": 30
+        }
+      ]
+    },
+    {
+      "product": 23,
+      "name": "下着類",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 24,
+      "name": "イベント商品",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 25,
+      "name": "中華まん",
+      "initial_setting": 40,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 40
+        },
+        {
+          "delta": 5,
+          "after": 35
+        },
+        {
+          "delta": 10,
+          "after": 30
+        },
+        {
+          "delta": 15,
+          "after": 25
+        },
+        {
+          "delta": 20,
+          "after": 20
+        },
+        {
+          "delta": 25,
+          "after": 15
+        },
+        {
+          "delta": 30,
+          "after": 10
+        }
+      ]
+    },
+    {
+      "product": 26,
+      "name": "現金",
+      "initial_setting": 0,
+      "discount_candidates": [
+        {
+          "delta": 0,
+          "after": 0
+        },
+        {
+          "delta": 5,
+          "after": 0
+        },
+        {
+          "delta": 10,
+          "after": 0
+        },
+        {
+          "delta": 15,
+          "after": 0
+        },
+        {
+          "delta": 20,
+          "after": 0
+        },
+        {
+          "delta": 25,
+          "after": 0
+        },
+        {
+          "delta": 30,
+          "after": 0
+        }
+      ]
+    }
+  ],
+  "opening_hours": "RNG%6 chooses schedule0..5; schedule6 is excluded from this initialization branch."
+}

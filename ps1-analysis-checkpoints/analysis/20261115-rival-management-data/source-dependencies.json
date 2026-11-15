@@ -1,0 +1,39 @@
+{
+  "primary": {
+    "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+    "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd"
+  },
+  "reused": [
+    {
+      "path": "../20261114-interior-transactions-data/layout-interior-costs.json",
+      "purpose": "All30 original layout anchors/assets; selected18 rechecked against raw EXE SHA256 for each3108-byte row"
+    },
+    {
+      "path": "../20261114-interior-transactions-data/fixture-transaction-master.json",
+      "purpose": "Source fixture prices, product/runtime image/procurement-unit mapping"
+    },
+    {
+      "path": "../20261114-permit-siting-data/README.md",
+      "purpose": "Live category/store permit-mask rebuilding"
+    },
+    {
+      "path": "../20261114-staff-roster-growth-data/README.md",
+      "purpose": "Original54-byte staff ownership/free-state fields"
+    },
+    {
+      "path": "../20261113-operating-cost-data/schedule-fixture-costs.json",
+      "purpose": "Seven source schedule names"
+    },
+    {
+      "path": "../20261103-rival-monthly/README.md",
+      "purpose": "Existing monthly rival algorithm and controlled withdrawal/opening proof; not new tests"
+    }
+  ],
+  "prior_helpers": [
+    "runtime/algorithm-analysis/rival_management.py",
+    "runtime/algorithm-analysis/rival_helpers.py",
+    "runtime/algorithm-analysis/town_loader.py"
+  ],
+  "distinction": "Monthly rival decision/withdrawal/opening model and controlled chains existed. New source-data links bind18 actual layout/permit/cost/posting variants to4 headers/72 map-layout rows,11 withdrawal asset values,140 first-free staff starts and27 initial price tables. No new month gameplay runs.",
+  "checks": "Disc/EXE hashes,18 exact layout hashes/product permit bindings, all4 original source maps,11 rival assets,72 layout-map data rows,140 staff starts. No original CPU updates."
+}

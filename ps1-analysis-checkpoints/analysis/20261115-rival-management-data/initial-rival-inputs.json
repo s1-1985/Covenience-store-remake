@@ -1,0 +1,399 @@
+[
+  {
+    "map": "TOWN0001",
+    "source_town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+    "header_layout_control": 0,
+    "cash": [
+      200000000,
+      100000000
+    ],
+    "active_stores": 2,
+    "active_own_stores": 0,
+    "rival_serial_max": 2,
+    "size_control_CD994_after_loader": 2,
+    "tier_limit_exclusive": 2,
+    "available_candidate_layouts": [
+      2,
+      7
+    ],
+    "source_land_histogram": {
+      "5": 3000
+    },
+    "free_staff_count": 29,
+    "stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "serial": 1,
+        "tier": 1,
+        "rect": [
+          43,
+          12,
+          44,
+          13
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          14,
+          24,
+          9
+        ]
+      },
+      {
+        "slot": 2,
+        "flags": 32770,
+        "serial": 2,
+        "tier": 1,
+        "rect": [
+          14,
+          10,
+          15,
+          11
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          6,
+          34,
+          18
+        ]
+      }
+    ]
+  },
+  {
+    "map": "TOWN0002",
+    "source_town_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+    "header_layout_control": 1,
+    "cash": [
+      150000000,
+      150000000
+    ],
+    "active_stores": 3,
+    "active_own_stores": 0,
+    "rival_serial_max": 3,
+    "size_control_CD994_after_loader": 3,
+    "tier_limit_exclusive": 4,
+    "available_candidate_layouts": [
+      3,
+      8,
+      13,
+      18
+    ],
+    "source_land_histogram": {
+      "5": 3000
+    },
+    "free_staff_count": 26,
+    "stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "serial": 1,
+        "tier": 1,
+        "rect": [
+          47,
+          12,
+          48,
+          13
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          14,
+          26,
+          10
+        ]
+      },
+      {
+        "slot": 2,
+        "flags": 32770,
+        "serial": 2,
+        "tier": 1,
+        "rect": [
+          23,
+          14,
+          24,
+          15
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          34,
+          5,
+          24
+        ]
+      },
+      {
+        "slot": 3,
+        "flags": 32771,
+        "serial": 3,
+        "tier": 1,
+        "rect": [
+          19,
+          34,
+          20,
+          35
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          9,
+          21,
+          7
+        ]
+      }
+    ]
+  },
+  {
+    "map": "TOWN0003",
+    "source_town_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+    "header_layout_control": 2,
+    "cash": [
+      150000000,
+      200000000
+    ],
+    "active_stores": 1,
+    "active_own_stores": 0,
+    "rival_serial_max": 1,
+    "size_control_CD994_after_loader": 1,
+    "tier_limit_exclusive": 2,
+    "available_candidate_layouts": [
+      4,
+      9
+    ],
+    "source_land_histogram": {
+      "5": 3000
+    },
+    "free_staff_count": 32,
+    "stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "serial": 1,
+        "tier": 1,
+        "rect": [
+          42,
+          11,
+          43,
+          12
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          34,
+          26,
+          9
+        ]
+      }
+    ]
+  },
+  {
+    "map": "TOWNPS",
+    "source_town_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+    "header_layout_control": 2,
+    "cash": [
+      150000000,
+      200000000
+    ],
+    "active_stores": 5,
+    "active_own_stores": 0,
+    "rival_serial_max": 5,
+    "size_control_CD994_after_loader": 5,
+    "tier_limit_exclusive": 4,
+    "available_candidate_layouts": [
+      4,
+      9,
+      14,
+      19
+    ],
+    "source_land_histogram": {
+      "5": 3000
+    },
+    "free_staff_count": 23,
+    "stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "serial": 1,
+        "tier": 3,
+        "rect": [
+          30,
+          24,
+          31,
+          25
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          4,
+          3,
+          10
+        ]
+      },
+      {
+        "slot": 2,
+        "flags": 32770,
+        "serial": 2,
+        "tier": 1,
+        "rect": [
+          43,
+          24,
+          44,
+          25
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          34,
+          7,
+          -1
+        ]
+      },
+      {
+        "slot": 3,
+        "flags": 32771,
+        "serial": 3,
+        "tier": 1,
+        "rect": [
+          17,
+          24,
+          18,
+          25
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          19,
+          14,
+          -1
+        ]
+      },
+      {
+        "slot": 4,
+        "flags": 32772,
+        "serial": 4,
+        "tier": 1,
+        "rect": [
+          30,
+          11,
+          31,
+          12
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          6,
+          16,
+          -1
+        ]
+      },
+      {
+        "slot": 5,
+        "flags": 32773,
+        "serial": 5,
+        "tier": 1,
+        "rect": [
+          30,
+          37,
+          31,
+          38
+        ],
+        "previous_month_ledger": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "previous_month_profit": 0,
+        "loss_streak": 0,
+        "streak_after_next_profit_check": 0,
+        "staff": [
+          5,
+          21,
+          -1
+        ]
+      }
+    ]
+  }
+]

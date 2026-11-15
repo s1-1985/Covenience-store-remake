@@ -1,0 +1,45 @@
+{
+  "source": "0x8002a8e0..0x8002bd54",
+  "clock": "Only subhour0x800ce618==0, hour0x800ce614==0, stage/day0x800ce610==1.",
+  "order": [
+    "Count owner0/owner1 stores in source order array up to first-1 (max10).",
+    "Inspect rivals in that order for withdrawal; after first withdrawal return immediately.",
+    "If no rivals remain: force rival cash0 and return.",
+    "Draw RNG once, continue only if low2 bits zero.",
+    "Find first inactive slot; initialize candidate (it remains inactive until successful activation).",
+    "Select1..3 staff, tier, built-in layout, permits, site and costs.",
+    "If any prerequisite fails return with partial candidate data retained.",
+    "On success post costs, initialize hours/product settings, bind staff, increment serial, activate town footprint, rebuild masks/cache and notify."
+  ],
+  "withdrawal": {
+    "profit": "Previous-month five signed32 ledger fields+0xd4c; revenue field+16 minus first4 costs with signed32 arithmetic.",
+    "streak": "If profit<0 increment unsigned16+0x1184; otherwise set0, including exactly0 profit. Later threshold compares that field as signed16>=6.",
+    "normal": "Withdraw at signed streak>=6 except serial1 is protected while rival count>=2.",
+    "exception": "Serial1 AND own count==9 AND month==1 withdraws regardless of profit/streak, including otherwise protected case.",
+    "refund": "Post negative land value and negative premises mode0 value via1CBC4; premises value=(trunc(tier/2)+1)*3m + equipment + remaining procurement-valued stock.",
+    "staff": "Unbind assigned staff and close town footprint using source close helper.",
+    "last_rival": "Force rival company cash to0 even after refund posting; emit final withdrawal notification.",
+    "notification": "Per-store sound28, final sound100 mapped by event consumer. One store withdrawal per manager invocation."
+  },
+  "opening": {
+    "gate": "RNG output&3==0, conditional on rival presence/no withdrawal. This is not an unconditional monthly25% opening probability.",
+    "staff": "Draw count RNG%3+1. For each slot draw start RNG%35, circularly scan35 records for owner word0 and not already selected. Nonzero ownership, including0xffff, blocks selection. No partial opening when insufficient people.",
+    "tier": "signed8 control0x800cd994<3: RNG%2; <6:RNG%4; otherwise RNG%6. Initial loader fills this control from total active source count; no assumption every later writer is recovered here.",
+    "layout": "mode=signed8 header/control0x800cd8a8+3; native loader row=tier*5+mode-1. Original TOWN headers0/1/2 select variants2/3/4.",
+    "permit": "Inspect product images in loaded layout; product8 tobacco=>C74,2 alcohol=>C75,22 drug=>C76. Required fees3m/7m/10m. Site mask8 plus4/2/1 respectively.",
+    "site": "Start x=RNG%59,y=RNG%49. Wrap search y over0..48, x over0..58 (reset x start each row), first suitable2x2. Only top-left signed land coefficient must>=8; all four cells must have zero intersection with site mask.",
+    "cost": "land + trunc(full demolition/2) + construction6m*(trunc(tier/2)+1) + required permit fees + equipment + inventory. Signed32 sum. Cash equality accepted (reject only total>rival cash).",
+    "ledger": "Capital: land,half demolition,construction,permits,inventory. Procurement store+D94:equipment. Preserve original caller posting, not player purchase assumptions.",
+    "hours": "RNG%6 selects schedule0..5, including24時間; schedule6臨時休業 excluded.",
+    "product_settings": "27 initial settings from original product master. For each product, RNG&15==0 triggers another RNG%7*5 discount candidate0..30; apply only if candidate<current setting.",
+    "successful_activation": "Increment rival u16 serial0x800cd9e2; bind selected staff; place rival town tile; rebuild flags/cache; queue sound101.",
+    "failure": "Candidate slot may retain initialized record, staff references and loaded layout; no active byte means no opened store. Do not infer opening from stale return value."
+  },
+  "existing_remodel_scope": "This recovered monthly-manager path opens/closes stores; no existing-store remodel operation is identified inside this function. Other game systems are not ruled out.",
+  "known_before": "Monthly rival decision/withdrawal/opening model and controlled chains existed. New source-data links bind18 actual layout/permit/cost/posting variants to4 headers/72 map-layout rows,11 withdrawal asset values,140 first-free staff starts and27 initial price tables. No new month gameplay runs.",
+  "limits": [
+    "All source initial maps have land coefficient5, so all source site counts are0 for this>=8 rule. This is not a proof rivals never expand later.",
+    "Withdrawal refunds are static asset valuations, not naturally realized withdrawals.",
+    "Staff circular start counts are data mappings, not measured LCG sampling probabilities."
+  ]
+}

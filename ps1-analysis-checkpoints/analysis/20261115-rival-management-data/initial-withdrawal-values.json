@@ -1,0 +1,189 @@
+[
+  {
+    "map": "TOWN0001",
+    "slot": 1,
+    "serial": 1,
+    "rect": [
+      43,
+      12,
+      44,
+      13
+    ],
+    "land_refund": 20000000,
+    "equipment": 33620,
+    "inventory": 327125,
+    "premises_refund": 3360745,
+    "total_refund": 23360745,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  },
+  {
+    "map": "TOWN0001",
+    "slot": 2,
+    "serial": 2,
+    "rect": [
+      14,
+      10,
+      15,
+      11
+    ],
+    "land_refund": 20000000,
+    "equipment": 33620,
+    "inventory": 327125,
+    "premises_refund": 3360745,
+    "total_refund": 23360745,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  },
+  {
+    "map": "TOWN0002",
+    "slot": 1,
+    "serial": 1,
+    "rect": [
+      47,
+      12,
+      48,
+      13
+    ],
+    "land_refund": 20000000,
+    "equipment": 33620,
+    "inventory": 327125,
+    "premises_refund": 3360745,
+    "total_refund": 23360745,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  },
+  {
+    "map": "TOWN0002",
+    "slot": 2,
+    "serial": 2,
+    "rect": [
+      23,
+      14,
+      24,
+      15
+    ],
+    "land_refund": 20000000,
+    "equipment": 33620,
+    "inventory": 327125,
+    "premises_refund": 3360745,
+    "total_refund": 23360745,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  },
+  {
+    "map": "TOWN0002",
+    "slot": 3,
+    "serial": 3,
+    "rect": [
+      19,
+      34,
+      20,
+      35
+    ],
+    "land_refund": 20000000,
+    "equipment": 33620,
+    "inventory": 327125,
+    "premises_refund": 3360745,
+    "total_refund": 23360745,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  },
+  {
+    "map": "TOWN0003",
+    "slot": 1,
+    "serial": 1,
+    "rect": [
+      42,
+      11,
+      43,
+      12
+    ],
+    "land_refund": 20000000,
+    "equipment": 33620,
+    "inventory": 327125,
+    "premises_refund": 3360745,
+    "total_refund": 23360745,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  },
+  {
+    "map": "TOWNPS",
+    "slot": 1,
+    "serial": 1,
+    "rect": [
+      30,
+      24,
+      31,
+      25
+    ],
+    "land_refund": 20000000,
+    "equipment": 26610,
+    "inventory": 454690,
+    "premises_refund": 6481300,
+    "total_refund": 26481300,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  },
+  {
+    "map": "TOWNPS",
+    "slot": 2,
+    "serial": 2,
+    "rect": [
+      43,
+      24,
+      44,
+      25
+    ],
+    "land_refund": 20000000,
+    "equipment": 27960,
+    "inventory": 262375,
+    "premises_refund": 3290335,
+    "total_refund": 23290335,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  },
+  {
+    "map": "TOWNPS",
+    "slot": 3,
+    "serial": 3,
+    "rect": [
+      17,
+      24,
+      18,
+      25
+    ],
+    "land_refund": 20000000,
+    "equipment": 27960,
+    "inventory": 262375,
+    "premises_refund": 3290335,
+    "total_refund": 23290335,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  },
+  {
+    "map": "TOWNPS",
+    "slot": 4,
+    "serial": 4,
+    "rect": [
+      30,
+      11,
+      31,
+      12
+    ],
+    "land_refund": 20000000,
+    "equipment": 27960,
+    "inventory": 262375,
+    "premises_refund": 3290335,
+    "total_refund": 23290335,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  },
+  {
+    "map": "TOWNPS",
+    "slot": 5,
+    "serial": 5,
+    "rect": [
+      30,
+      37,
+      31,
+      38
+    ],
+    "land_refund": 20000000,
+    "equipment": 27960,
+    "inventory": 262375,
+    "premises_refund": 3290335,
+    "total_refund": 23290335,
+    "scope": "Static source asset value for conditional withdrawal; no claim these initial stores withdraw."
+  }
+]
