@@ -1,0 +1,133 @@
+{
+  "context": "Derived joint requirements over normal count1..10 and each of four six-band metrics; not new gameplay tests.",
+  "minimum_stores": 8,
+  "combinations": [
+    {
+      "stores": 8,
+      "parts": [
+        16,
+        20,
+        20,
+        20,
+        20
+      ],
+      "raw": 96,
+      "total": 100,
+      "lower_bounds": {
+        "cumulative_visitors": 500000,
+        "previous_annual_sales": 600000000,
+        "total_town_population": 20000,
+        "mean_store_evaluation": 90
+      }
+    },
+    {
+      "stores": 9,
+      "parts": [
+        18,
+        20,
+        20,
+        20,
+        20
+      ],
+      "raw": 98,
+      "total": 100,
+      "lower_bounds": {
+        "cumulative_visitors": 500000,
+        "previous_annual_sales": 600000000,
+        "total_town_population": 20000,
+        "mean_store_evaluation": 90
+      }
+    },
+    {
+      "stores": 10,
+      "parts": [
+        20,
+        16,
+        20,
+        20,
+        20
+      ],
+      "raw": 96,
+      "total": 100,
+      "lower_bounds": {
+        "cumulative_visitors": 400000,
+        "previous_annual_sales": 600000000,
+        "total_town_population": 20000,
+        "mean_store_evaluation": 90
+      }
+    },
+    {
+      "stores": 10,
+      "parts": [
+        20,
+        20,
+        16,
+        20,
+        20
+      ],
+      "raw": 96,
+      "total": 100,
+      "lower_bounds": {
+        "cumulative_visitors": 500000,
+        "previous_annual_sales": 400000000,
+        "total_town_population": 20000,
+        "mean_store_evaluation": 90
+      }
+    },
+    {
+      "stores": 10,
+      "parts": [
+        20,
+        20,
+        20,
+        16,
+        20
+      ],
+      "raw": 96,
+      "total": 100,
+      "lower_bounds": {
+        "cumulative_visitors": 500000,
+        "previous_annual_sales": 600000000,
+        "total_town_population": 18000,
+        "mean_store_evaluation": 90
+      }
+    },
+    {
+      "stores": 10,
+      "parts": [
+        20,
+        20,
+        20,
+        20,
+        16
+      ],
+      "raw": 96,
+      "total": 100,
+      "lower_bounds": {
+        "cumulative_visitors": 500000,
+        "previous_annual_sales": 600000000,
+        "total_town_population": 20000,
+        "mean_store_evaluation": 70
+      }
+    },
+    {
+      "stores": 10,
+      "parts": [
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "raw": 100,
+      "total": 100,
+      "lower_bounds": {
+        "cumulative_visitors": 500000,
+        "previous_annual_sales": 600000000,
+        "total_town_population": 20000,
+        "mean_store_evaluation": 90
+      }
+    }
+  ],
+  "note": "Mode2/3 ending compares displayed100, so raw96 or98 qualifies. Mode1 ten-store target is a separate milestone, not this annual-score requirement."
+}

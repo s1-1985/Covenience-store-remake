@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-15：年次評価5項目・累積来客と年商、4マップと誘致人口72例・100点7条件](analysis/20261115-annual-evaluation-data/README.md)
+
 - [2026-11-15：誘致18種類・21万6000始点の費用、完成客構成と区画外撤去](analysis/20261115-town-project-data/README.md)
 
 - [2026-11-15：街発展・地価、4マップ12000セルの補正と住宅・会社・公共施設・行政更新](analysis/20261115-town-growth-land-data/README.md)

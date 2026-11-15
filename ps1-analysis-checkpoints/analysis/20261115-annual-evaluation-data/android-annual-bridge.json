@@ -1,0 +1,24 @@
+{
+  "target": "Native Android rules/data; no PS1 EXE, CPU emulator or BIOS runtime dependency.",
+  "data": [
+    "evaluation-thresholds.json",
+    "source-labels.json",
+    "perfect-score-combinations.json"
+  ],
+  "integration": [
+    "Keep cumulative own entered visitor quantity separate from annual revenue.",
+    "At year boundary close/shift annual ledger before displaying evaluation.",
+    "Keep monthly and annual notifications separately queued, monthly first.",
+    "At annual notification consumption, gather active own stores, previous-year revenue, total all-category population and C68 mean.",
+    "Apply signed/unsigned arithmetic and96-to100 rule, then unlock mode2/3 on displayed100.",
+    "Render five separate five-star ratings using points/4 and total using total/20.",
+    "Keep ten-store mode1 milestone separate from annual score."
+  ],
+  "data_cross_links": {
+    "projects": "../20261115-town-project-data/project-master.json",
+    "population": "../20261115-town-growth-land-data/initial-town-growth-inputs.json",
+    "cash_capital": "../20261115-remodel-accounting-data/README.md"
+  },
+  "invariant": "Provide an explicit native-game policy for absent own stores; do not invent an original zero-store result. Other pending notifications can delay consumption and change live values.",
+  "status": "Data extraction and source-derived requirements only; no Android integration/APK change in this work."
+}

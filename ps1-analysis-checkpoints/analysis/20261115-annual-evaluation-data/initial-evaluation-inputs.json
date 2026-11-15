@@ -1,0 +1,171 @@
+[
+  {
+    "map": "TOWN0001",
+    "source_town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+    "population": 2179,
+    "population_by_category": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 824,
+      "4": 423,
+      "5": 524,
+      "6": 32,
+      "7": 348,
+      "8": 28,
+      "9": 0
+    },
+    "population_points": 0,
+    "source_stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      },
+      {
+        "slot": 2,
+        "flags": 32770,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      }
+    ],
+    "active_own_stores": 0,
+    "owner_report_valid": false,
+    "note": "No initial own stores. Do not run annual average on the unmodified source file."
+  },
+  {
+    "map": "TOWN0002",
+    "source_town_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+    "population": 1880,
+    "population_by_category": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 688,
+      "4": 386,
+      "5": 467,
+      "6": 75,
+      "7": 236,
+      "8": 28,
+      "9": 0
+    },
+    "population_points": 0,
+    "source_stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      },
+      {
+        "slot": 2,
+        "flags": 32770,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      },
+      {
+        "slot": 3,
+        "flags": 32771,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      }
+    ],
+    "active_own_stores": 0,
+    "owner_report_valid": false,
+    "note": "No initial own stores. Do not run annual average on the unmodified source file."
+  },
+  {
+    "map": "TOWN0003",
+    "source_town_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+    "population": 1424,
+    "population_by_category": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 724,
+      "4": 210,
+      "5": 322,
+      "6": 36,
+      "7": 112,
+      "8": 20,
+      "9": 0
+    },
+    "population_points": 0,
+    "source_stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      }
+    ],
+    "active_own_stores": 0,
+    "owner_report_valid": false,
+    "note": "No initial own stores. Do not run annual average on the unmodified source file."
+  },
+  {
+    "map": "TOWNPS",
+    "source_town_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+    "population": 2839,
+    "population_by_category": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 32,
+      "4": 2225,
+      "5": 268,
+      "6": 70,
+      "7": 200,
+      "8": 44,
+      "9": 0
+    },
+    "population_points": 0,
+    "source_stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      },
+      {
+        "slot": 2,
+        "flags": 32770,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      },
+      {
+        "slot": 3,
+        "flags": 32771,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      },
+      {
+        "slot": 4,
+        "flags": 32772,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      },
+      {
+        "slot": 5,
+        "flags": 32773,
+        "evaluation_C68": 10,
+        "popularity_C6C": 20,
+        "previous_annual_sales_D0C": 0
+      }
+    ],
+    "active_own_stores": 0,
+    "owner_report_valid": false,
+    "note": "No initial own stores. Do not run annual average on the unmodified source file."
+  }
+]

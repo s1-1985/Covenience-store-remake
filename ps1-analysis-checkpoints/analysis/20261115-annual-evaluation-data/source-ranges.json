@@ -1,0 +1,90 @@
+{
+  "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": [
+    {
+      "file": "source/owner_evaluation.bin",
+      "start": "0x8003f7fc",
+      "end_exclusive": "0x8003fe88",
+      "sha256": "cd13b0eb186936e03262f7f05b86f0553edb023d6d7a6857fdb981f9c50ea651"
+    },
+    {
+      "file": "source/annual_queue.bin",
+      "start": "0x8003ceac",
+      "end_exclusive": "0x8003cf44",
+      "sha256": "b530b0ac84b3f639e72558739cb668afeac73b57179e5f26b3c72e065084c6b4"
+    },
+    {
+      "file": "source/annual_ledger_rollover.bin",
+      "start": "0x80029fc8",
+      "end_exclusive": "0x8002a0c4",
+      "sha256": "9336698604b37a5767128aa347e8058cdbe5545eb8594361ac4e2947a5908e43"
+    },
+    {
+      "file": "source/event_dispatch.bin",
+      "start": "0x8003ef44",
+      "end_exclusive": "0x8003f528",
+      "sha256": "ab1f8ae5afe4336f378a02962ed72ec877ad4cf7a80d06638a6b938617a5741c"
+    },
+    {
+      "file": "source/event_reserve.bin",
+      "start": "0x8003ecd8",
+      "end_exclusive": "0x8003ef44",
+      "sha256": "41b1518eeecf237c5383842e85bdc9e515f3c3bbb5f2b6c620a539d9607a7e88"
+    },
+    {
+      "file": "source/ten_store_milestone.bin",
+      "start": "0x8003ead4",
+      "end_exclusive": "0x8003ecd8",
+      "sha256": "6b66a22be20351417399a7d4cc08aea6e8c3f851b239b6e292b52e82948e126c"
+    },
+    {
+      "file": "source/visitors_save.bin",
+      "start": "0x8006baa4",
+      "end_exclusive": "0x8006babc",
+      "sha256": "cecd38043de6897ca1a537fd2b8388699311e9fa21ca97f9efa88403cbb651cb"
+    },
+    {
+      "file": "source/visitors_load.bin",
+      "start": "0x8006bec4",
+      "end_exclusive": "0x8006bedc",
+      "sha256": "a39e1a21f9f4c72d175a2335e1394447287a99fd184d30b6fcb89fbe58fd1fe1"
+    },
+    {
+      "file": "source/arrival_counter.bin",
+      "start": "0x800325e0",
+      "end_exclusive": "0x80032678",
+      "sha256": "cc7095c3bef887460c8228d0b8443d46e0b207b6c9d769b029c9ec6a4f1c026c"
+    },
+    {
+      "file": "source/arrival_owner_gate.bin",
+      "start": "0x800320cc",
+      "end_exclusive": "0x800320f4",
+      "sha256": "8007b17525467a5d105e88f772584b4ce27f47de611de9143d6f72daff90d68d"
+    },
+    {
+      "file": "source/population_reader.bin",
+      "start": "0x80020498",
+      "end_exclusive": "0x800206ac",
+      "sha256": "1b688efa6faca63887238b49f2d7d12ff73b952f1f4d8c30445386320a658ccf"
+    },
+    {
+      "file": "source/owner_screen.bin",
+      "start": "0x8006c8b0",
+      "end_exclusive": "0x8006cde0",
+      "sha256": "f643aaf1e4bd5b1decd7e120fb013eaa37e02cd962c587e80549a664aff17df0"
+    },
+    {
+      "file": "source/display_labels.bin",
+      "start": "0x800b9494",
+      "end_exclusive": "0x800b94d8",
+      "sha256": "f9d8540fa98d6e573cac30902c32102bdbef02f1d2e2c32c0dbb62fcc67156dc"
+    },
+    {
+      "file": "source/clock_order.bin",
+      "start": "0x80023438",
+      "end_exclusive": "0x800234f0",
+      "sha256": "2782f987c6166bf60f829b72741fc96585ae4322fce64189429fd1bd0902e6bd"
+    }
+  ]
+}

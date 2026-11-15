@@ -1,0 +1,59 @@
+{
+  "labels": {
+    "address": "0x800b949c",
+    "codes": [
+      238,
+      239,
+      658,
+      16386,
+      663,
+      664,
+      665,
+      382,
+      658,
+      16386,
+      228,
+      310,
+      16386,
+      520,
+      389,
+      390,
+      16386,
+      238,
+      239,
+      242,
+      243,
+      16386,
+      16386,
+      404,
+      405,
+      242,
+      243,
+      16639
+    ],
+    "text": "店舗数{4002}累積来客数{4002}年商{4002}町人口{4002}店舗評価{4002}{4002}総合評価"
+  },
+  "store_unit": {
+    "address": "0x800b9494",
+    "codes": [
+      238,
+      239,
+      16639
+    ],
+    "text": "店舗"
+  },
+  "person_unit": {
+    "address": "0x800b94d4",
+    "codes": [
+      389,
+      16639
+    ],
+    "text": "人"
+  },
+  "star_glyphs": {
+    "filled": 651,
+    "empty": 652,
+    "display": "Always five glyphs; fill min(5,max(0,value))."
+  },
+  "decoder": "Previously transcribed original PSMOJI font mapping; no new glyph recognition."
+}

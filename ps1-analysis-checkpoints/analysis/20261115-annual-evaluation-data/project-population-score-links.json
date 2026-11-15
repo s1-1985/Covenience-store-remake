@@ -1,0 +1,1514 @@
+[
+  {
+    "map": "TOWN0001",
+    "selection": 0,
+    "name": "交番",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 2400000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2187,
+      2187
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 1,
+    "name": "消防署",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 3600000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2191,
+      2191
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 2,
+    "name": "住宅",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2203,
+      2203
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 3,
+    "name": "会社",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 9900000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2269,
+      2278
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 4,
+    "name": "体育館",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2209,
+      2209
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 5,
+    "name": "プール",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4800000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2221,
+      2221
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 6,
+    "name": "運動場",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 12000000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2279,
+      2279
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 7,
+    "name": "ｲﾍﾞﾝﾄ会場",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 8000000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2231,
+      2231
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 8,
+    "name": "幼稚園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4200000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2215,
+      2215
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 9,
+    "name": "小学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 11200000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2291,
+      2291
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 10,
+    "name": "中学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 17500000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2379,
+      2379
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 11,
+    "name": "高校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 25200000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2431,
+      2539
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 12,
+    "name": "大学",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 34300000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2718,
+      3110
+    ],
+    "population_point_bounds": [
+      0,
+      4
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 13,
+    "name": "専門学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 10800000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2311,
+      2311
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 14,
+    "name": "公園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4000000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2207,
+      2235
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 15,
+    "name": "水族館",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2242,
+      2242
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 16,
+    "name": "動物園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 25200000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2683,
+      2683
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 17,
+    "name": "遊園地",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 34300000,
+    "before_population": 2179,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2767,
+      2865
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 0,
+    "name": "交番",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 2400000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1888,
+      1888
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 1,
+    "name": "消防署",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 3600000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1892,
+      1892
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 2,
+    "name": "住宅",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1904,
+      1904
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 3,
+    "name": "会社",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 9900000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1970,
+      1979
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 4,
+    "name": "体育館",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1910,
+      1910
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 5,
+    "name": "プール",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4800000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1922,
+      1922
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 6,
+    "name": "運動場",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 12000000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1980,
+      1980
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 7,
+    "name": "ｲﾍﾞﾝﾄ会場",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 8000000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1932,
+      1932
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 8,
+    "name": "幼稚園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4200000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1916,
+      1916
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 9,
+    "name": "小学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 11200000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1992,
+      1992
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 10,
+    "name": "中学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 17500000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2080,
+      2080
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 11,
+    "name": "高校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 25200000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2132,
+      2240
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 12,
+    "name": "大学",
+    "site": [
+      9,
+      0
+    ],
+    "total_fee": 34300000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2419,
+      2811
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 13,
+    "name": "専門学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 10800000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2012,
+      2012
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 14,
+    "name": "公園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4000000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1908,
+      1936
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 15,
+    "name": "水族館",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1943,
+      1943
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 16,
+    "name": "動物園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 25200000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2384,
+      2384
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 17,
+    "name": "遊園地",
+    "site": [
+      9,
+      0
+    ],
+    "total_fee": 34300000,
+    "before_population": 1880,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2468,
+      2566
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 0,
+    "name": "交番",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 2400000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1432,
+      1432
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 1,
+    "name": "消防署",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 3600000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1436,
+      1436
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 2,
+    "name": "住宅",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1448,
+      1448
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 3,
+    "name": "会社",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 9900000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1514,
+      1523
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 4,
+    "name": "体育館",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1454,
+      1454
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 5,
+    "name": "プール",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4800000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1466,
+      1466
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 6,
+    "name": "運動場",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 12000000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1524,
+      1524
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 7,
+    "name": "ｲﾍﾞﾝﾄ会場",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 8000000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1476,
+      1476
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 8,
+    "name": "幼稚園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4200000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1460,
+      1460
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 9,
+    "name": "小学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 11200000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1536,
+      1536
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 10,
+    "name": "中学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 17500000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1624,
+      1624
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 11,
+    "name": "高校",
+    "site": [
+      0,
+      6
+    ],
+    "total_fee": 25200000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1676,
+      1784
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 12,
+    "name": "大学",
+    "site": [
+      0,
+      6
+    ],
+    "total_fee": 34300000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1963,
+      2355
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 13,
+    "name": "専門学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 10800000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1556,
+      1556
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 14,
+    "name": "公園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4000000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1452,
+      1480
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 15,
+    "name": "水族館",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1487,
+      1487
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 16,
+    "name": "動物園",
+    "site": [
+      0,
+      6
+    ],
+    "total_fee": 25200000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      1928,
+      1928
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 17,
+    "name": "遊園地",
+    "site": [
+      0,
+      6
+    ],
+    "total_fee": 34300000,
+    "before_population": 1424,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2012,
+      2110
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 0,
+    "name": "交番",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 2400000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2847,
+      2847
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 1,
+    "name": "消防署",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 3600000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2851,
+      2851
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 2,
+    "name": "住宅",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2863,
+      2863
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 3,
+    "name": "会社",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 9900000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2929,
+      2938
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 4,
+    "name": "体育館",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2869,
+      2869
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 5,
+    "name": "プール",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4800000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2881,
+      2881
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 6,
+    "name": "運動場",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 12000000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2939,
+      2939
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 7,
+    "name": "ｲﾍﾞﾝﾄ会場",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 8000000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2891,
+      2891
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 8,
+    "name": "幼稚園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4200000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2875,
+      2875
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 9,
+    "name": "小学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 11200000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2951,
+      2951
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 10,
+    "name": "中学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 17500000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      3039,
+      3039
+    ],
+    "population_point_bounds": [
+      4,
+      4
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 11,
+    "name": "高校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 25200000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      3091,
+      3199
+    ],
+    "population_point_bounds": [
+      4,
+      4
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 12,
+    "name": "大学",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 34300000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      3378,
+      3770
+    ],
+    "population_point_bounds": [
+      4,
+      4
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 13,
+    "name": "専門学校",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 10800000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2971,
+      2971
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 14,
+    "name": "公園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 4000000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2867,
+      2895
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 15,
+    "name": "水族館",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 7200000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      2902,
+      2902
+    ],
+    "population_point_bounds": [
+      0,
+      0
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 16,
+    "name": "動物園",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 25200000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      3343,
+      3343
+    ],
+    "population_point_bounds": [
+      4,
+      4
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 17,
+    "name": "遊園地",
+    "site": [
+      0,
+      0
+    ],
+    "total_fee": 34300000,
+    "before_population": 2839,
+    "removed_population": 0,
+    "completed_population_bounds": [
+      3427,
+      3525
+    ],
+    "population_point_bounds": [
+      4,
+      4
+    ],
+    "scope": "Counterfactual independent completion on initial map at first cheapest origin. Whole overlapping buildings removed. No natural growth, customer RNG trace, other projects, or yearly sales/score assigned. Bounds are theoretical cell-choice bounds, not a guarantee both endpoints are realizable by one LCG seed."
+  }
+]

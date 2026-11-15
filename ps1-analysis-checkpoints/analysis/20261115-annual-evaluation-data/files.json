@@ -1,0 +1,132 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 6861,
+    "sha256": "43c97b39dcaccbabec072499a8cb94651312a305b89830318d6edd84d958ae2a"
+  },
+  {
+    "path": "android-annual-bridge.json",
+    "bytes": 1430,
+    "sha256": "fd150674b21c615730eedd98f1fa38e3ccad5a07d4cf12b01ad93767c1f42103"
+  },
+  {
+    "path": "annual-rules.json",
+    "bytes": 6345,
+    "sha256": "486fb659d9dffa76e8883ebadb78618b5628730dab33d5e1df780cb06200181d"
+  },
+  {
+    "path": "evaluation-thresholds.json",
+    "bytes": 2591,
+    "sha256": "ed94f71f054d3d4f754c4d14275a99cef5f57c2e995a710c737edbadd54419e9"
+  },
+  {
+    "path": "extract-annual.py",
+    "bytes": 9764,
+    "sha256": "af0e7ebd0d7a64ca12a10bcf51f33e0ae9cea21690def2b3da866d536668a8fe"
+  },
+  {
+    "path": "initial-evaluation-inputs.json",
+    "bytes": 3950,
+    "sha256": "f3cea8f9cb248a7a562f4d02c8d930f43612787b6f5f8eff247e7a716739809c"
+  },
+  {
+    "path": "perfect-score-combinations.json",
+    "bytes": 2755,
+    "sha256": "0b0ebc8979464bc8cfbfedb5682277c5c803184d9a9b7e86f9a1f55255d7136d"
+  },
+  {
+    "path": "project-population-score-links.json",
+    "bytes": 46747,
+    "sha256": "0b9a1ff3831626a17e5b6d98ccc4fc3e4af5140115ce29d8aeb7ab66ce59602f"
+  },
+  {
+    "path": "source/annual_ledger_rollover.bin",
+    "bytes": 252,
+    "sha256": "9336698604b37a5767128aa347e8058cdbe5545eb8594361ac4e2947a5908e43"
+  },
+  {
+    "path": "source/annual_queue.bin",
+    "bytes": 152,
+    "sha256": "b530b0ac84b3f639e72558739cb668afeac73b57179e5f26b3c72e065084c6b4"
+  },
+  {
+    "path": "source/arrival_counter.bin",
+    "bytes": 152,
+    "sha256": "cc7095c3bef887460c8228d0b8443d46e0b207b6c9d769b029c9ec6a4f1c026c"
+  },
+  {
+    "path": "source/arrival_owner_gate.bin",
+    "bytes": 40,
+    "sha256": "8007b17525467a5d105e88f772584b4ce27f47de611de9143d6f72daff90d68d"
+  },
+  {
+    "path": "source/clock_order.bin",
+    "bytes": 184,
+    "sha256": "2782f987c6166bf60f829b72741fc96585ae4322fce64189429fd1bd0902e6bd"
+  },
+  {
+    "path": "source/display_labels.bin",
+    "bytes": 68,
+    "sha256": "f9d8540fa98d6e573cac30902c32102bdbef02f1d2e2c32c0dbb62fcc67156dc"
+  },
+  {
+    "path": "source/event_dispatch.bin",
+    "bytes": 1508,
+    "sha256": "ab1f8ae5afe4336f378a02962ed72ec877ad4cf7a80d06638a6b938617a5741c"
+  },
+  {
+    "path": "source/event_reserve.bin",
+    "bytes": 620,
+    "sha256": "41b1518eeecf237c5383842e85bdc9e515f3c3bbb5f2b6c620a539d9607a7e88"
+  },
+  {
+    "path": "source/owner_evaluation.bin",
+    "bytes": 1676,
+    "sha256": "cd13b0eb186936e03262f7f05b86f0553edb023d6d7a6857fdb981f9c50ea651"
+  },
+  {
+    "path": "source/owner_screen.bin",
+    "bytes": 1328,
+    "sha256": "f643aaf1e4bd5b1decd7e120fb013eaa37e02cd962c587e80549a664aff17df0"
+  },
+  {
+    "path": "source/population_reader.bin",
+    "bytes": 532,
+    "sha256": "1b688efa6faca63887238b49f2d7d12ff73b952f1f4d8c30445386320a658ccf"
+  },
+  {
+    "path": "source/ten_store_milestone.bin",
+    "bytes": 516,
+    "sha256": "6b66a22be20351417399a7d4cc08aea6e8c3f851b239b6e292b52e82948e126c"
+  },
+  {
+    "path": "source/visitors_load.bin",
+    "bytes": 24,
+    "sha256": "a39e1a21f9f4c72d175a2335e1394447287a99fd184d30b6fcb89fbe58fd1fe1"
+  },
+  {
+    "path": "source/visitors_save.bin",
+    "bytes": 24,
+    "sha256": "cecd38043de6897ca1a537fd2b8388699311e9fa21ca97f9efa88403cbb651cb"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 1934,
+    "sha256": "672f2ae4023764caba2ab6edf7aaf989e4f23c2387d304f001dfb13933f37d1a"
+  },
+  {
+    "path": "source-labels.json",
+    "bytes": 972,
+    "sha256": "82f3b9bb8b170eb0be906dfbeb311f71483162362eaa4ad582eecf12a21fa98b"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 3073,
+    "sha256": "32703463433f91ac4902c26ff28b718387f739817dc6fbb6b7c85c9855b132e0"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 729,
+    "sha256": "e09257f263ba1573505923f6c3769357af6a57246d7ac6c8225c055a8400e6a8"
+  }
+]

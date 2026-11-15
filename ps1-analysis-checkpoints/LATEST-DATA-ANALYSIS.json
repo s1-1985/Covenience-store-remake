@@ -1,26 +1,26 @@
 {
   "date_jst": "2026-11-15",
-  "work_kind": "town_project_master_and_site_cost_data_analysis",
-  "report": "analysis/20261115-town-project-data/README.md",
+  "work_kind": "annual_evaluation_labels_thresholds_and_project_population_data",
+  "report": "analysis/20261115-annual-evaluation-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "project_types": 18,
-  "maps": 4,
-  "candidate_origins": 216000,
-  "allowed": 101498,
-  "blocked": 93606,
-  "out_of_bounds": 20896,
-  "base_cost_min": 400000,
-  "base_cost_max": 9800000,
-  "construction_midnight_ticks": [
-    4,
-    8
-  ],
+  "metrics": 5,
+  "threshold_values": 30,
+  "source_maps": 4,
+  "source_cells": 12000,
+  "initial_total_populations": {
+    "TOWN0001": 2179,
+    "TOWN0002": 1880,
+    "TOWN0003": 1424,
+    "TOWNPS": 2839
+  },
+  "linked_source_stores": 11,
+  "project_population_links": 72,
+  "perfect_score_combinations": 7,
+  "minimum_stores_for_score100": 8,
   "original_cpu_updates": 0,
-  "grid_bytes": 864000,
-  "grid_compressed_bytes": 42925,
-  "known_before": "Isolated quote/start/completion rules and helpers existed. Newly extracted all18 master rows and linked native building descriptors to 4 maps, 216000 origins, site costs, completion names/events, and whole-building spillover examples.",
-  "previous_report": "analysis/20261115-town-growth-land-data/README.md",
-  "android_bridge": "analysis/20261115-town-project-data/android-project-bridge.json",
-  "next_priority": "Continue remaining normal-play source data analysis, integrate recovered data into native Android, then build APK."
+  "known_before": "Owner-rating scalar formulas, annual-close helpers and controlled owner-screen chains existed. This work extracts source labels/literal thresholds, links 4 actual maps/11 stores and 72 project completion population bounds, derives all7 perfect-score band combinations and records cumulative visits versus annual revenue semantics.",
+  "previous_report": "analysis/20261115-town-project-data/README.md",
+  "android_bridge": "analysis/20261115-annual-evaluation-data/android-annual-bridge.json",
+  "next_priority": "Analyze remaining native normal-play source data, integrate recovered data, then build Android APK."
 }

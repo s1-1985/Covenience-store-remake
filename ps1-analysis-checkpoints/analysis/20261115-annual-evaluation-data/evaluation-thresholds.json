@@ -1,0 +1,125 @@
+{
+  "metrics": [
+    {
+      "id": "stores",
+      "label": "店舗数",
+      "thresholds_inclusive": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "points": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20
+      ],
+      "comparison": "signed32",
+      "display_stars": "trunc(points/4)",
+      "value_source": "active owner0 records among first10"
+    },
+    {
+      "id": "visitors",
+      "label": "累積来客数",
+      "thresholds_inclusive": [
+        50000,
+        100000,
+        200000,
+        400000,
+        500000
+      ],
+      "points": [
+        4,
+        8,
+        12,
+        16,
+        20
+      ],
+      "comparison": "unsigned32",
+      "display_stars": "trunc(points/4)",
+      "value_source": "cumulative own entered customers RAM0x800cd930"
+    },
+    {
+      "id": "sales",
+      "label": "年商",
+      "thresholds_inclusive": [
+        100000000,
+        200000000,
+        300000000,
+        400000000,
+        600000000
+      ],
+      "points": [
+        4,
+        8,
+        12,
+        16,
+        20
+      ],
+      "comparison": "signed32",
+      "display_stars": "trunc(points/4)",
+      "value_source": "saturating sum of store+0xd0c previous annual ledger revenue"
+    },
+    {
+      "id": "population",
+      "label": "町人口",
+      "thresholds_inclusive": [
+        3000,
+        8000,
+        14000,
+        18000,
+        20000
+      ],
+      "points": [
+        4,
+        8,
+        12,
+        16,
+        20
+      ],
+      "comparison": "signed32",
+      "display_stars": "trunc(points/4)",
+      "value_source": "population(0): all town categories, signed16 profile counts"
+    },
+    {
+      "id": "rating",
+      "label": "店舗評価",
+      "thresholds_inclusive": [
+        10,
+        30,
+        50,
+        70,
+        90
+      ],
+      "points": [
+        4,
+        8,
+        12,
+        16,
+        20
+      ],
+      "comparison": "signed32",
+      "display_stars": "trunc(points/4)",
+      "value_source": "trunc(sum of store+0xc68 evaluation / active own store count)"
+    }
+  ],
+  "raw_total": "sum of five points; displayed total=100 if raw>=96 else raw",
+  "total_stars": "trunc(displayed total/20)",
+  "total_address": "0x800cd80c",
+  "value_slots": "0x800e3ba8 + metric*4",
+  "point_slots": "0x800e3bc0 + metric*4",
+  "bounds": "Normal positive own store count1..10. Zero own stores causes original divide-by-zero in this consumer; no synthetic score0 asserted."
+}

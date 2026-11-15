@@ -1,0 +1,18 @@
+{
+  "metrics": 5,
+  "threshold_values": 30,
+  "source_maps": 4,
+  "source_cells": 12000,
+  "initial_total_populations": {
+    "TOWN0001": 2179,
+    "TOWN0002": 1880,
+    "TOWN0003": 1424,
+    "TOWNPS": 2839
+  },
+  "linked_source_stores": 11,
+  "project_population_links": 72,
+  "perfect_score_combinations": 7,
+  "minimum_stores_for_score100": 8,
+  "original_cpu_updates": 0,
+  "known_before": "Owner-rating scalar formulas, annual-close helpers and controlled owner-screen chains existed. This work extracts source labels/literal thresholds, links 4 actual maps/11 stores and 72 project completion population bounds, derives all7 perfect-score band combinations and records cumulative visits versus annual revenue semantics."
+}

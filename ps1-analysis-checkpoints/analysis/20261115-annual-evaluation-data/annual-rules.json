@@ -1,0 +1,167 @@
+{
+  "schedule": {
+    "producer": "0x8003ceac",
+    "monthly_condition": "subhour RAM0x800ce618==0, hour0x800ce614==0, day/stage0x800ce610==1",
+    "annual_extra": "month RAM0x800ce60c==1",
+    "requests": "Monthly queue mode2 first, annual mode3 second. Both kind0,parameter0,sound100,variant0.",
+    "queue": "0x8003ecd8 scans slots1..49 for these modes, first free. Full queue returns-1; caller does not retry within this scheduling block.",
+    "consumer": "0x8003ef44 processes first active queue slot when active-display state0x801398b4==0, then clears slot active byte. Metrics are calculated at consumption, not frozen when enqueued.",
+    "display": "Annual mode starts display-active1 and duration counter240; do not call this seconds without frame-clock evidence."
+  },
+  "aggregation": {
+    "own_stores": "Scan10 records at0x8012b2f8, stride5080; signed active byte!=0 and flagsu16+4 bit15 clear.",
+    "previous_annual_sales": "Read signed32 +0xd0c. On summing two positive values, signed positive overflow clamps running total to0x7fffffff. Other signed32 additions wrap.",
+    "evaluation": "Read signed32+0xc68, sum signed32 and divide by own store count truncating toward zero; +0xc6c popularity is a different field.",
+    "population": "Call0x80020498 with category0: all 3000 town cells and all valid customer profile ids except-1, five signed16 counts per referenced mix. Do not replace with residential-only category3 population.",
+    "visitors": "Unsigned32 cumulative entered customer quantity at0x800cd930, updated after own-store gate in arrival path; not completed purchases, not reset at annual ledger rollover.",
+    "save_visitors": {
+      "payload_offset": "0x85d8",
+      "bytes": 4,
+      "save": "0x8006baa4..0x8006babc",
+      "load": "0x8006bec4..0x8006bedc"
+    }
+  },
+  "year_rollover": {
+    "source": "0x80029fc8..0x8002a0c4",
+    "ledger": "Current-year5-word block+0xce8 is shifted into previous-year+0xcfc then cleared. Previous-year revenue is+0xcfc+16=+0xd0c.",
+    "order": "Daily/month/year finance close is before monthly town growth; scheduling0x8003ceac is later. Queue consumer occurs earlier in each outer update, so newly scheduled annual report is consumed in a later update after finance/year shift.",
+    "note": "Population and evaluation are live at consumption; completion and natural growth can have already changed town inputs. Annual report must not be precomputed from raw initial files."
+  },
+  "scoring": {
+    "metrics": [
+      {
+        "id": "stores",
+        "label": "店舗数",
+        "thresholds_inclusive": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "points": [
+          2,
+          4,
+          6,
+          8,
+          10,
+          12,
+          14,
+          16,
+          18,
+          20
+        ],
+        "comparison": "signed32",
+        "display_stars": "trunc(points/4)",
+        "value_source": "active owner0 records among first10"
+      },
+      {
+        "id": "visitors",
+        "label": "累積来客数",
+        "thresholds_inclusive": [
+          50000,
+          100000,
+          200000,
+          400000,
+          500000
+        ],
+        "points": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "comparison": "unsigned32",
+        "display_stars": "trunc(points/4)",
+        "value_source": "cumulative own entered customers RAM0x800cd930"
+      },
+      {
+        "id": "sales",
+        "label": "年商",
+        "thresholds_inclusive": [
+          100000000,
+          200000000,
+          300000000,
+          400000000,
+          600000000
+        ],
+        "points": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "comparison": "signed32",
+        "display_stars": "trunc(points/4)",
+        "value_source": "saturating sum of store+0xd0c previous annual ledger revenue"
+      },
+      {
+        "id": "population",
+        "label": "町人口",
+        "thresholds_inclusive": [
+          3000,
+          8000,
+          14000,
+          18000,
+          20000
+        ],
+        "points": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "comparison": "signed32",
+        "display_stars": "trunc(points/4)",
+        "value_source": "population(0): all town categories, signed16 profile counts"
+      },
+      {
+        "id": "rating",
+        "label": "店舗評価",
+        "thresholds_inclusive": [
+          10,
+          30,
+          50,
+          70,
+          90
+        ],
+        "points": [
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "comparison": "signed32",
+        "display_stars": "trunc(points/4)",
+        "value_source": "trunc(sum of store+0xc68 evaluation / active own store count)"
+      }
+    ],
+    "raw_total": "sum of five points; displayed total=100 if raw>=96 else raw",
+    "total_stars": "trunc(displayed total/20)",
+    "total_address": "0x800cd80c",
+    "value_slots": "0x800e3ba8 + metric*4",
+    "point_slots": "0x800e3bc0 + metric*4",
+    "bounds": "Normal positive own store count1..10. Zero own stores causes original divide-by-zero in this consumer; no synthetic score0 asserted."
+  },
+  "completion": {
+    "normal_score": "raw2*store_count+four band scores. raw>=96 becomes100; else keep raw.",
+    "scenario2": "When displayed score==100 and signed mode0x800cd948==2: unlock byte0x800cd8a0 |=4; pending0x800cd9b4=2.",
+    "scenario3": "When displayed score==100 and signed mode==3: unlock|=8; pending=3.",
+    "ten_store_goal": "Separate0x8003ead4 milestone: exactly10 own active stores while mode1 sets unlock|=2,pending1. This must not force the annual100 threshold to require10 stores.",
+    "other_modes": "Annual scoring does not set the above scenario2/3 endings in other modes."
+  },
+  "limitations": [
+    "Original annual consumer divides by active own count without zero guard. Raw initial maps have no own store. No claim that a zero-store annual report is valid normal play.",
+    "Seven perfect-score cases are derived band combinations, not observed natural-year completions.",
+    "Project population bounds are independent static replacements, not a trajectory including natural town growth."
+  ]
+}
