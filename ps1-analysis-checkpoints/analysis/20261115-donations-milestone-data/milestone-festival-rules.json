@@ -1,0 +1,55 @@
+{
+  "arrival_pending": {
+    "source": "0x800325e0..0x80032678",
+    "counter": "unsigned32 cumulative own arrival quantity0x800cd930",
+    "pending": "0x800cd8b8",
+    "rule": "After own arrival increment, compare unsigned floor(new_counter/10000)>floor(old_counter/10000). If true store floor(new_counter/10000) in pending. Pending stores a quotient, not an event queue/count of notifications.",
+    "effect": "Multiple thresholds crossed before midnight coalesce into current pending quotient. No pending change if quotient unchanged."
+  },
+  "midnight_priority": {
+    "source": "0x80029334..0x800295dc",
+    "time": "Require hour0x800ce614==0 and subhour0x800ce618==0.",
+    "first": "Reset festival flag0x800cda00=0 each midnight; if month8 and stage/day4 show0x80052270(2,0,0), then flag=1.",
+    "second": "If signed pending>0 and festival flag==0: clear pending, draw RNG%2 once and call0x80052dbc(variant). After it returns perform popularity writes.",
+    "preserve": "Festival branch leaves pending value unchanged and does not consume the pending-variant RNG draw. Next non-festival midnight can process it.",
+    "save": {
+      "festival": {
+        "payload_offset": "0x14ec8",
+        "bytes": 4
+      },
+      "pending": {
+        "payload_offset": "0x14ecc",
+        "bytes": 4
+      }
+    }
+  },
+  "celebration": {
+    "source": "0x80052dbc..0x800532e8",
+    "population": "Use0x8001bd78 own-store ordering, active own stores only, aggregate unsigned wrapped sum of store entered counter+0x1188. This is not read directly from global0x800cd930.",
+    "display_gate": "aggregate unsigned>=10000; otherwise returns before image/message/audio.",
+    "number": "floor(unsigned aggregate/10000) to0x800cd938. Message471 uses0x4003(width5) then literal 万人目...",
+    "image_resource": 18,
+    "sound": 59,
+    "variants": "RNG%2 chooses sprite coordinates; both use same MSG471 and number formula.",
+    "duration": "120 timed wait calls followed by optional acknowledgement loop; not a fixed120-frame total or guaranteed2 seconds.",
+    "cash": "No cash or ledger posting inside recovered celebration screen.",
+    "parent_effect": "After screen returns, for all10 store records: if signed active byte!=0 OR owner bit15 clear then set signed32 popularity+0xc6c=100. The OR is original: active rivals are included; inactive owner0 records are also included. Inactive rival records are skipped.",
+    "early_return": "Parent popularity writes run even if screen returned early for aggregate<10000. Do not incorrectly place the parent writes inside the display threshold guard.",
+    "evaluation": "No +0xc68 evaluation write in this parent event effect."
+  },
+  "festival": {
+    "message": 470,
+    "text": "今日は夜にお祭りがあります。",
+    "source": "0x80052a88..0x80052dbc",
+    "image_resource": 16,
+    "sound": 58,
+    "duration": "120 timed wait calls in the mode2 screen; previous controlled render proof exists. No new physical audio/GPU claim.",
+    "direct_effect": "The recovered festival screen is presentation; do not invent cash/popularity bonus from its message."
+  },
+  "order": "Outer update calls0x800275f8 monthly ads/donations/store ratings before0x80029334 finance/celebration. Donation popularity and later celebration popularity are distinct effects; annual evaluation uses C68, not C6C.",
+  "limitations": [
+    "Isolated controlled display proofs are reused, not counted as new gameplay.",
+    "Original initial files have rivals only. No natural surplus-cash or milestone/festival trajectory is asserted.",
+    "Calendar stage/day values are retained as original1..4; do not silently substitute Gregorian month day30."
+  ]
+}

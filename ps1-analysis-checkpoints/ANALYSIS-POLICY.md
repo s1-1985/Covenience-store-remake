@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-15：余剰資金寄付・アイドル来客記念・祭り、原メッセージと人気の更新範囲](analysis/20261115-donations-milestone-data/README.md)
+
 - [2026-11-15：年次評価5項目・累積来客と年商、4マップと誘致人口72例・100点7条件](analysis/20261115-annual-evaluation-data/README.md)
 
 - [2026-11-15：誘致18種類・21万6000始点の費用、完成客構成と区画外撤去](analysis/20261115-town-project-data/README.md)

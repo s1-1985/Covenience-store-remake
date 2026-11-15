@@ -1,0 +1,632 @@
+{
+  "donation": [
+    {
+      "cash": 999999999,
+      "trigger": false,
+      "donation": 0,
+      "cash_after_if_post_targets_checked_company": 999999999,
+      "popularity_delta_before_cap": 0
+    },
+    {
+      "cash": 1000000000,
+      "trigger": false,
+      "donation": 0,
+      "cash_after_if_post_targets_checked_company": 1000000000,
+      "popularity_delta_before_cap": 0
+    },
+    {
+      "cash": 1499999999,
+      "trigger": false,
+      "donation": 0,
+      "cash_after_if_post_targets_checked_company": 1499999999,
+      "popularity_delta_before_cap": 0
+    },
+    {
+      "cash": 1500000000,
+      "trigger": false,
+      "donation": 0,
+      "cash_after_if_post_targets_checked_company": 1500000000,
+      "popularity_delta_before_cap": 0
+    },
+    {
+      "cash": 1500000001,
+      "trigger": true,
+      "donation": 500000001,
+      "cash_after_if_post_targets_checked_company": 1000000000,
+      "popularity_delta_before_cap": 5
+    },
+    {
+      "cash": 1600000000,
+      "trigger": true,
+      "donation": 600000000,
+      "cash_after_if_post_targets_checked_company": 1000000000,
+      "popularity_delta_before_cap": 5
+    },
+    {
+      "cash": 2000000000,
+      "trigger": true,
+      "donation": 1000000000,
+      "cash_after_if_post_targets_checked_company": 1000000000,
+      "popularity_delta_before_cap": 5
+    },
+    {
+      "cash": 2147483647,
+      "trigger": true,
+      "donation": 1147483647,
+      "cash_after_if_post_targets_checked_company": 1000000000,
+      "popularity_delta_before_cap": 5
+    }
+  ],
+  "popularity": [
+    {
+      "before": 0,
+      "donation_after": 5,
+      "celebration_after": 100
+    },
+    {
+      "before": 1,
+      "donation_after": 6,
+      "celebration_after": 100
+    },
+    {
+      "before": 2,
+      "donation_after": 7,
+      "celebration_after": 100
+    },
+    {
+      "before": 3,
+      "donation_after": 8,
+      "celebration_after": 100
+    },
+    {
+      "before": 4,
+      "donation_after": 9,
+      "celebration_after": 100
+    },
+    {
+      "before": 5,
+      "donation_after": 10,
+      "celebration_after": 100
+    },
+    {
+      "before": 6,
+      "donation_after": 11,
+      "celebration_after": 100
+    },
+    {
+      "before": 7,
+      "donation_after": 12,
+      "celebration_after": 100
+    },
+    {
+      "before": 8,
+      "donation_after": 13,
+      "celebration_after": 100
+    },
+    {
+      "before": 9,
+      "donation_after": 14,
+      "celebration_after": 100
+    },
+    {
+      "before": 10,
+      "donation_after": 15,
+      "celebration_after": 100
+    },
+    {
+      "before": 11,
+      "donation_after": 16,
+      "celebration_after": 100
+    },
+    {
+      "before": 12,
+      "donation_after": 17,
+      "celebration_after": 100
+    },
+    {
+      "before": 13,
+      "donation_after": 18,
+      "celebration_after": 100
+    },
+    {
+      "before": 14,
+      "donation_after": 19,
+      "celebration_after": 100
+    },
+    {
+      "before": 15,
+      "donation_after": 20,
+      "celebration_after": 100
+    },
+    {
+      "before": 16,
+      "donation_after": 21,
+      "celebration_after": 100
+    },
+    {
+      "before": 17,
+      "donation_after": 22,
+      "celebration_after": 100
+    },
+    {
+      "before": 18,
+      "donation_after": 23,
+      "celebration_after": 100
+    },
+    {
+      "before": 19,
+      "donation_after": 24,
+      "celebration_after": 100
+    },
+    {
+      "before": 20,
+      "donation_after": 25,
+      "celebration_after": 100
+    },
+    {
+      "before": 21,
+      "donation_after": 26,
+      "celebration_after": 100
+    },
+    {
+      "before": 22,
+      "donation_after": 27,
+      "celebration_after": 100
+    },
+    {
+      "before": 23,
+      "donation_after": 28,
+      "celebration_after": 100
+    },
+    {
+      "before": 24,
+      "donation_after": 29,
+      "celebration_after": 100
+    },
+    {
+      "before": 25,
+      "donation_after": 30,
+      "celebration_after": 100
+    },
+    {
+      "before": 26,
+      "donation_after": 31,
+      "celebration_after": 100
+    },
+    {
+      "before": 27,
+      "donation_after": 32,
+      "celebration_after": 100
+    },
+    {
+      "before": 28,
+      "donation_after": 33,
+      "celebration_after": 100
+    },
+    {
+      "before": 29,
+      "donation_after": 34,
+      "celebration_after": 100
+    },
+    {
+      "before": 30,
+      "donation_after": 35,
+      "celebration_after": 100
+    },
+    {
+      "before": 31,
+      "donation_after": 36,
+      "celebration_after": 100
+    },
+    {
+      "before": 32,
+      "donation_after": 37,
+      "celebration_after": 100
+    },
+    {
+      "before": 33,
+      "donation_after": 38,
+      "celebration_after": 100
+    },
+    {
+      "before": 34,
+      "donation_after": 39,
+      "celebration_after": 100
+    },
+    {
+      "before": 35,
+      "donation_after": 40,
+      "celebration_after": 100
+    },
+    {
+      "before": 36,
+      "donation_after": 41,
+      "celebration_after": 100
+    },
+    {
+      "before": 37,
+      "donation_after": 42,
+      "celebration_after": 100
+    },
+    {
+      "before": 38,
+      "donation_after": 43,
+      "celebration_after": 100
+    },
+    {
+      "before": 39,
+      "donation_after": 44,
+      "celebration_after": 100
+    },
+    {
+      "before": 40,
+      "donation_after": 45,
+      "celebration_after": 100
+    },
+    {
+      "before": 41,
+      "donation_after": 46,
+      "celebration_after": 100
+    },
+    {
+      "before": 42,
+      "donation_after": 47,
+      "celebration_after": 100
+    },
+    {
+      "before": 43,
+      "donation_after": 48,
+      "celebration_after": 100
+    },
+    {
+      "before": 44,
+      "donation_after": 49,
+      "celebration_after": 100
+    },
+    {
+      "before": 45,
+      "donation_after": 50,
+      "celebration_after": 100
+    },
+    {
+      "before": 46,
+      "donation_after": 51,
+      "celebration_after": 100
+    },
+    {
+      "before": 47,
+      "donation_after": 52,
+      "celebration_after": 100
+    },
+    {
+      "before": 48,
+      "donation_after": 53,
+      "celebration_after": 100
+    },
+    {
+      "before": 49,
+      "donation_after": 54,
+      "celebration_after": 100
+    },
+    {
+      "before": 50,
+      "donation_after": 55,
+      "celebration_after": 100
+    },
+    {
+      "before": 51,
+      "donation_after": 56,
+      "celebration_after": 100
+    },
+    {
+      "before": 52,
+      "donation_after": 57,
+      "celebration_after": 100
+    },
+    {
+      "before": 53,
+      "donation_after": 58,
+      "celebration_after": 100
+    },
+    {
+      "before": 54,
+      "donation_after": 59,
+      "celebration_after": 100
+    },
+    {
+      "before": 55,
+      "donation_after": 60,
+      "celebration_after": 100
+    },
+    {
+      "before": 56,
+      "donation_after": 61,
+      "celebration_after": 100
+    },
+    {
+      "before": 57,
+      "donation_after": 62,
+      "celebration_after": 100
+    },
+    {
+      "before": 58,
+      "donation_after": 63,
+      "celebration_after": 100
+    },
+    {
+      "before": 59,
+      "donation_after": 64,
+      "celebration_after": 100
+    },
+    {
+      "before": 60,
+      "donation_after": 65,
+      "celebration_after": 100
+    },
+    {
+      "before": 61,
+      "donation_after": 66,
+      "celebration_after": 100
+    },
+    {
+      "before": 62,
+      "donation_after": 67,
+      "celebration_after": 100
+    },
+    {
+      "before": 63,
+      "donation_after": 68,
+      "celebration_after": 100
+    },
+    {
+      "before": 64,
+      "donation_after": 69,
+      "celebration_after": 100
+    },
+    {
+      "before": 65,
+      "donation_after": 70,
+      "celebration_after": 100
+    },
+    {
+      "before": 66,
+      "donation_after": 71,
+      "celebration_after": 100
+    },
+    {
+      "before": 67,
+      "donation_after": 72,
+      "celebration_after": 100
+    },
+    {
+      "before": 68,
+      "donation_after": 73,
+      "celebration_after": 100
+    },
+    {
+      "before": 69,
+      "donation_after": 74,
+      "celebration_after": 100
+    },
+    {
+      "before": 70,
+      "donation_after": 75,
+      "celebration_after": 100
+    },
+    {
+      "before": 71,
+      "donation_after": 76,
+      "celebration_after": 100
+    },
+    {
+      "before": 72,
+      "donation_after": 77,
+      "celebration_after": 100
+    },
+    {
+      "before": 73,
+      "donation_after": 78,
+      "celebration_after": 100
+    },
+    {
+      "before": 74,
+      "donation_after": 79,
+      "celebration_after": 100
+    },
+    {
+      "before": 75,
+      "donation_after": 80,
+      "celebration_after": 100
+    },
+    {
+      "before": 76,
+      "donation_after": 81,
+      "celebration_after": 100
+    },
+    {
+      "before": 77,
+      "donation_after": 82,
+      "celebration_after": 100
+    },
+    {
+      "before": 78,
+      "donation_after": 83,
+      "celebration_after": 100
+    },
+    {
+      "before": 79,
+      "donation_after": 84,
+      "celebration_after": 100
+    },
+    {
+      "before": 80,
+      "donation_after": 85,
+      "celebration_after": 100
+    },
+    {
+      "before": 81,
+      "donation_after": 86,
+      "celebration_after": 100
+    },
+    {
+      "before": 82,
+      "donation_after": 87,
+      "celebration_after": 100
+    },
+    {
+      "before": 83,
+      "donation_after": 88,
+      "celebration_after": 100
+    },
+    {
+      "before": 84,
+      "donation_after": 89,
+      "celebration_after": 100
+    },
+    {
+      "before": 85,
+      "donation_after": 90,
+      "celebration_after": 100
+    },
+    {
+      "before": 86,
+      "donation_after": 91,
+      "celebration_after": 100
+    },
+    {
+      "before": 87,
+      "donation_after": 92,
+      "celebration_after": 100
+    },
+    {
+      "before": 88,
+      "donation_after": 93,
+      "celebration_after": 100
+    },
+    {
+      "before": 89,
+      "donation_after": 94,
+      "celebration_after": 100
+    },
+    {
+      "before": 90,
+      "donation_after": 95,
+      "celebration_after": 100
+    },
+    {
+      "before": 91,
+      "donation_after": 96,
+      "celebration_after": 100
+    },
+    {
+      "before": 92,
+      "donation_after": 97,
+      "celebration_after": 100
+    },
+    {
+      "before": 93,
+      "donation_after": 98,
+      "celebration_after": 100
+    },
+    {
+      "before": 94,
+      "donation_after": 99,
+      "celebration_after": 100
+    },
+    {
+      "before": 95,
+      "donation_after": 100,
+      "celebration_after": 100
+    },
+    {
+      "before": 96,
+      "donation_after": 100,
+      "celebration_after": 100
+    },
+    {
+      "before": 97,
+      "donation_after": 100,
+      "celebration_after": 100
+    },
+    {
+      "before": 98,
+      "donation_after": 100,
+      "celebration_after": 100
+    },
+    {
+      "before": 99,
+      "donation_after": 100,
+      "celebration_after": 100
+    },
+    {
+      "before": 100,
+      "donation_after": 100,
+      "celebration_after": 100
+    }
+  ],
+  "celebration_write_predicate": [
+    {
+      "active": 0,
+      "owner_bit15": 0,
+      "write_popularity_100": true
+    },
+    {
+      "active": 0,
+      "owner_bit15": 1,
+      "write_popularity_100": false
+    },
+    {
+      "active": 1,
+      "owner_bit15": 0,
+      "write_popularity_100": true
+    },
+    {
+      "active": 1,
+      "owner_bit15": 1,
+      "write_popularity_100": true
+    }
+  ],
+  "visitor_quotients": [
+    {
+      "aggregate": 0,
+      "display": false,
+      "number": null
+    },
+    {
+      "aggregate": 9999,
+      "display": false,
+      "number": null
+    },
+    {
+      "aggregate": 10000,
+      "display": true,
+      "number": 1
+    },
+    {
+      "aggregate": 19999,
+      "display": true,
+      "number": 1
+    },
+    {
+      "aggregate": 20000,
+      "display": true,
+      "number": 2
+    },
+    {
+      "aggregate": 99999999,
+      "display": true,
+      "number": 9999
+    },
+    {
+      "aggregate": 100000000,
+      "display": true,
+      "number": 10000
+    },
+    {
+      "aggregate": 4294967295,
+      "display": true,
+      "number": 429496
+    }
+  ],
+  "note": "Derived lookup data and boundary examples, not newly run CPU test cases. Donation examples assume correct company routing."
+}

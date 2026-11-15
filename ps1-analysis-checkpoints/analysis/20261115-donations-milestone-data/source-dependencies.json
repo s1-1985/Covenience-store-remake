@@ -1,0 +1,37 @@
+{
+  "primary": {
+    "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+    "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+    "messages": "/DAT/MSG00.OBJ"
+  },
+  "reused": [
+    {
+      "path": "../20261113-disc-data-extraction/extract-disc-data.py",
+      "purpose": "ISO payload reader"
+    },
+    {
+      "path": "../20261114-staff-roster-growth-data/source-reference/psmoji.py",
+      "purpose": "Existing original font transcription"
+    },
+    {
+      "path": "../20261114-advertising-popularity-data/README.md",
+      "purpose": "Previously decoded5-row advertising table and separate C6C popularity"
+    },
+    {
+      "path": "../20261115-remodel-accounting-data/README.md",
+      "purpose": "Capital ledger posting and ownerbit15 selection"
+    },
+    {
+      "path": "../20261115-annual-evaluation-data/README.md",
+      "purpose": "Cumulative visitor counter and C68 evaluation distinction"
+    }
+  ],
+  "prior_models": [
+    "runtime/algorithm-analysis/finance_close.py",
+    "runtime/algorithm-analysis/source_special_period_monitor_20261031.py",
+    "runtime/algorithm-analysis/verify_finance_pending_full_20261031.py",
+    "runtime/algorithm-analysis/verify_finance_visitor_quotient_20261030.py"
+  ],
+  "distinction": "Finance-close pending celebration/festival models and controlled displays existed. New data extraction connects native surplus cash donation branches, source message470/471 controls, all4 map inputs/11 stores, source flag-vs-display population writes and compact48-row calendar/101-level popularity data. Advertising table is already analyzed and not counted as new.",
+  "checks": "Hash-verified disc/EXE, literal donation constants, primary/rival branch constants, MSG code streams and4 initial files. No original CPU updates."
+}

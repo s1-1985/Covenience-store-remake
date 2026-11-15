@@ -1,0 +1,107 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 7214,
+    "sha256": "fdbd12185727b26c0da05b55626a3e741806fdcb296a7e129360c944d265bed7"
+  },
+  {
+    "path": "android-event-bridge.json",
+    "bytes": 1445,
+    "sha256": "e16965055165a2ff179512417eda50a1e22cc9de0408e387e6fd0106c8d089b3"
+  },
+  {
+    "path": "calendar-events.json",
+    "bytes": 8612,
+    "sha256": "df59dbfac85b22061b6a00495603c065472acf63cbe3c12489d61b2ccc5abb93"
+  },
+  {
+    "path": "donation-data.json",
+    "bytes": 1108,
+    "sha256": "0cbda9aeb2629dfa19f33868f4664c51f441317f149972df7ee518901998203e"
+  },
+  {
+    "path": "event-texts.json",
+    "bytes": 2158,
+    "sha256": "dcdfae2abdb5bd3ac8522835890d1c310ac9212ff1d3d7aa395408ecaf75e227"
+  },
+  {
+    "path": "extract-events.py",
+    "bytes": 7744,
+    "sha256": "7c89f8708f186819f7f5216552e48098270223cb5a0cd09839e9852ee0dac460"
+  },
+  {
+    "path": "initial-event-inputs.json",
+    "bytes": 4408,
+    "sha256": "94473ab750096d6951f71e8d4f69f5e2f54e456c2d4ae056bcbda673076b5576"
+  },
+  {
+    "path": "milestone-festival-rules.json",
+    "bytes": 3686,
+    "sha256": "270e533c24c69c67d85c2513e37d206f924e08ca60fb6ff69ae53761bea6cbb2"
+  },
+  {
+    "path": "source/arrival_own_gate.bin",
+    "bytes": 40,
+    "sha256": "8007b17525467a5d105e88f772584b4ce27f47de611de9143d6f72daff90d68d"
+  },
+  {
+    "path": "source/arrival_pending_counter.bin",
+    "bytes": 152,
+    "sha256": "cc7095c3bef887460c8228d0b8443d46e0b207b6c9d769b029c9ec6a4f1c026c"
+  },
+  {
+    "path": "source/capital_post.bin",
+    "bytes": 252,
+    "sha256": "af9da4ab3c95bb9e4b1c81b44304dc513eda738fd97b8c23533de84436dc79dc"
+  },
+  {
+    "path": "source/donations.bin",
+    "bytes": 1084,
+    "sha256": "62ae837317eb22fd80b673d84699873443e2985e5b77c52731b3a78dc923e64b"
+  },
+  {
+    "path": "source/festival_screen.bin",
+    "bytes": 820,
+    "sha256": "e6bf5ca374691c0f2de191e187c27fee33886b378d318eb64891edb0e8008133"
+  },
+  {
+    "path": "source/finance_event_gate.bin",
+    "bytes": 680,
+    "sha256": "87155c310bbc59e645dac450615df80af9c57a441539582547a76396c7c5193f"
+  },
+  {
+    "path": "source/message-470.bin",
+    "bytes": 30,
+    "sha256": "13a9428b877ff19caf21262c46deb13c2d12d1689e3e827c1f872c2e869eac4a"
+  },
+  {
+    "path": "source/message-471.bin",
+    "bytes": 70,
+    "sha256": "cf34f3b9908c61caf60c8f33a66d0ee3055ba10c8836e5fdd4af77e1f5d293c7"
+  },
+  {
+    "path": "source/visitor_celebration.bin",
+    "bytes": 1324,
+    "sha256": "37a7695da21bc5309ba2f59b4a489ccb5be18e54562f073685e69a5ef72fd816"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 1834,
+    "sha256": "004c69af822d1f4b748bfcf4a611289287dd3768c081335077a51db2801aec06"
+  },
+  {
+    "path": "source-derived-boundaries.json",
+    "bytes": 12089,
+    "sha256": "18cb35228b0392cea15f9b38d0dfc8d384f08c566ebca6d5c1d3e13218172bee"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1732,
+    "sha256": "dfc343fce728125301a6d5b6f47ab771dc2b724f69490e6261eb3c464720ec35"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 642,
+    "sha256": "885732510457dea1461ec26d7fa5a659e0d971feb59c4dbadbe4be39cd8bc8c1"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "target": "Native Android event logic and extracted data, without original EXE/CPU/BIOS runtime.",
+  "data": [
+    "donation-data.json",
+    "event-texts.json",
+    "calendar-events.json",
+    "source-derived-boundaries.json"
+  ],
+  "integration": [
+    "Keep C68 evaluation and C6C popularity separate.",
+    "At monthly midnight, after ads check surplus cash independently for company0 and company1; preserve capital posting owner routing.",
+    "On own arrivals keep cumulative global counter and pending quotient; keep each store1188 count separately.",
+    "At daily midnight clear festival state; month8/stage4 festival takes precedence and retains pending celebration.",
+    "Otherwise consume positive pending, draw one RNG%2 variant and compute celebration number from current active own store counters.",
+    "Apply parent popularity OR predicate independently of whether celebration screen displayed.",
+    "Persist pending/festival fields and cumulative/store visitor counters."
+  ],
+  "compatibility_notes": [
+    "Do not convert width5 control to literal5万人.",
+    "Do not create milestone cash reward.",
+    "Do not filter active rivals out of original parent popularity update.",
+    "Do not apply15億 trigger at all hours or interpret it as tax.",
+    "Donation amount is cash minus10億, not merely cash minus15億."
+  ],
+  "status": "Source-data analysis saved. Native implementation/APK not updated in this work."
+}

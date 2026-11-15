@@ -1,0 +1,23 @@
+{
+  "cash_trigger_strictly_above": 1500000000,
+  "cash_target": 1000000000,
+  "popularity_increment": 5,
+  "popularity_cap": 100,
+  "field": "store+0xc6c",
+  "not_field": "store+0xc68 annual evaluation",
+  "calendar": "At midnight and stage/day1, after monthly advertising processing and before finance close.",
+  "primary": {
+    "condition_cash": "0x800cd9f8",
+    "stores": "active byte!=0 AND owner bit15 clear",
+    "amount": "i32(current cash - 1000000000)",
+    "post": "0x8001cbc4(first record0x8012b2f8,amount): company selected from that record flags bit15",
+    "notification": "kind0,parameter0,sound29,mode1,variant0; original donation text and amount appended"
+  },
+  "rival": {
+    "condition_cash": "0x800cd9fc",
+    "stores": "active byte!=0 AND owner bit15 set",
+    "post": "0x8001cbc4(NULL,amount), chooses company1",
+    "notification": "None in this branch"
+  },
+  "assumption": "In normal first-record owner0 context the primary posting leaves cash exactly1000000000. Do not assume raw TOWN first slot is own; source files contain only rivals before normal opening/lifecycle setup."
+}

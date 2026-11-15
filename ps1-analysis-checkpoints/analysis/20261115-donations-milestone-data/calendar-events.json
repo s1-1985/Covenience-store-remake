@@ -1,0 +1,341 @@
+{
+  "scope": "Only midnight invocations; other hours/subhour states return without these events.",
+  "rows": [
+    {
+      "month": 1,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 1,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 1,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 1,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 2,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 2,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 2,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 2,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 3,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 3,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 3,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 3,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 4,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 4,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 4,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 4,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 5,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 5,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 5,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 5,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 6,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 6,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 6,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 6,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 7,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 7,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 7,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 7,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 8,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 8,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 8,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 8,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": true,
+      "pending_celebration_can_run_if_flag_positive": false
+    },
+    {
+      "month": 9,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 9,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 9,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 9,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 10,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 10,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 10,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 10,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 11,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 11,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 11,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 11,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 12,
+      "stage_day": 1,
+      "midnight_donation_check": true,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 12,
+      "stage_day": 2,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 12,
+      "stage_day": 3,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    },
+    {
+      "month": 12,
+      "stage_day": 4,
+      "midnight_donation_check": false,
+      "festival": false,
+      "pending_celebration_can_run_if_flag_positive": true
+    }
+  ]
+}

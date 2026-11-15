@@ -1,0 +1,154 @@
+[
+  {
+    "map": "TOWN0001",
+    "source_town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+    "cash": [
+      200000000,
+      100000000
+    ],
+    "donation_trigger_initial": [
+      false,
+      false
+    ],
+    "source_stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      },
+      {
+        "slot": 2,
+        "flags": 32770,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      }
+    ],
+    "own_store_visitors": 0,
+    "scope": "Raw initial files, not a running pre-event snapshot. All stores are rivals; conditional post-event values are reference transforms, not naturally triggered events."
+  },
+  {
+    "map": "TOWN0002",
+    "source_town_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+    "cash": [
+      150000000,
+      150000000
+    ],
+    "donation_trigger_initial": [
+      false,
+      false
+    ],
+    "source_stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      },
+      {
+        "slot": 2,
+        "flags": 32770,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      },
+      {
+        "slot": 3,
+        "flags": 32771,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      }
+    ],
+    "own_store_visitors": 0,
+    "scope": "Raw initial files, not a running pre-event snapshot. All stores are rivals; conditional post-event values are reference transforms, not naturally triggered events."
+  },
+  {
+    "map": "TOWN0003",
+    "source_town_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+    "cash": [
+      150000000,
+      200000000
+    ],
+    "donation_trigger_initial": [
+      false,
+      false
+    ],
+    "source_stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      }
+    ],
+    "own_store_visitors": 0,
+    "scope": "Raw initial files, not a running pre-event snapshot. All stores are rivals; conditional post-event values are reference transforms, not naturally triggered events."
+  },
+  {
+    "map": "TOWNPS",
+    "source_town_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+    "cash": [
+      150000000,
+      200000000
+    ],
+    "donation_trigger_initial": [
+      false,
+      false
+    ],
+    "source_stores": [
+      {
+        "slot": 1,
+        "flags": 32769,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      },
+      {
+        "slot": 2,
+        "flags": 32770,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      },
+      {
+        "slot": 3,
+        "flags": 32771,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      },
+      {
+        "slot": 4,
+        "flags": 32772,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      },
+      {
+        "slot": 5,
+        "flags": 32773,
+        "popularity": 20,
+        "entered_visitors": 0,
+        "donation_after_if_company_eligible": 25,
+        "celebration_after_if_parent_flag_processed": 100
+      }
+    ],
+    "own_store_visitors": 0,
+    "scope": "Raw initial files, not a running pre-event snapshot. All stores are rivals; conditional post-event values are reference transforms, not naturally triggered events."
+  }
+]
