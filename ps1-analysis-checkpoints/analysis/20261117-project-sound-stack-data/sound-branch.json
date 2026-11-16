@@ -1,0 +1,32 @@
+{
+  "source_load": "0x800292B4",
+  "local_type": "signed32 stack[fp+1C]",
+  "threshold_load": "0x800292B0",
+  "threshold_type": "signed16 project_record+30",
+  "compare": "signed32(local) < signed16(threshold)",
+  "if_true": 34,
+  "if_false": 29,
+  "examples": [
+    {
+      "local": 20,
+      "threshold": -1,
+      "code": 29
+    },
+    {
+      "local": 20,
+      "threshold": 0,
+      "code": 29
+    },
+    {
+      "local": 20,
+      "threshold": 20,
+      "code": 29
+    },
+    {
+      "local": 20,
+      "threshold": 21,
+      "code": 34
+    }
+  ],
+  "scope": "Exact branch arithmetic; no empirical probability or fixed-facility sound claim."
+}

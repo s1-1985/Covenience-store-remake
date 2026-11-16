@@ -60,7 +60,14 @@
       "title": "誘致完成音の未初期化入力依存",
       "status": "open",
       "evidence": "analysis/20261115-town-project-data/project-rules.json",
-      "resolution": null
+      "resolution": null,
+      "latest_evidence": "analysis/20261117-project-sound-stack-data/README.md",
+      "established": [
+        "Direct completion call at80023498 follows23C20,3EF44,275F8.",
+        "Completion fp+1C, metric fp+44, queue fp+34 and preceding fp+3C alias mainSP-0x24.",
+        "Metric writes last active store height; initial4maps produce20 at this writer. No unconditional actual sound claim."
+      ],
+      "remaining_question": "Last effective writer through intervening branches/calls and normal initialization/writers of project record+30 remain unresolved."
     },
     {
       "id": "R06",

@@ -1,0 +1,91 @@
+{
+  "source_commit": "966b788c66fb11522e8e7ae40536a0074a20c4ea",
+  "ram": {
+    "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-native-exit.ram.zlib",
+    "git_blob_sha": "dba76302a2b7df3b44cfbace2d18bca305da5813",
+    "compressed_bytes": 507848,
+    "decompressed_bytes": 2097152,
+    "scope": "Existing diagnostic original-function-boundary capture; only code bytes reused. Not a natural completion capture."
+  },
+  "original_completion": {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-project-data/source/completion.bin",
+    "git_blob_sha": "85daf865c3f8210fb4fddce07a6046786abb5c6a",
+    "matched_bytes": 788
+  },
+  "initial_stores": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261114-parking-arrival-data/initial-store-ranges.json",
+      "git_blob_sha": "874d6c05885c56255c811dd936d329332b4b5d1c"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261114-parking-arrival-data/source/initial-active-stores.bin",
+      "git_blob_sha": "f5561196ad280b53868b92e47511814c94a398c1"
+    }
+  ],
+  "ranges": [
+    {
+      "name": "caller_prefix",
+      "start": "0x80023438",
+      "end_exclusive": "0x800234a8",
+      "offset": 144440,
+      "bytes": 112
+    },
+    {
+      "name": "metric_prologue",
+      "start": "0x80023c20",
+      "end_exclusive": "0x80023c40",
+      "offset": 146464,
+      "bytes": 32
+    },
+    {
+      "name": "metric_store_loop",
+      "start": "0x80023ce4",
+      "end_exclusive": "0x80023da4",
+      "offset": 146660,
+      "bytes": 192
+    },
+    {
+      "name": "metric_height_write",
+      "start": "0x80023f20",
+      "end_exclusive": "0x80023f48",
+      "offset": 147232,
+      "bytes": 40
+    },
+    {
+      "name": "metric_loop_end",
+      "start": "0x80024630",
+      "end_exclusive": "0x8002464c",
+      "offset": 149040,
+      "bytes": 28
+    },
+    {
+      "name": "queue_prologue",
+      "start": "0x8003ef44",
+      "end_exclusive": "0x8003ef68",
+      "offset": 257860,
+      "bytes": 36
+    },
+    {
+      "name": "annual_alias_writes",
+      "start": "0x8003f7fc",
+      "end_exclusive": "0x8003f934",
+      "offset": 260092,
+      "bytes": 312
+    },
+    {
+      "name": "preceding_handler",
+      "start": "0x800275f8",
+      "end_exclusive": "0x80029020",
+      "offset": 161272,
+      "bytes": 6696
+    },
+    {
+      "name": "completion",
+      "start": "0x80029020",
+      "end_exclusive": "0x80029334",
+      "offset": 167968,
+      "bytes": 788
+    }
+  ],
+  "method": "Decode existing zlib with Adler integrity, inspect MIPS source words and stack-frame arithmetic. No original CPU execution, no new disc read."
+}

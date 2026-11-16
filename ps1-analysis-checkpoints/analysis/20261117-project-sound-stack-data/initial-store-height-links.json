@@ -1,0 +1,101 @@
+{
+  "stores": [
+    {
+      "map": "TOWN0001",
+      "physical_slot": 1,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "TOWN0001",
+      "physical_slot": 2,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "TOWN0002",
+      "physical_slot": 1,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "TOWN0002",
+      "physical_slot": 2,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "TOWN0002",
+      "physical_slot": 3,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "TOWN0003",
+      "physical_slot": 1,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "TOWNPS",
+      "physical_slot": 1,
+      "width": 24,
+      "height": 24
+    },
+    {
+      "map": "TOWNPS",
+      "physical_slot": 2,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "TOWNPS",
+      "physical_slot": 3,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "TOWNPS",
+      "physical_slot": 4,
+      "width": 20,
+      "height": 20
+    },
+    {
+      "map": "TOWNPS",
+      "physical_slot": 5,
+      "width": 20,
+      "height": 20
+    }
+  ],
+  "maps": [
+    {
+      "map": "TOWN0001",
+      "last_active_physical_slot": 2,
+      "height_written_by_metric": 20,
+      "conditional_sound_if_height_survives_and_record_threshold_is0": 29,
+      "scope": "Source initial store dimensions only. Not a measured completion sound or proof the residual survives every intervening call."
+    },
+    {
+      "map": "TOWN0002",
+      "last_active_physical_slot": 3,
+      "height_written_by_metric": 20,
+      "conditional_sound_if_height_survives_and_record_threshold_is0": 29,
+      "scope": "Source initial store dimensions only. Not a measured completion sound or proof the residual survives every intervening call."
+    },
+    {
+      "map": "TOWN0003",
+      "last_active_physical_slot": 1,
+      "height_written_by_metric": 20,
+      "conditional_sound_if_height_survives_and_record_threshold_is0": 29,
+      "scope": "Source initial store dimensions only. Not a measured completion sound or proof the residual survives every intervening call."
+    },
+    {
+      "map": "TOWNPS",
+      "last_active_physical_slot": 5,
+      "height_written_by_metric": 20,
+      "conditional_sound_if_height_survives_and_record_threshold_is0": 29,
+      "scope": "Source initial store dimensions only. Not a measured completion sound or proof the residual survives every intervening call."
+    }
+  ],
+  "scope": "Original TOWN dimensions, not post-play stores or measured sounds."
+}

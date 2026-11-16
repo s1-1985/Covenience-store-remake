@@ -138,3 +138,5 @@
 - [2026-11-17：誘致18施設と83購買型・162対応、第一商品と駐車条件を接続](analysis/20261117-project-customer-cohorts-data/README.md)
 
 - [2026-11-17：万引き前の未決済額、通常退店では精算せず次の客の入店で初期化・原購買型32件の条件付き列](analysis/20261117-customer-cart-lifecycle-data/README.md)
+
+- [2026-11-17：誘致完成音の比較領域を呼出し元へ接続、店舗高さ・年次集計とスタックが重なる条件を特定](analysis/20261117-project-sound-stack-data/README.md)

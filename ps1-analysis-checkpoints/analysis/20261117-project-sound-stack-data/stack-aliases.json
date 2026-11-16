@@ -1,0 +1,277 @@
+{
+  "main_function": "0x80023438",
+  "main_local_sp": "S",
+  "normal_direct_completion_call": "0x80023498",
+  "direct_callers_in_code_span": [
+    "0x80023498"
+  ],
+  "span": [
+    "0x80010000",
+    "0x80098000"
+  ],
+  "call_sequence": [
+    "0x80023C20 at8002346C",
+    "0x8003EF44 at80023474",
+    "if return1 skip rest of update",
+    "0x800275F8 at80023490",
+    "0x80029020 at80023498"
+  ],
+  "frames": [
+    {
+      "function": "0x80029020",
+      "frame_size": 64,
+      "local_offset": 28,
+      "role": "uninitialized signed32 comparison input",
+      "relative_to_main_sp": -36
+    },
+    {
+      "function": "0x80023C20",
+      "frame_size": 104,
+      "local_offset": 68,
+      "role": "last active physical store height, written80023F30",
+      "relative_to_main_sp": -36
+    },
+    {
+      "function": "0x8003EF44",
+      "frame_size": 88,
+      "local_offset": 52,
+      "role": "annual evaluation accumulator, written8003F80C/3F910/3F930 only when corresponding branch executes",
+      "relative_to_main_sp": -36
+    },
+    {
+      "function": "0x800275F8",
+      "frame_size": 96,
+      "local_offset": 60,
+      "role": "same physical stack location; no direct fp-relative store to this offset in this body",
+      "relative_to_main_sp": -36
+    }
+  ],
+  "meaning": "All four local locations compute S-0x24. Equal addresses do not prove which prior write is the last effective writer.",
+  "preceding_handler_direct_fp_stores": [
+    {
+      "address": "0x80027684",
+      "instruction": "sw $v0, 0x18($fp)"
+    },
+    {
+      "address": "0x8002768c",
+      "instruction": "sw $v0, 0x1c($fp)"
+    },
+    {
+      "address": "0x80027730",
+      "instruction": "sw $v0, 0x18($fp)"
+    },
+    {
+      "address": "0x80027764",
+      "instruction": "sw $v1, 0x1c($fp)"
+    },
+    {
+      "address": "0x80027770",
+      "instruction": "sw $zero, 0x44($fp)"
+    },
+    {
+      "address": "0x80027774",
+      "instruction": "sw $zero, 0x40($fp)"
+    },
+    {
+      "address": "0x80027778",
+      "instruction": "sw $zero, 0x1c($fp)"
+    },
+    {
+      "address": "0x800278d8",
+      "instruction": "sw $v1, 0x40($fp)"
+    },
+    {
+      "address": "0x80027ab8",
+      "instruction": "sw $v1, 0x44($fp)"
+    },
+    {
+      "address": "0x80027abc",
+      "instruction": "sw $zero, 0x18($fp)"
+    },
+    {
+      "address": "0x80027c58",
+      "instruction": "sw $v1, 0x18($fp)"
+    },
+    {
+      "address": "0x80027c74",
+      "instruction": "sw $v1, 0x1c($fp)"
+    },
+    {
+      "address": "0x80027cc4",
+      "instruction": "sw $zero, 0x18($fp)"
+    },
+    {
+      "address": "0x80027e48",
+      "instruction": "sw $v1, 0x18($fp)"
+    },
+    {
+      "address": "0x80027e68",
+      "instruction": "sw $v0, 0x50($fp)"
+    },
+    {
+      "address": "0x80027f04",
+      "instruction": "sw $zero, 0x18($fp)"
+    },
+    {
+      "address": "0x80028088",
+      "instruction": "sw $v1, 0x18($fp)"
+    },
+    {
+      "address": "0x800280a8",
+      "instruction": "sw $v0, 0x50($fp)"
+    },
+    {
+      "address": "0x800280bc",
+      "instruction": "sw $zero, 0x18($fp)"
+    },
+    {
+      "address": "0x80028160",
+      "instruction": "sw $v1, 0x48($fp)"
+    },
+    {
+      "address": "0x800281b0",
+      "instruction": "sw $v0, 0x4c($fp)"
+    },
+    {
+      "address": "0x800281cc",
+      "instruction": "sw $v1, 0x20($fp)"
+    },
+    {
+      "address": "0x80028208",
+      "instruction": "sw $v1, 0x24($fp)"
+    },
+    {
+      "address": "0x80028328",
+      "instruction": "sw $v1, 0x2c($fp)"
+    },
+    {
+      "address": "0x80028334",
+      "instruction": "sw $zero, 0x2c($fp)"
+    },
+    {
+      "address": "0x80028350",
+      "instruction": "sw $v0, 0x2c($fp)"
+    },
+    {
+      "address": "0x80028354",
+      "instruction": "sw $zero, 0x30($fp)"
+    },
+    {
+      "address": "0x80028358",
+      "instruction": "sw $zero, 0x34($fp)"
+    },
+    {
+      "address": "0x8002836c",
+      "instruction": "sw $v1, 0x28($fp)"
+    },
+    {
+      "address": "0x800283b8",
+      "instruction": "sw $v1, 0x30($fp)"
+    },
+    {
+      "address": "0x800283d0",
+      "instruction": "sw $v1, 0x34($fp)"
+    },
+    {
+      "address": "0x80028440",
+      "instruction": "sw $v1, 0x28($fp)"
+    },
+    {
+      "address": "0x8002848c",
+      "instruction": "sw $v1, 0x30($fp)"
+    },
+    {
+      "address": "0x800284a4",
+      "instruction": "sw $v1, 0x34($fp)"
+    },
+    {
+      "address": "0x80028514",
+      "instruction": "sw $v1, 0x28($fp)"
+    },
+    {
+      "address": "0x80028560",
+      "instruction": "sw $v1, 0x30($fp)"
+    },
+    {
+      "address": "0x80028578",
+      "instruction": "sw $v1, 0x34($fp)"
+    },
+    {
+      "address": "0x800285e8",
+      "instruction": "sw $v1, 0x28($fp)"
+    },
+    {
+      "address": "0x80028634",
+      "instruction": "sw $v1, 0x30($fp)"
+    },
+    {
+      "address": "0x8002864c",
+      "instruction": "sw $v1, 0x34($fp)"
+    },
+    {
+      "address": "0x800286f8",
+      "instruction": "sw $v1, 0x30($fp)"
+    },
+    {
+      "address": "0x80028710",
+      "instruction": "sw $v1, 0x34($fp)"
+    },
+    {
+      "address": "0x80028874",
+      "instruction": "sw $v0, 0x38($fp)"
+    },
+    {
+      "address": "0x80028aa8",
+      "instruction": "sw $zero, 0x30($fp)"
+    },
+    {
+      "address": "0x80028b10",
+      "instruction": "sw $v0, 0x30($fp)"
+    },
+    {
+      "address": "0x80028b3c",
+      "instruction": "sw $v0, 0x30($fp)"
+    },
+    {
+      "address": "0x80028b60",
+      "instruction": "sw $v0, 0x30($fp)"
+    },
+    {
+      "address": "0x80028b8c",
+      "instruction": "sw $v0, 0x30($fp)"
+    },
+    {
+      "address": "0x80028bb0",
+      "instruction": "sw $v0, 0x30($fp)"
+    },
+    {
+      "address": "0x80028bdc",
+      "instruction": "sw $v0, 0x30($fp)"
+    },
+    {
+      "address": "0x80028c00",
+      "instruction": "sw $v0, 0x30($fp)"
+    },
+    {
+      "address": "0x80028c2c",
+      "instruction": "sw $v0, 0x30($fp)"
+    },
+    {
+      "address": "0x80028c50",
+      "instruction": "sw $v0, 0x30($fp)"
+    },
+    {
+      "address": "0x80028c7c",
+      "instruction": "sw $v0, 0x30($fp)"
+    },
+    {
+      "address": "0x80028ffc",
+      "instruction": "sw $v1, 0x18($fp)"
+    }
+  ],
+  "limitations": [
+    "No direct fp+3C store found in275F8 body; indirect stores/nested calls still require lifetime analysis.",
+    "Annual aggregate branch can overwrite its own fp+34; not asserted to execute on every completion.",
+    "Threshold record+30 is not initialized in recovered project-start path, and remains independent unresolved input."
+  ]
+}

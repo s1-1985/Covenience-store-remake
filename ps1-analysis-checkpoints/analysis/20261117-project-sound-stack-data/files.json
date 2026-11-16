@@ -1,0 +1,86 @@
+{
+  "source_commit": "966b788c66fb11522e8e7ae40536a0074a20c4ea",
+  "entries": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source/caller_prefix.bin",
+      "sha": "e5827c4f4656af62e6dc2cfe2d36a3b8094b5be8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source/metric_prologue.bin",
+      "sha": "8f7d73e3cf355b216e8949fbf7d1dba5e384d59d"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source/metric_store_loop.bin",
+      "sha": "dc2c9a3a6aed94c44b2040b58c27bbd4b1a4b6ad"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source/metric_height_write.bin",
+      "sha": "58eb53dd015dfe9f5476d2d43bbb0738744f1dc5"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source/metric_loop_end.bin",
+      "sha": "82ad88d710ec1e2ab31bd60e793abf29f152e905"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source/queue_prologue.bin",
+      "sha": "6ec150aadbc591b3d2e3f263dd79b9c8f2e7c0fb"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source/annual_alias_writes.bin",
+      "sha": "ef5e781ce05427d2a7726256e89f643629ab6d6d"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source/preceding_handler.bin",
+      "sha": "4ddf60d1f0ef903362c3c7112b8592777342dd44"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source/completion.bin",
+      "sha": "85daf865c3f8210fb4fddce07a6046786abb5c6a"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/stack-aliases.json",
+      "sha": "1c1f3be6dd713b31d6bb803c1990a7e263a47033"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/sound-branch.json",
+      "sha": "38302073aceff48ebd07a5db857d1a0d7b72f52e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/initial-store-height-links.json",
+      "sha": "3b6fd5703e55d3e9c446fa86fc995bdffa6da2e3"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/summary.json",
+      "sha": "90882ba506ea75be86f294b1362225b281447d31"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source-references.json",
+      "sha": "68f9a588b9240e311bec7d4fd574904331c08900"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/sound-readers.asm",
+      "sha": "2eae1581d569c65c8c47bce882348719ca5f8767"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/README.md",
+      "sha": "b89d69828a8569573134345c5a505d368995d899"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/recover-sound-evidence.mjs",
+      "sha": "66651496ced54bd42e4f3f99d869592f864e6886"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-REMAINING.json",
+      "sha": "eec7a80d6199dd084bfd220ecc3f6430c92150e2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-DATA-ANALYSIS.json",
+      "sha": "1b943ec5340dcfeed7f0cb3e59ef7287c3a53991"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "sha": "1363a0257375c182f1342c96e15cb197a5d644b5"
+    }
+  ],
+  "note": "Exact Git blob SHAs for artifacts and updated indices; manifest does not hash itself."
+}
