@@ -1,0 +1,43 @@
+{
+  "field": "store record byte+2, base0x8012b2f8,stride5080",
+  "writes": [
+    {
+      "source": "0x800611bc",
+      "value": 1,
+      "condition": "Accepted investigation when current byte==0;500000 debit happens first."
+    },
+    {
+      "source": "0x800235e0",
+      "value": 0,
+      "condition": "subhour CE618==0 AND hour CE614==0 AND stage CE610==1; for each record reached by active store order."
+    },
+    {
+      "source": "0x8001b0c8",
+      "value": 0,
+      "condition": "Full store initialization zeros5080 bytes before defaults."
+    },
+    {
+      "source": "0x8006bfd0",
+      "value": "saved byte",
+      "condition": "Load memcpy of whole10-store block; no special reset of inspection byte in this copy."
+    }
+  ],
+  "monthly": {
+    "ownership": "No owner filter in the reset slice: it also applies to rivals reached in original store order.",
+    "not_daily": "At stage2/3/4 midnight, or at other hours/subhours, this reset slice is skipped.",
+    "order": "Outer update advances clock and refreshes state, runs notifications/finance/rivals/town/demand, then clears monthly per-store state before store jobs.",
+    "other_resets": "Same branch zeros product j+0x1198 and j+0x119c for j*12,27 products; it does not zero third word+0x11a0 in this loop."
+  },
+  "ui": {
+    "byte0": "Unknown/details-unavailable three-choice menu; investigation500000, acquisition if funds/main-store guard allow, no-op.",
+    "byte1": "Report display only through4D6EC; returns2 after acknowledgement; quoted investigation fee0.",
+    "month_change": "Normal monthly clear makes byte0, so menu/funding/guard path is available again. A fresh accepted investigation then costs500000."
+  },
+  "save": {
+    "block_offset": "0x8858",
+    "block_bytes": 50800,
+    "byte_offset_formula": "0x8858+slot*5080+2",
+    "lifetime": "Stored value survives raw save/load copy. Subsequent normal monthly update may clear it; do not reinitialize blindly on every load."
+  },
+  "scope": "Normal monthly lifetime resolved. All alias/indirect writes in full program are not claimed exhaustively enumerated. Existing main_update_control.py already expressed the reset; new work joins it to acquisition/UI/save contract."
+}

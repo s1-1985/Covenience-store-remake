@@ -1,0 +1,26 @@
+{
+  "primary": {
+    "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+    "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd"
+  },
+  "reused": [
+    {
+      "path": "../20261113-disc-data-extraction/extract-disc-data.py",
+      "purpose": "ISO reader"
+    },
+    {
+      "path": "../20261116-acquisition-sale-data/README.md",
+      "purpose": "Prior inspection menu/fee/buy guards"
+    },
+    {
+      "path": "runtime/algorithm-analysis/main_update_control.py",
+      "purpose": "Already recovered monthly store[2]=0; no new algorithm discovery claimed"
+    },
+    {
+      "path": "runtime/algorithm-analysis/save_codec.py",
+      "purpose": "Whole-store original payload mapping"
+    }
+  ],
+  "new_contribution": "Connect a previously recovered main-loop reset to previously unresolved inspection/UI lifetime and explicit tracked issueR03 closure.",
+  "verification": "Disc/EXE hashes, exact source writer instructions and original11 store bytes; source-derived timeline only, no CPU gameplay."
+}

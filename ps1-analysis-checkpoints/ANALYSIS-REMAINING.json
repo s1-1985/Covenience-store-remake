@@ -1,0 +1,69 @@
+{
+  "date_jst": "2026-11-16",
+  "scope": "Track the seven concrete unresolved issues previously reported to user, not exhaustive project inventory.",
+  "inventory_complete": false,
+  "overall_measured_percent": null,
+  "previous_rough_percent": 80,
+  "previous_percent_note": "Subjective provisional estimate, not a measured completion percentage or remaining-time estimate.",
+  "counts": {
+    "tracked": 7,
+    "resolved_normal_path": 1,
+    "open": 6
+  },
+  "items": [
+    {
+      "id": "R01",
+      "title": "現金引出し・手数料",
+      "status": "open",
+      "evidence": "analysis/20261113-seasonal-demand-data/README.md",
+      "resolution": null
+    },
+    {
+      "id": "R02",
+      "title": "祭り迂回後の購買型144の後段処理",
+      "status": "open",
+      "evidence": "analysis/20261116-weather-demand-data/out-of-catalog-context.json",
+      "resolution": null
+    },
+    {
+      "id": "R03",
+      "title": "調査済みフラグの通常営業での有効期間",
+      "status": "resolved_normal_path",
+      "evidence": "analysis/20261116-inspection-lifetime-data/README.md",
+      "resolution": "Original0x800235e0 clears store+2 at stage1/hour0/subhour0; normal UI lifetime connected."
+    },
+    {
+      "id": "R04",
+      "title": "誘致マスターの未命名フィールド",
+      "status": "open",
+      "evidence": "analysis/20261115-town-project-data/project-master.json",
+      "resolution": null
+    },
+    {
+      "id": "R05",
+      "title": "誘致完成音の未初期化入力依存",
+      "status": "open",
+      "evidence": "analysis/20261115-town-project-data/project-rules.json",
+      "resolution": null
+    },
+    {
+      "id": "R06",
+      "title": "TOWNPS店員27の所属FFFFの意図",
+      "status": "open",
+      "evidence": "analysis/20261114-staff-roster-growth-data/README.md",
+      "resolution": null
+    },
+    {
+      "id": "R07",
+      "title": "店員レコードword16の意味",
+      "status": "open",
+      "evidence": "analysis/20261114-staff-roster-growth-data/README.md",
+      "resolution": null
+    }
+  ],
+  "unscoped_inventory": [
+    "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
+    "Identify any remaining normal-play source requirements not represented in these seven items."
+  ],
+  "next": "Investigate R01 cash behavior; keep required gameplay questions distinct from unlabeled unused fields. Native build follows required source analysis."
+}

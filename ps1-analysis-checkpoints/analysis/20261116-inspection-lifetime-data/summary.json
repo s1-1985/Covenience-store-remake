@@ -1,0 +1,10 @@
+{
+  "resolved_issue": "R03 inspection flag ordinary lifetime",
+  "source_maps": 4,
+  "source_stores": 11,
+  "reset_pc": "0x800235e0",
+  "reset_gate": "stage/day1 AND hour0 AND subhour0",
+  "original_cpu_updates": 0,
+  "known_before": "Main-update model already reset store[2] monthly; acquisition extraction left other writers/lifetime unconnected. This work joins those existing source facts and resolves ordinary lifetime, rather than claiming a new monthly algorithm.",
+  "limits": "No exhaustive indirect-writer proof. Normal path resolved; calendar/save examples are static rule-derived data."
+}

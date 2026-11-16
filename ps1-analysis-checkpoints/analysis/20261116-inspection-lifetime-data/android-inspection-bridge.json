@@ -1,0 +1,12 @@
+{
+  "field": "inspection_known per store",
+  "implementation": [
+    "Persist inspection state alongside store records.",
+    "Clear state for original active-order stores at monthly stage1/hour0/subhour0, not every day or every frame.",
+    "On accepted investigation of unknown store charge500000 and set known.",
+    "Known state uses original detailed-report UI contract; after month reset unknown menu is available again.",
+    "Preserve acquisition founding-store/funding guards and price formula from prior report."
+  ],
+  "supersedes": "Prior acquisition package left inspection lifetime open; monthly reset at0x800235e0 supplies the missing normal transition.",
+  "status": "Source analysis only; no native gameplay/APK change."
+}

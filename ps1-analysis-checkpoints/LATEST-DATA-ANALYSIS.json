@@ -1,43 +1,23 @@
 {
   "date_jst": "2026-11-16",
-  "work_kind": "weather_hud_and_source_cohort_demand_data",
-  "report": "analysis/20261116-weather-demand-data/README.md",
+  "work_kind": "inspection_lifetime_source_connection_and_issue_tracking",
+  "report": "analysis/20261116-inspection-lifetime-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
-  "months": 12,
-  "hud_mappings": 60,
-  "weather_labels": 9,
-  "profiles": 144,
-  "weather_levels": 80,
-  "eligibility_bits": 11520,
-  "maps": 4,
-  "map_weather_rows": 320,
-  "out_of_catalog_references": 4,
+  "resolved_issue": "R03 inspection flag ordinary lifetime",
+  "source_maps": 4,
+  "source_stores": 11,
+  "reset_pc": "0x800235e0",
+  "reset_gate": "stage/day1 AND hour0 AND subhour0",
   "original_cpu_updates": 0,
-  "known_before": "Weather generation, seasonal filter and source month thresholds already recovered. New extraction joins five generation ranges to monthly five-column HUD labels,144 profile cutoffs to4 source-map weather cohorts, and calendar-reachable festival flag to normal filter bypass plus profile144 boundary context.",
-  "examples": {
-    "TOWN0001": {
-      "known_heads": 2177,
-      "weather79_accepted": 1523,
-      "out_of_catalog_heads": 2
-    },
-    "TOWN0002": {
-      "known_heads": 1879,
-      "weather79_accepted": 1441,
-      "out_of_catalog_heads": 1
-    },
-    "TOWN0003": {
-      "known_heads": 1424,
-      "weather79_accepted": 956,
-      "out_of_catalog_heads": 0
-    },
-    "TOWNPS": {
-      "known_heads": 2838,
-      "weather79_accepted": 1950,
-      "out_of_catalog_heads": 1
-    }
-  },
-  "previous_report": "analysis/20261116-acquisition-sale-data/README.md",
-  "android_bridge": "analysis/20261116-weather-demand-data/android-weather-bridge.json",
-  "next_priority": "Continue required native data extraction and resolve remaining demand boundary, then integrate recovered data and build Android APK."
+  "known_before": "Main-update model already reset store[2] monthly; acquisition extraction left other writers/lifetime unconnected. This work joins those existing source facts and resolves ordinary lifetime, rather than claiming a new monthly algorithm.",
+  "limits": "No exhaustive indirect-writer proof. Normal path resolved; calendar/save examples are static rule-derived data.",
+  "previous_report": "analysis/20261116-weather-demand-data/README.md",
+  "remaining_ledger": "ANALYSIS-REMAINING.json",
+  "tracked_issues": 7,
+  "resolved_normal_path": 1,
+  "open_tracked_issues": 6,
+  "overall_measured_percent": null,
+  "android_bridge": "analysis/20261116-inspection-lifetime-data/android-inspection-bridge.json",
+  "next_priority": "Investigate R01 cash behavior; continue concrete remaining source requirements then integrate native Android and build APK."
 }

@@ -1,0 +1,48 @@
+{
+  "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": [
+    {
+      "file": "source/monthly_store_reset.bin",
+      "start": "0x80023504",
+      "end_exclusive": "0x80023670",
+      "sha256": "8acbd02e9cfc67984f9e7f76cc09e5794ca1b4e304c50defc8aa9cdceddc21ff"
+    },
+    {
+      "file": "source/outer_update_order.bin",
+      "start": "0x80023438",
+      "end_exclusive": "0x80023504",
+      "sha256": "73982026bf9cfd8dfbaba58ef87735d3e383dda7186669d54f74de9c4f2a042a"
+    },
+    {
+      "file": "source/survey_fee_and_set.bin",
+      "start": "0x800610e4",
+      "end_exclusive": "0x80061208",
+      "sha256": "aa747a67b341bc8a0b9c7e24b1423a59477fb4219216baae2a1112e6813eccd6"
+    },
+    {
+      "file": "source/survey_ui.bin",
+      "start": "0x8004d7f4",
+      "end_exclusive": "0x8004d8a8",
+      "sha256": "8cd184b39ec128a037f65183d2164234d4f32c0c30f210b4d0153e08bef549be"
+    },
+    {
+      "file": "source/initialization.bin",
+      "start": "0x8001b0c8",
+      "end_exclusive": "0x8001b0f4",
+      "sha256": "b703099148bb855f0cbc426c8f08711186ad8fe62768e07d881190773bdb6312"
+    },
+    {
+      "file": "source/save_store_block.bin",
+      "start": "0x8006bb94",
+      "end_exclusive": "0x8006bbb8",
+      "sha256": "a62467e6a94622b37fa490de5ea99bc599a79917aad36cb2074296285ba5ff6d"
+    },
+    {
+      "file": "source/load_store_block.bin",
+      "start": "0x8006bfb4",
+      "end_exclusive": "0x8006bfec",
+      "sha256": "bee3d15aafd75c0361079eca06886a17a8dcd5a9a4deabe79e19a81dc507c977"
+    }
+  ]
+}

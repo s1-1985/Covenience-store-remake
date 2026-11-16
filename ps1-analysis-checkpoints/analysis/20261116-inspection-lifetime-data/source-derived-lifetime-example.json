@@ -1,0 +1,80 @@
+{
+  "scope": "Pure source-rule timeline, not a new CPU/gameplay/save trial. Store assumed to remain in original active order and inspections accepted. Save/load step means record bytes retained before normal update.",
+  "steps": [
+    {
+      "clock": 1200,
+      "calendar": {
+        "year": 1,
+        "month": 1,
+        "stage": 1,
+        "hour": 20,
+        "subhour": 0
+      },
+      "action": "inspect",
+      "flag_before": 0,
+      "flag_after": 1,
+      "inspection_fee_paid": 500000,
+      "monthly_reset": false
+    },
+    {
+      "clock": 1440,
+      "calendar": {
+        "year": 1,
+        "month": 1,
+        "stage": 2,
+        "hour": 0,
+        "subhour": 0
+      },
+      "action": "normal_update",
+      "flag_before": 1,
+      "flag_after": 1,
+      "inspection_fee_paid": 0,
+      "monthly_reset": false
+    },
+    {
+      "clock": 5758,
+      "calendar": {
+        "year": 1,
+        "month": 1,
+        "stage": 4,
+        "hour": 23,
+        "subhour": 58
+      },
+      "action": "save_load_same_state",
+      "flag_before": 1,
+      "flag_after": 1,
+      "inspection_fee_paid": 0,
+      "monthly_reset": false
+    },
+    {
+      "clock": 5760,
+      "calendar": {
+        "year": 1,
+        "month": 2,
+        "stage": 1,
+        "hour": 0,
+        "subhour": 0
+      },
+      "action": "normal_update",
+      "flag_before": 1,
+      "flag_after": 0,
+      "inspection_fee_paid": 0,
+      "monthly_reset": true
+    },
+    {
+      "clock": 6000,
+      "calendar": {
+        "year": 1,
+        "month": 2,
+        "stage": 1,
+        "hour": 4,
+        "subhour": 0
+      },
+      "action": "inspect",
+      "flag_before": 0,
+      "flag_after": 1,
+      "inspection_fee_paid": 500000,
+      "monthly_reset": false
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 4388,
+    "sha256": "c103226acea54bca2a9720b295b0bddd63bfe155866ad6e8f318b45907701df3"
+  },
+  {
+    "path": "android-inspection-bridge.json",
+    "bytes": 740,
+    "sha256": "67002bf78df39fc6d585f847d6d9c984538defe4261720b6e2d0a93481215d03"
+  },
+  {
+    "path": "extract-inspection.py",
+    "bytes": 3871,
+    "sha256": "85f1093c508ba415701e4556d628d5ecd27c19e4476dfafa6d191b83f6eb5766"
+  },
+  {
+    "path": "initial-inspection-fields.json",
+    "bytes": 2142,
+    "sha256": "43c2555b64bfaec19973115a11aa13e4065804ae1575a43d88de142c24e822b9"
+  },
+  {
+    "path": "inspection-lifetime-rules.json",
+    "bytes": 2211,
+    "sha256": "f513d17204164ea2605f396e09e09eb9b49b9599e8dc70717b9acb1913e015ff"
+  },
+  {
+    "path": "source/initialization.bin",
+    "bytes": 44,
+    "sha256": "b703099148bb855f0cbc426c8f08711186ad8fe62768e07d881190773bdb6312"
+  },
+  {
+    "path": "source/load_store_block.bin",
+    "bytes": 56,
+    "sha256": "bee3d15aafd75c0361079eca06886a17a8dcd5a9a4deabe79e19a81dc507c977"
+  },
+  {
+    "path": "source/monthly_store_reset.bin",
+    "bytes": 364,
+    "sha256": "8acbd02e9cfc67984f9e7f76cc09e5794ca1b4e304c50defc8aa9cdceddc21ff"
+  },
+  {
+    "path": "source/outer_update_order.bin",
+    "bytes": 204,
+    "sha256": "73982026bf9cfd8dfbaba58ef87735d3e383dda7186669d54f74de9c4f2a042a"
+  },
+  {
+    "path": "source/save_store_block.bin",
+    "bytes": 36,
+    "sha256": "a62467e6a94622b37fa490de5ea99bc599a79917aad36cb2074296285ba5ff6d"
+  },
+  {
+    "path": "source/survey_fee_and_set.bin",
+    "bytes": 292,
+    "sha256": "aa747a67b341bc8a0b9c7e24b1423a59477fb4219216baae2a1112e6813eccd6"
+  },
+  {
+    "path": "source/survey_ui.bin",
+    "bytes": 180,
+    "sha256": "8cd184b39ec128a037f65183d2164234d4f32c0c30f210b4d0153e08bef549be"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 1061,
+    "sha256": "32c30ca2c96dbf0c5cf095c7e110e238c33c01de0b0f8d721b659e2c7034b181"
+  },
+  {
+    "path": "source-derived-lifetime-example.json",
+    "bytes": 1758,
+    "sha256": "0c451bec8b8c8efe552e4f5954bd33119c27136eca367a60141b846796fb44f1"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1637,
+    "sha256": "ff224f3627d6ea6894c68c1d9b15823c7ed970f335c22337b615b38d8c08c936"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 601,
+    "sha256": "29ae50dff7f9a6173ef0629fdb6c6f0891366dd7031abf7bfed4867c7c8b1c7d"
+  }
+]
