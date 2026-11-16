@@ -1,0 +1,75 @@
+{
+  "patience": {
+    "function": "0x80035D58",
+    "first": "Always draw roll1..100 before checking force/patience",
+    "force": "Nonzero force sets patience0",
+    "normal": "If signed patience>0 draw another RNG and decrement1 only if RNG&3==0",
+    "continuing": "If resulting patience>0 return1 without abandonment consequences",
+    "terminal": "Otherwise set global flag0x20 and continue"
+  },
+  "cart": {
+    "terminal": "If signed16 cart!=0, add signed16(cart)*signed8(group_quantity) to store.D98 and owner company cash through1CA7C(mode1); clear cart to0",
+    "scope": "Original posts positive amount, not refund or negative lost sales. It does not perform a fresh wallet deduction here."
+  },
+  "decline": {
+    "trigger": "terminal AND initial roll%3==0",
+    "selection": "Iterate all3 store staff references atDD8; skip only-1",
+    "skills": [
+      {
+        "offset": "0x1e",
+        "name": "レジ"
+      },
+      {
+        "offset": "0x1f",
+        "name": "補充"
+      },
+      {
+        "offset": "0x21",
+        "name": "清掃"
+      },
+      {
+        "offset": "0x22",
+        "name": "警備"
+      }
+    ],
+    "rule": "Each selected skill decrements1 only if signed current>=2",
+    "unchanged": [
+      "接客+0x20",
+      "基本能力+0x18..+0x1D",
+      "word16"
+    ],
+    "rng": "Growth helper draws one RNG per present staff even in mode-1, after reading manager academic value; that roll does not determine whether mode-1 decrements"
+  },
+  "rating": {
+    "trigger": "same initial roll%10==0 AND store.C68>=6",
+    "effect": "C68-=1; lower bound5 on this branch",
+    "unaffected": "C6C popularity is not the affected field"
+  },
+  "counter": {
+    "field": "store+0x12E1",
+    "terminal": "If signed counter<127 increment1"
+  },
+  "callers": [
+    {
+      "address": "0x8003501C",
+      "force": 0,
+      "context": "shopping movement obstruction after sidestep failure"
+    },
+    {
+      "address": "0x800351D0",
+      "force": 1,
+      "context": "nonempty cart, unset checkout goal, checkout destination search fails"
+    },
+    {
+      "address": "0x800352AC",
+      "force": 0,
+      "context": "at checkout position, cashier service returns nonzero"
+    },
+    {
+      "address": "0x8003567C",
+      "force": 0,
+      "context": "checkout movement obstruction after sidestep failure"
+    }
+  ],
+  "scope": "Connects previously recovered wait helper and decline arithmetic to original callsites and all-staff scope; no gameplay/physical timing experiment."
+}

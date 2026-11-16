@@ -132,3 +132,5 @@
 解析継続時は最新コミットと各README・results.jsonを読んで再開地点を確認する。
 
 - [2026-11-16：祭りの購買型144、初期11店の除外・営業時間7種と在庫10位置・需要と先頭客の境界](analysis/20261116-festival-profile-boundary-data/README.md)
+
+- [2026-11-17：客の待機断念と全店員の能力低下、共通抽選・買物額の売上加算・word16未確定](analysis/20261117-abandonment-staff-decline-data/README.md)

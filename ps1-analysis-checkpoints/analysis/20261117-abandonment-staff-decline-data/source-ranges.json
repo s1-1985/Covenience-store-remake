@@ -1,0 +1,54 @@
+{
+  "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": [
+    {
+      "file": "source/wait_resolution.bin",
+      "start": "0x80035d58",
+      "end_exclusive": "0x800360a0",
+      "sha256": "b3e0e2f8b19dc623b06e5ae0e71fd867c1ec023da1d0180e26aa7b73323f220f"
+    },
+    {
+      "file": "source/growth_entry.bin",
+      "start": "0x8003aa58",
+      "end_exclusive": "0x8003ab24",
+      "sha256": "66df6cf54267d7efad7c3a538e9baed00df8742551f7ae864429e3c9596eb0b4"
+    },
+    {
+      "file": "source/growth_decrement.bin",
+      "start": "0x8003b158",
+      "end_exclusive": "0x8003b278",
+      "sha256": "3c633066c3a8ebcdf99ef3e327fbe31374ff6eaff1133fc89acc66ed43b429dd"
+    },
+    {
+      "file": "source/posting_mode1.bin",
+      "start": "0x8001cb3c",
+      "end_exclusive": "0x8001cbb0",
+      "sha256": "f7fa77056aba6dfe34658a7f3cdaab685fbf177f16859cc6f56357bbc401193e"
+    },
+    {
+      "file": "source/forced_checkout_abandon.bin",
+      "start": "0x80035178",
+      "end_exclusive": "0x800351e4",
+      "sha256": "74a7973127fb999856c497991c938d586754a5005bda61f54b3fe5174700672f"
+    },
+    {
+      "file": "source/checkout_service_wait.bin",
+      "start": "0x80035288",
+      "end_exclusive": "0x800352d4",
+      "sha256": "d93231e09189679c74af73b5b664d59ea4538d45f78be6fbf9340363214281e9"
+    },
+    {
+      "file": "source/word16_loader.bin",
+      "start": "0x8001a3cc",
+      "end_exclusive": "0x8001a414",
+      "sha256": "8b5d11b7930b64919fa4d9260fe9ebb9652019bc59e133c5ab235640d2d2000c"
+    },
+    {
+      "file": "source/initial_patience.bin",
+      "start": "0x80031ee4",
+      "end_exclusive": "0x80031f14",
+      "sha256": "7972c07e35421d947e0fc3b5c73fbf5ad55a7411b02224a357262424127ca870"
+    }
+  ]
+}

@@ -1,0 +1,593 @@
+{
+  "rows": [
+    {
+      "profile": 0,
+      "patience": 50
+    },
+    {
+      "profile": 1,
+      "patience": 50
+    },
+    {
+      "profile": 2,
+      "patience": 50
+    },
+    {
+      "profile": 3,
+      "patience": 50
+    },
+    {
+      "profile": 4,
+      "patience": 50
+    },
+    {
+      "profile": 5,
+      "patience": 50
+    },
+    {
+      "profile": 6,
+      "patience": 50
+    },
+    {
+      "profile": 7,
+      "patience": 50
+    },
+    {
+      "profile": 8,
+      "patience": 50
+    },
+    {
+      "profile": 9,
+      "patience": 50
+    },
+    {
+      "profile": 10,
+      "patience": 50
+    },
+    {
+      "profile": 11,
+      "patience": 60
+    },
+    {
+      "profile": 12,
+      "patience": 50
+    },
+    {
+      "profile": 13,
+      "patience": 50
+    },
+    {
+      "profile": 14,
+      "patience": 50
+    },
+    {
+      "profile": 15,
+      "patience": 50
+    },
+    {
+      "profile": 16,
+      "patience": 50
+    },
+    {
+      "profile": 17,
+      "patience": 90
+    },
+    {
+      "profile": 18,
+      "patience": 50
+    },
+    {
+      "profile": 19,
+      "patience": 90
+    },
+    {
+      "profile": 20,
+      "patience": 90
+    },
+    {
+      "profile": 21,
+      "patience": 90
+    },
+    {
+      "profile": 22,
+      "patience": 90
+    },
+    {
+      "profile": 23,
+      "patience": 90
+    },
+    {
+      "profile": 24,
+      "patience": 90
+    },
+    {
+      "profile": 25,
+      "patience": 90
+    },
+    {
+      "profile": 26,
+      "patience": 90
+    },
+    {
+      "profile": 27,
+      "patience": 90
+    },
+    {
+      "profile": 28,
+      "patience": 100
+    },
+    {
+      "profile": 29,
+      "patience": 90
+    },
+    {
+      "profile": 30,
+      "patience": 90
+    },
+    {
+      "profile": 31,
+      "patience": 90
+    },
+    {
+      "profile": 32,
+      "patience": 90
+    },
+    {
+      "profile": 33,
+      "patience": 90
+    },
+    {
+      "profile": 34,
+      "patience": 90
+    },
+    {
+      "profile": 35,
+      "patience": 90
+    },
+    {
+      "profile": 36,
+      "patience": 90
+    },
+    {
+      "profile": 37,
+      "patience": 90
+    },
+    {
+      "profile": 38,
+      "patience": 90
+    },
+    {
+      "profile": 39,
+      "patience": 90
+    },
+    {
+      "profile": 40,
+      "patience": 90
+    },
+    {
+      "profile": 41,
+      "patience": 90
+    },
+    {
+      "profile": 42,
+      "patience": 60
+    },
+    {
+      "profile": 43,
+      "patience": 90
+    },
+    {
+      "profile": 44,
+      "patience": 70
+    },
+    {
+      "profile": 45,
+      "patience": 70
+    },
+    {
+      "profile": 46,
+      "patience": 70
+    },
+    {
+      "profile": 47,
+      "patience": 70
+    },
+    {
+      "profile": 48,
+      "patience": 70
+    },
+    {
+      "profile": 49,
+      "patience": 70
+    },
+    {
+      "profile": 50,
+      "patience": 70
+    },
+    {
+      "profile": 51,
+      "patience": 70
+    },
+    {
+      "profile": 52,
+      "patience": 100
+    },
+    {
+      "profile": 53,
+      "patience": 70
+    },
+    {
+      "profile": 54,
+      "patience": 70
+    },
+    {
+      "profile": 55,
+      "patience": 70
+    },
+    {
+      "profile": 56,
+      "patience": 70
+    },
+    {
+      "profile": 57,
+      "patience": 70
+    },
+    {
+      "profile": 58,
+      "patience": 70
+    },
+    {
+      "profile": 59,
+      "patience": 70
+    },
+    {
+      "profile": 60,
+      "patience": 70
+    },
+    {
+      "profile": 61,
+      "patience": 100
+    },
+    {
+      "profile": 62,
+      "patience": 70
+    },
+    {
+      "profile": 63,
+      "patience": 70
+    },
+    {
+      "profile": 64,
+      "patience": 70
+    },
+    {
+      "profile": 65,
+      "patience": 70
+    },
+    {
+      "profile": 66,
+      "patience": 70
+    },
+    {
+      "profile": 67,
+      "patience": 70
+    },
+    {
+      "profile": 68,
+      "patience": 70
+    },
+    {
+      "profile": 69,
+      "patience": 70
+    },
+    {
+      "profile": 70,
+      "patience": 70
+    },
+    {
+      "profile": 71,
+      "patience": 70
+    },
+    {
+      "profile": 72,
+      "patience": 70
+    },
+    {
+      "profile": 73,
+      "patience": 70
+    },
+    {
+      "profile": 74,
+      "patience": 90
+    },
+    {
+      "profile": 75,
+      "patience": 70
+    },
+    {
+      "profile": 76,
+      "patience": 80
+    },
+    {
+      "profile": 77,
+      "patience": 80
+    },
+    {
+      "profile": 78,
+      "patience": 80
+    },
+    {
+      "profile": 79,
+      "patience": 70
+    },
+    {
+      "profile": 80,
+      "patience": 50
+    },
+    {
+      "profile": 81,
+      "patience": 50
+    },
+    {
+      "profile": 82,
+      "patience": 50
+    },
+    {
+      "profile": 83,
+      "patience": 50
+    },
+    {
+      "profile": 84,
+      "patience": 50
+    },
+    {
+      "profile": 85,
+      "patience": 50
+    },
+    {
+      "profile": 86,
+      "patience": 100
+    },
+    {
+      "profile": 87,
+      "patience": 100
+    },
+    {
+      "profile": 88,
+      "patience": 100
+    },
+    {
+      "profile": 89,
+      "patience": 100
+    },
+    {
+      "profile": 90,
+      "patience": 100
+    },
+    {
+      "profile": 91,
+      "patience": 100
+    },
+    {
+      "profile": 92,
+      "patience": 100
+    },
+    {
+      "profile": 93,
+      "patience": 100
+    },
+    {
+      "profile": 94,
+      "patience": 100
+    },
+    {
+      "profile": 95,
+      "patience": 100
+    },
+    {
+      "profile": 96,
+      "patience": 100
+    },
+    {
+      "profile": 97,
+      "patience": 100
+    },
+    {
+      "profile": 98,
+      "patience": 100
+    },
+    {
+      "profile": 99,
+      "patience": 100
+    },
+    {
+      "profile": 100,
+      "patience": 100
+    },
+    {
+      "profile": 101,
+      "patience": 100
+    },
+    {
+      "profile": 102,
+      "patience": 100
+    },
+    {
+      "profile": 103,
+      "patience": 100
+    },
+    {
+      "profile": 104,
+      "patience": 100
+    },
+    {
+      "profile": 105,
+      "patience": 100
+    },
+    {
+      "profile": 106,
+      "patience": 100
+    },
+    {
+      "profile": 107,
+      "patience": 100
+    },
+    {
+      "profile": 108,
+      "patience": 40
+    },
+    {
+      "profile": 109,
+      "patience": 40
+    },
+    {
+      "profile": 110,
+      "patience": 10
+    },
+    {
+      "profile": 111,
+      "patience": 10
+    },
+    {
+      "profile": 112,
+      "patience": 10
+    },
+    {
+      "profile": 113,
+      "patience": 10
+    },
+    {
+      "profile": 114,
+      "patience": 20
+    },
+    {
+      "profile": 115,
+      "patience": 20
+    },
+    {
+      "profile": 116,
+      "patience": 10
+    },
+    {
+      "profile": 117,
+      "patience": 20
+    },
+    {
+      "profile": 118,
+      "patience": 20
+    },
+    {
+      "profile": 119,
+      "patience": 20
+    },
+    {
+      "profile": 120,
+      "patience": 100
+    },
+    {
+      "profile": 121,
+      "patience": 100
+    },
+    {
+      "profile": 122,
+      "patience": 100
+    },
+    {
+      "profile": 123,
+      "patience": 100
+    },
+    {
+      "profile": 124,
+      "patience": 100
+    },
+    {
+      "profile": 125,
+      "patience": 100
+    },
+    {
+      "profile": 126,
+      "patience": 100
+    },
+    {
+      "profile": 127,
+      "patience": 100
+    },
+    {
+      "profile": 128,
+      "patience": 100
+    },
+    {
+      "profile": 129,
+      "patience": 100
+    },
+    {
+      "profile": 130,
+      "patience": 40
+    },
+    {
+      "profile": 131,
+      "patience": 40
+    },
+    {
+      "profile": 132,
+      "patience": 40
+    },
+    {
+      "profile": 133,
+      "patience": 40
+    },
+    {
+      "profile": 134,
+      "patience": 50
+    },
+    {
+      "profile": 135,
+      "patience": 50
+    },
+    {
+      "profile": 136,
+      "patience": 50
+    },
+    {
+      "profile": 137,
+      "patience": 50
+    },
+    {
+      "profile": 138,
+      "patience": 30
+    },
+    {
+      "profile": 139,
+      "patience": 30
+    },
+    {
+      "profile": 140,
+      "patience": 80
+    },
+    {
+      "profile": 141,
+      "patience": 80
+    },
+    {
+      "profile": 142,
+      "patience": 40
+    },
+    {
+      "profile": 143,
+      "patience": 40
+    }
+  ],
+  "histogram": {
+    "10": 5,
+    "20": 5,
+    "30": 2,
+    "40": 8,
+    "50": 27,
+    "60": 2,
+    "70": 30,
+    "80": 5,
+    "90": 25,
+    "100": 35
+  },
+  "initial_assignment": "0x80031F08..0x80031F10: profile+17 -> customer+0x1C"
+}

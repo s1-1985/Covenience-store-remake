@@ -1,0 +1,30 @@
+{
+  "code_span": [
+    "0x80010000",
+    "0x80098000"
+  ],
+  "target": "0x8003AA58",
+  "rows": [
+    {
+      "call": "0x80035f9c",
+      "mode": -1,
+      "context": "patience exhaustion terminal branch"
+    },
+    {
+      "call": "0x80037534",
+      "mode": 2,
+      "context": "restock completion"
+    },
+    {
+      "call": "0x8003771c",
+      "mode": 4,
+      "context": "cleaning success"
+    },
+    {
+      "call": "0x80038868",
+      "mode": 1,
+      "context": "checkout service success"
+    }
+  ],
+  "scope": "Literal direct-JAL inventory in original source code span; no claim of exhaustive indirect-call reachability."
+}

@@ -1,0 +1,18 @@
+{
+  "date_jst": "2026-11-17",
+  "profile_patience_rows": 144,
+  "staff_source_rows": 140,
+  "word16_nonzero_source_rows": 1,
+  "direct_growth_callers": 4,
+  "direct_decline_callers": 1,
+  "wait_callers": 4,
+  "decline_target_slots": 3,
+  "decline_skill_fields": 4,
+  "shared_roll_decline_count": 33,
+  "shared_roll_rating_count": 10,
+  "shared_roll_joint_count": 3,
+  "roll_domain": 100,
+  "original_cpu_updates": 0,
+  "known_before": "Standalone wait_resolution, growth decrement arithmetic and original skill names existed. New source joins identify all literal direct growth callers, mode-1 parent, four normal/forced wait sites, common roll coupling and positive cart posting.",
+  "unresolved": "R07 word16 meaning remains unknown; source values and loader copy are scoped evidence only."
+}

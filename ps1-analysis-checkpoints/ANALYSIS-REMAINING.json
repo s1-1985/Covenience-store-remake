@@ -1,5 +1,5 @@
 {
-  "date_jst": "2026-11-16",
+  "date_jst": "2026-11-17",
   "scope": "Track the seven concrete unresolved issues previously reported to user, not exhaustive project inventory.",
   "inventory_complete": false,
   "overall_measured_percent": null,
@@ -72,7 +72,14 @@
       "title": "店員レコードword16の意味",
       "status": "open",
       "evidence": "analysis/20261114-staff-roster-growth-data/README.md",
-      "resolution": null
+      "resolution": null,
+      "latest_evidence": "analysis/20261117-abandonment-staff-decline-data/README.md",
+      "established": [
+        "Original loader copies packed+13 to runtime+16.",
+        "139 initial values0; TOWNPS staff27=69120 was already present in prior extraction.",
+        "Customer-driven mode-1 changes4 skill bytes, notword16."
+      ],
+      "remaining_question": "Semantic read/update path ofword16 is not established; do not name69120 a cooldown based only on its value."
     }
   ],
   "unscoped_inventory": [

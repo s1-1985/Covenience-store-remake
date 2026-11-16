@@ -1,0 +1,509 @@
+{
+  "rows": [
+    {
+      "roll": 1,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 2,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 3,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 4,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 5,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 6,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 7,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 8,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 9,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 10,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": true
+    },
+    {
+      "roll": 11,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 12,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 13,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 14,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 15,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 16,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 17,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 18,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 19,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 20,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": true
+    },
+    {
+      "roll": 21,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 22,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 23,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 24,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 25,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 26,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 27,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 28,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 29,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 30,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": true
+    },
+    {
+      "roll": 31,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 32,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 33,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 34,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 35,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 36,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 37,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 38,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 39,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 40,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": true
+    },
+    {
+      "roll": 41,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 42,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 43,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 44,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 45,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 46,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 47,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 48,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 49,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 50,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": true
+    },
+    {
+      "roll": 51,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 52,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 53,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 54,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 55,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 56,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 57,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 58,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 59,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 60,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": true
+    },
+    {
+      "roll": 61,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 62,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 63,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 64,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 65,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 66,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 67,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 68,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 69,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 70,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": true
+    },
+    {
+      "roll": 71,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 72,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 73,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 74,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 75,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 76,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 77,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 78,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 79,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 80,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": true
+    },
+    {
+      "roll": 81,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 82,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 83,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 84,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 85,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 86,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 87,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 88,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 89,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 90,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": true
+    },
+    {
+      "roll": 91,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 92,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 93,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 94,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 95,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 96,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 97,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 98,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 99,
+      "staff_decline": true,
+      "rating_decrement_if_at_least6": false
+    },
+    {
+      "roll": 100,
+      "staff_decline": false,
+      "rating_decrement_if_at_least6": true
+    }
+  ],
+  "decline_rolls": 33,
+  "rating_rolls": 10,
+  "both_rolls": 3,
+  "domain": 100,
+  "scope": "Exact mapping of original1..100 roll, not an independent probability model or a measured RNG-frequency experiment."
+}

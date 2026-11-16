@@ -1,0 +1,92 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 6379,
+    "sha256": "9ed62cb7a6e50507bc3070f7033800c83695fb9cc02d695d88c2175eec398d94"
+  },
+  {
+    "path": "abandonment-rules.json",
+    "bytes": 2510,
+    "sha256": "0d7389b1eeee3440bb2bef3cb7e8aa61ad4e24e3f9f4a723614a6b7393973794"
+  },
+  {
+    "path": "decline-readers.asm",
+    "bytes": 13632,
+    "sha256": "8b9ebb894389e8f0b7fc61f6e3d9d3bf07d4d8a430e5497ac8bedc9e6c07dbfa"
+  },
+  {
+    "path": "extract-decline.py",
+    "bytes": 6549,
+    "sha256": "2e505687d7dbc78fc299ba31c018e1997b2fd32b0dcdaabc74b46bb20523e2c8"
+  },
+  {
+    "path": "growth-direct-callers.json",
+    "bytes": 632,
+    "sha256": "d5e708250d3b53a536da30d8107051066610bd2150747b7abd3b2740593b4921"
+  },
+  {
+    "path": "profile-patience.json",
+    "bytes": 8243,
+    "sha256": "00cb969749f54704acfcda818ff634831c4d64182541d594396c8d626daeac47"
+  },
+  {
+    "path": "shared-roll-table.json",
+    "bytes": 10778,
+    "sha256": "87abf968ed7fffe6fbfc483bf7e761eb15fba9c2946a6132374172a583f06c87"
+  },
+  {
+    "path": "source/checkout_service_wait.bin",
+    "bytes": 76,
+    "sha256": "d93231e09189679c74af73b5b664d59ea4538d45f78be6fbf9340363214281e9"
+  },
+  {
+    "path": "source/forced_checkout_abandon.bin",
+    "bytes": 108,
+    "sha256": "74a7973127fb999856c497991c938d586754a5005bda61f54b3fe5174700672f"
+  },
+  {
+    "path": "source/growth_decrement.bin",
+    "bytes": 288,
+    "sha256": "3c633066c3a8ebcdf99ef3e327fbe31374ff6eaff1133fc89acc66ed43b429dd"
+  },
+  {
+    "path": "source/growth_entry.bin",
+    "bytes": 204,
+    "sha256": "66df6cf54267d7efad7c3a538e9baed00df8742551f7ae864429e3c9596eb0b4"
+  },
+  {
+    "path": "source/initial_patience.bin",
+    "bytes": 48,
+    "sha256": "7972c07e35421d947e0fc3b5c73fbf5ad55a7411b02224a357262424127ca870"
+  },
+  {
+    "path": "source/posting_mode1.bin",
+    "bytes": 116,
+    "sha256": "f7fa77056aba6dfe34658a7f3cdaab685fbf177f16859cc6f56357bbc401193e"
+  },
+  {
+    "path": "source/wait_resolution.bin",
+    "bytes": 840,
+    "sha256": "b3e0e2f8b19dc623b06e5ae0e71fd867c1ec023da1d0180e26aa7b73323f220f"
+  },
+  {
+    "path": "source/word16_loader.bin",
+    "bytes": 72,
+    "sha256": "8b5d11b7930b64919fa4d9260fe9ebb9652019bc59e133c5ab235640d2d2000c"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1847,
+    "sha256": "810346ec45063b778783dd8499a2aa8eec639cd8435df358e0696657fba8dbc6"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 795,
+    "sha256": "8614e813ce1875f2f28aef340f203e7e08bf65e8ba1fb8a322db6238b161439b"
+  },
+  {
+    "path": "word16-source-values.json",
+    "bytes": 9582,
+    "sha256": "9775d534ededb872b2666678ed5753d5976cf6ed6784ba91215167b638cde4c6"
+  }
+]
