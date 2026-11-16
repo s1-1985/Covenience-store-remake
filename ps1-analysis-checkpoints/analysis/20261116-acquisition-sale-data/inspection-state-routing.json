@@ -1,0 +1,34 @@
+[
+  {
+    "inspection_flag": 0,
+    "serial_low8": 1,
+    "fee_display": 500000,
+    "ui_path": "Unknown-store three-choice menu: investigate0,buy1,no-op2",
+    "acquisition_parent_first_choice_guard": true,
+    "note": "Native UI child routing and parent guards both matter. Do not invent second-menu choices after investigation."
+  },
+  {
+    "inspection_flag": 0,
+    "serial_low8": 2,
+    "fee_display": 500000,
+    "ui_path": "Unknown-store three-choice menu: investigate0,buy1,no-op2",
+    "acquisition_parent_first_choice_guard": false,
+    "note": "Native UI child routing and parent guards both matter. Do not invent second-menu choices after investigation."
+  },
+  {
+    "inspection_flag": 1,
+    "serial_low8": 1,
+    "fee_display": 0,
+    "ui_path": "Detailed report only;4D6EC returns default2 after acknowledgement",
+    "acquisition_parent_first_choice_guard": true,
+    "note": "Native UI child routing and parent guards both matter. Do not invent second-menu choices after investigation."
+  },
+  {
+    "inspection_flag": 1,
+    "serial_low8": 2,
+    "fee_display": 0,
+    "ui_path": "Detailed report only;4D6EC returns default2 after acknowledgement",
+    "acquisition_parent_first_choice_guard": false,
+    "note": "Native UI child routing and parent guards both matter. Do not invent second-menu choices after investigation."
+  }
+]

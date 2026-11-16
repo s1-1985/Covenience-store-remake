@@ -1,0 +1,35 @@
+{
+  "primary": {
+    "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+    "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+    "messages": "/DAT/MSG00.OBJ"
+  },
+  "reused": [
+    {
+      "path": "../20261113-disc-data-extraction/extract-disc-data.py",
+      "purpose": "ISO payload reader"
+    },
+    {
+      "path": "../20261115-rival-management-data/initial-withdrawal-values.json",
+      "purpose": "Previously extracted11 source land/premises/equipment/inventory asset values"
+    },
+    {
+      "path": "../20261115-rival-management-data/initial-rival-inputs.json",
+      "purpose": "Per-map original TOWN SHA256 binding"
+    },
+    {
+      "path": "../20261114-staff-roster-growth-data/source-reference/psmoji.py",
+      "purpose": "Existing original font transcription"
+    },
+    {
+      "path": "../20261115-remodel-accounting-data/README.md",
+      "purpose": "Capital posting owner routing and ledger semantics"
+    }
+  ],
+  "prior_models": [
+    "runtime/algorithm-analysis/source_acquisition_monitor_20261102.py",
+    "runtime/algorithm-analysis/store_lifecycle.py"
+  ],
+  "known_before": "Acquisition parent/child and natural controlled UI branches existed. New data extraction connects11 source asset prices to7 guarded acquisition candidates, source staff ownership links, native investigation labels/state routing, sale guards and explicit ledger/history reset spans. No new acquisition gameplay runs.",
+  "checks": "Hash-verified disc/EXE, all4 original TOWN hashes,11 quote/asset joins,29 staff references, price multiplier instruction and original UI text/branch. No CPU gameplay."
+}

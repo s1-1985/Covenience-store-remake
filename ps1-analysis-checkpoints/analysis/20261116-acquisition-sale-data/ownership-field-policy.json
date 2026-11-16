@@ -1,0 +1,80 @@
+{
+  "acquisition": {
+    "store_flags": "Replace u16+4 with incremented player serial0x800cd9e0; ownership bit15 becomes0 in normal serial domain.",
+    "staff": "All nonnegative references among+DD8/+DDA/+DDC retain identity and rebind owner to new flags.",
+    "reset_by_binding_mode1": [
+      {
+        "offset": "0xce8",
+        "bytes": 80,
+        "value": "zero"
+      },
+      {
+        "offset": "0xd38",
+        "bytes": 80,
+        "value": "zero"
+      },
+      {
+        "offset": "0xd88",
+        "bytes": 80,
+        "value": "zero"
+      },
+      {
+        "offset": "0x1184",
+        "bytes": 2,
+        "value": "zero"
+      },
+      {
+        "offset": "0x1188",
+        "bytes": 4,
+        "value": "zero"
+      },
+      {
+        "offset": "0x118c",
+        "bytes": 4,
+        "value": "zero"
+      },
+      {
+        "offset": "0x1190",
+        "bytes": 1,
+        "value": "zero"
+      },
+      {
+        "offset": "0x1194",
+        "bytes": 4,
+        "value": "zero"
+      },
+      {
+        "offset": "0x1198",
+        "bytes": 324,
+        "value": "zero"
+      },
+      {
+        "offset": "0x12e1",
+        "bytes": 4,
+        "value": "zero"
+      },
+      {
+        "offset": "0x12e8",
+        "bytes": 240,
+        "value": "60 signed32 entries0x80000000"
+      }
+    ],
+    "retained_by_binding": [
+      "store geometry+8..+0x17",
+      "interior dimensions/floor/fixture/stock data",
+      "C68 evaluation,C6C popularity",
+      "C70 tier",
+      "C74..C76 permits",
+      "C78 opening schedule",
+      "C7C..CE4 product settings",
+      "DD8..DDC staff references"
+    ],
+    "caveat": "List covers binding child only, before native town reactivation/cache refresh. Derived cache bytes may be overwritten by following helpers; no full post-gameplay byte identity claim."
+  },
+  "sale": {
+    "unbind": "Release staff ownership and set store staff references-1 before closure.",
+    "town": "Source close clears original rectangle corners through kind12 placement, initializes store and rebuilds town masks.",
+    "store_reset": "Initialize5080-byte record: inactive, evaluation10,popularity20,3 staff refs-1,profit history sentinels; copy selected defaults from first-store template as original mode0.",
+    "retained": "No promise that prior store interior survives sale."
+  }
+}

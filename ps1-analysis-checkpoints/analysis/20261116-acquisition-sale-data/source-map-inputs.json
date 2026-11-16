@@ -1,0 +1,57 @@
+[
+  {
+    "map": "TOWN0001",
+    "source_town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+    "source_cash": [
+      200000000,
+      100000000
+    ],
+    "source_rival_slots": [
+      1,
+      2
+    ],
+    "initial_acquisition_candidates": 1
+  },
+  {
+    "map": "TOWN0002",
+    "source_town_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+    "source_cash": [
+      150000000,
+      150000000
+    ],
+    "source_rival_slots": [
+      1,
+      2,
+      3
+    ],
+    "initial_acquisition_candidates": 2
+  },
+  {
+    "map": "TOWN0003",
+    "source_town_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+    "source_cash": [
+      150000000,
+      200000000
+    ],
+    "source_rival_slots": [
+      1
+    ],
+    "initial_acquisition_candidates": 0
+  },
+  {
+    "map": "TOWNPS",
+    "source_town_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+    "source_cash": [
+      150000000,
+      200000000
+    ],
+    "source_rival_slots": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "initial_acquisition_candidates": 4
+  }
+]

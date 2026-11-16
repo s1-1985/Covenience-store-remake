@@ -1,0 +1,148 @@
+{
+  "labels": [
+    {
+      "source": "/DAT/MSG00.OBJ",
+      "index": 298,
+      "offset": 7280,
+      "codes": [
+        391,
+        392,
+        393,
+        394,
+        122,
+        75,
+        16639
+      ],
+      "text": "詳細不明です"
+    },
+    {
+      "source": "/DAT/MSG00.OBJ",
+      "index": 299,
+      "offset": 7294,
+      "codes": [
+        340,
+        395,
+        75,
+        103,
+        61,
+        384,
+        245,
+        61,
+        16388,
+        0,
+        16639
+      ],
+      "text": "調査する　費用　{4004}0"
+    },
+    {
+      "source": "/DAT/MSG00.OBJ",
+      "index": 300,
+      "offset": 7316,
+      "codes": [
+        388,
+        396,
+        75,
+        103,
+        61,
+        384,
+        245,
+        61,
+        16388,
+        0,
+        16639
+      ],
+      "text": "買収する　費用　{4004}0"
+    },
+    {
+      "source": "/DAT/MSG00.OBJ",
+      "index": 301,
+      "offset": 7338,
+      "codes": [
+        402,
+        97,
+        74,
+        83,
+        64,
+        16639
+      ],
+      "text": "何もしない"
+    },
+    {
+      "source": "/DAT/MSG00.OBJ",
+      "index": 497,
+      "offset": 10568,
+      "codes": [
+        622,
+        87,
+        272,
+        238,
+        88,
+        39,
+        388,
+        396,
+        122,
+        69,
+        93,
+        76,
+        108,
+        38,
+        16639
+      ],
+      "text": "敵の本店は、買収できません。"
+    },
+    {
+      "source": "/SLPS_007.82",
+      "address": "0x80099ba0",
+      "codes": [
+        272,
+        238,
+        88,
+        280,
+        443,
+        122,
+        69,
+        93,
+        76,
+        108,
+        16639
+      ],
+      "text": "本店は売却できません"
+    },
+    {
+      "source": "/SLPS_007.82",
+      "address": "0x80099bb8",
+      "codes": [
+        399,
+        238,
+        225,
+        88,
+        280,
+        443,
+        122,
+        69,
+        93,
+        76,
+        108,
+        16639
+      ],
+      "text": "開店中は売却できません"
+    },
+    {
+      "source": "/SLPS_007.82",
+      "address": "0x800b9688",
+      "codes": [
+        293,
+        289,
+        109,
+        291,
+        102,
+        93,
+        76,
+        108,
+        16639
+      ],
+      "text": "資金が足りません"
+    }
+  ],
+  "control_note": "4004 consumes following variable index; its argument0 is not literal price0. Existing PSMOJI transcription reused. Old helper result label lease is not evidence of rental: native labels say investigation/acquisition."
+}

@@ -1,26 +1,18 @@
 {
-  "date_jst": "2026-11-15",
-  "work_kind": "rival_monthly_source_data_connections",
-  "report": "analysis/20261115-rival-management-data/README.md",
+  "date_jst": "2026-11-16",
+  "work_kind": "store_acquisition_sale_source_data",
+  "report": "analysis/20261116-acquisition-sale-data/README.md",
   "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
   "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
   "source_maps": 4,
-  "source_rival_stores": 11,
-  "candidate_layouts": 18,
-  "map_layout_links": 72,
-  "first_hire_start_links": 140,
-  "source_products": 27,
-  "source_sites_per_map": 2891,
-  "source_eligible_sites_all_layouts": 0,
-  "free_staff_by_map": {
-    "TOWN0001": 29,
-    "TOWN0002": 26,
-    "TOWN0003": 32,
-    "TOWNPS": 23
-  },
+  "source_stores": 11,
+  "initial_acquisition_candidates": 7,
+  "source_staff_references": 29,
+  "inspection_fee": 500000,
+  "price_multiplier": 2,
   "original_cpu_updates": 0,
-  "known_before": "Monthly rival decision/withdrawal/opening model and controlled chains existed. New source-data links bind18 actual layout/permit/cost/posting variants to4 headers/72 map-layout rows,11 withdrawal asset values,140 first-free staff starts and27 initial price tables. No new month gameplay runs.",
-  "previous_report": "analysis/20261115-donations-milestone-data/README.md",
-  "android_bridge": "analysis/20261115-rival-management-data/android-rival-bridge.json",
-  "next_priority": "Continue required native normal-play source data analysis, integrate recovered data and build Android APK."
+  "known_before": "Acquisition parent/child and natural controlled UI branches existed. New data extraction connects11 source asset prices to7 guarded acquisition candidates, source staff ownership links, native investigation labels/state routing, sale guards and explicit ledger/history reset spans. No new acquisition gameplay runs.",
+  "previous_report": "analysis/20261115-rival-management-data/README.md",
+  "android_bridge": "analysis/20261116-acquisition-sale-data/android-acquisition-bridge.json",
+  "next_priority": "Continue required native normal-play source analysis, integrate recovered specifications/data and build Android APK."
 }

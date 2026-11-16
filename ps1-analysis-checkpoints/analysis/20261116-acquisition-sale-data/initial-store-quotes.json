@@ -1,0 +1,387 @@
+[
+  {
+    "map": "TOWN0001",
+    "slot": 1,
+    "flags": 32769,
+    "owner_bit15": 1,
+    "serial_low8": 1,
+    "rect": [
+      43,
+      12,
+      44,
+      13
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 33620,
+      "inventory": 327125,
+      "premises_refund": 3360745
+    },
+    "base_asset": 23360745,
+    "acquisition_price": 46721490,
+    "sale_or_withdrawal_asset_value": 23360745,
+    "original_main_store_acquisition_guard": true,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": null,
+    "staff_ids": [
+      14,
+      24,
+      9
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  },
+  {
+    "map": "TOWN0001",
+    "slot": 2,
+    "flags": 32770,
+    "owner_bit15": 1,
+    "serial_low8": 2,
+    "rect": [
+      14,
+      10,
+      15,
+      11
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 33620,
+      "inventory": 327125,
+      "premises_refund": 3360745
+    },
+    "base_asset": 23360745,
+    "acquisition_price": 46721490,
+    "sale_or_withdrawal_asset_value": 23360745,
+    "original_main_store_acquisition_guard": false,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": 46721490,
+    "staff_ids": [
+      6,
+      34,
+      18
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  },
+  {
+    "map": "TOWN0002",
+    "slot": 1,
+    "flags": 32769,
+    "owner_bit15": 1,
+    "serial_low8": 1,
+    "rect": [
+      47,
+      12,
+      48,
+      13
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 33620,
+      "inventory": 327125,
+      "premises_refund": 3360745
+    },
+    "base_asset": 23360745,
+    "acquisition_price": 46721490,
+    "sale_or_withdrawal_asset_value": 23360745,
+    "original_main_store_acquisition_guard": true,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": null,
+    "staff_ids": [
+      14,
+      26,
+      10
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  },
+  {
+    "map": "TOWN0002",
+    "slot": 2,
+    "flags": 32770,
+    "owner_bit15": 1,
+    "serial_low8": 2,
+    "rect": [
+      23,
+      14,
+      24,
+      15
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 33620,
+      "inventory": 327125,
+      "premises_refund": 3360745
+    },
+    "base_asset": 23360745,
+    "acquisition_price": 46721490,
+    "sale_or_withdrawal_asset_value": 23360745,
+    "original_main_store_acquisition_guard": false,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": 46721490,
+    "staff_ids": [
+      34,
+      5,
+      24
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  },
+  {
+    "map": "TOWN0002",
+    "slot": 3,
+    "flags": 32771,
+    "owner_bit15": 1,
+    "serial_low8": 3,
+    "rect": [
+      19,
+      34,
+      20,
+      35
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 33620,
+      "inventory": 327125,
+      "premises_refund": 3360745
+    },
+    "base_asset": 23360745,
+    "acquisition_price": 46721490,
+    "sale_or_withdrawal_asset_value": 23360745,
+    "original_main_store_acquisition_guard": false,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": 46721490,
+    "staff_ids": [
+      9,
+      21,
+      7
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  },
+  {
+    "map": "TOWN0003",
+    "slot": 1,
+    "flags": 32769,
+    "owner_bit15": 1,
+    "serial_low8": 1,
+    "rect": [
+      42,
+      11,
+      43,
+      12
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 33620,
+      "inventory": 327125,
+      "premises_refund": 3360745
+    },
+    "base_asset": 23360745,
+    "acquisition_price": 46721490,
+    "sale_or_withdrawal_asset_value": 23360745,
+    "original_main_store_acquisition_guard": true,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": null,
+    "staff_ids": [
+      34,
+      26,
+      9
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  },
+  {
+    "map": "TOWNPS",
+    "slot": 1,
+    "flags": 32769,
+    "owner_bit15": 1,
+    "serial_low8": 1,
+    "rect": [
+      30,
+      24,
+      31,
+      25
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 26610,
+      "inventory": 454690,
+      "premises_refund": 6481300
+    },
+    "base_asset": 26481300,
+    "acquisition_price": 52962600,
+    "sale_or_withdrawal_asset_value": 26481300,
+    "original_main_store_acquisition_guard": true,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": null,
+    "staff_ids": [
+      4,
+      3,
+      10
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  },
+  {
+    "map": "TOWNPS",
+    "slot": 2,
+    "flags": 32770,
+    "owner_bit15": 1,
+    "serial_low8": 2,
+    "rect": [
+      43,
+      24,
+      44,
+      25
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 27960,
+      "inventory": 262375,
+      "premises_refund": 3290335
+    },
+    "base_asset": 23290335,
+    "acquisition_price": 46580670,
+    "sale_or_withdrawal_asset_value": 23290335,
+    "original_main_store_acquisition_guard": false,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": 46580670,
+    "staff_ids": [
+      34,
+      7,
+      -1
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  },
+  {
+    "map": "TOWNPS",
+    "slot": 3,
+    "flags": 32771,
+    "owner_bit15": 1,
+    "serial_low8": 3,
+    "rect": [
+      17,
+      24,
+      18,
+      25
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 27960,
+      "inventory": 262375,
+      "premises_refund": 3290335
+    },
+    "base_asset": 23290335,
+    "acquisition_price": 46580670,
+    "sale_or_withdrawal_asset_value": 23290335,
+    "original_main_store_acquisition_guard": false,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": 46580670,
+    "staff_ids": [
+      19,
+      14,
+      -1
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  },
+  {
+    "map": "TOWNPS",
+    "slot": 4,
+    "flags": 32772,
+    "owner_bit15": 1,
+    "serial_low8": 4,
+    "rect": [
+      30,
+      11,
+      31,
+      12
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 27960,
+      "inventory": 262375,
+      "premises_refund": 3290335
+    },
+    "base_asset": 23290335,
+    "acquisition_price": 46580670,
+    "sale_or_withdrawal_asset_value": 23290335,
+    "original_main_store_acquisition_guard": false,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": 46580670,
+    "staff_ids": [
+      6,
+      16,
+      -1
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  },
+  {
+    "map": "TOWNPS",
+    "slot": 5,
+    "flags": 32773,
+    "owner_bit15": 1,
+    "serial_low8": 5,
+    "rect": [
+      30,
+      37,
+      31,
+      38
+    ],
+    "inspection_flag": 0,
+    "inspection_quote": 500000,
+    "land_value": 20000000,
+    "premises_components": {
+      "equipment": 27960,
+      "inventory": 262375,
+      "premises_refund": 3290335
+    },
+    "base_asset": 23290335,
+    "acquisition_price": 46580670,
+    "sale_or_withdrawal_asset_value": 23290335,
+    "original_main_store_acquisition_guard": false,
+    "initial_cash_covers_acquisition": true,
+    "initial_cash_covers_inspection": true,
+    "minimum_cash_direct_acquisition": 46580670,
+    "staff_ids": [
+      5,
+      21,
+      -1
+    ],
+    "normal_sale_open_flag_C77": 0,
+    "note": "All these original stores are rivals. Price/sale values are valuation inputs; not valid direct player sale states or fully initialized normal acquisition states."
+  }
+]

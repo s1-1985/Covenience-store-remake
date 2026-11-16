@@ -1,0 +1,26 @@
+{
+  "target": "Native Android transaction rules using original data; no original EXE/CPU/BIOS runtime.",
+  "data": [
+    "initial-store-quotes.json",
+    "transaction-texts.json",
+    "inspection-state-routing.json",
+    "ownership-field-policy.json",
+    "initial-staff-transfer-links.json"
+  ],
+  "implementation": [
+    "Keep inspection state and fee separate from acquisition price.",
+    "Quote current land/interior/stock values, not fixed initial file amounts.",
+    "Keep founding enemy-shop acquisition guard and own-list-first sale guard distinct.",
+    "Require enough funds before direct transaction and retain equality behavior.",
+    "On acquisition transfer cash/capital before overwriting seller owner, then assign new player serial.",
+    "Rebind retained staff and clear only original ledger/history spans, then reactivate town masks/cache.",
+    "On sale release people and reset/close town store, rather than transferring it to rival.",
+    "Respect open-store C77 restriction and native survey child routing."
+  ],
+  "limits": [
+    "Initial files contain no own shops; do not run buyer first-store posting directly on raw rival-only files.",
+    "Retained-field list describes binding child, not all later cache recalculations.",
+    "Other writes to inspection flag outside recovered UI are not fully mapped."
+  ],
+  "status": "Data extraction; native implementation/APK unchanged."
+}

@@ -1,0 +1,49 @@
+{
+  "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "message_sha256": "d2ab3800ee82628cafe96d94f58d9790653b4e5387cbacc7097cc67c5ac18635",
+  "ranges": [
+    {
+      "file": "source/acquisition_parent.bin",
+      "start": "0x80060e70",
+      "end_exclusive": "0x800612cc",
+      "sha256": "b3d5e4e1041dcfcd8e0570240cef1b9745278fecbe8d20ddf5638843891bf164"
+    },
+    {
+      "file": "source/survey_ui_route.bin",
+      "start": "0x8004d6ec",
+      "end_exclusive": "0x8004d8c8",
+      "sha256": "b9e07797e808d53dcf2650f412d889155f4fba94535004285d8cb3dec34f98d3"
+    },
+    {
+      "file": "source/acquisition_menu.bin",
+      "start": "0x8004dfac",
+      "end_exclusive": "0x8004e494",
+      "sha256": "3a4bf8071e80485b3344fdbb97cfd3d17a78a1dbd3dbc1acb2ec84efa60519a9"
+    },
+    {
+      "file": "source/binding_reset.bin",
+      "start": "0x8001b320",
+      "end_exclusive": "0x8001b678",
+      "sha256": "a726788e7837fc374038382c723a559f8e69a6109506b90b5ae8d87a61dcf868"
+    },
+    {
+      "file": "source/reactivation.bin",
+      "start": "0x8001baac",
+      "end_exclusive": "0x8001bb80",
+      "sha256": "3601e273120219d62a433a19366c7bbc9b2b424bf0a63d06b72a8867d37c9f47"
+    },
+    {
+      "file": "source/sale_parent.bin",
+      "start": "0x80061cdc",
+      "end_exclusive": "0x8006215c",
+      "sha256": "27526227e2a3371f3a0bc840286358ba3d40f5915abde42ac9001a2ad25aeb60"
+    },
+    {
+      "file": "source/sale_confirm.bin",
+      "start": "0x8006215c",
+      "end_exclusive": "0x80062484",
+      "sha256": "ffd39ca670060ac4961821c9bf8151591983c22c4f061c672a0910c5f78c80a3"
+    }
+  ]
+}

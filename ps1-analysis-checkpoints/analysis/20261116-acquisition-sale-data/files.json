@@ -1,0 +1,102 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 6414,
+    "sha256": "130c2f5fbe310e75e29ace06eee76642e4d17d46ca9a010d19d23137980832b5"
+  },
+  {
+    "path": "android-acquisition-bridge.json",
+    "bytes": 1408,
+    "sha256": "1725e993a3599461a6a7caeaf694feeef9c9fca8ad8a4bb25e9f78c862e74e08"
+  },
+  {
+    "path": "extract-acquisition.py",
+    "bytes": 8447,
+    "sha256": "04e4cc775e07ebb920434f6f4d7d00fbc90590aa34866d4472c8162f82ecfe92"
+  },
+  {
+    "path": "initial-staff-transfer-links.json",
+    "bytes": 13003,
+    "sha256": "bca87856ab4f0fb984ada829bec74abc17dba8549a97bbc39185f22ca69adfee"
+  },
+  {
+    "path": "initial-store-quotes.json",
+    "bytes": 10379,
+    "sha256": "c29d8417df9459de228b73d4cd683c12ee7ddd70c29798faa196e83aba0e73d2"
+  },
+  {
+    "path": "inspection-state-routing.json",
+    "bytes": 1351,
+    "sha256": "47b572eaae579052274c9a994b2bb60aeb9300d10bbcb1cffaa38d6fd952a5af"
+  },
+  {
+    "path": "ownership-field-policy.json",
+    "bytes": 2318,
+    "sha256": "ff7bf4099089d0e85498a96b467217b9eeade9e17c0f813aecf10fd17371c496"
+  },
+  {
+    "path": "source/acquisition_menu.bin",
+    "bytes": 1256,
+    "sha256": "3a4bf8071e80485b3344fdbb97cfd3d17a78a1dbd3dbc1acb2ec84efa60519a9"
+  },
+  {
+    "path": "source/acquisition_parent.bin",
+    "bytes": 1116,
+    "sha256": "b3d5e4e1041dcfcd8e0570240cef1b9745278fecbe8d20ddf5638843891bf164"
+  },
+  {
+    "path": "source/binding_reset.bin",
+    "bytes": 856,
+    "sha256": "a726788e7837fc374038382c723a559f8e69a6109506b90b5ae8d87a61dcf868"
+  },
+  {
+    "path": "source/reactivation.bin",
+    "bytes": 212,
+    "sha256": "3601e273120219d62a433a19366c7bbc9b2b424bf0a63d06b72a8867d37c9f47"
+  },
+  {
+    "path": "source/sale_confirm.bin",
+    "bytes": 808,
+    "sha256": "ffd39ca670060ac4961821c9bf8151591983c22c4f061c672a0910c5f78c80a3"
+  },
+  {
+    "path": "source/sale_parent.bin",
+    "bytes": 1152,
+    "sha256": "27526227e2a3371f3a0bc840286358ba3d40f5915abde42ac9001a2ad25aeb60"
+  },
+  {
+    "path": "source/survey_ui_route.bin",
+    "bytes": 476,
+    "sha256": "b9e07797e808d53dcf2650f412d889155f4fba94535004285d8cb3dec34f98d3"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 1671,
+    "sha256": "07f53a82dce027c440ac360c8dd0076aa4a7c21327114530334d74b6e1b1c4fa"
+  },
+  {
+    "path": "source-map-inputs.json",
+    "bytes": 1144,
+    "sha256": "397553ca3625b26c647a79dfe3913010d6ffc96e27397d17f2c20121c13cf276"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1712,
+    "sha256": "48f1d9ef36493c8338907ce47a1297435711b2dc20cb14bd4c0402212dda310f"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 537,
+    "sha256": "f32167af167ec2d20d2be8a34d4bdf71c62f5951976193ff439666ed66c8726b"
+  },
+  {
+    "path": "transaction-rules.json",
+    "bytes": 3653,
+    "sha256": "b245d2c52db7a2e4bcb0985a0f22e71c63ff5841b06edfc250f90eb4f1e28e2a"
+  },
+  {
+    "path": "transaction-texts.json",
+    "bytes": 2547,
+    "sha256": "51bd984a910a7de78d839f69f7a5f2a5ff5655fc6aa458daadc466aedde55339"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "source_acquisition": "0x80060e70..0x800612cc",
+  "preconditions": "Caller has selected a valid active rival cursor. Parent scans first matching active rectangle and does not independently validate every owner/cursor invariant. Normal buyer posting assumes first-store pointer owns company0.",
+  "valuation": {
+    "inspection": "If signed byte+2==1 fee0, otherwise500000. Actual fee debit occurs only if byte+2==0.",
+    "asset": "land_total(rect)+premises_total(mode0)",
+    "premises": "(trunc(tier/2)+1)*3000000 + equipment purchase value + remaining inventory procurement value",
+    "acquisition": "i32(i32(land+premises)<<1)",
+    "sale": "i32(land+premises)",
+    "funding": "First choice investigation requires cash>=fee; first choice acquisition requires cash>=price. Equality accepted."
+  },
+  "inspection": {
+    "menu": "Native MSG299 調査する, MSG300 買収する, MSG301 何もしない. No rental operation established here.",
+    "unknown_flag0": "Menu returns0 investigation,1 acquisition,2 no-op. Direct acquisition available without prior investigation if guard/funds allow.",
+    "investigate": "Debit500000 via first-store capital-post helper, set target byte+2=1, redraw UI. It is not credited to seller.",
+    "known_flag1": "Native4D6EC calls detailed report4D8C8, waits acknowledgement and returns default2. Do not use arbitrary synthetic child choices after inspection.",
+    "scope": "This records this child path only. Other writers/lifetime of byte+2 beyond the covered path are not fully mapped; no claim that all later acquisition UI is permanently blocked."
+  },
+  "acquisition": {
+    "main_guard": "First choice acquisition checks store flags LOW8 bits==1, shows enemy-main-store refusal. Normal source serials1..99 make this the founding-store guard.",
+    "money": "Call1CBC4(first-store,+price) then1CBC4(target,-price), before changing target owner flags. Normal cash0 decreases and cash1 increases; capital ledgers record opposite signed amounts.",
+    "serial": "Increment player u16 serial0x800cd9e0 and write target u16+4. It is not replaced by number of currently active stores.",
+    "staff": "Call1B320(mode1): keep all staff references, write each linked staff ownership to new store flags; reset specified store ledgers/counters/history. No person skill/wage reset in that child.",
+    "town": "Call1BAAC: activate with own building tile kind0/1 selected by low8 serial; place at unchanged rectangle origin and rebuild permit masks. Then refresh cache and invoke milestone3EAD4.",
+    "rng": "Price/guard/parent funding contain no random negotiation. Town placement may consume RNG while assigning source customer mixes; do not label whole acquisition RNG-free."
+  },
+  "sale": {
+    "parent": "0x80061cdc..0x8006215c",
+    "selection": "Use own-store list from1BD78; block selected list index0 (main shop), and block any selected store with signed C77!=0; original message says 開店中は売却できません.",
+    "quote": "land+premises(mode0), without acquisition multiplier. Confirm1 then post negative land and premises separately to selected store owner via1CBC4.",
+    "staff": "Call1B320(mode0) to release staff ownership and refs.",
+    "closure": "Call1BB80 to clear town corners with empty kind12, initialize record with source defaults, rebuild masks; reset byte+1, refresh cache and call milestone3EAD4.",
+    "counterparty": "No corresponding rival cash debit appears in this recovered sale branch; do not implement it as transfer to rival ownership."
+  },
+  "scope": "Price/binding/reset source-data extraction. No actual new acquisitions/sales or APK changes in this work."
+}
