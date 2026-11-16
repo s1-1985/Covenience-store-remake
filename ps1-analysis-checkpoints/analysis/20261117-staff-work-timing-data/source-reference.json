@@ -1,0 +1,26 @@
+{
+  "source_commit": "b26eb43e93731147ec66b08a644ce54b82fed71e",
+  "sources": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261114-staff-roster-growth-data/staff-roster-data.json",
+      "git_blob_sha": "4635d34ee325925ffa1b2a9547c65314c00de3f5"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-staff-sound-data/staff-audio-readers.asm",
+      "git_blob_sha": "170d6a04f534aa826b7d841521ba21064cd61b96"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-floor-cleaning-data/floor-readers.asm",
+      "git_blob_sha": "e6355cc01ec5fd25207d7769164d3e98efd64bcb"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-sound-stack-data/source/caller_prefix.bin",
+      "git_blob_sha": "e5827c4f4656af62e6dc2cfe2d36a3b8094b5be8"
+    }
+  ],
+  "source_disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "main_clock_add_address": "0x80023454",
+  "main_clock_add_little_endian_hex": "02004324",
+  "source_notes": "Instruction extracts preserved from earlier EXE/RAM-derived analysis sources; no natural gameplay execution asserted."
+}

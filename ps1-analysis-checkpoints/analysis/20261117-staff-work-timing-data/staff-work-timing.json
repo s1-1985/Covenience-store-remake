@@ -1,0 +1,4313 @@
+{
+  "schema_version": 1,
+  "scope": "Conditional clock gates for fully recovered task0 staff reconsidering work; earlier checkout/refill choices must fail before cleaning is tried.",
+  "clock_step": 2,
+  "block_updates": 150,
+  "clock_residue_period": 300,
+  "index_convention": "n=0..149, clock=2*n+parity; these are phase positions, not elapsed times since rest/full recovery.",
+  "wrap_scope": "No uint32 overflow within block; retain saved clock phase and parity in native implementation.",
+  "abilities": {
+    "field": "signed runtime staff+0x20",
+    "original_name": "接客",
+    "minimum": 8,
+    "maximum": 19,
+    "odd_profile_count": 19
+  },
+  "counts": {
+    "profiles": 35,
+    "initial_stores": 11,
+    "initial_assignments": 29
+  },
+  "formulas": {
+    "rest": "((clock>>>1)%3)==staff_slot",
+    "cleaning": "(clock>>>0)%100>=100-customer_service",
+    "even_count": "floor(customer_service/2) per50 reconsiderations",
+    "odd_count": "ceil(customer_service/2) per50 reconsiderations"
+  },
+  "profiles": [
+    {
+      "id": 0,
+      "name": "竹中小百合",
+      "customer_service": 14,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "吉田有紀",
+      "customer_service": 11,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "小宮千明",
+      "customer_service": 13,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "浜田裕子",
+      "customer_service": 10,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "万田町子",
+      "customer_service": 17,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "富永福子",
+      "customer_service": 19,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 10,
+              "update_indices": [
+                42,
+                45,
+                48,
+                90,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 10,
+              "update_indices": [
+                40,
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 10,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                140,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "忍田信子",
+      "customer_service": 18,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "市川智恵子",
+      "customer_service": 16,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "杉村真智子",
+      "customer_service": 15,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "田中幸子",
+      "customer_service": 19,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 10,
+              "update_indices": [
+                42,
+                45,
+                48,
+                90,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 10,
+              "update_indices": [
+                40,
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 10,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                140,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "花沢咲江",
+      "customer_service": 18,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "里中涼子",
+      "customer_service": 9,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                46,
+                49,
+                97,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                47,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "山本信夫",
+      "customer_service": 13,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "山下大介",
+      "customer_service": 8,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                46,
+                49,
+                97,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                47,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                46,
+                49,
+                97,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                47,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "name": "杉本三郎",
+      "customer_service": 15,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "雨中聖人",
+      "customer_service": 8,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                46,
+                49,
+                97,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                47,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                46,
+                49,
+                97,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                47,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "秋本三四郎",
+      "customer_service": 10,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "佐々木信雄",
+      "customer_service": 9,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                46,
+                49,
+                97,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                47,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "森山雪之丈",
+      "customer_service": 12,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "西田年男",
+      "customer_service": 18,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "南田洋次",
+      "customer_service": 17,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "name": "谷口明",
+      "customer_service": 11,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "name": "長沢達也",
+      "customer_service": 15,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "name": "今野京介",
+      "customer_service": 10,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "name": "丸山昭夫",
+      "customer_service": 10,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "name": "福本孝仁",
+      "customer_service": 13,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 7,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "name": "小田伸行",
+      "customer_service": 11,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "name": "池上秀夫",
+      "customer_service": 11,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "name": "金田哲也",
+      "customer_service": 16,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "name": "菅原文夫",
+      "customer_service": 17,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "name": "高橋大介",
+      "customer_service": 11,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                46,
+                49,
+                94,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 6,
+              "update_indices": [
+                44,
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "name": "奥平康夫",
+      "customer_service": 18,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                141,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                43,
+                46,
+                49,
+                91,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 9,
+              "update_indices": [
+                41,
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "name": "中山光次",
+      "customer_service": 9,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                46,
+                49,
+                97,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                47,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                45,
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                46,
+                49,
+                97,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 5,
+              "update_indices": [
+                47,
+                95,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "name": "的場丈二",
+      "customer_service": 8,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                46,
+                49,
+                97,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                47,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                48,
+                96,
+                99,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                46,
+                49,
+                97,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 4,
+              "update_indices": [
+                47,
+                98,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "name": "朝田宗司",
+      "customer_service": 16,
+      "parity_cases": [
+        {
+          "parity": 0,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        },
+        {
+          "parity": 1,
+          "slots": [
+            {
+              "slot": 0,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                42,
+                45,
+                48,
+                93,
+                96,
+                99,
+                144,
+                147
+              ]
+            },
+            {
+              "slot": 1,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                43,
+                46,
+                49,
+                94,
+                97,
+                142,
+                145,
+                148
+              ]
+            },
+            {
+              "slot": 2,
+              "rest_reconsiderations": 50,
+              "cleaning_time_gate_passes": 8,
+              "update_indices": [
+                44,
+                47,
+                92,
+                95,
+                98,
+                143,
+                146,
+                149
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "initial_assignments": [
+    {
+      "map": "TOWN0001",
+      "physical_store_slot": 1,
+      "staff_slot": 0,
+      "staff_id": 14,
+      "name": "杉本三郎",
+      "customer_service": 15,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWN0001",
+      "physical_store_slot": 1,
+      "staff_slot": 1,
+      "staff_id": 24,
+      "name": "丸山昭夫",
+      "customer_service": 10,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        46,
+        49,
+        97,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        46,
+        49,
+        97,
+        145,
+        148
+      ]
+    },
+    {
+      "map": "TOWN0001",
+      "physical_store_slot": 1,
+      "staff_slot": 2,
+      "staff_id": 9,
+      "name": "田中幸子",
+      "customer_service": 19,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        41,
+        44,
+        47,
+        92,
+        95,
+        98,
+        143,
+        146,
+        149
+      ],
+      "odd_clock_cleaning_windows": [
+        41,
+        44,
+        47,
+        92,
+        95,
+        98,
+        140,
+        143,
+        146,
+        149
+      ]
+    },
+    {
+      "map": "TOWN0001",
+      "physical_store_slot": 2,
+      "staff_slot": 0,
+      "staff_id": 6,
+      "name": "忍田信子",
+      "customer_service": 18,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWN0001",
+      "physical_store_slot": 2,
+      "staff_slot": 1,
+      "staff_id": 34,
+      "name": "朝田宗司",
+      "customer_service": 16,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        43,
+        46,
+        49,
+        94,
+        97,
+        142,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        43,
+        46,
+        49,
+        94,
+        97,
+        142,
+        145,
+        148
+      ]
+    },
+    {
+      "map": "TOWN0001",
+      "physical_store_slot": 2,
+      "staff_slot": 2,
+      "staff_id": 18,
+      "name": "森山雪之丈",
+      "customer_service": 12,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        44,
+        47,
+        95,
+        98,
+        146,
+        149
+      ],
+      "odd_clock_cleaning_windows": [
+        44,
+        47,
+        95,
+        98,
+        146,
+        149
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "physical_store_slot": 1,
+      "staff_slot": 0,
+      "staff_id": 14,
+      "name": "杉本三郎",
+      "customer_service": 15,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "physical_store_slot": 1,
+      "staff_slot": 1,
+      "staff_id": 26,
+      "name": "小田伸行",
+      "customer_service": 11,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        46,
+        49,
+        97,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        46,
+        49,
+        94,
+        97,
+        145,
+        148
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "physical_store_slot": 1,
+      "staff_slot": 2,
+      "staff_id": 10,
+      "name": "花沢咲江",
+      "customer_service": 18,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        41,
+        44,
+        47,
+        92,
+        95,
+        98,
+        143,
+        146,
+        149
+      ],
+      "odd_clock_cleaning_windows": [
+        41,
+        44,
+        47,
+        92,
+        95,
+        98,
+        143,
+        146,
+        149
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "physical_store_slot": 2,
+      "staff_slot": 0,
+      "staff_id": 34,
+      "name": "朝田宗司",
+      "customer_service": 16,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "physical_store_slot": 2,
+      "staff_slot": 1,
+      "staff_id": 5,
+      "name": "富永福子",
+      "customer_service": 19,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        43,
+        46,
+        49,
+        91,
+        94,
+        97,
+        142,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        40,
+        43,
+        46,
+        49,
+        91,
+        94,
+        97,
+        142,
+        145,
+        148
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "physical_store_slot": 2,
+      "staff_slot": 2,
+      "staff_id": 24,
+      "name": "丸山昭夫",
+      "customer_service": 10,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        47,
+        95,
+        98,
+        146,
+        149
+      ],
+      "odd_clock_cleaning_windows": [
+        47,
+        95,
+        98,
+        146,
+        149
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "physical_store_slot": 3,
+      "staff_slot": 0,
+      "staff_id": 9,
+      "name": "田中幸子",
+      "customer_service": 19,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        90,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "physical_store_slot": 3,
+      "staff_slot": 1,
+      "staff_id": 21,
+      "name": "谷口明",
+      "customer_service": 11,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        46,
+        49,
+        97,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        46,
+        49,
+        94,
+        97,
+        145,
+        148
+      ]
+    },
+    {
+      "map": "TOWN0002",
+      "physical_store_slot": 3,
+      "staff_slot": 2,
+      "staff_id": 7,
+      "name": "市川智恵子",
+      "customer_service": 16,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        44,
+        47,
+        92,
+        95,
+        98,
+        143,
+        146,
+        149
+      ],
+      "odd_clock_cleaning_windows": [
+        44,
+        47,
+        92,
+        95,
+        98,
+        143,
+        146,
+        149
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "physical_store_slot": 1,
+      "staff_slot": 0,
+      "staff_id": 34,
+      "name": "朝田宗司",
+      "customer_service": 16,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "physical_store_slot": 1,
+      "staff_slot": 1,
+      "staff_id": 26,
+      "name": "小田伸行",
+      "customer_service": 11,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        46,
+        49,
+        97,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        46,
+        49,
+        94,
+        97,
+        145,
+        148
+      ]
+    },
+    {
+      "map": "TOWN0003",
+      "physical_store_slot": 1,
+      "staff_slot": 2,
+      "staff_id": 9,
+      "name": "田中幸子",
+      "customer_service": 19,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        41,
+        44,
+        47,
+        92,
+        95,
+        98,
+        143,
+        146,
+        149
+      ],
+      "odd_clock_cleaning_windows": [
+        41,
+        44,
+        47,
+        92,
+        95,
+        98,
+        140,
+        143,
+        146,
+        149
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 1,
+      "staff_slot": 0,
+      "staff_id": 4,
+      "name": "万田町子",
+      "customer_service": 17,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 1,
+      "staff_slot": 1,
+      "staff_id": 3,
+      "name": "浜田裕子",
+      "customer_service": 10,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        46,
+        49,
+        97,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        46,
+        49,
+        97,
+        145,
+        148
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 1,
+      "staff_slot": 2,
+      "staff_id": 10,
+      "name": "花沢咲江",
+      "customer_service": 18,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        41,
+        44,
+        47,
+        92,
+        95,
+        98,
+        143,
+        146,
+        149
+      ],
+      "odd_clock_cleaning_windows": [
+        41,
+        44,
+        47,
+        92,
+        95,
+        98,
+        143,
+        146,
+        149
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 2,
+      "staff_slot": 0,
+      "staff_id": 34,
+      "name": "朝田宗司",
+      "customer_service": 16,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 2,
+      "staff_slot": 1,
+      "staff_id": 7,
+      "name": "市川智恵子",
+      "customer_service": 16,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        43,
+        46,
+        49,
+        94,
+        97,
+        142,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        43,
+        46,
+        49,
+        94,
+        97,
+        142,
+        145,
+        148
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 3,
+      "staff_slot": 0,
+      "staff_id": 19,
+      "name": "西田年男",
+      "customer_service": 18,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 3,
+      "staff_slot": 1,
+      "staff_id": 14,
+      "name": "杉本三郎",
+      "customer_service": 15,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        43,
+        46,
+        49,
+        94,
+        97,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        43,
+        46,
+        49,
+        94,
+        97,
+        142,
+        145,
+        148
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 4,
+      "staff_slot": 0,
+      "staff_id": 6,
+      "name": "忍田信子",
+      "customer_service": 18,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 4,
+      "staff_slot": 1,
+      "staff_id": 16,
+      "name": "秋本三四郎",
+      "customer_service": 10,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        46,
+        49,
+        97,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        46,
+        49,
+        97,
+        145,
+        148
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 5,
+      "staff_slot": 0,
+      "staff_id": 5,
+      "name": "富永福子",
+      "customer_service": 19,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ],
+      "odd_clock_cleaning_windows": [
+        42,
+        45,
+        48,
+        90,
+        93,
+        96,
+        99,
+        141,
+        144,
+        147
+      ]
+    },
+    {
+      "map": "TOWNPS",
+      "physical_store_slot": 5,
+      "staff_slot": 1,
+      "staff_id": 21,
+      "name": "谷口明",
+      "customer_service": 11,
+      "initial_task": 0,
+      "even_clock_cleaning_windows": [
+        46,
+        49,
+        97,
+        145,
+        148
+      ],
+      "odd_clock_cleaning_windows": [
+        46,
+        49,
+        94,
+        97,
+        145,
+        148
+      ]
+    }
+  ],
+  "limitations": [
+    "No task success rate, probability or real seconds is inferred.",
+    "Target availability, fatigue/recovery, earlier tasks, path and fixture conditions remain required.",
+    "This package establishes the original cleaning time gate; it does not newly establish the checkout helper internal time gate.",
+    "Odd parity is a conditional case, not a claim about the default new-game clock."
+  ]
+}
