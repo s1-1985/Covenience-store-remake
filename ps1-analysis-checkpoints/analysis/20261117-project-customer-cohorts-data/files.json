@@ -1,0 +1,38 @@
+{
+  "source_commit": "ed3db52f2900d47b45e2401996038b6a5001192a",
+  "entries": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-customer-cohorts-data/README.md",
+      "sha": "d5e3edfdfeb1d674fdc5b16504453267018398d3"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-customer-cohorts-data/project-customer-cohorts.json",
+      "sha": "1679ce2436385f7a9625ceca8226d886c157fb01"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-customer-cohorts-data/rebuild-cohorts.mjs",
+      "sha": "2ffde9b666bd8640ea28a0c3ac8ed5e8c8e95eff"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-customer-cohorts-data/source-references.json",
+      "sha": "84d5cf983bfeb2f99574523346b6d8450c31fde2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-project-customer-cohorts-data/summary.json",
+      "sha": "8854760724d5a06420419c13e410f46a08c92fc9"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-REMAINING.json",
+      "sha": "b6b0e46b9421cb5cda49999b8727cdc9f6b21182"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-DATA-ANALYSIS.json",
+      "sha": "7fb8fb74f29e3f7bd6f5dc765102f698cd369a40"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "sha": "7cc6e9dd9f4aad309d29e148d62ca54e6f65f3a9"
+    }
+  ],
+  "note": "Git blob SHA identifies each exact UTF-8 file; index does not hash itself."
+}

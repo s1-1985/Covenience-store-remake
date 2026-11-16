@@ -1,0 +1,3748 @@
+{
+  "schema_version": 1,
+  "source_commit": "ed3db52f2900d47b45e2401996038b6a5001192a",
+  "scope": "Completed-building source composition, before weather, season, calendar share, store choice and customer spawn. Each numerator/5 is the arithmetic mean of five catalog slots multiplied by footprint area, not actual fractional people, expected sales, a daily arrival count, or a measured RNG distribution. Duplicate slots retain multiplicity.",
+  "profile_links": 162,
+  "distinct_profiles": 83,
+  "facilities_with_parking_mode": 10,
+  "rows": [
+    {
+      "selection": 0,
+      "kind": 18,
+      "name": "交番",
+      "footprint": [
+        2,
+        2
+      ],
+      "area": 4,
+      "source_mix_slots": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "per_cell_slot_population": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "population_slot_average": {
+        "numerator": 40,
+        "denominator": 5
+      },
+      "population_min": 8,
+      "population_max": 8,
+      "unique_profiles": 2,
+      "profiles": [
+        {
+          "profile": 51,
+          "head_weight_numerator": 20,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            7,
+            8
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1500,
+          "patience": 70
+        },
+        {
+          "profile": 52,
+          "head_weight_numerator": 20,
+          "denominator": 5,
+          "primary_product": 8,
+          "product_candidates": [
+            8,
+            0,
+            1,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 700,
+          "patience": 100
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 3,
+          "name": "弁当類",
+          "head_weight_numerator": 20,
+          "denominator": 5
+        },
+        {
+          "id": 8,
+          "name": "たばこ",
+          "head_weight_numerator": 20,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 40,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 1,
+      "kind": 19,
+      "name": "消防署",
+      "footprint": [
+        3,
+        2
+      ],
+      "area": 6,
+      "source_mix_slots": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "per_cell_slot_population": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "population_slot_average": {
+        "numerator": 60,
+        "denominator": 5
+      },
+      "population_min": 12,
+      "population_max": 12,
+      "unique_profiles": 2,
+      "profiles": [
+        {
+          "profile": 51,
+          "head_weight_numerator": 30,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            7,
+            8
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1500,
+          "patience": 70
+        },
+        {
+          "profile": 60,
+          "head_weight_numerator": 30,
+          "denominator": 5,
+          "primary_product": 5,
+          "product_candidates": [
+            5,
+            2,
+            5,
+            8
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 3000,
+          "patience": 70
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 3,
+          "name": "弁当類",
+          "head_weight_numerator": 30,
+          "denominator": 5
+        },
+        {
+          "id": 5,
+          "name": "ｲﾝｽﾀﾝﾄ類",
+          "head_weight_numerator": 30,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 30,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 30,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 2,
+      "kind": 49,
+      "name": "住宅",
+      "footprint": [
+        3,
+        2
+      ],
+      "area": 6,
+      "source_mix_slots": [
+        74,
+        75,
+        76,
+        77,
+        78
+      ],
+      "per_cell_slot_population": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "population_slot_average": {
+        "numerator": 120,
+        "denominator": 5
+      },
+      "population_min": 24,
+      "population_max": 24,
+      "unique_profiles": 19,
+      "profiles": [
+        {
+          "profile": 14,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 20,
+          "product_candidates": [
+            20,
+            0,
+            6,
+            9
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 3000,
+          "patience": 50
+        },
+        {
+          "profile": 37,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 8,
+          "product_candidates": [
+            8,
+            1,
+            2,
+            25
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 2000,
+          "patience": 90
+        },
+        {
+          "profile": 80,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 2,
+          "product_candidates": [
+            2,
+            18,
+            6,
+            8
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 8000,
+          "patience": 50
+        },
+        {
+          "profile": 81,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 2,
+          "product_candidates": [
+            2,
+            18,
+            6,
+            8
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 10000,
+          "patience": 50
+        },
+        {
+          "profile": 82,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 9,
+          "product_candidates": [
+            9,
+            0,
+            8,
+            -1
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 1500,
+          "patience": 50
+        },
+        {
+          "profile": 83,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 9,
+          "product_candidates": [
+            9,
+            8,
+            1,
+            -1
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 1000,
+          "patience": 50
+        },
+        {
+          "profile": 92,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            25,
+            1,
+            6
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1200,
+          "patience": 100
+        },
+        {
+          "profile": 93,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            6,
+            0,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1500,
+          "patience": 100
+        },
+        {
+          "profile": 94,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            7,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 3000,
+          "patience": 100
+        },
+        {
+          "profile": 96,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 20,
+          "product_candidates": [
+            20,
+            0,
+            10,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 3000,
+          "patience": 100
+        },
+        {
+          "profile": 98,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            24,
+            10
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 1500,
+          "patience": 100
+        },
+        {
+          "profile": 102,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            6,
+            0,
+            10
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 3500,
+          "patience": 100
+        },
+        {
+          "profile": 103,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 22,
+          "product_candidates": [
+            22,
+            0,
+            24,
+            25
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 4000,
+          "patience": 100
+        },
+        {
+          "profile": 113,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 23,
+          "product_candidates": [
+            23,
+            19,
+            17,
+            22
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 8000,
+          "patience": 10
+        },
+        {
+          "profile": 127,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 13,
+          "product_candidates": [
+            13,
+            12,
+            14,
+            16
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 8000,
+          "patience": 100
+        },
+        {
+          "profile": 128,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 14,
+          "product_candidates": [
+            14,
+            12,
+            13,
+            16
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 10000,
+          "patience": 100
+        },
+        {
+          "profile": 129,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 12,
+          "product_candidates": [
+            12,
+            13,
+            14,
+            16
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 10000,
+          "patience": 100
+        },
+        {
+          "profile": 134,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 19,
+          "product_candidates": [
+            19,
+            12,
+            14,
+            16
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 10000,
+          "patience": 50
+        },
+        {
+          "profile": 135,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 23,
+          "product_candidates": [
+            23,
+            12,
+            17,
+            16
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 15000,
+          "patience": 50
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 2,
+          "name": "酒類",
+          "head_weight_numerator": 18,
+          "denominator": 5
+        },
+        {
+          "id": 24,
+          "name": "イベント商品",
+          "head_weight_numerator": 18,
+          "denominator": 5
+        },
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 12,
+          "denominator": 5
+        },
+        {
+          "id": 9,
+          "name": "ｱｲｽｸﾘｰﾑ",
+          "head_weight_numerator": 12,
+          "denominator": 5
+        },
+        {
+          "id": 20,
+          "name": "コピー用紙",
+          "head_weight_numerator": 12,
+          "denominator": 5
+        },
+        {
+          "id": 23,
+          "name": "下着類",
+          "head_weight_numerator": 12,
+          "denominator": 5
+        },
+        {
+          "id": 8,
+          "name": "たばこ",
+          "head_weight_numerator": 6,
+          "denominator": 5
+        },
+        {
+          "id": 12,
+          "name": "野菜類",
+          "head_weight_numerator": 6,
+          "denominator": 5
+        },
+        {
+          "id": 13,
+          "name": "魚類",
+          "head_weight_numerator": 6,
+          "denominator": 5
+        },
+        {
+          "id": 14,
+          "name": "肉類",
+          "head_weight_numerator": 6,
+          "denominator": 5
+        },
+        {
+          "id": 19,
+          "name": "日用品",
+          "head_weight_numerator": 6,
+          "denominator": 5
+        },
+        {
+          "id": 22,
+          "name": "薬品",
+          "head_weight_numerator": 6,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 36,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 18,
+          "denominator": 5
+        },
+        {
+          "mode": 2,
+          "head_weight_numerator": 30,
+          "denominator": 5
+        },
+        {
+          "mode": 3,
+          "head_weight_numerator": 36,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 3,
+      "kind": 42,
+      "name": "会社",
+      "footprint": [
+        3,
+        3
+      ],
+      "area": 9,
+      "source_mix_slots": [
+        55,
+        56,
+        57,
+        58,
+        58
+      ],
+      "per_cell_slot_population": [
+        10,
+        11,
+        11,
+        11,
+        11
+      ],
+      "population_slot_average": {
+        "numerator": 486,
+        "denominator": 5
+      },
+      "population_min": 90,
+      "population_max": 99,
+      "unique_profiles": 15,
+      "profiles": [
+        {
+          "profile": 44,
+          "head_weight_numerator": 27,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            1,
+            10,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1000,
+          "patience": 70
+        },
+        {
+          "profile": 45,
+          "head_weight_numerator": 27,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            0,
+            8,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 70
+        },
+        {
+          "profile": 46,
+          "head_weight_numerator": 54,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            1,
+            7,
+            8
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1000,
+          "patience": 70
+        },
+        {
+          "profile": 49,
+          "head_weight_numerator": 81,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            19,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1300,
+          "patience": 70
+        },
+        {
+          "profile": 51,
+          "head_weight_numerator": 27,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            7,
+            8
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1500,
+          "patience": 70
+        },
+        {
+          "profile": 52,
+          "head_weight_numerator": 27,
+          "denominator": 5,
+          "primary_product": 8,
+          "product_candidates": [
+            8,
+            0,
+            1,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 700,
+          "patience": 100
+        },
+        {
+          "profile": 62,
+          "head_weight_numerator": 18,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            1,
+            7,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1000,
+          "patience": 70
+        },
+        {
+          "profile": 72,
+          "head_weight_numerator": 18,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            1,
+            6,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 2000,
+          "patience": 70
+        },
+        {
+          "profile": 73,
+          "head_weight_numerator": 18,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            6,
+            7
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 2000,
+          "patience": 70
+        },
+        {
+          "profile": 74,
+          "head_weight_numerator": 18,
+          "denominator": 5,
+          "primary_product": 8,
+          "product_candidates": [
+            8,
+            0,
+            1,
+            7
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1000,
+          "patience": 90
+        },
+        {
+          "profile": 75,
+          "head_weight_numerator": 36,
+          "denominator": 5,
+          "primary_product": 15,
+          "product_candidates": [
+            15,
+            5,
+            17,
+            25
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 3000,
+          "patience": 70
+        },
+        {
+          "profile": 76,
+          "head_weight_numerator": 27,
+          "denominator": 5,
+          "primary_product": 2,
+          "product_candidates": [
+            2,
+            6,
+            18,
+            5
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 4000,
+          "patience": 80
+        },
+        {
+          "profile": 77,
+          "head_weight_numerator": 27,
+          "denominator": 5,
+          "primary_product": 19,
+          "product_candidates": [
+            19,
+            6,
+            1,
+            17
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 5000,
+          "patience": 80
+        },
+        {
+          "profile": 78,
+          "head_weight_numerator": 54,
+          "denominator": 5,
+          "primary_product": 7,
+          "product_candidates": [
+            7,
+            6,
+            2,
+            18
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 5000,
+          "patience": 80
+        },
+        {
+          "profile": 79,
+          "head_weight_numerator": 27,
+          "denominator": 5,
+          "primary_product": 5,
+          "product_candidates": [
+            5,
+            1,
+            18,
+            6
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 3000,
+          "patience": 70
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 3,
+          "name": "弁当類",
+          "head_weight_numerator": 180,
+          "denominator": 5
+        },
+        {
+          "id": 4,
+          "name": "パン類",
+          "head_weight_numerator": 90,
+          "denominator": 5
+        },
+        {
+          "id": 7,
+          "name": "本類",
+          "head_weight_numerator": 54,
+          "denominator": 5
+        },
+        {
+          "id": 8,
+          "name": "たばこ",
+          "head_weight_numerator": 45,
+          "denominator": 5
+        },
+        {
+          "id": 15,
+          "name": "レトルト類",
+          "head_weight_numerator": 36,
+          "denominator": 5
+        },
+        {
+          "id": 2,
+          "name": "酒類",
+          "head_weight_numerator": 27,
+          "denominator": 5
+        },
+        {
+          "id": 5,
+          "name": "ｲﾝｽﾀﾝﾄ類",
+          "head_weight_numerator": 27,
+          "denominator": 5
+        },
+        {
+          "id": 19,
+          "name": "日用品",
+          "head_weight_numerator": 27,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 486,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 4,
+      "kind": 51,
+      "name": "体育館",
+      "footprint": [
+        3,
+        2
+      ],
+      "area": 6,
+      "source_mix_slots": [
+        81,
+        82,
+        82,
+        83,
+        83
+      ],
+      "per_cell_slot_population": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "population_slot_average": {
+        "numerator": 150,
+        "denominator": 5
+      },
+      "population_min": 30,
+      "population_max": 30,
+      "unique_profiles": 11,
+      "profiles": [
+        {
+          "profile": 88,
+          "head_weight_numerator": 24,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 89,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            10
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1000,
+          "patience": 100
+        },
+        {
+          "profile": 90,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            10,
+            6
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 91,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            10,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1000,
+          "patience": 100
+        },
+        {
+          "profile": 95,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            24,
+            10
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1500,
+          "patience": 100
+        },
+        {
+          "profile": 97,
+          "head_weight_numerator": 24,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            6,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 2000,
+          "patience": 100
+        },
+        {
+          "profile": 98,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            24,
+            10
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 1500,
+          "patience": 100
+        },
+        {
+          "profile": 99,
+          "head_weight_numerator": 24,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 2000,
+          "patience": 100
+        },
+        {
+          "profile": 106,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 140,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 141,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 138,
+          "denominator": 5
+        },
+        {
+          "id": 6,
+          "name": "菓子類",
+          "head_weight_numerator": 12,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 48,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 66,
+          "denominator": 5
+        },
+        {
+          "mode": 2,
+          "head_weight_numerator": 12,
+          "denominator": 5
+        },
+        {
+          "mode": 3,
+          "head_weight_numerator": 24,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 5,
+      "kind": 53,
+      "name": "プール",
+      "footprint": [
+        3,
+        2
+      ],
+      "area": 6,
+      "source_mix_slots": [
+        87,
+        88,
+        89,
+        90,
+        90
+      ],
+      "per_cell_slot_population": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "population_slot_average": {
+        "numerator": 210,
+        "denominator": 5
+      },
+      "population_min": 42,
+      "population_max": 42,
+      "unique_profiles": 14,
+      "profiles": [
+        {
+          "profile": 88,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 89,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            10
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1000,
+          "patience": 100
+        },
+        {
+          "profile": 90,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            10,
+            6
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 91,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            10,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1000,
+          "patience": 100
+        },
+        {
+          "profile": 97,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            6,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 2000,
+          "patience": 100
+        },
+        {
+          "profile": 98,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            24,
+            10
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 1500,
+          "patience": 100
+        },
+        {
+          "profile": 106,
+          "head_weight_numerator": 36,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 107,
+          "head_weight_numerator": 18,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 108,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 500,
+          "patience": 40
+        },
+        {
+          "profile": 109,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 500,
+          "patience": 40
+        },
+        {
+          "profile": 140,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 141,
+          "head_weight_numerator": 6,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 142,
+          "head_weight_numerator": 24,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        },
+        {
+          "profile": 143,
+          "head_weight_numerator": 24,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 138,
+          "denominator": 5
+        },
+        {
+          "id": 6,
+          "name": "菓子類",
+          "head_weight_numerator": 72,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 54,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 78,
+          "denominator": 5
+        },
+        {
+          "mode": 2,
+          "head_weight_numerator": 12,
+          "denominator": 5
+        },
+        {
+          "mode": 3,
+          "head_weight_numerator": 66,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 6,
+      "kind": 52,
+      "name": "運動場",
+      "footprint": [
+        5,
+        4
+      ],
+      "area": 20,
+      "source_mix_slots": [
+        84,
+        85,
+        85,
+        86,
+        86
+      ],
+      "per_cell_slot_population": [
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "population_slot_average": {
+        "numerator": 500,
+        "denominator": 5
+      },
+      "population_min": 100,
+      "population_max": 100,
+      "unique_profiles": 12,
+      "profiles": [
+        {
+          "profile": 6,
+          "head_weight_numerator": 40,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            6,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 50
+        },
+        {
+          "profile": 7,
+          "head_weight_numerator": 80,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            9,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 50
+        },
+        {
+          "profile": 27,
+          "head_weight_numerator": 40,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            7,
+            20
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 90
+        },
+        {
+          "profile": 90,
+          "head_weight_numerator": 20,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            10,
+            6
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 91,
+          "head_weight_numerator": 20,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            10,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1000,
+          "patience": 100
+        },
+        {
+          "profile": 98,
+          "head_weight_numerator": 40,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            24,
+            10
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 1500,
+          "patience": 100
+        },
+        {
+          "profile": 99,
+          "head_weight_numerator": 20,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 2000,
+          "patience": 100
+        },
+        {
+          "profile": 100,
+          "head_weight_numerator": 40,
+          "denominator": 5,
+          "primary_product": 9,
+          "product_candidates": [
+            9,
+            0,
+            6,
+            7
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 2000,
+          "patience": 100
+        },
+        {
+          "profile": 103,
+          "head_weight_numerator": 80,
+          "denominator": 5,
+          "primary_product": 22,
+          "product_candidates": [
+            22,
+            0,
+            24,
+            25
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 4000,
+          "patience": 100
+        },
+        {
+          "profile": 106,
+          "head_weight_numerator": 40,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 140,
+          "head_weight_numerator": 40,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 141,
+          "head_weight_numerator": 40,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 180,
+          "denominator": 5
+        },
+        {
+          "id": 3,
+          "name": "弁当類",
+          "head_weight_numerator": 160,
+          "denominator": 5
+        },
+        {
+          "id": 22,
+          "name": "薬品",
+          "head_weight_numerator": 80,
+          "denominator": 5
+        },
+        {
+          "id": 6,
+          "name": "菓子類",
+          "head_weight_numerator": 40,
+          "denominator": 5
+        },
+        {
+          "id": 9,
+          "name": "ｱｲｽｸﾘｰﾑ",
+          "head_weight_numerator": 40,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 220,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 80,
+          "denominator": 5
+        },
+        {
+          "mode": 2,
+          "head_weight_numerator": 120,
+          "denominator": 5
+        },
+        {
+          "mode": 3,
+          "head_weight_numerator": 80,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 7,
+      "kind": 54,
+      "name": "ｲﾍﾞﾝﾄ会場",
+      "footprint": [
+        2,
+        2
+      ],
+      "area": 4,
+      "source_mix_slots": [
+        91,
+        92,
+        92,
+        93,
+        93
+      ],
+      "per_cell_slot_population": [
+        13,
+        13,
+        13,
+        13,
+        13
+      ],
+      "population_slot_average": {
+        "numerator": 260,
+        "denominator": 5
+      },
+      "population_min": 52,
+      "population_max": 52,
+      "unique_profiles": 10,
+      "profiles": [
+        {
+          "profile": 92,
+          "head_weight_numerator": 32,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            25,
+            1,
+            6
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1200,
+          "patience": 100
+        },
+        {
+          "profile": 93,
+          "head_weight_numerator": 24,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            6,
+            0,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1500,
+          "patience": 100
+        },
+        {
+          "profile": 101,
+          "head_weight_numerator": 32,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            25,
+            0,
+            10
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 3000,
+          "patience": 100
+        },
+        {
+          "profile": 102,
+          "head_weight_numerator": 24,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            6,
+            0,
+            10
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 3500,
+          "patience": 100
+        },
+        {
+          "profile": 106,
+          "head_weight_numerator": 16,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 107,
+          "head_weight_numerator": 16,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 140,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 141,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 142,
+          "head_weight_numerator": 48,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        },
+        {
+          "profile": 143,
+          "head_weight_numerator": 44,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 116,
+          "denominator": 5
+        },
+        {
+          "id": 24,
+          "name": "イベント商品",
+          "head_weight_numerator": 112,
+          "denominator": 5
+        },
+        {
+          "id": 6,
+          "name": "菓子類",
+          "head_weight_numerator": 32,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 32,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 80,
+          "denominator": 5
+        },
+        {
+          "mode": 2,
+          "head_weight_numerator": 32,
+          "denominator": 5
+        },
+        {
+          "mode": 3,
+          "head_weight_numerator": 116,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 8,
+      "kind": 25,
+      "name": "幼稚園",
+      "footprint": [
+        3,
+        2
+      ],
+      "area": 6,
+      "source_mix_slots": [
+        19,
+        19,
+        19,
+        19,
+        19
+      ],
+      "per_cell_slot_population": [
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "population_slot_average": {
+        "numerator": 180,
+        "denominator": 5
+      },
+      "population_min": 36,
+      "population_max": 36,
+      "unique_profiles": 4,
+      "profiles": [
+        {
+          "profile": 108,
+          "head_weight_numerator": 60,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 500,
+          "patience": 40
+        },
+        {
+          "profile": 109,
+          "head_weight_numerator": 30,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 500,
+          "patience": 40
+        },
+        {
+          "profile": 136,
+          "head_weight_numerator": 60,
+          "denominator": 5,
+          "primary_product": 13,
+          "product_candidates": [
+            13,
+            12,
+            17,
+            16
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 5000,
+          "patience": 50
+        },
+        {
+          "profile": 137,
+          "head_weight_numerator": 30,
+          "denominator": 5,
+          "primary_product": 14,
+          "product_candidates": [
+            14,
+            12,
+            13,
+            16
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 8000,
+          "patience": 50
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 6,
+          "name": "菓子類",
+          "head_weight_numerator": 90,
+          "denominator": 5
+        },
+        {
+          "id": 13,
+          "name": "魚類",
+          "head_weight_numerator": 60,
+          "denominator": 5
+        },
+        {
+          "id": 14,
+          "name": "肉類",
+          "head_weight_numerator": 30,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 120,
+          "denominator": 5
+        },
+        {
+          "mode": 3,
+          "head_weight_numerator": 60,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 9,
+      "kind": 26,
+      "name": "小学校",
+      "footprint": [
+        4,
+        4
+      ],
+      "area": 16,
+      "source_mix_slots": [
+        20,
+        20,
+        20,
+        21,
+        21
+      ],
+      "per_cell_slot_population": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "population_slot_average": {
+        "numerator": 560,
+        "denominator": 5
+      },
+      "population_min": 112,
+      "population_max": 112,
+      "unique_profiles": 4,
+      "profiles": [
+        {
+          "profile": 104,
+          "head_weight_numerator": 160,
+          "denominator": 5,
+          "primary_product": 10,
+          "product_candidates": [
+            10,
+            0,
+            6,
+            24
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1000,
+          "patience": 100
+        },
+        {
+          "profile": 105,
+          "head_weight_numerator": 160,
+          "denominator": 5,
+          "primary_product": 10,
+          "product_candidates": [
+            10,
+            0,
+            6,
+            24
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1000,
+          "patience": 100
+        },
+        {
+          "profile": 106,
+          "head_weight_numerator": 128,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 107,
+          "head_weight_numerator": 112,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 10,
+          "name": "文房具",
+          "head_weight_numerator": 320,
+          "denominator": 5
+        },
+        {
+          "id": 6,
+          "name": "菓子類",
+          "head_weight_numerator": 240,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 1,
+          "head_weight_numerator": 560,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 10,
+      "kind": 27,
+      "name": "中学校",
+      "footprint": [
+        5,
+        5
+      ],
+      "area": 25,
+      "source_mix_slots": [
+        22,
+        22,
+        22,
+        23,
+        23
+      ],
+      "per_cell_slot_population": [
+        8,
+        8,
+        8,
+        8,
+        8
+      ],
+      "population_slot_average": {
+        "numerator": 1000,
+        "denominator": 5
+      },
+      "population_min": 200,
+      "population_max": 200,
+      "unique_profiles": 8,
+      "profiles": [
+        {
+          "profile": 86,
+          "head_weight_numerator": 150,
+          "denominator": 5,
+          "primary_product": 10,
+          "product_candidates": [
+            10,
+            -1,
+            -1,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 500,
+          "patience": 100
+        },
+        {
+          "profile": 87,
+          "head_weight_numerator": 100,
+          "denominator": 5,
+          "primary_product": 10,
+          "product_candidates": [
+            10,
+            -1,
+            -1,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 500,
+          "patience": 100
+        },
+        {
+          "profile": 88,
+          "head_weight_numerator": 225,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 89,
+          "head_weight_numerator": 150,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            10
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1000,
+          "patience": 100
+        },
+        {
+          "profile": 90,
+          "head_weight_numerator": 75,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            10,
+            6
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 91,
+          "head_weight_numerator": 50,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            10,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1000,
+          "patience": 100
+        },
+        {
+          "profile": 92,
+          "head_weight_numerator": 150,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            25,
+            1,
+            6
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1200,
+          "patience": 100
+        },
+        {
+          "profile": 93,
+          "head_weight_numerator": 100,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            6,
+            0,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1500,
+          "patience": 100
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 500,
+          "denominator": 5
+        },
+        {
+          "id": 10,
+          "name": "文房具",
+          "head_weight_numerator": 250,
+          "denominator": 5
+        },
+        {
+          "id": 24,
+          "name": "イベント商品",
+          "head_weight_numerator": 250,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 525,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 475,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 11,
+      "kind": 28,
+      "name": "高校",
+      "footprint": [
+        6,
+        6
+      ],
+      "area": 36,
+      "source_mix_slots": [
+        24,
+        25,
+        26,
+        27,
+        27
+      ],
+      "per_cell_slot_population": [
+        7,
+        10,
+        10,
+        10,
+        10
+      ],
+      "population_slot_average": {
+        "numerator": 1692,
+        "denominator": 5
+      },
+      "population_min": 252,
+      "population_max": 360,
+      "unique_profiles": 9,
+      "profiles": [
+        {
+          "profile": 95,
+          "head_weight_numerator": 324,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            24,
+            10
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1500,
+          "patience": 100
+        },
+        {
+          "profile": 96,
+          "head_weight_numerator": 252,
+          "denominator": 5,
+          "primary_product": 20,
+          "product_candidates": [
+            20,
+            0,
+            10,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 3000,
+          "patience": 100
+        },
+        {
+          "profile": 97,
+          "head_weight_numerator": 396,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            6,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 2000,
+          "patience": 100
+        },
+        {
+          "profile": 98,
+          "head_weight_numerator": 180,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            24,
+            10
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 1500,
+          "patience": 100
+        },
+        {
+          "profile": 99,
+          "head_weight_numerator": 72,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 2000,
+          "patience": 100
+        },
+        {
+          "profile": 100,
+          "head_weight_numerator": 72,
+          "denominator": 5,
+          "primary_product": 9,
+          "product_candidates": [
+            9,
+            0,
+            6,
+            7
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 2000,
+          "patience": 100
+        },
+        {
+          "profile": 101,
+          "head_weight_numerator": 108,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            25,
+            0,
+            10
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 3000,
+          "patience": 100
+        },
+        {
+          "profile": 102,
+          "head_weight_numerator": 252,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            6,
+            0,
+            10
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 3500,
+          "patience": 100
+        },
+        {
+          "profile": 103,
+          "head_weight_numerator": 36,
+          "denominator": 5,
+          "primary_product": 22,
+          "product_candidates": [
+            22,
+            0,
+            24,
+            25
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 4000,
+          "patience": 100
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 972,
+          "denominator": 5
+        },
+        {
+          "id": 24,
+          "name": "イベント商品",
+          "head_weight_numerator": 360,
+          "denominator": 5
+        },
+        {
+          "id": 20,
+          "name": "コピー用紙",
+          "head_weight_numerator": 252,
+          "denominator": 5
+        },
+        {
+          "id": 9,
+          "name": "ｱｲｽｸﾘｰﾑ",
+          "head_weight_numerator": 72,
+          "denominator": 5
+        },
+        {
+          "id": 22,
+          "name": "薬品",
+          "head_weight_numerator": 36,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 1044,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 324,
+          "denominator": 5
+        },
+        {
+          "mode": 2,
+          "head_weight_numerator": 324,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 12,
+      "kind": 29,
+      "name": "大学",
+      "footprint": [
+        7,
+        7
+      ],
+      "area": 49,
+      "source_mix_slots": [
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "per_cell_slot_population": [
+        11,
+        15,
+        13,
+        19,
+        18
+      ],
+      "population_slot_average": {
+        "numerator": 3724,
+        "denominator": 5
+      },
+      "population_min": 539,
+      "population_max": 931,
+      "unique_profiles": 19,
+      "profiles": [
+        {
+          "profile": 0,
+          "head_weight_numerator": 147,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            0,
+            -1,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 500,
+          "patience": 50
+        },
+        {
+          "profile": 1,
+          "head_weight_numerator": 147,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            1,
+            6,
+            19
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 50
+        },
+        {
+          "profile": 4,
+          "head_weight_numerator": 196,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            0,
+            6,
+            20
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 50
+        },
+        {
+          "profile": 5,
+          "head_weight_numerator": 196,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            1,
+            7,
+            8
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1000,
+          "patience": 50
+        },
+        {
+          "profile": 6,
+          "head_weight_numerator": 294,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            6,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 50
+        },
+        {
+          "profile": 8,
+          "head_weight_numerator": 98,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            1,
+            9,
+            20
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1000,
+          "patience": 50
+        },
+        {
+          "profile": 9,
+          "head_weight_numerator": 343,
+          "denominator": 5,
+          "primary_product": 5,
+          "product_candidates": [
+            5,
+            1,
+            6,
+            8
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 1000,
+          "patience": 50
+        },
+        {
+          "profile": 11,
+          "head_weight_numerator": 98,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            6,
+            7,
+            10
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 3000,
+          "patience": 60
+        },
+        {
+          "profile": 14,
+          "head_weight_numerator": 147,
+          "denominator": 5,
+          "primary_product": 20,
+          "product_candidates": [
+            20,
+            0,
+            6,
+            9
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 3000,
+          "patience": 50
+        },
+        {
+          "profile": 19,
+          "head_weight_numerator": 147,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            0,
+            -1,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 400,
+          "patience": 90
+        },
+        {
+          "profile": 20,
+          "head_weight_numerator": 245,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            1,
+            8,
+            10
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 90
+        },
+        {
+          "profile": 21,
+          "head_weight_numerator": 245,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            0,
+            7,
+            10
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 400,
+          "patience": 90
+        },
+        {
+          "profile": 24,
+          "head_weight_numerator": 245,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            0,
+            -1,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 400,
+          "patience": 90
+        },
+        {
+          "profile": 25,
+          "head_weight_numerator": 294,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            1,
+            8,
+            25
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 90
+        },
+        {
+          "profile": 29,
+          "head_weight_numerator": 196,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            1,
+            7,
+            19
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1200,
+          "patience": 90
+        },
+        {
+          "profile": 30,
+          "head_weight_numerator": 147,
+          "denominator": 5,
+          "primary_product": 15,
+          "product_candidates": [
+            15,
+            0,
+            7,
+            20
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1200,
+          "patience": 90
+        },
+        {
+          "profile": 31,
+          "head_weight_numerator": 196,
+          "denominator": 5,
+          "primary_product": 5,
+          "product_candidates": [
+            5,
+            1,
+            20,
+            6
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1200,
+          "patience": 90
+        },
+        {
+          "profile": 34,
+          "head_weight_numerator": 196,
+          "denominator": 5,
+          "primary_product": 5,
+          "product_candidates": [
+            5,
+            1,
+            7,
+            10
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1200,
+          "patience": 90
+        },
+        {
+          "profile": 40,
+          "head_weight_numerator": 147,
+          "denominator": 5,
+          "primary_product": 20,
+          "product_candidates": [
+            20,
+            1,
+            10,
+            8
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 3000,
+          "patience": 90
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 4,
+          "name": "パン類",
+          "head_weight_numerator": 1323,
+          "denominator": 5
+        },
+        {
+          "id": 3,
+          "name": "弁当類",
+          "head_weight_numerator": 1127,
+          "denominator": 5
+        },
+        {
+          "id": 5,
+          "name": "ｲﾝｽﾀﾝﾄ類",
+          "head_weight_numerator": 735,
+          "denominator": 5
+        },
+        {
+          "id": 20,
+          "name": "コピー用紙",
+          "head_weight_numerator": 294,
+          "denominator": 5
+        },
+        {
+          "id": 15,
+          "name": "レトルト類",
+          "head_weight_numerator": 147,
+          "denominator": 5
+        },
+        {
+          "id": 24,
+          "name": "イベント商品",
+          "head_weight_numerator": 98,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 2646,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 931,
+          "denominator": 5
+        },
+        {
+          "mode": 2,
+          "head_weight_numerator": 147,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 13,
+      "kind": 30,
+      "name": "専門学校",
+      "footprint": [
+        4,
+        3
+      ],
+      "area": 12,
+      "source_mix_slots": [
+        33,
+        33,
+        33,
+        34,
+        34
+      ],
+      "per_cell_slot_population": [
+        11,
+        11,
+        11,
+        11,
+        11
+      ],
+      "population_slot_average": {
+        "numerator": 660,
+        "denominator": 5
+      },
+      "population_min": 132,
+      "population_max": 132,
+      "unique_profiles": 8,
+      "profiles": [
+        {
+          "profile": 2,
+          "head_weight_numerator": 108,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            0,
+            6,
+            22
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 1000,
+          "patience": 50
+        },
+        {
+          "profile": 6,
+          "head_weight_numerator": 48,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            6,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 50
+        },
+        {
+          "profile": 7,
+          "head_weight_numerator": 108,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            9,
+            24
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 50
+        },
+        {
+          "profile": 11,
+          "head_weight_numerator": 72,
+          "denominator": 5,
+          "primary_product": 24,
+          "product_candidates": [
+            24,
+            6,
+            7,
+            10
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 3000,
+          "patience": 60
+        },
+        {
+          "profile": 21,
+          "head_weight_numerator": 72,
+          "denominator": 5,
+          "primary_product": 4,
+          "product_candidates": [
+            4,
+            0,
+            7,
+            10
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 400,
+          "patience": 90
+        },
+        {
+          "profile": 26,
+          "head_weight_numerator": 72,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            25,
+            -1
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 90
+        },
+        {
+          "profile": 27,
+          "head_weight_numerator": 72,
+          "denominator": 5,
+          "primary_product": 3,
+          "product_candidates": [
+            3,
+            0,
+            7,
+            20
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 800,
+          "patience": 90
+        },
+        {
+          "profile": 28,
+          "head_weight_numerator": 108,
+          "denominator": 5,
+          "primary_product": 8,
+          "product_candidates": [
+            8,
+            0,
+            -1,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 500,
+          "patience": 100
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 3,
+          "name": "弁当類",
+          "head_weight_numerator": 300,
+          "denominator": 5
+        },
+        {
+          "id": 4,
+          "name": "パン類",
+          "head_weight_numerator": 180,
+          "denominator": 5
+        },
+        {
+          "id": 8,
+          "name": "たばこ",
+          "head_weight_numerator": 108,
+          "denominator": 5
+        },
+        {
+          "id": 24,
+          "name": "イベント商品",
+          "head_weight_numerator": 72,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 552,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 108,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 14,
+      "kind": 35,
+      "name": "公園",
+      "footprint": [
+        2,
+        2
+      ],
+      "area": 4,
+      "source_mix_slots": [
+        39,
+        40,
+        40,
+        40,
+        37
+      ],
+      "per_cell_slot_population": [
+        11,
+        7,
+        7,
+        7,
+        14
+      ],
+      "population_slot_average": {
+        "numerator": 184,
+        "denominator": 5
+      },
+      "population_min": 28,
+      "population_max": 56,
+      "unique_profiles": 8,
+      "profiles": [
+        {
+          "profile": 106,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 107,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            -1
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 800,
+          "patience": 100
+        },
+        {
+          "profile": 130,
+          "head_weight_numerator": 16,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            9,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 4000,
+          "patience": 40
+        },
+        {
+          "profile": 131,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            22
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 5000,
+          "patience": 40
+        },
+        {
+          "profile": 140,
+          "head_weight_numerator": 12,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 141,
+          "head_weight_numerator": 20,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 142,
+          "head_weight_numerator": 64,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        },
+        {
+          "profile": 143,
+          "head_weight_numerator": 36,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 132,
+          "denominator": 5
+        },
+        {
+          "id": 6,
+          "name": "菓子類",
+          "head_weight_numerator": 52,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 12,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 24,
+          "denominator": 5
+        },
+        {
+          "mode": 3,
+          "head_weight_numerator": 148,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 15,
+      "kind": 32,
+      "name": "水族館",
+      "footprint": [
+        3,
+        3
+      ],
+      "area": 9,
+      "source_mix_slots": [
+        38,
+        38,
+        38,
+        38,
+        38
+      ],
+      "per_cell_slot_population": [
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "population_slot_average": {
+        "numerator": 315,
+        "denominator": 5
+      },
+      "population_min": 63,
+      "population_max": 63,
+      "unique_profiles": 4,
+      "profiles": [
+        {
+          "profile": 130,
+          "head_weight_numerator": 45,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            9,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 4000,
+          "patience": 40
+        },
+        {
+          "profile": 131,
+          "head_weight_numerator": 90,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            22
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 5000,
+          "patience": 40
+        },
+        {
+          "profile": 142,
+          "head_weight_numerator": 90,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        },
+        {
+          "profile": 143,
+          "head_weight_numerator": 90,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 180,
+          "denominator": 5
+        },
+        {
+          "id": 6,
+          "name": "菓子類",
+          "head_weight_numerator": 135,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 90,
+          "denominator": 5
+        },
+        {
+          "mode": 3,
+          "head_weight_numerator": 225,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 16,
+      "kind": 33,
+      "name": "動物園",
+      "footprint": [
+        6,
+        6
+      ],
+      "area": 36,
+      "source_mix_slots": [
+        35,
+        35,
+        35,
+        37,
+        37
+      ],
+      "per_cell_slot_population": [
+        14,
+        14,
+        14,
+        14,
+        14
+      ],
+      "population_slot_average": {
+        "numerator": 2520,
+        "denominator": 5
+      },
+      "population_min": 504,
+      "population_max": 504,
+      "unique_profiles": 5,
+      "profiles": [
+        {
+          "profile": 130,
+          "head_weight_numerator": 828,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            9,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 4000,
+          "patience": 40
+        },
+        {
+          "profile": 131,
+          "head_weight_numerator": 648,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            22
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 5000,
+          "patience": 40
+        },
+        {
+          "profile": 141,
+          "head_weight_numerator": 216,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 142,
+          "head_weight_numerator": 612,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        },
+        {
+          "profile": 143,
+          "head_weight_numerator": 216,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 6,
+          "name": "菓子類",
+          "head_weight_numerator": 1476,
+          "denominator": 5
+        },
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 1044,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 648,
+          "denominator": 5
+        },
+        {
+          "mode": 3,
+          "head_weight_numerator": 1872,
+          "denominator": 5
+        }
+      ]
+    },
+    {
+      "selection": 17,
+      "kind": 31,
+      "name": "遊園地",
+      "footprint": [
+        7,
+        7
+      ],
+      "area": 49,
+      "source_mix_slots": [
+        35,
+        36,
+        36,
+        37,
+        37
+      ],
+      "per_cell_slot_population": [
+        14,
+        12,
+        12,
+        14,
+        14
+      ],
+      "population_slot_average": {
+        "numerator": 3234,
+        "denominator": 5
+      },
+      "population_min": 588,
+      "population_max": 686,
+      "unique_profiles": 8,
+      "profiles": [
+        {
+          "profile": 98,
+          "head_weight_numerator": 392,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            24,
+            10
+          ],
+          "arrival_mode": 2,
+          "wallet_source": 1500,
+          "patience": 100
+        },
+        {
+          "profile": 99,
+          "head_weight_numerator": 294,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            1,
+            6,
+            7
+          ],
+          "arrival_mode": 1,
+          "wallet_source": 2000,
+          "patience": 100
+        },
+        {
+          "profile": 130,
+          "head_weight_numerator": 637,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            9,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 4000,
+          "patience": 40
+        },
+        {
+          "profile": 131,
+          "head_weight_numerator": 490,
+          "denominator": 5,
+          "primary_product": 6,
+          "product_candidates": [
+            6,
+            0,
+            24,
+            22
+          ],
+          "arrival_mode": 0,
+          "wallet_source": 5000,
+          "patience": 40
+        },
+        {
+          "profile": 140,
+          "head_weight_numerator": 294,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 141,
+          "head_weight_numerator": 490,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 3000,
+          "patience": 80
+        },
+        {
+          "profile": 142,
+          "head_weight_numerator": 539,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        },
+        {
+          "profile": 143,
+          "head_weight_numerator": 98,
+          "denominator": 5,
+          "primary_product": 0,
+          "product_candidates": [
+            0,
+            9,
+            6,
+            24
+          ],
+          "arrival_mode": 3,
+          "wallet_source": 6000,
+          "patience": 40
+        }
+      ],
+      "primary_products": [
+        {
+          "id": 0,
+          "name": "冷たい飲料",
+          "head_weight_numerator": 2107,
+          "denominator": 5
+        },
+        {
+          "id": 6,
+          "name": "菓子類",
+          "head_weight_numerator": 1127,
+          "denominator": 5
+        }
+      ],
+      "arrival_modes": [
+        {
+          "mode": 0,
+          "head_weight_numerator": 490,
+          "denominator": 5
+        },
+        {
+          "mode": 1,
+          "head_weight_numerator": 294,
+          "denominator": 5
+        },
+        {
+          "mode": 2,
+          "head_weight_numerator": 392,
+          "denominator": 5
+        },
+        {
+          "mode": 3,
+          "head_weight_numerator": 2058,
+          "denominator": 5
+        }
+      ]
+    }
+  ]
+}

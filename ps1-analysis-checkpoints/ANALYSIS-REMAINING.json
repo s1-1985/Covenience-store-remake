@@ -51,7 +51,9 @@
       "title": "誘致マスターの未命名フィールド",
       "status": "open",
       "evidence": "analysis/20261115-town-project-data/project-master.json",
-      "resolution": null
+      "resolution": null,
+      "latest_evidence": "analysis/20261117-project-customer-cohorts-data/README.md",
+      "remaining_question": "Meanings of+2/+4/+6/+8/+16 remain unknown; saved menu bytes confirm+0 kind/+12 cost but do not establish universal nonuse."
     },
     {
       "id": "R05",
@@ -86,5 +88,5 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue concrete source gaps; R02 narrowed to natural conditional alias reachability, no145th shopper; native integration follows required analysis."
+  "next": "Continue source requirements; facility composition joins available, R04 remains open. Build native Android after required analysis."
 }

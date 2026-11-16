@@ -1,0 +1,28 @@
+{
+  "source_commit": "ed3db52f2900d47b45e2401996038b6a5001192a",
+  "inputs": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261115-town-project-data/project-master.json",
+      "git_blob_sha": "fd1666f595c0558f855aa468767c897e205eb693"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-customer-data/source/shopping-profiles.bin",
+      "git_blob_sha": "8567d49807882245e6d68e86e88a3f2e921f9ea1"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-product-stock-data/product-fixture-data.json",
+      "git_blob_sha": "aaee68f8442304f2cf07b24c5d4baa7541c5e5ba"
+    }
+  ],
+  "source_logic": {
+    "path": "ps1-analysis-checkpoints/analysis/20261115-town-project-data/source/menu_start.bin",
+    "git_blob_sha": "b52dabe26c3422329cc81405116327d952449551",
+    "range": "0x8006A44C +3456 bytes",
+    "notes": "Source bytes read via base64; MIPS opcodes at A624/A638/A738/AE84 inspected. No universal field nonuse proof."
+  },
+  "prior_context": [
+    "ps1-analysis-checkpoints/analysis/20261115-town-project-data/README.md",
+    "ps1-analysis-checkpoints/analysis/20261114-parking-arrival-data/README.md"
+  ],
+  "limits": "Original work environment unavailable. Reuse of previously extracted source bytes/data, not fresh disc extraction."
+}

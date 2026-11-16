@@ -1,0 +1,12 @@
+{
+  "date_jst": "2026-11-17",
+  "work_kind": "project_facility_customer_product_arrival_joins",
+  "source_commit": "ed3db52f2900d47b45e2401996038b6a5001192a",
+  "facility_rows": 18,
+  "profile_links": 162,
+  "distinct_profiles": 83,
+  "facilities_with_parking_mode": 10,
+  "original_cpu_updates": 0,
+  "remaining_issue": "R04 remains open; unknown master field semantics not established",
+  "scope": "Completed-building source composition, before weather, season, calendar share, store choice and customer spawn. Each numerator/5 is the arithmetic mean of five catalog slots multiplied by footprint area, not actual fractional people, expected sales, a daily arrival count, or a measured RNG distribution. Duplicate slots retain multiplicity."
+}
