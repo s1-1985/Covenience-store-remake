@@ -1,0 +1,43 @@
+{
+  "address": "0x800a1750",
+  "raw_hex": "90d482a28f978e7191e590b6000000000000000000011290",
+  "signed_bytes": [
+    -112,
+    -44,
+    -126,
+    -94,
+    -113,
+    -105,
+    -114,
+    113,
+    -111,
+    -27,
+    -112,
+    -74,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    18,
+    -112
+  ],
+  "prior_decoding": "赤い女子大生",
+  "is_valid_profile": false,
+  "valid_profile_count": 144,
+  "schedule_subscript": -126,
+  "primary_product_subscript": -111,
+  "arrival_mode": 0,
+  "score_weights": [
+    0,
+    0,
+    0
+  ],
+  "source_range_for_mode0": 20,
+  "scope": "Existing adjacent-string identification reused; operands are conditional misreads, not a valid person or observed customer."
+}

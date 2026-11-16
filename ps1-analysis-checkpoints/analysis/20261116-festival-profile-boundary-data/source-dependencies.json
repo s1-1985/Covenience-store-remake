@@ -1,0 +1,29 @@
+{
+  "primary": [
+    "User supplied PS disc",
+    "/SLPS_007.82",
+    "/DAT/TOWN0001.BIN",
+    "/DAT/TOWN0002.BIN",
+    "/DAT/TOWN0003.BIN",
+    "/DAT/TOWNPS.BIN"
+  ],
+  "reused": [
+    {
+      "path": "../20261113-disc-data-extraction/extract-disc-data.py",
+      "purpose": "ISO payload reader"
+    },
+    {
+      "path": "../20261113-customer-data/profile144-analysis.json",
+      "purpose": "Known mix136, adjacent string decoding and normal rejection"
+    },
+    {
+      "path": "../20261116-weather-demand-data/out-of-catalog-context.json",
+      "purpose": "Known festival bypass connection"
+    },
+    {
+      "path": "../20261113-pricing-store-choice-data/README.md",
+      "purpose": "Known selector and summary schema"
+    }
+  ],
+  "limits": "Static source extraction and operand/address joins only. No original CPU execution or full-program absence proof."
+}

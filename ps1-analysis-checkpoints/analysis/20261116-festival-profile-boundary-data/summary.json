@@ -1,0 +1,20 @@
+{
+  "date_jst": "2026-11-16",
+  "valid_profiles": 144,
+  "invalid_profile_id": 144,
+  "source_maps": 4,
+  "source_initial_stores": 11,
+  "initial_stores_rejected_by_schedule": 11,
+  "schedule_choices": 7,
+  "conditional_schedule_pass_choices": [
+    0,
+    3,
+    5
+  ],
+  "stock_alias_rows": 10,
+  "regular_spawn_max_profile": 143,
+  "demand144_conditional_store_offset": "0xF04",
+  "original_cpu_updates": 0,
+  "status": "R02 open; static downstream boundary and source initial-store rejection established",
+  "known_before": "Mix136/profile144 adjacent string, normal seasonal rejection and festival bypass were known. New joins: seven schedule aliases, ten summary aliases,11 source schedules, conditional first-slot write and regular spawn exclusion."
+}

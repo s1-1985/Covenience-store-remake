@@ -30,7 +30,14 @@
       "title": "祭り迂回後の購買型144の後段処理",
       "status": "open",
       "evidence": "analysis/20261116-weather-demand-data/out-of-catalog-context.json",
-      "resolution": null
+      "resolution": null,
+      "latest_evidence": "analysis/20261116-festival-profile-boundary-data/README.md",
+      "established": [
+        "All11 initial rivals use schedule2; misread schedule byte0 rejects profile144 even under festival bypass.",
+        "Schedule0/3/5 nonzero out-of-row reads can pass the schedule gate; stock alias and distance gates still apply.",
+        "Conditional demand144 write aliases first customer slotF04; regular spawn wraps to0..143."
+      ],
+      "remaining_question": "Natural festival reachability with altered schedules/live stock aliases and indirect existing-slot effects are not established."
     },
     {
       "id": "R03",
@@ -72,5 +79,5 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue R01 route/cross-reference investigation or explicitly resolve scope before marking closed; review other concrete source issues. Do not treat lack of normal candidate as full-program absence proof."
+  "next": "Continue concrete source gaps; R02 narrowed to natural conditional alias reachability, no145th shopper; native integration follows required analysis."
 }

@@ -130,3 +130,5 @@
 - [原カード読書きの短いI/O境界試験](analysis/20261103-card-io-boundaries/README.md)
 
 解析継続時は最新コミットと各README・results.jsonを読んで再開地点を確認する。
+
+- [2026-11-16：祭りの購買型144、初期11店の除外・営業時間7種と在庫10位置・需要と先頭客の境界](analysis/20261116-festival-profile-boundary-data/README.md)

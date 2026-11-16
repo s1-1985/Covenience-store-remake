@@ -1,0 +1,67 @@
+{
+  "formula": "0x800ce65c + 168*store_slot + 0x2c + 4*(-111)",
+  "required": "signed32 value >0 at26cf0",
+  "rows": [
+    {
+      "store_slot": 0,
+      "address": "0x800ce4cc",
+      "relative_to_own_summary": -400,
+      "aliases": "pre-summary global data; meaning not established"
+    },
+    {
+      "store_slot": 1,
+      "address": "0x800ce574",
+      "relative_to_own_summary": -400,
+      "aliases": "pre-summary global data; meaning not established"
+    },
+    {
+      "store_slot": 2,
+      "address": "0x800ce61c",
+      "relative_to_own_summary": -400,
+      "aliases": "store-order[0] at0x800ce61c"
+    },
+    {
+      "store_slot": 3,
+      "address": "0x800ce6c4",
+      "relative_to_own_summary": -400,
+      "aliases": "summary[0].stock[15]"
+    },
+    {
+      "store_slot": 4,
+      "address": "0x800ce76c",
+      "relative_to_own_summary": -400,
+      "aliases": "summary[1].stock[15]"
+    },
+    {
+      "store_slot": 5,
+      "address": "0x800ce814",
+      "relative_to_own_summary": -400,
+      "aliases": "summary[2].stock[15]"
+    },
+    {
+      "store_slot": 6,
+      "address": "0x800ce8bc",
+      "relative_to_own_summary": -400,
+      "aliases": "summary[3].stock[15]"
+    },
+    {
+      "store_slot": 7,
+      "address": "0x800ce964",
+      "relative_to_own_summary": -400,
+      "aliases": "summary[4].stock[15]"
+    },
+    {
+      "store_slot": 8,
+      "address": "0x800cea0c",
+      "relative_to_own_summary": -400,
+      "aliases": "summary[5].stock[15]"
+    },
+    {
+      "store_slot": 9,
+      "address": "0x800ceab4",
+      "relative_to_own_summary": -400,
+      "aliases": "summary[6].stock[15]"
+    }
+  ],
+  "scope": "Address alias only. Values depend on live globals/summary. No assertion that an initial or natural play store passes."
+}

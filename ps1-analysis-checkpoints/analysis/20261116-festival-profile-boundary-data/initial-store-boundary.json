@@ -1,0 +1,92 @@
+[
+  {
+    "map": "TOWN0001",
+    "town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+    "stores": [
+      {
+        "slot": 1,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      },
+      {
+        "slot": 2,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      }
+    ]
+  },
+  {
+    "map": "TOWN0002",
+    "town_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+    "stores": [
+      {
+        "slot": 1,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      },
+      {
+        "slot": 2,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      },
+      {
+        "slot": 3,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      }
+    ]
+  },
+  {
+    "map": "TOWN0003",
+    "town_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+    "stores": [
+      {
+        "slot": 1,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      }
+    ]
+  },
+  {
+    "map": "TOWNPS",
+    "town_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+    "stores": [
+      {
+        "slot": 1,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      },
+      {
+        "slot": 2,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      },
+      {
+        "slot": 3,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      },
+      {
+        "slot": 4,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      },
+      {
+        "slot": 5,
+        "schedule": 2,
+        "profile144_schedule_byte": 0,
+        "profile144_rejected_at_schedule": true
+      }
+    ]
+  }
+]

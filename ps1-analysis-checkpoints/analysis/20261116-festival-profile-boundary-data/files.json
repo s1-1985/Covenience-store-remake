@@ -1,0 +1,97 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 6119,
+    "sha256": "745a6ecdb61783ffe6d438d4b3113688b44be1ac3e53a1ea0774254cdfdcac49"
+  },
+  {
+    "path": "adjacent-text-operands.json",
+    "bytes": 727,
+    "sha256": "7631c2abefca090231a3fa3b45fae268c380b19fc6ebfff94eb21b3ba20fa952"
+  },
+  {
+    "path": "boundary-readers.asm",
+    "bytes": 6579,
+    "sha256": "0cfc3d6b879b8ff1eba55bacd49d18512e9274f7e50ccd360847d329cce221b2"
+  },
+  {
+    "path": "boundary-rules.json",
+    "bytes": 1733,
+    "sha256": "d831b580f1039f4a752df2f6d05fb3e946f946a00ad2419443f5e0efed094b65"
+  },
+  {
+    "path": "extract-boundary.py",
+    "bytes": 6593,
+    "sha256": "43f6eff69a98c7cf8298a403e1566506ce9e8c9770d05a2fff17225a314cce3e"
+  },
+  {
+    "path": "initial-store-boundary.json",
+    "bytes": 2167,
+    "sha256": "811fc78d427fc7740c99ab31061c06ffa143c5adf8bec0e461615ea1cd5dc1d4"
+  },
+  {
+    "path": "schedule-aliases.json",
+    "bytes": 1474,
+    "sha256": "987bc86de156af296eece31ceb7779376e9d3a2cc46493fe9710d777973b8eb8"
+  },
+  {
+    "path": "source/adjacent_text.bin",
+    "bytes": 24,
+    "sha256": "5640e1de6dde30e6cf015a412780e053af6aebdd2210920a191cb392b9463a8f"
+  },
+  {
+    "path": "source/arrival_ranges.bin",
+    "bytes": 16,
+    "sha256": "851a2441c655c7ad520c744087f7ba8f6b5e1ff4f2105ad387dc2d5c2d3b6144"
+  },
+  {
+    "path": "source/demand_total_loop.bin",
+    "bytes": 228,
+    "sha256": "d074ab3300173863f144729899962cea24ef24389a083d6594d7a06f33895309"
+  },
+  {
+    "path": "source/festival_demand_gate_write.bin",
+    "bytes": 668,
+    "sha256": "56e8e8d94e28842438df95fbbb42793eaf7ccf7f70fa1f33fbad4784a6052f61"
+  },
+  {
+    "path": "source/schedule_alias_window.bin",
+    "bytes": 271,
+    "sha256": "5f954afd395afdf30ae41821061bfabca3c9ed5f09e1572dbbcd082347913405"
+  },
+  {
+    "path": "source/spawn_slot_assignment.bin",
+    "bytes": 64,
+    "sha256": "9435b8c156770564815693d3f6661627df5dfa60f1327452ab1a84357e537937"
+  },
+  {
+    "path": "source/spawn_wrap.bin",
+    "bytes": 284,
+    "sha256": "d7432fe653aec482720d68a4464deded8d18176ad8c4975568b5daa5540ab2d6"
+  },
+  {
+    "path": "source/store_selector_gates.bin",
+    "bytes": 1044,
+    "sha256": "03c841ef2088c7521577859014bad12c0149084ad6fc6394cd8e8626babd8157"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 871,
+    "sha256": "332a7ade6c2e13f9c0dece497b90d01fe458c6fd22c7c218834177e3b3d00e73"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1738,
+    "sha256": "7ec702976a582d83c96a486579a69384f062a9330e8775c72bd1aaeab60158b6"
+  },
+  {
+    "path": "stock-aliases.json",
+    "bytes": 1779,
+    "sha256": "67f2476a5a127882b9abe6fc475785e8505f26fbe8218402699c641be8fc97b5"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 759,
+    "sha256": "55ef623809fc69a75ca135f0b4a746445c42577dbb533e75b598a637f67044ff"
+  }
+]

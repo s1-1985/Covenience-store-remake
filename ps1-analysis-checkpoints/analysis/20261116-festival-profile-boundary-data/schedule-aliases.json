@@ -1,0 +1,55 @@
+{
+  "formula": "0x80099de5 + 45*store.C78 + signed(profile[2])",
+  "rows": [
+    {
+      "schedule": 0,
+      "address": "0x80099d67",
+      "signed_byte": -128,
+      "passes_nonzero_schedule_check": true,
+      "within_selected_schedule_row": false
+    },
+    {
+      "schedule": 1,
+      "address": "0x80099d94",
+      "signed_byte": 0,
+      "passes_nonzero_schedule_check": false,
+      "within_selected_schedule_row": false
+    },
+    {
+      "schedule": 2,
+      "address": "0x80099dc1",
+      "signed_byte": 0,
+      "passes_nonzero_schedule_check": false,
+      "within_selected_schedule_row": false
+    },
+    {
+      "schedule": 3,
+      "address": "0x80099dee",
+      "signed_byte": 1,
+      "passes_nonzero_schedule_check": true,
+      "within_selected_schedule_row": false
+    },
+    {
+      "schedule": 4,
+      "address": "0x80099e1b",
+      "signed_byte": 0,
+      "passes_nonzero_schedule_check": false,
+      "within_selected_schedule_row": false
+    },
+    {
+      "schedule": 5,
+      "address": "0x80099e48",
+      "signed_byte": 1,
+      "passes_nonzero_schedule_check": true,
+      "within_selected_schedule_row": false
+    },
+    {
+      "schedule": 6,
+      "address": "0x80099e75",
+      "signed_byte": 0,
+      "passes_nonzero_schedule_check": false,
+      "within_selected_schedule_row": false
+    }
+  ],
+  "meaning": "Original26c34 tests nonzero, including negative values. These are out-of-row reads, not opening-hour flags for profile144."
+}

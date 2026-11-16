@@ -1,0 +1,36 @@
+{
+  "demand_write": {
+    "instruction": "0x80026868",
+    "base": "0x8013c0dc + 5080*store_slot",
+    "relative_to_store": "0xDE4 + 2*profile_id",
+    "profile144_offset": 3844,
+    "alias": "store+0xF04: first customer state byte and next byte",
+    "condition": "Only if selector26a64 returns a store, not merely if festival bypass is nonzero",
+    "operation": "unsigned16(old_alias + mix_head_count), low16 stored",
+    "scope": "Conditional static write alias; natural runtime corruption or crash not observed"
+  },
+  "demand_total": {
+    "loop_guard": "0x80026958",
+    "profiles": "0..143",
+    "includes144": false
+  },
+  "spawn": {
+    "wrap_guard": "0x80031B50..0x80031B5C",
+    "modulus": 144,
+    "profile_write": "0x80031E78",
+    "profiles": "0..143",
+    "profile144_selected": false,
+    "scope": "The regular spawn selector cannot assign profile144. A conditional write toF04 could still affect an existing/stale slot; this is not proof of no indirect effects."
+  },
+  "normal_gate": {
+    "seasonal": "negative primary product returns2 at80027344..8002736c",
+    "bypass": "nonzeroCDA00 skips weather/season/share at80026600"
+  },
+  "android": {
+    "population": "Preserve source mix136 heads, including the one invalid-profile head",
+    "demand": "Validate0<=profile<144 before any table or store access, in all event branches",
+    "customer": "Do not invent a145th shopper or reinterpret adjacent string as wallet/items",
+    "memory_alias": "Do not reproduce unsafe cross-record writes as a gameplay feature"
+  },
+  "remaining": "Live selector operands and indirect first-slot effects under a naturally reached festival with eligible altered schedules are not established; R02 remains open but narrowed."
+}
