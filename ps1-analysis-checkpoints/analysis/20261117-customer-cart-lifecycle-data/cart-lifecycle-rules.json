@@ -1,0 +1,69 @@
+{
+  "fields": {
+    "wallet": {
+      "offset": "0x08",
+      "type": "signed16 at comparisons; low16 writes",
+      "scope": "Per-person budget, not group total"
+    },
+    "cart": {
+      "offset": "0x0A",
+      "type": "signed16 at settlement; low16 writes",
+      "scope": "Per-person amount awaiting register settlement"
+    },
+    "quantity": {
+      "offset": "0x1E",
+      "type": "signed8",
+      "scope": "Multiplier for inventory and revenue"
+    },
+    "state": {
+      "offset": "0x00",
+      "type": "signed8"
+    }
+  },
+  "purchase": {
+    "ordinary": "Successful inventory take: wallet -= unit; cart += unit; no revenue posting at this point",
+    "immediate": "Fixture category lowbyte2/3/5: wallet -= unit, unit*quantity posts immediately, no cart addition",
+    "source": [
+      "0x80034B00",
+      "0x80034B04",
+      "0x80034B10",
+      "0x80034B40",
+      "0x80034B84"
+    ],
+    "limits": "Product is acquired first; theft/nonstock/helper branches differ. Do not subtract wallet again at checkout."
+  },
+  "settlements": {
+    "normal": {
+      "post": "0x80035304",
+      "clear": "0x80035314",
+      "flag": "0x200",
+      "return_state": 4
+    },
+    "wait_terminal": {
+      "post": "0x80035EAC",
+      "clear": "0x80035EBC",
+      "flag": "0x20",
+      "return_state": 0,
+      "caller_next_state": 5
+    },
+    "amount": "signed16(cart)*signed8(quantity)",
+    "posting_helper": "0x8001CA7C mode1 -> store.D98 and owner company cash",
+    "bounded_no_double_post": "Immediate items do not enter cart. Normal/wait posting clears cart, so repeated settlement without new acquisition has zero amount. This is not an all-program no-double-charge proof."
+  },
+  "theft": {
+    "local_success": "0x80034C54..0x80034CA8: add only current unit*quantity to118C, flag0x10, return5. No wallet/cart change or prior-cart posting.",
+    "dispatch": "State2 branch80032AD4 records returned5;80032AFC/32B04/32B0C clear goal. State4 equivalent32BA4 and32BF0..32C00.",
+    "next": "State5 jump table entry80010928 ->80032C0C invokes80035770 at32C14",
+    "exit": "80035770..35D58 handles goal/route; no cart settlement. On reaching goal with correct facing returns0 at35940.",
+    "inactive": "80032C24 writes0 into state;8003288C..3289C skips inactive slots. Old wallet/cart bytes can remain as stale data.",
+    "reuse": "Later successful entry init80032AA4 overwrites wallet from new profile;80032AB0 clears cart. No posting of old cart on this path.",
+    "stock_and_loss": "Previously acquired shelf stock is not restored on this connected exit path;118C records only the current stolen product, not the prior unsettled cart.",
+    "limits": "Conditional on theft local success followed by ordinary exit and later entry reuse, with no intervening unrelated store/event mutation. Does not establish natural frequency or map-specific availability."
+  },
+  "android": {
+    "state": "Keep cart separate from wallet and group multiplier; transfer exactly once on normal/wait settlement.",
+    "theft_exit": "Do not insert a register charge or refund on every exit. Do not add prior cart into118C or restore all picked stock as an invented correction.",
+    "inactive": "Stale bytes need not be physically retained if native object is released, but no ledger posting should result from release/reuse; new customer starts with cart0.",
+    "unresolved": "Existing seven tracked issues remain separate."
+  }
+}

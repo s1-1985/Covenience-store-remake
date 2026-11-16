@@ -136,3 +136,5 @@
 - [2026-11-17：客の待機断念と全店員の能力低下、共通抽選・買物額の売上加算・word16未確定](analysis/20261117-abandonment-staff-decline-data/README.md)
 
 - [2026-11-17：誘致18施設と83購買型・162対応、第一商品と駐車条件を接続](analysis/20261117-project-customer-cohorts-data/README.md)
+
+- [2026-11-17：万引き前の未決済額、通常退店では精算せず次の客の入店で初期化・原購買型32件の条件付き列](analysis/20261117-customer-cart-lifecycle-data/README.md)

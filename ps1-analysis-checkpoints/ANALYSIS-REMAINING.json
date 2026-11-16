@@ -88,5 +88,15 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue source requirements; facility composition joins available, R04 remains open. Build native Android after required analysis."
+  "next": "Continue source requirements; facility composition joins available, R04 remains open. Build native Android after required analysis.",
+  "additional_completed_source_paths": [
+    {
+      "id": "X01",
+      "title": "万引き前の未決済商品の通常退店・スロット再利用",
+      "status": "resolved_scoped_source_path",
+      "evidence": "analysis/20261117-customer-cart-lifecycle-data/README.md",
+      "resolution": "Theft preserves old cart, ordinary exit never posts it, inactive slot skips processing; subsequent entry clears it. Conditional code path, not natural-play frequency.",
+      "counted_in_seven_tracked_items": false
+    }
+  ]
 }

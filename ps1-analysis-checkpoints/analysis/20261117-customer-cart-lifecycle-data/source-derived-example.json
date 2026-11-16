@@ -1,0 +1,43 @@
+{
+  "scope": "Source-derived conditional arithmetic; not a naturally observed theft/checkout trajectory. Assumes regular shelves, all earlier successful purchases, group3, unchanged initial prices, security<50 and sufficient stock.",
+  "profile": 1,
+  "group_quantity": 3,
+  "initial_wallet_per_person": 800,
+  "steps": [
+    {
+      "event": "bread300,warm_drink110,sweets200 taken",
+      "wallet": 190,
+      "unsettled": 610,
+      "revenue_delta": 0,
+      "theft_delta": 0
+    },
+    {
+      "event": "normal checkout OR terminal wait branch, alternative A",
+      "wallet": 190,
+      "unsettled": 0,
+      "revenue_delta": 1830,
+      "theft_delta": 0
+    },
+    {
+      "event": "daily_goods800 theft succeeds, alternative B",
+      "wallet": 190,
+      "unsettled": 610,
+      "revenue_delta": 0,
+      "theft_delta": 2400,
+      "state": 5
+    },
+    {
+      "event": "B: ordinary exit reaches target",
+      "wallet": 190,
+      "unsettled_stale": 610,
+      "revenue_delta": 0,
+      "theft_delta": 2400,
+      "state": 0
+    },
+    {
+      "event": "B: later shopper enters reused slot",
+      "unsettled": 0,
+      "notes": "New profile wallet replaces old wallet; old unsettled value not posted by this initialization."
+    }
+  ]
+}

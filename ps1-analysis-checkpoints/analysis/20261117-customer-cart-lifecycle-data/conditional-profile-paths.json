@@ -1,0 +1,937 @@
+{
+  "source_commit": "f5ae66462883e515ec6a6de88925c80a303659c6",
+  "conditions": "For each profile, read product slots0..3 in catalog order, skip-1; choose an allowed non-immediate fixture for every prefix item; use unchanged initial prices; assume every prefix item was actually taken with all calendar/random/reachability/stock gates passed. Stop at first insufficient-wallet item. Require existing cart>0, a non-immediate fixture, and positive theft security threshold. Does not claim all possible theft cases or natural replay.",
+  "rows": [
+    {
+      "profile": 1,
+      "initial_wallet": 800,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 4,
+          "name": "パン類",
+          "price": 300,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 1,
+          "name": "温かい飲料",
+          "price": 110,
+          "ordinary_fixture": 22
+        },
+        {
+          "slot": 2,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 610,
+      "remaining_wallet": 190,
+      "next_slot": 3,
+      "next_product": 19,
+      "next_name": "日用品",
+      "next_price": 800,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 50
+    },
+    {
+      "profile": 2,
+      "initial_wallet": 1000,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 4,
+          "name": "パン類",
+          "price": 300,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        },
+        {
+          "slot": 2,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 610,
+      "remaining_wallet": 390,
+      "next_slot": 3,
+      "next_product": 22,
+      "next_name": "薬品",
+      "next_price": 1500,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 60
+    },
+    {
+      "profile": 3,
+      "initial_wallet": 700,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 4,
+          "name": "パン類",
+          "price": 300,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 1,
+          "name": "温かい飲料",
+          "price": 110,
+          "ordinary_fixture": 22
+        }
+      ],
+      "unsettled_per_person": 410,
+      "remaining_wallet": 290,
+      "next_slot": 2,
+      "next_product": 7,
+      "next_name": "本類",
+      "next_price": 400,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 50
+    },
+    {
+      "profile": 6,
+      "initial_wallet": 800,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        },
+        {
+          "slot": 2,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 710,
+      "remaining_wallet": 90,
+      "next_slot": 3,
+      "next_product": 24,
+      "next_name": "イベント商品",
+      "next_price": 1000,
+      "next_ordinary_fixture": 25,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 7,
+      "initial_wallet": 800,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        },
+        {
+          "slot": 2,
+          "product": 9,
+          "name": "ｱｲｽｸﾘｰﾑ",
+          "price": 100,
+          "ordinary_fixture": 14
+        }
+      ],
+      "unsettled_per_person": 610,
+      "remaining_wallet": 190,
+      "next_slot": 3,
+      "next_product": 24,
+      "next_name": "イベント商品",
+      "next_price": 1000,
+      "next_ordinary_fixture": 25,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 13,
+      "initial_wallet": 1000,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 1,
+          "name": "温かい飲料",
+          "price": 110,
+          "ordinary_fixture": 22
+        },
+        {
+          "slot": 2,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 710,
+      "remaining_wallet": 290,
+      "next_slot": 3,
+      "next_product": 2,
+      "next_name": "酒類",
+      "next_price": 1000,
+      "next_ordinary_fixture": 7,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 19,
+      "initial_wallet": 400,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 4,
+          "name": "パン類",
+          "price": 300,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 300,
+      "remaining_wallet": 100,
+      "next_slot": 1,
+      "next_product": 0,
+      "next_name": "冷たい飲料",
+      "next_price": 110,
+      "next_ordinary_fixture": 7,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 21,
+      "initial_wallet": 400,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 4,
+          "name": "パン類",
+          "price": 300,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 300,
+      "remaining_wallet": 100,
+      "next_slot": 1,
+      "next_product": 0,
+      "next_name": "冷たい飲料",
+      "next_price": 110,
+      "next_ordinary_fixture": 7,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 24,
+      "initial_wallet": 400,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 4,
+          "name": "パン類",
+          "price": 300,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 300,
+      "remaining_wallet": 100,
+      "next_slot": 1,
+      "next_product": 0,
+      "next_name": "冷たい飲料",
+      "next_price": 110,
+      "next_ordinary_fixture": 7,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 27,
+      "initial_wallet": 800,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 510,
+      "remaining_wallet": 290,
+      "next_slot": 2,
+      "next_product": 7,
+      "next_name": "本類",
+      "next_price": 400,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 29,
+      "initial_wallet": 1200,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 1,
+          "name": "温かい飲料",
+          "price": 110,
+          "ordinary_fixture": 22
+        },
+        {
+          "slot": 2,
+          "product": 7,
+          "name": "本類",
+          "price": 400,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 910,
+      "remaining_wallet": 290,
+      "next_slot": 3,
+      "next_product": 19,
+      "next_name": "日用品",
+      "next_price": 800,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 32,
+      "initial_wallet": 1200,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 400,
+      "remaining_wallet": 800,
+      "next_slot": 1,
+      "next_product": 2,
+      "next_name": "酒類",
+      "next_price": 1000,
+      "next_ordinary_fixture": 7,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 33,
+      "initial_wallet": 1200,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 14,
+          "name": "肉類",
+          "price": 1200,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 1200,
+      "remaining_wallet": 0,
+      "next_slot": 1,
+      "next_product": 12,
+      "next_name": "野菜類",
+      "next_price": 1500,
+      "next_ordinary_fixture": 7,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 39,
+      "initial_wallet": 1200,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 13,
+          "name": "魚類",
+          "price": 1000,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 1000,
+      "remaining_wallet": 200,
+      "next_slot": 1,
+      "next_product": 2,
+      "next_name": "酒類",
+      "next_price": 1000,
+      "next_ordinary_fixture": 7,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 41,
+      "initial_wallet": 1200,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 400,
+      "remaining_wallet": 800,
+      "next_slot": 1,
+      "next_product": 2,
+      "next_name": "酒類",
+      "next_price": 1000,
+      "next_ordinary_fixture": 7,
+      "security_must_be_below": 40
+    },
+    {
+      "profile": 47,
+      "initial_wallet": 800,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 4,
+          "name": "パン類",
+          "price": 300,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 410,
+      "remaining_wallet": 390,
+      "next_slot": 2,
+      "next_product": 22,
+      "next_name": "薬品",
+      "next_price": 1500,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 10
+    },
+    {
+      "profile": 49,
+      "initial_wallet": 1300,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 510,
+      "remaining_wallet": 790,
+      "next_slot": 2,
+      "next_product": 19,
+      "next_name": "日用品",
+      "next_price": 800,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 10
+    },
+    {
+      "profile": 53,
+      "initial_wallet": 2000,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 510,
+      "remaining_wallet": 1490,
+      "next_slot": 2,
+      "next_product": 22,
+      "next_name": "薬品",
+      "next_price": 1500,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 10
+    },
+    {
+      "profile": 55,
+      "initial_wallet": 2000,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 510,
+      "remaining_wallet": 1490,
+      "next_slot": 2,
+      "next_product": 22,
+      "next_name": "薬品",
+      "next_price": 1500,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 10
+    },
+    {
+      "profile": 63,
+      "initial_wallet": 1000,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 4,
+          "name": "パン類",
+          "price": 300,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 1,
+          "name": "温かい飲料",
+          "price": 110,
+          "ordinary_fixture": 22
+        }
+      ],
+      "unsettled_per_person": 410,
+      "remaining_wallet": 590,
+      "next_slot": 2,
+      "next_product": 22,
+      "next_name": "薬品",
+      "next_price": 1500,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 10
+    },
+    {
+      "profile": 65,
+      "initial_wallet": 1000,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 4,
+          "name": "パン類",
+          "price": 300,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        },
+        {
+          "slot": 2,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 610,
+      "remaining_wallet": 390,
+      "next_slot": 3,
+      "next_product": 7,
+      "next_name": "本類",
+      "next_price": 400,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 10
+    },
+    {
+      "profile": 69,
+      "initial_wallet": 2000,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 3,
+          "name": "弁当類",
+          "price": 400,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 510,
+      "remaining_wallet": 1490,
+      "next_slot": 2,
+      "next_product": 22,
+      "next_name": "薬品",
+      "next_price": 1500,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 10
+    },
+    {
+      "profile": 71,
+      "initial_wallet": 4000,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 12,
+          "name": "野菜類",
+          "price": 1500,
+          "ordinary_fixture": 7
+        },
+        {
+          "slot": 1,
+          "product": 14,
+          "name": "肉類",
+          "price": 1200,
+          "ordinary_fixture": 7
+        },
+        {
+          "slot": 2,
+          "product": 13,
+          "name": "魚類",
+          "price": 1000,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 3700,
+      "remaining_wallet": 300,
+      "next_slot": 3,
+      "next_product": 16,
+      "next_name": "調味料類",
+      "next_price": 400,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 10
+    },
+    {
+      "profile": 88,
+      "initial_wallet": 800,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        },
+        {
+          "slot": 1,
+          "product": 1,
+          "name": "温かい飲料",
+          "price": 110,
+          "ordinary_fixture": 22
+        },
+        {
+          "slot": 2,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 420,
+      "remaining_wallet": 380,
+      "next_slot": 3,
+      "next_product": 7,
+      "next_name": "本類",
+      "next_price": 400,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 50
+    },
+    {
+      "profile": 92,
+      "initial_wallet": 1200,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 24,
+          "name": "イベント商品",
+          "price": 1000,
+          "ordinary_fixture": 25
+        },
+        {
+          "slot": 1,
+          "product": 25,
+          "name": "中華まん",
+          "price": 170,
+          "ordinary_fixture": 24
+        }
+      ],
+      "unsettled_per_person": 1170,
+      "remaining_wallet": 30,
+      "next_slot": 2,
+      "next_product": 1,
+      "next_name": "温かい飲料",
+      "next_price": 110,
+      "next_ordinary_fixture": 22,
+      "security_must_be_below": 50
+    },
+    {
+      "profile": 93,
+      "initial_wallet": 1500,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 24,
+          "name": "イベント商品",
+          "price": 1000,
+          "ordinary_fixture": 25
+        },
+        {
+          "slot": 1,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 2,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 1310,
+      "remaining_wallet": 190,
+      "next_slot": 3,
+      "next_product": 7,
+      "next_name": "本類",
+      "next_price": 400,
+      "next_ordinary_fixture": 0,
+      "security_must_be_below": 50
+    },
+    {
+      "profile": 104,
+      "initial_wallet": 1000,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 10,
+          "name": "文房具",
+          "price": 150,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        },
+        {
+          "slot": 2,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 460,
+      "remaining_wallet": 540,
+      "next_slot": 3,
+      "next_product": 24,
+      "next_name": "イベント商品",
+      "next_price": 1000,
+      "next_ordinary_fixture": 25,
+      "security_must_be_below": 50
+    },
+    {
+      "profile": 105,
+      "initial_wallet": 1000,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 10,
+          "name": "文房具",
+          "price": 150,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        },
+        {
+          "slot": 2,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        }
+      ],
+      "unsettled_per_person": 460,
+      "remaining_wallet": 540,
+      "next_slot": 3,
+      "next_product": 24,
+      "next_name": "イベント商品",
+      "next_price": 1000,
+      "next_ordinary_fixture": 25,
+      "security_must_be_below": 50
+    },
+    {
+      "profile": 106,
+      "initial_wallet": 800,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 310,
+      "remaining_wallet": 490,
+      "next_slot": 2,
+      "next_product": 24,
+      "next_name": "イベント商品",
+      "next_price": 1000,
+      "next_ordinary_fixture": 25,
+      "security_must_be_below": 50
+    },
+    {
+      "profile": 107,
+      "initial_wallet": 800,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 310,
+      "remaining_wallet": 490,
+      "next_slot": 2,
+      "next_product": 24,
+      "next_name": "イベント商品",
+      "next_price": 1000,
+      "next_ordinary_fixture": 25,
+      "security_must_be_below": 50
+    },
+    {
+      "profile": 108,
+      "initial_wallet": 500,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 310,
+      "remaining_wallet": 190,
+      "next_slot": 2,
+      "next_product": 24,
+      "next_name": "イベント商品",
+      "next_price": 1000,
+      "next_ordinary_fixture": 25,
+      "security_must_be_below": 50
+    },
+    {
+      "profile": 109,
+      "initial_wallet": 500,
+      "prior_items": [
+        {
+          "slot": 0,
+          "product": 6,
+          "name": "菓子類",
+          "price": 200,
+          "ordinary_fixture": 0
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "name": "冷たい飲料",
+          "price": 110,
+          "ordinary_fixture": 7
+        }
+      ],
+      "unsettled_per_person": 310,
+      "remaining_wallet": 190,
+      "next_slot": 2,
+      "next_product": 24,
+      "next_name": "イベント商品",
+      "next_price": 1000,
+      "next_ordinary_fixture": 25,
+      "security_must_be_below": 50
+    }
+  ]
+}

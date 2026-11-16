@@ -1,0 +1,11 @@
+{
+  "date_jst": "2026-11-17",
+  "work_kind": "unsettled_cart_through_theft_exit_and_slot_reuse",
+  "candidate_profiles": 32,
+  "source_profile_count": 144,
+  "source_code_bytes_saved": 6092,
+  "original_cpu_updates": 0,
+  "new_connection": "Prior unsettled cart survives successful theft, is not posted/refunded by ordinary exit, remains stale in inactive slot, and is cleared by subsequent entry initialization.",
+  "previously_known": "Purchase wallet/cart accounting, theft local block, normal/wait settlement. The20261114 security report explicitly left post-theft old-cart exit behavior unresolved.",
+  "scope": "Static source-path conclusion plus conditional catalog arithmetic. Not a naturally observed theft trajectory, frequency estimate, or full-program proof against every external event."
+}

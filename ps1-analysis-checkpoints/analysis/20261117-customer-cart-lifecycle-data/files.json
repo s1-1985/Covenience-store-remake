@@ -1,0 +1,82 @@
+{
+  "source_commit": "f5ae66462883e515ec6a6de88925c80a303659c6",
+  "entries": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/source/exit_control.bin",
+      "sha": "9d3709698a3b04bc4e08763cc5c9e6604e999134"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/source/customer_dispatch.bin",
+      "sha": "8ebb1e2dc873013f577887ec784547b4f17c58d6"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/source/destination_control.bin",
+      "sha": "1cd514fb04783c23c727602506bd11b530e7092e"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/source/state_jump_table.bin",
+      "sha": "5d1d4595b31accc180a6951900ff567a90e91ce9"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/source/purchase_posting_theft.bin",
+      "sha": "894b283a45565e55c8744a0b79a78565419239e7"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/source/entry_money_reset.bin",
+      "sha": "bec78bacaa76a9c1062fb0ecd4f3eadbcbc75e9d"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/source/normal_checkout_posting.bin",
+      "sha": "f5a9f2acdc939311103945a7fa2ce323c62560a2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/source/wait_posting.bin",
+      "sha": "2650cafef09b3fc53a96996669c4dedc66adb994"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/README.md",
+      "sha": "460da74fb87a26ac7764141cbf4f2f2a507e82b7"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/summary.json",
+      "sha": "97e7970bb468e014da0b8f8606808112b5a0101d"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/cart-lifecycle-rules.json",
+      "sha": "69cbed888cf966b22acd5272ad204f7b20192717"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/conditional-profile-paths.json",
+      "sha": "0ed9670628dd6cb38e796d1bd9bc8675a7691f12"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/source-derived-example.json",
+      "sha": "fb7d0c706de3f1b2a4f2676799b0d5b93e6016a9"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/source-provenance.json",
+      "sha": "9908a63fcce3dbf7933e8f12b30a3c9a33e1d218"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/cart-lifecycle-readers.asm",
+      "sha": "2f66272a264c67b951b9e1565befd951c03e5f2f"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261117-customer-cart-lifecycle-data/recover-cart-evidence.mjs",
+      "sha": "c0fa3ea21ef3ec9e8289b049c40a4938d3c281d8"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-REMAINING.json",
+      "sha": "12a249ad0a2f5e88d18bc2c17a6aee3b9b0fa391"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/LATEST-DATA-ANALYSIS.json",
+      "sha": "18f804feea9328b5a7d8745fbdc07cde1cf753b2"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/ANALYSIS-POLICY.md",
+      "sha": "b2e1de72cce5343986a73cdb50a72dfa662fc7c8"
+    }
+  ],
+  "note": "Exact Git blob SHA for new artifacts and updated indices; manifest does not hash itself."
+}

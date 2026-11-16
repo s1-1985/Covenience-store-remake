@@ -1,0 +1,102 @@
+{
+  "source_commit": "f5ae66462883e515ec6a6de88925c80a303659c6",
+  "ram_capture": {
+    "path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-native-exit.ram.zlib",
+    "git_blob_sha": "dba76302a2b7df3b44cfbace2d18bca305da5813",
+    "compressed_bytes": 507848,
+    "decompressed_bytes": 2097152,
+    "decompression_integrity": "zlib Adler32 verified",
+    "metadata_path": "ps1-analysis-checkpoints/analysis/20261105-post-monthly/rival-native-exit.json",
+    "declared_ram_sha256": "ddfd28dc6538fd13e7cda761c85943ad0ffe50b950d3019de9f24af9e9dd0238",
+    "scope": "Existing diagnostic capture of original function boundary; not a natural-play restart. This turn only extracted its code bytes."
+  },
+  "code_comparisons": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261114-checkout-waiting-data/checkout-readers.asm",
+      "count": 1972,
+      "mismatches": 0,
+      "first": []
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-seasonal-demand-data/demand-readers.asm",
+      "count": 2866,
+      "mismatches": 0,
+      "first": []
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-actor-render-data/actor-readers.asm",
+      "count": 2748,
+      "mismatches": 0,
+      "first": []
+    }
+  ],
+  "ranges": [
+    {
+      "name": "exit_control",
+      "address": "0x80035770",
+      "end_exclusive": "0x80035d58",
+      "ram_offset": 218992,
+      "bytes": 1512
+    },
+    {
+      "name": "customer_dispatch",
+      "address": "0x80032814",
+      "end_exclusive": "0x80032c68",
+      "ram_offset": 206868,
+      "bytes": 1108
+    },
+    {
+      "name": "destination_control",
+      "address": "0x80036160",
+      "end_exclusive": "0x80036ac0",
+      "ram_offset": 221536,
+      "bytes": 2400
+    },
+    {
+      "name": "state_jump_table",
+      "address": "0x80010918",
+      "end_exclusive": "0x8001092c",
+      "ram_offset": 67864,
+      "bytes": 20
+    },
+    {
+      "name": "purchase_posting_theft",
+      "address": "0x800349d0",
+      "end_exclusive": "0x80034ccc",
+      "ram_offset": 215504,
+      "bytes": 764
+    },
+    {
+      "name": "entry_money_reset",
+      "address": "0x80032a70",
+      "end_exclusive": "0x80032ab4",
+      "ram_offset": 207472,
+      "bytes": 68
+    },
+    {
+      "name": "normal_checkout_posting",
+      "address": "0x800352d4",
+      "end_exclusive": "0x8003533c",
+      "ram_offset": 217812,
+      "bytes": 104
+    },
+    {
+      "name": "wait_posting",
+      "address": "0x80035e4c",
+      "end_exclusive": "0x80035ec0",
+      "ram_offset": 220748,
+      "bytes": 116
+    }
+  ],
+  "inputs": [
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-customer-data/source/shopping-profiles.bin",
+      "git_blob_sha": "8567d49807882245e6d68e86e88a3f2e921f9ea1"
+    },
+    {
+      "path": "ps1-analysis-checkpoints/analysis/20261113-product-stock-data/product-fixture-data.json",
+      "git_blob_sha": "aaee68f8442304f2cf07b24c5d4baa7541c5e5ba"
+    }
+  ],
+  "limits": "No new original-disc access or original CPU execution; source text bytes matched saved original disassemblies where covered."
+}
