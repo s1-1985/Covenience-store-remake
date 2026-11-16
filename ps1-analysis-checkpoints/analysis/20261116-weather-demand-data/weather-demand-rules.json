@@ -1,0 +1,56 @@
+{
+  "generator": {
+    "address": "0x8002619c",
+    "update": "Outer main0x80023438 calls after daily finance, monthly rival/growth, on midnight hour0/subhour0.",
+    "first": "Draw r=LCG15bit; roll=r%100+1. Read cumulative thresholds of month row.",
+    "branches": [
+      "roll<=T0:weather0, no second draw",
+      "T0<roll<=T1:draw r2,weather=r2%19+1",
+      "T1<roll<=T2:draw r2,weather=r2%20+20",
+      "T2<roll<=T3:draw r2,weather=r2%20+40",
+      "roll>T3:draw r2,weather=r2%20+60"
+    ],
+    "support": "Every normal output is in0..79. Do not normalize this scalar into HUD class before customer filtering.",
+    "rng": "Only weather0 branch uses one draw; all other branches use two. Retain15bit generator and conditional order. Roll modulo100 is not exactly uniform over15bit outputs."
+  },
+  "hud": {
+    "address": "0x8004095c weather branch0x80040a7c",
+    "columns": [
+      "0",
+      "1..19",
+      "20..49",
+      "50..79",
+      ">=80"
+    ],
+    "lookup": "u16(0x800997e0+(month-1)*10+column*2)+62 -> MSG index.",
+    "interpretation": "Winter row column3 is snow, other months rain. Producer buckets40..59 straddle HUD columns2/3. Generation thresholds are not the HUD weather category boundaries.",
+    "reachability": "HUD includes>=80 labels大雪/大雨/雷雨/台風, but this generator never emits>=80. This is scoped to the one producer, not proof of every possible state/writer."
+  },
+  "normal_filters": {
+    "order": [
+      "Weather: signed profile[13]+20 >= weather",
+      "Seasonal gate of primary product: reject only return2",
+      "Draw1..100 against selected signed profile weekday/holiday share",
+      "Store selection with popularity/opening hours/stock/distance and source score keys"
+    ],
+    "calendar": "signed byte at0x80099d88+(month-1)*4+(stage-1):0 -> profile+21,1 -> profile+22.",
+    "equality": "Weather exactly equal to profile[13]+20 passes.",
+    "scope": "Cohort counts include only valid144 profiles and source mix quantity weights; they are not final demand arrays or realized visits."
+  },
+  "festival": {
+    "producer": "Daily finance0x80029394 resets CDA00=0; month8/stage4 sets1 after original festival presentation.",
+    "consumer": "0x800265f4..0x80026600 reads CDA00; if nonzero jumps0x80026730 over weather/season/share filtering.",
+    "still_run": [
+      "Weather generation",
+      "Town mix traversal and demand reset",
+      "Store selection and later stock/schedule/capacity/ranking rules"
+    ],
+    "not_run": [
+      "Weather rejection",
+      "Primary-product seasonal rejection",
+      "Weekday/holiday share RNG draw"
+    ],
+    "order": "Calendar guard and outer call order statically connect real month8/stage4 producer to bypass. No new full gameplay execution or exact final arrival quantity assertion."
+  },
+  "population_boundary": "Keep profile144 heads for original town population separately. Existing customer analysis already found invalid profile reference; festival bypass reaches later source logic past ordinary rejection, but its downstream behavior is not established here."
+}

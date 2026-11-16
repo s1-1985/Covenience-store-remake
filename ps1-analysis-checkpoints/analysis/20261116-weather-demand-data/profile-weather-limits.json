@@ -1,0 +1,1157 @@
+{
+  "profiles": [
+    {
+      "id": 0,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 1,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 2,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 3,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 4,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 5,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 6,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 7,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 8,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 9,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 5,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 10,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 15,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 11,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 24,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 12,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 13,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 14,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 20,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 15,
+      "importance": 90,
+      "maximum_weather": 110,
+      "primary_product": 21,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 16,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 6,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 17,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 22,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 18,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 5,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 19,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 20,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 21,
+      "importance": 60,
+      "maximum_weather": 80,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 22,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 23,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 8,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 24,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 25,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 26,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 27,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 28,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 8,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 29,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 30,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 15,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 31,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 5,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 32,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 33,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 14,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 34,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 5,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 35,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 15,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 36,
+      "importance": 90,
+      "maximum_weather": 110,
+      "primary_product": 2,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 37,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 8,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 38,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 9,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 39,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 13,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 40,
+      "importance": 90,
+      "maximum_weather": 110,
+      "primary_product": 20,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 41,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 42,
+      "importance": 90,
+      "maximum_weather": 110,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 43,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 8,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 44,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 45,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 46,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 47,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 48,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 49,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 50,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 5,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 51,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 52,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 8,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 53,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 54,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 15,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 55,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 56,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 15,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 57,
+      "importance": 90,
+      "maximum_weather": 110,
+      "primary_product": 2,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 58,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 5,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 59,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 60,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 5,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 61,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 8,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 62,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 63,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 64,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 65,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 66,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 67,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 68,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 69,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 70,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 5,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 71,
+      "importance": 60,
+      "maximum_weather": 80,
+      "primary_product": 12,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 72,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 4,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 73,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 3,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 74,
+      "importance": 90,
+      "maximum_weather": 110,
+      "primary_product": 8,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 75,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 15,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 76,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 2,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 77,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 19,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 78,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 7,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 79,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 5,
+      "weekday_share": 100,
+      "holiday_share": 20
+    },
+    {
+      "id": 80,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 2,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 81,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 2,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 82,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 9,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 83,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 9,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 84,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 8,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 85,
+      "importance": 60,
+      "maximum_weather": 80,
+      "primary_product": 8,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 86,
+      "importance": 90,
+      "maximum_weather": 110,
+      "primary_product": 10,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 87,
+      "importance": 90,
+      "maximum_weather": 110,
+      "primary_product": 10,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 88,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 0,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 89,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 0,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 90,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 0,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 91,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 0,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 92,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 24,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 93,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 24,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 94,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 0,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 95,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 0,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 96,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 20,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 97,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 0,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 98,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 0,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 99,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 0,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 100,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 9,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 101,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 24,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 102,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 24,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 103,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 22,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 104,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 10,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 105,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 10,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 106,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 6,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 107,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 6,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 108,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 6,
+      "weekday_share": 50,
+      "holiday_share": 100
+    },
+    {
+      "id": 109,
+      "importance": 30,
+      "maximum_weather": 50,
+      "primary_product": 6,
+      "weekday_share": 50,
+      "holiday_share": 100
+    },
+    {
+      "id": 110,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 8,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 111,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 2,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 112,
+      "importance": 20,
+      "maximum_weather": 40,
+      "primary_product": 19,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 113,
+      "importance": 10,
+      "maximum_weather": 30,
+      "primary_product": 23,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 114,
+      "importance": 20,
+      "maximum_weather": 40,
+      "primary_product": 19,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 115,
+      "importance": 10,
+      "maximum_weather": 30,
+      "primary_product": 23,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 116,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 13,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 117,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 13,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 118,
+      "importance": 90,
+      "maximum_weather": 110,
+      "primary_product": 22,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 119,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 21,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 120,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 19,
+      "weekday_share": 80,
+      "holiday_share": 100
+    },
+    {
+      "id": 121,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 19,
+      "weekday_share": 80,
+      "holiday_share": 100
+    },
+    {
+      "id": 122,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 23,
+      "weekday_share": 80,
+      "holiday_share": 100
+    },
+    {
+      "id": 123,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 23,
+      "weekday_share": 80,
+      "holiday_share": 100
+    },
+    {
+      "id": 124,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 12,
+      "weekday_share": 80,
+      "holiday_share": 100
+    },
+    {
+      "id": 125,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 14,
+      "weekday_share": 80,
+      "holiday_share": 100
+    },
+    {
+      "id": 126,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 12,
+      "weekday_share": 80,
+      "holiday_share": 100
+    },
+    {
+      "id": 127,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 13,
+      "weekday_share": 80,
+      "holiday_share": 100
+    },
+    {
+      "id": 128,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 14,
+      "weekday_share": 80,
+      "holiday_share": 100
+    },
+    {
+      "id": 129,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 12,
+      "weekday_share": 80,
+      "holiday_share": 100
+    },
+    {
+      "id": 130,
+      "importance": 60,
+      "maximum_weather": 80,
+      "primary_product": 6,
+      "weekday_share": 20,
+      "holiday_share": 100
+    },
+    {
+      "id": 131,
+      "importance": 50,
+      "maximum_weather": 70,
+      "primary_product": 6,
+      "weekday_share": 20,
+      "holiday_share": 100
+    },
+    {
+      "id": 132,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 11,
+      "weekday_share": 20,
+      "holiday_share": 100
+    },
+    {
+      "id": 133,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 11,
+      "weekday_share": 20,
+      "holiday_share": 100
+    },
+    {
+      "id": 134,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 19,
+      "weekday_share": 20,
+      "holiday_share": 100
+    },
+    {
+      "id": 135,
+      "importance": 80,
+      "maximum_weather": 100,
+      "primary_product": 23,
+      "weekday_share": 20,
+      "holiday_share": 100
+    },
+    {
+      "id": 136,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 13,
+      "weekday_share": 20,
+      "holiday_share": 100
+    },
+    {
+      "id": 137,
+      "importance": 100,
+      "maximum_weather": 120,
+      "primary_product": 14,
+      "weekday_share": 20,
+      "holiday_share": 100
+    },
+    {
+      "id": 138,
+      "importance": 20,
+      "maximum_weather": 40,
+      "primary_product": 7,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 139,
+      "importance": 20,
+      "maximum_weather": 40,
+      "primary_product": 7,
+      "weekday_share": 70,
+      "holiday_share": 100
+    },
+    {
+      "id": 140,
+      "importance": 60,
+      "maximum_weather": 80,
+      "primary_product": 0,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 141,
+      "importance": 60,
+      "maximum_weather": 80,
+      "primary_product": 0,
+      "weekday_share": 100,
+      "holiday_share": 50
+    },
+    {
+      "id": 142,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 0,
+      "weekday_share": 20,
+      "holiday_share": 100
+    },
+    {
+      "id": 143,
+      "importance": 70,
+      "maximum_weather": 90,
+      "primary_product": 0,
+      "weekday_share": 20,
+      "holiday_share": 100
+    }
+  ],
+  "rule": "Reject only if signed profile[13]+20 < weather. Equality passes. Before seasonal/share/store-choice/stock/queue gates. Festival CDA00!=0 bypasses this gate."
+}

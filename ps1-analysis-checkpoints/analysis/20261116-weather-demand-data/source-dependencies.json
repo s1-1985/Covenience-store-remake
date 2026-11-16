@@ -1,0 +1,36 @@
+{
+  "primary": {
+    "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+    "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+    "messages": "/DAT/MSG00.OBJ"
+  },
+  "reused": [
+    {
+      "path": "../20261113-disc-data-extraction/extract-disc-data.py",
+      "purpose": "ISO payload reader"
+    },
+    {
+      "path": "../20261114-staff-roster-growth-data/source-reference/psmoji.py",
+      "purpose": "Previously transcribed original glyph mapping"
+    },
+    {
+      "path": "../20261113-seasonal-demand-data/README.md",
+      "purpose": "Existing generator/season/share contract and original month thresholds"
+    },
+    {
+      "path": "../20261113-customer-data/profile144-analysis.json",
+      "purpose": "Previously identified invalid mix136/profile144 and separate population semantics"
+    },
+    {
+      "path": "../20261115-donations-milestone-data/README.md",
+      "purpose": "Calendar producer and festival CDA00 flag precedence"
+    }
+  ],
+  "prior_models": [
+    "runtime/algorithm-analysis/demand.py",
+    "runtime/algorithm-analysis/finance_close.py",
+    "runtime/algorithm-analysis/verify_font_pixels_and_labels.py"
+  ],
+  "known_before": "Weather generation, seasonal filter and source month thresholds already recovered. New extraction joins five generation ranges to monthly five-column HUD labels,144 profile cutoffs to4 source-map weather cohorts, and calendar-reachable festival flag to normal filter bypass plus profile144 boundary context.",
+  "checks": "Disc/EXE hashes,12 cumulative rows,60 original HUD selector/message joins,80x144 gate bits,4 source populations and320 composition rows. No original CPU updates."
+}

@@ -1,0 +1,31 @@
+{
+  "target": "Native Android data/ordinary logic; no original EXE/CPU/BIOS runtime.",
+  "data": [
+    "monthly-weather-hud.json",
+    "weather-labels.json",
+    "profile-weather-limits.json",
+    "weather-profile-eligibility.bits",
+    "map-weather-cohorts.json"
+  ],
+  "implement": [
+    "Retain numeric weather0..79 rather than only a weather-name enum.",
+    "Use cumulative month thresholds for generation and separate monthly HUD selectors for display.",
+    "Preserve conditional second RNG draw and modulo19/20 ranges.",
+    "Compare profile threshold inclusively before seasonal/share filters.",
+    "Use original48-entry day selector rather than invented Gregorian weekdays.",
+    "Connect festival CDA00 to bypass only first3 gates; still execute store choice.",
+    "Preserve out-of-catalog heads for population, never decode adjacent bytes as native Android customers."
+  ],
+  "bitset": {
+    "bytes": 1440,
+    "rows": 80,
+    "bytes_per_row": 18,
+    "order": "weather ascending0..79; bit profile_id little bit order within byte"
+  },
+  "reference_counts": "Map cohorts are static composition weights and cannot be displayed as forecast sales/arrivals.",
+  "limits": [
+    "Downstream native profile144 behavior under festival bypass remains unresolved.",
+    "Global reachability of weather>=80 is not proven impossible; only this normal producer range is established."
+  ],
+  "status": "Data extraction only; Android implementation/APK not updated."
+}

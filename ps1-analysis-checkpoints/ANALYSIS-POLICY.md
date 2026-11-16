@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-16：天候生成と月別表示60対応・144型の判定・4マップ320構成と祭り迂回](analysis/20261116-weather-demand-data/README.md)
+
 - [2026-11-16：調査・買収・売却、初期11店の価格と29店員参照・帳簿初期化](analysis/20261116-acquisition-sale-data/README.md)
 
 - [2026-11-15：ライバル18内装・72配置/マップ接続、初期11店の撤退資産と採用・価格設定](analysis/20261115-rival-management-data/README.md)

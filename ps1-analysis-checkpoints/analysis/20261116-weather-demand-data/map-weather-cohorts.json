@@ -1,0 +1,3082 @@
+[
+  {
+    "map": "TOWN0001",
+    "source_town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+    "population_including_out_of_catalog": 2179,
+    "known_profile_heads": 2177,
+    "out_of_catalog_heads": 2,
+    "profile_head_weights": {
+      "3": 3,
+      "11": 2,
+      "12": 4,
+      "13": 2,
+      "14": 15,
+      "15": 4,
+      "16": 3,
+      "17": 4,
+      "18": 14,
+      "21": 3,
+      "24": 10,
+      "28": 13,
+      "29": 2,
+      "30": 1,
+      "31": 1,
+      "32": 7,
+      "34": 8,
+      "35": 2,
+      "36": 8,
+      "37": 10,
+      "38": 10,
+      "39": 3,
+      "40": 8,
+      "41": 5,
+      "42": 12,
+      "44": 25,
+      "45": 17,
+      "46": 36,
+      "47": 22,
+      "48": 10,
+      "49": 55,
+      "50": 50,
+      "51": 41,
+      "52": 57,
+      "53": 2,
+      "54": 18,
+      "55": 8,
+      "56": 24,
+      "57": 18,
+      "58": 25,
+      "59": 20,
+      "60": 26,
+      "61": 8,
+      "62": 19,
+      "63": 24,
+      "64": 15,
+      "65": 2,
+      "66": 15,
+      "67": 22,
+      "68": 9,
+      "69": 26,
+      "70": 14,
+      "72": 12,
+      "73": 14,
+      "74": 16,
+      "75": 28,
+      "76": 18,
+      "77": 5,
+      "78": 29,
+      "79": 12,
+      "80": 35,
+      "81": 10,
+      "82": 13,
+      "83": 14,
+      "84": 8,
+      "85": 6,
+      "86": 33,
+      "87": 42,
+      "88": 45,
+      "89": 30,
+      "90": 15,
+      "91": 10,
+      "92": 34,
+      "93": 31,
+      "94": 11,
+      "95": 3,
+      "96": 12,
+      "98": 5,
+      "99": 5,
+      "101": 15,
+      "102": 5,
+      "103": 30,
+      "104": 35,
+      "105": 46,
+      "106": 30,
+      "107": 24,
+      "108": 22,
+      "109": 14,
+      "110": 10,
+      "111": 16,
+      "112": 12,
+      "113": 23,
+      "114": 21,
+      "115": 12,
+      "116": 23,
+      "117": 22,
+      "118": 10,
+      "119": 10,
+      "120": 16,
+      "121": 18,
+      "122": 15,
+      "123": 25,
+      "124": 25,
+      "125": 44,
+      "126": 33,
+      "127": 22,
+      "128": 21,
+      "129": 18,
+      "130": 13,
+      "131": 16,
+      "132": 23,
+      "133": 26,
+      "134": 41,
+      "135": 20,
+      "136": 64,
+      "137": 35,
+      "138": 13,
+      "139": 17,
+      "140": 3,
+      "141": 2,
+      "142": 20,
+      "143": 9,
+      "144": 2
+    },
+    "weather_rows": [
+      {
+        "weather": 0,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 1,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 2,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 3,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 4,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 5,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 6,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 7,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 8,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 9,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 10,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 11,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 12,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 13,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 14,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 15,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 16,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 17,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 18,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 19,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 20,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 21,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 22,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 23,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 24,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 25,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 26,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 27,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 28,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 29,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 30,
+        "accepted_known_heads": 2177,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 167720,
+        "holiday_share_weight_sum": 150390
+      },
+      {
+        "weather": 31,
+        "accepted_known_heads": 2142,
+        "rejected_known_heads": 35,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 165270,
+        "holiday_share_weight_sum": 146890
+      },
+      {
+        "weather": 32,
+        "accepted_known_heads": 2142,
+        "rejected_known_heads": 35,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 165270,
+        "holiday_share_weight_sum": 146890
+      },
+      {
+        "weather": 33,
+        "accepted_known_heads": 2142,
+        "rejected_known_heads": 35,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 165270,
+        "holiday_share_weight_sum": 146890
+      },
+      {
+        "weather": 34,
+        "accepted_known_heads": 2142,
+        "rejected_known_heads": 35,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 165270,
+        "holiday_share_weight_sum": 146890
+      },
+      {
+        "weather": 35,
+        "accepted_known_heads": 2142,
+        "rejected_known_heads": 35,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 165270,
+        "holiday_share_weight_sum": 146890
+      },
+      {
+        "weather": 36,
+        "accepted_known_heads": 2142,
+        "rejected_known_heads": 35,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 165270,
+        "holiday_share_weight_sum": 146890
+      },
+      {
+        "weather": 37,
+        "accepted_known_heads": 2142,
+        "rejected_known_heads": 35,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 165270,
+        "holiday_share_weight_sum": 146890
+      },
+      {
+        "weather": 38,
+        "accepted_known_heads": 2142,
+        "rejected_known_heads": 35,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 165270,
+        "holiday_share_weight_sum": 146890
+      },
+      {
+        "weather": 39,
+        "accepted_known_heads": 2142,
+        "rejected_known_heads": 35,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 165270,
+        "holiday_share_weight_sum": 146890
+      },
+      {
+        "weather": 40,
+        "accepted_known_heads": 2142,
+        "rejected_known_heads": 35,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 165270,
+        "holiday_share_weight_sum": 146890
+      },
+      {
+        "weather": 41,
+        "accepted_known_heads": 2079,
+        "rejected_known_heads": 98,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 160860,
+        "holiday_share_weight_sum": 140590
+      },
+      {
+        "weather": 42,
+        "accepted_known_heads": 2079,
+        "rejected_known_heads": 98,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 160860,
+        "holiday_share_weight_sum": 140590
+      },
+      {
+        "weather": 43,
+        "accepted_known_heads": 2079,
+        "rejected_known_heads": 98,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 160860,
+        "holiday_share_weight_sum": 140590
+      },
+      {
+        "weather": 44,
+        "accepted_known_heads": 2079,
+        "rejected_known_heads": 98,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 160860,
+        "holiday_share_weight_sum": 140590
+      },
+      {
+        "weather": 45,
+        "accepted_known_heads": 2079,
+        "rejected_known_heads": 98,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 160860,
+        "holiday_share_weight_sum": 140590
+      },
+      {
+        "weather": 46,
+        "accepted_known_heads": 2079,
+        "rejected_known_heads": 98,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 160860,
+        "holiday_share_weight_sum": 140590
+      },
+      {
+        "weather": 47,
+        "accepted_known_heads": 2079,
+        "rejected_known_heads": 98,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 160860,
+        "holiday_share_weight_sum": 140590
+      },
+      {
+        "weather": 48,
+        "accepted_known_heads": 2079,
+        "rejected_known_heads": 98,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 160860,
+        "holiday_share_weight_sum": 140590
+      },
+      {
+        "weather": 49,
+        "accepted_known_heads": 2079,
+        "rejected_known_heads": 98,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 160860,
+        "holiday_share_weight_sum": 140590
+      },
+      {
+        "weather": 50,
+        "accepted_known_heads": 2079,
+        "rejected_known_heads": 98,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 160860,
+        "holiday_share_weight_sum": 140590
+      },
+      {
+        "weather": 51,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 52,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 53,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 54,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 55,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 56,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 57,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 58,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 59,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 60,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 61,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 62,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 63,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 64,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 65,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 66,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 67,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 68,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 69,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 70,
+        "accepted_known_heads": 1874,
+        "rejected_known_heads": 303,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 142160,
+        "holiday_share_weight_sum": 133400
+      },
+      {
+        "weather": 71,
+        "accepted_known_heads": 1523,
+        "rejected_known_heads": 654,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 116830,
+        "holiday_share_weight_sum": 102400
+      },
+      {
+        "weather": 72,
+        "accepted_known_heads": 1523,
+        "rejected_known_heads": 654,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 116830,
+        "holiday_share_weight_sum": 102400
+      },
+      {
+        "weather": 73,
+        "accepted_known_heads": 1523,
+        "rejected_known_heads": 654,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 116830,
+        "holiday_share_weight_sum": 102400
+      },
+      {
+        "weather": 74,
+        "accepted_known_heads": 1523,
+        "rejected_known_heads": 654,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 116830,
+        "holiday_share_weight_sum": 102400
+      },
+      {
+        "weather": 75,
+        "accepted_known_heads": 1523,
+        "rejected_known_heads": 654,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 116830,
+        "holiday_share_weight_sum": 102400
+      },
+      {
+        "weather": 76,
+        "accepted_known_heads": 1523,
+        "rejected_known_heads": 654,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 116830,
+        "holiday_share_weight_sum": 102400
+      },
+      {
+        "weather": 77,
+        "accepted_known_heads": 1523,
+        "rejected_known_heads": 654,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 116830,
+        "holiday_share_weight_sum": 102400
+      },
+      {
+        "weather": 78,
+        "accepted_known_heads": 1523,
+        "rejected_known_heads": 654,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 116830,
+        "holiday_share_weight_sum": 102400
+      },
+      {
+        "weather": 79,
+        "accepted_known_heads": 1523,
+        "rejected_known_heads": 654,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 116830,
+        "holiday_share_weight_sum": 102400
+      }
+    ],
+    "festival_bypass_known_heads": 2177,
+    "scope": "Static original-map customer composition weights passing weather only; not distinct people observed, arrivals, store choices or sales. Share sums are raw weighted threshold values, not expected realized demand."
+  },
+  {
+    "map": "TOWN0002",
+    "source_town_sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90",
+    "population_including_out_of_catalog": 1880,
+    "known_profile_heads": 1879,
+    "out_of_catalog_heads": 1,
+    "profile_head_weights": {
+      "3": 2,
+      "11": 3,
+      "12": 2,
+      "14": 10,
+      "15": 5,
+      "16": 4,
+      "18": 8,
+      "21": 2,
+      "23": 3,
+      "24": 6,
+      "28": 25,
+      "29": 1,
+      "30": 2,
+      "31": 2,
+      "32": 6,
+      "34": 5,
+      "35": 4,
+      "36": 10,
+      "37": 10,
+      "38": 14,
+      "39": 4,
+      "40": 2,
+      "41": 6,
+      "42": 4,
+      "43": 2,
+      "44": 27,
+      "45": 21,
+      "46": 35,
+      "47": 15,
+      "48": 15,
+      "49": 46,
+      "50": 40,
+      "51": 37,
+      "52": 62,
+      "53": 2,
+      "54": 9,
+      "55": 6,
+      "56": 15,
+      "57": 10,
+      "58": 17,
+      "59": 14,
+      "60": 24,
+      "61": 8,
+      "62": 22,
+      "63": 21,
+      "64": 14,
+      "65": 2,
+      "66": 9,
+      "67": 11,
+      "68": 15,
+      "69": 16,
+      "70": 10,
+      "72": 15,
+      "73": 12,
+      "74": 14,
+      "75": 16,
+      "76": 21,
+      "77": 12,
+      "78": 20,
+      "79": 18,
+      "80": 27,
+      "81": 12,
+      "82": 9,
+      "83": 12,
+      "84": 2,
+      "85": 2,
+      "86": 38,
+      "87": 37,
+      "88": 45,
+      "89": 30,
+      "90": 15,
+      "91": 10,
+      "92": 36,
+      "93": 26,
+      "94": 4,
+      "95": 9,
+      "96": 4,
+      "98": 4,
+      "99": 9,
+      "101": 12,
+      "102": 8,
+      "103": 18,
+      "104": 8,
+      "105": 15,
+      "106": 4,
+      "107": 4,
+      "108": 19,
+      "109": 11,
+      "110": 12,
+      "111": 16,
+      "112": 13,
+      "113": 17,
+      "114": 16,
+      "115": 11,
+      "116": 10,
+      "117": 13,
+      "118": 14,
+      "119": 12,
+      "120": 14,
+      "121": 28,
+      "122": 11,
+      "123": 24,
+      "124": 15,
+      "125": 32,
+      "126": 34,
+      "127": 26,
+      "128": 13,
+      "129": 12,
+      "130": 23,
+      "131": 14,
+      "132": 24,
+      "133": 31,
+      "134": 34,
+      "135": 29,
+      "136": 35,
+      "137": 30,
+      "138": 15,
+      "139": 13,
+      "140": 9,
+      "141": 9,
+      "142": 30,
+      "143": 17,
+      "144": 1
+    },
+    "weather_rows": [
+      {
+        "weather": 0,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 1,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 2,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 3,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 4,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 5,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 6,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 7,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 8,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 9,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 10,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 11,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 12,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 13,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 14,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 15,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 16,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 17,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 18,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 19,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 20,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 21,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 22,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 23,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 24,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 25,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 26,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 27,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 28,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 29,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 30,
+        "accepted_known_heads": 1879,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 144000,
+        "holiday_share_weight_sum": 127820
+      },
+      {
+        "weather": 31,
+        "accepted_known_heads": 1851,
+        "rejected_known_heads": 28,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 142040,
+        "holiday_share_weight_sum": 125020
+      },
+      {
+        "weather": 32,
+        "accepted_known_heads": 1851,
+        "rejected_known_heads": 28,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 142040,
+        "holiday_share_weight_sum": 125020
+      },
+      {
+        "weather": 33,
+        "accepted_known_heads": 1851,
+        "rejected_known_heads": 28,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 142040,
+        "holiday_share_weight_sum": 125020
+      },
+      {
+        "weather": 34,
+        "accepted_known_heads": 1851,
+        "rejected_known_heads": 28,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 142040,
+        "holiday_share_weight_sum": 125020
+      },
+      {
+        "weather": 35,
+        "accepted_known_heads": 1851,
+        "rejected_known_heads": 28,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 142040,
+        "holiday_share_weight_sum": 125020
+      },
+      {
+        "weather": 36,
+        "accepted_known_heads": 1851,
+        "rejected_known_heads": 28,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 142040,
+        "holiday_share_weight_sum": 125020
+      },
+      {
+        "weather": 37,
+        "accepted_known_heads": 1851,
+        "rejected_known_heads": 28,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 142040,
+        "holiday_share_weight_sum": 125020
+      },
+      {
+        "weather": 38,
+        "accepted_known_heads": 1851,
+        "rejected_known_heads": 28,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 142040,
+        "holiday_share_weight_sum": 125020
+      },
+      {
+        "weather": 39,
+        "accepted_known_heads": 1851,
+        "rejected_known_heads": 28,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 142040,
+        "holiday_share_weight_sum": 125020
+      },
+      {
+        "weather": 40,
+        "accepted_known_heads": 1851,
+        "rejected_known_heads": 28,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 142040,
+        "holiday_share_weight_sum": 125020
+      },
+      {
+        "weather": 41,
+        "accepted_known_heads": 1794,
+        "rejected_known_heads": 85,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 138050,
+        "holiday_share_weight_sum": 119320
+      },
+      {
+        "weather": 42,
+        "accepted_known_heads": 1794,
+        "rejected_known_heads": 85,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 138050,
+        "holiday_share_weight_sum": 119320
+      },
+      {
+        "weather": 43,
+        "accepted_known_heads": 1794,
+        "rejected_known_heads": 85,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 138050,
+        "holiday_share_weight_sum": 119320
+      },
+      {
+        "weather": 44,
+        "accepted_known_heads": 1794,
+        "rejected_known_heads": 85,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 138050,
+        "holiday_share_weight_sum": 119320
+      },
+      {
+        "weather": 45,
+        "accepted_known_heads": 1794,
+        "rejected_known_heads": 85,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 138050,
+        "holiday_share_weight_sum": 119320
+      },
+      {
+        "weather": 46,
+        "accepted_known_heads": 1794,
+        "rejected_known_heads": 85,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 138050,
+        "holiday_share_weight_sum": 119320
+      },
+      {
+        "weather": 47,
+        "accepted_known_heads": 1794,
+        "rejected_known_heads": 85,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 138050,
+        "holiday_share_weight_sum": 119320
+      },
+      {
+        "weather": 48,
+        "accepted_known_heads": 1794,
+        "rejected_known_heads": 85,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 138050,
+        "holiday_share_weight_sum": 119320
+      },
+      {
+        "weather": 49,
+        "accepted_known_heads": 1794,
+        "rejected_known_heads": 85,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 138050,
+        "holiday_share_weight_sum": 119320
+      },
+      {
+        "weather": 50,
+        "accepted_known_heads": 1794,
+        "rejected_known_heads": 85,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 138050,
+        "holiday_share_weight_sum": 119320
+      },
+      {
+        "weather": 51,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 52,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 53,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 54,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 55,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 56,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 57,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 58,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 59,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 60,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 61,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 62,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 63,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 64,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 65,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 66,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 67,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 68,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 69,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 70,
+        "accepted_known_heads": 1616,
+        "rejected_known_heads": 263,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 121750,
+        "holiday_share_weight_sum": 113240
+      },
+      {
+        "weather": 71,
+        "accepted_known_heads": 1441,
+        "rejected_known_heads": 438,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 109090,
+        "holiday_share_weight_sum": 98700
+      },
+      {
+        "weather": 72,
+        "accepted_known_heads": 1441,
+        "rejected_known_heads": 438,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 109090,
+        "holiday_share_weight_sum": 98700
+      },
+      {
+        "weather": 73,
+        "accepted_known_heads": 1441,
+        "rejected_known_heads": 438,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 109090,
+        "holiday_share_weight_sum": 98700
+      },
+      {
+        "weather": 74,
+        "accepted_known_heads": 1441,
+        "rejected_known_heads": 438,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 109090,
+        "holiday_share_weight_sum": 98700
+      },
+      {
+        "weather": 75,
+        "accepted_known_heads": 1441,
+        "rejected_known_heads": 438,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 109090,
+        "holiday_share_weight_sum": 98700
+      },
+      {
+        "weather": 76,
+        "accepted_known_heads": 1441,
+        "rejected_known_heads": 438,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 109090,
+        "holiday_share_weight_sum": 98700
+      },
+      {
+        "weather": 77,
+        "accepted_known_heads": 1441,
+        "rejected_known_heads": 438,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 109090,
+        "holiday_share_weight_sum": 98700
+      },
+      {
+        "weather": 78,
+        "accepted_known_heads": 1441,
+        "rejected_known_heads": 438,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 109090,
+        "holiday_share_weight_sum": 98700
+      },
+      {
+        "weather": 79,
+        "accepted_known_heads": 1441,
+        "rejected_known_heads": 438,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 109090,
+        "holiday_share_weight_sum": 98700
+      }
+    ],
+    "festival_bypass_known_heads": 1879,
+    "scope": "Static original-map customer composition weights passing weather only; not distinct people observed, arrivals, store choices or sales. Share sums are raw weighted threshold values, not expected realized demand."
+  },
+  {
+    "map": "TOWN0003",
+    "source_town_sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add",
+    "population_including_out_of_catalog": 1424,
+    "known_profile_heads": 1424,
+    "out_of_catalog_heads": 0,
+    "profile_head_weights": {
+      "3": 2,
+      "11": 1,
+      "12": 4,
+      "13": 2,
+      "14": 6,
+      "15": 4,
+      "17": 2,
+      "18": 7,
+      "21": 2,
+      "24": 8,
+      "28": 20,
+      "29": 1,
+      "30": 2,
+      "32": 11,
+      "34": 3,
+      "35": 4,
+      "36": 4,
+      "37": 4,
+      "38": 4,
+      "39": 2,
+      "40": 4,
+      "42": 2,
+      "43": 6,
+      "44": 17,
+      "45": 21,
+      "46": 13,
+      "47": 19,
+      "48": 10,
+      "49": 22,
+      "50": 20,
+      "51": 42,
+      "52": 38,
+      "54": 11,
+      "55": 2,
+      "56": 16,
+      "57": 2,
+      "58": 15,
+      "59": 8,
+      "60": 23,
+      "61": 1,
+      "62": 19,
+      "63": 17,
+      "64": 13,
+      "65": 6,
+      "66": 6,
+      "67": 6,
+      "68": 9,
+      "69": 17,
+      "70": 2,
+      "72": 15,
+      "73": 6,
+      "74": 8,
+      "75": 2,
+      "76": 10,
+      "77": 9,
+      "78": 4,
+      "79": 15,
+      "80": 24,
+      "81": 15,
+      "82": 7,
+      "83": 2,
+      "84": 2,
+      "85": 1,
+      "86": 9,
+      "87": 24,
+      "92": 8,
+      "93": 6,
+      "94": 4,
+      "96": 4,
+      "98": 4,
+      "99": 1,
+      "101": 16,
+      "102": 10,
+      "103": 12,
+      "104": 41,
+      "105": 45,
+      "106": 26,
+      "107": 26,
+      "108": 12,
+      "109": 11,
+      "110": 11,
+      "111": 20,
+      "112": 11,
+      "113": 11,
+      "114": 14,
+      "115": 11,
+      "116": 15,
+      "117": 13,
+      "118": 7,
+      "119": 11,
+      "120": 18,
+      "121": 20,
+      "122": 10,
+      "123": 16,
+      "124": 24,
+      "125": 29,
+      "126": 35,
+      "127": 20,
+      "128": 18,
+      "129": 13,
+      "130": 19,
+      "131": 17,
+      "132": 22,
+      "133": 21,
+      "134": 22,
+      "135": 18,
+      "136": 29,
+      "137": 22,
+      "138": 10,
+      "139": 15,
+      "140": 6,
+      "141": 4,
+      "142": 23,
+      "143": 10
+    },
+    "weather_rows": [
+      {
+        "weather": 0,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 1,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 2,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 3,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 4,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 5,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 6,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 7,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 8,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 9,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 10,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 11,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 12,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 13,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 14,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 15,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 16,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 17,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 18,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 19,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 20,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 21,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 22,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 23,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 24,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 25,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 26,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 27,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 28,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 29,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 30,
+        "accepted_known_heads": 1424,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 107870,
+        "holiday_share_weight_sum": 101130
+      },
+      {
+        "weather": 31,
+        "accepted_known_heads": 1402,
+        "rejected_known_heads": 22,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 106330,
+        "holiday_share_weight_sum": 98930
+      },
+      {
+        "weather": 32,
+        "accepted_known_heads": 1402,
+        "rejected_known_heads": 22,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 106330,
+        "holiday_share_weight_sum": 98930
+      },
+      {
+        "weather": 33,
+        "accepted_known_heads": 1402,
+        "rejected_known_heads": 22,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 106330,
+        "holiday_share_weight_sum": 98930
+      },
+      {
+        "weather": 34,
+        "accepted_known_heads": 1402,
+        "rejected_known_heads": 22,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 106330,
+        "holiday_share_weight_sum": 98930
+      },
+      {
+        "weather": 35,
+        "accepted_known_heads": 1402,
+        "rejected_known_heads": 22,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 106330,
+        "holiday_share_weight_sum": 98930
+      },
+      {
+        "weather": 36,
+        "accepted_known_heads": 1402,
+        "rejected_known_heads": 22,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 106330,
+        "holiday_share_weight_sum": 98930
+      },
+      {
+        "weather": 37,
+        "accepted_known_heads": 1402,
+        "rejected_known_heads": 22,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 106330,
+        "holiday_share_weight_sum": 98930
+      },
+      {
+        "weather": 38,
+        "accepted_known_heads": 1402,
+        "rejected_known_heads": 22,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 106330,
+        "holiday_share_weight_sum": 98930
+      },
+      {
+        "weather": 39,
+        "accepted_known_heads": 1402,
+        "rejected_known_heads": 22,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 106330,
+        "holiday_share_weight_sum": 98930
+      },
+      {
+        "weather": 40,
+        "accepted_known_heads": 1402,
+        "rejected_known_heads": 22,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 106330,
+        "holiday_share_weight_sum": 98930
+      },
+      {
+        "weather": 41,
+        "accepted_known_heads": 1352,
+        "rejected_known_heads": 72,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 102830,
+        "holiday_share_weight_sum": 93930
+      },
+      {
+        "weather": 42,
+        "accepted_known_heads": 1352,
+        "rejected_known_heads": 72,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 102830,
+        "holiday_share_weight_sum": 93930
+      },
+      {
+        "weather": 43,
+        "accepted_known_heads": 1352,
+        "rejected_known_heads": 72,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 102830,
+        "holiday_share_weight_sum": 93930
+      },
+      {
+        "weather": 44,
+        "accepted_known_heads": 1352,
+        "rejected_known_heads": 72,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 102830,
+        "holiday_share_weight_sum": 93930
+      },
+      {
+        "weather": 45,
+        "accepted_known_heads": 1352,
+        "rejected_known_heads": 72,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 102830,
+        "holiday_share_weight_sum": 93930
+      },
+      {
+        "weather": 46,
+        "accepted_known_heads": 1352,
+        "rejected_known_heads": 72,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 102830,
+        "holiday_share_weight_sum": 93930
+      },
+      {
+        "weather": 47,
+        "accepted_known_heads": 1352,
+        "rejected_known_heads": 72,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 102830,
+        "holiday_share_weight_sum": 93930
+      },
+      {
+        "weather": 48,
+        "accepted_known_heads": 1352,
+        "rejected_known_heads": 72,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 102830,
+        "holiday_share_weight_sum": 93930
+      },
+      {
+        "weather": 49,
+        "accepted_known_heads": 1352,
+        "rejected_known_heads": 72,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 102830,
+        "holiday_share_weight_sum": 93930
+      },
+      {
+        "weather": 50,
+        "accepted_known_heads": 1352,
+        "rejected_known_heads": 72,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 102830,
+        "holiday_share_weight_sum": 93930
+      },
+      {
+        "weather": 51,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 52,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 53,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 54,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 55,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 56,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 57,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 58,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 59,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 60,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 61,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 62,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 63,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 64,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 65,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 66,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 67,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 68,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 69,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 70,
+        "accepted_known_heads": 1224,
+        "rejected_known_heads": 200,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 91180,
+        "holiday_share_weight_sum": 89350
+      },
+      {
+        "weather": 71,
+        "accepted_known_heads": 956,
+        "rejected_known_heads": 468,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 72190,
+        "holiday_share_weight_sum": 65370
+      },
+      {
+        "weather": 72,
+        "accepted_known_heads": 956,
+        "rejected_known_heads": 468,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 72190,
+        "holiday_share_weight_sum": 65370
+      },
+      {
+        "weather": 73,
+        "accepted_known_heads": 956,
+        "rejected_known_heads": 468,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 72190,
+        "holiday_share_weight_sum": 65370
+      },
+      {
+        "weather": 74,
+        "accepted_known_heads": 956,
+        "rejected_known_heads": 468,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 72190,
+        "holiday_share_weight_sum": 65370
+      },
+      {
+        "weather": 75,
+        "accepted_known_heads": 956,
+        "rejected_known_heads": 468,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 72190,
+        "holiday_share_weight_sum": 65370
+      },
+      {
+        "weather": 76,
+        "accepted_known_heads": 956,
+        "rejected_known_heads": 468,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 72190,
+        "holiday_share_weight_sum": 65370
+      },
+      {
+        "weather": 77,
+        "accepted_known_heads": 956,
+        "rejected_known_heads": 468,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 72190,
+        "holiday_share_weight_sum": 65370
+      },
+      {
+        "weather": 78,
+        "accepted_known_heads": 956,
+        "rejected_known_heads": 468,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 72190,
+        "holiday_share_weight_sum": 65370
+      },
+      {
+        "weather": 79,
+        "accepted_known_heads": 956,
+        "rejected_known_heads": 468,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 72190,
+        "holiday_share_weight_sum": 65370
+      }
+    ],
+    "festival_bypass_known_heads": 1424,
+    "scope": "Static original-map customer composition weights passing weather only; not distinct people observed, arrivals, store choices or sales. Share sums are raw weighted threshold values, not expected realized demand."
+  },
+  {
+    "map": "TOWNPS",
+    "source_town_sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93",
+    "population_including_out_of_catalog": 2839,
+    "known_profile_heads": 2838,
+    "out_of_catalog_heads": 1,
+    "profile_head_weights": {
+      "3": 2,
+      "11": 4,
+      "12": 2,
+      "14": 4,
+      "15": 6,
+      "16": 3,
+      "18": 5,
+      "21": 2,
+      "23": 6,
+      "28": 2,
+      "29": 2,
+      "30": 1,
+      "31": 1,
+      "32": 8,
+      "34": 5,
+      "35": 2,
+      "36": 4,
+      "37": 2,
+      "38": 2,
+      "39": 1,
+      "40": 2,
+      "41": 2,
+      "43": 8,
+      "44": 85,
+      "45": 52,
+      "46": 92,
+      "47": 89,
+      "48": 76,
+      "49": 198,
+      "50": 98,
+      "51": 194,
+      "52": 157,
+      "53": 42,
+      "54": 16,
+      "55": 34,
+      "56": 34,
+      "57": 16,
+      "58": 50,
+      "59": 34,
+      "60": 58,
+      "61": 8,
+      "62": 58,
+      "63": 49,
+      "64": 30,
+      "65": 50,
+      "66": 112,
+      "67": 61,
+      "68": 107,
+      "69": 117,
+      "70": 56,
+      "72": 42,
+      "73": 32,
+      "74": 26,
+      "75": 40,
+      "76": 48,
+      "77": 38,
+      "78": 62,
+      "79": 65,
+      "80": 7,
+      "81": 12,
+      "82": 5,
+      "83": 4,
+      "84": 2,
+      "86": 42,
+      "87": 9,
+      "88": 63,
+      "89": 12,
+      "90": 21,
+      "91": 4,
+      "92": 42,
+      "93": 10,
+      "96": 1,
+      "99": 1,
+      "101": 3,
+      "102": 1,
+      "103": 7,
+      "105": 1,
+      "106": 6,
+      "107": 6,
+      "109": 3,
+      "112": 2,
+      "113": 3,
+      "115": 3,
+      "116": 3,
+      "117": 1,
+      "121": 4,
+      "122": 2,
+      "123": 3,
+      "124": 6,
+      "125": 3,
+      "126": 5,
+      "127": 3,
+      "128": 2,
+      "129": 5,
+      "130": 10,
+      "131": 10,
+      "132": 11,
+      "133": 30,
+      "134": 3,
+      "135": 5,
+      "136": 8,
+      "137": 1,
+      "138": 3,
+      "139": 1,
+      "141": 6,
+      "142": 29,
+      "143": 12,
+      "144": 1
+    },
+    "weather_rows": [
+      {
+        "weather": 0,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 1,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 2,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 3,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 4,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 5,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 6,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 7,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 8,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 9,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 10,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 11,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 12,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 13,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 14,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 15,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 16,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 17,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 18,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 19,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 20,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 21,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 22,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 23,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 24,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 25,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 26,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 27,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 28,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 29,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 30,
+        "accepted_known_heads": 2838,
+        "rejected_known_heads": 0,
+        "accepted_profile_rows": 144,
+        "weekday_share_weight_sum": 265220,
+        "holiday_share_weight_sum": 93620
+      },
+      {
+        "weather": 31,
+        "accepted_known_heads": 2832,
+        "rejected_known_heads": 6,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 264800,
+        "holiday_share_weight_sum": 93020
+      },
+      {
+        "weather": 32,
+        "accepted_known_heads": 2832,
+        "rejected_known_heads": 6,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 264800,
+        "holiday_share_weight_sum": 93020
+      },
+      {
+        "weather": 33,
+        "accepted_known_heads": 2832,
+        "rejected_known_heads": 6,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 264800,
+        "holiday_share_weight_sum": 93020
+      },
+      {
+        "weather": 34,
+        "accepted_known_heads": 2832,
+        "rejected_known_heads": 6,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 264800,
+        "holiday_share_weight_sum": 93020
+      },
+      {
+        "weather": 35,
+        "accepted_known_heads": 2832,
+        "rejected_known_heads": 6,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 264800,
+        "holiday_share_weight_sum": 93020
+      },
+      {
+        "weather": 36,
+        "accepted_known_heads": 2832,
+        "rejected_known_heads": 6,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 264800,
+        "holiday_share_weight_sum": 93020
+      },
+      {
+        "weather": 37,
+        "accepted_known_heads": 2832,
+        "rejected_known_heads": 6,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 264800,
+        "holiday_share_weight_sum": 93020
+      },
+      {
+        "weather": 38,
+        "accepted_known_heads": 2832,
+        "rejected_known_heads": 6,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 264800,
+        "holiday_share_weight_sum": 93020
+      },
+      {
+        "weather": 39,
+        "accepted_known_heads": 2832,
+        "rejected_known_heads": 6,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 264800,
+        "holiday_share_weight_sum": 93020
+      },
+      {
+        "weather": 40,
+        "accepted_known_heads": 2832,
+        "rejected_known_heads": 6,
+        "accepted_profile_rows": 142,
+        "weekday_share_weight_sum": 264800,
+        "holiday_share_weight_sum": 93020
+      },
+      {
+        "weather": 41,
+        "accepted_known_heads": 2826,
+        "rejected_known_heads": 12,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 264380,
+        "holiday_share_weight_sum": 92420
+      },
+      {
+        "weather": 42,
+        "accepted_known_heads": 2826,
+        "rejected_known_heads": 12,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 264380,
+        "holiday_share_weight_sum": 92420
+      },
+      {
+        "weather": 43,
+        "accepted_known_heads": 2826,
+        "rejected_known_heads": 12,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 264380,
+        "holiday_share_weight_sum": 92420
+      },
+      {
+        "weather": 44,
+        "accepted_known_heads": 2826,
+        "rejected_known_heads": 12,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 264380,
+        "holiday_share_weight_sum": 92420
+      },
+      {
+        "weather": 45,
+        "accepted_known_heads": 2826,
+        "rejected_known_heads": 12,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 264380,
+        "holiday_share_weight_sum": 92420
+      },
+      {
+        "weather": 46,
+        "accepted_known_heads": 2826,
+        "rejected_known_heads": 12,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 264380,
+        "holiday_share_weight_sum": 92420
+      },
+      {
+        "weather": 47,
+        "accepted_known_heads": 2826,
+        "rejected_known_heads": 12,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 264380,
+        "holiday_share_weight_sum": 92420
+      },
+      {
+        "weather": 48,
+        "accepted_known_heads": 2826,
+        "rejected_known_heads": 12,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 264380,
+        "holiday_share_weight_sum": 92420
+      },
+      {
+        "weather": 49,
+        "accepted_known_heads": 2826,
+        "rejected_known_heads": 12,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 264380,
+        "holiday_share_weight_sum": 92420
+      },
+      {
+        "weather": 50,
+        "accepted_known_heads": 2826,
+        "rejected_known_heads": 12,
+        "accepted_profile_rows": 138,
+        "weekday_share_weight_sum": 264380,
+        "holiday_share_weight_sum": 92420
+      },
+      {
+        "weather": 51,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 52,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 53,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 54,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 55,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 56,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 57,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 58,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 59,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 60,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 61,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 62,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 63,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 64,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 65,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 66,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 67,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 68,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 69,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 70,
+        "accepted_known_heads": 2166,
+        "rejected_known_heads": 672,
+        "accepted_profile_rows": 115,
+        "weekday_share_weight_sum": 198530,
+        "holiday_share_weight_sum": 78860
+      },
+      {
+        "weather": 71,
+        "accepted_known_heads": 1950,
+        "rejected_known_heads": 888,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 178930,
+        "holiday_share_weight_sum": 70540
+      },
+      {
+        "weather": 72,
+        "accepted_known_heads": 1950,
+        "rejected_known_heads": 888,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 178930,
+        "holiday_share_weight_sum": 70540
+      },
+      {
+        "weather": 73,
+        "accepted_known_heads": 1950,
+        "rejected_known_heads": 888,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 178930,
+        "holiday_share_weight_sum": 70540
+      },
+      {
+        "weather": 74,
+        "accepted_known_heads": 1950,
+        "rejected_known_heads": 888,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 178930,
+        "holiday_share_weight_sum": 70540
+      },
+      {
+        "weather": 75,
+        "accepted_known_heads": 1950,
+        "rejected_known_heads": 888,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 178930,
+        "holiday_share_weight_sum": 70540
+      },
+      {
+        "weather": 76,
+        "accepted_known_heads": 1950,
+        "rejected_known_heads": 888,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 178930,
+        "holiday_share_weight_sum": 70540
+      },
+      {
+        "weather": 77,
+        "accepted_known_heads": 1950,
+        "rejected_known_heads": 888,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 178930,
+        "holiday_share_weight_sum": 70540
+      },
+      {
+        "weather": 78,
+        "accepted_known_heads": 1950,
+        "rejected_known_heads": 888,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 178930,
+        "holiday_share_weight_sum": 70540
+      },
+      {
+        "weather": 79,
+        "accepted_known_heads": 1950,
+        "rejected_known_heads": 888,
+        "accepted_profile_rows": 98,
+        "weekday_share_weight_sum": 178930,
+        "holiday_share_weight_sum": 70540
+      }
+    ],
+    "festival_bypass_known_heads": 2838,
+    "scope": "Static original-map customer composition weights passing weather only; not distinct people observed, arrivals, store choices or sales. Share sums are raw weighted threshold values, not expected realized demand."
+  }
+]

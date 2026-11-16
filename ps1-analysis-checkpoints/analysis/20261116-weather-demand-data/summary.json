@@ -1,0 +1,35 @@
+{
+  "months": 12,
+  "hud_mappings": 60,
+  "weather_labels": 9,
+  "profiles": 144,
+  "weather_levels": 80,
+  "eligibility_bits": 11520,
+  "maps": 4,
+  "map_weather_rows": 320,
+  "out_of_catalog_references": 4,
+  "original_cpu_updates": 0,
+  "known_before": "Weather generation, seasonal filter and source month thresholds already recovered. New extraction joins five generation ranges to monthly five-column HUD labels,144 profile cutoffs to4 source-map weather cohorts, and calendar-reachable festival flag to normal filter bypass plus profile144 boundary context.",
+  "examples": {
+    "TOWN0001": {
+      "known_heads": 2177,
+      "weather79_accepted": 1523,
+      "out_of_catalog_heads": 2
+    },
+    "TOWN0002": {
+      "known_heads": 1879,
+      "weather79_accepted": 1441,
+      "out_of_catalog_heads": 1
+    },
+    "TOWN0003": {
+      "known_heads": 1424,
+      "weather79_accepted": 956,
+      "out_of_catalog_heads": 0
+    },
+    "TOWNPS": {
+      "known_heads": 2838,
+      "weather79_accepted": 1950,
+      "out_of_catalog_heads": 1
+    }
+  }
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 6681,
+    "sha256": "8669a1a27c3cf3f97253b508b0f98f2565e1c6060f1591c65c03d8d1a9b4e751"
+  },
+  {
+    "path": "android-weather-bridge.json",
+    "bytes": 1469,
+    "sha256": "0ef38d574161322998585ab4f80d997944177bf0161dc9988123061f3a314c6a"
+  },
+  {
+    "path": "extract-weather.py",
+    "bytes": 7902,
+    "sha256": "6dec6a4fa89da2149c9dbf6c080a4027c8f1833c282bb4276ea98cd5f8fbcc66"
+  },
+  {
+    "path": "first-roll-buckets.u8",
+    "bytes": 1200,
+    "sha256": "5286af393585d3671ed56d7f240bd40d54140aace0929d2e1770e8c989ebe234"
+  },
+  {
+    "path": "map-weather-cohorts.json",
+    "bytes": 85962,
+    "sha256": "9b4dc32773e42c5bb7674267c39094047df77b59666ceafd7ab4a2f7bf041cea"
+  },
+  {
+    "path": "monthly-weather-hud.json",
+    "bytes": 26180,
+    "sha256": "bf80140b0ac303df3ea9bfeddbe5992a44d77e0294d636733f6ff14d3a92004b"
+  },
+  {
+    "path": "out-of-catalog-context.json",
+    "bytes": 1435,
+    "sha256": "8eda9a1b7745869ab51a209b55c406e447f2e24ea10a16da900d6f21ddab7d4d"
+  },
+  {
+    "path": "profile-weather-limits.json",
+    "bytes": 23972,
+    "sha256": "751f2e61e24d4950030cfb50c8d5fcc9f6fe096d86ca652a3753e70df51b0c85"
+  },
+  {
+    "path": "source/calendar-selectors.bin",
+    "bytes": 48,
+    "sha256": "236309322d7502b6332228a9e6163982aa9103f627a23df39db0a04fcf67baec"
+  },
+  {
+    "path": "source/festival_flag_producer.bin",
+    "bytes": 368,
+    "sha256": "857427c083e99271c3503018791245e97646ef3b81603479ed3e93056ef994e0"
+  },
+  {
+    "path": "source/hud-selectors.bin",
+    "bytes": 120,
+    "sha256": "32203624e39acba55904013384827bac4c89b87fe061ef9dc47abf99ecfaa515"
+  },
+  {
+    "path": "source/hud_weather_dispatch.bin",
+    "bytes": 904,
+    "sha256": "a502f88e2b5d6ebef70d5c30b8dcc09459cb6b32019550b764d197e94b9edc2b"
+  },
+  {
+    "path": "source/update_order.bin",
+    "bytes": 184,
+    "sha256": "2782f987c6166bf60f829b72741fc96585ae4322fce64189429fd1bd0902e6bd"
+  },
+  {
+    "path": "source/weather-thresholds.bin",
+    "bytes": 192,
+    "sha256": "e4216d7576b7f4b7bf8f78c3ba3cb9a11cbf3b79faa14dbba418c863449704b4"
+  },
+  {
+    "path": "source/weather_and_demand_filter.bin",
+    "bytes": 1428,
+    "sha256": "f2d1751c21d407b591966188837634c071527b06d989dd4477149656e8e47929"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 1714,
+    "sha256": "06839eac6dba74e8bef726a93c590f4027d66e74aa26656a29f456aa07fabe08"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1655,
+    "sha256": "60ac79e7327e88632ad55d2d4c7f48076356869f1a5666c61ecebd26d2bbeccf"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 1057,
+    "sha256": "dfb3b75b809a6b20c98943b724041a1567cfeecbb06eae25c4830da54e39c377"
+  },
+  {
+    "path": "weather-demand-rules.json",
+    "bytes": 3080,
+    "sha256": "83b0e98002d710b612b47c665d168bf1923233343fce6b84d264b0f48a5fedfc"
+  },
+  {
+    "path": "weather-labels.json",
+    "bytes": 1453,
+    "sha256": "9a23d533c5f67ae7fcf3021edea859ac95b60a4ff55630932108b77bc86bd292"
+  },
+  {
+    "path": "weather-profile-eligibility.bits",
+    "bytes": 1440,
+    "sha256": "045419d69a1ffeebc7f75c7b52937e416538c8de3510be3d9112fa6dd78364f1"
+  }
+]

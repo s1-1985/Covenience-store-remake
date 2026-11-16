@@ -1,0 +1,49 @@
+{
+  "known_before": "Customer-data20261113 already identified mix136/profile144 as adjacent non-profile bytes, retained in total population but unsafe to treat as normal profile.",
+  "references": [
+    {
+      "map": "TOWN0001",
+      "cell": [
+        39,
+        10
+      ],
+      "mix": 136,
+      "profile": 144,
+      "heads": 1
+    },
+    {
+      "map": "TOWN0001",
+      "cell": [
+        15,
+        14
+      ],
+      "mix": 136,
+      "profile": 144,
+      "heads": 1
+    },
+    {
+      "map": "TOWN0002",
+      "cell": [
+        39,
+        26
+      ],
+      "mix": 136,
+      "profile": 144,
+      "heads": 1
+    },
+    {
+      "map": "TOWNPS",
+      "cell": [
+        52,
+        22
+      ],
+      "mix": 136,
+      "profile": 144,
+      "heads": 1
+    }
+  ],
+  "adjacent_raw": "90d482a28f978e7191e590b6000000000000000000011290",
+  "normal_route": "Primary product would read-111 from adjacent bytes; original normal seasonal gate rejects this path as previously recovered.",
+  "festival_connection": "CDA00 has a source-reachable month8/day4 producer and bypasses the three filters in demand rebuild. New static connection only; later store-selection behavior for profile144 under bypass is unresolved. No observed crash/corruption claim.",
+  "port": "Keep source population counts separate from valid demand profiles. Do not silently delete these heads from population or dereference profile144 as an Android person."
+}

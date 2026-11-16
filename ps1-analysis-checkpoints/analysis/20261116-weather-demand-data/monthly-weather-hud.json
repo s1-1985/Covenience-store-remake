@@ -1,0 +1,1196 @@
+{
+  "threshold_base": "0x800994b0,12x16",
+  "hud_base": "0x800997e0,12x10",
+  "calendar_base": "0x80099d88,12x4",
+  "months": [
+    {
+      "month": 1,
+      "thresholds": [
+        30,
+        60,
+        80,
+        95
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 15,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 5,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 65,
+          "label": "[雪　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 66,
+          "label": "[大雪]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 2,
+      "thresholds": [
+        30,
+        60,
+        70,
+        90
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 65,
+          "label": "[雪　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 66,
+          "label": "[大雪]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 3,
+      "thresholds": [
+        30,
+        60,
+        80,
+        95
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 15,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 5,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 67,
+          "label": "[雨　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 68,
+          "label": "[大雨]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 4,
+      "thresholds": [
+        30,
+        60,
+        80,
+        95
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 15,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 5,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 67,
+          "label": "[雨　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 68,
+          "label": "[大雨]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 5,
+      "thresholds": [
+        40,
+        70,
+        80,
+        95
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 40,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 15,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 5,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 67,
+          "label": "[雨　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 68,
+          "label": "[大雨]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 6,
+      "thresholds": [
+        1,
+        10,
+        40,
+        90
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 1,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 9,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 50,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 67,
+          "label": "[雨　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 68,
+          "label": "[大雨]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 7,
+      "thresholds": [
+        20,
+        40,
+        70,
+        90
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 67,
+          "label": "[雨　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 69,
+          "label": "[雷雨]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 8,
+      "thresholds": [
+        30,
+        60,
+        80,
+        90
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 67,
+          "label": "[雨　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 69,
+          "label": "[雷雨]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 9,
+      "thresholds": [
+        20,
+        50,
+        70,
+        80
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 67,
+          "label": "[雨　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 70,
+          "label": "[台風]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 10,
+      "thresholds": [
+        40,
+        70,
+        80,
+        90
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 40,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 67,
+          "label": "[雨　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 70,
+          "label": "[台風]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 11,
+      "thresholds": [
+        40,
+        70,
+        80,
+        95
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 40,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 10,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 15,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 5,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 67,
+          "label": "[雨　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 68,
+          "label": "[大雨]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "month": 12,
+      "thresholds": [
+        30,
+        60,
+        80,
+        95
+      ],
+      "first_roll_buckets": [
+        {
+          "bucket": 0,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            0,
+            0
+          ],
+          "rng_calls": 1
+        },
+        {
+          "bucket": 1,
+          "first_roll_count": 30,
+          "output_weather_inclusive": [
+            1,
+            19
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 2,
+          "first_roll_count": 20,
+          "output_weather_inclusive": [
+            20,
+            39
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 3,
+          "first_roll_count": 15,
+          "output_weather_inclusive": [
+            40,
+            59
+          ],
+          "rng_calls": 2
+        },
+        {
+          "bucket": 4,
+          "first_roll_count": 5,
+          "output_weather_inclusive": [
+            60,
+            79
+          ],
+          "rng_calls": 2
+        }
+      ],
+      "hud": [
+        {
+          "column": 0,
+          "weather_condition": "==0",
+          "message": 62,
+          "label": "[快晴]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 1,
+          "weather_condition": "1..19",
+          "message": 63,
+          "label": "[晴れ]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 2,
+          "weather_condition": "20..49",
+          "message": 64,
+          "label": "[曇　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 3,
+          "weather_condition": "50..79",
+          "message": 65,
+          "label": "[雪　]",
+          "generated_by_this_normal_producer": true
+        },
+        {
+          "column": 4,
+          "weather_condition": ">=80",
+          "message": 66,
+          "label": "[大雪]",
+          "generated_by_this_normal_producer": false
+        }
+      ],
+      "stage_day_share_selector": [
+        0,
+        0,
+        1,
+        1
+      ]
+    }
+  ],
+  "scope": "First-roll counts are interval cardinalities over1..100, not measured LCG frequencies or independent output probabilities. Producer outputs0..79 only. HUD>=80 exists but is not produced by this function; no all-writers proof of global unreachability."
+}

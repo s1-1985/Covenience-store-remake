@@ -1,0 +1,48 @@
+{
+  "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": [
+    {
+      "file": "source/weather_and_demand_filter.bin",
+      "start": "0x8002619c",
+      "end_exclusive": "0x80026730",
+      "sha256": "f2d1751c21d407b591966188837634c071527b06d989dd4477149656e8e47929"
+    },
+    {
+      "file": "source/hud_weather_dispatch.bin",
+      "start": "0x80040a60",
+      "end_exclusive": "0x80040de8",
+      "sha256": "a502f88e2b5d6ebef70d5c30b8dcc09459cb6b32019550b764d197e94b9edc2b"
+    },
+    {
+      "file": "source/festival_flag_producer.bin",
+      "start": "0x80029394",
+      "end_exclusive": "0x80029504",
+      "sha256": "857427c083e99271c3503018791245e97646ef3b81603479ed3e93056ef994e0"
+    },
+    {
+      "file": "source/update_order.bin",
+      "start": "0x80023438",
+      "end_exclusive": "0x800234f0",
+      "sha256": "2782f987c6166bf60f829b72741fc96585ae4322fce64189429fd1bd0902e6bd"
+    },
+    {
+      "file": "source/weather-thresholds.bin",
+      "start": "0x800994b0",
+      "end_exclusive": "0x80099570",
+      "sha256": "e4216d7576b7f4b7bf8f78c3ba3cb9a11cbf3b79faa14dbba418c863449704b4"
+    },
+    {
+      "file": "source/hud-selectors.bin",
+      "start": "0x800997e0",
+      "end_exclusive": "0x80099858",
+      "sha256": "32203624e39acba55904013384827bac4c89b87fe061ef9dc47abf99ecfaa515"
+    },
+    {
+      "file": "source/calendar-selectors.bin",
+      "start": "0x80099d88",
+      "end_exclusive": "0x80099db8",
+      "sha256": "236309322d7502b6332228a9e6163982aa9103f627a23df39db0a04fcf67baec"
+    }
+  ]
+}
