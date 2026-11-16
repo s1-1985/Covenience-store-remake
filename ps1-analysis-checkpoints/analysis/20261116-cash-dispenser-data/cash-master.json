@@ -1,0 +1,77 @@
+{
+  "product": {
+    "id": 26,
+    "address": "0x8009d6e0",
+    "name": "現金",
+    "base_price": 0,
+    "cost_percent": 100,
+    "default_setting": 0,
+    "raw_images": [
+      84,
+      81,
+      82,
+      83,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      89
+    ],
+    "runtime_images": [
+      612,
+      603,
+      606,
+      609,
+      627
+    ],
+    "stock_unit_cost": 0
+  },
+  "fixtures": [
+    {
+      "id": 43,
+      "address": "0x8009bff8",
+      "flags": 261,
+      "category": 5,
+      "purchase_price": 4000,
+      "maintenance_unit": 60,
+      "capacity": 50,
+      "footprint": [
+        1,
+        1
+      ],
+      "products": [
+        26
+      ],
+      "image_default_index": 0,
+      "full_stock_purchase_value": 0,
+      "full_purchase_total": 4000,
+      "removal_full_stock_value": 4000,
+      "raw_sha256": "b64341bb6b8b33f1290dc15ae8b6fd9cfb22f671b2c81babf32912644d9854bc"
+    },
+    {
+      "id": 44,
+      "address": "0x8009c0bc",
+      "flags": 773,
+      "category": 5,
+      "purchase_price": 7000,
+      "maintenance_unit": 100,
+      "capacity": 90,
+      "footprint": [
+        1,
+        1
+      ],
+      "products": [
+        26
+      ],
+      "image_default_index": 0,
+      "full_stock_purchase_value": 0,
+      "full_purchase_total": 7000,
+      "removal_full_stock_value": 7000,
+      "raw_sha256": "7b8ff3695f833ba3ff54481fda8e315db9836e682b0561efbbad73aa55f31d8b"
+    }
+  ],
+  "scope": "These are fixture price/maintenance/capacity and zero-valued inventory data, not evidence of withdrawal amounts or transaction fees. Maintenance is source rate unit, not a new per-day quote."
+}

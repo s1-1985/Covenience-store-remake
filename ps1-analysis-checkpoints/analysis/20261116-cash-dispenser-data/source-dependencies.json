@@ -1,0 +1,32 @@
+{
+  "primary": {
+    "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+    "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd"
+  },
+  "reused": [
+    {
+      "path": "../20261113-disc-data-extraction/extract-disc-data.py",
+      "purpose": "ISO reader"
+    },
+    {
+      "path": "../20261114-staff-roster-growth-data/source-reference/psmoji.py",
+      "purpose": "Original font transcription"
+    },
+    {
+      "path": "../20261113-seasonal-demand-data/README.md",
+      "purpose": "Known no normal profile slots26 and cash exclusion context"
+    },
+    {
+      "path": "../20261114-interior-transactions-data/README.md",
+      "purpose": "Previously recovered anchor/inventory valuation rules"
+    }
+  ],
+  "prior_models": [
+    "runtime/algorithm-analysis/customer_entry_init.py",
+    "runtime/algorithm-analysis/purchase_full.py",
+    "runtime/algorithm-analysis/destination.py",
+    "runtime/algorithm-analysis/store_advice.py"
+  ],
+  "known_before": "Cash product classification and zero ordinary profile references were known. New extraction binds both actual dispenser descriptors,30 layouts and11 source stores to candidate/destination/zero-price purchase semantics and original special low-use message.",
+  "checks": "Hash-verified disc and EXE, both original fixtures,all30 layouts,all11 stores,144x4 slots,original cash message bytes. No CPU gameplay."
+}

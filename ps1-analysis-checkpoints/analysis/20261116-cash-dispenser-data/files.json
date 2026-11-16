@@ -1,0 +1,112 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 5839,
+    "sha256": "0aa609867bf884f0e17ee2b13ce127d83a7e6d002b014300b83cd47b3837ea20"
+  },
+  {
+    "path": "android-cash-dispenser-bridge.json",
+    "bytes": 946,
+    "sha256": "bb93f5ce6d5f07f1c3548912b5e2a6b1706ad66bb00a04e7efefa405dcc7d97b"
+  },
+  {
+    "path": "cash-master.json",
+    "bytes": 1654,
+    "sha256": "9b805816af10c567687a89d345c8a72a41c5a98a43fa0ac5ac515ac858e07598"
+  },
+  {
+    "path": "cash-route-rules.json",
+    "bytes": 3326,
+    "sha256": "f0c121bd6191fbd417494aa4c6c2dd023dbd5b9e9c8807382a40510296d21f9a"
+  },
+  {
+    "path": "dispenser-texts.json",
+    "bytes": 1338,
+    "sha256": "d2e7a631d84f13794658544a70feb879e0584f4d5f061c14980ccd6dc20a784c"
+  },
+  {
+    "path": "extract-cash.py",
+    "bytes": 7199,
+    "sha256": "94c462ab6c3d551b74552972032bc906feb7a6eb23f41dfa03f24f1291ee90a9"
+  },
+  {
+    "path": "initial-store-cash-dispensers.json",
+    "bytes": 2745,
+    "sha256": "5b820f43b0a19d5509a67438097b51f84de38d6365d81547edffa4a2b3cfddec"
+  },
+  {
+    "path": "layout-cash-dispensers.json",
+    "bytes": 8703,
+    "sha256": "22caaa5f63fc3150ed2d3936e551f4b3cc01c2334c07d84814570182296fd8e3"
+  },
+  {
+    "path": "source/cash-product.bin",
+    "bytes": 88,
+    "sha256": "538e6c255245df838ef222230deb473ca075bee157e96e45a9ce7e7703774660"
+  },
+  {
+    "path": "source/cash_low_use_advice.bin",
+    "bytes": 256,
+    "sha256": "ad17faa2378017972149d516bc2253a694d0df91ec0c7c23027d2796b3e4af4b"
+  },
+  {
+    "path": "source/cash_price_average_exclusion.bin",
+    "bytes": 84,
+    "sha256": "8ce6914c25f1a9d00c4a7cbcbe9a6530877ca70c580b4e5b4c7f503b50478f65"
+  },
+  {
+    "path": "source/customer_initial_wallet_product.bin",
+    "bytes": 152,
+    "sha256": "edd681c3507cad4306404ee89f8d4a646b84d233b852b45a28216295b2ec93ce"
+  },
+  {
+    "path": "source/dispenser-large.bin",
+    "bytes": 196,
+    "sha256": "7b8ff3695f833ba3ff54481fda8e315db9836e682b0561efbbad73aa55f31d8b"
+  },
+  {
+    "path": "source/dispenser-small.bin",
+    "bytes": 196,
+    "sha256": "b64341bb6b8b33f1290dc15ae8b6fd9cfb22f671b2c81babf32912644d9854bc"
+  },
+  {
+    "path": "source/fixture43.bin",
+    "bytes": 196,
+    "sha256": "b64341bb6b8b33f1290dc15ae8b6fd9cfb22f671b2c81babf32912644d9854bc"
+  },
+  {
+    "path": "source/fixture44.bin",
+    "bytes": 196,
+    "sha256": "7b8ff3695f833ba3ff54481fda8e315db9836e682b0561efbbad73aa55f31d8b"
+  },
+  {
+    "path": "source/generic_purchase.bin",
+    "bytes": 4140,
+    "sha256": "39283f254c9fa54ec364e48178cc04e0c50835e895f8edad0c6ecc0872034627"
+  },
+  {
+    "path": "source/standard-profiles.bin",
+    "bytes": 3456,
+    "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+  },
+  {
+    "path": "source-dependencies.json",
+    "bytes": 1430,
+    "sha256": "ea84ab7d11ccbf5d4243a7624e67c8a161295b734fc4de64674729713d70eb5b"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 2474,
+    "sha256": "855a0858bc4bd0ed938173b84f6c8bde124549379527d118341d6b253420294d"
+  },
+  {
+    "path": "standard-customer-candidates.json",
+    "bytes": 16433,
+    "sha256": "1e1f45020b5798ea503fdc985f6c779a6bb15e2feac4e0d5c069e15fbad6e5fa"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 836,
+    "sha256": "793d4f542c3e8ae0e40c3754e6c1a031804b6dc7f12b9f0bf7552ca5a9f3ca52"
+  }
+]

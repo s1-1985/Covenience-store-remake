@@ -21,6 +21,8 @@
 
 ## 保存済み
 
+- [2026-11-16：現金商品と引出機2種・12内装配置・通常候補と専用通知、R01を限定](analysis/20261116-cash-dispenser-data/README.md)
+
 - [2026-11-16：調査済み状態の月初消去を接続、残件R03解明・固定ID台帳を新設](analysis/20261116-inspection-lifetime-data/README.md)
 
 - [2026-11-16：天候生成と月別表示60対応・144型の判定・4マップ320構成と祭り迂回](analysis/20261116-weather-demand-data/README.md)

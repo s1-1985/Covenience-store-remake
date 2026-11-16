@@ -16,7 +16,14 @@
       "title": "現金引出し・手数料",
       "status": "open",
       "evidence": "analysis/20261113-seasonal-demand-data/README.md",
-      "resolution": null
+      "resolution": null,
+      "latest_evidence": "analysis/20261116-cash-dispenser-data/README.md",
+      "established": [
+        "Fixture43/44 descriptors and12 original layout placements; initial11 rivals have none.",
+        "Normal144 profiles contain no product26 candidate.",
+        "Generic zero-unit purchase does not establish wallet credit/fee; low-use advice exists."
+      ],
+      "remaining_question": "Dedicated or special-event withdrawal/fee route and intended dormant-feature behavior are not established."
     },
     {
       "id": "R02",
@@ -65,5 +72,5 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Investigate R01 cash behavior; keep required gameplay questions distinct from unlabeled unused fields. Native build follows required source analysis."
+  "next": "Continue R01 route/cross-reference investigation or explicitly resolve scope before marking closed; review other concrete source issues. Do not treat lack of normal candidate as full-program absence proof."
 }

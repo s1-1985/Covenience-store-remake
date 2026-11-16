@@ -1,0 +1,353 @@
+{
+  "layouts": [
+    {
+      "layout": 0,
+      "tier": 0,
+      "variant": 0,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "a9a8f5cd5d6ccdec8d49cd8738bfe9184f28c796c72d63120237e5d77f2c201b"
+    },
+    {
+      "layout": 1,
+      "tier": 0,
+      "variant": 1,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 4,
+          "y": 12,
+          "fixture": 44,
+          "direction": 2,
+          "stock_image": 606,
+          "stock_quantity": 90
+        }
+      ],
+      "source_layout_sha256": "569edb6796878882415ec598b7d8d6eace576bcc56fe4888e0b9200bad443635"
+    },
+    {
+      "layout": 2,
+      "tier": 0,
+      "variant": 2,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "a46a396d78fa6183d16c0448614137b70775d77eafadae6d3041e4ad3f078d0d"
+    },
+    {
+      "layout": 3,
+      "tier": 0,
+      "variant": 3,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "23fc2dce716de7954e6a51875b0742c9d551fcea17a89d73e98ae68c04a8c140"
+    },
+    {
+      "layout": 4,
+      "tier": 0,
+      "variant": 4,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "a27e172f8f9c0de3532aca5111312f35c0e00d1308c7975d534f3287d7916c28"
+    },
+    {
+      "layout": 5,
+      "tier": 1,
+      "variant": 0,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "7f6e43dc176e294418b0cf7c83eb0a17fa77733675557d6b64e1a8328b8ee063"
+    },
+    {
+      "layout": 6,
+      "tier": 1,
+      "variant": 1,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "1c1bd65a16ff691b246c8597fb4c2c5ae461bb561f296a3648863076a24028e1"
+    },
+    {
+      "layout": 7,
+      "tier": 1,
+      "variant": 2,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "0cc531536bbf328345b1fc8fe7a24cacbfeefe21f9e2176bb34ea096e31f8c9a"
+    },
+    {
+      "layout": 8,
+      "tier": 1,
+      "variant": 3,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "928eb88cbfbd2b6193389ddacaadf03e9330f74a9c7e4b3d75773cc365299f57"
+    },
+    {
+      "layout": 9,
+      "tier": 1,
+      "variant": 4,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "3c41da18f3f1f57e19194b51d75765c5ec6d1db9f309a0abd2dd79801fc15ea4"
+    },
+    {
+      "layout": 10,
+      "tier": 2,
+      "variant": 0,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "e856a224151804edf45dfe44591a27b58cc65ea37b0c0cdfd3707ebb1a561ba6"
+    },
+    {
+      "layout": 11,
+      "tier": 2,
+      "variant": 1,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 20,
+          "y": 6,
+          "fixture": 43,
+          "direction": 2,
+          "stock_image": 606,
+          "stock_quantity": 50
+        }
+      ],
+      "source_layout_sha256": "047d22dbd24fec07c6cd7183f0460cb8bd228d1879dc2a7470cfec5b02899be3"
+    },
+    {
+      "layout": 12,
+      "tier": 2,
+      "variant": 2,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 4,
+          "y": 14,
+          "fixture": 44,
+          "direction": 2,
+          "stock_image": 606,
+          "stock_quantity": 90
+        }
+      ],
+      "source_layout_sha256": "e3508cb76ea57c87e31bc94fd5d35dbdee4269c5d250647b8f1e706ebe082a25"
+    },
+    {
+      "layout": 13,
+      "tier": 2,
+      "variant": 3,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 4,
+          "y": 14,
+          "fixture": 44,
+          "direction": 2,
+          "stock_image": 606,
+          "stock_quantity": 90
+        }
+      ],
+      "source_layout_sha256": "6d8225e921b68f354728075ac7dfcb5ab4e107295e7e5f424fc445d32bf18191"
+    },
+    {
+      "layout": 14,
+      "tier": 2,
+      "variant": 4,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 4,
+          "y": 14,
+          "fixture": 44,
+          "direction": 2,
+          "stock_image": 606,
+          "stock_quantity": 90
+        }
+      ],
+      "source_layout_sha256": "f3d0c6e9181a3e398c24e4fe3806523e2bd53c681a409a33bf32a7c3a649d690"
+    },
+    {
+      "layout": 15,
+      "tier": 3,
+      "variant": 0,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "c6cfcc17159dbcf551012da7b5d3487b54f6dfcf8be0ed782d0b1abf88b93672"
+    },
+    {
+      "layout": 16,
+      "tier": 3,
+      "variant": 1,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 16,
+          "y": 20,
+          "fixture": 44,
+          "direction": 0,
+          "stock_image": 612,
+          "stock_quantity": 90
+        }
+      ],
+      "source_layout_sha256": "2287d22a36c7dd87adfbd11371b4c67a8cc8314cb32939e405fbc1a6aa2ac800"
+    },
+    {
+      "layout": 17,
+      "tier": 3,
+      "variant": 2,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 20,
+          "y": 14,
+          "fixture": 43,
+          "direction": 2,
+          "stock_image": 606,
+          "stock_quantity": 50
+        }
+      ],
+      "source_layout_sha256": "9332a9997bed5b04748e82dc6afdfb4c3e0d5cb55535007fc658b01954f60db4"
+    },
+    {
+      "layout": 18,
+      "tier": 3,
+      "variant": 3,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 20,
+          "y": 14,
+          "fixture": 43,
+          "direction": 2,
+          "stock_image": 606,
+          "stock_quantity": 50
+        }
+      ],
+      "source_layout_sha256": "20ed82964af2606ba4f9f3834c605dc60985d4d0ed452d3d18c8ecd42252f670"
+    },
+    {
+      "layout": 19,
+      "tier": 3,
+      "variant": 4,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 20,
+          "y": 14,
+          "fixture": 43,
+          "direction": 2,
+          "stock_image": 606,
+          "stock_quantity": 50
+        }
+      ],
+      "source_layout_sha256": "bbcccc2878a1ab3a38c79bbbc794657553b768968328e81aa6f0a3e8c922ee39"
+    },
+    {
+      "layout": 20,
+      "tier": 4,
+      "variant": 0,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "af4e59124df8282ef08bb3e4a3636b55b4ea80159727decb0444f37afbda7023"
+    },
+    {
+      "layout": 21,
+      "tier": 4,
+      "variant": 1,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "2baccb31bf7158544f79e026a999183b2c6a79c9e5733e29a619be0cd212b280"
+    },
+    {
+      "layout": 22,
+      "tier": 4,
+      "variant": 2,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "7158a32671d19b7317b24c9d374f448800c40aba0e914739fe6389cd077910c3"
+    },
+    {
+      "layout": 23,
+      "tier": 4,
+      "variant": 3,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 4,
+          "y": 8,
+          "fixture": 44,
+          "direction": 1,
+          "stock_image": 603,
+          "stock_quantity": 90
+        }
+      ],
+      "source_layout_sha256": "862590cbb3b9e495eafc69ffafcf70e798837cf1e17f2af978bac6b08b97a313"
+    },
+    {
+      "layout": 24,
+      "tier": 4,
+      "variant": 4,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 12,
+          "y": 22,
+          "fixture": 43,
+          "direction": 0,
+          "stock_image": 612,
+          "stock_quantity": 50
+        }
+      ],
+      "source_layout_sha256": "91a7aea5a3d55448c7fd1342fb865e8643e52005bc5821e083e487f0c3e1839e"
+    },
+    {
+      "layout": 25,
+      "tier": 5,
+      "variant": 0,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "8260e992d56be0400e0718453d39a3210f742b88a6118a4823a59d9650b47ce8"
+    },
+    {
+      "layout": 26,
+      "tier": 5,
+      "variant": 1,
+      "dispenser_count": 1,
+      "anchors": [
+        {
+          "x": 20,
+          "y": 22,
+          "fixture": 43,
+          "direction": 0,
+          "stock_image": 612,
+          "stock_quantity": 50
+        }
+      ],
+      "source_layout_sha256": "5d64b4a53757bf944ee0e704b3193174bad3a6202ed2ebfe88092ddfcd228a32"
+    },
+    {
+      "layout": 27,
+      "tier": 5,
+      "variant": 2,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "9d30ad3aabd553d1854f658958246533b05a4e550f75e6fe0829b61c341faa27"
+    },
+    {
+      "layout": 28,
+      "tier": 5,
+      "variant": 3,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "7bf2832f57cc278381f0014d03f69293496635797f7a31ae4635c39003e89c4b"
+    },
+    {
+      "layout": 29,
+      "tier": 5,
+      "variant": 4,
+      "dispenser_count": 0,
+      "anchors": [],
+      "source_layout_sha256": "32b63f876113ab1e4de61b455a2191a0a1487126970a7170e5cd99153389e833"
+    }
+  ],
+  "scope": "All30 stored layouts, including layouts not selected by one specific user menu."
+}

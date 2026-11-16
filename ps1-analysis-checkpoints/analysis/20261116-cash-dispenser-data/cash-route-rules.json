@@ -1,0 +1,43 @@
+{
+  "standard_candidate_graph": {
+    "precondition": "Only valid catalog profile ids0..143, unmodified ordinary entry/purchase/checkout paths.",
+    "entry": "Customer initialization0x800319ac assigns current product from profile+8, wallet from profile i16+6.",
+    "extras": "Purchase0x800340fc when current product=-1 increments candidate index, reads profile+8+candidate among four slots, and terminates at candidate>=4.",
+    "fact": "All144x4 catalog slots have no product26. In this scoped candidate graph cash dispenser is not selected as normal shopping destination.",
+    "exclusions": "This is not a full-program all-writers/hidden-event proof. Invalid profile144 bypass context remains a separate issueR02."
+  },
+  "destination": {
+    "rule": "Shelf accepted only if image->product matches wanted product and stock quantity>0. Category5 dispenser is an immediate class alongside categories2/3 and additionally requires cart0.",
+    "implication": "Mere presence of a dispenser does not route a customer wanting another product to it."
+  },
+  "money": {
+    "product": "Cash id26 has base price0,cost percent100. With ordinary unit formula trunc(base*(factor+setting)/100), unit remains0.",
+    "generic_wallet": "On successful item take, wallet16 is updated by subtraction of unit at0x80034b00..0x80034b04; no wallet credit is shown in this generic item path.",
+    "immediate_sales": "Immediate class posts unit*quantity to daily revenue/company cash. For zero base unit this is0; it does not establish a withdrawal or fee. This is algebraic behavior conditional on forcing that product into path, not proof of natural reachability.",
+    "inventory": "Product stock procurement value is0. Source capacity50/90 is packed inventory quantity, not established50万/90万 withdrawal/bank balance.",
+    "price_score": "Product26 is explicitly excluded from average-price score accumulator0x800240a8, so do not include its zero price in store cheapness average."
+  },
+  "advice": {
+    "source": "0x8003b570",
+    "scope": "Own stores only; manager references assumed valid.",
+    "gate": "Rare RNG&0x1fff==0, then manager academic roll. Best usage count must>=200; odd choice can select least-used stocked product with count<6.",
+    "cash_text": "If least product id==26, append specific original text0x80099338 instead of generic product-name low-sales text.",
+    "meaning": "This proves a dispenser low-use notification branch exists; it does not itself dispense money, charge fees or make a shopper select26.",
+    "reset": "After rare branch, all27 usage counters+0x11a0+j*12 reset."
+  },
+  "R01": {
+    "status": "open_narrowed",
+    "established": [
+      "Cash/dispenser descriptors,layouts and visual stock identifiers",
+      "Standard valid-profile candidate exclusion",
+      "Generic zero-unit purchase/cash semantics",
+      "Special dispenser low-use advice"
+    ],
+    "not_established": [
+      "Naturally reached dedicated cash withdrawal path",
+      "Withdrawal amount,bank account representation or fee posting",
+      "Whether unused normal-candidate status is intentional or a dormant feature"
+    ]
+  },
+  "port": "Keep actual fixture/assets/maintenance and raw stock data; do not invent a cash reward,banking UI or fee. Preserve unresolved status and separate population/profile safety."
+}

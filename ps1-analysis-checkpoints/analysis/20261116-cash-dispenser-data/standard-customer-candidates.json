@@ -1,0 +1,1304 @@
+{
+  "profile_rows": 144,
+  "slots_per_row": 4,
+  "cash_references": [],
+  "rows": [
+    {
+      "profile": 0,
+      "product_slots": [
+        4,
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "profile": 1,
+      "product_slots": [
+        4,
+        1,
+        6,
+        19
+      ]
+    },
+    {
+      "profile": 2,
+      "product_slots": [
+        4,
+        0,
+        6,
+        22
+      ]
+    },
+    {
+      "profile": 3,
+      "product_slots": [
+        4,
+        1,
+        7,
+        -1
+      ]
+    },
+    {
+      "profile": 4,
+      "product_slots": [
+        4,
+        0,
+        6,
+        20
+      ]
+    },
+    {
+      "profile": 5,
+      "product_slots": [
+        4,
+        1,
+        7,
+        8
+      ]
+    },
+    {
+      "profile": 6,
+      "product_slots": [
+        3,
+        0,
+        6,
+        24
+      ]
+    },
+    {
+      "profile": 7,
+      "product_slots": [
+        3,
+        0,
+        9,
+        24
+      ]
+    },
+    {
+      "profile": 8,
+      "product_slots": [
+        3,
+        1,
+        9,
+        20
+      ]
+    },
+    {
+      "profile": 9,
+      "product_slots": [
+        5,
+        1,
+        6,
+        8
+      ]
+    },
+    {
+      "profile": 10,
+      "product_slots": [
+        15,
+        0,
+        20,
+        10
+      ]
+    },
+    {
+      "profile": 11,
+      "product_slots": [
+        24,
+        6,
+        7,
+        10
+      ]
+    },
+    {
+      "profile": 12,
+      "product_slots": [
+        3,
+        0,
+        6,
+        25
+      ]
+    },
+    {
+      "profile": 13,
+      "product_slots": [
+        3,
+        1,
+        6,
+        2
+      ]
+    },
+    {
+      "profile": 14,
+      "product_slots": [
+        20,
+        0,
+        6,
+        9
+      ]
+    },
+    {
+      "profile": 15,
+      "product_slots": [
+        21,
+        1,
+        6,
+        24
+      ]
+    },
+    {
+      "profile": 16,
+      "product_slots": [
+        6,
+        5,
+        9,
+        7
+      ]
+    },
+    {
+      "profile": 17,
+      "product_slots": [
+        22,
+        19,
+        -1,
+        -1
+      ]
+    },
+    {
+      "profile": 18,
+      "product_slots": [
+        5,
+        2,
+        8,
+        24
+      ]
+    },
+    {
+      "profile": 19,
+      "product_slots": [
+        4,
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "profile": 20,
+      "product_slots": [
+        3,
+        1,
+        8,
+        10
+      ]
+    },
+    {
+      "profile": 21,
+      "product_slots": [
+        4,
+        0,
+        7,
+        10
+      ]
+    },
+    {
+      "profile": 22,
+      "product_slots": [
+        3,
+        1,
+        8,
+        20
+      ]
+    },
+    {
+      "profile": 23,
+      "product_slots": [
+        8,
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "profile": 24,
+      "product_slots": [
+        4,
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "profile": 25,
+      "product_slots": [
+        3,
+        1,
+        8,
+        25
+      ]
+    },
+    {
+      "profile": 26,
+      "product_slots": [
+        3,
+        0,
+        25,
+        -1
+      ]
+    },
+    {
+      "profile": 27,
+      "product_slots": [
+        3,
+        0,
+        7,
+        20
+      ]
+    },
+    {
+      "profile": 28,
+      "product_slots": [
+        8,
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "profile": 29,
+      "product_slots": [
+        3,
+        1,
+        7,
+        19
+      ]
+    },
+    {
+      "profile": 30,
+      "product_slots": [
+        15,
+        0,
+        7,
+        20
+      ]
+    },
+    {
+      "profile": 31,
+      "product_slots": [
+        5,
+        1,
+        20,
+        6
+      ]
+    },
+    {
+      "profile": 32,
+      "product_slots": [
+        3,
+        2,
+        8,
+        18
+      ]
+    },
+    {
+      "profile": 33,
+      "product_slots": [
+        14,
+        12,
+        13,
+        16
+      ]
+    },
+    {
+      "profile": 34,
+      "product_slots": [
+        5,
+        1,
+        7,
+        10
+      ]
+    },
+    {
+      "profile": 35,
+      "product_slots": [
+        15,
+        25,
+        1,
+        6
+      ]
+    },
+    {
+      "profile": 36,
+      "product_slots": [
+        2,
+        18,
+        6,
+        8
+      ]
+    },
+    {
+      "profile": 37,
+      "product_slots": [
+        8,
+        1,
+        2,
+        25
+      ]
+    },
+    {
+      "profile": 38,
+      "product_slots": [
+        9,
+        5,
+        17,
+        25
+      ]
+    },
+    {
+      "profile": 39,
+      "product_slots": [
+        13,
+        2,
+        8,
+        18
+      ]
+    },
+    {
+      "profile": 40,
+      "product_slots": [
+        20,
+        1,
+        10,
+        8
+      ]
+    },
+    {
+      "profile": 41,
+      "product_slots": [
+        3,
+        2,
+        7,
+        18
+      ]
+    },
+    {
+      "profile": 42,
+      "product_slots": [
+        3,
+        18,
+        25,
+        6
+      ]
+    },
+    {
+      "profile": 43,
+      "product_slots": [
+        8,
+        1,
+        2,
+        25
+      ]
+    },
+    {
+      "profile": 44,
+      "product_slots": [
+        4,
+        1,
+        10,
+        -1
+      ]
+    },
+    {
+      "profile": 45,
+      "product_slots": [
+        4,
+        0,
+        8,
+        -1
+      ]
+    },
+    {
+      "profile": 46,
+      "product_slots": [
+        3,
+        1,
+        7,
+        8
+      ]
+    },
+    {
+      "profile": 47,
+      "product_slots": [
+        4,
+        0,
+        22,
+        8
+      ]
+    },
+    {
+      "profile": 48,
+      "product_slots": [
+        4,
+        1,
+        8,
+        -1
+      ]
+    },
+    {
+      "profile": 49,
+      "product_slots": [
+        3,
+        0,
+        19,
+        -1
+      ]
+    },
+    {
+      "profile": 50,
+      "product_slots": [
+        5,
+        0,
+        7,
+        25
+      ]
+    },
+    {
+      "profile": 51,
+      "product_slots": [
+        3,
+        0,
+        7,
+        8
+      ]
+    },
+    {
+      "profile": 52,
+      "product_slots": [
+        8,
+        0,
+        1,
+        -1
+      ]
+    },
+    {
+      "profile": 53,
+      "product_slots": [
+        3,
+        0,
+        22,
+        8
+      ]
+    },
+    {
+      "profile": 54,
+      "product_slots": [
+        15,
+        1,
+        2,
+        18
+      ]
+    },
+    {
+      "profile": 55,
+      "product_slots": [
+        3,
+        0,
+        22,
+        8
+      ]
+    },
+    {
+      "profile": 56,
+      "product_slots": [
+        15,
+        1,
+        2,
+        18
+      ]
+    },
+    {
+      "profile": 57,
+      "product_slots": [
+        2,
+        18,
+        6,
+        15
+      ]
+    },
+    {
+      "profile": 58,
+      "product_slots": [
+        5,
+        2,
+        5,
+        8
+      ]
+    },
+    {
+      "profile": 59,
+      "product_slots": [
+        3,
+        1,
+        18,
+        25
+      ]
+    },
+    {
+      "profile": 60,
+      "product_slots": [
+        5,
+        2,
+        5,
+        8
+      ]
+    },
+    {
+      "profile": 61,
+      "product_slots": [
+        8,
+        1,
+        2,
+        25
+      ]
+    },
+    {
+      "profile": 62,
+      "product_slots": [
+        4,
+        1,
+        7,
+        -1
+      ]
+    },
+    {
+      "profile": 63,
+      "product_slots": [
+        4,
+        1,
+        22,
+        8
+      ]
+    },
+    {
+      "profile": 64,
+      "product_slots": [
+        4,
+        1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "profile": 65,
+      "product_slots": [
+        4,
+        0,
+        6,
+        7
+      ]
+    },
+    {
+      "profile": 66,
+      "product_slots": [
+        3,
+        0,
+        9,
+        8
+      ]
+    },
+    {
+      "profile": 67,
+      "product_slots": [
+        4,
+        0,
+        8,
+        24
+      ]
+    },
+    {
+      "profile": 68,
+      "product_slots": [
+        3,
+        1,
+        6,
+        9
+      ]
+    },
+    {
+      "profile": 69,
+      "product_slots": [
+        3,
+        0,
+        22,
+        19
+      ]
+    },
+    {
+      "profile": 70,
+      "product_slots": [
+        5,
+        0,
+        6,
+        8
+      ]
+    },
+    {
+      "profile": 71,
+      "product_slots": [
+        12,
+        14,
+        13,
+        16
+      ]
+    },
+    {
+      "profile": 72,
+      "product_slots": [
+        4,
+        1,
+        6,
+        24
+      ]
+    },
+    {
+      "profile": 73,
+      "product_slots": [
+        3,
+        0,
+        6,
+        7
+      ]
+    },
+    {
+      "profile": 74,
+      "product_slots": [
+        8,
+        0,
+        1,
+        7
+      ]
+    },
+    {
+      "profile": 75,
+      "product_slots": [
+        15,
+        5,
+        17,
+        25
+      ]
+    },
+    {
+      "profile": 76,
+      "product_slots": [
+        2,
+        6,
+        18,
+        5
+      ]
+    },
+    {
+      "profile": 77,
+      "product_slots": [
+        19,
+        6,
+        1,
+        17
+      ]
+    },
+    {
+      "profile": 78,
+      "product_slots": [
+        7,
+        6,
+        2,
+        18
+      ]
+    },
+    {
+      "profile": 79,
+      "product_slots": [
+        5,
+        1,
+        18,
+        6
+      ]
+    },
+    {
+      "profile": 80,
+      "product_slots": [
+        2,
+        18,
+        6,
+        8
+      ]
+    },
+    {
+      "profile": 81,
+      "product_slots": [
+        2,
+        18,
+        6,
+        8
+      ]
+    },
+    {
+      "profile": 82,
+      "product_slots": [
+        9,
+        0,
+        8,
+        -1
+      ]
+    },
+    {
+      "profile": 83,
+      "product_slots": [
+        9,
+        8,
+        1,
+        -1
+      ]
+    },
+    {
+      "profile": 84,
+      "product_slots": [
+        8,
+        2,
+        6,
+        8
+      ]
+    },
+    {
+      "profile": 85,
+      "product_slots": [
+        8,
+        0,
+        1,
+        -1
+      ]
+    },
+    {
+      "profile": 86,
+      "product_slots": [
+        10,
+        -1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "profile": 87,
+      "product_slots": [
+        10,
+        -1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "profile": 88,
+      "product_slots": [
+        0,
+        1,
+        6,
+        7
+      ]
+    },
+    {
+      "profile": 89,
+      "product_slots": [
+        0,
+        9,
+        6,
+        10
+      ]
+    },
+    {
+      "profile": 90,
+      "product_slots": [
+        0,
+        1,
+        10,
+        6
+      ]
+    },
+    {
+      "profile": 91,
+      "product_slots": [
+        0,
+        9,
+        10,
+        7
+      ]
+    },
+    {
+      "profile": 92,
+      "product_slots": [
+        24,
+        25,
+        1,
+        6
+      ]
+    },
+    {
+      "profile": 93,
+      "product_slots": [
+        24,
+        6,
+        0,
+        7
+      ]
+    },
+    {
+      "profile": 94,
+      "product_slots": [
+        0,
+        1,
+        7,
+        24
+      ]
+    },
+    {
+      "profile": 95,
+      "product_slots": [
+        0,
+        1,
+        24,
+        10
+      ]
+    },
+    {
+      "profile": 96,
+      "product_slots": [
+        20,
+        0,
+        10,
+        24
+      ]
+    },
+    {
+      "profile": 97,
+      "product_slots": [
+        0,
+        1,
+        6,
+        24
+      ]
+    },
+    {
+      "profile": 98,
+      "product_slots": [
+        0,
+        1,
+        24,
+        10
+      ]
+    },
+    {
+      "profile": 99,
+      "product_slots": [
+        0,
+        1,
+        6,
+        7
+      ]
+    },
+    {
+      "profile": 100,
+      "product_slots": [
+        9,
+        0,
+        6,
+        7
+      ]
+    },
+    {
+      "profile": 101,
+      "product_slots": [
+        24,
+        25,
+        0,
+        10
+      ]
+    },
+    {
+      "profile": 102,
+      "product_slots": [
+        24,
+        6,
+        0,
+        10
+      ]
+    },
+    {
+      "profile": 103,
+      "product_slots": [
+        22,
+        0,
+        24,
+        25
+      ]
+    },
+    {
+      "profile": 104,
+      "product_slots": [
+        10,
+        0,
+        6,
+        24
+      ]
+    },
+    {
+      "profile": 105,
+      "product_slots": [
+        10,
+        0,
+        6,
+        24
+      ]
+    },
+    {
+      "profile": 106,
+      "product_slots": [
+        6,
+        0,
+        24,
+        -1
+      ]
+    },
+    {
+      "profile": 107,
+      "product_slots": [
+        6,
+        0,
+        24,
+        -1
+      ]
+    },
+    {
+      "profile": 108,
+      "product_slots": [
+        6,
+        0,
+        24,
+        -1
+      ]
+    },
+    {
+      "profile": 109,
+      "product_slots": [
+        6,
+        0,
+        24,
+        -1
+      ]
+    },
+    {
+      "profile": 110,
+      "product_slots": [
+        8,
+        1,
+        25,
+        22
+      ]
+    },
+    {
+      "profile": 111,
+      "product_slots": [
+        2,
+        6,
+        13,
+        12
+      ]
+    },
+    {
+      "profile": 112,
+      "product_slots": [
+        19,
+        23,
+        11,
+        22
+      ]
+    },
+    {
+      "profile": 113,
+      "product_slots": [
+        23,
+        19,
+        17,
+        22
+      ]
+    },
+    {
+      "profile": 114,
+      "product_slots": [
+        19,
+        23,
+        11,
+        22
+      ]
+    },
+    {
+      "profile": 115,
+      "product_slots": [
+        23,
+        19,
+        17,
+        22
+      ]
+    },
+    {
+      "profile": 116,
+      "product_slots": [
+        13,
+        12,
+        14,
+        16
+      ]
+    },
+    {
+      "profile": 117,
+      "product_slots": [
+        13,
+        12,
+        14,
+        16
+      ]
+    },
+    {
+      "profile": 118,
+      "product_slots": [
+        22,
+        23,
+        19,
+        12
+      ]
+    },
+    {
+      "profile": 119,
+      "product_slots": [
+        21,
+        1,
+        6,
+        11
+      ]
+    },
+    {
+      "profile": 120,
+      "product_slots": [
+        19,
+        13,
+        14,
+        17
+      ]
+    },
+    {
+      "profile": 121,
+      "product_slots": [
+        19,
+        23,
+        14,
+        11
+      ]
+    },
+    {
+      "profile": 122,
+      "product_slots": [
+        23,
+        19,
+        15,
+        12
+      ]
+    },
+    {
+      "profile": 123,
+      "product_slots": [
+        23,
+        12,
+        17,
+        16
+      ]
+    },
+    {
+      "profile": 124,
+      "product_slots": [
+        12,
+        15,
+        17,
+        14
+      ]
+    },
+    {
+      "profile": 125,
+      "product_slots": [
+        14,
+        4,
+        5,
+        17
+      ]
+    },
+    {
+      "profile": 126,
+      "product_slots": [
+        12,
+        13,
+        14,
+        16
+      ]
+    },
+    {
+      "profile": 127,
+      "product_slots": [
+        13,
+        12,
+        14,
+        16
+      ]
+    },
+    {
+      "profile": 128,
+      "product_slots": [
+        14,
+        12,
+        13,
+        16
+      ]
+    },
+    {
+      "profile": 129,
+      "product_slots": [
+        12,
+        13,
+        14,
+        16
+      ]
+    },
+    {
+      "profile": 130,
+      "product_slots": [
+        6,
+        0,
+        9,
+        24
+      ]
+    },
+    {
+      "profile": 131,
+      "product_slots": [
+        6,
+        0,
+        24,
+        22
+      ]
+    },
+    {
+      "profile": 132,
+      "product_slots": [
+        11,
+        19,
+        23,
+        24
+      ]
+    },
+    {
+      "profile": 133,
+      "product_slots": [
+        11,
+        23,
+        19,
+        24
+      ]
+    },
+    {
+      "profile": 134,
+      "product_slots": [
+        19,
+        12,
+        14,
+        16
+      ]
+    },
+    {
+      "profile": 135,
+      "product_slots": [
+        23,
+        12,
+        17,
+        16
+      ]
+    },
+    {
+      "profile": 136,
+      "product_slots": [
+        13,
+        12,
+        17,
+        16
+      ]
+    },
+    {
+      "profile": 137,
+      "product_slots": [
+        14,
+        12,
+        13,
+        16
+      ]
+    },
+    {
+      "profile": 138,
+      "product_slots": [
+        7,
+        0,
+        6,
+        22
+      ]
+    },
+    {
+      "profile": 139,
+      "product_slots": [
+        7,
+        0,
+        6,
+        22
+      ]
+    },
+    {
+      "profile": 140,
+      "product_slots": [
+        0,
+        9,
+        6,
+        24
+      ]
+    },
+    {
+      "profile": 141,
+      "product_slots": [
+        0,
+        9,
+        6,
+        24
+      ]
+    },
+    {
+      "profile": 142,
+      "product_slots": [
+        0,
+        9,
+        6,
+        24
+      ]
+    },
+    {
+      "profile": 143,
+      "product_slots": [
+        0,
+        9,
+        6,
+        24
+      ]
+    }
+  ],
+  "known_before": "The previous seasonal-data extraction already found zero profile product slots referencing26. This work joins that invariant to dispenser layouts, generic destination/purchase and advice paths."
+}

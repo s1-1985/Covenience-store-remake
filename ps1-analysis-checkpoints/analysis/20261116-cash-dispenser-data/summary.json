@@ -1,0 +1,18 @@
+{
+  "cash_product": 26,
+  "dispenser_fixtures": [
+    43,
+    44
+  ],
+  "layouts": 30,
+  "layouts_with_dispenser": 12,
+  "layout_dispenser_anchors": 12,
+  "source_maps": 4,
+  "source_stores": 11,
+  "source_stores_with_dispenser": 0,
+  "source_dispenser_anchors": 0,
+  "standard_profile_cash_refs": 0,
+  "original_cpu_updates": 0,
+  "known_before": "Cash product classification and zero ordinary profile references were known. New extraction binds both actual dispenser descriptors,30 layouts and11 source stores to candidate/destination/zero-price purchase semantics and original special low-use message.",
+  "resolution": "R01 remains open but narrowed: no ordinary valid-profile withdrawal route established; dedicated withdrawal/fee path or intended unused-feature behavior remains unresolved. Do not invent banking transactions."
+}

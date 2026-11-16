@@ -1,0 +1,72 @@
+{
+  "disc_sha256": "8d8eda789c5a2fe892a4722719b0466dd7d126eed6cd99ad05a807d81b57d1c1",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": [
+    {
+      "file": "source/cash_price_average_exclusion.bin",
+      "start": "0x80024080",
+      "end_exclusive": "0x800240d4",
+      "sha256": "8ce6914c25f1a9d00c4a7cbcbe9a6530877ca70c580b4e5b4c7f503b50478f65"
+    },
+    {
+      "file": "source/customer_initial_wallet_product.bin",
+      "start": "0x80032a38",
+      "end_exclusive": "0x80032ad0",
+      "sha256": "edd681c3507cad4306404ee89f8d4a646b84d233b852b45a28216295b2ec93ce"
+    },
+    {
+      "file": "source/generic_purchase.bin",
+      "start": "0x800340fc",
+      "end_exclusive": "0x80035128",
+      "sha256": "39283f254c9fa54ec364e48178cc04e0c50835e895f8edad0c6ecc0872034627"
+    },
+    {
+      "file": "source/cash_low_use_advice.bin",
+      "start": "0x8003bd78",
+      "end_exclusive": "0x8003be78",
+      "sha256": "ad17faa2378017972149d516bc2253a694d0df91ec0c7c23027d2796b3e4af4b"
+    },
+    {
+      "file": "source/cash-product.bin",
+      "start": "0x8009d6e0",
+      "end_exclusive": "0x8009d738",
+      "sha256": "538e6c255245df838ef222230deb473ca075bee157e96e45a9ce7e7703774660"
+    },
+    {
+      "file": "source/dispenser-small.bin",
+      "start": "0x8009bff8",
+      "end_exclusive": "0x8009c0bc",
+      "sha256": "b64341bb6b8b33f1290dc15ae8b6fd9cfb22f671b2c81babf32912644d9854bc"
+    },
+    {
+      "file": "source/dispenser-large.bin",
+      "start": "0x8009c0bc",
+      "end_exclusive": "0x8009c180",
+      "sha256": "7b8ff3695f833ba3ff54481fda8e315db9836e682b0561efbbad73aa55f31d8b"
+    },
+    {
+      "file": "source/cash-product.bin",
+      "start": "0x8009d6e0",
+      "end_exclusive": "0x8009d738",
+      "sha256": "538e6c255245df838ef222230deb473ca075bee157e96e45a9ce7e7703774660"
+    },
+    {
+      "file": "source/fixture43.bin",
+      "start": "0x8009bff8",
+      "end_exclusive": "0x8009c0bc",
+      "sha256": "b64341bb6b8b33f1290dc15ae8b6fd9cfb22f671b2c81babf32912644d9854bc"
+    },
+    {
+      "file": "source/fixture44.bin",
+      "start": "0x8009c0bc",
+      "end_exclusive": "0x8009c180",
+      "sha256": "7b8ff3695f833ba3ff54481fda8e315db9836e682b0561efbbad73aa55f31d8b"
+    },
+    {
+      "file": "source/standard-profiles.bin",
+      "start": "0x800a09d0",
+      "end_exclusive": "0x800a1750",
+      "sha256": "b6bee4a1554b61874d978188768da03ebd0c4263124186402220af05b7ffd141"
+    }
+  ]
+}

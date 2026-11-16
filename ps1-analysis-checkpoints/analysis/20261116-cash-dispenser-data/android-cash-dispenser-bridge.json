@@ -1,0 +1,19 @@
+{
+  "target": "Native Android extracted fixture/data behavior, no original EXE/BIOS/CPU runtime.",
+  "retain": [
+    "Product26 image variants612/603/606/609 and source zero procurement value",
+    "Fixture43 price4000,capacity50,maintenance unit60",
+    "Fixture44 price7000,capacity90,maintenance unit100",
+    "All12 original layout anchors/directions/stock quantities",
+    "Exclude cash from price-average metric",
+    "Original manager low-use message branch"
+  ],
+  "avoid_unfounded_rules": [
+    "Do not translate50/90 capacity into yen withdrawal limits.",
+    "Do not route underfunded customers to ATM without source transition.",
+    "Do not add withdrawal money or assumed bank fee.",
+    "Do not infer natural cash-use frequency from stored stock or advice text."
+  ],
+  "normal_profiles": "Keep catalog candidate lists as source; no product26 slot is introduced.",
+  "status": "R01 narrowed but open. No native code/APK change."
+}
