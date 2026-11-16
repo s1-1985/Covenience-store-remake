@@ -1,0 +1,132 @@
+{
+  "issue": 232,
+  "date": "2026-11-16",
+  "status": "DIAGNOSTIC_NOT_APPROVED",
+  "sources": [
+    {
+      "id": "map_crossing_basic",
+      "source_ref": "chatgpt/map-assets-isolated-20260922",
+      "git_blob_sha": "82488f0555d8888e3daf7024055aedc922456ecb",
+      "full_png_decode": "pass",
+      "crc": "pass",
+      "adler32": "pass",
+      "rgba64": "pass"
+    },
+    {
+      "id": "map_crossing_closed",
+      "source_ref": "chatgpt/map-assets-isolated-20260922",
+      "git_blob_sha": "14f1ee025ec2d7eebbb8bb5ec96a5ef9b15ecec3",
+      "full_png_decode": "pass",
+      "crc": "pass",
+      "adler32": "pass",
+      "rgba64": "pass"
+    },
+    {
+      "id": "map_road_ns",
+      "source_ref": "main",
+      "git_blob_sha": "360c16bfe0c0a874af1ffac34e42eee51ce0e7c1",
+      "full_png_decode": "pass",
+      "crc": "pass",
+      "adler32": "pass",
+      "rgba64": "pass"
+    },
+    {
+      "id": "map_rail_ew",
+      "source_ref": "main",
+      "git_blob_sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "full_png_decode": "pass",
+      "crc": "pass",
+      "adler32": "pass",
+      "rgba64": "pass"
+    }
+  ],
+  "fixture_pngs": 2,
+  "fixture_px": [
+    72,
+    72
+  ],
+  "display_tile_px": 24,
+  "fixtures": [
+    {
+      "id": "map_crossing_basic",
+      "neighbors": {
+        "1,0": "map_road_ns",
+        "1,1": "map_crossing_basic",
+        "1,2": "map_road_ns",
+        "0,1": "map_rail_ew",
+        "2,1": "map_rail_ew"
+      },
+      "edge_diagnostics": [
+        {
+          "direction": "N",
+          "rgb_mae": 19.153,
+          "alpha_mismatch_px": 0,
+          "exact_rgba_samples": 0
+        },
+        {
+          "direction": "S",
+          "rgb_mae": 16.708,
+          "alpha_mismatch_px": 0,
+          "exact_rgba_samples": 0
+        },
+        {
+          "direction": "W",
+          "rgb_mae": 31.639,
+          "alpha_mismatch_px": 0,
+          "exact_rgba_samples": 0
+        },
+        {
+          "direction": "E",
+          "rgb_mae": 34.583,
+          "alpha_mismatch_px": 0,
+          "exact_rgba_samples": 0
+        }
+      ],
+      "approved": false
+    },
+    {
+      "id": "map_crossing_closed",
+      "neighbors": {
+        "1,0": "map_road_ns",
+        "1,1": "map_crossing_closed",
+        "1,2": "map_road_ns",
+        "0,1": "map_rail_ew",
+        "2,1": "map_rail_ew"
+      },
+      "edge_diagnostics": [
+        {
+          "direction": "N",
+          "rgb_mae": 54.292,
+          "alpha_mismatch_px": 0,
+          "exact_rgba_samples": 0
+        },
+        {
+          "direction": "S",
+          "rgb_mae": 49.417,
+          "alpha_mismatch_px": 0,
+          "exact_rgba_samples": 0
+        },
+        {
+          "direction": "W",
+          "rgb_mae": 67.014,
+          "alpha_mismatch_px": 0,
+          "exact_rgba_samples": 0
+        },
+        {
+          "direction": "E",
+          "rgb_mae": 62.611,
+          "alpha_mismatch_px": 0,
+          "exact_rgba_samples": 0
+        }
+      ],
+      "approved": false
+    }
+  ],
+  "limitations": [
+    "Only the two crossing variants were generated this run",
+    "No original PS1 fidelity confirmation",
+    "Edge RGB metrics are not a visual seam acceptance",
+    "Godot viewport rendering and game regression not executed",
+    "No main or Claude branch or existing file modified"
+  ]
+}
