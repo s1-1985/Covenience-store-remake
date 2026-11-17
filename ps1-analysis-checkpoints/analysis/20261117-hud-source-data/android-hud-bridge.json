@@ -1,0 +1,263 @@
+{
+  "status": "analysis_only",
+  "android_code_changed": false,
+  "background": {
+    "source_file": "KYOU.TIM",
+    "source_sha256": "ef75f72fffafc3cc45853a2097059b421aed139929d31b6a1bea8dcb40127d89",
+    "source_rect": [
+      96,
+      184,
+      160,
+      24
+    ],
+    "draw_kind": 7,
+    "uv": [
+      96,
+      184
+    ],
+    "clut_xy": [
+      0,
+      492
+    ],
+    "indices_sha256": "ac6789cdb32603fc4be179ec6932c2bac034c0e3d054c04d1702893abe4da262",
+    "raw_color_words_sha256": "9ad67e4be78d901f55c3b04c32d07fe46fe0fabbd84ca8fe5af816e8b30efc70",
+    "records": [
+      {
+        "screen_xy": [
+          0,
+          0
+        ],
+        "record_xy": [
+          -160,
+          -112
+        ],
+        "size": [
+          160,
+          24
+        ]
+      },
+      {
+        "screen_xy": [
+          160,
+          0
+        ],
+        "record_xy": [
+          0,
+          -112
+        ],
+        "size": [
+          160,
+          24
+        ]
+      }
+    ],
+    "screen_origin": [
+      160,
+      112
+    ],
+    "source_rows": [
+      184,
+      207
+    ],
+    "original_image_height": 240,
+    "requested_upload_height": 256
+  },
+  "text_calls": [
+    {
+      "order": 0,
+      "message_id": 60,
+      "screen_xy": [
+        8,
+        6
+      ],
+      "record_xy": [
+        -152,
+        -106
+      ]
+    },
+    {
+      "order": 1,
+      "message_id": "62 + monthly selector",
+      "screen_xy": [
+        108,
+        6
+      ],
+      "record_xy": [
+        -52,
+        -106
+      ]
+    },
+    {
+      "order": 2,
+      "message_id": 61,
+      "screen_xy": [
+        152,
+        6
+      ],
+      "record_xy": [
+        -8,
+        -106
+      ]
+    }
+  ],
+  "calendar_cache": {
+    "address": "0x8014C270",
+    "fields": [
+      "year",
+      "month",
+      "stage_day",
+      "hour",
+      "minute"
+    ],
+    "source_tick": "unsigned32 at0x800CD93C",
+    "year": "((t * 0xF2B9D649) >> 48) + 1",
+    "month": "(((t >> 7) * 0x05B05B08) >> 32) % 12 + 1",
+    "stage_day": "((((t >> 5) * 0x05B05B06) >> 32) & 3) + 1",
+    "hour": "(((t * 0x88888889) >> 37) % 24)",
+    "minute": "(t - 60 * ((t * 0x88888889) >> 37)) & 0xFFFFFFFF",
+    "warning": "Source stage_day1..4 is shown with 日. Do not substitute a real-world28..31day month."
+  },
+  "money": {
+    "source": "signed32 at0x800CD9F8 copiedto0x800E4000",
+    "command": "0x4004,slot0",
+    "format": "Variable width; glyph0x24 prefix, glyph0x2C every3 digits, optional preceding glyph0x2E for negative; INT32_MIN maps to0 in recovered source routine.",
+    "prefix": "¥",
+    "separator": ",",
+    "negative": "ー",
+    "anchor": "Immediately after HH:MM; no separate money anchor or fixed money field width in message61."
+  },
+  "two_digit_command": {
+    "command": "0x4009",
+    "rule": "Emit two zero glyphs; write at most two decimal digits from the right. Years>=100 lose higher digits in this formatter. Valid calendar values are nonnegative.",
+    "note": "This is known original expansion behavior, not a newly discovered gameplay rule."
+  },
+  "weather_months": [
+    {
+      "month": 1,
+      "messages": [
+        62,
+        63,
+        64,
+        65,
+        66
+      ]
+    },
+    {
+      "month": 2,
+      "messages": [
+        62,
+        63,
+        64,
+        65,
+        66
+      ]
+    },
+    {
+      "month": 3,
+      "messages": [
+        62,
+        63,
+        64,
+        67,
+        68
+      ]
+    },
+    {
+      "month": 4,
+      "messages": [
+        62,
+        63,
+        64,
+        67,
+        68
+      ]
+    },
+    {
+      "month": 5,
+      "messages": [
+        62,
+        63,
+        64,
+        67,
+        68
+      ]
+    },
+    {
+      "month": 6,
+      "messages": [
+        62,
+        63,
+        64,
+        67,
+        68
+      ]
+    },
+    {
+      "month": 7,
+      "messages": [
+        62,
+        63,
+        64,
+        67,
+        69
+      ]
+    },
+    {
+      "month": 8,
+      "messages": [
+        62,
+        63,
+        64,
+        67,
+        69
+      ]
+    },
+    {
+      "month": 9,
+      "messages": [
+        62,
+        63,
+        64,
+        67,
+        70
+      ]
+    },
+    {
+      "month": 10,
+      "messages": [
+        62,
+        63,
+        64,
+        67,
+        70
+      ]
+    },
+    {
+      "month": 11,
+      "messages": [
+        62,
+        63,
+        64,
+        67,
+        68
+      ]
+    },
+    {
+      "month": 12,
+      "messages": [
+        62,
+        63,
+        64,
+        65,
+        66
+      ]
+    }
+  ],
+  "glyphs": "hud-font-crops.json",
+  "messages": "hud-messages.json",
+  "limitations": [
+    "No natural HUD screen execution or full GPU image reconstructed.",
+    "No assumption of the current global text style; 12x15 glyph crop coverage is for the fixed record path, style2 bank layout is outside this report.",
+    "No proof of all money/year ranges during normal play, clipping, or screen overlap."
+  ]
+}

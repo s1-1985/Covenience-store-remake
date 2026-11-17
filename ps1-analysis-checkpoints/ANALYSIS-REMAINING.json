@@ -105,7 +105,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue unresolved source semantics or remaining ordinary data. Fixed5/6argumentinterpretation is conditionalwidth0/skip; naturalreachability, fullnotificationbodies and sixtrackedquestions remain open.",
+  "next": "未接続の通常画面・町操作の原画像と原文字列を優先。HUDstyle2と桁数別クリッピングは未確定。既存追跡課題6件は継続。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -179,6 +179,14 @@
       "status": "resolved_scoped_static_path",
       "evidence": "analysis/20261117-fixed-notice-advertising-data/README.md",
       "resolution": "Originalcopiedtemplates -> actual41630ABI -> width0 ->84830skip, conditionalonunchangedrecord. Fivepromotionvariants maptoPS_CM1 pixels.0sourceCPUcalls; no naturalreachabilityorintendedrepair claim.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X10",
+      "title": "通常HUD11文字列・31文字画像・背景の原データ接続",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261117-hud-source-data/README.md",
+      "resolution": "OriginalMSG60..70 bound to31glyph crops acrossPSMOJI0/1; repeatedKYOU160x24background andthree text anchors. Existing rules reused;0sourceCPUcalls. No wholeHUDstyle/clipping orAPKclaim.",
       "counted_in_seven_tracked_items": false
     }
   ]

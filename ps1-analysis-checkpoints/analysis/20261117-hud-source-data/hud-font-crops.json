@@ -1,0 +1,605 @@
+{
+  "fonts": [
+    {
+      "file": "PSMOJI0.TIM",
+      "source_sha256": "7af314727a51c78d7e086efb6d954a6591bc12f93ff1f2bb5cff797329bdfcee",
+      "source_size_pixels": [
+        256,
+        256
+      ],
+      "source_pixel_rect_words": [
+        0,
+        0,
+        64,
+        256
+      ],
+      "source_clut_rect_words": [
+        0,
+        480,
+        16,
+        1
+      ]
+    },
+    {
+      "file": "PSMOJI1.TIM",
+      "source_sha256": "9f763d9fdcb86863ea28126fcdb5a7d89a590315463b5a5e69a2bdbc0c4c5030",
+      "source_size_pixels": [
+        256,
+        256
+      ],
+      "source_pixel_rect_words": [
+        0,
+        0,
+        64,
+        256
+      ],
+      "source_clut_rect_words": [
+        0,
+        480,
+        16,
+        1
+      ]
+    }
+  ],
+  "glyphs": [
+    {
+      "glyph": 0,
+      "text": "0",
+      "font_bank": 0,
+      "source_rect": [
+        0,
+        0,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "ea57e527b6b84880812688320210bb443c0195a19a7e4e394cac11121048489a",
+      "raw_color_words_sha256": "d895d0646db8d566fb214a5a4c6f5bf3ca6a50173a71d56c1d12d458b3ec36f4"
+    },
+    {
+      "glyph": 1,
+      "text": "1",
+      "font_bank": 0,
+      "source_rect": [
+        12,
+        0,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "73b3f55f4d1b5347a233effd349de8e34c9204b31c184fddc1755eeab87ead28",
+      "raw_color_words_sha256": "ac66eff3d583a87412627632a8554fd93605abac4e0624c3c01282322338bb37"
+    },
+    {
+      "glyph": 2,
+      "text": "2",
+      "font_bank": 0,
+      "source_rect": [
+        24,
+        0,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "8c8f6f732fba3b71e79ccf5c703f0c36a58c915af65f8b69da742242d010076e",
+      "raw_color_words_sha256": "1147859e9dbf27d6cf94c45dcfeb6e084fa99b8a2a07b3699e88fec3ad2da88d"
+    },
+    {
+      "glyph": 3,
+      "text": "3",
+      "font_bank": 0,
+      "source_rect": [
+        36,
+        0,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "f78353b2b7239f073815d757c10ee49099a51a491af6132ec52fef17e6fde646",
+      "raw_color_words_sha256": "ea2b70303ff91b2e95402313ce6bb518e3b99d946e9dc955ff83f5ba60bf3a17"
+    },
+    {
+      "glyph": 4,
+      "text": "4",
+      "font_bank": 0,
+      "source_rect": [
+        48,
+        0,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "dae343a313e1f19874fff39119f0d52ddfb8d8b293b495c83488359034983933",
+      "raw_color_words_sha256": "80cb02c131bfef6814e218b49a8c1bcb3af31a17e3c2c8db2470e4357a83f3bf"
+    },
+    {
+      "glyph": 5,
+      "text": "5",
+      "font_bank": 0,
+      "source_rect": [
+        60,
+        0,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "e039ef32d00ec7a5eea7c77a5ecd25c9742f110f8ba3893755371cdee7d00030",
+      "raw_color_words_sha256": "0e828fb4125c0d45289bad4845d7dc1282c76659eb844bfb074901159e5ae1d9"
+    },
+    {
+      "glyph": 6,
+      "text": "6",
+      "font_bank": 0,
+      "source_rect": [
+        72,
+        0,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "a8fe7b9d9895c39af990fd2653457d8e812e4f6913e8883ade560acc3a9de10a",
+      "raw_color_words_sha256": "6a1fdf31308507c8ebc1ce94d6851a8d95882f7719ab8f1a531d29cd10b6290a"
+    },
+    {
+      "glyph": 7,
+      "text": "7",
+      "font_bank": 0,
+      "source_rect": [
+        84,
+        0,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "747d72af7498d7b56a1e406950eeaf541258ed5f7515f7eb2a9264ce547d716c",
+      "raw_color_words_sha256": "c4d740faaa99fe38669f2baeaa9cb4a547e40694d3ae90b8ded3bbb3b1411fee"
+    },
+    {
+      "glyph": 8,
+      "text": "8",
+      "font_bank": 0,
+      "source_rect": [
+        96,
+        0,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "7f8414c5f548395200b0abcc1b2e0709eb45e5241d587be11f3bb37783dba694",
+      "raw_color_words_sha256": "7373d537021137c2408e42328a1f949fc5ef37003634f08619a9043d75b34e1f"
+    },
+    {
+      "glyph": 9,
+      "text": "9",
+      "font_bank": 0,
+      "source_rect": [
+        108,
+        0,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "d7bb0fd1033e2aee5766f8a694c97ae046c80025149a189c91e304aec6830329",
+      "raw_color_words_sha256": "eeb9b01c4bc03ba5923d7705d2257f64e1df88613bb0fd0fc64b7fdd18bd48a4"
+    },
+    {
+      "glyph": 36,
+      "text": "¥",
+      "font_bank": 0,
+      "source_rect": [
+        180,
+        16,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "ce2ed9e25cd640d9b3e567e6ac150b388b9ab014211981b82791ca12d1278445",
+      "raw_color_words_sha256": "198c52288fc2c10d652fc8be4a7d981458c261eb0e69cd88b77bc1b47d0e9fa8"
+    },
+    {
+      "glyph": 43,
+      "text": ":",
+      "font_bank": 0,
+      "source_rect": [
+        12,
+        32,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "e0c6aa3aaee52f15e8e3ff7ade34b2a8549bdea2c693e30963cd93b6be89a054",
+      "raw_color_words_sha256": "c9c34e80f9355f4b4b8272b1fd87320c1d2cf2129ce4423bc971bb5b3655c291"
+    },
+    {
+      "glyph": 44,
+      "text": ",",
+      "font_bank": 0,
+      "source_rect": [
+        24,
+        32,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "d97c5bbce186b253b27d626edb964196e8d0b2be2797a0d6e06d79310c11005b",
+      "raw_color_words_sha256": "aa9ff58023bafe4aa0c5580bd4e6a5584cf93dac0ccc3772cf771193b5d7a484"
+    },
+    {
+      "glyph": 46,
+      "text": "ー",
+      "font_bank": 0,
+      "source_rect": [
+        48,
+        32,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "03d97017be8f8962b0ba9c0ef3da1fb929f82bcccac369e3c564ec9d4e5db9dd",
+      "raw_color_words_sha256": "fe1b446e36776af89f8a4452b0bc3201924e75933daa2ec920ce5ac88bfe2b99"
+    },
+    {
+      "glyph": 48,
+      "text": "[",
+      "font_bank": 0,
+      "source_rect": [
+        72,
+        32,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "0e3467b1054def5e0173deddb5fbff6accb8846db85223faf34cd917097d66de",
+      "raw_color_words_sha256": "d4dd1d033a005d7c1c7dc240dd88d6f288d733dbb1a6afbea14cf937d4cd6693"
+    },
+    {
+      "glyph": 49,
+      "text": "]",
+      "font_bank": 0,
+      "source_rect": [
+        84,
+        32,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "cad58f96b5712b7536b82d34268c96ebc87ea28398e213e2b294530152b03b4e",
+      "raw_color_words_sha256": "0cb5080c8133564b9312362880083433d7644b4277c1e4ea65a93e9d03eea3f5"
+    },
+    {
+      "glyph": 61,
+      "text": "　",
+      "font_bank": 0,
+      "source_rect": [
+        228,
+        32,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "10b2a66888c58a54b277fe2e68fb6e87150c3cd2c537b7f6a2d84559017438c7",
+      "raw_color_words_sha256": "d3df611a0ed2e328b050d285287637c60643ba96ec09e4aaefaad7f2cd114b77"
+    },
+    {
+      "glyph": 104,
+      "text": "れ",
+      "font_bank": 0,
+      "source_rect": [
+        240,
+        64,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "2052d1039448603a7299638023182e3ef526c61b5d4b42a75c26ae9f37c67b51",
+      "raw_color_words_sha256": "69a6540f8ae986fe41c7fa63e4a007975d7fc2177aa6e7f1cb69dfef23d93164"
+    },
+    {
+      "glyph": 228,
+      "text": "年",
+      "font_bank": 0,
+      "source_rect": [
+        216,
+        160,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "05db2a6cb222c0d93dfcf39d025156fff3e436cf8c40bc39b27fb0fab1799e51",
+      "raw_color_words_sha256": "cf3f834f1b6abee47469f82390dc97a502598aa39da38f7398c09f099e6a9aa4"
+    },
+    {
+      "glyph": 229,
+      "text": "目",
+      "font_bank": 0,
+      "source_rect": [
+        228,
+        160,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "f81fc9d7b79409c35c29f3ff57836b43f87e256b4e4ac1a01e4cf88a3a2dd730",
+      "raw_color_words_sha256": "4606f922b775d4d6cfc5ef3a32cbcb0e6d39f51b25c013647c0d624394643cac"
+    },
+    {
+      "glyph": 230,
+      "text": "月",
+      "font_bank": 0,
+      "source_rect": [
+        240,
+        160,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "afeb016f19d04859e58721756b607b313c3edfa4a4d79c6ef86654aa24f4fd02",
+      "raw_color_words_sha256": "0b00ffa768959f859ab2ee30e47f2d5c7ed8b6d19eb70d56ce4d40090a438568"
+    },
+    {
+      "glyph": 231,
+      "text": "日",
+      "font_bank": 0,
+      "source_rect": [
+        0,
+        176,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "8609d11665a96a94dd708b03b65126d358dd4d27db00158139716d1539719724",
+      "raw_color_words_sha256": "09db08740698c3c0bb42e31af35a591e68cd0bbed74bf926ca17f043f23c5997"
+    },
+    {
+      "glyph": 246,
+      "text": "晴",
+      "font_bank": 0,
+      "source_rect": [
+        180,
+        176,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "f0085770046f03185d728d7b214d34fbf696810a559befb3bb48b91e7c10fa6d",
+      "raw_color_words_sha256": "d05477cdfd04b0fc5b1b0ccac3d13bcceb81c85d249bd3c0ff8cfd49c49dcd02"
+    },
+    {
+      "glyph": 247,
+      "text": "雨",
+      "font_bank": 0,
+      "source_rect": [
+        192,
+        176,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "9bfa66bdd142b057e224ea4d4498f083a8b698825d8c7596490187925834fb81",
+      "raw_color_words_sha256": "c86284943cb6dbd000b88b7bd62c1e21343173da3c4fc22bc494ee6ddc057f70"
+    },
+    {
+      "glyph": 248,
+      "text": "曇",
+      "font_bank": 0,
+      "source_rect": [
+        204,
+        176,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "16d20014fd0ce7f348bea5c2dae489d7fc02b9908e2e6e1b7758fded98f6592c",
+      "raw_color_words_sha256": "76cf8ae1e9de64d37ae51717ddcfec49126f607bb198026529e0ef5ac22e9948"
+    },
+    {
+      "glyph": 249,
+      "text": "雪",
+      "font_bank": 0,
+      "source_rect": [
+        216,
+        176,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "4d350d742020d89198d1b77216da9ba6728c24463e29cfa1ce23bb9efc2be547",
+      "raw_color_words_sha256": "1cf03959e225c74db5c852b2b2d26aa4ae7f83efb88ce285b89a6afa12e3112f"
+    },
+    {
+      "glyph": 250,
+      "text": "大",
+      "font_bank": 0,
+      "source_rect": [
+        228,
+        176,
+        12,
+        15
+      ],
+      "draw_kind": 15,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "017022d5944f5f5be8f2fe013ac69d8968038e10ef15710676ef316681060263",
+      "raw_color_words_sha256": "ff9f01c2e0896ace25541ae975ff6a5f7b85b71da669eebaf803bdf0a9b28fac"
+    },
+    {
+      "glyph": 582,
+      "text": "雷",
+      "font_bank": 1,
+      "source_rect": [
+        180,
+        176,
+        12,
+        15
+      ],
+      "draw_kind": 31,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "3e5c0243d00e3102b5643e2d12cce17c2414e290bccd03f077a1ab2d3c16760c",
+      "raw_color_words_sha256": "a3a8b713e3269512acbfd4a9c9e7b1e67fc1ccef44a91e4b5b9113eedd502655"
+    },
+    {
+      "glyph": 583,
+      "text": "快",
+      "font_bank": 1,
+      "source_rect": [
+        192,
+        176,
+        12,
+        15
+      ],
+      "draw_kind": 31,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "430df26e9d2c560b88fe9454627352ee5a2909eb93925ea816113c0223e779bf",
+      "raw_color_words_sha256": "08123b59ac8412d101f921572ab678a79d54d6e01ca1e24c5e8048433796f246"
+    },
+    {
+      "glyph": 584,
+      "text": "台",
+      "font_bank": 1,
+      "source_rect": [
+        204,
+        176,
+        12,
+        15
+      ],
+      "draw_kind": 31,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "7859822ff4833115015dd971ee7e94ea98f0b9086379b04fcb8db4071d797c11",
+      "raw_color_words_sha256": "84e4d404883778e79d04a89ed2510b9944d366c3c0919ea078432294d0a3d120"
+    },
+    {
+      "glyph": 585,
+      "text": "風",
+      "font_bank": 1,
+      "source_rect": [
+        216,
+        176,
+        12,
+        15
+      ],
+      "draw_kind": 31,
+      "clut_xy": [
+        0,
+        480
+      ],
+      "indices_sha256": "cea92e39bf8be48f1716855e5c2777b288def5f19f5a7cf29f21e348d553f777",
+      "raw_color_words_sha256": "7914d5abf3109323f8e4a281af534ec24928f72f3932503f5844c879ea8fa112"
+    }
+  ],
+  "scope": "Fixed 12x15 glyph record path only. Digits0..9, money prefix/sign/separator plus literal HUD text. Not all font glyphs or style2. Raw BGR555/STP preserved by hashes; PNG is a reference, not PS GPU compositing."
+}

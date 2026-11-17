@@ -1,0 +1,386 @@
+{
+  "source": "/DAT/MSG00.OBJ",
+  "source_sha256": "d2ab3800ee82628cafe96d94f58d9790653b4e5387cbacc7097cc67c5ac18635",
+  "rows": [
+    {
+      "id": 60,
+      "offset": 3464,
+      "byte_length": 22,
+      "codes": [
+        16393,
+        0,
+        228,
+        229,
+        16393,
+        1,
+        230,
+        16393,
+        2,
+        231,
+        16639
+      ],
+      "tokens": [
+        {
+          "command": "0x4009",
+          "argument": 0,
+          "field": "year"
+        },
+        {
+          "glyph": 228,
+          "text": "年"
+        },
+        {
+          "glyph": 229,
+          "text": "目"
+        },
+        {
+          "command": "0x4009",
+          "argument": 1,
+          "field": "month"
+        },
+        {
+          "glyph": 230,
+          "text": "月"
+        },
+        {
+          "command": "0x4009",
+          "argument": 2,
+          "field": "stage_day"
+        },
+        {
+          "glyph": 231,
+          "text": "日"
+        }
+      ],
+      "source_file": "source/message-60.bin",
+      "sha256": "fd524fbd391e4116d6833c6d8025e4a1bb27cfa786665f6e5910471a34302997"
+    },
+    {
+      "id": 61,
+      "offset": 3486,
+      "byte_length": 16,
+      "codes": [
+        16393,
+        3,
+        43,
+        16393,
+        4,
+        16388,
+        0,
+        16639
+      ],
+      "tokens": [
+        {
+          "command": "0x4009",
+          "argument": 3,
+          "field": "hour"
+        },
+        {
+          "glyph": 43,
+          "text": ":"
+        },
+        {
+          "command": "0x4009",
+          "argument": 4,
+          "field": "minute"
+        },
+        {
+          "command": "0x4004",
+          "argument": 0,
+          "field": "money"
+        }
+      ],
+      "source_file": "source/message-61.bin",
+      "sha256": "94a73bf7c9471aa6ca603af809836701e4e38d51f998da0d85899dd6f77d594d"
+    },
+    {
+      "id": 62,
+      "offset": 3502,
+      "byte_length": 10,
+      "codes": [
+        48,
+        583,
+        246,
+        49,
+        16639
+      ],
+      "tokens": [
+        {
+          "glyph": 48,
+          "text": "["
+        },
+        {
+          "glyph": 583,
+          "text": "快"
+        },
+        {
+          "glyph": 246,
+          "text": "晴"
+        },
+        {
+          "glyph": 49,
+          "text": "]"
+        }
+      ],
+      "source_file": "source/message-62.bin",
+      "sha256": "1f41155dd8efbed3497e55f291d9ddc735d9e12d8c49418760a09fed9a29dee8"
+    },
+    {
+      "id": 63,
+      "offset": 3512,
+      "byte_length": 10,
+      "codes": [
+        48,
+        246,
+        104,
+        49,
+        16639
+      ],
+      "tokens": [
+        {
+          "glyph": 48,
+          "text": "["
+        },
+        {
+          "glyph": 246,
+          "text": "晴"
+        },
+        {
+          "glyph": 104,
+          "text": "れ"
+        },
+        {
+          "glyph": 49,
+          "text": "]"
+        }
+      ],
+      "source_file": "source/message-63.bin",
+      "sha256": "62d31ae04c14f09c83fc21b0b527d7bfe952082a15edf25a4deac99577f5349d"
+    },
+    {
+      "id": 64,
+      "offset": 3522,
+      "byte_length": 10,
+      "codes": [
+        48,
+        248,
+        61,
+        49,
+        16639
+      ],
+      "tokens": [
+        {
+          "glyph": 48,
+          "text": "["
+        },
+        {
+          "glyph": 248,
+          "text": "曇"
+        },
+        {
+          "glyph": 61,
+          "text": "　"
+        },
+        {
+          "glyph": 49,
+          "text": "]"
+        }
+      ],
+      "source_file": "source/message-64.bin",
+      "sha256": "a2e339f9579ffaab1d15c4e3718e9da3da96b6067a82ea33850fff3cc1a4138b"
+    },
+    {
+      "id": 65,
+      "offset": 3532,
+      "byte_length": 10,
+      "codes": [
+        48,
+        249,
+        61,
+        49,
+        16639
+      ],
+      "tokens": [
+        {
+          "glyph": 48,
+          "text": "["
+        },
+        {
+          "glyph": 249,
+          "text": "雪"
+        },
+        {
+          "glyph": 61,
+          "text": "　"
+        },
+        {
+          "glyph": 49,
+          "text": "]"
+        }
+      ],
+      "source_file": "source/message-65.bin",
+      "sha256": "819cca085b8b0484b06dedce5ab638df888d7d765d22691cebc0e376d788c675"
+    },
+    {
+      "id": 66,
+      "offset": 3542,
+      "byte_length": 10,
+      "codes": [
+        48,
+        250,
+        249,
+        49,
+        16639
+      ],
+      "tokens": [
+        {
+          "glyph": 48,
+          "text": "["
+        },
+        {
+          "glyph": 250,
+          "text": "大"
+        },
+        {
+          "glyph": 249,
+          "text": "雪"
+        },
+        {
+          "glyph": 49,
+          "text": "]"
+        }
+      ],
+      "source_file": "source/message-66.bin",
+      "sha256": "90ef261250bbf9c3ab77e2a541134c6d08227ed091918af844a3bb9e42876604"
+    },
+    {
+      "id": 67,
+      "offset": 3552,
+      "byte_length": 10,
+      "codes": [
+        48,
+        247,
+        61,
+        49,
+        16639
+      ],
+      "tokens": [
+        {
+          "glyph": 48,
+          "text": "["
+        },
+        {
+          "glyph": 247,
+          "text": "雨"
+        },
+        {
+          "glyph": 61,
+          "text": "　"
+        },
+        {
+          "glyph": 49,
+          "text": "]"
+        }
+      ],
+      "source_file": "source/message-67.bin",
+      "sha256": "7b4df6265dfab40bb29f3701628ec0c06fcf10a240625bd4404b7ec088eb28d3"
+    },
+    {
+      "id": 68,
+      "offset": 3562,
+      "byte_length": 10,
+      "codes": [
+        48,
+        250,
+        247,
+        49,
+        16639
+      ],
+      "tokens": [
+        {
+          "glyph": 48,
+          "text": "["
+        },
+        {
+          "glyph": 250,
+          "text": "大"
+        },
+        {
+          "glyph": 247,
+          "text": "雨"
+        },
+        {
+          "glyph": 49,
+          "text": "]"
+        }
+      ],
+      "source_file": "source/message-68.bin",
+      "sha256": "9414af33e57a89ce1c2fa3ea926f34ed9f294e57b8ad64427e0f946d492eb1eb"
+    },
+    {
+      "id": 69,
+      "offset": 3572,
+      "byte_length": 10,
+      "codes": [
+        48,
+        582,
+        247,
+        49,
+        16639
+      ],
+      "tokens": [
+        {
+          "glyph": 48,
+          "text": "["
+        },
+        {
+          "glyph": 582,
+          "text": "雷"
+        },
+        {
+          "glyph": 247,
+          "text": "雨"
+        },
+        {
+          "glyph": 49,
+          "text": "]"
+        }
+      ],
+      "source_file": "source/message-69.bin",
+      "sha256": "91f5b81c5335b7047c357b7295fcedf60895f374c00b4f79b6b5946b757aad89"
+    },
+    {
+      "id": 70,
+      "offset": 3582,
+      "byte_length": 10,
+      "codes": [
+        48,
+        584,
+        585,
+        49,
+        16639
+      ],
+      "tokens": [
+        {
+          "glyph": 48,
+          "text": "["
+        },
+        {
+          "glyph": 584,
+          "text": "台"
+        },
+        {
+          "glyph": 585,
+          "text": "風"
+        },
+        {
+          "glyph": 49,
+          "text": "]"
+        }
+      ],
+      "source_file": "source/message-70.bin",
+      "sha256": "7b2c40472dda59df60e57f7c18d96606fa28ff53e337df2659e5edca333e263f"
+    }
+  ],
+  "scope": "Commands and their arguments are parsed before glyph collection; argument0 is not an extra visible zero."
+}

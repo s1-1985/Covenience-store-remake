@@ -1,0 +1,11 @@
+{
+  "raw_messages": 11,
+  "required_glyph_crops": 31,
+  "font_banks": 2,
+  "background_source_crops": 1,
+  "background_draw_records": 2,
+  "text_call_anchors": 3,
+  "original_cpu_calls": 0,
+  "operating_updates": 0,
+  "android_code_changed": false
+}

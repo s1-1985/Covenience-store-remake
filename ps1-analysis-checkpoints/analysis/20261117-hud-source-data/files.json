@@ -1,0 +1,169 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3927,
+      "sha256": "eee16affdc9605867c5fa1c91114405c2621c920b315c806a1cf4416a446aea8"
+    },
+    {
+      "path": "android-hud-bridge.json",
+      "bytes": 4888,
+      "sha256": "ca1147cf077579caebc6978e34ffd3bae3ee5a1f570d1cc2fa53ec1f8f25cc36"
+    },
+    {
+      "path": "extract-hud.py",
+      "bytes": 10038,
+      "sha256": "0ddcab4edf790ae17573713433ce86310ae52536e03180f7fd7aecab55597472"
+    },
+    {
+      "path": "hud-background-source-preview.png",
+      "bytes": 3601,
+      "sha256": "6305a8ffe50ef98feb5c1b03182c5410e1de99acfc00cc13dc6bc9d36e3c4ec9"
+    },
+    {
+      "path": "hud-background.json",
+      "bytes": 950,
+      "sha256": "093105d03ddd6ae25555098879b8e58dbcf78a0db5953f4a9a82733aa96b164c"
+    },
+    {
+      "path": "hud-font-crops.json",
+      "bytes": 13993,
+      "sha256": "4b2f100af467397748d9bdacf9496b8b3964e5d6ae85749a0a30965ce43d1b1a"
+    },
+    {
+      "path": "hud-glyph-source-preview.png",
+      "bytes": 8093,
+      "sha256": "43ddbb6211837eca12071dedc0c2a463367fa262ab0006000dc5df4836b9ff7c"
+    },
+    {
+      "path": "hud-messages.json",
+      "bytes": 7299,
+      "sha256": "6b8994654e4b967d857f7056e1aef65a1c478f5d87cc5f2a1347fd1e04c0ba30"
+    },
+    {
+      "path": "hud-readers.asm",
+      "bytes": 33653,
+      "sha256": "f15b2c0443d2e0e5234b5bc375cae975ca71d081f186137f90b2125b4ed3635b"
+    },
+    {
+      "path": "source/calendar_readers.bin",
+      "bytes": 484,
+      "sha256": "ca3b39a628c8c8c26eb4bd47f86a61aacbece830a2741afce31b45f115d13151"
+    },
+    {
+      "path": "source/fixed_text_path.bin",
+      "bytes": 484,
+      "sha256": "e2dc40ab5603faedf1ce966f7474f35e329b8f772539982f451062b0b62f1d2c"
+    },
+    {
+      "path": "source/glyph_record.bin",
+      "bytes": 776,
+      "sha256": "77630a6f014302fc8cb8db6079a5f65d7f195687edb8b5a4739d3d6e6d6605ef"
+    },
+    {
+      "path": "source/hud_producer.bin",
+      "bytes": 2140,
+      "sha256": "be2daf2fa1264c113de7688a3da1dc1231170ded70c03e04f33a202362355993"
+    },
+    {
+      "path": "source/message-60.bin",
+      "bytes": 22,
+      "sha256": "fd524fbd391e4116d6833c6d8025e4a1bb27cfa786665f6e5910471a34302997"
+    },
+    {
+      "path": "source/message-61.bin",
+      "bytes": 16,
+      "sha256": "94a73bf7c9471aa6ca603af809836701e4e38d51f998da0d85899dd6f77d594d"
+    },
+    {
+      "path": "source/message-62.bin",
+      "bytes": 10,
+      "sha256": "1f41155dd8efbed3497e55f291d9ddc735d9e12d8c49418760a09fed9a29dee8"
+    },
+    {
+      "path": "source/message-63.bin",
+      "bytes": 10,
+      "sha256": "62d31ae04c14f09c83fc21b0b527d7bfe952082a15edf25a4deac99577f5349d"
+    },
+    {
+      "path": "source/message-64.bin",
+      "bytes": 10,
+      "sha256": "a2e339f9579ffaab1d15c4e3718e9da3da96b6067a82ea33850fff3cc1a4138b"
+    },
+    {
+      "path": "source/message-65.bin",
+      "bytes": 10,
+      "sha256": "819cca085b8b0484b06dedce5ab638df888d7d765d22691cebc0e376d788c675"
+    },
+    {
+      "path": "source/message-66.bin",
+      "bytes": 10,
+      "sha256": "90ef261250bbf9c3ab77e2a541134c6d08227ed091918af844a3bb9e42876604"
+    },
+    {
+      "path": "source/message-67.bin",
+      "bytes": 10,
+      "sha256": "7b4df6265dfab40bb29f3701628ec0c06fcf10a240625bd4404b7ec088eb28d3"
+    },
+    {
+      "path": "source/message-68.bin",
+      "bytes": 10,
+      "sha256": "9414af33e57a89ce1c2fa3ea926f34ed9f294e57b8ad64427e0f946d492eb1eb"
+    },
+    {
+      "path": "source/message-69.bin",
+      "bytes": 10,
+      "sha256": "91f5b81c5335b7047c357b7295fcedf60895f374c00b4f79b6b5946b757aad89"
+    },
+    {
+      "path": "source/message-70.bin",
+      "bytes": 10,
+      "sha256": "7b2c40472dda59df60e57f7c18d96606fa28ff53e337df2659e5edca333e263f"
+    },
+    {
+      "path": "source/message-pointers-60-70.bin",
+      "bytes": 44,
+      "sha256": "81fbab60a32428540c6c44088579d381c7bf5b2d6aca304d612f915006936382"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 1341,
+      "sha256": "4a023c3b45fe2c69d192244736cf308b899509fea9d8ae733bea05fe25b8ceea"
+    },
+    {
+      "path": "source-reference/font_pixels.py",
+      "bytes": 1854,
+      "sha256": "cc679e2f36e865bc06555a75c3d7627468393656455a9843d73de549ab2e2f2c"
+    },
+    {
+      "path": "source-reference/hud_display.py",
+      "bytes": 1514,
+      "sha256": "acefebd6f0cff61704e5e8d85b906362ad27660cb2ac89324ff0eb7fac385a28"
+    },
+    {
+      "path": "source-reference/text-control-expansion.asm",
+      "bytes": 32972,
+      "sha256": "586ba752075516a2fcea55d28ed2d919415ed04710551bf1b9b2219b0338477a"
+    },
+    {
+      "path": "source-reference/text-glyph-render.asm",
+      "bytes": 38833,
+      "sha256": "8958b65a414b061cd10ebcc03d055ec30e8f506fb440081b1db0788fe427ec03"
+    },
+    {
+      "path": "source-reference/text_controls.py",
+      "bytes": 2213,
+      "sha256": "402250d3cc34fc730203d029b7c08152c6cc1a4ab6614c8ea32e0814c13a9a28"
+    },
+    {
+      "path": "source-reference/text_render.py",
+      "bytes": 1541,
+      "sha256": "da103ab0123dbc9f5d0c2ce9e7559b4dedc57a954c19d6083452d7706f167b0b"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 250,
+      "sha256": "49bcd51034ef46f16997831e19bb2a58474b9735f47ed959e4888282031ec386"
+    }
+  ]
+}

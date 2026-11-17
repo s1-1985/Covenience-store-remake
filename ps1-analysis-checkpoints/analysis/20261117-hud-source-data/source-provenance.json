@@ -1,0 +1,33 @@
+{
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "msg_sha256": "d2ab3800ee82628cafe96d94f58d9790653b4e5387cbacc7097cc67c5ac18635",
+  "exe_ranges": [
+    {
+      "file": "source/hud_producer.bin",
+      "start": "0x8004095c",
+      "end_exclusive": "0x800411b8",
+      "sha256": "be2daf2fa1264c113de7688a3da1dc1231170ded70c03e04f33a202362355993"
+    },
+    {
+      "file": "source/calendar_readers.bin",
+      "start": "0x80019eb4",
+      "end_exclusive": "0x8001a098",
+      "sha256": "ca3b39a628c8c8c26eb4bd47f86a61aacbece830a2741afce31b45f115d13151"
+    },
+    {
+      "file": "source/fixed_text_path.bin",
+      "start": "0x800153ec",
+      "end_exclusive": "0x800155d0",
+      "sha256": "e2dc40ab5603faedf1ce966f7474f35e329b8f772539982f451062b0b62f1d2c"
+    },
+    {
+      "file": "source/glyph_record.bin",
+      "start": "0x80015fcc",
+      "end_exclusive": "0x800162d4",
+      "sha256": "77630a6f014302fc8cb8db6079a5f65d7f195687edb8b5a4739d3d6e6d6605ef"
+    }
+  ],
+  "known_before": "HUD call positions,calendar/expansion/font formulas and weather selectors already recovered. New contribution is raw11messages plus required literal/dynamic glyph and background pixel binding.",
+  "original_cpu_calls": 0
+}

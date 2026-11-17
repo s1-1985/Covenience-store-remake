@@ -1,0 +1,61 @@
+{
+  "source_file": "KYOU.TIM",
+  "source_sha256": "ef75f72fffafc3cc45853a2097059b421aed139929d31b6a1bea8dcb40127d89",
+  "source_rect": [
+    96,
+    184,
+    160,
+    24
+  ],
+  "draw_kind": 7,
+  "uv": [
+    96,
+    184
+  ],
+  "clut_xy": [
+    0,
+    492
+  ],
+  "indices_sha256": "ac6789cdb32603fc4be179ec6932c2bac034c0e3d054c04d1702893abe4da262",
+  "raw_color_words_sha256": "9ad67e4be78d901f55c3b04c32d07fe46fe0fabbd84ca8fe5af816e8b30efc70",
+  "records": [
+    {
+      "screen_xy": [
+        0,
+        0
+      ],
+      "record_xy": [
+        -160,
+        -112
+      ],
+      "size": [
+        160,
+        24
+      ]
+    },
+    {
+      "screen_xy": [
+        160,
+        0
+      ],
+      "record_xy": [
+        0,
+        -112
+      ],
+      "size": [
+        160,
+        24
+      ]
+    }
+  ],
+  "screen_origin": [
+    160,
+    112
+  ],
+  "source_rows": [
+    184,
+    207
+  ],
+  "original_image_height": 240,
+  "requested_upload_height": 256
+}
