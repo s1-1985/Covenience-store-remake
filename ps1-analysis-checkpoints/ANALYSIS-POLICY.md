@@ -144,3 +144,5 @@
 - [2026-11-17：店員35人と初期29配属、休憩復帰・清掃選択の時計位相と接客能力を接続](analysis/20261117-staff-work-timing-data/README.md)
 
 - [2026-11-17：配属の二巡更新・役割交換時の体力全回復と経験加算、word16の候補/配属処理での非参照範囲](analysis/20261117-staff-assignment-lifecycle-data/README.md)
+
+- [2026-11-17：誘致32バイトの新規初期化、18開始レコードと原呼出し元72対応の完成通知音29・R05を限定](analysis/20261117-project-initialization-sound-data/README.md)

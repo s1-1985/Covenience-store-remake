@@ -1,17 +1,18 @@
 {
   "date_jst": "2026-11-17",
-  "work_kind": "staff_assignment_lifecycle_data",
-  "new_result": "Slot swaps release then reassign: maximum energy restored and experience increments; unchanged same-slot assignments remain untouched. Four-map candidate output/RNG ignores word16 perturbations within tested scope.",
-  "known_before": "Roster, owner eligibility, single-function assignment and rest-placement algorithms previously extracted.",
-  "original_cpu_updates": 0,
-  "report": "analysis/20261117-staff-assignment-lifecycle-data/README.md",
-  "previous_report": "analysis/20261117-staff-work-timing-data/README.md",
-  "remaining_ledger": "ANALYSIS-REMAINING.json",
+  "work_kind": "project_initialization_and_caller_sound",
+  "new_result": "New-map loader zeros all32 project bytes including+30; original18 start-record blocks preserve0; original caller chain in72 source-map/catalog fixtures queues29 with last alias writer23F30 height20.",
+  "known_before": "Uninitialized completion stack local, strict comparison, stack aliases and initial store heights were already known.",
+  "report": "analysis/20261117-project-initialization-sound-data/README.md",
+  "previous_report": "analysis/20261117-staff-assignment-lifecycle-data/README.md",
+  "original_town_loads": 4,
+  "start_record_blocks": 18,
+  "catalog_completions": 72,
+  "natural_elapsed_days": 0,
+  "gameplay_callee_replacements": 0,
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
   "overall_measured_percent": null,
-  "candidate_calls": 9,
-  "staff_commit_calls": 4,
-  "native_callee_replacements": 0
+  "remaining_ledger": "ANALYSIS-REMAINING.json"
 }

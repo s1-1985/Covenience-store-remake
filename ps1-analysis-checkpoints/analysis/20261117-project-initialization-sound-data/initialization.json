@@ -1,0 +1,846 @@
+[
+  {
+    "map": "TOWN0001",
+    "before_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+    "after_hex": "ffff000000000000000000000000000000000000000000000000000000000000",
+    "resource_calls": [
+      [
+        0,
+        11
+      ]
+    ],
+    "project_writes": [
+      {
+        "pc": "0x8007e630",
+        "offset": 0,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 1,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 2,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 3,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 4,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 5,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 6,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 7,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 8,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 9,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 10,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 11,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 12,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 13,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 14,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 15,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 16,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 17,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 18,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 19,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 20,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 21,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 22,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 23,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 24,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 25,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 26,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 27,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 28,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 29,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 30,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 31,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8001b06c",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ]
+  },
+  {
+    "map": "TOWN0002",
+    "before_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+    "after_hex": "ffff000000000000000000000000000000000000000000000000000000000000",
+    "resource_calls": [
+      [
+        0,
+        11
+      ]
+    ],
+    "project_writes": [
+      {
+        "pc": "0x8007e630",
+        "offset": 0,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 1,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 2,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 3,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 4,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 5,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 6,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 7,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 8,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 9,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 10,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 11,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 12,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 13,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 14,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 15,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 16,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 17,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 18,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 19,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 20,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 21,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 22,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 23,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 24,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 25,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 26,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 27,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 28,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 29,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 30,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 31,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8001b06c",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ]
+  },
+  {
+    "map": "TOWN0003",
+    "before_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+    "after_hex": "ffff000000000000000000000000000000000000000000000000000000000000",
+    "resource_calls": [
+      [
+        0,
+        11
+      ]
+    ],
+    "project_writes": [
+      {
+        "pc": "0x8007e630",
+        "offset": 0,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 1,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 2,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 3,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 4,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 5,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 6,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 7,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 8,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 9,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 10,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 11,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 12,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 13,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 14,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 15,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 16,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 17,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 18,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 19,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 20,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 21,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 22,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 23,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 24,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 25,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 26,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 27,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 28,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 29,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 30,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 31,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8001b06c",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ]
+  },
+  {
+    "map": "TOWNPS",
+    "before_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+    "after_hex": "ffff000000000000000000000000000000000000000000000000000000000000",
+    "resource_calls": [
+      [
+        0,
+        11
+      ]
+    ],
+    "project_writes": [
+      {
+        "pc": "0x8007e630",
+        "offset": 0,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 1,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 2,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 3,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 4,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 5,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 6,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 7,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 8,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 9,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 10,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 11,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 12,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 13,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 14,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 15,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 16,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 17,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 18,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 19,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 20,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 21,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 22,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 23,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 24,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 25,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 26,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 27,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 28,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 29,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 30,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8007e630",
+        "offset": 31,
+        "size": 1,
+        "value": 0
+      },
+      {
+        "pc": "0x8001b06c",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ]
+  }
+]

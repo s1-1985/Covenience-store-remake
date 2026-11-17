@@ -1,0 +1,6086 @@
+[
+  {
+    "map": "TOWN0001",
+    "selection": 0,
+    "facility": "交番",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "000000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 0,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "1c0f540bdd1e663b3e7e7a94e259fd12dbd6057249f44bae1afb35c4833b2cd5",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 1,
+    "facility": "消防署",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "010000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 1,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "105db8a5719585df5cc1274118a79784f3e71f4e98a4fa636f167f8e4372bd19",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 2,
+    "facility": "住宅",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "020000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 16,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "3a4d6b8ef44f40735d523cabe4fbca083cdbcbb712887cdf169937bc69a57a27",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 3,
+    "facility": "会社",
+    "footprint": [
+      3,
+      3
+    ],
+    "pending_before": "030000000a0000000a0000000c0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 15,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "9ac6868ef2f9966a85d2091f4f1bb7ff22c458f2c4e921b108f6f6db765ee2d5",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 4,
+    "facility": "体育館",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "040000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 18,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "33c88f422d1d768802d2e3911a2829736513a309362ffe2e5ee150e002b9bed5",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 5,
+    "facility": "プール",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "050000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 18,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "ebec98ede2268eddd5b6681428c234c8475cf940b660e781e6f7c40e5ac3bce0",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 6,
+    "facility": "運動場",
+    "footprint": [
+      5,
+      4
+    ],
+    "pending_before": "060000000a0000000a0000000e0000000d000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000e0000000d000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 17,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "3709ec2b2e0c17eaf581f9d91688d309adc3ee901ca5d2b9a66a890453d5e3bb",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 7,
+    "facility": "ｲﾍﾞﾝﾄ会場",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "070000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 23,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "b94ee70d84102b6a4070d77c040ba4983954f898796b819ff1db5f1b8b41d165",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 8,
+    "facility": "幼稚園",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "080000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 7,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "a1332a7a60346f415fb38431b246f84ac00fd2e9a1e1eff7cbd44e193b2b5072",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 9,
+    "facility": "小学校",
+    "footprint": [
+      4,
+      4
+    ],
+    "pending_before": "090000000a0000000a0000000d0000000d000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000d0000000d000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "0db0323d8e2e6d75c1f524549fd1ee21c189cfae07ff880295f02f6cb4ff5b4c",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 10,
+    "facility": "中学校",
+    "footprint": [
+      5,
+      5
+    ],
+    "pending_before": "0a0000000a0000000a0000000e0000000e000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000e0000000e000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "11459e7d005d28ae4ed7ac4fe79125a10fe88e235a727fcc10809a6b01ba1c3d",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 11,
+    "facility": "高校",
+    "footprint": [
+      6,
+      6
+    ],
+    "pending_before": "0b0000000a0000000a0000000f0000000f000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000f0000000f000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "adf799b28992de6d9fb9e8ae5586f8fa17ef2a3210c9910938c7b99250d83351",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 12,
+    "facility": "大学",
+    "footprint": [
+      7,
+      7
+    ],
+    "pending_before": "0c0000000a0000000a0000001000000010000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000001000000010000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 9,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "fc3fe4f327c9eb00bfebedfc8a4b73c08981818774d967a0f958fb80b305f165",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 13,
+    "facility": "専門学校",
+    "footprint": [
+      4,
+      3
+    ],
+    "pending_before": "0d0000000a0000000a0000000d0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000d0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 10,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "8decb9b75c5bb385d48648a3b4819b67cb0cf1a660275c928fb88822b9c0c3ce",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 14,
+    "facility": "公園",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "0e0000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 14,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "2c5c5c79306875996343d287d7d5ecce7429a6ef0e6f7df5b53d4a24c294f872",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 15,
+    "facility": "水族館",
+    "footprint": [
+      3,
+      3
+    ],
+    "pending_before": "0f0000000a0000000a0000000c0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 12,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "a932fa52531849fd47a4a8d6fda3e2cf571d702f39230ab11f47710c471fd54f",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 16,
+    "facility": "動物園",
+    "footprint": [
+      6,
+      6
+    ],
+    "pending_before": "100000000a0000000a0000000f0000000f000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000f0000000f000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 13,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "6b38073b0ecc0e72c8aca5e35efc2e8a4d9ba2c2fa9b8a267d028038a31c7eb9",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0001",
+    "selection": 17,
+    "facility": "遊園地",
+    "footprint": [
+      7,
+      7
+    ],
+    "pending_before": "110000000a0000000a0000001000000010000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000001000000010000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 11,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "e717a1488f73dbb9411fa849580acd8963412f8a73ee30d4e65df595a07825ca",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 0,
+    "facility": "交番",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "000000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 0,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "fec1bf4cf11b4383c68d7d66ef76ec19e384ce44a50fd69a3ff054284bee1743",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 1,
+    "facility": "消防署",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "010000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 1,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "f76da35157cf0ad118f903eedfdf843a72b3433191285b44b67fce863a8a11a0",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 2,
+    "facility": "住宅",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "020000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 16,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "ed59ecdd4949c2935fb754354177b166593ba854fd78f769ac36753ccd6b4b2e",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 3,
+    "facility": "会社",
+    "footprint": [
+      3,
+      3
+    ],
+    "pending_before": "030000000a0000000a0000000c0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 15,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "c568d90b815d4edc3a9d978e03697e1129da9f200f3edb2e08faa0d2639fc44b",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 4,
+    "facility": "体育館",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "040000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 18,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "b66348cdeff1f8ab950067bc88dda6007d6d1d51fe89787d1e17e1e9aba60bf8",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 5,
+    "facility": "プール",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "050000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 18,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "0cfd6d67775edc366dc581f7d9f3551aa3cf65ce757560bc2d30b41b1cba18ac",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 6,
+    "facility": "運動場",
+    "footprint": [
+      5,
+      4
+    ],
+    "pending_before": "060000000a0000000a0000000e0000000d000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000e0000000d000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 17,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "cb979e35c5360ee3e6df710b6f94914f57268b887b4a668df4528e3cd136ed6f",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 7,
+    "facility": "ｲﾍﾞﾝﾄ会場",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "070000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 23,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "bb4adf5d2beed4b5a876918a4dd4560280783b5f6347c89e5b98ecb9ccca96c5",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 8,
+    "facility": "幼稚園",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "080000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 7,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "121365b2c8b9c010d9fe6512c76d676d3788393a637c9dbb4ff4d2fec164b650",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 9,
+    "facility": "小学校",
+    "footprint": [
+      4,
+      4
+    ],
+    "pending_before": "090000000a0000000a0000000d0000000d000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000d0000000d000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "d00869fb319f7bc9966242318b7bffe5528277a3909c79a62c8e014afb0f8f6f",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 10,
+    "facility": "中学校",
+    "footprint": [
+      5,
+      5
+    ],
+    "pending_before": "0a0000000a0000000a0000000e0000000e000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000e0000000e000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "3ddcc1de8529f316afcb48198c439ef398baeef3c18e9b3a65bf727c5a68d3ef",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 11,
+    "facility": "高校",
+    "footprint": [
+      6,
+      6
+    ],
+    "pending_before": "0b0000000a0000000a0000000f0000000f000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000f0000000f000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "305e84140997ed5ab517ab72a8cdb1656ddbf4934b2aa9066a03d02282fdf84a",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 12,
+    "facility": "大学",
+    "footprint": [
+      7,
+      7
+    ],
+    "pending_before": "0c0000000a0000000a0000001000000010000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000001000000010000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 9,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "1b80cb7e88a5346bc4415a3948ce35afd8785b0c8cddbf2ace48b39b792c7f6d",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 13,
+    "facility": "専門学校",
+    "footprint": [
+      4,
+      3
+    ],
+    "pending_before": "0d0000000a0000000a0000000d0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000d0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 10,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "47a5e315d4ae01b43fd3d1dce2dfc9e2839aa1950e227bced8bd154f3cc1bb77",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 14,
+    "facility": "公園",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "0e0000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 14,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "d806320517d2bcdd1d6bcd6025576ae4326b1744d26b8a1dde8ca02a66fb48c4",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 15,
+    "facility": "水族館",
+    "footprint": [
+      3,
+      3
+    ],
+    "pending_before": "0f0000000a0000000a0000000c0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 12,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "21189542df626042f58fc995221f73c24a1e0c9680d8225c6042fe470f456382",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 16,
+    "facility": "動物園",
+    "footprint": [
+      6,
+      6
+    ],
+    "pending_before": "100000000a0000000a0000000f0000000f000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000f0000000f000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 13,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "cd3b4f642e00d5443dd098355f71fc40e179841d08e828ce18c2b4ce84be04d1",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0002",
+    "selection": 17,
+    "facility": "遊園地",
+    "footprint": [
+      7,
+      7
+    ],
+    "pending_before": "110000000a0000000a0000001000000010000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000001000000010000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 11,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "0dfef1018e178b4261c90d203d4ae80df4b6802611455f24511a263002c7f93d",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 0,
+    "facility": "交番",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "000000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 0,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "6a1f6bb72bdb74347fe5b13a0f2c6e8dd9b601d9781ef38000a4131554b8c87b",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 1,
+    "facility": "消防署",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "010000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 1,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "6fc042bb28d6d435eb7b8aa50ac82fcb1d89689e5559ba1647cadacb0e382145",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 2,
+    "facility": "住宅",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "020000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 16,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "b61039851820ada2ec3cd1c405d6e7ec24bac650f240b19d8f12998c20c02420",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 3,
+    "facility": "会社",
+    "footprint": [
+      3,
+      3
+    ],
+    "pending_before": "030000000a0000000a0000000c0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 15,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "6aa90c520cd1f2f9eb7ba31f2898f32cee87d238a8d44f58e9ba1dde0f2fce01",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 4,
+    "facility": "体育館",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "040000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 18,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "967840dd31cf3890061f202e1657497c47bdb3b5a7c98b1b8f20a4e8ab865e20",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 5,
+    "facility": "プール",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "050000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 18,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "48e0f97a3c0b573d9650bc81de8a8b1fee6494d931ed3e9c9a0e996f74f650b2",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 6,
+    "facility": "運動場",
+    "footprint": [
+      5,
+      4
+    ],
+    "pending_before": "060000000a0000000a0000000e0000000d000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000e0000000d000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 17,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "593c6329c4c6fbc44940d736fffe2769211c8f4faebfdffa8d7c7a0a0d90402e",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 7,
+    "facility": "ｲﾍﾞﾝﾄ会場",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "070000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 23,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "4e52954f23032aebef4814e1d60721ceea642731796f1dc2bf2cad8ff62a230a",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 8,
+    "facility": "幼稚園",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "080000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 7,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "b26f00f8322a07d4a5356909d06da3bf78f9d5f428cf6e893d146ffb745fcde1",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 9,
+    "facility": "小学校",
+    "footprint": [
+      4,
+      4
+    ],
+    "pending_before": "090000000a0000000a0000000d0000000d000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000d0000000d000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "a3fb375a49e28d2ea9fb53a3e1483fd1b919d966040d051ed88751359015a4bf",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 10,
+    "facility": "中学校",
+    "footprint": [
+      5,
+      5
+    ],
+    "pending_before": "0a0000000a0000000a0000000e0000000e000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000e0000000e000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "c2ad7d3de1ee2febd5d2303a6f2786b4ff7471dfc7124e7ca58347ef316ddf75",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 11,
+    "facility": "高校",
+    "footprint": [
+      6,
+      6
+    ],
+    "pending_before": "0b0000000a0000000a0000000f0000000f000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000f0000000f000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "8a867cf055ce858dcfe96147bb1150cf953447163fddcf132d4d12c217f8fbaf",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 12,
+    "facility": "大学",
+    "footprint": [
+      7,
+      7
+    ],
+    "pending_before": "0c0000000a0000000a0000001000000010000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000001000000010000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 9,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "585e8f3a5e38adbb882c89f39397478c773cf6a59421b52078ee93eef5089dfa",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 13,
+    "facility": "専門学校",
+    "footprint": [
+      4,
+      3
+    ],
+    "pending_before": "0d0000000a0000000a0000000d0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000d0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 10,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "21a5aa60153499feedb2c64b8cb926680599765c76b054d7da62f3cb366d612e",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 14,
+    "facility": "公園",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "0e0000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 14,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "4dc7107339d4e4ce5f6b95aa8b17448b4f75673066f230fa2b241afe65a2a952",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 15,
+    "facility": "水族館",
+    "footprint": [
+      3,
+      3
+    ],
+    "pending_before": "0f0000000a0000000a0000000c0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 12,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "567d4ca32ef402b5419d2f277c03b41f2be387bf4d90f84e54ffdea6424acd86",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 16,
+    "facility": "動物園",
+    "footprint": [
+      6,
+      6
+    ],
+    "pending_before": "100000000a0000000a0000000f0000000f000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000f0000000f000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 13,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "bae7fe6637ed8676f7c2a52d12ea28a908ff6d05f04f1129ac2c8e1030b2fe20",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWN0003",
+    "selection": 17,
+    "facility": "遊園地",
+    "footprint": [
+      7,
+      7
+    ],
+    "pending_before": "110000000a0000000a0000001000000010000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000001000000010000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 11,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "8c56fcc95385cea013b66a615b73888b85f922097ed8056b31e26abb3d9d9256",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 0,
+    "facility": "交番",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "000000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 0,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "22b1775d1d1be38d6ce72d7cef1eb85138e4c52f6584fa488f5c0f5a0cb936dd",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 1,
+    "facility": "消防署",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "010000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 1,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "233d0e66498348ed0f339fe12130e39c5a7d02d5d2f0563cd6e3aba737110391",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 2,
+    "facility": "住宅",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "020000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 16,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "e4481b5fc2e0a51f3173ce5feac4af0c969049afc4a068e47dfacb98c92d0e73",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 3,
+    "facility": "会社",
+    "footprint": [
+      3,
+      3
+    ],
+    "pending_before": "030000000a0000000a0000000c0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 15,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "033deef682a5dac48e01a5c7ce117b7f6f34ad34f73f8080cb357052473d6a12",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 4,
+    "facility": "体育館",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "040000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 18,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "a78b539818a3aaa78bb5ccc3bc8dd3b7c041b04f5ff82adb4c6556b6a240be47",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 5,
+    "facility": "プール",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "050000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 18,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "64f57dd7369fee93960c048654b675f25c7f52d1624376e969cedeb03d9612f8",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 6,
+    "facility": "運動場",
+    "footprint": [
+      5,
+      4
+    ],
+    "pending_before": "060000000a0000000a0000000e0000000d000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000e0000000d000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 17,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "009ea1b806a57be2f2e7744d4591d6962c92eec45e45d6d0fa1da9809408b016",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 7,
+    "facility": "ｲﾍﾞﾝﾄ会場",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "070000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 23,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "fb8f9532a36c235a4d2b9d5814f999085f415078fbb13b148a58475ec175bbe3",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 8,
+    "facility": "幼稚園",
+    "footprint": [
+      3,
+      2
+    ],
+    "pending_before": "080000000a0000000a0000000c0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 7,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "c8c8803301f6bd4388f20ba29a8a4e34509abb8fad3ac153138cfeb7233e5b06",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 9,
+    "facility": "小学校",
+    "footprint": [
+      4,
+      4
+    ],
+    "pending_before": "090000000a0000000a0000000d0000000d000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000d0000000d000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "b933ad77d45611ab195462c0da62f8347e03882d5e87c0a6c82130a87c791298",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 10,
+    "facility": "中学校",
+    "footprint": [
+      5,
+      5
+    ],
+    "pending_before": "0a0000000a0000000a0000000e0000000e000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000e0000000e000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "ed0432c400b765621613a95513b5abb8e91d59e4da7756c26f46fb6ce37e1ca8",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 11,
+    "facility": "高校",
+    "footprint": [
+      6,
+      6
+    ],
+    "pending_before": "0b0000000a0000000a0000000f0000000f000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000f0000000f000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 8,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "331e7dbc74da7e0acd0b51bf4ae59eaf7132e4676332002deccbea6507f97182",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 12,
+    "facility": "大学",
+    "footprint": [
+      7,
+      7
+    ],
+    "pending_before": "0c0000000a0000000a0000001000000010000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000001000000010000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 9,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "5d893428539b6d978f1336658f128ab4005a15d8dcce118fa81ff3978271d8ed",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 13,
+    "facility": "専門学校",
+    "footprint": [
+      4,
+      3
+    ],
+    "pending_before": "0d0000000a0000000a0000000d0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000d0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 10,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "9a62e3a7660f503e9de93df9c6a33cae8bc12f8253824182b5c706c0abf3711f",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 14,
+    "facility": "公園",
+    "footprint": [
+      2,
+      2
+    ],
+    "pending_before": "0e0000000a0000000a0000000b0000000b000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 14,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "db82eb9d5d3a4160cbd7c236fcdbc18dfa1955342c083f93678ee4f880d8574f",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 15,
+    "facility": "水族館",
+    "footprint": [
+      3,
+      3
+    ],
+    "pending_before": "0f0000000a0000000a0000000c0000000c000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000c0000000c000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 12,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "d906f3fc645502884554e4eac2dfa885d394b625e9342a6df21cdd0af94eeff0",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 16,
+    "facility": "動物園",
+    "footprint": [
+      6,
+      6
+    ],
+    "pending_before": "100000000a0000000a0000000f0000000f000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000000f0000000f000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 13,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "52b4623a32e57e2be19a317aac1b90a5b977e1970a67f470fba3a884e254d52c",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  },
+  {
+    "map": "TOWNPS",
+    "selection": 17,
+    "facility": "遊園地",
+    "footprint": [
+      7,
+      7
+    ],
+    "pending_before": "110000000a0000000a0000001000000010000000010000000000000000000000",
+    "record_after": "ffff00000a0000000a0000001000000010000000000000000000000000000000",
+    "alias_writes": [
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 24
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      },
+      {
+        "pc": "0x80023f30",
+        "address": "0x1effdc",
+        "size": 4,
+        "value": 20
+      }
+    ],
+    "record_writes": [
+      {
+        "pc": "0x800290f0",
+        "offset": 20,
+        "size": 2,
+        "value": 0
+      },
+      {
+        "pc": "0x800292fc",
+        "offset": 0,
+        "size": 2,
+        "value": 65535
+      }
+    ],
+    "caller_checkpoints": [
+      {
+        "pc": "0x80023474",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023490",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x80023498",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292b4",
+        "alias_value": 20,
+        "threshold": 0
+      },
+      {
+        "pc": "0x800292ec",
+        "alias_value": 20,
+        "threshold": 0
+      }
+    ],
+    "completion_notification": {
+      "type": 2,
+      "event": 11,
+      "sound": 29,
+      "flag": 1,
+      "fifth": 0
+    },
+    "town_sha256_after": "ebab4571c423188391f5d1cb728328ad5c3a9b559ba2ff2c474822f9455325f9",
+    "clock": 0,
+    "calendar": {
+      "stage": 1,
+      "hour": 0,
+      "subhour": 0
+    }
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "selection": 0,
+    "name": "交番",
+    "record_after": "000000000a0000000a0000000b0000000b000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 1,
+    "name": "消防署",
+    "record_after": "010000000a0000000a0000000c0000000b000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 2,
+    "name": "住宅",
+    "record_after": "020000000a0000000a0000000c0000000b000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 3,
+    "name": "会社",
+    "record_after": "030000000a0000000a0000000c0000000c000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 4,
+    "name": "体育館",
+    "record_after": "040000000a0000000a0000000c0000000b000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 5,
+    "name": "プール",
+    "record_after": "050000000a0000000a0000000c0000000b000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 6,
+    "name": "運動場",
+    "record_after": "060000000a0000000a0000000e0000000d000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 7,
+    "name": "ｲﾍﾞﾝﾄ会場",
+    "record_after": "070000000a0000000a0000000b0000000b000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 8,
+    "name": "幼稚園",
+    "record_after": "080000000a0000000a0000000c0000000b000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 9,
+    "name": "小学校",
+    "record_after": "090000000a0000000a0000000d0000000d000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 10,
+    "name": "中学校",
+    "record_after": "0a0000000a0000000a0000000e0000000e000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 11,
+    "name": "高校",
+    "record_after": "0b0000000a0000000a0000000f0000000f000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 12,
+    "name": "大学",
+    "record_after": "0c0000000a0000000a0000001000000010000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 13,
+    "name": "専門学校",
+    "record_after": "0d0000000a0000000a0000000d0000000c000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 14,
+    "name": "公園",
+    "record_after": "0e0000000a0000000a0000000b0000000b000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 15,
+    "name": "水族館",
+    "record_after": "0f0000000a0000000a0000000c0000000c000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 16,
+    "name": "動物園",
+    "record_after": "100000000a0000000a0000000f0000000f000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  },
+  {
+    "selection": 17,
+    "name": "遊園地",
+    "record_after": "110000000a0000000a0000001000000010000000040000000000000000000000",
+    "threshold": 0,
+    "countdown": 4,
+    "entry": "0x8006af54",
+    "stop": "0x8006b03c",
+    "scope": "Original record-write basic blocks and RNG; UI, cost confirmation and land placement excluded."
+  }
+]

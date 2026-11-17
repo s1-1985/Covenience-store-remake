@@ -1,0 +1,71 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "message_sha256": "d2ab3800ee82628cafe96d94f58d9790653b4e5387cbacc7097cc67c5ac18635",
+  "inputs": [
+    {
+      "path": "algorithm-analysis/source/TOWN0001.BIN",
+      "bytes": 76707,
+      "sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b"
+    },
+    {
+      "path": "algorithm-analysis/source/TOWN0002.BIN",
+      "bytes": 76707,
+      "sha256": "2de1b11824061a1e81ae619fe6f0c0a9379c28b4012d85dd2c1babbcc28ede90"
+    },
+    {
+      "path": "algorithm-analysis/source/TOWN0003.BIN",
+      "bytes": 76707,
+      "sha256": "a5d44360640f007d47a61b46507a5d8729b278bd4089e647b7296e387c305add"
+    },
+    {
+      "path": "algorithm-analysis/source/TOWNPS.BIN",
+      "bytes": 76707,
+      "sha256": "56976cfb1db14b7bf1263d26891dc56bc0c40baaed651fd06ba7afb5b1a51b93"
+    }
+  ],
+  "ranges": [
+    {
+      "file": "source/project_initializer.bin",
+      "start": "0x8001b004",
+      "end_exclusive": "0x8001b08c",
+      "sha256": "fb523b8a65fa3fcf9e17c213ac14166f772c9c734c6d7600a107d94e37afa281"
+    },
+    {
+      "file": "source/caller_prefix.bin",
+      "start": "0x80023438",
+      "end_exclusive": "0x800234a8",
+      "sha256": "42110f23b6b48934b98fc7b2aabd3b263001e03463f8f8f7e372f87489e34e0c"
+    },
+    {
+      "file": "source/metric_height_writer.bin",
+      "start": "0x80023ef0",
+      "end_exclusive": "0x80023f38",
+      "sha256": "196a0b08738024f8140dc31da28eadcedd9433400f3c27142c46fa021e483c1c"
+    },
+    {
+      "file": "source/completion.bin",
+      "start": "0x80029020",
+      "end_exclusive": "0x80029334",
+      "sha256": "e6f0cc9670fb15934684f5bc0d8b9a49a45315b8d96fa2c7421805f041077791"
+    },
+    {
+      "file": "source/project_record_start.bin",
+      "start": "0x8006af54",
+      "end_exclusive": "0x8006b03c",
+      "sha256": "2ebca9318799acfa03e0f6e8eb7e9df47fbd306ad833d57294ad6c8d145175c4"
+    },
+    {
+      "file": "source/save_record_copy.bin",
+      "start": "0x8006ba38",
+      "end_exclusive": "0x8006ba5c",
+      "sha256": "b75f94d4ae710c162794ad53f416663df09a8b9834e8ce1bac55bb02882adeae"
+    },
+    {
+      "file": "source/load_record_copy.bin",
+      "start": "0x8006be58",
+      "end_exclusive": "0x8006be7c",
+      "sha256": "9aebf23d12195d1c9da16e21394023aa028be161a53e54e9b598bd168e6a5e21"
+    }
+  ]
+}

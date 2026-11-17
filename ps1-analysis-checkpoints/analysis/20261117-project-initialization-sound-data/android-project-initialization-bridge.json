@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "new_game": "Zero all32 project-record bytes, then set selection=-1; original+30 starts0.",
+  "start": "Record-write block sets selection, rectangle and countdown; it preserves+30.",
+  "load": "Restore stored32-byte record rather than resetting all fields as if new.",
+  "completion": "Deactivate selection after native completion; other fields carry over except countdown decrement.",
+  "sound": {
+    "confirmed_scope": "Original four initial maps x18 pending facilities; initial clock; source caller2346C through234A0.",
+    "code": 29,
+    "last_writer": "Initial last active store height20 at23F30 survives to comparison against0.",
+    "outside_scope": "Do not generalize fixed29 to annual events, changed store states or imported records without checking effective last writer."
+  },
+  "runtime": "Native data and algorithms; no PS executable/BIOS/emulator runtime dependency.",
+  "evidence": "README.md"
+}

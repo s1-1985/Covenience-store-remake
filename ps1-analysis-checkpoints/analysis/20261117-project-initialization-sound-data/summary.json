@@ -1,0 +1,15 @@
+{
+  "original_town_loads": 4,
+  "start_record_blocks": 18,
+  "catalog_completions": 72,
+  "natural_elapsed_days": 0,
+  "original_main_prefix": "0x8002346c..0x800234a0",
+  "gameplay_callee_replacements": 0,
+  "resource_loader_replacements": 4,
+  "sound_codes": [
+    29
+  ],
+  "threshold_initialization": "All32 project bytes zeroed, then selection=-1.",
+  "last_alias_writer": "80023f30, last initial active store height20, survives event/predecessor/completion children in these cases.",
+  "scope": "Original four-map initial states plus injected pending projects, at original initial clock. Not purchased via UI, not a natural playthrough; no annual/remodeled/save-import coverage. R05 remains open outside this scope."
+}
