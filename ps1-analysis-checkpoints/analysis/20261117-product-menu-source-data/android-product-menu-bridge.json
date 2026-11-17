@@ -1,0 +1,48 @@
+{
+  "status": "analysis_only",
+  "android_code_changed": false,
+  "products": "product-menu-crops.json",
+  "menus": "fixture-menu-layouts.json",
+  "permissions": "selection-permission-data.json",
+  "labels": "product-labels.json",
+  "window": {
+    "screen_xy": [
+      56,
+      24
+    ],
+    "size_cells": [
+      13,
+      12
+    ],
+    "size_pixels": [
+      208,
+      192
+    ]
+  },
+  "selected_product_label": {
+    "screen_xy": [
+      120,
+      56
+    ],
+    "message_id": "71+product"
+  },
+  "navigation": {
+    "order": [
+      "up",
+      "down",
+      "right",
+      "left"
+    ],
+    "up": "index>=4: -4",
+    "down": "index<8 and index+4<count: +4",
+    "right": "index not in3,7,11 and index+1<count: +1",
+    "left": "index not in0,4,8: -1",
+    "wrapping": false
+  },
+  "limitations": [
+    "Master choices are not natural play reachability.",
+    "Preview contains icon grid only, not original full window/text/cursor/GPU.",
+    "Do not use32px menu imagery as16px interior inventory sprites.",
+    "Flag writers/acquisition and natural current-store permission values are outside this report."
+  ]
+}

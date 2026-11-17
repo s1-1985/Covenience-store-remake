@@ -1,0 +1,89 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5605,
+      "sha256": "c8d11b2f98a350e07ef078eb83f2fc95437e43a726e414890fd93857a1730881"
+    },
+    {
+      "path": "android-product-menu-bridge.json",
+      "bytes": 1121,
+      "sha256": "1af3cf833d71d291ff829a8bdbcb6e1903dd08a017b340bf4664ed5c7664c207"
+    },
+    {
+      "path": "display-label-differences.json",
+      "bytes": 733,
+      "sha256": "9b302ccdbb85c2c685a7998cd0a5f00ad851ed3f3c1b7302903168f61abb3044"
+    },
+    {
+      "path": "extract-product-menu.py",
+      "bytes": 10952,
+      "sha256": "5e0b68c72b30d25672857f9ab11faa170efa626eb962f9089584eb7359d7e527"
+    },
+    {
+      "path": "fixture-menu-layouts.json",
+      "bytes": 82160,
+      "sha256": "e8e0e1c27c93c7ca64e8b1e93627b81e351744afcfc7efccd27b5f72428c5d0a"
+    },
+    {
+      "path": "fixture0-product-grid-preview.png",
+      "bytes": 10342,
+      "sha256": "27697bcfc7d06c1554272f3f34640bf5f69f5ebbbe97fdb96e21d89dc51a1b4a"
+    },
+    {
+      "path": "product-labels.json",
+      "bytes": 9217,
+      "sha256": "d3a7bf5de683997ed8401bc8242b6261d16451ce4463ee3485dbf7f63c0243d0"
+    },
+    {
+      "path": "product-menu-crops.json",
+      "bytes": 21122,
+      "sha256": "9fccbfb4cc8129d63d40bcb0bf008b5e1fa4c33482a74d231f3fb64998e6dfad"
+    },
+    {
+      "path": "product-menu-readers.asm",
+      "bytes": 28352,
+      "sha256": "051b25342dc1bec15f979a340aed89b28cc5c31e9d3446dafff4e29744f38679"
+    },
+    {
+      "path": "product-menu-source-preview.png",
+      "bytes": 41831,
+      "sha256": "b008a3b4b7db8dd5a50802dd984cde9236aea55a73d3f9c589cdf16328109004"
+    },
+    {
+      "path": "selection-permission-data.json",
+      "bytes": 2820,
+      "sha256": "62f24fdd6b2bc94fdcfe618785a6559e78d9caac19438576399f39dc0d8988b5"
+    },
+    {
+      "path": "source/product-labels-71-97.bin",
+      "bytes": 260,
+      "sha256": "6d369909f4010184e14189ace5e95a8a12064b7c4915c577afbc2ee2bacb26b3"
+    },
+    {
+      "path": "source/product_icon_helper.bin",
+      "bytes": 564,
+      "sha256": "390abec6499ade7afce2d4da1dffa4ddd5f82ee786196e0642d2ef179befb303"
+    },
+    {
+      "path": "source/product_selection_menu.bin",
+      "bytes": 2752,
+      "sha256": "723ccfc4fc59ac061deabe6abddb7e4159bdc26babf6d6bef9b9a541b43be9e2"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 1931,
+      "sha256": "2fb47870afb9c61a38d3b87aabf13da1ce6525b23881c21c3af0a81213cc2b9c"
+    },
+    {
+      "path": "source-reference/interior_submenu.py",
+      "bytes": 1230,
+      "sha256": "da4f352034adf800c2e78b987bff494b4d480c890be9470052edf9ebc59662eb"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 512,
+      "sha256": "f8ab072f6ad4f28a0ef1f9c64b5088d026c1bb999724b304fc621543656eedb4"
+    }
+  ]
+}

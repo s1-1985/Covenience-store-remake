@@ -1,0 +1,164 @@
+{
+  "gates": [
+    {
+      "product": 8,
+      "store_byte_offset": 3188,
+      "label": "たばこ",
+      "rejection_reason": 1
+    },
+    {
+      "product": 2,
+      "store_byte_offset": 3189,
+      "label": "酒類",
+      "rejection_reason": 2
+    },
+    {
+      "product": 22,
+      "store_byte_offset": 3190,
+      "label": "薬品",
+      "rejection_reason": 3
+    }
+  ],
+  "combinations": [
+    {
+      "flags": [
+        0,
+        0,
+        0
+      ],
+      "blocked": [
+        {
+          "product": 8,
+          "reason": 1
+        },
+        {
+          "product": 2,
+          "reason": 2
+        },
+        {
+          "product": 22,
+          "reason": 3
+        }
+      ],
+      "disabled_choice_occurrences": 25
+    },
+    {
+      "flags": [
+        1,
+        0,
+        0
+      ],
+      "blocked": [
+        {
+          "product": 2,
+          "reason": 2
+        },
+        {
+          "product": 22,
+          "reason": 3
+        }
+      ],
+      "disabled_choice_occurrences": 23
+    },
+    {
+      "flags": [
+        0,
+        1,
+        0
+      ],
+      "blocked": [
+        {
+          "product": 8,
+          "reason": 1
+        },
+        {
+          "product": 22,
+          "reason": 3
+        }
+      ],
+      "disabled_choice_occurrences": 16
+    },
+    {
+      "flags": [
+        1,
+        1,
+        0
+      ],
+      "blocked": [
+        {
+          "product": 22,
+          "reason": 3
+        }
+      ],
+      "disabled_choice_occurrences": 14
+    },
+    {
+      "flags": [
+        0,
+        0,
+        1
+      ],
+      "blocked": [
+        {
+          "product": 8,
+          "reason": 1
+        },
+        {
+          "product": 2,
+          "reason": 2
+        }
+      ],
+      "disabled_choice_occurrences": 11
+    },
+    {
+      "flags": [
+        1,
+        0,
+        1
+      ],
+      "blocked": [
+        {
+          "product": 2,
+          "reason": 2
+        }
+      ],
+      "disabled_choice_occurrences": 9
+    },
+    {
+      "flags": [
+        0,
+        1,
+        1
+      ],
+      "blocked": [
+        {
+          "product": 8,
+          "reason": 1
+        }
+      ],
+      "disabled_choice_occurrences": 2
+    },
+    {
+      "flags": [
+        1,
+        1,
+        1
+      ],
+      "blocked": [],
+      "disabled_choice_occurrences": 0
+    }
+  ],
+  "enabled_rgb": [
+    128,
+    128,
+    128
+  ],
+  "disabled_rgb": [
+    64,
+    64,
+    64
+  ],
+  "visibility": "Denied items stay in their slots with darker modulation; confirm branches to0x80065080 rather than returning the product. Cursor navigation does not skip denied items.",
+  "flag_semantics": "This report uses raw zero/nonzero permission bytes; it does not infer how each permission is acquired.",
+  "source_rule": "Known interior_submenu.py and raw0x80068C14..0x80068D18 /0x80069000..0x80069254."
+}

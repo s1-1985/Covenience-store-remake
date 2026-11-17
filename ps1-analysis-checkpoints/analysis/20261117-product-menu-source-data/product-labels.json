@@ -1,0 +1,434 @@
+{
+  "source": "/DAT/MSG00.OBJ",
+  "source_sha256": "d2ab3800ee82628cafe96d94f58d9790653b4e5387cbacc7097cc67c5ac18635",
+  "packed_file": "source/product-labels-71-97.bin",
+  "rows": [
+    {
+      "product": 0,
+      "message_id": 71,
+      "source_offset": 3592,
+      "packed_offset": 0,
+      "bytes": 12,
+      "codes": [
+        311,
+        78,
+        64,
+        325,
+        326,
+        16639
+      ],
+      "text": "冷たい飲料",
+      "sha256": "b447b007c7c6045761ce622bba3577384b40a22e7cdd5df62df02fb940eeee7b"
+    },
+    {
+      "product": 1,
+      "message_id": 72,
+      "source_offset": 3604,
+      "packed_offset": 12,
+      "bytes": 12,
+      "codes": [
+        309,
+        68,
+        64,
+        325,
+        326,
+        16639
+      ],
+      "text": "温かい飲料",
+      "sha256": "6b2069ef0ff238807da83f0c71b4746c5c2fbab9d7d371da284d7414a6a4deaa"
+    },
+    {
+      "product": 2,
+      "message_id": 73,
+      "source_offset": 3616,
+      "packed_offset": 24,
+      "bytes": 6,
+      "codes": [
+        285,
+        286,
+        16639
+      ],
+      "text": "酒類",
+      "sha256": "fe70abd0a29e147886c83dc608f16e462efc53c52f17489962b0a986cb005272"
+    },
+    {
+      "product": 3,
+      "message_id": 74,
+      "source_offset": 3622,
+      "packed_offset": 30,
+      "bytes": 8,
+      "codes": [
+        327,
+        328,
+        286,
+        16639
+      ],
+      "text": "弁当類",
+      "sha256": "ffdab34dad39b5c50342cad60006f40d295990c5c544921763cc56c0cf077068"
+    },
+    {
+      "product": 4,
+      "message_id": 75,
+      "source_offset": 3630,
+      "packed_offset": 38,
+      "bytes": 8,
+      "codes": [
+        209,
+        188,
+        286,
+        16639
+      ],
+      "text": "パン類",
+      "sha256": "d0a50a978fe831b03af5329e354e97f6f65879a37757c9432328ab293867c8db"
+    },
+    {
+      "product": 5,
+      "message_id": 76,
+      "source_offset": 3638,
+      "packed_offset": 46,
+      "bytes": 16,
+      "codes": [
+        144,
+        188,
+        155,
+        158,
+        188,
+        162,
+        286,
+        16639
+      ],
+      "text": "インスタント類",
+      "sha256": "d039d86826533c1343cf17464c69e80225c15d8d6a824774d84c40d84dc0c107"
+    },
+    {
+      "product": 6,
+      "message_id": 77,
+      "source_offset": 3654,
+      "packed_offset": 62,
+      "bytes": 8,
+      "codes": [
+        336,
+        337,
+        286,
+        16639
+      ],
+      "text": "菓子類",
+      "sha256": "a148da68c84b34866a782a1df460c83254d820b9efac5b4f1255a6a94cf3cefc"
+    },
+    {
+      "product": 7,
+      "message_id": 78,
+      "source_offset": 3662,
+      "packed_offset": 70,
+      "bytes": 6,
+      "codes": [
+        272,
+        286,
+        16639
+      ],
+      "text": "本類",
+      "sha256": "33e7e40032cce8a1d886efe0a185f1223c1c47d477b961e88e2f31bcdaee030b"
+    },
+    {
+      "product": 8,
+      "message_id": 79,
+      "source_offset": 3668,
+      "packed_offset": 76,
+      "bytes": 8,
+      "codes": [
+        158,
+        204,
+        152,
+        16639
+      ],
+      "text": "タバコ",
+      "sha256": "23bbe7cac3b320a37267fff01a3afeaa136395b4c9e7a22e60c00ade83ee8f75"
+    },
+    {
+      "product": 9,
+      "message_id": 80,
+      "source_offset": 3676,
+      "packed_offset": 84,
+      "bytes": 16,
+      "codes": [
+        143,
+        144,
+        155,
+        150,
+        182,
+        46,
+        175,
+        16639
+      ],
+      "text": "アイスクリーム",
+      "sha256": "6d99ef6939fe778592985664d5989099aa5bef69748936aa6d20abc1d717cd21"
+    },
+    {
+      "product": 10,
+      "message_id": 81,
+      "source_offset": 3692,
+      "packed_offset": 100,
+      "bytes": 8,
+      "codes": [
+        258,
+        338,
+        339,
+        16639
+      ],
+      "text": "文房具",
+      "sha256": "f9722c03a3a9f77b81c44710a10d901c18ca3db72203dcce0f2b61bd79846ea3"
+    },
+    {
+      "product": 11,
+      "message_id": 82,
+      "source_offset": 3700,
+      "packed_offset": 108,
+      "bytes": 12,
+      "codes": [
+        333,
+        334,
+        335,
+        588,
+        286,
+        16639
+      ],
+      "text": "電気製品類",
+      "sha256": "4c8e341baedd0cb5a10ed2a821c681a0aece3517f36a5a2679a5cfe4e2cc4bab"
+    },
+    {
+      "product": 12,
+      "message_id": 83,
+      "source_offset": 3712,
+      "packed_offset": 120,
+      "bytes": 8,
+      "codes": [
+        329,
+        330,
+        286,
+        16639
+      ],
+      "text": "野菜類",
+      "sha256": "5edcc28015fd702330a294ebf2010a18cb43f8357bd4d39cbe255829a9191912"
+    },
+    {
+      "product": 13,
+      "message_id": 84,
+      "source_offset": 3720,
+      "packed_offset": 128,
+      "bytes": 6,
+      "codes": [
+        332,
+        286,
+        16639
+      ],
+      "text": "魚類",
+      "sha256": "3ef1cd9ee5f776e1eedd87f33a7d11d92b811ce3eb46792b19b6ee12789e138b"
+    },
+    {
+      "product": 14,
+      "message_id": 85,
+      "source_offset": 3726,
+      "packed_offset": 134,
+      "bytes": 6,
+      "codes": [
+        331,
+        286,
+        16639
+      ],
+      "text": "肉類",
+      "sha256": "de9154ab203e41e59c1cd321e330ebe46a20335fa4579f4f70bae8ad513d4b6d"
+    },
+    {
+      "product": 15,
+      "message_id": 86,
+      "source_offset": 3732,
+      "packed_offset": 140,
+      "bytes": 12,
+      "codes": [
+        184,
+        162,
+        183,
+        162,
+        286,
+        16639
+      ],
+      "text": "レトルト類",
+      "sha256": "cfcea329914fdab20f45bddf12b4e00826460789eca0196d7dcbc382f3690eff"
+    },
+    {
+      "product": 16,
+      "message_id": 87,
+      "source_offset": 3744,
+      "packed_offset": 152,
+      "bytes": 10,
+      "codes": [
+        340,
+        341,
+        326,
+        286,
+        16639
+      ],
+      "text": "調味料類",
+      "sha256": "8f258e139eb6b4d7949f7c91595b7c9ff09955f52deb7f9d24413757d8602ed0"
+    },
+    {
+      "product": 17,
+      "message_id": 88,
+      "source_offset": 3754,
+      "packed_offset": 162,
+      "bytes": 12,
+      "codes": [
+        311,
+        313,
+        348,
+        588,
+        286,
+        16639
+      ],
+      "text": "冷凍食品類",
+      "sha256": "3f8693c5c1f05228c80cbdfe84a61fadb1caedb2587840f70114c097f047096e"
+    },
+    {
+      "product": 18,
+      "message_id": 89,
+      "source_offset": 3766,
+      "packed_offset": 174,
+      "bytes": 8,
+      "codes": [
+        67,
+        122,
+        108,
+        16639
+      ],
+      "text": "おでん",
+      "sha256": "222db075ec616fd05a7ae477ca789f57f549f4f5ce2220106f8d8bb08027bc7e"
+    },
+    {
+      "product": 19,
+      "message_id": 90,
+      "source_offset": 3774,
+      "packed_offset": 182,
+      "bytes": 8,
+      "codes": [
+        231,
+        245,
+        588,
+        16639
+      ],
+      "text": "日用品",
+      "sha256": "f84918d61f7275a1ec79c8a8812ec0c207745e892b1022c46e8b7584a430cb6c"
+    },
+    {
+      "product": 20,
+      "message_id": 91,
+      "source_offset": 3782,
+      "packed_offset": 190,
+      "bytes": 12,
+      "codes": [
+        152,
+        210,
+        46,
+        245,
+        349,
+        16639
+      ],
+      "text": "コピー用紙",
+      "sha256": "6e1b82d8747384d9cf1846c2d0f2010d87643949c4c5c35d20f6d9d3e87042e8"
+    },
+    {
+      "product": 21,
+      "message_id": 92,
+      "source_offset": 3794,
+      "packed_offset": 202,
+      "bytes": 14,
+      "codes": [
+        344,
+        589,
+        346,
+        283,
+        298,
+        347,
+        16639
+      ],
+      "text": "宅配便申込書",
+      "sha256": "607e1c77718d454c1a89446aa92529bfd2866824f675bbba70d136a3f20005b5"
+    },
+    {
+      "product": 22,
+      "message_id": 93,
+      "source_offset": 3808,
+      "packed_offset": 216,
+      "bytes": 6,
+      "codes": [
+        287,
+        588,
+        16639
+      ],
+      "text": "薬品",
+      "sha256": "463de685ec18f6570cc1c6b0340e2c154fd1e3d196f18cfdf34043c293682651"
+    },
+    {
+      "product": 23,
+      "message_id": 94,
+      "source_offset": 3814,
+      "packed_offset": 222,
+      "bytes": 8,
+      "codes": [
+        342,
+        343,
+        286,
+        16639
+      ],
+      "text": "下着類",
+      "sha256": "5a1f7df1cae3eab5719f98ca5b69aacd9449988662c815e99dcb3375f60a60a9"
+    },
+    {
+      "product": 24,
+      "message_id": 95,
+      "source_offset": 3822,
+      "packed_offset": 230,
+      "bytes": 14,
+      "codes": [
+        144,
+        207,
+        188,
+        162,
+        310,
+        588,
+        16639
+      ],
+      "text": "イベント商品",
+      "sha256": "a38fa16888290904cafa64842301deed014d4409c427b18ea86f407335615089"
+    },
+    {
+      "product": 25,
+      "message_id": 96,
+      "source_offset": 3836,
+      "packed_offset": 244,
+      "bytes": 10,
+      "codes": [
+        225,
+        590,
+        93,
+        108,
+        16639
+      ],
+      "text": "中華まん",
+      "sha256": "a39aa0ebbdd1b6b21bcbc44c722bf896e1ae7a9e7bceae54a18520ce1f6d778a"
+    },
+    {
+      "product": 26,
+      "message_id": 97,
+      "source_offset": 3846,
+      "packed_offset": 254,
+      "bytes": 6,
+      "codes": [
+        324,
+        289,
+        16639
+      ],
+      "text": "現金",
+      "sha256": "f20ee1b83686938a7f2372f875d67775318104cb87398cecfcc596c296536e75"
+    }
+  ]
+}

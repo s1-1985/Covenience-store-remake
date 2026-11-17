@@ -1,0 +1,67 @@
+{
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "master_dependencies": "20261113-product-stock-data/product-fixture-data.json",
+  "images": [
+    {
+      "image_id": 1,
+      "file": "SHOP_T00.TIM",
+      "source_sha256": "f25b374e2d53870d3471323b39b3605bd25a045e2866baac5e47084a2b1c82d6",
+      "size_pixels": [
+        256,
+        256
+      ],
+      "palette_sha256": "3486ab35c4f8baa11f1d9d7aaae6c6ea5135d28e0a67c047e8f1839cb4adabbf",
+      "destination_pixel_rect_words": [
+        704,
+        256,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        488,
+        256,
+        1
+      ]
+    },
+    {
+      "image_id": 2,
+      "file": "SHOP_T01.TIM",
+      "source_sha256": "4c433dc3f3840dd8c207602085f79a55aa99c60c5294973cfa83c4982b17f117",
+      "size_pixels": [
+        256,
+        96
+      ],
+      "palette_sha256": "3486ab35c4f8baa11f1d9d7aaae6c6ea5135d28e0a67c047e8f1839cb4adabbf",
+      "destination_pixel_rect_words": [
+        832,
+        256,
+        128,
+        96
+      ],
+      "destination_clut_rect_words": [
+        0,
+        488,
+        256,
+        1
+      ]
+    }
+  ],
+  "raw_exe_ranges": [
+    {
+      "file": "source/product_icon_helper.bin",
+      "start": "0x80069438",
+      "end_exclusive": "0x8006966c",
+      "sha256": "390abec6499ade7afce2d4da1dffa4ddd5f82ee786196e0642d2ef179befb303"
+    },
+    {
+      "file": "source/product_selection_menu.bin",
+      "start": "0x80068978",
+      "end_exclusive": "0x80069438",
+      "sha256": "723ccfc4fc59ac061deabe6abddb7e4159bdc26babf6d6bef9b9a541b43be9e2"
+    }
+  ],
+  "known_before": "Product masters,fixturechoices,iconformula,permissiongates and navigation already recovered. New work joins actual27menu crops,27message labels and53master layouts.",
+  "original_cpu_calls": 0
+}

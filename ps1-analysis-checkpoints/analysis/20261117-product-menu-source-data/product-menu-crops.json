@@ -1,0 +1,861 @@
+{
+  "rows": [
+    {
+      "product": 0,
+      "master_name": "冷たい飲料",
+      "display_label": "冷たい飲料",
+      "message_id": 71,
+      "disc_first_image": 0,
+      "runtime_first_image": 360,
+      "icon_cell": 0,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        0,
+        0
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "fcbe0b29c40c3990bb7795275d9a7f06c9128b11cdd73571d4edfce2491427e8",
+      "raw_color_words_sha256": "8f137fafced4f81c58f3cc06a2e551bfdac764361ee78622b1f63370f625b3d3",
+      "source_complete": true
+    },
+    {
+      "product": 1,
+      "master_name": "温かい飲料",
+      "display_label": "温かい飲料",
+      "message_id": 72,
+      "disc_first_image": 3,
+      "runtime_first_image": 369,
+      "icon_cell": 3,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        96,
+        0,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        96,
+        0
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "9f7c1e58f85d4bfd594d0d5d603cbd6d3af168b67530147ac7c2716ec9985aba",
+      "raw_color_words_sha256": "64cd0c14b1db82353dc57efe618f0a2e46202f9c1638c25e5cc872b5c1d63aa3",
+      "source_complete": true
+    },
+    {
+      "product": 2,
+      "master_name": "酒類",
+      "display_label": "酒類",
+      "message_id": 73,
+      "disc_first_image": 6,
+      "runtime_first_image": 378,
+      "icon_cell": 6,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        192,
+        0,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        192,
+        0
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "ae302a96c90a26da56bf173dc315785978d55793a26d4b55b7ff254a17a40f0f",
+      "raw_color_words_sha256": "fe5b1a1c20bb9738162f9e3810f57d9c8e10cccfd549b9aa43b52c7e29e119e9",
+      "source_complete": true
+    },
+    {
+      "product": 3,
+      "master_name": "弁当類",
+      "display_label": "弁当類",
+      "message_id": 74,
+      "disc_first_image": 9,
+      "runtime_first_image": 387,
+      "icon_cell": 9,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "95ef8eada327a7d4151018346818ed6142e94c5d16ae48f9a84fc9b5e1ddba9d",
+      "raw_color_words_sha256": "d680664e1e7f407e62433b2da7c139232ba757510485be2fe1c2100f4608df46",
+      "source_complete": true
+    },
+    {
+      "product": 4,
+      "master_name": "パン類",
+      "display_label": "パン類",
+      "message_id": 75,
+      "disc_first_image": 12,
+      "runtime_first_image": 396,
+      "icon_cell": 12,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        128,
+        32,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        128,
+        32
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "33f2c0d446a498e82d36485ed11a860808f129657edac949079a8665503ea744",
+      "raw_color_words_sha256": "655e347de11a47bbf8c4ad61d011f8b551564a509f5bbd75940802da647718b0",
+      "source_complete": true
+    },
+    {
+      "product": 5,
+      "master_name": "ｲﾝｽﾀﾝﾄ類",
+      "display_label": "インスタント類",
+      "message_id": 76,
+      "disc_first_image": 15,
+      "runtime_first_image": 405,
+      "icon_cell": 15,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        224,
+        32,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        224,
+        32
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "4bb9b4813dac6827bcc0c8cbb31135f4ea3399a4897ee716bbe9960233694b4e",
+      "raw_color_words_sha256": "35c04b9ade8b04c57a5938a3b05b68f67bbb2599f50da72e6c8d75f5ee8978fb",
+      "source_complete": true
+    },
+    {
+      "product": 6,
+      "master_name": "菓子類",
+      "display_label": "菓子類",
+      "message_id": 77,
+      "disc_first_image": 18,
+      "runtime_first_image": 414,
+      "icon_cell": 18,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        64,
+        64,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        64,
+        64
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "8cc8b4e9e51e85525fb6974c4e7cc04a0387f83654d629aa4861d147dd8bef86",
+      "raw_color_words_sha256": "6c31dcfcfd523cfb0997987851c985e07d19205fb2cf7ddd3e983abbed169a7a",
+      "source_complete": true
+    },
+    {
+      "product": 7,
+      "master_name": "本類",
+      "display_label": "本類",
+      "message_id": 78,
+      "disc_first_image": 21,
+      "runtime_first_image": 423,
+      "icon_cell": 21,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        160,
+        64,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        160,
+        64
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "6dc3ff6ff73fe27ff916a7a4d4bd08d4cb43f97cc26f1b3a3edc463ab3ae78f7",
+      "raw_color_words_sha256": "ae168a9c133bf686a2129959ebb4af12b276e1a8114b90931fb136077afebbe8",
+      "source_complete": true
+    },
+    {
+      "product": 8,
+      "master_name": "たばこ",
+      "display_label": "タバコ",
+      "message_id": 79,
+      "disc_first_image": 24,
+      "runtime_first_image": 432,
+      "icon_cell": 24,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        0,
+        96,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        0,
+        96
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "0efcc369f74b263e905b08a0fc57a14d4992f9837e336710d48914b2014b0762",
+      "raw_color_words_sha256": "313956a8d7de9ac5e44b46db6c020d08c77fbba22ebc6e02315e54119d80da1b",
+      "source_complete": true
+    },
+    {
+      "product": 9,
+      "master_name": "ｱｲｽｸﾘｰﾑ",
+      "display_label": "アイスクリーム",
+      "message_id": 80,
+      "disc_first_image": 26,
+      "runtime_first_image": 438,
+      "icon_cell": 26,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        64,
+        96,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        64,
+        96
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "71d6435707f8a0102e3ce9806d67c25500236cc92b19e12a7424cfeff92c54b2",
+      "raw_color_words_sha256": "1c25d070c9fd8b5c802eb695a410ad145a3e0a847db0618fc6b8cab4f422eafd",
+      "source_complete": true
+    },
+    {
+      "product": 10,
+      "master_name": "文房具",
+      "display_label": "文房具",
+      "message_id": 81,
+      "disc_first_image": 28,
+      "runtime_first_image": 444,
+      "icon_cell": 28,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        128,
+        96,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        128,
+        96
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "0d6efb063a775a38b1a5703e371d6082f82b157cbbd1cd26e4bfd55a9386aed4",
+      "raw_color_words_sha256": "044925401e199cd0441d0484c5e5be1c9dbc33cb03ccdce173ee0b6c46570ca5",
+      "source_complete": true
+    },
+    {
+      "product": 11,
+      "master_name": "電気製品類",
+      "display_label": "電気製品類",
+      "message_id": 82,
+      "disc_first_image": 31,
+      "runtime_first_image": 453,
+      "icon_cell": 31,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        224,
+        96,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        224,
+        96
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "334d2aff3047283c7918d8e86fa029e706b867075e7d2fe37d932963f86cc2a5",
+      "raw_color_words_sha256": "4eefc2484444dfd3ee4ad32297e60c46602be4dd88d54c4e67e9ac725dcaff7a",
+      "source_complete": true
+    },
+    {
+      "product": 12,
+      "master_name": "野菜類",
+      "display_label": "野菜類",
+      "message_id": 83,
+      "disc_first_image": 34,
+      "runtime_first_image": 462,
+      "icon_cell": 34,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        64,
+        128,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        64,
+        128
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "a56902088e9de09efa0d0951a177200fe8b651fa54f7c1e3c8519a032c119c88",
+      "raw_color_words_sha256": "64811e16a346824d90363da808d11a386fd2efd591465fdebccb277256030ed7",
+      "source_complete": true
+    },
+    {
+      "product": 13,
+      "master_name": "魚類",
+      "display_label": "魚類",
+      "message_id": 84,
+      "disc_first_image": 37,
+      "runtime_first_image": 471,
+      "icon_cell": 37,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        160,
+        128,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        160,
+        128
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "66aa71697d1cbd8bc21644d037badf79e1cd8ba2b35b41b74fea322d86345013",
+      "raw_color_words_sha256": "2fe3c97ed04589e7ca48f9a41acd6fa053309043a5f9961ad56d5f6f3e4be309",
+      "source_complete": true
+    },
+    {
+      "product": 14,
+      "master_name": "肉類",
+      "display_label": "肉類",
+      "message_id": 85,
+      "disc_first_image": 40,
+      "runtime_first_image": 480,
+      "icon_cell": 40,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        0,
+        160,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        0,
+        160
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "4e5a557b304e98688f6e286995e89d227030210e1e22f97d267d3ec611530ca0",
+      "raw_color_words_sha256": "560c45a9f3f31b2728167e7f83b5fe435741109b6c87f15c545baa7469360a7a",
+      "source_complete": true
+    },
+    {
+      "product": 15,
+      "master_name": "レトルト類",
+      "display_label": "レトルト類",
+      "message_id": 86,
+      "disc_first_image": 43,
+      "runtime_first_image": 489,
+      "icon_cell": 43,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        96,
+        160,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        96,
+        160
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "9031abd129d4706833e9fb165c4623d5b6eab1f88f724bc5dbf398f92c086a21",
+      "raw_color_words_sha256": "e3ee0c108fba25f9b5f6771b96b80259cf6dce920a77a7b3b839b636a105b84c",
+      "source_complete": true
+    },
+    {
+      "product": 16,
+      "master_name": "調味料類",
+      "display_label": "調味料類",
+      "message_id": 87,
+      "disc_first_image": 46,
+      "runtime_first_image": 498,
+      "icon_cell": 46,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        192,
+        160,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        192,
+        160
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "067155afd7efb9e6032f5dc1ef2950ea571aeea6ca9f5be66eb3cc7df50b0eed",
+      "raw_color_words_sha256": "0bead412e2615a5fb84700164b33429e8d31b1c88007081da7fad96abe5a884b",
+      "source_complete": true
+    },
+    {
+      "product": 17,
+      "master_name": "冷凍食品類",
+      "display_label": "冷凍食品類",
+      "message_id": 88,
+      "disc_first_image": 49,
+      "runtime_first_image": 507,
+      "icon_cell": 49,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        32,
+        192,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        32,
+        192
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "5d8d402740c0dc02b9ea408680ceac940700a73d5f8b4c2350a8b18d6a351d56",
+      "raw_color_words_sha256": "f20dbce376b4ecf08b252a14d82325579b5d41658c526ed44c4c3b0d5d80ae63",
+      "source_complete": true
+    },
+    {
+      "product": 18,
+      "master_name": "おでん",
+      "display_label": "おでん",
+      "message_id": 89,
+      "disc_first_image": 52,
+      "runtime_first_image": 516,
+      "icon_cell": 52,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        128,
+        192,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        128,
+        192
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "98dba641320355b3f92abe59e32b0d4ca997b2adc7c1cfc9fdc9fbbf4ff38ca7",
+      "raw_color_words_sha256": "c496330c76dde6f5e89ef362410c0f19a644d3a3ec8206d9ce735fe2495cd5c5",
+      "source_complete": true
+    },
+    {
+      "product": 19,
+      "master_name": "日用品",
+      "display_label": "日用品",
+      "message_id": 90,
+      "disc_first_image": 53,
+      "runtime_first_image": 519,
+      "icon_cell": 53,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        160,
+        192,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        160,
+        192
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "6dc0340fdeb2dd2f1779b78f97eb32f8881968d49c8d12fd6e7f1ffb45caa04a",
+      "raw_color_words_sha256": "888ac76642320ef06f69a3fa5f86cfb96b9494a60c574f908e7f18ebaa256f6d",
+      "source_complete": true
+    },
+    {
+      "product": 20,
+      "master_name": "コピー用紙",
+      "display_label": "コピー用紙",
+      "message_id": 91,
+      "disc_first_image": 85,
+      "runtime_first_image": 615,
+      "icon_cell": 81,
+      "special_override": true,
+      "source_image_id": 2,
+      "source_file": "SHOP_T01.TIM",
+      "source_rect": [
+        32,
+        64,
+        32,
+        32
+      ],
+      "draw_kind": 29,
+      "uv": [
+        32,
+        64
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "eb5f314567e7a5e11b2ada4d99de3a2b3a6a372e932f87239815e5b2aa922a70",
+      "raw_color_words_sha256": "5eab70f973193d89d9f15c3513d5c999bcb0636eb6dd9005185ec0a879c0911b",
+      "source_complete": true
+    },
+    {
+      "product": 21,
+      "master_name": "宅急便申込書",
+      "display_label": "宅配便申込書",
+      "message_id": 92,
+      "disc_first_image": 61,
+      "runtime_first_image": 543,
+      "icon_cell": 61,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        160,
+        224,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        160,
+        224
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "e13e00fdd8585de26ba122b26cbcd5b49a63ea2ece0fcb12ae71f68f47a81b5c",
+      "raw_color_words_sha256": "dbff5b6e6c44c004954328f02bab5748c6bc6a5cf98b884084a1ac1555bda943",
+      "source_complete": true
+    },
+    {
+      "product": 22,
+      "master_name": "薬品",
+      "display_label": "薬品",
+      "message_id": 93,
+      "disc_first_image": 62,
+      "runtime_first_image": 546,
+      "icon_cell": 62,
+      "special_override": false,
+      "source_image_id": 1,
+      "source_file": "SHOP_T00.TIM",
+      "source_rect": [
+        192,
+        224,
+        32,
+        32
+      ],
+      "draw_kind": 27,
+      "uv": [
+        192,
+        224
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "64c8840f73dfd48233fca3ddadbdf7ecc66a3e230e18e14e88c2b2600c4ad470",
+      "raw_color_words_sha256": "e2d6c5136ab564dbf4b5e2d033c8c7bf447d1baa0689bd54f2fb890a1b5ef71c",
+      "source_complete": true
+    },
+    {
+      "product": 23,
+      "master_name": "下着類",
+      "display_label": "下着類",
+      "message_id": 94,
+      "disc_first_image": 65,
+      "runtime_first_image": 555,
+      "icon_cell": 65,
+      "special_override": false,
+      "source_image_id": 2,
+      "source_file": "SHOP_T01.TIM",
+      "source_rect": [
+        32,
+        0,
+        32,
+        32
+      ],
+      "draw_kind": 29,
+      "uv": [
+        32,
+        0
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "c6b1697e19a978f35a718a484c90a88114ae93b683f61466a3ad37f4b4f89eb2",
+      "raw_color_words_sha256": "581356b809835186522d2b0be475df50eb232d27bee0716a2f5bd0488645b2a8",
+      "source_complete": true
+    },
+    {
+      "product": 24,
+      "master_name": "イベント商品",
+      "display_label": "イベント商品",
+      "message_id": 95,
+      "disc_first_image": 68,
+      "runtime_first_image": 564,
+      "icon_cell": 68,
+      "special_override": false,
+      "source_image_id": 2,
+      "source_file": "SHOP_T01.TIM",
+      "source_rect": [
+        128,
+        0,
+        32,
+        32
+      ],
+      "draw_kind": 29,
+      "uv": [
+        128,
+        0
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "14080d25cc911794fe82a840a87bc7131e33cc776018c31a3a9809c3e8a252c8",
+      "raw_color_words_sha256": "8d60cbdcfcbd767aa7612cf2b7fc381114a83468789d5860074c6424b18fb1a0",
+      "source_complete": true
+    },
+    {
+      "product": 25,
+      "master_name": "中華まん",
+      "display_label": "中華まん",
+      "message_id": 96,
+      "disc_first_image": 80,
+      "runtime_first_image": 600,
+      "icon_cell": 80,
+      "special_override": true,
+      "source_image_id": 2,
+      "source_file": "SHOP_T01.TIM",
+      "source_rect": [
+        0,
+        64,
+        32,
+        32
+      ],
+      "draw_kind": 29,
+      "uv": [
+        0,
+        64
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "26ceb72be58f341110e3eb2d15e6d9caa8fe394455d0f25cac669365de11d226",
+      "raw_color_words_sha256": "1cc2371b078d547db856ed1d302157bc872286cc1840654b96655d6d9a10483d",
+      "source_complete": true
+    },
+    {
+      "product": 26,
+      "master_name": "現金",
+      "display_label": "現金",
+      "message_id": 97,
+      "disc_first_image": 84,
+      "runtime_first_image": 612,
+      "icon_cell": 84,
+      "special_override": false,
+      "source_image_id": 2,
+      "source_file": "SHOP_T01.TIM",
+      "source_rect": [
+        128,
+        64,
+        32,
+        32
+      ],
+      "draw_kind": 29,
+      "uv": [
+        128,
+        64
+      ],
+      "clut_xy": [
+        0,
+        488
+      ],
+      "indices_sha256": "f9c5782fbf129560f32d305d0ae3542e656f22e7c08de414a07aa0042454167a",
+      "raw_color_words_sha256": "c47e5a2323d81c5e1a820308c6b5d301690e980a2cb259578032bec260863872",
+      "source_complete": true
+    }
+  ],
+  "sources": [
+    {
+      "image_id": 1,
+      "file": "SHOP_T00.TIM",
+      "source_sha256": "f25b374e2d53870d3471323b39b3605bd25a045e2866baac5e47084a2b1c82d6",
+      "size_pixels": [
+        256,
+        256
+      ],
+      "palette_sha256": "3486ab35c4f8baa11f1d9d7aaae6c6ea5135d28e0a67c047e8f1839cb4adabbf",
+      "destination_pixel_rect_words": [
+        704,
+        256,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        488,
+        256,
+        1
+      ]
+    },
+    {
+      "image_id": 2,
+      "file": "SHOP_T01.TIM",
+      "source_sha256": "4c433dc3f3840dd8c207602085f79a55aa99c60c5294973cfa83c4982b17f117",
+      "size_pixels": [
+        256,
+        96
+      ],
+      "palette_sha256": "3486ab35c4f8baa11f1d9d7aaae6c6ea5135d28e0a67c047e8f1839cb4adabbf",
+      "destination_pixel_rect_words": [
+        832,
+        256,
+        128,
+        96
+      ],
+      "destination_clut_rect_words": [
+        0,
+        488,
+        256,
+        1
+      ]
+    }
+  ],
+  "source_policy": "Raw BGR555/STP words preserved by hashes. Preview uses simple alpha for zero color; not PS GPU compositing."
+}

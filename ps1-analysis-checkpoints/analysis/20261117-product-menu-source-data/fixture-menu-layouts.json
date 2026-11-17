@@ -1,0 +1,4096 @@
+{
+  "rows": [
+    {
+      "fixture": 0,
+      "name": "常温棚",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 4,
+          "message_id": 75,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 5,
+          "message_id": 76,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 6,
+          "message_id": 77,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 7,
+          "message_id": 78,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 10,
+          "message_id": 81,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 11,
+          "message_id": 82,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        },
+        {
+          "slot": 7,
+          "product": 15,
+          "message_id": 86,
+          "icon_argument_xy": [
+            184,
+            112
+          ],
+          "icon_screen_xy": [
+            200,
+            128
+          ],
+          "icon_record_xy": [
+            40,
+            16
+          ],
+          "cursor_argument_xy": [
+            220,
+            148
+          ]
+        },
+        {
+          "slot": 8,
+          "product": 16,
+          "message_id": 87,
+          "icon_argument_xy": [
+            64,
+            152
+          ],
+          "icon_screen_xy": [
+            80,
+            168
+          ],
+          "icon_record_xy": [
+            -80,
+            56
+          ],
+          "cursor_argument_xy": [
+            100,
+            188
+          ]
+        },
+        {
+          "slot": 9,
+          "product": 19,
+          "message_id": 90,
+          "icon_argument_xy": [
+            104,
+            152
+          ],
+          "icon_screen_xy": [
+            120,
+            168
+          ],
+          "icon_record_xy": [
+            -40,
+            56
+          ],
+          "cursor_argument_xy": [
+            140,
+            188
+          ]
+        },
+        {
+          "slot": 10,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            152
+          ],
+          "icon_screen_xy": [
+            160,
+            168
+          ],
+          "icon_record_xy": [
+            0,
+            56
+          ],
+          "cursor_argument_xy": [
+            180,
+            188
+          ]
+        },
+        {
+          "slot": 11,
+          "product": 23,
+          "message_id": 94,
+          "icon_argument_xy": [
+            184,
+            152
+          ],
+          "icon_screen_xy": [
+            200,
+            168
+          ],
+          "icon_record_xy": [
+            40,
+            56
+          ],
+          "cursor_argument_xy": [
+            220,
+            188
+          ]
+        }
+      ],
+      "count": 12,
+      "first_sentinel_word": 33,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 1,
+      "name": "常温棚",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 4,
+          "message_id": 75,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 5,
+          "message_id": 76,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 6,
+          "message_id": 77,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 7,
+          "message_id": 78,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 10,
+          "message_id": 81,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 11,
+          "message_id": 82,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        },
+        {
+          "slot": 7,
+          "product": 15,
+          "message_id": 86,
+          "icon_argument_xy": [
+            184,
+            112
+          ],
+          "icon_screen_xy": [
+            200,
+            128
+          ],
+          "icon_record_xy": [
+            40,
+            16
+          ],
+          "cursor_argument_xy": [
+            220,
+            148
+          ]
+        },
+        {
+          "slot": 8,
+          "product": 16,
+          "message_id": 87,
+          "icon_argument_xy": [
+            64,
+            152
+          ],
+          "icon_screen_xy": [
+            80,
+            168
+          ],
+          "icon_record_xy": [
+            -80,
+            56
+          ],
+          "cursor_argument_xy": [
+            100,
+            188
+          ]
+        },
+        {
+          "slot": 9,
+          "product": 19,
+          "message_id": 90,
+          "icon_argument_xy": [
+            104,
+            152
+          ],
+          "icon_screen_xy": [
+            120,
+            168
+          ],
+          "icon_record_xy": [
+            -40,
+            56
+          ],
+          "cursor_argument_xy": [
+            140,
+            188
+          ]
+        },
+        {
+          "slot": 10,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            152
+          ],
+          "icon_screen_xy": [
+            160,
+            168
+          ],
+          "icon_record_xy": [
+            0,
+            56
+          ],
+          "cursor_argument_xy": [
+            180,
+            188
+          ]
+        },
+        {
+          "slot": 11,
+          "product": 23,
+          "message_id": 94,
+          "icon_argument_xy": [
+            184,
+            152
+          ],
+          "icon_screen_xy": [
+            200,
+            168
+          ],
+          "icon_record_xy": [
+            40,
+            56
+          ],
+          "cursor_argument_xy": [
+            220,
+            188
+          ]
+        }
+      ],
+      "count": 12,
+      "first_sentinel_word": 33,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 2,
+      "name": "常温棚",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 4,
+          "message_id": 75,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 5,
+          "message_id": 76,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 6,
+          "message_id": 77,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 7,
+          "message_id": 78,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 10,
+          "message_id": 81,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 11,
+          "message_id": 82,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        },
+        {
+          "slot": 7,
+          "product": 15,
+          "message_id": 86,
+          "icon_argument_xy": [
+            184,
+            112
+          ],
+          "icon_screen_xy": [
+            200,
+            128
+          ],
+          "icon_record_xy": [
+            40,
+            16
+          ],
+          "cursor_argument_xy": [
+            220,
+            148
+          ]
+        },
+        {
+          "slot": 8,
+          "product": 16,
+          "message_id": 87,
+          "icon_argument_xy": [
+            64,
+            152
+          ],
+          "icon_screen_xy": [
+            80,
+            168
+          ],
+          "icon_record_xy": [
+            -80,
+            56
+          ],
+          "cursor_argument_xy": [
+            100,
+            188
+          ]
+        },
+        {
+          "slot": 9,
+          "product": 19,
+          "message_id": 90,
+          "icon_argument_xy": [
+            104,
+            152
+          ],
+          "icon_screen_xy": [
+            120,
+            168
+          ],
+          "icon_record_xy": [
+            -40,
+            56
+          ],
+          "cursor_argument_xy": [
+            140,
+            188
+          ]
+        },
+        {
+          "slot": 10,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            152
+          ],
+          "icon_screen_xy": [
+            160,
+            168
+          ],
+          "icon_record_xy": [
+            0,
+            56
+          ],
+          "cursor_argument_xy": [
+            180,
+            188
+          ]
+        },
+        {
+          "slot": 11,
+          "product": 23,
+          "message_id": 94,
+          "icon_argument_xy": [
+            184,
+            152
+          ],
+          "icon_screen_xy": [
+            200,
+            168
+          ],
+          "icon_record_xy": [
+            40,
+            56
+          ],
+          "cursor_argument_xy": [
+            220,
+            188
+          ]
+        }
+      ],
+      "count": 12,
+      "first_sentinel_word": 33,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 3,
+      "name": "常温ワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 4,
+          "message_id": 75,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 5,
+          "message_id": 76,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 6,
+          "message_id": 77,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 7,
+          "message_id": 78,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 10,
+          "message_id": 81,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 11,
+          "message_id": 82,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        },
+        {
+          "slot": 7,
+          "product": 15,
+          "message_id": 86,
+          "icon_argument_xy": [
+            184,
+            112
+          ],
+          "icon_screen_xy": [
+            200,
+            128
+          ],
+          "icon_record_xy": [
+            40,
+            16
+          ],
+          "cursor_argument_xy": [
+            220,
+            148
+          ]
+        },
+        {
+          "slot": 8,
+          "product": 16,
+          "message_id": 87,
+          "icon_argument_xy": [
+            64,
+            152
+          ],
+          "icon_screen_xy": [
+            80,
+            168
+          ],
+          "icon_record_xy": [
+            -80,
+            56
+          ],
+          "cursor_argument_xy": [
+            100,
+            188
+          ]
+        },
+        {
+          "slot": 9,
+          "product": 19,
+          "message_id": 90,
+          "icon_argument_xy": [
+            104,
+            152
+          ],
+          "icon_screen_xy": [
+            120,
+            168
+          ],
+          "icon_record_xy": [
+            -40,
+            56
+          ],
+          "cursor_argument_xy": [
+            140,
+            188
+          ]
+        },
+        {
+          "slot": 10,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            152
+          ],
+          "icon_screen_xy": [
+            160,
+            168
+          ],
+          "icon_record_xy": [
+            0,
+            56
+          ],
+          "cursor_argument_xy": [
+            180,
+            188
+          ]
+        },
+        {
+          "slot": 11,
+          "product": 23,
+          "message_id": 94,
+          "icon_argument_xy": [
+            184,
+            152
+          ],
+          "icon_screen_xy": [
+            200,
+            168
+          ],
+          "icon_record_xy": [
+            40,
+            56
+          ],
+          "cursor_argument_xy": [
+            220,
+            188
+          ]
+        }
+      ],
+      "count": 12,
+      "first_sentinel_word": 33,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 4,
+      "name": "常温ワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 4,
+          "message_id": 75,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 5,
+          "message_id": 76,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 6,
+          "message_id": 77,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 7,
+          "message_id": 78,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 10,
+          "message_id": 81,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 11,
+          "message_id": 82,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        },
+        {
+          "slot": 7,
+          "product": 15,
+          "message_id": 86,
+          "icon_argument_xy": [
+            184,
+            112
+          ],
+          "icon_screen_xy": [
+            200,
+            128
+          ],
+          "icon_record_xy": [
+            40,
+            16
+          ],
+          "cursor_argument_xy": [
+            220,
+            148
+          ]
+        },
+        {
+          "slot": 8,
+          "product": 16,
+          "message_id": 87,
+          "icon_argument_xy": [
+            64,
+            152
+          ],
+          "icon_screen_xy": [
+            80,
+            168
+          ],
+          "icon_record_xy": [
+            -80,
+            56
+          ],
+          "cursor_argument_xy": [
+            100,
+            188
+          ]
+        },
+        {
+          "slot": 9,
+          "product": 19,
+          "message_id": 90,
+          "icon_argument_xy": [
+            104,
+            152
+          ],
+          "icon_screen_xy": [
+            120,
+            168
+          ],
+          "icon_record_xy": [
+            -40,
+            56
+          ],
+          "cursor_argument_xy": [
+            140,
+            188
+          ]
+        },
+        {
+          "slot": 10,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            152
+          ],
+          "icon_screen_xy": [
+            160,
+            168
+          ],
+          "icon_record_xy": [
+            0,
+            56
+          ],
+          "cursor_argument_xy": [
+            180,
+            188
+          ]
+        },
+        {
+          "slot": 11,
+          "product": 23,
+          "message_id": 94,
+          "icon_argument_xy": [
+            184,
+            152
+          ],
+          "icon_screen_xy": [
+            200,
+            168
+          ],
+          "icon_record_xy": [
+            40,
+            56
+          ],
+          "cursor_argument_xy": [
+            220,
+            188
+          ]
+        }
+      ],
+      "count": 12,
+      "first_sentinel_word": 33,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 5,
+      "name": "常温ワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 4,
+          "message_id": 75,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 5,
+          "message_id": 76,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 6,
+          "message_id": 77,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 7,
+          "message_id": 78,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 10,
+          "message_id": 81,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 11,
+          "message_id": 82,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        },
+        {
+          "slot": 7,
+          "product": 15,
+          "message_id": 86,
+          "icon_argument_xy": [
+            184,
+            112
+          ],
+          "icon_screen_xy": [
+            200,
+            128
+          ],
+          "icon_record_xy": [
+            40,
+            16
+          ],
+          "cursor_argument_xy": [
+            220,
+            148
+          ]
+        },
+        {
+          "slot": 8,
+          "product": 16,
+          "message_id": 87,
+          "icon_argument_xy": [
+            64,
+            152
+          ],
+          "icon_screen_xy": [
+            80,
+            168
+          ],
+          "icon_record_xy": [
+            -80,
+            56
+          ],
+          "cursor_argument_xy": [
+            100,
+            188
+          ]
+        },
+        {
+          "slot": 9,
+          "product": 19,
+          "message_id": 90,
+          "icon_argument_xy": [
+            104,
+            152
+          ],
+          "icon_screen_xy": [
+            120,
+            168
+          ],
+          "icon_record_xy": [
+            -40,
+            56
+          ],
+          "cursor_argument_xy": [
+            140,
+            188
+          ]
+        },
+        {
+          "slot": 10,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            152
+          ],
+          "icon_screen_xy": [
+            160,
+            168
+          ],
+          "icon_record_xy": [
+            0,
+            56
+          ],
+          "cursor_argument_xy": [
+            180,
+            188
+          ]
+        },
+        {
+          "slot": 11,
+          "product": 23,
+          "message_id": 94,
+          "icon_argument_xy": [
+            184,
+            152
+          ],
+          "icon_screen_xy": [
+            200,
+            168
+          ],
+          "icon_record_xy": [
+            40,
+            56
+          ],
+          "cursor_argument_xy": [
+            220,
+            188
+          ]
+        }
+      ],
+      "count": 12,
+      "first_sentinel_word": 33,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 6,
+      "name": "常温ワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 4,
+          "message_id": 75,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 5,
+          "message_id": 76,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 6,
+          "message_id": 77,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 7,
+          "message_id": 78,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 10,
+          "message_id": 81,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 11,
+          "message_id": 82,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        },
+        {
+          "slot": 7,
+          "product": 15,
+          "message_id": 86,
+          "icon_argument_xy": [
+            184,
+            112
+          ],
+          "icon_screen_xy": [
+            200,
+            128
+          ],
+          "icon_record_xy": [
+            40,
+            16
+          ],
+          "cursor_argument_xy": [
+            220,
+            148
+          ]
+        },
+        {
+          "slot": 8,
+          "product": 16,
+          "message_id": 87,
+          "icon_argument_xy": [
+            64,
+            152
+          ],
+          "icon_screen_xy": [
+            80,
+            168
+          ],
+          "icon_record_xy": [
+            -80,
+            56
+          ],
+          "cursor_argument_xy": [
+            100,
+            188
+          ]
+        },
+        {
+          "slot": 9,
+          "product": 19,
+          "message_id": 90,
+          "icon_argument_xy": [
+            104,
+            152
+          ],
+          "icon_screen_xy": [
+            120,
+            168
+          ],
+          "icon_record_xy": [
+            -40,
+            56
+          ],
+          "cursor_argument_xy": [
+            140,
+            188
+          ]
+        },
+        {
+          "slot": 10,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            152
+          ],
+          "icon_screen_xy": [
+            160,
+            168
+          ],
+          "icon_record_xy": [
+            0,
+            56
+          ],
+          "cursor_argument_xy": [
+            180,
+            188
+          ]
+        },
+        {
+          "slot": 11,
+          "product": 23,
+          "message_id": 94,
+          "icon_argument_xy": [
+            184,
+            152
+          ],
+          "icon_screen_xy": [
+            200,
+            168
+          ],
+          "icon_record_xy": [
+            40,
+            56
+          ],
+          "cursor_argument_xy": [
+            220,
+            188
+          ]
+        }
+      ],
+      "count": 12,
+      "first_sentinel_word": 33,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 7,
+      "name": "冷蔵棚",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 2,
+          "message_id": 73,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 12,
+          "message_id": 83,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 13,
+          "message_id": 84,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 14,
+          "message_id": 85,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        }
+      ],
+      "count": 7,
+      "first_sentinel_word": 28,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 8,
+      "name": "冷蔵棚",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 2,
+          "message_id": 73,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 12,
+          "message_id": 83,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 13,
+          "message_id": 84,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 14,
+          "message_id": 85,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        }
+      ],
+      "count": 7,
+      "first_sentinel_word": 28,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 9,
+      "name": "冷蔵棚",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 2,
+          "message_id": 73,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 12,
+          "message_id": 83,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 13,
+          "message_id": 84,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 14,
+          "message_id": 85,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        }
+      ],
+      "count": 7,
+      "first_sentinel_word": 28,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 10,
+      "name": "冷蔵ワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 2,
+          "message_id": 73,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 12,
+          "message_id": 83,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 13,
+          "message_id": 84,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 14,
+          "message_id": 85,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        }
+      ],
+      "count": 7,
+      "first_sentinel_word": 28,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 11,
+      "name": "冷蔵ワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 2,
+          "message_id": 73,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 12,
+          "message_id": 83,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 13,
+          "message_id": 84,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 14,
+          "message_id": 85,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        }
+      ],
+      "count": 7,
+      "first_sentinel_word": 28,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 12,
+      "name": "冷蔵ワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 2,
+          "message_id": 73,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 12,
+          "message_id": 83,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 13,
+          "message_id": 84,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 14,
+          "message_id": 85,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        }
+      ],
+      "count": 7,
+      "first_sentinel_word": 28,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 13,
+      "name": "冷蔵ワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 2,
+          "message_id": 73,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        },
+        {
+          "slot": 2,
+          "product": 3,
+          "message_id": 74,
+          "icon_argument_xy": [
+            144,
+            72
+          ],
+          "icon_screen_xy": [
+            160,
+            88
+          ],
+          "icon_record_xy": [
+            0,
+            -24
+          ],
+          "cursor_argument_xy": [
+            180,
+            108
+          ]
+        },
+        {
+          "slot": 3,
+          "product": 12,
+          "message_id": 83,
+          "icon_argument_xy": [
+            184,
+            72
+          ],
+          "icon_screen_xy": [
+            200,
+            88
+          ],
+          "icon_record_xy": [
+            40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            220,
+            108
+          ]
+        },
+        {
+          "slot": 4,
+          "product": 13,
+          "message_id": 84,
+          "icon_argument_xy": [
+            64,
+            112
+          ],
+          "icon_screen_xy": [
+            80,
+            128
+          ],
+          "icon_record_xy": [
+            -80,
+            16
+          ],
+          "cursor_argument_xy": [
+            100,
+            148
+          ]
+        },
+        {
+          "slot": 5,
+          "product": 14,
+          "message_id": 85,
+          "icon_argument_xy": [
+            104,
+            112
+          ],
+          "icon_screen_xy": [
+            120,
+            128
+          ],
+          "icon_record_xy": [
+            -40,
+            16
+          ],
+          "cursor_argument_xy": [
+            140,
+            148
+          ]
+        },
+        {
+          "slot": 6,
+          "product": 22,
+          "message_id": 93,
+          "icon_argument_xy": [
+            144,
+            112
+          ],
+          "icon_screen_xy": [
+            160,
+            128
+          ],
+          "icon_record_xy": [
+            0,
+            16
+          ],
+          "cursor_argument_xy": [
+            180,
+            148
+          ]
+        }
+      ],
+      "count": 7,
+      "first_sentinel_word": 28,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 14,
+      "name": "冷凍棚",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 17,
+          "message_id": 88,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 9,
+          "message_id": 80,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 15,
+      "name": "冷凍棚",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 17,
+          "message_id": 88,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 9,
+          "message_id": 80,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 16,
+      "name": "冷凍ワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 9,
+          "message_id": 80,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 17,
+          "message_id": 88,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 17,
+      "name": "冷凍ワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 9,
+          "message_id": 80,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 17,
+          "message_id": 88,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 18,
+      "name": "冷凍棚・扉",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 17,
+          "message_id": 88,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 9,
+          "message_id": 80,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 19,
+      "name": "冷凍棚・扉",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 17,
+          "message_id": 88,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 9,
+          "message_id": 80,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 20,
+      "name": "冷凍ワゴン・扉",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 9,
+          "message_id": 80,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 17,
+          "message_id": 88,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 21,
+      "name": "冷凍ワゴン・扉",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 9,
+          "message_id": 80,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 17,
+          "message_id": 88,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 22,
+      "name": "温かい飲み物",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 1,
+          "message_id": 72,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 23,
+      "name": "おでん",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 18,
+          "message_id": 89,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 24,
+      "name": "中華まん",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 25,
+          "message_id": 96,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 25,
+      "name": "イベントケース棚",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 24,
+          "message_id": 95,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 26,
+      "name": "イベントケースワゴン",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 24,
+          "message_id": 95,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 27,
+      "name": "たばこ自販",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 8,
+          "message_id": 79,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 28,
+      "name": "たばこ自販",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 8,
+          "message_id": 79,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 29,
+      "name": "飲料自販・冷蔵",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 2,
+          "message_id": 73,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 30,
+      "name": "飲料自販・冷蔵",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 2,
+          "message_id": 73,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 31,
+      "name": "飲料自販・温冷",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 1,
+          "message_id": 72,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 32,
+      "name": "飲料自販・温冷",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 1,
+          "message_id": 72,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        },
+        {
+          "slot": 1,
+          "product": 0,
+          "message_id": 71,
+          "icon_argument_xy": [
+            104,
+            72
+          ],
+          "icon_screen_xy": [
+            120,
+            88
+          ],
+          "icon_record_xy": [
+            -40,
+            -24
+          ],
+          "cursor_argument_xy": [
+            140,
+            108
+          ]
+        }
+      ],
+      "count": 2,
+      "first_sentinel_word": 23,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 33,
+      "name": "コピー機",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 20,
+          "message_id": 91,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 34,
+      "name": "コピー機",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 20,
+          "message_id": 91,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 35,
+      "name": "コピー機",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 20,
+          "message_id": 91,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 36,
+      "name": "コピー機",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 20,
+          "message_id": 91,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 37,
+      "name": "レジ",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 38,
+      "name": "レジ",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 39,
+      "name": "レジ",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 21,
+          "message_id": 92,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 40,
+      "name": "レジ",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 41,
+      "name": "レジ",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 42,
+      "name": "レジ",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 21,
+          "message_id": 92,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 43,
+      "name": "キャッシュディスペンサー",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 26,
+          "message_id": 97,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 44,
+      "name": "キャッシュディスペンサー",
+      "choices": [
+        {
+          "slot": 0,
+          "product": 26,
+          "message_id": 97,
+          "icon_argument_xy": [
+            64,
+            72
+          ],
+          "icon_screen_xy": [
+            80,
+            88
+          ],
+          "icon_record_xy": [
+            -80,
+            -24
+          ],
+          "cursor_argument_xy": [
+            100,
+            108
+          ]
+        }
+      ],
+      "count": 1,
+      "first_sentinel_word": 22,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 45,
+      "name": "観葉植物",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 46,
+      "name": "ベンチ",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 47,
+      "name": "噴水",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 48,
+      "name": "控え室",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 49,
+      "name": "控え室",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 50,
+      "name": "駐車場",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 51,
+      "name": "2階建駐車場",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    },
+    {
+      "fixture": 52,
+      "name": "タワー駐車場",
+      "choices": [],
+      "count": 0,
+      "first_sentinel_word": 21,
+      "scope": "Master-backed choices, not proof every fixture enters this submenu in natural play."
+    }
+  ],
+  "grid_columns": 4,
+  "grid_max_rows": 3,
+  "cell_pitch_pixels": [
+    40,
+    40
+  ],
+  "icon_size_pixels": [
+    32,
+    32
+  ],
+  "helper_screen_offset": [
+    16,
+    16
+  ],
+  "source": "0x80068D18..0x80068DB8 ->0x80069438; helper records x-144,y-96, rather than usual x-160,y-112."
+}

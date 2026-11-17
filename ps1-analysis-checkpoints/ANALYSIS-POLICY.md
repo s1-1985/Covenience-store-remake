@@ -166,3 +166,5 @@
 - [2026-11-17：固定通知5・6の呼出し引数を解釈し幅0の描画省略へ接続、宣伝5種を原画像へ対応・原CPU検証0回](analysis/20261117-fixed-notice-advertising-data/README.md)
 
 - 2026-11-17: [通常HUDの原文字列・文字画像・背景接続](analysis/20261117-hud-source-data/README.md)。11文字列・31文字画像・背景1領域、原CPU実行0回。既知ルールの原データ接続として記録。
+
+- 2026-11-17: [商品選択メニューの原画像・表示名・配置](analysis/20261117-product-menu-source-data/README.md)。27画像・27表示名・什器別172枠、原CPU実行0回。既知ルールを原画素・文字列へ接続。

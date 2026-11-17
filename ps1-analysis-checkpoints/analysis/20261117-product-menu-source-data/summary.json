@@ -1,0 +1,25 @@
+{
+  "products": 27,
+  "product_menu_crops": 27,
+  "source_images": 2,
+  "fixture_masters": 53,
+  "nonempty_fixture_menus": 41,
+  "choice_occurrences": 172,
+  "max_choices": 12,
+  "special_icon_overrides": [
+    {
+      "product": 20,
+      "disc_first_image": 85,
+      "menu_icon_cell": 81
+    },
+    {
+      "product": 25,
+      "disc_first_image": 80,
+      "menu_icon_cell": 80
+    }
+  ],
+  "permission_combinations": 8,
+  "original_cpu_calls": 0,
+  "operating_updates": 0,
+  "android_code_changed": false
+}

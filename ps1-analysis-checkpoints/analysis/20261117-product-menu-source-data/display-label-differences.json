@@ -1,0 +1,29 @@
+{
+  "rows": [
+    {
+      "product": 5,
+      "master_name": "ｲﾝｽﾀﾝﾄ類",
+      "display_label": "インスタント類",
+      "message_id": 76
+    },
+    {
+      "product": 8,
+      "master_name": "たばこ",
+      "display_label": "タバコ",
+      "message_id": 79
+    },
+    {
+      "product": 9,
+      "master_name": "ｱｲｽｸﾘｰﾑ",
+      "display_label": "アイスクリーム",
+      "message_id": 80
+    },
+    {
+      "product": 21,
+      "master_name": "宅急便申込書",
+      "display_label": "宅配便申込書",
+      "message_id": 92
+    }
+  ],
+  "rule": "The selected product label comes from MSG00 message71+product, not the Shift-JIS product master name. Preserve both source forms."
+}
