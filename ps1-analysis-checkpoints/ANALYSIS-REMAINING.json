@@ -74,7 +74,11 @@
       "title": "TOWNPS店員27の所属FFFFの意図",
       "status": "open",
       "evidence": "analysis/20261114-staff-roster-growth-data/README.md",
-      "resolution": null
+      "resolution": null,
+      "latest_evidence": "analysis/20261117-staff-assignment-lifecycle-data/README.md",
+      "established": [
+        "Four-map candidate output/RNG unchanged under word16 perturbations; candidate and four assignment calls perform no word16 access. Role swaps refill energy through release/reassign, without interpreting word16. Scoped result only."
+      ]
     },
     {
       "id": "R07",
@@ -82,11 +86,12 @@
       "status": "open",
       "evidence": "analysis/20261114-staff-roster-growth-data/README.md",
       "resolution": null,
-      "latest_evidence": "analysis/20261117-abandonment-staff-decline-data/README.md",
+      "latest_evidence": "analysis/20261117-staff-assignment-lifecycle-data/README.md",
       "established": [
         "Original loader copies packed+13 to runtime+16.",
         "139 initial values0; TOWNPS staff27=69120 was already present in prior extraction.",
-        "Customer-driven mode-1 changes4 skill bytes, notword16."
+        "Customer-driven mode-1 changes4 skill bytes, notword16.",
+        "Four-map candidate output/RNG unchanged under word16 perturbations; candidate and four assignment calls perform no word16 access. Role swaps refill energy through release/reassign, without interpreting word16. Scoped result only."
       ],
       "remaining_question": "Semantic read/update path ofword16 is not established; do not name69120 a cooldown based only on its value."
     }
@@ -95,7 +100,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue source requirements; facility composition joins available, R04 remains open. Build native Android after required analysis.",
+  "next": "Trace semantic consumers of word16 and intended FFFF purpose outside candidate/assignment functions; preserve scoped lifecycle findings for native Android.",
   "additional_completed_source_paths": [
     {
       "id": "X01",

@@ -1,0 +1,617 @@
+[
+  {
+    "name": "unchanged",
+    "old_slots": [
+      0,
+      1,
+      2
+    ],
+    "new_slots": [
+      0,
+      1,
+      2
+    ],
+    "people": [
+      {
+        "id": 0,
+        "old_slot": 0,
+        "new_slot": 0,
+        "changed_offsets": [],
+        "energy_before": 1,
+        "energy_after": 1,
+        "maximum_energy": 80,
+        "experience_before": 0,
+        "experience_after": 0,
+        "owner_after": 1,
+        "body_after": 0,
+        "task_after": 1,
+        "position_after": [
+          2,
+          2,
+          0
+        ],
+        "goal_after": [
+          3,
+          3,
+          0
+        ],
+        "route_after": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "id": 1,
+        "old_slot": 1,
+        "new_slot": 1,
+        "changed_offsets": [],
+        "energy_before": 1,
+        "energy_after": 1,
+        "maximum_energy": 60,
+        "experience_before": 0,
+        "experience_after": 0,
+        "owner_after": 1,
+        "body_after": 1,
+        "task_after": 1,
+        "position_after": [
+          3,
+          2,
+          0
+        ],
+        "goal_after": [
+          3,
+          3,
+          0
+        ],
+        "route_after": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "id": 2,
+        "old_slot": 2,
+        "new_slot": 2,
+        "changed_offsets": [],
+        "energy_before": 1,
+        "energy_after": 1,
+        "maximum_energy": 70,
+        "experience_before": 0,
+        "experience_after": 0,
+        "owner_after": 1,
+        "body_after": 2,
+        "task_after": 1,
+        "position_after": [
+          4,
+          2,
+          0
+        ],
+        "goal_after": [
+          3,
+          3,
+          0
+        ],
+        "route_after": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ],
+    "word16_reads": [],
+    "word16_writes": [],
+    "native_subroutines": true,
+    "source_steps": "Bounded staffing transaction; not natural gameplay or elapsed time."
+  },
+  {
+    "name": "swap_manager_and_staff",
+    "old_slots": [
+      0,
+      1,
+      2
+    ],
+    "new_slots": [
+      1,
+      0,
+      2
+    ],
+    "people": [
+      {
+        "id": 0,
+        "old_slot": 0,
+        "new_slot": 1,
+        "changed_offsets": [
+          6,
+          20,
+          25,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56
+        ],
+        "energy_before": 1,
+        "energy_after": 80,
+        "maximum_energy": 80,
+        "experience_before": 0,
+        "experience_after": 1,
+        "owner_after": 1,
+        "body_after": 40,
+        "task_after": 0,
+        "position_after": [
+          6,
+          7,
+          1
+        ],
+        "goal_after": [
+          -1,
+          -1,
+          -1
+        ],
+        "route_after": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "id": 1,
+        "old_slot": 1,
+        "new_slot": 0,
+        "changed_offsets": [
+          6,
+          20,
+          25,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56
+        ],
+        "energy_before": 1,
+        "energy_after": 60,
+        "maximum_energy": 60,
+        "experience_before": 0,
+        "experience_after": 1,
+        "owner_after": 1,
+        "body_after": 43,
+        "task_after": 0,
+        "position_after": [
+          6,
+          8,
+          1
+        ],
+        "goal_after": [
+          -1,
+          -1,
+          -1
+        ],
+        "route_after": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ]
+      },
+      {
+        "id": 2,
+        "old_slot": 2,
+        "new_slot": 2,
+        "changed_offsets": [],
+        "energy_before": 1,
+        "energy_after": 1,
+        "maximum_energy": 70,
+        "experience_before": 0,
+        "experience_after": 0,
+        "owner_after": 1,
+        "body_after": 2,
+        "task_after": 1,
+        "position_after": [
+          4,
+          2,
+          0
+        ],
+        "goal_after": [
+          3,
+          3,
+          0
+        ],
+        "route_after": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ],
+    "word16_reads": [],
+    "word16_writes": [],
+    "native_subroutines": true,
+    "source_steps": "Bounded staffing transaction; not natural gameplay or elapsed time."
+  },
+  {
+    "name": "replace_second",
+    "old_slots": [
+      0,
+      1,
+      2
+    ],
+    "new_slots": [
+      0,
+      3,
+      2
+    ],
+    "people": [
+      {
+        "id": 0,
+        "old_slot": 0,
+        "new_slot": 0,
+        "changed_offsets": [],
+        "energy_before": 1,
+        "energy_after": 1,
+        "maximum_energy": 80,
+        "experience_before": 0,
+        "experience_after": 0,
+        "owner_after": 1,
+        "body_after": 0,
+        "task_after": 1,
+        "position_after": [
+          2,
+          2,
+          0
+        ],
+        "goal_after": [
+          3,
+          3,
+          0
+        ],
+        "route_after": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "id": 1,
+        "old_slot": 1,
+        "new_slot": null,
+        "changed_offsets": [
+          0,
+          25,
+          40
+        ],
+        "energy_before": 1,
+        "energy_after": 60,
+        "maximum_energy": 60,
+        "experience_before": 0,
+        "experience_after": 0,
+        "owner_after": 0,
+        "body_after": 1,
+        "task_after": 0,
+        "position_after": [
+          3,
+          2,
+          0
+        ],
+        "goal_after": [
+          3,
+          3,
+          0
+        ],
+        "route_after": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "id": 2,
+        "old_slot": 2,
+        "new_slot": 2,
+        "changed_offsets": [],
+        "energy_before": 1,
+        "energy_after": 1,
+        "maximum_energy": 70,
+        "experience_before": 0,
+        "experience_after": 0,
+        "owner_after": 1,
+        "body_after": 2,
+        "task_after": 1,
+        "position_after": [
+          4,
+          2,
+          0
+        ],
+        "goal_after": [
+          3,
+          3,
+          0
+        ],
+        "route_after": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "id": 3,
+        "old_slot": null,
+        "new_slot": 1,
+        "changed_offsets": [
+          0,
+          6,
+          20,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56
+        ],
+        "energy_before": 1,
+        "energy_after": 1,
+        "maximum_energy": 65,
+        "experience_before": 0,
+        "experience_after": 1,
+        "owner_after": 1,
+        "body_after": 40,
+        "task_after": 0,
+        "position_after": [
+          6,
+          7,
+          1
+        ],
+        "goal_after": [
+          -1,
+          -1,
+          -1
+        ],
+        "route_after": [
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255,
+          255
+        ]
+      }
+    ],
+    "word16_reads": [],
+    "word16_writes": [],
+    "native_subroutines": true,
+    "source_steps": "Bounded staffing transaction; not natural gameplay or elapsed time."
+  },
+  {
+    "name": "dismiss_second",
+    "old_slots": [
+      0,
+      1,
+      2
+    ],
+    "new_slots": [
+      0,
+      -1,
+      2
+    ],
+    "people": [
+      {
+        "id": 0,
+        "old_slot": 0,
+        "new_slot": 0,
+        "changed_offsets": [],
+        "energy_before": 1,
+        "energy_after": 1,
+        "maximum_energy": 80,
+        "experience_before": 0,
+        "experience_after": 0,
+        "owner_after": 1,
+        "body_after": 0,
+        "task_after": 1,
+        "position_after": [
+          2,
+          2,
+          0
+        ],
+        "goal_after": [
+          3,
+          3,
+          0
+        ],
+        "route_after": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "id": 1,
+        "old_slot": 1,
+        "new_slot": null,
+        "changed_offsets": [
+          0,
+          25,
+          40
+        ],
+        "energy_before": 1,
+        "energy_after": 60,
+        "maximum_energy": 60,
+        "experience_before": 0,
+        "experience_after": 0,
+        "owner_after": 0,
+        "body_after": 1,
+        "task_after": 0,
+        "position_after": [
+          3,
+          2,
+          0
+        ],
+        "goal_after": [
+          3,
+          3,
+          0
+        ],
+        "route_after": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "id": 2,
+        "old_slot": 2,
+        "new_slot": 2,
+        "changed_offsets": [],
+        "energy_before": 1,
+        "energy_after": 1,
+        "maximum_energy": 70,
+        "experience_before": 0,
+        "experience_after": 0,
+        "owner_after": 1,
+        "body_after": 2,
+        "task_after": 1,
+        "position_after": [
+          4,
+          2,
+          0
+        ],
+        "goal_after": [
+          3,
+          3,
+          0
+        ],
+        "route_after": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ],
+    "word16_reads": [],
+    "word16_writes": [],
+    "native_subroutines": true,
+    "source_steps": "Bounded staffing transaction; not natural gameplay or elapsed time."
+  }
+]

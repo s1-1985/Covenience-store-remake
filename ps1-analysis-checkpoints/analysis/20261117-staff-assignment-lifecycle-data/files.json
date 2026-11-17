@@ -1,0 +1,77 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 6164,
+    "sha256": "6c8c1c769eb025b51303f0bcae2f2bfdcd84520861b1e145d38d6cc3a1f96b48"
+  },
+  {
+    "path": "analyze-lifecycle.py",
+    "bytes": 7440,
+    "sha256": "84918fb2636a1763b5b5a74c3d5b97b73a1a3748c77e13fed81bb0904806d35a"
+  },
+  {
+    "path": "android-assignment-bridge.json",
+    "bytes": 1063,
+    "sha256": "90795b4fafc2aa39d639dfd0d0b911413fb11aec91615454554e47a6256475aa"
+  },
+  {
+    "path": "assignment-readers.asm",
+    "bytes": 24799,
+    "sha256": "47ef2b2873e9825f6b1a883222f26f10f8083fe1329ea8d8d3038bf4b6b5a7ba"
+  },
+  {
+    "path": "assignment-transitions.json",
+    "bytes": 10831,
+    "sha256": "34bbfe86dc3d0770c9a6a272a02740cdaf252535a693b2732e2511d1b24e5ec8"
+  },
+  {
+    "path": "candidate-word16-boundary.json",
+    "bytes": 3494,
+    "sha256": "b5d5f71006c77437d662a1fb31ba9c74bcaa945f35dd6e6ce0a0b2873e424999"
+  },
+  {
+    "path": "source/candidate_pool.bin",
+    "bytes": 548,
+    "sha256": "5f10d530f506867d4def3c6831527c4d5f2db9210be012366f15789ff3c68838"
+  },
+  {
+    "path": "source/find_fixture.bin",
+    "bytes": 416,
+    "sha256": "40c9e50354808d45cf565517870a41692ca4f41c8df07a1807298c9d8516498d"
+  },
+  {
+    "path": "source/memset_rng.bin",
+    "bytes": 92,
+    "sha256": "e1c470ffc1ead0b39d8a0781451829cec934b3382620a5f191f2619f83c3c0ee"
+  },
+  {
+    "path": "source/rest_offsets.bin",
+    "bytes": 24,
+    "sha256": "7e242c49a80661f47f18144701cd2d9e1d7795a5252c14d7d01d03fb8c8ed97c"
+  },
+  {
+    "path": "source/rest_place.bin",
+    "bytes": 780,
+    "sha256": "ee40ef6c46adf763a71a8ce5b5d5bc13a696a46d6f0d63088e29ee89f3c000fa"
+  },
+  {
+    "path": "source/role_table.bin",
+    "bytes": 14,
+    "sha256": "068fae222d2d744901de7dd223166e401973975fe0ab0ccaa720d55d445df6cb"
+  },
+  {
+    "path": "source/staff_commit.bin",
+    "bytes": 1084,
+    "sha256": "9161de219fe75b3d595b9ac6d80f31c6f5105938acacde202f96a5ab1244cd8b"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 1522,
+    "sha256": "503c0844b133c0210871105ff8910ab6d99f84925fbaf6c000cf9a7de4f2dba7"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 579,
+    "sha256": "c52c1ab9982d6672ccddd23a4230ad4895f1a1b40f2c03fb43f77681c1d37e75"
+  }
+]

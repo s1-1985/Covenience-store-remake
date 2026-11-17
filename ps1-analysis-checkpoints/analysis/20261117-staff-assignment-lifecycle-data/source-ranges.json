@@ -1,0 +1,47 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": [
+    {
+      "file": "source/candidate_pool.bin",
+      "start": "0x8006f8bc",
+      "end_exclusive": "0x8006fae0",
+      "sha256": "5f10d530f506867d4def3c6831527c4d5f2db9210be012366f15789ff3c68838"
+    },
+    {
+      "file": "source/staff_commit.bin",
+      "start": "0x80070f48",
+      "end_exclusive": "0x80071384",
+      "sha256": "9161de219fe75b3d595b9ac6d80f31c6f5105938acacde202f96a5ab1244cd8b"
+    },
+    {
+      "file": "source/rest_place.bin",
+      "start": "0x8003dda8",
+      "end_exclusive": "0x8003e0b4",
+      "sha256": "ee40ef6c46adf763a71a8ce5b5d5bc13a696a46d6f0d63088e29ee89f3c000fa"
+    },
+    {
+      "file": "source/find_fixture.bin",
+      "start": "0x8001c8dc",
+      "end_exclusive": "0x8001ca7c",
+      "sha256": "40c9e50354808d45cf565517870a41692ca4f41c8df07a1807298c9d8516498d"
+    },
+    {
+      "file": "source/memset_rng.bin",
+      "start": "0x8007e61c",
+      "end_exclusive": "0x8007e678",
+      "sha256": "e1c470ffc1ead0b39d8a0781451829cec934b3382620a5f191f2619f83c3c0ee"
+    },
+    {
+      "file": "source/role_table.bin",
+      "start": "0x800cd750",
+      "end_exclusive": "0x800cd75e",
+      "sha256": "068fae222d2d744901de7dd223166e401973975fe0ab0ccaa720d55d445df6cb"
+    },
+    {
+      "file": "source/rest_offsets.bin",
+      "start": "0x800997c8",
+      "end_exclusive": "0x800997e0",
+      "sha256": "7e242c49a80661f47f18144701cd2d9e1d7795a5252c14d7d01d03fb8c8ed97c"
+    }
+  ]
+}

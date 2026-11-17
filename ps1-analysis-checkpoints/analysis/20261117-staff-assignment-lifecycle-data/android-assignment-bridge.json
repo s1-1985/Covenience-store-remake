@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "evidence": "README.md",
+  "source_function": "0x80070f48",
+  "comparison": "Compare old/new person ID at each of three slots, not set equality.",
+  "phase1": "For changed old slots: owner=0, energy=max_energy; conditionally clear occupied cell; task=0.",
+  "phase2": "For changed slots: write new ID; if nonempty set owner/body/state, call rest placement, increment experience.",
+  "preserve": [
+    "name",
+    "age",
+    "sex",
+    "portrait",
+    "wage",
+    "word16",
+    "basic_attributes",
+    "current_work_skills",
+    "soft_limits"
+  ],
+  "same_slot": "Do not mutate the person or reset fatigue.",
+  "role_swap": "Each moved person is removed then assigned, refills energy, increments experience.",
+  "new_person": "Current energy carries over unless phase1 removed this same person.",
+  "word16": "Keep raw value. These functions do not interpret it; no cooldown or unlock timer has been established.",
+  "limits": "Extracted transaction semantics; full UI admissibility and natural frequency are outside this experiment."
+}
