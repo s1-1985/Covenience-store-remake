@@ -1,0 +1,15 @@
+{
+  "staff_profiles": 35,
+  "initial_maps": 4,
+  "packed_staff_references": 140,
+  "regular_portrait_source_crops": 35,
+  "special_placeholder_crops": 1,
+  "kao01_portraits": 30,
+  "kao02_portraits": 5,
+  "missing_source_crops": 0,
+  "kao_palettes_identical": true,
+  "direct_wrapper_call_sites": 6,
+  "original_cpu_calls": 0,
+  "gameplay_updates": 0,
+  "android_code_changed": false
+}

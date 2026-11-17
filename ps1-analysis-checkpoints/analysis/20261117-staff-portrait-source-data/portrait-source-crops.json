@@ -1,0 +1,731 @@
+{
+  "rows": [
+    {
+      "portrait_code": -1,
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "source_rect": [
+        48,
+        136,
+        48,
+        40
+      ],
+      "clut_row": 492,
+      "indices_sha256": "c61def9dd2fce45c853ae747a160b19176fdc6dc7de305d8cde181a1d66b4978",
+      "raw_color_words_sha256": "13da6fed094af91de3ce7cda46085afaf053214ec5925ef857368b56b141e362",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "classification": "unselected_ui_slot"
+    },
+    {
+      "portrait_code": 0,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        0,
+        0,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "5ad3972f5eb844c708106aa8b55fb54aece6a992e2bd051610874b03f043ed58",
+      "raw_color_words_sha256": "ac36e507271a9bdb225a4a68a0bc162c5578dfced9811b7feecf8ffd03ed1a80",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 1,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        48,
+        0,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "f30437ea68439ae657583db08866e20cecad277a95b5f9292bb97ae31f0de2fc",
+      "raw_color_words_sha256": "1f104bf55ddbcdbba64d2d2c9ca58d829b63c44af0d74380d8d03717edbfc55d",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 2,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        96,
+        0,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "dbd6194ed21339fc542831e5de91698a8debe521e9c302576a80ab545c21958a",
+      "raw_color_words_sha256": "20f06c39952ba15eebea1b3bfe49e43f49f1e102de5b1a06050ebd2020ed0c8a",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 3,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        144,
+        0,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "5b5c3268b6b43ec82ca7213936d7c62e58ea2bec7c102a8626bcb2d4b082b7f3",
+      "raw_color_words_sha256": "6afea3ea06565035493a1a35905c57ff9b4d238f5e0789bae0badf5ef5691838",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 4,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        192,
+        0,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "d94e77f5291706ea59e6800b6976898b607f2136ed35ae80d734b0039576c0a8",
+      "raw_color_words_sha256": "ce361369a13e7036ec5433d61fa36d89ee325ff056412a22a5c7530f27fd0c53",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 5,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        0,
+        40,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "9c61fdcb384585f208d6d6352f321d6b5292f73d8dce09413decf0b557a167d5",
+      "raw_color_words_sha256": "e137dab770af556363cf9392d1720fa0d04e3351b4fb89e8a2d8a487dc012e4f",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 6,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        48,
+        40,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "643e78529f8cc4bc6f3f78deb4f5e7b3b6da5319d76941a72e4bfc508576c28e",
+      "raw_color_words_sha256": "f870b770e2ea4e3ae5d015ae4c58d41f1048f959d3047e2eaad8b7bfe3cc9183",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 7,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        96,
+        40,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "682d0fc2ed49c7d41eb1d3e37e198c25cb0fb3af0df0160eac70c571f379de51",
+      "raw_color_words_sha256": "3b2ac0b2347d6c730fb39e44067b02cbc26e64ebd90465c4d28ef037f7ebf763",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 8,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        144,
+        40,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "6866e171ab8767a3db69707377f04f8c1e08691419e7c2626e917945973f0377",
+      "raw_color_words_sha256": "6d9b7a39317c7fcca313f610524ad24ccb2b3c4cb381080bf85ec028b6ce64cb",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 9,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        192,
+        40,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "a416738148836822e662373bad0decf012577c1326723f4afe8e08494c873f3a",
+      "raw_color_words_sha256": "c0d09f6d32961e2c62f73c42aadce88d202e5dad33fc13a3f4ae6a3315c41c85",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 10,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        0,
+        80,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "7702816f2458ea04137129ddc3fb32bd47b8e2500cdb4a725dab11b065a87bc3",
+      "raw_color_words_sha256": "40f043cc975f93e53d58d8cf45c6548e2b2522152561b1312231e350a4d4adb8",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 11,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        48,
+        80,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "f89732be5c916a19c60f2a8324d9b0267cbac27d243d2e8d0bce4ae5733604b3",
+      "raw_color_words_sha256": "99bc08e840f35e8dfc58b076fcc760ccc62fae68143df55fc0c84c8b409b3b25",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 12,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        96,
+        80,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "9d0592e10ca01c5dcd1f1b250a183b83ea36663acc6b4e7e1ef09afe7430e1d9",
+      "raw_color_words_sha256": "c83d1b39f752c78b60b71f1720d35e717e164e3e962d5a7c01db694e5ea1a74b",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 13,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        144,
+        80,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "faa09ab6fdccb27c1f87127f1b793e8cf74a16ee20ce78dce293ab20241a4860",
+      "raw_color_words_sha256": "0b7074bf02b2a8e7490e0e26fc089e5a452a803c8efb66b7ce937ab98d0e8408",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 14,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        192,
+        80,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "176b7c0b2c5a285241fb602884b974d5d278d23a38d8150e11c3869e21595a5f",
+      "raw_color_words_sha256": "e72fe85a8bb2c5d96c4e917bebf76f6703b47d893a0975cee102422f9df533e2",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 15,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        0,
+        120,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "6e037d780875afdc2260e4aca96c191d4cd0745406bd00105d889c1b7407cdab",
+      "raw_color_words_sha256": "9ff75543a57e66ff61bad6db4c5dece36eb3840b6bd509df7435d3e273d9b976",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 16,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        48,
+        120,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "5d58f1afad5097440a161869200424f3ef3a7dfdede2f3c1e649ee705a723835",
+      "raw_color_words_sha256": "ea03d3b8cd74a187ac5db0897620cf99c2ee0bda583954076b67acd54d6dc358",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 17,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        96,
+        120,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "e2099fffa8184fb39c7d940e2f25a394e7b603634985840a3d46116e4bb9b93d",
+      "raw_color_words_sha256": "841a7817ce86c46bd723619e6ca8bc0a072c08c112b7884664f45a29f7e320f6",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 18,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        144,
+        120,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "01cedb007945ec4c82196a06dd61a34aa1aa6dea84eb1d2c5ece0a77e8beadf6",
+      "raw_color_words_sha256": "c2a1af7e8b0c011116b474e3744c919a13dfa47dc6cdc2e8c979f81d9953c736",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 19,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        192,
+        120,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "aa56074e167ef6e58375d1769c95370a724fd2e10cb01b74f2967248ff2021cf",
+      "raw_color_words_sha256": "ebedc1bc9063f342bcc4690ff38137121668f3350ec925fd9d3aecae56d2c4ee",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 20,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        0,
+        160,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "1e78434941fdd27045414fc461a844c0b7021faba64e0179e25b7c12fd3e8a6d",
+      "raw_color_words_sha256": "fb21853b3e5a9f111f1026da689f4667baad8137a478f82e53a85c8b8b36b1c9",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 21,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        48,
+        160,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "fe015b9cb1804639db2c510b425648ba4ff0ba492c7bfdf173552bf062002ef5",
+      "raw_color_words_sha256": "6352f61363818aaf74aac25217cc6e71fa990e8df9e378b05fa6e7ecb835dfa5",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 22,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        96,
+        160,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "dd7d257fefdcbfca4b8374ddc5cc13b61610ea918fa54852ef71c1cfbab7dd9b",
+      "raw_color_words_sha256": "5ee56864194cd7bfb83ce9b85408a6243ab822f0ab4b8a85ded5bb7bb9c1cb1a",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 23,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        144,
+        160,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "fc29d36799cf144a1e9d07615439fcdf686c8649644573bbabd018da6f33d400",
+      "raw_color_words_sha256": "79286baaa5995bd33beb1910d451d22ebdc24270c7c98be92f2a4d395eb256b9",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 24,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        192,
+        160,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "8a3174f5a04a8cef3ad9dc4bf2a382b66bc1802b7b990f77083d2cd1806b40c9",
+      "raw_color_words_sha256": "cc4d845e0c324d4276e8ef645a996d3a6dd9883122229080bc717857efcc6269",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 25,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        0,
+        200,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "1c7f2e899c33d91fc9f63bc9a856b35a0bda26fe357e1bf7d14be6ec258bfd74",
+      "raw_color_words_sha256": "773358b02bfb334ff5779f9339d580920a61c4c2ef2f79b38072f5c3ebcad2b5",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 26,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        48,
+        200,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "3ba482da15cb2af25d2fb28bee6618fd275c4a9c9dfbd1b9873041fa559cee62",
+      "raw_color_words_sha256": "ea8f6d3a3bd92c6b1d18064390f0b201bb9bf11298f5d8cf70e67c613bef5738",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 27,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        96,
+        200,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "06f60cf5d54b7a7230bbeb53066b311dab3121a5a69168c866e5d3192b45d713",
+      "raw_color_words_sha256": "bf131da59214ff0290b77ae2a05267d941a73d6781b680737045ccadd684e990",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 28,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        144,
+        200,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "4d9b756f02cc86162ffaa349368164856240c1efadab8f784194bd432947ca1c",
+      "raw_color_words_sha256": "4bff731b188df97a06264ba21ef9509dade48e4768b73bf6bdc1869d4f2e40d5",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 29,
+      "source_image_id": 14,
+      "source_file": "KAO01.TIM",
+      "draw_record_kind": 21,
+      "source_rect": [
+        192,
+        200,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "fa90477a39d164592a28aaf05e129eebb42d50d93f7b5b37b0e9a0f83daca42a",
+      "raw_color_words_sha256": "5a3272c6ab82547a41686e5cd49617ab0a6b77f596ac82d81225ab6d8641f53d",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 30,
+      "source_image_id": 15,
+      "source_file": "KAO02.TIM",
+      "draw_record_kind": 23,
+      "source_rect": [
+        0,
+        0,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "56abce40a8507439061ea6b81688698ceb4935787a133b1d60d5d50be12e73e7",
+      "raw_color_words_sha256": "503ff12a1ef8aa4a03bfddc8b9e61b31f5153bcdcbc59ebc88d3815eeb4e858c",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 31,
+      "source_image_id": 15,
+      "source_file": "KAO02.TIM",
+      "draw_record_kind": 23,
+      "source_rect": [
+        48,
+        0,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "3fa22b900df4fc528abc13cd9957b2c0664e7cf75379e2bf0c816c4cae924fc4",
+      "raw_color_words_sha256": "d4b03f1f571959b0c1b16c4f3e78ba2e6e675eda731c6b803b9827c47c078f2a",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 32,
+      "source_image_id": 15,
+      "source_file": "KAO02.TIM",
+      "draw_record_kind": 23,
+      "source_rect": [
+        96,
+        0,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "7f06965695e4259d00a8fe00149d1a5c46e98ab9bb24e3d96bb9c0e31cf6a93a",
+      "raw_color_words_sha256": "6ad892bf7c84505e60ec37aa5b446ea4dd9ca18d7292d7b01ad21d725bfc33f2",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 33,
+      "source_image_id": 15,
+      "source_file": "KAO02.TIM",
+      "draw_record_kind": 23,
+      "source_rect": [
+        144,
+        0,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "0ab5fa7397b51b9627ddd46f92f5a52a8c37729ddf0cdb794b31c79c0d71baa9",
+      "raw_color_words_sha256": "79e339c06f07b7464e4c538298fafe6665471c8ba5c76042a961e85af9590c7a",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    },
+    {
+      "portrait_code": 34,
+      "source_image_id": 15,
+      "source_file": "KAO02.TIM",
+      "draw_record_kind": 23,
+      "source_rect": [
+        192,
+        0,
+        48,
+        40
+      ],
+      "clut_row": 494,
+      "indices_sha256": "9d4ba88a754bc817a24592deb2a80da55fca49cf4d61ae0f07f1541d102f4940",
+      "raw_color_words_sha256": "5f3be790e8d5b5555d2bb9285fa3b250e66e1e3881320be23b82776252b375e2",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "inside_original_pixels": true,
+      "classification": "initial_staff_portrait"
+    }
+  ],
+  "sources": [
+    {
+      "image_id": 8,
+      "path": "/TIM0/KYOU.TIM",
+      "file_sha256": "ef75f72fffafc3cc45853a2097059b421aed139929d31b6a1bea8dcb40127d89",
+      "source_size_pixels": [
+        256,
+        240
+      ],
+      "source_pixel_sha256": "7681a434f1d018510d94b7243ca983457fc4b76b47578ad6f7707b1f4b06a063",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "destination_pixel_rect_words": [
+        448,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        492,
+        256,
+        1
+      ]
+    },
+    {
+      "image_id": 14,
+      "path": "/TIM0/KAO01.TIM",
+      "file_sha256": "660e1382abec03ca60b8460bb6e2a7645370fd24aa9116762020cceedfe6c115",
+      "source_size_pixels": [
+        256,
+        256
+      ],
+      "source_pixel_sha256": "1415fa85785e37b6a8430db8d4d4b7694858ed99d4aabba7bc5464394287fd9e",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "destination_pixel_rect_words": [
+        320,
+        256,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "image_id": 15,
+      "path": "/TIM0/KAO02.TIM",
+      "file_sha256": "91c1d4c0f11bea03a4bf38f79ec9d69e3648c9ab7aed96860949144b8587b74a",
+      "source_size_pixels": [
+        256,
+        40
+      ],
+      "source_pixel_sha256": "021c25a887d6f4d96b3cd04df648f36d4fbb2b643eeaedf3cf1ba52a2f5d3374",
+      "palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+      "destination_pixel_rect_words": [
+        448,
+        256,
+        128,
+        64
+      ],
+      "destination_clut_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    }
+  ],
+  "regular_portrait_size": [
+    48,
+    40
+  ],
+  "kao_palettes_identical": true,
+  "kao_common_palette_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+  "source_rule": "Signed16code dividedby5 towardzero; row<6 kind21/KAO01, otherwise subtract6once kind23/KAO02. Code-1 is separateKYOU icon. Only normal0..34 and-1 bound here.",
+  "scope": "35initialstaff portraits plus unselected UI placeholder; not all mathematically accepted signed16codes or body sprites."
+}

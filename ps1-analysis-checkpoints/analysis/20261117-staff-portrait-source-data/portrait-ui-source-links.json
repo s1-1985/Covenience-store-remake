@@ -1,0 +1,28 @@
+{
+  "wrapper": "0x800675DC",
+  "direct_call_sites": [
+    "0x800402d0",
+    "0x800700f4",
+    "0x80070150",
+    "0x8007034c",
+    "0x8007039c",
+    "0x80070480"
+  ],
+  "confirmed_source_readers": [
+    {
+      "call": "0x800700F4",
+      "portrait_load": "0x800700E4",
+      "source": "staff60stride base80143FF8 +8; selectedstaff list"
+    },
+    {
+      "call": "0x80070480",
+      "portrait_load": "0x80070470",
+      "source": "staff60stride base80143FF8 +8; staff profile"
+    },
+    {
+      "call": "0x80070150",
+      "source": "explicit A2=-1 at70148 for empty selection"
+    }
+  ],
+  "call_scope": "Static references only; no natural UI execution or exhaustive indirect-call claim."
+}

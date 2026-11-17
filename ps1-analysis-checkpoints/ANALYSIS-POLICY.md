@@ -156,3 +156,5 @@
 - [2026-11-17：什器53種×4方向と商品画像264番号、宣言のみ6番号を元画像3枚へ接続・原CPU検証0回](analysis/20261117-interior-source-crops-data/README.md)
 
 - [2026-11-17：30配置の壁1060か所と床画像を接続、KABEE背景16部品・320セルを原画素へ対応・原CPU検証0回](analysis/20261117-floor-wall-background-data/README.md)
+
+- [2026-11-17：店員35人の顔と4マップ140参照、未選択の募集中枠を原画像へ接続・原CPU検証0回](analysis/20261117-staff-portrait-source-data/README.md)

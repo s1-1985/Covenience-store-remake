@@ -1,0 +1,61 @@
+{
+  "status": "source_data_only_no_android_change",
+  "crop_map": "portrait-source-crops.json",
+  "staff_links": "town-staff-portrait-links.json",
+  "normal_portrait_codes": [
+    0,
+    34
+  ],
+  "empty_slot_code": -1,
+  "normal_size": [
+    48,
+    40
+  ],
+  "normal_sources": [
+    {
+      "image_id": 14,
+      "file": "KAO01.TIM",
+      "codes": [
+        0,
+        29
+      ]
+    },
+    {
+      "image_id": 15,
+      "file": "KAO02.TIM",
+      "codes": [
+        30,
+        34
+      ]
+    }
+  ],
+  "empty_source": {
+    "image_id": 8,
+    "file": "KYOU.TIM",
+    "rect": [
+      48,
+      136,
+      48,
+      40
+    ]
+  },
+  "field_offsets": {
+    "packed_face": 7,
+    "runtime_face": 8,
+    "packed_body": 5,
+    "runtime_body": 6
+  },
+  "rules": [
+    "Separateportrait andbodyappearance fields.",
+    "Use original source image ID plus crop, not only VRAMdestination.",
+    "KAO02 normal portraits require rows0..39; do not invent40..63rows.",
+    "Rejectunsupportedportrait indices in nativeAndroid data flow; code35 is not an extra initialemployee.",
+    "Minus1 is an unselectedUIgraphic usingKYOU palette, not staffnumber-1.",
+    "KAO01/02 palettes match; preserve originalSTP for finalcompositing."
+  ],
+  "runtime": "NativeAndroid source asset lookup; no originalEXE/BIOS/emulator runtime dependency.",
+  "limitations": [
+    "WholeUIrendering/selectioneffects notexecuted",
+    "Naturalplayreachability and globalindirectportraitreferences notestablished"
+  ]
+}

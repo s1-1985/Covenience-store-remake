@@ -1,0 +1,72 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 6258,
+    "sha256": "f13194c9b68d81f5d8375122dd562baa61ffad17d7e1330f75b9e3d41a9906ca"
+  },
+  {
+    "path": "android-portrait-bridge.json",
+    "bytes": 1483,
+    "sha256": "b822de89797eb5f440fa9b2206315f8e60bf1f8eaae77e7c6521557d9efc2fbb"
+  },
+  {
+    "path": "extract-portraits.py",
+    "bytes": 9281,
+    "sha256": "9295f4f44775038bb49ab0e0f5c88eea03f23cc6cf60d27c09bd049d7167a1e9"
+  },
+  {
+    "path": "portrait-readers.asm",
+    "bytes": 9109,
+    "sha256": "020396c076df1879d2fd2b4ef93c575bb2ad991ad09e14a1fe42c3f2fb56ea1b"
+  },
+  {
+    "path": "portrait-source-boundary.json",
+    "bytes": 1127,
+    "sha256": "caf12dce872d508bdee61853c8bfd84185f28d6e8576d5fa3e6a8e9ac5030d52"
+  },
+  {
+    "path": "portrait-source-crops.json",
+    "bytes": 24150,
+    "sha256": "b27ef628e7da72b2c71a3caae9f03ac42c0e90f301bc8407f3bbef92e7b9da59"
+  },
+  {
+    "path": "portrait-ui-source-links.json",
+    "bytes": 694,
+    "sha256": "12a51fdf3986551afcd1a62712bffb8e530728a43dc1634128d90258fcad05e7"
+  },
+  {
+    "path": "source/portrait_wrapper.bin",
+    "bytes": 568,
+    "sha256": "93b68f009a189ed41081a35b7a7b2c002ca6d1561b2dc015e50ccb9e13fbbe4c"
+  },
+  {
+    "path": "source/profile_portrait_reader.bin",
+    "bytes": 64,
+    "sha256": "7ee90b035f4e6b9e65420b7540d070ec1198ae01feda069372dbbb6270fdaf00"
+  },
+  {
+    "path": "source/selected_staff_portraits.bin",
+    "bytes": 404,
+    "sha256": "7f3ea8520c7eff0ef29c12b6498bba7a9f88bc8da3a8a786ec31c9302617f670"
+  },
+  {
+    "path": "source-provenance.json",
+    "bytes": 3472,
+    "sha256": "cb6ba3ebaf9f6f99a19eaa8a3e28117095b6c455c93ce90b41be868c6a5cd8fc"
+  },
+  {
+    "path": "staff-portrait-source-preview.png",
+    "bytes": 110462,
+    "sha256": "59f982a11d044d73c9b045132476589f3831cd1151a497e437fe1c967889eae2"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 386,
+    "sha256": "de9a1d60f94b994c07fb613373ff8b84a7998d8f6de8efdc4f313a5ae2756aac"
+  },
+  {
+    "path": "town-staff-portrait-links.json",
+    "bytes": 57429,
+    "sha256": "69c8e30dd966349f0ee97289f130c5c2426d5f1740738c2b1af451178f10fe10"
+  }
+]

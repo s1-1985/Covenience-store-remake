@@ -105,7 +105,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue unconnected ordinary source/UI/scene data. Rawtemplate floor/wall binding and KABEE background crops now connected; dynamic scene composition and six tracked questions remain open.",
+  "next": "Continue unconnected ordinary UI/scene source data. Staff portrait pixel bindings nowconnected; fullUIcomposition/otherassets and sixtrackedquestions remain open.",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -145,6 +145,14 @@
       "status": "resolved_scoped_source_binding",
       "evidence": "analysis/20261117-floor-wall-background-data/README.md",
       "resolution": "All1060kind53wallanchors equal floorcodes20..27 atcorrespondingposition in30rawtemplates. 4260floor/1366fixturecells bound;16KABEE tiles/320BGDcells maptoKYOU validpixels. Knownrulesreused;0sourceCPUcalls. Not dynamicremodeling or fullscene validation.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X06",
+      "title": "店員35人の顔・4マップ140参照と未選択枠の原画素対応",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261117-staff-portrait-source-data/README.md",
+      "resolution": "35normalportraits maptoKAO01/02 and-1placeholder toKYOU;140rosterreferences matched,36cropsinsideoriginalpixels. KAO02 needsnomissingrows40..63 fornormalstafffaces. KnownUIrules reused;0sourceCPUcalls. Not fullUIrendering.",
       "counted_in_seven_tracked_items": false
     }
   ]

@@ -1,0 +1,62 @@
+{
+  "normal_ranges": [
+    {
+      "codes": [
+        0,
+        29
+      ],
+      "source": "KAO01.TIM",
+      "grid": [
+        5,
+        6
+      ],
+      "max_source_bottom": 240,
+      "source_height": 256
+    },
+    {
+      "codes": [
+        30,
+        34
+      ],
+      "source": "KAO02.TIM",
+      "grid": [
+        5,
+        1
+      ],
+      "max_source_bottom": 40,
+      "source_height": 40
+    }
+  ],
+  "kao02_requested_height": 64,
+  "kao02_normal_portraits_need_rows": [
+    0,
+    39
+  ],
+  "kao02_missing_rows_not_needed_for_normal_portraits": [
+    40,
+    63
+  ],
+  "first_outside_normal_code": {
+    "code": 35,
+    "computed_source": "KAO02.TIM",
+    "computed_rect": [
+      0,
+      40,
+      48,
+      40
+    ],
+    "inside_source": false,
+    "initial_staff_reference": false
+  },
+  "special_minus1": {
+    "source": "KYOU.TIM",
+    "rect": [
+      48,
+      136,
+      48,
+      40
+    ],
+    "is_extra_staff": false
+  },
+  "warning": "Earlier r2 tests passedwrapper codes through59 ascontrolledinputs; this doesnot establish60portraits or validpixels for35..59. No extra signedcode tests added."
+}
