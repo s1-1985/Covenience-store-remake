@@ -1,0 +1,94 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5100,
+      "sha256": "8e0954145aa2e1b022b1fdf0ee252108e05847334a0d87875745d19941961ad8"
+    },
+    {
+      "path": "android-permit-dialog-bridge.json",
+      "bytes": 1334,
+      "sha256": "6826f71b7cef757d9649d6547601aa8b94ac56152ea5d06ef55d9acf88b53be0"
+    },
+    {
+      "path": "control-image-source.json",
+      "bytes": 2858,
+      "sha256": "f01f0f7dac12894b4b7cf08700c464c152083caaf550af543cc980272c333223"
+    },
+    {
+      "path": "dialog-state-source.json",
+      "bytes": 40926,
+      "sha256": "05ff7b4bf2a912fd01b35f87421b3e72a30f964f73610d40d34c1747392f72b4"
+    },
+    {
+      "path": "dialog-text-source.json",
+      "bytes": 3515,
+      "sha256": "d5bc14d9adf8aec37869b9f4c001c3e9871aa22f0fc40c790c142d84617be858"
+    },
+    {
+      "path": "extract-permit-dialog.py",
+      "bytes": 8291,
+      "sha256": "caa8693efbb01c7992078bee106305d976c52f9b83444ee9082680b0df99dc4c"
+    },
+    {
+      "path": "permit-control-source-preview.png",
+      "bytes": 4344,
+      "sha256": "6eb4d58eb4776bc3f96802763e62eb081edb20e5eb185517554870c41733e49e"
+    },
+    {
+      "path": "permit-ui-readers.asm",
+      "bytes": 36707,
+      "sha256": "2f0884790cd056a83af5d342bcfae770944832d30d303a09f841af033230b506"
+    },
+    {
+      "path": "source/already-applied-string.bin",
+      "bytes": 10,
+      "sha256": "bcee63915a2a1443fd4859aa52eed45b37bfa3b0f4906f07faf507ad9a7461c9"
+    },
+    {
+      "path": "source/checkbox_call_sites.bin",
+      "bytes": 428,
+      "sha256": "c234ab8ce85c2d3e178d61f27bf8dac90395edf80e3ff79a056ff6a07af55998"
+    },
+    {
+      "path": "source/checkbox_helper.bin",
+      "bytes": 436,
+      "sha256": "fd16b81be64e0172f1e39f6981252d05e71ef9d2cd971ef04fa9fb20dda159b1"
+    },
+    {
+      "path": "source/dialog-messages.bin",
+      "bytes": 106,
+      "sha256": "776816f553cf42e471d50b7b324f8611281d84f2d3b99128ad54e852f661078c"
+    },
+    {
+      "path": "source/display-fee-literals.bin",
+      "bytes": 48,
+      "sha256": "89184c3909c84356b5e77f63b81208a8cdf41ad5a7bccbc1fbdc93bd0d3bbc9e"
+    },
+    {
+      "path": "source/permit_dialog.bin",
+      "bytes": 2520,
+      "sha256": "f2f6cc80f3df169003276fd81bc5047ab6ff69e131724c86cb4ab2999db2d88d"
+    },
+    {
+      "path": "source/row_symbol_helper.bin",
+      "bytes": 628,
+      "sha256": "4125c158410e51415796fc665a8be33bffb361ba96bfea9c82954293d158d947"
+    },
+    {
+      "path": "source/unavailable_text.bin",
+      "bytes": 220,
+      "sha256": "81a5fe6021161fd29c48e336e4228d303d421dc96baae585039e280557628920"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 1445,
+      "sha256": "7439de3ea39ae51168a1096ea96befbdff363fed716ee64df0049adac40f9008"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 199,
+      "sha256": "e43e11a63f957fa52fcc0a2b6d71139e27269aafd1079dd5f4907a64c496461e"
+    }
+  ]
+}

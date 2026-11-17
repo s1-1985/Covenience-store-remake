@@ -1,0 +1,2331 @@
+{
+  "rows": [
+    {
+      "type": 0,
+      "product": 8,
+      "store_byte_offset": 3188,
+      "label_message": 24,
+      "label_screen_xy": [
+        72,
+        80
+      ],
+      "applied_string_screen_xy": [
+        128,
+        80
+      ],
+      "cost_message": 272,
+      "cost_value_slot": 0,
+      "cost": 3000000,
+      "cost_screen_xy": [
+        128,
+        80
+      ],
+      "unavailable_message": 17,
+      "unavailable_screen_xy": [
+        120,
+        80
+      ],
+      "unavailable_mask_bit": 1
+    },
+    {
+      "type": 1,
+      "product": 2,
+      "store_byte_offset": 3189,
+      "label_message": 25,
+      "label_screen_xy": [
+        72,
+        96
+      ],
+      "applied_string_screen_xy": [
+        128,
+        96
+      ],
+      "cost_message": 273,
+      "cost_value_slot": 1,
+      "cost": 7000000,
+      "cost_screen_xy": [
+        128,
+        96
+      ],
+      "unavailable_message": 17,
+      "unavailable_screen_xy": [
+        120,
+        96
+      ],
+      "unavailable_mask_bit": 2
+    },
+    {
+      "type": 2,
+      "product": 22,
+      "store_byte_offset": 3190,
+      "label_message": 26,
+      "label_screen_xy": [
+        72,
+        112
+      ],
+      "applied_string_screen_xy": [
+        128,
+        112
+      ],
+      "cost_message": 274,
+      "cost_value_slot": 2,
+      "cost": 10000000,
+      "cost_screen_xy": [
+        128,
+        112
+      ],
+      "unavailable_message": 17,
+      "unavailable_screen_xy": [
+        120,
+        112
+      ],
+      "unavailable_mask_bit": 4
+    }
+  ],
+  "states": [
+    {
+      "owned_flags": [
+        0,
+        0,
+        0
+      ],
+      "unavailable_mask": 0,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        0
+      ],
+      "unavailable_mask": 1,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        0
+      ],
+      "unavailable_mask": 2,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        0
+      ],
+      "unavailable_mask": 3,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        0
+      ],
+      "unavailable_mask": 4,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        0
+      ],
+      "unavailable_mask": 5,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        0
+      ],
+      "unavailable_mask": 6,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        0
+      ],
+      "unavailable_mask": 7,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        0
+      ],
+      "unavailable_mask": 0,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        0
+      ],
+      "unavailable_mask": 1,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        0
+      ],
+      "unavailable_mask": 2,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        0
+      ],
+      "unavailable_mask": 3,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        0
+      ],
+      "unavailable_mask": 4,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        0
+      ],
+      "unavailable_mask": 5,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        0
+      ],
+      "unavailable_mask": 6,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        0
+      ],
+      "unavailable_mask": 7,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        0
+      ],
+      "unavailable_mask": 0,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        0
+      ],
+      "unavailable_mask": 1,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        0
+      ],
+      "unavailable_mask": 2,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        0
+      ],
+      "unavailable_mask": 3,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        0
+      ],
+      "unavailable_mask": 4,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        0
+      ],
+      "unavailable_mask": 5,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        0
+      ],
+      "unavailable_mask": 6,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        0
+      ],
+      "unavailable_mask": 7,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        0
+      ],
+      "unavailable_mask": 0,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        0
+      ],
+      "unavailable_mask": 1,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        0
+      ],
+      "unavailable_mask": 2,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        0
+      ],
+      "unavailable_mask": 3,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        0
+      ],
+      "unavailable_mask": 4,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        0
+      ],
+      "unavailable_mask": 5,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        0
+      ],
+      "unavailable_mask": 6,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        0
+      ],
+      "unavailable_mask": 7,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        1
+      ],
+      "unavailable_mask": 0,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        1
+      ],
+      "unavailable_mask": 1,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        1
+      ],
+      "unavailable_mask": 2,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        1
+      ],
+      "unavailable_mask": 3,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        1
+      ],
+      "unavailable_mask": 4,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        1
+      ],
+      "unavailable_mask": 5,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        1
+      ],
+      "unavailable_mask": 6,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        0,
+        1
+      ],
+      "unavailable_mask": 7,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        1
+      ],
+      "unavailable_mask": 0,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        1
+      ],
+      "unavailable_mask": 1,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        1
+      ],
+      "unavailable_mask": 2,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        1
+      ],
+      "unavailable_mask": 3,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        1
+      ],
+      "unavailable_mask": 4,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        1
+      ],
+      "unavailable_mask": 5,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        1
+      ],
+      "unavailable_mask": 6,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        1,
+        0,
+        1
+      ],
+      "unavailable_mask": 7,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        1
+      ],
+      "unavailable_mask": 0,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        1
+      ],
+      "unavailable_mask": 1,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        1
+      ],
+      "unavailable_mask": 2,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        1
+      ],
+      "unavailable_mask": 3,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        1
+      ],
+      "unavailable_mask": 4,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        1
+      ],
+      "unavailable_mask": 5,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        1
+      ],
+      "unavailable_mask": 6,
+      "lines": [
+        {
+          "type": 0,
+          "status": "fee",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": false
+    },
+    {
+      "owned_flags": [
+        0,
+        1,
+        1
+      ],
+      "unavailable_mask": 7,
+      "lines": [
+        {
+          "type": 0,
+          "status": "unavailable",
+          "screen_xy": [
+            120,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        1
+      ],
+      "unavailable_mask": 0,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        1
+      ],
+      "unavailable_mask": 1,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        1
+      ],
+      "unavailable_mask": 2,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        1
+      ],
+      "unavailable_mask": 3,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        1
+      ],
+      "unavailable_mask": 4,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        1
+      ],
+      "unavailable_mask": 5,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        1
+      ],
+      "unavailable_mask": 6,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    },
+    {
+      "owned_flags": [
+        1,
+        1,
+        1
+      ],
+      "unavailable_mask": 7,
+      "lines": [
+        {
+          "type": 0,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            80
+          ]
+        },
+        {
+          "type": 1,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            96
+          ]
+        },
+        {
+          "type": 2,
+          "status": "already_applied",
+          "screen_xy": [
+            128,
+            112
+          ]
+        }
+      ],
+      "acknowledgement_only": true
+    }
+  ],
+  "scope": "64static0/1input combinations; not64executions or natural reachability proof.",
+  "rule": "Existing nonzero flag displays original申請済み before testing unavailable bit. Otherwisebit1 showsmessage17,bit0 showsfee.",
+  "fee_source": "UI writes three immediateconstants into0x800E4000/4/8. These equal the existingfee table0x800B92D0 in this EXE; do not mistake slots for existing funds.",
+  "ack_rule": "Parent422A4 takes acknowledgement loop when low3unavailablebits==7 OR all3storebytes equal exactly1. Nonzero status label and exact1 all-owned branch are distinct raw tests."
+}

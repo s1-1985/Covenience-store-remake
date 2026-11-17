@@ -1,0 +1,38 @@
+{
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "exe_ranges": [
+    {
+      "file": "source/permit_dialog.bin",
+      "start": "0x800422a4",
+      "end_exclusive": "0x80042c7c",
+      "sha256": "f2f6cc80f3df169003276fd81bc5047ab6ff69e131724c86cb4ab2999db2d88d"
+    },
+    {
+      "file": "source/checkbox_call_sites.bin",
+      "start": "0x80042e70",
+      "end_exclusive": "0x8004301c",
+      "sha256": "c234ab8ce85c2d3e178d61f27bf8dac90395edf80e3ff79a056ff6a07af55998"
+    },
+    {
+      "file": "source/unavailable_text.bin",
+      "start": "0x800437f0",
+      "end_exclusive": "0x800438cc",
+      "sha256": "81a5fe6021161fd29c48e336e4228d303d421dc96baae585039e280557628920"
+    },
+    {
+      "file": "source/checkbox_helper.bin",
+      "start": "0x800438cc",
+      "end_exclusive": "0x80043a80",
+      "sha256": "fd16b81be64e0172f1e39f6981252d05e71ef9d2cd971ef04fa9fb20dda159b1"
+    },
+    {
+      "file": "source/row_symbol_helper.bin",
+      "start": "0x80043a80",
+      "end_exclusive": "0x80043cf4",
+      "sha256": "4125c158410e51415796fc665a8be33bffb361ba96bfea9c82954293d158d947"
+    }
+  ],
+  "known_before": "Permitfees/acquisition/siting/transaction semantics recovered20261114. Current addition: UI rawtext/status priority,fee message slots andfivecontrol image bindings.",
+  "original_cpu_calls": 0
+}

@@ -1,0 +1,162 @@
+{
+  "source": "/DAT/MSG00.OBJ",
+  "source_sha256": "d2ab3800ee82628cafe96d94f58d9790653b4e5387cbacc7097cc67c5ac18635",
+  "messages": [
+    {
+      "id": 16,
+      "source_offset": 2626,
+      "packed_offset": 0,
+      "bytes": 26,
+      "codes": [
+        279,
+        280,
+        281,
+        282,
+        107,
+        283,
+        284,
+        74,
+        93,
+        75,
+        68,
+        45,
+        16639
+      ],
+      "transcription": "販売許可を申請しますか?",
+      "sha256": "a2cf80db234e8b2fcd9d5529fb7bc8a2b4c0d55308c55e959f733a10f527c3e0"
+    },
+    {
+      "id": 17,
+      "source_offset": 2652,
+      "packed_offset": 26,
+      "bytes": 20,
+      "codes": [
+        72,
+        72,
+        122,
+        88,
+        288,
+        66,
+        93,
+        76,
+        108,
+        16639
+      ],
+      "transcription": "ここでは扱えません",
+      "sha256": "42c2ce73f6890f904db9b8c2c45674cbce6365ab2800b1cfa976b95779e5c152"
+    },
+    {
+      "id": 18,
+      "source_offset": 2672,
+      "packed_offset": 46,
+      "bytes": 20,
+      "codes": [
+        271,
+        263,
+        47,
+        47,
+        47,
+        24,
+        208,
+        158,
+        188,
+        16639
+      ],
+      "transcription": "終了・・・Oボタン",
+      "sha256": "520ba977a2baa3c909b8f8b086d76055dc8863186a39c98c1cad3f6f79ef0959"
+    },
+    {
+      "id": 24,
+      "source_offset": 2844,
+      "packed_offset": 66,
+      "bytes": 8,
+      "codes": [
+        78,
+        124,
+        72,
+        16639
+      ],
+      "transcription": "たばこ",
+      "sha256": "19b5e05b6fd7c074e8885861d303070273b71282c08e5dbf3ba0bdb3ac572bdb"
+    },
+    {
+      "id": 25,
+      "source_offset": 2852,
+      "packed_offset": 74,
+      "bytes": 6,
+      "codes": [
+        285,
+        286,
+        16639
+      ],
+      "transcription": "酒類",
+      "sha256": "fe70abd0a29e147886c83dc608f16e462efc53c52f17489962b0a986cb005272"
+    },
+    {
+      "id": 26,
+      "source_offset": 2858,
+      "packed_offset": 80,
+      "bytes": 8,
+      "codes": [
+        287,
+        588,
+        286,
+        16639
+      ],
+      "transcription": "薬品類",
+      "sha256": "621b02cdfb91d0aa82e81558b85a2b5cbda61e5e006472660fc9456efcb378dc"
+    },
+    {
+      "id": 272,
+      "source_offset": 6936,
+      "packed_offset": 88,
+      "bytes": 6,
+      "codes": [
+        16388,
+        0,
+        16639
+      ],
+      "transcription": "{4004}0",
+      "sha256": "91ee48e0d2753be48d609a28525b09a752d744b177851f1857f30848fc5b2468"
+    },
+    {
+      "id": 273,
+      "source_offset": 6942,
+      "packed_offset": 94,
+      "bytes": 6,
+      "codes": [
+        16388,
+        1,
+        16639
+      ],
+      "transcription": "{4004}1",
+      "sha256": "04ffcf87e02f6d1a731da033ca47d2a19e0c27df8d0dc89d5fb0a5f4e136f077"
+    },
+    {
+      "id": 274,
+      "source_offset": 6948,
+      "packed_offset": 100,
+      "bytes": 6,
+      "codes": [
+        16388,
+        2,
+        16639
+      ],
+      "transcription": "{4004}2",
+      "sha256": "f21ff0b9dad0342693088c7be84aab9b3bc74b09628619ce9147945982d99f74"
+    }
+  ],
+  "raw_status_string": {
+    "address": "0x80099858",
+    "codes": [
+      283,
+      284,
+      633,
+      94,
+      16639
+    ],
+    "transcription": "申請済み",
+    "sha256": "bcee63915a2a1443fd4859aa52eed45b37bfa3b0f4906f07faf507ad9a7461c9"
+  },
+  "policy": "Transcriptions reuse original font mapping; commands/arguments retained. Button glyph inmessage18 is not assigned a new Unicode meaning."
+}

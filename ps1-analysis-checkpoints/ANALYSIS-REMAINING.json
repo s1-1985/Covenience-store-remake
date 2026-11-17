@@ -105,7 +105,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "通常操作で未接続のメニュー・町操作の原画像と文字列を優先。商品選択の許可取得元と自然到達、HUDstyle2/クリッピングは未確定。既存追跡課題6件は継続。",
+  "next": "未接続の通常メニュー・町操作の原画像と原文字列を優先。販売許可取得仕様は20261114-permit-siting-dataへ接続済み。HUDstyle2/クリッピング、既存追跡課題6件は継続。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -195,6 +195,14 @@
       "status": "resolved_scoped_source_binding",
       "evidence": "analysis/20261117-product-menu-source-data/README.md",
       "resolution": "SHOP_T00/01 sourcepixels andMSG71..97 linkedto53fixturemaster layouts,41nonempty/172choices. Copypaper81 override andfourdisplay/mastername differences preserved. Knownrulesreused,0sourceCPUcalls; notnaturalmenureachabilityorAPKcoverage.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X12",
+      "title": "許可画面9メッセージ・申請済み原文・操作画像5領域の接続",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261117-permit-dialog-source-data/README.md",
+      "resolution": "Originalstatus textpriority,fee slots,64static0/1state combinations andfiveKYOUcrops bound; acquisitionalreadyresolved20261114 nowreferenced.0sourceCPUcalls;no fullscreen/naturalreachabilityclaim.",
       "counted_in_seven_tracked_items": false
     }
   ]

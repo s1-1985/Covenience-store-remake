@@ -1,0 +1,121 @@
+{
+  "source_file": "KYOU.TIM",
+  "source_sha256": "ef75f72fffafc3cc45853a2097059b421aed139929d31b6a1bea8dcb40127d89",
+  "source_size_pixels": [
+    256,
+    240
+  ],
+  "rows": [
+    {
+      "key": "checkbox_nonzero",
+      "draw_kind": 7,
+      "uv": [
+        160,
+        48
+      ],
+      "source_rect": [
+        160,
+        48,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "reader": "0x800438CC",
+      "immediate_address": "0x80043974",
+      "indices_sha256": "8ae346d93946b7cbea21aad36a0b3fb8e5f64609822bb9cb8d78834b21aa197a",
+      "raw_color_words_sha256": "05188ccd81b237bbfaea3c51d00dbd62b49a8976f7b0d96c7bf0307cbb404a3b"
+    },
+    {
+      "key": "checkbox_zero",
+      "draw_kind": 7,
+      "uv": [
+        176,
+        48
+      ],
+      "source_rect": [
+        176,
+        48,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "reader": "0x800438CC",
+      "immediate_address": "0x800439f8",
+      "indices_sha256": "838cc5d5045221ff859812304e6870f2b716512e31a0f592e9a086d82fc53c6f",
+      "raw_color_words_sha256": "9ac57dedc52969ca4f8829c15030bd00587151d4e4012ebdf7a89761d566b90e"
+    },
+    {
+      "key": "row_symbol_1",
+      "draw_kind": 7,
+      "uv": [
+        128,
+        16
+      ],
+      "source_rect": [
+        128,
+        16,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "reader": "0x80043A80",
+      "immediate_address": "0x80043b5c",
+      "indices_sha256": "23188f83df43e640b9a3552600f968511ca9bc3207f1eb731deec7f614a34d1e",
+      "raw_color_words_sha256": "34199d2420715f4144c4350874c0b3f041c8a62f77028c496f02236e6963101c"
+    },
+    {
+      "key": "row_symbol_2",
+      "draw_kind": 7,
+      "uv": [
+        144,
+        16
+      ],
+      "source_rect": [
+        144,
+        16,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "reader": "0x80043A80",
+      "immediate_address": "0x80043be0",
+      "indices_sha256": "00ba00d18711a4054d8e5d05ba11a22ae4a6638005acdbc95e327f57a9a3c516",
+      "raw_color_words_sha256": "7e41e793cf92ae2ab2464fb451a21977ecb04b64e31ecb3f7d6051951d0338b6"
+    },
+    {
+      "key": "row_symbol_3",
+      "draw_kind": 7,
+      "uv": [
+        160,
+        16
+      ],
+      "source_rect": [
+        160,
+        16,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "reader": "0x80043A80",
+      "immediate_address": "0x80043c64",
+      "indices_sha256": "fcba898b41a98ca049feb86cd748d6e9bf231d7e6279690f33e55c0fe8152656",
+      "raw_color_words_sha256": "fafdcd2037109031d907c7f18c898ce09f1036a79156341b7e651f694a2b678c"
+    }
+  ],
+  "policy": "Raw original pixels only. No assumed RGB for unwritten template bytes; no claim of GPU compositing or semantic meaning of row symbols."
+}

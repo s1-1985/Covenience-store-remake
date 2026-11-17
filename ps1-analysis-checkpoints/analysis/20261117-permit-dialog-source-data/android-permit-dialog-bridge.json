@@ -1,0 +1,65 @@
+{
+  "status": "analysis_only",
+  "android_code_changed": false,
+  "acquisition_rules": "../20261114-permit-siting-data/android-permit-siting-bridge.json",
+  "product_menu": "../20261117-product-menu-source-data/android-product-menu-bridge.json",
+  "text": "dialog-text-source.json",
+  "states": "dialog-state-source.json",
+  "images": "control-image-source.json",
+  "window": {
+    "screen_xy": [
+      32,
+      48
+    ],
+    "size_cells": [
+      16,
+      7
+    ],
+    "size_pixels": [
+      256,
+      112
+    ]
+  },
+  "prompt": {
+    "message": 16,
+    "screen_xy": [
+      80,
+      64
+    ]
+  },
+  "footer": {
+    "message": 18,
+    "screen_xy": [
+      96,
+      128
+    ]
+  },
+  "row_symbols": {
+    "selector": [
+      1,
+      2,
+      3
+    ],
+    "screen_xy": [
+      [
+        48,
+        80
+      ],
+      [
+        48,
+        96
+      ],
+      [
+        48,
+        112
+      ]
+    ],
+    "semantic_names_unassigned": true
+  },
+  "checkbox_value_rule": "Nonzero ->UV160,48; zero->176,48. Do notinfer checkedmeaning from the copiedinput exclusionmask alone.",
+  "limitations": [
+    "No original CPUcalls or full screen composition.",
+    "Only five controlcrops, not full UI inventory.",
+    "Checkbox interactions/confirmation/transaction rules reuse earlier acquisition analysis; no new gameplay rule claim."
+  ]
+}
