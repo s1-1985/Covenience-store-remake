@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3455,
+      "sha256": "34ac32ef76052f357421d8ef184affeafe7c0e5a6b5be0c9aee71ae920677c7f"
+    },
+    {
+      "path": "project-reference-index.json",
+      "bytes": 9614,
+      "sha256": "958a18fb4a1471d7e23fd209f75f037e062227363ab27304f883e08fbbf60104"
+    },
+    {
+      "path": "scan-project-xrefs.py",
+      "bytes": 6331,
+      "sha256": "2db4e480b34585f6e8c4e0002f40b99a0c5caf76d56a8491e1c8e7cca423dead"
+    },
+    {
+      "path": "unknown-field-status.json",
+      "bytes": 995,
+      "sha256": "e6cab9f5d003c557185d671ec9bb765fc5a5794ad2f4d05a710498e9d3be25b0"
+    }
+  ]
+}

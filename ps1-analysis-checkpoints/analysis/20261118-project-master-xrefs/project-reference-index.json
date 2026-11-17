@@ -1,0 +1,418 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "scan_payload": {
+    "address": "0x80010000",
+    "bytes": 776192,
+    "includes_data": true
+  },
+  "table": {
+    "start": "0x8009fcd8",
+    "end_exclusive": "0x8009fe40",
+    "stride": 20
+  },
+  "selected_row_pointer": "0x800cd87c",
+  "canonical_table_references": [
+    {
+      "pc": "0x80029134",
+      "word": "0x8423fcd8",
+      "target": "0x8009fcd8",
+      "target_kind": "project_master",
+      "operation": "lh",
+      "lui_pc": "0x8002912c",
+      "base_register": 1,
+      "value_register": 3,
+      "context_words": [
+        "0x3c01800a",
+        "0x220821",
+        "0x8423fcd8"
+      ]
+    },
+    {
+      "pc": "0x8006a608",
+      "word": "0x2463fcd8",
+      "target": "0x8009fcd8",
+      "target_kind": "project_master",
+      "operation": "addiu",
+      "lui_pc": "0x8006a604",
+      "base_register": 3,
+      "value_register": 3,
+      "context_words": [
+        "0x3c03800a",
+        "0x2463fcd8"
+      ]
+    },
+    {
+      "pc": "0x8006ae1c",
+      "word": "0x2463fcd8",
+      "target": "0x8009fcd8",
+      "target_kind": "project_master",
+      "operation": "addiu",
+      "lui_pc": "0x8006ae18",
+      "base_register": 3,
+      "value_register": 3,
+      "context_words": [
+        "0x3c03800a",
+        "0x2463fcd8"
+      ]
+    },
+    {
+      "pc": "0x80075420",
+      "word": "0x8422fcd8",
+      "target": "0x8009fcd8",
+      "target_kind": "project_master",
+      "operation": "lh",
+      "lui_pc": "0x80075418",
+      "base_register": 1,
+      "value_register": 2,
+      "context_words": [
+        "0x3c01800a",
+        "0x240821",
+        "0x8422fcd8"
+      ]
+    }
+  ],
+  "canonical_selected_pointer_references": [
+    {
+      "pc": "0x8006a614",
+      "word": "0xac22d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "sw",
+      "lui_pc": "0x8006a610",
+      "base_register": 1,
+      "value_register": 2,
+      "context_words": [
+        "0x3c01800d",
+        "0xac22d87c"
+      ]
+    },
+    {
+      "pc": "0x8006a61c",
+      "word": "0x8c42d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006a618",
+      "base_register": 2,
+      "value_register": 2,
+      "context_words": [
+        "0x3c02800d",
+        "0x8c42d87c"
+      ]
+    },
+    {
+      "pc": "0x8006a630",
+      "word": "0x8c63d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006a62c",
+      "base_register": 3,
+      "value_register": 3,
+      "context_words": [
+        "0x3c03800d",
+        "0x8c63d87c"
+      ]
+    },
+    {
+      "pc": "0x8006a680",
+      "word": "0x8c63d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006a67c",
+      "base_register": 3,
+      "value_register": 3,
+      "context_words": [
+        "0x3c03800d",
+        "0x8c63d87c"
+      ]
+    },
+    {
+      "pc": "0x8006a6cc",
+      "word": "0x8c42d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006a6c8",
+      "base_register": 2,
+      "value_register": 2,
+      "context_words": [
+        "0x3c02800d",
+        "0x8c42d87c"
+      ]
+    },
+    {
+      "pc": "0x8006a6d4",
+      "word": "0x8c63d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006a6d0",
+      "base_register": 3,
+      "value_register": 3,
+      "context_words": [
+        "0x3c03800d",
+        "0x8c63d87c"
+      ]
+    },
+    {
+      "pc": "0x8006a6dc",
+      "word": "0x8ca5d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006a6d8",
+      "base_register": 5,
+      "value_register": 5,
+      "context_words": [
+        "0x3c05800d",
+        "0x8ca5d87c"
+      ]
+    },
+    {
+      "pc": "0x8006a778",
+      "word": "0x8c42d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006a774",
+      "base_register": 2,
+      "value_register": 2,
+      "context_words": [
+        "0x3c02800d",
+        "0x8c42d87c"
+      ]
+    },
+    {
+      "pc": "0x8006a780",
+      "word": "0x8c84d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006a77c",
+      "base_register": 4,
+      "value_register": 4,
+      "context_words": [
+        "0x3c04800d",
+        "0x8c84d87c"
+      ]
+    },
+    {
+      "pc": "0x8006a868",
+      "word": "0x8c42d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006a864",
+      "base_register": 2,
+      "value_register": 2,
+      "context_words": [
+        "0x3c02800d",
+        "0x8c42d87c"
+      ]
+    },
+    {
+      "pc": "0x8006ada4",
+      "word": "0x8c42d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006ada0",
+      "base_register": 2,
+      "value_register": 2,
+      "context_words": [
+        "0x3c02800d",
+        "0x8c42d87c"
+      ]
+    },
+    {
+      "pc": "0x8006ae28",
+      "word": "0xac22d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "sw",
+      "lui_pc": "0x8006ae24",
+      "base_register": 1,
+      "value_register": 2,
+      "context_words": [
+        "0x3c01800d",
+        "0xac22d87c"
+      ]
+    },
+    {
+      "pc": "0x8006ae30",
+      "word": "0x8c63d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006ae2c",
+      "base_register": 3,
+      "value_register": 3,
+      "context_words": [
+        "0x3c03800d",
+        "0x8c63d87c"
+      ]
+    },
+    {
+      "pc": "0x8006ae78",
+      "word": "0x8c42d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006ae74",
+      "base_register": 2,
+      "value_register": 2,
+      "context_words": [
+        "0x3c02800d",
+        "0x8c42d87c"
+      ]
+    },
+    {
+      "pc": "0x8006af04",
+      "word": "0x8c42d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006af00",
+      "base_register": 2,
+      "value_register": 2,
+      "context_words": [
+        "0x3c02800d",
+        "0x8c42d87c"
+      ]
+    },
+    {
+      "pc": "0x8006af0c",
+      "word": "0x8c63d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006af08",
+      "base_register": 3,
+      "value_register": 3,
+      "context_words": [
+        "0x3c03800d",
+        "0x8c63d87c"
+      ]
+    },
+    {
+      "pc": "0x8006b17c",
+      "word": "0x8c42d87c",
+      "target": "0x800cd87c",
+      "target_kind": "selected_row_pointer",
+      "operation": "lw",
+      "lui_pc": "0x8006b178",
+      "base_register": 2,
+      "value_register": 2,
+      "context_words": [
+        "0x3c02800d",
+        "0x8c42d87c"
+      ]
+    }
+  ],
+  "bounded_field_accesses": [
+    {
+      "pc": "0x8006a624",
+      "word": "0xac40000c",
+      "field_offset": 12,
+      "operation": "sw"
+    },
+    {
+      "pc": "0x8006a638",
+      "word": "0x84620000",
+      "field_offset": 0,
+      "operation": "lh"
+    },
+    {
+      "pc": "0x8006a688",
+      "word": "0x84620000",
+      "field_offset": 0,
+      "operation": "lh"
+    },
+    {
+      "pc": "0x8006a6e4",
+      "word": "0x84a40000",
+      "field_offset": 0,
+      "operation": "lh"
+    },
+    {
+      "pc": "0x8006a72c",
+      "word": "0x8c63000c",
+      "field_offset": 12,
+      "operation": "lw"
+    },
+    {
+      "pc": "0x8006a738",
+      "word": "0xac44000c",
+      "field_offset": 12,
+      "operation": "sw"
+    },
+    {
+      "pc": "0x8006a788",
+      "word": "0x8c83000c",
+      "field_offset": 12,
+      "operation": "lw"
+    },
+    {
+      "pc": "0x8006a7a8",
+      "word": "0xac43000c",
+      "field_offset": 12,
+      "operation": "sw"
+    },
+    {
+      "pc": "0x8006a870",
+      "word": "0x8c43000c",
+      "field_offset": 12,
+      "operation": "lw"
+    },
+    {
+      "pc": "0x8006adb0",
+      "word": "0x8c42000c",
+      "field_offset": 12,
+      "operation": "lw"
+    },
+    {
+      "pc": "0x8006ae38",
+      "word": "0x84620000",
+      "field_offset": 0,
+      "operation": "lh"
+    },
+    {
+      "pc": "0x8006ae84",
+      "word": "0x8c42000c",
+      "field_offset": 12,
+      "operation": "lw"
+    },
+    {
+      "pc": "0x8006af44",
+      "word": "0x8c63000c",
+      "field_offset": 12,
+      "operation": "lw"
+    },
+    {
+      "pc": "0x8006af50",
+      "word": "0xac44000c",
+      "field_offset": 12,
+      "operation": "sw"
+    },
+    {
+      "pc": "0x8006b184",
+      "word": "0x8c45000c",
+      "field_offset": 12,
+      "operation": "lw"
+    }
+  ],
+  "observed_offsets_in_bounded_pointer_paths": [
+    0,
+    12
+  ],
+  "pointer_argument_or_store_leads": [],
+  "literal_word_references": {
+    "0x8009fcd8": [],
+    "0x800cd87c": []
+  },
+  "gp_relative_slot_references": [],
+  "scope": "LUI + signedlow/load/store orLUI+ORI within8instructions. Canonical candidates manually inspected inoriginal disassembly. Pointeruses limitedto64straightline instructions andstop at control transfer; notfull CFG/dataflow."
+}

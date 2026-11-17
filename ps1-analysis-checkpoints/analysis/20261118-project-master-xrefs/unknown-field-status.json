@@ -1,0 +1,22 @@
+{
+  "issue": "R04",
+  "fields": [
+    2,
+    4,
+    6,
+    8,
+    16
+  ],
+  "status": "open",
+  "new_evidence": "Canonicalwholepayloadreference inventory identifies sharedrowpointer0x800CD87C;17canonicalreferences allinsideoriginalstartmenu. Boundedfollowing of15pointerloads onlyreaches+0/+12. No newsemanticreader forfiveunknownfields found.",
+  "existing_evidence": "Previousreport alreadyestablished+0kind/+12cost at selectedsites. Do notcount these again asnewmechanics.",
+  "raw_values_reference": "../20261115-town-project-data/project-master.json",
+  "raw_values_reference_sha256": "79564484c1f38385382c6fb2712b07b7b92a6d6a271c749abd842a5969277674",
+  "limitations": [
+    "No proof of nonuse through noncanonical addressing, unaligned pointerliterals,computedaliases or overlays.",
+    "Immediateaddress candidates caninclude embeddeddata; no reachability assumption.",
+    "No field renamed from numeric similarity."
+  ],
+  "original_cpu_calls": 0,
+  "original_operating_updates": 0
+}

@@ -1,5 +1,5 @@
 {
-  "date_jst": "2026-11-17",
+  "date_jst": "2026-11-18",
   "scope": "Track the seven concrete unresolved issues previously reported to user, not exhaustive project inventory.",
   "inventory_complete": false,
   "overall_measured_percent": null,
@@ -56,7 +56,11 @@
       "evidence": "analysis/20261115-town-project-data/project-master.json",
       "resolution": null,
       "latest_evidence": "analysis/20261117-project-customer-cohorts-data/README.md",
-      "remaining_question": "Meanings of+2/+4/+6/+8/+16 remain unknown; saved menu bytes confirm+0 kind/+12 cost but do not establish universal nonuse."
+      "remaining_question": "Meanings of+2/+4/+6/+8/+16 remain unknown; saved menu bytes confirm+0 kind/+12 cost but do not establish universal nonuse.",
+      "latest_investigation": {
+        "report": "analysis/20261118-project-master-xrefs/README.md",
+        "result": "Wholepayloadcanonicaladdress search:4table refs,17selectedrowpointer refs at0x800CD87C,15boundedfieldaccesses only+0/+12. Meanings of+2/+4/+6/+8/+16 stillunknown;not universalnonuse proof."
+      }
     },
     {
       "id": "R05",
@@ -109,7 +113,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "既存報告・JSON・r2モデルとの重複確認を先に行い、未解明の問いを特定する。R07の別名・引数経由の意味的参照やR04の未命名フィールド等を優先。参照追加で済む既知仕様の画像・文字列接続を、新規解明として繰り返さない。",
+  "next": "重複照合を先に行い未解明の問いを優先。R04の定型参照4箇所と共有ポインタ17参照の一覧は作成済みで、同じ検索を繰り返さない。次は非定型・別名経路の根拠が得られた場合にR04を進め、それがなければ他の未解明項目へ切り替える。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
