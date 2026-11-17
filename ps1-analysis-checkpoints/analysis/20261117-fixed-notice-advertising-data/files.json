@@ -1,0 +1,97 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 6563,
+    "sha256": "0d531730aca3554e7cb8632a9b34947440d631f14f02f7d14db3d33ee88e67e2"
+  },
+  {
+    "path": "advertisement-notification-crops.json",
+    "bytes": 4386,
+    "sha256": "7a2fe4adc3f8ba42d11bdd7cd39a9a630dedef5ff61f261b74e9c036ec937eab"
+  },
+  {
+    "path": "advertisement-source-preview.png",
+    "bytes": 15421,
+    "sha256": "6253b851d037231056d57411334c12f1aa33ecc442b657c86a4b9103eeb793e5"
+  },
+  {
+    "path": "android-fixed-notice-bridge.json",
+    "bytes": 1012,
+    "sha256": "59e1ce05c901f328f04cc452239edf83b322e60512d52ff596ed04317f78687e"
+  },
+  {
+    "path": "extract-fixed-notices.py",
+    "bytes": 8343,
+    "sha256": "e4579f5b45563a88cbdc5b754e3d02069abe79a3b1d455391d401836b7826538"
+  },
+  {
+    "path": "fixed-template-argument-map.json",
+    "bytes": 3678,
+    "sha256": "636463a96d15f858608fa42b40f35a2f9d25f95896ce51528be714e2fed9b9fd"
+  },
+  {
+    "path": "source/advertisement_icon_helper.bin",
+    "bytes": 328,
+    "sha256": "a4fe3837634fdd5dfa6ca3d67f42c35298d604edeaa31cabee38d04af2b024c7"
+  },
+  {
+    "path": "source/advertisement_master.bin",
+    "bytes": 220,
+    "sha256": "5a984e36dcc7652d9d14a833ab578ea31fa05b110ffd3a858058b355520a5acd"
+  },
+  {
+    "path": "source/advertisement_parameter_reader.bin",
+    "bytes": 68,
+    "sha256": "094e06959cdac4dd91f3b1ad56b7b1aa9245786741d34c168bbd8355f51aca66"
+  },
+  {
+    "path": "source/byte_copy.bin",
+    "bytes": 52,
+    "sha256": "0ce68d87981de9301e11a186d5b7b97a838ff7b244145d7261b6ffab7cb185df"
+  },
+  {
+    "path": "source/fixed_kind5_call.bin",
+    "bytes": 92,
+    "sha256": "132eb4ce5d17be6913cc4c491039c7ce21667610ee0b2c08d0d527e170ff9358"
+  },
+  {
+    "path": "source/fixed_kind6_call.bin",
+    "bytes": 92,
+    "sha256": "b2babd706229db492888e63245f84b7d2d3ffbce3fc5632e9548ace22bd8274e"
+  },
+  {
+    "path": "source/notification_template_copy.bin",
+    "bytes": 80,
+    "sha256": "065f6eddc076c6416072cdc3c1e3ef606ad8220395ebdaeb9629eecb9437ac5a"
+  },
+  {
+    "path": "source/raw_fixed_templates.bin",
+    "bytes": 72,
+    "sha256": "34b02201ceee5e8fb97a74a414afb334d48e368e44d195cd6d85c7752a665a60"
+  },
+  {
+    "path": "source/sprite_constructor.bin",
+    "bytes": 944,
+    "sha256": "eaab7a41e88f3007e109e92a0f786c9c37baf51c530c27fabb10f974ffc8c0a9"
+  },
+  {
+    "path": "source/sprite_zero_size_gate.bin",
+    "bytes": 56,
+    "sha256": "d3a13e8b993c82e4407732159835c2a94c9caa20c32fe23076ca087a9150ea4a"
+  },
+  {
+    "path": "source-provenance.json",
+    "bytes": 3470,
+    "sha256": "0d790ed8b778643c435948ea10fff709c35656690b2fa15360b63781e77255bd"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 287,
+    "sha256": "0a74450863fc1c2df8c7bcee2be5f885492e9f7325aa043da3c8eefc6c76a7a6"
+  },
+  {
+    "path": "template-advertisement-readers.asm",
+    "bytes": 15312,
+    "sha256": "02471b5da0d72debf9af54d6846e92f60b3e810c49c9aa6f7fc818ccf87654dd"
+  }
+]

@@ -105,7 +105,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue unresolved source semantics or unconnected ordinary data. Notificationroute/projecticon source join now recorded; exactkind5/6templateinterpretation, fullbodies and sixtrackedquestions remain open.",
+  "next": "Continue unresolved source semantics or remaining ordinary data. Fixed5/6argumentinterpretation is conditionalwidth0/skip; naturalreachability, fullnotificationbodies and sixtrackedquestions remain open.",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -169,6 +169,16 @@
       "status": "resolved_scoped_source_binding",
       "evidence": "analysis/20261117-notification-source-data/README.md",
       "resolution": "34directcalls locallyconstantkind/mode;18projects bindto15originalBUILDIN1icons.32iconslot crops insideoriginalpixels. Kind1/2loadselectsSHOPTYP1/BUILDIN1despitesharedVRAM/CLUT. Knownrulesreused;0sourceCPUcalls. Kind5/6rawtemplates anddynamictext/args unconfirmed.",
+      "counted_in_seven_tracked_items": false,
+      "latest_evidence": "analysis/20261117-fixed-notice-advertising-data/README.md",
+      "followup": "Fixed5/6actualABIinterpretation nowstaticwidth0/skipifunchanged; naturalreachability stillunknown. Kind4fivepromotionpixels connected."
+    },
+    {
+      "id": "X09",
+      "title": "固定通知5・6の幅0と宣伝5種の原画像対応",
+      "status": "resolved_scoped_static_path",
+      "evidence": "analysis/20261117-fixed-notice-advertising-data/README.md",
+      "resolution": "Originalcopiedtemplates -> actual41630ABI -> width0 ->84830skip, conditionalonunchangedrecord. Fivepromotionvariants maptoPS_CM1 pixels.0sourceCPUcalls; no naturalreachabilityorintendedrepair claim.",
       "counted_in_seven_tracked_items": false
     }
   ]

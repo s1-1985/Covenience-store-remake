@@ -1,0 +1,122 @@
+{
+  "template_layout": [
+    {
+      "template_offset": 0,
+      "bytes": 4,
+      "caller": "A1",
+      "role": "storedby41630,notreadagain"
+    },
+    {
+      "template_offset": 4,
+      "bytes": 4,
+      "caller": "A2",
+      "role": "packedXY"
+    },
+    {
+      "template_offset": 8,
+      "bytes": 4,
+      "caller": "A3",
+      "role": "packedWH"
+    },
+    {
+      "template_offset": 12,
+      "bytes": 2,
+      "caller": "stack+0x10",
+      "role": "recordkind"
+    },
+    {
+      "template_offset": 14,
+      "bytes": 2,
+      "caller": "stack+0x12",
+      "role": "U,V"
+    },
+    {
+      "template_offset": 16,
+      "bytes": 2,
+      "caller": "stack+0x14",
+      "role": "record+16CLUTcolumn"
+    },
+    {
+      "template_offset": 18,
+      "bytes": 2,
+      "caller": "stack+0x16",
+      "role": "record+18CLUTrow/reference"
+    },
+    {
+      "template_offset": 20,
+      "bytes": 3,
+      "caller": "stack+0x18",
+      "role": "RGBignoredwhenmode0"
+    }
+  ],
+  "rows": [
+    {
+      "notification_kind": 5,
+      "template_address": "0x80010998",
+      "local_frame_offset": "0x58",
+      "copy_size": 36,
+      "raw_hex": "200000002000a0000000c000c0001d00ef01000000000000000000000000000000000000",
+      "sha256": "77f6820cb0f84800b9840027e59c14db5727dcb093978c0a9eb653b03b2c8e14",
+      "call": "0x8004056c",
+      "ignored_A1_word": 32,
+      "constructor_mode": 0,
+      "derived_record_fields": {
+        "flags": 16777216,
+        "x": 32,
+        "y": 160,
+        "width": 0,
+        "height": 192,
+        "record_kind": 192,
+        "u": 29,
+        "v": 0,
+        "clut_column": 495,
+        "clut_row_reference": 0,
+        "rgb": [
+          128,
+          128,
+          128
+        ],
+        "unwritten_byte23": null
+      },
+      "source_width_load": "80041698:lhu fromcalleeFP+1C=entrySP+0C=A3low16",
+      "renderer_width_gate": "80084848 readsrecord+8;80084850 zero->800849A4 beforepacketwrites",
+      "emits_rectangle_if_unmodified": false,
+      "natural_reachability": "Not established. Previous34directreservation sites contain no constantkind5/6. Not proof ofglobalunused."
+    },
+    {
+      "notification_kind": 6,
+      "template_address": "0x80010974",
+      "local_frame_offset": "0x30",
+      "copy_size": 36,
+      "raw_hex": "200000002000a0000000c000a0001d00ef01000000000000000000000000000000000000",
+      "sha256": "c8058a63156dc49b46814a6b1845f0c065b91193737ab590b69131461eed791b",
+      "call": "0x800406cc",
+      "ignored_A1_word": 32,
+      "constructor_mode": 0,
+      "derived_record_fields": {
+        "flags": 16777216,
+        "x": 32,
+        "y": 160,
+        "width": 0,
+        "height": 192,
+        "record_kind": 160,
+        "u": 29,
+        "v": 0,
+        "clut_column": 495,
+        "clut_row_reference": 0,
+        "rgb": [
+          128,
+          128,
+          128
+        ],
+        "unwritten_byte23": null
+      },
+      "source_width_load": "80041698:lhu fromcalleeFP+1C=entrySP+0C=A3low16",
+      "renderer_width_gate": "80084848 readsrecord+8;80084850 zero->800849A4 beforepacketwrites",
+      "emits_rectangle_if_unmodified": false,
+      "natural_reachability": "Not established. Previous34directreservation sites contain no constantkind5/6. Not proof ofglobalunused."
+    }
+  ],
+  "proof_scope": "Static source template -> actualcallerargument offsets -> original41630 writes -> original84830 zero-width gate. Conditional onunmodifiedtemplates/record; not a naturalgame run.",
+  "important": "Do not treat firstword32 aswidth, do not alignthisblob asafinished36byterecord, anddo not silentlyreplacewidth0with32/256. No intendedportrait/icon inferred fromthese misaligned-lookingbytes."
+}

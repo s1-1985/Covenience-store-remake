@@ -1,0 +1,32 @@
+{
+  "status": "source_data_only_no_android_change",
+  "advertising_crops": "advertisement-notification-crops.json",
+  "fixed_arguments": "fixed-template-argument-map.json",
+  "confirmed_image_kind4": {
+    "image_id": 16,
+    "asset": "PS_CM1.TIM",
+    "variant_range": [
+      0,
+      4
+    ],
+    "source_rect_rule": "224,32*variant,32,32"
+  },
+  "fixed_kinds5_6": {
+    "condition": "Originaltemplates andderivedrecord notmodified",
+    "derived_width": 0,
+    "renderer_result": "Skiprectangle at84850",
+    "do_not_infer": [
+      "Intendedcorrectedwidth32or256",
+      "Naturalinvocation",
+      "Globallyunused",
+      "CrashorentireblankUI"
+    ]
+  },
+  "rules": [
+    "Templatefirstword isignoredA1,notwidth.",
+    "Do notparsecallargumentblob asafinished36byterenderrecord.",
+    "Preserve unknownrecordbyte23ratherthanassertzero.",
+    "Do notassignsyntheticart tozero-widthfixedkinds."
+  ],
+  "runtime": "NativeAndroid asset/logic specification; no originalEXE/BIOS/emulator runtime requirement."
+}

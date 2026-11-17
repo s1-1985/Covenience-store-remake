@@ -1,0 +1,162 @@
+{
+  "rows": [
+    {
+      "promotion": 0,
+      "name": "ダイレクトメール",
+      "master_address": "0x8009fe40",
+      "notification_kind": 4,
+      "notification_parameter": 0,
+      "parameter_field_offset": 28,
+      "source_image_id": 16,
+      "source_image": "PS_CM1.TIM",
+      "draw_record_kind": 29,
+      "uv": [
+        224,
+        96
+      ],
+      "source_rect": [
+        224,
+        0,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        495
+      ],
+      "indices_sha256": "2cdfb5483315be457c2675966f206670326c71fa5c0dd7094b878c1f100d3223",
+      "raw_color_words_sha256": "067a86e9c99ab1e09a6b383d2d01a66204c78d5a1e29bf27497a3943ff53b21a",
+      "inside_original_pixels": true,
+      "fully_transparent": false
+    },
+    {
+      "promotion": 1,
+      "name": "新聞広告",
+      "master_address": "0x8009fe6c",
+      "notification_kind": 4,
+      "notification_parameter": 1,
+      "parameter_field_offset": 28,
+      "source_image_id": 16,
+      "source_image": "PS_CM1.TIM",
+      "draw_record_kind": 29,
+      "uv": [
+        224,
+        128
+      ],
+      "source_rect": [
+        224,
+        32,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        495
+      ],
+      "indices_sha256": "3ce1beb41e2fa03dc56f82e230f7f138cc94f1feadce93a103cea7518b5d16f9",
+      "raw_color_words_sha256": "bb204ceac0ac1ee165567750fc68bcd619d4737d9cd083af4c4556a180a00a9f",
+      "inside_original_pixels": true,
+      "fully_transparent": false
+    },
+    {
+      "promotion": 2,
+      "name": "飛行船",
+      "master_address": "0x8009fe98",
+      "notification_kind": 4,
+      "notification_parameter": 2,
+      "parameter_field_offset": 28,
+      "source_image_id": 16,
+      "source_image": "PS_CM1.TIM",
+      "draw_record_kind": 29,
+      "uv": [
+        224,
+        160
+      ],
+      "source_rect": [
+        224,
+        64,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        495
+      ],
+      "indices_sha256": "8c8f9b5ccd6feca355c2ec4541abc0e5ad21264029d14baf3d9f3ee9fcf36226",
+      "raw_color_words_sha256": "79a29ba659949f0bbde1239882ea51f839f20d8dfd00328e59a58f0d4a074ec2",
+      "inside_original_pixels": true,
+      "fully_transparent": false
+    },
+    {
+      "promotion": 3,
+      "name": "ラジオＣＭ",
+      "master_address": "0x8009fec4",
+      "notification_kind": 4,
+      "notification_parameter": 3,
+      "parameter_field_offset": 28,
+      "source_image_id": 16,
+      "source_image": "PS_CM1.TIM",
+      "draw_record_kind": 29,
+      "uv": [
+        224,
+        192
+      ],
+      "source_rect": [
+        224,
+        96,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        495
+      ],
+      "indices_sha256": "6c70cac22c6410c972f0889ae596522e3988629dd4e15ff4d8cb5efc5a4e8bde",
+      "raw_color_words_sha256": "1641757b7dca53d8b4ef9474f1d25fecf9cfff1e2b917fea5b6f4530b3bea0ff",
+      "inside_original_pixels": true,
+      "fully_transparent": false
+    },
+    {
+      "promotion": 4,
+      "name": "テレビＣＭ",
+      "master_address": "0x8009fef0",
+      "notification_kind": 4,
+      "notification_parameter": 4,
+      "parameter_field_offset": 28,
+      "source_image_id": 16,
+      "source_image": "PS_CM1.TIM",
+      "draw_record_kind": 29,
+      "uv": [
+        224,
+        224
+      ],
+      "source_rect": [
+        224,
+        128,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        495
+      ],
+      "indices_sha256": "f68bbd60d63863581867a93909e51a4ca13b2c38df3b05b2d43d576fcebc3fad",
+      "raw_color_words_sha256": "a2701b6ecf77bde713dc046b7d3b3d807bda0e839f9b6fe25d227303c46c1a95",
+      "inside_original_pixels": true,
+      "fully_transparent": false
+    }
+  ],
+  "source_tim_sha256": "47371b6c3c517ab8f0159a969c8c24f9e37e95a9607cd9414db14b034f2c7ad0",
+  "palette_sha256": "bd9b72823e607f61d26456f8e37a7e710d5c3eff28cc085462f8ca2c3ffe6700",
+  "source_pixels": [
+    256,
+    160
+  ],
+  "known_before": "Fivepromotionmethods/costs/variant0..4 and6A304iconformula existed. Newjoin is actualPS_CM1sourcepixels anddirectkind4callerparameterfield.",
+  "source_readers": [
+    "2795C..2798C:44byterow+28 ->A1;27980kind4;27998enqueue",
+    "27A54/27C38:twootherkind4enqueuepaths read same44byterow+28",
+    "40400..4040C:notificationparameter ->6A304",
+    "6A35C..6A37C:U224,V96+32*parameter;kind29,CLUTrow495"
+  ]
+}
