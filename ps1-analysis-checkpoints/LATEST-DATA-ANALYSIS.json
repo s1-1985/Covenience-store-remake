@@ -1,16 +1,18 @@
 {
   "date_jst": "2026-11-17",
-  "work_kind": "permit_dialog_original_text_state_and_control_pixel_binding",
-  "report": "analysis/20261117-permit-dialog-source-data/README.md",
-  "previous_report": "analysis/20261117-product-menu-source-data/README.md",
-  "new_result": "Bind9messages,original申請済み string,fivecontrol crops and64static displaystate rows. Existingacquisition report linkedto productmenu; feeUIimmediates agreewith priorfee table.",
-  "known_before": "Permitacquisition/fees/siting/transaction semantics already recovered20261114; neworiginalUItext/state/pixel binding.",
+  "work_kind": "prior_art_overlap_audit_and_unresolved_R07_lead_search",
+  "report": "analysis/20261117-novelty-audit/README.md",
+  "previous_report": "analysis/20261117-permit-dialog-source-data/README.md",
+  "new_result": "Three recent reports reuse alreadydecoded mechanics; four exactduplicate sourceexamples verified. R07two nearby+16stores resolve toworking summary,notstaff. No newmechanic orR07semantic resolution.",
+  "known_before": "HUD/productsubmenu/permitmechanics alreadyrecovered inr2 and20261113/14/16. Recentwork addedsourcebindings,not3newmechanics.",
   "original_cpu_calls": 0,
   "original_operating_updates": 0,
-  "verification": "Input hashes,text termination,fee literals/table agreement andcrop bounds only;sourceCPUcalls0.",
+  "verification": "Archive/sourcehash comparison andstatic instructionword checks;0CPUcalls.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
   "overall_measured_percent": null,
-  "remaining_ledger": "ANALYSIS-REMAINING.json"
+  "remaining_ledger": "ANALYSIS-REMAINING.json",
+  "new_mechanics_established": 0,
+  "open_issues_resolved_this_turn": 0
 }

@@ -98,14 +98,18 @@
         "Customer-driven mode-1 changes4 skill bytes, notword16.",
         "Four-map candidate output/RNG unchanged under word16 perturbations; candidate and four assignment calls perform no word16 access. Role swaps refill energy through release/reassign, without interpreting word16. Scoped result only."
       ],
-      "remaining_question": "Semantic read/update path ofword16 is not established; do not name69120 a cooldown based only on its value."
+      "remaining_question": "Semantic read/update path ofword16 is not established; do not name69120 a cooldown based only on its value.",
+      "latest_investigation": {
+        "report": "analysis/20261117-novelty-audit/README.md",
+        "result": "Boundedstaticsearch:two nearby+16store leads writeworking-summary,notstaff. No semanticfieldmeaning established;notanunusedfield proof."
+      }
     }
   ],
   "unscoped_inventory": [
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "未接続の通常メニュー・町操作の原画像と原文字列を優先。販売許可取得仕様は20261114-permit-siting-dataへ接続済み。HUDstyle2/クリッピング、既存追跡課題6件は継続。",
+  "next": "既存報告・JSON・r2モデルとの重複確認を先に行い、未解明の問いを特定する。R07の別名・引数経由の意味的参照やR04の未命名フィールド等を優先。参照追加で済む既知仕様の画像・文字列接続を、新規解明として繰り返さない。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -205,5 +209,12 @@
       "resolution": "Originalstatus textpriority,fee slots,64static0/1state combinations andfiveKYOUcrops bound; acquisitionalreadyresolved20261114 nowreferenced.0sourceCPUcalls;no fullscreen/naturalreachabilityclaim.",
       "counted_in_seven_tracked_items": false
     }
-  ]
+  ],
+  "novelty_audit": {
+    "report": "analysis/20261117-novelty-audit/README.md",
+    "scope": "last_three_reports",
+    "new_mechanics_in_those_reports": 0,
+    "classification": "additional_source_bindings_of_known_mechanics",
+    "tracked_open_unchanged": 6
+  }
 }

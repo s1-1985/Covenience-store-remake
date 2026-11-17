@@ -1,0 +1,93 @@
+{
+  "date_jst": "2026-11-17",
+  "scope": "Three most recent user-facing reports only; not exhaustive deduplication of the whole repository.",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "exact_duplicate_examples": [
+    {
+      "report": "20261117-hud-source-data",
+      "local_path": "source-reference/hud_display.py",
+      "previous_archive_member": "algorithm-analysis/hud_display.py",
+      "identical": true,
+      "bytes": 1514,
+      "sha256": "acefebd6f0cff61704e5e8d85b906362ad27660cb2ac89324ff0eb7fac385a28"
+    },
+    {
+      "report": "20261117-hud-source-data",
+      "local_path": "source-reference/text_controls.py",
+      "previous_archive_member": "algorithm-analysis/text_controls.py",
+      "identical": true,
+      "bytes": 2213,
+      "sha256": "402250d3cc34fc730203d029b7c08152c6cc1a4ab6614c8ea32e0814c13a9a28"
+    },
+    {
+      "report": "20261117-product-menu-source-data",
+      "local_path": "source-reference/interior_submenu.py",
+      "previous_archive_member": "algorithm-analysis/interior_submenu.py",
+      "identical": true,
+      "bytes": 1230,
+      "sha256": "da4f352034adf800c2e78b987bff494b4d480c890be9470052edf9ebc59662eb"
+    },
+    {
+      "report": "20261117-permit-dialog-source-data",
+      "local_path": "source/permit_dialog.bin",
+      "previous_repo_path": "20261114-permit-siting-data/source/permit_dialog.bin",
+      "identical": true,
+      "bytes": 2520,
+      "sha256": "f2f6cc80f3df169003276fd81bc5047ab6ff69e131724c86cb4ab2999db2d88d"
+    }
+  ],
+  "report_comparisons": [
+    {
+      "report": "20261117-hud-source-data",
+      "known": [
+        "HUDconstructor4095C",
+        "calendar19EB4..1A098",
+        "numerictext expansion",
+        "weather message selection"
+      ],
+      "prior": [
+        "r2:hud_display.py",
+        "r2:text_controls.py",
+        "20261116-weather-demand-data"
+      ],
+      "added": "Messages/font/background crop binding and explicit UI input recipes.",
+      "classification": "source_binding_of_known_rules",
+      "new_gameplay_mechanic_established": false
+    },
+    {
+      "report": "20261117-product-menu-source-data",
+      "known": [
+        "27product master records",
+        "53fixture choice lists",
+        "submenu imageformula/specialcases",
+        "permissiongates/navigation"
+      ],
+      "prior": [
+        "20261113-product-stock-data",
+        "20261114-permit-siting-data",
+        "r2:interior_submenu.py"
+      ],
+      "added": "27menu-image crops,message-name comparison and172choice layout records.",
+      "classification": "source_binding_of_known_rules",
+      "new_gameplay_mechanic_established": false
+    },
+    {
+      "report": "20261117-permit-dialog-source-data",
+      "known": [
+        "permit acquisition/costs",
+        "existingpermission preservation",
+        "originaldialog code"
+      ],
+      "prior": [
+        "20261114-permit-siting-data",
+        "r2:premises_all_control.py"
+      ],
+      "added": "Originaldialog text/display state andfivecontrol crops; reacquisitionreport link.",
+      "classification": "source_binding_of_known_rules",
+      "new_gameplay_mechanic_established": false
+    }
+  ],
+  "assessment": "Real additional source bindings, but underlying mechanics already decoded. Choosing them instead of unresolved mechanics was a prioritization error. Do not report them as new mechanics or resolved open issues.",
+  "tracked_open_before": 6,
+  "tracked_open_after": 6
+}

@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4112,
+      "sha256": "b4cd3bbac8deb931a24f101c414d9c9be21ee020c85a2732c992123723c77a6c"
+    },
+    {
+      "path": "audit-and-scan.py",
+      "bytes": 6011,
+      "sha256": "f0d2398138af92ed6e03481792c445fe5ded786631764b62ba9aec7a002f9b73"
+    },
+    {
+      "path": "audit.json",
+      "bytes": 3485,
+      "sha256": "6ca3c9ad1aa32bb8fb6ba5a8e9f771f8086f448e26eec05860bf2e49c6959d55"
+    },
+    {
+      "path": "staff-word16-leads.json",
+      "bytes": 4500,
+      "sha256": "b3b60c21e436ab6c04943354b5b2be4f7797bee531f7e35ddcc4c4e8d9b5fc50"
+    }
+  ]
+}
