@@ -105,7 +105,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Prioritize normal-play source requirements and remaining unmapped data. R02 conditional write/dispatch is reproduced; avoid repeating bounded cases as natural play evidence.",
+  "next": "Continue unconnected normal-play source data; town640 source crops now bound. Keep fullscene layer/compositing integration separate from raw crop completeness.",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -121,6 +121,14 @@
       "status": "resolved_scoped_source_binding",
       "evidence": "analysis/20261117-texture-runtime-binding-data/README.md",
       "resolution": "39 direct TIM requests reference31 IDs;34 filenames and32 transfer bindings joined. All53 fixture icons fit sourceCASE_T00. Indirect/modified-table routes and broader UV coverage remain unscoped.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X03",
+      "title": "街タイル640枠・建物マスター82行・初期4マップの元画素対応",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261117-town-tile-source-data/README.md",
+      "resolution": "All640 declared CEL crops and80 store-number variants fitTOWN_PR1 originalpixels. 82master rows and12000 initial cells bound;28sign substitutions,0unresolvedinitialcells. KnownCEL/master/mapper reused; noCPUexecution or full-screen-equivalence claim.",
       "counted_in_seven_tracked_items": false
     }
   ]

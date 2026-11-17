@@ -1,0 +1,155 @@
+{
+  "known_rule_source": "r2 algorithm-analysis/town_tile_image.py; static source80019870",
+  "identifier": "First containing active store: low7bits ofstore+4. Tens orunits select lookup; tens>=10 uses originaltile. No matching store retains stack half inoriginal code, not fabricated as0 here.",
+  "lookup": [
+    524,
+    525,
+    526,
+    527,
+    528,
+    529,
+    530,
+    531,
+    532,
+    533
+  ],
+  "variants": [
+    {
+      "source_tile": 4,
+      "digit": "tens",
+      "offset": 0,
+      "image_codes": [
+        524,
+        525,
+        526,
+        527,
+        528,
+        529,
+        530,
+        531,
+        532,
+        533
+      ]
+    },
+    {
+      "source_tile": 5,
+      "digit": "units",
+      "offset": 10,
+      "image_codes": [
+        534,
+        535,
+        536,
+        537,
+        538,
+        539,
+        540,
+        541,
+        542,
+        543
+      ]
+    },
+    {
+      "source_tile": 6,
+      "digit": "tens",
+      "offset": 32,
+      "image_codes": [
+        556,
+        557,
+        558,
+        559,
+        560,
+        561,
+        562,
+        563,
+        564,
+        565
+      ]
+    },
+    {
+      "source_tile": 7,
+      "digit": "units",
+      "offset": 42,
+      "image_codes": [
+        566,
+        567,
+        568,
+        569,
+        570,
+        571,
+        572,
+        573,
+        574,
+        575
+      ]
+    },
+    {
+      "source_tile": 16,
+      "digit": "tens",
+      "offset": 64,
+      "image_codes": [
+        588,
+        589,
+        590,
+        591,
+        592,
+        593,
+        594,
+        595,
+        596,
+        597
+      ]
+    },
+    {
+      "source_tile": 17,
+      "digit": "units",
+      "offset": 74,
+      "image_codes": [
+        598,
+        599,
+        600,
+        601,
+        602,
+        603,
+        604,
+        605,
+        606,
+        607
+      ]
+    },
+    {
+      "source_tile": 18,
+      "digit": "tens",
+      "offset": 96,
+      "image_codes": [
+        620,
+        621,
+        622,
+        623,
+        624,
+        625,
+        626,
+        627,
+        628,
+        629
+      ]
+    },
+    {
+      "source_tile": 19,
+      "digit": "units",
+      "offset": 106,
+      "image_codes": [
+        630,
+        631,
+        632,
+        633,
+        634,
+        635,
+        636,
+        637,
+        638,
+        639
+      ]
+    }
+  ],
+  "all_80_variant_crops_inside_source": true
+}

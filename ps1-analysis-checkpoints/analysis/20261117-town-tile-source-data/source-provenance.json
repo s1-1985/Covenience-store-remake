@@ -1,0 +1,36 @@
+{
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "cel_sha256": "6eeaf1dd9a801b7ca11e554f6f16f69a1b08bc9c6a07326c8e667461eca3cf37",
+  "tim_sha256": "8c08e15da000ef410367f21dfa73c1fae5de71d6f4b377136d5daaf4fd012612",
+  "raw_exe_ranges": [
+    {
+      "file": "source/building_master.bin",
+      "start": "0x8009d738",
+      "end_exclusive": "0x8009e928",
+      "sha256": "7a9d8b55f83a3b0d9585ba724bd2140354d51c360c3076cc31e9a09aca46b1ab"
+    },
+    {
+      "file": "source/store_sign_lookup.bin",
+      "start": "0x8001009c",
+      "end_exclusive": "0x800100b0",
+      "sha256": "5b32960b2f31d624393882dbc9b0c532c340b7b89037d8d0253896d19485b995"
+    },
+    {
+      "file": "source/town_map_and_sign_reader.bin",
+      "start": "0x800196c8",
+      "end_exclusive": "0x80019ea0",
+      "sha256": "3d777c7e809ba5fb98e9f8299dc545abee1e062e8ba116dc6a3679ba3bd14f53"
+    }
+  ],
+  "inputs_in_existing_archive": [
+    "algorithm-analysis/source/SLPS_007.82",
+    "algorithm-analysis/source/TOWN_PR1.TIM",
+    "algorithm-analysis/source/TOWN0001.BIN",
+    "algorithm-analysis/source/TOWN0002.BIN",
+    "algorithm-analysis/source/TOWN0003.BIN",
+    "algorithm-analysis/source/TOWNPS.BIN"
+  ],
+  "known_before": "CEL640 declared/800physical/160zero; existing72/69 building row exports; store digit mapping and full-map original renderer already decoded. New join is all640 crops,82-row source master and4maps to originalTIM pixel payload, including80 digit variants.",
+  "verification_scope": "One static extraction, source hashes, table overlap cross-checks and crop/range bounds. No original CPU execution or additional game updates."
+}

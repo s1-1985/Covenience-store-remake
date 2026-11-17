@@ -1,0 +1,15 @@
+{
+  "cel_source_crops": 640,
+  "padded_slots_not_exported": 160,
+  "building_master_rows": 82,
+  "building_master_note": "Includes9store descriptors,4vacant definitions,59environment definitions and10extension labels; not82distinct buildings.",
+  "store_sign_variant_crops": 80,
+  "initial_maps": 4,
+  "initial_map_cells": 12000,
+  "initial_sign_replacements": 28,
+  "all_crops_inside_source": true,
+  "unresolved_initial_map_cells": 0,
+  "original_cpu_calls": 0,
+  "gameplay_updates": 0,
+  "scope": "Source-data visual reconstruction only; no screen-layer/fog/lighting/UI/semitransparency/GPU equivalence claim."
+}

@@ -1,0 +1,8612 @@
+{
+  "schema": "Source master indices begin0x8009D738; customer-data69row indices begin13 rows later. Do not confuse these indices with tile codes or gameplay kinds.",
+  "rows": [
+    {
+      "master_index": 0,
+      "address": "0x8009d738",
+      "name": "コンビニ(自)",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        0,
+        3
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 770,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 0,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            0,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 1,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            8,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 2,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            16,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 3,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            24,
+            0,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 1,
+      "address": "0x8009d770",
+      "name": "(未使用)",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        4,
+        7
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 514,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 4,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            32,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 5,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            40,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 6,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            48,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 7,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            56,
+            0,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": true
+    },
+    {
+      "master_index": 2,
+      "address": "0x8009d7a8",
+      "name": "(未使用)",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        8,
+        11
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 258,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 8,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            64,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 9,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            72,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 10,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            80,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 11,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            88,
+            0,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": true
+    },
+    {
+      "master_index": 3,
+      "address": "0x8009d7e0",
+      "name": "コンビニ(敵)",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        12,
+        15
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 770,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 12,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            96,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 13,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            104,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 14,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            112,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 15,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            120,
+            0,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 4,
+      "address": "0x8009d818",
+      "name": "(未使用)",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        16,
+        19
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 514,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 16,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            128,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 17,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            136,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 18,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            144,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 19,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            152,
+            0,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": true
+    },
+    {
+      "master_index": 5,
+      "address": "0x8009d850",
+      "name": "(未使用)",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        20,
+        23
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 258,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 20,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            160,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 21,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            168,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 22,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            176,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 23,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            184,
+            0,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": true
+    },
+    {
+      "master_index": 6,
+      "address": "0x8009d888",
+      "name": "(未使用)",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        24,
+        27
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 770,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 24,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            192,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 25,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            200,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 26,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            208,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 27,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            216,
+            0,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": true
+    },
+    {
+      "master_index": 7,
+      "address": "0x8009d8c0",
+      "name": "(未使用)",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        28,
+        31
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 514,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 28,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            224,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 29,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            232,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 30,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            240,
+            0,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 31,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            248,
+            0,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": true
+    },
+    {
+      "master_index": 8,
+      "address": "0x8009d8f8",
+      "name": "(未使用)",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        32,
+        35
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 258,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 32,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            0,
+            8,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 33,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            8,
+            8,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 34,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            16,
+            8,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 35,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            24,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": true
+    },
+    {
+      "master_index": 9,
+      "address": "0x8009d930",
+      "name": "空き地",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        40,
+        40
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 40,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            64,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 10,
+      "address": "0x8009d968",
+      "name": "空き地",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        41,
+        41
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 41,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            72,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 11,
+      "address": "0x8009d9a0",
+      "name": "空き地",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        42,
+        42
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 42,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            80,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 12,
+      "address": "0x8009d9d8",
+      "name": "空き地",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        43,
+        43
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 43,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            88,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 13,
+      "address": "0x8009da10",
+      "name": "空き地",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        44,
+        44
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 44,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            96,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 14,
+      "address": "0x8009da48",
+      "name": "道路",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        50,
+        50
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 257,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 50,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            144,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 15,
+      "address": "0x8009da80",
+      "name": "道路",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        51,
+        51
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 257,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 51,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            152,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 16,
+      "address": "0x8009dab8",
+      "name": "道路",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        52,
+        52
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 257,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 52,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            160,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 17,
+      "address": "0x8009daf0",
+      "name": "線路",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        53,
+        53
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 257,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 53,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            168,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 18,
+      "address": "0x8009db28",
+      "name": "交番",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        60,
+        63
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 264,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 60,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            224,
+            8,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 61,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            232,
+            8,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 62,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            240,
+            8,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 63,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            248,
+            8,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 19,
+      "address": "0x8009db60",
+      "name": "消防署",
+      "footprint": [
+        3,
+        2
+      ],
+      "tile_range": [
+        64,
+        69
+      ],
+      "preview_pixels": [
+        24,
+        16
+      ],
+      "category": 264,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 64,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            0,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 65,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            8,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 66,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            16,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 67,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            24,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 68,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            32,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 69,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            40,
+            16,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 20,
+      "address": "0x8009db98",
+      "name": "駅",
+      "footprint": [
+        2,
+        1
+      ],
+      "tile_range": [
+        70,
+        71
+      ],
+      "preview_pixels": [
+        16,
+        8
+      ],
+      "category": 2561,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 70,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            48,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 71,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            56,
+            16,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 21,
+      "address": "0x8009dbd0",
+      "name": "駅",
+      "footprint": [
+        4,
+        2
+      ],
+      "tile_range": [
+        72,
+        79
+      ],
+      "preview_pixels": [
+        32,
+        16
+      ],
+      "category": 1537,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 72,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            64,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 73,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            72,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 74,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            80,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 75,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            88,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 76,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            96,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 77,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            104,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 78,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            112,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 79,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            120,
+            16,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 22,
+      "address": "0x8009dc08",
+      "name": "役場",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        80,
+        83
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 1801,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 80,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            128,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 81,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            136,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 82,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            144,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 83,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            152,
+            16,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 23,
+      "address": "0x8009dc40",
+      "name": "役所",
+      "footprint": [
+        5,
+        5
+      ],
+      "tile_range": [
+        84,
+        108
+      ],
+      "preview_pixels": [
+        40,
+        40
+      ],
+      "category": 521,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 84,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            160,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 85,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            168,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 86,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            176,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 87,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            184,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 88,
+          "offset": [
+            32,
+            0
+          ],
+          "source_rect": [
+            192,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 89,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            200,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 90,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            208,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 91,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            216,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 92,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            224,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 93,
+          "offset": [
+            32,
+            8
+          ],
+          "source_rect": [
+            232,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 94,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            240,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 95,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            248,
+            16,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 96,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            0,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 97,
+          "offset": [
+            24,
+            16
+          ],
+          "source_rect": [
+            8,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 98,
+          "offset": [
+            32,
+            16
+          ],
+          "source_rect": [
+            16,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 99,
+          "offset": [
+            0,
+            24
+          ],
+          "source_rect": [
+            24,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 100,
+          "offset": [
+            8,
+            24
+          ],
+          "source_rect": [
+            32,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 101,
+          "offset": [
+            16,
+            24
+          ],
+          "source_rect": [
+            40,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 102,
+          "offset": [
+            24,
+            24
+          ],
+          "source_rect": [
+            48,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 103,
+          "offset": [
+            32,
+            24
+          ],
+          "source_rect": [
+            56,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 104,
+          "offset": [
+            0,
+            32
+          ],
+          "source_rect": [
+            64,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 105,
+          "offset": [
+            8,
+            32
+          ],
+          "source_rect": [
+            72,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 106,
+          "offset": [
+            16,
+            32
+          ],
+          "source_rect": [
+            80,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 107,
+          "offset": [
+            24,
+            32
+          ],
+          "source_rect": [
+            88,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 108,
+          "offset": [
+            32,
+            32
+          ],
+          "source_rect": [
+            96,
+            24,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 24,
+      "address": "0x8009dc78",
+      "name": "都庁",
+      "footprint": [
+        7,
+        7
+      ],
+      "tile_range": [
+        109,
+        157
+      ],
+      "preview_pixels": [
+        56,
+        56
+      ],
+      "category": 1033,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 109,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            104,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 110,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            112,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 111,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            120,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 112,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            128,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 113,
+          "offset": [
+            32,
+            0
+          ],
+          "source_rect": [
+            136,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 114,
+          "offset": [
+            40,
+            0
+          ],
+          "source_rect": [
+            144,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 115,
+          "offset": [
+            48,
+            0
+          ],
+          "source_rect": [
+            152,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 116,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            160,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 117,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            168,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 118,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            176,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 119,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            184,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 120,
+          "offset": [
+            32,
+            8
+          ],
+          "source_rect": [
+            192,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 121,
+          "offset": [
+            40,
+            8
+          ],
+          "source_rect": [
+            200,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 122,
+          "offset": [
+            48,
+            8
+          ],
+          "source_rect": [
+            208,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 123,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            216,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 124,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            224,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 125,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            232,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 126,
+          "offset": [
+            24,
+            16
+          ],
+          "source_rect": [
+            240,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 127,
+          "offset": [
+            32,
+            16
+          ],
+          "source_rect": [
+            248,
+            24,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 128,
+          "offset": [
+            40,
+            16
+          ],
+          "source_rect": [
+            0,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 129,
+          "offset": [
+            48,
+            16
+          ],
+          "source_rect": [
+            8,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 130,
+          "offset": [
+            0,
+            24
+          ],
+          "source_rect": [
+            16,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 131,
+          "offset": [
+            8,
+            24
+          ],
+          "source_rect": [
+            24,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 132,
+          "offset": [
+            16,
+            24
+          ],
+          "source_rect": [
+            32,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 133,
+          "offset": [
+            24,
+            24
+          ],
+          "source_rect": [
+            40,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 134,
+          "offset": [
+            32,
+            24
+          ],
+          "source_rect": [
+            48,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 135,
+          "offset": [
+            40,
+            24
+          ],
+          "source_rect": [
+            56,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 136,
+          "offset": [
+            48,
+            24
+          ],
+          "source_rect": [
+            64,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 137,
+          "offset": [
+            0,
+            32
+          ],
+          "source_rect": [
+            72,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 138,
+          "offset": [
+            8,
+            32
+          ],
+          "source_rect": [
+            80,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 139,
+          "offset": [
+            16,
+            32
+          ],
+          "source_rect": [
+            88,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 140,
+          "offset": [
+            24,
+            32
+          ],
+          "source_rect": [
+            96,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 141,
+          "offset": [
+            32,
+            32
+          ],
+          "source_rect": [
+            104,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 142,
+          "offset": [
+            40,
+            32
+          ],
+          "source_rect": [
+            112,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 143,
+          "offset": [
+            48,
+            32
+          ],
+          "source_rect": [
+            120,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 144,
+          "offset": [
+            0,
+            40
+          ],
+          "source_rect": [
+            128,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 145,
+          "offset": [
+            8,
+            40
+          ],
+          "source_rect": [
+            136,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 146,
+          "offset": [
+            16,
+            40
+          ],
+          "source_rect": [
+            144,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 147,
+          "offset": [
+            24,
+            40
+          ],
+          "source_rect": [
+            152,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 148,
+          "offset": [
+            32,
+            40
+          ],
+          "source_rect": [
+            160,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 149,
+          "offset": [
+            40,
+            40
+          ],
+          "source_rect": [
+            168,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 150,
+          "offset": [
+            48,
+            40
+          ],
+          "source_rect": [
+            176,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 151,
+          "offset": [
+            0,
+            48
+          ],
+          "source_rect": [
+            184,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 152,
+          "offset": [
+            8,
+            48
+          ],
+          "source_rect": [
+            192,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 153,
+          "offset": [
+            16,
+            48
+          ],
+          "source_rect": [
+            200,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 154,
+          "offset": [
+            24,
+            48
+          ],
+          "source_rect": [
+            208,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 155,
+          "offset": [
+            32,
+            48
+          ],
+          "source_rect": [
+            216,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 156,
+          "offset": [
+            40,
+            48
+          ],
+          "source_rect": [
+            224,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 157,
+          "offset": [
+            48,
+            48
+          ],
+          "source_rect": [
+            232,
+            32,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 25,
+      "address": "0x8009dcb0",
+      "name": "幼稚園",
+      "footprint": [
+        3,
+        2
+      ],
+      "tile_range": [
+        158,
+        163
+      ],
+      "preview_pixels": [
+        24,
+        16
+      ],
+      "category": 519,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 158,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            240,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 159,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            248,
+            32,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 160,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            0,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 161,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            8,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 162,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            16,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 163,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            24,
+            40,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 26,
+      "address": "0x8009dce8",
+      "name": "小学校",
+      "footprint": [
+        4,
+        4
+      ],
+      "tile_range": [
+        164,
+        179
+      ],
+      "preview_pixels": [
+        32,
+        32
+      ],
+      "category": 519,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 164,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            32,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 165,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            40,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 166,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            48,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 167,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            56,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 168,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            64,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 169,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            72,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 170,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            80,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 171,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            88,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 172,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            96,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 173,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            104,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 174,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            112,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 175,
+          "offset": [
+            24,
+            16
+          ],
+          "source_rect": [
+            120,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 176,
+          "offset": [
+            0,
+            24
+          ],
+          "source_rect": [
+            128,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 177,
+          "offset": [
+            8,
+            24
+          ],
+          "source_rect": [
+            136,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 178,
+          "offset": [
+            16,
+            24
+          ],
+          "source_rect": [
+            144,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 179,
+          "offset": [
+            24,
+            24
+          ],
+          "source_rect": [
+            152,
+            40,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 27,
+      "address": "0x8009dd20",
+      "name": "中学校",
+      "footprint": [
+        5,
+        5
+      ],
+      "tile_range": [
+        180,
+        204
+      ],
+      "preview_pixels": [
+        40,
+        40
+      ],
+      "category": 519,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 180,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            160,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 181,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            168,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 182,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            176,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 183,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            184,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 184,
+          "offset": [
+            32,
+            0
+          ],
+          "source_rect": [
+            192,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 185,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            200,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 186,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            208,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 187,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            216,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 188,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            224,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 189,
+          "offset": [
+            32,
+            8
+          ],
+          "source_rect": [
+            232,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 190,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            240,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 191,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            248,
+            40,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 192,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            0,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 193,
+          "offset": [
+            24,
+            16
+          ],
+          "source_rect": [
+            8,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 194,
+          "offset": [
+            32,
+            16
+          ],
+          "source_rect": [
+            16,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 195,
+          "offset": [
+            0,
+            24
+          ],
+          "source_rect": [
+            24,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 196,
+          "offset": [
+            8,
+            24
+          ],
+          "source_rect": [
+            32,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 197,
+          "offset": [
+            16,
+            24
+          ],
+          "source_rect": [
+            40,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 198,
+          "offset": [
+            24,
+            24
+          ],
+          "source_rect": [
+            48,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 199,
+          "offset": [
+            32,
+            24
+          ],
+          "source_rect": [
+            56,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 200,
+          "offset": [
+            0,
+            32
+          ],
+          "source_rect": [
+            64,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 201,
+          "offset": [
+            8,
+            32
+          ],
+          "source_rect": [
+            72,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 202,
+          "offset": [
+            16,
+            32
+          ],
+          "source_rect": [
+            80,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 203,
+          "offset": [
+            24,
+            32
+          ],
+          "source_rect": [
+            88,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 204,
+          "offset": [
+            32,
+            32
+          ],
+          "source_rect": [
+            96,
+            48,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 28,
+      "address": "0x8009dd58",
+      "name": "高校",
+      "footprint": [
+        6,
+        6
+      ],
+      "tile_range": [
+        205,
+        240
+      ],
+      "preview_pixels": [
+        48,
+        48
+      ],
+      "category": 519,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 205,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            104,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 206,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            112,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 207,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            120,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 208,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            128,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 209,
+          "offset": [
+            32,
+            0
+          ],
+          "source_rect": [
+            136,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 210,
+          "offset": [
+            40,
+            0
+          ],
+          "source_rect": [
+            144,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 211,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            152,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 212,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            160,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 213,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            168,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 214,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            176,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 215,
+          "offset": [
+            32,
+            8
+          ],
+          "source_rect": [
+            184,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 216,
+          "offset": [
+            40,
+            8
+          ],
+          "source_rect": [
+            192,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 217,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            200,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 218,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            208,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 219,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            216,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 220,
+          "offset": [
+            24,
+            16
+          ],
+          "source_rect": [
+            224,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 221,
+          "offset": [
+            32,
+            16
+          ],
+          "source_rect": [
+            232,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 222,
+          "offset": [
+            40,
+            16
+          ],
+          "source_rect": [
+            240,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 223,
+          "offset": [
+            0,
+            24
+          ],
+          "source_rect": [
+            248,
+            48,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 224,
+          "offset": [
+            8,
+            24
+          ],
+          "source_rect": [
+            0,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 225,
+          "offset": [
+            16,
+            24
+          ],
+          "source_rect": [
+            8,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 226,
+          "offset": [
+            24,
+            24
+          ],
+          "source_rect": [
+            16,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 227,
+          "offset": [
+            32,
+            24
+          ],
+          "source_rect": [
+            24,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 228,
+          "offset": [
+            40,
+            24
+          ],
+          "source_rect": [
+            32,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 229,
+          "offset": [
+            0,
+            32
+          ],
+          "source_rect": [
+            40,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 230,
+          "offset": [
+            8,
+            32
+          ],
+          "source_rect": [
+            48,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 231,
+          "offset": [
+            16,
+            32
+          ],
+          "source_rect": [
+            56,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 232,
+          "offset": [
+            24,
+            32
+          ],
+          "source_rect": [
+            64,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 233,
+          "offset": [
+            32,
+            32
+          ],
+          "source_rect": [
+            72,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 234,
+          "offset": [
+            40,
+            32
+          ],
+          "source_rect": [
+            80,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 235,
+          "offset": [
+            0,
+            40
+          ],
+          "source_rect": [
+            88,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 236,
+          "offset": [
+            8,
+            40
+          ],
+          "source_rect": [
+            96,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 237,
+          "offset": [
+            16,
+            40
+          ],
+          "source_rect": [
+            104,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 238,
+          "offset": [
+            24,
+            40
+          ],
+          "source_rect": [
+            112,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 239,
+          "offset": [
+            32,
+            40
+          ],
+          "source_rect": [
+            120,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 240,
+          "offset": [
+            40,
+            40
+          ],
+          "source_rect": [
+            128,
+            56,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 29,
+      "address": "0x8009dd90",
+      "name": "大学",
+      "footprint": [
+        7,
+        7
+      ],
+      "tile_range": [
+        241,
+        289
+      ],
+      "preview_pixels": [
+        56,
+        56
+      ],
+      "category": 519,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 241,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            136,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 242,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            144,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 243,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            152,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 244,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            160,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 245,
+          "offset": [
+            32,
+            0
+          ],
+          "source_rect": [
+            168,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 246,
+          "offset": [
+            40,
+            0
+          ],
+          "source_rect": [
+            176,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 247,
+          "offset": [
+            48,
+            0
+          ],
+          "source_rect": [
+            184,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 248,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            192,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 249,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            200,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 250,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            208,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 251,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            216,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 252,
+          "offset": [
+            32,
+            8
+          ],
+          "source_rect": [
+            224,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 253,
+          "offset": [
+            40,
+            8
+          ],
+          "source_rect": [
+            232,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 254,
+          "offset": [
+            48,
+            8
+          ],
+          "source_rect": [
+            240,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 255,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            248,
+            56,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 256,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            0,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 257,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            8,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 258,
+          "offset": [
+            24,
+            16
+          ],
+          "source_rect": [
+            16,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 259,
+          "offset": [
+            32,
+            16
+          ],
+          "source_rect": [
+            24,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 260,
+          "offset": [
+            40,
+            16
+          ],
+          "source_rect": [
+            32,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 261,
+          "offset": [
+            48,
+            16
+          ],
+          "source_rect": [
+            40,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 262,
+          "offset": [
+            0,
+            24
+          ],
+          "source_rect": [
+            48,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 263,
+          "offset": [
+            8,
+            24
+          ],
+          "source_rect": [
+            56,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 264,
+          "offset": [
+            16,
+            24
+          ],
+          "source_rect": [
+            64,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 265,
+          "offset": [
+            24,
+            24
+          ],
+          "source_rect": [
+            72,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 266,
+          "offset": [
+            32,
+            24
+          ],
+          "source_rect": [
+            80,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 267,
+          "offset": [
+            40,
+            24
+          ],
+          "source_rect": [
+            88,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 268,
+          "offset": [
+            48,
+            24
+          ],
+          "source_rect": [
+            96,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 269,
+          "offset": [
+            0,
+            32
+          ],
+          "source_rect": [
+            104,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 270,
+          "offset": [
+            8,
+            32
+          ],
+          "source_rect": [
+            112,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 271,
+          "offset": [
+            16,
+            32
+          ],
+          "source_rect": [
+            120,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 272,
+          "offset": [
+            24,
+            32
+          ],
+          "source_rect": [
+            128,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 273,
+          "offset": [
+            32,
+            32
+          ],
+          "source_rect": [
+            136,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 274,
+          "offset": [
+            40,
+            32
+          ],
+          "source_rect": [
+            144,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 275,
+          "offset": [
+            48,
+            32
+          ],
+          "source_rect": [
+            152,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 276,
+          "offset": [
+            0,
+            40
+          ],
+          "source_rect": [
+            160,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 277,
+          "offset": [
+            8,
+            40
+          ],
+          "source_rect": [
+            168,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 278,
+          "offset": [
+            16,
+            40
+          ],
+          "source_rect": [
+            176,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 279,
+          "offset": [
+            24,
+            40
+          ],
+          "source_rect": [
+            184,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 280,
+          "offset": [
+            32,
+            40
+          ],
+          "source_rect": [
+            192,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 281,
+          "offset": [
+            40,
+            40
+          ],
+          "source_rect": [
+            200,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 282,
+          "offset": [
+            48,
+            40
+          ],
+          "source_rect": [
+            208,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 283,
+          "offset": [
+            0,
+            48
+          ],
+          "source_rect": [
+            216,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 284,
+          "offset": [
+            8,
+            48
+          ],
+          "source_rect": [
+            224,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 285,
+          "offset": [
+            16,
+            48
+          ],
+          "source_rect": [
+            232,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 286,
+          "offset": [
+            24,
+            48
+          ],
+          "source_rect": [
+            240,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 287,
+          "offset": [
+            32,
+            48
+          ],
+          "source_rect": [
+            248,
+            64,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 288,
+          "offset": [
+            40,
+            48
+          ],
+          "source_rect": [
+            0,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 289,
+          "offset": [
+            48,
+            48
+          ],
+          "source_rect": [
+            8,
+            72,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 30,
+      "address": "0x8009ddc8",
+      "name": "専門学校",
+      "footprint": [
+        4,
+        3
+      ],
+      "tile_range": [
+        290,
+        301
+      ],
+      "preview_pixels": [
+        32,
+        24
+      ],
+      "category": 1031,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 290,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            16,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 291,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            24,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 292,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            32,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 293,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            40,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 294,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            48,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 295,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            56,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 296,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            64,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 297,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            72,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 298,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            80,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 299,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            88,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 300,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            96,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 301,
+          "offset": [
+            24,
+            16
+          ],
+          "source_rect": [
+            104,
+            72,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 31,
+      "address": "0x8009de00",
+      "name": "遊園地",
+      "footprint": [
+        7,
+        7
+      ],
+      "tile_range": [
+        302,
+        350
+      ],
+      "preview_pixels": [
+        56,
+        56
+      ],
+      "category": 518,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 302,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            112,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 303,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            120,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 304,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            128,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 305,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            136,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 306,
+          "offset": [
+            32,
+            0
+          ],
+          "source_rect": [
+            144,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 307,
+          "offset": [
+            40,
+            0
+          ],
+          "source_rect": [
+            152,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 308,
+          "offset": [
+            48,
+            0
+          ],
+          "source_rect": [
+            160,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 309,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            168,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 310,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            176,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 311,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            184,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 312,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            192,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 313,
+          "offset": [
+            32,
+            8
+          ],
+          "source_rect": [
+            200,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 314,
+          "offset": [
+            40,
+            8
+          ],
+          "source_rect": [
+            208,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 315,
+          "offset": [
+            48,
+            8
+          ],
+          "source_rect": [
+            216,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 316,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            224,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 317,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            232,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 318,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            240,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 319,
+          "offset": [
+            24,
+            16
+          ],
+          "source_rect": [
+            248,
+            72,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 320,
+          "offset": [
+            32,
+            16
+          ],
+          "source_rect": [
+            0,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 321,
+          "offset": [
+            40,
+            16
+          ],
+          "source_rect": [
+            8,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 322,
+          "offset": [
+            48,
+            16
+          ],
+          "source_rect": [
+            16,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 323,
+          "offset": [
+            0,
+            24
+          ],
+          "source_rect": [
+            24,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 324,
+          "offset": [
+            8,
+            24
+          ],
+          "source_rect": [
+            32,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 325,
+          "offset": [
+            16,
+            24
+          ],
+          "source_rect": [
+            40,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 326,
+          "offset": [
+            24,
+            24
+          ],
+          "source_rect": [
+            48,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 327,
+          "offset": [
+            32,
+            24
+          ],
+          "source_rect": [
+            56,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 328,
+          "offset": [
+            40,
+            24
+          ],
+          "source_rect": [
+            64,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 329,
+          "offset": [
+            48,
+            24
+          ],
+          "source_rect": [
+            72,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 330,
+          "offset": [
+            0,
+            32
+          ],
+          "source_rect": [
+            80,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 331,
+          "offset": [
+            8,
+            32
+          ],
+          "source_rect": [
+            88,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 332,
+          "offset": [
+            16,
+            32
+          ],
+          "source_rect": [
+            96,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 333,
+          "offset": [
+            24,
+            32
+          ],
+          "source_rect": [
+            104,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 334,
+          "offset": [
+            32,
+            32
+          ],
+          "source_rect": [
+            112,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 335,
+          "offset": [
+            40,
+            32
+          ],
+          "source_rect": [
+            120,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 336,
+          "offset": [
+            48,
+            32
+          ],
+          "source_rect": [
+            128,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 337,
+          "offset": [
+            0,
+            40
+          ],
+          "source_rect": [
+            136,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 338,
+          "offset": [
+            8,
+            40
+          ],
+          "source_rect": [
+            144,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 339,
+          "offset": [
+            16,
+            40
+          ],
+          "source_rect": [
+            152,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 340,
+          "offset": [
+            24,
+            40
+          ],
+          "source_rect": [
+            160,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 341,
+          "offset": [
+            32,
+            40
+          ],
+          "source_rect": [
+            168,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 342,
+          "offset": [
+            40,
+            40
+          ],
+          "source_rect": [
+            176,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 343,
+          "offset": [
+            48,
+            40
+          ],
+          "source_rect": [
+            184,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 344,
+          "offset": [
+            0,
+            48
+          ],
+          "source_rect": [
+            192,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 345,
+          "offset": [
+            8,
+            48
+          ],
+          "source_rect": [
+            200,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 346,
+          "offset": [
+            16,
+            48
+          ],
+          "source_rect": [
+            208,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 347,
+          "offset": [
+            24,
+            48
+          ],
+          "source_rect": [
+            216,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 348,
+          "offset": [
+            32,
+            48
+          ],
+          "source_rect": [
+            224,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 349,
+          "offset": [
+            40,
+            48
+          ],
+          "source_rect": [
+            232,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 350,
+          "offset": [
+            48,
+            48
+          ],
+          "source_rect": [
+            240,
+            80,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 32,
+      "address": "0x8009de38",
+      "name": "水族館",
+      "footprint": [
+        3,
+        3
+      ],
+      "tile_range": [
+        351,
+        359
+      ],
+      "preview_pixels": [
+        24,
+        24
+      ],
+      "category": 774,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 351,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            248,
+            80,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 352,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            0,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 353,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            8,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 354,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            16,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 355,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            24,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 356,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            32,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 357,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            40,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 358,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            48,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 359,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            56,
+            88,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 33,
+      "address": "0x8009de70",
+      "name": "動物園",
+      "footprint": [
+        6,
+        6
+      ],
+      "tile_range": [
+        360,
+        395
+      ],
+      "preview_pixels": [
+        48,
+        48
+      ],
+      "category": 518,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 360,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            64,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 361,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            72,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 362,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            80,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 363,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            88,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 364,
+          "offset": [
+            32,
+            0
+          ],
+          "source_rect": [
+            96,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 365,
+          "offset": [
+            40,
+            0
+          ],
+          "source_rect": [
+            104,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 366,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            112,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 367,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            120,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 368,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            128,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 369,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            136,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 370,
+          "offset": [
+            32,
+            8
+          ],
+          "source_rect": [
+            144,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 371,
+          "offset": [
+            40,
+            8
+          ],
+          "source_rect": [
+            152,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 372,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            160,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 373,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            168,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 374,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            176,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 375,
+          "offset": [
+            24,
+            16
+          ],
+          "source_rect": [
+            184,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 376,
+          "offset": [
+            32,
+            16
+          ],
+          "source_rect": [
+            192,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 377,
+          "offset": [
+            40,
+            16
+          ],
+          "source_rect": [
+            200,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 378,
+          "offset": [
+            0,
+            24
+          ],
+          "source_rect": [
+            208,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 379,
+          "offset": [
+            8,
+            24
+          ],
+          "source_rect": [
+            216,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 380,
+          "offset": [
+            16,
+            24
+          ],
+          "source_rect": [
+            224,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 381,
+          "offset": [
+            24,
+            24
+          ],
+          "source_rect": [
+            232,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 382,
+          "offset": [
+            32,
+            24
+          ],
+          "source_rect": [
+            240,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 383,
+          "offset": [
+            40,
+            24
+          ],
+          "source_rect": [
+            248,
+            88,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 384,
+          "offset": [
+            0,
+            32
+          ],
+          "source_rect": [
+            0,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 385,
+          "offset": [
+            8,
+            32
+          ],
+          "source_rect": [
+            8,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 386,
+          "offset": [
+            16,
+            32
+          ],
+          "source_rect": [
+            16,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 387,
+          "offset": [
+            24,
+            32
+          ],
+          "source_rect": [
+            24,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 388,
+          "offset": [
+            32,
+            32
+          ],
+          "source_rect": [
+            32,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 389,
+          "offset": [
+            40,
+            32
+          ],
+          "source_rect": [
+            40,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 390,
+          "offset": [
+            0,
+            40
+          ],
+          "source_rect": [
+            48,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 391,
+          "offset": [
+            8,
+            40
+          ],
+          "source_rect": [
+            56,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 392,
+          "offset": [
+            16,
+            40
+          ],
+          "source_rect": [
+            64,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 393,
+          "offset": [
+            24,
+            40
+          ],
+          "source_rect": [
+            72,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 394,
+          "offset": [
+            32,
+            40
+          ],
+          "source_rect": [
+            80,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 395,
+          "offset": [
+            40,
+            40
+          ],
+          "source_rect": [
+            88,
+            96,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 34,
+      "address": "0x8009dea8",
+      "name": "公園",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        396,
+        396
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2566,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 396,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            96,
+            96,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 35,
+      "address": "0x8009dee0",
+      "name": "公園",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        397,
+        400
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 1286,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 397,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            104,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 398,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            112,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 399,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            120,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 400,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            128,
+            96,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 36,
+      "address": "0x8009df18",
+      "name": "ｹﾞｰﾑｾﾝﾀｰ",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        401,
+        401
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 5125,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 401,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            136,
+            96,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 37,
+      "address": "0x8009df50",
+      "name": "パチンコ屋",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        402,
+        405
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 2053,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 402,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            144,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 403,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            152,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 404,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            160,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 405,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            168,
+            96,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 38,
+      "address": "0x8009df88",
+      "name": "会社",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        406,
+        409
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 2052,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 406,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            176,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 407,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            184,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 408,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            192,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 409,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            200,
+            96,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 39,
+      "address": "0x8009dfc0",
+      "name": "会社",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        410,
+        413
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 2052,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 410,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            208,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 411,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            216,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 412,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            224,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 413,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            232,
+            96,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 40,
+      "address": "0x8009dff8",
+      "name": "会社",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        414,
+        417
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 2564,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 414,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            240,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 415,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            248,
+            96,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 416,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            0,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 417,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            8,
+            104,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 41,
+      "address": "0x8009e030",
+      "name": "会社",
+      "footprint": [
+        3,
+        3
+      ],
+      "tile_range": [
+        418,
+        426
+      ],
+      "preview_pixels": [
+        24,
+        24
+      ],
+      "category": 1284,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 418,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            16,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 419,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            24,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 420,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            32,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 421,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            40,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 422,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            48,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 423,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            56,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 424,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            64,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 425,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            72,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 426,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            80,
+            104,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 42,
+      "address": "0x8009e068",
+      "name": "会社",
+      "footprint": [
+        3,
+        3
+      ],
+      "tile_range": [
+        427,
+        435
+      ],
+      "preview_pixels": [
+        24,
+        24
+      ],
+      "category": 1540,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 427,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            88,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 428,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            96,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 429,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            104,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 430,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            112,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 431,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            120,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 432,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            128,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 433,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            136,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 434,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            144,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 435,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            152,
+            104,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 43,
+      "address": "0x8009e0a0",
+      "name": "住宅",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        436,
+        436
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2563,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 436,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            160,
+            104,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 44,
+      "address": "0x8009e0d8",
+      "name": "住宅",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        437,
+        437
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2563,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 437,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            168,
+            104,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 45,
+      "address": "0x8009e110",
+      "name": "住宅",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        438,
+        438
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 5123,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 438,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            176,
+            104,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 46,
+      "address": "0x8009e148",
+      "name": "住宅",
+      "footprint": [
+        1,
+        2
+      ],
+      "tile_range": [
+        439,
+        440
+      ],
+      "preview_pixels": [
+        8,
+        16
+      ],
+      "category": 2563,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 439,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            184,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 440,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            192,
+            104,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 47,
+      "address": "0x8009e180",
+      "name": "住宅",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        441,
+        444
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 1795,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 441,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            200,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 442,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            208,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 443,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            216,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 444,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            224,
+            104,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 48,
+      "address": "0x8009e1b8",
+      "name": "住宅",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        445,
+        448
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 1795,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 445,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            232,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 446,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            240,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 447,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            248,
+            104,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 448,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            0,
+            112,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 49,
+      "address": "0x8009e1f0",
+      "name": "住宅",
+      "footprint": [
+        3,
+        2
+      ],
+      "tile_range": [
+        449,
+        454
+      ],
+      "preview_pixels": [
+        24,
+        16
+      ],
+      "category": 1795,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 449,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            8,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 450,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            16,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 451,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            24,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 452,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            32,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 453,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            40,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 454,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            48,
+            112,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 50,
+      "address": "0x8009e228",
+      "name": "銭湯",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        455,
+        458
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 1797,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 455,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            56,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 456,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            64,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 457,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            72,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 458,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            80,
+            112,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 51,
+      "address": "0x8009e260",
+      "name": "体育館",
+      "footprint": [
+        3,
+        2
+      ],
+      "tile_range": [
+        459,
+        464
+      ],
+      "preview_pixels": [
+        24,
+        16
+      ],
+      "category": 1800,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 459,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            88,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 460,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            96,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 461,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            104,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 462,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            112,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 463,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            120,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 464,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            128,
+            112,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 52,
+      "address": "0x8009e298",
+      "name": "運動場",
+      "footprint": [
+        5,
+        4
+      ],
+      "tile_range": [
+        465,
+        484
+      ],
+      "preview_pixels": [
+        40,
+        32
+      ],
+      "category": 264,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 465,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            136,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 466,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            144,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 467,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            152,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 468,
+          "offset": [
+            24,
+            0
+          ],
+          "source_rect": [
+            160,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 469,
+          "offset": [
+            32,
+            0
+          ],
+          "source_rect": [
+            168,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 470,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            176,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 471,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            184,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 472,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            192,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 473,
+          "offset": [
+            24,
+            8
+          ],
+          "source_rect": [
+            200,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 474,
+          "offset": [
+            32,
+            8
+          ],
+          "source_rect": [
+            208,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 475,
+          "offset": [
+            0,
+            16
+          ],
+          "source_rect": [
+            216,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 476,
+          "offset": [
+            8,
+            16
+          ],
+          "source_rect": [
+            224,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 477,
+          "offset": [
+            16,
+            16
+          ],
+          "source_rect": [
+            232,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 478,
+          "offset": [
+            24,
+            16
+          ],
+          "source_rect": [
+            240,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 479,
+          "offset": [
+            32,
+            16
+          ],
+          "source_rect": [
+            248,
+            112,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 480,
+          "offset": [
+            0,
+            24
+          ],
+          "source_rect": [
+            0,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 481,
+          "offset": [
+            8,
+            24
+          ],
+          "source_rect": [
+            8,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 482,
+          "offset": [
+            16,
+            24
+          ],
+          "source_rect": [
+            16,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 483,
+          "offset": [
+            24,
+            24
+          ],
+          "source_rect": [
+            24,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 484,
+          "offset": [
+            32,
+            24
+          ],
+          "source_rect": [
+            32,
+            120,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 53,
+      "address": "0x8009e2d0",
+      "name": "プール",
+      "footprint": [
+        3,
+        2
+      ],
+      "tile_range": [
+        485,
+        490
+      ],
+      "preview_pixels": [
+        24,
+        16
+      ],
+      "category": 776,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 485,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            40,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 486,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            48,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 487,
+          "offset": [
+            16,
+            0
+          ],
+          "source_rect": [
+            56,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 488,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            64,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 489,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            72,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 490,
+          "offset": [
+            16,
+            8
+          ],
+          "source_rect": [
+            80,
+            120,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 54,
+      "address": "0x8009e308",
+      "name": "ｲﾍﾞﾝﾄ会場",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        491,
+        494
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 3848,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 491,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            88,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 492,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            96,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 493,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            104,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 494,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            112,
+            120,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 55,
+      "address": "0x8009e340",
+      "name": "ﾌｧﾐﾘｰﾚｽﾄﾗﾝ",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        495,
+        498
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 495,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            120,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 496,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            128,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 497,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            136,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 498,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            144,
+            120,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 56,
+      "address": "0x8009e378",
+      "name": "ﾌｧﾐﾘｰﾚｽﾄﾗﾝ",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        499,
+        502
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 499,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            152,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 500,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            160,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 501,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            168,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 502,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            176,
+            120,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 57,
+      "address": "0x8009e3b0",
+      "name": "ﾌｧﾐﾘｰﾚｽﾄﾗﾝ",
+      "footprint": [
+        2,
+        2
+      ],
+      "tile_range": [
+        503,
+        506
+      ],
+      "preview_pixels": [
+        16,
+        16
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 503,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            184,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 504,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            192,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 505,
+          "offset": [
+            0,
+            8
+          ],
+          "source_rect": [
+            200,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 506,
+          "offset": [
+            8,
+            8
+          ],
+          "source_rect": [
+            208,
+            120,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 58,
+      "address": "0x8009e3e8",
+      "name": "レストラン",
+      "footprint": [
+        2,
+        1
+      ],
+      "tile_range": [
+        507,
+        508
+      ],
+      "preview_pixels": [
+        16,
+        8
+      ],
+      "category": 6405,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 507,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            216,
+            120,
+            8,
+            8
+          ]
+        },
+        {
+          "code": 508,
+          "offset": [
+            8,
+            0
+          ],
+          "source_rect": [
+            224,
+            120,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 59,
+      "address": "0x8009e420",
+      "name": "ﾌｧｰｽﾄﾌｰﾄﾞ",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        509,
+        509
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 5125,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 509,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            232,
+            120,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 60,
+      "address": "0x8009e458",
+      "name": "ﾌｧｰｽﾄﾌｰﾄﾞ",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        510,
+        510
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 5125,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 510,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            240,
+            120,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 61,
+      "address": "0x8009e490",
+      "name": "ラーメン屋",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        511,
+        511
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 5125,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 511,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            248,
+            120,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 62,
+      "address": "0x8009e4c8",
+      "name": "そば屋",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        512,
+        512
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 512,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            0,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 63,
+      "address": "0x8009e500",
+      "name": "飲み屋",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        513,
+        513
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 513,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            8,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 64,
+      "address": "0x8009e538",
+      "name": "飲み屋",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        514,
+        514
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 514,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            16,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 65,
+      "address": "0x8009e570",
+      "name": "飲み屋",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        515,
+        515
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 515,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            24,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 66,
+      "address": "0x8009e5a8",
+      "name": "本屋",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        516,
+        516
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 516,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            32,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 67,
+      "address": "0x8009e5e0",
+      "name": "おもちゃ屋",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        517,
+        517
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 517,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            40,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 68,
+      "address": "0x8009e618",
+      "name": "洋品店",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        518,
+        518
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 518,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            48,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 69,
+      "address": "0x8009e650",
+      "name": "電気屋",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        519,
+        519
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 2565,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 519,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            56,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 70,
+      "address": "0x8009e688",
+      "name": "役場用地",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        520,
+        520
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 9,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 520,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            64,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 71,
+      "address": "0x8009e6c0",
+      "name": "誘致用地",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        521,
+        521
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 10,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 521,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            72,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": false,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 72,
+      "address": "0x8009e6f8",
+      "name": "拡張00",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        522,
+        522
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 522,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            80,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": true,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 73,
+      "address": "0x8009e730",
+      "name": "拡張01",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        523,
+        523
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 523,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            88,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": true,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 74,
+      "address": "0x8009e768",
+      "name": "拡張02",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        524,
+        524
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 524,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            96,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": true,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 75,
+      "address": "0x8009e7a0",
+      "name": "拡張03",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        525,
+        525
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 525,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            104,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": true,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 76,
+      "address": "0x8009e7d8",
+      "name": "拡張04",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        526,
+        526
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 526,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            112,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": true,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 77,
+      "address": "0x8009e810",
+      "name": "拡張05",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        527,
+        527
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 527,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            120,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": true,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 78,
+      "address": "0x8009e848",
+      "name": "拡張06",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        528,
+        528
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 528,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            128,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": true,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 79,
+      "address": "0x8009e880",
+      "name": "拡張07",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        529,
+        529
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 529,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            136,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": true,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 80,
+      "address": "0x8009e8b8",
+      "name": "拡張08",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        530,
+        530
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 530,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            144,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": true,
+      "unused_named_entry": false
+    },
+    {
+      "master_index": 81,
+      "address": "0x8009e8f0",
+      "name": "拡張09",
+      "footprint": [
+        1,
+        1
+      ],
+      "tile_range": [
+        531,
+        531
+      ],
+      "preview_pixels": [
+        8,
+        8
+      ],
+      "category": 0,
+      "source_image_id": 0,
+      "crops": [
+        {
+          "code": 531,
+          "offset": [
+            0,
+            0
+          ],
+          "source_rect": [
+            152,
+            128,
+            8,
+            8
+          ]
+        }
+      ],
+      "extension_named_entry": true,
+      "unused_named_entry": false
+    }
+  ]
+}

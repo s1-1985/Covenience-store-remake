@@ -1,0 +1,92 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 7477,
+    "sha256": "533ea4e537acbc5a48f1908f5034e8104cbd291de620a9779eb042bd2c9ba6bc"
+  },
+  {
+    "path": "android-town-tile-bridge.json",
+    "bytes": 1303,
+    "sha256": "46fbb6ae6d900c82ac6ae63e2f24bb291e86905786e915f285fefaaa522e19f1"
+  },
+  {
+    "path": "building-crops-preview.png",
+    "bytes": 92158,
+    "sha256": "4f416ce1fb52df3ed82b102cfc0c79cd119dbce1e5566d9d4891edd80248bf75"
+  },
+  {
+    "path": "building-source-crops.json",
+    "bytes": 141963,
+    "sha256": "6a4f815e4204e64d7ba6745c4743b192024da23949c29610e2c523330e498fbd"
+  },
+  {
+    "path": "cel-to-source.json",
+    "bytes": 152380,
+    "sha256": "f81f8f6cad46af400c18d0b45ca96bd1b5f6021f92436bd68f31d28ddaae3868"
+  },
+  {
+    "path": "extract-town-tiles.py",
+    "bytes": 10586,
+    "sha256": "7a1dc3246eeec3b56bff3a91e3e2e2c7491df54dc1e607d5d080120ef3f0a50c"
+  },
+  {
+    "path": "four-town-source-map.json",
+    "bytes": 18498,
+    "sha256": "1616724a206c1efa6e520ec117f57102e1d9feaaa071644b3f0da636e5a5ada7"
+  },
+  {
+    "path": "four-town-source-preview.png",
+    "bytes": 215268,
+    "sha256": "6d3bb72d0875daac60bd6c9251a1aebd189862b43086fc00a430e483b897f0e5"
+  },
+  {
+    "path": "resolved-town-images.u16.zlib",
+    "bytes": 6395,
+    "sha256": "4ce337e561b5862b53714ac9750fa626e6e025a683d7f2f37e9f25623ce13590"
+  },
+  {
+    "path": "source/TOWN_PR1.CEL",
+    "bytes": 6408,
+    "sha256": "6eeaf1dd9a801b7ca11e554f6f16f69a1b08bc9c6a07326c8e667461eca3cf37"
+  },
+  {
+    "path": "source/building_master.bin",
+    "bytes": 4592,
+    "sha256": "7a9d8b55f83a3b0d9585ba724bd2140354d51c360c3076cc31e9a09aca46b1ab"
+  },
+  {
+    "path": "source/store_sign_lookup.bin",
+    "bytes": 20,
+    "sha256": "5b32960b2f31d624393882dbc9b0c532c340b7b89037d8d0253896d19485b995"
+  },
+  {
+    "path": "source/town_map_and_sign_reader.bin",
+    "bytes": 2008,
+    "sha256": "3d777c7e809ba5fb98e9f8299dc545abee1e062e8ba116dc6a3679ba3bd14f53"
+  },
+  {
+    "path": "source-provenance.json",
+    "bytes": 1753,
+    "sha256": "21ebd890e165800e872d42a8dd22e321d7f5c11e8811af8d091c87da1249a32c"
+  },
+  {
+    "path": "store-sign-crops.json",
+    "bytes": 2400,
+    "sha256": "c568864cd3e6f6876da495531a6cba7b63357e1b73c36396d528e9ff825b25a3"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 616,
+    "sha256": "e487b22ca1867a63523f31279f10e785c96fa63bfef85e4133159256cb5177a3"
+  },
+  {
+    "path": "town-image-reader.asm",
+    "bytes": 16875,
+    "sha256": "9c995cafc9e1d205ce8c7132570ee21f7de68c8665712db9da5d43f77224bff3"
+  },
+  {
+    "path": "town-source-preview.png",
+    "bytes": 38681,
+    "sha256": "7efa205ccf52371fb8b18519a9c4a603f7821a49445579f319375628fd001164"
+  }
+]

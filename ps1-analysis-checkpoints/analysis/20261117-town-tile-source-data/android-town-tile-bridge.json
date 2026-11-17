@@ -1,0 +1,39 @@
+{
+  "status": "source_data_only_no_android_code_change",
+  "image_id": 0,
+  "image_name": "TOWN_PR1.TIM",
+  "decoded_pixels": [
+    256,
+    160
+  ],
+  "tile_pixels": [
+    8,
+    8
+  ],
+  "valid_tile_codes": [
+    0,
+    639
+  ],
+  "cel_declared_count": 640,
+  "cel_padding_not_tiles": 160,
+  "master_index_origin": "0x8009D738",
+  "customer_data_69row_index_offset": 13,
+  "building_crop_file": "building-source-crops.json",
+  "tile_crop_file": "cel-to-source.json",
+  "initial_map_codes": "resolved-town-images.u16.zlib",
+  "store_number_file": "store-sign-crops.json",
+  "known_rules_reused": [
+    "original80019870 store number substitution",
+    "CEL structure and original palette/TPAGE syntax",
+    "existing building definitions"
+  ],
+  "rules": [
+    "Use source image ID + source rectangle, not VRAM destination alone.",
+    "Do not treat82master rows as82distinct buildings.",
+    "Do not treat physical CEL padding asvalid picture codes.",
+    "Do not use a customer-data69row index as a full82row master index.",
+    "Raw palette STP must be retained for eventual compositing; PNG is only preview."
+  ],
+  "runtime": "Native Android data; no PS emulator/BIOS/EXE dependency.",
+  "unresolved": "Full scene layers, zoom/scroll/color and blending integration are outside this extraction."
+}

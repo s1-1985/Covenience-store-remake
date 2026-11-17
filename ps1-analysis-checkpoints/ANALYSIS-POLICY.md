@@ -150,3 +150,5 @@
 - [2026-11-17：画像ロード直接39要求→31画像、32転送表・34画像名・53アイコンと画素/パレット重複を接続](analysis/20261117-texture-runtime-binding-data/README.md)
 
 - [2026-11-17：祭りの範囲外需要、原計算から先頭客状態への条件付き加算と6状態の分岐変更・自然到達は未確認](analysis/20261117-festival-customer-state-data/README.md)
+
+- [2026-11-17：街タイル640枠・建物マスター82行・4マップ12000セルを元画像へ接続、原CPU検証0回](analysis/20261117-town-tile-source-data/README.md)
