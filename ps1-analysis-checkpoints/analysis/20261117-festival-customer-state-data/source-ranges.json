@@ -1,0 +1,32 @@
+[
+  {
+    "file": "source/demand_and_selector.bin",
+    "start": "0x8002619c",
+    "end_exclusive": "0x80027378",
+    "sha256": "6d428b17ec7386c506f113eea14805760a7d9c78a0152bb005a2c84ae15eb50a"
+  },
+  {
+    "file": "source/customer_dispatch.bin",
+    "start": "0x80032814",
+    "end_exclusive": "0x80032c6c",
+    "sha256": "011cb1b99460dc5f1e39d27363721796e0fc5f2275ef958e11184d3160eaf618"
+  },
+  {
+    "file": "source/customer_state_jump_table.bin",
+    "start": "0x80010918",
+    "end_exclusive": "0x8001092c",
+    "sha256": "6a0eb3056ab0cd5e0b6620e423b0f0cbdde06d28a2905d49e58b37ce843d104a"
+  },
+  {
+    "file": "source/adjacent_profile144_text.bin",
+    "start": "0x800a1750",
+    "end_exclusive": "0x800a1768",
+    "sha256": "5640e1de6dde30e6cf015a412780e053af6aebdd2210920a191cb392b9463a8f"
+  },
+  {
+    "file": "source/festival_flag_producer.bin",
+    "start": "0x80029394",
+    "end_exclusive": "0x80029450",
+    "sha256": "0a4afb8c6cfc97ddf996924b6e8ef492f5f492363da91bb65c248a7f6c4892d3"
+  }
+]

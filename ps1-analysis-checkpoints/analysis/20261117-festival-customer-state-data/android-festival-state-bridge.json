@@ -1,0 +1,10 @@
+{
+  "status": "analysis_only_no_android_code_changed",
+  "known_guard_policy": "Keep mix136 population7; validate0<=profile<144 before any demand/store-choice indexing, including festivals. Do not alias demand into customer state.",
+  "new_evidence": "Full original demand computation conditionally increments store2 first-customer state; original branch-only dispatch then changes forstates0..5. Saved four-store controlled input did not reproduce the write.",
+  "not_established": [
+    "Natural date/UI/ownership/inventory reachability",
+    "Downstream handler, rendering, transaction and eventual slot-reuse outcomes"
+  ],
+  "runtime_dependency": "Native Android logic; no original EXE/Unicorn runtime dependency."
+}

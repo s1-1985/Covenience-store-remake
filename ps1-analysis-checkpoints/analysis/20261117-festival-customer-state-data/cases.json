@@ -1,0 +1,1020 @@
+[
+  {
+    "name": "initial_control_24h_no_festival",
+    "schedule_override": 2,
+    "festival_switch": 0,
+    "rng_seed": 2,
+    "calendar": {
+      "month": 8,
+      "stage": 4,
+      "hour": 0,
+      "subhour": 0
+    },
+    "source_info_before_changes": {
+      "order": [
+        1,
+        2,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "stock_alias_values": [
+        0,
+        0,
+        1,
+        0,
+        40,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "active": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "schedule": 2,
+          "stock15": 40
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "schedule": 2,
+          "stock15": 40
+        }
+      ]
+    },
+    "schedule_changes": [],
+    "invalid_profile_selector_calls": [],
+    "first_customer_writes": [],
+    "changed_first_records": [],
+    "regular_demand_totals": [
+      {
+        "slot": 1,
+        "total": 251,
+        "sum_of_144_regular_counts": 251
+      },
+      {
+        "slot": 2,
+        "total": 298,
+        "sum_of_144_regular_counts": 298
+      }
+    ],
+    "dispatch": null
+  },
+  {
+    "name": "initial_control_24h_festival",
+    "schedule_override": 2,
+    "festival_switch": 1,
+    "rng_seed": 2,
+    "calendar": {
+      "month": 8,
+      "stage": 4,
+      "hour": 0,
+      "subhour": 0
+    },
+    "source_info_before_changes": {
+      "order": [
+        1,
+        2,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "stock_alias_values": [
+        0,
+        0,
+        1,
+        0,
+        40,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "active": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "schedule": 2,
+          "stock15": 40
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "schedule": 2,
+          "stock15": 40
+        }
+      ]
+    },
+    "schedule_changes": [],
+    "invalid_profile_selector_calls": [
+      {
+        "x": 39,
+        "y": 10,
+        "selected_slot": -1
+      },
+      {
+        "x": 15,
+        "y": 14,
+        "selected_slot": -1
+      }
+    ],
+    "first_customer_writes": [],
+    "changed_first_records": [],
+    "regular_demand_totals": [
+      {
+        "slot": 1,
+        "total": 392,
+        "sum_of_144_regular_counts": 392
+      },
+      {
+        "slot": 2,
+        "total": 365,
+        "sum_of_144_regular_counts": 365
+      }
+    ],
+    "dispatch": null
+  },
+  {
+    "name": "initial_control_schedule0_no_festival",
+    "schedule_override": 0,
+    "festival_switch": 0,
+    "rng_seed": 2,
+    "calendar": {
+      "month": 8,
+      "stage": 4,
+      "hour": 0,
+      "subhour": 0
+    },
+    "source_info_before_changes": {
+      "order": [
+        1,
+        2,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "stock_alias_values": [
+        0,
+        0,
+        1,
+        0,
+        40,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "active": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "schedule": 2,
+          "stock15": 40
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "schedule": 2,
+          "stock15": 40
+        }
+      ]
+    },
+    "schedule_changes": [
+      {
+        "address": "0x12d348",
+        "old": 2,
+        "new": 0
+      },
+      {
+        "address": "0x12e720",
+        "old": 2,
+        "new": 0
+      }
+    ],
+    "invalid_profile_selector_calls": [],
+    "first_customer_writes": [],
+    "changed_first_records": [],
+    "regular_demand_totals": [
+      {
+        "slot": 1,
+        "total": 259,
+        "sum_of_144_regular_counts": 259
+      },
+      {
+        "slot": 2,
+        "total": 316,
+        "sum_of_144_regular_counts": 316
+      }
+    ],
+    "dispatch": null
+  },
+  {
+    "name": "initial_schedule0_festival_old_state0",
+    "schedule_override": 0,
+    "festival_switch": 1,
+    "rng_seed": 2,
+    "calendar": {
+      "month": 8,
+      "stage": 4,
+      "hour": 0,
+      "subhour": 0
+    },
+    "source_info_before_changes": {
+      "order": [
+        1,
+        2,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "stock_alias_values": [
+        0,
+        0,
+        1,
+        0,
+        40,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "active": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "schedule": 2,
+          "stock15": 40
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "schedule": 2,
+          "stock15": 40
+        }
+      ]
+    },
+    "schedule_changes": [
+      {
+        "address": "0x12d348",
+        "old": 2,
+        "new": 0
+      },
+      {
+        "address": "0x12e720",
+        "old": 2,
+        "new": 0
+      }
+    ],
+    "invalid_profile_selector_calls": [
+      {
+        "x": 39,
+        "y": 10,
+        "selected_slot": -1
+      },
+      {
+        "x": 15,
+        "y": 14,
+        "selected_slot": 2
+      }
+    ],
+    "first_customer_writes": [
+      {
+        "pc": "0x80026868",
+        "slot": 2,
+        "address": "0x12e9ac",
+        "size": 2,
+        "before_hex": "00ff",
+        "written_low16": 65281
+      }
+    ],
+    "changed_first_records": [
+      {
+        "slot": 2,
+        "before_hex": "00ff000000000000000000000000000000000000000000000000000000000000",
+        "after_hex": "01ff000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "regular_demand_totals": [
+      {
+        "slot": 1,
+        "total": 428,
+        "sum_of_144_regular_counts": 428
+      },
+      {
+        "slot": 2,
+        "total": 417,
+        "sum_of_144_regular_counts": 417
+      }
+    ],
+    "dispatch": {
+      "address": "0x800329bc",
+      "handler": "entry",
+      "state": 1,
+      "scope": "Original branch selection only, stopped before its handler executes; no purchase/checkout/exit effect claimed."
+    }
+  },
+  {
+    "name": "initial_schedule0_festival_old_state1",
+    "schedule_override": 0,
+    "festival_switch": 1,
+    "rng_seed": 2,
+    "calendar": {
+      "month": 8,
+      "stage": 4,
+      "hour": 0,
+      "subhour": 0
+    },
+    "source_info_before_changes": {
+      "order": [
+        1,
+        2,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "stock_alias_values": [
+        0,
+        0,
+        1,
+        0,
+        40,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "active": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "schedule": 2,
+          "stock15": 40
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "schedule": 2,
+          "stock15": 40
+        }
+      ]
+    },
+    "schedule_changes": [
+      {
+        "address": "0x12d348",
+        "old": 2,
+        "new": 0
+      },
+      {
+        "address": "0x12e720",
+        "old": 2,
+        "new": 0
+      }
+    ],
+    "invalid_profile_selector_calls": [
+      {
+        "x": 39,
+        "y": 10,
+        "selected_slot": -1
+      },
+      {
+        "x": 15,
+        "y": 14,
+        "selected_slot": 2
+      }
+    ],
+    "first_customer_writes": [
+      {
+        "pc": "0x80026868",
+        "slot": 2,
+        "address": "0x12e9ac",
+        "size": 2,
+        "before_hex": "01ff",
+        "written_low16": 65282
+      }
+    ],
+    "changed_first_records": [
+      {
+        "slot": 2,
+        "before_hex": "01ff000000000000000000000000000000000000000000000000000000000000",
+        "after_hex": "02ff000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "regular_demand_totals": [
+      {
+        "slot": 1,
+        "total": 428,
+        "sum_of_144_regular_counts": 428
+      },
+      {
+        "slot": 2,
+        "total": 417,
+        "sum_of_144_regular_counts": 417
+      }
+    ],
+    "dispatch": {
+      "address": "0x80032abc",
+      "handler": "shopping_state2",
+      "state": 2,
+      "scope": "Original branch selection only, stopped before its handler executes; no purchase/checkout/exit effect claimed."
+    }
+  },
+  {
+    "name": "initial_schedule0_festival_old_state2",
+    "schedule_override": 0,
+    "festival_switch": 1,
+    "rng_seed": 2,
+    "calendar": {
+      "month": 8,
+      "stage": 4,
+      "hour": 0,
+      "subhour": 0
+    },
+    "source_info_before_changes": {
+      "order": [
+        1,
+        2,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "stock_alias_values": [
+        0,
+        0,
+        1,
+        0,
+        40,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "active": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "schedule": 2,
+          "stock15": 40
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "schedule": 2,
+          "stock15": 40
+        }
+      ]
+    },
+    "schedule_changes": [
+      {
+        "address": "0x12d348",
+        "old": 2,
+        "new": 0
+      },
+      {
+        "address": "0x12e720",
+        "old": 2,
+        "new": 0
+      }
+    ],
+    "invalid_profile_selector_calls": [
+      {
+        "x": 39,
+        "y": 10,
+        "selected_slot": -1
+      },
+      {
+        "x": 15,
+        "y": 14,
+        "selected_slot": 2
+      }
+    ],
+    "first_customer_writes": [
+      {
+        "pc": "0x80026868",
+        "slot": 2,
+        "address": "0x12e9ac",
+        "size": 2,
+        "before_hex": "02ff",
+        "written_low16": 65283
+      }
+    ],
+    "changed_first_records": [
+      {
+        "slot": 2,
+        "before_hex": "02ff000000000000000000000000000000000000000000000000000000000000",
+        "after_hex": "03ff000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "regular_demand_totals": [
+      {
+        "slot": 1,
+        "total": 428,
+        "sum_of_144_regular_counts": 428
+      },
+      {
+        "slot": 2,
+        "total": 417,
+        "sum_of_144_regular_counts": 417
+      }
+    ],
+    "dispatch": {
+      "address": "0x80032b18",
+      "handler": "checkout",
+      "state": 3,
+      "scope": "Original branch selection only, stopped before its handler executes; no purchase/checkout/exit effect claimed."
+    }
+  },
+  {
+    "name": "initial_schedule0_festival_old_state3",
+    "schedule_override": 0,
+    "festival_switch": 1,
+    "rng_seed": 2,
+    "calendar": {
+      "month": 8,
+      "stage": 4,
+      "hour": 0,
+      "subhour": 0
+    },
+    "source_info_before_changes": {
+      "order": [
+        1,
+        2,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "stock_alias_values": [
+        0,
+        0,
+        1,
+        0,
+        40,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "active": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "schedule": 2,
+          "stock15": 40
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "schedule": 2,
+          "stock15": 40
+        }
+      ]
+    },
+    "schedule_changes": [
+      {
+        "address": "0x12d348",
+        "old": 2,
+        "new": 0
+      },
+      {
+        "address": "0x12e720",
+        "old": 2,
+        "new": 0
+      }
+    ],
+    "invalid_profile_selector_calls": [
+      {
+        "x": 39,
+        "y": 10,
+        "selected_slot": -1
+      },
+      {
+        "x": 15,
+        "y": 14,
+        "selected_slot": 2
+      }
+    ],
+    "first_customer_writes": [
+      {
+        "pc": "0x80026868",
+        "slot": 2,
+        "address": "0x12e9ac",
+        "size": 2,
+        "before_hex": "03ff",
+        "written_low16": 65284
+      }
+    ],
+    "changed_first_records": [
+      {
+        "slot": 2,
+        "before_hex": "03ff000000000000000000000000000000000000000000000000000000000000",
+        "after_hex": "04ff000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "regular_demand_totals": [
+      {
+        "slot": 1,
+        "total": 428,
+        "sum_of_144_regular_counts": 428
+      },
+      {
+        "slot": 2,
+        "total": 417,
+        "sum_of_144_regular_counts": 417
+      }
+    ],
+    "dispatch": {
+      "address": "0x80032b8c",
+      "handler": "shopping_state4",
+      "state": 4,
+      "scope": "Original branch selection only, stopped before its handler executes; no purchase/checkout/exit effect claimed."
+    }
+  },
+  {
+    "name": "initial_schedule0_festival_old_state4",
+    "schedule_override": 0,
+    "festival_switch": 1,
+    "rng_seed": 2,
+    "calendar": {
+      "month": 8,
+      "stage": 4,
+      "hour": 0,
+      "subhour": 0
+    },
+    "source_info_before_changes": {
+      "order": [
+        1,
+        2,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "stock_alias_values": [
+        0,
+        0,
+        1,
+        0,
+        40,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "active": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "schedule": 2,
+          "stock15": 40
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "schedule": 2,
+          "stock15": 40
+        }
+      ]
+    },
+    "schedule_changes": [
+      {
+        "address": "0x12d348",
+        "old": 2,
+        "new": 0
+      },
+      {
+        "address": "0x12e720",
+        "old": 2,
+        "new": 0
+      }
+    ],
+    "invalid_profile_selector_calls": [
+      {
+        "x": 39,
+        "y": 10,
+        "selected_slot": -1
+      },
+      {
+        "x": 15,
+        "y": 14,
+        "selected_slot": 2
+      }
+    ],
+    "first_customer_writes": [
+      {
+        "pc": "0x80026868",
+        "slot": 2,
+        "address": "0x12e9ac",
+        "size": 2,
+        "before_hex": "04ff",
+        "written_low16": 65285
+      }
+    ],
+    "changed_first_records": [
+      {
+        "slot": 2,
+        "before_hex": "04ff000000000000000000000000000000000000000000000000000000000000",
+        "after_hex": "05ff000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "regular_demand_totals": [
+      {
+        "slot": 1,
+        "total": 428,
+        "sum_of_144_regular_counts": 428
+      },
+      {
+        "slot": 2,
+        "total": 417,
+        "sum_of_144_regular_counts": 417
+      }
+    ],
+    "dispatch": {
+      "address": "0x80032c0c",
+      "handler": "exit",
+      "state": 5,
+      "scope": "Original branch selection only, stopped before its handler executes; no purchase/checkout/exit effect claimed."
+    }
+  },
+  {
+    "name": "initial_schedule0_festival_old_state5",
+    "schedule_override": 0,
+    "festival_switch": 1,
+    "rng_seed": 2,
+    "calendar": {
+      "month": 8,
+      "stage": 4,
+      "hour": 0,
+      "subhour": 0
+    },
+    "source_info_before_changes": {
+      "order": [
+        1,
+        2,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "stock_alias_values": [
+        0,
+        0,
+        1,
+        0,
+        40,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "active": [
+        {
+          "slot": 1,
+          "flags": 32769,
+          "schedule": 2,
+          "stock15": 40
+        },
+        {
+          "slot": 2,
+          "flags": 32770,
+          "schedule": 2,
+          "stock15": 40
+        }
+      ]
+    },
+    "schedule_changes": [
+      {
+        "address": "0x12d348",
+        "old": 2,
+        "new": 0
+      },
+      {
+        "address": "0x12e720",
+        "old": 2,
+        "new": 0
+      }
+    ],
+    "invalid_profile_selector_calls": [
+      {
+        "x": 39,
+        "y": 10,
+        "selected_slot": -1
+      },
+      {
+        "x": 15,
+        "y": 14,
+        "selected_slot": 2
+      }
+    ],
+    "first_customer_writes": [
+      {
+        "pc": "0x80026868",
+        "slot": 2,
+        "address": "0x12e9ac",
+        "size": 2,
+        "before_hex": "05ff",
+        "written_low16": 65286
+      }
+    ],
+    "changed_first_records": [
+      {
+        "slot": 2,
+        "before_hex": "05ff000000000000000000000000000000000000000000000000000000000000",
+        "after_hex": "06ff000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "regular_demand_totals": [
+      {
+        "slot": 1,
+        "total": 428,
+        "sum_of_144_regular_counts": 428
+      },
+      {
+        "slot": 2,
+        "total": 417,
+        "sum_of_144_regular_counts": 417
+      }
+    ],
+    "dispatch": {
+      "address": "0x80032c68",
+      "handler": "no_state_handler",
+      "state": 6,
+      "scope": "Original branch selection only, stopped before its handler executes; no purchase/checkout/exit effect claimed."
+    }
+  },
+  {
+    "name": "saved_operating_state_schedule0_festival",
+    "schedule_override": 0,
+    "festival_switch": 1,
+    "rng_seed": 2,
+    "calendar": {
+      "month": 8,
+      "stage": 4,
+      "hour": 0,
+      "subhour": 0
+    },
+    "source_info_before_changes": {
+      "order": [
+        0,
+        2,
+        1,
+        3,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "stock_alias_values": [
+        0,
+        0,
+        0,
+        0,
+        35,
+        38,
+        15,
+        0,
+        0,
+        0
+      ],
+      "active": [
+        {
+          "slot": 0,
+          "flags": 1,
+          "schedule": 2,
+          "stock15": 0
+        },
+        {
+          "slot": 1,
+          "flags": 32769,
+          "schedule": 2,
+          "stock15": 35
+        },
+        {
+          "slot": 2,
+          "flags": 2,
+          "schedule": 2,
+          "stock15": 38
+        },
+        {
+          "slot": 3,
+          "flags": 32771,
+          "schedule": 2,
+          "stock15": 15
+        }
+      ]
+    },
+    "schedule_changes": [
+      {
+        "address": "0x12bf70",
+        "old": 2,
+        "new": 0
+      },
+      {
+        "address": "0x12d348",
+        "old": 2,
+        "new": 0
+      },
+      {
+        "address": "0x12e720",
+        "old": 2,
+        "new": 0
+      },
+      {
+        "address": "0x12faf8",
+        "old": 2,
+        "new": 0
+      }
+    ],
+    "invalid_profile_selector_calls": [
+      {
+        "x": 39,
+        "y": 10,
+        "selected_slot": -1
+      },
+      {
+        "x": 15,
+        "y": 14,
+        "selected_slot": -1
+      }
+    ],
+    "first_customer_writes": [],
+    "changed_first_records": [],
+    "regular_demand_totals": [
+      {
+        "slot": 0,
+        "total": 3,
+        "sum_of_144_regular_counts": 3
+      },
+      {
+        "slot": 1,
+        "total": 420,
+        "sum_of_144_regular_counts": 420
+      },
+      {
+        "slot": 2,
+        "total": 433,
+        "sum_of_144_regular_counts": 433
+      },
+      {
+        "slot": 3,
+        "total": 168,
+        "sum_of_144_regular_counts": 168
+      }
+    ],
+    "dispatch": null
+  }
+]

@@ -31,13 +31,16 @@
       "status": "open",
       "evidence": "analysis/20261116-weather-demand-data/out-of-catalog-context.json",
       "resolution": null,
-      "latest_evidence": "analysis/20261116-festival-profile-boundary-data/README.md",
+      "latest_evidence": "analysis/20261117-festival-customer-state-data/README.md",
       "established": [
         "All11 initial rivals use schedule2; misread schedule byte0 rejects profile144 even under festival bypass.",
         "Schedule0/3/5 nonzero out-of-row reads can pass the schedule gate; stock alias and distance gates still apply.",
-        "Conditional demand144 write aliases first customer slotF04; regular spawn wraps to0..143."
+        "Conditional demand144 write aliases first customer slotF04; regular spawn wraps to0..143.",
+        "Original bootstrap/TOWN0001/metrics/full2619C with controlled schedule0,month8,festival1,seed2 selectsstore2 forcell15,14 and increments itsfirst-customer state at26868; schedule2/nonfestival controls do not.",
+        "Six injected first-state values0..5 become1..6; original post-spawn dispatch selects entry/shopping/checkout/exit branches or nohandler at6. Stopped before handlers; downstream outcomes not established.",
+        "Saved four-store RAM input under samecontrolled schedule/calendar/seed producesnoaliaswrite; store2 stockalias=order0=0 andstore3 stockalias=store0stock15=0. Not a natural festival playthrough."
       ],
-      "remaining_question": "Natural festival reachability with altered schedules/live stock aliases and indirect existing-slot effects are not established."
+      "remaining_question": "Natural festival reachability through legitimate schedule/ownership/inventory changes and actual downstream visual/financial/lifecycle outcomes remain unconfirmed."
     },
     {
       "id": "R03",
@@ -102,7 +105,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue unscoped normal-play requirements; classify indirect/modified-table texture paths if needed, and prioritize source UV coverage over repeating already decoded transfers.",
+  "next": "Prioritize normal-play source requirements and remaining unmapped data. R02 conditional write/dispatch is reproduced; avoid repeating bounded cases as natural play evidence.",
   "additional_completed_source_paths": [
     {
       "id": "X01",

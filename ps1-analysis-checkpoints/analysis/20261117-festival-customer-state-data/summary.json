@@ -1,0 +1,10 @@
+{
+  "demand_cases": 10,
+  "state_dispatch_cases": 6,
+  "gameplay_callee_replacements": 0,
+  "external_resource_replacements": 1,
+  "natural_operating_updates": 0,
+  "new_result": "Original full2619C writes1 into first-customer state at slot2 from mix136 invalid profile144 under controlled schedule0/festival input; native dispatch changes entry/shopping/checkout/exit branch, and oldstate5 becomes6 outside five handlers.",
+  "controls": "Default schedule2 and non-festival inputs produce no alias writes. Saved live four-store state with first order0 and zero stock15 atstore0 produces no alias writes in this seed/input.",
+  "remaining": "Natural festival reachability after legitimate schedule/ownership/inventory changes and actual downstream visual/financial outcomes remain unconfirmed. R02 remains open, narrowed."
+}

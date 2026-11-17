@@ -1,0 +1,13 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "town_archive_entry": "algorithm-analysis/source/TOWN0001.BIN",
+  "town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+  "saved_operating_state": {
+    "path": "analysis/20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-34-single.ram.zlib",
+    "compressed_sha256": "0e538b2b922ce9b3d10d17df6002d6d78d5ece490d40203797f6912acedf2d48",
+    "ram_sha256": "9051a99a20b4d38121c8115e66b389b569a9eda27fb6ebc9d4172349ed7ed3e1",
+    "clock": 24560
+  },
+  "fixture_policy": "Original table bootstrap5C858, original packed-town loader with external resource substitution, original metrics. Uniform schedules and calendar/festival switch/state bytes are controlled inputs, not user UI actions or naturally elapsed dates."
+}
