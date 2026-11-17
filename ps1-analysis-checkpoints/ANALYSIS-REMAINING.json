@@ -102,7 +102,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue normal-play source requirements outside the confirmed initial-map completion cases; retain R05 as partly narrowed, not globally resolved.",
+  "next": "Continue unscoped normal-play requirements; classify indirect/modified-table texture paths if needed, and prioritize source UV coverage over repeating already decoded transfers.",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -110,6 +110,14 @@
       "status": "resolved_scoped_source_path",
       "evidence": "analysis/20261117-customer-cart-lifecycle-data/README.md",
       "resolution": "Theft preserves old cart, ordinary exit never posts it, inactive slot skips processing; subsequent entry clears it. Conditional code path, not natural-play frequency.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X02",
+      "title": "画像ロード直接要求・転送表・什器アイコン有効範囲の接続",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261117-texture-runtime-binding-data/README.md",
+      "resolution": "39 direct TIM requests reference31 IDs;34 filenames and32 transfer bindings joined. All53 fixture icons fit sourceCASE_T00. Indirect/modified-table routes and broader UV coverage remain unscoped.",
       "counted_in_seven_tracked_items": false
     }
   ]

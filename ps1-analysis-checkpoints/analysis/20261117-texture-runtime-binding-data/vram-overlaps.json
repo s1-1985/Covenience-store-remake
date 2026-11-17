@@ -1,0 +1,1171 @@
+{
+  "pixel": [
+    {
+      "images": [
+        0,
+        29
+      ],
+      "overlap_rect_words": [
+        448,
+        352,
+        128,
+        160
+      ]
+    },
+    {
+      "images": [
+        2,
+        19
+      ],
+      "overlap_rect_words": [
+        832,
+        320,
+        128,
+        32
+      ]
+    },
+    {
+      "images": [
+        6,
+        17
+      ],
+      "overlap_rect_words": [
+        832,
+        128,
+        128,
+        64
+      ]
+    },
+    {
+      "images": [
+        9,
+        10
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        256
+      ]
+    },
+    {
+      "images": [
+        9,
+        20
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ]
+    },
+    {
+      "images": [
+        9,
+        21
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        80
+      ]
+    },
+    {
+      "images": [
+        9,
+        23
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ]
+    },
+    {
+      "images": [
+        9,
+        24
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        160
+      ]
+    },
+    {
+      "images": [
+        9,
+        26
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        224
+      ]
+    },
+    {
+      "images": [
+        9,
+        30
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        224
+      ]
+    },
+    {
+      "images": [
+        10,
+        20
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ]
+    },
+    {
+      "images": [
+        10,
+        21
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        80
+      ]
+    },
+    {
+      "images": [
+        10,
+        23
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ]
+    },
+    {
+      "images": [
+        10,
+        24
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        160
+      ]
+    },
+    {
+      "images": [
+        10,
+        26
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        224
+      ]
+    },
+    {
+      "images": [
+        10,
+        30
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        224
+      ]
+    },
+    {
+      "images": [
+        11,
+        14
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        256
+      ]
+    },
+    {
+      "images": [
+        11,
+        22
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        160
+      ]
+    },
+    {
+      "images": [
+        11,
+        25
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        104
+      ]
+    },
+    {
+      "images": [
+        11,
+        27
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        224
+      ]
+    },
+    {
+      "images": [
+        11,
+        31
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        224
+      ]
+    },
+    {
+      "images": [
+        12,
+        28
+      ],
+      "overlap_rect_words": [
+        960,
+        0,
+        64,
+        256
+      ]
+    },
+    {
+      "images": [
+        14,
+        22
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        160
+      ]
+    },
+    {
+      "images": [
+        14,
+        25
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        104
+      ]
+    },
+    {
+      "images": [
+        14,
+        27
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        224
+      ]
+    },
+    {
+      "images": [
+        14,
+        31
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        224
+      ]
+    },
+    {
+      "images": [
+        16,
+        18
+      ],
+      "overlap_rect_words": [
+        832,
+        352,
+        128,
+        144
+      ]
+    },
+    {
+      "images": [
+        16,
+        19
+      ],
+      "overlap_rect_words": [
+        832,
+        352,
+        128,
+        128
+      ]
+    },
+    {
+      "images": [
+        18,
+        19
+      ],
+      "overlap_rect_words": [
+        832,
+        352,
+        128,
+        128
+      ]
+    },
+    {
+      "images": [
+        20,
+        23
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ]
+    },
+    {
+      "images": [
+        20,
+        24
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        32
+      ]
+    },
+    {
+      "images": [
+        20,
+        26
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ]
+    },
+    {
+      "images": [
+        20,
+        30
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ]
+    },
+    {
+      "images": [
+        21,
+        24
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        80
+      ]
+    },
+    {
+      "images": [
+        21,
+        26
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        80
+      ]
+    },
+    {
+      "images": [
+        21,
+        30
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        80
+      ]
+    },
+    {
+      "images": [
+        22,
+        25
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        104
+      ]
+    },
+    {
+      "images": [
+        22,
+        27
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        160
+      ]
+    },
+    {
+      "images": [
+        22,
+        31
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        160
+      ]
+    },
+    {
+      "images": [
+        23,
+        24
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        32
+      ]
+    },
+    {
+      "images": [
+        23,
+        26
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ]
+    },
+    {
+      "images": [
+        23,
+        30
+      ],
+      "overlap_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ]
+    },
+    {
+      "images": [
+        24,
+        26
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        160
+      ]
+    },
+    {
+      "images": [
+        24,
+        30
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        160
+      ]
+    },
+    {
+      "images": [
+        25,
+        27
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        104
+      ]
+    },
+    {
+      "images": [
+        25,
+        31
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        104
+      ]
+    },
+    {
+      "images": [
+        26,
+        30
+      ],
+      "overlap_rect_words": [
+        320,
+        0,
+        128,
+        224
+      ]
+    },
+    {
+      "images": [
+        27,
+        31
+      ],
+      "overlap_rect_words": [
+        320,
+        256,
+        128,
+        224
+      ]
+    }
+  ],
+  "clut": [
+    {
+      "images": [
+        0,
+        29
+      ],
+      "overlap_rect_words": [
+        0,
+        484,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        1,
+        2
+      ],
+      "overlap_rect_words": [
+        0,
+        488,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        3,
+        4
+      ],
+      "overlap_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        3,
+        5
+      ],
+      "overlap_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        4,
+        5
+      ],
+      "overlap_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        6,
+        17
+      ],
+      "overlap_rect_words": [
+        0,
+        490,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        6,
+        18
+      ],
+      "overlap_rect_words": [
+        0,
+        490,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        9,
+        10
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        9,
+        21
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        9,
+        24
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        9,
+        26
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        9,
+        30
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        10,
+        21
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        10,
+        24
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        10,
+        26
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        10,
+        30
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        11,
+        14
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        11,
+        15
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        11,
+        22
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        11,
+        25
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        11,
+        27
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        11,
+        31
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        12,
+        13
+      ],
+      "overlap_rect_words": [
+        0,
+        480,
+        16,
+        1
+      ]
+    },
+    {
+      "images": [
+        12,
+        28
+      ],
+      "overlap_rect_words": [
+        0,
+        480,
+        16,
+        1
+      ]
+    },
+    {
+      "images": [
+        13,
+        28
+      ],
+      "overlap_rect_words": [
+        0,
+        480,
+        16,
+        1
+      ]
+    },
+    {
+      "images": [
+        14,
+        15
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        14,
+        22
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        14,
+        25
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        14,
+        27
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        14,
+        31
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        15,
+        22
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        15,
+        25
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        15,
+        27
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        15,
+        31
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        16,
+        19
+      ],
+      "overlap_rect_words": [
+        0,
+        495,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        17,
+        18
+      ],
+      "overlap_rect_words": [
+        0,
+        490,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        20,
+        23
+      ],
+      "overlap_rect_words": [
+        0,
+        496,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        21,
+        24
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        21,
+        26
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        21,
+        30
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        22,
+        25
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        22,
+        27
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        22,
+        31
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        24,
+        26
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        24,
+        30
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        25,
+        27
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        25,
+        31
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        26,
+        30
+      ],
+      "overlap_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ]
+    },
+    {
+      "images": [
+        27,
+        31
+      ],
+      "overlap_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ]
+    }
+  ],
+  "scope": "Potential overlaps from alternative images; not proof all pairs coexist in a single screen."
+}

@@ -1,0 +1,613 @@
+{
+  "scan_start": "0x80011c00",
+  "scan_end_exclusive": "0x80098000",
+  "calls": [
+    {
+      "address": "0x80011dcc",
+      "index": 3,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040003",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80011eb8",
+      "index": 4,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040004",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80011fa4",
+      "index": 5,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040005",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80012090",
+      "index": 6,
+      "resource_type": 8,
+      "argument_words": [
+        "0x24040006",
+        "0x24050008"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x800120a0",
+      "index": 16,
+      "resource_type": 7,
+      "argument_words": [
+        "0x24040010",
+        "0x24050007"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x800120b0",
+      "index": 17,
+      "resource_type": 9,
+      "argument_words": [
+        "0x24040011",
+        "0x24050009"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x800120c0",
+      "index": 7,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040007",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x800121ac",
+      "index": 8,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040008",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80012298",
+      "index": 13,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404000d",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80012384",
+      "index": 12,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404000c",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80012470",
+      "index": 1,
+      "resource_type": 10,
+      "argument_words": [
+        "0x24040001",
+        "0x2405000a"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x80012560",
+      "index": 10,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404000a",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8001264c",
+      "index": 11,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404000b",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80012738",
+      "index": 1,
+      "resource_type": 6,
+      "argument_words": [
+        "0x24040001",
+        "0x24050006"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x80012748",
+      "index": 0,
+      "resource_type": 5,
+      "argument_words": [
+        "0x2021",
+        "0x24050005"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x800129ac",
+      "index": 14,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404000e",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80012a8c",
+      "index": 15,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404000f",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80012b6c",
+      "index": 1,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040001",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80012c4c",
+      "index": 2,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040002",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8001a0d4",
+      "index": null,
+      "resource_type": 11,
+      "argument_words": [
+        "0x8fc40038",
+        "0x2405000b"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x80052f60",
+      "index": 18,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040012",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80053424",
+      "index": 24,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040018",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x800547e8",
+      "index": 19,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040013",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80054be4",
+      "index": 20,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040014",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80054cd4",
+      "index": 21,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040015",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80054dc4",
+      "index": 22,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040016",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x800554a4",
+      "index": 23,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040017",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80055594",
+      "index": 21,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040015",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80055684",
+      "index": 22,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040016",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80055d74",
+      "index": 24,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040018",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80055e64",
+      "index": 25,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040019",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8005707c",
+      "index": 26,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404001a",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8005716c",
+      "index": 27,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404001b",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8005725c",
+      "index": 28,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404001c",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8005734c",
+      "index": 2,
+      "resource_type": 10,
+      "argument_words": [
+        "0x24040002",
+        "0x2405000a"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x8005d6e4",
+      "index": 14,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404000e",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8005d7e4",
+      "index": 15,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404000f",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8005d8e4",
+      "index": 1,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040001",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8005d9e4",
+      "index": 2,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040002",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80065170",
+      "index": null,
+      "resource_type": 2,
+      "argument_words": [
+        "0x8fc40028",
+        "0x24050002"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x800651e8",
+      "index": null,
+      "resource_type": 1,
+      "argument_words": [
+        "0x8fc40028",
+        "0x24050001"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x800651f8",
+      "index": null,
+      "resource_type": 4,
+      "argument_words": [
+        "0x8fc40028",
+        "0x24050004"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x80065384",
+      "index": 8,
+      "resource_type": 1,
+      "argument_words": [
+        "0x24040008",
+        "0x24050001"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x80065394",
+      "index": 8,
+      "resource_type": 2,
+      "argument_words": [
+        "0x24040008",
+        "0x24050002"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x800653a4",
+      "index": 8,
+      "resource_type": 4,
+      "argument_words": [
+        "0x24040008",
+        "0x24050004"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x80065480",
+      "index": 7,
+      "resource_type": 1,
+      "argument_words": [
+        "0x24040007",
+        "0x24050001"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x80065490",
+      "index": 7,
+      "resource_type": 2,
+      "argument_words": [
+        "0x24040007",
+        "0x24050002"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x800654a0",
+      "index": 7,
+      "resource_type": 4,
+      "argument_words": [
+        "0x24040007",
+        "0x24050004"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x80066574",
+      "index": 0,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2021",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x80066660",
+      "index": 9,
+      "resource_type": 0,
+      "argument_words": [
+        "0x24040009",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8006674c",
+      "index": 0,
+      "resource_type": 6,
+      "argument_words": [
+        "0x2021",
+        "0x24050006"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x8006d9b4",
+      "index": 12,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404000c",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8006daa4",
+      "index": 1,
+      "resource_type": 10,
+      "argument_words": [
+        "0x24040001",
+        "0x2405000a"
+      ],
+      "delay_word": "0x0",
+      "image_request": false
+    },
+    {
+      "address": "0x8007c3cc",
+      "index": 30,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404001e",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    },
+    {
+      "address": "0x8007c4bc",
+      "index": 31,
+      "resource_type": 0,
+      "argument_words": [
+        "0x2404001f",
+        "0x2821"
+      ],
+      "delay_word": "0x0",
+      "image_request": true
+    }
+  ],
+  "literal_loader_function_pointers": [],
+  "limits": "Direct JAL sites and immediate arguments only. No claim of whole-program reachability or absence of computed indirect calls/data mutation."
+}

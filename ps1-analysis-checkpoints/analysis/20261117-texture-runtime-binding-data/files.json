@@ -1,0 +1,92 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 8334,
+    "sha256": "a4bbdf51e6f759bde1bae2ff6b06634b80118ec0d6c69473906c1515e85e4fe1"
+  },
+  {
+    "path": "analyze-texture-binding.py",
+    "bytes": 11828,
+    "sha256": "e0ab2f0f5a75c3013a60a1b1c249c0871b4cc295556f4690d6d02a402cd19c37"
+  },
+  {
+    "path": "android-texture-binding-bridge.json",
+    "bytes": 1271,
+    "sha256": "de2c83397645d1c9f4a17fbb068fb5f1c12583ad3fb07c0bfde68f6f24f45f74"
+  },
+  {
+    "path": "binding-readers.asm",
+    "bytes": 35642,
+    "sha256": "1bbab11358506f999733b4f0eed3cb64d697841a13ef99ffe3a62866df6cd774"
+  },
+  {
+    "path": "fixture-icon-source-coverage.json",
+    "bytes": 26637,
+    "sha256": "4842c408c20b22b9275a73abef473cfcac9613f2714d43774c4d32d333ad3ecb"
+  },
+  {
+    "path": "load-callsites.json",
+    "bytes": 12342,
+    "sha256": "01c05ae4e4830320f4ac71ddb3c982eaf6656396d17d39d02f89a62e25b4a3fb"
+  },
+  {
+    "path": "native-upload-results.json",
+    "bytes": 37841,
+    "sha256": "90e02ac5bf1240f5d73562a5ceee5f7e3b283b9bb1935a142bc3356ef901acb6"
+  },
+  {
+    "path": "prior-evidence-crosscheck.json",
+    "bytes": 610,
+    "sha256": "074f57e16a1425b96cd0817593fd3df25dbdffde3bca4436acab9e88a7f4d0cd"
+  },
+  {
+    "path": "source/filename_bank.bin",
+    "bytes": 136,
+    "sha256": "b8c639246f270fb7329fe5cfa0c4b7a043ff83d67b9cd78e7e5aa7c160a391d3"
+  },
+  {
+    "path": "source/load-call-windows.bin",
+    "bytes": 880,
+    "sha256": "3451d392d4b3c6f9471b6878cda8b994de5d4d8c71ac4b5391a33b9daaa2af91"
+  },
+  {
+    "path": "source/rectangle_and_upload_helpers.bin",
+    "bytes": 572,
+    "sha256": "6b30c0cc295f5ee7653775e738cae36951326dcb3654fa96711be8662e12acbc"
+  },
+  {
+    "path": "source/rectangle_banks.bin",
+    "bytes": 512,
+    "sha256": "61ba1f6c2d77f5f202f8b60c54c035b6f0c78b31923cf6ccc7a90c4be3c7aa58"
+  },
+  {
+    "path": "source/tim_loader_variants.bin",
+    "bytes": 2256,
+    "sha256": "ac2182e88d189867a97be640693b17550476d3b7bad1ac8b6f4f719fb9475640"
+  },
+  {
+    "path": "source/tim_parser.bin",
+    "bytes": 228,
+    "sha256": "ccb1b724b3bc80fa826a6e28e243c631dc1b63290552da7b2c267676641dfc5a"
+  },
+  {
+    "path": "source-ranges.json",
+    "bytes": 14215,
+    "sha256": "cbd2d632d5b57339be73160ae9d66e1f8a6df4fe62e64a1da632b2784a2865fd"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 575,
+    "sha256": "657ca37a5905f6c718ac6514f64817f255d9e7f48bdc7731685945497df4d37c"
+  },
+  {
+    "path": "texture-bindings.json",
+    "bytes": 70350,
+    "sha256": "ae80a9cd39e30276983ec14e84c0173f73a84ce616e3c9bf4e506378df228ad9"
+  },
+  {
+    "path": "vram-overlaps.json",
+    "bytes": 14610,
+    "sha256": "7d167c426b0c12dc9526284bc8c79d93266a3e24d6ac9734bc1fb921e3515381"
+  }
+]

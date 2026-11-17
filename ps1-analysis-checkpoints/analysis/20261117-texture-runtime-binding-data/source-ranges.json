@@ -1,0 +1,426 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "ranges": [
+    {
+      "file": "source/rectangle_and_upload_helpers.bin",
+      "file_offset": 0,
+      "start": "0x80013eac",
+      "end_exclusive": "0x800140e8",
+      "sha256": "6b30c0cc295f5ee7653775e738cae36951326dcb3654fa96711be8662e12acbc"
+    },
+    {
+      "file": "source/tim_loader_variants.bin",
+      "file_offset": 0,
+      "start": "0x800140e8",
+      "end_exclusive": "0x800149b8",
+      "sha256": "ac2182e88d189867a97be640693b17550476d3b7bad1ac8b6f4f719fb9475640"
+    },
+    {
+      "file": "source/tim_parser.bin",
+      "file_offset": 0,
+      "start": "0x800855dc",
+      "end_exclusive": "0x800856c0",
+      "sha256": "ccb1b724b3bc80fa826a6e28e243c631dc1b63290552da7b2c267676641dfc5a"
+    },
+    {
+      "file": "source/rectangle_banks.bin",
+      "file_offset": 0,
+      "start": "0x800983d0",
+      "end_exclusive": "0x800985d0",
+      "sha256": "61ba1f6c2d77f5f202f8b60c54c035b6f0c78b31923cf6ccc7a90c4be3c7aa58"
+    },
+    {
+      "file": "source/filename_bank.bin",
+      "file_offset": 0,
+      "start": "0x8009863c",
+      "end_exclusive": "0x800986c4",
+      "sha256": "b8c639246f270fb7329fe5cfa0c4b7a043ff83d67b9cd78e7e5aa7c160a391d3"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 0,
+      "start": "0x80011dc4",
+      "end_exclusive": "0x80011dd4",
+      "sha256": "047db1a527644aff78b9d1baf0a05e11f7bae7da7250ac77f692fdaa414e154d"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 16,
+      "start": "0x80011eb0",
+      "end_exclusive": "0x80011ec0",
+      "sha256": "c98c8d1ceeea6ec267a0d7678829a521a5e6560eacd674a3cd4280e804b2be5b"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 32,
+      "start": "0x80011f9c",
+      "end_exclusive": "0x80011fac",
+      "sha256": "498a8d585f30b7fc13d26f49b767fb03ee965f42679cb5ac0247fc80e6585738"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 48,
+      "start": "0x80012088",
+      "end_exclusive": "0x80012098",
+      "sha256": "2023ef09d00503512c3c38a90df75d65476b5e31c0d909b4105e1db30ecb4bda"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 64,
+      "start": "0x80012098",
+      "end_exclusive": "0x800120a8",
+      "sha256": "73b3d3142a000e4f3944796f92a09b29a1190b21485734488b654a51f08714af"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 80,
+      "start": "0x800120a8",
+      "end_exclusive": "0x800120b8",
+      "sha256": "6aca388223f60acb12c2654002e1d646e298c4c54fc176fb4ac167f9c1df7490"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 96,
+      "start": "0x800120b8",
+      "end_exclusive": "0x800120c8",
+      "sha256": "ef7926d6c3e4993d490921ed1863a9d310f83b3b7f29a6246e2eb2bcfe967708"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 112,
+      "start": "0x800121a4",
+      "end_exclusive": "0x800121b4",
+      "sha256": "59f3b6db4d99dbe063818fd0768d9258f6b3da6832fd5135e8e6148eec72684c"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 128,
+      "start": "0x80012290",
+      "end_exclusive": "0x800122a0",
+      "sha256": "b9c2e0177829d6efe27d9276cd8b46d79315095a36a2c0ce83acf5fcefb47269"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 144,
+      "start": "0x8001237c",
+      "end_exclusive": "0x8001238c",
+      "sha256": "b2ad641edf7c248578c532db4240a63c60152907f03813cbab1228935dfdabc5"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 160,
+      "start": "0x80012468",
+      "end_exclusive": "0x80012478",
+      "sha256": "4e4b9558b7104eaac4323a532086fe21bbf6def4604890774fb56f98da5db347"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 176,
+      "start": "0x80012558",
+      "end_exclusive": "0x80012568",
+      "sha256": "94a5fd3777ca3f557223b829e8d9ef6c9641853b930167759e374b0e643253d4"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 192,
+      "start": "0x80012644",
+      "end_exclusive": "0x80012654",
+      "sha256": "a1a8040c86565b2dc135ffe4bb75150aede44f9362b24ee444c8ca566b2c0387"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 208,
+      "start": "0x80012730",
+      "end_exclusive": "0x80012740",
+      "sha256": "b53a6360f289934bceae8bd05373696ed308bb169e50467db349116bc20c624f"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 224,
+      "start": "0x80012740",
+      "end_exclusive": "0x80012750",
+      "sha256": "e06cc8182c5ee9c5b3f5a03ff5a4263edf2734084a9a25e97d8fef7705748a33"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 240,
+      "start": "0x800129a4",
+      "end_exclusive": "0x800129b4",
+      "sha256": "65e0b2831d62c7a77d3fcf8fc547e96ba9a5a24fa1ff50dcd1c912fe239c9515"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 256,
+      "start": "0x80012a84",
+      "end_exclusive": "0x80012a94",
+      "sha256": "c5b92ef05505ce088a8552eb32e784095602b7a1532464a7413f24ae305b8493"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 272,
+      "start": "0x80012b64",
+      "end_exclusive": "0x80012b74",
+      "sha256": "de26e30fb05ff468f6800fc338dd3c1f61174c5ae323a2da80bce71841e10bbb"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 288,
+      "start": "0x80012c44",
+      "end_exclusive": "0x80012c54",
+      "sha256": "67ec9604d09ea40186116e4857081ff4b3cffe533e06ef632bdcc60a383e7c0c"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 304,
+      "start": "0x8001a0cc",
+      "end_exclusive": "0x8001a0dc",
+      "sha256": "82985c4cecf537ae896328b0ecb3687bde574fdf9103675bdeff293027c8c213"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 320,
+      "start": "0x80052f58",
+      "end_exclusive": "0x80052f68",
+      "sha256": "8d989d47c1cc79e802af37eef7a5009680192ce74998d707530def2dd4db69ee"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 336,
+      "start": "0x8005341c",
+      "end_exclusive": "0x8005342c",
+      "sha256": "da358b5cb5fe8e7495061239b18fe827ba8afec9edfc661b1df2e037c9e60aa0"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 352,
+      "start": "0x800547e0",
+      "end_exclusive": "0x800547f0",
+      "sha256": "fd96935a3f74ea0ab49d0fc3520b4c19fe28ccf90081c688dfea781978c0f58c"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 368,
+      "start": "0x80054bdc",
+      "end_exclusive": "0x80054bec",
+      "sha256": "a4d2a524529d43d9e6ee6778badc713e36350214266c622806ebbb7a9612cee5"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 384,
+      "start": "0x80054ccc",
+      "end_exclusive": "0x80054cdc",
+      "sha256": "d758ec040627c6bcad55752b9bc28106f1973261009e81b0380e7950e8397244"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 400,
+      "start": "0x80054dbc",
+      "end_exclusive": "0x80054dcc",
+      "sha256": "a083972b499c2df5bd4772bfebcef6dee133f76ed5fceb96f526597a40fa3a69"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 416,
+      "start": "0x8005549c",
+      "end_exclusive": "0x800554ac",
+      "sha256": "ab3cfce1644ab2ef1aca0007cb2cd02d617b42b78b3de31501a8af6c9d7fdbe8"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 432,
+      "start": "0x8005558c",
+      "end_exclusive": "0x8005559c",
+      "sha256": "d758ec040627c6bcad55752b9bc28106f1973261009e81b0380e7950e8397244"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 448,
+      "start": "0x8005567c",
+      "end_exclusive": "0x8005568c",
+      "sha256": "a083972b499c2df5bd4772bfebcef6dee133f76ed5fceb96f526597a40fa3a69"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 464,
+      "start": "0x80055d6c",
+      "end_exclusive": "0x80055d7c",
+      "sha256": "da358b5cb5fe8e7495061239b18fe827ba8afec9edfc661b1df2e037c9e60aa0"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 480,
+      "start": "0x80055e5c",
+      "end_exclusive": "0x80055e6c",
+      "sha256": "b40d4fd6bb2c49ce1efb4be002e6c3b13b6730cf5f13ba46461d16970a2ce900"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 496,
+      "start": "0x80057074",
+      "end_exclusive": "0x80057084",
+      "sha256": "5b6b636bcdcedc390bd236a6d2535831ccbeb730092dca90d59b6952d67f392f"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 512,
+      "start": "0x80057164",
+      "end_exclusive": "0x80057174",
+      "sha256": "802f6f182ba2ad72292dcd82f95135a2b53189c6e5e15505b2ea9de5424b12b5"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 528,
+      "start": "0x80057254",
+      "end_exclusive": "0x80057264",
+      "sha256": "0306db498b84ac451bc496f105051a7f3e91e288d903543e74d33ada10d8beeb"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 544,
+      "start": "0x80057344",
+      "end_exclusive": "0x80057354",
+      "sha256": "e38ae871b13ffeb45b696ca88e7589327fc8e5a1a23f219e18f6de07a3f20af6"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 560,
+      "start": "0x8005d6dc",
+      "end_exclusive": "0x8005d6ec",
+      "sha256": "65e0b2831d62c7a77d3fcf8fc547e96ba9a5a24fa1ff50dcd1c912fe239c9515"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 576,
+      "start": "0x8005d7dc",
+      "end_exclusive": "0x8005d7ec",
+      "sha256": "c5b92ef05505ce088a8552eb32e784095602b7a1532464a7413f24ae305b8493"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 592,
+      "start": "0x8005d8dc",
+      "end_exclusive": "0x8005d8ec",
+      "sha256": "de26e30fb05ff468f6800fc338dd3c1f61174c5ae323a2da80bce71841e10bbb"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 608,
+      "start": "0x8005d9dc",
+      "end_exclusive": "0x8005d9ec",
+      "sha256": "67ec9604d09ea40186116e4857081ff4b3cffe533e06ef632bdcc60a383e7c0c"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 624,
+      "start": "0x80065168",
+      "end_exclusive": "0x80065178",
+      "sha256": "d34a784bcc259864c6597f67ecea325427ab7a5e5ed63debbac47ba7012e2798"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 640,
+      "start": "0x800651e0",
+      "end_exclusive": "0x800651f0",
+      "sha256": "092b95bbfff21a9dda0e66e49351f84a3356613c4b4c8715388df325e7459ea6"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 656,
+      "start": "0x800651f0",
+      "end_exclusive": "0x80065200",
+      "sha256": "d1b234d370883c7d15b55415497692356c79039f570c34154d213c781faa6f65"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 672,
+      "start": "0x8006537c",
+      "end_exclusive": "0x8006538c",
+      "sha256": "8998707f55e1ae1af8aa285693e8a17c878d941b769e12e189eddefce53dd12c"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 688,
+      "start": "0x8006538c",
+      "end_exclusive": "0x8006539c",
+      "sha256": "d986637f66c818b02a56984ea99fc47ded8774423af061fe0ba91af373d30972"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 704,
+      "start": "0x8006539c",
+      "end_exclusive": "0x800653ac",
+      "sha256": "9f947ab9499faec58835fa41d22416c8312207baa7eefc60e4a27afc07bbea7b"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 720,
+      "start": "0x80065478",
+      "end_exclusive": "0x80065488",
+      "sha256": "d61e670ef2823a51b9171e33bcd8b88b46825ed4048b36f9183519ca4afc23ae"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 736,
+      "start": "0x80065488",
+      "end_exclusive": "0x80065498",
+      "sha256": "75db2e929437f83a6f0bbf258879094759378d48fb2a25562a9da9c19a881d01"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 752,
+      "start": "0x80065498",
+      "end_exclusive": "0x800654a8",
+      "sha256": "5024932009b80a90392ffcc18b057852f2dcdf96710d698a9364309e1e8eef54"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 768,
+      "start": "0x8006656c",
+      "end_exclusive": "0x8006657c",
+      "sha256": "225d4b09ab59eb23838192b40d35495b5f881a6bf5f6375de1958ccdaa34cebe"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 784,
+      "start": "0x80066658",
+      "end_exclusive": "0x80066668",
+      "sha256": "4ead31790009307629ae0b1778715da88a7a9ed821a06b04e97bb8267b7b9427"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 800,
+      "start": "0x80066744",
+      "end_exclusive": "0x80066754",
+      "sha256": "ab4e7cd816b4a0baa47aab647f351b91c1ee5f69d8f6854e665b8d223a43a0dd"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 816,
+      "start": "0x8006d9ac",
+      "end_exclusive": "0x8006d9bc",
+      "sha256": "b2ad641edf7c248578c532db4240a63c60152907f03813cbab1228935dfdabc5"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 832,
+      "start": "0x8006da9c",
+      "end_exclusive": "0x8006daac",
+      "sha256": "4e4b9558b7104eaac4323a532086fe21bbf6def4604890774fb56f98da5db347"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 848,
+      "start": "0x8007c3c4",
+      "end_exclusive": "0x8007c3d4",
+      "sha256": "8e40c349b2db442023ff590a6c4f96214c5ed129e7e22c4b73fb5269519e625f"
+    },
+    {
+      "file": "source/load-call-windows.bin",
+      "file_offset": 864,
+      "start": "0x8007c4b4",
+      "end_exclusive": "0x8007c4c4",
+      "sha256": "4556ef6f38d4492f9e35498a8158ae602a802a6eec4d62c46bb17bae22961d70"
+    }
+  ]
+}

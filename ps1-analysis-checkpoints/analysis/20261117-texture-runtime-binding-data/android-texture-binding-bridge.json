@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "asset_identity": [
+    "original_file_id",
+    "original_file_sha256",
+    "palette_source_sha256"
+  ],
+  "direct_call_scope": "39 direct requests/31 different image IDs;55 total direct resource requests. Not a complete reachability proof.",
+  "unclassified_ids": [
+    29,
+    32,
+    33
+  ],
+  "unclassified_policy": "Preserve source bytes; do not silently select alternate32/33 or declare these files unused.",
+  "geometry": "Keep file source dimensions and requested destination rectangles separate; preserve crop at requested height when smaller.",
+  "missing_tail": "No invented source pixels. Source-larger requests need downstream UV/source-memory analysis; artificialA5 fill in diagnostic is not image data.",
+  "palette": "Bind per image/scene; original VRAM coordinates alone do not identify image or palette contents.",
+  "fixture_icons": "All53 descriptor icon rectangles fit originalCASE_T00 within224rows; no missing-row reconstruction needed for these icons.",
+  "known_before": "All32 transfer rectangles and14 size mismatches were already decoded; this work joins them to callers and coverage.",
+  "runtime": "Native rendering asset/data bridge only; no PS executable/BIOS/emulator requirement.",
+  "evidence": "README.md"
+}

@@ -1,0 +1,23 @@
+{
+  "direct_loader_calls": 55,
+  "direct_image_calls": 39,
+  "unique_direct_images": 31,
+  "rectangle_bound_images": 32,
+  "filename_entries": 34,
+  "no_direct_request_ids": [
+    29,
+    32,
+    33
+  ],
+  "native_upload_cases": 32,
+  "native_gpu_calls_captured": 64,
+  "gpu_calls_replaced": 64,
+  "gameplay_updates": 0,
+  "pixel_overlapping_pairs": 48,
+  "clut_overlapping_pairs": 49,
+  "different_pixel_header_position_count": 32,
+  "different_clut_header_position_count": 29,
+  "different_pixel_height_count": 14,
+  "extends_source_count": 10,
+  "crops_source_count": 4
+}

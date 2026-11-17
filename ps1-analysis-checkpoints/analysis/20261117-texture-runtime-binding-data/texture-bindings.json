@@ -1,0 +1,2585 @@
+{
+  "schema_version": 1,
+  "rows": [
+    {
+      "id": 0,
+      "path": "/TIM0/TOWN_PR1.TIM",
+      "source_sha256": "8c08e15da000ef410367f21dfa73c1fae5de71d6f4b377136d5daaf4fd012612",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        160
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 41504,
+      "direct_request_addresses": [
+        "0x80066574"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        448,
+        352,
+        128,
+        160
+      ],
+      "destination_clut_rect_words": [
+        0,
+        484,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 160,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 40960,
+      "requested_pixel_bytes": 40960,
+      "valid_pixel_bytes": 40960,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 160,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            448,
+            352,
+            128,
+            160
+          ],
+          "source_file_offset": 544,
+          "bytes": 40960,
+          "sha256": "999c7e8307fd8f91218cae8bdbdbefe7f0ccb880f195c70b889eca6368aebb3f",
+          "valid_file_bytes": 40960,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "999c7e8307fd8f91218cae8bdbdbefe7f0ccb880f195c70b889eca6368aebb3f",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            484,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "b4a448cc6cc49a1c1e28a1161097c7a798245c534ae101355fcc908daf5a4afd",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "b4a448cc6cc49a1c1e28a1161097c7a798245c534ae101355fcc908daf5a4afd",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "path": "/TIM0/SHOP_T00.TIM",
+      "source_sha256": "f25b374e2d53870d3471323b39b3605bd25a045e2866baac5e47084a2b1c82d6",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        256
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 66080,
+      "direct_request_addresses": [
+        "0x80012b6c",
+        "0x8005d8e4"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        704,
+        256,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        488,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 65536,
+      "requested_pixel_bytes": 65536,
+      "valid_pixel_bytes": 65536,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 256,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            704,
+            256,
+            128,
+            256
+          ],
+          "source_file_offset": 544,
+          "bytes": 65536,
+          "sha256": "e35cebb8d007c8060ca91815f4fcb3515761a14da8fd1c8fa7bb60b2eaa04cef",
+          "valid_file_bytes": 65536,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "e35cebb8d007c8060ca91815f4fcb3515761a14da8fd1c8fa7bb60b2eaa04cef",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            488,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "3486ab35c4f8baa11f1d9d7aaae6c6ea5135d28e0a67c047e8f1839cb4adabbf",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "3486ab35c4f8baa11f1d9d7aaae6c6ea5135d28e0a67c047e8f1839cb4adabbf",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "path": "/TIM0/SHOP_T01.TIM",
+      "source_sha256": "4c433dc3f3840dd8c207602085f79a55aa99c60c5294973cfa83c4982b17f117",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        96
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 25120,
+      "direct_request_addresses": [
+        "0x80012c4c",
+        "0x8005d9e4"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        832,
+        256,
+        128,
+        96
+      ],
+      "destination_clut_rect_words": [
+        0,
+        488,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 96,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 24576,
+      "requested_pixel_bytes": 24576,
+      "valid_pixel_bytes": 24576,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 96,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            832,
+            256,
+            128,
+            96
+          ],
+          "source_file_offset": 544,
+          "bytes": 24576,
+          "sha256": "5f552b197f473313803e0b785d57528047c6f25c12639fd08cfb8ae52460b124",
+          "valid_file_bytes": 24576,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "5f552b197f473313803e0b785d57528047c6f25c12639fd08cfb8ae52460b124",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            488,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "3486ab35c4f8baa11f1d9d7aaae6c6ea5135d28e0a67c047e8f1839cb4adabbf",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "3486ab35c4f8baa11f1d9d7aaae6c6ea5135d28e0a67c047e8f1839cb4adabbf",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "path": "/TIM0/SYOP_S00.TIM",
+      "source_sha256": "b3fef8b04b9a8367397192a93ac0e8308e388cf383c55fadcfa2e1cf582a661a",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        256
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 66080,
+      "direct_request_addresses": [
+        "0x80011dcc"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        576,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 65536,
+      "requested_pixel_bytes": 65536,
+      "valid_pixel_bytes": 65536,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 256,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            576,
+            0,
+            128,
+            256
+          ],
+          "source_file_offset": 544,
+          "bytes": 65536,
+          "sha256": "a75ce1bffd706ee4e45d22d64650320b36f0ca2fb9951b32b665e0823ad9044a",
+          "valid_file_bytes": 65536,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "a75ce1bffd706ee4e45d22d64650320b36f0ca2fb9951b32b665e0823ad9044a",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            489,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "path": "/TIM0/SYOP_S01.TIM",
+      "source_sha256": "690927a0d6f0e87154bd8cd966086d7f24cc6c611414ae60ebb858eebed8383f",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        256
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 66080,
+      "direct_request_addresses": [
+        "0x80011eb8"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        704,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 65536,
+      "requested_pixel_bytes": 65536,
+      "valid_pixel_bytes": 65536,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 256,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            704,
+            0,
+            128,
+            256
+          ],
+          "source_file_offset": 544,
+          "bytes": 65536,
+          "sha256": "d501312baa34f2d2adaf69dd9300ddb70a857f2e495e17a48e9f926f7f4ca927",
+          "valid_file_bytes": 65536,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "d501312baa34f2d2adaf69dd9300ddb70a857f2e495e17a48e9f926f7f4ca927",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            489,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "path": "/TIM0/SYOP_S02.TIM",
+      "source_sha256": "c8c9b85b8106b1a974c3e1644498a537cbb9dc26ac376ac89acd1d94f9399974",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        128
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 33312,
+      "direct_request_addresses": [
+        "0x80011fa4"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        832,
+        0,
+        128,
+        128
+      ],
+      "destination_clut_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 128,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 32768,
+      "requested_pixel_bytes": 32768,
+      "valid_pixel_bytes": 32768,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 128,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            832,
+            0,
+            128,
+            128
+          ],
+          "source_file_offset": 544,
+          "bytes": 32768,
+          "sha256": "35a81d28ad2ce706229452d6254efff4e2f1f78aaf14ed01198436d95b32bcfe",
+          "valid_file_bytes": 32768,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "35a81d28ad2ce706229452d6254efff4e2f1f78aaf14ed01198436d95b32bcfe",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            489,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "path": "/TIM0/SHOPTYP1.TIM",
+      "source_sha256": "ababeef4a71a1d6baa3eeaa3d5f9607062b7637ea941ff225ce84bda75575e50",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        32
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 8736,
+      "direct_request_addresses": [
+        "0x80012090"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        832,
+        128,
+        128,
+        64
+      ],
+      "destination_clut_rect_words": [
+        0,
+        490,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 64,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 8192,
+      "requested_pixel_bytes": 16384,
+      "valid_pixel_bytes": 8192,
+      "request_beyond_pixel_bytes": 8192,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 32,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            832,
+            128,
+            128,
+            64
+          ],
+          "source_file_offset": 544,
+          "bytes": 16384,
+          "sha256": "2d2c19c3cdfcfdecb9703359620a74a520d68090142139e59fcf5d08519dc9de",
+          "valid_file_bytes": 8192,
+          "request_beyond_file_payload": 8192,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "fa360628c8a1c15ebe8b894363d56fb2d20be3dc3f6ff40c722721758d64d473",
+          "synthetic_tail_byte": 165
+        },
+        {
+          "destination_rect_words": [
+            0,
+            490,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "path": "/TIM0/CASE_T00.TIM",
+      "source_sha256": "41bb94ef01a0fb0ec6aeb9933ef48a589cda00afa8faa54499ecc5acca11745a",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        224
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 57888,
+      "direct_request_addresses": [
+        "0x800120c0"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        576,
+        256,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        491,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 57344,
+      "requested_pixel_bytes": 65536,
+      "valid_pixel_bytes": 57344,
+      "request_beyond_pixel_bytes": 8192,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 224,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            576,
+            256,
+            128,
+            256
+          ],
+          "source_file_offset": 544,
+          "bytes": 65536,
+          "sha256": "0e487f903d87786987f9001c1730d2c9e288d05a2a7b487ef7b99bf3fd1f9dd9",
+          "valid_file_bytes": 57344,
+          "request_beyond_file_payload": 8192,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "18030fe34615a6203391b49ecad980c5a64e7a35918273ff3582308897ea0a29",
+          "synthetic_tail_byte": 165
+        },
+        {
+          "destination_rect_words": [
+            0,
+            491,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "3c1d74688d9b3014b4ff4dccbc05266ba72d043ac80f8b5e21a076c7776294ac",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "3c1d74688d9b3014b4ff4dccbc05266ba72d043ac80f8b5e21a076c7776294ac",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "path": "/TIM0/KYOU.TIM",
+      "source_sha256": "ef75f72fffafc3cc45853a2097059b421aed139929d31b6a1bea8dcb40127d89",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        240
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 61984,
+      "direct_request_addresses": [
+        "0x800121ac"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        448,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        492,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 61440,
+      "requested_pixel_bytes": 65536,
+      "valid_pixel_bytes": 61440,
+      "request_beyond_pixel_bytes": 4096,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 240,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            448,
+            0,
+            128,
+            256
+          ],
+          "source_file_offset": 544,
+          "bytes": 65536,
+          "sha256": "f4488da20914a1042505f219586cf00161766b75ff1f3434cd07def45539f7b6",
+          "valid_file_bytes": 61440,
+          "request_beyond_file_payload": 4096,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "7681a434f1d018510d94b7243ca983457fc4b76b47578ad6f7707b1f4b06a063",
+          "synthetic_tail_byte": 165
+        },
+        {
+          "destination_rect_words": [
+            0,
+            492,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "path": "/TIM0/MAN0.TIM",
+      "source_sha256": "6a7349c4fc655fb6b2d441f5332d07481329e03391816849da62485a3ffb2ae4",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        176
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 45600,
+      "direct_request_addresses": [
+        "0x80066660"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 45056,
+      "requested_pixel_bytes": 65536,
+      "valid_pixel_bytes": 45056,
+      "request_beyond_pixel_bytes": 20480,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 176,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            0,
+            128,
+            256
+          ],
+          "source_file_offset": 544,
+          "bytes": 65536,
+          "sha256": "7394575c10f4495bfe3edf69846799827b57e5ef57d2900945274393d35f4635",
+          "valid_file_bytes": 45056,
+          "request_beyond_file_payload": 20480,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "bb1be4a1263c7ecf950e409750ab679ad5b47aa549819e4b44a2c801b6514aef",
+          "synthetic_tail_byte": 165
+        },
+        {
+          "destination_rect_words": [
+            0,
+            493,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "2a5feed6c105a2d53647bd5b769cf482b7dbf163a393743762f3c2272165c1ff",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "2a5feed6c105a2d53647bd5b769cf482b7dbf163a393743762f3c2272165c1ff",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "path": "/TIM0/TITL0.TIM",
+      "source_sha256": "0e7925eb292f8888dcdb4b02f97266599de8bd0d7741818751b3f5f19d03311e",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        768,
+        256,
+        128,
+        256
+      ],
+      "source_clut_rect": [
+        0,
+        496,
+        256,
+        1
+      ],
+      "source_file_bytes": 66080,
+      "direct_request_addresses": [
+        "0x80012560"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 65536,
+      "requested_pixel_bytes": 65536,
+      "valid_pixel_bytes": 65536,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 256,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            0,
+            128,
+            256
+          ],
+          "source_file_offset": 544,
+          "bytes": 65536,
+          "sha256": "9c7eb2afb447a5d3eb9eca6e4e389e09394d8bb085c2e00a6928fc28311fc8df",
+          "valid_file_bytes": 65536,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "9c7eb2afb447a5d3eb9eca6e4e389e09394d8bb085c2e00a6928fc28311fc8df",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            493,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "ae26d17bb7eb4c2202bbc8b3d3a3369f6d7fd568bf3b078c330ef3ad7af21396",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "ae26d17bb7eb4c2202bbc8b3d3a3369f6d7fd568bf3b078c330ef3ad7af21396",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "path": "/TIM0/TITL1.TIM",
+      "source_sha256": "e3399fafe0c8eee90328f2a2a0f3b03c447f481c23e783b4b9e270ac6a1b6770",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        768,
+        0,
+        128,
+        200
+      ],
+      "source_clut_rect": [
+        256,
+        496,
+        256,
+        1
+      ],
+      "source_file_bytes": 51744,
+      "direct_request_addresses": [
+        "0x8001264c"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        256,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 51200,
+      "requested_pixel_bytes": 65536,
+      "valid_pixel_bytes": 51200,
+      "request_beyond_pixel_bytes": 14336,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 200,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            256,
+            128,
+            256
+          ],
+          "source_file_offset": 544,
+          "bytes": 65536,
+          "sha256": "caf8842d2b1b05fa1b12675adaaf4be653f4c280aa231fa6fd5b58c688e40139",
+          "valid_file_bytes": 51200,
+          "request_beyond_file_payload": 14336,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "c4a9602eb4a4e750ba5bee335c3e07a92e620ac04c6c5fc18cf32830175a5d24",
+          "synthetic_tail_byte": 165
+        },
+        {
+          "destination_rect_words": [
+            0,
+            494,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "ae26d17bb7eb4c2202bbc8b3d3a3369f6d7fd568bf3b078c330ef3ad7af21396",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "ae26d17bb7eb4c2202bbc8b3d3a3369f6d7fd568bf3b078c330ef3ad7af21396",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "path": "/TIM0/PSMOJI0.TIM",
+      "source_sha256": "7af314727a51c78d7e086efb6d954a6591bc12f93ff1f2bb5cff797329bdfcee",
+      "flags": 8,
+      "index_bits": 4,
+      "source_pixel_rect": [
+        0,
+        0,
+        64,
+        256
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        16,
+        1
+      ],
+      "source_file_bytes": 32832,
+      "direct_request_addresses": [
+        "0x80012384",
+        "0x8006d9b4"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        960,
+        0,
+        64,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        480,
+        16,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 32768,
+      "requested_pixel_bytes": 32768,
+      "valid_pixel_bytes": 32768,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 256,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            960,
+            0,
+            64,
+            256
+          ],
+          "source_file_offset": 64,
+          "bytes": 32768,
+          "sha256": "c3d838ad6876655155ac7308c58bf910db8261ac4061f918e3271ece60c8ee5a",
+          "valid_file_bytes": 32768,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "c3d838ad6876655155ac7308c58bf910db8261ac4061f918e3271ece60c8ee5a",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            480,
+            16,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 32,
+          "sha256": "947486e398f09b33ef7931393b21a0d3e8270eea2544d4cf2edb3b62be033f4c",
+          "valid_file_bytes": 32,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "947486e398f09b33ef7931393b21a0d3e8270eea2544d4cf2edb3b62be033f4c",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "path": "/TIM0/PSMOJI1.TIM",
+      "source_sha256": "9f763d9fdcb86863ea28126fcdb5a7d89a590315463b5a5e69a2bdbc0c4c5030",
+      "flags": 8,
+      "index_bits": 4,
+      "source_pixel_rect": [
+        0,
+        0,
+        64,
+        256
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        16,
+        1
+      ],
+      "source_file_bytes": 32832,
+      "direct_request_addresses": [
+        "0x80012298"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        960,
+        256,
+        64,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        480,
+        16,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 32768,
+      "requested_pixel_bytes": 32768,
+      "valid_pixel_bytes": 32768,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 256,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            960,
+            256,
+            64,
+            256
+          ],
+          "source_file_offset": 64,
+          "bytes": 32768,
+          "sha256": "4743e544f0d957c91e06f533e37e1e15313c9d19776080fa30341c8c9de4bf17",
+          "valid_file_bytes": 32768,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "4743e544f0d957c91e06f533e37e1e15313c9d19776080fa30341c8c9de4bf17",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            480,
+            16,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 32,
+          "sha256": "947486e398f09b33ef7931393b21a0d3e8270eea2544d4cf2edb3b62be033f4c",
+          "valid_file_bytes": 32,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "947486e398f09b33ef7931393b21a0d3e8270eea2544d4cf2edb3b62be033f4c",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "path": "/TIM0/KAO01.TIM",
+      "source_sha256": "660e1382abec03ca60b8460bb6e2a7645370fd24aa9116762020cceedfe6c115",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        256
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 66080,
+      "direct_request_addresses": [
+        "0x800129ac",
+        "0x8005d6e4"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        256,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 65536,
+      "requested_pixel_bytes": 65536,
+      "valid_pixel_bytes": 65536,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 256,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            256,
+            128,
+            256
+          ],
+          "source_file_offset": 544,
+          "bytes": 65536,
+          "sha256": "1415fa85785e37b6a8430db8d4d4b7694858ed99d4aabba7bc5464394287fd9e",
+          "valid_file_bytes": 65536,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "1415fa85785e37b6a8430db8d4d4b7694858ed99d4aabba7bc5464394287fd9e",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            494,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "path": "/TIM0/KAO02.TIM",
+      "source_sha256": "91c1d4c0f11bea03a4bf38f79ec9d69e3648c9ab7aed96860949144b8587b74a",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        40
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 10784,
+      "direct_request_addresses": [
+        "0x80012a8c",
+        "0x8005d7e4"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        448,
+        256,
+        128,
+        64
+      ],
+      "destination_clut_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 64,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 10240,
+      "requested_pixel_bytes": 16384,
+      "valid_pixel_bytes": 10240,
+      "request_beyond_pixel_bytes": 6144,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 40,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            448,
+            256,
+            128,
+            64
+          ],
+          "source_file_offset": 544,
+          "bytes": 16384,
+          "sha256": "2fc6b29cc790f2db8a698ef28903c442e94ed10d9b5268bbadc3df562cdbf2ce",
+          "valid_file_bytes": 10240,
+          "request_beyond_file_payload": 6144,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "021c25a887d6f4d96b3cd04df648f36d4fbb2b643eeaedf3cf1ba52a2f5d3374",
+          "synthetic_tail_byte": 165
+        },
+        {
+          "destination_rect_words": [
+            0,
+            494,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "3f690537dae9adc0a1a54f972e71fa07a983d6f99a3d8104339848df3dead894",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "path": "/TIM0/PS_CM1.TIM",
+      "source_sha256": "47371b6c3c517ab8f0159a969c8c24f9e37e95a9607cd9414db14b034f2c7ad0",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        160
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 41504,
+      "direct_request_addresses": [
+        "0x800120a0"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        832,
+        352,
+        128,
+        160
+      ],
+      "destination_clut_rect_words": [
+        0,
+        495,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 160,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 40960,
+      "requested_pixel_bytes": 40960,
+      "valid_pixel_bytes": 40960,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 160,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            832,
+            352,
+            128,
+            160
+          ],
+          "source_file_offset": 544,
+          "bytes": 40960,
+          "sha256": "9e033bd7bb66e3df011ce282eb97285832e95760e100c68543d9b974d90e77db",
+          "valid_file_bytes": 40960,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "9e033bd7bb66e3df011ce282eb97285832e95760e100c68543d9b974d90e77db",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            495,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "bd9b72823e607f61d26456f8e37a7e710d5c3eff28cc085462f8ca2c3ffe6700",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "bd9b72823e607f61d26456f8e37a7e710d5c3eff28cc085462f8ca2c3ffe6700",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "path": "/TIM0/BUILDIN1.TIM",
+      "source_sha256": "ef9944475e356223284083cd0b28493a90eda4396cfa4a7a87714437362dba11",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        128
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 33312,
+      "direct_request_addresses": [
+        "0x800120b0"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        832,
+        128,
+        128,
+        128
+      ],
+      "destination_clut_rect_words": [
+        0,
+        490,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 128,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 32768,
+      "requested_pixel_bytes": 32768,
+      "valid_pixel_bytes": 32768,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 128,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            832,
+            128,
+            128,
+            128
+          ],
+          "source_file_offset": 544,
+          "bytes": 32768,
+          "sha256": "2700ded05be2e014fe7731525c8af35d62c730c59a2601d9a00308bb6161fb81",
+          "valid_file_bytes": 32768,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "2700ded05be2e014fe7731525c8af35d62c730c59a2601d9a00308bb6161fb81",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            490,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "2471603bc5db6b46eac861790f81341af468f0348ca75bf22dd3a936a4ab5a72",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "2471603bc5db6b46eac861790f81341af468f0348ca75bf22dd3a936a4ab5a72",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "path": "/TIM0/IOLE.TIM",
+      "source_sha256": "876e5bef5e3f01f35bd0ae6bd4fcff9d4fdde626f458853db7dbe1e463265c94",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        768,
+        0,
+        128,
+        144
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 37408,
+      "direct_request_addresses": [
+        "0x80052f60"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        832,
+        352,
+        128,
+        144
+      ],
+      "destination_clut_rect_words": [
+        0,
+        490,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 144,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 36864,
+      "requested_pixel_bytes": 36864,
+      "valid_pixel_bytes": 36864,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 144,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            832,
+            352,
+            128,
+            144
+          ],
+          "source_file_offset": 544,
+          "bytes": 36864,
+          "sha256": "c526c5cad4d26a4d32b1d6479acfd242e8ac12acb441fc4dfeed2ea343cc2f2c",
+          "valid_file_bytes": 36864,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "c526c5cad4d26a4d32b1d6479acfd242e8ac12acb441fc4dfeed2ea343cc2f2c",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            490,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "6f5640a22da4eacb8dbad16ff34eb736b9262c9274bee3740f3bd102b63e388f",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "6f5640a22da4eacb8dbad16ff34eb736b9262c9274bee3740f3bd102b63e388f",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "path": "/TIM1/TOTYO001.TIM",
+      "source_sha256": "85bd0230564b7614e9b28a8d2a0528bf2ddc2f1b2117d20cc0c81d941cf02fdb",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        154
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 39968,
+      "direct_request_addresses": [
+        "0x800547e8"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        832,
+        320,
+        128,
+        160
+      ],
+      "destination_clut_rect_words": [
+        0,
+        495,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 160,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 39424,
+      "requested_pixel_bytes": 40960,
+      "valid_pixel_bytes": 39424,
+      "request_beyond_pixel_bytes": 1536,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 154,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            832,
+            320,
+            128,
+            160
+          ],
+          "source_file_offset": 544,
+          "bytes": 40960,
+          "sha256": "4d67f7a610410c475082d1ed6cd7c611f848b8ed6340bd5d8ab0c69aac97b987",
+          "valid_file_bytes": 39424,
+          "request_beyond_file_payload": 1536,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "e47932906d0d400425bda8f6e8b91acfd04c5009d8381a1db75e11b42de136c4",
+          "synthetic_tail_byte": 165
+        },
+        {
+          "destination_rect_words": [
+            0,
+            495,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "7b1707d3928902b69da025fbf9035bdd58e479f7d1329c2232270b1df4d1d2f4",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "7b1707d3928902b69da025fbf9035bdd58e479f7d1329c2232270b1df4d1d2f4",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "path": "/TIM1/MISE000.TIM",
+      "source_sha256": "a8393045ea6ea63b9b99577bac7e5895a84ee87bd9132149995b92318991d589",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        96
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 25120,
+      "direct_request_addresses": [
+        "0x80054be4"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ],
+      "destination_clut_rect_words": [
+        0,
+        496,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 96,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 24576,
+      "requested_pixel_bytes": 24576,
+      "valid_pixel_bytes": 24576,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 96,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            128,
+            128,
+            96
+          ],
+          "source_file_offset": 544,
+          "bytes": 24576,
+          "sha256": "7a8727526b1b56b4debf2b12cdf4877552ede222ea5b5526b826b2a19ed45468",
+          "valid_file_bytes": 24576,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "7a8727526b1b56b4debf2b12cdf4877552ede222ea5b5526b826b2a19ed45468",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            496,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "4a24334e58212671eef4c9d082c0daee2dad0e3b442197d52349ff403a335ce6",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "4a24334e58212671eef4c9d082c0daee2dad0e3b442197d52349ff403a335ce6",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "path": "/TIM1/MISE001.TIM",
+      "source_sha256": "06314b9d7c4e7b564dbe32c6f2c5d8b6ebed6dc7915d6d0e7d84e7c943865f3b",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        80
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 21024,
+      "direct_request_addresses": [
+        "0x80054cd4",
+        "0x80055594"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        0,
+        128,
+        80
+      ],
+      "destination_clut_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 80,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 20480,
+      "requested_pixel_bytes": 20480,
+      "valid_pixel_bytes": 20480,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 80,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            0,
+            128,
+            80
+          ],
+          "source_file_offset": 544,
+          "bytes": 20480,
+          "sha256": "764041a0bc310c5bd2dacbb2b3aece1900a6ff9a0c3724880c90fd43f809ab36",
+          "valid_file_bytes": 20480,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "764041a0bc310c5bd2dacbb2b3aece1900a6ff9a0c3724880c90fd43f809ab36",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            493,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "bad57c9c2cff88f84af868f945a91abde51c0d93950faed2c990b2a4cf15d56c",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "bad57c9c2cff88f84af868f945a91abde51c0d93950faed2c990b2a4cf15d56c",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "path": "/TIM1/MISE002.TIM",
+      "source_sha256": "ed464d026bf9729c3d615d5a8b7da687054506040948a53bc9cc98f5f7b49b0b",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        160
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 41504,
+      "direct_request_addresses": [
+        "0x80054dc4",
+        "0x80055684"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        256,
+        128,
+        160
+      ],
+      "destination_clut_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 160,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 40960,
+      "requested_pixel_bytes": 40960,
+      "valid_pixel_bytes": 40960,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 160,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            256,
+            128,
+            160
+          ],
+          "source_file_offset": 544,
+          "bytes": 40960,
+          "sha256": "72e9c4c26b436bbdc41880a91653e8be07106023a572ca4dfe53270f35ad02c7",
+          "valid_file_bytes": 40960,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "72e9c4c26b436bbdc41880a91653e8be07106023a572ca4dfe53270f35ad02c7",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            494,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "18ab49e892253fcdd8d97d3023cb112cb303c7906d2c122378f8f81d856b59d6",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "18ab49e892253fcdd8d97d3023cb112cb303c7906d2c122378f8f81d856b59d6",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "path": "/TIM1/MISE003.TIM",
+      "source_sha256": "7f8a1e2b938c0f9619163f2ac8fc3fe4e942056043e1a94ae00a28d8915d544a",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        120
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 31264,
+      "direct_request_addresses": [
+        "0x800554a4"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        128,
+        128,
+        96
+      ],
+      "destination_clut_rect_words": [
+        0,
+        496,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 96,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 30720,
+      "requested_pixel_bytes": 24576,
+      "valid_pixel_bytes": 24576,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 6144,
+      "valid_height_pixels": 96,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            128,
+            128,
+            96
+          ],
+          "source_file_offset": 544,
+          "bytes": 24576,
+          "sha256": "761596613c2ff133365fe5ece774f20d652a8e58023285991dcdd3e9e12bed5d",
+          "valid_file_bytes": 24576,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 6144,
+          "valid_prefix_sha256": "761596613c2ff133365fe5ece774f20d652a8e58023285991dcdd3e9e12bed5d",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            496,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "c89a0dc877e31b0cb095e4ceab839ed45afb05f108ef4268fe2c232792757cc2",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "c89a0dc877e31b0cb095e4ceab839ed45afb05f108ef4268fe2c232792757cc2",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "path": "/TIM1/MISE005.TIM",
+      "source_sha256": "a172cfceee32dfb4fed482a307e086ae483fe0a2742f5af0136a84f07639d3f2",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        154
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 39968,
+      "direct_request_addresses": [
+        "0x80053424",
+        "0x80055d74"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        0,
+        128,
+        160
+      ],
+      "destination_clut_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 160,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 39424,
+      "requested_pixel_bytes": 40960,
+      "valid_pixel_bytes": 39424,
+      "request_beyond_pixel_bytes": 1536,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 154,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            0,
+            128,
+            160
+          ],
+          "source_file_offset": 544,
+          "bytes": 40960,
+          "sha256": "bbf7189543ca3ac25269b7199a3b4c2c3d5758719087b9425f369a5768ac4d53",
+          "valid_file_bytes": 39424,
+          "request_beyond_file_payload": 1536,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "ec415974a6ccb9ad9eefe3a42ed7f8319fc4dfe7fb74458aeeec295076a4ff81",
+          "synthetic_tail_byte": 165
+        },
+        {
+          "destination_rect_words": [
+            0,
+            493,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "2b73d6ab77eded67320e02aca66c70b19a67366f684e03901fd1b2fefff99067",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "2b73d6ab77eded67320e02aca66c70b19a67366f684e03901fd1b2fefff99067",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "path": "/TIM1/MISE006.TIM",
+      "source_sha256": "de059c0a32120bf80ef2853131bd0c1b3d4aa9f1cbb23aa5f013bd773ece80ad",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        120
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 31264,
+      "direct_request_addresses": [
+        "0x80055e64"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        256,
+        128,
+        104
+      ],
+      "destination_clut_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 104,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 30720,
+      "requested_pixel_bytes": 26624,
+      "valid_pixel_bytes": 26624,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 4096,
+      "valid_height_pixels": 104,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            256,
+            128,
+            104
+          ],
+          "source_file_offset": 544,
+          "bytes": 26624,
+          "sha256": "bb19e625b820a4982bb924434ee8fba73a2bd94f8ce8bfbb9522c2614797c799",
+          "valid_file_bytes": 26624,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 4096,
+          "valid_prefix_sha256": "bb19e625b820a4982bb924434ee8fba73a2bd94f8ce8bfbb9522c2614797c799",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            494,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "9c1b913d5afb52b0a52c8b784f2ee588138ab82a9f47382e073b313fcc37665c",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "9c1b913d5afb52b0a52c8b784f2ee588138ab82a9f47382e073b313fcc37665c",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "path": "/TIM1/ENDSH00.TIM",
+      "source_sha256": "9f640be4179bb767511e8b4070f34dd6ad40216c073c7b1efccae2f26d376d4e",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        240
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 61984,
+      "direct_request_addresses": [
+        "0x8005707c"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        0,
+        128,
+        224
+      ],
+      "destination_clut_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 224,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 61440,
+      "requested_pixel_bytes": 57344,
+      "valid_pixel_bytes": 57344,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 4096,
+      "valid_height_pixels": 224,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            0,
+            128,
+            224
+          ],
+          "source_file_offset": 544,
+          "bytes": 57344,
+          "sha256": "4f9085ab8511bfbae8e74ed58a2d6013cd9cc18f810eeeee854cba80e290ea44",
+          "valid_file_bytes": 57344,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 4096,
+          "valid_prefix_sha256": "4f9085ab8511bfbae8e74ed58a2d6013cd9cc18f810eeeee854cba80e290ea44",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            493,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "63969e6419b4eb98296f7699598d93f7f0928bea19062dbb6934fcc8bbf8fca0",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "63969e6419b4eb98296f7699598d93f7f0928bea19062dbb6934fcc8bbf8fca0",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "path": "/TIM1/ENDSH01.TIM",
+      "source_sha256": "037ceaa147956554be66cb0f3af99eeccc71aa72a87ced6af3cf06497a08526a",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        240
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 61984,
+      "direct_request_addresses": [
+        "0x8005716c"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        256,
+        128,
+        224
+      ],
+      "destination_clut_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 224,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 61440,
+      "requested_pixel_bytes": 57344,
+      "valid_pixel_bytes": 57344,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 4096,
+      "valid_height_pixels": 224,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            256,
+            128,
+            224
+          ],
+          "source_file_offset": 544,
+          "bytes": 57344,
+          "sha256": "c328f99f0793860066d86d8deee43c6af5288be1811a518fb8aeb2cccb71cacf",
+          "valid_file_bytes": 57344,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 4096,
+          "valid_prefix_sha256": "c328f99f0793860066d86d8deee43c6af5288be1811a518fb8aeb2cccb71cacf",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            494,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "63969e6419b4eb98296f7699598d93f7f0928bea19062dbb6934fcc8bbf8fca0",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "63969e6419b4eb98296f7699598d93f7f0928bea19062dbb6934fcc8bbf8fca0",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "path": "/TIM1/ENDMOJI.TIM",
+      "source_sha256": "335b21b4acc70f06dc5aecbf89d60e6631f4b52813e20111eb493f6c1757188c",
+      "flags": 8,
+      "index_bits": 4,
+      "source_pixel_rect": [
+        0,
+        0,
+        64,
+        48
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        16,
+        1
+      ],
+      "source_file_bytes": 6208,
+      "direct_request_addresses": [
+        "0x8005725c"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        960,
+        0,
+        64,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        480,
+        16,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 256,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 6144,
+      "requested_pixel_bytes": 32768,
+      "valid_pixel_bytes": 6144,
+      "request_beyond_pixel_bytes": 26624,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 48,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            960,
+            0,
+            64,
+            256
+          ],
+          "source_file_offset": 64,
+          "bytes": 32768,
+          "sha256": "42723cd6c8d9e40707c9b1bb79b6d08c1650c40a4532c1488a908b7d25b45106",
+          "valid_file_bytes": 6144,
+          "request_beyond_file_payload": 26624,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "07237c3eef1be4d463aaf2f6f6fb39bfb4e3235ceea65160f639cb33b6bf02a0",
+          "synthetic_tail_byte": 165
+        },
+        {
+          "destination_rect_words": [
+            0,
+            480,
+            16,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 32,
+          "sha256": "7d4dca4e228f9d1c63484958beb51deb458d042b9768c52af720768f8d4b0096",
+          "valid_file_bytes": 32,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "7d4dca4e228f9d1c63484958beb51deb458d042b9768c52af720768f8d4b0096",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "path": "/TIM0/TOWN_YU1.TIM",
+      "source_sha256": "238c823bd23cae6bfbffbc8170ff5e9e8dd0188390d57df07cc202f24d039a09",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        136
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 35360,
+      "direct_request_addresses": [],
+      "directly_requested": false,
+      "destination_pixel_rect_words": [
+        448,
+        352,
+        128,
+        160
+      ],
+      "destination_clut_rect_words": [
+        0,
+        484,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 160,
+      "binding_status": "Rectangle and filename; no direct request in scan.",
+      "source_pixel_bytes": 34816,
+      "requested_pixel_bytes": 40960,
+      "valid_pixel_bytes": 34816,
+      "request_beyond_pixel_bytes": 6144,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 136,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            448,
+            352,
+            128,
+            160
+          ],
+          "source_file_offset": 544,
+          "bytes": 40960,
+          "sha256": "7d899ebb09d1039db09e51e8084ce16497d8b2c36ff39b5711936cde385680a3",
+          "valid_file_bytes": 34816,
+          "request_beyond_file_payload": 6144,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "0278d1d98d6f5d901635cf1cf09eac3086d7ffd9a81993d505c7e7d0cceca9a2",
+          "synthetic_tail_byte": 165
+        },
+        {
+          "destination_rect_words": [
+            0,
+            484,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "44f01e0beca12ee40b87cf26fff5131d8358fe1b74c6833fee2d77b22dab68f9",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "44f01e0beca12ee40b87cf26fff5131d8358fe1b74c6833fee2d77b22dab68f9",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "path": "/TIM1/HULOGO0.TIM",
+      "source_sha256": "bd7931a9bf3f3e86eadfe0b4b51b763dad122f569e25ff1b4c4017657628a535",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        224
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 57888,
+      "direct_request_addresses": [
+        "0x8007c3cc"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        0,
+        128,
+        224
+      ],
+      "destination_clut_rect_words": [
+        0,
+        493,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 224,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 57344,
+      "requested_pixel_bytes": 57344,
+      "valid_pixel_bytes": 57344,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 224,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            0,
+            128,
+            224
+          ],
+          "source_file_offset": 544,
+          "bytes": 57344,
+          "sha256": "3a1f42ec440d18bef7627a9a0e31b98e83fa214b1f2e69ca20cb74e999f1783e",
+          "valid_file_bytes": 57344,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "3a1f42ec440d18bef7627a9a0e31b98e83fa214b1f2e69ca20cb74e999f1783e",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            493,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "0f3ae8ab40dc1b0a582758d7d426e90174fb120fdf571e7ffbe6ac472b2d8d24",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "0f3ae8ab40dc1b0a582758d7d426e90174fb120fdf571e7ffbe6ac472b2d8d24",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "path": "/TIM1/HULOGO1.TIM",
+      "source_sha256": "8a81edf1c11025da27db09b3b13b0826c27d6cf21f07dff0b88df59008b2f038",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        768,
+        256,
+        128,
+        224
+      ],
+      "source_clut_rect": [
+        0,
+        496,
+        256,
+        1
+      ],
+      "source_file_bytes": 57888,
+      "direct_request_addresses": [
+        "0x8007c4bc"
+      ],
+      "directly_requested": true,
+      "destination_pixel_rect_words": [
+        320,
+        256,
+        128,
+        224
+      ],
+      "destination_clut_rect_words": [
+        0,
+        494,
+        256,
+        1
+      ],
+      "decoded_width_pixels": 256,
+      "height_pixels": 224,
+      "binding_status": "Direct request and rectangle",
+      "source_pixel_bytes": 57344,
+      "requested_pixel_bytes": 57344,
+      "valid_pixel_bytes": 57344,
+      "request_beyond_pixel_bytes": 0,
+      "source_pixel_bytes_not_requested": 0,
+      "valid_height_pixels": 224,
+      "native_uploads": [
+        {
+          "destination_rect_words": [
+            320,
+            256,
+            128,
+            224
+          ],
+          "source_file_offset": 544,
+          "bytes": 57344,
+          "sha256": "7cefa9b6fba87919b4717d16a7efe3a09981ddc2b9695a896a0c65d216ae1074",
+          "valid_file_bytes": 57344,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "7cefa9b6fba87919b4717d16a7efe3a09981ddc2b9695a896a0c65d216ae1074",
+          "synthetic_tail_byte": null
+        },
+        {
+          "destination_rect_words": [
+            0,
+            494,
+            256,
+            1
+          ],
+          "source_file_offset": 20,
+          "bytes": 512,
+          "sha256": "0f3ae8ab40dc1b0a582758d7d426e90174fb120fdf571e7ffbe6ac472b2d8d24",
+          "valid_file_bytes": 512,
+          "request_beyond_file_payload": 0,
+          "omitted_file_payload": 0,
+          "valid_prefix_sha256": "0f3ae8ab40dc1b0a582758d7d426e90174fb120fdf571e7ffbe6ac472b2d8d24",
+          "synthetic_tail_byte": null
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "path": "/TIM0/SYOP_S03.TIM",
+      "source_sha256": "734471deae3baead96d8c8f2a88a7aa2370a32513b4d2eca73cc4c39136da602",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        256
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 66080,
+      "direct_request_addresses": [],
+      "directly_requested": false,
+      "binding_status": "Filename only; no dedicated rectangle in32-entry banks and no direct image request in scan."
+    },
+    {
+      "id": 33,
+      "path": "/TIM0/CASE_T01.TIM",
+      "source_sha256": "a29dbb0c4c4960e9963ac57978b162077c62f29aa24d4a7ebf6a2f4a1eeecc0f",
+      "flags": 9,
+      "index_bits": 8,
+      "source_pixel_rect": [
+        0,
+        0,
+        128,
+        224
+      ],
+      "source_clut_rect": [
+        0,
+        480,
+        256,
+        1
+      ],
+      "source_file_bytes": 57888,
+      "direct_request_addresses": [],
+      "directly_requested": false,
+      "binding_status": "Filename only; no dedicated rectangle in32-entry banks and no direct image request in scan."
+    }
+  ]
+}

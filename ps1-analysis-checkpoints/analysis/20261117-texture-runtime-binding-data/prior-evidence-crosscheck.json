@@ -1,0 +1,7 @@
+{
+  "archive_path": "algorithm-analysis/tim-source-transfer-manifest.json",
+  "sha256": "eab499d60cb5578af2283ccc62b5fc3a29bbe9c88a805e2439a01a41ebafd6e6",
+  "matched_rows": 32,
+  "known_before": "All32 source/destination rectangles,14 dimension differences and source/requested byte counts were already in the archived manifest; old GPU-port manifest also exists. These are reused facts, not new decoding.",
+  "new_binding": "55 direct loader JAL sites,39 TIM requests referencing31 IDs; all34 filename entries,32 rectangle rows and48 pixel/49 CLUT overlap pairs joined into one bounded binding inventory."
+}
