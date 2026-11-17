@@ -152,3 +152,5 @@
 - [2026-11-17：祭りの範囲外需要、原計算から先頭客状態への条件付き加算と6状態の分岐変更・自然到達は未確認](analysis/20261117-festival-customer-state-data/README.md)
 
 - [2026-11-17：街タイル640枠・建物マスター82行・4マップ12000セルを元画像へ接続、原CPU検証0回](analysis/20261117-town-tile-source-data/README.md)
+
+- [2026-11-17：什器53種×4方向と商品画像264番号、宣言のみ6番号を元画像3枚へ接続・原CPU検証0回](analysis/20261117-interior-source-crops-data/README.md)

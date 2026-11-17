@@ -1,0 +1,26 @@
+{
+  "fixtures": 53,
+  "fixture_direction_views": 212,
+  "logical_tile_ids_referenced": 97,
+  "unique_fixture_codes": 247,
+  "normal_product_bases": 88,
+  "normal_product_codes": 264,
+  "declared_product_codes": 270,
+  "declared_only_codes": [
+    624,
+    625,
+    626,
+    627,
+    628,
+    629
+  ],
+  "all_bound_source_codes": 517,
+  "normal_fixture_and_product_codes": 511,
+  "source_images": 3,
+  "missing_crops": 0,
+  "original_cpu_calls": 0,
+  "gameplay_updates": 0,
+  "known_refill_plans_reused": 688,
+  "existing_variants_reused": 2016,
+  "android_code_changed": false
+}

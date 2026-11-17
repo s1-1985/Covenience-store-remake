@@ -105,7 +105,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue unconnected normal-play source data; town640 source crops now bound. Keep fullscene layer/compositing integration separate from raw crop completeness.",
+  "next": "Continue remaining ordinary source coverage such as floor/wall/UI/scene assets; fixture/product source crops now bound. Keep declared-only product slots and full-screen compositing unconfirmed.",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -129,6 +129,14 @@
       "status": "resolved_scoped_source_binding",
       "evidence": "analysis/20261117-town-tile-source-data/README.md",
       "resolution": "All640 declared CEL crops and80 store-number variants fitTOWN_PR1 originalpixels. 82master rows and12000 initial cells bound;28sign substitutions,0unresolvedinitialcells. KnownCEL/master/mapper reused; noCPUexecution or full-screen-equivalence claim.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X04",
+      "title": "什器53種4方向・商品通常264番号と元画像の切出し対応",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261117-interior-source-crops-data/README.md",
+      "resolution": "212fixtureviews/247fixturecodes and264normalproductcodes bound to3originalTIMs;6declared-only frames kept separate. 517crops inside source. Knownselectionrules reused;0sourceCPUcalls. Not fullinteriorcoverage.",
       "counted_in_seven_tracked_items": false
     }
   ]

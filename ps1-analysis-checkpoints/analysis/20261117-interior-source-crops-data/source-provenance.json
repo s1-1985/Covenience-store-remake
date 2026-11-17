@@ -1,0 +1,119 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "source_images": [
+    {
+      "image_id": 3,
+      "archive_path": "algorithm-analysis/source/SYOP_S00.TIM",
+      "sha256": "b3fef8b04b9a8367397192a93ac0e8308e388cf383c55fadcfa2e1cf582a661a",
+      "dimensions": [
+        256,
+        256
+      ],
+      "pixel_sha256": "a75ce1bffd706ee4e45d22d64650320b36f0ca2fb9951b32b665e0823ad9044a",
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "destination_pixel_rect_words": [
+        576,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ]
+    },
+    {
+      "image_id": 4,
+      "archive_path": "algorithm-analysis/source/SYOP_S01.TIM",
+      "sha256": "690927a0d6f0e87154bd8cd966086d7f24cc6c611414ae60ebb858eebed8383f",
+      "dimensions": [
+        256,
+        256
+      ],
+      "pixel_sha256": "d501312baa34f2d2adaf69dd9300ddb70a857f2e495e17a48e9f926f7f4ca927",
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "destination_pixel_rect_words": [
+        704,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ]
+    },
+    {
+      "image_id": 5,
+      "archive_path": "algorithm-analysis/source/SYOP_S02.TIM",
+      "sha256": "c8c9b85b8106b1a974c3e1644498a537cbb9dc26ac376ac89acd1d94f9399974",
+      "dimensions": [
+        256,
+        128
+      ],
+      "pixel_sha256": "35a81d28ad2ce706229452d6254efff4e2f1f78aaf14ed01198436d95b32bcfe",
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "destination_pixel_rect_words": [
+        832,
+        0,
+        128,
+        128
+      ],
+      "destination_clut_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ]
+    }
+  ],
+  "raw_exe_ranges": [
+    {
+      "file": "source/fixture_tile_table.bin",
+      "start": "0x8009c7a0",
+      "end_exclusive": "0x8009cdf0",
+      "sha256": "f1c58f39aee6e27ab6aa91e5f447a8142ce80a0c29558fb5d810c175709dc42a"
+    },
+    {
+      "file": "source/draw_thresholds_and_kinds.bin",
+      "start": "0x80010a98",
+      "end_exclusive": "0x80010ab0",
+      "sha256": "47f52bef754d29b70d41c71db807e4488e648b60241dc2c6d2807fec15392d72"
+    },
+    {
+      "file": "source/tile_record_reader.bin",
+      "start": "0x8005670c",
+      "end_exclusive": "0x80056a3c",
+      "sha256": "138f07c30478a525df243df10fe6b9880c61cefab276fbdc30c15baacb7a5fd6"
+    },
+    {
+      "file": "source/preview_source_reader.bin",
+      "start": "0x800799ac",
+      "end_exclusive": "0x80079d68",
+      "sha256": "6317806bebb19c7ceadebcc2b570b36fde11a0ee72a82f81272f757a78662a48"
+    }
+  ],
+  "reused_assets": [
+    {
+      "path": "analysis/20261113-product-stock-data/product-fixture-data.json",
+      "sha256": "0cd1bbda4ed54c585afe05d88ac44ad25df5624169e48524c5826eb78e63f5a5"
+    },
+    {
+      "path": "analysis/20261113-product-stock-data/android-stock-bridge.json",
+      "sha256": "4bf14481ee242f6e054bab5a9abc47ecde6f57a1f9f29963868a0af1fba8637b"
+    }
+  ],
+  "known_before": [
+    "53fixtures,27products,172allowed pairs and688refillplans/2016month variants",
+    "Original101x4image conversion and799AC fixture orientation placement",
+    "Inclusive source image thresholds andUVrule",
+    "Product17 image bases and quantity phases"
+  ],
+  "new_result": "Join exact source crop/hash andvalidpixelextent to212fixtureviews and normal/declared product references,including explicitcode512 mapping.",
+  "verification": "Single static extraction: source hashes, previous master overlap, required code/crop bounds. No source CPUcalls or gameplay updates."
+}

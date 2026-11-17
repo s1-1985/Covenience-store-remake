@@ -1,0 +1,47 @@
+{
+  "status": "source_data_only_no_android_change",
+  "source_images": [
+    {
+      "id": 3,
+      "name": "SYOP_S00.TIM"
+    },
+    {
+      "id": 4,
+      "name": "SYOP_S01.TIM"
+    },
+    {
+      "id": 5,
+      "name": "SYOP_S02.TIM"
+    }
+  ],
+  "crop_file": "image-source-crops.json",
+  "fixture_composition": "fixture-direction-crops.json",
+  "product_refs": "product-source-usage.json",
+  "source_frame_pixels": [
+    16,
+    16
+  ],
+  "inclusive_thresholds": [
+    256,
+    512,
+    768
+  ],
+  "draw_record_kinds": [
+    9,
+    11,
+    13
+  ],
+  "rules": [
+    "Use originalimagecode to crop; do not replace inclusive thresholds withcode//256.",
+    "Directions2/3 transpose fixture cell positions and select prerendered frames; do not rotate art generically.",
+    "Retain persisted per-cell product frame base across sale/month change; refill changes it per existingplans.",
+    "Quantity0 suppresses product draw even if frame code remains.",
+    "624..629 are declared-only references,not established normal refill choices.",
+    "Preserve original palette STP; PNG is a reference and not a finalblend specification."
+  ],
+  "limitations": [
+    "Only517 referenced framecodes bound; not every possibleinterior/UIcode.",
+    "No new sourceCPUtests, normalplayfrequency or GPU screen equivalence.",
+    "NativeAndroid logic needs no sourceEXE/BIOS/emulator at runtime."
+  ]
+}

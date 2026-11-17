@@ -1,0 +1,128 @@
+{
+  "known_before": "Inclusive256/512/768 rule already decoded and tested in r2. This result joins it to exact original source pixels and actual normal product17 references.",
+  "product": 17,
+  "name": "冷凍食品類",
+  "normal_bases": [
+    507,
+    510,
+    513
+  ],
+  "frames": [
+    {
+      "image_code": 510,
+      "draw_kind": 11,
+      "source_image_id": 4,
+      "source_file": "SYOP_S01.TIM",
+      "source_rect": [
+        224,
+        240,
+        16,
+        16
+      ],
+      "indices_sha256": "1d0d1e7db685991dcaaea782a78294c1d47281f22a8785760a76f02f8e968539",
+      "raw_color_words_sha256": "2cad790d18af868a731d086cf41d254e8d566fc68cb4dd55d0176ac663a03cd8",
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "source_complete": true,
+      "fixture_reference": false,
+      "normal_product_plan_reference": true,
+      "declared_product_reference": true
+    },
+    {
+      "image_code": 511,
+      "draw_kind": 11,
+      "source_image_id": 4,
+      "source_file": "SYOP_S01.TIM",
+      "source_rect": [
+        240,
+        240,
+        16,
+        16
+      ],
+      "indices_sha256": "4297203a3d4872757a032b3a17654d2343429103f2a266ffc0486bc42500f74e",
+      "raw_color_words_sha256": "7ede4e3ed684d761e01071e945e20086661c1a0a3eea0fa3adfd5bb4848a727b",
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "source_complete": true,
+      "fixture_reference": false,
+      "normal_product_plan_reference": true,
+      "declared_product_reference": true
+    },
+    {
+      "image_code": 512,
+      "draw_kind": 11,
+      "source_image_id": 4,
+      "source_file": "SYOP_S01.TIM",
+      "source_rect": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "indices_sha256": "947ed24caf2a970193e4e9be2314dd14ffbd93487fe72dcd454ddb717b5199b5",
+      "raw_color_words_sha256": "69b3c516b43a7f794b2dc8db722ea7feb1bb4a7ec7b9da84a961581a64bd2587",
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "source_complete": true,
+      "fixture_reference": false,
+      "normal_product_plan_reference": true,
+      "declared_product_reference": true
+    },
+    {
+      "image_code": 513,
+      "draw_kind": 13,
+      "source_image_id": 5,
+      "source_file": "SYOP_S02.TIM",
+      "source_rect": [
+        16,
+        0,
+        16,
+        16
+      ],
+      "indices_sha256": "683ad250a43c23c7337b64497f4444f410b0bf79a0164ab102d95b25911c9a9d",
+      "raw_color_words_sha256": "b3638b05e56b072311d633d3b2af8b7e727c385f35701f6887c0203dc3642a5e",
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "source_complete": true,
+      "fixture_reference": false,
+      "normal_product_plan_reference": true,
+      "declared_product_reference": true
+    },
+    {
+      "image_code": 514,
+      "draw_kind": 13,
+      "source_image_id": 5,
+      "source_file": "SYOP_S02.TIM",
+      "source_rect": [
+        32,
+        0,
+        16,
+        16
+      ],
+      "indices_sha256": "3926f0c42a8ba0c5d6d83ed9e96ac7f762472b9e4b19bf15687c8046ab377bfd",
+      "raw_color_words_sha256": "a555709cbe0568a0181b13a284c1b8ff6fba776b82314347d251e6029d608d91",
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "source_complete": true,
+      "fixture_reference": false,
+      "normal_product_plan_reference": true,
+      "declared_product_reference": true
+    },
+    {
+      "image_code": 515,
+      "draw_kind": 13,
+      "source_image_id": 5,
+      "source_file": "SYOP_S02.TIM",
+      "source_rect": [
+        48,
+        0,
+        16,
+        16
+      ],
+      "indices_sha256": "eed43c0809f9cde0c699b9ea784a3b6d5d1900c9c62cbf6c48ea6756e47e745c",
+      "raw_color_words_sha256": "1a6c5ef07a536d1b6cec0cbccf6b5a15e509545fa627d1c35b6f7f070696186c",
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "source_complete": true,
+      "fixture_reference": false,
+      "normal_product_plan_reference": true,
+      "declared_product_reference": true
+    }
+  ],
+  "code512": "SYOP_S01.TIM at0,0 with drawkind11, not SYOP_S02. Code513 uses SYOP_S02 at16,0. Preserve source mapping; this is not a new renderer correction.",
+  "natural_play_observation": false
+}

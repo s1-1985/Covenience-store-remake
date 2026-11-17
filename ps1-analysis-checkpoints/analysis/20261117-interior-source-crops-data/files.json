@@ -1,0 +1,82 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 7357,
+    "sha256": "52a6509a5d2bfc9791cb79aca0fa485c6c966ed8338a41e4ea11955650c1f3ae"
+  },
+  {
+    "path": "android-interior-crops-bridge.json",
+    "bytes": 1387,
+    "sha256": "3c1d3a37703b2ca915988e3823dc1c2ebc02c4fc08abc2a7e1e9be923339ed7c"
+  },
+  {
+    "path": "extract-interior-crops.py",
+    "bytes": 10885,
+    "sha256": "356259854a4bbe81e65cd406a08854ec7b000b91f0c02049c72ada4f3256f006"
+  },
+  {
+    "path": "fixture-direction-crops.json",
+    "bytes": 99750,
+    "sha256": "eb46d68b0754afe9fb8762d66e681c8ed07b976ff3c6a2c6834f6200d6360205"
+  },
+  {
+    "path": "fixture-four-direction-preview.png",
+    "bytes": 124125,
+    "sha256": "f8b38f9529592489d997d0cd43e631616cfa6b3ea18c712d84376398ff9cb31b"
+  },
+  {
+    "path": "frozen-page-boundary-preview.png",
+    "bytes": 3851,
+    "sha256": "e205338a5ea4184742385023b51ddfbe611ad37dba1d22ad9061ee30e5a7a7ad"
+  },
+  {
+    "path": "image-source-crops.json",
+    "bytes": 333673,
+    "sha256": "061c60bea0d5315694940d4ae3b8dd6319f320503c7ace72574facddc1c6fe09"
+  },
+  {
+    "path": "interior-image-readers.asm",
+    "bytes": 15183,
+    "sha256": "a569eabd4a5b16643db3d7713d38aab862947db0d4202ab970ff90861925a01e"
+  },
+  {
+    "path": "page-boundary-source.json",
+    "bytes": 4328,
+    "sha256": "dba31c8cafdc6a0a19d23c785e659a92ad0f8a7f668ace23fe4184299a5a1afa"
+  },
+  {
+    "path": "product-source-usage.json",
+    "bytes": 19128,
+    "sha256": "54d0fa2084afc644098023dea5ba219859a3383bcbf4e1747306a5fddfcba910"
+  },
+  {
+    "path": "source/draw_thresholds_and_kinds.bin",
+    "bytes": 24,
+    "sha256": "47f52bef754d29b70d41c71db807e4488e648b60241dc2c6d2807fec15392d72"
+  },
+  {
+    "path": "source/fixture_tile_table.bin",
+    "bytes": 1616,
+    "sha256": "f1c58f39aee6e27ab6aa91e5f447a8142ce80a0c29558fb5d810c175709dc42a"
+  },
+  {
+    "path": "source/preview_source_reader.bin",
+    "bytes": 956,
+    "sha256": "6317806bebb19c7ceadebcc2b570b36fde11a0ee72a82f81272f757a78662a48"
+  },
+  {
+    "path": "source/tile_record_reader.bin",
+    "bytes": 816,
+    "sha256": "138f07c30478a525df243df10fe6b9880c61cefab276fbdc30c15baacb7a5fd6"
+  },
+  {
+    "path": "source-provenance.json",
+    "bytes": 3881,
+    "sha256": "4ad18cda3d781097da8449056182fa39ef95627018093d2eb34264aeaae67aae"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 579,
+    "sha256": "c5eb81dfc8b2bd296b8d0d172dee8ef185fd11a0be8fba9d6c5039afa2b76c6a"
+  }
+]

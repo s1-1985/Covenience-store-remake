@@ -1,0 +1,1012 @@
+{
+  "rows": [
+    {
+      "product": 0,
+      "name": "冷たい飲料",
+      "declared_image_bases": [
+        360,
+        363,
+        366,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        360,
+        363,
+        366
+      ],
+      "normal_plan_codes": [
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 1,
+      "name": "温かい飲料",
+      "declared_image_bases": [
+        369,
+        372,
+        375,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        369,
+        372,
+        375
+      ],
+      "normal_plan_codes": [
+        369,
+        370,
+        371,
+        372,
+        373,
+        374,
+        375,
+        376,
+        377
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 2,
+      "name": "酒類",
+      "declared_image_bases": [
+        378,
+        381,
+        384,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        378,
+        381,
+        384
+      ],
+      "normal_plan_codes": [
+        378,
+        379,
+        380,
+        381,
+        382,
+        383,
+        384,
+        385,
+        386
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 3,
+      "name": "弁当類",
+      "declared_image_bases": [
+        387,
+        390,
+        393,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        387,
+        390,
+        393
+      ],
+      "normal_plan_codes": [
+        387,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 4,
+      "name": "パン類",
+      "declared_image_bases": [
+        396,
+        399,
+        402,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        396,
+        399,
+        402
+      ],
+      "normal_plan_codes": [
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 5,
+      "name": "ｲﾝｽﾀﾝﾄ類",
+      "declared_image_bases": [
+        405,
+        408,
+        411,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        405,
+        408,
+        411
+      ],
+      "normal_plan_codes": [
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 6,
+      "name": "菓子類",
+      "declared_image_bases": [
+        414,
+        417,
+        420,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        414,
+        417,
+        420
+      ],
+      "normal_plan_codes": [
+        414,
+        415,
+        416,
+        417,
+        418,
+        419,
+        420,
+        421,
+        422
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 7,
+      "name": "本類",
+      "declared_image_bases": [
+        423,
+        426,
+        429,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        423,
+        426,
+        429
+      ],
+      "normal_plan_codes": [
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 8,
+      "name": "たばこ",
+      "declared_image_bases": [
+        432,
+        435,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        432,
+        435
+      ],
+      "normal_plan_codes": [
+        432,
+        433,
+        434,
+        435,
+        436,
+        437
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 9,
+      "name": "ｱｲｽｸﾘｰﾑ",
+      "declared_image_bases": [
+        438,
+        441,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        438,
+        441
+      ],
+      "normal_plan_codes": [
+        438,
+        439,
+        440,
+        441,
+        442,
+        443
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 10,
+      "name": "文房具",
+      "declared_image_bases": [
+        444,
+        447,
+        450,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        444,
+        447,
+        450
+      ],
+      "normal_plan_codes": [
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 11,
+      "name": "電気製品類",
+      "declared_image_bases": [
+        453,
+        456,
+        459,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        453,
+        456,
+        459
+      ],
+      "normal_plan_codes": [
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 12,
+      "name": "野菜類",
+      "declared_image_bases": [
+        462,
+        465,
+        468,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        462,
+        465,
+        468
+      ],
+      "normal_plan_codes": [
+        462,
+        463,
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 13,
+      "name": "魚類",
+      "declared_image_bases": [
+        471,
+        474,
+        477,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        471,
+        474,
+        477
+      ],
+      "normal_plan_codes": [
+        471,
+        472,
+        473,
+        474,
+        475,
+        476,
+        477,
+        478,
+        479
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 14,
+      "name": "肉類",
+      "declared_image_bases": [
+        480,
+        483,
+        486,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        480,
+        483,
+        486
+      ],
+      "normal_plan_codes": [
+        480,
+        481,
+        482,
+        483,
+        484,
+        485,
+        486,
+        487,
+        488
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 15,
+      "name": "レトルト類",
+      "declared_image_bases": [
+        489,
+        492,
+        495,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        489,
+        492,
+        495
+      ],
+      "normal_plan_codes": [
+        489,
+        490,
+        491,
+        492,
+        493,
+        494,
+        495,
+        496,
+        497
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 16,
+      "name": "調味料類",
+      "declared_image_bases": [
+        498,
+        501,
+        504,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        498,
+        501,
+        504
+      ],
+      "normal_plan_codes": [
+        498,
+        499,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 17,
+      "name": "冷凍食品類",
+      "declared_image_bases": [
+        507,
+        510,
+        513,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        507,
+        510,
+        513
+      ],
+      "normal_plan_codes": [
+        507,
+        508,
+        509,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 18,
+      "name": "おでん",
+      "declared_image_bases": [
+        516,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        516
+      ],
+      "normal_plan_codes": [
+        516,
+        517,
+        518
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 19,
+      "name": "日用品",
+      "declared_image_bases": [
+        519,
+        522,
+        525,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        519,
+        522,
+        525
+      ],
+      "normal_plan_codes": [
+        519,
+        520,
+        521,
+        522,
+        523,
+        524,
+        525,
+        526,
+        527
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 20,
+      "name": "コピー用紙",
+      "declared_image_bases": [
+        615,
+        528,
+        531,
+        618,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        624
+      ],
+      "normal_plan_bases": [
+        528,
+        531,
+        615,
+        618
+      ],
+      "normal_plan_codes": [
+        528,
+        529,
+        530,
+        531,
+        532,
+        533,
+        615,
+        616,
+        617,
+        618,
+        619,
+        620
+      ],
+      "declared_not_in_normal_plans": [
+        624
+      ],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 21,
+      "name": "宅急便申込書",
+      "declared_image_bases": [
+        543,
+        534,
+        537,
+        540,
+        621,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        534,
+        537,
+        540,
+        543,
+        621
+      ],
+      "normal_plan_codes": [
+        534,
+        535,
+        536,
+        537,
+        538,
+        539,
+        540,
+        541,
+        542,
+        543,
+        544,
+        545,
+        621,
+        622,
+        623
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 22,
+      "name": "薬品",
+      "declared_image_bases": [
+        546,
+        549,
+        552,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        546,
+        549,
+        552
+      ],
+      "normal_plan_codes": [
+        546,
+        547,
+        548,
+        549,
+        550,
+        551,
+        552,
+        553,
+        554
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 23,
+      "name": "下着類",
+      "declared_image_bases": [
+        555,
+        558,
+        561,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        555,
+        558,
+        561
+      ],
+      "normal_plan_codes": [
+        555,
+        556,
+        557,
+        558,
+        559,
+        560,
+        561,
+        562,
+        563
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 24,
+      "name": "イベント商品",
+      "declared_image_bases": [
+        564,
+        567,
+        570,
+        573,
+        576,
+        579,
+        582,
+        585,
+        588,
+        591,
+        594,
+        597
+      ],
+      "normal_plan_bases": [
+        564,
+        567,
+        570,
+        573,
+        576,
+        579,
+        582,
+        585,
+        588,
+        591,
+        594,
+        597
+      ],
+      "normal_plan_codes": [
+        564,
+        565,
+        566,
+        567,
+        568,
+        569,
+        570,
+        571,
+        572,
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581,
+        582,
+        583,
+        584,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        591,
+        592,
+        593,
+        594,
+        595,
+        596,
+        597,
+        598,
+        599
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 25,
+      "name": "中華まん",
+      "declared_image_bases": [
+        600,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "normal_plan_bases": [
+        600
+      ],
+      "normal_plan_codes": [
+        600,
+        601,
+        602
+      ],
+      "declared_not_in_normal_plans": [],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    },
+    {
+      "product": 26,
+      "name": "現金",
+      "declared_image_bases": [
+        612,
+        603,
+        606,
+        609,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        627
+      ],
+      "normal_plan_bases": [
+        603,
+        606,
+        609,
+        612
+      ],
+      "normal_plan_codes": [
+        603,
+        604,
+        605,
+        606,
+        607,
+        608,
+        609,
+        610,
+        611,
+        612,
+        613,
+        614
+      ],
+      "declared_not_in_normal_plans": [
+        627
+      ],
+      "meaning": "Normal means bases referenced by existing688 refill plans, not observed play frequency. Image phases are0/1/2; quantity0 suppresses drawing."
+    }
+  ],
+  "existing_refill_plans": "../20261113-product-stock-data/android-stock-bridge.json",
+  "plans_reused": 688,
+  "existing_distinct_month_variants": 2016,
+  "render_references": "Join persisted per-cell imagecode to image-source-crops; do not choose a new month art on every draw."
+}
