@@ -1,0 +1,53 @@
+{
+  "status": "source_data_only_no_android_change",
+  "floor_crop_file": "floor-source-crops.json",
+  "layout_source_map": "layout-floor-wall-map.json",
+  "wall": {
+    "anchor_kind": 53,
+    "visible_floor_codes": [
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "observed_anchor_floor_matches": 1060,
+    "scope": "All30originaltemplates only; not proof of every dynamic remodeling path.",
+    "rule": "Render original floorplane at16pixel spacing. Do not read fixture descriptor53 or duplicate walls as60..359equipment art."
+  },
+  "grid_and_floor_units": {
+    "grid_cell_pixels": 8,
+    "floor_cell_pixels": 16,
+    "floor_index": "x//2,y//2",
+    "wall_anchors_even": true
+  },
+  "separate_background": {
+    "source": "KABEE.CEL/BGD",
+    "image_id": 8,
+    "image": "KYOU.TIM",
+    "crops": "kabee-background-source-map.json",
+    "declared_cel_tiles": 16,
+    "declared_bgd_cells": 320,
+    "padding_cel_slots_not_tiles": 4,
+    "padding_bgd_cells_not_tiles": 320,
+    "source_composition_pixels": [
+      320,
+      256
+    ],
+    "type1_viewport": [
+      320,
+      240
+    ],
+    "rule": "Separate scene background; not an additional store wall material."
+  },
+  "preview_omissions": [
+    "Stock repaint/products",
+    "People and routes",
+    "UI and effects",
+    "GPU semitransparency/final compositing"
+  ],
+  "runtime": "Use native source data and coordinates; no original EXE/BIOS/emulator runtime dependency."
+}

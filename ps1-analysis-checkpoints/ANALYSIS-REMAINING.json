@@ -105,7 +105,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue remaining ordinary source coverage such as floor/wall/UI/scene assets; fixture/product source crops now bound. Keep declared-only product slots and full-screen compositing unconfirmed.",
+  "next": "Continue unconnected ordinary source/UI/scene data. Rawtemplate floor/wall binding and KABEE background crops now connected; dynamic scene composition and six tracked questions remain open.",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -137,6 +137,14 @@
       "status": "resolved_scoped_source_binding",
       "evidence": "analysis/20261117-interior-source-crops-data/README.md",
       "resolution": "212fixtureviews/247fixturecodes and264normalproductcodes bound to3originalTIMs;6declared-only frames kept separate. 517crops inside source. Knownselectionrules reused;0sourceCPUcalls. Not fullinteriorcoverage.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X05",
+      "title": "30配置の壁アンカーと床画像・KABEE反復背景の原画素対応",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261117-floor-wall-background-data/README.md",
+      "resolution": "All1060kind53wallanchors equal floorcodes20..27 atcorrespondingposition in30rawtemplates. 4260floor/1366fixturecells bound;16KABEE tiles/320BGDcells maptoKYOU validpixels. Knownrulesreused;0sourceCPUcalls. Not dynamicremodeling or fullscene validation.",
       "counted_in_seven_tracked_items": false
     }
   ]

@@ -1,0 +1,138 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "source_images": [
+    {
+      "id": 3,
+      "path": "/TIM0/SYOP_S00.TIM",
+      "sha256": "b3fef8b04b9a8367397192a93ac0e8308e388cf383c55fadcfa2e1cf582a661a",
+      "source_pixels": [
+        256,
+        256
+      ],
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "destination_pixel_rect_words": [
+        576,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "path": "/TIM0/SYOP_S01.TIM",
+      "sha256": "690927a0d6f0e87154bd8cd966086d7f24cc6c611414ae60ebb858eebed8383f",
+      "source_pixels": [
+        256,
+        256
+      ],
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "destination_pixel_rect_words": [
+        704,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "path": "/TIM0/SYOP_S02.TIM",
+      "sha256": "c8c9b85b8106b1a974c3e1644498a537cbb9dc26ac376ac89acd1d94f9399974",
+      "source_pixels": [
+        256,
+        128
+      ],
+      "palette_sha256": "090e28bde58186bf521f0b8ed5f2143cfee5e9e20813bbe6e56c0ed4e61d625b",
+      "destination_pixel_rect_words": [
+        832,
+        0,
+        128,
+        128
+      ],
+      "destination_clut_rect_words": [
+        0,
+        489,
+        256,
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "path": "/TIM0/KYOU.TIM",
+      "sha256": "ef75f72fffafc3cc45853a2097059b421aed139929d31b6a1bea8dcb40127d89",
+      "source_pixels": [
+        256,
+        240
+      ],
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "destination_pixel_rect_words": [
+        448,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        492,
+        256,
+        1
+      ]
+    }
+  ],
+  "raw_exe_ranges": [
+    {
+      "file": "source/floor_reader.bin",
+      "start": "0x800561cc",
+      "end_exclusive": "0x8005643c",
+      "sha256": "8a81059db39d25d70234b9027de5617a877dc9b7ec6b3240ec4f0e52f03d6ad6"
+    },
+    {
+      "file": "source/resource_preload.bin",
+      "start": "0x80012730",
+      "end_exclusive": "0x80012780",
+      "sha256": "b24d29a7d10a5ab9e0efe806c6a823d6649bf3103041d33a6ca389b36c82786b"
+    },
+    {
+      "file": "source/bgd_cel_loaders.bin",
+      "start": "0x800150dc",
+      "end_exclusive": "0x800152a4",
+      "sha256": "60ab5321e1638d61fed4186f881c9e87b8891450d2143984391ab71747d76a9b"
+    },
+    {
+      "file": "source/scene_background_link.bin",
+      "start": "0x80057bd4",
+      "end_exclusive": "0x80057c74",
+      "sha256": "b1cb2e2b60f6f9611ace6fcea527202ce9866c918a4c502472dac505cf27c359"
+    },
+    {
+      "file": "source/resource_name_pointers.bin",
+      "start": "0x800986c4",
+      "end_exclusive": "0x800986d0",
+      "sha256": "b3836f046079851a130064858343bd6ba3faa5905fe00dd6f8486583d5e4ff81"
+    }
+  ],
+  "layout_table": {
+    "address": "0x800A2074",
+    "stride": 3108,
+    "count": 30,
+    "sha256": "2605b35d94975af3f95a625a44c9f68819b56e0755df72e0551afee7b4928b91",
+    "floor_offset": 12,
+    "grid_offset": 196
+  },
+  "existing_floor_data_sha256": "17be79f2ad2217688a7c2844765afe46a132fc146fe4c830eada70fa72287d39",
+  "existing_fixture_crops_sha256": "061c60bea0d5315694940d4ae3b8dd6319f320503c7ace72574facddc1c6fe09",
+  "known_before": "Floor36crops/30layoutfloorcounts, kind53wallidentity and basicrenderpaths existed. KABEE sourcefiles and CELparser also existed. New work joins all1060wallanchors to floorpixels,30template composites, and16KABEEcrops/320BGDcells toKYOU actualpixels/load paths.",
+  "verification": "Single static extraction with source hashes, referenced crop consistency and bounds. No sourceCPUcall or extra gameplaytests."
+}

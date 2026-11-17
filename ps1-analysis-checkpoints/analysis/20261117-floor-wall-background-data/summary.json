@@ -1,0 +1,26 @@
+{
+  "layouts": 30,
+  "template_floor_cells": 4260,
+  "wall_anchors": 1060,
+  "wall_floor_pairs_matching": 1060,
+  "wall_image_codes": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "fixture_draw_cells": 1366,
+  "floor_crops_reused": 36,
+  "kabee_source_crops": 16,
+  "kabee_background_cells": 320,
+  "kabee_cel_zero_padding_slots": 4,
+  "kabee_bgd_zero_padding_cells": 320,
+  "missing_source_crops": 0,
+  "original_cpu_calls": 0,
+  "gameplay_updates": 0,
+  "android_code_changed": false
+}
