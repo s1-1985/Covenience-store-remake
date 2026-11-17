@@ -1,0 +1,294 @@
+{
+  "rows": [
+    {
+      "project_selection": 0,
+      "building_kind": 18,
+      "name": "交番",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 0,
+      "source_image_id": 17,
+      "source_rect": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "existing_name_message_index": 103,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 1,
+      "building_kind": 19,
+      "name": "消防署",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 1,
+      "source_image_id": 17,
+      "source_rect": [
+        32,
+        0,
+        32,
+        32
+      ],
+      "existing_name_message_index": 104,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 2,
+      "building_kind": 49,
+      "name": "住宅",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 16,
+      "source_image_id": 17,
+      "source_rect": [
+        0,
+        64,
+        32,
+        32
+      ],
+      "existing_name_message_index": 122,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 3,
+      "building_kind": 42,
+      "name": "会社",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 15,
+      "source_image_id": 17,
+      "source_rect": [
+        224,
+        32,
+        32,
+        32
+      ],
+      "existing_name_message_index": 121,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 4,
+      "building_kind": 51,
+      "name": "体育館",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 18,
+      "source_image_id": 17,
+      "source_rect": [
+        64,
+        64,
+        32,
+        32
+      ],
+      "existing_name_message_index": 124,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 5,
+      "building_kind": 53,
+      "name": "プール",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 18,
+      "source_image_id": 17,
+      "source_rect": [
+        64,
+        64,
+        32,
+        32
+      ],
+      "existing_name_message_index": 126,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 6,
+      "building_kind": 52,
+      "name": "運動場",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 17,
+      "source_image_id": 17,
+      "source_rect": [
+        32,
+        64,
+        32,
+        32
+      ],
+      "existing_name_message_index": 125,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 7,
+      "building_kind": 54,
+      "name": "ｲﾍﾞﾝﾄ会場",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 23,
+      "source_image_id": 17,
+      "source_rect": [
+        224,
+        64,
+        32,
+        32
+      ],
+      "existing_name_message_index": 127,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 8,
+      "building_kind": 25,
+      "name": "幼稚園",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 7,
+      "source_image_id": 17,
+      "source_rect": [
+        224,
+        0,
+        32,
+        32
+      ],
+      "existing_name_message_index": 109,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 9,
+      "building_kind": 26,
+      "name": "小学校",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 8,
+      "source_image_id": 17,
+      "source_rect": [
+        0,
+        32,
+        32,
+        32
+      ],
+      "existing_name_message_index": 110,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 10,
+      "building_kind": 27,
+      "name": "中学校",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 8,
+      "source_image_id": 17,
+      "source_rect": [
+        0,
+        32,
+        32,
+        32
+      ],
+      "existing_name_message_index": 111,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 11,
+      "building_kind": 28,
+      "name": "高校",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 8,
+      "source_image_id": 17,
+      "source_rect": [
+        0,
+        32,
+        32,
+        32
+      ],
+      "existing_name_message_index": 112,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 12,
+      "building_kind": 29,
+      "name": "大学",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 9,
+      "source_image_id": 17,
+      "source_rect": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "existing_name_message_index": 113,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 13,
+      "building_kind": 30,
+      "name": "専門学校",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 10,
+      "source_image_id": 17,
+      "source_rect": [
+        64,
+        32,
+        32,
+        32
+      ],
+      "existing_name_message_index": 114,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 14,
+      "building_kind": 35,
+      "name": "公園",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 14,
+      "source_image_id": 17,
+      "source_rect": [
+        192,
+        32,
+        32,
+        32
+      ],
+      "existing_name_message_index": 118,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 15,
+      "building_kind": 32,
+      "name": "水族館",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 12,
+      "source_image_id": 17,
+      "source_rect": [
+        128,
+        32,
+        32,
+        32
+      ],
+      "existing_name_message_index": 116,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 16,
+      "building_kind": 33,
+      "name": "動物園",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 13,
+      "source_image_id": 17,
+      "source_rect": [
+        160,
+        32,
+        32,
+        32
+      ],
+      "existing_name_message_index": 117,
+      "icon_fully_transparent": false
+    },
+    {
+      "project_selection": 17,
+      "building_kind": 31,
+      "name": "遊園地",
+      "notification_image_kind": 2,
+      "notification_image_parameter": 11,
+      "source_image_id": 17,
+      "source_rect": [
+        96,
+        32,
+        32,
+        32
+      ],
+      "existing_name_message_index": 115,
+      "icon_fully_transparent": false
+    }
+  ],
+  "source_reader": "80029284..800292A4 loadsbuildingmaster+52 intoV0;800292DC..800292EC passeskind2,paramV0 toreservation",
+  "important": "Buildingkind,projectselection andnotification iconindex aredifferent. Three schools shareicon8; gym/pool shareicon18. Do notforceuniquegraphics for eachbuildingname."
+}

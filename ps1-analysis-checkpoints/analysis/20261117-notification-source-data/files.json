@@ -1,0 +1,87 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 8151,
+    "sha256": "2a38fad417fd7994b88125e8d46dff02b67c31b1c84c4f8f955c820cd3d31d00"
+  },
+  {
+    "path": "android-notification-bridge.json",
+    "bytes": 1102,
+    "sha256": "ac60ec6dd50d118bda1b631b60f9a908bf233d92b4f5509b0e362a9592748ac5"
+  },
+  {
+    "path": "building-notification-crops.json",
+    "bytes": 17328,
+    "sha256": "28a894b94c01e3a9ada4b531990f08fe80ef478a54d201cc652a34e365eb5963"
+  },
+  {
+    "path": "extract-notifications.py",
+    "bytes": 11364,
+    "sha256": "197adf979f40a5da374b816d98f18a68b03a7009109303bacb30d0574f3d871e"
+  },
+  {
+    "path": "notification-image-routes.json",
+    "bytes": 2572,
+    "sha256": "57849e8cacc1bce9a01aa37004a18d6f40b1bd75980c3993103f2396b784a8cd"
+  },
+  {
+    "path": "notification-readers.asm",
+    "bytes": 27112,
+    "sha256": "46c8e24572860c27339703fb8d2ef734678d9bb9f3f582b777ac2c9502a5ffd0"
+  },
+  {
+    "path": "notification-reservation-sites.json",
+    "bytes": 27713,
+    "sha256": "90952e0aefc8df97165d1dddc5d2d9abfe36dcec90a1c7df74726e75dd292997"
+  },
+  {
+    "path": "project-notification-icons-preview.png",
+    "bytes": 47315,
+    "sha256": "794201004a936cd0c0dfad3e5da94196b79a82ae10f646abb2193d24d5230543"
+  },
+  {
+    "path": "project-notification-image-links.json",
+    "bytes": 6857,
+    "sha256": "66a98adb259f7cda263df710be10d00697e0cae696b7ba0eaf776c52206855ba"
+  },
+  {
+    "path": "source/building_icon_reader.bin",
+    "bytes": 352,
+    "sha256": "d89727d698f05899958c4380f84e373f2ff99a2d27b2d4587fa4f04001e499c4"
+  },
+  {
+    "path": "source/completion_icon_parameter.bin",
+    "bytes": 112,
+    "sha256": "e22fd9e32e7ad26721076e31088dd0035e93eac4bcc5a2103479491d5eee1645"
+  },
+  {
+    "path": "source/enqueue-call-windows.bin",
+    "bytes": 8976,
+    "sha256": "8d50be8af3737ba6cc1c344e41ba67733d888cfe61b785e2ee50d05fc2ea5e17"
+  },
+  {
+    "path": "source/image_switch_table.bin",
+    "bytes": 32,
+    "sha256": "2c5cbb0111b0e2b9bf93808b7a7023794dfa4f03c9d6b27d0913f1b339d76e20"
+  },
+  {
+    "path": "source/notification_display.bin",
+    "bytes": 2652,
+    "sha256": "54a3a276968a97a72b4666b226f47d8db1f6d54badc4f638e1e3bdc111abd240"
+  },
+  {
+    "path": "source/raw_fixed_templates.bin",
+    "bytes": 72,
+    "sha256": "34b02201ceee5e8fb97a74a414afb334d48e368e44d195cd6d85c7752a665a60"
+  },
+  {
+    "path": "source-provenance.json",
+    "bytes": 2152,
+    "sha256": "24e791147a82323020a1ebbfacfd28e8cd36aca57dd26f228b530c4f245d9183"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 432,
+    "sha256": "6bac8f1b55b0a1f390adce2d06ed7baea46a18bf3ca781f6f40c435a76fabb85"
+  }
+]

@@ -160,3 +160,5 @@
 - [2026-11-17：店員35人の顔と4マップ140参照、未選択の募集中枠を原画像へ接続・原CPU検証0回](analysis/20261117-staff-portrait-source-data/README.md)
 
 - [2026-11-17：UI枠9部品・矩形8種・カーソル・アイコン8枠を原画像へ接続、透明2枠を区別・原CPU検証0回](analysis/20261117-ui-frame-source-data/README.md)
+
+- [2026-11-17：通知画像8分岐・予約34箇所と誘致18施設の15通知アイコンを接続・原CPU検証0回](analysis/20261117-notification-source-data/README.md)

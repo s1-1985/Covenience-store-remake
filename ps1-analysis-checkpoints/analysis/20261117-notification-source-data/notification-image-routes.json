@@ -1,0 +1,90 @@
+{
+  "switch_table": "0x800109C0",
+  "kind_global": "0x800E3BE4",
+  "parameter_global": "0x800E3BE8",
+  "rows": [
+    {
+      "kind": 0,
+      "entry": null,
+      "source": "no image switch branch",
+      "parameter": "notused by imagebranch"
+    },
+    {
+      "kind": 1,
+      "entry": "0x8004000c",
+      "source": "SHOPTYP1.TIM",
+      "image_id": 6,
+      "reader": "0x80067494",
+      "parameter": "code&7 icon slot; see previous UIcropmap"
+    },
+    {
+      "kind": 2,
+      "entry": "0x8004015c",
+      "source": "BUILDIN1.TIM",
+      "image_id": 17,
+      "reader": "0x8006B620",
+      "parameter": "building notification icon index,not building kind"
+    },
+    {
+      "kind": 3,
+      "entry": "0x8004028c",
+      "source": "KAO01/02.TIM orKYOU placeholder",
+      "reader": "0x800675DC",
+      "parameter": "portraitcode; see previous portraitcropmap"
+    },
+    {
+      "kind": 4,
+      "entry": "0x800402e0",
+      "source": "PS_CM1.TIM",
+      "image_id": 16,
+      "reader": "0x8006A304",
+      "parameter": "helperUVrow96+parameter*32; broaderparameterreachability notinventoried"
+    },
+    {
+      "kind": 5,
+      "entry": "0x8004041c",
+      "source": "PS_CM1.TIM",
+      "image_id": 16,
+      "reader": "0x80041630",
+      "raw_template": "0x80010998",
+      "parameter": "rawtemplate only; exact resultingcrop notassigned inthiswork"
+    },
+    {
+      "kind": 6,
+      "entry": "0x8004057c",
+      "source": "PS_CM1.TIM",
+      "image_id": 16,
+      "reader": "0x80041630",
+      "raw_template": "0x80010974",
+      "parameter": "rawtemplate only; exact resultingcrop notassigned inthiswork"
+    },
+    {
+      "kind": 7,
+      "entry": "0x800406dc",
+      "source": "no image branch; active timer zeroed"
+    },
+    {
+      "kind": 8,
+      "entry": "0x800406ec",
+      "source": "no image branch; active timer zeroed"
+    }
+  ],
+  "important": "Kind selects image path; queue mode+2 independentlyselects text/report presentation. Kind7/8 timerzero isnotproofactiveflagcleared.",
+  "modes": [
+    {
+      "mode": 1,
+      "content": "currenttextarea800E3AA0;kind<7 copiesqueued120bytebody,kind>=7 skipscopy",
+      "text_x_offset_rule": "kind0:+32;kind3:+72;others:+56",
+      "text_y_offset": 16
+    },
+    {
+      "mode": 2,
+      "content": "monthlyreport renderer8006C048 at0,64"
+    },
+    {
+      "mode": 3,
+      "content": "annualreport renderer8006C8B0 at16,48"
+    }
+  ],
+  "known_before": "Basic queue and displaycontrol alreadydecoded inr2 event_queue.py/notification_display.py; this work records source routes and icon binding."
+}

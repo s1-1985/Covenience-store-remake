@@ -1,0 +1,15 @@
+{
+  "direct_reservation_calls": 34,
+  "calls_with_local_constant_kind": 34,
+  "calls_with_local_constant_mode": 34,
+  "image_switch_branches": 8,
+  "building_icon_slots": 32,
+  "building_icon_nontransparent_slots": 32,
+  "projects": 18,
+  "distinct_project_notification_icons": 15,
+  "project_icons_transparent": 0,
+  "missing_project_crops": 0,
+  "original_cpu_calls": 0,
+  "gameplay_updates": 0,
+  "android_code_changed": false
+}

@@ -1,0 +1,1063 @@
+{
+  "callee": "0x8003ECD8",
+  "rows": [
+    {
+      "call": "0x80027998",
+      "block_start": "0x8002795c",
+      "arguments": {
+        "image_kind": {
+          "value": 4,
+          "writer": "0x80027980",
+          "instruction": "addiu $a0, $zero, 4"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x8002798c",
+          "instruction": "lw $a1, -0x1a4($at)"
+        },
+        "sound_request": {
+          "value": 100,
+          "writer": "0x80027990",
+          "instruction": "addiu $a2, $zero, 0x64"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80027994",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002797c",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x80027a54",
+      "block_start": "0x80027a18",
+      "arguments": {
+        "image_kind": {
+          "value": 4,
+          "writer": "0x80027a3c",
+          "instruction": "addiu $a0, $zero, 4"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x80027a48",
+          "instruction": "lw $a1, -0x1a4($at)"
+        },
+        "sound_request": {
+          "value": 31,
+          "writer": "0x80027a4c",
+          "instruction": "addiu $a2, $zero, 0x1f"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80027a50",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80027a38",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x80027c38",
+      "block_start": "0x80027bfc",
+      "arguments": {
+        "image_kind": {
+          "value": 4,
+          "writer": "0x80027c20",
+          "instruction": "addiu $a0, $zero, 4"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x80027c2c",
+          "instruction": "lw $a1, -0x1a4($at)"
+        },
+        "sound_request": {
+          "value": 101,
+          "writer": "0x80027c30",
+          "instruction": "addiu $a2, $zero, 0x65"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80027c34",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80027c1c",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x80027ee0",
+      "block_start": "0x80027ecc",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x80027ed0",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 0,
+          "writer": "0x80027ed4",
+          "instruction": "move $a1, $zero"
+        },
+        "sound_request": {
+          "value": 29,
+          "writer": "0x80027ed8",
+          "instruction": "addiu $a2, $zero, 0x1d"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80027edc",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80027ecc",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x800282e8",
+      "block_start": "0x800282a8",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x800282d8",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x800282dc",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 35,
+          "writer": "0x800282e0",
+          "instruction": "addiu $a2, $zero, 0x23"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x800282e4",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x800282d4",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x80028a40",
+      "block_start": "0x80028a00",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x80028a30",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x80028a34",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 30,
+          "writer": "0x80028a38",
+          "instruction": "addiu $a2, $zero, 0x1e"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80028a3c",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80028a2c",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x80028d44",
+      "block_start": "0x80028d04",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x80028d34",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x80028d38",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x80028d3c",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80028d40",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80028d30",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x80028e08",
+      "block_start": "0x80028dc8",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x80028df8",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x80028dfc",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 32,
+          "writer": "0x80028e00",
+          "instruction": "addiu $a2, $zero, 0x20"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80028e04",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80028df4",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x800292ec",
+      "block_start": "0x800292d4",
+      "arguments": {
+        "image_kind": {
+          "value": 2,
+          "writer": "0x800292dc",
+          "instruction": "addiu $a0, $zero, 2"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x800292e0",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 34,
+          "writer": "0x800292e4",
+          "instruction": "move $a2, $v1"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x800292e8",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x800292d8",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x80029fc0",
+      "block_start": "0x80029f80",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x80029fb0",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x80029fb4",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x80029fb8",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80029fbc",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80029fac",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8002a81c",
+      "block_start": "0x8002a808",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8002a80c",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 0,
+          "writer": "0x8002a810",
+          "instruction": "move $a1, $zero"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x8002a814",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8002a818",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002a808",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8002a85c",
+      "block_start": "0x8002a848",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8002a84c",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 0,
+          "writer": "0x8002a850",
+          "instruction": "move $a1, $zero"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x8002a854",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8002a858",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002a848",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8002ace0",
+      "block_start": "0x8002accc",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8002acd0",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 1,
+          "writer": "0x8002acd4",
+          "instruction": "addiu $a1, $zero, 1"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x8002acd8",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8002acdc",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002accc",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8002adec",
+      "block_start": "0x8002add8",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8002addc",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 1,
+          "writer": "0x8002ade0",
+          "instruction": "addiu $a1, $zero, 1"
+        },
+        "sound_request": {
+          "value": 100,
+          "writer": "0x8002ade4",
+          "instruction": "addiu $a2, $zero, 0x64"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8002ade8",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002add8",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8002bd34",
+      "block_start": "0x8002bd20",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8002bd24",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 1,
+          "writer": "0x8002bd28",
+          "instruction": "addiu $a1, $zero, 1"
+        },
+        "sound_request": {
+          "value": 101,
+          "writer": "0x8002bd2c",
+          "instruction": "addiu $a2, $zero, 0x65"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8002bd30",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002bd20",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8002dab4",
+      "block_start": "0x8002da7c",
+      "arguments": {
+        "image_kind": {
+          "value": 2,
+          "writer": "0x8002daa4",
+          "instruction": "addiu $a0, $zero, 2"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x8002daa8",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 30,
+          "writer": "0x8002daac",
+          "instruction": "addiu $a2, $zero, 0x1e"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8002dab0",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002daa0",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8002ddbc",
+      "block_start": "0x8002dd84",
+      "arguments": {
+        "image_kind": {
+          "value": 2,
+          "writer": "0x8002ddac",
+          "instruction": "addiu $a0, $zero, 2"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x8002ddb0",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 30,
+          "writer": "0x8002ddb4",
+          "instruction": "addiu $a2, $zero, 0x1e"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8002ddb8",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002dda8",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8002dfe0",
+      "block_start": "0x8002dfa8",
+      "arguments": {
+        "image_kind": {
+          "value": 2,
+          "writer": "0x8002dfd0",
+          "instruction": "addiu $a0, $zero, 2"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x8002dfd4",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 30,
+          "writer": "0x8002dfd8",
+          "instruction": "addiu $a2, $zero, 0x1e"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8002dfdc",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002dfcc",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8002e0c0",
+      "block_start": "0x8002e0ac",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8002e0b0",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 0,
+          "writer": "0x8002e0b4",
+          "instruction": "move $a1, $zero"
+        },
+        "sound_request": {
+          "value": 100,
+          "writer": "0x8002e0b8",
+          "instruction": "addiu $a2, $zero, 0x64"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8002e0bc",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002e0ac",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8002e104",
+      "block_start": "0x8002e0f0",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8002e0f4",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 0,
+          "writer": "0x8002e0f8",
+          "instruction": "move $a1, $zero"
+        },
+        "sound_request": {
+          "value": 100,
+          "writer": "0x8002e0fc",
+          "instruction": "addiu $a2, $zero, 0x64"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8002e100",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8002e0f0",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x80032194",
+      "block_start": "0x80032154",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x80032184",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x80032188",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x8003218c",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80032190",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80032180",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8003223c",
+      "block_start": "0x800321fc",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x8003222c",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x80032230",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x80032234",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80032238",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80032228",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x800322e4",
+      "block_start": "0x800322a4",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x800322d4",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x800322d8",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x800322dc",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x800322e0",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x800322d0",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8003238c",
+      "block_start": "0x8003234c",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x8003237c",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x80032380",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x80032384",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80032388",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80032378",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8003243c",
+      "block_start": "0x800323fc",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x8003242c",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x80032430",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x80032434",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x80032438",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x80032428",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x800324ec",
+      "block_start": "0x800324ac",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x800324dc",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x800324e0",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x800324e4",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x800324e8",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x800324d8",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x800327e4",
+      "block_start": "0x800327c8",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x800327d4",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 0,
+          "writer": "0x800327d8",
+          "instruction": "move $a1, $zero"
+        },
+        "sound_request": {
+          "value": 28,
+          "writer": "0x800327dc",
+          "instruction": "addiu $a2, $zero, 0x1c"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x800327e0",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": null,
+        "writer": "0x800327d0",
+        "instruction": "sw $v0, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8003b9a0",
+      "block_start": "0x8003b960",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x8003b990",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x8003b994",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 34,
+          "writer": "0x8003b998",
+          "instruction": "addiu $a2, $zero, 0x22"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8003b99c",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8003b98c",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8003bd68",
+      "block_start": "0x8003bd28",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x8003bd58",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x8003bd5c",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 29,
+          "writer": "0x8003bd60",
+          "instruction": "addiu $a2, $zero, 0x1d"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8003bd64",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8003bd54",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8003be70",
+      "block_start": "0x8003be30",
+      "arguments": {
+        "image_kind": {
+          "value": 3,
+          "writer": "0x8003be60",
+          "instruction": "addiu $a0, $zero, 3"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x8003be64",
+          "instruction": "move $a1, $v0"
+        },
+        "sound_request": {
+          "value": 34,
+          "writer": "0x8003be68",
+          "instruction": "addiu $a2, $zero, 0x22"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8003be6c",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8003be5c",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8003cf0c",
+      "block_start": "0x8003cef8",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8003cefc",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 0,
+          "writer": "0x8003cf00",
+          "instruction": "move $a1, $zero"
+        },
+        "sound_request": {
+          "value": 100,
+          "writer": "0x8003cf04",
+          "instruction": "addiu $a2, $zero, 0x64"
+        },
+        "queue_mode": {
+          "value": 2,
+          "writer": "0x8003cf08",
+          "instruction": "addiu $a3, $zero, 2"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8003cef8",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8003cf3c",
+      "block_start": "0x8003cf28",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8003cf2c",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 0,
+          "writer": "0x8003cf30",
+          "instruction": "move $a1, $zero"
+        },
+        "sound_request": {
+          "value": 100,
+          "writer": "0x8003cf34",
+          "instruction": "addiu $a2, $zero, 0x64"
+        },
+        "queue_mode": {
+          "value": 3,
+          "writer": "0x8003cf38",
+          "instruction": "addiu $a3, $zero, 3"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8003cf28",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8003dd78",
+      "block_start": "0x8003dd60",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8003dd68",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": null,
+          "writer": "0x8003dd6c",
+          "instruction": "lw $a1, 0x8c($fp)"
+        },
+        "sound_request": {
+          "value": 101,
+          "writer": "0x8003dd70",
+          "instruction": "move $a2, $v0"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8003dd74",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 0,
+        "writer": "0x8003dd64",
+        "instruction": "sw $zero, 0x10($sp)"
+      }
+    },
+    {
+      "call": "0x8003ecb8",
+      "block_start": "0x8003eca0",
+      "arguments": {
+        "image_kind": {
+          "value": 0,
+          "writer": "0x8003eca8",
+          "instruction": "move $a0, $zero"
+        },
+        "image_parameter": {
+          "value": 0,
+          "writer": "0x8003ecac",
+          "instruction": "move $a1, $zero"
+        },
+        "sound_request": {
+          "value": 100,
+          "writer": "0x8003ecb0",
+          "instruction": "addiu $a2, $zero, 0x64"
+        },
+        "queue_mode": {
+          "value": 1,
+          "writer": "0x8003ecb4",
+          "instruction": "addiu $a3, $zero, 1"
+        }
+      },
+      "variant_stack_argument": {
+        "value": 3,
+        "writer": "0x8003eca4",
+        "instruction": "sw $v0, 0x10($sp)"
+      }
+    }
+  ],
+  "scope": "DirectJALonly. Withinlastcontrol-transfer-freeblock, immediate arithmetic/copies are propagated. Loads/callreturns/predecessor values areunknown(null). No paths/indirectcalls or exactruntimevalues inferred.",
+  "raw_windows": "source/enqueue-call-windows.bin",
+  "window_bytes": 264,
+  "window_start_relative_to_call": -256
+}

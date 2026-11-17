@@ -1,0 +1,22 @@
+{
+  "status": "source_data_only_no_android_change",
+  "routes": "notification-image-routes.json",
+  "direct_sites": "notification-reservation-sites.json",
+  "project_icons": "project-notification-image-links.json",
+  "icon_crops": "building-notification-crops.json",
+  "rules": [
+    "Keepimagekind,parameter,queue_mode,sound andbody independent.",
+    "Kind1 usesimage6SHOPTYP1;kind2 usesimage17BUILDIN1. TheirVRAMtop-leftandCLUToverlap;useassetID.",
+    "Projectselection,buildingkind andnotificationiconindex aredifferent.",
+    "18projects use15icons; preserve intentionalsharing.",
+    "Staticunknown arguments remainnull; do not invent0values.",
+    "Mode1 usescurrenttextarea;kind<7 copiesqueuedbody,kind>=7 skipscopy. Imagekind isnot afixedmessageID.",
+    "Kind7/8 timerzero doesnot byitself clearactiveflag."
+  ],
+  "unresolved": [
+    "Exact kind5/6fixedtemplatecropinterpretation",
+    "Allmessagebodies/dynamicarguments/naturalreachability",
+    "ProjectcompletionsoundR05 remainsopen"
+  ],
+  "runtime": "NativeAndroid asset/data model; no originalEXE/BIOS/emulator runtime dependency."
+}
