@@ -1,0 +1,74 @@
+{
+  "status": "source_data_only_no_android_change",
+  "crops": "ui-source-crops.json",
+  "window_rule": "window-source-composition.json",
+  "boundary_rule": "source-height-boundaries.json",
+  "window": {
+    "parts": 9,
+    "cell_pixels": [
+      16,
+      16
+    ],
+    "minimum_cells": [
+      2,
+      2
+    ],
+    "image_id": 8
+  },
+  "rectangle": {
+    "modes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "source_uv_table": "0x80010078",
+    "image_id": 8,
+    "note": "Separatefromninepartwindow; supportoriginal16pixel/partialwidth decomposition."
+  },
+  "cursor": {
+    "image_id": 8,
+    "source_rect": [
+      96,
+      16,
+      16,
+      16
+    ]
+  },
+  "icon32": {
+    "slots": 8,
+    "nontransparent_slots": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "transparent_slots": [
+      6,
+      7
+    ],
+    "image_id": 6,
+    "source_y": 0,
+    "draw_uv_y": 128,
+    "index_rule": "code&7",
+    "original_height": 32,
+    "requested_height": 64
+  },
+  "rules": [
+    "Resolve sourcefile fromloadbinding,UVandCLUT; drawkind13 alone isambiguous.",
+    "NeverfillmissingSHOPTYP1rows32..63 for theseeighticon slots.",
+    "Keep emptyslots6/7 transparent; no added artwork or gameplaymode inference.",
+    "Retain originalpalette/STP for eventualcompositing."
+  ],
+  "limitations": [
+    "Only26crop regions; notallUIassets",
+    "Reference PNGs are not sourceGPU screenverification",
+    "NativeAndroid lookups need no originalEXE/BIOS/emulator runtime"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "window_parts": 9,
+  "rectangle_styles": 8,
+  "selection_cursor": 1,
+  "icon32_slots": 8,
+  "total_source_crops": 26,
+  "source_images": 2,
+  "missing_source_crops": 0,
+  "icon32_nontransparent_slots": 6,
+  "icon32_transparent_slots": [
+    6,
+    7
+  ],
+  "shoptyp1_icon_rows_required": 32,
+  "shoptyp1_requested_height": 64,
+  "original_cpu_calls": 0,
+  "gameplay_updates": 0,
+  "android_code_changed": false
+}

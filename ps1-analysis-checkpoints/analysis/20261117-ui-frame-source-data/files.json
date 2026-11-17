@@ -1,0 +1,87 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 6379,
+    "sha256": "c07004c9f55b3c2078446a253b589e2786965e2a4be5dcede7158972cf4fd553"
+  },
+  {
+    "path": "android-ui-frame-bridge.json",
+    "bytes": 1529,
+    "sha256": "97abf44a776575f6f52bb7c8abc148a869a39f450b65798db8ee0f69dde8cf3e"
+  },
+  {
+    "path": "extract-ui-crops.py",
+    "bytes": 8911,
+    "sha256": "d49fc0eb065fc5bcfd3620f7403168e81faa03b120a42a618470f65bc1946625"
+  },
+  {
+    "path": "source/cursor_reader.bin",
+    "bytes": 360,
+    "sha256": "28afec247190bb7951b3707a9e01a73b18299e9b1e3d2e362e85e6ca0b3a3ce3"
+  },
+  {
+    "path": "source/icon32_reader.bin",
+    "bytes": 328,
+    "sha256": "2887a3492664a5f9c6667be8cdf3b4d77bfb0b3529aac38f804123b379e0aff5"
+  },
+  {
+    "path": "source/notification_icon_binding.bin",
+    "bytes": 328,
+    "sha256": "7b9c84849c5c6bf06e798d624587cda1ce29d215e5c3d39d253c65ce7ea135c1"
+  },
+  {
+    "path": "source/rectangle_style_reader.bin",
+    "bytes": 924,
+    "sha256": "dd1d0d31d3e382abdf84ff0ea42a6bf4dc088c386510ce7039dafb930071cfd5"
+  },
+  {
+    "path": "source/rectangle_uv_table.bin",
+    "bytes": 16,
+    "sha256": "b820451d27c00fe05897669aef6a4cd2964555dab8ddaac1e10bc96ee39df85f"
+  },
+  {
+    "path": "source/window_reader.bin",
+    "bytes": 1976,
+    "sha256": "6e560444c4ee615d65c35c2801f117622fdabfb8fb0af7afdb55b7925c004fcd"
+  },
+  {
+    "path": "source-height-boundaries.json",
+    "bytes": 1241,
+    "sha256": "2c590bbefc63cee4cc7bb17c21f677be89d268027e0bd28929bb15ea6d861881"
+  },
+  {
+    "path": "source-provenance.json",
+    "bytes": 3781,
+    "sha256": "07ed5557dd9931fe6c69b16e7a72155cd273770f19dc6336c3c47fc31e511665"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 417,
+    "sha256": "369d1ea3a0c0c77991d2296f4cd3076fec03cd092e3f2b2f2b966318bb342272"
+  },
+  {
+    "path": "ui-crops-preview.png",
+    "bytes": 27690,
+    "sha256": "09528bd99d6713572a0732c623696ce3101da7d533261c7984778e1bf809ce18"
+  },
+  {
+    "path": "ui-image-readers.asm",
+    "bytes": 34222,
+    "sha256": "94ede1b21c9e3ac8c7ac8f1b57e45fd3251f79a2a94f7436ecca25879295efc7"
+  },
+  {
+    "path": "ui-source-crops.json",
+    "bytes": 24958,
+    "sha256": "b9b4c8f07a81a234f9d3533a82e9afbf3fe9f034a27d814311704306eab6f572"
+  },
+  {
+    "path": "window-eight-by-five-preview.png",
+    "bytes": 913,
+    "sha256": "65c40089544e49210ceb79e62c88c6690e61e02d5cc6c664f2e3e5d5689cb91b"
+  },
+  {
+    "path": "window-source-composition.json",
+    "bytes": 3179,
+    "sha256": "b846540cbac0731277fe6b71cb9c55158dec83bb19e575662e2956abf4dfa663"
+  }
+]

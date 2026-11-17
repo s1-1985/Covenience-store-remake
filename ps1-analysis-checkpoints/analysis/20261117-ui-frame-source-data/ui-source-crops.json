@@ -1,0 +1,901 @@
+{
+  "rows": [
+    {
+      "key": "window_0_0",
+      "category": "window",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        96,
+        32
+      ],
+      "source_rect": [
+        96,
+        32,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "bc2efcb41e4cd72043c5362c12d7b4a75eea64167c287179f778a0fc2b72ea56",
+      "raw_color_words_sha256": "da402fdd5680a571903437db461271998d1d961e0c2f02f6f10789d48935d566",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "position": [
+          0,
+          0
+        ],
+        "source_reader": "80017C3C/80017FD4"
+      }
+    },
+    {
+      "key": "window_0_1",
+      "category": "window",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        112,
+        32
+      ],
+      "source_rect": [
+        112,
+        32,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "67f1a7b125908bd8c29d24bdede8a5da80fca58d7c8347a498398df7cccbc8ff",
+      "raw_color_words_sha256": "65129ab9598eddf83a1d5c336e68813c0880a1bc62b6f901d8e2f71b53eaf3bc",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "position": [
+          1,
+          0
+        ],
+        "source_reader": "80017C3C/80017FD4"
+      }
+    },
+    {
+      "key": "window_0_2",
+      "category": "window",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        128,
+        32
+      ],
+      "source_rect": [
+        128,
+        32,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "e82c097a3093a23d40020030100b06ee3d10d475b1c00f15f0100f6c34015375",
+      "raw_color_words_sha256": "375ea7133cc0900ba7bb9e27ad847b41ec5d05239c6b0c4c1320287502b7eeb7",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "position": [
+          2,
+          0
+        ],
+        "source_reader": "80017C3C/80017FD4"
+      }
+    },
+    {
+      "key": "window_1_0",
+      "category": "window",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        144,
+        32
+      ],
+      "source_rect": [
+        144,
+        32,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "6d6022a2af69908b31e4ac04f8d793a5652ec056747b9a5955d08afe091e7d1f",
+      "raw_color_words_sha256": "370f0c6282e722f814e0b3bcd9f8e703ea07d71bd26fd7b74c8613928dcf9886",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "position": [
+          0,
+          1
+        ],
+        "source_reader": "80017C3C/80017FD4"
+      }
+    },
+    {
+      "key": "window_1_1",
+      "category": "window",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        160,
+        32
+      ],
+      "source_rect": [
+        160,
+        32,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "a319c1db70f3e0b17969fe346e4a6db8703ffc7d744c1f24015cf74b3bb57fc4",
+      "raw_color_words_sha256": "1f5564aa9414732b89a7c345b79b92601ebd7337d420ad058e5fb8643f71a483",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "position": [
+          1,
+          1
+        ],
+        "source_reader": "80017C3C/80017FD4"
+      }
+    },
+    {
+      "key": "window_1_2",
+      "category": "window",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        176,
+        32
+      ],
+      "source_rect": [
+        176,
+        32,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "3ed40c5c820d012ebad922361af0d96261745b8c1d7a9b01de88007ca44a8492",
+      "raw_color_words_sha256": "44cf95475259d71c9c3443963589c7348087f344a2c59bafc560b71b43c6880b",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "position": [
+          2,
+          1
+        ],
+        "source_reader": "80017C3C/80017FD4"
+      }
+    },
+    {
+      "key": "window_2_0",
+      "category": "window",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        192,
+        32
+      ],
+      "source_rect": [
+        192,
+        32,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "dba3a86d9339b799b5303205e9e53fefe9496a5311c0142a1abc701336dac597",
+      "raw_color_words_sha256": "96d7b82d7b9f6496f78e166c01206889090de79c417962d63d90b7d72b64ce73",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "position": [
+          0,
+          2
+        ],
+        "source_reader": "80017C3C/80017FD4"
+      }
+    },
+    {
+      "key": "window_2_1",
+      "category": "window",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        208,
+        32
+      ],
+      "source_rect": [
+        208,
+        32,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "c8c4db9f03e4e873a03be4ad3a159ada40ffcae7da607dcbb3a3ab99b7bf3a63",
+      "raw_color_words_sha256": "f1d4f376a6551634d1b5d196f0cb21bc30ff43331c5b0d902cfdada2712bf3f1",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "position": [
+          1,
+          2
+        ],
+        "source_reader": "80017C3C/80017FD4"
+      }
+    },
+    {
+      "key": "window_2_2",
+      "category": "window",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        224,
+        32
+      ],
+      "source_rect": [
+        224,
+        32,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "7e7579acfbc1007e1dd3fde79e23e73fe61a579945b4a341165add5baacfcc3f",
+      "raw_color_words_sha256": "8d8e3314b6d94f3eafda0d5196e0ad3e364d7ce12e52915f0aaadfce2b8070bb",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "position": [
+          2,
+          2
+        ],
+        "source_reader": "80017C3C/80017FD4"
+      }
+    },
+    {
+      "key": "rectangle_mode_0",
+      "category": "rectangle_style",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        112,
+        48
+      ],
+      "source_rect": [
+        112,
+        48,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "a048bd565f981202cd19c1d11366d63118bf575b57e4cd8dcc4947fdc91dbe1d",
+      "raw_color_words_sha256": "d5fadc8ef2298a05bf0825d5f98cd5b16ef8ed01be6cf3b45d8027bc58946b6c",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "mode": 0,
+        "source_table": "0x80010078",
+        "source_reader": "0x800185A4",
+        "width_note": "Full16x16sample. Original rectangle may clip/narrow width; doesnot scale thetexture to arbitrarywidth."
+      }
+    },
+    {
+      "key": "rectangle_mode_1",
+      "category": "rectangle_style",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        128,
+        48
+      ],
+      "source_rect": [
+        128,
+        48,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "30682b91e560e2f8a51dc49fd79534c0609f1711521b8eecdf112e135d3e083b",
+      "raw_color_words_sha256": "61fb233d7033f938c3299a948f5fc8802c9f8cf56e2c91084f36997d09bd50ba",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "mode": 1,
+        "source_table": "0x80010078",
+        "source_reader": "0x800185A4",
+        "width_note": "Full16x16sample. Original rectangle may clip/narrow width; doesnot scale thetexture to arbitrarywidth."
+      }
+    },
+    {
+      "key": "rectangle_mode_2",
+      "category": "rectangle_style",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        144,
+        48
+      ],
+      "source_rect": [
+        144,
+        48,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "7b9689c6066126fb58a1116d346b02017c2d3e0c85803dcb230ff3e5e3a40084",
+      "raw_color_words_sha256": "8e4fd8c2f16eca76794d0e65647d7f6e175b99ab84b07debf33888a817275566",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "mode": 2,
+        "source_table": "0x80010078",
+        "source_reader": "0x800185A4",
+        "width_note": "Full16x16sample. Original rectangle may clip/narrow width; doesnot scale thetexture to arbitrarywidth."
+      }
+    },
+    {
+      "key": "rectangle_mode_3",
+      "category": "rectangle_style",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        176,
+        16
+      ],
+      "source_rect": [
+        176,
+        16,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "8556cb85ad5958d3cb6c3f3f95356e83443bd7e7806691a2db1bc8fd937a80ea",
+      "raw_color_words_sha256": "aa1cdbfa4186eb26d49d35c6499c4a933b4ef5e67b209be2e20215b8e91b28ac",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "mode": 3,
+        "source_table": "0x80010078",
+        "source_reader": "0x800185A4",
+        "width_note": "Full16x16sample. Original rectangle may clip/narrow width; doesnot scale thetexture to arbitrarywidth."
+      }
+    },
+    {
+      "key": "rectangle_mode_4",
+      "category": "rectangle_style",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        192,
+        16
+      ],
+      "source_rect": [
+        192,
+        16,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "dc664560fdfe5cc64dcb27610faae142c0623f57b13fc664209e88fb8bd0cc1e",
+      "raw_color_words_sha256": "81497da233df1ab3ad2701fff32b179da764b4d0113ad500d9c578dc01f0a0db",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "mode": 4,
+        "source_table": "0x80010078",
+        "source_reader": "0x800185A4",
+        "width_note": "Full16x16sample. Original rectangle may clip/narrow width; doesnot scale thetexture to arbitrarywidth."
+      }
+    },
+    {
+      "key": "rectangle_mode_5",
+      "category": "rectangle_style",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        208,
+        48
+      ],
+      "source_rect": [
+        208,
+        48,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "2d290edc8701a8bfdc706a0f5a1403312b0e0f2e2bb6551aa73c78073eda2612",
+      "raw_color_words_sha256": "772563c54a6bc29ff3220f22e6c4433956b1b2129ff6b7db49bf673a72c46ce0",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "mode": 5,
+        "source_table": "0x80010078",
+        "source_reader": "0x800185A4",
+        "width_note": "Full16x16sample. Original rectangle may clip/narrow width; doesnot scale thetexture to arbitrarywidth."
+      }
+    },
+    {
+      "key": "rectangle_mode_6",
+      "category": "rectangle_style",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        192,
+        48
+      ],
+      "source_rect": [
+        192,
+        48,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "ccf7291b2ad5be2136f481cfbda74049788d6743599541c3393efa178e31dd02",
+      "raw_color_words_sha256": "3f21aa0e442beda1f71353ccd974d4097f3de392403fe096d9e265e66d08ff19",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "mode": 6,
+        "source_table": "0x80010078",
+        "source_reader": "0x800185A4",
+        "width_note": "Full16x16sample. Original rectangle may clip/narrow width; doesnot scale thetexture to arbitrarywidth."
+      }
+    },
+    {
+      "key": "rectangle_mode_7",
+      "category": "rectangle_style",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        224,
+        48
+      ],
+      "source_rect": [
+        224,
+        48,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "5585e9807e8dc68991f8945ecb613b94bd81cdf60bdea7145588fa9e6d2c7081",
+      "raw_color_words_sha256": "f3b577953b7dfc4aa3c39c6288172e2aca3dd305fbd72e7beb3994e18b6ee99a",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "mode": 7,
+        "source_table": "0x80010078",
+        "source_reader": "0x800185A4",
+        "width_note": "Full16x16sample. Original rectangle may clip/narrow width; doesnot scale thetexture to arbitrarywidth."
+      }
+    },
+    {
+      "key": "cursor",
+      "category": "selection_cursor",
+      "source_image_id": 8,
+      "source_file": "KYOU.TIM",
+      "draw_record_kind": 7,
+      "uv": [
+        96,
+        16
+      ],
+      "source_rect": [
+        96,
+        16,
+        16,
+        16
+      ],
+      "clut_xy": [
+        0,
+        492
+      ],
+      "indices_sha256": "1be364dcefad7125a35ac7d2176a3481a7a331de5cfbfe4c95c939f0245ec64e",
+      "raw_color_words_sha256": "9905946fbb4de6173c7c33a9e60c18444516c03f55f7ca8eca2912b450a519ee",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "source_reader": "0x8004E938",
+        "known_other_users": "Existing cursor_control/settings_visuals/confirmation_dialog use sameUV."
+      }
+    },
+    {
+      "key": "icon32_0",
+      "category": "icon32",
+      "source_image_id": 6,
+      "source_file": "SHOPTYP1.TIM",
+      "draw_record_kind": 13,
+      "uv": [
+        0,
+        128
+      ],
+      "source_rect": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        490
+      ],
+      "indices_sha256": "2778d681d4052a53b48ec1e43d7750ed579911ce4179b551715e0cbb46a7706b",
+      "raw_color_words_sha256": "9eaf201b3c36056d2dc1120d80c085c4b3e3d894a7563c36a596e24cf26199b9",
+      "palette_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "source_reader": "0x80067494",
+        "slot": 0,
+        "index_rule": "signed16input low3bits;code&7",
+        "caller": "0x8004014C",
+        "rect_selector": "0x80040020 selectsimage6;400F4uploads;4014Cdraws"
+      }
+    },
+    {
+      "key": "icon32_1",
+      "category": "icon32",
+      "source_image_id": 6,
+      "source_file": "SHOPTYP1.TIM",
+      "draw_record_kind": 13,
+      "uv": [
+        32,
+        128
+      ],
+      "source_rect": [
+        32,
+        0,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        490
+      ],
+      "indices_sha256": "080ba809194beba9ae259e8d76eab36ca6d9b1bd3796c9f6c38a8f3820fb370c",
+      "raw_color_words_sha256": "21704a831126dec7299e281fcb9058edd286c56bf645533c2a7b50c55096977b",
+      "palette_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "source_reader": "0x80067494",
+        "slot": 1,
+        "index_rule": "signed16input low3bits;code&7",
+        "caller": "0x8004014C",
+        "rect_selector": "0x80040020 selectsimage6;400F4uploads;4014Cdraws"
+      }
+    },
+    {
+      "key": "icon32_2",
+      "category": "icon32",
+      "source_image_id": 6,
+      "source_file": "SHOPTYP1.TIM",
+      "draw_record_kind": 13,
+      "uv": [
+        64,
+        128
+      ],
+      "source_rect": [
+        64,
+        0,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        490
+      ],
+      "indices_sha256": "5ede5ff622009d4a3407fb74d8e742819f307a39b78402cb87ba000473be1a6a",
+      "raw_color_words_sha256": "efd6376e97e1f587e560cb0cb19df7f42c84e66290aaf7575b3495c3a04e7f2b",
+      "palette_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "source_reader": "0x80067494",
+        "slot": 2,
+        "index_rule": "signed16input low3bits;code&7",
+        "caller": "0x8004014C",
+        "rect_selector": "0x80040020 selectsimage6;400F4uploads;4014Cdraws"
+      }
+    },
+    {
+      "key": "icon32_3",
+      "category": "icon32",
+      "source_image_id": 6,
+      "source_file": "SHOPTYP1.TIM",
+      "draw_record_kind": 13,
+      "uv": [
+        96,
+        128
+      ],
+      "source_rect": [
+        96,
+        0,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        490
+      ],
+      "indices_sha256": "55fc1590a519e829f49bfaa711cea6ece51cf90503af13dc81e8e070cb4d482d",
+      "raw_color_words_sha256": "b4a1b6ea39d1b834c8f4b763c8e05f744ec6f14bde6718451e49d5345982509f",
+      "palette_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "source_reader": "0x80067494",
+        "slot": 3,
+        "index_rule": "signed16input low3bits;code&7",
+        "caller": "0x8004014C",
+        "rect_selector": "0x80040020 selectsimage6;400F4uploads;4014Cdraws"
+      }
+    },
+    {
+      "key": "icon32_4",
+      "category": "icon32",
+      "source_image_id": 6,
+      "source_file": "SHOPTYP1.TIM",
+      "draw_record_kind": 13,
+      "uv": [
+        128,
+        128
+      ],
+      "source_rect": [
+        128,
+        0,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        490
+      ],
+      "indices_sha256": "718d143f2b454ba29c95350d6ee4b9a2045f4d182cf2f52dd8a717012aaa1aec",
+      "raw_color_words_sha256": "4e020758e630616445b0a773568ce3389ee5a49a7fc00dee3450ea49382f9824",
+      "palette_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "source_reader": "0x80067494",
+        "slot": 4,
+        "index_rule": "signed16input low3bits;code&7",
+        "caller": "0x8004014C",
+        "rect_selector": "0x80040020 selectsimage6;400F4uploads;4014Cdraws"
+      }
+    },
+    {
+      "key": "icon32_5",
+      "category": "icon32",
+      "source_image_id": 6,
+      "source_file": "SHOPTYP1.TIM",
+      "draw_record_kind": 13,
+      "uv": [
+        160,
+        128
+      ],
+      "source_rect": [
+        160,
+        0,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        490
+      ],
+      "indices_sha256": "d26daf71f4381ae5d4cdd052d4092d33bf052a9ad768e6c7071743d8e127113e",
+      "raw_color_words_sha256": "16f84b8ec41dde1f925b095c3782eb64d127de92cff21d054ae730657632e8e5",
+      "palette_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+      "inside_original_pixels": true,
+      "fully_transparent": false,
+      "metadata": {
+        "source_reader": "0x80067494",
+        "slot": 5,
+        "index_rule": "signed16input low3bits;code&7",
+        "caller": "0x8004014C",
+        "rect_selector": "0x80040020 selectsimage6;400F4uploads;4014Cdraws"
+      }
+    },
+    {
+      "key": "icon32_6",
+      "category": "icon32",
+      "source_image_id": 6,
+      "source_file": "SHOPTYP1.TIM",
+      "draw_record_kind": 13,
+      "uv": [
+        192,
+        128
+      ],
+      "source_rect": [
+        192,
+        0,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        490
+      ],
+      "indices_sha256": "7b2f7b9c2a1280a0c450f1170c35af3fc28b5f1e49c605c896228d3e1d50f54a",
+      "raw_color_words_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+      "palette_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+      "inside_original_pixels": true,
+      "fully_transparent": true,
+      "metadata": {
+        "source_reader": "0x80067494",
+        "slot": 6,
+        "index_rule": "signed16input low3bits;code&7",
+        "caller": "0x8004014C",
+        "rect_selector": "0x80040020 selectsimage6;400F4uploads;4014Cdraws"
+      }
+    },
+    {
+      "key": "icon32_7",
+      "category": "icon32",
+      "source_image_id": 6,
+      "source_file": "SHOPTYP1.TIM",
+      "draw_record_kind": 13,
+      "uv": [
+        224,
+        128
+      ],
+      "source_rect": [
+        224,
+        0,
+        32,
+        32
+      ],
+      "clut_xy": [
+        0,
+        490
+      ],
+      "indices_sha256": "7b2f7b9c2a1280a0c450f1170c35af3fc28b5f1e49c605c896228d3e1d50f54a",
+      "raw_color_words_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+      "palette_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+      "inside_original_pixels": true,
+      "fully_transparent": true,
+      "metadata": {
+        "source_reader": "0x80067494",
+        "slot": 7,
+        "index_rule": "signed16input low3bits;code&7",
+        "caller": "0x8004014C",
+        "rect_selector": "0x80040020 selectsimage6;400F4uploads;4014Cdraws"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "image_id": 6,
+      "path": "/TIM0/SHOPTYP1.TIM",
+      "source_sha256": "ababeef4a71a1d6baa3eeaa3d5f9607062b7637ea941ff225ce84bda75575e50",
+      "source_size_pixels": [
+        256,
+        32
+      ],
+      "source_pixel_sha256": "fa360628c8a1c15ebe8b894363d56fb2d20be3dc3f6ff40c722721758d64d473",
+      "palette_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+      "destination_pixel_rect_words": [
+        832,
+        128,
+        128,
+        64
+      ],
+      "destination_clut_rect_words": [
+        0,
+        490,
+        256,
+        1
+      ]
+    },
+    {
+      "image_id": 8,
+      "path": "/TIM0/KYOU.TIM",
+      "source_sha256": "ef75f72fffafc3cc45853a2097059b421aed139929d31b6a1bea8dcb40127d89",
+      "source_size_pixels": [
+        256,
+        240
+      ],
+      "source_pixel_sha256": "7681a434f1d018510d94b7243ca983457fc4b76b47578ad6f7707b1f4b06a063",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "destination_pixel_rect_words": [
+        448,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        492,
+        256,
+        1
+      ]
+    }
+  ],
+  "scope": "Nine windowparts,eightrectangle styles,onecursor,eighticon32slots only. Not all UI symbols or control labels.",
+  "raw_palette_policy": "RawBGR555/STP maintained via sources/hash; PNG reference is not fullGPU compositing."
+}

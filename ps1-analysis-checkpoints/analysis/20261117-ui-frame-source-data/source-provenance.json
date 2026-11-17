@@ -1,0 +1,111 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "images": [
+    {
+      "image_id": 6,
+      "path": "/TIM0/SHOPTYP1.TIM",
+      "source_sha256": "ababeef4a71a1d6baa3eeaa3d5f9607062b7637ea941ff225ce84bda75575e50",
+      "source_size_pixels": [
+        256,
+        32
+      ],
+      "source_pixel_sha256": "fa360628c8a1c15ebe8b894363d56fb2d20be3dc3f6ff40c722721758d64d473",
+      "palette_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+      "destination_pixel_rect_words": [
+        832,
+        128,
+        128,
+        64
+      ],
+      "destination_clut_rect_words": [
+        0,
+        490,
+        256,
+        1
+      ]
+    },
+    {
+      "image_id": 8,
+      "path": "/TIM0/KYOU.TIM",
+      "source_sha256": "ef75f72fffafc3cc45853a2097059b421aed139929d31b6a1bea8dcb40127d89",
+      "source_size_pixels": [
+        256,
+        240
+      ],
+      "source_pixel_sha256": "7681a434f1d018510d94b7243ca983457fc4b76b47578ad6f7707b1f4b06a063",
+      "palette_sha256": "0d7a8ec1e05185ac54646280f50fa420ad8a502c31d500d7674669fd32b721b6",
+      "destination_pixel_rect_words": [
+        448,
+        0,
+        128,
+        256
+      ],
+      "destination_clut_rect_words": [
+        0,
+        492,
+        256,
+        1
+      ]
+    }
+  ],
+  "raw_exe_ranges": [
+    {
+      "file": "source/window_reader.bin",
+      "start": "0x80017b18",
+      "end_exclusive": "0x800182d0",
+      "sha256": "6e560444c4ee615d65c35c2801f117622fdabfb8fb0af7afdb55b7925c004fcd"
+    },
+    {
+      "file": "source/rectangle_style_reader.bin",
+      "start": "0x800185a4",
+      "end_exclusive": "0x80018940",
+      "sha256": "dd1d0d31d3e382abdf84ff0ea42a6bf4dc088c386510ce7039dafb930071cfd5"
+    },
+    {
+      "file": "source/rectangle_uv_table.bin",
+      "start": "0x80010078",
+      "end_exclusive": "0x80010088",
+      "sha256": "b820451d27c00fe05897669aef6a4cd2964555dab8ddaac1e10bc96ee39df85f"
+    },
+    {
+      "file": "source/cursor_reader.bin",
+      "start": "0x8004e938",
+      "end_exclusive": "0x8004eaa0",
+      "sha256": "28afec247190bb7951b3707a9e01a73b18299e9b1e3d2e362e85e6ca0b3a3ce3"
+    },
+    {
+      "file": "source/icon32_reader.bin",
+      "start": "0x80067494",
+      "end_exclusive": "0x800675dc",
+      "sha256": "2887a3492664a5f9c6667be8cdf3b4d77bfb0b3529aac38f804123b379e0aff5"
+    },
+    {
+      "file": "source/notification_icon_binding.bin",
+      "start": "0x8004000c",
+      "end_exclusive": "0x80040154",
+      "sha256": "7b9c84849c5c6bf06e798d624587cda1ce29d215e5c3d39d253c65ce7ea135c1"
+    }
+  ],
+  "known_rule_sources": [
+    {
+      "path": "algorithm-analysis/window_tiles.py",
+      "sha256": "81255bc474755f5ce00f528870195a950122725d1bcaf6758f7e65b0ed43b29e"
+    },
+    {
+      "path": "algorithm-analysis/settings_rectangles.py",
+      "sha256": "781565cae3d01e965daabfac378b11aa394b1c4a6b3e64459ac0a9965a8753ec"
+    },
+    {
+      "path": "algorithm-analysis/icon_layout.py",
+      "sha256": "d69d9e39502e2780c054d96d02785b90e93fca0b348715d0284ea15b36637be7"
+    },
+    {
+      "path": "algorithm-analysis/confirmation_dialog.py",
+      "sha256": "f474bbc3b90c37fce83333563d8f528b1e08676b411266a58fbade7b14e9598d"
+    }
+  ],
+  "known_before": "Ninepartwindow/rectanglestyleUV/cursor/icon32 formulas and originalCPUchecks existed inr2; TIMtransferheight differences also known.",
+  "new_result": "Bind26required UI crops to actualTIMpayloads and record source/frame-coordinate distinction; all8SHOPTYP1icon slots needonly32existentrows,not64requestedrows.",
+  "verification": "One static extraction with hash checks,originalUVtable comparison andcropbounds; no originalCPUcalls orgameupdates."
+}

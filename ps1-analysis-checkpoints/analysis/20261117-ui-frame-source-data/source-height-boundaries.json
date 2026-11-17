@@ -1,0 +1,80 @@
+{
+  "shoptyp1": {
+    "source_image_id": 6,
+    "source_size_pixels": [
+      256,
+      32
+    ],
+    "requested_height": 64,
+    "normal_icon_uv_y": 128,
+    "source_rectangles": [
+      [
+        0,
+        0,
+        32,
+        32
+      ],
+      [
+        32,
+        0,
+        32,
+        32
+      ],
+      [
+        64,
+        0,
+        32,
+        32
+      ],
+      [
+        96,
+        0,
+        32,
+        32
+      ],
+      [
+        128,
+        0,
+        32,
+        32
+      ],
+      [
+        160,
+        0,
+        32,
+        32
+      ],
+      [
+        192,
+        0,
+        32,
+        32
+      ],
+      [
+        224,
+        0,
+        32,
+        32
+      ]
+    ],
+    "required_source_rows": [
+      0,
+      31
+    ],
+    "nonexistent_requested_rows_not_required": [
+      32,
+      63
+    ]
+  },
+  "kyou": {
+    "source_image_id": 8,
+    "source_size_pixels": [
+      256,
+      240
+    ],
+    "requested_height": 256,
+    "max_required_exclusive_y": 64
+  },
+  "important": "Drawkind13 andUVy128 resolve intoSHOPTYP1 atVRAMwordX832,line128; do not labelallkind13frames SYOP_S02. BindingrequirespositionandCLUT aswellaskind.",
+  "scope": "These26crops only; not proof allUIUV references fit sourceheight."
+}

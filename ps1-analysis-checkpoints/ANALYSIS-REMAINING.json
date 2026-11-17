@@ -105,7 +105,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "Continue unconnected ordinary UI/scene source data. Staff portrait pixel bindings nowconnected; fullUIcomposition/otherassets and sixtrackedquestions remain open.",
+  "next": "Continue unconnected ordinary source/UI/scene data. Corewindow/style/cursor/icon crops nowconnected; wholeUIcomposition and sixtrackedquestions remain open.",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -153,6 +153,14 @@
       "status": "resolved_scoped_source_binding",
       "evidence": "analysis/20261117-staff-portrait-source-data/README.md",
       "resolution": "35normalportraits maptoKAO01/02 and-1placeholder toKYOU;140rosterreferences matched,36cropsinsideoriginalpixels. KAO02 needsnomissingrows40..63 fornormalstafffaces. KnownUIrules reused;0sourceCPUcalls. Not fullUIrendering.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X07",
+      "title": "UI枠9部品・矩形8種・カーソル・アイコン8枠の原画素対応",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261117-ui-frame-source-data/README.md",
+      "resolution": "26regions bound toKYOU/SHOPTYP1. Iconslots6/7 fullytransparent; remaining6 haveart. IconUV128 resolves toSHOPTYP1row0,notSYOP_S02;32source rows suffice despite64rowupload. Knownrulesreused;0sourceCPUcalls. NotwholeUIcoverage.",
       "counted_in_seven_tracked_items": false
     }
   ]
