@@ -1,0 +1,604 @@
+{
+  "issue": 232,
+  "date": "2026-11-19",
+  "status": "DIAGNOSTIC_NOT_APPROVED",
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "source_manifest_sha": "73f7fccadb29f278530b4421cc665d3670e0f600",
+  "verification": {
+    "staged_png_full_decoded": 15,
+    "sea_png_full_decoded": 1,
+    "png_crc_pass": 16,
+    "zlib_adler_pass": 16,
+    "errors": 0
+  },
+  "verified": [
+    {
+      "asset_id": "road_ns",
+      "git_blob_sha": "360c16bfe0c0a874af1ffac34e42eee51ce0e7c1",
+      "bytes": 8620,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "road_ew",
+      "git_blob_sha": "96dc9c5f90d134db6096295d649ee88d45b18f3a",
+      "bytes": 8931,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "rail_ns",
+      "git_blob_sha": "3ecc57989beab8f74b97a5079d14fc557de15e5b",
+      "bytes": 11115,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "rail_ew",
+      "git_blob_sha": "17ae09cf4b389d22832dc6289804971ff53fb2fa",
+      "bytes": 10943,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "river_ns",
+      "git_blob_sha": "a5c0b606ce3f2653e3f0c3532eaa52211af59a53",
+      "bytes": 8912,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "river_ew",
+      "git_blob_sha": "e983dec2d4a21efaba521f490d9ad87bf750ba3a",
+      "bytes": 9227,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "map_crossing_basic",
+      "git_blob_sha": "82488f0555d8888e3daf7024055aedc922456ecb",
+      "bytes": 9994,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "map_crossing_closed",
+      "git_blob_sha": "14f1ee025ec2d7eebbb8bb5ec96a5ef9b15ecec3",
+      "bytes": 10361,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "map_road_bridge_ew",
+      "git_blob_sha": "e3d8830a407a0191d401360e3f9f497d3afca398",
+      "bytes": 10236,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "map_road_bridge_ns",
+      "git_blob_sha": "f6b790cef82d6e9a5c69de1409b874d06a13ff17",
+      "bytes": 8627,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "map_rail_bridge_ew",
+      "git_blob_sha": "cc9e9cfc4d579d141d866cd1dac6858dfee4bf30",
+      "bytes": 11447,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "map_rail_bridge_ns",
+      "git_blob_sha": "8568e2684b4ccb980ca45588f75a1e9c708c76f4",
+      "bytes": 10778,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "map_river_mouth_s",
+      "git_blob_sha": "2d4d320668dba58a7f38a892bfdf86a0a93a1430",
+      "bytes": 9801,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "map_river_mouth_s_square",
+      "git_blob_sha": "53e4639bdef1396268828bc7c7855605d1df452d",
+      "bytes": 9520,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "map_inlet_w",
+      "git_blob_sha": "0313cc140595aafcb898f3363586fc23a75e7644",
+      "bytes": 9176,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "alpha_zero_pixels": 0,
+      "alpha_partial_pixels": 0
+    },
+    {
+      "asset_id": "map_sea_waves",
+      "git_blob_sha": "b49adc261a87c0bc2bdbd3ac01b8c62a360da80f",
+      "bytes": 8144,
+      "rgba_pixels": 4096,
+      "crc": "pass",
+      "adler32": "pass",
+      "source_ref": "main_readonly"
+    }
+  ],
+  "fixtures": [
+    {
+      "name": "map_crossing_basic",
+      "positions": {
+        "1,0": "road_ns",
+        "1,1": "map_crossing_basic",
+        "1,2": "road_ns",
+        "0,1": "rail_ew",
+        "2,1": "rail_ew"
+      },
+      "seams": [
+        {
+          "a": "road_ns",
+          "b": "map_crossing_basic",
+          "d": "S",
+          "match": [
+            "road"
+          ],
+          "rgb_mae": 19.153,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "map_crossing_basic",
+          "b": "rail_ew",
+          "d": "E",
+          "match": [
+            "rail"
+          ],
+          "rgb_mae": 34.583,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "map_crossing_basic",
+          "b": "road_ns",
+          "d": "S",
+          "match": [
+            "road"
+          ],
+          "rgb_mae": 16.708,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "rail_ew",
+          "b": "map_crossing_basic",
+          "d": "E",
+          "match": [
+            "rail"
+          ],
+          "rgb_mae": 31.639,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "port_failures": [],
+      "max_rgb_mae": 34.583,
+      "accepted": false
+    },
+    {
+      "name": "map_crossing_closed",
+      "positions": {
+        "1,0": "road_ns",
+        "1,1": "map_crossing_closed",
+        "1,2": "road_ns",
+        "0,1": "rail_ew",
+        "2,1": "rail_ew"
+      },
+      "seams": [
+        {
+          "a": "road_ns",
+          "b": "map_crossing_closed",
+          "d": "S",
+          "match": [
+            "road"
+          ],
+          "rgb_mae": 54.292,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "map_crossing_closed",
+          "b": "rail_ew",
+          "d": "E",
+          "match": [
+            "rail"
+          ],
+          "rgb_mae": 62.611,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "map_crossing_closed",
+          "b": "road_ns",
+          "d": "S",
+          "match": [
+            "road"
+          ],
+          "rgb_mae": 49.417,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "rail_ew",
+          "b": "map_crossing_closed",
+          "d": "E",
+          "match": [
+            "rail"
+          ],
+          "rgb_mae": 67.014,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "port_failures": [],
+      "max_rgb_mae": 67.014,
+      "accepted": false
+    },
+    {
+      "name": "map_road_bridge_ew",
+      "positions": {
+        "1,1": "map_road_bridge_ew",
+        "0,1": "road_ew",
+        "2,1": "road_ew",
+        "1,0": "river_ns",
+        "1,2": "river_ns"
+      },
+      "seams": [
+        {
+          "a": "map_road_bridge_ew",
+          "b": "road_ew",
+          "d": "E",
+          "match": [
+            "road"
+          ],
+          "rgb_mae": 46.694,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "map_road_bridge_ew",
+          "b": "river_ns",
+          "d": "S",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 55.806,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "road_ew",
+          "b": "map_road_bridge_ew",
+          "d": "E",
+          "match": [
+            "road"
+          ],
+          "rgb_mae": 53.403,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "river_ns",
+          "b": "map_road_bridge_ew",
+          "d": "S",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 50.486,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "port_failures": [],
+      "max_rgb_mae": 55.806,
+      "accepted": false
+    },
+    {
+      "name": "map_road_bridge_ns",
+      "positions": {
+        "1,1": "map_road_bridge_ns",
+        "1,0": "road_ns",
+        "1,2": "road_ns",
+        "0,1": "river_ew",
+        "2,1": "river_ew"
+      },
+      "seams": [
+        {
+          "a": "map_road_bridge_ns",
+          "b": "river_ew",
+          "d": "E",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 45.833,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "map_road_bridge_ns",
+          "b": "road_ns",
+          "d": "S",
+          "match": [
+            "road"
+          ],
+          "rgb_mae": 16.167,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "road_ns",
+          "b": "map_road_bridge_ns",
+          "d": "S",
+          "match": [
+            "road"
+          ],
+          "rgb_mae": 21.292,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "river_ew",
+          "b": "map_road_bridge_ns",
+          "d": "E",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 47.222,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "port_failures": [],
+      "max_rgb_mae": 47.222,
+      "accepted": false
+    },
+    {
+      "name": "map_rail_bridge_ew",
+      "positions": {
+        "1,1": "map_rail_bridge_ew",
+        "0,1": "rail_ew",
+        "2,1": "rail_ew",
+        "1,0": "river_ns",
+        "1,2": "river_ns"
+      },
+      "seams": [
+        {
+          "a": "map_rail_bridge_ew",
+          "b": "rail_ew",
+          "d": "E",
+          "match": [
+            "rail"
+          ],
+          "rgb_mae": 53.542,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "map_rail_bridge_ew",
+          "b": "river_ns",
+          "d": "S",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 48.681,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "rail_ew",
+          "b": "map_rail_bridge_ew",
+          "d": "E",
+          "match": [
+            "rail"
+          ],
+          "rgb_mae": 51.708,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "river_ns",
+          "b": "map_rail_bridge_ew",
+          "d": "S",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 39.639,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "port_failures": [],
+      "max_rgb_mae": 53.542,
+      "accepted": false
+    },
+    {
+      "name": "map_rail_bridge_ns",
+      "positions": {
+        "1,1": "map_rail_bridge_ns",
+        "1,0": "rail_ns",
+        "1,2": "rail_ns",
+        "0,1": "river_ew",
+        "2,1": "river_ew"
+      },
+      "seams": [
+        {
+          "a": "map_rail_bridge_ns",
+          "b": "river_ew",
+          "d": "E",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 45.972,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "map_rail_bridge_ns",
+          "b": "rail_ns",
+          "d": "S",
+          "match": [
+            "rail"
+          ],
+          "rgb_mae": 34.125,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "rail_ns",
+          "b": "map_rail_bridge_ns",
+          "d": "S",
+          "match": [
+            "rail"
+          ],
+          "rgb_mae": 41.806,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "river_ew",
+          "b": "map_rail_bridge_ns",
+          "d": "E",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 49.958,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "port_failures": [],
+      "max_rgb_mae": 49.958,
+      "accepted": false
+    },
+    {
+      "name": "map_river_mouth_s",
+      "positions": {
+        "1,0": "river_ns",
+        "1,1": "map_river_mouth_s",
+        "1,2": "map_sea_waves"
+      },
+      "seams": [
+        {
+          "a": "river_ns",
+          "b": "map_river_mouth_s",
+          "d": "S",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 22.986,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "map_river_mouth_s",
+          "b": "map_sea_waves",
+          "d": "S",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 3.597,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "port_failures": [],
+      "max_rgb_mae": 22.986,
+      "accepted": false
+    },
+    {
+      "name": "map_river_mouth_s_square",
+      "positions": {
+        "1,0": "river_ns",
+        "1,1": "map_river_mouth_s_square",
+        "1,2": "map_sea_waves"
+      },
+      "seams": [
+        {
+          "a": "river_ns",
+          "b": "map_river_mouth_s_square",
+          "d": "S",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 20.014,
+          "alpha_mismatch_px": 0
+        },
+        {
+          "a": "map_river_mouth_s_square",
+          "b": "map_sea_waves",
+          "d": "S",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 2.861,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "port_failures": [],
+      "max_rgb_mae": 20.014,
+      "accepted": false
+    },
+    {
+      "name": "map_inlet_w",
+      "positions": {
+        "0,1": "map_sea_waves",
+        "1,1": "map_inlet_w"
+      },
+      "seams": [
+        {
+          "a": "map_sea_waves",
+          "b": "map_inlet_w",
+          "d": "E",
+          "match": [
+            "water"
+          ],
+          "rgb_mae": 61.847,
+          "alpha_mismatch_px": 0
+        }
+      ],
+      "port_failures": [],
+      "max_rgb_mae": 61.847,
+      "accepted": false
+    }
+  ],
+  "limitations": [
+    "Real GitHub PNG bytes independently decoded in JS; not a Godot run",
+    "24px nearest-neighbor edge RGB MAE is diagnostic, not visual acceptance",
+    "Bridge river water adjacency and mouth sea adjacency included",
+    "Inlet west sea adjacency provisional; high seam error does not alone prove topology error",
+    "Sea waves sourced read-only from main; no existing assets changed",
+    "No original PS1 reference comparison, no Godot render, no game regression",
+    "No standalone PNG fixtures committed by this audit"
+  ]
+}
