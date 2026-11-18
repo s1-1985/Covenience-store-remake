@@ -1,0 +1,442 @@
+{
+  "target": "R02",
+  "native_normal_admission": {
+    "raw_hex": "01003c000000000000000000ffffffffffffffffffffffffffffffff46000206",
+    "state": 1,
+    "wanted": 0,
+    "profile": 60,
+    "deadline": 0,
+    "wallet": 0,
+    "cart_unit_value": 0,
+    "position": [
+      -1,
+      -1,
+      -1
+    ],
+    "goal": [
+      -1,
+      -1,
+      -1
+    ],
+    "route_hex": "ffffffffffffffffffff",
+    "quantity": 2,
+    "appearance": 6,
+    "visitors": 2,
+    "summary_present": 2,
+    "cash": [
+      200000000,
+      100000000
+    ],
+    "dirty_flag": 0
+  },
+  "active_record_comparison": [
+    {
+      "festival": 0,
+      "after_demand": {
+        "raw_hex": "01003c000000000000000000ffffffffffffffffffffffffffffffff46000206",
+        "state": 1,
+        "wanted": 0,
+        "profile": 60,
+        "deadline": 0,
+        "wallet": 0,
+        "cart_unit_value": 0,
+        "position": [
+          -1,
+          -1,
+          -1
+        ],
+        "goal": [
+          -1,
+          -1,
+          -1
+        ],
+        "route_hex": "ffffffffffffffffffff",
+        "quantity": 2,
+        "appearance": 6,
+        "visitors": 2,
+        "summary_present": 2,
+        "cash": [
+          200000000,
+          100000000
+        ],
+        "dirty_flag": 0
+      },
+      "after_one_post_spawn_loop": {
+        "raw_hex": "02053c009cae0000b80b0000000001ffffffffffffffffffffffffff46000206",
+        "state": 2,
+        "wanted": 5,
+        "profile": 60,
+        "deadline": 44700,
+        "wallet": 3000,
+        "cart_unit_value": 0,
+        "position": [
+          0,
+          0,
+          1
+        ],
+        "goal": [
+          -1,
+          -1,
+          -1
+        ],
+        "route_hex": "ffffffffffffffffffff",
+        "quantity": 2,
+        "appearance": 6,
+        "visitors": 2,
+        "summary_present": 2,
+        "cash": [
+          200000000,
+          100000000
+        ],
+        "dirty_flag": 0
+      },
+      "handlers": [
+        "entry"
+      ],
+      "first_record_demand_writes": []
+    },
+    {
+      "festival": 1,
+      "after_demand": {
+        "raw_hex": "02003c000000000000000000ffffffffffffffffffffffffffffffff46000206",
+        "state": 2,
+        "wanted": 0,
+        "profile": 60,
+        "deadline": 0,
+        "wallet": 0,
+        "cart_unit_value": 0,
+        "position": [
+          -1,
+          -1,
+          -1
+        ],
+        "goal": [
+          -1,
+          -1,
+          -1
+        ],
+        "route_hex": "ffffffffffffffffffff",
+        "quantity": 2,
+        "appearance": 6,
+        "visitors": 2,
+        "summary_present": 2,
+        "cash": [
+          200000000,
+          100000000
+        ],
+        "dirty_flag": 0
+      },
+      "after_one_post_spawn_loop": {
+        "raw_hex": "02ff3c000000000000000000ffffffffffffffffffffffffffffffff46000206",
+        "state": 2,
+        "wanted": 255,
+        "profile": 60,
+        "deadline": 0,
+        "wallet": 0,
+        "cart_unit_value": 0,
+        "position": [
+          -1,
+          -1,
+          -1
+        ],
+        "goal": [
+          -1,
+          -1,
+          -1
+        ],
+        "route_hex": "ffffffffffffffffffff",
+        "quantity": 2,
+        "appearance": 6,
+        "visitors": 2,
+        "summary_present": 2,
+        "cash": [
+          200000000,
+          100000000
+        ],
+        "dirty_flag": 0
+      },
+      "handlers": [
+        "shopping_state2"
+      ],
+      "first_record_demand_writes": [
+        {
+          "pc": "0x80026868",
+          "bytes": 2,
+          "value": 2
+        }
+      ]
+    }
+  ],
+  "save_window": {
+    "after_original_festival_tail": {
+      "clock": 44640,
+      "calendar": [
+        1,
+        8,
+        4,
+        0,
+        0
+      ],
+      "festival": 1
+    },
+    "first_nonmidnight_before_finance": {
+      "clock": 44642,
+      "calendar": [
+        1,
+        8,
+        4,
+        0,
+        2
+      ],
+      "festival": 1
+    },
+    "after_finance": {
+      "clock": 44642,
+      "calendar": [
+        1,
+        8,
+        4,
+        0,
+        2
+      ],
+      "festival": 1
+    },
+    "encoded_from_original_menu_dispatch": {
+      "payload_sha256": "f550b1ffe9808ef56dd7df7bbdb589a11f9cb2bae83b0ded34b7680204f094a4",
+      "checksum": 1948644,
+      "saved_clock": 44642,
+      "saved_festival": 1,
+      "source_dispatch": [
+        "0x80060070",
+        "0x800601f0",
+        "0x80062484",
+        "0x80062494",
+        "0x8006b81c"
+      ],
+      "stop": "before card UI4EEB8, no physical card write claimed"
+    },
+    "nonmidnight_title_rebuild": {
+      "saved_customer": {
+        "raw_hex": "01003c000000000000000000ffffffffffffffffffffffffffffffff46000206",
+        "state": 1,
+        "wanted": 0,
+        "profile": 60,
+        "deadline": 0,
+        "wallet": 0,
+        "cart_unit_value": 0,
+        "position": [
+          -1,
+          -1,
+          -1
+        ],
+        "goal": [
+          -1,
+          -1,
+          -1
+        ],
+        "route_hex": "ffffffffffffffffffff",
+        "quantity": 2,
+        "appearance": 6,
+        "visitors": 2,
+        "summary_present": 0,
+        "cash": [
+          200000000,
+          99918928
+        ],
+        "dirty_flag": 0
+      },
+      "decoded_customer": {
+        "raw_hex": "01003c000000000000000000ffffffffffffffffffffffffffffffff46000206",
+        "state": 1,
+        "wanted": 0,
+        "profile": 60,
+        "deadline": 0,
+        "wallet": 0,
+        "cart_unit_value": 0,
+        "position": [
+          -1,
+          -1,
+          -1
+        ],
+        "goal": [
+          -1,
+          -1,
+          -1
+        ],
+        "route_hex": "ffffffffffffffffffff",
+        "quantity": 2,
+        "appearance": 6,
+        "visitors": 2,
+        "summary_present": 0,
+        "cash": [
+          200000000,
+          99918928
+        ],
+        "dirty_flag": 0
+      },
+      "after_title_rebuild": {
+        "raw_hex": "02003c000000000000000000ffffffffffffffffffffffffffffffff46000206",
+        "state": 2,
+        "wanted": 0,
+        "profile": 60,
+        "deadline": 0,
+        "wallet": 0,
+        "cart_unit_value": 0,
+        "position": [
+          -1,
+          -1,
+          -1
+        ],
+        "goal": [
+          -1,
+          -1,
+          -1
+        ],
+        "route_hex": "ffffffffffffffffffff",
+        "quantity": 2,
+        "appearance": 6,
+        "visitors": 2,
+        "summary_present": 0,
+        "cash": [
+          200000000,
+          99918928
+        ],
+        "dirty_flag": 0
+      },
+      "first_record_writes": [
+        {
+          "pc": "0x80026868",
+          "bytes": 2,
+          "value": 2
+        }
+      ],
+      "clock": 44642,
+      "rng_note": "seed2 explicitly supplied after decode; not a serialized RNG claim"
+    },
+    "next_midnight_before_reset": {
+      "clock": 46080,
+      "calendar": [
+        1,
+        9,
+        1,
+        0,
+        0
+      ],
+      "festival": 1
+    },
+    "after_original_midnight_reset": {
+      "clock": 46080,
+      "calendar": [
+        1,
+        9,
+        1,
+        0,
+        0
+      ],
+      "festival": 0
+    }
+  },
+  "original_entry_log": [
+    {
+      "entry": "0x8005c858",
+      "scope": "reused_bootstrap"
+    },
+    {
+      "entry": "0x8001a0b8",
+      "scope": "reused_bootstrap"
+    },
+    {
+      "entry": "0x80023c20",
+      "scope": "reused_bootstrap"
+    },
+    {
+      "entry": "0x80023c20",
+      "end": "original_return"
+    },
+    {
+      "entry": "0x8002619c",
+      "end": "original_return"
+    },
+    {
+      "entry": "0x80023670",
+      "end": "0x800238ac"
+    },
+    {
+      "entry": "0x800319ac",
+      "end": "0x80032814"
+    },
+    {
+      "entry": "0x8002619c",
+      "end": "original_return"
+    },
+    {
+      "entry": "0x80032814",
+      "end": "0x80001000"
+    },
+    {
+      "entry": "0x8002619c",
+      "end": "original_return"
+    },
+    {
+      "entry": "0x80032814",
+      "end": "0x80001000"
+    },
+    {
+      "entry": "0x80023c20",
+      "end": "original_return"
+    },
+    {
+      "entry": "0x80029444",
+      "end": "0x80001000"
+    },
+    {
+      "entry": "0x80023438",
+      "end": "0x80023460"
+    },
+    {
+      "entry": "0x80023c20",
+      "end": "original_return"
+    },
+    {
+      "entry": "0x80029334",
+      "end": "original_return"
+    },
+    {
+      "entry": "0x80060034",
+      "end": "0x8006249c"
+    },
+    {
+      "entry": "0x8006bc40",
+      "end": "original_return"
+    },
+    {
+      "entry": "0x80012d44",
+      "end": "0x80012d68"
+    },
+    {
+      "entry": "0x80023438",
+      "end": "0x80023460"
+    },
+    {
+      "entry": "0x80023c20",
+      "end": "original_return"
+    },
+    {
+      "entry": "0x80029334",
+      "end": "0x8002939c"
+    }
+  ],
+  "final_reproducer_entries": 22,
+  "whole_operating_updates": 0,
+  "gameplay_callee_replacements": 0,
+  "resource_loader_substitutions": 1,
+  "limits": [
+    "The first customer record is created by native ordinary admission; no customer bytes are injected or copied into its slot.",
+    "Schedules0 and RNG seeds are controlled. Festival switch1 is specified in active-record comparison; a natural festival UI trajectory is not established.",
+    "Post-spawn loops isolate existing records from further admissions. One loop per branch only; no permanent freeze or natural frequency claim.",
+    "Festival presentation is not run; save-window test begins at original post-presentation tail. Next-midnight endpoint clock46078 is specified, not a full day replay.",
+    "Title rebuild is entered after decode, excluding card/graphics before it. seed2 explicitly supplied; random state is not saved.",
+    "Menu returned choice5 is specified at original postselection dispatch. Whole menu/input/card/successful file write is not run.",
+    "No new direct source write to customer quantity/budget/position/deadline was introduced by this reproducer."
+  ]
+}

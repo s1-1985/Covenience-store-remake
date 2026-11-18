@@ -1,0 +1,76 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "helper_path": "20261118-festival-empty-slot-lifecycle/analyze-empty-slot.py",
+  "helper_sha256": "d551c408e6618270d099a1d011222b0a4d383d3880bced1c572b2d8e51335127",
+  "source_ranges": [
+    {
+      "name": "normal_admission",
+      "start": "0x800319ac",
+      "end_exclusive": "0x80032814",
+      "sha256": "b16b9a511e147c4bfb4e56cbe270e6bbd379dca2bff7815d04ec4a72af7daa92"
+    },
+    {
+      "name": "dispatch_and_entry",
+      "start": "0x80032814",
+      "end_exclusive": "0x80032c6c",
+      "sha256": "011cb1b99460dc5f1e39d27363721796e0fc5f2275ef958e11184d3160eaf618"
+    },
+    {
+      "name": "festival_alias_write",
+      "start": "0x80026844",
+      "end_exclusive": "0x80026878",
+      "sha256": "6033ef451a9334a64d503bef9ecce78de15444502b4bba0d05226924f7ee2bff"
+    },
+    {
+      "name": "clock_and_finance_gate",
+      "start": "0x80023438",
+      "end_exclusive": "0x800234ec",
+      "sha256": "d131aafcd7bdbef34a1974222e3e1890f111b8d76dfdbb5032bb00eb8339bd09"
+    },
+    {
+      "name": "festival_flag_gate",
+      "start": "0x80029334",
+      "end_exclusive": "0x80029450",
+      "sha256": "8e212a17272252bd1dfb7270b83bb2d4c7be115ae2cf1824c6fcff0123519821"
+    },
+    {
+      "name": "menu_postselection",
+      "start": "0x80060034",
+      "end_exclusive": "0x80060078",
+      "sha256": "4209ac02525fbdf385b94c57afac1f4aaa26dac3bf5408933fd29f282497dff7"
+    },
+    {
+      "name": "menu_card_action",
+      "start": "0x800601f0",
+      "end_exclusive": "0x80060204",
+      "sha256": "a8c059b2a4fe85f4a3067f1459a02fbe6c27441936609285c531eb594f0b3d32"
+    },
+    {
+      "name": "card_action_encoder",
+      "start": "0x80062484",
+      "end_exclusive": "0x800624a4",
+      "sha256": "83ce66b63f55948ee5bffb99320c44b8e4f102ce37ac9e7ed80421ec0a2006bc"
+    }
+  ],
+  "menu_jump_table_10b40": [
+    "0x80060204",
+    "0x80060078",
+    "0x80060094",
+    "0x800601c8",
+    "0x800601dc",
+    "0x800601f0"
+  ],
+  "known_before": [
+    "festival flag producer and codec offsets",
+    "isolated injected states change dispatch",
+    "normal admission fields and entry initialization"
+  ],
+  "new_connections": [
+    "native-created pending admission -> demand alias -> entry initializer skipped",
+    "post-presentation source flag -> next two-minute finance gate -> original menu dispatch encoder",
+    "next source midnight clears retained flag before following events",
+    "nonmidnight44642 save/decode/title rebuild advances native-created first state1 to2"
+  ]
+}

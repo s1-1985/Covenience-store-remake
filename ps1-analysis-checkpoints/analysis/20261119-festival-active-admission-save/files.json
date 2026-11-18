@@ -1,0 +1,22 @@
+{
+  "ANDROID-BRIDGE.md": {
+    "sha256": "0ad5809509bc373ff994a8bb56b4ae4869f5c0574451500e6d1e7b070443b166",
+    "bytes": 1032
+  },
+  "README.md": {
+    "sha256": "2f30d22f7889843a89509724225bcc54c7a035afa801a609816328bb1c5603d0",
+    "bytes": 6050
+  },
+  "analyze-active-save.py": {
+    "sha256": "13a0611b812915194386e2b34c05f675643498eb45925d473c1f6aa9fd045c11",
+    "bytes": 10056
+  },
+  "results.json": {
+    "sha256": "862fe28c0f99a6c0c69d397c4b2a5cd13a2daa2f01d0bb17445e2e21552b6ec8",
+    "bytes": 9809
+  },
+  "source-provenance.json": {
+    "sha256": "af2d21033ebd1d6b1019677414cc412a7f80bb4f3cdf8e0b53899a735f37b753",
+    "bytes": 2736
+  }
+}

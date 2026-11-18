@@ -33,7 +33,7 @@
       "status": "open",
       "evidence": "analysis/20261116-weather-demand-data/out-of-catalog-context.json",
       "resolution": null,
-      "latest_evidence": "analysis/20261119-unresolved-resume-project-followup/README.md",
+      "latest_evidence": "analysis/20261119-festival-active-admission-save/README.md",
       "established": [
         "All11 initial rivals use schedule2; misread schedule byte0 rejects profile144 even under festival bypass.",
         "Schedule0/3/5 nonzero out-of-row reads can pass the schedule gate; stock alias and distance gates still apply.",
@@ -50,9 +50,11 @@
         "Fourbounded originalentries compose priorzeroquantity with stagedcheckout/exit. Quantity0/basket250 clearscart,returnsstate4 andsets0x200 with0cash/revenue; quantity1control credits250. Bothmarkcashierbusy andlater1headcustomer remains3/cart250 inthesameloop. Stagedexitarrival clearsoccupancy,returnsstate0 andnativefreeslot0 whileoldcoordinatespersist. Doesnotestablishnaturalcart/routes orfestivalreachability.",
         "Originalencoder/decoder preserve festival1 atpayload14EC8 fromcontrolledclock44640/schedule0 initialstoreinput withzero firstcustomer. Title reconstruction tail12D44 metrics/demand writesfirststate1 at26868 afterdecode. Playprologue5CD84 clearsfestival butpreservesallstores; native5CD9Csetsrebuild. One3CEACcall preservesstores/queue butadvancesRNG once. Wholecard/UI/prereconstruction/firstmainnotexecuted; controlledseednotserializedprovenance.",
         "Sameoriginalencoded controlledpayload comparedacrosstitle andingameacceptedtails. Ingame62560clearsfestivalbeforemetrics/demand andnoaliasoccurs; title retains1 andaliasesfirststate0to1. Ingameclears50notificationactivebytes plusstate/timer/index whilepreservingremainingnoticebytes andstorepool duringreset. Original624B8 result!=1 bypassesdecode/reset/rebuild block; non1UIoutcomes notexecuted/classified.",
-        "Controlled original title resume now traverses original clock prologue and two full logic bodies to original return, excluding HUD producer23464 only. First corrupted record remains1 at44642 then state2/quantity0/wallet500/wanted4/deadline44764 at44644; goals/routes remainzero. No new26868 writes. Store totals differ from record quantity: visitors1, summary1 then0; no attribution solelytofirstrecord. Accepted ingame control remainsstate0 throughfirstlogicbody. No gameplay callee replacements; notnaturalUIreachability."
+        "Controlled original title resume now traverses original clock prologue and two full logic bodies to original return, excluding HUD producer23464 only. First corrupted record remains1 at44642 then state2/quantity0/wallet500/wanted4/deadline44764 at44644; goals/routes remainzero. No new26868 writes. Store totals differ from record quantity: visitors1, summary1 then0; no attribution solelytofirstrecord. Accepted ingame control remainsstate0 throughfirstlogicbody. No gameplay callee replacements; notnaturalUIreachability.",
+        "Native ordinary admission creates profile60/state1/quantity2 without injected customer bytes. Source festival demand advances it to2; next isolated original loop skips entry initializer, leaves wallet0/deadline0/positionFF, versus nonfestival control wallet3000/deadline44700/position[0,0,1]. Existing nonempty admission affected, not only zero-quantity empty slot. Schedules/flag/seeds controlled; already-shopping/checkout customers not tested.",
+        "Original post-festival tail setsflag1; originalclock44640->44642 plusfinance gate retainsit. Specified post-menu choice5 dispatch reachesoriginalencoder andsavesclock44642/flag1 beforecardUI. Samepayload decoded then title reconstruction underexplicitseed2 advances nativeadmission1->2 at26868 outside0minute boundary. Nextmidnight endpoint46080 calendar[1,9,1,0,0] clearsflagat29398. NotwholeUI/card/naturaldayreplay."
       ],
-      "remaining_question": "Natural ordinaryUI/acquisition/product/ledger setup, festival/save availability and wholecard/graphics/BGM paths remain open. First two title-resumed logic bodies and one accepted-ingame control are now boundedly established with HUD excluded. Natural routing/purchases of corrupted records and effects on already-active shoppers remain unconfirmed."
+      "remaining_question": "Natural ordinaryUI/acquisition/product/ledger setup and festival trajectory remain open, along with notification/input constraints, physicalcard/wholeload/graphics/BGM paths. Nonmidnight postselection encoder and title reconstruction are now connected; not successful ordinaryUI save. Native-created pending admissions are affected; already-shopping/checkout customers, natural routing/purchases and long-term outcomes remain unconfirmed."
     },
     {
       "id": "R03",
@@ -134,7 +136,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "ユーザー指示により未解決6件を先行。R02は読込後の最初の営業ロジック2回まで接続済みであり、その再試験を避け、通常操作での祭り保存条件・活動中の客への影響を次の候補とする。R05は正の月次入力から負の年次比較値まで接続済み。通常営業での入力範囲と+30の自然由来が残る。R01/R06/R07は新しい手掛かりなしに既存検索・候補試験を反復しない。",
+  "next": "既存未解決を先行。R02の入店待ち客と非境界時刻の保存/再集計は接続済みであり反復しない。通常操作の祭り前提・カード/UI入力制限・買物/会計中の客が残る。R05の通常月次入力範囲と+30の自然由来も候補。R01/R06/R07の既存検索・候補試験は新しい手掛かりなしに繰り返さない。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
