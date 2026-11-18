@@ -1,13 +1,13 @@
 {
   "date_jst": "2026-11-18",
-  "work_kind": "zero_quantity_service_and_exit_connections",
-  "report": "analysis/20261118-zero-quantity-service-exit/README.md",
-  "previous_report": "analysis/20261118-festival-empty-slot-lifecycle/README.md",
-  "new_result": "Priorobservedzeroquantity record stagedatnativecheckout:0revenue butcartclear/state4/0x200;staffbusystillset sosecondcustomerwaits. Stagedexitarrival clearsoccupancy andfreeslot returns0 despitepreservedcoordinates.",
-  "known_before": "Standalonecash multiplication,staffbusy,exit andslot formulas known; threeconditionalconnections, notnewordinaryformulas. No repeatofaliascreation/entry.",
-  "original_cpu_calls": 4,
+  "work_kind": "festival_save_load_title_play_order",
+  "report": "analysis/20261118-festival-load-order/README.md",
+  "previous_report": "analysis/20261118-zero-quantity-service-exit/README.md",
+  "new_result": "Festival flag serialized/restored then native titlemetrics/demand tail createsfirststate1 fromcleanpayload; playprologue clearpreservesactor mutation andsetsrebuild. Originalnotice contributesoneRNGdraw evenwithstores/queuepreserved.",
+  "known_before": "Savefield map,title/play control andnotification formulas alreadyinr2; fourconditional order/provenanceconnections added, no newgenericformats/formulas.",
+  "original_cpu_calls": 9,
   "original_operating_updates": 0,
-  "verification": "Nativepostspawn loops2forquantity0/1service,1forexit,plusfreeslot1. Artificialregisteranchor,stagedcart/positions,staffskill100. No longoperating/reachability replay.",
+  "verification": "Nativeencode/decode checksum-valid payload, selectedtitle/play blocks andone notification entry; controlledschedule/flag/seed, nativecalendarfromclock44640. Fullcard/UI/graphics/firstmain excluded.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
@@ -15,6 +15,6 @@
   "remaining_ledger": "ANALYSIS-REMAINING.json",
   "new_mechanics_established": 0,
   "open_issues_resolved_this_turn": 0,
-  "new_conditional_connections": 3,
+  "new_conditional_connections": 4,
   "apk_updated": false
 }

@@ -1,0 +1,172 @@
+{
+  "input_scope": "Controlled TOWN0001 initial rivals1/2 schedule0; nativecalendar fromclock44640; festival1 andseed2 supplied. Original encoder generated checksum-valid payload; not a save made viaordinary UI or anaturally elapsed festival.",
+  "save_load": {
+    "source": {
+      "festival": 1,
+      "customer_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "rng": "0x2",
+      "clock": 44640,
+      "calendar": [
+        1,
+        8,
+        4,
+        0,
+        0
+      ],
+      "rebuild": 0,
+      "view_store": 0
+    },
+    "payload_size": 104364,
+    "payload_sha256": "fb5f712808246c9fa167fc52891c2ffb674ae29136c280bc0e1e8076ea5e4293",
+    "checksum": 1942271,
+    "checksum_valid": true,
+    "flag_payload_offset": "0x14ec8",
+    "before_decode": {
+      "festival": 0,
+      "customer_hex": "7700000000000000000000000000000000000000000000000000000000000000",
+      "rng": "0x2",
+      "clock": 44640,
+      "calendar": [
+        -99,
+        -99,
+        -99,
+        -99,
+        -99
+      ],
+      "rebuild": 0,
+      "view_store": 0
+    },
+    "after_decode": {
+      "festival": 1,
+      "customer_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "rng": "0x2",
+      "clock": 44640,
+      "calendar": [
+        -99,
+        -99,
+        -99,
+        -99,
+        -99
+      ],
+      "rebuild": 0,
+      "view_store": 0
+    }
+  },
+  "title_tail": {
+    "entry": "0x80012d44",
+    "end_exclusive": "0x80012d68",
+    "after": {
+      "festival": 1,
+      "customer_hex": "0100000000000000000000000000000000000000000000000000000000000000",
+      "rng": "0x3f17399b",
+      "clock": 44640,
+      "calendar": [
+        1,
+        8,
+        4,
+        0,
+        0
+      ],
+      "rebuild": 1,
+      "view_store": 0
+    },
+    "first_customer_writes": [
+      {
+        "pc": "0x80026868",
+        "size": 2,
+        "value": 1
+      }
+    ],
+    "top_native_calls": [
+      {
+        "pc": "0x80012d58",
+        "target": "0x80023c20"
+      },
+      {
+        "pc": "0x80012d60",
+        "target": "0x8002619c"
+      }
+    ]
+  },
+  "play_entry": {
+    "entry": "0x8005cd60",
+    "end_exclusive": "0x8005cdcc beforegraphicscall",
+    "after": {
+      "festival": 0,
+      "customer_hex": "0100000000000000000000000000000000000000000000000000000000000000",
+      "rng": "0x3f17399b",
+      "clock": 44640,
+      "calendar": [
+        1,
+        8,
+        4,
+        0,
+        0
+      ],
+      "rebuild": 1,
+      "view_store": -1
+    },
+    "flag_writes": [
+      {
+        "pc": "0x8005cd84",
+        "size": 4,
+        "value": 0
+      }
+    ],
+    "all_store_pool_bytes_preserved": true
+  },
+  "intervening_notice": {
+    "entry": "0x8003ceac",
+    "before": {
+      "festival": 0,
+      "customer_hex": "0100000000000000000000000000000000000000000000000000000000000000",
+      "rng": "0x3f17399b",
+      "clock": 44640,
+      "calendar": [
+        1,
+        8,
+        4,
+        0,
+        0
+      ],
+      "rebuild": 1,
+      "view_store": -1
+    },
+    "after": {
+      "festival": 0,
+      "customer_hex": "0100000000000000000000000000000000000000000000000000000000000000",
+      "rng": "0xd952f138",
+      "clock": 44640,
+      "calendar": [
+        1,
+        8,
+        4,
+        0,
+        0
+      ],
+      "rebuild": 1,
+      "view_store": -1
+    },
+    "original_rng_draws": 1,
+    "all_store_pool_and_queue_bytes_preserved": true
+  },
+  "original_entries": {
+    "bootstrap_town_metrics": 3,
+    "boundary_metrics": 1,
+    "encode_decode": 2,
+    "title_tail": 1,
+    "play_prologue": 1,
+    "notice": 1,
+    "total": 9
+  },
+  "whole_operating_updates": 0,
+  "gameplay_callee_replacements": 0,
+  "resource_loader_replacements": 1,
+  "limitations": [
+    "Card UI/BIOS/read/checksum acceptance path not executed; host checks the original encoder checksum.",
+    "Title paths resource/graphics/reconstruction calls before12D44 not executed; do not claim whole load UI reachability or preservation by all skipped paths.",
+    "Play entry stops before graphics/BGM, no full main/normal admissions/per-store customer loop.",
+    "No corrupted record existed in the source payload; alias occurs during the selected reconstruction tail.",
+    "Seed2 is a controlled current-runtime input, not a saved deterministic seed."
+  ]
+}

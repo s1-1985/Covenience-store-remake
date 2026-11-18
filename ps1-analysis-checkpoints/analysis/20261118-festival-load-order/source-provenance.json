@@ -1,0 +1,51 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+  "helper_path": "20261117-festival-customer-state-data/analyze-festival-state.py",
+  "helper_sha256": "aa3c09f5c22dc9e935c52678b375a2323459af99963e9f0bd34382a9b3fa21f5",
+  "code_ranges": [
+    {
+      "start": "0x80012d44",
+      "end_exclusive": "0x80012d78",
+      "sha256": "be9e5e8c605a49d376ef7270a74e1c16930e3c8e64642a222c13736a1ba5265b"
+    },
+    {
+      "start": "0x8005cd60",
+      "end_exclusive": "0x8005cdd4",
+      "sha256": "ff9247124e606be9416616ee05591b9fdcfef7431a99c0e09111ce69c7f29e6d"
+    },
+    {
+      "start": "0x8006bbb8",
+      "end_exclusive": "0x8006bbd0",
+      "sha256": "fee0c599de06e2e3d38e0dc6243a546e9ba53b75dfd3e73a5d50385e409af013"
+    },
+    {
+      "start": "0x8006bfd8",
+      "end_exclusive": "0x8006bff0",
+      "sha256": "01b9059c72358d9699be44388eb6ce64f3343ce5ee5097b3a861a8ad4759f586"
+    },
+    {
+      "start": "0x8003ceac",
+      "end_exclusive": "0x8003cf80",
+      "sha256": "228b44897881c19c201af6571426baca7e9d3df05f7524f07146bf19f3efe4ab"
+    },
+    {
+      "start": "0x800234b8",
+      "end_exclusive": "0x800234fc",
+      "sha256": "738449a5a8a59484986131ee18b079ea3eab1f88083460d615310b6e93b11c5e"
+    },
+    {
+      "start": "0x80026844",
+      "end_exclusive": "0x80026878",
+      "sha256": "6033ef451a9334a64d503bef9ecce78de15444502b4bba0d05226924f7ee2bff"
+    }
+  ],
+  "prior_models": [
+    "20261103-operating-continuation/source-reference/save_codec.py",
+    "20261103-operating-continuation/source-reference/title_load_control.py",
+    "20261103-operating-continuation/source-reference/mainplay_entry.py",
+    "20261103-operating-continuation/source-reference/main_update_control.py"
+  ],
+  "novelty": "Known individual serialization/title/main rules connected to original festival demand alias, resetordering and interveningRNG. Not new generic save/clock/RNG rules."
+}

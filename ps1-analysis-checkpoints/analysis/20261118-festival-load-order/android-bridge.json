@@ -1,0 +1,19 @@
+{
+  "evidence": "README.md",
+  "scope": "Controlled native payload and selected title/play/notification blocks, not whole card UI or naturalfestivalplay.",
+  "load_order": [
+    "Restore original serializedCDA00 flag frompayload14EC8.",
+    "Title tail12D44 recalculates calendar/metrics then demand2619C before enteringplay.",
+    "Play prologue5CD84 clears festivalflag but doesnot undo prior customermemory mutation; rebuild is setat5CD9C."
+  ],
+  "bounds": "Do not copy original out-of-range demand write into Android; validate profile0..143. Source behaviors and safe app behavior mustremain explicit.",
+  "rng_context": "Do not identify controlled current seed2 with a serialized RNG. Native3CEAC canadvance RNG evenwhen store/queuebytes remainunchanged.",
+  "distinguish": [
+    "Serialized actor state versus changes made after decoding.",
+    "Persistent flag restoration versus runtime clear ordering.",
+    "Derived calendar rebuild versus copying values fromsave.",
+    "Known standalone rule versus new callback-order composition."
+  ],
+  "runtime": "Native algorithms/data; no PS EXE/BIOS/emulator runtime dependency.",
+  "integration_status": "analysis_only_not_APK"
+}
