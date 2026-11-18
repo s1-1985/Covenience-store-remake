@@ -1,13 +1,13 @@
 {
   "date_jst": "2026-11-18",
-  "work_kind": "R02_state6_postdispatch_tail_and_slot_reuse",
-  "report": "analysis/20261118-festival-state6-tail/README.md",
-  "previous_report": "analysis/20261118-project-master-xrefs/README.md",
-  "new_result": "Two originalcode calls:state6 skipsallhandlers,returns withall5080storebytes unchanged; originalfreeslot helper skipsstate6 andreturns nextzero slot1. Natural festivalreachability remainsunconfirmed.",
-  "known_before": "State5->6 conditionalfestivalwrite andbranchto32C68 established20261117; normal loop/position/spawn rules knownr2. Newactualposttail/slot behavior understate6.",
-  "original_cpu_calls": 2,
+  "work_kind": "R02_state6_three_effects_batch",
+  "report": "analysis/20261118-festival-state6-effects/README.md",
+  "previous_report": "analysis/20261118-festival-state6-tail/README.md",
+  "new_result": "Three conditionalstate6 effects:mode3quantity remainsinparkingused; floor!=16 remainscheckoutrelevant; editorentryclearsstateandoccupancy butexistingstorecancel restoresstate6 fromentire5080byte snapshot.",
+  "known_before": "Ordinaryparking/predicate/editor snapshotcancel rules decodedearlier; newstate6conditional consequences, notrediscovery ofthosefunctions.",
+  "original_cpu_calls": 6,
   "original_operating_updates": 0,
-  "verification": "Onlyonepostspawn-loop call andonefreeslot-helper call,withfullstore-byte comparison andhandler/write hooks. No naturalday progression.",
+  "verification": "Sixbounded originalentries (fourleaf predicatecalls,twoeditor/cancelblocks; lattercallsoriginalmemcpy once). No UI replay ordayprogression.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
@@ -15,5 +15,6 @@
   "remaining_ledger": "ANALYSIS-REMAINING.json",
   "new_mechanics_established": 0,
   "open_issues_resolved_this_turn": 0,
-  "new_conditional_outcome_established": true
+  "new_conditional_outcome_established": true,
+  "new_conditional_outcomes": 3
 }

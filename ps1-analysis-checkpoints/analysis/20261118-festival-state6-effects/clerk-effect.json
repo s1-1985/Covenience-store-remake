@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "state": 6,
+      "floor_tile": 0,
+      "customer_xy": [
+        2,
+        2
+      ],
+      "return_value": 0,
+      "meaning": "relevantcustomerexists",
+      "store_unchanged": true
+    },
+    {
+      "state": 6,
+      "floor_tile": 16,
+      "customer_xy": [
+        2,
+        2
+      ],
+      "return_value": 1,
+      "meaning": "norelevantcustomers",
+      "store_unchanged": true
+    }
+  ],
+  "source_entry": "0x80038224",
+  "source_callers": [
+    "0x80037488",
+    "0x80038B78"
+  ],
+  "conclusion": "State6passes state>=2 test; floor!=16 causes checkoutrelevantcustomer result0. Staff37490 thereby skips its no-customer targetclear branch; actualemployeepermanentbusy notestablished.",
+  "limits": "Onlyoriginal predicate executed. No fullstaffassignment or service success claim."
+}

@@ -1,0 +1,46 @@
+{
+  "processed_questions": 3,
+  "original_cpu_calls": 6,
+  "calls": [
+    {
+      "entry": "0x80022bf4",
+      "stop": "0x80001000",
+      "direct_calls": []
+    },
+    {
+      "entry": "0x80022bf4",
+      "stop": "0x80001000",
+      "direct_calls": []
+    },
+    {
+      "entry": "0x80038224",
+      "stop": "0x80001000",
+      "direct_calls": []
+    },
+    {
+      "entry": "0x80038224",
+      "stop": "0x80001000",
+      "direct_calls": []
+    },
+    {
+      "entry": "0x8007579c",
+      "stop": "0x80075930",
+      "direct_calls": []
+    },
+    {
+      "entry": "0x80064040",
+      "stop": "0x80064058",
+      "direct_calls": [
+        {
+          "pc": "0x80064050",
+          "target": "0x8007e57c"
+        }
+      ]
+    }
+  ],
+  "original_full_operating_updates": 0,
+  "original_gameplay_callee_replacements": 0,
+  "natural_festival_reachability": false,
+  "android_code_changed": false,
+  "tracked_open_issues_resolved": 0
+}

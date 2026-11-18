@@ -1,0 +1,39 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5516,
+      "sha256": "d13cdb41c37ac56a18e2141af8cd2e2dc8d0f017dd7adfc119468ccbaba73a23"
+    },
+    {
+      "path": "analyze-three-effects.py",
+      "bytes": 7558,
+      "sha256": "d7e86c26b443909bfab0bb4f5bf119a06c6752a5ebef8cea346f3feb530f4b50"
+    },
+    {
+      "path": "clerk-effect.json",
+      "bytes": 822,
+      "sha256": "a4b364284f457257067814fe35318bdfd5a1d89fd98a1bde1bb50b0c8c5413b1"
+    },
+    {
+      "path": "editor-reset-and-cancel.json",
+      "bytes": 1435,
+      "sha256": "6a1638e929c3afda96f6813a46c12a4ec087a26a6e77ddb40531e250fb35b7df"
+    },
+    {
+      "path": "parking-effect.json",
+      "bytes": 735,
+      "sha256": "4b4eff6d3b8f52e00382d599db45268face28f454b8273d4405b489ab956778c"
+    },
+    {
+      "path": "source-evidence.json",
+      "bytes": 3874,
+      "sha256": "e90518983b1a3b6385b05ac5158ba120f15accaba7b45d5c3b652cd9b211bec7"
+    },
+    {
+      "path": "summary.json",
+      "bytes": 933,
+      "sha256": "1fa1f554a32814c3d1ae110f97ef3c5226ca2e0ebad1bfbfaae1fdab440cb585"
+    }
+  ]
+}

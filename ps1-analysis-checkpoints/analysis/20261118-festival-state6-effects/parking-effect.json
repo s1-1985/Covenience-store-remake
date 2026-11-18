@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "state": 6,
+      "profile": 15,
+      "arrival_mode": 3,
+      "quantity": 2,
+      "returned_used_parking": 2,
+      "store_unchanged": true
+    },
+    {
+      "state": 0,
+      "profile": 15,
+      "arrival_mode": 3,
+      "quantity": 2,
+      "returned_used_parking": 0,
+      "store_unchanged": true
+    }
+  ],
+  "source_entry": "0x80022BF4",
+  "source_metric_call": "0x80023DB8 -> store_working_summary+0x14",
+  "conclusion": "Invalid nonzero state6 still contributes quantity to parking use when its validprofile arrivalmode==3. Mode3 condition matters; not allstate6customers consume parking.",
+  "limits": "Controlled input; not naturalfestivalreachability or entire subsequentstoreselector run."
+}

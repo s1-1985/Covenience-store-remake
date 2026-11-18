@@ -31,7 +31,7 @@
       "status": "open",
       "evidence": "analysis/20261116-weather-demand-data/out-of-catalog-context.json",
       "resolution": null,
-      "latest_evidence": "analysis/20261118-festival-state6-tail/README.md",
+      "latest_evidence": "analysis/20261118-festival-state6-effects/README.md",
       "established": [
         "All11 initial rivals use schedule2; misread schedule byte0 rejects profile144 even under festival bypass.",
         "Schedule0/3/5 nonzero out-of-row reads can pass the schedule gate; stock alias and distance gates still apply.",
@@ -39,9 +39,10 @@
         "Original bootstrap/TOWN0001/metrics/full2619C with controlled schedule0,month8,festival1,seed2 selectsstore2 forcell15,14 and increments itsfirst-customer state at26868; schedule2/nonfestival controls do not.",
         "Six injected first-state values0..5 become1..6; original post-spawn dispatch selects entry/shopping/checkout/exit branches or nohandler at6. Stopped before handlers; downstream outcomes not established.",
         "Saved four-store RAM input under samecontrolled schedule/calendar/seed producesnoaliaswrite; store2 stockalias=order0=0 andstore3 stockalias=store0stock15=0. Not a natural festival playthrough.",
-        "Syntheticstate6 post-spawn loop executesnomatchinghandlers; all5080storebytes,unsettledcart,wallet,occupancy anddirtyflag unchanged. Originalfreeslot helper skipsstate6. Two boundedcalls only;notnaturalreachabilityorpermanentfreeze proof."
+        "Syntheticstate6 post-spawn loop executesnomatchinghandlers; all5080storebytes,unsettledcart,wallet,occupancy anddirtyflag unchanged. Originalfreeslot helper skipsstate6. Two boundedcalls only;notnaturalreachabilityorpermanentfreeze proof.",
+        "State6conditional effects established withsixbounded entries:arrivalmode3 quantity countedby22BF4; checkoutpredicate38224 countsit onfloor!=16; editorentryclear7579C removesstate/occupancy; cancelcopy64040 restoreswhole5080bytes includingstate6. Notnaturalreachability or permanentstafffreeze proof."
       ],
-      "remaining_question": "Natural festival reachability through legitimate schedule/ownership/inventory changes; other prewrite-state outcomes; external reset/lifecycle, actual drawing andfinancial effects remain unconfirmed. State6 boundedpostloop/freeslot effects established20261118."
+      "remaining_question": "Natural festival reachability through legitimate schedule/ownership/inventory changes; other prewrite-state outcomes; remaining lifecycle/reset paths, actual frames and completefinancial consequences remain unconfirmed. Boundedstate6 parking/predicate/editorcancel effects nowestablished."
     },
     {
       "id": "R03",
@@ -114,7 +115,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "既存成果の重複照合を先に行う。R02の状態6後段保持・空き枠非再利用は確認済みで反復しない。自然到達や外部解除経路の具体的な根拠がある場合に追跡し、それがなければ他の未解明項目へ切り替える。",
+  "next": "既存成果との重複を先に照合。状態6の通常保持・空き枠除外・条件付き駐車/接客判定・内装編集取消復元は確認済みで反復しない。R02自然到達の具体的な合法操作条件、他の未解明項目の新しい参照・更新経路を優先する。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
