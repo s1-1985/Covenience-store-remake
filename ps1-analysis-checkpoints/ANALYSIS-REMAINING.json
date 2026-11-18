@@ -31,7 +31,7 @@
       "status": "open",
       "evidence": "analysis/20261116-weather-demand-data/out-of-catalog-context.json",
       "resolution": null,
-      "latest_evidence": "analysis/20261118-festival-state6-effects/README.md",
+      "latest_evidence": "analysis/20261118-festival-operation-preconditions/README.md",
       "established": [
         "All11 initial rivals use schedule2; misread schedule byte0 rejects profile144 even under festival bypass.",
         "Schedule0/3/5 nonzero out-of-row reads can pass the schedule gate; stock alias and distance gates still apply.",
@@ -40,9 +40,10 @@
         "Six injected first-state values0..5 become1..6; original post-spawn dispatch selects entry/shopping/checkout/exit branches or nohandler at6. Stopped before handlers; downstream outcomes not established.",
         "Saved four-store RAM input under samecontrolled schedule/calendar/seed producesnoaliaswrite; store2 stockalias=order0=0 andstore3 stockalias=store0stock15=0. Not a natural festival playthrough.",
         "Syntheticstate6 post-spawn loop executesnomatchinghandlers; all5080storebytes,unsettledcart,wallet,occupancy anddirtyflag unchanged. Originalfreeslot helper skipsstate6. Two boundedcalls only;notnaturalreachabilityorpermanentfreeze proof.",
-        "State6conditional effects established withsixbounded entries:arrivalmode3 quantity countedby22BF4; checkoutpredicate38224 countsit onfloor!=16; editorentryclear7579C removesstate/occupancy; cancelcopy64040 restoreswhole5080bytes includingstate6. Notnaturalreachability or permanentstafffreeze proof."
+        "State6conditional effects established withsixbounded entries:arrivalmode3 quantity countedby22BF4; checkoutpredicate38224 countsit onfloor!=16; editorentryclear7579C removesstate/occupancy; cancelcopy64040 restoreswhole5080bytes includingstate6. Notnaturalreachability or permanentstafffreeze proof.",
+        "Existing4storeRAMconnectedpartialoperations:originalpurchase ofstore3for60590504,ownstore3schedule0only,originalstore0product15changefor14400->stock40; full2619C selectsstore3for15,14 andwrites00FF->01FF. Beforestockchange selectorreturns-1. Rivalhoursunchanged. UI/setupfinalization/calendar manuallycontrolled;notnaturalreachability proof."
       ],
-      "remaining_question": "Natural festival reachability through legitimate schedule/ownership/inventory changes; other prewrite-state outcomes; remaining lifecycle/reset paths, actual frames and completefinancial consequences remain unconfirmed. Boundedstate6 parking/predicate/editorcancel effects nowestablished."
+      "remaining_question": "FullordinaryUI/hiring/editorfinalization andelapsedcalendar chain fulfillingthese partialoperationpreconditions; actualcustomer stateatnaturalfestival andsubsequent lifecycle/frames/financial outcomes. Do notgeneralize00->01case tostate6."
     },
     {
       "id": "R03",
@@ -115,7 +116,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "既存成果との重複を先に照合。状態6の通常保持・空き枠除外・条件付き駐車/接客判定・内装編集取消復元は確認済みで反復しない。R02自然到達の具体的な合法操作条件、他の未解明項目の新しい参照・更新経路を優先する。",
+  "next": "既存成果との重複照合を先に行う。R02の自社買収・営業時間確定・商品変更の部分処理接続と店3の00FF->01FF書込みは確認済み。残る通常UI/最終確定/時間経過への接続を必要な箇所だけ追い、同じ診断を反復しない。",
   "additional_completed_source_paths": [
     {
       "id": "X01",

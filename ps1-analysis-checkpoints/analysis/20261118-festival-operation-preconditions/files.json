@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7111,
+      "sha256": "96e3a74514ffad2ad6bebe3d27baf0d10bcae7c7e2f543e29c1cb529c8bcb177"
+    },
+    {
+      "path": "analyze-preconditions.py",
+      "bytes": 9051,
+      "sha256": "98b2231483e2930c5905765c54cf2903aa775c2c11b9a05108815e8a94f06911"
+    },
+    {
+      "path": "results.json",
+      "bytes": 5530,
+      "sha256": "ea96cf3f89ef01f2c5f78d96bb15cca91e01957b0b0c9da1340784b9991d570a"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 2537,
+      "sha256": "83146fa6c777a8dac906f024d03a0353a9d9cf7d8d91d18eec2a751376ea34c3"
+    }
+  ]
+}

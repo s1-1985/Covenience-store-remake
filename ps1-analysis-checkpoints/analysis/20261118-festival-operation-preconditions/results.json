@@ -1,0 +1,270 @@
+{
+  "input_kind": "Existingoperating RAM atclock24560 plus boundedoriginal transaction/stock/hour commit blocks. Festivalcalendar/switch/seed supplieddiagnostically. Not anatural fullUI/dayplaythrough.",
+  "baseline_operands": {
+    "order": [
+      0,
+      2,
+      1,
+      3,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "slots": [
+      {
+        "slot": 0,
+        "owner": 1,
+        "schedule": 2,
+        "stock15": 0,
+        "invalid_stock": 0
+      },
+      {
+        "slot": 1,
+        "owner": 32769,
+        "schedule": 2,
+        "stock15": 35,
+        "invalid_stock": 0
+      },
+      {
+        "slot": 2,
+        "owner": 2,
+        "schedule": 2,
+        "stock15": 38,
+        "invalid_stock": 0
+      },
+      {
+        "slot": 3,
+        "owner": 32771,
+        "schedule": 2,
+        "stock15": 15,
+        "invalid_stock": 0
+      }
+    ]
+  },
+  "acquisition": {
+    "target_slot": 3,
+    "old_owner": 32771,
+    "new_owner": 3,
+    "rect": [
+      19,
+      24,
+      20,
+      25
+    ],
+    "land": 24000000,
+    "assets": 6295252,
+    "price": 60590504,
+    "player_cash_before": 99109050,
+    "player_cash_after": 38518546,
+    "rival_cash_before": 97859698,
+    "rival_cash_after": 158450202,
+    "source_commit": "0x80061214..0x800612A0",
+    "scope": "Originalpayment/owner/account/staff/town/metrics block after a hypothetical validUIconfirmation; no UI decision injected ascallee return."
+  },
+  "schedule": {
+    "before": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "after": [
+      2,
+      2,
+      2,
+      0
+    ],
+    "chosen_index": 0,
+    "choice_is_in_original_0_to_6_range": true,
+    "commit": "0x80062CB4..0x80062CC4",
+    "only_changed_slot": 3,
+    "all_rival_schedules_preserved": true
+  },
+  "before_product_change": {
+    "operands": {
+      "order": [
+        0,
+        2,
+        3,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "slots": [
+        {
+          "slot": 0,
+          "owner": 1,
+          "schedule": 2,
+          "stock15": 0,
+          "invalid_stock": 0
+        },
+        {
+          "slot": 1,
+          "owner": 32769,
+          "schedule": 2,
+          "stock15": 35,
+          "invalid_stock": 0
+        },
+        {
+          "slot": 2,
+          "owner": 2,
+          "schedule": 2,
+          "stock15": 38,
+          "invalid_stock": 0
+        },
+        {
+          "slot": 3,
+          "owner": 3,
+          "schedule": 0,
+          "stock15": 15,
+          "invalid_stock": 0
+        }
+      ]
+    },
+    "selector_profile144_cell15_14": -1
+  },
+  "product_change": {
+    "store": 0,
+    "fixture": 0,
+    "xy": [
+      10,
+      2
+    ],
+    "selected_product": 15,
+    "listed_in_original_fixture_choices": true,
+    "computed_cost": 14400,
+    "cash_before": 38518546,
+    "cash_after": 38504146,
+    "source_stock": "0x800209F8 amount10000",
+    "source_temporary_charge": "0x800691C0..0x800691F8",
+    "scope": "Originalstockandtemporary UIcharge; no editorfinalconfirm/ledgerfinish replay."
+  },
+  "after_product_change_operands": {
+    "order": [
+      0,
+      2,
+      3,
+      1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "slots": [
+      {
+        "slot": 0,
+        "owner": 1,
+        "schedule": 2,
+        "stock15": 40,
+        "invalid_stock": 0
+      },
+      {
+        "slot": 1,
+        "owner": 32769,
+        "schedule": 2,
+        "stock15": 35,
+        "invalid_stock": 0
+      },
+      {
+        "slot": 2,
+        "owner": 2,
+        "schedule": 2,
+        "stock15": 38,
+        "invalid_stock": 0
+      },
+      {
+        "slot": 3,
+        "owner": 3,
+        "schedule": 0,
+        "stock15": 15,
+        "invalid_stock": 40
+      }
+    ]
+  },
+  "festival_invalid_selector_calls": [
+    {
+      "x": 39,
+      "y": 10,
+      "store": -1
+    },
+    {
+      "x": 15,
+      "y": 14,
+      "store": 3
+    }
+  ],
+  "first_customer_writes": [
+    {
+      "pc": "0x80026868",
+      "slot": 3,
+      "address": "0x12fd84",
+      "bytes": 2,
+      "value_low16": 65281
+    }
+  ],
+  "first_customers_before": [
+    "00ff7d00985c0000d80e0000000902ffffffffffffffffffffffffff0000021e",
+    "00ff8100265f0000f41a00000b0000ffffffffffffffffffffffffff6304021f",
+    "00ff4e00b25e0000f81100000b0000ffffffffffffffffffffffffff4c00050d",
+    "00ff6700585e0000dc0500000d0000ffffffffffffffffffffffffff61000211"
+  ],
+  "first_customers_after": [
+    "00ff7d00985c0000d80e0000000902ffffffffffffffffffffffffff0000021e",
+    "00ff8100265f0000f41a00000b0000ffffffffffffffffffffffffff6304021f",
+    "00ff4e00b25e0000f81100000b0000ffffffffffffffffffffffffff4c00050d",
+    "01ff6700585e0000dc0500000d0000ffffffffffffffffffffffffff61000211"
+  ],
+  "bounded_entries": [
+    {
+      "entry": "0x8001dfd0",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x8001de5c",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x80061214",
+      "stop": "0x800612a0"
+    },
+    {
+      "entry": "0x80062cb4",
+      "stop": "0x80062cc4"
+    },
+    {
+      "entry": "0x80023c20",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x80026a64",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x800209f8",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x800691c0",
+      "stop": "0x800691f8"
+    },
+    {
+      "entry": "0x80023c20",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x8002619c",
+      "stop": "0x80001000"
+    }
+  ],
+  "original_full_operating_updates": 0,
+  "gameplay_callee_replacements": 0
+}
