@@ -31,7 +31,7 @@
       "status": "open",
       "evidence": "analysis/20261116-weather-demand-data/out-of-catalog-context.json",
       "resolution": null,
-      "latest_evidence": "analysis/20261118-festival-operation-preconditions/README.md",
+      "latest_evidence": "analysis/20261118-festival-confirm-calendar/README.md",
       "established": [
         "All11 initial rivals use schedule2; misread schedule byte0 rejects profile144 even under festival bypass.",
         "Schedule0/3/5 nonzero out-of-row reads can pass the schedule gate; stock alias and distance gates still apply.",
@@ -41,9 +41,10 @@
         "Saved four-store RAM input under samecontrolled schedule/calendar/seed producesnoaliaswrite; store2 stockalias=order0=0 andstore3 stockalias=store0stock15=0. Not a natural festival playthrough.",
         "Syntheticstate6 post-spawn loop executesnomatchinghandlers; all5080storebytes,unsettledcart,wallet,occupancy anddirtyflag unchanged. Originalfreeslot helper skipsstate6. Two boundedcalls only;notnaturalreachabilityorpermanentfreeze proof.",
         "State6conditional effects established withsixbounded entries:arrivalmode3 quantity countedby22BF4; checkoutpredicate38224 countsit onfloor!=16; editorentryclear7579C removesstate/occupancy; cancelcopy64040 restoreswhole5080bytes includingstate6. Notnaturalreachability or permanentstafffreeze proof.",
-        "Existing4storeRAMconnectedpartialoperations:originalpurchase ofstore3for60590504,ownstore3schedule0only,originalstore0product15changefor14400->stock40; full2619C selectsstore3for15,14 andwrites00FF->01FF. Beforestockchange selectorreturns-1. Rivalhoursunchanged. UI/setupfinalization/calendar manuallycontrolled;notnaturalreachability proof."
+        "Existing4storeRAMconnectedpartialoperations:originalpurchase ofstore3for60590504,ownstore3schedule0only,originalstore0product15changefor14400->stock40; full2619C selectsstore3for15,14 andwrites00FF->01FF. Beforestockchange selectorreturns-1. Rivalhoursunchanged. UI/setupfinalization/calendar manuallycontrolled;notnaturalreachability proof.",
+        "Followup corrects62CFC asprice(not hiring); originaleditoraccepttail preservesproduct15stock40; originaltick44638->44640/calendar gives[1,8,4,0,0] andfinance reachesfestivalpresentationbranch. Sixboundedentries; stopbeforepresentation, switchstill0."
       ],
-      "remaining_question": "FullordinaryUI/hiring/editorfinalization andelapsedcalendar chain fulfillingthese partialoperationpreconditions; actualcustomer stateatnaturalfestival andsubsequent lifecycle/frames/financial outcomes. Do notgeneralize00->01case tostate6."
+      "remaining_question": "Full ordinary UI, parent editor/permit/final ledger, elapsed days and event blockers, festival presentation completion and actual customer lifecycle/financial effects. Price confirmation is not a hiring prerequisite. Do not generalize conditional00->01 to natural state6."
     },
     {
       "id": "R03",

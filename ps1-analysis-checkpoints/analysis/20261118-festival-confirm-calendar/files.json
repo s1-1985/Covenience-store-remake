@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3307,
+      "sha256": "6c6fdd90f1c2f338421c0889a9307afab22098d4587c6438cd7bc7202fa3d396"
+    },
+    {
+      "path": "analyze-confirm-calendar.py",
+      "bytes": 5040,
+      "sha256": "ad472a55024a3e6d164e89de93805a03fe4867cbf8e74a875aa508d4f90507f0"
+    },
+    {
+      "path": "results.json",
+      "bytes": 2057,
+      "sha256": "8883cdca2270526f2493bca07513b6b14590985222ea2d9c31eb1ce6cd138520"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 2201,
+      "sha256": "db999581e2d9e12949e910caa79d8bdd2dfc06c05640b77cb341aadc0d648ad2"
+    }
+  ]
+}

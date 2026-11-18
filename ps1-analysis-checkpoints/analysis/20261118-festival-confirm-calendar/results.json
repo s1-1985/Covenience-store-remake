@@ -1,0 +1,73 @@
+{
+  "price_confirmation": {
+    "method": "static original control flow",
+    "parent": "0x80062C90 calls 0x80062CFC; nonnegative return commits schedule at0x80062CC0",
+    "start_button_mask": "0x800",
+    "accepted_path": [
+      "0x800631C0",
+      "0x800631CC sound",
+      "0x800631D4",
+      "0x800636F0 returns0"
+    ],
+    "cancel_mask": "0x40",
+    "cancel_return": -1,
+    "correction": "Child is price setting, not hiring; START acceptance path has no staff requirement or mandatory price edit."
+  },
+  "editor_accept": {
+    "original_stock_change_cost": 14400,
+    "staff_input_ids": [
+      15,
+      65535,
+      65535
+    ],
+    "entry": "0x80076308",
+    "return_value": 0,
+    "product15_stock_after_accept": 40,
+    "all_2688_floor_bytes_preserved": true,
+    "floor_sha256": "a18fb3d8d3a2764a5b05f25d474d99ea4dbb4929d9de803a1b326990249e04ed",
+    "scope": "Original successful editor tail only. No whole UI, parent final ledger, permit commit, or later operating persistence claim."
+  },
+  "calendar": {
+    "input_tick": 44638,
+    "tick_after_original_increment": 44640,
+    "derived_year_month_stage_hour_minute": [
+      1,
+      8,
+      4,
+      0,
+      0
+    ],
+    "finance_reached": "0x800293C4",
+    "festival_switch_at_stop": 0,
+    "meaning": "Real calendar decoding reaches festival presentation branch. Stop before presentation; switch1 is only assigned after presentation at0x8002944C.",
+    "scope": "Tick supplied at boundary; no elapsed-day playthrough, event blocker, festival movie or demand replay."
+  },
+  "bounded_entries": [
+    {
+      "entry": "0x800209f8",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x80076308",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x80023c20",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x80023448",
+      "stop": "0x80023460"
+    },
+    {
+      "entry": "0x80023c20",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x80029334",
+      "stop": "0x800293c4"
+    }
+  ],
+  "gameplay_callee_replacements": 0,
+  "full_operating_updates": 0
+}
