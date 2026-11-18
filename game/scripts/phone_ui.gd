@@ -25,21 +25,23 @@ extends Node
 
 const HUD_HEIGHT := 60.0
 const BOTTOM_HEIGHT := 56.0
-const MENU_LEFT := 1030.0
-const MENU_WIDTH := 238.0
-const PLAY_RIGHT := 1020.0
+const MENU_LEFT := 862.0
+const MENU_WIDTH := 242.0
+const PLAY_RIGHT := 1120.0
+const PLAY_LEFT := 160.0
+const PLAY_WIDTH := 960.0
 const SCREEN := Vector2(1280, 720)
 const WINDOW_MIN_LEFT := 430.0
 
-const BAND := Color("d7e9d2")
+const BAND := Color("e5e0c8")
 const BAND_TEXT := Color("26332a")
 const FIELD := Color("2f7d68")
 const FIELD_TEXT := Color("4f9f86")
-const PAPER := Color("fbf6e6")
+const PAPER := Color("e4dfca")
 const PAPER_TEXT := Color("2b2620")
 const INK_SOFT := Color("6b6152")
 const FRAME := Color("5b4a35")
-const TITLE_PINK := Color("e889a6")
+const TITLE_PINK := Color("62b7b9")
 const BUTTON := Color("2f8a73")
 const BUTTON_HOVER := Color("37a086")
 const BUTTON_PRESSED := Color("1f6b58")
@@ -111,6 +113,8 @@ var _fallback_notice_queue: Array[String] = []
 var _source_notice_visible := false
 var _notice_source
 var _last_message := ""
+var command_open := false
+var touch_controls
 var _day_seen := -1
 var _revenue_at_day_start := 0
 var _textures: Dictionary = {}
@@ -137,6 +141,11 @@ func setup(owner_main) -> void:
         if panel != null:
             panel.theme = theme
     main.get_node("Title").visible = false
+    touch_controls = preload("res://scripts/touch_controls.gd").new()
+    main.add_child(touch_controls)
+    touch_controls.setup(main, self)
+    pause_button.hide()
+    speed_button.hide()
     layout_screen()
     set_process(true)
 
@@ -146,7 +155,7 @@ func setup(owner_main) -> void:
 static func _box(color: Color, border := Color.TRANSPARENT, radius := 10, border_width := 0) -> StyleBoxFlat:
     var box := StyleBoxFlat.new()
     box.bg_color = color
-    box.set_corner_radius_all(radius)
+    box.set_corner_radius_all(0)
     if border_width > 0:
         box.border_color = border
         box.set_border_width_all(border_width)
@@ -220,18 +229,18 @@ func _build_hud() -> void:
     band.content_margin_left = 20
     band.content_margin_right = 12
     hud.add_theme_stylebox_override("panel", band)
-    hud.offset_left = 0
+    hud.offset_left = PLAY_LEFT
     hud.offset_top = 0
-    hud.offset_right = SCREEN.x
+    hud.offset_right = PLAY_RIGHT
     hud.offset_bottom = HUD_HEIGHT
     var row: HBoxContainer = hud.get_node("Margin/HBox")
-    row.add_theme_constant_override("separation", 22)
+    row.add_theme_constant_override("separation", 12)
     (hud.get_node("Margin") as MarginContainer).add_theme_constant_override("margin_top", 0)
     (hud.get_node("Margin") as MarginContainer).add_theme_constant_override("margin_bottom", 0)
     for label in row.get_children():
         if label is Label:
             label.add_theme_color_override("font_color", BAND_TEXT)
-            label.add_theme_font_size_override("font_size", 26)
+            label.add_theme_font_size_override("font_size", 22)
             label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
     (row.get_node("CashValue") as Label).add_theme_color_override("font_color", Color("7a4b00"))
     row.get_node("StoreNameValue").visible = false
@@ -242,7 +251,7 @@ func _build_hud() -> void:
     row.add_child(pause_button)
     speed_button = _small_button("×1", "PhoneSpeed")
     speed_button.pressed.connect(func():
-        main.speed = {1: 2, 2: 4, 4: 1}[main.speed]
+        main.speed = {1: 2, 2: 4, 4: 8, 8: 1}.get(main.speed, 1)
         refresh())
     row.add_child(speed_button)
 
@@ -296,8 +305,8 @@ func _build_bottom_bar() -> void:
     sales_label = _label("", 24, Color("7a4b00"))
     row.add_child(sales_label)
     main.get_node("UI").add_child(bottom_bar)
-    bottom_bar.position = Vector2(0, SCREEN.y - BOTTOM_HEIGHT)
-    bottom_bar.size = Vector2(PLAY_RIGHT, BOTTOM_HEIGHT)
+    bottom_bar.position = Vector2(PLAY_LEFT, SCREEN.y - BOTTOM_HEIGHT)
+    bottom_bar.size = Vector2(PLAY_WIDTH, BOTTOM_HEIGHT)
 
 
 func _label(text: String, size: int, color: Color = PAPER_TEXT) -> Label:
@@ -324,7 +333,7 @@ func _build_menu() -> void:
     menu = VBoxContainer.new()
     menu.name = "PhoneMenu"
     menu.theme = theme
-    menu.add_theme_constant_override("separation", 8)
+    menu.add_theme_constant_override("separation", 4)
     main.get_node("UI").add_child(menu)
     menu.position = Vector2(MENU_LEFT, HUD_HEIGHT + 10)
     menu.size = Vector2(MENU_WIDTH, SCREEN.y - HUD_HEIGHT - 20)
@@ -358,7 +367,7 @@ func _menu_button(text: String, icon_path: String) -> Button:
     var button := Button.new()
     button.text = text
     button.toggle_mode = false
-    button.custom_minimum_size = Vector2(MENU_WIDTH, 76)
+    button.custom_minimum_size = Vector2(MENU_WIDTH, 62)
     button.alignment = HORIZONTAL_ALIGNMENT_LEFT
     button.add_theme_font_size_override("font_size", 28)
     if not icon_path.is_empty():
@@ -423,6 +432,7 @@ func open_window(id: String) -> void:
     if main.selecting_site:
         return
     close_window()
+    command_open = false
     window_id = id
     _updaters.clear()
     _clear_body()
@@ -462,6 +472,17 @@ func open_window(id: String) -> void:
         "stock":
             window_title.text = "商品を並べる" if main.simulation.inventory.product_on_fixture(stock_fixture_id).is_empty() else "商品を変える"
             _fill_stock()
+    var frame := StyleBoxTexture.new()
+    frame.texture = load("res://assets/ps1/window_frame.png")
+    frame.texture_margin_left = 16
+    frame.texture_margin_top = 16
+    frame.texture_margin_right = 16
+    frame.texture_margin_bottom = 16
+    frame.content_margin_left = 20
+    frame.content_margin_right = 20
+    frame.content_margin_top = 16
+    frame.content_margin_bottom = 16
+    window.add_theme_stylebox_override("panel", frame)
     window.visible = true
     window_scroll.scroll_vertical = 0
     var command_id := "research" if RESEARCH_TITLES.has(id) else id
@@ -496,7 +517,7 @@ func close_window() -> void:
 # Where everything goes: the store fills the space left of the command
 # column, and moves to the left edge while a window is open beside it.
 func layout_screen() -> void:
-    var area := Rect2(0, HUD_HEIGHT, PLAY_RIGHT, SCREEN.y - HUD_HEIGHT - BOTTOM_HEIGHT)
+    var area := Rect2(PLAY_LEFT, HUD_HEIGHT, PLAY_WIDTH, SCREEN.y - HUD_HEIGHT - BOTTOM_HEIGHT)
     var store: Dictionary = main.config["store"]
     var tile_pixels: float = main.store_view.SUBCELL_PIXELS * int(store["subcells_per_tile"])
     var natural := Vector2(int(store["width_tiles"]), int(store["height_tiles"])) * tile_pixels
@@ -508,23 +529,25 @@ func layout_screen() -> void:
     var shown := natural * fit
     var top := area.position.y + (area.size.y - shown.y) / 2.0 + lot * fit
     if window.visible and main.store_view.visible:
-        main.store_view.position = Vector2(16, top)
+        main.store_view.position = Vector2(PLAY_LEFT + 16, top)
     else:
-        main.store_view.position = Vector2((area.size.x - shown.x) / 2.0, top)
-    main.town_view.position = area.position
-    main.town_view.view_size = area.size
-    var left := WINDOW_MIN_LEFT
+        main.store_view.position = Vector2(PLAY_LEFT + (area.size.x - shown.x) / 2.0, top)
+    var map_size: Vector2 = Vector2(main.town_view.guide_map_tiles()) * main.town_view.map_tile_pixels
+    var map_shown := Vector2(minf(area.size.x, map_size.x), minf(area.size.y, map_size.y))
+    main.town_view.position = area.position + (area.size - map_shown) / 2.0
+    main.town_view.view_size = map_shown
+    var left := 560.0
     if main.store_view.visible:
-        left = clampf(16 + shown.x + 16, WINDOW_MIN_LEFT, 640)
+        left = clampf(PLAY_LEFT + 16 + shown.x + 16, 560, 680)
     window.position = Vector2(left, HUD_HEIGHT + 8)
     window.size = Vector2(PLAY_RIGHT - left - 8, SCREEN.y - HUD_HEIGHT - BOTTOM_HEIGHT - 16)
     bottom_bar.visible = main.store_view.visible
     if main.site_panel != null:
-        main.site_panel.position = Vector2(8, SCREEN.y - 150)
-        main.site_panel.size = Vector2(PLAY_RIGHT - 16, 140)
+        main.site_panel.position = Vector2(PLAY_LEFT + 8, SCREEN.y - 150)
+        main.site_panel.size = Vector2(PLAY_WIDTH - 16, 140)
     if main.rival_panel != null:
-        main.rival_panel.position = Vector2(8, SCREEN.y - 170)
-        main.rival_panel.size = Vector2(PLAY_RIGHT - 16, 160)
+        main.rival_panel.position = Vector2(PLAY_LEFT + 8, SCREEN.y - 170)
+        main.rival_panel.size = Vector2(PLAY_WIDTH - 16, 160)
     if main.fixture_info_panel != null:
         main.fixture_info_panel.position = Vector2(PLAY_RIGHT - 470, SCREEN.y - BOTTOM_HEIGHT - 250)
         main.fixture_info_panel.size = Vector2(460, 0)
@@ -557,7 +580,7 @@ func refresh() -> void:
         if not _last_message.is_empty() and _last_message != main.tr("Deselected"):
             show_notice(_last_message, 2.5)
     town_button.text = "店内へ" if main.town_view.visible else "町マップ"
-    menu.visible = not main.selecting_site
+    menu.visible = command_open and not main.selecting_site and not window.visible
     bottom_bar.visible = main.store_view.visible and not main.selecting_site
     if main.selecting_site and window.visible:
         close_window()

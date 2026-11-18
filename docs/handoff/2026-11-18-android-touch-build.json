@@ -1,0 +1,23 @@
+{
+  "version": "0.6.0-touch",
+  "version_code": 60,
+  "base_commit": "55e591682952c39f79d9d66c568fd94fb4c2eb74",
+  "godot": "4.6.3.stable.official.7d41c59c4",
+  "package": "com.conveniremake.touch",
+  "architecture": "arm64-v8a",
+  "min_sdk": 24,
+  "target_sdk": 36,
+  "bytes": 44837622,
+  "sha256": "3babe5994327407eee16644869edee27c469b2ddacf82ea3ae288421563ca952",
+  "library_file_id": "libfile_b78fd5ac41a48191a52ac762b4f13734",
+  "tests": [
+    "people_service_ui_smoke PASS",
+    "source_operations_ui_smoke PASS",
+    "touch_ui_smoke headless and Xorg/Mesa PASS",
+    "Godot export and signature verification PASS"
+  ],
+  "device_tested": false,
+  "complete_ps1_ui_parity": false,
+  "full_recovered_rules_integration": false,
+  "performance_limits": "No Android device or late-game many-store benchmark. Backlog retained but overload cannot guarantee realtime. Exported app has no emulator/BIOS dependency."
+}

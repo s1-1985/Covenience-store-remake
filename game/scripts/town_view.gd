@@ -45,7 +45,10 @@ signal site_tapped(origin: Vector2i)
 signal map_tapped(tile: Vector2i)
 
 var simulation
-var map_tile_pixels := 24.0
+var map_tile_pixels := 12.0
+var _touch_points: Dictionary = {}
+var _pinching := false
+var _pinch_distance := 0.0
 # Task #93: like the original town screen, only part of the town is shown
 # at a time and the view scrolls (here: drag to pan, in whole tiles).
 # view_size is set by main.gd; view_origin_tile is the top-left tile shown.
@@ -452,3 +455,49 @@ func _draw_program_store(rect: Rect2, rival: bool) -> void:
     for y in 2:
         for x in 2:
             _draw_program_tile((12 if rival else 0) + y * 2 + x, Rect2(rect.position + Vector2(x, y) * rect.size / 2, rect.size / 2))
+
+
+func touch_zoom(factor: float) -> void:
+    var old := map_tile_pixels
+    var center_tile := Vector2(view_origin_tile) + view_size / (2.0 * old)
+    map_tile_pixels = clampf(old * factor, 8.0, 48.0)
+    view_origin_tile = Vector2i(center_tile - view_size / (2.0 * map_tile_pixels))
+    scroll_by_tiles(Vector2i.ZERO)
+    var owner_main = get_parent()
+    if "phone_ui" in owner_main and owner_main.phone_ui != null:
+        owner_main.phone_ui.layout_screen()
+    queue_redraw()
+
+
+func _input(event: InputEvent) -> void:
+    if not visible or simulation == null:
+        return
+    if event is InputEventMagnifyGesture:
+        touch_zoom(event.factor)
+        get_viewport().set_input_as_handled()
+    elif event is InputEventScreenTouch:
+        if event.pressed:
+            if not Rect2(Vector2.ZERO, view_size).has_point(to_local(event.position)):
+                return
+            _touch_points[event.index] = event.position
+            if _touch_points.size() == 2:
+                _pinching = true
+                var points := _touch_points.values()
+                _pinch_distance = points[0].distance_to(points[1])
+                _press_travel = TAP_SLOP_PIXELS + 1.0
+                get_viewport().set_input_as_handled()
+        else:
+            _touch_points.erase(event.index)
+            if _pinching:
+                if _touch_points.is_empty():
+                    _pinching = false
+                get_viewport().set_input_as_handled()
+    elif event is InputEventScreenDrag and _pinching:
+        _touch_points[event.index] = event.position
+        if _touch_points.size() == 2:
+            var points := _touch_points.values()
+            var distance: float = points[0].distance_to(points[1])
+            if _pinch_distance > 0:
+                touch_zoom(distance / _pinch_distance)
+            _pinch_distance = distance
+        get_viewport().set_input_as_handled()
