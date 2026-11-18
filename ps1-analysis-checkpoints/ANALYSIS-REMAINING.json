@@ -33,7 +33,7 @@
       "status": "open",
       "evidence": "analysis/20261116-weather-demand-data/out-of-catalog-context.json",
       "resolution": null,
-      "latest_evidence": "analysis/20261118-title-ingame-load-difference/README.md",
+      "latest_evidence": "analysis/20261119-unresolved-resume-project-followup/README.md",
       "established": [
         "All11 initial rivals use schedule2; misread schedule byte0 rejects profile144 even under festival bypass.",
         "Schedule0/3/5 nonzero out-of-row reads can pass the schedule gate; stock alias and distance gates still apply.",
@@ -49,9 +49,10 @@
         "Initiallyzeroemptyrecord underoriginalalias becomesstate1 withoutregularadmission. Threeisolatedpostspawn loops withoriginalstoreprep yieldstates1,2,2; profile0-derivedwallet500/wanted4/deadline120 butquantity/cumulative/summarycounts stay0 andzero goal/routepersist. Occupancyiswritten despitezeroquantity. Oneoriginalnormaladmissioncontrol hasprofile41/quantity1/visitor+1/summary+1/demand-1 andFFgoals/routes. Notnaturalreachability,actualrendering or completedpurchase/checkout/exit proof.",
         "Fourbounded originalentries compose priorzeroquantity with stagedcheckout/exit. Quantity0/basket250 clearscart,returnsstate4 andsets0x200 with0cash/revenue; quantity1control credits250. Bothmarkcashierbusy andlater1headcustomer remains3/cart250 inthesameloop. Stagedexitarrival clearsoccupancy,returnsstate0 andnativefreeslot0 whileoldcoordinatespersist. Doesnotestablishnaturalcart/routes orfestivalreachability.",
         "Originalencoder/decoder preserve festival1 atpayload14EC8 fromcontrolledclock44640/schedule0 initialstoreinput withzero firstcustomer. Title reconstruction tail12D44 metrics/demand writesfirststate1 at26868 afterdecode. Playprologue5CD84 clearsfestival butpreservesallstores; native5CD9Csetsrebuild. One3CEACcall preservesstores/queue butadvancesRNG once. Wholecard/UI/prereconstruction/firstmainnotexecuted; controlledseednotserializedprovenance.",
-        "Sameoriginalencoded controlledpayload comparedacrosstitle andingameacceptedtails. Ingame62560clearsfestivalbeforemetrics/demand andnoaliasoccurs; title retains1 andaliasesfirststate0to1. Ingameclears50notificationactivebytes plusstate/timer/index whilepreservingremainingnoticebytes andstorepool duringreset. Original624B8 result!=1 bypassesdecode/reset/rebuild block; non1UIoutcomes notexecuted/classified."
+        "Sameoriginalencoded controlledpayload comparedacrosstitle andingameacceptedtails. Ingame62560clearsfestivalbeforemetrics/demand andnoaliasoccurs; title retains1 andaliasesfirststate0to1. Ingameclears50notificationactivebytes plusstate/timer/index whilepreservingremainingnoticebytes andstorepool duringreset. Original624B8 result!=1 bypassesdecode/reset/rebuild block; non1UIoutcomes notexecuted/classified.",
+        "Controlled original title resume now traverses original clock prologue and two full logic bodies to original return, excluding HUD producer23464 only. First corrupted record remains1 at44642 then state2/quantity0/wallet500/wanted4/deadline44764 at44644; goals/routes remainzero. No new26868 writes. Store totals differ from record quantity: visitors1, summary1 then0; no attribution solelytofirstrecord. Accepted ingame control remainsstate0 throughfirstlogicbody. No gameplay callee replacements; notnaturalUIreachability."
       ],
-      "remaining_question": "Natural ordinaryUI/acquisition/product/ledger setup, festival/save availability andwholecard/graphics/BGM/first-resumed-main paths remain open. Selectedtitle andingameloadtails nowcompared butnotnaturalreachability. Actualrouting/purchases ofcorruptedrecords andeffects onalreadyactive shoppers remain unconfirmed."
+      "remaining_question": "Natural ordinaryUI/acquisition/product/ledger setup, festival/save availability and wholecard/graphics/BGM paths remain open. First two title-resumed logic bodies and one accepted-ingame control are now boundedly established with HUD excluded. Natural routing/purchases of corrupted records and effects on already-active shoppers remain unconfirmed."
     },
     {
       "id": "R03",
@@ -79,16 +80,17 @@
       "status": "open",
       "evidence": "analysis/20261115-town-project-data/project-rules.json",
       "resolution": null,
-      "latest_evidence": "analysis/20261118-project-sound-event-contexts/README.md",
+      "latest_evidence": "analysis/20261119-unresolved-resume-project-followup/README.md",
       "established": [
         "Direct completion call at80023498 follows23C20,3EF44,275F8.",
         "Completion fp+1C, metric fp+44, queue fp+34 and preceding fp+3C alias mainSP-0x24.",
         "Metric writes last active store height; initial4maps produce20 at this writer. No unconditional actual sound claim.",
         "New-map1A0B8 clears all32 project bytes then sets selection=-1; +30 starts0. Original18 start-record blocks preserve0; native save/load copies all32 bytes.",
         "Original caller2346C..234A0 across4 initial maps x18 injected due projects: last alias writer23F30 height20 survives to completion; original notification receives29. No gameplay callee replacements; not a natural UI/waiting playthrough.",
-        "Five bounded original caller contexts connect changed active-store height24 and annual notification consumption to completion. Annual writer3F930 survives predecessor275F8 to292B4 with values0/-1/100. Diagnostic threshold21 or negative annual sales can yield sound34; ordinary threshold0 andnonnegative tested sales yield29. Active annual display doesnot stop completion reservation inthese cases. Notnaturalstate/reachability proof."
+        "Five bounded original caller contexts connect changed active-store height24 and annual notification consumption to completion. Annual writer3F930 survives predecessor275F8 to292B4 with values0/-1/100. Diagnostic threshold21 or negative annual sales can yield sound34; ordinary threshold0 andnonnegative tested sales yield29. Active annual display doesnot stop completion reservation inthese cases. Notnaturalstate/reachability proof.",
+        "Monthly mode2 pending/already-active selectedcaller contexts retainmetric20 andreservecompletion29. Original29334finance withpositive monthlyrevenue300000000/expense299000000 yields annualrevenue-1894967296, net7784192 andcash106784192 withendingflag0. Annualconsumer3F930 carriesnegativevalue tocompletion34 whileproject+30 stays0. Positive monthlyinputs/noticequeue/project are diagnostic; notnaturalUIreachability oractualaudio proof."
       ],
-      "remaining_question": "Other event/predecessor/store contexts, natural provenance of imported record+30 and reachability of diagnostic values remain unresolved. One-store annual zero/positive/negative cases are now boundedly established, not every annual/global path."
+      "remaining_question": "Other event/predecessor/store contexts, natural provenance of imported record+30, and ordinary play generation of the large positive monthly ledger values remain unresolved. Monthly mode2 and original-finance origin of a negative annual comparison are now boundedly connected; not every annual/global path."
     },
     {
       "id": "R06",
@@ -132,7 +134,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "通常UIの未接続仕様を優先。店舗グラフは損益60期・全店店数・共通有効範囲が判明し実装待ち。売却と採用経験は既解析であり反復しない。既存未解決6件は新しい手掛かりが得られるまで同じ局所試験を繰り返さない。",
+  "next": "ユーザー指示により未解決6件を先行。R02は読込後の最初の営業ロジック2回まで接続済みであり、その再試験を避け、通常操作での祭り保存条件・活動中の客への影響を次の候補とする。R05は正の月次入力から負の年次比較値まで接続済み。通常営業での入力範囲と+30の自然由来が残る。R01/R06/R07は新しい手掛かりなしに既存検索・候補試験を反復しない。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
