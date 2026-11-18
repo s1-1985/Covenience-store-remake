@@ -1,0 +1,32 @@
+{
+  "issue": 232,
+  "date": "2026-11-18",
+  "branch": "chatgpt/map-assets-isolated-20260922",
+  "checked_commit": "c3da11a8f543da8ab45c0e8621224d160b196f57",
+  "check_type": "Git tree metadata only; NOT PNG decoding or visual verification",
+  "staged_count": 57,
+  "verified_existing_sha_match": 57,
+  "missing": [],
+  "mismatches": [],
+  "mask_sets_road_rail_river_complete": true,
+  "errors": [],
+  "unresolved_topology": [
+    "river_e",
+    "river_n",
+    "river_s",
+    "river_w",
+    "map_grade_separation_cross",
+    "map_pond_channel_s",
+    "map_concrete"
+  ],
+  "unresolved_count": 7,
+  "accepted_for_game": false,
+  "pixel_decode_performed": false,
+  "godot_run_performed": false,
+  "ps1_visual_accepted": false,
+  "notes": [
+    "57 staging entries exist and their Git blob SHA matches the manifest; bytes/pixels not inspected in this run.",
+    "Four river endpoints inherit unresolved pond-channel topology; three cross-type assets also unresolved.",
+    "Bridge water sides and river-mouth sea sides need additional control assets before full seam acceptance."
+  ]
+}
