@@ -1,27 +1,26 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "unresolved_festival_active_admission_save",
-  "report": "analysis/20261119-festival-active-admission-save/README.md",
-  "previous_report": "analysis/20261119-unresolved-resume-project-followup/README.md",
-  "priority": "Existing unresolved issues first, R02 native-created record and postfestival save frontier",
-  "new_result": [
-    "Native-created pending admission is advanced by source festival alias and skips budget/position/deadline initialization.",
-    "Postfestival source tail, original two-minute advance, finance early return and original menu dispatch encoder save flag1 at nonmidnight44642.",
-    "Same nonmidnight payload decoded/title-rebuilt under specified seed2 advances admission state1 to2; next midnight reset endpoint confirmed."
+  "work_kind": "normal_survey_ranking_ui",
+  "report": "analysis/20261119-survey-ranking-ui/README.md",
+  "previous_report": "analysis/20261119-festival-active-admission-save/README.md",
+  "priority": "User paused the six existing unresolved issues; analyze other normal UI/source behavior.",
+  "new_result": "Independent unsigned top8 for bought/wanted counters, low-ID tie order, zero suppression, original row coordinates and cyclic own-store navigation linked.",
+  "known_reused": [
+    "counter producers",
+    "monthly reset",
+    "product labels",
+    "owner-store list"
   ],
-  "final_reproducer_original_entries": 22,
-  "entry_count_scope": "Bootstrap, selected blocks and functions in final reproducer only; exploratory calls and instruction-limit preparation preceded it.",
-  "original_operating_logic_body_updates": 0,
-  "whole_hud_inclusive_updates": 0,
-  "gameplay_callee_replacements": 0,
-  "resource_loader_substitutions": 1,
-  "verification": "Two active-record branches and selected save/title/midnight endpoints only; no broad regression.",
+  "original_leaf_entries": 3,
+  "text_renderer_intercepted": true,
+  "gameplay_function_replacements": 0,
+  "operating_updates": 0,
+  "verification": "Three ranking and captured text-argument cases; no broad regression or full GPU/card/menu loop.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
-  "open_issues_resolved_this_turn": 0,
+  "paused_tracked_issues": 6,
   "overall_measured_percent": null,
   "remaining_ledger": "ANALYSIS-REMAINING.json",
-  "natural_UI_reachability_established": false,
   "apk_updated": false
 }

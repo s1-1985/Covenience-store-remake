@@ -1,0 +1,49 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "helper_sha256": "aa3c09f5c22dc9e935c52678b375a2323459af99963e9f0bd34382a9b3fa21f5",
+  "ranges": [
+    {
+      "name": "survey_wrapper",
+      "start": "0x80046a84",
+      "end_exclusive": "0x80046f0c",
+      "sha256": "491d1c640e520caf7620fd33f26c95aa17f76bea95493d88984ef9ec0e24afa4"
+    },
+    {
+      "name": "rank_and_draw",
+      "start": "0x800470e4",
+      "end_exclusive": "0x800478f8",
+      "sha256": "94a08e17bf67bd6507ba3445c0acaaa10f4696f408fb7bbac5cd29dfc1a00f16"
+    },
+    {
+      "name": "monthly_counter_reset",
+      "start": "0x8002359c",
+      "end_exclusive": "0x80023670",
+      "sha256": "cc5cbff39a51e427bceaa029ee97bf08276b3bf1536edff58684352609959e65"
+    },
+    {
+      "name": "wanted_counter_update",
+      "start": "0x8003444c",
+      "end_exclusive": "0x800344d0",
+      "sha256": "6ff9ec6887f888b550aff759cd433ae9f042429f91fec864944c80b22a2e83ce"
+    },
+    {
+      "name": "purchase_counter_update",
+      "start": "0x80034a5c",
+      "end_exclusive": "0x80034ae8",
+      "sha256": "58444e43af51a4c09071501410c9d258a3bce62cf68bd08e9fbe8341536cc87a"
+    },
+    {
+      "name": "research_menu_branch",
+      "start": "0x800628f8",
+      "end_exclusive": "0x80062938",
+      "sha256": "72dfd1ad298ff7ce1703e4ba1d322bf485f70be6e1cb7cafad481ec5e0b9aedc"
+    }
+  ],
+  "reused": [
+    "../20261116-inspection-lifetime-data/README.md",
+    "../20261117-product-menu-source-data/product-labels.json",
+    "../20261103-operating-continuation/source-reference/main_update_control.py"
+  ],
+  "reuse_audit_scope": "Existing Markdown/Python and small JSON plus recovered source-reference. Large historical CPU snapshot JSON excluded; no claim of exhaustive archive discovery."
+}

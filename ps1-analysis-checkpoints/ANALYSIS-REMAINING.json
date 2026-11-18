@@ -136,7 +136,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "既存未解決を先行。R02の入店待ち客と非境界時刻の保存/再集計は接続済みであり反復しない。通常操作の祭り前提・カード/UI入力制限・買物/会計中の客が残る。R05の通常月次入力範囲と+30の自然由来も候補。R01/R06/R07の既存検索・候補試験は新しい手掛かりなしに繰り返さない。",
+  "next": "既存未解決6件は一旦保留。通常画面・操作・データの既存成果を照合し、未接続の表示規則を進める。アンケートの上位8件/同数順/空欄/座標は接続済みのため反復しない。解析完了とAndroid実装済みを区別する。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -243,6 +243,14 @@
       "evidence": "analysis/20261119-research-graph-history/README.md",
       "resolution": "Read-side graph source decoded: common valid prefix, 1million-step minimum1million scale including chain average, oldest-first4px bars and bounded adjacent-buffer writes. Existing finance/save/initialization reused; native app not updated.",
       "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X14",
+      "title": "アンケート左右27商品から上位8件・同数順・0件非表示",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-survey-ranking-ui/README.md",
+      "resolution": "Original470E4 read side linked to existing monthly counters and product labels; three native ranking/text-argument cases agree with independent model. Text renderer intercepted; no full-screen/ordinary UI play or APK change.",
+      "counted_in_seven_tracked_items": false
     }
   ],
   "novelty_audit": {
@@ -251,5 +259,18 @@
     "new_mechanics_in_those_reports": 0,
     "classification": "additional_source_bindings_of_known_mechanics",
     "tracked_open_unchanged": 6
+  },
+  "work_selection": {
+    "date_jst": "2026-11-19",
+    "instruction": "ユーザー指示により既存未解決6件を一旦保留し、それ以外の通常仕様を解析する。",
+    "paused_ids": [
+      "R01",
+      "R02",
+      "R04",
+      "R05",
+      "R06",
+      "R07"
+    ],
+    "paused_is_not_resolved": true
   }
 }

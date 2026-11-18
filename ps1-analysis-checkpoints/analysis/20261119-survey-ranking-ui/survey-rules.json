@@ -1,0 +1,44 @@
+{
+  "products": 27,
+  "rows_per_column": 8,
+  "left": {
+    "title": "買った商品",
+    "base_offset": "0x1198"
+  },
+  "right": {
+    "title": "欲しかった物",
+    "base_offset": "0x119c"
+  },
+  "counter_stride": 12,
+  "counter_compare": "unsigned32 strict greater; descending; ties lower product ID first",
+  "zero": "Selected ranks may contain zero values but emit neither label nor number; no placeholder or percent. Both columns independent.",
+  "messages": {
+    "product_name": "71+product_id (existing source label mapping reused)",
+    "count": 369
+  },
+  "positions": {
+    "left_name_x": 32,
+    "left_count_x": 120,
+    "right_name_x": 164,
+    "right_count_x": 252,
+    "first_y": 80,
+    "row_step_y": 16
+  },
+  "scope": "Original logical coordinates, not screenshot pixels or phone pixels. Counts, not sales money or share percentages.",
+  "third_counter_11a0": "Not read by this survey leaf; do not substitute its values.",
+  "lifetime": "Existing main-update rule clears1198/119c for27 products at month-stage1/hour0/minute0; month-to-date, not all-time. Third counter is not cleared by that loop.",
+  "store_navigation": {
+    "source": "46E1C..46EC4",
+    "next_mask": "0x2000",
+    "previous_mask": "0x8000",
+    "wrap": "next from last ->0, previous from0 -> count-1",
+    "order": "original1BD78 owner-store list, existing helper reused; not all rival stores"
+  },
+  "source_leaf": "0x800470e4..0x800478f8",
+  "new_vs_reused": "New read-side top8/ties/independent zero filtering and placement; known monthly reset, counters and product labels reused.",
+  "apk_updated": false,
+  "counter_producers": {
+    "left": "34AE4: add signed customer group quantity at acquisition, before wallet debit/register settlement",
+    "right": "344C4: wanted != -1 and summary stock of wanted product ==0 branch adds customer group quantity; not all preferences"
+  }
+}

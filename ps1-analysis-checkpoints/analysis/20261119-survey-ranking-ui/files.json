@@ -1,0 +1,22 @@
+{
+  "README.md": {
+    "sha256": "a5158c7daec9f1545725b845827b8ea4abe1a904c442dd7c17d10f3582f9a4d7",
+    "bytes": 5886
+  },
+  "analyze-survey.py": {
+    "sha256": "03728dab0915107b0154c4294b6888b87a40a1d2f3407a90ef1d29cc78386fd3",
+    "bytes": 5898
+  },
+  "original-cases.json": {
+    "sha256": "be34067fae9215bc41fd572838c628e8378114d2521d2825bb7ff5d66fb8b100",
+    "bytes": 7593
+  },
+  "source-provenance.json": {
+    "sha256": "adf5312668a0d40162b4ad417243ed5e1bdb21a404c299a5db94a969d6781408",
+    "bytes": 1876
+  },
+  "survey-rules.json": {
+    "sha256": "1598465a9d3bcb7e8e7f1143ac56a65a0f567250afde7fb47f172950354573cc",
+    "bytes": 1883
+  }
+}
