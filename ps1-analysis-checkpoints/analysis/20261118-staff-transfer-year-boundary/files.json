@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6050,
+      "sha256": "20b166eb0f1228bf329d3ef14dd51bace1d1ff1f4d9e3455284ae30a19c1b855"
+    },
+    {
+      "path": "analyze-transfer-year.py",
+      "bytes": 7888,
+      "sha256": "707c2abd5eb0bd5646028b6593451af4e39e24ca67ae5c228fcba35b4ba1c6d5"
+    },
+    {
+      "path": "results.json",
+      "bytes": 3883,
+      "sha256": "6b9fba5386da72ee07bd8be656e947a97057cc36aeec68c31690d36f1cf29057"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 1920,
+      "sha256": "6cb34d8810d7f9d954b5f49ef7d8cf2bac724e22bc7143939419762b86b579cd"
+    }
+  ]
+}

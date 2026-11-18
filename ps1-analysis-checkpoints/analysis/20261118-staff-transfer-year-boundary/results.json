@@ -1,0 +1,211 @@
+{
+  "year_boundary": {
+    "tick": 69120,
+    "calendar": [
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    "staff27_owner_before": 65535,
+    "staff27_owner_after": 65535,
+    "staff27_word16_before": 69120,
+    "staff27_word16_after": 69120,
+    "age_before": 25,
+    "age_after": 26,
+    "changed_roster_offsets": [
+      3,
+      63,
+      123,
+      183,
+      243,
+      303,
+      363,
+      423,
+      483,
+      543,
+      603,
+      663,
+      723,
+      783,
+      843,
+      903,
+      963,
+      1023,
+      1083,
+      1143,
+      1203,
+      1263,
+      1323,
+      1383,
+      1443,
+      1503,
+      1563,
+      1623,
+      1683,
+      1743,
+      1803,
+      1863,
+      1923,
+      1983,
+      2043
+    ],
+    "word16_accesses": [],
+    "scope": "Original year-aging block only after original metric calendar decode. Not full annual evaluation or elapsed playthrough."
+  },
+  "cross_store_valid": {
+    "original_roles_before": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "selection_created_by_original_swap": false,
+    "selected": [
+      3,
+      1,
+      2,
+      0,
+      4,
+      5
+    ],
+    "returned_missing_manager_index_plus1": 0,
+    "actual_roles_after": [
+      [
+        3,
+        1,
+        2
+      ],
+      [
+        0,
+        4,
+        5
+      ]
+    ],
+    "staff0_current_energy": 1,
+    "staff3_current_energy": 1,
+    "staff0_experience": 10,
+    "staff3_experience": 13,
+    "all_energy_word16_experience_preserved": true,
+    "staff27_whole_record_preserved": true,
+    "changed_staff_fields": {
+      "0": [
+        0,
+        6,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "1": [],
+      "2": [],
+      "3": [
+        0,
+        6,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "4": [],
+      "5": []
+    }
+  },
+  "missing_manager_then_cancel_tail": {
+    "original_roles_before": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      -1
+    ],
+    "selection_created_by_original_swap": true,
+    "selected": [
+      -1,
+      1,
+      2,
+      3,
+      4,
+      0
+    ],
+    "returned_missing_manager_index_plus1": 1,
+    "actual_roles_after": [
+      [
+        -1,
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        0
+      ]
+    ],
+    "staff0_current_energy": 1,
+    "staff3_current_energy": 1,
+    "staff0_experience": 10,
+    "staff3_experience": 13,
+    "all_energy_word16_experience_preserved": true,
+    "staff27_whole_record_preserved": true,
+    "changed_staff_fields": {
+      "0": [
+        0,
+        6,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    },
+    "cancel_return_tail_restores_data": false,
+    "cancel_entry_scope": "After original cancel sound; 722F4 jump to7275C epilogue. UI/dialog/sound not executed."
+  },
+  "bounded_entries": [
+    {
+      "entry": "0x80023c20",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x8002a2f8",
+      "stop": "0x8002a47c"
+    },
+    {
+      "entry": "0x80072774",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x80072dbc",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x80072774",
+      "stop": "0x80001000"
+    },
+    {
+      "entry": "0x800722f4",
+      "stop": "0x80001000"
+    }
+  ],
+  "original_full_operating_updates": 0,
+  "gameplay_callee_replacements": 0,
+  "known_before": "72774 two-pass assignments andpostwritevalidation inexistingstaff_transfer_binding model; same-store70F48 recovery/experience known. New cross-entry contrast, caller cancel connection andfirst-year FFFF/word16 boundary.",
+  "scope": "Diagnostic inputs. Original store/staff/calendars are not one naturally played state. No whole UI, elapsed year, APK or universal unavailability claim."
+}

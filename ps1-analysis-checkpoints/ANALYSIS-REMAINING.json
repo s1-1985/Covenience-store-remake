@@ -89,10 +89,12 @@
       "status": "open",
       "evidence": "analysis/20261114-staff-roster-growth-data/README.md",
       "resolution": null,
-      "latest_evidence": "analysis/20261117-staff-assignment-lifecycle-data/README.md",
+      "latest_evidence": "analysis/20261118-staff-transfer-year-boundary/README.md",
       "established": [
-        "Four-map candidate output/RNG unchanged under word16 perturbations; candidate and four assignment calls perform no word16 access. Role swaps refill energy through release/reassign, without interpreting word16. Scoped result only."
-      ]
+        "Four-map candidate output/RNG unchanged under word16 perturbations; candidate and four assignment calls perform no word16 access. Role swaps refill energy through release/reassign, without interpreting word16. Scoped result only.",
+        "Originaltick69120 metricdecode givesyear2/month1/stage1/hour0/minute0. BoundedannualagingchangesTOWNPSstaff27age25->26 butpreservesownerFFFF/word16=69120; zero word16 accesses. Notfullannual/events ornaturalunlock proof. Originalcross-store72774 preservesenergy/experience unlike70F48; missing-manager validation occursafterwrites andcancelreturntail doesnotrestore."
+      ],
+      "remaining_question": "Purpose/natural release route of initial TOWNPS staff27 FFFF and meaning/readers of word16 remain unknown. First-year aging block does not unlock it; other annual/events/global paths not ruled out."
     },
     {
       "id": "R07",
@@ -100,14 +102,15 @@
       "status": "open",
       "evidence": "analysis/20261114-staff-roster-growth-data/README.md",
       "resolution": null,
-      "latest_evidence": "analysis/20261117-staff-assignment-lifecycle-data/README.md",
+      "latest_evidence": "analysis/20261118-staff-transfer-year-boundary/README.md",
       "established": [
         "Original loader copies packed+13 to runtime+16.",
         "139 initial values0; TOWNPS staff27=69120 was already present in prior extraction.",
         "Customer-driven mode-1 changes4 skill bytes, notword16.",
-        "Four-map candidate output/RNG unchanged under word16 perturbations; candidate and four assignment calls perform no word16 access. Role swaps refill energy through release/reassign, without interpreting word16. Scoped result only."
+        "Four-map candidate output/RNG unchanged under word16 perturbations; candidate and four assignment calls perform no word16 access. Role swaps refill energy through release/reassign, without interpreting word16. Scoped result only.",
+        "Originaltick69120 metricdecode givesyear2/month1/stage1/hour0/minute0. BoundedannualagingchangesTOWNPSstaff27age25->26 butpreservesownerFFFF/word16=69120; zero word16 accesses. Notfullannual/events ornaturalunlock proof. Originalcross-store72774 preservesenergy/experience unlike70F48; missing-manager validation occursafterwrites andcancelreturntail doesnotrestore."
       ],
-      "remaining_question": "Semantic read/update path ofword16 is not established; do not name69120 a cooldown based only on its value.",
+      "remaining_question": "Purpose/natural release route of initial TOWNPS staff27 FFFF and meaning/readers of word16 remain unknown. First-year aging block does not unlock it; other annual/events/global paths not ruled out.",
       "latest_investigation": {
         "report": "analysis/20261117-novelty-audit/README.md",
         "result": "Boundedstaticsearch:two nearby+16store leads writeworking-summary,notstaff. No semanticfieldmeaning established;notanunusedfield proof."
