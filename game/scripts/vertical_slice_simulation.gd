@@ -1095,7 +1095,7 @@ func _start_program_customer(row: Dictionary, heads: int) -> void:
             plan.append(extra_shelf)
     var customer = customers.admit_default(layout.entry, _route_to_product(layout.entry, plan[0]), plan)
     customer.visit = row
-    customer.source_deadline = (day_count - 1) * 1440 + minute_of_day + int(row.get("duration_minutes", 120))
+    customer.source_deadline = day_count * 1440 + minute_of_day + int(row.get("duration_minutes", 120))
     customer.source_candidates = row["extras"].slice(0, 3).duplicate()
     customer.source_candidate_index = 0
     customer.set_meta("checkout_patience", int(row.get("stamina", 100)))
@@ -3393,7 +3393,7 @@ func _try_detour(mover) -> bool:
 
 
 func _advance_customer(customer) -> void:
-    if program_town != null and customer.phase in ["to_shelf", "shopping"] and customer.source_deadline > 0 and (day_count - 1) * 1440 + minute_of_day > customer.source_deadline:
+    if program_town != null and customer.phase in ["to_shelf", "shopping"] and customer.source_deadline > 0 and day_count * 1440 + minute_of_day > customer.source_deadline:
         customer.planned_product_ids.resize(customer.plan_index + 1)
         customer.source_candidates.clear()
         customer.phase = "to_checkout" if not customer.basket.is_empty() else "leaving"
@@ -6124,12 +6124,15 @@ func _source_runtime_snapshot() -> Dictionary:
         for field in STAFF_RUNTIME_FIELDS:
             row[field] = person.get(field)
         employees.append(row)
-    return {"floor_previous": int(config["store"].get("source_previous_cleanliness", 0)), "floor_clock": int(config["store"].get("source_floor_clock", -1)), "customers": people, "staff": employees, "next_customer": customers._next_sequence, "done_customers": customers.completed_count(), "active_customer_id": customers.active_customer_id, "queue": _checkout_queue.duplicate(), "daily_counts": _program_counts.duplicate(), "parking_used": _parking_used, "dirty": _dirty_cells.map( func(p): return [p.x, p.y]), "notices": _notice_counts.duplicate(), "sold": _sold_counts.duplicate(), "holiday": _program_holiday, "weather_value": _program_weather_value}
+    return {"clock_epoch": 1, "floor_previous": int(config["store"].get("source_previous_cleanliness", 0)), "floor_clock": int(config["store"].get("source_floor_clock", -1)), "customers": people, "staff": employees, "next_customer": customers._next_sequence, "done_customers": customers.completed_count(), "active_customer_id": customers.active_customer_id, "queue": _checkout_queue.duplicate(), "daily_counts": _program_counts.duplicate(), "parking_used": _parking_used, "dirty": _dirty_cells.map( func(p): return [p.x, p.y]), "notices": _notice_counts.duplicate(), "sold": _sold_counts.duplicate(), "holiday": _program_holiday, "weather_value": _program_weather_value}
 
 
 func _restore_source_runtime(data: Dictionary) -> void:
+    # v0.6.0 stored deadlines one day before the zero-based game clock.
+    var clock_offset := 1440 if int(data.get("clock_epoch", 0)) == 0 else 0
     config["store"]["source_previous_cleanliness"] = int(data.get("floor_previous", 0))
-    config["store"]["source_floor_clock"] = int(data.get("floor_clock", -1))
+    var saved_floor_clock := int(data.get("floor_clock", -1))
+    config["store"]["source_floor_clock"] = saved_floor_clock + clock_offset if saved_floor_clock != -1 else -1
     customers.reset()
     customers._next_sequence = int(data["next_customer"])
     customers._forgotten_done = int(data["done_customers"])
@@ -6142,13 +6145,18 @@ func _restore_source_runtime(data: Dictionary) -> void:
             if typeof(person.get(field)) == TYPE_INT:
                 value = int(value)
             person.set(field, value)
+        if clock_offset != 0 and ((person.source_native and person.source_state >= 2) or person.source_deadline > 0):
+            person.source_deadline += clock_offset
         person.source_goal = _vec2i_from_array(row.get("source_goal", [-1, -1]))
         person.position = _vec2i_from_array(row["position"])
         person.route.clear()
         for point in row["route"]:
             person.route.append(_vec2i_from_array(point))
         person.source_candidates.assign(row.get("source_candidates", []))
-        person.basket.assign(row["basket"])
+        person.basket.assign(row["basket"].duplicate(true))
+        for line in person.basket:
+            line["quantity"] = int(line["quantity"])
+            line["unit_price_yen"] = int(line["unit_price_yen"])
         person.planned_product_ids.assign(row["plan"])
         person.visit = row["visit"].duplicate(true)
         person.set_meta("checkout_patience", int(row["patience"]))
@@ -6214,7 +6222,7 @@ func source_cleanliness() -> int:
     return ProgramOperationsScript.cleanliness(config["store"].get("source_floor", []))
 
 func _step_source_floor_wear() -> void:
-    var clock := (day_count - 1) * 1440 + minute_of_day
+    var clock := day_count * 1440 + minute_of_day
     if minute_of_day % 60 == 0 and int(config["store"].get("source_floor_clock", -1)) != clock:
         var positions: Array = []
         for customer in customers.active_customers():

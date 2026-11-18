@@ -9,7 +9,9 @@ const OFF := Vector2i(-1, -1)
 const REST_OFFSETS := [Vector2i(0, 2), Vector2i(0, 1), Vector2i(1, 1)]
 
 static func clock(s) -> int:
-    return ((s.day_count - 1) * 1440 + s.minute_of_day)
+    # day_count is zero-based (reset() starts at 0). Native clock starts at 0.
+    # Subtracting a day made all first-day %100 work gates negative.
+    return s.day_count * 1440 + s.minute_of_day
 
 static func occupied(s, actor = null) -> Dictionary:
     var result = s.layout.blocked.duplicate()
@@ -405,17 +407,39 @@ static func gate(s, worker) -> bool:
         return false
     return s._program_rng.randi() % 100 + 1 > ability * 2
 
-static func choose_work(s, p) -> bool:
+# REMAKE_BALANCED_DEFAULT: an unattended customer at the register takes priority
+# over the original clock window and ongoing refill/cleaning. Exhaustion, full
+# recovery before leaving rest, register capacity and checkout skill stay intact.
+static func unattended_checkout(s) -> bool:
+    for worker in s.staff.all_staff():
+        if worker.source_state == 1:
+            return false
+    for customer in s.customers.active_customers():
+        if customer.source_state != 3 or customer.basket.is_empty() or customer.position != customer.source_goal:
+            continue
+        var f := facing_fixture(s, customer)
+        if str(f.get("kind", "")) == "checkout":
+            return true
+    return false
+
+static func try_checkout(s, p, urgent: bool = false) -> bool:
+    if p.stamina <= 0 or not gate(s, p):
+        return false
+    if not urgent and clock(s) % 100 < 100 - p.service_skill:
+        return false
+    if not relevant(s) or not target(s, p, "checkout"):
+        return false
     var was_resting: bool = p.source_state == 0
+    p.source_state = 1
+    p.state = "checkout"
+    p.rest_phase = ""
+    if was_resting:
+        s._record_event("checkout_staff_started", {"staff_id": p.staff_id})
+    return true
+
+static func choose_work(s, p) -> bool:
     if p.stamina > 0:
-        if gate(s, p) and clock(s) % 100 >= 100 - p.service_skill and relevant(s) and target(s, p, "checkout"):
-            p.source_state = 1
-            p.state = "checkout"
-            p.rest_phase = ""
-            if was_resting:
-                # CONFIRMED_BINARY: staff_loop_selected rest_departure_choice
-                # sets flag 0x80; original main bit7 dispatches VOS ID22.
-                s._record_event("checkout_staff_started", {"staff_id": p.staff_id})
+        if try_checkout(s, p, unattended_checkout(s)):
             return true
         if target(s, p, "refill"):
             p.source_state = 2
@@ -457,6 +481,8 @@ static func employee(s, p, slot: int) -> void:
     p.stamina = Rules.working_energy(p.stamina, s._program_rng)
     if p.stamina <= 0 and p.source_state != 3:
         p.source_goal = OFF
+    if p.source_state in [2, 4] and unattended_checkout(s) and try_checkout(s, p, true):
+        return
     if p.source_goal.x < 0:
         choose_work(s, p)
         return

@@ -1,0 +1,12 @@
+{
+  "version": "0.6.1-staff",
+  "package": "com.conveniremake.touchfix",
+  "base_commit": "e365e3085bdaff10bab9fd5eb227d15e36a9538e",
+  "apk": "Conveni-Android-v0.6.1-staff.apk",
+  "size_bytes": 44837622,
+  "sha256": "8eb5c2479360e5292bc852de86d01d9900f9105ed0674a266b5e018da98bfcca",
+  "library_file_id": "libfile_8f865eabbfa48191af587518f9e00c85",
+  "device_tested": false,
+  "old_app_save_auto_migration": false,
+  "private_signing_backup": "Conveni-Android-touchfix-signing.zip"
+}
