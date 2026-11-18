@@ -1,0 +1,64 @@
+{
+  "input_kind": "Synthetic firstslot state6 withvalid oldcoordinates,nonzero wallet/cart andexistingoccupancy. Othernine slots inactive. State6 creationitself isreusedfrompreviousfestival report,notrerun here.",
+  "post_spawn_call": {
+    "start": "0x80032814",
+    "returned_to": "0x80001000",
+    "instructions": 546,
+    "customer_before_hex": "06ff0000000000002e16d204020201ffffff0000000000000000000000000200",
+    "customer_after_hex": "06ff0000000000002e16d204020201ffffff0000000000000000000000000200",
+    "store_before_sha256": "073b34ce942121ee4b8f3f0afe1a1e8cf617294f28ce0529940f2309d0370924",
+    "store_after_sha256": "073b34ce942121ee4b8f3f0afe1a1e8cf617294f28ce0529940f2309d0370924",
+    "store_writes": [],
+    "child_handlers": [],
+    "tail_branches": [
+      "0x80032c68",
+      "0x80032d58"
+    ],
+    "old_position_copied_to_scratch": [
+      2,
+      2,
+      1
+    ],
+    "wallet_before_after": [
+      5678,
+      5678
+    ],
+    "cart_before_after": [
+      1234,
+      1234
+    ],
+    "dirty_flag_before_after": [
+      165,
+      165
+    ],
+    "occupancy_word_before_after": [
+      2629632,
+      2629632
+    ]
+  },
+  "free_slot_call": {
+    "start": "0x800330E4",
+    "first_state": 6,
+    "other_states": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "returned_slot": 1,
+    "store_unchanged": true
+  },
+  "original_cpu_calls": 2,
+  "original_operating_updates": 0,
+  "callee_replacements": 0,
+  "limitations": [
+    "No naturalfestivalreachability proof.",
+    "No full-frame drawing or video.",
+    "No interveningday/reset/resize/other-event writes modelled."
+  ]
+}

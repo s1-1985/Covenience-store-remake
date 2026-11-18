@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4707,
+      "sha256": "92ce070018e06939d416bab633eedf8cc265fb1c2282a02e221fee23cd865e48"
+    },
+    {
+      "path": "analyze-state6-tail.py",
+      "bytes": 5469,
+      "sha256": "a6281b2bb79738144ab94f5e918bade98a92719eee529e5f07e5d8b580ff1cdb"
+    },
+    {
+      "path": "source-evidence.json",
+      "bytes": 3316,
+      "sha256": "c251c2dec48b9dca7b274e62424ffab726d9fd31f9dcf408b725f58a10229882"
+    },
+    {
+      "path": "state6-results.json",
+      "bytes": 1648,
+      "sha256": "f7f766c87ded46695f79b7dcd633b35c984d60ef91e06b5d0316326b2acaa4e5"
+    }
+  ]
+}

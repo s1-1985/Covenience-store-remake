@@ -31,16 +31,17 @@
       "status": "open",
       "evidence": "analysis/20261116-weather-demand-data/out-of-catalog-context.json",
       "resolution": null,
-      "latest_evidence": "analysis/20261117-festival-customer-state-data/README.md",
+      "latest_evidence": "analysis/20261118-festival-state6-tail/README.md",
       "established": [
         "All11 initial rivals use schedule2; misread schedule byte0 rejects profile144 even under festival bypass.",
         "Schedule0/3/5 nonzero out-of-row reads can pass the schedule gate; stock alias and distance gates still apply.",
         "Conditional demand144 write aliases first customer slotF04; regular spawn wraps to0..143.",
         "Original bootstrap/TOWN0001/metrics/full2619C with controlled schedule0,month8,festival1,seed2 selectsstore2 forcell15,14 and increments itsfirst-customer state at26868; schedule2/nonfestival controls do not.",
         "Six injected first-state values0..5 become1..6; original post-spawn dispatch selects entry/shopping/checkout/exit branches or nohandler at6. Stopped before handlers; downstream outcomes not established.",
-        "Saved four-store RAM input under samecontrolled schedule/calendar/seed producesnoaliaswrite; store2 stockalias=order0=0 andstore3 stockalias=store0stock15=0. Not a natural festival playthrough."
+        "Saved four-store RAM input under samecontrolled schedule/calendar/seed producesnoaliaswrite; store2 stockalias=order0=0 andstore3 stockalias=store0stock15=0. Not a natural festival playthrough.",
+        "Syntheticstate6 post-spawn loop executesnomatchinghandlers; all5080storebytes,unsettledcart,wallet,occupancy anddirtyflag unchanged. Originalfreeslot helper skipsstate6. Two boundedcalls only;notnaturalreachabilityorpermanentfreeze proof."
       ],
-      "remaining_question": "Natural festival reachability through legitimate schedule/ownership/inventory changes and actual downstream visual/financial/lifecycle outcomes remain unconfirmed."
+      "remaining_question": "Natural festival reachability through legitimate schedule/ownership/inventory changes; other prewrite-state outcomes; external reset/lifecycle, actual drawing andfinancial effects remain unconfirmed. State6 boundedpostloop/freeslot effects established20261118."
     },
     {
       "id": "R03",
@@ -113,7 +114,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "重複照合を先に行い未解明の問いを優先。R04の定型参照4箇所と共有ポインタ17参照の一覧は作成済みで、同じ検索を繰り返さない。次は非定型・別名経路の根拠が得られた場合にR04を進め、それがなければ他の未解明項目へ切り替える。",
+  "next": "既存成果の重複照合を先に行う。R02の状態6後段保持・空き枠非再利用は確認済みで反復しない。自然到達や外部解除経路の具体的な根拠がある場合に追跡し、それがなければ他の未解明項目へ切り替える。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
