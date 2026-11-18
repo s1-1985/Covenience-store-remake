@@ -1,0 +1,62 @@
+{
+  "staff_word16": {
+    "canonical_staff_reference_candidates": 157,
+    "direct_memory_operand_candidates": 92,
+    "bounded_pointer_accesses": 52,
+    "bounded_word16_accesses": 0,
+    "known_loader_copy": {
+      "address": "0x8001A3FC",
+      "target": "0x8007E57C",
+      "destination_field": 16,
+      "bytes": 4
+    },
+    "status": "No semantic reader found in this search; known copy is not a new reader/meaning. Not proof of global nonuse."
+  },
+  "staff_FFFF_clock": {
+    "near_staff_minus1_branch_leads": 16,
+    "clock_69120_LUI1_low0E00_candidates": 0,
+    "literal_staffbase_id27_word16_addresses": 0,
+    "status": "No staff27 unlock identified. Minus1 lead domains include division overflow guard, local/event index, store order end, growth mode, missing fixture coordinates, staff coordinates, missing-role id and UI list sentinel. Narrow proximity search is not full owner-field use analysis."
+  },
+  "literal26_branches": [
+    {
+      "branch": "0x80020860",
+      "domain": "product26",
+      "meaning": "Shares product20 branch: secondarg0 returns11, otherwise0; image/variant helper. No wallet/fee claim."
+    },
+    {
+      "branch": "0x800213E0",
+      "domain": "product26",
+      "meaning": "Inventory builder branch21948 fills local quantity grid from fixture capacity; no withdrawal/fee reader identified."
+    },
+    {
+      "branch": "0x80022098",
+      "domain": "product26",
+      "meaning": "Excluded from a fixture-scanned price average."
+    },
+    {
+      "branch": "0x800240AC",
+      "domain": "product26",
+      "meaning": "Excluded from operating summary price average; already known."
+    },
+    {
+      "branch": "0x8003BDDC",
+      "domain": "product26",
+      "meaning": "Selects cash-dispenser-specific low-use advice; already known."
+    },
+    {
+      "branch": "0x800632D0",
+      "domain": "price UI selected row26",
+      "meaning": "Bulk increment loops products0..25; row26 is not a cash sale."
+    },
+    {
+      "branch": "0x80063510",
+      "domain": "price UI selected row26",
+      "meaning": "Bulk decrement loops products0..25; row26 is not a cash sale."
+    }
+  ],
+  "new_game_mechanics_established": 0,
+  "open_issues_resolved": 0,
+  "original_cpu_calls": 0,
+  "next_search_gate": "Do not repeat candidate/assignment/year tests or this literal/canonical scan without a new pointer, another loaded module, or concrete original observed behavior. Preserve opaque source fields and distinguish unimplemented bank behavior from missing data."
+}

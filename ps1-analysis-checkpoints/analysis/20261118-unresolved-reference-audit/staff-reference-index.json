@@ -1,0 +1,3517 @@
+{
+  "canonical_references": [
+    {
+      "pc": "0x8001a1f0",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a1ec"
+    },
+    {
+      "pc": "0x8001a238",
+      "word": "0x24633ffa",
+      "target": "0x80143ffa",
+      "target_record": 0,
+      "target_field": 2,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a234"
+    },
+    {
+      "pc": "0x8001a280",
+      "word": "0x24633ffb",
+      "target": "0x80143ffb",
+      "target_record": 0,
+      "target_field": 3,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a27c"
+    },
+    {
+      "pc": "0x8001a2c8",
+      "word": "0x24633ffc",
+      "target": "0x80143ffc",
+      "target_record": 0,
+      "target_field": 4,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a2c4"
+    },
+    {
+      "pc": "0x8001a310",
+      "word": "0x24633ffe",
+      "target": "0x80143ffe",
+      "target_record": 0,
+      "target_field": 6,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a30c"
+    },
+    {
+      "pc": "0x8001a358",
+      "word": "0x24634000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a354"
+    },
+    {
+      "pc": "0x8001a3a0",
+      "word": "0x24634004",
+      "target": "0x80144004",
+      "target_record": 0,
+      "target_field": 12,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a39c"
+    },
+    {
+      "pc": "0x8001a3e8",
+      "word": "0x24634008",
+      "target": "0x80144008",
+      "target_record": 0,
+      "target_field": 16,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a3e4"
+    },
+    {
+      "pc": "0x8001a430",
+      "word": "0x2463400c",
+      "target": "0x8014400c",
+      "target_record": 0,
+      "target_field": 20,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a42c"
+    },
+    {
+      "pc": "0x8001a478",
+      "word": "0x24634010",
+      "target": "0x80144010",
+      "target_record": 0,
+      "target_field": 24,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a474"
+    },
+    {
+      "pc": "0x8001a4c0",
+      "word": "0x24634011",
+      "target": "0x80144011",
+      "target_record": 0,
+      "target_field": 25,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a4bc"
+    },
+    {
+      "pc": "0x8001a508",
+      "word": "0x24634012",
+      "target": "0x80144012",
+      "target_record": 0,
+      "target_field": 26,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a504"
+    },
+    {
+      "pc": "0x8001a550",
+      "word": "0x24634013",
+      "target": "0x80144013",
+      "target_record": 0,
+      "target_field": 27,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a54c"
+    },
+    {
+      "pc": "0x8001a598",
+      "word": "0x24634014",
+      "target": "0x80144014",
+      "target_record": 0,
+      "target_field": 28,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a594"
+    },
+    {
+      "pc": "0x8001a5e0",
+      "word": "0x24634015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a5dc"
+    },
+    {
+      "pc": "0x8001a628",
+      "word": "0x24634016",
+      "target": "0x80144016",
+      "target_record": 0,
+      "target_field": 30,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a624"
+    },
+    {
+      "pc": "0x8001a670",
+      "word": "0x24634017",
+      "target": "0x80144017",
+      "target_record": 0,
+      "target_field": 31,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a66c"
+    },
+    {
+      "pc": "0x8001a6b8",
+      "word": "0x24634018",
+      "target": "0x80144018",
+      "target_record": 0,
+      "target_field": 32,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a6b4"
+    },
+    {
+      "pc": "0x8001a700",
+      "word": "0x24634019",
+      "target": "0x80144019",
+      "target_record": 0,
+      "target_field": 33,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a6fc"
+    },
+    {
+      "pc": "0x8001a748",
+      "word": "0x2463401a",
+      "target": "0x8014401a",
+      "target_record": 0,
+      "target_field": 34,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a744"
+    },
+    {
+      "pc": "0x8001a790",
+      "word": "0x2463401b",
+      "target": "0x8014401b",
+      "target_record": 0,
+      "target_field": 35,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a78c"
+    },
+    {
+      "pc": "0x8001a7d8",
+      "word": "0x2463401c",
+      "target": "0x8014401c",
+      "target_record": 0,
+      "target_field": 36,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a7d4"
+    },
+    {
+      "pc": "0x8001a820",
+      "word": "0x2463401d",
+      "target": "0x8014401d",
+      "target_record": 0,
+      "target_field": 37,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a81c"
+    },
+    {
+      "pc": "0x8001a868",
+      "word": "0x2463401e",
+      "target": "0x8014401e",
+      "target_record": 0,
+      "target_field": 38,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a864"
+    },
+    {
+      "pc": "0x8001a8b0",
+      "word": "0x2463401f",
+      "target": "0x8014401f",
+      "target_record": 0,
+      "target_field": 39,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a8ac"
+    },
+    {
+      "pc": "0x8001a8f8",
+      "word": "0x24634020",
+      "target": "0x80144020",
+      "target_record": 0,
+      "target_field": 40,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a8f4"
+    },
+    {
+      "pc": "0x8001a940",
+      "word": "0x24634021",
+      "target": "0x80144021",
+      "target_record": 0,
+      "target_field": 41,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a93c"
+    },
+    {
+      "pc": "0x8001a988",
+      "word": "0x24634022",
+      "target": "0x80144022",
+      "target_record": 0,
+      "target_field": 42,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a984"
+    },
+    {
+      "pc": "0x8001a9d0",
+      "word": "0x24634023",
+      "target": "0x80144023",
+      "target_record": 0,
+      "target_field": 43,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001a9cc"
+    },
+    {
+      "pc": "0x8001aa18",
+      "word": "0x24634024",
+      "target": "0x80144024",
+      "target_record": 0,
+      "target_field": 44,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001aa14"
+    },
+    {
+      "pc": "0x8001aa60",
+      "word": "0x24634025",
+      "target": "0x80144025",
+      "target_record": 0,
+      "target_field": 45,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001aa5c"
+    },
+    {
+      "pc": "0x8001aaa8",
+      "word": "0x24634026",
+      "target": "0x80144026",
+      "target_record": 0,
+      "target_field": 46,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001aaa4"
+    },
+    {
+      "pc": "0x8001aaf0",
+      "word": "0x24634027",
+      "target": "0x80144027",
+      "target_record": 0,
+      "target_field": 47,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001aaec"
+    },
+    {
+      "pc": "0x8001ae6c",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001ae68"
+    },
+    {
+      "pc": "0x8001b3dc",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001b3d8"
+    },
+    {
+      "pc": "0x8001b4f4",
+      "word": "0xa4243ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "sh",
+      "register": 4,
+      "lui_pc": "0x8001b4ec"
+    },
+    {
+      "pc": "0x8001c4ac",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8001c4a8"
+    },
+    {
+      "pc": "0x8001dcc4",
+      "word": "0x8c234004",
+      "target": "0x80144004",
+      "target_record": 0,
+      "target_field": 12,
+      "operation": "lw",
+      "register": 3,
+      "lui_pc": "0x8001dcbc"
+    },
+    {
+      "pc": "0x80022280",
+      "word": "0x80234018",
+      "target": "0x80144018",
+      "target_record": 0,
+      "target_field": 32,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80022278"
+    },
+    {
+      "pc": "0x8002258c",
+      "word": "0x8023401a",
+      "target": "0x8014401a",
+      "target_record": 0,
+      "target_field": 34,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80022584"
+    },
+    {
+      "pc": "0x80022928",
+      "word": "0x80234019",
+      "target": "0x80144019",
+      "target_record": 0,
+      "target_field": 33,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80022920"
+    },
+    {
+      "pc": "0x80023e8c",
+      "word": "0x80234018",
+      "target": "0x80144018",
+      "target_record": 0,
+      "target_field": 32,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80023e84"
+    },
+    {
+      "pc": "0x800282d0",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x800282c8"
+    },
+    {
+      "pc": "0x80028828",
+      "word": "0x80244015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "lb",
+      "register": 4,
+      "lui_pc": "0x80028820"
+    },
+    {
+      "pc": "0x80028a28",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x80028a20"
+    },
+    {
+      "pc": "0x80028d2c",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x80028d24"
+    },
+    {
+      "pc": "0x80028df0",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x80028de8"
+    },
+    {
+      "pc": "0x80029fa8",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x80029fa0"
+    },
+    {
+      "pc": "0x8002a144",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8002a140"
+    },
+    {
+      "pc": "0x8002a35c",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8002a358"
+    },
+    {
+      "pc": "0x8002b014",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8002b010"
+    },
+    {
+      "pc": "0x8002bbdc",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8002bbd8"
+    },
+    {
+      "pc": "0x8003217c",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x80032174"
+    },
+    {
+      "pc": "0x80032224",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x8003221c"
+    },
+    {
+      "pc": "0x800322cc",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x800322c4"
+    },
+    {
+      "pc": "0x80032374",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x8003236c"
+    },
+    {
+      "pc": "0x80032424",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x8003241c"
+    },
+    {
+      "pc": "0x800324d4",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x800324cc"
+    },
+    {
+      "pc": "0x80035f88",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80035f84"
+    },
+    {
+      "pc": "0x80036ba0",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80036b9c"
+    },
+    {
+      "pc": "0x80036d20",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80036d1c"
+    },
+    {
+      "pc": "0x80038114",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80038110"
+    },
+    {
+      "pc": "0x80038524",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80038520"
+    },
+    {
+      "pc": "0x80039130",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8003912c"
+    },
+    {
+      "pc": "0x80039d38",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80039d34"
+    },
+    {
+      "pc": "0x8003aa9c",
+      "word": "0x80234015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8003aa94"
+    },
+    {
+      "pc": "0x8003b62c",
+      "word": "0x80234015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8003b624"
+    },
+    {
+      "pc": "0x8003b988",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x8003b980"
+    },
+    {
+      "pc": "0x8003bd50",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x8003bd48"
+    },
+    {
+      "pc": "0x8003be58",
+      "word": "0x84224000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 2,
+      "lui_pc": "0x8003be50"
+    },
+    {
+      "pc": "0x8003ce58",
+      "word": "0xa0204011",
+      "target": "0x80144011",
+      "target_record": 0,
+      "target_field": 25,
+      "operation": "sb",
+      "register": 0,
+      "lui_pc": "0x8003ce50"
+    },
+    {
+      "pc": "0x8003d708",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8003d704"
+    },
+    {
+      "pc": "0x8003d738",
+      "word": "0x90244015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "lbu",
+      "register": 4,
+      "lui_pc": "0x8003d730"
+    },
+    {
+      "pc": "0x8003d78c",
+      "word": "0xa0234015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "sb",
+      "register": 3,
+      "lui_pc": "0x8003d784"
+    },
+    {
+      "pc": "0x8003d7b4",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8003d7b0"
+    },
+    {
+      "pc": "0x8003d7e4",
+      "word": "0x90244012",
+      "target": "0x80144012",
+      "target_record": 0,
+      "target_field": 26,
+      "operation": "lbu",
+      "register": 4,
+      "lui_pc": "0x8003d7dc"
+    },
+    {
+      "pc": "0x8003d838",
+      "word": "0xa0234012",
+      "target": "0x80144012",
+      "target_record": 0,
+      "target_field": 26,
+      "operation": "sb",
+      "register": 3,
+      "lui_pc": "0x8003d830"
+    },
+    {
+      "pc": "0x8003d8a0",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8003d89c"
+    },
+    {
+      "pc": "0x8003d8d0",
+      "word": "0x90244015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "lbu",
+      "register": 4,
+      "lui_pc": "0x8003d8c8"
+    },
+    {
+      "pc": "0x8003d924",
+      "word": "0xa0234015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "sb",
+      "register": 3,
+      "lui_pc": "0x8003d91c"
+    },
+    {
+      "pc": "0x8003d94c",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8003d948"
+    },
+    {
+      "pc": "0x8003d97c",
+      "word": "0x90244013",
+      "target": "0x80144013",
+      "target_record": 0,
+      "target_field": 27,
+      "operation": "lbu",
+      "register": 4,
+      "lui_pc": "0x8003d974"
+    },
+    {
+      "pc": "0x8003d9d0",
+      "word": "0xa0234013",
+      "target": "0x80144013",
+      "target_record": 0,
+      "target_field": 27,
+      "operation": "sb",
+      "register": 3,
+      "lui_pc": "0x8003d9c8"
+    },
+    {
+      "pc": "0x8003da38",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8003da34"
+    },
+    {
+      "pc": "0x8003da68",
+      "word": "0x90244015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "lbu",
+      "register": 4,
+      "lui_pc": "0x8003da60"
+    },
+    {
+      "pc": "0x8003dabc",
+      "word": "0xa0234015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "sb",
+      "register": 3,
+      "lui_pc": "0x8003dab4"
+    },
+    {
+      "pc": "0x8003dae4",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8003dae0"
+    },
+    {
+      "pc": "0x8003db14",
+      "word": "0x90244014",
+      "target": "0x80144014",
+      "target_record": 0,
+      "target_field": 28,
+      "operation": "lbu",
+      "register": 4,
+      "lui_pc": "0x8003db0c"
+    },
+    {
+      "pc": "0x8003db68",
+      "word": "0xa0234014",
+      "target": "0x80144014",
+      "target_record": 0,
+      "target_field": 28,
+      "operation": "sb",
+      "register": 3,
+      "lui_pc": "0x8003db60"
+    },
+    {
+      "pc": "0x8003dbd0",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8003dbcc"
+    },
+    {
+      "pc": "0x8003dc00",
+      "word": "0x90244015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "lbu",
+      "register": 4,
+      "lui_pc": "0x8003dbf8"
+    },
+    {
+      "pc": "0x8003dc54",
+      "word": "0xa0234015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "sb",
+      "register": 3,
+      "lui_pc": "0x8003dc4c"
+    },
+    {
+      "pc": "0x8003dc7c",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8003dc78"
+    },
+    {
+      "pc": "0x8003dcac",
+      "word": "0x90244010",
+      "target": "0x80144010",
+      "target_record": 0,
+      "target_field": 24,
+      "operation": "lbu",
+      "register": 4,
+      "lui_pc": "0x8003dca4"
+    },
+    {
+      "pc": "0x8003dd00",
+      "word": "0xa0234010",
+      "target": "0x80144010",
+      "target_record": 0,
+      "target_field": 24,
+      "operation": "sb",
+      "register": 3,
+      "lui_pc": "0x8003dcf8"
+    },
+    {
+      "pc": "0x8003de00",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8003ddfc"
+    },
+    {
+      "pc": "0x8004a578",
+      "word": "0x90233ffc",
+      "target": "0x80143ffc",
+      "target_record": 0,
+      "target_field": 4,
+      "operation": "lbu",
+      "register": 3,
+      "lui_pc": "0x8004a570"
+    },
+    {
+      "pc": "0x8004a5a4",
+      "word": "0x90233ffa",
+      "target": "0x80143ffa",
+      "target_record": 0,
+      "target_field": 2,
+      "operation": "lbu",
+      "register": 3,
+      "lui_pc": "0x8004a59c"
+    },
+    {
+      "pc": "0x8004a870",
+      "word": "0x80233ffb",
+      "target": "0x80143ffb",
+      "target_record": 0,
+      "target_field": 3,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8004a868"
+    },
+    {
+      "pc": "0x8004a8e8",
+      "word": "0x8c234004",
+      "target": "0x80144004",
+      "target_record": 0,
+      "target_field": 12,
+      "operation": "lw",
+      "register": 3,
+      "lui_pc": "0x8004a8e0"
+    },
+    {
+      "pc": "0x8004a960",
+      "word": "0x80234011",
+      "target": "0x80144011",
+      "target_record": 0,
+      "target_field": 25,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8004a958"
+    },
+    {
+      "pc": "0x8004ab00",
+      "word": "0x80234010",
+      "target": "0x80144010",
+      "target_record": 0,
+      "target_field": 24,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8004aaf8"
+    },
+    {
+      "pc": "0x8004ac34",
+      "word": "0x80234012",
+      "target": "0x80144012",
+      "target_record": 0,
+      "target_field": 26,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8004ac2c"
+    },
+    {
+      "pc": "0x8004adcc",
+      "word": "0x80234016",
+      "target": "0x80144016",
+      "target_record": 0,
+      "target_field": 30,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8004adc4"
+    },
+    {
+      "pc": "0x8004af64",
+      "word": "0x80234017",
+      "target": "0x80144017",
+      "target_record": 0,
+      "target_field": 31,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8004af5c"
+    },
+    {
+      "pc": "0x8004b0fc",
+      "word": "0x8023401a",
+      "target": "0x8014401a",
+      "target_record": 0,
+      "target_field": 34,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8004b0f4"
+    },
+    {
+      "pc": "0x8004b294",
+      "word": "0x80234019",
+      "target": "0x80144019",
+      "target_record": 0,
+      "target_field": 33,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8004b28c"
+    },
+    {
+      "pc": "0x8004b42c",
+      "word": "0x80234018",
+      "target": "0x80144018",
+      "target_record": 0,
+      "target_field": 32,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8004b424"
+    },
+    {
+      "pc": "0x80056ddc",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80056dd8"
+    },
+    {
+      "pc": "0x8006ba70",
+      "word": "0x24a53ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 5,
+      "lui_pc": "0x8006ba6c"
+    },
+    {
+      "pc": "0x8006be8c",
+      "word": "0x24843ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 4,
+      "lui_pc": "0x8006be88"
+    },
+    {
+      "pc": "0x8006f910",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x8006f90c"
+    },
+    {
+      "pc": "0x800700e4",
+      "word": "0x84264000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 6,
+      "lui_pc": "0x800700dc"
+    },
+    {
+      "pc": "0x8007033c",
+      "word": "0x84264000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 6,
+      "lui_pc": "0x80070334"
+    },
+    {
+      "pc": "0x8007043c",
+      "word": "0x90233ffc",
+      "target": "0x80143ffc",
+      "target_record": 0,
+      "target_field": 4,
+      "operation": "lbu",
+      "register": 3,
+      "lui_pc": "0x80070434"
+    },
+    {
+      "pc": "0x80070470",
+      "word": "0x84264000",
+      "target": "0x80144000",
+      "target_record": 0,
+      "target_field": 8,
+      "operation": "lh",
+      "register": 6,
+      "lui_pc": "0x80070468"
+    },
+    {
+      "pc": "0x800704e4",
+      "word": "0x80233ffb",
+      "target": "0x80143ffb",
+      "target_record": 0,
+      "target_field": 3,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x800704dc"
+    },
+    {
+      "pc": "0x8007055c",
+      "word": "0x8c23400c",
+      "target": "0x8014400c",
+      "target_record": 0,
+      "target_field": 20,
+      "operation": "lw",
+      "register": 3,
+      "lui_pc": "0x80070554"
+    },
+    {
+      "pc": "0x80070614",
+      "word": "0x8c234004",
+      "target": "0x80144004",
+      "target_record": 0,
+      "target_field": 12,
+      "operation": "lw",
+      "register": 3,
+      "lui_pc": "0x8007060c"
+    },
+    {
+      "pc": "0x800706bc",
+      "word": "0x80234011",
+      "target": "0x80144011",
+      "target_record": 0,
+      "target_field": 25,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x800706b4"
+    },
+    {
+      "pc": "0x8007085c",
+      "word": "0x80234010",
+      "target": "0x80144010",
+      "target_record": 0,
+      "target_field": 24,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80070854"
+    },
+    {
+      "pc": "0x80070990",
+      "word": "0x80234015",
+      "target": "0x80144015",
+      "target_record": 0,
+      "target_field": 29,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80070988"
+    },
+    {
+      "pc": "0x80070b28",
+      "word": "0x80234013",
+      "target": "0x80144013",
+      "target_record": 0,
+      "target_field": 27,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80070b20"
+    },
+    {
+      "pc": "0x80070cc0",
+      "word": "0x80234014",
+      "target": "0x80144014",
+      "target_record": 0,
+      "target_field": 28,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80070cb8"
+    },
+    {
+      "pc": "0x80071078",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80071074"
+    },
+    {
+      "pc": "0x8007128c",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80071288"
+    },
+    {
+      "pc": "0x80071408",
+      "word": "0xa4203ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "sh",
+      "register": 0,
+      "lui_pc": "0x80071400"
+    },
+    {
+      "pc": "0x80071488",
+      "word": "0xa4243ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "sh",
+      "register": 4,
+      "lui_pc": "0x80071480"
+    },
+    {
+      "pc": "0x80071744",
+      "word": "0xa4203ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "sh",
+      "register": 0,
+      "lui_pc": "0x8007173c"
+    },
+    {
+      "pc": "0x80071894",
+      "word": "0xa4243ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "sh",
+      "register": 4,
+      "lui_pc": "0x8007188c"
+    },
+    {
+      "pc": "0x80072948",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80072944"
+    },
+    {
+      "pc": "0x80072c2c",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x80072c28"
+    },
+    {
+      "pc": "0x80073360",
+      "word": "0x90233ffc",
+      "target": "0x80143ffc",
+      "target_record": 0,
+      "target_field": 4,
+      "operation": "lbu",
+      "register": 3,
+      "lui_pc": "0x80073358"
+    },
+    {
+      "pc": "0x8007338c",
+      "word": "0x90233ffa",
+      "target": "0x80143ffa",
+      "target_record": 0,
+      "target_field": 2,
+      "operation": "lbu",
+      "register": 3,
+      "lui_pc": "0x80073384"
+    },
+    {
+      "pc": "0x80073404",
+      "word": "0x80233ffb",
+      "target": "0x80143ffb",
+      "target_record": 0,
+      "target_field": 3,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x800733fc"
+    },
+    {
+      "pc": "0x8007347c",
+      "word": "0x80234011",
+      "target": "0x80144011",
+      "target_record": 0,
+      "target_field": 25,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80073474"
+    },
+    {
+      "pc": "0x8007361c",
+      "word": "0x80234010",
+      "target": "0x80144010",
+      "target_record": 0,
+      "target_field": 24,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80073614"
+    },
+    {
+      "pc": "0x80073750",
+      "word": "0x80234012",
+      "target": "0x80144012",
+      "target_record": 0,
+      "target_field": 26,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80073748"
+    },
+    {
+      "pc": "0x800738e8",
+      "word": "0x80234016",
+      "target": "0x80144016",
+      "target_record": 0,
+      "target_field": 30,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x800738e0"
+    },
+    {
+      "pc": "0x80073a80",
+      "word": "0x80234017",
+      "target": "0x80144017",
+      "target_record": 0,
+      "target_field": 31,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80073a78"
+    },
+    {
+      "pc": "0x80073c18",
+      "word": "0x8023401a",
+      "target": "0x8014401a",
+      "target_record": 0,
+      "target_field": 34,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80073c10"
+    },
+    {
+      "pc": "0x80073db0",
+      "word": "0x80234019",
+      "target": "0x80144019",
+      "target_record": 0,
+      "target_field": 33,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80073da8"
+    },
+    {
+      "pc": "0x80073f48",
+      "word": "0x80234018",
+      "target": "0x80144018",
+      "target_record": 0,
+      "target_field": 32,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80073f40"
+    },
+    {
+      "pc": "0x800740e0",
+      "word": "0x8c234004",
+      "target": "0x80144004",
+      "target_record": 0,
+      "target_field": 12,
+      "operation": "lw",
+      "register": 3,
+      "lui_pc": "0x800740d8"
+    },
+    {
+      "pc": "0x8007441c",
+      "word": "0x90233ffc",
+      "target": "0x80143ffc",
+      "target_record": 0,
+      "target_field": 4,
+      "operation": "lbu",
+      "register": 3,
+      "lui_pc": "0x80074414"
+    },
+    {
+      "pc": "0x80074448",
+      "word": "0x90233ffa",
+      "target": "0x80143ffa",
+      "target_record": 0,
+      "target_field": 2,
+      "operation": "lbu",
+      "register": 3,
+      "lui_pc": "0x80074440"
+    },
+    {
+      "pc": "0x800744b0",
+      "word": "0x80233ffb",
+      "target": "0x80143ffb",
+      "target_record": 0,
+      "target_field": 3,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x800744a8"
+    },
+    {
+      "pc": "0x80074518",
+      "word": "0x80234011",
+      "target": "0x80144011",
+      "target_record": 0,
+      "target_field": 25,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80074510"
+    },
+    {
+      "pc": "0x800746f0",
+      "word": "0x80234010",
+      "target": "0x80144010",
+      "target_record": 0,
+      "target_field": 24,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x800746e8"
+    },
+    {
+      "pc": "0x80074848",
+      "word": "0x80234012",
+      "target": "0x80144012",
+      "target_record": 0,
+      "target_field": 26,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80074840"
+    },
+    {
+      "pc": "0x800749f4",
+      "word": "0x80234016",
+      "target": "0x80144016",
+      "target_record": 0,
+      "target_field": 30,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x800749ec"
+    },
+    {
+      "pc": "0x80074ba0",
+      "word": "0x80234017",
+      "target": "0x80144017",
+      "target_record": 0,
+      "target_field": 31,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80074b98"
+    },
+    {
+      "pc": "0x80074d4c",
+      "word": "0x8023401a",
+      "target": "0x8014401a",
+      "target_record": 0,
+      "target_field": 34,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80074d44"
+    },
+    {
+      "pc": "0x80074ef8",
+      "word": "0x80234019",
+      "target": "0x80144019",
+      "target_record": 0,
+      "target_field": 33,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x80074ef0"
+    },
+    {
+      "pc": "0x800750a4",
+      "word": "0x80234018",
+      "target": "0x80144018",
+      "target_record": 0,
+      "target_field": 32,
+      "operation": "lb",
+      "register": 3,
+      "lui_pc": "0x8007509c"
+    },
+    {
+      "pc": "0x80075250",
+      "word": "0x8c234004",
+      "target": "0x80144004",
+      "target_record": 0,
+      "target_field": 12,
+      "operation": "lw",
+      "register": 3,
+      "lui_pc": "0x80075248"
+    },
+    {
+      "pc": "0x800756a8",
+      "word": "0x24633ff8",
+      "target": "0x80143ff8",
+      "target_record": 0,
+      "target_field": 0,
+      "operation": "addiu",
+      "register": 3,
+      "lui_pc": "0x800756a4"
+    }
+  ],
+  "direct_memory_references": [
+    {
+      "pc": "0x8001b4f4",
+      "operation": "sh",
+      "field_mod60": 0,
+      "target": "0x80143ff8",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8001dcc4",
+      "operation": "lw",
+      "field_mod60": 12,
+      "target": "0x80144004",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80022280",
+      "operation": "lb",
+      "field_mod60": 32,
+      "target": "0x80144018",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8002258c",
+      "operation": "lb",
+      "field_mod60": 34,
+      "target": "0x8014401a",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80022928",
+      "operation": "lb",
+      "field_mod60": 33,
+      "target": "0x80144019",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80023e8c",
+      "operation": "lb",
+      "field_mod60": 32,
+      "target": "0x80144018",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800282d0",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80028828",
+      "operation": "lb",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80028a28",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80028d2c",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80028df0",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80029fa8",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003217c",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80032224",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800322cc",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80032374",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80032424",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800324d4",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003aa9c",
+      "operation": "lb",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003b62c",
+      "operation": "lb",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003b988",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003bd50",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003be58",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003ce58",
+      "operation": "sb",
+      "field_mod60": 25,
+      "target": "0x80144011",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003d738",
+      "operation": "lbu",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003d78c",
+      "operation": "sb",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003d7e4",
+      "operation": "lbu",
+      "field_mod60": 26,
+      "target": "0x80144012",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003d838",
+      "operation": "sb",
+      "field_mod60": 26,
+      "target": "0x80144012",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003d8d0",
+      "operation": "lbu",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003d924",
+      "operation": "sb",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003d97c",
+      "operation": "lbu",
+      "field_mod60": 27,
+      "target": "0x80144013",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003d9d0",
+      "operation": "sb",
+      "field_mod60": 27,
+      "target": "0x80144013",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003da68",
+      "operation": "lbu",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003dabc",
+      "operation": "sb",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003db14",
+      "operation": "lbu",
+      "field_mod60": 28,
+      "target": "0x80144014",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003db68",
+      "operation": "sb",
+      "field_mod60": 28,
+      "target": "0x80144014",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003dc00",
+      "operation": "lbu",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003dc54",
+      "operation": "sb",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003dcac",
+      "operation": "lbu",
+      "field_mod60": 24,
+      "target": "0x80144010",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8003dd00",
+      "operation": "sb",
+      "field_mod60": 24,
+      "target": "0x80144010",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004a578",
+      "operation": "lbu",
+      "field_mod60": 4,
+      "target": "0x80143ffc",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004a5a4",
+      "operation": "lbu",
+      "field_mod60": 2,
+      "target": "0x80143ffa",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004a870",
+      "operation": "lb",
+      "field_mod60": 3,
+      "target": "0x80143ffb",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004a8e8",
+      "operation": "lw",
+      "field_mod60": 12,
+      "target": "0x80144004",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004a960",
+      "operation": "lb",
+      "field_mod60": 25,
+      "target": "0x80144011",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004ab00",
+      "operation": "lb",
+      "field_mod60": 24,
+      "target": "0x80144010",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004ac34",
+      "operation": "lb",
+      "field_mod60": 26,
+      "target": "0x80144012",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004adcc",
+      "operation": "lb",
+      "field_mod60": 30,
+      "target": "0x80144016",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004af64",
+      "operation": "lb",
+      "field_mod60": 31,
+      "target": "0x80144017",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004b0fc",
+      "operation": "lb",
+      "field_mod60": 34,
+      "target": "0x8014401a",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004b294",
+      "operation": "lb",
+      "field_mod60": 33,
+      "target": "0x80144019",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8004b42c",
+      "operation": "lb",
+      "field_mod60": 32,
+      "target": "0x80144018",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800700e4",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8007033c",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8007043c",
+      "operation": "lbu",
+      "field_mod60": 4,
+      "target": "0x80143ffc",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80070470",
+      "operation": "lh",
+      "field_mod60": 8,
+      "target": "0x80144000",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800704e4",
+      "operation": "lb",
+      "field_mod60": 3,
+      "target": "0x80143ffb",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8007055c",
+      "operation": "lw",
+      "field_mod60": 20,
+      "target": "0x8014400c",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80070614",
+      "operation": "lw",
+      "field_mod60": 12,
+      "target": "0x80144004",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800706bc",
+      "operation": "lb",
+      "field_mod60": 25,
+      "target": "0x80144011",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8007085c",
+      "operation": "lb",
+      "field_mod60": 24,
+      "target": "0x80144010",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80070990",
+      "operation": "lb",
+      "field_mod60": 29,
+      "target": "0x80144015",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80070b28",
+      "operation": "lb",
+      "field_mod60": 27,
+      "target": "0x80144013",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80070cc0",
+      "operation": "lb",
+      "field_mod60": 28,
+      "target": "0x80144014",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80071408",
+      "operation": "sh",
+      "field_mod60": 0,
+      "target": "0x80143ff8",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80071488",
+      "operation": "sh",
+      "field_mod60": 0,
+      "target": "0x80143ff8",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80071744",
+      "operation": "sh",
+      "field_mod60": 0,
+      "target": "0x80143ff8",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80071894",
+      "operation": "sh",
+      "field_mod60": 0,
+      "target": "0x80143ff8",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80073360",
+      "operation": "lbu",
+      "field_mod60": 4,
+      "target": "0x80143ffc",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8007338c",
+      "operation": "lbu",
+      "field_mod60": 2,
+      "target": "0x80143ffa",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80073404",
+      "operation": "lb",
+      "field_mod60": 3,
+      "target": "0x80143ffb",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8007347c",
+      "operation": "lb",
+      "field_mod60": 25,
+      "target": "0x80144011",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8007361c",
+      "operation": "lb",
+      "field_mod60": 24,
+      "target": "0x80144010",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80073750",
+      "operation": "lb",
+      "field_mod60": 26,
+      "target": "0x80144012",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800738e8",
+      "operation": "lb",
+      "field_mod60": 30,
+      "target": "0x80144016",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80073a80",
+      "operation": "lb",
+      "field_mod60": 31,
+      "target": "0x80144017",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80073c18",
+      "operation": "lb",
+      "field_mod60": 34,
+      "target": "0x8014401a",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80073db0",
+      "operation": "lb",
+      "field_mod60": 33,
+      "target": "0x80144019",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80073f48",
+      "operation": "lb",
+      "field_mod60": 32,
+      "target": "0x80144018",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800740e0",
+      "operation": "lw",
+      "field_mod60": 12,
+      "target": "0x80144004",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x8007441c",
+      "operation": "lbu",
+      "field_mod60": 4,
+      "target": "0x80143ffc",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80074448",
+      "operation": "lbu",
+      "field_mod60": 2,
+      "target": "0x80143ffa",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800744b0",
+      "operation": "lb",
+      "field_mod60": 3,
+      "target": "0x80143ffb",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80074518",
+      "operation": "lb",
+      "field_mod60": 25,
+      "target": "0x80144011",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800746f0",
+      "operation": "lb",
+      "field_mod60": 24,
+      "target": "0x80144010",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80074848",
+      "operation": "lb",
+      "field_mod60": 26,
+      "target": "0x80144012",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800749f4",
+      "operation": "lb",
+      "field_mod60": 30,
+      "target": "0x80144016",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80074ba0",
+      "operation": "lb",
+      "field_mod60": 31,
+      "target": "0x80144017",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80074d4c",
+      "operation": "lb",
+      "field_mod60": 34,
+      "target": "0x8014401a",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80074ef8",
+      "operation": "lb",
+      "field_mod60": 33,
+      "target": "0x80144019",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x800750a4",
+      "operation": "lb",
+      "field_mod60": 32,
+      "target": "0x80144018",
+      "kind": "canonical_memory_operand"
+    },
+    {
+      "pc": "0x80075250",
+      "operation": "lw",
+      "field_mod60": 12,
+      "target": "0x80144004",
+      "kind": "canonical_memory_operand"
+    }
+  ],
+  "bounded_pointer_accesses": [
+    {
+      "pc": "0x8001ae80",
+      "word": "0xa0400028",
+      "operation": "sb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8001ae6c"
+    },
+    {
+      "pc": "0x8001ae90",
+      "word": "0xa064002a",
+      "operation": "sb",
+      "field_mod60": 42,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8001ae6c"
+    },
+    {
+      "pc": "0x8001ae98",
+      "word": "0xa0430029",
+      "operation": "sb",
+      "field_mod60": 41,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8001ae6c"
+    },
+    {
+      "pc": "0x8001b3f0",
+      "word": "0xa4400000",
+      "operation": "sh",
+      "field_mod60": 0,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x8001b3dc"
+    },
+    {
+      "pc": "0x8001b400",
+      "word": "0x90640018",
+      "operation": "lbu",
+      "field_mod60": 24,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8001b3dc"
+    },
+    {
+      "pc": "0x8001b408",
+      "word": "0xa0440019",
+      "operation": "sb",
+      "field_mod60": 25,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8001b3dc"
+    },
+    {
+      "pc": "0x8001c4c0",
+      "word": "0x80430029",
+      "operation": "lb",
+      "field_mod60": 41,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8001c4ac"
+    },
+    {
+      "pc": "0x8002a16c",
+      "word": "0x8c65000c",
+      "operation": "lw",
+      "field_mod60": 12,
+      "width": 4,
+      "opaque_index_add": true,
+      "seed": "0x8002a144"
+    },
+    {
+      "pc": "0x8002a198",
+      "word": "0xac44000c",
+      "operation": "sw",
+      "field_mod60": 12,
+      "width": 4,
+      "opaque_index_add": true,
+      "seed": "0x8002a144"
+    },
+    {
+      "pc": "0x8002a370",
+      "word": "0x80430003",
+      "operation": "lb",
+      "field_mod60": 3,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8002a35c"
+    },
+    {
+      "pc": "0x8002b028",
+      "word": "0x94430000",
+      "operation": "lhu",
+      "field_mod60": 0,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x8002b014"
+    },
+    {
+      "pc": "0x8002bbfc",
+      "word": "0xa4440000",
+      "operation": "sh",
+      "field_mod60": 0,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x8002bbdc"
+    },
+    {
+      "pc": "0x8002bc08",
+      "word": "0xa0400028",
+      "operation": "sb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8002bbdc"
+    },
+    {
+      "pc": "0x8002bc18",
+      "word": "0xa064002a",
+      "operation": "sb",
+      "field_mod60": 42,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8002bbdc"
+    },
+    {
+      "pc": "0x8002bc20",
+      "word": "0xa0430029",
+      "operation": "sb",
+      "field_mod60": 41,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8002bbdc"
+    },
+    {
+      "pc": "0x8002bc50",
+      "word": "0x80850004",
+      "operation": "lb",
+      "field_mod60": 4,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8002bbdc"
+    },
+    {
+      "pc": "0x8002bc68",
+      "word": "0xa4430006",
+      "operation": "sh",
+      "field_mod60": 6,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x8002bbdc"
+    },
+    {
+      "pc": "0x80036bb4",
+      "word": "0x80430028",
+      "operation": "lb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80036ba0"
+    },
+    {
+      "pc": "0x80036d60",
+      "word": "0x80640029",
+      "operation": "lb",
+      "field_mod60": 41,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80036d20"
+    },
+    {
+      "pc": "0x80036da4",
+      "word": "0x8064002a",
+      "operation": "lb",
+      "field_mod60": 42,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80036d20"
+    },
+    {
+      "pc": "0x80036de8",
+      "word": "0x8064002b",
+      "operation": "lb",
+      "field_mod60": 43,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80036d20"
+    },
+    {
+      "pc": "0x80036e00",
+      "word": "0x80430028",
+      "operation": "lb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80036d20"
+    },
+    {
+      "pc": "0x80038538",
+      "word": "0x80430028",
+      "operation": "lb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80038524"
+    },
+    {
+      "pc": "0x8003d748",
+      "word": "0xa044001d",
+      "operation": "sb",
+      "field_mod60": 29,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8003d708"
+    },
+    {
+      "pc": "0x8003d7f4",
+      "word": "0xa044001a",
+      "operation": "sb",
+      "field_mod60": 26,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8003d7b4"
+    },
+    {
+      "pc": "0x8003d8e0",
+      "word": "0xa044001d",
+      "operation": "sb",
+      "field_mod60": 29,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8003d8a0"
+    },
+    {
+      "pc": "0x8003d98c",
+      "word": "0xa044001b",
+      "operation": "sb",
+      "field_mod60": 27,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8003d94c"
+    },
+    {
+      "pc": "0x8003da78",
+      "word": "0xa044001d",
+      "operation": "sb",
+      "field_mod60": 29,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8003da38"
+    },
+    {
+      "pc": "0x8003db24",
+      "word": "0xa044001c",
+      "operation": "sb",
+      "field_mod60": 28,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8003dae4"
+    },
+    {
+      "pc": "0x8003dc10",
+      "word": "0xa044001d",
+      "operation": "sb",
+      "field_mod60": 29,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8003dbd0"
+    },
+    {
+      "pc": "0x8003dcbc",
+      "word": "0xa0440018",
+      "operation": "sb",
+      "field_mod60": 24,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8003dc7c"
+    },
+    {
+      "pc": "0x80056df0",
+      "word": "0x80430028",
+      "operation": "lb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80056ddc"
+    },
+    {
+      "pc": "0x8006f924",
+      "word": "0x94430000",
+      "operation": "lhu",
+      "field_mod60": 0,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x8006f910"
+    },
+    {
+      "pc": "0x8007108c",
+      "word": "0xa4400000",
+      "operation": "sh",
+      "field_mod60": 0,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x80071078"
+    },
+    {
+      "pc": "0x8007109c",
+      "word": "0x90640018",
+      "operation": "lbu",
+      "field_mod60": 24,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80071078"
+    },
+    {
+      "pc": "0x800710a4",
+      "word": "0xa0440019",
+      "operation": "sb",
+      "field_mod60": 25,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80071078"
+    },
+    {
+      "pc": "0x800710b0",
+      "word": "0x80430028",
+      "operation": "lb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80071078"
+    },
+    {
+      "pc": "0x800712ac",
+      "word": "0xa4440000",
+      "operation": "sh",
+      "field_mod60": 0,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x8007128c"
+    },
+    {
+      "pc": "0x800712b8",
+      "word": "0xa0400028",
+      "operation": "sb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8007128c"
+    },
+    {
+      "pc": "0x800712c8",
+      "word": "0xa064002a",
+      "operation": "sb",
+      "field_mod60": 42,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8007128c"
+    },
+    {
+      "pc": "0x800712d0",
+      "word": "0xa0430029",
+      "operation": "sb",
+      "field_mod60": 41,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8007128c"
+    },
+    {
+      "pc": "0x800712fc",
+      "word": "0x80850004",
+      "operation": "lb",
+      "field_mod60": 4,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x8007128c"
+    },
+    {
+      "pc": "0x80071314",
+      "word": "0xa4430006",
+      "operation": "sh",
+      "field_mod60": 6,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x8007128c"
+    },
+    {
+      "pc": "0x8007295c",
+      "word": "0xa4400000",
+      "operation": "sh",
+      "field_mod60": 0,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x80072948"
+    },
+    {
+      "pc": "0x80072968",
+      "word": "0x80430028",
+      "operation": "lb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80072948"
+    },
+    {
+      "pc": "0x80072c50",
+      "word": "0xa4440000",
+      "operation": "sh",
+      "field_mod60": 0,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x80072c2c"
+    },
+    {
+      "pc": "0x80072c5c",
+      "word": "0xa0400028",
+      "operation": "sb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80072c2c"
+    },
+    {
+      "pc": "0x80072c6c",
+      "word": "0xa064002a",
+      "operation": "sb",
+      "field_mod60": 42,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80072c2c"
+    },
+    {
+      "pc": "0x80072c74",
+      "word": "0xa0430029",
+      "operation": "sb",
+      "field_mod60": 41,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80072c2c"
+    },
+    {
+      "pc": "0x80072ca0",
+      "word": "0x80850004",
+      "operation": "lb",
+      "field_mod60": 4,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x80072c2c"
+    },
+    {
+      "pc": "0x80072cb8",
+      "word": "0xa4430006",
+      "operation": "sh",
+      "field_mod60": 6,
+      "width": 2,
+      "opaque_index_add": true,
+      "seed": "0x80072c2c"
+    },
+    {
+      "pc": "0x800756bc",
+      "word": "0x80430028",
+      "operation": "lb",
+      "field_mod60": 40,
+      "width": 1,
+      "opaque_index_add": true,
+      "seed": "0x800756a8"
+    }
+  ],
+  "bounded_word16_candidates": [],
+  "pointer_call_boundaries": [
+    {
+      "seed": "0x8001a1f0",
+      "pc": "0x8001a204",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 0,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a238",
+      "pc": "0x8001a24c",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 2,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a280",
+      "pc": "0x8001a294",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 3,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a2c8",
+      "pc": "0x8001a2dc",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 4,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a310",
+      "pc": "0x8001a324",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 6,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a358",
+      "pc": "0x8001a36c",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 8,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a3a0",
+      "pc": "0x8001a3b4",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 12,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a3e8",
+      "pc": "0x8001a3fc",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 16,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a430",
+      "pc": "0x8001a444",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 20,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a478",
+      "pc": "0x8001a48c",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 24,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a4c0",
+      "pc": "0x8001a4d4",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 25,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a508",
+      "pc": "0x8001a51c",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 26,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a550",
+      "pc": "0x8001a564",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 27,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a598",
+      "pc": "0x8001a5ac",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 28,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a5e0",
+      "pc": "0x8001a5f4",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 29,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a628",
+      "pc": "0x8001a63c",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 30,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a670",
+      "pc": "0x8001a684",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 31,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a6b8",
+      "pc": "0x8001a6cc",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 32,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a700",
+      "pc": "0x8001a714",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 33,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a748",
+      "pc": "0x8001a75c",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 34,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a790",
+      "pc": "0x8001a7a4",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 35,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a7d8",
+      "pc": "0x8001a7ec",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 36,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a820",
+      "pc": "0x8001a834",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 37,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a868",
+      "pc": "0x8001a87c",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 38,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a8b0",
+      "pc": "0x8001a8c4",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 39,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a8f8",
+      "pc": "0x8001a90c",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 40,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a940",
+      "pc": "0x8001a954",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 41,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a988",
+      "pc": "0x8001a99c",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 42,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001a9d0",
+      "pc": "0x8001a9e4",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 43,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001aa18",
+      "pc": "0x8001aa2c",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 44,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001aa60",
+      "pc": "0x8001aa74",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 45,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001aaa8",
+      "pc": "0x8001aabc",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 46,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001aaf0",
+      "pc": "0x8001ab04",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 47,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8001ae6c",
+      "pc": "0x8001aea8",
+      "kind": "call_boundary",
+      "target": "0x8003dda8",
+      "tagged_arguments": {}
+    },
+    {
+      "seed": "0x8002bbdc",
+      "pc": "0x8002bc78",
+      "kind": "call_boundary",
+      "target": "0x8003dda8",
+      "tagged_arguments": {}
+    },
+    {
+      "seed": "0x80035f88",
+      "pc": "0x80035f9c",
+      "kind": "call_boundary",
+      "target": "0x8003aa58",
+      "tagged_arguments": {
+        "5": {
+          "field_mod60": 0,
+          "opaque_index_add": true
+        }
+      }
+    },
+    {
+      "seed": "0x8006ba70",
+      "pc": "0x8006ba78",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "5": {
+          "field_mod60": 0,
+          "opaque_index_add": false
+        }
+      }
+    },
+    {
+      "seed": "0x8006be8c",
+      "pc": "0x8006be98",
+      "kind": "call_boundary",
+      "target": "0x8007e57c",
+      "tagged_arguments": {
+        "4": {
+          "field_mod60": 0,
+          "opaque_index_add": false
+        }
+      }
+    },
+    {
+      "seed": "0x8007128c",
+      "pc": "0x80071324",
+      "kind": "call_boundary",
+      "target": "0x8003dda8",
+      "tagged_arguments": {}
+    },
+    {
+      "seed": "0x80072c2c",
+      "pc": "0x80072ccc",
+      "kind": "call_boundary",
+      "target": "0x8003dda8",
+      "tagged_arguments": {}
+    }
+  ],
+  "near_staff_minus1_comparisons": [
+    {
+      "constant_pc": "0x800222f0",
+      "branch_pc": "0x800222f4",
+      "constant": -1,
+      "branch_target": "0x80022308",
+      "context": {
+        "start": "0x800222dc",
+        "words": [
+          "0x0",
+          "0x43001a",
+          "0x14600002",
+          "0x0",
+          "0x7000d",
+          "0x2401ffff",
+          "0x14610004",
+          "0x3c018000",
+          "0x14410002",
+          "0x0",
+          "0x6000d"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x80023efc",
+      "branch_pc": "0x80023f00",
+      "constant": -1,
+      "branch_target": "0x80023f14",
+      "context": {
+        "start": "0x80023ee8",
+        "words": [
+          "0x0",
+          "0x43001a",
+          "0x14600002",
+          "0x0",
+          "0x7000d",
+          "0x2401ffff",
+          "0x14610004",
+          "0x3c018000",
+          "0x14410002",
+          "0x0",
+          "0x6000d"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x80028d50",
+      "branch_pc": "0x80028d54",
+      "constant": -1,
+      "branch_target": "0x80028e10",
+      "context": {
+        "start": "0x80028d3c",
+        "words": [
+          "0x2406001c",
+          "0x24070001",
+          "0xc00fb36",
+          "0x0",
+          "0x8fc20030",
+          "0x2403ffff",
+          "0x1443002e",
+          "0x0",
+          "0x8fc40048",
+          "0x2405000e",
+          "0xc01b5d6"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x8003253c",
+      "branch_pc": "0x80032540",
+      "constant": -1,
+      "branch_target": "0x80032550",
+      "context": {
+        "start": "0x80032528",
+        "words": [
+          "0x3c03800d",
+          "0x2463e61c",
+          "0x431021",
+          "0x401821",
+          "0x8c620000",
+          "0x2403ffff",
+          "0x14430003",
+          "0x0",
+          "0x800c978",
+          "0x0",
+          "0x8fc20038"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x8003aaf0",
+      "branch_pc": "0x8003aaf4",
+      "constant": -1,
+      "branch_target": "0x8003b158",
+      "context": {
+        "start": "0x8003aadc",
+        "words": [
+          "0x10430011",
+          "0x0",
+          "0x28430002",
+          "0x10600006",
+          "0x0",
+          "0x2403ffff",
+          "0x10430198",
+          "0x0",
+          "0x800ec98",
+          "0x0",
+          "0x24030002"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x8003de4c",
+      "branch_pc": "0x8003de50",
+      "constant": -1,
+      "branch_target": "0x8003de80",
+      "context": {
+        "start": "0x8003de38",
+        "words": [
+          "0x8fc50038",
+          "0x24060030",
+          "0xc007237",
+          "0x0",
+          "0x8fc20018",
+          "0x2403ffff",
+          "0x1443000b",
+          "0x0",
+          "0x8fc2001c",
+          "0x2403ffff",
+          "0x14430007"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x8003de5c",
+      "branch_pc": "0x8003de60",
+      "constant": -1,
+      "branch_target": "0x8003de80",
+      "context": {
+        "start": "0x8003de48",
+        "words": [
+          "0x8fc20018",
+          "0x2403ffff",
+          "0x1443000b",
+          "0x0",
+          "0x8fc2001c",
+          "0x2403ffff",
+          "0x14430007",
+          "0x0",
+          "0x27c20018",
+          "0x402021",
+          "0x8fc50038"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x80056e14",
+      "branch_pc": "0x80056e18",
+      "constant": -1,
+      "branch_target": "0x80056e40",
+      "context": {
+        "start": "0x80056e00",
+        "words": [
+          "0x8015beb",
+          "0x0",
+          "0x8fc20028",
+          "0x0",
+          "0x80430029",
+          "0x2402ffff",
+          "0x10620009",
+          "0x0",
+          "0x8fc20028",
+          "0x0",
+          "0x8043002a"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x80056e2c",
+      "branch_pc": "0x80056e30",
+      "constant": -1,
+      "branch_target": "0x80056e40",
+      "context": {
+        "start": "0x80056e18",
+        "words": [
+          "0x10620009",
+          "0x0",
+          "0x8fc20028",
+          "0x0",
+          "0x8043002a",
+          "0x2402ffff",
+          "0x10620003",
+          "0x0",
+          "0x8015b92",
+          "0x0",
+          "0x8015beb"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x800710cc",
+      "branch_pc": "0x800710d0",
+      "constant": -1,
+      "branch_target": "0x80071144",
+      "context": {
+        "start": "0x800710b8",
+        "words": [
+          "0x10600022",
+          "0x0",
+          "0x8fc2001c",
+          "0x0",
+          "0x80430029",
+          "0x2402ffff",
+          "0x1062001c",
+          "0x0",
+          "0x8fc2001c",
+          "0x0",
+          "0x8043002a"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x800710e4",
+      "branch_pc": "0x800710e8",
+      "constant": -1,
+      "branch_target": "0x80071144",
+      "context": {
+        "start": "0x800710d0",
+        "words": [
+          "0x1062001c",
+          "0x0",
+          "0x8fc2001c",
+          "0x0",
+          "0x8043002a",
+          "0x2402ffff",
+          "0x10620016",
+          "0x0",
+          "0x8fc20028",
+          "0x8fc4001c",
+          "0x0"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x80071430",
+      "branch_pc": "0x80071434",
+      "constant": -1,
+      "branch_target": "0x8007148c",
+      "context": {
+        "start": "0x8007141c",
+        "words": [
+          "0x41840",
+          "0x621021",
+          "0x24430dd8",
+          "0x601021",
+          "0x84430000",
+          "0x2402ffff",
+          "0x10620015",
+          "0x0",
+          "0x8fc20010",
+          "0x8fc30014",
+          "0x0"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x800714b4",
+      "branch_pc": "0x800714b8",
+      "constant": -1,
+      "branch_target": "0x800714c8",
+      "context": {
+        "start": "0x800714a0",
+        "words": [
+          "0x3c038013",
+          "0x2463b030",
+          "0x431021",
+          "0x401821",
+          "0x8c620000",
+          "0x2403ffff",
+          "0x14430003",
+          "0x0",
+          "0x801c539",
+          "0x0",
+          "0x8fc30000"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x80071770",
+      "branch_pc": "0x80071774",
+      "constant": -1,
+      "branch_target": "0x800717d0",
+      "context": {
+        "start": "0x8007175c",
+        "words": [
+          "0x3c038013",
+          "0x2463b030",
+          "0x431021",
+          "0x401821",
+          "0x8c620000",
+          "0x2403ffff",
+          "0x14430016",
+          "0x0",
+          "0x8fc20000",
+          "0x0",
+          "0x401821"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x80072984",
+      "branch_pc": "0x80072988",
+      "constant": -1,
+      "branch_target": "0x80072a00",
+      "context": {
+        "start": "0x80072970",
+        "words": [
+          "0x10600023",
+          "0x0",
+          "0x8fc20020",
+          "0x0",
+          "0x80430029",
+          "0x2402ffff",
+          "0x1062001d",
+          "0x0",
+          "0x8fc20020",
+          "0x0",
+          "0x8043002a"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x8007299c",
+      "branch_pc": "0x800729a0",
+      "constant": -1,
+      "branch_target": "0x80072a00",
+      "context": {
+        "start": "0x80072988",
+        "words": [
+          "0x1062001d",
+          "0x0",
+          "0x8fc20020",
+          "0x0",
+          "0x8043002a",
+          "0x2402ffff",
+          "0x10620017",
+          "0x0",
+          "0x3c02800d",
+          "0x8c42da18",
+          "0x8fc40020"
+        ]
+      }
+    }
+  ],
+  "literal_references": {
+    "0x80143ff8": [],
+    "0x8014464c": [],
+    "0x8014465c": []
+  },
+  "limitations": [
+    "LUI/low within8instructions; includes data and does not prove code reachability.",
+    "Pointer propagation <=128straight instructions; stops at control transfer. Opaque index adds are leads, not verified stride60.",
+    "Caller arguments, pointer aliases, loops and noncanonical or other loaded code not covered."
+  ]
+}

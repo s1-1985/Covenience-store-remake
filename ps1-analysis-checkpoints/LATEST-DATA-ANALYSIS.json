@@ -1,13 +1,13 @@
 {
   "date_jst": "2026-11-18",
-  "work_kind": "staff_year_transfer_cancel_batch",
-  "report": "analysis/20261118-staff-transfer-year-boundary/README.md",
-  "previous_report": "analysis/20261118-festival-presentation-return/README.md",
-  "new_result": "Year2originalaging preservesstaff27FFFF/69120 whileage25->26; originalcrossstoremanager exchange preservesenergy1 andexperience10/13; originalswap canformmissing-manager selection,72774writesbeforeerror1,andcancelreturntailpreserveswrittenstate.",
-  "known_before": "InitialFFFF/69120 and72774 independentmodel known;70F48 role-swap recovery/experience known. New year-boundary hypothesis test,cross-entrycontrast andparentcancelconnection.",
-  "original_cpu_calls": 6,
+  "work_kind": "three_unresolved_reference_searches",
+  "report": "analysis/20261118-unresolved-reference-audit/README.md",
+  "previous_report": "analysis/20261118-staff-transfer-year-boundary/README.md",
+  "new_result": "Indexed157canonicalstaffrefs/92directcandidates/52boundeduses; no semanticword16reader identified. Classified16nearbyminus1leads and7literal26branches; two26branches arebulkpriceUIrow notcashproduct. R01/R06/R07 remainopen.",
+  "known_before": "Opaque word16 copy, originalFFFF/69120 source pair, individual cash inventory/price/advice andpriceUIbulk rules known. New reference indexes andfalse-lead classification; no new mechanics.",
+  "original_cpu_calls": 0,
   "original_operating_updates": 0,
-  "verification": "Six bounded entries withoriginal code/helpers anddiagnostic inputs; yearfield access monitor, staffdiffs, originaltentativeswap, cancelreturntail. No fullUI/elapsedyear/operating replay.",
+  "verification": "Input hashes andstatic source word extraction only; bounded scan, manual domain classification; no new CPU/gameplay trials.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
@@ -15,6 +15,7 @@
   "remaining_ledger": "ANALYSIS-REMAINING.json",
   "new_mechanics_established": 0,
   "open_issues_resolved_this_turn": 0,
-  "new_conditional_outcome_established": true,
-  "new_conditional_outcomes": 3
+  "new_conditional_outcome_established": false,
+  "new_conditional_outcomes": 0,
+  "new_reference_searches": 3
 }

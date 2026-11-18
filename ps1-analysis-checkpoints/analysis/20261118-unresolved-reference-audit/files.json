@@ -1,0 +1,34 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6551,
+      "sha256": "2a6dd65bf1fcc69954536128f6b9ce03da678baff852e464fd0435c6dd88368c"
+    },
+    {
+      "path": "classification.json",
+      "bytes": 2507,
+      "sha256": "80544921b0c6b12bc60a478854fa2257c8afb2270d12ac236b615beee10dbf50"
+    },
+    {
+      "path": "clock-cash-reference-index.json",
+      "bytes": 3526,
+      "sha256": "9b0d6385bc63c5407d005b926b701d4113db72612a06f61923859fc441cd8c1c"
+    },
+    {
+      "path": "scan-unresolved-refs.py",
+      "bytes": 6944,
+      "sha256": "c2d5b0d12e3b83f96f40575f50d58dd70b541970067a74b393862413b5acd51d"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 307,
+      "sha256": "b9ad0a5e8591ba582823f8902320c6e42357f832ea3e08b0c66816a2d20d4511"
+    },
+    {
+      "path": "staff-reference-index.json",
+      "bytes": 77936,
+      "sha256": "7a04d95960e23e9bf068a157e5f8a10759fa13704bbecfe17806330bae7c08ac"
+    }
+  ]
+}

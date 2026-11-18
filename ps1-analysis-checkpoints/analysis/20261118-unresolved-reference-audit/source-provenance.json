@@ -1,0 +1,8 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "scan_payload_start": "0x80010000",
+  "scan_payload_bytes": 776192,
+  "original_cpu_calls": 0,
+  "original_operating_updates": 0
+}

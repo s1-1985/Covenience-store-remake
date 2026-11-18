@@ -1,0 +1,163 @@
+{
+  "clock69120_candidates": [],
+  "nearby_literal26_branches": [
+    {
+      "constant_pc": "0x8002085c",
+      "branch_pc": "0x80020860",
+      "constant": 26,
+      "branch_target": "0x80020870",
+      "context": {
+        "start": "0x80020848",
+        "words": [
+          "0x24030014",
+          "0x10430008",
+          "0x0",
+          "0x800822a",
+          "0x0",
+          "0x2403001a",
+          "0x10430003",
+          "0x0",
+          "0x800822a",
+          "0x0",
+          "0x8fc20024"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x800213dc",
+      "branch_pc": "0x800213e0",
+      "constant": 26,
+      "branch_target": "0x80021948",
+      "context": {
+        "start": "0x800213c8",
+        "words": [
+          "0x80086d2",
+          "0x0",
+          "0x24030018",
+          "0x1043019c",
+          "0x0",
+          "0x2403001a",
+          "0x10430159",
+          "0x0",
+          "0x80086d2",
+          "0x0",
+          "0xafc0005c"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x80022094",
+      "branch_pc": "0x80022098",
+      "constant": 26,
+      "branch_target": "0x800220a8",
+      "context": {
+        "start": "0x80022080",
+        "words": [
+          "0x8fc40018",
+          "0xc0081ab",
+          "0x0",
+          "0xafc20018",
+          "0x8fc20018",
+          "0x2403001a",
+          "0x14430003",
+          "0x0",
+          "0x8008849",
+          "0x0",
+          "0x8fc20018"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x800240a8",
+      "branch_pc": "0x800240ac",
+      "constant": 26,
+      "branch_target": "0x800240bc",
+      "context": {
+        "start": "0x80024094",
+        "words": [
+          "0x8fc40024",
+          "0xc0081ab",
+          "0x0",
+          "0xafc20024",
+          "0x8fc20024",
+          "0x2403001a",
+          "0x14430003",
+          "0x0",
+          "0x800904e",
+          "0x0",
+          "0x8fc20024"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x8003bdd8",
+      "branch_pc": "0x8003bddc",
+      "constant": 26,
+      "branch_target": "0x8003be00",
+      "context": {
+        "start": "0x8003bdc4",
+        "words": [
+          "0x24849078",
+          "0x2821",
+          "0xc01b481",
+          "0x0",
+          "0x8fc20024",
+          "0x2403001a",
+          "0x14430008",
+          "0x0",
+          "0x3c04800a",
+          "0x24849338",
+          "0x2821"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x800632cc",
+      "branch_pc": "0x800632d0",
+      "constant": 26,
+      "branch_target": "0x80063448",
+      "context": {
+        "start": "0x800632b8",
+        "words": [
+          "0x401821",
+          "0xafc30010",
+          "0x8018c8f",
+          "0x0",
+          "0x8fc20010",
+          "0x2403001a",
+          "0x1443005d",
+          "0x0",
+          "0x3c02800d",
+          "0x9442d7d4",
+          "0x0"
+        ]
+      }
+    },
+    {
+      "constant_pc": "0x8006350c",
+      "branch_pc": "0x80063510",
+      "constant": 26,
+      "branch_target": "0x80063688",
+      "context": {
+        "start": "0x800634f8",
+        "words": [
+          "0x401821",
+          "0xafc30010",
+          "0x8018d1f",
+          "0x0",
+          "0x8fc20010",
+          "0x2403001a",
+          "0x1443005d",
+          "0x0",
+          "0x3c02800d",
+          "0x9442d7d4",
+          "0x0"
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Immediate26 canbe a row count or a different enum; manual domain classification required.",
+    "No proof of absent computed comparisons, indirect events or other modules."
+  ]
+}

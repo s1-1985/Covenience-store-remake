@@ -23,7 +23,9 @@
         "Normal144 profiles contain no product26 candidate.",
         "Generic zero-unit purchase does not establish wallet credit/fee; low-use advice exists."
       ],
-      "remaining_question": "Dedicated or special-event withdrawal/fee route and intended dormant-feature behavior are not established."
+      "remaining_question": "Dedicated or special-event withdrawal/fee route and intended dormant-feature behavior are not established.",
+      "latest_reference_audit": "analysis/20261118-unresolved-reference-audit/README.md",
+      "repeat_gate": "Do not repeat prior native candidate/assignment/year tests or canonical/literal searches without new pointer/module/original behavior evidence. Preserve unknown fields/behaviors without inventing semantics."
     },
     {
       "id": "R02",
@@ -94,7 +96,9 @@
         "Four-map candidate output/RNG unchanged under word16 perturbations; candidate and four assignment calls perform no word16 access. Role swaps refill energy through release/reassign, without interpreting word16. Scoped result only.",
         "Originaltick69120 metricdecode givesyear2/month1/stage1/hour0/minute0. BoundedannualagingchangesTOWNPSstaff27age25->26 butpreservesownerFFFF/word16=69120; zero word16 accesses. Notfullannual/events ornaturalunlock proof. Originalcross-store72774 preservesenergy/experience unlike70F48; missing-manager validation occursafterwrites andcancelreturntail doesnotrestore."
       ],
-      "remaining_question": "Purpose/natural release route of initial TOWNPS staff27 FFFF and meaning/readers of word16 remain unknown. First-year aging block does not unlock it; other annual/events/global paths not ruled out."
+      "remaining_question": "Purpose/natural release route of initial TOWNPS staff27 FFFF and meaning/readers of word16 remain unknown. First-year aging block does not unlock it; other annual/events/global paths not ruled out.",
+      "latest_reference_audit": "analysis/20261118-unresolved-reference-audit/README.md",
+      "repeat_gate": "Do not repeat prior native candidate/assignment/year tests or canonical/literal searches without new pointer/module/original behavior evidence. Preserve unknown fields/behaviors without inventing semantics."
     },
     {
       "id": "R07",
@@ -114,7 +118,9 @@
       "latest_investigation": {
         "report": "analysis/20261117-novelty-audit/README.md",
         "result": "Boundedstaticsearch:two nearby+16store leads writeworking-summary,notstaff. No semanticfieldmeaning established;notanunusedfield proof."
-      }
+      },
+      "latest_reference_audit": "analysis/20261118-unresolved-reference-audit/README.md",
+      "repeat_gate": "Do not repeat prior native candidate/assignment/year tests or canonical/literal searches without new pointer/module/original behavior evidence. Preserve unknown fields/behaviors without inventing semantics."
     }
   ],
   "unscoped_inventory": [
