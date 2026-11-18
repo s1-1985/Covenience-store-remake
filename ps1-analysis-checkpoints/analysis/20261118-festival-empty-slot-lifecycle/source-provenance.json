@@ -1,0 +1,41 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+  "helper_path": "20261117-festival-customer-state-data/analyze-festival-state.py",
+  "helper_sha256": "aa3c09f5c22dc9e935c52678b375a2323459af99963e9f0bd34382a9b3fa21f5",
+  "source_ranges": [
+    {
+      "start": "0x80023670",
+      "end_exclusive": "0x800238b8",
+      "sha256": "fd2bca3c113bffb418ba5cbda33cf898be7855b0e3a2ebbba71c5182a8acfbd4"
+    },
+    {
+      "start": "0x80026844",
+      "end_exclusive": "0x80026878",
+      "sha256": "6033ef451a9334a64d503bef9ecce78de15444502b4bba0d05226924f7ee2bff"
+    },
+    {
+      "start": "0x80031e60",
+      "end_exclusive": "0x800320d0",
+      "sha256": "19a476bf965c90dff0aeeded70cfaf5bd88a942c49a9dd003ab131b30a607a06"
+    },
+    {
+      "start": "0x80032814",
+      "end_exclusive": "0x800330e4",
+      "sha256": "b7b352d9ba31709ff2260ea00ae46b642509b911d79f26fbbff0e8f1883fd8e9"
+    },
+    {
+      "start": "0x800331b4",
+      "end_exclusive": "0x800340fc",
+      "sha256": "cea4b13bd9f3ac78a2843272e33489fa3290e8d6445a4d9b0679b818b9755d77"
+    },
+    {
+      "start": "0x800340fc",
+      "end_exclusive": "0x800341a4",
+      "sha256": "b4760b36e82e550f28093b9db2cfef94864ca5ff92baf54fb31ed3b5ff721de7"
+    }
+  ],
+  "profile0_hex": "000006007800f4010400ffff001e3250143250280a643200",
+  "prior_independent_model_scope": "Normal spawn, entry and movement formulas already in r2; newly composed with actual demand alias and compared with one original normal admission."
+}

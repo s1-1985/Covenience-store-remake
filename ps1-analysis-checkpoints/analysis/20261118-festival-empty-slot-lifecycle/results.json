@@ -1,0 +1,384 @@
+{
+  "input_scope": "Original newly loaded TOWN0001, controlled schedules0 for rivals1/2, festival switch1, month8/stage4/hour0,seed2. Empty slot record unmodified before demand. Main prep rebuild flag1 supplied. No natural festival/acquisition/UI replay.",
+  "initial_customer": {
+    "raw_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+    "state": 0,
+    "wanted": 0,
+    "profile": 0,
+    "deadline": 0,
+    "wallet": 0,
+    "cart_unit_value": 0,
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "goal": [
+      0,
+      0,
+      0
+    ],
+    "route_hex": "00000000000000000000",
+    "quantity": 0,
+    "appearance": 0,
+    "visitors": 0,
+    "summary_present": 0,
+    "cash": [
+      200000000,
+      100000000
+    ],
+    "dirty_flag": 0
+  },
+  "after_demand": {
+    "raw_hex": "0100000000000000000000000000000000000000000000000000000000000000",
+    "state": 1,
+    "wanted": 0,
+    "profile": 0,
+    "deadline": 0,
+    "wallet": 0,
+    "cart_unit_value": 0,
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "goal": [
+      0,
+      0,
+      0
+    ],
+    "route_hex": "00000000000000000000",
+    "quantity": 0,
+    "appearance": 0,
+    "visitors": 0,
+    "summary_present": 0,
+    "cash": [
+      200000000,
+      100000000
+    ],
+    "dirty_flag": 0
+  },
+  "alias_writes": [
+    {
+      "pc": "0x80026868",
+      "size": 2,
+      "value": 1
+    }
+  ],
+  "post_spawn_steps": [
+    {
+      "step": 1,
+      "before": {
+        "raw_hex": "0100000000000000000000000000000000000000000000000000000000000000",
+        "state": 1,
+        "wanted": 0,
+        "profile": 0,
+        "deadline": 0,
+        "wallet": 0,
+        "cart_unit_value": 0,
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "goal": [
+          0,
+          0,
+          0
+        ],
+        "route_hex": "00000000000000000000",
+        "quantity": 0,
+        "appearance": 0,
+        "visitors": 0,
+        "summary_present": 0,
+        "cash": [
+          200000000,
+          100000000
+        ],
+        "dirty_flag": 0
+      },
+      "after": {
+        "raw_hex": "0100000000000000000000000000000000000000000000000000000000000000",
+        "state": 1,
+        "wanted": 0,
+        "profile": 0,
+        "deadline": 0,
+        "wallet": 0,
+        "cart_unit_value": 0,
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "goal": [
+          0,
+          0,
+          0
+        ],
+        "route_hex": "00000000000000000000",
+        "quantity": 0,
+        "appearance": 0,
+        "visitors": 0,
+        "summary_present": 0,
+        "cash": [
+          200000000,
+          100000000
+        ],
+        "dirty_flag": 0
+      },
+      "handlers": [
+        "entry"
+      ],
+      "occupancy_writes": [
+        {
+          "pc": "0x80032e40",
+          "offset": 264,
+          "size": 4,
+          "value": 0
+        }
+      ],
+      "grid_changed_bytes": 0
+    },
+    {
+      "step": 2,
+      "before": {
+        "raw_hex": "0100000000000000000000000000000000000000000000000000000000000000",
+        "state": 1,
+        "wanted": 0,
+        "profile": 0,
+        "deadline": 0,
+        "wallet": 0,
+        "cart_unit_value": 0,
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "goal": [
+          0,
+          0,
+          0
+        ],
+        "route_hex": "00000000000000000000",
+        "quantity": 0,
+        "appearance": 0,
+        "visitors": 0,
+        "summary_present": 0,
+        "cash": [
+          200000000,
+          100000000
+        ],
+        "dirty_flag": 0
+      },
+      "after": {
+        "raw_hex": "0204000078000000f40100000001030000000000000000000000000000000000",
+        "state": 2,
+        "wanted": 4,
+        "profile": 0,
+        "deadline": 120,
+        "wallet": 500,
+        "cart_unit_value": 0,
+        "position": [
+          0,
+          1,
+          3
+        ],
+        "goal": [
+          0,
+          0,
+          0
+        ],
+        "route_hex": "00000000000000000000",
+        "quantity": 0,
+        "appearance": 0,
+        "visitors": 0,
+        "summary_present": 0,
+        "cash": [
+          200000000,
+          100000000
+        ],
+        "dirty_flag": 0
+      },
+      "handlers": [
+        "entry"
+      ],
+      "occupancy_writes": [
+        {
+          "pc": "0x80032e40",
+          "offset": 264,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "pc": "0x800330a0",
+          "offset": 376,
+          "size": 4,
+          "value": 2633728
+        }
+      ],
+      "grid_changed_bytes": 2
+    },
+    {
+      "step": 3,
+      "before": {
+        "raw_hex": "0204000078000000f40100000001030000000000000000000000000000000000",
+        "state": 2,
+        "wanted": 4,
+        "profile": 0,
+        "deadline": 120,
+        "wallet": 500,
+        "cart_unit_value": 0,
+        "position": [
+          0,
+          1,
+          3
+        ],
+        "goal": [
+          0,
+          0,
+          0
+        ],
+        "route_hex": "00000000000000000000",
+        "quantity": 0,
+        "appearance": 0,
+        "visitors": 0,
+        "summary_present": 0,
+        "cash": [
+          200000000,
+          100000000
+        ],
+        "dirty_flag": 0
+      },
+      "after": {
+        "raw_hex": "0204000078000000f4010000000000000000ff00000000000000000000000000",
+        "state": 2,
+        "wanted": 4,
+        "profile": 0,
+        "deadline": 120,
+        "wallet": 500,
+        "cart_unit_value": 0,
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "goal": [
+          0,
+          0,
+          0
+        ],
+        "route_hex": "ff000000000000000000",
+        "quantity": 0,
+        "appearance": 0,
+        "visitors": 0,
+        "summary_present": 0,
+        "cash": [
+          200000000,
+          100000000
+        ],
+        "dirty_flag": 0
+      },
+      "handlers": [
+        "shopping_state2"
+      ],
+      "occupancy_writes": [
+        {
+          "pc": "0x80032e40",
+          "offset": 376,
+          "size": 4,
+          "value": 0
+        },
+        {
+          "pc": "0x800330a0",
+          "offset": 264,
+          "size": 4,
+          "value": 2625536
+        }
+      ],
+      "grid_changed_bytes": 4
+    }
+  ],
+  "normal_admission_control": {
+    "seed": 0,
+    "before": {
+      "raw_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+      "state": 0,
+      "wanted": 0,
+      "profile": 0,
+      "deadline": 0,
+      "wallet": 0,
+      "cart_unit_value": 0,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "goal": [
+        0,
+        0,
+        0
+      ],
+      "route_hex": "00000000000000000000",
+      "quantity": 0,
+      "appearance": 0,
+      "visitors": 0,
+      "summary_present": 0,
+      "cash": [
+        200000000,
+        100000000
+      ],
+      "dirty_flag": 0
+    },
+    "after": {
+      "raw_hex": "010029000000000000000000ffffffffffffffffffffffffffffffff5a000103",
+      "state": 1,
+      "wanted": 0,
+      "profile": 41,
+      "deadline": 0,
+      "wallet": 0,
+      "cart_unit_value": 0,
+      "position": [
+        -1,
+        -1,
+        -1
+      ],
+      "goal": [
+        -1,
+        -1,
+        -1
+      ],
+      "route_hex": "ffffffffffffffffffff",
+      "quantity": 1,
+      "appearance": 3,
+      "visitors": 1,
+      "summary_present": 1,
+      "cash": [
+        200000000,
+        100000000
+      ],
+      "dirty_flag": 0
+    },
+    "demand_profile": 41,
+    "demand_before": 1,
+    "demand_after": 0,
+    "stop": "0x80032814 before loop"
+  },
+  "original_entries": {
+    "bootstrap_loader_metrics": 3,
+    "changed_schedule_metrics": 1,
+    "demand": 1,
+    "main_store_preparation": 1,
+    "post_spawn": 3,
+    "normal_admission": 1,
+    "total": 10
+  },
+  "gameplay_callee_replacements": 0,
+  "resource_loader_replacements": 1,
+  "full_operating_updates": 0,
+  "limits": [
+    "Post-spawn calls deliberately isolate one corrupted record from ordinary admissions and staff updates.",
+    "No natural elapsed days or actual festival presentation.",
+    "No sale/completed checkout/full lifecycle or permanent freeze claim.",
+    "Profile0 and appearance0 are stale empty-record fields, not new actual customer profile144."
+  ]
+}

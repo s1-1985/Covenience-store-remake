@@ -1,0 +1,13 @@
+{
+  "evidence": "README.md",
+  "scope": "Three bounded downstream connections from the real demand alias to an initially empty record; not normal festival reachability.",
+  "initialization_contract": [
+    "A valid ordinary admission initializes quantity, appearance, profile, patience, coordinates, destination and route and debits matching demand/counters.",
+    "An isolated state increment does not establish a complete ordinary admission; do not silently fill every untouched field by assuming normal creation.",
+    "Entry sets wanted, deadline, wallet and clears cart, but does not repair missing quantity or zero destination/route."
+  ],
+  "bounds": "Profile144 demand address is outside the144-row count array and aliases customer state; it is not proof of a real new archetype144. Do not add an invented normal customer master from adjacent text.",
+  "occupancy": "Original observed position commit can produce occupancy with quantity0. No visual rendering or final sale outcome established.",
+  "implementation_status": "analysis_only; no app/APK changes",
+  "runtime": "Native algorithms/data without PS executable, BIOS or emulator dependence."
+}
