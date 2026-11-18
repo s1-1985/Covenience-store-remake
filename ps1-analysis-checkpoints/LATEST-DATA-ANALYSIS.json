@@ -1,13 +1,13 @@
 {
   "date_jst": "2026-11-18",
-  "work_kind": "festival_save_load_title_play_order",
-  "report": "analysis/20261118-festival-load-order/README.md",
-  "previous_report": "analysis/20261118-zero-quantity-service-exit/README.md",
-  "new_result": "Festival flag serialized/restored then native titlemetrics/demand tail createsfirststate1 fromcleanpayload; playprologue clearpreservesactor mutation andsetsrebuild. Originalnotice contributesoneRNGdraw evenwithstores/queuepreserved.",
-  "known_before": "Savefield map,title/play control andnotification formulas alreadyinr2; fourconditional order/provenanceconnections added, no newgenericformats/formulas.",
-  "original_cpu_calls": 9,
+  "work_kind": "title_versus_ingame_load_connections",
+  "report": "analysis/20261118-title-ingame-load-difference/README.md",
+  "previous_report": "analysis/20261118-festival-load-order/README.md",
+  "new_result": "Samepayload: title tail preservesfestival1 andcreatesaliasstate1; ingameacceptedtail clearsflagbefore demand andkeepsstate0. Noticeactivebytes anddisplayglobals clearedonlyingametail. Nativebranchgatesreset/decode/rebuild ondialogresult1.",
+  "known_before": "Genericcard/save/menu rules andprior titlefestivalconnectionknown; newentrypoint comparison andacceptance-scopedcomposition.",
+  "original_cpu_calls": 11,
   "original_operating_updates": 0,
-  "verification": "Nativeencode/decode checksum-valid payload, selectedtitle/play blocks andone notification entry; controlledschedule/flag/seed, nativecalendarfromclock44640. Fullcard/UI/graphics/firstmain excluded.",
+  "verification": "Oneoriginalencodedpayload,2decodes and3selectedloadblocks; native50queuewrites verified. Acceptancebranch staticonly. Card/UI/graphics/BGM andfirstresumedmain excluded.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
@@ -15,6 +15,6 @@
   "remaining_ledger": "ANALYSIS-REMAINING.json",
   "new_mechanics_established": 0,
   "open_issues_resolved_this_turn": 0,
-  "new_conditional_connections": 4,
+  "new_conditional_connections": 3,
   "apk_updated": false
 }

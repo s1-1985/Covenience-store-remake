@@ -1,0 +1,519 @@
+{
+  "source": {
+    "festival": 1,
+    "customer_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+    "active_queue_slots": [
+      1
+    ],
+    "notice_active": 0,
+    "notice_timer": 0,
+    "notice_index": 0,
+    "calendar": [
+      1,
+      8,
+      4,
+      0,
+      0
+    ],
+    "rng": "0x2"
+  },
+  "payload_sha256": "9b0ce979cf340535f5d77f6409dd0c11504a1674b0dc4f094a25745584b85877",
+  "payload_size": 104364,
+  "same_payload_used_for_both_routes": true,
+  "cases": [
+    {
+      "route": "title",
+      "decoded": {
+        "festival": 1,
+        "customer_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+        "active_queue_slots": [
+          1
+        ],
+        "notice_active": 0,
+        "notice_timer": 0,
+        "notice_index": 0,
+        "calendar": [
+          1,
+          8,
+          4,
+          0,
+          0
+        ],
+        "rng": "0x2"
+      },
+      "after_reset": null,
+      "after": {
+        "festival": 1,
+        "customer_hex": "0100000000000000000000000000000000000000000000000000000000000000",
+        "active_queue_slots": [
+          1
+        ],
+        "notice_active": 0,
+        "notice_timer": 0,
+        "notice_index": 0,
+        "calendar": [
+          1,
+          8,
+          4,
+          0,
+          0
+        ],
+        "rng": "0x3f17399b"
+      },
+      "queue_active_byte_writes": [],
+      "customer_alias_writes": [
+        {
+          "pc": "0x80026868",
+          "size": 2,
+          "value": 1
+        }
+      ],
+      "festival_writes": [],
+      "notice_slot1_before": "01000100ff4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000001d00000000000000000000000000000000000000",
+      "notice_slot1_after": "01000100ff4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000001d00000000000000000000000000000000000000"
+    },
+    {
+      "route": "ingame_accepted",
+      "decoded": {
+        "festival": 1,
+        "customer_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+        "active_queue_slots": [
+          1
+        ],
+        "notice_active": 0,
+        "notice_timer": 0,
+        "notice_index": 0,
+        "calendar": [
+          1,
+          8,
+          4,
+          0,
+          0
+        ],
+        "rng": "0x2"
+      },
+      "after_reset": {
+        "festival": 0,
+        "customer_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+        "active_queue_slots": [],
+        "notice_active": 0,
+        "notice_timer": 0,
+        "notice_index": 0,
+        "calendar": [
+          1,
+          8,
+          4,
+          0,
+          0
+        ],
+        "rng": "0x2"
+      },
+      "after": {
+        "festival": 0,
+        "customer_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+        "active_queue_slots": [],
+        "notice_active": 0,
+        "notice_timer": 0,
+        "notice_index": 0,
+        "calendar": [
+          1,
+          8,
+          4,
+          0,
+          0
+        ],
+        "rng": "0x60550afd"
+      },
+      "queue_active_byte_writes": [
+        {
+          "pc": "0x8006251c",
+          "slot": 0,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 1,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 2,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 3,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 4,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 5,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 6,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 7,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 8,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 9,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 10,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 11,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 12,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 13,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 14,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 15,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 16,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 17,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 18,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 19,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 20,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 21,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 22,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 23,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 24,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 25,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 26,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 27,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 28,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 29,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 30,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 31,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 32,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 33,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 34,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 35,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 36,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 37,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 38,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 39,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 40,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 41,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 42,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 43,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 44,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 45,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 46,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 47,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 48,
+          "size": 1,
+          "value": 0
+        },
+        {
+          "pc": "0x8006251c",
+          "slot": 49,
+          "size": 1,
+          "value": 0
+        }
+      ],
+      "customer_alias_writes": [],
+      "festival_writes": [
+        {
+          "pc": "0x80062560",
+          "size": 4,
+          "value": 0
+        }
+      ],
+      "notice_slot1_before": "01000100ff4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000001d00000000000000000000000000000000000000",
+      "notice_slot1_after": "00000100ff4000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002000000000000001d00000000000000000000000000000000000000"
+    }
+  ],
+  "parent_acceptance_gate": {
+    "method": "Static verified native instructions; dialog UI and non1 branch not executed",
+    "decision_pc": "0x800624b8",
+    "word": "0x14430042",
+    "condition": "if dialog_return !=1 branch to625C4",
+    "non1_target": "0x800625c4",
+    "load_block": "0x800624c0..0x800625c4",
+    "common_tail": "0x800625c4..0x800626bc",
+    "direct_jal_calls": [
+      {
+        "pc": "0x80062494",
+        "target": "0x8006b81c"
+      },
+      {
+        "pc": "0x8006249c",
+        "target": "0x8004eeb8"
+      },
+      {
+        "pc": "0x800624a8",
+        "target": "0x80065000"
+      },
+      {
+        "pc": "0x800624c0",
+        "target": "0x8006bc40"
+      },
+      {
+        "pc": "0x800624c8",
+        "target": "0x8005c61c"
+      },
+      {
+        "pc": "0x80062590",
+        "target": "0x80062a4c"
+      },
+      {
+        "pc": "0x800625a4",
+        "target": "0x80023c20"
+      },
+      {
+        "pc": "0x800625ac",
+        "target": "0x8002619c"
+      },
+      {
+        "pc": "0x800625b4",
+        "target": "0x8006dbf0"
+      },
+      {
+        "pc": "0x800625bc",
+        "target": "0x80066234"
+      },
+      {
+        "pc": "0x80062688",
+        "target": "0x80065100"
+      },
+      {
+        "pc": "0x80062690",
+        "target": "0x80065974"
+      }
+    ]
+  },
+  "original_entries": {
+    "bootstrap_town_metrics": 3,
+    "changed_clock_metrics": 1,
+    "notice_reservation": 1,
+    "encoding": 1,
+    "decodes": 2,
+    "title_tail": 1,
+    "ingame_blocks": 2,
+    "total": 11
+  },
+  "whole_operating_updates": 0,
+  "gameplay_callee_replacements": 0,
+  "resource_loader_replacements": 1,
+  "limits": [
+    "Controlled schedules0,flag1,clock44640,seed2,clean customer and pending notice; not normal saves created throughcardUI.",
+    "Title graphics/prereconstruction and ingame graphics/BGM omitted by entering selected original blocks, not by patching callee returns.",
+    "No whole load dialog, true card I/O, first resumed main or natural festival replay.",
+    "Non1 paths include other dialog outcomes; no claim all such outcomes are cancellation or no state changes."
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "evidence": "README.md",
+  "scope": "Same checksum-valid diagnostic payload, selected tails of two load entrypoints. Not wholecard/graphics/BGM paths.",
+  "entrypoint_order": {
+    "title": [
+      "restore flag/notices",
+      "metrics anddemand",
+      "laterplay entry clearsfestivalflag, aspreviousreport"
+    ],
+    "ingame_result1": [
+      "restore",
+      "clear50notice activebytes andtimer/state/index",
+      "clearfestivalflag",
+      "restoreBGM(outsideexecutedblocks)",
+      "setrebuild,metrics,demand"
+    ]
+  },
+  "outcomes": "Withstage4/month8/controlledschedule0 flag1 andemptyfirstcustomer, titlealiasesstate0to1 whileingameclearsflagbefore demand andleavesstate0. Do notgeneralize torepairingalreadycorruptsaves.",
+  "notice_cleanup": "Do not equate savednotification bytes with pendingnotifications afteringameload: activebytes cleared,other159bytes preserved.",
+  "result_gate": "Apply decoding/reset/rebuild onlytooriginaldialogreturn1 branch. Non1outcomes are notall asserted cancellations; commonsetting/audio tail still exists.",
+  "runtime": "Native algorithms/data; boundscheck demandprofiles0..143 instead of copying PS out-of-range writes. No EXE/BIOS/emulator runtime dependency.",
+  "integration_status": "analysis_only_not_APK"
+}
