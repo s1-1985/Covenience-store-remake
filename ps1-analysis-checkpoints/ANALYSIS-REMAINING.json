@@ -75,15 +75,16 @@
       "status": "open",
       "evidence": "analysis/20261115-town-project-data/project-rules.json",
       "resolution": null,
-      "latest_evidence": "analysis/20261117-project-initialization-sound-data/README.md",
+      "latest_evidence": "analysis/20261118-project-sound-event-contexts/README.md",
       "established": [
         "Direct completion call at80023498 follows23C20,3EF44,275F8.",
         "Completion fp+1C, metric fp+44, queue fp+34 and preceding fp+3C alias mainSP-0x24.",
         "Metric writes last active store height; initial4maps produce20 at this writer. No unconditional actual sound claim.",
         "New-map1A0B8 clears all32 project bytes then sets selection=-1; +30 starts0. Original18 start-record blocks preserve0; native save/load copies all32 bytes.",
-        "Original caller2346C..234A0 across4 initial maps x18 injected due projects: last alias writer23F30 height20 survives to completion; original notification receives29. No gameplay callee replacements; not a natural UI/waiting playthrough."
+        "Original caller2346C..234A0 across4 initial maps x18 injected due projects: last alias writer23F30 height20 survives to completion; original notification receives29. No gameplay callee replacements; not a natural UI/waiting playthrough.",
+        "Five bounded original caller contexts connect changed active-store height24 and annual notification consumption to completion. Annual writer3F930 survives predecessor275F8 to292B4 with values0/-1/100. Diagnostic threshold21 or negative annual sales can yield sound34; ordinary threshold0 andnonnegative tested sales yield29. Active annual display doesnot stop completion reservation inthese cases. Notnaturalstate/reachability proof."
       ],
-      "remaining_question": "Effective last writer through other annual/events/changed-store states and provenance of imported saved record+30 remain unresolved; do not universalize initial-fixture sound29."
+      "remaining_question": "Other event/predecessor/store contexts, natural provenance of imported record+30 and reachability of diagnostic values remain unresolved. One-store annual zero/positive/negative cases are now boundedly established, not every annual/global path."
     },
     {
       "id": "R06",

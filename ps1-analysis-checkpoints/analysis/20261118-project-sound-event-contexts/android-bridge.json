@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "evidence": "README.md",
+  "scope": "Five diagnostic caller-prefix contexts, not an exhaustive replacement for all uninitialized-stack behavior.",
+  "known_comparison": "signed32(context_value) < signed16(project_record_at_30) ? 34 : 29",
+  "context_transitions": [
+    "metrics:last active store height",
+    "annual notice mode3:reset context to0, then aggregate own active store previous annual sales as original signed32 algorithm",
+    "in these inputs, predecessor275F8 and completion children preserve the value until292B4"
+  ],
+  "events": "An annual notice can become active and completion can still enqueue a distinct notice in the same caller prefix; queued sound is not immediate playback.",
+  "numeric_discipline": "Keep uint32 arithmetic / signed32 interpretation, signed16 threshold, and the original positive-overflow saturation at3F910; the simple one-own-store cases do not exercise multi-store saturation.",
+  "opaque_record": "Preserve +30 from imported32-byte record. Threshold21 is diagnostic, not discovered ordinary data.",
+  "runtime": "Port algorithms and explicit context values to native Android; no EXE/BIOS/CPU emulator runtime dependence.",
+  "integration_status": "analysis_only_not_in_APK"
+}

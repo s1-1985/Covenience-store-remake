@@ -1,0 +1,408 @@
+{
+  "cases": [
+    {
+      "input": {
+        "id": "changed_last_active_store",
+        "annual": false,
+        "threshold": 21,
+        "previous_sales": 0,
+        "expected_alias": 24,
+        "expected_sound": 29
+      },
+      "queued_after": [
+        {
+          "slot": 1,
+          "kind": 2,
+          "event": 0,
+          "sound": 29,
+          "mode": 1
+        }
+      ],
+      "queue_slot": null,
+      "alias_writes": [
+        {
+          "pc": "0x80023f30",
+          "size": 4,
+          "value": 24
+        }
+      ],
+      "caller_checkpoints": [
+        {
+          "pc": "0x80023474",
+          "alias": 24,
+          "notice_active": 0
+        },
+        {
+          "pc": "0x80023490",
+          "alias": 24,
+          "notice_active": 0
+        },
+        {
+          "pc": "0x80023498",
+          "alias": 24,
+          "notice_active": 0
+        },
+        {
+          "pc": "0x800292b4",
+          "alias": 24,
+          "notice_active": 0
+        },
+        {
+          "pc": "0x800292ec",
+          "alias": 24,
+          "notice_active": 0
+        }
+      ],
+      "completion_notification": {
+        "kind": 2,
+        "event": 0,
+        "sound": 29,
+        "mode": 1
+      },
+      "project_before": "000000000a0000000a0000000b0000000b000000010000000000000000001500",
+      "project_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000001500",
+      "annual_notice_consumed": false,
+      "annual_notice_active": 0,
+      "evaluation_annual_sales": 0
+    },
+    {
+      "input": {
+        "id": "annual_zero_same_threshold",
+        "annual": true,
+        "threshold": 21,
+        "previous_sales": 0,
+        "expected_alias": 0,
+        "expected_sound": 34
+      },
+      "queued_after": [
+        {
+          "slot": 1,
+          "kind": 3,
+          "event": 4,
+          "sound": 30,
+          "mode": 1
+        },
+        {
+          "slot": 2,
+          "kind": 2,
+          "event": 0,
+          "sound": 34,
+          "mode": 1
+        }
+      ],
+      "queue_slot": 1,
+      "alias_writes": [
+        {
+          "pc": "0x80023f30",
+          "size": 4,
+          "value": 24
+        },
+        {
+          "pc": "0x8003f80c",
+          "size": 4,
+          "value": 0
+        },
+        {
+          "pc": "0x8003f930",
+          "size": 4,
+          "value": 0
+        }
+      ],
+      "caller_checkpoints": [
+        {
+          "pc": "0x80023474",
+          "alias": 24,
+          "notice_active": 0
+        },
+        {
+          "pc": "0x80023490",
+          "alias": 0,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x80023498",
+          "alias": 0,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x800292b4",
+          "alias": 0,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x800292ec",
+          "alias": 0,
+          "notice_active": 1
+        }
+      ],
+      "completion_notification": {
+        "kind": 2,
+        "event": 0,
+        "sound": 34,
+        "mode": 1
+      },
+      "project_before": "000000000a0000000a0000000b0000000b000000010000000000000000001500",
+      "project_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000001500",
+      "annual_notice_consumed": false,
+      "annual_notice_active": 1,
+      "evaluation_annual_sales": 0
+    },
+    {
+      "input": {
+        "id": "annual_zero_default_threshold",
+        "annual": true,
+        "threshold": 0,
+        "previous_sales": 0,
+        "expected_alias": 0,
+        "expected_sound": 29
+      },
+      "queued_after": [
+        {
+          "slot": 1,
+          "kind": 3,
+          "event": 4,
+          "sound": 30,
+          "mode": 1
+        },
+        {
+          "slot": 2,
+          "kind": 2,
+          "event": 0,
+          "sound": 29,
+          "mode": 1
+        }
+      ],
+      "queue_slot": 1,
+      "alias_writes": [
+        {
+          "pc": "0x80023f30",
+          "size": 4,
+          "value": 24
+        },
+        {
+          "pc": "0x8003f80c",
+          "size": 4,
+          "value": 0
+        },
+        {
+          "pc": "0x8003f930",
+          "size": 4,
+          "value": 0
+        }
+      ],
+      "caller_checkpoints": [
+        {
+          "pc": "0x80023474",
+          "alias": 24,
+          "notice_active": 0
+        },
+        {
+          "pc": "0x80023490",
+          "alias": 0,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x80023498",
+          "alias": 0,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x800292b4",
+          "alias": 0,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x800292ec",
+          "alias": 0,
+          "notice_active": 1
+        }
+      ],
+      "completion_notification": {
+        "kind": 2,
+        "event": 0,
+        "sound": 29,
+        "mode": 1
+      },
+      "project_before": "000000000a0000000a0000000b0000000b000000010000000000000000000000",
+      "project_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+      "annual_notice_consumed": false,
+      "annual_notice_active": 1,
+      "evaluation_annual_sales": 0
+    },
+    {
+      "input": {
+        "id": "annual_negative_diagnostic",
+        "annual": true,
+        "threshold": 0,
+        "previous_sales": -1,
+        "expected_alias": -1,
+        "expected_sound": 34
+      },
+      "queued_after": [
+        {
+          "slot": 1,
+          "kind": 3,
+          "event": 4,
+          "sound": 30,
+          "mode": 1
+        },
+        {
+          "slot": 2,
+          "kind": 2,
+          "event": 0,
+          "sound": 34,
+          "mode": 1
+        }
+      ],
+      "queue_slot": 1,
+      "alias_writes": [
+        {
+          "pc": "0x80023f30",
+          "size": 4,
+          "value": 24
+        },
+        {
+          "pc": "0x8003f80c",
+          "size": 4,
+          "value": 0
+        },
+        {
+          "pc": "0x8003f930",
+          "size": 4,
+          "value": 4294967295
+        }
+      ],
+      "caller_checkpoints": [
+        {
+          "pc": "0x80023474",
+          "alias": 24,
+          "notice_active": 0
+        },
+        {
+          "pc": "0x80023490",
+          "alias": -1,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x80023498",
+          "alias": -1,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x800292b4",
+          "alias": -1,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x800292ec",
+          "alias": -1,
+          "notice_active": 1
+        }
+      ],
+      "completion_notification": {
+        "kind": 2,
+        "event": 0,
+        "sound": 34,
+        "mode": 1
+      },
+      "project_before": "000000000a0000000a0000000b0000000b000000010000000000000000000000",
+      "project_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+      "annual_notice_consumed": false,
+      "annual_notice_active": 1,
+      "evaluation_annual_sales": -1
+    },
+    {
+      "input": {
+        "id": "annual_positive_default_threshold",
+        "annual": true,
+        "threshold": 0,
+        "previous_sales": 100,
+        "expected_alias": 100,
+        "expected_sound": 29
+      },
+      "queued_after": [
+        {
+          "slot": 1,
+          "kind": 3,
+          "event": 4,
+          "sound": 30,
+          "mode": 1
+        },
+        {
+          "slot": 2,
+          "kind": 2,
+          "event": 0,
+          "sound": 29,
+          "mode": 1
+        }
+      ],
+      "queue_slot": 1,
+      "alias_writes": [
+        {
+          "pc": "0x80023f30",
+          "size": 4,
+          "value": 24
+        },
+        {
+          "pc": "0x8003f80c",
+          "size": 4,
+          "value": 0
+        },
+        {
+          "pc": "0x8003f930",
+          "size": 4,
+          "value": 100
+        }
+      ],
+      "caller_checkpoints": [
+        {
+          "pc": "0x80023474",
+          "alias": 24,
+          "notice_active": 0
+        },
+        {
+          "pc": "0x80023490",
+          "alias": 100,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x80023498",
+          "alias": 100,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x800292b4",
+          "alias": 100,
+          "notice_active": 1
+        },
+        {
+          "pc": "0x800292ec",
+          "alias": 100,
+          "notice_active": 1
+        }
+      ],
+      "completion_notification": {
+        "kind": 2,
+        "event": 0,
+        "sound": 29,
+        "mode": 1
+      },
+      "project_before": "000000000a0000000a0000000b0000000b000000010000000000000000000000",
+      "project_after": "ffff00000a0000000a0000000b0000000b000000000000000000000000000000",
+      "annual_notice_consumed": false,
+      "annual_notice_active": 1,
+      "evaluation_annual_sales": 100
+    }
+  ],
+  "original_entries": {
+    "town_load": 1,
+    "reserved_cells": 4,
+    "annual_reservations": 4,
+    "caller_prefixes": 5,
+    "total": 14
+  },
+  "original_operating_updates": 0,
+  "gameplay_callee_replacements": 0,
+  "resource_loader_replacements": 1,
+  "scope": "Injected state and pending completion, single caller prefix; no annual rollover, UI withdrawal/acquisition or natural elapsed days. Threshold21 and negative sales are explicitly diagnostic, not ordinary values established by this experiment."
+}
