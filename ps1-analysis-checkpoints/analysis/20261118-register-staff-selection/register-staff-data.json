@@ -1,0 +1,703 @@
+{
+  "registers": [
+    {
+      "id": 37,
+      "name": "レジ",
+      "master_size": [
+        2,
+        1
+      ],
+      "cached_width": 2,
+      "additional_staff_block_at_active_count": 1
+    },
+    {
+      "id": 38,
+      "name": "レジ",
+      "master_size": [
+        2,
+        1
+      ],
+      "cached_width": 2,
+      "additional_staff_block_at_active_count": 1
+    },
+    {
+      "id": 39,
+      "name": "レジ",
+      "master_size": [
+        2,
+        1
+      ],
+      "cached_width": 2,
+      "additional_staff_block_at_active_count": 1
+    },
+    {
+      "id": 40,
+      "name": "レジ",
+      "master_size": [
+        3,
+        1
+      ],
+      "cached_width": 3,
+      "additional_staff_block_at_active_count": 2
+    },
+    {
+      "id": 41,
+      "name": "レジ",
+      "master_size": [
+        3,
+        1
+      ],
+      "cached_width": 3,
+      "additional_staff_block_at_active_count": 2
+    },
+    {
+      "id": 42,
+      "name": "レジ",
+      "master_size": [
+        3,
+        1
+      ],
+      "cached_width": 3,
+      "additional_staff_block_at_active_count": 2
+    }
+  ],
+  "profiles": [
+    {
+      "id": 0,
+      "name": "竹中小百合",
+      "customer_service": 14,
+      "cashier": 14,
+      "even_clock_passes_per50": [
+        7,
+        7,
+        7
+      ],
+      "odd_clock_passes_per50": [
+        7,
+        7,
+        7
+      ],
+      "existing_single_cashier_blocks_roll_values": 28,
+      "additional_cashier_allowed_roll_values": 72
+    },
+    {
+      "id": 1,
+      "name": "吉田有紀",
+      "customer_service": 11,
+      "cashier": 10,
+      "even_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "odd_clock_passes_per50": [
+        6,
+        6,
+        6
+      ],
+      "existing_single_cashier_blocks_roll_values": 20,
+      "additional_cashier_allowed_roll_values": 80
+    },
+    {
+      "id": 2,
+      "name": "小宮千明",
+      "customer_service": 13,
+      "cashier": 13,
+      "even_clock_passes_per50": [
+        6,
+        6,
+        6
+      ],
+      "odd_clock_passes_per50": [
+        7,
+        7,
+        7
+      ],
+      "existing_single_cashier_blocks_roll_values": 26,
+      "additional_cashier_allowed_roll_values": 74
+    },
+    {
+      "id": 3,
+      "name": "浜田裕子",
+      "customer_service": 10,
+      "cashier": 11,
+      "even_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "odd_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "existing_single_cashier_blocks_roll_values": 22,
+      "additional_cashier_allowed_roll_values": 78
+    },
+    {
+      "id": 4,
+      "name": "万田町子",
+      "customer_service": 17,
+      "cashier": 20,
+      "even_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "odd_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "existing_single_cashier_blocks_roll_values": 40,
+      "additional_cashier_allowed_roll_values": 60
+    },
+    {
+      "id": 5,
+      "name": "富永福子",
+      "customer_service": 19,
+      "cashier": 20,
+      "even_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "odd_clock_passes_per50": [
+        10,
+        10,
+        10
+      ],
+      "existing_single_cashier_blocks_roll_values": 40,
+      "additional_cashier_allowed_roll_values": 60
+    },
+    {
+      "id": 6,
+      "name": "忍田信子",
+      "customer_service": 18,
+      "cashier": 16,
+      "even_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "odd_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "existing_single_cashier_blocks_roll_values": 32,
+      "additional_cashier_allowed_roll_values": 68
+    },
+    {
+      "id": 7,
+      "name": "市川智恵子",
+      "customer_service": 16,
+      "cashier": 16,
+      "even_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "odd_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "existing_single_cashier_blocks_roll_values": 32,
+      "additional_cashier_allowed_roll_values": 68
+    },
+    {
+      "id": 8,
+      "name": "杉村真智子",
+      "customer_service": 15,
+      "cashier": 14,
+      "even_clock_passes_per50": [
+        7,
+        7,
+        7
+      ],
+      "odd_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "existing_single_cashier_blocks_roll_values": 28,
+      "additional_cashier_allowed_roll_values": 72
+    },
+    {
+      "id": 9,
+      "name": "田中幸子",
+      "customer_service": 19,
+      "cashier": 18,
+      "even_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "odd_clock_passes_per50": [
+        10,
+        10,
+        10
+      ],
+      "existing_single_cashier_blocks_roll_values": 36,
+      "additional_cashier_allowed_roll_values": 64
+    },
+    {
+      "id": 10,
+      "name": "花沢咲江",
+      "customer_service": 18,
+      "cashier": 19,
+      "even_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "odd_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "existing_single_cashier_blocks_roll_values": 38,
+      "additional_cashier_allowed_roll_values": 62
+    },
+    {
+      "id": 11,
+      "name": "里中涼子",
+      "customer_service": 9,
+      "cashier": 9,
+      "even_clock_passes_per50": [
+        4,
+        4,
+        4
+      ],
+      "odd_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "existing_single_cashier_blocks_roll_values": 18,
+      "additional_cashier_allowed_roll_values": 82
+    },
+    {
+      "id": 12,
+      "name": "山本信夫",
+      "customer_service": 13,
+      "cashier": 13,
+      "even_clock_passes_per50": [
+        6,
+        6,
+        6
+      ],
+      "odd_clock_passes_per50": [
+        7,
+        7,
+        7
+      ],
+      "existing_single_cashier_blocks_roll_values": 26,
+      "additional_cashier_allowed_roll_values": 74
+    },
+    {
+      "id": 13,
+      "name": "山下大介",
+      "customer_service": 8,
+      "cashier": 8,
+      "even_clock_passes_per50": [
+        4,
+        4,
+        4
+      ],
+      "odd_clock_passes_per50": [
+        4,
+        4,
+        4
+      ],
+      "existing_single_cashier_blocks_roll_values": 16,
+      "additional_cashier_allowed_roll_values": 84
+    },
+    {
+      "id": 14,
+      "name": "杉本三郎",
+      "customer_service": 15,
+      "cashier": 16,
+      "even_clock_passes_per50": [
+        7,
+        7,
+        7
+      ],
+      "odd_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "existing_single_cashier_blocks_roll_values": 32,
+      "additional_cashier_allowed_roll_values": 68
+    },
+    {
+      "id": 15,
+      "name": "雨中聖人",
+      "customer_service": 8,
+      "cashier": 13,
+      "even_clock_passes_per50": [
+        4,
+        4,
+        4
+      ],
+      "odd_clock_passes_per50": [
+        4,
+        4,
+        4
+      ],
+      "existing_single_cashier_blocks_roll_values": 26,
+      "additional_cashier_allowed_roll_values": 74
+    },
+    {
+      "id": 16,
+      "name": "秋本三四郎",
+      "customer_service": 10,
+      "cashier": 12,
+      "even_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "odd_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "existing_single_cashier_blocks_roll_values": 24,
+      "additional_cashier_allowed_roll_values": 76
+    },
+    {
+      "id": 17,
+      "name": "佐々木信雄",
+      "customer_service": 9,
+      "cashier": 9,
+      "even_clock_passes_per50": [
+        4,
+        4,
+        4
+      ],
+      "odd_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "existing_single_cashier_blocks_roll_values": 18,
+      "additional_cashier_allowed_roll_values": 82
+    },
+    {
+      "id": 18,
+      "name": "森山雪之丈",
+      "customer_service": 12,
+      "cashier": 13,
+      "even_clock_passes_per50": [
+        6,
+        6,
+        6
+      ],
+      "odd_clock_passes_per50": [
+        6,
+        6,
+        6
+      ],
+      "existing_single_cashier_blocks_roll_values": 26,
+      "additional_cashier_allowed_roll_values": 74
+    },
+    {
+      "id": 19,
+      "name": "西田年男",
+      "customer_service": 18,
+      "cashier": 18,
+      "even_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "odd_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "existing_single_cashier_blocks_roll_values": 36,
+      "additional_cashier_allowed_roll_values": 64
+    },
+    {
+      "id": 20,
+      "name": "南田洋次",
+      "customer_service": 17,
+      "cashier": 18,
+      "even_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "odd_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "existing_single_cashier_blocks_roll_values": 36,
+      "additional_cashier_allowed_roll_values": 64
+    },
+    {
+      "id": 21,
+      "name": "谷口明",
+      "customer_service": 11,
+      "cashier": 11,
+      "even_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "odd_clock_passes_per50": [
+        6,
+        6,
+        6
+      ],
+      "existing_single_cashier_blocks_roll_values": 22,
+      "additional_cashier_allowed_roll_values": 78
+    },
+    {
+      "id": 22,
+      "name": "長沢達也",
+      "customer_service": 15,
+      "cashier": 16,
+      "even_clock_passes_per50": [
+        7,
+        7,
+        7
+      ],
+      "odd_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "existing_single_cashier_blocks_roll_values": 32,
+      "additional_cashier_allowed_roll_values": 68
+    },
+    {
+      "id": 23,
+      "name": "今野京介",
+      "customer_service": 10,
+      "cashier": 10,
+      "even_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "odd_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "existing_single_cashier_blocks_roll_values": 20,
+      "additional_cashier_allowed_roll_values": 80
+    },
+    {
+      "id": 24,
+      "name": "丸山昭夫",
+      "customer_service": 10,
+      "cashier": 11,
+      "even_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "odd_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "existing_single_cashier_blocks_roll_values": 22,
+      "additional_cashier_allowed_roll_values": 78
+    },
+    {
+      "id": 25,
+      "name": "福本孝仁",
+      "customer_service": 13,
+      "cashier": 16,
+      "even_clock_passes_per50": [
+        6,
+        6,
+        6
+      ],
+      "odd_clock_passes_per50": [
+        7,
+        7,
+        7
+      ],
+      "existing_single_cashier_blocks_roll_values": 32,
+      "additional_cashier_allowed_roll_values": 68
+    },
+    {
+      "id": 26,
+      "name": "小田伸行",
+      "customer_service": 11,
+      "cashier": 12,
+      "even_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "odd_clock_passes_per50": [
+        6,
+        6,
+        6
+      ],
+      "existing_single_cashier_blocks_roll_values": 24,
+      "additional_cashier_allowed_roll_values": 76
+    },
+    {
+      "id": 27,
+      "name": "池上秀夫",
+      "customer_service": 11,
+      "cashier": 12,
+      "even_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "odd_clock_passes_per50": [
+        6,
+        6,
+        6
+      ],
+      "existing_single_cashier_blocks_roll_values": 24,
+      "additional_cashier_allowed_roll_values": 76
+    },
+    {
+      "id": 28,
+      "name": "金田哲也",
+      "customer_service": 16,
+      "cashier": 17,
+      "even_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "odd_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "existing_single_cashier_blocks_roll_values": 34,
+      "additional_cashier_allowed_roll_values": 66
+    },
+    {
+      "id": 29,
+      "name": "菅原文夫",
+      "customer_service": 17,
+      "cashier": 18,
+      "even_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "odd_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "existing_single_cashier_blocks_roll_values": 36,
+      "additional_cashier_allowed_roll_values": 64
+    },
+    {
+      "id": 30,
+      "name": "高橋大介",
+      "customer_service": 11,
+      "cashier": 11,
+      "even_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "odd_clock_passes_per50": [
+        6,
+        6,
+        6
+      ],
+      "existing_single_cashier_blocks_roll_values": 22,
+      "additional_cashier_allowed_roll_values": 78
+    },
+    {
+      "id": 31,
+      "name": "奥平康夫",
+      "customer_service": 18,
+      "cashier": 20,
+      "even_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "odd_clock_passes_per50": [
+        9,
+        9,
+        9
+      ],
+      "existing_single_cashier_blocks_roll_values": 40,
+      "additional_cashier_allowed_roll_values": 60
+    },
+    {
+      "id": 32,
+      "name": "中山光次",
+      "customer_service": 9,
+      "cashier": 8,
+      "even_clock_passes_per50": [
+        4,
+        4,
+        4
+      ],
+      "odd_clock_passes_per50": [
+        5,
+        5,
+        5
+      ],
+      "existing_single_cashier_blocks_roll_values": 16,
+      "additional_cashier_allowed_roll_values": 84
+    },
+    {
+      "id": 33,
+      "name": "的場丈二",
+      "customer_service": 8,
+      "cashier": 8,
+      "even_clock_passes_per50": [
+        4,
+        4,
+        4
+      ],
+      "odd_clock_passes_per50": [
+        4,
+        4,
+        4
+      ],
+      "existing_single_cashier_blocks_roll_values": 16,
+      "additional_cashier_allowed_roll_values": 84
+    },
+    {
+      "id": 34,
+      "name": "朝田宗司",
+      "customer_service": 16,
+      "cashier": 16,
+      "even_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "odd_clock_passes_per50": [
+        8,
+        8,
+        8
+      ],
+      "existing_single_cashier_blocks_roll_values": 32,
+      "additional_cashier_allowed_roll_values": 68
+    }
+  ],
+  "formulas": {
+    "checkout_time": "2*(uint32(clock)%100) >= 2*(100-signed8(staff+0x20))",
+    "equivalent_cleaning_time": "uint32(clock)%100 >= 100-signed8(staff+0x20)",
+    "rest_reselection": "(uint32(clock)>>1)%3 == staff_slot",
+    "staffing_gate": "if active<=0 accept without RNG; if active>=signed8(cached_width)-1 reject without RNG; otherwise draw roll1..100 and reject if roll<=2*sum(cashier skill of other state1 assigned staff)"
+  },
+  "scope": "Timing gate opportunities and staffing pre-gate, not task success/fps or sales probabilities. Cashier/clean timing equality exists in prior independent model; newly checked source/formula and35 original profiles."
+}

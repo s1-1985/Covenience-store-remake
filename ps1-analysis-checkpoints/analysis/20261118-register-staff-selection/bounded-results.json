@@ -1,0 +1,77 @@
+{
+  "layout_cases": [
+    {
+      "anchors": [
+        {
+          "xy": [
+            2,
+            2
+          ],
+          "fixture": 40
+        },
+        {
+          "xy": [
+            8,
+            4
+          ],
+          "fixture": 37
+        }
+      ],
+      "cached_checkout_xy": [
+        8,
+        4
+      ],
+      "cached_checkout_width": 2,
+      "active_cashiers_supplied": 1,
+      "other_cashier_id": 0,
+      "other_cashier_skill": 14,
+      "gate_result": 1,
+      "rng_before": "0x12345678",
+      "rng_after": "0x12345678"
+    },
+    {
+      "anchors": [
+        {
+          "xy": [
+            2,
+            2
+          ],
+          "fixture": 37
+        },
+        {
+          "xy": [
+            8,
+            4
+          ],
+          "fixture": 40
+        }
+      ],
+      "cached_checkout_xy": [
+        8,
+        4
+      ],
+      "cached_checkout_width": 3,
+      "active_cashiers_supplied": 1,
+      "other_cashier_id": 0,
+      "other_cashier_skill": 14,
+      "gate_result": 0,
+      "rng_before": "0x12345678",
+      "rng_after": "0xb719151"
+    }
+  ],
+  "first_cashier": {
+    "gate_result": 0,
+    "rng_preserved": true
+  },
+  "entries": [
+    "0x80023c20",
+    "0x80037f78",
+    "0x80023c20",
+    "0x80037f78",
+    "0x80037f78"
+  ],
+  "original_cpu_calls": 5,
+  "gameplay_callee_replacements": 0,
+  "original_operating_updates": 0,
+  "scope": "Artificial20x20 single store with two original register anchors; no UI-validity/footprint/route/service test. Staff states/active count diagnostic. Register count is not summed by this cached width gate."
+}

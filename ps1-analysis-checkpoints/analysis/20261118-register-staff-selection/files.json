@@ -1,0 +1,34 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5708,
+      "sha256": "22c18e218174a5b334aaf9b9cad3d44c8b70669c9281dd2b55bcfd3ebe861b50"
+    },
+    {
+      "path": "analyze-register-selection.py",
+      "bytes": 7077,
+      "sha256": "26c3c2d33552cc49311923eb441a126b026c53732aa595b02d96fa913c061d57"
+    },
+    {
+      "path": "bounded-results.json",
+      "bytes": 1592,
+      "sha256": "ba892e1c19ef5728c5660eba5d1ea6464287f27b39e89762116e54ba8554a18c"
+    },
+    {
+      "path": "register-staff-data.json",
+      "bytes": 14686,
+      "sha256": "ffaa6aa3ef5e53e93e6daa1ecbba91beb6925dc9fa0b2c0498d57d8bcc496ab5"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 3998,
+      "sha256": "d6111777a33c0cb7a61798c8b7b38de02cc9deb5ca6843edb06965848378a8ef"
+    },
+    {
+      "path": "staff-selection.csv",
+      "bytes": 1158,
+      "sha256": "4d69da973e979b52fe9b873e4348cf9460f5b26fe36c9e94e8b084a6fc1a8cff"
+    }
+  ]
+}
