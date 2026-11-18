@@ -1,0 +1,53 @@
+{
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "snapshot": "20261113-new-rival-operation/encoded/evidence/source/opened-snapshots-20261028/TOWN0001-ci-main-34-single.ram.zlib",
+  "snapshot_sha256": "9051a99a20b4d38121c8115e66b389b569a9eda27fb6ebc9d4172349ed7ed3e1",
+  "verified_ranges": [
+    {
+      "start": "0x80052270",
+      "end_exclusive": "0x80052410",
+      "sha256": "59467a4d6b54bd88904cbf7c1f7bb93383c2cb0a3509a46240ebb5af7ce67f4f"
+    },
+    {
+      "start": "0x80052a88",
+      "end_exclusive": "0x80052d00",
+      "sha256": "07b8d3d95b8e3f8c59ad8c78c3753b89db1639b44d28237d0f8afc1c6a950b9a"
+    },
+    {
+      "start": "0x800645ac",
+      "end_exclusive": "0x800645d8",
+      "sha256": "8ddefb86b307161ca205d6f5dae9d32b4f432e6231a37046733e4088870ff0e7"
+    },
+    {
+      "start": "0x800234a0",
+      "end_exclusive": "0x800234e8",
+      "sha256": "98ddff55ff14dd745d6d22a8aae924e04c901240d0e224e42fd3cf5275317b72"
+    },
+    {
+      "start": "0x80029444",
+      "end_exclusive": "0x8002a8e0",
+      "sha256": "7236485a496d98a0d43785cd9e6985c3f31f79aee14da74efac13e726292f570"
+    },
+    {
+      "start": "0x8002a8e0",
+      "end_exclusive": "0x8002bd54",
+      "sha256": "e378c235e8e03ad454d18f362d666c81223eecc6697a96fa64ef9161955dffa1"
+    },
+    {
+      "start": "0x8002bd54",
+      "end_exclusive": "0x8002e13c",
+      "sha256": "ea5c73bd832ccdbcd90d914c94774df6b551d8f2ca89c46a7f5dc496e85fd0ed"
+    }
+  ],
+  "known_before": [
+    "Festival date/switch and main caller order",
+    "645AC generic voice-state predicate",
+    "Conditional out-of-catalog firstcustomer alias"
+  ],
+  "new_connections": [
+    "Festival-specific display timing/exit branch",
+    "Original post-presentation finance preserves alias operands in saved RAM",
+    "Stage4 bypasses actual rival/town update bodies"
+  ]
+}

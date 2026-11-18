@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4944,
+      "sha256": "a85f915cd8e44d9e77213a676d236cd920c188a6928c6ba80217daca3410aaaa"
+    },
+    {
+      "path": "analyze-presentation-return.py",
+      "bytes": 6186,
+      "sha256": "02882e093fbc62799b8c553cc37e722d2c768bc17a0181d27c397acf19e550cf"
+    },
+    {
+      "path": "results.json",
+      "bytes": 5244,
+      "sha256": "851d74c9eff2e36d02691336e3c51fdb376bef9f54b4d0c28cfd01b86c28aa5e"
+    },
+    {
+      "path": "source-provenance.json",
+      "bytes": 1942,
+      "sha256": "17784d68d7bb93bfc07de9b7701336f5371b9115537570ca288d544526bd40ea"
+    },
+    {
+      "path": "source-words.json",
+      "bytes": 4745,
+      "sha256": "c4aeb616e9f7dc13402acca7a0d6f21e3575266c5b2756ce10f98cb48fa0f711"
+    }
+  ]
+}

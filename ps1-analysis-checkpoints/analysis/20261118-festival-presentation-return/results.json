@@ -1,0 +1,239 @@
+{
+  "presentation_control": {
+    "method": "Static original branch reading, not whole presentation execution",
+    "dispatch_kind": 2,
+    "entry": "0x80052A88",
+    "sound_request": 58,
+    "minimum_draw_wait_calls": 120,
+    "wait_callee": "0x80018A5C",
+    "termination_predicate": "0x800645AC returns int(word800B8CB4==0 and word800B8CAC!=0); existing voice-state rule reused",
+    "when_predicate_zero": "return via0x80052CE8",
+    "when_predicate_one": "draw once then if word800CD7E0 &0x60 stop voice at64550 and play65000; otherwise clear input and repeat",
+    "direct_nonstack_store": "Only word800CD7E0 input clear at52C7C/52CDC in52A88..52D00. This does not establish no writes in callees.",
+    "simulation_calls_in_direct_body": 0
+  },
+  "post_presentation": [
+    {
+      "entry": "0x80029444",
+      "stop": "0x80001000",
+      "first_customer_32bytes_preserved": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "floor_2688bytes_preserved": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "all_store_pool_bytes_preserved": false,
+      "summary_1720bytes_preserved": true,
+      "festival_switch": 1,
+      "tick": 44640,
+      "rng_before": -323567617,
+      "rng_after": -323567617,
+      "company_cash_before": [
+        99109050,
+        97859698
+      ],
+      "company_cash_after": [
+        99065578,
+        97799922
+      ],
+      "changed_store_byte_offsets": {
+        "0": [
+          3384,
+          3385,
+          3388,
+          3389,
+          3400,
+          3401,
+          3480,
+          3481,
+          3496,
+          3497,
+          3500,
+          3501,
+          3516,
+          3517,
+          3520,
+          3521,
+          3536,
+          3537,
+          3540,
+          3541
+        ],
+        "1": [
+          3384,
+          3385,
+          3388,
+          3389,
+          3396,
+          3397,
+          3476,
+          3477,
+          3496,
+          3497,
+          3498,
+          3500,
+          3501,
+          3502,
+          3516,
+          3517,
+          3520,
+          3521,
+          3522,
+          3536,
+          3537,
+          3540,
+          3541,
+          3542
+        ],
+        "2": [
+          3384,
+          3385,
+          3388,
+          3389,
+          3396,
+          3397,
+          3398,
+          3476,
+          3477,
+          3496,
+          3497,
+          3500,
+          3501,
+          3502,
+          3516,
+          3517,
+          3520,
+          3521,
+          3536,
+          3537,
+          3540,
+          3541,
+          3542
+        ],
+        "3": [
+          3384,
+          3385,
+          3388,
+          3389,
+          3396,
+          3397,
+          3476,
+          3477,
+          3496,
+          3497,
+          3500,
+          3501,
+          3502,
+          3504,
+          3505,
+          3508,
+          3509,
+          3516,
+          3517,
+          3520,
+          3521,
+          3522
+        ]
+      },
+      "unique_nested_calls": [
+        "0x8001d980",
+        "0x8001d8ac",
+        "0x8001dbe4",
+        "0x8007e57c",
+        "0x8007e61c"
+      ]
+    },
+    {
+      "entry": "0x8002a8e0",
+      "stop": "0x80001000",
+      "first_customer_32bytes_preserved": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "floor_2688bytes_preserved": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "all_store_pool_bytes_preserved": true,
+      "summary_1720bytes_preserved": true,
+      "festival_switch": 1,
+      "tick": 44640,
+      "rng_before": -323567617,
+      "rng_after": -323567617,
+      "company_cash_before": [
+        99065578,
+        97799922
+      ],
+      "company_cash_after": [
+        99065578,
+        97799922
+      ],
+      "changed_store_byte_offsets": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": []
+      },
+      "unique_nested_calls": []
+    },
+    {
+      "entry": "0x8002bd54",
+      "stop": "0x80001000",
+      "first_customer_32bytes_preserved": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "floor_2688bytes_preserved": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "all_store_pool_bytes_preserved": true,
+      "summary_1720bytes_preserved": true,
+      "festival_switch": 1,
+      "tick": 44640,
+      "rng_before": -323567617,
+      "rng_after": -323567617,
+      "company_cash_before": [
+        99065578,
+        97799922
+      ],
+      "company_cash_after": [
+        99065578,
+        97799922
+      ],
+      "changed_store_byte_offsets": {
+        "0": [],
+        "1": [],
+        "2": [],
+        "3": []
+      },
+      "unique_nested_calls": []
+    }
+  ],
+  "main_order": [
+    "29334 finance (sets festival1 after presentation)",
+    "2A8E0 rival",
+    "2BD54 town",
+    "hour/minute0 gate",
+    "2619C demand"
+  ],
+  "rival_town_gate": "Both require stage1/hour0/minute0; festival stage4 skips bodies",
+  "original_bounded_entries": 3,
+  "gameplay_callee_replacements": 0,
+  "whole_operating_updates": 0,
+  "scope": "Existing4storeRAM with diagnostic calendar; enter after presentation. No presentation/ordinaryUI/acquisition setup/natural festival/demand replay. First slots in saved input are not synthetic state6."
+}
