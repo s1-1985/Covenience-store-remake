@@ -1,0 +1,124 @@
+{
+  "source": "User-provided PS emulator screenshots in this conversation, 2026-11-18 JST",
+  "count": 26,
+  "game_region_in_source": [
+    329,
+    0,
+    944,
+    708
+  ],
+  "native_coordinates": [
+    320,
+    240
+  ],
+  "excluded": [
+    "emulator controller rails",
+    "Android volume and screenshot overlays"
+  ],
+  "images": [
+    {
+      "file": "01-1000281733.jpg",
+      "sha256": "2698845c8688e085a7ec0a197dda833d2eafd1abeab92368783421e8e5458f48"
+    },
+    {
+      "file": "01-1000281757.jpg",
+      "sha256": "c78a84bbfb9194d4d661f1bd5584bcc13e9060c4d1a05cad6c3ce0f5cffc04a1"
+    },
+    {
+      "file": "01-1000281775.jpg",
+      "sha256": "e203b896569477af58d711b5d6038cc04d1a86475de2d25678af9cb2ce2ffd38"
+    },
+    {
+      "file": "02-1000281735.jpg",
+      "sha256": "e018e82584b91a8f89ac9ed71608e04116860bcb5798412a389cdf8455b7a757"
+    },
+    {
+      "file": "02-1000281755.jpg",
+      "sha256": "e5d0bf5c0d480525b6732ecdeda20b92baaed69ca6823f95a01b2593abf0454a"
+    },
+    {
+      "file": "02-1000281777.jpg",
+      "sha256": "88969391522060978a845c3a5e1b1f0ffef04d067d5347d3218f71a169cc6ea1"
+    },
+    {
+      "file": "03-1000281737.jpg",
+      "sha256": "c97f207934cf1383f236ddc39d5dfa8ecb035297c06efb95802081b3869dbf40"
+    },
+    {
+      "file": "03-1000281759.jpg",
+      "sha256": "c79c44f89f26198c2a991d261bbbb46ea89fddb77855c59fadeb0be874a74345"
+    },
+    {
+      "file": "03-1000281779.jpg",
+      "sha256": "8a6087cde0d570e323bb326eeaa060bbc630fec73777f376defac40cc95b5aed"
+    },
+    {
+      "file": "04-1000281739.jpg",
+      "sha256": "580df27685b82460be95a4aabde4a9fc3165beaade9691960a36c0a716bc1ad8"
+    },
+    {
+      "file": "04-1000281761.jpg",
+      "sha256": "fa47cc103f003c5fc985c7943770edabcd998d71fe0bb273bf59892c89adf154"
+    },
+    {
+      "file": "04-1000281781.jpg",
+      "sha256": "da8405f0044428da0ec31dd8094898e361e6450220ff714087ead1fb44e93f79"
+    },
+    {
+      "file": "05-1000281741.jpg",
+      "sha256": "50f4c3dfd199ca97fc39efbd95fe6e6133f261331d7c02c1060e8ef0dec18fb1"
+    },
+    {
+      "file": "05-1000281763.jpg",
+      "sha256": "fe680299000e71151d007756e9f3dadec3023515120c55760a6cbc5ad4bae9c9"
+    },
+    {
+      "file": "05-1000281783.jpg",
+      "sha256": "0c694cc7b58205bb6133d2e4d89440d0507dabeb8d8a33dd34ea9d4710439a89"
+    },
+    {
+      "file": "06-1000281743.jpg",
+      "sha256": "a2ca8934ccbe79b80ea81b71dc238881923c53da6eca9032ae59809010f6871d"
+    },
+    {
+      "file": "06-1000281765.jpg",
+      "sha256": "3bdb46437ac9eda43b2d57dbc640524d1d4b32924b01ed18adb64fa1d4fdc34f"
+    },
+    {
+      "file": "06-1000281785.jpg",
+      "sha256": "560ee76f4291515f0d8b9c7f2f4f4c3446a924272117f7f32a4dbae7f10845b7"
+    },
+    {
+      "file": "07-1000281745.jpg",
+      "sha256": "6ab0de4db58da94d39fbba6543fe1f96887f6deaa1dfe0cde804f676777ff29e"
+    },
+    {
+      "file": "07-1000281767.jpg",
+      "sha256": "6bc0a73556c5256ff0693ed656c2b9cd2fdc614d1fbba93865f52c1244dafe63"
+    },
+    {
+      "file": "08-1000281747.jpg",
+      "sha256": "dfbef1495192b8780e9ee3e2b0085233aa7ed4c7a3fff8c5df8d5569ccb34cd1"
+    },
+    {
+      "file": "08-1000281769.jpg",
+      "sha256": "7aa373461e04f43c804c6d69bd0311f6bf654cc05f993fd1f3ad70edc43dcd6f"
+    },
+    {
+      "file": "09-1000281749.jpg",
+      "sha256": "042b25b41198291f3c0086ef66b0d8a2207a669472ad69221457f6fb1e449582"
+    },
+    {
+      "file": "09-1000281771.jpg",
+      "sha256": "f21609b466b6f2be439a40cf5d27f866f5173d0237043225052174eabe769dc2"
+    },
+    {
+      "file": "10-1000281753.jpg",
+      "sha256": "52047ece1af2c0d869015dba1686343802af66822b6f9743b5e0db6563cdfbe3"
+    },
+    {
+      "file": "10-1000281773.jpg",
+      "sha256": "193be6d07b433c4de8789ef75c505cc48fe50e06f12a186eb87c1ae429a86493"
+    }
+  ]
+}

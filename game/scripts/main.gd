@@ -3,7 +3,7 @@ extends Node2D
 const VerticalSliceSimulationScript := preload("res://scripts/vertical_slice_simulation.gd")
 const SaveGameServiceScript := preload("res://scripts/save_game_service.gd")
 const GuideStartingStoreScript := preload("res://scripts/domain/guide_starting_store.gd")
-const PhoneUIScript := preload("res://scripts/phone_ui.gd")
+const PhoneUIScript := preload("res://scripts/ps1_ui.gd")
 
 var _android_panel: Control = null
 # Task #95: a new game starts on the town map with 「出店場所を選んで下さい」

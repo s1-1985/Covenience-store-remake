@@ -22,6 +22,9 @@ func setup(owner_main, owner_ui) -> void:
     _button("R1\n回転／拡大", Vector2(1136, 110), func(): _shoulder(1))
     _button("R2\n次の店", Vector2(1136, 190), func(): _store(1))
     _button("□\nコマンド", Vector2(16, 310), func():
+        if ui.has_method("handle_command"):
+            ui.handle_command()
+            return
         if main.selecting_site:
             return
         if ui.window.visible:
@@ -40,7 +43,9 @@ func setup(owner_main, owner_ui) -> void:
     _button("×\n取消", Vector2(1136, 390), _cancel)
     _button("SELECT\nシステム", Vector2(16, 620), func(): ui.toggle_window("system"))
     pause_label = _button("START\n停止／終了", Vector2(1136, 620), func():
-        if ui.window.visible:
+        if ui.has_method("handle_start"):
+            ui.handle_start()
+        elif ui.window.visible:
             ui.close_window()
         else:
             main._on_pause_pressed()
@@ -69,6 +74,8 @@ func _button(text: String, at: Vector2, action: Callable) -> Button:
     return button
 
 func _cancel() -> void:
+    if ui.has_method("handle_cancel") and ui.handle_cancel():
+        return
     ui.command_open = false
     if ui.window.visible:
         ui.close_window()
@@ -80,6 +87,8 @@ func _cancel() -> void:
     ui.refresh()
 
 func _accept() -> void:
+    if ui.has_method("handle_accept") and ui.handle_accept():
+        return
     if main.site_buy_button != null and main.site_buy_button.is_visible_in_tree() and not main.site_buy_button.disabled:
         main.site_buy_button.pressed.emit()
         return
@@ -91,6 +100,8 @@ func _accept() -> void:
         focused.pressed.emit()
 
 func _shoulder(direction: int) -> void:
+    if ui.has_method("handle_shoulder") and ui.handle_shoulder(direction):
+        return
     if ui.window_id == "interior":
         if direction == 1:
             main._on_rotate_fixture_pressed()
