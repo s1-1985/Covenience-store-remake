@@ -1,0 +1,48 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "prior_path": "20261118-festival-empty-slot-lifecycle/results.json",
+  "prior_sha256": "1ed89fb771cbf0efd5db4000588023ece9c47587d56b9e2f46ceedb02bc434ff",
+  "zero_quantity_source_record_hex": "0204000078000000f4010000000000000000ff00000000000000000000000000",
+  "register_master": {
+    "id": 37,
+    "size": [
+      2,
+      1
+    ],
+    "flags": 260
+  },
+  "source_ranges": [
+    {
+      "start": "0x80032814",
+      "end_exclusive": "0x800330e4",
+      "sha256": "b7b352d9ba31709ff2260ea00ae46b642509b911d79f26fbbff0e8f1883fd8e9"
+    },
+    {
+      "start": "0x80035128",
+      "end_exclusive": "0x80035338",
+      "sha256": "f28b201c8edc570f90e3cc3260e0220787c4d3e0d9d0b734d1841be260f198dd"
+    },
+    {
+      "start": "0x80035818",
+      "end_exclusive": "0x8003594c",
+      "sha256": "a185670f357298267ee5f63645ea28a379deb97a920b5f78f4331c74a582580b"
+    },
+    {
+      "start": "0x80038660",
+      "end_exclusive": "0x80038898",
+      "sha256": "cfd13a125db6819c4df0253b3244c4a692f013b47bdb01d11376e6f86444e777"
+    },
+    {
+      "start": "0x800330e4",
+      "end_exclusive": "0x800331b4",
+      "sha256": "546a8e6c1a9902658ad44b05a5d8e8c4556bda043644c48ea74e7dd927473240"
+    },
+    {
+      "start": "0x8001ca7c",
+      "end_exclusive": "0x8001cbc4",
+      "sha256": "917ca3b16f8364cea72801d44c6507a0959391bdc9a536640d7f3f2db2631fcf"
+    }
+  ],
+  "known_before": "Standalone checkout multiplication, staff busy flag, exit position commit and free-slot formulas in existing r2. New observedzeroquantity-to-service/blocking/exit connections, not new ordinary formulas."
+}

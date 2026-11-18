@@ -33,7 +33,7 @@
       "status": "open",
       "evidence": "analysis/20261116-weather-demand-data/out-of-catalog-context.json",
       "resolution": null,
-      "latest_evidence": "analysis/20261118-festival-empty-slot-lifecycle/README.md",
+      "latest_evidence": "analysis/20261118-zero-quantity-service-exit/README.md",
       "established": [
         "All11 initial rivals use schedule2; misread schedule byte0 rejects profile144 even under festival bypass.",
         "Schedule0/3/5 nonzero out-of-row reads can pass the schedule gate; stock alias and distance gates still apply.",
@@ -46,9 +46,10 @@
         "Existing4storeRAMconnectedpartialoperations:originalpurchase ofstore3for60590504,ownstore3schedule0only,originalstore0product15changefor14400->stock40; full2619C selectsstore3for15,14 andwrites00FF->01FF. Beforestockchange selectorreturns-1. Rivalhoursunchanged. UI/setupfinalization/calendar manuallycontrolled;notnaturalreachability proof.",
         "Followup corrects62CFC asprice(not hiring); originaleditoraccepttail preservesproduct15stock40; originaltick44638->44640/calendar gives[1,8,4,0,0] andfinance reachesfestivalpresentationbranch. Sixboundedentries; stopbeforepresentation, switchstill0.",
         "Festivaldisplaykind2:120draw-waits then existingvoicepredicate orinput0x60exit. Threeoriginalpostpresentationentries:financecharges43472/59776,preservesfirstcustomer/floor/summary; rival/town stage4earlyreturnwithfullstorepoolunchanged. Notwholepresentation ornaturalreachability.",
-        "Initiallyzeroemptyrecord underoriginalalias becomesstate1 withoutregularadmission. Threeisolatedpostspawn loops withoriginalstoreprep yieldstates1,2,2; profile0-derivedwallet500/wanted4/deadline120 butquantity/cumulative/summarycounts stay0 andzero goal/routepersist. Occupancyiswritten despitezeroquantity. Oneoriginalnormaladmissioncontrol hasprofile41/quantity1/visitor+1/summary+1/demand-1 andFFgoals/routes. Notnaturalreachability,actualrendering or completedpurchase/checkout/exit proof."
+        "Initiallyzeroemptyrecord underoriginalalias becomesstate1 withoutregularadmission. Threeisolatedpostspawn loops withoriginalstoreprep yieldstates1,2,2; profile0-derivedwallet500/wanted4/deadline120 butquantity/cumulative/summarycounts stay0 andzero goal/routepersist. Occupancyiswritten despitezeroquantity. Oneoriginalnormaladmissioncontrol hasprofile41/quantity1/visitor+1/summary+1/demand-1 andFFgoals/routes. Notnaturalreachability,actualrendering or completedpurchase/checkout/exit proof.",
+        "Fourbounded originalentries compose priorzeroquantity with stagedcheckout/exit. Quantity0/basket250 clearscart,returnsstate4 andsets0x200 with0cash/revenue; quantity1control credits250. Bothmarkcashierbusy andlater1headcustomer remains3/cart250 inthesameloop. Stagedexitarrival clearsoccupancy,returnsstate0 andnativefreeslot0 whileoldcoordinatespersist. Doesnotestablishnaturalcart/routes orfestivalreachability."
       ],
-      "remaining_question": "Natural ordinary UI/acquisition/product/parent ledger setup and festival presentation/interrupt reachability remain open. Empty-slot early entry and occupancy now boundedly established; downstream lifecycle of an already-active corrupted shopper/checkout/exit, full empty-slot purchase/service/exit and financial consequences remain unconfirmed."
+      "remaining_question": "Natural ordinary UI/acquisition/product/parent ledger setup and festival presentation/interrupt reachability remain open. Earlyempty-slotentry/occupancy and stagedcheckout/exit consequences are boundedly established; actualpurchase/cart creation and routing fromthecorruptedrecord, plus lifecycle ofalreadyactive corrupted shoppers, remain unconfirmed."
     },
     {
       "id": "R03",

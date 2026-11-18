@@ -1,0 +1,372 @@
+{
+  "service_cases": [
+    {
+      "quantity": 0,
+      "before": {
+        "customers": [
+          {
+            "raw_hex": "03ff000078000000f401fa00030400030400ffffffffffffffffffff00000000",
+            "state": 3,
+            "profile": 0,
+            "quantity": 0,
+            "wallet": 500,
+            "cart": 250,
+            "position": [
+              3,
+              4,
+              0
+            ],
+            "goal": [
+              3,
+              4,
+              0
+            ]
+          },
+          {
+            "raw_hex": "03ff000078000000f401fa00040400040400ffffffffffffffffffff64000100",
+            "state": 3,
+            "profile": 0,
+            "quantity": 1,
+            "wallet": 500,
+            "cart": 250,
+            "position": [
+              4,
+              4,
+              0
+            ],
+            "goal": [
+              4,
+              4,
+              0
+            ]
+          }
+        ],
+        "cash": 10000,
+        "revenue": 0,
+        "completion_flags": 0,
+        "cashier_busy": [
+          0,
+          0,
+          0
+        ],
+        "present": 0,
+        "visitors": 0
+      },
+      "after": {
+        "customers": [
+          {
+            "raw_hex": "04ff000078000000f4010000030400ffffffffffffffffffffffffff00000000",
+            "state": 4,
+            "profile": 0,
+            "quantity": 0,
+            "wallet": 500,
+            "cart": 0,
+            "position": [
+              3,
+              4,
+              0
+            ],
+            "goal": [
+              -1,
+              -1,
+              -1
+            ]
+          },
+          {
+            "raw_hex": "03ff000078000000f401fa00040400040400ffffffffffffffffffff64000100",
+            "state": 3,
+            "profile": 0,
+            "quantity": 1,
+            "wallet": 500,
+            "cart": 250,
+            "position": [
+              4,
+              4,
+              0
+            ],
+            "goal": [
+              4,
+              4,
+              0
+            ]
+          }
+        ],
+        "cash": 10000,
+        "revenue": 0,
+        "completion_flags": 512,
+        "cashier_busy": [
+          1,
+          0,
+          0
+        ],
+        "present": 0,
+        "visitors": 0
+      },
+      "service_entries": [
+        {
+          "customer_pointer": "0x8012c1fc",
+          "busy_before": 0
+        },
+        {
+          "customer_pointer": "0x8012c21c",
+          "busy_before": 1
+        }
+      ],
+      "revenue_entries": [
+        {
+          "amount": 0,
+          "mode": 1
+        }
+      ],
+      "cashier_busy_writes": [
+        {
+          "pc": "0x8003871c",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "quantity": 1,
+      "before": {
+        "customers": [
+          {
+            "raw_hex": "03ff000078000000f401fa00030400030400ffffffffffffffffffff00000100",
+            "state": 3,
+            "profile": 0,
+            "quantity": 1,
+            "wallet": 500,
+            "cart": 250,
+            "position": [
+              3,
+              4,
+              0
+            ],
+            "goal": [
+              3,
+              4,
+              0
+            ]
+          },
+          {
+            "raw_hex": "03ff000078000000f401fa00040400040400ffffffffffffffffffff64000100",
+            "state": 3,
+            "profile": 0,
+            "quantity": 1,
+            "wallet": 500,
+            "cart": 250,
+            "position": [
+              4,
+              4,
+              0
+            ],
+            "goal": [
+              4,
+              4,
+              0
+            ]
+          }
+        ],
+        "cash": 10000,
+        "revenue": 0,
+        "completion_flags": 0,
+        "cashier_busy": [
+          0,
+          0,
+          0
+        ],
+        "present": 0,
+        "visitors": 0
+      },
+      "after": {
+        "customers": [
+          {
+            "raw_hex": "04ff000078000000f4010000030400ffffffffffffffffffffffffff00000100",
+            "state": 4,
+            "profile": 0,
+            "quantity": 1,
+            "wallet": 500,
+            "cart": 0,
+            "position": [
+              3,
+              4,
+              0
+            ],
+            "goal": [
+              -1,
+              -1,
+              -1
+            ]
+          },
+          {
+            "raw_hex": "03ff000078000000f401fa00040400040400ffffffffffffffffffff64000100",
+            "state": 3,
+            "profile": 0,
+            "quantity": 1,
+            "wallet": 500,
+            "cart": 250,
+            "position": [
+              4,
+              4,
+              0
+            ],
+            "goal": [
+              4,
+              4,
+              0
+            ]
+          }
+        ],
+        "cash": 10250,
+        "revenue": 250,
+        "completion_flags": 512,
+        "cashier_busy": [
+          1,
+          0,
+          0
+        ],
+        "present": 0,
+        "visitors": 0
+      },
+      "service_entries": [
+        {
+          "customer_pointer": "0x8012c1fc",
+          "busy_before": 0
+        },
+        {
+          "customer_pointer": "0x8012c21c",
+          "busy_before": 1
+        }
+      ],
+      "revenue_entries": [
+        {
+          "amount": 250,
+          "mode": 1
+        }
+      ],
+      "cashier_busy_writes": [
+        {
+          "pc": "0x8003871c",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "exit_case": {
+    "before": {
+      "customers": [
+        {
+          "raw_hex": "05ff000078000000f4010000000102000102ffffffffffffffffffff00000000",
+          "state": 5,
+          "profile": 0,
+          "quantity": 0,
+          "wallet": 500,
+          "cart": 0,
+          "position": [
+            0,
+            1,
+            2
+          ],
+          "goal": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "raw_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+          "state": 0,
+          "profile": 0,
+          "quantity": 0,
+          "wallet": 0,
+          "cart": 0,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "goal": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "cash": 10000,
+      "revenue": 0,
+      "completion_flags": 0,
+      "cashier_busy": [
+        0,
+        0,
+        0
+      ],
+      "present": 0,
+      "visitors": 0
+    },
+    "after": {
+      "customers": [
+        {
+          "raw_hex": "00ff000078000000f4010000000102ffffffffffffffffffffffffff00000000",
+          "state": 0,
+          "profile": 0,
+          "quantity": 0,
+          "wallet": 500,
+          "cart": 0,
+          "position": [
+            0,
+            1,
+            2
+          ],
+          "goal": [
+            -1,
+            -1,
+            -1
+          ]
+        },
+        {
+          "raw_hex": "0000000000000000000000000000000000000000000000000000000000000000",
+          "state": 0,
+          "profile": 0,
+          "quantity": 0,
+          "wallet": 0,
+          "cart": 0,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "goal": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "cash": 10000,
+      "revenue": 0,
+      "completion_flags": 0,
+      "cashier_busy": [
+        0,
+        0,
+        0
+      ],
+      "present": 0,
+      "visitors": 0
+    },
+    "occupancy_before": 2621440,
+    "occupancy_after": 0,
+    "free_slot_after_exit": 0
+  },
+  "original_entries": {
+    "post_spawn_loops": 3,
+    "free_slot": 1,
+    "total": 4
+  },
+  "full_operating_updates": 0,
+  "gameplay_callee_replacements": 0,
+  "limits": [
+    "Diagnostic checkout/exit rendezvous, basket250 and cashier skill100; no proof the festival-created actor reaches these positions/cart naturally.",
+    "Artificial14x14 store with one native register37 anchor; no placement UI/whole footprint validity claim.",
+    "Next customer at a different adjacent cell with patience100; two service requests in one loop.",
+    "Reused zero-quantity record came from prior alias experiment; do not count its creation again."
+  ]
+}

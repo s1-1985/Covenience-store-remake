@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 6411,
+      "sha256": "4c25081b953dfafbd7c57ecf577803488879608ae1e23fcb637b47c76daad384"
+    },
+    {
+      "path": "analyze-service-exit.py",
+      "size_bytes": 7452,
+      "sha256": "9ec900617db8789f97ba114ab6efd34b6ad09f94ed83dcc0f1a82653b9d23e9c"
+    },
+    {
+      "path": "android-bridge.json",
+      "size_bytes": 982,
+      "sha256": "5fb7f8216454033b9913a5a1f5de39c177170d3214a37dac3f7e28e92db267f0"
+    },
+    {
+      "path": "results.json",
+      "size_bytes": 8100,
+      "sha256": "2aad0dfabb6d1d71e4446ebe5a45ca889de35a193ade2444beb7ac7ad59bb481"
+    },
+    {
+      "path": "source-provenance.json",
+      "size_bytes": 1755,
+      "sha256": "f066ffaa04b36f0c3e2135cb6773819a98c6b660dd2edf7992b21c407dabf319"
+    }
+  ]
+}

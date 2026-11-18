@@ -1,0 +1,17 @@
+{
+  "evidence": "README.md",
+  "scope": "Diagnostic rendezvous from previously observedzeroquantity; not natural lifecycle replay.",
+  "separate_outcomes": [
+    "Successful originalcheckout mayadd0revenue yetclear cart, returnstate4 andset0x200.",
+    "Successfulzeroquantity customerstill setsstaff busy forcurrentstoreupdate; latercustomerstayswaiting inobserved case.",
+    "Exitarrival returnsstate0 andclearsoccupancy;recordcoordinatescanpersist andfree-slot finderreturns0."
+  ],
+  "known_rules": "Originalmultiplication,staffbusy andexit formulas werealreadydecoded. Newconditional composition only.",
+  "do_not_infer": [
+    "Do not infer liveFPS issue/video cause fromthese isolated calls.",
+    "Do not infer naturalfestivalreachability oractualpurchases fromstaged cart/positions.",
+    "No ATM credit/fee interpretation."
+  ],
+  "runtime": "Native algorithms/data; no PS executable/BIOS/emulator runtime requirement.",
+  "integration_status": "analysis_only_not_APK"
+}
