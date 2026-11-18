@@ -1,5 +1,5 @@
 {
-  "date_jst": "2026-11-18",
+  "date_jst": "2026-11-19",
   "scope": "Track the seven concrete unresolved issues previously reported to user, not exhaustive project inventory.",
   "inventory_complete": false,
   "overall_measured_percent": null,
@@ -132,7 +132,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "既存成果との重複照合を先に行う。R02の自社買収・営業時間確定・商品変更の部分処理接続と店3の00FF->01FF書込みは確認済み。残る通常UI/最終確定/時間経過への接続を必要な箇所だけ追い、同じ診断を反復しない。",
+  "next": "通常UIの未接続仕様を優先。店舗グラフは損益60期・全店店数・共通有効範囲が判明し実装待ち。売却と採用経験は既解析であり反復しない。既存未解決6件は新しい手掛かりが得られるまで同じ局所試験を繰り返さない。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -230,6 +230,14 @@
       "status": "resolved_scoped_source_binding",
       "evidence": "analysis/20261117-permit-dialog-source-data/README.md",
       "resolution": "Originalstatus textpriority,fee slots,64static0/1state combinations andfiveKYOUcrops bound; acquisitionalreadyresolved20261114 nowreferenced.0sourceCPUcalls;no fullscreen/naturalreachabilityclaim.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X13",
+      "title": "店舗別損益グラフの60期・平均を含む縦軸・原描画境界",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-research-graph-history/README.md",
+      "resolution": "Read-side graph source decoded: common valid prefix, 1million-step minimum1million scale including chain average, oldest-first4px bars and bounded adjacent-buffer writes. Existing finance/save/initialization reused; native app not updated.",
       "counted_in_seven_tracked_items": false
     }
   ],

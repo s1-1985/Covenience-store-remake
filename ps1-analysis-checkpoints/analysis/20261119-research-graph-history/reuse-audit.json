@@ -1,0 +1,43 @@
+{
+  "known_before": [
+    {
+      "archive_file": "algorithm-analysis/finance_close.py",
+      "rule": "monthly scaling, store/chain net history writes",
+      "sha256": "78e5201b97bd9840b4adb434c0af75b92a2f8327ad436e8655940ec57cdbfd1c"
+    },
+    {
+      "archive_file": "algorithm-analysis/save_codec.py",
+      "rule": "graph arrays serialized in fixed payload",
+      "sha256": "ac5b6fe7dc27b0a9c2885f24f60cece12afdecafa62d56265b3e7edc8ad5525e"
+    },
+    {
+      "archive_file": "algorithm-analysis/store_lifecycle.py",
+      "rule": "store/acquisition initialization fills 60 net history sentinels",
+      "sha256": "7f3976fb2f46bcf66f9c656dc782b7e187ee69b63b11ee8e4a7e3f105462e02c"
+    },
+    {
+      "report": "../20261116-acquisition-sale-data/README.md",
+      "rule": "sale guard, net asset refund, staff release, town closure; not newly analyzed"
+    },
+    {
+      "report": "../20261114-staff-roster-growth-data/README.md",
+      "rule": "runtime staff+20 zero/nonzero experience flag and hire increment; not newly analyzed"
+    }
+  ],
+  "new_scope": [
+    "valid-prefix coupling of store+chain histories",
+    "axis max includes integer chain average",
+    "bitmap chronological order, height quantization and bounded buffer overrun observation"
+  ],
+  "not_done": [
+    "seven-issue natural-path closure",
+    "Android implementation",
+    "new APK",
+    "natural UI/render/save/finance playthrough"
+  ],
+  "app_source": {
+    "commit": "26d88e20812e7c540864f2c98ca41102440a779a",
+    "file": "game/scripts/ps1_ui.gd",
+    "function": "_graph"
+  }
+}

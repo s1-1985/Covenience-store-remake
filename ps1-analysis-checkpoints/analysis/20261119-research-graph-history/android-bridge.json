@@ -1,0 +1,48 @@
+{
+  "evidence_tier": "CONFIRMED_BINARY for decoded branches; controlled original entries, not natural gameplay",
+  "required_changes": [
+    {
+      "area": "store graph",
+      "current_v062": "last month/current month sales, 2 values",
+      "required": "up to 60 monthly NET profit records; unregistered distinct from zero"
+    },
+    {
+      "area": "axis",
+      "current_v062": "minimum4000000, store values only",
+      "required": "minimum1000000 in1000000 steps; max(abs(storeNet),abs(trunc(chainNet/chainCount))) across common valid prefix"
+    },
+    {
+      "area": "prefix",
+      "required": "stop first missing store/chain record or nonpositive signed count; never skip a gap"
+    },
+    {
+      "area": "order",
+      "required": "retain newest-first in save/state; draw oldest-first; width4px per month on240px plot"
+    },
+    {
+      "area": "amount",
+      "required": "trunc(abs(net)/10000) before height ratio; do not multiply recorded net by8 again"
+    },
+    {
+      "area": "memory",
+      "required": "clip all plot writes to240x112; never emulate observed original adjacent-buffer writes"
+    },
+    {
+      "area": "staff experience",
+      "existing_spec": "persistent counter per candidate atsource runtime+20, increased byhire; not inferred simply from currently working or free"
+    },
+    {
+      "area": "store sale",
+      "existing_spec": "reuse20261116 bridge; source rules known, backend/UI operation remains unimplemented"
+    }
+  ],
+  "save_payload": {
+    "chain_net": "0x872c",
+    "chain_store_counts": "0x881c",
+    "store0_net_history": "0x9b40",
+    "store_stride": 5080,
+    "records": 60
+  },
+  "apk_changed": false,
+  "runtime_original_exe_required": false
+}

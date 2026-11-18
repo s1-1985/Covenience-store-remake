@@ -1,0 +1,37 @@
+[
+  {
+    "file": "README.md",
+    "sha256": "2ac017a828eac10e01222e5943be4a2bbfc5151ded43738d453b479f16cd4423",
+    "bytes": 5754
+  },
+  {
+    "file": "analyze-graphs.py",
+    "sha256": "6ee0e3d1b27c371215745cff72bd34695a685881b8677d89fb7a8766b8ef06c3",
+    "bytes": 6068
+  },
+  {
+    "file": "android-bridge.json",
+    "sha256": "b26ff89deffba2d741fcd3ef11e2f18543d6d8a52ea77b56dca372e40c293fa4",
+    "bytes": 1709
+  },
+  {
+    "file": "original-cases.json",
+    "sha256": "76b491a434d2674679aab1f489a174341654b519aed35f8ebee2f66b7b03e6b6",
+    "bytes": 3480
+  },
+  {
+    "file": "original-graph-bounded.png",
+    "sha256": "f8132703bd47abcbf8772c858fdd04efc7d6f60286588455a3aa90b07802026d",
+    "bytes": 703
+  },
+  {
+    "file": "reuse-audit.json",
+    "sha256": "4f5c8badcd36bfe55d2ecaa3dbadb2bb849c0da21b49fbd05ff95a29208d52f2",
+    "bytes": 1566
+  },
+  {
+    "file": "source-ranges.json",
+    "sha256": "9464622499087c6b5475b541e4a6ea73e8e80abd0bcb57ca554c8ffd811e2513",
+    "bytes": 18488
+  }
+]
