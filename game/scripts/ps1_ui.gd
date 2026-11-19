@@ -22,6 +22,7 @@ var choice := 0
 var page := 0
 var slot := 0
 var person_index := 0
+var _hiring_candidates: Array[String] = []
 var transfer_store := 0
 var transfer_slot := 0
 var floor_mode := ""
@@ -137,6 +138,14 @@ func open_window(id: String) -> void:
         return
     if main.selecting_site:
         return
+    if id == "candidates" and screen != "candidates":
+        # Sampling consumes the gameplay RNG. Do it once on entry, never
+        # from the draw callback, hover, or the decision handler.
+        _hiring_candidates = main.simulation.source_hiring_candidates()
+        for index in 3:
+            if _person_id(main.simulation.staff,index).is_empty():
+                slot = index
+                break
     if id == "interior" and not floor_mode.is_empty():
         screen = "interior"
     else:
@@ -209,6 +218,9 @@ func handle_start() -> void:
     refresh()
 
 func handle_accept() -> bool:
+    if screen in ["candidates", "dismiss"]:
+        _decide_personnel()
+        return true
     if main.selecting_site and _active_action.is_valid():
         _active_action.call()
         return true
@@ -773,15 +785,17 @@ func _bar(at: Vector2, value: int, width: float = 40) -> void:
 func _personnel() -> void:
     var s = main.simulation
     var hiring := screen == "candidates"
-    _paper(Rect2(35,38,247,166))
+    _paper(Rect2(35,38,247,188))
     _ink(Vector2(100,42),s.store_name+"の店員を"+("採用します" if hiring else "解雇して下さい"))
     for i in 3:
         var index := i
         var id := _person_id(s.staff,i)
         _face(id,Rect2(41,41+i*52,46,38))
+        if i == slot:
+            surface.draw_rect(Rect2(40,40+i*52,48,40),PINK,false,1)
         _region(Rect2(41,41+i*52,46,44),func(): slot = index,10+i)
         if i == 0: _ink(Vector2(52,81),"店長")
-    var ids: Array = s.source_hiring_candidates() if hiring else []
+    var ids: Array = _hiring_candidates if hiring else []
     var id: String = _person_id(s.staff,slot)
     if hiring:
         page = clampi(page,0,maxi(0,ids.size()-1))
@@ -800,18 +814,39 @@ func _personnel() -> void:
             _ink(Vector2(100,123+i*16),["体力","学歴","敏捷性","社交性"][i])
             _ink(Vector2(146,123+i*16),str(value))
             _bar(Vector2(162,126+i*16),value)
-        var candidate := id
-        _region(Rect2(138,55,128,128),func():
-            if hiring:
-                if s.try_hire_candidate("staff-%d" % (slot+1),candidate):
-                    main._refresh_hire_candidate_option()
-                    show_notice("採用しました")
-                else: show_notice("採用条件を確認して下さい")
-            else:
-                if s.try_dismiss_source_staff("staff-%d" % (slot+1)): show_notice("解雇しました"),0)
+        # The portrait/stat card is information; only an explicit decision
+        # button or circle commits hiring/dismissal.
+        _option(Rect2(160,188,96,17),"採用する" if hiring else "解雇する",_decide_personnel,0)
     _option(Rect2(95,61,18,16),"◁",func(): page = maxi(0,page-1),20)
     _option(Rect2(116,61,18,16),"▷",func(): page = mini(maxi(0,ids.size()-1),page+1),21)
-    _footer(188)
+    _footer(209)
+
+func _decide_personnel() -> void:
+    var sim = main.simulation
+    var key := "staff-%d" % (slot+1)
+    if screen == "candidates":
+        if sim.staff.members.has(key):
+            show_notice("空き枠を選んで下さい。満員なら先に店員を解雇して下さい")
+            return
+        var ids: Array = _hiring_candidates
+        if ids.is_empty():
+            show_notice("採用できる候補者がいません")
+            return
+        var id := str(ids[clampi(page,0,ids.size()-1)])
+        var name: String = sim._candidate_figures(id).get("display_name",id)
+        if sim.try_hire_candidate(key,id):
+            _hiring_candidates.erase(id)
+            page = clampi(page,0,maxi(0,_hiring_candidates.size()-1))
+            main._refresh_hire_candidate_option()
+            show_notice(name+"を採用しました")
+        else:
+            show_notice("採用条件を確認して下さい")
+    elif screen == "dismiss":
+        if sim.try_dismiss_source_staff(key):
+            show_notice("解雇しました")
+        else:
+            show_notice("この店員は解雇できません")
+    surface.queue_redraw()
 
 func _transfer() -> void:
     var s = main.simulation
