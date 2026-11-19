@@ -1,27 +1,26 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_basic_fixture_dialog_display",
-  "report": "analysis/20261119-basic-fixture-dialogs/README.md",
-  "previous_report": "analysis/20261119-equipment-catalog-display/README.md",
+  "work_kind": "normal_store_type_selection_display",
+  "report": "analysis/20261119-store-type-selection-display/README.md",
+  "previous_report": "analysis/20261119-basic-fixture-dialogs/README.md",
   "priority": "Six existing unresolved issues remain paused; other normal UI readers analyzed.",
   "new_result": [
-    "Register-specific field is宅配便申込書収納力 frommaster+12:0/60/0/90, notattention.",
-    "Room selection lifts screenY2pixels, noUVshift; constructor defaultRGB128.",
-    "Separate two/four-dialog price, fixed24h maintenance and icon geometry connected."
+    "Sixslots stayvisible; unlockRGB128/64 and selectedspriteY-2 operate independently.",
+    "Lockedtier4 focus stilldisplays18M original construction cost.",
+    "Original price table and geometry linked to currentAndroid trade-in display difference; currentgridorder alreadycorrect."
   ],
   "known_reused": [
-    "basic_fixture_choices.py two/four navigation and confirm/cancel order",
-    "category_parent_control.py separate state4/5 paths",
-    "fixture master and costs"
+    "premises_input.py GRID/navigation/maximum",
+    "construction cost tiers and no-trade-in source accounting",
+    "SHOPTYP1 texture binding"
   ],
-  "final_reproducer_original_entries": 4,
+  "final_reproducer_original_entries": 3,
   "entry_breakdown": {
-    "room_display": 2,
-    "register_display": 2
+    "bounded_display": 3
   },
-  "entry_count_scope": "Final4 entries;7preparation entries stopped/diagnosed before correcting expectations for roomY and registercapacity.",
+  "entry_count_scope": "Three bounded display entries, no failed preparation CPU entries.",
   "operating_updates": 0,
-  "verification": "Bounded displays, one supplied rightinput for roomsecondchoice, diagnostic register initialselection. Room original41630 executed, register41630 intercepted; no GPU/gameplay/payment/card.",
+  "verification": "Original41630 andpricewidth executed;10externalvisual/transferchildren intercepted. Diagnostic selectedrow/column, stopbefore41374. No confirmation/GPU/input/payment/gameplay.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,

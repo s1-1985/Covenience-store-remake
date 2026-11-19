@@ -307,6 +307,14 @@
       "evidence": "analysis/20261119-basic-fixture-dialogs/README.md",
       "resolution": "Original register display reads capacity+12 under宅配便申込書収納力, not attention+16; rooms lift selected spriteY2pixels with unchangedUV. Final4display entries plus7preparation entries; old two/four-choice control reused. No gameplay/payment/APK change.",
       "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X22",
+      "title": "店舗6種選択の未解禁表示・建築費・選択中の2画素上移動",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-store-type-selection-display/README.md",
+      "resolution": "Three bounded displays show6slots retained, RGB128/64 and selectedY-2 even onlockedtier; original cost table tied to Android trade-in display difference. Existing GRID, eligibility and accounting reused. No GPU/input/confirmation/gameplay/APK change.",
+      "counted_in_seven_tracked_items": false
     }
   ],
   "novelty_audit": {

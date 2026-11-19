@@ -1,0 +1,215 @@
+{
+  "rows": [
+    {
+      "tier": 0,
+      "row": 0,
+      "column": 0,
+      "source_image": "SHOPTYP1.TIM",
+      "source_rect": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "logical_rect": [
+        96,
+        84,
+        32,
+        32
+      ],
+      "displayed_cost": 6000000
+    },
+    {
+      "tier": 1,
+      "row": 1,
+      "column": 0,
+      "source_image": "SHOPTYP1.TIM",
+      "source_rect": [
+        32,
+        0,
+        32,
+        32
+      ],
+      "logical_rect": [
+        96,
+        124,
+        32,
+        32
+      ],
+      "displayed_cost": 6000000
+    },
+    {
+      "tier": 2,
+      "row": 0,
+      "column": 1,
+      "source_image": "SHOPTYP1.TIM",
+      "source_rect": [
+        64,
+        0,
+        32,
+        32
+      ],
+      "logical_rect": [
+        144,
+        84,
+        32,
+        32
+      ],
+      "displayed_cost": 12000000
+    },
+    {
+      "tier": 3,
+      "row": 1,
+      "column": 1,
+      "source_image": "SHOPTYP1.TIM",
+      "source_rect": [
+        96,
+        0,
+        32,
+        32
+      ],
+      "logical_rect": [
+        144,
+        124,
+        32,
+        32
+      ],
+      "displayed_cost": 12000000
+    },
+    {
+      "tier": 4,
+      "row": 0,
+      "column": 2,
+      "source_image": "SHOPTYP1.TIM",
+      "source_rect": [
+        128,
+        0,
+        32,
+        32
+      ],
+      "logical_rect": [
+        192,
+        84,
+        32,
+        32
+      ],
+      "displayed_cost": 18000000
+    },
+    {
+      "tier": 5,
+      "row": 1,
+      "column": 2,
+      "source_image": "SHOPTYP1.TIM",
+      "source_rect": [
+        160,
+        0,
+        32,
+        32
+      ],
+      "logical_rect": [
+        192,
+        124,
+        32,
+        32
+      ],
+      "displayed_cost": 18000000
+    }
+  ],
+  "paper": [
+    48,
+    32,
+    224,
+    144
+  ],
+  "selected_y_offset": -2,
+  "unlock_rgb": {
+    "available": 128,
+    "locked": 64
+  },
+  "selection_count": 6,
+  "price_xy_rule": "160+8*(11-original65820(price)),64",
+  "title_xy": [
+    64,
+    48
+  ],
+  "resource_binding": {
+    "id": 6,
+    "path": "/TIM0/SHOPTYP1.TIM",
+    "source_sha256": "ababeef4a71a1d6baa3eeaa3d5f9607062b7637ea941ff225ce84bda75575e50",
+    "flags": 9,
+    "index_bits": 8,
+    "source_pixel_rect": [
+      0,
+      0,
+      128,
+      32
+    ],
+    "source_clut_rect": [
+      0,
+      480,
+      256,
+      1
+    ],
+    "source_file_bytes": 8736,
+    "direct_request_addresses": [
+      "0x80012090"
+    ],
+    "directly_requested": true,
+    "destination_pixel_rect_words": [
+      832,
+      128,
+      128,
+      64
+    ],
+    "destination_clut_rect_words": [
+      0,
+      490,
+      256,
+      1
+    ],
+    "decoded_width_pixels": 256,
+    "height_pixels": 64,
+    "binding_status": "Direct request and rectangle",
+    "source_pixel_bytes": 8192,
+    "requested_pixel_bytes": 16384,
+    "valid_pixel_bytes": 8192,
+    "request_beyond_pixel_bytes": 8192,
+    "source_pixel_bytes_not_requested": 0,
+    "valid_height_pixels": 32,
+    "native_uploads": [
+      {
+        "destination_rect_words": [
+          832,
+          128,
+          128,
+          64
+        ],
+        "source_file_offset": 544,
+        "bytes": 16384,
+        "sha256": "2d2c19c3cdfcfdecb9703359620a74a520d68090142139e59fcf5d08519dc9de",
+        "valid_file_bytes": 8192,
+        "request_beyond_file_payload": 8192,
+        "omitted_file_payload": 0,
+        "valid_prefix_sha256": "fa360628c8a1c15ebe8b894363d56fb2d20be3dc3f6ff40c722721758d64d473",
+        "synthetic_tail_byte": 165
+      },
+      {
+        "destination_rect_words": [
+          0,
+          490,
+          256,
+          1
+        ],
+        "source_file_offset": 20,
+        "bytes": 512,
+        "sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+        "valid_file_bytes": 512,
+        "request_beyond_file_payload": 0,
+        "omitted_file_payload": 0,
+        "valid_prefix_sha256": "aec7c8636d7c073351e594192d8b626cdeb1e26b8d58d2ab03c1ced745a9c8d9",
+        "synthetic_tail_byte": null
+      }
+    ]
+  },
+  "android_updated": false
+}

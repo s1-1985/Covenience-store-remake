@@ -1,0 +1,6 @@
+{
+  "path": "algorithm-analysis/premises_input.py",
+  "sha256": "d34e2df9becbcde468a144cece4eef71fb495c431ce1e951911374d8e232abfb",
+  "known": "GRID((1,3,5),(2,4,6)), directional movement, maximum eligibility and confirm/cancel already decoded; construction cost tiers also known.",
+  "new_scope": "source display binding of visible locked icons, selected spriteY, originalSHOPTYP1icon cells, displayed price and Android differences"
+}

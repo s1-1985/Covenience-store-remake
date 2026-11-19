@@ -1,0 +1,21 @@
+{
+  "android_commit": "22ba479999c4e025727806454b9858364ca145cc",
+  "already_correct": "six-type grid order0,2,4/1,3,5",
+  "differences": [
+    "paper60,54,198,120 versus48,32,224,144",
+    "iconsY91,row42 versusY84,row40",
+    "no selectediconY-2 orunlockRGB in_renovation/_icon",
+    "renovation_price_yen subtracts50percent current building value; original selection usesfull construction table"
+  ],
+  "files": [
+    {
+      "path": "scripts/ps1_ui.gd",
+      "sha256": "1d12fbc944fc8fd9054d71ae7844f563ac06d348439986a4c250b8e14f32a53e"
+    },
+    {
+      "path": "scripts/vertical_slice_simulation.gd",
+      "sha256": "209c3a4afb127dd6383c73e6485208875fbdfe6bcac78300188063efcd18db09"
+    }
+  ],
+  "implementation_changed": false
+}
