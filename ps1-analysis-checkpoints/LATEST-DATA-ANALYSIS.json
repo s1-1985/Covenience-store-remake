@@ -1,36 +1,35 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_store_detail_panel_ui",
-  "report": "analysis/20261119-store-detail-panel-ui/README.md",
-  "previous_report": "analysis/20261119-survey-ranking-ui/README.md",
-  "priority": "Existing six unresolved issues remain paused; other normal UI readers analyzed.",
+  "work_kind": "normal_price_policy_display",
+  "report": "analysis/20261119-price-policy-display/README.md",
+  "previous_report": "analysis/20261119-store-detail-panel-ui/README.md",
+  "priority": "Six existing unresolved issues remain paused; other normal UI readers analyzed.",
   "new_result": [
-    "Original detail panel field bindings and relative coordinates including previous-month revenue D5C.",
-    "Normal rating19/20/99/100 -> star repeats0/1/4/5, seven schedule messages.",
-    "Native metric outputs and three permit bytes bound to fixed icon anchors."
+    "Independent truncation of26setting mean and26delta mean, unweighted by inventory/sales.",
+    "Normal product0+6 input yields displayed mean41 and label定価.",
+    "Individual selected setting/delta and original UP/OFF/定価 text/positions connected."
   ],
   "known_reused": [
-    "monthly finance history",
-    "cleaning/security/service formulas",
-    "permit fields and source text decoder",
-    "ownership and store number flags"
+    "product master and unit-price formula",
+    "26-item editor boundaries",
+    "temporary deltas and confirm/cancel rules"
   ],
-  "final_reproducer_top_level_entries": 7,
+  "final_reproducer_original_entries": 8,
   "entry_breakdown": {
-    "bootstrap": 3,
-    "detail_reader": 4
+    "group_display": 5,
+    "individual_display": 3
   },
-  "nested_native_metric_calls": 12,
-  "preparation_note": "Earlier empty-store display inputs replaced by active store2 for final run. Counts describe final reproducer only.",
-  "visual_callee_intercepts": 6,
-  "gameplay_function_replacements": 0,
+  "entry_count_scope": "Final eight-case reproducer; seven preliminary entries preceded the added independent-truncation boundary case.",
+  "visual_callee_intercepts": 7,
+  "gameplay_callee_replacements": 0,
   "operating_updates": 0,
-  "verification": "Four native reader cases; visual calls captured, no whole menu/GPU/audio or broad regression.",
+  "verification": "Bounded first display blocks; stop before input41374. No natural menu loop, GPU or broad regression.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
   "paused_tracked_issues": 6,
   "overall_measured_percent": null,
   "remaining_ledger": "ANALYSIS-REMAINING.json",
-  "apk_updated": false
+  "latest_android_implementation_commit": "22ba479999c4e025727806454b9858364ca145cc",
+  "apk_updated_this_analysis": false
 }

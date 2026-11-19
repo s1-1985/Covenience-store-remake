@@ -1,0 +1,123 @@
+{
+  "rows": {
+    "0x80099bf8": {
+      "codes": [
+        310,
+        588,
+        243,
+        357,
+        107,
+        275,
+        276,
+        74,
+        81,
+        342,
+        73,
+        64,
+        16639
+      ],
+      "decoded_template": "商品価格を決定して下さい",
+      "sha256": "6c41ffc06dd9bf0e6ba4e0388e992013497a601807945275af33d66856225aff"
+    },
+    "0x80099c28": {
+      "codes": [
+        358,
+        310,
+        588,
+        494,
+        659,
+        660,
+        661,
+        409,
+        16639
+      ],
+      "decoded_template": "全商品平均利益率",
+      "sha256": "7e3867f269aa467ada8f6f253750fdae7a0f9eac2ddd5189a204beddf05666fc"
+    },
+    "0x80099cc8": {
+      "codes": [
+        358,
+        359,
+        84,
+        241,
+        276,
+        16386,
+        360,
+        361,
+        84,
+        241,
+        276,
+        16639
+      ],
+      "decoded_template": "全体に設定{4002}個別に設定",
+      "sha256": "c9a81df0bde0bd956426902b18d0e1c8d2bb60b56262723a174fbb632f58c53c"
+    },
+    "0x80099c60": {
+      "codes": [
+        37,
+        16639
+      ],
+      "decoded_template": "%",
+      "sha256": "ab4b6f6b45b74fbc7f6bd94adc6ee28448deeac049969f833387a80705f667ec"
+    },
+    "0x80099c6c": {
+      "codes": [
+        276,
+        243,
+        16639
+      ],
+      "decoded_template": "定価",
+      "sha256": "e18f61985b3ecbb07b9dbdf014d7d1fa124114ac0f534e0474f126996ced308a"
+    },
+    "0x80099c64": {
+      "codes": [
+        30,
+        25,
+        16639
+      ],
+      "decoded_template": "UP",
+      "sha256": "84b5d88a4cf53e16367b5158c855543c14fefff50f57d77ce56ab27252d0a31e"
+    },
+    "0x80099c74": {
+      "codes": [
+        24,
+        15,
+        15,
+        16639
+      ],
+      "decoded_template": "OFF",
+      "sha256": "d099933ac1e84240078b9352b527de862f973f093e63b03e5d4e60dc20078f63"
+    },
+    "0x80099c3c": {
+      "codes": [
+        310,
+        588,
+        361,
+        243,
+        357,
+        107,
+        275,
+        276,
+        74,
+        81,
+        342,
+        73,
+        64,
+        16639
+      ],
+      "decoded_template": "商品別価格を決定して下さい",
+      "sha256": "1c3952b8e08a26fce539d9574533e13cca3d35d8ccef4c26ff905658d8efe965"
+    },
+    "0x80099c58": {
+      "codes": [
+        660,
+        661,
+        409,
+        16639
+      ],
+      "decoded_template": "利益率",
+      "sha256": "f7114b02ed0c22b75a5b9a952376a9a9ca0dfdca18000a6f5ae39a31422f6ba7"
+    }
+  },
+  "source": "Original EXE inline UTF16 glyph/control words; existing decoder reused."
+}

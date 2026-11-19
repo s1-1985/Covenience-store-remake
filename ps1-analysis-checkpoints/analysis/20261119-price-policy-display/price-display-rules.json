@@ -1,0 +1,58 @@
+{
+  "editable_products": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "setting_field": "store+C7C+4*product",
+  "default_field": "product master9CDF0+88*product+32",
+  "group_average": "trunc(sum(settings0..25)/26)",
+  "group_delta": "trunc(sum(settings[i]-defaults[i] for i0..25)/26)",
+  "weighting": "No fixture, stock, sale quantity, revenue or cash26 weighting in this display calculation. Not the store-choice price metric.",
+  "group_label": "mean_delta==0 -> 定価, even if individual settings differ; >0 UP; <0 OFF with magnitude. Fractional mean delta truncates toward zero.",
+  "group_positions": {
+    "mean_setting": [
+      192,
+      96
+    ],
+    "delta_suffix": [
+      200,
+      128
+    ],
+    "delta_magnitude": [
+      164,
+      128
+    ],
+    "zero_label": [
+      180,
+      128
+    ]
+  },
+  "individual": "Selected product setting=default+temporary delta; delta is shown independently with magnitude%UP / magnitude%OFF / 定価; selected setting at[160,144], nameMSG71+id at[120,112].",
+  "comparison_to_economy": "Original UI coefficient, not sales-weighted gross margin; unit price formula already decoded elsewhere.",
+  "existing_editor_rules_reused": "26-item temporary array,0..100 boundaries,group all-or-nothing step,confirm/cancel semantics already known and not retested here.",
+  "apk_updated": false
+}

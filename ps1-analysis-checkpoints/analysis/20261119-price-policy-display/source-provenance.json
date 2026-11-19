@@ -1,0 +1,57 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "helper_sha256": "aa3c09f5c22dc9e935c52678b375a2323459af99963e9f0bd34382a9b3fa21f5",
+  "ranges": [
+    {
+      "name": "group_average",
+      "start": "0x80062cfc",
+      "end_exclusive": "0x80062ea8",
+      "sha256": "1ae6bab362dd3d5aac416dcf7c092141a2d72592890c9b529790f5475d7a504d"
+    },
+    {
+      "name": "group_display",
+      "start": "0x80062ea8",
+      "end_exclusive": "0x800631b4",
+      "sha256": "ff6498a11a31ac15f0ab53dcf622519705a465987728bfd3d77827bcb5e89dbe"
+    },
+    {
+      "name": "individual_init_and_display",
+      "start": "0x80063714",
+      "end_exclusive": "0x80063b3c",
+      "sha256": "1ef2fcc6665be4aedcd08c22b0b23142f8c1b173f8b1c771158e538c1c988605"
+    }
+  ],
+  "master_defaults27": [
+    50,
+    50,
+    30,
+    40,
+    50,
+    40,
+    40,
+    40,
+    30,
+    50,
+    40,
+    40,
+    50,
+    40,
+    50,
+    40,
+    40,
+    40,
+    50,
+    40,
+    40,
+    20,
+    30,
+    40,
+    40,
+    40,
+    0
+  ],
+  "existing_rules": "../20261113-pricing-store-choice-data/README.md",
+  "reuse_audit_scope": "Existing pricing report, field/bridge JSON and source-reference model names. Large historical snapshot logs excluded.",
+  "paused_issues_investigated": false
+}

@@ -136,7 +136,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "既存未解決6件の保留を維持。通常画面・操作・データの既存成果を照合し未接続部分を進める。アンケート順位と店舗詳細パネルの表示参照・星・座標・許可アンカーは接続済みとして反復しない。解析完了とAndroid実装済みは区別する。",
+  "next": "既存未解決6件の保留を維持。通常画面・操作・データの未接続部分を進める。アンケート、店舗詳細、価格UIの平均利益率/平均増減/個別表示は接続済みとして反復しない。既知の価格編集・会計式や直近の床実装修正を新しい原仕様として計上しない。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -258,6 +258,14 @@
       "status": "resolved_scoped_source_rendering",
       "evidence": "analysis/20261119-store-detail-panel-ui/README.md",
       "resolution": "Original4D8C8 reader bound to previous-month revenue, seven schedule templates, signed rating/20 stars, native clean/security/service calculations and three fixed permit icons. Four controlled native-reader cases; visual children intercepted. No full UI/GPU/Android update.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X16",
+      "title": "商品価格UIの26件平均・別計算の増減平均・定価/UP/OFF",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-price-policy-display/README.md",
+      "resolution": "Original62CFC display computes independent truncated means for26settings and26deltas; normal+6 example has mean41 but label定価. Individual display uses selected delta. Eight bounded display entries with captured visual calls; old edit/price rules reused. No APK changes.",
       "counted_in_seven_tracked_items": false
     }
   ],

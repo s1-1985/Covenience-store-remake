@@ -1,0 +1,26 @@
+{
+  "README.md": {
+    "sha256": "bb9153367c001464416dca7f17ec1aaf89a92257bb2d9c8638f4e96bb789d24b",
+    "bytes": 6614
+  },
+  "analyze-price-display.py": {
+    "sha256": "f897e8bb9437add331e07e11da1aed1fd1c34c7469daaa38d5ea7b2fbf69a3dc",
+    "bytes": 7232
+  },
+  "inline-templates.json": {
+    "sha256": "d9fc2c85246dff7f65dcbdfe2084213eda4b78873e72e4c9b0e25b467edb3992",
+    "bytes": 2583
+  },
+  "original-cases.json": {
+    "sha256": "d2943664731b97ace2107137a3b8c471eff2e2f24280d313d0e5e4549500cecf",
+    "bytes": 20295
+  },
+  "price-display-rules.json": {
+    "sha256": "364509691fc475340c4a462a1f06147b8f3031c07c012b80090a195b5646637e",
+    "bytes": 1499
+  },
+  "source-provenance.json": {
+    "sha256": "4f2d7065eda4f063719e0a57a221bc563227d9cb2bf3a9938e84e09abe48aa94",
+    "bytes": 1371
+  }
+}

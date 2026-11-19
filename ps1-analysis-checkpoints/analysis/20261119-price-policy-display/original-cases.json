@@ -1,0 +1,1011 @@
+{
+  "cases": [
+    {
+      "name": "initial_settings",
+      "entry": "0x80062cfc",
+      "settings26": [
+        50,
+        50,
+        30,
+        40,
+        50,
+        40,
+        40,
+        40,
+        30,
+        50,
+        40,
+        40,
+        50,
+        40,
+        50,
+        40,
+        40,
+        40,
+        50,
+        40,
+        40,
+        20,
+        30,
+        40,
+        40,
+        40
+      ],
+      "cash26_setting": 99,
+      "model": {
+        "mean_or_selected_setting": 40,
+        "mean_or_selected_delta": 0
+      },
+      "displayed_setting": 40,
+      "label": {
+        "kind": "inline",
+        "x": 180,
+        "y": 128,
+        "pointer": "0x80099c6c",
+        "text": "定価"
+      },
+      "draw_calls": [
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 80,
+          "pointer": "0x80099bf8",
+          "text": "商品価格を決定して下さい"
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 96,
+          "pointer": "0x80099c28",
+          "text": "全商品平均利益率"
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 128,
+          "pointer": "0x80099cc8",
+          "text": "全体に設定{4002}個別に設定"
+        },
+        {
+          "kind": "message",
+          "x": 124,
+          "y": 160,
+          "message": 22,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 192,
+          "y": 96,
+          "message": 369,
+          "numeric_i32": 40
+        },
+        {
+          "kind": "inline",
+          "x": 216,
+          "y": 96,
+          "pointer": "0x80099c60",
+          "text": "%"
+        },
+        {
+          "kind": "inline",
+          "x": 180,
+          "y": 128,
+          "pointer": "0x80099c6c",
+          "text": "定価"
+        },
+        {
+          "kind": "message",
+          "x": 156,
+          "y": 128,
+          "message": 270,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 224,
+          "y": 128,
+          "message": 269,
+          "numeric_i32": 0
+        }
+      ],
+      "store_record_unchanged": true,
+      "stop": "before original input/update41374"
+    },
+    {
+      "name": "mixed_changes_zero_mean",
+      "entry": "0x80062cfc",
+      "settings26": [
+        51,
+        49,
+        30,
+        40,
+        50,
+        40,
+        40,
+        40,
+        30,
+        50,
+        40,
+        40,
+        50,
+        40,
+        50,
+        40,
+        40,
+        40,
+        50,
+        40,
+        40,
+        20,
+        30,
+        40,
+        40,
+        40
+      ],
+      "cash26_setting": 99,
+      "model": {
+        "mean_or_selected_setting": 40,
+        "mean_or_selected_delta": 0
+      },
+      "displayed_setting": 40,
+      "label": {
+        "kind": "inline",
+        "x": 180,
+        "y": 128,
+        "pointer": "0x80099c6c",
+        "text": "定価"
+      },
+      "draw_calls": [
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 80,
+          "pointer": "0x80099bf8",
+          "text": "商品価格を決定して下さい"
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 96,
+          "pointer": "0x80099c28",
+          "text": "全商品平均利益率"
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 128,
+          "pointer": "0x80099cc8",
+          "text": "全体に設定{4002}個別に設定"
+        },
+        {
+          "kind": "message",
+          "x": 124,
+          "y": 160,
+          "message": 22,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 192,
+          "y": 96,
+          "message": 369,
+          "numeric_i32": 40
+        },
+        {
+          "kind": "inline",
+          "x": 216,
+          "y": 96,
+          "pointer": "0x80099c60",
+          "text": "%"
+        },
+        {
+          "kind": "inline",
+          "x": 180,
+          "y": 128,
+          "pointer": "0x80099c6c",
+          "text": "定価"
+        },
+        {
+          "kind": "message",
+          "x": 156,
+          "y": 128,
+          "message": 270,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 224,
+          "y": 128,
+          "message": 269,
+          "numeric_i32": 0
+        }
+      ],
+      "store_record_unchanged": true,
+      "stop": "before original input/update41374"
+    },
+    {
+      "name": "single_product_plus26",
+      "entry": "0x80062cfc",
+      "settings26": [
+        76,
+        50,
+        30,
+        40,
+        50,
+        40,
+        40,
+        40,
+        30,
+        50,
+        40,
+        40,
+        50,
+        40,
+        50,
+        40,
+        40,
+        40,
+        50,
+        40,
+        40,
+        20,
+        30,
+        40,
+        40,
+        40
+      ],
+      "cash26_setting": 99,
+      "model": {
+        "mean_or_selected_setting": 41,
+        "mean_or_selected_delta": 1
+      },
+      "displayed_setting": 41,
+      "label": {
+        "kind": "inline",
+        "x": 200,
+        "y": 128,
+        "pointer": "0x80099c64",
+        "text": "UP"
+      },
+      "draw_calls": [
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 80,
+          "pointer": "0x80099bf8",
+          "text": "商品価格を決定して下さい"
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 96,
+          "pointer": "0x80099c28",
+          "text": "全商品平均利益率"
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 128,
+          "pointer": "0x80099cc8",
+          "text": "全体に設定{4002}個別に設定"
+        },
+        {
+          "kind": "message",
+          "x": 124,
+          "y": 160,
+          "message": 22,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 192,
+          "y": 96,
+          "message": 369,
+          "numeric_i32": 41
+        },
+        {
+          "kind": "inline",
+          "x": 216,
+          "y": 96,
+          "pointer": "0x80099c60",
+          "text": "%"
+        },
+        {
+          "kind": "inline",
+          "x": 200,
+          "y": 128,
+          "pointer": "0x80099c64",
+          "text": "UP"
+        },
+        {
+          "kind": "message",
+          "x": 164,
+          "y": 128,
+          "message": 369,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "inline",
+          "x": 188,
+          "y": 128,
+          "pointer": "0x80099c60",
+          "text": "%"
+        },
+        {
+          "kind": "message",
+          "x": 156,
+          "y": 128,
+          "message": 270,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "message",
+          "x": 224,
+          "y": 128,
+          "message": 269,
+          "numeric_i32": 1
+        }
+      ],
+      "store_record_unchanged": true,
+      "stop": "before original input/update41374"
+    },
+    {
+      "name": "single_product_plus6_zero_delta",
+      "entry": "0x80062cfc",
+      "settings26": [
+        56,
+        50,
+        30,
+        40,
+        50,
+        40,
+        40,
+        40,
+        30,
+        50,
+        40,
+        40,
+        50,
+        40,
+        50,
+        40,
+        40,
+        40,
+        50,
+        40,
+        40,
+        20,
+        30,
+        40,
+        40,
+        40
+      ],
+      "cash26_setting": 99,
+      "model": {
+        "mean_or_selected_setting": 41,
+        "mean_or_selected_delta": 0
+      },
+      "displayed_setting": 41,
+      "label": {
+        "kind": "inline",
+        "x": 180,
+        "y": 128,
+        "pointer": "0x80099c6c",
+        "text": "定価"
+      },
+      "draw_calls": [
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 80,
+          "pointer": "0x80099bf8",
+          "text": "商品価格を決定して下さい"
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 96,
+          "pointer": "0x80099c28",
+          "text": "全商品平均利益率"
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 128,
+          "pointer": "0x80099cc8",
+          "text": "全体に設定{4002}個別に設定"
+        },
+        {
+          "kind": "message",
+          "x": 124,
+          "y": 160,
+          "message": 22,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 192,
+          "y": 96,
+          "message": 369,
+          "numeric_i32": 41
+        },
+        {
+          "kind": "inline",
+          "x": 216,
+          "y": 96,
+          "pointer": "0x80099c60",
+          "text": "%"
+        },
+        {
+          "kind": "inline",
+          "x": 180,
+          "y": 128,
+          "pointer": "0x80099c6c",
+          "text": "定価"
+        },
+        {
+          "kind": "message",
+          "x": 156,
+          "y": 128,
+          "message": 270,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 224,
+          "y": 128,
+          "message": 269,
+          "numeric_i32": 0
+        }
+      ],
+      "store_record_unchanged": true,
+      "stop": "before original input/update41374"
+    },
+    {
+      "name": "all_minus1",
+      "entry": "0x80062cfc",
+      "settings26": [
+        49,
+        49,
+        29,
+        39,
+        49,
+        39,
+        39,
+        39,
+        29,
+        49,
+        39,
+        39,
+        49,
+        39,
+        49,
+        39,
+        39,
+        39,
+        49,
+        39,
+        39,
+        19,
+        29,
+        39,
+        39,
+        39
+      ],
+      "cash26_setting": 99,
+      "model": {
+        "mean_or_selected_setting": 39,
+        "mean_or_selected_delta": -1
+      },
+      "displayed_setting": 39,
+      "label": {
+        "kind": "inline",
+        "x": 200,
+        "y": 128,
+        "pointer": "0x80099c74",
+        "text": "OFF"
+      },
+      "draw_calls": [
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 80,
+          "pointer": "0x80099bf8",
+          "text": "商品価格を決定して下さい"
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 96,
+          "pointer": "0x80099c28",
+          "text": "全商品平均利益率"
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 128,
+          "pointer": "0x80099cc8",
+          "text": "全体に設定{4002}個別に設定"
+        },
+        {
+          "kind": "message",
+          "x": 124,
+          "y": 160,
+          "message": 22,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 192,
+          "y": 96,
+          "message": 369,
+          "numeric_i32": 39
+        },
+        {
+          "kind": "inline",
+          "x": 216,
+          "y": 96,
+          "pointer": "0x80099c60",
+          "text": "%"
+        },
+        {
+          "kind": "inline",
+          "x": 200,
+          "y": 128,
+          "pointer": "0x80099c74",
+          "text": "OFF"
+        },
+        {
+          "kind": "message",
+          "x": 164,
+          "y": 128,
+          "message": 369,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "inline",
+          "x": 188,
+          "y": 128,
+          "pointer": "0x80099c60",
+          "text": "%"
+        },
+        {
+          "kind": "message",
+          "x": 156,
+          "y": 128,
+          "message": 270,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "message",
+          "x": 224,
+          "y": 128,
+          "message": 269,
+          "numeric_i32": 1
+        }
+      ],
+      "store_record_unchanged": true,
+      "stop": "before original input/update41374"
+    },
+    {
+      "name": "individual_first_delta-1",
+      "entry": "0x80063714",
+      "settings26": [
+        49,
+        50,
+        30,
+        40,
+        50,
+        40,
+        40,
+        40,
+        30,
+        50,
+        40,
+        40,
+        50,
+        40,
+        50,
+        40,
+        40,
+        40,
+        50,
+        40,
+        40,
+        20,
+        30,
+        40,
+        40,
+        40
+      ],
+      "cash26_setting": 99,
+      "model": {
+        "mean_or_selected_setting": 49,
+        "mean_or_selected_delta": -1
+      },
+      "displayed_setting": 49,
+      "label": {
+        "kind": "inline",
+        "x": 200,
+        "y": 128,
+        "pointer": "0x80099c74",
+        "text": "OFF"
+      },
+      "draw_calls": [
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 80,
+          "pointer": "0x80099c3c",
+          "text": "商品別価格を決定して下さい"
+        },
+        {
+          "kind": "message",
+          "x": 124,
+          "y": 176,
+          "message": 22,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 120,
+          "y": 112,
+          "message": 71,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "inline",
+          "x": 200,
+          "y": 128,
+          "pointer": "0x80099c74",
+          "text": "OFF"
+        },
+        {
+          "kind": "message",
+          "x": 164,
+          "y": 128,
+          "message": 369,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "inline",
+          "x": 188,
+          "y": 128,
+          "pointer": "0x80099c60",
+          "text": "%"
+        },
+        {
+          "kind": "message",
+          "x": 156,
+          "y": 128,
+          "message": 270,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "message",
+          "x": 224,
+          "y": 128,
+          "message": 269,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "message",
+          "x": 92,
+          "y": 96,
+          "message": 267,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "message",
+          "x": 92,
+          "y": 142,
+          "message": 268,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "message",
+          "x": 160,
+          "y": 144,
+          "message": 369,
+          "numeric_i32": 49
+        },
+        {
+          "kind": "inline",
+          "x": 120,
+          "y": 144,
+          "pointer": "0x80099c58",
+          "text": "利益率"
+        },
+        {
+          "kind": "inline",
+          "x": 188,
+          "y": 144,
+          "pointer": "0x80099c60",
+          "text": "%"
+        }
+      ],
+      "store_record_unchanged": true,
+      "stop": "before original input/update41374"
+    },
+    {
+      "name": "individual_first_delta0",
+      "entry": "0x80063714",
+      "settings26": [
+        50,
+        50,
+        30,
+        40,
+        50,
+        40,
+        40,
+        40,
+        30,
+        50,
+        40,
+        40,
+        50,
+        40,
+        50,
+        40,
+        40,
+        40,
+        50,
+        40,
+        40,
+        20,
+        30,
+        40,
+        40,
+        40
+      ],
+      "cash26_setting": 99,
+      "model": {
+        "mean_or_selected_setting": 50,
+        "mean_or_selected_delta": 0
+      },
+      "displayed_setting": 50,
+      "label": {
+        "kind": "inline",
+        "x": 180,
+        "y": 128,
+        "pointer": "0x80099c6c",
+        "text": "定価"
+      },
+      "draw_calls": [
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 80,
+          "pointer": "0x80099c3c",
+          "text": "商品別価格を決定して下さい"
+        },
+        {
+          "kind": "message",
+          "x": 124,
+          "y": 176,
+          "message": 22,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 120,
+          "y": 112,
+          "message": 71,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "inline",
+          "x": 180,
+          "y": 128,
+          "pointer": "0x80099c6c",
+          "text": "定価"
+        },
+        {
+          "kind": "message",
+          "x": 156,
+          "y": 128,
+          "message": 270,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 224,
+          "y": 128,
+          "message": 269,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 92,
+          "y": 96,
+          "message": 267,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 92,
+          "y": 142,
+          "message": 268,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 160,
+          "y": 144,
+          "message": 369,
+          "numeric_i32": 50
+        },
+        {
+          "kind": "inline",
+          "x": 120,
+          "y": 144,
+          "pointer": "0x80099c58",
+          "text": "利益率"
+        },
+        {
+          "kind": "inline",
+          "x": 188,
+          "y": 144,
+          "pointer": "0x80099c60",
+          "text": "%"
+        }
+      ],
+      "store_record_unchanged": true,
+      "stop": "before original input/update41374"
+    },
+    {
+      "name": "individual_first_delta1",
+      "entry": "0x80063714",
+      "settings26": [
+        51,
+        50,
+        30,
+        40,
+        50,
+        40,
+        40,
+        40,
+        30,
+        50,
+        40,
+        40,
+        50,
+        40,
+        50,
+        40,
+        40,
+        40,
+        50,
+        40,
+        40,
+        20,
+        30,
+        40,
+        40,
+        40
+      ],
+      "cash26_setting": 99,
+      "model": {
+        "mean_or_selected_setting": 51,
+        "mean_or_selected_delta": 1
+      },
+      "displayed_setting": 51,
+      "label": {
+        "kind": "inline",
+        "x": 200,
+        "y": 128,
+        "pointer": "0x80099c64",
+        "text": "UP"
+      },
+      "draw_calls": [
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 80,
+          "pointer": "0x80099c3c",
+          "text": "商品別価格を決定して下さい"
+        },
+        {
+          "kind": "message",
+          "x": 124,
+          "y": 176,
+          "message": 22,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "message",
+          "x": 120,
+          "y": 112,
+          "message": 71,
+          "numeric_i32": 0
+        },
+        {
+          "kind": "inline",
+          "x": 200,
+          "y": 128,
+          "pointer": "0x80099c64",
+          "text": "UP"
+        },
+        {
+          "kind": "message",
+          "x": 164,
+          "y": 128,
+          "message": 369,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "inline",
+          "x": 188,
+          "y": 128,
+          "pointer": "0x80099c60",
+          "text": "%"
+        },
+        {
+          "kind": "message",
+          "x": 156,
+          "y": 128,
+          "message": 270,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "message",
+          "x": 224,
+          "y": 128,
+          "message": 269,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "message",
+          "x": 92,
+          "y": 96,
+          "message": 267,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "message",
+          "x": 92,
+          "y": 142,
+          "message": 268,
+          "numeric_i32": 1
+        },
+        {
+          "kind": "message",
+          "x": 160,
+          "y": 144,
+          "message": 369,
+          "numeric_i32": 51
+        },
+        {
+          "kind": "inline",
+          "x": 120,
+          "y": 144,
+          "pointer": "0x80099c58",
+          "text": "利益率"
+        },
+        {
+          "kind": "inline",
+          "x": 188,
+          "y": 144,
+          "pointer": "0x80099c60",
+          "text": "%"
+        }
+      ],
+      "store_record_unchanged": true,
+      "stop": "before original input/update41374"
+    }
+  ],
+  "original_block_entries": 8,
+  "operating_updates": 0,
+  "gameplay_callee_replacements": 0,
+  "visual_callee_intercepts": [
+    "0x80017b18",
+    "0x800182d0",
+    "0x80018940",
+    "0x8004e494",
+    "0x80065974",
+    "0x80067338",
+    "0x80069438"
+  ],
+  "scope": "Normal price-setting ranges injected in an otherwise zeroed diagnostic store; no original title/shop acquisition/stock/editor input/confirm/cancel loop or GPU output. The first individual item is selected by original initialization."
+}
