@@ -1,0 +1,25 @@
+{
+  "filename": "Conveni-Android-v0.6.3-floorfix.apk",
+  "bytes": 44942655,
+  "sha256": "f8011494724d8c509fdaf96cd1aad0a77fcbe17f25c4f32f30858eafce8b64f8",
+  "version_code": 63,
+  "version_name": "0.6.3-floorfix",
+  "package": "com.conveniremake.floorfix",
+  "architecture": "arm64-v8a",
+  "base_commit": "26d88e20812e7c540864f2c98ca41102440a779a",
+  "native_engine_reused_from": "Conveni-Android-v0.6.2-PS-UI.apk",
+  "native_engine_unchanged": true,
+  "tests": [
+    "floor_lifecycle_smoke PASS",
+    "floor_ui_smoke PASS",
+    "Godot APK export PASS",
+    "apksigner verify PASS"
+  ],
+  "android_device_tested": false,
+  "app_label": "ザ・コンビニ 床修正版",
+  "library_file_id": "libfile_86c1d2f7ba8c819181d10845e0fbba87",
+  "library_url": "https://chatgpt.com/library?file_id=libfile_86c1d2f7ba8c819181d10845e0fbba87&account_id=personal",
+  "old_save_auto_migrated": false,
+  "signature": "v2/v3 debug; distinct package so existing installation can remain",
+  "paused_unresolved_issues": 6
+}

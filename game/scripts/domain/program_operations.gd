@@ -3,6 +3,8 @@ extends RefCounted
 
 # Native ports of verified models from analysis commit 2c00ba53.
 # floor_wear.py (80031498), staff_work.py, staff_candidate_pool.py (8006F8BC).
+const FLOOR_MATERIAL_CODES := [0, 5, 10]
+
 static func cleanliness(rows: Array) -> int:
     var count := 0
     var clean := 0
@@ -13,10 +15,12 @@ static func cleanliness(rows: Array) -> int:
                 clean += int(int(value) % 5 == 0)
     return clean * 100 / count if count else 100
 
-static func wear(rows: Array, previous: int, positions: Array, rng) -> int:
+static func wear(rows: Array, cleaning_score: int, positions: Array, rng) -> int:
     var percentage := cleanliness(rows)
-    if previous < percentage:
+    if cleaning_score < percentage:
         for position in positions:
+            if position.x < 0 or position.y < 0:
+                continue
             var x: int = position.x / 2
             var y: int = position.y / 2
             if y < 0 or y >= rows.size() or x < 0 or x >= rows[y].size():

@@ -1238,13 +1238,13 @@ func _fill_interior() -> void:
         _updaters.append( func():
             button.disabled = main.simulation.economy.cash_yen < price or ( not permit.is_empty() and not main.simulation.has_permit(permit)))
     if main.simulation.config["store"].has("source_floor"):
-        _section("床の模様")
+        _section("床材")
         var floors := GridContainer.new()
-        floors.columns = 8
+        floors.columns = 3
         window_body.add_child(floors)
-        for floor_id in 16:
-            var selected := floor_id
-            _button(str(floor_id + 1), func():
+        for material in 3:
+            var selected: int = [0, 5, 10][material]
+            _button("床材%d" % (material + 1), func():
                 main.simulation.try_set_source_floor(selected)
                 main.store_view.queue_redraw(), floors)
     _section("見本")

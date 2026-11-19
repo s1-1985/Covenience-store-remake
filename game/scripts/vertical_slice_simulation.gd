@@ -6060,11 +6060,11 @@ func source_store_ready() -> bool:
 
 
 func try_set_source_floor(floor_id: int) -> bool:
-    if is_game_over or floor_id < 0 or floor_id > 15 or not config["store"].has("source_floor"):
+    if is_game_over or floor_id not in ProgramOperationsScript.FLOOR_MATERIAL_CODES or not config["store"].has("source_floor"):
         return false
     for row in config["store"]["source_floor"]:
         for x in row.size():
-            if int(row[x]) <= 15:
+            if int(row[x]) >= 0 and int(row[x]) <= 15:
                 row[x] = floor_id
     _record_event("floor_changed", {"floor_id": floor_id})
     return true
@@ -6221,14 +6221,22 @@ func _annual_review() -> void:
 func source_cleanliness() -> int:
     return ProgramOperationsScript.cleanliness(config["store"].get("source_floor", []))
 
+# 8002287C / 80023D98: wear compares the current assigned staff score,
+# not the previous sample of the floor's clean-tile percentage. Keep those
+# two values separate, including when an older save contains floor_previous=100.
+func source_cleaning_score() -> int:
+    var skills: Array = []
+    for person in staff.all_staff():
+        skills.append(person.cleaning_skill)
+    return int(_store_value.compute_cleaning_value(skills, _store_size_tier))
+
 func _step_source_floor_wear() -> void:
     var clock := day_count * 1440 + minute_of_day
     if minute_of_day % 60 == 0 and int(config["store"].get("source_floor_clock", -1)) != clock:
         var positions: Array = []
         for customer in customers.active_customers():
             positions.append(customer.position)
-        var previous := int(config["store"].get("source_previous_cleanliness", 0))
-        config["store"]["source_previous_cleanliness"] = ProgramOperationsScript.wear(config["store"]["source_floor"], previous, positions, _program_rng)
+        config["store"]["source_previous_cleanliness"] = ProgramOperationsScript.wear(config["store"]["source_floor"], source_cleaning_score(), positions, _program_rng)
         config["store"]["source_floor_clock"] = clock
     _dirty_cells.clear()
     var rows: Array = config["store"]["source_floor"]

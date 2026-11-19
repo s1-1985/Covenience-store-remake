@@ -136,7 +136,7 @@ func open_window(id: String) -> void:
             history.append(screen)
         screen = id
     command_open = false
-    window_id = "interior" if id in ["interior", "fixtures", "close_shop"] else id
+    window_id = "interior" if id in ["interior", "fixtures", "floor_material", "close_shop"] else id
     window.visible = true
     window.modulate.a = 0.0
     window.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -378,11 +378,12 @@ func _draw_screen(_target: Node2D) -> void:
         "store": _store_panel()
         "interior":
             if floor_mode.is_empty():
-                _list([["配置", "fixtures"], ["移動", "move"], ["入れ替え", "swap"], ["売却", "sell"], ["終了", "finish"]], Rect2(192,64,118,0))
+                _list([["配置", "fixtures"], ["移動", "move"], ["入れ替え", "swap"], ["売却", "sell"], ["床材", "floor_material"], ["終了", "finish"]], Rect2(192,64,118,0))
             else:
                 _paper(Rect2(236,54,70,22))
                 _center(58, {"move":"移動", "swap":"入れ替え", "sell":"売却", "place":"配置"}.get(floor_mode,"配置"),236,70)
         "fixtures": _fixtures()
+        "floor_material": _floor_materials()
         "policy": _list([["営業時間", "hours"], ["商品価格", "prices"], ["販売許可", "permits"]], Rect2(192,64,118,0))
         "hours": _hours()
         "prices": _prices()
@@ -476,6 +477,23 @@ func _fixtures() -> void:
     _region(Rect2(258,195,16,16),func(): handle_shoulder(1),101)
     _ink(Vector2(45,195),"◁")
     _ink(Vector2(259,195),"▷")
+
+# Clean source tiles only. Codes1..4/6..9/11..14 are runtime stains,
+# not selectable interior patterns. This extra entry is a phone UI control.
+func _floor_materials() -> void:
+    _paper(Rect2(60, 68, 200, 100))
+    _ink(Vector2(69, 76), "床材を選択して下さい")
+    var atlas: Texture2D = _texture("res://assets/ps1/floor_atlas.png")
+    for i in 3:
+        var code: int = [0, 5, 10][i]
+        var picture := AtlasTexture.new()
+        picture.atlas = atlas
+        picture.region = Rect2(code * 16, 0, 16, 16)
+        _icon(Rect2(80 + i * 64, 105, 32, 32), picture, func():
+            if main.simulation.try_set_source_floor(code):
+                main.store_view.queue_redraw()
+                handle_cancel(), i)
+        _ink(Vector2(80 + i * 64, 141), "床材%d" % (i + 1))
 
 func _hours() -> void:
     var presets: Array = main.simulation.business_hours_presets()
