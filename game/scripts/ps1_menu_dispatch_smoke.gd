@@ -37,7 +37,7 @@ func _run() -> void:
     await tap(Vector2(1200,422)) # rail cancel
     assert(ui.screen == "root", "Cancel rail must remain clickable with a menu open")
     await tap(Vector2(1200,342)) # rail accept (first entry = store)
-    assert(ui.screen == "store", "Accept rail must remain clickable with a menu open")
+    assert(ui.screen == "realestate", "Accept must execute the selection restored by Back")
     await tap(Vector2(80,342)) # command rail closes menu
     assert(ui.screen.is_empty(), "Command rail must close an open menu")
     game.town_view.show()

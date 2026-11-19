@@ -17,6 +17,10 @@ var hits: Array = []
 var panel_rects: Array[Rect2] = []
 var screen := ""
 var history: Array[String] = []
+var _history_states: Array[Dictionary] = []
+var _restoring_menu := false
+var _pending_taps: Dictionary = {}
+var _dismiss_request: Dictionary = {}
 var selection := 0
 var choice := 0
 var page := 0
@@ -138,7 +142,7 @@ func open_window(id: String) -> void:
         return
     if main.selecting_site:
         return
-    if id == "candidates" and screen != "candidates":
+    if id == "candidates" and screen != "candidates" and not _restoring_menu:
         # Sampling consumes the gameplay RNG. Do it once on entry, never
         # from the draw callback, hover, or the decision handler.
         _hiring_candidates = main.simulation.source_hiring_candidates()
@@ -151,6 +155,7 @@ func open_window(id: String) -> void:
     else:
         if not screen.is_empty() and screen != id:
             history.append(screen)
+            _history_states.append({"page":page,"selection":selection,"choice":choice,"slot":slot,"pool":_hiring_candidates.duplicate()})
         screen = id
     command_open = false
     window_id = "interior" if id in ["interior", "fixtures", "floor_material", "close_shop"] else id
@@ -174,6 +179,8 @@ func close_window() -> void:
     _cancel_staff_drag()
     screen = ""
     history.clear()
+    _history_states.clear()
+    _pending_taps.clear()
     floor_mode = ""
     command_open = false
     main.store_view.editing = false
@@ -204,8 +211,22 @@ func handle_cancel() -> bool:
         open_window("interior")
     elif not history.is_empty():
         var target: String = history.pop_back()
+        var state: Dictionary = _history_states.pop_back() if not _history_states.is_empty() else {}
         screen = ""
+        _restoring_menu = true
         open_window(target)
+        _restoring_menu = false
+        page = state.get("page",0)
+        selection = state.get("selection",0)
+        choice = state.get("choice",0)
+        slot = state.get("slot",0)
+        _hiring_candidates.assign(state.get("pool",[]))
+        if screen == "candidates" and not _person_id(main.simulation.staff,slot).is_empty():
+            for index in 3:
+                if _person_id(main.simulation.staff,index).is_empty():
+                    slot = index
+                    break
+        surface.queue_redraw()
     else:
         close_window()
     return true
@@ -353,6 +374,14 @@ func _input(event: InputEvent) -> void:
         surface.queue_redraw()
         return
     if released:
+        var pending: Dictionary = _pending_taps.get(pointer,{})
+        _pending_taps.erase(pointer)
+        if not pending.is_empty():
+            get_viewport().set_input_as_handled()
+            if not canceled and pending.screen == screen and pending.rect.has_point(p):
+                SoundManager.play_sfx("select")
+                pending.action.call()
+                surface.queue_redraw()
         if _claimed_touches.has(pointer):
             _claimed_touches.erase(pointer)
             get_viewport().set_input_as_handled()
@@ -401,8 +430,9 @@ func _input(event: InputEvent) -> void:
             var action: Callable = h.action
             _claimed_touches[pointer] = true
             get_viewport().set_input_as_handled()
-            SoundManager.play_sfx("select")
-            action.call()
+            # REMAKE_BALANCED_DEFAULT: native menu commits on release inside
+            # the same item, so sliding off cancels without changing game state.
+            _pending_taps[pointer] = {"screen":screen,"rect":h.rect,"action":action}
             surface.queue_redraw()
             return
     # A modal blocks the map everywhere, not only inside its painted paper.
@@ -467,12 +497,13 @@ func _option(rect: Rect2, text: String, action: Callable, index: int = -1) -> vo
     _region(rect, action, index)
 
 func _list(items: Array, rect := Rect2(45, 56, 86, 0)) -> void:
-    rect.size.y = items.size() * 16 + 6
+    # REMAKE_BALANCED_DEFAULT: owner-authorized phone-sized rows, same PS hierarchy.
+    rect.size.y = items.size() * 20 + 6
     _paper(rect)
     for i in items.size():
         var item: Array = items[i]
         var id := str(item[1])
-        _option(Rect2(rect.position + Vector2(3, 3 + i * 16), Vector2(rect.size.x - 6, 16)), str(item[0]), func(): _navigate(id), i)
+        _option(Rect2(rect.position + Vector2(3, 3 + i * 20), Vector2(rect.size.x - 6, 20)), str(item[0]), func(): _navigate(id), i)
 
 func _navigate(id: String) -> void:
     match id:
@@ -547,6 +578,7 @@ func _draw_screen(_target: Node2D) -> void:
         "facilities": _facilities()
         "staff": _list([["店員の雇用", "candidates"], ["店員の解雇", "dismiss"], ["店員の異動", "transfer"]], Rect2(45,56,86,0))
         "candidates", "dismiss": _personnel()
+        "dismiss_confirm": _dismiss_confirmation()
         "transfer": _transfer()
         "renovation": _renovation()
         "shop": _shop_details()
@@ -785,7 +817,7 @@ func _bar(at: Vector2, value: int, width: float = 40) -> void:
 func _personnel() -> void:
     var s = main.simulation
     var hiring := screen == "candidates"
-    _paper(Rect2(35,38,247,188))
+    _paper(Rect2(35,38,247,198))
     _ink(Vector2(100,42),s.store_name+"の店員を"+("採用します" if hiring else "解雇して下さい"))
     for i in 3:
         var index := i
@@ -794,7 +826,7 @@ func _personnel() -> void:
         if i == slot:
             surface.draw_rect(Rect2(40,40+i*52,48,40),PINK,false,1)
         _region(Rect2(41,41+i*52,46,44),func(): slot = index,10+i)
-        if i == 0: _ink(Vector2(52,81),"店長")
+        _ink_small(Vector2(42,80+i*52),("店長" if i == 0 else "店員%d" % i)+(" 空き" if id.is_empty() else ""))
     var ids: Array = _hiring_candidates if hiring else []
     var id: String = _person_id(s.staff,slot)
     if hiring:
@@ -816,10 +848,32 @@ func _personnel() -> void:
             _bar(Vector2(162,126+i*16),value)
         # The portrait/stat card is information; only an explicit decision
         # button or circle commits hiring/dismissal.
-        _option(Rect2(160,188,96,17),"採用する" if hiring else "解雇する",_decide_personnel,0)
-    _option(Rect2(95,61,18,16),"◁",func(): page = maxi(0,page-1),20)
-    _option(Rect2(116,61,18,16),"▷",func(): page = mini(maxi(0,ids.size()-1),page+1),21)
-    _footer(209)
+        var enabled: bool = not s.staff.members.has("staff-%d" % (slot+1)) if hiring else true
+        if enabled:
+            _option(Rect2(160,188,96,17),"採用する" if hiring else "解雇する",_decide_personnel,0)
+        else:
+            surface.draw_rect(Rect2(160,188,96,17),Color("b9b8ae"))
+            _ink(Vector2(162,188),"空き枠なし",Color("66665f"))
+            _region(Rect2(160,188,96,17),_decide_personnel,0)
+    if hiring:
+        _option(Rect2(95,61,18,20),"◁",func(): page = maxi(0,page-1),20)
+        _option(Rect2(116,61,18,20),"▷",func(): page = mini(maxi(0,ids.size()-1),page+1),21)
+    var occupied := 0
+    for i in 3:
+        if not _person_id(s.staff,i).is_empty(): occupied += 1
+    _ink_small(Vector2(40,194),"配置%d/3人 空き%d" % [occupied,3-occupied])
+    if hiring:
+        _ink_small(Vector2(40,206),"解雇画面へ" if occupied == 3 else "左の空き枠を選択")
+        _region(Rect2(40,204,112,13),func(): open_window("dismiss") if occupied == 3 else null,30)
+        _ink_small(Vector2(96,85),"候補%d/%d" % [page+1 if not ids.is_empty() else 0,ids.size()])
+    else:
+        _option(Rect2(98,62,36,16),"採用へ",func(): open_window("candidates"),30)
+    _footer(218)
+
+func _ink_small(at: Vector2, text: String) -> void:
+    surface.draw_set_transform(at,0,Vector2.ONE/ZOOM)
+    surface.draw_string(readable_font,Vector2(0,27),text,HORIZONTAL_ALIGNMENT_LEFT,-1,27,DARK)
+    surface.draw_set_transform(Vector2.ZERO)
 
 func _decide_personnel() -> void:
     var sim = main.simulation
@@ -842,10 +896,35 @@ func _decide_personnel() -> void:
         else:
             show_notice("採用条件を確認して下さい")
     elif screen == "dismiss":
-        if sim.try_dismiss_source_staff(key):
-            show_notice("解雇しました")
-        else:
-            show_notice("この店員は解雇できません")
+        var id := _person_id(sim.staff,slot)
+        if id.is_empty():
+            show_notice("この枠には店員がいません")
+            return
+        _dismiss_request = {"slot":slot,"id":id,"name":str(sim._candidate_figures(id).get("display_name",id))}
+        open_window("dismiss_confirm")
+    surface.queue_redraw()
+
+func _dismiss_confirmation() -> void:
+    _paper(Rect2(45,64,232,124))
+    _center(70,"店員の解雇")
+    _center(94,str(_dismiss_request.get("name","")))
+    _center(114,"この店員を解雇しますか")
+    _option(Rect2(60,148,96,22),"戻る",handle_cancel,0)
+    _option(Rect2(166,148,96,22),"解雇する",_confirm_dismissal,1)
+
+func _confirm_dismissal() -> void:
+    if _dismiss_request.is_empty(): return
+    var sim = main.simulation
+    var index: int = _dismiss_request.slot
+    if _person_id(sim.staff,index) != _dismiss_request.id:
+        show_notice("店員の配置が変わりました")
+        handle_cancel()
+        return
+    if sim.try_dismiss_source_staff("staff-%d" % (index+1)):
+        handle_cancel()
+        slot = index
+        show_notice("解雇しました。空き枠へ採用できます")
+    _dismiss_request.clear()
     surface.queue_redraw()
 
 func _transfer() -> void:

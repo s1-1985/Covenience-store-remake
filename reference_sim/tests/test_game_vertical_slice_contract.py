@@ -4189,6 +4189,9 @@ class GameVerticalSliceContractTests(unittest.TestCase):
             self.assertIn(text, smoke)
 
     def test_phone_screen_follows_the_original_layout(self):
+        menu = (GAME_ROOT / "scripts" / "ps1_ui.gd").read_text(encoding="utf-8")
+        self.assertIn("REMAKE_BALANCED_DEFAULT: native menu commits on release", menu)
+        self.assertIn("decision0217", self.config["android_preview"]["evidence_note"])
         # Task #110: the phone screen. What comes from the original and
         # what is this project's own is listed in phone_ui.gd's header, the
         # android_preview evidence note, and checked by the preview smoke.

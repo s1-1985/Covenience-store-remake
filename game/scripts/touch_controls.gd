@@ -64,9 +64,9 @@ func setup(owner_main, owner_ui) -> void:
         if not main.selecting_site:
             ui.toggle_window("stores"))
     _button("○\n決定", Vector2(1136, 310), _accept)
-    _button("×\n取消", Vector2(1136, 390), _cancel)
+    _button("×\n戻る", Vector2(1136, 390), _cancel)
     _button("SELECT\nシステム", Vector2(16, 620), func(): ui.toggle_window("system"))
-    pause_label = _button("START\n停止／終了", Vector2(1136, 620), func():
+    pause_label = _button("START\n閉じる／停止", Vector2(1136, 620), func():
         if ui.has_method("handle_start"):
             ui.handle_start()
         elif ui.window.visible:

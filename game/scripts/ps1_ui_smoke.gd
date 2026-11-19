@@ -14,6 +14,8 @@ func _tap(native: Vector2) -> void:
     event.pressed = true
     event.position = Vector2(160,0)+native*3
     ui._input(event)
+    event.pressed = false
+    ui._input(event)
     await process_frame
 func _capture(id: String) -> void:
     if DisplayServer.get_name() != "headless":
