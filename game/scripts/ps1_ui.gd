@@ -1046,20 +1046,21 @@ func _graph() -> void:
 
 func _survey() -> void:
     var s = main.simulation
-    _paper(Rect2(28,54,264,166))
-    _ink(Vector2(56,59),_company)
-    _selector(59)
+    _paper(Rect2(28,38,264,182))
+    _ink(Vector2(56,43),_company)
+    _selector(43)
     var data := {"bought":s.survey_bought,"missing":s.survey_missing}
     for col in 2:
         var x: int = 34+col*132
-        surface.draw_rect(Rect2(x+10,72,96,16),PINK if col==0 else BLUE)
-        _ink(Vector2(x+22,72),"買った商品" if col==0 else "欲しかった物")
+        surface.draw_rect(Rect2(x+10,64,96,16),PINK if col==0 else BLUE)
+        _ink(Vector2(x+22,64),"買った商品" if col==0 else "欲しかった物")
         var counts: Dictionary = data["bought" if col==0 else "missing"]
-        var keys: Array = counts.keys()
-        keys.sort_custom(func(a,b): return int(counts[a]) > int(counts[b]))
-        for i in mini(8,keys.size()):
-            _ink(Vector2(x,91+i*16),main.tr(str(keys[i])))
-            _ink(Vector2(x+96,91+i*16),str(counts[keys[i]]))
+        var rows: Array = preload("res://scripts/domain/program_survey.gd").rank(counts,s.config["source_catalog"]["product_ids"])
+        for i in rows.size():
+            _ink(Vector2(32+col*132,80+i*16),main.tr(str(rows[i].id)))
+            _ink(Vector2(120+col*132,80+i*16),str(rows[i].count))
+    if s.survey_legacy_totals:
+        _ink_small(Vector2(34,208),"更新前の集計を含みます")
 
 func _system() -> void:
     var bits: int = SoundManager.source_settings_bits

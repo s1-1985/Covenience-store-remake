@@ -290,7 +290,7 @@ static func customer(s, p) -> void:
                     p.source_wanted = ""
                     return
             if not target(s, p, "purchase", 1):
-                s.survey_missing[p.source_wanted] = int(s.survey_missing.get(p.source_wanted, 0)) + p.group_size
+                s._record_source_survey_missing(p.source_wanted,p.group_size)
                 p.source_wanted = ""
             return
         if p.source_state == 3 and p.basket.is_empty():
@@ -340,6 +340,7 @@ static func customer(s, p) -> void:
             return
         var line: Dictionary = s.inventory.try_take(product_id, p.group_size)
         if not line.is_empty():
+            s._record_source_survey_pick(product_id,p.group_size)
             line["unit_price_yen"] = cost
             p.budget_left -= cost
             if s._source_immediate_sale(product_id):
@@ -368,7 +369,6 @@ static func service(s, p) -> void:
             s._store_sales_yen += int(record["total_yen"])
             for line in p.basket:
                 var prod = s.inventory.get_product(str(line["product_id"]))
-                s.survey_bought[prod.catalog_id] = int(s.survey_bought.get(prod.catalog_id, 0)) + int(line["quantity"])
                 s._sold_counts[prod.catalog_id] = int(s._sold_counts.get(prod.catalog_id, 0)) + int(line["quantity"])
             p.basket.clear()
             worker.checkouts_done += 1

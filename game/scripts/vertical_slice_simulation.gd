@@ -113,6 +113,7 @@ var business_hours_id := ""
 var _catchment_weights: Dictionary = {}
 var survey_bought: Dictionary = {}
 var survey_missing: Dictionary = {}
+var survey_legacy_totals := false
 
 var survey_types: Dictionary = {}
 var last_survey: Dictionary = {}
@@ -203,7 +204,7 @@ var _checkout_queue: Array[String] = []
 const STORE_FIELDS := [
     "config", "layout", "inventory", "customers", "staff", "demand", "_checkout_interaction",
     "_checkout_queue", "_dirty_cells", "business_hours_id", "_catchment_weights", "survey_bought",
-    "survey_missing", "survey_types", "last_survey", "_permits_held", "_promotions_used_this_month",
+    "survey_missing", "survey_legacy_totals", "survey_types", "last_survey", "_permits_held", "_promotions_used_this_month",
     "_scheduled_promotions", "popularity", "price_change_pct", "product_price_settings", "internal_rating_value", "star_rating",
     "_store_size_tier", "store_site_origin", "_player_store_position", "store_type_id",
     "_sample_layout_catalog", "store_name", "_store_sales_yen",
@@ -378,6 +379,7 @@ func reset() -> void:
     _load_rivals()
     if not _business_hours.is_empty():
         _apply_business_hours(str(config["simulation"]["business_hours_default_id"]))
+    survey_legacy_totals = false
     survey_bought.clear()
     survey_missing.clear()
     survey_types.clear()
@@ -663,6 +665,7 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
     demand.is_bad_weather = config["weather"]["bad_weather_categories"].has(weather_category())
     _checkout_queue = []
     _dirty_cells = []
+    survey_legacy_totals = false
     survey_bought = {}
     survey_missing = {}
     survey_types = {}
@@ -3426,6 +3429,8 @@ func _advance_customer(customer) -> void:
                     })
                 elif not line.is_empty():
                     line["unit_price_yen"] = _apply_price_policy(int(line["unit_price_yen"]), inventory.get_product(product_id).catalog_id)
+                    if program_town != null:
+                        _record_source_survey_pick(product_id,customer.group_size)
                     if program_town != null and _source_immediate_sale(product_id):
                         _settle_source_immediate(customer, line)
                     else:
@@ -3537,9 +3542,10 @@ func _advance_customer(customer) -> void:
 
                         var bought_product = inventory.products.get(str(line["product_id"]))
                         if bought_product != null and not bought_product.catalog_id.is_empty():
-                            survey_bought[bought_product.catalog_id] = (
-                                int(survey_bought.get(bought_product.catalog_id, 0)) + int(line["quantity"])
-                            )
+                            if program_town == null:
+                                survey_bought[bought_product.catalog_id] = (
+                                    int(survey_bought.get(bought_product.catalog_id, 0)) + int(line["quantity"])
+                                )
                             _sold_counts[bought_product.catalog_id] = (
                                 int(_sold_counts.get(bought_product.catalog_id, 0)) + int(line["quantity"])
                             )
@@ -4004,6 +4010,8 @@ func _store_save_block() -> Dictionary:
 
         "checkout_staff_id": staff.checkout_staff_id,
         "survey": {
+            "source_counter_version": 2,
+            "legacy_totals": survey_legacy_totals,
             "bought": survey_bought.duplicate(),
             "missing": survey_missing.duplicate(),
             "types": survey_types.duplicate(),
@@ -4206,6 +4214,7 @@ func _restore_store_block(block: Dictionary, bought: Array) -> void:
     var saved_cashier := str(block.get("checkout_staff_id", staff.checkout_staff_id))
     if saved_cashier != staff.checkout_staff_id:
         staff.hand_over_checkout(saved_cashier)
+    survey_legacy_totals = bool(block["survey"].get("legacy_totals", int(block["survey"].get("source_counter_version",0)) < 2 and (not block["survey"]["bought"].is_empty() or not block["survey"]["missing"].is_empty())))
     survey_bought = _counts(block["survey"]["bought"])
     survey_missing = _counts(block["survey"]["missing"])
     survey_types = _counts(block["survey"].get("types", {}))
@@ -4786,6 +4795,7 @@ func _close_store_month() -> void:
     _annual_sales_yen += monthly_sales_yen
     _evaluate_store_rating(monthly_sales_yen)
     last_survey = {"bought": survey_bought.duplicate(), "missing": survey_missing.duplicate(), "types": survey_types.duplicate()}
+    survey_legacy_totals = false
     survey_bought.clear()
     survey_missing.clear()
     survey_types.clear()
@@ -6378,7 +6388,6 @@ func _settle_source_immediate(customer, line: Dictionary) -> void:
     var record: Dictionary = economy.settle_basket(customer.customer_id + ":direct:" + str(economy.sale_records.size()), minute_of_day, lines)
     _store_sales_yen += int(record["total_yen"])
     var product = inventory.get_product(str(line["product_id"]))
-    survey_bought[product.catalog_id] = int(survey_bought.get(product.catalog_id, 0)) + int(line["quantity"])
     _sold_counts[product.catalog_id] = int(_sold_counts.get(product.catalog_id, 0)) + int(line["quantity"])
     _record_event("self_service_sale", {"customer_id": customer.customer_id, "product_id": product.product_id, "total_yen": record["total_yen"]})
 
@@ -6394,3 +6403,18 @@ func _source_try_theft(customer, product_id: String) -> bool:
     customer.phase = "leaving"
     customer.route = layout.find_path(customer.position, layout.exit)
     return true
+
+
+func _record_source_survey_pick(product_id: String, heads: int) -> void:
+    var product = inventory.get_product(product_id)
+    preload("res://scripts/domain/program_survey.gd").add(survey_bought,product.catalog_id,heads)
+
+func _record_source_survey_missing(category: String, heads: int) -> void:
+    # Failure to find a route is not itself a stockout: the original
+    # 344C4 counter branch requires this category's total stock to be zero.
+    if category.is_empty(): return
+    var stock := 0
+    for product in inventory.products.values():
+        if product.catalog_id == category: stock += int(product.stock_units)
+    if stock == 0:
+        preload("res://scripts/domain/program_survey.gd").add(survey_missing,category,heads)
