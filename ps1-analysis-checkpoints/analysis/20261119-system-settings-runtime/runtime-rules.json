@@ -1,0 +1,45 @@
+{
+  "packed_address": "0x800CD898",
+  "se": {
+    "disable_mask": 1,
+    "runtime": "0x800CD834",
+    "save_body_offset": "0x36"
+  },
+  "monthly_report": {
+    "disable_mask": 2,
+    "runtime": "0x800CD835",
+    "save_body_offset": "0x38"
+  },
+  "bgm": {
+    "ui_values": [
+      1,
+      2,
+      3
+    ],
+    "packed_values": [
+      0,
+      256,
+      512
+    ],
+    "runtime": "0x800CD8A9",
+    "save_body_offset": "0x35",
+    "table": "0x80099864",
+    "table_i32": [
+      -1,
+      2,
+      3,
+      4
+    ],
+    "selected_requests": [
+      2,
+      3,
+      4
+    ]
+  },
+  "known_reused": [
+    "save_codec.py byte positions",
+    "sound backend and existing sample decoding"
+  ],
+  "new_scope": "settings UI representation -> runtime switch -> playback dispatch / existing save fields",
+  "android_updated": false
+}

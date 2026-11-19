@@ -1,0 +1,45 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": {
+    "settings_ui": {
+      "start": "0x8004eeb8",
+      "end_exclusive": "0x8004f5c8",
+      "sha256": "1341f17d42259571ec9761ae857f7a21f19aea27bcf886e20eadba467ee3ac1a"
+    },
+    "settings_apply": {
+      "start": "0x800625c4",
+      "end_exclusive": "0x80062698",
+      "sha256": "10f8cbfcfbba2f3f7463f71a1e9daf0027663714601b0529721e95a4f9c3bb82"
+    },
+    "sound_defaults": {
+      "start": "0x80064d58",
+      "end_exclusive": "0x80064da4",
+      "sha256": "ebf79a15e296143269adefd1613e8dea496a82b03ac6324dcec4fb97717b91f0"
+    },
+    "sound_dispatch": {
+      "start": "0x80064e4c",
+      "end_exclusive": "0x80065000",
+      "sha256": "7eac9ae8e0aefd326315c5adc4e2c86607f873e705e343116744c58d4bd3bb7a"
+    },
+    "music_table": {
+      "start": "0x80099864",
+      "end_exclusive": "0x80099874",
+      "sha256": "c184ba8f2613aa02007fd90ba62f0a8173e7f3d6a17d8c02adc6b015ddcbac23"
+    },
+    "save_settings": {
+      "start": "0x8006b8c0",
+      "end_exclusive": "0x8006b910",
+      "sha256": "0d70bad99fff63915d8c46b13cd17d376d90f3411333db6348a51576b711ba62"
+    },
+    "load_settings": {
+      "start": "0x8006bce4",
+      "end_exclusive": "0x8006bd34",
+      "sha256": "8594f7fae72da68991760360a5124036e213085de77a1be7c2515869211df816"
+    },
+    "monthly_notice_gate": {
+      "start": "0x80029e44",
+      "end_exclusive": "0x80029e78",
+      "sha256": "5bcd199d550f1c74027feb5dfc48269ef32f602febb6787664b04b0f8ccfbc8f"
+    }
+  }
+}

@@ -267,6 +267,14 @@
       "evidence": "analysis/20261119-price-policy-display/README.md",
       "resolution": "Original62CFC display computes independent truncated means for26settings and26deltas; normal+6 example has mean41 but label定価. Individual display uses selected delta. Eight bounded display entries with captured visual calls; old edit/price rules reused. No APK changes.",
       "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X17",
+      "title": "システム設定の選択値・音源要求・SE/報告フラグの対応",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261119-system-settings-runtime/README.md",
+      "resolution": "Six bounded original entries link packed UI settings to runtime flags, three BGM requests and SE dispatch gating. Known save fields reused; no audio/UI/card replay or APK update.",
+      "counted_in_seven_tracked_items": false
     }
   ],
   "novelty_audit": {

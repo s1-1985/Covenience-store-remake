@@ -1,0 +1,82 @@
+{
+  "settings_application": [
+    {
+      "packed": "0x0",
+      "se_enabled": 1,
+      "monthly_report_enabled": 1,
+      "music_selector": 1,
+      "music_request": [
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "packed": "0x103",
+      "se_enabled": 0,
+      "monthly_report_enabled": 0,
+      "music_selector": 2,
+      "music_request": [
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "packed": "0x202",
+      "se_enabled": 1,
+      "monthly_report_enabled": 0,
+      "music_selector": 3,
+      "music_request": [
+        [
+          4,
+          0
+        ]
+      ]
+    }
+  ],
+  "sound_dispatch": [
+    {
+      "se_enabled": 1,
+      "sound_request": 1,
+      "intercepted_calls": [
+        {
+          "callee": "0x8008ea7c",
+          "a0": 0,
+          "a1": 1
+        }
+      ]
+    },
+    {
+      "se_enabled": 0,
+      "sound_request": 1,
+      "intercepted_calls": []
+    },
+    {
+      "se_enabled": 0,
+      "sound_request": 28,
+      "intercepted_calls": [
+        {
+          "callee": "0x80064550",
+          "a0": 28,
+          "a1": 0
+        },
+        {
+          "callee": "0x80018a5c",
+          "a0": 28,
+          "a1": 0
+        },
+        {
+          "callee": "0x80064740",
+          "a0": 0,
+          "a1": 0
+        }
+      ]
+    }
+  ],
+  "original_entries": 6,
+  "gameplay_updates": 0,
+  "actual_audio": false
+}

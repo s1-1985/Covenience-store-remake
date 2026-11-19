@@ -1,29 +1,27 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_price_policy_display",
-  "report": "analysis/20261119-price-policy-display/README.md",
-  "previous_report": "analysis/20261119-store-detail-panel-ui/README.md",
+  "work_kind": "normal_system_settings_runtime_binding",
+  "report": "analysis/20261119-system-settings-runtime/README.md",
+  "previous_report": "analysis/20261119-price-policy-display/README.md",
   "priority": "Six existing unresolved issues remain paused; other normal UI readers analyzed.",
   "new_result": [
-    "Independent truncation of26setting mean and26delta mean, unweighted by inventory/sales.",
-    "Normal product0+6 input yields displayed mean41 and label定価.",
-    "Individual selected setting/delta and original UP/OFF/定価 text/positions connected."
+    "BGM choices1/2/3 select resource requests2/3/4, not volume.",
+    "SE/report disable bits invert runtime enable flags.",
+    "SE OFF suppresses normal request1 but does not suppress special request28 dispatch."
   ],
   "known_reused": [
-    "product master and unit-price formula",
-    "26-item editor boundaries",
-    "temporary deltas and confirm/cancel rules"
+    "save_codec.py byte mapping",
+    "sound backend",
+    "existing UI rectangle model"
   ],
-  "final_reproducer_original_entries": 8,
+  "final_reproducer_original_entries": 6,
   "entry_breakdown": {
-    "group_display": 5,
-    "individual_display": 3
+    "settings_apply": 3,
+    "sound_dispatch": 3
   },
-  "entry_count_scope": "Final eight-case reproducer; seven preliminary entries preceded the added independent-truncation boundary case.",
-  "visual_callee_intercepts": 7,
-  "gameplay_callee_replacements": 0,
+  "entry_count_scope": "Six bounded diagnostic entries.",
   "operating_updates": 0,
-  "verification": "Bounded first display blocks; stop before input41374. No natural menu loop, GPU or broad regression.",
+  "verification": "Original settings application fragment and sound dispatch; audio callees intercepted. No audio/UI/card or gameplay execution.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
