@@ -1,0 +1,25 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": {
+    "chain_scale": {
+      "start": "0x8004965c",
+      "end_exclusive": "0x80049844",
+      "sha256": "5159376c7694c1d855ff5baab58d87246387c43340b4fda7285b72465d592b34"
+    },
+    "chain_header": {
+      "start": "0x800498c8",
+      "end_exclusive": "0x80049b44",
+      "sha256": "41bfd0a75f885faa8a264cf6b8f82390df12453304702938b0a0347c71bed1dc"
+    },
+    "chain_bitmap": {
+      "start": "0x80048cf8",
+      "end_exclusive": "0x8004965c",
+      "sha256": "5bfa378391257f414a7e4d4cb62d5c2d9de405bc7bf8dcbe250fd91461153515"
+    },
+    "chain_ui": {
+      "start": "0x80048b80",
+      "end_exclusive": "0x80048cf8",
+      "sha256": "e4970c54273ce78626f078222ad4091112f5020322ee1cb683e4c4464b678e1d"
+    }
+  }
+}

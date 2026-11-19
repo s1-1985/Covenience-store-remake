@@ -1,0 +1,117 @@
+{
+  "header_cases": [
+    {
+      "name": "trunc_each_store_first",
+      "ratings": [
+        39,
+        99
+      ],
+      "own_slots": [
+        0,
+        3
+      ],
+      "rival_slot_excluded": 5,
+      "total_own_demand": 150,
+      "town_population": 300,
+      "share": {
+        "x": 24,
+        "y": 48,
+        "message": 461,
+        "value": 50,
+        "stars": 5
+      },
+      "aggregate_stars": {
+        "x": 168,
+        "y": 48,
+        "message": 462,
+        "value": 50,
+        "stars": 2
+      },
+      "store_records_unchanged": true
+    },
+    {
+      "name": "all_five_stars",
+      "ratings": [
+        100,
+        100
+      ],
+      "own_slots": [
+        0,
+        3
+      ],
+      "rival_slot_excluded": 5,
+      "total_own_demand": 150,
+      "town_population": 300,
+      "share": {
+        "x": 24,
+        "y": 48,
+        "message": 461,
+        "value": 50,
+        "stars": 10
+      },
+      "aggregate_stars": {
+        "x": 168,
+        "y": 48,
+        "message": 462,
+        "value": 50,
+        "stars": 5
+      },
+      "store_records_unchanged": true
+    }
+  ],
+  "plot_cases": [
+    {
+      "name": "positive_negative_zero",
+      "history_newest_first": [
+        500000,
+        -500000,
+        0
+      ],
+      "counts": [
+        2,
+        2,
+        2
+      ],
+      "scale_units_10000": 100,
+      "oldest_first_valid": [
+        0,
+        -500000,
+        500000
+      ],
+      "bitmap_sha256": "c87b7a64248605d0a480671fc2e6676d887fb7ef70bb98c7e05cd3b3424bd3ae",
+      "guard_bytes_unchanged": true,
+      "return_value": 1
+    },
+    {
+      "name": "stop_at_history_gap",
+      "history_newest_first": [
+        400000,
+        -2147483648,
+        9000000
+      ],
+      "counts": [
+        1,
+        1,
+        1
+      ],
+      "scale_units_10000": 100,
+      "oldest_first_valid": [
+        400000
+      ],
+      "bitmap_sha256": "e684f46d1e106f7bfc00ecb2f170b44b2d59106a49cf2ec187e9ad7051c28a68",
+      "guard_bytes_unchanged": true,
+      "return_value": 1
+    }
+  ],
+  "original_entries": 6,
+  "preparation_entries": 6,
+  "breakdown": {
+    "header": 2,
+    "scale": 2,
+    "bitmap": 2
+  },
+  "operating_updates": 0,
+  "header_text_renderer_intercepted": true,
+  "native_list_and_population_helpers_executed": true,
+  "scope": "Controlled current-store/town/history inputs; no natural play/GPU/text glyphs."
+}

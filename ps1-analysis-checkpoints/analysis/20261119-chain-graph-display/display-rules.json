@@ -1,0 +1,27 @@
+{
+  "header": {
+    "share": "trunc(100*sum(current own store+DE0)/current town profile population)",
+    "stars": "trunc(sum(trunc(each current own ratingC68/20))/number of own stores)",
+    "share_message": 461,
+    "stars_message": 462,
+    "historical": false
+  },
+  "bitmap": {
+    "source": "E3C28 chain monthly net, not store sales or per-store average",
+    "prefix": "Stop at first nonpositive signed store-count byte or missing chain-net sentinel; max60",
+    "order": "oldest valid first",
+    "size": [
+      240,
+      112
+    ],
+    "bar_width": 4,
+    "zero": "original draws1pixel atrow55 using palette3",
+    "native_clipping_scope": "Nonmax samples only; known exact-axis overflow not retested"
+  },
+  "reused": [
+    "monthly accounting/save layout",
+    "prior graph report scale/prefix/bar conventions"
+  ],
+  "new_scope": "native full-chain bitmap counterpart and current-chain header binding",
+  "apk_updated": false
+}

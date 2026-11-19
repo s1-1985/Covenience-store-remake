@@ -323,6 +323,14 @@
       "evidence": "analysis/20261119-interior-exit-messages/README.md",
       "resolution": "Ten original multiline strings bound to known numeric validator and parent branches. Three caller fragments capture0->state10 or8/9->state7 with exact pointers. Current Android finish closes without this UI validation route. Existing validation/priority reused, no validator/gameplay/dialog/APK execution.",
       "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X24",
+      "title": "全店グラフの現在全店ヘッダー・星の二段階切捨て・原ビットマップ",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-chain-graph-display/README.md",
+      "resolution": "Current own-store header aggregates demand and per-store truncated stars before averaging; two headers andtwo scale/chain-bitmap pairs, zero renders1bluepixel. Prior graph/history rules reused. Final6pluspreparation6 entries, no gameplay/GPU/APK change.",
+      "counted_in_seven_tracked_items": false
     }
   ],
   "novelty_audit": {

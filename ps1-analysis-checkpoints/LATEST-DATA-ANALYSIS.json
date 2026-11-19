@@ -1,26 +1,28 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_interior_exit_message_binding",
-  "report": "analysis/20261119-interior-exit-messages/README.md",
-  "previous_report": "analysis/20261119-store-type-selection-display/README.md",
+  "work_kind": "normal_chain_graph_header_and_bitmap",
+  "report": "analysis/20261119-chain-graph-display/README.md",
+  "previous_report": "analysis/20261119-interior-exit-messages/README.md",
   "priority": "Six existing unresolved issues remain paused; other normal UI readers analyzed.",
   "new_result": [
-    "Ten exact original multiline messages bound to known validation result1..10.",
-    "Success skips invalidindex0 messageword and goes to layout-saveconfirmation; failure preserves editingstate.",
-    "Current Android finish path directlycloses window without this validation/message route."
+    "Currentchain header aggregates ownstore demand and per-store truncatedstars;39/99 yields2stars, not3.",
+    "Original fullchain bitmap counterpart verified for signs/zero andmissing-prefix cutoff.",
+    "Zero net draws1pixel; store-specific history notneeded."
   ],
   "known_reused": [
-    "operation_validation.py numericrules/priority",
-    "category_parent_control.py exitstate10",
-    "existing layoutsave routine"
+    "monthly net history andsave mappings",
+    "prior graph scale/prefix/bar rules",
+    "demand DE0 andtown profile population generation"
   ],
-  "final_reproducer_original_entries": 3,
+  "final_reproducer_original_entries": 6,
   "entry_breakdown": {
-    "caller_fragment": 3
+    "current_chain_header": 2,
+    "scale": 2,
+    "chain_bitmap": 2
   },
-  "entry_count_scope": "Three staged-result caller fragments; no failed preparation CPUentries.",
+  "entry_count_scope": "Final6 top-level entries;6 preparation entries before correcting400000bar expectedrow.",
   "operating_updates": 0,
-  "verification": "Only761B8..7620C; result0/8/9 provided, audio/dialog callees captured. Originalvalidator0, fullpopup0, gameplay0. Tenmessage extraction isstatic.",
+  "verification": "Controlled stores/town/history. Original listing/population/bitmap execute, header textcaptured; no gameplay/GPU/naturalUI.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
