@@ -21,6 +21,7 @@ var _history_states: Array[Dictionary] = []
 var _restoring_menu := false
 var _pending_taps: Dictionary = {}
 var _dismiss_request: Dictionary = {}
+var _sale_request: Dictionary = {}
 var selection := 0
 var choice := 0
 var page := 0
@@ -263,7 +264,7 @@ func handle_shoulder(direction: int) -> bool:
         choice = 0
         surface.queue_redraw()
         return true
-    if screen in ["hours", "shop", "shop_graph", "survey", "transfer", "renovation"]:
+    if screen in ["hours", "shop", "shop_graph", "survey", "transfer", "renovation", "sell_store"]:
         if screen == "hours":
             choice = posmod(choice + direction, main.simulation.business_hours_presets().size())
         elif screen == "transfer":
@@ -586,11 +587,8 @@ func _draw_screen(_target: Node2D) -> void:
         "survey": _survey()
         "system": _system()
         "close_shop": _close_shop()
-        "sell_store":
-            _paper(Rect2(60,80,198,70))
-            _center(88,"店舗売却")
-            _center(108,"本店は売却できません" if s.active_store == 0 else "店舗売却は未実装です")
-            _option(Rect2(132,128,56,16),"終了",close_window)
+        "sell_store": _sell_store_panel()
+        "sell_store_confirm": _sell_store_confirmation()
     if not _staff_drag.is_empty() and _staff_drag_moved:
         var roster = s.store_field(_staff_drag.store,"staff")
         _face(_person_id(roster,_staff_drag.slot),Rect2(_staff_drag_position-Vector2(23,19),Vector2(46,38)))
@@ -838,7 +836,7 @@ func _personnel() -> void:
         _face(id,Rect2(148,57,46,38))
         _ink(Vector2(196,57),str(e.get("display_name",id)))
         _ink(Vector2(196,73),"%d歳 %s" % [int(e.get("age_years",0)),profiles.get(e.get("display_name",""),{}).get("gender", "")])
-        _ink(Vector2(196,89),"未経験" if hiring else "経験あり")
+        _ink(Vector2(196,89),"未経験" if hiring and not s._unassigned_staff.has(id) else "経験あり")
         _ink(Vector2(196,105),_money(int(e.get("salary_yen_per_day_24h",0)) if hiring else _scheduled_wage(int(s.staff.members["staff-%d" % (slot+1)].salary_yen_per_day_24h),s.business_hours_id))+"/日")
         var keys := ["stamina","academic_background","agility","sociability"]
         for i in 4:
@@ -984,9 +982,9 @@ func _renovation() -> void:
 func _selector(y: float = 43) -> void:
     _ink(Vector2(204,y),main.simulation.store_name)
     _region(Rect2(185,y,16,16),func(): handle_shoulder(-1),100)
-    _region(Rect2(234,y,16,16),func(): handle_shoulder(1),101)
+    _region(Rect2(268,y,16,16),func(): handle_shoulder(1),101)
     _ink(Vector2(186,y),"◁")
-    _ink(Vector2(234,y),"▷")
+    _ink(Vector2(268,y),"▷")
 
 func _shop_details() -> void:
     var s = main.simulation
@@ -1016,33 +1014,25 @@ func _graph() -> void:
     _ink(Vector2(108,59),"%d%%" % int(s.demand.customer_share_percent))
     _ink(Vector2(169,59),"総合評価")
     _stars(Vector2(225,59),s.star_rating)
-    var records: Array = s.economy.month_end_records
-    var figures: Array[int] = []
-    for record in records:
-        var d: Dictionary = record.get("details",{})
-        # Only chain records exist currently: never present them as an
-        # individual store's history. Store graph uses current store sales.
-        if screen == "results": figures.append(int(d.get("month_result_yen",0)))
-    if screen == "shop_graph":
-        figures.append(s._store_sales_last_month)
-        figures.append(s._store_sales_yen-s._store_sales_at_month_start)
-    var maximum := 4000000
-    for value in figures: maximum = maxi(maximum,ceili(absf(value)/1000000.0)*1000000)
+    var graph: Dictionary = s.graph_data(screen == "results")
+    var figures: Array = graph.oldest_first
+    var maximum: int = graph.axis_yen
     _ink(Vector2(24,75),"¥%d万" % (maximum/10000))
     _ink(Vector2(24,139),"¥0")
     _ink(Vector2(24,203),"-¥%d万" % (maximum/10000))
     var plot := Rect2(48,88,240,112)
-    surface.draw_rect(plot,Color("fcfba4"))
+    surface.draw_rect(plot,Color("ffffac"))
     for x in range(48,289,48):
         for y in range(88,200,5): surface.draw_line(Vector2(x,y),Vector2(x,y+2),DARK)
     for y in [116,172]:
         for x in range(48,288,5): surface.draw_line(Vector2(x,y),Vector2(x+2,y),DARK)
     surface.draw_line(Vector2(48,144),Vector2(288,144),DARK)
+    if figures.is_empty(): _ink_small(Vector2(68,154),"決算後に損益履歴を表示します")
     var shown: Array = figures.slice(maxi(0,figures.size()-60))
     for i in shown.size():
         var value: int = shown[i]
-        var h: float = absf(value)*56.0/maximum
-        surface.draw_rect(Rect2(48+i*4,144-h if value >= 0 else 144,3,h),Color.BLUE if value>=0 else Color.RED)
+        var h: float = preload("res://scripts/domain/program_graph.gd").height(value,maximum)
+        surface.draw_rect(Rect2(48+i*4,144-h if value >= 0 else 144,3,h),Color("2020f6") if value>=0 else Color("ff2020"))
 
 func _survey() -> void:
     var s = main.simulation
@@ -1185,3 +1175,37 @@ func _store_overview() -> void:
     if start+3 < sim.store_count():
         _option(Rect2(112,204,64,16),"次へ",func(): page+=1,101)
     _option(Rect2(236,204,64,16),"閉じる",close_window,102)
+
+func _sell_store_panel() -> void:
+    _paper(Rect2(24,42,272,172))
+    _center(48,"店舗売却")
+    _selector(70)
+    var quote: Dictionary = main.simulation.store_sale_quote(main.simulation.active_store)
+    _center(96,"評価額 "+_money(int(quote.total_yen)))
+    if not quote.allowed:
+        _center(120,str(quote.reason))
+        _option(Rect2(100,156,120,22),"戻る",handle_cancel,0)
+    else:
+        _option(Rect2(38,156,100,22),"戻る",handle_cancel,0)
+        _option(Rect2(164,156,112,22),"売却の確認",func():
+            _sale_request=quote.duplicate()
+            open_window("sell_store_confirm"),1)
+
+func _sell_store_confirmation() -> void:
+    _paper(Rect2(24,52,272,154))
+    _center(58,str(_sale_request.get("name",""))+"を売却しますか")
+    _center(86,_money(int(_sale_request.get("total_yen",0))))
+    _center(110,"店員は未所属になり、空き地になります")
+    _option(Rect2(38,154,100,22),"戻る",handle_cancel,0)
+    _option(Rect2(164,154,112,22),"売却する",func():
+        var sim = main.simulation
+        if sim.try_sell_store(int(_sale_request.index),int(_sale_request.uid)):
+            close_window()
+            main._store_layout_changed()
+            main.town_view.show()
+            main.store_view.hide()
+            main._refresh_ui()
+            show_notice("店舗を売却しました")
+        else:
+            handle_cancel()
+            show_notice("店舗の状態が変わり、売却できません"),1)

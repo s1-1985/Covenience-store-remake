@@ -44,7 +44,7 @@ const CAPITAL_EXPENSE_TYPES := [
     "store_site", "store_construction", "store_renovation", "chain_expansion", "rival_buyout",
     "rival_investigation", "fixture_purchase", "fixture_sold", "permit_purchase",
     "sample_layout_loaded", "inducement_aid", "inducement_place",
-    "product_procurement", "product_returned",
+    "product_procurement", "product_returned", "store_sold",
 ]
 
 
@@ -114,6 +114,11 @@ var _catchment_weights: Dictionary = {}
 var survey_bought: Dictionary = {}
 var survey_missing: Dictionary = {}
 var survey_legacy_totals := false
+var _store_uid := 1
+var _next_store_uid := 2
+var _unassigned_staff: Dictionary = {}
+var _retired_month_sales := 0
+var profit_history: Array = []
 
 var survey_types: Dictionary = {}
 var last_survey: Dictionary = {}
@@ -202,7 +207,7 @@ var _checkout_queue: Array[String] = []
 
 
 const STORE_FIELDS := [
-    "config", "layout", "inventory", "customers", "staff", "demand", "_checkout_interaction",
+    "_store_uid", "profit_history", "config", "layout", "inventory", "customers", "staff", "demand", "_checkout_interaction",
     "_checkout_queue", "_dirty_cells", "business_hours_id", "_catchment_weights", "survey_bought",
     "survey_missing", "survey_legacy_totals", "survey_types", "last_survey", "_permits_held", "_promotions_used_this_month",
     "_scheduled_promotions", "popularity", "price_change_pct", "product_price_settings", "internal_rating_value", "star_rating",
@@ -527,6 +532,11 @@ func tick() -> void:
 
 # Back to 本店 alone (a new game, or before loading a save).
 func _drop_branches() -> void:
+    _store_uid = 1
+    _next_store_uid = 2
+    _unassigned_staff.clear()
+    _retired_month_sales = 0
+    profit_history = []
     _switch_store(0)
     _stores = [{}]
     viewed_store = 0
@@ -567,6 +577,7 @@ func _switch_store(index: int) -> void:
     _stores[active_store] = _capture_store()
     _apply_store(_stores[index])
     active_store = index
+    economy.current_store_uid = _store_uid
 
 
 # Runs `action` once for every store, with that store's fields in place,
@@ -617,7 +628,7 @@ func _fresh_store_config(type_id: String) -> Dictionary:
         if base.has(key):
             fresh[key] = (base[key] as Dictionary).duplicate(true) if base[key] is Dictionary else (base[key] as Array).duplicate(true)
     GuideStartingStoreScript.apply_store_type(fresh, type_id)
-    fresh["customer"]["id_prefix"] = "%s-s%d" % [str(base["customer"]["id_prefix"]), _stores.size() + 1]
+    fresh["customer"]["id_prefix"] = "%s-s%d" % [str(base["customer"]["id_prefix"]), _next_store_uid]
     return fresh
 
 
@@ -694,6 +705,10 @@ func _add_store(type_id: String, origin: Vector2i, name: String) -> int:
         customers.reset()
     store_site_origin = origin
     _player_store_position = origin
+    _store_uid = _next_store_uid
+    _next_store_uid += 1
+    if program_town != null: source_progress["serial"] = (int(source_progress["serial"])+1) & 65535
+    profit_history = []
     _stores.append({})
     active_store = _stores.size() - 1
     var index := active_store
@@ -1681,6 +1696,11 @@ func _apply_hire(staff_id: String, candidate_id: String) -> bool:
     hired.stamina_max = int(_candidate_figures(candidate_id).get("stamina", 0))
     hired.stamina = hired.stamina_max
     hired.exhausted = false
+    if _unassigned_staff.has(candidate_id):
+        for field in _unassigned_staff[candidate_id]:
+            hired.set(field,_unassigned_staff[candidate_id][field])
+        _unassigned_staff.erase(candidate_id)
+        _reset_transferred_source_staff(hired,active_store,staff_id)
     return true
 
 
@@ -2191,7 +2211,7 @@ func _branch_store_type() -> String:
 
 
 func _branch_name() -> String:
-    return "%d号店" % (_stores.size() + 1)
+    return "%d号店" % _next_store_uid
 
 
 func _rival_index(rival_id: String) -> int:
@@ -3896,6 +3916,9 @@ func save_state() -> Dictionary:
     var data := {
         "save_schema_version": SAVE_SCHEMA_VERSION,
         "source_progress": source_progress.duplicate(true),
+        "next_store_uid": _next_store_uid,
+        "unassigned_staff": _unassigned_staff.duplicate(true),
+        "retired_month_sales": _retired_month_sales,
         "source_settings_bits": int(config.get("source_settings_bits", 0)),
         "source_notifications": notifications.snapshot(),
         "scenario_id": str(config["scenario_id"]),
@@ -3988,6 +4011,9 @@ func save_state() -> Dictionary:
 func _store_save_block() -> Dictionary:
     return {
         "store_name": store_name,
+        "store_uid": _store_uid,
+        "customer_id_prefix": customers._id_prefix,
+        "profit_history": profit_history.duplicate(),
         "popularity": popularity,
         "price_change_pct": price_change_pct,
         "product_price_settings": product_price_settings.duplicate(),
@@ -4088,6 +4114,8 @@ func load_state(data: Dictionary) -> bool:
     event_log.reset()
     _candidate_raises = (data.get("candidate_figure_raises", {}) as Dictionary).duplicate(true)
     economy.restore_snapshot(data["economy"])
+    _unassigned_staff = data.get("unassigned_staff",{}).duplicate(true)
+    _retired_month_sales = int(data.get("retired_month_sales",0))
     minute_of_day = int(data["minute_of_day"])
     day_count = int(data["day_count"])
     month_count = int(data["month_count"])
@@ -4193,10 +4221,18 @@ func load_state(data: Dictionary) -> bool:
     # The title handles this marker; do not replay an acknowledged ending.
     if int(source_progress["save_finished"]) == 255:
         source_progress["pending"] = -1
+    _next_store_uid = maxi(_next_store_uid,int(data.get("next_store_uid",2)))
     return true
 
 
 func _restore_store_block(block: Dictionary, bought: Array) -> void:
+    _store_uid = int(block.get("store_uid",active_store+1))
+    _next_store_uid = maxi(_next_store_uid,_store_uid+1)
+    economy.current_store_uid = _store_uid
+    profit_history = block.get("profit_history",[]).slice(0,60).map(func(v): return int(v) if v != null else -2147483648)
+    if block.has("customer_id_prefix"):
+        customers._id_prefix = str(block["customer_id_prefix"])
+        config["customer"]["id_prefix"] = customers._id_prefix
     _source_runtime_to_restore = block.get("source_runtime", {}).duplicate(true)
 
 
@@ -4727,7 +4763,7 @@ func _capital_spent_this_month_yen() -> int:
 # client's existing treatment. This is a compatibility mapping, not a newly
 # established interpretation of every original cost-writing call site.
 func month_operating_statement() -> Dictionary:
-    var period := {"sales_yen": 0, "maintenance_yen": 0, "wages_yen": 0, "promotion_yen": 0, "goods_yen": 0}
+    var period := {"sales_yen": _retired_month_sales, "maintenance_yen": 0, "wages_yen": 0, "promotion_yen": 0, "goods_yen": 0}
     _for_each_store(func():
         period["sales_yen"] += _store_sales_yen - _store_sales_at_month_start)
     var expense_fields := {
@@ -4760,6 +4796,7 @@ func _settle_month_end() -> void:
         adjustment_yen,
         {
             "month_number": month_count + 1,
+            "store_count": store_count(),
             "four_day_net_result_yen": four_day_net_result_yen,
             "month_result_yen": month_result_yen,
             "capital_yen": capital_yen,
@@ -4778,6 +4815,7 @@ func _settle_month_end() -> void:
         "settlement_id": record["settlement_id"],
     })
     _for_each_store(_close_store_month)
+    _retired_month_sales = 0
     month_count += 1
     _days_completed_this_month = 0
     _cash_at_month_start = economy.cash_yen
@@ -4791,6 +4829,9 @@ func _settle_month_end() -> void:
 
 
 func _close_store_month() -> void:
+    var operating := store_operating_statement(active_store)
+    profit_history.push_front(int(operating.month_result_yen) if operating.complete else -2147483648)
+    profit_history.resize(mini(60,profit_history.size()))
     var monthly_sales_yen: int = (_store_sales_yen - _store_sales_at_month_start) * MONTH_MULTIPLIER
     _annual_sales_yen += monthly_sales_yen
     _evaluate_store_rating(monthly_sales_yen)
@@ -6418,3 +6459,89 @@ func _record_source_survey_missing(category: String, heads: int) -> void:
         if product.catalog_id == category: stock += int(product.stock_units)
     if stock == 0:
         preload("res://scripts/domain/program_survey.gd").add(survey_missing,category,heads)
+
+
+func store_operating_statement(index: int) -> Dictionary:
+    var fields := {"fixture_maintenance":"maintenance_yen","staff_wages":"wages_yen","promotion_cost":"promotion_yen","inventory_restock":"goods_yen"}
+    var period := {"sales_yen":int(store_field(index,"_store_sales_yen"))-int(store_field(index,"_store_sales_at_month_start")),"maintenance_yen":0,"wages_yen":0,"promotion_yen":0,"goods_yen":0}
+    var complete := true
+    var uid: int = store_field(index,"_store_uid")
+    for i in range(_expense_index_at_month_start,economy.expense_records.size()):
+        var expense: Dictionary = economy.expense_records[i]
+        if not fields.has(str(expense.expense_type)): continue
+        if not expense.has("store_uid"):
+            complete = false # old saves cannot identify individual-store expenses
+        elif int(expense.store_uid) == uid:
+            var field: String = fields[str(expense.expense_type)]
+            period[field] += int(expense.amount_yen)
+    var result := OperatingStatementScript.project(period)
+    result["complete"] = complete
+    return result
+
+func graph_data(chain_view := false) -> Dictionary:
+    var totals: Array = []
+    var counts: Array = []
+    for i in range(economy.month_end_records.size()-1,maxi(-1,economy.month_end_records.size()-61),-1):
+        var details: Dictionary = economy.month_end_records[i].get("details",{})
+        totals.append(details.get("month_result_yen",-2147483648))
+        counts.append(details.get("store_count",0))
+    return preload("res://scripts/domain/program_graph.gd").plan(totals if chain_view else profit_history,totals,counts)
+
+func store_sale_quote(index: int) -> Dictionary:
+    if index < 0 or index >= store_count(): return {"allowed":false,"reason":"店舗がありません"}
+    var home := active_store
+    _switch_store(index)
+    var reason := ""
+    if index == 0: reason = "本店は売却できません"
+    elif is_game_over: reason = "ゲーム終了後は売却できません"
+    elif program_town == null: reason = "原作の町データが必要です"
+    elif is_open_now(): reason = "開店中は売却できません"
+    var land: int = store_site.start_land_price_yen(store_site_origin) if has_store_site() else 0
+    var building: int = {"small":1,"medium":2,"large":3}.get(_store_size_tier,1)*3000000
+    var equipment := 0
+    for fixture in layout.fixtures + outdoor_fixtures:
+        var kind := program_fixture_kind(fixture)
+        if kind >= 0: equipment += int(_recovery["fixture_records"][kind][1])
+    var goods := 0
+    for product in inventory.products.values(): goods += int(product.stock_units)*int(product.restock_unit_cost_yen)
+    var result := {"allowed":reason.is_empty(),"reason":reason,"index":index,"uid":_store_uid,"name":store_name,"land_yen":land,"premises_yen":building+equipment+goods,"total_yen":land+building+equipment+goods}
+    _switch_store(home)
+    return result
+
+func try_sell_store(index: int, expected_uid: int = -1) -> bool:
+    var quote := store_sale_quote(index)
+    if not quote.allowed or (expected_uid >= 0 and int(quote.uid) != expected_uid): return false
+    var origin: Vector2i = store_field(index,"store_site_origin")
+    var home_uid := _store_uid
+    _switch_store(index)
+    economy.record_explicit_expense("store_sold",minute_of_day,-int(quote.land_yen),{"part":"land","store_uid":_store_uid})
+    economy.record_explicit_expense("store_sold",minute_of_day,-int(quote.premises_yen),{"part":"premises","store_uid":_store_uid})
+    for person in staff.all_staff():
+        var retained := {}
+        for field in ["stamina","stamina_max","exhausted","salary_yen_per_day_24h","register_skill","replenishment_skill","security_skill","cleaning_skill","service_skill","register_skill_growth_ceiling","replenishment_skill_growth_ceiling","security_skill_growth_ceiling","cleaning_skill_growth_ceiling","service_skill_growth_ceiling"]:
+            retained[field] = person.get(field)
+        _unassigned_staff[str(person.candidate_id)] = retained
+    _retired_month_sales += _store_sales_yen - _store_sales_at_month_start
+    staff.members.clear()
+    customers.reset()
+    _switch_store(0)
+    _stores.remove_at(index)
+    var remaining: Array = []
+    for branch in owned_branches:
+        var branch_index := int(branch.get("store_index",-1))
+        if branch_index == index: continue
+        if branch_index > index: branch["store_index"] = branch_index-1
+        remaining.append(branch)
+    owned_branches.assign(remaining)
+    player_store_count = store_count()
+    # Reuse original empty-land placement and derived-map refresh, never
+    # transfer the sold shop or charge a rival company.
+    _program_place(origin,12)
+    var selected := 0
+    for i in store_count():
+        if int(store_field(i,"_store_uid")) == home_uid: selected = i
+    select_store(selected)
+    _for_each_store(_refresh_store_catchment)
+    _allocate_program_day()
+    _record_event("store_sold",{"store_uid":quote.uid,"refund_yen":quote.total_yen,"position":[origin.x,origin.y]})
+    return true

@@ -1,6 +1,7 @@
 class_name EconomyState
 extends RefCounted
 
+var current_store_uid := 1
 var cash_yen: int
 var completed_sales: int
 var sale_records: Array[Dictionary] = []
@@ -93,6 +94,7 @@ func record_explicit_expense(
     var record := {
         "expense_id": "prototype-expense-%d" % (expense_records.size() + 1),
         "expense_type": expense_type,
+        "store_uid": current_store_uid,
         "minute_of_day": minute_of_day,
         "amount_yen": amount_yen,
         "details": details.duplicate(true),

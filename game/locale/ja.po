@@ -1149,3 +1149,6 @@ msgstr "店員がレジ業務に入った"
 
 msgid "checkout staff finished"
 msgstr "店員がレジ業務を終えた"
+
+msgid "store sold"
+msgstr "店舗を売却しました"
