@@ -1,0 +1,30 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": {
+    "display": {
+      "start": "0x80069d30",
+      "end_exclusive": "0x8006a110",
+      "sha256": "9c86cc5271f6ac4be4838c79afe9bc3c0b79fd5f98d629f5582928796577b016"
+    },
+    "icon_record": {
+      "start": "0x8006a304",
+      "end_exclusive": "0x8006a44c",
+      "sha256": "a4fe3837634fdd5dfa6ca3d67f42c35298d604edeaa31cabee38d04af2b024c7"
+    },
+    "cursor_adjust": {
+      "start": "0x8005fdd4",
+      "end_exclusive": "0x8005fe54",
+      "sha256": "6147fbbb81a61e0aa8bd6e29037b42fe50325524388df311eee62048933ba5ce"
+    },
+    "input_and_writeback_known": {
+      "start": "0x8006a110",
+      "end_exclusive": "0x8006a304",
+      "sha256": "bd8a918d712959e2f9162f6d00bd4e22f3896032681d8c783d9767dfb727cf26"
+    },
+    "inline_texts": {
+      "start": "0x800b9360",
+      "end_exclusive": "0x800b9484",
+      "sha256": "e850349f115e8b1624730502d390c3596eb8f935ec7367ad6ffe0d74f3073e45"
+    }
+  }
+}

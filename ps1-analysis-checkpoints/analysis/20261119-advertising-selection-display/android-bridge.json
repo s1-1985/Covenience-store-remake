@@ -1,0 +1,131 @@
+{
+  "focus_independent_of_staged_selection": true,
+  "selected_rgb": [
+    128,
+    128,
+    128
+  ],
+  "unselected_rgb": [
+    64,
+    64,
+    64
+  ],
+  "focused_cost_xy": [
+    null,
+    56
+  ],
+  "selected_total_xy": [
+    null,
+    72
+  ],
+  "money_alignment": "x=152+8*(11-original65820(value))",
+  "icons": [
+    {
+      "id": 0,
+      "rect": [
+        68,
+        88,
+        32,
+        32
+      ],
+      "source_image": "PS_CM1.TIM",
+      "source_rect": [
+        224,
+        0,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 1,
+      "rect": [
+        108,
+        88,
+        32,
+        32
+      ],
+      "source_image": "PS_CM1.TIM",
+      "source_rect": [
+        224,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 2,
+      "rect": [
+        148,
+        88,
+        32,
+        32
+      ],
+      "source_image": "PS_CM1.TIM",
+      "source_rect": [
+        224,
+        64,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 3,
+      "rect": [
+        188,
+        88,
+        32,
+        32
+      ],
+      "source_image": "PS_CM1.TIM",
+      "source_rect": [
+        224,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 4,
+      "rect": [
+        228,
+        88,
+        32,
+        32
+      ],
+      "source_image": "PS_CM1.TIM",
+      "source_rect": [
+        224,
+        128,
+        32,
+        32
+      ]
+    }
+  ],
+  "cursor_anchor_rule": [
+    95,
+    117,
+    40
+  ],
+  "known_reused": [
+    "44byte master/costs",
+    "five persistent selected bytes, commit/cancel and no immediate payment",
+    "PS_CM1 pixels,kind29 UV/CLUT binding"
+  ],
+  "new_binding": [
+    "independent focus cost/name and selected total",
+    "selection RGB128/64 independent of focus",
+    "original icon and cursor display coordinates"
+  ],
+  "android_diff": {
+    "commit": "22ba479999c4e025727806454b9858364ca145cc",
+    "path": "game/scripts/ps1_ui.gd",
+    "function": "_advertising",
+    "findings": [
+      "tap immediately calls try_purchase_promotion",
+      "total reads promotions_used_this_month",
+      "icons y96 instead of original88",
+      "paper51,45,230,120 instead of40,24,256,144"
+    ]
+  },
+  "apk_updated": false
+}

@@ -1,27 +1,26 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_system_settings_runtime_binding",
-  "report": "analysis/20261119-system-settings-runtime/README.md",
-  "previous_report": "analysis/20261119-price-policy-display/README.md",
+  "work_kind": "normal_advertising_selection_display",
+  "report": "analysis/20261119-advertising-selection-display/README.md",
+  "previous_report": "analysis/20261119-system-settings-runtime/README.md",
   "priority": "Six existing unresolved issues remain paused; other normal UI readers analyzed.",
   "new_result": [
-    "BGM choices1/2/3 select resource requests2/3/4, not volume.",
-    "SE/report disable bits invert runtime enable flags.",
-    "SE OFF suppresses normal request1 but does not suppress special request28 dispatch."
+    "Focus and selected states independently drive cost/name versus selected sum/icon RGB.",
+    "Inactive TV focus shows5000000/month while DM+newspaper sum remains600000.",
+    "Icon row Y88, cursor anchor95+40*i/117 and original paper40/24/256/144 bound to Android differences."
   ],
   "known_reused": [
-    "save_codec.py byte mapping",
-    "sound backend",
-    "existing UI rectangle model"
+    "five-method costs and execution rules",
+    "local edit, persistent settings and confirm/cancel",
+    "PS_CM1 pixels/UV/CLUT"
   ],
-  "final_reproducer_original_entries": 6,
+  "final_reproducer_original_entries": 3,
   "entry_breakdown": {
-    "settings_apply": 3,
-    "sound_dispatch": 3
+    "advertising_display": 3
   },
-  "entry_count_scope": "Six bounded diagnostic entries.",
+  "entry_count_scope": "Final3 bounded display entries; one setup attempt stopped at first ABI-coordinate assertion before correction.",
   "operating_updates": 0,
-  "verification": "Original settings application fragment and sound dispatch; audio callees intercepted. No audio/UI/card or gameplay execution.",
+  "verification": "Controlled editor frame; original icon/cursor/amount width helpers execute, seven visual calls intercepted; stop before41374. No ordinary UI/GPU/audio/gameplay.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,

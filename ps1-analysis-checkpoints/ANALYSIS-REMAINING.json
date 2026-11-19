@@ -275,6 +275,14 @@
       "evidence": "analysis/20261119-system-settings-runtime/README.md",
       "resolution": "Six bounded original entries link packed UI settings to runtime flags, three BGM requests and SE dispatch gating. Known save fields reused; no audio/UI/card replay or APK update.",
       "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X18",
+      "title": "宣伝UIのカーソル先費用・複数選択合計・明暗・配置",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-advertising-selection-display/README.md",
+      "resolution": "Three bounded original display cases separate focus cost/name from staged-selection sum and icon RGB128/64; original icon/cursor positions captured. Existing costs, persistent settings and PS_CM1 mapping reused. No gameplay/GPU/Android change.",
+      "counted_in_seven_tracked_items": false
     }
   ],
   "novelty_audit": {
