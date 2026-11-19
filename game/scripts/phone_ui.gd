@@ -155,7 +155,7 @@ func setup(owner_main) -> void:
 static func _box(color: Color, border := Color.TRANSPARENT, radius := 10, border_width := 0) -> StyleBoxFlat:
     var box := StyleBoxFlat.new()
     box.bg_color = color
-    box.set_corner_radius_all(0)
+    box.set_corner_radius_all(radius)
     if border_width > 0:
         box.border_color = border
         box.set_border_width_all(border_width)
@@ -169,10 +169,10 @@ static func _box(color: Color, border := Color.TRANSPARENT, radius := 10, border
 static func make_theme() -> Theme:
     var made := Theme.new()
     made.default_font_size = 24
-    made.set_stylebox("normal", "Button", _box(BUTTON))
-    made.set_stylebox("hover", "Button", _box(BUTTON_HOVER))
-    made.set_stylebox("pressed", "Button", _box(CHOSEN))
-    made.set_stylebox("hover_pressed", "Button", _box(CHOSEN))
+    made.set_stylebox("normal", "Button", _box(Color("263e3b"), Color("50766e"), 10, 1))
+    made.set_stylebox("hover", "Button", _box(Color("355b53"), Color("7eb6a5"), 10, 1))
+    made.set_stylebox("pressed", "Button", _box(Color("406c60"), Color("a3d9c4"), 10, 1))
+    made.set_stylebox("hover_pressed", "Button", _box(Color("406c60"), Color("a3d9c4"), 10, 1))
     made.set_stylebox("disabled", "Button", _box(BUTTON_OFF))
     made.set_stylebox("focus", "Button", StyleBoxEmpty.new())
     for state in ["font_color", "font_hover_color", "font_pressed_color", "font_hover_pressed_color", "font_focus_color"]:
@@ -251,7 +251,7 @@ func _build_hud() -> void:
     row.add_child(pause_button)
     speed_button = _small_button("×1", "PhoneSpeed")
     speed_button.pressed.connect(func():
-        main.speed = {1: 2, 2: 4, 4: 8, 8: 1}.get(main.speed, 1)
+        main.speed = {1: 4, 4: 8, 8: 16, 16: 1}.get(main.speed, 1)
         refresh())
     row.add_child(speed_button)
 

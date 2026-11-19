@@ -37,7 +37,7 @@ var fixture_restock_button: Button = null
 var fixture_stock_button: Button = null
 var fixture_info_icon: TextureRect = null
 # Task #110: the phone screen (phone_ui.gd), and the game speed its
-# ×1/×2/×4 button sets (platform presentation).
+# ×1/×4/×8/×16 button sets (platform presentation).
 var phone_ui = null
 var speed := 1
 var _clock_last_us: int = 0
@@ -264,8 +264,23 @@ func _process(delta: float) -> void:
     var now_us := Time.get_ticks_usec()
     if _clock_last_us == 0:
         _clock_last_us = now_us
-    accumulator += float(now_us - _clock_last_us) / 1000000.0 * speed
+    var elapsed := float(now_us - _clock_last_us) / 1000000.0
     _clock_last_us = now_us
+    _advance_simulation(elapsed)
+    _ui_elapsed += delta
+    if _ticks_since_ui and _ui_elapsed >= 0.1:
+        _refresh_ui()
+        if town_view.visible:
+            town_view.queue_redraw()
+        _ticks_since_ui = false
+        _ui_elapsed = 0.0
+    store_view.tick_progress = clampf(accumulator / tick_seconds, 0.0, 1.0)
+
+
+func _advance_simulation(elapsed: float) -> void:
+    # One complete simulation tick advances clock, people, service and all stores.
+    # Keep every unprocessed tick when the frame budget is exhausted.
+    accumulator += maxf(0,elapsed) * speed
     # Retain all simulation debt, but yield to input/rendering each frame.
     # This is a client scheduling policy, not a recovered game rule.
     var deadline := Time.get_ticks_usec() + 8000
@@ -278,14 +293,6 @@ func _process(delta: float) -> void:
         _ticks_since_ui = true
         if paused or simulation.is_game_over or Time.get_ticks_usec() >= deadline:
             break
-    _ui_elapsed += delta
-    if _ticks_since_ui and _ui_elapsed >= 0.1:
-        _refresh_ui()
-        if town_view.visible:
-            town_view.queue_redraw()
-        _ticks_since_ui = false
-        _ui_elapsed = 0.0
-    store_view.tick_progress = clampf(accumulator / tick_seconds, 0.0, 1.0)
 
 
 func _notification(what: int) -> void:

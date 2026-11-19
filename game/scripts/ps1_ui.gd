@@ -6,6 +6,7 @@ const ZOOM := 3.0
 const PINK := Color("f4b9f5")
 const BLUE := Color("80ddf2")
 const DARK := Color("49483f")
+var store_camera
 var surface: Node2D
 var glyphs: Dictionary
 var portrait_codes: Dictionary
@@ -39,6 +40,7 @@ var _staff_drag_position := Vector2.ZERO
 var _staff_drag_moved := false
 var _staff_drag_pointer := -2
 var _native_pointer := -1
+var _claimed_touches: Dictionary = {}
 
 
 func setup(owner_main) -> void:
@@ -57,6 +59,9 @@ func setup(owner_main) -> void:
     surface.texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED
     surface.draw.connect(func(): _draw_screen(surface))
     main.get_node("UI").add_child(surface)
+    store_camera = preload("res://scripts/store_camera.gd").new()
+    main.add_child(store_camera)
+    store_camera.setup(main, self)
     _ready_ui = true
     main.store_view.fixture_selected.connect(_fixture_action)
     refresh()
@@ -78,14 +83,8 @@ func _build_background() -> void:
 
 func layout_screen() -> void:
     super.layout_screen()
-    var store: Dictionary = main.config["store"]
-    var tile: float = main.store_view.SUBCELL_PIXELS * int(store["subcells_per_tile"])
-    var natural := Vector2(int(store["width_tiles"]), int(store["height_tiles"])) * tile
-    var lot: float = main.store_view.lot_pixel_height()
-    natural.y += lot
-    var fit := minf(1.0, minf(960.0 / natural.x, 624.0 / natural.y))
-    main.store_view.scale = Vector2.ONE * fit
-    main.store_view.position = Vector2(160, 96 + lot * fit)
+    if store_camera != null:
+        store_camera.layout()
     main.town_view.position = Vector2(160, 96)
     main.town_view.view_size = Vector2(960, 624)
     if not _map_zoom_initialized:
@@ -309,6 +308,8 @@ func _input(event: InputEvent) -> void:
         position = event.position
     else:
         return
+    if event is InputEventMouseButton and event.device == -1:
+        return
     var p: Vector2 = (position - ORIGIN) / ZOOM
     # The rails are real GUI buttons on a higher CanvasLayer. Never consume
     # their press/release in the painted-menu input handler.
@@ -340,6 +341,9 @@ func _input(event: InputEvent) -> void:
         surface.queue_redraw()
         return
     if released:
+        if _claimed_touches.has(pointer):
+            _claimed_touches.erase(pointer)
+            get_viewport().set_input_as_handled()
         if pointer == _native_pointer: _native_pointer = -1
         # TownView acts on RELEASE, so consuming only the menu's press lets
         # the same gesture select a building behind the menu.
@@ -383,6 +387,7 @@ func _input(event: InputEvent) -> void:
         if h.rect.has_point(p):
             selection = h.index
             var action: Callable = h.action
+            _claimed_touches[pointer] = true
             get_viewport().set_input_as_handled()
             SoundManager.play_sfx("select")
             action.call()
@@ -459,6 +464,15 @@ func _list(items: Array, rect := Rect2(45, 56, 86, 0)) -> void:
 
 func _navigate(id: String) -> void:
     match id:
+        "show_store", "show_town":
+            close_window()
+            building_card.hide()
+            main.fixture_info_panel.hide()
+            customer_card.hide()
+            main.town_view.visible = id == "show_town"
+            main.store_view.visible = id == "show_store"
+            layout_screen()
+            main._refresh_ui()
         "enter":
             close_window()
             if main.town_view.visible:
@@ -497,6 +511,8 @@ func _draw_screen(_target: Node2D) -> void:
         _site_selection()
         return
     match screen:
+        "view": _list([["店内へ", "show_store"], ["町へ", "show_town"], ["全店舗一覧", "stores"]], Rect2(70,64,140,0))
+        "stores": _store_overview()
         "root": _list([["店舗", "enter"], ["不動産", "realestate"], ["販促", "promotion"], ["調査", "research"], ["システム", "system"]], Rect2(45,56,70,0))
         "realestate": _list([["新装開店", "new_store"], ["店舗売却", "sell_store"]], Rect2(45,56,74,0))
         "promotion": _list([["宣伝をする", "advertising"], ["誘致をする", "facilities"]], Rect2(45,56,86,0))
@@ -1030,3 +1046,27 @@ func _atlas_icon(sheet: String, index: int, cell: Vector2i, columns: int) -> Tex
 
 func _scheduled_wage(base: int, hours_id: String) -> int:
     return (base / 24) * (main.simulation.open_minutes(main.simulation._business_hours_preset(hours_id)) / 60)
+
+func _store_overview() -> void:
+    # Owner-authorized overview using live per-store fields, available in both views.
+    var sim = main.simulation
+    _paper(Rect2(8,40,304,188))
+    _center(44,"全店舗の状況")
+    var start := page * 3
+    for row in mini(3,sim.store_count()-start):
+        var index := start + row
+        var y := 66 + row*44
+        var sales: int = sim.store_field(index,"_store_sales_yen") - sim.store_field(index,"_store_sales_at_day_start")
+        _option(Rect2(14,y,292,17),str(sim.store_field(index,"store_name")),func():
+            close_window()
+            main.select_store(index)
+            main.town_view.hide()
+            main.store_view.show()
+            store_camera.reset_view()
+            layout_screen(),index)
+        _ink(Vector2(18,y+18),"★%d 売上%s 客%d人" % [sim.store_field(index,"star_rating"),_money(sales),sim.store_field(index,"customers").active_customers().size()])
+    if page > 0:
+        _option(Rect2(16,204,64,16),"前へ",func(): page-=1,100)
+    if start+3 < sim.store_count():
+        _option(Rect2(112,204,64,16),"次へ",func(): page+=1,101)
+    _option(Rect2(236,204,64,16),"閉じる",close_window,102)

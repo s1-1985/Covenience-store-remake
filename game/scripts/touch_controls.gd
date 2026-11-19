@@ -6,19 +6,26 @@ var ui
 var speed_label: Button
 var pause_label: Button
 var _finger_buttons: Dictionary = {}
+var _last_finger_ms := -1000
 
 func _input(event: InputEvent) -> void:
     # BaseButton normally relies on emulated mouse input. Handle real finger
     # events too, before the painted modal can consume the rail gesture.
+    if event is InputEventMouseButton and Time.get_ticks_msec() - _last_finger_ms < 500:
+        if event.position.x < 160 or event.position.x >= 1120:
+            get_viewport().set_input_as_handled()
+            return
     if not event is InputEventScreenTouch:
         return
     if event.pressed:
         for child in get_children():
             if child is Button and child.get_global_rect().has_point(event.position):
+                _last_finger_ms = Time.get_ticks_msec()
                 _finger_buttons[event.index] = child
                 get_viewport().set_input_as_handled()
                 return
     elif _finger_buttons.has(event.index):
+        _last_finger_ms = Time.get_ticks_msec()
         var button: Button = _finger_buttons[event.index]
         _finger_buttons.erase(event.index)
         get_viewport().set_input_as_handled()
@@ -50,14 +57,12 @@ func setup(owner_main, owner_ui) -> void:
             ui.close_window()
         ui.command_open = not ui.command_open
         ui.refresh())
-    _button("△\n町／店内", Vector2(16, 390), func():
-        if main.selecting_site:
-            return
-        ui.close_window()
-        ui.command_open = false
-        main._on_show_town_map_pressed()
-        ui.layout_screen()
-        main._refresh_ui())
+    _button("△\n表示切替", Vector2(16, 390), func():
+        if not main.selecting_site:
+            ui.toggle_window("view"))
+    _button("全店舗\n一覧", Vector2(16, 490), func():
+        if not main.selecting_site:
+            ui.toggle_window("stores"))
     _button("○\n決定", Vector2(1136, 310), _accept)
     _button("×\n取消", Vector2(1136, 390), _cancel)
     _button("SELECT\nシステム", Vector2(16, 620), func(): ui.toggle_window("system"))
@@ -70,16 +75,9 @@ func setup(owner_main, owner_ui) -> void:
             main._on_pause_pressed()
         ui.refresh())
     speed_label = _button("×1\n速度", Vector2(16, 16), func():
-        main.speed = {1:2, 2:4, 4:8, 8:1}.get(main.speed, 1)
+        main.speed = {1:4, 4:8, 8:16, 16:1}.get(main.speed, 1)
         speed_label.text = "×%d\n速度" % main.speed
         ui.refresh())
-    var help := Label.new()
-    help.position = Vector2(16, 490)
-    help.size = Vector2(128, 100)
-    help.text = "直接タップ\nドラッグ移動\n２本指で拡縮"
-    help.add_theme_font_size_override("font_size", 15)
-    help.add_theme_color_override("font_color", Color("b4c9bf"))
-    add_child(help)
 
 func _button(text: String, at: Vector2, action: Callable) -> Button:
     var button := Button.new()
@@ -88,6 +86,20 @@ func _button(text: String, at: Vector2, action: Callable) -> Button:
     button.size = Vector2(128, 64)
     button.add_theme_font_size_override("font_size", 17)
     button.theme = ui.theme
+    button.add_theme_font_override("font", preload("res://fonts/ConveniJP.ttf"))
+    button.add_theme_color_override("font_color", Color("e7efed"))
+    button.add_theme_color_override("font_hover_color", Color.WHITE)
+    button.add_theme_color_override("font_pressed_color", Color.WHITE)
+    for state in ["normal", "hover", "pressed", "focus"]:
+        var style := StyleBoxFlat.new()
+        style.bg_color = Color("20302f") if state == "normal" else Color("305451")
+        if state == "focus": style.bg_color = Color(0,0,0,0)
+        style.border_color = Color("4c7972") if state != "pressed" else Color("9de0ce")
+        style.set_border_width_all(1 if state != "focus" else 2)
+        style.set_corner_radius_all(12)
+        style.content_margin_top = 6
+        style.content_margin_bottom = 6
+        button.add_theme_stylebox_override(state, style)
     button.pressed.connect(action)
     add_child(button)
     return button
@@ -131,8 +143,7 @@ func _shoulder(direction: int) -> void:
     elif main.town_view.visible:
         main.town_view.touch_zoom(1.25 if direction > 0 else 0.8)
     else:
-        var factor := 1.15 if direction > 0 else 1.0 / 1.15
-        main.store_view.scale = (main.store_view.scale * factor).clamp(Vector2(0.2, 0.2), Vector2(2, 2))
+        ui.store_camera.zoom_at(1.2 if direction > 0 else 1.0 / 1.2, Vector2(640,408))
 
 func _store(direction: int) -> void:
     if main.selecting_site:
