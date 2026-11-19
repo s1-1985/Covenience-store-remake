@@ -315,6 +315,14 @@
       "evidence": "analysis/20261119-store-type-selection-display/README.md",
       "resolution": "Three bounded displays show6slots retained, RGB128/64 and selectedY-2 even onlockedtier; original cost table tied to Android trade-in display difference. Existing GRID, eligibility and accounting reused. No GPU/input/confirmation/gameplay/APK change.",
       "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X23",
+      "title": "内装終了の原案内10件・拒否時の編集維持・レイアウト保存確認",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261119-interior-exit-messages/README.md",
+      "resolution": "Ten original multiline strings bound to known numeric validator and parent branches. Three caller fragments capture0->state10 or8/9->state7 with exact pointers. Current Android finish closes without this UI validation route. Existing validation/priority reused, no validator/gameplay/dialog/APK execution.",
+      "counted_in_seven_tracked_items": false
     }
   ],
   "novelty_audit": {

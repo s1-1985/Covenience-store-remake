@@ -1,0 +1,9 @@
+{
+  "commit": "22ba479999c4e025727806454b9858364ca145cc",
+  "path": "game/scripts/ps1_ui.gd",
+  "sha256": "1d12fbc944fc8fd9054d71ae7844f563ac06d348439986a4c250b8e14f32a53e",
+  "finish": "match finish ->close_window()",
+  "close_window": "clears screen/history/floor_mode, turns editing off; no788C8-equivalent check called in this UI route",
+  "required": "On success continue exit confirmation; on nonzero keep editing and show original mapped reason. Reuse known validation/priority, not UI-only geometric guesses.",
+  "app_changed": false
+}

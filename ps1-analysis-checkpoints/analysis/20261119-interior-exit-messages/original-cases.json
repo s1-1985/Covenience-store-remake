@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "supplied_validator_result": 0,
+      "next_parent_state": 10,
+      "calls": [],
+      "validator_executed": false,
+      "dialog_executed": false
+    },
+    {
+      "supplied_validator_result": 8,
+      "next_parent_state": 7,
+      "calls": [
+        {
+          "callee": "0x80065080",
+          "a0": null
+        },
+        {
+          "callee": "0x80066c64",
+          "a0": "0x800b97ec"
+        }
+      ],
+      "validator_executed": false,
+      "dialog_executed": false
+    },
+    {
+      "supplied_validator_result": 9,
+      "next_parent_state": 7,
+      "calls": [
+        {
+          "callee": "0x80065080",
+          "a0": null
+        },
+        {
+          "callee": "0x80066c64",
+          "a0": "0x800b9828"
+        }
+      ],
+      "validator_executed": false,
+      "dialog_executed": false
+    }
+  ],
+  "original_entries": 3,
+  "operating_updates": 0,
+  "actual_validator_calls": 0,
+  "actual_dialog_calls": 0,
+  "visual_audio_intercepts": 2,
+  "scope": "Only caller fragment761B8..7620C with staged result; no natural UI or layout reachability."
+}

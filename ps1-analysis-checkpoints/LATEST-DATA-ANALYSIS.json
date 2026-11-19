@@ -1,26 +1,26 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_store_type_selection_display",
-  "report": "analysis/20261119-store-type-selection-display/README.md",
-  "previous_report": "analysis/20261119-basic-fixture-dialogs/README.md",
+  "work_kind": "normal_interior_exit_message_binding",
+  "report": "analysis/20261119-interior-exit-messages/README.md",
+  "previous_report": "analysis/20261119-store-type-selection-display/README.md",
   "priority": "Six existing unresolved issues remain paused; other normal UI readers analyzed.",
   "new_result": [
-    "Sixslots stayvisible; unlockRGB128/64 and selectedspriteY-2 operate independently.",
-    "Lockedtier4 focus stilldisplays18M original construction cost.",
-    "Original price table and geometry linked to currentAndroid trade-in display difference; currentgridorder alreadycorrect."
+    "Ten exact original multiline messages bound to known validation result1..10.",
+    "Success skips invalidindex0 messageword and goes to layout-saveconfirmation; failure preserves editingstate.",
+    "Current Android finish path directlycloses window without this validation/message route."
   ],
   "known_reused": [
-    "premises_input.py GRID/navigation/maximum",
-    "construction cost tiers and no-trade-in source accounting",
-    "SHOPTYP1 texture binding"
+    "operation_validation.py numericrules/priority",
+    "category_parent_control.py exitstate10",
+    "existing layoutsave routine"
   ],
   "final_reproducer_original_entries": 3,
   "entry_breakdown": {
-    "bounded_display": 3
+    "caller_fragment": 3
   },
-  "entry_count_scope": "Three bounded display entries, no failed preparation CPU entries.",
+  "entry_count_scope": "Three staged-result caller fragments; no failed preparation CPUentries.",
   "operating_updates": 0,
-  "verification": "Original41630 andpricewidth executed;10externalvisual/transferchildren intercepted. Diagnostic selectedrow/column, stopbefore41374. No confirmation/GPU/input/payment/gameplay.",
+  "verification": "Only761B8..7620C; result0/8/9 provided, audio/dialog callees captured. Originalvalidator0, fullpopup0, gameplay0. Tenmessage extraction isstatic.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,

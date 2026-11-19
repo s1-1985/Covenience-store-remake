@@ -1,0 +1,14 @@
+{
+  "known_files": [
+    {
+      "path": "algorithm-analysis/operation_validation.py",
+      "sha256": "b1a172941c16a69d61d7547990abdde47c8547413b32a91e1ee935b3e4594c14"
+    },
+    {
+      "path": "algorithm-analysis/category_parent_control.py",
+      "sha256": "ee7887e3d0070aa48420728b4db571377f38a273180acf68d3fe81f0e1922925"
+    }
+  ],
+  "known": "Numeric failure rules and priority are already decoded, including post-map checks and parent state10. No new finding in validator mechanics.",
+  "new_result": "Complete10 original multiline strings bound to return codes and current Android finish route; caller fragments only."
+}
