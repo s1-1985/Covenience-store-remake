@@ -1,26 +1,27 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_advertising_selection_display",
-  "report": "analysis/20261119-advertising-selection-display/README.md",
-  "previous_report": "analysis/20261119-system-settings-runtime/README.md",
+  "work_kind": "normal_facility_selection_pages",
+  "report": "analysis/20261119-facility-selection-pages/README.md",
+  "previous_report": "analysis/20261119-advertising-selection-display/README.md",
   "priority": "Six existing unresolved issues remain paused; other normal UI readers analyzed.",
   "new_result": [
-    "Focus and selected states independently drive cost/name versus selected sum/icon RGB.",
-    "Inactive TV focus shows5000000/month while DM+newspaper sum remains600000.",
-    "Icon row Y88, cursor anchor95+40*i/117 and original paper40/24/256/144 bound to Android differences."
+    "First page5x2, second4x2, row-preserving cross-page navigation.",
+    "18 original selection icon codes linked to BUILDIN1; gym/pool and three schools share icons.",
+    "Original icon Y72, name/aid/amount/cursor geometry bound to Android differences."
   ],
   "known_reused": [
-    "five-method costs and execution rules",
-    "local edit, persistent settings and confirm/cancel",
-    "PS_CM1 pixels/UV/CLUT"
+    "18 project definitions/base costs",
+    "existing BUILDIN1 texture binding",
+    "placement/start/completion unchanged"
   ],
-  "final_reproducer_original_entries": 3,
+  "final_reproducer_original_entries": 6,
   "entry_breakdown": {
-    "advertising_display": 3
+    "display": 2,
+    "page_boundary_input": 4
   },
-  "entry_count_scope": "Final3 bounded display entries; one setup attempt stopped at first ABI-coordinate assertion before correction.",
+  "entry_count_scope": "Six bounded original fragments, no preliminary failed CPU attempts.",
   "operating_updates": 0,
-  "verification": "Controlled editor frame; original icon/cursor/amount width helpers execute, seven visual calls intercepted; stop before41374. No ordinary UI/GPU/audio/gameplay.",
+  "verification": "Controlled frame. Two displays produce18 icon records; four direction-only input fragments stop before cancel/confirm. Seven graphical calls intercepted; no GPU/payment/completion/gameplay.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,

@@ -1,0 +1,30 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": {
+    "selection_init_tables": {
+      "start": "0x80010bb8",
+      "end_exclusive": "0x80010c0a",
+      "sha256": "f90a7aaaa59b70c70aa1169c3d71db5de743464605e0868597c52894c3ddcd84"
+    },
+    "display_and_input": {
+      "start": "0x8006a5bc",
+      "end_exclusive": "0x8006ad60",
+      "sha256": "c8eeaf0903aedefcf5cdf1b2a59f808f8c48cd46731465c8528929cd7f044930"
+    },
+    "facility_icon": {
+      "start": "0x8006b620",
+      "end_exclusive": "0x8006b780",
+      "sha256": "d89727d698f05899958c4380f84e373f2ff99a2d27b2d4587fa4f04001e499c4"
+    },
+    "message_table": {
+      "start": "0x800b94f8",
+      "end_exclusive": "0x800b9540",
+      "sha256": "4dfb9f852d80120ae1ce3aed9e872513a16f0ab071504095e4402ded61127fd2"
+    }
+  },
+  "known_reused": [
+    "18 project definitions/base cost/building size",
+    "BUILDIN1 texture upload and palette",
+    "project initialization/completion untouched"
+  ]
+}

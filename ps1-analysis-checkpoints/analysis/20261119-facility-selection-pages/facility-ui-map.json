@@ -1,0 +1,515 @@
+{
+  "rows": [
+    {
+      "selection": 0,
+      "name": "交番",
+      "page": 0,
+      "slot": 0,
+      "columns": 5,
+      "name_message": 103,
+      "base_cost_known": 400000,
+      "icon_code": 0,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        0,
+        0,
+        32,
+        32
+      ],
+      "logical_rect": [
+        68,
+        72,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 1,
+      "name": "消防署",
+      "page": 0,
+      "slot": 1,
+      "columns": 5,
+      "name_message": 104,
+      "base_cost_known": 600000,
+      "icon_code": 1,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        32,
+        0,
+        32,
+        32
+      ],
+      "logical_rect": [
+        108,
+        72,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 2,
+      "name": "住宅",
+      "page": 0,
+      "slot": 2,
+      "columns": 5,
+      "name_message": 141,
+      "base_cost_known": 4200000,
+      "icon_code": 16,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        0,
+        64,
+        32,
+        32
+      ],
+      "logical_rect": [
+        148,
+        72,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 3,
+      "name": "会社",
+      "page": 0,
+      "slot": 3,
+      "columns": 5,
+      "name_message": 121,
+      "base_cost_known": 5400000,
+      "icon_code": 15,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        224,
+        32,
+        32,
+        32
+      ],
+      "logical_rect": [
+        188,
+        72,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 4,
+      "name": "体育館",
+      "page": 0,
+      "slot": 4,
+      "columns": 5,
+      "name_message": 124,
+      "base_cost_known": 4200000,
+      "icon_code": 18,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        64,
+        64,
+        32,
+        32
+      ],
+      "logical_rect": [
+        228,
+        72,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 5,
+      "name": "プール",
+      "page": 0,
+      "slot": 5,
+      "columns": 5,
+      "name_message": 126,
+      "base_cost_known": 1800000,
+      "icon_code": 18,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        64,
+        64,
+        32,
+        32
+      ],
+      "logical_rect": [
+        68,
+        112,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 6,
+      "name": "運動場",
+      "page": 0,
+      "slot": 6,
+      "columns": 5,
+      "name_message": 125,
+      "base_cost_known": 2000000,
+      "icon_code": 19,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        96,
+        64,
+        32,
+        32
+      ],
+      "logical_rect": [
+        108,
+        112,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 7,
+      "name": "ｲﾍﾞﾝﾄ会場",
+      "page": 0,
+      "slot": 7,
+      "columns": 5,
+      "name_message": 127,
+      "base_cost_known": 6000000,
+      "icon_code": 23,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        224,
+        64,
+        32,
+        32
+      ],
+      "logical_rect": [
+        148,
+        112,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 8,
+      "name": "幼稚園",
+      "page": 0,
+      "slot": 8,
+      "columns": 5,
+      "name_message": 109,
+      "base_cost_known": 1200000,
+      "icon_code": 7,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        224,
+        0,
+        32,
+        32
+      ],
+      "logical_rect": [
+        188,
+        112,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 9,
+      "name": "小学校",
+      "page": 0,
+      "slot": 9,
+      "columns": 5,
+      "name_message": 110,
+      "base_cost_known": 3200000,
+      "icon_code": 8,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        0,
+        32,
+        32,
+        32
+      ],
+      "logical_rect": [
+        228,
+        112,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 10,
+      "name": "中学校",
+      "page": 1,
+      "slot": 0,
+      "columns": 4,
+      "name_message": 111,
+      "base_cost_known": 5000000,
+      "icon_code": 8,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        0,
+        32,
+        32,
+        32
+      ],
+      "logical_rect": [
+        68,
+        72,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 11,
+      "name": "高校",
+      "page": 1,
+      "slot": 1,
+      "columns": 4,
+      "name_message": 112,
+      "base_cost_known": 7200000,
+      "icon_code": 8,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        0,
+        32,
+        32,
+        32
+      ],
+      "logical_rect": [
+        108,
+        72,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 12,
+      "name": "大学",
+      "page": 1,
+      "slot": 2,
+      "columns": 4,
+      "name_message": 113,
+      "base_cost_known": 9800000,
+      "icon_code": 9,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "logical_rect": [
+        148,
+        72,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 13,
+      "name": "専門学校",
+      "page": 1,
+      "slot": 3,
+      "columns": 4,
+      "name_message": 114,
+      "base_cost_known": 4800000,
+      "icon_code": 10,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        64,
+        32,
+        32,
+        32
+      ],
+      "logical_rect": [
+        188,
+        72,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 14,
+      "name": "公園",
+      "page": 1,
+      "slot": 4,
+      "columns": 4,
+      "name_message": 118,
+      "base_cost_known": 2000000,
+      "icon_code": 14,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        192,
+        32,
+        32,
+        32
+      ],
+      "logical_rect": [
+        68,
+        112,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 15,
+      "name": "水族館",
+      "page": 1,
+      "slot": 5,
+      "columns": 4,
+      "name_message": 116,
+      "base_cost_known": 2700000,
+      "icon_code": 12,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        128,
+        32,
+        32,
+        32
+      ],
+      "logical_rect": [
+        108,
+        112,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 16,
+      "name": "動物園",
+      "page": 1,
+      "slot": 6,
+      "columns": 4,
+      "name_message": 117,
+      "base_cost_known": 7200000,
+      "icon_code": 13,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        160,
+        32,
+        32,
+        32
+      ],
+      "logical_rect": [
+        148,
+        112,
+        32,
+        32
+      ]
+    },
+    {
+      "selection": 17,
+      "name": "遊園地",
+      "page": 1,
+      "slot": 7,
+      "columns": 4,
+      "name_message": 115,
+      "base_cost_known": 9800000,
+      "icon_code": 11,
+      "source_image": "BUILDIN1.TIM",
+      "source_rect": [
+        96,
+        32,
+        32,
+        32
+      ],
+      "logical_rect": [
+        188,
+        112,
+        32,
+        32
+      ]
+    }
+  ],
+  "page_sizes": [
+    10,
+    8
+  ],
+  "page_columns": [
+    5,
+    4
+  ],
+  "cursor_rule": "91+40*(slot%columns),95+40*(slot//columns)",
+  "paper": [
+    40,
+    24,
+    256,
+    144
+  ],
+  "title_xy": [
+    72,
+    40
+  ],
+  "name_xy": [
+    56,
+    56
+  ],
+  "aid_xy": [
+    148,
+    56
+  ],
+  "cost_alignment": "184+8*(11-original65820(value)),56",
+  "shared_icons": [
+    {
+      "selections": [
+        4,
+        5
+      ],
+      "code": 18
+    },
+    {
+      "selections": [
+        9,
+        10,
+        11
+      ],
+      "code": 8
+    }
+  ],
+  "cross_page": [
+    {
+      "before": [
+        0,
+        4
+      ],
+      "direction_mask": "0x2000",
+      "after": [
+        1,
+        0
+      ],
+      "stop": "before cancel/confirm at6AD60"
+    },
+    {
+      "before": [
+        0,
+        9
+      ],
+      "direction_mask": "0x2000",
+      "after": [
+        1,
+        4
+      ],
+      "stop": "before cancel/confirm at6AD60"
+    },
+    {
+      "before": [
+        1,
+        0
+      ],
+      "direction_mask": "0x8000",
+      "after": [
+        0,
+        4
+      ],
+      "stop": "before cancel/confirm at6AD60"
+    },
+    {
+      "before": [
+        1,
+        4
+      ],
+      "direction_mask": "0x8000",
+      "after": [
+        0,
+        9
+      ],
+      "stop": "before cancel/confirm at6AD60"
+    }
+  ],
+  "original_image_binding": "20261117-texture-runtime-binding-data/texture-bindings.json row17",
+  "android_update": false
+}

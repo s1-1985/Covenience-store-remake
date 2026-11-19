@@ -283,6 +283,14 @@
       "evidence": "analysis/20261119-advertising-selection-display/README.md",
       "resolution": "Three bounded original display cases separate focus cost/name from staged-selection sum and icon RGB128/64; original icon/cursor positions captured. Existing costs, persistent settings and PS_CM1 mapping reused. No gameplay/GPU/Android change.",
       "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X19",
+      "title": "誘致UIの5列/4列・段維持ページ遷移・18選択画像",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-facility-selection-pages/README.md",
+      "resolution": "Two original display fragments capture all18 icon records, page layouts, names and aid; four boundary-input fragments preserve row across page changes. Existing project mechanics and texture binding reused; no project completion/GPU/Android changes.",
+      "counted_in_seven_tracked_items": false
     }
   ],
   "novelty_audit": {

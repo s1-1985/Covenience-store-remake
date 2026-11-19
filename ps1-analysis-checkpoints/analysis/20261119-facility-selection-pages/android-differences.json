@@ -1,0 +1,14 @@
+{
+  "android_commit": "22ba479999c4e025727806454b9858364ca145cc",
+  "path": "game/scripts/ps1_ui.gd",
+  "file_sha256": "1d12fbc944fc8fd9054d71ae7844f563ac06d348439986a4c250b8e14f32a53e",
+  "function": "_facilities",
+  "differences": [
+    "Use columns5 forpage0 and4 forpage1 ratherthan5both.",
+    "Use original selection icon mapping ratherthan town sprite name.",
+    "Original icon topY72 ratherthan80.",
+    "Original name/aid/costY56 ratherthan66.",
+    "Preserve smartphone tap selection with page-specific hit rectangles."
+  ],
+  "implementation_changed": false
+}
