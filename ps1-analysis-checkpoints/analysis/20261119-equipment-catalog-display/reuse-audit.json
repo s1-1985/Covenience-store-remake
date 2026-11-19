@@ -1,0 +1,13 @@
+{
+  "archive_equipment_choice": {
+    "path": "algorithm-analysis/equipment_choice.py",
+    "sha256": "0bc86c4eb27c470103759b27f018fa163896b65f82e9b7cda7b231508d776376",
+    "known": "39choice order/navigation page0/1fivecolumns page2three; permit27/28 and confirm/cancel already decoded."
+  },
+  "reused": [
+    "53fixture master and MSG labels",
+    "hourly maintenance rates and real daily billing mode",
+    "source image/page/renderer conventions"
+  ],
+  "new_scope": "existing selector/master -> actual display calls and Android differences; no claim of newly discovered navigation mechanic"
+}

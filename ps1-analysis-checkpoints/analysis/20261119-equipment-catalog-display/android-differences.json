@@ -1,0 +1,63 @@
+{
+  "android_commit": "22ba479999c4e025727806454b9858364ca145cc",
+  "source_menu_count": 39,
+  "android_catalog_count": 37,
+  "source_menu_missing_in_android": [
+    {
+      "fixture": 23,
+      "label": "おでん"
+    },
+    {
+      "fixture": 35,
+      "label": "コピー機"
+    },
+    {
+      "fixture": 36,
+      "label": "コピー機"
+    },
+    {
+      "fixture": 43,
+      "label": "キャッシュディスペンサー"
+    },
+    {
+      "fixture": 44,
+      "label": "キャッシュディスペンサー"
+    }
+  ],
+  "android_entries_outside_source_menu": [
+    {
+      "fixture": 18,
+      "label": "冷凍棚・扉"
+    },
+    {
+      "fixture": 48,
+      "label": "控え室"
+    },
+    {
+      "fixture": 49,
+      "label": "控え室"
+    }
+  ],
+  "scope": "Only67C80 placement catalog; excluded entries may have other original selection paths.",
+  "display_differences": [
+    "source final page3columns; app5columns",
+    "source maintenance*24; app open_minutes/60",
+    "source paper32,24,256,192; app44,45,230,166",
+    "source iconsY88; app96"
+  ],
+  "files": [
+    {
+      "path": "scripts/ps1_ui.gd",
+      "sha256": "1d12fbc944fc8fd9054d71ae7844f563ac06d348439986a4c250b8e14f32a53e"
+    },
+    {
+      "path": "data/vertical_slice.json",
+      "sha256": "ece9bc730e5d261e411349e54885a21a84c25e3cbdfa68c1e568d63e2aa4c2d3"
+    },
+    {
+      "path": "assets/ps1/ui/fixture-info.json",
+      "sha256": "ec94afe0acff431cadbaa354734cf924a94c46be34ea009790cc92f4c63c00d3"
+    }
+  ],
+  "implementation_changed": false
+}

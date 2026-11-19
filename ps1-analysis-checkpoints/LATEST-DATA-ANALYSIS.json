@@ -1,27 +1,26 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_facility_selection_pages",
-  "report": "analysis/20261119-facility-selection-pages/README.md",
-  "previous_report": "analysis/20261119-advertising-selection-display/README.md",
+  "work_kind": "normal_equipment_catalog_display",
+  "report": "analysis/20261119-equipment-catalog-display/README.md",
+  "previous_report": "analysis/20261119-facility-selection-pages/README.md",
   "priority": "Six existing unresolved issues remain paused; other normal UI readers analyzed.",
   "new_result": [
-    "First page5x2, second4x2, row-preserving cross-page navigation.",
-    "18 original selection icon codes linked to BUILDIN1; gym/pool and three schools share icons.",
-    "Original icon Y72, name/aid/amount/cursor geometry bound to Android differences."
+    "Equipment display uses hourly*24 regardless of8h/closed schedule.",
+    "Original39 menu versus Android37 reveals5missing and3outside this menu.",
+    "Native icon/field/cursor positions and permit RGB mapped; old navigation reused."
   ],
   "known_reused": [
-    "18 project definitions/base costs",
-    "existing BUILDIN1 texture binding",
-    "placement/start/completion unchanged"
+    "equipment_choice.py three-page navigation and permit/confirm",
+    "53fixture master and labels",
+    "real daily maintenance formula"
   ],
-  "final_reproducer_original_entries": 6,
+  "final_reproducer_original_entries": 4,
   "entry_breakdown": {
-    "display": 2,
-    "page_boundary_input": 4
+    "bounded_display": 4
   },
-  "entry_count_scope": "Six bounded original fragments, no preliminary failed CPU attempts.",
+  "entry_count_scope": "Four bounded original display fragments, no failed preparation CPU attempts.",
   "operating_updates": 0,
-  "verification": "Controlled frame. Two displays produce18 icon records; four direction-only input fragments stop before cancel/confirm. Seven graphical calls intercepted; no GPU/payment/completion/gameplay.",
+  "verification": "Original icon/cursor/digit helpers executed; six visual intercepts, stop before41374; initial full refresh bypassed via staged flag. Store/cash unchanged; no gameplay/input/GPU/card.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,

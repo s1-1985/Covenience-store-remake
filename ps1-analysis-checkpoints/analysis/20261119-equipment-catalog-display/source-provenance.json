@@ -1,0 +1,25 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": {
+    "catalog_display": {
+      "start": "0x80067cf0",
+      "end_exclusive": "0x80068338",
+      "sha256": "5b50bb9bf49ea5c50e628638e22a57b3c57cdd22a7cd27568cb723f5f0860f19"
+    },
+    "icon_helper": {
+      "start": "0x800687c4",
+      "end_exclusive": "0x80068978",
+      "sha256": "520d4b36a6346d2f05cb6caaf633dbe30153714f8512befe562de00ce1457fa1"
+    },
+    "order": {
+      "start": "0x800b9920",
+      "end_exclusive": "0x800b99bc",
+      "sha256": "eb60faafcded6bfe3e4d9c172b337cecfac281d5b5ecb50080977cdc9a28dcc5"
+    },
+    "paper": {
+      "start": "0x80010bac",
+      "end_exclusive": "0x80010bb6",
+      "sha256": "3c63691c3404a810a08444e43007d962939c00247d88e9ead824496f2a796112"
+    }
+  }
+}

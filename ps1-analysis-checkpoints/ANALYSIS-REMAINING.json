@@ -291,6 +291,14 @@
       "evidence": "analysis/20261119-facility-selection-pages/README.md",
       "resolution": "Two original display fragments capture all18 icon records, page layouts, names and aid; four boundary-input fragments preserve row across page changes. Existing project mechanics and texture binding reused; no project completion/GPU/Android changes.",
       "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X20",
+      "title": "設備一覧の24時間維持費表示・39件の実装差分・原明暗/座標",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-equipment-catalog-display/README.md",
+      "resolution": "Four bounded displays connect known selector/master to fixed24h maintenance, fields, original39 icon records/positions and tobacco-permit shading. Android37 items reveal5missing/3outside this original menu. Old navigation explicitly reused. No placement/gameplay/APK change.",
+      "counted_in_seven_tracked_items": false
     }
   ],
   "novelty_audit": {

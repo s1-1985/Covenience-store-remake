@@ -1,0 +1,1015 @@
+{
+  "rows": [
+    {
+      "selection": 0,
+      "page": 0,
+      "slot": 0,
+      "columns": 5,
+      "fixture": 35,
+      "label": "コピー機",
+      "message": 422,
+      "purchase": 1500,
+      "maintenance_display_24h": 1200,
+      "capacity": 20,
+      "attention": 10,
+      "icon_code": 36,
+      "icon_uv": [
+        128,
+        128
+      ],
+      "logical_rect": [
+        60,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 1,
+      "page": 0,
+      "slot": 1,
+      "columns": 5,
+      "fixture": 36,
+      "label": "コピー機",
+      "message": 423,
+      "purchase": 2000,
+      "maintenance_display_24h": 1440,
+      "capacity": 40,
+      "attention": 15,
+      "icon_code": 37,
+      "icon_uv": [
+        160,
+        128
+      ],
+      "logical_rect": [
+        100,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 2,
+      "page": 0,
+      "slot": 2,
+      "columns": 5,
+      "fixture": 22,
+      "label": "温かい飲み物",
+      "message": 409,
+      "purchase": 300,
+      "maintenance_display_24h": 1680,
+      "capacity": 20,
+      "attention": 20,
+      "icon_code": 23,
+      "icon_uv": [
+        224,
+        64
+      ],
+      "logical_rect": [
+        140,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 3,
+      "page": 0,
+      "slot": 3,
+      "columns": 5,
+      "fixture": 23,
+      "label": "おでん",
+      "message": 410,
+      "purchase": 100,
+      "maintenance_display_24h": 1920,
+      "capacity": 10,
+      "attention": 30,
+      "icon_code": 24,
+      "icon_uv": [
+        0,
+        96
+      ],
+      "logical_rect": [
+        180,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 4,
+      "page": 0,
+      "slot": 4,
+      "columns": 5,
+      "fixture": 24,
+      "label": "中華まん",
+      "message": 411,
+      "purchase": 300,
+      "maintenance_display_24h": 1920,
+      "capacity": 20,
+      "attention": 30,
+      "icon_code": 25,
+      "icon_uv": [
+        32,
+        96
+      ],
+      "logical_rect": [
+        220,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 5,
+      "page": 0,
+      "slot": 5,
+      "columns": 5,
+      "fixture": 0,
+      "label": "常温棚",
+      "message": 387,
+      "purchase": 60,
+      "maintenance_display_24h": 24,
+      "capacity": 40,
+      "attention": 10,
+      "icon_code": 1,
+      "icon_uv": [
+        32,
+        0
+      ],
+      "logical_rect": [
+        60,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 6,
+      "page": 0,
+      "slot": 6,
+      "columns": 5,
+      "fixture": 1,
+      "label": "常温棚",
+      "message": 388,
+      "purchase": 100,
+      "maintenance_display_24h": 48,
+      "capacity": 80,
+      "attention": 10,
+      "icon_code": 2,
+      "icon_uv": [
+        64,
+        0
+      ],
+      "logical_rect": [
+        100,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 7,
+      "page": 0,
+      "slot": 7,
+      "columns": 5,
+      "fixture": 2,
+      "label": "常温棚",
+      "message": 389,
+      "purchase": 140,
+      "maintenance_display_24h": 72,
+      "capacity": 120,
+      "attention": 10,
+      "icon_code": 3,
+      "icon_uv": [
+        96,
+        0
+      ],
+      "logical_rect": [
+        140,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 8,
+      "page": 0,
+      "slot": 8,
+      "columns": 5,
+      "fixture": 3,
+      "label": "常温ワゴン",
+      "message": 390,
+      "purchase": 30,
+      "maintenance_display_24h": 24,
+      "capacity": 15,
+      "attention": 20,
+      "icon_code": 4,
+      "icon_uv": [
+        128,
+        0
+      ],
+      "logical_rect": [
+        180,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 9,
+      "page": 0,
+      "slot": 9,
+      "columns": 5,
+      "fixture": 4,
+      "label": "常温ワゴン",
+      "message": 391,
+      "purchase": 50,
+      "maintenance_display_24h": 48,
+      "capacity": 30,
+      "attention": 20,
+      "icon_code": 5,
+      "icon_uv": [
+        160,
+        0
+      ],
+      "logical_rect": [
+        220,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 10,
+      "page": 0,
+      "slot": 10,
+      "columns": 5,
+      "fixture": 5,
+      "label": "常温ワゴン",
+      "message": 392,
+      "purchase": 70,
+      "maintenance_display_24h": 72,
+      "capacity": 45,
+      "attention": 20,
+      "icon_code": 6,
+      "icon_uv": [
+        192,
+        0
+      ],
+      "logical_rect": [
+        60,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 11,
+      "page": 0,
+      "slot": 11,
+      "columns": 5,
+      "fixture": 6,
+      "label": "常温ワゴン",
+      "message": 393,
+      "purchase": 90,
+      "maintenance_display_24h": 96,
+      "capacity": 60,
+      "attention": 30,
+      "icon_code": 7,
+      "icon_uv": [
+        224,
+        0
+      ],
+      "logical_rect": [
+        100,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 12,
+      "page": 0,
+      "slot": 12,
+      "columns": 5,
+      "fixture": 7,
+      "label": "冷蔵棚",
+      "message": 394,
+      "purchase": 200,
+      "maintenance_display_24h": 720,
+      "capacity": 30,
+      "attention": 10,
+      "icon_code": 8,
+      "icon_uv": [
+        0,
+        32
+      ],
+      "logical_rect": [
+        140,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 13,
+      "page": 0,
+      "slot": 13,
+      "columns": 5,
+      "fixture": 8,
+      "label": "冷蔵棚",
+      "message": 395,
+      "purchase": 350,
+      "maintenance_display_24h": 1200,
+      "capacity": 60,
+      "attention": 10,
+      "icon_code": 9,
+      "icon_uv": [
+        32,
+        32
+      ],
+      "logical_rect": [
+        180,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 14,
+      "page": 0,
+      "slot": 14,
+      "columns": 5,
+      "fixture": 9,
+      "label": "冷蔵棚",
+      "message": 396,
+      "purchase": 500,
+      "maintenance_display_24h": 1920,
+      "capacity": 90,
+      "attention": 10,
+      "icon_code": 10,
+      "icon_uv": [
+        64,
+        32
+      ],
+      "logical_rect": [
+        220,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 15,
+      "page": 1,
+      "slot": 0,
+      "columns": 5,
+      "fixture": 10,
+      "label": "冷蔵ワゴン",
+      "message": 397,
+      "purchase": 120,
+      "maintenance_display_24h": 960,
+      "capacity": 10,
+      "attention": 20,
+      "icon_code": 11,
+      "icon_uv": [
+        96,
+        32
+      ],
+      "logical_rect": [
+        60,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 16,
+      "page": 1,
+      "slot": 1,
+      "columns": 5,
+      "fixture": 11,
+      "label": "冷蔵ワゴン",
+      "message": 398,
+      "purchase": 200,
+      "maintenance_display_24h": 1680,
+      "capacity": 20,
+      "attention": 20,
+      "icon_code": 12,
+      "icon_uv": [
+        128,
+        32
+      ],
+      "logical_rect": [
+        100,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 17,
+      "page": 1,
+      "slot": 2,
+      "columns": 5,
+      "fixture": 12,
+      "label": "冷蔵ワゴン",
+      "message": 399,
+      "purchase": 280,
+      "maintenance_display_24h": 2400,
+      "capacity": 30,
+      "attention": 20,
+      "icon_code": 13,
+      "icon_uv": [
+        160,
+        32
+      ],
+      "logical_rect": [
+        140,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 18,
+      "page": 1,
+      "slot": 3,
+      "columns": 5,
+      "fixture": 13,
+      "label": "冷蔵ワゴン",
+      "message": 400,
+      "purchase": 360,
+      "maintenance_display_24h": 3120,
+      "capacity": 40,
+      "attention": 30,
+      "icon_code": 14,
+      "icon_uv": [
+        192,
+        32
+      ],
+      "logical_rect": [
+        180,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 19,
+      "page": 1,
+      "slot": 4,
+      "columns": 5,
+      "fixture": 14,
+      "label": "冷凍棚",
+      "message": 401,
+      "purchase": 300,
+      "maintenance_display_24h": 2160,
+      "capacity": 25,
+      "attention": 10,
+      "icon_code": 15,
+      "icon_uv": [
+        224,
+        32
+      ],
+      "logical_rect": [
+        220,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 20,
+      "page": 1,
+      "slot": 5,
+      "columns": 5,
+      "fixture": 15,
+      "label": "冷凍棚",
+      "message": 402,
+      "purchase": 500,
+      "maintenance_display_24h": 3600,
+      "capacity": 50,
+      "attention": 10,
+      "icon_code": 16,
+      "icon_uv": [
+        0,
+        64
+      ],
+      "logical_rect": [
+        60,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 21,
+      "page": 1,
+      "slot": 6,
+      "columns": 5,
+      "fixture": 16,
+      "label": "冷凍ワゴン",
+      "message": 403,
+      "purchase": 200,
+      "maintenance_display_24h": 1920,
+      "capacity": 10,
+      "attention": 20,
+      "icon_code": 17,
+      "icon_uv": [
+        32,
+        64
+      ],
+      "logical_rect": [
+        100,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 22,
+      "page": 1,
+      "slot": 7,
+      "columns": 5,
+      "fixture": 17,
+      "label": "冷凍ワゴン",
+      "message": 404,
+      "purchase": 380,
+      "maintenance_display_24h": 3120,
+      "capacity": 20,
+      "attention": 20,
+      "icon_code": 18,
+      "icon_uv": [
+        64,
+        64
+      ],
+      "logical_rect": [
+        140,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 23,
+      "page": 1,
+      "slot": 8,
+      "columns": 5,
+      "fixture": 25,
+      "label": "イベントケース棚",
+      "message": 412,
+      "purchase": 600,
+      "maintenance_display_24h": 1920,
+      "capacity": 60,
+      "attention": 40,
+      "icon_code": 26,
+      "icon_uv": [
+        64,
+        96
+      ],
+      "logical_rect": [
+        180,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 24,
+      "page": 1,
+      "slot": 9,
+      "columns": 5,
+      "fixture": 26,
+      "label": "イベントケースワゴン",
+      "message": 413,
+      "purchase": 300,
+      "maintenance_display_24h": 1200,
+      "capacity": 30,
+      "attention": 60,
+      "icon_code": 27,
+      "icon_uv": [
+        96,
+        96
+      ],
+      "logical_rect": [
+        220,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 25,
+      "page": 1,
+      "slot": 10,
+      "columns": 5,
+      "fixture": 27,
+      "label": "たばこ自販",
+      "message": 414,
+      "purchase": 600,
+      "maintenance_display_24h": 240,
+      "capacity": 20,
+      "attention": 15,
+      "icon_code": 28,
+      "icon_uv": [
+        128,
+        96
+      ],
+      "logical_rect": [
+        60,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": true
+    },
+    {
+      "selection": 26,
+      "page": 1,
+      "slot": 11,
+      "columns": 5,
+      "fixture": 28,
+      "label": "たばこ自販",
+      "message": 415,
+      "purchase": 1000,
+      "maintenance_display_24h": 480,
+      "capacity": 40,
+      "attention": 20,
+      "icon_code": 29,
+      "icon_uv": [
+        160,
+        96
+      ],
+      "logical_rect": [
+        100,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": true
+    },
+    {
+      "selection": 27,
+      "page": 1,
+      "slot": 12,
+      "columns": 5,
+      "fixture": 29,
+      "label": "飲料自販・冷蔵",
+      "message": 416,
+      "purchase": 800,
+      "maintenance_display_24h": 480,
+      "capacity": 20,
+      "attention": 15,
+      "icon_code": 30,
+      "icon_uv": [
+        192,
+        96
+      ],
+      "logical_rect": [
+        140,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 28,
+      "page": 1,
+      "slot": 13,
+      "columns": 5,
+      "fixture": 30,
+      "label": "飲料自販・冷蔵",
+      "message": 417,
+      "purchase": 1400,
+      "maintenance_display_24h": 960,
+      "capacity": 40,
+      "attention": 20,
+      "icon_code": 31,
+      "icon_uv": [
+        224,
+        96
+      ],
+      "logical_rect": [
+        180,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 29,
+      "page": 1,
+      "slot": 14,
+      "columns": 5,
+      "fixture": 31,
+      "label": "飲料自販・温冷",
+      "message": 418,
+      "purchase": 1000,
+      "maintenance_display_24h": 960,
+      "capacity": 15,
+      "attention": 15,
+      "icon_code": 32,
+      "icon_uv": [
+        0,
+        128
+      ],
+      "logical_rect": [
+        220,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 30,
+      "page": 2,
+      "slot": 0,
+      "columns": 3,
+      "fixture": 32,
+      "label": "飲料自販・温冷",
+      "message": 419,
+      "purchase": 1800,
+      "maintenance_display_24h": 1920,
+      "capacity": 30,
+      "attention": 20,
+      "icon_code": 33,
+      "icon_uv": [
+        32,
+        128
+      ],
+      "logical_rect": [
+        60,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 31,
+      "page": 2,
+      "slot": 1,
+      "columns": 3,
+      "fixture": 43,
+      "label": "キャッシュディスペンサー",
+      "message": 430,
+      "purchase": 4000,
+      "maintenance_display_24h": 1440,
+      "capacity": 50,
+      "attention": 20,
+      "icon_code": 44,
+      "icon_uv": [
+        128,
+        160
+      ],
+      "logical_rect": [
+        100,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 32,
+      "page": 2,
+      "slot": 2,
+      "columns": 3,
+      "fixture": 44,
+      "label": "キャッシュディスペンサー",
+      "message": 431,
+      "purchase": 7000,
+      "maintenance_display_24h": 2400,
+      "capacity": 90,
+      "attention": 30,
+      "icon_code": 45,
+      "icon_uv": [
+        160,
+        160
+      ],
+      "logical_rect": [
+        140,
+        88,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 33,
+      "page": 2,
+      "slot": 3,
+      "columns": 3,
+      "fixture": 45,
+      "label": "観葉植物",
+      "message": 432,
+      "purchase": 1000,
+      "maintenance_display_24h": 120,
+      "capacity": 0,
+      "attention": 0,
+      "icon_code": 54,
+      "icon_uv": [
+        192,
+        192
+      ],
+      "logical_rect": [
+        60,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 34,
+      "page": 2,
+      "slot": 4,
+      "columns": 3,
+      "fixture": 46,
+      "label": "ベンチ",
+      "message": 433,
+      "purchase": 2000,
+      "maintenance_display_24h": 168,
+      "capacity": 0,
+      "attention": 0,
+      "icon_code": 49,
+      "icon_uv": [
+        32,
+        192
+      ],
+      "logical_rect": [
+        100,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 35,
+      "page": 2,
+      "slot": 5,
+      "columns": 3,
+      "fixture": 47,
+      "label": "噴水",
+      "message": 434,
+      "purchase": 5000,
+      "maintenance_display_24h": 2400,
+      "capacity": 0,
+      "attention": 0,
+      "icon_code": 53,
+      "icon_uv": [
+        160,
+        192
+      ],
+      "logical_rect": [
+        140,
+        128,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 36,
+      "page": 2,
+      "slot": 6,
+      "columns": 3,
+      "fixture": 50,
+      "label": "駐車場",
+      "message": 437,
+      "purchase": 500,
+      "maintenance_display_24h": 0,
+      "capacity": 2,
+      "attention": 0,
+      "icon_code": 46,
+      "icon_uv": [
+        192,
+        160
+      ],
+      "logical_rect": [
+        60,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 37,
+      "page": 2,
+      "slot": 7,
+      "columns": 3,
+      "fixture": 51,
+      "label": "2階建駐車場",
+      "message": 438,
+      "purchase": 1000,
+      "maintenance_display_24h": 240,
+      "capacity": 4,
+      "attention": 0,
+      "icon_code": 47,
+      "icon_uv": [
+        224,
+        160
+      ],
+      "logical_rect": [
+        100,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    },
+    {
+      "selection": 38,
+      "page": 2,
+      "slot": 8,
+      "columns": 3,
+      "fixture": 52,
+      "label": "タワー駐車場",
+      "message": 439,
+      "purchase": 9000,
+      "maintenance_display_24h": 4800,
+      "capacity": 20,
+      "attention": 0,
+      "icon_code": 48,
+      "icon_uv": [
+        0,
+        192
+      ],
+      "logical_rect": [
+        140,
+        168,
+        32,
+        32
+      ],
+      "requires_tobacco_permit": false
+    }
+  ],
+  "page_sizes": [
+    15,
+    15,
+    9
+  ],
+  "page_columns": [
+    5,
+    5,
+    3
+  ],
+  "paper": [
+    32,
+    24,
+    256,
+    192
+  ],
+  "maintenance_display": "master hourly*24 independent of selected business schedule",
+  "real_daily_billing": "separate existing mode0 rule",
+  "excluded_from_this_menu": [
+    18,
+    19,
+    20,
+    21,
+    33,
+    34,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    48,
+    49
+  ],
+  "selection_index_is_not_fixture_id": true,
+  "android_update": false
+}
