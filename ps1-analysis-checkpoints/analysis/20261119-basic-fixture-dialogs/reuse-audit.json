@@ -1,0 +1,13 @@
+{
+  "known": [
+    {
+      "path": "algorithm-analysis/basic_fixture_choices.py",
+      "sha256": "4dede36eba2a8817e4a944b002cd7db6d0cc877bc21b6610b52590ce2e9e3d1f"
+    },
+    {
+      "path": "algorithm-analysis/category_parent_control.py",
+      "sha256": "ee7887e3d0070aa48420728b4db571377f38a273180acf68d3fe81f0e1922925"
+    }
+  ],
+  "scope": "Two/four choice, selection-before/after-confirm differences and cancel rules are already known; no new discovery or retest of acceptance/cancel."
+}

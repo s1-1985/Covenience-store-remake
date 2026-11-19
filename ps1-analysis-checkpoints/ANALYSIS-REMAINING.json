@@ -299,6 +299,14 @@
       "evidence": "analysis/20261119-equipment-catalog-display/README.md",
       "resolution": "Four bounded displays connect known selector/master to fixed24h maintenance, fields, original39 icon records/positions and tobacco-permit shading. Android37 items reveal5missing/3outside this original menu. Old navigation explicitly reused. No placement/gameplay/APK change.",
       "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X21",
+      "title": "専用レジの宅配便申込書収納力・控え室の選択時2画素上移動",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-basic-fixture-dialogs/README.md",
+      "resolution": "Original register display reads capacity+12 under宅配便申込書収納力, not attention+16; rooms lift selected spriteY2pixels with unchangedUV. Final4display entries plus7preparation entries; old two/four-choice control reused. No gameplay/payment/APK change.",
+      "counted_in_seven_tracked_items": false
     }
   ],
   "novelty_audit": {

@@ -1,0 +1,137 @@
+{
+  "rows": [
+    {
+      "dialog": "room",
+      "choice": 0,
+      "fixture": 48,
+      "price": 3000,
+      "maintenance_24h": 1200,
+      "attention": 0,
+      "capacity_known": 0,
+      "icon": 51
+    },
+    {
+      "dialog": "room",
+      "choice": 1,
+      "fixture": 49,
+      "price": 7000,
+      "maintenance_24h": 2400,
+      "attention": 0,
+      "capacity_known": 0,
+      "icon": 52
+    },
+    {
+      "dialog": "register",
+      "choice": 0,
+      "fixture": 38,
+      "price": 2000,
+      "maintenance_24h": 1440,
+      "attention": 15,
+      "capacity_known": 0,
+      "icon": 39
+    },
+    {
+      "dialog": "register",
+      "choice": 1,
+      "fixture": 39,
+      "price": 3000,
+      "maintenance_24h": 1680,
+      "attention": 25,
+      "capacity_known": 60,
+      "icon": 40
+    },
+    {
+      "dialog": "register",
+      "choice": 2,
+      "fixture": 41,
+      "price": 3000,
+      "maintenance_24h": 1680,
+      "attention": 20,
+      "capacity_known": 0,
+      "icon": 42
+    },
+    {
+      "dialog": "register",
+      "choice": 3,
+      "fixture": 42,
+      "price": 5000,
+      "maintenance_24h": 1920,
+      "attention": 30,
+      "capacity_known": 90,
+      "icon": 43
+    }
+  ],
+  "room": {
+    "paper": [
+      64,
+      48,
+      192,
+      112
+    ],
+    "price_y": 80,
+    "maintenance_y": 96,
+    "icons": [
+      [
+        112,
+        112,
+        32,
+        32
+      ],
+      [
+        152,
+        112,
+        32,
+        32
+      ]
+    ],
+    "selected_icon_y": 110,
+    "unselected_icon_y": 112
+  },
+  "register": {
+    "paper": [
+      40,
+      24,
+      240,
+      112
+    ],
+    "price_y": 72,
+    "maintenance_y": 72,
+    "parcel_form_capacity_xy": [
+      172,
+      56
+    ],
+    "icons": [
+      [
+        80,
+        88,
+        32,
+        32
+      ],
+      [
+        120,
+        88,
+        32,
+        32
+      ],
+      [
+        160,
+        88,
+        32,
+        32
+      ],
+      [
+        200,
+        88,
+        32,
+        32
+      ]
+    ],
+    "cursor_rule": [
+      103,
+      111,
+      40
+    ]
+  },
+  "semantics": "UI display bindings of known separate selectors; no charges or placement here",
+  "android_updated": false
+}

@@ -1,0 +1,445 @@
+{
+  "cases": [
+    {
+      "dialog": "room",
+      "choice": 0,
+      "fixture": 48,
+      "price": 3000,
+      "maintenance_24h": 1200,
+      "attention": 0,
+      "display_calls": [
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 80,
+          "text": "価格"
+        },
+        {
+          "kind": "message",
+          "x": 128,
+          "y": 80,
+          "message": 28,
+          "variable0": 0,
+          "money0": 0,
+          "money1": 3000
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 96,
+          "text": "維持費"
+        },
+        {
+          "kind": "message",
+          "x": 128,
+          "y": 96,
+          "message": 296,
+          "variable0": 0,
+          "money0": 1200,
+          "money1": 3000
+        }
+      ],
+      "icons": [
+        {
+          "x": 112,
+          "y": 110,
+          "width": 32,
+          "height": 32,
+          "kind": 25,
+          "uv": [
+            96,
+            192
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ]
+        },
+        {
+          "x": 152,
+          "y": 112,
+          "width": 32,
+          "height": 32,
+          "kind": 25,
+          "uv": [
+            128,
+            192
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ]
+        }
+      ],
+      "cursor_requests": [
+        [
+          140,
+          140
+        ]
+      ],
+      "input_samples_supplied": 0,
+      "store_cash_unchanged": true
+    },
+    {
+      "dialog": "room",
+      "choice": 1,
+      "fixture": 49,
+      "price": 7000,
+      "maintenance_24h": 2400,
+      "attention": 0,
+      "display_calls": [
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 80,
+          "text": "価格"
+        },
+        {
+          "kind": "message",
+          "x": 128,
+          "y": 80,
+          "message": 28,
+          "variable0": 0,
+          "money0": 1200,
+          "money1": 7000
+        },
+        {
+          "kind": "inline",
+          "x": 80,
+          "y": 96,
+          "text": "維持費"
+        },
+        {
+          "kind": "message",
+          "x": 128,
+          "y": 96,
+          "message": 296,
+          "variable0": 0,
+          "money0": 2400,
+          "money1": 7000
+        }
+      ],
+      "icons": [
+        {
+          "x": 112,
+          "y": 112,
+          "width": 32,
+          "height": 32,
+          "kind": 25,
+          "uv": [
+            96,
+            192
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ]
+        },
+        {
+          "x": 152,
+          "y": 110,
+          "width": 32,
+          "height": 32,
+          "kind": 25,
+          "uv": [
+            128,
+            192
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ]
+        }
+      ],
+      "cursor_requests": [
+        [
+          140,
+          140
+        ]
+      ],
+      "input_samples_supplied": 1,
+      "store_cash_unchanged": true
+    },
+    {
+      "dialog": "register",
+      "choice": 0,
+      "fixture": 38,
+      "price": 2000,
+      "maintenance_24h": 1440,
+      "attention": 15,
+      "display_calls": [
+        {
+          "kind": "inline",
+          "x": 88,
+          "y": 40,
+          "text": "レジを決定してください"
+        },
+        {
+          "kind": "inline",
+          "x": 56,
+          "y": 56,
+          "text": "宅配便申込書収納力"
+        },
+        {
+          "kind": "message",
+          "x": 172,
+          "y": 56,
+          "message": 368,
+          "variable0": 0,
+          "money0": 0,
+          "money1": 0
+        },
+        {
+          "kind": "inline",
+          "x": 56,
+          "y": 72,
+          "text": "価格"
+        },
+        {
+          "kind": "message",
+          "x": 88,
+          "y": 72,
+          "message": 28,
+          "variable0": 0,
+          "money0": 0,
+          "money1": 2000
+        },
+        {
+          "kind": "inline",
+          "x": 152,
+          "y": 72,
+          "text": "維持費"
+        },
+        {
+          "kind": "message",
+          "x": 192,
+          "y": 72,
+          "message": 296,
+          "variable0": 0,
+          "money0": 1440,
+          "money1": 2000
+        }
+      ],
+      "icons": [
+        {
+          "x": 80,
+          "y": 88,
+          "kind": 25,
+          "uv": [
+            224,
+            128
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ],
+          "width": 32,
+          "height": 32
+        },
+        {
+          "x": 120,
+          "y": 88,
+          "kind": 25,
+          "uv": [
+            0,
+            160
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ],
+          "width": 32,
+          "height": 32
+        },
+        {
+          "x": 160,
+          "y": 88,
+          "kind": 25,
+          "uv": [
+            64,
+            160
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ],
+          "width": 32,
+          "height": 32
+        },
+        {
+          "x": 200,
+          "y": 88,
+          "kind": 25,
+          "uv": [
+            96,
+            160
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ],
+          "width": 32,
+          "height": 32
+        }
+      ],
+      "cursor_requests": [
+        [
+          103,
+          111
+        ]
+      ],
+      "input_samples_supplied": 0,
+      "store_cash_unchanged": true
+    },
+    {
+      "dialog": "register",
+      "choice": 3,
+      "fixture": 42,
+      "price": 5000,
+      "maintenance_24h": 1920,
+      "attention": 30,
+      "display_calls": [
+        {
+          "kind": "inline",
+          "x": 88,
+          "y": 40,
+          "text": "レジを決定してください"
+        },
+        {
+          "kind": "inline",
+          "x": 56,
+          "y": 56,
+          "text": "宅配便申込書収納力"
+        },
+        {
+          "kind": "message",
+          "x": 172,
+          "y": 56,
+          "message": 368,
+          "variable0": 90,
+          "money0": 0,
+          "money1": 0
+        },
+        {
+          "kind": "inline",
+          "x": 56,
+          "y": 72,
+          "text": "価格"
+        },
+        {
+          "kind": "message",
+          "x": 88,
+          "y": 72,
+          "message": 28,
+          "variable0": 90,
+          "money0": 0,
+          "money1": 5000
+        },
+        {
+          "kind": "inline",
+          "x": 152,
+          "y": 72,
+          "text": "維持費"
+        },
+        {
+          "kind": "message",
+          "x": 192,
+          "y": 72,
+          "message": 296,
+          "variable0": 90,
+          "money0": 1920,
+          "money1": 5000
+        }
+      ],
+      "icons": [
+        {
+          "x": 80,
+          "y": 88,
+          "kind": 25,
+          "uv": [
+            224,
+            128
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ],
+          "width": 32,
+          "height": 32
+        },
+        {
+          "x": 120,
+          "y": 88,
+          "kind": 25,
+          "uv": [
+            0,
+            160
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ],
+          "width": 32,
+          "height": 32
+        },
+        {
+          "x": 160,
+          "y": 88,
+          "kind": 25,
+          "uv": [
+            64,
+            160
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ],
+          "width": 32,
+          "height": 32
+        },
+        {
+          "x": 200,
+          "y": 88,
+          "kind": 25,
+          "uv": [
+            96,
+            160
+          ],
+          "rgb": [
+            128,
+            128,
+            128
+          ],
+          "width": 32,
+          "height": 32
+        }
+      ],
+      "cursor_requests": [
+        [
+          223,
+          111
+        ]
+      ],
+      "input_samples_supplied": 0,
+      "store_cash_unchanged": true
+    }
+  ],
+  "original_entries": 4,
+  "preparatory_entries": 7,
+  "synthetic_input_samples": 1,
+  "operating_updates": 0,
+  "gpu": false,
+  "room_icon_record_constructor_executed": true,
+  "register_record_constructor_intercepted": true
+}

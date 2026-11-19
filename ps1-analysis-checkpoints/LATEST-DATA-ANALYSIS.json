@@ -1,26 +1,27 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_equipment_catalog_display",
-  "report": "analysis/20261119-equipment-catalog-display/README.md",
-  "previous_report": "analysis/20261119-facility-selection-pages/README.md",
+  "work_kind": "normal_basic_fixture_dialog_display",
+  "report": "analysis/20261119-basic-fixture-dialogs/README.md",
+  "previous_report": "analysis/20261119-equipment-catalog-display/README.md",
   "priority": "Six existing unresolved issues remain paused; other normal UI readers analyzed.",
   "new_result": [
-    "Equipment display uses hourly*24 regardless of8h/closed schedule.",
-    "Original39 menu versus Android37 reveals5missing and3outside this menu.",
-    "Native icon/field/cursor positions and permit RGB mapped; old navigation reused."
+    "Register-specific field is宅配便申込書収納力 frommaster+12:0/60/0/90, notattention.",
+    "Room selection lifts screenY2pixels, noUVshift; constructor defaultRGB128.",
+    "Separate two/four-dialog price, fixed24h maintenance and icon geometry connected."
   ],
   "known_reused": [
-    "equipment_choice.py three-page navigation and permit/confirm",
-    "53fixture master and labels",
-    "real daily maintenance formula"
+    "basic_fixture_choices.py two/four navigation and confirm/cancel order",
+    "category_parent_control.py separate state4/5 paths",
+    "fixture master and costs"
   ],
   "final_reproducer_original_entries": 4,
   "entry_breakdown": {
-    "bounded_display": 4
+    "room_display": 2,
+    "register_display": 2
   },
-  "entry_count_scope": "Four bounded original display fragments, no failed preparation CPU attempts.",
+  "entry_count_scope": "Final4 entries;7preparation entries stopped/diagnosed before correcting expectations for roomY and registercapacity.",
   "operating_updates": 0,
-  "verification": "Original icon/cursor/digit helpers executed; six visual intercepts, stop before41374; initial full refresh bypassed via staged flag. Store/cash unchanged; no gameplay/input/GPU/card.",
+  "verification": "Bounded displays, one supplied rightinput for roomsecondchoice, diagnostic register initialselection. Room original41630 executed, register41630 intercepted; no GPU/gameplay/payment/card.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,

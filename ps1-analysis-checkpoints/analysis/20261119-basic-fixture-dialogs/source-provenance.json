@@ -1,0 +1,30 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": {
+    "room_dialog": {
+      "start": "0x8004594c",
+      "end_exclusive": "0x80045ffc",
+      "sha256": "ec0a2993c915fb6788cb98f750576927a4ef89f848987adfbfbcbcd9a0142072"
+    },
+    "register_dialog": {
+      "start": "0x8006966c",
+      "end_exclusive": "0x80069bbc",
+      "sha256": "2af9a01260d4312619a1e3387dc69bc0961475cb80407fc2157575b74fd1dbfc"
+    },
+    "register_map": {
+      "start": "0x800b9910",
+      "end_exclusive": "0x800b9920",
+      "sha256": "40d2a3edab931df969671ef675050edfaf401dea1e18a7dc06260735ee39a210"
+    },
+    "room_map": {
+      "start": "0x800cd760",
+      "end_exclusive": "0x800cd768",
+      "sha256": "7f96fc35746f2ce2126e46ef4f24f2a0f89c0351ba6fc3a4b73d0ae1911b9dbd"
+    },
+    "placement_map_reader": {
+      "start": "0x80076bd4",
+      "end_exclusive": "0x80076d1c",
+      "sha256": "bed4c73c012f51c4947a66bc3569d94444f64fa6050c09d18f9385625fabc37c"
+    }
+  }
+}
