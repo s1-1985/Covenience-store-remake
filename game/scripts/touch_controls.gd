@@ -5,6 +5,25 @@ var main
 var ui
 var speed_label: Button
 var pause_label: Button
+var _finger_buttons: Dictionary = {}
+
+func _input(event: InputEvent) -> void:
+    # BaseButton normally relies on emulated mouse input. Handle real finger
+    # events too, before the painted modal can consume the rail gesture.
+    if not event is InputEventScreenTouch:
+        return
+    if event.pressed:
+        for child in get_children():
+            if child is Button and child.get_global_rect().has_point(event.position):
+                _finger_buttons[event.index] = child
+                get_viewport().set_input_as_handled()
+                return
+    elif _finger_buttons.has(event.index):
+        var button: Button = _finger_buttons[event.index]
+        _finger_buttons.erase(event.index)
+        get_viewport().set_input_as_handled()
+        if not event.canceled and button.get_global_rect().has_point(event.position) and not button.disabled:
+            button.pressed.emit()
 
 func setup(owner_main, owner_ui) -> void:
     main = owner_main

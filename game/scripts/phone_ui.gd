@@ -758,10 +758,10 @@ func _on_map_building_tapped(tile: Vector2i) -> void:
     lines.append(hours)
     building_card_label.text = "\n".join(lines)
     building_card.visible = true
-    building_card.size = Vector2(PLAY_RIGHT - 16, 0)
+    building_card.size = Vector2(PLAY_WIDTH - 16, 0)
     building_card.reset_size()
-    building_card.size.x = PLAY_RIGHT - 16
-    building_card.position = Vector2(8, SCREEN.y - building_card.size.y - 8)
+    building_card.size.x = PLAY_WIDTH - 16
+    building_card.position = Vector2(PLAY_LEFT + 8, SCREEN.y - building_card.size.y - 8)
 
 
 # --- a tapped customer: what they are buying, and つまみだす ---

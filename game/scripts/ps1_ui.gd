@@ -310,6 +310,12 @@ func _input(event: InputEvent) -> void:
     else:
         return
     var p: Vector2 = (position - ORIGIN) / ZOOM
+    # The rails are real GUI buttons on a higher CanvasLayer. Never consume
+    # their press/release in the painted-menu input handler.
+    if position.x < PLAY_LEFT or position.x >= PLAY_RIGHT:
+        if released and pointer == _native_pointer: _native_pointer = -1
+        if _staff_drag.is_empty():
+            return
     if notice.visible:
         _cancel_staff_drag()
         if released and pointer == _native_pointer: _native_pointer = -1
@@ -335,6 +341,10 @@ func _input(event: InputEvent) -> void:
         return
     if released:
         if pointer == _native_pointer: _native_pointer = -1
+        # TownView acts on RELEASE, so consuming only the menu's press lets
+        # the same gesture select a building behind the menu.
+        if not screen.is_empty() and floor_mode.is_empty():
+            get_viewport().set_input_as_handled()
         return
     if not screen.is_empty() and pointer >= 0 and pointer != _native_pointer:
         get_viewport().set_input_as_handled()
