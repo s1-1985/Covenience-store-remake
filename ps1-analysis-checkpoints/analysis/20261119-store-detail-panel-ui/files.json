@@ -1,0 +1,26 @@
+{
+  "README.md": {
+    "sha256": "cb015af5d97738f3ddb00373be928083f77fdf9e47c371d05037f4716d74e64f",
+    "bytes": 6861
+  },
+  "analyze-panel.py": {
+    "sha256": "60dbd09c8334fdfb6bf30bb64c8c92e9c6946f9028d03eb45a8b6f65705d0ebd",
+    "bytes": 7786
+  },
+  "message-templates.json": {
+    "sha256": "504f52f9e33b5bfa208ae1314d9fa5d8ec30aa932921794551e4496037fee2a2",
+    "bytes": 6319
+  },
+  "original-cases.json": {
+    "sha256": "6d46400341e43b393f173c74041e1b9157ac0a651f8dcb36a4db2e8506ebe79d",
+    "bytes": 20064
+  },
+  "panel-rules.json": {
+    "sha256": "4608515b07dcc991e4e8fed0345aef5e861348f2fabeaa7cf495c1818f569716",
+    "bytes": 2309
+  },
+  "source-provenance.json": {
+    "sha256": "6dfbe3297453f4f00d1b57f2a1cd3ca6d2012908b4d56ce30ff7f3f8af1535ef",
+    "bytes": 993
+  }
+}

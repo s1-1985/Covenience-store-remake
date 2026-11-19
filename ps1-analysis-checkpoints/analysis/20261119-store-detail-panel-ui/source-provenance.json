@@ -1,0 +1,23 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "town_sha256": "792c7b5cc2faf5a192bc5f9ce1758fd3a1dfa463a5a110a1fd6a20879c90ce7b",
+  "msg_sha256": "d2ab3800ee82628cafe96d94f58d9790653b4e5387cbacc7097cc67c5ac18635",
+  "archive_sha256": "afd46b32e0a24e3f2d75723a0c4a3fecc120d80b07993c2e73236e55cf3d54cd",
+  "helper_sha256": "aa3c09f5c22dc9e935c52678b375a2323459af99963e9f0bd34382a9b3fa21f5",
+  "ranges": [
+    {
+      "name": "panel_reader",
+      "start": "0x8004d8c8",
+      "end_exclusive": "0x8004dfac",
+      "sha256": "8f669e5da863bfda0c95b6885af03b54ac71b3a81483887deeb40d2bedb2efa6"
+    },
+    {
+      "name": "permit_icon_renderer",
+      "start": "0x80043a80",
+      "end_exclusive": "0x80043cd0",
+      "sha256": "14af4c7fed99a0c41156e6ea3968ef099eacc009ae8453da13eec5ecf3989d96"
+    }
+  ],
+  "reuse_audit_scope": "Small prior reports/models and r2 source-reference; no exhaustive large snapshot-log audit.",
+  "paused_issues_touched": false
+}

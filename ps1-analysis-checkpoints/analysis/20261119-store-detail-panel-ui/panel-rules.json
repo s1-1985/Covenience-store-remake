@@ -1,0 +1,112 @@
+{
+  "reader": "0x8004d8c8",
+  "origin": "signed16 x,y arguments; all positions below are relative logical coordinates",
+  "header": {
+    "own_company_message": 384,
+    "rival_company_message": "362+signed byte CD948",
+    "company_xy": [
+      16,
+      16
+    ],
+    "store_number": "flags4 low7 bits; serial1 -> MSG12 本店, otherwise MSG366 with numeric slot",
+    "store_xy": [
+      16,
+      32
+    ]
+  },
+  "money": {
+    "field": "store+D5C previous-month revenue",
+    "message": 302,
+    "xy": [
+      16,
+      48
+    ],
+    "not": "store+D48 current month or company cash"
+  },
+  "hours": {
+    "field": "store+C78",
+    "message": "303+schedule0..6",
+    "xy": [
+      16,
+      80
+    ]
+  },
+  "rating": {
+    "field": "signed32 store+C68",
+    "star_repeat": "trunc(value/20), written to signed16 CD8E6",
+    "message": 310,
+    "xy": [
+      16,
+      112
+    ],
+    "scope": "Normal0..100 gives0..5. Reader has no separate explicit clamp; no malformed-value display claim."
+  },
+  "numeric_rows": [
+    {
+      "label": "人気",
+      "label_message": 311,
+      "value": "store+C6C",
+      "y": 128
+    },
+    {
+      "label": "清掃",
+      "label_message": 312,
+      "value": "native2287C(store)",
+      "y": 144
+    },
+    {
+      "label": "警備",
+      "label_message": 313,
+      "value": "native224E0(store)",
+      "y": 160
+    },
+    {
+      "label": "サービス",
+      "label_message": 314,
+      "value": "native221D0(store)",
+      "y": 176
+    }
+  ],
+  "numeric_row_x": {
+    "label": 16,
+    "value": 80
+  },
+  "numeric_message": 369,
+  "permits": [
+    {
+      "field": "C74",
+      "icon": 1,
+      "label": "たばこ",
+      "xy": [
+        60,
+        32
+      ]
+    },
+    {
+      "field": "C75",
+      "icon": 2,
+      "label": "酒類",
+      "xy": [
+        76,
+        32
+      ]
+    },
+    {
+      "field": "C76",
+      "icon": 3,
+      "label": "薬品",
+      "xy": [
+        92,
+        32
+      ]
+    }
+  ],
+  "permit_rule": "Each signed byte !=0 shows its own fixed icon; no compacting gaps or treating all three as one boolean.",
+  "known_reused": [
+    "source finance monthly history",
+    "cleaning/security/service metrics",
+    "permit fields and icon identities",
+    "company/store flags and source text decoder"
+  ],
+  "apk_updated": false
+}

@@ -1,0 +1,910 @@
+{
+  "leaf": "0x8004d8c8..0x8004dfac",
+  "cases": [
+    {
+      "input": {
+        "rating": 19,
+        "flags": 1,
+        "schedule": 0,
+        "permits": [
+          0,
+          0,
+          0
+        ],
+        "current_month_sales": 987654,
+        "previous_month_sales": 1234567,
+        "popularity": 73,
+        "origin": [
+          184,
+          8
+        ]
+      },
+      "captured_visual_calls": [
+        {
+          "kind": "draw_group",
+          "pc": "0x80018940",
+          "args": [
+            4,
+            1,
+            2148719272,
+            0
+          ]
+        },
+        {
+          "kind": "panel_frame",
+          "pc": "0x80017b18",
+          "args": [
+            524472,
+            851976,
+            2148663296,
+            0
+          ]
+        },
+        {
+          "kind": "restore_display",
+          "pc": "0x800157b4",
+          "args": [
+            524472,
+            851976,
+            2148663296,
+            0
+          ]
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 24,
+          "message": 384,
+          "numeric_slot_u32": 0,
+          "money_slot_u32": 0,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 40,
+          "message": 12,
+          "numeric_slot_u32": 1,
+          "money_slot_u32": 0,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 56,
+          "message": 302,
+          "numeric_slot_u32": 1,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 88,
+          "message": 303,
+          "numeric_slot_u32": 1,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 120,
+          "message": 310,
+          "numeric_slot_u32": 1,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 136,
+          "message": 369,
+          "numeric_slot_u32": 73,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 136,
+          "message": 311,
+          "numeric_slot_u32": 73,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 152,
+          "message": 369,
+          "numeric_slot_u32": 30,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 152,
+          "message": 312,
+          "numeric_slot_u32": 30,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 168,
+          "message": 369,
+          "numeric_slot_u32": 58,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 168,
+          "message": 313,
+          "numeric_slot_u32": 58,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 184,
+          "message": 369,
+          "numeric_slot_u32": 31,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 184,
+          "message": 314,
+          "numeric_slot_u32": 31,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "icon_group_setup",
+          "pc": "0x800419e0",
+          "args": [
+            200,
+            184,
+            314,
+            0
+          ]
+        },
+        {
+          "kind": "draw_group",
+          "pc": "0x80018940",
+          "args": [
+            10,
+            1,
+            314,
+            0
+          ]
+        }
+      ],
+      "native_metric_entries": [
+        {
+          "entry": "0x8002287c",
+          "store_arg": "0x8012daa8"
+        },
+        {
+          "entry": "0x800224e0",
+          "store_arg": "0x8012daa8"
+        },
+        {
+          "entry": "0x800221d0",
+          "store_arg": "0x8012daa8"
+        }
+      ],
+      "display_values": {
+        "stars": 0,
+        "money": 1234567,
+        "popularity_clean_security_service": [
+          73,
+          30,
+          58,
+          31
+        ]
+      },
+      "store_record_unchanged": true
+    },
+    {
+      "input": {
+        "rating": 20,
+        "flags": 2,
+        "schedule": 2,
+        "permits": [
+          1,
+          1,
+          1
+        ],
+        "current_month_sales": 987654,
+        "previous_month_sales": 1234567,
+        "popularity": 73,
+        "origin": [
+          184,
+          8
+        ]
+      },
+      "captured_visual_calls": [
+        {
+          "kind": "draw_group",
+          "pc": "0x80018940",
+          "args": [
+            4,
+            1,
+            2148719272,
+            0
+          ]
+        },
+        {
+          "kind": "panel_frame",
+          "pc": "0x80017b18",
+          "args": [
+            524472,
+            851976,
+            2148663296,
+            0
+          ]
+        },
+        {
+          "kind": "restore_display",
+          "pc": "0x800157b4",
+          "args": [
+            524472,
+            851976,
+            2148663296,
+            0
+          ]
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 24,
+          "message": 384,
+          "numeric_slot_u32": 0,
+          "money_slot_u32": 0,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 40,
+          "message": 366,
+          "numeric_slot_u32": 2,
+          "money_slot_u32": 0,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 56,
+          "message": 302,
+          "numeric_slot_u32": 2,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 88,
+          "message": 305,
+          "numeric_slot_u32": 2,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 120,
+          "message": 310,
+          "numeric_slot_u32": 2,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 1
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 136,
+          "message": 369,
+          "numeric_slot_u32": 73,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 1
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 136,
+          "message": 311,
+          "numeric_slot_u32": 73,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 1
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 152,
+          "message": 369,
+          "numeric_slot_u32": 30,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 1
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 152,
+          "message": 312,
+          "numeric_slot_u32": 30,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 1
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 168,
+          "message": 369,
+          "numeric_slot_u32": 58,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 1
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 168,
+          "message": 313,
+          "numeric_slot_u32": 58,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 1
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 184,
+          "message": 369,
+          "numeric_slot_u32": 31,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 1
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 184,
+          "message": 314,
+          "numeric_slot_u32": 31,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 1
+        },
+        {
+          "kind": "icon_group_setup",
+          "pc": "0x800419e0",
+          "args": [
+            200,
+            184,
+            314,
+            0
+          ]
+        },
+        {
+          "kind": "permit_icon",
+          "x": 244,
+          "y": 40,
+          "icon": 1
+        },
+        {
+          "kind": "permit_icon",
+          "x": 260,
+          "y": 40,
+          "icon": 2
+        },
+        {
+          "kind": "permit_icon",
+          "x": 276,
+          "y": 40,
+          "icon": 3
+        },
+        {
+          "kind": "draw_group",
+          "pc": "0x80018940",
+          "args": [
+            10,
+            1,
+            3,
+            0
+          ]
+        }
+      ],
+      "native_metric_entries": [
+        {
+          "entry": "0x8002287c",
+          "store_arg": "0x8012daa8"
+        },
+        {
+          "entry": "0x800224e0",
+          "store_arg": "0x8012daa8"
+        },
+        {
+          "entry": "0x800221d0",
+          "store_arg": "0x8012daa8"
+        }
+      ],
+      "display_values": {
+        "stars": 1,
+        "money": 1234567,
+        "popularity_clean_security_service": [
+          73,
+          30,
+          58,
+          31
+        ]
+      },
+      "store_record_unchanged": true
+    },
+    {
+      "input": {
+        "rating": 99,
+        "flags": 32769,
+        "schedule": 6,
+        "permits": [
+          1,
+          0,
+          1
+        ],
+        "current_month_sales": 987654,
+        "previous_month_sales": 1234567,
+        "popularity": 73,
+        "origin": [
+          184,
+          8
+        ]
+      },
+      "captured_visual_calls": [
+        {
+          "kind": "draw_group",
+          "pc": "0x80018940",
+          "args": [
+            4,
+            1,
+            2148719272,
+            0
+          ]
+        },
+        {
+          "kind": "panel_frame",
+          "pc": "0x80017b18",
+          "args": [
+            524472,
+            851976,
+            2148663296,
+            0
+          ]
+        },
+        {
+          "kind": "restore_display",
+          "pc": "0x800157b4",
+          "args": [
+            524472,
+            851976,
+            2148663296,
+            0
+          ]
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 24,
+          "message": 362,
+          "numeric_slot_u32": 0,
+          "money_slot_u32": 0,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 40,
+          "message": 12,
+          "numeric_slot_u32": 1,
+          "money_slot_u32": 0,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 56,
+          "message": 302,
+          "numeric_slot_u32": 1,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 88,
+          "message": 309,
+          "numeric_slot_u32": 1,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 120,
+          "message": 310,
+          "numeric_slot_u32": 1,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 4
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 136,
+          "message": 369,
+          "numeric_slot_u32": 73,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 4
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 136,
+          "message": 311,
+          "numeric_slot_u32": 73,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 4
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 152,
+          "message": 369,
+          "numeric_slot_u32": 30,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 4
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 152,
+          "message": 312,
+          "numeric_slot_u32": 30,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 4
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 168,
+          "message": 369,
+          "numeric_slot_u32": 58,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 4
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 168,
+          "message": 313,
+          "numeric_slot_u32": 58,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 4
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 184,
+          "message": 369,
+          "numeric_slot_u32": 31,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 4
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 184,
+          "message": 314,
+          "numeric_slot_u32": 31,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 4
+        },
+        {
+          "kind": "icon_group_setup",
+          "pc": "0x800419e0",
+          "args": [
+            200,
+            184,
+            314,
+            0
+          ]
+        },
+        {
+          "kind": "permit_icon",
+          "x": 244,
+          "y": 40,
+          "icon": 1
+        },
+        {
+          "kind": "permit_icon",
+          "x": 276,
+          "y": 40,
+          "icon": 3
+        },
+        {
+          "kind": "draw_group",
+          "pc": "0x80018940",
+          "args": [
+            10,
+            1,
+            3,
+            0
+          ]
+        }
+      ],
+      "native_metric_entries": [
+        {
+          "entry": "0x8002287c",
+          "store_arg": "0x8012daa8"
+        },
+        {
+          "entry": "0x800224e0",
+          "store_arg": "0x8012daa8"
+        },
+        {
+          "entry": "0x800221d0",
+          "store_arg": "0x8012daa8"
+        }
+      ],
+      "display_values": {
+        "stars": 4,
+        "money": 1234567,
+        "popularity_clean_security_service": [
+          73,
+          30,
+          58,
+          31
+        ]
+      },
+      "store_record_unchanged": true
+    },
+    {
+      "input": {
+        "rating": 100,
+        "flags": 32770,
+        "schedule": 3,
+        "permits": [
+          0,
+          1,
+          0
+        ],
+        "current_month_sales": 987654,
+        "previous_month_sales": 1234567,
+        "popularity": 73,
+        "origin": [
+          184,
+          8
+        ]
+      },
+      "captured_visual_calls": [
+        {
+          "kind": "draw_group",
+          "pc": "0x80018940",
+          "args": [
+            4,
+            1,
+            2148719272,
+            0
+          ]
+        },
+        {
+          "kind": "panel_frame",
+          "pc": "0x80017b18",
+          "args": [
+            524472,
+            851976,
+            2148663296,
+            0
+          ]
+        },
+        {
+          "kind": "restore_display",
+          "pc": "0x800157b4",
+          "args": [
+            524472,
+            851976,
+            2148663296,
+            0
+          ]
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 24,
+          "message": 362,
+          "numeric_slot_u32": 0,
+          "money_slot_u32": 0,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 40,
+          "message": 366,
+          "numeric_slot_u32": 2,
+          "money_slot_u32": 0,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 56,
+          "message": 302,
+          "numeric_slot_u32": 2,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 88,
+          "message": 306,
+          "numeric_slot_u32": 2,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 0
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 120,
+          "message": 310,
+          "numeric_slot_u32": 2,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 5
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 136,
+          "message": 369,
+          "numeric_slot_u32": 73,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 5
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 136,
+          "message": 311,
+          "numeric_slot_u32": 73,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 5
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 152,
+          "message": 369,
+          "numeric_slot_u32": 30,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 5
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 152,
+          "message": 312,
+          "numeric_slot_u32": 30,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 5
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 168,
+          "message": 369,
+          "numeric_slot_u32": 58,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 5
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 168,
+          "message": 313,
+          "numeric_slot_u32": 58,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 5
+        },
+        {
+          "kind": "message",
+          "x": 264,
+          "y": 184,
+          "message": 369,
+          "numeric_slot_u32": 31,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 5
+        },
+        {
+          "kind": "message",
+          "x": 200,
+          "y": 184,
+          "message": 314,
+          "numeric_slot_u32": 31,
+          "money_slot_u32": 1234567,
+          "star_repeat_i16": 5
+        },
+        {
+          "kind": "icon_group_setup",
+          "pc": "0x800419e0",
+          "args": [
+            200,
+            184,
+            314,
+            0
+          ]
+        },
+        {
+          "kind": "permit_icon",
+          "x": 260,
+          "y": 40,
+          "icon": 2
+        },
+        {
+          "kind": "draw_group",
+          "pc": "0x80018940",
+          "args": [
+            10,
+            1,
+            2,
+            0
+          ]
+        }
+      ],
+      "native_metric_entries": [
+        {
+          "entry": "0x8002287c",
+          "store_arg": "0x8012daa8"
+        },
+        {
+          "entry": "0x800224e0",
+          "store_arg": "0x8012daa8"
+        },
+        {
+          "entry": "0x800221d0",
+          "store_arg": "0x8012daa8"
+        }
+      ],
+      "display_values": {
+        "stars": 5,
+        "money": 1234567,
+        "popularity_clean_security_service": [
+          73,
+          30,
+          58,
+          31
+        ]
+      },
+      "store_record_unchanged": true
+    }
+  ],
+  "original_top_level_entries": {
+    "existing_bootstrap": 3,
+    "detail_reader": 4,
+    "total": 7
+  },
+  "nested_native_metric_calls": 12,
+  "visual_callee_intercepts": {
+    "0x80018940": "draw_group",
+    "0x80017b18": "panel_frame",
+    "0x800157b4": "restore_display",
+    "0x8004e494": "message",
+    "0x800419e0": "icon_group_setup",
+    "0x80043a80": "permit_icon"
+  },
+  "gameplay_callee_replacements": 0,
+  "operating_updates": 0,
+  "scope": "Four controlled display inputs; native metric calculations are not newly verified formulas. Visual/text calls captured, not actual GPU/glyph/audio rendering or complete menu/input execution."
+}

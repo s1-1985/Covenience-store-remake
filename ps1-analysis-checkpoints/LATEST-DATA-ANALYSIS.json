@@ -1,21 +1,31 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_survey_ranking_ui",
-  "report": "analysis/20261119-survey-ranking-ui/README.md",
-  "previous_report": "analysis/20261119-festival-active-admission-save/README.md",
-  "priority": "User paused the six existing unresolved issues; analyze other normal UI/source behavior.",
-  "new_result": "Independent unsigned top8 for bought/wanted counters, low-ID tie order, zero suppression, original row coordinates and cyclic own-store navigation linked.",
-  "known_reused": [
-    "counter producers",
-    "monthly reset",
-    "product labels",
-    "owner-store list"
+  "work_kind": "normal_store_detail_panel_ui",
+  "report": "analysis/20261119-store-detail-panel-ui/README.md",
+  "previous_report": "analysis/20261119-survey-ranking-ui/README.md",
+  "priority": "Existing six unresolved issues remain paused; other normal UI readers analyzed.",
+  "new_result": [
+    "Original detail panel field bindings and relative coordinates including previous-month revenue D5C.",
+    "Normal rating19/20/99/100 -> star repeats0/1/4/5, seven schedule messages.",
+    "Native metric outputs and three permit bytes bound to fixed icon anchors."
   ],
-  "original_leaf_entries": 3,
-  "text_renderer_intercepted": true,
+  "known_reused": [
+    "monthly finance history",
+    "cleaning/security/service formulas",
+    "permit fields and source text decoder",
+    "ownership and store number flags"
+  ],
+  "final_reproducer_top_level_entries": 7,
+  "entry_breakdown": {
+    "bootstrap": 3,
+    "detail_reader": 4
+  },
+  "nested_native_metric_calls": 12,
+  "preparation_note": "Earlier empty-store display inputs replaced by active store2 for final run. Counts describe final reproducer only.",
+  "visual_callee_intercepts": 6,
   "gameplay_function_replacements": 0,
   "operating_updates": 0,
-  "verification": "Three ranking and captured text-argument cases; no broad regression or full GPU/card/menu loop.",
+  "verification": "Four native reader cases; visual calls captured, no whole menu/GPU/audio or broad regression.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,

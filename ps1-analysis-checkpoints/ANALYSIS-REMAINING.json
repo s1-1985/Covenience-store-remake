@@ -136,7 +136,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "既存未解決6件は一旦保留。通常画面・操作・データの既存成果を照合し、未接続の表示規則を進める。アンケートの上位8件/同数順/空欄/座標は接続済みのため反復しない。解析完了とAndroid実装済みを区別する。",
+  "next": "既存未解決6件の保留を維持。通常画面・操作・データの既存成果を照合し未接続部分を進める。アンケート順位と店舗詳細パネルの表示参照・星・座標・許可アンカーは接続済みとして反復しない。解析完了とAndroid実装済みは区別する。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -250,6 +250,14 @@
       "status": "resolved_scoped_source_rendering",
       "evidence": "analysis/20261119-survey-ranking-ui/README.md",
       "resolution": "Original470E4 read side linked to existing monthly counters and product labels; three native ranking/text-argument cases agree with independent model. Text renderer intercepted; no full-screen/ordinary UI play or APK change.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X15",
+      "title": "店舗詳細パネルの先月売上・星・指標・許可アンカー",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-store-detail-panel-ui/README.md",
+      "resolution": "Original4D8C8 reader bound to previous-month revenue, seven schedule templates, signed rating/20 stars, native clean/security/service calculations and three fixed permit icons. Four controlled native-reader cases; visual children intercepted. No full UI/GPU/Android update.",
       "counted_in_seven_tracked_items": false
     }
   ],

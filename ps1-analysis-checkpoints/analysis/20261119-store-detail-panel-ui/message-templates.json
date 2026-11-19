@@ -1,0 +1,316 @@
+{
+  "source": "MSG00.OBJ",
+  "source_sha256": "d2ab3800ee82628cafe96d94f58d9790653b4e5387cbacc7097cc67c5ac18635",
+  "rows": [
+    {
+      "message_id": 12,
+      "source_offset": 2516,
+      "codes": [
+        61,
+        272,
+        238,
+        16639
+      ],
+      "decoded_template": "　本店",
+      "sha256": "c55bb59346a015af902a67820953cee92a901afa449a11845c4170826e58c97c"
+    },
+    {
+      "message_id": 302,
+      "source_offset": 7350,
+      "codes": [
+        397,
+        230,
+        280,
+        102,
+        224,
+        112,
+        16386,
+        61,
+        16388,
+        0,
+        16639
+      ],
+      "decoded_template": "先月売り上げ{4002}　{4004}0",
+      "sha256": "5e52161e12b8ff8a9835ae18ca656be15e03cfbee99920b4d3187f01777341ec"
+    },
+    {
+      "message_id": 303,
+      "source_offset": 7372,
+      "codes": [
+        61,
+        2,
+        4,
+        355,
+        356,
+        16639
+      ],
+      "decoded_template": "　24時間",
+      "sha256": "87f7ad67da43db468943d21fdfc47bcd99ed5cae5c0ebc7c835f3276c8da1576"
+    },
+    {
+      "message_id": 304,
+      "source_offset": 7384,
+      "codes": [
+        10,
+        22,
+        1,
+        0,
+        43,
+        0,
+        0,
+        42,
+        16386,
+        61,
+        61,
+        61,
+        61,
+        61,
+        25,
+        22,
+        6,
+        43,
+        0,
+        0,
+        16639
+      ],
+      "decoded_template": "AM10:00~{4002}　　　　　PM6:00",
+      "sha256": "a4bfa61f42788bf38e483eb867640c9994a65d623712eba272f53e0a14ce573a"
+    },
+    {
+      "message_id": 305,
+      "source_offset": 7426,
+      "codes": [
+        10,
+        22,
+        7,
+        43,
+        0,
+        0,
+        42,
+        16386,
+        61,
+        61,
+        61,
+        61,
+        25,
+        22,
+        1,
+        1,
+        43,
+        0,
+        0,
+        16639
+      ],
+      "decoded_template": "AM7:00~{4002}　　　　PM11:00",
+      "sha256": "5fe0c903a1398e16732b7b59cee220ab66fed984a56643a2f89a4dd4f1a1ae26"
+    },
+    {
+      "message_id": 306,
+      "source_offset": 7466,
+      "codes": [
+        10,
+        22,
+        1,
+        0,
+        43,
+        0,
+        0,
+        42,
+        16386,
+        61,
+        61,
+        61,
+        61,
+        61,
+        10,
+        22,
+        2,
+        43,
+        0,
+        0,
+        16639
+      ],
+      "decoded_template": "AM10:00~{4002}　　　　　AM2:00",
+      "sha256": "7d3e1c6c37486ccb4be9dad1ab44242cee275fb557b4fd5c7dc0343ecf6ffcff"
+    },
+    {
+      "message_id": 307,
+      "source_offset": 7508,
+      "codes": [
+        25,
+        22,
+        0,
+        43,
+        0,
+        0,
+        42,
+        16386,
+        61,
+        61,
+        61,
+        61,
+        61,
+        10,
+        22,
+        4,
+        43,
+        0,
+        0,
+        16639
+      ],
+      "decoded_template": "PM0:00~{4002}　　　　　AM4:00",
+      "sha256": "55ca4418f68a9e497134d6fcec81625796aba6def45ebd33218a9003a7b76f7b"
+    },
+    {
+      "message_id": 308,
+      "source_offset": 7548,
+      "codes": [
+        25,
+        22,
+        7,
+        43,
+        0,
+        0,
+        42,
+        16386,
+        61,
+        61,
+        61,
+        61,
+        10,
+        22,
+        1,
+        1,
+        43,
+        0,
+        0,
+        16639
+      ],
+      "decoded_template": "PM7:00~{4002}　　　　AM11:00",
+      "sha256": "afa8e8f7d79c16bc14fc290da99dfa08483dec0442c4dbcac6cf89830ad637e2"
+    },
+    {
+      "message_id": 309,
+      "source_offset": 7588,
+      "codes": [
+        61,
+        627,
+        355,
+        628,
+        352,
+        16639
+      ],
+      "decoded_template": "　臨時休業",
+      "sha256": "10efbb982f75fcc841c18cda6aad6a7c9ae74b4264a9ef60b1a7fa2530e06619"
+    },
+    {
+      "message_id": 310,
+      "source_offset": 7600,
+      "codes": [
+        242,
+        243,
+        61,
+        16396,
+        16639
+      ],
+      "decoded_template": "評価　{400C}",
+      "sha256": "3605463e332bbc3c820038515012202f2e20671408ba84e651f78f08176cf5b8"
+    },
+    {
+      "message_id": 311,
+      "source_offset": 7610,
+      "codes": [
+        389,
+        334,
+        16639
+      ],
+      "decoded_template": "人気",
+      "sha256": "b5cc1c899226a88f18ffdfbd5de5545d66984c89690aba4c40a9b3d80dc4def6"
+    },
+    {
+      "message_id": 312,
+      "source_offset": 7616,
+      "codes": [
+        531,
+        380,
+        16639
+      ],
+      "decoded_template": "清掃",
+      "sha256": "66d01b9c08c0c04a2c44a2d391ee3f94aa86c716415ec0574c07f22ced007285"
+    },
+    {
+      "message_id": 313,
+      "source_offset": 7622,
+      "codes": [
+        379,
+        306,
+        16639
+      ],
+      "decoded_template": "警備",
+      "sha256": "a3eca2bb7bf691cbf1fec23f54131a7ce7ec6d7c9b6e8440da3fb233ef78c70a"
+    },
+    {
+      "message_id": 314,
+      "source_offset": 7628,
+      "codes": [
+        153,
+        46,
+        205,
+        155,
+        16639
+      ],
+      "decoded_template": "サービス",
+      "sha256": "2c555be5cf367c21e37e4ab0227d755ab0aae65491804c43a2c580ba48149fe4"
+    },
+    {
+      "message_id": 362,
+      "source_offset": 8234,
+      "codes": [
+        181,
+        144,
+        204,
+        183,
+        310,
+        238,
+        16639
+      ],
+      "decoded_template": "ライバル商店",
+      "sha256": "25090bd513370e341a09dfc7302fcca8abebe0f7b7edd47c31f55e9ffe4fdb7c"
+    },
+    {
+      "message_id": 366,
+      "source_offset": 8290,
+      "codes": [
+        16387,
+        2,
+        257,
+        238,
+        16639
+      ],
+      "decoded_template": "{4003}2号店",
+      "sha256": "95ad46cea5171cbb599fe37c92ff54de098d3f2db3394854a2dc6742d3322fb5"
+    },
+    {
+      "message_id": 369,
+      "source_offset": 8312,
+      "codes": [
+        16387,
+        3,
+        16639
+      ],
+      "decoded_template": "{4003}3",
+      "sha256": "7c024a61dedbfeffe69be215e3191cff54cea78f870114926777c067d4cac923"
+    },
+    {
+      "message_id": 384,
+      "source_offset": 8440,
+      "codes": [
+        16390,
+        16639
+      ],
+      "decoded_template": "{4006}",
+      "sha256": "5647fd5eff78f9616a1df09bed75c1418b75db5129663476869b46473b982278"
+    }
+  ],
+  "note": "Control tokens preserved as {40xx}; raw control words and glyphs retained, not guessed plain text."
+}
