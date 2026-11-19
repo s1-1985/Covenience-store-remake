@@ -1,0 +1,26 @@
+{
+  "known_archive_modules": [
+    {
+      "path": "algorithm-analysis/customer_spawn_core.py",
+      "sha256": "c395af9ecbd815b60429b53c0d96965e52fbd004f0b0e868ac5dc69f4921229f"
+    },
+    {
+      "path": "algorithm-analysis/customer_capacity.py",
+      "sha256": "1b042c902368fcffeeb0cc57d0ecdd138fe27843477993664fa93c523f48730f"
+    },
+    {
+      "path": "algorithm-analysis/customer_entry_init.py",
+      "sha256": "4435f605a7b9c83ef70b3c393d0a8d44ce204d8ace07617f6415baca16a53aa0"
+    }
+  ],
+  "known": "Spawn/parking reduction and bit0x40, entry initialization, flag dispatch and sound asset extraction were already modeled separately.",
+  "new": "Audit current synthesized door_chime against native ordinary spawn/entry sound writes and bind capacity failure to original selected-store SE11 request.",
+  "tracked_issues_paused": [
+    "R01",
+    "R02",
+    "R04",
+    "R05",
+    "R06",
+    "R07"
+  ]
+}

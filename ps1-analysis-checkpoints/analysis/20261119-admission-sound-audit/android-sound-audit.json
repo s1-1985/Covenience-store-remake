@@ -1,0 +1,33 @@
+{
+  "commit": "22ba479999c4e025727806454b9858364ca145cc",
+  "event": "customer_entered",
+  "alias": "door_chime",
+  "source_id": null,
+  "legacy_synth": {
+    "notes": [
+      "E6",
+      "C6"
+    ],
+    "seconds": [
+      0.42,
+      0.9
+    ],
+    "octave_overtones": [
+      "E7",
+      "C7"
+    ]
+  },
+  "path": [
+    "main.gd::_play_event_sounds",
+    "SoundManager.play_sfx",
+    "SoundSynth.sfx_samples"
+  ],
+  "evidence": "Explicit REMAKE_BALANCED_DEFAULT legacy synthesis; not recovered source door audio.",
+  "files": {
+    "game/data/vertical_slice.json": "ece9bc730e5d261e411349e54885a21a84c25e3cbdfa68c1e568d63e2aa4c2d3",
+    "game/scripts/main.gd": "1da974b622ca5809e0ceac39daf81e32826d7ca10b1625829de40f3e22a1d88c",
+    "game/scripts/audio/sound_manager.gd": "51cefe4d767be0ed2dd7da9fda9c5fe43481e74bc6b57c824bb903404396bfc0",
+    "game/scripts/audio/sound_synth.gd": "556a399dbd2420d64b2156106396c28c2ea7cc57d39f4dc901a6f5f4b95c1047"
+  },
+  "app_changed": false
+}

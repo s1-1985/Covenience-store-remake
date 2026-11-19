@@ -136,7 +136,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "未解決6件は保留。通常画面・操作・データの未接続を優先。人物詳細703E4の体力二重バー・賃金桁境界は今回接続済み。既知フィールド名、経験有無、給与式を新規解析として反復しない。",
+  "next": "未解決6件は保留。通常画面・操作・データの未接続を解析。入店独自door_chimeと原駐車不足SE11を区別済み、原容量式を再発見として繰り返さない。次回Android反映時は通常customer_enteredへの独自音を除去する。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -338,6 +338,14 @@
       "status": "resolved_scoped_source_rendering",
       "evidence": "analysis/20261119-staff-profile-display/README.md",
       "resolution": "Three controlled original703E4 entries bind current/max-energy rectangles, ability anchors and wage>=10000 x-shift. Hiring24h/transfer schedule callers statically bound. Known staff/experience/payroll reused. Native float helpers executed; visual calls captured. No gameplay/GPU/APK change.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X26",
+      "title": "通常入店の音声要求とAndroid独自チャイム・駐車不足SE11の区別",
+      "status": "resolved_scoped_source_binding",
+      "evidence": "analysis/20261119-admission-sound-audit/README.md",
+      "resolution": "Current legacy synthesized E6/C6 door_chime audited. Native ordinary spawn->state2 produces no sound flags/requests in controlled case. Two known capacity branches bound to selected-store bit6->SE11 dispatch. Six bounded entries plus5 original setup calls; no natural play/SPU/APK change.",
       "counted_in_seven_tracked_items": false
     }
   ],

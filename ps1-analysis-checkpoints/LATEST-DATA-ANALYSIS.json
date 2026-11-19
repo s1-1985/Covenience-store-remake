@@ -1,22 +1,23 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_staff_profile_display",
-  "report": "analysis/20261119-staff-profile-display/README.md",
-  "previous_report": "analysis/20261119-chain-graph-display/README.md",
-  "priority": "Six existing unresolved issues remain paused; ordinary profile reader binding.",
+  "work_kind": "ordinary_admission_sound_audit",
+  "report": "analysis/20261119-admission-sound-audit/README.md",
+  "previous_report": "analysis/20261119-staff-profile-display/README.md",
   "new_result": [
-    "Original shared profile sends current/max energy bars separately; four number/rectangle anchors bound.",
-    "Original wage display shifts left8pixels at10000; hiring constant24h vs transfer schedule caller bound."
+    "Current Android customer_entered->door_chime is independent synthesis E6/C6, not recovered PS audio.",
+    "Controlled native ordinary spawn->entry initializes state2 with no sound flag writes or dispatch.",
+    "Parking insufficient capacity sets bit6, selected-store original main dispatches11; not universal admission audio."
   ],
   "known_reused": [
-    "Staff field names and experience counter meaning",
-    "Transfer wage formula and separate manager payroll",
-    "Original character-code dictionary"
+    "Native ordinary spawn/entry fixture",
+    "Parking capacity and clipping rule, bit6",
+    "Audio flag table and recovered SE assets"
   ],
-  "final_reproducer_original_entries": 3,
-  "preparation_entries": 2,
+  "final_reproducer_original_entries": 6,
+  "preparation_entries": 0,
+  "original_setup_calls": 5,
   "operating_updates": 0,
-  "verification": "Controlled profile and arguments; visual calls captured, native floating arithmetic executed; staff unchanged. No GPU/naturalUI/payroll.",
+  "verification": "Native ordinary spawn and entry, two bounded capacity comparisons, main dispatch capture; no natural UI/SPU/playback.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
@@ -24,5 +25,6 @@
   "overall_measured_percent": null,
   "remaining_ledger": "ANALYSIS-REMAINING.json",
   "latest_android_implementation_commit": "22ba479999c4e025727806454b9858364ca145cc",
-  "apk_updated_this_analysis": false
+  "apk_updated_this_analysis": false,
+  "prior_successful_output_pass_entries": 6
 }

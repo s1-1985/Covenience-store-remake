@@ -1,0 +1,86 @@
+{
+  "normal_admission": {
+    "profile": 60,
+    "quantity": 2,
+    "steps": [
+      {
+        "seed": 0,
+        "state": 2,
+        "flags": 0
+      }
+    ],
+    "sound_flag_writes": [],
+    "direct_audio_requests": [],
+    "scope": "Native ordinary spawn and pending-entry loop, flag0; calendar/schedules/RNG specified, no natural UI/playthrough."
+  },
+  "parking_capacity_cases": [
+    {
+      "profile": 15,
+      "type_byte": 3,
+      "capacity": 1,
+      "present": 0,
+      "incoming": 2,
+      "remaining_attempt_quantity": 1,
+      "sound_flags": 64,
+      "lost_counter": 1,
+      "remaining_profile_demand": 0
+    },
+    {
+      "profile": 15,
+      "type_byte": 3,
+      "capacity": 2,
+      "present": 0,
+      "incoming": 2,
+      "remaining_attempt_quantity": 2,
+      "sound_flags": 0,
+      "lost_counter": 0,
+      "remaining_profile_demand": 2
+    }
+  ],
+  "main_dispatch": {
+    "input_flags": 64,
+    "requests": [
+      11
+    ],
+    "final_flags": 0
+  },
+  "entry_log": [
+    {
+      "start": "0x80023670",
+      "stop": "0x800238ac"
+    },
+    {
+      "start": "0x800319ac",
+      "stop": "0x80032814"
+    },
+    {
+      "start": "0x80032814",
+      "stop": "0x80001000"
+    },
+    {
+      "start": "0x80031c28",
+      "stop": "0x80031e3c"
+    },
+    {
+      "start": "0x80031c28",
+      "stop": "0x80031e3c"
+    },
+    {
+      "start": "0x80023a14",
+      "stop": "0x80023bbc"
+    }
+  ],
+  "top_level_entries": 6,
+  "preparation_entries": 0,
+  "setup_original_calls": [
+    "5C858",
+    "1A0B8",
+    "23C20",
+    "23C20",
+    "2619C"
+  ],
+  "ordinary_full_operating_updates": 0,
+  "fixture_external_resource_substitution": true,
+  "visual_audio_playback": false,
+  "prior_successful_output_pass_entries": 6
+}
