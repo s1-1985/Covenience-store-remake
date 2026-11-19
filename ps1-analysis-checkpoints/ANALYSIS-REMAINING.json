@@ -136,7 +136,7 @@
     "Cross-check outstanding image/audio/UI asset-to-behavior coverage.",
     "Identify any remaining normal-play source requirements not represented in these seven items."
   ],
-  "next": "既存未解決6件の保留を維持。通常画面・操作・データの未接続部分を進める。アンケート、店舗詳細、価格UIの平均利益率/平均増減/個別表示は接続済みとして反復しない。既知の価格編集・会計式や直近の床実装修正を新しい原仕様として計上しない。",
+  "next": "未解決6件は保留。通常画面・操作・データの未接続を優先。人物詳細703E4の体力二重バー・賃金桁境界は今回接続済み。既知フィールド名、経験有無、給与式を新規解析として反復しない。",
   "additional_completed_source_paths": [
     {
       "id": "X01",
@@ -330,6 +330,14 @@
       "status": "resolved_scoped_source_rendering",
       "evidence": "analysis/20261119-chain-graph-display/README.md",
       "resolution": "Current own-store header aggregates demand and per-store truncated stars before averaging; two headers andtwo scale/chain-bitmap pairs, zero renders1bluepixel. Prior graph/history rules reused. Final6pluspreparation6 entries, no gameplay/GPU/APK change.",
+      "counted_in_seven_tracked_items": false
+    },
+    {
+      "id": "X25",
+      "title": "採用/異動の共用人物詳細・体力二重バー・賃金桁境界",
+      "status": "resolved_scoped_source_rendering",
+      "evidence": "analysis/20261119-staff-profile-display/README.md",
+      "resolution": "Three controlled original703E4 entries bind current/max-energy rectangles, ability anchors and wage>=10000 x-shift. Hiring24h/transfer schedule callers statically bound. Known staff/experience/payroll reused. Native float helpers executed; visual calls captured. No gameplay/GPU/APK change.",
       "counted_in_seven_tracked_items": false
     }
   ],

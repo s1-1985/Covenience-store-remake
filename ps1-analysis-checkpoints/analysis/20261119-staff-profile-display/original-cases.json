@@ -1,0 +1,391 @@
+{
+  "cases": [
+    {
+      "name": "hiring_24h_new",
+      "wage_base": 280,
+      "hours_argument": 24,
+      "experience": 0,
+      "drawn_text": [
+        {
+          "x": 194,
+          "y": 48,
+          "message": 154,
+          "integer": 0,
+          "money": 0
+        },
+        {
+          "x": 186,
+          "y": 64,
+          "message": 295,
+          "integer": 31,
+          "money": 0
+        },
+        {
+          "x": 194,
+          "y": 96,
+          "message": 296,
+          "integer": 31,
+          "money": 6720
+        },
+        {
+          "x": 138,
+          "y": 112,
+          "message": 369,
+          "integer": 51,
+          "money": 6720
+        },
+        {
+          "x": 138,
+          "y": 128,
+          "message": 369,
+          "integer": 42,
+          "money": 6720
+        },
+        {
+          "x": 138,
+          "y": 144,
+          "message": 369,
+          "integer": 73,
+          "money": 6720
+        },
+        {
+          "x": 138,
+          "y": 160,
+          "message": 369,
+          "integer": 88,
+          "money": 6720
+        }
+      ],
+      "direct_text": [
+        {
+          "x": 194,
+          "y": 80,
+          "pointer": "0x800b967c",
+          "text": "経験なし",
+          "codes": [
+            365,
+            366,
+            83,
+            74,
+            16639
+          ]
+        }
+      ],
+      "rectangles": [
+        {
+          "x": 162,
+          "y": 112,
+          "width": 24,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 162,
+          "y": 112,
+          "width": 48,
+          "height": 16,
+          "style": 4
+        },
+        {
+          "x": 162,
+          "y": 128,
+          "width": 20,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 162,
+          "y": 144,
+          "width": 35,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 162,
+          "y": 160,
+          "width": 42,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 138,
+          "y": 47,
+          "width": 128,
+          "height": 128,
+          "style": 1
+        }
+      ],
+      "portraits": [
+        [
+          146,
+          48,
+          4,
+          4294967168
+        ]
+      ],
+      "staff_record_unchanged": true
+    },
+    {
+      "name": "transfer_12h_experienced",
+      "wage_base": 280,
+      "hours_argument": 12,
+      "experience": 1,
+      "drawn_text": [
+        {
+          "x": 194,
+          "y": 48,
+          "message": 154,
+          "integer": 0,
+          "money": 0
+        },
+        {
+          "x": 186,
+          "y": 64,
+          "message": 295,
+          "integer": 31,
+          "money": 0
+        },
+        {
+          "x": 194,
+          "y": 96,
+          "message": 296,
+          "integer": 31,
+          "money": 3360
+        },
+        {
+          "x": 138,
+          "y": 112,
+          "message": 369,
+          "integer": 51,
+          "money": 3360
+        },
+        {
+          "x": 138,
+          "y": 128,
+          "message": 369,
+          "integer": 42,
+          "money": 3360
+        },
+        {
+          "x": 138,
+          "y": 144,
+          "message": 369,
+          "integer": 73,
+          "money": 3360
+        },
+        {
+          "x": 138,
+          "y": 160,
+          "message": 369,
+          "integer": 88,
+          "money": 3360
+        }
+      ],
+      "direct_text": [
+        {
+          "x": 194,
+          "y": 80,
+          "pointer": "0x800b9670",
+          "text": "経験あり",
+          "codes": [
+            365,
+            366,
+            63,
+            102,
+            16639
+          ]
+        }
+      ],
+      "rectangles": [
+        {
+          "x": 162,
+          "y": 112,
+          "width": 24,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 162,
+          "y": 112,
+          "width": 48,
+          "height": 16,
+          "style": 4
+        },
+        {
+          "x": 162,
+          "y": 128,
+          "width": 20,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 162,
+          "y": 144,
+          "width": 35,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 162,
+          "y": 160,
+          "width": 42,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 138,
+          "y": 47,
+          "width": 128,
+          "height": 128,
+          "style": 1
+        }
+      ],
+      "portraits": [
+        [
+          146,
+          48,
+          4,
+          4294967168
+        ]
+      ],
+      "staff_record_unchanged": true
+    },
+    {
+      "name": "five_digit_wage",
+      "wage_base": 420,
+      "hours_argument": 24,
+      "experience": 2,
+      "drawn_text": [
+        {
+          "x": 194,
+          "y": 48,
+          "message": 154,
+          "integer": 0,
+          "money": 0
+        },
+        {
+          "x": 186,
+          "y": 64,
+          "message": 295,
+          "integer": 31,
+          "money": 0
+        },
+        {
+          "x": 186,
+          "y": 96,
+          "message": 296,
+          "integer": 31,
+          "money": 10080
+        },
+        {
+          "x": 138,
+          "y": 112,
+          "message": 369,
+          "integer": 51,
+          "money": 10080
+        },
+        {
+          "x": 138,
+          "y": 128,
+          "message": 369,
+          "integer": 42,
+          "money": 10080
+        },
+        {
+          "x": 138,
+          "y": 144,
+          "message": 369,
+          "integer": 73,
+          "money": 10080
+        },
+        {
+          "x": 138,
+          "y": 160,
+          "message": 369,
+          "integer": 88,
+          "money": 10080
+        }
+      ],
+      "direct_text": [
+        {
+          "x": 194,
+          "y": 80,
+          "pointer": "0x800b9670",
+          "text": "経験あり",
+          "codes": [
+            365,
+            366,
+            63,
+            102,
+            16639
+          ]
+        }
+      ],
+      "rectangles": [
+        {
+          "x": 162,
+          "y": 112,
+          "width": 24,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 162,
+          "y": 112,
+          "width": 48,
+          "height": 16,
+          "style": 4
+        },
+        {
+          "x": 162,
+          "y": 128,
+          "width": 20,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 162,
+          "y": 144,
+          "width": 35,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 162,
+          "y": 160,
+          "width": 42,
+          "height": 16,
+          "style": 3
+        },
+        {
+          "x": 138,
+          "y": 47,
+          "width": 128,
+          "height": 128,
+          "style": 1
+        }
+      ],
+      "portraits": [
+        [
+          146,
+          48,
+          4,
+          4294967168
+        ]
+      ],
+      "staff_record_unchanged": true
+    }
+  ],
+  "original_top_level_entries": 3,
+  "preparation_entries": 2,
+  "operating_updates": 0,
+  "visual_functions_intercepted": [
+    "4E494",
+    "67338",
+    "675DC",
+    "182D0",
+    "18940"
+  ],
+  "native_float_conversion_and_multiplication_executed": true,
+  "scope": "Controlled profile record and arguments; no natural UI/GPU/payroll/hiring commit."
+}

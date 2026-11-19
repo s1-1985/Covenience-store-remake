@@ -1,0 +1,25 @@
+{
+  "exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "ranges": {
+    "profile_reader": {
+      "start": "0x800703e4",
+      "end_exclusive": "0x80070f48",
+      "sha256": "ccc09c0343d9778c5ae628a1dffd03abd4fa02138f1ac5f01a26b7029fe4ef6f"
+    },
+    "hiring_caller": {
+      "start": "0x8006efcc",
+      "end_exclusive": "0x8006f020",
+      "sha256": "e13f36ede3d651f74dbd06260d7159291311a5cd5cc65f41bd5d8c11a71dba25"
+    },
+    "transfer_caller": {
+      "start": "0x80071b38",
+      "end_exclusive": "0x80071b84",
+      "sha256": "9d48d398da8474d68a67818f73dcf3433fd7f20db68b44dc2d1defc56f008232"
+    },
+    "labels": {
+      "start": "0x800b9670",
+      "end_exclusive": "0x800b96b0",
+      "sha256": "80997c37f4829710771243ca5ae1cdd6a6c358f5bbbd4381141d08156cccc340"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "commit": "22ba479999c4e025727806454b9858364ca145cc",
+  "path": "game/scripts/ps1_ui.gd",
+  "sha256": "1d12fbc944fc8fd9054d71ae7844f563ac06d348439986a4c250b8e14f32a53e",
+  "energy": "Single generic bar per attribute, no shared-profile current/max-energy pair.",
+  "experience": "Selected by hiring screen boolean rather than original person+20.",
+  "wage": "24h hiring and scheduled transfer separation already implemented; not newly missing.",
+  "app_changed": false
+}

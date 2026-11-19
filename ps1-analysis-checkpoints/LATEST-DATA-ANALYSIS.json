@@ -1,28 +1,22 @@
 {
   "date_jst": "2026-11-19",
-  "work_kind": "normal_chain_graph_header_and_bitmap",
-  "report": "analysis/20261119-chain-graph-display/README.md",
-  "previous_report": "analysis/20261119-interior-exit-messages/README.md",
-  "priority": "Six existing unresolved issues remain paused; other normal UI readers analyzed.",
+  "work_kind": "normal_staff_profile_display",
+  "report": "analysis/20261119-staff-profile-display/README.md",
+  "previous_report": "analysis/20261119-chain-graph-display/README.md",
+  "priority": "Six existing unresolved issues remain paused; ordinary profile reader binding.",
   "new_result": [
-    "Currentchain header aggregates ownstore demand and per-store truncatedstars;39/99 yields2stars, not3.",
-    "Original fullchain bitmap counterpart verified for signs/zero andmissing-prefix cutoff.",
-    "Zero net draws1pixel; store-specific history notneeded."
+    "Original shared profile sends current/max energy bars separately; four number/rectangle anchors bound.",
+    "Original wage display shifts left8pixels at10000; hiring constant24h vs transfer schedule caller bound."
   ],
   "known_reused": [
-    "monthly net history andsave mappings",
-    "prior graph scale/prefix/bar rules",
-    "demand DE0 andtown profile population generation"
+    "Staff field names and experience counter meaning",
+    "Transfer wage formula and separate manager payroll",
+    "Original character-code dictionary"
   ],
-  "final_reproducer_original_entries": 6,
-  "entry_breakdown": {
-    "current_chain_header": 2,
-    "scale": 2,
-    "chain_bitmap": 2
-  },
-  "entry_count_scope": "Final6 top-level entries;6 preparation entries before correcting400000bar expectedrow.",
+  "final_reproducer_original_entries": 3,
+  "preparation_entries": 2,
   "operating_updates": 0,
-  "verification": "Controlled stores/town/history. Original listing/population/bitmap execute, header textcaptured; no gameplay/GPU/naturalUI.",
+  "verification": "Controlled profile and arguments; visual calls captured, native floating arithmetic executed; staff unchanged. No GPU/naturalUI/payroll.",
   "tracked_issues": 7,
   "resolved_normal_path": 1,
   "open_tracked_issues": 6,
