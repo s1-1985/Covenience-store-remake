@@ -6326,30 +6326,33 @@ func try_transfer_source_staff(from_store: int, from_slot: String, to_store: int
     right.members.erase(to_slot)
     if a != null:
         a.staff_id = to_slot
-        a.state = "idle"
-        a.route.clear()
-        a.rest_phase = "stale"
         right.members[to_slot] = a
-        if from_store != to_store:
-            var destination_layout = store_field(to_store, "layout")
-            a.position = destination_layout.entry
-            a.set_home_position(destination_layout.entry)
+        _reset_transferred_source_staff(a,to_store,to_slot)
     if b != null:
         b.staff_id = from_slot
-        b.state = "idle"
-        b.route.clear()
-        b.rest_phase = "stale"
         left.members[from_slot] = b
-        if from_store != to_store:
-            var destination_layout = store_field(from_store, "layout")
-            b.position = destination_layout.entry
-            b.set_home_position(destination_layout.entry)
+        _reset_transferred_source_staff(b,from_store,from_slot)
     for index in [from_store, to_store]:
         var roster = store_field(index, "staff")
         if not roster.members.has(roster.checkout_staff_id) and not roster.members.is_empty():
             roster.checkout_staff_id = str(roster.members.keys()[0])
     _record_event("staff_transferred", {"from_store": from_store, "from_slot": from_slot, "to_store": to_store, "to_slot": to_slot})
     return true
+
+
+func _reset_transferred_source_staff(person, store_index: int, slot_id: String) -> void:
+    # CONFIRMED_BINARY: original 80072774 commit clears the old worker's
+    # state/occupancy and calls rest(store,row,0) after rebinding. Keeping
+    # source_goal/source_state here sent workers toward the former store.
+    var home := active_store
+    _switch_store(store_index)
+    preload("res://scripts/domain/program_people.gd").enter_rest(self,person,slot_id.trim_prefix("staff-").to_int()-1)
+    person.source_served = false
+    person.source_goal_direction = -1
+    person.restock_target_product_id = ""
+    person.restock_ticks_remaining = 0
+    person.set_home_position(person.position)
+    _switch_store(home)
 
 
 func _next_source_candidate(customer) -> void:

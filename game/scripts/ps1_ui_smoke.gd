@@ -65,9 +65,9 @@ func _run() -> void:
     var audio = root.get_node("SoundManager")
     var bits: int = audio.source_settings_bits
     await _tap(Vector2(205,113))
-    check((audio.source_settings_bits&1)==0,"SE OFF hotspot failed")
+    check((audio.source_settings_bits&1)==1,"SE OFF hotspot failed")
     await _tap(Vector2(181,113))
-    check((audio.source_settings_bits&1)==1,"SE ON hotspot failed")
+    check((audio.source_settings_bits&1)==0,"SE ON hotspot failed")
     audio.set_source_settings(bits)
     ui.close_window()
     ui.open_window("interior")

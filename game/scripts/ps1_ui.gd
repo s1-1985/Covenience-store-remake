@@ -32,6 +32,14 @@ var _cursor := Vector2(-100, -100)
 var _selected_rect := Rect2()
 var _active_action := Callable()
 var _company := "HUMANストア"
+var readable_font: Font = preload("res://fonts/ConveniJP.ttf")
+# Owner-authorized mobile gesture; the simulation's existing swap is unchanged.
+var _staff_drag: Dictionary = {}
+var _staff_drag_position := Vector2.ZERO
+var _staff_drag_moved := false
+var _staff_drag_pointer := -2
+var _native_pointer := -1
+
 
 func setup(owner_main) -> void:
     glyphs = JSON.parse_string(FileAccess.get_file_as_string("res://assets/ps1/ui/glyphs.json"))
@@ -121,6 +129,7 @@ func _process(delta: float) -> void:
 func open_window(id: String) -> void:
     if not _ready_ui:
         return
+    _cancel_staff_drag()
     if id == "stock" or id == "town":
         screen = ""
         window.modulate.a = 1.0
@@ -154,6 +163,7 @@ func close_window() -> void:
     if not close_hours.is_empty():
         main.simulation.try_set_business_hours(close_hours)
         close_hours = ""
+    _cancel_staff_drag()
     screen = ""
     history.clear()
     floor_mode = ""
@@ -207,6 +217,7 @@ func handle_accept() -> bool:
         return false
     if _active_action.is_valid():
         var action := _active_action
+        SoundManager.play_sfx("select")
         action.call()
         surface.queue_redraw()
     return true
@@ -239,24 +250,123 @@ func handle_shoulder(direction: int) -> bool:
         return true
     return false
 
+func _cancel_staff_drag() -> void:
+    _staff_drag.clear()
+    _staff_drag_moved = false
+    _staff_drag_pointer = -2
+
+func _staff_at(p: Vector2) -> Dictionary:
+    if screen != "transfer":
+        return {}
+    for side in 2:
+        var x := 18 if side == 0 else 250
+        for i in 3:
+            if Rect2(x,58+i*48,46,38).has_point(p):
+                return {"side": side, "slot": i, "store": main.simulation.active_store if side == 0 else transfer_store}
+    return {}
+
+func _commit_transfer(from_store: int, from_slot: int, to_store: int, to_slot: int) -> bool:
+    var changed: bool = main.simulation.try_transfer_source_staff(from_store,"staff-%d" % (from_slot+1),to_store,"staff-%d" % (to_slot+1))
+    if changed:
+        SoundManager.play_sfx("select")
+        show_notice("異動しました")
+    return changed
+
 func _input(event: InputEvent) -> void:
     if not _ready_ui or not main.visible:
+        _cancel_staff_drag()
         return
-    if event is InputEventMouseMotion:
-        var p: Vector2 = (event.position - ORIGIN) / ZOOM
-        for h in hits:
-            if h.rect.has_point(p):
-                selection = h.index
-                if screen in ["fixtures", "advertising", "facilities", "renovation"] and h.index < 100:
-                    choice = h.index
-                _cursor = p
-                surface.queue_redraw()
-                return
-    if not (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
+    var pointer := -2
+    var pressed := false
+    var released := false
+    var moved := false
+    var position := Vector2.ZERO
+    var canceled := false
+    if event is InputEventScreenTouch:
+        pointer = event.index
+        pressed = event.pressed
+        released = not event.pressed
+        canceled = event.canceled
+        position = event.position
+        if pressed and _native_pointer == -1:
+            _native_pointer = pointer
+    elif event is InputEventScreenDrag:
+        pointer = event.index
+        moved = true
+        position = event.position
+    elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+        if _native_pointer != -1:
+            return
+        pointer = -1
+        pressed = event.pressed
+        released = not event.pressed
+        position = event.position
+    elif event is InputEventMouseMotion:
+        if _native_pointer != -1:
+            return
+        pointer = -1
+        moved = true
+        position = event.position
+    else:
         return
-    var p: Vector2 = (event.position - ORIGIN) / ZOOM
-    # Notices/acquisition dialogs retain their own input handlers.
+    var p: Vector2 = (position - ORIGIN) / ZOOM
     if notice.visible:
+        _cancel_staff_drag()
+        if released and pointer == _native_pointer: _native_pointer = -1
+        return # the notice Control owns dismissal, including native touch.
+    if not _staff_drag.is_empty():
+        # Consume a second finger too; it cannot select a different member.
+        get_viewport().set_input_as_handled()
+        if pointer != _staff_drag_pointer:
+            return
+        _staff_drag_position = p
+        # REMAKE_BALANCED_DEFAULT: mobile drag threshold, owner-authorized.
+        if moved and p.distance_to(_staff_drag.start) > 4.0:
+            _staff_drag_moved = true
+        if released or canceled:
+            var from := _staff_drag.duplicate()
+            var target := _staff_at(p)
+            var should_move := _staff_drag_moved and not canceled
+            _cancel_staff_drag()
+            if pointer == _native_pointer: _native_pointer = -1
+            if should_move and not target.is_empty():
+                _commit_transfer(from.store,from.slot,target.store,target.slot)
+        surface.queue_redraw()
+        return
+    if released:
+        if pointer == _native_pointer: _native_pointer = -1
+        return
+    if not screen.is_empty() and pointer >= 0 and pointer != _native_pointer:
+        get_viewport().set_input_as_handled()
+        return
+    if moved:
+        # Hover is a mouse convenience; finger movement must not select rows.
+        if pointer == -1:
+            for h in hits:
+                if h.rect.has_point(p):
+                    selection = h.index
+                    if screen in ["fixtures", "advertising", "facilities", "renovation"] and h.index < 100:
+                        choice = h.index
+                    surface.queue_redraw()
+                    break
+        if not screen.is_empty() and floor_mode.is_empty():
+            get_viewport().set_input_as_handled()
+        return
+    if not pressed or canceled:
+        return
+    var member := _staff_at(p)
+    if not member.is_empty():
+        if member.side == 0: slot = member.slot
+        else: transfer_slot = member.slot
+        # Empty destinations are selectable; only occupied slots start drags.
+        var roster = main.simulation.store_field(member.store,"staff")
+        if not _person_id(roster,member.slot).is_empty():
+            _staff_drag = member.duplicate()
+            _staff_drag.start = p
+            _staff_drag_pointer = pointer
+            _staff_drag_position = p
+        get_viewport().set_input_as_handled()
+        surface.queue_redraw()
         return
     for i in range(hits.size() - 1, -1, -1):
         var h: Dictionary = hits[i]
@@ -264,13 +374,19 @@ func _input(event: InputEvent) -> void:
             selection = h.index
             var action: Callable = h.action
             get_viewport().set_input_as_handled()
+            SoundManager.play_sfx("select")
             action.call()
             surface.queue_redraw()
             return
-    for rect in panel_rects:
-        if rect.has_point(p):
-            get_viewport().set_input_as_handled()
-            return
+    # A modal blocks the map everywhere, not only inside its painted paper.
+    # Editing modes intentionally release the uncovered shop floor.
+    if not screen.is_empty() and floor_mode.is_empty():
+        get_viewport().set_input_as_handled()
+    else:
+        for rect in panel_rects:
+            if rect.has_point(p):
+                get_viewport().set_input_as_handled()
+                return
 
 func _fixture_action(id: String) -> void:
     if floor_mode == "sell" and not id.is_empty():
@@ -285,17 +401,17 @@ func _text_width(text: String) -> int:
         width += 8 if ch.unicode_at(0) < 128 or ch == "¥" else 12
     return width
 
-func _ink(at: Vector2, text: String, tint: Color = Color.WHITE) -> void:
-    var x := at.x
-    text = text.replace("［", "[").replace("］", "]").replace("･･･", "・・・").replace("～", "~").replace("○", "O").replace("％", "%")
+func _ink(at: Vector2, text: String, tint: Color = DARK) -> void:
+    # Owner-authorized readable lettering. Rasterize at final phone size,
+    # keeping the original 8/12-pixel advances and existing panel positions.
+    surface.draw_set_transform(at, 0, Vector2.ONE / ZOOM)
+    var x := 0.0
     for ch in text:
-        var code := int(glyphs.get(ch, -1))
-        if code >= 0:
-            var k: int = code % 336
-            surface.draw_texture_rect_region(font_pages[code / 336], Rect2(x, at.y, 12, 15), Rect2((k % 21) * 12, (k / 21) * 16, 12, 15), tint)
-        elif ch != " ":
-            surface.draw_string(load("res://fonts/ConveniJP.ttf"), Vector2(x, at.y + 12), ch, HORIZONTAL_ALIGNMENT_LEFT, -1, 12, DARK)
-        x += 8 if ch.unicode_at(0) < 128 or ch == "¥" else 12
+        var advance := (8 if ch.unicode_at(0) < 128 or ch == "¥" else 12) * ZOOM
+        var width := readable_font.get_string_size(ch,HORIZONTAL_ALIGNMENT_LEFT,-1,36).x
+        surface.draw_string(readable_font,Vector2(x+(advance-width)/2,36),ch,HORIZONTAL_ALIGNMENT_LEFT,-1,36,tint)
+        x += advance
+    surface.draw_set_transform(Vector2.ZERO)
 
 func _center(y: float, text: String, left: float = 0, width: float = 320) -> void:
     _ink(Vector2(left + (width - _text_width(text)) / 2, y), text)
@@ -405,6 +521,12 @@ func _draw_screen(_target: Node2D) -> void:
             _center(88,"店舗売却")
             _center(108,"本店は売却できません" if s.active_store == 0 else "店舗売却は未実装です")
             _option(Rect2(132,128,56,16),"終了",close_window)
+    if not _staff_drag.is_empty() and _staff_drag_moved:
+        var roster = s.store_field(_staff_drag.store,"staff")
+        _face(_person_id(roster,_staff_drag.slot),Rect2(_staff_drag_position-Vector2(23,19),Vector2(46,38)))
+        var target := _staff_at(_staff_drag_position)
+        if not target.is_empty():
+            surface.draw_rect(Rect2(18 if target.side == 0 else 250,58+target.slot*48,46,38),PINK,false,1.0)
     if not _selected_rect.size.is_zero_approx() and floor_mode.is_empty():
         surface.draw_texture_rect(_texture("res://assets/ps1/ui/cursor.png"), Rect2(_selected_rect.end - Vector2(10,5), Vector2(16,16)), false)
 
@@ -673,8 +795,14 @@ func _transfer() -> void:
         var index: int = s.active_store if side == 0 else transfer_store
         var roster = s.store_field(index,"staff")
         var x: int = 18 if side == 0 else 250
-        _option(Rect2(x,43,62,16),"◁ %s ▷" % s.store_field(index,"store_name"),func():
-            transfer_store = posmod(transfer_store+1,s.store_count()),20+side)
+        if side == 0:
+            _ink(Vector2(x,43),str(s.store_field(index,"store_name")))
+        else:
+            _option(Rect2(230,43,16,16),"◁",func():
+                transfer_store = posmod(transfer_store-1,s.store_count()),20)
+            _ink(Vector2(248,43),str(s.store_field(index,"store_name")))
+            _option(Rect2(290,43,16,16),"▷",func():
+                transfer_store = posmod(transfer_store+1,s.store_count()),21)
         for i in 3:
             var index_slot := i
             var which := side
@@ -694,11 +822,8 @@ func _transfer() -> void:
                 _ink(Vector2(74 if side == 0 else 225,90+i*16),str(value))
             _ink(Vector2(65 if side == 0 else 177,204),_money(_scheduled_wage(int(member.salary_yen_per_day_24h),str(s.store_field(index,"business_hours_id"))))+"/日")
     for i in 7: _center(90+i*16,["体力","教育","レジ","補充","警備","清掃","接客"][i])
-    _region(Rect2(135,188,40,28),func():
-        if s.try_transfer_source_staff(s.active_store,"staff-%d"%(slot+1),transfer_store,"staff-%d"%(transfer_slot+1)):
-            show_notice("異動しました"),30)
     _option(Rect2(136,204,40,15),"決定",func():
-        s.try_transfer_source_staff(s.active_store,"staff-%d"%(slot+1),transfer_store,"staff-%d"%(transfer_slot+1)),31)
+        _commit_transfer(s.active_store,slot,transfer_store,transfer_slot),31)
 
 func _renovation() -> void:
     var s = main.simulation
@@ -804,9 +929,9 @@ func _system() -> void:
         main._on_load_pressed()
         close_window(),1)
     _ink(Vector2(65,107),"SE (効果音)")
-    _option(Rect2(177,107,16,16),"ON",func(): SoundManager.set_source_settings(bits|1),2)
+    _option(Rect2(177,107,16,16),"ON",func(): SoundManager.set_source_settings(bits&~1),2)
     _ink(Vector2(193,107),"/")
-    _option(Rect2(201,107,24,16),"OFF",func(): SoundManager.set_source_settings(bits&~1),3)
+    _option(Rect2(201,107,24,16),"OFF",func(): SoundManager.set_source_settings(bits|1),3)
     _ink(Vector2(65,123),"BGM (音楽)")
     for i in 3:
         var value := i
@@ -816,14 +941,14 @@ func _system() -> void:
         if i < 2: _ink(Vector2(187+i*16,123),"/")
     _ink(Vector2(65,139),"月次報告")
     _option(Rect2(177,139,24,16),"する",func():
-        SoundManager.set_source_settings(bits|2)
+        SoundManager.set_source_settings(bits&~2)
         main.simulation.config["source_settings_bits"] = SoundManager.source_settings_bits,7)
     _ink(Vector2(201,139),"/")
     _option(Rect2(209,139,36,16),"しない",func():
-        SoundManager.set_source_settings(bits&~2)
+        SoundManager.set_source_settings(bits|2)
         main.simulation.config["source_settings_bits"] = SoundManager.source_settings_bits,8)
     # Settings persist selected values independently of the current cursor.
-    for r in [Rect2(177 if bits&1 else 201,107,16 if bits&1 else 24,16),Rect2(177+int(SoundManager.source_settings()["bgm_choice"])*16,123,12,16),Rect2(177 if bits&2 else 209,139,24 if bits&2 else 36,16)]:
+    for r in [Rect2(201 if bits&1 else 177,107,24 if bits&1 else 16,16),Rect2(177+int(SoundManager.source_settings()["bgm_choice"])*16,123,12,16),Rect2(209 if bits&2 else 177,139,36 if bits&2 else 24,16)]:
         surface.draw_rect(r,Color(1,0.7,1,0.25))
     _footer(155)
 

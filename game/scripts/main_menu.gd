@@ -9,6 +9,7 @@ const GAMEPLAY_SCENE_PATH := "res://scenes/main.tscn"
 @onready var quit_button: Button = $Panel/Margin/VBox/QuitButton
 @onready var status_label: Label = $Panel/Margin/VBox/StatusLabel
 
+var ps_title
 var _save_service
 
 
@@ -21,21 +22,23 @@ func _ready() -> void:
     SoundManager.play_source(-1)
     SoundManager.play_source_bgm(0) # original title 80057C50 -> BGM01
     if OS.has_feature("android") or "--android-preview" in OS.get_cmdline_user_args():
-
-        PhoneUIScript.add_field($Background)
-        $Panel.offset_left = 340
-        $Panel.offset_right = 940
-        $Panel.offset_top = 40
-        $Panel.offset_bottom = 680
+        $Background.color = Color("101715")
+        $Panel.hide()
+        ps_title = preload("res://scripts/ps1_title.gd").new()
+        add_child(ps_title)
+        ps_title.setup(self)
         $Panel.theme = PhoneUIScript.make_theme()
-        $Panel / Margin / VBox / Title.text = "ザ・コンビニ\n～あの町を独占せよ～"
-        $Panel / Margin / VBox / Title.add_theme_font_size_override("font_size", 40)
-        $Panel / Margin / VBox / Title.add_theme_color_override("font_color", Color("2f7d68"))
-        $Panel / Margin / VBox / Subtitle.text = "再現試作（開発途中のプレイ確認版）"
-        $Panel / Margin / VBox / Subtitle.add_theme_color_override("font_color", Color("6b6152"))
-        for button in [new_game_button, continue_button, quit_button]:
-            button.custom_minimum_size.y = 80
-            button.add_theme_font_size_override("font_size", 30)
+        $Panel.offset_left = 370
+        $Panel.offset_right = 910
+        $Panel.offset_top = 180
+        $Panel.offset_bottom = 540
+        $Panel/Margin/VBox/Title.text = "難易度を選んで下さい"
+        $Panel/Margin/VBox/Title.add_theme_font_size_override("font_size",30)
+        $Panel/Margin/VBox/Subtitle.hide()
+        $Panel/Margin/VBox/Separator.hide()
+        new_game_button.text = "決定"
+        quit_button.text = "戻る"
+        continue_button.hide()
     var choices := OptionButton.new()
     choices.name = "ScenarioChoice"
     choices.custom_minimum_size.y = 48
@@ -86,5 +89,16 @@ func _on_continue_pressed() -> void:
     get_tree().change_scene_to_file(GAMEPLAY_SCENE_PATH)
 
 
+func show_scenarios() -> void:
+    ps_title.hide()
+    $Panel.show()
+    new_game_button.grab_focus()
+
 func _on_quit_pressed() -> void:
+    if ps_title != null:
+        $Panel.hide()
+        ps_title.show()
+        ps_title.grab_focus()
+        ps_title.phase = "menu"
+        return
     get_tree().quit()

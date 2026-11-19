@@ -11,6 +11,16 @@ CONFIG_PATH = GAME_ROOT / "data" / "vertical_slice.json"
 
 
 class GameVerticalSliceContractTests(unittest.TestCase):
+    def test_mobile_drag_policy_is_explicit_and_keeps_source_evidence(self):
+        from pathlib import Path
+        import json
+        root = Path(__file__).resolve().parents[2]
+        config = json.loads((root / "game/data/vertical_slice.json").read_text())
+        note = config["ps1_mobile_presentation"]["evidence_note"]
+        self.assertIn("REMAKE_BALANCED_DEFAULT", note)
+        self.assertIn("CONFIRMED_BINARY", note)
+        self.assertIn("80072774", note)
+
     @classmethod
     def setUpClass(cls):
         cls.config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))

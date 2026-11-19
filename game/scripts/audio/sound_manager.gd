@@ -2,8 +2,8 @@ extends Node
 
 # Original XA/SEQ assets are rendered offline. No disc/CPU at runtime.
 # CONFIRMED_BINARY: ProgramAudio carries original settings and ID boundaries.
-# REMAKE_BALANCED_DEFAULT: legacy event aliases below remain synthesized until
-# each original producer is connected; offline SoundFont ADSR/reverb differs
+# Source assets only when the recovered catalog is present. Unmapped legacy
+# aliases are silent; offline SoundFont ADSR/reverb differs
 # from the physical SPU (source_audio.json records the renderer boundaries).
 
 const ProgramAudio := preload("res://scripts/domain/program_audio.gd")
@@ -75,6 +75,10 @@ func play_sfx(id: String) -> void:
     if id == "select":
         play_source(-1)
         play_source(1) # 80065000 confirmation wrapper.
+        return
+    # No invented fallback in the PS recreation. Existing source producers
+    # dispatch their recovered numeric IDs directly; unknown aliases stay mute.
+    if not source_catalog.is_empty():
         return
     if int(source_settings()["se_enabled"]) != 1:
         return

@@ -1,0 +1,56 @@
+{
+  "source_commit": "3249582e2889fc6dcc70d77f8eba9d54cb385ee3",
+  "sha256": {
+    "TITL0.TIM": "0e7925eb292f8888dcdb4b02f97266599de8bd0d7741818751b3f5f19d03311e",
+    "TITL1.TIM": "e3399fafe0c8eee90328f2a2a0f3b03c447f481c23e783b4b9e270ac6a1b6770"
+  },
+  "evidence": "Original title 80057BD4/80058388/80058AEC/80059254; prior archive title-parent-verification-20261028. KABEE CEL 4x4 repeating UV(0..48,72..120) matches KYOU field crop.",
+  "menu_texts": [
+    "はじめから",
+    "つづきから"
+  ],
+  "menu_text_positions": [
+    [
+      124,
+      74
+    ],
+    [
+      124,
+      90
+    ]
+  ],
+  "highlight": [
+    48,
+    74,
+    224,
+    16
+  ],
+  "cursor": [
+    186,
+    86
+  ],
+  "source_logo_rect": [
+    0,
+    0,
+    256,
+    160
+  ],
+  "final_logo_position": [
+    32,
+    25
+  ],
+  "menu_source_rect": [
+    0,
+    32,
+    256,
+    160
+  ],
+  "menu_position": [
+    32,
+    24
+  ],
+  "intro_ticks": 125,
+  "transition_strip_count": 10,
+  "transition_strip_height": 16,
+  "timing_note": "60 Hz NTSC animation ticks. Startup company movie and scenario introduction are outside this title implementation."
+}

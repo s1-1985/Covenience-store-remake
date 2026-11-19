@@ -12948,5 +12948,8 @@
   },
   "source_notification_presentation": {
     "evidence_note": "CONFIRMED_BINARY: 50x160-byte notification reservations, dispatch modes and display lifecycle from analysis 2c00ba53 event_queue.py / notification_display.py. REMAKE_BALANCED_DEFAULT: native source glyph text is presented using client Unicode labels. Until original voice playback is connected, tap or readable UI timeout supplies audio-finished; timer expiration itself does not close source state. Monthly other-cost values use the existing one_off_yen compatibility ledger."
+  },
+  "ps1_mobile_presentation": {
+    "evidence_note": "CONFIRMED_BINARY: original title artwork and source 80057BD4/80058388/80058AEC/80059254, transfer commit80072774. Owner-authorized readable fonts and direct touch/drag keep original colors and paper. REMAKE_BALANCED_DEFAULT: 4-native-pixel drag threshold is a mobile input choice, not a PS mechanic. Unmapped legacy audio aliases stay silent when source assets are available."
   }
 }

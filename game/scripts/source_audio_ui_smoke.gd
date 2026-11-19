@@ -3,6 +3,16 @@ extends SceneTree
 func _initialize() -> void:
     call_deferred("_run")
 
+func tap(phone, native: Vector2) -> void:
+    if phone.notice.visible: phone._finish_notice()
+    var event := InputEventScreenTouch.new()
+    event.index = 0
+    event.position = Vector2(160,0)+native*3
+    event.pressed = true
+    phone._input(event)
+    event.pressed = false
+    phone._input(event)
+
 func _run() -> void:
     var sound = root.get_node("SoundManager")
     var original_bits: int = sound.source_settings_bits
@@ -25,15 +35,26 @@ func _run() -> void:
     var phone = game.phone_ui
     phone.open_window("system")
     assert(sound.source_bgm_id == 2)
-    game.find_child("SourceSESetting", true, false).pressed.emit()
+    await process_frame
+    await process_frame
+    if phone.has_method("_system"):
+        tap(phone,Vector2(205,113))
+    else:
+        game.find_child("SourceSESetting", true, false).pressed.emit()
     await process_frame
     assert(int(sound.source_settings()["se_enabled"]) == 0)
     assert(sim.config["source_settings_bits"] == 1)
     for index in [3, 4, 2]:
-        game.find_child("SourceBGMSetting", true, false).pressed.emit()
+        if phone.has_method("_system"):
+            tap(phone,Vector2(180+(index-2)*16,129))
+        else:
+            game.find_child("SourceBGMSetting", true, false).pressed.emit()
         await process_frame
         assert(sound.source_bgm_id == index)
-    game.find_child("SourceMonthlySetting", true, false).pressed.emit()
+    if phone.has_method("_system"):
+        tap(phone,Vector2(222,145))
+    else:
+        game.find_child("SourceMonthlySetting", true, false).pressed.emit()
     await process_frame
     assert(sim.config["source_settings_bits"] == 3)
     phone._finish_notice()

@@ -1,0 +1,65 @@
+{
+  "name": "Conveni-Android-v0.6.4-ps-touch.apk",
+  "bytes": 44984250,
+  "sha256": "fa6768654be7b0b83157f66e9f2e92a0018c2105b1442e3b6781f9d198e63e17",
+  "version_code": 64,
+  "version_name": "0.6.4-ps-touch",
+  "package": "com.conveniremake.touchfix",
+  "signature_v2": true,
+  "signature_v3": true,
+  "signing_key": "Existing touchfix signing archive restored; no new key generated",
+  "engine": "Godot4.6.3, libgodot_android.so byte-identical to0.6.3 floorfix",
+  "min_sdk": 24,
+  "target_sdk": 36,
+  "architecture": "arm64-v8a",
+  "native_device_tested": false,
+  "related_godot_checks": [
+    {
+      "name": "ps1_title_smoke",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "ps1_ui_smoke",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "ps1_touch_audit_smoke",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "source_audio_ui_smoke",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "staff_response_smoke",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "source_people_smoke",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "floor_lifecycle_smoke",
+      "passed": true,
+      "exit_code": 0
+    },
+    {
+      "name": "floor_ui_smoke",
+      "passed": true,
+      "exit_code": 0
+    }
+  ],
+  "python_tests": {
+    "passed": 786,
+    "failed_existing": 2,
+    "xfailed": 1
+  },
+  "unresolved_six": "deferred unchanged",
+  "library_file_id": "libfile_b4a3d79921048191a9556758487f76aa"
+}
