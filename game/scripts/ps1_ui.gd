@@ -22,6 +22,9 @@ var _restoring_menu := false
 var _pending_taps: Dictionary = {}
 var _dismiss_request: Dictionary = {}
 var _sale_request: Dictionary = {}
+var _renovation_request: Dictionary = {}
+var _close_target := "interior"
+var _close_store_uid := -1
 var _permit_selected: Array[String] = []
 var _permit_request: Dictionary = {}
 var selection := 0
@@ -180,8 +183,16 @@ func close_window() -> void:
     if not _ready_ui:
         return
     if not close_hours.is_empty():
-        main.simulation.try_set_business_hours(close_hours)
+        var sim = main.simulation
+        var home: int = sim.active_store
+        for index in sim.store_count():
+            if int(sim.store_field(index,"_store_uid")) == _close_store_uid:
+                sim._switch_store(index)
+                sim.try_set_business_hours(close_hours)
+                sim._switch_store(home)
+                break
         close_hours = ""
+        _close_store_uid = -1
     _cancel_staff_drag()
     screen = ""
     history.clear()
@@ -530,7 +541,11 @@ func _navigate(id: String) -> void:
             layout_screen()
         "interior":
             floor_mode = ""
+            _close_target = "interior"
             open_window("close_shop" if main.simulation.is_open_now() else "interior")
+        "renovation":
+            _close_target = "renovation"
+            open_window("close_shop" if main.simulation.is_open_now() else "renovation")
         "new_store":
             close_window()
             main.start_new_store()
@@ -588,6 +603,7 @@ func _draw_screen(_target: Node2D) -> void:
         "dismiss_confirm": _dismiss_confirmation()
         "transfer": _transfer()
         "renovation": _renovation()
+        "renovation_confirm": _renovation_confirmation()
         "shop": _shop_details()
         "shop_graph", "results": _graph()
         "survey": _survey()
@@ -1012,10 +1028,31 @@ func _renovation() -> void:
     for i in mini(6,types.size()):
         var id := str(types[i]["id"])
         _icon(Rect2(96+(i%3)*48,91+(i/3)*42,32,32),_atlas_icon("stores",str(types[i]["icon"]).right(2).to_int()-1,Vector2i(32,32),8),func():
-            if s.can_renovate_to(id):
-                close_window()
-                main.renovate_store(id)
-            else: show_notice("この店舗へは改築できません"),i)
+            var quote: Dictionary = s.renovation_quote(id)
+            if quote.allowed:
+                _renovation_request = quote
+                open_window("renovation_confirm")
+            else: show_notice(str(quote.reason)),i)
+
+func _renovation_confirmation() -> void:
+    var s = main.simulation
+    var id: String = _renovation_request.get("to_type","")
+    _paper(Rect2(32,64,256,136))
+    _center(72,"この店舗へ改築しますか?")
+    var entry: Dictionary = s.GuideStartingStoreScript.store_type_entry(s.config,id)
+    _center(96,main.store_type_caption(entry))
+    _center(120,"改築費用 "+_money(int(_renovation_request.get("total_yen",0))))
+    _option(Rect2(50,168,80,22),"戻る",handle_cancel,0)
+    _option(Rect2(170,168,100,22),"改築する",func():
+        if s.try_renovate_store(id,int(_renovation_request.get("store_uid",-1)),str(_renovation_request.get("from_type",""))):
+            main.store_view.selected_fixture_id = ""
+            main._store_layout_changed()
+            _renovation_request.clear()
+            close_window()
+            main._refresh_ui()
+        else:
+            var quote: Dictionary = s.renovation_quote(id)
+            show_notice(str(quote.reason) if not str(quote.reason).is_empty() else "店舗または改築内容を確認して下さい"),1)
 
 func _selector(y: float = 43) -> void:
     _ink(Vector2(204,y),main.simulation.store_name)
@@ -1128,9 +1165,11 @@ func _close_shop() -> void:
     _option(Rect2(115,139,36,16),"はい",func():
         for entry in main.simulation.business_hours_presets():
             if main.simulation.open_minutes(entry) == 0:
-                close_hours = main.simulation.business_hours_id
+                if close_hours.is_empty():
+                    close_hours = main.simulation.business_hours_id
+                    _close_store_uid = main.simulation._store_uid
                 main.simulation.try_set_business_hours(str(entry["id"]))
-                open_window("interior")
+                open_window(_close_target)
                 return
         show_notice("営業時間の設定を確認して下さい"),0)
     _option(Rect2(167,139,48,16),"いいえ",handle_cancel,1)

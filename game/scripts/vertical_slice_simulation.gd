@@ -2494,6 +2494,7 @@ func _build_store_type(type_id: String) -> void:
 # is already open. The original's store menu has 改築 next to 内装/方針/店員
 # (CONFIRMED_OFFICIAL: PS disc MSG00.OBJ message 385, task #127,
 # assets/raw/ps1_disc_analysis_v1/text/MSG00.txt).
+# Legacy prototype only (native costs/guards are source-backed below).
 # REMAKE_BALANCED_DEFAULT: what the original's 改築 does and costs is not
 # recovered, so these rules are this project's own. The price is the new
 # store's CONFIRMED_OFFICIAL
@@ -2506,22 +2507,38 @@ const RENOVATION_TRADE_IN_PERCENT := 50
 
 
 func can_renovate_to(type_id: String) -> bool:
-    if store_types().is_empty() or type_id == store_type_id:
+    if store_types().is_empty() or (program_town == null and type_id == store_type_id):
         return false
     return GuideStartingStoreScript.store_type_entry(config, type_id).has("layout")
 
 
 func renovation_price_yen(type_id: String) -> int:
+    if program_town != null:
+        # CONFIRMED_BINARY 8006DD18(mode1)->8001DE5C(mode1): new
+        # tier only. No equipment, old-building credit or size difference.
+        var entry := GuideStartingStoreScript.store_type_entry(config,type_id)
+        return {"small":6000000,"medium":12000000,"large":18000000}.get(str(entry.get("size_tier","")),0)
     return max(0, store_type_price_yen(type_id) - store_type_price_yen(store_type_id) * RENOVATION_TRADE_IN_PERCENT / 100)
 
 
-func try_renovate_store(type_id: String) -> bool:
-    if is_game_over or not can_renovate_to(type_id):
-        return false
+func renovation_quote(type_id: String) -> Dictionary:
+    var reason := ""
     var price_yen := renovation_price_yen(type_id)
-    if economy.cash_yen < price_yen:
-        edit_refusal = "cash"
+    if is_game_over: reason = "ゲーム終了後は改築できません"
+    elif not can_renovate_to(type_id): reason = "この店舗へは改築できません"
+    elif program_town != null and not has_store_site(): reason = "店舗を選択して下さい"
+    elif program_town != null and is_open_now(): reason = "開店中は改装できません"
+    elif economy.cash_yen < price_yen: reason = "資金が足りません"
+    return {"allowed":reason.is_empty(),"reason":reason,"total_yen":price_yen,"store_uid":_store_uid,"from_type":store_type_id,"to_type":type_id}
+
+
+func try_renovate_store(type_id: String, expected_uid := -1, expected_from := "") -> bool:
+    var quote := renovation_quote(type_id)
+    if (expected_uid >= 0 and expected_uid != _store_uid) or (not expected_from.is_empty() and expected_from != store_type_id): return false
+    if not quote.allowed:
+        edit_refusal = "cash" if str(quote.reason) == "資金が足りません" else "locked"
         return false
+    var price_yen: int = quote.total_yen
     var from_type := store_type_id
     var old_checkout_id := str(config["simulation"]["checkout_fixture_id"])
     var old_fixtures: Array = layout.fixture_snapshot()
@@ -2591,8 +2608,17 @@ func try_renovate_store(type_id: String) -> bool:
             var goods: Dictionary = goods_by_fixture[str(fixture["id"])]
             inventory.add_product(goods)
             inventory.get_product(str(goods["id"])).stock_units = int(goods["stock_units"])
-            _withdraw_product(str(goods["id"]))
+            # Original remodel caller restores intermediate interior cash
+            # and does not repost returned goods. Legacy prototype keeps
+            # its prior refund behavior.
+            _withdraw_product(str(goods["id"]),program_town == null)
     _refresh_interactions()
+    if program_town != null:
+        # Existing customers were ended above. Preserve their sequence to
+        # avoid reusing already-settled customer IDs after reopening.
+        _parking_used = 0
+        for person in staff.all_staff():
+            _reset_transferred_source_staff(person,active_store,person.staff_id)
     var expense: Dictionary = economy.record_explicit_expense(
         "store_renovation", minute_of_day, price_yen, {"from": from_type, "to": type_id}
     )

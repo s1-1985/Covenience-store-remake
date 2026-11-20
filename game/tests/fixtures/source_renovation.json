@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "selected_tier": 0,
+      "fee_yen": 6000000
+    },
+    {
+      "selected_tier": 1,
+      "fee_yen": 6000000
+    },
+    {
+      "selected_tier": 2,
+      "fee_yen": 12000000
+    },
+    {
+      "selected_tier": 3,
+      "fee_yen": 12000000
+    },
+    {
+      "selected_tier": 4,
+      "fee_yen": 18000000
+    },
+    {
+      "selected_tier": 5,
+      "fee_yen": 18000000
+    }
+  ],
+  "original_function_entries": 6,
+  "scope": "mode1 cost only; no chooser/interior/controller execution"
+}
