@@ -1,0 +1,77 @@
+{
+  "evidence_note": "REMAKE_BALANCED_DEFAULT: map120 source draw-wait calls to120 native rendered UI updates, accept field tap as0x60, restart the voice after reload; game rules/artwork/bounds remain recovered.",
+  "source_exe_sha256": "d6a167a1c9e0fe98d7e44e12968caa489ac3eb7ed3b9e46012a188af8432b1fd",
+  "source_sha256": {
+    "IOLE.TIM": "876e5bef5e3f01f35bd0ae6bd4fcff9d4fdde626f458853db7dbe1e463265c94",
+    "PS_CM1.TIM": "47371b6c3c517ab8f0159a969c8c24f9e37e95a9607cd9414db14b034f2c7ad0"
+  },
+  "evidence": "52A88/52DBC sprite/paper/text positions; 983D0 resource16/18 VRAM rects; sprite29 page base(832,256); festival UV192,224 relative uploaded y352 -> crop192,128. Native text uses readable font.",
+  "festival": {
+    "resource": 16,
+    "sound": 58,
+    "icon_rect": [
+      48,
+      56,
+      32,
+      32
+    ],
+    "paper_rect": [
+      48,
+      48,
+      224,
+      64
+    ],
+    "text_position": [
+      80,
+      64
+    ],
+    "message": 470
+  },
+  "celebration": {
+    "resource": 18,
+    "sound": 59,
+    "variants": [
+      {
+        "source": [
+          0,
+          0,
+          120,
+          144
+        ],
+        "destination": [
+          8,
+          48,
+          120,
+          144
+        ]
+      },
+      {
+        "source": [
+          120,
+          0,
+          96,
+          144
+        ],
+        "destination": [
+          8,
+          48,
+          96,
+          144
+        ]
+      }
+    ],
+    "paper_rect": [
+      80,
+      96,
+      240,
+      64
+    ],
+    "text_position": [
+      96,
+      112
+    ],
+    "message": 471
+  },
+  "wait_calls": 120,
+  "timing_note": "Original 120 draw-wait calls then source audio idle or input mask0x60; native adapter counts120 rendered presentation updates, independently of simulation speed. Not a proved fixed two-second source duration."
+}

@@ -90,11 +90,14 @@ func _button(text: String, at: Vector2, action: Callable) -> Button:
     button.add_theme_color_override("font_color", Color("e7efed"))
     button.add_theme_color_override("font_hover_color", Color.WHITE)
     button.add_theme_color_override("font_pressed_color", Color.WHITE)
-    for state in ["normal", "hover", "pressed", "focus"]:
+    button.add_theme_color_override("font_disabled_color", Color("708681"))
+    for state in ["normal", "hover", "pressed", "focus", "disabled"]:
         var style := StyleBoxFlat.new()
         style.bg_color = Color("20302f") if state == "normal" else Color("305451")
         if state == "focus": style.bg_color = Color(0,0,0,0)
+        if state == "disabled": style.bg_color = Color("182321")
         style.border_color = Color("4c7972") if state != "pressed" else Color("9de0ce")
+        if state == "disabled": style.border_color = Color("2e4541")
         style.set_border_width_all(1 if state != "focus" else 2)
         style.set_corner_radius_all(12)
         style.content_margin_top = 6

@@ -1164,3 +1164,6 @@ msgstr "宣伝の設定を変更しました"
 
 msgid "company donation"
 msgstr "町へ寄付しました"
+
+msgid "festival announced"
+msgstr "今日は夜にお祭りがあります"

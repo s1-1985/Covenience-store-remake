@@ -35,6 +35,10 @@ var _price_uid := -1
 var _price_name := ""
 var _ad_draft: Array = []
 var _ad_before: Array = []
+var _calendar_key := ""
+var _calendar_notice_source = null
+var _calendar_touches: Dictionary = {}
+var _calendar_mouse_down := false
 var selection := 0
 var choice := 0
 var page := 0
@@ -135,6 +139,7 @@ func refresh() -> void:
     surface.queue_redraw()
 
 func _process(delta: float) -> void:
+    if _ready_ui and _process_calendar(): return
     super._process(delta)
     if not _ready_ui:
         return
@@ -145,7 +150,92 @@ func _process(delta: float) -> void:
         _paint_age = 0
         surface.queue_redraw()
 
+# Original special screens use120 draw waits, then audio idle / mask0x60.
+# REMAKE_BALANCED_DEFAULT: map source waits to rendered UI updates and field
+# taps to mask0x60. This presentation adapter never runs accelerated
+# accelerated simulation tick. Reload restarts the source voice, keeps waits.
+func _process_calendar() -> bool:
+    var sim = main.simulation
+    var blocked: bool = sim.source_calendar_blocked()
+    for child in touch_controls.get_children():
+        if child is Button:
+            child.disabled=blocked and (not child.text.begins_with("○") and not child.text.begins_with("×") or int(sim.source_calendar.event.get("wait_updates",0))<120)
+    if not blocked:
+        _calendar_key=""
+        _calendar_touches.clear()
+        _calendar_mouse_down=false
+        return false
+    var event: Dictionary = sim.source_calendar.event
+    var key := "%s:%d" % [event.kind,int(event.day)]
+    if key!=_calendar_key or _calendar_notice_source!=sim.notifications:
+        _calendar_key=key
+        _calendar_notice_source=sim.notifications
+        _pending_taps.clear()
+        _cancel_staff_drag()
+        SoundManager.play_source(58 if event.kind=="festival" else 59)
+    notice.visible=false
+    _source_notice_visible=false
+    sim.advance_source_calendar_presentation(1,SoundManager.source_voice_active())
+    surface.queue_redraw()
+    return true
+
+func _ack_calendar() -> bool:
+    var sim = main.simulation
+    if sim.source_calendar_blocked() and int(sim.source_calendar.event.wait_updates)>=120:
+        SoundManager.play_source(-1)
+        SoundManager.play_source(1) # Original65000 acknowledgement wrapper.
+        sim.finish_source_calendar_event()
+        _calendar_key=""
+        _calendar_touches.clear()
+        surface.queue_redraw()
+    return true
+
+func _calendar_input(event: InputEvent) -> void:
+    var area := Rect2(160,0,960,720)
+    if event is InputEventKey:
+        if event.pressed and not event.echo and (event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_cancel")):_ack_calendar()
+    elif event is InputEventScreenTouch:
+        if event.pressed:
+            _calendar_touches[event.index]=area.has_point(event.position)
+        else:
+            var allowed: bool = bool(_calendar_touches.get(event.index,false)) and not event.canceled and area.has_point(event.position)
+            _calendar_touches.erase(event.index)
+            if allowed:_ack_calendar()
+    elif event is InputEventMouseButton and event.button_index==MOUSE_BUTTON_LEFT:
+        if event.device == -1:
+            get_viewport().set_input_as_handled()
+            return
+        if event.pressed:_calendar_mouse_down=area.has_point(event.position)
+        else:
+            if _calendar_mouse_down and area.has_point(event.position):_ack_calendar()
+            _calendar_mouse_down=false
+    get_viewport().set_input_as_handled()
+
+func _draw_calendar(event: Dictionary) -> void:
+    if event.kind=="festival":
+        _paper(Rect2(48,48,224,64))
+        surface.draw_texture_rect(_texture("res://assets/ps1/ui/calendar_festival.png"),Rect2(48,56,32,32),false)
+        _ink(Vector2(80,64),"今日は夜にお祭りがあります。")
+    else:
+        var variant := int(event.variant)
+        surface.draw_texture_rect_region(_texture("res://assets/ps1/ui/calendar_idols.png"),Rect2(8,48,120 if variant==0 else 96,144),Rect2(0 if variant==0 else 120,0,120 if variant==0 else 96,144))
+        _paper(Rect2(80,96,240,64))
+        var lines := ["%5d万人目の来客をきねんして、" % int(event.units),"アイドルを一日オーナーに","よびました。"]
+        var y := 112
+        for text in lines:
+            var line := ""
+            for ch in text:
+                if _text_width(line+ch)>208:
+                    _ink(Vector2(96,y),line)
+                    y+=12
+                    line=""
+                line+=ch
+            if not line.is_empty():
+                _ink(Vector2(96,y),line)
+                y+=12
+
 func open_window(id: String) -> void:
+    if main.simulation != null and main.simulation.source_calendar_blocked(): return
     if not _ready_ui:
         return
     _cancel_staff_drag()
@@ -232,6 +322,7 @@ func close_window() -> void:
     surface.queue_redraw()
 
 func handle_command() -> void:
+    if main.simulation.source_calendar_blocked(): return
     if main.selecting_site:
         return
     if not floor_mode.is_empty():
@@ -243,6 +334,7 @@ func handle_command() -> void:
         open_window("root" if main.town_view.visible else "store")
 
 func handle_cancel() -> bool:
+    if main.simulation.source_calendar_blocked(): return _ack_calendar()
     if screen.is_empty():
         return false
     if screen == "stock_prices": _price_draft = _price_individual_before.duplicate()
@@ -276,6 +368,7 @@ func handle_cancel() -> bool:
     return true
 
 func handle_start() -> void:
+    if main.simulation.source_calendar_blocked(): return
     if not screen.is_empty():
         close_window()
     else:
@@ -283,6 +376,7 @@ func handle_start() -> void:
     refresh()
 
 func handle_accept() -> bool:
+    if main.simulation.source_calendar_blocked(): return _ack_calendar()
     if screen in ["candidates", "dismiss"]:
         _decide_personnel()
         return true
@@ -299,6 +393,7 @@ func handle_accept() -> bool:
     return true
 
 func handle_shoulder(direction: int) -> bool:
+    if main.simulation.source_calendar_blocked(): return true
     if not main.simulation.renovation_session.is_empty() and not screen in ["fixtures","floor_material"]: return true
     if main.selecting_site:
         if not main.site_buy_button.disabled: main._on_buy_site_pressed()
@@ -350,6 +445,9 @@ func _commit_transfer(from_store: int, from_slot: int, to_store: int, to_slot: i
     return changed
 
 func _input(event: InputEvent) -> void:
+    if _ready_ui and main.simulation.source_calendar_blocked():
+        _calendar_input(event)
+        return
     if not _ready_ui or not main.visible:
         _cancel_staff_drag()
         return
@@ -598,7 +696,12 @@ func _draw_screen(_target: Node2D) -> void:
     surface.draw_texture_rect(_texture("res://assets/ps1/ui/hud.png"), Rect2(0, 8, 160, 24), false)
     surface.draw_texture_rect(_texture("res://assets/ps1/ui/hud.png"), Rect2(160, 8, 160, 24), false)
     var snap: Dictionary = s.snapshot()
-    _ink(Vector2(8, 16), "%02d年目%02d月%02d日[%s ] %s¥%s" % [s.month_count / 12 + 1, s.month_count % 12 + 1, int(snap["days_completed_this_month"]) + 1, s.weather_display_label(), s.clock_text(), main._format_integer(s.economy.cash_yen)])
+    var month: int = s.month_count+int(bool(s.source_calendar.boundary.get("closing",false)))
+    var day: int = 1 if bool(s.source_calendar.boundary.get("closing",false)) else int(snap["days_completed_this_month"])+1
+    _ink(Vector2(8, 16), "%02d年目%02d月%02d日[%s ] %s¥%s" % [month / 12 + 1, month % 12 + 1, day, s.weather_display_label(), s.clock_text(), main._format_integer(s.economy.cash_yen)])
+    if s.source_calendar_blocked():
+        _draw_calendar(s.source_calendar.event)
+        return
     if main.selecting_site:
         _site_selection()
         return

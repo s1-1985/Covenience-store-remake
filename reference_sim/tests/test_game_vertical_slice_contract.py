@@ -2440,7 +2440,7 @@ class GameVerticalSliceContractTests(unittest.TestCase):
         self.assertIn("CONFIRMED_OFFICIAL", simulation)
         self.assertIn("func _advance_minute_of_day() -> void:", simulation)
         self.assertIn("func _handle_day_boundary() -> void:", simulation)
-        self.assertIn("func _settle_month_end() -> void:", simulation)
+        self.assertRegex(simulation, r"func _settle_month_end\((?:prepared: Dictionary = \{\})?\) -> void:")
         self.assertIn('int(statement["month_result_yen"])', simulation)
         self.assertIn("func record_month_end_settlement(", economy)
         self.assertIn(

@@ -256,6 +256,10 @@ func _process(delta: float) -> void:
     _ensure_source_ending()
     if ending_view != null or _returning_finished_save:
         return
+    if simulation != null and simulation.source_calendar_blocked():
+        _clock_last_us=0
+        store_view.tick_progress=1.0
+        return
     if simulation == null or paused or _app_suspended or selecting_site or (simulation.program_town != null and phone_ui != null and not phone_ui.window_id.is_empty()):
         store_view.tick_progress = 1.0
         _clock_last_us = 0
@@ -278,6 +282,7 @@ func _process(delta: float) -> void:
 
 
 func _advance_simulation(elapsed: float) -> void:
+    if simulation != null and simulation.source_calendar_blocked(): return
     # One complete simulation tick advances clock, people, service and all stores.
     # Keep every unprocessed tick when the frame budget is exhausted.
     accumulator += maxf(0,elapsed) * speed
@@ -291,7 +296,7 @@ func _advance_simulation(elapsed: float) -> void:
         store_view.tick_serial += 1
         steps += 1
         _ticks_since_ui = true
-        if paused or simulation.is_game_over or Time.get_ticks_usec() >= deadline:
+        if paused or simulation.source_calendar_blocked() or simulation.is_game_over or Time.get_ticks_usec() >= deadline:
             break
 
 

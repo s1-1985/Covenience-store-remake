@@ -902,6 +902,7 @@ func _finish_notice() -> void:
 
 
 func _pump_notices() -> void:
+    if main.simulation != null and main.simulation.source_calendar_blocked(): return
     if main.simulation == null:
         return
     if main.ending_view != null:

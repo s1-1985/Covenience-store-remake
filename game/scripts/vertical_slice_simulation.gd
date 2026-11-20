@@ -20,6 +20,7 @@ const LandValuePolicyScript := preload("res://scripts/domain/land_value_policy.g
 const StoreRatingScript := preload("res://scripts/domain/store_rating.gd")
 const StoreValueScript := preload("res://scripts/domain/store_value.gd")
 const CustomerShareScript := preload("res://scripts/domain/customer_share.gd")
+const SourceCalendar := preload("res://scripts/domain/program_calendar.gd")
 const ChainVisitorMilestoneScript := preload("res://scripts/domain/chain_visitor_milestone.gd")
 const StoreEventsScript := preload("res://scripts/domain/store_events.gd")
 const CheckoutTimingScript := preload("res://scripts/domain/checkout_timing.gd")
@@ -266,6 +267,7 @@ var source_promotions: Dictionary = {}
 var _source_advertising_last_clock := ""
 var _source_donation_last_month := -1
 var rival_donation_records: Array[Dictionary] = []
+var source_calendar: Dictionary = SourceCalendar.initial()
 var _chain_visitors_total := 0
 
 
@@ -509,10 +511,12 @@ func demand_admit_if_due() -> bool:
 
 
 func tick_idle_for_demand() -> bool:
+    if source_calendar_blocked(): return false
     if not renovation_session.is_empty(): return false
     if is_game_over or (program_town != null and (int(source_progress["pending"]) >= 0 or int(source_progress["save_finished"]) == 255)):
         return false
     _advance_minute_of_day()
+    if source_calendar_blocked(): return false
     _step_restock_tasks()
     return demand_admit_if_due()
 
@@ -527,10 +531,12 @@ func tick_idle_for_demand() -> bool:
 # tick_idle_for_demand() keep their narrower semantics for the existing
 # scripted smoke scenarios.
 func tick() -> void:
+    if source_calendar_blocked(): return
     if not renovation_session.is_empty(): return 
     if is_game_over or (program_town != null and (int(source_progress["pending"]) >= 0 or int(source_progress["save_finished"]) == 255 or source_management_has_vacancy())):
         return
     step()
+    if source_calendar_blocked(): return
     var viewed := active_store
     _switch_store(0)
     _for_each_store(_admit_arrival)
@@ -544,6 +550,7 @@ func tick() -> void:
 
 # Back to 本店 alone (a new game, or before loading a save).
 func _drop_branches() -> void:
+    source_calendar = SourceCalendar.initial()
     source_promotions.clear()
     _source_advertising_last_clock = ""
     _source_donation_last_month = -1
@@ -821,7 +828,7 @@ func _admit_next_program_group() -> void:
         if heads <= 0:
             return
         _parking_used += heads
-    _store_visitor_heads += heads
+    _store_visitor_heads = (_store_visitor_heads+heads)&0xffffffff
     _start_program_customer(row, heads)
 
 
@@ -3459,12 +3466,16 @@ func try_load_sample_layout(sample_id: String) -> bool:
 
 
 func step() -> void:
+    if source_calendar_blocked(): return
     if not renovation_session.is_empty(): return 
     if is_game_over or (program_town != null and (int(source_progress["pending"]) >= 0 or int(source_progress["save_finished"]) == 255 or source_management_has_vacancy())):
         return
     var viewed := active_store
     _switch_store(0)
     _advance_minute_of_day()
+    if source_calendar_blocked():
+        _switch_store(viewed)
+        return
     _for_each_store(_step_store_floor)
     _switch_store(viewed)
 
@@ -4182,6 +4193,7 @@ func save_state() -> Dictionary:
             "events": _chain_visitor_milestone.events.duplicate(true),
         },
         "chain_visitors_total": _chain_visitors_total,
+        "source_calendar": source_calendar.duplicate(true),
         "last_owner_review": last_owner_review.duplicate(true),
         "economy": economy.snapshot(),
         "events": event_log.snapshot(),
@@ -4265,6 +4277,7 @@ func _store_save_block() -> Dictionary:
 
 
 func load_state(data: Dictionary) -> bool:
+    if data.has("source_calendar") and not SourceCalendar.valid(data.source_calendar): return false
     var donation_month = data.get("source_donation_last_month",-1)
     if (not donation_month is int and not donation_month is float) or float(donation_month)!=floorf(float(donation_month)) or donation_month < -1: return false
     if not data.get("rival_donation_records",[]) is Array: return false
@@ -4399,6 +4412,17 @@ func load_state(data: Dictionary) -> bool:
     _chain_visitor_milestone.next_threshold = int(milestone_data["next_threshold"])
     _chain_visitor_milestone.events.assign(milestone_data["events"])
     _chain_visitors_total = int(data.get("chain_visitors_total", _chain_visitor_milestone.last_observed_total))
+    source_calendar=SourceCalendar.initial()
+    if data.has("source_calendar"):
+        source_calendar=SourceCalendar.normalized(data.source_calendar)
+    elif program_town != null:
+        # Preserve only an unconsumed legacy reservation; no fabricated catchup.
+        for event in _chain_visitor_milestone.events:
+            if not bool(event.get("fired",false)):
+                source_calendar.pending=maxi(int(source_calendar.pending),int(event.get("threshold_visitors",0))/10000)
+    if program_town != null:
+        _chain_visitors_total &= 0xffffffff
+        _chain_visitor_milestone.events.clear()
     last_owner_review = data.get("last_owner_review", {}).duplicate(true)
     _restore_store_block(data, data["bought_buildings"])
 
@@ -4837,11 +4861,13 @@ func _all_staff_are_walkable() -> bool:
 
 
 func _advance_minute_of_day() -> void:
+    if source_calendar_blocked(): return
     minute_of_day += _step_game_minutes
     if program_town == null: _for_each_store(_fire_due_promotions)
     while minute_of_day >= 24 * 60:
         minute_of_day -= 24 * 60
         _handle_day_boundary()
+        if source_calendar_blocked(): return
     if program_town != null: _fire_source_promotions()
     _fire_due_chain_visitor_milestones()
 
@@ -4851,6 +4877,9 @@ func _handle_day_boundary() -> void:
     _days_completed_this_month += 1
     _for_each_store(_close_store_day)
     _step_inducement_day()
+    if program_town != null and not bool(config.simulation.get("rival_child",false)):
+        _begin_source_day_boundary()
+        return
     if _days_completed_this_month >= REPRESENTATIVE_DAYS_PER_MONTH:
         _settle_month_end()
     # Task #129: after the month's rating, as the program does at 0:00.
@@ -5042,13 +5071,13 @@ func month_operating_statement() -> Dictionary:
     return statement
 
 
-func _settle_month_end() -> void:
-    if program_town != null and not bool(config.simulation.get("rival_child",false)):
+func _settle_month_end(prepared: Dictionary = {}) -> void:
+    if prepared.is_empty() and program_town != null and not bool(config.simulation.get("rival_child",false)):
         # Incoming representative period1, before finance and shop reviews.
         _fire_source_promotions(1,month_count+1)
         _apply_source_donations()
-    var capital_yen := _capital_spent_this_month_yen()
-    var statement := month_operating_statement()
+    var capital_yen: int = _capital_spent_this_month_yen() if prepared.is_empty() else int(prepared.capital)
+    var statement: Dictionary = month_operating_statement() if prepared.is_empty() else prepared.statement
     var month_sales_yen: int = int(statement["monthly"]["sales_yen"])
     var four_day_net_result_yen: int = int(statement["four_day_net_result_yen"])
     var month_result_yen: int = int(statement["month_result_yen"])
@@ -5077,7 +5106,7 @@ func _settle_month_end() -> void:
         "month_result_yen": month_result_yen,
         "settlement_id": record["settlement_id"],
     })
-    _for_each_store(_close_store_month)
+    if prepared.is_empty(): _for_each_store(_close_store_month)
     _retired_month_sales = 0
     month_count += 1
     _days_completed_this_month = 0
@@ -5395,6 +5424,12 @@ func _fire_promotion(scheduled: Dictionary) -> void:
 
 
 func _observe_chain_visitor_milestone(heads := 1) -> void:
+    if program_town != null:
+        if bool(config.simulation.get("rival_child",false)): return
+        var result: Dictionary = SourceCalendar.arrival(_chain_visitors_total,heads,int(source_calendar.pending))
+        _chain_visitors_total=int(result.total)
+        source_calendar.pending=int(result.pending)
+        return
     # Task #123: the whole chain's visitors, counted as they leave (the
     # rosters restart on a load and each store has its own). Task #130: a
     # group counts each of its people (the program adds n).
@@ -5405,6 +5440,7 @@ func _observe_chain_visitor_milestone(heads := 1) -> void:
 
 
 func _fire_due_chain_visitor_milestones() -> void:
+    if program_town != null: return
     # Checked after the day-boundary loop above (using the now-current
     # day_count), since the milestone's "next day 00:00" trigger is most
     # naturally read as firing once that day begins -- unlike promotions,
@@ -5426,6 +5462,90 @@ func _fire_due_chain_visitor_milestones() -> void:
             "popularity_gain": gain,
             "popularity_after": popularity,
         })
+
+
+func source_calendar_blocked() -> bool:
+    return not source_calendar.event.is_empty()
+
+
+# Keep the interrupted midnight continuation serializable. Ratings/ads/donation
+# precede the original29334 presentation; finance and daily allocation follow it.
+func _begin_source_day_boundary() -> void:
+    var closing := _days_completed_this_month>=REPRESENTATIVE_DAYS_PER_MONTH
+    var tail := {"closing":closing}
+    if closing:
+        _fire_source_promotions(1,month_count+1)
+        _apply_source_donations()
+        tail["capital"]=_capital_spent_this_month_yen()
+        tail["statement"]=month_operating_statement()
+        _for_each_store(_close_store_month)
+    _for_each_store(_drift_popularity_day)
+    source_calendar.boundary=tail
+    var month: int = (month_count+int(closing))%12+1
+    var period: int = 1 if closing else _days_completed_this_month+1
+    _begin_source_calendar_event(month,period)
+    if not source_calendar_blocked(): _resume_source_day_boundary()
+
+
+func _begin_source_calendar_event(month: int, period: int) -> void:
+    if int(source_calendar.last_midnight)==day_count: return
+    source_calendar.last_midnight=day_count
+    source_calendar.festival=0
+    var kind: String = SourceCalendar.midnight_kind(month,period,int(source_calendar.pending))
+    if kind.is_empty(): return
+    var variant := 0
+    var units := 0
+    if kind=="festival":
+        # The festival flag becomes1 after the presentation returns.
+        _record_event("festival_announced",{"company_wide":true})
+    else:
+        source_calendar.pending=0
+        variant=_program_rng.randi()%2
+        var rows: Array = []
+        _for_each_store(func():rows.append({"active":has_store_site(),"owner":0,"entered":_store_visitor_heads}))
+        var total: int = SourceCalendar.display_total(rows)
+        if total<10000:
+            _apply_source_celebration()
+            return
+        units=total/10000
+    source_calendar.event={"kind":kind,"units":units,"variant":variant,"wait_updates":0,"day":day_count}
+
+
+func advance_source_calendar_presentation(updates: int, audio_active: bool) -> bool:
+    if not source_calendar_blocked(): return false
+    var event: Dictionary = source_calendar.event
+    event.wait_updates=mini(120,int(event.wait_updates)+maxi(0,updates))
+    if int(event.wait_updates)>=120 and not audio_active:
+        return finish_source_calendar_event()
+    return false
+
+
+func finish_source_calendar_event() -> bool:
+    if not source_calendar_blocked() or int(source_calendar.event.wait_updates)<120: return false
+    var kind: String = source_calendar.event.kind
+    source_calendar.event={}
+    if kind=="festival": source_calendar.festival=1
+    else: _apply_source_celebration()
+    _resume_source_day_boundary()
+    return true
+
+
+func _apply_source_celebration() -> void:
+    # Original29524 uses OR: active rivals and inactive own slots are included.
+    _for_each_store(func():popularity=SourceCalendar.celebration_popularity(popularity,has_store_site(),0))
+    for rival in _rival_stores:
+        var child=_program_rival_simulation(rival)
+        child.popularity=SourceCalendar.celebration_popularity(int(child.popularity),true,1)
+    _record_event("chain_visitor_milestone_fired",{"threshold_visitors":_chain_visitors_total,"popularity_set":100,"popularity_after":popularity,"company_wide":true})
+
+
+func _resume_source_day_boundary() -> void:
+    var tail: Dictionary = source_calendar.boundary
+    if tail.is_empty(): return
+    source_calendar.boundary={}
+    if bool(tail.closing): _settle_month_end(tail)
+    _roll_weather()
+    _allocate_program_day()
 
 
 # Task #88: CONFIRMED_OFFICIAL, strategy guide p.16 (PDF1 page 6,
