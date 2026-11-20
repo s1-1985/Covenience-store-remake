@@ -14,7 +14,13 @@ func _initialize() -> void:
         rng.seed = int(case["seed"])
         var floor_rows: Array = case["rows"].duplicate(true)
         assert(Ops.wear(floor_rows, int(case["previous"]), positions, rng) == int(case["percentage"]))
-        assert(JSON.stringify(floor_rows) == JSON.stringify(case["after"]), "reference floor case")
+        # Godot 4.6 JSON numbers are floats; compare numeric cell values,
+        # not the incidental "1" versus "1.0" serialization.
+        assert(floor_rows.size() == case["after"].size())
+        for y in floor_rows.size():
+            assert(floor_rows[y].size() == case["after"][y].size())
+            for x in floor_rows[y].size():
+                assert(int(floor_rows[y][x]) == int(case["after"][y][x]), "reference floor case")
         assert(rng.seed == int(case["final_seed"]))
     for case in cases["pool_cases"]:
         rng.seed = int(case["seed"])

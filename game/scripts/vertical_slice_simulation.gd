@@ -1,6 +1,7 @@
 class_name VerticalSliceSimulation
 extends RefCounted
 
+const ProgramPermitsScript := preload("res://scripts/domain/program_permits.gd")
 const ProgramOperationsScript := preload("res://scripts/domain/program_operations.gd")
 const ProgramNotificationsScript := preload("res://scripts/domain/program_notifications.gd")
 var notifications := ProgramNotificationsScript.new()
@@ -280,6 +281,9 @@ func _init(source_config: Dictionary) -> void:
     for entry in config["fixture_catalog"]:
         _fixture_catalog[str(entry["catalog_id"])] = entry
     for entry in config["permits"]:
+        if _program_rng != null:
+            entry["fee_yen"] = ProgramPermitsScript.FEES[str(entry["permit_id"])]
+            entry["evidence_note"] = "CONFIRMED_BINARY: SLPS_007.82 800B92D0; native rectangle masks supersede guide distance approximation."
         _permit_catalog[str(entry["permit_id"])] = entry
     for entry in config["product_catalog"]:
         _product_catalog[str(entry["catalog_id"])] = entry
@@ -1451,46 +1455,60 @@ func has_permit(permit_id: String) -> bool:
     return _permits_held.has(permit_id)
 
 
-func try_purchase_permit(permit_id: String) -> bool:
-    # Task #100: allowed while customers are in the store -- this changes
-    # no fixture, route or basket (during opening hours the store is almost
-    # never empty, so waiting for it blocked the action for good).
-    if is_game_over:
-        return false
-    if has_permit(permit_id) or not _permit_catalog.has(permit_id):
-        return false
-    if not _can_acquire_permit(permit_id):
-        return false
-    var fee_yen: int = int(_permit_catalog[permit_id]["fee_yen"])
-    if economy.cash_yen < fee_yen:
-        return false
-    var expense: Dictionary = economy.record_explicit_expense(
-        "permit_purchase",
-        minute_of_day,
-        fee_yen,
-        {"permit_id": permit_id}
-    )
-    _permits_held[permit_id] = true
-    _record_event("permit_purchased", {
-        "permit_id": permit_id,
-        "expense_id": expense["expense_id"],
-    })
+# No provisional debit: the native confirmation posts exactly once.
+func permit_application_quote(selected: Array) -> Dictionary:
+    var added: Array[String] = []
+    var fee := 0
+    var reason := ""
+    if is_game_over: reason = "ゲーム終了後は申請できません"
+    elif program_town != null and not has_store_site(): reason = "店舗を選択して下さい"
+    for value in selected:
+        var id := str(value)
+        if not _permit_catalog.has(id):
+            reason = "販売許可の種類を確認して下さい"
+            break
+        if has_permit(id) or added.has(id): continue
+        if not _can_acquire_permit(id):
+            reason = "ここでは扱えません"
+            break
+        added.append(id)
+        fee += int(_permit_catalog[id]["fee_yen"])
+    if reason.is_empty() and economy.cash_yen < fee: reason = "資金が足りません"
+    return {"allowed":reason.is_empty(),"reason":reason,"new_permits":added,"total_yen":fee,"store_uid":_store_uid}
+
+
+func try_purchase_permits(selected: Array, expected_uid := -1) -> bool:
+    if expected_uid >= 0 and expected_uid != _store_uid: return false
+    var quote := permit_application_quote(selected)
+    if not quote.allowed or quote.new_permits.is_empty(): return false
+    # Validate the complete selection before any payment or flag mutation.
+    for id in quote.new_permits:
+        var expense: Dictionary = economy.record_explicit_expense("permit_purchase",minute_of_day,int(_permit_catalog[id]["fee_yen"]),{"permit_id":id})
+        _permits_held[id] = true
+        _record_event("permit_purchased",{"permit_id":id,"expense_id":expense["expense_id"]})
+    if program_town != null:
+        program_town.rebuild_flags(_program_store_descriptors())
+        _allocate_program_day()
     return true
 
 
-# Task #59: CONFIRMED_OFFICIAL rule (guide book page 9) that a permit
-# cannot be acquired within that permit's exclusion distance of another
-# store already holding it. `_rival_stores` is the only other-store source
-# this client has (no multi-store placement mechanic exists for the
-# player's own chain, see try_expand_chain()'s own note), so this only
-# checks against configured rivals; it defaults to a no-op (permit always
-# acquirable) when `_rival_stores` is empty, which is the default scenario
-# config's own setting.
+func try_purchase_permit(permit_id: String) -> bool:
+    if is_game_over: return false
+    if not _can_acquire_permit(permit_id): return false
+    if has_permit(permit_id): return false
+    return try_purchase_permits([permit_id])
+
+
 func _can_acquire_permit(permit_id: String) -> bool:
     return _can_acquire_permit_at(permit_id, _player_store_position)
 
 
 func _can_acquire_permit_at(permit_id: String, position: Vector2i) -> bool:
+    if not _permit_catalog.has(permit_id): return false
+    if program_town != null:
+        program_town.rebuild_flags(_program_store_descriptors())
+        return not ProgramPermitsScript.restricted(program_town.cells,Rect2i(position,Vector2i(2,2)),permit_id)
+    # Legacy prototype uses its guide-based point geometry only.
     var exclusion_distance_tiles: int = int(_permit_catalog[permit_id]["exclusion_distance_tiles"])
     var holder_positions: Array[Vector2i] = []
     for rival in _rival_stores:

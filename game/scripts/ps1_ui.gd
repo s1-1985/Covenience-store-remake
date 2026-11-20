@@ -22,6 +22,8 @@ var _restoring_menu := false
 var _pending_taps: Dictionary = {}
 var _dismiss_request: Dictionary = {}
 var _sale_request: Dictionary = {}
+var _permit_selected: Array[String] = []
+var _permit_request: Dictionary = {}
 var selection := 0
 var choice := 0
 var page := 0
@@ -143,6 +145,9 @@ func open_window(id: String) -> void:
         return
     if main.selecting_site:
         return
+    if id == "permits" and screen != "permit_confirm" and not _restoring_menu:
+        _permit_selected.clear()
+        _permit_request.clear()
     if id == "candidates" and screen != "candidates" and not _restoring_menu:
         # Sampling consumes the gameplay RNG. Do it once on entry, never
         # from the draw callback, hover, or the decision handler.
@@ -575,6 +580,7 @@ func _draw_screen(_target: Node2D) -> void:
         "prices": _prices()
         "stock_prices": _individual_prices()
         "permits": _permits()
+        "permit_confirm": _permit_confirmation()
         "advertising": _advertising()
         "facilities": _facilities()
         "staff": _list([["店員の雇用", "candidates"], ["店員の解雇", "dismiss"], ["店員の異動", "transfer"]], Rect2(45,56,86,0))
@@ -736,19 +742,51 @@ func _individual_prices() -> void:
     _footer(193)
 
 func _permits() -> void:
-    _paper(Rect2(44,70,230,86))
-    _center(75,"販売許可を申請しますか?")
-    var entries: Array = main.config["permits"]
-    for i in mini(3,entries.size()):
-        var entry: Dictionary = entries[i]
-        var id := str(entry["permit_id"])
-        var held: bool = main.simulation.has_permit(id)
-        surface.draw_texture_rect(_texture(UI_ICON_DIR+PERMIT_ICONS.get(id,"")+".png"),Rect2(50,91+i*16,14,14),false)
-        _ink(Vector2(72,91+i*16),main.tr(id))
-        _option(Rect2(130,91+i*16,132,16),"申請済み" if held else "申請 "+_money(int(entry["fee_yen"])),func():
-            if not held and not main.simulation.try_purchase_permit(id):
-                show_notice("申請条件か資金を確認して下さい"),i)
-    _footer(139)
+    var sim = main.simulation
+    _paper(Rect2(32,48,256,160))
+    _center(54,"販売許可を申請しますか?")
+    for i in 3:
+        var id: String = sim.ProgramPermitsScript.IDS[i]
+        var held: bool = sim.has_permit(id)
+        var allowed: bool = sim._can_acquire_permit(id)
+        var selected: bool = _permit_selected.has(id)
+        var y := 78+i*24
+        surface.draw_texture_rect(_texture(UI_ICON_DIR+PERMIT_ICONS[id]+".png"),Rect2(44,y,16,16),false)
+        _ink(Vector2(64,y),sim.ProgramPermitsScript.NAMES[id])
+        var text := "申請済み" if held else ("ここでは扱えません" if not allowed else ("選択 " if selected else "□ ")+_money(int(sim._permit_catalog[id]["fee_yen"])))
+        _option(Rect2(112,y,164,22),text,func():
+            if held: show_notice("申請済みです")
+            elif not allowed: show_notice("ここでは扱えません")
+            elif _permit_selected.has(id): _permit_selected.erase(id)
+            else: _permit_selected.append(id),i)
+    var quote: Dictionary = sim.permit_application_quote(_permit_selected)
+    _ink(Vector2(44,153),"申請費用 "+_money(int(quote.total_yen)))
+    _option(Rect2(44,178,80,22),"戻る",handle_cancel,3)
+    _option(Rect2(148,178,128,22),"選択内容を確認",func():
+        if not quote.allowed: show_notice(str(quote.reason))
+        elif quote.new_permits.is_empty(): show_notice("許可を選択して下さい")
+        else:
+            _permit_request = {"selected":_permit_selected.duplicate(),"store_uid":quote.store_uid}
+            open_window("permit_confirm"),4)
+
+func _permit_confirmation() -> void:
+    _paper(Rect2(32,56,256,140))
+    _center(64,"この内容で申請しますか?")
+    var sim = main.simulation
+    var quote: Dictionary = sim.permit_application_quote(_permit_request.get("selected",[]))
+    for i in _permit_request.get("selected",[]).size():
+        var id: String = _permit_request.selected[i]
+        _ink(Vector2(50,88+i*20),sim.ProgramPermitsScript.NAMES[id]+"  "+_money(int(sim._permit_catalog[id]["fee_yen"])))
+    _ink(Vector2(50,150),"合計 "+_money(int(quote.total_yen)))
+    _option(Rect2(50,170,80,22),"戻る",handle_cancel,0)
+    _option(Rect2(170,170,100,22),"申請する",func():
+        if sim.try_purchase_permits(_permit_request.get("selected",[]),int(_permit_request.get("store_uid",-1))):
+            _permit_selected.clear()
+            _permit_request.clear()
+            handle_cancel()
+            main._refresh_ui()
+        else:
+            show_notice(str(quote.reason) if not str(quote.reason).is_empty() else "店舗または申請内容を確認して下さい"),1)
 
 func _advertising() -> void:
     _paper(Rect2(51,45,230,120))

@@ -1,0 +1,317 @@
+{
+  "fees": [
+    3000000,
+    7000000,
+    10000000
+  ],
+  "query_cases": [
+    {
+      "name": "tobacco_empty",
+      "permit_id": "tobacco",
+      "rect": [
+        14,
+        14,
+        15,
+        15
+      ],
+      "points": [],
+      "restricted": false
+    },
+    {
+      "name": "tobacco_single_corner",
+      "permit_id": "tobacco",
+      "rect": [
+        14,
+        14,
+        15,
+        15
+      ],
+      "points": [
+        [
+          15,
+          15,
+          4
+        ]
+      ],
+      "restricted": true
+    },
+    {
+      "name": "tobacco_outside",
+      "permit_id": "tobacco",
+      "rect": [
+        13,
+        13,
+        14,
+        14
+      ],
+      "points": [
+        [
+          15,
+          15,
+          4
+        ]
+      ],
+      "restricted": false
+    },
+    {
+      "name": "tobacco_top_left",
+      "permit_id": "tobacco",
+      "rect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "points": [
+        [
+          0,
+          0,
+          4
+        ]
+      ],
+      "restricted": true
+    },
+    {
+      "name": "tobacco_bottom_right",
+      "permit_id": "tobacco",
+      "rect": [
+        58,
+        48,
+        59,
+        49
+      ],
+      "points": [
+        [
+          59,
+          49,
+          4
+        ]
+      ],
+      "restricted": true
+    },
+    {
+      "name": "tobacco_other_bits",
+      "permit_id": "tobacco",
+      "rect": [
+        14,
+        14,
+        15,
+        15
+      ],
+      "points": [
+        [
+          15,
+          15,
+          3
+        ]
+      ],
+      "restricted": false
+    },
+    {
+      "name": "alcohol_empty",
+      "permit_id": "alcohol",
+      "rect": [
+        14,
+        14,
+        15,
+        15
+      ],
+      "points": [],
+      "restricted": false
+    },
+    {
+      "name": "alcohol_single_corner",
+      "permit_id": "alcohol",
+      "rect": [
+        14,
+        14,
+        15,
+        15
+      ],
+      "points": [
+        [
+          15,
+          15,
+          2
+        ]
+      ],
+      "restricted": true
+    },
+    {
+      "name": "alcohol_outside",
+      "permit_id": "alcohol",
+      "rect": [
+        13,
+        13,
+        14,
+        14
+      ],
+      "points": [
+        [
+          15,
+          15,
+          2
+        ]
+      ],
+      "restricted": false
+    },
+    {
+      "name": "alcohol_top_left",
+      "permit_id": "alcohol",
+      "rect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "points": [
+        [
+          0,
+          0,
+          2
+        ]
+      ],
+      "restricted": true
+    },
+    {
+      "name": "alcohol_bottom_right",
+      "permit_id": "alcohol",
+      "rect": [
+        58,
+        48,
+        59,
+        49
+      ],
+      "points": [
+        [
+          59,
+          49,
+          2
+        ]
+      ],
+      "restricted": true
+    },
+    {
+      "name": "alcohol_other_bits",
+      "permit_id": "alcohol",
+      "rect": [
+        14,
+        14,
+        15,
+        15
+      ],
+      "points": [
+        [
+          15,
+          15,
+          5
+        ]
+      ],
+      "restricted": false
+    },
+    {
+      "name": "medicine_empty",
+      "permit_id": "medicine",
+      "rect": [
+        14,
+        14,
+        15,
+        15
+      ],
+      "points": [],
+      "restricted": false
+    },
+    {
+      "name": "medicine_single_corner",
+      "permit_id": "medicine",
+      "rect": [
+        14,
+        14,
+        15,
+        15
+      ],
+      "points": [
+        [
+          15,
+          15,
+          1
+        ]
+      ],
+      "restricted": true
+    },
+    {
+      "name": "medicine_outside",
+      "permit_id": "medicine",
+      "rect": [
+        13,
+        13,
+        14,
+        14
+      ],
+      "points": [
+        [
+          15,
+          15,
+          1
+        ]
+      ],
+      "restricted": false
+    },
+    {
+      "name": "medicine_top_left",
+      "permit_id": "medicine",
+      "rect": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "points": [
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "restricted": true
+    },
+    {
+      "name": "medicine_bottom_right",
+      "permit_id": "medicine",
+      "rect": [
+        58,
+        48,
+        59,
+        49
+      ],
+      "points": [
+        [
+          59,
+          49,
+          1
+        ]
+      ],
+      "restricted": true
+    },
+    {
+      "name": "medicine_other_bits",
+      "permit_id": "medicine",
+      "rect": [
+        14,
+        14,
+        15,
+        15
+      ],
+      "points": [
+        [
+          15,
+          15,
+          6
+        ]
+      ],
+      "restricted": false
+    }
+  ],
+  "original_function_entries": 18,
+  "scope": "rectangle query plus real all-zero child; no operating updates"
+}
