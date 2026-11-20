@@ -32,6 +32,10 @@ var rest_phase := ""
 var stamina := 0
 var stamina_max := 0
 var exhausted := false
+# Original person record +20: incremented on a changed same-store binding,
+# retained across dismissal, rehire and cross-store transfers.
+var source_assignment_experience := 0
+var _start_source_assignment_experience := 0
 # Task #118: customers this staff member has rung up (for sharing out the
 # register).
 var checkouts_done := 0
@@ -55,6 +59,7 @@ var _start_replenishment_skill: int
 
 
 func _init(staff_config: Dictionary) -> void:
+    _start_source_assignment_experience = int(staff_config.get("source_assignment_experience",0))
     staff_id = str(staff_config["id"])
     candidate_id = str(staff_config.get("candidate_id", ""))
     display_name = str(staff_config.get("display_name", ""))
@@ -127,6 +132,7 @@ func _init(staff_config: Dictionary) -> void:
 # (see save_state()'s own note on what stays unsaved), so a save/load round
 # trip currently reverts any accumulated growth rather than preserving it.
 func reset() -> void:
+    source_assignment_experience = _start_source_assignment_experience
     source_state = -1
     source_goal = Vector2i(-1, -1)
     position = _start_position
@@ -149,11 +155,12 @@ func reset() -> void:
 # reset() (e.g. from load_state()) restores to the NEWLY hired person, not
 # the one they replaced. staff_id and position stay put: they describe the
 # store's own roster slot/register-front standing spot, not the person
-# filling it. Any accumulated skill growth (task #48) the previous
-# occupant had is discarded, matching how firing someone in a real
-# register-front role doesn't carry their learned proficiency to whoever
-# replaces them.
+# filling it. Native simulation retains the outgoing person's durable
+# figures separately and restores the incoming person's retained figures
+# after this base initialization. Skills never pass from one person to another.
 func hire(new_candidate_config: Dictionary) -> void:
+    source_assignment_experience = int(new_candidate_config.get("source_assignment_experience", 0))
+    _start_source_assignment_experience = source_assignment_experience
     source_state = -1
     source_goal = Vector2i(-1, -1)
     candidate_id = str(new_candidate_config.get("candidate_id", ""))

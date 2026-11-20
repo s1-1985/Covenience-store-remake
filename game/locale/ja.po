@@ -1136,6 +1136,9 @@ msgid "staff dismissed"
 msgstr "従業員を解雇した"
 
 msgid "staff transferred"
+msgstr "店員を異動しました"
+
+msgid "staff assigned"
 msgstr "従業員の配置を変更した"
 
 msgid "shoplifting"

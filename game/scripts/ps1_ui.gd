@@ -61,7 +61,8 @@ var _selected_rect := Rect2()
 var _active_action := Callable()
 var _company := "HUMANストア"
 var readable_font: Font = preload("res://fonts/ConveniJP.ttf")
-# Owner-authorized mobile gesture; the simulation's existing swap is unchanged.
+# Owner-authorized mobile gesture; same-store changes use the original
+# assignment transaction, while cross-store moves retain their own rules.
 var _staff_drag: Dictionary = {}
 var _staff_drag_position := Vector2.ZERO
 var _staff_drag_moved := false
@@ -446,7 +447,7 @@ func _commit_transfer(from_store: int, from_slot: int, to_store: int, to_slot: i
     var changed: bool = main.simulation.try_transfer_source_staff(from_store,"staff-%d" % (from_slot+1),to_store,"staff-%d" % (to_slot+1))
     if changed:
         SoundManager.play_sfx("select")
-        show_notice("異動しました")
+        show_notice("配置を変更しました" if from_store == to_store else "異動しました")
     return changed
 
 func _input(event: InputEvent) -> void:
@@ -1156,8 +1157,12 @@ func _personnel() -> void:
         _face(id,Rect2(148,57,46,38))
         _ink(Vector2(196,57),str(e.get("display_name",id)))
         _ink(Vector2(196,73),"%d歳 %s" % [int(e.get("age_years",0)),profiles.get(e.get("display_name",""),{}).get("gender", "")])
-        _ink(Vector2(196,89),"未経験" if hiring and not s._unassigned_staff.has(id) else "経験あり")
-        _ink(Vector2(196,105),_money(int(e.get("salary_yen_per_day_24h",0)) if hiring else _scheduled_wage(int(s.staff.members["staff-%d" % (slot+1)].salary_yen_per_day_24h),s.business_hours_id))+"/日")
+        var retained: Dictionary = s._unassigned_staff.get(id,{})
+        var person = null if hiring else s.staff.members.get("staff-%d" % (slot+1))
+        var experience := int(retained.get("source_assignment_experience",e.get("source_assignment_experience",0))) if hiring else int(person.source_assignment_experience)
+        var wage := int(retained.get("salary_yen_per_day_24h",e.get("salary_yen_per_day_24h",0))) if hiring else int(person.salary_yen_per_day_24h)
+        _ink(Vector2(196,89),"未経験" if experience == 0 else "経験あり")
+        _ink(Vector2(196,105),_money(wage if hiring else _scheduled_wage(wage,s.business_hours_id))+"/日")
         var keys := ["stamina","academic_background","agility","sociability"]
         for i in 4:
             var value := int(e.get(keys[i],0))
@@ -1248,7 +1253,7 @@ func _confirm_dismissal() -> void:
 func _transfer() -> void:
     var s = main.simulation
     _paper(Rect2(12,38,294,182))
-    _center(43,"店員を異動させます")
+    _center(43,"店内で配置を変更します" if s.active_store == transfer_store else "店員を異動させます")
     for side in 2:
         var index: int = s.active_store if side == 0 else transfer_store
         var roster = s.store_field(index,"staff")

@@ -1762,8 +1762,8 @@ func _apply_source_donations() -> void:
 # affecting action already is (customers.all_settled()); additionally
 # rejects hiring a candidate who is already employed in the OTHER slot
 # (the same real person can't occupy both), and an unknown staff_id/
-# candidate_id. Any accumulated skill growth (task #48) the outgoing
-# occupant had is discarded -- see StaffState.hire()'s own comment.
+# candidate_id. In native play, person data belongs to the candidate:
+# dismissal retains it and same-store rebinding restores it before use.
 func try_hire_candidate(staff_id: String, candidate_id: String) -> bool:
     # Task #109: the new person takes over the post as it is (position and
     # task), so in the real game hiring no longer waits for an empty store.
@@ -1777,7 +1777,12 @@ func try_hire_candidate(staff_id: String, candidate_id: String) -> bool:
     if program_town != null:
         if not source_free_candidates().has(candidate_id) or not staff_id in ["staff-1", "staff-2", "staff-3"]:
             return false
-        _ensure_source_staff_slot(staff_id)
+        var draft := source_staff_assignment()
+        draft[staff_id.trim_prefix("staff-").to_int()-1] = candidate_id
+        if not try_assign_source_staff(draft):
+            return false
+        _record_event("staff_hired", {"staff_id":staff_id,"candidate_id":candidate_id,"previous_candidate_id":previous_candidate_id})
+        return true
     if not _apply_hire(staff_id, candidate_id):
         return false
     _record_event("staff_hired", {
@@ -1817,11 +1822,13 @@ func _apply_hire(staff_id: String, candidate_id: String) -> bool:
 
     var hired = staff.members[staff_id]
     hired.stamina_max = int(_candidate_figures(candidate_id).get("stamina", 0))
-    hired.stamina = hired.stamina_max
+    hired.stamina = int(_candidate_figures(candidate_id).get("source_initial_stamina", hired.stamina_max))
     hired.exhausted = false
     if _unassigned_staff.has(candidate_id):
-        for field in _unassigned_staff[candidate_id]:
-            hired.set(field,_unassigned_staff[candidate_id][field])
+        var retained: Dictionary = _unassigned_staff[candidate_id]
+        for field in RETAINED_SOURCE_STAFF_FIELDS:
+            if retained.has(field):
+                hired.set(field,bool(retained[field]) if field == "exhausted" else int(retained[field]))
         _unassigned_staff.erase(candidate_id)
         _reset_transferred_source_staff(hired,active_store,staff_id)
     return true
@@ -4844,6 +4851,16 @@ func _inventory_snapshot() -> Array[Dictionary]:
 const SAVED_STAFF_FIELDS := [
     "service_skill", "security_skill", "cleaning_skill", "register_skill",
     "replenishment_skill", "stamina", "exhausted", "salary_yen_per_day_24h",
+    "source_assignment_experience",
+    "stamina_max", "register_skill_growth_ceiling", "replenishment_skill_growth_ceiling",
+    "security_skill_growth_ceiling", "cleaning_skill_growth_ceiling", "service_skill_growth_ceiling",
+]
+
+const RETAINED_SOURCE_STAFF_FIELDS := [
+    "stamina", "stamina_max", "exhausted", "salary_yen_per_day_24h",
+    "register_skill", "replenishment_skill", "security_skill", "cleaning_skill", "service_skill",
+    "register_skill_growth_ceiling", "replenishment_skill_growth_ceiling", "security_skill_growth_ceiling",
+    "cleaning_skill_growth_ceiling", "service_skill_growth_ceiling", "source_assignment_experience",
 ]
 
 
@@ -5347,7 +5364,7 @@ func _apply_program_staff_figures() -> void:
     for member in config["staff"]["members"]:
         var figures: Dictionary = program.get(str(member.get("candidate_id", "")), {})
         for key in figures:
-            if member.has(key) or key.ends_with("_skill") or key.ends_with("_ceiling") or key == "display_name":
+            if member.has(key) or key.ends_with("_skill") or key.ends_with("_ceiling") or key in ["display_name", "source_assignment_experience"]:
                 member[key] = figures[key]
 
 
@@ -6825,10 +6842,62 @@ func try_dismiss_source_staff(staff_id: String) -> bool:
         return false
     # Source commits removal before warning about an empty first slot.
     var id: String = staff.members[staff_id].candidate_id
-    staff.members.erase(staff_id)
-    if staff.checkout_staff_id == staff_id and not staff.members.is_empty():
-        staff.checkout_staff_id = str(staff.members.keys()[0])
+    var draft := source_staff_assignment()
+    draft[staff_id.trim_prefix("staff-").to_int()-1] = ""
+    if not try_assign_source_staff(draft): return false
     _record_event("staff_dismissed", {"staff_id": staff_id, "candidate_id": id})
+    return true
+
+func source_staff_assignment() -> Array[String]:
+    var result: Array[String] = []
+    for i in 3:
+        var person = staff.members.get("staff-%d" % (i+1))
+        result.append("" if person == null else str(person.candidate_id))
+    return result
+
+func _retain_source_staff(person, recover: bool = false) -> void:
+    var retained := {}
+    for field in RETAINED_SOURCE_STAFF_FIELDS:
+        retained[field] = person.get(field)
+    if recover:
+        retained.stamina = int(person.stamina_max)
+        retained.exhausted = false
+    _unassigned_staff[str(person.candidate_id)] = retained
+
+func try_assign_source_staff(draft: Array) -> bool:
+    # CONFIRMED_BINARY 80070F48: release ALL changed slots first, then bind.
+    # Unchanged people keep their complete running state; joining alone does
+    # not replenish stamina. This is distinct from cross-store 80072774.
+    if program_town == null or is_game_over or draft.size() != 3:
+        return false
+    var old := source_staff_assignment()
+    var free := source_free_candidates()
+    var used := {}
+    for id in draft:
+        if not id is String: return false
+        if id.is_empty(): continue
+        if used.has(id) or (not old.has(id) and not free.has(id)): return false
+        used[id] = true
+    if old == draft: return true
+    for i in 3:
+        if old[i] == draft[i]: continue
+        var slot_id := "staff-%d" % (i+1)
+        if staff.members.has(slot_id):
+            _retain_source_staff(staff.members[slot_id],true)
+            staff.members.erase(slot_id)
+    for i in 3:
+        if old[i] == draft[i] or str(draft[i]).is_empty(): continue
+        var slot_id := "staff-%d" % (i+1)
+        _ensure_source_staff_slot(slot_id)
+        var bound := _apply_hire(slot_id,str(draft[i]))
+        assert(bound)
+        if not bound: return false
+        var person = staff.members[slot_id]
+        person.source_assignment_experience += 1
+        _reset_transferred_source_staff(person,active_store,slot_id)
+    if not staff.members.has(staff.checkout_staff_id) and not staff.members.is_empty():
+        staff.checkout_staff_id = str(staff.members.keys()[0])
+    _record_event("staff_assigned",{"store":active_store,"old":old,"new":draft.duplicate()})
     return true
 
 func try_transfer_source_staff(from_store: int, from_slot: String, to_store: int, to_slot: String) -> bool:
@@ -6836,6 +6905,18 @@ func try_transfer_source_staff(from_store: int, from_slot: String, to_store: int
         return false
     if not from_slot in ["staff-1", "staff-2", "staff-3"] or not to_slot in ["staff-1", "staff-2", "staff-3"] or (from_store == to_store and from_slot == to_slot):
         return false
+    if from_store == to_store:
+        var home := active_store
+        _switch_store(from_store)
+        var draft := source_staff_assignment()
+        var a_index := from_slot.trim_prefix("staff-").to_int()-1
+        var b_index := to_slot.trim_prefix("staff-").to_int()-1
+        var previous := draft[a_index]
+        draft[a_index] = draft[b_index]
+        draft[b_index] = previous
+        var changed := try_assign_source_staff(draft)
+        _switch_store(home)
+        return changed
     var left = store_field(from_store, "staff")
     var right = store_field(to_store, "staff")
     var a = left.members.get(from_slot)
@@ -6985,10 +7066,7 @@ func try_sell_store(index: int, expected_uid: int = -1) -> bool:
     economy.record_explicit_expense("store_sold",minute_of_day,-int(quote.land_yen),{"part":"land","store_uid":_store_uid})
     economy.record_explicit_expense("store_sold",minute_of_day,-int(quote.premises_yen),{"part":"premises","store_uid":_store_uid})
     for person in staff.all_staff():
-        var retained := {}
-        for field in ["stamina","stamina_max","exhausted","salary_yen_per_day_24h","register_skill","replenishment_skill","security_skill","cleaning_skill","service_skill","register_skill_growth_ceiling","replenishment_skill_growth_ceiling","security_skill_growth_ceiling","cleaning_skill_growth_ceiling","service_skill_growth_ceiling"]:
-            retained[field] = person.get(field)
-        _unassigned_staff[str(person.candidate_id)] = retained
+        _retain_source_staff(person)
     _retired_month_sales += _store_sales_yen - _store_sales_at_month_start
     staff.members.clear()
     customers.reset()

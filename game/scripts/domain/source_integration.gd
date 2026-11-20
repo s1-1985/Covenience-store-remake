@@ -7,6 +7,12 @@ static func apply(config: Dictionary, index: int) -> void:
     var tables: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/ps1_integration.json"))
     config["source_catalog"] = {"product_ids": tables["product_ids"], "product_images": tables["product_images"]}
     var source: Dictionary = tables["scenarios"][clampi(index, 0, 3)]
+    source = source.duplicate(true)
+    var lifecycle: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://data/source_staff_lifecycle.json"))
+    for i in source["staff_order"].size():
+        var figures: Dictionary = source["staff_candidates"][source["staff_order"][i]]
+        figures["source_assignment_experience"] = int(lifecycle.initial_experience[clampi(index,0,3)][i])
+        figures["source_initial_stamina"] = int(lifecycle.initial_stamina[clampi(index,0,3)][i])
     config["source_scenario_index"] = index
     config["source_scenario"] = source.duplicate(true)
     config["scenario_id"] = "ps1-%s-recovered" % str(source["id"])
