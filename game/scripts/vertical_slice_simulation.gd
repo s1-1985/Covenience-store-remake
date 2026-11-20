@@ -6014,6 +6014,10 @@ func _complete_restock(staff_member) -> void:
             "task": "replenish",
             "skills": restock_growth,
         })
+    if _native_source_people():
+        # Original 80037510: only a completed refill sets bit0x0800,
+        # mapped by the original event table to VOS24. Partial work is silent.
+        _record_event("source_restock_completed",{"staff_id":staff_member.staff_id,"product_id":product_id})
     staff_member.finish_restock()
     if not _native_source_people():
         _spend_stamina(staff_member)
@@ -7111,13 +7115,21 @@ func _source_try_theft(customer, product_id: String) -> bool:
         return false
     if int(_store_values()["security"]) >= 100 - int(customer.visit.get("manners", 100)):
         return false
-    var line: Dictionary = inventory.try_take(product_id, customer.group_size)
+    var line: Dictionary = _take_source_product(product_id, customer.group_size)
     if line.is_empty():
         return false
     _record_event("shoplifting", {"customer_id": customer.customer_id, "product_id": product_id, "quantity": customer.group_size})
     customer.phase = "leaving"
     customer.route = layout.find_path(customer.position, layout.exit)
     return true
+
+func _take_source_product(product_id: String, quantity: int) -> Dictionary:
+    var line: Dictionary = inventory.try_take(product_id,quantity) if inventory.products.has(product_id) else {}
+    if line.is_empty():
+        # Original 8003B420 increments 12E2 once per failed acquisition,
+        # irrespective of the group size. Demand survey counts are separate.
+        _notice_counts["sold_out"] = mini(127,int(_notice_counts["sold_out"])+1)
+    return line
 
 
 func _record_source_survey_pick(product_id: String, heads: int) -> void:

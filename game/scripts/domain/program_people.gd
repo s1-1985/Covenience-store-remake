@@ -339,7 +339,7 @@ static func customer(s, p) -> void:
     if p.budget_left >= cost:
         if s._program_rng.randi() % 100 + 1 > int(p.visit.get("quickness", 100)):
             return
-        var line: Dictionary = s.inventory.try_take(product_id, p.group_size)
+        var line: Dictionary = s._take_source_product(product_id, p.group_size)
         if not line.is_empty():
             s._record_source_survey_pick(product_id,p.group_size)
             line["unit_price_yen"] = cost

@@ -1141,6 +1141,9 @@ msgstr "店員を異動しました"
 msgid "staff assigned"
 msgstr "従業員の配置を変更した"
 
+msgid "source restock completed"
+msgstr "商品の補充が完了した"
+
 msgid "shoplifting"
 msgstr "万引きが発生した"
 
